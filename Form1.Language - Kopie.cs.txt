@@ -1,0 +1,167 @@
+﻿using IniParser.Model;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Fo76ini
+{
+    partial class Form1
+    {
+        private String languageFolder = ".\\languages";
+        private List<String> languageISOs;
+        private List<String> languageNames;
+        private Encoding langIniEncoding = new UTF8Encoding(false); // UTF-8 without BOM
+
+        private void LookupLanguages()
+        {
+            this.languageISOs = new List<String> { "en-US" };
+            this.languageNames = new List<String> { "English (USA)" };
+
+            if (Directory.Exists(languageFolder))
+            {
+                foreach (string fileName in Directory.GetFiles(languageFolder))
+                {
+                    if (fileName.EndsWith(".ini"))
+                    {
+                        String langName = LoadLanguageINI(fileName)["Language"]["name"];
+                        String langIso = LoadLanguageINI(fileName)["Language"]["iso"];
+                        if (langName != null && langIso != "en-US")
+                        {
+                            this.languageISOs.Add(langIso);
+                            this.languageNames.Add(langName);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(languageFolder);
+            }
+
+            this.comboBoxLanguage.Items.AddRange(languageNames.ToArray<String>());
+
+            String selectedLanguage = GetConfigValue("Preferences", "sLanguage", "en-US");
+            int languageIndex = Array.IndexOf(this.languageISOs.ToArray<String>(), selectedLanguage);
+            this.comboBoxLanguage.SelectedIndex = languageIndex > -1 ? languageIndex : 0;
+
+            CreateEnglishINIFile();
+        }
+
+        private IniData LoadLanguageINI(string langFile)
+        {
+            if (this.iniParser == null)
+                InitializeINIParser();
+
+            IniData languageFile;
+            try
+            {
+                languageFile = this.iniParser.ReadFile(langFile, this.langIniEncoding);
+            }
+            catch (IniParser.Exceptions.ParsingException e)
+            {
+                return new IniData();
+            }
+            return languageFile;
+        }
+
+        private String ToLangINIString(String s)
+        {
+            return Regex.Replace(s, @"\r\n?|\n", "\\n").Replace("\t", "\\t").Replace("\\", "\\\\").Replace("\\\\n", "\\n").Replace("\\\\t", "\\t");
+        }
+
+        private String FromLangINIString(String s)
+        {
+            return s.Replace("\\n", "\n").Replace("\\t", "\t").Replace("\\\\", "\\");
+        }
+
+        private void SerializeControlText(IniData data, Control control)
+        {
+            foreach(Control subControl in control.Controls)
+            {
+                if (subControl.Name != null &&
+                    subControl.Name.Length > 0 &&
+                    subControl.Name != "labelConfigVersion" &&
+                    subControl.Name != "labelAuthorName" &&
+                    subControl.Text != null &&
+                    subControl.Text.Length > 0 &&
+                    !subControl.Name.StartsWith("num") &&
+                    !subControl.Name.StartsWith("comboBox") &&
+                    !subControl.Name.StartsWith("slider") &&
+                    !subControl.Name.StartsWith("color"))
+                {
+                    data[control.Name][subControl.Name] = ToLangINIString(subControl.Text);
+                    if (this.toolTip.GetToolTip(subControl) != null && this.toolTip.GetToolTip(subControl).Length > 0)
+                        data["Tooltips"][subControl.Name] = ToLangINIString(this.toolTip.GetToolTip(subControl));
+                }
+                SerializeControlText(data, subControl);
+            }
+        }
+
+        private void DeserializeControlText(IniData data, Control control)
+        {
+            foreach (Control subControl in control.Controls)
+            {
+                if (subControl.Name != null &&
+                    subControl.Name.Length > 0 &&
+                    subControl.Name != "labelConfigVersion" &&
+                    subControl.Name != "labelAuthorName")
+                {
+                    data["Text"][subControl.Name] = FromLangINIString(subControl.Text);
+                    if (this.toolTip.GetToolTip(subControl) != null && this.toolTip.GetToolTip(subControl).Length > 0)
+                        data["Tooltip"][subControl.Name] = FromLangINIString(this.toolTip.GetToolTip(subControl));
+                }
+                DeserializeControlText(data, subControl);
+            }
+        }
+
+        private void CreateEnglishINIFile()
+        {
+            IniData langEnUs = new IniData();
+            langEnUs["Language"]["name"] = "English (USA)";
+            langEnUs["Language"]["iso"] = "en-US";
+
+            /*langEnUs["Tooltips"]["affectedValues"] = "Affected values:";
+            langEnUs["Tooltips"]["affectedFiles"] = "Affected files:";
+
+            langEnUs["Info"]["title"] = ToLangINIString(this.labelTitle.Text);
+            langEnUs["Info"]["description"] = ToLangINIString(this.labelDescription.Text);
+            langEnUs["Info"]["version"] = ToLangINIString(this.labelVersion.Text);*/
+
+            SerializeControlText(langEnUs, this);
+
+            this.iniParser.WriteFile(Path.Combine(languageFolder, "en-US.ini"), langEnUs, this.langIniEncoding);
+        }
+
+        private void ChangeLanguage(string langFile)
+        {
+            IniData langData = LoadLanguageINI(langFile);
+            this.configData["Preferences"]["sLanguage"] = langData["Language"]["iso"];
+            if (langFile.Contains("de-DE"))
+            {
+                this.labelLanguage.Text = "Sprache";
+            } else
+            {
+                this.labelLanguage.Text = "Language";
+            }
+        }
+
+        private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangeLanguage(Path.Combine(this.languageFolder, this.languageISOs[this.comboBoxLanguage.SelectedIndex]) + ".ini");
+        }
+
+        /*private void ChangeLanguage(string lang)
+        {
+            foreach (Control c in this.Controls)
+            {
+                ComponentResourceManager resources = new ComponentResourceManager(typeof(Form1));
+                resources.ApplyResources(c, c.Name, new CultureInfo(lang));
+            }
+        }*/
+    }
+}
