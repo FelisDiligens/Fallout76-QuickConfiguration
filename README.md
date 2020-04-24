@@ -1,0 +1,1 @@
+# Fallout 76 Quick Configuration - INI Editor
