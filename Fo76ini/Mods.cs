@@ -700,9 +700,12 @@ namespace Fo76ini
             foreach (String archiveName in installedMods)
             {
                 String path = Path.Combine(this.gamePath, "Data", archiveName);
-                this.InstallModArchive(path);
-                File.Delete(path);
-                sResourceIndexFileList.Remove(archiveName);
+                if (File.Exists(path))
+                {
+                    this.InstallModArchive(path);
+                    File.Delete(path);
+                    sResourceIndexFileList.Remove(archiveName);
+                }
             }
             IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", String.Join(",", sResourceIndexFileList.Distinct().ToArray()));
             IniFiles.Instance.SaveAll();
