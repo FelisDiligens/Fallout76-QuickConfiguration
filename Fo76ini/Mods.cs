@@ -1207,11 +1207,13 @@ namespace Fo76ini
 
             using (Process proc = new Process())
             {
-                proc.StartInfo.UseShellExecute = false;
-                proc.StartInfo.RedirectStandardOutput = true;
+                // Running it in the background results in indefinite deploying issues.
+                // Better just show the console window, so we don't have to worry about it.
+                proc.StartInfo.UseShellExecute = true;
+                //proc.StartInfo.RedirectStandardOutput = true;
                 proc.StartInfo.FileName = Archive2.archive2Path;
                 proc.StartInfo.Arguments = arguments;
-                proc.StartInfo.CreateNoWindow = true;
+                //proc.StartInfo.CreateNoWindow = true;
                 proc.Start();
 
                 //MessageBox.Show(proc.StandardOutput.ReadToEnd(), $"Archive2.exe {arguments}");
