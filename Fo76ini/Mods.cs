@@ -18,7 +18,9 @@ namespace Fo76ini
         public enum FileType
         {
             Loose,
-            BA2Archive
+            BundledBA2,
+            BundledBA2Textures,
+            SeparateBA2
         }
 
         private String title;
@@ -26,14 +28,22 @@ namespace Fo76ini
         private Mod.FileType type;
         private String root;
         private bool enabled;
+
+        /* Does only apply for FileType.Loose */
         private List<String> looseFiles = new List<String>();
+
+        /* Does only apply for FileType.SeparateBA2 */
+        public Archive2.Compression Compression = Archive2.Compression.Default;
+        public Archive2.Format Format = Archive2.Format.General;
+        private String archiveName = "untitled.ba2";
 
         public Mod()
         {
-            this.title = "Unnamed";
-            this.managedFolderName = "Unnamed";
+            this.title = "Untitled";
+            this.managedFolderName = "Untitled";
             this.enabled = false;
-            this.type = Mod.FileType.BA2Archive;
+            this.type = Mod.FileType.BundledBA2;
+            this.root = "Data";
         }
 
         // Deep copy:
@@ -45,6 +55,9 @@ namespace Fo76ini
             this.type = mod.type;
             this.root = mod.root;
             this.looseFiles = new List<String>(mod.looseFiles);
+            this.Compression = mod.Compression;
+            this.Format = mod.Format;
+            this.archiveName = mod.archiveName;
         }
 
         public Mod CreateCopy()
@@ -63,7 +76,28 @@ namespace Fo76ini
         public String Title
         {
             get { return this.title; }
-            set { this.title = value.Trim().Length > 0 ? value.Trim() : "Unnamed"; }
+            set { this.title = value.Trim().Length > 0 ? value.Trim() : "Untitled"; }
+        }
+
+        public String ArchiveName
+        {
+            get { return this.archiveName; }
+            set
+            {
+                if (value.Trim().Length < 0)
+                    return;
+                String newName = "";
+                char[] invalidChars = Path.GetInvalidPathChars();
+                for (int i = 0; i < value.Length; i++)
+                    if (invalidChars.Contains(value[i]) || value[i] == ' ')
+                        newName += '_';
+                    else
+                        newName += value[i];
+                newName = newName.Trim();
+                if (!newName.EndsWith(".ba2"))
+                    newName += ".ba2";
+                this.archiveName = newName;
+            }
         }
 
         public Mod.FileType Type
@@ -120,7 +154,7 @@ namespace Fo76ini
             }
         }
 
-        public String ToString()
+        override public String ToString()
         {
             return $"Mod \"{Title}\":\n  Enabled: {isEnabled}\n  Installation type: {this.GetTypeName()}\n  Root folder: {RootFolder}\n  File count: {this.looseFiles.Count}";
         }
@@ -138,6 +172,15 @@ namespace Fo76ini
             if (this.type == Mod.FileType.Loose && this.enabled)
                 foreach (String filePath in this.looseFiles)
                     xmlMod.Add(new XElement("File", new XAttribute("path", filePath)));
+
+            if (this.type == Mod.FileType.SeparateBA2)
+            {
+                String compressionStr = Enum.GetName(typeof(Archive2.Compression), (int)Compression);
+                String formatStr = Enum.GetName(typeof(Archive2.Format), (int)Format);
+                xmlMod.Add(new XAttribute("archiveName", archiveName));
+                xmlMod.Add(new XAttribute("compression", compressionStr));
+                xmlMod.Add(new XAttribute("format", formatStr));
+            }
 
             return xmlMod;
         }
@@ -168,10 +211,26 @@ namespace Fo76ini
                     mod.Type = Mod.FileType.Loose;
                     break;
                 case "BA2Archive":
-                    mod.Type = Mod.FileType.BA2Archive;
+                case "BundledBA2":
+                    mod.Type = Mod.FileType.BundledBA2;
+                    break;
+                case "BundledBA2Textures":
+                    mod.Type = Mod.FileType.BundledBA2Textures;
+                    break;
+                case "SeparateBA2":
+                    mod.Type = Mod.FileType.SeparateBA2;
                     break;
                 default:
                     throw new InvalidDataException($"Invalid mod installation type: {xmlMod.Attribute("installType").Value}");
+            }
+            if (mod.Type == Mod.FileType.SeparateBA2 &&
+                xmlMod.Attribute("compression") != null &&
+                xmlMod.Attribute("format") != null &&
+                xmlMod.Attribute("archiveName") != null)
+            {
+                mod.Compression = Archive2.GetCompression(xmlMod.Attribute("compression").Value);
+                mod.Format = Archive2.GetFormat(xmlMod.Attribute("format").Value);
+                mod.ArchiveName = xmlMod.Attribute("archiveName").Value;
             }
             if (mod.Type == Mod.FileType.Loose && mod.isEnabled)
                 foreach (XElement xmlFile in xmlMod.Descendants("File"))
@@ -189,6 +248,8 @@ namespace Fo76ini
         private List<Mod> changedMods = new List<Mod>();
         private String gamePath = null;
         public bool nuclearWinterMode = false;
+        public Archive2.Compression bundledCompression = Archive2.Compression.Default;
+        public Archive2.Compression bundledTexturesCompression = Archive2.Compression.Default;
 
         private List<Mod> CreateDeepCopy(List<Mod> original)
         {
@@ -399,7 +460,8 @@ namespace Fo76ini
             mod.Title = fileName;
             mod.ManagedFolder = managedFolder;
             mod.RootFolder = "Data";
-            mod.Type = Mod.FileType.BA2Archive;
+            mod.ArchiveName = fileName;
+            mod.Type = Mod.FileType.BundledBA2;
             mod.isEnabled = false;
 
             // Extract the archive:
@@ -462,7 +524,8 @@ namespace Fo76ini
             mod.Title = folderName;
             mod.ManagedFolder = managedFolder;
             mod.RootFolder = "Data";
-            mod.Type = Mod.FileType.BA2Archive;
+            mod.ArchiveName = folderName;
+            mod.Type = Mod.FileType.BundledBA2;
             mod.isEnabled = false;
 
             // Copy every file found in the folder:
@@ -570,12 +633,13 @@ namespace Fo76ini
                 return true;
             for (int i = 0; i < this.changedMods.Count(); i++)
             {
-                Console.WriteLine($"{this.changedMods[i].Title}: {this.changedMods[i].isEnabled} != {this.mods[i].isEnabled}");
                 if (this.changedMods[i].isEnabled != this.mods[i].isEnabled ||
                     this.changedMods[i].LooseFiles.Count() != this.mods[i].LooseFiles.Count() ||
                     this.changedMods[i].RootFolder != this.mods[i].RootFolder ||
                     this.changedMods[i].Type != this.mods[i].Type ||
-                    this.changedMods[i].ManagedFolder != this.mods[i].ManagedFolder)
+                    this.changedMods[i].ManagedFolder != this.mods[i].ManagedFolder ||
+                    this.changedMods[i].Compression != this.mods[i].Compression ||
+                    this.changedMods[i].Format != this.mods[i].Format)
                     return true;
             }
             return false;
@@ -624,6 +688,26 @@ namespace Fo76ini
             return conflictingFiles.ToArray();
         }
 
+        public void ImportInstalledMods()
+        {
+            List<String> sResourceIndexFileList = (new List<String>(IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))).Distinct().ToList();
+            List<String> installedMods = (new List<String>(IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))).Distinct().ToList();
+            installedMods.Remove("bundled.ba2");
+            installedMods.Remove("bundled_textures.ba2");
+            foreach (Mod mod in this.mods)
+                if (mod.Type == Mod.FileType.SeparateBA2)
+                    installedMods.Remove(mod.ArchiveName);
+            foreach (String archiveName in installedMods)
+            {
+                String path = Path.Combine(this.gamePath, "Data", archiveName);
+                this.InstallModArchive(path);
+                File.Delete(path);
+                sResourceIndexFileList.Remove(archiveName);
+            }
+            IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", String.Join(",", sResourceIndexFileList.Distinct().ToArray()));
+            IniFiles.Instance.SaveAll();
+        }
+
         public XDocument Serialize()
         {
             /*
@@ -634,8 +718,13 @@ namespace Fo76ini
                 <Mod ... />
              </Mods>
              */
+            String bundledCompressionStr = Enum.GetName(typeof(Archive2.Compression), (int)this.bundledCompression);
+            String bundledTexturesCompressionStr = Enum.GetName(typeof(Archive2.Compression), (int)this.bundledTexturesCompression);
+
             XDocument xmlDoc = new XDocument();
-            XElement xmlRoot = new XElement("Mods");
+            XElement xmlRoot = new XElement("Mods",
+                new XAttribute("bundledCompression", bundledCompressionStr),
+                new XAttribute("bundledTexturesCompression", bundledTexturesCompressionStr));
             xmlDoc.Add(xmlRoot);
             foreach (Mod mod in mods)
             {
@@ -658,6 +747,20 @@ namespace Fo76ini
                 return;
 
             XDocument xmlDoc = XDocument.Load(manifestPath);
+
+            if (xmlDoc.Root.Attribute("bundledCompression") != null && xmlDoc.Root.Attribute("bundledTexturesCompression") != null)
+            {
+                try
+                {
+                    this.bundledCompression = Archive2.GetCompression(xmlDoc.Root.Attribute("bundledCompression").Value);
+                    this.bundledTexturesCompression = Archive2.GetCompression(xmlDoc.Root.Attribute("bundledTexturesCompression").Value);
+                }
+                catch (ArgumentException ex)
+                {
+                    MsgBox.Get("modsInvalidManifestRoot").FormatText(ex.Message).Show(MessageBoxIcon.Warning);
+                }
+            }
+
             foreach (XElement xmlMod in xmlDoc.Descendants("Mod"))
             {
                 try
@@ -667,8 +770,9 @@ namespace Fo76ini
                         continue;
                     this.AddInstalledMod(mod);
                 }
-                catch (InvalidDataException ex)
+                catch (Exception ex)
                 {
+                    /* InvalidDataException, ArgumentException */
                     MsgBox.Get("modsInvalidManifestEntry").FormatText(ex.Message).Show(MessageBoxIcon.Warning);
                 }
             }
@@ -713,10 +817,34 @@ namespace Fo76ini
                 return;
             }
 
-            String modDataPath = Path.Combine(this.gamePath, "ModData");
-            if (Directory.Exists(modDataPath))
-                Directory.Delete(modDataPath, true);
-            Directory.CreateDirectory(modDataPath);
+            // Check if we don't have multiple mods with the same archive name:
+            List<String> customArchiveNames = new List<String>();
+            foreach (Mod mod in this.changedMods)
+            {
+                if (mod.Type == Mod.FileType.SeparateBA2)
+                {
+                    if (customArchiveNames.Contains(mod.ArchiveName.ToLower()))
+                    {
+                        MsgBox.Get("modsSameArchiveName").FormatText(mod.ArchiveName, mod.Title).Show(MessageBoxIcon.Error);
+                        if (done != null)
+                            done();
+                        return;
+                    }
+                    else
+                    {
+                        customArchiveNames.Add(mod.ArchiveName.ToLower());
+                    }
+                }
+            }
+
+            String tempPath = Path.Combine(this.gamePath, "temp");
+            String tempBA2Path = Path.Combine(tempPath, "ba2");
+            String tempBA2TexturesPath = Path.Combine(tempPath, "ba2_tex");
+            if (Directory.Exists(tempPath))
+                Directory.Delete(tempPath, true);
+            Directory.CreateDirectory(tempPath);
+            Directory.CreateDirectory(tempBA2Path);
+            Directory.CreateDirectory(tempBA2TexturesPath);
 
             // sResourceIndexFileList, sResourceArchive2List, sResourceDataDirsFinal
             List<String> sResourceIndexFileList = new List<String>(IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
@@ -726,35 +854,52 @@ namespace Fo76ini
             /*
              * Remove any leftover files from previous installations:
              */
+
+            // Remove all loose files:
             int i = 0;
             foreach (Mod mod in this.mods)
             {
                 if (updateProgress != null)
                     updateProgress($"Removing loose files of mod {mod.Title} ({i} of {this.mods.Count})", Convert.ToInt32((float)i / (float)this.mods.Count * 20));
 
-                if (!mod.isEnabled || mod.Type != Mod.FileType.Loose)
+                if (!mod.isEnabled)
                     continue;
 
-                foreach (String relFilePath in mod.LooseFiles)
+                if (mod.Type == Mod.FileType.Loose)
                 {
-                    String installedFilePath = Path.Combine(this.gamePath, mod.RootFolder, relFilePath);
-
-                    // Delete file, if existing:
-                    if (File.Exists(installedFilePath))
-                        File.Delete(installedFilePath);
-
-                    // Use backups, if there are any:
-                    if (File.Exists(installedFilePath + ".old"))
-                        File.Move(installedFilePath + ".old", installedFilePath);
-                    else
+                    foreach (String relFilePath in mod.LooseFiles)
                     {
-                        // Remove empty folders one by one, if existing:
-                        String parent = Path.GetDirectoryName(installedFilePath);
-                        while (Directory.Exists(parent) && Utils.IsDirectoryEmpty(parent))
+                        String installedFilePath = Path.Combine(this.gamePath, mod.RootFolder, relFilePath);
+
+                        // Delete file, if existing:
+                        if (File.Exists(installedFilePath))
+                            File.Delete(installedFilePath);
+
+                        // Use backups, if there are any:
+                        if (File.Exists(installedFilePath + ".old"))
+                            File.Move(installedFilePath + ".old", installedFilePath);
+                        else
                         {
-                            Directory.Delete(parent);
-                            parent = Path.GetDirectoryName(parent);
+                            // Remove empty folders one by one, if existing:
+                            String parent = Path.GetDirectoryName(installedFilePath);
+                            while (Directory.Exists(parent) && Utils.IsDirectoryEmpty(parent))
+                            {
+                                Directory.Delete(parent);
+                                parent = Path.GetDirectoryName(parent);
+                            }
                         }
+                    }
+                }
+                else if (mod.Type == Mod.FileType.SeparateBA2)
+                {
+                    String path = Path.Combine(this.gamePath, "Data", mod.ArchiveName);
+                    if (File.Exists(path))
+                        File.Delete(path);
+
+                    if (sResourceIndexFileList.Contains(mod.ArchiveName))
+                    {
+                        sResourceIndexFileList = sResourceIndexFileList.Distinct().ToList();
+                        sResourceIndexFileList.Remove(mod.ArchiveName);
                     }
                 }
 
@@ -763,22 +908,28 @@ namespace Fo76ini
 
 
             /*
-             * Copy all mods to ModData
+             * Copy all mods
              */
             i = 0;
-            int enabledBA2Mods = 0;
+            int enabledBA2GeneralMods = 0;
+            int enabledBA2TexturesMods = 0;
             int enabledLooseMods = 0;
             List<String> allModRelPaths = new List<String>();
             foreach (Mod mod in this.changedMods)
             {
+                /*
+                 * Skip if nuclear winter mode is enabled.
+                 * Skip if mod is disabled.
+                 * Show error if mod folder wasn't found
+                 */
                 if (this.nuclearWinterMode)
                     break;
 
-                if (updateProgress != null)
-                    updateProgress($"Copying mod {mod.Title} ({i} of {this.changedMods.Count})", Convert.ToInt32((float)i / (float)this.changedMods.Count * 80 + 20));
-
                 if (!mod.isEnabled)
                     continue;
+
+                if (updateProgress != null)
+                    updateProgress($"Copying mod {mod.Title} ({i} of {this.changedMods.Count})", Convert.ToInt32((float)i / (float)this.changedMods.Count * 80 + 20));
 
                 String managedFolderPath = Path.Combine(this.gamePath, "Mods", mod.ManagedFolder);
                 if (!Directory.Exists(managedFolderPath))
@@ -791,9 +942,12 @@ namespace Fo76ini
                     continue;
                 }
 
-                if (mod.Type == Mod.FileType.BA2Archive)
+                /*
+                 * Copy files into GeneralData/TexturesData
+                 */
+                if (mod.Type == Mod.FileType.BundledBA2 || mod.Type == Mod.FileType.BundledBA2Textures)
                 {
-                    // Bundled *.ba2 archive
+                    // Check if root folder is data:
                     if (!mod.RootFolder.Contains("Data"))
                     {
                         MsgBox.Get("modsDeployErrorBA2RootIsNotData")
@@ -802,16 +956,48 @@ namespace Fo76ini
                         //MessageBox.Show("The root folder has to be set to \".\\Data\" for mods, that are to be installed as a bundled *.ba2 archive.", $"Mod {mod.Title} couldn't be deployed.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         continue;
                     }
+
+                    // Get temp data path:
+                    String tempDataPath = mod.Type == Mod.FileType.BundledBA2 ? tempBA2Path : tempBA2TexturesPath;
+
+                    // Copy all files to temp data path:
                     String[] files = Directory.GetFiles(managedFolderPath, "*.*", SearchOption.AllDirectories);
                     foreach (String filePath in files)
                     {
                         // Make a relative path, create directories and copy file:
-                        String destinationPath = Path.Combine(modDataPath, Utils.MakeRelativePath(managedFolderPath, filePath));
+                        String destinationPath = Path.Combine(tempDataPath, Utils.MakeRelativePath(managedFolderPath, filePath));
                         Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
                         File.Copy(filePath, destinationPath, true);
                     }
-                    enabledBA2Mods++;
+
+                    // Increment counter:
+                    if (mod.Type == Mod.FileType.BundledBA2)
+                        enabledBA2GeneralMods++;
+                    else
+                        enabledBA2TexturesMods++;
                 }
+                /*
+                 * Install separate archive:
+                 */
+                else if (mod.Type == Mod.FileType.SeparateBA2)
+                {
+                    // Check if root folder is data:
+                    if (!mod.RootFolder.Contains("Data"))
+                    {
+                        MsgBox.Get("modsDeployErrorBA2RootIsNotData")
+                            .FormatTitle(mod.Title)
+                            .Show(MessageBoxIcon.Error);
+                        //MessageBox.Show("The root folder has to be set to \".\\Data\" for mods, that are to be installed as a bundled *.ba2 archive.", $"Mod {mod.Title} couldn't be deployed.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        continue;
+                    }
+
+                    // Create archive:
+                    Archive2.Create(Path.Combine(this.gamePath, "Data", mod.ArchiveName), managedFolderPath, mod.Compression, mod.Format);
+                    sResourceIndexFileList.Add(mod.ArchiveName);
+                }
+                /*
+                 * Install loose files:
+                 */
                 else if (mod.Type == Mod.FileType.Loose)
                 {
                     // Loose files
@@ -836,15 +1022,15 @@ namespace Fo76ini
             }
 
             /*
-             * Create bundled *.ba2 archive
+             * Create bundled.ba2 archive
              */
             String bundledArchiveName = "bundled.ba2";
             String bundledArchivePath = Path.Combine(this.gamePath, "Data", bundledArchiveName);
-            if (!this.nuclearWinterMode && enabledBA2Mods > 0)
+            if (!this.nuclearWinterMode && enabledBA2GeneralMods > 0)
             {
                 if (updateProgress != null)
                     updateProgress("Creating bundled *.ba2 archive...", -1);
-                Archive2.Create(bundledArchivePath, modDataPath);
+                Archive2.Create(bundledArchivePath, tempBA2Path, bundledCompression, Archive2.Format.General);
             }
             else
             {
@@ -852,20 +1038,46 @@ namespace Fo76ini
                     File.Delete(bundledArchivePath);
             }
 
-            /*
-             * Finishing up...
-             */
-            if (updateProgress != null)
-                updateProgress("Finishing up...", -1);
-            
-            // sResourceIndexFileList
-            if (!this.nuclearWinterMode && enabledBA2Mods > 0)
-                sResourceIndexFileList.Add(bundledArchiveName);
+            // sResourceIndexFileList=bundled.ba2
+            if (!this.nuclearWinterMode && enabledBA2GeneralMods > 0)
+                sResourceIndexFileList.Insert(0, bundledArchiveName);
             else
             {
                 sResourceIndexFileList = sResourceIndexFileList.Distinct().ToList();
                 sResourceIndexFileList.Remove(bundledArchiveName);
             }
+
+            /*
+             * Create bundled_textures.ba2 archive
+             */
+            bundledArchiveName = "bundled_textures.ba2";
+            bundledArchivePath = Path.Combine(this.gamePath, "Data", bundledArchiveName);
+            if (!this.nuclearWinterMode && enabledBA2TexturesMods > 0)
+            {
+                if (updateProgress != null)
+                    updateProgress("Creating bundled textures *.ba2 archive...", -1);
+                Archive2.Create(bundledArchivePath, tempBA2Path, bundledTexturesCompression, Archive2.Format.DDS);
+            }
+            else
+            {
+                if (File.Exists(bundledArchivePath))
+                    File.Delete(bundledArchivePath);
+            }
+
+            // sResourceIndexFileList=bundled_textures.ba2
+            if (!this.nuclearWinterMode && enabledBA2TexturesMods > 0)
+                sResourceIndexFileList.Insert(0, bundledArchiveName);
+            else
+            {
+                sResourceIndexFileList = sResourceIndexFileList.Distinct().ToList();
+                sResourceIndexFileList.Remove(bundledArchiveName);
+            }
+
+            /*
+             * Finishing up...
+             */
+            if (updateProgress != null)
+                updateProgress("Finishing up...", -1);
 
             if (this.nuclearWinterMode)
             {
@@ -907,7 +1119,7 @@ namespace Fo76ini
             IniFiles.Instance.SaveAll();
             this.mods = CreateDeepCopy(this.changedMods);
             this.Save();
-            Directory.Delete(modDataPath, true);
+            Directory.Delete(tempPath, true);
             if (done != null)
                 done();
         }
@@ -920,6 +1132,46 @@ namespace Fo76ini
             None,
             Default,
             XBox
+        }
+
+        public enum Format
+        {
+            General,
+            DDS,
+            XBoxDDS,
+            GNF
+        }
+
+        public static Archive2.Compression GetCompression(String compressionStr)
+        {
+            switch (compressionStr)
+            {
+                case "None":
+                    return Archive2.Compression.None;
+                case "Default":
+                    return Archive2.Compression.Default;
+                case "XBox":
+                    return Archive2.Compression.XBox;
+                default:
+                    throw new InvalidDataException($"Invalid ba2 compression type: {compressionStr}");
+            }
+        }
+
+        public static Archive2.Format GetFormat(String formatStr)
+        {
+            switch (formatStr)
+            {
+                case "General":
+                    return Archive2.Format.General;
+                case "DDS":
+                    return Archive2.Format.DDS;
+                case "XBoxDDS":
+                    return Archive2.Format.XBoxDDS;
+                case "GNF":
+                    return Archive2.Format.GNF;
+                default:
+                    throw new ArgumentException($"Invalid ba2 format type: {formatStr}");
+            }
         }
 
         private static String archive2Path = null;
@@ -952,14 +1204,13 @@ namespace Fo76ini
 
             using (Process proc = new Process())
             {
-                proc.StartInfo.UseShellExecute = true; // false
-                //proc.StartInfo.RedirectStandardOutput = true;
+                proc.StartInfo.UseShellExecute = false;
+                proc.StartInfo.RedirectStandardOutput = true;
                 proc.StartInfo.FileName = Archive2.archive2Path;
                 proc.StartInfo.Arguments = arguments;
-                //proc.StartInfo.CreateNoWindow = true;
+                proc.StartInfo.CreateNoWindow = true;
                 proc.Start();
 
-                // TODO: Remove this. :P
                 //MessageBox.Show(proc.StandardOutput.ReadToEnd(), $"Archive2.exe {arguments}");
                 proc.WaitForExit();
             }
@@ -972,17 +1223,18 @@ namespace Fo76ini
 
         public static void Create(String ba2Archive, String folder)
         {
-            Archive2.Create(ba2Archive, folder, Archive2.Compression.Default);
+            Archive2.Create(ba2Archive, folder, Archive2.Compression.Default, Archive2.Format.General);
         }
 
-        public static void Create(String ba2Archive, String folder, Archive2.Compression compression)
+        public static void Create(String ba2Archive, String folder, Archive2.Compression compression, Archive2.Format format)
         {
             if (!Directory.Exists(folder))
                 return;
 
             String compressionStr = Enum.GetName(typeof(Archive2.Compression), (int)compression);
+            String formatStr = Enum.GetName(typeof(Archive2.Format), (int)format);
             folder = Path.GetFullPath(folder);
-            Archive2.Call($"\"{folder}\" -create=\"{ba2Archive}\" -compression={compressionStr} -root=\"{folder}\"");
+            Archive2.Call($"\"{folder}\" -create=\"{ba2Archive}\" -compression={compressionStr} -format={formatStr} -root=\"{folder}\"");
         }
 
         public static bool ValidatePath(String path)

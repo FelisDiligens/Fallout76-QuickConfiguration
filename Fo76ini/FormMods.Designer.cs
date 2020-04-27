@@ -33,6 +33,8 @@
             this.labelModName = new System.Windows.Forms.Label();
             this.textBoxModName = new System.Windows.Forms.TextBox();
             this.groupBoxModInstallType = new System.Windows.Forms.GroupBox();
+            this.radioButtonModBA2ArchiveTextures = new System.Windows.Forms.RadioButton();
+            this.radioButtonModSeparateBA2 = new System.Windows.Forms.RadioButton();
             this.radioButtonModBA2Archive = new System.Windows.Forms.RadioButton();
             this.radioButtonModLoose = new System.Windows.Forms.RadioButton();
             this.groupBoxGamePaths = new System.Windows.Forms.GroupBox();
@@ -51,12 +53,15 @@
             this.checkedListBoxMods = new System.Windows.Forms.CheckedListBox();
             this.buttonModMoveDown = new System.Windows.Forms.Button();
             this.groupBoxModEdit = new System.Windows.Forms.GroupBox();
+            this.groupBoxBA2 = new System.Windows.Forms.GroupBox();
+            this.radioButtonModBA2DDSFormat = new System.Windows.Forms.RadioButton();
+            this.checkBoxModBA2Compression = new System.Windows.Forms.CheckBox();
+            this.radioButtonModBA2GeneralFormat = new System.Windows.Forms.RadioButton();
             this.buttonModPickRootDir = new System.Windows.Forms.Button();
             this.textBoxModRootDir = new System.Windows.Forms.TextBox();
             this.labelModInstallInto = new System.Windows.Forms.Label();
             this.buttonModOpenFolder = new System.Windows.Forms.Button();
             this.groupBoxMods = new System.Windows.Forms.GroupBox();
-            this.labelModWarning = new System.Windows.Forms.Label();
             this.openFileDialogArchive2Path = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogMod = new System.Windows.Forms.OpenFileDialog();
@@ -69,17 +74,26 @@
             this.addModarchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fromArchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fromFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemModsImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.deployToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showConflictingFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showREADMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBoxModsBundledBA2 = new System.Windows.Forms.GroupBox();
+            this.checkBoxModsBundledTexturesBA2Compression = new System.Windows.Forms.CheckBox();
+            this.checkBoxModsBundledBA2Compression = new System.Windows.Forms.CheckBox();
+            this.labelModArchiveName = new System.Windows.Forms.Label();
+            this.textBoxModArchiveName = new System.Windows.Forms.TextBox();
+            this.labelModWarning = new System.Windows.Forms.Label();
             this.groupBoxModInstallType.SuspendLayout();
             this.groupBoxGamePaths.SuspendLayout();
             this.groupBoxModEdit.SuspendLayout();
+            this.groupBoxBA2.SuspendLayout();
             this.groupBoxMods.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBoxModsBundledBA2.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelModName
@@ -100,31 +114,57 @@
             // 
             // groupBoxModInstallType
             // 
+            this.groupBoxModInstallType.Controls.Add(this.radioButtonModBA2ArchiveTextures);
+            this.groupBoxModInstallType.Controls.Add(this.radioButtonModSeparateBA2);
             this.groupBoxModInstallType.Controls.Add(this.radioButtonModBA2Archive);
             this.groupBoxModInstallType.Controls.Add(this.radioButtonModLoose);
             this.groupBoxModInstallType.Location = new System.Drawing.Point(9, 76);
             this.groupBoxModInstallType.Name = "groupBoxModInstallType";
-            this.groupBoxModInstallType.Size = new System.Drawing.Size(303, 70);
+            this.groupBoxModInstallType.Size = new System.Drawing.Size(302, 114);
             this.groupBoxModInstallType.TabIndex = 30;
             this.groupBoxModInstallType.TabStop = false;
             this.groupBoxModInstallType.Text = "Install as";
+            // 
+            // radioButtonModBA2ArchiveTextures
+            // 
+            this.radioButtonModBA2ArchiveTextures.AutoSize = true;
+            this.radioButtonModBA2ArchiveTextures.Location = new System.Drawing.Point(6, 42);
+            this.radioButtonModBA2ArchiveTextures.Name = "radioButtonModBA2ArchiveTextures";
+            this.radioButtonModBA2ArchiveTextures.Size = new System.Drawing.Size(231, 17);
+            this.radioButtonModBA2ArchiveTextures.TabIndex = 30;
+            this.radioButtonModBA2ArchiveTextures.TabStop = true;
+            this.radioButtonModBA2ArchiveTextures.Text = "Bundled *.ba2 archive (Textures, *.dds files)";
+            this.radioButtonModBA2ArchiveTextures.UseVisualStyleBackColor = true;
+            this.radioButtonModBA2ArchiveTextures.CheckedChanged += new System.EventHandler(this.radioButtonModBA2ArchiveTextures_CheckedChanged);
+            // 
+            // radioButtonModSeparateBA2
+            // 
+            this.radioButtonModSeparateBA2.AutoSize = true;
+            this.radioButtonModSeparateBA2.Location = new System.Drawing.Point(6, 65);
+            this.radioButtonModSeparateBA2.Name = "radioButtonModSeparateBA2";
+            this.radioButtonModSeparateBA2.Size = new System.Drawing.Size(134, 17);
+            this.radioButtonModSeparateBA2.TabIndex = 29;
+            this.radioButtonModSeparateBA2.TabStop = true;
+            this.radioButtonModSeparateBA2.Text = "Separate *.ba2 archive";
+            this.radioButtonModSeparateBA2.UseVisualStyleBackColor = true;
+            this.radioButtonModSeparateBA2.CheckedChanged += new System.EventHandler(this.radioButtonModSeparateBA2_CheckedChanged);
             // 
             // radioButtonModBA2Archive
             // 
             this.radioButtonModBA2Archive.AutoSize = true;
             this.radioButtonModBA2Archive.Location = new System.Drawing.Point(6, 19);
             this.radioButtonModBA2Archive.Name = "radioButtonModBA2Archive";
-            this.radioButtonModBA2Archive.Size = new System.Drawing.Size(130, 17);
+            this.radioButtonModBA2Archive.Size = new System.Drawing.Size(176, 17);
             this.radioButtonModBA2Archive.TabIndex = 27;
             this.radioButtonModBA2Archive.TabStop = true;
-            this.radioButtonModBA2Archive.Text = "Bundled *.ba2 archive";
+            this.radioButtonModBA2Archive.Text = "Bundled *.ba2 archive (General)";
             this.radioButtonModBA2Archive.UseVisualStyleBackColor = true;
             this.radioButtonModBA2Archive.CheckedChanged += new System.EventHandler(this.radioButtonModBA2Archive_CheckedChanged);
             // 
             // radioButtonModLoose
             // 
             this.radioButtonModLoose.AutoSize = true;
-            this.radioButtonModLoose.Location = new System.Drawing.Point(6, 42);
+            this.radioButtonModLoose.Location = new System.Drawing.Point(6, 88);
             this.radioButtonModLoose.Name = "radioButtonModLoose";
             this.radioButtonModLoose.Size = new System.Drawing.Size(75, 17);
             this.radioButtonModLoose.TabIndex = 28;
@@ -141,9 +181,9 @@
             this.groupBoxGamePaths.Controls.Add(this.labelArchive2Path);
             this.groupBoxGamePaths.Controls.Add(this.textBoxGamePath);
             this.groupBoxGamePaths.Controls.Add(this.buttonPickGamePath);
-            this.groupBoxGamePaths.Location = new System.Drawing.Point(358, 217);
+            this.groupBoxGamePaths.Location = new System.Drawing.Point(12, 360);
             this.groupBoxGamePaths.Name = "groupBoxGamePaths";
-            this.groupBoxGamePaths.Size = new System.Drawing.Size(317, 77);
+            this.groupBoxGamePaths.Size = new System.Drawing.Size(337, 77);
             this.groupBoxGamePaths.TabIndex = 38;
             this.groupBoxGamePaths.TabStop = false;
             this.groupBoxGamePaths.Text = "Paths";
@@ -159,15 +199,15 @@
             // 
             // textBoxArchive2Path
             // 
-            this.textBoxArchive2Path.Location = new System.Drawing.Point(116, 47);
+            this.textBoxArchive2Path.Location = new System.Drawing.Point(115, 46);
             this.textBoxArchive2Path.Name = "textBoxArchive2Path";
-            this.textBoxArchive2Path.Size = new System.Drawing.Size(163, 20);
+            this.textBoxArchive2Path.Size = new System.Drawing.Size(184, 20);
             this.textBoxArchive2Path.TabIndex = 17;
             this.textBoxArchive2Path.TextChanged += new System.EventHandler(this.textBoxArchive2Path_TextChanged);
             // 
             // buttonPickArchive2Path
             // 
-            this.buttonPickArchive2Path.Location = new System.Drawing.Point(285, 44);
+            this.buttonPickArchive2Path.Location = new System.Drawing.Point(305, 44);
             this.buttonPickArchive2Path.Name = "buttonPickArchive2Path";
             this.buttonPickArchive2Path.Size = new System.Drawing.Size(26, 23);
             this.buttonPickArchive2Path.TabIndex = 18;
@@ -185,15 +225,15 @@
             // 
             // textBoxGamePath
             // 
-            this.textBoxGamePath.Location = new System.Drawing.Point(116, 17);
+            this.textBoxGamePath.Location = new System.Drawing.Point(115, 17);
             this.textBoxGamePath.Name = "textBoxGamePath";
-            this.textBoxGamePath.Size = new System.Drawing.Size(163, 20);
+            this.textBoxGamePath.Size = new System.Drawing.Size(184, 20);
             this.textBoxGamePath.TabIndex = 15;
             this.textBoxGamePath.TextChanged += new System.EventHandler(this.textBoxGamePath_TextChanged);
             // 
             // buttonPickGamePath
             // 
-            this.buttonPickGamePath.Location = new System.Drawing.Point(285, 15);
+            this.buttonPickGamePath.Location = new System.Drawing.Point(305, 15);
             this.buttonPickGamePath.Name = "buttonPickGamePath";
             this.buttonPickGamePath.Size = new System.Drawing.Size(26, 23);
             this.buttonPickGamePath.TabIndex = 16;
@@ -202,14 +242,14 @@
             // 
             // progressBarMods
             // 
-            this.progressBarMods.Location = new System.Drawing.Point(12, 371);
+            this.progressBarMods.Location = new System.Drawing.Point(12, 506);
             this.progressBarMods.Name = "progressBarMods";
             this.progressBarMods.Size = new System.Drawing.Size(500, 23);
             this.progressBarMods.TabIndex = 39;
             // 
             // buttonModsDeploy
             // 
-            this.buttonModsDeploy.Location = new System.Drawing.Point(518, 371);
+            this.buttonModsDeploy.Location = new System.Drawing.Point(521, 506);
             this.buttonModsDeploy.Name = "buttonModsDeploy";
             this.buttonModsDeploy.Size = new System.Drawing.Size(154, 23);
             this.buttonModsDeploy.TabIndex = 31;
@@ -221,7 +261,7 @@
             // 
             this.labelModsDeploy.AutoSize = true;
             this.labelModsDeploy.ForeColor = System.Drawing.Color.Crimson;
-            this.labelModsDeploy.Location = new System.Drawing.Point(9, 355);
+            this.labelModsDeploy.Location = new System.Drawing.Point(12, 490);
             this.labelModsDeploy.Name = "labelModsDeploy";
             this.labelModsDeploy.Size = new System.Drawing.Size(114, 13);
             this.labelModsDeploy.TabIndex = 40;
@@ -230,7 +270,7 @@
             // buttonModRemove
             // 
             this.buttonModRemove.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonModRemove.Location = new System.Drawing.Point(188, 152);
+            this.buttonModRemove.Location = new System.Drawing.Point(187, 318);
             this.buttonModRemove.Name = "buttonModRemove";
             this.buttonModRemove.Size = new System.Drawing.Size(124, 23);
             this.buttonModRemove.TabIndex = 35;
@@ -241,7 +281,7 @@
             // checkBoxModsCheckAll
             // 
             this.checkBoxModsCheckAll.AutoSize = true;
-            this.checkBoxModsCheckAll.Location = new System.Drawing.Point(6, 288);
+            this.checkBoxModsCheckAll.Location = new System.Drawing.Point(6, 303);
             this.checkBoxModsCheckAll.Name = "checkBoxModsCheckAll";
             this.checkBoxModsCheckAll.Size = new System.Drawing.Size(117, 17);
             this.checkBoxModsCheckAll.TabIndex = 34;
@@ -250,7 +290,7 @@
             // 
             // buttonModMoveUp
             // 
-            this.buttonModMoveUp.Location = new System.Drawing.Point(149, 284);
+            this.buttonModMoveUp.Location = new System.Drawing.Point(149, 299);
             this.buttonModMoveUp.Name = "buttonModMoveUp";
             this.buttonModMoveUp.Size = new System.Drawing.Size(88, 23);
             this.buttonModMoveUp.TabIndex = 36;
@@ -263,12 +303,12 @@
             this.checkedListBoxMods.Location = new System.Drawing.Point(6, 19);
             this.checkedListBoxMods.Name = "checkedListBoxMods";
             this.checkedListBoxMods.ScrollAlwaysVisible = true;
-            this.checkedListBoxMods.Size = new System.Drawing.Size(325, 259);
+            this.checkedListBoxMods.Size = new System.Drawing.Size(325, 274);
             this.checkedListBoxMods.TabIndex = 32;
             // 
             // buttonModMoveDown
             // 
-            this.buttonModMoveDown.Location = new System.Drawing.Point(243, 284);
+            this.buttonModMoveDown.Location = new System.Drawing.Point(243, 299);
             this.buttonModMoveDown.Name = "buttonModMoveDown";
             this.buttonModMoveDown.Size = new System.Drawing.Size(88, 23);
             this.buttonModMoveDown.TabIndex = 37;
@@ -277,6 +317,7 @@
             // 
             // groupBoxModEdit
             // 
+            this.groupBoxModEdit.Controls.Add(this.groupBoxBA2);
             this.groupBoxModEdit.Controls.Add(this.buttonModPickRootDir);
             this.groupBoxModEdit.Controls.Add(this.textBoxModRootDir);
             this.groupBoxModEdit.Controls.Add(this.labelModInstallInto);
@@ -287,10 +328,59 @@
             this.groupBoxModEdit.Controls.Add(this.buttonModRemove);
             this.groupBoxModEdit.Location = new System.Drawing.Point(358, 27);
             this.groupBoxModEdit.Name = "groupBoxModEdit";
-            this.groupBoxModEdit.Size = new System.Drawing.Size(317, 184);
+            this.groupBoxModEdit.Size = new System.Drawing.Size(317, 347);
             this.groupBoxModEdit.TabIndex = 42;
             this.groupBoxModEdit.TabStop = false;
             this.groupBoxModEdit.Text = "Edit mod details";
+            // 
+            // groupBoxBA2
+            // 
+            this.groupBoxBA2.Controls.Add(this.textBoxModArchiveName);
+            this.groupBoxBA2.Controls.Add(this.labelModArchiveName);
+            this.groupBoxBA2.Controls.Add(this.radioButtonModBA2DDSFormat);
+            this.groupBoxBA2.Controls.Add(this.checkBoxModBA2Compression);
+            this.groupBoxBA2.Controls.Add(this.radioButtonModBA2GeneralFormat);
+            this.groupBoxBA2.Location = new System.Drawing.Point(9, 196);
+            this.groupBoxBA2.Name = "groupBoxBA2";
+            this.groupBoxBA2.Size = new System.Drawing.Size(302, 116);
+            this.groupBoxBA2.TabIndex = 40;
+            this.groupBoxBA2.TabStop = false;
+            this.groupBoxBA2.Text = "BA2 settings";
+            // 
+            // radioButtonModBA2DDSFormat
+            // 
+            this.radioButtonModBA2DDSFormat.AutoSize = true;
+            this.radioButtonModBA2DDSFormat.Location = new System.Drawing.Point(6, 91);
+            this.radioButtonModBA2DDSFormat.Name = "radioButtonModBA2DDSFormat";
+            this.radioButtonModBA2DDSFormat.Size = new System.Drawing.Size(163, 17);
+            this.radioButtonModBA2DDSFormat.TabIndex = 2;
+            this.radioButtonModBA2DDSFormat.TabStop = true;
+            this.radioButtonModBA2DDSFormat.Text = "Use DDS format (for textures)";
+            this.radioButtonModBA2DDSFormat.UseVisualStyleBackColor = true;
+            this.radioButtonModBA2DDSFormat.CheckedChanged += new System.EventHandler(this.radioButtonModBA2DDSFormat_CheckedChanged);
+            // 
+            // checkBoxModBA2Compression
+            // 
+            this.checkBoxModBA2Compression.AutoSize = true;
+            this.checkBoxModBA2Compression.Location = new System.Drawing.Point(6, 45);
+            this.checkBoxModBA2Compression.Name = "checkBoxModBA2Compression";
+            this.checkBoxModBA2Compression.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxModBA2Compression.TabIndex = 0;
+            this.checkBoxModBA2Compression.Text = "Compress archive";
+            this.checkBoxModBA2Compression.UseVisualStyleBackColor = true;
+            this.checkBoxModBA2Compression.CheckedChanged += new System.EventHandler(this.checkBoxModBA2Compression_CheckedChanged);
+            // 
+            // radioButtonModBA2GeneralFormat
+            // 
+            this.radioButtonModBA2GeneralFormat.AutoSize = true;
+            this.radioButtonModBA2GeneralFormat.Location = new System.Drawing.Point(6, 68);
+            this.radioButtonModBA2GeneralFormat.Name = "radioButtonModBA2GeneralFormat";
+            this.radioButtonModBA2GeneralFormat.Size = new System.Drawing.Size(114, 17);
+            this.radioButtonModBA2GeneralFormat.TabIndex = 1;
+            this.radioButtonModBA2GeneralFormat.TabStop = true;
+            this.radioButtonModBA2GeneralFormat.Text = "Use general format";
+            this.radioButtonModBA2GeneralFormat.UseVisualStyleBackColor = true;
+            this.radioButtonModBA2GeneralFormat.CheckedChanged += new System.EventHandler(this.radioButtonModBA2GeneralFormat_CheckedChanged);
             // 
             // buttonModPickRootDir
             // 
@@ -321,7 +411,7 @@
             // 
             // buttonModOpenFolder
             // 
-            this.buttonModOpenFolder.Location = new System.Drawing.Point(6, 152);
+            this.buttonModOpenFolder.Location = new System.Drawing.Point(9, 318);
             this.buttonModOpenFolder.Name = "buttonModOpenFolder";
             this.buttonModOpenFolder.Size = new System.Drawing.Size(173, 23);
             this.buttonModOpenFolder.TabIndex = 36;
@@ -337,21 +427,10 @@
             this.groupBoxMods.Controls.Add(this.checkBoxModsCheckAll);
             this.groupBoxMods.Location = new System.Drawing.Point(12, 27);
             this.groupBoxMods.Name = "groupBoxMods";
-            this.groupBoxMods.Size = new System.Drawing.Size(337, 317);
+            this.groupBoxMods.Size = new System.Drawing.Size(337, 327);
             this.groupBoxMods.TabIndex = 43;
             this.groupBoxMods.TabStop = false;
             this.groupBoxMods.Text = "Mod order";
-            // 
-            // labelModWarning
-            // 
-            this.labelModWarning.AutoSize = true;
-            this.labelModWarning.ForeColor = System.Drawing.Color.Red;
-            this.labelModWarning.Location = new System.Drawing.Point(355, 297);
-            this.labelModWarning.Name = "labelModWarning";
-            this.labelModWarning.Size = new System.Drawing.Size(281, 26);
-            this.labelModWarning.TabIndex = 44;
-            this.labelModWarning.Text = "The use of mods can break your game or get you banned!\r\nWhen you install mods, yo" +
-    "u accept full responsibility!";
             // 
             // openFileDialogArchive2Path
             // 
@@ -372,7 +451,7 @@
             // checkBoxModsNWMode
             // 
             this.checkBoxModsNWMode.AutoSize = true;
-            this.checkBoxModsNWMode.Location = new System.Drawing.Point(518, 348);
+            this.checkBoxModsNWMode.Location = new System.Drawing.Point(521, 486);
             this.checkBoxModsNWMode.Name = "checkBoxModsNWMode";
             this.checkBoxModsNWMode.Size = new System.Drawing.Size(126, 17);
             this.checkBoxModsNWMode.TabIndex = 45;
@@ -398,6 +477,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addModarchiveToolStripMenuItem,
+            this.toolStripMenuItemModsImport,
             this.toolStripSeparator1,
             this.deployToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -410,7 +490,7 @@
             this.fromArchiveToolStripMenuItem,
             this.fromFolderToolStripMenuItem});
             this.addModarchiveToolStripMenuItem.Name = "addModarchiveToolStripMenuItem";
-            this.addModarchiveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addModarchiveToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.addModarchiveToolStripMenuItem.Text = "Add mod";
             // 
             // fromArchiveToolStripMenuItem
@@ -427,15 +507,22 @@
             this.fromFolderToolStripMenuItem.Text = "From folder";
             this.fromFolderToolStripMenuItem.Click += new System.EventHandler(this.fromFolderToolStripMenuItem_Click);
             // 
+            // toolStripMenuItemModsImport
+            // 
+            this.toolStripMenuItemModsImport.Name = "toolStripMenuItemModsImport";
+            this.toolStripMenuItemModsImport.Size = new System.Drawing.Size(190, 22);
+            this.toolStripMenuItemModsImport.Text = "Import installed mods";
+            this.toolStripMenuItemModsImport.Click += new System.EventHandler(this.toolStripMenuItemModsImport_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
             // 
             // deployToolStripMenuItem
             // 
             this.deployToolStripMenuItem.Name = "deployToolStripMenuItem";
-            this.deployToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deployToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.deployToolStripMenuItem.Text = "Deploy";
             this.deployToolStripMenuItem.Click += new System.EventHandler(this.deployToolStripMenuItem_Click);
             // 
@@ -469,11 +556,73 @@
             this.showREADMEToolStripMenuItem.Text = "Show README";
             this.showREADMEToolStripMenuItem.Click += new System.EventHandler(this.showREADMEToolStripMenuItem_Click);
             // 
+            // groupBoxModsBundledBA2
+            // 
+            this.groupBoxModsBundledBA2.Controls.Add(this.checkBoxModsBundledBA2Compression);
+            this.groupBoxModsBundledBA2.Controls.Add(this.checkBoxModsBundledTexturesBA2Compression);
+            this.groupBoxModsBundledBA2.Location = new System.Drawing.Point(358, 380);
+            this.groupBoxModsBundledBA2.Name = "groupBoxModsBundledBA2";
+            this.groupBoxModsBundledBA2.Size = new System.Drawing.Size(317, 77);
+            this.groupBoxModsBundledBA2.TabIndex = 49;
+            this.groupBoxModsBundledBA2.TabStop = false;
+            this.groupBoxModsBundledBA2.Text = "Bundled *.ba2 settings";
+            // 
+            // checkBoxModsBundledTexturesBA2Compression
+            // 
+            this.checkBoxModsBundledTexturesBA2Compression.AutoSize = true;
+            this.checkBoxModsBundledTexturesBA2Compression.Location = new System.Drawing.Point(5, 42);
+            this.checkBoxModsBundledTexturesBA2Compression.Name = "checkBoxModsBundledTexturesBA2Compression";
+            this.checkBoxModsBundledTexturesBA2Compression.Size = new System.Drawing.Size(177, 17);
+            this.checkBoxModsBundledTexturesBA2Compression.TabIndex = 0;
+            this.checkBoxModsBundledTexturesBA2Compression.Text = "Compress bundled_textures.ba2";
+            this.checkBoxModsBundledTexturesBA2Compression.UseVisualStyleBackColor = true;
+            this.checkBoxModsBundledTexturesBA2Compression.CheckedChanged += new System.EventHandler(this.checkBoxModsBundledTexturesBA2Compression_CheckedChanged);
+            // 
+            // checkBoxModsBundledBA2Compression
+            // 
+            this.checkBoxModsBundledBA2Compression.AutoSize = true;
+            this.checkBoxModsBundledBA2Compression.Location = new System.Drawing.Point(5, 19);
+            this.checkBoxModsBundledBA2Compression.Name = "checkBoxModsBundledBA2Compression";
+            this.checkBoxModsBundledBA2Compression.Size = new System.Drawing.Size(134, 17);
+            this.checkBoxModsBundledBA2Compression.TabIndex = 1;
+            this.checkBoxModsBundledBA2Compression.Text = "Compress bundled.ba2";
+            this.checkBoxModsBundledBA2Compression.UseVisualStyleBackColor = true;
+            this.checkBoxModsBundledBA2Compression.CheckedChanged += new System.EventHandler(this.checkBoxModsBundledBA2Compression_CheckedChanged);
+            // 
+            // labelModArchiveName
+            // 
+            this.labelModArchiveName.AutoSize = true;
+            this.labelModArchiveName.Location = new System.Drawing.Point(6, 22);
+            this.labelModArchiveName.Name = "labelModArchiveName";
+            this.labelModArchiveName.Size = new System.Drawing.Size(75, 13);
+            this.labelModArchiveName.TabIndex = 41;
+            this.labelModArchiveName.Text = "Archive name:";
+            // 
+            // textBoxModArchiveName
+            // 
+            this.textBoxModArchiveName.Location = new System.Drawing.Point(87, 19);
+            this.textBoxModArchiveName.Name = "textBoxModArchiveName";
+            this.textBoxModArchiveName.Size = new System.Drawing.Size(209, 20);
+            this.textBoxModArchiveName.TabIndex = 41;
+            this.textBoxModArchiveName.TextChanged += new System.EventHandler(this.textBoxModArchiveName_TextChanged);
+            // 
+            // labelModWarning
+            // 
+            this.labelModWarning.AutoSize = true;
+            this.labelModWarning.ForeColor = System.Drawing.Color.Red;
+            this.labelModWarning.Location = new System.Drawing.Point(12, 440);
+            this.labelModWarning.Name = "labelModWarning";
+            this.labelModWarning.Size = new System.Drawing.Size(281, 26);
+            this.labelModWarning.TabIndex = 44;
+            this.labelModWarning.Text = "The use of mods can break your game or get you banned!\r\nWhen you install mods, yo" +
+    "u accept full responsibility!";
+            // 
             // FormMods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 406);
+            this.ClientSize = new System.Drawing.Size(684, 541);
+            this.Controls.Add(this.groupBoxModsBundledBA2);
             this.Controls.Add(this.checkBoxModsNWMode);
             this.Controls.Add(this.labelModWarning);
             this.Controls.Add(this.groupBoxMods);
@@ -486,7 +635,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(700, 445);
+            this.MaximumSize = new System.Drawing.Size(700, 580);
             this.MinimumSize = new System.Drawing.Size(700, 445);
             this.Name = "FormMods";
             this.Text = "Manage mods";
@@ -496,10 +645,14 @@
             this.groupBoxGamePaths.PerformLayout();
             this.groupBoxModEdit.ResumeLayout(false);
             this.groupBoxModEdit.PerformLayout();
+            this.groupBoxBA2.ResumeLayout(false);
+            this.groupBoxBA2.PerformLayout();
             this.groupBoxMods.ResumeLayout(false);
             this.groupBoxMods.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBoxModsBundledBA2.ResumeLayout(false);
+            this.groupBoxModsBundledBA2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -529,7 +682,6 @@
         private System.Windows.Forms.Button buttonModMoveDown;
         private System.Windows.Forms.GroupBox groupBoxModEdit;
         private System.Windows.Forms.GroupBox groupBoxMods;
-        private System.Windows.Forms.Label labelModWarning;
         private System.Windows.Forms.OpenFileDialog openFileDialogArchive2Path;
         private System.Windows.Forms.OpenFileDialog openFileDialogGamePath;
         private System.Windows.Forms.OpenFileDialog openFileDialogMod;
@@ -552,5 +704,18 @@
         private System.Windows.Forms.ToolStripMenuItem deployToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showConflictingFilesToolStripMenuItem;
+        private System.Windows.Forms.RadioButton radioButtonModBA2ArchiveTextures;
+        private System.Windows.Forms.RadioButton radioButtonModSeparateBA2;
+        private System.Windows.Forms.GroupBox groupBoxBA2;
+        private System.Windows.Forms.RadioButton radioButtonModBA2DDSFormat;
+        private System.Windows.Forms.CheckBox checkBoxModBA2Compression;
+        private System.Windows.Forms.RadioButton radioButtonModBA2GeneralFormat;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemModsImport;
+        private System.Windows.Forms.GroupBox groupBoxModsBundledBA2;
+        private System.Windows.Forms.CheckBox checkBoxModsBundledBA2Compression;
+        private System.Windows.Forms.CheckBox checkBoxModsBundledTexturesBA2Compression;
+        private System.Windows.Forms.TextBox textBoxModArchiveName;
+        private System.Windows.Forms.Label labelModArchiveName;
+        private System.Windows.Forms.Label labelModWarning;
     }
 }

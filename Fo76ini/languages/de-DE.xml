@@ -86,6 +86,11 @@ Bitte extrahiere das Archiv manuell und füge es als Ordner hinzu.</Messagebox>
 Möchtest du wirklich den Mod-Manager schließen?</Messagebox>
     <Messagebox title="Ungültiger Eintrag in manifest.xml" id="modsInvalidManifestEntry">Ein Mod-Eintrag ist ungültig und wurde ignoriert.
 Fehler: {0}</Messagebox>
+    <Messagebox title="Invalid manifest.xml entry" id="modsInvalidManifestRoot">Das &lt;Mods&gt;-Tag hat ungültige Attribute.
+Fehler: {0}</Messagebox>
+    <Messagebox title="Manuell installiere Mods importieren?" id="modsImportQuestion">Bist du sicher, dass du Mods importieren möchtest, die außerhalb des Mod-Managers installiert wurden?</Messagebox>
+    <Messagebox title="Gleiche Archivnamen" id="modsSameArchiveName">Einige Mods haben den selben Archivnamen: "{0}".
+Modname mit gleichem Archivnamen: {1}</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Schnellkonfiguration">
     <Button text="Spiel starten" id="buttonLaunchGame" />
@@ -560,6 +565,10 @@ Fehler: {0}</Messagebox>
     <Button text="Anwenden" id="buttonApply" />
   </Form1>
   <FormMods title="Mods verwalten">
+    <Group text="Gebündlete *.ba2 Optionen" id="groupBoxModsBundledBA2">
+      <Checkbox text="Komprimiere bundled.ba2" id="checkBoxModsBundledBA2Compression" />
+      <Checkbox text="Komprimiere bundled_textures.ba2" id="checkBoxModsBundledTexturesBA2Compression" />
+    </Group>
     <Checkbox text="Nuclear Winter Modus" id="checkBoxModsNWMode">
       <Tooltip>Wenn aktiv, dann werden alle Mods vom Spiel entfernt.
 Nützlich, wenn man eine Runde Nuclear Winter spielen möchte, daher der Name.</Tooltip>
@@ -571,12 +580,20 @@ Nützlich, wenn man eine Runde Nuclear Winter spielen möchte, daher der Name.</
       <Checkbox text="Markiere alles" id="checkBoxModsCheckAll" />
     </Group>
     <Group text="Moddetails bearbeiten" id="groupBoxModEdit">
+      <Group text="BA2-Optionen" id="groupBoxBA2">
+        <Label text="Archivname:" id="labelModArchiveName" />
+        <Radiobutton text="DDS-Format benutzen (für Texturen)" id="radioButtonModBA2DDSFormat" />
+        <Checkbox text="Archiv komprimieren" id="checkBoxModBA2Compression" />
+        <Radiobutton text="Allgemeines Format benutzen" id="radioButtonModBA2GeneralFormat" />
+      </Group>
       <Button text="..." id="buttonModPickRootDir" />
       <Label text="Installiere in:" id="labelModInstallInto" />
       <Button text="Ordner öffnen" id="buttonModOpenFolder" />
       <Label text="Modname:" id="labelModName" />
       <Group text="Installiere als" id="groupBoxModInstallType">
-        <Radiobutton text="Gebündletes *.ba2 Archiv" id="radioButtonModBA2Archive" />
+        <Radiobutton text="Gebündletes *.ba2 Archiv (Texturen, *.dds Dateien)" id="radioButtonModBA2ArchiveTextures" />
+        <Radiobutton text="Separates *.ba2 Archiv" id="radioButtonModSeparateBA2" />
+        <Radiobutton text="Gebündletes *.ba2 Archiv (Allgemein)" id="radioButtonModBA2Archive" />
         <Radiobutton text="Lose Dateien" id="radioButtonModLoose" />
       </Group>
       <Button text="Mod löschen" id="buttonModRemove" />
@@ -595,7 +612,7 @@ Nützlich, wenn man eine Runde Nuclear Winter spielen möchte, daher der Name.</
           <Item text="Archiv" id="fromArchiveToolStripMenuItem" />
           <Item text="Ordner" id="fromFolderToolStripMenuItem" />
         </Item>
-        <Item text="Manuell installierte Mods importieren" id="importExistingModsToolStripMenuItem" />
+        <Item text="Manuell installierte Mods importieren" id="toolStripMenuItemModsImport" />
         <Item text="" id="toolStripSeparator1" />
         <Item text="Änderungen anwenden" id="deployToolStripMenuItem" />
       </Item>

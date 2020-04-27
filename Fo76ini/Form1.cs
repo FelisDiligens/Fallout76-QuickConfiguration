@@ -1013,5 +1013,21 @@ namespace Fo76ini
 
             MsgBox.ShowID("oldValuesResetToDefault", MessageBoxIcon.Information);
         }
+
+        /*
+         * Game edition
+         */
+
+        private void radioButtonEditionSteam_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonEditionSteam.Checked)
+                this.formMods.ChangeGameEdition(GameEdition.Steam);
+        }
+
+        private void radioButtonEditionBethesdaNet_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonEditionBethesdaNet.Checked)
+                this.formMods.ChangeGameEdition(GameEdition.BethesdaNet);
+        }
     }
 }

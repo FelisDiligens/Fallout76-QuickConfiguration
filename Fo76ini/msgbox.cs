@@ -155,6 +155,21 @@ namespace Fo76ini
                 "Invalid manifest.xml entry",
                 "A mod entry is invalid and was ignored.\nError: {0}"
             );
+
+            MsgBox.Add("modsInvalidManifestRoot",
+                "Invalid manifest.xml entry",
+                "The <Mods> tag has invalid attributes.\nError: {0}"
+            );
+
+            MsgBox.Add("modsImportQuestion",
+                "Import manually installed mods?",
+                "Are you sure you want to add mods installed outside of the mod manager?"
+            );
+
+            MsgBox.Add("modsSameArchiveName",
+                "Conflicting mods",
+                "Some mods have the same archive name: \"{0}\".\nConflicting mod name: {1}"
+            );
         }
 
         private static Dictionary<String, MsgBox> msgBoxes = new Dictionary<String, MsgBox>();

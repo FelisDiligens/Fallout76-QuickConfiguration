@@ -16,13 +16,16 @@ namespace Fo76ini
     public partial class FormMods : Form
     {
         private ManagedMods mods = new ManagedMods();
+        public String gamePathKey;
 
         public FormMods()
         {
             InitializeComponent();
 
+            this.gamePathKey = "sGamePath" + (( new string[] { "", "BethesdaNet", "Steam" } )[IniFiles.Instance.GetInt(IniFile.Config, "Preferences", "uGameEdition", 0)]);
+
             String archive2Path = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sArchive2Path", "");
-            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePath", "");
+            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", this.gamePathKey, "");
             bool nwMode = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bDisableMods", false);
             if (archive2Path.Length > 0)
             {
@@ -49,6 +52,26 @@ namespace Fo76ini
             this.buttonPickArchive2Path.Click += buttonPickArchive2Path_Click;
             this.buttonPickGamePath.Click += buttonPickGamePath_Click;
 
+            /*
+             * Drag&Drop
+             */
+            this.checkedListBoxMods.AllowDrop = true;
+            this.checkedListBoxMods.DragEnter += new DragEventHandler(checkedListBoxMods_DragEnter);
+            this.checkedListBoxMods.DragDrop += new DragEventHandler(checkedListBoxMods_DragDrop);
+
+            mods.Load();
+            UpdateModsUI();
+        }
+
+        public void ChangeGameEdition(GameEdition gameEdition)
+        {
+            this.gamePathKey = "sGamePath" + ((new string[] { "", "BethesdaNet", "Steam" })[(int)gameEdition]);
+            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", this.gamePathKey, "");
+            if (Directory.Exists(gamePath))
+                this.mods.GamePath = gamePath;
+            else
+                this.mods = new ManagedMods();
+            textBoxGamePath.Text = gamePath;
             mods.Load();
             UpdateModsUI();
         }
@@ -70,6 +93,9 @@ namespace Fo76ini
                 HideModDetails();
 
             this.checkBoxModsNWMode.Checked = this.mods.nuclearWinterMode;
+
+            this.checkBoxModsBundledBA2Compression.Checked = this.mods.bundledCompression != Archive2.Compression.None;
+            this.checkBoxModsBundledTexturesBA2Compression.Checked = this.mods.bundledTexturesCompression != Archive2.Compression.None;
         }
 
         private void ShowModDetails(Mod mod)
@@ -80,15 +106,46 @@ namespace Fo76ini
 
             this.textBoxModName.Text = mod.Title;
             this.textBoxModRootDir.Text = mod.RootFolder;
+
             switch (mod.Type)
             {
-                case Mod.FileType.BA2Archive:
+                case Mod.FileType.BundledBA2:
                     this.radioButtonModBA2Archive.Checked = true;
+
+                    this.groupBoxBA2.Enabled = false;
+                    this.checkBoxModBA2Compression.Checked = mods.bundledCompression != Archive2.Compression.None;
+                    this.radioButtonModBA2GeneralFormat.Checked = true;
+                    this.textBoxModArchiveName.Text = "bundled.ba2";
+                    break;
+                case Mod.FileType.BundledBA2Textures:
+                    this.radioButtonModBA2ArchiveTextures.Checked = true;
+
+                    this.groupBoxBA2.Enabled = false;
+                    this.checkBoxModBA2Compression.Checked = mods.bundledTexturesCompression != Archive2.Compression.None;
+                    this.radioButtonModBA2DDSFormat.Checked = true;
+                    this.textBoxModArchiveName.Text = "bundled_textures.ba2";
+                    break;
+                case Mod.FileType.SeparateBA2:
+                    this.radioButtonModSeparateBA2.Checked = true;
+
+                    this.groupBoxBA2.Enabled = true;
+                    this.checkBoxModBA2Compression.Checked = mod.Compression != Archive2.Compression.None;
+                    if (mod.Format == Archive2.Format.DDS)
+                        this.radioButtonModBA2DDSFormat.Checked = true;
+                    else
+                        this.radioButtonModBA2GeneralFormat.Checked = true;
+                    this.textBoxModArchiveName.Text = mod.ArchiveName;
                     break;
                 case Mod.FileType.Loose:
                     this.radioButtonModLoose.Checked = true;
+
+                    this.groupBoxBA2.Enabled = false;
+                    this.checkBoxModBA2Compression.Checked = false;
+                    this.radioButtonModBA2GeneralFormat.Checked = true;
+                    this.textBoxModArchiveName.Text = "";
                     break;
             }
+
         }
 
         private void HideModDetails()
@@ -128,6 +185,34 @@ namespace Fo76ini
             }
         }
 
+        // Drag & Drop
+        void checkedListBoxMods_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        void checkedListBoxMods_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string filePath in files)
+            {
+                Console.WriteLine("Drag&Drop: " + filePath);
+
+                Thread thread = null;
+                if (Directory.Exists(filePath))
+                    thread = new Thread(() => InstallModFolder(filePath));
+                else if ((new String[] { ".ba2", ".zip", ".rar", ".7z", ".tar", ".tar.gz", ".gz" }).Contains(Path.GetExtension(filePath)))
+                    thread = new Thread(() => InstallModArchive(filePath));
+                else
+                    MsgBox.Get("modsArchiveTypeNotSupported").FormatText(Path.GetExtension(filePath)).Show(MessageBoxIcon.Error);
+                if (thread != null)
+                {
+                    thread.IsBackground = true;
+                    thread.Start();
+                }
+            }
+        }
+
 
         // Pick game path
         private void buttonPickGamePath_Click(object sender, EventArgs e)
@@ -144,7 +229,7 @@ namespace Fo76ini
                 {
                     this.textBoxGamePath.Text = path;
                     this.mods.GamePath = path;
-                    IniFiles.Instance.Set(IniFile.Config, "Preferences", "sGamePath", path);
+                    IniFiles.Instance.Set(IniFile.Config, "Preferences", this.gamePathKey, path);
                     IniFiles.Instance.SaveConfig();
                     mods.Load();
                     UpdateModsUI();
@@ -168,7 +253,7 @@ namespace Fo76ini
                 else if (Directory.Exists(Path.Combine(this.textBoxGamePath.Text, "Data")))
                 {
                     this.mods.GamePath = this.textBoxGamePath.Text;
-                    IniFiles.Instance.Set(IniFile.Config, "Preferences", "sGamePath", this.textBoxGamePath.Text);
+                    IniFiles.Instance.Set(IniFile.Config, "Preferences", this.gamePathKey, this.textBoxGamePath.Text);
                     IniFiles.Instance.SaveConfig();
                     mods.Load();
                     UpdateModsUI();
@@ -346,7 +431,7 @@ namespace Fo76ini
             }
         }
 
-        // Install type changed: Bundled *.ba2 archive
+        // Install type changed: Bundled *.ba2 archive (General)
         private void radioButtonModBA2Archive_CheckedChanged(object sender, EventArgs e)
         {
             int index = this.checkedListBoxMods.SelectedIndex;
@@ -354,12 +439,75 @@ namespace Fo76ini
                 return;
             if (this.radioButtonModBA2Archive.Checked)
             {
-                this.mods.Mods[index].Type = Mod.FileType.BA2Archive;
+                this.mods.Mods[index].Type = Mod.FileType.BundledBA2;
                 this.mods.Mods[index].RootFolder = "Data";
+                /* 
+                // Disable "Install Into: [    ] [..]"
                 this.textBoxModRootDir.Text = "Data";
                 this.textBoxModRootDir.Enabled = false;
                 this.buttonModPickRootDir.Enabled = false;
                 this.labelModInstallInto.Enabled = false;
+
+                // Disable BA2 settings
+                this.groupBoxBA2.Enabled = false;
+                this.checkBoxModBA2Compression.Checked = this.checkBoxModsBundledBA2Compression.Checked;
+                this.radioButtonModBA2GeneralFormat.Checked = true; */
+                this.ShowModDetails(this.mods.Mods[index]);
+            }
+        }
+
+        // Install type changed: Bundled *.ba2 archive (Textures)
+        private void radioButtonModBA2ArchiveTextures_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = this.checkedListBoxMods.SelectedIndex;
+            if (index < 0)
+                return;
+            if (this.radioButtonModBA2ArchiveTextures.Checked)
+            {
+                this.mods.Mods[index].Type = Mod.FileType.BundledBA2Textures;
+                this.mods.Mods[index].RootFolder = "Data";
+
+                /* 
+                // Disable "Install Into: [    ] [..]"
+                this.textBoxModRootDir.Text = "Data";
+                this.textBoxModRootDir.Enabled = false;
+                this.buttonModPickRootDir.Enabled = false;
+                this.labelModInstallInto.Enabled = false;
+
+                // Disable BA2 settings
+                this.groupBoxBA2.Enabled = false;
+                this.checkBoxModBA2Compression.Checked = this.checkBoxModsBundledTexturesBA2Compression.Checked;
+                this.radioButtonModBA2DDSFormat.Checked = true;*/
+                this.ShowModDetails(this.mods.Mods[index]);
+            }
+        }
+
+        // Install type changed: Separate *.ba2 archive
+        private void radioButtonModSeparateBA2_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = this.checkedListBoxMods.SelectedIndex;
+            if (index < 0)
+                return;
+            if (this.radioButtonModSeparateBA2.Checked)
+            {
+                this.mods.Mods[index].Type = Mod.FileType.SeparateBA2;
+                this.mods.Mods[index].RootFolder = "Data";
+                /* 
+                // Disable "Install Into: [    ] [..]"
+                this.textBoxModRootDir.Text = "Data";
+                this.textBoxModRootDir.Enabled = false;
+                this.buttonModPickRootDir.Enabled = false;
+                this.labelModInstallInto.Enabled = false;
+
+                // Enable BA2 settings
+                this.groupBoxBA2.Enabled = true;
+                this.checkBoxModBA2Compression.Checked = this.mods.Mods[index].Compression != Archive2.Compression.None;
+                if (this.mods.Mods[index].Format == Archive2.Format.DDS)
+                    this.radioButtonModBA2DDSFormat.Checked = true;
+                else
+                    this.radioButtonModBA2GeneralFormat.Checked = true; */
+
+                this.ShowModDetails(this.mods.Mods[index]);
             }
         }
 
@@ -372,10 +520,70 @@ namespace Fo76ini
             if (this.radioButtonModLoose.Checked)
             {
                 this.mods.Mods[index].Type = Mod.FileType.Loose;
+                /* 
+                // Enable "Install Into: [    ] [..]"
                 this.textBoxModRootDir.Enabled = true;
                 this.buttonModPickRootDir.Enabled = true;
                 this.labelModInstallInto.Enabled = true;
+
+                // Disable BA2 settings
+                this.groupBoxBA2.Enabled = false;
+                this.checkBoxModBA2Compression.Checked = false;
+                this.radioButtonModBA2GeneralFormat.Checked = true; */
+                this.ShowModDetails(this.mods.Mods[index]);
             }
+        }
+
+        /* Separate BA2 archive: [ ] Compress it */
+        private void checkBoxModBA2Compression_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = this.checkedListBoxMods.SelectedIndex;
+            if (index < 0)
+                return;
+            this.mods.Mods[index].Compression = checkBoxModBA2Compression.Checked ? Archive2.Compression.Default : Archive2.Compression.None;
+        }
+
+        /* Separate BA2 archive: Format set to General */
+        private void radioButtonModBA2GeneralFormat_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = this.checkedListBoxMods.SelectedIndex;
+            if (index < 0)
+                return;
+            if (radioButtonModBA2GeneralFormat.Checked)
+                this.mods.Mods[index].Format = Archive2.Format.General;
+        }
+
+        /* Separate BA2 archive: Format set to DDS */
+        private void radioButtonModBA2DDSFormat_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = this.checkedListBoxMods.SelectedIndex;
+            if (index < 0)
+                return;
+            if (radioButtonModBA2DDSFormat.Checked)
+                this.mods.Mods[index].Format = Archive2.Format.DDS;
+        }
+
+        /* Separate BA2 archive: Name changed */
+        private void textBoxModArchiveName_TextChanged(object sender, EventArgs e)
+        {
+            if (!textBoxModArchiveName.Focused)
+                return;
+            int index = this.checkedListBoxMods.SelectedIndex;
+            if (index < 0)
+                return;
+            this.mods.Mods[index].ArchiveName = this.textBoxModArchiveName.Text;
+        }
+
+        // [ ] Compress bundled.ba2
+        private void checkBoxModsBundledBA2Compression_CheckedChanged(object sender, EventArgs e)
+        {
+            this.mods.bundledCompression = checkBoxModsBundledBA2Compression.Checked ? Archive2.Compression.Default : Archive2.Compression.None;
+        }
+
+        // [ ] Compress bundled_textures.ba2
+        private void checkBoxModsBundledTexturesBA2Compression_CheckedChanged(object sender, EventArgs e)
+        {
+            this.mods.bundledTexturesCompression = checkBoxModsBundledTexturesBA2Compression.Checked ? Archive2.Compression.Default : Archive2.Compression.None;
         }
 
         // [ ] Nuclear Winter Mode
@@ -433,9 +641,14 @@ namespace Fo76ini
             Process.Start(startInfo);
         }
 
-        private void buttonModsShowConflictingFiles_Click(object sender, EventArgs e)
+        // Import installed mods:
+        private void toolStripMenuItemModsImport_Click(object sender, EventArgs e)
         {
-
+            if (MsgBox.ShowID("modsImportQuestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.mods.ImportInstalledMods();
+                this.UpdateModsUI();
+            }
         }
 
 

@@ -1568,6 +1568,7 @@
             this.radioButtonEditionSteam.TabIndex = 1;
             this.radioButtonEditionSteam.Text = "Steam";
             this.radioButtonEditionSteam.UseVisualStyleBackColor = true;
+            this.radioButtonEditionSteam.CheckedChanged += new System.EventHandler(this.radioButtonEditionSteam_CheckedChanged);
             // 
             // radioButtonEditionBethesdaNet
             // 
@@ -1578,6 +1579,7 @@
             this.radioButtonEditionBethesdaNet.TabIndex = 0;
             this.radioButtonEditionBethesdaNet.Text = "Bethesda.net";
             this.radioButtonEditionBethesdaNet.UseVisualStyleBackColor = true;
+            this.radioButtonEditionBethesdaNet.CheckedChanged += new System.EventHandler(this.radioButtonEditionBethesdaNet_CheckedChanged);
             // 
             // groupBoxMainMenu
             // 
@@ -1680,9 +1682,9 @@
             this.labelConfigVersion.AutoSize = true;
             this.labelConfigVersion.Location = new System.Drawing.Point(106, 124);
             this.labelConfigVersion.Name = "labelConfigVersion";
-            this.labelConfigVersion.Size = new System.Drawing.Size(67, 13);
+            this.labelConfigVersion.Size = new System.Drawing.Size(31, 13);
             this.labelConfigVersion.TabIndex = 9;
-            this.labelConfigVersion.Text = "1.4 (Hotfix 3)";
+            this.labelConfigVersion.Text = "1.4.1";
             // 
             // labelAuthor
             // 
