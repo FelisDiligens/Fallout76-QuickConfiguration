@@ -7,4 +7,4 @@ Download binaries from [NexusMods](https://www.nexusmods.com/fallout76/mods/546)
 
 ## License
 
-> © [MIT](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/blob/master/Fo76ini/LICENSE)
+> © [MIT](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/blob/master/LICENSE)
