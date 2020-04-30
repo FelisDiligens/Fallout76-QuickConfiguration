@@ -102,12 +102,15 @@ namespace Fo76ini
 
     public partial class Form1 : Form
     {
+        public const String VERSION = "1.4.2";
+
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
         delegate void OnLoadUIFunction();
         private List<OnLoadUIFunction> OnLoadUI = new List<OnLoadUIFunction>();
 
         private FormMods formMods;
+        private bool formModsBackupCreated = false;
 
         private void LoadUI()
         {
@@ -283,6 +286,40 @@ namespace Fo76ini
             ColorIni2Ui();
             AddAllEventHandler();
             LoadUI();
+
+            CheckVersion();
+        }
+
+        private void CheckVersion()
+        {
+            this.labelConfigVersion.Text = VERSION;
+            using (StreamWriter f = new StreamWriter("VERSION"))
+                f.Write(VERSION);
+
+            string latestVersion = VERSION;
+            try
+            {
+                System.Net.WebClient wc = new System.Net.WebClient();
+                byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/VERSION");
+                latestVersion = Encoding.UTF8.GetString(raw).Trim();
+            }
+            catch (System.Net.WebException exc)
+            {
+                Console.WriteLine(exc.Message);
+            }
+            if (latestVersion != VERSION)
+            {
+                //MessageBox.Show("There is a newer version available on NexusMods! Check it out! :P", "New version");
+                linkLabelDownloadPage.Visible = true;
+                labelNewVersion.Text = String.Format(Translation.localizedStrings["newVersionAvailable"], latestVersion);
+                this.labelConfigVersion.ForeColor = Color.Red;
+            }
+            else
+            {
+                linkLabelDownloadPage.Visible = false;
+                labelNewVersion.Visible = false;
+                this.labelConfigVersion.ForeColor = Color.DarkGreen;
+            }
         }
 
         private void AddAllEventHandler()
@@ -295,6 +332,8 @@ namespace Fo76ini
             LinkSlider(this.sliderLODActors, this.numLODActors, 10);
             LinkSlider(this.sliderShadowDistance, this.numShadowDistance, 1);
             LinkSlider(this.sliderMouseSensitivity, this.numMouseSensitivity, 10000.0);
+            LinkSlider(this.sliderTAAPostOverlay, this.numTAAPostOverlay, 100);
+            LinkSlider(this.sliderTAAPostSharpen, this.numTAAPostSharpen, 100);
 
 
             /*
@@ -503,8 +542,9 @@ namespace Fo76ini
                 "8", 3);
 
             // iPresentInterval
-            // Actually, it's not VSync but a fps cap, which is determined this way: Monitor refresh rate divided by iPresentInterval
-            // A 120 Hz monitor and iPresentInterval set to 2 will result in a 60fps cap.
+            // I'm not so sure about this anymore:
+            //    Actually, it's not VSync but a fps cap, which is determined this way: Monitor refresh rate divided by iPresentInterval
+            //    A 120 Hz monitor and iPresentInterval set to 2 will result in a 60fps cap.
             //LinkBool(this.checkBoxVSync, IniFile.F76Prefs, "Display", "iPresentInterval", true);
             LinkCustom(this.checkBoxVSync,
                 () => IniFiles.Instance.GetInt("Display", "iPresentInterval", 1) != 0,
@@ -514,12 +554,10 @@ namespace Fo76ini
                         int defaultValue = IniFiles.Instance.GetInt(IniFile.Config, "Display", "iPresentInterval", -1);
                         if (defaultValue <= 0)
                         {
-                            int refreshRate = Utils.GetDisplayRefreshRate();
-                            defaultValue = Utils.Clamp(Convert.ToInt32(Math.Round(Convert.ToSingle(refreshRate) / 60f)), 1, 4);
-                            /*if (refreshRate >= 100 && refreshRate <= 144)
-                                defaultValue = 2;
-                            else if (refreshRate >= 200 && refreshRate <= 240)
-                                defaultValue = 4;*/
+                            defaultValue = 1;
+                            // Values of 2 and above cause black screen:
+                            //int refreshRate = Utils.GetDisplayRefreshRate();
+                            //defaultValue = Utils.Clamp(Convert.ToInt32(Math.Round(Convert.ToSingle(refreshRate) / 60f)), 1, 4);
                         }
                         IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "iPresentInterval", defaultValue);
                     }
@@ -627,6 +665,11 @@ namespace Fo76ini
 
             // Grass / Density
             //LinkInt(this.numGrassDensity, IniFile.F76Custom, "Grass", "iMinGrassSize", 20);
+
+            // TAA Sharpening
+
+            LinkFloat(this.numTAAPostOverlay, IniFile.F76Custom, "Display", "fTAAPostOverlay", 0.21f);
+            LinkFloat(this.numTAAPostSharpen, IniFile.F76Custom, "Display", "fTAAPostSharpen", 0.21f);
 
 
             /*
@@ -982,12 +1025,17 @@ namespace Fo76ini
 
         private void buttonManageMods_Click(object sender, EventArgs e)
         {
+            if (!formModsBackupCreated)
+            {
+                IniFiles.Instance.BackupAll("Backup_BeforeManageMods"); // Just to be sure...
+                formModsBackupCreated = true;
+            }
             this.formMods.Show();
         }
 
         private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("file:///" + Directory.GetCurrentDirectory().Replace("\\", "/").Trim('/') + "/docs/README.html");
+            System.Diagnostics.Process.Start("https://felisdiligens.github.io/Fo76ini/index.html");
         }
 
         private void buttonFixIssuesEarlierVersion_Click(object sender, EventArgs e)

@@ -282,7 +282,7 @@ namespace Fo76ini
                 done();
         }
 
-        private void ManipulateModFolder(String managedFolderPath, Action<String, int> updateProgress = null)
+        private void ManipulateModFolder(Mod mod, String managedFolderPath, Action<String, int> updateProgress = null)
         {
             foreach (String path in Directory.GetFiles(managedFolderPath))
             {
@@ -298,18 +298,50 @@ namespace Fo76ini
                     File.Delete(path);
             }
 
-            // String[] typicalFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx" };
-            foreach (String path in Directory.GetDirectories(managedFolderPath))
+            String[] typicalFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx" };
+            // Do it two times, because it changes files, so we need to check again.
+            for (int i = 0; i < 2; i++)
             {
-                String name = Path.GetFileName(path);
-
-                // If only a data folder is in the mod folder... 
-                if (name.ToLower() == "data" && Directory.GetFiles(managedFolderPath).Length == 0)
+                // Search through all folders in the mod folder.
+                foreach (String path in Directory.GetDirectories(managedFolderPath))
                 {
-                    // ... move all files in data on up:
-                    Directory.Move(path, managedFolderPath);
-                    // Delete the empty data folder afterwards:
-                    // Directory.Delete(path);
+                    String name = Path.GetFileName(path).ToLower();
+
+                    // If only a data folder is in the mod folder... 
+                    if (name == "data" && Directory.GetFiles(managedFolderPath).Length == 0)
+                    {
+                        // ... move all files in data on up:
+                        Directory.Move(path, managedFolderPath);
+                        // Delete the empty data folder afterwards:
+                        // Directory.Delete(path);
+                        break;
+                    }
+
+                    // If the mod folder contains "textures"...
+                    if (name == "textures" && Directory.GetFiles(managedFolderPath).Length == 0)
+                    {
+                        // ... set ba2 format type to DDS
+                        mod.Format = Archive2.Format.DDS;
+                        if (mod.Type == Mod.FileType.BundledBA2)
+                            mod.Type = Mod.FileType.BundledBA2Textures;
+                        mod.RootFolder = "Data";
+                        break;
+                    }
+                }
+            }
+
+            // Search through all files in the mod folder.
+            foreach (String path in Directory.GetFiles(managedFolderPath))
+            {
+                String name = Path.GetFileName(path).ToLower();
+                String extension = Path.GetExtension(path).ToLower();
+
+                // If the mod contains *.dll files...
+                if (extension == ".dll")
+                {
+                    // ... then it probably has to be installed as loose files into the root directory:
+                    mod.Type = Mod.FileType.Loose;
+                    mod.RootFolder = ".";
                 }
             }
         }
@@ -467,7 +499,7 @@ namespace Fo76ini
             // Extract the archive:
             if (ExtractModArchive(filePath, managedFolderPath, updateProgress))
             {
-                ManipulateModFolder(managedFolderPath, updateProgress);
+                ManipulateModFolder(mod, managedFolderPath, updateProgress);
                 this.AddInstalledMod(mod);
                 this.Save();
             }
@@ -544,7 +576,7 @@ namespace Fo76ini
                 File.Copy(files[i], destinationPath);
             }
 
-            ManipulateModFolder(managedFolderPath, updateProgress);
+            ManipulateModFolder(mod, managedFolderPath, updateProgress);
 
             // Add to mods:
             AddInstalledMod(mod);

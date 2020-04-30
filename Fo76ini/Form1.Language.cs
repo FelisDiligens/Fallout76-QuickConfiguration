@@ -32,7 +32,7 @@ namespace Fo76ini
             // Look into the folder and add all language files to the dropdown menu.
             foreach (string filePath in Directory.GetFiles(languageFolder))
             {
-                if (filePath.EndsWith(".xml"))
+                if (filePath.EndsWith(".xml") && !filePath.EndsWith(".template.xml"))
                 {
                     // <Language name="English (USA)" iso="en-US"> ... </Language>
                     try
@@ -90,8 +90,9 @@ namespace Fo76ini
                     subControl.Name.Length > 0 &&
                     subControl.Name != "labelConfigVersion" &&
                     subControl.Name != "labelAuthorName" &&
-                    subControl.Name != "labelTranslationAuthor" &&
-                    subControl.Name != "groupBoxWIP")
+                    subControl.Name != "labelTranslationAuthor" && 
+                    subControl.Name != "groupBoxWIP" &&
+                    subControl.Name != "labelNewVersion")
                 {
                     // Get XElement name:
                     String type = "Element";
@@ -275,9 +276,65 @@ namespace Fo76ini
             comboBox.SelectedIndex = i;
         }
 
+        private void SerializeXMLFile(String name = null, String iso = null, String author = null, String fileName = null)
+        {
+            int index = this.comboBoxLanguage.SelectedIndex;
+            if (name == null)
+                name = this.languageNames[index];
+            if (iso == null)
+                iso = this.languageISOs[index];
+            if (author == null)
+                author = this.labelAuthorName.Text.Trim();
+            if (fileName == null)
+                fileName = iso + ".template.xml";
+
+            // Create document and root:
+            XDocument xmlDoc = new XDocument();
+            XElement xmlRoot = new XElement("Language");
+            xmlRoot.Add(new XAttribute("name", name));
+            xmlRoot.Add(new XAttribute("iso", iso));
+            if (iso != "en-US" && author.Length > 0)
+                xmlRoot.Add(new XAttribute("author", author));
+            if (iso == "en-US")
+                xmlDoc.AddFirst(new XComment("\n     This file is auto-generated on program start.\n     Therefore any changes made to this file will be overriden.\n     You can use this as a template for your own translation, though.\n"));
+            xmlRoot.Add(new XAttribute("version", VERSION));
+            xmlDoc.Add(xmlRoot);
+
+            // Serialize miscellaneous strings:
+            XElement xmlStrings = new XElement("Strings");
+            foreach (KeyValuePair<String, String> pair in Translation.localizedStrings)
+                xmlStrings.Add(new XElement("String",
+                    new XAttribute("text", pair.Value),
+                    new XAttribute("id", pair.Key)));
+            xmlRoot.Add(xmlStrings);
+
+            // Create dropdowns:
+            XElement xmlDropDowns = new XElement("Dropdowns");
+            foreach (KeyValuePair<String, ComboBoxContainer> pair in this.comboBoxes)
+                SerializeDropDownOptions(xmlDropDowns, pair.Key, pair.Value.Items);
+            xmlRoot.Add(xmlDropDowns);
+
+            // Create messageboxes:
+            xmlRoot.Add(MsgBox.Serialize());
+
+            // Serialize all control elements:
+            XElement xmlForm1 = new XElement("Form1", new XAttribute("title", this.Text));
+            XElement xmlFormMods = new XElement("FormMods", new XAttribute("title", this.formMods.Text));
+            SerializeControlText(xmlForm1, this.toolTip, this);
+            SerializeControlText(xmlFormMods, this.formMods.toolTip, this.formMods);
+            xmlRoot.Add(xmlForm1);
+            xmlRoot.Add(xmlFormMods);
+
+            // Save it:
+            xmlDoc.Save(Path.Combine(languageFolder, fileName));
+            //using (XmlTextWriter writer = new XmlTextWriter(Path.Combine(languageFolder, "en-US.xml"), new UTF8Encoding(false))) 
+            //    xmlDoc.Save(writer); 
+        }
+
         private void GenerateEnglishXMLFile()
         {
-            // Create document and root:
+            SerializeXMLFile("English (USA)", "en-US", "", "en-US.xml");
+            /*// Create document and root:
             XDocument xmlDoc = new XDocument();
             XElement xmlRoot = new XElement("Language");
             xmlRoot.Add(new XAttribute("name", "English (USA)"));
@@ -313,7 +370,7 @@ namespace Fo76ini
             // Save it:
             xmlDoc.Save(Path.Combine(languageFolder, "en-US.xml"));
             //using (XmlTextWriter writer = new XmlTextWriter(Path.Combine(languageFolder, "en-US.xml"), new UTF8Encoding(false))) 
-            //    xmlDoc.Save(writer); 
+            //    xmlDoc.Save(writer); */
         }
 
         private void ChangeLanguage(string langFile)
@@ -358,6 +415,7 @@ namespace Fo76ini
                     if (this.comboBoxes.ContainsKey(id))
                     {
                         String[] items = DeserializeDropDownOptions(xmlDropDown);
+                        this.comboBoxes[id].SetRange(items);
                         SetDropDownOptions(this.comboBoxes[id].comboBox, items);
                     }
                 }
@@ -413,6 +471,11 @@ namespace Fo76ini
             // Use the dictionaries to set all elements:
             DeserializeControlText(dictText, dictTooltip, this, this.toolTip);
             DeserializeControlText(dictText, dictTooltip, this.formMods, this.formMods.toolTip);
+
+
+            CheckVersion();
+            if (xmlDoc.Element("Language").Attribute("iso").Value != "en-US")
+                SerializeXMLFile();
         }
 
         private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)

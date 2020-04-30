@@ -139,10 +139,14 @@ namespace Fo76ini
         /// <summary>
         /// Create a backup folder and copy all *.ini files into it.
         /// </summary>
-        public void BackupAll()
+        public void BackupAll(String backupFolder = null)
         {
-            String backupFolder = DateTime.Now.ToString("Backup_yyyy-MM-dd_HH-mm-ss");
+            if (backupFolder == null)
+                backupFolder = DateTime.Now.ToString("Backup_yyyy-MM-dd_HH-mm-ss");
             String backupPath = Path.Combine(this.iniParentPath, backupFolder);
+
+            if (Directory.Exists(backupPath))
+                Directory.Delete(backupPath, true);
 
             Directory.CreateDirectory(backupPath);
 

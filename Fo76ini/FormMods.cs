@@ -768,7 +768,7 @@ namespace Fo76ini
 
         private void showREADMEToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("file:///" + Directory.GetCurrentDirectory().Replace("\\", "/").Trim('/') + "/docs/ManageMods.html");
+            System.Diagnostics.Process.Start("https://felisdiligens.github.io/Fo76ini/ManageMods.html");
         }
     }
 }

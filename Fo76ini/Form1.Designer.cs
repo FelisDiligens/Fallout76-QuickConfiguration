@@ -83,6 +83,9 @@
             this.checkBoxShowDamageNumbersA = new System.Windows.Forms.CheckBox();
             this.checkBoxShowDamageNumbersNW = new System.Windows.Forms.CheckBox();
             this.checkBoxShowCompass = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.sliderTAAPostOverlay = new MetroFramework.Controls.MetroTrackBar();
+            this.sliderTAAPostSharpen = new MetroFramework.Controls.MetroTrackBar();
             this.pictureBoxBanner = new System.Windows.Forms.PictureBox();
             this.buttonLaunchGame = new System.Windows.Forms.Button();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
@@ -92,9 +95,12 @@
             this.labelPipboyResolutionSpacer = new System.Windows.Forms.Label();
             this.groupBoxPipboyMode = new System.Windows.Forms.GroupBox();
             this.groupBoxPipboyColors = new System.Windows.Forms.GroupBox();
+            this.colorPreviewPAPipboy = new System.Windows.Forms.PictureBox();
+            this.buttonColorPickPAPipboy = new System.Windows.Forms.Button();
+            this.buttonColorResetPipboy = new System.Windows.Forms.Button();
+            this.buttonColorResetPAPipboy = new System.Windows.Forms.Button();
             this.colorPreviewPipboy = new System.Windows.Forms.PictureBox();
             this.colorPreviewQuickboy = new System.Windows.Forms.PictureBox();
-            this.buttonColorResetPipboy = new System.Windows.Forms.Button();
             this.buttonColorPickQuickboy = new System.Windows.Forms.Button();
             this.buttonColorResetQuickboy = new System.Windows.Forms.Button();
             this.buttonColorPickPipboy = new System.Windows.Forms.Button();
@@ -104,6 +110,11 @@
             this.numMouseSensitivity = new System.Windows.Forms.NumericUpDown();
             this.labelMouseSensitivity = new System.Windows.Forms.Label();
             this.tabPageGraphics = new System.Windows.Forms.TabPage();
+            this.groupBoxTAASharpening = new System.Windows.Forms.GroupBox();
+            this.numTAAPostSharpen = new System.Windows.Forms.NumericUpDown();
+            this.labelTAAPostSharpen = new System.Windows.Forms.Label();
+            this.numTAAPostOverlay = new System.Windows.Forms.NumericUpDown();
+            this.labelTAAPostOverlay = new System.Windows.Forms.Label();
             this.groupBoxGrass = new System.Windows.Forms.GroupBox();
             this.numGrassFadeDistance = new System.Windows.Forms.NumericUpDown();
             this.labelGrassFadeDistance = new System.Windows.Forms.Label();
@@ -140,6 +151,7 @@
             this.radioButtonEditionBethesdaNet = new System.Windows.Forms.RadioButton();
             this.groupBoxMainMenu = new System.Windows.Forms.GroupBox();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
+            this.labelNewVersion = new System.Windows.Forms.Label();
             this.buttonFixIssuesEarlierVersion = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.buttonManageMods = new System.Windows.Forms.Button();
@@ -164,6 +176,7 @@
             this.groupBoxPipboyResolution.SuspendLayout();
             this.groupBoxPipboyMode.SuspendLayout();
             this.groupBoxPipboyColors.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewQuickboy)).BeginInit();
             this.tabPageControls.SuspendLayout();
@@ -171,6 +184,9 @@
             this.groupBoxMouse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivity)).BeginInit();
             this.tabPageGraphics.SuspendLayout();
+            this.groupBoxTAASharpening.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numTAAPostSharpen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTAAPostOverlay)).BeginInit();
             this.groupBoxGrass.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numGrassFadeDistance)).BeginInit();
             this.groupBoxLOD.SuspendLayout();
@@ -873,6 +889,45 @@
             this.toolTip.SetToolTip(this.checkBoxShowCompass, "Affected values: bShowCompass\r\nAffected files: Fallout76Prefs.ini");
             this.checkBoxShowCompass.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(39, 82);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Power Armor Color";
+            this.toolTip.SetToolTip(this.label1, "Changes the color of the Pip-Boy which is accessed from the Power Armor.\r\n\r\nAffec" +
+        "ted values: fPAEffectColorR, fPAEffectColorG, fPAEffectColorB\r\nAffected files: F" +
+        "allout76Custom.ini");
+            // 
+            // sliderTAAPostOverlay
+            // 
+            this.sliderTAAPostOverlay.BackColor = System.Drawing.Color.Transparent;
+            this.sliderTAAPostOverlay.LargeChange = 1;
+            this.sliderTAAPostOverlay.Location = new System.Drawing.Point(9, 41);
+            this.sliderTAAPostOverlay.Name = "sliderTAAPostOverlay";
+            this.sliderTAAPostOverlay.Size = new System.Drawing.Size(192, 23);
+            this.sliderTAAPostOverlay.TabIndex = 27;
+            this.sliderTAAPostOverlay.Text = "metroTrackBar1";
+            this.toolTip.SetToolTip(this.sliderTAAPostOverlay, "Sharpens the image.\r\n\r\nRecommended: 0.2\r\nDefault: 0.2\r\n\r\nAffected values: fTAAPos" +
+        "tOverlay\r\nAffected files: Fallout76Custom.ini");
+            this.sliderTAAPostOverlay.Value = 20;
+            // 
+            // sliderTAAPostSharpen
+            // 
+            this.sliderTAAPostSharpen.BackColor = System.Drawing.Color.Transparent;
+            this.sliderTAAPostSharpen.LargeChange = 1;
+            this.sliderTAAPostSharpen.Location = new System.Drawing.Point(9, 93);
+            this.sliderTAAPostSharpen.Maximum = 200;
+            this.sliderTAAPostSharpen.Name = "sliderTAAPostSharpen";
+            this.sliderTAAPostSharpen.Size = new System.Drawing.Size(192, 23);
+            this.sliderTAAPostSharpen.TabIndex = 30;
+            this.sliderTAAPostSharpen.Text = "metroTrackBar2";
+            this.toolTip.SetToolTip(this.sliderTAAPostSharpen, "Sharpens the image.\r\n\r\nDefault: 0.2\r\nRecommended: 0.4\r\n\r\nAffected values: fTAAPos" +
+        "tSharpen\r\nAffected files: Fallout76Custom.ini");
+            this.sliderTAAPostSharpen.Value = 20;
+            // 
             // pictureBoxBanner
             // 
             this.pictureBoxBanner.BackColor = System.Drawing.Color.Black;
@@ -916,7 +971,7 @@
             this.groupBoxPipboyResolution.Controls.Add(this.numPipboyTargetHeight);
             this.groupBoxPipboyResolution.Controls.Add(this.numPipboyTargetWidth);
             this.groupBoxPipboyResolution.Controls.Add(this.labelPipboyResolutionSpacer);
-            this.groupBoxPipboyResolution.Location = new System.Drawing.Point(7, 177);
+            this.groupBoxPipboyResolution.Location = new System.Drawing.Point(6, 207);
             this.groupBoxPipboyResolution.Name = "groupBoxPipboyResolution";
             this.groupBoxPipboyResolution.Size = new System.Drawing.Size(319, 111);
             this.groupBoxPipboyResolution.TabIndex = 39;
@@ -946,7 +1001,7 @@
             // 
             this.groupBoxPipboyMode.Controls.Add(this.radioButtonQuickboy);
             this.groupBoxPipboyMode.Controls.Add(this.radioButtonPipboy);
-            this.groupBoxPipboyMode.Location = new System.Drawing.Point(7, 98);
+            this.groupBoxPipboyMode.Location = new System.Drawing.Point(6, 129);
             this.groupBoxPipboyMode.Name = "groupBoxPipboyMode";
             this.groupBoxPipboyMode.Size = new System.Drawing.Size(319, 72);
             this.groupBoxPipboyMode.TabIndex = 38;
@@ -955,20 +1010,63 @@
             // 
             // groupBoxPipboyColors
             // 
+            this.groupBoxPipboyColors.Controls.Add(this.colorPreviewPAPipboy);
+            this.groupBoxPipboyColors.Controls.Add(this.label1);
+            this.groupBoxPipboyColors.Controls.Add(this.buttonColorPickPAPipboy);
+            this.groupBoxPipboyColors.Controls.Add(this.buttonColorResetPipboy);
+            this.groupBoxPipboyColors.Controls.Add(this.buttonColorResetPAPipboy);
             this.groupBoxPipboyColors.Controls.Add(this.colorPreviewPipboy);
             this.groupBoxPipboyColors.Controls.Add(this.colorPreviewQuickboy);
             this.groupBoxPipboyColors.Controls.Add(this.labelQuickboyColor);
-            this.groupBoxPipboyColors.Controls.Add(this.buttonColorResetPipboy);
             this.groupBoxPipboyColors.Controls.Add(this.buttonColorPickQuickboy);
             this.groupBoxPipboyColors.Controls.Add(this.buttonColorResetQuickboy);
             this.groupBoxPipboyColors.Controls.Add(this.labelPipboyColor);
             this.groupBoxPipboyColors.Controls.Add(this.buttonColorPickPipboy);
             this.groupBoxPipboyColors.Location = new System.Drawing.Point(6, 6);
             this.groupBoxPipboyColors.Name = "groupBoxPipboyColors";
-            this.groupBoxPipboyColors.Size = new System.Drawing.Size(320, 86);
+            this.groupBoxPipboyColors.Size = new System.Drawing.Size(320, 117);
             this.groupBoxPipboyColors.TabIndex = 35;
             this.groupBoxPipboyColors.TabStop = false;
             this.groupBoxPipboyColors.Text = "Colors";
+            // 
+            // colorPreviewPAPipboy
+            // 
+            this.colorPreviewPAPipboy.BackColor = System.Drawing.Color.Red;
+            this.colorPreviewPAPipboy.Location = new System.Drawing.Point(12, 78);
+            this.colorPreviewPAPipboy.Name = "colorPreviewPAPipboy";
+            this.colorPreviewPAPipboy.Size = new System.Drawing.Size(20, 20);
+            this.colorPreviewPAPipboy.TabIndex = 35;
+            this.colorPreviewPAPipboy.TabStop = false;
+            // 
+            // buttonColorPickPAPipboy
+            // 
+            this.buttonColorPickPAPipboy.Location = new System.Drawing.Point(144, 77);
+            this.buttonColorPickPAPipboy.Name = "buttonColorPickPAPipboy";
+            this.buttonColorPickPAPipboy.Size = new System.Drawing.Size(84, 23);
+            this.buttonColorPickPAPipboy.TabIndex = 36;
+            this.buttonColorPickPAPipboy.Text = "Pick color";
+            this.buttonColorPickPAPipboy.UseVisualStyleBackColor = true;
+            this.buttonColorPickPAPipboy.Click += new System.EventHandler(this.buttonColorPickPAPipboy_Click);
+            // 
+            // buttonColorResetPipboy
+            // 
+            this.buttonColorResetPipboy.Location = new System.Drawing.Point(229, 19);
+            this.buttonColorResetPipboy.Name = "buttonColorResetPipboy";
+            this.buttonColorResetPipboy.Size = new System.Drawing.Size(83, 23);
+            this.buttonColorResetPipboy.TabIndex = 3;
+            this.buttonColorResetPipboy.Text = "Reset";
+            this.buttonColorResetPipboy.UseVisualStyleBackColor = true;
+            this.buttonColorResetPipboy.Click += new System.EventHandler(this.buttonColorResetPipboy_Click);
+            // 
+            // buttonColorResetPAPipboy
+            // 
+            this.buttonColorResetPAPipboy.Location = new System.Drawing.Point(229, 77);
+            this.buttonColorResetPAPipboy.Name = "buttonColorResetPAPipboy";
+            this.buttonColorResetPAPipboy.Size = new System.Drawing.Size(83, 23);
+            this.buttonColorResetPAPipboy.TabIndex = 35;
+            this.buttonColorResetPAPipboy.Text = "Reset";
+            this.buttonColorResetPAPipboy.UseVisualStyleBackColor = true;
+            this.buttonColorResetPAPipboy.Click += new System.EventHandler(this.buttonColorResetPAPipboy_Click);
             // 
             // colorPreviewPipboy
             // 
@@ -988,19 +1086,9 @@
             this.colorPreviewQuickboy.TabIndex = 5;
             this.colorPreviewQuickboy.TabStop = false;
             // 
-            // buttonColorResetPipboy
-            // 
-            this.buttonColorResetPipboy.Location = new System.Drawing.Point(225, 19);
-            this.buttonColorResetPipboy.Name = "buttonColorResetPipboy";
-            this.buttonColorResetPipboy.Size = new System.Drawing.Size(87, 23);
-            this.buttonColorResetPipboy.TabIndex = 3;
-            this.buttonColorResetPipboy.Text = "Reset";
-            this.buttonColorResetPipboy.UseVisualStyleBackColor = true;
-            this.buttonColorResetPipboy.Click += new System.EventHandler(this.buttonColorResetPipboy_Click);
-            // 
             // buttonColorPickQuickboy
             // 
-            this.buttonColorPickQuickboy.Location = new System.Drawing.Point(135, 49);
+            this.buttonColorPickQuickboy.Location = new System.Drawing.Point(144, 48);
             this.buttonColorPickQuickboy.Name = "buttonColorPickQuickboy";
             this.buttonColorPickQuickboy.Size = new System.Drawing.Size(84, 23);
             this.buttonColorPickQuickboy.TabIndex = 7;
@@ -1010,9 +1098,9 @@
             // 
             // buttonColorResetQuickboy
             // 
-            this.buttonColorResetQuickboy.Location = new System.Drawing.Point(225, 48);
+            this.buttonColorResetQuickboy.Location = new System.Drawing.Point(229, 48);
             this.buttonColorResetQuickboy.Name = "buttonColorResetQuickboy";
-            this.buttonColorResetQuickboy.Size = new System.Drawing.Size(87, 23);
+            this.buttonColorResetQuickboy.Size = new System.Drawing.Size(83, 23);
             this.buttonColorResetQuickboy.TabIndex = 8;
             this.buttonColorResetQuickboy.Text = "Reset";
             this.buttonColorResetQuickboy.UseVisualStyleBackColor = true;
@@ -1020,7 +1108,7 @@
             // 
             // buttonColorPickPipboy
             // 
-            this.buttonColorPickPipboy.Location = new System.Drawing.Point(135, 19);
+            this.buttonColorPickPipboy.Location = new System.Drawing.Point(144, 19);
             this.buttonColorPickPipboy.Name = "buttonColorPickPipboy";
             this.buttonColorPickPipboy.Size = new System.Drawing.Size(84, 23);
             this.buttonColorPickPipboy.TabIndex = 2;
@@ -1105,6 +1193,7 @@
             // tabPageGraphics
             // 
             this.tabPageGraphics.AutoScroll = true;
+            this.tabPageGraphics.Controls.Add(this.groupBoxTAASharpening);
             this.tabPageGraphics.Controls.Add(this.groupBoxGrass);
             this.tabPageGraphics.Controls.Add(this.groupBoxLOD);
             this.tabPageGraphics.Controls.Add(this.groupBoxLighting);
@@ -1124,6 +1213,85 @@
             this.tabPageGraphics.TabIndex = 1;
             this.tabPageGraphics.Text = "Graphics";
             this.tabPageGraphics.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxTAASharpening
+            // 
+            this.groupBoxTAASharpening.Controls.Add(this.numTAAPostSharpen);
+            this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostSharpen);
+            this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostSharpen);
+            this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
+            this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
+            this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 655);
+            this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
+            this.groupBoxTAASharpening.Size = new System.Drawing.Size(296, 134);
+            this.groupBoxTAASharpening.TabIndex = 25;
+            this.groupBoxTAASharpening.TabStop = false;
+            this.groupBoxTAASharpening.Text = "TAA Sharpening";
+            // 
+            // numTAAPostSharpen
+            // 
+            this.numTAAPostSharpen.DecimalPlaces = 2;
+            this.numTAAPostSharpen.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numTAAPostSharpen.Location = new System.Drawing.Point(214, 94);
+            this.numTAAPostSharpen.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numTAAPostSharpen.Name = "numTAAPostSharpen";
+            this.numTAAPostSharpen.Size = new System.Drawing.Size(74, 20);
+            this.numTAAPostSharpen.TabIndex = 31;
+            this.numTAAPostSharpen.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            65536});
+            // 
+            // labelTAAPostSharpen
+            // 
+            this.labelTAAPostSharpen.AutoSize = true;
+            this.labelTAAPostSharpen.Location = new System.Drawing.Point(6, 77);
+            this.labelTAAPostSharpen.Name = "labelTAAPostSharpen";
+            this.labelTAAPostSharpen.Size = new System.Drawing.Size(69, 13);
+            this.labelTAAPostSharpen.TabIndex = 29;
+            this.labelTAAPostSharpen.Text = "Post sharpen";
+            // 
+            // numTAAPostOverlay
+            // 
+            this.numTAAPostOverlay.DecimalPlaces = 2;
+            this.numTAAPostOverlay.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numTAAPostOverlay.Location = new System.Drawing.Point(214, 42);
+            this.numTAAPostOverlay.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numTAAPostOverlay.Name = "numTAAPostOverlay";
+            this.numTAAPostOverlay.Size = new System.Drawing.Size(74, 20);
+            this.numTAAPostOverlay.TabIndex = 28;
+            this.numTAAPostOverlay.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            65536});
+            // 
+            // labelTAAPostOverlay
+            // 
+            this.labelTAAPostOverlay.AutoSize = true;
+            this.labelTAAPostOverlay.Location = new System.Drawing.Point(6, 25);
+            this.labelTAAPostOverlay.Name = "labelTAAPostOverlay";
+            this.labelTAAPostOverlay.Size = new System.Drawing.Size(65, 13);
+            this.labelTAAPostOverlay.TabIndex = 26;
+            this.labelTAAPostOverlay.Text = "Post overlay";
             // 
             // groupBoxGrass
             // 
@@ -1595,6 +1763,7 @@
             // 
             // tabPageInfo
             // 
+            this.tabPageInfo.Controls.Add(this.labelNewVersion);
             this.tabPageInfo.Controls.Add(this.buttonFixIssuesEarlierVersion);
             this.tabPageInfo.Controls.Add(this.linkLabel1);
             this.tabPageInfo.Controls.Add(this.buttonManageMods);
@@ -1617,9 +1786,20 @@
             this.tabPageInfo.Text = "Info";
             this.tabPageInfo.UseVisualStyleBackColor = true;
             // 
+            // labelNewVersion
+            // 
+            this.labelNewVersion.AutoSize = true;
+            this.labelNewVersion.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNewVersion.ForeColor = System.Drawing.Color.Crimson;
+            this.labelNewVersion.Location = new System.Drawing.Point(18, 211);
+            this.labelNewVersion.Name = "labelNewVersion";
+            this.labelNewVersion.Size = new System.Drawing.Size(216, 16);
+            this.labelNewVersion.TabIndex = 16;
+            this.labelNewVersion.Text = "There is a newer version available: {0}";
+            // 
             // buttonFixIssuesEarlierVersion
             // 
-            this.buttonFixIssuesEarlierVersion.Location = new System.Drawing.Point(21, 336);
+            this.buttonFixIssuesEarlierVersion.Location = new System.Drawing.Point(21, 321);
             this.buttonFixIssuesEarlierVersion.Name = "buttonFixIssuesEarlierVersion";
             this.buttonFixIssuesEarlierVersion.Size = new System.Drawing.Size(295, 23);
             this.buttonFixIssuesEarlierVersion.TabIndex = 15;
@@ -1630,7 +1810,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(18, 204);
+            this.linkLabel1.Location = new System.Drawing.Point(18, 347);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(82, 13);
             this.linkLabel1.TabIndex = 14;
@@ -1640,7 +1820,7 @@
             // 
             // buttonManageMods
             // 
-            this.buttonManageMods.Location = new System.Drawing.Point(21, 307);
+            this.buttonManageMods.Location = new System.Drawing.Point(21, 292);
             this.buttonManageMods.Name = "buttonManageMods";
             this.buttonManageMods.Size = new System.Drawing.Size(295, 23);
             this.buttonManageMods.TabIndex = 13;
@@ -1682,9 +1862,9 @@
             this.labelConfigVersion.AutoSize = true;
             this.labelConfigVersion.Location = new System.Drawing.Point(106, 124);
             this.labelConfigVersion.Name = "labelConfigVersion";
-            this.labelConfigVersion.Size = new System.Drawing.Size(31, 13);
+            this.labelConfigVersion.Size = new System.Drawing.Size(13, 13);
             this.labelConfigVersion.TabIndex = 9;
-            this.labelConfigVersion.Text = "1.4.1";
+            this.labelConfigVersion.Text = "?";
             // 
             // labelAuthor
             // 
@@ -1736,7 +1916,7 @@
             // linkLabelDownloadPage
             // 
             this.linkLabelDownloadPage.AutoSize = true;
-            this.linkLabelDownloadPage.Location = new System.Drawing.Point(18, 186);
+            this.linkLabelDownloadPage.Location = new System.Drawing.Point(18, 229);
             this.linkLabelDownloadPage.Name = "linkLabelDownloadPage";
             this.linkLabelDownloadPage.Size = new System.Drawing.Size(189, 13);
             this.linkLabelDownloadPage.TabIndex = 2;
@@ -1796,6 +1976,7 @@
             this.groupBoxPipboyMode.PerformLayout();
             this.groupBoxPipboyColors.ResumeLayout(false);
             this.groupBoxPipboyColors.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewQuickboy)).EndInit();
             this.tabPageControls.ResumeLayout(false);
@@ -1806,6 +1987,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivity)).EndInit();
             this.tabPageGraphics.ResumeLayout(false);
             this.tabPageGraphics.PerformLayout();
+            this.groupBoxTAASharpening.ResumeLayout(false);
+            this.groupBoxTAASharpening.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numTAAPostSharpen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTAAPostOverlay)).EndInit();
             this.groupBoxGrass.ResumeLayout(false);
             this.groupBoxGrass.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numGrassFadeDistance)).EndInit();
@@ -1972,6 +2157,18 @@
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button buttonFixIssuesEarlierVersion;
+        private System.Windows.Forms.Label labelNewVersion;
+        private System.Windows.Forms.PictureBox colorPreviewPAPipboy;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonColorPickPAPipboy;
+        private System.Windows.Forms.Button buttonColorResetPAPipboy;
+        private System.Windows.Forms.GroupBox groupBoxTAASharpening;
+        private System.Windows.Forms.NumericUpDown numTAAPostSharpen;
+        private System.Windows.Forms.Label labelTAAPostSharpen;
+        private MetroFramework.Controls.MetroTrackBar sliderTAAPostSharpen;
+        private System.Windows.Forms.NumericUpDown numTAAPostOverlay;
+        private System.Windows.Forms.Label labelTAAPostOverlay;
+        private MetroFramework.Controls.MetroTrackBar sliderTAAPostOverlay;
     }
 }
 
