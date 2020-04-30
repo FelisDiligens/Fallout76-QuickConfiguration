@@ -4,8 +4,9 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US">
+<Language name="English (USA)" iso="en-US" version="1.4.2">
   <Strings>
+    <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Deployment necessary" id="modsDeploymentNecessary" />
     <String text="All set" id="modsAllDone" />
   </Strings>
@@ -237,6 +238,28 @@ Affected files: Fallout76Prefsini</Tooltip>
         </Label>
       </Tab>
       <Tab text="Graphics" id="tabPageGraphics">
+        <Group text="TAA Sharpening" id="groupBoxTAASharpening">
+          <Label text="Post sharpen" id="labelTAAPostSharpen" />
+          <Slider id="sliderTAAPostSharpen">
+            <Tooltip>Sharpens the image.
+
+Default: 0.2
+Recommended: 0.4
+
+Affected values: fTAAPostSharpen
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Slider>
+          <Label text="Post overlay" id="labelTAAPostOverlay" />
+          <Slider id="sliderTAAPostOverlay">
+            <Tooltip>Sharpens the image.
+
+Recommended: 0.2
+Default: 0.2
+
+Affected values: fTAAPostOverlay
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Slider>
+        </Group>
         <Group text="Grass" id="groupBoxGrass">
           <Slider id="sliderGrassFadeDistance">
             <Tooltip>Sets the distance grass will begin to fade.
@@ -501,11 +524,19 @@ Affected files: Fallout76Prefs.ini</Tooltip>
           </Radiobutton>
         </Group>
         <Group text="Colors" id="groupBoxPipboyColors">
+          <Label text="Power Armor Color" id="label1">
+            <Tooltip>Changes the color of the Pip-Boy which is accessed from the Power Armor.
+
+Affected values: fPAEffectColorR, fPAEffectColorG, fPAEffectColorB
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Button text="Pick color" id="buttonColorPickPAPipboy" />
+          <Button text="Reset" id="buttonColorResetPipboy" />
+          <Button text="Reset" id="buttonColorResetPAPipboy" />
           <Label text="Quick-Boy Color" id="labelQuickboyColor">
             <Tooltip>Affected values: fQuickBoyEffectColorR, fQuickBoyEffectColorG, fQuickBoyEffectColorB
 Affected files: Fallout76Custom.ini</Tooltip>
           </Label>
-          <Button text="Reset" id="buttonColorResetPipboy" />
           <Button text="Pick color" id="buttonColorPickQuickboy" />
           <Button text="Reset" id="buttonColorResetQuickboy" />
           <Label text="Pip-Boy Color" id="labelPipboyColor">

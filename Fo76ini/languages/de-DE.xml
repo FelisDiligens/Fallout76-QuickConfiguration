@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.4.2">
   <Strings>
-    <String id="modsDeploymentNecessary" text="Übernehmen von Änderungen notwendig" />
-    <String id="modsAllDone" text="Alles erledigt" />
+    <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
+    <String text="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary" />
+    <String text="Alles erledigt" id="modsAllDone" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -65,6 +66,11 @@ Das Spiel wird daraufhin alle benötigten *.ini Dateien erstellen.</Messagebox>
     <Messagebox title="Fertig" id="oldValuesResetToDefault">Einige Werte wurden zurückgesetzt.
 Nur instabile Werte aus früheren Versionen sind betroffen.
 Vergiss nicht auf "Anwenden" zu drücken.</Messagebox>
+    <Messagebox title="Fehler" id="onLoadFuncException">{0} Ausnahme(n) sind aufgetreten, während die UI geladen wurde.
+Das kann durch beschädigte *.ini Dateien verursacht worden sein.
+Einige UI-Elemente könnten unter Umständen nicht korrekt funktionieren.
+
+{1}</Messagebox>
     <Messagebox title="Archive2 nicht installiert" id="modsArchive2NotSet">Bitte lade Archive2 runter und setze den Pfad, um *.ba2 Archive zu extrahieren.</Messagebox>
     <Messagebox title="Spielpfad unbekannt" id="modsGamePathNotSet">Bitte setze den Spielpfad (im Ordner sollte Fallout76.exe sein).</Messagebox>
     <Messagebox title="Ungültiger Pfad" id="modsArchive2Invalid">Ungültiger Pfad zu Archive2.
@@ -84,9 +90,11 @@ Bitte extrahiere das Archiv manuell und füge es als Ordner hinzu.</Messagebox>
     <Messagebox title="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary">Um diese Aktion durchzuführen müssen die Änderungen übernommen werden.</Messagebox>
     <Messagebox title="Bist du sicher?" id="modsOnCloseDeploymentNecessary">Es wurden noch nicht alle Änderungen übernommen.
 Möchtest du wirklich den Mod-Manager schließen?</Messagebox>
+    <Messagebox title="Mod folder does not exist." id="modDirNotExist">The path {0} does not exist.
+The mod folder was removed without removing the entry in the manifest.</Messagebox>
     <Messagebox title="Ungültiger Eintrag in manifest.xml" id="modsInvalidManifestEntry">Ein Mod-Eintrag ist ungültig und wurde ignoriert.
 Fehler: {0}</Messagebox>
-    <Messagebox title="Invalid manifest.xml entry" id="modsInvalidManifestRoot">Das &lt;Mods&gt;-Tag hat ungültige Attribute.
+    <Messagebox title="Ungültiger Eintrag in manifest.xml" id="modsInvalidManifestRoot">Das &lt;Mods&gt;-Tag hat ungültige Attribute.
 Fehler: {0}</Messagebox>
     <Messagebox title="Manuell installiere Mods importieren?" id="modsImportQuestion">Bist du sicher, dass du Mods importieren möchtest, die außerhalb des Mod-Managers installiert wurden?</Messagebox>
     <Messagebox title="Gleiche Archivnamen" id="modsSameArchiveName">Einige Mods haben den selben Archivnamen: "{0}".
@@ -110,24 +118,24 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
       <Tab text="Allgemein" id="tabPageGeneral">
         <Group text="Oberfläche" id="groupBoxInterface">
           <Checkbox text="Zeige den Kompass an" id="checkBoxShowCompass">
-            <Tooltip>Affected values: bShowCompass
-  Affected files: Fallout76Prefs.ini</Tooltip>
+            <Tooltip>Betroffene Werte: bShowCompass
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Zeige Schadenspunkte in Nuclear Winter an" id="checkBoxShowDamageNumbersNW">
             <Tooltip>Betroffene Werte: bShowDamageNumbers
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Zeige Schadenspunkte im Abenteuermodus an" id="checkBoxShowDamageNumbersA">
             <Tooltip>Betroffene Werte: bShowDamageNumbers
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Allgemeine Untertitel aktivieren" id="checkBoxGeneralSubtitles">
             <Tooltip>Betroffene Werte: bGeneralSubtitles
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Dialoguntertitel aktivieren" id="checkBoxDialogueSubtitles">
             <Tooltip>Betroffene Werte: bDialogueSubtitles
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Spieledition" id="groupBoxGameEdition">
@@ -135,62 +143,60 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
           <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
         </Group>
         <Group text="Hauptmenü" id="groupBoxMainMenu">
+          <Checkbox text="Show splash screen with news on startup" id="checkBoxShowSplash">
+            <Tooltip>If unchecked, the game won't bother you with news on startup.
+
+Betroffene Werte: bShowSplash
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
           <Checkbox text="Introvideos abspielen" id="checkBoxIntroVideos">
             <Tooltip>Ist diese Option deaktiviert, startet das Spiel ohne das Bethesda-Video abzuspielen.
 
-  Betroffene Werte: sIntroSequence, uMainMenuDelayBeforeAllowSkip
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Werte: sIntroSequence, uMainMenuDelayBeforeAllowSkip
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Hintergrundmusik im Hauptmenü abspielen" id="checkBoxMainMenuMusic">
             <Tooltip>Wenn deaktiviert, dann spielt das Spiel keine Hintergrundmusik im Hauptmenü ab.
 
-  Betroffene Werte: bPlayMainMenuMusic
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Werte: bPlayMainMenuMusic
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
         </Group>
-        <Label text="Automatisches Speichern alle X Minuten:" id="labelAutoSaveInterval" />
-        <Number id="numAutoSaveInterval">
-          <Tooltip>Die meisten Leute setzen es auf 2 oder 5.
-  Ich weiß nicht, ob es tatsächlich etwas bringt.
-
-  Betroffene Werte: fAutosaveEveryXMins
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
-        </Number>
       </Tab>
       <Tab text="Anzeige" id="tabPageDisplay">
         <Checkbox text="Immer aktiv" id="checkBoxAlwaysActive">
           <Tooltip>Deaktiviere das, wenn du möchtest, dass das Spiel pausiert, wenn es nicht das aktive Fenster ist.
 
-  Betroffene Werte: bAlwaysActive
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Werte: bAlwaysActive
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
         </Checkbox>
         <Checkbox text="Immer im Vordergrund" id="checkBoxTopMostWindow">
           <Tooltip>Mit dieser Option bleibt das Spielfenster immer im Vordergrund.
   BEACHTE: Diese Option wird dich davon abhalten, Alt+Tab (zumindest auf Einzelbildschirmen) zu verwenden.
 
-  Betroffene Werte: bTopMostWindow
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: bTopMostWindow
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </Checkbox>
         <Group text="Sichtfeld" id="groupBoxFieldOfView">
           <Label text="Welt-Sichtfeld (3rd-Person-Perspektive):" id="labelWorldFOV">
             <Tooltip>Ändert das Sichtfeld in der 3rd-Person-Perspektive.
 
   Standard: 80
-  Betroffene Werte: fDefaultWorldFOV
-  Betroffene Dateien: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: fDefaultWorldFOV
+Betroffene Dateien: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
           </Label>
           <Label text="1st-Person-Sichtfeld:" id="labelFirstPersonFOV">
             <Tooltip>Ändert das Sichtfeld in der 1st-Person-Perspektive.
 
   Standard: 80
-  Betroffene Werte: fDefault1stPersonFOV
-  Betroffene Dateien: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: fDefault1stPersonFOV
+Betroffene Dateien: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
           </Label>
         </Group>
         <Number id="numCustomResH">
           <Tooltip>Ändert die vertikale Auflösung (Höhe).
 
-  Betroffene Werte: iSize H</Tooltip>
+Betroffene Werte: iSize H</Tooltip>
         </Number>
         <Label text="X" id="labelCustomResolutionSpacer" />
         <Label text="Anzeigenmodus:" id="labelDisplayMode">
@@ -207,53 +213,49 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
   Sieht verpixelt aus (es benutzt Nearest Neighbor), wenn die Auflösung niedrig ist.
 
 
-  Betroffene Werte: bFull Screen, bBorderless
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: bFull Screen, bBorderless
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </Label>
         <Number id="numCustomResW">
           <Tooltip>Ändert die horizontale Auflösung (Breite).
 
-  Betroffene Werte: iSize W</Tooltip>
+Betroffene Werte: iSize W</Tooltip>
         </Number>
         <Label text="Auflösung:" id="labelResolution">
           <Tooltip>Ändert die Auflösung des Spiels.
   Setze es auf "Benutzerdefiniert", um eigene Werte einzutragen.
 
-  Betroffene Werte: iSize W, iSize H
-  Betroffene Dateien: Fallout76Prefsini</Tooltip>
+Betroffene Werte: iSize W, iSize H
+Betroffene Dateien: Fallout76Prefsini</Tooltip>
         </Label>
         <Label text="Benutzerdefinierte Auflösung:" id="labelCustomResolution">
           <Tooltip>Setze es auf "Benutzerdefiniert", um eigene Werte einzutragen.</Tooltip>
         </Label>
       </Tab>
       <Tab text="Grafik" id="tabPageGraphics">
-        <Group text="Sonne" id="groupBoxSun">
-          <Label text="Beachte: Das Spiel aktualisiert die Sonne nur, wenn\nder Spieler sich bewegt. Ansonsten alle 5 Sekunden." id="labelSunSideNote" />
-          <Label text="Der Sonnenschatten bewegt sich %1 Sekunde(n) lang.\nDie Sonnenposition wird jede %2 Sekunde(n) aktualisiert." id="labelSunShadowDescription" />
-          <Label text="Sonnen-Update-Schwellenwert:" id="labelSunUpdateThreshold">
-            <Tooltip>Bestimmt die Zeit zwischen dem das Spiel den Sonnenschatten aktualisiert.
-  Ein Wert von 0,05 ist dabei 1 Sekunde. Ein Wert von 1 ist somit 20 Sekunden.
-  Ein höherer Wert vergrößert zudem die Distanz, die der Schatten zurücklegt.
+        <Group text="TAA-Schärfen" id="groupBoxTAASharpening">
+          <Label text="Post-Schärfe" id="labelTAAPostSharpen" />
+          <Slider id="sliderTAAPostSharpen">
+            <Tooltip>Schärft das Bild.
 
-  Betroffene Werte: fSunUpdateThreshold
-  Betroffene Dateien: Fallout76.ini</Tooltip>
-          </Label>
-          <Label text="Sonnenschatten-Update-Dauer:" id="labelSunShadowUpdateTime">
-            <Tooltip>Bestimmt, wie schnell (in Sekunden) sich der Sonnenschatten bewegt.
+Standard: 0.2
+Empfohlenen: 0.4
 
-  Betroffene Werte: fSunShadowUpdateTime
-  Betroffene Dateien: Fallout76.ini</Tooltip>
-          </Label>
+Betroffene Werte: fTAAPostSharpen
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+          </Slider>
+          <Label text="Post-Overlay" id="labelTAAPostOverlay" />
+          <Slider id="sliderTAAPostOverlay">
+            <Tooltip>Schärft das Bild.
+
+Empfohlenen: 0.2
+Standard: 0.2
+
+Betroffene Werte: fTAAPostOverlay
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+          </Slider>
         </Group>
         <Group text="Gras" id="groupBoxGrass">
-          <Slider id="sliderGrassDensity">
-            <Tooltip>Grasdichte (Niedrigerer Wert = Mehr Gras)
-
-  Standard: 20
-  Betroffene Werte: iMinGrassSize
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
-          </Slider>
-          <Label text="Grasdichte" id="labelGrassDensity" />
           <Slider id="sliderGrassFadeDistance">
             <Tooltip>Setzt die Distanz, ab der Gras ausgeblendet wird.
 
@@ -261,15 +263,15 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
   Hoch ist 5500
   Ultra ist 7000
 
-  Betroffene Werte: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Slider>
           <Label text="Ausblende-Distanz" id="labelGrassFadeDistance" />
           <Checkbox text="Gras aktivieren" id="checkBoxGrass">
             <Tooltip>(De)aktiviert Gras im Spiel.
 
-  Betroffene Werte: bAllowCreateGrass
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Werte: bAllowCreateGrass
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Detaillierungsgrad (LOD)" id="groupBoxLOD">
@@ -277,20 +279,20 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
           <Slider id="sliderLODActors">
             <Tooltip>Setzt die Distanz, ab der Charaktere (=Spiele, NSCs) ausgeblendet werden.
 
-  Betroffene Werte: fLODFadeOutMultActors
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: fLODFadeOutMultActors
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Slider>
           <Slider id="sliderLODItems">
             <Tooltip>Setzt die Distanz, ab der Gegenstände ausgeblendet werden.
 
-  Betroffene Werte: fLODFadeOutMultItems
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: fLODFadeOutMultItems
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Slider>
           <Slider id="sliderLODObjects">
             <Tooltip>Setzt die Distanz, ab der Objekte ausgeblendet werden.
 
-  Betroffene Werte: fLODFadeOutMultObjects
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: fLODFadeOutMultObjects
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Slider>
           <Label text="Charaktere" id="labelLODActors" />
           <Label text="Gegenstände" id="labelLODItems" />
@@ -300,16 +302,16 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
           <Checkbox text="Volumetrische Beleuchtung" id="checkBoxGodrays">
             <Tooltip>(De)aktiviert sichtbare Lichtstrahlen.
 
-  Betroffene Werte: bVolumetricLightingEnable
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: bVolumetricLightingEnable
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Schatten" id="groupBoxShadows">
           <Label text="Verschwommenheit:" id="labelShadowBlurriness">
             <Tooltip>Bestimmt, wie verschwommen Schatten dargestellt werden. Sehr nützlich, wenn man die Schattenauflösung verringert.
 
-  Betroffene Werte: uiOrthoShadowFilter
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: uiOrthoShadowFilter
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Label>
           <Slider id="sliderShadowDistance">
             <Tooltip>Setzt die Distanz, bis zu der Schatten dargestellt werden.
@@ -321,35 +323,23 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
 
   Ich denke, dass sehr niedrige Werte Schatten abschalten. Muss noch getestet werden.
 
-  Betroffene Werte: fShadowDistance, fDirShadowDistance
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: fShadowDistance, fDirShadowDistance
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Slider>
           <Label text="Distanz" id="labelShadowDistance" />
           <Label text="Texture-Map-Auflösung:" id="labelShadowTextureResolution">
             <Tooltip>Die Auflösung von Schatten. Eine höhere Auflösung macht Schatten detailierter.
 
-  Betroffene Werte: iShadowMapResolution
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: iShadowMapResolution
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Label>
         </Group>
         <Group text="Wasser" id="groupBoxWater">
-          <Checkbox text="Reflexionen" id="checkBoxWaterReflections">
-            <Tooltip>(De)aktiviert Reflexionen auf Wasseroberflächen.
-
-  Betroffene Werte: bUseWaterReflections
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Refraktionen" id="checkBoxWaterRefractions">
-            <Tooltip>(De)aktiviert Lichtbrechungen.
-
-  Betroffene Werte: bUseWaterRefractions
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
           <Checkbox text="Verdrängung" id="checkBoxWaterDisplacement">
             <Tooltip>(De)aktiviert Wasserverdrängung (Wellen).
 
-  Betroffene Werte: bUseWaterDisplacements
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: bUseWaterDisplacements
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Post-Processing" id="groupBoxPostProcessing">
@@ -357,14 +347,14 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
             <Tooltip>(De)aktiviert Umgebungsverdeckung.
   Umgebungsverdeckung fügt Schatten an Orten hinzu, wo Licht nicht heranreichen kann.
 
-  Betroffene Werte: bSAOEnable
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: bSAOEnable
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Tiefenschärfe" id="checkBoxDepthOfField">
             <Tooltip>(De)aktiviert Tiefenschärfe.
 
-  Betroffene Dateien: Fallout76Custom.ini
-  Betroffene Werte:
+Betroffene Dateien: Fallout76Custom.ini
+Betroffene Werte:
     bDynamicDepthOfField
     fDOFBlendRatio
     fDOFMinFocalCoefDist
@@ -376,21 +366,21 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
           <Checkbox text="Bewegungsunschärfe" id="checkBoxMotionBlur">
             <Tooltip>Macht sich bewegende Objekte unscharf, wenn die Kamera bewegt wird.
 
-  Betroffene Werte: bMBEnable
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Werte: bMBEnable
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Radiale Unschärfe" id="checkBoxRadialBlur">
             <Tooltip>Unscharfes Bild, wenn der Spieler verletzt wird oder sich Unterwasser befindet.
   Wenn diese Option deaktivert, könnte das zu klarer Sicht Unterwasser führen.
 
-  Betroffene Werte: bDoRadialBlur, iRadialBlurLevel
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Werte: bDoRadialBlur, iRadialBlurLevel
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Linsenreflexion" id="checkBoxLensFlare">
             <Tooltip>(De)aktiviert Blendenflecke bei Gegenlicht (z.B. wenn man in die Sonne schaut).
 
-  Betroffene Werte: bLensFlare
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: bLensFlare
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Wetter" id="groupBoxWeather">
@@ -398,28 +388,24 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
             <Tooltip>(De)aktiviert die Verdeckung von Nässe der Umgebung und der Kleidung.
   z.B. Wenn du in einem Haus stehst, dann ist es drinnen nicht nass.
 
-  Betroffene Werte: bWetnessOcclusion
-  Betroffene Dateien: Fallout76.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Nebel" id="checkBoxWeatherFog">
-            <Tooltip>Betroffene Werte: bFogEnabled
-  Betroffene Dateien: Fallout76.ini</Tooltip>
+Betroffene Werte: bWetnessOcclusion
+Betroffene Dateien: Fallout76.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Regen-Verdeckung" id="checkBoxWeatherRainOcclusion">
             <Tooltip>(De)aktiviert die Verdeckung von Regen.
   Wenn aktiviert, dann wird Regen nicht um deinen Charakter herum dargestellt, wenn du unter einem Dach stehst.
   Außerdem werden dabei auch keine Effekte auf dem Boden dargestellt.
 
-  Betroffene Werte: bRainOcclusion
-  Betroffene Dateien: Fallout76.ini</Tooltip>
+Betroffene Werte: bRainOcclusion
+Betroffene Dateien: Fallout76.ini</Tooltip>
           </Checkbox>
         </Group>
         <Label text="Anisotropisches Filtern:" id="labelAnisotropicFiltering">
           <Tooltip>Reduziert das Aliasing von Texturen, wenn diese aus schrägen Winkeln betrachtet werden.
 
   Standard: 8
-  Betroffene Werte: iMaxAnisotropy
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: iMaxAnisotropy
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </Label>
         <Checkbox text="Vertikale Synchronisierung" id="checkBoxVSync">
           <Tooltip>Wenn VSync deaktiviert wird, wird die FPS nicht mehr begrenzt.
@@ -431,8 +417,8 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
 
 
   Standard: Aktiviert
-  Betroffene Werte: iPresentInterval
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: iPresentInterval
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </Checkbox>
         <Label text="Antialiasing:" id="labelAntiAliasing">
           <Tooltip>Reduziert Aliasing indem die Kanten von Objekten verschwommen gemacht werden.
@@ -444,8 +430,8 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
   Beachte: FXAA geht bei mir nicht. Das Spiel deaktiviert AA stattdessen vollständig. Zumindest bei mir.
 
   Standard: TAA
-  Betroffene Werte: sAntiAliasing
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: sAntiAliasing
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </Label>
       </Tab>
       <Tab text="Steuerung" id="tabPageControls">
@@ -454,14 +440,14 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
             <Tooltip>Nimm den Haken raus, wenn du einen Gamepad angeschlossen hast, aber lieber Tastatur und Maus benutzen willst.
   Ansonsten lass es eingeschaltet.
 
-  Betroffene Werte: bGamepadEnable
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Werte: bGamepadEnable
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Vibration aktivieren (Force Feedback)" id="checkBoxGamepadRumble">
             <Tooltip>(De)aktiviert Vibrationen deines Gamepads.
 
-  Betroffene Werte: bGamePadRumble
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Werte: bGamePadRumble
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Maus" id="groupBoxMouse">
@@ -472,23 +458,16 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
   Beachte: Es könnte sein, dass dies nur auf 16:9 Monitoren funktioniert.
   Wenn es bei dir mit einem anderen Monitor-Seitenverhältnis funktionert, bitte lass es mich wissen.
 
-  Betroffene Werte: fIronSightsFOVRotateMult
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Werte: fIronSightsFOVRotateMult
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
           <Label text="Empfindlichkeit" id="labelMouseSensitivity" />
           <Slider id="sliderMouseSensitivity">
             <Tooltip>Mausempfindlichkeit
 
-  Betroffene Werte: fMouseHeadingSensitivity, fMouseHeadingSensitivityY
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Werte: fMouseHeadingSensitivity, fMouseHeadingSensitivityY
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Slider>
-          <Checkbox text="Aktiviere Mausbeschleunigung" id="checkBoxMouseAcceleration">
-            <Tooltip>Je schneller du deine Maus bewegst, desto schneller zielst du.
-
-  Standard: Enabled
-  Betroffene Werte: bMouseAcceleration
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
           <Checkbox text="Horizontale/vertikale Mausempfindlichkeit normalisieren" id="checkBoxFixMouseSensitivity">
             <Tooltip>Wenn aktiv, dann schaust du genauso schnell nach links/rechts wie oben/unten.
   Wenn nicht aktiv, dann schaust du schneller nach links/rechts als nach oben/unten.
@@ -502,8 +481,8 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
       Bei 21:9 ist der X-Wert .042
 
   Standard: Deaktiviert (.021 für X- und Y-Achse)
-  Betroffene Werte: fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Werte: fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
         </Group>
       </Tab>
@@ -519,38 +498,46 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
           <Number id="numPipboyTargetHeight">
             <Tooltip>Ändert die Höhe der Auflösung deines Pipboys/Quickboys.
 
-  Betroffene Werte: uPipboyTargetHeight
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: uPipboyTargetHeight
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Number>
           <Number id="numPipboyTargetWidth">
             <Tooltip>Ändert die Breite der Auflösung deines Pipboys/Quickboys.
 
-  Betroffene Werte: uPipboyTargetWidth
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: uPipboyTargetWidth
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Number>
           <Label text="X" id="labelPipboyResolutionSpacer" />
         </Group>
         <Group text="Modus" id="groupBoxPipboyMode">
           <Radiobutton text="QuickBoy verwenden" id="radioButtonQuickboy">
             <Tooltip>Betroffene Werte: bQuickboyMode
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Radiobutton>
           <Radiobutton text="PipBoy verwenden" id="radioButtonPipboy">
             <Tooltip>Betroffene Werte: bQuickboyMode
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Radiobutton>
         </Group>
         <Group text="Farben" id="groupBoxPipboyColors">
+          <Label text="Power-Armor Farbe" id="label1">
+            <Tooltip>Ändert die Farbe des Pip-Boys, den man im Power-Armor bedient.
+
+Betroffene Werte: fPAEffectColorR, fPAEffectColorG, fPAEffectColorB
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Button text="Farbe wählen" id="buttonColorPickPAPipboy" />
+          <Button text="Zurücksetzen" id="buttonColorResetPipboy" />
+          <Button text="Zurücksetzen" id="buttonColorResetPAPipboy" />
           <Label text="Quick-Boy Farbe" id="labelQuickboyColor">
             <Tooltip>Betroffene Werte: fQuickBoyEffectColorR, fQuickBoyEffectColorG, fQuickBoyEffectColorB
-  Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Label>
-          <Button text="Zurücksetzen" id="buttonColorResetPipboy" />
           <Button text="Farbe wählen" id="buttonColorPickQuickboy" />
           <Button text="Zurücksetzen" id="buttonColorResetQuickboy" />
           <Label text="Pip-Boy Farbe" id="labelPipboyColor">
             <Tooltip>Betroffene Werte: fPipboyEffectColorR, fPipboyEffectColorG, fPipboyEffectColorB
-  Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Label>
           <Button text="Farbe wählen" id="buttonColorPickPipboy" />
         </Group>
@@ -560,7 +547,7 @@ Modname mit gleichem Archivnamen: {1}</Messagebox>
       <Tooltip>Diese Option macht alle *.ini Datei schreibgeschützt.
   Aktiviere das, wenn deine Einstellungen vom Spiel rückgängig gemacht werden.
 
-  Betroffene Dateien: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
+Betroffene Dateien: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
     </Checkbox>
     <Button text="Anwenden" id="buttonApply" />
   </Form1>
