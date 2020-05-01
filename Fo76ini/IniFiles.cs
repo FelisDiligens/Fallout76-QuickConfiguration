@@ -144,20 +144,33 @@ namespace Fo76ini
             if (backupFolder == null)
                 backupFolder = DateTime.Now.ToString("Backup_yyyy-MM-dd_HH-mm-ss");
             String backupPath = Path.Combine(this.iniParentPath, backupFolder);
+            String tempPath;
 
             if (Directory.Exists(backupPath))
-                Directory.Delete(backupPath, true);
+                Utils.DeleteDirectory(backupPath);
 
             Directory.CreateDirectory(backupPath);
 
             if (File.Exists(this.fo76Path))
-                File.Copy(this.fo76Path, Path.Combine(backupPath, "Fallout76.ini"));
+            {
+                tempPath = Path.Combine(backupPath, "Fallout76.ini");
+                File.Copy(this.fo76CustomPath, tempPath);
+                SetFileReadOnlyAttribute(tempPath, false);
+            }
 
             if (File.Exists(this.fo76PrefsPath))
-                File.Copy(this.fo76PrefsPath, Path.Combine(backupPath, "Fallout76Prefs.ini"));
+            {
+                tempPath = Path.Combine(backupPath, "Fallout76Prefs.ini");
+                File.Copy(this.fo76CustomPath, tempPath);
+                SetFileReadOnlyAttribute(tempPath, false);
+            }
 
             if (File.Exists(this.fo76CustomPath))
-                File.Copy(this.fo76CustomPath, Path.Combine(backupPath, "Fallout76Custom.ini"));
+            {
+                tempPath = Path.Combine(backupPath, "Fallout76Custom.ini");
+                File.Copy(this.fo76CustomPath, tempPath);
+                SetFileReadOnlyAttribute(tempPath, false);
+            }
         }
 
 

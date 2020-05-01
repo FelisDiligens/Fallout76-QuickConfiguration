@@ -92,6 +92,32 @@ namespace Fo76ini
         }
 
         /// <summary>
+        /// Recursively deletes directory, but sets file attributes to normal before it deletes them.
+        /// </summary>
+        /// <param name="targetDir"></param>
+        public static void DeleteDirectory(string targetDir)
+        {
+            // https://stackoverflow.com/questions/1157246/unauthorizedaccessexception-trying-to-delete-a-file-in-a-folder-where-i-can-dele
+            File.SetAttributes(targetDir, FileAttributes.Normal);
+
+            string[] files = Directory.GetFiles(targetDir);
+            string[] dirs = Directory.GetDirectories(targetDir);
+
+            foreach (string file in files)
+            {
+                File.SetAttributes(file, FileAttributes.Normal);
+                File.Delete(file);
+            }
+
+            foreach (string dir in dirs)
+            {
+                Utils.DeleteDirectory(dir);
+            }
+
+            Directory.Delete(targetDir, false);
+        }
+
+        /// <summary>
         /// Clamps the value between min and max.
         /// </summary>
         /// <typeparam name="T"></typeparam>
