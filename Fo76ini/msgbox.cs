@@ -72,19 +72,14 @@ namespace Fo76ini
             );
 
             // Mods:
-            MsgBox.Add("modsArchive2NotSet",
-                "Archive2 needed",
-                "Please download Archive2 and set the path to decompress *.ba2 archives."
+            MsgBox.Add("modsArchive2Missing",
+                "Archive2 is missing",
+                ".\\Archive2\\Archive2.exe is missing.\nPlease download this tool again, or install Archive2 manually."
             );
 
             MsgBox.Add("modsGamePathNotSet",
                 "Game path not set",
                 "Please set the path to the game (where Fallout76.exe resides)."
-            );
-
-            MsgBox.Add("modsArchive2Invalid",
-                "Wrong path",
-                "Wrong Archive2 path.\nPlease select Archive2.exe"
             );
 
             MsgBox.Add("modsGamePathInvalid",
@@ -107,6 +102,11 @@ namespace Fo76ini
             MsgBox.Add("modsDeleteBtn",
                 "Are you sure?",
                 "Are you sure you want to delete the mod {0}?"
+            );
+
+            MsgBox.Add("modsDeleteBulkBtn",
+                "Are you sure?",
+                "Are you sure you want to delete {0} mods?"
             );
 
             MsgBox.Add("modsExtractUnknownError",
@@ -169,6 +169,16 @@ namespace Fo76ini
             MsgBox.Add("modsSameArchiveName",
                 "Conflicting mods",
                 "Some mods have the same archive name: \"{0}\".\nConflicting mod name: {1}"
+            );
+
+            MsgBox.Add("modDetailsMoveManagedFolderFailed",
+                "Failed to rename folder",
+                "Managed mod folder couldn't be renamed.\nError message: \"{0}\"."
+            );
+
+            MsgBox.Add("modsRepairDDSQuestion",
+                "Are you sure?",
+                "This will attempt to repair all *.dds files.\nIt can take a long time, depending on file size and number of files.\nAre you sure you want to continue?"
             );
         }
 

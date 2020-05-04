@@ -92,7 +92,8 @@ namespace Fo76ini
                     subControl.Name != "labelAuthorName" &&
                     subControl.Name != "labelTranslationAuthor" && 
                     subControl.Name != "groupBoxWIP" &&
-                    subControl.Name != "labelNewVersion")
+                    subControl.Name != "labelNewVersion" &&
+                    subControl.Name != "labelModsDeploy")
                 {
                     // Get XElement name:
                     String type = "Element";
@@ -124,6 +125,10 @@ namespace Fo76ini
                         type = "ProgressBar";
                     else if (subControl.Name.StartsWith("menuStrip"))
                         type = "Menu";
+                    else if (subControl.Name.StartsWith("toolStrip"))
+                        type = "Tool";
+                    else if (subControl.Name.StartsWith("listView"))
+                        type = "ListView";
 
                     XElement subElement = new XElement(type);
                     bool addSubElement = false;
@@ -138,7 +143,9 @@ namespace Fo76ini
                         !subControl.Name.StartsWith("slider") &&
                         !subControl.Name.StartsWith("color") &&
                         !subControl.Name.StartsWith("textBox") &&
-                        !subControl.Name.StartsWith("menuStrip"))
+                        !subControl.Name.StartsWith("menuStrip") &&
+                        !subControl.Name.StartsWith("toolStrip") &&
+                        !subControl.Name.StartsWith("listView"))
                     {
                         subElement.Add(new XAttribute("text", ToSafeString(subControl.Text)));
                         addSubElement = true;
@@ -158,11 +165,33 @@ namespace Fo76ini
                     {
                         foreach (ToolStripMenuItem menuItem in ((MenuStrip)subControl).Items)
                         {
-                            XElement xmlToolStripItem = new XElement("Item",
+                            XElement xmlMenuStripItem = new XElement("Item",
                                 new XAttribute("text", menuItem.Text),
                                 new XAttribute("id", menuItem.Name));
-                            subCount += SerializeMenuStripItems(xmlToolStripItem, menuItem.DropDownItems);
-                            subElement.Add(xmlToolStripItem);
+                            subCount += SerializeMenuStripItems(xmlMenuStripItem, menuItem.DropDownItems);
+                            subElement.Add(xmlMenuStripItem);
+                        }
+                    }
+                    if (subControl.Name.StartsWith("toolStrip"))
+                    {
+                        foreach (ToolStripItem toolItem in ((ToolStrip)subControl).Items)
+                        {
+                            if (toolItem.Name.StartsWith("toolStripButton"))
+                            {
+                                XElement xmlToolStripItem = new XElement("Button",
+                                    new XAttribute("text", toolItem.Text),
+                                    new XAttribute("id", toolItem.Name));
+                                subElement.Add(xmlToolStripItem);
+                                subCount++;
+                            }
+                        }
+                    }
+                    if (subControl.Name.StartsWith("listView"))
+                    {
+                        foreach (ColumnHeader col in this.formMods.listViewMods.Columns)
+                        {
+                            subElement.Add(new XElement("Column", col.Text));
+                            subCount++;
                         }
                     }
                     count += subCount;
@@ -268,14 +297,6 @@ namespace Fo76ini
             return options.ToArray<String>();
         }
 
-        private void SetDropDownOptions(ComboBox comboBox, String[] elements)
-        {
-            int i = comboBox.SelectedIndex;
-            comboBox.Items.Clear();
-            comboBox.Items.AddRange(elements);
-            comboBox.SelectedIndex = i;
-        }
-
         private void SerializeXMLFile(String name = null, String iso = null, String author = null, String fileName = null)
         {
             int index = this.comboBoxLanguage.SelectedIndex;
@@ -310,7 +331,7 @@ namespace Fo76ini
 
             // Create dropdowns:
             XElement xmlDropDowns = new XElement("Dropdowns");
-            foreach (KeyValuePair<String, ComboBoxContainer> pair in this.comboBoxes)
+            foreach (KeyValuePair<String, ComboBoxContainer> pair in ComboBoxContainer.Dict)
                 SerializeDropDownOptions(xmlDropDowns, pair.Key, pair.Value.Items);
             xmlRoot.Add(xmlDropDowns);
 
@@ -320,10 +341,13 @@ namespace Fo76ini
             // Serialize all control elements:
             XElement xmlForm1 = new XElement("Form1", new XAttribute("title", this.Text));
             XElement xmlFormMods = new XElement("FormMods", new XAttribute("title", this.formMods.Text));
+            XElement xmlFormModDetails = new XElement("FormModDetails");
             SerializeControlText(xmlForm1, this.toolTip, this);
             SerializeControlText(xmlFormMods, this.formMods.toolTip, this.formMods);
+            SerializeControlText(xmlFormModDetails, this.formMods.formModDetails.toolTip, this.formMods.formModDetails);
             xmlRoot.Add(xmlForm1);
             xmlRoot.Add(xmlFormMods);
+            xmlRoot.Add(xmlFormModDetails);
 
             // Save it:
             xmlDoc.Save(Path.Combine(languageFolder, fileName));
@@ -412,11 +436,14 @@ namespace Fo76ini
                 foreach (XElement xmlDropDown in xmlDropDowns.Descendants("Dropdown"))
                 {
                     String id = xmlDropDown.Attribute("id").Value;
-                    if (this.comboBoxes.ContainsKey(id))
+                    if (ComboBoxContainer.ContainsKey(id))
                     {
                         String[] items = DeserializeDropDownOptions(xmlDropDown);
-                        this.comboBoxes[id].SetRange(items);
-                        SetDropDownOptions(this.comboBoxes[id].comboBox, items);
+                        int i = ComboBoxContainer.Get(id).comboBox.SelectedIndex;
+                        ComboBoxContainer.Get(id).SetRange(items);
+                        //comboBox.Items.Clear();
+                        //comboBox.Items.AddRange(elements);
+                        ComboBoxContainer.Get(id).comboBox.SelectedIndex = i;
                     }
                 }
             }
@@ -457,6 +484,44 @@ namespace Fo76ini
                 // Well shit
             }
 
+            // Deserialize ToolStrip
+            // quick&dirty, again:
+            try
+            {
+                XElement xmlFormMods = xmlDoc.Root.Element("FormMods");
+                if (xmlFormMods != null)
+                {
+                    XElement xmlToolStrip = xmlFormMods.Descendants("Tool").FirstOrDefault();
+                    if (xmlToolStrip != null)
+                    {
+                        foreach (ToolStripItem toolItem in this.formMods.toolStrip1.Items)
+                        {
+                            if (toolItem.Name.StartsWith("toolStripButton") && dictText.ContainsKey(toolItem.Name))
+                            {
+                                toolItem.Text = dictText[toolItem.Name];
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                // Well shit again
+            }
+
+            // Deserialize ListView
+            // quick&dirty, once again:
+            XElement xmlListViewColumns = xmlDoc.Root.Descendants("ListView").FirstOrDefault();
+            if (xmlListViewColumns != null)
+            {
+                int i = 0;
+                foreach (XElement xmlColumn in xmlListViewColumns.Descendants("Column"))
+                {
+                    this.formMods.listViewMods.Columns[i].Text = xmlColumn.Value;
+                    i++;
+                }
+            }
+
             // Deserialize strings
             XElement strings = xmlDoc.Root.Element("Strings");
             if (strings != null)
@@ -471,9 +536,11 @@ namespace Fo76ini
             // Use the dictionaries to set all elements:
             DeserializeControlText(dictText, dictTooltip, this, this.toolTip);
             DeserializeControlText(dictText, dictTooltip, this.formMods, this.formMods.toolTip);
+            DeserializeControlText(dictText, dictTooltip, this.formMods.formModDetails, this.formMods.formModDetails.toolTip);
 
 
             CheckVersion();
+            this.formMods.UpdateUI();
             if (xmlDoc.Element("Language").Attribute("iso").Value != "en-US")
                 SerializeXMLFile();
         }

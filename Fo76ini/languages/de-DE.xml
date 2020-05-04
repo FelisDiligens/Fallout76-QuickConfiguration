@@ -1,9 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.4.2">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.5-pre">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary" />
     <String text="Alles erledigt" id="modsAllDone" />
+    <String text="Allgemein" id="modsTableFormatGeneral" />
+    <String text="Texturen" id="modsTableFormatTextures" />
+    <String text="Autom." id="modsTableFormatAutoDetect" />
+    <String text="Gebündelt" id="modsTableTypeBundled" />
+    <String text="Separat" id="modsTableTypeSeparate" />
+    <String text="Lose" id="modsTableTypeLoose" />
+    <String text="n.a." id="notApplicable" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -52,6 +59,16 @@
       <Option>2x</Option>
       <Option>3x = Standard, empfohlen</Option>
     </Dropdown>
+    <Dropdown id="ModInstallAs">
+      <Option>Gebündeltes *.ba2 Archiv</Option>
+      <Option>Separates *.ba2 Archiv</Option>
+      <Option>Lose Dateien</Option>
+    </Dropdown>
+    <Dropdown id="ModArchiveFormat">
+      <Option>Automatisch erkennen</Option>
+      <Option>Allgemein</Option>
+      <Option>Texturen (*.dds Dateien)</Option>
+    </Dropdown>
   </Dropdowns>
   <Messageboxes>
     <Messagebox title="Backup erstellen und speichern" id="backupAndSave">Möchtest du ein Backup machen bevor deine Änderungen gespeichert werden?
@@ -71,16 +88,16 @@ Das kann durch beschädigte *.ini Dateien verursacht worden sein.
 Einige UI-Elemente könnten unter Umständen nicht korrekt funktionieren.
 
 {1}</Messagebox>
-    <Messagebox title="Archive2 nicht installiert" id="modsArchive2NotSet">Bitte lade Archive2 runter und setze den Pfad, um *.ba2 Archive zu extrahieren.</Messagebox>
+    <Messagebox title="Archive2 is missing" id="modsArchive2Missing">.\Archive2\Archive2.exe fehlt.
+Bitte lade das Tool erneut herunter oder installiere Archive2 manuell.</Messagebox>
     <Messagebox title="Spielpfad unbekannt" id="modsGamePathNotSet">Bitte setze den Spielpfad (im Ordner sollte Fallout76.exe sein).</Messagebox>
-    <Messagebox title="Ungültiger Pfad" id="modsArchive2Invalid">Ungültiger Pfad zu Archive2.
-Bitte wähle Archive2.exe</Messagebox>
     <Messagebox title="Ungültiger Pfad" id="modsGamePathInvalid">Ungültiger Spielpfad</Messagebox>
     <Messagebox title="Mod {0} konnte nicht installiert werden." id="modsDeployErrorModDirNotFound">Der Ordner {0} existiert nicht.
 Bitte starte den Mod-Manager neu und füge die Mod erneut hinzu.</Messagebox>
     <Messagebox title="Mod {0} konnte nicht installiert werden." id="modsDeployErrorBA2RootIsNotData">Der Ordner {0} existiert nicht.
 Bitte starte den Mod-Manager neu und füge die Mod erneut hinzu.</Messagebox>
     <Messagebox title="Bist du sicher?" id="modsDeleteBtn">Bist du sicher, dass du {0} löschen möchtest?</Messagebox>
+    <Messagebox title="Bist du sicher?" id="modsDeleteBulkBtn">Bist du sicher, dass du {0} Mods löschen möchtest?</Messagebox>
     <Messagebox title="Archiv konnte nicht extrahiert werden" id="modsExtractUnknownError">{0}</Messagebox>
     <Messagebox title="Archiv konnte nicht extrahiert werden" id="modsExtractUnknownErrorText">Bitte extrahiere das Archiv manuell und füge es als Ordner hinzu.</Messagebox>
     <Messagebox title="7-Zip Archiv konnte nicht extrahiert werden." id="modsExtractUnknownError7zip">{0}</Messagebox>
@@ -90,8 +107,8 @@ Bitte extrahiere das Archiv manuell und füge es als Ordner hinzu.</Messagebox>
     <Messagebox title="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary">Um diese Aktion durchzuführen müssen die Änderungen übernommen werden.</Messagebox>
     <Messagebox title="Bist du sicher?" id="modsOnCloseDeploymentNecessary">Es wurden noch nicht alle Änderungen übernommen.
 Möchtest du wirklich den Mod-Manager schließen?</Messagebox>
-    <Messagebox title="Mod folder does not exist." id="modDirNotExist">The path {0} does not exist.
-The mod folder was removed without removing the entry in the manifest.</Messagebox>
+    <Messagebox title="Modordner existiert nicht." id="modDirNotExist">Der Pfad {0} existiert nicht.
+Der Modordner wurde entfernt ohne den Eintrag aus dem Manifest zu entfernen.</Messagebox>
     <Messagebox title="Ungültiger Eintrag in manifest.xml" id="modsInvalidManifestEntry">Ein Mod-Eintrag ist ungültig und wurde ignoriert.
 Fehler: {0}</Messagebox>
     <Messagebox title="Ungültiger Eintrag in manifest.xml" id="modsInvalidManifestRoot">Das &lt;Mods&gt;-Tag hat ungültige Attribute.
@@ -99,19 +116,40 @@ Fehler: {0}</Messagebox>
     <Messagebox title="Manuell installiere Mods importieren?" id="modsImportQuestion">Bist du sicher, dass du Mods importieren möchtest, die außerhalb des Mod-Managers installiert wurden?</Messagebox>
     <Messagebox title="Gleiche Archivnamen" id="modsSameArchiveName">Einige Mods haben den selben Archivnamen: "{0}".
 Modname mit gleichem Archivnamen: {1}</Messagebox>
+    <Messagebox title="Konnte Modorder nicht umbenennen" id="modDetailsMoveManagedFolderFailed">Modordner konnte nicht umbenannt werden.
+Fehlermeldung: "{0}".</Messagebox>
+    <Messagebox title="Bist du sicher?" id="modsRepairDDSQuestion">Dies wird versuchen alle *.dds Dateien zu reparieren.
+Das kann lange dauern, abhängig von Dateigröße und Anzahl an Dateien.
+Möchtest du fortfahren?</Messagebox>
+    <Messagebox title="Archive2 nicht installiert" id="modsArchive2NotSet">Bitte lade Archive2 runter und setze den Pfad, um *.ba2 Archive zu extrahieren.</Messagebox>
+    <Messagebox title="Ungültiger Pfad" id="modsArchive2Invalid">Ungültiger Pfad zu Archive2.
+Bitte wähle Archive2.exe</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Schnellkonfiguration">
+    <Group text="Optionen" id="groupBoxOptions">
+      <Checkbox text="Nuclear Winter Mode" id="checkBoxNWMode" />
+      <Checkbox text="*.ini Schreibschutz aktivieren" id="checkBoxReadOnly">
+        <Tooltip>Diese Option macht alle *.ini Datei schreibgeschützt.
+  Aktiviere das, wenn deine Einstellungen vom Spiel rückgängig gemacht werden.
+
+Betroffene Dateien: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
+      </Checkbox>
+    </Group>
+    <Group text="Spieledition" id="groupBoxGameEdition">
+      <Radiobutton text="Steam" id="radioButtonEditionSteam" />
+      <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+    </Group>
+    <Button text="Mods verwalten" id="buttonManageMods" />
     <Button text="Spiel starten" id="buttonLaunchGame" />
     <TabContainer id="tabControl1">
       <Tab text="Info" id="tabPageInfo">
         <Button text="Einstellungen aus v.1.3.1 und früher zurücksetzen" id="buttonFixIssuesEarlierVersion" />
-        <Link text="Öffne Liesmich (Englisch)" id="linkLabel1" />
-        <Button text="Mods verwalten" id="buttonManageMods" />
         <Label text="Übersetzt von:" id="labelTranslationBy" />
+        <Link text="Öffne Liesmich (Englisch)" id="linkLabel1" />
         <Label text="Autor:" id="labelAuthor" />
+        <Label text="Sprache:" id="labelLanguage" />
         <Label text="Version:" id="labelVersion" />
         <Label text="Dieses Tool erlaubt es dir, alles mögliche schnell einzustellen.\nTipp: Fahr mit der Maus über eine Option,\num mehr darüber zu lesen, was es tut." id="labelDescription" />
-        <Label text="Sprache:" id="labelLanguage" />
         <Link text="Lade die aktuellste Version auf NexusMods herunter." id="linkLabelDownloadPage" />
         <Label text="Fallout 76 Schnellkonfiguration" id="labelTitle" />
       </Tab>
@@ -137,10 +175,6 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             <Tooltip>Betroffene Werte: bDialogueSubtitles
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
-        </Group>
-        <Group text="Spieledition" id="groupBoxGameEdition">
-          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
-          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
         </Group>
         <Group text="Hauptmenü" id="groupBoxMainMenu">
           <Checkbox text="Show splash screen with news on startup" id="checkBoxShowSplash">
@@ -407,7 +441,7 @@ Betroffene Dateien: Fallout76.ini</Tooltip>
 Betroffene Werte: iMaxAnisotropy
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </Label>
-        <Checkbox text="Vertikale Synchronisierung" id="checkBoxVSync">
+        <Checkbox text="FPS-Begrenzung (Vertikale Synchronisierung)" id="checkBoxVSync">
           <Tooltip>Wenn VSync deaktiviert wird, wird die FPS nicht mehr begrenzt.
 
   Aktiviere VSync, wenn dich Screen-Tearing stört.
@@ -543,56 +577,44 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </Group>
       </Tab>
     </TabContainer>
-    <Checkbox text="*.ini Schreibschutz aktivieren" id="checkBoxReadOnly">
-      <Tooltip>Diese Option macht alle *.ini Datei schreibgeschützt.
-  Aktiviere das, wenn deine Einstellungen vom Spiel rückgängig gemacht werden.
-
-Betroffene Dateien: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
-    </Checkbox>
     <Button text="Anwenden" id="buttonApply" />
   </Form1>
   <FormMods title="Mods verwalten">
-    <Group text="Gebündlete *.ba2 Optionen" id="groupBoxModsBundledBA2">
-      <Checkbox text="Komprimiere bundled.ba2" id="checkBoxModsBundledBA2Compression" />
-      <Checkbox text="Komprimiere bundled_textures.ba2" id="checkBoxModsBundledTexturesBA2Compression" />
-    </Group>
-    <Checkbox text="Nuclear Winter Modus" id="checkBoxModsNWMode">
-      <Tooltip>Wenn aktiv, dann werden alle Mods vom Spiel entfernt.
-Nützlich, wenn man eine Runde Nuclear Winter spielen möchte, daher der Name.</Tooltip>
-    </Checkbox>
-    <Label text="Mods können Probleme mit dem Spiel verursachen.\nDu kannst aufgrund von Mods permanent gebannt werden.\nWenn du Mods installierst, übernimmst du die volle Verantwortung!" id="labelModWarning" />
-    <Group text="Mod-Reihenfolde" id="groupBoxMods">
-      <Button text="Eins rauf" id="buttonModMoveUp" />
-      <Button text="Eins runter" id="buttonModMoveDown" />
-      <Checkbox text="Markiere alles" id="checkBoxModsCheckAll" />
-    </Group>
-    <Group text="Moddetails bearbeiten" id="groupBoxModEdit">
-      <Group text="BA2-Optionen" id="groupBoxBA2">
-        <Label text="Archivname:" id="labelModArchiveName" />
-        <Radiobutton text="DDS-Format benutzen (für Texturen)" id="radioButtonModBA2DDSFormat" />
-        <Checkbox text="Archiv komprimieren" id="checkBoxModBA2Compression" />
-        <Radiobutton text="Allgemeines Format benutzen" id="radioButtonModBA2GeneralFormat" />
-      </Group>
-      <Button text="..." id="buttonModPickRootDir" />
-      <Label text="Installiere in:" id="labelModInstallInto" />
-      <Button text="Ordner öffnen" id="buttonModOpenFolder" />
-      <Label text="Modname:" id="labelModName" />
-      <Group text="Installiere als" id="groupBoxModInstallType">
-        <Radiobutton text="Gebündletes *.ba2 Archiv (Texturen, *.dds Dateien)" id="radioButtonModBA2ArchiveTextures" />
-        <Radiobutton text="Separates *.ba2 Archiv" id="radioButtonModSeparateBA2" />
-        <Radiobutton text="Gebündletes *.ba2 Archiv (Allgemein)" id="radioButtonModBA2Archive" />
-        <Radiobutton text="Lose Dateien" id="radioButtonModLoose" />
-      </Group>
-      <Button text="Mod löschen" id="buttonModRemove" />
-    </Group>
-    <Group text="Pfade" id="groupBoxGamePaths">
-      <Label text="Spiel-Pfad:" id="labelGamePath" />
-      <Button text="..." id="buttonPickArchive2Path" />
-      <Label text="Archive2-Pfad:" id="labelArchive2Path" />
-      <Button text="..." id="buttonPickGamePath" />
-    </Group>
-    <Button text="Änderungen anwenden" id="buttonModsDeploy" />
-    <Label text="All set" id="labelModsDeploy" />
+    <Element id="panel1">
+      <Button text="Änderungen anwenden" id="buttonModsDeploy" />
+      <Checkbox text="Mods deaktivieren" id="checkBoxDisableMods" />
+    </Element>
+    <TabContainer id="tabControl1">
+      <Tab text="Mod-Reihenfolge" id="tabPageModOrder">
+        <Tool id="toolStrip1">
+          <Button text="Mod hinzufügen (Archiv)" id="toolStripButtonAddMod" />
+          <Button text="Mod hinzufügen (Ordner)" id="toolStripButtonAddModFolder" />
+          <Button text="Alle Mods (de)aktivieren" id="toolStripButtonCheckAll" />
+          <Button text="Eins rauf" id="toolStripButtonMoveUp" />
+          <Button text="Eins runter" id="toolStripButtonMoveDown" />
+          <Button text="Modeigenschaften ändern" id="toolStripButtonModEdit" />
+          <Button text="Modordner öffnen" id="toolStripButtonModOpenFolder" />
+          <Button text="Mod(s) löschen" id="toolStripButtonDeleteMod" />
+        </Tool>
+        <ListView id="listViewMods">
+          <Column>Modname</Column>
+          <Column>Typ</Column>
+          <Column>Installiere nach</Column>
+          <Column>Archivname</Column>
+          <Column>Archivformat</Column>
+        </ListView>
+      </Tab>
+      <Tab text="Einstellungen" id="tabPageModsSettings">
+        <Group text="Gebündlete *.ba2 Optionen" id="groupBoxModsBundledBA2">
+          <Checkbox text="Komprimiere bundled.ba2" id="checkBoxModsBundledBA2Compression" />
+          <Checkbox text="Komprimiere bundled_textures.ba2" id="checkBoxModsBundledTexturesBA2Compression" />
+        </Group>
+        <Group text="Pfade" id="groupBoxGamePaths">
+          <Label text="Spiel-Pfad:" id="labelGamePath" />
+          <Button text="..." id="buttonPickGamePath" />
+        </Group>
+      </Tab>
+    </TabContainer>
     <Menu id="menuStrip1">
       <Item text="Datei" id="fileToolStripMenuItem">
         <Item text="Mod hinzufügen" id="addModarchiveToolStripMenuItem">
@@ -604,11 +626,34 @@ Nützlich, wenn man eine Runde Nuclear Winter spielen möchte, daher der Name.</
         <Item text="Änderungen anwenden" id="deployToolStripMenuItem" />
       </Item>
       <Item text="Ansicht" id="editToolStripMenuItem">
-        <Item text="Zeige Dateien, die von nachfolgenden Mods überschrieben werden" id="showConflictingFilesToolStripMenuItem" />
+        <Item text="Zeige Modkonflikte" id="showConflictingFilesToolStripMenuItem" />
+        <Item text="Nutzeroberfläche neuladen" id="reloadUIToolStripMenuItem" />
+      </Item>
+      <Item text="Tools" id="toolsToolStripMenuItem">
+        <Item text="Repariere alle *.dds Dateien" id="repairddsFilesToolStripMenuItem" />
       </Item>
       <Item text="Hilfe" id="helpToolStripMenuItem">
         <Item text="Zeige LIESMICH (Englisch)" id="showREADMEToolStripMenuItem" />
       </Item>
     </Menu>
   </FormMods>
+  <FormModDetails>
+    <Button text="Abbrechen" id="buttonModDetailsCancel" />
+    <Button text="OK" id="buttonModDetailsOK" />
+    <Button text="Anwenden" id="buttonModDetailsApply" />
+    <Element id="panel1">
+      <Label text="..." id="labelModDetailRepairStatus" />
+      <Button text="Repariere *.dds Dateien" id="buttonModRepairDDS" />
+      <Checkbox text="Archiv komprimieren" id="checkBoxModBA2Compression" />
+      <Label text="Archivname:" id="labelModArchiveName" />
+      <Checkbox text="Aktiviere diese Mod" id="checkBoxModDetailsEnabled" />
+      <Button text="Modordner öffnen" id="buttonModOpenFolder" />
+      <Label text="Modordnername:" id="labelModFolderName" />
+      <Label text="Archivformat:" id="labelModArchiveFormat" />
+      <Label text="Installieren als:" id="labelModInstallAs" />
+      <Label text="Modname:" id="labelModName" />
+      <Button text="..." id="buttonModPickRootDir" />
+      <Label text="Installiere nach:" id="labelModInstallInto" />
+    </Element>
+  </FormModDetails>
 </Language>

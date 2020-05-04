@@ -86,7 +86,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.sliderTAAPostOverlay = new MetroFramework.Controls.MetroTrackBar();
             this.sliderTAAPostSharpen = new MetroFramework.Controls.MetroTrackBar();
-            this.pictureBoxBanner = new System.Windows.Forms.PictureBox();
             this.buttonLaunchGame = new System.Windows.Forms.Button();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.tabPagePipBoy = new System.Windows.Forms.TabPage();
@@ -146,32 +145,33 @@
             this.comboBoxResolution = new System.Windows.Forms.ComboBox();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.groupBoxInterface = new System.Windows.Forms.GroupBox();
+            this.groupBoxMainMenu = new System.Windows.Forms.GroupBox();
             this.groupBoxGameEdition = new System.Windows.Forms.GroupBox();
             this.radioButtonEditionSteam = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionBethesdaNet = new System.Windows.Forms.RadioButton();
-            this.groupBoxMainMenu = new System.Windows.Forms.GroupBox();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
             this.labelNewVersion = new System.Windows.Forms.Label();
             this.buttonFixIssuesEarlierVersion = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.buttonManageMods = new System.Windows.Forms.Button();
             this.labelTranslationAuthor = new System.Windows.Forms.Label();
             this.labelTranslationBy = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.labelAuthorName = new System.Windows.Forms.Label();
             this.labelConfigVersion = new System.Windows.Forms.Label();
             this.labelAuthor = new System.Windows.Forms.Label();
-            this.labelVersion = new System.Windows.Forms.Label();
-            this.labelDescription = new System.Windows.Forms.Label();
-            this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
             this.labelLanguage = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
+            this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
+            this.labelDescription = new System.Windows.Forms.Label();
             this.linkLabelDownloadPage = new System.Windows.Forms.LinkLabel();
             this.labelTitle = new System.Windows.Forms.Label();
+            this.buttonManageMods = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.checkBoxNWMode = new System.Windows.Forms.CheckBox();
+            this.groupBoxOptions = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBanner)).BeginInit();
             this.tabPagePipBoy.SuspendLayout();
             this.groupBoxPipboyResolution.SuspendLayout();
             this.groupBoxPipboyMode.SuspendLayout();
@@ -205,17 +205,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.numFirstPersonFOV)).BeginInit();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxInterface.SuspendLayout();
-            this.groupBoxGameEdition.SuspendLayout();
             this.groupBoxMainMenu.SuspendLayout();
+            this.groupBoxGameEdition.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.groupBoxOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonApply
             // 
-            this.buttonApply.Location = new System.Drawing.Point(175, 526);
+            this.buttonApply.Location = new System.Drawing.Point(266, 526);
             this.buttonApply.Name = "buttonApply";
-            this.buttonApply.Size = new System.Drawing.Size(75, 23);
+            this.buttonApply.Size = new System.Drawing.Size(82, 23);
             this.buttonApply.TabIndex = 2;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
@@ -224,7 +225,7 @@
             // checkBoxReadOnly
             // 
             this.checkBoxReadOnly.AutoSize = true;
-            this.checkBoxReadOnly.Location = new System.Drawing.Point(12, 530);
+            this.checkBoxReadOnly.Location = new System.Drawing.Point(6, 42);
             this.checkBoxReadOnly.Name = "checkBoxReadOnly";
             this.checkBoxReadOnly.Size = new System.Drawing.Size(140, 17);
             this.checkBoxReadOnly.TabIndex = 4;
@@ -419,9 +420,9 @@
             this.checkBoxVSync.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxVSync.Location = new System.Drawing.Point(9, 66);
             this.checkBoxVSync.Name = "checkBoxVSync";
-            this.checkBoxVSync.Size = new System.Drawing.Size(57, 17);
+            this.checkBoxVSync.Size = new System.Drawing.Size(137, 17);
             this.checkBoxVSync.TabIndex = 15;
-            this.checkBoxVSync.Text = "VSync";
+            this.checkBoxVSync.Text = "Frame rate cap (VSync)";
             this.toolTip.SetToolTip(this.checkBoxVSync, resources.GetString("checkBoxVSync.ToolTip"));
             this.checkBoxVSync.UseVisualStyleBackColor = true;
             // 
@@ -928,23 +929,11 @@
         "tSharpen\r\nAffected files: Fallout76Custom.ini");
             this.sliderTAAPostSharpen.Value = 20;
             // 
-            // pictureBoxBanner
-            // 
-            this.pictureBoxBanner.BackColor = System.Drawing.Color.Black;
-            this.pictureBoxBanner.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxBanner.Image")));
-            this.pictureBoxBanner.InitialImage = null;
-            this.pictureBoxBanner.Location = new System.Drawing.Point(0, -3);
-            this.pictureBoxBanner.Name = "pictureBoxBanner";
-            this.pictureBoxBanner.Size = new System.Drawing.Size(365, 72);
-            this.pictureBoxBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxBanner.TabIndex = 4;
-            this.pictureBoxBanner.TabStop = false;
-            // 
             // buttonLaunchGame
             // 
-            this.buttonLaunchGame.Location = new System.Drawing.Point(260, 526);
+            this.buttonLaunchGame.Location = new System.Drawing.Point(157, 526);
             this.buttonLaunchGame.Name = "buttonLaunchGame";
-            this.buttonLaunchGame.Size = new System.Drawing.Size(92, 23);
+            this.buttonLaunchGame.Size = new System.Drawing.Size(103, 23);
             this.buttonLaunchGame.TabIndex = 8;
             this.buttonLaunchGame.Text = "Launch game";
             this.buttonLaunchGame.UseVisualStyleBackColor = true;
@@ -958,7 +947,7 @@
             this.tabPagePipBoy.Location = new System.Drawing.Point(4, 22);
             this.tabPagePipBoy.Name = "tabPagePipBoy";
             this.tabPagePipBoy.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePipBoy.Size = new System.Drawing.Size(332, 419);
+            this.tabPagePipBoy.Size = new System.Drawing.Size(332, 412);
             this.tabPagePipBoy.TabIndex = 5;
             this.tabPagePipBoy.Text = "Pipboy";
             this.tabPagePipBoy.UseVisualStyleBackColor = true;
@@ -1123,7 +1112,7 @@
             this.tabPageControls.Location = new System.Drawing.Point(4, 22);
             this.tabPageControls.Name = "tabPageControls";
             this.tabPageControls.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageControls.Size = new System.Drawing.Size(332, 419);
+            this.tabPageControls.Size = new System.Drawing.Size(332, 412);
             this.tabPageControls.TabIndex = 2;
             this.tabPageControls.Text = "Controls";
             this.tabPageControls.UseVisualStyleBackColor = true;
@@ -1209,7 +1198,7 @@
             this.tabPageGraphics.Location = new System.Drawing.Point(4, 22);
             this.tabPageGraphics.Name = "tabPageGraphics";
             this.tabPageGraphics.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGraphics.Size = new System.Drawing.Size(332, 419);
+            this.tabPageGraphics.Size = new System.Drawing.Size(332, 412);
             this.tabPageGraphics.TabIndex = 1;
             this.tabPageGraphics.Text = "Graphics";
             this.tabPageGraphics.UseVisualStyleBackColor = true;
@@ -1590,7 +1579,7 @@
             this.tabPageDisplay.Location = new System.Drawing.Point(4, 22);
             this.tabPageDisplay.Name = "tabPageDisplay";
             this.tabPageDisplay.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDisplay.Size = new System.Drawing.Size(332, 419);
+            this.tabPageDisplay.Size = new System.Drawing.Size(332, 412);
             this.tabPageDisplay.TabIndex = 0;
             this.tabPageDisplay.Text = "Display";
             this.tabPageDisplay.UseVisualStyleBackColor = true;
@@ -1601,7 +1590,7 @@
             this.groupBoxFieldOfView.Controls.Add(this.numFirstPersonFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelWorldFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelFirstPersonFOV);
-            this.groupBoxFieldOfView.Location = new System.Drawing.Point(6, 343);
+            this.groupBoxFieldOfView.Location = new System.Drawing.Point(6, 336);
             this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
             this.groupBoxFieldOfView.Size = new System.Drawing.Size(320, 70);
             this.groupBoxFieldOfView.TabIndex = 20;
@@ -1692,12 +1681,11 @@
             // tabPageGeneral
             // 
             this.tabPageGeneral.Controls.Add(this.groupBoxInterface);
-            this.tabPageGeneral.Controls.Add(this.groupBoxGameEdition);
             this.tabPageGeneral.Controls.Add(this.groupBoxMainMenu);
             this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabPageGeneral.Name = "tabPageGeneral";
             this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGeneral.Size = new System.Drawing.Size(332, 419);
+            this.tabPageGeneral.Size = new System.Drawing.Size(332, 412);
             this.tabPageGeneral.TabIndex = 3;
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
@@ -1716,39 +1704,6 @@
             this.groupBoxInterface.TabStop = false;
             this.groupBoxInterface.Text = "Interface";
             // 
-            // groupBoxGameEdition
-            // 
-            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionSteam);
-            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionBethesdaNet);
-            this.groupBoxGameEdition.Location = new System.Drawing.Point(6, 342);
-            this.groupBoxGameEdition.Name = "groupBoxGameEdition";
-            this.groupBoxGameEdition.Size = new System.Drawing.Size(320, 71);
-            this.groupBoxGameEdition.TabIndex = 12;
-            this.groupBoxGameEdition.TabStop = false;
-            this.groupBoxGameEdition.Text = "Game edition";
-            // 
-            // radioButtonEditionSteam
-            // 
-            this.radioButtonEditionSteam.AutoSize = true;
-            this.radioButtonEditionSteam.Location = new System.Drawing.Point(18, 42);
-            this.radioButtonEditionSteam.Name = "radioButtonEditionSteam";
-            this.radioButtonEditionSteam.Size = new System.Drawing.Size(55, 17);
-            this.radioButtonEditionSteam.TabIndex = 1;
-            this.radioButtonEditionSteam.Text = "Steam";
-            this.radioButtonEditionSteam.UseVisualStyleBackColor = true;
-            this.radioButtonEditionSteam.CheckedChanged += new System.EventHandler(this.radioButtonEditionSteam_CheckedChanged);
-            // 
-            // radioButtonEditionBethesdaNet
-            // 
-            this.radioButtonEditionBethesdaNet.AutoSize = true;
-            this.radioButtonEditionBethesdaNet.Location = new System.Drawing.Point(18, 19);
-            this.radioButtonEditionBethesdaNet.Name = "radioButtonEditionBethesdaNet";
-            this.radioButtonEditionBethesdaNet.Size = new System.Drawing.Size(88, 17);
-            this.radioButtonEditionBethesdaNet.TabIndex = 0;
-            this.radioButtonEditionBethesdaNet.Text = "Bethesda.net";
-            this.radioButtonEditionBethesdaNet.UseVisualStyleBackColor = true;
-            this.radioButtonEditionBethesdaNet.CheckedChanged += new System.EventHandler(this.radioButtonEditionBethesdaNet_CheckedChanged);
-            // 
             // groupBoxMainMenu
             // 
             this.groupBoxMainMenu.Controls.Add(this.checkBoxShowSplash);
@@ -1761,27 +1716,59 @@
             this.groupBoxMainMenu.TabStop = false;
             this.groupBoxMainMenu.Text = "Main Menu";
             // 
+            // groupBoxGameEdition
+            // 
+            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionSteam);
+            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionBethesdaNet);
+            this.groupBoxGameEdition.Location = new System.Drawing.Point(199, 456);
+            this.groupBoxGameEdition.Name = "groupBoxGameEdition";
+            this.groupBoxGameEdition.Size = new System.Drawing.Size(149, 64);
+            this.groupBoxGameEdition.TabIndex = 12;
+            this.groupBoxGameEdition.TabStop = false;
+            this.groupBoxGameEdition.Text = "Game edition";
+            // 
+            // radioButtonEditionSteam
+            // 
+            this.radioButtonEditionSteam.AutoSize = true;
+            this.radioButtonEditionSteam.Location = new System.Drawing.Point(10, 41);
+            this.radioButtonEditionSteam.Name = "radioButtonEditionSteam";
+            this.radioButtonEditionSteam.Size = new System.Drawing.Size(55, 17);
+            this.radioButtonEditionSteam.TabIndex = 1;
+            this.radioButtonEditionSteam.Text = "Steam";
+            this.radioButtonEditionSteam.UseVisualStyleBackColor = true;
+            this.radioButtonEditionSteam.CheckedChanged += new System.EventHandler(this.radioButtonEditionSteam_CheckedChanged);
+            // 
+            // radioButtonEditionBethesdaNet
+            // 
+            this.radioButtonEditionBethesdaNet.AutoSize = true;
+            this.radioButtonEditionBethesdaNet.Location = new System.Drawing.Point(10, 18);
+            this.radioButtonEditionBethesdaNet.Name = "radioButtonEditionBethesdaNet";
+            this.radioButtonEditionBethesdaNet.Size = new System.Drawing.Size(88, 17);
+            this.radioButtonEditionBethesdaNet.TabIndex = 0;
+            this.radioButtonEditionBethesdaNet.Text = "Bethesda.net";
+            this.radioButtonEditionBethesdaNet.UseVisualStyleBackColor = true;
+            this.radioButtonEditionBethesdaNet.CheckedChanged += new System.EventHandler(this.radioButtonEditionBethesdaNet_CheckedChanged);
+            // 
             // tabPageInfo
             // 
             this.tabPageInfo.Controls.Add(this.labelNewVersion);
             this.tabPageInfo.Controls.Add(this.buttonFixIssuesEarlierVersion);
-            this.tabPageInfo.Controls.Add(this.linkLabel1);
-            this.tabPageInfo.Controls.Add(this.buttonManageMods);
             this.tabPageInfo.Controls.Add(this.labelTranslationAuthor);
             this.tabPageInfo.Controls.Add(this.labelTranslationBy);
+            this.tabPageInfo.Controls.Add(this.linkLabel1);
             this.tabPageInfo.Controls.Add(this.labelAuthorName);
             this.tabPageInfo.Controls.Add(this.labelConfigVersion);
             this.tabPageInfo.Controls.Add(this.labelAuthor);
-            this.tabPageInfo.Controls.Add(this.labelVersion);
-            this.tabPageInfo.Controls.Add(this.labelDescription);
-            this.tabPageInfo.Controls.Add(this.comboBoxLanguage);
             this.tabPageInfo.Controls.Add(this.labelLanguage);
+            this.tabPageInfo.Controls.Add(this.labelVersion);
+            this.tabPageInfo.Controls.Add(this.comboBoxLanguage);
+            this.tabPageInfo.Controls.Add(this.labelDescription);
             this.tabPageInfo.Controls.Add(this.linkLabelDownloadPage);
             this.tabPageInfo.Controls.Add(this.labelTitle);
             this.tabPageInfo.Location = new System.Drawing.Point(4, 22);
             this.tabPageInfo.Name = "tabPageInfo";
             this.tabPageInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInfo.Size = new System.Drawing.Size(332, 419);
+            this.tabPageInfo.Size = new System.Drawing.Size(332, 412);
             this.tabPageInfo.TabIndex = 4;
             this.tabPageInfo.Text = "Info";
             this.tabPageInfo.UseVisualStyleBackColor = true;
@@ -1791,7 +1778,7 @@
             this.labelNewVersion.AutoSize = true;
             this.labelNewVersion.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNewVersion.ForeColor = System.Drawing.Color.Crimson;
-            this.labelNewVersion.Location = new System.Drawing.Point(18, 211);
+            this.labelNewVersion.Location = new System.Drawing.Point(18, 194);
             this.labelNewVersion.Name = "labelNewVersion";
             this.labelNewVersion.Size = new System.Drawing.Size(216, 16);
             this.labelNewVersion.TabIndex = 16;
@@ -1799,7 +1786,7 @@
             // 
             // buttonFixIssuesEarlierVersion
             // 
-            this.buttonFixIssuesEarlierVersion.Location = new System.Drawing.Point(21, 321);
+            this.buttonFixIssuesEarlierVersion.Location = new System.Drawing.Point(18, 346);
             this.buttonFixIssuesEarlierVersion.Name = "buttonFixIssuesEarlierVersion";
             this.buttonFixIssuesEarlierVersion.Size = new System.Drawing.Size(295, 23);
             this.buttonFixIssuesEarlierVersion.TabIndex = 15;
@@ -1807,32 +1794,11 @@
             this.buttonFixIssuesEarlierVersion.UseVisualStyleBackColor = true;
             this.buttonFixIssuesEarlierVersion.Click += new System.EventHandler(this.buttonFixIssuesEarlierVersion_Click);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(18, 347);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(82, 13);
-            this.linkLabel1.TabIndex = 14;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Open README";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
-            // 
-            // buttonManageMods
-            // 
-            this.buttonManageMods.Location = new System.Drawing.Point(21, 292);
-            this.buttonManageMods.Name = "buttonManageMods";
-            this.buttonManageMods.Size = new System.Drawing.Size(295, 23);
-            this.buttonManageMods.TabIndex = 13;
-            this.buttonManageMods.Text = "Manage mods";
-            this.buttonManageMods.UseVisualStyleBackColor = true;
-            this.buttonManageMods.Click += new System.EventHandler(this.buttonManageMods_Click);
-            // 
             // labelTranslationAuthor
             // 
             this.labelTranslationAuthor.AutoSize = true;
             this.labelTranslationAuthor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationAuthor.Location = new System.Drawing.Point(106, 160);
+            this.labelTranslationAuthor.Location = new System.Drawing.Point(106, 158);
             this.labelTranslationAuthor.Name = "labelTranslationAuthor";
             this.labelTranslationAuthor.Size = new System.Drawing.Size(57, 13);
             this.labelTranslationAuthor.TabIndex = 12;
@@ -1842,16 +1808,27 @@
             // 
             this.labelTranslationBy.AutoSize = true;
             this.labelTranslationBy.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationBy.Location = new System.Drawing.Point(18, 160);
+            this.labelTranslationBy.Location = new System.Drawing.Point(18, 158);
             this.labelTranslationBy.Name = "labelTranslationBy";
             this.labelTranslationBy.Size = new System.Drawing.Size(76, 13);
             this.labelTranslationBy.TabIndex = 11;
             this.labelTranslationBy.Text = "Translation by:";
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(18, 330);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(82, 13);
+            this.linkLabel1.TabIndex = 14;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Open README";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
+            // 
             // labelAuthorName
             // 
             this.labelAuthorName.AutoSize = true;
-            this.labelAuthorName.Location = new System.Drawing.Point(106, 142);
+            this.labelAuthorName.Location = new System.Drawing.Point(106, 140);
             this.labelAuthorName.Name = "labelAuthorName";
             this.labelAuthorName.Size = new System.Drawing.Size(57, 13);
             this.labelAuthorName.TabIndex = 10;
@@ -1860,7 +1837,7 @@
             // labelConfigVersion
             // 
             this.labelConfigVersion.AutoSize = true;
-            this.labelConfigVersion.Location = new System.Drawing.Point(106, 124);
+            this.labelConfigVersion.Location = new System.Drawing.Point(106, 122);
             this.labelConfigVersion.Name = "labelConfigVersion";
             this.labelConfigVersion.Size = new System.Drawing.Size(13, 13);
             this.labelConfigVersion.TabIndex = 9;
@@ -1869,54 +1846,54 @@
             // labelAuthor
             // 
             this.labelAuthor.AutoSize = true;
-            this.labelAuthor.Location = new System.Drawing.Point(18, 142);
+            this.labelAuthor.Location = new System.Drawing.Point(18, 140);
             this.labelAuthor.Name = "labelAuthor";
             this.labelAuthor.Size = new System.Drawing.Size(41, 13);
             this.labelAuthor.TabIndex = 8;
             this.labelAuthor.Text = "Author:";
             // 
+            // labelLanguage
+            // 
+            this.labelLanguage.AutoSize = true;
+            this.labelLanguage.Location = new System.Drawing.Point(15, 382);
+            this.labelLanguage.Name = "labelLanguage";
+            this.labelLanguage.Size = new System.Drawing.Size(58, 13);
+            this.labelLanguage.TabIndex = 4;
+            this.labelLanguage.Text = "Language:";
+            // 
             // labelVersion
             // 
             this.labelVersion.AutoSize = true;
-            this.labelVersion.Location = new System.Drawing.Point(18, 125);
+            this.labelVersion.Location = new System.Drawing.Point(18, 123);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(45, 13);
             this.labelVersion.TabIndex = 7;
             this.labelVersion.Text = "Version:";
             // 
+            // comboBoxLanguage
+            // 
+            this.comboBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLanguage.FormattingEnabled = true;
+            this.comboBoxLanguage.Location = new System.Drawing.Point(94, 379);
+            this.comboBoxLanguage.Name = "comboBoxLanguage";
+            this.comboBoxLanguage.Size = new System.Drawing.Size(219, 21);
+            this.comboBoxLanguage.TabIndex = 5;
+            this.comboBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBoxLanguage_SelectedIndexChanged);
+            // 
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(18, 62);
+            this.labelDescription.Location = new System.Drawing.Point(18, 69);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(268, 26);
             this.labelDescription.TabIndex = 6;
             this.labelDescription.Text = "This tool allows you to quickly tweak INI settings.\r\nTip: Hover over an option, i" +
     "f you\'re unsure what it does.";
             // 
-            // comboBoxLanguage
-            // 
-            this.comboBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLanguage.FormattingEnabled = true;
-            this.comboBoxLanguage.Location = new System.Drawing.Point(99, 387);
-            this.comboBoxLanguage.Name = "comboBoxLanguage";
-            this.comboBoxLanguage.Size = new System.Drawing.Size(217, 21);
-            this.comboBoxLanguage.TabIndex = 5;
-            this.comboBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBoxLanguage_SelectedIndexChanged);
-            // 
-            // labelLanguage
-            // 
-            this.labelLanguage.AutoSize = true;
-            this.labelLanguage.Location = new System.Drawing.Point(18, 390);
-            this.labelLanguage.Name = "labelLanguage";
-            this.labelLanguage.Size = new System.Drawing.Size(58, 13);
-            this.labelLanguage.TabIndex = 4;
-            this.labelLanguage.Text = "Language:";
-            // 
             // linkLabelDownloadPage
             // 
             this.linkLabelDownloadPage.AutoSize = true;
-            this.linkLabelDownloadPage.Location = new System.Drawing.Point(18, 229);
+            this.linkLabelDownloadPage.Location = new System.Drawing.Point(18, 212);
             this.linkLabelDownloadPage.Name = "linkLabelDownloadPage";
             this.linkLabelDownloadPage.Size = new System.Drawing.Size(189, 13);
             this.linkLabelDownloadPage.TabIndex = 2;
@@ -1928,11 +1905,21 @@
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.labelTitle.Location = new System.Drawing.Point(17, 18);
+            this.labelTitle.Location = new System.Drawing.Point(17, 23);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(222, 20);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Fallout 76 Quick Configuration";
+            // 
+            // buttonManageMods
+            // 
+            this.buttonManageMods.Location = new System.Drawing.Point(12, 526);
+            this.buttonManageMods.Name = "buttonManageMods";
+            this.buttonManageMods.Size = new System.Drawing.Size(139, 23);
+            this.buttonManageMods.TabIndex = 13;
+            this.buttonManageMods.Text = "Manage mods";
+            this.buttonManageMods.UseVisualStyleBackColor = true;
+            this.buttonManageMods.Click += new System.EventHandler(this.buttonManageMods_Click);
             // 
             // tabControl1
             // 
@@ -1942,24 +1929,48 @@
             this.tabControl1.Controls.Add(this.tabPageGraphics);
             this.tabControl1.Controls.Add(this.tabPageControls);
             this.tabControl1.Controls.Add(this.tabPagePipBoy);
-            this.tabControl1.Location = new System.Drawing.Point(12, 75);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(340, 445);
+            this.tabControl1.Size = new System.Drawing.Size(340, 438);
             this.tabControl1.TabIndex = 7;
+            // 
+            // checkBoxNWMode
+            // 
+            this.checkBoxNWMode.AutoSize = true;
+            this.checkBoxNWMode.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxNWMode.Name = "checkBoxNWMode";
+            this.checkBoxNWMode.Size = new System.Drawing.Size(127, 17);
+            this.checkBoxNWMode.TabIndex = 17;
+            this.checkBoxNWMode.Text = "Nuclear Winter Mode";
+            this.checkBoxNWMode.UseVisualStyleBackColor = true;
+            this.checkBoxNWMode.CheckedChanged += new System.EventHandler(this.checkBoxNWMode_CheckedChanged);
+            // 
+            // groupBoxOptions
+            // 
+            this.groupBoxOptions.Controls.Add(this.checkBoxNWMode);
+            this.groupBoxOptions.Controls.Add(this.checkBoxReadOnly);
+            this.groupBoxOptions.Location = new System.Drawing.Point(12, 456);
+            this.groupBoxOptions.Name = "groupBoxOptions";
+            this.groupBoxOptions.Size = new System.Drawing.Size(181, 64);
+            this.groupBoxOptions.TabIndex = 15;
+            this.groupBoxOptions.TabStop = false;
+            this.groupBoxOptions.Text = "Options";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(364, 561);
+            this.Controls.Add(this.groupBoxOptions);
+            this.Controls.Add(this.groupBoxGameEdition);
+            this.Controls.Add(this.buttonManageMods);
             this.Controls.Add(this.buttonLaunchGame);
-            this.Controls.Add(this.pictureBoxBanner);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.checkBoxReadOnly);
             this.Controls.Add(this.buttonApply);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(380, 600);
             this.MinimumSize = new System.Drawing.Size(380, 600);
             this.Name = "Form1";
             this.Text = "Fallout 76 Quick Configuration";
@@ -1968,7 +1979,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBanner)).EndInit();
             this.tabPagePipBoy.ResumeLayout(false);
             this.groupBoxPipboyResolution.ResumeLayout(false);
             this.groupBoxPipboyResolution.PerformLayout();
@@ -2019,15 +2029,16 @@
             this.tabPageGeneral.ResumeLayout(false);
             this.groupBoxInterface.ResumeLayout(false);
             this.groupBoxInterface.PerformLayout();
-            this.groupBoxGameEdition.ResumeLayout(false);
-            this.groupBoxGameEdition.PerformLayout();
             this.groupBoxMainMenu.ResumeLayout(false);
             this.groupBoxMainMenu.PerformLayout();
+            this.groupBoxGameEdition.ResumeLayout(false);
+            this.groupBoxGameEdition.PerformLayout();
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.groupBoxOptions.ResumeLayout(false);
+            this.groupBoxOptions.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -2035,7 +2046,6 @@
         private System.Windows.Forms.Button buttonApply;
         private System.Windows.Forms.CheckBox checkBoxReadOnly;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.PictureBox pictureBoxBanner;
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.Button buttonLaunchGame;
         private System.Windows.Forms.TabPage tabPagePipBoy;
@@ -2169,6 +2179,8 @@
         private System.Windows.Forms.NumericUpDown numTAAPostOverlay;
         private System.Windows.Forms.Label labelTAAPostOverlay;
         private MetroFramework.Controls.MetroTrackBar sliderTAAPostOverlay;
+        private System.Windows.Forms.CheckBox checkBoxNWMode;
+        private System.Windows.Forms.GroupBox groupBoxOptions;
     }
 }
 

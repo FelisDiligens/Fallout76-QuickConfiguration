@@ -4,11 +4,18 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.4.2">
+<Language name="English (USA)" iso="en-US" version="1.5-pre">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Deployment necessary" id="modsDeploymentNecessary" />
     <String text="All set" id="modsAllDone" />
+    <String text="General" id="modsTableFormatGeneral" />
+    <String text="Textures" id="modsTableFormatTextures" />
+    <String text="Auto" id="modsTableFormatAutoDetect" />
+    <String text="Bundled" id="modsTableTypeBundled" />
+    <String text="Separate" id="modsTableTypeSeparate" />
+    <String text="Loose" id="modsTableTypeLoose" />
+    <String text="N/A" id="notApplicable" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -57,6 +64,16 @@
       <Option>2x</Option>
       <Option>3x = Default, recommended</Option>
     </Dropdown>
+    <Dropdown id="ModInstallAs">
+      <Option>Bundled *.ba2 archive</Option>
+      <Option>Separate *.ba2 archive</Option>
+      <Option>Loose files</Option>
+    </Dropdown>
+    <Dropdown id="ModArchiveFormat">
+      <Option>Auto-detect</Option>
+      <Option>General</Option>
+      <Option>Textures (*.dds files)</Option>
+    </Dropdown>
   </Dropdowns>
   <Messageboxes>
     <Messagebox title="Backup and save" id="backupAndSave">Do you want to create a backup before applying all changes?
@@ -76,16 +93,16 @@ This might be caused by corrupted ini files.
 Some UI elements might not be functioning correctly.
 
 {1}</Messagebox>
-    <Messagebox title="Archive2 needed" id="modsArchive2NotSet">Please download Archive2 and set the path to decompress *.ba2 archives.</Messagebox>
+    <Messagebox title="Archive2 is missing" id="modsArchive2Missing">.\Archive2\Archive2.exe is missing.
+Please download this tool again, or install Archive2 manually.</Messagebox>
     <Messagebox title="Game path not set" id="modsGamePathNotSet">Please set the path to the game (where Fallout76.exe resides).</Messagebox>
-    <Messagebox title="Wrong path" id="modsArchive2Invalid">Wrong Archive2 path.
-Please select Archive2.exe</Messagebox>
     <Messagebox title="Wrong path" id="modsGamePathInvalid">Wrong game folder path.</Messagebox>
     <Messagebox title="Mod {0} couldn't be deployed." id="modsDeployErrorModDirNotFound">Directory {0} does not exist.
 Please restart the mod manager and add the mod again.</Messagebox>
     <Messagebox title="Mod {0} couldn't be deployed." id="modsDeployErrorBA2RootIsNotData">Directory {0} does not exist.
 Please restart the mod manager and add the mod again.</Messagebox>
     <Messagebox title="Are you sure?" id="modsDeleteBtn">Are you sure you want to delete the mod {0}?</Messagebox>
+    <Messagebox title="Are you sure?" id="modsDeleteBulkBtn">Are you sure you want to delete {0} mods?</Messagebox>
     <Messagebox title="Archive couldn't be uncompressed" id="modsExtractUnknownError">{0}</Messagebox>
     <Messagebox title="Archive couldn't be uncompressed" id="modsExtractUnknownErrorText">Please uncompress the archive and add the mod as a folder.</Messagebox>
     <Messagebox title="7-Zip archive couldn't be uncompressed" id="modsExtractUnknownError7zip">{0}</Messagebox>
@@ -104,19 +121,37 @@ Error: {0}</Messagebox>
     <Messagebox title="Import manually installed mods?" id="modsImportQuestion">Are you sure you want to add mods installed outside of the mod manager?</Messagebox>
     <Messagebox title="Conflicting mods" id="modsSameArchiveName">Some mods have the same archive name: "{0}".
 Conflicting mod name: {1}</Messagebox>
+    <Messagebox title="Failed to rename folder" id="modDetailsMoveManagedFolderFailed">Managed mod folder couldn't be renamed.
+Error message: "{0}".</Messagebox>
+    <Messagebox title="Are you sure?" id="modsRepairDDSQuestion">This will attempt to repair all *.dds files.
+It can take a long time, depending on file size and number of files.
+Are you sure you want to continue?</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Quick Configuration">
+    <Group text="Options" id="groupBoxOptions">
+      <Checkbox text="Nuclear Winter Mode" id="checkBoxNWMode" />
+      <Checkbox text="Make *.ini files read-only" id="checkBoxReadOnly">
+        <Tooltip>This option will make all *.ini files read-only immediately.
+Enable this if your settings get reverted.
+
+Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
+      </Checkbox>
+    </Group>
+    <Group text="Game edition" id="groupBoxGameEdition">
+      <Radiobutton text="Steam" id="radioButtonEditionSteam" />
+      <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+    </Group>
+    <Button text="Manage mods" id="buttonManageMods" />
     <Button text="Launch game" id="buttonLaunchGame" />
     <TabContainer id="tabControl1">
       <Tab text="Info" id="tabPageInfo">
         <Button text="Fix settings from v1.3.1 and earlier" id="buttonFixIssuesEarlierVersion" />
-        <Link text="Open README" id="linkLabel1" />
-        <Button text="Manage mods" id="buttonManageMods" />
         <Label text="Translation by:" id="labelTranslationBy" />
+        <Link text="Open README" id="linkLabel1" />
         <Label text="Author:" id="labelAuthor" />
+        <Label text="Language:" id="labelLanguage" />
         <Label text="Version:" id="labelVersion" />
         <Label text="This tool allows you to quickly tweak INI settings.\nTip: Hover over an option, if you're unsure what it does." id="labelDescription" />
-        <Label text="Language:" id="labelLanguage" />
         <Link text="Get the latest version from NexusMods" id="linkLabelDownloadPage" />
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
@@ -142,10 +177,6 @@ Affected files: Fallout76Prefs.ini</Tooltip>
             <Tooltip>Affected values: bDialogueSubtitles
 Affected files: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
-        </Group>
-        <Group text="Game edition" id="groupBoxGameEdition">
-          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
-          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
         </Group>
         <Group text="Main Menu" id="groupBoxMainMenu">
           <Checkbox text="Show splash screen with news on startup" id="checkBoxShowSplash">
@@ -411,7 +442,7 @@ Default: 8
 Affected values: iMaxAnisotropy
 Affected files: Fallout76Prefs.ini</Tooltip>
         </Label>
-        <Checkbox text="VSync" id="checkBoxVSync">
+        <Checkbox text="Frame rate cap (VSync)" id="checkBoxVSync">
           <Tooltip>Unchecking this will uncap the frame rate.
 
 Enable this if you experience screen tearing.
@@ -547,56 +578,44 @@ Affected files: Fallout76Prefs.ini</Tooltip>
         </Group>
       </Tab>
     </TabContainer>
-    <Checkbox text="Make *.ini files read-only" id="checkBoxReadOnly">
-      <Tooltip>This option will make all *.ini files read-only immediately.
-Enable this if your settings get reverted.
-
-Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
-    </Checkbox>
     <Button text="Apply" id="buttonApply" />
   </Form1>
   <FormMods title="Manage mods">
-    <Group text="Bundled *.ba2 settings" id="groupBoxModsBundledBA2">
-      <Checkbox text="Compress bundled.ba2" id="checkBoxModsBundledBA2Compression" />
-      <Checkbox text="Compress bundled_textures.ba2" id="checkBoxModsBundledTexturesBA2Compression" />
-    </Group>
-    <Checkbox text="Nuclear Winter mode" id="checkBoxModsNWMode">
-      <Tooltip>If checked, all mods will be removed upon deploy.
-Useful if you want to play a Nuclear Winter match, hence the name.</Tooltip>
-    </Checkbox>
-    <Label text="The use of mods can break your game or get you banned!\nWhen you install mods, you accept full responsibility!" id="labelModWarning" />
-    <Group text="Mod order" id="groupBoxMods">
-      <Button text="Move up" id="buttonModMoveUp" />
-      <Button text="Move down" id="buttonModMoveDown" />
-      <Checkbox text="Check/uncheck all" id="checkBoxModsCheckAll" />
-    </Group>
-    <Group text="Edit mod details" id="groupBoxModEdit">
-      <Group text="BA2 settings" id="groupBoxBA2">
-        <Label text="Archive name:" id="labelModArchiveName" />
-        <Radiobutton text="Use DDS format (for textures)" id="radioButtonModBA2DDSFormat" />
-        <Checkbox text="Compress archive" id="checkBoxModBA2Compression" />
-        <Radiobutton text="Use general format" id="radioButtonModBA2GeneralFormat" />
-      </Group>
-      <Button text="..." id="buttonModPickRootDir" />
-      <Label text="Install into:" id="labelModInstallInto" />
-      <Button text="Open folder" id="buttonModOpenFolder" />
-      <Label text="Mod name:" id="labelModName" />
-      <Group text="Install as" id="groupBoxModInstallType">
-        <Radiobutton text="Bundled *.ba2 archive (Textures, *.dds files)" id="radioButtonModBA2ArchiveTextures" />
-        <Radiobutton text="Separate *.ba2 archive" id="radioButtonModSeparateBA2" />
-        <Radiobutton text="Bundled *.ba2 archive (General)" id="radioButtonModBA2Archive" />
-        <Radiobutton text="Loose files" id="radioButtonModLoose" />
-      </Group>
-      <Button text="Delete mod" id="buttonModRemove" />
-    </Group>
-    <Group text="Paths" id="groupBoxGamePaths">
-      <Label text="Game location:" id="labelGamePath" />
-      <Button text="..." id="buttonPickArchive2Path" />
-      <Label text="Archive2 location:" id="labelArchive2Path" />
-      <Button text="..." id="buttonPickGamePath" />
-    </Group>
-    <Button text="Deploy" id="buttonModsDeploy" />
-    <Label text="All set" id="labelModsDeploy" />
+    <Element id="panel1">
+      <Button text="Deploy" id="buttonModsDeploy" />
+      <Checkbox text="Disable mods" id="checkBoxDisableMods" />
+    </Element>
+    <TabContainer id="tabControl1">
+      <Tab text="Mod order" id="tabPageModOrder">
+        <Tool id="toolStrip1">
+          <Button text="Add mod (from archive)" id="toolStripButtonAddMod" />
+          <Button text="Add mod (from folder)" id="toolStripButtonAddModFolder" />
+          <Button text="Check/uncheck all" id="toolStripButtonCheckAll" />
+          <Button text="Move up" id="toolStripButtonMoveUp" />
+          <Button text="Move down" id="toolStripButtonMoveDown" />
+          <Button text="Edit mod details" id="toolStripButtonModEdit" />
+          <Button text="Open mod folder" id="toolStripButtonModOpenFolder" />
+          <Button text="Delete mod" id="toolStripButtonDeleteMod" />
+        </Tool>
+        <ListView id="listViewMods">
+          <Column>Mod name</Column>
+          <Column>Type</Column>
+          <Column>Install into</Column>
+          <Column>Archive name</Column>
+          <Column>Archive format</Column>
+        </ListView>
+      </Tab>
+      <Tab text="Settings" id="tabPageModsSettings">
+        <Group text="Bundled *.ba2 settings" id="groupBoxModsBundledBA2">
+          <Checkbox text="Compress bundled.ba2" id="checkBoxModsBundledBA2Compression" />
+          <Checkbox text="Compress bundled_textures.ba2" id="checkBoxModsBundledTexturesBA2Compression" />
+        </Group>
+        <Group text="Paths" id="groupBoxGamePaths">
+          <Label text="Game location:" id="labelGamePath" />
+          <Button text="..." id="buttonPickGamePath" />
+        </Group>
+      </Tab>
+    </TabContainer>
     <Menu id="menuStrip1">
       <Item text="File" id="fileToolStripMenuItem">
         <Item text="Add mod" id="addModarchiveToolStripMenuItem">
@@ -610,9 +629,31 @@ Useful if you want to play a Nuclear Winter match, hence the name.</Tooltip>
       <Item text="View" id="editToolStripMenuItem">
         <Item text="Show conflicting files" id="showConflictingFilesToolStripMenuItem" />
       </Item>
+      <Item text="Tools" id="toolsToolStripMenuItem">
+        <Item text="Repair all *.dds files" id="repairddsFilesToolStripMenuItem" />
+      </Item>
       <Item text="Help" id="helpToolStripMenuItem">
         <Item text="Show README" id="showREADMEToolStripMenuItem" />
       </Item>
     </Menu>
   </FormMods>
+  <FormModDetails>
+    <Button text="Cancel" id="buttonModDetailsCancel" />
+    <Button text="OK" id="buttonModDetailsOK" />
+    <Button text="Apply" id="buttonModDetailsApply" />
+    <Element id="panel1">
+      <Label text="..." id="labelModDetailRepairStatus" />
+      <Button text="Repair *.dds files" id="buttonModRepairDDS" />
+      <Checkbox text="Compress archive" id="checkBoxModBA2Compression" />
+      <Label text="Archive name:" id="labelModArchiveName" />
+      <Checkbox text="Enable this mod" id="checkBoxModDetailsEnabled" />
+      <Button text="Open folder" id="buttonModOpenFolder" />
+      <Label text="Mod folder name:" id="labelModFolderName" />
+      <Label text="Archive format:" id="labelModArchiveFormat" />
+      <Label text="Install as:" id="labelModInstallAs" />
+      <Label text="Mod name:" id="labelModName" />
+      <Button text="..." id="buttonModPickRootDir" />
+      <Label text="Install into:" id="labelModInstallInto" />
+    </Element>
+  </FormModDetails>
 </Language>

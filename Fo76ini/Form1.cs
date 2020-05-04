@@ -12,125 +12,20 @@ using System.IO;
 
 namespace Fo76ini
 {
-    public enum GameEdition
-    {
-        Unknown = 0,
-        BethesdaNet = 1,
-        Steam = 2
-    }
-
-    public struct ComboBoxContainer
-    {
-        public ComboBox comboBox;
-        private List<String> items;
-
-        public ComboBoxContainer(ComboBox comboBox)
-        {
-            this.comboBox = comboBox;
-            this.items = new List<String>();
-            foreach (object item in comboBox.Items)
-                this.items.Add((String)item);
-        }
-
-        public ComboBoxContainer(ComboBox comboBox, List<String> items)
-        {
-            this.comboBox = comboBox;
-            this.items = items;
-            this.comboBox.Items.Clear();
-            this.comboBox.Items.AddRange(this.items.ToArray());
-        }
-
-        public ComboBoxContainer(ComboBox comboBox, String[] items)
-        {
-            this.comboBox = comboBox;
-            this.items = new List<String>();
-            foreach (String item in items)
-                this.items.Add(item);
-            this.comboBox.Items.Clear();
-            this.comboBox.Items.AddRange(this.items.ToArray());
-        }
-
-        public void Add(String item)
-        {
-            this.comboBox.Items.Add(item);
-            this.items.Add(item);
-        }
-
-        public void AddRange(String[] items)
-        {
-            this.comboBox.Items.AddRange(items);
-            foreach (String item in items)
-                this.items.Add(item);
-        }
-
-        public void Clear()
-        {
-            this.comboBox.Items.Clear();
-            this.items.Clear();
-        }
-
-        public void SetRange(String[] items)
-        {
-            this.Clear();
-            this.comboBox.Items.AddRange(items);
-            foreach (String item in items)
-                this.items.Add(item);
-        }
-
-        public List<String> Items
-        {
-            get { return this.items; }
-            set
-            {
-                this.items = value;
-                this.comboBox.Items.Clear();
-                this.comboBox.Items.AddRange(value.ToArray());
-            }
-        }
-
-        public int SelectedIndex
-        {
-            get { return this.comboBox.SelectedIndex; }
-            set { this.comboBox.SelectedIndex = value; }
-        }
-
-        public String SelectedItem
-        {
-            get { return this.items[this.comboBox.SelectedIndex]; }
-        }
-    }
-
     public partial class Form1 : Form
     {
-        public const String VERSION = "1.4.2";
+        public const String VERSION = "1.5";
+        public const bool CHECK_VERSION = true;
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-        delegate void OnLoadUIFunction();
-        private List<OnLoadUIFunction> OnLoadUI = new List<OnLoadUIFunction>();
+        private UILoader uiLoader = new UILoader();
 
         private FormMods formMods;
         private bool formModsBackupCreated = false;
 
-        private void LoadUI()
-        {
-            List<Exception> exceptions = new List<Exception>();
-            foreach (OnLoadUIFunction func in OnLoadUI)
-            {
-                try
-                {
-                    func();
-                }
-                catch (Exception ex)
-                {
-                    exceptions.Add(ex);
-                }
-            }
-            if (exceptions.Count > 0)
-                MsgBox.Get("onLoadFuncException").FormatText(exceptions.Count.ToString(), exceptions[0].ToString()).Show(MessageBoxIcon.Error);
-        }
 
-        private Dictionary<String, ComboBoxContainer> comboBoxes = new Dictionary<String, ComboBoxContainer>();
+        //private Dictionary<String, ComboBoxContainer> comboBoxes = new Dictionary<String, ComboBoxContainer>();
 
         private static Form1 instance;
         public static Form1 Instance
@@ -147,7 +42,7 @@ namespace Fo76ini
             // Let's add options to the drop-down menus:
 
             // https://en.wikipedia.org/wiki/List_of_common_resolutions
-            comboBoxes["Resolution"] = new ComboBoxContainer(
+            ComboBoxContainer.Add("Resolution", new ComboBoxContainer(
                 this.comboBoxResolution,
                 new String[] {
                     "Custom",
@@ -167,9 +62,9 @@ namespace Fo76ini
                     "5120x2160",
                     "5120x2880"
                 }
-            );
+            ));
 
-            comboBoxes["DisplayMode"] = new ComboBoxContainer(
+            ComboBoxContainer.Add("DisplayMode", new ComboBoxContainer(
                 this.comboBoxDisplayMode,
                 new String[] {
                     "Fullscreen",
@@ -177,18 +72,18 @@ namespace Fo76ini
                     "Borderless windowed",
                     "Borderless windowed (Fullscreen)"
                 }
-            );
+            ));
 
-            comboBoxes["AntiAliasing"] = new ComboBoxContainer(
+            ComboBoxContainer.Add("AntiAliasing", new ComboBoxContainer(
                 this.comboBoxAntiAliasing,
                 new String[] {
                     "TAA (default)",
                     "FXAA",
                     "Disabled"
                 }
-            );
+            ));
 
-            comboBoxes["AnisotropicFiltering"] = new ComboBoxContainer(
+            ComboBoxContainer.Add("AnisotropicFiltering", new ComboBoxContainer(
                 this.comboBoxAnisotropicFiltering,
                 new String[] {
                     "None",
@@ -197,25 +92,25 @@ namespace Fo76ini
                     "8x (default)",
                     "16x"
                 }
-            );
-            
-            comboBoxes["ShadowTextureResolution"] = new ComboBoxContainer(
+            ));
+
+            ComboBoxContainer.Add("ShadowTextureResolution", new ComboBoxContainer(
                 this.comboBoxShadowTextureResolution,
                 new String[] {
                     "1024 = Low",
                     "2048 = High (default)",
                     "4096 = Ultra"
                 }
-            );
+            ));
 
-            comboBoxes["ShadowBlurriness"] = new ComboBoxContainer(
+            ComboBoxContainer.Add("ShadowBlurriness", new ComboBoxContainer(
                 this.comboBoxShadowBlurriness,
                 new String[] {
                     "1x",
                     "2x",
                     "3x = Default, recommended"
                 }
-            );
+            ));
 
 
             // Disable scroll wheel on UI elements to prevent the user from accidentally changing values:
@@ -262,7 +157,7 @@ namespace Fo76ini
             // Load the languages
             LookupLanguages();
 
-            this.formMods.UpdateModsUI();
+            //this.formMods.UpdateModsUI();
 
             // Load *.ini files:
             try
@@ -285,7 +180,7 @@ namespace Fo76ini
             // Setup UI:
             ColorIni2Ui();
             AddAllEventHandler();
-            LoadUI();
+            uiLoader.Update();
 
             CheckVersion();
         }
@@ -296,7 +191,15 @@ namespace Fo76ini
             using (StreamWriter f = new StreamWriter("VERSION"))
                 f.Write(VERSION);
 
-            string latestVersion = VERSION;
+            if (!CHECK_VERSION)
+            {
+                this.labelConfigVersion.ForeColor = Color.DarkBlue;
+                linkLabelDownloadPage.Visible = false;
+                labelNewVersion.Visible = false;
+                return;
+            }
+
+            String latestVersion = VERSION;
             try
             {
                 System.Net.WebClient wc = new System.Net.WebClient();
@@ -305,11 +208,13 @@ namespace Fo76ini
             }
             catch (System.Net.WebException exc)
             {
-                Console.WriteLine(exc.Message);
+                this.labelConfigVersion.ForeColor = Color.DarkBlue;
+                linkLabelDownloadPage.Visible = false;
+                labelNewVersion.Visible = false;
+                return;
             }
             if (latestVersion != VERSION)
             {
-                //MessageBox.Show("There is a newer version available on NexusMods! Check it out! :P", "New version");
                 linkLabelDownloadPage.Visible = true;
                 labelNewVersion.Text = String.Format(Translation.localizedStrings["newVersionAvailable"], latestVersion);
                 this.labelConfigVersion.ForeColor = Color.Red;
@@ -325,15 +230,15 @@ namespace Fo76ini
         private void AddAllEventHandler()
         {
             // Link numericUpDown and sliders:
-            LinkSlider(this.sliderGrassFadeDistance, this.numGrassFadeDistance, 1);
+            UILoader.LinkSlider(this.sliderGrassFadeDistance, this.numGrassFadeDistance, 1);
             //LinkSlider(this.sliderGrassDensity, this.numGrassDensity, 1, true);
-            LinkSlider(this.sliderLODObjects, this.numLODObjects, 10);
-            LinkSlider(this.sliderLODItems, this.numLODItems, 10);
-            LinkSlider(this.sliderLODActors, this.numLODActors, 10);
-            LinkSlider(this.sliderShadowDistance, this.numShadowDistance, 1);
-            LinkSlider(this.sliderMouseSensitivity, this.numMouseSensitivity, 10000.0);
-            LinkSlider(this.sliderTAAPostOverlay, this.numTAAPostOverlay, 100);
-            LinkSlider(this.sliderTAAPostSharpen, this.numTAAPostSharpen, 100);
+            UILoader.LinkSlider(this.sliderLODObjects, this.numLODObjects, 10);
+            UILoader.LinkSlider(this.sliderLODItems, this.numLODItems, 10);
+            UILoader.LinkSlider(this.sliderLODActors, this.numLODActors, 10);
+            UILoader.LinkSlider(this.sliderShadowDistance, this.numShadowDistance, 1);
+            UILoader.LinkSlider(this.sliderMouseSensitivity, this.numMouseSensitivity, 10000.0);
+            UILoader.LinkSlider(this.sliderTAAPostOverlay, this.numTAAPostOverlay, 100);
+            UILoader.LinkSlider(this.sliderTAAPostSharpen, this.numTAAPostSharpen, 100);
 
 
             /*
@@ -343,9 +248,28 @@ namespace Fo76ini
              */
 
             // Make *.ini files read-only
-            LinkCustom(this.checkBoxReadOnly,
+            uiLoader.LinkCustom(this.checkBoxReadOnly,
                 IniFiles.Instance.AreINIsReadOnly,
                 IniFiles.Instance.SetINIsReadOnly
+            );
+
+            /*
+             * Underneath tabcontrol
+             */
+
+            // Game Edition
+            uiLoader.LinkList(
+                new RadioButton[] { this.radioButtonEditionBethesdaNet, this.radioButtonEditionSteam },
+                new String[] { "1", "2" },
+                IniFile.Config, "Preferences", "uGameEdition",
+                "0"
+            );
+
+            // Nuclear winter mode
+            uiLoader.LinkBool(
+                this.checkBoxNWMode,
+                IniFile.Config, "Preferences", "bNWMode",
+                false
             );
 
 
@@ -354,7 +278,7 @@ namespace Fo76ini
              */
 
             // Play intro videos
-            LinkCustom(this.checkBoxIntroVideos,
+            uiLoader.LinkCustom(this.checkBoxIntroVideos,
                 () => {
                     String sIntroSequence = IniFiles.Instance.GetString("General", "sIntroSequence", "BGSLogo4k.bk2").Trim();
                     return sIntroSequence.Length > 0 && sIntroSequence != "0";
@@ -374,33 +298,25 @@ namespace Fo76ini
             );
 
             // Play music in main menu
-            LinkBool(this.checkBoxMainMenuMusic, IniFile.F76Custom, "General", "bPlayMainMenuMusic", true);
-            
+            uiLoader.LinkBool(this.checkBoxMainMenuMusic, IniFile.F76Custom, "General", "bPlayMainMenuMusic", true);
+
             // Show splash screen with news on startup
-            LinkBoolNegated(this.checkBoxShowSplash, IniFile.F76Custom, "General", "bSkipSplash", false);
+            uiLoader.LinkBoolNegated(this.checkBoxShowSplash, IniFile.F76Custom, "General", "bSkipSplash", false);
 
             // General subtitles
-            LinkBool(this.checkBoxGeneralSubtitles, IniFile.F76Prefs, "Interface", "bGeneralSubtitles", false);
+            uiLoader.LinkBool(this.checkBoxGeneralSubtitles, IniFile.F76Prefs, "Interface", "bGeneralSubtitles", false);
 
             // Dialogue subtitles
-            LinkBool(this.checkBoxDialogueSubtitles, IniFile.F76Prefs, "Interface", "bDialogueSubtitles", false);
+            uiLoader.LinkBool(this.checkBoxDialogueSubtitles, IniFile.F76Prefs, "Interface", "bDialogueSubtitles", false);
 
             // Show damage numbers in nuclear winter
-            LinkBool(this.checkBoxShowDamageNumbersNW, IniFile.F76Custom, "NuclearWinter", "bShowDamageNumbers", true);
+            uiLoader.LinkBool(this.checkBoxShowDamageNumbersNW, IniFile.F76Custom, "NuclearWinter", "bShowDamageNumbers", true);
 
             // Show damage numbers in adventure mode
-            LinkBool(this.checkBoxShowDamageNumbersA, IniFile.F76Custom, "Adventure", "bShowDamageNumbers", false);
+            uiLoader.LinkBool(this.checkBoxShowDamageNumbersA, IniFile.F76Custom, "Adventure", "bShowDamageNumbers", false);
 
             // Show compass
-            LinkBool(this.checkBoxShowCompass, IniFile.F76Prefs, "Interface", "bShowCompass", true);
-
-            // Game Edition
-            LinkList(
-                new RadioButton[] { this.radioButtonEditionBethesdaNet, this.radioButtonEditionSteam },
-                new String[] { "1", "2" },
-                IniFile.Config, "Preferences", "uGameEdition",
-                "0"
-            );
+            uiLoader.LinkBool(this.checkBoxShowCompass, IniFile.F76Prefs, "Interface", "bShowCompass", true);
 
 
 
@@ -409,7 +325,7 @@ namespace Fo76ini
              */
 
             // Display mode
-            LinkCustom(this.comboBoxDisplayMode,
+            uiLoader.LinkCustom(this.comboBoxDisplayMode,
                 () => {
                     bool bFullScreen = IniFiles.Instance.GetBool("Display", "bFull Screen", true);
                     bool bBorderless = IniFiles.Instance.GetBool("Display", "bBorderless", true);
@@ -456,11 +372,11 @@ namespace Fo76ini
             );
 
             // Resolution
-            LinkCustom(this.comboBoxResolution,
+            uiLoader.LinkCustom(this.comboBoxResolution,
                 () => {
                     int width = IniFiles.Instance.GetInt("Display", "iSize W", 1920);
                     int height = IniFiles.Instance.GetInt("Display", "iSize H", 1080);
-                    int resIndex = Array.IndexOf(this.comboBoxes["Resolution"].Items.ToArray(), $"{width}x{height}");
+                    int resIndex = Array.IndexOf(ComboBoxContainer.Get("Resolution").Items.ToArray(), $"{width}x{height}");
                     this.numCustomResW.Value = width;
                     this.numCustomResH.Value = height;
                     return resIndex > -1 ? resIndex : 0;
@@ -484,25 +400,25 @@ namespace Fo76ini
             );
 
             // Custom Resolution
-            LinkInt(this.numCustomResW, IniFile.F76Prefs, "Display", "iSize W", 1920);
-            LinkInt(this.numCustomResH, IniFile.F76Prefs, "Display", "iSize H", 1080);
+            uiLoader.LinkInt(this.numCustomResW, IniFile.F76Prefs, "Display", "iSize W", 1920);
+            uiLoader.LinkInt(this.numCustomResH, IniFile.F76Prefs, "Display", "iSize H", 1080);
 
             // Hide (or show) custom resolution on load:
-            OnLoadUI.Add(() =>
+            uiLoader.Add(() =>
             {
                 bool isCustomSelected = this.comboBoxResolution.SelectedIndex == 0;
                 this.numCustomResW.Enabled = isCustomSelected;
                 this.numCustomResH.Enabled = isCustomSelected;
             });
 
-                // Top most window
-                LinkBool(this.checkBoxTopMostWindow, IniFile.F76Prefs, "Display", "bTopMostWindow", false);
+            // Top most window
+            uiLoader.LinkBool(this.checkBoxTopMostWindow, IniFile.F76Prefs, "Display", "bTopMostWindow", false);
 
             // Always active
-            LinkBool(this.checkBoxAlwaysActive, IniFile.F76Custom, "General", "bAlwaysActive", true);
+            uiLoader.LinkBool(this.checkBoxAlwaysActive, IniFile.F76Custom, "General", "bAlwaysActive", true);
 
             // 1st person FOV
-            LinkCustom(this.numFirstPersonFOV,
+            uiLoader.LinkCustom(this.numFirstPersonFOV,
                 () => IniFiles.Instance.GetFloat("Display", "fDefault1stPersonFOV", 80),
                 (value) => {
                     IniFiles.Instance.Set(IniFile.F76Custom, "Display", "fDefault1stPersonFOV", value);
@@ -513,7 +429,7 @@ namespace Fo76ini
             );
 
             // World FOV
-            LinkCustom(this.numWorldFOV,
+            uiLoader.LinkCustom(this.numWorldFOV,
                 () => IniFiles.Instance.GetFloat("Display", "fDefaultWorldFOV", 80),
                 (value) => {
                     IniFiles.Instance.Set(IniFile.F76Custom, "Display", "fDefaultWorldFOV", value);
@@ -530,13 +446,13 @@ namespace Fo76ini
              */
 
             // Anti-Aliasing
-            LinkList(this.comboBoxAntiAliasing,
+            uiLoader.LinkList(this.comboBoxAntiAliasing,
                 new String[] { "TAA", "FXAA", "" },
                 IniFile.F76Prefs, "Display", "sAntiAliasing",
                 "TAA", 2);
 
             // Anisotropic filtering
-            LinkList(this.comboBoxAnisotropicFiltering,
+            uiLoader.LinkList(this.comboBoxAnisotropicFiltering,
                 new String[] { "0", "2", "4", "8", "16" },
                 IniFile.F76Prefs, "Display", "iMaxAnisotropy",
                 "8", 3);
@@ -545,8 +461,8 @@ namespace Fo76ini
             // I'm not so sure about this anymore:
             //    Actually, it's not VSync but a fps cap, which is determined this way: Monitor refresh rate divided by iPresentInterval
             //    A 120 Hz monitor and iPresentInterval set to 2 will result in a 60fps cap.
-            //LinkBool(this.checkBoxVSync, IniFile.F76Prefs, "Display", "iPresentInterval", true);
-            LinkCustom(this.checkBoxVSync,
+            //uiLoader.LinkBool(this.checkBoxVSync, IniFile.F76Prefs, "Display", "iPresentInterval", true);
+            uiLoader.LinkCustom(this.checkBoxVSync,
                 () => IniFiles.Instance.GetInt("Display", "iPresentInterval", 1) != 0,
                 (value) => {
                     if (value)
@@ -572,7 +488,7 @@ namespace Fo76ini
             );
 
             // Depth of Field
-            LinkCustom(this.checkBoxDepthOfField,
+            uiLoader.LinkCustom(this.checkBoxDepthOfField,
                 () => IniFiles.Instance.GetBool("ImageSpace", "bDynamicDepthOfField", true),
                 (value) => {
                     if (value)
@@ -606,55 +522,55 @@ namespace Fo76ini
             );
 
             // Motion Blur
-            LinkBool(this.checkBoxMotionBlur, IniFile.F76Custom, "ImageSpace", "bMBEnable", true);
+            uiLoader.LinkBool(this.checkBoxMotionBlur, IniFile.F76Custom, "ImageSpace", "bMBEnable", true);
 
             // Radial Blur
-            LinkBool(this.checkBoxRadialBlur, IniFile.F76Custom, "ImageSpace", "bDoRadialBlur", true);
+            uiLoader.LinkBool(this.checkBoxRadialBlur, IniFile.F76Custom, "ImageSpace", "bDoRadialBlur", true);
 
             // Lens Flare
-            LinkBool(this.checkBoxLensFlare, IniFile.F76Prefs, "ImageSpace", "bLensFlare", true);
+            uiLoader.LinkBool(this.checkBoxLensFlare, IniFile.F76Prefs, "ImageSpace", "bLensFlare", true);
 
             // Ambient Occlusion
-            LinkBool(this.checkBoxAmbientOcclusion, IniFile.F76Prefs, "Display", "bSAOEnable", true);
+            uiLoader.LinkBool(this.checkBoxAmbientOcclusion, IniFile.F76Prefs, "Display", "bSAOEnable", true);
 
             // Water / Displacement
-            LinkBool(this.checkBoxWaterDisplacement, IniFile.F76Prefs, "Water", "bUseWaterDisplacements", true);
+            uiLoader.LinkBool(this.checkBoxWaterDisplacement, IniFile.F76Prefs, "Water", "bUseWaterDisplacements", true);
 
             // Weather / Rain Occlusion
-            LinkBool(this.checkBoxWeatherRainOcclusion, IniFile.F76, "Weather", "bRainOcclusion", true);
+            uiLoader.LinkBool(this.checkBoxWeatherRainOcclusion, IniFile.F76, "Weather", "bRainOcclusion", true);
 
             // Weather / Wetness Occlusion
-            LinkBool(this.checkBoxWeatherWetnessOcclusion, IniFile.F76, "Weather", "bWetnessOcclusion", true);
+            uiLoader.LinkBool(this.checkBoxWeatherWetnessOcclusion, IniFile.F76, "Weather", "bWetnessOcclusion", true);
 
             // Lighting / Volumetric Lighting
-            LinkBool(this.checkBoxGodrays, IniFile.F76Prefs, "Display", "bVolumetricLightingEnable", true);
+            uiLoader.LinkBool(this.checkBoxGodrays, IniFile.F76Prefs, "Display", "bVolumetricLightingEnable", true);
 
             // Shadows / Texture map resolution
-            LinkList(this.comboBoxShadowTextureResolution,
+            uiLoader.LinkList(this.comboBoxShadowTextureResolution,
                 new String[] { "1024", "2048", "4096" },
                 IniFile.F76Prefs, "Display", "iShadowMapResolution",
                 "2048", 1);
 
             // Shadows / Blurriness
-            LinkList(this.comboBoxShadowBlurriness,
+            uiLoader.LinkList(this.comboBoxShadowBlurriness,
                 new String[] { "1", "2", "3" },
                 IniFile.F76Prefs, "Display", "uiOrthoShadowFilter",
                 "3", 2);
 
             // Shadow / Shadow distance
             // fShadowDistance was replaced by fDirShadowDistance in Fallout 4
-            LinkInt(this.numShadowDistance, IniFile.F76Prefs, "Display", "fDirShadowDistance", 3000);
+            uiLoader.LinkInt(this.numShadowDistance, IniFile.F76Prefs, "Display", "fDirShadowDistance", 3000);
 
             // LOD Fade Distances
-            LinkFloat(this.numLODObjects, IniFile.F76Prefs, "LOD", "fLODFadeOutMultObjects", 6.0f);
-            LinkFloat(this.numLODItems, IniFile.F76Prefs, "LOD", "fLODFadeOutMultItems", 2.5f);
-            LinkFloat(this.numLODActors, IniFile.F76Prefs, "LOD", "fLODFadeOutMultActors", 4.5f);
+            uiLoader.LinkFloat(this.numLODObjects, IniFile.F76Prefs, "LOD", "fLODFadeOutMultObjects", 6.0f);
+            uiLoader.LinkFloat(this.numLODItems, IniFile.F76Prefs, "LOD", "fLODFadeOutMultItems", 2.5f);
+            uiLoader.LinkFloat(this.numLODActors, IniFile.F76Prefs, "LOD", "fLODFadeOutMultActors", 4.5f);
 
             // Grass / Enable grass
-            LinkBool(this.checkBoxGrass, IniFile.F76Custom, "Grass", "bAllowCreateGrass", true);
+            uiLoader.LinkBool(this.checkBoxGrass, IniFile.F76Custom, "Grass", "bAllowCreateGrass", true);
 
             // Grass / Fade distance
-            LinkCustom(this.numGrassFadeDistance,
+            uiLoader.LinkCustom(this.numGrassFadeDistance,
                 () => IniFiles.Instance.GetFloat("Grass", "fGrassStartFadeDistance", 3000),
                 (value) => {
                     IniFiles.Instance.Set(IniFile.F76Prefs, "Grass", "fGrassStartFadeDistance", value);
@@ -668,8 +584,8 @@ namespace Fo76ini
 
             // TAA Sharpening
 
-            LinkFloat(this.numTAAPostOverlay, IniFile.F76Custom, "Display", "fTAAPostOverlay", 0.21f);
-            LinkFloat(this.numTAAPostSharpen, IniFile.F76Custom, "Display", "fTAAPostSharpen", 0.21f);
+            uiLoader.LinkFloat(this.numTAAPostOverlay, IniFile.F76Custom, "Display", "fTAAPostOverlay", 0.21f);
+            uiLoader.LinkFloat(this.numTAAPostSharpen, IniFile.F76Custom, "Display", "fTAAPostSharpen", 0.21f);
 
 
             /*
@@ -677,7 +593,7 @@ namespace Fo76ini
              */
 
             // Fix mouse sensitivity
-            LinkCustom(this.checkBoxFixMouseSensitivity,
+            uiLoader.LinkCustom(this.checkBoxFixMouseSensitivity,
                 () => IniFiles.Instance.GetFloat("Controls", "fMouseHeadingXScale", 0.021f) != IniFiles.Instance.GetFloat("Controls", "fMouseHeadingYScale", 0.021f),
                 (value) => { 
                     if (value)
@@ -724,7 +640,7 @@ namespace Fo76ini
             );
 
             // Fix aim sensitivity
-            LinkCustom(this.checkBoxFixAimSensitivity,
+            uiLoader.LinkCustom(this.checkBoxFixAimSensitivity,
                 () => IniFiles.Instance.GetFloat("Main", "fIronSightsFOVRotateMult", 0f) - 2.14f < 0.1f,
                 (value) => {
                     if (value)
@@ -741,7 +657,7 @@ namespace Fo76ini
             );
 
             // Mouse sensitivity slider
-            LinkCustom(this.numMouseSensitivity,
+            uiLoader.LinkCustom(this.numMouseSensitivity,
                 () => IniFiles.Instance.GetFloat("Controls", "fMouseHeadingSensitivity", 0.03f),
                 (value) => {
                     // Fallout76Custom.ini had no effect. I hope Fallout76Prefs.ini will have an effect this time:
@@ -751,8 +667,8 @@ namespace Fo76ini
             );
 
             // Gamepad
-            LinkBool(this.checkBoxGamepadEnabled, IniFile.F76Prefs, "General", "bGamepadEnable", true);
-            LinkBool(this.checkBoxGamepadRumble, IniFile.F76Custom, "Controls", "bGamePadRumble", true);
+            uiLoader.LinkBool(this.checkBoxGamepadEnabled, IniFile.F76Prefs, "General", "bGamepadEnable", true);
+            uiLoader.LinkBool(this.checkBoxGamepadRumble, IniFile.F76Custom, "Controls", "bGamePadRumble", true);
 
 
 
@@ -761,190 +677,11 @@ namespace Fo76ini
              */
 
             // Radiobuttons, Quickboy or Pipboy
-            LinkBool(this.radioButtonQuickboy, this.radioButtonPipboy, IniFile.F76Prefs, "Pipboy", "bQuickboyMode", false);
+            uiLoader.LinkBool(this.radioButtonQuickboy, this.radioButtonPipboy, IniFile.F76Prefs, "Pipboy", "bQuickboyMode", false);
 
             // Resolution
-            LinkInt(this.numPipboyTargetWidth, IniFile.F76Prefs, "Display", "uPipboyTargetWidth", 876);
-            LinkInt(this.numPipboyTargetHeight, IniFile.F76Prefs, "Display", "uPipboyTargetHeight", 700);
-        }
-
-
-
-        /*
-         **************************************************************
-         * Link control elements together
-         **************************************************************
-         */
-
-        // Link slider to num and vice-versa
-
-        private void LinkSlider(MetroFramework.Controls.MetroTrackBar slider, NumericUpDown num, double numToSliderRatio)
-        {
-            LinkSlider(slider, num, numToSliderRatio, false);
-        }
-
-        private void LinkSlider(MetroFramework.Controls.MetroTrackBar slider, NumericUpDown num, double numToSliderRatio, bool reversed)
-        {
-            if (!reversed)
-            {
-                slider.Scroll += (object sender, ScrollEventArgs e) => num.Value = Convert.ToDecimal(slider.Value / numToSliderRatio);
-                num.ValueChanged += (object sender, EventArgs e) => slider.Value = Convert.ToInt32(Convert.ToDouble(num.Value) * numToSliderRatio);
-            }
-            else
-            {
-                slider.Scroll += (object sender, ScrollEventArgs e) => num.Value = Convert.ToDecimal((slider.Maximum - slider.Value) / numToSliderRatio);
-                num.ValueChanged += (object sender, EventArgs e) => slider.Value = Convert.ToInt32(slider.Maximum - Convert.ToDouble(num.Value) * numToSliderRatio);
-            }
-        }
-
-
-
-        /*
-         **************************************************************
-         * Link *.ini states to control elements
-         **************************************************************
-         */
-
-        // comboBox.SelectedIndexChanged => comboBox.SelectionChangeCommitted
-        // checkBox.CheckedChanged       => checkBox.MouseClick
-        // radioButton.CheckedChanged    => radioButton.MouseClick
-
-        private void LinkCustom(CheckBox checkBox, Func<bool> getState, Action<bool> setState)
-        {
-            OnLoadUI.Add(() => checkBox.Checked = getState());
-            checkBox.MouseClick += (object sender, MouseEventArgs e) => setState(checkBox.Checked);
-        }
-
-        private void LinkCustom(ComboBox comboBox, Func<int> getState, Action<int> setState)
-        {
-            OnLoadUI.Add(() => comboBox.SelectedIndex = getState());
-            comboBox.SelectionChangeCommitted += (object sender, EventArgs e) => setState(comboBox.SelectedIndex);
-        }
-
-        private void LinkCustom(NumericUpDown num, Func<int> getState, Action<int> setState)
-        {
-            OnLoadUI.Add(() => num.Value = Utils.Clamp(getState(), Convert.ToInt32(num.Minimum), Convert.ToInt32(num.Maximum)));
-            num.ValueChanged += (object sender, EventArgs e) => setState(Convert.ToInt32(num.Value));
-        }
-
-        private void LinkCustom(NumericUpDown num, Func<float> getState, Action<float> setState)
-        {
-            OnLoadUI.Add(() => num.Value = Convert.ToDecimal(Utils.Clamp(getState(), Convert.ToSingle(num.Minimum), Convert.ToSingle(num.Maximum)), enUS));
-            num.ValueChanged += (object sender, EventArgs e) => setState(Convert.ToSingle(num.Value));
-        }
-
-        private void LinkBoolNegated(CheckBox checkBox, IniFile f, String section, String key, bool defaultValue)
-        {
-            LinkBool(checkBox, f, section, key, defaultValue, true);
-        }
-
-        private void LinkBool(CheckBox checkBox, IniFile f, String section, String key, bool defaultValue, bool negated = false)
-        {
-            OnLoadUI.Add(() => {
-                bool val = IniFiles.Instance.GetBool(f, section, key, defaultValue);
-                checkBox.Checked = negated ? !val : val;
-            });
-            checkBox.MouseClick += (object sender, MouseEventArgs e) => {
-                if (f == IniFile.F76Custom && (negated ? !checkBox.Checked : checkBox.Checked) == defaultValue)
-                    IniFiles.Instance.Remove(f, section, key);
-                else
-                    IniFiles.Instance.Set(f, section, key, negated ? !checkBox.Checked : checkBox.Checked);
-            };
-        }
-
-        private void LinkBool(RadioButton radioButtonTrue, RadioButton radioButtonFalse, IniFile f, String section, String key, bool defaultValue)
-        {
-            OnLoadUI.Add(() => {
-                bool val = IniFiles.Instance.GetBool(f, section, key, defaultValue);
-                if (val)
-                    radioButtonTrue.Checked = true;
-                else
-                    radioButtonFalse.Checked = true;
-            });
-            radioButtonTrue.MouseClick += (object sender, MouseEventArgs e) => {
-                if (radioButtonTrue.Checked)
-                    IniFiles.Instance.Set(f, section, key, true);
-            };
-            radioButtonFalse.MouseClick += (object sender, MouseEventArgs e) => {
-                if (radioButtonFalse.Checked)
-                    IniFiles.Instance.Set(f, section, key, false);
-            };
-        }
-
-        private void LinkInt(NumericUpDown num, IniFile f, String section, String key, int defaultValue)
-        {
-            OnLoadUI.Add(() => {
-                num.Value = Utils.Clamp(IniFiles.Instance.GetInt(f, section, key, defaultValue), Convert.ToInt32(num.Minimum), Convert.ToInt32(num.Maximum));
-            });
-            num.ValueChanged += (object sender, EventArgs e) => {
-                if (f == IniFile.F76Custom && num.Value == defaultValue)
-                    IniFiles.Instance.Remove(f, section, key);
-                else
-                    IniFiles.Instance.Set(f, section, key, Convert.ToInt32(num.Value));
-            };
-        }
-
-        private void LinkFloat(NumericUpDown num, IniFile f, String section, String key, float defaultValue)
-        {
-            OnLoadUI.Add(() => {
-                num.Value = Convert.ToDecimal(Utils.Clamp(IniFiles.Instance.GetFloat(f, section, key, defaultValue), Convert.ToSingle(num.Minimum), Convert.ToSingle(num.Maximum)));
-            });
-            num.ValueChanged += (object sender, EventArgs e) => {
-                if (f == IniFile.F76Custom && Convert.ToSingle(num.Value) == defaultValue)
-                    IniFiles.Instance.Remove(f, section, key);
-                else
-                    IniFiles.Instance.Set(f, section, key, Convert.ToSingle(num.Value));
-            };
-        }
-
-        private void LinkString(TextBox textBox, IniFile f, String section, String key, String defaultValue)
-        {
-            OnLoadUI.Add(() => textBox.Text = IniFiles.Instance.GetString(section, key, defaultValue));
-            textBox.TextChanged += (object sender, EventArgs e) => IniFiles.Instance.Set(f, section, key, textBox.Text);
-        }
-
-        private void LinkList(RadioButton[] radioButtons, String[] associatedValues, IniFile f, String section, String key, String defaultValue)
-        {
-            if (radioButtons.Length != associatedValues.Length)
-                throw new ArgumentException("LinkList: radioButtons and associatedValues have to have the same length!");
-
-            OnLoadUI.Add(() => {
-                String value = IniFiles.Instance.GetString(f, section, key, defaultValue);
-                int index = Array.IndexOf(associatedValues, value);
-                if (index > -1)
-                {
-                    radioButtons[index].Checked = true;
-                }
-            });
-
-            // I have a really bad feeling about this:
-            for (int i = 0; i < radioButtons.Length; i++)
-            {
-                RadioButton radioButton = radioButtons[i];
-                String associatedValue = associatedValues[i];
-                radioButton.MouseClick += (object sender, MouseEventArgs e) => {
-                    if (radioButton.Checked)
-                        IniFiles.Instance.Set(f, section, key, associatedValue);
-                };
-            }
-        }
-
-        private void LinkList(ComboBox comboBox, String[] associatedValues, IniFile f, String section, String key, String defaultValue, int defaultComboBoxIndex)
-        {
-            if (comboBox.Items.Count != associatedValues.Length)
-                throw new ArgumentException("LinkList: comboBox has to have as many items as associatedValues has!");
-
-            OnLoadUI.Add(() => {
-                String value = IniFiles.Instance.GetString(f, section, key, defaultValue);
-                int index = Array.IndexOf(associatedValues, value);
-                if (index > -1)
-                    comboBox.SelectedIndex = index;
-                else
-                    comboBox.SelectedIndex = defaultComboBoxIndex;
-            });
-            comboBox.SelectionChangeCommitted += (object sender, EventArgs e) => {
-                IniFiles.Instance.Set(f, section, key, associatedValues[comboBox.SelectedIndex]);
-            };
+            uiLoader.LinkInt(this.numPipboyTargetWidth, IniFile.F76Prefs, "Display", "uPipboyTargetWidth", 876);
+            uiLoader.LinkInt(this.numPipboyTargetHeight, IniFile.F76Prefs, "Display", "uPipboyTargetHeight", 700);
         }
 
 
@@ -971,6 +708,8 @@ namespace Fo76ini
             ColorUi2Ini();
             IniFiles.Instance.SaveAll(this.checkBoxReadOnly.Checked);
             MsgBox.Get("changesApplied").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            IniFiles.Instance.ResolveNWMode();
         }
 
         // [ ] "Make *.ini files read-only" checkbox:
@@ -1030,6 +769,7 @@ namespace Fo76ini
                 IniFiles.Instance.BackupAll("Backup_BeforeManageMods"); // Just to be sure...
                 formModsBackupCreated = true;
             }
+            Utils.SetFormPosition(this.formMods, this.Location.X + this.Width, this.Location.Y);
             this.formMods.Show();
         }
 
@@ -1076,6 +816,12 @@ namespace Fo76ini
         {
             if (radioButtonEditionBethesdaNet.Checked)
                 this.formMods.ChangeGameEdition(GameEdition.BethesdaNet);
+        }
+
+        // Nuclear Winter mode
+        private void checkBoxNWMode_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.nuclearWinterMode = checkBoxNWMode.Checked;
         }
     }
 }

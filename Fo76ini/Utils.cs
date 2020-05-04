@@ -11,6 +11,9 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Threading;
 using System.Globalization;
+using System.Drawing;
+using System.Drawing.Imaging;
+using ImageMagick;
 
 namespace Fo76ini
 {
@@ -115,6 +118,58 @@ namespace Fo76ini
             }
 
             Directory.Delete(targetDir, false);
+        }
+
+        public static void DeleteFile(string targetFile)
+        {
+            File.SetAttributes(targetFile, FileAttributes.Normal);
+            File.Delete(targetFile);
+        }
+
+        public static String GetValidFileName(string value, string extension = "")
+        {
+            String newName = "";
+            if (value.Trim().Length < 0)
+            {
+                newName = "untitled";
+            }
+            else
+            {
+                char[] invalidChars = Path.GetInvalidPathChars();
+                for (int i = 0; i < value.Length; i++)
+                    if (invalidChars.Contains(value[i]))
+                        newName += '_';
+                    else
+                        newName += value[i];
+                newName = newName.Trim();
+            }
+            if (extension.Length > 0 && !newName.EndsWith(extension))
+                newName += extension;
+            return newName;
+        }
+
+        /// <summary>
+        /// Returns "File (1).txt" if "File.txt" already exists.
+        /// </summary>
+        /// <param name="fullPath"></param>
+        /// <returns></returns>
+        public static String GetUniquePath(string fullPath)
+        {
+            // https://stackoverflow.com/a/13049909
+            int count = 1;
+
+            string fileNameOnly = Path.GetFileNameWithoutExtension(fullPath);
+            string extension = Path.GetExtension(fullPath);
+            string path = Path.GetDirectoryName(fullPath);
+            string newFullPath = fullPath;
+
+            while (File.Exists(newFullPath) || Directory.Exists(newFullPath))
+            {
+                string tempFileName = string.Format("{0} ({1})", fileNameOnly, count++);
+                newFullPath = Path.Combine(path, tempFileName + extension);
+            }
+
+            return newFullPath;
         }
 
         /// <summary>
@@ -281,6 +336,106 @@ namespace Fo76ini
         {
             Thread.CurrentThread.CurrentCulture = enUS;
             return num.ToString("D");
+        }
+
+        public static void SetFormPosition(Form form, int x, int y)
+        {
+            // https://stackoverflow.com/questions/31401568/how-can-i-set-the-windows-form-position-manually
+            var myScreen = Screen.FromControl(form);
+
+            form.Left = myScreen.Bounds.Left;
+            form.Top = myScreen.Bounds.Top;
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(x, y);
+        }
+
+
+        public static bool RepairDDS(String filePath)
+        {
+            String fileName = Path.GetFileName(filePath);
+            try
+            {
+                Console.WriteLine("Reading " + fileName);
+                MagickImage image = new MagickImage(filePath);
+                Console.WriteLine("Writing " + fileName);
+                image.Write(filePath);
+                return true;
+            }
+            catch (ImageMagick.MagickCorruptImageErrorException exc)
+            {
+                Console.WriteLine("MagickCorruptImageErrorException: " + exc.Message);
+            }
+            Console.WriteLine("Fallback to Pfim...");
+
+            Pfim.IImage pfimImage = Pfim.Pfim.FromFile(filePath);
+            PixelFormat format;
+            switch (pfimImage.Format)
+            {
+                case Pfim.ImageFormat.Rgb24:
+                    format = PixelFormat.Format24bppRgb;
+                    break;
+
+                case Pfim.ImageFormat.Rgba32:
+                    format = PixelFormat.Format32bppArgb;
+                    break;
+
+                case Pfim.ImageFormat.R5g5b5:
+                    format = PixelFormat.Format16bppRgb555;
+                    break;
+
+                case Pfim.ImageFormat.R5g6b5:
+                    format = PixelFormat.Format16bppRgb565;
+                    break;
+
+                case Pfim.ImageFormat.R5g5b5a1:
+                    format = PixelFormat.Format16bppArgb1555;
+                    break;
+
+                case Pfim.ImageFormat.Rgb8:
+                    format = PixelFormat.Format8bppIndexed;
+                    break;
+
+                default:
+                    Console.WriteLine("Failed: Image format not supported.");
+                    /*var msg = $"{image.Format} is not recognized for Bitmap on Windows Forms. " +
+                               "You'd need to write a conversion function to convert the data to known format";
+                    var caption = "Unrecognized format";
+                    MessageBox.Show(msg, caption, MessageBoxButtons.OK);*/
+                    return false;
+            }
+            Console.WriteLine("Writing " + fileName);
+            var data = System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement(pfimImage.Data, 0);
+            Bitmap bitmap = new Bitmap(pfimImage.Width, pfimImage.Height, pfimImage.Stride, format, data);
+            MagickImage magickImage = new MagickImage(bitmap);
+            File.Delete(filePath);
+            magickImage.Write(filePath);
+            return true;
+        }
+
+
+        public static bool IsValidDDS(string path)
+        {
+            if (path == null)
+                throw new ArgumentNullException(nameof(path));
+            if (!File.Exists(path)) // Check for existence.
+                return false;
+
+            uint magicNumber = 0; byte[] headerLength = new byte[sizeof(byte)];
+            using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
+                byte[] magic = new byte[sizeof(uint)];
+
+                // I'm still pretty used to C and fread, so here you go :^)
+                if (fs.Read(magic, 0, sizeof(uint)) != sizeof(uint))
+                    return false; // Not even a valid file.
+
+                if (fs.Read(headerLength, 0, sizeof(byte)) != sizeof(byte))
+                    return false; // Not enough bytes, even if the first 4 bytes were checked.
+
+                // Convert to a big endian integer.
+                magicNumber = (uint)((magic[0] << 24) | (magic[1] << 16) | (magic[2] << 8) | magic[3]);
+            }
+            return (headerLength[0] == 0x7C) && (magicNumber == 0x44445320);
         }
     }
 }

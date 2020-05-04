@@ -1,4 +1,5 @@
-﻿using SharpCompress.Common;
+﻿using ImageMagick;
+using SharpCompress.Common;
 using SharpCompress.Readers;
 using System;
 using System.Collections.Generic;
@@ -13,19 +14,25 @@ using System.Xml.Linq;
 
 namespace Fo76ini
 {
-    class Mod
+    public class Mod
     {
         public enum FileType
         {
             Loose,
             BundledBA2,
-            BundledBA2Textures,
             SeparateBA2
+        }
+
+        public enum ArchiveFormat
+        {
+            Auto,
+            General,
+            Textures
         }
 
         private String title;
         private String managedFolderName;
-        private Mod.FileType type;
+        public Mod.FileType Type;
         private String root;
         private bool enabled;
 
@@ -34,15 +41,15 @@ namespace Fo76ini
 
         /* Does only apply for FileType.SeparateBA2 */
         public Archive2.Compression Compression = Archive2.Compression.Default;
-        public Archive2.Format Format = Archive2.Format.General;
         private String archiveName = "untitled.ba2";
+        public Mod.ArchiveFormat Format = Mod.ArchiveFormat.Auto;
 
         public Mod()
         {
             this.title = "Untitled";
             this.managedFolderName = "Untitled";
             this.enabled = false;
-            this.type = Mod.FileType.BundledBA2;
+            this.Type = Mod.FileType.BundledBA2;
             this.root = "Data";
         }
 
@@ -52,7 +59,7 @@ namespace Fo76ini
             this.title = mod.title;
             this.managedFolderName = mod.managedFolderName;
             this.enabled = mod.enabled;
-            this.type = mod.type;
+            this.Type = mod.Type;
             this.root = mod.root;
             this.looseFiles = new List<String>(mod.looseFiles);
             this.Compression = mod.Compression;
@@ -86,29 +93,23 @@ namespace Fo76ini
             {
                 if (value.Trim().Length < 0)
                     return;
-                String newName = "";
-                char[] invalidChars = Path.GetInvalidPathChars();
-                for (int i = 0; i < value.Length; i++)
-                    if (invalidChars.Contains(value[i]) || value[i] == ' ')
-                        newName += '_';
-                    else
-                        newName += value[i];
-                newName = newName.Trim();
-                if (!newName.EndsWith(".ba2"))
-                    newName += ".ba2";
-                this.archiveName = newName;
+                this.archiveName = Utils.GetValidFileName(value, ".ba2");
             }
-        }
-
-        public Mod.FileType Type
-        {
-            get { return this.type; }
-            set { this.type = value; }
         }
 
         public String GetTypeName()
         {
-            return Enum.GetName(typeof(Mod.FileType), (int)this.type);
+            return Enum.GetName(typeof(Mod.FileType), (int)this.Type);
+        }
+
+        public String GetFormatName()
+        {
+            return Enum.GetName(typeof(Mod.ArchiveFormat), (int)this.Format);
+        }
+
+        public String GetManagedPath()
+        {
+            return Path.Combine(ManagedMods.Instance.GamePath, "Mods", this.ManagedFolder);
         }
 
         public String RootFolder
@@ -131,7 +132,7 @@ namespace Fo76ini
 
         public void AddFile(String path)
         {
-            if (this.type == Mod.FileType.Loose)
+            if (this.Type == Mod.FileType.Loose)
                 this.looseFiles.Add(path);
             else
                 throw new InvalidOperationException($"Can't add loose files to a \"{this.GetTypeName()}\" type mod.");
@@ -147,7 +148,7 @@ namespace Fo76ini
             get { return this.looseFiles; }
             set
             {
-                if (this.type == Mod.FileType.Loose)
+                if (this.Type == Mod.FileType.Loose)
                     this.looseFiles = value;
                 else
                     throw new InvalidOperationException($"Can't set loose files because mod is of \"{this.GetTypeName()}\" type.");
@@ -164,22 +165,25 @@ namespace Fo76ini
             // <Mod title="Some awesome mod" root="Data" modFolder="awesome" installType="BA2Archive" enabled="true" />
             XElement xmlMod = new XElement("Mod",
                 new XAttribute("title", this.title),
-                new XAttribute("root", this.root),
+                new XAttribute("enabled", this.enabled),
                 new XAttribute("modFolder", this.managedFolderName),
-                new XAttribute("installType", this.GetTypeName()),
-                new XAttribute("enabled", this.enabled));
+                new XAttribute("installType", this.GetTypeName()));
 
-            if (this.type == Mod.FileType.Loose && this.enabled)
+            if (this.Type == Mod.FileType.Loose && this.enabled)
                 foreach (String filePath in this.looseFiles)
                     xmlMod.Add(new XElement("File", new XAttribute("path", filePath)));
 
-            if (this.type == Mod.FileType.SeparateBA2)
+            if (this.Type == Mod.FileType.SeparateBA2)
             {
                 String compressionStr = Enum.GetName(typeof(Archive2.Compression), (int)Compression);
-                String formatStr = Enum.GetName(typeof(Archive2.Format), (int)Format);
                 xmlMod.Add(new XAttribute("archiveName", archiveName));
                 xmlMod.Add(new XAttribute("compression", compressionStr));
-                xmlMod.Add(new XAttribute("format", formatStr));
+                xmlMod.Add(new XAttribute("format", this.GetFormatName()));
+            }
+
+            if (this.Type == Mod.FileType.Loose)
+            {
+                xmlMod.Add(new XAttribute("root", this.root));
             }
 
             return xmlMod;
@@ -188,14 +192,12 @@ namespace Fo76ini
         public static Mod Deserialize(XElement xmlMod)
         {
             if (xmlMod.Attribute("title") == null ||
-                xmlMod.Attribute("root") == null ||
                 xmlMod.Attribute("modFolder") == null ||
                 xmlMod.Attribute("enabled") == null ||
                 xmlMod.Attribute("installType") == null)
                 throw new InvalidDataException("Some attributes are missing.");
             Mod mod = new Mod();
             mod.Title = xmlMod.Attribute("title").Value;
-            mod.RootFolder = xmlMod.Attribute("root").Value;
             mod.ManagedFolder = xmlMod.Attribute("modFolder").Value;
             try
             {
@@ -210,12 +212,10 @@ namespace Fo76ini
                 case "Loose":
                     mod.Type = Mod.FileType.Loose;
                     break;
-                case "BA2Archive":
+                case "BA2Archive": // Backward compatibility
                 case "BundledBA2":
+                case "BundledBA2Textures": // Backward compatibility
                     mod.Type = Mod.FileType.BundledBA2;
-                    break;
-                case "BundledBA2Textures":
-                    mod.Type = Mod.FileType.BundledBA2Textures;
                     break;
                 case "SeparateBA2":
                     mod.Type = Mod.FileType.SeparateBA2;
@@ -223,33 +223,130 @@ namespace Fo76ini
                 default:
                     throw new InvalidDataException($"Invalid mod installation type: {xmlMod.Attribute("installType").Value}");
             }
+            if (xmlMod.Attribute("format") != null)
+            {
+                switch (xmlMod.Attribute("format").Value)
+                {
+                    case "General":
+                        mod.Format = Mod.ArchiveFormat.General;
+                        break;
+                    case "DDS": // Backward compatibility
+                    case "Textures":
+                        mod.Format = Mod.ArchiveFormat.Textures;
+                        break;
+                    default:
+                        mod.Format = Mod.ArchiveFormat.Auto;
+                        break;
+                }
+            }
             if (mod.Type == Mod.FileType.SeparateBA2 &&
                 xmlMod.Attribute("compression") != null &&
-                xmlMod.Attribute("format") != null &&
                 xmlMod.Attribute("archiveName") != null)
             {
                 mod.Compression = Archive2.GetCompression(xmlMod.Attribute("compression").Value);
-                mod.Format = Archive2.GetFormat(xmlMod.Attribute("format").Value);
                 mod.ArchiveName = xmlMod.Attribute("archiveName").Value;
             }
-            if (mod.Type == Mod.FileType.Loose && mod.isEnabled)
-                foreach (XElement xmlFile in xmlMod.Descendants("File"))
-                    if (xmlFile.Attribute("path") != null)
-                        mod.AddFile(xmlFile.Attribute("path").Value);
-                    else
-                        throw new InvalidDataException("path attribute is missing from <File> tag");
+            if (mod.Type == Mod.FileType.Loose &&
+                xmlMod.Attribute("root") != null)
+            {
+                mod.RootFolder = xmlMod.Attribute("root").Value;
+                if (mod.isEnabled)
+                    foreach (XElement xmlFile in xmlMod.Descendants("File"))
+                        if (xmlFile.Attribute("path") != null)
+                            mod.AddFile(xmlFile.Attribute("path").Value);
+                        else
+                            throw new InvalidDataException("path attribute is missing from <File> tag");
+            }
             return mod;
+        }
+
+        public List<String> RepairDDSFiles(Action<String, int> updateProgress = null, Action<List<String>> done = null)
+        {
+            List<String> corruptDDSFiles = new List<String>();
+            Console.WriteLine("Repairing DDS files of " + this.Title + ".");
+            String managedPath = this.GetManagedPath();
+            String[] files = Directory.GetFiles(managedPath, "*.*", SearchOption.AllDirectories);
+            int i = 1;
+            foreach (String filePath in files)
+            {
+                if (!filePath.ToLower().EndsWith(".dds"))
+                {
+                    i++;
+                    continue;
+                }
+                String fileName = Path.GetFileName(filePath);
+                if (updateProgress != null)
+                    updateProgress(fileName, (int)((float)i / (float)files.Length * 100));
+                if (!Utils.RepairDDS(filePath))
+                {
+                    corruptDDSFiles.Add(filePath);
+                }
+                i++;
+            }
+            Console.WriteLine("Done.");
+            if (done != null)
+                done(corruptDDSFiles);
+            return corruptDDSFiles;
         }
     }
 
-    class ManagedMods
+    public class ManagedMods
     {
+        private static ManagedMods instance = null;
+        private static readonly object padlock = new object();
+
+        public static ManagedMods Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new ManagedMods();
+                    }
+                    return instance;
+                }
+            }
+        }
+
+        private ManagedMods()
+        {
+            this.gamePathKey = "sGamePath" + ((new string[] { "", "BethesdaNet", "Steam" })[IniFiles.Instance.GetInt(IniFile.Config, "Preferences", "uGameEdition", 0)]);
+
+            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", this.gamePathKey, "");
+            bool nwMode = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bDisableMods", false);
+            if (gamePath.Length > 0)
+            {
+                this.GamePath = gamePath;
+            }
+            this.nuclearWinterMode = nwMode;
+
+            this.logFile = new Log("modmanager.log.txt");
+        }
+
         private List<Mod> mods = new List<Mod>();
         private List<Mod> changedMods = new List<Mod>();
         private String gamePath = null;
         public bool nuclearWinterMode = false;
         public Archive2.Compression bundledCompression = Archive2.Compression.Default;
         public Archive2.Compression bundledTexturesCompression = Archive2.Compression.Default;
+        private String gamePathKey;
+        private Log logFile;
+
+        public String GamePathKey
+        {
+            get { return this.gamePathKey; }
+            set
+            {
+                if (value.ToLower() == "sgamepathbethesdanet")
+                    this.gamePathKey = "sGamePathBethesdaNet";
+                else if (value.ToLower() == "sgamepathsteam")
+                    this.gamePathKey = "sGamePathSteam";
+                else
+                    this.gamePathKey = "sGamePath";
+            }
+        }
 
         private List<Mod> CreateDeepCopy(List<Mod> original)
         {
@@ -264,6 +361,15 @@ namespace Fo76ini
             get { return this.changedMods; }
         }
 
+        private void DeleteAt(int index)
+        {
+            String managedFolderPath = Path.Combine(gamePath, "Mods", this.changedMods[index].ManagedFolder);
+            if (Directory.Exists(managedFolderPath))
+                Directory.Delete(managedFolderPath, true);
+            this.changedMods.RemoveAt(index);
+            //this.mods.RemoveAt(index);
+        }
+
         /// <summary>
         /// Delete all files of the mod and remove it from the list.
         /// Saves the manifest afterwards.
@@ -272,14 +378,132 @@ namespace Fo76ini
         /// <param name="done"></param>
         public void DeleteMod(int index, Action done = null)
         {
-            String managedFolderPath = Path.Combine(gamePath, "Mods", mods[index].ManagedFolder);
-            if (Directory.Exists(managedFolderPath))
-                Directory.Delete(managedFolderPath, true);
-            this.changedMods.RemoveAt(index);
-            //this.mods.RemoveAt(index);
+            DeleteAt(index);
             this.Save();
             if (done != null)
                 done();
+        }
+
+        public void DeleteMods(List<int> indices, Action done = null)
+        {
+            indices = indices.OrderByDescending(i => i).ToList();
+            foreach (int index in indices)
+                DeleteAt(index);
+            this.Save();
+            if (done != null)
+                done();
+        }
+
+        public bool ValidateGamePath(String path)
+        {
+            return path != null && path.Trim().Length > 0 && Directory.Exists(path) && Directory.Exists(Path.Combine(path, "Data"));
+        }
+
+        public bool ValidateGamePath()
+        {
+            return this.ValidateGamePath(this.gamePath);
+        }
+
+        public String RenameManagedFolder(String currentManagedFolderName, String newManagedFolderName)
+        {
+            newManagedFolderName = Utils.GetValidFileName(newManagedFolderName);
+            if (currentManagedFolderName == newManagedFolderName)
+                return currentManagedFolderName;
+            if (!Directory.Exists(Path.Combine(this.GamePath, "Mods", currentManagedFolderName)))
+                return currentManagedFolderName;
+
+            Mod deployedMod = null;
+            Mod changedMod = null;
+            foreach (Mod mod in this.mods)
+                if (mod.ManagedFolder == currentManagedFolderName)
+                    deployedMod = mod;
+            foreach (Mod mod in this.changedMods)
+                if (mod.ManagedFolder == currentManagedFolderName)
+                    changedMod = mod;
+            if (deployedMod == null || changedMod == null)
+            {
+                MsgBox.Get("modDetailsMoveManagedFolderFailed").FormatText("Internal error").Show(MessageBoxIcon.Error);
+                return currentManagedFolderName;
+            }
+
+            String currentManagedFolderPath = deployedMod.GetManagedPath();
+            String newManagedFolderPath = Utils.GetUniquePath(Path.Combine(ManagedMods.Instance.GamePath, "Mods", newManagedFolderName));
+            newManagedFolderName = Path.GetFileName(newManagedFolderPath);
+            try
+            {
+                Directory.Move(currentManagedFolderPath, newManagedFolderPath);
+                deployedMod.ManagedFolder = newManagedFolderName;
+                changedMod.ManagedFolder = newManagedFolderName;
+                this.Save();
+                return newManagedFolderName;
+            }
+            catch (Exception exc)
+            {
+                MsgBox.Get("modDetailsMoveManagedFolderFailed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+            }
+            return currentManagedFolderName;
+        }
+
+        public List<String> RepairDDSFiles(Action<String, int> updateProgress = null, Action<List<String>> done = null)
+        {
+            List<String> corruptDDSFiles = new List<String>();
+            int m = 1;
+            Console.WriteLine("Repairing *.dds files of all mods...");
+            foreach (Mod mod in this.changedMods)
+            {
+                Console.WriteLine("Repairing *.dds files of " + mod.Title + ".");
+                String managedPath = mod.GetManagedPath();
+                String[] files = Directory.GetFiles(managedPath, "*.*", SearchOption.AllDirectories);
+                int f = 1;
+                foreach (String filePath in files)
+                {
+                    if (!filePath.ToLower().EndsWith(".dds"))
+                    {
+                        f++;
+                        continue;
+                    }
+                    String fileName = Path.GetFileName(filePath);
+                    if (updateProgress != null)
+                    {
+                        float overallProgress = (float)(m - 1) / (float)this.changedMods.Count;
+                        float fileProgress = (float)f / (float)files.Length;
+                        float percent = Utils.Clamp(overallProgress + (1.0f / (float)this.changedMods.Count) * fileProgress, 0.0f, 1.0f);
+                        updateProgress($"Mod {mod.Title} ({m} of {this.changedMods.Count}): {fileName} ({f} of {files.Length})", (int)(percent * 100));
+                    }
+                    if (!Utils.RepairDDS(filePath))
+                    {
+                        corruptDDSFiles.Add(filePath);
+                    }
+                    f++;
+                }
+                Console.WriteLine("");
+                m++;
+            }
+            if (done != null)
+                done(corruptDDSFiles);
+            return corruptDDSFiles;
+        }
+
+        private Archive2.Format DetectArchive2Format(Mod mod)
+        {
+            if (mod.Format == Mod.ArchiveFormat.General)
+                return Archive2.Format.General;
+            else if (mod.Format == Mod.ArchiveFormat.Textures)
+                return Archive2.Format.DDS;
+
+            // Auto-detect based on folders that might contains DDS files:
+            String managedFolderPath = mod.GetManagedPath();
+            String[] folders = Directory.GetDirectories(managedFolderPath);
+            String[] files = Directory.GetFiles(managedFolderPath);
+            String[] ddsFolders = new string[] { "textures", "effects" };
+            bool containsDDSFolders = false;
+            foreach (String path in folders)
+                if (ddsFolders.Contains(Path.GetFileName(path).ToLower()))
+                    containsDDSFolders = true;
+            if (containsDDSFolders && files.Length == 0) //&& folders.Length == 1)
+                return Archive2.Format.DDS;
+            else
+                return Archive2.Format.General;
         }
 
         private void ManipulateModFolder(Mod mod, String managedFolderPath, Action<String, int> updateProgress = null)
@@ -321,11 +545,12 @@ namespace Fo76ini
                     if (name == "textures" && Directory.GetFiles(managedFolderPath).Length == 0)
                     {
                         // ... set ba2 format type to DDS
-                        mod.Format = Archive2.Format.DDS;
-                        if (mod.Type == Mod.FileType.BundledBA2)
-                            mod.Type = Mod.FileType.BundledBA2Textures;
-                        mod.RootFolder = "Data";
-                        break;
+                        if (mod.Format != Mod.ArchiveFormat.Auto)
+                        {
+                            mod.Format = Mod.ArchiveFormat.Textures;
+                            mod.RootFolder = "Data";
+                            break;
+                        }
                     }
                 }
             }
@@ -479,13 +704,13 @@ namespace Fo76ini
             filePath = Path.GetFullPath(filePath);
             String fileName = Path.GetFileNameWithoutExtension(filePath);
             String fileExtension = Path.GetExtension(filePath);
-            String managedFolder = fileName;
-            String managedFolderPath = Path.Combine(this.GamePath, "Mods", managedFolder);
-            if (Directory.Exists(managedFolderPath))
+            String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", fileName));
+            String managedFolder = Path.GetFileName(managedFolderPath);
+            /*if (Directory.Exists(managedFolderPath))
             {
                 managedFolder += DateTime.Now.ToString("(yyyy-MM-dd_HH-mm-ss)");
                 managedFolderPath = Path.Combine(this.GamePath, "Mods", managedFolder);
-            }
+            }*/
 
             // Create a new mod:
             Mod mod = new Mod();
@@ -543,13 +768,13 @@ namespace Fo76ini
             // Get paths:
             folderPath = Path.GetFullPath(folderPath);
             String folderName = Path.GetFileName(folderPath);
-            String managedFolder = folderName;
-            String managedFolderPath = Path.Combine(this.GamePath, "Mods", managedFolder);
-            if (Directory.Exists(managedFolderPath))
+            String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", folderName));
+            String managedFolder = Path.GetFileName(managedFolderPath);
+            /*if (Directory.Exists(managedFolderPath))
             {
                 managedFolder += DateTime.Now.ToString("(yyyy-MM-dd_HH-mm-ss)");
                 managedFolderPath = Path.Combine(this.GamePath, "Mods", managedFolder);
-            }
+            }*/
 
             // Create a new mod:
             Mod mod = new Mod();
@@ -565,6 +790,12 @@ namespace Fo76ini
                 updateProgress($"Indexing {folderName}...", -1);
             String[] files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
             float count = (float)files.Length;
+            if (count == 0)
+            {
+                if (done != null)
+                    done();
+                return;
+            }
             for (int i = 0; i < files.Length; i++)
             {
                 if (updateProgress != null)
@@ -697,49 +928,99 @@ namespace Fo76ini
             return Path.Combine(this.gamePath, "Mods", this.mods[index].ManagedFolder);
         }
 
-        public String[] GetConflictingFiles()
+        public struct Conflict
         {
-            List<String> filesFound = new List<String>();
-            List<String> conflictingFiles = new List<String>();
-            foreach (Mod mod in this.changedMods)
-            {
-                if (!mod.isEnabled)
-                    continue;
+            public String conflictText;
+            public List<String> conflictingFiles;
+        }
 
-                String managedFolderPath = Path.Combine(this.gamePath, "Mods", mod.ManagedFolder);
-                String[] files = Directory.GetFiles(managedFolderPath, "*.*", SearchOption.AllDirectories);
-                foreach (String filePath in files)
+        public List<Conflict> GetConflictingFiles()
+        {
+            //List<String> conflictingFiles = new List<String>();
+            //List<String> conflictingMods = new List<String>();
+            List<Conflict> conflictingMods = new List<Conflict>();
+            for (int i = 1; i < this.changedMods.Count; i++)
+            {
+                Mod lowerMod = this.changedMods[i];
+                String lowerPath = Path.Combine(this.gamePath, "Mods", lowerMod.ManagedFolder);
+                if (!lowerMod.isEnabled && Directory.Exists(lowerPath))
+                    continue;
+                List<String> lowerRelPaths = new List<String>();
+                foreach (String filePath in Directory.GetFiles(lowerPath, "*.*", SearchOption.AllDirectories))
+                    lowerRelPaths.Add(Utils.MakeRelativePath(lowerPath, filePath));
+
+                //for (int l = i - 1; l >= 0; l--)
+                for (int l = 0; l < i; l++)
                 {
-                    String relPath = Utils.MakeRelativePath(managedFolderPath, filePath);
-                    if (filesFound.Contains(relPath))
-                        conflictingFiles.Add(relPath);
-                    else
-                        filesFound.Add(relPath);
+                    Conflict conflict = new Conflict();
+                    conflict.conflictingFiles = new List<String>();
+                    Mod upperMod = this.changedMods[l];
+                    String upperPath = Path.Combine(this.gamePath, "Mods", upperMod.ManagedFolder);
+                    if (!upperMod.isEnabled && Directory.Exists(upperPath))
+                        continue;
+                    String[] upperFiles = Directory.GetFiles(upperPath, "*.*", SearchOption.AllDirectories);
+                    foreach (String filePath in upperFiles)
+                    {
+                        String relUpperPath = Utils.MakeRelativePath(upperPath, filePath);
+                        if (lowerRelPaths.Contains(relUpperPath))
+                        {
+                            if (!conflict.conflictingFiles.Contains(relUpperPath))
+                                conflict.conflictingFiles.Add(relUpperPath);
+                            conflict.conflictText = lowerMod.Title + " overrides " + upperMod.Title;
+                        }
+                    }
+                    if (conflict.conflictingFiles.Count > 0)
+                        conflictingMods.Add(conflict);
                 }
             }
-            return conflictingFiles.ToArray();
+            return conflictingMods;
         }
 
         public void ImportInstalledMods()
         {
+            // Get all archives:
             List<String> sResourceIndexFileList = (new List<String>(IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))).Distinct().ToList();
-            List<String> installedMods = (new List<String>(IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))).Distinct().ToList();
+            List<String> sResourceArchive2List = (new List<String>(IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))).Distinct().ToList();
+
+            // Prepare list:
+            List<String> installedMods = new List<String>();
+            installedMods.AddRange(sResourceIndexFileList);
+            installedMods.AddRange(sResourceArchive2List);
             installedMods.Remove("bundled.ba2");
             installedMods.Remove("bundled_textures.ba2");
             foreach (Mod mod in this.mods)
                 if (mod.Type == Mod.FileType.SeparateBA2)
                     installedMods.Remove(mod.ArchiveName);
+
+            // Import every archive:
             foreach (String archiveName in installedMods)
             {
                 String path = Path.Combine(this.gamePath, "Data", archiveName);
                 if (File.Exists(path))
                 {
+                    // Import archive:
                     this.InstallModArchive(path);
                     File.Delete(path);
-                    sResourceIndexFileList.Remove(archiveName);
+
+                    // Remove from lists:
+                    if (sResourceIndexFileList.Contains(archiveName))
+                        sResourceIndexFileList.Remove(archiveName);
+                    if (sResourceArchive2List.Contains(archiveName))
+                        sResourceArchive2List.Remove(archiveName);
                 }
             }
-            IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", String.Join(",", sResourceIndexFileList.Distinct().ToArray()));
+
+            // Save *.ini files:
+            sResourceIndexFileList = sResourceIndexFileList.Distinct().ToList();
+            sResourceArchive2List = sResourceArchive2List.Distinct().ToList();
+            if (sResourceIndexFileList.Count > 0)
+                IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", String.Join(",", sResourceIndexFileList.ToArray()));
+            else
+                IniFiles.Instance.Remove(IniFile.F76Custom, "Archive", "sResourceIndexFileList");
+            if (sResourceArchive2List.Count > 0)
+                IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceArchive2List", String.Join(",", sResourceArchive2List.ToArray()));
+            else
+                IniFiles.Instance.Remove(IniFile.F76Custom, "Archive", "sResourceArchive2List");
             IniFiles.Instance.SaveAll();
         }
 
@@ -763,9 +1044,18 @@ namespace Fo76ini
             xmlDoc.Add(xmlRoot);
             foreach (Mod mod in mods)
             {
-                xmlRoot.Add(mod.Serialize());
+                if (Directory.Exists(mod.GetManagedPath()))
+                    xmlRoot.Add(mod.Serialize());
             }
             return xmlDoc;
+        }
+
+        public void Unload()
+        {
+            this.mods.Clear();
+            this.changedMods.Clear();
+
+            this.gamePath = "";
         }
 
         public void Load()
@@ -831,7 +1121,7 @@ namespace Fo76ini
         {
             if (!Archive2.ValidatePath())
             {
-                MsgBox.ShowID("modsArchive2NotSet", MessageBoxIcon.Error);
+                MsgBox.ShowID("modsArchive2Missing", MessageBoxIcon.Error);
                 if (done != null)
                     done();
                 return;
@@ -871,6 +1161,8 @@ namespace Fo76ini
                     }
                 }
             }
+            this.logFile.WriteTimeStamp();
+            this.logFile.WriteLine("Deploying.");
 
             String tempPath = Path.Combine(this.gamePath, "temp");
             String tempBA2Path = Path.Combine(tempPath, "ba2");
@@ -895,7 +1187,7 @@ namespace Fo76ini
             foreach (Mod mod in this.mods)
             {
                 if (updateProgress != null)
-                    updateProgress($"Removing loose files of mod {mod.Title} ({i} of {this.mods.Count})", Convert.ToInt32((float)i / (float)this.mods.Count * 20));
+                    updateProgress($"Removing files of mod {mod.Title} ({i} of {this.mods.Count})", Convert.ToInt32((float)i / (float)this.mods.Count * 20));
 
                 if (!mod.isEnabled)
                     continue;
@@ -924,6 +1216,7 @@ namespace Fo76ini
                             }
                         }
                     }
+                    this.logFile.WriteLine($"Loose files of mod {mod.Title} removed.");
                 }
                 else if (mod.Type == Mod.FileType.SeparateBA2)
                 {
@@ -936,6 +1229,7 @@ namespace Fo76ini
                         sResourceIndexFileList = sResourceIndexFileList.Distinct().ToList();
                         sResourceIndexFileList.Remove(mod.ArchiveName);
                     }
+                    this.logFile.WriteLine($"*.ba2 archive of mod {mod.Title} removed.");
                 }
 
                 i++;
@@ -980,7 +1274,7 @@ namespace Fo76ini
                 /*
                  * Copy files into GeneralData/TexturesData
                  */
-                if (mod.Type == Mod.FileType.BundledBA2 || mod.Type == Mod.FileType.BundledBA2Textures)
+                if (mod.Type == Mod.FileType.BundledBA2)
                 {
                     // Check if root folder is data:
                     if (!mod.RootFolder.Contains("Data"))
@@ -992,24 +1286,46 @@ namespace Fo76ini
                         continue;
                     }
 
+                    this.logFile.WriteLine($"[Bundled] Copying files of {mod.Title} to temp folder.");
+
+                    //Archive2.Format format = DetectArchive2Format(mod);
+
                     // Get temp data path:
-                    String tempDataPath = mod.Type == Mod.FileType.BundledBA2 ? tempBA2Path : tempBA2TexturesPath;
+                    //String tempDataPath = format == Archive2.Format.General ? tempBA2Path : tempBA2TexturesPath;
+                    int generalFiles = 0;
+                    int DDSFiles = 0;
 
                     // Copy all files to temp data path:
                     String[] files = Directory.GetFiles(managedFolderPath, "*.*", SearchOption.AllDirectories);
                     foreach (String filePath in files)
                     {
                         // Make a relative path, create directories and copy file:
-                        String destinationPath = Path.Combine(tempDataPath, Utils.MakeRelativePath(managedFolderPath, filePath));
+                        String destinationPath;
+                        if (filePath.ToLower().EndsWith(".dds"))
+                        {
+                            DDSFiles++;
+                            destinationPath = Path.Combine(tempBA2TexturesPath, Utils.MakeRelativePath(managedFolderPath, filePath));
+                        }
+                        else
+                        {
+                            generalFiles++;
+                            destinationPath = Path.Combine(tempBA2Path, Utils.MakeRelativePath(managedFolderPath, filePath));
+                        }
                         Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
                         File.Copy(filePath, destinationPath, true);
                     }
 
                     // Increment counter:
-                    if (mod.Type == Mod.FileType.BundledBA2)
+                    if (generalFiles > 0)
+                    {
                         enabledBA2GeneralMods++;
-                    else
+                        this.logFile.WriteLine($"   General files copied: {generalFiles}");
+                    }
+                    if (DDSFiles > 0)
+                    {
                         enabledBA2TexturesMods++;
+                        this.logFile.WriteLine($"   *.dds files copied:   {DDSFiles}");
+                    }
                 }
                 /*
                  * Install separate archive:
@@ -1026,8 +1342,15 @@ namespace Fo76ini
                         continue;
                     }
 
+                    Archive2.Format format = DetectArchive2Format(mod);
+
+                    this.logFile.WriteLine($"[Separate] Creating Archive of {mod.Title}.");
+                    this.logFile.WriteLine($"    Archive name: {mod.ArchiveName}");
+                    this.logFile.WriteLine($"    Format:       {Enum.GetName(typeof(Archive2.Format), (int)format)}");
+                    this.logFile.WriteLine($"    Compression:  {Enum.GetName(typeof(Archive2.Compression), (int)mod.Compression)}");
+
                     // Create archive:
-                    Archive2.Create(Path.Combine(this.gamePath, "Data", mod.ArchiveName), managedFolderPath, mod.Compression, mod.Format);
+                    Archive2.Create(Path.Combine(this.gamePath, "Data", mod.ArchiveName), managedFolderPath, mod.Compression, format);
                     sResourceIndexFileList.Add(mod.ArchiveName);
                 }
                 /*
@@ -1051,6 +1374,8 @@ namespace Fo76ini
                     mod.LooseFiles = modRelPaths;
                     allModRelPaths.AddRange(modRelPaths);
                     enabledLooseMods++;
+
+                    this.logFile.WriteLine($"[Loose] Files of {mod.Title} copied.");
                 }
 
                 i++;
@@ -1065,10 +1390,12 @@ namespace Fo76ini
             {
                 if (updateProgress != null)
                     updateProgress("Creating bundled *.ba2 archive...", -1);
+                this.logFile.WriteLine($"Creating bundled.ba2");
                 Archive2.Create(bundledArchivePath, tempBA2Path, bundledCompression, Archive2.Format.General);
             }
             else
             {
+                this.logFile.WriteLine($"Removing bundled.ba2");
                 if (File.Exists(bundledArchivePath))
                     File.Delete(bundledArchivePath);
             }
@@ -1091,10 +1418,12 @@ namespace Fo76ini
             {
                 if (updateProgress != null)
                     updateProgress("Creating bundled textures *.ba2 archive...", -1);
-                Archive2.Create(bundledArchivePath, tempBA2Path, bundledTexturesCompression, Archive2.Format.DDS);
+                this.logFile.WriteLine($"Creating bundled_textures.ba2");
+                Archive2.Create(bundledArchivePath, tempBA2TexturesPath, bundledTexturesCompression, Archive2.Format.DDS);
             }
             else
             {
+                this.logFile.WriteLine($"Removing bundled_textures.ba2");
                 if (File.Exists(bundledArchivePath))
                     File.Delete(bundledArchivePath);
             }
@@ -1113,11 +1442,15 @@ namespace Fo76ini
              */
             if (updateProgress != null)
                 updateProgress("Finishing up...", -1);
+            this.logFile.WriteLine($"Changing values in *.ini files...");
 
             if (this.nuclearWinterMode)
             {
                 if (sResourceIndexFileList.Count() > 0)
-                    IniFiles.Instance.Set(IniFile.Config, "Archive", "sResourceIndexFileList", String.Join(",", sResourceIndexFileList));
+                {
+                    IniFiles.Instance.Set(IniFile.Config, "Archive", "sResourceIndexFileList", String.Join(",", sResourceIndexFileList.Distinct()));
+                    this.logFile.WriteLine($"   sResourceIndexFileList copied to QuickConfiguration.ini.");
+                }
                 else
                     IniFiles.Instance.Remove(IniFile.Config, "Archive", "sResourceIndexFileList");
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Archive", "sResourceIndexFileList");
@@ -1125,9 +1458,15 @@ namespace Fo76ini
             else
             {
                 if (sResourceIndexFileList.Count() > 0)
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", String.Join(",", sResourceIndexFileList.Distinct().ToArray()));
+                {
+                    IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", String.Join(",", sResourceIndexFileList.Distinct()));
+                    this.logFile.WriteLine($"   sResourceIndexFileList={String.Join(",", sResourceIndexFileList.Distinct())}");
+                }
                 else
+                {
                     IniFiles.Instance.Remove(IniFile.F76Custom, "Archive", "sResourceIndexFileList");
+                    this.logFile.WriteLine($"   sResourceIndexFileList removed.");
+                }
                 IniFiles.Instance.Remove(IniFile.Config, "Archive", "sResourceIndexFileList");
             }
 
@@ -1142,7 +1481,7 @@ namespace Fo76ini
             }
             if (sResourceDataDirsFinal.Count() > 0)
             {
-                IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", String.Join(",", sResourceDataDirsFinal.Distinct().ToArray()));
+                IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", String.Join(",", sResourceDataDirsFinal.Distinct()));
                 IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "bInvalidateOlderFiles", true);
             }
             else
@@ -1151,17 +1490,54 @@ namespace Fo76ini
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Archive", "bInvalidateOlderFiles");
             }
 
+            this.logFile.WriteLine($"   Saving.");
             IniFiles.Instance.SaveAll();
             this.mods = CreateDeepCopy(this.changedMods);
             this.Save();
             Directory.Delete(tempPath, true);
             if (done != null)
                 done();
+
+            this.logFile.WriteLine("Done.\n");
         }
     }
 
-    class Archive2
+    public class Archive2
     {
+        private static Log logFile;
+        private static String archive2Path = ".\\Archive2\\Archive2.exe";
+
+        public static String Archive2Path
+        {
+            get { return Archive2.archive2Path; }
+            /*set
+            {
+                if (value == null)
+                    return;
+                else if (Directory.Exists(value))
+                {
+                    if (File.Exists(Path.Combine(value, "Archive2.exe")))
+                        Archive2.archive2Path = Path.GetFullPath(Path.Combine(value, "Archive2.exe"));
+                    else
+                        return;
+                }
+                else if (File.Exists(value) && value.Trim().EndsWith(".exe"))
+                    Archive2.archive2Path = Path.GetFullPath(value);
+                else
+                    return;
+            }*/
+        }
+
+        static Archive2()
+        {
+            logFile = new Log("archive2.log.txt");
+            /*String archive2Path = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sArchive2Path", "");
+            if (archive2Path.Length > 0)
+            {
+                Archive2.Archive2Path = archive2Path;
+            }*/
+        }
+
         public enum Compression
         {
             None,
@@ -1209,29 +1585,6 @@ namespace Fo76ini
             }
         }
 
-        private static String archive2Path = null;
-
-        public static String Archive2Path
-        {
-            get { return Archive2.archive2Path; }
-            set
-            {
-                if (value == null)
-                    return;
-                else if (Directory.Exists(value))
-                {
-                    if (File.Exists(Path.Combine(value, "Archive2.exe")))
-                        Archive2.archive2Path = Path.GetFullPath(Path.Combine(value, "Archive2.exe"));
-                    else
-                        return;
-                }
-                else if (File.Exists(value) && value.Trim().EndsWith(".exe"))
-                    Archive2.archive2Path = Path.GetFullPath(value);
-                else
-                    return;
-            }
-        }
-
         private static void Call(String arguments)
         {
             if (Archive2.archive2Path == null)
@@ -1239,16 +1592,19 @@ namespace Fo76ini
 
             using (Process proc = new Process())
             {
-                // Running it in the background results in indefinite deploying issues.
-                // Better just show the console window, so we don't have to worry about it.
-                proc.StartInfo.UseShellExecute = true;
-                //proc.StartInfo.RedirectStandardOutput = true;
+                logFile.WriteTimeStamp();
+                logFile.WriteLine($">> Archive2.exe {arguments}");
+                proc.StartInfo.UseShellExecute = false; // = true
+                proc.StartInfo.RedirectStandardOutput = true; // // ...
+                proc.StartInfo.RedirectStandardError = true; // // ...
                 proc.StartInfo.FileName = Archive2.archive2Path;
                 proc.StartInfo.Arguments = arguments;
-                //proc.StartInfo.CreateNoWindow = true;
+                proc.StartInfo.CreateNoWindow = true; // // ...
                 proc.Start();
 
-                //MessageBox.Show(proc.StandardOutput.ReadToEnd(), $"Archive2.exe {arguments}");
+                //MessageBox.Show(/*proc.StandardOutput.ReadToEnd(), */$"Archive2.exe {arguments}");
+                logFile.WriteLine(proc.StandardOutput.ReadToEnd() + "\n");
+                logFile.WriteLine(proc.StandardError.ReadToEnd() + "\n");
                 proc.WaitForExit();
             }
         }

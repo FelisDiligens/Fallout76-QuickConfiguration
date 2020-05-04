@@ -17,6 +17,12 @@ namespace Fo76ini
         F76Custom,
         Config
     }
+    public enum GameEdition
+    {
+        Unknown = 0,
+        BethesdaNet = 1,
+        Steam = 2
+    }
 
     public class IniFiles
     {
@@ -40,6 +46,8 @@ namespace Fo76ini
 
         private static IniFiles instance = null;
         private static readonly object padlock = new object();
+
+        public bool nuclearWinterMode = false;
 
         public static IniFiles Instance
         {
@@ -95,13 +103,18 @@ namespace Fo76ini
                 throw new FileNotFoundException("Fallout76.ini and Fallout76Prefs.ini not found");
 
             // Does Fallout76Custom.ini exist? If not, create it.
-            if (!File.Exists(this.fo76CustomPath))
-                File.CreateText(this.fo76CustomPath).Close();
+            /*if (!File.Exists(this.fo76CustomPath))
+                File.CreateText(this.fo76CustomPath).Close();*/
 
             // Parse *.ini files:
             this.fo76Data = LoadIni(this.fo76Path, false);
             this.fo76PrefsData = LoadIni(this.fo76PrefsPath, false);
-            this.fo76CustomData = LoadIni(this.fo76CustomPath, false);
+            if (File.Exists(this.fo76CustomPath))
+                this.fo76CustomData = LoadIni(this.fo76CustomPath, false);
+            else if (File.Exists(this.fo76CustomPath + ".nwmodebak"))
+                this.fo76CustomData = LoadIni(this.fo76CustomPath + ".nwmodebak", false);
+            else
+                this.fo76CustomData = new IniData();
 
             // Fix stuff:
             FixDuplicateResourceLists();
@@ -111,7 +124,30 @@ namespace Fo76ini
         {
             SaveIni(this.fo76Path, this.fo76Data, readOnly);
             SaveIni(this.fo76PrefsPath, this.fo76PrefsData, readOnly);
-            SaveIni(this.fo76CustomPath, this.fo76CustomData, readOnly);
+            if (this.nuclearWinterMode)
+                SaveIni(this.fo76CustomPath + ".nwmodebak", this.fo76CustomData, readOnly);
+            else
+                SaveIni(this.fo76CustomPath, this.fo76CustomData, readOnly);
+        }
+
+        public void ResolveNWMode()
+        {
+            if (this.nuclearWinterMode)
+            {
+                if (!File.Exists(this.fo76CustomPath))
+                    return;
+                if (!File.Exists(this.fo76CustomPath + ".nwmodebak"))
+                    File.Copy(this.fo76CustomPath, this.fo76CustomPath + ".nwmodebak");
+                Utils.DeleteFile(this.fo76CustomPath);
+            }
+            else
+            {
+                if (!File.Exists(this.fo76CustomPath + ".nwmodebak"))
+                    return;
+                if (!File.Exists(this.fo76CustomPath))
+                    File.Copy(this.fo76CustomPath + ".nwmodebak", this.fo76CustomPath);
+                Utils.DeleteFile(this.fo76CustomPath + ".nwmodebak");
+            }
         }
 
         public void LoadConfig()
@@ -154,14 +190,14 @@ namespace Fo76ini
             if (File.Exists(this.fo76Path))
             {
                 tempPath = Path.Combine(backupPath, "Fallout76.ini");
-                File.Copy(this.fo76CustomPath, tempPath);
+                File.Copy(this.fo76Path, tempPath);
                 SetFileReadOnlyAttribute(tempPath, false);
             }
 
             if (File.Exists(this.fo76PrefsPath))
             {
                 tempPath = Path.Combine(backupPath, "Fallout76Prefs.ini");
-                File.Copy(this.fo76CustomPath, tempPath);
+                File.Copy(this.fo76PrefsPath, tempPath);
                 SetFileReadOnlyAttribute(tempPath, false);
             }
 
@@ -169,6 +205,13 @@ namespace Fo76ini
             {
                 tempPath = Path.Combine(backupPath, "Fallout76Custom.ini");
                 File.Copy(this.fo76CustomPath, tempPath);
+                SetFileReadOnlyAttribute(tempPath, false);
+            }
+
+            if (File.Exists(this.fo76CustomPath + ".nwmodebak"))
+            {
+                tempPath = Path.Combine(backupPath, "Fallout76Custom.ini.nwmodebak");
+                File.Copy(this.fo76CustomPath + ".nwmodebak", tempPath);
                 SetFileReadOnlyAttribute(tempPath, false);
             }
         }
@@ -600,6 +643,8 @@ namespace Fo76ini
             // Merge them. Default behaviour of the Parser is overriding and this is probably not what the user wants.
             // sResourceDataDirsFinal added in v.1.3.1
             // Case insensitive, and whitespace around '=' ignored as of v1.4
+            if (!File.Exists(GetIniPath(IniFile.F76Custom)))
+                return;
             MergeLists(IniFile.F76Custom, "Archive", "sResourceIndexFileList");
             MergeLists(IniFile.F76Custom, "Archive", "sResourceArchive2List");
             MergeLists(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal");
