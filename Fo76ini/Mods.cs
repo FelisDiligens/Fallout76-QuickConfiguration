@@ -689,7 +689,21 @@ namespace Fo76ini
                 Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
 
             if (!File.Exists(filePath))
-                throw new FileNotFoundException(filePath);
+            {
+                // Path too long?
+                // https://stackoverflow.com/questions/5188527/how-to-deal-with-files-with-a-name-longer-than-259-characters
+                // https://docs.microsoft.com/de-de/archive/blogs/jeremykuhne/more-on-new-net-path-handling
+                if (File.Exists(@"\\?\" + filePath))
+                {
+                    filePath = @"\\?\" + filePath;
+                }
+                else
+                {
+                    if (done != null)
+                        done();
+                    throw new FileNotFoundException(filePath);
+                }
+            }
 
 
             if (!Archive2.ValidatePath())
@@ -753,8 +767,26 @@ namespace Fo76ini
             if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
                 Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
 
+            //if (!Directory.Exists(folderPath))
+            //    throw new FileNotFoundException(folderPath);
+
+
             if (!Directory.Exists(folderPath))
-                throw new FileNotFoundException(folderPath);
+            {
+                // Path too long?
+                // https://stackoverflow.com/questions/5188527/how-to-deal-with-files-with-a-name-longer-than-259-characters
+                // https://docs.microsoft.com/de-de/archive/blogs/jeremykuhne/more-on-new-net-path-handling
+                if (Directory.Exists(@"\\?\" + folderPath))
+                {
+                    folderPath = @"\\?\" + folderPath;
+                }
+                else
+                {
+                    if (done != null)
+                        done();
+                    throw new FileNotFoundException(folderPath);
+                }
+            }
 
 
             if (!Archive2.ValidatePath())

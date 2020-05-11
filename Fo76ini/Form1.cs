@@ -14,7 +14,7 @@ namespace Fo76ini
 {
     public partial class Form1 : Form
     {
-        public const String VERSION = "1.5";
+        public const String VERSION = "1.5.1";
         public const bool CHECK_VERSION = true;
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
@@ -193,9 +193,9 @@ namespace Fo76ini
 
             if (!CHECK_VERSION)
             {
-                this.labelConfigVersion.ForeColor = Color.DarkBlue;
                 linkLabelDownloadPage.Visible = false;
                 labelNewVersion.Visible = false;
+                this.labelConfigVersion.ForeColor = Color.Black;
                 return;
             }
 
@@ -208,16 +208,26 @@ namespace Fo76ini
             }
             catch (System.Net.WebException exc)
             {
-                this.labelConfigVersion.ForeColor = Color.DarkBlue;
+                this.labelConfigVersion.ForeColor = Color.Black;
                 linkLabelDownloadPage.Visible = false;
                 labelNewVersion.Visible = false;
                 return;
             }
-            if (latestVersion != VERSION)
+
+            int cmp = Utils.CompareVersions(latestVersion, VERSION);
+            if (cmp > 0)
             {
                 linkLabelDownloadPage.Visible = true;
                 labelNewVersion.Text = String.Format(Translation.localizedStrings["newVersionAvailable"], latestVersion);
+                labelNewVersion.ForeColor = Color.Crimson;
+                labelNewVersion.Visible = true;
                 this.labelConfigVersion.ForeColor = Color.Red;
+            }
+            else if (cmp < 0)
+            {
+                linkLabelDownloadPage.Visible = false;
+                labelNewVersion.Visible = false;
+                this.labelConfigVersion.ForeColor = Color.DarkBlue;
             }
             else
             {
@@ -277,6 +287,10 @@ namespace Fo76ini
              * General
              */
 
+            // Credentials
+            uiLoader.LinkString(this.textBoxUserName, IniFile.F76Custom, "Login", "s76UserName", "");
+            uiLoader.LinkString(this.textBoxPassword, IniFile.F76Custom, "Login", "s76Password", "");
+
             // Play intro videos
             uiLoader.LinkCustom(this.checkBoxIntroVideos,
                 () => {
@@ -310,10 +324,10 @@ namespace Fo76ini
             uiLoader.LinkBool(this.checkBoxDialogueSubtitles, IniFile.F76Prefs, "Interface", "bDialogueSubtitles", false);
 
             // Show damage numbers in nuclear winter
-            uiLoader.LinkBool(this.checkBoxShowDamageNumbersNW, IniFile.F76Custom, "NuclearWinter", "bShowDamageNumbers", true);
+            uiLoader.LinkBool(this.checkBoxShowDamageNumbersNW, IniFile.F76Prefs, "NuclearWinter", "bShowDamageNumbers", true);
 
             // Show damage numbers in adventure mode
-            uiLoader.LinkBool(this.checkBoxShowDamageNumbersA, IniFile.F76Custom, "Adventure", "bShowDamageNumbers", false);
+            uiLoader.LinkBool(this.checkBoxShowDamageNumbersA, IniFile.F76Prefs, "Adventure", "bShowDamageNumbers", false);
 
             // Show compass
             uiLoader.LinkBool(this.checkBoxShowCompass, IniFile.F76Prefs, "Interface", "bShowCompass", true);
@@ -536,6 +550,9 @@ namespace Fo76ini
             // Water / Displacement
             uiLoader.LinkBool(this.checkBoxWaterDisplacement, IniFile.F76Prefs, "Water", "bUseWaterDisplacements", true);
 
+            // Weather / Fog
+            uiLoader.LinkBool(this.checkBoxFogEnabled, IniFile.F76Prefs, "Weather", "bFogEnabled", true);
+
             // Weather / Rain Occlusion
             uiLoader.LinkBool(this.checkBoxWeatherRainOcclusion, IniFile.F76, "Weather", "bRainOcclusion", true);
 
@@ -591,6 +608,8 @@ namespace Fo76ini
             /*
              * Controls
              */
+
+            uiLoader.LinkBool(this.checkBoxMouseAcceleration, IniFile.F76Custom, "Controls", "bMouseAcceleration", true);
 
             // Fix mouse sensitivity
             uiLoader.LinkCustom(this.checkBoxFixMouseSensitivity,
@@ -787,17 +806,17 @@ namespace Fo76ini
             //IniFiles.Instance.Set(IniFile.F76, "Grass", "iMinGrassSize", 20);
             //IniFiles.Instance.Set(IniFile.F76Prefs, "Grass", "iMinGrassSize", 20);
 
-            IniFiles.Instance.Set(IniFile.F76Prefs, "Water", "bUseWaterDisplacements", true);
+            // IniFiles.Instance.Set(IniFile.F76Prefs, "Water", "bUseWaterDisplacements", true);
             IniFiles.Instance.Set(IniFile.F76Prefs, "Water", "bUseWaterRefractions", true);
             IniFiles.Instance.Set(IniFile.F76Prefs, "Water", "bUseWaterReflections", true);
-            IniFiles.Instance.Set(IniFile.F76Prefs, "Weather", "bFogEnabled", true);
-            IniFiles.Instance.Set(IniFile.F76Prefs, "Weather", "bRainOcclusion", true);
-            IniFiles.Instance.Set(IniFile.F76Prefs, "Weather", "bWetnessOcclusion", true);
+            // IniFiles.Instance.Set(IniFile.F76Prefs, "Weather", "bFogEnabled", true);
+            // IniFiles.Instance.Set(IniFile.F76Prefs, "Weather", "bRainOcclusion", true);
+            // IniFiles.Instance.Set(IniFile.F76Prefs, "Weather", "bWetnessOcclusion", true);
 
             IniFiles.Instance.Set(IniFile.F76, "Display", "fSunUpdateThreshold", 0.5f);
             IniFiles.Instance.Set(IniFile.F76, "Display", "fSunShadowUpdateTime", 1.0f);
 
-            IniFiles.Instance.Remove(IniFile.F76Custom, "Controls", "bMouseAcceleration");
+            // IniFiles.Instance.Remove(IniFile.F76Custom, "Controls", "bMouseAcceleration");
 
             MsgBox.ShowID("oldValuesResetToDefault", MessageBoxIcon.Information);
         }
@@ -822,6 +841,13 @@ namespace Fo76ini
         private void checkBoxNWMode_CheckedChanged(object sender, EventArgs e)
         {
             IniFiles.Instance.nuclearWinterMode = checkBoxNWMode.Checked;
+        }
+
+        private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            // https://stackoverflow.com/questions/8185747/how-can-i-unmask-password-text-box-and-mask-it-back-to-password
+            this.textBoxPassword.UseSystemPasswordChar = !this.checkBoxShowPassword.Checked;
+            this.textBoxPassword.PasswordChar = !this.checkBoxShowPassword.Checked ? '\u2022' : '\0';
         }
     }
 }

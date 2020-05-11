@@ -264,7 +264,12 @@ namespace Fo76ini
         public void LinkString(TextBox textBox, IniFile f, String section, String key, String defaultValue)
         {
             OnLoadUI.Add(() => textBox.Text = IniFiles.Instance.GetString(section, key, defaultValue));
-            textBox.TextChanged += (object sender, EventArgs e) => IniFiles.Instance.Set(f, section, key, textBox.Text);
+            textBox.TextChanged += (object sender, EventArgs e) => {
+                if (f == IniFile.F76Custom && textBox.Text == defaultValue)
+                    IniFiles.Instance.Remove(f, section, key);
+                else
+                    IniFiles.Instance.Set(f, section, key, textBox.Text);
+            };
         }
 
         public void LinkList(RadioButton[] radioButtons, String[] associatedValues, IniFile f, String section, String key, String defaultValue)

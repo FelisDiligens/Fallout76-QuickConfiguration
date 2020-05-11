@@ -4,7 +4,7 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.5-pre">
+<Language name="English (USA)" iso="en-US" version="1.5.1">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Deployment necessary" id="modsDeploymentNecessary" />
@@ -156,6 +156,12 @@ Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
       <Tab text="General" id="tabPageGeneral">
+        <Group text="Login" id="groupBoxLogin">
+          <Label text="Your credentials are saved into Fallout76Custom.ini\nThis way, you don't have to login if you start Fallout 76\nwithout the launcher." id="labelCredentialsExplanation" />
+          <Checkbox text="Show password" id="checkBoxShowPassword" />
+          <Label text="Password:" id="labelPassword" />
+          <Label text="User name:" id="labelUserName" />
+        </Group>
         <Group text="Interface" id="groupBoxInterface">
           <Checkbox text="Show compass" id="checkBoxShowCompass">
             <Tooltip>Affected values: bShowCompass
@@ -420,6 +426,10 @@ Affected files: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Weather" id="groupBoxWeather">
+          <Checkbox text="Fog" id="checkBoxFogEnabled">
+            <Tooltip>Affected values: bFogEnabled
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
           <Checkbox text="Wetness Occlusion" id="checkBoxWeatherWetnessOcclusion">
             <Tooltip>Toggles environmental and clothing wetness occlusion
 
@@ -486,6 +496,13 @@ Affected files: Fallout76Custom.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Mouse" id="groupBoxMouse">
+          <Checkbox text="Mouse acceleration" id="checkBoxMouseAcceleration">
+            <Tooltip>This option might not have any effect. Placebo?
+Doesn't hurt to turn it off, though.
+
+Affected values: bMouseAcceleration
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
           <Checkbox text="Fix aim sensitivity" id="checkBoxFixAimSensitivity">
             <Tooltip>If checked, the aim sensitivity will be equal to normal sensitivity.
 If unchecked (default), the sensitivity will be lower when aiming down iron sights.
@@ -628,6 +645,7 @@ Affected files: Fallout76Prefs.ini</Tooltip>
       </Item>
       <Item text="View" id="editToolStripMenuItem">
         <Item text="Show conflicting files" id="showConflictingFilesToolStripMenuItem" />
+        <Item text="Reload UI" id="reloadUIToolStripMenuItem" />
       </Item>
       <Item text="Tools" id="toolsToolStripMenuItem">
         <Item text="Repair all *.dds files" id="repairddsFilesToolStripMenuItem" />

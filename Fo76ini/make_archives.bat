@@ -5,6 +5,7 @@ ECHO Creating archives...
 ECHO Creating binary zip
 cd bin\Release
 7z a "..\..\..\..\Files\Main Files\%1\%1_bin.zip" .\*
+7z d "..\..\..\..\Files\Main Files\%1\%1_bin.zip" *.log.txt
 cd ..\..
 
 ECHO Creating source code zip

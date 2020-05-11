@@ -638,13 +638,22 @@ namespace Fo76ini
         {
             foreach (string filePath in files)
             {
-                Thread thread = null;
-                if (Directory.Exists(filePath))
-                    InstallModFolder(filePath);
-                else if ((new String[] { ".ba2", ".zip", ".rar", ".7z", ".tar", ".tar.gz", ".gz" }).Contains(Path.GetExtension(filePath)))
-                    InstallModArchive(filePath);
-                else
-                    MsgBox.Get("modsArchiveTypeNotSupported").FormatText(Path.GetExtension(filePath)).Show(MessageBoxIcon.Error);
+                String fullFilePath = Path.GetFullPath(filePath);
+                if (fullFilePath.Length > 259 && Directory.Exists(@"\\?\" + fullFilePath))
+                    fullFilePath = @"\\?\" + fullFilePath;
+                try
+                {
+                    if (Directory.Exists(fullFilePath))
+                        InstallModFolder(fullFilePath);
+                    else if ((new String[] { ".ba2", ".zip", ".rar", ".7z", ".tar", ".tar.gz", ".gz" }).Contains(Path.GetExtension(fullFilePath)))
+                        InstallModArchive(fullFilePath);
+                    else
+                        MsgBox.Get("modsArchiveTypeNotSupported").FormatText(Path.GetExtension(fullFilePath)).Show(MessageBoxIcon.Error);
+                }
+                catch (FileNotFoundException exc)
+                {
+                    Console.WriteLine($"File not found: ({fullFilePath.Length}) {exc.Message}");
+                }
             }
         }
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.5-pre">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.5.1">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary" />
@@ -154,6 +154,12 @@ Betroffene Dateien: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
         <Label text="Fallout 76 Schnellkonfiguration" id="labelTitle" />
       </Tab>
       <Tab text="Allgemein" id="tabPageGeneral">
+        <Group text="Anmelden" id="groupBoxLogin">
+          <Label text="Deine Anmeldedaten werden in Fallout76Custom.ini gespeichert.\nSomit musst du dich nicht erneut anmelden,\nwenn du Fallout 76 ohne Launcher startest." id="labelCredentialsExplanation" />
+          <Checkbox text="Passwort anzeigen" id="checkBoxShowPassword" />
+          <Label text="Passwort:" id="labelPassword" />
+          <Label text="Nutzername:" id="labelUserName" />
+        </Group>
         <Group text="Oberfläche" id="groupBoxInterface">
           <Checkbox text="Zeige den Kompass an" id="checkBoxShowCompass">
             <Tooltip>Betroffene Werte: bShowCompass
@@ -418,6 +424,10 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Wetter" id="groupBoxWeather">
+          <Checkbox text="Fog" id="checkBoxFogEnabled">
+            <Tooltip>Affected values: bFogEnabled
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
           <Checkbox text="Nässe-Verdeckung" id="checkBoxWeatherWetnessOcclusion">
             <Tooltip>(De)aktiviert die Verdeckung von Nässe der Umgebung und der Kleidung.
   z.B. Wenn du in einem Haus stehst, dann ist es drinnen nicht nass.
@@ -485,6 +495,13 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Maus" id="groupBoxMouse">
+          <Checkbox text="Zeigerbeschleunigung" id="checkBoxMouseAcceleration">
+            <Tooltip>Diese Option hat möglicherweise keinen Effekt. Placebo?
+Schadet jedenfalls nicht, es auszuschalten.
+
+Betroffene Werte: bMouseAcceleration
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
           <Checkbox text="Mausempflindlichkeit beim Zielen normalisieren" id="checkBoxFixAimSensitivity">
             <Tooltip>Wenn aktiv, ändert sich die Empfindlichkeit beim Zielen nicht.
   Wenn nicht aktiv, dann wird die Empfindlichkeit beim Zielen verringert.
