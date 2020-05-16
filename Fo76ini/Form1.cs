@@ -14,8 +14,7 @@ namespace Fo76ini
 {
     public partial class Form1 : Form
     {
-        public const String VERSION = "1.5.1";
-        public const bool CHECK_VERSION = true;
+        public const String VERSION = "1.5.2";
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
@@ -191,14 +190,6 @@ namespace Fo76ini
             using (StreamWriter f = new StreamWriter("VERSION"))
                 f.Write(VERSION);
 
-            if (!CHECK_VERSION)
-            {
-                linkLabelDownloadPage.Visible = false;
-                labelNewVersion.Visible = false;
-                this.labelConfigVersion.ForeColor = Color.Black;
-                return;
-            }
-
             String latestVersion = VERSION;
             try
             {
@@ -310,6 +301,23 @@ namespace Fo76ini
                     }
                 }
             );
+
+            // Vanity mode
+            uiLoader.LinkBool(this.checkBoxVanityMode, IniFile.F76Custom, "Camera", "bDisableAutoVanityMode", false, true);
+            uiLoader.LinkBool(this.checkBoxForceVanityMode, IniFile.F76Custom, "Camera", "bForceAutoVanityMode", false);
+            uiLoader.LinkCustom(this.checkBoxVanityMode,
+                () => this.checkBoxVanityMode.Checked,
+                (value) =>
+                {
+                    this.checkBoxForceVanityMode.Enabled = this.checkBoxVanityMode.Checked;
+                    if (!this.checkBoxVanityMode.Checked)
+                    {
+                        this.checkBoxForceVanityMode.Checked = false;
+                        IniFiles.Instance.Remove(IniFile.F76Custom, "Camera", "bForceAutoVanityMode");
+                    }
+                }
+            );
+            uiLoader.Add(() => this.checkBoxForceVanityMode.Enabled = this.checkBoxVanityMode.Checked);
 
             // Play music in main menu
             uiLoader.LinkBool(this.checkBoxMainMenuMusic, IniFile.F76Custom, "General", "bPlayMainMenuMusic", true);

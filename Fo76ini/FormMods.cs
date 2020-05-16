@@ -121,21 +121,7 @@ namespace Fo76ini
         private void UpdateSettings()
         {
             this.checkBoxDisableMods.Checked = ManagedMods.Instance.nuclearWinterMode;
-            //this.textBoxArchive2Path.Text = Archive2.Archive2Path;
             this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
-            this.checkBoxModsBundledBA2Compression.Checked = ManagedMods.Instance.bundledCompression != Archive2.Compression.None;
-            this.checkBoxModsBundledTexturesBA2Compression.Checked = ManagedMods.Instance.bundledTexturesCompression != Archive2.Compression.None;
-            /*uint gameEdition = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uGameEdition", 0);
-            switch (gameEdition)
-            {
-                case (uint)GameEdition.BethesdaNet:
-                    this.radioButtonEditionBethesdaNet.Checked = true;
-                    break;
-                case (uint)GameEdition.Steam:
-                    this.radioButtonEditionSteam.Checked = true;
-                    break;
-            }*/
-            //uiLoader.Update();
         }
 
         private void UpdateLabel()
@@ -500,16 +486,6 @@ namespace Fo76ini
         /*
          * Settings
          */
-
-        private void checkBoxModsBundledBA2Compression_CheckedChanged(object sender, EventArgs e)
-        {
-            ManagedMods.Instance.bundledCompression = checkBoxModsBundledBA2Compression.Checked ? Archive2.Compression.Default : Archive2.Compression.None;
-        }
-
-        private void checkBoxModsBundledTexturesBA2Compression_CheckedChanged(object sender, EventArgs e)
-        {
-            ManagedMods.Instance.bundledTexturesCompression = checkBoxModsBundledTexturesBA2Compression.Checked ? Archive2.Compression.Default : Archive2.Compression.None;
-        }
 
         // Pick game path
         private void buttonPickGamePath_Click(object sender, EventArgs e)

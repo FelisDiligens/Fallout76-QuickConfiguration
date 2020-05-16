@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.5.1">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.5.2">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary" />
@@ -88,7 +88,7 @@ Das kann durch beschädigte *.ini Dateien verursacht worden sein.
 Einige UI-Elemente könnten unter Umständen nicht korrekt funktionieren.
 
 {1}</Messagebox>
-    <Messagebox title="Archive2 is missing" id="modsArchive2Missing">.\Archive2\Archive2.exe fehlt.
+    <Messagebox title="Archive2 fehlt" id="modsArchive2Missing">.\Archive2\Archive2.exe fehlt.
 Bitte lade das Tool erneut herunter oder installiere Archive2 manuell.</Messagebox>
     <Messagebox title="Spielpfad unbekannt" id="modsGamePathNotSet">Bitte setze den Spielpfad (im Ordner sollte Fallout76.exe sein).</Messagebox>
     <Messagebox title="Ungültiger Pfad" id="modsGamePathInvalid">Ungültiger Spielpfad</Messagebox>
@@ -154,6 +154,15 @@ Betroffene Dateien: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
         <Label text="Fallout 76 Schnellkonfiguration" id="labelTitle" />
       </Tab>
       <Tab text="Allgemein" id="tabPageGeneral">
+        <Group text="Kamera" id="groupBoxCamera">
+          <Checkbox text="Drehende Kamera wenn inaktiv" id="checkBoxVanityMode">
+            <Tooltip>Wenn aktiv, dann dreht sich die Kamera nach einer Weile, wenn keine Eingabe erfolgt.
+Bin mir nicht sicher, ob es tatsächlich etwas tut. Ich stand 5 Minuten rum und die Kamera drehte sich nicht. Muss noch getestet werden.
+
+Betroffene Werte: bDisableAutoVanityMode
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
         <Group text="Anmelden" id="groupBoxLogin">
           <Label text="Deine Anmeldedaten werden in Fallout76Custom.ini gespeichert.\nSomit musst du dich nicht erneut anmelden,\nwenn du Fallout 76 ohne Launcher startest." id="labelCredentialsExplanation" />
           <Checkbox text="Passwort anzeigen" id="checkBoxShowPassword" />
@@ -622,10 +631,6 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </ListView>
       </Tab>
       <Tab text="Einstellungen" id="tabPageModsSettings">
-        <Group text="Gebündlete *.ba2 Optionen" id="groupBoxModsBundledBA2">
-          <Checkbox text="Komprimiere bundled.ba2" id="checkBoxModsBundledBA2Compression" />
-          <Checkbox text="Komprimiere bundled_textures.ba2" id="checkBoxModsBundledTexturesBA2Compression" />
-        </Group>
         <Group text="Pfade" id="groupBoxGamePaths">
           <Label text="Spiel-Pfad:" id="labelGamePath" />
           <Button text="..." id="buttonPickGamePath" />
@@ -635,8 +640,8 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
     <Menu id="menuStrip1">
       <Item text="Datei" id="fileToolStripMenuItem">
         <Item text="Mod hinzufügen" id="addModarchiveToolStripMenuItem">
-          <Item text="Archiv" id="fromArchiveToolStripMenuItem" />
-          <Item text="Ordner" id="fromFolderToolStripMenuItem" />
+          <Item text="von Archiv" id="fromArchiveToolStripMenuItem" />
+          <Item text="von Ordner" id="fromFolderToolStripMenuItem" />
         </Item>
         <Item text="Manuell installierte Mods importieren" id="toolStripMenuItemModsImport" />
         <Item text="" id="toolStripSeparator1" />

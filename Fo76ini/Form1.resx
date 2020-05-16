@@ -120,6 +120,9 @@
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="checkBoxFixMouseSensitivity.ToolTip" xml:space="preserve">
     <value>If checked, the sensitivity for looking up/down and left/right will be equal.
 If unchecked (default), the sensitivity for looking left/right will likely be higher than up/down.
@@ -253,6 +256,13 @@ NOTE: This will prevent you from being able to Alt+Tab on single monitors.
 
 Affected values: bTopMostWindow
 Affected files: Fallout76Prefs.ini</value>
+  </data>
+  <data name="checkBoxVanityMode.ToolTip" xml:space="preserve">
+    <value>When this option is checked, the camera will spin around the character after no input was given for a certain amount of time.
+Not sure if it does anything, though. I stood around for 5 minutes and the camera didn't spin. Needs more testing.
+
+Affected values: bDisableAutoVanityMode
+Affected files: Fallout76Custom.ini</value>
   </data>
   <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>107, 17</value>

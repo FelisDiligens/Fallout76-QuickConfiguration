@@ -39,6 +39,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.deployToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showConflictingFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reloadUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.repairddsFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showREADMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progressBarMods = new System.Windows.Forms.ProgressBar();
@@ -66,9 +70,6 @@
             this.columnHeaderArchiveName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderArchiveFormat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
-            this.groupBoxModsBundledBA2 = new System.Windows.Forms.GroupBox();
-            this.checkBoxModsBundledBA2Compression = new System.Windows.Forms.CheckBox();
-            this.checkBoxModsBundledTexturesBA2Compression = new System.Windows.Forms.CheckBox();
             this.groupBoxGamePaths = new System.Windows.Forms.GroupBox();
             this.labelGamePath = new System.Windows.Forms.Label();
             this.textBoxGamePath = new System.Windows.Forms.TextBox();
@@ -79,16 +80,11 @@
             this.checkBoxDisableMods = new System.Windows.Forms.CheckBox();
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.showConflictingFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.repairddsFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reloadUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabPageModsSettings.SuspendLayout();
-            this.groupBoxModsBundledBA2.SuspendLayout();
             this.groupBoxGamePaths.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -168,6 +164,35 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.editToolStripMenuItem.Text = "View";
             // 
+            // showConflictingFilesToolStripMenuItem
+            // 
+            this.showConflictingFilesToolStripMenuItem.Name = "showConflictingFilesToolStripMenuItem";
+            this.showConflictingFilesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.showConflictingFilesToolStripMenuItem.Text = "Show conflicting files";
+            this.showConflictingFilesToolStripMenuItem.Click += new System.EventHandler(this.showConflictingFilesToolStripMenuItem_Click);
+            // 
+            // reloadUIToolStripMenuItem
+            // 
+            this.reloadUIToolStripMenuItem.Name = "reloadUIToolStripMenuItem";
+            this.reloadUIToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.reloadUIToolStripMenuItem.Text = "Reload UI";
+            this.reloadUIToolStripMenuItem.Click += new System.EventHandler(this.reloadUIToolStripMenuItem_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.repairddsFilesToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // repairddsFilesToolStripMenuItem
+            // 
+            this.repairddsFilesToolStripMenuItem.Name = "repairddsFilesToolStripMenuItem";
+            this.repairddsFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.repairddsFilesToolStripMenuItem.Text = "Repair all *.dds files";
+            this.repairddsFilesToolStripMenuItem.Click += new System.EventHandler(this.repairddsFilesToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -179,7 +204,7 @@
             // showREADMEToolStripMenuItem
             // 
             this.showREADMEToolStripMenuItem.Name = "showREADMEToolStripMenuItem";
-            this.showREADMEToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showREADMEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.showREADMEToolStripMenuItem.Text = "Show README";
             this.showREADMEToolStripMenuItem.Click += new System.EventHandler(this.showREADMEToolStripMenuItem_Click);
             // 
@@ -435,7 +460,6 @@
             // 
             // tabPageModsSettings
             // 
-            this.tabPageModsSettings.Controls.Add(this.groupBoxModsBundledBA2);
             this.tabPageModsSettings.Controls.Add(this.groupBoxGamePaths);
             this.tabPageModsSettings.Location = new System.Drawing.Point(4, 22);
             this.tabPageModsSettings.Name = "tabPageModsSettings";
@@ -445,41 +469,10 @@
             this.tabPageModsSettings.Text = "Settings";
             this.tabPageModsSettings.UseVisualStyleBackColor = true;
             // 
-            // groupBoxModsBundledBA2
-            // 
-            this.groupBoxModsBundledBA2.Controls.Add(this.checkBoxModsBundledBA2Compression);
-            this.groupBoxModsBundledBA2.Controls.Add(this.checkBoxModsBundledTexturesBA2Compression);
-            this.groupBoxModsBundledBA2.Location = new System.Drawing.Point(6, 64);
-            this.groupBoxModsBundledBA2.Name = "groupBoxModsBundledBA2";
-            this.groupBoxModsBundledBA2.Size = new System.Drawing.Size(420, 77);
-            this.groupBoxModsBundledBA2.TabIndex = 54;
-            this.groupBoxModsBundledBA2.TabStop = false;
-            this.groupBoxModsBundledBA2.Text = "Bundled *.ba2 settings";
-            // 
-            // checkBoxModsBundledBA2Compression
-            // 
-            this.checkBoxModsBundledBA2Compression.AutoSize = true;
-            this.checkBoxModsBundledBA2Compression.Location = new System.Drawing.Point(9, 19);
-            this.checkBoxModsBundledBA2Compression.Name = "checkBoxModsBundledBA2Compression";
-            this.checkBoxModsBundledBA2Compression.Size = new System.Drawing.Size(134, 17);
-            this.checkBoxModsBundledBA2Compression.TabIndex = 1;
-            this.checkBoxModsBundledBA2Compression.Text = "Compress bundled.ba2";
-            this.checkBoxModsBundledBA2Compression.UseVisualStyleBackColor = true;
-            this.checkBoxModsBundledBA2Compression.CheckedChanged += new System.EventHandler(this.checkBoxModsBundledBA2Compression_CheckedChanged);
-            // 
-            // checkBoxModsBundledTexturesBA2Compression
-            // 
-            this.checkBoxModsBundledTexturesBA2Compression.AutoSize = true;
-            this.checkBoxModsBundledTexturesBA2Compression.Location = new System.Drawing.Point(9, 42);
-            this.checkBoxModsBundledTexturesBA2Compression.Name = "checkBoxModsBundledTexturesBA2Compression";
-            this.checkBoxModsBundledTexturesBA2Compression.Size = new System.Drawing.Size(177, 17);
-            this.checkBoxModsBundledTexturesBA2Compression.TabIndex = 0;
-            this.checkBoxModsBundledTexturesBA2Compression.Text = "Compress bundled_textures.ba2";
-            this.checkBoxModsBundledTexturesBA2Compression.UseVisualStyleBackColor = true;
-            this.checkBoxModsBundledTexturesBA2Compression.CheckedChanged += new System.EventHandler(this.checkBoxModsBundledTexturesBA2Compression_CheckedChanged);
-            // 
             // groupBoxGamePaths
             // 
+            this.groupBoxGamePaths.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxGamePaths.Controls.Add(this.labelGamePath);
             this.groupBoxGamePaths.Controls.Add(this.textBoxGamePath);
             this.groupBoxGamePaths.Controls.Add(this.buttonPickGamePath);
@@ -501,6 +494,8 @@
             // 
             // textBoxGamePath
             // 
+            this.textBoxGamePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxGamePath.Location = new System.Drawing.Point(123, 17);
             this.textBoxGamePath.Name = "textBoxGamePath";
             this.textBoxGamePath.Size = new System.Drawing.Size(259, 20);
@@ -509,6 +504,7 @@
             // 
             // buttonPickGamePath
             // 
+            this.buttonPickGamePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonPickGamePath.Location = new System.Drawing.Point(388, 15);
             this.buttonPickGamePath.Name = "buttonPickGamePath";
             this.buttonPickGamePath.Size = new System.Drawing.Size(26, 23);
@@ -548,35 +544,6 @@
             this.panel1.Size = new System.Drawing.Size(166, 58);
             this.panel1.TabIndex = 56;
             // 
-            // showConflictingFilesToolStripMenuItem
-            // 
-            this.showConflictingFilesToolStripMenuItem.Name = "showConflictingFilesToolStripMenuItem";
-            this.showConflictingFilesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.showConflictingFilesToolStripMenuItem.Text = "Show conflicting files";
-            this.showConflictingFilesToolStripMenuItem.Click += new System.EventHandler(this.showConflictingFilesToolStripMenuItem_Click);
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.repairddsFilesToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // repairddsFilesToolStripMenuItem
-            // 
-            this.repairddsFilesToolStripMenuItem.Name = "repairddsFilesToolStripMenuItem";
-            this.repairddsFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.repairddsFilesToolStripMenuItem.Text = "Repair all *.dds files";
-            this.repairddsFilesToolStripMenuItem.Click += new System.EventHandler(this.repairddsFilesToolStripMenuItem_Click);
-            // 
-            // reloadUIToolStripMenuItem
-            // 
-            this.reloadUIToolStripMenuItem.Name = "reloadUIToolStripMenuItem";
-            this.reloadUIToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.reloadUIToolStripMenuItem.Text = "Reload UI";
-            this.reloadUIToolStripMenuItem.Click += new System.EventHandler(this.reloadUIToolStripMenuItem_Click);
-            // 
             // FormMods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,8 +566,6 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabPageModsSettings.ResumeLayout(false);
-            this.groupBoxModsBundledBA2.ResumeLayout(false);
-            this.groupBoxModsBundledBA2.PerformLayout();
             this.groupBoxGamePaths.ResumeLayout(false);
             this.groupBoxGamePaths.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -629,9 +594,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageModOrder;
         private System.Windows.Forms.TabPage tabPageModsSettings;
-        private System.Windows.Forms.GroupBox groupBoxModsBundledBA2;
-        private System.Windows.Forms.CheckBox checkBoxModsBundledBA2Compression;
-        private System.Windows.Forms.CheckBox checkBoxModsBundledTexturesBA2Compression;
         public System.Windows.Forms.ListView listViewMods;
         public System.Windows.Forms.ToolTip toolTip;
         public System.Windows.Forms.ToolStrip toolStrip1;
