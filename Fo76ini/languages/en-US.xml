@@ -4,7 +4,7 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.5.1">
+<Language name="English (USA)" iso="en-US" version="1.6">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Deployment necessary" id="modsDeploymentNecessary" />
@@ -14,8 +14,14 @@
     <String text="Auto" id="modsTableFormatAutoDetect" />
     <String text="Bundled" id="modsTableTypeBundled" />
     <String text="Separate" id="modsTableTypeSeparate" />
+    <String text="Separate (Frozen)" id="modsTableTypeSeparateFrozen" />
     <String text="Loose" id="modsTableTypeLoose" />
+    <String text="Upon deployment" id="modTableFrozenUponDeployment" />
+    <String text="Edit {0}" id="modDetailsTitle" />
+    <String text="Edit {0} mods" id="modDetailsTitleBulk" />
     <String text="N/A" id="notApplicable" />
+    <String text="Yes" id="yes" />
+    <String text="No" id="no" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -82,17 +88,25 @@
     Press "No" to save without backup.
     Press "Cancel" to abort.</Messagebox>
     <Messagebox title="Changes applied" id="changesApplied">Changes have been applied. You may start the game now.</Messagebox>
-    <Messagebox title="Choose Game Edition" id="chooseGameEdition">Please pick your game edition under the General tab.</Messagebox>
+    <Messagebox title="Choose Game Edition" id="chooseGameEdition">Please pick your game edition under the Settings tab.</Messagebox>
     <Messagebox title="Fallout76.ini and Fallout76Prefs.ini not found" id="runGameToGenerateINI">Please run the game first before using this tool.
 The game will generate those files on first start-up.</Messagebox>
     <Messagebox title="Done" id="oldValuesResetToDefault">Some values have been reset to default.
 Only unstable values from previous versions are affected.
 Don't forget to click 'Apply'.</Messagebox>
+    <Messagebox title="Files modified" id="iniFilesModified">*.ini files have been modified outside of the tool while it's running.
+NOTE: Any changes will be overwritten, if clicked on "Apply" or if mods are managed.
+Please restart the tool to work with the new values.</Messagebox>
     <Messagebox title="Error while loading UI" id="onLoadFuncException">{0} exception(s) occured while the UI was loaded.
 This might be caused by corrupted ini files.
 Some UI elements might not be functioning correctly.
 
 {1}</Messagebox>
+    <Messagebox title="Done" id="downloadLanguagesFinished">Downloaded language files: {0}</Messagebox>
+    <Messagebox title="Failed" id="downloadLanguagesFailed">Downloading languages failed.
+{0}</Messagebox>
+    <Messagebox title="Done" id="modsDisabledDone">Mods have been disabled and removed from the game.</Messagebox>
+    <Messagebox title="Done" id="modsDeployedDone">Mods are deployed.</Messagebox>
     <Messagebox title="Archive2 is missing" id="modsArchive2Missing">.\Archive2\Archive2.exe is missing.
 Please download this tool again, or install Archive2 manually.</Messagebox>
     <Messagebox title="Game path not set" id="modsGamePathNotSet">Please set the path to the game (where Fallout76.exe resides).</Messagebox>
@@ -126,36 +140,71 @@ Error message: "{0}".</Messagebox>
     <Messagebox title="Are you sure?" id="modsRepairDDSQuestion">This will attempt to repair all *.dds files.
 It can take a long time, depending on file size and number of files.
 Are you sure you want to continue?</Messagebox>
+    <Messagebox title="Done" id="modsRepairDDSDone">*.dds files have been repaired.</Messagebox>
+    <Messagebox title="Mods are still deployed" id="nwModeEnabledButModsAreDeployed">You've enabled the Nuclear Winter mode, but your mods are still deployed.
+Do you want to disable them now?</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Quick Configuration">
-    <Group text="Options" id="groupBoxOptions">
-      <Checkbox text="Nuclear Winter Mode" id="checkBoxNWMode" />
-      <Checkbox text="Make *.ini files read-only" id="checkBoxReadOnly">
-        <Tooltip>This option will make all *.ini files read-only immediately.
-Enable this if your settings get reverted.
-
-Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
-      </Checkbox>
-    </Group>
-    <Group text="Game edition" id="groupBoxGameEdition">
-      <Radiobutton text="Steam" id="radioButtonEditionSteam" />
-      <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
-    </Group>
     <Button text="Manage mods" id="buttonManageMods" />
     <Button text="Launch game" id="buttonLaunchGame" />
+    <Button text="Apply" id="buttonApply" />
     <TabContainer id="tabControl1">
       <Tab text="Info" id="tabPageInfo">
-        <Button text="Fix settings from v1.3.1 and earlier" id="buttonFixIssuesEarlierVersion" />
         <Label text="Translation by:" id="labelTranslationBy" />
-        <Link text="Open README" id="linkLabel1" />
         <Label text="Author:" id="labelAuthor" />
-        <Label text="Language:" id="labelLanguage" />
         <Label text="Version:" id="labelVersion" />
         <Label text="This tool allows you to quickly tweak INI settings.\nTip: Hover over an option, if you're unsure what it does." id="labelDescription" />
         <Link text="Get the latest version from NexusMods" id="linkLabelDownloadPage" />
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
+      <Tab text="Settings" id="tabPageSettings">
+        <Group text="Localization" id="groupBoxLocalization">
+          <Label text="Language:" id="labelLanguage" />
+          <Button text="Download / update languages" id="buttonDownloadLanguages" />
+        </Group>
+        <Group text="Options" id="groupBoxOptions">
+          <Checkbox text="Open mod manager when tool is launched." id="checkBoxOpenManageModsOnLaunch" />
+          <Checkbox text="Don't ask me, when &quot;Apply&quot; is clicked." id="checkBoxSkipBackupQuestion">
+            <Tooltip>Skips the backup question when "Apply" is clicked.
+Note: This way, it will NOT create a backup!</Tooltip>
+          </Checkbox>
+          <Checkbox text="Automatically apply changes when tool is closed or game is launched" id="checkBoxAutoApply">
+            <Tooltip>No need to press apply anymore.</Tooltip>
+          </Checkbox>
+          <Checkbox text="Nuclear Winter Mode" id="checkBoxNWMode">
+            <Tooltip>Currently only renames Fallout76Custom.ini to Fallout76Custom.ini.nwmodebak.</Tooltip>
+          </Checkbox>
+          <Checkbox text="Close the tool when the game is launched" id="checkBoxQuitOnGameLaunch">
+            <Tooltip>Does only work when the game is launched through the tool.</Tooltip>
+          </Checkbox>
+          <Checkbox text="Make *.ini files read-only" id="checkBoxReadOnly">
+            <Tooltip>This option will make all *.ini files read-only immediately.
+Enable this if your settings get reverted.
+
+Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Button text="Fix settings from v1.3.1 and earlier" id="buttonFixIssuesEarlierVersion" />
+        <Group text="Game edition" id="groupBoxGameEdition">
+          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
+          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+        </Group>
+        <Link text="Open README" id="linkLabel1" />
+      </Tab>
       <Tab text="General" id="tabPageGeneral">
+        <Group text="Camera" id="groupBoxCamera">
+          <Checkbox text="Force auto vanity mode" id="checkBoxForceVanityMode">
+            <Tooltip>Affected values: bForceAutoVanityMode
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Enable auto vanity mode" id="checkBoxVanityMode">
+            <Tooltip>When this option is checked, the camera will spin around the character after no input was given for a certain amount of time.
+Not sure if it does anything, though. I stood around for 5 minutes and the camera didn't spin. Needs more testing.
+
+Affected values: bDisableAutoVanityMode
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
         <Group text="Login" id="groupBoxLogin">
           <Label text="Your credentials are saved into Fallout76Custom.ini\nThis way, you don't have to login if you start Fallout 76\nwithout the launcher." id="labelCredentialsExplanation" />
           <Checkbox text="Show password" id="checkBoxShowPassword" />
@@ -206,6 +255,7 @@ Affected files: Fallout76Custom.ini</Tooltip>
         </Group>
       </Tab>
       <Tab text="Display" id="tabPageDisplay">
+        <Button text="Detect resolution" id="buttonDetectResolution" />
         <Checkbox text="Always active" id="checkBoxAlwaysActive">
           <Tooltip>Disable this if you want the game to pause if another window is in front.
 
@@ -510,6 +560,8 @@ If unchecked (default), the sensitivity will be lower when aiming down iron sigh
 Note: This might only work on 16:9 monitors.
 If it works for you on an other monitor (e.g. 21:9), please let me know.
 
+Note 2: This might not work in-game while crouching.
+
 Affected values: fIronSightsFOVRotateMult
 Affected files: Fallout76Custom.ini</Tooltip>
           </Checkbox>
@@ -595,7 +647,6 @@ Affected files: Fallout76Prefs.ini</Tooltip>
         </Group>
       </Tab>
     </TabContainer>
-    <Button text="Apply" id="buttonApply" />
   </Form1>
   <FormMods title="Manage mods">
     <Element id="panel1">
@@ -620,13 +671,10 @@ Affected files: Fallout76Prefs.ini</Tooltip>
           <Column>Install into</Column>
           <Column>Archive name</Column>
           <Column>Archive format</Column>
+          <Column>Frozen?</Column>
         </ListView>
       </Tab>
       <Tab text="Settings" id="tabPageModsSettings">
-        <Group text="Bundled *.ba2 settings" id="groupBoxModsBundledBA2">
-          <Checkbox text="Compress bundled.ba2" id="checkBoxModsBundledBA2Compression" />
-          <Checkbox text="Compress bundled_textures.ba2" id="checkBoxModsBundledTexturesBA2Compression" />
-        </Group>
         <Group text="Paths" id="groupBoxGamePaths">
           <Label text="Game location:" id="labelGamePath" />
           <Button text="..." id="buttonPickGamePath" />
@@ -658,13 +706,28 @@ Affected files: Fallout76Prefs.ini</Tooltip>
   <FormModDetails>
     <Button text="Cancel" id="buttonModDetailsCancel" />
     <Button text="OK" id="buttonModDetailsOK" />
+    <Label text="..." id="labelModDetailsStatus" />
     <Button text="Apply" id="buttonModDetailsApply" />
     <Element id="panel1">
-      <Label text="..." id="labelModDetailRepairStatus" />
+      <Checkbox text="Enable this mod" id="checkBoxModDetailsEnabled" />
+      <Label text="NOTE: Frozen mods will be ignored." id="labelModDetailsBulkFrozenModsWarning" />
+      <Group text="Presets" id="groupBoxSeparateArchivePresets">
+        <Radiobutton text="Custom" id="radioButtonSeparateArchiveCustom" />
+        <Radiobutton text="Sounds" id="radioButtonSeparateArchiveSounds" />
+        <Radiobutton text="Textures (*.dds files)" id="radioButtonSeparateArchiveTextures" />
+        <Radiobutton text="General / Interface" id="radioButtonSeparateArchiveGeneral" />
+      </Group>
+      <Label text="Installation options are disabled, because the mod is frozen." id="labelModUnfreeze" />
+      <Button text="Unfreeze" id="buttonModUnfreeze" />
+      <Checkbox text="Freeze" id="checkBoxFreezeArchive">
+        <Tooltip>If you 'freeze' an archive, it does not get recreated when deploying.
+This will speed up deployment.
+
+This is especially useful, if the archive is HUGE (1GiB or more) and the files aren't changing.</Tooltip>
+      </Checkbox>
       <Button text="Repair *.dds files" id="buttonModRepairDDS" />
       <Checkbox text="Compress archive" id="checkBoxModBA2Compression" />
       <Label text="Archive name:" id="labelModArchiveName" />
-      <Checkbox text="Enable this mod" id="checkBoxModDetailsEnabled" />
       <Button text="Open folder" id="buttonModOpenFolder" />
       <Label text="Mod folder name:" id="labelModFolderName" />
       <Label text="Archive format:" id="labelModArchiveFormat" />
