@@ -1,2 +1,7 @@
-en-US.xml
 de-DE.xml
+fr-FR.xml
+pl-PL.xml
+ru-RU.xml
+sv-SE.xml
+zh-CN.xml
+zh-TW.xml
