@@ -24,8 +24,14 @@ namespace Fo76ini
             localizedStrings["modsTableFormatAutoDetect"] = "Auto";
             localizedStrings["modsTableTypeBundled"] = "Bundled";
             localizedStrings["modsTableTypeSeparate"] = "Separate";
+            localizedStrings["modsTableTypeSeparateFrozen"] = "Separate (Frozen)";
             localizedStrings["modsTableTypeLoose"] = "Loose";
+            localizedStrings["modTableFrozenPending"] = "Pending";
+            localizedStrings["modDetailsTitle"] = "Edit {0}";
+            localizedStrings["modDetailsTitleBulk"] = "Edit {0} mods";
             localizedStrings["notApplicable"] = "N/A";
+            localizedStrings["yes"] = "Yes";
+            localizedStrings["no"] = "No";
         }
     }
 }

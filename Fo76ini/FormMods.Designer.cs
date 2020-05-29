@@ -69,6 +69,7 @@
             this.columnHeaderInstallInto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderArchiveName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderArchiveFormat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderFrozenState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
             this.groupBoxGamePaths = new System.Windows.Forms.GroupBox();
             this.labelGamePath = new System.Windows.Forms.Label();
@@ -80,6 +81,7 @@
             this.checkBoxDisableMods = new System.Windows.Forms.CheckBox();
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.columnHeaderCompression = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -189,7 +191,7 @@
             // repairddsFilesToolStripMenuItem
             // 
             this.repairddsFilesToolStripMenuItem.Name = "repairddsFilesToolStripMenuItem";
-            this.repairddsFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.repairddsFilesToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.repairddsFilesToolStripMenuItem.Text = "Repair all *.dds files";
             this.repairddsFilesToolStripMenuItem.Click += new System.EventHandler(this.repairddsFilesToolStripMenuItem_Click);
             // 
@@ -213,6 +215,7 @@
             this.progressBarMods.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBarMods.Location = new System.Drawing.Point(12, 526);
+            this.progressBarMods.MarqueeAnimationSpeed = 15;
             this.progressBarMods.Name = "progressBarMods";
             this.progressBarMods.Size = new System.Drawing.Size(280, 23);
             this.progressBarMods.TabIndex = 51;
@@ -421,12 +424,14 @@
             this.columnHeaderInstallAs,
             this.columnHeaderInstallInto,
             this.columnHeaderArchiveName,
-            this.columnHeaderArchiveFormat});
+            this.columnHeaderArchiveFormat,
+            this.columnHeaderCompression,
+            this.columnHeaderFrozenState});
             this.listViewMods.FullRowSelect = true;
             this.listViewMods.GridLines = true;
             this.listViewMods.HideSelection = false;
             this.listViewMods.LabelWrap = false;
-            this.listViewMods.Location = new System.Drawing.Point(40, 3);
+            this.listViewMods.Location = new System.Drawing.Point(40, 6);
             this.listViewMods.Name = "listViewMods";
             this.listViewMods.Size = new System.Drawing.Size(386, 432);
             this.listViewMods.TabIndex = 41;
@@ -438,7 +443,7 @@
             // columnHeaderModTitle
             // 
             this.columnHeaderModTitle.Text = "Mod name";
-            this.columnHeaderModTitle.Width = 342;
+            this.columnHeaderModTitle.Width = 350;
             // 
             // columnHeaderInstallAs
             // 
@@ -457,6 +462,11 @@
             // 
             this.columnHeaderArchiveFormat.Text = "Archive format";
             this.columnHeaderArchiveFormat.Width = 90;
+            // 
+            // columnHeaderFrozenState
+            // 
+            this.columnHeaderFrozenState.Text = "Frozen?";
+            this.columnHeaderFrozenState.Width = 50;
             // 
             // tabPageModsSettings
             // 
@@ -544,6 +554,11 @@
             this.panel1.Size = new System.Drawing.Size(166, 58);
             this.panel1.TabIndex = 56;
             // 
+            // columnHeaderCompression
+            // 
+            this.columnHeaderCompression.Text = "Compressed?";
+            this.columnHeaderCompression.Width = 75;
+            // 
             // FormMods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -558,6 +573,7 @@
             this.MinimumSize = new System.Drawing.Size(480, 600);
             this.Name = "FormMods";
             this.Text = "Manage mods";
+            this.Load += new System.EventHandler(this.FormMods_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -627,5 +643,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem repairddsFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reloadUIToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader columnHeaderFrozenState;
+        private System.Windows.Forms.ColumnHeader columnHeaderCompression;
     }
 }

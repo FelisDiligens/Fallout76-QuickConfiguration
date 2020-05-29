@@ -9,14 +9,15 @@
     <String text="Autom." id="modsTableFormatAutoDetect" />
     <String text="Gebündelt" id="modsTableTypeBundled" />
     <String text="Separat" id="modsTableTypeSeparate" />
-    <String text="Separate (Frozen)" id="modsTableTypeSeparateFrozen" />
+    <String text="Separat (Eingefroren)" id="modsTableTypeSeparateFrozen" />
     <String text="Lose" id="modsTableTypeLoose" />
-    <String text="Nach dem Anwenden" id="modTableFrozenUponDeployment" />
+    <String text="Ausstehend" id="modTableFrozenPending" />
     <String text="Bearbeite {0}" id="modDetailsTitle" />
     <String text="Bearbeite {0} Mods" id="modDetailsTitleBulk" />
     <String text="n.a." id="notApplicable" />
     <String text="Ja" id="yes" />
     <String text="Nein" id="no" />
+    <String text="Nach dem Anwenden" id="modTableFrozenUponDeployment" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -108,8 +109,8 @@ Bitte lade das Tool erneut herunter oder installiere Archive2 manuell.</Messageb
     <Messagebox title="Ungültiger Pfad" id="modsGamePathInvalid">Ungültiger Spielpfad</Messagebox>
     <Messagebox title="Mod {0} konnte nicht installiert werden." id="modsDeployErrorModDirNotFound">Der Ordner {0} existiert nicht.
 Bitte starte den Mod-Manager neu und füge die Mod erneut hinzu.</Messagebox>
-    <Messagebox title="Mod {0} konnte nicht installiert werden." id="modsDeployErrorBA2RootIsNotData">Der Ordner {0} existiert nicht.
-Bitte starte den Mod-Manager neu und füge die Mod erneut hinzu.</Messagebox>
+    <Messagebox title="Mod {0} konnte nicht installiert werden." id="modsDeployErrorBA2RootIsNotData">Der Installationsordner muss auf ".\Data" gesetzt werden, wenn die Mod als *.ba2 Archiv installiert werden soll.
+Bitte ändere die "Installiere nach" Option und versuche es erneut.</Messagebox>
     <Messagebox title="Bist du sicher?" id="modsDeleteBtn">Bist du sicher, dass du {0} löschen möchtest?</Messagebox>
     <Messagebox title="Bist du sicher?" id="modsDeleteBulkBtn">Bist du sicher, dass du {0} Mods löschen möchtest?</Messagebox>
     <Messagebox title="Archiv konnte nicht extrahiert werden" id="modsExtractUnknownError">{0}</Messagebox>
@@ -157,6 +158,7 @@ Bitte wähle Archive2.exe</Messagebox>
       </Tab>
       <Tab text="Einstellungen" id="tabPageSettings">
         <Group text="Lokalisierung" id="groupBoxLocalization">
+          <Label text="Diese Sprache ist veraltet.\nEinige Elemente könnten noch nicht übersetzt worden sein." id="labelOutdatedLanguage" />
           <Label text="Sprache:" id="labelLanguage" />
           <Button text="Sprachen herunterladen / aktualisieren" id="buttonDownloadLanguages" />
         </Group>
@@ -254,7 +256,7 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
         </Group>
       </Tab>
       <Tab text="Anzeige" id="tabPageDisplay">
-        <Button text="Detect resolution" id="buttonDetectResolution" />
+        <Button text="Auflösung automatisch erkennen" id="buttonDetectResolution" />
         <Checkbox text="Immer aktiv" id="checkBoxAlwaysActive">
           <Tooltip>Deaktiviere das, wenn du möchtest, dass das Spiel pausiert, wenn es nicht das aktive Fenster ist.
 
@@ -669,6 +671,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           <Column>Installiere nach</Column>
           <Column>Archivname</Column>
           <Column>Archivformat</Column>
+          <Column>Komprimiert?</Column>
           <Column>Eingefroren?</Column>
         </ListView>
       </Tab>

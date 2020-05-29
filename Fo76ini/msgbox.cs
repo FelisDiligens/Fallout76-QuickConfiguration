@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -47,7 +48,7 @@ namespace Fo76ini
 
             MsgBox.Add("chooseGameEdition",
                 "Choose Game Edition",
-                "Please pick your game edition under the General tab."
+                "Please pick your game edition under the Settings tab."
             );
 
             MsgBox.Add("runGameToGenerateINI",
@@ -62,6 +63,12 @@ namespace Fo76ini
                 "Only unstable values from previous versions are affected.\n" +
                 "Don't forget to click 'Apply'."
             );
+            MsgBox.Add("iniFilesModified",
+                "Files modified",
+                "*.ini files have been modified outside of the tool while it's running.\n" +
+                "NOTE: Any changes will be overwritten, if clicked on \"Apply\" or if mods are managed.\n" + 
+                "Please restart the tool to work with the new values."
+            ); 
 
             MsgBox.Add("onLoadFuncException",
                 "Error while loading UI",
@@ -71,7 +78,27 @@ namespace Fo76ini
                 "{1}"
             );
 
+            MsgBox.Add("downloadLanguagesFinished",
+                "Done",
+                "Downloaded language files: {0}"
+            );
+
+            MsgBox.Add("downloadLanguagesFailed",
+                "Failed",
+                "Downloading languages failed.\n{0}"
+            );
+
             // Mods:
+            MsgBox.Add("modsDisabledDone",
+                "Done",
+                "Mods have been disabled and removed from the game."
+            );
+
+            MsgBox.Add("modsDeployedDone",
+                "Done",
+                "Mods are deployed."
+            );
+
             MsgBox.Add("modsArchive2Missing",
                 "Archive2 is missing",
                 ".\\Archive2\\Archive2.exe is missing.\nPlease download this tool again, or install Archive2 manually."
@@ -95,8 +122,8 @@ namespace Fo76ini
 
             MsgBox.Add("modsDeployErrorBA2RootIsNotData",
                 "Mod {0} couldn't be deployed.",
-                "Directory {0} does not exist.\n" +
-                "Please restart the mod manager and add the mod again."
+                "The root folder has to be set to \".\\Data\" for mods, that are to be installed as a *.ba2 archive.\n" +
+                "Please fix the \"Install into\" setting and try again."
             );
 
             MsgBox.Add("modsDeleteBtn",
@@ -180,6 +207,17 @@ namespace Fo76ini
                 "Are you sure?",
                 "This will attempt to repair all *.dds files.\nIt can take a long time, depending on file size and number of files.\nAre you sure you want to continue?"
             );
+
+            MsgBox.Add("modsRepairDDSDone",
+                "Done",
+                "*.dds files have been repaired."
+            );
+
+            MsgBox.Add("nwModeEnabledButModsAreDeployed",
+                "Mods are still deployed",
+                "You've enabled the Nuclear Winter mode, but your mods are still deployed.\n" + 
+                "Do you want to disable them now?"
+            );
         }
 
         private static Dictionary<String, MsgBox> msgBoxes = new Dictionary<String, MsgBox>();
@@ -247,22 +285,38 @@ namespace Fo76ini
 
         public DialogResult Show()
         {
+            SystemSounds.Asterisk.Play();
             return MessageBox.Show(this.Text, this.Title);
         }
 
         public DialogResult Show(MessageBoxButtons buttons, MessageBoxIcon icon)
         {
+            SystemSounds.Asterisk.Play();
             return MessageBox.Show(this.Text, this.Title, buttons, icon);
         }
 
         public DialogResult Show(MessageBoxButtons buttons)
         {
+            SystemSounds.Asterisk.Play();
             return MessageBox.Show(this.Text, this.Title, buttons);
         }
 
         public DialogResult Show(MessageBoxIcon icon)
         {
+            SystemSounds.Asterisk.Play();
             return MessageBox.Show(this.Text, this.Title, MessageBoxButtons.OK, icon);
+        }
+
+        public void Popup()
+        {
+            Utils.CreatePopup(this.Title, this.Text).Popup();
+            SystemSounds.Asterisk.Play();
+        }
+
+        public void Popup(MessageBoxIcon icon)
+        {
+            Utils.CreatePopup(this.Title, this.Text, icon).Popup();
+            SystemSounds.Asterisk.Play();
         }
 
         public static XElement Serialize()

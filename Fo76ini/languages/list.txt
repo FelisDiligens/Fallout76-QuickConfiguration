@@ -1,5 +1,4 @@
 de-DE.xml
-en-US.xml
 fr-FR.xml
 pl-PL.xml
 ru-RU.xml

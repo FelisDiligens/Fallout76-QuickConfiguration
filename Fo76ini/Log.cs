@@ -53,5 +53,10 @@ namespace Fo76ini
             using (StreamWriter sw = Open())
                 sw.WriteLine($"{ DateTime.Now.ToLongDateString()}, { DateTime.Now.ToLongTimeString()} {suffix}");
         }
+
+        public static String GetFilePath(String fileName)
+        {
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", fileName);
+        }
     }
 }

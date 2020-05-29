@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Fo76ini
 {
@@ -37,6 +38,10 @@ namespace Fo76ini
         protected String fo76PrefsPath;
         protected String fo76CustomPath;
         protected String configPath;
+
+        protected DateTime fo76ModTime;
+        protected DateTime fo76PrefsModTime;
+        protected DateTime fo76CustomModTime;
 
         protected Encoding iniEncoding = new UTF8Encoding(false); // UTF-8 without BOM
 
@@ -75,7 +80,16 @@ namespace Fo76ini
             this.fo76Path = Path.Combine(this.iniParentPath, "Fallout76.ini");
             this.fo76PrefsPath = Path.Combine(this.iniParentPath, "Fallout76Prefs.ini");
             this.fo76CustomPath = Path.Combine(this.iniParentPath, "Fallout76Custom.ini");
-            this.configPath = Path.Combine(this.iniParentPath, "QuickConfiguration.ini");
+            String oldConfigPath = Path.Combine(this.iniParentPath, "QuickConfiguration.ini");
+            this.configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "config.ini");
+
+            // Backwards-compatibility: Move config file to new location:
+            if (File.Exists(oldConfigPath) && !File.Exists(this.configPath))
+            {
+                if (!Directory.Exists(Path.GetDirectoryName(this.configPath)))
+                    Directory.CreateDirectory(Path.GetDirectoryName(this.configPath));
+                File.Move(oldConfigPath, this.configPath);
+            }
 
             // Configuring INI parser
             IniParserConfiguration iniParserConfig = new IniParserConfiguration();
@@ -108,13 +122,17 @@ namespace Fo76ini
 
             // Parse *.ini files:
             this.fo76Data = LoadIni(this.fo76Path, false);
+            this.fo76ModTime = File.GetLastWriteTime(this.fo76Path);
             this.fo76PrefsData = LoadIni(this.fo76PrefsPath, false);
+            this.fo76PrefsModTime = File.GetLastWriteTime(this.fo76PrefsPath);
             if (File.Exists(this.fo76CustomPath))
                 this.fo76CustomData = LoadIni(this.fo76CustomPath, false);
             else if (File.Exists(this.fo76CustomPath + ".nwmodebak"))
                 this.fo76CustomData = LoadIni(this.fo76CustomPath + ".nwmodebak", false);
             else
                 this.fo76CustomData = new IniData();
+
+            UpdateLastModifiedDates();
 
             // Fix stuff:
             FixDuplicateResourceLists();
@@ -128,6 +146,7 @@ namespace Fo76ini
                 SaveIni(this.fo76CustomPath + ".nwmodebak", this.fo76CustomData, readOnly);
             else
                 SaveIni(this.fo76CustomPath, this.fo76CustomData, readOnly);
+            UpdateLastModifiedDates();
         }
 
         public void ResolveNWMode()
@@ -148,6 +167,38 @@ namespace Fo76ini
                     File.Copy(this.fo76CustomPath + ".nwmodebak", this.fo76CustomPath);
                 Utils.DeleteFile(this.fo76CustomPath + ".nwmodebak");
             }
+            UpdateLastModifiedDates();
+        }
+
+        public bool FilesHaveBeenModified()
+        {
+            if (this.fo76ModTime != File.GetLastWriteTime(this.fo76Path))
+                return true;
+            if (this.fo76PrefsModTime != File.GetLastWriteTime(this.fo76PrefsPath))
+                return true;
+
+            if (File.Exists(this.fo76CustomPath))
+            {
+                if (this.fo76CustomModTime != File.GetLastWriteTime(this.fo76CustomPath))
+                    return true;
+            }
+            else if (File.Exists(this.fo76CustomPath + ".nwmodebak"))
+            {
+                if (this.fo76CustomModTime != File.GetLastWriteTime(this.fo76CustomPath + ".nwmodebak"))
+                    return true;
+            }
+            return false;
+        }
+
+        public void UpdateLastModifiedDates()
+        {
+            this.fo76ModTime = File.GetLastWriteTime(this.fo76Path);
+            this.fo76PrefsModTime = File.GetLastWriteTime(this.fo76PrefsPath);
+
+            if (File.Exists(this.fo76CustomPath))
+                this.fo76CustomModTime = File.GetLastWriteTime(this.fo76CustomPath);
+            else if (File.Exists(this.fo76CustomPath + ".nwmodebak"))
+                this.fo76CustomModTime = File.GetLastWriteTime(this.fo76CustomPath + ".nwmodebak");
         }
 
         public void LoadConfig()
@@ -648,6 +699,83 @@ namespace Fo76ini
             MergeLists(IniFile.F76Custom, "Archive", "sResourceIndexFileList");
             MergeLists(IniFile.F76Custom, "Archive", "sResourceArchive2List");
             MergeLists(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal");
+
+            this.fo76CustomModTime = File.GetLastWriteTime(this.fo76CustomPath);
+        }
+
+
+
+
+
+
+
+        /*
+         *********************************************************************************************************************************************
+         * Other stuff
+         ********************************************************************************************************************************************
+         */
+
+        // https://stackoverflow.com/questions/1873658/net-windows-forms-remember-windows-size-and-location
+        public void SaveWindowState(String formName, Form form)
+        {
+            if (form.WindowState == FormWindowState.Maximized)
+            {
+                this.Set(IniFile.Config, formName, "iLocationX", form.RestoreBounds.Location.X);
+                this.Set(IniFile.Config, formName, "iLocationY", form.RestoreBounds.Location.Y);
+                this.Set(IniFile.Config, formName, "iWidth", form.RestoreBounds.Size.Width);
+                this.Set(IniFile.Config, formName, "iHeight", form.RestoreBounds.Size.Height);
+                this.Set(IniFile.Config, formName, "bMaximised", true);
+            }
+            else
+            {
+                this.Set(IniFile.Config, formName, "iLocationX", form.Location.X);
+                this.Set(IniFile.Config, formName, "iLocationY", form.Location.Y);
+                this.Set(IniFile.Config, formName, "iWidth", form.Size.Width);
+                this.Set(IniFile.Config, formName, "iHeight", form.Size.Height);
+                this.Set(IniFile.Config, formName, "bMaximised", false);
+            }
+            this.SaveConfig();
+        }
+
+        public void LoadWindowState(String formName, Form form)
+        {
+            int locX = this.GetInt(IniFile.Config, formName, "iLocationX", -1);
+            int locY = this.GetInt(IniFile.Config, formName, "iLocationY", -1);
+            if (locX >= 0 && locY >= 0)
+                form.Location = new System.Drawing.Point(locX, locY);
+
+            int width = this.GetInt(IniFile.Config, formName, "iWidth", form.Size.Width);
+            int height = this.GetInt(IniFile.Config, formName, "iHeight", form.Size.Height);
+            if (width >= form.MinimumSize.Width && height >= form.MinimumSize.Height)
+                form.Size = new System.Drawing.Size(width, height);
+
+            if (this.GetBool(IniFile.Config, formName, "bMaximised", false))
+                form.WindowState = FormWindowState.Maximized;
+        }
+
+        public void SaveListViewState(String formName, ListView listView)
+        {
+            List<int> widths = new List<int>();
+            foreach (ColumnHeader column in listView.Columns)
+            {
+                widths.Add(column.Width);
+            }
+            this.Set(IniFile.Config, formName, "sColumnWidths", String.Join(",", widths));
+        }
+
+        public void LoadListViewState(String formName, ListView listView)
+        {
+            List<int> lWidths = new List<int>();
+            String[] sWidths = this.GetString(IniFile.Config, formName, "sColumnWidths", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (String sWidth in sWidths)
+                lWidths.Add(Convert.ToInt32(sWidth));
+
+            int i = 0;
+            foreach (ColumnHeader column in listView.Columns)
+            {
+                if (i < lWidths.Count)
+                    column.Width = lWidths[i++];
+            }
         }
     }
 }

@@ -120,9 +120,6 @@
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="checkBoxFixMouseSensitivity.ToolTip" xml:space="preserve">
     <value>If checked, the sensitivity for looking up/down and left/right will be equal.
 If unchecked (default), the sensitivity for looking left/right will likely be higher than up/down.
@@ -145,6 +142,8 @@ If unchecked (default), the sensitivity will be lower when aiming down iron sigh
 
 Note: This might only work on 16:9 monitors.
 If it works for you on an other monitor (e.g. 21:9), please let me know.
+
+Note 2: This might not work in-game while crouching.
 
 Affected values: fIronSightsFOVRotateMult
 Affected files: Fallout76Custom.ini</value>
@@ -266,6 +265,9 @@ Affected files: Fallout76Custom.ini</value>
   </data>
   <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>107, 17</value>
+  </metadata>
+  <metadata name="timerCheckFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>221, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>82</value>

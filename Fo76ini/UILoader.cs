@@ -68,6 +68,21 @@ namespace Fo76ini
                 this.items.Add(item);
         }
 
+        public bool Contains(String item)
+        {
+            return this.items.Contains(item);
+        }
+
+        public int FindIndex(String match)
+        {
+            return this.items.FindIndex(x => x == match);
+        }
+
+        public int FindIndex(Predicate<string> match)
+        {
+            return this.items.FindIndex(match);
+        }
+
         public void Clear()
         {
             this.comboBox.Items.Clear();
@@ -152,12 +167,12 @@ namespace Fo76ini
             if (!reversed)
             {
                 slider.Scroll += (object sender, ScrollEventArgs e) => num.Value = Convert.ToDecimal(slider.Value / numToSliderRatio);
-                num.ValueChanged += (object sender, EventArgs e) => slider.Value = Convert.ToInt32(Convert.ToDouble(num.Value) * numToSliderRatio);
+                num.ValueChanged += (object sender, EventArgs e) => slider.Value = Utils.Clamp(Convert.ToInt32(Convert.ToDouble(num.Value) * numToSliderRatio), slider.Minimum, slider.Maximum);
             }
             else
             {
                 slider.Scroll += (object sender, ScrollEventArgs e) => num.Value = Convert.ToDecimal((slider.Maximum - slider.Value) / numToSliderRatio);
-                num.ValueChanged += (object sender, EventArgs e) => slider.Value = Convert.ToInt32(slider.Maximum - Convert.ToDouble(num.Value) * numToSliderRatio);
+                num.ValueChanged += (object sender, EventArgs e) => slider.Value = Utils.Clamp(Convert.ToInt32(slider.Maximum - Convert.ToDouble(num.Value) * numToSliderRatio), slider.Minimum, slider.Maximum);
             }
         }
 

@@ -14,6 +14,7 @@ using System.Globalization;
 using System.Drawing;
 using System.Drawing.Imaging;
 using ImageMagick;
+using Tulpep.NotificationWindow;
 
 namespace Fo76ini
 {
@@ -296,6 +297,12 @@ namespace Fo76ini
             return vDevMode.dmDisplayFrequency;
         }
 
+        public static int[] GetDisplayResolution()
+        {
+            DEVMODE vDevMode = Utils.GetDisplayInfo();
+            return new int[] { vDevMode.dmPelsWidth, vDevMode.dmPelsHeight };
+        }
+
 
 
         public static float ToFloat(string num)
@@ -355,9 +362,7 @@ namespace Fo76ini
             String fileName = Path.GetFileName(filePath);
             try
             {
-                Console.WriteLine("Reading " + fileName);
                 MagickImage image = new MagickImage(filePath);
-                Console.WriteLine("Writing " + fileName);
                 image.Write(filePath);
                 return true;
             }
@@ -365,7 +370,6 @@ namespace Fo76ini
             {
                 Console.WriteLine("MagickCorruptImageErrorException: " + exc.Message);
             }
-            Console.WriteLine("Fallback to Pfim...");
 
             Pfim.IImage pfimImage = Pfim.Pfim.FromFile(filePath);
             PixelFormat format;
@@ -466,6 +470,59 @@ namespace Fo76ini
                     return ver1[i] - ver2[i];
             }
             return 0;*/
+        }
+
+
+        public static PopupNotifier CreatePopup (String title, String text)
+        {
+            // https://www.c-sharpcorner.com/article/working-with-popup-notification-in-windows-forms/
+            // https://github.com/Tulpep/Notification-Popup-Window
+
+            PopupNotifier popup = new PopupNotifier();
+            //popup.Image = Properties.Resources.info;
+            popup.AnimationDuration = 400;
+            popup.Delay = 5000;
+            popup.TitleText = "Quick Configuration: " + title;
+            popup.ContentText = text;
+
+            popup.Size = new Size(500, 200);
+
+            // https://docs.microsoft.com/de-de/dotnet/api/system.drawing.font?view=dotnet-plat-ext-3.1
+            popup.ContentFont = new Font(
+                popup.ContentFont.Name,
+                12f,
+                popup.ContentFont.Style,
+                GraphicsUnit.Pixel
+            );
+            popup.ContentPadding = new Padding(8);
+
+            popup.TitleFont = new Font(
+                popup.ContentFont.Name,
+                16f,
+                FontStyle.Bold,
+                GraphicsUnit.Pixel
+            );
+            popup.TitlePadding = new Padding(4);
+            return popup;
+        }
+
+        public static PopupNotifier CreatePopup(String title, String text, MessageBoxIcon icon)
+        {
+            var popup = Utils.CreatePopup(title, text);
+            switch (icon)
+            {
+                case MessageBoxIcon.Information:
+                    popup.Image = Properties.Resources.info;
+                    break;
+                case MessageBoxIcon.Warning:
+                    popup.Image = Properties.Resources.warning;
+                    break;
+                case MessageBoxIcon.Error:
+                    popup.Image = Properties.Resources.error;
+                    break;
+            }
+            popup.ImagePadding = new Padding(10);
+            return popup;
         }
     }
 }

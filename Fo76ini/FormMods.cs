@@ -20,6 +20,7 @@ namespace Fo76ini
         //private UILoader uiLoader = new UILoader();
 
         private int selectedIndex = -1;
+        private List<int> selectedIndices = new List<int>();
         private bool isUpdating = false;
 
         public FormMods()
@@ -45,6 +46,7 @@ namespace Fo76ini
             this.listViewMods.AllowDrop = true;
             this.listViewMods.DragEnter += new DragEventHandler(listViewMods_DragEnter);
             this.listViewMods.DragDrop += new DragEventHandler(listViewMods_DragDrop);
+            this.listViewMods.MouseUp += listViewMods_MouseUp;
 
             ManagedMods.Instance.Load();
             UpdateUI();
@@ -59,59 +61,192 @@ namespace Fo76ini
 
         private void UpdateModList()
         {
+            /*
+             * Iterate one row at a time...
+             */
             isUpdating = true;
             this.listViewMods.Items.Clear();
             for (int i = 0; i < ManagedMods.Instance.Mods.Count; i++)
             {
+                /*
+                 * Define sub-items
+                 */
                 Mod mod = ManagedMods.Instance.Mods[i];
-                String type = "";
-                String format = "";
-                String archiveName = "";
-                String rootDir = "";
+
+                bool isCompressed = mod.Compression == Archive2.Compression.None;
                 bool enabled = ManagedMods.Instance.isModEnabled(i);
-               switch (mod.Format)
+
+                var type = new ListViewItem.ListViewSubItem();
+                var format = new ListViewItem.ListViewSubItem();
+                var archiveName = new ListViewItem.ListViewSubItem();
+                var rootDir = new ListViewItem.ListViewSubItem();
+                var frozen = new ListViewItem.ListViewSubItem();
+                var compressed = new ListViewItem.ListViewSubItem();
+                compressed.Text = isCompressed ? Translation.localizedStrings["no"] : Translation.localizedStrings["yes"];
+                compressed.ForeColor = isCompressed ? Color.Black : Color.DarkGreen;
+
+
+                /*
+                 * Define styles
+                 */
+
+                Font notApplicable = new Font(
+                    format.Font.Name,
+                    format.Font.Size - 1,
+                    FontStyle.Italic,
+                    format.Font.Unit
+                );
+
+
+                /*
+                 * Fill sub-items
+                 */
+
+                // Frozen?
+                if (mod.isFrozen())
+                {
+                    frozen.Text = Translation.localizedStrings["yes"];
+                    frozen.ForeColor = Color.DarkCyan;
+                }
+                else if (mod.freeze)
+                {
+                    frozen.Text = Translation.localizedStrings["modTableFrozenPending"];
+                    frozen.ForeColor = Color.DarkBlue;
+                }
+                else
+                    frozen.Text = Translation.localizedStrings["no"];
+
+                // Archive format
+                switch (mod.Format)
                 {
                     case Mod.ArchiveFormat.General:
-                        format = Translation.localizedStrings["modsTableFormatGeneral"];
+                        format.Text = Translation.localizedStrings["modsTableFormatGeneral"];
+                        format.ForeColor = Color.OrangeRed;
                         break;
                     case Mod.ArchiveFormat.Textures:
-                        format = Translation.localizedStrings["modsTableFormatTextures"];
+                        format.Text = Translation.localizedStrings["modsTableFormatTextures"];
+                        format.ForeColor = Color.RoyalBlue;
                         break;
                     default:
-                        format = Translation.localizedStrings["modsTableFormatAutoDetect"];
+                        format.Text = Translation.localizedStrings["modsTableFormatAutoDetect"];
+                        //format.ForeColor = Color.Black;
                         break;
                 }
 
+                // Fill stuff depending on installation type
                 switch (mod.Type)
                 {
+                    /*
+                     * Bundled *.ba2 archive
+                     */
                     case Mod.FileType.BundledBA2:
-                        type = Translation.localizedStrings["modsTableTypeBundled"];
-                        format = Translation.localizedStrings["notApplicable"];
-                        archiveName = "bundled.ba2";
-                        rootDir = "Data";
+                        // Installation type
+                        type.Text = Translation.localizedStrings["modsTableTypeBundled"];
+                        type.ForeColor = Color.OrangeRed;
+
+                        // Archive format
+                        format.Text = Translation.localizedStrings["notApplicable"];
+                        format.Font = notApplicable;
+                        format.ForeColor = Color.Gray;
+
+                        // Archive name
+                        archiveName.Text = "bundled.ba2";
+                        archiveName.Font = notApplicable;
+                        archiveName.ForeColor = Color.Gray;
+
+                        // Compressed?
+                        compressed.Text = Translation.localizedStrings["notApplicable"];
+                        compressed.Font = notApplicable;
+                        compressed.ForeColor = Color.Gray;
+
+                        // Frozen?
+                        frozen.Text = Translation.localizedStrings["notApplicable"];
+                        frozen.Font = notApplicable;
+                        frozen.ForeColor = Color.Gray;
+
+                        // Root dir
+                        rootDir.Text = "Data";
+                        rootDir.Font = notApplicable;
+                        rootDir.ForeColor = Color.Gray;
                         break;
+
+                    /*
+                     * Separate *.ba2 archive
+                     */
                     case Mod.FileType.SeparateBA2:
-                        type = Translation.localizedStrings["modsTableTypeSeparate"];
-                        archiveName = mod.ArchiveName;
-                        rootDir = "Data";
+                        // Installation type
+                        if (mod.isFrozen())
+                        {
+                            type.Text = Translation.localizedStrings["modsTableTypeSeparateFrozen"];
+                            type.ForeColor = Color.Teal;
+                        }
+                        else
+                        {
+                            type.Text = Translation.localizedStrings["modsTableTypeSeparate"];
+                            type.ForeColor = Color.Indigo;
+                        }
+
+                        // Archive name
+                        archiveName.Text = mod.ArchiveName;
+
+                        // Root dir
+                        rootDir.Text = "Data";
+                        rootDir.Font = notApplicable;
+                        rootDir.ForeColor = Color.Gray;
                         break;
+
+                    /*
+                     * Loose files
+                     */
                     case Mod.FileType.Loose:
-                        type = Translation.localizedStrings["modsTableTypeLoose"];
-                        format = Translation.localizedStrings["notApplicable"];
-                        archiveName = Translation.localizedStrings["notApplicable"];
-                        rootDir = mod.RootFolder;
+                        // Installation type
+                        type.Text = Translation.localizedStrings["modsTableTypeLoose"];
+                        type.ForeColor = Color.MediumVioletRed;
+
+                        // Archive format
+                        format.Text = Translation.localizedStrings["notApplicable"];
+                        format.Font = notApplicable;
+                        format.ForeColor = Color.Gray;
+
+                        // Archive name
+                        archiveName.Text = Translation.localizedStrings["notApplicable"];
+                        archiveName.Font = notApplicable;
+                        archiveName.ForeColor = Color.Gray;
+
+                        // Compressed?
+                        compressed.Text = Translation.localizedStrings["notApplicable"];
+                        compressed.Font = notApplicable;
+                        compressed.ForeColor = Color.Gray;
+
+                        // Frozen?
+                        frozen.Text = Translation.localizedStrings["notApplicable"];
+                        frozen.Font = notApplicable;
+                        frozen.ForeColor = Color.Gray;
+
+                        // Root dir
+                        rootDir.Text = mod.RootFolder;
                         break;
                 }
 
+
+                /*
+                 * Add row with our sub-items
+                 */
+
                 ListViewItem modItem = new ListViewItem(mod.Title, i);
+                modItem.UseItemStyleForSubItems = false;
                 modItem.ForeColor = enabled ? Color.DarkGreen : Color.DarkRed;
                 modItem.SubItems.Add(type);
                 modItem.SubItems.Add(rootDir);
                 modItem.SubItems.Add(archiveName);
                 modItem.SubItems.Add(format);
+                modItem.SubItems.Add(compressed);
+                modItem.SubItems.Add(frozen);
                 modItem.Checked = enabled;
                 if (selectedIndex == i)
-                    modItem.Selected = enabled;
+                    modItem.Selected = true;
+                if (selectedIndices.Contains(i))
+                    modItem.Selected = true;
 
                 this.listViewMods.Items.Add(modItem);
             }
@@ -132,6 +267,20 @@ namespace Fo76ini
                 this.DisplayAllDone();
         }
 
+        private void UpdateSelectedIndices()
+        {
+            this.selectedIndices.Clear();
+            foreach (ListViewItem item in this.listViewMods.SelectedItems)
+                this.selectedIndices.Add(item.Index);
+        }
+
+        private void RestoreSelectedIndices()
+        {
+            this.listViewMods.Clear();
+            foreach (int index in this.selectedIndices)
+                this.listViewMods.Items[index].Selected = true;
+        }
+
         private void EnableUI()
         {
             this.tabControl1.Enabled = true;
@@ -150,7 +299,22 @@ namespace Fo76ini
 
         public void ModDetailsFeedback(Mod changedMod)
         {
-            ManagedMods.Instance.Mods[selectedIndex] = changedMod.CreateCopy();
+            if (selectedIndices.Count() == 1)
+                ManagedMods.Instance.Mods[selectedIndex] = changedMod.CreateCopy();
+            else
+            {
+                foreach (int index in selectedIndices)
+                {
+                    if (!ManagedMods.Instance.Mods[index].isFrozen())
+                    {
+                        ManagedMods.Instance.Mods[index].Type = changedMod.Type;
+                        ManagedMods.Instance.Mods[index].Compression = changedMod.Compression;
+                        ManagedMods.Instance.Mods[index].Format = changedMod.Format;
+                        ManagedMods.Instance.Mods[index].RootFolder = changedMod.RootFolder;
+                        ManagedMods.Instance.Mods[index].freeze = changedMod.freeze;
+                    }
+                }
+            }
         }
 
         public void ModDetailsClosed()
@@ -164,23 +328,36 @@ namespace Fo76ini
          * Event handler
          */
 
+        private void FormMods_Load(object sender, EventArgs e)
+        {
+            IniFiles.Instance.LoadWindowState("FormMods", this);
+            IniFiles.Instance.LoadListViewState("FormMods", this.listViewMods);
+        }
+
         private void FormMods_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
+                IniFiles.Instance.SaveWindowState("FormMods", this);
+                IniFiles.Instance.SaveListViewState("FormMods", this.listViewMods);
                 e.Cancel = true;
                 if (this.buttonModsDeploy.Enabled && (true || MsgBox.ShowID("modsOnCloseDeploymentNecessary", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                     Hide();
             }
         }
 
-        
         private void listViewMods_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listViewMods.SelectedItems.Count > 0)
                 selectedIndex = this.listViewMods.SelectedItems[0].Index;
             else
                 selectedIndex = -1;
+        }
+
+        private void listViewMods_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+                toolStripButtonModEdit_Click(sender, (EventArgs)e);
         }
 
         // Deploy
@@ -200,7 +377,6 @@ namespace Fo76ini
         private void checkBoxDisableMods_CheckedChanged(object sender, EventArgs e)
         {
             ManagedMods.Instance.nuclearWinterMode = checkBoxDisableMods.Checked;
-            IniFiles.Instance.Set(IniFile.Config, "Mods", "bDisableMods", checkBoxDisableMods.Checked);
             DisplayDeploymentNecessary();
         }
 
@@ -230,16 +406,47 @@ namespace Fo76ini
         // Edit mod details:
         private void toolStripButtonModEdit_Click(object sender, EventArgs e)
         {
-            if (selectedIndex < 0)
+            UpdateSelectedIndices();
+            int modCount = selectedIndices.Count();
+            if (modCount <= 0 || selectedIndex < 0)
             {
                 SystemSounds.Beep.Play();
                 return;
             }
 
+            if (modCount == 1)
+                this.formModDetails.UpdateUI(ManagedMods.Instance.Mods[selectedIndex], 1);
+            else
+            {
+                Mod bulkMod = new Mod();
+                Mod fallbackMod = null;
+                int realModCount = 0;
+                foreach (int index in selectedIndices)
+                {
+                    Mod mod = ManagedMods.Instance.Mods[index];
+                    if (mod.isFrozen())
+                        continue;
+                    fallbackMod = mod;
+                    bulkMod.Type = mod.Type;
+                    bulkMod.Compression = mod.Compression;
+                    bulkMod.Format = mod.Format;
+                    bulkMod.freeze = false;
+                    realModCount++;
+                }
+                bulkMod.RootFolder = "Data";
+                if (realModCount == 0)
+                {
+                    SystemSounds.Beep.Play();
+                    return;
+                }
+                else if (realModCount == 1)
+                    this.formModDetails.UpdateUI(fallbackMod != null ? fallbackMod : ManagedMods.Instance.Mods[selectedIndex], 1);
+                else
+                    this.formModDetails.UpdateUI(bulkMod, realModCount);
+            }
+
             DisableUI();
-            //Utils.SetFormPosition(this.formModDetails, this.Location.X + 60, this.Location.Y + 30);
             Utils.SetFormPosition(this.formModDetails, this.Location.X + (int)(this.Width / 2 - this.formModDetails.Width / 2), this.Location.Y + (int)(this.Height / 2 - this.formModDetails.Height / 2));
-            this.formModDetails.UpdateUI(ManagedMods.Instance.Mods[selectedIndex]);
             this.formModDetails.Show();
         }
 
@@ -251,13 +458,17 @@ namespace Fo76ini
                 MsgBox.ShowID("modsGamePathNotSet", MessageBoxIcon.Information);
                 return;
             }
-            if (selectedIndex >= 0)
+            UpdateSelectedIndices();
+            if (selectedIndices.Count > 0)
             {
-                String path = ManagedMods.Instance.Mods[selectedIndex].GetManagedPath();
-                if (Directory.Exists(path))
-                    Utils.OpenExplorer(path);
-                else
-                    MsgBox.Get("modDirNotExist").FormatText(path).Show(MessageBoxIcon.Error);
+                foreach (int index in selectedIndices)
+                {
+                    String path = ManagedMods.Instance.Mods[index].GetManagedPath();
+                    if (Directory.Exists(path))
+                        Utils.OpenExplorer(path);
+                    else
+                        MsgBox.Get("modDirNotExist").FormatText(path).Show(MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -270,9 +481,26 @@ namespace Fo76ini
         // Move up
         private void toolStripButtonMoveUp_Click(object sender, EventArgs e)
         {
-            if (selectedIndex < 0)
+            /*if (selectedIndex < 0)
                 return;
-            selectedIndex = ManagedMods.Instance.MoveModUp(selectedIndex);
+            selectedIndex = ManagedMods.Instance.MoveModUp(selectedIndex);*/
+            UpdateSelectedIndices();
+            if (selectedIndices.Count <= 0)
+                return;
+            else if (selectedIndices.Count == 1)
+            {
+                selectedIndex = ManagedMods.Instance.MoveModUp(selectedIndex);
+                selectedIndices.Clear();
+            }
+            else
+            {
+                selectedIndex = -1;
+                selectedIndices = selectedIndices.OrderBy(i => i).ToList();
+                List<int> newSelectedIndices = new List<int>();
+                foreach (int index in selectedIndices)
+                    newSelectedIndices.Add(ManagedMods.Instance.MoveModUp(index));
+                selectedIndices = newSelectedIndices;
+            }
             UpdateModList();
             UpdateLabel();
         }
@@ -280,9 +508,26 @@ namespace Fo76ini
         // Move down
         private void toolStripButtonMoveDown_Click(object sender, EventArgs e)
         {
-            if (selectedIndex < 0)
+            /*if (selectedIndex < 0)
                 return;
-            selectedIndex = ManagedMods.Instance.MoveModDown(selectedIndex);
+            selectedIndex = ManagedMods.Instance.MoveModDown(selectedIndex);*/
+            UpdateSelectedIndices();
+            if (selectedIndices.Count <= 0)
+                return;
+            else if (selectedIndices.Count == 1)
+            {
+                selectedIndex = ManagedMods.Instance.MoveModDown(selectedIndex);
+                selectedIndices.Clear();
+            }
+            else
+            {
+                selectedIndex = -1;
+                selectedIndices = selectedIndices.OrderByDescending(i => i).ToList();
+                List<int> newSelectedIndices = new List<int>();
+                foreach (int index in selectedIndices)
+                    newSelectedIndices.Add(ManagedMods.Instance.MoveModDown(index));
+                selectedIndices = newSelectedIndices;
+            }
             UpdateModList();
             UpdateLabel();
         }
@@ -310,18 +555,35 @@ namespace Fo76ini
         // Check/uncheck all
         private void toolStripButtonCheckAll_Click(object sender, EventArgs e)
         {
-            selectedIndex = -1;
+            UpdateSelectedIndices();
             bool state = false;
-            foreach (ListViewItem item in listViewMods.Items)
+            if (this.listViewMods.SelectedItems.Count <= 1)
             {
-                if (!item.Checked)
+                selectedIndex = -1;
+                foreach (ListViewItem item in this.listViewMods.Items)
                 {
-                    state = true;
-                    break;
+                    if (!item.Checked)
+                    {
+                        state = true;
+                        break;
+                    }
                 }
+                foreach (Mod mod in ManagedMods.Instance.Mods)
+                    mod.isEnabled = state;
             }
-            foreach (Mod mod in ManagedMods.Instance.Mods)
-                mod.isEnabled = state;
+            else
+            {
+                foreach (ListViewItem item in this.listViewMods.SelectedItems)
+                {
+                    if (!item.Checked)
+                    {
+                        state = true;
+                        break;
+                    }
+                }
+                foreach (ListViewItem item in this.listViewMods.SelectedItems)
+                    ManagedMods.Instance.Mods[item.Index].isEnabled = state;
+            }
             UpdateModList();
             UpdateLabel();
         }
@@ -466,7 +728,7 @@ namespace Fo76ini
         // Help > Show README
         private void showREADMEToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://felisdiligens.github.io/Fo76ini/ManageMods.html");
+            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/mods/546"); // https://felisdiligens.github.io/Fo76ini/ManageMods.html
         }
 
         // Tools > Repair *.dds files
@@ -659,7 +921,7 @@ namespace Fo76ini
             });
         }
 
-        private void Deploy()
+        public void Deploy()
         {
             Invoke(() => DisableUI());
             Invoke(() => ProgressBarContinuous(0));
@@ -670,9 +932,17 @@ namespace Fo76ini
                     Invoke(() => { if (percent >= 0) { ProgressBarContinuous(percent); } else { ProgressBarMarquee(); } });
                 },
                 () => {
-                    Invoke(() => ProgressBarContinuous(100));
-                    Invoke(() => DisplayAllDone());
-                    Invoke(() => EnableUI());
+                    Invoke(() => {
+                        UpdateModList();
+                        ProgressBarContinuous(100);
+                        DisplayAllDone();
+                        EnableUI();
+
+                        if (ManagedMods.Instance.nuclearWinterMode)
+                            MsgBox.Get("modsDisabledDone").Popup(MessageBoxIcon.Information);
+                        else
+                            MsgBox.Get("modsDeployedDone").Popup(MessageBoxIcon.Information);
+                    });
                 }
             );
         }
@@ -688,10 +958,13 @@ namespace Fo76ini
                     Invoke(() => { if (percent >= 0) { ProgressBarContinuous(percent); } else { ProgressBarMarquee(); } });
                 },
                 (corruptFiles) => {
-                    Invoke(() => ProgressBarContinuous(100));
-                    Invoke(() => DisplayAllDone());
-                    Invoke(() => RepairDone(corruptFiles));
-                    Invoke(() => EnableUI());
+                    Invoke(() => {
+                        ProgressBarContinuous(100);
+                        //DisplayAllDone();
+                        RepairDone(corruptFiles);
+                        EnableUI();
+                        MsgBox.Get("modsRepairDDSDone").Popup(MessageBoxIcon.Information);
+                    });
                 }
             );
         }
@@ -700,7 +973,8 @@ namespace Fo76ini
         {
             if (corruptFiles.Count > 0)
             {
-                Log log = new Log("repair.log.txt");
+                Log log = new Log(Log.GetFilePath("repair.log.txt"));
+                log.WriteLine($"Some textures couldn't be repaired:");
                 foreach (String path in corruptFiles)
                     log.WriteLine(path);
                 log.WriteLine("");
@@ -725,13 +999,13 @@ namespace Fo76ini
         private void ProgressBarMarquee()
         {
             this.progressBarMods.Style = ProgressBarStyle.Marquee;
-            this.progressBarMods.MarqueeAnimationSpeed = 15;
+            //this.progressBarMods.MarqueeAnimationSpeed = 15;
         }
 
         private void ProgressBarContinuous(int value)
         {
             this.progressBarMods.Style = ProgressBarStyle.Continuous;
-            this.progressBarMods.Value = value;
+            this.progressBarMods.Value = Utils.Clamp(value, 0, 100);
         }
 
         private void HideLabel()

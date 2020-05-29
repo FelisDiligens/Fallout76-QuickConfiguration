@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -15,16 +16,22 @@ namespace Fo76ini
 {
     partial class Form1
     {
-        private String languageFolder = ".\\languages";
+        private String languageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "languages");
         private List<String> languageISOs;
         private List<String> languageNames;
+        private bool englishXMLFileGenerated = false;
 
         private void LookupLanguages()
         {
-            // First of all, generate a English XML file.
             if (!Directory.Exists(languageFolder))
                 Directory.CreateDirectory(languageFolder);
-            GenerateEnglishXMLFile();
+
+            // Generate a English XML file, if that wasn't done already:
+            if (!englishXMLFileGenerated)
+            {
+                GenerateEnglishXMLFile();
+                englishXMLFileGenerated = true;
+            }
 
             this.languageISOs = new List<String> { "en-US" };
             this.languageNames = new List<String> { "English (USA)" };
@@ -44,7 +51,7 @@ namespace Fo76ini
                             if (lang.Attribute("name") != null &&
                                 lang.Attribute("iso") != null)
                             {
-                                if (lang.Attribute("iso").Value != "en-US")
+                                if (lang.Attribute("iso").Value != "en-US" && !languageISOs.Contains(lang.Attribute("iso").Value))
                                 {
                                     this.languageISOs.Add(lang.Attribute("iso").Value);
                                     this.languageNames.Add(lang.Attribute("name").Value);
@@ -62,6 +69,7 @@ namespace Fo76ini
                     }
                 }
             }
+            this.comboBoxLanguage.Items.Clear();
             this.comboBoxLanguage.Items.AddRange(languageNames.ToArray<String>());
 
             // Change the language, if "sLanguage=..." is set:
@@ -411,6 +419,18 @@ namespace Fo76ini
                 return;
             }
 
+            // Check version
+            String languageVersion = "1.0.0";
+            if (xmlDoc.Element("Language").Attribute("version") != null)
+            {
+                languageVersion = xmlDoc.Element("Language").Attribute("version").Value;
+            }
+            int cmp = Utils.CompareVersions(VERSION, languageVersion);
+            if (cmp > 0)
+                this.labelOutdatedLanguage.Visible = true;
+            else
+                this.labelOutdatedLanguage.Visible = false;
+
             // Change title
             XElement xmlForm1 = xmlDoc.Root.Element("Form1");
             if (xmlForm1 != null && xmlForm1.Attribute("title") != null)
@@ -562,6 +582,35 @@ namespace Fo76ini
             {
                 MessageBox.Show($"{path} couldn't be loaded.\nSystem.Xml.XmlException: {ex.Message}", $"Couldn't switch to {this.languageNames[this.comboBoxLanguage.SelectedIndex]}", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void buttonDownloadLanguages_Click(object sender, EventArgs e)
+        {
+            this.buttonDownloadLanguages.Enabled = false;
+            // Download / update languages:
+            try
+            {
+                System.Net.WebClient wc = new System.Net.WebClient();
+                wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.BypassCache);
+
+                byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/list.txt");
+                String encoded = Encoding.UTF8.GetString(raw).Trim();
+
+                String[] list = encoded.Split('\n', ',');
+
+                foreach (String file in list)
+                {
+                    wc.DownloadFile("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/" + file, Path.Combine(languageFolder, file));
+                }
+
+                MsgBox.Get("downloadLanguagesFinished").FormatText(String.Join(", ", list)).Popup(MessageBoxIcon.Information);
+            }
+            catch (WebException ex)
+            {
+                MsgBox.Get("downloadLanguagesFailed").FormatText(ex.ToString()).Popup(MessageBoxIcon.Error);
+            }
+            this.buttonDownloadLanguages.Enabled = true;
+            LookupLanguages();
         }
     }
 }

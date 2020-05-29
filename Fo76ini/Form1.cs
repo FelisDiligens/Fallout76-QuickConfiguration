@@ -14,7 +14,7 @@ namespace Fo76ini
 {
     public partial class Form1 : Form
     {
-        public const String VERSION = "1.5.2";
+        public const String VERSION = "1.6";
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
@@ -124,6 +124,9 @@ namespace Fo76ini
             translatedMessageBoxes["runGameToGenerateINI"] = new MessageBoxData("Fallout76.ini and Fallout76Prefs.ini not found", "Please run the game first before using this tool.\nThe game will generate those files on first start-up.");
             */
             MsgBox.AddSharedMessageBoxes();
+
+            // Event handler:
+            this.FormClosing += this.Form1_FormClosing;
         }
 
         /// <summary>
@@ -182,18 +185,38 @@ namespace Fo76ini
             uiLoader.Update();
 
             CheckVersion();
+
+
+            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false))
+            {
+                Utils.SetFormPosition(this.formMods, this.Location.X + this.Width, this.Location.Y);
+                this.formMods.Show();
+            }
+
+            IniFiles.Instance.LoadWindowState("Form1", this);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                IniFiles.Instance.SaveWindowState("Form1", this);
+                if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAutoApply", false))
+                    ApplyChanges();
+            }
         }
 
         private void CheckVersion()
         {
             this.labelConfigVersion.Text = VERSION;
-            using (StreamWriter f = new StreamWriter("VERSION"))
-                f.Write(VERSION);
+            /*using (StreamWriter f = new StreamWriter("VERSION"))
+                f.Write(VERSION);*/
 
             String latestVersion = VERSION;
             try
             {
                 System.Net.WebClient wc = new System.Net.WebClient();
+                // wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.BypassCache);
                 byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/VERSION");
                 latestVersion = Encoding.UTF8.GetString(raw).Trim();
             }
@@ -255,7 +278,7 @@ namespace Fo76ini
             );
 
             /*
-             * Underneath tabcontrol
+             * Settings
              */
 
             // Game Edition
@@ -267,11 +290,19 @@ namespace Fo76ini
             );
 
             // Nuclear winter mode
-            uiLoader.LinkBool(
-                this.checkBoxNWMode,
-                IniFile.Config, "Preferences", "bNWMode",
-                false
-            );
+            uiLoader.LinkBool(this.checkBoxNWMode, IniFile.Config, "Preferences", "bNWMode", false);
+
+            // Close the tool when the game is launched
+            uiLoader.LinkBool(this.checkBoxQuitOnGameLaunch, IniFile.Config, "Preferences", "bQuitOnLaunch", false);
+
+            // Automatically apply changes when tool is closed or game is launched
+            uiLoader.LinkBool(this.checkBoxAutoApply, IniFile.Config, "Preferences", "bAutoApply", false);
+
+            // Don't ask me, when "Apply" is clicked.
+            uiLoader.LinkBool(this.checkBoxSkipBackupQuestion, IniFile.Config, "Preferences", "bSkipBackupQuestion", false);
+
+            // Open mod manager when tool is launched.
+            uiLoader.LinkBool(this.checkBoxOpenManageModsOnLaunch, IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false);
 
 
             /*
@@ -718,25 +749,30 @@ namespace Fo76ini
          **************************************************************
          */
 
+        public void ApplyChanges()
+        {
+            ColorUi2Ini();
+            IniFiles.Instance.SaveAll(this.checkBoxReadOnly.Checked);
+            IniFiles.Instance.ResolveNWMode();
+        }
+
         // "Apply" button:
         private void buttonApply_Click(object sender, EventArgs e)
         {
             // Show a messagebox to ask the user, if they want to make a backup.
-
-            System.Media.SystemSounds.Asterisk.Play();
-            DialogResult res = MsgBox.Get("backupAndSave").Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            if (res == DialogResult.Cancel)
-                return;
-            else if (res == DialogResult.Yes)
-                // Make backups
-                IniFiles.Instance.BackupAll();
+            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bSkipBackupQuestion", false))
+            {
+                DialogResult res = MsgBox.Get("backupAndSave").Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (res == DialogResult.Cancel)
+                    return;
+                else if (res == DialogResult.Yes)
+                    // Make backups
+                    IniFiles.Instance.BackupAll();
+            }
 
             // Save stuff to INI
-            ColorUi2Ini();
-            IniFiles.Instance.SaveAll(this.checkBoxReadOnly.Checked);
-            MsgBox.Get("changesApplied").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            IniFiles.Instance.ResolveNWMode();
+            ApplyChanges();
+            MsgBox.Get("changesApplied").Popup(MessageBoxIcon.Information);
         }
 
         // [ ] "Make *.ini files read-only" checkbox:
@@ -749,25 +785,31 @@ namespace Fo76ini
         private void buttonLaunchGame_Click(object sender, EventArgs e)
         {
             uint uGameEdition = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uGameEdition", 0);
+            String process = null;
             switch (uGameEdition)
             {
                 case (uint)GameEdition.BethesdaNet:
-                    System.Diagnostics.Process.Start("bethesdanet://run/20");
-                    return;
+                    process = "bethesdanet://run/20";
+                    break;
                 case (uint)GameEdition.Steam:
-                    System.Diagnostics.Process.Start("steam://run/1151340"); // "steam://runappid/1151340"
-                    return;
+                    process = "steam://run/1151340"; // "steam://runappid/1151340"
+                    break;
                 default:
                     MsgBox.Get("chooseGameEdition").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
             }
+            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAutoApply", false))
+                ApplyChanges();
+            System.Diagnostics.Process.Start(process);
+            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bQuitOnLaunch", false))
+                this.Close();
         }
 
         // "Get the latest version from NexusMods" link:
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             linkLabelDownloadPage.LinkVisited = true;
-            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/mods/546");
+            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/mods/546?tab=files");
         }
 
 
@@ -800,10 +842,10 @@ namespace Fo76ini
             this.formMods.Show();
         }
 
-        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        /*private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://felisdiligens.github.io/Fo76ini/index.html");
-        }
+        }*/
 
         private void buttonFixIssuesEarlierVersion_Click(object sender, EventArgs e)
         {
@@ -826,7 +868,7 @@ namespace Fo76ini
 
             // IniFiles.Instance.Remove(IniFile.F76Custom, "Controls", "bMouseAcceleration");
 
-            MsgBox.ShowID("oldValuesResetToDefault", MessageBoxIcon.Information);
+            MsgBox.Get("oldValuesResetToDefault").Popup(MessageBoxIcon.Information);
         }
 
         /*
@@ -849,6 +891,19 @@ namespace Fo76ini
         private void checkBoxNWMode_CheckedChanged(object sender, EventArgs e)
         {
             IniFiles.Instance.nuclearWinterMode = checkBoxNWMode.Checked;
+            if (IniFiles.Instance.nuclearWinterMode && !ManagedMods.Instance.nuclearWinterMode)
+            {
+                if (MsgBox.ShowID("nwModeEnabledButModsAreDeployed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ManagedMods.Instance.nuclearWinterMode = IniFiles.Instance.nuclearWinterMode;
+
+                    Utils.SetFormPosition(this.formMods, this.Location.X + this.Width, this.Location.Y);
+                    this.formMods.Show();
+                    this.formMods.UpdateUI();
+
+                    this.formMods.Deploy();
+                }
+            }
         }
 
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -856,6 +911,55 @@ namespace Fo76ini
             // https://stackoverflow.com/questions/8185747/how-can-i-unmask-password-text-box-and-mask-it-back-to-password
             this.textBoxPassword.UseSystemPasswordChar = !this.checkBoxShowPassword.Checked;
             this.textBoxPassword.PasswordChar = !this.checkBoxShowPassword.Checked ? '\u2022' : '\0';
+        }
+
+        private void buttonDetectResolution_Click(object sender, EventArgs e)
+        {
+            int[] res = Utils.GetDisplayResolution();
+            String resStr = $"{res[0]}x{res[1]}";
+
+            ComboBoxContainer resolution = ComboBoxContainer.Get("Resolution");
+            if (resolution.Contains(resStr))
+            {
+                int index = resolution.FindIndex(resStr);
+                resolution.SelectedIndex = index;
+            }
+            else
+            {
+                resolution.SelectedIndex = 0;
+            }
+            this.numCustomResW.Value = res[0];
+            this.numCustomResH.Value = res[1];
+        }
+
+        private void timerCheckFiles_Tick(object sender, EventArgs e)
+        {
+            // Check every 5 seconds, if files have been modified:
+            if (IniFiles.Instance.FilesHaveBeenModified())
+            {
+                IniFiles.Instance.UpdateLastModifiedDates();
+                MsgBox.Get("iniFilesModified").Popup(MessageBoxIcon.Warning);
+            }
+        }
+
+        private void checkBoxQuitOnGameLaunch_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bQuitOnLaunch", this.checkBoxQuitOnGameLaunch.Checked);
+        }
+
+        private void checkBoxAutoApply_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bAutoApply", this.checkBoxAutoApply.Checked);
+        }
+
+        private void checkBoxSkipBackupQuestion_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bSkipBackupQuestion", this.checkBoxSkipBackupQuestion.Checked);
+        }
+
+        private void checkBoxOpenManageModsOnLaunch_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", this.checkBoxOpenManageModsOnLaunch.Checked);
         }
     }
 }
