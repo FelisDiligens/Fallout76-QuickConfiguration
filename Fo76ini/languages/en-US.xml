@@ -16,7 +16,7 @@
     <String text="Separate" id="modsTableTypeSeparate" />
     <String text="Separate (Frozen)" id="modsTableTypeSeparateFrozen" />
     <String text="Loose" id="modsTableTypeLoose" />
-    <String text="Upon deployment" id="modTableFrozenUponDeployment" />
+    <String text="Pending" id="modTableFrozenPending" />
     <String text="Edit {0}" id="modDetailsTitle" />
     <String text="Edit {0} mods" id="modDetailsTitleBulk" />
     <String text="N/A" id="notApplicable" />
@@ -113,8 +113,8 @@ Please download this tool again, or install Archive2 manually.</Messagebox>
     <Messagebox title="Wrong path" id="modsGamePathInvalid">Wrong game folder path.</Messagebox>
     <Messagebox title="Mod {0} couldn't be deployed." id="modsDeployErrorModDirNotFound">Directory {0} does not exist.
 Please restart the mod manager and add the mod again.</Messagebox>
-    <Messagebox title="Mod {0} couldn't be deployed." id="modsDeployErrorBA2RootIsNotData">Directory {0} does not exist.
-Please restart the mod manager and add the mod again.</Messagebox>
+    <Messagebox title="Mod {0} couldn't be deployed." id="modsDeployErrorBA2RootIsNotData">The root folder has to be set to ".\Data" for mods, that are to be installed as a *.ba2 archive.
+Please fix the "Install into" setting and try again.</Messagebox>
     <Messagebox title="Are you sure?" id="modsDeleteBtn">Are you sure you want to delete the mod {0}?</Messagebox>
     <Messagebox title="Are you sure?" id="modsDeleteBulkBtn">Are you sure you want to delete {0} mods?</Messagebox>
     <Messagebox title="Archive couldn't be uncompressed" id="modsExtractUnknownError">{0}</Messagebox>
@@ -159,6 +159,7 @@ Do you want to disable them now?</Messagebox>
       </Tab>
       <Tab text="Settings" id="tabPageSettings">
         <Group text="Localization" id="groupBoxLocalization">
+          <Label text="This language is out-dated.\nSome elements might not be translated yet." id="labelOutdatedLanguage" />
           <Label text="Language:" id="labelLanguage" />
           <Button text="Download / update languages" id="buttonDownloadLanguages" />
         </Group>
@@ -189,7 +190,6 @@ Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
           <Radiobutton text="Steam" id="radioButtonEditionSteam" />
           <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
         </Group>
-        <Link text="Open README" id="linkLabel1" />
       </Tab>
       <Tab text="General" id="tabPageGeneral">
         <Group text="Camera" id="groupBoxCamera">
@@ -671,6 +671,7 @@ Affected files: Fallout76Prefs.ini</Tooltip>
           <Column>Install into</Column>
           <Column>Archive name</Column>
           <Column>Archive format</Column>
+          <Column>Compressed?</Column>
           <Column>Frozen?</Column>
         </ListView>
       </Tab>
