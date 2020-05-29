@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language name="Français (France)" iso="fr-FR" author="Christophe Noret (Re4veN)">
+  <Strings>
+    <String text="Déploiement nécessaire" id="modsDeploymentNecessary" />
+    <String text="Terminé" id="modsAllDone" />
+  </Strings>
+  <Dropdowns>
+    <Dropdown id="Resolution">
+      <Option>Personnalisé</Option>
+      <Option>640x480</Option>
+      <Option>800x600</Option>
+      <Option>1280x720</Option>
+      <Option>1280x768</Option>
+      <Option>1152x864</Option>
+      <Option>1440x900</Option>
+      <Option>1600x900</Option>
+      <Option>1280x960</Option>
+      <Option>1920x1080</Option>
+      <Option>2560x1080</Option>
+      <Option>3440x1440</Option>
+      <Option>2560x1440</Option>
+      <Option>3200x1800</Option>
+      <Option>5120x2160</Option>
+      <Option>5120x2880</Option>
+    </Dropdown>
+    <Dropdown id="DisplayMode">
+      <Option>Plein écran</Option>
+      <Option>Fenêtré</Option>
+      <Option>Fenêtré sans bordures</Option>
+      <Option>Plein écran fenêtré</Option>
+    </Dropdown>
+    <Dropdown id="AntiAliasing">
+      <Option>TAA (Par défaut)</Option>
+      <Option>FXAA</Option>
+      <Option>Désactivé</Option>
+    </Dropdown>
+    <Dropdown id="AnisotropicFiltering">
+      <Option>Aucun</Option>
+      <Option>2x</Option>
+      <Option>4x</Option>
+      <Option>8x (Par défaut)</Option>
+      <Option>16x</Option>
+    </Dropdown>
+    <Dropdown id="ShadowTextureResolution">
+      <Option>1024 = Bas</Option>
+      <Option>2048 = Haut (Par défaut)</Option>
+      <Option>4096 = Ultra</Option>
+    </Dropdown>
+    <Dropdown id="ShadowBlurriness">
+      <Option>1x</Option>
+      <Option>2x</Option>
+      <Option>3x = Par défaut, recommandé</Option>
+    </Dropdown>
+  </Dropdowns>
+  <Messageboxes>
+    <Messagebox title="Créer une sauvegarde" id="backupAndSave">Voulez-vous créer une sauvegarde avant d'appliquer tous les changements?
+
+    Appuyez sur "Oui" pour créer une sauvegarde et enregistrer.
+    Appuyez sur "Non" pour enregistrer sans sauvegarde.
+    Appuyer sur "Annuler" pour annuler vos changements.</Messagebox>
+    <Messagebox title="Modification appliquées" id="changesApplied">Les modifications ont été appliquées.Vous pouvez maintenant lancer le jeu.</Messagebox>
+    <Messagebox title="Version du jeu" id="chooseGameEdition">Veuillez choisir votre version du jeu dans l'onglet Général.</Messagebox>
+    <Messagebox title="Fallout76.ini et Fallout76Prefs.ini introuvables." id="runGameToGenerateINI">Veuillez démarrer le jeu avant d'utiliser cet outil.
+Le jeu va générer ces fichiers lors du premier démarrage.</Messagebox>
+    <Messagebox title="Done" id="oldValuesResetToDefault">Certaines valeurs ont été réinitialisées par défaut.
+Seules les valeurs instables des versions précédentes sont affectées.
+N'oubliez pas de cliquer sur "Appliquer".</Messagebox>
+    <Messagebox title="Erreur lors du chargement de l'interface utilisateur" id="onLoadFuncException">{0} exception survenue lors du chargement de L'IU.
+Cela peut être dû à des fichiers ini corrompus.
+Certains éléments de l'IU peuvent ne pas fonctionner correctement.
+
+{1}</Messagebox>
+    <Messagebox title="Archive2 necéssaire" id="modsArchive2NotSet">Veuillez télécharger Archive2 et définir le chemin de décompression des archives *ba2.</Messagebox>
+    <Messagebox title="Localisation du jeu non définie" id="modsGamePathNotSet">Veuillez définir le chemin d'accès vers le jeu (Localisation de Fallout76.exe).</Messagebox>
+    <Messagebox title="Chemin incorrect" id="modsArchive2Invalid">Chemin vers Archive2.exe incorrect.
+Veuillez sélectionner Archive2.exe</Messagebox>
+    <Messagebox title="Chemin incorrect" id="modsGamePathInvalid">Chemin vers le jeu incorrect.</Messagebox>
+    <Messagebox title="Le mod {0} n'a pas pu être déployé." id="modsDeployErrorModDirNotFound">Le répertoire {0} n'existe pas.
+Veuillez redémarrer le gestionnaire de mods et ajouter à nouveau le mod.</Messagebox>
+    <Messagebox title="Le mod {0} n'a pas pu être déployé." id="modsDeployErrorBA2RootIsNotData">Le répertoire {0} n'existe pas.
+Veuillez redémarrer le gestionnaire de mods et ajouter à nouveau le mod.</Messagebox>
+    <Messagebox title="Êtes-vous sûr?" id="modsDeleteBtn">Voulez-vous vraiment supprimer le mod {0} ?</Messagebox>
+    <Messagebox title="L'archive n'a pas pu être décompressée" id="modsExtractUnknownError">{0}</Messagebox>
+    <Messagebox title="L'archive n'a pas pu être décompressée" id="modsExtractUnknownErrorText">Veuillez décompresser l'archive et ajouter le mod en tant que dossier.</Messagebox>
+    <Messagebox title="L'archive 7-Zip n'a pas pu être décompressée" id="modsExtractUnknownError7zip">{0} : Le fichier n'est pas pris en charge.</Messagebox>
+    <Messagebox title="Format de fichier non pris en charge" id="modsArchiveTypeNotSupported">{0} : Le fichier n'est pas pris en charge.
+Veuillez décompresser l'archive et ajouter le mod en tant que dossier.</Messagebox>
+    <Messagebox title="Yeah !" id="modsNoConflictingFiles">Aucun conflit de fichiers détecté.</Messagebox>
+    <Messagebox title="Déploiement nécessaire" id="modsDeploymentNecessary">Pour cette action, vous devez d'abord déployer tous les mods.</Messagebox>
+    <Messagebox title="Êtes-vous sûr?" id="modsOnCloseDeploymentNecessary">Vous n'avez pas déployé les modifications que vous avez apportées.
+Voulez-vous vraiment fermer le gestionnaire de mods?</Messagebox>
+    <Messagebox title="Le dossier du Mod n'existe pas" id="modDirNotExist">Le chemin {0} n'existe pas.
+Le dossier mod a été supprimé sans supprimer l'entrée du manifeste.</Messagebox>
+    <Messagebox title="Entrée manifest.xml non valide" id="modsInvalidManifestEntry">Une entrée de mod n'est pas valide et a été ignorée.
+Erreur: {0}</Messagebox>
+    <Messagebox title="Entrée manifest.xml non valide" id="modsInvalidManifestRoot">La balise &lt;Mods&gt; a des attributs non valides.
+Erreur: {0}</Messagebox>
+    <Messagebox title="Importer des mods installés manuellement?" id="modsImportQuestion">Voulez-vous vraiment ajouter des mods installés en dehors du gestionnaire de mods?</Messagebox>
+    <Messagebox title="Mods en conflit" id="modsSameArchiveName">Certains mods ont le même nom d'archive: "{0}".
+Nom du mod en conflit: {1}</Messagebox>
+  </Messageboxes>
+  <Form1 title="Fallout 76 Configuration Rapide">
+    <Button text="Démarrer le jeu" id="buttonLaunchGame" />
+    <TabContainer id="tabControl1">
+      <Tab text="Info" id="tabPageInfo">
+        <Button text="Corriger les paramètres de la v1.3.1 et antérieures" id="buttonFixIssuesEarlierVersion" />
+        <Link text="Ouvrir le fichier LISEZ-MOI (Anglais)" id="linkLabel1" />
+        <Button text="Gérer les Mods" id="buttonManageMods" />
+        <Label text="Traduction par :" id="labelTranslationBy" />
+        <Label text="Auteur:" id="labelAuthor" />
+        <Label text="Version:" id="labelVersion" />
+        <Label text="Cet outil vous permet de modifier rapidement les paramètres INI.\nConseil : Passez votre curseur sur une option si vous\n n'êtes pas sûr de ce qu'elle fait. " id="labelDescription" />
+        <Label text="Langue:" id="labelLanguage" />
+        <Link text="Obtenir la dernière version depuis NexusMods" id="linkLabelDownloadPage" />
+        <Label text="Fallout 76 Configuration Rapide" id="labelTitle" />
+      </Tab>
+      <Tab text="Général" id="tabPageGeneral">
+        <Group text="Interface" id="groupBoxInterface">
+          <Checkbox text="Afficher la boussole en jeu" id="checkBoxShowCompass">
+            <Tooltip>Valeurs affectées: bShowCompass
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Afficher les nombres de dégâts flottants dans Nuclear Winter" id="checkBoxShowDamageNumbersNW">
+            <Tooltip>Valeurs affectées: bShowDamageNumbers
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Afficher les nombres de dégâts flottants en mode Aventure" id="checkBoxShowDamageNumbersA">
+            <Tooltip>Valeurs affectées: bShowDamageNumbers
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Afficher les sous-titres généraux" id="checkBoxGeneralSubtitles">
+            <Tooltip>Valeurs affectées: bGeneralSubtitles
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Afficher les sous-titres de dialogue" id="checkBoxDialogueSubtitles">
+            <Tooltip>Valeurs affectées: bDialogueSubtitles
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Édition du jeu" id="groupBoxGameEdition">
+          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
+          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+        </Group>
+        <Group text="Menu Principal" id="groupBoxMainMenu">
+          <Checkbox text="Afficher l'écran des nouveautées au démarrage" id="checkBoxShowSplash">
+            <Tooltip>Si elle n'est pas cochée, le jeu ne vous dérangera pas avec les nouveautées au démarrage.
+
+Valeurs affectées: bShowSplash
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Jouer la vidéo d'introduction" id="checkBoxIntroVideos">
+            <Tooltip>Lorsque cette option n'est pas cochée, le jeu démarre sans afficher la vidéo du logo Bethesda.
+
+Valeurs affectées: sIntroSequence, uMainMenuDelayBeforeAllowSkip
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Jouer la musique dans le menu principal" id="checkBoxMainMenuMusic">
+            <Tooltip>Si elle n'est pas cochée, le jeu ne jouera pas de musique de fond dans le menu principal.
+
+Valeurs affectées: bPlayMainMenuMusic
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
+      </Tab>
+      <Tab text="Affichage" id="tabPageDisplay">
+        <Checkbox text="Toujours actif" id="checkBoxAlwaysActive">
+          <Tooltip>Désactivez-le si vous souhaitez que le jeu se mette en pause si une autre fenêtre est devant.
+
+Valeurs affectées: bAlwaysActive
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+        </Checkbox>
+        <Checkbox text="Fenêtre la plus haute" id="checkBoxTopMostWindow">
+          <Tooltip>Cochez cette case pour garder la fenêtre du jeu au premier plan.
+REMARQUE: cela vous empêchera de pouvoir Alt + Tab sur des moniteurs simples.
+
+Valeurs affectées: bTopMostWindow
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+        </Checkbox>
+        <Group text="Champ de vision (FOV)" id="groupBoxFieldOfView">
+          <Label text="FOV monde (3ème personne)" id="labelWorldFOV">
+            <Tooltip>Change le champ de vision de la vue à la troisième personne.
+
+Par défaut: 80
+Valeurs affectées: fDefaultWorldFOV
+Fichiers concernés: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+          </Label>
+          <Label text="FOV 1ère personne:" id="labelFirstPersonFOV">
+            <Tooltip>Change le champ de vision de la vue à la 1ère personne.
+
+Par défaut: 80
+Valeurs affectées: fDefault1stPersonFOV
+Fichiers concernés: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+          </Label>
+        </Group>
+        <Number id="numCustomResH">
+          <Tooltip>Modifie la résolution verticale (hauteur).
+
+Valeurs affectées: iSize H</Tooltip>
+        </Number>
+        <Label text="X" id="labelCustomResolutionSpacer" />
+        <Label text="Mode d'affichage:" id="labelDisplayMode">
+          <Tooltip>Change le mode d'affichage.
+
+
+Plein écran: Mode plein écran
+
+Fenêtré: Mode fenêtré avec bordures
+
+Fenêtré sans bordures: Assurez-vous que la résolution correspond bien à la résolution de votre écran.
+
+Fenêtré sans bordures (plein écran): la fenêtre sera maximisée pour s'adapter à votre écran.
+Semble pixelisé si la résolution est faible.
+
+Valeurs affectées: bFull Screen, bBorderless
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+        </Label>
+        <Number id="numCustomResW">
+          <Tooltip>Modifie la résolution horizontale (largeur).
+
+Valeurs affectées: iSize W</Tooltip>
+        </Number>
+        <Label text="Résolution:" id="labelResolution">
+          <Tooltip>Modifie la résolution.
+Le définir sur "Personnalisée" vous permettra de définir vos propres valeurs.
+
+Valeurs affectées: iSize W, iSize H
+Fichiers concernés: Fallout76Prefsini</Tooltip>
+        </Label>
+        <Label text="Résolution personnalisée:" id="labelCustomResolution">
+          <Tooltip>Réglez la résolution sur "Personnalisée" pour que cette option devienne disponible.</Tooltip>
+        </Label>
+      </Tab>
+      <Tab text="Graphismes" id="tabPageGraphics">
+        <Group text="Herbe" id="groupBoxGrass">
+          <Slider id="sliderGrassFadeDistance">
+            <Tooltip>Définit la distance à laquelle l'herbe commencera à s'estomper.
+
+Moyen = 4500
+Haut = 5500
+Ultra = 7000
+
+Valeurs affectées: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Slider>
+          <Label text="Distance d'affichage" id="labelGrassFadeDistance" />
+          <Checkbox text="Activer l'herbe" id="checkBoxGrass">
+            <Tooltip>Active/désactive l'herbe en jeu.
+
+Valeurs affectées: bAllowCreateGrass
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Niveau de détails (LOD)" id="groupBoxLOD">
+          <Label text="Distance d'affichage" id="labelLODFadeDistance" />
+          <Slider id="sliderLODActors">
+            <Tooltip>Définit la distance à laquelle les personnages (joueurs, PNJ) commenceront à s'estomper.
+
+Valeurs affectées: fLODFadeOutMultActors
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Slider>
+          <Slider id="sliderLODItems">
+            <Tooltip>Définit la distance à laquelle les articles commenceront à s'estomper.
+
+Valeurs affectées: fLODFadeOutMultItems
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Slider>
+          <Slider id="sliderLODObjects">
+            <Tooltip>Définit la distance à laquelle les objets commenceront à s'estomper.
+
+Valeurs affectées: fLODFadeOutMultObjects
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Slider>
+          <Label text="Personnages" id="labelLODActors" />
+          <Label text="Articles" id="labelLODItems" />
+          <Label text="Objets" id="labelLODObjects" />
+        </Group>
+        <Group text="Éclairage" id="groupBoxLighting">
+          <Checkbox text="Éclairage volumétrique" id="checkBoxGodrays">
+            <Tooltip>Si vous décochez cette case, la fonction "godrays" (Qualité des rayons lumineux) sera désactivée.
+
+Valeurs affectées: bVolumetricLightingEnable
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Ombres" id="groupBoxShadows">
+          <Label text="Flou:" id="labelShadowBlurriness">
+            <Tooltip>Estompe les ombres. Particulièrement utile si vous définissez une résolution d'ombre inférieure.
+
+Valeurs affectées: uiOrthoShadowFilter
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Label>
+          <Slider id="sliderShadowDistance">
+            <Tooltip>Définit la distance de rendu des ombres.
+
+Ultra = 150000
+Haut = 120000
+Moyen = 90000
+Bas = 60000
+
+Je pense (L'auteur de l'outil) que le régler sur une valeur faible désactivera les ombres. A besoin de plus de tests.
+
+Valeurs affectées: fShadowDistance, fDirShadowDistance
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Slider>
+          <Label text="Distance" id="labelShadowDistance" />
+          <Label text="Résolution de la carte:" id="labelShadowTextureResolution">
+            <Tooltip>Résolution des ombres. Des paramètres plus élevés rendront les ombres plus détaillées.
+
+Valeurs affectées: iShadowMapResolution
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Label>
+        </Group>
+        <Group text="Eau" id="groupBoxWater">
+          <Checkbox text="Mouvements" id="checkBoxWaterDisplacement">
+            <Tooltip>Active/désactive le déplacement de l'eau (ondulations, vagues).
+
+Valeurs affectées: bUseWaterDisplacements
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Post-traitement" id="groupBoxPostProcessing">
+          <Checkbox text="Occlusion ambiante" id="checkBoxAmbientOcclusion">
+            <Tooltip>Si vous décochez cette option, l'occlusion ambiante sera désactivée.
+L'occlusion ambiante ajoute essentiellement de fausses ombres aux endroits que les sources de lumière ne peuvent pas atteindre (bords..).
+
+Valeurs affectées: bSAOEnable
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Profondeur de champ" id="checkBoxDepthOfField">
+            <Tooltip>Si vous décochez cette option, tous les effets de profondeur de champ seront désactivés.
+
+Fichiers concernés: Fallout76Custom.ini
+Valeurs affectées:
+   bDynamicDepthOfField
+   fDOFBlendRatio
+   fDOFMinFocalCoefDist
+   fDOFMaxFocalCoefDist
+   fDOFDynamicFarRange
+   fDOFCenterWeightInt
+   fDOFFarDistance</Tooltip>
+          </Checkbox>
+          <Checkbox text="Flou de mouvement" id="checkBoxMotionBlur">
+            <Tooltip>Brouille les objets en mouvement lorsque vous tournez la caméra.
+
+Valeurs affectées: bMBEnable
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Flou radial" id="checkBoxRadialBlur">
+            <Tooltip>Brouille l'écran lorsque le joueur est blessé (par exemple, touché par des balles) ou sous l'eau.
+Si vous décochez cette option, vous aurez une vue dégagée sous l'eau.
+
+Valeurs affectées: bDoRadialBlur, iRadialBlurLevel
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Reflets (Lens Flare)" id="checkBoxLensFlare">
+            <Tooltip>Si vous décochez cette option, les reflets de type "Lens Flare" seront désactivés.
+
+Valeurs affectées: bLensFlare
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Météo" id="groupBoxWeather">
+          <Checkbox text="Occlusion (Humidité)" id="checkBoxWeatherWetnessOcclusion">
+            <Tooltip>Active/désactive l'occlusion de l'humidité de l'environnement et des vêtements.
+
+Valeurs affectées: bWetnessOcclusion
+Fichiers concernés: Fallout76.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Occlusion (Pluie)" id="checkBoxWeatherRainOcclusion">
+            <Tooltip>Lorsqu'elle est cochée, la pluie ne sera pas restituée autour de votre personnage
+si vous êtes sous une autoroute surélevée ou dans un immeuble, les gouttes de pluie et les éclaboussures ne seront pas restituées sur le sol.
+
+Valeurs affectées: bRainOcclusion
+Fichiers concernés: Fallout76.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Label text="Filtre anisotrope:" id="labelAnisotropicFiltering">
+          <Tooltip>Réduit l'asialing des textures lorsqu'elles sont vues sous des angles obliques.
+
+Par défaut: 8
+Valeurs affectées: iMaxAnisotropy
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+        </Label>
+        <Checkbox text="Synchronisation verticale (Vsync)" id="checkBoxVSync">
+          <Tooltip>Si vous décochez cette option, la fréquence d'images sera illimitée
+
+Activez cette option si vous rencontrez des déchirements d'écran. (screen tearing).
+Désactivez-la si vous rencontrez des soucis d'input lag.
+
+Note: plafonnez le jeu à 60 FPS manuellement. (par exemple en utilisant le panneau de configuration de NVIDIA)
+
+
+Par défaut: Activé
+Valeurs affectées: iPresentInterval
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+        </Checkbox>
+        <Label text="Anti-Crénelage:" id="labelAntiAliasing">
+          <Tooltip>Réduit l'aliasing/crénelage en brouillant les bords des objets.
+
+TAA - Anti-aliasing temporel: relativement consommateur, par défaut
+FXAA - Anti-aliasing approximatif rapide: améliore légèrement les performances, aliasing légèrement visible
+Désactivé - Améliore les performances, aliasing clairement visible
+
+REMARQUE DE L'AUTEUR DE L'OUTIL: "Pour une raison quelconque,le FXAA ne fonctionne pas. 
+Le jeu désactive complètement l'anti-aliasing. Au moins pour moi."
+
+Par défaut: TAA
+Valeurs affectées: sAntiAliasing
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+        </Label>
+      </Tab>
+      <Tab text="Contrôles" id="tabPageControls">
+        <Group text="Manette" id="groupBoxGamepad">
+          <Checkbox text="Activer la manette" id="checkBoxGamepadEnabled">
+            <Tooltip>Décochez cette case si vous avez une manette de jeu branchée, mais que vous souhaitez utiliser votre clavier et votre souris à la place.
+Sinon, laissez cette case cochée.
+
+Valeurs affectées: bGamepadEnable
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Activer les vibrations de la manette (Retour de force)" id="checkBoxGamepadRumble">
+            <Tooltip>Permet les vibrations (retour de force) de votre manette de jeu.
+
+Valeurs affectées: bGamePadRumble
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Souris" id="groupBoxMouse">
+          <Checkbox text="Corriger la sensibilité de la visée" id="checkBoxFixAimSensitivity">
+            <Tooltip>Si cochée, la sensibilité de visée sera égale à la sensibilité normale.
+Si elle n'est pas cochée (par défaut), la sensibilité sera plus faible lorsque vous viserez à l'épaule.
+
+Remarque (Auteur du mod): cela peut ne fonctionner que sur les moniteurs 16:9.
+Si cela fonctionne pour vous sur un autre moniteur (par exemple 21:9), veuillez me le faire savoir.
+
+Valeurs affectées: fIronSightsFOVRotateMult
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Label text="Sensibilité" id="labelMouseSensitivity" />
+          <Slider id="sliderMouseSensitivity">
+            <Tooltip>Sensibilité de la souris
+
+Valeurs affectées: fMouseHeadingSensitivity, fMouseHeadingSensitivityY
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Slider>
+          <Checkbox text="Corriger la sensibilité horizontale/verticale de la souris" id="checkBoxFixMouseSensitivity">
+            <Tooltip>Si cette case est cochée, la sensibilité pour regarder vers le haut/bas et gauche/droite sera égale.
+Si elle n'est pas cochée (par défaut), la sensibilité pour regarder vers la gauche/droite sera probablement plus élevée que vers le haut/bas.
+
+Lorsqu'elle est cochée, la sensibilité de votre souris peut augmenter.
+
+La sensibilité dépend du ratio de votre écran:
+     Pour 4:3, la valeur de X est 0,028
+     Pour 16:9, la valeur de X est 0,03738
+     Pour 16:10, la valeur de X est 0.0336
+     Pour 21:9, la valeur de X est 0,042
+
+Par défaut: désactivé (.021 pour les deux)
+Valeurs affectées: fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
+      </Tab>
+      <Tab text="Pipboy" id="tabPagePipBoy">
+        <Group text="Résolution" id="groupBoxPipboyResolution">
+          <Label text="Ces paramètres affectent à la fois le Pipboy et le Quickboy." id="labelPipboyResolutionSideNote" />
+          <Button text="Définir la résolution recommandée" id="buttonPipboyTargetSetRecommended">
+            <Tooltip>Valeurs recommandées: 1752x1400</Tooltip>
+          </Button>
+          <Button text="Valeurs par défaut" id="buttonPipboyTargetReset">
+            <Tooltip>Les valeurs par défaut: 876x700</Tooltip>
+          </Button>
+          <Number id="numPipboyTargetHeight">
+            <Tooltip>Modifie la hauteur de résolution du Pipboy/Quickboy.
+
+Valeurs affectées: uPipboyTargetHeight
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Number>
+          <Number id="numPipboyTargetWidth">
+            <Tooltip>Modifie la largeur de résolution du Pipboy/Quickboy.
+
+Valeurs affectées: uPipboyTargetWidth
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Number>
+          <Label text="X" id="labelPipboyResolutionSpacer" />
+        </Group>
+        <Group text="Mode" id="groupBoxPipboyMode">
+          <Radiobutton text="Utilisez QuickBoy" id="radioButtonQuickboy">
+            <Tooltip>Valeurs affectées: bQuickboyMode
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Radiobutton>
+          <Radiobutton text="Utilisez PipBoy" id="radioButtonPipboy">
+            <Tooltip>Valeurs affectées: bQuickboyMode
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Radiobutton>
+        </Group>
+        <Group text="Couleurs" id="groupBoxPipboyColors">
+          <Label text="Couleur Quick-Boy" id="labelQuickboyColor">
+            <Tooltip>Valeurs affectées: fQuickBoyEffectColorR, fQuickBoyEffectColorG, fQuickBoyEffectColorB
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Button text="Réinitialiser" id="buttonColorResetPipboy" />
+          <Button text="Changer" id="buttonColorPickQuickboy" />
+          <Button text="Réinitialiser" id="buttonColorResetQuickboy" />
+          <Label text="Couleur Pip-Boy" id="labelPipboyColor">
+            <Tooltip>Valeurs affectées: fPipboyEffectColorR, fPipboyEffectColorG, fPipboyEffectColorB
+Fichiers concernés: Fallout76Prefs.ini</Tooltip>
+          </Label>
+          <Button text="Changer" id="buttonColorPickPipboy" />
+        </Group>
+      </Tab>
+    </TabContainer>
+    <Checkbox text="Fichiers *.ini en lecture seule" id="checkBoxReadOnly">
+      <Tooltip>Cette option rendra immédiatement tous les fichiers *.ini en lecture seule.
+Activez cette option si vos paramètres sont rétablis.
+
+Fichiers concernés: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
+    </Checkbox>
+    <Button text="Appliquer" id="buttonApply" />
+  </Form1>
+  <FormMods title="Gérer les mods">
+    <Group text="Paramètres *.ba2 groupés" id="groupBoxModsBundledBA2">
+      <Checkbox text="Compresser fichier_groupé.ba2" id="checkBoxModsBundledBA2Compression" />
+      <Checkbox text="Compresser textures_groupées.ba2" id="checkBoxModsBundledTexturesBA2Compression" />
+    </Group>
+    <Checkbox text="Mode Nuclear Winter" id="checkBoxModsNWMode">
+      <Tooltip>Si coché, tous les mods seront supprimés lors du déploiement.
+Utile si vous voulez jouer un match Nuclear Winter, d'où son nom.</Tooltip>
+    </Checkbox>
+    <Label text="L'utilisation de mods peut casser votre jeu ou vous faire bannir!\nLorsque vous installez des mods, vous acceptez l'entière responsabilité!" id="labelModWarning" />
+    <Group text="Ordre des mods" id="groupBoxMods">
+      <Button text="Monter" id="buttonModMoveUp" />
+      <Button text="Descendre" id="buttonModMoveDown" />
+      <Checkbox text="Tout cocher/décocher" id="checkBoxModsCheckAll" />
+    </Group>
+    <Group text="Modifier les détails du mod" id="groupBoxModEdit">
+      <Group text="Paramètres BA2" id="groupBoxBA2">
+        <Label text="Nom de l'archive:" id="labelModArchiveName" />
+        <Radiobutton text="Utiliser le format DDS (pour les textures)" id="radioButtonModBA2DDSFormat" />
+        <Checkbox text="Compresser l'archive" id="checkBoxModBA2Compression" />
+        <Radiobutton text="Utiliser un format général" id="radioButtonModBA2GeneralFormat" />
+      </Group>
+      <Button text="..." id="buttonModPickRootDir" />
+      <Label text="Installer dans:" id="labelModInstallInto" />
+      <Button text="Ouvrir dossier" id="buttonModOpenFolder" />
+      <Label text="Nom du mod:" id="labelModName" />
+      <Group text="Installer en tant que" id="groupBoxModInstallType">
+        <Radiobutton text="Archive *.ba2 groupée (Textures, fichiers *.dds)" id="radioButtonModBA2ArchiveTextures" />
+        <Radiobutton text="Archive *.ba2 séparée" id="radioButtonModSeparateBA2" />
+        <Radiobutton text="Archive *.ba2 groupée (Général)" id="radioButtonModBA2Archive" />
+        <Radiobutton text="Fichiers libres (Loose)" id="radioButtonModLoose" />
+      </Group>
+      <Button text="Supprimer mod" id="buttonModRemove" />
+    </Group>
+    <Group text="Chemins" id="groupBoxGamePaths">
+      <Label text="Localisation du jeu:" id="labelGamePath" />
+      <Button text="..." id="buttonPickArchive2Path" />
+      <Label text="Localisation Archive2 :" id="labelArchive2Path" />
+      <Button text="..." id="buttonPickGamePath" />
+    </Group>
+    <Button text="Déployer" id="buttonModsDeploy" />
+    <Label text="Tout est prêt" id="labelModsDeploy" />
+    <Menu id="menuStrip1">
+      <Item text="Fichier" id="fileToolStripMenuItem">
+        <Item text="Ajouter un mod" id="addModarchiveToolStripMenuItem">
+          <Item text="Depuis une archive" id="fromArchiveToolStripMenuItem" />
+          <Item text="Depuis un dossier" id="fromFolderToolStripMenuItem" />
+        </Item>
+        <Item text="Importer des mods installés" id="toolStripMenuItemModsImport" />
+        <Item text="" id="toolStripSeparator1" />
+        <Item text="Déployer" id="deployToolStripMenuItem" />
+      </Item>
+      <Item text="Vue" id="editToolStripMenuItem">
+        <Item text="Afficher les fichiers en conflit" id="showConflictingFilesToolStripMenuItem" />
+      </Item>
+      <Item text="Aide" id="helpToolStripMenuItem">
+        <Item text="Afficher LISEZ-MOI" id="showREADMEToolStripMenuItem" />
+      </Item>
+    </Menu>
+  </FormMods>
+</Language>

@@ -1,0 +1,677 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language name="Swedish (Sweden)" iso="sv-SE" version="1.5.2" author="Pforga">
+  <Strings>
+    <String text="Ny version tillgänglig: {0}" id="newVersionAvailable" />
+    <String text="Distribution av mods krävs" id="modsDeploymentNecessary" />
+    <String text="Allt klart" id="modsAllDone" />
+    <String text="Generella" id="modsTableFormatGeneral" />
+    <String text="Texturer" id="modsTableFormatTexturer" />
+    <String text="Auto" id="modsTableFormatAutoDetect" />
+    <String text="Packade" id="modsTableTypePackade" />
+    <String text="Separata" id="modsTableTypeSeparerade" />
+    <String text="Lösa" id="modsTableTypeLoose" />
+    <String text="Icke tillgängligt" id="notApplicable" />
+  </Strings>
+  <Dropdowns>
+    <Dropdown id="Resolution">
+      <Option>Custom</Option>
+      <Option>640x480</Option>
+      <Option>800x600</Option>
+      <Option>1280x720</Option>
+      <Option>1280x768</Option>
+      <Option>1152x864</Option>
+      <Option>1440x900</Option>
+      <Option>1600x900</Option>
+      <Option>1280x960</Option>
+      <Option>1920x1080</Option>
+      <Option>2560x1080</Option>
+      <Option>3440x1440</Option>
+      <Option>2560x1440</Option>
+      <Option>3200x1800</Option>
+      <Option>5120x2160</Option>
+      <Option>5120x2880</Option>
+    </Dropdown>
+    <Dropdown id="DisplayMode">
+      <Option>Helskärm</Option>
+      <Option>Fönster</Option>
+      <Option>Kantlöst Fönster</Option>
+      <Option>Kantlöst Fönster (Helskärm)</Option>
+    </Dropdown>
+    <Dropdown id="AntiAliasing">
+      <Option>TAA (Standard)</Option>
+      <Option>FXAA</Option>
+      <Option>Av</Option>
+    </Dropdown>
+    <Dropdown id="AnisotropicFiltering">
+      <Option>Av</Option>
+      <Option>2x</Option>
+      <Option>4x</Option>
+      <Option>8x (Standard)</Option>
+      <Option>16x</Option>
+    </Dropdown>
+    <Dropdown id="ShadowTextureResolution">
+      <Option>1024 = Low</Option>
+      <Option>2048 = High (Standard)</Option>
+      <Option>4096 = Ultra</Option>
+    </Dropdown>
+    <Dropdown id="ShadowBlurriness">
+      <Option>1x</Option>
+      <Option>2x</Option>
+      <Option>3x = Standard, rekommenderas</Option>
+    </Dropdown>
+    <Dropdown id="ModInstallAs">
+      <Option>Packade *.ba2 arkiv</Option>
+      <Option>Separerade *.ba2 arkiv</Option>
+      <Option>Lösa filer</Option>
+    </Dropdown>
+    <Dropdown id="ModArchiveFormat">
+      <Option>Automatiskt val</Option>
+      <Option>General</Option>
+      <Option>Texturer (*.dds files)</Option>
+    </Dropdown>
+  </Dropdowns>
+  <Messageboxes>
+    <Messagebox title="Backup och spara?" id="backupAndSave">Vill du skapa en backup innan du sparar alla förändringar?
+ 
+    Tryck "Ja" om du vill skapa en backup och spara.
+    Tryck "Nej" om du vill spara utan att göra en backup.
+    Tryck "Avbryt" för att avbryta.</Messagebox>
+    <Messagebox title="Förändringar tillagda" id="changesApplied">Förändringar är nu tillagda. Du kan starta spelet.</Messagebox>
+    <Messagebox title="Välj spelutgåva" id="chooseGameEdition">Vänligen välj spelutgåva under Generella Inställningar.</Messagebox>
+    <Messagebox title="Fallout76.ini och Fallout76Prefs.ini hittades inte" id="runGameToGenerateINI">Vänligen starta spelet minst en gång innan du använder det här verktyget. Spelet skapar dessa nödvändiga filer när du startar spelet för första gången.</Messagebox>
+    <Messagebox title="Klart" id="oldValuesResetToDefault">Vissa inställningar har ställts till sina grundvärden.
+Endast ostabila värden från tidigare versioner av verktyget har påverkats.
+Glöm inte att klicka 'Apply'.</Messagebox>
+    <Messagebox title="Fel uppstod när UI laddades" id="onLoadFuncException">{0} fel påträffades när UI:n laddades.
+Detta kan bero på korrupterade ini-filer.
+Vissa delar av UI:n kanske inte fungerar korrekt.
+ 
+{1}</Messagebox>
+    <Messagebox title="archive2 saknas" id="modsarchive2Missing">.\archive2\archive2.exe saknas.
+Vänligen ladda ner verktyget igen, eller installera archive2.exe manuellt.</Messagebox>
+    <Messagebox title="Installationssökväg inte vald" id="modsGamePathNotSet">Vänligen välj mappen som innehåller Fallout76.exe.</Messagebox>
+    <Messagebox title="Fel sökväg" id="modsGamePathInvalid">Fel sökväg till spelets mapp.</Messagebox>
+    <Messagebox title="Mod {0} kunde inte distribueras." id="modsDeployErrorModDirNotFound">Mappen {0} finns inte.
+Vänligen starta om mod-verktyget och lägg till modden igen.</Messagebox>
+    <Messagebox title="Mod {0} kunde inte distribueras." id="modsDeployErrorBA2RootIsNotData">Mappen {0} finns inte.
+Vänligen starta om mod-verktyget och lägg till modden igen.</Messagebox>
+    <Messagebox title="Är du säker?" id="modsDeleteBtn">Är du säker på att du vill ta bort {0}?</Messagebox>
+    <Messagebox title="Är du säker?" id="modsDeleteBulkBtn">Är du säker på att du vill ta bort {0} mods?</Messagebox>
+    <Messagebox title="Arkiv kunde inte packas upp" id="modsExtractUnknownError">{0}</Messagebox>
+    <Messagebox title="Arkiv kunde inte packas upp" id="modsExtractUnknownErrorText">Vänligen packa upp arkivet och lägg till den här modden som en mapp.</Messagebox>
+    <Messagebox title="7-Zip arkiv kunde inte packas upp" id="modsExtractUnknownError7zip">{0}</Messagebox>
+    <Messagebox title="Filformatet stöds inte" id="modsarkivTypeNotSupported">{0} filer stöds ej.
+Vänligen packa upp arkivet och lägg till den här modden som en mapp.</Messagebox>
+    <Messagebox title="Yay!" id="modsNoConflictingFiles">Inga konflikterande filer funna.</Messagebox>
+    <Messagebox title="Distribuering av mods krävs" id="modsDeploymentNecessary">Innan du kan utföra denna handling måste alla mods distribueras.</Messagebox>
+    <Messagebox title="Är du säker?" id="modsOnCloseDeploymentNecessary">Dina förändringar har inte distribuerats.
+Är du säker på att du vill stänga mod-verktyget?</Messagebox>
+    <Messagebox title="Mappen finns inte" id="modDirNotExist">Sökvägen {0} finns inte.
+Moddens mapp har tagits bort, men finns kvar i listan.</Messagebox>
+    <Messagebox title="Felaktigt inlägg i manifest.xml" id="modsInvalidManifestEntry">Ett felaktigt mod-inlägg har ignorerats.
+Felmeddelande:  {0}</Messagebox>
+    <Messagebox title="Felaktigt inlägg i manifest.xml" id="modsInvalidManifestRoot">Taggen &lt;Mods&gt; har felaktiga attribut.
+Felmeddelande:  {0}</Messagebox>
+    <Messagebox title="Importera manuellt installerade mods?" id="modsImportQuestion">Är du säker på att du vill lägga till mods som installerats utanför mods-verktyget?</Messagebox>
+    <Messagebox title="Konflikt mellan moddar har upptäckts" id="modsSamearkivName">Flera mods har samma arkiv-namn: "{0}".
+Mods med konflikter: {1}</Messagebox>
+    <Messagebox title="Kunde inte döpa om mapp" id="modDetailsMoveManagedFolderFailed">Den valda moddens mapp kunde inte döpas om.
+Felmeddelande: "{0}".</Messagebox>
+    <Messagebox title="Är du säker?" id="modsRepairDDSQuestion">Detta kommer att försöka reparera alla *.dds-filer.
+Det kan ta lång tid, beroende på antalet filer, deras storlek, och antalet skadade filer.
+Är du säker på att du vill fortsätta?</Messagebox>
+  </Messageboxes>
+  <Form1 title="Fallout 76 Snabbkonfiguration">
+    <Group text="Inställningar" id="groupBoxOptions">
+      <Checkbox text="Nuclear Winter-läge" id="checkBoxNWMode" />
+      <Checkbox text="Gör relevanta *.ini filer skrivskyddade" id="checkBoxReadOnly">
+        <Tooltip>Detta val kommer att sätta alla ini-filer i följande mapp som skrivskyddade:
+%UserProfile%\Documents\My Games\Fallout 76\
+       
+Välj detta om dina inställningar ändras när du startar spelet.</Tooltip>
+      </Checkbox>
+    </Group>
+    <Group text="Spelutgåva" id="groupBoxGameEdition">
+      <Radiobutton text="Steam" id="radioButtonEditionSteam" />
+      <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+    </Group>
+    <Button text="Lägg till/Ta bort moddar" id="buttonManageMods" />
+    <Button text="Starta spelet" id="buttonLaunchGame" />
+    <TabContainer id="tabControl1">
+      <Tab text="Info" id="tabPageInfo">
+        <Button text="Fixa inställningar från v1.3.1 och tidigare" id="buttonFixIssuesEarlierVersion" />
+        <Label text="Översättning av:" id="labelTranslationBy" />
+        <Link text="Öppna README" id="linkLabel1" />
+        <Label text="Upphovsman:" id="labelAuthor" />
+        <Label text="Språk:" id="labelLanguage" />
+        <Label text="Version:" id="labelVersion" />
+        <Label text="Det här verktyget hjälper dig att snabbt modifiera dina INI-filer.\nTips: Är du osäker på vad en inställning gör?\nHåll muspekaren över den!" id="labelDescription" />
+        <Link text="Skaffa senaste versionen av detta verktyg på NexusMods" id="linkLabelDownloadPage" />
+        <Label text="Fallout 76 Snabbkonfiguration" id="labelTitle" />
+      </Tab>
+      <Tab text="Generellt" id="tabPageGeneral">
+        <Group text="Kamera" id="groupBoxCamera">
+          <Checkbox text="Automatiskt 'Vanity Mode'" id="checkBoxVanityMode">
+            <Tooltip>När detta är på, så kommer kameran att börja sakta rotera runt din karaktär om du inte trycker på några knappar, eller rör musen, efter en intervall.
+ 
+Påverkade värden: bDisableAutoVanityMode
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Inloggning" id="groupBoxLogin">
+          <Label text="Dina inloggningsuppgifter sparas i Fallout76Custom.ini\nPå så sätt, så behöver du inte skriva in dem manuellt varje gång.\n(Detta är smidigt om du startar spelet utan launchers)." id="labelCredentialsExplanation" />
+          <Checkbox text="Visa lösenord" id="checkBoxShowPassword" />
+          <Label text="Lösenord:" id="labelPassword" />
+          <Label text="Användarnamn:" id="labelUserName" />
+        </Group>
+        <Group text="UI" id="groupBoxInterface">
+          <Checkbox text="Visa kompass" id="checkBoxShowCompass">
+            <Tooltip>Påverkade värden: bShowCompass
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Visa flytande siffror för skada i Nuclear Winter-läget" id="checkBoxShowDamageNumbersNW">
+            <Tooltip>Påverkade värden: bShowDamageNumbers
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Visa flytande siffror för skada i Adventure-läget" id="checkBoxShowDamageNumbersA">
+            <Tooltip>Påverkade värden: bShowDamageNumbers
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Visa generella undertexter" id="checkBoxGeneralSubtitles">
+            <Tooltip>Påverkade värden: bGeneralSubtitles
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Visa undertexter för dialog" id="checkBoxDialogueSubtitles">
+            <Tooltip>Påverkade värden: bDialogueSubtitles
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Huvudmenu" id="groupBoxMainMenu">
+          <Checkbox text="Visa kort med nyheter när du startar spelet" id="checkBoxShowSplash">
+            <Tooltip>Om avstängt, så visas inte nyheter på huvudmenyn.
+ 
+Påverkade värden: bShowSplash
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Spela introduktions-videor" id="checkBoxIntroVideos">
+            <Tooltip>När det här är avstängt, så startas spelet direkt till Huvudmenyn, utan videon med Bethesdas logotyp före.
+ 
+Påverkade värden: sIntroSequence, uMainMenuDelayBeforeAllowSkip
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Spela musik på huvudmenyn" id="checkBoxMainMenuMusic">
+            <Tooltip>Om avstängt, så spelas ingen musik på huvudmenyn.
+ 
+Påverkade värden: bPlayMainMenuMusic
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
+      </Tab>
+      <Tab text="Visning" id="tabPageDisplay">
+        <Checkbox text="Alltid aktiv" id="checkBoxAlwaysActive">
+          <Tooltip>Stäng av detta om du vill att spelet ska pausas (lokalt) när ett annat programfönster tar fokus.
+ 
+Påverkade värden: bAlwaysActive
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+        </Checkbox>
+        <Checkbox text="Alltid överst" id="checkBoxTopMostWindow">
+          <Tooltip>Om detta är på, så tillåts inte att andra programfönster tar fokus.
+NOTERA: Detta för att du inte smidigt kan använda alt+tab om du bara har en skärm.
+ 
+Påverkade värden: bTopMostWindow
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+        </Checkbox>
+        <Group text="Synfält (Field of View)" id="groupBoxFieldOfView">
+          <Label text="Synfält i 3:e person:" id="labelWorldFOV">
+            <Tooltip>Ändrar synfältet i tredjepersons-perspektiv.
+ 
+Standardvärde: 80
+Påverkade värden: fDefaultWorldFOV
+Påverkade filer: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+          </Label>
+          <Label text="Synfält i 1:a person:" id="labelFirstPersonFOV">
+            <Tooltip>Ändrar synfältet i förstapersons-perspektiv.
+ 
+Standardvärde: 80
+Påverkade värden: fDefault1stPersonFOV
+Påverkade filer: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+          </Label>
+        </Group>
+        <Number id="numCustomResH">
+          <Tooltip>Vertikal upplösning (höjd).
+ 
+Påverkade värden: iSize H</Tooltip>
+        </Number>
+        <Label text="X" id="labelCustomResolutionSpacer" />
+        <Label text="Visningsläge:" id="labelDisplayMode">
+          <Tooltip>Ändrar visningsläge.
+ 
+ 
+Helskärm: Riktigt helskärms-läge.
+ 
+Fönster: Fönster-läge med kant.
+ 
+Kantlöst Fönster: Fönster-läge utan kant (se till att du har satt upplösning ovan).
+ 
+Kantlöst Fönster (Helskärm): Fönster-läge utan kant, maximerat och satt till att passa din skärm.
+Kan få spelet att se pixelerat ut (det använder Nearest Neighbor), om din upplösning är låg.
+ 
+ 
+Påverkade värden: bFull Screen, bBorderless
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+        </Label>
+        <Number id="numCustomResW">
+          <Tooltip>Ändrar vågrät upplösning (bredd).
+ 
+Påverkade värden: iSize W</Tooltip>
+        </Number>
+        <Label text="Upplösning:" id="labelResolution">
+          <Tooltip>Ändringar upplösning.
+Sätt till "Custom" om du vill använda egna värden.
+ 
+Påverkade värden: iSize W, iSize H
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+        </Label>
+        <Label text="Anpassa upplösning:" id="labelCustomResolution">
+          <Tooltip>Under Upplösning måste "Custom" väljas för att detta val ska bli tillgängligt.</Tooltip>
+        </Label>
+      </Tab>
+      <Tab text="Grafik" id="tabPageGraphics">
+        <Group text="TAA-skärpa" id="groupBoxTAASharpening">
+          <Label text="Efter-skärpa" id="labelTAAPostSharpen" />
+          <Slider id="sliderTAAPostSharpen">
+            <Tooltip>Skärper bilden.
+ 
+Standardvärde: 0.2
+Rekommenderat värde: 0.4
+ 
+Påverkade värden: fTAAPostSharpen
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Slider>
+          <Label text="Post-täckning" id="labelTAAPostOverlay" />
+          <Slider id="sliderTAAPostOverlay">
+            <Tooltip>Skärper bilden.
+ 
+Standardvärde: 0.2
+Rekommenderat värde: 0.2
+ 
+Påverkade värden: fTAAPostOverlay
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Slider>
+        </Group>
+        <Group text="Gräs" id="groupBoxGrass">
+          <Slider id="sliderGrassFadeDistance">
+            <Tooltip>Sätter avstånd för hur lång bort gräs ska sluta renderas.
+ 
+Medium är 4500
+High är 5500
+Ultra är 7000
+ 
+Påverkade värden: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Slider>
+          <Label text="Avstånd" id="labelGrassFadeDistance" />
+          <Checkbox text="Tillåt gräs" id="checkBoxGrass">
+            <Tooltip>Sätter på/Stänger av gräs i spelet.
+ 
+Påverkade värden: bAllowCreateGrass
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="LOD" id="groupBoxLOD">
+          <Label text="Avstånd" id="labelLODFadeDistance" />
+          <Slider id="sliderLODActors">
+            <Tooltip>Sätter avstånd för hur lång bort Aktörer (Spelare, NPCs) ska sluta renderas.
+ 
+Påverkade värden: fLODFadeOutMultActors
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Slider>
+          <Slider id="sliderLODItems">
+            <Tooltip>Sätter avstånd för hur lång bort saker (stimpacks, etc) ska sluta renderas. Behöver inte vara högt; du behöver inte se en burk Buffout som ligger ett kvarter bort.
+ 
+Påverkade värden: fLODFadeOutMultItems
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Slider>
+          <Slider id="sliderLODObjects">
+            <Tooltip>Sätter avstånd för hur lång bort objekt (plankor, bilar, etc) ska sluta renderas. Försiktighet bör iaktas; höga värden kostar mer systemresurser än det är värt.
+ 
+Påverkade värden: fLODFadeOutMultObjects
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Slider>
+          <Label text="Aktörer" id="labelLODActors" />
+          <Label text="Saker" id="labelLODItems" />
+          <Label text="Objekt" id="labelLODObjects" />
+        </Group>
+        <Group text="Ljus" id="groupBoxLighting">
+          <Checkbox text="Volumetric Lighting" id="checkBoxGodrays">
+            <Tooltip>Detta sätter på/stänger av godrays.
+ 
+Påverkade värden: bVolumetricLightingEnable
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Skuggor" id="groupBoxShadows">
+          <Label text="Suddighet:" id="labelShadowBlurriness">
+            <Tooltip>Suddighet för skuggor. Ger bättre resultat desto lägre skuggornas upplösning är.
+ 
+Påverkade värden: uiOrthoShadowFilter
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Label>
+          <Slider id="sliderShadowDistance">
+            <Tooltip>Sätter avstånd för hur lång bort skuggor ska sluta renderas. Sätts värdet för lågt, så kan skuggor komma att försvinna helt. Behöver testas.
+ 
+Low är 60000
+Medium är 90000
+High är 120000
+Ultra är 150000
+ 
+ 
+Påverkade värden: fShadowDistance, fDirShadowDistance
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Slider>
+          <Label text="Avstånd" id="labelShadowDistance" />
+          <Label text="Texturupplösning för skuggor:" id="labelShadowTextureResolution">
+            <Tooltip>Upplösning för skuggor. Högre värden ger skuggor mer detalj.
+ 
+Påverkade värden: iShadowMapResolution
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Label>
+        </Group>
+        <Group text="Vatten" id="groupBoxWater">
+          <Checkbox text="Rörligt vatten" id="checkBoxWaterDisplacement">
+            <Tooltip>Sätter på/stänger av vattenrörelser (skvalpande och små vågor när man går i det).
+ 
+Påverkade värden: bUseWaterDisplacements
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Bildprocessering" id="groupBoxPostProcessing">
+          <Checkbox text="Ambient Occlusion" id="checkBoxAmbientOcclusion">
+            <Tooltip>Sätter på/Stänger av ambient occlusion (AO ger skuggor naturligare kanter).
+ 
+Påverkade värden: bSAOEnable
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Depth of Field" id="checkBoxDepthOfField">
+            <Tooltip>Sätter på/Stänger av alla effekter som kräver Depth of Field (selektiv suddighet av bilden för att simulera avstånd, och vart karaktären fokuserar sin blick).
+ 
+Påverkade filer: Fallout76Custom.ini
+Påverkade värden:
+   bDynamicDepthOfField
+   fDOFBlendRatio
+   fDOFMinFocalCoefDist
+   fDOFMaxFocalCoefDist
+   fDOFDynamicFarRange
+   fDOFCenterWeightInt
+   fDOFFarDistance</Tooltip>
+          </Checkbox>
+          <Checkbox text="Motion Blur" id="checkBoxMotionBlur">
+            <Tooltip>Om detta är på, så läggs suddighet till när kameran flyttas.
+ 
+Påverkade värden: bMBEnable
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Radial Blur" id="checkBoxRadialBlur">
+            <Tooltip>Om detta är på, så läggs det till momentär suddighet när spelaren skadas, och när kameran doppas i vatten.
+Om detta stängs av kan vattnets grumlighet försvinna, vilket resulterar i en klarare bild under vatten.
+ 
+Påverkade värden: bDoRadialBlur, iRadialBlurLevel
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Lens Flare" id="checkBoxLensFlare">
+            <Tooltip>Sätter på/Stänger av Lens Flare (simulerar effekten med samma namn - vilket inte är logiskt, då spelarens ögon inte är kameralinser...).
+ 
+Påverkade värden: bLensFlare
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Väger" id="groupBoxWeather">
+          <Checkbox text="Dimma" id="checkBoxFogEnabled">
+            <Tooltip>Påverkade värden: bFogEnabled
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Wetness Occlusion" id="checkBoxWeatherWetnessOcclusion">
+            <Tooltip>Sätter på/Stänger av Wetness Occlusion, som simulerar blöthet på ytor som får vatten på sig (både terräng och material).
+ 
+Påverkade värden: bWetnessOcclusion
+Påverkade filer: Fallout76.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Rain Occlusion" id="checkBoxWeatherRainOcclusion">
+            <Tooltip>När detta är på, så renderas inte regn eller regndroppar runt din karaktär, eller på kameran, om du står i lä.
+ 
+Påverkade värden: bRainOcclusion
+Påverkade filer: Fallout76.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Label text="Anisotropiskt filter:" id="labelAnisotropicFiltering">
+          <Tooltip>Tonar ner aliasing på texturer när man tittar snett på dem.
+ 
+Standardvärde: 8
+Påverkade värden: iMaxAnisotropy
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+        </Label>
+        <Checkbox text="Begränsat antal bildrutor per sekund (VSync)" id="checkBoxVSync">
+          <Tooltip>Stängs detta av så begränsas inte antalet bildrutor per sekund som spelet renderar.
+ 
+Sätt på detta om du ser så kallad "screen tearing" i spelet.
+Stäng av detta om du tycker att du har så kallat "input lag".
+ 
+Vänligen notera att spelet kan komma att bete sig udda i situationer då spelmotorn renderar
+fler än 60 bildrutor per sekund. För att undkomma detta, utan att tvingas använda v-sync,
+använd nVidias kontrollpanel eller annan applikation för att tvinga spelet att rendera
+färre än 60 bildrutor per sekund.
+ 
+ 
+Standardvärde: Enabled
+Påverkade värden: iPresentInterval
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+        </Checkbox>
+        <Label text="Anti-Aliasing:" id="labelAntiAliasing">
+          <Tooltip>Reducerar aliasing genom att göra kanter suddiga.
+ 
+TAA - Temporal Anti-Aliasing: Relativt krävande, bäst kantutjämning
+FXAA - Fast Approximate Anti-Aliasing: Mindre krävande, bra kantutjämning
+Av - Minst krävande, dålig kantutjämning
+ 
+Notera att, även om det är ett accepterat värde i inställningarna, så verkar FXAA inte fungera.
+Om FXAA väljs, så beter sig spelet på samma sätt som om kanutjämning ställs till Av.
+ 
+ 
+Standardvärde: TAA
+Påverkade värden: sAntiAliasing
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+        </Label>
+      </Tab>
+      <Tab text="Kontroller" id="tabPageControls">
+        <Group text="Gamepad" id="groupBoxGamepad">
+          <Checkbox text="Aktivera handkontroll" id="checkBoxGamepadEnabled">
+            <Tooltip>Stäng av detta om du inte spelar med en handkontroll.
+ 
+Påverkade värden: bGamepadEnable
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Aktivera Force Feedback-skakningar för handkontroll" id="checkBoxGamepadRumble">
+            <Tooltip>Stäng av detta om du inte vill att din handkontroll ska skaka vid Force Feedback-händelser i spelet.
+ 
+Påverkade värden: bGamePadRumble
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Mus" id="groupBoxMouse">
+          <Checkbox text="Mus-acceleration" id="checkBoxMouseAcceleration">
+            <Tooltip>Stänger av musacceleration.
+Det kan vara så att detta inte har någon effekt i spelet (placebo?).
+I vilket fall så skadar det inget att stänga av detta.
+ 
+Påverkade värden: bMouseAcceleration
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Fixa ADS-känslighet" id="checkBoxFixAimSensitivity">
+            <Tooltip>Om detta är på, så ska känsligheten för musen vara lika,
+både när du siktar vanligt och när du använder ADS.
+Om detta är avstängt, så är känsligheten lägre för du ADS:ar.
+ 
+ 
+Notera att detta kanske endast fungerar på 16:9-skärmar.
+ 
+Påverkade värden: fIronSightsFOVRotateMult
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Label text="Känslighet" id="labelMouseSensitivity" />
+          <Slider id="sliderMouseSensitivity">
+            <Tooltip>Muskänslighet
+ 
+Påverkade värden: fMouseHeadingSensitivity, fMouseHeadingSensitivityY
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Slider>
+          <Checkbox text="Fixa horisontell/vertikal känslighet" id="checkBoxFixMouseSensitivity">
+            <Tooltip>Om detta är på, så kommer känsligheten för musen vara lika, vilket håll du än rör musen åt.
+Om detta är avstängt, så kommer känsligheten för musen att vara högre när du siktar är vänster/höger än när du siktar upp/ner.
+ 
+När detta är på kan din muskänslighet kännas högre.
+ 
+Beroende på din skärms höjd/bredd-ratio, så ska följande värden anges som värde för fMouseHeadingYScale i Fallout76Custom.ini:
+    For 4:3, the value of X is .028
+    For 16:9, the value of X is .03738
+    For 16:10, the value of X is .0336
+    For 21:9, the value of X is .042
+ 
+Standardvärde: Avstängd (.021 for both)
+Påverkade värden: fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
+      </Tab>
+      <Tab text="Pipboy" id="tabPagePipBoy">
+        <Group text="Upplösning" id="groupBoxPipboyResolution">
+          <Label text="De här inställningarna påverkar både Pipboy och Quickboy." id="labelPipboyResolutionSideNote" />
+          <Button text="Sätt rekommenderad upplösning" id="buttonPipboyTargetSetRecommended">
+            <Tooltip>Rekommenderad upplösning: 1752x1400</Tooltip>
+          </Button>
+          <Button text="Återställ standardvärde" id="buttonPipboyTargetReset">
+            <Tooltip>Standardvärde för upplösning: 876x700</Tooltip>
+          </Button>
+          <Number id="numPipboyTargetHeight">
+            <Tooltip>Ändrar den vertikala upplösningen för Pipboy/Quickboy.
+ 
+Påverkade värden: uPipboyTargetHeight
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Number>
+          <Number id="numPipboyTargetWidth">
+            <Tooltip>Ändrar den horisontella upplösningen för Pipboy/Quickboy.
+ 
+Påverkade värden: uPipboyTargetWidth
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Number>
+          <Label text="X" id="labelPipboyResolutionSpacer" />
+        </Group>
+        <Group text="Läge" id="groupBoxPipboyMode">
+          <Radiobutton text="Använd QuickBoy" id="radioButtonQuickboy">
+            <Tooltip>Påverkade värden: bQuickboyMode
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Radiobutton>
+          <Radiobutton text="Använd PipBoy" id="radioButtonPipboy">
+            <Tooltip>Påverkade värden: bQuickboyMode
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Radiobutton>
+        </Group>
+        <Group text="Färger" id="groupBoxPipboyColors">
+          <Label text="Färg i Power Armor" id="label1">
+            <Tooltip>Ändrar färgen för din Pipboy/Quickboy när du kollar den i Power Armor.
+ 
+Påverkade värden: fPAEffectColorR, fPAEffectColorG, fPAEffectColorB
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Button text="Välj färg" id="buttonColorPickPAPipboy" />
+          <Button text="Återställ" id="buttonColorResetPipboy" />
+          <Button text="Återställ" id="buttonColorResetPAPipboy" />
+          <Label text="Färg för Quick-Boy" id="labelQuickboyColor">
+            <Tooltip>Påverkade värden: fQuickBoyEffectColorR, fQuickBoyEffectColorG, fQuickBoyEffectColorB
+Påverkade filer: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Button text="Välj Färg" id="buttonColorPickQuickboy" />
+          <Button text="Återställ" id="buttonColorResetQuickboy" />
+          <Label text="Färg för Pip-Boy" id="labelPipboyColor">
+            <Tooltip>Påverkade värden: fPipboyEffectColorR, fPipboyEffectColorG, fPipboyEffectColorB
+Påverkade filer: Fallout76Prefs.ini</Tooltip>
+          </Label>
+          <Button text="Välj färg" id="buttonColorPickPipboy" />
+        </Group>
+      </Tab>
+    </TabContainer>
+    <Button text="Använd" id="buttonApply" />
+  </Form1>
+  <FormMods title="Hantera moddar">
+    <Element id="panel1">
+      <Button text="Distribuera" id="buttonModsDeploy" />
+      <Checkbox text="Stäng av alla mods" id="checkBoxDisableMods" />
+    </Element>
+    <TabContainer id="tabControl1">
+      <Tab text="Laddningsordning" id="tabPageModOrder">
+        <Tool id="toolStrip1">
+          <Button text="Lägg till mod (från arkiv)" id="toolStripButtonAddMod" />
+          <Button text="Lägg till mod (från mapp)" id="toolStripButtonAddModFolder" />
+          <Button text="Markera/Avmarkera alla" id="toolStripButtonCheckAll" />
+          <Button text="Flytta upp" id="toolStripButtonMoveUp" />
+          <Button text="Flytta ner" id="toolStripButtonMoveDown" />
+          <Button text="Ändra detaljer för mod" id="toolStripButtonModEdit" />
+          <Button text="Öppna mapp för mod" id="toolStripButtonModOpenFolder" />
+          <Button text="Ta bort mod" id="toolStripButtonDeleteMod" />
+        </Tool>
+        <ListView id="listViewMods">
+          <Column>Moddens namn</Column>
+          <Column>Typ</Column>
+          <Column>Installera till</Column>
+          <Column>Arkivets namn</Column>
+          <Column>Arkivets format</Column>
+        </ListView>
+      </Tab>
+      <Tab text="Inställningar" id="tabPageModsSettings">
+        <Group text="Sökvägar" id="groupBoxGamePaths">
+          <Label text="Spelets sökväg:" id="labelGamePath" />
+          <Button text="..." id="buttonPickGamePath" />
+        </Group>
+      </Tab>
+    </TabContainer>
+    <Menu id="menuStrip1">
+      <Item text="Fil" id="fileToolStripMenuItem">
+        <Item text="Lägg till mod" id="addModarchiveToolStripMenuItem">
+          <Item text="Från arkiv" id="fromArchiveToolStripMenuItem" />
+          <Item text="Från mapp" id="fromFolderToolStripMenuItem" />
+        </Item>
+        <Item text="Importera installerade moddar" id="toolStripMenuItemModsImport" />
+        <Item text="" id="toolStripSeparator1" />
+        <Item text="Distribuera" id="deployToolStripMenuItem" />
+      </Item>
+      <Item text="Visa" id="editToolStripMenuItem">
+        <Item text="Visa modkonflikter" id="showConflictingFilesToolStripMenuItem" />
+        <Item text="Ladda om UI" id="reloadUIToolStripMenuItem" />
+      </Item>
+      <Item text="Verktyg" id="toolsToolStripMenuItem">
+        <Item text="Reparera alla *.dds-filer" id="repairddsFilesToolStripMenuItem" />
+      </Item>
+      <Item text="Hjälp" id="helpToolStripMenuItem">
+        <Item text="Visa README" id="showREADMEToolStripMenuItem" />
+      </Item>
+    </Menu>
+  </FormMods>
+  <FormModDetails>
+    <Button text="Avbryt" id="buttonModDetailsCancel" />
+    <Button text="OK" id="buttonModDetailsOK" />
+    <Button text="Använd" id="buttonModDetailsApply" />
+    <Element id="panel1">
+      <Label text="..." id="labelModDetailRepairStatus" />
+      <Button text="Reparera *.dds-filer" id="buttonModRepairDDS" />
+      <Checkbox text="Packa arkiv" id="checkBoxModBA2Compression" />
+      <Label text="Arkivnamn:" id="labelModarkivName" />
+      <Checkbox text="Sätt på denna mod" id="checkBoxModDetailsEnabled" />
+      <Button text="Öppna mapp" id="buttonModOpenFolder" />
+      <Label text="Mappnamn för mod:" id="labelModFolderName" />
+      <Label text="Arkivformat:" id="labelModarkivFormat" />
+      <Label text="Installera som:" id="labelModInstallAs" />
+      <Label text="Modd-namn:" id="labelModName" />
+      <Button text="..." id="buttonModPickRootDir" />
+      <Label text="Installera till:" id="labelModInstallInto" />
+    </Element>
+  </FormModDetails>
+</Language>
