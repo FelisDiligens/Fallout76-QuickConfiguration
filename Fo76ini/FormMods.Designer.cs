@@ -51,24 +51,17 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageModOrder = new System.Windows.Forms.TabPage();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonAddMod = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonAddModFolder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonCheckAll = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonMoveUp = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonMoveDown = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonModEdit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonModOpenFolder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonDeleteMod = new System.Windows.Forms.ToolStripButton();
             this.listViewMods = new System.Windows.Forms.ListView();
             this.columnHeaderModTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderInstallAs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderInstallInto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderArchiveName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderArchiveFormat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderCompression = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderFrozenState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
             this.groupBoxGamePaths = new System.Windows.Forms.GroupBox();
@@ -81,7 +74,17 @@
             this.checkBoxDisableMods = new System.Windows.Forms.CheckBox();
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.columnHeaderCompression = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.openFileDialogBA2 = new System.Windows.Forms.OpenFileDialog();
+            this.toolStripButtonAddMod = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAddModFrozen = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAddModFolder = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonCheckAll = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonMoveUp = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonMoveDown = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonModEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonModOpenFolder = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDeleteMod = new System.Windows.Forms.ToolStripButton();
+            this.fromba2ArchivefrozenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -119,6 +122,7 @@
             // 
             this.addModarchiveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fromArchiveToolStripMenuItem,
+            this.fromba2ArchivefrozenToolStripMenuItem,
             this.fromFolderToolStripMenuItem});
             this.addModarchiveToolStripMenuItem.Name = "addModarchiveToolStripMenuItem";
             this.addModarchiveToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
@@ -274,6 +278,7 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonAddMod,
+            this.toolStripButtonAddModFrozen,
             this.toolStripButtonAddModFolder,
             this.toolStripSeparator4,
             this.toolStripButtonCheckAll,
@@ -292,125 +297,29 @@
             this.toolStrip1.TabIndex = 44;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButtonAddMod
-            // 
-            this.toolStripButtonAddMod.AutoSize = false;
-            this.toolStripButtonAddMod.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddMod.Image = global::Fo76ini.Properties.Resources.plus;
-            this.toolStripButtonAddMod.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonAddMod.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddMod.Name = "toolStripButtonAddMod";
-            this.toolStripButtonAddMod.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonAddMod.Text = "Add mod (from archive)";
-            this.toolStripButtonAddMod.Click += new System.EventHandler(this.toolStripButtonAddMod_Click);
-            // 
-            // toolStripButtonAddModFolder
-            // 
-            this.toolStripButtonAddModFolder.AutoSize = false;
-            this.toolStripButtonAddModFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddModFolder.Image = global::Fo76ini.Properties.Resources.folder_plus;
-            this.toolStripButtonAddModFolder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonAddModFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddModFolder.Name = "toolStripButtonAddModFolder";
-            this.toolStripButtonAddModFolder.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonAddModFolder.Text = "Add mod (from folder)";
-            this.toolStripButtonAddModFolder.Click += new System.EventHandler(this.toolStripButtonAddModFolder_Click);
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(28, 6);
-            // 
-            // toolStripButtonCheckAll
-            // 
-            this.toolStripButtonCheckAll.AutoSize = false;
-            this.toolStripButtonCheckAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonCheckAll.Image = global::Fo76ini.Properties.Resources.checkbox_checked;
-            this.toolStripButtonCheckAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonCheckAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonCheckAll.Name = "toolStripButtonCheckAll";
-            this.toolStripButtonCheckAll.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonCheckAll.Text = "Check/uncheck all";
-            this.toolStripButtonCheckAll.Click += new System.EventHandler(this.toolStripButtonCheckAll_Click);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(29, 6);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(28, 6);
-            // 
-            // toolStripButtonMoveUp
-            // 
-            this.toolStripButtonMoveUp.AutoSize = false;
-            this.toolStripButtonMoveUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonMoveUp.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonMoveUp.Image")));
-            this.toolStripButtonMoveUp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonMoveUp.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonMoveUp.Name = "toolStripButtonMoveUp";
-            this.toolStripButtonMoveUp.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonMoveUp.Text = "Move up";
-            this.toolStripButtonMoveUp.Click += new System.EventHandler(this.toolStripButtonMoveUp_Click);
-            // 
-            // toolStripButtonMoveDown
-            // 
-            this.toolStripButtonMoveDown.AutoSize = false;
-            this.toolStripButtonMoveDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonMoveDown.Image = global::Fo76ini.Properties.Resources.arrow_down;
-            this.toolStripButtonMoveDown.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonMoveDown.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonMoveDown.Name = "toolStripButtonMoveDown";
-            this.toolStripButtonMoveDown.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonMoveDown.Text = "Move down";
-            this.toolStripButtonMoveDown.Click += new System.EventHandler(this.toolStripButtonMoveDown_Click);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(29, 6);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(28, 6);
-            // 
-            // toolStripButtonModEdit
-            // 
-            this.toolStripButtonModEdit.AutoSize = false;
-            this.toolStripButtonModEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonModEdit.Image = global::Fo76ini.Properties.Resources.pencil;
-            this.toolStripButtonModEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonModEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonModEdit.Name = "toolStripButtonModEdit";
-            this.toolStripButtonModEdit.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonModEdit.Text = "Edit mod details";
-            this.toolStripButtonModEdit.Click += new System.EventHandler(this.toolStripButtonModEdit_Click);
-            // 
-            // toolStripButtonModOpenFolder
-            // 
-            this.toolStripButtonModOpenFolder.AutoSize = false;
-            this.toolStripButtonModOpenFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonModOpenFolder.Image = global::Fo76ini.Properties.Resources.folder_open;
-            this.toolStripButtonModOpenFolder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonModOpenFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonModOpenFolder.Name = "toolStripButtonModOpenFolder";
-            this.toolStripButtonModOpenFolder.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonModOpenFolder.Text = "Open mod folder";
-            this.toolStripButtonModOpenFolder.Click += new System.EventHandler(this.toolStripButtonModOpenFolder_Click);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(29, 6);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(28, 6);
-            // 
-            // toolStripButtonDeleteMod
-            // 
-            this.toolStripButtonDeleteMod.AutoSize = false;
-            this.toolStripButtonDeleteMod.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDeleteMod.Image = global::Fo76ini.Properties.Resources.bin;
-            this.toolStripButtonDeleteMod.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonDeleteMod.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDeleteMod.Name = "toolStripButtonDeleteMod";
-            this.toolStripButtonDeleteMod.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonDeleteMod.Text = "Delete mod";
-            this.toolStripButtonDeleteMod.Click += new System.EventHandler(this.toolStripButtonDeleteMod_Click);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(29, 6);
             // 
             // listViewMods
             // 
@@ -462,6 +371,11 @@
             // 
             this.columnHeaderArchiveFormat.Text = "Archive format";
             this.columnHeaderArchiveFormat.Width = 90;
+            // 
+            // columnHeaderCompression
+            // 
+            this.columnHeaderCompression.Text = "Compressed?";
+            this.columnHeaderCompression.Width = 75;
             // 
             // columnHeaderFrozenState
             // 
@@ -554,10 +468,126 @@
             this.panel1.Size = new System.Drawing.Size(166, 58);
             this.panel1.TabIndex = 56;
             // 
-            // columnHeaderCompression
+            // openFileDialogBA2
             // 
-            this.columnHeaderCompression.Text = "Compressed?";
-            this.columnHeaderCompression.Width = 75;
+            this.openFileDialogBA2.DefaultExt = "ba2";
+            this.openFileDialogBA2.Filter = "Archive2|*.ba2";
+            this.openFileDialogBA2.Title = "Add *.ba2 archive.";
+            // 
+            // toolStripButtonAddMod
+            // 
+            this.toolStripButtonAddMod.AutoSize = false;
+            this.toolStripButtonAddMod.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAddMod.Image = global::Fo76ini.Properties.Resources.plus;
+            this.toolStripButtonAddMod.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonAddMod.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddMod.Name = "toolStripButtonAddMod";
+            this.toolStripButtonAddMod.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonAddMod.Text = "Add mod (from archive)";
+            this.toolStripButtonAddMod.Click += new System.EventHandler(this.toolStripButtonAddMod_Click);
+            // 
+            // toolStripButtonAddModFrozen
+            // 
+            this.toolStripButtonAddModFrozen.AutoSize = false;
+            this.toolStripButtonAddModFrozen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAddModFrozen.Image = global::Fo76ini.Properties.Resources.frozen_plus;
+            this.toolStripButtonAddModFrozen.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonAddModFrozen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddModFrozen.Name = "toolStripButtonAddModFrozen";
+            this.toolStripButtonAddModFrozen.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonAddModFrozen.Text = "Add mod (from *.ba2 archive)";
+            this.toolStripButtonAddModFrozen.Click += new System.EventHandler(this.toolStripButtonAddModFrozen_Click);
+            // 
+            // toolStripButtonAddModFolder
+            // 
+            this.toolStripButtonAddModFolder.AutoSize = false;
+            this.toolStripButtonAddModFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAddModFolder.Image = global::Fo76ini.Properties.Resources.folder_plus;
+            this.toolStripButtonAddModFolder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonAddModFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddModFolder.Name = "toolStripButtonAddModFolder";
+            this.toolStripButtonAddModFolder.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonAddModFolder.Text = "Add mod (from folder)";
+            this.toolStripButtonAddModFolder.Click += new System.EventHandler(this.toolStripButtonAddModFolder_Click);
+            // 
+            // toolStripButtonCheckAll
+            // 
+            this.toolStripButtonCheckAll.AutoSize = false;
+            this.toolStripButtonCheckAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonCheckAll.Image = global::Fo76ini.Properties.Resources.checkbox_checked;
+            this.toolStripButtonCheckAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonCheckAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCheckAll.Name = "toolStripButtonCheckAll";
+            this.toolStripButtonCheckAll.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonCheckAll.Text = "Check/uncheck all";
+            this.toolStripButtonCheckAll.Click += new System.EventHandler(this.toolStripButtonCheckAll_Click);
+            // 
+            // toolStripButtonMoveUp
+            // 
+            this.toolStripButtonMoveUp.AutoSize = false;
+            this.toolStripButtonMoveUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonMoveUp.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonMoveUp.Image")));
+            this.toolStripButtonMoveUp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonMoveUp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonMoveUp.Name = "toolStripButtonMoveUp";
+            this.toolStripButtonMoveUp.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonMoveUp.Text = "Move up";
+            this.toolStripButtonMoveUp.Click += new System.EventHandler(this.toolStripButtonMoveUp_Click);
+            // 
+            // toolStripButtonMoveDown
+            // 
+            this.toolStripButtonMoveDown.AutoSize = false;
+            this.toolStripButtonMoveDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonMoveDown.Image = global::Fo76ini.Properties.Resources.arrow_down;
+            this.toolStripButtonMoveDown.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonMoveDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonMoveDown.Name = "toolStripButtonMoveDown";
+            this.toolStripButtonMoveDown.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonMoveDown.Text = "Move down";
+            this.toolStripButtonMoveDown.Click += new System.EventHandler(this.toolStripButtonMoveDown_Click);
+            // 
+            // toolStripButtonModEdit
+            // 
+            this.toolStripButtonModEdit.AutoSize = false;
+            this.toolStripButtonModEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonModEdit.Image = global::Fo76ini.Properties.Resources.pencil;
+            this.toolStripButtonModEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonModEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonModEdit.Name = "toolStripButtonModEdit";
+            this.toolStripButtonModEdit.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonModEdit.Text = "Edit mod details";
+            this.toolStripButtonModEdit.Click += new System.EventHandler(this.toolStripButtonModEdit_Click);
+            // 
+            // toolStripButtonModOpenFolder
+            // 
+            this.toolStripButtonModOpenFolder.AutoSize = false;
+            this.toolStripButtonModOpenFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonModOpenFolder.Image = global::Fo76ini.Properties.Resources.folder_open;
+            this.toolStripButtonModOpenFolder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonModOpenFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonModOpenFolder.Name = "toolStripButtonModOpenFolder";
+            this.toolStripButtonModOpenFolder.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonModOpenFolder.Text = "Open mod folder";
+            this.toolStripButtonModOpenFolder.Click += new System.EventHandler(this.toolStripButtonModOpenFolder_Click);
+            // 
+            // toolStripButtonDeleteMod
+            // 
+            this.toolStripButtonDeleteMod.AutoSize = false;
+            this.toolStripButtonDeleteMod.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDeleteMod.Image = global::Fo76ini.Properties.Resources.bin;
+            this.toolStripButtonDeleteMod.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonDeleteMod.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDeleteMod.Name = "toolStripButtonDeleteMod";
+            this.toolStripButtonDeleteMod.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonDeleteMod.Text = "Delete mod";
+            this.toolStripButtonDeleteMod.Click += new System.EventHandler(this.toolStripButtonDeleteMod_Click);
+            // 
+            // fromba2ArchivefrozenToolStripMenuItem
+            // 
+            this.fromba2ArchivefrozenToolStripMenuItem.Name = "fromba2ArchivefrozenToolStripMenuItem";
+            this.fromba2ArchivefrozenToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.fromba2ArchivefrozenToolStripMenuItem.Text = "From *.ba2 archive (frozen)";
+            this.fromba2ArchivefrozenToolStripMenuItem.Click += new System.EventHandler(this.fromba2ArchivefrozenToolStripMenuItem_Click);
             // 
             // FormMods
             // 
@@ -645,5 +675,8 @@
         private System.Windows.Forms.ToolStripMenuItem reloadUIToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader columnHeaderFrozenState;
         private System.Windows.Forms.ColumnHeader columnHeaderCompression;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAddModFrozen;
+        private System.Windows.Forms.OpenFileDialog openFileDialogBA2;
+        private System.Windows.Forms.ToolStripMenuItem fromba2ArchivefrozenToolStripMenuItem;
     }
 }

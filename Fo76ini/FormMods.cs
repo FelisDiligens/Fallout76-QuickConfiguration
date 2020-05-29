@@ -651,6 +651,22 @@ namespace Fo76ini
             }
         }
 
+        // Add frozen mod archive (*.ba2)
+        private void toolStripButtonAddModFrozen_Click(object sender, EventArgs e)
+        {
+            if (!ManagedMods.Instance.ValidateGamePath())
+            {
+                MsgBox.ShowID("modsGamePathNotSet", MessageBoxIcon.Information);
+                return;
+            }
+            if (this.openFileDialogBA2.ShowDialog() == DialogResult.OK)
+            {
+                Thread thread = new Thread(() => InstallModArchiveFrozen(this.openFileDialogBA2.FileName));
+                thread.IsBackground = true;
+                thread.Start();
+            }
+        }
+
 
 
         /*
@@ -667,6 +683,12 @@ namespace Fo76ini
         private void fromFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStripButtonAddModFolder_Click(sender, e);
+        }
+
+        // File > Add mod > From *.ba2 archive (frozen)
+        private void fromba2ArchivefrozenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            toolStripButtonAddModFrozen_Click(sender, e);
         }
 
         // File > Import installed mods
@@ -838,6 +860,25 @@ namespace Fo76ini
             Invoke(() => DisableUI());
             Invoke(() => ProgressBarMarquee());
             ManagedMods.Instance.InstallModArchive(path,
+                (text, percent) => {
+                    Invoke(() => Display(text));
+                },
+                () => {
+                    Invoke(() => ProgressBarContinuous(100));
+                    Invoke(() => HideLabel());
+                    Invoke(() => EnableUI());
+                    Invoke(() => selectedIndex = ManagedMods.Instance.Mods.Count - 1);
+                    Invoke(() => UpdateModList());
+                    Invoke(() => UpdateLabel());
+                }
+            );
+        }
+
+        private void InstallModArchiveFrozen(String path)
+        {
+            Invoke(() => DisableUI());
+            Invoke(() => ProgressBarMarquee());
+            ManagedMods.Instance.InstallModArchiveFrozen(path,
                 (text, percent) => {
                     Invoke(() => Display(text));
                 },

@@ -657,6 +657,7 @@ Affected files: Fallout76Prefs.ini</Tooltip>
       <Tab text="Mod order" id="tabPageModOrder">
         <Tool id="toolStrip1">
           <Button text="Add mod (from archive)" id="toolStripButtonAddMod" />
+          <Button text="Add mod (from *.ba2 archive)" id="toolStripButtonAddModFrozen" />
           <Button text="Add mod (from folder)" id="toolStripButtonAddModFolder" />
           <Button text="Check/uncheck all" id="toolStripButtonCheckAll" />
           <Button text="Move up" id="toolStripButtonMoveUp" />
@@ -686,6 +687,7 @@ Affected files: Fallout76Prefs.ini</Tooltip>
       <Item text="File" id="fileToolStripMenuItem">
         <Item text="Add mod" id="addModarchiveToolStripMenuItem">
           <Item text="From archive" id="fromArchiveToolStripMenuItem" />
+          <Item text="From *.ba2 archive (frozen)" id="fromba2ArchivefrozenToolStripMenuItem" />
           <Item text="From folder" id="fromFolderToolStripMenuItem" />
         </Item>
         <Item text="Import installed mods" id="toolStripMenuItemModsImport" />

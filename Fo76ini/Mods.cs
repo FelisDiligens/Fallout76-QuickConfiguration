@@ -140,6 +140,12 @@ namespace Fo76ini
             return this.frozen && File.Exists(GetFrozenArchivePath());
         }
 
+        public void OverwriteFrozen(bool isFrozen)
+        {
+            ManagedMods.Instance.logFile.WriteLine($"Manually overwritten: (Mod){this.Title}.frozen = {isFrozen}");
+            this.frozen = isFrozen;
+        }
+
         public void Freeze (Action<String, int> updateProgress = null, Action done = null)
         {
             if (updateProgress != null)
@@ -403,7 +409,7 @@ namespace Fo76ini
         private String gamePath = null;
         public bool nuclearWinterMode = false;
         private String gamePathKey;
-        private Log logFile;
+        public Log logFile;
 
         // Use lower-case, plz
         private List<String> whitelistedDlls = new List<String>() {
@@ -767,6 +773,72 @@ namespace Fo76ini
                 MsgBox.Get("modsArchiveTypeNotSupported").FormatText(fileExtension).Show(MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public void InstallModArchiveFrozen(String filePath, Action<String, int> updateProgress = null, Action done = null)
+        {
+            // Some conditions have to be met:
+            if (this.gamePath == null)
+            {
+                if (done != null)
+                    done();
+                return;
+            }
+
+            if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
+                Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
+
+            if (!File.Exists(filePath))
+            {
+                // Path too long?
+                // https://stackoverflow.com/questions/5188527/how-to-deal-with-files-with-a-name-longer-than-259-characters
+                // https://docs.microsoft.com/de-de/archive/blogs/jeremykuhne/more-on-new-net-path-handling
+                if (File.Exists(@"\\?\" + filePath))
+                {
+                    filePath = @"\\?\" + filePath;
+                }
+                else
+                {
+                    if (done != null)
+                        done();
+                    throw new FileNotFoundException(filePath);
+                }
+            }
+
+            // Get paths:
+            filePath = Path.GetFullPath(filePath);
+            String fileName = Path.GetFileNameWithoutExtension(filePath);
+            String fileExtension = Path.GetExtension(filePath);
+            String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", fileName));
+            String managedFolder = Path.GetFileName(managedFolderPath);
+
+            // Create a new mod:
+            Mod mod = new Mod();
+            mod.Title = fileName;
+            mod.ManagedFolder = managedFolder;
+            mod.RootFolder = "Data";
+            mod.ArchiveName = fileName;
+            mod.Type = Mod.FileType.SeparateBA2;
+            // TODO: Detect archive format:
+            // mod.Compression = Archive2.Compression.??
+            // mod.Format = Mod.ArchiveFormat.??
+            mod.freeze = true;
+            mod.OverwriteFrozen(true);
+            mod.isEnabled = false;
+
+            // Copy the archive:
+            if (updateProgress != null)
+                updateProgress($"Copying {Path.GetFileName(filePath)}", -1);
+
+            if (!Directory.Exists(managedFolderPath))
+                Directory.CreateDirectory(managedFolderPath);
+
+            File.Copy(filePath, Path.Combine(managedFolderPath, "frozen.ba2"));
+            this.AddInstalledMod(mod);
+            this.Save();
+
+            if (done != null)
+                done();
         }
 
         /// <summary>
