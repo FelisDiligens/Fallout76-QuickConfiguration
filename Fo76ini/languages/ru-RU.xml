@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.5.2">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.6">
   <Strings>
     <String text="Доступна новая версия: {0}" id="newVersionAvailable" />
     <String text="Необходима установка" id="modsDeploymentNecessary" />
@@ -9,8 +9,14 @@
     <String text="Автовыбор" id="modsTableFormatAutoDetect" />
     <String text="Объединённый" id="modsTableTypeBundled" />
     <String text="Отдельный" id="modsTableTypeSeparate" />
+    <String text="Отдельный (Заморожен)" id="modsTableTypeSeparateFrozen" />
     <String text="Без архива" id="modsTableTypeLoose" />
-    <String text="Не выбран" id="notApplicable" />
+    <String text="В очереди" id="modTableFrozenPending" />
+    <String text="Править {0}" id="modDetailsTitle" />
+    <String text="Править {0} модов" id="modDetailsTitleBulk" />
+    <String text="Не выбрано" id="notApplicable" />
+    <String text="Да" id="yes" />
+    <String text="Нет" id="no" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -83,11 +89,19 @@
     <Messagebox title="Готово" id="oldValuesResetToDefault">Несколько значений восстановлено на дефолтные.
 Это касается только нестабильных значений из предыдущих версий.
 Не забудьте нажать кнопку "Применить".</Messagebox>
+    <Messagebox title="Files modified" id="iniFilesModified">*.ini файлы были изменены другой программой во время работы конфигуратора.
+Примечание: любые изменения будут перезаписаны, если нажать на кнопку "Применить" или кнопку "Установить" в управлении модами.
+Пожалуйста, перезагрузите конфигуратор для получения новых значений.</Messagebox>
     <Messagebox title="Ошибка при загрузке UI" id="onLoadFuncException">{0} исключений во время загрузки пользовательского интерфейса.
 Это может быть вызвано поврежденными ini-файлами.
 Некоторые элементы пользовательского интерфейса могут работать неправильно.
 
 {1}</Messagebox>
+    <Messagebox title="Готово" id="downloadLanguagesFinished">Загруженные языковые файлы: {0}</Messagebox>
+    <Messagebox title="Неудача" id="downloadLanguagesFailed">Не удалось загрузить языковые файлы.
+{0}</Messagebox>
+    <Messagebox title="Готово" id="modsDisabledDone">Моды были отключены и удалены из игры.</Messagebox>
+    <Messagebox title="Готово" id="modsDeployedDone">Mods are deployed.</Messagebox>
     <Messagebox title="Archive2 не обнаружен" id="modsArchive2Missing">Пожалуйста настройте путь к Archive2 и путь для распаковки архивов *.ba2.</Messagebox>
     <Messagebox title="Не указан путь к игре" id="modsGamePathNotSet">Пожалуйста, укажите путь к игре (папке, где находится Fallout76.exe).</Messagebox>
     <Messagebox title="Неправильный путь" id="modsGamePathInvalid">Неправильный путь к папке с игрой.</Messagebox>
@@ -120,10 +134,44 @@
     <Messagebox title="Вы уверены?" id="modsRepairDDSQuestion">Будет предпринята попытка восстановить все файлы *.dds.
 Это может занять много времени, в зависимости от размера и количества файлов.
 Вы уверены, что хотите продолжить?</Messagebox>
+    <Messagebox title="Готово" id="modsRepairDDSDone">*.dds файлы восстановлены.</Messagebox>
+    <Messagebox title="Моды всё ещё установлены" id="nwModeEnabledButModsAreDeployed">Вы включили режим Nuclear Winter, но ваши моды все еще установлены.
+Вы хотите отключить их прямо сейчас?</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Quick Configuration">
+    <Button text="Управление модами" id="buttonManageMods" />
+    <Button text="Запустить игру" id="buttonLaunchGame" />
+    <Button text="Применить" id="buttonApply" />
+    <TabContainer id="tabControl1">
+      <Tab text="Инфо" id="tabPageInfo">
+        <Label text="Перевод:" id="labelTranslationBy" />
+        <Label text="Автор:" id="labelAuthor" />
+        <Label text="Версия:" id="labelVersion" />
+        <Label text="Эта программа  поможет быстро  настроить ваши\n файлы INI. Наведите на нужную настройку, чтобы\n получить подсказку." id="labelDescription" />
+        <Link text="Скачать последнюю версию с Nexus'а" id="linkLabelDownloadPage" />
+        <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
+      </Tab>
+      <Tab text="Настройки" id="tabPageSettings">
+        <Group text="Перевод" id="groupBoxLocalization">
+          <Label text="Этот языковой файл устарел.\nНекоторые элементы могут быть не переведены." id="labelOutdatedLanguage" />
+          <Label text="Язык:" id="labelLanguage" />
+          <Button text="Скачать / обновить языки" id="buttonDownloadLanguages" />
+        </Group>
     <Group text="Настройки" id="groupBoxOptions">
-		<Checkbox text="Режим Nuclear Winter" id="checkBoxNWMode" />
+          <Checkbox text="Открывать управление модами при запуске" id="checkBoxOpenManageModsOnLaunch" />
+          <Checkbox text="Не выдавать запрос при нажатии &quot;Применить&quot;" id="checkBoxSkipBackupQuestion">
+            <Tooltip>Пропускает вопрос резервного копирования при нажатии кнопки "Применить".
+Примечание: При этом резервная копия создаваться НЕ БУДЕТ!</Tooltip>
+          </Checkbox>
+          <Checkbox text="Применять изменения при закрытии программы или запуске игры" id="checkBoxAutoApply">
+            <Tooltip>Больше не нужно будет нажимать кнопку "Применить".</Tooltip>
+          </Checkbox>
+		<Checkbox text="Режим Nuclear Winter" id="checkBoxNWMode">
+            <Tooltip>На данный момент переименовывает Fallout76Custom.ini в Fallout76Custom.ini.nwmodebak.</Tooltip>
+        </Checkbox>
+        <Checkbox text="Закрывать конфигуратор при запуске игры" id="checkBoxQuitOnGameLaunch">
+            <Tooltip>Работает только при запуске игры из конфигуратора.</Tooltip>
+        </Checkbox>
 		<Checkbox text="INI только для чтения" id="checkBoxReadOnly">
 		  <Tooltip>Этот вариант сделает все *.ini-файлы доступными только для чтения.
 	Включите эту функцию, если ваши настройки сбрасываются после запуска игры.
@@ -131,23 +179,11 @@
 	Затрагивает файлы: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
 		</Checkbox>
     </Group>
+        <Button text="Исправить настройки версии v1.3.1 и ниже" id="buttonFixIssuesEarlierVersion" />
 	<Group text="Версия игры" id="groupBoxGameEdition">
 	  <Radiobutton text="Steam" id="radioButtonEditionSteam" />
 	  <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
 	</Group>
-    <Button text="Настроить моды" id="buttonManageMods" />
-    <Button text="Запустить игру" id="buttonLaunchGame" />
-    <TabContainer id="tabControl1">
-      <Tab text="Инфо" id="tabPageInfo">
-        <Button text="Исправить настройки версии v1.3.1 и ниже" id="buttonFixIssuesEarlierVersion" />
-        <Label text="Перевод:" id="labelTranslationBy" />
-        <Link text="Прочитать README" id="linkLabel1" />
-        <Label text="Автор:" id="labelAuthor" />
-        <Label text="Язык:" id="labelLanguage" />
-        <Label text="Версия:" id="labelVersion" />
-        <Label text="Эта программа поможет быстро настроить ваши INI файлы.\nНаведите на нужную настройку, чтобы получить подсказку." id="labelDescription" />
-        <Link text="Скачать последнюю версию с Nexus'а" id="linkLabelDownloadPage" />
-        <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
       <Tab text="Основное" id="tabPageGeneral">
         <Group text="Камера" id="groupBoxCamera">
@@ -213,6 +249,7 @@
         </Group>
       </Tab>
       <Tab text="Экран" id="tabPageDisplay">
+        <Button text="Обнаружить разрешение" id="buttonDetectResolution" />
         <Checkbox text="Всегда активно" id="checkBoxAlwaysActive">
           <Tooltip>Отключите это, если вы хотите, чтобы игра приостановилась в фоновом режиме.
 
@@ -588,7 +625,6 @@ Affected files: Fallout76Custom.ini</Tooltip>
         </Group>
       </Tab>
     </TabContainer>
-    <Button text="Применить" id="buttonApply" />
   </Form1>
   <FormMods title="Настройка модов">
     <Element id="panel1">
@@ -599,6 +635,7 @@ Affected files: Fallout76Custom.ini</Tooltip>
       <Tab text="Список модов" id="tabPageModOrder">
         <Tool id="toolStrip1">
           <Button text="Добавить мод из архива" id="toolStripButtonAddMod" />
+          <Button text="Добавить мод из архива *.ba2" id="toolStripButtonAddModFrozen" />
           <Button text="Добавить мод из папки" id="toolStripButtonAddModFolder" />
           <Button text="Отметить/снять все" id="toolStripButtonCheckAll" />
           <Button text="Выше" id="toolStripButtonMoveUp" />
@@ -613,6 +650,8 @@ Affected files: Fallout76Custom.ini</Tooltip>
           <Column>Путь установки</Column>
           <Column>Имя архива</Column>
           <Column>Формат архива</Column>
+          <Column>Сжатый?</Column>
+          <Column>Заморожен?</Column>
         </ListView>
       </Tab>
       <Tab text="Настройки" id="tabPageModsSettings">
@@ -626,6 +665,7 @@ Affected files: Fallout76Custom.ini</Tooltip>
       <Item text="Файл" id="fileToolStripMenuItem">
         <Item text="Добавить мод" id="addModarchiveToolStripMenuItem">
           <Item text="Из архива" id="fromArchiveToolStripMenuItem" />
+          <Item text="Из архива *.ba2 (заморожен)" id="fromba2ArchivefrozenToolStripMenuItem" />
           <Item text="Из папки" id="fromFolderToolStripMenuItem" />
         </Item>
         <Item text="Импортировать установленные моды" id="toolStripMenuItemModsImport" />
@@ -647,13 +687,28 @@ Affected files: Fallout76Custom.ini</Tooltip>
   <FormModDetails>
     <Button text="Отмена" id="buttonModDetailsCancel" />
     <Button text="OK" id="buttonModDetailsOK" />
+    <Label text="..." id="labelModDetailsStatus" />
     <Button text="Применить" id="buttonModDetailsApply" />
     <Element id="panel1">
-      <Label text="..." id="labelModDetailRepairStatus" />
+      <Checkbox text="Включить мод" id="checkBoxModDetailsEnabled" />
+      <Label text="Примечание: замороженные моды будут пропущены." id="labelModDetailsBulkFrozenModsWarning" />
+      <Group text="Пресеты" id="groupBoxSeparateArchivePresets">
+        <Radiobutton text="Другое" id="radioButtonSeparateArchiveCustom" />
+        <Radiobutton text="Звуки" id="radioButtonSeparateArchiveSounds" />
+        <Radiobutton text="Текстуры (файлы *.dds)" id="radioButtonSeparateArchiveTextures" />
+        <Radiobutton text="Общее / Интерфейс" id="radioButtonSeparateArchiveGeneral" />
+      </Group>
+      <Label text="Параметры установки отключены, так как мод заморожен." id="labelModUnfreeze" />
+      <Button text="Разморозить" id="buttonModUnfreeze" />
+      <Checkbox text="Заморозить" id="checkBoxFreezeArchive">
+        <Tooltip>Если вы "заморозите" архив, он не будет распаковываться при установке.
+Это ускорит процесс.
+
+Особенно полезно, если архив огромен (1GiB или больше) и файлы не меняются.</Tooltip>
+      </Checkbox>
       <Button text="Восстановить файлы *.dds" id="buttonModRepairDDS" />
       <Checkbox text="Сжать архив" id="checkBoxModBA2Compression" />
       <Label text="Имя архива:" id="labelModArchiveName" />
-      <Checkbox text="Включить мод" id="checkBoxModDetailsEnabled" />
       <Button text="Открыть папку" id="buttonModOpenFolder" />
       <Label text="Папка мода:" id="labelModFolderName" />
       <Label text="Формат архива:" id="labelModArchiveFormat" />
