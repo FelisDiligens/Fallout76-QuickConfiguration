@@ -182,7 +182,7 @@ So braucht man nicht mehr auf "Anwenden" zu drücken.</Tooltip>
           <Button text="Sprachen herunterladen / aktualisieren" id="buttonDownloadLanguages" />
         </Group>
         <Group text="Optionen" id="groupBoxOptions">
-          <Checkbox text="Ich verwende mehrere Spieledition." id="checkBoxMultipleGameEditionsUsed">
+          <Checkbox text="Ich verwende mehrere Spieleditionen." id="checkBoxMultipleGameEditionsUsed">
             <Tooltip>Hake das an, wenn du Mods für mehr als eine Spieledition installierst.
 Wenn angehakt, dann wird sResourceIndexFileList für jede einzelne Spieledition separat gespeichtert.</Tooltip>
           </Checkbox>
