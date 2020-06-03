@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Polski" iso="pl-PL" author="Gray770" version="1.5.2">
+<Language name="Polski" iso="pl-PL" author="Gray770" version="1.6">
   <Strings>
     <String text="Nowsza wersja jest dostępna: {0}" id="newVersionAvailable" />
     <String text="Wdrożenie wymagane" id="modsDeploymentNecessary" />
@@ -9,8 +9,14 @@
     <String text="Auto" id="modsTableFormatAutoDetect" />
     <String text="Zapakowane" id="modsTableTypeBundled" />
     <String text="Odzielne" id="modsTableTypeSeparate" />
+    <String text="Odzielne (Zamrożone)" id="modsTableTypeSeparateFrozen" />
     <String text="Luźne" id="modsTableTypeLoose" />
+    <String text="Oczekujące" id="modTableFrozenPending" />
+    <String text="Edytuj {0}" id="modDetailsTitle" />
+    <String text="Edytuj {0} modów" id="modDetailsTitleBulk" />
     <String text="N/A" id="notApplicable" />
+    <String text="Tak" id="yes" />
+    <String text="Nie" id="no" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -83,11 +89,19 @@ Gra utworzy pliki konfiguracyjne przy włączeniu.</Messagebox>
     <Messagebox title="Gotowe" id="oldValuesResetToDefault">Wartości zostały zresetowane
 Jedynie niestabilne wartości zostały zresetowane
 Nie zapomnij o kliknięciu "Zatwierdź".</Messagebox>
+    <Messagebox title="Pliki zostały zmodyfikowane" id="iniFilesModified">Pliki *.ini zostały zmodyfikowane poza narzędziem.
+UWAGA: Zmiany zostaną nadpisane, jeśli klikniesz "Zastosuj" lub gdy mody są zarządzane.
+Please restart the tool to work with the new values.</Messagebox>
     <Messagebox title="Problem przy ładowaniu UI" id="onLoadFuncException">{0} wyjątek wystąpił podczas ładowania UI
 Może być to spowodowane zepsutymi plikami .ini
 Niektóre elementy mogą działać nieprawidłowo
 
 {1}</Messagebox>
+    <Messagebox title="Gotowe" id="downloadLanguagesFinished">Pobrane tłumaczenia: {0}</Messagebox>
+    <Messagebox title="Failed" id="downloadLanguagesFailed">Pobieranie tłumaczeń nie powiodło się.
+{0}</Messagebox>
+    <Messagebox title="Gotowe" id="modsDisabledDone">Mody zostały wyłączone i usunięte z gry.</Messagebox>
+    <Messagebox title="Gotowe" id="modsDeployedDone">Mody zostały wdrożone</Messagebox>
     <Messagebox title="Nie można znaleźć Archive2" id="modsArchive2Missing">Nie można znaleźć .\Archive2\Archive2.exe 
 Pobierz te narzędzie jeszcze raz lub pobierz Archive2 samodzielnie</Messagebox>
     <Messagebox title="Ścieżka gry nie wybrana" id="modsGamePathNotSet">Ustaw ścieżke gry (folder z Fallout76.exe).</Messagebox>
@@ -121,33 +135,55 @@ Error message: "{0}".</Messagebox>
     <Messagebox title="Czy jesteś pewien?" id="modsRepairDDSQuestion">Kliknięcie "Tak" spróbuje naprawić wszystkie pliki *.dds.
 Może to potrwać chwile, zależnie od wagi pliku.
 Czy jesteś pewien że chcesz kontynuować?</Messagebox>
+    <Messagebox title="Gotowe" id="modsRepairDDSDone">pliki *.dds zostały naprawione</Messagebox>
+    <Messagebox title="Mody nadal są włączone" id="nwModeEnabledButModsAreDeployed">Włączyłeś tryb Nuclear Winter ale twoje mody nadal są włączone
+Czy chcesz je wyłączyć?</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Quick Configuration">
-    <Group text="Opcje" id="groupBoxOptions">
-      <Checkbox text="Tryb Nuclear Winter" id="checkBoxNWMode" />
-      <Checkbox text="Pliki *.ini tylko do odczytu" id="checkBoxReadOnly">
-        <Tooltip>Ta opcja ustawi wszystkie pliki *.ini tylko do odczytu.
-
-Pliki: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
-      </Checkbox>
-    </Group>
-    <Group text="Wersja gry" id="groupBoxGameEdition">
-      <Radiobutton text="Steam" id="radioButtonEditionSteam" />
-      <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
-    </Group>
     <Button text="Zarządzaj modami" id="buttonManageMods" />
     <Button text="Włącz gre" id="buttonLaunchGame" />
+    <Button text="Zastosuj" id="buttonApply" />
     <TabContainer id="tabControl1">
       <Tab text="Info" id="tabPageInfo">
-        <Button text="Napraw ustawienia z wersji v1.3.1 lub wcześniejszych" id="buttonFixIssuesEarlierVersion" />
         <Label text="Tłumaczenie:" id="labelTranslationBy" />
-        <Link text="Otwórz README" id="linkLabel1" />
         <Label text="Autor:" id="labelAuthor" />
-        <Label text="Język:" id="labelLanguage" />
         <Label text="Wersja:" id="labelVersion" />
         <Label text="Te narzędzie pozwala na szybką zmiane ustawień INI.\nTip: Pozostaw opcje, których nie jesteś pewien." id="labelDescription" />
         <Link text="Pobierz najnowszą wersje z NexusMods" id="linkLabelDownloadPage" />
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
+      </Tab>
+      <Tab text="Ustawienia" id="tabPageSettings">
+        <Group text="Lokalizacja" id="groupBoxLocalization">
+          <Label text="Te tłumaczenie jest przestarzałe\nNiektóre elementy mogą być nieprzetłumaczone" id="labelOutdatedLanguage" />
+          <Label text="Język:" id="labelLanguage" />
+          <Button text="Pobierz / zaktualizuj tłumaczenie" id="buttonDownloadLanguages" />
+        </Group>
+        <Group text="Opcje" id="groupBoxOptions">
+          <Checkbox text="Otwórz menedżer modów gdy narzędzie jest włączane." id="checkBoxOpenManageModsOnLaunch" />
+          <Checkbox text="Nie pytaj mnie o backup gdy przycisk &quot;Zastosuj&quot; jest kliknięty" id="checkBoxSkipBackupQuestion">
+            <Tooltip>Pomiń pytanie o backup gdy przycisk Zastosuj zostanie kliknięty.
+UWAGA: Tą drogą narzędzie nie utworzy backupa!</Tooltip>
+          </Checkbox>
+          <Checkbox text="Automatycznie zastosuj zmiany gdy narzędzie jest zamykane lub gra jest włączana" id="checkBoxAutoApply">
+            <Tooltip>Po zatwierdzeniu tej opcji, nie trzeba klikać "zastosuj"</Tooltip>
+          </Checkbox>
+          <Checkbox text="Tryb Nuclear Winter" id="checkBoxNWMode">
+            <Tooltip>Obecnie tylko nazwa Fallout76Custom.ini zmienia się na Fallout76Custom.ini.nwmodebak.</Tooltip>
+          </Checkbox>
+          <Checkbox text="Wyłącz narzędzie gry gra jest włączona" id="checkBoxQuitOnGameLaunch">
+            <Tooltip>Działa tylko gdy gra jest włączana przez narzędzie</Tooltip>
+          </Checkbox>
+          <Checkbox text="Pliki *.ini tylko do odczytu" id="checkBoxReadOnly">
+            <Tooltip>Ta opcja ustawi wszystkie pliki *.ini tylko do odczytu.
+
+Pliki: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Button text="Napraw ustawienia z wersji v1.3.1 lub wcześniejszych" id="buttonFixIssuesEarlierVersion" />
+        <Group text="Wersja gry" id="groupBoxGameEdition">
+          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
+          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+        </Group>
       </Tab>
       <Tab text="Ogólne" id="tabPageGeneral">
         <Group text="Kamera" id="groupBoxCamera">
@@ -213,6 +249,7 @@ Zmiany w: Fallout76Custom.ini</Tooltip>
         </Group>
       </Tab>
       <Tab text="Wyświetlanie" id="tabPageDisplay">
+        <Button text="Detect resolution" id="buttonDetectResolution" />
         <Checkbox text="Zawsze aktywny" id="checkBoxAlwaysActive">
           <Tooltip>Wyłącz to gdy chcesz aby gra się pauzowała gdy przechodzisz na inne okno.
 
@@ -596,7 +633,6 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
         </Group>
       </Tab>
     </TabContainer>
-    <Button text="Zastosuj" id="buttonApply" />
   </Form1>
   <FormMods title="Zarządzaj modami">
     <Element id="panel1">
@@ -607,6 +643,7 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
       <Tab text="Modyfikacje" id="tabPageModOrder">
         <Tool id="toolStrip1">
           <Button text="Dodaj mod (z archiwum)" id="toolStripButtonAddMod" />
+          <Button text="Dodaj mod (z archiwum *.ba2)" id="toolStripButtonAddModFrozen" />
           <Button text="Dodaj mod (z folderu)" id="toolStripButtonAddModFolder" />
           <Button text="Zaznacz/odznacz wszystko" id="toolStripButtonCheckAll" />
           <Button text="Przenieść w góre" id="toolStripButtonMoveUp" />
@@ -621,6 +658,8 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
           <Column>Zainstalowane</Column>
           <Column>Nazwa archiwum</Column>
           <Column>Format archiwum</Column>
+          <Column>Kompresja</Column>
+          <Column>Zamrożony</Column>
         </ListView>
       </Tab>
       <Tab text="Ustawienia" id="tabPageModsSettings">
@@ -634,6 +673,7 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
       <Item text="Plik" id="fileToolStripMenuItem">
         <Item text="Dodaj modyfikacje" id="addModarchiveToolStripMenuItem">
           <Item text="Z archiwum" id="fromArchiveToolStripMenuItem" />
+          <Item text="Z archiwum *.ba2 (zamrożony)" id="fromba2ArchivefrozenToolStripMenuItem" />
           <Item text="Z folderu" id="fromFolderToolStripMenuItem" />
         </Item>
         <Item text="Importuj zainstalowane modyfikacje" id="toolStripMenuItemModsImport" />
@@ -655,13 +695,28 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
   <FormModDetails>
     <Button text="Anuluj" id="buttonModDetailsCancel" />
     <Button text="OK" id="buttonModDetailsOK" />
+    <Label text="..." id="labelModDetailsStatus" />
     <Button text="Zastosuj" id="buttonModDetailsApply" />
     <Element id="panel1">
-      <Label text="..." id="labelModDetailRepairStatus" />
+      <Checkbox text="Włącz moda" id="checkBoxModDetailsEnabled" />
+      <Label text="UWAGA: Zamrożone mody zostaną zignorowane" id="labelModDetailsBulkFrozenModsWarning" />
+      <Group text="Predefiniowane ustawienia" id="groupBoxSeparateArchivePresets">
+        <Radiobutton text="Niestandardowe" id="radioButtonSeparateArchiveCustom" />
+        <Radiobutton text="Dzwięki" id="radioButtonSeparateArchiveSounds" />
+        <Radiobutton text="Tekstury (pliki *.dds)" id="radioButtonSeparateArchiveTextures" />
+        <Radiobutton text="Ogólne / Interfejs" id="radioButtonSeparateArchiveGeneral" />
+      </Group>
+      <Label text="Opcje instalacji są wyłączone, ponieważ ten mod jest zamrożony" id="labelModUnfreeze" />
+      <Button text="Odmróź" id="buttonModUnfreeze" />
+      <Checkbox text="Zamróź" id="checkBoxFreezeArchive">
+        <Tooltip>Jeśli zamrożysz archiwum, nie zostanie ono ponownie utworzone podczas wdrażania.
+Przyśpieszy to wdrażanie.
+
+Jest to przydatne gdy archiwum jest wielkie (1GiB lub więcej)</Tooltip>
+      </Checkbox>
       <Button text="Napraw pliki *.dds" id="buttonModRepairDDS" />
       <Checkbox text="Kompresuj archiwum" id="checkBoxModBA2Compression" />
       <Label text="Nazwa archiwum:" id="labelModArchiveName" />
-      <Checkbox text="Włącz moda" id="checkBoxModDetailsEnabled" />
       <Button text="Otwórz folder" id="buttonModOpenFolder" />
       <Label text="Nazwa folderu moda:" id="labelModFolderName" />
       <Label text="Format archiwum:" id="labelModArchiveFormat" />
