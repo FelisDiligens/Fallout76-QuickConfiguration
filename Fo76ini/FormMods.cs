@@ -47,9 +47,6 @@ namespace Fo76ini
             this.listViewMods.DragEnter += new DragEventHandler(listViewMods_DragEnter);
             this.listViewMods.DragDrop += new DragEventHandler(listViewMods_DragDrop);
             this.listViewMods.MouseUp += listViewMods_MouseUp;
-
-            ManagedMods.Instance.Load();
-            UpdateUI();
         }
 
         public void UpdateUI()
@@ -255,8 +252,13 @@ namespace Fo76ini
 
         private void UpdateSettings()
         {
+            if (!IniFiles.Instance.IsLoaded())
+                return;
             this.checkBoxDisableMods.Checked = ManagedMods.Instance.nuclearWinterMode;
             this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
+
+            this.textBoxsResourceArchive2List.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+            this.textBoxsResourceIndexFileList.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
         }
 
         private void UpdateLabel()
@@ -825,6 +827,50 @@ namespace Fo76ini
             }
         }
 
+        // Clean lists
+        private void buttonModsCleanLists_Click(object sender, EventArgs e)
+        {
+            List<String> sResourceIndexFileList = this.textBoxsResourceIndexFileList.Text.Replace(Environment.NewLine, "\n").Split(new char[] { '\n', ',' }, StringSplitOptions.RemoveEmptyEntries).Distinct().Select(x => x.Trim()).ToList();
+            List<String> sResourceArchive2List = this.textBoxsResourceArchive2List.Text.Replace(Environment.NewLine, "\n").Split(new char[] { '\n', ',' }, StringSplitOptions.RemoveEmptyEntries).Distinct().Select(x => x.Trim()).ToList();
+
+            String[] temp = new String[sResourceIndexFileList.Count()];
+            sResourceIndexFileList.CopyTo(temp);
+            foreach (String ba2file in temp)
+            {
+                Console.WriteLine(ba2file);
+                if (!File.Exists(Path.Combine(ManagedMods.Instance.GamePath, "Data", ba2file)))
+                    sResourceIndexFileList.Remove(ba2file);
+            }
+
+            temp = new String[sResourceArchive2List.Count()];
+            sResourceArchive2List.CopyTo(temp);
+            foreach (String ba2file in temp)
+            {
+                if (!File.Exists(Path.Combine(ManagedMods.Instance.GamePath, "Data", ba2file)))
+                    sResourceArchive2List.Remove(ba2file);
+                if (sResourceIndexFileList.Contains(ba2file))
+                    sResourceArchive2List.Remove(ba2file);
+            }
+            this.textBoxsResourceIndexFileList.Text = String.Join(Environment.NewLine, sResourceIndexFileList);
+            this.textBoxsResourceArchive2List.Text = String.Join(Environment.NewLine, sResourceArchive2List);
+        }
+
+        // Apply changes
+        private void buttonModsApplyTextBoxes_Click(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceArchive2List", String.Join(",", this.textBoxsResourceArchive2List.Text.Replace(Environment.NewLine, "\n").Split(new char[] { '\n', ',' }, StringSplitOptions.RemoveEmptyEntries)));
+            IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", String.Join(",", this.textBoxsResourceIndexFileList.Text.Replace(Environment.NewLine, "\n").Split(new char[] { '\n', ',' }, StringSplitOptions.RemoveEmptyEntries)));
+            ManagedMods.Instance.CopyINILists();
+            IniFiles.Instance.SaveAll();
+        }
+
+        // Reset
+        private void buttonModsResetTextboxes_Click(object sender, EventArgs e)
+        {
+            this.textBoxsResourceArchive2List.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+            this.textBoxsResourceIndexFileList.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+        }
+
         // Bethesda.net picked
         /*private void radioButtonEditionBethesdaNet_CheckedChanged(object sender, EventArgs e)
         {
@@ -841,9 +887,10 @@ namespace Fo76ini
 
         public void ChangeGameEdition(GameEdition gameEdition)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "uGameEdition", (uint)gameEdition);
+            ManagedMods.Instance.CopyINILists();
             ManagedMods.Instance.Unload();
-            ManagedMods.Instance.GamePathKey = "sGamePath" + (gameEdition == GameEdition.Steam ? "Steam" : "BethesdaNet");
+            IniFiles.Instance.Set(IniFile.Config, "Preferences", "uGameEdition", (uint)gameEdition);
+            ManagedMods.Instance.GameEdition = gameEdition;
             ManagedMods.Instance.GamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", ManagedMods.Instance.GamePathKey, "");
             this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
             ManagedMods.Instance.Load();
@@ -924,8 +971,10 @@ namespace Fo76ini
                 {
                     if (Directory.Exists(fullFilePath))
                         InstallModFolder(fullFilePath);
-                    else if ((new String[] { ".ba2", ".zip", ".rar", ".7z", ".tar", ".tar.gz", ".gz" }).Contains(Path.GetExtension(fullFilePath)))
+                    else if ((new String[] { ".zip", ".rar", ".7z", ".tar", ".tar.gz", ".gz" }).Contains(Path.GetExtension(fullFilePath)))
                         InstallModArchive(fullFilePath);
+                    else if (Path.GetExtension(fullFilePath).ToLower() == ".ba2")
+                        InstallModArchiveFrozen(fullFilePath);
                     else
                         MsgBox.Get("modsArchiveTypeNotSupported").FormatText(Path.GetExtension(fullFilePath)).Show(MessageBoxIcon.Error);
                 }
@@ -974,7 +1023,7 @@ namespace Fo76ini
                 },
                 () => {
                     Invoke(() => {
-                        UpdateModList();
+                        UpdateUI();
                         ProgressBarContinuous(100);
                         DisplayAllDone();
                         EnableUI();

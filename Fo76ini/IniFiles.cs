@@ -22,7 +22,8 @@ namespace Fo76ini
     {
         Unknown = 0,
         BethesdaNet = 1,
-        Steam = 2
+        Steam = 2,
+        BethesdaNetPTS = 3
     }
 
     public class IniFiles
@@ -136,6 +137,14 @@ namespace Fo76ini
 
             // Fix stuff:
             FixDuplicateResourceLists();
+        }
+
+        public bool IsLoaded()
+        {
+            return this.fo76Data != null &&
+                   this.fo76PrefsData != null &&
+                   this.fo76CustomData != null &&
+                   this.configData != null;
         }
 
         public void SaveGameInis(bool readOnly = false)

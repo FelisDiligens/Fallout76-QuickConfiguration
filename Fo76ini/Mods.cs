@@ -391,9 +391,9 @@ namespace Fo76ini
 
         private ManagedMods()
         {
-            this.gamePathKey = "sGamePath" + ((new string[] { "", "BethesdaNet", "Steam" })[IniFiles.Instance.GetInt(IniFile.Config, "Preferences", "uGameEdition", 0)]);
+            this.GameEdition = (GameEdition)(IniFiles.Instance.GetInt(IniFile.Config, "Preferences", "uGameEdition", 0));
 
-            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", this.gamePathKey, "");
+            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", this.GamePathKey, "");
             bool nwMode = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bDisableMods", false);
             if (gamePath.Length > 0)
             {
@@ -408,8 +408,13 @@ namespace Fo76ini
         private List<Mod> changedMods = new List<Mod>();
         private String gamePath = null;
         public bool nuclearWinterMode = false;
-        private String gamePathKey;
+        public GameEdition GameEdition;
         public Log logFile;
+
+        public String GamePathKey
+        {
+            get { return ManagedMods.GetGamePathKey(this.GameEdition); }
+        }
 
         // Use lower-case, plz
         private List<String> whitelistedDlls = new List<String>() {
@@ -431,18 +436,34 @@ namespace Fo76ini
             // "x3daudio1_7.dll" ?
         };
 
-        public String GamePathKey
+        public static String GetEditionSuffix(int gameEdition)
         {
-            get { return this.gamePathKey; }
-            set
+            return ManagedMods.GetEditionSuffix((GameEdition)gameEdition);
+        }
+
+        public static String GetGamePathKey(int gameEdition)
+        {
+            return ManagedMods.GetGamePathKey((GameEdition)gameEdition);
+        }
+
+        public static String GetEditionSuffix(GameEdition gameEdition)
+        {
+            switch (gameEdition)
             {
-                if (value.ToLower() == "sgamepathbethesdanet")
-                    this.gamePathKey = "sGamePathBethesdaNet";
-                else if (value.ToLower() == "sgamepathsteam")
-                    this.gamePathKey = "sGamePathSteam";
-                else
-                    this.gamePathKey = "sGamePath";
+                case GameEdition.Steam:
+                    return "Steam";
+                case GameEdition.BethesdaNet:
+                    return "BethesdaNet";
+                case GameEdition.BethesdaNetPTS:
+                    return "BethesdaNetPTS";
+                default:
+                    return "";
             }
+        }
+
+        public static String GetGamePathKey (GameEdition gameEdition)
+        {
+            return "sGamePath" + GetEditionSuffix(gameEdition);
         }
 
         private List<Mod> CreateDeepCopy(List<Mod> original)
@@ -1208,7 +1229,7 @@ namespace Fo76ini
                 if (File.Exists(path))
                 {
                     // Import archive:
-                    this.InstallModArchive(path);
+                    this.InstallModArchiveFrozen(path);
                     File.Delete(path);
 
                     // Remove from lists:
@@ -1271,6 +1292,8 @@ namespace Fo76ini
             if (this.gamePath == null)
                 return;
 
+            this.LoadINILists();
+
             String manifestPath = Path.Combine(this.gamePath, "Mods", "manifest.xml");
 
             if (!File.Exists(manifestPath))
@@ -1306,6 +1329,7 @@ namespace Fo76ini
             if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
                 Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
 
+            this.CopyINILists();
             this.Serialize().Save(Path.Combine(this.gamePath, "Mods", "manifest.xml"));
         }
 
@@ -1790,6 +1814,8 @@ namespace Fo76ini
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Archive", "bInvalidateOlderFiles");
             }
 
+            CopyINILists();
+
             this.logFile.WriteLine($"      Saving.");
             IniFiles.Instance.SaveAll();
             this.mods = CreateDeepCopy(this.changedMods);
@@ -1799,6 +1825,33 @@ namespace Fo76ini
                 done();
 
             this.logFile.WriteLine("Done.\n");
+        }
+
+        public void CopyINILists()
+        {
+            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false))
+                return;
+            String suffix = ManagedMods.GetEditionSuffix(this.GameEdition);
+            IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix, String.Join(",", IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "")));
+            IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceArchive2List" + suffix, String.Join(",", IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "")));
+            IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceDataDirsFinal" + suffix, String.Join(",", IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", "")));
+            IniFiles.Instance.SaveConfig();
+        }
+
+        public void LoadINILists()
+        {
+            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false))
+                return;
+            String suffix = ManagedMods.GetEditionSuffix(this.GameEdition);
+            String sResourceIndexFileList = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix, "");
+            String sResourceArchive2List = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceArchive2List" + suffix, "");
+            String sResourceDataDirsFinal = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceDataDirsFinal" + suffix, "");
+            if (IniFiles.Instance.Exists(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix))
+                IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", sResourceIndexFileList);
+            if (IniFiles.Instance.Exists(IniFile.Config, "Mods", "sResourceArchive2List" + suffix))
+                IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceArchive2List", sResourceArchive2List);
+            if (sResourceDataDirsFinal.Length > 0)
+                IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", sResourceDataDirsFinal);
         }
     }
 

@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.IO;
+using System.Diagnostics;
 
 namespace Fo76ini
 {
     public partial class Form1 : Form
     {
-        public const String VERSION = "1.6";
+        public const String VERSION = "1.6.1";
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
@@ -149,17 +150,13 @@ namespace Fo76ini
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.formMods = new FormMods();
+
             // Load QuickConfiguration.ini
             IniFiles.Instance.LoadConfig();
 
-            this.formMods = new FormMods();
-            //this.formMods.Show();
-            //this.formMods.Hide();
-
             // Load the languages
             LookupLanguages();
-
-            //this.formMods.UpdateModsUI();
 
             // Load *.ini files:
             try
@@ -179,6 +176,10 @@ namespace Fo76ini
                 return;
             }
 
+            // Load mods:
+            ManagedMods.Instance.Load();
+            this.formMods.UpdateUI();
+
             // Setup UI:
             ColorIni2Ui();
             AddAllEventHandler();
@@ -194,6 +195,18 @@ namespace Fo76ini
             }
 
             IniFiles.Instance.LoadWindowState("Form1", this);
+
+            // Remove updater, if present:
+            try
+            {
+                String updaterPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "Updater");
+                if (Directory.Exists(updaterPath))
+                    Directory.Delete(updaterPath, true);
+            }
+            catch
+            {
+                // Yeah, well or not.
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -209,8 +222,16 @@ namespace Fo76ini
         private void CheckVersion()
         {
             this.labelConfigVersion.Text = VERSION;
-            /*using (StreamWriter f = new StreamWriter("VERSION"))
+            /*using (StreamWriter f = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "VERSION")))
                 f.Write(VERSION);*/
+            IniFiles.Instance.Set(IniFile.Config, "General", "sVersion", VERSION);
+
+            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bIgnoreUpdates", false))
+            {
+                this.labelConfigVersion.ForeColor = Color.Black;
+                groupBoxUpdate.Visible = false;
+                return;
+            }
 
             String latestVersion = VERSION;
             try
@@ -223,30 +244,26 @@ namespace Fo76ini
             catch (System.Net.WebException exc)
             {
                 this.labelConfigVersion.ForeColor = Color.Black;
-                linkLabelDownloadPage.Visible = false;
-                labelNewVersion.Visible = false;
+                groupBoxUpdate.Visible = false;
                 return;
             }
 
             int cmp = Utils.CompareVersions(latestVersion, VERSION);
             if (cmp > 0)
             {
-                linkLabelDownloadPage.Visible = true;
+                groupBoxUpdate.Visible = true;
                 labelNewVersion.Text = String.Format(Translation.localizedStrings["newVersionAvailable"], latestVersion);
                 labelNewVersion.ForeColor = Color.Crimson;
-                labelNewVersion.Visible = true;
                 this.labelConfigVersion.ForeColor = Color.Red;
             }
             else if (cmp < 0)
             {
-                linkLabelDownloadPage.Visible = false;
-                labelNewVersion.Visible = false;
+                groupBoxUpdate.Visible = false;
                 this.labelConfigVersion.ForeColor = Color.DarkBlue;
             }
             else
             {
-                linkLabelDownloadPage.Visible = false;
-                labelNewVersion.Visible = false;
+                groupBoxUpdate.Visible = false;
                 this.labelConfigVersion.ForeColor = Color.DarkGreen;
             }
         }
@@ -283,8 +300,8 @@ namespace Fo76ini
 
             // Game Edition
             uiLoader.LinkList(
-                new RadioButton[] { this.radioButtonEditionBethesdaNet, this.radioButtonEditionSteam },
-                new String[] { "1", "2" },
+                new RadioButton[] { this.radioButtonEditionBethesdaNet, this.radioButtonEditionSteam, this.radioButtonEditionBethesdaNetPTS },
+                new String[] { "1", "2", "3" },
                 IniFile.Config, "Preferences", "uGameEdition",
                 "0"
             );
@@ -303,6 +320,12 @@ namespace Fo76ini
 
             // Open mod manager when tool is launched.
             uiLoader.LinkBool(this.checkBoxOpenManageModsOnLaunch, IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false);
+
+            // Don't check for updates on startup.
+            uiLoader.LinkBool(this.checkBoxIgnoreUpdates, IniFile.Config, "Preferences", "bIgnoreUpdates", false);
+
+            // Does the user use multiple game editions when modding?
+            uiLoader.LinkBool(this.checkBoxMultipleGameEditionsUsed, IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false);
 
 
             /*
@@ -794,6 +817,9 @@ namespace Fo76ini
                 case (uint)GameEdition.Steam:
                     process = "steam://run/1151340"; // "steam://runappid/1151340"
                     break;
+                case (uint)GameEdition.BethesdaNetPTS:
+                    process = "bethesdanet://run/57";
+                    break;
                 default:
                     MsgBox.Get("chooseGameEdition").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -808,7 +834,7 @@ namespace Fo76ini
         // "Get the latest version from NexusMods" link:
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            linkLabelDownloadPage.LinkVisited = true;
+            linkLabelManualDownloadPage.LinkVisited = true;
             System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/mods/546?tab=files");
         }
 
@@ -877,14 +903,20 @@ namespace Fo76ini
 
         private void radioButtonEditionSteam_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonEditionSteam.Checked)
+            if (this.radioButtonEditionSteam.Checked)
                 this.formMods.ChangeGameEdition(GameEdition.Steam);
         }
 
         private void radioButtonEditionBethesdaNet_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonEditionBethesdaNet.Checked)
+            if (this.radioButtonEditionBethesdaNet.Checked)
                 this.formMods.ChangeGameEdition(GameEdition.BethesdaNet);
+        }
+
+        private void radioButtonEditionBethesdaNetPTS_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radioButtonEditionBethesdaNetPTS.Checked)
+                this.formMods.ChangeGameEdition(GameEdition.BethesdaNetPTS);
         }
 
         // Nuclear Winter mode
@@ -938,7 +970,10 @@ namespace Fo76ini
             if (IniFiles.Instance.FilesHaveBeenModified())
             {
                 IniFiles.Instance.UpdateLastModifiedDates();
-                MsgBox.Get("iniFilesModified").Popup(MessageBoxIcon.Warning);
+
+                // Don't prompt, if Fallout 76 is running....
+                if (!Utils.IsProcessRunning("Fallout76"))
+                    MsgBox.Get("iniFilesModified").Popup(MessageBoxIcon.Warning);
             }
         }
 
@@ -960,6 +995,54 @@ namespace Fo76ini
         private void checkBoxOpenManageModsOnLaunch_CheckedChanged(object sender, EventArgs e)
         {
             IniFiles.Instance.Set(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", this.checkBoxOpenManageModsOnLaunch.Checked);
+        }
+
+        private void buttonUpdateNow_Click(object sender, EventArgs e)
+        {
+            // Set sInstallationPath:
+            String installationPath = Path.GetFullPath(AppContext.BaseDirectory);
+            IniFiles.Instance.Set(IniFile.Config, "Updater", "sInstallationPath", installationPath);
+            IniFiles.Instance.SaveConfig();
+
+            // Copy updater.exe to <config-path>\Updater\:
+            String updaterPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "Updater");
+            List<String> updaterFiles = new List<String>() {
+                "7z\\7za.dll",
+                "7z\\7za.exe",
+                "7z\\7zxa.dll",
+                "INIFileParser.dll",
+                "INIFileParser.xml",
+                "Newtonsoft.Json.dll",
+                "Newtonsoft.Json.xml",
+                "updater.exe",
+                "updater.exe.config",
+                "updater.pdb"
+            };
+            Directory.CreateDirectory(updaterPath);
+            Directory.CreateDirectory(Path.Combine(updaterPath, "7z"));
+            foreach (String file in updaterFiles)
+                File.Copy(file, Path.Combine(updaterPath, file), true);
+
+            // Run updater.exe:
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = Path.Combine(updaterPath, "updater.exe");
+            // If the program is installed into C:\Program Files (x86)\ then run the updater as admin:
+            if (installationPath.Contains("C:\\Program Files"))
+                startInfo.Verb = "runas";
+            Process.Start(startInfo);
+            Application.Exit();
+            //Environment.Exit(0);
+        }
+
+        private void buttonForceUpdate_Click(object sender, EventArgs e)
+        {
+            buttonUpdateNow_Click(sender, e);
+        }
+
+        private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bIgnoreUpdates", this.checkBoxIgnoreUpdates.Checked);
+            this.CheckVersion();
         }
     }
 }

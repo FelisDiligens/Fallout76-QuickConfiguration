@@ -609,6 +609,10 @@ namespace Fo76ini
             {
                 MsgBox.Get("downloadLanguagesFailed").FormatText(ex.ToString()).Popup(MessageBoxIcon.Error);
             }
+            catch
+            {
+                MsgBox.Get("downloadLanguagesFailed").FormatText("Unknown error").Popup(MessageBoxIcon.Error);
+            }
             this.buttonDownloadLanguages.Enabled = true;
             LookupLanguages();
         }

@@ -524,5 +524,19 @@ namespace Fo76ini
             popup.ImagePadding = new Padding(10);
             return popup;
         }
+
+        // https://stackoverflow.com/a/4722300
+        public static bool IsProcessRunning(string name)
+        {
+            foreach (Process process in Process.GetProcesses())
+            {
+                if (process.ProcessName.Contains(name))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

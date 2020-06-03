@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.6">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.6.1">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary" />
@@ -149,21 +149,24 @@ Bitte wähle Archive2.exe</Messagebox>
     <Button text="Anwenden" id="buttonApply" />
     <TabContainer id="tabControl1">
       <Tab text="Info" id="tabPageInfo">
+        <Group text="Update available" id="groupBoxUpdate">
+          <Button text="Update now!" id="buttonUpdateNow" />
+          <Link text="Or download and install manually..." id="linkLabelManualDownloadPage" />
+        </Group>
         <Label text="Übersetzt von:" id="labelTranslationBy" />
         <Label text="Autor:" id="labelAuthor" />
         <Label text="Version:" id="labelVersion" />
         <Label text="Dieses Tool erlaubt es dir, alles mögliche schnell einzustellen.\nTipp: Fahr mit der Maus über eine Option,\num mehr darüber zu lesen, was es tut." id="labelDescription" />
-        <Link text="Lade die aktuellste Version auf NexusMods herunter." id="linkLabelDownloadPage" />
         <Label text="Fallout 76 Schnellkonfiguration" id="labelTitle" />
       </Tab>
       <Tab text="Einstellungen" id="tabPageSettings">
-        <Group text="Lokalisierung" id="groupBoxLocalization">
-          <Label text="Diese Sprache ist veraltet.\nEinige Elemente könnten noch nicht übersetzt worden sein." id="labelOutdatedLanguage" />
-          <Label text="Sprache:" id="labelLanguage" />
-          <Button text="Sprachen herunterladen / aktualisieren" id="buttonDownloadLanguages" />
-        </Group>
-        <Group text="Optionen" id="groupBoxOptions">
+        <Button text="Erzwinge automatisches Update" id="buttonForceUpdate" />
+        <Group text="Verhalten" id="groupBoxBehavior">
+          <Checkbox text="Prüfe nicht auf Updates." id="checkBoxIgnoreUpdates"/>
           <Checkbox text="Öffne den Mod Manager wenn das Tool gestartet wird." id="checkBoxOpenManageModsOnLaunch" />
+          <Checkbox text="Schließe das Tool, wenn das Spiel gestartet wird." id="checkBoxQuitOnGameLaunch">
+            <Tooltip>Funktionert nur, wenn das Spiel mit dem Tool gestartet wird.</Tooltip>
+          </Checkbox>
           <Checkbox text="Frage nicht, wenn &quot;Anwenden&quot; gedrückt wird." id="checkBoxSkipBackupQuestion">
             <Tooltip>Überspringt die Backup-Frage, wenn "Anwenden" gedrückt wird.
 Beachte: Es wird dann kein Backup erstellt!</Tooltip>
@@ -172,21 +175,30 @@ Beachte: Es wird dann kein Backup erstellt!</Tooltip>
             <Tooltip>... oder das Spiel gestartet wird.
 So braucht man nicht mehr auf "Anwenden" zu drücken.</Tooltip>
           </Checkbox>
+        </Group>
+        <Group text="Lokalisierung" id="groupBoxLocalization">
+          <Label text="Diese Sprache ist veraltet.\nEinige Elemente könnten noch nicht übersetzt worden sein." id="labelOutdatedLanguage" />
+          <Label text="Sprache:" id="labelLanguage" />
+          <Button text="Sprachen herunterladen / aktualisieren" id="buttonDownloadLanguages" />
+        </Group>
+        <Group text="Optionen" id="groupBoxOptions">
+          <Checkbox text="Ich verwende mehrere Spieledition." id="checkBoxMultipleGameEditionsUsed">
+            <Tooltip>Hake das an, wenn du Mods für mehr als eine Spieledition installierst.
+Wenn angehakt, dann wird sResourceIndexFileList für jede einzelne Spieledition separat gespeichtert.</Tooltip>
+          </Checkbox>
           <Checkbox text="Nuclear Winter Modus" id="checkBoxNWMode">
             <Tooltip>Zurzeit benennt dies nur "Fallout76Custom.ini" in "Fallout76Custom.ini.nwmodebak" um.</Tooltip>
           </Checkbox>
-          <Checkbox text="Schließe das Tool, wenn das Spiel gestartet wird." id="checkBoxQuitOnGameLaunch">
-            <Tooltip>Funktionert nur, wenn das Spiel mit dem Tool gestartet wird.</Tooltip>
-          </Checkbox>
           <Checkbox text="*.ini Schreibschutz aktivieren" id="checkBoxReadOnly">
             <Tooltip>Diese Option macht alle *.ini Datei schreibgeschützt.
-  Aktiviere das, wenn deine Einstellungen vom Spiel rückgängig gemacht werden.
+Aktiviere das, wenn deine Einstellungen vom Spiel rückgängig gemacht werden.
 
 Betroffene Dateien: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
           </Checkbox>
         </Group>
         <Button text="Einstellungen aus v.1.3.1 und früher zurücksetzen" id="buttonFixIssuesEarlierVersion" />
         <Group text="Spieledition" id="groupBoxGameEdition">
+          <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
           <Radiobutton text="Steam" id="radioButtonEditionSteam" />
           <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
         </Group>
@@ -676,6 +688,13 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </ListView>
       </Tab>
       <Tab text="Einstellungen" id="tabPageModsSettings">
+        <Group text="Listen" id="groupBoxLists">
+          <Button text="Zurücksetzen" id="buttonModsResetTextboxes" />
+          <Button text="Änderungen anwenden" id="buttonModsApplyTextBoxes" />
+          <Button text="Listen säubern" id="buttonModsCleanLists" />
+          <Label text="sResourceIndexFileList (Vom Modmanager verwendet)" id="labelsResourceIndexFileList" />
+          <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
+        </Group>
         <Group text="Pfade" id="groupBoxGamePaths">
           <Label text="Spiel-Pfad:" id="labelGamePath" />
           <Button text="..." id="buttonPickGamePath" />
