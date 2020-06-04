@@ -177,7 +177,7 @@ So braucht man nicht mehr auf "Anwenden" zu drücken.</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Lokalisierung" id="groupBoxLocalization">
-          <Label text="Diese Sprache ist veraltet.\nEinige Elemente könnten noch nicht übersetzt worden sein." id="labelOutdatedLanguage" />
+          <Label text="Diese Sprachdatei ist veraltet.\nEinige Elemente könnten noch nicht übersetzt worden sein." id="labelOutdatedLanguage" />
           <Label text="Sprache:" id="labelLanguage" />
           <Button text="Sprachen herunterladen / aktualisieren" id="buttonDownloadLanguages" />
         </Group>
