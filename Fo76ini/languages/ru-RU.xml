@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.6">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.6.1">
   <Strings>
     <String text="Доступна новая версия: {0}" id="newVersionAvailable" />
     <String text="Необходима установка" id="modsDeploymentNecessary" />
@@ -144,21 +144,24 @@
     <Button text="Применить" id="buttonApply" />
     <TabContainer id="tabControl1">
       <Tab text="Инфо" id="tabPageInfo">
+        <Group text="Доступно обновление" id="groupBoxUpdate">
+          <Button text="Обновить!" id="buttonUpdateNow" />
+          <Link text="Или скачать и установить вручную..." id="linkLabelManualDownloadPage" />
+        </Group>
         <Label text="Перевод:" id="labelTranslationBy" />
         <Label text="Автор:" id="labelAuthor" />
         <Label text="Версия:" id="labelVersion" />
         <Label text="Эта программа  поможет быстро  настроить ваши\n файлы INI. Наведите на нужную настройку, чтобы\n получить подсказку." id="labelDescription" />
-        <Link text="Скачать последнюю версию с Nexus'а" id="linkLabelDownloadPage" />
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
       <Tab text="Настройки" id="tabPageSettings">
-        <Group text="Перевод" id="groupBoxLocalization">
-          <Label text="Этот языковой файл устарел.\nНекоторые элементы могут быть не переведены." id="labelOutdatedLanguage" />
-          <Label text="Язык:" id="labelLanguage" />
-          <Button text="Скачать / обновить языки" id="buttonDownloadLanguages" />
-        </Group>
-    <Group text="Настройки" id="groupBoxOptions">
+        <Button text="Принудительное обновление" id="buttonForceUpdate" />
+        <Group text="Поведение" id="groupBoxBehavior">
+          <Checkbox text="Не проверять обновления" id="checkBoxIgnoreUpdates" />
           <Checkbox text="Открывать управление модами при запуске" id="checkBoxOpenManageModsOnLaunch" />
+          <Checkbox text="Закрывать конфигуратор при запуске игры" id="checkBoxQuitOnGameLaunch">
+            <Tooltip>Работает только при запуске игры из конфигуратора.</Tooltip>
+          </Checkbox>
           <Checkbox text="Не выдавать запрос при нажатии &quot;Применить&quot;" id="checkBoxSkipBackupQuestion">
             <Tooltip>Пропускает вопрос резервного копирования при нажатии кнопки "Применить".
 Примечание: При этом резервная копия создаваться НЕ БУДЕТ!</Tooltip>
@@ -166,11 +169,19 @@
           <Checkbox text="Применять изменения при закрытии программы или запуске игры" id="checkBoxAutoApply">
             <Tooltip>Больше не нужно будет нажимать кнопку "Применить".</Tooltip>
           </Checkbox>
+        </Group>
+        <Group text="Перевод" id="groupBoxLocalization">
+          <Label text="Этот языковой файл устарел.\nНекоторые элементы могут быть не переведены." id="labelOutdatedLanguage" />
+          <Label text="Язык:" id="labelLanguage" />
+          <Button text="Скачать/обновить языки" id="buttonDownloadLanguages" />
+        </Group>
+        <Group text="Настройки" id="groupBoxOptions">
+          <Checkbox text="Использовать несколько версий игры" id="checkBoxMultipleGameEditionsUsed">
+            <Tooltip>Поставьте галочку, если вы используете моды более чем для одной версии игры.
+В этом случае sResourceIndexFileList будет сохранен для каждой версии игры отдельно.</Tooltip>
+          </Checkbox>
 		<Checkbox text="Режим Nuclear Winter" id="checkBoxNWMode">
             <Tooltip>На данный момент переименовывает Fallout76Custom.ini в Fallout76Custom.ini.nwmodebak.</Tooltip>
-        </Checkbox>
-        <Checkbox text="Закрывать конфигуратор при запуске игры" id="checkBoxQuitOnGameLaunch">
-            <Tooltip>Работает только при запуске игры из конфигуратора.</Tooltip>
         </Checkbox>
 		<Checkbox text="INI только для чтения" id="checkBoxReadOnly">
 		  <Tooltip>Этот вариант сделает все *.ini-файлы доступными только для чтения.
@@ -181,6 +192,7 @@
     </Group>
         <Button text="Исправить настройки версии v1.3.1 и ниже" id="buttonFixIssuesEarlierVersion" />
 	<Group text="Версия игры" id="groupBoxGameEdition">
+          <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
 	  <Radiobutton text="Steam" id="radioButtonEditionSteam" />
 	  <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
 	</Group>
@@ -655,6 +667,13 @@ Affected files: Fallout76Custom.ini</Tooltip>
         </ListView>
       </Tab>
       <Tab text="Настройки" id="tabPageModsSettings">
+        <Group text="Списки" id="groupBoxLists">
+          <Button text="Сбросить" id="buttonModsResetTextboxes" />
+          <Button text="Применить изменения" id="buttonModsApplyTextBoxes" />
+          <Button text="Очистить списки" id="buttonModsCleanLists" />
+          <Label text="sResourceIndexFileList (Используется в управлении модами)" id="labelsResourceIndexFileList" />
+          <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
+        </Group>
         <Group text="Пути" id="groupBoxGamePaths">
           <Label text="Папка игры:" id="labelGamePath" />
           <Button text="..." id="buttonPickGamePath" />

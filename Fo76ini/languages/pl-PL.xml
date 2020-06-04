@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Polski" iso="pl-PL" author="Gray770" version="1.6">
+<Language name="Polski" iso="pl-PL" author="Gray770" version="1.6.1">
   <Strings>
     <String text="Nowsza wersja jest dostępna: {0}" id="newVersionAvailable" />
     <String text="Wdrożenie wymagane" id="modsDeploymentNecessary" />
@@ -46,7 +46,7 @@
     <Dropdown id="AntiAliasing">
       <Option>TAA (domyślne)</Option>
       <Option>FXAA</Option>
-      <Option>Disabled</Option>
+      <Option>Wyłączony</Option>
     </Dropdown>
     <Dropdown id="AnisotropicFiltering">
       <Option>Brak</Option>
@@ -98,7 +98,7 @@ Niektóre elementy mogą działać nieprawidłowo
 
 {1}</Messagebox>
     <Messagebox title="Gotowe" id="downloadLanguagesFinished">Pobrane tłumaczenia: {0}</Messagebox>
-    <Messagebox title="Failed" id="downloadLanguagesFailed">Pobieranie tłumaczeń nie powiodło się.
+    <Messagebox title="Niepowodzenie" id="downloadLanguagesFailed">Pobieranie tłumaczeń nie powiodło się.
 {0}</Messagebox>
     <Messagebox title="Gotowe" id="modsDisabledDone">Mody zostały wyłączone i usunięte z gry.</Messagebox>
     <Messagebox title="Gotowe" id="modsDeployedDone">Mody zostały wdrożone</Messagebox>
@@ -145,33 +145,44 @@ Czy chcesz je wyłączyć?</Messagebox>
     <Button text="Zastosuj" id="buttonApply" />
     <TabContainer id="tabControl1">
       <Tab text="Info" id="tabPageInfo">
+        <Group text="Aktualizacja dostępna" id="groupBoxUpdate">
+          <Button text="Zaktualizuj teraz!" id="buttonUpdateNow" />
+          <Link text="Lub pobierz i zainstaluj samodzielnie" id="linkLabelManualDownloadPage" />
+        </Group>
         <Label text="Tłumaczenie:" id="labelTranslationBy" />
         <Label text="Autor:" id="labelAuthor" />
         <Label text="Wersja:" id="labelVersion" />
         <Label text="Te narzędzie pozwala na szybką zmiane ustawień INI.\nTip: Pozostaw opcje, których nie jesteś pewien." id="labelDescription" />
-        <Link text="Pobierz najnowszą wersje z NexusMods" id="linkLabelDownloadPage" />
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
       <Tab text="Ustawienia" id="tabPageSettings">
+        <Button text="Wymuś auto-aktualizacje" id="buttonForceUpdate" />
+        <Group text="Program" id="groupBoxBehavior">
+          <Checkbox text="Nie sprawdzaj aktualizacji." id="checkBoxIgnoreUpdates" />
+          <Checkbox text="Otwórz menedżer modów gdy narzędzie jest włączane." id="checkBoxOpenManageModsOnLaunch" />
+          <Checkbox text="Wyłącz narzędzie gry gra jest włączona." id="checkBoxQuitOnGameLaunch">
+            <Tooltip>Działa tylko gdy gra jest włączana przez narzędzie</Tooltip>
+          </Checkbox>
+          <Checkbox text="Nie pytaj mnie o backup gdy klikam &quot;Zastosuj&quot;. " id="checkBoxSkipBackupQuestion">
+            <Tooltip>Pomiń pytanie o backup gdy przycisk Zastosuj zostanie kliknięty.
+UWAGA: Tą drogą narzędzie nie utworzy backupa!</Tooltip>
+          </Checkbox>
+          <Checkbox text="Automatycznie zastosuj zmiany gdy narzędzie jest zamykane." id="checkBoxAutoApply">
+            <Tooltip>Po zatwierdzeniu tej opcji, nie trzeba klikać "zastosuj"</Tooltip>
+          </Checkbox>
+        </Group>
         <Group text="Lokalizacja" id="groupBoxLocalization">
           <Label text="Te tłumaczenie jest przestarzałe\nNiektóre elementy mogą być nieprzetłumaczone" id="labelOutdatedLanguage" />
           <Label text="Język:" id="labelLanguage" />
           <Button text="Pobierz / zaktualizuj tłumaczenie" id="buttonDownloadLanguages" />
         </Group>
         <Group text="Opcje" id="groupBoxOptions">
-          <Checkbox text="Otwórz menedżer modów gdy narzędzie jest włączane." id="checkBoxOpenManageModsOnLaunch" />
-          <Checkbox text="Nie pytaj mnie o backup gdy przycisk &quot;Zastosuj&quot; jest kliknięty" id="checkBoxSkipBackupQuestion">
-            <Tooltip>Pomiń pytanie o backup gdy przycisk Zastosuj zostanie kliknięty.
-UWAGA: Tą drogą narzędzie nie utworzy backupa!</Tooltip>
-          </Checkbox>
-          <Checkbox text="Automatycznie zastosuj zmiany gdy narzędzie jest zamykane lub gra jest włączana" id="checkBoxAutoApply">
-            <Tooltip>Po zatwierdzeniu tej opcji, nie trzeba klikać "zastosuj"</Tooltip>
+          <Checkbox text="Używam więcej niż jedną edycją gry" id="checkBoxMultipleGameEditionsUsed">
+            <Tooltip>Zaznacz tą opcje jeśli modyfikujesz więcej niż jedną wersje gry.
+Jeśli zaznaczone linijka "sResourceIndexFileList" zostanie zapisana dla każdej wersji odzielnie.</Tooltip>
           </Checkbox>
           <Checkbox text="Tryb Nuclear Winter" id="checkBoxNWMode">
             <Tooltip>Obecnie tylko nazwa Fallout76Custom.ini zmienia się na Fallout76Custom.ini.nwmodebak.</Tooltip>
-          </Checkbox>
-          <Checkbox text="Wyłącz narzędzie gry gra jest włączona" id="checkBoxQuitOnGameLaunch">
-            <Tooltip>Działa tylko gdy gra jest włączana przez narzędzie</Tooltip>
           </Checkbox>
           <Checkbox text="Pliki *.ini tylko do odczytu" id="checkBoxReadOnly">
             <Tooltip>Ta opcja ustawi wszystkie pliki *.ini tylko do odczytu.
@@ -181,6 +192,7 @@ Pliki: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
         </Group>
         <Button text="Napraw ustawienia z wersji v1.3.1 lub wcześniejszych" id="buttonFixIssuesEarlierVersion" />
         <Group text="Wersja gry" id="groupBoxGameEdition">
+          <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
           <Radiobutton text="Steam" id="radioButtonEditionSteam" />
           <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
         </Group>
@@ -249,7 +261,7 @@ Zmiany w: Fallout76Custom.ini</Tooltip>
         </Group>
       </Tab>
       <Tab text="Wyświetlanie" id="tabPageDisplay">
-        <Button text="Detect resolution" id="buttonDetectResolution" />
+        <Button text="Wykryj rozdzielczość" id="buttonDetectResolution" />
         <Checkbox text="Zawsze aktywny" id="checkBoxAlwaysActive">
           <Tooltip>Wyłącz to gdy chcesz aby gra się pauzowała gdy przechodzisz na inne okno.
 
@@ -663,6 +675,13 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
         </ListView>
       </Tab>
       <Tab text="Ustawienia" id="tabPageModsSettings">
+        <Group text="Listy" id="groupBoxLists">
+          <Button text="Resetuj" id="buttonModsResetTextboxes" />
+          <Button text="Zastosuj" id="buttonModsApplyTextBoxes" />
+          <Button text="Wyczyść listy" id="buttonModsCleanLists" />
+          <Label text="sResourceIndexFileList (Używana przez menedżer modyfikacji)" id="labelsResourceIndexFileList" />
+          <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
+        </Group>
         <Group text="Ścieżki" id="groupBoxGamePaths">
           <Label text="Lokalizacja gry" id="labelGamePath" />
           <Button text="..." id="buttonPickGamePath" />
