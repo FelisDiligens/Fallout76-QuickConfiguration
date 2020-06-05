@@ -1,8 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Français (France)" iso="fr-FR" author="Christophe Noret (Re4veN)">
+<Language name="Français (France)" iso="fr-FR" author="Christophe Noret (Re4veN) updated by 3z3ky3l" version="1.6.1">
   <Strings>
+    <String text="Une nouvelle version est disponible: {0}" id="newVersionAvailable" />
     <String text="Déploiement nécessaire" id="modsDeploymentNecessary" />
     <String text="Terminé" id="modsAllDone" />
+    <String text="Général" id="modsTableFormatGeneral" />
+    <String text="Textures" id="modsTableFormatTextures" />
+    <String text="Auto" id="modsTableFormatAutoDetect" />
+    <String text="Groupé" id="modsTableTypeBundled" />
+    <String text="Séparé" id="modsTableTypeSeparate" />
+    <String text="Séparé (Gelé)" id="modsTableTypeSeparateFrozen" />
+    <String text="Loose" id="modsTableTypeLoose" />
+    <String text="En attente" id="modTableFrozenPending" />
+    <String text="Editer {0}" id="modDetailsTitle" />
+    <String text="Editer {0} mods" id="modDetailsTitleBulk" />
+    <String text="N/A" id="notApplicable" />
+    <String text="Oui" id="yes" />
+    <String text="Non" id="no" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -51,6 +65,16 @@
       <Option>2x</Option>
       <Option>3x = Par défaut, recommandé</Option>
     </Dropdown>
+    <Dropdown id="ModInstallAs">
+      <Option>Bundled *.ba2 archive</Option>
+      <Option>Separate *.ba2 archive</Option>
+      <Option>Loose files</Option>
+    </Dropdown>
+    <Dropdown id="ModArchiveFormat">
+      <Option>Auto-detect</Option>
+      <Option>General</Option>
+      <Option>Textures (*.dds files)</Option>
+    </Dropdown>
   </Dropdowns>
   <Messageboxes>
     <Messagebox title="Créer une sauvegarde" id="backupAndSave">Voulez-vous créer une sauvegarde avant d'appliquer tous les changements?
@@ -62,24 +86,32 @@
     <Messagebox title="Version du jeu" id="chooseGameEdition">Veuillez choisir votre version du jeu dans l'onglet Général.</Messagebox>
     <Messagebox title="Fallout76.ini et Fallout76Prefs.ini introuvables." id="runGameToGenerateINI">Veuillez démarrer le jeu avant d'utiliser cet outil.
 Le jeu va générer ces fichiers lors du premier démarrage.</Messagebox>
-    <Messagebox title="Done" id="oldValuesResetToDefault">Certaines valeurs ont été réinitialisées par défaut.
+    <Messagebox title="Terminé" id="oldValuesResetToDefault">Certaines valeurs ont été réinitialisées par défaut.
 Seules les valeurs instables des versions précédentes sont affectées.
 N'oubliez pas de cliquer sur "Appliquer".</Messagebox>
+    <Messagebox title="Fichiers modifiés" id="iniFilesModified">Fichiers *.ini modifiés en dehors du programme alors que celui-ci fonctionnait.
+NOTE: Toutes les modifications seront écrasées, si vous cliquez sur "Appliquer" ou si les mods sont gérés.
+Veuillez redémarrer l'outil pour travailler avec les nouvelles valeurs.</Messagebox>
     <Messagebox title="Erreur lors du chargement de l'interface utilisateur" id="onLoadFuncException">{0} exception survenue lors du chargement de L'IU.
 Cela peut être dû à des fichiers ini corrompus.
 Certains éléments de l'IU peuvent ne pas fonctionner correctement.
 
 {1}</Messagebox>
-    <Messagebox title="Archive2 necéssaire" id="modsArchive2NotSet">Veuillez télécharger Archive2 et définir le chemin de décompression des archives *ba2.</Messagebox>
+    <Messagebox title="Terminé" id="downloadLanguagesFinished">Fichiers de langue téléchargés: {0}</Messagebox>
+    <Messagebox title="Echec" id="downloadLanguagesFailed">Échec du téléchargement des langues.
+{0}</Messagebox>
+    <Messagebox title="Terminé" id="modsDisabledDone">Les mods ont été désactivés et supprimés du jeu.</Messagebox>
+    <Messagebox title="Terminé" id="modsDeployedDone">Les mods sont déployés.</Messagebox>
+    <Messagebox title="Archive2 is missing" id="modsArchive2Missing">.\Archive2\Archive2.exe is missing.
+Veuillez télécharger à nouveau ce programme ou installer Archive2 manuellement.</Messagebox>
     <Messagebox title="Localisation du jeu non définie" id="modsGamePathNotSet">Veuillez définir le chemin d'accès vers le jeu (Localisation de Fallout76.exe).</Messagebox>
-    <Messagebox title="Chemin incorrect" id="modsArchive2Invalid">Chemin vers Archive2.exe incorrect.
-Veuillez sélectionner Archive2.exe</Messagebox>
     <Messagebox title="Chemin incorrect" id="modsGamePathInvalid">Chemin vers le jeu incorrect.</Messagebox>
     <Messagebox title="Le mod {0} n'a pas pu être déployé." id="modsDeployErrorModDirNotFound">Le répertoire {0} n'existe pas.
 Veuillez redémarrer le gestionnaire de mods et ajouter à nouveau le mod.</Messagebox>
     <Messagebox title="Le mod {0} n'a pas pu être déployé." id="modsDeployErrorBA2RootIsNotData">Le répertoire {0} n'existe pas.
 Veuillez redémarrer le gestionnaire de mods et ajouter à nouveau le mod.</Messagebox>
     <Messagebox title="Êtes-vous sûr?" id="modsDeleteBtn">Voulez-vous vraiment supprimer le mod {0} ?</Messagebox>
+    <Messagebox title="Êtes-vous sûr?" id="modsDeleteBulkBtn">Voulez-vous vraiment supprimer le mod {0} ?</Messagebox>
     <Messagebox title="L'archive n'a pas pu être décompressée" id="modsExtractUnknownError">{0}</Messagebox>
     <Messagebox title="L'archive n'a pas pu être décompressée" id="modsExtractUnknownErrorText">Veuillez décompresser l'archive et ajouter le mod en tant que dossier.</Messagebox>
     <Messagebox title="L'archive 7-Zip n'a pas pu être décompressée" id="modsExtractUnknownError7zip">{0} : Le fichier n'est pas pris en charge.</Messagebox>
@@ -98,23 +130,97 @@ Erreur: {0}</Messagebox>
     <Messagebox title="Importer des mods installés manuellement?" id="modsImportQuestion">Voulez-vous vraiment ajouter des mods installés en dehors du gestionnaire de mods?</Messagebox>
     <Messagebox title="Mods en conflit" id="modsSameArchiveName">Certains mods ont le même nom d'archive: "{0}".
 Nom du mod en conflit: {1}</Messagebox>
+    <Messagebox title="Impossible de renommer le dossier" id="modDetailsMoveManagedFolderFailed">Le dossier du mod géré n'a pas pu être renommé.
+Error message: "{0}".</Messagebox>
+    <Messagebox title="Êtes-vous sûr?" id="modsRepairDDSQuestion">Cela tentera de réparer tous les fichiers * .dds.
+Cela peut prendre du temps, selon la taille et le nombre de fichiers.
+Es-tu sur de vouloir continuer?</Messagebox>
+    <Messagebox title="Terminé" id="modsRepairDDSDone">Les fichiers *.dds ont été réparés.</Messagebox>
+    <Messagebox title="Les mods sont toujours déployés" id="nwModeEnabledButModsAreDeployed">Vous avez activé le mode Nuclear Winter, mais vos mods sont toujours déployés.
+Voulez-vous les désactiver maintenant?</Messagebox>
+    <Messagebox title="Archive2 necéssaire" id="modsArchive2NotSet">Veuillez télécharger Archive2 et définir le chemin de décompression des archives *ba2.</Messagebox>
+    <Messagebox title="Chemin incorrect" id="modsArchive2Invalid">Chemin vers Archive2.exe incorrect.
+Veuillez sélectionner Archive2.exe</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Configuration Rapide">
+    <Button text="Gérer les Mods" id="buttonManageMods" />
     <Button text="Démarrer le jeu" id="buttonLaunchGame" />
+    <Button text="Appliquer" id="buttonApply" />
     <TabContainer id="tabControl1">
       <Tab text="Info" id="tabPageInfo">
-        <Button text="Corriger les paramètres de la v1.3.1 et antérieures" id="buttonFixIssuesEarlierVersion" />
-        <Link text="Ouvrir le fichier LISEZ-MOI (Anglais)" id="linkLabel1" />
-        <Button text="Gérer les Mods" id="buttonManageMods" />
+        <Group text="Mise à jour disponible" id="groupBoxUpdate">
+          <Button text="Mettez à jour maintenant!" id="buttonUpdateNow" />
+          <Link text="Ou téléchargez et installez manuellement ..." id="linkLabelManualDownloadPage" />
+        </Group>
         <Label text="Traduction par :" id="labelTranslationBy" />
         <Label text="Auteur:" id="labelAuthor" />
         <Label text="Version:" id="labelVersion" />
-        <Label text="Cet outil vous permet de modifier rapidement les paramètres INI.\nConseil : Passez votre curseur sur une option si vous\n n'êtes pas sûr de ce qu'elle fait. " id="labelDescription" />
-        <Label text="Langue:" id="labelLanguage" />
-        <Link text="Obtenir la dernière version depuis NexusMods" id="linkLabelDownloadPage" />
+        <Label text="Cet outil vous permet de modifier rapidement les paramètres INI.\nConseil : Passez votre curseur sur une option si vous n'êtes pas sûr de ce qu'elle fait." id="labelDescription" />
         <Label text="Fallout 76 Configuration Rapide" id="labelTitle" />
       </Tab>
+      <Tab text="Paramètres" id="tabPageSettings">
+        <Button text="Forcer la mise à jour automatique" id="buttonForceUpdate" />
+        <Group text="Comportement" id="groupBoxBehavior">
+          <Checkbox text="Ne pas vérifier les mises à jour." id="checkBoxIgnoreUpdates" />
+          <Checkbox text="Ouvrir le gestionnaire de mods au démarrage." id="checkBoxOpenManageModsOnLaunch" />
+          <Checkbox text="Fermer l'outil lorsque le jeu est lancé" id="checkBoxQuitOnGameLaunch">
+            <Tooltip>Ne fonctionne que lorsque le jeu est lancé via ce programme.</Tooltip>
+          </Checkbox>
+          <Checkbox text="Ne pas demander de sauvegarde." id="checkBoxSkipBackupQuestion">
+            <Tooltip>Ne demande pas de sauvegarde des fichiers *.ini lorsque vous cliquez sur "Appliquer".
+Note: De cette façon, il n'y aura PAS de sauvegarde effectuée!</Tooltip>
+          </Checkbox>
+          <Checkbox text="Appliquer automatiquement les modifications." id="checkBoxAutoApply">
+            <Tooltip>Plus besoin de cliquer sur Appliquer : les modifications sont enregistrées lorsque ce programme est fermé ou que le jeu est lancé.</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Localisation" id="groupBoxLocalization">
+          <Label text="Cette traduction est dépassée.\nCertains éléments peuvent ne pas encore être traduits." id="labelOutdatedLanguage" />
+          <Label text="Langue:" id="labelLanguage" />
+          <Button text="Télécharger / mettre à jour les langues" id="buttonDownloadLanguages" />
+        </Group>
+        <Group text="Options" id="groupBoxOptions">
+          <Checkbox text="J'utilise plus d'une édition de jeu." id="checkBoxMultipleGameEditionsUsed">
+            <Tooltip>Cochez cette case si vous modifiez plusieurs éditions de jeu.
+Si cette case est cochée, sResourceIndexFileList sera enregistré séparément pour chaque édition de jeu.</Tooltip>
+          </Checkbox>
+          <Checkbox text="Mode Nuclear Winter" id="checkBoxNWMode">
+            <Tooltip>Actuellement, renomme uniquement Fallout76Custom.ini en Fallout76Custom.ini.nwmodebak.</Tooltip>
+          </Checkbox>
+          <Checkbox text="Fichiers *.ini en lecture seule" id="checkBoxReadOnly">
+            <Tooltip>Cette option rendra immédiatement tous les fichiers *.ini en lecture seule.
+Activez cette option si vos paramètres sont rétablis.
+
+Fichiers concernés: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Button text="Corriger les paramètres de la v1.3.1 et antérieures" id="buttonFixIssuesEarlierVersion" />
+        <Group text="Édition du jeu" id="groupBoxGameEdition">
+          <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
+          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
+          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+        </Group>
+      </Tab>
       <Tab text="Général" id="tabPageGeneral">
+        <Group text="Caméra" id="groupBoxCamera">
+          <Checkbox text="Forcer le mode pose automatique" id="checkBoxForceVanityMode">
+            <Tooltip>Valeur affectée: bForceAutoVanityMode
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="Activer le mode pose automatique" id="checkBoxVanityMode">
+            <Tooltip>Lorsque cette option est cochée, la caméra tourne autour du personnage après qu'aucune entrée n'ait été donnée pendant un certain temps.
+Cependant je ne sais pas si cela fait quelque chose. Je suis resté là pendant 5 minutes et la caméra n'a pas tourné. Besoin de plus de tests.
+
+Affected values: bDisableAutoVanityMode
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Login" id="groupBoxLogin">
+          <Label text="Vos informations d'identification sont enregistrées dans Fallout76Custom.ini\nDe cette façon, vous n'avez pas à vous connecter si vous démarrez Fallout 76\nsans le lanceur (lanceur Bethesda uniquement)." id="labelCredentialsExplanation" />
+          <Checkbox text="Montrer le mot de passe" id="checkBoxShowPassword" />
+          <Label text="Mot de passe:" id="labelPassword" />
+          <Label text="Nom d'utilisateur:" id="labelUserName" />
+        </Group>
         <Group text="Interface" id="groupBoxInterface">
           <Checkbox text="Afficher la boussole en jeu" id="checkBoxShowCompass">
             <Tooltip>Valeurs affectées: bShowCompass
@@ -136,10 +242,6 @@ Fichiers concernés: Fallout76Prefs.ini</Tooltip>
             <Tooltip>Valeurs affectées: bDialogueSubtitles
 Fichiers concernés: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
-        </Group>
-        <Group text="Édition du jeu" id="groupBoxGameEdition">
-          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
-          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
         </Group>
         <Group text="Menu Principal" id="groupBoxMainMenu">
           <Checkbox text="Afficher l'écran des nouveautées au démarrage" id="checkBoxShowSplash">
@@ -163,6 +265,7 @@ Fichiers concernés: Fallout76Custom.ini</Tooltip>
         </Group>
       </Tab>
       <Tab text="Affichage" id="tabPageDisplay">
+        <Button text="Détecter la resolution" id="buttonDetectResolution" />
         <Checkbox text="Toujours actif" id="checkBoxAlwaysActive">
           <Tooltip>Désactivez-le si vous souhaitez que le jeu se mette en pause si une autre fenêtre est devant.
 
@@ -231,6 +334,28 @@ Fichiers concernés: Fallout76Prefsini</Tooltip>
         </Label>
       </Tab>
       <Tab text="Graphismes" id="tabPageGraphics">
+        <Group text="Affiner l'anticrénelage TAA" id="groupBoxTAASharpening">
+          <Label text="Post sharpen" id="labelTAAPostSharpen" />
+          <Slider id="sliderTAAPostSharpen">
+            <Tooltip>Rend l'image plus nette.
+
+Défaut: 0.2
+Recommendé: 0.4
+
+Valeurs affectées: fTAAPostSharpen
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Slider>
+          <Label text="Post overlay" id="labelTAAPostOverlay" />
+          <Slider id="sliderTAAPostOverlay">
+            <Tooltip>Rend l'image plus nette.
+
+Défaut: 0.2
+Recommendé: 0.2
+
+Valeurs affectées: fTAAPostOverlay
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Slider>
+        </Group>
         <Group text="Herbe" id="groupBoxGrass">
           <Slider id="sliderGrassFadeDistance">
             <Tooltip>Définit la distance à laquelle l'herbe commencera à s'estomper.
@@ -297,7 +422,7 @@ Haut = 120000
 Moyen = 90000
 Bas = 60000
 
-Je pense (L'auteur de l'outil) que le régler sur une valeur faible désactivera les ombres. A besoin de plus de tests.
+Je pense que le régler sur une valeur faible désactivera les ombres. Besoin de plus de tests.
 
 Valeurs affectées: fShadowDistance, fDirShadowDistance
 Fichiers concernés: Fallout76Prefs.ini</Tooltip>
@@ -360,6 +485,10 @@ Fichiers concernés: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Météo" id="groupBoxWeather">
+          <Checkbox text="Fog" id="checkBoxFogEnabled">
+            <Tooltip>Affected values: bFogEnabled
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
           <Checkbox text="Occlusion (Humidité)" id="checkBoxWeatherWetnessOcclusion">
             <Tooltip>Active/désactive l'occlusion de l'humidité de l'environnement et des vêtements.
 
@@ -375,7 +504,7 @@ Fichiers concernés: Fallout76.ini</Tooltip>
           </Checkbox>
         </Group>
         <Label text="Filtre anisotrope:" id="labelAnisotropicFiltering">
-          <Tooltip>Réduit l'asialing des textures lorsqu'elles sont vues sous des angles obliques.
+          <Tooltip>Réduit l'aliasing des textures lorsqu'elles sont vues sous des angles obliques.
 
 Par défaut: 8
 Valeurs affectées: iMaxAnisotropy
@@ -426,6 +555,13 @@ Fichiers concernés: Fallout76Custom.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Souris" id="groupBoxMouse">
+          <Checkbox text="Acceleration de la souris" id="checkBoxMouseAcceleration">
+            <Tooltip>Cette option pourrait ne pas avoir d'effet.
+Dans le doute vous pouvez décochez la case sans risque.
+
+Valeurs affectées: bMouseAcceleration
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Checkbox>
           <Checkbox text="Corriger la sensibilité de la visée" id="checkBoxFixAimSensitivity">
             <Tooltip>Si cochée, la sensibilité de visée sera égale à la sensibilité normale.
 Si elle n'est pas cochée (par défaut), la sensibilité sera plus faible lorsque vous viserez à l'épaule.
@@ -495,75 +631,77 @@ Fichiers concernés: Fallout76Prefs.ini</Tooltip>
           </Radiobutton>
         </Group>
         <Group text="Couleurs" id="groupBoxPipboyColors">
+          <Label text="Couleur Armure Assistée" id="label1">
+            <Tooltip>Modifie la couleur du Pip-Boy accessible depuis l'Armure Assistée.
+
+Valeurs affectées: fPAEffectColorR, fPAEffectColorG, fPAEffectColorB
+Fichiers concernés: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Button text="Choisir une couleur" id="buttonColorPickPAPipboy" />
+          <Button text="Réinitialiser" id="buttonColorResetPipboy" />
+          <Button text="Réinitialiser" id="buttonColorResetPAPipboy" />
           <Label text="Couleur Quick-Boy" id="labelQuickboyColor">
             <Tooltip>Valeurs affectées: fQuickBoyEffectColorR, fQuickBoyEffectColorG, fQuickBoyEffectColorB
 Fichiers concernés: Fallout76Custom.ini</Tooltip>
           </Label>
-          <Button text="Réinitialiser" id="buttonColorResetPipboy" />
-          <Button text="Changer" id="buttonColorPickQuickboy" />
+          <Button text="Choisir une couleur" id="buttonColorPickQuickboy" />
           <Button text="Réinitialiser" id="buttonColorResetQuickboy" />
           <Label text="Couleur Pip-Boy" id="labelPipboyColor">
             <Tooltip>Valeurs affectées: fPipboyEffectColorR, fPipboyEffectColorG, fPipboyEffectColorB
 Fichiers concernés: Fallout76Prefs.ini</Tooltip>
           </Label>
-          <Button text="Changer" id="buttonColorPickPipboy" />
+          <Button text="Choisir une couleur" id="buttonColorPickPipboy" />
         </Group>
       </Tab>
     </TabContainer>
-    <Checkbox text="Fichiers *.ini en lecture seule" id="checkBoxReadOnly">
-      <Tooltip>Cette option rendra immédiatement tous les fichiers *.ini en lecture seule.
-Activez cette option si vos paramètres sont rétablis.
-
-Fichiers concernés: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
-    </Checkbox>
-    <Button text="Appliquer" id="buttonApply" />
   </Form1>
   <FormMods title="Gérer les mods">
-    <Group text="Paramètres *.ba2 groupés" id="groupBoxModsBundledBA2">
-      <Checkbox text="Compresser fichier_groupé.ba2" id="checkBoxModsBundledBA2Compression" />
-      <Checkbox text="Compresser textures_groupées.ba2" id="checkBoxModsBundledTexturesBA2Compression" />
-    </Group>
-    <Checkbox text="Mode Nuclear Winter" id="checkBoxModsNWMode">
-      <Tooltip>Si coché, tous les mods seront supprimés lors du déploiement.
-Utile si vous voulez jouer un match Nuclear Winter, d'où son nom.</Tooltip>
-    </Checkbox>
-    <Label text="L'utilisation de mods peut casser votre jeu ou vous faire bannir!\nLorsque vous installez des mods, vous acceptez l'entière responsabilité!" id="labelModWarning" />
-    <Group text="Ordre des mods" id="groupBoxMods">
-      <Button text="Monter" id="buttonModMoveUp" />
-      <Button text="Descendre" id="buttonModMoveDown" />
-      <Checkbox text="Tout cocher/décocher" id="checkBoxModsCheckAll" />
-    </Group>
-    <Group text="Modifier les détails du mod" id="groupBoxModEdit">
-      <Group text="Paramètres BA2" id="groupBoxBA2">
-        <Label text="Nom de l'archive:" id="labelModArchiveName" />
-        <Radiobutton text="Utiliser le format DDS (pour les textures)" id="radioButtonModBA2DDSFormat" />
-        <Checkbox text="Compresser l'archive" id="checkBoxModBA2Compression" />
-        <Radiobutton text="Utiliser un format général" id="radioButtonModBA2GeneralFormat" />
-      </Group>
-      <Button text="..." id="buttonModPickRootDir" />
-      <Label text="Installer dans:" id="labelModInstallInto" />
-      <Button text="Ouvrir dossier" id="buttonModOpenFolder" />
-      <Label text="Nom du mod:" id="labelModName" />
-      <Group text="Installer en tant que" id="groupBoxModInstallType">
-        <Radiobutton text="Archive *.ba2 groupée (Textures, fichiers *.dds)" id="radioButtonModBA2ArchiveTextures" />
-        <Radiobutton text="Archive *.ba2 séparée" id="radioButtonModSeparateBA2" />
-        <Radiobutton text="Archive *.ba2 groupée (Général)" id="radioButtonModBA2Archive" />
-        <Radiobutton text="Fichiers libres (Loose)" id="radioButtonModLoose" />
-      </Group>
-      <Button text="Supprimer mod" id="buttonModRemove" />
-    </Group>
-    <Group text="Chemins" id="groupBoxGamePaths">
-      <Label text="Localisation du jeu:" id="labelGamePath" />
-      <Button text="..." id="buttonPickArchive2Path" />
-      <Label text="Localisation Archive2 :" id="labelArchive2Path" />
-      <Button text="..." id="buttonPickGamePath" />
-    </Group>
-    <Button text="Déployer" id="buttonModsDeploy" />
-    <Label text="Tout est prêt" id="labelModsDeploy" />
+    <Element id="panel1">
+      <Button text="Déployer" id="buttonModsDeploy" />
+      <Checkbox text="Désactiver les mods" id="checkBoxDisableMods" />
+    </Element>
+    <TabContainer id="tabControl1">
+      <Tab text="Ordre des mods" id="tabPageModOrder">
+        <Tool id="toolStrip1">
+          <Button text="Ajouter un mod (depuis une archive)" id="toolStripButtonAddMod" />
+          <Button text="Ajouter un mod (depuis un fichier *.ba2)" id="toolStripButtonAddModFrozen" />
+          <Button text="Ajouter un mod (depuis un dossier)" id="toolStripButtonAddModFolder" />
+          <Button text="Sélectionner/Dé-sélectionner tout" id="toolStripButtonCheckAll" />
+          <Button text="Monter le mod séléctionné" id="toolStripButtonMoveUp" />
+          <Button text="Descendre le mod séléctionné" id="toolStripButtonMoveDown" />
+          <Button text="Edition des détails du mod" id="toolStripButtonModEdit" />
+          <Button text="Ouvrir le répertoire du mod" id="toolStripButtonModOpenFolder" />
+          <Button text="Supprimer le mod" id="toolStripButtonDeleteMod" />
+        </Tool>
+        <ListView id="listViewMods">
+          <Column>Nom du mod</Column>
+          <Column>Type</Column>
+          <Column>Emplacement</Column>
+          <Column>Nom de l'archive</Column>
+          <Column>Format</Column>
+          <Column>Compressé?</Column>
+          <Column>Gelé?</Column>
+        </ListView>
+      </Tab>
+      <Tab text="Paramètres" id="tabPageModsSettings">
+        <Group text="Listes" id="groupBoxLists">
+          <Button text="Réinitialiser" id="buttonModsResetTextboxes" />
+          <Button text="Appliquer" id="buttonModsApplyTextBoxes" />
+          <Button text="Nettoyer les listes" id="buttonModsCleanLists" />
+          <Label text="sResourceIndexFileList (Utilisé par le manageur de mods)" id="labelsResourceIndexFileList" />
+          <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
+        </Group>
+        <Group text="Chemins" id="groupBoxGamePaths">
+          <Label text="Localisation du jeu:" id="labelGamePath" />
+          <Button text="..." id="buttonPickGamePath" />
+        </Group>
+      </Tab>
+    </TabContainer>
     <Menu id="menuStrip1">
       <Item text="Fichier" id="fileToolStripMenuItem">
         <Item text="Ajouter un mod" id="addModarchiveToolStripMenuItem">
           <Item text="Depuis une archive" id="fromArchiveToolStripMenuItem" />
+          <Item text="Depuis une archive *.ba2 (gelé)" id="fromba2ArchivefrozenToolStripMenuItem" />
           <Item text="Depuis un dossier" id="fromFolderToolStripMenuItem" />
         </Item>
         <Item text="Importer des mods installés" id="toolStripMenuItemModsImport" />
@@ -572,10 +710,48 @@ Utile si vous voulez jouer un match Nuclear Winter, d'où son nom.</Tooltip>
       </Item>
       <Item text="Vue" id="editToolStripMenuItem">
         <Item text="Afficher les fichiers en conflit" id="showConflictingFilesToolStripMenuItem" />
+        <Item text="Recharger l'interface utilisateur" id="reloadUIToolStripMenuItem" />
+      </Item>
+      <Item text="Outils" id="toolsToolStripMenuItem">
+        <Item text="Réparer tous les fichiers *.dds" id="repairddsFilesToolStripMenuItem" />
       </Item>
       <Item text="Aide" id="helpToolStripMenuItem">
         <Item text="Afficher LISEZ-MOI" id="showREADMEToolStripMenuItem" />
       </Item>
     </Menu>
   </FormMods>
+  <FormModDetails>
+    <Button text="Annuler" id="buttonModDetailsCancel" />
+    <Button text="OK" id="buttonModDetailsOK" />
+    <Label text="..." id="labelModDetailsStatus" />
+    <Button text="Appliquer" id="buttonModDetailsApply" />
+    <Element id="panel1">
+      <Checkbox text="Activer ce mod" id="checkBoxModDetailsEnabled" />
+      <Label text="NOTE: Les mods gelés seront ignorés." id="labelModDetailsBulkFrozenModsWarning" />
+      <Group text="Préconfigurations" id="groupBoxSeparateArchivePresets">
+        <Radiobutton text="Personalisé" id="radioButtonSeparateArchiveCustom" />
+        <Radiobutton text="Sons" id="radioButtonSeparateArchiveSounds" />
+        <Radiobutton text="Textures (*.dds files)" id="radioButtonSeparateArchiveTextures" />
+        <Radiobutton text="Général / Interface" id="radioButtonSeparateArchiveGeneral" />
+      </Group>
+      <Label text="Les options d'installation sont désactivées car le mod est gelé." id="labelModUnfreeze" />
+      <Button text="Dégeler" id="buttonModUnfreeze" />
+      <Checkbox text="Geler" id="checkBoxFreezeArchive">
+        <Tooltip>Si vous «gelez» une archive, elle n'est pas recréée lors du déploiement.
+Cela accélérera le déploiement.
+
+Ceci est particulièrement utile si l'archive est ÉNORME (1 Go ou plus) et que les fichiers ne changent pas.</Tooltip>
+      </Checkbox>
+      <Button text="Réparer les fichiers *.dds" id="buttonModRepairDDS" />
+      <Checkbox text="Compresser l'archive" id="checkBoxModBA2Compression" />
+      <Label text="Nom de l'archive:" id="labelModArchiveName" />
+      <Button text="Ouvrir dossier" id="buttonModOpenFolder" />
+      <Label text="Nom du dossier:" id="labelModFolderName" />
+      <Label text="Format archive:" id="labelModArchiveFormat" />
+      <Label text="Installer en tant que:" id="labelModInstallAs" />
+      <Label text="Nom du mod:" id="labelModName" />
+      <Button text="..." id="buttonModPickRootDir" />
+      <Label text="Installer dans:" id="labelModInstallInto" />
+    </Element>
+  </FormModDetails>
 </Language>
