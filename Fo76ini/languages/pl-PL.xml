@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Polski" iso="pl-PL" author="Gray770" version="1.6.1">
+<Language name="Polski" iso="pl-PL" author="Gray770" version="1.6.2">
   <Strings>
     <String text="Nowsza wersja jest dostępna: {0}" id="newVersionAvailable" />
     <String text="Wdrożenie wymagane" id="modsDeploymentNecessary" />
@@ -156,6 +156,15 @@ Czy chcesz je wyłączyć?</Messagebox>
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
       <Tab text="Ustawienia" id="tabPageSettings">
+        <Group text="Opcje uruchamiania" id="groupBoxLaunchOptions">
+          <Label text="Porada: Zapisz swoje dane logowania w zakładce &quot;Ogólne&quot;." id="labelLaunchOptionTip" />
+          <Radiobutton text="Włącz gre poprzez &quot;Fallout76.exe&quot; " id="radioButtonLaunchViaExecutable" />
+          <Radiobutton text="Uruchom poprzez Steam / Bethesda.net (zalecane)" id="radioButtonLaunchViaLink" />
+        </Group>
+        <Group text="Ścieżki" id="groupBoxGamePaths">
+          <Label text="Lokalizacja gry" id="labelGamePath" />
+          <Button text="..." id="buttonPickGamePath" />
+        </Group>
         <Button text="Wymuś auto-aktualizacje" id="buttonForceUpdate" />
         <Group text="Program" id="groupBoxBehavior">
           <Checkbox text="Nie sprawdzaj aktualizacji." id="checkBoxIgnoreUpdates" />
@@ -661,6 +670,7 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
           <Button text="Przenieść w góre" id="toolStripButtonMoveUp" />
           <Button text="Przenieść w dół" id="toolStripButtonMoveDown" />
           <Button text="Edytuj detale modów" id="toolStripButtonModEdit" />
+          <Button text="Unfreeze" id="toolStripButtonUnfreeze" />
           <Button text="Otwórz folder modow" id="toolStripButtonModOpenFolder" />
           <Button text="Usuń moda" id="toolStripButtonDeleteMod" />
         </Tool>
@@ -681,10 +691,6 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
           <Button text="Wyczyść listy" id="buttonModsCleanLists" />
           <Label text="sResourceIndexFileList (Używana przez menedżer modyfikacji)" id="labelsResourceIndexFileList" />
           <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
-        </Group>
-        <Group text="Ścieżki" id="groupBoxGamePaths">
-          <Label text="Lokalizacja gry" id="labelGamePath" />
-          <Button text="..." id="buttonPickGamePath" />
         </Group>
       </Tab>
     </TabContainer>
