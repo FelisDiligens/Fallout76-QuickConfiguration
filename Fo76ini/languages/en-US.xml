@@ -4,7 +4,7 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.6">
+<Language name="English (USA)" iso="en-US" version="1.6.2">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Deployment necessary" id="modsDeploymentNecessary" />
@@ -150,33 +150,53 @@ Do you want to disable them now?</Messagebox>
     <Button text="Apply" id="buttonApply" />
     <TabContainer id="tabControl1">
       <Tab text="Info" id="tabPageInfo">
+        <Group text="Update available" id="groupBoxUpdate">
+          <Button text="Update now!" id="buttonUpdateNow" />
+          <Link text="Or download and install manually..." id="linkLabelManualDownloadPage" />
+        </Group>
         <Label text="Translation by:" id="labelTranslationBy" />
         <Label text="Author:" id="labelAuthor" />
         <Label text="Version:" id="labelVersion" />
         <Label text="This tool allows you to quickly tweak INI settings.\nTip: Hover over an option, if you're unsure what it does." id="labelDescription" />
-        <Link text="Get the latest version from NexusMods" id="linkLabelDownloadPage" />
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
       <Tab text="Settings" id="tabPageSettings">
-        <Group text="Localization" id="groupBoxLocalization">
-          <Label text="This language is out-dated.\nSome elements might not be translated yet." id="labelOutdatedLanguage" />
-          <Label text="Language:" id="labelLanguage" />
-          <Button text="Download / update languages" id="buttonDownloadLanguages" />
+        <Group text="Launch options" id="groupBoxLaunchOptions">
+          <Label text="Tip: Enter your login credentials under the &quot;General&quot; tab." id="labelLaunchOptionTip" />
+          <Radiobutton text="Run &quot;Fallout76.exe&quot; directly" id="radioButtonLaunchViaExecutable" />
+          <Radiobutton text="Launch via Steam / Bethesda.net (recommended)" id="radioButtonLaunchViaLink" />
         </Group>
-        <Group text="Options" id="groupBoxOptions">
-          <Checkbox text="Open mod manager when tool is launched." id="checkBoxOpenManageModsOnLaunch" />
+        <Group text="Paths" id="groupBoxGamePaths">
+          <Label text="Game location:" id="labelGamePath" />
+          <Button text="..." id="buttonPickGamePath" />
+        </Group>
+        <Button text="Force auto-update" id="buttonForceUpdate" />
+        <Group text="Behavior" id="groupBoxBehavior">
+          <Checkbox text="Don't check for updates." id="checkBoxIgnoreUpdates" />
+          <Checkbox text="Open mod manager on startup." id="checkBoxOpenManageModsOnLaunch" />
+          <Checkbox text="Close the tool when the game is launched" id="checkBoxQuitOnGameLaunch">
+            <Tooltip>Does only work when the game is launched through the tool.</Tooltip>
+          </Checkbox>
           <Checkbox text="Don't ask me, when &quot;Apply&quot; is clicked." id="checkBoxSkipBackupQuestion">
             <Tooltip>Skips the backup question when "Apply" is clicked.
 Note: This way, it will NOT create a backup!</Tooltip>
           </Checkbox>
-          <Checkbox text="Automatically apply changes when tool is closed or game is launched" id="checkBoxAutoApply">
+          <Checkbox text="Automatically apply changes when tool is closed or game is launched." id="checkBoxAutoApply">
             <Tooltip>No need to press apply anymore.</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="Localization" id="groupBoxLocalization">
+          <Label text="This language is out-dated.\nSome elements might not be translated yet." id="labelOutdatedLanguage" />
+          <Label text="Language:" id="labelLanguage" />
+          <Button text="Download / update language files" id="buttonDownloadLanguages" />
+        </Group>
+        <Group text="Options" id="groupBoxOptions">
+          <Checkbox text="I use more than one game edition." id="checkBoxMultipleGameEditionsUsed">
+            <Tooltip>Check this, if you're modding more than one game edition.
+If checked, sResourceIndexFileList will be saved for every game edition separately.</Tooltip>
           </Checkbox>
           <Checkbox text="Nuclear Winter Mode" id="checkBoxNWMode">
             <Tooltip>Currently only renames Fallout76Custom.ini to Fallout76Custom.ini.nwmodebak.</Tooltip>
-          </Checkbox>
-          <Checkbox text="Close the tool when the game is launched" id="checkBoxQuitOnGameLaunch">
-            <Tooltip>Does only work when the game is launched through the tool.</Tooltip>
           </Checkbox>
           <Checkbox text="Make *.ini files read-only" id="checkBoxReadOnly">
             <Tooltip>This option will make all *.ini files read-only immediately.
@@ -187,6 +207,7 @@ Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
         </Group>
         <Button text="Fix settings from v1.3.1 and earlier" id="buttonFixIssuesEarlierVersion" />
         <Group text="Game edition" id="groupBoxGameEdition">
+          <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
           <Radiobutton text="Steam" id="radioButtonEditionSteam" />
           <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
         </Group>
@@ -663,6 +684,7 @@ Affected files: Fallout76Prefs.ini</Tooltip>
           <Button text="Move up" id="toolStripButtonMoveUp" />
           <Button text="Move down" id="toolStripButtonMoveDown" />
           <Button text="Edit mod details" id="toolStripButtonModEdit" />
+          <Button text="Unfreeze" id="toolStripButtonUnfreeze" />
           <Button text="Open mod folder" id="toolStripButtonModOpenFolder" />
           <Button text="Delete mod" id="toolStripButtonDeleteMod" />
         </Tool>
@@ -677,9 +699,12 @@ Affected files: Fallout76Prefs.ini</Tooltip>
         </ListView>
       </Tab>
       <Tab text="Settings" id="tabPageModsSettings">
-        <Group text="Paths" id="groupBoxGamePaths">
-          <Label text="Game location:" id="labelGamePath" />
-          <Button text="..." id="buttonPickGamePath" />
+        <Group text="Lists" id="groupBoxLists">
+          <Button text="Reset" id="buttonModsResetTextboxes" />
+          <Button text="Apply changes" id="buttonModsApplyTextBoxes" />
+          <Button text="Clean lists" id="buttonModsCleanLists" />
+          <Label text="sResourceIndexFileList (Used by mod manager)" id="labelsResourceIndexFileList" />
+          <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
         </Group>
       </Tab>
     </TabContainer>
