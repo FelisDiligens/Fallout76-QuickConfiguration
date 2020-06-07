@@ -63,6 +63,7 @@ namespace Fo76ini
                 "Only unstable values from previous versions are affected.\n" +
                 "Don't forget to click 'Apply'."
             );
+
             MsgBox.Add("iniFilesModified",
                 "Files modified",
                 "*.ini files have been modified outside of the tool while it's running.\n" +

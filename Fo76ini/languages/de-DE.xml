@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.6.1">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.6.2">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary" />
@@ -149,9 +149,9 @@ Bitte wähle Archive2.exe</Messagebox>
     <Button text="Anwenden" id="buttonApply" />
     <TabContainer id="tabControl1">
       <Tab text="Info" id="tabPageInfo">
-        <Group text="Update available" id="groupBoxUpdate">
-          <Button text="Update now!" id="buttonUpdateNow" />
-          <Link text="Or download and install manually..." id="linkLabelManualDownloadPage" />
+        <Group text="Update verfügbar" id="groupBoxUpdate">
+          <Button text="Jetzt aktualisieren!" id="buttonUpdateNow" />
+          <Link text="Oder lade es manuell herunter..." id="linkLabelManualDownloadPage" />
         </Group>
         <Label text="Übersetzt von:" id="labelTranslationBy" />
         <Label text="Autor:" id="labelAuthor" />
@@ -160,9 +160,18 @@ Bitte wähle Archive2.exe</Messagebox>
         <Label text="Fallout 76 Schnellkonfiguration" id="labelTitle" />
       </Tab>
       <Tab text="Einstellungen" id="tabPageSettings">
+        <Group text="Startoptionen" id="groupBoxLaunchOptions">
+          <Label text="Tipp: Gib deine Zugangsdaten im &quot;Allgemein&quot;-Tab ein." id="labelLaunchOptionTip" />
+          <Radiobutton text="Starte &quot;Fallout76.exe&quot; direkt" id="radioButtonLaunchViaExecutable" />
+          <Radiobutton text="Starte via Steam / Bethesda.net (empfohlen)" id="radioButtonLaunchViaLink" />
+        </Group>
+        <Group text="Pfade" id="groupBoxGamePaths">
+          <Label text="Spiel-Pfad:" id="labelGamePath" />
+          <Button text="..." id="buttonPickGamePath" />
+        </Group>
         <Button text="Erzwinge automatisches Update" id="buttonForceUpdate" />
         <Group text="Verhalten" id="groupBoxBehavior">
-          <Checkbox text="Prüfe nicht auf Updates." id="checkBoxIgnoreUpdates"/>
+          <Checkbox text="Prüfe nicht auf Updates." id="checkBoxIgnoreUpdates" />
           <Checkbox text="Öffne den Mod Manager wenn das Tool gestartet wird." id="checkBoxOpenManageModsOnLaunch" />
           <Checkbox text="Schließe das Tool, wenn das Spiel gestartet wird." id="checkBoxQuitOnGameLaunch">
             <Tooltip>Funktionert nur, wenn das Spiel mit dem Tool gestartet wird.</Tooltip>
@@ -246,8 +255,8 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Hauptmenü" id="groupBoxMainMenu">
-          <Checkbox text="Show splash screen with news on startup" id="checkBoxShowSplash">
-            <Tooltip>If unchecked, the game won't bother you with news on startup.
+          <Checkbox text="Zeige Begrüßungsnachricht mit Neuigkeitem beim Start" id="checkBoxShowSplash">
+            <Tooltip>Wenn deaktiviert, zeigt das Spiel keine Begrüßungsnachricht mehr an.
 
 Betroffene Werte: bShowSplash
 Betroffene Dateien: Fallout76Custom.ini</Tooltip>
@@ -307,14 +316,14 @@ Betroffene Werte: iSize H</Tooltip>
           <Tooltip>Ändert den Anzeigenmodus.
 
 
-  Vollbild: Echter Vollbildmodus
+Vollbild: Echter Vollbildmodus
 
-  Fenster: Fenstermodus mit Rand
+Fenster: Fenstermodus mit Rand
 
-  Randloses Fenster: Stell sicher, dass die Spielauflösung der Auflösung deines Monitors entspricht.
+Randloses Fenster: Stell sicher, dass die Spielauflösung der Auflösung deines Monitors entspricht.
 
-  Borderless windowed (Fullscreen): Das Fenster wird maximiert.
-  Sieht verpixelt aus (es benutzt Nearest Neighbor), wenn die Auflösung niedrig ist.
+Randloses Fenster (Vollbild): Das Fenster wird maximiert.
+Sieht verpixelt aus (es benutzt Nearest Neighbor), wenn die Auflösung niedrig ist.
 
 
 Betroffene Werte: bFull Screen, bBorderless
@@ -327,7 +336,7 @@ Betroffene Werte: iSize W</Tooltip>
         </Number>
         <Label text="Auflösung:" id="labelResolution">
           <Tooltip>Ändert die Auflösung des Spiels.
-  Setze es auf "Benutzerdefiniert", um eigene Werte einzutragen.
+Setze es auf "Benutzerdefiniert", um eigene Werte einzutragen.
 
 Betroffene Werte: iSize W, iSize H
 Betroffene Dateien: Fallout76Prefsini</Tooltip>
@@ -363,9 +372,9 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           <Slider id="sliderGrassFadeDistance">
             <Tooltip>Setzt die Distanz, ab der Gras ausgeblendet wird.
 
-  Mittel ist 4500
-  Hoch ist 5500
-  Ultra ist 7000
+Mittel ist 4500
+Hoch ist 5500
+Ultra ist 7000
 
 Betroffene Werte: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
@@ -420,12 +429,12 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           <Slider id="sliderShadowDistance">
             <Tooltip>Setzt die Distanz, bis zu der Schatten dargestellt werden.
 
-  Ultra ist 150000
-  Hoch ist 120000
-  Mittel ist 90000
-  Niedrig ist 60000
+Ultra ist 150000
+Hoch ist 120000
+Mittel ist 90000
+Niedrig ist 60000
 
-  Ich denke, dass sehr niedrige Werte Schatten abschalten. Muss noch getestet werden.
+Ich denke, dass sehr niedrige Werte Schatten abschalten. Muss noch getestet werden.
 
 Betroffene Werte: fShadowDistance, fDirShadowDistance
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
@@ -449,7 +458,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         <Group text="Post-Processing" id="groupBoxPostProcessing">
           <Checkbox text="Umgebungsverdeckung" id="checkBoxAmbientOcclusion">
             <Tooltip>(De)aktiviert Umgebungsverdeckung.
-  Umgebungsverdeckung fügt Schatten an Orten hinzu, wo Licht nicht heranreichen kann.
+Umgebungsverdeckung fügt Schatten an Orten hinzu, wo Licht nicht heranreichen kann.
 
 Betroffene Werte: bSAOEnable
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
@@ -475,7 +484,7 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Radiale Unschärfe" id="checkBoxRadialBlur">
             <Tooltip>Unscharfes Bild, wenn der Spieler verletzt wird oder sich Unterwasser befindet.
-  Wenn diese Option deaktivert, könnte das zu klarer Sicht Unterwasser führen.
+Wenn diese Option deaktivert, könnte das zu klarer Sicht Unterwasser führen.
 
 Betroffene Werte: bDoRadialBlur, iRadialBlurLevel
 Betroffene Dateien: Fallout76Custom.ini</Tooltip>
@@ -489,20 +498,20 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </Group>
         <Group text="Wetter" id="groupBoxWeather">
           <Checkbox text="Fog" id="checkBoxFogEnabled">
-            <Tooltip>Affected values: bFogEnabled
-Affected files: Fallout76Prefs.ini</Tooltip>
+            <Tooltip>Betroffene Werte: bFogEnabled
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Nässe-Verdeckung" id="checkBoxWeatherWetnessOcclusion">
             <Tooltip>(De)aktiviert die Verdeckung von Nässe der Umgebung und der Kleidung.
-  z.B. Wenn du in einem Haus stehst, dann ist es drinnen nicht nass.
+z.B. Wenn du in einem Haus stehst, dann ist es drinnen nicht nass.
 
 Betroffene Werte: bWetnessOcclusion
 Betroffene Dateien: Fallout76.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Regen-Verdeckung" id="checkBoxWeatherRainOcclusion">
             <Tooltip>(De)aktiviert die Verdeckung von Regen.
-  Wenn aktiviert, dann wird Regen nicht um deinen Charakter herum dargestellt, wenn du unter einem Dach stehst.
-  Außerdem werden dabei auch keine Effekte auf dem Boden dargestellt.
+Wenn aktiviert, dann wird Regen nicht um deinen Charakter herum dargestellt, wenn du unter einem Dach stehst.
+Außerdem werden dabei auch keine Effekte auf dem Boden dargestellt.
 
 Betroffene Werte: bRainOcclusion
 Betroffene Dateien: Fallout76.ini</Tooltip>
@@ -511,33 +520,33 @@ Betroffene Dateien: Fallout76.ini</Tooltip>
         <Label text="Anisotropisches Filtern:" id="labelAnisotropicFiltering">
           <Tooltip>Reduziert das Aliasing von Texturen, wenn diese aus schrägen Winkeln betrachtet werden.
 
-  Standard: 8
+Standard: 8
 Betroffene Werte: iMaxAnisotropy
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </Label>
         <Checkbox text="FPS-Begrenzung (Vertikale Synchronisierung)" id="checkBoxVSync">
           <Tooltip>Wenn VSync deaktiviert wird, wird die FPS nicht mehr begrenzt.
 
-  Aktiviere VSync, wenn dich Screen-Tearing stört.
-  Deaktiviere VSync, wenn dich Input-Lag stört.
+Aktiviere VSync, wenn dich Screen-Tearing stört.
+Deaktiviere VSync, wenn dich Input-Lag stört.
 
-  Beachte: Bitte begrenze die FPS manuell auf 60. (z.B. mit NVIDIAs Systemsteuerung)
+Beachte: Bitte begrenze die FPS manuell auf 60. (z.B. mit NVIDIAs Systemsteuerung)
 
 
-  Standard: Aktiviert
+Standard: Aktiviert
 Betroffene Werte: iPresentInterval
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </Checkbox>
         <Label text="Antialiasing:" id="labelAntiAliasing">
           <Tooltip>Reduziert Aliasing indem die Kanten von Objekten verschwommen gemacht werden.
 
-  TAA - Temporal Anti-Aliasing: Relativ aufwendig, Standard
-  FXAA - Fast Approximate Anti-Aliasing: Verbessert Performance ein bisschen, Aliasing geringfügig sichtbar
-  Off - Verbessert Performance, Aliasing klar sichtbar
+TAA - Temporal Anti-Aliasing: Relativ aufwendig, Standard
+FXAA - Fast Approximate Anti-Aliasing: Verbessert Performance ein bisschen, Aliasing geringfügig sichtbar
+Off - Verbessert Performance, Aliasing klar sichtbar
 
-  Beachte: FXAA geht bei mir nicht. Das Spiel deaktiviert AA stattdessen vollständig. Zumindest bei mir.
+Beachte: FXAA geht bei mir nicht. Das Spiel deaktiviert AA stattdessen vollständig. Zumindest bei mir.
 
-  Standard: TAA
+Standard: TAA
 Betroffene Werte: sAntiAliasing
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </Label>
@@ -546,7 +555,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         <Group text="Gamepad" id="groupBoxGamepad">
           <Checkbox text="Verwendung eines Gamepads ermöglichen" id="checkBoxGamepadEnabled">
             <Tooltip>Nimm den Haken raus, wenn du einen Gamepad angeschlossen hast, aber lieber Tastatur und Maus benutzen willst.
-  Ansonsten lass es eingeschaltet.
+Ansonsten lass es eingeschaltet.
 
 Betroffene Werte: bGamepadEnable
 Betroffene Dateien: Fallout76Custom.ini</Tooltip>
@@ -568,10 +577,10 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
           <Checkbox text="Mausempflindlichkeit beim Zielen normalisieren" id="checkBoxFixAimSensitivity">
             <Tooltip>Wenn aktiv, ändert sich die Empfindlichkeit beim Zielen nicht.
-  Wenn nicht aktiv, dann wird die Empfindlichkeit beim Zielen verringert.
+Wenn nicht aktiv, dann wird die Empfindlichkeit beim Zielen verringert.
 
-  Beachte: Es könnte sein, dass dies nur auf 16:9 Monitoren funktioniert.
-  Wenn es bei dir mit einem anderen Monitor-Seitenverhältnis funktionert, bitte lass es mich wissen.
+Beachte: Es könnte sein, dass dies nur auf 16:9 Monitoren funktioniert.
+Wenn es bei dir mit einem anderen Monitor-Seitenverhältnis funktionert, bitte lass es mich wissen.
 
 Betroffene Werte: fIronSightsFOVRotateMult
 Betroffene Dateien: Fallout76Custom.ini</Tooltip>
@@ -585,17 +594,17 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Slider>
           <Checkbox text="Horizontale/vertikale Mausempfindlichkeit normalisieren" id="checkBoxFixMouseSensitivity">
             <Tooltip>Wenn aktiv, dann schaust du genauso schnell nach links/rechts wie oben/unten.
-  Wenn nicht aktiv, dann schaust du schneller nach links/rechts als nach oben/unten.
+Wenn nicht aktiv, dann schaust du schneller nach links/rechts als nach oben/unten.
 
-  Wenn aktiv, dann könnte deine Maus etwas empfindlicher sein.
+Wenn aktiv, dann könnte deine Maus etwas empfindlicher sein.
 
-  Die Empfindlichkeit hängt dabei von dem Bildformat deines Monitors ab:
-      Bei 4:3 ist der X-Wert .028
-      Bei 16:9 ist der X-Wert .03738
-      Bei 16:10 ist der X-Wert .0336
-      Bei 21:9 ist der X-Wert .042
+Die Empfindlichkeit hängt dabei von dem Bildformat deines Monitors ab:
+  Bei 4:3 ist der X-Wert .028
+  Bei 16:9 ist der X-Wert .03738
+  Bei 16:10 ist der X-Wert .0336
+  Bei 21:9 ist der X-Wert .042
 
-  Standard: Deaktiviert (.021 für X- und Y-Achse)
+Standard: Deaktiviert (.021 für X- und Y-Achse)
 Betroffene Werte: fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
 Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
@@ -674,6 +683,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           <Button text="Eins rauf" id="toolStripButtonMoveUp" />
           <Button text="Eins runter" id="toolStripButtonMoveDown" />
           <Button text="Modeigenschaften ändern" id="toolStripButtonModEdit" />
+          <Button text="Auftauen" id="toolStripButtonUnfreeze" />
           <Button text="Modordner öffnen" id="toolStripButtonModOpenFolder" />
           <Button text="Mod(s) löschen" id="toolStripButtonDeleteMod" />
         </Tool>
@@ -694,10 +704,6 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           <Button text="Listen säubern" id="buttonModsCleanLists" />
           <Label text="sResourceIndexFileList (Vom Modmanager verwendet)" id="labelsResourceIndexFileList" />
           <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
-        </Group>
-        <Group text="Pfade" id="groupBoxGamePaths">
-          <Label text="Spiel-Pfad:" id="labelGamePath" />
-          <Button text="..." id="buttonPickGamePath" />
         </Group>
       </Tab>
     </TabContainer>

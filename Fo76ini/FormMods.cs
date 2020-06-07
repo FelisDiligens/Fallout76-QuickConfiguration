@@ -38,6 +38,7 @@ namespace Fo76ini
 
 
             this.FormClosing += this.FormMods_FormClosing;
+            this.KeyDown += this.FormMods_KeyDown;
             this.listViewMods.ItemCheck += this.listViewMods_ItemCheck;
 
             /*
@@ -255,7 +256,7 @@ namespace Fo76ini
             if (!IniFiles.Instance.IsLoaded())
                 return;
             this.checkBoxDisableMods.Checked = ManagedMods.Instance.nuclearWinterMode;
-            this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
+            //this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
 
             this.textBoxsResourceArchive2List.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
             this.textBoxsResourceIndexFileList.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
@@ -345,6 +346,45 @@ namespace Fo76ini
                 e.Cancel = true;
                 if (this.buttonModsDeploy.Enabled && (true || MsgBox.ShowID("modsOnCloseDeploymentNecessary", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                     Hide();
+            }
+        }
+
+        private void FormMods_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                // Open README
+                showREADMEToolStripMenuItem_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                // Reload UI:
+                reloadUIToolStripMenuItem_Click(sender, e);
+            }
+
+            // These shortcuts only apply to the mod list:
+            if (this.listViewMods.Focused)
+            {
+                if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+                {
+                    // Delete mods:
+                    toolStripButtonDeleteMod_Click(sender, e);
+                }
+                else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+                {
+                    // Edit mods:
+                    toolStripButtonModEdit_Click(sender, e);
+                }
+                else if (e.Control && e.KeyCode == Keys.Up)
+                {
+                    // Move mods up:
+                    toolStripButtonMoveUp_Click(sender, e);
+                }
+                else if (e.Control && e.KeyCode == Keys.Down)
+                {
+                    // Move mods down:
+                    toolStripButtonMoveDown_Click(sender, e);
+                }
             }
         }
 
@@ -669,6 +709,22 @@ namespace Fo76ini
             }
         }
 
+        // Unfreeze
+        private void toolStripButtonUnfreeze_Click(object sender, EventArgs e)
+        {
+            if (!ManagedMods.Instance.ValidateGamePath())
+            {
+                MsgBox.ShowID("modsGamePathNotSet", MessageBoxIcon.Information);
+                return;
+            }
+            List<int> indices = new List<int>();
+            foreach (ListViewItem item in this.listViewMods.SelectedItems)
+                indices.Add(item.Index);
+            Thread thread = new Thread(() => UnfreezeBulkMods(indices));
+            thread.IsBackground = true;
+            thread.Start();
+        }
+
 
 
         /*
@@ -774,7 +830,7 @@ namespace Fo76ini
          */
 
         // Pick game path
-        private void buttonPickGamePath_Click(object sender, EventArgs e)
+        /*private void buttonPickGamePath_Click(object sender, EventArgs e)
         {
             if (ManagedMods.Instance.isDeploymentNecessary())
             {
@@ -825,7 +881,7 @@ namespace Fo76ini
                     this.textBoxGamePath.BackColor = Color.Red;
                 }
             }
-        }
+        }*/
 
         // Clean lists
         private void buttonModsCleanLists_Click(object sender, EventArgs e)
@@ -871,19 +927,6 @@ namespace Fo76ini
             this.textBoxsResourceIndexFileList.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
         }
 
-        // Bethesda.net picked
-        /*private void radioButtonEditionBethesdaNet_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.radioButtonEditionBethesdaNet.Checked)
-                ChangeGameEdition(GameEdition.BethesdaNet);
-        }
-
-        // Steam picked
-        private void radioButtonEditionSteam_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.radioButtonEditionSteam.Checked)
-                ChangeGameEdition(GameEdition.Steam);
-        }*/
 
         public void ChangeGameEdition(GameEdition gameEdition)
         {
@@ -892,7 +935,7 @@ namespace Fo76ini
             IniFiles.Instance.Set(IniFile.Config, "Preferences", "uGameEdition", (uint)gameEdition);
             ManagedMods.Instance.GameEdition = gameEdition;
             ManagedMods.Instance.GamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", ManagedMods.Instance.GamePathKey, "");
-            this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
+            //this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
             ManagedMods.Instance.Load();
             UpdateUI();
         }
@@ -983,6 +1026,22 @@ namespace Fo76ini
                     Console.WriteLine($"File not found: ({fullFilePath.Length}) {exc.Message}");
                 }
             }
+        }
+
+        private void UnfreezeBulkMods(List<int> indices)
+        {
+            Invoke(DisableUI);
+            ManagedMods.Instance.UnfreezeMods(indices,
+                (text, percent) => {
+                    Invoke(() => Display(text));
+                    Invoke(() => { if (percent >= 0) { ProgressBarContinuous(percent); } else { ProgressBarMarquee(); } });
+                },
+                () => {
+                    Invoke(() => EnableUI());
+                    Invoke(() => UpdateModList());
+                    Invoke(() => UpdateLabel());
+                }
+            );
         }
 
         private void DeleteMod(int index)

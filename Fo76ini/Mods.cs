@@ -512,6 +512,19 @@ namespace Fo76ini
                 done();
         }
 
+        public void UnfreezeMods(List<int> indices, Action<String, int> updateProgress = null, Action done = null)
+        {
+            foreach (int index in indices)
+            {
+                Mod mod = this.Mods[index];
+                if (updateProgress != null)
+                    updateProgress($"Unfreezing {mod.Title}...", (index + 1) / indices.Count() * 100);
+                mod.Unfreeze();
+            }
+            if (done != null)
+                done();
+        }
+
         public bool ValidateGamePath(String path)
         {
             return path != null && path.Trim().Length > 0 && Directory.Exists(path) && Directory.Exists(Path.Combine(path, "Data"));
@@ -1192,7 +1205,7 @@ namespace Fo76ini
                     foreach (String filePath in upperFiles)
                     {
                         String relUpperPath = Utils.MakeRelativePath(upperPath, filePath);
-                        if (lowerRelPaths.Contains(relUpperPath))
+                        if (!relUpperPath.Contains("frozen.ba2") && lowerRelPaths.Contains(relUpperPath))
                         {
                             if (!conflict.conflictingFiles.Contains(relUpperPath))
                                 conflict.conflictingFiles.Add(relUpperPath);
@@ -1831,6 +1844,7 @@ namespace Fo76ini
         {
             if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false))
                 return;
+
             String suffix = ManagedMods.GetEditionSuffix(this.GameEdition);
             IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix, String.Join(",", IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "")));
             IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceArchive2List" + suffix, String.Join(",", IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "")));
@@ -1842,16 +1856,25 @@ namespace Fo76ini
         {
             if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false))
                 return;
+
             String suffix = ManagedMods.GetEditionSuffix(this.GameEdition);
             String sResourceIndexFileList = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix, "");
             String sResourceArchive2List = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceArchive2List" + suffix, "");
             String sResourceDataDirsFinal = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceDataDirsFinal" + suffix, "");
-            if (IniFiles.Instance.Exists(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix))
+
+            if (sResourceIndexFileList.Length > 0 || IniFiles.Instance.Exists(IniFile.F76Custom, "Mods", "sResourceIndexFileList"))
                 IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", sResourceIndexFileList);
-            if (IniFiles.Instance.Exists(IniFile.Config, "Mods", "sResourceArchive2List" + suffix))
+            if (sResourceArchive2List.Length > 0 || IniFiles.Instance.Exists(IniFile.F76Custom, "Mods", "sResourceArchive2List"))
                 IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceArchive2List", sResourceArchive2List);
-            if (sResourceDataDirsFinal.Length > 0)
+            if (sResourceDataDirsFinal.Length > 0 || IniFiles.Instance.Exists(IniFile.F76Custom, "Mods", "sResourceDataDirsFinal"))
                 IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", sResourceDataDirsFinal);
+
+            if (IniFiles.Instance.GetString(IniFile.F76Custom, "Mods", "sResourceIndexFileList", "").Trim().Length == 0)
+                IniFiles.Instance.Remove(IniFile.F76Custom, "Mods", "sResourceIndexFileList");
+            if (IniFiles.Instance.GetString(IniFile.F76Custom, "Mods", "sResourceArchive2List", "").Trim().Length == 0)
+                IniFiles.Instance.Remove(IniFile.F76Custom, "Mods", "sResourceArchive2List");
+            if (IniFiles.Instance.GetString(IniFile.F76Custom, "Mods", "sResourceDataDirsFinal", "").Trim().Length == 0)
+                IniFiles.Instance.Remove(IniFile.F76Custom, "Mods", "sResourceDataDirsFinal");
         }
     }
 

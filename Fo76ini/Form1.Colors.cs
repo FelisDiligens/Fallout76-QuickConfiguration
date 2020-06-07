@@ -74,7 +74,7 @@ namespace Fo76ini
         {
             get
             {
-                float r = IniFiles.Instance.GetFloat("Pipboy", "fPipboyEffectColorR", 1.0f);
+                float r = IniFiles.Instance.GetFloat("Pipboy", "fPipboyEffectColorR", 0.1f);
                 float g = IniFiles.Instance.GetFloat("Pipboy", "fPipboyEffectColorG", 1.0f);
                 float b = IniFiles.Instance.GetFloat("Pipboy", "fPipboyEffectColorB", 0.5f);
                 return Color.FromArgb(

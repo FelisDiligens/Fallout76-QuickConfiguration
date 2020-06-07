@@ -97,7 +97,7 @@ namespace Fo76ini
             iniParserConfig.AllowCreateSectionsOnFly = true;
             iniParserConfig.AssigmentSpacer = "";
             iniParserConfig.CaseInsensitive = true;
-            iniParserConfig.CommentRegex = new System.Text.RegularExpressions.Regex(@";.*");
+            iniParserConfig.CommentRegex = new System.Text.RegularExpressions.Regex(@"^;.*");
 
             // Be very generous, allow everything:
             iniParserConfig.AllowDuplicateKeys = true;

@@ -15,7 +15,7 @@ namespace Fo76ini
 {
     public partial class Form1 : Form
     {
-        public const String VERSION = "1.6.1";
+        public const String VERSION = "1.6.2";
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
@@ -304,6 +304,14 @@ namespace Fo76ini
                 new String[] { "1", "2", "3" },
                 IniFile.Config, "Preferences", "uGameEdition",
                 "0"
+            );
+
+            // Launch options
+            uiLoader.LinkList(
+                new RadioButton[] { this.radioButtonLaunchViaLink, this.radioButtonLaunchViaExecutable },
+                new String[] { "1", "2" },
+                IniFile.Config, "Preferences", "uLaunchOption",
+                "1"
             );
 
             // Nuclear winter mode
@@ -808,27 +816,43 @@ namespace Fo76ini
         private void buttonLaunchGame_Click(object sender, EventArgs e)
         {
             uint uGameEdition = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uGameEdition", 0);
+            uint uLaunchOption = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uLaunchOption", 1);
             String process = null;
-            switch (uGameEdition)
+            if (uLaunchOption == 1)
             {
-                case (uint)GameEdition.BethesdaNet:
-                    process = "bethesdanet://run/20";
-                    break;
-                case (uint)GameEdition.Steam:
-                    process = "steam://run/1151340"; // "steam://runappid/1151340"
-                    break;
-                case (uint)GameEdition.BethesdaNetPTS:
-                    process = "bethesdanet://run/57";
-                    break;
-                default:
-                    MsgBox.Get("chooseGameEdition").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
+                switch (uGameEdition)
+                {
+                    case (uint)GameEdition.BethesdaNet:
+                        process = "bethesdanet://run/20";
+                        break;
+                    case (uint)GameEdition.Steam:
+                        process = "steam://run/1151340"; // "steam://runappid/1151340"
+                        break;
+                    case (uint)GameEdition.BethesdaNetPTS:
+                        process = "bethesdanet://run/57";
+                        break;
+                    default:
+                        MsgBox.Get("chooseGameEdition").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                }
             }
-            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAutoApply", false))
-                ApplyChanges();
-            System.Diagnostics.Process.Start(process);
-            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bQuitOnLaunch", false))
-                this.Close();
+            else if (uLaunchOption == 2)
+            {
+                if (!ManagedMods.Instance.ValidateGamePath())
+                {
+                    MsgBox.Get("modsGamePathNotSet").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                process = Path.GetFullPath(Path.Combine(ManagedMods.Instance.GamePath, "Fallout76.exe"));
+            }
+            if (process != null)
+            {
+                if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAutoApply", false))
+                    ApplyChanges();
+                System.Diagnostics.Process.Start(process);
+                if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bQuitOnLaunch", false))
+                    this.Close();
+            }
         }
 
         // "Get the latest version from NexusMods" link:
@@ -865,6 +889,7 @@ namespace Fo76ini
                 formModsBackupCreated = true;
             }
             Utils.SetFormPosition(this.formMods, this.Location.X + this.Width, this.Location.Y);
+            this.formMods.UpdateUI();
             this.formMods.Show();
         }
 
@@ -904,19 +929,28 @@ namespace Fo76ini
         private void radioButtonEditionSteam_CheckedChanged(object sender, EventArgs e)
         {
             if (this.radioButtonEditionSteam.Checked)
+            {
                 this.formMods.ChangeGameEdition(GameEdition.Steam);
+                this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
+            }
         }
 
         private void radioButtonEditionBethesdaNet_CheckedChanged(object sender, EventArgs e)
         {
             if (this.radioButtonEditionBethesdaNet.Checked)
+            {
                 this.formMods.ChangeGameEdition(GameEdition.BethesdaNet);
+                this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
+            }
         }
 
         private void radioButtonEditionBethesdaNetPTS_CheckedChanged(object sender, EventArgs e)
         {
             if (this.radioButtonEditionBethesdaNetPTS.Checked)
+            {
                 this.formMods.ChangeGameEdition(GameEdition.BethesdaNetPTS);
+                this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
+            }
         }
 
         // Nuclear Winter mode
@@ -1043,6 +1077,67 @@ namespace Fo76ini
         {
             IniFiles.Instance.Set(IniFile.Config, "Preferences", "bIgnoreUpdates", this.checkBoxIgnoreUpdates.Checked);
             this.CheckVersion();
+        }
+
+        /*
+         * Game path
+         */
+
+        // Pick game path
+        private void buttonPickGamePath_Click(object sender, EventArgs e)
+        {
+            if (ManagedMods.Instance.isDeploymentNecessary())
+            {
+                MsgBox.ShowID("modsDeploymentNecessary");
+                return;
+            }
+            if (this.openFileDialogGamePath.ShowDialog() == DialogResult.OK)
+            {
+                String path = Path.GetDirectoryName(this.openFileDialogGamePath.FileName); // We want the path where Fallout76.exe resides.
+                if (Directory.Exists(Path.Combine(path, "Data")))
+                {
+                    this.textBoxGamePath.Text = path;
+                    ManagedMods.Instance.GamePath = path;
+                    IniFiles.Instance.Set(IniFile.Config, "Preferences", ManagedMods.Instance.GamePathKey, path);
+                    IniFiles.Instance.SaveConfig();
+                    ManagedMods.Instance.Load();
+                }
+                else
+                    MsgBox.ShowID("modsGamePathInvalid");
+            }
+        }
+
+        // Game path textbox changed
+        private void textBoxGamePath_TextChanged(object sender, EventArgs e)
+        {
+            if (this.textBoxGamePath.Focused)
+            {
+                if (ManagedMods.Instance.isDeploymentNecessary())
+                {
+                    if (this.textBoxGamePath.Text != ManagedMods.Instance.GamePath)
+                        this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
+                    return;
+                }
+                else if (Directory.Exists(Path.Combine(this.textBoxGamePath.Text, "Data")))
+                {
+                    ManagedMods.Instance.GamePath = this.textBoxGamePath.Text;
+                    IniFiles.Instance.Set(IniFile.Config, "Preferences", ManagedMods.Instance.GamePathKey, this.textBoxGamePath.Text);
+                    IniFiles.Instance.SaveConfig();
+                    ManagedMods.Instance.Load();
+                    this.textBoxGamePath.ForeColor = Color.Black;
+                    this.textBoxGamePath.BackColor = Color.White;
+                }
+                else
+                {
+                    this.textBoxGamePath.ForeColor = Color.White;
+                    this.textBoxGamePath.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void radioButtonLaunchViaExecutable_CheckedChanged(object sender, EventArgs e)
+        {
+            this.labelLaunchOptionTip.Visible = this.radioButtonLaunchViaExecutable.Checked;
         }
     }
 }
