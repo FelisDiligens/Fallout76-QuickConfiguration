@@ -730,7 +730,7 @@ namespace Fo76ini
 
             // Fix aim sensitivity
             uiLoader.LinkCustom(this.checkBoxFixAimSensitivity,
-                () => IniFiles.Instance.GetFloat("Main", "fIronSightsFOVRotateMult", 0f) - 2.14f < 0.1f,
+                () => Math.Abs(IniFiles.Instance.GetFloat("Main", "fIronSightsFOVRotateMult", 0f) - 2.14f) < 0.1f,
                 (value) => {
                     if (value)
                     {
