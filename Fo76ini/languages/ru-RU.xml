@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.6.1">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.6.2">
   <Strings>
     <String text="Доступна новая версия: {0}" id="newVersionAvailable" />
     <String text="Необходима установка" id="modsDeploymentNecessary" />
@@ -155,6 +155,15 @@
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
       <Tab text="Настройки" id="tabPageSettings">
+        <Group text="Варианты запуска" id="groupBoxLaunchOptions">
+          <Label text="Примечание: введите свои учетные данные для входа в систему на вкладке &quot;Основное&quot;." id="labelLaunchOptionTip" />
+          <Radiobutton text="Запускать &quot;Fallout76.exe&quot; напрямую" id="radioButtonLaunchViaExecutable" />
+          <Radiobutton text="Запускать через Steam / Bethesda.net (рекомендуется)" id="radioButtonLaunchViaLink" />
+        </Group>
+        <Group text="Пути" id="groupBoxGamePaths">
+          <Label text="Папка игры:" id="labelGamePath" />
+          <Button text="..." id="buttonPickGamePath" />
+        </Group>
         <Button text="Принудительное обновление" id="buttonForceUpdate" />
         <Group text="Поведение" id="groupBoxBehavior">
           <Checkbox text="Не проверять обновления" id="checkBoxIgnoreUpdates" />
@@ -653,6 +662,7 @@ Affected files: Fallout76Custom.ini</Tooltip>
           <Button text="Выше" id="toolStripButtonMoveUp" />
           <Button text="Ниже" id="toolStripButtonMoveDown" />
           <Button text="Сведения о моде" id="toolStripButtonModEdit" />
+          <Button text="Разморозить" id="toolStripButtonUnfreeze" />
           <Button text="Открыть папку" id="toolStripButtonModOpenFolder" />
           <Button text="Удалить мод" id="toolStripButtonDeleteMod" />
         </Tool>
@@ -673,10 +683,6 @@ Affected files: Fallout76Custom.ini</Tooltip>
           <Button text="Очистить списки" id="buttonModsCleanLists" />
           <Label text="sResourceIndexFileList (Используется в управлении модами)" id="labelsResourceIndexFileList" />
           <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
-        </Group>
-        <Group text="Пути" id="groupBoxGamePaths">
-          <Label text="Папка игры:" id="labelGamePath" />
-          <Button text="..." id="buttonPickGamePath" />
         </Group>
       </Tab>
     </TabContainer>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Français (France)" iso="fr-FR" author="Christophe Noret (Re4veN) updated by 3z3ky3l" version="1.6.1">
+<Language name="Français (France)" iso="fr-FR" author="Christophe Noret (Re4veN) mis à jour par 3z3ky3l" version="1.6.2">
   <Strings>
     <String text="Une nouvelle version est disponible: {0}" id="newVersionAvailable" />
     <String text="Déploiement nécessaire" id="modsDeploymentNecessary" />
@@ -159,6 +159,15 @@ Veuillez sélectionner Archive2.exe</Messagebox>
         <Label text="Fallout 76 Configuration Rapide" id="labelTitle" />
       </Tab>
       <Tab text="Paramètres" id="tabPageSettings">
+        <Group text="Options de lancement" id="groupBoxLaunchOptions">
+          <Label text="Astuce: Entrez vos identifiants dans l'onflet &quot;General&quot;." id="labelLaunchOptionTip" />
+          <Radiobutton text="Lancer &quot;Fallout76.exe&quot; directement" id="radioButtonLaunchViaExecutable" />
+          <Radiobutton text="Lancer via Steam / Bethesda.net (recommendé)" id="radioButtonLaunchViaLink" />
+        </Group>
+        <Group text="Chemins" id="groupBoxGamePaths">
+          <Label text="Localisation du jeu:" id="labelGamePath" />
+          <Button text="..." id="buttonPickGamePath" />
+        </Group>
         <Button text="Forcer la mise à jour automatique" id="buttonForceUpdate" />
         <Group text="Comportement" id="groupBoxBehavior">
           <Checkbox text="Ne pas vérifier les mises à jour." id="checkBoxIgnoreUpdates" />
@@ -189,7 +198,7 @@ Si cette case est cochée, sResourceIndexFileList sera enregistré séparément 
           </Checkbox>
           <Checkbox text="Fichiers *.ini en lecture seule" id="checkBoxReadOnly">
             <Tooltip>Cette option rendra immédiatement tous les fichiers *.ini en lecture seule.
-Activez cette option si vos paramètres sont rétablis.
+Activez cette option pour éviter la modification de vos paramètres à l'extérieur de ce programme.
 
 Fichiers concernés: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
           </Checkbox>
@@ -216,7 +225,7 @@ Affected files: Fallout76Custom.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Login" id="groupBoxLogin">
-          <Label text="Vos informations d'identification sont enregistrées dans Fallout76Custom.ini\nDe cette façon, vous n'avez pas à vous connecter si vous démarrez Fallout 76\nsans le lanceur (lanceur Bethesda uniquement)." id="labelCredentialsExplanation" />
+          <Label text="Vos informations d'identification sont enregistrées dans Fallout76Custom.ini\nAinsi, vous n'avez pas à vous connecter si vous démarrez Fallout 76 sans le lanceur." id="labelCredentialsExplanation" />
           <Checkbox text="Montrer le mot de passe" id="checkBoxShowPassword" />
           <Label text="Mot de passe:" id="labelPassword" />
           <Label text="Nom d'utilisateur:" id="labelUserName" />
@@ -664,12 +673,13 @@ Fichiers concernés: Fallout76Prefs.ini</Tooltip>
       <Tab text="Ordre des mods" id="tabPageModOrder">
         <Tool id="toolStrip1">
           <Button text="Ajouter un mod (depuis une archive)" id="toolStripButtonAddMod" />
-          <Button text="Ajouter un mod (depuis un fichier *.ba2)" id="toolStripButtonAddModFrozen" />
+          <Button text="Ajouter un mod gelé(depuis un fichier *.ba2)" id="toolStripButtonAddModFrozen" />
           <Button text="Ajouter un mod (depuis un dossier)" id="toolStripButtonAddModFolder" />
           <Button text="Sélectionner/Dé-sélectionner tout" id="toolStripButtonCheckAll" />
           <Button text="Monter le mod séléctionné" id="toolStripButtonMoveUp" />
           <Button text="Descendre le mod séléctionné" id="toolStripButtonMoveDown" />
           <Button text="Edition des détails du mod" id="toolStripButtonModEdit" />
+          <Button text="Dégeler" id="toolStripButtonUnfreeze" />
           <Button text="Ouvrir le répertoire du mod" id="toolStripButtonModOpenFolder" />
           <Button text="Supprimer le mod" id="toolStripButtonDeleteMod" />
         </Tool>
@@ -690,10 +700,6 @@ Fichiers concernés: Fallout76Prefs.ini</Tooltip>
           <Button text="Nettoyer les listes" id="buttonModsCleanLists" />
           <Label text="sResourceIndexFileList (Utilisé par le manageur de mods)" id="labelsResourceIndexFileList" />
           <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
-        </Group>
-        <Group text="Chemins" id="groupBoxGamePaths">
-          <Label text="Localisation du jeu:" id="labelGamePath" />
-          <Button text="..." id="buttonPickGamePath" />
         </Group>
       </Tab>
     </TabContainer>
