@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="中文 (简体)" iso="zh-CN" author="Broodahood" version="1.5">
+<Language name="中文 (简体)" iso="zh-CN" author="Broodahood" version="1.6.2">
   <Strings>
     <String text="有更新的版本可用：{0}" id="newVersionAvailable" />
     <String text="必要安装" id="modsDeploymentNecessary" />
@@ -9,8 +9,14 @@
     <String text="自动" id="modsTableFormatAutoDetect" />
     <String text="捆绑" id="modsTableTypeBundled" />
     <String text="分开" id="modsTableTypeSeparate" />
+    <String text="分开（冷冻）" id="modsTableTypeSeparateFrozen" />
     <String text="未压缩" id="modsTableTypeLoose" />
+    <String text="待定" id="modTableFrozenPending" />
+    <String text="编辑 {0}" id="modDetailsTitle" />
+    <String text="编辑 {0} 模组" id="modDetailsTitleBulk" />
     <String text="无" id="notApplicable" />
+    <String text="是" id="yes" />
+    <String text="否" id="no" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -60,14 +66,14 @@
       <Option>3x = 默认，推荐</Option>
     </Dropdown>
     <Dropdown id="ModInstallAs">
-      <Option>Bundled *.ba2 archive</Option>
-      <Option>Separate *.ba2 archive</Option>
-      <Option>Loose files</Option>
+      <Option>捆绑*.ba2文件</Option>
+      <Option>分开*.ba2文件</Option>
+      <Option>散装文件</Option>
     </Dropdown>
     <Dropdown id="ModArchiveFormat">
-      <Option>Auto-detect</Option>
-      <Option>General</Option>
-      <Option>Textures (*.dds files)</Option>
+      <Option>自动检测</Option>
+      <Option>常规</Option>
+      <Option>材质（*.dds文件）</Option>
     </Dropdown>
   </Dropdowns>
   <Messageboxes>
@@ -83,11 +89,19 @@
     <Messagebox title="完成" id="oldValuesResetToDefault">一些设置已被恢复为默认。
 只有先前版本留下的不稳定数值受到影响。
 不要忘记点击“应用”来保存设置。</Messagebox>
+    <Messagebox title="文件被修改" id="iniFilesModified">*.ini文件在本工具运行时受到其他渠道修改。
+注意：如果点击“应用”，任何相关变更都将被覆写。
+请重启工具让其读取受到更改的数据。</Messagebox>
     <Messagebox title="加载UI时出现异常" id="onLoadFuncException">加载UI时出现{0}项异常。
 原因可能为ini文件损坏。
 部分UI功能可能无法正常运作。
 
 {1}</Messagebox>
+    <Messagebox title="完成" id="downloadLanguagesFinished">已下载语言文件：{0}</Messagebox>
+    <Messagebox title="失败" id="downloadLanguagesFailed">语言文件下载失败
+{0}</Messagebox>
+    <Messagebox title="完成" id="modsDisabledDone">模组已被禁用并移除游戏。</Messagebox>
+    <Messagebox title="完成" id="modsDeployedDone">模组已安装。</Messagebox>
     <Messagebox title="Archive2 is missing" id="modsArchive2Missing">.\Archive2\Archive2.exe 文件缺失
 请手动重新安装本工具，或手动安装Archive2。</Messagebox>
     <Messagebox title="未设置游戏路径" id="modsGamePathNotSet">请设置游戏路径（Fallout76.exe的所在文件夹）</Messagebox>
@@ -121,39 +135,101 @@
     <Messagebox title="确认？" id="modsRepairDDSQuestion">本操作将会尝试修复所有*.dds文件。
 有可能会消耗大量时间，取决于文件的尺寸和数量。
 你确定要继续吗？</Messagebox>
+    <Messagebox title="完成" id="modsRepairDDSDone">*.dds文件已被修复。</Messagebox>
+    <Messagebox title="模组仍被激活" id="nwModeEnabledButModsAreDeployed">你启用了核冬天模式，但你的模组仍被激活。
+你想现在禁用它们吗？</Messagebox>
     <Messagebox title="需要Archive2" id="modsArchive2NotSet">请下载Archive2并设置路径以用于解压*.ba2文件。</Messagebox>
     <Messagebox title="路径错误" id="modsArchive2Invalid">Archive2路径错误。
 请选择Archive2.exe</Messagebox>
   </Messageboxes>
   <Form1 title="辐射76快速设置">
-    <Group text="设置" id="groupBoxOptions">
-      <Checkbox text="核冬天模式" id="checkBoxNWMode" />
-      <Checkbox text="将.ini文件设置为只读" id="checkBoxReadOnly">
-        <Tooltip>该设置会立即将所有ini格式文件设置为只读模式。
+    <Button text="模组管理器" id="buttonManageMods" />
+    <Button text="启动游戏" id="buttonLaunchGame" />
+    <Button text="应用" id="buttonApply" />
+    <TabContainer id="tabControl1">
+      <Tab text="信息" id="tabPageInfo">
+        <Group text="有可用更新" id="groupBoxUpdate">
+          <Button text="现在更新！" id="buttonUpdateNow" />
+          <Link text="或手动下载并安装……" id="linkLabelManualDownloadPage" />
+        </Group>
+        <Label text="汉化：" id="labelTranslationBy" />
+        <Label text="作者：" id="labelAuthor" />
+        <Label text="版本：" id="labelVersion" />
+        <Label text="本工具可以让你快速调整INI设置。\n提示：用鼠标指向任意选项，会显示其更改的细节。" id="labelDescription" />
+        <Label text="辐射76快速设置" id="labelTitle" />
+      </Tab>
+      <Tab text="设置" id="tabPageSettings">
+        <Group text="启动设置" id="groupBoxLaunchOptions">
+          <Label text="提示：在&quot;常规&quot;一栏下输入你的登录信息。" id="labelLaunchOptionTip" />
+          <Radiobutton text="直接启动&quot;Fallout76.exe&quot;。" id="radioButtonLaunchViaExecutable" />
+          <Radiobutton text="通过Steam / Bethesda.net启动（推荐）" id="radioButtonLaunchViaLink" />
+        </Group>
+        <Group text="路径" id="groupBoxGamePaths">
+          <Label text="游戏位置：" id="labelGamePath" />
+          <Button text="..." id="buttonPickGamePath" />
+        </Group>
+        <Button text="强制自动更新" id="buttonForceUpdate" />
+        <Group text="行为" id="groupBoxBehavior">
+          <Checkbox text="不检查更新" id="checkBoxIgnoreUpdates" />
+          <Checkbox text="启动时自动开启模组管理器" id="checkBoxOpenManageModsOnLaunch" />
+          <Checkbox text="游戏启动时自动关闭" id="checkBoxQuitOnGameLaunch">
+            <Tooltip>只在通过工具启动游戏时生效。</Tooltip>
+          </Checkbox>
+          <Checkbox text="当点击&quot;应用&quot;时不再询问。" id="checkBoxSkipBackupQuestion">
+            <Tooltip>当点击“应用”后将会跳过询问备份的信息框。
+注意：此操作将禁用备份功能！</Tooltip>
+          </Checkbox>
+          <Checkbox text="当工具被关闭或游戏启动时自动应用更改。" id="checkBoxAutoApply">
+            <Tooltip>不再需要点击应用按钮。</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="本地化" id="groupBoxLocalization">
+          <Label text="该语言文件为旧版本。\n部分内容可能尚未被翻译。" id="labelOutdatedLanguage" />
+          <Label text="语言(Lang)：" id="labelLanguage" />
+          <Button text="下载 / 更新语言文件" id="buttonDownloadLanguages" />
+        </Group>
+        <Group text="设置" id="groupBoxOptions">
+          <Checkbox text="我使用多个游戏版本" id="checkBoxMultipleGameEditionsUsed">
+            <Tooltip>如使用多个游戏版本，请勾选。
+如勾选，sResourceIndexFileList将会为不同版本的游戏分开储存。</Tooltip>
+          </Checkbox>
+          <Checkbox text="核冬天模式" id="checkBoxNWMode">
+            <Tooltip>目前只将Fallout76Custom.ini重命名为Fallout76Custom.ini.nwmodebak.</Tooltip>
+          </Checkbox>
+          <Checkbox text="将.ini文件设置为只读" id="checkBoxReadOnly">
+            <Tooltip>该设置会立即将所有ini格式文件设置为只读模式。
 如果你发现设置会被游戏自动重置的话请勾选该项。
 
 受影响文件：%用户%\我的文档\My Games\Fallout 76\*.ini</Tooltip>
-      </Checkbox>
-    </Group>
-    <Group text="游戏版本" id="groupBoxGameEdition">
-      <Radiobutton text="Steam" id="radioButtonEditionSteam" />
-      <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
-    </Group>
-    <Button text="模组管理器" id="buttonManageMods" />
-    <Button text="启动游戏" id="buttonLaunchGame" />
-    <TabContainer id="tabControl1">
-      <Tab text="信息" id="tabPageInfo">
+          </Checkbox>
+        </Group>
         <Button text="修复v1.3.1及以前版本的设置数据" id="buttonFixIssuesEarlierVersion" />
-        <Label text="汉化：" id="labelTranslationBy" />
-        <Link text="打开说明" id="linkLabel1" />
-        <Label text="作者：" id="labelAuthor" />
-        <Label text="语言(Lang)：" id="labelLanguage" />
-        <Label text="版本：" id="labelVersion" />
-        <Label text="本工具可以让你快速调整INI设置。\n提示：用鼠标指向任意选项，会显示其更改的细节。" id="labelDescription" />
-        <Link text="前往NexusMods网站并获取最新版本" id="linkLabelDownloadPage" />
-        <Label text="辐射76快速设置" id="labelTitle" />
+        <Group text="游戏版本" id="groupBoxGameEdition">
+          <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
+          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
+          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+        </Group>
       </Tab>
       <Tab text="常规" id="tabPageGeneral">
+        <Group text="镜头" id="groupBoxCamera">
+          <Checkbox text="强制自动旋转模式" id="checkBoxForceVanityMode">
+            <Tooltip>受影响设置：bForceAutoVanityMode
+受影响文件：Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+          <Checkbox text="启动自动旋转模式" id="checkBoxVanityMode">
+            <Tooltip>如勾选，镜头会在玩家在不做出任何操作一定时间后自动围着玩家缓速旋转。
+该项仍在测试阶段。
+
+受影响设置：bDisableAutoVanityMode
+受影响文件：Fallout76Custom.ini</Tooltip>
+          </Checkbox>
+        </Group>
+        <Group text="登录" id="groupBoxLogin">
+          <Label text="你的密码会被保存至Fallout76Custom.ini\n此操作可以在不需要登录的情况下启动Fallout 76" id="labelCredentialsExplanation" />
+          <Checkbox text="显示密码" id="checkBoxShowPassword" />
+          <Label text="密码：" id="labelPassword" />
+          <Label text="用户名：" id="labelUserName" />
+        </Group>
         <Group text="界面" id="groupBoxInterface">
           <Checkbox text="显示指南针" id="checkBoxShowCompass">
             <Tooltip>受影响设置：bShowCompass
@@ -198,6 +274,7 @@
         </Group>
       </Tab>
       <Tab text="显示" id="tabPageDisplay">
+        <Button text="检测分辨率" id="buttonDetectResolution" />
         <Checkbox text="永是优先" id="checkBoxAlwaysActive">
           <Tooltip>如果你想要游戏在有其他窗口弹出时自动暂停则禁用该项。
 
@@ -418,6 +495,10 @@
           </Checkbox>
         </Group>
         <Group text="天气" id="groupBoxWeather">
+          <Checkbox text="迷雾" id="checkBoxFogEnabled">
+            <Tooltip>受影响设置：bFogEnabled
+受影响文件：Fallout76Prefs.ini</Tooltip>
+          </Checkbox>
           <Checkbox text="湿度遮蔽" id="checkBoxWeatherWetnessOcclusion">
             <Tooltip>开启环境与服装湿度遮蔽。
 
@@ -483,6 +564,12 @@ FXAA - 快速概括式抗锯齿：略微提高性能表现，锯齿可见
           </Checkbox>
         </Group>
         <Group text="鼠标" id="groupBoxMouse">
+          <Checkbox text="鼠标加速" id="checkBoxMouseAcceleration">
+            <Tooltip>该项仍在测试阶段，可能无效。
+
+受影响设置：bMouseAcceleration
+受影响文件：Fallout76Custom.ini</Tooltip>
+          </Checkbox>
           <Checkbox text="修复瞄准灵敏度" id="checkBoxFixAimSensitivity">
             <Tooltip>勾选时，瞄准灵敏度将等于正常灵敏度。
 取消勾选时（默认），使用机瞄的灵敏度将会低于正常。
@@ -575,7 +662,6 @@ FXAA - 快速概括式抗锯齿：略微提高性能表现，锯齿可见
         </Group>
       </Tab>
     </TabContainer>
-    <Button text="应用" id="buttonApply" />
   </Form1>
   <FormMods title="模组管理器">
     <Element id="panel1">
@@ -586,11 +672,13 @@ FXAA - 快速概括式抗锯齿：略微提高性能表现，锯齿可见
       <Tab text="模组序列" id="tabPageModOrder">
         <Tool id="toolStrip1">
           <Button text="添加模组(文件)" id="toolStripButtonAddMod" />
+          <Button text="添加模组（来自*.ba2文件）" id="toolStripButtonAddModFrozen" />
           <Button text="添加模组(文件夹)" id="toolStripButtonAddModFolder" />
           <Button text="全选/取消全选" id="toolStripButtonCheckAll" />
           <Button text="上移" id="toolStripButtonMoveUp" />
           <Button text="下移" id="toolStripButtonMoveDown" />
           <Button text="编辑模组描述" id="toolStripButtonModEdit" />
+          <Button text="解冻" id="toolStripButtonUnfreeze" />
           <Button text="打开模组文件夹" id="toolStripButtonModOpenFolder" />
           <Button text="删除模组" id="toolStripButtonDeleteMod" />
         </Tool>
@@ -600,16 +688,17 @@ FXAA - 快速概括式抗锯齿：略微提高性能表现，锯齿可见
           <Column>安装信息</Column>
           <Column>文件名字</Column>
           <Column>文件类型</Column>
+          <Column>压缩?</Column>
+          <Column>冷冻?</Column>
         </ListView>
       </Tab>
       <Tab text="设置" id="tabPageModsSettings">
-        <Group text="捆绑*.ba2设置" id="groupBoxModsBundledBA2">
-          <Checkbox text="压缩 bundled.ba2" id="checkBoxModsBundledBA2Compression" />
-          <Checkbox text="压缩 bundled_textures.ba2" id="checkBoxModsBundledTexturesBA2Compression" />
-        </Group>
-        <Group text="路径" id="groupBoxGamePaths">
-          <Label text="游戏位置：" id="labelGamePath" />
-          <Button text="..." id="buttonPickGamePath" />
+        <Group text="列表" id="groupBoxLists">
+          <Button text="重置" id="buttonModsResetTextboxes" />
+          <Button text="应用更改" id="buttonModsApplyTextBoxes" />
+          <Button text="清理列表" id="buttonModsCleanLists" />
+          <Label text="sResourceIndexFileList（模组管理器使用）" id="labelsResourceIndexFileList" />
+          <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
         </Group>
       </Tab>
     </TabContainer>
@@ -617,6 +706,7 @@ FXAA - 快速概括式抗锯齿：略微提高性能表现，锯齿可见
       <Item text="文件" id="fileToolStripMenuItem">
         <Item text="新增模组" id="addModarchiveToolStripMenuItem">
           <Item text="选择文件" id="fromArchiveToolStripMenuItem" />
+          <Item text="来自*.ba2文件（冷冻）" id="fromba2ArchivefrozenToolStripMenuItem" />
           <Item text="选择文件夹" id="fromFolderToolStripMenuItem" />
         </Item>
         <Item text="添加已安装的模组" id="toolStripMenuItemModsImport" />
@@ -638,13 +728,28 @@ FXAA - 快速概括式抗锯齿：略微提高性能表现，锯齿可见
   <FormModDetails>
     <Button text="取消" id="buttonModDetailsCancel" />
     <Button text="好" id="buttonModDetailsOK" />
+    <Label text="..." id="labelModDetailsStatus" />
     <Button text="应用" id="buttonModDetailsApply" />
     <Element id="panel1">
-      <Label text="..." id="labelModDetailRepairStatus" />
+      <Checkbox text="激活该模组" id="checkBoxModDetailsEnabled" />
+      <Label text="注意：冷冻的模组将被忽视。" id="labelModDetailsBulkFrozenModsWarning" />
+      <Group text="预设" id="groupBoxSeparateArchivePresets">
+        <Radiobutton text="自定义" id="radioButtonSeparateArchiveCustom" />
+        <Radiobutton text="声音" id="radioButtonSeparateArchiveSounds" />
+        <Radiobutton text="材质（*.dds文件）" id="radioButtonSeparateArchiveTextures" />
+        <Radiobutton text="常规 / 界面" id="radioButtonSeparateArchiveGeneral" />
+      </Group>
+      <Label text="安装设置被禁用，因为模组为冷冻状态。" id="labelModUnfreeze" />
+      <Button text="解冻" id="buttonModUnfreeze" />
+      <Checkbox text="冷冻" id="checkBoxFreezeArchive">
+        <Tooltip>如'冷冻'一份文件，它将不会在激活时重新创建。
+此设置会加速激活加载。
+
+当文件过大（如1GB或更大）且文件不变的时候，该操作极为有效。</Tooltip>
+      </Checkbox>
       <Button text="修复*.dds文件" id="buttonModRepairDDS" />
       <Checkbox text="压缩文件" id="checkBoxModBA2Compression" />
       <Label text="文件名字：" id="labelModArchiveName" />
-      <Checkbox text="激活该模组" id="checkBoxModDetailsEnabled" />
       <Button text="打开文件夹" id="buttonModOpenFolder" />
       <Label text="模组文件夹名字：" id="labelModFolderName" />
       <Label text="文件类型：" id="labelModArchiveFormat" />
