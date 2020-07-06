@@ -1235,7 +1235,7 @@ namespace Fo76ini
                 if (mod.Type == Mod.FileType.SeparateBA2)
                     installedMods.Remove(mod.ArchiveName);
 
-            // Ignore game files ("SeventySix - *.ba2"):
+            // Ignore any game files ("SeventySix - *.ba2"):
             foreach (String archiveName in sResourceIndexFileList)
                 if (archiveName.StartsWith("SeventySix"))
                     installedMods.Remove(archiveName);
