@@ -102,6 +102,7 @@ namespace Fo76ini
         public static void DeleteDirectory(string targetDir)
         {
             // https://stackoverflow.com/questions/1157246/unauthorizedaccessexception-trying-to-delete-a-file-in-a-folder-where-i-can-dele
+            IniFiles.Instance.SetNTFSWritePermission(true);
             File.SetAttributes(targetDir, FileAttributes.Normal);
 
             string[] files = Directory.GetFiles(targetDir);

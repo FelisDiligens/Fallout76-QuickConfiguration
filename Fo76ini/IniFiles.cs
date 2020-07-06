@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Windows.Forms;
 
@@ -368,6 +370,9 @@ namespace Fo76ini
             if (data == null)
                 return;
 
+            if (this.GetBool(IniFile.Config, "Preferences", "bDenyNTFSWritePermission", false))
+                SetNTFSWritePermission(true);
+
             if (File.Exists(path))
                 SetFileReadOnlyAttribute(path, false);
 
@@ -376,6 +381,9 @@ namespace Fo76ini
 
             if (readOnly)
                 SetFileReadOnlyAttribute(path, readOnly);
+
+            if (this.GetBool(IniFile.Config, "Preferences", "bDenyNTFSWritePermission", false))
+                SetNTFSWritePermission(false);
         }
 
 
@@ -387,6 +395,8 @@ namespace Fo76ini
 
         protected void SetFileReadOnlyAttribute(String path, bool readOnly)
         {
+            SetNTFSWritePermission(true);
+
             // https://stackoverflow.com/questions/8081242/c-sharp-make-file-read-write-from-readonly
             if (File.Exists(path))
             {
@@ -417,6 +427,46 @@ namespace Fo76ini
                 return fo76fi.IsReadOnly && fo76Prefsfi.IsReadOnly;
             }
             return false;
+        }
+
+        public void SetNTFSWritePermission(bool writePermission)
+        {
+            // https://stackoverflow.com/questions/7451861/setting-ntfs-permissions-in-c-net
+            // https://stackoverflow.com/questions/11478917/programmatically-adding-permissions-to-a-folder/11479031
+
+            // 'Allow' AND 'Deny' are ticked, wtf?
+            // Explanation: https://answers.microsoft.com/en-us/windows/forum/all/permission-entry-neither-allow-nor-deny-is-checked/5d210777-b466-49e6-855a-6dc1e85563df
+
+            DirectoryInfo dInfo = new DirectoryInfo(this.iniParentPath);
+            DirectorySecurity dSecurity = dInfo.GetAccessControl();
+
+            FileSystemRights rights = FileSystemRights.Write;
+
+            // SID: https://support.microsoft.com/en-in/help/243330/well-known-security-identifiers-in-windows-operating-systems
+            // String account = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            // SecurityIdentifier sidAll = new SecurityIdentifier("S-1-1-0");
+            // SecurityIdentifier sidAdmins = new SecurityIdentifier("S-1-5-32-544");
+            SecurityIdentifier sidUsers = new SecurityIdentifier("S-1-5-32-545");
+
+            AccessControlType access = writePermission ? AccessControlType.Allow : AccessControlType.Deny;
+
+            if (writePermission)
+            {
+                dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
+                dSecurity.AddAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+
+                //dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
+                //dSecurity.AddAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+            }
+            else
+            {
+                dSecurity.AddAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
+                dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+
+                //dSecurity.AddAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
+                //dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+            }
+            dInfo.SetAccessControl(dSecurity);
         }
 
 

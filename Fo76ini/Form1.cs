@@ -294,6 +294,9 @@ namespace Fo76ini
                 IniFiles.Instance.SetINIsReadOnly
             );
 
+            // Deny NTFS write-permission
+            uiLoader.LinkBool(this.checkBoxDenyNTFSWritePermission, IniFile.Config, "Preferences", "bDenyNTFSWritePermission", false);
+
             /*
              * Settings
              */
