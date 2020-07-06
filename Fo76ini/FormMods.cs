@@ -257,6 +257,7 @@ namespace Fo76ini
                 return;
             this.checkBoxDisableMods.Checked = ManagedMods.Instance.nuclearWinterMode;
             this.checkBoxAddArchivesAsBundled.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUnpackBA2ByDefault", false);
+            this.checkBoxModsUseHardlinks.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUseHardlinks", false);
             //this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
 
             this.textBoxsResourceArchive2List.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
@@ -891,6 +892,13 @@ namespace Fo76ini
         private void checkBoxAddArchivesAsBundled_CheckedChanged(object sender, EventArgs e)
         {
             IniFiles.Instance.Set(IniFile.Config, "Mods", "bUnpackBA2ByDefault", this.checkBoxAddArchivesAsBundled.Checked);
+            IniFiles.Instance.SaveConfig();
+        }
+
+        // Hard links
+        private void checkBoxModsUseHardlinks_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "Mods", "bUseHardlinks", this.checkBoxModsUseHardlinks.Checked);
             IniFiles.Instance.SaveConfig();
         }
 

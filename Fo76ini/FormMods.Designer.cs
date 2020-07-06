@@ -75,6 +75,8 @@
             this.columnHeaderCompression = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderFrozenState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
+            this.groupBoxModsBehavior = new System.Windows.Forms.GroupBox();
+            this.checkBoxAddArchivesAsBundled = new System.Windows.Forms.CheckBox();
             this.groupBoxLists = new System.Windows.Forms.GroupBox();
             this.buttonModsResetTextboxes = new System.Windows.Forms.Button();
             this.buttonModsApplyTextBoxes = new System.Windows.Forms.Button();
@@ -90,16 +92,15 @@
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialogBA2 = new System.Windows.Forms.OpenFileDialog();
-            this.groupBoxModsBehavior = new System.Windows.Forms.GroupBox();
-            this.checkBoxAddArchivesAsBundled = new System.Windows.Forms.CheckBox();
+            this.checkBoxModsUseHardlinks = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabPageModsSettings.SuspendLayout();
+            this.groupBoxModsBehavior.SuspendLayout();
             this.groupBoxLists.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBoxModsBehavior.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -530,6 +531,30 @@
             this.tabPageModsSettings.Text = "Settings";
             this.tabPageModsSettings.UseVisualStyleBackColor = true;
             // 
+            // groupBoxModsBehavior
+            // 
+            this.groupBoxModsBehavior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxModsBehavior.Controls.Add(this.checkBoxModsUseHardlinks);
+            this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
+            this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 369);
+            this.groupBoxModsBehavior.Name = "groupBoxModsBehavior";
+            this.groupBoxModsBehavior.Size = new System.Drawing.Size(480, 69);
+            this.groupBoxModsBehavior.TabIndex = 60;
+            this.groupBoxModsBehavior.TabStop = false;
+            this.groupBoxModsBehavior.Text = "Behavior";
+            // 
+            // checkBoxAddArchivesAsBundled
+            // 
+            this.checkBoxAddArchivesAsBundled.AutoSize = true;
+            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxAddArchivesAsBundled.Name = "checkBoxAddArchivesAsBundled";
+            this.checkBoxAddArchivesAsBundled.Size = new System.Drawing.Size(167, 17);
+            this.checkBoxAddArchivesAsBundled.TabIndex = 0;
+            this.checkBoxAddArchivesAsBundled.Text = "Unfreeze *.ba2 files by default";
+            this.checkBoxAddArchivesAsBundled.UseVisualStyleBackColor = true;
+            this.checkBoxAddArchivesAsBundled.CheckedChanged += new System.EventHandler(this.checkBoxAddArchivesAsBundled_CheckedChanged);
+            // 
             // groupBoxLists
             // 
             this.groupBoxLists.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -544,7 +569,7 @@
             this.groupBoxLists.Controls.Add(this.labelsResourceArchive2List);
             this.groupBoxLists.Location = new System.Drawing.Point(6, 6);
             this.groupBoxLists.Name = "groupBoxLists";
-            this.groupBoxLists.Size = new System.Drawing.Size(480, 370);
+            this.groupBoxLists.Size = new System.Drawing.Size(480, 357);
             this.groupBoxLists.TabIndex = 59;
             this.groupBoxLists.TabStop = false;
             this.groupBoxLists.Text = "Lists";
@@ -552,7 +577,7 @@
             // buttonModsResetTextboxes
             // 
             this.buttonModsResetTextboxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModsResetTextboxes.Location = new System.Drawing.Point(243, 341);
+            this.buttonModsResetTextboxes.Location = new System.Drawing.Point(243, 328);
             this.buttonModsResetTextboxes.Name = "buttonModsResetTextboxes";
             this.buttonModsResetTextboxes.Size = new System.Drawing.Size(98, 23);
             this.buttonModsResetTextboxes.TabIndex = 60;
@@ -563,7 +588,7 @@
             // buttonModsApplyTextBoxes
             // 
             this.buttonModsApplyTextBoxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModsApplyTextBoxes.Location = new System.Drawing.Point(347, 341);
+            this.buttonModsApplyTextBoxes.Location = new System.Drawing.Point(347, 328);
             this.buttonModsApplyTextBoxes.Name = "buttonModsApplyTextBoxes";
             this.buttonModsApplyTextBoxes.Size = new System.Drawing.Size(127, 23);
             this.buttonModsApplyTextBoxes.TabIndex = 59;
@@ -579,13 +604,13 @@
             this.textBoxsResourceIndexFileList.Location = new System.Drawing.Point(210, 37);
             this.textBoxsResourceIndexFileList.Multiline = true;
             this.textBoxsResourceIndexFileList.Name = "textBoxsResourceIndexFileList";
-            this.textBoxsResourceIndexFileList.Size = new System.Drawing.Size(264, 298);
+            this.textBoxsResourceIndexFileList.Size = new System.Drawing.Size(264, 285);
             this.textBoxsResourceIndexFileList.TabIndex = 54;
             // 
             // buttonModsCleanLists
             // 
             this.buttonModsCleanLists.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModsCleanLists.Location = new System.Drawing.Point(6, 341);
+            this.buttonModsCleanLists.Location = new System.Drawing.Point(6, 328);
             this.buttonModsCleanLists.Name = "buttonModsCleanLists";
             this.buttonModsCleanLists.Size = new System.Drawing.Size(98, 23);
             this.buttonModsCleanLists.TabIndex = 58;
@@ -609,7 +634,7 @@
             this.textBoxsResourceArchive2List.Location = new System.Drawing.Point(6, 37);
             this.textBoxsResourceArchive2List.Multiline = true;
             this.textBoxsResourceArchive2List.Name = "textBoxsResourceArchive2List";
-            this.textBoxsResourceArchive2List.Size = new System.Drawing.Size(198, 298);
+            this.textBoxsResourceArchive2List.Size = new System.Drawing.Size(198, 285);
             this.textBoxsResourceArchive2List.TabIndex = 57;
             // 
             // labelsResourceArchive2List
@@ -658,28 +683,17 @@
             this.openFileDialogBA2.Filter = "Archive2|*.ba2";
             this.openFileDialogBA2.Title = "Add *.ba2 archive.";
             // 
-            // groupBoxModsBehavior
+            // checkBoxModsUseHardlinks
             // 
-            this.groupBoxModsBehavior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
-            this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 382);
-            this.groupBoxModsBehavior.Name = "groupBoxModsBehavior";
-            this.groupBoxModsBehavior.Size = new System.Drawing.Size(480, 56);
-            this.groupBoxModsBehavior.TabIndex = 60;
-            this.groupBoxModsBehavior.TabStop = false;
-            this.groupBoxModsBehavior.Text = "Behavior";
-            // 
-            // checkBoxAddArchivesAsBundled
-            // 
-            this.checkBoxAddArchivesAsBundled.AutoSize = true;
-            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(7, 20);
-            this.checkBoxAddArchivesAsBundled.Name = "checkBoxAddArchivesAsBundled";
-            this.checkBoxAddArchivesAsBundled.Size = new System.Drawing.Size(167, 17);
-            this.checkBoxAddArchivesAsBundled.TabIndex = 0;
-            this.checkBoxAddArchivesAsBundled.Text = "Unfreeze *.ba2 files by default";
-            this.checkBoxAddArchivesAsBundled.UseVisualStyleBackColor = true;
-            this.checkBoxAddArchivesAsBundled.CheckedChanged += new System.EventHandler(this.checkBoxAddArchivesAsBundled_CheckedChanged);
+            this.checkBoxModsUseHardlinks.AutoSize = true;
+            this.checkBoxModsUseHardlinks.Location = new System.Drawing.Point(6, 42);
+            this.checkBoxModsUseHardlinks.Name = "checkBoxModsUseHardlinks";
+            this.checkBoxModsUseHardlinks.Size = new System.Drawing.Size(327, 17);
+            this.checkBoxModsUseHardlinks.TabIndex = 1;
+            this.checkBoxModsUseHardlinks.Text = "[Experimental] Make hard links instead of copying files manually.";
+            this.toolTip.SetToolTip(this.checkBoxModsUseHardlinks, "May reduce disk space and deployment time.\r\nDoes not apply to bundled archives.");
+            this.checkBoxModsUseHardlinks.UseVisualStyleBackColor = true;
+            this.checkBoxModsUseHardlinks.CheckedChanged += new System.EventHandler(this.checkBoxModsUseHardlinks_CheckedChanged);
             // 
             // FormMods
             // 
@@ -705,12 +719,12 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabPageModsSettings.ResumeLayout(false);
+            this.groupBoxModsBehavior.ResumeLayout(false);
+            this.groupBoxModsBehavior.PerformLayout();
             this.groupBoxLists.ResumeLayout(false);
             this.groupBoxLists.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBoxModsBehavior.ResumeLayout(false);
-            this.groupBoxModsBehavior.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -780,5 +794,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonUnfreeze;
         private System.Windows.Forms.GroupBox groupBoxModsBehavior;
         private System.Windows.Forms.CheckBox checkBoxAddArchivesAsBundled;
+        private System.Windows.Forms.CheckBox checkBoxModsUseHardlinks;
     }
 }
