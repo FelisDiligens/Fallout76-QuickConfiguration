@@ -370,8 +370,7 @@ namespace Fo76ini
             if (data == null)
                 return;
 
-            if (this.GetBool(IniFile.Config, "Preferences", "bDenyNTFSWritePermission", false))
-                SetNTFSWritePermission(true);
+            SetNTFSWritePermission(true);
 
             if (File.Exists(path))
                 SetFileReadOnlyAttribute(path, false);
