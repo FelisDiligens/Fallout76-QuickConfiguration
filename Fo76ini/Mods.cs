@@ -1247,6 +1247,7 @@ namespace Fo76ini
             foreach (String archiveName in installedMods)
             {
                 String path = Path.Combine(this.gamePath, "Data", archiveName);
+                Console.WriteLine(path);
                 if (File.Exists(path))
                 {
                     // Import archive:

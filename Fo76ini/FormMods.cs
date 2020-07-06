@@ -829,60 +829,6 @@ namespace Fo76ini
          * Settings
          */
 
-        // Pick game path
-        /*private void buttonPickGamePath_Click(object sender, EventArgs e)
-        {
-            if (ManagedMods.Instance.isDeploymentNecessary())
-            {
-                MsgBox.ShowID("modsDeploymentNecessary");
-                return;
-            }
-            if (this.openFileDialogGamePath.ShowDialog() == DialogResult.OK)
-            {
-                String path = Path.GetDirectoryName(this.openFileDialogGamePath.FileName); // We want the path where Fallout76.exe resides.
-                if (Directory.Exists(Path.Combine(path, "Data")))
-                {
-                    this.textBoxGamePath.Text = path;
-                    ManagedMods.Instance.GamePath = path;
-                    IniFiles.Instance.Set(IniFile.Config, "Preferences", ManagedMods.Instance.GamePathKey, path);
-                    IniFiles.Instance.SaveConfig();
-                    ManagedMods.Instance.Load();
-                    UpdateUI();
-                }
-                else
-                    MsgBox.ShowID("modsGamePathInvalid");
-            }
-        }
-
-        // Game path textbox changed
-        private void textBoxGamePath_TextChanged(object sender, EventArgs e)
-        {
-            if (this.textBoxGamePath.Focused)
-            {
-                if (ManagedMods.Instance.isDeploymentNecessary())
-                {
-                    if (this.textBoxGamePath.Text != ManagedMods.Instance.GamePath)
-                        this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
-                    return;
-                }
-                else if (Directory.Exists(Path.Combine(this.textBoxGamePath.Text, "Data")))
-                {
-                    ManagedMods.Instance.GamePath = this.textBoxGamePath.Text;
-                    IniFiles.Instance.Set(IniFile.Config, "Preferences", ManagedMods.Instance.GamePathKey, this.textBoxGamePath.Text);
-                    IniFiles.Instance.SaveConfig();
-                    ManagedMods.Instance.Load();
-                    UpdateUI();
-                    this.textBoxGamePath.ForeColor = Color.Black;
-                    this.textBoxGamePath.BackColor = Color.White;
-                }
-                else
-                {
-                    this.textBoxGamePath.ForeColor = Color.White;
-                    this.textBoxGamePath.BackColor = Color.Red;
-                }
-            }
-        }*/
-
         // Clean lists
         private void buttonModsCleanLists_Click(object sender, EventArgs e)
         {
@@ -938,6 +884,13 @@ namespace Fo76ini
             //this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
             ManagedMods.Instance.Load();
             UpdateUI();
+        }
+
+        // Alternative *.ba2 import method
+        private void checkBoxAddArchivesAsBundled_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "Mods", "bUnpackBA2ByDefault", this.checkBoxAddArchivesAsBundled.Checked);
+            IniFiles.Instance.SaveConfig();
         }
 
 
@@ -1007,6 +960,7 @@ namespace Fo76ini
         {
             foreach (string filePath in files)
             {
+                bool unpackBA2ByDefault = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUnpackBA2ByDefault", false);
                 String fullFilePath = Path.GetFullPath(filePath);
                 if (fullFilePath.Length > 259 && Directory.Exists(@"\\?\" + fullFilePath))
                     fullFilePath = @"\\?\" + fullFilePath;
@@ -1017,7 +971,12 @@ namespace Fo76ini
                     else if ((new String[] { ".zip", ".rar", ".7z", ".tar", ".tar.gz", ".gz" }).Contains(Path.GetExtension(fullFilePath)))
                         InstallModArchive(fullFilePath);
                     else if (Path.GetExtension(fullFilePath).ToLower() == ".ba2")
-                        InstallModArchiveFrozen(fullFilePath);
+                    {
+                        if (unpackBA2ByDefault)
+                            InstallModArchive(fullFilePath);
+                        else
+                            InstallModArchiveFrozen(fullFilePath);
+                    }
                     else
                         MsgBox.Get("modsArchiveTypeNotSupported").FormatText(Path.GetExtension(fullFilePath)).Show(MessageBoxIcon.Error);
                 }
