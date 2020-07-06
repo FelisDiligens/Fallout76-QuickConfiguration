@@ -256,6 +256,7 @@ namespace Fo76ini
             if (!IniFiles.Instance.IsLoaded())
                 return;
             this.checkBoxDisableMods.Checked = ManagedMods.Instance.nuclearWinterMode;
+            this.checkBoxAddArchivesAsBundled.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUnpackBA2ByDefault", false);
             //this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
 
             this.textBoxsResourceArchive2List.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
