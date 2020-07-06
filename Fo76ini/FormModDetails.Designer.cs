@@ -39,15 +39,19 @@
             this.labelModName = new System.Windows.Forms.Label();
             this.textBoxModName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.checkBoxModDetailsEnabled = new System.Windows.Forms.CheckBox();
+            this.labelModDetailsBulkFrozenModsWarning = new System.Windows.Forms.Label();
+            this.groupBoxSeparateArchivePresets = new System.Windows.Forms.GroupBox();
+            this.radioButtonSeparateArchiveCustom = new System.Windows.Forms.RadioButton();
+            this.radioButtonSeparateArchiveSounds = new System.Windows.Forms.RadioButton();
+            this.radioButtonSeparateArchiveTextures = new System.Windows.Forms.RadioButton();
+            this.radioButtonSeparateArchiveGeneral = new System.Windows.Forms.RadioButton();
             this.labelModUnfreeze = new System.Windows.Forms.Label();
             this.buttonModUnfreeze = new System.Windows.Forms.Button();
             this.checkBoxFreezeArchive = new System.Windows.Forms.CheckBox();
-            this.labelModDetailsStatus = new System.Windows.Forms.Label();
             this.buttonModRepairDDS = new System.Windows.Forms.Button();
             this.separator2 = new System.Windows.Forms.Label();
             this.separator1 = new System.Windows.Forms.Label();
-            this.checkBoxModDetailsEnabled = new System.Windows.Forms.CheckBox();
             this.comboBoxModArchiveFormat = new System.Windows.Forms.ComboBox();
             this.buttonModOpenFolder = new System.Windows.Forms.Button();
             this.labelModFolderName = new System.Windows.Forms.Label();
@@ -55,26 +59,22 @@
             this.textBoxModFolderName = new System.Windows.Forms.TextBox();
             this.comboBoxModInstallAs = new System.Windows.Forms.ComboBox();
             this.labelModInstallAs = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.labelModDetailsStatus = new System.Windows.Forms.Label();
             this.buttonModDetailsApply = new System.Windows.Forms.Button();
             this.buttonModDetailsOK = new System.Windows.Forms.Button();
             this.buttonModDetailsCancel = new System.Windows.Forms.Button();
             this.folderBrowserDialogPickRootDir = new System.Windows.Forms.FolderBrowserDialog();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBoxSeparateArchivePresets = new System.Windows.Forms.GroupBox();
-            this.radioButtonSeparateArchiveGeneral = new System.Windows.Forms.RadioButton();
-            this.radioButtonSeparateArchiveTextures = new System.Windows.Forms.RadioButton();
-            this.radioButtonSeparateArchiveSounds = new System.Windows.Forms.RadioButton();
-            this.radioButtonSeparateArchiveCustom = new System.Windows.Forms.RadioButton();
-            this.labelModDetailsBulkFrozenModsWarning = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBoxSeparateArchivePresets.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxModArchiveName
             // 
-            this.textBoxModArchiveName.Location = new System.Drawing.Point(112, 174);
+            this.textBoxModArchiveName.Location = new System.Drawing.Point(125, 174);
             this.textBoxModArchiveName.Name = "textBoxModArchiveName";
-            this.textBoxModArchiveName.Size = new System.Drawing.Size(231, 20);
+            this.textBoxModArchiveName.Size = new System.Drawing.Size(218, 20);
             this.textBoxModArchiveName.TabIndex = 7;
             this.textBoxModArchiveName.TextChanged += new System.EventHandler(this.textBoxModArchiveName_TextChanged);
             // 
@@ -110,9 +110,9 @@
             // 
             // textBoxModRootDir
             // 
-            this.textBoxModRootDir.Location = new System.Drawing.Point(112, 121);
+            this.textBoxModRootDir.Location = new System.Drawing.Point(125, 121);
             this.textBoxModRootDir.Name = "textBoxModRootDir";
-            this.textBoxModRootDir.Size = new System.Drawing.Size(199, 20);
+            this.textBoxModRootDir.Size = new System.Drawing.Size(186, 20);
             this.textBoxModRootDir.TabIndex = 4;
             this.textBoxModRootDir.TextChanged += new System.EventHandler(this.textBoxModRootDir_TextChanged);
             // 
@@ -136,9 +136,9 @@
             // 
             // textBoxModName
             // 
-            this.textBoxModName.Location = new System.Drawing.Point(112, 29);
+            this.textBoxModName.Location = new System.Drawing.Point(125, 29);
             this.textBoxModName.Name = "textBoxModName";
-            this.textBoxModName.Size = new System.Drawing.Size(231, 20);
+            this.textBoxModName.Size = new System.Drawing.Size(218, 20);
             this.textBoxModName.TabIndex = 1;
             this.textBoxModName.TextChanged += new System.EventHandler(this.textBoxModName_TextChanged);
             // 
@@ -176,13 +176,82 @@
             this.panel1.TabIndex = 44;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // progressBar1
+            // checkBoxModDetailsEnabled
             // 
-            this.progressBar1.Location = new System.Drawing.Point(5, 418);
-            this.progressBar1.MarqueeAnimationSpeed = 15;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(349, 23);
-            this.progressBar1.TabIndex = 58;
+            this.checkBoxModDetailsEnabled.AutoSize = true;
+            this.checkBoxModDetailsEnabled.Location = new System.Drawing.Point(10, 7);
+            this.checkBoxModDetailsEnabled.Name = "checkBoxModDetailsEnabled";
+            this.checkBoxModDetailsEnabled.Size = new System.Drawing.Size(101, 17);
+            this.checkBoxModDetailsEnabled.TabIndex = 0;
+            this.checkBoxModDetailsEnabled.Text = "Enable this mod";
+            this.checkBoxModDetailsEnabled.UseVisualStyleBackColor = true;
+            this.checkBoxModDetailsEnabled.CheckedChanged += new System.EventHandler(this.checkBoxModDetailsEnabled_CheckedChanged);
+            // 
+            // labelModDetailsBulkFrozenModsWarning
+            // 
+            this.labelModDetailsBulkFrozenModsWarning.AutoSize = true;
+            this.labelModDetailsBulkFrozenModsWarning.ForeColor = System.Drawing.Color.Red;
+            this.labelModDetailsBulkFrozenModsWarning.Location = new System.Drawing.Point(7, 8);
+            this.labelModDetailsBulkFrozenModsWarning.Name = "labelModDetailsBulkFrozenModsWarning";
+            this.labelModDetailsBulkFrozenModsWarning.Size = new System.Drawing.Size(176, 13);
+            this.labelModDetailsBulkFrozenModsWarning.TabIndex = 59;
+            this.labelModDetailsBulkFrozenModsWarning.Text = "NOTE: Frozen mods will be ignored.";
+            // 
+            // groupBoxSeparateArchivePresets
+            // 
+            this.groupBoxSeparateArchivePresets.Controls.Add(this.radioButtonSeparateArchiveCustom);
+            this.groupBoxSeparateArchivePresets.Controls.Add(this.radioButtonSeparateArchiveSounds);
+            this.groupBoxSeparateArchivePresets.Controls.Add(this.radioButtonSeparateArchiveTextures);
+            this.groupBoxSeparateArchivePresets.Controls.Add(this.radioButtonSeparateArchiveGeneral);
+            this.groupBoxSeparateArchivePresets.Location = new System.Drawing.Point(181, 200);
+            this.groupBoxSeparateArchivePresets.Name = "groupBoxSeparateArchivePresets";
+            this.groupBoxSeparateArchivePresets.Size = new System.Drawing.Size(162, 109);
+            this.groupBoxSeparateArchivePresets.TabIndex = 58;
+            this.groupBoxSeparateArchivePresets.TabStop = false;
+            this.groupBoxSeparateArchivePresets.Text = "Presets";
+            // 
+            // radioButtonSeparateArchiveCustom
+            // 
+            this.radioButtonSeparateArchiveCustom.AutoSize = true;
+            this.radioButtonSeparateArchiveCustom.Location = new System.Drawing.Point(6, 88);
+            this.radioButtonSeparateArchiveCustom.Name = "radioButtonSeparateArchiveCustom";
+            this.radioButtonSeparateArchiveCustom.Size = new System.Drawing.Size(60, 17);
+            this.radioButtonSeparateArchiveCustom.TabIndex = 3;
+            this.radioButtonSeparateArchiveCustom.Text = "Custom";
+            this.radioButtonSeparateArchiveCustom.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonSeparateArchiveSounds
+            // 
+            this.radioButtonSeparateArchiveSounds.AutoSize = true;
+            this.radioButtonSeparateArchiveSounds.Location = new System.Drawing.Point(6, 65);
+            this.radioButtonSeparateArchiveSounds.Name = "radioButtonSeparateArchiveSounds";
+            this.radioButtonSeparateArchiveSounds.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonSeparateArchiveSounds.TabIndex = 2;
+            this.radioButtonSeparateArchiveSounds.Text = "Sounds";
+            this.radioButtonSeparateArchiveSounds.UseVisualStyleBackColor = true;
+            this.radioButtonSeparateArchiveSounds.CheckedChanged += new System.EventHandler(this.radioButtonSeparateArchiveSounds_CheckedChanged);
+            // 
+            // radioButtonSeparateArchiveTextures
+            // 
+            this.radioButtonSeparateArchiveTextures.AutoSize = true;
+            this.radioButtonSeparateArchiveTextures.Location = new System.Drawing.Point(6, 42);
+            this.radioButtonSeparateArchiveTextures.Name = "radioButtonSeparateArchiveTextures";
+            this.radioButtonSeparateArchiveTextures.Size = new System.Drawing.Size(120, 17);
+            this.radioButtonSeparateArchiveTextures.TabIndex = 1;
+            this.radioButtonSeparateArchiveTextures.Text = "Textures (*.dds files)";
+            this.radioButtonSeparateArchiveTextures.UseVisualStyleBackColor = true;
+            this.radioButtonSeparateArchiveTextures.CheckedChanged += new System.EventHandler(this.radioButtonSeparateArchiveTextures_CheckedChanged);
+            // 
+            // radioButtonSeparateArchiveGeneral
+            // 
+            this.radioButtonSeparateArchiveGeneral.AutoSize = true;
+            this.radioButtonSeparateArchiveGeneral.Location = new System.Drawing.Point(6, 19);
+            this.radioButtonSeparateArchiveGeneral.Name = "radioButtonSeparateArchiveGeneral";
+            this.radioButtonSeparateArchiveGeneral.Size = new System.Drawing.Size(115, 17);
+            this.radioButtonSeparateArchiveGeneral.TabIndex = 0;
+            this.radioButtonSeparateArchiveGeneral.Text = "General / Interface";
+            this.radioButtonSeparateArchiveGeneral.UseVisualStyleBackColor = true;
+            this.radioButtonSeparateArchiveGeneral.CheckedChanged += new System.EventHandler(this.radioButtonSeparateArchiveGeneral_CheckedChanged);
             // 
             // labelModUnfreeze
             // 
@@ -219,17 +288,6 @@
             this.checkBoxFreezeArchive.UseVisualStyleBackColor = true;
             this.checkBoxFreezeArchive.CheckedChanged += new System.EventHandler(this.checkBoxFreezeArchive_CheckedChanged);
             // 
-            // labelModDetailsStatus
-            // 
-            this.labelModDetailsStatus.AutoSize = true;
-            this.labelModDetailsStatus.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.labelModDetailsStatus.Location = new System.Drawing.Point(6, 402);
-            this.labelModDetailsStatus.Name = "labelModDetailsStatus";
-            this.labelModDetailsStatus.Size = new System.Drawing.Size(16, 13);
-            this.labelModDetailsStatus.TabIndex = 53;
-            this.labelModDetailsStatus.Text = "...";
-            this.labelModDetailsStatus.Visible = false;
-            // 
             // buttonModRepairDDS
             // 
             this.buttonModRepairDDS.Location = new System.Drawing.Point(7, 361);
@@ -257,24 +315,13 @@
             this.separator1.Size = new System.Drawing.Size(336, 2);
             this.separator1.TabIndex = 50;
             // 
-            // checkBoxModDetailsEnabled
-            // 
-            this.checkBoxModDetailsEnabled.AutoSize = true;
-            this.checkBoxModDetailsEnabled.Location = new System.Drawing.Point(10, 7);
-            this.checkBoxModDetailsEnabled.Name = "checkBoxModDetailsEnabled";
-            this.checkBoxModDetailsEnabled.Size = new System.Drawing.Size(101, 17);
-            this.checkBoxModDetailsEnabled.TabIndex = 0;
-            this.checkBoxModDetailsEnabled.Text = "Enable this mod";
-            this.checkBoxModDetailsEnabled.UseVisualStyleBackColor = true;
-            this.checkBoxModDetailsEnabled.CheckedChanged += new System.EventHandler(this.checkBoxModDetailsEnabled_CheckedChanged);
-            // 
             // comboBoxModArchiveFormat
             // 
             this.comboBoxModArchiveFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxModArchiveFormat.FormattingEnabled = true;
-            this.comboBoxModArchiveFormat.Location = new System.Drawing.Point(112, 147);
+            this.comboBoxModArchiveFormat.Location = new System.Drawing.Point(125, 147);
             this.comboBoxModArchiveFormat.Name = "comboBoxModArchiveFormat";
-            this.comboBoxModArchiveFormat.Size = new System.Drawing.Size(231, 21);
+            this.comboBoxModArchiveFormat.Size = new System.Drawing.Size(218, 21);
             this.comboBoxModArchiveFormat.TabIndex = 6;
             this.comboBoxModArchiveFormat.SelectedIndexChanged += new System.EventHandler(this.comboBoxModArchiveFormat_SelectedIndexChanged);
             // 
@@ -309,9 +356,9 @@
             // 
             // textBoxModFolderName
             // 
-            this.textBoxModFolderName.Location = new System.Drawing.Point(112, 54);
+            this.textBoxModFolderName.Location = new System.Drawing.Point(125, 54);
             this.textBoxModFolderName.Name = "textBoxModFolderName";
-            this.textBoxModFolderName.Size = new System.Drawing.Size(231, 20);
+            this.textBoxModFolderName.Size = new System.Drawing.Size(218, 20);
             this.textBoxModFolderName.TabIndex = 2;
             this.textBoxModFolderName.TextChanged += new System.EventHandler(this.textBoxModFolderName_TextChanged);
             // 
@@ -319,9 +366,9 @@
             // 
             this.comboBoxModInstallAs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxModInstallAs.FormattingEnabled = true;
-            this.comboBoxModInstallAs.Location = new System.Drawing.Point(112, 94);
+            this.comboBoxModInstallAs.Location = new System.Drawing.Point(125, 94);
             this.comboBoxModInstallAs.Name = "comboBoxModInstallAs";
-            this.comboBoxModInstallAs.Size = new System.Drawing.Size(231, 21);
+            this.comboBoxModInstallAs.Size = new System.Drawing.Size(218, 21);
             this.comboBoxModInstallAs.TabIndex = 3;
             this.comboBoxModInstallAs.SelectedIndexChanged += new System.EventHandler(this.comboBoxModInstallAs_SelectedIndexChanged);
             // 
@@ -333,6 +380,25 @@
             this.labelModInstallAs.Size = new System.Drawing.Size(51, 13);
             this.labelModInstallAs.TabIndex = 41;
             this.labelModInstallAs.Text = "Install as:";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(5, 418);
+            this.progressBar1.MarqueeAnimationSpeed = 15;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(349, 23);
+            this.progressBar1.TabIndex = 58;
+            // 
+            // labelModDetailsStatus
+            // 
+            this.labelModDetailsStatus.AutoSize = true;
+            this.labelModDetailsStatus.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.labelModDetailsStatus.Location = new System.Drawing.Point(6, 402);
+            this.labelModDetailsStatus.Name = "labelModDetailsStatus";
+            this.labelModDetailsStatus.Size = new System.Drawing.Size(16, 13);
+            this.labelModDetailsStatus.TabIndex = 53;
+            this.labelModDetailsStatus.Text = "...";
+            this.labelModDetailsStatus.Visible = false;
             // 
             // buttonModDetailsApply
             // 
@@ -367,72 +433,6 @@
             this.buttonModDetailsCancel.Text = "Cancel";
             this.buttonModDetailsCancel.UseVisualStyleBackColor = true;
             this.buttonModDetailsCancel.Click += new System.EventHandler(this.buttonModDetailsCancel_Click);
-            // 
-            // groupBoxSeparateArchivePresets
-            // 
-            this.groupBoxSeparateArchivePresets.Controls.Add(this.radioButtonSeparateArchiveCustom);
-            this.groupBoxSeparateArchivePresets.Controls.Add(this.radioButtonSeparateArchiveSounds);
-            this.groupBoxSeparateArchivePresets.Controls.Add(this.radioButtonSeparateArchiveTextures);
-            this.groupBoxSeparateArchivePresets.Controls.Add(this.radioButtonSeparateArchiveGeneral);
-            this.groupBoxSeparateArchivePresets.Location = new System.Drawing.Point(181, 200);
-            this.groupBoxSeparateArchivePresets.Name = "groupBoxSeparateArchivePresets";
-            this.groupBoxSeparateArchivePresets.Size = new System.Drawing.Size(162, 109);
-            this.groupBoxSeparateArchivePresets.TabIndex = 58;
-            this.groupBoxSeparateArchivePresets.TabStop = false;
-            this.groupBoxSeparateArchivePresets.Text = "Presets";
-            // 
-            // radioButtonSeparateArchiveGeneral
-            // 
-            this.radioButtonSeparateArchiveGeneral.AutoSize = true;
-            this.radioButtonSeparateArchiveGeneral.Location = new System.Drawing.Point(6, 19);
-            this.radioButtonSeparateArchiveGeneral.Name = "radioButtonSeparateArchiveGeneral";
-            this.radioButtonSeparateArchiveGeneral.Size = new System.Drawing.Size(115, 17);
-            this.radioButtonSeparateArchiveGeneral.TabIndex = 0;
-            this.radioButtonSeparateArchiveGeneral.Text = "General / Interface";
-            this.radioButtonSeparateArchiveGeneral.UseVisualStyleBackColor = true;
-            this.radioButtonSeparateArchiveGeneral.CheckedChanged += new System.EventHandler(this.radioButtonSeparateArchiveGeneral_CheckedChanged);
-            // 
-            // radioButtonSeparateArchiveTextures
-            // 
-            this.radioButtonSeparateArchiveTextures.AutoSize = true;
-            this.radioButtonSeparateArchiveTextures.Location = new System.Drawing.Point(6, 42);
-            this.radioButtonSeparateArchiveTextures.Name = "radioButtonSeparateArchiveTextures";
-            this.radioButtonSeparateArchiveTextures.Size = new System.Drawing.Size(120, 17);
-            this.radioButtonSeparateArchiveTextures.TabIndex = 1;
-            this.radioButtonSeparateArchiveTextures.Text = "Textures (*.dds files)";
-            this.radioButtonSeparateArchiveTextures.UseVisualStyleBackColor = true;
-            this.radioButtonSeparateArchiveTextures.CheckedChanged += new System.EventHandler(this.radioButtonSeparateArchiveTextures_CheckedChanged);
-            // 
-            // radioButtonSeparateArchiveSounds
-            // 
-            this.radioButtonSeparateArchiveSounds.AutoSize = true;
-            this.radioButtonSeparateArchiveSounds.Location = new System.Drawing.Point(6, 65);
-            this.radioButtonSeparateArchiveSounds.Name = "radioButtonSeparateArchiveSounds";
-            this.radioButtonSeparateArchiveSounds.Size = new System.Drawing.Size(61, 17);
-            this.radioButtonSeparateArchiveSounds.TabIndex = 2;
-            this.radioButtonSeparateArchiveSounds.Text = "Sounds";
-            this.radioButtonSeparateArchiveSounds.UseVisualStyleBackColor = true;
-            this.radioButtonSeparateArchiveSounds.CheckedChanged += new System.EventHandler(this.radioButtonSeparateArchiveSounds_CheckedChanged);
-            // 
-            // radioButtonSeparateArchiveCustom
-            // 
-            this.radioButtonSeparateArchiveCustom.AutoSize = true;
-            this.radioButtonSeparateArchiveCustom.Location = new System.Drawing.Point(6, 88);
-            this.radioButtonSeparateArchiveCustom.Name = "radioButtonSeparateArchiveCustom";
-            this.radioButtonSeparateArchiveCustom.Size = new System.Drawing.Size(60, 17);
-            this.radioButtonSeparateArchiveCustom.TabIndex = 3;
-            this.radioButtonSeparateArchiveCustom.Text = "Custom";
-            this.radioButtonSeparateArchiveCustom.UseVisualStyleBackColor = true;
-            // 
-            // labelModDetailsBulkFrozenModsWarning
-            // 
-            this.labelModDetailsBulkFrozenModsWarning.AutoSize = true;
-            this.labelModDetailsBulkFrozenModsWarning.ForeColor = System.Drawing.Color.Red;
-            this.labelModDetailsBulkFrozenModsWarning.Location = new System.Drawing.Point(7, 8);
-            this.labelModDetailsBulkFrozenModsWarning.Name = "labelModDetailsBulkFrozenModsWarning";
-            this.labelModDetailsBulkFrozenModsWarning.Size = new System.Drawing.Size(176, 13);
-            this.labelModDetailsBulkFrozenModsWarning.TabIndex = 59;
-            this.labelModDetailsBulkFrozenModsWarning.Text = "NOTE: Frozen mods will be ignored.";
             // 
             // FormModDetails
             // 
