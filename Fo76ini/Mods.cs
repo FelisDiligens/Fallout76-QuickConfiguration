@@ -1232,12 +1232,8 @@ namespace Fo76ini
             installedMods.Remove("bundled.ba2");
             installedMods.Remove("bundled_textures.ba2");
             foreach (Mod mod in this.mods)
-            {
                 if (mod.Type == Mod.FileType.SeparateBA2)
                     installedMods.Remove(mod.ArchiveName);
-                if (mod.ArchiveName.StartsWith("SeventySix"))
-                    installedMods.Remove(mod.ArchiveName);
-            }
 
             // Import every archive:
             foreach (String archiveName in installedMods)
