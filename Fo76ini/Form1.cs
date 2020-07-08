@@ -189,10 +189,7 @@ namespace Fo76ini
 
 
             if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false))
-            {
-                Utils.SetFormPosition(this.formMods, this.Location.X + this.Width, this.Location.Y);
-                this.formMods.Show();
-            }
+                this.formMods.OpenUI();
 
             IniFiles.Instance.LoadWindowState("Form1", this);
 
@@ -891,9 +888,7 @@ namespace Fo76ini
                 IniFiles.Instance.BackupAll("Backup_BeforeManageMods"); // Just to be sure...
                 formModsBackupCreated = true;
             }
-            Utils.SetFormPosition(this.formMods, this.Location.X + this.Width, this.Location.Y);
-            this.formMods.UpdateUI();
-            this.formMods.Show();
+            this.formMods.OpenUI();
         }
 
         /*private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
@@ -965,11 +960,7 @@ namespace Fo76ini
                 if (MsgBox.ShowID("nwModeEnabledButModsAreDeployed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     ManagedMods.Instance.nuclearWinterMode = IniFiles.Instance.nuclearWinterMode;
-
-                    Utils.SetFormPosition(this.formMods, this.Location.X + this.Width, this.Location.Y);
-                    this.formMods.Show();
-                    this.formMods.UpdateUI();
-
+                    this.formMods.OpenUI();
                     this.formMods.Deploy();
                 }
             }

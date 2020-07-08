@@ -50,6 +50,15 @@ namespace Fo76ini
             this.listViewMods.MouseUp += listViewMods_MouseUp;
         }
 
+        public void OpenUI()
+        {
+            Utils.SetFormPosition(this, Form1.Instance.Location.X + Form1.Instance.Width, Form1.Instance.Location.Y);
+            this.WindowState = FormWindowState.Normal;
+            this.UpdateUI();
+            this.Show();
+            this.Focus();
+        }
+
         public void UpdateUI()
         {
             UpdateModList();
