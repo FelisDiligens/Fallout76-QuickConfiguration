@@ -448,16 +448,17 @@ namespace Fo76ini
                     (text, percent) =>
                     {
                         Invoke(() => SetProgress(text, percent));
-                    }, () =>
+                    },
+                    (success) =>
                     {
                         Invoke(() =>
                         {
                             this.formMods.ModDetailsFeedback(this.changedMod);
                             UpdateUI();
-                            SetDone();
-                            /*this.formMods.ModDetailsClosed();
-                            Hide();
-                            this.formMods.Deploy();*/
+                            if (success)
+                                SetDone();
+                            else
+                                SetFailed();
                         });
                     }
                 );
@@ -508,6 +509,15 @@ namespace Fo76ini
             this.labelModDetailsStatus.Visible = true;
             this.labelModDetailsStatus.ForeColor = Color.Green;
             this.labelModDetailsStatus.Text = "Done.";
+            this.progressBar1.Value = 100;
+            this.progressBar1.Style = ProgressBarStyle.Continuous;
+        }
+
+        private void SetFailed()
+        {
+            this.labelModDetailsStatus.Visible = true;
+            this.labelModDetailsStatus.ForeColor = Color.Red;
+            this.labelModDetailsStatus.Text = "Failed.";
             this.progressBar1.Value = 100;
             this.progressBar1.Style = ProgressBarStyle.Continuous;
         }

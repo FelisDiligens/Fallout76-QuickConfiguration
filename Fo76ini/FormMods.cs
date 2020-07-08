@@ -273,12 +273,14 @@ namespace Fo76ini
             this.textBoxsResourceIndexFileList.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
         }
 
-        private void UpdateLabel()
+        private void UpdateLabel(bool success = true)
         {
             if (ManagedMods.Instance.isDeploymentNecessary())
                 this.DisplayDeploymentNecessary();
-            else
+            else if (success)
                 this.DisplayAllDone();
+            else
+                this.DisplayFailState();
         }
 
         private void UpdateSelectedIndices()
@@ -924,13 +926,13 @@ namespace Fo76ini
                 (text, percent) => {
                     Invoke(() => Display(text));
                 },
-                () => {
+                (success) => {
                     Invoke(() => ProgressBarContinuous(100));
                     Invoke(() => HideLabel());
                     Invoke(() => EnableUI());
                     Invoke(() => selectedIndex = ManagedMods.Instance.Mods.Count - 1);
                     Invoke(() => UpdateModList());
-                    Invoke(() => UpdateLabel());
+                    Invoke(() => UpdateLabel(success));
                 }
             );
         }
@@ -943,13 +945,13 @@ namespace Fo76ini
                 (text, percent) => {
                     Invoke(() => Display(text));
                 },
-                () => {
+                (success) => {
                     Invoke(() => ProgressBarContinuous(100));
                     Invoke(() => HideLabel());
                     Invoke(() => EnableUI());
                     Invoke(() => selectedIndex = ManagedMods.Instance.Mods.Count - 1);
                     Invoke(() => UpdateModList());
-                    Invoke(() => UpdateLabel());
+                    Invoke(() => UpdateLabel(success));
                 }
             );
         }
@@ -963,13 +965,13 @@ namespace Fo76ini
                     Invoke(() => Display(text));
                     Invoke(() => { if (percent >= 0) { ProgressBarContinuous(percent); } else { ProgressBarMarquee(); } });
                 },
-                () => {
+                (success) => {
                     Invoke(() => ProgressBarContinuous(100));
                     Invoke(() => HideLabel());
                     Invoke(() => EnableUI());
                     Invoke(() => selectedIndex = ManagedMods.Instance.Mods.Count - 1);
                     Invoke(() => UpdateModList());
-                    Invoke(() => UpdateLabel());
+                    Invoke(() => UpdateLabel(success));
                 }
             );
         }
@@ -1057,17 +1059,26 @@ namespace Fo76ini
                     Invoke(() => Display(text));
                     Invoke(() => { if (percent >= 0) { ProgressBarContinuous(percent); } else { ProgressBarMarquee(); } });
                 },
-                () => {
+                (success) => {
                     Invoke(() => {
                         UpdateUI();
                         ProgressBarContinuous(100);
-                        DisplayAllDone();
                         EnableUI();
 
-                        if (ManagedMods.Instance.nuclearWinterMode)
-                            MsgBox.Get("modsDisabledDone").Popup(MessageBoxIcon.Information);
+                        if (success)
+                        {
+                            DisplayAllDone();
+
+                            if (ManagedMods.Instance.nuclearWinterMode)
+                                MsgBox.Get("modsDisabledDone").Popup(MessageBoxIcon.Information);
+                            else
+                                MsgBox.Get("modsDeployedDone").Popup(MessageBoxIcon.Information);
+                        }
                         else
-                            MsgBox.Get("modsDeployedDone").Popup(MessageBoxIcon.Information);
+                        {
+                            DisplayFailState();
+                            MsgBox.Get("modsDeploymentFailed").Popup(MessageBoxIcon.Information);
+                        }
                     });
                 }
             );
@@ -1158,6 +1169,13 @@ namespace Fo76ini
             this.labelModsDeploy.Visible = true;
             this.labelModsDeploy.ForeColor = Color.DarkGreen;
             this.labelModsDeploy.Text = Translation.localizedStrings["modsAllDone"];
+        }
+
+        private void DisplayFailState()
+        {
+            this.labelModsDeploy.Visible = true;
+            this.labelModsDeploy.ForeColor = Color.Red;
+            this.labelModsDeploy.Text = Translation.localizedStrings["modsFailed"];
         }
     }
 }

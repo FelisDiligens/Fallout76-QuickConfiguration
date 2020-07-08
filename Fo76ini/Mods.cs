@@ -146,67 +146,97 @@ namespace Fo76ini
             this.frozen = isFrozen;
         }
 
-        public void Freeze (Action<String, int> updateProgress = null, Action done = null)
+        public void Freeze (Action<String, int> updateProgress = null, Action<bool> done = null)
         {
-            // Check if mod is not frozen:
-            if (this.isFrozen())
-                return;
+            try
+            {
+                // Check if mod is not frozen:
+                if (this.isFrozen())
+                    return;
 
-            if (updateProgress != null)
-                updateProgress($"Freezing {this.Title}", -1);
+                if (updateProgress != null)
+                    updateProgress($"Freezing {this.Title}", -1);
 
-            // Create archive:
-            String tempPath = Path.Combine(ManagedMods.Instance.GamePath, "Mods", "frozen.ba2");
-            Archive2.Create(tempPath, GetManagedPath(), Compression, ManagedMods.Instance.DetectArchive2Format(this));
+                // Create archive:
+                String tempPath = Path.Combine(ManagedMods.Instance.GamePath, "Mods", "frozen.ba2");
+                Archive2.Create(tempPath, GetManagedPath(), Compression, ManagedMods.Instance.DetectArchive2Format(this));
 
-            // Failed?
-            if (!File.Exists(tempPath))
-                return;
+                // Failed?
+                if (!File.Exists(tempPath))
+                {
+                    ManagedMods.Instance.logFile.WriteLine("Error while freezing mod: Couldn't create *.ba2 file. Please check archive2.log.txt.\n");
+                    if (done != null)
+                        done(false);
+                    return;
+                }
 
-            this.frozen = true;
-            this.freeze = true;
+                this.frozen = true;
+                this.freeze = true;
 
-            // Remove contents of managed folder:
-            if (Directory.Exists(GetManagedPath()))
-                Directory.Delete(GetManagedPath(), true);
-            Directory.CreateDirectory(GetManagedPath());
+                // Remove contents of managed folder:
+                if (Directory.Exists(GetManagedPath()))
+                    Directory.Delete(GetManagedPath(), true);
+                Directory.CreateDirectory(GetManagedPath());
 
-            // Move frozen.ba2 into folder:
-            File.Move(tempPath, GetFrozenArchivePath());
+                // Move frozen.ba2 into folder:
+                File.Move(tempPath, GetFrozenArchivePath());
 
-            if (done != null)
-                done();
+                if (done != null)
+                    done(true);
+
+            }
+            catch (Exception ex)
+            {
+                ManagedMods.Instance.logFile.WriteLine($"Unhandled exception occured while freezing mod '{this.Title}': {ex.Message}\n{ex.StackTrace}\n");
+                if (done != null)
+                    done(false);
+            }
         }
 
-        public void Unfreeze(Action<String, int> updateProgress = null, Action done = null)
+        public void Unfreeze(Action<String, int> updateProgress = null, Action<bool> done = null)
         {
-            // Check if mod is frozen:
-            if (!this.isFrozen())
+            try
+            {
+                // Check if mod is frozen:
+                if (!this.isFrozen())
+                {
+                    ManagedMods.Instance.logFile.WriteLine($"Cannot unfreeze a mod ('{this.Title}') which isn't frozen.\n");
+                    if (done != null)
+                        done(false);
+                    return;
+                }
+
+                if (updateProgress != null)
+                    updateProgress($"Unfreezing {this.Title}", -1);
+
+                this.frozen = false;
+                this.freeze = false;
+
+                // Move frozen.ba2 out of folder:
+                String tempPath = Path.Combine(ManagedMods.Instance.GamePath, "Mods", "frozen.ba2");
+                File.Move(GetFrozenArchivePath(), tempPath);
+
+                // Remove contents of managed folder:
+                if (Directory.Exists(GetManagedPath()))
+                    Directory.Delete(GetManagedPath(), true);
+                Directory.CreateDirectory(GetManagedPath());
+
+                // Extract frozen archive:
+                Archive2.Extract(tempPath, GetManagedPath());
+
+                // Remove frozen archive:
+                File.Delete(tempPath);
+
+                if (done != null)
+                    done(true);
+            }
+            catch (Exception ex)
+            {
+                ManagedMods.Instance.logFile.WriteLine($"Unhandled exception occured while unfreezing mod '{this.Title}': {ex.Message}\n{ex.StackTrace}\n");
+                if (done != null)
+                    done(false);
                 return;
-
-            if (updateProgress != null)
-                updateProgress($"Unfreezing {this.Title}", -1);
-
-            this.frozen = false;
-            this.freeze = false;
-
-            // Move frozen.ba2 out of folder:
-            String tempPath = Path.Combine(ManagedMods.Instance.GamePath, "Mods", "frozen.ba2");
-            File.Move(GetFrozenArchivePath(), tempPath);
-
-            // Remove contents of managed folder:
-            if (Directory.Exists(GetManagedPath()))
-                Directory.Delete(GetManagedPath(), true);
-            Directory.CreateDirectory(GetManagedPath());
-
-            // Extract frozen archive:
-            Archive2.Extract(tempPath, GetManagedPath());
-
-            // Remove frozen archive:
-            File.Delete(tempPath);
-
-            if (done != null)
-                done();
+            }
         }
 
         public String GetFrozenArchivePath()
@@ -821,13 +851,14 @@ namespace Fo76ini
             }
         }
 
-        public void InstallModArchiveFrozen(String filePath, Action<String, int> updateProgress = null, Action done = null)
+        public void InstallModArchiveFrozen(String filePath, Action<String, int> updateProgress = null, Action<bool> done = null)
         {
             // Some conditions have to be met:
             if (this.gamePath == null)
             {
+                this.logFile.WriteLine("Couldn't import *.ba2 file: No game path has been set.");
                 if (done != null)
-                    done();
+                    done(false);
                 return;
             }
 
@@ -845,46 +876,57 @@ namespace Fo76ini
                 }
                 else
                 {
+                    this.logFile.WriteLine($"Error while importing *.ba2 file: Couldn't locate file: {filePath}");
                     if (done != null)
-                        done();
+                        done(false);
                     throw new FileNotFoundException(filePath);
                 }
             }
 
-            // Get paths:
-            filePath = Path.GetFullPath(filePath);
-            String fileName = Path.GetFileNameWithoutExtension(filePath);
-            String fileExtension = Path.GetExtension(filePath);
-            String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", fileName));
-            String managedFolder = Path.GetFileName(managedFolderPath);
+            try
+            {
+                // Get paths:
+                filePath = Path.GetFullPath(filePath);
+                String fileName = Path.GetFileNameWithoutExtension(filePath);
+                String fileExtension = Path.GetExtension(filePath);
+                String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", fileName));
+                String managedFolder = Path.GetFileName(managedFolderPath);
 
-            // Create a new mod:
-            Mod mod = new Mod();
-            mod.Title = fileName;
-            mod.ManagedFolder = managedFolder;
-            mod.RootFolder = "Data";
-            mod.ArchiveName = fileName;
-            mod.Type = Mod.FileType.SeparateBA2;
-            // TODO: Detect archive format:
-            // mod.Compression = Archive2.Compression.??
-            // mod.Format = Mod.ArchiveFormat.??
-            mod.freeze = true;
-            mod.OverwriteFrozen(true);
-            mod.isEnabled = false;
+                // Create a new mod:
+                Mod mod = new Mod();
+                mod.Title = fileName;
+                mod.ManagedFolder = managedFolder;
+                mod.RootFolder = "Data";
+                mod.ArchiveName = fileName;
+                mod.Type = Mod.FileType.SeparateBA2;
+                // TODO: Detect archive format:
+                // mod.Compression = Archive2.Compression.??
+                // mod.Format = Mod.ArchiveFormat.??
+                mod.freeze = true;
+                mod.OverwriteFrozen(true);
+                mod.isEnabled = false;
 
-            // Copy the archive:
-            if (updateProgress != null)
-                updateProgress($"Copying {Path.GetFileName(filePath)}", -1);
+                // Copy the archive:
+                if (updateProgress != null)
+                    updateProgress($"Copying {Path.GetFileName(filePath)}", -1);
 
-            if (!Directory.Exists(managedFolderPath))
-                Directory.CreateDirectory(managedFolderPath);
+                if (!Directory.Exists(managedFolderPath))
+                    Directory.CreateDirectory(managedFolderPath);
 
-            File.Copy(filePath, Path.Combine(managedFolderPath, "frozen.ba2"));
-            this.AddInstalledMod(mod);
-            this.Save();
+                File.Copy(filePath, Path.Combine(managedFolderPath, "frozen.ba2"));
+                this.AddInstalledMod(mod);
+                this.Save();
 
-            if (done != null)
-                done();
+                if (done != null)
+                    done(true);
+            }
+            catch (Exception ex)
+            {
+                this.logFile.WriteLine($"Unhandled exception occured while importing a *.ba2 file: {ex.Message}\n{ex.StackTrace}\n");
+                if (done != null)
+                    done(false);
+                return;
+            }
         }
 
         /// <summary>
@@ -894,13 +936,14 @@ namespace Fo76ini
         /// <param name="filePath">Path to archive</param>
         /// <param name="updateProgress">Callback: Progress has been made.</param>
         /// <param name="done">Callback: It's done.</param>
-        public void InstallModArchive(String filePath, Action<String, int> updateProgress = null, Action done = null)
+        public void InstallModArchive(String filePath, Action<String, int> updateProgress = null, Action<bool> done = null)
         {
             // Some conditions have to be met:
             if (this.gamePath == null)
             {
+                this.logFile.WriteLine("Couldn't import *.ba2 file: No game path has been set.");
                 if (done != null)
-                    done();
+                    done(false);
                 return;
             }
 
@@ -918,8 +961,9 @@ namespace Fo76ini
                 }
                 else
                 {
+                    this.logFile.WriteLine($"Error while importing *.ba2 file: Couldn't locate file: {filePath}");
                     if (done != null)
-                        done();
+                        done(false);
                     throw new FileNotFoundException(filePath);
                 }
             }
@@ -928,44 +972,55 @@ namespace Fo76ini
             if (!Archive2.ValidatePath())
             {
                 MsgBox.ShowID("modsArchive2Missing", MessageBoxIcon.Error);
+                this.logFile.WriteLine("Archive2 is missing.");
                 if (done != null)
-                    done();
+                    done(false);
                 return;
             }
 
-            // Get paths:
-            filePath = Path.GetFullPath(filePath);
-            String fileName = Path.GetFileNameWithoutExtension(filePath);
-            String fileExtension = Path.GetExtension(filePath);
-            String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", fileName));
-            String managedFolder = Path.GetFileName(managedFolderPath);
-            /*if (Directory.Exists(managedFolderPath))
+            try
             {
-                managedFolder += DateTime.Now.ToString("(yyyy-MM-dd_HH-mm-ss)");
-                managedFolderPath = Path.Combine(this.GamePath, "Mods", managedFolder);
-            }*/
+                // Get paths:
+                filePath = Path.GetFullPath(filePath);
+                String fileName = Path.GetFileNameWithoutExtension(filePath);
+                String fileExtension = Path.GetExtension(filePath);
+                String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", fileName));
+                String managedFolder = Path.GetFileName(managedFolderPath);
+                /*if (Directory.Exists(managedFolderPath))
+                {
+                    managedFolder += DateTime.Now.ToString("(yyyy-MM-dd_HH-mm-ss)");
+                    managedFolderPath = Path.Combine(this.GamePath, "Mods", managedFolder);
+                }*/
 
-            // Create a new mod:
-            Mod mod = new Mod();
-            mod.Title = fileName;
-            mod.ManagedFolder = managedFolder;
-            mod.RootFolder = "Data";
-            mod.ArchiveName = fileName;
-            mod.Type = Mod.FileType.BundledBA2;
-            mod.isEnabled = false;
+                // Create a new mod:
+                Mod mod = new Mod();
+                mod.Title = fileName;
+                mod.ManagedFolder = managedFolder;
+                mod.RootFolder = "Data";
+                mod.ArchiveName = fileName;
+                mod.Type = Mod.FileType.BundledBA2;
+                mod.isEnabled = false;
 
-            // Extract the archive:
-            if (updateProgress != null)
-                updateProgress($"Extracting {Path.GetFileName(filePath)}", -1);
-            if (ExtractModArchive(filePath, managedFolderPath, updateProgress))
-            {
-                ManipulateModFolder(mod, managedFolderPath, updateProgress);
-                this.AddInstalledMod(mod);
-                this.Save();
+                // Extract the archive:
+                if (updateProgress != null)
+                    updateProgress($"Extracting {Path.GetFileName(filePath)}", -1);
+                if (ExtractModArchive(filePath, managedFolderPath, updateProgress))
+                {
+                    ManipulateModFolder(mod, managedFolderPath, updateProgress);
+                    this.AddInstalledMod(mod);
+                    this.Save();
+                }
+
+                if (done != null)
+                    done(true);
             }
-
-            if (done != null)
-                done();
+            catch (Exception ex)
+            {
+                this.logFile.WriteLine($"Unhandled exception occured while importing a *.ba2 file: {ex.Message}\n{ex.StackTrace}\n");
+                if (done != null)
+                    done(false);
+                return;
+            }
         }
 
         /// <summary>
@@ -975,22 +1030,19 @@ namespace Fo76ini
         /// <param name="folderPath">Path to directory</param>
         /// <param name="updateProgress">Callback: "Copying file xyz" and percentage.</param>
         /// <param name="done">Callback: It's done.</param>
-        public void InstallModFolder(String folderPath, Action<String, int> updateProgress = null, Action done = null)
+        public void InstallModFolder(String folderPath, Action<String, int> updateProgress = null, Action<bool> done = null)
         {
             // Some conditions have to be met:
             if (this.gamePath == null)
             {
+                this.logFile.WriteLine("Couldn't import *.ba2 file: No game path has been set.");
                 if (done != null)
-                    done();
+                    done(false);
                 return;
             }
 
             if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
                 Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
-
-            //if (!Directory.Exists(folderPath))
-            //    throw new FileNotFoundException(folderPath);
-
 
             if (!Directory.Exists(folderPath))
             {
@@ -1003,8 +1055,9 @@ namespace Fo76ini
                 }
                 else
                 {
+                    this.logFile.WriteLine($"Error while importing a folder: Couldn't locate folder: {folderPath}");
                     if (done != null)
-                        done();
+                        done(false);
                     throw new FileNotFoundException(folderPath);
                 }
             }
@@ -1013,62 +1066,69 @@ namespace Fo76ini
             if (!Archive2.ValidatePath())
             {
                 MsgBox.ShowID("modsArchive2Missing", MessageBoxIcon.Error);
+                this.logFile.WriteLine("Archive2 is missing.");
                 if (done != null)
-                    done();
+                    done(false);
                 return;
             }
 
-            // Get paths:
-            folderPath = Path.GetFullPath(folderPath);
-            String folderName = Path.GetFileName(folderPath);
-            String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", folderName));
-            String managedFolder = Path.GetFileName(managedFolderPath);
-            /*if (Directory.Exists(managedFolderPath))
+            try
             {
-                managedFolder += DateTime.Now.ToString("(yyyy-MM-dd_HH-mm-ss)");
-                managedFolderPath = Path.Combine(this.GamePath, "Mods", managedFolder);
-            }*/
+                // Get paths:
+                folderPath = Path.GetFullPath(folderPath);
+                String folderName = Path.GetFileName(folderPath);
+                String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", folderName));
+                String managedFolder = Path.GetFileName(managedFolderPath);
 
-            // Create a new mod:
-            Mod mod = new Mod();
-            mod.Title = folderName;
-            mod.ManagedFolder = managedFolder;
-            mod.RootFolder = "Data";
-            mod.ArchiveName = folderName;
-            mod.Type = Mod.FileType.BundledBA2;
-            mod.isEnabled = false;
+                // Create a new mod:
+                Mod mod = new Mod();
+                mod.Title = folderName;
+                mod.ManagedFolder = managedFolder;
+                mod.RootFolder = "Data";
+                mod.ArchiveName = folderName;
+                mod.Type = Mod.FileType.BundledBA2;
+                mod.isEnabled = false;
 
-            // Copy every file found in the folder:
-            if (updateProgress != null)
-                updateProgress($"Indexing {folderName}...", -1);
-            IEnumerable<String> files = Directory.EnumerateFiles(folderPath, "*.*", SearchOption.AllDirectories);
-            float count = (float)files.Count();
-            if (count == 0)
-            {
-                if (done != null)
-                    done();
-                return;
-            }
-            int i = 0;
-            foreach (String file in files)
-            {
+                // Copy every file found in the folder:
                 if (updateProgress != null)
-                    updateProgress($"Copying {Path.GetFileName(file)} ...", Convert.ToInt32((float)i++ / (float)count * 100));
+                    updateProgress($"Indexing {folderName}...", -1);
+                IEnumerable<String> files = Directory.EnumerateFiles(folderPath, "*.*", SearchOption.AllDirectories);
+                float count = (float)files.Count();
+                if (count == 0)
+                {
+                    this.logFile.WriteLine($"Imported folder is empty. Abort.");
+                    if (done != null)
+                        done(false);
+                    return;
+                }
+                int i = 0;
+                foreach (String file in files)
+                {
+                    if (updateProgress != null)
+                        updateProgress($"Copying {Path.GetFileName(file)} ...", Convert.ToInt32((float)i++ / (float)count * 100));
 
-                // Make a relative path, create directories and copy file:
-                String destinationPath = Path.Combine(managedFolderPath, Utils.MakeRelativePath(folderPath, file));
-                Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
-                File.Copy(file, destinationPath);
+                    // Make a relative path, create directories and copy file:
+                    String destinationPath = Path.Combine(managedFolderPath, Utils.MakeRelativePath(folderPath, file));
+                    Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
+                    File.Copy(file, destinationPath);
+                }
+
+                ManipulateModFolder(mod, managedFolderPath, updateProgress);
+
+                // Add to mods:
+                AddInstalledMod(mod);
+                this.Save();
+
+                if (done != null)
+                    done(true);
             }
-
-            ManipulateModFolder(mod, managedFolderPath, updateProgress);
-
-            // Add to mods:
-            AddInstalledMod(mod);
-            this.Save();
-
-            if (done != null)
-                done();
+            catch (Exception ex)
+            {
+                this.logFile.WriteLine($"Unhandled exception occured while importing a folder: {ex.Message}\n{ex.StackTrace}\n");
+                if (done != null)
+                    done(false);
+                return;
+            }
         }
 
         private void AddInstalledMod(Mod mod)
@@ -1389,30 +1449,35 @@ namespace Fo76ini
             }
         }
 
-        public void Deploy(Action<String, int> updateProgress = null, Action done = null)
+        public void Deploy(Action<String, int> updateProgress = null, Action<bool> done = null)
         {
             try
             {
+                this.logFile.WriteTimeStamp();
+                this.logFile.WriteLine($"Version {Form1.VERSION}, deploying...");
+
                 if (!Archive2.ValidatePath())
                 {
                     MsgBox.ShowID("modsArchive2Missing", MessageBoxIcon.Error);
+                    this.logFile.WriteLine("Failed: Couldn't find Archive2");
                     if (done != null)
-                        done();
+                        done(false);
                     return;
                 }
 
                 if (this.gamePath == null)
                 {
                     if (done != null)
-                        done();
+                        done(false);
                     return;
                 }
 
                 if (!Directory.Exists(Path.Combine(this.gamePath, "Data")))
                 {
                     MsgBox.ShowID("modsGamePathInvalid", MessageBoxIcon.Error);
+                    this.logFile.WriteLine("Failed: Game path invalid");
                     if (done != null)
-                        done();
+                        done(false);
                     return;
                 }
 
@@ -1425,8 +1490,9 @@ namespace Fo76ini
                         if (customArchiveNames.Contains(mod.ArchiveName.ToLower()))
                         {
                             MsgBox.Get("modsSameArchiveName").FormatText(mod.ArchiveName, mod.Title).Show(MessageBoxIcon.Error);
+                            this.logFile.WriteLine($"Conflict: Multiple mods with the same archive name. (1st conflict: '{mod.ArchiveName}', '{mod.Title}')");
                             if (done != null)
-                                done();
+                                done(false);
                             return;
                         }
                         else
@@ -1435,9 +1501,6 @@ namespace Fo76ini
                         }
                     }
                 }
-                this.logFile.WriteTimeStamp();
-
-                this.logFile.WriteLine("Deploying.");
 
                 if (this.nuclearWinterMode)
                 {
@@ -1878,15 +1941,15 @@ namespace Fo76ini
                 Directory.Delete(tempPath, true);
 
                 this.logFile.WriteLine("Done.\n");
+
+                if (done != null)
+                    done(true);
             }
             catch (Exception ex)
             {
                 this.logFile.WriteLine($"Unhandled exception occured: {ex.Message}\n{ex.StackTrace}");
-            }
-            finally
-            {
                 if (done != null)
-                    done();
+                    done(false);
             }
         }
 
