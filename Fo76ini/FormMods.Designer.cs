@@ -76,6 +76,7 @@
             this.columnHeaderFrozenState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
             this.groupBoxModsBehavior = new System.Windows.Forms.GroupBox();
+            this.checkBoxModsUseHardlinks = new System.Windows.Forms.CheckBox();
             this.checkBoxAddArchivesAsBundled = new System.Windows.Forms.CheckBox();
             this.groupBoxLists = new System.Windows.Forms.GroupBox();
             this.buttonModsResetTextboxes = new System.Windows.Forms.Button();
@@ -92,7 +93,6 @@
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialogBA2 = new System.Windows.Forms.OpenFileDialog();
-            this.checkBoxModsUseHardlinks = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -533,16 +533,28 @@
             // 
             // groupBoxModsBehavior
             // 
-            this.groupBoxModsBehavior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBoxModsBehavior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxModsUseHardlinks);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
-            this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 369);
+            this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 6);
             this.groupBoxModsBehavior.Name = "groupBoxModsBehavior";
             this.groupBoxModsBehavior.Size = new System.Drawing.Size(480, 69);
             this.groupBoxModsBehavior.TabIndex = 60;
             this.groupBoxModsBehavior.TabStop = false;
             this.groupBoxModsBehavior.Text = "Behavior";
+            // 
+            // checkBoxModsUseHardlinks
+            // 
+            this.checkBoxModsUseHardlinks.AutoSize = true;
+            this.checkBoxModsUseHardlinks.Location = new System.Drawing.Point(6, 42);
+            this.checkBoxModsUseHardlinks.Name = "checkBoxModsUseHardlinks";
+            this.checkBoxModsUseHardlinks.Size = new System.Drawing.Size(327, 17);
+            this.checkBoxModsUseHardlinks.TabIndex = 1;
+            this.checkBoxModsUseHardlinks.Text = "[Experimental] Make hard links instead of copying files manually.";
+            this.toolTip.SetToolTip(this.checkBoxModsUseHardlinks, "May reduce disk space and deployment time.\r\nDoes not apply to bundled archives.");
+            this.checkBoxModsUseHardlinks.UseVisualStyleBackColor = true;
+            this.checkBoxModsUseHardlinks.CheckedChanged += new System.EventHandler(this.checkBoxModsUseHardlinks_CheckedChanged);
             // 
             // checkBoxAddArchivesAsBundled
             // 
@@ -567,7 +579,7 @@
             this.groupBoxLists.Controls.Add(this.labelsResourceIndexFileList);
             this.groupBoxLists.Controls.Add(this.textBoxsResourceArchive2List);
             this.groupBoxLists.Controls.Add(this.labelsResourceArchive2List);
-            this.groupBoxLists.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxLists.Location = new System.Drawing.Point(6, 81);
             this.groupBoxLists.Name = "groupBoxLists";
             this.groupBoxLists.Size = new System.Drawing.Size(480, 357);
             this.groupBoxLists.TabIndex = 59;
@@ -682,18 +694,6 @@
             this.openFileDialogBA2.DefaultExt = "ba2";
             this.openFileDialogBA2.Filter = "Archive2|*.ba2";
             this.openFileDialogBA2.Title = "Add *.ba2 archive.";
-            // 
-            // checkBoxModsUseHardlinks
-            // 
-            this.checkBoxModsUseHardlinks.AutoSize = true;
-            this.checkBoxModsUseHardlinks.Location = new System.Drawing.Point(6, 42);
-            this.checkBoxModsUseHardlinks.Name = "checkBoxModsUseHardlinks";
-            this.checkBoxModsUseHardlinks.Size = new System.Drawing.Size(327, 17);
-            this.checkBoxModsUseHardlinks.TabIndex = 1;
-            this.checkBoxModsUseHardlinks.Text = "[Experimental] Make hard links instead of copying files manually.";
-            this.toolTip.SetToolTip(this.checkBoxModsUseHardlinks, "May reduce disk space and deployment time.\r\nDoes not apply to bundled archives.");
-            this.checkBoxModsUseHardlinks.UseVisualStyleBackColor = true;
-            this.checkBoxModsUseHardlinks.CheckedChanged += new System.EventHandler(this.checkBoxModsUseHardlinks_CheckedChanged);
             // 
             // FormMods
             // 
