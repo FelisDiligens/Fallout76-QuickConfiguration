@@ -15,7 +15,7 @@ namespace Fo76ini
 {
     public partial class Form1 : Form
     {
-        public const String VERSION = "1.6.2";
+        public const String VERSION = "1.6.3";
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
@@ -189,10 +189,7 @@ namespace Fo76ini
 
 
             if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false))
-            {
-                Utils.SetFormPosition(this.formMods, this.Location.X + this.Width, this.Location.Y);
-                this.formMods.Show();
-            }
+                this.formMods.OpenUI();
 
             IniFiles.Instance.LoadWindowState("Form1", this);
 
@@ -293,6 +290,9 @@ namespace Fo76ini
                 IniFiles.Instance.AreINIsReadOnly,
                 IniFiles.Instance.SetINIsReadOnly
             );
+
+            // Deny NTFS write-permission
+            uiLoader.LinkBool(this.checkBoxDenyNTFSWritePermission, IniFile.Config, "Preferences", "bDenyNTFSWritePermission", false);
 
             /*
              * Settings
@@ -730,7 +730,7 @@ namespace Fo76ini
 
             // Fix aim sensitivity
             uiLoader.LinkCustom(this.checkBoxFixAimSensitivity,
-                () => IniFiles.Instance.GetFloat("Main", "fIronSightsFOVRotateMult", 0f) - 2.14f < 0.1f,
+                () => Math.Abs(IniFiles.Instance.GetFloat("Main", "fIronSightsFOVRotateMult", 0f) - 2.14f) < 0.1f,
                 (value) => {
                     if (value)
                     {
@@ -888,9 +888,7 @@ namespace Fo76ini
                 IniFiles.Instance.BackupAll("Backup_BeforeManageMods"); // Just to be sure...
                 formModsBackupCreated = true;
             }
-            Utils.SetFormPosition(this.formMods, this.Location.X + this.Width, this.Location.Y);
-            this.formMods.UpdateUI();
-            this.formMods.Show();
+            this.formMods.OpenUI();
         }
 
         /*private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
@@ -962,11 +960,7 @@ namespace Fo76ini
                 if (MsgBox.ShowID("nwModeEnabledButModsAreDeployed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     ManagedMods.Instance.nuclearWinterMode = IniFiles.Instance.nuclearWinterMode;
-
-                    Utils.SetFormPosition(this.formMods, this.Location.X + this.Width, this.Location.Y);
-                    this.formMods.Show();
-                    this.formMods.UpdateUI();
-
+                    this.formMods.OpenUI();
                     this.formMods.Deploy();
                 }
             }

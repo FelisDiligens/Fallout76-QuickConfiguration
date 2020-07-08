@@ -50,6 +50,15 @@ namespace Fo76ini
             this.listViewMods.MouseUp += listViewMods_MouseUp;
         }
 
+        public void OpenUI()
+        {
+            Utils.SetFormPosition(this, Form1.Instance.Location.X + Form1.Instance.Width, Form1.Instance.Location.Y);
+            this.WindowState = FormWindowState.Normal;
+            this.UpdateUI();
+            this.Show();
+            this.Focus();
+        }
+
         public void UpdateUI()
         {
             UpdateModList();
@@ -256,18 +265,22 @@ namespace Fo76ini
             if (!IniFiles.Instance.IsLoaded())
                 return;
             this.checkBoxDisableMods.Checked = ManagedMods.Instance.nuclearWinterMode;
+            this.checkBoxAddArchivesAsBundled.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUnpackBA2ByDefault", false);
+            this.checkBoxModsUseHardlinks.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUseHardlinks", false);
             //this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
 
             this.textBoxsResourceArchive2List.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
             this.textBoxsResourceIndexFileList.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
         }
 
-        private void UpdateLabel()
+        private void UpdateLabel(bool success = true)
         {
             if (ManagedMods.Instance.isDeploymentNecessary())
                 this.DisplayDeploymentNecessary();
-            else
+            else if (success)
                 this.DisplayAllDone();
+            else
+                this.DisplayFailState();
         }
 
         private void UpdateSelectedIndices()
@@ -829,60 +842,6 @@ namespace Fo76ini
          * Settings
          */
 
-        // Pick game path
-        /*private void buttonPickGamePath_Click(object sender, EventArgs e)
-        {
-            if (ManagedMods.Instance.isDeploymentNecessary())
-            {
-                MsgBox.ShowID("modsDeploymentNecessary");
-                return;
-            }
-            if (this.openFileDialogGamePath.ShowDialog() == DialogResult.OK)
-            {
-                String path = Path.GetDirectoryName(this.openFileDialogGamePath.FileName); // We want the path where Fallout76.exe resides.
-                if (Directory.Exists(Path.Combine(path, "Data")))
-                {
-                    this.textBoxGamePath.Text = path;
-                    ManagedMods.Instance.GamePath = path;
-                    IniFiles.Instance.Set(IniFile.Config, "Preferences", ManagedMods.Instance.GamePathKey, path);
-                    IniFiles.Instance.SaveConfig();
-                    ManagedMods.Instance.Load();
-                    UpdateUI();
-                }
-                else
-                    MsgBox.ShowID("modsGamePathInvalid");
-            }
-        }
-
-        // Game path textbox changed
-        private void textBoxGamePath_TextChanged(object sender, EventArgs e)
-        {
-            if (this.textBoxGamePath.Focused)
-            {
-                if (ManagedMods.Instance.isDeploymentNecessary())
-                {
-                    if (this.textBoxGamePath.Text != ManagedMods.Instance.GamePath)
-                        this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
-                    return;
-                }
-                else if (Directory.Exists(Path.Combine(this.textBoxGamePath.Text, "Data")))
-                {
-                    ManagedMods.Instance.GamePath = this.textBoxGamePath.Text;
-                    IniFiles.Instance.Set(IniFile.Config, "Preferences", ManagedMods.Instance.GamePathKey, this.textBoxGamePath.Text);
-                    IniFiles.Instance.SaveConfig();
-                    ManagedMods.Instance.Load();
-                    UpdateUI();
-                    this.textBoxGamePath.ForeColor = Color.Black;
-                    this.textBoxGamePath.BackColor = Color.White;
-                }
-                else
-                {
-                    this.textBoxGamePath.ForeColor = Color.White;
-                    this.textBoxGamePath.BackColor = Color.Red;
-                }
-            }
-        }*/
-
         // Clean lists
         private void buttonModsCleanLists_Click(object sender, EventArgs e)
         {
@@ -940,6 +899,20 @@ namespace Fo76ini
             UpdateUI();
         }
 
+        // Alternative *.ba2 import method
+        private void checkBoxAddArchivesAsBundled_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "Mods", "bUnpackBA2ByDefault", this.checkBoxAddArchivesAsBundled.Checked);
+            IniFiles.Instance.SaveConfig();
+        }
+
+        // Hard links
+        private void checkBoxModsUseHardlinks_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "Mods", "bUseHardlinks", this.checkBoxModsUseHardlinks.Checked);
+            IniFiles.Instance.SaveConfig();
+        }
+
 
         /*
          * Threads
@@ -953,13 +926,13 @@ namespace Fo76ini
                 (text, percent) => {
                     Invoke(() => Display(text));
                 },
-                () => {
+                (success) => {
                     Invoke(() => ProgressBarContinuous(100));
                     Invoke(() => HideLabel());
                     Invoke(() => EnableUI());
                     Invoke(() => selectedIndex = ManagedMods.Instance.Mods.Count - 1);
                     Invoke(() => UpdateModList());
-                    Invoke(() => UpdateLabel());
+                    Invoke(() => UpdateLabel(success));
                 }
             );
         }
@@ -972,13 +945,13 @@ namespace Fo76ini
                 (text, percent) => {
                     Invoke(() => Display(text));
                 },
-                () => {
+                (success) => {
                     Invoke(() => ProgressBarContinuous(100));
                     Invoke(() => HideLabel());
                     Invoke(() => EnableUI());
                     Invoke(() => selectedIndex = ManagedMods.Instance.Mods.Count - 1);
                     Invoke(() => UpdateModList());
-                    Invoke(() => UpdateLabel());
+                    Invoke(() => UpdateLabel(success));
                 }
             );
         }
@@ -992,13 +965,13 @@ namespace Fo76ini
                     Invoke(() => Display(text));
                     Invoke(() => { if (percent >= 0) { ProgressBarContinuous(percent); } else { ProgressBarMarquee(); } });
                 },
-                () => {
+                (success) => {
                     Invoke(() => ProgressBarContinuous(100));
                     Invoke(() => HideLabel());
                     Invoke(() => EnableUI());
                     Invoke(() => selectedIndex = ManagedMods.Instance.Mods.Count - 1);
                     Invoke(() => UpdateModList());
-                    Invoke(() => UpdateLabel());
+                    Invoke(() => UpdateLabel(success));
                 }
             );
         }
@@ -1007,6 +980,7 @@ namespace Fo76ini
         {
             foreach (string filePath in files)
             {
+                bool unpackBA2ByDefault = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUnpackBA2ByDefault", false);
                 String fullFilePath = Path.GetFullPath(filePath);
                 if (fullFilePath.Length > 259 && Directory.Exists(@"\\?\" + fullFilePath))
                     fullFilePath = @"\\?\" + fullFilePath;
@@ -1017,7 +991,12 @@ namespace Fo76ini
                     else if ((new String[] { ".zip", ".rar", ".7z", ".tar", ".tar.gz", ".gz" }).Contains(Path.GetExtension(fullFilePath)))
                         InstallModArchive(fullFilePath);
                     else if (Path.GetExtension(fullFilePath).ToLower() == ".ba2")
-                        InstallModArchiveFrozen(fullFilePath);
+                    {
+                        if (unpackBA2ByDefault)
+                            InstallModArchive(fullFilePath);
+                        else
+                            InstallModArchiveFrozen(fullFilePath);
+                    }
                     else
                         MsgBox.Get("modsArchiveTypeNotSupported").FormatText(Path.GetExtension(fullFilePath)).Show(MessageBoxIcon.Error);
                 }
@@ -1080,17 +1059,26 @@ namespace Fo76ini
                     Invoke(() => Display(text));
                     Invoke(() => { if (percent >= 0) { ProgressBarContinuous(percent); } else { ProgressBarMarquee(); } });
                 },
-                () => {
+                (success) => {
                     Invoke(() => {
                         UpdateUI();
                         ProgressBarContinuous(100);
-                        DisplayAllDone();
                         EnableUI();
 
-                        if (ManagedMods.Instance.nuclearWinterMode)
-                            MsgBox.Get("modsDisabledDone").Popup(MessageBoxIcon.Information);
+                        if (success)
+                        {
+                            DisplayAllDone();
+
+                            if (ManagedMods.Instance.nuclearWinterMode)
+                                MsgBox.Get("modsDisabledDone").Popup(MessageBoxIcon.Information);
+                            else
+                                MsgBox.Get("modsDeployedDone").Popup(MessageBoxIcon.Information);
+                        }
                         else
-                            MsgBox.Get("modsDeployedDone").Popup(MessageBoxIcon.Information);
+                        {
+                            DisplayFailState();
+                            MsgBox.Get("modsDeploymentFailed").Popup(MessageBoxIcon.Information);
+                        }
                     });
                 }
             );
@@ -1181,6 +1169,13 @@ namespace Fo76ini
             this.labelModsDeploy.Visible = true;
             this.labelModsDeploy.ForeColor = Color.DarkGreen;
             this.labelModsDeploy.Text = Translation.localizedStrings["modsAllDone"];
+        }
+
+        private void DisplayFailState()
+        {
+            this.labelModsDeploy.Visible = true;
+            this.labelModsDeploy.ForeColor = Color.Red;
+            this.labelModsDeploy.Text = Translation.localizedStrings["modsFailed"];
         }
     }
 }

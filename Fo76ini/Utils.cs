@@ -102,6 +102,7 @@ namespace Fo76ini
         public static void DeleteDirectory(string targetDir)
         {
             // https://stackoverflow.com/questions/1157246/unauthorizedaccessexception-trying-to-delete-a-file-in-a-folder-where-i-can-dele
+            IniFiles.Instance.SetNTFSWritePermission(true);
             File.SetAttributes(targetDir, FileAttributes.Normal);
 
             string[] files = Directory.GetFiles(targetDir);
@@ -537,6 +538,31 @@ namespace Fo76ini
             }
 
             return false;
+        }
+
+        // https://stackoverflow.com/questions/3387690/how-to-create-a-hardlink-in-c
+        [DllImport("Kernel32.dll", CharSet = CharSet.Unicode)]
+        private static extern bool CreateHardLink(
+            string lpFileName,
+            string lpExistingFileName,
+            IntPtr lpSecurityAttributes
+        );
+
+        public static bool CreateHardLink(String originalFilePath, String newLinkPath)
+        {
+            return Utils.CreateHardLink(newLinkPath, originalFilePath, IntPtr.Zero);
+        }
+
+        public static bool CreateHardLink(String originalFilePath, String newLinkPath, bool overwrite)
+        {
+            if (File.Exists(newLinkPath))
+            {
+                if (overwrite)
+                    File.Delete(newLinkPath);
+                else
+                    throw new Exception($"Trying to create a hardlink in \"{newLinkPath}\" but this file already exists.");
+            }
+            return Utils.CreateHardLink(newLinkPath, originalFilePath, IntPtr.Zero);
         }
     }
 }

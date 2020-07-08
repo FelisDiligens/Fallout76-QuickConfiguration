@@ -100,6 +100,11 @@ namespace Fo76ini
                 "Mods are deployed."
             );
 
+            MsgBox.Add("modsDeploymentFailed",
+                "Something went wrong",
+                "Mods might not be deployed.\nPlease check the log files."
+            );
+
             MsgBox.Add("modsArchive2Missing",
                 "Archive2 is missing",
                 ".\\Archive2\\Archive2.exe is missing.\nPlease download this tool again, or install Archive2 manually."

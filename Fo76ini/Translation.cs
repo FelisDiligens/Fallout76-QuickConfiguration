@@ -19,6 +19,7 @@ namespace Fo76ini
             localizedStrings["newVersionAvailable"] = "There is a newer version available: {0}";
             localizedStrings["modsDeploymentNecessary"] = "Deployment necessary";
             localizedStrings["modsAllDone"] = "All set";
+            localizedStrings["modsFailed"] = "Something went wrong, see log files for details.";
             localizedStrings["modsTableFormatGeneral"] = "General";
             localizedStrings["modsTableFormatTextures"] = "Textures";
             localizedStrings["modsTableFormatAutoDetect"] = "Auto";

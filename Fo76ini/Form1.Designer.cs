@@ -95,6 +95,7 @@
             this.checkBoxNWMode = new System.Windows.Forms.CheckBox();
             this.checkBoxSkipBackupQuestion = new System.Windows.Forms.CheckBox();
             this.checkBoxMultipleGameEditionsUsed = new System.Windows.Forms.CheckBox();
+            this.checkBoxDenyNTFSWritePermission = new System.Windows.Forms.CheckBox();
             this.checkBoxIgnoreUpdates = new System.Windows.Forms.CheckBox();
             this.checkBoxOpenManageModsOnLaunch = new System.Windows.Forms.CheckBox();
             this.buttonLaunchGame = new System.Windows.Forms.Button();
@@ -275,7 +276,7 @@
             // checkBoxReadOnly
             // 
             this.checkBoxReadOnly.AutoSize = true;
-            this.checkBoxReadOnly.Location = new System.Drawing.Point(6, 42);
+            this.checkBoxReadOnly.Location = new System.Drawing.Point(10, 65);
             this.checkBoxReadOnly.Name = "checkBoxReadOnly";
             this.checkBoxReadOnly.Size = new System.Drawing.Size(140, 17);
             this.checkBoxReadOnly.TabIndex = 4;
@@ -617,7 +618,7 @@
             this.sliderShadowDistance.Location = new System.Drawing.Point(10, 94);
             this.sliderShadowDistance.Maximum = 200000;
             this.sliderShadowDistance.Name = "sliderShadowDistance";
-            this.sliderShadowDistance.Size = new System.Drawing.Size(281, 23);
+            this.sliderShadowDistance.Size = new System.Drawing.Size(273, 23);
             this.sliderShadowDistance.SmallChange = 1000;
             this.sliderShadowDistance.TabIndex = 27;
             this.sliderShadowDistance.Text = "metroTrackBar1";
@@ -658,7 +659,7 @@
             this.sliderLODObjects.Location = new System.Drawing.Point(103, 41);
             this.sliderLODObjects.Maximum = 600;
             this.sliderLODObjects.Name = "sliderLODObjects";
-            this.sliderLODObjects.Size = new System.Drawing.Size(210, 23);
+            this.sliderLODObjects.Size = new System.Drawing.Size(202, 23);
             this.sliderLODObjects.SmallChange = 5;
             this.sliderLODObjects.TabIndex = 29;
             this.sliderLODObjects.Text = "metroTrackBar1";
@@ -675,7 +676,7 @@
             this.sliderLODItems.Location = new System.Drawing.Point(104, 70);
             this.sliderLODItems.Maximum = 600;
             this.sliderLODItems.Name = "sliderLODItems";
-            this.sliderLODItems.Size = new System.Drawing.Size(209, 23);
+            this.sliderLODItems.Size = new System.Drawing.Size(201, 23);
             this.sliderLODItems.SmallChange = 5;
             this.sliderLODItems.TabIndex = 30;
             this.sliderLODItems.Text = "metroTrackBar2";
@@ -692,7 +693,7 @@
             this.sliderLODActors.Location = new System.Drawing.Point(103, 99);
             this.sliderLODActors.Maximum = 600;
             this.sliderLODActors.Name = "sliderLODActors";
-            this.sliderLODActors.Size = new System.Drawing.Size(210, 23);
+            this.sliderLODActors.Size = new System.Drawing.Size(202, 23);
             this.sliderLODActors.SmallChange = 5;
             this.sliderLODActors.TabIndex = 32;
             this.sliderLODActors.Text = "metroTrackBar3";
@@ -723,7 +724,7 @@
             this.sliderGrassFadeDistance.Location = new System.Drawing.Point(9, 66);
             this.sliderGrassFadeDistance.Maximum = 14000;
             this.sliderGrassFadeDistance.Name = "sliderGrassFadeDistance";
-            this.sliderGrassFadeDistance.Size = new System.Drawing.Size(282, 23);
+            this.sliderGrassFadeDistance.Size = new System.Drawing.Size(274, 23);
             this.sliderGrassFadeDistance.SmallChange = 500;
             this.sliderGrassFadeDistance.TabIndex = 24;
             this.sliderGrassFadeDistance.Text = "metroTrackBar1";
@@ -974,7 +975,7 @@
             this.sliderTAAPostOverlay.LargeChange = 1;
             this.sliderTAAPostOverlay.Location = new System.Drawing.Point(9, 41);
             this.sliderTAAPostOverlay.Name = "sliderTAAPostOverlay";
-            this.sliderTAAPostOverlay.Size = new System.Drawing.Size(282, 23);
+            this.sliderTAAPostOverlay.Size = new System.Drawing.Size(274, 23);
             this.sliderTAAPostOverlay.TabIndex = 27;
             this.sliderTAAPostOverlay.Text = "metroTrackBar1";
             this.toolTip.SetToolTip(this.sliderTAAPostOverlay, "Sharpens the image.\r\n\r\nRecommended: 0.2\r\nDefault: 0.2\r\n\r\nAffected values: fTAAPos" +
@@ -990,7 +991,7 @@
             this.sliderTAAPostSharpen.Location = new System.Drawing.Point(9, 93);
             this.sliderTAAPostSharpen.Maximum = 200;
             this.sliderTAAPostSharpen.Name = "sliderTAAPostSharpen";
-            this.sliderTAAPostSharpen.Size = new System.Drawing.Size(282, 23);
+            this.sliderTAAPostSharpen.Size = new System.Drawing.Size(274, 23);
             this.sliderTAAPostSharpen.TabIndex = 30;
             this.sliderTAAPostSharpen.Text = "metroTrackBar2";
             this.toolTip.SetToolTip(this.sliderTAAPostSharpen, "Sharpens the image.\r\n\r\nDefault: 0.2\r\nRecommended: 0.4\r\n\r\nAffected values: fTAAPos" +
@@ -1076,7 +1077,7 @@
             // checkBoxNWMode
             // 
             this.checkBoxNWMode.AutoSize = true;
-            this.checkBoxNWMode.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxNWMode.Location = new System.Drawing.Point(10, 42);
             this.checkBoxNWMode.Name = "checkBoxNWMode";
             this.checkBoxNWMode.Size = new System.Drawing.Size(127, 17);
             this.checkBoxNWMode.TabIndex = 17;
@@ -1101,7 +1102,7 @@
             // checkBoxMultipleGameEditionsUsed
             // 
             this.checkBoxMultipleGameEditionsUsed.AutoSize = true;
-            this.checkBoxMultipleGameEditionsUsed.Location = new System.Drawing.Point(6, 64);
+            this.checkBoxMultipleGameEditionsUsed.Location = new System.Drawing.Point(10, 19);
             this.checkBoxMultipleGameEditionsUsed.Name = "checkBoxMultipleGameEditionsUsed";
             this.checkBoxMultipleGameEditionsUsed.Size = new System.Drawing.Size(186, 17);
             this.checkBoxMultipleGameEditionsUsed.TabIndex = 18;
@@ -1109,6 +1110,19 @@
             this.toolTip.SetToolTip(this.checkBoxMultipleGameEditionsUsed, "Check this, if you\'re modding more than one game edition.\r\nIf checked, sResourceI" +
         "ndexFileList will be saved for every game edition separately.");
             this.checkBoxMultipleGameEditionsUsed.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDenyNTFSWritePermission
+            // 
+            this.checkBoxDenyNTFSWritePermission.AutoSize = true;
+            this.checkBoxDenyNTFSWritePermission.Location = new System.Drawing.Point(10, 88);
+            this.checkBoxDenyNTFSWritePermission.Name = "checkBoxDenyNTFSWritePermission";
+            this.checkBoxDenyNTFSWritePermission.Size = new System.Drawing.Size(231, 17);
+            this.checkBoxDenyNTFSWritePermission.TabIndex = 19;
+            this.checkBoxDenyNTFSWritePermission.Text = "[Experimental] Deny NTFS write permission.";
+            this.toolTip.SetToolTip(this.checkBoxDenyNTFSWritePermission, "This will deny write permission to the \"Fallout 76\" folder.\r\nUse this, if the rea" +
+        "d-only option doesn\'t work.\r\n\r\nAffected folder: %UserProfile%\\Documents\\My Games" +
+        "\\Fallout 76");
+            this.checkBoxDenyNTFSWritePermission.UseVisualStyleBackColor = true;
             // 
             // checkBoxIgnoreUpdates
             // 
@@ -1437,7 +1451,7 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 655);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
-            this.groupBoxTAASharpening.Size = new System.Drawing.Size(377, 134);
+            this.groupBoxTAASharpening.Size = new System.Drawing.Size(369, 134);
             this.groupBoxTAASharpening.TabIndex = 25;
             this.groupBoxTAASharpening.TabStop = false;
             this.groupBoxTAASharpening.Text = "TAA Sharpening";
@@ -1451,7 +1465,7 @@
             0,
             0,
             65536});
-            this.numTAAPostSharpen.Location = new System.Drawing.Point(297, 93);
+            this.numTAAPostSharpen.Location = new System.Drawing.Point(289, 93);
             this.numTAAPostSharpen.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -1484,7 +1498,7 @@
             0,
             0,
             65536});
-            this.numTAAPostOverlay.Location = new System.Drawing.Point(297, 41);
+            this.numTAAPostOverlay.Location = new System.Drawing.Point(289, 41);
             this.numTAAPostOverlay.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -1518,7 +1532,7 @@
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
             this.groupBoxGrass.Location = new System.Drawing.Point(9, 555);
             this.groupBoxGrass.Name = "groupBoxGrass";
-            this.groupBoxGrass.Size = new System.Drawing.Size(377, 94);
+            this.groupBoxGrass.Size = new System.Drawing.Size(369, 94);
             this.groupBoxGrass.TabIndex = 23;
             this.groupBoxGrass.TabStop = false;
             this.groupBoxGrass.Text = "Grass";
@@ -1531,7 +1545,7 @@
             0,
             0,
             0});
-            this.numGrassFadeDistance.Location = new System.Drawing.Point(297, 68);
+            this.numGrassFadeDistance.Location = new System.Drawing.Point(289, 68);
             this.numGrassFadeDistance.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -1571,7 +1585,7 @@
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
             this.groupBoxLOD.Location = new System.Drawing.Point(9, 419);
             this.groupBoxLOD.Name = "groupBoxLOD";
-            this.groupBoxLOD.Size = new System.Drawing.Size(377, 130);
+            this.groupBoxLOD.Size = new System.Drawing.Size(369, 130);
             this.groupBoxLOD.TabIndex = 24;
             this.groupBoxLOD.TabStop = false;
             this.groupBoxLOD.Text = "LOD";
@@ -1589,7 +1603,7 @@
             // 
             this.numLODActors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numLODActors.DecimalPlaces = 1;
-            this.numLODActors.Location = new System.Drawing.Point(318, 100);
+            this.numLODActors.Location = new System.Drawing.Point(310, 100);
             this.numLODActors.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -1608,7 +1622,7 @@
             // 
             this.numLODItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numLODItems.DecimalPlaces = 1;
-            this.numLODItems.Location = new System.Drawing.Point(318, 71);
+            this.numLODItems.Location = new System.Drawing.Point(310, 71);
             this.numLODItems.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -1627,7 +1641,7 @@
             // 
             this.numLODObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numLODObjects.DecimalPlaces = 1;
-            this.numLODObjects.Location = new System.Drawing.Point(318, 41);
+            this.numLODObjects.Location = new System.Drawing.Point(310, 41);
             this.numLODObjects.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -1676,7 +1690,7 @@
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
             this.groupBoxLighting.Location = new System.Drawing.Point(9, 233);
             this.groupBoxLighting.Name = "groupBoxLighting";
-            this.groupBoxLighting.Size = new System.Drawing.Size(377, 46);
+            this.groupBoxLighting.Size = new System.Drawing.Size(369, 46);
             this.groupBoxLighting.TabIndex = 15;
             this.groupBoxLighting.TabStop = false;
             this.groupBoxLighting.Text = "Lighting";
@@ -1694,7 +1708,7 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
             this.groupBoxShadows.Location = new System.Drawing.Point(9, 285);
             this.groupBoxShadows.Name = "groupBoxShadows";
-            this.groupBoxShadows.Size = new System.Drawing.Size(377, 128);
+            this.groupBoxShadows.Size = new System.Drawing.Size(369, 128);
             this.groupBoxShadows.TabIndex = 16;
             this.groupBoxShadows.TabStop = false;
             this.groupBoxShadows.Text = "Shadows";
@@ -1707,7 +1721,7 @@
             this.comboBoxShadowBlurriness.FormattingEnabled = true;
             this.comboBoxShadowBlurriness.Location = new System.Drawing.Point(134, 47);
             this.comboBoxShadowBlurriness.Name = "comboBoxShadowBlurriness";
-            this.comboBoxShadowBlurriness.Size = new System.Drawing.Size(237, 21);
+            this.comboBoxShadowBlurriness.Size = new System.Drawing.Size(229, 21);
             this.comboBoxShadowBlurriness.TabIndex = 30;
             // 
             // numShadowDistance
@@ -1718,7 +1732,7 @@
             0,
             0,
             0});
-            this.numShadowDistance.Location = new System.Drawing.Point(297, 97);
+            this.numShadowDistance.Location = new System.Drawing.Point(289, 97);
             this.numShadowDistance.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -1750,7 +1764,7 @@
             this.comboBoxShadowTextureResolution.FormattingEnabled = true;
             this.comboBoxShadowTextureResolution.Location = new System.Drawing.Point(134, 20);
             this.comboBoxShadowTextureResolution.Name = "comboBoxShadowTextureResolution";
-            this.comboBoxShadowTextureResolution.Size = new System.Drawing.Size(237, 21);
+            this.comboBoxShadowTextureResolution.Size = new System.Drawing.Size(229, 21);
             this.comboBoxShadowTextureResolution.TabIndex = 1;
             // 
             // groupBoxWater
@@ -1760,7 +1774,7 @@
             this.groupBoxWater.Controls.Add(this.checkBoxWaterDisplacement);
             this.groupBoxWater.Location = new System.Drawing.Point(196, 89);
             this.groupBoxWater.Name = "groupBoxWater";
-            this.groupBoxWater.Size = new System.Drawing.Size(190, 44);
+            this.groupBoxWater.Size = new System.Drawing.Size(182, 44);
             this.groupBoxWater.TabIndex = 17;
             this.groupBoxWater.TabStop = false;
             this.groupBoxWater.Text = "Water";
@@ -1788,7 +1802,7 @@
             this.groupBoxWeather.Controls.Add(this.checkBoxWeatherRainOcclusion);
             this.groupBoxWeather.Location = new System.Drawing.Point(196, 139);
             this.groupBoxWeather.Name = "groupBoxWeather";
-            this.groupBoxWeather.Size = new System.Drawing.Size(190, 88);
+            this.groupBoxWeather.Size = new System.Drawing.Size(182, 88);
             this.groupBoxWeather.TabIndex = 18;
             this.groupBoxWeather.TabStop = false;
             this.groupBoxWeather.Text = "Weather";
@@ -1801,7 +1815,7 @@
             this.comboBoxAnisotropicFiltering.FormattingEnabled = true;
             this.comboBoxAnisotropicFiltering.Location = new System.Drawing.Point(152, 33);
             this.comboBoxAnisotropicFiltering.Name = "comboBoxAnisotropicFiltering";
-            this.comboBoxAnisotropicFiltering.Size = new System.Drawing.Size(234, 21);
+            this.comboBoxAnisotropicFiltering.Size = new System.Drawing.Size(226, 21);
             this.comboBoxAnisotropicFiltering.TabIndex = 23;
             // 
             // comboBoxAntiAliasing
@@ -1812,7 +1826,7 @@
             this.comboBoxAntiAliasing.FormattingEnabled = true;
             this.comboBoxAntiAliasing.Location = new System.Drawing.Point(152, 6);
             this.comboBoxAntiAliasing.Name = "comboBoxAntiAliasing";
-            this.comboBoxAntiAliasing.Size = new System.Drawing.Size(234, 21);
+            this.comboBoxAntiAliasing.Size = new System.Drawing.Size(226, 21);
             this.comboBoxAntiAliasing.TabIndex = 8;
             // 
             // tabPageDisplay
@@ -1856,7 +1870,7 @@
             this.groupBoxFieldOfView.Controls.Add(this.numFirstPersonFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelWorldFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelFirstPersonFOV);
-            this.groupBoxFieldOfView.Location = new System.Drawing.Point(6, 406);
+            this.groupBoxFieldOfView.Location = new System.Drawing.Point(6, 397);
             this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
             this.groupBoxFieldOfView.Size = new System.Drawing.Size(380, 70);
             this.groupBoxFieldOfView.TabIndex = 20;
@@ -2356,7 +2370,7 @@
             this.groupBoxLaunchOptions.Controls.Add(this.labelLaunchOptionTip);
             this.groupBoxLaunchOptions.Controls.Add(this.radioButtonLaunchViaExecutable);
             this.groupBoxLaunchOptions.Controls.Add(this.radioButtonLaunchViaLink);
-            this.groupBoxLaunchOptions.Location = new System.Drawing.Point(6, 366);
+            this.groupBoxLaunchOptions.Location = new System.Drawing.Point(6, 391);
             this.groupBoxLaunchOptions.Name = "groupBoxLaunchOptions";
             this.groupBoxLaunchOptions.Size = new System.Drawing.Size(376, 93);
             this.groupBoxLaunchOptions.TabIndex = 25;
@@ -2445,7 +2459,7 @@
             // 
             this.buttonForceUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonForceUpdate.Location = new System.Drawing.Point(6, 603);
+            this.buttonForceUpdate.Location = new System.Drawing.Point(6, 628);
             this.buttonForceUpdate.Name = "buttonForceUpdate";
             this.buttonForceUpdate.Size = new System.Drawing.Size(376, 23);
             this.buttonForceUpdate.TabIndex = 23;
@@ -2462,7 +2476,7 @@
             this.groupBoxBehavior.Controls.Add(this.checkBoxQuitOnGameLaunch);
             this.groupBoxBehavior.Controls.Add(this.checkBoxSkipBackupQuestion);
             this.groupBoxBehavior.Controls.Add(this.checkBoxAutoApply);
-            this.groupBoxBehavior.Location = new System.Drawing.Point(6, 465);
+            this.groupBoxBehavior.Location = new System.Drawing.Point(6, 490);
             this.groupBoxBehavior.Name = "groupBoxBehavior";
             this.groupBoxBehavior.Size = new System.Drawing.Size(376, 132);
             this.groupBoxBehavior.TabIndex = 22;
@@ -2531,12 +2545,13 @@
             // 
             this.groupBoxOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxOptions.Controls.Add(this.checkBoxDenyNTFSWritePermission);
             this.groupBoxOptions.Controls.Add(this.checkBoxMultipleGameEditionsUsed);
             this.groupBoxOptions.Controls.Add(this.checkBoxNWMode);
             this.groupBoxOptions.Controls.Add(this.checkBoxReadOnly);
             this.groupBoxOptions.Location = new System.Drawing.Point(6, 269);
             this.groupBoxOptions.Name = "groupBoxOptions";
-            this.groupBoxOptions.Size = new System.Drawing.Size(376, 91);
+            this.groupBoxOptions.Size = new System.Drawing.Size(376, 116);
             this.groupBoxOptions.TabIndex = 15;
             this.groupBoxOptions.TabStop = false;
             this.groupBoxOptions.Text = "Options";
@@ -2545,7 +2560,7 @@
             // 
             this.buttonFixIssuesEarlierVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFixIssuesEarlierVersion.Location = new System.Drawing.Point(6, 632);
+            this.buttonFixIssuesEarlierVersion.Location = new System.Drawing.Point(6, 657);
             this.buttonFixIssuesEarlierVersion.Name = "buttonFixIssuesEarlierVersion";
             this.buttonFixIssuesEarlierVersion.Size = new System.Drawing.Size(376, 23);
             this.buttonFixIssuesEarlierVersion.TabIndex = 19;
@@ -2840,6 +2855,7 @@
         private System.Windows.Forms.RadioButton radioButtonLaunchViaLink;
         private System.Windows.Forms.Label labelLaunchOptionTip;
         private System.Windows.Forms.OpenFileDialog openFileDialogGamePath;
+        private System.Windows.Forms.CheckBox checkBoxDenyNTFSWritePermission;
     }
 }
 

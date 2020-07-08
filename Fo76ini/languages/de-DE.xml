@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.6.2">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.6.3">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary" />
     <String text="Alles erledigt" id="modsAllDone" />
+    <String text="Etwas ist schiefgelaufen, siehe Logdateien für Details." id="modsFailed" />
     <String text="Allgemein" id="modsTableFormatGeneral" />
     <String text="Texturen" id="modsTableFormatTextures" />
     <String text="Autom." id="modsTableFormatAutoDetect" />
@@ -103,6 +104,8 @@ Einige UI-Elemente könnten unter Umständen nicht korrekt funktionieren.
 {0}</Messagebox>
     <Messagebox title="Fertig" id="modsDisabledDone">Mods wurden deaktiviert und vom Spiel entfernt.</Messagebox>
     <Messagebox title="Fertig" id="modsDeployedDone">Mods wurden installiert.</Messagebox>
+    <Messagebox title="Etwas ist schiefgelaufen" id="modsDeploymentFailed">Mods könnten nicht installiert worden sein.
+Siehe Logdateien für mehr Details.</Messagebox>
     <Messagebox title="Archive2 fehlt" id="modsArchive2Missing">.\Archive2\Archive2.exe fehlt.
 Bitte lade das Tool erneut herunter oder installiere Archive2 manuell.</Messagebox>
     <Messagebox title="Spielpfad unbekannt" id="modsGamePathNotSet">Bitte setze den Spielpfad (im Ordner sollte Fallout76.exe sein).</Messagebox>
@@ -191,6 +194,12 @@ So braucht man nicht mehr auf "Anwenden" zu drücken.</Tooltip>
           <Button text="Sprachen herunterladen / aktualisieren" id="buttonDownloadLanguages" />
         </Group>
         <Group text="Optionen" id="groupBoxOptions">
+          <Checkbox text="[Experimentell] Verweigere NTFS-Schreibberechtigung." id="checkBoxDenyNTFSWritePermission">
+            <Tooltip>Wenn aktiv, wird jedem das Schreiben im Fallout 76 Ordner verweigert.
+Benutze dies, wenn die der herkömmliche Schreibschutz nichts bringt.
+
+Betroffener Ordner: %UserProfile%\Documents\My Games\Fallout 76</Tooltip>
+          </Checkbox>
           <Checkbox text="Ich verwende mehrere Spieleditionen." id="checkBoxMultipleGameEditionsUsed">
             <Tooltip>Hake das an, wenn du Mods für mehr als eine Spieledition installierst.
 Wenn angehakt, dann wird sResourceIndexFileList für jede einzelne Spieledition separat gespeichtert.</Tooltip>
@@ -698,6 +707,13 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         </ListView>
       </Tab>
       <Tab text="Einstellungen" id="tabPageModsSettings">
+        <Group text="Verhalten" id="groupBoxModsBehavior">
+          <Checkbox text="[Experimentell] Erstelle harte Links anstatt Dateien zu kopieren." id="checkBoxModsUseHardlinks">
+            <Tooltip>Könnte Speicherplatz frei machen und beim Anwenden Zeit sparen.
+Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
+          </Checkbox>
+          <Checkbox text="Taue *.ba2 Dateien beim Importieren standardmäßig auf" id="checkBoxAddArchivesAsBundled" />
+        </Group>
         <Group text="Listen" id="groupBoxLists">
           <Button text="Zurücksetzen" id="buttonModsResetTextboxes" />
           <Button text="Änderungen anwenden" id="buttonModsApplyTextBoxes" />
