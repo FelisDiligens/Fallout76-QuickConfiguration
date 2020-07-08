@@ -4,11 +4,12 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.6.2">
+<Language name="English (USA)" iso="en-US" version="1.6.3">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Deployment necessary" id="modsDeploymentNecessary" />
     <String text="All set" id="modsAllDone" />
+    <String text="Something went wrong, see log files for details." id="modsFailed" />
     <String text="General" id="modsTableFormatGeneral" />
     <String text="Textures" id="modsTableFormatTextures" />
     <String text="Auto" id="modsTableFormatAutoDetect" />
@@ -107,6 +108,8 @@ Some UI elements might not be functioning correctly.
 {0}</Messagebox>
     <Messagebox title="Done" id="modsDisabledDone">Mods have been disabled and removed from the game.</Messagebox>
     <Messagebox title="Done" id="modsDeployedDone">Mods are deployed.</Messagebox>
+    <Messagebox title="Something went wrong" id="modsDeploymentFailed">Mods might not be deployed.
+Please check the log files.</Messagebox>
     <Messagebox title="Archive2 is missing" id="modsArchive2Missing">.\Archive2\Archive2.exe is missing.
 Please download this tool again, or install Archive2 manually.</Messagebox>
     <Messagebox title="Game path not set" id="modsGamePathNotSet">Please set the path to the game (where Fallout76.exe resides).</Messagebox>
@@ -191,6 +194,12 @@ Note: This way, it will NOT create a backup!</Tooltip>
           <Button text="Download / update language files" id="buttonDownloadLanguages" />
         </Group>
         <Group text="Options" id="groupBoxOptions">
+          <Checkbox text="[Experimental] Deny NTFS write permission." id="checkBoxDenyNTFSWritePermission">
+            <Tooltip>This will deny write permission to the "Fallout 76" folder.
+Use this, if the read-only option doesn't work.
+
+Affected folder: %UserProfile%\Documents\My Games\Fallout 76</Tooltip>
+          </Checkbox>
           <Checkbox text="I use more than one game edition." id="checkBoxMultipleGameEditionsUsed">
             <Tooltip>Check this, if you're modding more than one game edition.
 If checked, sResourceIndexFileList will be saved for every game edition separately.</Tooltip>
@@ -699,6 +708,13 @@ Affected files: Fallout76Prefs.ini</Tooltip>
         </ListView>
       </Tab>
       <Tab text="Settings" id="tabPageModsSettings">
+        <Group text="Behavior" id="groupBoxModsBehavior">
+          <Checkbox text="[Experimental] Make hard links instead of copying files manually." id="checkBoxModsUseHardlinks">
+            <Tooltip>May reduce disk space and deployment time.
+Does not apply to bundled archives.</Tooltip>
+          </Checkbox>
+          <Checkbox text="Unfreeze *.ba2 files by default" id="checkBoxAddArchivesAsBundled" />
+        </Group>
         <Group text="Lists" id="groupBoxLists">
           <Button text="Reset" id="buttonModsResetTextboxes" />
           <Button text="Apply changes" id="buttonModsApplyTextBoxes" />
