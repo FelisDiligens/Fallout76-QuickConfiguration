@@ -202,6 +202,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\question_mark.png" />
+    <None Include="Resources\bethesda-launcher-pts.png" />
+    <None Include="Resources\bethesda-launcher.png" />
+    <None Include="Resources\bethesdanet.png" />
+    <None Include="Resources\bethesda_24px.png" />
+    <None Include="Resources\xbox_24px.png" />
+    <None Include="Resources\steam_24px.png" />
+    <None Include="Resources\msstore_24px.png" />
+    <None Include="Resources\msstore.png" />
+    <None Include="Resources\xbox.png" />
+    <None Include="Resources\steam.png" />
     <None Include="icons\defrost.png" />
     <None Include="icons\frozen-plus.png" />
   </ItemGroup>

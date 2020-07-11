@@ -52,7 +52,7 @@ namespace Fo76ini
             );
 
             MsgBox.Add("runGameToGenerateINI",
-                "Fallout76.ini and Fallout76Prefs.ini not found",
+                "{0} and {1} not found",
                 "Please run the game first before using this tool.\n" +
                 "The game will generate those files on first start-up."
             );
@@ -87,6 +87,16 @@ namespace Fo76ini
             MsgBox.Add("downloadLanguagesFailed",
                 "Failed",
                 "Downloading languages failed.\n{0}"
+            );
+
+            MsgBox.Add("msstoreRestartRequired",
+                "Do you want to switch?",
+                "Switching to or from the Microsoft Store edition requires a restart of the tool."
+            );
+
+            MsgBox.Add("msstoreRunExecutableFailed",
+                "Couldn't launch game: {0}",
+                "Unfortunately, it's not possible to launch the executable directly due to \"security\" restrictions. Thanks Microsoft, we hate it. :("
             );
 
             // Mods:
@@ -219,10 +229,21 @@ namespace Fo76ini
                 "*.dds files have been repaired."
             );
 
+            MsgBox.Add("modsAccessDenied",
+                "Access denied",
+                "{0}\nPlease start the tool as admin and try again."
+            );
+
             MsgBox.Add("nwModeEnabledButModsAreDeployed",
                 "Mods are still deployed",
                 "You've enabled the Nuclear Winter mode, but your mods are still deployed.\n" + 
                 "Do you want to disable them now?"
+            );
+
+            MsgBox.Add("nwModeDisabledAndModsAreStillDisabled",
+                "Do you want to re-enable your mods again?",
+                "You've disabled the Nuclear Winter mode, but your mods are still disabled.\n" +
+                "Do you want to deploy them now?"
             );
         }
 

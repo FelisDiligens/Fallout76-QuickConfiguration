@@ -101,7 +101,8 @@ namespace Fo76ini
                     subControl.Name != "labelTranslationAuthor" && 
                     subControl.Name != "groupBoxWIP" &&
                     subControl.Name != "labelNewVersion" &&
-                    subControl.Name != "labelModsDeploy")
+                    subControl.Name != "labelModsDeploy" &&
+                    subControl.Name != "labelGameEdition")
                 {
                     // Get XElement name:
                     String type = "Element";

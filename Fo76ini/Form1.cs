@@ -161,7 +161,9 @@ namespace Fo76ini
             // Load *.ini files:
             try
             {
+                IniFiles.Instance.GameEdition = (GameEdition)IniFiles.Instance.GetInt(IniFile.Config, "Preferences", "uGameEdition", 0);
                 IniFiles.Instance.LoadGameInis();
+                IniFiles.Instance.Set(IniFile.Config, "Preferences", "uGameEdition", (int)IniFiles.Instance.GameEdition);
             }
             catch (IniParser.Exceptions.ParsingException exc)
             {
@@ -171,7 +173,7 @@ namespace Fo76ini
             }
             catch (FileNotFoundException exc)
             {
-                MsgBox.Get("runGameToGenerateINI").Show(MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MsgBox.Get("runGameToGenerateINI").FormatTitle(IniFiles.Instance.GetIniName(IniFile.F76), IniFiles.Instance.GetIniName(IniFile.F76Prefs)).Show(MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
                 return;
             }
@@ -300,8 +302,8 @@ namespace Fo76ini
 
             // Game Edition
             uiLoader.LinkList(
-                new RadioButton[] { this.radioButtonEditionBethesdaNet, this.radioButtonEditionSteam, this.radioButtonEditionBethesdaNetPTS },
-                new String[] { "1", "2", "3" },
+                new RadioButton[] { this.radioButtonEditionBethesdaNet, this.radioButtonEditionSteam, this.radioButtonEditionBethesdaNetPTS, this.radioButtonEditionMSStore },
+                new String[] { "1", "2", "3", "4" },
                 IniFile.Config, "Preferences", "uGameEdition",
                 "0"
             );
@@ -831,6 +833,9 @@ namespace Fo76ini
                     case (uint)GameEdition.BethesdaNetPTS:
                         process = "bethesdanet://run/57";
                         break;
+                    case (uint)GameEdition.MSStore:
+                        process = "ms-windows-store://pdp/?ProductId=9nkgnmnk3k3z";
+                        break;
                     default:
                         MsgBox.Get("chooseGameEdition").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
@@ -843,15 +848,26 @@ namespace Fo76ini
                     MsgBox.Get("modsGamePathNotSet").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                process = Path.GetFullPath(Path.Combine(ManagedMods.Instance.GamePath, "Fallout76.exe"));
+                process = Path.GetFullPath(Path.Combine(ManagedMods.Instance.GamePath, ManagedMods.Instance.GameEdition == GameEdition.MSStore ? "Project76_GamePass.exe" : "Fallout76.exe"));
             }
             if (process != null)
             {
                 if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAutoApply", false))
                     ApplyChanges();
-                System.Diagnostics.Process.Start(process);
-                if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bQuitOnLaunch", false))
-                    this.Close();
+                try
+                {
+                    System.Diagnostics.Process.Start(process);
+                    if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bQuitOnLaunch", false))
+                        this.Close();
+                }
+                catch (Exception ex)
+                {
+                    if (ManagedMods.Instance.GameEdition == GameEdition.MSStore)
+                    {
+                        MsgBox.Get("msstoreRunExecutableFailed").FormatTitle(ex.Message).Show(MessageBoxIcon.Error);
+                        return;
+                    }
+                }
             }
         }
 
@@ -924,31 +940,102 @@ namespace Fo76ini
          * Game edition
          */
 
+        private void ChangeGameEdition(GameEdition edition)
+        {
+            bool restartRequired = ManagedMods.Instance.GameEdition != GameEdition.Unknown && ((ManagedMods.Instance.GameEdition == GameEdition.MSStore && edition != GameEdition.MSStore) || (ManagedMods.Instance.GameEdition != GameEdition.MSStore && edition == GameEdition.MSStore));
+
+            if (restartRequired && MsgBox.Get("msstoreRestartRequired").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                switch (ManagedMods.Instance.GameEdition)
+                {
+                    case GameEdition.Steam:
+                        this.radioButtonEditionSteam.Checked = true;
+                        break;
+                    case GameEdition.BethesdaNet:
+                        this.radioButtonEditionBethesdaNet.Checked = true;
+                        break;
+                    case GameEdition.BethesdaNetPTS:
+                        this.radioButtonEditionBethesdaNetPTS.Checked = true;
+                        break;
+                    case GameEdition.MSStore:
+                        this.radioButtonEditionMSStore.Checked = true;
+                        break;
+                }
+                return;
+            }
+
+            // Change image
+            switch (edition)
+            {
+                case GameEdition.Steam:
+                    this.pictureBoxGameEdition.Image = Properties.Resources.steam;
+                    this.labelGameEdition.Text = "Steam";
+                    break;
+                case GameEdition.BethesdaNet:
+                    this.pictureBoxGameEdition.Image = Properties.Resources.bethesda;
+                    this.labelGameEdition.Text = "Bethesda";
+                    break;
+                case GameEdition.BethesdaNetPTS:
+                    this.pictureBoxGameEdition.Image = Properties.Resources.bethesda_pts;
+                    this.labelGameEdition.Text = "Bethesda\n(PTS)";
+                    break;
+                case GameEdition.MSStore:
+                    this.pictureBoxGameEdition.Image = Properties.Resources.msstore;
+                    this.labelGameEdition.Text = "Microsoft\nStore";
+                    break;
+                default:
+                    this.pictureBoxGameEdition.Image = Properties.Resources.question_mark;
+                    this.labelGameEdition.Text = "Unknown";
+                    break;
+            }
+
+            // Currently, no way to launch game executable, if installed via MS Store:
+            /*if (edition == GameEdition.MSStore)
+            {
+                IniFiles.Instance.Set(IniFile.Config, "Preferences", "uLaunchOption", 1);
+
+                this.radioButtonLaunchViaExecutable.Checked = false;
+                this.radioButtonLaunchViaExecutable.Enabled = false;
+                this.radioButtonLaunchViaLink.Checked = true;
+            }
+            else
+            {
+                this.radioButtonLaunchViaExecutable.Enabled = true;
+            }*/
+
+            IniFiles.Instance.ChangeGameEdition(edition);
+            this.formMods.ChangeGameEdition(edition);
+            this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
+
+            if (restartRequired)
+            {
+                IniFiles.Instance.SaveWindowState("Form1", this);
+                Application.Restart();
+            }
+        }
+
         private void radioButtonEditionSteam_CheckedChanged(object sender, EventArgs e)
         {
             if (this.radioButtonEditionSteam.Checked)
-            {
-                this.formMods.ChangeGameEdition(GameEdition.Steam);
-                this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
-            }
+                ChangeGameEdition(GameEdition.Steam);
         }
 
         private void radioButtonEditionBethesdaNet_CheckedChanged(object sender, EventArgs e)
         {
             if (this.radioButtonEditionBethesdaNet.Checked)
-            {
-                this.formMods.ChangeGameEdition(GameEdition.BethesdaNet);
-                this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
-            }
+                ChangeGameEdition(GameEdition.BethesdaNet);
         }
 
         private void radioButtonEditionBethesdaNetPTS_CheckedChanged(object sender, EventArgs e)
         {
             if (this.radioButtonEditionBethesdaNetPTS.Checked)
-            {
-                this.formMods.ChangeGameEdition(GameEdition.BethesdaNetPTS);
-                this.textBoxGamePath.Text = ManagedMods.Instance.GamePath;
-            }
+                ChangeGameEdition(GameEdition.BethesdaNetPTS);
+        }
+
+        private void radioButtonEditionMSStore_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radioButtonEditionMSStore.Checked)
+                ChangeGameEdition(GameEdition.MSStore);
         }
 
         // Nuclear Winter mode
@@ -959,11 +1046,28 @@ namespace Fo76ini
             {
                 if (MsgBox.ShowID("nwModeEnabledButModsAreDeployed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    ManagedMods.Instance.nuclearWinterMode = IniFiles.Instance.nuclearWinterMode;
+                    // Disable mods:
+                    ManagedMods.Instance.nuclearWinterMode = true;
                     this.formMods.OpenUI();
                     this.formMods.Deploy();
                 }
             }
+            else if (!IniFiles.Instance.nuclearWinterMode && ManagedMods.Instance.nuclearWinterMode && ManagedMods.Instance.Mods.Count() > 0)
+            {
+                if (MsgBox.ShowID("nwModeDisabledAndModsAreStillDisabled", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    // Enable mods:
+                    ManagedMods.Instance.nuclearWinterMode = false;
+                    this.formMods.OpenUI();
+                    this.formMods.Deploy();
+                }
+            }
+        }
+
+        private void pictureBoxGameEdition_Click(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectTab(this.tabPageSettings);
+            this.groupBoxGameEdition.Focus();
         }
 
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -1131,7 +1235,14 @@ namespace Fo76ini
 
         private void radioButtonLaunchViaExecutable_CheckedChanged(object sender, EventArgs e)
         {
-            this.labelLaunchOptionTip.Visible = this.radioButtonLaunchViaExecutable.Checked;
+            this.labelLaunchOptionTip.Visible = false;
+            this.labelLaunchOptionMSStoreNotice.Visible = false;
+
+            if (ManagedMods.Instance.GameEdition == GameEdition.BethesdaNet || ManagedMods.Instance.GameEdition == GameEdition.BethesdaNetPTS)
+                this.labelLaunchOptionTip.Visible = this.radioButtonLaunchViaExecutable.Checked;
+
+            else if (ManagedMods.Instance.GameEdition == GameEdition.MSStore)
+                this.labelLaunchOptionMSStoreNotice.Visible = this.radioButtonLaunchViaExecutable.Checked;
         }
     }
 }

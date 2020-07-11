@@ -676,8 +676,7 @@
             // 
             // openFileDialogGamePath
             // 
-            this.openFileDialogGamePath.FileName = "Fallout76.exe";
-            this.openFileDialogGamePath.Filter = "Fallout76.exe|Fallout76.exe";
+            this.openFileDialogGamePath.Filter = "Fallout 76 executable|Fallout76.exe,Project76_GamePass.exe";
             // 
             // panel1
             // 

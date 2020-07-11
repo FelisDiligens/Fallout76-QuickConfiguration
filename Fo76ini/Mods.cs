@@ -498,6 +498,8 @@ namespace Fo76ini
                     return "BethesdaNet";
                 case GameEdition.BethesdaNetPTS:
                     return "BethesdaNetPTS";
+                case GameEdition.MSStore:
+                    return "MSStore";
                 default:
                     return "";
             }
@@ -862,9 +864,6 @@ namespace Fo76ini
                 return;
             }
 
-            if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
-                Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
-
             if (!File.Exists(filePath))
             {
                 // Path too long?
@@ -885,6 +884,10 @@ namespace Fo76ini
 
             try
             {
+                // Create Mods folder:
+                if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
+                    Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
+
                 // Get paths:
                 filePath = Path.GetFullPath(filePath);
                 String fileName = Path.GetFileNameWithoutExtension(filePath);
@@ -920,6 +923,14 @@ namespace Fo76ini
                 if (done != null)
                     done(true);
             }
+            catch (UnauthorizedAccessException ex)
+            {
+                MsgBox.Get("modsAccessDenied").FormatText("UnauthorizedAccessException: " + ex.Message).Show(MessageBoxIcon.Error);
+                this.logFile.WriteLine($"UnauthorizedAccessException occured while importing a folder: {ex.Message}\n{ex.StackTrace}\n");
+                if (done != null)
+                    done(false);
+                return;
+            }
             catch (Exception ex)
             {
                 this.logFile.WriteLine($"Unhandled exception occured while importing a *.ba2 file: {ex.Message}\n{ex.StackTrace}\n");
@@ -946,9 +957,6 @@ namespace Fo76ini
                     done(false);
                 return;
             }
-
-            if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
-                Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
 
             if (!File.Exists(filePath))
             {
@@ -980,6 +988,10 @@ namespace Fo76ini
 
             try
             {
+                // Create Mods folder:
+                if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
+                    Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
+
                 // Get paths:
                 filePath = Path.GetFullPath(filePath);
                 String fileName = Path.GetFileNameWithoutExtension(filePath);
@@ -1014,6 +1026,14 @@ namespace Fo76ini
                 if (done != null)
                     done(true);
             }
+            catch (UnauthorizedAccessException ex)
+            {
+                MsgBox.Get("modsAccessDenied").FormatText("UnauthorizedAccessException: " + ex.Message).Show(MessageBoxIcon.Error);
+                this.logFile.WriteLine($"UnauthorizedAccessException occured while importing a folder: {ex.Message}\n{ex.StackTrace}\n");
+                if (done != null)
+                    done(false);
+                return;
+            }
             catch (Exception ex)
             {
                 this.logFile.WriteLine($"Unhandled exception occured while importing a *.ba2 file: {ex.Message}\n{ex.StackTrace}\n");
@@ -1040,9 +1060,6 @@ namespace Fo76ini
                     done(false);
                 return;
             }
-
-            if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
-                Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
 
             if (!Directory.Exists(folderPath))
             {
@@ -1074,6 +1091,10 @@ namespace Fo76ini
 
             try
             {
+                // Create Mods folder:
+                if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
+                    Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
+
                 // Get paths:
                 folderPath = Path.GetFullPath(folderPath);
                 String folderName = Path.GetFileName(folderPath);
@@ -1121,6 +1142,14 @@ namespace Fo76ini
 
                 if (done != null)
                     done(true);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MsgBox.Get("modsAccessDenied").FormatText("UnauthorizedAccessException: " + ex.Message).Show(MessageBoxIcon.Error);
+                this.logFile.WriteLine($"UnauthorizedAccessException occured while importing a folder: {ex.Message}\n{ex.StackTrace}\n");
+                if (done != null)
+                    done(false);
+                return;
             }
             catch (Exception ex)
             {
@@ -1944,6 +1973,13 @@ namespace Fo76ini
 
                 if (done != null)
                     done(true);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MsgBox.Get("modsAccessDenied").FormatText("UnauthorizedAccessException: " + ex.Message).Show(MessageBoxIcon.Error);
+                this.logFile.WriteLine($"UnauthorizedAccessException occured while importing a folder: {ex.Message}\n{ex.StackTrace}\n");
+                if (done != null)
+                    done(false);
             }
             catch (Exception ex)
             {

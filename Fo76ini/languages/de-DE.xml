@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.6.3">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.7.0">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary" />
@@ -102,6 +102,8 @@ Einige UI-Elemente könnten unter Umständen nicht korrekt funktionieren.
     <Messagebox title="Fertig" id="downloadLanguagesFinished">Heruntergeladene Sprachdateien: {0}</Messagebox>
     <Messagebox title="Fehlgeschlagen" id="downloadLanguagesFailed">Das Herunterladen von Sprachen ist fehlgeschlagen.
 {0}</Messagebox>
+    <Messagebox title="Möchten Sie wechseln?" id="msstoreRestartRequired">Das Wechseln von und zur Microsoft Store Edition erfordert einen Neustart des Tools.</Messagebox>
+    <Messagebox title="Spiel konnte nicht gestartet werden: {0}" id="msstoreRunExecutableFailed">Leider kann die Spiel aufgrund von "Sicherheitseinschränkungen" nicht direkt gestartet werden. Danke Microsoft, wir freuen uns. :(</Messagebox>
     <Messagebox title="Fertig" id="modsDisabledDone">Mods wurden deaktiviert und vom Spiel entfernt.</Messagebox>
     <Messagebox title="Fertig" id="modsDeployedDone">Mods wurden installiert.</Messagebox>
     <Messagebox title="Etwas ist schiefgelaufen" id="modsDeploymentFailed">Mods könnten nicht installiert worden sein.
@@ -140,8 +142,12 @@ Fehlermeldung: "{0}".</Messagebox>
 Das kann lange dauern, abhängig von Dateigröße und Anzahl an Dateien.
 Möchtest du fortfahren?</Messagebox>
     <Messagebox title="Fertig" id="modsRepairDDSDone">*.dds Dateien wurden repariert.</Messagebox>
-    <Messagebox title="Mods are still deployed" id="nwModeEnabledButModsAreDeployed">You've enabled the Nuclear Winter mode, but your mods are still deployed.
-Do you want to disable them now?</Messagebox>
+    <Messagebox title="Zugriff verweigert" id="modsAccessDenied">{0}
+Starte das Tool als Administrator und versuche es erneut.</Messagebox>
+    <Messagebox title="Mods sind noch installiert" id="nwModeEnabledButModsAreDeployed">Du hast den Nuclear Winter Modus aktiviert, aber deine Mods sind noch installiert.
+Möchtest du sie jetzt deinstallieren?</Messagebox>
+    <Messagebox title="Möchtest du deine Mods wieder installieren?" id="nwModeDisabledAndModsAreStillDisabled">Du hast den Nuclear Winter Modus deaktiviert, aber deine Mods wurden dadurch nicht reaktiviert.
+Möchtest du sie jetzt wieder installieren?</Messagebox>
     <Messagebox title="Archive2 nicht installiert" id="modsArchive2NotSet">Bitte lade Archive2 runter und setze den Pfad, um *.ba2 Archive zu extrahieren.</Messagebox>
     <Messagebox title="Ungültiger Pfad" id="modsArchive2Invalid">Ungültiger Pfad zu Archive2.
 Bitte wähle Archive2.exe</Messagebox>
@@ -164,6 +170,7 @@ Bitte wähle Archive2.exe</Messagebox>
       </Tab>
       <Tab text="Einstellungen" id="tabPageSettings">
         <Group text="Startoptionen" id="groupBoxLaunchOptions">
+          <Label text="Fallout 76 kann nicht direkt ausgeführt werden, wenn es über den Microsoft Store installiert wurde." id="labelLaunchOptionMSStoreNotice" />
           <Label text="Tipp: Gib deine Zugangsdaten im &quot;Allgemein&quot;-Tab ein." id="labelLaunchOptionTip" />
           <Radiobutton text="Starte &quot;Fallout76.exe&quot; direkt" id="radioButtonLaunchViaExecutable" />
           <Radiobutton text="Starte via Steam / Bethesda.net (empfohlen)" id="radioButtonLaunchViaLink" />
@@ -216,6 +223,7 @@ Betroffene Dateien: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
         </Group>
         <Button text="Einstellungen aus v.1.3.1 und früher zurücksetzen" id="buttonFixIssuesEarlierVersion" />
         <Group text="Spieledition" id="groupBoxGameEdition">
+          <Radiobutton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
           <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
           <Radiobutton text="Steam" id="radioButtonEditionSteam" />
           <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
@@ -236,7 +244,7 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Anmelden" id="groupBoxLogin">
-          <Label text="Deine Anmeldedaten werden in Fallout76Custom.ini gespeichert.\nSomit musst du dich nicht erneut anmelden,\nwenn du Fallout 76 ohne Launcher startest." id="labelCredentialsExplanation" />
+          <Label text="Deine Anmeldedaten werden in Fallout76Custom.ini gespeichert.\nSomit musst du dich nicht erneut anmelden,\nwenn du Fallout 76 ohne Launcher startest.\nDies funktioniert unter Umständen nur mit der 'Bethesda.net'-Version." id="labelCredentialsExplanation" />
           <Checkbox text="Passwort anzeigen" id="checkBoxShowPassword" />
           <Label text="Passwort:" id="labelPassword" />
           <Label text="Nutzername:" id="labelUserName" />
