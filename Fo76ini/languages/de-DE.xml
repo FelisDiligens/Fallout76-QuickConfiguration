@@ -716,7 +716,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
       </Tab>
       <Tab text="Einstellungen" id="tabPageModsSettings">
         <Group text="Verhalten" id="groupBoxModsBehavior">
-          <Checkbox text="[Experimentell] Erstelle harte Links anstatt Dateien zu kopieren." id="checkBoxModsUseHardlinks">
+          <Checkbox text="Erstelle harte Links anstatt Dateien zu kopieren." id="checkBoxModsUseHardlinks">
             <Tooltip>Könnte Speicherplatz frei machen und beim Anwenden Zeit sparen.
 Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
           </Checkbox>
