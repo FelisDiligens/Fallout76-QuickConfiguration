@@ -2,12 +2,12 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Fallout 76 Quick Configuration"
-; #define MyAppVersion "1.6"
+; #define MyAppVersion "1.7"
 #define MyAppPublisher "datasnake"
 #define MyAppURL "https://www.nexusmods.com/fallout76/mods/546"
 #define MyAppExeName "Fo76ini.exe"
 
-#define ProjectVersion "1.6.3"
+#define ProjectVersion "1.7.0"
 #define ProjectBaseDir "C:\Users\Thomas\Documents\Fallout 76 Quick Configuration - Project files"
 #define ProjectGitDir "C:\Users\Thomas\Documents\Fallout 76 Quick Configuration - Project files\Fallout76-QuickConfiguration"
 

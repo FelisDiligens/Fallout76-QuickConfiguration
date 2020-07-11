@@ -25,7 +25,8 @@ namespace Fo76ini
         Unknown = 0,
         BethesdaNet = 1,
         Steam = 2,
-        BethesdaNetPTS = 3
+        BethesdaNetPTS = 3,
+        MSStore = 4
     }
 
     public class IniFiles
@@ -37,9 +38,9 @@ namespace Fo76ini
         protected IniData fo76CustomData = null;
         protected IniData configData = null;
 
-        protected String fo76Path;
+        /*protected String fo76Path;
         protected String fo76PrefsPath;
-        protected String fo76CustomPath;
+        protected String fo76CustomPath;*/
         protected String configPath;
 
         protected DateTime fo76ModTime;
@@ -57,6 +58,8 @@ namespace Fo76ini
 
         public bool nuclearWinterMode = false;
 
+        public GameEdition GameEdition;
+
         public static IniFiles Instance
         {
             get
@@ -72,6 +75,69 @@ namespace Fo76ini
             }
         }
 
+        public String GetIniName(IniFile iniFile, GameEdition edition = GameEdition.Unknown)
+        {
+            if (edition == GameEdition.Unknown)
+                edition = this.GameEdition;
+            bool msstore = edition == GameEdition.MSStore;
+            switch (iniFile)
+            {
+                case IniFile.F76:
+                    return msstore ? "Project76.ini" : "Fallout76.ini";
+                case IniFile.F76Prefs:
+                    return msstore ? "Project76Prefs.ini" : "Fallout76Prefs.ini";
+                case IniFile.F76Custom:
+                    return msstore ? "Project76Custom.ini" : "Fallout76Custom.ini";
+                case IniFile.Config:
+                    return "QuickConfiguration.ini";
+            }
+            return null;
+        }
+
+        public String GetIniPath(IniFile iniFile, GameEdition edition)
+        {
+            switch (iniFile)
+            {
+                case IniFile.F76:
+                case IniFile.F76Prefs:
+                case IniFile.F76Custom:
+                    return Path.Combine(this.iniParentPath, GetIniName(iniFile, edition));
+                case IniFile.Config:
+                    return this.configPath;
+            }
+            return null;
+        }
+
+        public String GetIniPath(IniFile iniFile)
+        {
+            switch (iniFile)
+            {
+                case IniFile.F76:
+                case IniFile.F76Prefs:
+                case IniFile.F76Custom:
+                    return Path.Combine(this.iniParentPath, GetIniName(iniFile));
+                case IniFile.Config:
+                    return this.configPath;
+            }
+            return null;
+        }
+
+        protected IniData GetIniData(IniFile iniFile)
+        {
+            switch (iniFile)
+            {
+                case IniFile.F76:
+                    return this.fo76Data;
+                case IniFile.F76Prefs:
+                    return this.fo76PrefsData;
+                case IniFile.F76Custom:
+                    return this.fo76CustomData;
+                case IniFile.Config:
+                    return this.configData;
+            }
+            return null;
+        }
+
         private IniFiles()
         {
             // Get the paths:
@@ -80,9 +146,9 @@ namespace Fo76ini
                 @"My Games\Fallout 76\"
             );
 
-            this.fo76Path = Path.Combine(this.iniParentPath, "Fallout76.ini");
-            this.fo76PrefsPath = Path.Combine(this.iniParentPath, "Fallout76Prefs.ini");
-            this.fo76CustomPath = Path.Combine(this.iniParentPath, "Fallout76Custom.ini");
+            /*this.GetIniName(IniFile.F76) = Path.Combine(this.iniParentPath, "Fallout76.ini");
+            this.GetIniName(IniFile.F76Prefs) = Path.Combine(this.iniParentPath, "Fallout76Prefs.ini");
+            this.GetIniName(IniFile.F76Custom) = Path.Combine(this.iniParentPath, "Fallout76Custom.ini");*/
             String oldConfigPath = Path.Combine(this.iniParentPath, "QuickConfiguration.ini");
             this.configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "config.ini");
 
@@ -116,22 +182,39 @@ namespace Fo76ini
             // Parse all INI files, if existing:
 
             // Do Fallout76.ini and Fallout76Prefs.ini exist?
-            if (!File.Exists(this.fo76Path) || !File.Exists(this.fo76PrefsPath))
-                throw new FileNotFoundException("Fallout76.ini and Fallout76Prefs.ini not found");
+            if (!File.Exists(GetIniPath(IniFile.F76)) || !File.Exists(GetIniPath(IniFile.F76Prefs)))
+            {
+                if (this.GameEdition == GameEdition.MSStore)
+                {
+                    // Do Fallout76.ini and Fallout76Prefs.ini exist?
+                    if (File.Exists(GetIniPath(IniFile.F76, GameEdition.Steam)) && File.Exists(GetIniPath(IniFile.F76Prefs, GameEdition.Steam)))
+                        this.GameEdition = GameEdition.Steam;
+                    else
+                        throw new FileNotFoundException($"{GetIniName(IniFile.F76)} and {GetIniName(IniFile.F76Prefs)} not found");
+                }
+                else
+                {
+                    // Do Project76.ini and Project76Prefs.ini exist?
+                    if (File.Exists(GetIniPath(IniFile.F76, GameEdition.MSStore)) && File.Exists(GetIniPath(IniFile.F76Prefs, GameEdition.MSStore)))
+                        this.GameEdition = GameEdition.MSStore;
+                    else
+                        throw new FileNotFoundException($"{GetIniName(IniFile.F76)} and {GetIniName(IniFile.F76Prefs)} not found");
+                }
+            }
 
             // Does Fallout76Custom.ini exist? If not, create it.
-            /*if (!File.Exists(this.fo76CustomPath))
-                File.CreateText(this.fo76CustomPath).Close();*/
+            /*if (!File.Exists(this.GetIniPath(IniFile.F76Custom)))
+                File.CreateText(this.GetIniPath(IniFile.F76Custom)).Close();*/
 
             // Parse *.ini files:
-            this.fo76Data = LoadIni(this.fo76Path, false);
-            this.fo76ModTime = File.GetLastWriteTime(this.fo76Path);
-            this.fo76PrefsData = LoadIni(this.fo76PrefsPath, false);
-            this.fo76PrefsModTime = File.GetLastWriteTime(this.fo76PrefsPath);
-            if (File.Exists(this.fo76CustomPath))
-                this.fo76CustomData = LoadIni(this.fo76CustomPath, false);
-            else if (File.Exists(this.fo76CustomPath + ".nwmodebak"))
-                this.fo76CustomData = LoadIni(this.fo76CustomPath + ".nwmodebak", false);
+            this.fo76Data = LoadIni(GetIniPath(IniFile.F76), false);
+            this.fo76ModTime = File.GetLastWriteTime(GetIniPath(IniFile.F76));
+            this.fo76PrefsData = LoadIni(GetIniPath(IniFile.F76Prefs), false);
+            this.fo76PrefsModTime = File.GetLastWriteTime(GetIniPath(IniFile.F76Prefs));
+            if (File.Exists(GetIniPath(IniFile.F76Custom)))
+                this.fo76CustomData = LoadIni(GetIniPath(IniFile.F76Custom), false);
+            else if (File.Exists(GetIniPath(IniFile.F76Custom) + ".nwmodebak"))
+                this.fo76CustomData = LoadIni(GetIniPath(IniFile.F76Custom) + ".nwmodebak", false);
             else
                 this.fo76CustomData = new IniData();
 
@@ -149,53 +232,66 @@ namespace Fo76ini
                    this.configData != null;
         }
 
+        public void ChangeGameEdition(GameEdition edition)
+        {
+            //bool reloadRequired = (this.GameEdition == GameEdition.MSStore && edition != GameEdition.MSStore) || (this.GameEdition != GameEdition.MSStore && edition == GameEdition.MSStore);
+            this.GameEdition = edition;
+            /*if (reloadRequired)
+                LoadGameInis();*/
+            UpdateLastModifiedDates();
+        }
+
         public void SaveGameInis(bool readOnly = false)
         {
-            SaveIni(this.fo76Path, this.fo76Data, readOnly);
-            SaveIni(this.fo76PrefsPath, this.fo76PrefsData, readOnly);
+            SaveIni(this.GetIniPath(IniFile.F76), this.fo76Data, readOnly);
+            SaveIni(this.GetIniPath(IniFile.F76Prefs), this.fo76PrefsData, readOnly);
             if (this.nuclearWinterMode)
-                SaveIni(this.fo76CustomPath + ".nwmodebak", this.fo76CustomData, readOnly);
+                SaveIni(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak", this.fo76CustomData, readOnly);
             else
-                SaveIni(this.fo76CustomPath, this.fo76CustomData, readOnly);
+                SaveIni(this.GetIniPath(IniFile.F76Custom), this.fo76CustomData, readOnly);
             UpdateLastModifiedDates();
         }
 
         public void ResolveNWMode()
         {
+            SetNTFSWritePermission(true);
             if (this.nuclearWinterMode)
             {
-                if (!File.Exists(this.fo76CustomPath))
+                if (!File.Exists(this.GetIniPath(IniFile.F76Custom)))
                     return;
-                if (!File.Exists(this.fo76CustomPath + ".nwmodebak"))
-                    File.Copy(this.fo76CustomPath, this.fo76CustomPath + ".nwmodebak");
-                Utils.DeleteFile(this.fo76CustomPath);
+                if (!File.Exists(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak"))
+                    File.Copy(this.GetIniPath(IniFile.F76Custom), this.GetIniPath(IniFile.F76Custom) + ".nwmodebak");
+                Utils.DeleteFile(this.GetIniPath(IniFile.F76Custom));
             }
             else
             {
-                if (!File.Exists(this.fo76CustomPath + ".nwmodebak"))
+                if (!File.Exists(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak"))
                     return;
-                if (!File.Exists(this.fo76CustomPath))
-                    File.Copy(this.fo76CustomPath + ".nwmodebak", this.fo76CustomPath);
-                Utils.DeleteFile(this.fo76CustomPath + ".nwmodebak");
+                if (!File.Exists(this.GetIniPath(IniFile.F76Custom)))
+                    File.Copy(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak", this.GetIniPath(IniFile.F76Custom));
+                Utils.DeleteFile(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak");
             }
             UpdateLastModifiedDates();
+
+            if (this.GetBool(IniFile.Config, "Preferences", "bDenyNTFSWritePermission", false))
+                SetNTFSWritePermission(false);
         }
 
         public bool FilesHaveBeenModified()
         {
-            if (this.fo76ModTime != File.GetLastWriteTime(this.fo76Path))
+            if (this.fo76ModTime != File.GetLastWriteTime(this.GetIniPath(IniFile.F76)))
                 return true;
-            if (this.fo76PrefsModTime != File.GetLastWriteTime(this.fo76PrefsPath))
+            if (this.fo76PrefsModTime != File.GetLastWriteTime(this.GetIniPath(IniFile.F76Prefs)))
                 return true;
 
-            if (File.Exists(this.fo76CustomPath))
+            if (File.Exists(this.GetIniPath(IniFile.F76Custom)))
             {
-                if (this.fo76CustomModTime != File.GetLastWriteTime(this.fo76CustomPath))
+                if (this.fo76CustomModTime != File.GetLastWriteTime(this.GetIniPath(IniFile.F76Custom)))
                     return true;
             }
-            else if (File.Exists(this.fo76CustomPath + ".nwmodebak"))
+            else if (File.Exists(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak"))
             {
-                if (this.fo76CustomModTime != File.GetLastWriteTime(this.fo76CustomPath + ".nwmodebak"))
+                if (this.fo76CustomModTime != File.GetLastWriteTime(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak"))
                     return true;
             }
             return false;
@@ -203,13 +299,13 @@ namespace Fo76ini
 
         public void UpdateLastModifiedDates()
         {
-            this.fo76ModTime = File.GetLastWriteTime(this.fo76Path);
-            this.fo76PrefsModTime = File.GetLastWriteTime(this.fo76PrefsPath);
+            this.fo76ModTime = File.GetLastWriteTime(this.GetIniPath(IniFile.F76));
+            this.fo76PrefsModTime = File.GetLastWriteTime(this.GetIniPath(IniFile.F76Prefs));
 
-            if (File.Exists(this.fo76CustomPath))
-                this.fo76CustomModTime = File.GetLastWriteTime(this.fo76CustomPath);
-            else if (File.Exists(this.fo76CustomPath + ".nwmodebak"))
-                this.fo76CustomModTime = File.GetLastWriteTime(this.fo76CustomPath + ".nwmodebak");
+            if (File.Exists(this.GetIniPath(IniFile.F76Custom)))
+                this.fo76CustomModTime = File.GetLastWriteTime(this.GetIniPath(IniFile.F76Custom));
+            else if (File.Exists(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak"))
+                this.fo76CustomModTime = File.GetLastWriteTime(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak");
         }
 
         public void LoadConfig()
@@ -249,82 +345,33 @@ namespace Fo76ini
 
             Directory.CreateDirectory(backupPath);
 
-            if (File.Exists(this.fo76Path))
+            if (File.Exists(this.GetIniPath(IniFile.F76)))
             {
                 tempPath = Path.Combine(backupPath, "Fallout76.ini");
-                File.Copy(this.fo76Path, tempPath);
+                File.Copy(this.GetIniPath(IniFile.F76), tempPath);
                 SetFileReadOnlyAttribute(tempPath, false);
             }
 
-            if (File.Exists(this.fo76PrefsPath))
+            if (File.Exists(this.GetIniPath(IniFile.F76Prefs)))
             {
                 tempPath = Path.Combine(backupPath, "Fallout76Prefs.ini");
-                File.Copy(this.fo76PrefsPath, tempPath);
+                File.Copy(this.GetIniPath(IniFile.F76Prefs), tempPath);
                 SetFileReadOnlyAttribute(tempPath, false);
             }
 
-            if (File.Exists(this.fo76CustomPath))
+            if (File.Exists(this.GetIniPath(IniFile.F76Custom)))
             {
                 tempPath = Path.Combine(backupPath, "Fallout76Custom.ini");
-                File.Copy(this.fo76CustomPath, tempPath);
+                File.Copy(this.GetIniPath(IniFile.F76Custom), tempPath);
                 SetFileReadOnlyAttribute(tempPath, false);
             }
 
-            if (File.Exists(this.fo76CustomPath + ".nwmodebak"))
+            if (File.Exists(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak"))
             {
                 tempPath = Path.Combine(backupPath, "Fallout76Custom.ini.nwmodebak");
-                File.Copy(this.fo76CustomPath + ".nwmodebak", tempPath);
+                File.Copy(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak", tempPath);
                 SetFileReadOnlyAttribute(tempPath, false);
             }
-        }
-
-
-        protected String GetIniName(IniFile iniFile)
-        {
-            switch (iniFile)
-            {
-                case IniFile.F76:
-                    return "Fallout76.ini";
-                case IniFile.F76Prefs:
-                    return "Fallout76Prefs.ini";
-                case IniFile.F76Custom:
-                    return "Fallout76Custom.ini";
-                case IniFile.Config:
-                    return "QuickConfiguration.ini";
-            }
-            return null;
-        }
-
-        protected String GetIniPath(IniFile iniFile)
-        {
-            switch (iniFile)
-            {
-                case IniFile.F76:
-                    return this.fo76Path;
-                case IniFile.F76Prefs:
-                    return this.fo76PrefsPath;
-                case IniFile.F76Custom:
-                    return this.fo76CustomPath;
-                case IniFile.Config:
-                    return this.configPath;
-            }
-            return null;
-        }
-
-        protected IniData GetIniData(IniFile iniFile)
-        {
-            switch (iniFile)
-            {
-                case IniFile.F76:
-                    return this.fo76Data;
-                case IniFile.F76Prefs:
-                    return this.fo76PrefsData;
-                case IniFile.F76Custom:
-                    return this.fo76CustomData;
-                case IniFile.Config:
-                    return this.configData;
-            }
-            return null;
         }
 
         protected void RemoveEmptySections(IniData data)
@@ -412,17 +459,17 @@ namespace Fo76ini
 
         public void SetINIsReadOnly(bool readOnly)
         {
-            SetFileReadOnlyAttribute(this.fo76Path, readOnly);
-            SetFileReadOnlyAttribute(this.fo76PrefsPath, readOnly);
-            SetFileReadOnlyAttribute(this.fo76CustomPath, readOnly);
+            SetFileReadOnlyAttribute(this.GetIniPath(IniFile.F76), readOnly);
+            SetFileReadOnlyAttribute(this.GetIniPath(IniFile.F76Prefs), readOnly);
+            SetFileReadOnlyAttribute(this.GetIniPath(IniFile.F76Custom), readOnly);
         }
 
         public bool AreINIsReadOnly()
         {
-            if (File.Exists(this.fo76Path) && File.Exists(this.fo76PrefsPath))
+            if (File.Exists(this.GetIniPath(IniFile.F76)) && File.Exists(this.GetIniPath(IniFile.F76Prefs)))
             {
-                FileInfo fo76fi = new FileInfo(this.fo76Path);
-                FileInfo fo76Prefsfi = new FileInfo(this.fo76PrefsPath);
+                FileInfo fo76fi = new FileInfo(this.GetIniPath(IniFile.F76));
+                FileInfo fo76Prefsfi = new FileInfo(this.GetIniPath(IniFile.F76Prefs));
                 return fo76fi.IsReadOnly && fo76Prefsfi.IsReadOnly;
             }
             return false;
@@ -453,17 +500,11 @@ namespace Fo76ini
             {
                 dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
                 dSecurity.AddAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
-
-                //dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
-                //dSecurity.AddAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
             }
             else
             {
                 dSecurity.AddAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
                 dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
-
-                //dSecurity.AddAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
-                //dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
             }
             dInfo.SetAccessControl(dSecurity);
         }
@@ -758,7 +799,7 @@ namespace Fo76ini
             MergeLists(IniFile.F76Custom, "Archive", "sResourceArchive2List");
             MergeLists(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal");
 
-            this.fo76CustomModTime = File.GetLastWriteTime(this.fo76CustomPath);
+            this.fo76CustomModTime = File.GetLastWriteTime(this.GetIniPath(IniFile.F76Custom));
         }
 
 

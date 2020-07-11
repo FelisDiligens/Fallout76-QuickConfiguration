@@ -549,9 +549,9 @@
             this.checkBoxModsUseHardlinks.AutoSize = true;
             this.checkBoxModsUseHardlinks.Location = new System.Drawing.Point(6, 42);
             this.checkBoxModsUseHardlinks.Name = "checkBoxModsUseHardlinks";
-            this.checkBoxModsUseHardlinks.Size = new System.Drawing.Size(327, 17);
+            this.checkBoxModsUseHardlinks.Size = new System.Drawing.Size(258, 17);
             this.checkBoxModsUseHardlinks.TabIndex = 1;
-            this.checkBoxModsUseHardlinks.Text = "[Experimental] Make hard links instead of copying files manually.";
+            this.checkBoxModsUseHardlinks.Text = "Make hard links instead of copying files manually.";
             this.toolTip.SetToolTip(this.checkBoxModsUseHardlinks, "May reduce disk space and deployment time.\r\nDoes not apply to bundled archives.");
             this.checkBoxModsUseHardlinks.UseVisualStyleBackColor = true;
             this.checkBoxModsUseHardlinks.CheckedChanged += new System.EventHandler(this.checkBoxModsUseHardlinks_CheckedChanged);
@@ -676,8 +676,7 @@
             // 
             // openFileDialogGamePath
             // 
-            this.openFileDialogGamePath.FileName = "Fallout76.exe";
-            this.openFileDialogGamePath.Filter = "Fallout76.exe|Fallout76.exe";
+            this.openFileDialogGamePath.Filter = "Fallout 76 executable|Fallout76.exe,Project76_GamePass.exe";
             // 
             // panel1
             // 

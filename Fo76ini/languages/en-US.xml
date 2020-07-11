@@ -4,7 +4,7 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.6.3">
+<Language name="English (USA)" iso="en-US" version="1.7.0">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Deployment necessary" id="modsDeploymentNecessary" />
@@ -90,7 +90,7 @@
     Press "Cancel" to abort.</Messagebox>
     <Messagebox title="Changes applied" id="changesApplied">Changes have been applied. You may start the game now.</Messagebox>
     <Messagebox title="Choose Game Edition" id="chooseGameEdition">Please pick your game edition under the Settings tab.</Messagebox>
-    <Messagebox title="Fallout76.ini and Fallout76Prefs.ini not found" id="runGameToGenerateINI">Please run the game first before using this tool.
+    <Messagebox title="{0} and {1} not found" id="runGameToGenerateINI">Please run the game first before using this tool.
 The game will generate those files on first start-up.</Messagebox>
     <Messagebox title="Done" id="oldValuesResetToDefault">Some values have been reset to default.
 Only unstable values from previous versions are affected.
@@ -106,6 +106,8 @@ Some UI elements might not be functioning correctly.
     <Messagebox title="Done" id="downloadLanguagesFinished">Downloaded language files: {0}</Messagebox>
     <Messagebox title="Failed" id="downloadLanguagesFailed">Downloading languages failed.
 {0}</Messagebox>
+    <Messagebox title="Do you want to switch?" id="msstoreRestartRequired">Switching to or from the Microsoft Store edition requires a restart of the tool.</Messagebox>
+    <Messagebox title="Couldn't launch game: {0}" id="msstoreRunExecutableFailed">Unfortunately, it's not possible to launch the executable directly due to "security" restrictions. Thanks Microsoft, we hate it. :(</Messagebox>
     <Messagebox title="Done" id="modsDisabledDone">Mods have been disabled and removed from the game.</Messagebox>
     <Messagebox title="Done" id="modsDeployedDone">Mods are deployed.</Messagebox>
     <Messagebox title="Something went wrong" id="modsDeploymentFailed">Mods might not be deployed.
@@ -144,8 +146,12 @@ Error message: "{0}".</Messagebox>
 It can take a long time, depending on file size and number of files.
 Are you sure you want to continue?</Messagebox>
     <Messagebox title="Done" id="modsRepairDDSDone">*.dds files have been repaired.</Messagebox>
+    <Messagebox title="Access denied" id="modsAccessDenied">{0}
+Please start the tool as admin and try again.</Messagebox>
     <Messagebox title="Mods are still deployed" id="nwModeEnabledButModsAreDeployed">You've enabled the Nuclear Winter mode, but your mods are still deployed.
 Do you want to disable them now?</Messagebox>
+    <Messagebox title="Do you want to re-enable your mods again?" id="nwModeDisabledAndModsAreStillDisabled">You've disabled the Nuclear Winter mode, but your mods are still disabled.
+Do you want to deploy them now?</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Quick Configuration">
     <Button text="Manage mods" id="buttonManageMods" />
@@ -165,9 +171,10 @@ Do you want to disable them now?</Messagebox>
       </Tab>
       <Tab text="Settings" id="tabPageSettings">
         <Group text="Launch options" id="groupBoxLaunchOptions">
+          <Label text="Fallout 76 cannot be run directly, if installed through the Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
           <Label text="Tip: Enter your login credentials under the &quot;General&quot; tab." id="labelLaunchOptionTip" />
           <Radiobutton text="Run &quot;Fallout76.exe&quot; directly" id="radioButtonLaunchViaExecutable" />
-          <Radiobutton text="Launch via Steam / Bethesda.net (recommended)" id="radioButtonLaunchViaLink" />
+          <Radiobutton text="Launch via Steam / Bethesda.net / MS Store (recommended)" id="radioButtonLaunchViaLink" />
         </Group>
         <Group text="Paths" id="groupBoxGamePaths">
           <Label text="Game location:" id="labelGamePath" />
@@ -216,6 +223,7 @@ Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
         </Group>
         <Button text="Fix settings from v1.3.1 and earlier" id="buttonFixIssuesEarlierVersion" />
         <Group text="Game edition" id="groupBoxGameEdition">
+          <Radiobutton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
           <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
           <Radiobutton text="Steam" id="radioButtonEditionSteam" />
           <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
@@ -236,7 +244,7 @@ Affected files: Fallout76Custom.ini</Tooltip>
           </Checkbox>
         </Group>
         <Group text="Login" id="groupBoxLogin">
-          <Label text="Your credentials are saved into Fallout76Custom.ini\nThis way, you don't have to login if you start Fallout 76\nwithout the launcher." id="labelCredentialsExplanation" />
+          <Label text="Your credentials are saved into Fallout76Custom.ini\nThis way, you don't have to login if you start Fallout 76\nwithout the launcher.\nMight only work if the game is installed via Bethesda.net." id="labelCredentialsExplanation" />
           <Checkbox text="Show password" id="checkBoxShowPassword" />
           <Label text="Password:" id="labelPassword" />
           <Label text="User name:" id="labelUserName" />
