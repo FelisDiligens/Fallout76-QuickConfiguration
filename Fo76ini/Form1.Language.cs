@@ -313,7 +313,7 @@ namespace Fo76ini
             if (iso == null)
                 iso = this.languageISOs[index];
             if (author == null)
-                author = this.labelAuthorName.Text.Trim();
+                author = this.labelTranslationAuthor.Text.Trim();
             if (fileName == null)
                 fileName = iso + ".template.xml";
 
@@ -366,43 +366,6 @@ namespace Fo76ini
         private void GenerateEnglishXMLFile()
         {
             SerializeXMLFile("English (USA)", "en-US", "", "en-US.xml");
-            /*// Create document and root:
-            XDocument xmlDoc = new XDocument();
-            XElement xmlRoot = new XElement("Language");
-            xmlRoot.Add(new XAttribute("name", "English (USA)"));
-            xmlRoot.Add(new XAttribute("iso", "en-US"));
-            xmlDoc.AddFirst(new XComment("\n     This file is auto-generated on program start.\n     Therefore any changes made to this file will be overriden.\n     You can use this as a template for your own translation, though.\n"));
-            xmlDoc.Add(xmlRoot);
-
-            // Serialize miscellaneous strings:
-            XElement xmlStrings = new XElement("Strings");
-            foreach (KeyValuePair<String, String> pair in Translation.localizedStrings)
-                xmlStrings.Add(new XElement("String",
-                    new XAttribute("text", pair.Value),
-                    new XAttribute("id", pair.Key)));
-            xmlRoot.Add(xmlStrings);
-
-            // Create dropdowns:
-            XElement xmlDropDowns = new XElement("Dropdowns");
-            foreach (KeyValuePair<String, ComboBoxContainer> pair in this.comboBoxes)
-                SerializeDropDownOptions(xmlDropDowns, pair.Key, pair.Value.Items);
-            xmlRoot.Add(xmlDropDowns);
-
-            // Create messageboxes:
-            xmlRoot.Add(MsgBox.Serialize());
-
-            // Serialize all control elements:
-            XElement xmlForm1 = new XElement("Form1", new XAttribute("title", this.Text));
-            XElement xmlFormMods = new XElement("FormMods", new XAttribute("title", this.formMods.Text));
-            SerializeControlText(xmlForm1, this.toolTip, this);
-            SerializeControlText(xmlFormMods, this.formMods.toolTip, this.formMods);
-            xmlRoot.Add(xmlForm1);
-            xmlRoot.Add(xmlFormMods);
-
-            // Save it:
-            xmlDoc.Save(Path.Combine(languageFolder, "en-US.xml"));
-            //using (XmlTextWriter writer = new XmlTextWriter(Path.Combine(languageFolder, "en-US.xml"), new UTF8Encoding(false))) 
-            //    xmlDoc.Save(writer); */
         }
 
         private void ChangeLanguage(string langFile)
@@ -561,6 +524,7 @@ namespace Fo76ini
 
             CheckVersion();
             this.formMods.UpdateUI();
+            Console.WriteLine(this.labelTranslationAuthor.Text);
             if (xmlDoc.Element("Language").Attribute("iso").Value != "en-US")
                 SerializeXMLFile();
         }
