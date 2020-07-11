@@ -162,6 +162,7 @@ namespace Fo76ini
 
         public void ResolveNWMode()
         {
+            SetNTFSWritePermission(true);
             if (this.nuclearWinterMode)
             {
                 if (!File.Exists(this.fo76CustomPath))
@@ -179,6 +180,9 @@ namespace Fo76ini
                 Utils.DeleteFile(this.fo76CustomPath + ".nwmodebak");
             }
             UpdateLastModifiedDates();
+
+            if (this.GetBool(IniFile.Config, "Preferences", "bDenyNTFSWritePermission", false))
+                SetNTFSWritePermission(false);
         }
 
         public bool FilesHaveBeenModified()
@@ -453,17 +457,11 @@ namespace Fo76ini
             {
                 dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
                 dSecurity.AddAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
-
-                //dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
-                //dSecurity.AddAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
             }
             else
             {
                 dSecurity.AddAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
                 dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
-
-                //dSecurity.AddAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
-                //dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidAdmins, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
             }
             dInfo.SetAccessControl(dSecurity);
         }
