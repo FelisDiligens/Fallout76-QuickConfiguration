@@ -524,7 +524,6 @@ namespace Fo76ini
 
             CheckVersion();
             this.formMods.UpdateUI();
-            Console.WriteLine(this.labelTranslationAuthor.Text);
             if (xmlDoc.Element("Language").Attribute("iso").Value != "en-US")
                 SerializeXMLFile();
         }
