@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.6.2">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.7.0">
   <Strings>
     <String text="Доступна новая версия: {0}" id="newVersionAvailable" />
     <String text="Необходима установка" id="modsDeploymentNecessary" />
     <String text="Всё установлено" id="modsAllDone" />
+    <String text="Что-то пошло не так, смотрите лог-файлы для получения подробной информации." id="modsFailed" />
     <String text="По-умолчанию" id="modsTableFormatGeneral" />
     <String text="Текстуры" id="modsTableFormatTextures" />
     <String text="Автовыбор" id="modsTableFormatAutoDetect" />
@@ -84,7 +85,7 @@
     Нажмите "Отмена" для отмены сохранения.</Messagebox>
     <Messagebox title="Изменения применены" id="changesApplied">Изменения применены. Вы можете запустить игру.</Messagebox>
     <Messagebox title="Выберите версию игры" id="chooseGameEdition">Пожалуйста выберите вашу версию игры.</Messagebox>
-    <Messagebox title="Fallout76.ini и Fallout76Prefs.ini" id="runGameToGenerateINI">Пожалуйста запустите игру перед использованием этой программы.
+    <Messagebox title="Fallout76.ini и Fallout76Prefs.ini" id="runGameToGenerateINI">Пожалуйста запустите игру перед использованием конфигуратора.
 Это создаст необходимые для настройки файлы.</Messagebox>
     <Messagebox title="Готово" id="oldValuesResetToDefault">Несколько значений восстановлено на дефолтные.
 Это касается только нестабильных значений из предыдущих версий.
@@ -100,8 +101,12 @@
     <Messagebox title="Готово" id="downloadLanguagesFinished">Загруженные языковые файлы: {0}</Messagebox>
     <Messagebox title="Неудача" id="downloadLanguagesFailed">Не удалось загрузить языковые файлы.
 {0}</Messagebox>
+    <Messagebox title="Хотите переключить?" id="msstoreRestartRequired">Для перехода на версию Microsoft Store или обратно необходимо перезапустить конфигуратор.</Messagebox>
+    <Messagebox title="Невозможно запустить игру: {0}" id="msstoreRunExecutableFailed">К сожалению, запустить исполняемый файл напрямую невозможно из-за ограничений "безопасности". Спасибо за это Microsoft. :(</Messagebox>
     <Messagebox title="Готово" id="modsDisabledDone">Моды были отключены и удалены из игры.</Messagebox>
-    <Messagebox title="Готово" id="modsDeployedDone">Mods are deployed.</Messagebox>
+    <Messagebox title="Готово" id="modsDeployedDone">Моды установлены.</Messagebox>
+    <Messagebox title="Что-то пошло не так" id="modsDeploymentFailed">Невозможно установить моды.
+Пожалуйста, проверьте лог-файлы.</Messagebox>
     <Messagebox title="Archive2 не обнаружен" id="modsArchive2Missing">Пожалуйста настройте путь к Archive2 и путь для распаковки архивов *.ba2.</Messagebox>
     <Messagebox title="Не указан путь к игре" id="modsGamePathNotSet">Пожалуйста, укажите путь к игре (папке, где находится Fallout76.exe).</Messagebox>
     <Messagebox title="Неправильный путь" id="modsGamePathInvalid">Неправильный путь к папке с игрой.</Messagebox>
@@ -135,8 +140,12 @@
 Это может занять много времени, в зависимости от размера и количества файлов.
 Вы уверены, что хотите продолжить?</Messagebox>
     <Messagebox title="Готово" id="modsRepairDDSDone">*.dds файлы восстановлены.</Messagebox>
+    <Messagebox title="Отказано в доступе" id="modsAccessDenied">{0}
+Пожалуйста, запустите конфигуратор от имени администратора и повторите попытку.</Messagebox>
     <Messagebox title="Моды всё ещё установлены" id="nwModeEnabledButModsAreDeployed">Вы включили режим Nuclear Winter, но ваши моды все еще установлены.
 Вы хотите отключить их прямо сейчас?</Messagebox>
+    <Messagebox title="Вы хотите включить моды?" id="nwModeDisabledAndModsAreStillDisabled">Вы отключили режим Nuclear Winter, но ваши моды всё ещё отключены.
+Вы хотите включить их сейчас?</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Quick Configuration">
     <Button text="Управление модами" id="buttonManageMods" />
@@ -156,6 +165,7 @@
       </Tab>
       <Tab text="Настройки" id="tabPageSettings">
         <Group text="Варианты запуска" id="groupBoxLaunchOptions">
+          <Label text="Fallout 76 не может быть запущен напрямую, если он установлен через магазин Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
           <Label text="Примечание: введите свои учетные данные для входа в систему на вкладке &quot;Основное&quot;." id="labelLaunchOptionTip" />
           <Radiobutton text="Запускать &quot;Fallout76.exe&quot; напрямую" id="radioButtonLaunchViaExecutable" />
           <Radiobutton text="Запускать через Steam / Bethesda.net (рекомендуется)" id="radioButtonLaunchViaLink" />
@@ -175,7 +185,7 @@
             <Tooltip>Пропускает вопрос резервного копирования при нажатии кнопки "Применить".
 Примечание: При этом резервная копия создаваться НЕ БУДЕТ!</Tooltip>
           </Checkbox>
-          <Checkbox text="Применять изменения при закрытии программы или запуске игры" id="checkBoxAutoApply">
+          <Checkbox text="Применять изменения при закрытии конфигуратора или запуске игры" id="checkBoxAutoApply">
             <Tooltip>Больше не нужно будет нажимать кнопку "Применить".</Tooltip>
           </Checkbox>
         </Group>
@@ -185,26 +195,33 @@
           <Button text="Скачать/обновить языки" id="buttonDownloadLanguages" />
         </Group>
         <Group text="Настройки" id="groupBoxOptions">
+          <Checkbox text="[Экспериментально] Запретить NTFS запись на диск." id="checkBoxDenyNTFSWritePermission">
+            <Tooltip>Это приведет к запрету записи в папку "Fallout 76".
+Используйте, если опция только для чтения не работает.
+
+Затрагивает папку: %Мои документы%\My Games\Fallout 76</Tooltip>
+          </Checkbox>
           <Checkbox text="Использовать несколько версий игры" id="checkBoxMultipleGameEditionsUsed">
             <Tooltip>Поставьте галочку, если вы используете моды более чем для одной версии игры.
 В этом случае sResourceIndexFileList будет сохранен для каждой версии игры отдельно.</Tooltip>
           </Checkbox>
-		<Checkbox text="Режим Nuclear Winter" id="checkBoxNWMode">
+          <Checkbox text="Режим Nuclear Winter" id="checkBoxNWMode">
             <Tooltip>На данный момент переименовывает Fallout76Custom.ini в Fallout76Custom.ini.nwmodebak.</Tooltip>
-        </Checkbox>
-		<Checkbox text="INI только для чтения" id="checkBoxReadOnly">
-		  <Tooltip>Этот вариант сделает все *.ini-файлы доступными только для чтения.
+          </Checkbox>
+          <Checkbox text="INI только для чтения" id="checkBoxReadOnly">
+            <Tooltip>Этот вариант сделает все *.ini-файлы доступными только для чтения.
 	Включите эту функцию, если ваши настройки сбрасываются после запуска игры.
 
 	Затрагивает файлы: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
-		</Checkbox>
-    </Group>
+          </Checkbox>
+        </Group>
         <Button text="Исправить настройки версии v1.3.1 и ниже" id="buttonFixIssuesEarlierVersion" />
-	<Group text="Версия игры" id="groupBoxGameEdition">
+        <Group text="Версия игры" id="groupBoxGameEdition">
+          <Radiobutton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
           <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
-	  <Radiobutton text="Steam" id="radioButtonEditionSteam" />
-	  <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
-	</Group>
+          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
+          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+        </Group>
       </Tab>
       <Tab text="Основное" id="tabPageGeneral">
         <Group text="Камера" id="groupBoxCamera">
@@ -221,7 +238,7 @@
           </Checkbox>
         </Group>
         <Group text="Логин" id="groupBoxLogin">
-          <Label text="Ваши учетные данные сохраняются в Fallout76Custom.ini\nтаким образом, вам не нужно входить в систему, если\n вы запускаете Fallout 76 без лаунчера." id="labelCredentialsExplanation" />
+          <Label text="Ваши учетные данные сохраняются в Fallout76Custom.ini.\nТаким образом, вам не нужно входить в систему, если\n вы запускаете Fallout 76 без лаунчера." id="labelCredentialsExplanation" />
           <Checkbox text="Показать пароль" id="checkBoxShowPassword" />
           <Label text="Пароль:" id="labelPassword" />
           <Label text="Логин:" id="labelUserName" />
@@ -493,6 +510,8 @@
           <Checkbox text="Дождевая окклюзия" id="checkBoxWeatherRainOcclusion">
             <Tooltip>Если эта галочка установлена, дождь не будет отображаться в помещениях и под объектами.
 
+Примечание: При отключении могут возникать графические ошибки. Такие, как белые пятна на экране. Или даже полностью белый экран.
+
 Затрагивает параметры: bRainOcclusion
 Затрагивает файлы: Fallout76.ini</Tooltip>
           </Checkbox>
@@ -677,6 +696,13 @@ Affected files: Fallout76Custom.ini</Tooltip>
         </ListView>
       </Tab>
       <Tab text="Настройки" id="tabPageModsSettings">
+        <Group text="Поведение" id="groupBoxModsBehavior">
+          <Checkbox text="Создавать жесткие ссылки вместо копирования файлов вручную." id="checkBoxModsUseHardlinks">
+            <Tooltip>Может сократить дисковое пространство и время установки.
+Не относится к пакетным архивам.</Tooltip>
+          </Checkbox>
+          <Checkbox text="Разморозить файлы *.ba2 по умолчанию" id="checkBoxAddArchivesAsBundled" />
+        </Group>
         <Group text="Списки" id="groupBoxLists">
           <Button text="Сбросить" id="buttonModsResetTextboxes" />
           <Button text="Применить изменения" id="buttonModsApplyTextBoxes" />
@@ -686,7 +712,7 @@ Affected files: Fallout76Custom.ini</Tooltip>
         </Group>
       </Tab>
     </TabContainer>
-	<Menu id="menuStrip1">
+    <Menu id="menuStrip1">
       <Item text="Файл" id="fileToolStripMenuItem">
         <Item text="Добавить мод" id="addModarchiveToolStripMenuItem">
           <Item text="Из архива" id="fromArchiveToolStripMenuItem" />
