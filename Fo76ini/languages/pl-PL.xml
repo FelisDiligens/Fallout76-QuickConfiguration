@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Polski" iso="pl-PL" author="Gray770" version="1.6.2">
+<Language name="Polski" iso="pl-PL" author="Gray770" version="1.7.0">
   <Strings>
     <String text="Nowsza wersja jest dostępna: {0}" id="newVersionAvailable" />
     <String text="Wdrożenie wymagane" id="modsDeploymentNecessary" />
     <String text="Gotowe" id="modsAllDone" />
+    <String text="Coś poszło nie tak, sprawdź logi." id="modsFailed" />
     <String text="Ogólne" id="modsTableFormatGeneral" />
     <String text="Tekstury" id="modsTableFormatTextures" />
     <String text="Auto" id="modsTableFormatAutoDetect" />
@@ -100,8 +101,12 @@ Niektóre elementy mogą działać nieprawidłowo
     <Messagebox title="Gotowe" id="downloadLanguagesFinished">Pobrane tłumaczenia: {0}</Messagebox>
     <Messagebox title="Niepowodzenie" id="downloadLanguagesFailed">Pobieranie tłumaczeń nie powiodło się.
 {0}</Messagebox>
+    <Messagebox title="Czy na pewno chcesz przełączyć wersje gry?" id="msstoreRestartRequired">Przełączenie się na/z Microsoft Store wymaga restartu narzędzia.</Messagebox>
+    <Messagebox title="Nie można uruchomić gry: {0}" id="msstoreRunExecutableFailed">Niestety, uruchomienie gry przez .exe jest nie możliwe. Thanks Microsoft, we hate it. :(</Messagebox>
     <Messagebox title="Gotowe" id="modsDisabledDone">Mody zostały wyłączone i usunięte z gry.</Messagebox>
     <Messagebox title="Gotowe" id="modsDeployedDone">Mody zostały wdrożone</Messagebox>
+    <Messagebox title="Coś poszło nie tak" id="modsDeploymentFailed">Modyfikacje mogły nie zostać wdrożone.
+Please check the log files.</Messagebox>
     <Messagebox title="Nie można znaleźć Archive2" id="modsArchive2Missing">Nie można znaleźć .\Archive2\Archive2.exe 
 Pobierz te narzędzie jeszcze raz lub pobierz Archive2 samodzielnie</Messagebox>
     <Messagebox title="Ścieżka gry nie wybrana" id="modsGamePathNotSet">Ustaw ścieżke gry (folder z Fallout76.exe).</Messagebox>
@@ -136,11 +141,15 @@ Error message: "{0}".</Messagebox>
 Może to potrwać chwile, zależnie od wagi pliku.
 Czy jesteś pewien że chcesz kontynuować?</Messagebox>
     <Messagebox title="Gotowe" id="modsRepairDDSDone">pliki *.dds zostały naprawione</Messagebox>
-    <Messagebox title="Mody nadal są włączone" id="nwModeEnabledButModsAreDeployed">Włączyłeś tryb Nuclear Winter ale twoje mody nadal są włączone
+    <Messagebox title="Brak dostępu" id="modsAccessDenied">{0}
+Uruchom narzędzie jako administrator i spróbuj ponownie.</Messagebox>
+    <Messagebox title="Mody nadal są włączone" id="nwModeEnabledButModsAreDeployed">Włączyłeś tryb Nuclear Winter ale twoje mody nadal są włączone.
 Czy chcesz je wyłączyć?</Messagebox>
+    <Messagebox title="Czy chcesz włączyć mody?" id="nwModeDisabledAndModsAreStillDisabled">Wyłączyłeś tryb Nuclear Winter lecz twoje mody nadal są wyłączone.
+Czy chcesz je wdrożyć?</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Quick Configuration">
-    <Button text="Zarządzaj modami" id="buttonManageMods" />
+    <Button text="Zarządzaj modyfikacjami" id="buttonManageMods" />
     <Button text="Włącz gre" id="buttonLaunchGame" />
     <Button text="Zastosuj" id="buttonApply" />
     <TabContainer id="tabControl1">
@@ -157,6 +166,7 @@ Czy chcesz je wyłączyć?</Messagebox>
       </Tab>
       <Tab text="Ustawienia" id="tabPageSettings">
         <Group text="Opcje uruchamiania" id="groupBoxLaunchOptions">
+          <Label text="Fallout 76 cannot be run directly, if installed through the Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
           <Label text="Porada: Zapisz swoje dane logowania w zakładce &quot;Ogólne&quot;." id="labelLaunchOptionTip" />
           <Radiobutton text="Włącz gre poprzez &quot;Fallout76.exe&quot; " id="radioButtonLaunchViaExecutable" />
           <Radiobutton text="Uruchom poprzez Steam / Bethesda.net (zalecane)" id="radioButtonLaunchViaLink" />
@@ -186,7 +196,13 @@ UWAGA: Tą drogą narzędzie nie utworzy backupa!</Tooltip>
           <Button text="Pobierz / zaktualizuj tłumaczenie" id="buttonDownloadLanguages" />
         </Group>
         <Group text="Opcje" id="groupBoxOptions">
-          <Checkbox text="Używam więcej niż jedną edycją gry" id="checkBoxMultipleGameEditionsUsed">
+          <Checkbox text="[Experimental] Wyłącz uprawienia zapisu NTFS." id="checkBoxDenyNTFSWritePermission">
+            <Tooltip>Ta opcja wyłączy uprawnienia do edycji foldera "Fallout 76".
+Użyj tego, jeśli opcja read-only nie działa.
+
+Zmiany w: %UserProfile%\Documents\My Games\Fallout 76</Tooltip>
+          </Checkbox>
+          <Checkbox text="Używam więcej niż jedną edycje gry" id="checkBoxMultipleGameEditionsUsed">
             <Tooltip>Zaznacz tą opcje jeśli modyfikujesz więcej niż jedną wersje gry.
 Jeśli zaznaczone linijka "sResourceIndexFileList" zostanie zapisana dla każdej wersji odzielnie.</Tooltip>
           </Checkbox>
@@ -201,6 +217,7 @@ Pliki: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
         </Group>
         <Button text="Napraw ustawienia z wersji v1.3.1 lub wcześniejszych" id="buttonFixIssuesEarlierVersion" />
         <Group text="Wersja gry" id="groupBoxGameEdition">
+          <Radiobutton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
           <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
           <Radiobutton text="Steam" id="radioButtonEditionSteam" />
           <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
@@ -655,7 +672,7 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
       </Tab>
     </TabContainer>
   </Form1>
-  <FormMods title="Zarządzaj modami">
+  <FormMods title="Modyfikacje">
     <Element id="panel1">
       <Button text="Wdróż" id="buttonModsDeploy" />
       <Checkbox text="Wyłącz mody" id="checkBoxDisableMods" />
@@ -670,7 +687,7 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
           <Button text="Przenieść w góre" id="toolStripButtonMoveUp" />
           <Button text="Przenieść w dół" id="toolStripButtonMoveDown" />
           <Button text="Edytuj detale modów" id="toolStripButtonModEdit" />
-          <Button text="Unfreeze" id="toolStripButtonUnfreeze" />
+          <Button text="Odmróź" id="toolStripButtonUnfreeze" />
           <Button text="Otwórz folder modow" id="toolStripButtonModOpenFolder" />
           <Button text="Usuń moda" id="toolStripButtonDeleteMod" />
         </Tool>
@@ -685,6 +702,13 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
         </ListView>
       </Tab>
       <Tab text="Ustawienia" id="tabPageModsSettings">
+        <Group text="Zachowanie" id="groupBoxModsBehavior">
+          <Checkbox text="Utwórz twarde linki zamiast kopiowania plików." id="checkBoxModsUseHardlinks">
+            <Tooltip>Może zwolnić miejsce na dysku oraz skrócić czas wdrażania.
+Nie działa przy zapakowanych archiwum.</Tooltip>
+          </Checkbox>
+          <Checkbox text="Domyślnie odmróź pliki *.ba2 " id="checkBoxAddArchivesAsBundled" />
+        </Group>
         <Group text="Listy" id="groupBoxLists">
           <Button text="Resetuj" id="buttonModsResetTextboxes" />
           <Button text="Zastosuj" id="buttonModsApplyTextBoxes" />
