@@ -509,7 +509,7 @@ namespace Fo76ini
         public static List<int> ParseVersion(String versionString)
         {
             List<int> version = new List<int>();
-            foreach (String chunk in versionString.Trim().Split(new char[] { '.', 'h', ' ' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (String chunk in versionString.Trim().Split(new char[] { 'v', '.', 'h', ' ' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 bool isNumeric = int.TryParse(chunk.Trim(), out int n);
                 if (isNumeric)
