@@ -266,6 +266,14 @@ Affected files: Fallout76Custom.ini</value>
   <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>107, 17</value>
   </metadata>
+  <data name="checkBoxFixHUDFor5_4and4_3.ToolTip" xml:space="preserve">
+    <value>Fixes hidden / borked lock picking screen for 5:4 and 4:3 screens.
+
+Untested
+
+Affected values: fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
+Affected files: Fallout76Custom.ini</value>
+  </data>
   <metadata name="timerCheckFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>221, 17</value>
   </metadata>

@@ -217,6 +217,7 @@
             this.buttonFixIssuesEarlierVersion = new System.Windows.Forms.Button();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
+            this.checkBoxFixHUDFor5_4and4_3 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).BeginInit();
@@ -1845,6 +1846,7 @@
             // 
             // tabPageDisplay
             // 
+            this.tabPageDisplay.Controls.Add(this.checkBoxFixHUDFor5_4and4_3);
             this.tabPageDisplay.Controls.Add(this.buttonDetectResolution);
             this.tabPageDisplay.Controls.Add(this.checkBoxAlwaysActive);
             this.tabPageDisplay.Controls.Add(this.checkBoxTopMostWindow);
@@ -2702,6 +2704,17 @@
             this.openFileDialogGamePath.Filter = "Fallout 76 executable|Fallout76.exe;Project76_GamePass.exe";
             this.openFileDialogGamePath.FilterIndex = 2;
             // 
+            // checkBoxFixHUDFor5_4and4_3
+            // 
+            this.checkBoxFixHUDFor5_4and4_3.AutoSize = true;
+            this.checkBoxFixHUDFor5_4and4_3.Location = new System.Drawing.Point(9, 188);
+            this.checkBoxFixHUDFor5_4and4_3.Name = "checkBoxFixHUDFor5_4and4_3";
+            this.checkBoxFixHUDFor5_4and4_3.Size = new System.Drawing.Size(191, 17);
+            this.checkBoxFixHUDFor5_4and4_3.TabIndex = 24;
+            this.checkBoxFixHUDFor5_4and4_3.Text = "Fix HUD for 5:4 and 4:3 resolutions";
+            this.toolTip.SetToolTip(this.checkBoxFixHUDFor5_4and4_3, resources.GetString("checkBoxFixHUDFor5_4and4_3.ToolTip"));
+            this.checkBoxFixHUDFor5_4and4_3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2994,6 +3007,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelLaunchOptionMSStoreNotice;
         private System.Windows.Forms.Button buttonOpenConfigPath;
+        private System.Windows.Forms.CheckBox checkBoxFixHUDFor5_4and4_3;
     }
 }
 
