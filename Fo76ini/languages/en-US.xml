@@ -4,7 +4,7 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.7.0">
+<Language name="English (USA)" iso="en-US" version="1.7.1">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Deployment necessary" id="modsDeploymentNecessary" />
@@ -170,6 +170,7 @@ Do you want to deploy them now?</Messagebox>
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
       <Tab text="Settings" id="tabPageSettings">
+        <Button text="Open configuration folder" id="buttonOpenConfigPath" />
         <Group text="Launch options" id="groupBoxLaunchOptions">
           <Label text="Fallout 76 cannot be run directly, if installed through the Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
           <Label text="Tip: Enter your login credentials under the &quot;General&quot; tab." id="labelLaunchOptionTip" />
@@ -717,7 +718,7 @@ Affected files: Fallout76Prefs.ini</Tooltip>
       </Tab>
       <Tab text="Settings" id="tabPageModsSettings">
         <Group text="Behavior" id="groupBoxModsBehavior">
-          <Checkbox text="[Experimental] Make hard links instead of copying files manually." id="checkBoxModsUseHardlinks">
+          <Checkbox text="Make hard links instead of copying files manually." id="checkBoxModsUseHardlinks">
             <Tooltip>May reduce disk space and deployment time.
 Does not apply to bundled archives.</Tooltip>
           </Checkbox>
@@ -749,9 +750,17 @@ Does not apply to bundled archives.</Tooltip>
       </Item>
       <Item text="Tools" id="toolsToolStripMenuItem">
         <Item text="Repair all *.dds files" id="repairddsFilesToolStripMenuItem" />
+        <Item text="Archive2" id="archive2ToolStripMenuItem">
+          <Item text="Open Archive2" id="openArchive2ToolStripMenuItem" />
+          <Item text="Explore *.ba2 archive" id="exploreba2ArchiveToolStripMenuItem" />
+        </Item>
       </Item>
       <Item text="Help" id="helpToolStripMenuItem">
         <Item text="Show README" id="showREADMEToolStripMenuItem" />
+        <Item text="Log files" id="logFilesToolStripMenuItem">
+          <Item text="Show modmanager.log.txt" id="showModmanagerlogtxtToolStripMenuItem" />
+          <Item text="Show archive2.log.txt" id="showArchive2logtxtToolStripMenuItem" />
+        </Item>
       </Item>
     </Menu>
   </FormMods>
@@ -767,7 +776,7 @@ Does not apply to bundled archives.</Tooltip>
         <Radiobutton text="Custom" id="radioButtonSeparateArchiveCustom" />
         <Radiobutton text="Sounds" id="radioButtonSeparateArchiveSounds" />
         <Radiobutton text="Textures (*.dds files)" id="radioButtonSeparateArchiveTextures" />
-        <Radiobutton text="General / Interface" id="radioButtonSeparateArchiveGeneral" />
+        <Radiobutton text="General / Interface / Materials" id="radioButtonSeparateArchiveGeneral" />
       </Group>
       <Label text="Installation options are disabled, because the mod is frozen." id="labelModUnfreeze" />
       <Button text="Unfreeze" id="buttonModUnfreeze" />
