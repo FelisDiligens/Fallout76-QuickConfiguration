@@ -1890,10 +1890,15 @@ namespace Fo76ini
                         if (!this.whitelistedDlls.Contains(fileName.ToLower()))
                         {
                             if (!File.Exists(filePath + ".nwmode"))
+                            {
                                 File.Move(filePath, filePath + ".nwmode");
-                            /*else
-                                File.Delete(filePath);*/
-                            this.logFile.WriteLine($"      Renamed {fileName}");
+                                this.logFile.WriteLine($"      Renamed {fileName}");
+                            }
+                            else
+                            {
+                                // File.Delete(filePath);
+                                this.logFile.WriteLine($"      Failed to rename {fileName}");
+                            }
                         }
                     }
                 }
@@ -1907,8 +1912,17 @@ namespace Fo76ini
                         foreach (String filePath in files)
                         {
                             String fileName = Path.GetFileName(filePath);
-                            File.Move(filePath, Path.Combine(Path.GetDirectoryName(filePath), fileName.Replace(".dll.nwmode", ".dll")));
-                            this.logFile.WriteLine($"      Renamed {fileName}");
+                            String originalFilePath = Path.Combine(Path.GetDirectoryName(filePath), fileName.Replace(".dll.nwmode", ".dll"));
+                            if (!File.Exists(originalFilePath))
+                            {
+                                File.Move(filePath, originalFilePath);
+                                this.logFile.WriteLine($"      Renamed {fileName}");
+                            }
+                            else
+                            {
+                                // File.Delete(filePath);
+                                this.logFile.WriteLine($"      Failed to rename {fileName}");
+                            }
                         }
                     }
                 }
