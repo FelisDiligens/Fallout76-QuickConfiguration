@@ -821,7 +821,9 @@ namespace Fo76ini
         // Help > Show README
         private void showREADMEToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/mods/546"); // https://felisdiligens.github.io/Fo76ini/ManageMods.html
+            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/articles/40");
+            // https://www.nexusmods.com/fallout76/mods/546
+            // https://felisdiligens.github.io/Fo76ini/ManageMods.html
         }
 
         // Tools > Repair *.dds files
