@@ -867,13 +867,15 @@ namespace Fo76ini
         // Help > Log files > Show modmanager.log.txt
         private void showModmanagerlogtxtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Utils.OpenNotepad(ManagedMods.Instance.logFile.GetFilePath());
+            if (File.Exists(ManagedMods.Instance.logFile.GetFilePath()))
+                Utils.OpenNotepad(ManagedMods.Instance.logFile.GetFilePath());
         }
 
         // Help > Log files > Show archive2.log.txt
         private void showArchive2logtxtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Utils.OpenNotepad(Archive2.logFile.GetFilePath());
+            if (File.Exists(Archive2.logFile.GetFilePath()))
+                Utils.OpenNotepad(Archive2.logFile.GetFilePath());
         }
 
 

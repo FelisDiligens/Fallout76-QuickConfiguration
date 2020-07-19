@@ -2128,6 +2128,21 @@ namespace Fo76ini
             }
         }
 
+        private static void CallParallel(String arguments)
+        {
+            if (Archive2.archive2Path == null)
+                return;
+
+            using (Process proc = new Process())
+            {
+                proc.StartInfo.UseShellExecute = false;
+                proc.StartInfo.FileName = Archive2.archive2Path;
+                proc.StartInfo.Arguments = arguments;
+                proc.StartInfo.CreateNoWindow = true;
+                proc.Start();
+            }
+        }
+
         public static void Extract(String ba2Archive, String outputFolder)
         {
             Archive2.Call($"\"{ba2Archive}\" -extract=\"{outputFolder}\" -quiet");
@@ -2135,12 +2150,12 @@ namespace Fo76ini
 
         public static void Explore(String ba2Archive)
         {
-            Archive2.Call($"\"{ba2Archive}\"");
+            Archive2.CallParallel($"\"{ba2Archive}\"");
         }
 
         public static void Explore()
         {
-            Archive2.Call("");
+            Archive2.CallParallel("");
         }
 
         public static void Create(String ba2Archive, String folder)

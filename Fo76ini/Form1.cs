@@ -15,7 +15,7 @@ namespace Fo76ini
 {
     public partial class Form1 : Form
     {
-        public const String VERSION = "1.7.0";
+        public const String VERSION = "1.7.1";
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
@@ -1278,6 +1278,11 @@ namespace Fo76ini
 
             else if (ManagedMods.Instance.GameEdition == GameEdition.MSStore)
                 this.labelLaunchOptionMSStoreNotice.Visible = this.radioButtonLaunchViaExecutable.Checked;
+        }
+
+        private void buttonOpenConfigPath_Click(object sender, EventArgs e)
+        {
+            Utils.OpenExplorer(Form1.AppConfigFolder);
         }
     }
 }
