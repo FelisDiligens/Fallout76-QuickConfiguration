@@ -96,6 +96,7 @@
             this.checkBoxSkipBackupQuestion = new System.Windows.Forms.CheckBox();
             this.checkBoxMultipleGameEditionsUsed = new System.Windows.Forms.CheckBox();
             this.checkBoxDenyNTFSWritePermission = new System.Windows.Forms.CheckBox();
+            this.checkBoxFixHUDFor5_4and4_3 = new System.Windows.Forms.CheckBox();
             this.checkBoxIgnoreUpdates = new System.Windows.Forms.CheckBox();
             this.checkBoxOpenManageModsOnLaunch = new System.Windows.Forms.CheckBox();
             this.buttonLaunchGame = new System.Windows.Forms.Button();
@@ -217,7 +218,6 @@
             this.buttonFixIssuesEarlierVersion = new System.Windows.Forms.Button();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
-            this.checkBoxFixHUDFor5_4and4_3 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).BeginInit();
@@ -1138,6 +1138,17 @@
         "d-only option doesn\'t work.\r\n\r\nAffected folder: %UserProfile%\\Documents\\My Games" +
         "\\Fallout 76");
             this.checkBoxDenyNTFSWritePermission.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxFixHUDFor5_4and4_3
+            // 
+            this.checkBoxFixHUDFor5_4and4_3.AutoSize = true;
+            this.checkBoxFixHUDFor5_4and4_3.Location = new System.Drawing.Point(9, 188);
+            this.checkBoxFixHUDFor5_4and4_3.Name = "checkBoxFixHUDFor5_4and4_3";
+            this.checkBoxFixHUDFor5_4and4_3.Size = new System.Drawing.Size(225, 17);
+            this.checkBoxFixHUDFor5_4and4_3.TabIndex = 24;
+            this.checkBoxFixHUDFor5_4and4_3.Text = "Fix HUD for 5:4 and 4:3 resolutions (partly)";
+            this.toolTip.SetToolTip(this.checkBoxFixHUDFor5_4and4_3, resources.GetString("checkBoxFixHUDFor5_4and4_3.ToolTip"));
+            this.checkBoxFixHUDFor5_4and4_3.UseVisualStyleBackColor = true;
             // 
             // checkBoxIgnoreUpdates
             // 
@@ -2246,6 +2257,7 @@
             // 
             // labelGameEdition
             // 
+            this.labelGameEdition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelGameEdition.BackColor = System.Drawing.Color.Black;
             this.labelGameEdition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGameEdition.ForeColor = System.Drawing.Color.White;
@@ -2258,6 +2270,7 @@
             // 
             // pictureBoxGameEdition
             // 
+            this.pictureBoxGameEdition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxGameEdition.BackColor = System.Drawing.Color.Black;
             this.pictureBoxGameEdition.Image = global::Fo76ini.Properties.Resources.question_mark;
             this.pictureBoxGameEdition.Location = new System.Drawing.Point(6, 367);
@@ -2270,7 +2283,7 @@
             // 
             // groupBoxUpdate
             // 
-            this.groupBoxUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBoxUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxUpdate.Controls.Add(this.labelNewVersion);
             this.groupBoxUpdate.Controls.Add(this.buttonUpdateNow);
@@ -2704,17 +2717,6 @@
             this.openFileDialogGamePath.Filter = "Fallout 76 executable|Fallout76.exe;Project76_GamePass.exe";
             this.openFileDialogGamePath.FilterIndex = 2;
             // 
-            // checkBoxFixHUDFor5_4and4_3
-            // 
-            this.checkBoxFixHUDFor5_4and4_3.AutoSize = true;
-            this.checkBoxFixHUDFor5_4and4_3.Location = new System.Drawing.Point(9, 188);
-            this.checkBoxFixHUDFor5_4and4_3.Name = "checkBoxFixHUDFor5_4and4_3";
-            this.checkBoxFixHUDFor5_4and4_3.Size = new System.Drawing.Size(191, 17);
-            this.checkBoxFixHUDFor5_4and4_3.TabIndex = 24;
-            this.checkBoxFixHUDFor5_4and4_3.Text = "Fix HUD for 5:4 and 4:3 resolutions";
-            this.toolTip.SetToolTip(this.checkBoxFixHUDFor5_4and4_3, resources.GetString("checkBoxFixHUDFor5_4and4_3.ToolTip"));
-            this.checkBoxFixHUDFor5_4and4_3.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2728,7 +2730,6 @@
             this.MinimumSize = new System.Drawing.Size(440, 600);
             this.Name = "Form1";
             this.Text = "Fallout 76 Quick Configuration";
-            this.toolTip.SetToolTip(this, "5");
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).EndInit();
