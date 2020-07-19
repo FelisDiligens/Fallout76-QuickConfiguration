@@ -294,6 +294,17 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
         </Group>
       </Tab>
       <Tab text="Anzeige" id="tabPageDisplay">
+        <Checkbox text="Behebe HUD für 5:4 und 4:3 Auflösung (zum Teil)" id="checkBoxFixHUDFor5_4and4_3">
+          <Tooltip>Behebt verstecktes / falsch dargestelltes
+  * Schlösser knacken und
+  * Power Armor HUD
+für 5:4 und 4:3 Bildschirme.
+
+Größtenteils ungetestet.
+
+Betroffene Werte: fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+        </Checkbox>
         <Button text="Auflösung automatisch erkennen" id="buttonDetectResolution" />
         <Checkbox text="Immer aktiv" id="checkBoxAlwaysActive">
           <Tooltip>Deaktiviere das, wenn du möchtest, dass das Spiel pausiert, wenn es nicht das aktive Fenster ist.

@@ -294,6 +294,17 @@ Affected files: Fallout76Custom.ini</Tooltip>
         </Group>
       </Tab>
       <Tab text="Display" id="tabPageDisplay">
+        <Checkbox text="Fix HUD for 5:4 and 4:3 resolutions (partly)" id="checkBoxFixHUDFor5_4and4_3">
+          <Tooltip>Fixes hidden / borked
+  * lock picking screen and
+  * Power Armor HUD
+for 5:4 and 4:3 screens.
+
+Mostly untested.
+
+Affected values: fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
+Affected files: Fallout76Custom.ini</Tooltip>
+        </Checkbox>
         <Button text="Detect resolution" id="buttonDetectResolution" />
         <Checkbox text="Always active" id="checkBoxAlwaysActive">
           <Tooltip>Disable this if you want the game to pause if another window is in front.
