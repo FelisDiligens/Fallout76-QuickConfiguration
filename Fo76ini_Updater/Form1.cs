@@ -63,6 +63,8 @@ namespace Fo76ini_Updater
 
         private void Updater_Load(object sender, EventArgs e)
         {
+            this.pictureBoxLoading.Visible = false;
+
             //configPath = Path.GetFullPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration"));
             configPath = Path.GetFullPath(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration"));
             iniPath = Path.Combine(configPath, "config.ini");
@@ -71,7 +73,7 @@ namespace Fo76ini_Updater
             if (config["Updater"]["sInstallationPath"] == null)
             {
                 FailState("Please run the updater through Fo76ini.exe.");
-                Colapse();
+                Collapse();
                 return;
             }
 
@@ -271,7 +273,7 @@ namespace Fo76ini_Updater
 
         private void DoUpdate()
         {
-            Invoke(Colapse);
+            Invoke(Collapse);
             log.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------");
             log.WriteTimeStamp();
 
@@ -279,6 +281,8 @@ namespace Fo76ini_Updater
             Invoke(() => SetLabel("Waiting for the tool to exit...", Color.DimGray));
             while (Utils.IsProcessRunning("Fo76ini"))
                 Thread.Sleep(500);
+
+            Invoke(() => this.pictureBoxLoading.Visible = true);
             Invoke(() => SetLabel("Updating, please wait...", Color.Black));
 
             // Download
@@ -380,10 +384,12 @@ namespace Fo76ini_Updater
             log.WriteLine("Update finished\n\n");
             Invoke(() => SetLabel("Update finished", Color.ForestGreen));
             Invoke(Expand);
+            Invoke(() => this.pictureBoxLoading.Visible = false);
         }
 
         private void FailState(String text, Exception ex)
         {
+            this.pictureBoxLoading.Visible = false;
             log.WriteLine(ex);
             Expand();
             SetLabel(text, Color.Red);
@@ -392,6 +398,7 @@ namespace Fo76ini_Updater
 
         private void FailState(String text)
         {
+            this.pictureBoxLoading.Visible = false;
             Expand();
             SetLabel(text, Color.Red);
             this.buttonTryAgainAdmin.Visible = true;
@@ -420,7 +427,7 @@ namespace Fo76ini_Updater
             this.buttonStartTool.Enabled = true;
         }
 
-        private void Colapse()
+        private void Collapse()
         {
             this.MaximumSize = this.MinimumSize;
             this.Size = this.MinimumSize;

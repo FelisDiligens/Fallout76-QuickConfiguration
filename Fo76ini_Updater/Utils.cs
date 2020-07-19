@@ -102,5 +102,34 @@ namespace Fo76ini_Updater
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
             return dtDateTime;
         }
+
+        public static List<int> ParseVersion(String versionString)
+        {
+            List<int> version = new List<int>();
+            foreach (String chunk in versionString.Trim().Split(new char[] { 'v', '.', 'h', ' ' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                bool isNumeric = int.TryParse(chunk.Trim(), out int n);
+                if (isNumeric)
+                    version.Add(Convert.ToInt32(n));
+                else
+                    version.Add(0);
+            }
+            while (version.Count < 4)
+                version.Add(0);
+            return version; // "1.3.1h2" => { 1, 3, 1, 2 }
+        }
+
+        public static int CompareVersions(String ver1Str, String ver2Str)
+        {
+            var ver1 = ParseVersion(ver1Str);
+            var ver2 = ParseVersion(ver2Str);
+            return (ver1[0] * 1000000 + ver1[1] * 10000 + ver1[2] * 100 + ver1[3]) - (ver2[0] * 1000000 + ver2[1] * 10000 + ver2[2] * 100 + ver2[3]);
+            /*for (int i = 0; i < 4; i++)
+            {
+                if (ver1[i] != ver2[i])
+                    return ver1[i] - ver2[i];
+            }
+            return 0;*/
+        }
     }
 }

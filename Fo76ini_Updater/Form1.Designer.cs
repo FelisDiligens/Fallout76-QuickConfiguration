@@ -32,6 +32,8 @@
             this.buttonStartTool = new System.Windows.Forms.Button();
             this.labelStatus = new System.Windows.Forms.Label();
             this.buttonTryAgainAdmin = new System.Windows.Forms.Button();
+            this.pictureBoxLoading = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoading)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStartTool
@@ -64,11 +66,21 @@
             this.buttonTryAgainAdmin.UseVisualStyleBackColor = true;
             this.buttonTryAgainAdmin.Click += new System.EventHandler(this.buttonTryAgainAdmin_Click);
             // 
+            // pictureBoxLoading
+            // 
+            this.pictureBoxLoading.Image = global::Fo76ini_Updater.Properties.Resources.Spinner_1_4s_24px;
+            this.pictureBoxLoading.Location = new System.Drawing.Point(12, 30);
+            this.pictureBoxLoading.Name = "pictureBoxLoading";
+            this.pictureBoxLoading.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxLoading.TabIndex = 3;
+            this.pictureBoxLoading.TabStop = false;
+            // 
             // Updater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 141);
+            this.Controls.Add(this.pictureBoxLoading);
             this.Controls.Add(this.buttonTryAgainAdmin);
             this.Controls.Add(this.labelStatus);
             this.Controls.Add(this.buttonStartTool);
@@ -79,6 +91,7 @@
             this.Name = "Updater";
             this.Text = "Updater";
             this.Load += new System.EventHandler(this.Updater_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoading)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -88,6 +101,7 @@
         private System.Windows.Forms.Button buttonStartTool;
         private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.Button buttonTryAgainAdmin;
+        private System.Windows.Forms.PictureBox pictureBoxLoading;
     }
 }
 
