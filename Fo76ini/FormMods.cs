@@ -84,6 +84,7 @@ namespace Fo76ini
                 bool enabled = ManagedMods.Instance.isModEnabled(i);
 
                 var type = new ListViewItem.ListViewSubItem();
+                //var size = new ListViewItem.ListViewSubItem();
                 var format = new ListViewItem.ListViewSubItem();
                 var archiveName = new ListViewItem.ListViewSubItem();
                 var rootDir = new ListViewItem.ListViewSubItem();
@@ -108,6 +109,20 @@ namespace Fo76ini
                 /*
                  * Fill sub-items
                  */
+
+                // Size?
+                /*long folderSize = Utils.GetSizeInBytes(mod.GetManagedPath());
+                size.Text = Utils.GetFormatedSize(folderSize);
+                if (folderSize >= 1073741824) // > 1 GiB
+                    size.ForeColor = Color.DarkRed;
+                else if (folderSize >= 209715200) // > 200 MiB
+                    size.ForeColor = Color.OrangeRed;
+                else if (folderSize >= 104857600) // > 100 MiB
+                    size.ForeColor = Color.DarkOrange;
+                else if (folderSize >= 10485760) // > 10 MiB
+                    size.ForeColor = Color.Goldenrod;
+                else
+                    size.ForeColor = Color.DarkGreen;*/
 
                 // Frozen?
                 if (mod.isFrozen())
@@ -244,6 +259,7 @@ namespace Fo76ini
                 modItem.UseItemStyleForSubItems = false;
                 modItem.ForeColor = enabled ? Color.DarkGreen : Color.DarkRed;
                 modItem.SubItems.Add(type);
+                //modItem.SubItems.Add(size);
                 modItem.SubItems.Add(rootDir);
                 modItem.SubItems.Add(archiveName);
                 modItem.SubItems.Add(format);
@@ -803,12 +819,7 @@ namespace Fo76ini
                         f.WriteLine("    -> " + conflictingFile);
                 }
             }
-            ProcessStartInfo startInfo = new ProcessStartInfo
-            {
-                FileName = "notepad.exe",
-                Arguments = tempFile
-            };
-            Process.Start(startInfo);
+            Utils.OpenNotepad(tempFile);
         }
 
 
@@ -816,14 +827,6 @@ namespace Fo76ini
         private void reloadUIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.UpdateUI();
-        }
-
-        // Help > Show README
-        private void showREADMEToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/articles/40");
-            // https://www.nexusmods.com/fallout76/mods/546
-            // https://felisdiligens.github.io/Fo76ini/ManageMods.html
         }
 
         // Tools > Repair *.dds files
@@ -836,6 +839,41 @@ namespace Fo76ini
                 thread.IsBackground = true;
                 thread.Start();
             }
+        }
+
+        // Tools > Archive2 > Open Archive2
+        private void openArchive2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Archive2.Explore();
+        }
+
+        // Tools > Archive2 > Explore *.ba2 archive
+        private void exploreba2ArchiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.openFileDialogBA2.ShowDialog() == DialogResult.OK)
+            {
+                Archive2.Explore(this.openFileDialogBA2.FileName);
+            }
+        }
+
+        // Help > Show README
+        private void showREADMEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/articles/40");
+            // https://www.nexusmods.com/fallout76/mods/546
+            // https://felisdiligens.github.io/Fo76ini/ManageMods.html
+        }
+
+        // Help > Log files > Show modmanager.log.txt
+        private void showModmanagerlogtxtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utils.OpenNotepad(ManagedMods.Instance.logFile.GetFilePath());
+        }
+
+        // Help > Log files > Show archive2.log.txt
+        private void showArchive2logtxtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utils.OpenNotepad(Archive2.logFile.GetFilePath());
         }
 
 

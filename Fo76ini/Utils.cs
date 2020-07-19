@@ -174,6 +174,51 @@ namespace Fo76ini
             return newFullPath;
         }
 
+        public static long GetSizeInBytes(string path)
+        {
+            if (File.Exists(path))
+            {
+                FileInfo info = new FileInfo(path);
+                return info.Length;
+            }
+
+            if (!Directory.Exists(path))
+                throw new DirectoryNotFoundException(path);
+
+            long totalFolderSize = 0;
+
+            IEnumerable<String> files = Directory.GetFiles(path);
+            foreach (String filePath in files)
+            {
+                FileInfo info = new FileInfo(filePath);
+                totalFolderSize += info.Length;
+            }
+
+            IEnumerable<String> folders = Directory.GetDirectories(path);
+            foreach (String folderPath in folders)
+            {
+                totalFolderSize += GetSizeInBytes(folderPath);
+            }
+
+            return totalFolderSize;
+        }
+
+        // https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net
+        // Copy-paste because, I'm lazy. Don't jugde me! :P
+        public static String GetFormatedSize(long size)
+        {
+            string[] sizes = { "B", "KB", "MB", "GB", "TB" };
+            double len = (double)size;
+            int order = 0;
+            while (len >= 1024 && order < sizes.Length - 1)
+            {
+                order++;
+                len = len / 1024;
+            }
+
+            return String.Format("{0:0.#} {1}", len, sizes[order]);
+        }
+
         /// <summary>
         /// Clamps the value between min and max.
         /// </summary>
@@ -208,6 +253,23 @@ namespace Fo76ini
             else
             {
                 throw new FileNotFoundException($"Directory \"{path}\" does not exist!");
+            }
+        }
+
+        public static void OpenNotepad(String path)
+        {
+            if (File.Exists(path))
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = "notepad.exe",
+                    Arguments = path
+                };
+                Process.Start(startInfo);
+            }
+            else
+            {
+                throw new FileNotFoundException($"File \"{path}\" does not exist!");
             }
         }
 

@@ -44,6 +44,9 @@
             this.reloadUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.repairddsFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.archive2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openArchive2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exploreba2ArchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showREADMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progressBarMods = new System.Windows.Forms.ProgressBar();
@@ -93,6 +96,9 @@
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialogBA2 = new System.Windows.Forms.OpenFileDialog();
+            this.logFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showModmanagerlogtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showArchive2logtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -203,7 +209,8 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.repairddsFilesToolStripMenuItem});
+            this.repairddsFilesToolStripMenuItem,
+            this.archive2ToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -211,14 +218,38 @@
             // repairddsFilesToolStripMenuItem
             // 
             this.repairddsFilesToolStripMenuItem.Name = "repairddsFilesToolStripMenuItem";
-            this.repairddsFilesToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.repairddsFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.repairddsFilesToolStripMenuItem.Text = "Repair all *.dds files";
             this.repairddsFilesToolStripMenuItem.Click += new System.EventHandler(this.repairddsFilesToolStripMenuItem_Click);
+            // 
+            // archive2ToolStripMenuItem
+            // 
+            this.archive2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openArchive2ToolStripMenuItem,
+            this.exploreba2ArchiveToolStripMenuItem});
+            this.archive2ToolStripMenuItem.Name = "archive2ToolStripMenuItem";
+            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.archive2ToolStripMenuItem.Text = "Archive2";
+            // 
+            // openArchive2ToolStripMenuItem
+            // 
+            this.openArchive2ToolStripMenuItem.Name = "openArchive2ToolStripMenuItem";
+            this.openArchive2ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.openArchive2ToolStripMenuItem.Text = "Open Archive2";
+            this.openArchive2ToolStripMenuItem.Click += new System.EventHandler(this.openArchive2ToolStripMenuItem_Click);
+            // 
+            // exploreba2ArchiveToolStripMenuItem
+            // 
+            this.exploreba2ArchiveToolStripMenuItem.Name = "exploreba2ArchiveToolStripMenuItem";
+            this.exploreba2ArchiveToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.exploreba2ArchiveToolStripMenuItem.Text = "Explore *.ba2 archive";
+            this.exploreba2ArchiveToolStripMenuItem.Click += new System.EventHandler(this.exploreba2ArchiveToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showREADMEToolStripMenuItem});
+            this.showREADMEToolStripMenuItem,
+            this.logFilesToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
@@ -539,7 +570,7 @@
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
             this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 6);
             this.groupBoxModsBehavior.Name = "groupBoxModsBehavior";
-            this.groupBoxModsBehavior.Size = new System.Drawing.Size(480, 69);
+            this.groupBoxModsBehavior.Size = new System.Drawing.Size(480, 72);
             this.groupBoxModsBehavior.TabIndex = 60;
             this.groupBoxModsBehavior.TabStop = false;
             this.groupBoxModsBehavior.Text = "Behavior";
@@ -579,9 +610,9 @@
             this.groupBoxLists.Controls.Add(this.labelsResourceIndexFileList);
             this.groupBoxLists.Controls.Add(this.textBoxsResourceArchive2List);
             this.groupBoxLists.Controls.Add(this.labelsResourceArchive2List);
-            this.groupBoxLists.Location = new System.Drawing.Point(6, 81);
+            this.groupBoxLists.Location = new System.Drawing.Point(6, 84);
             this.groupBoxLists.Name = "groupBoxLists";
-            this.groupBoxLists.Size = new System.Drawing.Size(480, 357);
+            this.groupBoxLists.Size = new System.Drawing.Size(480, 354);
             this.groupBoxLists.TabIndex = 59;
             this.groupBoxLists.TabStop = false;
             this.groupBoxLists.Text = "Lists";
@@ -589,7 +620,7 @@
             // buttonModsResetTextboxes
             // 
             this.buttonModsResetTextboxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModsResetTextboxes.Location = new System.Drawing.Point(243, 328);
+            this.buttonModsResetTextboxes.Location = new System.Drawing.Point(243, 325);
             this.buttonModsResetTextboxes.Name = "buttonModsResetTextboxes";
             this.buttonModsResetTextboxes.Size = new System.Drawing.Size(98, 23);
             this.buttonModsResetTextboxes.TabIndex = 60;
@@ -600,7 +631,7 @@
             // buttonModsApplyTextBoxes
             // 
             this.buttonModsApplyTextBoxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModsApplyTextBoxes.Location = new System.Drawing.Point(347, 328);
+            this.buttonModsApplyTextBoxes.Location = new System.Drawing.Point(347, 325);
             this.buttonModsApplyTextBoxes.Name = "buttonModsApplyTextBoxes";
             this.buttonModsApplyTextBoxes.Size = new System.Drawing.Size(127, 23);
             this.buttonModsApplyTextBoxes.TabIndex = 59;
@@ -616,13 +647,13 @@
             this.textBoxsResourceIndexFileList.Location = new System.Drawing.Point(210, 37);
             this.textBoxsResourceIndexFileList.Multiline = true;
             this.textBoxsResourceIndexFileList.Name = "textBoxsResourceIndexFileList";
-            this.textBoxsResourceIndexFileList.Size = new System.Drawing.Size(264, 285);
+            this.textBoxsResourceIndexFileList.Size = new System.Drawing.Size(264, 282);
             this.textBoxsResourceIndexFileList.TabIndex = 54;
             // 
             // buttonModsCleanLists
             // 
             this.buttonModsCleanLists.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModsCleanLists.Location = new System.Drawing.Point(6, 328);
+            this.buttonModsCleanLists.Location = new System.Drawing.Point(6, 325);
             this.buttonModsCleanLists.Name = "buttonModsCleanLists";
             this.buttonModsCleanLists.Size = new System.Drawing.Size(98, 23);
             this.buttonModsCleanLists.TabIndex = 58;
@@ -646,7 +677,7 @@
             this.textBoxsResourceArchive2List.Location = new System.Drawing.Point(6, 37);
             this.textBoxsResourceArchive2List.Multiline = true;
             this.textBoxsResourceArchive2List.Name = "textBoxsResourceArchive2List";
-            this.textBoxsResourceArchive2List.Size = new System.Drawing.Size(198, 285);
+            this.textBoxsResourceArchive2List.Size = new System.Drawing.Size(198, 282);
             this.textBoxsResourceArchive2List.TabIndex = 57;
             // 
             // labelsResourceArchive2List
@@ -693,6 +724,29 @@
             this.openFileDialogBA2.DefaultExt = "ba2";
             this.openFileDialogBA2.Filter = "Archive2|*.ba2";
             this.openFileDialogBA2.Title = "Add *.ba2 archive.";
+            // 
+            // logFilesToolStripMenuItem
+            // 
+            this.logFilesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showModmanagerlogtxtToolStripMenuItem,
+            this.showArchive2logtxtToolStripMenuItem});
+            this.logFilesToolStripMenuItem.Name = "logFilesToolStripMenuItem";
+            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logFilesToolStripMenuItem.Text = "Log files";
+            // 
+            // showModmanagerlogtxtToolStripMenuItem
+            // 
+            this.showModmanagerlogtxtToolStripMenuItem.Name = "showModmanagerlogtxtToolStripMenuItem";
+            this.showModmanagerlogtxtToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.showModmanagerlogtxtToolStripMenuItem.Text = "Show modmanager.log.txt";
+            this.showModmanagerlogtxtToolStripMenuItem.Click += new System.EventHandler(this.showModmanagerlogtxtToolStripMenuItem_Click);
+            // 
+            // showArchive2logtxtToolStripMenuItem
+            // 
+            this.showArchive2logtxtToolStripMenuItem.Name = "showArchive2logtxtToolStripMenuItem";
+            this.showArchive2logtxtToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.showArchive2logtxtToolStripMenuItem.Text = "Show archive2.log.txt";
+            this.showArchive2logtxtToolStripMenuItem.Click += new System.EventHandler(this.showArchive2logtxtToolStripMenuItem_Click);
             // 
             // FormMods
             // 
@@ -794,5 +848,11 @@
         private System.Windows.Forms.GroupBox groupBoxModsBehavior;
         private System.Windows.Forms.CheckBox checkBoxAddArchivesAsBundled;
         private System.Windows.Forms.CheckBox checkBoxModsUseHardlinks;
+        private System.Windows.Forms.ToolStripMenuItem archive2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openArchive2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exploreba2ArchiveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showModmanagerlogtxtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showArchive2logtxtToolStripMenuItem;
     }
 }

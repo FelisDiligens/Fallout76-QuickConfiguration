@@ -2044,38 +2044,17 @@ namespace Fo76ini
 
     public class Archive2
     {
-        private static Log logFile;
+        public static Log logFile;
         private static String archive2Path = ".\\Archive2\\Archive2.exe";
 
         public static String Archive2Path
         {
             get { return Archive2.archive2Path; }
-            /*set
-            {
-                if (value == null)
-                    return;
-                else if (Directory.Exists(value))
-                {
-                    if (File.Exists(Path.Combine(value, "Archive2.exe")))
-                        Archive2.archive2Path = Path.GetFullPath(Path.Combine(value, "Archive2.exe"));
-                    else
-                        return;
-                }
-                else if (File.Exists(value) && value.Trim().EndsWith(".exe"))
-                    Archive2.archive2Path = Path.GetFullPath(value);
-                else
-                    return;
-            }*/
         }
 
         static Archive2()
         {
             logFile = new Log(Log.GetFilePath("archive2.log.txt"));
-            /*String archive2Path = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sArchive2Path", "");
-            if (archive2Path.Length > 0)
-            {
-                Archive2.Archive2Path = archive2Path;
-            }*/
         }
 
         public enum Compression
@@ -2143,15 +2122,25 @@ namespace Fo76ini
                 proc.Start();
 
                 //MessageBox.Show(/*proc.StandardOutput.ReadToEnd(), */$"Archive2.exe {arguments}");
-                logFile.WriteLine(proc.StandardOutput.ReadToEnd() + "\n");
-                logFile.WriteLine(proc.StandardError.ReadToEnd() + "\n");
+                logFile.WriteLine(proc.StandardOutput.ReadToEnd());
+                logFile.WriteLine(proc.StandardError.ReadToEnd());
                 proc.WaitForExit();
             }
         }
 
         public static void Extract(String ba2Archive, String outputFolder)
         {
-            Archive2.Call($"\"{ba2Archive}\" -extract=\"{outputFolder}\"");
+            Archive2.Call($"\"{ba2Archive}\" -extract=\"{outputFolder}\" -quiet");
+        }
+
+        public static void Explore(String ba2Archive)
+        {
+            Archive2.Call($"\"{ba2Archive}\"");
+        }
+
+        public static void Explore()
+        {
+            Archive2.Call("");
         }
 
         public static void Create(String ba2Archive, String folder)
@@ -2167,7 +2156,7 @@ namespace Fo76ini
             String compressionStr = Enum.GetName(typeof(Archive2.Compression), (int)compression);
             String formatStr = Enum.GetName(typeof(Archive2.Format), (int)format);
             folder = Path.GetFullPath(folder);
-            Archive2.Call($"\"{folder}\" -create=\"{ba2Archive}\" -compression={compressionStr} -format={formatStr} -root=\"{folder}\" -tempFiles");
+            Archive2.Call($"\"{folder}\" -create=\"{ba2Archive}\" -compression={compressionStr} -format={formatStr} -root=\"{folder}\" -tempFiles -quiet");
         }
 
         public static bool ValidatePath(String path)

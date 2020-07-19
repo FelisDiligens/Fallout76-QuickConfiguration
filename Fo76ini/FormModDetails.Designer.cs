@@ -203,9 +203,9 @@
             this.groupBoxSeparateArchivePresets.Controls.Add(this.radioButtonSeparateArchiveSounds);
             this.groupBoxSeparateArchivePresets.Controls.Add(this.radioButtonSeparateArchiveTextures);
             this.groupBoxSeparateArchivePresets.Controls.Add(this.radioButtonSeparateArchiveGeneral);
-            this.groupBoxSeparateArchivePresets.Location = new System.Drawing.Point(181, 200);
+            this.groupBoxSeparateArchivePresets.Location = new System.Drawing.Point(126, 200);
             this.groupBoxSeparateArchivePresets.Name = "groupBoxSeparateArchivePresets";
-            this.groupBoxSeparateArchivePresets.Size = new System.Drawing.Size(162, 109);
+            this.groupBoxSeparateArchivePresets.Size = new System.Drawing.Size(217, 109);
             this.groupBoxSeparateArchivePresets.TabIndex = 58;
             this.groupBoxSeparateArchivePresets.TabStop = false;
             this.groupBoxSeparateArchivePresets.Text = "Presets";
@@ -247,9 +247,9 @@
             this.radioButtonSeparateArchiveGeneral.AutoSize = true;
             this.radioButtonSeparateArchiveGeneral.Location = new System.Drawing.Point(6, 19);
             this.radioButtonSeparateArchiveGeneral.Name = "radioButtonSeparateArchiveGeneral";
-            this.radioButtonSeparateArchiveGeneral.Size = new System.Drawing.Size(115, 17);
+            this.radioButtonSeparateArchiveGeneral.Size = new System.Drawing.Size(168, 17);
             this.radioButtonSeparateArchiveGeneral.TabIndex = 0;
-            this.radioButtonSeparateArchiveGeneral.Text = "General / Interface";
+            this.radioButtonSeparateArchiveGeneral.Text = "General / Interface / Materials";
             this.radioButtonSeparateArchiveGeneral.UseVisualStyleBackColor = true;
             this.radioButtonSeparateArchiveGeneral.CheckedChanged += new System.EventHandler(this.radioButtonSeparateArchiveGeneral_CheckedChanged);
             // 
