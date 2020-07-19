@@ -1920,8 +1920,9 @@ namespace Fo76ini
                             }
                             else
                             {
-                                // File.Delete(filePath);
-                                this.logFile.WriteLine($"      Failed to rename {fileName}");
+                                // Assuming that the same *.dll file has been copied during deployment:
+                                File.Delete(filePath); // we can just delete it.
+                                this.logFile.WriteLine($"      Deleted {fileName}");
                             }
                         }
                     }
