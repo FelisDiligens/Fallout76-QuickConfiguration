@@ -538,6 +538,30 @@ namespace Fo76ini
             // Always active
             uiLoader.LinkBool(this.checkBoxAlwaysActive, IniFile.F76Custom, "General", "bAlwaysActive", true);
 
+            // Fix HUD for 5:4 and 4:3 screens
+            uiLoader.LinkCustom(this.checkBoxFixHUDFor5_4and4_3,
+                () => {
+                    return
+                        Math.Abs(IniFiles.Instance.GetFloat("Interface", "fLockPositionY", 0f) - 100f) < 0.1 &&
+                        Math.Abs(IniFiles.Instance.GetFloat("Interface", "fUIPowerArmorGeometry_TranslateZ", 0f) - -18.5f) < 0.1 &&
+                        Math.Abs(IniFiles.Instance.GetFloat("Interface", "fUIPowerArmorGeometry_TranslateY", 0f) - 460f) < 0.1;
+                },
+                (value) => {
+                    if (value)
+                    {
+                        IniFiles.Instance.Set(IniFile.F76Custom, "Interface", "fLockPositionY", 100f);
+                        IniFiles.Instance.Set(IniFile.F76Custom, "Interface", "fUIPowerArmorGeometry_TranslateZ", -18.5f);
+                        IniFiles.Instance.Set(IniFile.F76Custom, "Interface", "fUIPowerArmorGeometry_TranslateY", 460f);
+                    }
+                    else
+                    {
+                        IniFiles.Instance.Remove(IniFile.F76Custom, "Interface", "fLockPositionY");
+                        IniFiles.Instance.Remove(IniFile.F76Custom, "Interface", "fUIPowerArmorGeometry_TranslateZ");
+                        IniFiles.Instance.Remove(IniFile.F76Custom, "Interface", "fUIPowerArmorGeometry_TranslateY");
+                    }
+                }
+            );
+
             // 1st person FOV
             uiLoader.LinkCustom(this.numFirstPersonFOV,
                 () => IniFiles.Instance.GetFloat("Display", "fDefault1stPersonFOV", 80),
