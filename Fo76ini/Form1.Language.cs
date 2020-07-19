@@ -16,7 +16,7 @@ namespace Fo76ini
 {
     partial class Form1
     {
-        private String languageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "languages");
+        private String languageFolder = Path.Combine(Form1.AppConfigFolder, "languages");
         private List<String> languageISOs;
         private List<String> languageNames;
         private bool englishXMLFileGenerated = false;

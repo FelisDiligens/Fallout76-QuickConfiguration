@@ -24,6 +24,8 @@ namespace Fo76ini
         private FormMods formMods;
         private bool formModsBackupCreated = false;
 
+        public static String OldAppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration");
+        public static String AppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");
 
         //private Dictionary<String, ComboBoxContainer> comboBoxes = new Dictionary<String, ComboBoxContainer>();
 
@@ -150,6 +152,39 @@ namespace Fo76ini
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Create folder, if not present:
+            if (!Directory.Exists(Form1.AppConfigFolder))
+                Directory.CreateDirectory(Form1.AppConfigFolder);
+
+            // Create note to old config folder to inform users, if present:
+            if (Directory.Exists(Form1.OldAppConfigFolder))
+            {
+                try
+                {
+                    using (StreamWriter f = new StreamWriter(Path.Combine(Form1.OldAppConfigFolder, "READ ME - CONFIG FOLDER HAS BEEN MOVED.txt")))
+                    {
+                        f.Write(
+                            "Hi,\n\n"+
+                            "the entire configuration folder has been moved from\n" +
+                            "C:\\Users\\USERNAME\\Documents\\Fallout 76 Quick Configuration\\\n" +
+                            "to\n" +
+                            "C:\\Users\\USERNAME\\AppData\\Local\\Fallout 76 Quick Configuration\\\n" +
+                            "due to write-permission issues.\n\n" +
+                            "Therefore changes to these files won't have any effect.\n" +
+                            "It's safe to delete this folder, if you don't need the log files.\n\n" +
+                            "Users reported that the tool is crashing for them, because it can't write to the aforementioned folder.\n" +
+                            "So I moved it in the hope that it'll fix the issue, at least in part.\n" +
+                            "Also, it's a better place anyway, as the Documents folder is supposed to contain documents. (Who knew?)\n\n" +
+                            "Anyways, happy hunting!"
+                        );
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show(@"All configuration files have been moved to 'C:\Users\<yourname>\AppData\Local\Fallout 76 Quick Configuration'. Delete the old folder to stop this message from displaying.", "Old configuration path found");
+                }
+            }
+
             this.formMods = new FormMods();
 
             // Load QuickConfiguration.ini
@@ -198,7 +233,7 @@ namespace Fo76ini
             // Remove updater, if present:
             try
             {
-                String updaterPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "Updater");
+                String updaterPath = Path.Combine(Form1.AppConfigFolder, "Updater");
                 if (Directory.Exists(updaterPath))
                     Directory.Delete(updaterPath, true);
             }
@@ -1137,7 +1172,7 @@ namespace Fo76ini
             IniFiles.Instance.SaveConfig();
 
             // Copy updater.exe to <config-path>\Updater\:
-            String updaterPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "Updater");
+            String updaterPath = Path.Combine(Form1.AppConfigFolder, "Updater");
             List<String> updaterFiles = new List<String>() {
                 "7z\\7za.dll",
                 "7z\\7za.exe",

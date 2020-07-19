@@ -149,15 +149,26 @@ namespace Fo76ini
             /*this.GetIniName(IniFile.F76) = Path.Combine(this.iniParentPath, "Fallout76.ini");
             this.GetIniName(IniFile.F76Prefs) = Path.Combine(this.iniParentPath, "Fallout76Prefs.ini");
             this.GetIniName(IniFile.F76Custom) = Path.Combine(this.iniParentPath, "Fallout76Custom.ini");*/
-            String oldConfigPath = Path.Combine(this.iniParentPath, "QuickConfiguration.ini");
-            this.configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "config.ini");
+            String pre1point6ConfigPath = Path.Combine(this.iniParentPath, "QuickConfiguration.ini");
+            String oldConfigPath = Path.Combine(Form1.OldAppConfigFolder, "config.ini");
+            this.configPath = Path.Combine(Form1.AppConfigFolder, "config.ini");
 
             // Backwards-compatibility: Move config file to new location:
+
+            // Pre v1.6 location:
+            if (File.Exists(pre1point6ConfigPath) && !File.Exists(this.configPath))
+            {
+                if (!Directory.Exists(Path.GetDirectoryName(this.configPath)))
+                    Directory.CreateDirectory(Path.GetDirectoryName(this.configPath));
+                File.Move(pre1point6ConfigPath, this.configPath);
+            }
+
+            // Pre v1.7.1 location:
             if (File.Exists(oldConfigPath) && !File.Exists(this.configPath))
             {
                 if (!Directory.Exists(Path.GetDirectoryName(this.configPath)))
                     Directory.CreateDirectory(Path.GetDirectoryName(this.configPath));
-                File.Move(oldConfigPath, this.configPath);
+                File.Copy(oldConfigPath, this.configPath);
             }
 
             // Configuring INI parser
