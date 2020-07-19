@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.7.0">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.7.1">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary" />
@@ -169,6 +169,7 @@ Bitte wähle Archive2.exe</Messagebox>
         <Label text="Fallout 76 Schnellkonfiguration" id="labelTitle" />
       </Tab>
       <Tab text="Einstellungen" id="tabPageSettings">
+        <Button text="Öffne Konfigurationsordner" id="buttonOpenConfigPath" />
         <Group text="Startoptionen" id="groupBoxLaunchOptions">
           <Label text="Fallout 76 kann nicht direkt ausgeführt werden, wenn es über den Microsoft Store installiert wurde." id="labelLaunchOptionMSStoreNotice" />
           <Label text="Tipp: Gib deine Zugangsdaten im &quot;Allgemein&quot;-Tab ein." id="labelLaunchOptionTip" />
@@ -748,9 +749,17 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
       </Item>
       <Item text="Tools" id="toolsToolStripMenuItem">
         <Item text="Repariere alle *.dds Dateien" id="repairddsFilesToolStripMenuItem" />
+        <Item text="Archive2" id="archive2ToolStripMenuItem">
+          <Item text="Archive2 öffnen" id="openArchive2ToolStripMenuItem" />
+          <Item text="*.ba2 Archiv öffnen" id="exploreba2ArchiveToolStripMenuItem" />
+        </Item>
       </Item>
       <Item text="Hilfe" id="helpToolStripMenuItem">
         <Item text="Zeige LIESMICH (Englisch)" id="showREADMEToolStripMenuItem" />
+        <Item text="Logdateien" id="logFilesToolStripMenuItem">
+          <Item text="Zeige modmanager.log.txt" id="showModmanagerlogtxtToolStripMenuItem" />
+          <Item text="Zeige archive2.log.txt" id="showArchive2logtxtToolStripMenuItem" />
+        </Item>
       </Item>
     </Menu>
   </FormMods>
