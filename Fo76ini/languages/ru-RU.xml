@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.7.0">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.7.1">
   <Strings>
     <String text="Доступна новая версия: {0}" id="newVersionAvailable" />
     <String text="Необходима установка" id="modsDeploymentNecessary" />
@@ -160,10 +160,11 @@
         <Label text="Перевод:" id="labelTranslationBy" />
         <Label text="Автор:" id="labelAuthor" />
         <Label text="Версия:" id="labelVersion" />
-        <Label text="Эта программа  поможет быстро  настроить ваши\n файлы INI. Наведите на нужную настройку, чтобы\n получить подсказку." id="labelDescription" />
+        <Label text="Эта программа  поможет быстро  настроить ваши\nфайлы INI. Наведите на нужную настройку, чтобы\nполучить подсказку." id="labelDescription" />
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
       <Tab text="Настройки" id="tabPageSettings">
+        <Button text="Открыть папку настроек" id="buttonOpenConfigPath" />
         <Group text="Варианты запуска" id="groupBoxLaunchOptions">
           <Label text="Fallout 76 не может быть запущен напрямую, если он установлен через магазин Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
           <Label text="Примечание: введите свои учетные данные для входа в систему на вкладке &quot;Основное&quot;." id="labelLaunchOptionTip" />
@@ -195,7 +196,7 @@
           <Button text="Скачать/обновить языки" id="buttonDownloadLanguages" />
         </Group>
         <Group text="Настройки" id="groupBoxOptions">
-          <Checkbox text="[Экспериментально] Запретить NTFS запись на диск." id="checkBoxDenyNTFSWritePermission">
+          <Checkbox text="[Экспериментально] Запретить NTFS запись на диск" id="checkBoxDenyNTFSWritePermission">
             <Tooltip>Это приведет к запрету записи в папку "Fallout 76".
 Используйте, если опция только для чтения не работает.
 
@@ -287,6 +288,17 @@
         </Group>
       </Tab>
       <Tab text="Экран" id="tabPageDisplay">
+        <Checkbox text="Исправить интерфейс для разрешения 5:4 и 4:3" id="checkBoxFixHUDFor5_4and4_3">
+          <Tooltip>Исправляет невидимые/сломанные:
+  * замки при взломе
+  * интерфейс силовой брони
+для разрешения 5:4 и 4:3.
+
+На разрешении 1280 на 1024 работает идеально. На других не проверялось.
+
+Затрагивает параметры: fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+        </Checkbox>
         <Button text="Обнаружить разрешение" id="buttonDetectResolution" />
         <Checkbox text="Всегда активно" id="checkBoxAlwaysActive">
           <Tooltip>Отключите это, если вы хотите, чтобы игра приостановилась в фоновом режиме.
@@ -608,9 +620,9 @@ Off - улучшает производительность, неровност�
           </Checkbox>
         </Group>
       </Tab>
-      <Tab text="Пип-бой" id="tabPagePipBoy">
+      <Tab text="Pip-Boy" id="tabPagePipBoy">
         <Group text="Разрешение" id="groupBoxPipboyResolution">
-          <Label text="Эти настройки влияют как на Пип-бой, так и на Квик-бой." id="labelPipboyResolutionSideNote" />
+          <Label text="Эти настройки влияют на Pip-Boy и Quick-Boy." id="labelPipboyResolutionSideNote" />
           <Button text="Рекомендуемое" id="buttonPipboyTargetSetRecommended">
             <Tooltip>Рекомендуемые значения: 1752x1400</Tooltip>
           </Button>
@@ -618,13 +630,13 @@ Off - улучшает производительность, неровност�
             <Tooltip>Значения по-умолчанию: 876x700</Tooltip>
           </Button>
           <Number id="numPipboyTargetHeight">
-            <Tooltip>Изменяет высоту разрешения Пип-боя и Квик-боя.
+            <Tooltip>Изменяет высоту разрешения Pip-Boy и Quick-Boy.
 
 Затрагивает параметры: uPipboyTargetHeight
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
           </Number>
           <Number id="numPipboyTargetWidth">
-            <Tooltip>Изменяет ширину разрешения Пип-боя и Квик-боя.
+            <Tooltip>Изменяет ширину разрешения Pip-Boy и Quick-Boy.
 
 Затрагивает параметры: uPipboyTargetWidth
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
@@ -697,7 +709,7 @@ Affected files: Fallout76Custom.ini</Tooltip>
       </Tab>
       <Tab text="Настройки" id="tabPageModsSettings">
         <Group text="Поведение" id="groupBoxModsBehavior">
-          <Checkbox text="Создавать жесткие ссылки вместо копирования файлов вручную." id="checkBoxModsUseHardlinks">
+          <Checkbox text="Создавать жесткие ссылки вместо копирования файлов вручную" id="checkBoxModsUseHardlinks">
             <Tooltip>Может сократить дисковое пространство и время установки.
 Не относится к пакетным архивам.</Tooltip>
           </Checkbox>
@@ -727,11 +739,19 @@ Affected files: Fallout76Custom.ini</Tooltip>
         <Item text="Показать конфликты модов" id="showConflictingFilesToolStripMenuItem" />
         <Item text="Перезагрузить интерфейс" id="reloadUIToolStripMenuItem" />
       </Item>
-      <Item text="Интсрументы" id="toolsToolStripMenuItem">
+      <Item text="Инструменты" id="toolsToolStripMenuItem">
         <Item text="Восстановить все файлы *.dds" id="repairddsFilesToolStripMenuItem" />
+        <Item text="Archive2" id="archive2ToolStripMenuItem">
+          <Item text="Запустить Archive2" id="openArchive2ToolStripMenuItem" />
+          <Item text="Просмотреть архив *.ba2" id="exploreba2ArchiveToolStripMenuItem" />
+        </Item>
       </Item>
       <Item text="Помощь" id="helpToolStripMenuItem">
         <Item text="Показать README" id="showREADMEToolStripMenuItem" />
+        <Item text="Лог-файлы" id="logFilesToolStripMenuItem">
+          <Item text="Просмотреть modmanager.log.txt" id="showModmanagerlogtxtToolStripMenuItem" />
+          <Item text="Просмотреть archive2.log.txt" id="showArchive2logtxtToolStripMenuItem" />
+        </Item>
       </Item>
     </Menu>
   </FormMods>
