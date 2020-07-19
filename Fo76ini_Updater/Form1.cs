@@ -240,6 +240,12 @@ namespace Fo76ini_Updater
                 Invoke(() => FailState("Something went wrong,\ncheck update.log.txt for details.", ex));
                 return false;
             }
+
+            // Find version
+            String tagName = json["tag_name"].ToString();
+            config["Updater"]["sTagName"] = tagName;
+
+            // Find download URL
             JArray assets = (JArray)json["assets"];
 
             String browserDownloadURL = null;
@@ -285,11 +291,24 @@ namespace Fo76ini_Updater
             Invoke(() => this.pictureBoxLoading.Visible = true);
             Invoke(() => SetLabel("Updating, please wait...", Color.Black));
 
-            // Download
+            // Get Download URL:
             Invoke(() => SetLabel($"Updating, please wait...\nContacting GitHub API...", Color.Black));
             if (!GetLatestReleaseURL())
                 return;
 
+            // Compare versions:
+            if (Utils.CompareVersions(config["General"]["sVersion"], config["Updater"]["sTagName"]) >= 0)
+            {
+                if (MessageBox.Show($"You already have the latest version.\nYour version: {config["General"]["sVersion"]}\nLatest version: {config["Updater"]["sTagName"]}\nDo you want to continue updating anyway?", "Continue anyway?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                {
+                    Invoke(() => SetLabel("You already have the latest version."));
+                    Invoke(Expand);
+                    Invoke(() => this.pictureBoxLoading.Visible = false);
+                    return;
+                }
+            }
+
+            // Download:
             downloadPath = Path.Combine(workingDir, downloadFile);
             Invoke(() => SetLabel($"Updating, please wait...\nDownloading {this.downloadFile}...", Color.Black));
             try
