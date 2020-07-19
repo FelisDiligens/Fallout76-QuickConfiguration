@@ -63,7 +63,8 @@ namespace Fo76ini_Updater
 
         private void Updater_Load(object sender, EventArgs e)
         {
-            configPath = Path.GetFullPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration"));
+            //configPath = Path.GetFullPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration"));
+            configPath = Path.GetFullPath(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration"));
             iniPath = Path.Combine(configPath, "config.ini");
 
             LoadIni();
