@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Polski" iso="pl-PL" author="Gray770" version="1.7.0">
+<Language name="Polski" iso="pl-PL" author="Gray770" version="1.7.1">
   <Strings>
     <String text="Nowsza wersja jest dostępna: {0}" id="newVersionAvailable" />
     <String text="Wdrożenie wymagane" id="modsDeploymentNecessary" />
@@ -128,13 +128,13 @@ Odpakuj archiwum i dodaj mod jako folder.</Messagebox>
 Czy jesteś pewien zamknięcia menedżera?</Messagebox>
     <Messagebox title="Folder z modem nie istnieje" id="modDirNotExist">Scieżka {0} nie istnieje.
 Folder mod został usunięty bez usuwania wpisu w manifest.xml </Messagebox>
-    <Messagebox title="Błedny wpis w manifest.xml" id="modsInvalidManifestEntry">Wpis moda jest nieważny i został zignorowany.
+    <Messagebox title="Błedny wpis w manifest.xml" id="modsInvalidManifestEntry">Wpis modyfikacji jest nieważny i został zignorowany.
 Error: {0}</Messagebox>
     <Messagebox title="Błedny wpis w manifest.xml" id="modsInvalidManifestRoot">Tag &lt;Mod&gt; ma nieprawidłowe atrybuty
 Error: {0}</Messagebox>
     <Messagebox title="Importować manualnie zainstalowane mody?" id="modsImportQuestion">Czy jesteś pewien aby dodać mody zainstalowane poza narzędziem?</Messagebox>
     <Messagebox title="Mod ma konflikt z innym modem" id="modsSameArchiveName">Niektóre modyfikacje mają taką samą nazwe "{0}".
-Konfliktowa nazwa moda: {1}</Messagebox>
+Konfliktowa nazwa modyfikacji: {1}</Messagebox>
     <Messagebox title="Nie udało się zmienić nazwy folderu" id="modDetailsMoveManagedFolderFailed">Nie udało się zmienić nazwy zarządzanego folderu z modem.
 Error message: "{0}".</Messagebox>
     <Messagebox title="Czy jesteś pewien?" id="modsRepairDDSQuestion">Kliknięcie "Tak" spróbuje naprawić wszystkie pliki *.dds.
@@ -161,10 +161,11 @@ Czy chcesz je wdrożyć?</Messagebox>
         <Label text="Tłumaczenie:" id="labelTranslationBy" />
         <Label text="Autor:" id="labelAuthor" />
         <Label text="Wersja:" id="labelVersion" />
-        <Label text="Te narzędzie pozwala na szybką zmiane ustawień INI.\nTip: Pozostaw opcje, których nie jesteś pewien." id="labelDescription" />
+        <Label text="Narzędzie pozwalające na szybką zmiane ustawień INI\nTip: Jeśli nie jesteś pewnien co dana opcja robi, pozostaw ją." id="labelDescription" />
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </Tab>
       <Tab text="Ustawienia" id="tabPageSettings">
+        <Button text="Otwórz folder konfiguracyjny" id="buttonOpenConfigPath" />
         <Group text="Opcje uruchamiania" id="groupBoxLaunchOptions">
           <Label text="Fallout 76 cannot be run directly, if installed through the Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
           <Label text="Porada: Zapisz swoje dane logowania w zakładce &quot;Ogólne&quot;." id="labelLaunchOptionTip" />
@@ -287,6 +288,17 @@ Zmiany w: Fallout76Custom.ini</Tooltip>
         </Group>
       </Tab>
       <Tab text="Wyświetlanie" id="tabPageDisplay">
+        <Checkbox text="Napraw HUD dla rozdzielczości 5:4 oraz 4:3 (częściowo)" id="checkBoxFixHUDFor5_4and4_3">
+          <Tooltip>Naprawia niedziałający
+  * ekran włamywania się
+  * HUD pancerza wspomaganego
+dla ekranów 5:3 i 4:3
+
+W większości nie przetestowane.
+
+Zmieniona wartość: fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
+Zmiany w: Fallout76Custom.ini</Tooltip>
+        </Checkbox>
         <Button text="Wykryj rozdzielczość" id="buttonDetectResolution" />
         <Checkbox text="Zawsze aktywny" id="checkBoxAlwaysActive">
           <Tooltip>Wyłącz to gdy chcesz aby gra się pauzowała gdy przechodzisz na inne okno.
@@ -689,7 +701,7 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
           <Button text="Edytuj detale modów" id="toolStripButtonModEdit" />
           <Button text="Odmróź" id="toolStripButtonUnfreeze" />
           <Button text="Otwórz folder modow" id="toolStripButtonModOpenFolder" />
-          <Button text="Usuń moda" id="toolStripButtonDeleteMod" />
+          <Button text="Usuń modyfikacje" id="toolStripButtonDeleteMod" />
         </Tool>
         <ListView id="listViewMods">
           <Column>Nazwa modyfikacji</Column>
@@ -705,7 +717,8 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
         <Group text="Zachowanie" id="groupBoxModsBehavior">
           <Checkbox text="Utwórz twarde linki zamiast kopiowania plików." id="checkBoxModsUseHardlinks">
             <Tooltip>Może zwolnić miejsce na dysku oraz skrócić czas wdrażania.
-Nie działa przy zapakowanych archiwum.</Tooltip>
+Nie działa przy zapakowanych archiwum.
+Więcej o Hard-Links możesz przeczytać w artykule "How to install mods using Fallout 76 Quick Configuration" na stronie narzędzia.</Tooltip>
           </Checkbox>
           <Checkbox text="Domyślnie odmróź pliki *.ba2 " id="checkBoxAddArchivesAsBundled" />
         </Group>
@@ -735,9 +748,17 @@ Nie działa przy zapakowanych archiwum.</Tooltip>
       </Item>
       <Item text="Narzędzia" id="toolsToolStripMenuItem">
         <Item text="Napraw wszystkie pliki *.dds" id="repairddsFilesToolStripMenuItem" />
+        <Item text="Archive2" id="archive2ToolStripMenuItem">
+          <Item text="Otwórz Archive2" id="openArchive2ToolStripMenuItem" />
+          <Item text="Przeglądaj arhiwum *.ba2" id="exploreba2ArchiveToolStripMenuItem" />
+        </Item>
       </Item>
       <Item text="Pomoc" id="helpToolStripMenuItem">
         <Item text="Pokaż README" id="showREADMEToolStripMenuItem" />
+        <Item text="Logi" id="logFilesToolStripMenuItem">
+          <Item text="Otwórz modmanager.log.txt" id="showModmanagerlogtxtToolStripMenuItem" />
+          <Item text="Otwórz archive2.log.txt" id="showArchive2logtxtToolStripMenuItem" />
+        </Item>
       </Item>
     </Menu>
   </FormMods>
@@ -747,7 +768,7 @@ Nie działa przy zapakowanych archiwum.</Tooltip>
     <Label text="..." id="labelModDetailsStatus" />
     <Button text="Zastosuj" id="buttonModDetailsApply" />
     <Element id="panel1">
-      <Checkbox text="Włącz moda" id="checkBoxModDetailsEnabled" />
+      <Checkbox text="Włącz modyfikacje" id="checkBoxModDetailsEnabled" />
       <Label text="UWAGA: Zamrożone mody zostaną zignorowane" id="labelModDetailsBulkFrozenModsWarning" />
       <Group text="Predefiniowane ustawienia" id="groupBoxSeparateArchivePresets">
         <Radiobutton text="Niestandardowe" id="radioButtonSeparateArchiveCustom" />
@@ -767,7 +788,7 @@ Jest to przydatne gdy archiwum jest wielkie (1GiB lub więcej)</Tooltip>
       <Checkbox text="Kompresuj archiwum" id="checkBoxModBA2Compression" />
       <Label text="Nazwa archiwum:" id="labelModArchiveName" />
       <Button text="Otwórz folder" id="buttonModOpenFolder" />
-      <Label text="Nazwa folderu moda:" id="labelModFolderName" />
+      <Label text="Nazwa folderu modyfikacji:" id="labelModFolderName" />
       <Label text="Format archiwum:" id="labelModArchiveFormat" />
       <Label text="Zainstaluj jako:" id="labelModInstallAs" />
       <Label text="Nazwa modyfikacji:" id="labelModName" />
