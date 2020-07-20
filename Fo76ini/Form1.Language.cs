@@ -19,6 +19,7 @@ namespace Fo76ini
         private String languageFolder = Path.Combine(Form1.AppConfigFolder, "languages");
         private List<String> languageISOs;
         private List<String> languageNames;
+        private List<String> languageComboBoxItems;
         private bool englishXMLFileGenerated = false;
 
         private void LookupLanguages()
@@ -35,6 +36,7 @@ namespace Fo76ini
 
             this.languageISOs = new List<String> { "en-US" };
             this.languageNames = new List<String> { "English (USA)" };
+            this.languageComboBoxItems = new List<String> { $"English (USA) [{Form1.VERSION}]" };
 
             // Look into the folder and add all language files to the dropdown menu.
             foreach (string filePath in Directory.GetFiles(languageFolder))
@@ -55,6 +57,10 @@ namespace Fo76ini
                                 {
                                     this.languageISOs.Add(lang.Attribute("iso").Value);
                                     this.languageNames.Add(lang.Attribute("name").Value);
+                                    if (lang.Attribute("version") != null)
+                                        this.languageComboBoxItems.Add($"{lang.Attribute("name").Value} [{lang.Attribute("version").Value}]");
+                                    else
+                                        this.languageComboBoxItems.Add(lang.Attribute("name").Value);
                                 }
                             }
                             else
@@ -70,7 +76,7 @@ namespace Fo76ini
                 }
             }
             this.comboBoxLanguage.Items.Clear();
-            this.comboBoxLanguage.Items.AddRange(languageNames.ToArray<String>());
+            this.comboBoxLanguage.Items.AddRange(languageComboBoxItems.ToArray<String>());
 
             // Change the language, if "sLanguage=..." is set:
             String selectedLanguage = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sLanguage", CultureInfo.CurrentUICulture.Name);
@@ -521,7 +527,6 @@ namespace Fo76ini
             DeserializeControlText(dictText, dictTooltip, this, this.toolTip);
             DeserializeControlText(dictText, dictTooltip, this.formMods, this.formMods.toolTip);
             DeserializeControlText(dictText, dictTooltip, this.formMods.formModDetails, this.formMods.formModDetails.toolTip);
-
 
             CheckVersion();
             this.formMods.UpdateUI();

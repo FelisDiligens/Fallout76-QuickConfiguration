@@ -15,7 +15,7 @@ namespace Fo76ini
 {
     public partial class Form1 : Form
     {
-        public const String VERSION = "1.7.1";
+        public const String VERSION = "1.7.2";
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
@@ -219,11 +219,11 @@ namespace Fo76ini
 
             // Setup UI:
             ColorIni2Ui();
+            UpdateCameraPositionUI();
             AddAllEventHandler();
             uiLoader.Update();
 
             CheckVersion();
-
 
             if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false))
                 this.formMods.OpenUI();
@@ -381,6 +381,9 @@ namespace Fo76ini
             uiLoader.LinkString(this.textBoxUserName, IniFile.F76Custom, "Login", "s76UserName", "");
             uiLoader.LinkString(this.textBoxPassword, IniFile.F76Custom, "Login", "s76Password", "");
 
+            // Disable Steam:
+            uiLoader.LinkBoolNegated(this.checkBoxDisableSteam, IniFile.F76Custom, "General", "bSteamEnabled", true);
+
             // Play intro videos
             uiLoader.LinkCustom(this.checkBoxIntroVideos,
                 () => {
@@ -400,23 +403,6 @@ namespace Fo76ini
                     }
                 }
             );
-
-            // Vanity mode
-            uiLoader.LinkBool(this.checkBoxVanityMode, IniFile.F76Custom, "Camera", "bDisableAutoVanityMode", false, true);
-            uiLoader.LinkBool(this.checkBoxForceVanityMode, IniFile.F76Custom, "Camera", "bForceAutoVanityMode", false);
-            uiLoader.LinkCustom(this.checkBoxVanityMode,
-                () => this.checkBoxVanityMode.Checked,
-                (value) =>
-                {
-                    this.checkBoxForceVanityMode.Enabled = this.checkBoxVanityMode.Checked;
-                    if (!this.checkBoxVanityMode.Checked)
-                    {
-                        this.checkBoxForceVanityMode.Checked = false;
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Camera", "bForceAutoVanityMode");
-                    }
-                }
-            );
-            uiLoader.Add(() => this.checkBoxForceVanityMode.Enabled = this.checkBoxVanityMode.Checked);
 
             // Play music in main menu
             uiLoader.LinkBool(this.checkBoxMainMenuMusic, IniFile.F76Custom, "General", "bPlayMainMenuMusic", true);
@@ -559,28 +545,6 @@ namespace Fo76ini
                         IniFiles.Instance.Remove(IniFile.F76Custom, "Interface", "fUIPowerArmorGeometry_TranslateZ");
                         IniFiles.Instance.Remove(IniFile.F76Custom, "Interface", "fUIPowerArmorGeometry_TranslateY");
                     }
-                }
-            );
-
-            // 1st person FOV
-            uiLoader.LinkCustom(this.numFirstPersonFOV,
-                () => IniFiles.Instance.GetFloat("Display", "fDefault1stPersonFOV", 80),
-                (value) => {
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Display", "fDefault1stPersonFOV", value);
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Interface", "fDefault1stPersonFOV", value);
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "fDefault1stPersonFOV", value);
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Interface", "fDefault1stPersonFOV", value);
-                }
-            );
-
-            // World FOV
-            uiLoader.LinkCustom(this.numWorldFOV,
-                () => IniFiles.Instance.GetFloat("Display", "fDefaultWorldFOV", 80),
-                (value) => {
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Display", "fDefaultWorldFOV", value);
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Interface", "fDefaultWorldFOV", value);
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "fDefaultWorldFOV", value);
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Interface", "fDefaultWorldFOV", value);
                 }
             );
 
@@ -832,6 +796,57 @@ namespace Fo76ini
             // Resolution
             uiLoader.LinkInt(this.numPipboyTargetWidth, IniFile.F76Prefs, "Display", "uPipboyTargetWidth", 876);
             uiLoader.LinkInt(this.numPipboyTargetHeight, IniFile.F76Prefs, "Display", "uPipboyTargetHeight", 700);
+
+
+            /*
+             * Camera
+             */
+
+
+            // Vanity mode
+            uiLoader.LinkBool(this.checkBoxVanityMode, IniFile.F76Custom, "Camera", "bDisableAutoVanityMode", false, true);
+            uiLoader.LinkBool(this.checkBoxForceVanityMode, IniFile.F76Custom, "Camera", "bForceAutoVanityMode", false);
+            uiLoader.LinkCustom(this.checkBoxVanityMode,
+                () => this.checkBoxVanityMode.Checked,
+                (value) =>
+                {
+                    this.checkBoxForceVanityMode.Enabled = this.checkBoxVanityMode.Checked;
+                    if (!this.checkBoxVanityMode.Checked)
+                    {
+                        this.checkBoxForceVanityMode.Checked = false;
+                        IniFiles.Instance.Remove(IniFile.F76Custom, "Camera", "bForceAutoVanityMode");
+                    }
+                }
+            );
+            uiLoader.Add(() => this.checkBoxForceVanityMode.Enabled = this.checkBoxVanityMode.Checked);
+
+            // 1st person FOV
+            uiLoader.LinkCustom(this.numFirstPersonFOV,
+                () => IniFiles.Instance.GetFloat("Display", "fDefault1stPersonFOV", 80),
+                (value) => {
+                    IniFiles.Instance.Set(IniFile.F76Custom, "Display", "fDefault1stPersonFOV", value);
+                    IniFiles.Instance.Set(IniFile.F76Custom, "Interface", "fDefault1stPersonFOV", value);
+                    IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "fDefault1stPersonFOV", value);
+                    IniFiles.Instance.Set(IniFile.F76Prefs, "Interface", "fDefault1stPersonFOV", value);
+                }
+            );
+
+            // World FOV
+            uiLoader.LinkCustom(this.numWorldFOV,
+                () => IniFiles.Instance.GetFloat("Display", "fDefaultWorldFOV", 80),
+                (value) => {
+                    IniFiles.Instance.Set(IniFile.F76Custom, "Display", "fDefaultWorldFOV", value);
+                    IniFiles.Instance.Set(IniFile.F76Custom, "Interface", "fDefaultWorldFOV", value);
+                    IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "fDefaultWorldFOV", value);
+                    IniFiles.Instance.Set(IniFile.F76Prefs, "Interface", "fDefaultWorldFOV", value);
+                }
+            );
+
+            // 3rd person ADS FOV
+            uiLoader.LinkInt(this.numADSFOV, IniFile.F76Custom, "Camera", "f3rdPersonAimFOV", 50);
+
+            // bApplyCameraNodeAnimations
+            uiLoader.LinkBool(this.checkBoxbApplyCameraNodeAnimations, IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations", true);
         }
 
 

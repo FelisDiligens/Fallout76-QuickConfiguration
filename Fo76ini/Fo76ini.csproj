@@ -120,6 +120,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form1.Camera.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.Language.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\VaultBoyThumbsUp_200px.png" />
     <None Include="Resources\question_mark.png" />
     <None Include="Resources\bethesda-launcher-pts.png" />
     <None Include="Resources\bethesda-launcher.png" />
