@@ -205,6 +205,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\nexus-24.png" />
+    <None Include="Resources\help-24.png" />
+    <None Include="Resources\available-updates-24.png" />
+    <None Include="Resources\play-24.png" />
+    <None Include="Resources\save-24.png" />
+    <None Include="Resources\save-32.png" />
     <None Include="Resources\VaultBoyThumbsUp_200px.png" />
     <None Include="Resources\question_mark.png" />
     <None Include="Resources\bethesda-launcher-pts.png" />

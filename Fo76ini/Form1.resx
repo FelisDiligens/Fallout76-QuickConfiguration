@@ -120,32 +120,46 @@
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="checkBoxFixMouseSensitivity.ToolTip" xml:space="preserve">
-    <value>If checked, the sensitivity for looking up/down and left/right will be equal.
-If unchecked (default), the sensitivity for looking left/right will likely be higher than up/down.
+  <data name="checkBoxVanityMode.ToolTip" xml:space="preserve">
+    <value>When this option is checked, the camera will spin around the character after no input was given for a certain amount of time.
+Not sure if it does anything, though. I stood around for 5 minutes and the camera didn't spin. Needs more testing.
 
-When checked, your mouse sensitivity might increase.
-
-The sensitivity depends on your display's aspect ratio:
-    For 4:3, the value of X is .028
-    For 16:9, the value of X is .03738
-    For 16:10, the value of X is .0336
-    For 21:9, the value of X is .042
-
-Default: Disabled (.021 for both)
-Affected values: fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
+Affected values: bDisableAutoVanityMode
 Affected files: Fallout76Custom.ini</value>
   </data>
-  <data name="checkBoxFixAimSensitivity.ToolTip" xml:space="preserve">
-    <value>If checked, the aim sensitivity will be equal to normal sensitivity.
-If unchecked (default), the sensitivity will be lower when aiming down iron sights.
+  <data name="labelDisplayMode.ToolTip" xml:space="preserve">
+    <value>Changes the display mode.
 
-Note: This might only work on 16:9 monitors.
-If it works for you on an other monitor (e.g. 21:9), please let me know.
 
-Note 2: This might not work in-game while crouching.
+Fullscreen: Real fullscreen mode
 
-Affected values: fIronSightsFOVRotateMult
+Windowed: Windowed mode with border
+
+Borderless windowed: Make sure, the resolution matches your display's resolution.
+
+Borderless windowed (Fullscreen): Window will be maximized to fit your screen.
+Looks pixelated (it uses Nearest Neighbor), if the resolution is low.
+
+
+Affected values: bFull Screen, bBorderless
+Affected files: Fallout76Prefs.ini</value>
+  </data>
+  <data name="checkBoxTopMostWindow.ToolTip" xml:space="preserve">
+    <value>Checking this will keep the game's window in foreground.
+NOTE: This will prevent you from being able to Alt+Tab on single monitors.
+
+Affected values: bTopMostWindow
+Affected files: Fallout76Prefs.ini</value>
+  </data>
+  <data name="checkBoxFixHUDFor5_4and4_3.ToolTip" xml:space="preserve">
+    <value>Fixes hidden / borked
+  * lock picking screen and
+  * Power Armor HUD
+for 5:4 and 4:3 screens.
+
+Mostly untested.
+
+Affected values: fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
 Affected files: Fallout76Custom.ini</value>
   </data>
   <data name="labelAntiAliasing.ToolTip" xml:space="preserve">
@@ -232,50 +246,42 @@ Ultra is 7000
 Affected values: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
 Affected files: Fallout76Prefs.ini</value>
   </data>
-  <data name="labelDisplayMode.ToolTip" xml:space="preserve">
-    <value>Changes the display mode.
+  <data name="checkBoxFixMouseSensitivity.ToolTip" xml:space="preserve">
+    <value>If checked, the sensitivity for looking up/down and left/right will be equal.
+If unchecked (default), the sensitivity for looking left/right will likely be higher than up/down.
 
+When checked, your mouse sensitivity might increase.
 
-Fullscreen: Real fullscreen mode
+The sensitivity depends on your display's aspect ratio:
+    For 4:3, the value of X is .028
+    For 16:9, the value of X is .03738
+    For 16:10, the value of X is .0336
+    For 21:9, the value of X is .042
 
-Windowed: Windowed mode with border
-
-Borderless windowed: Make sure, the resolution matches your display's resolution.
-
-Borderless windowed (Fullscreen): Window will be maximized to fit your screen.
-Looks pixelated (it uses Nearest Neighbor), if the resolution is low.
-
-
-Affected values: bFull Screen, bBorderless
-Affected files: Fallout76Prefs.ini</value>
-  </data>
-  <data name="checkBoxTopMostWindow.ToolTip" xml:space="preserve">
-    <value>Checking this will keep the game's window in foreground.
-NOTE: This will prevent you from being able to Alt+Tab on single monitors.
-
-Affected values: bTopMostWindow
-Affected files: Fallout76Prefs.ini</value>
-  </data>
-  <data name="checkBoxFixHUDFor5_4and4_3.ToolTip" xml:space="preserve">
-    <value>Fixes hidden / borked
-  * lock picking screen and
-  * Power Armor HUD
-for 5:4 and 4:3 screens.
-
-Mostly untested.
-
-Affected values: fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
+Default: Disabled (.021 for both)
+Affected values: fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
 Affected files: Fallout76Custom.ini</value>
   </data>
-  <data name="checkBoxVanityMode.ToolTip" xml:space="preserve">
-    <value>When this option is checked, the camera will spin around the character after no input was given for a certain amount of time.
-Not sure if it does anything, though. I stood around for 5 minutes and the camera didn't spin. Needs more testing.
+  <data name="checkBoxFixAimSensitivity.ToolTip" xml:space="preserve">
+    <value>If checked, the aim sensitivity will be equal to normal sensitivity.
+If unchecked (default), the sensitivity will be lower when aiming down iron sights.
 
-Affected values: bDisableAutoVanityMode
+Note: This might only work on 16:9 monitors.
+If it works for you on an other monitor (e.g. 21:9), please let me know.
+
+Note 2: This might not work in-game while crouching.
+
+Affected values: fIronSightsFOVRotateMult
 Affected files: Fallout76Custom.ini</value>
   </data>
   <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>107, 17</value>
+  </metadata>
+  <metadata name="timerCheckFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>221, 17</value>
+  </metadata>
+  <metadata name="openFileDialogGamePath.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>864, 17</value>
   </metadata>
   <data name="labelCredentialsExplanation.Text" xml:space="preserve">
     <value>Your credentials are saved into Fallout76Custom.ini
@@ -285,11 +291,8 @@ If you use Steam and want to use your Bethesda.net account
 (e.g. to spent Atoms), tick Disable Steam.
 NOTE: Your achievements will be disabled as well!</value>
   </data>
-  <metadata name="timerCheckFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>221, 17</value>
-  </metadata>
-  <metadata name="openFileDialogGamePath.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>864, 17</value>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1054, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>82</value>

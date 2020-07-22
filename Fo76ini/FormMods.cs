@@ -52,7 +52,8 @@ namespace Fo76ini
 
         public void OpenUI()
         {
-            Utils.SetFormPosition(this, Form1.Instance.Location.X + Form1.Instance.Width, Form1.Instance.Location.Y);
+            //Utils.SetFormPosition(this, Form1.Instance.Location.X + Form1.Instance.Width, Form1.Instance.Location.Y);
+            Utils.SetFormPosition(this, Form1.Instance.Location.X + 100, Form1.Instance.Location.Y + 50);
             this.WindowState = FormWindowState.Normal;
             this.UpdateUI();
             this.Show();

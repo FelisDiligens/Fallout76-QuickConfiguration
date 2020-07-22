@@ -593,7 +593,7 @@ namespace Fo76ini
         {
             foreach (Process process in Process.GetProcesses())
             {
-                if (process.ProcessName.Contains(name))
+                if (process.ProcessName.ToLower().Contains(name.ToLower()))
                 {
                     return true;
                 }

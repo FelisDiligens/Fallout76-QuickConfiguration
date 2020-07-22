@@ -31,9 +31,38 @@ namespace Fo76ini
         {
             this.trackBarCameraY.Enabled = camPosMode != CameraPositionMode.Unarmed;
 
-            // ******************************************
-            // ******** TODO: Update TrackBars! *********
-            // ******************************************
+            int rangeX = Math.Abs(trackBarCameraX.Maximum) + Math.Abs(trackBarCameraX.Minimum);
+            int rangeY = Math.Abs(trackBarCameraY.Maximum) + Math.Abs(trackBarCameraY.Minimum);
+            int rangeZ = Math.Abs(trackBarCameraZ.Maximum) + Math.Abs(trackBarCameraZ.Minimum);
+
+            float x, y, z;
+
+            switch (camPosMode)
+            {
+                case CameraPositionMode.Unarmed:
+                    x = IniFiles.Instance.GetFloat("Camera", "fOverShoulderPosX", 0);
+                    z = IniFiles.Instance.GetFloat("Camera", "fOverShoulderPosZ", 0);
+                    this.trackBarCameraX.Value = (int)(x / camOffsetMultiplier * rangeX / 2);
+                    this.trackBarCameraY.Value = 0;
+                    this.trackBarCameraZ.Value = (int)(z / camOffsetMultiplier * rangeZ / 2);
+                    break;
+                case CameraPositionMode.Combat:
+                    x = IniFiles.Instance.GetFloat("Camera", "fOverShoulderCombatPosX", 0);
+                    y = IniFiles.Instance.GetFloat("Camera", "fOverShoulderCombatAddY", 0);
+                    z = IniFiles.Instance.GetFloat("Camera", "fOverShoulderCombatPosZ", 0);
+                    this.trackBarCameraX.Value = (int)(x / camOffsetMultiplier * rangeX / 2);
+                    this.trackBarCameraY.Value = (int)(y / camOffsetMultiplier * rangeY / 2);
+                    this.trackBarCameraZ.Value = (int)(z / camOffsetMultiplier * rangeZ / 2);
+                    break;
+                case CameraPositionMode.MeleeCombat:
+                    x = IniFiles.Instance.GetFloat("Camera", "fOverShoulderMeleeCombatPosX", 0);
+                    y = IniFiles.Instance.GetFloat("Camera", "fOverShoulderMeleeCombatAddY", 0);
+                    z = IniFiles.Instance.GetFloat("Camera", "fOverShoulderMeleeCombatPosZ", 0);
+                    this.trackBarCameraX.Value = (int)(x / camOffsetMultiplier * rangeX / 2);
+                    this.trackBarCameraY.Value = (int)(y / camOffsetMultiplier * rangeY / 2);
+                    this.trackBarCameraZ.Value = (int)(z / camOffsetMultiplier * rangeZ / 2);
+                    break;
+            }
         }
 
         // Not correct: ~X: - Right, + Left~
@@ -135,6 +164,29 @@ namespace Fo76ini
 
             this.checkBoxbApplyCameraNodeAnimations.Checked = true;
             IniFiles.Instance.Remove(IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations");
+
+            UpdateCameraPositionUI();
+        }
+
+        private void buttonCameraPositionCenter_Click(object sender, EventArgs e)
+        {
+            switch (camPosMode)
+            {
+                case CameraPositionMode.Unarmed:
+                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderPosX", 0);
+                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderPosZ", 0);
+                    break;
+                case CameraPositionMode.Combat:
+                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderCombatPosX", 0);
+                    //IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderCombatAddY", value);
+                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderCombatPosZ", 0);
+                    break;
+                case CameraPositionMode.MeleeCombat:
+                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatPosX", 0);
+                    //IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatAddY", value);
+                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatPosZ", 0);
+                    break;
+            }
 
             UpdateCameraPositionUI();
         }

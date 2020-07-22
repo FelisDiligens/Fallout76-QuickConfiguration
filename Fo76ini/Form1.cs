@@ -15,7 +15,7 @@ namespace Fo76ini
 {
     public partial class Form1 : Form
     {
-        public const String VERSION = "1.7.2";
+        public const String VERSION = "1.8";
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
@@ -145,7 +145,7 @@ namespace Fo76ini
                     subControl.MouseWheel += (object sender, MouseEventArgs e) => ((HandledMouseEventArgs)e).Handled = true;
 
                 // TabControl, TabPage, and GroupBox:
-                if (subControl.Name.StartsWith("tab") || subControl.Name.StartsWith("groupBox"))
+                if (subControl.Name.StartsWith("tab") || subControl.Name.StartsWith("groupBox") || subControl.Name.StartsWith("panel"))
                     PreventChangeOnMouseWheelForAllElements(subControl);
             }
         }
@@ -864,7 +864,7 @@ namespace Fo76ini
         }
 
         // "Apply" button:
-        private void buttonApply_Click(object sender, EventArgs e)
+        private void toolStripButtonApply_Click(object sender, EventArgs e)
         {
             // Show a messagebox to ask the user, if they want to make a backup.
             if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bSkipBackupQuestion", false))
@@ -889,7 +889,7 @@ namespace Fo76ini
         }
 
         // "Launch Game" button:
-        private void buttonLaunchGame_Click(object sender, EventArgs e)
+        private void toolStripButtonLaunchGame_Click(object sender, EventArgs e)
         {
             uint uGameEdition = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uGameEdition", 0);
             uint uLaunchOption = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uLaunchOption", 1);
@@ -971,7 +971,7 @@ namespace Fo76ini
 
 
 
-        private void buttonManageMods_Click(object sender, EventArgs e)
+        private void toolStripButtonManageMods_Click(object sender, EventArgs e)
         {
             if (!formModsBackupCreated)
             {
@@ -986,7 +986,7 @@ namespace Fo76ini
             System.Diagnostics.Process.Start("https://felisdiligens.github.io/Fo76ini/index.html");
         }*/
 
-        private void buttonFixIssuesEarlierVersion_Click(object sender, EventArgs e)
+        /*private void buttonFixIssuesEarlierVersion_Click(object sender, EventArgs e)
         {
             // Reset all values to default, that I removed but where present in previous versions.
 
@@ -1008,7 +1008,7 @@ namespace Fo76ini
             // IniFiles.Instance.Remove(IniFile.F76Custom, "Controls", "bMouseAcceleration");
 
             MsgBox.Get("oldValuesResetToDefault").Popup(MessageBoxIcon.Information);
-        }
+        }*/
 
         /*
          * Game edition
@@ -1138,12 +1138,6 @@ namespace Fo76ini
             }
         }
 
-        private void pictureBoxGameEdition_Click(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectTab(this.tabPageSettings);
-            this.groupBoxGameEdition.Focus();
-        }
-
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
         {
             // https://stackoverflow.com/questions/8185747/how-can-i-unmask-password-text-box-and-mask-it-back-to-password
@@ -1178,7 +1172,10 @@ namespace Fo76ini
                 IniFiles.Instance.UpdateLastModifiedDates();
 
                 // Don't prompt, if Fallout 76 is running....
-                if (!Utils.IsProcessRunning("Fallout76"))
+                if (ManagedMods.Instance.GameEdition == GameEdition.MSStore ?
+                        //!Utils.IsProcessRunning("Project76_GamePass") :
+                        !Utils.IsProcessRunning("Project76") :
+                        !Utils.IsProcessRunning("Fallout76"))
                     MsgBox.Get("iniFilesModified").Popup(MessageBoxIcon.Warning);
             }
         }
@@ -1238,11 +1235,6 @@ namespace Fo76ini
             Process.Start(startInfo);
             Application.Exit();
             //Environment.Exit(0);
-        }
-
-        private void buttonForceUpdate_Click(object sender, EventArgs e)
-        {
-            buttonUpdateNow_Click(sender, e);
         }
 
         private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
@@ -1319,9 +1311,34 @@ namespace Fo76ini
                 this.labelLaunchOptionMSStoreNotice.Visible = this.radioButtonLaunchViaExecutable.Checked;
         }
 
-        private void buttonOpenConfigPath_Click(object sender, EventArgs e)
+        private void toolConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Utils.OpenExplorer(Form1.AppConfigFolder);
+        }
+
+        private void toolLanguagesFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utils.OpenExplorer(Path.Combine(Form1.AppConfigFolder, "languages"));
+        }
+
+        private void toolInstallationFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utils.OpenExplorer(Directory.GetParent(Application.ExecutablePath).ToString());
+        }
+
+        private void gameFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utils.OpenExplorer(ManagedMods.Instance.GamePath);
+        }
+
+        private void gamesConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utils.OpenExplorer(IniFiles.Instance.iniParentPath);
+        }
+
+        private void toolStripButtonNexusMods_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/mods/546");
         }
     }
 }

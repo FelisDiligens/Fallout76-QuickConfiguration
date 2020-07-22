@@ -49,7 +49,7 @@ namespace Fo76ini
 
         protected Encoding iniEncoding = new UTF8Encoding(false); // UTF-8 without BOM
 
-        protected String iniParentPath;
+        public String iniParentPath;
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 

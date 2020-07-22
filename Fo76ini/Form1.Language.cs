@@ -14,6 +14,11 @@ using System.Xml.Linq;
 
 namespace Fo76ini
 {
+    /*
+     * Honestly, a major rewrite is MANDATORY!
+     * But I'm to lazy. Quick & Dirty is here to stay. :P
+     */
+
     partial class Form1
     {
         private String languageFolder = Path.Combine(Form1.AppConfigFolder, "languages");
@@ -108,7 +113,8 @@ namespace Fo76ini
                     subControl.Name != "groupBoxWIP" &&
                     subControl.Name != "labelNewVersion" &&
                     subControl.Name != "labelModsDeploy" &&
-                    subControl.Name != "labelGameEdition")
+                    subControl.Name != "labelGameEdition" &&
+                    !subControl.Name.ToLower().Contains("separator"))
                 {
                     // Get XElement name:
                     String type = "Element";
@@ -191,11 +197,23 @@ namespace Fo76ini
                     {
                         foreach (ToolStripItem toolItem in ((ToolStrip)subControl).Items)
                         {
-                            if (toolItem.Name.StartsWith("toolStripButton"))
+                            if (toolItem.Name.StartsWith("toolStripButton") ||
+                                toolItem.Name.StartsWith("toolStripSplitButton") ||
+                                toolItem.Name.StartsWith("toolStripDropDownButton"))
                             {
                                 XElement xmlToolStripItem = new XElement("Button",
                                     new XAttribute("text", toolItem.Text),
                                     new XAttribute("id", toolItem.Name));
+
+                                if (toolItem.Name.StartsWith("toolStripSplitButton"))
+                                {
+                                    subCount += SerializeMenuStripItems(xmlToolStripItem, ((ToolStripSplitButton)toolItem).DropDownItems);
+                                }
+                                else if (toolItem.Name.StartsWith("toolStripDropDownButton"))
+                                {
+                                    subCount += SerializeMenuStripItems(xmlToolStripItem, ((ToolStripDropDownButton)toolItem).DropDownItems);
+                                }
+
                                 subElement.Add(xmlToolStripItem);
                                 subCount++;
                             }
@@ -284,6 +302,18 @@ namespace Fo76ini
         {
             Dictionary<String, String> dict = DeserializeXMLDescendants(xmlStrip, new Dictionary<String, String>());
             DeserializeMenuStripItem(strip.Items, dict);
+        }
+
+        private void DeserializeToolStripSplitButton(XElement xmlStrip, ToolStripSplitButton strip)
+        {
+            Dictionary<String, String> dict = DeserializeXMLDescendants(xmlStrip, new Dictionary<String, String>());
+            DeserializeMenuStripItem(strip.DropDownItems, dict);
+        }
+
+        private void DeserializeToolStripDropDownButton(XElement xmlStrip, ToolStripDropDownButton strip)
+        {
+            Dictionary<String, String> dict = DeserializeXMLDescendants(xmlStrip, new Dictionary<String, String>());
+            DeserializeMenuStripItem(strip.DropDownItems, dict);
         }
 
         private void DeserializeMenuStripItem(ToolStripItemCollection items, Dictionary<String, String> dict)
@@ -486,9 +516,34 @@ namespace Fo76ini
                     {
                         foreach (ToolStripItem toolItem in this.formMods.toolStrip1.Items)
                         {
-                            if (toolItem.Name.StartsWith("toolStripButton") && dictText.ContainsKey(toolItem.Name))
+                            if (toolItem.Name.StartsWith("toolStripButton") &&
+                                dictText.ContainsKey(toolItem.Name))
                             {
                                 toolItem.Text = dictText[toolItem.Name];
+                            }
+                        }
+                    }
+                }
+
+                //XElement xmlForm1 = xmlDoc.Root.Element("Form1");
+                if (xmlForm1 != null)
+                {
+                    XElement xmlToolStrip = xmlForm1.Descendants("Tool").FirstOrDefault();
+                    if (xmlToolStrip != null)
+                    {
+                        foreach (ToolStripItem toolItem in this.toolStrip1.Items)
+                        {
+                            if ((toolItem.Name.StartsWith("toolStripButton") ||
+                                toolItem.Name.StartsWith("toolStripSplitButton") ||
+                                toolItem.Name.StartsWith("toolStripDropDownButton"))
+                                && dictText.ContainsKey(toolItem.Name))
+                            {
+                                toolItem.Text = dictText[toolItem.Name];
+
+                                if (toolItem.Name.StartsWith("toolStripSplitButton"))
+                                    DeserializeToolStripSplitButton(xmlToolStrip, (ToolStripSplitButton)toolItem);
+                                else if (toolItem.Name.StartsWith("toolStripDropDownButton"))
+                                    DeserializeToolStripDropDownButton(xmlToolStrip, (ToolStripDropDownButton)toolItem);
                             }
                         }
                     }
