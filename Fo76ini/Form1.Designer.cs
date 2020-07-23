@@ -66,21 +66,11 @@
             this.checkBoxAmbientOcclusion = new System.Windows.Forms.CheckBox();
             this.checkBoxWaterDisplacement = new System.Windows.Forms.CheckBox();
             this.labelShadowTextureResolution = new System.Windows.Forms.Label();
-            this.sliderShadowDistance = new MetroFramework.Controls.MetroTrackBar();
             this.labelShadowBlurriness = new System.Windows.Forms.Label();
             this.checkBoxGodrays = new System.Windows.Forms.CheckBox();
-            this.sliderLODObjects = new MetroFramework.Controls.MetroTrackBar();
-            this.sliderLODItems = new MetroFramework.Controls.MetroTrackBar();
-            this.sliderLODActors = new MetroFramework.Controls.MetroTrackBar();
             this.checkBoxGrass = new System.Windows.Forms.CheckBox();
-            this.sliderGrassFadeDistance = new MetroFramework.Controls.MetroTrackBar();
-            this.sliderTAAPostOverlay = new MetroFramework.Controls.MetroTrackBar();
-            this.sliderTAAPostSharpen = new MetroFramework.Controls.MetroTrackBar();
-            this.checkBoxMainMenuMusic = new System.Windows.Forms.CheckBox();
             this.checkBoxIntroVideos = new System.Windows.Forms.CheckBox();
             this.checkBoxShowSplash = new System.Windows.Forms.CheckBox();
-            this.checkBoxDialogueSubtitles = new System.Windows.Forms.CheckBox();
-            this.checkBoxGeneralSubtitles = new System.Windows.Forms.CheckBox();
             this.checkBoxShowDamageNumbersA = new System.Windows.Forms.CheckBox();
             this.checkBoxShowDamageNumbersNW = new System.Windows.Forms.CheckBox();
             this.checkBoxShowCompass = new System.Windows.Forms.CheckBox();
@@ -92,11 +82,51 @@
             this.checkBoxMultipleGameEditionsUsed = new System.Windows.Forms.CheckBox();
             this.checkBoxDenyNTFSWritePermission = new System.Windows.Forms.CheckBox();
             this.checkBoxFixMouseSensitivity = new System.Windows.Forms.CheckBox();
-            this.sliderMouseSensitivity = new MetroFramework.Controls.MetroTrackBar();
             this.checkBoxFixAimSensitivity = new System.Windows.Forms.CheckBox();
             this.checkBoxMouseAcceleration = new System.Windows.Forms.CheckBox();
             this.checkBoxGamepadRumble = new System.Windows.Forms.CheckBox();
             this.checkBoxGamepadEnabled = new System.Windows.Forms.CheckBox();
+            this.sliderGrassFadeDistance = new System.Windows.Forms.TrackBar();
+            this.sliderTAAPostOverlay = new System.Windows.Forms.TrackBar();
+            this.sliderTAAPostSharpen = new System.Windows.Forms.TrackBar();
+            this.sliderShadowDistance = new System.Windows.Forms.TrackBar();
+            this.sliderLODObjects = new System.Windows.Forms.TrackBar();
+            this.sliderLODItems = new System.Windows.Forms.TrackBar();
+            this.sliderLODActors = new System.Windows.Forms.TrackBar();
+            this.sliderMouseSensitivity = new System.Windows.Forms.TrackBar();
+            this.sliderVolumeMaster = new System.Windows.Forms.TrackBar();
+            this.checkBoxEnableAudio = new System.Windows.Forms.CheckBox();
+            this.sliderAudiofVal0 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal1 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal2 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal3 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal4 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal5 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal6 = new System.Windows.Forms.TrackBar();
+            this.sliderAudioChat = new System.Windows.Forms.TrackBar();
+            this.checkBoxMainMenuMusic = new System.Windows.Forms.CheckBox();
+            this.checkBoxGeneralSubtitles = new System.Windows.Forms.CheckBox();
+            this.checkBoxDialogueSubtitles = new System.Windows.Forms.CheckBox();
+            this.checkBoxPushToTalk = new System.Windows.Forms.CheckBox();
+            this.checkBoxMouseInvertY = new System.Windows.Forms.CheckBox();
+            this.checkBoxMouseInvertX = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableQuestAutoTrackMain = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableQuestAutoTrackSide = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableQuestAutoTrackMisc = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableQuestAutoTrackEvent = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableQuestAutoTrackDaily = new System.Windows.Forms.CheckBox();
+            this.checkBoxDialogueHistory = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnablePowerArmorHUD = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowCrosshair = new System.Windows.Forms.CheckBox();
+            this.checkBoxItemRarityColorsNW = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowPublicTeamNotifications = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowFloatingQuestMarkers = new System.Windows.Forms.CheckBox();
+            this.sliderFloatingQuestMarkersDistance = new System.Windows.Forms.TrackBar();
+            this.checkBoxShowFloatingQuestText = new System.Windows.Forms.CheckBox();
+            this.sliderConversationHistorySize = new System.Windows.Forms.TrackBar();
+            this.checkBoxShowOtherPlayersNames = new System.Windows.Forms.CheckBox();
+            this.sliderHUDOpacity = new System.Windows.Forms.TrackBar();
+            this.labelShowActiveEffectsOnHUD = new System.Windows.Forms.Label();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
@@ -149,8 +179,8 @@
             this.groupBoxGraphics = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBoxTAASharpening = new System.Windows.Forms.GroupBox();
-            this.numTAAPostSharpen = new System.Windows.Forms.NumericUpDown();
             this.labelTAAPostSharpen = new System.Windows.Forms.Label();
+            this.numTAAPostSharpen = new System.Windows.Forms.NumericUpDown();
             this.numTAAPostOverlay = new System.Windows.Forms.NumericUpDown();
             this.labelTAAPostOverlay = new System.Windows.Forms.Label();
             this.groupBoxGrass = new System.Windows.Forms.GroupBox();
@@ -181,7 +211,13 @@
             this.buttonDetectResolution = new System.Windows.Forms.Button();
             this.labelCustomResolutionSpacer = new System.Windows.Forms.Label();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
-            this.groupBoxInterface = new System.Windows.Forms.GroupBox();
+            this.groupBoxQuests = new System.Windows.Forms.GroupBox();
+            this.groupBoxGeneralInterface = new System.Windows.Forms.GroupBox();
+            this.comboBoxShowActiveEffectsOnHUD = new System.Windows.Forms.ComboBox();
+            this.labelHUDOpacity = new System.Windows.Forms.Label();
+            this.numHUDOpacity = new System.Windows.Forms.NumericUpDown();
+            this.numFloatingQuestMarkersDistance = new System.Windows.Forms.NumericUpDown();
+            this.labelFloatingQuestMarkersDistance = new System.Windows.Forms.Label();
             this.groupBoxLogin = new System.Windows.Forms.GroupBox();
             this.checkBoxDisableSteam = new System.Windows.Forms.CheckBox();
             this.labelCredentialsExplanation = new System.Windows.Forms.Label();
@@ -238,6 +274,37 @@
             this.labelTitle = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageAudio = new System.Windows.Forms.TabPage();
+            this.groupBoxAudio = new System.Windows.Forms.GroupBox();
+            this.groupBoxVoice = new System.Windows.Forms.GroupBox();
+            this.comboBoxVoiceChatMode = new System.Windows.Forms.ComboBox();
+            this.labelVoiceChatMode = new System.Windows.Forms.Label();
+            this.groupBoxAudioVolume = new System.Windows.Forms.GroupBox();
+            this.labelVolumeMaster = new System.Windows.Forms.Label();
+            this.numVolumeMaster = new System.Windows.Forms.NumericUpDown();
+            this.numAudioChat = new System.Windows.Forms.NumericUpDown();
+            this.labelAudioChat = new System.Windows.Forms.Label();
+            this.labelAudiofVal0 = new System.Windows.Forms.Label();
+            this.numAudiofVal0 = new System.Windows.Forms.NumericUpDown();
+            this.numAudiofVal6 = new System.Windows.Forms.NumericUpDown();
+            this.labelAudiofVal6 = new System.Windows.Forms.Label();
+            this.labelAudiofVal1 = new System.Windows.Forms.Label();
+            this.numAudiofVal1 = new System.Windows.Forms.NumericUpDown();
+            this.numAudiofVal5 = new System.Windows.Forms.NumericUpDown();
+            this.labelAudiofVal5 = new System.Windows.Forms.Label();
+            this.labelAudiofVal2 = new System.Windows.Forms.Label();
+            this.numAudiofVal2 = new System.Windows.Forms.NumericUpDown();
+            this.numAudiofVal4 = new System.Windows.Forms.NumericUpDown();
+            this.labelAudiofVal4 = new System.Windows.Forms.Label();
+            this.labelAudiofVal3 = new System.Windows.Forms.Label();
+            this.numAudiofVal3 = new System.Windows.Forms.NumericUpDown();
+            this.groupBoxAudioInterface = new System.Windows.Forms.GroupBox();
+            this.numConversationHistorySize = new System.Windows.Forms.NumericUpDown();
+            this.labelConversationHistorySize = new System.Windows.Forms.Label();
+            this.tabPageCustom = new System.Windows.Forms.TabPage();
+            this.buttonCustomSave = new System.Windows.Forms.Button();
+            this.comboBoxCustomFile = new System.Windows.Forms.ComboBox();
+            this.labelCustomFile = new System.Windows.Forms.Label();
+            this.textBoxCustom = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonApply = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLaunchGame = new System.Windows.Forms.ToolStripButton();
@@ -262,6 +329,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGrassFadeDistance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderTAAPostOverlay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderTAAPostSharpen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderShadowDistance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderLODObjects)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderLODItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderLODActors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderVolumeMaster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudioChat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderFloatingQuestMarkersDistance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).BeginInit();
             this.tabPageCamera.SuspendLayout();
             this.groupBoxCameraPosition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCameraX)).BeginInit();
@@ -304,7 +391,10 @@
             this.groupBoxWeather.SuspendLayout();
             this.groupBoxDisplay.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
-            this.groupBoxInterface.SuspendLayout();
+            this.groupBoxQuests.SuspendLayout();
+            this.groupBoxGeneralInterface.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numHUDOpacity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFloatingQuestMarkersDistance)).BeginInit();
             this.groupBoxLogin.SuspendLayout();
             this.groupBoxMainMenu.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
@@ -324,6 +414,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabPageAudio.SuspendLayout();
+            this.groupBoxAudio.SuspendLayout();
+            this.groupBoxVoice.SuspendLayout();
+            this.groupBoxAudioVolume.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numVolumeMaster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudioChat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal3)).BeginInit();
+            this.groupBoxAudioInterface.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).BeginInit();
+            this.tabPageCustom.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -506,7 +612,7 @@
             // labelDisplayMode
             // 
             this.labelDisplayMode.AutoSize = true;
-            this.labelDisplayMode.Location = new System.Drawing.Point(9, 22);
+            this.labelDisplayMode.Location = new System.Drawing.Point(6, 23);
             this.labelDisplayMode.Name = "labelDisplayMode";
             this.labelDisplayMode.Size = new System.Drawing.Size(73, 13);
             this.labelDisplayMode.TabIndex = 1;
@@ -516,7 +622,7 @@
             // numCustomResH
             // 
             this.numCustomResH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numCustomResH.Location = new System.Drawing.Point(293, 71);
+            this.numCustomResH.Location = new System.Drawing.Point(290, 72);
             this.numCustomResH.Maximum = new decimal(new int[] {
             8192,
             0,
@@ -540,7 +646,7 @@
             // numCustomResW
             // 
             this.numCustomResW.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numCustomResW.Location = new System.Drawing.Point(154, 71);
+            this.numCustomResW.Location = new System.Drawing.Point(151, 72);
             this.numCustomResW.Maximum = new decimal(new int[] {
             8192,
             0,
@@ -564,7 +670,7 @@
             // checkBoxTopMostWindow
             // 
             this.checkBoxTopMostWindow.AutoSize = true;
-            this.checkBoxTopMostWindow.Location = new System.Drawing.Point(12, 128);
+            this.checkBoxTopMostWindow.Location = new System.Drawing.Point(9, 129);
             this.checkBoxTopMostWindow.Name = "checkBoxTopMostWindow";
             this.checkBoxTopMostWindow.Size = new System.Drawing.Size(109, 17);
             this.checkBoxTopMostWindow.TabIndex = 21;
@@ -575,7 +681,7 @@
             // labelResolution
             // 
             this.labelResolution.AutoSize = true;
-            this.labelResolution.Location = new System.Drawing.Point(9, 47);
+            this.labelResolution.Location = new System.Drawing.Point(6, 48);
             this.labelResolution.Name = "labelResolution";
             this.labelResolution.Size = new System.Drawing.Size(60, 13);
             this.labelResolution.TabIndex = 3;
@@ -586,7 +692,7 @@
             // checkBoxAlwaysActive
             // 
             this.checkBoxAlwaysActive.AutoSize = true;
-            this.checkBoxAlwaysActive.Location = new System.Drawing.Point(12, 151);
+            this.checkBoxAlwaysActive.Location = new System.Drawing.Point(9, 152);
             this.checkBoxAlwaysActive.Name = "checkBoxAlwaysActive";
             this.checkBoxAlwaysActive.Size = new System.Drawing.Size(91, 17);
             this.checkBoxAlwaysActive.TabIndex = 22;
@@ -598,7 +704,7 @@
             // labelCustomResolution
             // 
             this.labelCustomResolution.AutoSize = true;
-            this.labelCustomResolution.Location = new System.Drawing.Point(9, 73);
+            this.labelCustomResolution.Location = new System.Drawing.Point(6, 74);
             this.labelCustomResolution.Name = "labelCustomResolution";
             this.labelCustomResolution.Size = new System.Drawing.Size(93, 13);
             this.labelCustomResolution.TabIndex = 2;
@@ -608,7 +714,7 @@
             // checkBoxFixHUDFor5_4and4_3
             // 
             this.checkBoxFixHUDFor5_4and4_3.AutoSize = true;
-            this.checkBoxFixHUDFor5_4and4_3.Location = new System.Drawing.Point(12, 196);
+            this.checkBoxFixHUDFor5_4and4_3.Location = new System.Drawing.Point(9, 197);
             this.checkBoxFixHUDFor5_4and4_3.Name = "checkBoxFixHUDFor5_4and4_3";
             this.checkBoxFixHUDFor5_4and4_3.Size = new System.Drawing.Size(225, 17);
             this.checkBoxFixHUDFor5_4and4_3.TabIndex = 24;
@@ -619,7 +725,7 @@
             // labelAntiAliasing
             // 
             this.labelAntiAliasing.AutoSize = true;
-            this.labelAntiAliasing.Location = new System.Drawing.Point(6, 6);
+            this.labelAntiAliasing.Location = new System.Drawing.Point(6, 11);
             this.labelAntiAliasing.Name = "labelAntiAliasing";
             this.labelAntiAliasing.Size = new System.Drawing.Size(67, 13);
             this.labelAntiAliasing.TabIndex = 26;
@@ -631,7 +737,7 @@
             this.checkBoxVSync.AutoSize = true;
             this.checkBoxVSync.Checked = true;
             this.checkBoxVSync.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxVSync.Location = new System.Drawing.Point(9, 68);
+            this.checkBoxVSync.Location = new System.Drawing.Point(9, 73);
             this.checkBoxVSync.Name = "checkBoxVSync";
             this.checkBoxVSync.Size = new System.Drawing.Size(137, 17);
             this.checkBoxVSync.TabIndex = 29;
@@ -642,7 +748,7 @@
             // labelAnisotropicFiltering
             // 
             this.labelAnisotropicFiltering.AutoSize = true;
-            this.labelAnisotropicFiltering.Location = new System.Drawing.Point(6, 36);
+            this.labelAnisotropicFiltering.Location = new System.Drawing.Point(6, 41);
             this.labelAnisotropicFiltering.Name = "labelAnisotropicFiltering";
             this.labelAnisotropicFiltering.Size = new System.Drawing.Size(84, 13);
             this.labelAnisotropicFiltering.TabIndex = 33;
@@ -655,7 +761,7 @@
             this.checkBoxWeatherRainOcclusion.AutoSize = true;
             this.checkBoxWeatherRainOcclusion.Checked = true;
             this.checkBoxWeatherRainOcclusion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWeatherRainOcclusion.Location = new System.Drawing.Point(6, 39);
+            this.checkBoxWeatherRainOcclusion.Location = new System.Drawing.Point(9, 39);
             this.checkBoxWeatherRainOcclusion.Name = "checkBoxWeatherRainOcclusion";
             this.checkBoxWeatherRainOcclusion.Size = new System.Drawing.Size(98, 17);
             this.checkBoxWeatherRainOcclusion.TabIndex = 1;
@@ -668,7 +774,7 @@
             this.checkBoxWeatherWetnessOcclusion.AutoSize = true;
             this.checkBoxWeatherWetnessOcclusion.Checked = true;
             this.checkBoxWeatherWetnessOcclusion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWeatherWetnessOcclusion.Location = new System.Drawing.Point(6, 62);
+            this.checkBoxWeatherWetnessOcclusion.Location = new System.Drawing.Point(9, 62);
             this.checkBoxWeatherWetnessOcclusion.Name = "checkBoxWeatherWetnessOcclusion";
             this.checkBoxWeatherWetnessOcclusion.Size = new System.Drawing.Size(118, 17);
             this.checkBoxWeatherWetnessOcclusion.TabIndex = 3;
@@ -682,7 +788,7 @@
             this.checkBoxFogEnabled.AutoSize = true;
             this.checkBoxFogEnabled.Checked = true;
             this.checkBoxFogEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxFogEnabled.Location = new System.Drawing.Point(6, 16);
+            this.checkBoxFogEnabled.Location = new System.Drawing.Point(9, 16);
             this.checkBoxFogEnabled.Name = "checkBoxFogEnabled";
             this.checkBoxFogEnabled.Size = new System.Drawing.Size(44, 17);
             this.checkBoxFogEnabled.TabIndex = 4;
@@ -695,7 +801,7 @@
             this.checkBoxLensFlare.AutoSize = true;
             this.checkBoxLensFlare.Checked = true;
             this.checkBoxLensFlare.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxLensFlare.Location = new System.Drawing.Point(6, 89);
+            this.checkBoxLensFlare.Location = new System.Drawing.Point(9, 88);
             this.checkBoxLensFlare.Name = "checkBoxLensFlare";
             this.checkBoxLensFlare.Size = new System.Drawing.Size(75, 17);
             this.checkBoxLensFlare.TabIndex = 12;
@@ -709,7 +815,7 @@
             this.checkBoxRadialBlur.AutoSize = true;
             this.checkBoxRadialBlur.Checked = true;
             this.checkBoxRadialBlur.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxRadialBlur.Location = new System.Drawing.Point(6, 66);
+            this.checkBoxRadialBlur.Location = new System.Drawing.Point(9, 65);
             this.checkBoxRadialBlur.Name = "checkBoxRadialBlur";
             this.checkBoxRadialBlur.Size = new System.Drawing.Size(77, 17);
             this.checkBoxRadialBlur.TabIndex = 9;
@@ -722,7 +828,7 @@
             this.checkBoxMotionBlur.AutoSize = true;
             this.checkBoxMotionBlur.Checked = true;
             this.checkBoxMotionBlur.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMotionBlur.Location = new System.Drawing.Point(6, 43);
+            this.checkBoxMotionBlur.Location = new System.Drawing.Point(9, 42);
             this.checkBoxMotionBlur.Name = "checkBoxMotionBlur";
             this.checkBoxMotionBlur.Size = new System.Drawing.Size(79, 17);
             this.checkBoxMotionBlur.TabIndex = 11;
@@ -736,7 +842,7 @@
             this.checkBoxDepthOfField.AutoSize = true;
             this.checkBoxDepthOfField.Checked = true;
             this.checkBoxDepthOfField.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDepthOfField.Location = new System.Drawing.Point(6, 20);
+            this.checkBoxDepthOfField.Location = new System.Drawing.Point(9, 19);
             this.checkBoxDepthOfField.Name = "checkBoxDepthOfField";
             this.checkBoxDepthOfField.Size = new System.Drawing.Size(92, 17);
             this.checkBoxDepthOfField.TabIndex = 10;
@@ -749,7 +855,7 @@
             this.checkBoxAmbientOcclusion.AutoSize = true;
             this.checkBoxAmbientOcclusion.Checked = true;
             this.checkBoxAmbientOcclusion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAmbientOcclusion.Location = new System.Drawing.Point(6, 112);
+            this.checkBoxAmbientOcclusion.Location = new System.Drawing.Point(9, 111);
             this.checkBoxAmbientOcclusion.Name = "checkBoxAmbientOcclusion";
             this.checkBoxAmbientOcclusion.Size = new System.Drawing.Size(114, 17);
             this.checkBoxAmbientOcclusion.TabIndex = 13;
@@ -762,7 +868,7 @@
             this.checkBoxWaterDisplacement.AutoSize = true;
             this.checkBoxWaterDisplacement.Checked = true;
             this.checkBoxWaterDisplacement.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWaterDisplacement.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxWaterDisplacement.Location = new System.Drawing.Point(9, 19);
             this.checkBoxWaterDisplacement.Name = "checkBoxWaterDisplacement";
             this.checkBoxWaterDisplacement.Size = new System.Drawing.Size(90, 17);
             this.checkBoxWaterDisplacement.TabIndex = 1;
@@ -782,22 +888,6 @@
             this.toolTip.SetToolTip(this.labelShadowTextureResolution, "Resolution of shadows. Higher settings will make shadows more detailed.\r\n\r\nAffect" +
         "ed values: iShadowMapResolution\r\nAffected files: Fallout76Prefs.ini");
             // 
-            // sliderShadowDistance
-            // 
-            this.sliderShadowDistance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderShadowDistance.BackColor = System.Drawing.Color.Transparent;
-            this.sliderShadowDistance.LargeChange = 10000;
-            this.sliderShadowDistance.Location = new System.Drawing.Point(10, 94);
-            this.sliderShadowDistance.Maximum = 200000;
-            this.sliderShadowDistance.Name = "sliderShadowDistance";
-            this.sliderShadowDistance.Size = new System.Drawing.Size(285, 23);
-            this.sliderShadowDistance.SmallChange = 1000;
-            this.sliderShadowDistance.TabIndex = 27;
-            this.sliderShadowDistance.Text = "metroTrackBar1";
-            this.toolTip.SetToolTip(this.sliderShadowDistance, resources.GetString("sliderShadowDistance.ToolTip"));
-            this.sliderShadowDistance.Value = 120000;
-            // 
             // labelShadowBlurriness
             // 
             this.labelShadowBlurriness.AutoSize = true;
@@ -814,7 +904,7 @@
             this.checkBoxGodrays.AutoSize = true;
             this.checkBoxGodrays.Checked = true;
             this.checkBoxGodrays.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGodrays.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxGodrays.Location = new System.Drawing.Point(10, 19);
             this.checkBoxGodrays.Name = "checkBoxGodrays";
             this.checkBoxGodrays.Size = new System.Drawing.Size(115, 17);
             this.checkBoxGodrays.TabIndex = 14;
@@ -823,63 +913,12 @@
         "le\r\nAffected files: Fallout76Prefs.ini");
             this.checkBoxGodrays.UseVisualStyleBackColor = true;
             // 
-            // sliderLODObjects
-            // 
-            this.sliderLODObjects.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderLODObjects.BackColor = System.Drawing.Color.Transparent;
-            this.sliderLODObjects.LargeChange = 10;
-            this.sliderLODObjects.Location = new System.Drawing.Point(103, 41);
-            this.sliderLODObjects.Maximum = 600;
-            this.sliderLODObjects.Name = "sliderLODObjects";
-            this.sliderLODObjects.Size = new System.Drawing.Size(214, 23);
-            this.sliderLODObjects.SmallChange = 5;
-            this.sliderLODObjects.TabIndex = 29;
-            this.sliderLODObjects.Text = "metroTrackBar1";
-            this.toolTip.SetToolTip(this.sliderLODObjects, "Sets the distance objects will begin to fade.\r\n\r\nAffected values: fLODFadeOutMult" +
-        "Objects\r\nAffected files: Fallout76Prefs.ini");
-            this.sliderLODObjects.Value = 60;
-            // 
-            // sliderLODItems
-            // 
-            this.sliderLODItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderLODItems.BackColor = System.Drawing.Color.Transparent;
-            this.sliderLODItems.LargeChange = 10;
-            this.sliderLODItems.Location = new System.Drawing.Point(104, 70);
-            this.sliderLODItems.Maximum = 600;
-            this.sliderLODItems.Name = "sliderLODItems";
-            this.sliderLODItems.Size = new System.Drawing.Size(213, 23);
-            this.sliderLODItems.SmallChange = 5;
-            this.sliderLODItems.TabIndex = 30;
-            this.sliderLODItems.Text = "metroTrackBar2";
-            this.toolTip.SetToolTip(this.sliderLODItems, "Sets the distance items will begin to fade.\r\n\r\nAffected values: fLODFadeOutMultIt" +
-        "ems\r\nAffected files: Fallout76Prefs.ini");
-            this.sliderLODItems.Value = 25;
-            // 
-            // sliderLODActors
-            // 
-            this.sliderLODActors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderLODActors.BackColor = System.Drawing.Color.Transparent;
-            this.sliderLODActors.LargeChange = 10;
-            this.sliderLODActors.Location = new System.Drawing.Point(103, 99);
-            this.sliderLODActors.Maximum = 600;
-            this.sliderLODActors.Name = "sliderLODActors";
-            this.sliderLODActors.Size = new System.Drawing.Size(214, 23);
-            this.sliderLODActors.SmallChange = 5;
-            this.sliderLODActors.TabIndex = 32;
-            this.sliderLODActors.Text = "metroTrackBar3";
-            this.toolTip.SetToolTip(this.sliderLODActors, "Sets the distance actors (=Players, NPCs) will begin to fade.\r\n\r\nAffected values:" +
-        " fLODFadeOutMultActors\r\nAffected files: Fallout76Prefs.ini");
-            this.sliderLODActors.Value = 45;
-            // 
             // checkBoxGrass
             // 
             this.checkBoxGrass.AutoSize = true;
             this.checkBoxGrass.Checked = true;
             this.checkBoxGrass.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGrass.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxGrass.Location = new System.Drawing.Point(9, 21);
             this.checkBoxGrass.Name = "checkBoxGrass";
             this.checkBoxGrass.Size = new System.Drawing.Size(87, 17);
             this.checkBoxGrass.TabIndex = 22;
@@ -887,67 +926,6 @@
             this.toolTip.SetToolTip(this.checkBoxGrass, "Enables/disables the grass ingame.\r\n\r\nAffected values: bAllowCreateGrass\r\nAffecte" +
         "d files: Fallout76Custom.ini");
             this.checkBoxGrass.UseVisualStyleBackColor = true;
-            // 
-            // sliderGrassFadeDistance
-            // 
-            this.sliderGrassFadeDistance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderGrassFadeDistance.BackColor = System.Drawing.Color.Transparent;
-            this.sliderGrassFadeDistance.LargeChange = 2000;
-            this.sliderGrassFadeDistance.Location = new System.Drawing.Point(9, 66);
-            this.sliderGrassFadeDistance.Maximum = 14000;
-            this.sliderGrassFadeDistance.Name = "sliderGrassFadeDistance";
-            this.sliderGrassFadeDistance.Size = new System.Drawing.Size(286, 23);
-            this.sliderGrassFadeDistance.SmallChange = 500;
-            this.sliderGrassFadeDistance.TabIndex = 24;
-            this.sliderGrassFadeDistance.Text = "metroTrackBar1";
-            this.toolTip.SetToolTip(this.sliderGrassFadeDistance, resources.GetString("sliderGrassFadeDistance.ToolTip"));
-            this.sliderGrassFadeDistance.Value = 3000;
-            // 
-            // sliderTAAPostOverlay
-            // 
-            this.sliderTAAPostOverlay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderTAAPostOverlay.BackColor = System.Drawing.Color.Transparent;
-            this.sliderTAAPostOverlay.LargeChange = 1;
-            this.sliderTAAPostOverlay.Location = new System.Drawing.Point(9, 41);
-            this.sliderTAAPostOverlay.Name = "sliderTAAPostOverlay";
-            this.sliderTAAPostOverlay.Size = new System.Drawing.Size(286, 23);
-            this.sliderTAAPostOverlay.TabIndex = 27;
-            this.sliderTAAPostOverlay.Text = "metroTrackBar1";
-            this.toolTip.SetToolTip(this.sliderTAAPostOverlay, "Sharpens the image.\r\n\r\nRecommended: 0.2\r\nDefault: 0.2\r\n\r\nAffected values: fTAAPos" +
-        "tOverlay\r\nAffected files: Fallout76Custom.ini");
-            this.sliderTAAPostOverlay.Value = 20;
-            // 
-            // sliderTAAPostSharpen
-            // 
-            this.sliderTAAPostSharpen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderTAAPostSharpen.BackColor = System.Drawing.Color.Transparent;
-            this.sliderTAAPostSharpen.LargeChange = 1;
-            this.sliderTAAPostSharpen.Location = new System.Drawing.Point(9, 93);
-            this.sliderTAAPostSharpen.Maximum = 200;
-            this.sliderTAAPostSharpen.Name = "sliderTAAPostSharpen";
-            this.sliderTAAPostSharpen.Size = new System.Drawing.Size(286, 23);
-            this.sliderTAAPostSharpen.TabIndex = 30;
-            this.sliderTAAPostSharpen.Text = "metroTrackBar2";
-            this.toolTip.SetToolTip(this.sliderTAAPostSharpen, "Sharpens the image.\r\n\r\nDefault: 0.2\r\nRecommended: 0.4\r\n\r\nAffected values: fTAAPos" +
-        "tSharpen\r\nAffected files: Fallout76Custom.ini");
-            this.sliderTAAPostSharpen.Value = 20;
-            // 
-            // checkBoxMainMenuMusic
-            // 
-            this.checkBoxMainMenuMusic.AutoSize = true;
-            this.checkBoxMainMenuMusic.Checked = true;
-            this.checkBoxMainMenuMusic.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMainMenuMusic.Location = new System.Drawing.Point(7, 42);
-            this.checkBoxMainMenuMusic.Name = "checkBoxMainMenuMusic";
-            this.checkBoxMainMenuMusic.Size = new System.Drawing.Size(141, 17);
-            this.checkBoxMainMenuMusic.TabIndex = 1;
-            this.checkBoxMainMenuMusic.Text = "Play music in main menu";
-            this.toolTip.SetToolTip(this.checkBoxMainMenuMusic, "If unchecked, the game won\'t play background music in the main menu.\r\n\r\nAffected " +
-        "values: bPlayMainMenuMusic\r\nAffected files: Fallout76Custom.ini");
-            this.checkBoxMainMenuMusic.UseVisualStyleBackColor = true;
             // 
             // checkBoxIntroVideos
             // 
@@ -969,7 +947,7 @@
             this.checkBoxShowSplash.AutoSize = true;
             this.checkBoxShowSplash.Checked = true;
             this.checkBoxShowSplash.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowSplash.Location = new System.Drawing.Point(7, 65);
+            this.checkBoxShowSplash.Location = new System.Drawing.Point(7, 42);
             this.checkBoxShowSplash.Name = "checkBoxShowSplash";
             this.checkBoxShowSplash.Size = new System.Drawing.Size(221, 17);
             this.checkBoxShowSplash.TabIndex = 2;
@@ -978,54 +956,32 @@
         " bShowSplash\r\nAffected files: Fallout76Custom.ini");
             this.checkBoxShowSplash.UseVisualStyleBackColor = true;
             // 
-            // checkBoxDialogueSubtitles
-            // 
-            this.checkBoxDialogueSubtitles.AutoSize = true;
-            this.checkBoxDialogueSubtitles.Location = new System.Drawing.Point(7, 20);
-            this.checkBoxDialogueSubtitles.Name = "checkBoxDialogueSubtitles";
-            this.checkBoxDialogueSubtitles.Size = new System.Drawing.Size(137, 17);
-            this.checkBoxDialogueSubtitles.TabIndex = 0;
-            this.checkBoxDialogueSubtitles.Text = "Show dialogue subtitles";
-            this.toolTip.SetToolTip(this.checkBoxDialogueSubtitles, "Affected values: bDialogueSubtitles\r\nAffected files: Fallout76Prefs.ini");
-            this.checkBoxDialogueSubtitles.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxGeneralSubtitles
-            // 
-            this.checkBoxGeneralSubtitles.AutoSize = true;
-            this.checkBoxGeneralSubtitles.Location = new System.Drawing.Point(7, 43);
-            this.checkBoxGeneralSubtitles.Name = "checkBoxGeneralSubtitles";
-            this.checkBoxGeneralSubtitles.Size = new System.Drawing.Size(132, 17);
-            this.checkBoxGeneralSubtitles.TabIndex = 1;
-            this.checkBoxGeneralSubtitles.Text = "Show general subtitles";
-            this.toolTip.SetToolTip(this.checkBoxGeneralSubtitles, "Affected values: bGeneralSubtitles\r\nAffected files: Fallout76Prefs.ini");
-            this.checkBoxGeneralSubtitles.UseVisualStyleBackColor = true;
-            // 
             // checkBoxShowDamageNumbersA
             // 
             this.checkBoxShowDamageNumbersA.AutoSize = true;
-            this.checkBoxShowDamageNumbersA.Location = new System.Drawing.Point(7, 66);
+            this.checkBoxShowDamageNumbersA.Location = new System.Drawing.Point(9, 22);
             this.checkBoxShowDamageNumbersA.Name = "checkBoxShowDamageNumbersA";
-            this.checkBoxShowDamageNumbersA.Size = new System.Drawing.Size(266, 17);
+            this.checkBoxShowDamageNumbersA.Size = new System.Drawing.Size(261, 17);
             this.checkBoxShowDamageNumbersA.TabIndex = 2;
-            this.checkBoxShowDamageNumbersA.Text = "Show floating damage numbers in Adventure mode";
+            this.checkBoxShowDamageNumbersA.Text = "Show floating damage numbers (Adventure mode)";
             this.toolTip.SetToolTip(this.checkBoxShowDamageNumbersA, "Affected values: bShowDamageNumbers\r\nAffected files: Fallout76Prefs.ini");
             this.checkBoxShowDamageNumbersA.UseVisualStyleBackColor = true;
             // 
             // checkBoxShowDamageNumbersNW
             // 
             this.checkBoxShowDamageNumbersNW.AutoSize = true;
-            this.checkBoxShowDamageNumbersNW.Location = new System.Drawing.Point(7, 89);
+            this.checkBoxShowDamageNumbersNW.Location = new System.Drawing.Point(9, 45);
             this.checkBoxShowDamageNumbersNW.Name = "checkBoxShowDamageNumbersNW";
-            this.checkBoxShowDamageNumbersNW.Size = new System.Drawing.Size(259, 17);
+            this.checkBoxShowDamageNumbersNW.Size = new System.Drawing.Size(254, 17);
             this.checkBoxShowDamageNumbersNW.TabIndex = 3;
-            this.checkBoxShowDamageNumbersNW.Text = "Show floating damage numbers in Nuclear Winter";
+            this.checkBoxShowDamageNumbersNW.Text = "Show floating damage numbers (Nuclear Winter)";
             this.toolTip.SetToolTip(this.checkBoxShowDamageNumbersNW, "Affected values: bShowDamageNumbers\r\nAffected files: Fallout76Prefs.ini");
             this.checkBoxShowDamageNumbersNW.UseVisualStyleBackColor = true;
             // 
             // checkBoxShowCompass
             // 
             this.checkBoxShowCompass.AutoSize = true;
-            this.checkBoxShowCompass.Location = new System.Drawing.Point(7, 112);
+            this.checkBoxShowCompass.Location = new System.Drawing.Point(9, 397);
             this.checkBoxShowCompass.Name = "checkBoxShowCompass";
             this.checkBoxShowCompass.Size = new System.Drawing.Size(98, 17);
             this.checkBoxShowCompass.TabIndex = 4;
@@ -1092,7 +1048,8 @@
             this.checkBoxNWMode.Size = new System.Drawing.Size(127, 17);
             this.checkBoxNWMode.TabIndex = 17;
             this.checkBoxNWMode.Text = "Nuclear Winter Mode";
-            this.toolTip.SetToolTip(this.checkBoxNWMode, "Currently only renames Fallout76Custom.ini to Fallout76Custom.ini.nwmodebak.");
+            this.toolTip.SetToolTip(this.checkBoxNWMode, "Renames Fallout76Custom.ini, disables mods (if desired), renames *.dll files (if " +
+        "desired).");
             this.checkBoxNWMode.UseVisualStyleBackColor = true;
             this.checkBoxNWMode.CheckedChanged += new System.EventHandler(this.checkBoxNWMode_CheckedChanged);
             // 
@@ -1124,7 +1081,7 @@
             // checkBoxFixMouseSensitivity
             // 
             this.checkBoxFixMouseSensitivity.AutoSize = true;
-            this.checkBoxFixMouseSensitivity.Location = new System.Drawing.Point(6, 98);
+            this.checkBoxFixMouseSensitivity.Location = new System.Drawing.Point(9, 111);
             this.checkBoxFixMouseSensitivity.Name = "checkBoxFixMouseSensitivity";
             this.checkBoxFixMouseSensitivity.Size = new System.Drawing.Size(208, 17);
             this.checkBoxFixMouseSensitivity.TabIndex = 0;
@@ -1132,26 +1089,10 @@
             this.toolTip.SetToolTip(this.checkBoxFixMouseSensitivity, resources.GetString("checkBoxFixMouseSensitivity.ToolTip"));
             this.checkBoxFixMouseSensitivity.UseVisualStyleBackColor = true;
             // 
-            // sliderMouseSensitivity
-            // 
-            this.sliderMouseSensitivity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderMouseSensitivity.BackColor = System.Drawing.Color.Transparent;
-            this.sliderMouseSensitivity.Location = new System.Drawing.Point(9, 37);
-            this.sliderMouseSensitivity.Maximum = 1200;
-            this.sliderMouseSensitivity.Minimum = 1;
-            this.sliderMouseSensitivity.Name = "sliderMouseSensitivity";
-            this.sliderMouseSensitivity.Size = new System.Drawing.Size(363, 23);
-            this.sliderMouseSensitivity.TabIndex = 2;
-            this.sliderMouseSensitivity.Text = "metroTrackBar1";
-            this.toolTip.SetToolTip(this.sliderMouseSensitivity, "Mouse sensitivity\r\n\r\nAffected values: fMouseHeadingSensitivity, fMouseHeadingSens" +
-        "itivityY\r\nAffected files: Fallout76Custom.ini");
-            this.sliderMouseSensitivity.Value = 300;
-            // 
             // checkBoxFixAimSensitivity
             // 
             this.checkBoxFixAimSensitivity.AutoSize = true;
-            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(6, 121);
+            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 134);
             this.checkBoxFixAimSensitivity.Name = "checkBoxFixAimSensitivity";
             this.checkBoxFixAimSensitivity.Size = new System.Drawing.Size(106, 17);
             this.checkBoxFixAimSensitivity.TabIndex = 5;
@@ -1162,7 +1103,7 @@
             // checkBoxMouseAcceleration
             // 
             this.checkBoxMouseAcceleration.AutoSize = true;
-            this.checkBoxMouseAcceleration.Location = new System.Drawing.Point(6, 75);
+            this.checkBoxMouseAcceleration.Location = new System.Drawing.Point(9, 88);
             this.checkBoxMouseAcceleration.Name = "checkBoxMouseAcceleration";
             this.checkBoxMouseAcceleration.Size = new System.Drawing.Size(119, 17);
             this.checkBoxMouseAcceleration.TabIndex = 6;
@@ -1200,6 +1141,573 @@
         " mouse instead.\r\nLeave this checked otherwise.\r\n\r\nAffected values: bGamepadEnabl" +
         "e\r\nAffected files: Fallout76Custom.ini");
             this.checkBoxGamepadEnabled.UseVisualStyleBackColor = true;
+            // 
+            // sliderGrassFadeDistance
+            // 
+            this.sliderGrassFadeDistance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderGrassFadeDistance.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderGrassFadeDistance.LargeChange = 2000;
+            this.sliderGrassFadeDistance.Location = new System.Drawing.Point(6, 68);
+            this.sliderGrassFadeDistance.Maximum = 14000;
+            this.sliderGrassFadeDistance.Name = "sliderGrassFadeDistance";
+            this.sliderGrassFadeDistance.Size = new System.Drawing.Size(289, 45);
+            this.sliderGrassFadeDistance.SmallChange = 500;
+            this.sliderGrassFadeDistance.TabIndex = 25;
+            this.sliderGrassFadeDistance.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderGrassFadeDistance, resources.GetString("sliderGrassFadeDistance.ToolTip"));
+            this.sliderGrassFadeDistance.Value = 3000;
+            // 
+            // sliderTAAPostOverlay
+            // 
+            this.sliderTAAPostOverlay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderTAAPostOverlay.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderTAAPostOverlay.LargeChange = 1;
+            this.sliderTAAPostOverlay.Location = new System.Drawing.Point(6, 41);
+            this.sliderTAAPostOverlay.Maximum = 100;
+            this.sliderTAAPostOverlay.Name = "sliderTAAPostOverlay";
+            this.sliderTAAPostOverlay.Size = new System.Drawing.Size(289, 45);
+            this.sliderTAAPostOverlay.TabIndex = 26;
+            this.sliderTAAPostOverlay.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderTAAPostOverlay, "Sharpens the image.\r\n\r\nRecommended: 0.2\r\nDefault: 0.2\r\n\r\nAffected values: fTAAPos" +
+        "tOverlay\r\nAffected files: Fallout76Custom.ini");
+            this.sliderTAAPostOverlay.Value = 20;
+            // 
+            // sliderTAAPostSharpen
+            // 
+            this.sliderTAAPostSharpen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderTAAPostSharpen.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderTAAPostSharpen.LargeChange = 1;
+            this.sliderTAAPostSharpen.Location = new System.Drawing.Point(9, 93);
+            this.sliderTAAPostSharpen.Maximum = 200;
+            this.sliderTAAPostSharpen.Name = "sliderTAAPostSharpen";
+            this.sliderTAAPostSharpen.Size = new System.Drawing.Size(286, 45);
+            this.sliderTAAPostSharpen.TabIndex = 27;
+            this.sliderTAAPostSharpen.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderTAAPostSharpen, "Sharpens the image.\r\n\r\nDefault: 0.2\r\nRecommended: 0.4\r\n\r\nAffected values: fTAAPos" +
+        "tSharpen\r\nAffected files: Fallout76Custom.ini");
+            this.sliderTAAPostSharpen.Value = 20;
+            // 
+            // sliderShadowDistance
+            // 
+            this.sliderShadowDistance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderShadowDistance.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderShadowDistance.LargeChange = 10000;
+            this.sliderShadowDistance.Location = new System.Drawing.Point(10, 94);
+            this.sliderShadowDistance.Maximum = 200000;
+            this.sliderShadowDistance.Name = "sliderShadowDistance";
+            this.sliderShadowDistance.Size = new System.Drawing.Size(285, 45);
+            this.sliderShadowDistance.SmallChange = 1000;
+            this.sliderShadowDistance.TabIndex = 26;
+            this.sliderShadowDistance.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderShadowDistance, resources.GetString("sliderShadowDistance.ToolTip"));
+            this.sliderShadowDistance.Value = 120000;
+            // 
+            // sliderLODObjects
+            // 
+            this.sliderLODObjects.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderLODObjects.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderLODObjects.LargeChange = 10;
+            this.sliderLODObjects.Location = new System.Drawing.Point(92, 45);
+            this.sliderLODObjects.Maximum = 600;
+            this.sliderLODObjects.Name = "sliderLODObjects";
+            this.sliderLODObjects.Size = new System.Drawing.Size(224, 45);
+            this.sliderLODObjects.SmallChange = 5;
+            this.sliderLODObjects.TabIndex = 31;
+            this.sliderLODObjects.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderLODObjects, "Sets the distance objects will begin to fade.\r\n\r\nAffected values: fLODFadeOutMult" +
+        "Objects\r\nAffected files: Fallout76Prefs.ini");
+            this.sliderLODObjects.Value = 60;
+            // 
+            // sliderLODItems
+            // 
+            this.sliderLODItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderLODItems.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderLODItems.LargeChange = 10;
+            this.sliderLODItems.Location = new System.Drawing.Point(92, 75);
+            this.sliderLODItems.Maximum = 600;
+            this.sliderLODItems.Name = "sliderLODItems";
+            this.sliderLODItems.Size = new System.Drawing.Size(224, 45);
+            this.sliderLODItems.SmallChange = 5;
+            this.sliderLODItems.TabIndex = 32;
+            this.sliderLODItems.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderLODItems, "Sets the distance items will begin to fade.\r\n\r\nAffected values: fLODFadeOutMultIt" +
+        "ems\r\nAffected files: Fallout76Prefs.ini");
+            this.sliderLODItems.Value = 25;
+            // 
+            // sliderLODActors
+            // 
+            this.sliderLODActors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderLODActors.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderLODActors.LargeChange = 10;
+            this.sliderLODActors.Location = new System.Drawing.Point(92, 104);
+            this.sliderLODActors.Maximum = 600;
+            this.sliderLODActors.Name = "sliderLODActors";
+            this.sliderLODActors.Size = new System.Drawing.Size(224, 45);
+            this.sliderLODActors.SmallChange = 5;
+            this.sliderLODActors.TabIndex = 33;
+            this.sliderLODActors.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderLODActors, "Sets the distance actors (=Players, NPCs) will begin to fade.\r\n\r\nAffected values:" +
+        " fLODFadeOutMultActors\r\nAffected files: Fallout76Prefs.ini\r\n");
+            this.sliderLODActors.Value = 45;
+            // 
+            // sliderMouseSensitivity
+            // 
+            this.sliderMouseSensitivity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderMouseSensitivity.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderMouseSensitivity.Location = new System.Drawing.Point(9, 37);
+            this.sliderMouseSensitivity.Maximum = 600;
+            this.sliderMouseSensitivity.Minimum = 1;
+            this.sliderMouseSensitivity.Name = "sliderMouseSensitivity";
+            this.sliderMouseSensitivity.Size = new System.Drawing.Size(363, 45);
+            this.sliderMouseSensitivity.SmallChange = 300;
+            this.sliderMouseSensitivity.TabIndex = 26;
+            this.sliderMouseSensitivity.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderMouseSensitivity, "Mouse sensitivity\r\n\r\nAffected values: fMouseHeadingSensitivity, fMouseHeadingSens" +
+        "itivityY\r\nAffected files: Fallout76Custom.ini");
+            this.sliderMouseSensitivity.Value = 300;
+            // 
+            // sliderVolumeMaster
+            // 
+            this.sliderVolumeMaster.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderVolumeMaster.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderVolumeMaster.LargeChange = 20;
+            this.sliderVolumeMaster.Location = new System.Drawing.Point(115, 25);
+            this.sliderVolumeMaster.Maximum = 100;
+            this.sliderVolumeMaster.Name = "sliderVolumeMaster";
+            this.sliderVolumeMaster.Size = new System.Drawing.Size(278, 45);
+            this.sliderVolumeMaster.SmallChange = 10;
+            this.sliderVolumeMaster.TabIndex = 27;
+            this.sliderVolumeMaster.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderVolumeMaster, "Changes the overall volume of the game.\r\n\r\nAffected values: fAudioMasterVolume\r\nA" +
+        "ffected files: Fallout76Prefs.ini");
+            this.sliderVolumeMaster.Value = 100;
+            // 
+            // checkBoxEnableAudio
+            // 
+            this.checkBoxEnableAudio.AutoSize = true;
+            this.checkBoxEnableAudio.Location = new System.Drawing.Point(10, 23);
+            this.checkBoxEnableAudio.Name = "checkBoxEnableAudio";
+            this.checkBoxEnableAudio.Size = new System.Drawing.Size(88, 17);
+            this.checkBoxEnableAudio.TabIndex = 30;
+            this.checkBoxEnableAudio.Text = "Enable audio";
+            this.toolTip.SetToolTip(this.checkBoxEnableAudio, "Affected values: bEnableAudio\r\nAffected files: Fallout76Custom.ini");
+            this.checkBoxEnableAudio.UseVisualStyleBackColor = true;
+            // 
+            // sliderAudiofVal0
+            // 
+            this.sliderAudiofVal0.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal0.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal0.LargeChange = 20;
+            this.sliderAudiofVal0.Location = new System.Drawing.Point(115, 126);
+            this.sliderAudiofVal0.Maximum = 100;
+            this.sliderAudiofVal0.Name = "sliderAudiofVal0";
+            this.sliderAudiofVal0.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal0.SmallChange = 10;
+            this.sliderAudiofVal0.TabIndex = 31;
+            this.sliderAudiofVal0.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderAudiofVal0, "Changes the volume of fVal0.\r\n\r\nAffected values: fVal0\r\nAffected files: Fallout76" +
+        "Prefs.ini");
+            this.sliderAudiofVal0.Value = 100;
+            // 
+            // sliderAudiofVal1
+            // 
+            this.sliderAudiofVal1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal1.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal1.LargeChange = 20;
+            this.sliderAudiofVal1.Location = new System.Drawing.Point(115, 156);
+            this.sliderAudiofVal1.Maximum = 100;
+            this.sliderAudiofVal1.Name = "sliderAudiofVal1";
+            this.sliderAudiofVal1.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal1.SmallChange = 10;
+            this.sliderAudiofVal1.TabIndex = 34;
+            this.sliderAudiofVal1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderAudiofVal1, "Changes the volume of fVal1.\r\n\r\nAffected values: fVal1\r\nAffected files: Fallout76" +
+        "Prefs.ini");
+            this.sliderAudiofVal1.Value = 100;
+            // 
+            // sliderAudiofVal2
+            // 
+            this.sliderAudiofVal2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal2.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal2.LargeChange = 20;
+            this.sliderAudiofVal2.Location = new System.Drawing.Point(115, 186);
+            this.sliderAudiofVal2.Maximum = 100;
+            this.sliderAudiofVal2.Name = "sliderAudiofVal2";
+            this.sliderAudiofVal2.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal2.SmallChange = 10;
+            this.sliderAudiofVal2.TabIndex = 37;
+            this.sliderAudiofVal2.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderAudiofVal2, "Changes the volume of fVal2.\r\n\r\nAffected values: fVal2\r\nAffected files: Fallout76" +
+        "Prefs.ini");
+            this.sliderAudiofVal2.Value = 100;
+            // 
+            // sliderAudiofVal3
+            // 
+            this.sliderAudiofVal3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal3.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal3.LargeChange = 20;
+            this.sliderAudiofVal3.Location = new System.Drawing.Point(115, 216);
+            this.sliderAudiofVal3.Maximum = 100;
+            this.sliderAudiofVal3.Name = "sliderAudiofVal3";
+            this.sliderAudiofVal3.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal3.SmallChange = 10;
+            this.sliderAudiofVal3.TabIndex = 40;
+            this.sliderAudiofVal3.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderAudiofVal3, "Changes the volume of fVal3.\r\n\r\nAffected values: fVal3\r\nAffected files: Fallout76" +
+        "Prefs.ini");
+            this.sliderAudiofVal3.Value = 100;
+            // 
+            // sliderAudiofVal4
+            // 
+            this.sliderAudiofVal4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal4.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal4.LargeChange = 20;
+            this.sliderAudiofVal4.Location = new System.Drawing.Point(115, 246);
+            this.sliderAudiofVal4.Maximum = 100;
+            this.sliderAudiofVal4.Name = "sliderAudiofVal4";
+            this.sliderAudiofVal4.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal4.SmallChange = 10;
+            this.sliderAudiofVal4.TabIndex = 43;
+            this.sliderAudiofVal4.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderAudiofVal4, "Changes the volume of fVal4.\r\n\r\nAffected values: fVal4\r\nAffected files: Fallout76" +
+        "Prefs.ini");
+            this.sliderAudiofVal4.Value = 100;
+            // 
+            // sliderAudiofVal5
+            // 
+            this.sliderAudiofVal5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal5.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal5.LargeChange = 20;
+            this.sliderAudiofVal5.Location = new System.Drawing.Point(115, 276);
+            this.sliderAudiofVal5.Maximum = 100;
+            this.sliderAudiofVal5.Name = "sliderAudiofVal5";
+            this.sliderAudiofVal5.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal5.SmallChange = 10;
+            this.sliderAudiofVal5.TabIndex = 46;
+            this.sliderAudiofVal5.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderAudiofVal5, "Changes the volume of fVal5.\r\n\r\nAffected values: fVal5\r\nAffected files: Fallout76" +
+        "Prefs.ini");
+            this.sliderAudiofVal5.Value = 100;
+            // 
+            // sliderAudiofVal6
+            // 
+            this.sliderAudiofVal6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal6.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal6.LargeChange = 20;
+            this.sliderAudiofVal6.Location = new System.Drawing.Point(115, 306);
+            this.sliderAudiofVal6.Maximum = 100;
+            this.sliderAudiofVal6.Name = "sliderAudiofVal6";
+            this.sliderAudiofVal6.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal6.SmallChange = 10;
+            this.sliderAudiofVal6.TabIndex = 49;
+            this.sliderAudiofVal6.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderAudiofVal6, "Changes the volume of fVal6.\r\n\r\nAffected values: fVal6\r\nAffected files: Fallout76" +
+        "Prefs.ini");
+            this.sliderAudiofVal6.Value = 100;
+            // 
+            // sliderAudioChat
+            // 
+            this.sliderAudioChat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudioChat.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudioChat.LargeChange = 20;
+            this.sliderAudioChat.Location = new System.Drawing.Point(115, 61);
+            this.sliderAudioChat.Maximum = 100;
+            this.sliderAudioChat.Name = "sliderAudioChat";
+            this.sliderAudioChat.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudioChat.SmallChange = 10;
+            this.sliderAudioChat.TabIndex = 52;
+            this.sliderAudioChat.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderAudioChat, "Changes the volume of the voice chat.\r\n\r\nAffected values: uVivoxVoiceVolume\r\nAffe" +
+        "cted files: Fallout76Prefs.ini");
+            this.sliderAudioChat.Value = 100;
+            // 
+            // checkBoxMainMenuMusic
+            // 
+            this.checkBoxMainMenuMusic.AutoSize = true;
+            this.checkBoxMainMenuMusic.Checked = true;
+            this.checkBoxMainMenuMusic.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMainMenuMusic.Location = new System.Drawing.Point(10, 46);
+            this.checkBoxMainMenuMusic.Name = "checkBoxMainMenuMusic";
+            this.checkBoxMainMenuMusic.Size = new System.Drawing.Size(141, 17);
+            this.checkBoxMainMenuMusic.TabIndex = 55;
+            this.checkBoxMainMenuMusic.Text = "Play music in main menu";
+            this.toolTip.SetToolTip(this.checkBoxMainMenuMusic, "If unchecked, the game won\'t play background music in the main menu.\r\n\r\nAffected " +
+        "values: bPlayMainMenuMusic\r\nAffected files: Fallout76Custom.ini");
+            this.checkBoxMainMenuMusic.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxGeneralSubtitles
+            // 
+            this.checkBoxGeneralSubtitles.AutoSize = true;
+            this.checkBoxGeneralSubtitles.Location = new System.Drawing.Point(10, 42);
+            this.checkBoxGeneralSubtitles.Name = "checkBoxGeneralSubtitles";
+            this.checkBoxGeneralSubtitles.Size = new System.Drawing.Size(132, 17);
+            this.checkBoxGeneralSubtitles.TabIndex = 57;
+            this.checkBoxGeneralSubtitles.Text = "Show general subtitles";
+            this.toolTip.SetToolTip(this.checkBoxGeneralSubtitles, "Affected values: bGeneralSubtitles\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxGeneralSubtitles.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDialogueSubtitles
+            // 
+            this.checkBoxDialogueSubtitles.AutoSize = true;
+            this.checkBoxDialogueSubtitles.Location = new System.Drawing.Point(10, 19);
+            this.checkBoxDialogueSubtitles.Name = "checkBoxDialogueSubtitles";
+            this.checkBoxDialogueSubtitles.Size = new System.Drawing.Size(137, 17);
+            this.checkBoxDialogueSubtitles.TabIndex = 56;
+            this.checkBoxDialogueSubtitles.Text = "Show dialogue subtitles";
+            this.toolTip.SetToolTip(this.checkBoxDialogueSubtitles, "Affected values: bDialogueSubtitles\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxDialogueSubtitles.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxPushToTalk
+            // 
+            this.checkBoxPushToTalk.AutoSize = true;
+            this.checkBoxPushToTalk.Location = new System.Drawing.Point(10, 53);
+            this.checkBoxPushToTalk.Name = "checkBoxPushToTalk";
+            this.checkBoxPushToTalk.Size = new System.Drawing.Size(126, 17);
+            this.checkBoxPushToTalk.TabIndex = 0;
+            this.checkBoxPushToTalk.Text = "Enable Push-To-Talk";
+            this.toolTip.SetToolTip(this.checkBoxPushToTalk, "Affected values: bVoicePushToTalkEnabled\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxPushToTalk.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMouseInvertY
+            // 
+            this.checkBoxMouseInvertY.AutoSize = true;
+            this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 175);
+            this.checkBoxMouseInvertY.Name = "checkBoxMouseInvertY";
+            this.checkBoxMouseInvertY.Size = new System.Drawing.Size(63, 17);
+            this.checkBoxMouseInvertY.TabIndex = 27;
+            this.checkBoxMouseInvertY.Text = "Invert Y";
+            this.toolTip.SetToolTip(this.checkBoxMouseInvertY, "Affected values: bInvertYValues\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxMouseInvertY.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMouseInvertX
+            // 
+            this.checkBoxMouseInvertX.AutoSize = true;
+            this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 198);
+            this.checkBoxMouseInvertX.Name = "checkBoxMouseInvertX";
+            this.checkBoxMouseInvertX.Size = new System.Drawing.Size(63, 17);
+            this.checkBoxMouseInvertX.TabIndex = 28;
+            this.checkBoxMouseInvertX.Text = "Invert X";
+            this.toolTip.SetToolTip(this.checkBoxMouseInvertX, "Affected values: bInvertXValues\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxMouseInvertX.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnableQuestAutoTrackMain
+            // 
+            this.checkBoxEnableQuestAutoTrackMain.AutoSize = true;
+            this.checkBoxEnableQuestAutoTrackMain.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxEnableQuestAutoTrackMain.Name = "checkBoxEnableQuestAutoTrackMain";
+            this.checkBoxEnableQuestAutoTrackMain.Size = new System.Drawing.Size(182, 17);
+            this.checkBoxEnableQuestAutoTrackMain.TabIndex = 5;
+            this.checkBoxEnableQuestAutoTrackMain.Text = "Main Quests Active when started";
+            this.toolTip.SetToolTip(this.checkBoxEnableQuestAutoTrackMain, "Affected values: bEnableQuestAutoTrackMain\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxEnableQuestAutoTrackMain.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnableQuestAutoTrackSide
+            // 
+            this.checkBoxEnableQuestAutoTrackSide.AutoSize = true;
+            this.checkBoxEnableQuestAutoTrackSide.Location = new System.Drawing.Point(6, 42);
+            this.checkBoxEnableQuestAutoTrackSide.Name = "checkBoxEnableQuestAutoTrackSide";
+            this.checkBoxEnableQuestAutoTrackSide.Size = new System.Drawing.Size(180, 17);
+            this.checkBoxEnableQuestAutoTrackSide.TabIndex = 6;
+            this.checkBoxEnableQuestAutoTrackSide.Text = "Side Quests Active when started";
+            this.toolTip.SetToolTip(this.checkBoxEnableQuestAutoTrackSide, "Affected values: bEnableQuestAutoTrackSide\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxEnableQuestAutoTrackSide.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnableQuestAutoTrackMisc
+            // 
+            this.checkBoxEnableQuestAutoTrackMisc.AutoSize = true;
+            this.checkBoxEnableQuestAutoTrackMisc.Location = new System.Drawing.Point(6, 65);
+            this.checkBoxEnableQuestAutoTrackMisc.Name = "checkBoxEnableQuestAutoTrackMisc";
+            this.checkBoxEnableQuestAutoTrackMisc.Size = new System.Drawing.Size(226, 17);
+            this.checkBoxEnableQuestAutoTrackMisc.TabIndex = 7;
+            this.checkBoxEnableQuestAutoTrackMisc.Text = "Miscellaneous Quests Active when started";
+            this.toolTip.SetToolTip(this.checkBoxEnableQuestAutoTrackMisc, "Affected values: bEnableQuestAutoTrackMisc\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxEnableQuestAutoTrackMisc.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnableQuestAutoTrackEvent
+            // 
+            this.checkBoxEnableQuestAutoTrackEvent.AutoSize = true;
+            this.checkBoxEnableQuestAutoTrackEvent.Location = new System.Drawing.Point(6, 88);
+            this.checkBoxEnableQuestAutoTrackEvent.Name = "checkBoxEnableQuestAutoTrackEvent";
+            this.checkBoxEnableQuestAutoTrackEvent.Size = new System.Drawing.Size(187, 17);
+            this.checkBoxEnableQuestAutoTrackEvent.TabIndex = 8;
+            this.checkBoxEnableQuestAutoTrackEvent.Text = "Event Quests Active when started";
+            this.toolTip.SetToolTip(this.checkBoxEnableQuestAutoTrackEvent, "Affected values: bEnableQuestAutoTrackEvent\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxEnableQuestAutoTrackEvent.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnableQuestAutoTrackDaily
+            // 
+            this.checkBoxEnableQuestAutoTrackDaily.AutoSize = true;
+            this.checkBoxEnableQuestAutoTrackDaily.Location = new System.Drawing.Point(6, 111);
+            this.checkBoxEnableQuestAutoTrackDaily.Name = "checkBoxEnableQuestAutoTrackDaily";
+            this.checkBoxEnableQuestAutoTrackDaily.Size = new System.Drawing.Size(182, 17);
+            this.checkBoxEnableQuestAutoTrackDaily.TabIndex = 9;
+            this.checkBoxEnableQuestAutoTrackDaily.Text = "Daily Quests Active when started";
+            this.toolTip.SetToolTip(this.checkBoxEnableQuestAutoTrackDaily, "Affected values: bEnableQuestAutoTrackOther\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxEnableQuestAutoTrackDaily.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDialogueHistory
+            // 
+            this.checkBoxDialogueHistory.AutoSize = true;
+            this.checkBoxDialogueHistory.Location = new System.Drawing.Point(10, 65);
+            this.checkBoxDialogueHistory.Name = "checkBoxDialogueHistory";
+            this.checkBoxDialogueHistory.Size = new System.Drawing.Size(129, 17);
+            this.checkBoxDialogueHistory.TabIndex = 58;
+            this.checkBoxDialogueHistory.Text = "Show dialogue history";
+            this.toolTip.SetToolTip(this.checkBoxDialogueHistory, "Affected values: bShowDialogueHistory\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxDialogueHistory.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnablePowerArmorHUD
+            // 
+            this.checkBoxEnablePowerArmorHUD.AutoSize = true;
+            this.checkBoxEnablePowerArmorHUD.Location = new System.Drawing.Point(9, 374);
+            this.checkBoxEnablePowerArmorHUD.Name = "checkBoxEnablePowerArmorHUD";
+            this.checkBoxEnablePowerArmorHUD.Size = new System.Drawing.Size(149, 17);
+            this.checkBoxEnablePowerArmorHUD.TabIndex = 5;
+            this.checkBoxEnablePowerArmorHUD.Text = "Enable Power Armor HUD";
+            this.toolTip.SetToolTip(this.checkBoxEnablePowerArmorHUD, "Affected values: bEnablePowerArmorHUD\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxEnablePowerArmorHUD.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowCrosshair
+            // 
+            this.checkBoxShowCrosshair.AutoSize = true;
+            this.checkBoxShowCrosshair.Location = new System.Drawing.Point(9, 351);
+            this.checkBoxShowCrosshair.Name = "checkBoxShowCrosshair";
+            this.checkBoxShowCrosshair.Size = new System.Drawing.Size(98, 17);
+            this.checkBoxShowCrosshair.TabIndex = 6;
+            this.checkBoxShowCrosshair.Text = "Show crosshair";
+            this.toolTip.SetToolTip(this.checkBoxShowCrosshair, "Affected values: bCrosshairEnabled\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxShowCrosshair.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxItemRarityColorsNW
+            // 
+            this.checkBoxItemRarityColorsNW.AutoSize = true;
+            this.checkBoxItemRarityColorsNW.Location = new System.Drawing.Point(9, 68);
+            this.checkBoxItemRarityColorsNW.Name = "checkBoxItemRarityColorsNW";
+            this.checkBoxItemRarityColorsNW.Size = new System.Drawing.Size(211, 17);
+            this.checkBoxItemRarityColorsNW.TabIndex = 7;
+            this.checkBoxItemRarityColorsNW.Text = "Show item rarity colors (Nuclear Winter)";
+            this.toolTip.SetToolTip(this.checkBoxItemRarityColorsNW, "Affected values: bEnableItemRarityColors\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxItemRarityColorsNW.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowPublicTeamNotifications
+            // 
+            this.checkBoxShowPublicTeamNotifications.AutoSize = true;
+            this.checkBoxShowPublicTeamNotifications.Location = new System.Drawing.Point(9, 91);
+            this.checkBoxShowPublicTeamNotifications.Name = "checkBoxShowPublicTeamNotifications";
+            this.checkBoxShowPublicTeamNotifications.Size = new System.Drawing.Size(175, 17);
+            this.checkBoxShowPublicTeamNotifications.TabIndex = 8;
+            this.checkBoxShowPublicTeamNotifications.Text = "Enable public team notifications\r\n";
+            this.toolTip.SetToolTip(this.checkBoxShowPublicTeamNotifications, "Affected values: bShowPublicTeamNotifications\r\nAffected files: Fallout76Prefs.ini" +
+        "");
+            this.checkBoxShowPublicTeamNotifications.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowFloatingQuestMarkers
+            // 
+            this.checkBoxShowFloatingQuestMarkers.AutoSize = true;
+            this.checkBoxShowFloatingQuestMarkers.Location = new System.Drawing.Point(9, 245);
+            this.checkBoxShowFloatingQuestMarkers.Name = "checkBoxShowFloatingQuestMarkers";
+            this.checkBoxShowFloatingQuestMarkers.Size = new System.Drawing.Size(159, 17);
+            this.checkBoxShowFloatingQuestMarkers.TabIndex = 9;
+            this.checkBoxShowFloatingQuestMarkers.Text = "Show floating quest markers\r\n";
+            this.toolTip.SetToolTip(this.checkBoxShowFloatingQuestMarkers, "Affected values: bShowFloatingQuestMarkers\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxShowFloatingQuestMarkers.UseVisualStyleBackColor = true;
+            // 
+            // sliderFloatingQuestMarkersDistance
+            // 
+            this.sliderFloatingQuestMarkersDistance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderFloatingQuestMarkersDistance.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderFloatingQuestMarkersDistance.Location = new System.Drawing.Point(9, 216);
+            this.sliderFloatingQuestMarkersDistance.Maximum = 1000;
+            this.sliderFloatingQuestMarkersDistance.Minimum = 200;
+            this.sliderFloatingQuestMarkersDistance.Name = "sliderFloatingQuestMarkersDistance";
+            this.sliderFloatingQuestMarkersDistance.Size = new System.Drawing.Size(293, 45);
+            this.sliderFloatingQuestMarkersDistance.SmallChange = 100;
+            this.sliderFloatingQuestMarkersDistance.TabIndex = 29;
+            this.sliderFloatingQuestMarkersDistance.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderFloatingQuestMarkersDistance, "Affected values: fFloatingQuestMarkersDistance\r\nAffected files: Fallout76Prefs.in" +
+        "i");
+            this.sliderFloatingQuestMarkersDistance.Value = 1000;
+            // 
+            // checkBoxShowFloatingQuestText
+            // 
+            this.checkBoxShowFloatingQuestText.AutoSize = true;
+            this.checkBoxShowFloatingQuestText.Location = new System.Drawing.Point(9, 266);
+            this.checkBoxShowFloatingQuestText.Name = "checkBoxShowFloatingQuestText";
+            this.checkBoxShowFloatingQuestText.Size = new System.Drawing.Size(139, 17);
+            this.checkBoxShowFloatingQuestText.TabIndex = 32;
+            this.checkBoxShowFloatingQuestText.Text = "Show floating quest text";
+            this.toolTip.SetToolTip(this.checkBoxShowFloatingQuestText, "Affected values: bShowFloatingQuestText\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxShowFloatingQuestText.UseVisualStyleBackColor = true;
+            // 
+            // sliderConversationHistorySize
+            // 
+            this.sliderConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderConversationHistorySize.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderConversationHistorySize.LargeChange = 1;
+            this.sliderConversationHistorySize.Location = new System.Drawing.Point(10, 112);
+            this.sliderConversationHistorySize.Maximum = 8;
+            this.sliderConversationHistorySize.Minimum = 1;
+            this.sliderConversationHistorySize.Name = "sliderConversationHistorySize";
+            this.sliderConversationHistorySize.Size = new System.Drawing.Size(245, 45);
+            this.sliderConversationHistorySize.TabIndex = 59;
+            this.toolTip.SetToolTip(this.sliderConversationHistorySize, "Affected values: fConversationHistorySize\r\nAffected files: Fallout76Prefs.ini");
+            this.sliderConversationHistorySize.Value = 4;
+            // 
+            // checkBoxShowOtherPlayersNames
+            // 
+            this.checkBoxShowOtherPlayersNames.AutoSize = true;
+            this.checkBoxShowOtherPlayersNames.Location = new System.Drawing.Point(9, 428);
+            this.checkBoxShowOtherPlayersNames.Name = "checkBoxShowOtherPlayersNames";
+            this.checkBoxShowOtherPlayersNames.Size = new System.Drawing.Size(152, 17);
+            this.checkBoxShowOtherPlayersNames.TabIndex = 33;
+            this.checkBoxShowOtherPlayersNames.Text = "Show other players\' names";
+            this.toolTip.SetToolTip(this.checkBoxShowOtherPlayersNames, "Affected values: bShowOtherPlayersNames\r\nAffected files: Fallout76Prefs.ini");
+            this.checkBoxShowOtherPlayersNames.UseVisualStyleBackColor = true;
+            // 
+            // sliderHUDOpacity
+            // 
+            this.sliderHUDOpacity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderHUDOpacity.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderHUDOpacity.LargeChange = 20;
+            this.sliderHUDOpacity.Location = new System.Drawing.Point(9, 136);
+            this.sliderHUDOpacity.Maximum = 100;
+            this.sliderHUDOpacity.Name = "sliderHUDOpacity";
+            this.sliderHUDOpacity.Size = new System.Drawing.Size(293, 45);
+            this.sliderHUDOpacity.SmallChange = 10;
+            this.sliderHUDOpacity.TabIndex = 34;
+            this.sliderHUDOpacity.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderHUDOpacity, "Affected values: fHUDOpacity\r\nAffected files: Fallout76Prefs.ini");
+            this.sliderHUDOpacity.Value = 100;
+            // 
+            // labelShowActiveEffectsOnHUD
+            // 
+            this.labelShowActiveEffectsOnHUD.AutoSize = true;
+            this.labelShowActiveEffectsOnHUD.Location = new System.Drawing.Point(9, 309);
+            this.labelShowActiveEffectsOnHUD.Name = "labelShowActiveEffectsOnHUD";
+            this.labelShowActiveEffectsOnHUD.Size = new System.Drawing.Size(146, 13);
+            this.labelShowActiveEffectsOnHUD.TabIndex = 37;
+            this.labelShowActiveEffectsOnHUD.Text = "Show active effects on HUD:";
+            this.toolTip.SetToolTip(this.labelShowActiveEffectsOnHUD, "Affected values: uHUDActiveEffectWidget\r\nAffected files: Fallout76Prefs.ini");
             // 
             // timerCheckFiles
             // 
@@ -1739,7 +2247,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadEnabled);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadRumble);
-            this.groupBoxGamepad.Location = new System.Drawing.Point(451, 7);
+            this.groupBoxGamepad.Location = new System.Drawing.Point(451, 6);
             this.groupBoxGamepad.Name = "groupBoxGamepad";
             this.groupBoxGamepad.Size = new System.Drawing.Size(395, 92);
             this.groupBoxGamepad.TabIndex = 5;
@@ -1748,15 +2256,17 @@
             // 
             // groupBoxMouse
             // 
+            this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertX);
+            this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertY);
+            this.groupBoxMouse.Controls.Add(this.sliderMouseSensitivity);
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseAcceleration);
             this.groupBoxMouse.Controls.Add(this.checkBoxFixAimSensitivity);
             this.groupBoxMouse.Controls.Add(this.numMouseSensitivity);
             this.groupBoxMouse.Controls.Add(this.labelMouseSensitivity);
-            this.groupBoxMouse.Controls.Add(this.sliderMouseSensitivity);
             this.groupBoxMouse.Controls.Add(this.checkBoxFixMouseSensitivity);
-            this.groupBoxMouse.Location = new System.Drawing.Point(7, 7);
+            this.groupBoxMouse.Location = new System.Drawing.Point(6, 6);
             this.groupBoxMouse.Name = "groupBoxMouse";
-            this.groupBoxMouse.Size = new System.Drawing.Size(438, 154);
+            this.groupBoxMouse.Size = new System.Drawing.Size(438, 226);
             this.groupBoxMouse.TabIndex = 4;
             this.groupBoxMouse.TabStop = false;
             this.groupBoxMouse.Text = "Mouse";
@@ -1844,23 +2354,32 @@
             this.panel2.Controls.Add(this.labelAntiAliasing);
             this.panel2.Location = new System.Drawing.Point(6, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(415, 440);
+            this.panel2.Size = new System.Drawing.Size(415, 434);
             this.panel2.TabIndex = 0;
             // 
             // groupBoxTAASharpening
             // 
-            this.groupBoxTAASharpening.Controls.Add(this.numTAAPostSharpen);
-            this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostSharpen);
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostSharpen);
+            this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostSharpen);
+            this.groupBoxTAASharpening.Controls.Add(this.numTAAPostSharpen);
+            this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 657);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 748);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
-            this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 134);
+            this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 145);
             this.groupBoxTAASharpening.TabIndex = 38;
             this.groupBoxTAASharpening.TabStop = false;
             this.groupBoxTAASharpening.Text = "TAA Sharpening";
+            // 
+            // labelTAAPostSharpen
+            // 
+            this.labelTAAPostSharpen.AutoSize = true;
+            this.labelTAAPostSharpen.Location = new System.Drawing.Point(6, 77);
+            this.labelTAAPostSharpen.Name = "labelTAAPostSharpen";
+            this.labelTAAPostSharpen.Size = new System.Drawing.Size(69, 13);
+            this.labelTAAPostSharpen.TabIndex = 29;
+            this.labelTAAPostSharpen.Text = "Post sharpen";
             // 
             // numTAAPostSharpen
             // 
@@ -1885,15 +2404,6 @@
             0,
             0,
             65536});
-            // 
-            // labelTAAPostSharpen
-            // 
-            this.labelTAAPostSharpen.AutoSize = true;
-            this.labelTAAPostSharpen.Location = new System.Drawing.Point(6, 77);
-            this.labelTAAPostSharpen.Name = "labelTAAPostSharpen";
-            this.labelTAAPostSharpen.Size = new System.Drawing.Size(69, 13);
-            this.labelTAAPostSharpen.TabIndex = 29;
-            this.labelTAAPostSharpen.Text = "Post sharpen";
             // 
             // numTAAPostOverlay
             // 
@@ -1930,13 +2440,13 @@
             // 
             // groupBoxGrass
             // 
-            this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.sliderGrassFadeDistance);
+            this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 557);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 623);
             this.groupBoxGrass.Name = "groupBoxGrass";
-            this.groupBoxGrass.Size = new System.Drawing.Size(381, 94);
+            this.groupBoxGrass.Size = new System.Drawing.Size(381, 119);
             this.groupBoxGrass.TabIndex = 35;
             this.groupBoxGrass.TabStop = false;
             this.groupBoxGrass.Text = "Grass";
@@ -1975,19 +2485,19 @@
             // 
             // groupBoxLOD
             // 
-            this.groupBoxLOD.Controls.Add(this.labelLODFadeDistance);
-            this.groupBoxLOD.Controls.Add(this.numLODActors);
             this.groupBoxLOD.Controls.Add(this.sliderLODActors);
-            this.groupBoxLOD.Controls.Add(this.numLODItems);
+            this.groupBoxLOD.Controls.Add(this.labelLODFadeDistance);
             this.groupBoxLOD.Controls.Add(this.sliderLODItems);
-            this.groupBoxLOD.Controls.Add(this.numLODObjects);
+            this.groupBoxLOD.Controls.Add(this.numLODActors);
+            this.groupBoxLOD.Controls.Add(this.numLODItems);
             this.groupBoxLOD.Controls.Add(this.sliderLODObjects);
+            this.groupBoxLOD.Controls.Add(this.numLODObjects);
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 421);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 461);
             this.groupBoxLOD.Name = "groupBoxLOD";
-            this.groupBoxLOD.Size = new System.Drawing.Size(381, 130);
+            this.groupBoxLOD.Size = new System.Drawing.Size(381, 156);
             this.groupBoxLOD.TabIndex = 37;
             this.groupBoxLOD.TabStop = false;
             this.groupBoxLOD.Text = "LOD";
@@ -2005,7 +2515,7 @@
             // 
             this.numLODActors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numLODActors.DecimalPlaces = 1;
-            this.numLODActors.Location = new System.Drawing.Point(322, 100);
+            this.numLODActors.Location = new System.Drawing.Point(322, 104);
             this.numLODActors.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -2024,7 +2534,7 @@
             // 
             this.numLODItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numLODItems.DecimalPlaces = 1;
-            this.numLODItems.Location = new System.Drawing.Point(322, 71);
+            this.numLODItems.Location = new System.Drawing.Point(322, 75);
             this.numLODItems.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -2043,7 +2553,7 @@
             // 
             this.numLODObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numLODObjects.DecimalPlaces = 1;
-            this.numLODObjects.Location = new System.Drawing.Point(322, 41);
+            this.numLODObjects.Location = new System.Drawing.Point(322, 45);
             this.numLODObjects.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -2061,7 +2571,7 @@
             // labelLODActors
             // 
             this.labelLODActors.AutoSize = true;
-            this.labelLODActors.Location = new System.Drawing.Point(19, 103);
+            this.labelLODActors.Location = new System.Drawing.Point(19, 107);
             this.labelLODActors.Name = "labelLODActors";
             this.labelLODActors.Size = new System.Drawing.Size(37, 13);
             this.labelLODActors.TabIndex = 2;
@@ -2070,7 +2580,7 @@
             // labelLODItems
             // 
             this.labelLODItems.AutoSize = true;
-            this.labelLODItems.Location = new System.Drawing.Point(19, 74);
+            this.labelLODItems.Location = new System.Drawing.Point(19, 78);
             this.labelLODItems.Name = "labelLODItems";
             this.labelLODItems.Size = new System.Drawing.Size(32, 13);
             this.labelLODItems.TabIndex = 1;
@@ -2079,7 +2589,7 @@
             // labelLODObjects
             // 
             this.labelLODObjects.AutoSize = true;
-            this.labelLODObjects.Location = new System.Drawing.Point(19, 44);
+            this.labelLODObjects.Location = new System.Drawing.Point(19, 48);
             this.labelLODObjects.Name = "labelLODObjects";
             this.labelLODObjects.Size = new System.Drawing.Size(43, 13);
             this.labelLODObjects.TabIndex = 0;
@@ -2088,7 +2598,7 @@
             // groupBoxLighting
             // 
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
-            this.groupBoxLighting.Location = new System.Drawing.Point(9, 235);
+            this.groupBoxLighting.Location = new System.Drawing.Point(9, 252);
             this.groupBoxLighting.Name = "groupBoxLighting";
             this.groupBoxLighting.Size = new System.Drawing.Size(381, 46);
             this.groupBoxLighting.TabIndex = 28;
@@ -2097,16 +2607,16 @@
             // 
             // groupBoxShadows
             // 
+            this.groupBoxShadows.Controls.Add(this.sliderShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowBlurriness);
             this.groupBoxShadows.Controls.Add(this.labelShadowBlurriness);
             this.groupBoxShadows.Controls.Add(this.numShadowDistance);
-            this.groupBoxShadows.Controls.Add(this.sliderShadowDistance);
             this.groupBoxShadows.Controls.Add(this.labelShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowTextureResolution);
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
-            this.groupBoxShadows.Location = new System.Drawing.Point(9, 287);
+            this.groupBoxShadows.Location = new System.Drawing.Point(9, 304);
             this.groupBoxShadows.Name = "groupBoxShadows";
-            this.groupBoxShadows.Size = new System.Drawing.Size(381, 128);
+            this.groupBoxShadows.Size = new System.Drawing.Size(381, 151);
             this.groupBoxShadows.TabIndex = 30;
             this.groupBoxShadows.TabStop = false;
             this.groupBoxShadows.Text = "Shadows";
@@ -2168,7 +2678,7 @@
             // groupBoxWater
             // 
             this.groupBoxWater.Controls.Add(this.checkBoxWaterDisplacement);
-            this.groupBoxWater.Location = new System.Drawing.Point(202, 91);
+            this.groupBoxWater.Location = new System.Drawing.Point(202, 108);
             this.groupBoxWater.Name = "groupBoxWater";
             this.groupBoxWater.Size = new System.Drawing.Size(188, 44);
             this.groupBoxWater.TabIndex = 31;
@@ -2182,7 +2692,7 @@
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxMotionBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxRadialBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxLensFlare);
-            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 91);
+            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 108);
             this.groupBoxPostProcessing.Name = "groupBoxPostProcessing";
             this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 138);
             this.groupBoxPostProcessing.TabIndex = 34;
@@ -2194,7 +2704,7 @@
             this.groupBoxWeather.Controls.Add(this.checkBoxFogEnabled);
             this.groupBoxWeather.Controls.Add(this.checkBoxWeatherWetnessOcclusion);
             this.groupBoxWeather.Controls.Add(this.checkBoxWeatherRainOcclusion);
-            this.groupBoxWeather.Location = new System.Drawing.Point(202, 141);
+            this.groupBoxWeather.Location = new System.Drawing.Point(202, 158);
             this.groupBoxWeather.Name = "groupBoxWeather";
             this.groupBoxWeather.Size = new System.Drawing.Size(188, 88);
             this.groupBoxWeather.TabIndex = 32;
@@ -2205,7 +2715,7 @@
             // 
             this.comboBoxAnisotropicFiltering.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAnisotropicFiltering.FormattingEnabled = true;
-            this.comboBoxAnisotropicFiltering.Location = new System.Drawing.Point(152, 30);
+            this.comboBoxAnisotropicFiltering.Location = new System.Drawing.Point(152, 35);
             this.comboBoxAnisotropicFiltering.Name = "comboBoxAnisotropicFiltering";
             this.comboBoxAnisotropicFiltering.Size = new System.Drawing.Size(238, 21);
             this.comboBoxAnisotropicFiltering.TabIndex = 36;
@@ -2214,7 +2724,7 @@
             // 
             this.comboBoxAntiAliasing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAntiAliasing.FormattingEnabled = true;
-            this.comboBoxAntiAliasing.Location = new System.Drawing.Point(152, 3);
+            this.comboBoxAntiAliasing.Location = new System.Drawing.Point(152, 8);
             this.comboBoxAntiAliasing.Name = "comboBoxAntiAliasing";
             this.comboBoxAntiAliasing.Size = new System.Drawing.Size(238, 21);
             this.comboBoxAntiAliasing.TabIndex = 27;
@@ -2247,7 +2757,7 @@
             this.comboBoxDisplayMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxDisplayMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDisplayMode.FormattingEnabled = true;
-            this.comboBoxDisplayMode.Location = new System.Drawing.Point(154, 19);
+            this.comboBoxDisplayMode.Location = new System.Drawing.Point(151, 20);
             this.comboBoxDisplayMode.Name = "comboBoxDisplayMode";
             this.comboBoxDisplayMode.Size = new System.Drawing.Size(246, 21);
             this.comboBoxDisplayMode.TabIndex = 0;
@@ -2257,7 +2767,7 @@
             this.comboBoxResolution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxResolution.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxResolution.FormattingEnabled = true;
-            this.comboBoxResolution.Location = new System.Drawing.Point(154, 44);
+            this.comboBoxResolution.Location = new System.Drawing.Point(151, 45);
             this.comboBoxResolution.Name = "comboBoxResolution";
             this.comboBoxResolution.Size = new System.Drawing.Size(246, 21);
             this.comboBoxResolution.TabIndex = 4;
@@ -2265,7 +2775,7 @@
             // buttonDetectResolution
             // 
             this.buttonDetectResolution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDetectResolution.Location = new System.Drawing.Point(154, 97);
+            this.buttonDetectResolution.Location = new System.Drawing.Point(151, 98);
             this.buttonDetectResolution.Name = "buttonDetectResolution";
             this.buttonDetectResolution.Size = new System.Drawing.Size(246, 23);
             this.buttonDetectResolution.TabIndex = 23;
@@ -2277,7 +2787,7 @@
             // 
             this.labelCustomResolutionSpacer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelCustomResolutionSpacer.AutoSize = true;
-            this.labelCustomResolutionSpacer.Location = new System.Drawing.Point(273, 73);
+            this.labelCustomResolutionSpacer.Location = new System.Drawing.Point(268, 75);
             this.labelCustomResolutionSpacer.Name = "labelCustomResolutionSpacer";
             this.labelCustomResolutionSpacer.Size = new System.Drawing.Size(14, 13);
             this.labelCustomResolutionSpacer.TabIndex = 7;
@@ -2286,7 +2796,8 @@
             // tabPageGeneral
             // 
             this.tabPageGeneral.AutoScroll = true;
-            this.tabPageGeneral.Controls.Add(this.groupBoxInterface);
+            this.tabPageGeneral.Controls.Add(this.groupBoxQuests);
+            this.tabPageGeneral.Controls.Add(this.groupBoxGeneralInterface);
             this.tabPageGeneral.Controls.Add(this.groupBoxLogin);
             this.tabPageGeneral.Controls.Add(this.groupBoxMainMenu);
             this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
@@ -2297,21 +2808,123 @@
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
             // 
-            // groupBoxInterface
+            // groupBoxQuests
             // 
-            this.groupBoxInterface.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackDaily);
+            this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackEvent);
+            this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMisc);
+            this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackSide);
+            this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMain);
+            this.groupBoxQuests.Location = new System.Drawing.Point(6, 316);
+            this.groupBoxQuests.Name = "groupBoxQuests";
+            this.groupBoxQuests.Size = new System.Drawing.Size(443, 142);
+            this.groupBoxQuests.TabIndex = 27;
+            this.groupBoxQuests.TabStop = false;
+            this.groupBoxQuests.Text = "Quests";
+            // 
+            // groupBoxGeneralInterface
+            // 
+            this.groupBoxGeneralInterface.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxInterface.Controls.Add(this.checkBoxShowCompass);
-            this.groupBoxInterface.Controls.Add(this.checkBoxShowDamageNumbersNW);
-            this.groupBoxInterface.Controls.Add(this.checkBoxShowDamageNumbersA);
-            this.groupBoxInterface.Controls.Add(this.checkBoxGeneralSubtitles);
-            this.groupBoxInterface.Controls.Add(this.checkBoxDialogueSubtitles);
-            this.groupBoxInterface.Location = new System.Drawing.Point(438, 104);
-            this.groupBoxInterface.Name = "groupBoxInterface";
-            this.groupBoxInterface.Size = new System.Drawing.Size(408, 144);
-            this.groupBoxInterface.TabIndex = 26;
-            this.groupBoxInterface.TabStop = false;
-            this.groupBoxInterface.Text = "Interface";
+            this.groupBoxGeneralInterface.Controls.Add(this.comboBoxShowActiveEffectsOnHUD);
+            this.groupBoxGeneralInterface.Controls.Add(this.labelShowActiveEffectsOnHUD);
+            this.groupBoxGeneralInterface.Controls.Add(this.sliderHUDOpacity);
+            this.groupBoxGeneralInterface.Controls.Add(this.labelHUDOpacity);
+            this.groupBoxGeneralInterface.Controls.Add(this.numHUDOpacity);
+            this.groupBoxGeneralInterface.Controls.Add(this.checkBoxShowOtherPlayersNames);
+            this.groupBoxGeneralInterface.Controls.Add(this.checkBoxShowFloatingQuestText);
+            this.groupBoxGeneralInterface.Controls.Add(this.checkBoxShowFloatingQuestMarkers);
+            this.groupBoxGeneralInterface.Controls.Add(this.sliderFloatingQuestMarkersDistance);
+            this.groupBoxGeneralInterface.Controls.Add(this.numFloatingQuestMarkersDistance);
+            this.groupBoxGeneralInterface.Controls.Add(this.labelFloatingQuestMarkersDistance);
+            this.groupBoxGeneralInterface.Controls.Add(this.checkBoxShowPublicTeamNotifications);
+            this.groupBoxGeneralInterface.Controls.Add(this.checkBoxItemRarityColorsNW);
+            this.groupBoxGeneralInterface.Controls.Add(this.checkBoxShowCrosshair);
+            this.groupBoxGeneralInterface.Controls.Add(this.checkBoxEnablePowerArmorHUD);
+            this.groupBoxGeneralInterface.Controls.Add(this.checkBoxShowCompass);
+            this.groupBoxGeneralInterface.Controls.Add(this.checkBoxShowDamageNumbersNW);
+            this.groupBoxGeneralInterface.Controls.Add(this.checkBoxShowDamageNumbersA);
+            this.groupBoxGeneralInterface.Location = new System.Drawing.Point(458, 6);
+            this.groupBoxGeneralInterface.Name = "groupBoxGeneralInterface";
+            this.groupBoxGeneralInterface.Size = new System.Drawing.Size(388, 452);
+            this.groupBoxGeneralInterface.TabIndex = 26;
+            this.groupBoxGeneralInterface.TabStop = false;
+            this.groupBoxGeneralInterface.Text = "Interface";
+            // 
+            // comboBoxShowActiveEffectsOnHUD
+            // 
+            this.comboBoxShowActiveEffectsOnHUD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxShowActiveEffectsOnHUD.FormattingEnabled = true;
+            this.comboBoxShowActiveEffectsOnHUD.Location = new System.Drawing.Point(216, 306);
+            this.comboBoxShowActiveEffectsOnHUD.Name = "comboBoxShowActiveEffectsOnHUD";
+            this.comboBoxShowActiveEffectsOnHUD.Size = new System.Drawing.Size(166, 21);
+            this.comboBoxShowActiveEffectsOnHUD.TabIndex = 38;
+            // 
+            // labelHUDOpacity
+            // 
+            this.labelHUDOpacity.AutoSize = true;
+            this.labelHUDOpacity.Location = new System.Drawing.Point(8, 120);
+            this.labelHUDOpacity.Name = "labelHUDOpacity";
+            this.labelHUDOpacity.Size = new System.Drawing.Size(70, 13);
+            this.labelHUDOpacity.TabIndex = 35;
+            this.labelHUDOpacity.Text = "HUD Opacity";
+            // 
+            // numHUDOpacity
+            // 
+            this.numHUDOpacity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numHUDOpacity.DecimalPlaces = 2;
+            this.numHUDOpacity.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numHUDOpacity.Location = new System.Drawing.Point(308, 136);
+            this.numHUDOpacity.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numHUDOpacity.Name = "numHUDOpacity";
+            this.numHUDOpacity.Size = new System.Drawing.Size(74, 20);
+            this.numHUDOpacity.TabIndex = 36;
+            this.numHUDOpacity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numFloatingQuestMarkersDistance
+            // 
+            this.numFloatingQuestMarkersDistance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numFloatingQuestMarkersDistance.DecimalPlaces = 1;
+            this.numFloatingQuestMarkersDistance.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numFloatingQuestMarkersDistance.Location = new System.Drawing.Point(308, 216);
+            this.numFloatingQuestMarkersDistance.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numFloatingQuestMarkersDistance.Name = "numFloatingQuestMarkersDistance";
+            this.numFloatingQuestMarkersDistance.Size = new System.Drawing.Size(74, 20);
+            this.numFloatingQuestMarkersDistance.TabIndex = 31;
+            this.numFloatingQuestMarkersDistance.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // labelFloatingQuestMarkersDistance
+            // 
+            this.labelFloatingQuestMarkersDistance.AutoSize = true;
+            this.labelFloatingQuestMarkersDistance.Location = new System.Drawing.Point(6, 200);
+            this.labelFloatingQuestMarkersDistance.Name = "labelFloatingQuestMarkersDistance";
+            this.labelFloatingQuestMarkersDistance.Size = new System.Drawing.Size(182, 13);
+            this.labelFloatingQuestMarkersDistance.TabIndex = 30;
+            this.labelFloatingQuestMarkersDistance.Text = "Floating quest markers draw distance";
             // 
             // groupBoxLogin
             // 
@@ -2322,9 +2935,9 @@
             this.groupBoxLogin.Controls.Add(this.checkBoxShowPassword);
             this.groupBoxLogin.Controls.Add(this.labelPassword);
             this.groupBoxLogin.Controls.Add(this.labelUserName);
-            this.groupBoxLogin.Location = new System.Drawing.Point(9, 7);
+            this.groupBoxLogin.Location = new System.Drawing.Point(6, 6);
             this.groupBoxLogin.Name = "groupBoxLogin";
-            this.groupBoxLogin.Size = new System.Drawing.Size(423, 241);
+            this.groupBoxLogin.Size = new System.Drawing.Size(443, 229);
             this.groupBoxLogin.TabIndex = 14;
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Login with Bethesda.net";
@@ -2346,7 +2959,7 @@
             this.labelCredentialsExplanation.ForeColor = System.Drawing.Color.DimGray;
             this.labelCredentialsExplanation.Location = new System.Drawing.Point(9, 126);
             this.labelCredentialsExplanation.Name = "labelCredentialsExplanation";
-            this.labelCredentialsExplanation.Size = new System.Drawing.Size(364, 78);
+            this.labelCredentialsExplanation.Size = new System.Drawing.Size(349, 91);
             this.labelCredentialsExplanation.TabIndex = 5;
             this.labelCredentialsExplanation.Text = resources.GetString("labelCredentialsExplanation.Text");
             // 
@@ -2357,7 +2970,7 @@
             this.textBoxPassword.Location = new System.Drawing.Point(92, 48);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '•';
-            this.textBoxPassword.Size = new System.Drawing.Size(325, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(345, 20);
             this.textBoxPassword.TabIndex = 4;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
@@ -2367,7 +2980,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxUserName.Location = new System.Drawing.Point(92, 23);
             this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(325, 20);
+            this.textBoxUserName.Size = new System.Drawing.Size(345, 20);
             this.textBoxUserName.TabIndex = 3;
             // 
             // checkBoxShowPassword
@@ -2405,10 +3018,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxMainMenu.Controls.Add(this.checkBoxShowSplash);
             this.groupBoxMainMenu.Controls.Add(this.checkBoxIntroVideos);
-            this.groupBoxMainMenu.Controls.Add(this.checkBoxMainMenuMusic);
-            this.groupBoxMainMenu.Location = new System.Drawing.Point(438, 7);
+            this.groupBoxMainMenu.Location = new System.Drawing.Point(6, 242);
             this.groupBoxMainMenu.Name = "groupBoxMainMenu";
-            this.groupBoxMainMenu.Size = new System.Drawing.Size(408, 91);
+            this.groupBoxMainMenu.Size = new System.Drawing.Size(443, 68);
             this.groupBoxMainMenu.TabIndex = 5;
             this.groupBoxMainMenu.TabStop = false;
             this.groupBoxMainMenu.Text = "Main Menu";
@@ -2949,6 +3561,7 @@
             this.tabControl1.Controls.Add(this.tabPageControls);
             this.tabControl1.Controls.Add(this.tabPageCamera);
             this.tabControl1.Controls.Add(this.tabPagePipBoy);
+            this.tabControl1.Controls.Add(this.tabPageCustom);
             this.tabControl1.Location = new System.Drawing.Point(12, 59);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -2958,6 +3571,10 @@
             // 
             // tabPageAudio
             // 
+            this.tabPageAudio.Controls.Add(this.groupBoxAudio);
+            this.tabPageAudio.Controls.Add(this.groupBoxVoice);
+            this.tabPageAudio.Controls.Add(this.groupBoxAudioVolume);
+            this.tabPageAudio.Controls.Add(this.groupBoxAudioInterface);
             this.tabPageAudio.Location = new System.Drawing.Point(4, 22);
             this.tabPageAudio.Name = "tabPageAudio";
             this.tabPageAudio.Padding = new System.Windows.Forms.Padding(3);
@@ -2965,6 +3582,477 @@
             this.tabPageAudio.TabIndex = 8;
             this.tabPageAudio.Text = "Audio";
             this.tabPageAudio.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxAudio
+            // 
+            this.groupBoxAudio.Controls.Add(this.checkBoxEnableAudio);
+            this.groupBoxAudio.Controls.Add(this.checkBoxMainMenuMusic);
+            this.groupBoxAudio.Location = new System.Drawing.Point(505, 6);
+            this.groupBoxAudio.Name = "groupBoxAudio";
+            this.groupBoxAudio.Size = new System.Drawing.Size(341, 81);
+            this.groupBoxAudio.TabIndex = 61;
+            this.groupBoxAudio.TabStop = false;
+            this.groupBoxAudio.Text = "Audio";
+            // 
+            // groupBoxVoice
+            // 
+            this.groupBoxVoice.Controls.Add(this.comboBoxVoiceChatMode);
+            this.groupBoxVoice.Controls.Add(this.labelVoiceChatMode);
+            this.groupBoxVoice.Controls.Add(this.checkBoxPushToTalk);
+            this.groupBoxVoice.Location = new System.Drawing.Point(505, 93);
+            this.groupBoxVoice.Name = "groupBoxVoice";
+            this.groupBoxVoice.Size = new System.Drawing.Size(341, 89);
+            this.groupBoxVoice.TabIndex = 60;
+            this.groupBoxVoice.TabStop = false;
+            this.groupBoxVoice.Text = "Voice";
+            // 
+            // comboBoxVoiceChatMode
+            // 
+            this.comboBoxVoiceChatMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVoiceChatMode.FormattingEnabled = true;
+            this.comboBoxVoiceChatMode.Location = new System.Drawing.Point(140, 19);
+            this.comboBoxVoiceChatMode.Name = "comboBoxVoiceChatMode";
+            this.comboBoxVoiceChatMode.Size = new System.Drawing.Size(187, 21);
+            this.comboBoxVoiceChatMode.TabIndex = 2;
+            // 
+            // labelVoiceChatMode
+            // 
+            this.labelVoiceChatMode.AutoSize = true;
+            this.labelVoiceChatMode.Location = new System.Drawing.Point(7, 22);
+            this.labelVoiceChatMode.Name = "labelVoiceChatMode";
+            this.labelVoiceChatMode.Size = new System.Drawing.Size(92, 13);
+            this.labelVoiceChatMode.TabIndex = 1;
+            this.labelVoiceChatMode.Text = "Voice Chat Mode:";
+            // 
+            // groupBoxAudioVolume
+            // 
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudioChat);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal6);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal5);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal4);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal3);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal2);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal1);
+            this.groupBoxAudioVolume.Controls.Add(this.labelVolumeMaster);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderVolumeMaster);
+            this.groupBoxAudioVolume.Controls.Add(this.numVolumeMaster);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudioChat);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal0);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudioChat);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal0);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal0);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal6);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal6);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal1);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal1);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal5);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal5);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal2);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal2);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal4);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal4);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal3);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal3);
+            this.groupBoxAudioVolume.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxAudioVolume.Name = "groupBoxAudioVolume";
+            this.groupBoxAudioVolume.Size = new System.Drawing.Size(493, 452);
+            this.groupBoxAudioVolume.TabIndex = 59;
+            this.groupBoxAudioVolume.TabStop = false;
+            this.groupBoxAudioVolume.Text = "Volume";
+            // 
+            // labelVolumeMaster
+            // 
+            this.labelVolumeMaster.AutoSize = true;
+            this.labelVolumeMaster.Location = new System.Drawing.Point(15, 25);
+            this.labelVolumeMaster.Name = "labelVolumeMaster";
+            this.labelVolumeMaster.Size = new System.Drawing.Size(76, 13);
+            this.labelVolumeMaster.TabIndex = 28;
+            this.labelVolumeMaster.Text = "Master volume";
+            // 
+            // numVolumeMaster
+            // 
+            this.numVolumeMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numVolumeMaster.DecimalPlaces = 2;
+            this.numVolumeMaster.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numVolumeMaster.Location = new System.Drawing.Point(399, 25);
+            this.numVolumeMaster.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numVolumeMaster.Name = "numVolumeMaster";
+            this.numVolumeMaster.Size = new System.Drawing.Size(74, 20);
+            this.numVolumeMaster.TabIndex = 29;
+            this.numVolumeMaster.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numAudioChat
+            // 
+            this.numAudioChat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudioChat.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numAudioChat.Location = new System.Drawing.Point(399, 61);
+            this.numAudioChat.Name = "numAudioChat";
+            this.numAudioChat.Size = new System.Drawing.Size(74, 20);
+            this.numAudioChat.TabIndex = 54;
+            this.numAudioChat.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // labelAudioChat
+            // 
+            this.labelAudioChat.AutoSize = true;
+            this.labelAudioChat.Location = new System.Drawing.Point(15, 61);
+            this.labelAudioChat.Name = "labelAudioChat";
+            this.labelAudioChat.Size = new System.Drawing.Size(66, 13);
+            this.labelAudioChat.TabIndex = 53;
+            this.labelAudioChat.Text = "Chat volume";
+            // 
+            // labelAudiofVal0
+            // 
+            this.labelAudiofVal0.AutoSize = true;
+            this.labelAudiofVal0.Location = new System.Drawing.Point(15, 126);
+            this.labelAudiofVal0.Name = "labelAudiofVal0";
+            this.labelAudiofVal0.Size = new System.Drawing.Size(65, 13);
+            this.labelAudiofVal0.TabIndex = 32;
+            this.labelAudiofVal0.Text = "Menu Music";
+            // 
+            // numAudiofVal0
+            // 
+            this.numAudiofVal0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal0.DecimalPlaces = 2;
+            this.numAudiofVal0.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal0.Location = new System.Drawing.Point(399, 126);
+            this.numAudiofVal0.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal0.Name = "numAudiofVal0";
+            this.numAudiofVal0.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal0.TabIndex = 33;
+            this.numAudiofVal0.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numAudiofVal6
+            // 
+            this.numAudiofVal6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal6.DecimalPlaces = 2;
+            this.numAudiofVal6.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal6.Location = new System.Drawing.Point(399, 306);
+            this.numAudiofVal6.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal6.Name = "numAudiofVal6";
+            this.numAudiofVal6.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal6.TabIndex = 51;
+            this.numAudiofVal6.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // labelAudiofVal6
+            // 
+            this.labelAudiofVal6.AutoSize = true;
+            this.labelAudiofVal6.Location = new System.Drawing.Point(15, 306);
+            this.labelAudiofVal6.Name = "labelAudiofVal6";
+            this.labelAudiofVal6.Size = new System.Drawing.Size(74, 13);
+            this.labelAudiofVal6.TabIndex = 50;
+            this.labelAudiofVal6.Text = "Pip-Boy Radio";
+            // 
+            // labelAudiofVal1
+            // 
+            this.labelAudiofVal1.AutoSize = true;
+            this.labelAudiofVal1.Location = new System.Drawing.Point(15, 156);
+            this.labelAudiofVal1.Name = "labelAudiofVal1";
+            this.labelAudiofVal1.Size = new System.Drawing.Size(71, 13);
+            this.labelAudiofVal1.TabIndex = 35;
+            this.labelAudiofVal1.Text = "World Radios";
+            // 
+            // numAudiofVal1
+            // 
+            this.numAudiofVal1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal1.DecimalPlaces = 2;
+            this.numAudiofVal1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal1.Location = new System.Drawing.Point(399, 156);
+            this.numAudiofVal1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal1.Name = "numAudiofVal1";
+            this.numAudiofVal1.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal1.TabIndex = 36;
+            this.numAudiofVal1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numAudiofVal5
+            // 
+            this.numAudiofVal5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal5.DecimalPlaces = 2;
+            this.numAudiofVal5.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal5.Location = new System.Drawing.Point(399, 276);
+            this.numAudiofVal5.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal5.Name = "numAudiofVal5";
+            this.numAudiofVal5.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal5.TabIndex = 48;
+            this.numAudiofVal5.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // labelAudiofVal5
+            // 
+            this.labelAudiofVal5.AutoSize = true;
+            this.labelAudiofVal5.Location = new System.Drawing.Point(15, 276);
+            this.labelAudiofVal5.Name = "labelAudiofVal5";
+            this.labelAudiofVal5.Size = new System.Drawing.Size(53, 13);
+            this.labelAudiofVal5.TabIndex = 47;
+            this.labelAudiofVal5.Text = "Footsteps";
+            // 
+            // labelAudiofVal2
+            // 
+            this.labelAudiofVal2.AutoSize = true;
+            this.labelAudiofVal2.Location = new System.Drawing.Point(15, 186);
+            this.labelAudiofVal2.Name = "labelAudiofVal2";
+            this.labelAudiofVal2.Size = new System.Drawing.Size(34, 13);
+            this.labelAudiofVal2.TabIndex = 38;
+            this.labelAudiofVal2.Text = "Voice";
+            // 
+            // numAudiofVal2
+            // 
+            this.numAudiofVal2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal2.DecimalPlaces = 2;
+            this.numAudiofVal2.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal2.Location = new System.Drawing.Point(399, 186);
+            this.numAudiofVal2.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal2.Name = "numAudiofVal2";
+            this.numAudiofVal2.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal2.TabIndex = 39;
+            this.numAudiofVal2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numAudiofVal4
+            // 
+            this.numAudiofVal4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal4.DecimalPlaces = 2;
+            this.numAudiofVal4.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal4.Location = new System.Drawing.Point(399, 246);
+            this.numAudiofVal4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal4.Name = "numAudiofVal4";
+            this.numAudiofVal4.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal4.TabIndex = 45;
+            this.numAudiofVal4.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // labelAudiofVal4
+            // 
+            this.labelAudiofVal4.AutoSize = true;
+            this.labelAudiofVal4.Location = new System.Drawing.Point(15, 246);
+            this.labelAudiofVal4.Name = "labelAudiofVal4";
+            this.labelAudiofVal4.Size = new System.Drawing.Size(40, 13);
+            this.labelAudiofVal4.TabIndex = 44;
+            this.labelAudiofVal4.Text = "Effects";
+            // 
+            // labelAudiofVal3
+            // 
+            this.labelAudiofVal3.AutoSize = true;
+            this.labelAudiofVal3.Location = new System.Drawing.Point(15, 216);
+            this.labelAudiofVal3.Name = "labelAudiofVal3";
+            this.labelAudiofVal3.Size = new System.Drawing.Size(35, 13);
+            this.labelAudiofVal3.TabIndex = 41;
+            this.labelAudiofVal3.Text = "Music";
+            // 
+            // numAudiofVal3
+            // 
+            this.numAudiofVal3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal3.DecimalPlaces = 2;
+            this.numAudiofVal3.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal3.Location = new System.Drawing.Point(399, 216);
+            this.numAudiofVal3.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal3.Name = "numAudiofVal3";
+            this.numAudiofVal3.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal3.TabIndex = 42;
+            this.numAudiofVal3.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // groupBoxAudioInterface
+            // 
+            this.groupBoxAudioInterface.Controls.Add(this.sliderConversationHistorySize);
+            this.groupBoxAudioInterface.Controls.Add(this.numConversationHistorySize);
+            this.groupBoxAudioInterface.Controls.Add(this.labelConversationHistorySize);
+            this.groupBoxAudioInterface.Controls.Add(this.checkBoxDialogueHistory);
+            this.groupBoxAudioInterface.Controls.Add(this.checkBoxDialogueSubtitles);
+            this.groupBoxAudioInterface.Controls.Add(this.checkBoxGeneralSubtitles);
+            this.groupBoxAudioInterface.Location = new System.Drawing.Point(505, 188);
+            this.groupBoxAudioInterface.Name = "groupBoxAudioInterface";
+            this.groupBoxAudioInterface.Size = new System.Drawing.Size(341, 270);
+            this.groupBoxAudioInterface.TabIndex = 58;
+            this.groupBoxAudioInterface.TabStop = false;
+            this.groupBoxAudioInterface.Text = "Interface";
+            // 
+            // numConversationHistorySize
+            // 
+            this.numConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numConversationHistorySize.Location = new System.Drawing.Point(261, 112);
+            this.numConversationHistorySize.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numConversationHistorySize.Name = "numConversationHistorySize";
+            this.numConversationHistorySize.Size = new System.Drawing.Size(74, 20);
+            this.numConversationHistorySize.TabIndex = 61;
+            this.numConversationHistorySize.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // labelConversationHistorySize
+            // 
+            this.labelConversationHistorySize.AutoSize = true;
+            this.labelConversationHistorySize.Location = new System.Drawing.Point(7, 96);
+            this.labelConversationHistorySize.Name = "labelConversationHistorySize";
+            this.labelConversationHistorySize.Size = new System.Drawing.Size(207, 13);
+            this.labelConversationHistorySize.TabIndex = 60;
+            this.labelConversationHistorySize.Text = "Conversation history size (number of rows):";
+            // 
+            // tabPageCustom
+            // 
+            this.tabPageCustom.Controls.Add(this.buttonCustomSave);
+            this.tabPageCustom.Controls.Add(this.comboBoxCustomFile);
+            this.tabPageCustom.Controls.Add(this.labelCustomFile);
+            this.tabPageCustom.Controls.Add(this.textBoxCustom);
+            this.tabPageCustom.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCustom.Name = "tabPageCustom";
+            this.tabPageCustom.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCustom.Size = new System.Drawing.Size(852, 464);
+            this.tabPageCustom.TabIndex = 9;
+            this.tabPageCustom.Text = "Custom";
+            this.tabPageCustom.UseVisualStyleBackColor = true;
+            // 
+            // buttonCustomSave
+            // 
+            this.buttonCustomSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCustomSave.Location = new System.Drawing.Point(752, 6);
+            this.buttonCustomSave.Name = "buttonCustomSave";
+            this.buttonCustomSave.Size = new System.Drawing.Size(94, 23);
+            this.buttonCustomSave.TabIndex = 3;
+            this.buttonCustomSave.Text = "Save";
+            this.buttonCustomSave.UseVisualStyleBackColor = true;
+            this.buttonCustomSave.Click += new System.EventHandler(this.buttonCustomSave_Click);
+            // 
+            // comboBoxCustomFile
+            // 
+            this.comboBoxCustomFile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCustomFile.FormattingEnabled = true;
+            this.comboBoxCustomFile.Location = new System.Drawing.Point(161, 6);
+            this.comboBoxCustomFile.Name = "comboBoxCustomFile";
+            this.comboBoxCustomFile.Size = new System.Drawing.Size(188, 21);
+            this.comboBoxCustomFile.TabIndex = 2;
+            this.comboBoxCustomFile.SelectedIndexChanged += new System.EventHandler(this.comboBoxCustomFile_SelectedIndexChanged);
+            // 
+            // labelCustomFile
+            // 
+            this.labelCustomFile.AutoSize = true;
+            this.labelCustomFile.Location = new System.Drawing.Point(6, 9);
+            this.labelCustomFile.Name = "labelCustomFile";
+            this.labelCustomFile.Size = new System.Drawing.Size(106, 13);
+            this.labelCustomFile.TabIndex = 1;
+            this.labelCustomFile.Text = "Overwrite lines in file:";
+            // 
+            // textBoxCustom
+            // 
+            this.textBoxCustom.AcceptsTab = true;
+            this.textBoxCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxCustom.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCustom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.textBoxCustom.Location = new System.Drawing.Point(6, 33);
+            this.textBoxCustom.Multiline = true;
+            this.textBoxCustom.Name = "textBoxCustom";
+            this.textBoxCustom.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxCustom.Size = new System.Drawing.Size(840, 425);
+            this.textBoxCustom.TabIndex = 0;
+            this.textBoxCustom.WordWrap = false;
+            this.textBoxCustom.TextChanged += new System.EventHandler(this.textBoxCustom_TextChanged);
             // 
             // toolStrip1
             // 
@@ -3064,6 +4152,7 @@
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
             this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
+            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
             // downloadUpdateLanguageFilesToolStripMenuItem
             // 
@@ -3077,6 +4166,7 @@
             this.showUpdaterlogtxtToolStripMenuItem.Name = "showUpdaterlogtxtToolStripMenuItem";
             this.showUpdaterlogtxtToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.showUpdaterlogtxtToolStripMenuItem.Text = "Show updater.log.txt";
+            this.showUpdaterlogtxtToolStripMenuItem.Click += new System.EventHandler(this.showUpdaterlogtxtToolStripMenuItem_Click);
             // 
             // toolStripDropDownButtonExplore
             // 
@@ -3171,6 +4261,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGrassFadeDistance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderTAAPostOverlay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderTAAPostSharpen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderShadowDistance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderLODObjects)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderLODItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderLODActors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderVolumeMaster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudioChat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderFloatingQuestMarkersDistance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).EndInit();
             this.tabPageCamera.ResumeLayout(false);
             this.groupBoxCameraPosition.ResumeLayout(false);
             this.groupBoxCameraPosition.PerformLayout();
@@ -3231,8 +4341,12 @@
             this.groupBoxDisplay.ResumeLayout(false);
             this.groupBoxDisplay.PerformLayout();
             this.tabPageGeneral.ResumeLayout(false);
-            this.groupBoxInterface.ResumeLayout(false);
-            this.groupBoxInterface.PerformLayout();
+            this.groupBoxQuests.ResumeLayout(false);
+            this.groupBoxQuests.PerformLayout();
+            this.groupBoxGeneralInterface.ResumeLayout(false);
+            this.groupBoxGeneralInterface.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numHUDOpacity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFloatingQuestMarkersDistance)).EndInit();
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
             this.groupBoxMainMenu.ResumeLayout(false);
@@ -3262,6 +4376,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabPageAudio.ResumeLayout(false);
+            this.groupBoxAudio.ResumeLayout(false);
+            this.groupBoxAudio.PerformLayout();
+            this.groupBoxVoice.ResumeLayout(false);
+            this.groupBoxVoice.PerformLayout();
+            this.groupBoxAudioVolume.ResumeLayout(false);
+            this.groupBoxAudioVolume.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numVolumeMaster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudioChat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal3)).EndInit();
+            this.groupBoxAudioInterface.ResumeLayout(false);
+            this.groupBoxAudioInterface.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).EndInit();
+            this.tabPageCustom.ResumeLayout(false);
+            this.tabPageCustom.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -3334,23 +4469,17 @@
         private System.Windows.Forms.GroupBox groupBoxTAASharpening;
         private System.Windows.Forms.NumericUpDown numTAAPostSharpen;
         private System.Windows.Forms.Label labelTAAPostSharpen;
-        private MetroFramework.Controls.MetroTrackBar sliderTAAPostSharpen;
         private System.Windows.Forms.NumericUpDown numTAAPostOverlay;
         private System.Windows.Forms.Label labelTAAPostOverlay;
-        private MetroFramework.Controls.MetroTrackBar sliderTAAPostOverlay;
         private System.Windows.Forms.GroupBox groupBoxGrass;
         private System.Windows.Forms.NumericUpDown numGrassFadeDistance;
-        private MetroFramework.Controls.MetroTrackBar sliderGrassFadeDistance;
         private System.Windows.Forms.Label labelGrassFadeDistance;
         private System.Windows.Forms.CheckBox checkBoxGrass;
         private System.Windows.Forms.GroupBox groupBoxLOD;
         private System.Windows.Forms.Label labelLODFadeDistance;
         private System.Windows.Forms.NumericUpDown numLODActors;
-        private MetroFramework.Controls.MetroTrackBar sliderLODActors;
         private System.Windows.Forms.NumericUpDown numLODItems;
-        private MetroFramework.Controls.MetroTrackBar sliderLODItems;
         private System.Windows.Forms.NumericUpDown numLODObjects;
-        private MetroFramework.Controls.MetroTrackBar sliderLODObjects;
         private System.Windows.Forms.Label labelLODActors;
         private System.Windows.Forms.Label labelLODItems;
         private System.Windows.Forms.Label labelLODObjects;
@@ -3360,7 +4489,6 @@
         private System.Windows.Forms.ComboBox comboBoxShadowBlurriness;
         private System.Windows.Forms.Label labelShadowBlurriness;
         private System.Windows.Forms.NumericUpDown numShadowDistance;
-        private MetroFramework.Controls.MetroTrackBar sliderShadowDistance;
         private System.Windows.Forms.Label labelShadowDistance;
         private System.Windows.Forms.ComboBox comboBoxShadowTextureResolution;
         private System.Windows.Forms.Label labelShadowTextureResolution;
@@ -3395,12 +4523,10 @@
         private System.Windows.Forms.Label labelDisplayMode;
         private System.Windows.Forms.Label labelCustomResolutionSpacer;
         private System.Windows.Forms.TabPage tabPageGeneral;
-        private System.Windows.Forms.GroupBox groupBoxInterface;
+        private System.Windows.Forms.GroupBox groupBoxGeneralInterface;
         private System.Windows.Forms.CheckBox checkBoxShowCompass;
         private System.Windows.Forms.CheckBox checkBoxShowDamageNumbersNW;
         private System.Windows.Forms.CheckBox checkBoxShowDamageNumbersA;
-        private System.Windows.Forms.CheckBox checkBoxGeneralSubtitles;
-        private System.Windows.Forms.CheckBox checkBoxDialogueSubtitles;
         private System.Windows.Forms.GroupBox groupBoxLogin;
         private System.Windows.Forms.CheckBox checkBoxDisableSteam;
         private System.Windows.Forms.Label labelCredentialsExplanation;
@@ -3412,7 +4538,6 @@
         private System.Windows.Forms.GroupBox groupBoxMainMenu;
         private System.Windows.Forms.CheckBox checkBoxShowSplash;
         private System.Windows.Forms.CheckBox checkBoxIntroVideos;
-        private System.Windows.Forms.CheckBox checkBoxMainMenuMusic;
         private System.Windows.Forms.TabPage tabPageInfo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBoxLocalization;
@@ -3476,7 +4601,6 @@
         private System.Windows.Forms.CheckBox checkBoxFixAimSensitivity;
         private System.Windows.Forms.NumericUpDown numMouseSensitivity;
         private System.Windows.Forms.Label labelMouseSensitivity;
-        private MetroFramework.Controls.MetroTrackBar sliderMouseSensitivity;
         private System.Windows.Forms.CheckBox checkBoxFixMouseSensitivity;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonLaunchGame;
@@ -3498,6 +4622,84 @@
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateToolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showUpdaterlogtxtToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPageCustom;
+        private System.Windows.Forms.TextBox textBoxCustom;
+        private System.Windows.Forms.ComboBox comboBoxCustomFile;
+        private System.Windows.Forms.Label labelCustomFile;
+        private System.Windows.Forms.Button buttonCustomSave;
+        private System.Windows.Forms.TrackBar sliderTAAPostSharpen;
+        private System.Windows.Forms.TrackBar sliderTAAPostOverlay;
+        private System.Windows.Forms.TrackBar sliderGrassFadeDistance;
+        private System.Windows.Forms.TrackBar sliderLODActors;
+        private System.Windows.Forms.TrackBar sliderLODItems;
+        private System.Windows.Forms.TrackBar sliderLODObjects;
+        private System.Windows.Forms.TrackBar sliderShadowDistance;
+        private System.Windows.Forms.TrackBar sliderMouseSensitivity;
+        private System.Windows.Forms.NumericUpDown numVolumeMaster;
+        private System.Windows.Forms.Label labelVolumeMaster;
+        private System.Windows.Forms.TrackBar sliderVolumeMaster;
+        private System.Windows.Forms.CheckBox checkBoxEnableAudio;
+        private System.Windows.Forms.NumericUpDown numAudiofVal0;
+        private System.Windows.Forms.Label labelAudiofVal0;
+        private System.Windows.Forms.TrackBar sliderAudiofVal0;
+        private System.Windows.Forms.NumericUpDown numAudiofVal2;
+        private System.Windows.Forms.Label labelAudiofVal2;
+        private System.Windows.Forms.TrackBar sliderAudiofVal2;
+        private System.Windows.Forms.NumericUpDown numAudiofVal1;
+        private System.Windows.Forms.Label labelAudiofVal1;
+        private System.Windows.Forms.TrackBar sliderAudiofVal1;
+        private System.Windows.Forms.NumericUpDown numAudiofVal6;
+        private System.Windows.Forms.Label labelAudiofVal6;
+        private System.Windows.Forms.TrackBar sliderAudiofVal6;
+        private System.Windows.Forms.NumericUpDown numAudiofVal5;
+        private System.Windows.Forms.Label labelAudiofVal5;
+        private System.Windows.Forms.TrackBar sliderAudiofVal5;
+        private System.Windows.Forms.NumericUpDown numAudiofVal4;
+        private System.Windows.Forms.Label labelAudiofVal4;
+        private System.Windows.Forms.TrackBar sliderAudiofVal4;
+        private System.Windows.Forms.NumericUpDown numAudiofVal3;
+        private System.Windows.Forms.Label labelAudiofVal3;
+        private System.Windows.Forms.TrackBar sliderAudiofVal3;
+        private System.Windows.Forms.NumericUpDown numAudioChat;
+        private System.Windows.Forms.Label labelAudioChat;
+        private System.Windows.Forms.TrackBar sliderAudioChat;
+        private System.Windows.Forms.CheckBox checkBoxGeneralSubtitles;
+        private System.Windows.Forms.CheckBox checkBoxDialogueSubtitles;
+        private System.Windows.Forms.CheckBox checkBoxMainMenuMusic;
+        private System.Windows.Forms.GroupBox groupBoxAudioVolume;
+        private System.Windows.Forms.GroupBox groupBoxAudioInterface;
+        private System.Windows.Forms.GroupBox groupBoxAudio;
+        private System.Windows.Forms.GroupBox groupBoxVoice;
+        private System.Windows.Forms.CheckBox checkBoxPushToTalk;
+        private System.Windows.Forms.ComboBox comboBoxVoiceChatMode;
+        private System.Windows.Forms.Label labelVoiceChatMode;
+        private System.Windows.Forms.CheckBox checkBoxMouseInvertX;
+        private System.Windows.Forms.CheckBox checkBoxMouseInvertY;
+        private System.Windows.Forms.GroupBox groupBoxQuests;
+        private System.Windows.Forms.CheckBox checkBoxEnableQuestAutoTrackDaily;
+        private System.Windows.Forms.CheckBox checkBoxEnableQuestAutoTrackEvent;
+        private System.Windows.Forms.CheckBox checkBoxEnableQuestAutoTrackMisc;
+        private System.Windows.Forms.CheckBox checkBoxEnableQuestAutoTrackSide;
+        private System.Windows.Forms.CheckBox checkBoxEnableQuestAutoTrackMain;
+        private System.Windows.Forms.CheckBox checkBoxDialogueHistory;
+        private System.Windows.Forms.CheckBox checkBoxEnablePowerArmorHUD;
+        private System.Windows.Forms.CheckBox checkBoxShowCrosshair;
+        private System.Windows.Forms.CheckBox checkBoxItemRarityColorsNW;
+        private System.Windows.Forms.CheckBox checkBoxShowPublicTeamNotifications;
+        private System.Windows.Forms.CheckBox checkBoxShowFloatingQuestText;
+        private System.Windows.Forms.CheckBox checkBoxShowFloatingQuestMarkers;
+        private System.Windows.Forms.TrackBar sliderFloatingQuestMarkersDistance;
+        private System.Windows.Forms.NumericUpDown numFloatingQuestMarkersDistance;
+        private System.Windows.Forms.Label labelFloatingQuestMarkersDistance;
+        private System.Windows.Forms.TrackBar sliderConversationHistorySize;
+        private System.Windows.Forms.NumericUpDown numConversationHistorySize;
+        private System.Windows.Forms.Label labelConversationHistorySize;
+        private System.Windows.Forms.CheckBox checkBoxShowOtherPlayersNames;
+        private System.Windows.Forms.TrackBar sliderHUDOpacity;
+        private System.Windows.Forms.Label labelHUDOpacity;
+        private System.Windows.Forms.NumericUpDown numHUDOpacity;
+        private System.Windows.Forms.ComboBox comboBoxShowActiveEffectsOnHUD;
+        private System.Windows.Forms.Label labelShowActiveEffectsOnHUD;
     }
 }
 

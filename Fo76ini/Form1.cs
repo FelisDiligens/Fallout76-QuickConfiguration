@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.IO;
 using System.Diagnostics;
+using IniParser.Model;
 
 namespace Fo76ini
 {
@@ -114,6 +115,35 @@ namespace Fo76ini
                 }
             ));
 
+            ComboBoxContainer.Add("Files", new ComboBoxContainer(
+                this.comboBoxCustomFile,
+                new String[] {
+                    "Fallout76.ini",
+                    "Fallout76Prefs.ini",
+                    "Fallout76Custom.ini"
+                }
+            ));
+            this.comboBoxCustomFile.SelectedIndex = 0;
+
+            ComboBoxContainer.Add("VoiceChatMode", new ComboBoxContainer(
+                this.comboBoxVoiceChatMode,
+                new String[] {
+                    "Auto",
+                    "Area",
+                    "Team",
+                    "None"
+                }
+            ));
+
+            ComboBoxContainer.Add("ShowActiveEffectsOnHUD", new ComboBoxContainer(
+                this.comboBoxShowActiveEffectsOnHUD,
+                new String[] {
+                    "Disabled",
+                    "Detrimental",
+                    "All"
+                }
+            ));
+
 
             // Disable scroll wheel on UI elements to prevent the user from accidentally changing values:
             PreventChangeOnMouseWheelForAllElements(this);
@@ -132,6 +162,19 @@ namespace Fo76ini
             this.FormClosing += this.Form1_FormClosing;
         }
 
+        // Winforms Double Buffering
+        // https://stackoverflow.com/questions/3718380/winforms-double-buffering/3718648#3718648
+        // fixes the visual artifacts when scrolling
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
         /// <summary>
         /// Disable scroll wheel on UI elements (NumericUpDown and ComboBox) to prevent the user from accidentally changing values
         /// </summary>
@@ -141,7 +184,7 @@ namespace Fo76ini
             foreach (Control subControl in control.Controls)
             {
                 // NumericUpDown and ComboBox:
-                if (subControl.Name.StartsWith("num") || subControl.Name.StartsWith("comboBox"))
+                if (subControl.Name.StartsWith("num") || subControl.Name.StartsWith("comboBox") || subControl.Name.StartsWith("slider"))
                     subControl.MouseWheel += (object sender, MouseEventArgs e) => ((HandledMouseEventArgs)e).Handled = true;
 
                 // TabControl, TabPage, and GroupBox:
@@ -253,14 +296,14 @@ namespace Fo76ini
             }
         }
 
-        private void CheckVersion()
+        private void CheckVersion(bool force = false)
         {
             this.labelConfigVersion.Text = VERSION;
             /*using (StreamWriter f = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "VERSION")))
                 f.Write(VERSION);*/
             IniFiles.Instance.Set(IniFile.Config, "General", "sVersion", VERSION);
 
-            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bIgnoreUpdates", false))
+            if (!force && IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bIgnoreUpdates", false))
             {
                 this.labelConfigVersion.ForeColor = Color.Black;
                 groupBoxUpdate.Visible = false;
@@ -314,6 +357,20 @@ namespace Fo76ini
             UILoader.LinkSlider(this.sliderMouseSensitivity, this.numMouseSensitivity, 10000.0);
             UILoader.LinkSlider(this.sliderTAAPostOverlay, this.numTAAPostOverlay, 100);
             UILoader.LinkSlider(this.sliderTAAPostSharpen, this.numTAAPostSharpen, 100);
+
+            UILoader.LinkSlider(this.sliderVolumeMaster, this.numVolumeMaster, 100);
+            UILoader.LinkSlider(this.sliderAudioChat, this.numAudioChat, 1);
+            UILoader.LinkSlider(this.sliderAudiofVal0, this.numAudiofVal0, 100);
+            UILoader.LinkSlider(this.sliderAudiofVal1, this.numAudiofVal1, 100);
+            UILoader.LinkSlider(this.sliderAudiofVal2, this.numAudiofVal2, 100);
+            UILoader.LinkSlider(this.sliderAudiofVal3, this.numAudiofVal3, 100);
+            UILoader.LinkSlider(this.sliderAudiofVal4, this.numAudiofVal4, 100);
+            UILoader.LinkSlider(this.sliderAudiofVal5, this.numAudiofVal5, 100);
+            UILoader.LinkSlider(this.sliderAudiofVal6, this.numAudiofVal6, 100);
+
+            UILoader.LinkSlider(this.sliderFloatingQuestMarkersDistance, this.numFloatingQuestMarkersDistance, 10);
+            UILoader.LinkSlider(this.sliderConversationHistorySize, this.numConversationHistorySize, 1);
+            UILoader.LinkSlider(this.sliderHUDOpacity, this.numHUDOpacity, 100);
 
 
             /*
@@ -416,15 +473,62 @@ namespace Fo76ini
             // Dialogue subtitles
             uiLoader.LinkBool(this.checkBoxDialogueSubtitles, IniFile.F76Prefs, "Interface", "bDialogueSubtitles", false);
 
+            // Dialogue history
+            uiLoader.LinkBool(this.checkBoxDialogueHistory, IniFile.F76Prefs, "MAIN", "bShowDialogueHistory", false);
+
             // Show damage numbers in nuclear winter
             uiLoader.LinkBool(this.checkBoxShowDamageNumbersNW, IniFile.F76Prefs, "NuclearWinter", "bShowDamageNumbers", true);
 
             // Show damage numbers in adventure mode
             uiLoader.LinkBool(this.checkBoxShowDamageNumbersA, IniFile.F76Prefs, "Adventure", "bShowDamageNumbers", false);
 
+            // Show item rarity colors
+            uiLoader.LinkBool(this.checkBoxItemRarityColorsNW, IniFile.F76Prefs, "NuclearWinter", "bEnableItemRarityColors", true);
+
+            // Show Public Team Notifications
+            uiLoader.LinkBool(this.checkBoxShowPublicTeamNotifications, IniFile.F76Prefs, "GamePlay", "bShowPublicTeamNotifications", true);
+
+            // Show Floating Quest Markers
+            uiLoader.LinkBool(this.checkBoxShowFloatingQuestMarkers, IniFile.F76Prefs, "GamePlay", "bShowFloatingQuestMarkers", true);
+
+            // Show Floating Quest Text
+            uiLoader.LinkBool(this.checkBoxShowFloatingQuestText, IniFile.F76Prefs, "GamePlay", "bShowFloatingQuestText", true);
+
+            // Floating Quest Markers Draw Distance
+            uiLoader.LinkFloat(this.numFloatingQuestMarkersDistance, IniFile.F76Prefs, "GamePlay", "fFloatingQuestMarkersDistance", 100.0f);
+
             // Show compass
             uiLoader.LinkBool(this.checkBoxShowCompass, IniFile.F76Prefs, "Interface", "bShowCompass", true);
 
+            // Show crosshair
+            uiLoader.LinkBool(this.checkBoxShowCrosshair, IniFile.F76Prefs, "MAIN", "bCrosshairEnabled", true);
+
+            // Enable Power Armor HUD
+            uiLoader.LinkBool(this.checkBoxEnablePowerArmorHUD, IniFile.F76Prefs, "MAIN", "bEnablePowerArmorHUD", true);
+
+            // Show Other Players' Names
+            uiLoader.LinkBool(this.checkBoxShowOtherPlayersNames, IniFile.F76Prefs, "Display", "bShowOtherPlayersNames", true);
+
+            // Quests:
+            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackMain, IniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackMain", true);
+            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackSide, IniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackSide", true);
+            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackMisc, IniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackMisc", true);
+            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackEvent, IniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackEvent", true);
+            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackDaily, IniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackOther", false);
+
+            // Conversation History Size
+            uiLoader.LinkFloat(this.numConversationHistorySize, IniFile.F76Prefs, "Display", "fConversationHistorySize", 4.0f);
+
+            // HUD Opacity
+            uiLoader.LinkFloat(this.numHUDOpacity, IniFile.F76Prefs, "MAIN", "fHUDOpacity", 1.0f);
+
+            // Show active effects on HUD
+            uiLoader.LinkList(
+                this.comboBoxShowActiveEffectsOnHUD,
+                new String[] { "0", "1", "2" },
+                IniFile.Config, "Interface", "uHUDActiveEffectWidget",
+                "2", 2
+            );
 
 
             /*
@@ -700,6 +804,31 @@ namespace Fo76ini
             uiLoader.LinkFloat(this.numTAAPostSharpen, IniFile.F76Custom, "Display", "fTAAPostSharpen", 0.21f);
 
 
+
+            /*
+             * Audio
+             */
+
+            uiLoader.LinkBool(this.checkBoxEnableAudio, IniFile.F76Custom, "Audio", "bEnableAudio", true);
+
+            uiLoader.LinkBool(this.checkBoxPushToTalk, IniFile.F76Prefs, "Voice", "bVoicePushToTalkEnabled", true);
+
+            uiLoader.LinkFloat(this.numVolumeMaster, IniFile.F76Prefs, "AudioMenu", "fAudioMasterVolume", 1.0f);
+            uiLoader.LinkInt(this.numAudioChat, IniFile.F76Prefs, "Voice", "uVivoxVoiceVolume", 100);
+            uiLoader.LinkFloat(this.numAudiofVal0, IniFile.F76Prefs, "AudioMenu", "fVal0", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal1, IniFile.F76Prefs, "AudioMenu", "fVal1", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal2, IniFile.F76Prefs, "AudioMenu", "fVal2", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal3, IniFile.F76Prefs, "AudioMenu", "fVal3", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal4, IniFile.F76Prefs, "AudioMenu", "fVal4", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal5, IniFile.F76Prefs, "AudioMenu", "fVal5", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal6, IniFile.F76Prefs, "AudioMenu", "fVal6", 1.0f);
+
+            uiLoader.LinkList(this.comboBoxVoiceChatMode,
+                new String[] { "0", "1", "2", "3" },
+                IniFile.F76Prefs, "Voice", "uTransmitPreference",
+                "0", 0);
+
+
             /*
              * Controls
              */
@@ -784,6 +913,9 @@ namespace Fo76ini
             uiLoader.LinkBool(this.checkBoxGamepadEnabled, IniFile.F76Prefs, "General", "bGamepadEnable", true);
             uiLoader.LinkBool(this.checkBoxGamepadRumble, IniFile.F76Custom, "Controls", "bGamePadRumble", true);
 
+            uiLoader.LinkBool(this.checkBoxMouseInvertX, IniFile.F76Prefs, "Controls", "bInvertXValues", false);
+            uiLoader.LinkBool(this.checkBoxMouseInvertY, IniFile.F76Prefs, "Controls", "bInvertYValues", false);
+
 
 
             /*
@@ -858,6 +990,29 @@ namespace Fo76ini
 
         public void ApplyChanges()
         {
+            // Add custom lines to *.ini files:
+            String f76Path = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76.add.ini");
+            if (File.Exists(f76Path))
+            {
+                IniData f76Data = IniFiles.Instance.LoadIni(f76Path);
+                IniFiles.Instance.Merge(IniFile.F76, f76Data);
+            }
+
+            String f76PPath = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76Prefs.add.ini");
+            if (File.Exists(f76PPath))
+            {
+                IniData f76PData = IniFiles.Instance.LoadIni(f76PPath);
+                IniFiles.Instance.Merge(IniFile.F76Prefs, f76PData);
+            }
+
+            String f76CPath = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76Custom.add.ini");
+            if (File.Exists(f76CPath))
+            {
+                IniData f76CData = IniFiles.Instance.LoadIni(f76CPath);
+                IniFiles.Instance.Merge(IniFile.F76Custom, f76CData);
+            }
+
+            // Save changes:
             ColorUi2Ini();
             IniFiles.Instance.SaveAll(this.checkBoxReadOnly.Checked);
             IniFiles.Instance.ResolveNWMode();
@@ -1339,6 +1494,66 @@ namespace Fo76ini
         private void toolStripButtonNexusMods_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/mods/546");
+        }
+
+        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckVersion(true);
+        }
+
+        private void showUpdaterlogtxtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(Path.Combine(Form1.AppConfigFolder, "updater.log.txt")))
+                Utils.OpenNotepad(Path.Combine(Form1.AppConfigFolder, "updater.log.txt"));
+        }
+
+        private String customAddFilePath = "";
+
+        private void comboBoxCustomFile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String fileName = "Invalid.add.ini";
+            switch (this.comboBoxCustomFile.SelectedIndex)
+            {
+                case 0:
+                    fileName = "Fallout76.add.ini";
+                    break;
+                case 1:
+                    fileName = "Fallout76Prefs.add.ini";
+                    break;
+                case 2:
+                    fileName = "Fallout76Custom.add.ini";
+                    break;
+            }
+            this.customAddFilePath = Path.Combine(IniFiles.Instance.iniParentPath, fileName);
+
+            if (File.Exists(this.customAddFilePath))
+                this.textBoxCustom.Text = File.ReadAllText(this.customAddFilePath);
+            else
+                this.textBoxCustom.Text = "";
+
+            this.buttonCustomSave.Text = this.buttonCustomSave.Text.TrimEnd('*');
+        }
+
+        private void textBoxCustom_TextChanged(object sender, EventArgs e)
+        {
+            if (!this.buttonCustomSave.Text.EndsWith("*"))
+                this.buttonCustomSave.Text += "*";
+        }
+
+        private void buttonCustomSave_Click(object sender, EventArgs e)
+        {
+            if (this.textBoxCustom.Text == "")
+            {
+                if (File.Exists(this.customAddFilePath))
+                    File.Delete(this.customAddFilePath);
+            }
+            else
+            {
+                File.WriteAllText(this.customAddFilePath, this.textBoxCustom.Text);
+            }
+
+            if (this.buttonCustomSave.Text.EndsWith("*"))
+                this.buttonCustomSave.Text = this.buttonCustomSave.Text.TrimEnd('*');
         }
     }
 }

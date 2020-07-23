@@ -825,6 +825,11 @@ namespace Fo76ini
          ********************************************************************************************************************************************
          */
 
+        public void Merge(IniFile f, IniData d)
+        {
+            this.GetIniData(f).Merge(d);
+        }
+
         // https://stackoverflow.com/questions/1873658/net-windows-forms-remember-windows-size-and-location
         public void SaveWindowState(String formName, Form form)
         {

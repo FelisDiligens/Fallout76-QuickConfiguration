@@ -39,12 +39,14 @@ namespace Fo76ini
                 }
             ));
 
-            ComboBoxContainer.Add("ModArchiveFormat", new ComboBoxContainer(
-                this.comboBoxModArchiveFormat,
+            ComboBoxContainer.Add("ModArchivePreset", new ComboBoxContainer(
+                this.comboBoxModArchivePreset,
                 new String[] {
-                    "Auto-detect",
-                    "General",
-                    "Textures (*.dds files)"
+                    "-- Please select --",
+                    "General / Interface / Materials",      /* Materials: *.bgsm; Interface: *.swf; */
+                    "Textures (*.dds files)",
+                    "Uncompressed textures (*.dds files)",  /* Textures: *.dds; */
+                    "Sound FX / Audio",                     /* Voice: *.fuz; Lip-Sync: *.lip; Sound FX: *.xwm; */
                 }
             ));
         }
@@ -88,13 +90,13 @@ namespace Fo76ini
             switch (this.changedMod.Format)
             {
                 case Mod.ArchiveFormat.General:
-                    this.comboBoxModArchiveFormat.SelectedIndex = 1;
+                    this.comboBoxModArchivePreset.SelectedIndex = 1;
                     break;
                 case Mod.ArchiveFormat.Textures:
-                    this.comboBoxModArchiveFormat.SelectedIndex = 2;
+                    this.comboBoxModArchivePreset.SelectedIndex = 2;
                     break;
                 default:
-                    this.comboBoxModArchiveFormat.SelectedIndex = 0;
+                    this.comboBoxModArchivePreset.SelectedIndex = 0;
                     break;
             }
 
@@ -105,54 +107,50 @@ namespace Fo76ini
 
                     //this.checkBoxModBA2Compression.Checked = ManagedMods.Instance.bundledCompression != Archive2.Compression.None;
                     //this.checkBoxModBA2Compression.Checked = ManagedMods.Instance.bundledTexturesCompression != Archive2.Compression.None;
-                    this.checkBoxModBA2Compression.Visible = false;
                     this.checkBoxFreezeArchive.Visible = false;
 
                     //this.textBoxModArchiveName.Text = "";
                     this.textBoxModArchiveName.Visible = false;
                     this.labelModArchiveName.Visible = false;
 
-                    this.labelModInstallInto.Visible = false;
-                    this.textBoxModRootDir.Visible = false;
-                    this.buttonModPickRootDir.Visible = false;
-
                     this.labelModUnfreeze.Visible = false;
                     this.buttonModUnfreeze.Visible = false;
 
-                    this.comboBoxModArchiveFormat.Visible = false;
-                    this.labelModArchiveFormat.Visible = false;
-                    this.groupBoxSeparateArchivePresets.Visible = false;
+                    this.comboBoxModArchivePreset.Visible = false;
+                    this.labelModArchivePreset.Visible = false;
+
+                    this.labelModInstallInto.Visible = false;
+                    this.textBoxModRootDir.Visible = false;
+                    this.buttonModPickRootDir.Visible = false;
                     break;
                 case Mod.FileType.SeparateBA2:
                     this.comboBoxModInstallAs.SelectedIndex = 1;
-
-                    this.checkBoxModBA2Compression.Checked = this.changedMod.Compression != Archive2.Compression.None;
-                    this.checkBoxModBA2Compression.Visible = true;
 
                     this.checkBoxFreezeArchive.Checked = this.changedMod.freeze;
                     this.checkBoxFreezeArchive.Visible = true;
                     this.labelModUnfreeze.Visible = this.changedMod.isFrozen();
                     this.buttonModUnfreeze.Visible = this.changedMod.isFrozen();
 
-                    this.comboBoxModArchiveFormat.Visible = true;
-                    this.labelModArchiveFormat.Visible = true;
+                    this.comboBoxModArchivePreset.Visible = true;
+                    this.labelModArchivePreset.Visible = true;
 
                     this.textBoxModArchiveName.Text = this.changedMod.ArchiveName;
                     this.textBoxModArchiveName.Visible = true;
                     this.labelModArchiveName.Visible = true;
 
-                    this.labelModInstallInto.Visible = false;
-                    this.textBoxModRootDir.Visible = false;
-                    this.buttonModPickRootDir.Visible = false;
-                    this.groupBoxSeparateArchivePresets.Visible = true;
+                    this.labelModInstallInto.Enabled = false;
+                    this.textBoxModRootDir.Enabled = false;
+                    this.buttonModPickRootDir.Enabled = false;
+                    this.labelModInstallInto.Visible = true;
+                    this.textBoxModRootDir.Visible = true;
+                    this.buttonModPickRootDir.Visible = true;
                     break;
                 case Mod.FileType.Loose:
                     this.comboBoxModInstallAs.SelectedIndex = 2;
                     this.textBoxModArchiveName.Visible = false;
                     this.labelModArchiveName.Visible = false;
-                    this.checkBoxModBA2Compression.Visible = false;
-                    this.comboBoxModArchiveFormat.Visible = false;
-                    this.labelModArchiveFormat.Visible = false;
+                    this.comboBoxModArchivePreset.Visible = false;
+                    this.labelModArchivePreset.Visible = false;
 
                     this.checkBoxFreezeArchive.Visible = false;
                     this.labelModUnfreeze.Visible = false;
@@ -161,36 +159,44 @@ namespace Fo76ini
                     this.labelModUnfreeze.Visible = false;
                     this.buttonModUnfreeze.Visible = false;
 
+                    this.labelModInstallInto.Enabled = true;
+                    this.textBoxModRootDir.Enabled = true;
+                    this.buttonModPickRootDir.Enabled = true;
                     this.labelModInstallInto.Visible = true;
                     this.textBoxModRootDir.Visible = true;
                     this.buttonModPickRootDir.Visible = true;
-                    this.groupBoxSeparateArchivePresets.Visible = false;
                     break;
             }
 
             // Is frozen?
             bool isFrozen = this.changedMod.isFrozen();
-            this.comboBoxModArchiveFormat.Enabled = !isFrozen;
+            /*this.comboBoxModArchivePreset.Enabled = !isFrozen;
             this.comboBoxModInstallAs.Enabled = !isFrozen;
-            this.checkBoxModBA2Compression.Enabled = !isFrozen;
-            this.buttonModRepairDDS.Enabled = !isFrozen;
-            if (isFrozen)
-                this.groupBoxSeparateArchivePresets.Visible = false;
+            this.buttonModRepairDDS.Enabled = !isFrozen;*/
+            this.groupBoxModDetailsInstallationOptions.Enabled = !isFrozen;
 
             // Preset
             if (!isFrozen && this.changedMod.Type == Mod.FileType.SeparateBA2)
             {
-                if (this.changedMod.Compression == Archive2.Compression.Default &&
-                    this.changedMod.Format == Mod.ArchiveFormat.General)
-                    this.radioButtonSeparateArchiveGeneral.Checked = true;
-                else if (this.changedMod.Compression == Archive2.Compression.Default &&
-                    this.changedMod.Format == Mod.ArchiveFormat.Textures)
-                    this.radioButtonSeparateArchiveTextures.Checked = true;
-                else if (this.changedMod.Compression == Archive2.Compression.None &&
-                    this.changedMod.Format == Mod.ArchiveFormat.General)
-                    this.radioButtonSeparateArchiveSounds.Checked = true;
-                else 
-                     this.radioButtonSeparateArchiveCustom.Checked = true;
+                bool isCompressed = this.changedMod.Compression == Archive2.Compression.Default;
+                switch (this.changedMod.Format)
+                {
+                    case Mod.ArchiveFormat.General:
+                        if (isCompressed)
+                            this.comboBoxModArchivePreset.SelectedIndex = 1; // General
+                        else
+                            this.comboBoxModArchivePreset.SelectedIndex = 4; // Sound FX
+                        break;
+                    case Mod.ArchiveFormat.Textures:
+                        if (isCompressed)
+                            this.comboBoxModArchivePreset.SelectedIndex = 2; // Textures
+                        else
+                            this.comboBoxModArchivePreset.SelectedIndex = 3; // Uncompressed textures
+                        break;
+                    default:
+                        this.comboBoxModArchivePreset.SelectedIndex = 0; // Please select
+                        break;
+                }
             }
 
             // Bulk?
@@ -204,8 +210,8 @@ namespace Fo76ini
             this.buttonModRepairDDS.Visible = !this.bulk;
             this.buttonModUnfreeze.Enabled = !this.bulk;
 
-            this.separator1.Visible = !this.bulk;
-            this.separator2.Visible = !this.bulk;
+            /*this.separator1.Visible = !this.bulk;
+            this.separator2.Visible = !this.bulk;*/
             this.progressBar1.Visible = !this.bulk;
 
             this.labelModDetailsBulkFrozenModsWarning.Visible = this.bulk;
@@ -214,6 +220,8 @@ namespace Fo76ini
                 this.labelModArchiveName.Visible = false;
                 this.textBoxModArchiveName.Visible = false;
             }
+
+            this.groupBoxModDetailsDetails.Visible = !this.bulk;
 
             isUpdatingUI = false;
         }
@@ -314,30 +322,30 @@ namespace Fo76ini
         {
             if (isUpdatingUI)
                 return;
-            switch (this.comboBoxModArchiveFormat.SelectedIndex)
+            switch (this.comboBoxModArchivePreset.SelectedIndex)
             {
-                case 0: // Auto-detect
-                    this.changedMod.Format = Mod.ArchiveFormat.Auto;
+                case 0: // Please select
+                    /*this.changedMod.Format = Mod.ArchiveFormat.Auto;
+                    this.changedMod.Compression = Archive2.Compression.Default;*/
                     break;
                 case 1: // General
                     this.changedMod.Format = Mod.ArchiveFormat.General;
+                    this.changedMod.Compression = Archive2.Compression.Default;
                     break;
-                case 2: // DDS
+                case 2: // Textures
                     this.changedMod.Format = Mod.ArchiveFormat.Textures;
+                    this.changedMod.Compression = Archive2.Compression.Default;
+                    break;
+                case 3: // Uncompressed textures
+                    this.changedMod.Format = Mod.ArchiveFormat.Textures;
+                    this.changedMod.Compression = Archive2.Compression.None;
+                    break;
+                case 4: // Audio
+                    this.changedMod.Format = Mod.ArchiveFormat.General;
+                    this.changedMod.Compression = Archive2.Compression.None;
                     break;
             }
             UpdateUI();
-        }
-
-        private void checkBoxModBA2Compression_CheckedChanged(object sender, EventArgs e)
-        {
-            if (isUpdatingUI)
-                return;
-            if (this.changedMod.Type == Mod.FileType.SeparateBA2)
-            {
-                this.changedMod.Compression = checkBoxModBA2Compression.Checked ? Archive2.Compression.Default : Archive2.Compression.None;
-                UpdateUI();
-            }
         }
 
         private void buttonModPickRootDir_Click(object sender, EventArgs e)

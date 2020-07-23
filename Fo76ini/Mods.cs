@@ -1482,9 +1482,15 @@ namespace Fo76ini
         {
             try
             {
+                this.logFile.WriteLine("\n\n");
                 this.logFile.WriteTimeStamp();
                 this.logFile.WriteLine($"Version {Form1.VERSION}, deploying...");
 
+                /*
+                 * Check if everything is ready for deployment:
+                 */
+
+                // Archive2 existing?
                 if (!Archive2.ValidatePath())
                 {
                     MsgBox.ShowID("modsArchive2Missing", MessageBoxIcon.Error);
@@ -1494,6 +1500,7 @@ namespace Fo76ini
                     return;
                 }
 
+                // Game path existing?
                 if (this.gamePath == null)
                 {
                     if (done != null)
@@ -1501,6 +1508,7 @@ namespace Fo76ini
                     return;
                 }
 
+                // Game path valid?
                 if (!Directory.Exists(Path.Combine(this.gamePath, "Data")))
                 {
                     MsgBox.ShowID("modsGamePathInvalid", MessageBoxIcon.Error);
@@ -1531,6 +1539,13 @@ namespace Fo76ini
                     }
                 }
 
+
+
+                /*
+                 * Check / declare parameters
+                 */
+
+                // NW Mode:
                 if (this.nuclearWinterMode)
                 {
                     this.logFile.WriteLine("NOTE: Nuclear Winter mode enabled. (Disable Mods checkbox checked)");
@@ -1541,34 +1556,63 @@ namespace Fo76ini
                     IniFiles.Instance.Set(IniFile.Config, "Mods", "bDisableMods", false);
                 }
 
-                bool useHardlinks = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUseHardlinks", false);
-                if (useHardlinks)
-                    this.logFile.WriteLine($"NOTE: Experimental feature 'Hard links' enabled.");
+                // Hard links:
+                bool useHardlinks = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUseHardlinks", true);
+                this.logFile.WriteLine("Deployment method: " + (useHardlinks ? "Make hard links" : "Make copies (slow)"));
 
+                // Create temp folder:
                 String tempPath = Path.Combine(this.gamePath, "temp");
                 if (Directory.Exists(tempPath))
                     Directory.Delete(tempPath, true);
                 Directory.CreateDirectory(tempPath);
 
+                // Setup 'DeployArchives' for every bundled archive:
                 DeployArchive generalArchive = new DeployArchive("general", tempPath);
                 DeployArchive texturesArchive = new DeployArchive("textures", tempPath);
                 texturesArchive.format = Archive2.Format.DDS;
                 DeployArchive soundsArchive = new DeployArchive("sounds", tempPath);
                 soundsArchive.compression = Archive2.Compression.None;
                 var archives = new List<DeployArchive>() { generalArchive, texturesArchive, soundsArchive };
-                /*String tempBA2Path = Path.Combine(tempPath, "ba2");
-                String tempBA2TexturesPath = Path.Combine(tempPath, "ba2_tex");
-                Directory.CreateDirectory(tempBA2Path);
-                Directory.CreateDirectory(tempBA2TexturesPath);*/
 
+                // Frozen bundled archives feature:
+                bool freezeBundledArchives = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bFreezeBundledArchives", false);
+                bool frozenBundledArchivesAvailable = false;
+                bool repackBundledArchives = true;
+                if (freezeBundledArchives)
+                {
+                    this.logFile.WriteLine($"NOTE: Experimental feature 'Freeze bundled archives' enabled.");
+
+                    // Do we have frozen archives?
+                    foreach (DeployArchive archive in archives)
+                        frozenBundledArchivesAvailable = frozenBundledArchivesAvailable || File.Exists(Path.Combine(this.gamePath, "Mods", generalArchive.archiveName));
+
+                    // Don't repack archives when disabling mods:
+                    if (this.nuclearWinterMode)
+                        repackBundledArchives = false;
+
+                    // Ask user whether to deploy frozen archives or repack them:
+                    else if (frozenBundledArchivesAvailable)
+                        repackBundledArchives = MsgBox.Get("modsRepackFrozenBundledArchives").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+                }
+
+                // Parse lists:
                 // sResourceIndexFileList, sResourceArchive2List, sResourceDataDirsFinal
                 List<String> sResourceIndexFileList = new List<String>(IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
                 sResourceIndexFileList.AddRange(IniFiles.Instance.GetString(IniFile.Config, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
                 List<String> sResourceDataDirsFinal = new List<String>(IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
 
+
+                /*
+                 *****************************************************
+                 * Beginning of deployment:
+                 *****************************************************
+                 */
+
                 /*
                  * Remove any leftover files from previous installations:
                  */
+
+                this.logFile.WriteLine($"\n\nREMOVING MODS\n");
 
                 // Remove all loose files:
                 int i = 0;
@@ -1627,6 +1671,9 @@ namespace Fo76ini
                 /*
                  * Copy all mods
                  */
+
+                this.logFile.WriteLine($"\n\nCOPYING MODS\n");
+
                 i = 0;
                 /*int enabledBA2GeneralMods = 0;
                 int enabledBA2TexturesMods = 0;*/
@@ -1669,6 +1716,13 @@ namespace Fo76ini
                      */
                     if (mod.Type == Mod.FileType.BundledBA2)
                     {
+                        // Frozen bundled feature:
+                        if (!repackBundledArchives)
+                        {
+                            this.logFile.WriteLine($"[Bundled] Skipping {mod.Title}");
+                            continue;
+                        }
+
                         // Check if root folder is data:
                         if (!mod.RootFolder.Contains("Data"))
                         {
@@ -1846,36 +1900,126 @@ namespace Fo76ini
                     i++;
                 }
 
+
                 /*
                  * Create all bundled archives
                  */
+
+                this.logFile.WriteLine($"\n\nBUNDLED ARCHIVES\n");
+
                 sResourceIndexFileList = sResourceIndexFileList.Distinct().ToList();
-                foreach (DeployArchive archive in archives)
+                if (repackBundledArchives)
                 {
-                    String bundledArchivePath = Path.Combine(this.gamePath, "Data", archive.archiveName);
-                    if (!this.nuclearWinterMode && archive.count > 0)
+                    // Create / delete archives:
+                    foreach (DeployArchive archive in archives)
+                    {
+                        String bundledFrozenArchivePath = Path.Combine(this.gamePath, "Mods", archive.archiveName);
+                        String bundledLiveArchivePath = Path.Combine(this.gamePath, "Data", archive.archiveName);
+
+                        if (!this.nuclearWinterMode && archive.count > 0)
+                        {
+                            // Deploy when files exist and NW mode is disabled:
+                            if (updateProgress != null)
+                                updateProgress($"[3/4] Creating {archive.archiveName}...", -1);
+
+                            if (freezeBundledArchives)
+                            {
+                                this.logFile.WriteLine($"Freezing {archive.archiveName}");
+                                Archive2.Create(bundledFrozenArchivePath, archive.tempPath, archive.compression, archive.format);
+
+                                if (updateProgress != null)
+                                    updateProgress($"[3/4] Copying {archive.archiveName}...", -1);
+
+                                if (useHardlinks)
+                                    Utils.CreateHardLink(bundledFrozenArchivePath, bundledLiveArchivePath, true);
+                                else
+                                    File.Copy(bundledFrozenArchivePath, bundledLiveArchivePath, true);
+                            }
+                            else
+                            {
+                                this.logFile.WriteLine($"Creating {archive.archiveName}");
+                                Archive2.Create(bundledLiveArchivePath, archive.tempPath, archive.compression, archive.format);
+
+                                // Freeze feature disabled, let's clean up junk:
+                                if (File.Exists(bundledFrozenArchivePath))
+                                {
+                                    this.logFile.WriteLine($"Removing frozen {archive.archiveName}");
+                                    File.Delete(bundledFrozenArchivePath);
+                                }
+                            }
+
+                            // Insert entry into list:
+                            sResourceIndexFileList.Insert(0, archive.archiveName);
+                        }
+                        else
+                        {
+                            // Remove archive when NW mode is active or mod is disabled:
+
+                            // Delete files:
+                            if (!this.nuclearWinterMode && File.Exists(bundledFrozenArchivePath))
+                            {
+                                this.logFile.WriteLine($"Removing frozen {archive.archiveName}");
+                                File.Delete(bundledFrozenArchivePath);
+                            }
+
+                            if (File.Exists(bundledLiveArchivePath))
+                            {
+                                this.logFile.WriteLine($"Removing {archive.archiveName}");
+                                File.Delete(bundledLiveArchivePath);
+                            }
+
+                            // Remove entry from list:
+                            sResourceIndexFileList.Remove(archive.archiveName);
+                        }
+                    }
+                }
+                else
+                {
+                    // Deploy frozen archives:
+                    foreach (DeployArchive archive in archives)
                     {
                         if (updateProgress != null)
-                            updateProgress($"[3/4] Creating {archive.archiveName}...", -1);
-                        this.logFile.WriteLine($"Creating {archive.archiveName}");
-                        Archive2.Create(bundledArchivePath, archive.tempPath, archive.compression, archive.format);
-                        sResourceIndexFileList.Insert(0, archive.archiveName);
-                    }
-                    else
-                    {
-                        this.logFile.WriteLine($"Removing {archive.archiveName}");
-                        if (File.Exists(bundledArchivePath))
-                            File.Delete(bundledArchivePath);
-                        sResourceIndexFileList.Remove(archive.archiveName);
+                            updateProgress($"[3/4] Deploying {archive.archiveName}...", -1);
+
+                        String bundledFrozenArchivePath = Path.Combine(this.gamePath, "Mods", archive.archiveName);
+                        String bundledLiveArchivePath = Path.Combine(this.gamePath, "Data", archive.archiveName);
+
+                        if (this.nuclearWinterMode)
+                        {
+                            this.logFile.WriteLine($"Removing {archive.archiveName}");
+                            File.Delete(bundledLiveArchivePath);
+                            sResourceIndexFileList.Remove(archive.archiveName);
+                        }
+                        else if (File.Exists(bundledFrozenArchivePath) && !File.Exists(bundledLiveArchivePath))
+                        {
+                            this.logFile.WriteLine($"Deploying frozen {archive.archiveName}");
+                            if (useHardlinks)
+                                Utils.CreateHardLink(bundledFrozenArchivePath, bundledLiveArchivePath, true);
+                            else
+                                File.Copy(bundledFrozenArchivePath, bundledLiveArchivePath, true);
+
+                            sResourceIndexFileList.Insert(0, archive.archiveName);
+                        }
+                        else if (!File.Exists(bundledFrozenArchivePath) && File.Exists(bundledLiveArchivePath))
+                        {
+                            this.logFile.WriteLine($"Removing {archive.archiveName}");
+                            File.Delete(bundledLiveArchivePath);
+                            sResourceIndexFileList.Remove(archive.archiveName);
+                        }
+                        else if (File.Exists(bundledLiveArchivePath))
+                        {
+                            this.logFile.WriteLine($"Skipping {archive.archiveName}");
+                        }
                     }
                 }
 
                 /*
                  * Finishing up...
                  */
+
                 if (updateProgress != null)
                     updateProgress("[4/4] Finishing up...", -1);
-                this.logFile.WriteLine($"Finishing up...");
+                this.logFile.WriteLine($"\n\nFINISHING UP");
 
 
                 // Renaming *.dll files
@@ -1928,7 +2072,7 @@ namespace Fo76ini
                     }
                 }
 
-                // Writing stuff to inis
+                // Writing lists to *.ini files
                 this.logFile.WriteLine($"   Changing values in *.ini files...");
                 if (this.nuclearWinterMode)
                 {
@@ -1978,10 +2122,15 @@ namespace Fo76ini
 
                 CopyINILists();
 
+                // Save *.ini files:
                 this.logFile.WriteLine($"      Saving.");
                 IniFiles.Instance.SaveAll();
+
+                // Save manifest.xml:
                 this.mods = CreateDeepCopy(this.changedMods);
                 this.Save();
+
+                // Remove temp folder:
                 Directory.Delete(tempPath, true);
 
                 this.logFile.WriteLine("Done.\n");

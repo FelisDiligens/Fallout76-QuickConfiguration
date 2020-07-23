@@ -223,29 +223,6 @@ Ambient occlusion basically adds fake shadows to places light sources can't reac
 Affected values: bSAOEnable
 Affected files: Fallout76Prefs.ini</value>
   </data>
-  <data name="sliderShadowDistance.ToolTip" xml:space="preserve">
-    <value>Sets the distance that shadows are rendered.
-
-Ultra is 150000
-High is 120000
-Medium is 90000
-Low is 60000
-
-I think, setting it to a low value will disable shadows. Needs more testing.
-
-Affected values: fShadowDistance, fDirShadowDistance
-Affected files: Fallout76Prefs.ini</value>
-  </data>
-  <data name="sliderGrassFadeDistance.ToolTip" xml:space="preserve">
-    <value>Sets the distance grass will begin to fade.
-
-Medium is 4500
-High is 5500
-Ultra is 7000
-
-Affected values: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
-Affected files: Fallout76Prefs.ini</value>
-  </data>
   <data name="checkBoxFixMouseSensitivity.ToolTip" xml:space="preserve">
     <value>If checked, the sensitivity for looking up/down and left/right will be equal.
 If unchecked (default), the sensitivity for looking left/right will likely be higher than up/down.
@@ -274,6 +251,31 @@ Note 2: This might not work in-game while crouching.
 Affected values: fIronSightsFOVRotateMult
 Affected files: Fallout76Custom.ini</value>
   </data>
+  <data name="sliderGrassFadeDistance.ToolTip" xml:space="preserve">
+    <value>Sets the distance grass will begin to fade.
+
+Medium is 4500
+High is 5500
+Ultra is 7000
+
+Affected values: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
+Affected files: Fallout76Prefs.ini
+</value>
+  </data>
+  <data name="sliderShadowDistance.ToolTip" xml:space="preserve">
+    <value>Sets the distance that shadows are rendered.
+
+Ultra is 150000
+High is 120000
+Medium is 90000
+Low is 60000
+
+I think, setting it to a low value will disable shadows. Needs more testing.
+
+Affected values: fShadowDistance, fDirShadowDistance
+Affected files: Fallout76Prefs.ini
+</value>
+  </data>
   <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>107, 17</value>
   </metadata>
@@ -285,7 +287,8 @@ Affected files: Fallout76Custom.ini</value>
   </metadata>
   <data name="labelCredentialsExplanation.Text" xml:space="preserve">
     <value>Your credentials are saved into Fallout76Custom.ini
-This way, you don't have to login if you start Fallout 76 without the launcher.
+This way, you don't have to enter your username and password manually
+if you start Fallout 76 without the launcher.
 
 If you use Steam and want to use your Bethesda.net account
 (e.g. to spent Atoms), tick Disable Steam.

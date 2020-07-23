@@ -157,21 +157,21 @@ namespace Fo76ini
 
         // Link slider to num and vice-versa
 
-        public static void LinkSlider(MetroFramework.Controls.MetroTrackBar slider, NumericUpDown num, double numToSliderRatio)
+        public static void LinkSlider(TrackBar slider, NumericUpDown num, double numToSliderRatio)
         {
             LinkSlider(slider, num, numToSliderRatio, false);
         }
 
-        public static void LinkSlider(MetroFramework.Controls.MetroTrackBar slider, NumericUpDown num, double numToSliderRatio, bool reversed)
+        public static void LinkSlider(TrackBar slider, NumericUpDown num, double numToSliderRatio, bool reversed)
         {
             if (!reversed)
             {
-                slider.Scroll += (object sender, ScrollEventArgs e) => num.Value = Convert.ToDecimal(slider.Value / numToSliderRatio);
+                slider.ValueChanged += (object sender, EventArgs e) => num.Value = Convert.ToDecimal(slider.Value / numToSliderRatio);
                 num.ValueChanged += (object sender, EventArgs e) => slider.Value = Utils.Clamp(Convert.ToInt32(Convert.ToDouble(num.Value) * numToSliderRatio), slider.Minimum, slider.Maximum);
             }
             else
             {
-                slider.Scroll += (object sender, ScrollEventArgs e) => num.Value = Convert.ToDecimal((slider.Maximum - slider.Value) / numToSliderRatio);
+                slider.ValueChanged += (object sender, EventArgs e) => num.Value = Convert.ToDecimal((slider.Maximum - slider.Value) / numToSliderRatio);
                 num.ValueChanged += (object sender, EventArgs e) => slider.Value = Utils.Clamp(Convert.ToInt32(slider.Maximum - Convert.ToDouble(num.Value) * numToSliderRatio), slider.Minimum, slider.Maximum);
             }
         }

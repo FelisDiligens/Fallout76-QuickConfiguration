@@ -234,6 +234,13 @@ namespace Fo76ini
                 "{0}\nPlease start the tool as admin and try again."
             );
 
+            MsgBox.Add("modsRepackFrozenBundledArchives",
+                "Would you like to repack bundled archives?",
+                "There are frozen bundled archives available. Would you like to repack bundled archives again?\n\n" +
+                "   Yes - I made changes to my mod list and would like to repack my bundled archives again. (slow)\n\n" +
+                "   No  - I didn't make changes, please deploy my frozen bundled archives. (quick)"
+            );
+
             MsgBox.Add("nwModeEnabledButModsAreDeployed",
                 "Mods are still deployed",
                 "You've enabled the Nuclear Winter mode, but your mods are still deployed.\n" + 
