@@ -300,6 +300,16 @@
             this.groupBoxAudioInterface = new System.Windows.Forms.GroupBox();
             this.numConversationHistorySize = new System.Windows.Forms.NumericUpDown();
             this.labelConversationHistorySize = new System.Windows.Forms.Label();
+            this.tabPageScreenshots = new System.Windows.Forms.TabPage();
+            this.groupBoxGallery = new System.Windows.Forms.GroupBox();
+            this.labelGalleryTip = new System.Windows.Forms.Label();
+            this.listViewScreenshots = new System.Windows.Forms.ListView();
+            this.groupBoxScreenshotOptions = new System.Windows.Forms.GroupBox();
+            this.sliderGalleryThumbnailSize = new System.Windows.Forms.TrackBar();
+            this.labelGalleryThumbnailSize = new System.Windows.Forms.Label();
+            this.buttonRefreshGallery = new System.Windows.Forms.Button();
+            this.numScreenshotIndex = new System.Windows.Forms.NumericUpDown();
+            this.labelScreenshotIndex = new System.Windows.Forms.Label();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
             this.buttonCustomSave = new System.Windows.Forms.Button();
             this.comboBoxCustomFile = new System.Windows.Forms.ComboBox();
@@ -325,6 +335,7 @@
             this.toolInstallationFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonNexusMods = new System.Windows.Forms.ToolStripButton();
+            this.buttonGalleryOpenFolder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
@@ -429,6 +440,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal3)).BeginInit();
             this.groupBoxAudioInterface.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).BeginInit();
+            this.tabPageScreenshots.SuspendLayout();
+            this.groupBoxGallery.SuspendLayout();
+            this.groupBoxScreenshotOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScreenshotIndex)).BeginInit();
             this.tabPageCustom.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -3561,6 +3577,7 @@
             this.tabControl1.Controls.Add(this.tabPageControls);
             this.tabControl1.Controls.Add(this.tabPageCamera);
             this.tabControl1.Controls.Add(this.tabPagePipBoy);
+            this.tabControl1.Controls.Add(this.tabPageScreenshots);
             this.tabControl1.Controls.Add(this.tabPageCustom);
             this.tabControl1.Location = new System.Drawing.Point(12, 59);
             this.tabControl1.Multiline = true;
@@ -3993,6 +4010,135 @@
             this.labelConversationHistorySize.TabIndex = 60;
             this.labelConversationHistorySize.Text = "Conversation history size (number of rows):";
             // 
+            // tabPageScreenshots
+            // 
+            this.tabPageScreenshots.Controls.Add(this.groupBoxGallery);
+            this.tabPageScreenshots.Controls.Add(this.groupBoxScreenshotOptions);
+            this.tabPageScreenshots.Location = new System.Drawing.Point(4, 22);
+            this.tabPageScreenshots.Name = "tabPageScreenshots";
+            this.tabPageScreenshots.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageScreenshots.Size = new System.Drawing.Size(852, 464);
+            this.tabPageScreenshots.TabIndex = 10;
+            this.tabPageScreenshots.Text = "Screenshots";
+            this.tabPageScreenshots.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxGallery
+            // 
+            this.groupBoxGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxGallery.Controls.Add(this.labelGalleryTip);
+            this.groupBoxGallery.Controls.Add(this.listViewScreenshots);
+            this.groupBoxGallery.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxGallery.Name = "groupBoxGallery";
+            this.groupBoxGallery.Size = new System.Drawing.Size(546, 452);
+            this.groupBoxGallery.TabIndex = 2;
+            this.groupBoxGallery.TabStop = false;
+            this.groupBoxGallery.Text = "Gallery";
+            // 
+            // labelGalleryTip
+            // 
+            this.labelGalleryTip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGalleryTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGalleryTip.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelGalleryTip.Location = new System.Drawing.Point(17, 211);
+            this.labelGalleryTip.Name = "labelGalleryTip";
+            this.labelGalleryTip.Size = new System.Drawing.Size(511, 39);
+            this.labelGalleryTip.TabIndex = 2;
+            this.labelGalleryTip.Text = "Click \'Refresh gallery\' to display screenshots.";
+            this.labelGalleryTip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // listViewScreenshots
+            // 
+            this.listViewScreenshots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewScreenshots.HideSelection = false;
+            this.listViewScreenshots.Location = new System.Drawing.Point(6, 19);
+            this.listViewScreenshots.Name = "listViewScreenshots";
+            this.listViewScreenshots.Size = new System.Drawing.Size(534, 427);
+            this.listViewScreenshots.TabIndex = 1;
+            this.listViewScreenshots.UseCompatibleStateImageBehavior = false;
+            // 
+            // groupBoxScreenshotOptions
+            // 
+            this.groupBoxScreenshotOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxScreenshotOptions.Controls.Add(this.buttonGalleryOpenFolder);
+            this.groupBoxScreenshotOptions.Controls.Add(this.sliderGalleryThumbnailSize);
+            this.groupBoxScreenshotOptions.Controls.Add(this.labelGalleryThumbnailSize);
+            this.groupBoxScreenshotOptions.Controls.Add(this.buttonRefreshGallery);
+            this.groupBoxScreenshotOptions.Controls.Add(this.numScreenshotIndex);
+            this.groupBoxScreenshotOptions.Controls.Add(this.labelScreenshotIndex);
+            this.groupBoxScreenshotOptions.Location = new System.Drawing.Point(558, 6);
+            this.groupBoxScreenshotOptions.Name = "groupBoxScreenshotOptions";
+            this.groupBoxScreenshotOptions.Size = new System.Drawing.Size(288, 452);
+            this.groupBoxScreenshotOptions.TabIndex = 0;
+            this.groupBoxScreenshotOptions.TabStop = false;
+            this.groupBoxScreenshotOptions.Text = "Options";
+            // 
+            // sliderGalleryThumbnailSize
+            // 
+            this.sliderGalleryThumbnailSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderGalleryThumbnailSize.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderGalleryThumbnailSize.LargeChange = 1;
+            this.sliderGalleryThumbnailSize.Location = new System.Drawing.Point(10, 83);
+            this.sliderGalleryThumbnailSize.Maximum = 16;
+            this.sliderGalleryThumbnailSize.Minimum = 4;
+            this.sliderGalleryThumbnailSize.Name = "sliderGalleryThumbnailSize";
+            this.sliderGalleryThumbnailSize.Size = new System.Drawing.Size(272, 45);
+            this.sliderGalleryThumbnailSize.TabIndex = 61;
+            this.sliderGalleryThumbnailSize.Value = 7;
+            this.sliderGalleryThumbnailSize.Scroll += new System.EventHandler(this.sliderGalleryThumbnailSize_Scroll);
+            // 
+            // labelGalleryThumbnailSize
+            // 
+            this.labelGalleryThumbnailSize.AutoSize = true;
+            this.labelGalleryThumbnailSize.Location = new System.Drawing.Point(7, 67);
+            this.labelGalleryThumbnailSize.Name = "labelGalleryThumbnailSize";
+            this.labelGalleryThumbnailSize.Size = new System.Drawing.Size(80, 13);
+            this.labelGalleryThumbnailSize.TabIndex = 62;
+            this.labelGalleryThumbnailSize.Text = "Thumbnail size:";
+            // 
+            // buttonRefreshGallery
+            // 
+            this.buttonRefreshGallery.Location = new System.Drawing.Point(10, 134);
+            this.buttonRefreshGallery.Name = "buttonRefreshGallery";
+            this.buttonRefreshGallery.Size = new System.Drawing.Size(272, 23);
+            this.buttonRefreshGallery.TabIndex = 4;
+            this.buttonRefreshGallery.Text = "Refresh gallery";
+            this.buttonRefreshGallery.UseVisualStyleBackColor = true;
+            this.buttonRefreshGallery.Click += new System.EventHandler(this.buttonRefreshGallery_Click);
+            // 
+            // numScreenshotIndex
+            // 
+            this.numScreenshotIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numScreenshotIndex.Location = new System.Drawing.Point(147, 18);
+            this.numScreenshotIndex.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.numScreenshotIndex.Minimum = new decimal(new int[] {
+            -2147483648,
+            0,
+            0,
+            -2147483648});
+            this.numScreenshotIndex.Name = "numScreenshotIndex";
+            this.numScreenshotIndex.Size = new System.Drawing.Size(135, 20);
+            this.numScreenshotIndex.TabIndex = 3;
+            // 
+            // labelScreenshotIndex
+            // 
+            this.labelScreenshotIndex.AutoSize = true;
+            this.labelScreenshotIndex.Location = new System.Drawing.Point(7, 20);
+            this.labelScreenshotIndex.Name = "labelScreenshotIndex";
+            this.labelScreenshotIndex.Size = new System.Drawing.Size(92, 13);
+            this.labelScreenshotIndex.TabIndex = 0;
+            this.labelScreenshotIndex.Text = "Screenshot index:";
+            // 
             // tabPageCustom
             // 
             this.tabPageCustom.Controls.Add(this.buttonCustomSave);
@@ -4244,6 +4390,16 @@
             this.toolStripButtonNexusMods.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonNexusMods.Click += new System.EventHandler(this.toolStripButtonNexusMods_Click);
             // 
+            // buttonGalleryOpenFolder
+            // 
+            this.buttonGalleryOpenFolder.Location = new System.Drawing.Point(10, 163);
+            this.buttonGalleryOpenFolder.Name = "buttonGalleryOpenFolder";
+            this.buttonGalleryOpenFolder.Size = new System.Drawing.Size(272, 23);
+            this.buttonGalleryOpenFolder.TabIndex = 63;
+            this.buttonGalleryOpenFolder.Text = "Open folder";
+            this.buttonGalleryOpenFolder.UseVisualStyleBackColor = true;
+            this.buttonGalleryOpenFolder.Click += new System.EventHandler(this.buttonGalleryOpenFolder_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4395,6 +4551,12 @@
             this.groupBoxAudioInterface.ResumeLayout(false);
             this.groupBoxAudioInterface.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).EndInit();
+            this.tabPageScreenshots.ResumeLayout(false);
+            this.groupBoxGallery.ResumeLayout(false);
+            this.groupBoxScreenshotOptions.ResumeLayout(false);
+            this.groupBoxScreenshotOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScreenshotIndex)).EndInit();
             this.tabPageCustom.ResumeLayout(false);
             this.tabPageCustom.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -4700,6 +4862,17 @@
         private System.Windows.Forms.NumericUpDown numHUDOpacity;
         private System.Windows.Forms.ComboBox comboBoxShowActiveEffectsOnHUD;
         private System.Windows.Forms.Label labelShowActiveEffectsOnHUD;
+        private System.Windows.Forms.TabPage tabPageScreenshots;
+        private System.Windows.Forms.GroupBox groupBoxScreenshotOptions;
+        private System.Windows.Forms.NumericUpDown numScreenshotIndex;
+        private System.Windows.Forms.Label labelScreenshotIndex;
+        private System.Windows.Forms.ListView listViewScreenshots;
+        private System.Windows.Forms.GroupBox groupBoxGallery;
+        private System.Windows.Forms.Button buttonRefreshGallery;
+        private System.Windows.Forms.TrackBar sliderGalleryThumbnailSize;
+        private System.Windows.Forms.Label labelGalleryThumbnailSize;
+        private System.Windows.Forms.Label labelGalleryTip;
+        private System.Windows.Forms.Button buttonGalleryOpenFolder;
     }
 }
 

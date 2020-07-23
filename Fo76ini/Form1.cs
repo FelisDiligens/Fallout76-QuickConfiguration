@@ -284,6 +284,39 @@ namespace Fo76ini
             {
                 // Yeah, well or not.
             }
+
+            this.listViewScreenshots.DoubleClick += listViewScreenshots_DoubleClick;
+            // UpdateScreenShotGallery();
+        }
+
+        private void UpdateScreenShotGallery()
+        {
+            var imageList = new ImageList();
+            int mult = this.sliderGalleryThumbnailSize.Value;
+            imageList.ImageSize = new Size(16 * mult, 9 * mult); // new Size(256, 144);
+            this.listViewScreenshots.LargeImageList = imageList;
+
+            this.listViewScreenshots.Items.Clear();
+
+            IEnumerable <String> screenshots = Directory.EnumerateFiles(ManagedMods.Instance.GamePath, "*.png", SearchOption.TopDirectoryOnly);
+            foreach (String filePath in screenshots)
+            {
+                String fileName = Path.GetFileName(filePath);
+                Bitmap thumbnail = new Bitmap(filePath);
+                imageList.Images.Add(fileName, thumbnail);
+                var item = new ListViewItem();
+                item.Text = fileName;
+                item.ImageKey = fileName;
+                this.listViewScreenshots.Items.Add(item);
+            }
+
+            this.labelGalleryTip.Visible = false;
+        }
+
+        private void listViewScreenshots_DoubleClick (object sender, EventArgs e)
+        {
+            String path = Path.Combine(ManagedMods.Instance.GamePath, this.listViewScreenshots.SelectedItems[0].Text);
+            Process.Start(path);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -529,6 +562,9 @@ namespace Fo76ini
                 IniFile.Config, "Interface", "uHUDActiveEffectWidget",
                 "2", 2
             );
+
+            // Screenshot index
+            uiLoader.LinkInt(this.numScreenshotIndex, IniFile.F76Prefs, "Display", "iScreenShotIndex", 0);
 
 
             /*
@@ -1554,6 +1590,22 @@ namespace Fo76ini
 
             if (this.buttonCustomSave.Text.EndsWith("*"))
                 this.buttonCustomSave.Text = this.buttonCustomSave.Text.TrimEnd('*');
+        }
+
+        private void buttonRefreshGallery_Click(object sender, EventArgs e)
+        {
+            UpdateScreenShotGallery();
+        }
+
+        private void sliderGalleryThumbnailSize_Scroll(object sender, EventArgs e)
+        {
+            int mult = this.sliderGalleryThumbnailSize.Value;
+            this.listViewScreenshots.LargeImageList.ImageSize = new Size(16 * mult, 9 * mult);
+        }
+
+        private void buttonGalleryOpenFolder_Click(object sender, EventArgs e)
+        {
+            Utils.OpenExplorer(ManagedMods.Instance.GamePath);
         }
     }
 }
