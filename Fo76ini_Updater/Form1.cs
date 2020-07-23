@@ -1,5 +1,4 @@
-﻿using Fo76ini;
-using IniParser;
+﻿using IniParser;
 using IniParser.Model;
 using IniParser.Model.Configuration;
 using IniParser.Parser;
@@ -23,6 +22,8 @@ namespace Fo76ini_Updater
 {
     public partial class Updater : Form
     {
+        public static String AppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");
+
         WebClient client;
         Log log;
 
@@ -297,7 +298,7 @@ namespace Fo76ini_Updater
                 return;
 
             // Compare versions:
-            if (Utils.CompareVersions(config["General"]["sVersion"], config["Updater"]["sTagName"]) >= 0)
+            if (config["Updater"]["sTagName"] != null && config["General"]["sVersion"] != null && Utils.CompareVersions(config["General"]["sVersion"], config["Updater"]["sTagName"]) >= 0)
             {
                 if (MessageBox.Show($"You already have the latest version.\nYour version: {config["General"]["sVersion"]}\nLatest version: {config["Updater"]["sTagName"]}\nDo you want to continue updating anyway?", "Continue anyway?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                 {

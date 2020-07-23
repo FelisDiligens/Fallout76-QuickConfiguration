@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fo76ini
+namespace Fo76ini_Updater
 {
     public class Log
     {
@@ -56,7 +56,7 @@ namespace Fo76ini
 
         public static String GetFilePath(String fileName)
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", fileName);
+            return Path.Combine(Updater.AppConfigFolder, fileName);
         }
     }
 }
