@@ -285,38 +285,7 @@ namespace Fo76ini
                 // Yeah, well or not.
             }
 
-            this.listViewScreenshots.DoubleClick += listViewScreenshots_DoubleClick;
-            // UpdateScreenShotGallery();
-        }
-
-        private void UpdateScreenShotGallery()
-        {
-            var imageList = new ImageList();
-            int mult = this.sliderGalleryThumbnailSize.Value;
-            imageList.ImageSize = new Size(16 * mult, 9 * mult); // new Size(256, 144);
-            this.listViewScreenshots.LargeImageList = imageList;
-
-            this.listViewScreenshots.Items.Clear();
-
-            IEnumerable <String> screenshots = Directory.EnumerateFiles(ManagedMods.Instance.GamePath, "*.png", SearchOption.TopDirectoryOnly);
-            foreach (String filePath in screenshots)
-            {
-                String fileName = Path.GetFileName(filePath);
-                Bitmap thumbnail = new Bitmap(filePath);
-                imageList.Images.Add(fileName, thumbnail);
-                var item = new ListViewItem();
-                item.Text = fileName;
-                item.ImageKey = fileName;
-                this.listViewScreenshots.Items.Add(item);
-            }
-
-            this.labelGalleryTip.Visible = false;
-        }
-
-        private void listViewScreenshots_DoubleClick (object sender, EventArgs e)
-        {
-            String path = Path.Combine(ManagedMods.Instance.GamePath, this.listViewScreenshots.SelectedItems[0].Text);
-            Process.Start(path);
+            this.LoadGallery();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -404,6 +373,10 @@ namespace Fo76ini
             UILoader.LinkSlider(this.sliderFloatingQuestMarkersDistance, this.numFloatingQuestMarkersDistance, 10);
             UILoader.LinkSlider(this.sliderConversationHistorySize, this.numConversationHistorySize, 1);
             UILoader.LinkSlider(this.sliderHUDOpacity, this.numHUDOpacity, 100);
+
+            UILoader.LinkSlider(this.sliderCameraDistanceMinimum, this.numCameraDistanceMinimum, 1);
+            UILoader.LinkSlider(this.sliderCameraDistanceMaximum, this.numCameraDistanceMaximum, 1);
+            UILoader.LinkSlider(this.sliderfPitchZoomOutMaxDist, this.numfPitchZoomOutMaxDist, 1);
 
 
             /*
@@ -1013,8 +986,21 @@ namespace Fo76ini
             // 3rd person ADS FOV
             uiLoader.LinkInt(this.numADSFOV, IniFile.F76Custom, "Camera", "f3rdPersonAimFOV", 50);
 
+            // fDefaultFOV
+            uiLoader.LinkInt(this.numfDefaultFOV, IniFile.F76Custom, "Display", "fDefaultFOV", 80);
+
             // bApplyCameraNodeAnimations
             uiLoader.LinkBool(this.checkBoxbApplyCameraNodeAnimations, IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations", true);
+
+            // Camera distance
+            uiLoader.LinkInt(this.numCameraDistanceMinimum, IniFile.F76Custom, "Camera", "fVanityModeMinDist", 0);
+            uiLoader.LinkInt(this.numCameraDistanceMaximum, IniFile.F76Custom, "Camera", "fVanityModeMaxDist", 150);
+
+            // fPitchZoomOutMaxDist
+            uiLoader.LinkInt(this.numfPitchZoomOutMaxDist, IniFile.F76Custom, "Camera", "fPitchZoomOutMaxDist", 100);
+
+            // Switch delay
+            uiLoader.LinkFloat(this.numCameraSwitchDelay, IniFile.F76Custom, "Camera", "f1st3rdSwitchDelay", 0.25f);
         }
 
 
@@ -1539,8 +1525,8 @@ namespace Fo76ini
 
         private void showUpdaterlogtxtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Path.Combine(Form1.AppConfigFolder, "updater.log.txt")))
-                Utils.OpenNotepad(Path.Combine(Form1.AppConfigFolder, "updater.log.txt"));
+            if (File.Exists(Path.Combine(Form1.AppConfigFolder, "update.log.txt")))
+                Utils.OpenNotepad(Path.Combine(Form1.AppConfigFolder, "update.log.txt"));
         }
 
         private String customAddFilePath = "";
@@ -1592,20 +1578,42 @@ namespace Fo76ini
                 this.buttonCustomSave.Text = this.buttonCustomSave.Text.TrimEnd('*');
         }
 
-        private void buttonRefreshGallery_Click(object sender, EventArgs e)
+        private void editFallout76iniToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UpdateScreenShotGallery();
+            if (File.Exists(IniFiles.Instance.GetIniPath(IniFile.F76)))
+                Utils.OpenNotepad(IniFiles.Instance.GetIniPath(IniFile.F76));
         }
 
-        private void sliderGalleryThumbnailSize_Scroll(object sender, EventArgs e)
+        private void editFallout76PrefsiniToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int mult = this.sliderGalleryThumbnailSize.Value;
-            this.listViewScreenshots.LargeImageList.ImageSize = new Size(16 * mult, 9 * mult);
+            if (File.Exists(IniFiles.Instance.GetIniPath(IniFile.F76Prefs)))
+                Utils.OpenNotepad(IniFiles.Instance.GetIniPath(IniFile.F76Prefs));
         }
 
-        private void buttonGalleryOpenFolder_Click(object sender, EventArgs e)
+        private void editFallout76CustominiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Utils.OpenExplorer(ManagedMods.Instance.GamePath);
+            if (File.Exists(IniFiles.Instance.GetIniPath(IniFile.F76Custom)))
+                Utils.OpenNotepad(IniFiles.Instance.GetIniPath(IniFile.F76Custom));
+        }
+
+        private void steamScreenshotFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String steamFolder = @"C:\Program Files (x86)\Steam\userdata\";
+            if (Directory.Exists(steamFolder))
+            {
+                steamFolder = Path.Combine(Directory.GetDirectories(steamFolder)[0], @"760\remote\1151340\screenshots");
+                Utils.OpenExplorer(steamFolder);
+            }
+        }
+
+        private void gamePhotosFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String photosFolder = Path.Combine(IniFiles.Instance.iniParentPath, "Photos");
+            if (Directory.Exists(photosFolder))
+            {
+                photosFolder = Directory.GetDirectories(photosFolder)[0];
+                Utils.OpenExplorer(photosFolder);
+            }
         }
     }
 }

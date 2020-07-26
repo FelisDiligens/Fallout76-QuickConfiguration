@@ -38,19 +38,19 @@
             this.labelModName = new System.Windows.Forms.Label();
             this.textBoxModName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBoxModDetailsInstallationOptions = new System.Windows.Forms.GroupBox();
+            this.labelModInstallAs = new System.Windows.Forms.Label();
+            this.checkBoxFreezeArchive = new System.Windows.Forms.CheckBox();
+            this.comboBoxModInstallAs = new System.Windows.Forms.ComboBox();
+            this.labelModArchivePreset = new System.Windows.Forms.Label();
+            this.comboBoxModArchivePreset = new System.Windows.Forms.ComboBox();
+            this.labelModUnfreeze = new System.Windows.Forms.Label();
+            this.groupBoxModDetailsDetails = new System.Windows.Forms.GroupBox();
+            this.textBoxModFolderName = new System.Windows.Forms.TextBox();
+            this.labelModFolderName = new System.Windows.Forms.Label();
+            this.buttonModUnfreeze = new System.Windows.Forms.Button();
             this.checkBoxModDetailsEnabled = new System.Windows.Forms.CheckBox();
             this.labelModDetailsBulkFrozenModsWarning = new System.Windows.Forms.Label();
-            this.labelModUnfreeze = new System.Windows.Forms.Label();
-            this.buttonModUnfreeze = new System.Windows.Forms.Button();
-            this.checkBoxFreezeArchive = new System.Windows.Forms.CheckBox();
-            this.buttonModRepairDDS = new System.Windows.Forms.Button();
-            this.comboBoxModArchivePreset = new System.Windows.Forms.ComboBox();
-            this.buttonModOpenFolder = new System.Windows.Forms.Button();
-            this.labelModFolderName = new System.Windows.Forms.Label();
-            this.labelModArchivePreset = new System.Windows.Forms.Label();
-            this.textBoxModFolderName = new System.Windows.Forms.TextBox();
-            this.comboBoxModInstallAs = new System.Windows.Forms.ComboBox();
-            this.labelModInstallAs = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.labelModDetailsStatus = new System.Windows.Forms.Label();
             this.buttonModDetailsApply = new System.Windows.Forms.Button();
@@ -58,11 +58,9 @@
             this.buttonModDetailsCancel = new System.Windows.Forms.Button();
             this.folderBrowserDialogPickRootDir = new System.Windows.Forms.FolderBrowserDialog();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBoxModDetailsDetails = new System.Windows.Forms.GroupBox();
-            this.groupBoxModDetailsInstallationOptions = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
-            this.groupBoxModDetailsDetails.SuspendLayout();
             this.groupBoxModDetailsInstallationOptions.SuspendLayout();
+            this.groupBoxModDetailsDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxModArchiveName
@@ -133,14 +131,134 @@
             this.panel1.Controls.Add(this.labelModUnfreeze);
             this.panel1.Controls.Add(this.groupBoxModDetailsDetails);
             this.panel1.Controls.Add(this.buttonModUnfreeze);
-            this.panel1.Controls.Add(this.buttonModRepairDDS);
-            this.panel1.Controls.Add(this.buttonModOpenFolder);
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Location = new System.Drawing.Point(6, 35);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(352, 365);
             this.panel1.TabIndex = 44;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // groupBoxModDetailsInstallationOptions
+            // 
+            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModInstallAs);
+            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModInstallInto);
+            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.textBoxModRootDir);
+            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.checkBoxFreezeArchive);
+            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.comboBoxModInstallAs);
+            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModArchivePreset);
+            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.buttonModPickRootDir);
+            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.comboBoxModArchivePreset);
+            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(7, 124);
+            this.groupBoxModDetailsInstallationOptions.Name = "groupBoxModDetailsInstallationOptions";
+            this.groupBoxModDetailsInstallationOptions.Size = new System.Drawing.Size(336, 126);
+            this.groupBoxModDetailsInstallationOptions.TabIndex = 60;
+            this.groupBoxModDetailsInstallationOptions.TabStop = false;
+            this.groupBoxModDetailsInstallationOptions.Text = "Installation options";
+            // 
+            // labelModInstallAs
+            // 
+            this.labelModInstallAs.AutoSize = true;
+            this.labelModInstallAs.Location = new System.Drawing.Point(6, 22);
+            this.labelModInstallAs.Name = "labelModInstallAs";
+            this.labelModInstallAs.Size = new System.Drawing.Size(51, 13);
+            this.labelModInstallAs.TabIndex = 41;
+            this.labelModInstallAs.Text = "Install as:";
+            // 
+            // checkBoxFreezeArchive
+            // 
+            this.checkBoxFreezeArchive.AutoSize = true;
+            this.checkBoxFreezeArchive.Location = new System.Drawing.Point(9, 100);
+            this.checkBoxFreezeArchive.Name = "checkBoxFreezeArchive";
+            this.checkBoxFreezeArchive.Size = new System.Drawing.Size(58, 17);
+            this.checkBoxFreezeArchive.TabIndex = 9;
+            this.checkBoxFreezeArchive.Text = "Freeze";
+            this.toolTip.SetToolTip(this.checkBoxFreezeArchive, "If you \'freeze\' an archive, it does not get recreated when deploying.\r\nThis will " +
+        "speed up deployment.\r\n\r\nThis is especially useful, if the archive is HUGE (1GiB " +
+        "or more) and the files aren\'t changing.");
+            this.checkBoxFreezeArchive.UseVisualStyleBackColor = true;
+            this.checkBoxFreezeArchive.CheckedChanged += new System.EventHandler(this.checkBoxFreezeArchive_CheckedChanged);
+            // 
+            // comboBoxModInstallAs
+            // 
+            this.comboBoxModInstallAs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxModInstallAs.FormattingEnabled = true;
+            this.comboBoxModInstallAs.Location = new System.Drawing.Point(124, 19);
+            this.comboBoxModInstallAs.Name = "comboBoxModInstallAs";
+            this.comboBoxModInstallAs.Size = new System.Drawing.Size(206, 21);
+            this.comboBoxModInstallAs.TabIndex = 3;
+            this.comboBoxModInstallAs.SelectedIndexChanged += new System.EventHandler(this.comboBoxModInstallAs_SelectedIndexChanged);
+            // 
+            // labelModArchivePreset
+            // 
+            this.labelModArchivePreset.AutoSize = true;
+            this.labelModArchivePreset.Location = new System.Drawing.Point(6, 75);
+            this.labelModArchivePreset.Name = "labelModArchivePreset";
+            this.labelModArchivePreset.Size = new System.Drawing.Size(40, 13);
+            this.labelModArchivePreset.TabIndex = 43;
+            this.labelModArchivePreset.Text = "Preset:";
+            // 
+            // comboBoxModArchivePreset
+            // 
+            this.comboBoxModArchivePreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxModArchivePreset.FormattingEnabled = true;
+            this.comboBoxModArchivePreset.Location = new System.Drawing.Point(124, 72);
+            this.comboBoxModArchivePreset.Name = "comboBoxModArchivePreset";
+            this.comboBoxModArchivePreset.Size = new System.Drawing.Size(206, 21);
+            this.comboBoxModArchivePreset.TabIndex = 6;
+            this.comboBoxModArchivePreset.SelectedIndexChanged += new System.EventHandler(this.comboBoxModArchiveFormat_SelectedIndexChanged);
+            // 
+            // labelModUnfreeze
+            // 
+            this.labelModUnfreeze.AutoSize = true;
+            this.labelModUnfreeze.ForeColor = System.Drawing.Color.Red;
+            this.labelModUnfreeze.Location = new System.Drawing.Point(8, 318);
+            this.labelModUnfreeze.Name = "labelModUnfreeze";
+            this.labelModUnfreeze.Size = new System.Drawing.Size(287, 13);
+            this.labelModUnfreeze.TabIndex = 57;
+            this.labelModUnfreeze.Text = "Installation options are disabled, because the mod is frozen.";
+            // 
+            // groupBoxModDetailsDetails
+            // 
+            this.groupBoxModDetailsDetails.Controls.Add(this.textBoxModName);
+            this.groupBoxModDetailsDetails.Controls.Add(this.labelModName);
+            this.groupBoxModDetailsDetails.Controls.Add(this.textBoxModFolderName);
+            this.groupBoxModDetailsDetails.Controls.Add(this.labelModFolderName);
+            this.groupBoxModDetailsDetails.Controls.Add(this.textBoxModArchiveName);
+            this.groupBoxModDetailsDetails.Controls.Add(this.labelModArchiveName);
+            this.groupBoxModDetailsDetails.Location = new System.Drawing.Point(7, 9);
+            this.groupBoxModDetailsDetails.Name = "groupBoxModDetailsDetails";
+            this.groupBoxModDetailsDetails.Size = new System.Drawing.Size(336, 109);
+            this.groupBoxModDetailsDetails.TabIndex = 59;
+            this.groupBoxModDetailsDetails.TabStop = false;
+            this.groupBoxModDetailsDetails.Text = "Details";
+            // 
+            // textBoxModFolderName
+            // 
+            this.textBoxModFolderName.Location = new System.Drawing.Point(124, 44);
+            this.textBoxModFolderName.Name = "textBoxModFolderName";
+            this.textBoxModFolderName.Size = new System.Drawing.Size(206, 20);
+            this.textBoxModFolderName.TabIndex = 2;
+            this.textBoxModFolderName.TextChanged += new System.EventHandler(this.textBoxModFolderName_TextChanged);
+            // 
+            // labelModFolderName
+            // 
+            this.labelModFolderName.AutoSize = true;
+            this.labelModFolderName.Location = new System.Drawing.Point(7, 47);
+            this.labelModFolderName.Name = "labelModFolderName";
+            this.labelModFolderName.Size = new System.Drawing.Size(89, 13);
+            this.labelModFolderName.TabIndex = 47;
+            this.labelModFolderName.Text = "Mod folder name:";
+            // 
+            // buttonModUnfreeze
+            // 
+            this.buttonModUnfreeze.Location = new System.Drawing.Point(8, 334);
+            this.buttonModUnfreeze.Name = "buttonModUnfreeze";
+            this.buttonModUnfreeze.Size = new System.Drawing.Size(336, 23);
+            this.buttonModUnfreeze.TabIndex = 56;
+            this.buttonModUnfreeze.TabStop = false;
+            this.buttonModUnfreeze.Text = "Unfreeze";
+            this.buttonModUnfreeze.UseVisualStyleBackColor = true;
+            this.buttonModUnfreeze.Click += new System.EventHandler(this.buttonModUnfreeze_Click);
             // 
             // checkBoxModDetailsEnabled
             // 
@@ -162,118 +280,6 @@
             this.labelModDetailsBulkFrozenModsWarning.Size = new System.Drawing.Size(176, 13);
             this.labelModDetailsBulkFrozenModsWarning.TabIndex = 59;
             this.labelModDetailsBulkFrozenModsWarning.Text = "NOTE: Frozen mods will be ignored.";
-            // 
-            // labelModUnfreeze
-            // 
-            this.labelModUnfreeze.AutoSize = true;
-            this.labelModUnfreeze.ForeColor = System.Drawing.Color.Red;
-            this.labelModUnfreeze.Location = new System.Drawing.Point(7, 267);
-            this.labelModUnfreeze.Name = "labelModUnfreeze";
-            this.labelModUnfreeze.Size = new System.Drawing.Size(287, 13);
-            this.labelModUnfreeze.TabIndex = 57;
-            this.labelModUnfreeze.Text = "Installation options are disabled, because the mod is frozen.";
-            // 
-            // buttonModUnfreeze
-            // 
-            this.buttonModUnfreeze.Location = new System.Drawing.Point(7, 283);
-            this.buttonModUnfreeze.Name = "buttonModUnfreeze";
-            this.buttonModUnfreeze.Size = new System.Drawing.Size(336, 23);
-            this.buttonModUnfreeze.TabIndex = 56;
-            this.buttonModUnfreeze.TabStop = false;
-            this.buttonModUnfreeze.Text = "Unfreeze";
-            this.buttonModUnfreeze.UseVisualStyleBackColor = true;
-            this.buttonModUnfreeze.Click += new System.EventHandler(this.buttonModUnfreeze_Click);
-            // 
-            // checkBoxFreezeArchive
-            // 
-            this.checkBoxFreezeArchive.AutoSize = true;
-            this.checkBoxFreezeArchive.Location = new System.Drawing.Point(9, 100);
-            this.checkBoxFreezeArchive.Name = "checkBoxFreezeArchive";
-            this.checkBoxFreezeArchive.Size = new System.Drawing.Size(58, 17);
-            this.checkBoxFreezeArchive.TabIndex = 9;
-            this.checkBoxFreezeArchive.Text = "Freeze";
-            this.toolTip.SetToolTip(this.checkBoxFreezeArchive, "If you \'freeze\' an archive, it does not get recreated when deploying.\r\nThis will " +
-        "speed up deployment.\r\n\r\nThis is especially useful, if the archive is HUGE (1GiB " +
-        "or more) and the files aren\'t changing.");
-            this.checkBoxFreezeArchive.UseVisualStyleBackColor = true;
-            this.checkBoxFreezeArchive.CheckedChanged += new System.EventHandler(this.checkBoxFreezeArchive_CheckedChanged);
-            // 
-            // buttonModRepairDDS
-            // 
-            this.buttonModRepairDDS.Location = new System.Drawing.Point(7, 328);
-            this.buttonModRepairDDS.Name = "buttonModRepairDDS";
-            this.buttonModRepairDDS.Size = new System.Drawing.Size(202, 23);
-            this.buttonModRepairDDS.TabIndex = 52;
-            this.buttonModRepairDDS.TabStop = false;
-            this.buttonModRepairDDS.Text = "Repair *.dds files";
-            this.buttonModRepairDDS.UseVisualStyleBackColor = true;
-            this.buttonModRepairDDS.Click += new System.EventHandler(this.buttonModRepairDDS_Click);
-            // 
-            // comboBoxModArchivePreset
-            // 
-            this.comboBoxModArchivePreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxModArchivePreset.FormattingEnabled = true;
-            this.comboBoxModArchivePreset.Location = new System.Drawing.Point(124, 72);
-            this.comboBoxModArchivePreset.Name = "comboBoxModArchivePreset";
-            this.comboBoxModArchivePreset.Size = new System.Drawing.Size(206, 21);
-            this.comboBoxModArchivePreset.TabIndex = 6;
-            this.comboBoxModArchivePreset.SelectedIndexChanged += new System.EventHandler(this.comboBoxModArchiveFormat_SelectedIndexChanged);
-            // 
-            // buttonModOpenFolder
-            // 
-            this.buttonModOpenFolder.Location = new System.Drawing.Point(218, 328);
-            this.buttonModOpenFolder.Name = "buttonModOpenFolder";
-            this.buttonModOpenFolder.Size = new System.Drawing.Size(125, 23);
-            this.buttonModOpenFolder.TabIndex = 48;
-            this.buttonModOpenFolder.TabStop = false;
-            this.buttonModOpenFolder.Text = "Open folder";
-            this.buttonModOpenFolder.UseVisualStyleBackColor = true;
-            this.buttonModOpenFolder.Click += new System.EventHandler(this.buttonModOpenFolder_Click);
-            // 
-            // labelModFolderName
-            // 
-            this.labelModFolderName.AutoSize = true;
-            this.labelModFolderName.Location = new System.Drawing.Point(7, 47);
-            this.labelModFolderName.Name = "labelModFolderName";
-            this.labelModFolderName.Size = new System.Drawing.Size(89, 13);
-            this.labelModFolderName.TabIndex = 47;
-            this.labelModFolderName.Text = "Mod folder name:";
-            // 
-            // labelModArchivePreset
-            // 
-            this.labelModArchivePreset.AutoSize = true;
-            this.labelModArchivePreset.Location = new System.Drawing.Point(6, 75);
-            this.labelModArchivePreset.Name = "labelModArchivePreset";
-            this.labelModArchivePreset.Size = new System.Drawing.Size(40, 13);
-            this.labelModArchivePreset.TabIndex = 43;
-            this.labelModArchivePreset.Text = "Preset:";
-            // 
-            // textBoxModFolderName
-            // 
-            this.textBoxModFolderName.Location = new System.Drawing.Point(124, 44);
-            this.textBoxModFolderName.Name = "textBoxModFolderName";
-            this.textBoxModFolderName.Size = new System.Drawing.Size(206, 20);
-            this.textBoxModFolderName.TabIndex = 2;
-            this.textBoxModFolderName.TextChanged += new System.EventHandler(this.textBoxModFolderName_TextChanged);
-            // 
-            // comboBoxModInstallAs
-            // 
-            this.comboBoxModInstallAs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxModInstallAs.FormattingEnabled = true;
-            this.comboBoxModInstallAs.Location = new System.Drawing.Point(124, 19);
-            this.comboBoxModInstallAs.Name = "comboBoxModInstallAs";
-            this.comboBoxModInstallAs.Size = new System.Drawing.Size(206, 21);
-            this.comboBoxModInstallAs.TabIndex = 3;
-            this.comboBoxModInstallAs.SelectedIndexChanged += new System.EventHandler(this.comboBoxModInstallAs_SelectedIndexChanged);
-            // 
-            // labelModInstallAs
-            // 
-            this.labelModInstallAs.AutoSize = true;
-            this.labelModInstallAs.Location = new System.Drawing.Point(6, 22);
-            this.labelModInstallAs.Name = "labelModInstallAs";
-            this.labelModInstallAs.Size = new System.Drawing.Size(51, 13);
-            this.labelModInstallAs.TabIndex = 41;
-            this.labelModInstallAs.Text = "Install as:";
             // 
             // progressBar1
             // 
@@ -328,38 +334,6 @@
             this.buttonModDetailsCancel.UseVisualStyleBackColor = true;
             this.buttonModDetailsCancel.Click += new System.EventHandler(this.buttonModDetailsCancel_Click);
             // 
-            // groupBoxModDetailsDetails
-            // 
-            this.groupBoxModDetailsDetails.Controls.Add(this.textBoxModName);
-            this.groupBoxModDetailsDetails.Controls.Add(this.labelModName);
-            this.groupBoxModDetailsDetails.Controls.Add(this.textBoxModFolderName);
-            this.groupBoxModDetailsDetails.Controls.Add(this.labelModFolderName);
-            this.groupBoxModDetailsDetails.Controls.Add(this.textBoxModArchiveName);
-            this.groupBoxModDetailsDetails.Controls.Add(this.labelModArchiveName);
-            this.groupBoxModDetailsDetails.Location = new System.Drawing.Point(7, 9);
-            this.groupBoxModDetailsDetails.Name = "groupBoxModDetailsDetails";
-            this.groupBoxModDetailsDetails.Size = new System.Drawing.Size(336, 109);
-            this.groupBoxModDetailsDetails.TabIndex = 59;
-            this.groupBoxModDetailsDetails.TabStop = false;
-            this.groupBoxModDetailsDetails.Text = "Details";
-            // 
-            // groupBoxModDetailsInstallationOptions
-            // 
-            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModInstallAs);
-            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModInstallInto);
-            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.textBoxModRootDir);
-            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.checkBoxFreezeArchive);
-            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.comboBoxModInstallAs);
-            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModArchivePreset);
-            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.buttonModPickRootDir);
-            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.comboBoxModArchivePreset);
-            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(7, 124);
-            this.groupBoxModDetailsInstallationOptions.Name = "groupBoxModDetailsInstallationOptions";
-            this.groupBoxModDetailsInstallationOptions.Size = new System.Drawing.Size(336, 126);
-            this.groupBoxModDetailsInstallationOptions.TabIndex = 60;
-            this.groupBoxModDetailsInstallationOptions.TabStop = false;
-            this.groupBoxModDetailsInstallationOptions.Text = "Installation options";
-            // 
             // FormModDetails
             // 
             this.AcceptButton = this.buttonModDetailsOK;
@@ -384,10 +358,10 @@
             this.Text = "Edit mod details";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBoxModDetailsDetails.ResumeLayout(false);
-            this.groupBoxModDetailsDetails.PerformLayout();
             this.groupBoxModDetailsInstallationOptions.ResumeLayout(false);
             this.groupBoxModDetailsInstallationOptions.PerformLayout();
+            this.groupBoxModDetailsDetails.ResumeLayout(false);
+            this.groupBoxModDetailsDetails.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,11 +385,9 @@
         private System.Windows.Forms.ComboBox comboBoxModInstallAs;
         private System.Windows.Forms.Label labelModFolderName;
         private System.Windows.Forms.TextBox textBoxModFolderName;
-        private System.Windows.Forms.Button buttonModOpenFolder;
         private System.Windows.Forms.CheckBox checkBoxModDetailsEnabled;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogPickRootDir;
         public System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.Button buttonModRepairDDS;
         private System.Windows.Forms.Label labelModDetailsStatus;
         private System.Windows.Forms.CheckBox checkBoxFreezeArchive;
         private System.Windows.Forms.Label labelModUnfreeze;

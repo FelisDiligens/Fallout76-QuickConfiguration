@@ -1,5 +1,4 @@
-﻿using ImageMagick;
-using SharpCompress.Common;
+﻿using SharpCompress.Common;
 using SharpCompress.Readers;
 using System;
 using System.Collections.Generic;
@@ -31,6 +30,13 @@ namespace Fo76ini
             Textures
         }
 
+        public enum ArchiveCompression
+        {
+            Auto,
+            Compressed,
+            Uncompressed
+        }
+
         private String title;
         private String managedFolderName;
         public Mod.FileType Type;
@@ -41,7 +47,7 @@ namespace Fo76ini
         private List<String> looseFiles = new List<String>();
 
         /* Does only apply for FileType.SeparateBA2 */
-        public Archive2.Compression Compression = Archive2.Compression.Default;
+        public Mod.ArchiveCompression Compression = Mod.ArchiveCompression.Auto;
         private String archiveName = "untitled.ba2";
         public Mod.ArchiveFormat Format = Mod.ArchiveFormat.Auto;
         public bool freeze = false;
@@ -159,7 +165,7 @@ namespace Fo76ini
 
                 // Create archive:
                 String tempPath = Path.Combine(ManagedMods.Instance.GamePath, "Mods", "frozen.ba2");
-                Archive2.Create(tempPath, GetManagedPath(), Compression, ManagedMods.Instance.DetectArchive2Format(this));
+                Archive2.Create(tempPath, GetManagedPath(), ManagedMods.Instance.GetArchive2Preset(this));
 
                 // Failed?
                 if (!File.Exists(tempPath))
@@ -289,7 +295,7 @@ namespace Fo76ini
 
             if (this.Type == Mod.FileType.SeparateBA2)
             {
-                String compressionStr = Enum.GetName(typeof(Archive2.Compression), (int)Compression);
+                String compressionStr = Enum.GetName(typeof(Mod.ArchiveCompression), (int)Compression);
                 xmlMod.Add(new XAttribute("archiveName", archiveName));
                 xmlMod.Add(new XAttribute("compression", compressionStr));
                 xmlMod.Add(new XAttribute("format", this.GetFormatName()));
@@ -350,6 +356,7 @@ namespace Fo76ini
                     case "Textures":
                         mod.Format = Mod.ArchiveFormat.Textures;
                         break;
+                    case "Auto":
                     default:
                         mod.Format = Mod.ArchiveFormat.Auto;
                         break;
@@ -359,7 +366,22 @@ namespace Fo76ini
                 xmlMod.Attribute("compression") != null &&
                 xmlMod.Attribute("archiveName") != null)
             {
-                mod.Compression = Archive2.GetCompression(xmlMod.Attribute("compression").Value);
+                switch (xmlMod.Attribute("compression").Value)
+                {
+                    case "Default": // Backward compatibility
+                    case "Compressed":
+                        mod.Compression = Mod.ArchiveCompression.Compressed;
+                        break;
+                    case "None": // Backward compatibility
+                    case "Uncompressed":
+                        mod.Compression = Mod.ArchiveCompression.Uncompressed;
+                        break;
+                    case "Auto":
+                    default:
+                        mod.Compression = Mod.ArchiveCompression.Auto;
+                        break;
+                }
+                //mod.Compression = Archive2.GetCompression(xmlMod.Attribute("compression").Value);
                 mod.ArchiveName = xmlMod.Attribute("archiveName").Value;
                 if (xmlMod.Attribute("frozen") != null)
                 {
@@ -379,35 +401,6 @@ namespace Fo76ini
                             throw new InvalidDataException("path attribute is missing from <File> tag");
             }
             return mod;
-        }
-
-        public List<String> RepairDDSFiles(Action<String, int> updateProgress = null, Action<List<String>> done = null)
-        {
-            List<String> corruptDDSFiles = new List<String>();
-            String managedPath = this.GetManagedPath();
-            //String[] files = Directory.GetFiles(managedPath, "*.dds", SearchOption.AllDirectories);
-            IEnumerable<String> files = Directory.EnumerateFiles(managedPath, "*.dds", SearchOption.AllDirectories);
-            int i = 1;
-            int count = files.Count();
-            foreach (String filePath in files)
-            {
-                /*if (!filePath.ToLower().EndsWith(".dds"))
-                {
-                    i++;
-                    continue;
-                }*/
-                String fileName = Path.GetFileName(filePath);
-                if (updateProgress != null)
-                    updateProgress(fileName, (int)((float)i / (float)count * 100));
-                if (!Utils.RepairDDS(filePath))
-                {
-                    corruptDDSFiles.Add(filePath);
-                }
-                i++;
-            }
-            if (done != null)
-                done(corruptDDSFiles);
-            return corruptDDSFiles;
         }
     }
 
@@ -619,67 +612,61 @@ namespace Fo76ini
             return currentManagedFolderName;
         }
 
-        public List<String> RepairDDSFiles(Action<String, int> updateProgress = null, Action<List<String>> done = null)
+        public Archive2.Preset GetArchive2Preset(Mod mod)
         {
-            List<String> corruptDDSFiles = new List<String>();
-            int m = 1;
-            foreach (Mod mod in this.changedMods)
+            var preset = new Archive2.Preset();
+
+            // No detection needed, "convert" Mod.ArchiveCompression to Archive2.Compression and Mod.ArchiveFormat to Archive2.Format:
+            if (mod.Compression != Mod.ArchiveCompression.Auto && mod.Format != Mod.ArchiveFormat.Auto)
             {
-                String managedPath = mod.GetManagedPath();
-                //String[] files = Directory.GetFiles(managedPath, "*.dds", SearchOption.AllDirectories);
-                IEnumerable<String> files = Directory.EnumerateFiles(managedPath, "*.dds", SearchOption.AllDirectories);
-                int f = 1;
-                int count = files.Count();
-                foreach (String filePath in files)
-                {
-                    /*if (!filePath.ToLower().EndsWith(".dds"))
-                    {
-                        f++;
-                        continue;
-                    }*/
-                    String fileName = Path.GetFileName(filePath);
-                    if (updateProgress != null)
-                    {
-                        float overallProgress = (float)(m - 1) / (float)this.changedMods.Count;
-                        float fileProgress = (float)f / (float)count;
-                        float percent = Utils.Clamp(overallProgress + (1.0f / (float)this.changedMods.Count) * fileProgress, 0.0f, 1.0f);
-                        updateProgress($"Mod {mod.Title} ({m} of {this.changedMods.Count}): {fileName} ({f} of {count})", (int)(percent * 100));
-                    }
-                    if (!Utils.RepairDDS(filePath))
-                    {
-                        corruptDDSFiles.Add(filePath);
-                    }
-                    f++;
-                }
-                m++;
+                preset.compression = mod.Compression == Mod.ArchiveCompression.Compressed ? Archive2.Compression.Default : Archive2.Compression.None;
+                preset.format = mod.Format == Mod.ArchiveFormat.General ? Archive2.Format.General : Archive2.Format.DDS;
+
+                return preset;
             }
-            if (done != null)
-                done(corruptDDSFiles);
-            return corruptDDSFiles;
-        }
 
-        public Archive2.Format DetectArchive2Format(Mod mod)
-        {
-            if (mod.Format == Mod.ArchiveFormat.General)
-                return Archive2.Format.General;
-            else if (mod.Format == Mod.ArchiveFormat.Textures)
-                return Archive2.Format.DDS;
+            // Detect mod type:
+            // String[] resourceFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx", "lodsettings" };
+            String[] generalFolders = new string[] { "meshes", "strings", "interface" };
+            String[] textureFolders = new string[] { "textures", "effects", "materials" };
+            String[] soundFolders = new string[] { "sound", "music" };
 
-            // Auto-detect based on folders that might contains DDS files:
+            int generalFoldersCount = 0;
+            int textureFoldersCount = 0;
+            int soundFoldersCount = 0;
+
             String managedFolderPath = mod.GetManagedPath();
-            //String[] folders = Directory.GetDirectories(managedFolderPath);
             IEnumerable<String> folders = Directory.EnumerateDirectories(managedFolderPath);
-            // String[] files = Directory.GetFiles(managedFolderPath);
-            int fileCount = Directory.EnumerateFiles(managedFolderPath).Count();
-            String[] ddsFolders = new string[] { "textures", "effects" };
-            bool containsDDSFolders = false;
             foreach (String path in folders)
-                if (ddsFolders.Contains(Path.GetFileName(path).ToLower()))
-                    containsDDSFolders = true;
-            if (containsDDSFolders && fileCount == 0) //&& folders.Length == 1)
-                return Archive2.Format.DDS;
-            else
-                return Archive2.Format.General;
+            {
+                String folderName = Path.GetFileName(path).ToLower();
+
+                if (generalFolders.Contains(folderName))
+                    generalFoldersCount++;
+                else if (textureFolders.Contains(folderName))
+                    textureFoldersCount++;
+                else if (soundFolders.Contains(folderName))
+                    soundFoldersCount++;
+            }
+            
+            //int fileCount = Directory.EnumerateFiles(managedFolderPath).Count();
+            //if (fileCount == 0)
+
+            if (soundFoldersCount > generalFoldersCount && soundFoldersCount > textureFoldersCount)
+            {
+                preset.compression = Archive2.Compression.None;
+                preset.format = Archive2.Format.General;
+            } else if (textureFoldersCount > generalFoldersCount && textureFoldersCount > soundFoldersCount)
+            {
+                preset.compression = Archive2.Compression.Default;
+                preset.format = Archive2.Format.DDS;
+            } else
+            {
+                preset.compression = Archive2.Compression.Default;
+                preset.format = Archive2.Format.General;
+            }
+
+            return preset;
         }
 
         private void ManipulateModFolder(Mod mod, String managedFolderPath, Action<String, int> updateProgress = null)
@@ -1752,7 +1739,8 @@ namespace Fo76ini
                             // Make a relative path, create directories and copy file:
                             String relativePath = Utils.MakeRelativePath(managedFolderPath, filePath);
                             String destinationPath;
-                            if (relativePath.Trim().ToLower().StartsWith("sound") || relativePath.Trim().ToLower().StartsWith("music"))
+                            if (relativePath.Trim().ToLower().StartsWith("sound") || relativePath.Trim().ToLower().StartsWith("music") ||
+                                filePath.ToLower().EndsWith(".wav") || filePath.ToLower().EndsWith(".xwm") || filePath.ToLower().EndsWith(".fuz") || filePath.ToLower().EndsWith(".lip"))
                             {
                                 soundFiles++;
                                 destinationPath = Path.Combine(soundsArchive.tempPath, relativePath);
@@ -1819,12 +1807,12 @@ namespace Fo76ini
                             }
                             else
                             {
-                                Archive2.Format format = DetectArchive2Format(mod);
+                                Archive2.Preset preset = GetArchive2Preset(mod);
 
                                 this.logFile.WriteLine($"[Separate] Freezing archive of {mod.Title}.");
                                 this.logFile.WriteLine($"    Archive name: {mod.ArchiveName}");
-                                this.logFile.WriteLine($"    Format:       {Enum.GetName(typeof(Archive2.Format), (int)format)}");
-                                this.logFile.WriteLine($"    Compression:  {Enum.GetName(typeof(Archive2.Compression), (int)mod.Compression)}");
+                                this.logFile.WriteLine($"    Format:       {Enum.GetName(typeof(Archive2.Format), (int)preset.format)}");
+                                this.logFile.WriteLine($"    Compression:  {Enum.GetName(typeof(Archive2.Compression), (int)preset.compression)}");
 
                                 if (updateProgress != null)
                                     updateProgress($"[2/4] Creating a *ba2 archive of mod {progressModName}", progressPercent + (int)(modPercent * 100));
@@ -1849,17 +1837,17 @@ namespace Fo76ini
                                 mod.Unfreeze();
                             }
 
-                            Archive2.Format format = DetectArchive2Format(mod);
+                            Archive2.Preset preset = GetArchive2Preset(mod);
 
                             this.logFile.WriteLine($"[Separate] Creating archive of {mod.Title}.");
                             this.logFile.WriteLine($"    Archive name: {mod.ArchiveName}");
-                            this.logFile.WriteLine($"    Format:       {Enum.GetName(typeof(Archive2.Format), (int)format)}");
-                            this.logFile.WriteLine($"    Compression:  {Enum.GetName(typeof(Archive2.Compression), (int)mod.Compression)}");
+                            this.logFile.WriteLine($"    Format:       {Enum.GetName(typeof(Archive2.Format), (int)preset.format)}");
+                            this.logFile.WriteLine($"    Compression:  {Enum.GetName(typeof(Archive2.Compression), (int)preset.compression)}");
 
                             // Create archive:
                             if (updateProgress != null)
                                 updateProgress($"[2/4] Creating a *ba2 archive of mod {progressModName}", progressPercent + (int)(modPercent * 100));
-                            Archive2.Create(Path.Combine(this.gamePath, "Data", mod.ArchiveName), managedFolderPath, mod.Compression, format);
+                            Archive2.Create(Path.Combine(this.gamePath, "Data", mod.ArchiveName), managedFolderPath, preset);
                         }
                         sResourceIndexFileList.Add(mod.ArchiveName);
                     }
@@ -2221,6 +2209,12 @@ namespace Fo76ini
             GNF
         }
 
+        public struct Preset
+        {
+            public Archive2.Compression compression;
+            public Archive2.Format format;
+        }
+
         public static Archive2.Compression GetCompression(String compressionStr)
         {
             switch (compressionStr)
@@ -2310,6 +2304,11 @@ namespace Fo76ini
         public static void Create(String ba2Archive, String folder)
         {
             Archive2.Create(ba2Archive, folder, Archive2.Compression.Default, Archive2.Format.General);
+        }
+
+        public static void Create(String ba2Archive, String folder, Archive2.Preset preset)
+        {
+            Archive2.Create(ba2Archive, folder, preset.compression, preset.format);
         }
 
         public static void Create(String ba2Archive, String folder, Archive2.Compression compression, Archive2.Format format)

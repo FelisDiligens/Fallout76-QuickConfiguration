@@ -43,12 +43,12 @@
             this.showConflictingFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.repairddsFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.archive2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openArchive2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exploreba2ArchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showREADMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showModmanagerlogtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showArchive2logtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +82,7 @@
             this.columnHeaderFrozenState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
             this.groupBoxModsBehavior = new System.Windows.Forms.GroupBox();
+            this.checkBoxFreezeBundledArchives = new System.Windows.Forms.CheckBox();
             this.checkBoxModsUseHardlinks = new System.Windows.Forms.CheckBox();
             this.checkBoxAddArchivesAsBundled = new System.Windows.Forms.CheckBox();
             this.groupBoxLists = new System.Windows.Forms.GroupBox();
@@ -99,7 +100,7 @@
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialogBA2 = new System.Windows.Forms.OpenFileDialog();
-            this.checkBoxFreezeBundledArchives = new System.Windows.Forms.CheckBox();
+            this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -108,6 +109,7 @@
             this.groupBoxModsBehavior.SuspendLayout();
             this.groupBoxLists.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -210,18 +212,10 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.repairddsFilesToolStripMenuItem,
             this.archive2ToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // repairddsFilesToolStripMenuItem
-            // 
-            this.repairddsFilesToolStripMenuItem.Name = "repairddsFilesToolStripMenuItem";
-            this.repairddsFilesToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.repairddsFilesToolStripMenuItem.Text = "Repair all *.dds files";
-            this.repairddsFilesToolStripMenuItem.Click += new System.EventHandler(this.repairddsFilesToolStripMenuItem_Click);
             // 
             // archive2ToolStripMenuItem
             // 
@@ -229,7 +223,7 @@
             this.openArchive2ToolStripMenuItem,
             this.exploreba2ArchiveToolStripMenuItem});
             this.archive2ToolStripMenuItem.Name = "archive2ToolStripMenuItem";
-            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.archive2ToolStripMenuItem.Text = "Archive2";
             // 
             // openArchive2ToolStripMenuItem
@@ -250,6 +244,7 @@
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showREADMEToolStripMenuItem,
+            this.showGuideToolStripMenuItem,
             this.logFilesToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
@@ -261,6 +256,13 @@
             this.showREADMEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.showREADMEToolStripMenuItem.Text = "Show README";
             this.showREADMEToolStripMenuItem.Click += new System.EventHandler(this.showREADMEToolStripMenuItem_Click);
+            // 
+            // showGuideToolStripMenuItem
+            // 
+            this.showGuideToolStripMenuItem.Name = "showGuideToolStripMenuItem";
+            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.showGuideToolStripMenuItem.Text = "Show guide";
+            this.showGuideToolStripMenuItem.Click += new System.EventHandler(this.showGuideToolStripMenuItem_Click);
             // 
             // logFilesToolStripMenuItem
             // 
@@ -332,6 +334,7 @@
             // 
             // tabPageModOrder
             // 
+            this.tabPageModOrder.Controls.Add(this.pictureBoxModsLoadingGIF);
             this.tabPageModOrder.Controls.Add(this.toolStrip1);
             this.tabPageModOrder.Controls.Add(this.listViewMods);
             this.tabPageModOrder.Location = new System.Drawing.Point(4, 22);
@@ -600,6 +603,19 @@
             this.groupBoxModsBehavior.TabStop = false;
             this.groupBoxModsBehavior.Text = "Behavior";
             // 
+            // checkBoxFreezeBundledArchives
+            // 
+            this.checkBoxFreezeBundledArchives.AutoSize = true;
+            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(6, 65);
+            this.checkBoxFreezeBundledArchives.Name = "checkBoxFreezeBundledArchives";
+            this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(211, 17);
+            this.checkBoxFreezeBundledArchives.TabIndex = 2;
+            this.checkBoxFreezeBundledArchives.Text = "[Experimental] Freeze bundled archives";
+            this.toolTip.SetToolTip(this.checkBoxFreezeBundledArchives, "Instead of rebuilding bundled archives, it will save a bundled copy and ask you i" +
+        "f you want to update it on deploy.");
+            this.checkBoxFreezeBundledArchives.UseVisualStyleBackColor = true;
+            this.checkBoxFreezeBundledArchives.CheckedChanged += new System.EventHandler(this.checkBoxFreezeBundledArchives_CheckedChanged);
+            // 
             // checkBoxModsUseHardlinks
             // 
             this.checkBoxModsUseHardlinks.AutoSize = true;
@@ -750,18 +766,19 @@
             this.openFileDialogBA2.Filter = "Archive2|*.ba2";
             this.openFileDialogBA2.Title = "Add *.ba2 archive.";
             // 
-            // checkBoxFreezeBundledArchives
+            // pictureBoxModsLoadingGIF
             // 
-            this.checkBoxFreezeBundledArchives.AutoSize = true;
-            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(6, 65);
-            this.checkBoxFreezeBundledArchives.Name = "checkBoxFreezeBundledArchives";
-            this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(211, 17);
-            this.checkBoxFreezeBundledArchives.TabIndex = 2;
-            this.checkBoxFreezeBundledArchives.Text = "[Experimental] Freeze bundled archives";
-            this.toolTip.SetToolTip(this.checkBoxFreezeBundledArchives, "Instead of rebuilding bundled archives, it will save a bundled copy and ask you i" +
-        "f you want to update it on deploy.");
-            this.checkBoxFreezeBundledArchives.UseVisualStyleBackColor = true;
-            this.checkBoxFreezeBundledArchives.CheckedChanged += new System.EventHandler(this.checkBoxFreezeBundledArchives_CheckedChanged);
+            this.pictureBoxModsLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxModsLoadingGIF.Image = global::Fo76ini.Properties.Resources.Gear_0_4s_200px;
+            this.pictureBoxModsLoadingGIF.Location = new System.Drawing.Point(3, 4);
+            this.pictureBoxModsLoadingGIF.Name = "pictureBoxModsLoadingGIF";
+            this.pictureBoxModsLoadingGIF.Size = new System.Drawing.Size(486, 434);
+            this.pictureBoxModsLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxModsLoadingGIF.TabIndex = 57;
+            this.pictureBoxModsLoadingGIF.TabStop = false;
+            this.pictureBoxModsLoadingGIF.Visible = false;
             // 
             // FormMods
             // 
@@ -793,6 +810,7 @@
             this.groupBoxLists.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -810,7 +828,7 @@
         private System.Windows.Forms.ToolStripMenuItem deployToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showREADMEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showGuideToolStripMenuItem;
         private System.Windows.Forms.ProgressBar progressBarMods;
         private System.Windows.Forms.Button buttonModsDeploy;
         private System.Windows.Forms.Label labelModsDeploy;
@@ -844,7 +862,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem showConflictingFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem repairddsFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reloadUIToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader columnHeaderFrozenState;
         private System.Windows.Forms.ColumnHeader columnHeaderCompression;
@@ -870,5 +887,7 @@
         private System.Windows.Forms.ToolStripMenuItem showModmanagerlogtxtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showArchive2logtxtToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBoxFreezeBundledArchives;
+        private System.Windows.Forms.ToolStripMenuItem showREADMEToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBoxModsLoadingGIF;
     }
 }

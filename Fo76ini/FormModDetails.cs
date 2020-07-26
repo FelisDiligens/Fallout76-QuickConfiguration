@@ -43,10 +43,10 @@ namespace Fo76ini
                 this.comboBoxModArchivePreset,
                 new String[] {
                     "-- Please select --",
-                    "General / Interface / Materials",      /* Materials: *.bgsm; Interface: *.swf; */
+                    "Auto-detect",
+                    "General / Interface / Materials / Animations", /* Materials: *.bgsm; Interface: *.swf; */
                     "Textures (*.dds files)",
-                    "Uncompressed textures (*.dds files)",  /* Textures: *.dds; */
-                    "Sound FX / Audio",                     /* Voice: *.fuz; Lip-Sync: *.lip; Sound FX: *.xwm; */
+                    "Sound FX / Music / Voice",                     /* Voice: *.fuz; Lip-Sync: *.lip; Sound FX: *.xwm; */
                 }
             ));
         }
@@ -86,19 +86,6 @@ namespace Fo76ini
             this.textBoxModName.Text = this.changedMod.Title;
             this.textBoxModFolderName.Text = this.changedMod.ManagedFolder;
             this.textBoxModRootDir.Text = this.changedMod.RootFolder;
-
-            switch (this.changedMod.Format)
-            {
-                case Mod.ArchiveFormat.General:
-                    this.comboBoxModArchivePreset.SelectedIndex = 1;
-                    break;
-                case Mod.ArchiveFormat.Textures:
-                    this.comboBoxModArchivePreset.SelectedIndex = 2;
-                    break;
-                default:
-                    this.comboBoxModArchivePreset.SelectedIndex = 0;
-                    break;
-            }
 
             switch (this.changedMod.Type)
             {
@@ -178,25 +165,27 @@ namespace Fo76ini
             // Preset
             if (!isFrozen && this.changedMod.Type == Mod.FileType.SeparateBA2)
             {
-                bool isCompressed = this.changedMod.Compression == Archive2.Compression.Default;
+                bool isCompressed = this.changedMod.Compression == Mod.ArchiveCompression.Compressed;
                 switch (this.changedMod.Format)
                 {
                     case Mod.ArchiveFormat.General:
                         if (isCompressed)
-                            this.comboBoxModArchivePreset.SelectedIndex = 1; // General
+                            this.comboBoxModArchivePreset.SelectedIndex = 2; // General
                         else
                             this.comboBoxModArchivePreset.SelectedIndex = 4; // Sound FX
                         break;
                     case Mod.ArchiveFormat.Textures:
-                        if (isCompressed)
-                            this.comboBoxModArchivePreset.SelectedIndex = 2; // Textures
-                        else
-                            this.comboBoxModArchivePreset.SelectedIndex = 3; // Uncompressed textures
+                        this.comboBoxModArchivePreset.SelectedIndex = 3;     // Textures
+                        break;
+                    case Mod.ArchiveFormat.Auto:
+                        this.comboBoxModArchivePreset.SelectedIndex = 1;     // Auto-detect
                         break;
                     default:
-                        this.comboBoxModArchivePreset.SelectedIndex = 0; // Please select
+                        this.comboBoxModArchivePreset.SelectedIndex = 0;     // Please select
                         break;
                 }
+                if (this.changedMod.Compression == Mod.ArchiveCompression.Auto)
+                    this.comboBoxModArchivePreset.SelectedIndex = 1;
             }
 
             // Bulk?
@@ -206,8 +195,8 @@ namespace Fo76ini
             this.labelModFolderName.Visible = !this.bulk;
             this.textBoxModFolderName.Visible = !this.bulk;
 
-            this.buttonModOpenFolder.Visible = !this.bulk;
-            this.buttonModRepairDDS.Visible = !this.bulk;
+            //this.buttonModOpenFolder.Visible = !this.bulk;
+            //this.buttonModRepairDDS.Visible = !this.bulk;
             this.buttonModUnfreeze.Enabled = !this.bulk;
 
             /*this.separator1.Visible = !this.bulk;
@@ -328,21 +317,21 @@ namespace Fo76ini
                     /*this.changedMod.Format = Mod.ArchiveFormat.Auto;
                     this.changedMod.Compression = Archive2.Compression.Default;*/
                     break;
-                case 1: // General
+                case 1: // Auto-detect
+                    this.changedMod.Format = Mod.ArchiveFormat.Auto;
+                    this.changedMod.Compression = Mod.ArchiveCompression.Auto;
+                    break;
+                case 2: // General
                     this.changedMod.Format = Mod.ArchiveFormat.General;
-                    this.changedMod.Compression = Archive2.Compression.Default;
+                    this.changedMod.Compression = Mod.ArchiveCompression.Compressed;
                     break;
-                case 2: // Textures
+                case 3: // Textures
                     this.changedMod.Format = Mod.ArchiveFormat.Textures;
-                    this.changedMod.Compression = Archive2.Compression.Default;
-                    break;
-                case 3: // Uncompressed textures
-                    this.changedMod.Format = Mod.ArchiveFormat.Textures;
-                    this.changedMod.Compression = Archive2.Compression.None;
+                    this.changedMod.Compression = Mod.ArchiveCompression.Compressed;
                     break;
                 case 4: // Audio
                     this.changedMod.Format = Mod.ArchiveFormat.General;
-                    this.changedMod.Compression = Archive2.Compression.None;
+                    this.changedMod.Compression = Mod.ArchiveCompression.Uncompressed;
                     break;
             }
             UpdateUI();
@@ -392,55 +381,6 @@ namespace Fo76ini
             this.changedMod.freeze = this.checkBoxFreezeArchive.Checked;
         }
 
-        /*
-         * Presets
-         */
-
-        private void radioButtonSeparateArchiveGeneral_CheckedChanged(object sender, EventArgs e)
-        {
-            // Compressed, General format
-            if (isUpdatingUI)
-                return;
-
-            if (!this.changedMod.isFrozen() && this.changedMod.Type == Mod.FileType.SeparateBA2)
-            {
-                this.changedMod.Compression = Archive2.Compression.Default;
-                this.changedMod.Format = Mod.ArchiveFormat.General;
-
-                UpdateUI();
-            }
-        }
-
-        private void radioButtonSeparateArchiveTextures_CheckedChanged(object sender, EventArgs e)
-        {
-            // Compressed, DDS format
-            if (isUpdatingUI)
-                return;
-
-            if (!this.changedMod.isFrozen() && this.changedMod.Type == Mod.FileType.SeparateBA2)
-            {
-                this.changedMod.Compression = Archive2.Compression.Default;
-                this.changedMod.Format = Mod.ArchiveFormat.Textures;
-
-                UpdateUI();
-            }
-        }
-
-        private void radioButtonSeparateArchiveSounds_CheckedChanged(object sender, EventArgs e)
-        {
-            // Uncompressed, General format
-            if (isUpdatingUI)
-                return;
-
-            if (!this.changedMod.isFrozen() && this.changedMod.Type == Mod.FileType.SeparateBA2)
-            {
-                this.changedMod.Compression = Archive2.Compression.None;
-                this.changedMod.Format = Mod.ArchiveFormat.General;
-
-                UpdateUI();
-            }
-        }
-
 
         /*
          * Actions
@@ -473,43 +413,6 @@ namespace Fo76ini
             });
             thread.IsBackground = true;
             thread.Start();
-        }
-
-        private void buttonModRepairDDS_Click(object sender, EventArgs e)
-        {
-            DialogResult res = MsgBox.Get("modsRepairDDSQuestion").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (res == DialogResult.Yes)
-            {
-                this.labelModDetailsStatus.Visible = true;
-                this.labelModDetailsStatus.ForeColor = SystemColors.HotTrack;
-                Thread thread = new Thread(() => {
-                    this.changedMod.RepairDDSFiles(
-                        (text, percent) => {
-                            Invoke(() => SetProgress($"{text} ({percent}%)", percent));
-                        }, (corruptFiles) => {
-                            Invoke(() => RepairDone(corruptFiles));
-                        }
-                    );
-                });
-                thread.IsBackground = true;
-                thread.Start();
-            }
-        }
-
-        private void RepairDone(List<String> corruptFiles)
-        {
-            SetDone();
-            if (corruptFiles.Count > 0)
-            {
-                Log log = new Log(Log.GetFilePath("repair.log.txt"));
-                log.WriteLine($"Some textures couldn't be repaired for mod \"{this.changedMod.Title}\":");
-                foreach (String path in corruptFiles)
-                    log.WriteLine(path);
-                log.WriteLine("");
-
-                this.labelModDetailsStatus.ForeColor = Color.Red;
-                this.labelModDetailsStatus.Text = $"{corruptFiles.Count} unrestorable files. See repair.log.txt";
-            }
         }
 
         private void SetDone()

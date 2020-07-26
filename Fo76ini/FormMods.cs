@@ -81,7 +81,7 @@ namespace Fo76ini
                  */
                 Mod mod = ManagedMods.Instance.Mods[i];
 
-                bool isCompressed = mod.Compression == Archive2.Compression.None;
+                //bool isCompressed = mod.Compression == Mod.ArchiveCompression.Compressed;
                 bool enabled = ManagedMods.Instance.isModEnabled(i);
 
                 var type = new ListViewItem.ListViewSubItem();
@@ -91,8 +91,8 @@ namespace Fo76ini
                 var rootDir = new ListViewItem.ListViewSubItem();
                 var frozen = new ListViewItem.ListViewSubItem();
                 var compressed = new ListViewItem.ListViewSubItem();
-                compressed.Text = isCompressed ? Translation.localizedStrings["no"] : Translation.localizedStrings["yes"];
-                compressed.ForeColor = isCompressed ? Color.Black : Color.DarkGreen;
+                //compressed.Text = isCompressed ? Translation.localizedStrings["yes"] : Translation.localizedStrings["no"];
+                //compressed.ForeColor = isCompressed ? Color.Black : Color.DarkGreen;
 
 
                 /*
@@ -152,7 +152,24 @@ namespace Fo76ini
                         break;
                     default:
                         format.Text = Translation.localizedStrings["modsTableFormatAutoDetect"];
-                        //format.ForeColor = Color.Black;
+                        format.ForeColor = Color.DarkGray;
+                        break;
+                }
+
+                // Archive compression
+                switch (mod.Compression)
+                {
+                    case Mod.ArchiveCompression.Compressed:
+                        compressed.Text = Translation.localizedStrings["yes"];
+                        compressed.ForeColor = Color.DarkGreen;
+                        break;
+                    case Mod.ArchiveCompression.Uncompressed:
+                        compressed.Text = Translation.localizedStrings["no"];
+                        compressed.ForeColor = Color.Black;
+                        break;
+                    default:
+                        compressed.Text = Translation.localizedStrings["modsTableFormatAutoDetect"];
+                        compressed.ForeColor = Color.DarkGray;
                         break;
                 }
 
@@ -319,6 +336,8 @@ namespace Fo76ini
         private void EnableUI()
         {
             this.tabControl1.Enabled = true;
+            this.pictureBoxModsLoadingGIF.Visible = false;
+            this.tabPageModsSettings.Enabled = true;
             this.buttonModsDeploy.Enabled = true;
             this.menuStrip1.Enabled = true;
             this.checkBoxDisableMods.Enabled = true;
@@ -330,6 +349,15 @@ namespace Fo76ini
             this.buttonModsDeploy.Enabled = false;
             this.menuStrip1.Enabled = false;
             this.checkBoxDisableMods.Enabled = false;
+        }
+
+        private void ShowLoadingUI()
+        {
+            DisableUI();
+            this.tabControl1.Enabled = true;
+            this.pictureBoxModsLoadingGIF.Visible = true;
+            this.tabControl1.SelectedIndex = 0;
+            this.tabPageModsSettings.Enabled = false;
         }
 
         public void ModDetailsFeedback(Mod changedMod)
@@ -386,7 +414,7 @@ namespace Fo76ini
             if (e.KeyCode == Keys.F1)
             {
                 // Open README
-                showREADMEToolStripMenuItem_Click(sender, e);
+                showGuideToolStripMenuItem_Click(sender, e);
             }
             else if (e.KeyCode == Keys.F5)
             {
@@ -832,18 +860,6 @@ namespace Fo76ini
             this.UpdateUI();
         }
 
-        // Tools > Repair *.dds files
-        private void repairddsFilesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult res = MsgBox.Get("modsRepairDDSQuestion").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (res == DialogResult.Yes)
-            {
-                Thread thread = new Thread(RepairDDSFiles);
-                thread.IsBackground = true;
-                thread.Start();
-            }
-        }
-
         // Tools > Archive2 > Open Archive2
         private void openArchive2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -860,11 +876,16 @@ namespace Fo76ini
         }
 
         // Help > Show README
-        private void showREADMEToolStripMenuItem_Click(object sender, EventArgs e)
+        private void showGuideToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/articles/40");
             // https://www.nexusmods.com/fallout76/mods/546
             // https://felisdiligens.github.io/Fo76ini/ManageMods.html
+        }
+
+        private void showREADMEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/mods/546");
         }
 
         // Help > Log files > Show modmanager.log.txt
@@ -1103,7 +1124,8 @@ namespace Fo76ini
 
         public void Deploy()
         {
-            Invoke(() => DisableUI());
+            Invoke(() => this.pictureBoxModsLoadingGIF.Visible = true);
+            Invoke(() => ShowLoadingUI());
             Invoke(() => ProgressBarContinuous(0));
             Invoke(() => Display("Deploying..."));
             ManagedMods.Instance.Deploy(
@@ -1116,6 +1138,7 @@ namespace Fo76ini
                         UpdateUI();
                         ProgressBarContinuous(100);
                         EnableUI();
+                        this.pictureBoxModsLoadingGIF.Visible = false;
 
                         if (success)
                         {
@@ -1134,50 +1157,6 @@ namespace Fo76ini
                     });
                 }
             );
-        }
-
-        private void RepairDDSFiles()
-        {
-            Invoke(() => DisableUI());
-            Invoke(() => ProgressBarContinuous(0));
-            Invoke(() => Display("Preparing..."));
-            ManagedMods.Instance.RepairDDSFiles(
-                (text, percent) => {
-                    Invoke(() => Display(text));
-                    Invoke(() => { if (percent >= 0) { ProgressBarContinuous(percent); } else { ProgressBarMarquee(); } });
-                },
-                (corruptFiles) => {
-                    Invoke(() => {
-                        ProgressBarContinuous(100);
-                        //DisplayAllDone();
-                        RepairDone(corruptFiles);
-                        EnableUI();
-                        MsgBox.Get("modsRepairDDSDone").Popup(MessageBoxIcon.Information);
-                    });
-                }
-            );
-        }
-
-        private void RepairDone(List<String> corruptFiles)
-        {
-            if (corruptFiles.Count > 0)
-            {
-                Log log = new Log(Log.GetFilePath("repair.log.txt"));
-                log.WriteLine($"Some textures couldn't be repaired:");
-                foreach (String path in corruptFiles)
-                    log.WriteLine(path);
-                log.WriteLine("");
-
-                this.labelModsDeploy.ForeColor = Color.Red;
-                this.labelModsDeploy.Text = $"{corruptFiles.Count} unrestorable files. See repair.log.txt";
-                this.labelModsDeploy.Visible = true;
-            }
-            else
-            {
-                this.labelModsDeploy.ForeColor = Color.Green;
-                this.labelModsDeploy.Text = "Repaired, done.";
-                this.labelModsDeploy.Visible = true;
-            }
         }
 
         private void Invoke(Action func)

@@ -89,7 +89,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(300, 130);
             this.Name = "Updater";
-            this.Text = "Updater";
+            this.Text = "Updater v2";
             this.Load += new System.EventHandler(this.Updater_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoading)).EndInit();
             this.ResumeLayout(false);

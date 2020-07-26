@@ -263,6 +263,19 @@ namespace Fo76ini
             };
         }
 
+        public void LinkInt(TrackBar slider, IniFile f, String section, String key, int defaultValue)
+        {
+            OnLoadUI.Add(() => {
+                slider.Value = Utils.Clamp(IniFiles.Instance.GetInt(f, section, key, defaultValue), Convert.ToInt32(slider.Minimum), Convert.ToInt32(slider.Maximum));
+            });
+            slider.ValueChanged += (object sender, EventArgs e) => {
+                if (f == IniFile.F76Custom && slider.Value == defaultValue)
+                    IniFiles.Instance.Remove(f, section, key);
+                else
+                    IniFiles.Instance.Set(f, section, key, Convert.ToInt32(slider.Value));
+            };
+        }
+
         public void LinkFloat(NumericUpDown num, IniFile f, String section, String key, float defaultValue)
         {
             OnLoadUI.Add(() => {

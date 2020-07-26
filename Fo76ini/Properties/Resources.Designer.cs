@@ -193,6 +193,16 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Gear_0_4s_200px {
+            get {
+                object obj = ResourceManager.GetObject("Gear_0_4s_200px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap help_24 {
             get {
                 object obj = ResourceManager.GetObject("help-24", resourceCulture);

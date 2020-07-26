@@ -211,4 +211,7 @@
   <data name="nexus-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nexus-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Gear_0_4s_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gear-0.4s-200px.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

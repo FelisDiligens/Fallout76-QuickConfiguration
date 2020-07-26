@@ -131,6 +131,19 @@
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
+            this.groupBoxCameraOptions = new System.Windows.Forms.GroupBox();
+            this.numCameraSwitchDelay = new System.Windows.Forms.NumericUpDown();
+            this.labelSwitchDelay = new System.Windows.Forms.Label();
+            this.groupBoxCameraDistance = new System.Windows.Forms.GroupBox();
+            this.numfPitchZoomOutMaxDist = new System.Windows.Forms.NumericUpDown();
+            this.sliderfPitchZoomOutMaxDist = new System.Windows.Forms.TrackBar();
+            this.labelPitchZoomOutMaxDist = new System.Windows.Forms.Label();
+            this.numCameraDistanceMaximum = new System.Windows.Forms.NumericUpDown();
+            this.numCameraDistanceMinimum = new System.Windows.Forms.NumericUpDown();
+            this.sliderCameraDistanceMaximum = new System.Windows.Forms.TrackBar();
+            this.labelCameraDistanceMaximum = new System.Windows.Forms.Label();
+            this.labelCameraDistanceMinimum = new System.Windows.Forms.Label();
+            this.sliderCameraDistanceMinimum = new System.Windows.Forms.TrackBar();
             this.groupBoxCameraPosition = new System.Windows.Forms.GroupBox();
             this.buttonCameraPositionCenter = new System.Windows.Forms.Button();
             this.buttonCameraPositionReset = new System.Windows.Forms.Button();
@@ -300,8 +313,9 @@
             this.groupBoxAudioInterface = new System.Windows.Forms.GroupBox();
             this.numConversationHistorySize = new System.Windows.Forms.NumericUpDown();
             this.labelConversationHistorySize = new System.Windows.Forms.Label();
-            this.tabPageScreenshots = new System.Windows.Forms.TabPage();
+            this.tabPageGallery = new System.Windows.Forms.TabPage();
             this.groupBoxGallery = new System.Windows.Forms.GroupBox();
+            this.pictureBoxGalleryLoadingGIF = new System.Windows.Forms.PictureBox();
             this.labelGalleryTip = new System.Windows.Forms.Label();
             this.listViewScreenshots = new System.Windows.Forms.ListView();
             this.groupBoxScreenshotOptions = new System.Windows.Forms.GroupBox();
@@ -333,9 +347,18 @@
             this.toolConfigurationFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolLanguagesFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolInstallationFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.steamScreenshotFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gamePhotosFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.editFallout76iniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editFallout76PrefsiniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editFallout76CustominiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonNexusMods = new System.Windows.Forms.ToolStripButton();
-            this.buttonGalleryOpenFolder = new System.Windows.Forms.Button();
+            this.backgroundWorkerLoadGallery = new System.ComponentModel.BackgroundWorker();
+            this.labelfDefaultFOV = new System.Windows.Forms.Label();
+            this.numfDefaultFOV = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
@@ -361,6 +384,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).BeginInit();
             this.tabPageCamera.SuspendLayout();
+            this.groupBoxCameraOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraSwitchDelay)).BeginInit();
+            this.groupBoxCameraDistance.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderfPitchZoomOutMaxDist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMaximum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMinimum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMaximum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMinimum)).BeginInit();
             this.groupBoxCameraPosition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCameraX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCameraZ)).BeginInit();
@@ -440,13 +472,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal3)).BeginInit();
             this.groupBoxAudioInterface.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).BeginInit();
-            this.tabPageScreenshots.SuspendLayout();
+            this.tabPageGallery.SuspendLayout();
             this.groupBoxGallery.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).BeginInit();
             this.groupBoxScreenshotOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numScreenshotIndex)).BeginInit();
             this.tabPageCustom.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).BeginInit();
             this.SuspendLayout();
             // 
             // toolTip
@@ -460,7 +494,7 @@
             this.checkBoxVanityMode.AutoSize = true;
             this.checkBoxVanityMode.Checked = true;
             this.checkBoxVanityMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxVanityMode.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxVanityMode.Location = new System.Drawing.Point(9, 22);
             this.checkBoxVanityMode.Name = "checkBoxVanityMode";
             this.checkBoxVanityMode.Size = new System.Drawing.Size(143, 17);
             this.checkBoxVanityMode.TabIndex = 3;
@@ -473,7 +507,7 @@
             this.checkBoxForceVanityMode.AutoSize = true;
             this.checkBoxForceVanityMode.Checked = true;
             this.checkBoxForceVanityMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxForceVanityMode.Location = new System.Drawing.Point(28, 42);
+            this.checkBoxForceVanityMode.Location = new System.Drawing.Point(28, 45);
             this.checkBoxForceVanityMode.Name = "checkBoxForceVanityMode";
             this.checkBoxForceVanityMode.Size = new System.Drawing.Size(137, 17);
             this.checkBoxForceVanityMode.TabIndex = 4;
@@ -486,9 +520,9 @@
             this.labelFirstPersonFOV.AutoSize = true;
             this.labelFirstPersonFOV.Location = new System.Drawing.Point(6, 21);
             this.labelFirstPersonFOV.Name = "labelFirstPersonFOV";
-            this.labelFirstPersonFOV.Size = new System.Drawing.Size(64, 13);
+            this.labelFirstPersonFOV.Size = new System.Drawing.Size(115, 13);
             this.labelFirstPersonFOV.TabIndex = 0;
-            this.labelFirstPersonFOV.Text = "First person:";
+            this.labelFirstPersonFOV.Text = "fDefault1stPersonFOV:";
             this.toolTip.SetToolTip(this.labelFirstPersonFOV, "Changes the field of view of the 1st person perspective.\r\n\r\nDefault: 80\r\nAffected" +
         " values: fDefault1stPersonFOV\r\nAffected files: Fallout76Custom.ini, Fallout76Pre" +
         "fs.ini");
@@ -498,9 +532,9 @@
             this.labelWorldFOV.AutoSize = true;
             this.labelWorldFOV.Location = new System.Drawing.Point(6, 47);
             this.labelWorldFOV.Name = "labelWorldFOV";
-            this.labelWorldFOV.Size = new System.Drawing.Size(69, 13);
+            this.labelWorldFOV.Size = new System.Drawing.Size(96, 13);
             this.labelWorldFOV.TabIndex = 1;
-            this.labelWorldFOV.Text = "Third person:";
+            this.labelWorldFOV.Text = "fDefaultWorldFOV:";
             this.toolTip.SetToolTip(this.labelWorldFOV, "Changes the field of view of the 3rd person perspective.\r\n\r\nDefault: 80\r\nAffected" +
         " values: fDefaultWorldFOV\r\nAffected files: Fallout76Custom.ini, Fallout76Prefs.i" +
         "ni");
@@ -510,12 +544,11 @@
             this.labelADSFOV.AutoSize = true;
             this.labelADSFOV.Location = new System.Drawing.Point(6, 73);
             this.labelADSFOV.Name = "labelADSFOV";
-            this.labelADSFOV.Size = new System.Drawing.Size(160, 13);
+            this.labelADSFOV.Size = new System.Drawing.Size(99, 13);
             this.labelADSFOV.TabIndex = 5;
-            this.labelADSFOV.Text = "Third person while aiming (ADS):";
-            this.toolTip.SetToolTip(this.labelADSFOV, "Changes the field of view of the 3rd person perspective.\r\n\r\nDefault: 80\r\nAffected" +
-        " values: fDefaultWorldFOV\r\nAffected files: Fallout76Custom.ini, Fallout76Prefs.i" +
-        "ni");
+            this.labelADSFOV.Text = "f3rdPersonAimFOV:";
+            this.toolTip.SetToolTip(this.labelADSFOV, "Changes the field of view of the 3rd person perspective while aiming.\r\n\r\nDefault:" +
+        " 50\r\nAffected values: f3rdPersonAimFOV\r\nAffected files: Fallout76Custom.ini");
             // 
             // labelPipboyColor
             // 
@@ -1740,6 +1773,8 @@
             // tabPageCamera
             // 
             this.tabPageCamera.AutoScroll = true;
+            this.tabPageCamera.Controls.Add(this.groupBoxCameraOptions);
+            this.tabPageCamera.Controls.Add(this.groupBoxCameraDistance);
             this.tabPageCamera.Controls.Add(this.groupBoxCameraPosition);
             this.tabPageCamera.Controls.Add(this.groupBoxFieldOfView);
             this.tabPageCamera.Controls.Add(this.groupBoxCameraVanity);
@@ -1750,6 +1785,197 @@
             this.tabPageCamera.TabIndex = 7;
             this.tabPageCamera.Text = "Camera";
             this.tabPageCamera.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxCameraOptions
+            // 
+            this.groupBoxCameraOptions.Controls.Add(this.numCameraSwitchDelay);
+            this.groupBoxCameraOptions.Controls.Add(this.labelSwitchDelay);
+            this.groupBoxCameraOptions.Location = new System.Drawing.Point(413, 323);
+            this.groupBoxCameraOptions.Name = "groupBoxCameraOptions";
+            this.groupBoxCameraOptions.Size = new System.Drawing.Size(433, 55);
+            this.groupBoxCameraOptions.TabIndex = 35;
+            this.groupBoxCameraOptions.TabStop = false;
+            this.groupBoxCameraOptions.Text = "Camera options";
+            // 
+            // numCameraSwitchDelay
+            // 
+            this.numCameraSwitchDelay.DecimalPlaces = 4;
+            this.numCameraSwitchDelay.Location = new System.Drawing.Point(304, 21);
+            this.numCameraSwitchDelay.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numCameraSwitchDelay.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            262144});
+            this.numCameraSwitchDelay.Name = "numCameraSwitchDelay";
+            this.numCameraSwitchDelay.Size = new System.Drawing.Size(120, 20);
+            this.numCameraSwitchDelay.TabIndex = 1;
+            this.numCameraSwitchDelay.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            // 
+            // labelSwitchDelay
+            // 
+            this.labelSwitchDelay.AutoSize = true;
+            this.labelSwitchDelay.Location = new System.Drawing.Point(9, 23);
+            this.labelSwitchDelay.Name = "labelSwitchDelay";
+            this.labelSwitchDelay.Size = new System.Drawing.Size(70, 13);
+            this.labelSwitchDelay.TabIndex = 0;
+            this.labelSwitchDelay.Text = "Switch delay:";
+            // 
+            // groupBoxCameraDistance
+            // 
+            this.groupBoxCameraDistance.Controls.Add(this.numfPitchZoomOutMaxDist);
+            this.groupBoxCameraDistance.Controls.Add(this.sliderfPitchZoomOutMaxDist);
+            this.groupBoxCameraDistance.Controls.Add(this.labelPitchZoomOutMaxDist);
+            this.groupBoxCameraDistance.Controls.Add(this.numCameraDistanceMaximum);
+            this.groupBoxCameraDistance.Controls.Add(this.numCameraDistanceMinimum);
+            this.groupBoxCameraDistance.Controls.Add(this.sliderCameraDistanceMaximum);
+            this.groupBoxCameraDistance.Controls.Add(this.labelCameraDistanceMaximum);
+            this.groupBoxCameraDistance.Controls.Add(this.labelCameraDistanceMinimum);
+            this.groupBoxCameraDistance.Controls.Add(this.sliderCameraDistanceMinimum);
+            this.groupBoxCameraDistance.Location = new System.Drawing.Point(413, 166);
+            this.groupBoxCameraDistance.Name = "groupBoxCameraDistance";
+            this.groupBoxCameraDistance.Size = new System.Drawing.Size(433, 151);
+            this.groupBoxCameraDistance.TabIndex = 34;
+            this.groupBoxCameraDistance.TabStop = false;
+            this.groupBoxCameraDistance.Text = "Camera distance";
+            // 
+            // numfPitchZoomOutMaxDist
+            // 
+            this.numfPitchZoomOutMaxDist.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfPitchZoomOutMaxDist.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numfPitchZoomOutMaxDist.Location = new System.Drawing.Point(350, 99);
+            this.numfPitchZoomOutMaxDist.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numfPitchZoomOutMaxDist.Name = "numfPitchZoomOutMaxDist";
+            this.numfPitchZoomOutMaxDist.Size = new System.Drawing.Size(74, 20);
+            this.numfPitchZoomOutMaxDist.TabIndex = 59;
+            this.numfPitchZoomOutMaxDist.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // sliderfPitchZoomOutMaxDist
+            // 
+            this.sliderfPitchZoomOutMaxDist.BackColor = System.Drawing.Color.White;
+            this.sliderfPitchZoomOutMaxDist.LargeChange = 50;
+            this.sliderfPitchZoomOutMaxDist.Location = new System.Drawing.Point(131, 101);
+            this.sliderfPitchZoomOutMaxDist.Maximum = 200;
+            this.sliderfPitchZoomOutMaxDist.Name = "sliderfPitchZoomOutMaxDist";
+            this.sliderfPitchZoomOutMaxDist.Size = new System.Drawing.Size(213, 45);
+            this.sliderfPitchZoomOutMaxDist.SmallChange = 10;
+            this.sliderfPitchZoomOutMaxDist.TabIndex = 58;
+            this.sliderfPitchZoomOutMaxDist.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderfPitchZoomOutMaxDist.Value = 100;
+            // 
+            // labelPitchZoomOutMaxDist
+            // 
+            this.labelPitchZoomOutMaxDist.AutoSize = true;
+            this.labelPitchZoomOutMaxDist.Location = new System.Drawing.Point(6, 106);
+            this.labelPitchZoomOutMaxDist.Name = "labelPitchZoomOutMaxDist";
+            this.labelPitchZoomOutMaxDist.Size = new System.Drawing.Size(119, 13);
+            this.labelPitchZoomOutMaxDist.TabIndex = 57;
+            this.labelPitchZoomOutMaxDist.Text = "fPitchZoomOutMaxDist:";
+            // 
+            // numCameraDistanceMaximum
+            // 
+            this.numCameraDistanceMaximum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numCameraDistanceMaximum.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numCameraDistanceMaximum.Location = new System.Drawing.Point(350, 51);
+            this.numCameraDistanceMaximum.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numCameraDistanceMaximum.Name = "numCameraDistanceMaximum";
+            this.numCameraDistanceMaximum.Size = new System.Drawing.Size(74, 20);
+            this.numCameraDistanceMaximum.TabIndex = 56;
+            this.numCameraDistanceMaximum.Value = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
+            // 
+            // numCameraDistanceMinimum
+            // 
+            this.numCameraDistanceMinimum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numCameraDistanceMinimum.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numCameraDistanceMinimum.Location = new System.Drawing.Point(350, 20);
+            this.numCameraDistanceMinimum.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numCameraDistanceMinimum.Name = "numCameraDistanceMinimum";
+            this.numCameraDistanceMinimum.Size = new System.Drawing.Size(74, 20);
+            this.numCameraDistanceMinimum.TabIndex = 55;
+            // 
+            // sliderCameraDistanceMaximum
+            // 
+            this.sliderCameraDistanceMaximum.BackColor = System.Drawing.Color.White;
+            this.sliderCameraDistanceMaximum.LargeChange = 200;
+            this.sliderCameraDistanceMaximum.Location = new System.Drawing.Point(131, 51);
+            this.sliderCameraDistanceMaximum.Maximum = 1000;
+            this.sliderCameraDistanceMaximum.Minimum = 100;
+            this.sliderCameraDistanceMaximum.Name = "sliderCameraDistanceMaximum";
+            this.sliderCameraDistanceMaximum.Size = new System.Drawing.Size(213, 45);
+            this.sliderCameraDistanceMaximum.SmallChange = 50;
+            this.sliderCameraDistanceMaximum.TabIndex = 54;
+            this.sliderCameraDistanceMaximum.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderCameraDistanceMaximum.Value = 150;
+            // 
+            // labelCameraDistanceMaximum
+            // 
+            this.labelCameraDistanceMaximum.AutoSize = true;
+            this.labelCameraDistanceMaximum.Location = new System.Drawing.Point(6, 58);
+            this.labelCameraDistanceMaximum.Name = "labelCameraDistanceMaximum";
+            this.labelCameraDistanceMaximum.Size = new System.Drawing.Size(54, 13);
+            this.labelCameraDistanceMaximum.TabIndex = 53;
+            this.labelCameraDistanceMaximum.Text = "Maximum:";
+            // 
+            // labelCameraDistanceMinimum
+            // 
+            this.labelCameraDistanceMinimum.AutoSize = true;
+            this.labelCameraDistanceMinimum.Location = new System.Drawing.Point(6, 27);
+            this.labelCameraDistanceMinimum.Name = "labelCameraDistanceMinimum";
+            this.labelCameraDistanceMinimum.Size = new System.Drawing.Size(51, 13);
+            this.labelCameraDistanceMinimum.TabIndex = 52;
+            this.labelCameraDistanceMinimum.Text = "Minimum:";
+            // 
+            // sliderCameraDistanceMinimum
+            // 
+            this.sliderCameraDistanceMinimum.BackColor = System.Drawing.Color.White;
+            this.sliderCameraDistanceMinimum.LargeChange = 20;
+            this.sliderCameraDistanceMinimum.Location = new System.Drawing.Point(131, 19);
+            this.sliderCameraDistanceMinimum.Maximum = 100;
+            this.sliderCameraDistanceMinimum.Name = "sliderCameraDistanceMinimum";
+            this.sliderCameraDistanceMinimum.Size = new System.Drawing.Size(213, 45);
+            this.sliderCameraDistanceMinimum.SmallChange = 10;
+            this.sliderCameraDistanceMinimum.TabIndex = 51;
+            this.sliderCameraDistanceMinimum.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // groupBoxCameraPosition
             // 
@@ -1965,6 +2191,8 @@
             // 
             // groupBoxFieldOfView
             // 
+            this.groupBoxFieldOfView.Controls.Add(this.numfDefaultFOV);
+            this.groupBoxFieldOfView.Controls.Add(this.labelfDefaultFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelADSFOV);
             this.groupBoxFieldOfView.Controls.Add(this.numADSFOV);
             this.groupBoxFieldOfView.Controls.Add(this.numWorldFOV);
@@ -1973,7 +2201,7 @@
             this.groupBoxFieldOfView.Controls.Add(this.labelFirstPersonFOV);
             this.groupBoxFieldOfView.Location = new System.Drawing.Point(413, 6);
             this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
-            this.groupBoxFieldOfView.Size = new System.Drawing.Size(433, 100);
+            this.groupBoxFieldOfView.Size = new System.Drawing.Size(433, 154);
             this.groupBoxFieldOfView.TabIndex = 21;
             this.groupBoxFieldOfView.TabStop = false;
             this.groupBoxFieldOfView.Text = "Field of View";
@@ -2001,7 +2229,7 @@
             this.numADSFOV.Size = new System.Drawing.Size(135, 20);
             this.numADSFOV.TabIndex = 4;
             this.numADSFOV.Value = new decimal(new int[] {
-            80,
+            50,
             0,
             0,
             0});
@@ -2066,9 +2294,9 @@
             // 
             this.groupBoxCameraVanity.Controls.Add(this.checkBoxForceVanityMode);
             this.groupBoxCameraVanity.Controls.Add(this.checkBoxVanityMode);
-            this.groupBoxCameraVanity.Location = new System.Drawing.Point(413, 112);
+            this.groupBoxCameraVanity.Location = new System.Drawing.Point(413, 384);
             this.groupBoxCameraVanity.Name = "groupBoxCameraVanity";
-            this.groupBoxCameraVanity.Size = new System.Drawing.Size(433, 68);
+            this.groupBoxCameraVanity.Size = new System.Drawing.Size(433, 74);
             this.groupBoxCameraVanity.TabIndex = 16;
             this.groupBoxCameraVanity.TabStop = false;
             this.groupBoxCameraVanity.Text = "Vanity (Spinning camera)";
@@ -3577,7 +3805,7 @@
             this.tabControl1.Controls.Add(this.tabPageControls);
             this.tabControl1.Controls.Add(this.tabPageCamera);
             this.tabControl1.Controls.Add(this.tabPagePipBoy);
-            this.tabControl1.Controls.Add(this.tabPageScreenshots);
+            this.tabControl1.Controls.Add(this.tabPageGallery);
             this.tabControl1.Controls.Add(this.tabPageCustom);
             this.tabControl1.Location = new System.Drawing.Point(12, 59);
             this.tabControl1.Multiline = true;
@@ -4010,23 +4238,24 @@
             this.labelConversationHistorySize.TabIndex = 60;
             this.labelConversationHistorySize.Text = "Conversation history size (number of rows):";
             // 
-            // tabPageScreenshots
+            // tabPageGallery
             // 
-            this.tabPageScreenshots.Controls.Add(this.groupBoxGallery);
-            this.tabPageScreenshots.Controls.Add(this.groupBoxScreenshotOptions);
-            this.tabPageScreenshots.Location = new System.Drawing.Point(4, 22);
-            this.tabPageScreenshots.Name = "tabPageScreenshots";
-            this.tabPageScreenshots.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageScreenshots.Size = new System.Drawing.Size(852, 464);
-            this.tabPageScreenshots.TabIndex = 10;
-            this.tabPageScreenshots.Text = "Screenshots";
-            this.tabPageScreenshots.UseVisualStyleBackColor = true;
+            this.tabPageGallery.Controls.Add(this.groupBoxGallery);
+            this.tabPageGallery.Controls.Add(this.groupBoxScreenshotOptions);
+            this.tabPageGallery.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGallery.Name = "tabPageGallery";
+            this.tabPageGallery.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGallery.Size = new System.Drawing.Size(852, 464);
+            this.tabPageGallery.TabIndex = 10;
+            this.tabPageGallery.Text = "Gallery";
+            this.tabPageGallery.UseVisualStyleBackColor = true;
             // 
             // groupBoxGallery
             // 
             this.groupBoxGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxGallery.Controls.Add(this.pictureBoxGalleryLoadingGIF);
             this.groupBoxGallery.Controls.Add(this.labelGalleryTip);
             this.groupBoxGallery.Controls.Add(this.listViewScreenshots);
             this.groupBoxGallery.Location = new System.Drawing.Point(6, 6);
@@ -4035,6 +4264,20 @@
             this.groupBoxGallery.TabIndex = 2;
             this.groupBoxGallery.TabStop = false;
             this.groupBoxGallery.Text = "Gallery";
+            // 
+            // pictureBoxGalleryLoadingGIF
+            // 
+            this.pictureBoxGalleryLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxGalleryLoadingGIF.Image = global::Fo76ini.Properties.Resources.Gear_0_4s_200px;
+            this.pictureBoxGalleryLoadingGIF.Location = new System.Drawing.Point(7, 21);
+            this.pictureBoxGalleryLoadingGIF.Name = "pictureBoxGalleryLoadingGIF";
+            this.pictureBoxGalleryLoadingGIF.Size = new System.Drawing.Size(530, 424);
+            this.pictureBoxGalleryLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxGalleryLoadingGIF.TabIndex = 3;
+            this.pictureBoxGalleryLoadingGIF.TabStop = false;
+            this.pictureBoxGalleryLoadingGIF.Visible = false;
             // 
             // labelGalleryTip
             // 
@@ -4046,7 +4289,7 @@
             this.labelGalleryTip.Name = "labelGalleryTip";
             this.labelGalleryTip.Size = new System.Drawing.Size(511, 39);
             this.labelGalleryTip.TabIndex = 2;
-            this.labelGalleryTip.Text = "Click \'Refresh gallery\' to display screenshots.";
+            this.labelGalleryTip.Text = "Click \'Refresh gallery\' to display screenshots and photos.";
             this.labelGalleryTip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listViewScreenshots
@@ -4065,7 +4308,6 @@
             // 
             this.groupBoxScreenshotOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxScreenshotOptions.Controls.Add(this.buttonGalleryOpenFolder);
             this.groupBoxScreenshotOptions.Controls.Add(this.sliderGalleryThumbnailSize);
             this.groupBoxScreenshotOptions.Controls.Add(this.labelGalleryThumbnailSize);
             this.groupBoxScreenshotOptions.Controls.Add(this.buttonRefreshGallery);
@@ -4085,12 +4327,12 @@
             this.sliderGalleryThumbnailSize.BackColor = System.Drawing.SystemColors.Window;
             this.sliderGalleryThumbnailSize.LargeChange = 1;
             this.sliderGalleryThumbnailSize.Location = new System.Drawing.Point(10, 83);
-            this.sliderGalleryThumbnailSize.Maximum = 16;
-            this.sliderGalleryThumbnailSize.Minimum = 4;
+            this.sliderGalleryThumbnailSize.Maximum = 5;
+            this.sliderGalleryThumbnailSize.Minimum = 1;
             this.sliderGalleryThumbnailSize.Name = "sliderGalleryThumbnailSize";
             this.sliderGalleryThumbnailSize.Size = new System.Drawing.Size(272, 45);
             this.sliderGalleryThumbnailSize.TabIndex = 61;
-            this.sliderGalleryThumbnailSize.Value = 7;
+            this.sliderGalleryThumbnailSize.Value = 1;
             this.sliderGalleryThumbnailSize.Scroll += new System.EventHandler(this.sliderGalleryThumbnailSize_Scroll);
             // 
             // labelGalleryThumbnailSize
@@ -4311,7 +4553,7 @@
             // 
             this.showUpdaterlogtxtToolStripMenuItem.Name = "showUpdaterlogtxtToolStripMenuItem";
             this.showUpdaterlogtxtToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
-            this.showUpdaterlogtxtToolStripMenuItem.Text = "Show updater.log.txt";
+            this.showUpdaterlogtxtToolStripMenuItem.Text = "Show update.log.txt";
             this.showUpdaterlogtxtToolStripMenuItem.Click += new System.EventHandler(this.showUpdaterlogtxtToolStripMenuItem_Click);
             // 
             // toolStripDropDownButtonExplore
@@ -4322,7 +4564,14 @@
             this.toolStripSeparator4,
             this.toolConfigurationFolderToolStripMenuItem,
             this.toolLanguagesFolderToolStripMenuItem,
-            this.toolInstallationFolderToolStripMenuItem});
+            this.toolInstallationFolderToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.steamScreenshotFolderToolStripMenuItem,
+            this.gamePhotosFolderToolStripMenuItem,
+            this.toolStripSeparator6,
+            this.editFallout76iniToolStripMenuItem,
+            this.editFallout76PrefsiniToolStripMenuItem,
+            this.editFallout76CustominiToolStripMenuItem});
             this.toolStripDropDownButtonExplore.Image = global::Fo76ini.Properties.Resources.folder_open;
             this.toolStripDropDownButtonExplore.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripDropDownButtonExplore.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -4372,6 +4621,51 @@
             this.toolInstallationFolderToolStripMenuItem.Text = "Tool installation folder";
             this.toolInstallationFolderToolStripMenuItem.Click += new System.EventHandler(this.toolInstallationFolderToolStripMenuItem_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(211, 6);
+            // 
+            // steamScreenshotFolderToolStripMenuItem
+            // 
+            this.steamScreenshotFolderToolStripMenuItem.Name = "steamScreenshotFolderToolStripMenuItem";
+            this.steamScreenshotFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.steamScreenshotFolderToolStripMenuItem.Text = "Steam screenshot folder";
+            this.steamScreenshotFolderToolStripMenuItem.Click += new System.EventHandler(this.steamScreenshotFolderToolStripMenuItem_Click);
+            // 
+            // gamePhotosFolderToolStripMenuItem
+            // 
+            this.gamePhotosFolderToolStripMenuItem.Name = "gamePhotosFolderToolStripMenuItem";
+            this.gamePhotosFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.gamePhotosFolderToolStripMenuItem.Text = "Game photos folder";
+            this.gamePhotosFolderToolStripMenuItem.Click += new System.EventHandler(this.gamePhotosFolderToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(211, 6);
+            // 
+            // editFallout76iniToolStripMenuItem
+            // 
+            this.editFallout76iniToolStripMenuItem.Name = "editFallout76iniToolStripMenuItem";
+            this.editFallout76iniToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.editFallout76iniToolStripMenuItem.Text = "Edit Fallout76.ini";
+            this.editFallout76iniToolStripMenuItem.Click += new System.EventHandler(this.editFallout76iniToolStripMenuItem_Click);
+            // 
+            // editFallout76PrefsiniToolStripMenuItem
+            // 
+            this.editFallout76PrefsiniToolStripMenuItem.Name = "editFallout76PrefsiniToolStripMenuItem";
+            this.editFallout76PrefsiniToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.editFallout76PrefsiniToolStripMenuItem.Text = "Edit Fallout76Prefs.ini";
+            this.editFallout76PrefsiniToolStripMenuItem.Click += new System.EventHandler(this.editFallout76PrefsiniToolStripMenuItem_Click);
+            // 
+            // editFallout76CustominiToolStripMenuItem
+            // 
+            this.editFallout76CustominiToolStripMenuItem.Name = "editFallout76CustominiToolStripMenuItem";
+            this.editFallout76CustominiToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.editFallout76CustominiToolStripMenuItem.Text = "Edit Fallout76Custom.ini";
+            this.editFallout76CustominiToolStripMenuItem.Click += new System.EventHandler(this.editFallout76CustominiToolStripMenuItem_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -4390,15 +4684,47 @@
             this.toolStripButtonNexusMods.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonNexusMods.Click += new System.EventHandler(this.toolStripButtonNexusMods_Click);
             // 
-            // buttonGalleryOpenFolder
+            // backgroundWorkerLoadGallery
             // 
-            this.buttonGalleryOpenFolder.Location = new System.Drawing.Point(10, 163);
-            this.buttonGalleryOpenFolder.Name = "buttonGalleryOpenFolder";
-            this.buttonGalleryOpenFolder.Size = new System.Drawing.Size(272, 23);
-            this.buttonGalleryOpenFolder.TabIndex = 63;
-            this.buttonGalleryOpenFolder.Text = "Open folder";
-            this.buttonGalleryOpenFolder.UseVisualStyleBackColor = true;
-            this.buttonGalleryOpenFolder.Click += new System.EventHandler(this.buttonGalleryOpenFolder_Click);
+            this.backgroundWorkerLoadGallery.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerLoadGallery_DoWork);
+            // 
+            // labelfDefaultFOV
+            // 
+            this.labelfDefaultFOV.AutoSize = true;
+            this.labelfDefaultFOV.Location = new System.Drawing.Point(6, 99);
+            this.labelfDefaultFOV.Name = "labelfDefaultFOV";
+            this.labelfDefaultFOV.Size = new System.Drawing.Size(68, 13);
+            this.labelfDefaultFOV.TabIndex = 6;
+            this.labelfDefaultFOV.Text = "fDefaultFOV:";
+            this.toolTip.SetToolTip(this.labelfDefaultFOV, "Default: 80\r\nAffected values: fDefaultFOV\r\nAffected files: Fallout76Custom.ini");
+            // 
+            // numfDefaultFOV
+            // 
+            this.numfDefaultFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfDefaultFOV.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numfDefaultFOV.Location = new System.Drawing.Point(289, 97);
+            this.numfDefaultFOV.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numfDefaultFOV.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numfDefaultFOV.Name = "numfDefaultFOV";
+            this.numfDefaultFOV.Size = new System.Drawing.Size(135, 20);
+            this.numfDefaultFOV.TabIndex = 7;
+            this.numfDefaultFOV.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
@@ -4438,6 +4764,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).EndInit();
             this.tabPageCamera.ResumeLayout(false);
+            this.groupBoxCameraOptions.ResumeLayout(false);
+            this.groupBoxCameraOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraSwitchDelay)).EndInit();
+            this.groupBoxCameraDistance.ResumeLayout(false);
+            this.groupBoxCameraDistance.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderfPitchZoomOutMaxDist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMaximum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMinimum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMaximum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMinimum)).EndInit();
             this.groupBoxCameraPosition.ResumeLayout(false);
             this.groupBoxCameraPosition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCameraX)).EndInit();
@@ -4551,8 +4888,9 @@
             this.groupBoxAudioInterface.ResumeLayout(false);
             this.groupBoxAudioInterface.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).EndInit();
-            this.tabPageScreenshots.ResumeLayout(false);
+            this.tabPageGallery.ResumeLayout(false);
             this.groupBoxGallery.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).EndInit();
             this.groupBoxScreenshotOptions.ResumeLayout(false);
             this.groupBoxScreenshotOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).EndInit();
@@ -4561,6 +4899,7 @@
             this.tabPageCustom.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4862,7 +5201,7 @@
         private System.Windows.Forms.NumericUpDown numHUDOpacity;
         private System.Windows.Forms.ComboBox comboBoxShowActiveEffectsOnHUD;
         private System.Windows.Forms.Label labelShowActiveEffectsOnHUD;
-        private System.Windows.Forms.TabPage tabPageScreenshots;
+        private System.Windows.Forms.TabPage tabPageGallery;
         private System.Windows.Forms.GroupBox groupBoxScreenshotOptions;
         private System.Windows.Forms.NumericUpDown numScreenshotIndex;
         private System.Windows.Forms.Label labelScreenshotIndex;
@@ -4872,7 +5211,30 @@
         private System.Windows.Forms.TrackBar sliderGalleryThumbnailSize;
         private System.Windows.Forms.Label labelGalleryThumbnailSize;
         private System.Windows.Forms.Label labelGalleryTip;
-        private System.Windows.Forms.Button buttonGalleryOpenFolder;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem editFallout76iniToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editFallout76PrefsiniToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editFallout76CustominiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem steamScreenshotFolderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gamePhotosFolderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.PictureBox pictureBoxGalleryLoadingGIF;
+        private System.Windows.Forms.GroupBox groupBoxCameraDistance;
+        private System.Windows.Forms.TrackBar sliderCameraDistanceMaximum;
+        private System.Windows.Forms.Label labelCameraDistanceMaximum;
+        private System.Windows.Forms.Label labelCameraDistanceMinimum;
+        private System.Windows.Forms.TrackBar sliderCameraDistanceMinimum;
+        private System.Windows.Forms.NumericUpDown numCameraDistanceMaximum;
+        private System.Windows.Forms.NumericUpDown numCameraDistanceMinimum;
+        private System.Windows.Forms.GroupBox groupBoxCameraOptions;
+        private System.Windows.Forms.NumericUpDown numCameraSwitchDelay;
+        private System.Windows.Forms.Label labelSwitchDelay;
+        private System.Windows.Forms.Label labelPitchZoomOutMaxDist;
+        private System.Windows.Forms.NumericUpDown numfPitchZoomOutMaxDist;
+        private System.Windows.Forms.TrackBar sliderfPitchZoomOutMaxDist;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerLoadGallery;
+        private System.Windows.Forms.NumericUpDown numfDefaultFOV;
+        private System.Windows.Forms.Label labelfDefaultFOV;
     }
 }
 

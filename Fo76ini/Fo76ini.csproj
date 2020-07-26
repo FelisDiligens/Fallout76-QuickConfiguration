@@ -61,12 +61,6 @@
     <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <HintPath>packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
     </Reference>
-    <Reference Include="Magick.NET-Q16-AnyCPU, Version=7.16.1.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
-      <HintPath>packages\Magick.NET-Q16-AnyCPU.7.16.1\lib\net40\Magick.NET-Q16-AnyCPU.dll</HintPath>
-    </Reference>
-    <Reference Include="Pfim, Version=0.9.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Pfim.0.9.1\lib\netstandard2.0\Pfim.dll</HintPath>
-    </Reference>
     <Reference Include="SharpCompress, Version=0.25.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
       <HintPath>packages\SharpCompress.0.25.0\lib\net46\SharpCompress.dll</HintPath>
     </Reference>
@@ -112,6 +106,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.Camera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Gallery.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Language.cs">
@@ -196,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\Gear-0.4s-200px.gif" />
     <None Include="Resources\nexus-24.png" />
     <None Include="Resources\help-24.png" />
     <None Include="Resources\available-updates-24.png" />
