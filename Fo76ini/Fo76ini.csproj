@@ -126,6 +126,9 @@
     <Compile Include="FormMods.Designer.cs">
       <DependentUpon>FormMods.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMods.Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormStartup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +196,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\arrow_left_black.png" />
+    <None Include="Resources\arrow_right_black.png" />
     <None Include="Resources\button_hover.png" />
     <None Include="Resources\button.png" />
     <None Include="Resources\Spinner-1s-24px-white.gif" />

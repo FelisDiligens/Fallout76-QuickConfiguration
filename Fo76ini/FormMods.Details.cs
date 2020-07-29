@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Fo76ini.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,24 +15,17 @@ using System.Windows.Forms;
 
 namespace Fo76ini
 {
-    public partial class FormModDetails : Form
+    public partial class FormMods : Form
     {
         private Mod changedMod;
-        private FormMods formMods;
 
         private bool isUpdatingUI = false;
         private bool bulk = false;
         private int modCount = 1;
 
-        public FormModDetails(FormMods formMods)
+        private void InitializeDetailControls()
         {
-            InitializeComponent();
-
-            this.formMods = formMods;
-
-            this.FormClosing += this.FormModDetails_FormClosing;
-
-            ComboBoxContainer.Add("ModInstallAs2", new ComboBoxContainer(
+            ComboBoxContainer.Add("ModInstallAs", new ComboBoxContainer(
                 this.comboBoxModInstallAs,
                 new String[] {
                     "Bundled *.ba2 archive",
@@ -39,7 +34,7 @@ namespace Fo76ini
                 }
             ));
 
-            ComboBoxContainer.Add("ModArchivePreset2", new ComboBoxContainer(
+            ComboBoxContainer.Add("ModArchivePreset", new ComboBoxContainer(
                 this.comboBoxModArchivePreset,
                 new String[] {
                     "-- Please select --",
@@ -49,12 +44,78 @@ namespace Fo76ini
                     "Sound FX / Music / Voice",                     /* Voice: *.fuz; Lip-Sync: *.lip; Sound FX: *.xwm; */
                 }
             ));
+
+            this.pictureBoxCollapseDetails.MouseEnter += new EventHandler((mouseSender, mouseEventArgs) =>
+            {
+                this.pictureBoxCollapseDetails.BackColor = Color.LightGray;
+                this.pictureBoxCollapseDetails.Cursor = Cursors.Hand;
+            });
+            this.pictureBoxCollapseDetails.MouseLeave += new EventHandler((mouseSender, mouseEventArgs) =>
+            {
+                this.pictureBoxCollapseDetails.BackColor = Color.Silver;
+                this.pictureBoxCollapseDetails.Cursor = Cursors.Hand;
+            });
+
+            CollapseAndHideSidePanel();
         }
 
-        public void UpdateUI(Mod mod = null, int modCount = -1)
+
+        /*
+            Side panel
+        */
+
+        private void pictureBoxCollapseDetails_Click(object sender, EventArgs e)
         {
+            if (this.panelModDetails.Visible)
+                buttonModDetailsCancel_Click(sender, e);
+                //CollapseSidePanel();
+            else
+                ExpandSidePanel();
+        }
+
+        private void CollapseAndHideSidePanel()
+        {
+            this.pictureBoxCollapseDetails.Visible = false;
+            this.panelModDetails.Visible = false;
+
+            int tabWidth = this.tabPageModOrder.Width;
+            this.listViewMods.Width = tabWidth - this.listViewMods.Location.X;
+        }
+
+        private void CollapseSidePanel()
+        {
+            this.pictureBoxCollapseDetails.Visible = true;
+            this.pictureBoxCollapseDetails.Image = Resources.arrow_left_black;
+            this.panelModDetails.Visible = false;
+
+            int tabWidth = this.tabPageModOrder.Width;
+            int buttonWidth = this.pictureBoxCollapseDetails.Width;
+            this.pictureBoxCollapseDetails.Location = new Point(tabWidth - buttonWidth, this.pictureBoxCollapseDetails.Location.Y);
+            this.listViewMods.Width = tabWidth - this.listViewMods.Location.X - buttonWidth + 1;
+        }
+
+        private void ExpandSidePanel()
+        {
+            this.pictureBoxCollapseDetails.Visible = true;
+            this.pictureBoxCollapseDetails.Image = Resources.arrow_right_black;
+            this.panelModDetails.Visible = true;
+
+            int tabWidth = this.tabPageModOrder.Width;
+            int buttonWidth = this.pictureBoxCollapseDetails.Width;
+            int panelWidth = this.panelModDetails.Width;
+            this.pictureBoxCollapseDetails.Location = new Point(tabWidth - panelWidth - buttonWidth + 1, this.pictureBoxCollapseDetails.Location.Y);
+            this.listViewMods.Width = tabWidth - this.listViewMods.Location.X - panelWidth - buttonWidth + 2;
+        }
+
+
+        /*
+         * Update UI:
+         */
+
+        public void UpdateSidePanel(Mod mod = null, int modCount = -1)
+        {
+            ExpandSidePanel();
             isUpdatingUI = true;
-            this.labelModDetailsStatus.Visible = false;
 
             if (mod != null)
                 this.changedMod = mod.CreateCopy();
@@ -64,7 +125,7 @@ namespace Fo76ini
                 this.bulk = true;
                 this.modCount = modCount;
             }
-            else if(modCount == 1)
+            else if (modCount == 1)
             {
                 this.bulk = false;
                 this.modCount = 1;
@@ -80,9 +141,9 @@ namespace Fo76ini
             this.checkBoxModDetailsEnabled.Checked = this.changedMod.isEnabled;
 
             if (this.modCount > 1)
-                this.Text = String.Format(Translation.localizedStrings["modDetailsTitleBulk"], this.modCount);
+                this.labelModTitle.Text = String.Format(Translation.localizedStrings["modDetailsTitleBulk"], this.modCount);
             else
-                this.Text = String.Format(Translation.localizedStrings["modDetailsTitle"], this.changedMod.Title);
+                this.labelModTitle.Text = this.changedMod.Title;
             this.textBoxModName.Text = this.changedMod.Title;
             this.textBoxModFolderName.Text = this.changedMod.ManagedFolder;
             this.textBoxModRootDir.Text = this.changedMod.RootFolder;
@@ -99,6 +160,7 @@ namespace Fo76ini
                     //this.textBoxModArchiveName.Text = "";
                     this.textBoxModArchiveName.Visible = false;
                     this.labelModArchiveName.Visible = false;
+                    this.buttonModDetailsSuggestArchiveName.Visible = false;
 
                     this.labelModUnfreeze.Visible = false;
                     this.buttonModUnfreeze.Visible = false;
@@ -123,6 +185,7 @@ namespace Fo76ini
 
                     this.textBoxModArchiveName.Text = this.changedMod.ArchiveName;
                     this.textBoxModArchiveName.Visible = true;
+                    this.buttonModDetailsSuggestArchiveName.Visible = true;
                     this.labelModArchiveName.Visible = true;
 
                     this.labelModInstallInto.Enabled = false;
@@ -135,6 +198,7 @@ namespace Fo76ini
                 case Mod.FileType.Loose:
                     this.comboBoxModInstallAs.SelectedIndex = 2;
                     this.textBoxModArchiveName.Visible = false;
+                    this.buttonModDetailsSuggestArchiveName.Visible = false;
                     this.labelModArchiveName.Visible = false;
                     this.comboBoxModArchivePreset.Visible = false;
                     this.labelModArchivePreset.Visible = false;
@@ -201,13 +265,13 @@ namespace Fo76ini
 
             /*this.separator1.Visible = !this.bulk;
             this.separator2.Visible = !this.bulk;*/
-            this.progressBar1.Visible = !this.bulk;
 
             this.labelModDetailsBulkFrozenModsWarning.Visible = this.bulk;
             if (this.bulk)
             {
                 this.labelModArchiveName.Visible = false;
                 this.textBoxModArchiveName.Visible = false;
+                this.buttonModDetailsSuggestArchiveName.Visible = false;
             }
 
             this.groupBoxModDetailsDetails.Visible = !this.bulk;
@@ -219,68 +283,6 @@ namespace Fo76ini
         {
             this.changedMod.ManagedFolder = ManagedMods.Instance.RenameManagedFolder(this.changedMod.ManagedFolder, this.textBoxModFolderName.Text);
         }
-
-
-
-        /*
-         * Event handler:
-         */
-
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            ControlPaint.DrawBorder(e.Graphics, this.panel1.ClientRectangle, Color.DarkGray, ButtonBorderStyle.Solid);
-        }
-
-        private void buttonModOpenFolder_Click(object sender, EventArgs e)
-        {
-            String path = this.changedMod.GetManagedPath();
-            if (Directory.Exists(path))
-                Utils.OpenExplorer(path);
-            else
-                MsgBox.Get("modDirNotExist").FormatText(path).Show(MessageBoxIcon.Error);
-        }
-
-
-
-        /*
-         * Close window, Cancel, OK, Apply:
-         */
-
-        private void FormModDetails_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                e.Cancel = true;
-
-                // Closing the window is treated like "Cancel":
-                this.buttonModDetailsCancel_Click(null, null);
-                //this.formMods.ModDetailsClosed();
-                //Hide();
-            }
-        }
-
-        private void buttonModDetailsOK_Click(object sender, EventArgs e)
-        {
-            UpdateModFolder();
-            this.formMods.ModDetailsFeedback(this.changedMod);
-            this.formMods.ModDetailsClosed();
-            Hide();
-        }
-
-        private void buttonModDetailsCancel_Click(object sender, EventArgs e)
-        {
-            this.formMods.ModDetailsClosed();
-            Hide();
-        }
-
-        private void buttonModDetailsApply_Click(object sender, EventArgs e)
-        {
-            UpdateModFolder();
-            this.formMods.ModDetailsFeedback(this.changedMod);
-        }
-
-
 
         /*
          * Properties changed:
@@ -304,10 +306,10 @@ namespace Fo76ini
                     this.changedMod.freeze = false;
                     break;
             }
-            UpdateUI();
+            UpdateSidePanel();
         }
 
-        private void comboBoxModArchiveFormat_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxModArchivePreset_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (isUpdatingUI)
                 return;
@@ -334,7 +336,7 @@ namespace Fo76ini
                     this.changedMod.Compression = Mod.ArchiveCompression.Uncompressed;
                     break;
             }
-            UpdateUI();
+            UpdateSidePanel();
         }
 
         private void buttonModPickRootDir_Click(object sender, EventArgs e)
@@ -371,14 +373,14 @@ namespace Fo76ini
             this.changedMod.isEnabled = this.checkBoxModDetailsEnabled.Checked;
         }
 
-        private void textBoxModFolderName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void checkBoxFreezeArchive_CheckedChanged(object sender, EventArgs e)
         {
             this.changedMod.freeze = this.checkBoxFreezeArchive.Checked;
+        }
+
+        private void textBoxModFolderName_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
 
@@ -388,25 +390,27 @@ namespace Fo76ini
 
         private void buttonModUnfreeze_Click(object sender, EventArgs e)
         {
-            this.labelModDetailsStatus.Visible = true;
-            this.labelModDetailsStatus.ForeColor = SystemColors.HotTrack;
             Thread thread = new Thread(() =>
             {
+                Invoke(() => ProgressBarMarquee());
+                //Invoke(() => Display("Unfreezing..."));
                 this.changedMod.Unfreeze(
                     (text, percent) =>
                     {
-                        Invoke(() => SetProgress(text, percent));
+                        Invoke(() => Display(text));
+                        //Invoke(() => ProgressBarContinuous(percent));
                     },
                     (success) =>
                     {
                         Invoke(() =>
                         {
-                            this.formMods.ModDetailsFeedback(this.changedMod);
-                            UpdateUI();
+                            Invoke(() => ProgressBarContinuous(100));
+                            this.ModDetailsFeedback(this.changedMod);
+                            UpdateSidePanel();
                             if (success)
-                                SetDone();
+                                DisplayAllDone();
                             else
-                                SetFailed();
+                                DisplayFailState();
                         });
                     }
                 );
@@ -415,41 +419,30 @@ namespace Fo76ini
             thread.Start();
         }
 
-        private void SetDone()
+        private void buttonModDetailsSuggestArchiveName_Click(object sender, EventArgs e)
         {
-            this.labelModDetailsStatus.Visible = true;
-            this.labelModDetailsStatus.ForeColor = Color.Green;
-            this.labelModDetailsStatus.Text = "Done.";
-            this.progressBar1.Value = 100;
-            this.progressBar1.Style = ProgressBarStyle.Continuous;
+            this.changedMod.ArchiveName = Utils.GetValidFileName(this.changedMod.Title, ".ba2");
+            this.textBoxModArchiveName.Text = this.changedMod.ArchiveName;
         }
 
-        private void SetFailed()
+        private void buttonModDetailsApply_Click(object sender, EventArgs e)
         {
-            this.labelModDetailsStatus.Visible = true;
-            this.labelModDetailsStatus.ForeColor = Color.Red;
-            this.labelModDetailsStatus.Text = "Failed.";
-            this.progressBar1.Value = 100;
-            this.progressBar1.Style = ProgressBarStyle.Continuous;
+            UpdateModFolder();
+            this.ModDetailsFeedback(this.changedMod);
         }
 
-        private void SetProgress(String text, int percent)
+        private void buttonModDetailsCancel_Click(object sender, EventArgs e)
         {
-            this.labelModDetailsStatus.Text = text;
-            if (percent >= 0)
-            {
-                this.progressBar1.Value = Utils.Clamp(percent, 0, 100);
-                this.progressBar1.Style = ProgressBarStyle.Continuous;
-            }
-            else
-            {
-                this.progressBar1.Style = ProgressBarStyle.Marquee;
-            }
+            this.ModDetailsClosed();
+            this.CollapseAndHideSidePanel();
         }
 
-        private void Invoke(Action func)
+        private void buttonModDetailsOK_Click(object sender, EventArgs e)
         {
-            this.labelModDetailsStatus.Invoke(func);
+            UpdateModFolder();
+            this.ModDetailsFeedback(this.changedMod);
+            this.ModDetailsClosed();
+            this.CollapseAndHideSidePanel();
         }
     }
 }

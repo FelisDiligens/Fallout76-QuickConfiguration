@@ -26,6 +26,7 @@ namespace Fo76ini
         public FormMods()
         {
             InitializeComponent();
+            InitializeDetailControls();
             formModDetails = new FormModDetails(this);
 
             // Game Edition
@@ -341,6 +342,8 @@ namespace Fo76ini
             this.buttonModsDeploy.Enabled = true;
             this.menuStrip1.Enabled = true;
             this.checkBoxDisableMods.Enabled = true;
+            this.listViewMods.Enabled = true;
+            this.toolStrip1.Enabled = true;
         }
 
         private void DisableUI()
@@ -349,6 +352,16 @@ namespace Fo76ini
             this.buttonModsDeploy.Enabled = false;
             this.menuStrip1.Enabled = false;
             this.checkBoxDisableMods.Enabled = false;
+        }
+
+        private void DisableUI_SidePanelOpen()
+        {
+            this.listViewMods.Enabled = false;
+            this.toolStrip1.Enabled = false;
+            this.buttonModsDeploy.Enabled = false;
+            this.checkBoxDisableMods.Enabled = false;
+            this.menuStrip1.Enabled = false;
+            this.tabPageModsSettings.Enabled = false;
         }
 
         private void ShowLoadingUI()
@@ -517,7 +530,8 @@ namespace Fo76ini
             }
 
             if (modCount == 1)
-                this.formModDetails.UpdateUI(ManagedMods.Instance.Mods[selectedIndex], 1);
+                UpdateSidePanel(ManagedMods.Instance.Mods[selectedIndex], 1);
+                //this.formModDetails.UpdateUI(ManagedMods.Instance.Mods[selectedIndex], 1);
             else
             {
                 Mod bulkMod = new Mod();
@@ -542,14 +556,16 @@ namespace Fo76ini
                     return;
                 }
                 else if (realModCount == 1)
-                    this.formModDetails.UpdateUI(fallbackMod != null ? fallbackMod : ManagedMods.Instance.Mods[selectedIndex], 1);
+                    UpdateSidePanel(fallbackMod != null ? fallbackMod : ManagedMods.Instance.Mods[selectedIndex], 1);
+                    //this.formModDetails.UpdateUI(fallbackMod != null ? fallbackMod : ManagedMods.Instance.Mods[selectedIndex], 1);
                 else
-                    this.formModDetails.UpdateUI(bulkMod, realModCount);
+                    UpdateSidePanel(bulkMod, realModCount);
+                    //this.formModDetails.UpdateUI(bulkMod, realModCount);
             }
 
-            DisableUI();
-            Utils.SetFormPosition(this.formModDetails, this.Location.X + (int)(this.Width / 2 - this.formModDetails.Width / 2), this.Location.Y + (int)(this.Height / 2 - this.formModDetails.Height / 2));
-            this.formModDetails.Show();
+            DisableUI_SidePanelOpen();
+            //Utils.SetFormPosition(this.formModDetails, this.Location.X + (int)(this.Width / 2 - this.formModDetails.Width / 2), this.Location.Y + (int)(this.Height / 2 - this.formModDetails.Height / 2));
+            //this.formModDetails.Show();
         }
 
         // Open mod folder:

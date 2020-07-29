@@ -1759,5 +1759,18 @@ namespace Fo76ini
                 pictureBox.Cursor = Cursors.Default;
             });
         }
+
+        private enum UITheme
+        {
+            Light,
+            Dark
+        }
+
+        private void ChangeTheme(UITheme theme)
+        {
+            Color control = SystemColors.Control;
+            Color window = SystemColors.Window;
+            Color windowText = SystemColors.WindowText;
+        }
     }
 }
