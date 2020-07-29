@@ -276,6 +276,13 @@ Affected values: fShadowDistance, fDirShadowDistance
 Affected files: Fallout76Prefs.ini
 </value>
   </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Amount of "segments" of lower-res shadows at a distance.
+A value of 1 forces the game to render only the lowest resolution shadows.
+
+Affected values: iDirShadowSplits
+Affected files: Fallout76Prefs.ini</value>
+  </data>
   <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>107, 17</value>
   </metadata>
@@ -299,6 +306,9 @@ NOTE: Your achievements will be disabled as well!</value>
   </metadata>
   <metadata name="backgroundWorkerLoadGallery.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1159, 17</value>
+  </metadata>
+  <metadata name="backgroundWorkerGetLatestVersion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1380, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>82</value>

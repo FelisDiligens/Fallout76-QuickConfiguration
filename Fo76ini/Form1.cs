@@ -11,6 +11,8 @@ using System.Globalization;
 using System.IO;
 using System.Diagnostics;
 using IniParser.Model;
+using System.Threading;
+using Fo76ini.Properties;
 
 namespace Fo76ini
 {
@@ -24,6 +26,8 @@ namespace Fo76ini
 
         private FormMods formMods;
         private bool formModsBackupCreated = false;
+
+        private RadioButton[] accountProfileRadioButtons;
 
         public static String OldAppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration");
         public static String AppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");
@@ -100,9 +104,11 @@ namespace Fo76ini
             ComboBoxContainer.Add("ShadowTextureResolution", new ComboBoxContainer(
                 this.comboBoxShadowTextureResolution,
                 new String[] {
+                    "512 = Potato",
                     "1024 = Low",
                     "2048 = High (default)",
-                    "4096 = Ultra"
+                    "4096 = Ultra",
+                    "8192 = Insane"
                 }
             ));
 
@@ -144,6 +150,15 @@ namespace Fo76ini
                 }
             ));
 
+            ComboBoxContainer.Add("iDirShadowSplits", new ComboBoxContainer(
+                this.comboBoxiDirShadowSplits,
+                new String[] {
+                    "1 - Low",
+                    "2 - High / Medium",
+                    "3 - Ultra"
+                }
+            ));
+
 
             // Disable scroll wheel on UI elements to prevent the user from accidentally changing values:
             PreventChangeOnMouseWheelForAllElements(this);
@@ -160,6 +175,8 @@ namespace Fo76ini
 
             // Event handler:
             this.FormClosing += this.Form1_FormClosing;
+
+            this.backgroundWorkerGetLatestVersion.RunWorkerCompleted += backgroundWorkerGetLatestVersion_RunWorkerCompleted;
         }
 
         // Winforms Double Buffering
@@ -260,6 +277,11 @@ namespace Fo76ini
             ManagedMods.Instance.Load();
             this.formMods.UpdateUI();
 
+            // Account profiles:
+            this.accountProfileRadioButtons = new RadioButton[] { this.radioButtonAccount1, this.radioButtonAccount2, this.radioButtonAccount3, this.radioButtonAccount4, this.radioButtonAccount5, this.radioButtonAccount6, this.radioButtonAccount7, this.radioButtonAccount8 };
+            foreach (RadioButton rbutton in this.accountProfileRadioButtons)
+                rbutton.CheckedChanged += new System.EventHandler(this.radioButtonAccount_CheckedChanged);
+
             // Setup UI:
             ColorIni2Ui();
             UpdateCameraPositionUI();
@@ -286,6 +308,8 @@ namespace Fo76ini
             }
 
             this.LoadGallery();
+
+            MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -298,53 +322,83 @@ namespace Fo76ini
             }
         }
 
-        private void CheckVersion(bool force = false)
+        private String latestVersion = null;
+        private void backgroundWorkerGetLatestVersion_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.labelConfigVersion.Text = VERSION;
-            /*using (StreamWriter f = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "VERSION")))
-                f.Write(VERSION);*/
-            IniFiles.Instance.Set(IniFile.Config, "General", "sVersion", VERSION);
-
-            if (!force && IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bIgnoreUpdates", false))
-            {
-                this.labelConfigVersion.ForeColor = Color.Black;
-                groupBoxUpdate.Visible = false;
-                return;
-            }
-
-            String latestVersion = VERSION;
+            //this.latestVersion = VERSION;
             try
             {
                 System.Net.WebClient wc = new System.Net.WebClient();
                 // wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.BypassCache);
                 byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/VERSION");
-                latestVersion = Encoding.UTF8.GetString(raw).Trim();
+                this.latestVersion = Encoding.UTF8.GetString(raw).Trim();
             }
             catch (System.Net.WebException exc)
             {
+                this.latestVersion = null;
+                return;
+            }
+        }
+
+        private void backgroundWorkerGetLatestVersion_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            this.pictureBoxSpinnerCheckForUpdates.Visible = false;
+
+            // Failed:
+            if (this.latestVersion == null)
+            {
                 this.labelConfigVersion.ForeColor = Color.Black;
-                groupBoxUpdate.Visible = false;
+                panelUpdate.Visible = false;
                 return;
             }
 
-            int cmp = Utils.CompareVersions(latestVersion, VERSION);
+            // Compare versions:
+            int cmp = Utils.CompareVersions(this.latestVersion, VERSION);
             if (cmp > 0)
             {
-                groupBoxUpdate.Visible = true;
+                // Update available:
+                panelUpdate.Visible = true;
                 labelNewVersion.Text = String.Format(Translation.localizedStrings["newVersionAvailable"], latestVersion);
                 labelNewVersion.ForeColor = Color.Crimson;
                 this.labelConfigVersion.ForeColor = Color.Red;
             }
             else if (cmp < 0)
             {
-                groupBoxUpdate.Visible = false;
+                // We're using a pre-release version:
+                panelUpdate.Visible = false;
                 this.labelConfigVersion.ForeColor = Color.DarkBlue;
             }
             else
             {
-                groupBoxUpdate.Visible = false;
+                // All good, latest version:
+                panelUpdate.Visible = false;
                 this.labelConfigVersion.ForeColor = Color.DarkGreen;
             }
+        }
+
+        private void CheckVersion(bool force = false)
+        {
+            if (this.backgroundWorkerGetLatestVersion.IsBusy)
+                return;
+
+            this.labelConfigVersion.Text = VERSION;
+            /*using (StreamWriter f = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "VERSION")))
+                f.Write(VERSION);*/
+            IniFiles.Instance.Set(IniFile.Config, "General", "sVersion", VERSION);
+
+            panelUpdate.Visible = false;
+
+            if (!force && IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bIgnoreUpdates", false))
+            {
+                this.labelConfigVersion.ForeColor = Color.Black;
+                return;
+            }
+
+            this.labelConfigVersion.ForeColor = Color.Gray;
+            this.pictureBoxSpinnerCheckForUpdates.Visible = true;
+
+            // Checking version in background:
+            this.backgroundWorkerGetLatestVersion.RunWorkerAsync();
         }
 
         private void AddAllEventHandler()
@@ -356,6 +410,7 @@ namespace Fo76ini
             UILoader.LinkSlider(this.sliderLODItems, this.numLODItems, 10);
             UILoader.LinkSlider(this.sliderLODActors, this.numLODActors, 10);
             UILoader.LinkSlider(this.sliderShadowDistance, this.numShadowDistance, 1);
+            UILoader.LinkSlider(this.sliderfBlendSplitDirShadow, this.numfBlendSplitDirShadow, 0.0833333);
             UILoader.LinkSlider(this.sliderMouseSensitivity, this.numMouseSensitivity, 10000.0);
             UILoader.LinkSlider(this.sliderTAAPostOverlay, this.numTAAPostOverlay, 100);
             UILoader.LinkSlider(this.sliderTAAPostSharpen, this.numTAAPostSharpen, 100);
@@ -443,6 +498,13 @@ namespace Fo76ini
             // Credentials
             uiLoader.LinkString(this.textBoxUserName, IniFile.F76Custom, "Login", "s76UserName", "");
             uiLoader.LinkString(this.textBoxPassword, IniFile.F76Custom, "Login", "s76Password", "");
+
+            uiLoader.LinkList(
+                this.accountProfileRadioButtons,
+                new String[] { "1", "2", "3", "4", "5", "6", "7", "8" },
+                IniFile.Config, "Login", "uActiveAccountProfile",
+                "1"
+            );
 
             // Disable Steam:
             uiLoader.LinkBoolNegated(this.checkBoxDisableSteam, IniFile.F76Custom, "General", "bSteamEnabled", true);
@@ -532,7 +594,7 @@ namespace Fo76ini
             uiLoader.LinkList(
                 this.comboBoxShowActiveEffectsOnHUD,
                 new String[] { "0", "1", "2" },
-                IniFile.Config, "Interface", "uHUDActiveEffectWidget",
+                IniFile.F76Prefs, "Interface", "uHUDActiveEffectWidget",
                 "2", 2
             );
 
@@ -772,7 +834,7 @@ namespace Fo76ini
 
             // Shadows / Texture map resolution
             uiLoader.LinkList(this.comboBoxShadowTextureResolution,
-                new String[] { "1024", "2048", "4096" },
+                new String[] { "512", "1024", "2048", "4096", "8192" },
                 IniFile.F76Prefs, "Display", "iShadowMapResolution",
                 "2048", 1);
 
@@ -780,6 +842,12 @@ namespace Fo76ini
             uiLoader.LinkList(this.comboBoxShadowBlurriness,
                 new String[] { "1", "2", "3" },
                 IniFile.F76Prefs, "Display", "uiOrthoShadowFilter",
+                "3", 2);
+
+            // Amount of shadow "segments": iDirShadowSplits
+            uiLoader.LinkList(this.comboBoxiDirShadowSplits,
+                new String[] { "1", "2", "3" },
+                IniFile.F76Prefs, "Display", "iDirShadowSplits",
                 "3", 2);
 
             // Shadow / Shadow distance
@@ -1414,6 +1482,11 @@ namespace Fo76ini
             //Environment.Exit(0);
         }
 
+        private void pictureBoxUpdateButton_Click(object sender, EventArgs e)
+        {
+            buttonUpdateNow_Click(sender, e);
+        }
+
         private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
         {
             IniFiles.Instance.Set(IniFile.Config, "Preferences", "bIgnoreUpdates", this.checkBoxIgnoreUpdates.Checked);
@@ -1614,6 +1687,77 @@ namespace Fo76ini
                 photosFolder = Directory.GetDirectories(photosFolder)[0];
                 Utils.OpenExplorer(photosFolder);
             }
+        }
+
+        private int GetSelectedAccountProfile()
+        {
+            int index = 0;
+            foreach (RadioButton rbutton in this.accountProfileRadioButtons)
+            {
+                if (rbutton.Checked)
+                    break;
+                index++;
+            }
+            if (index >= this.accountProfileRadioButtons.Length)
+                index = 0;
+            return index;
+        }
+
+        private void textBoxUserName_TextChanged(object sender, EventArgs e)
+        {
+            int index = GetSelectedAccountProfile();
+            if (this.textBoxUserName.Text == "")
+                IniFiles.Instance.Remove(IniFile.Config, "Login", $"s76UserName{index + 1}");
+            else
+                IniFiles.Instance.Set(IniFile.Config, "Login", $"s76UserName{index + 1}", this.textBoxUserName.Text);
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+            int index = GetSelectedAccountProfile();
+            if (this.textBoxPassword.Text == "")
+                IniFiles.Instance.Remove(IniFile.Config, "Login", $"s76Password{index + 1}");
+            else
+                IniFiles.Instance.Set(IniFile.Config, "Login", $"s76Password{index + 1}", this.textBoxPassword.Text);
+        }
+
+        private void radioButtonAccount_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = GetSelectedAccountProfile();
+
+            //IniFiles.Instance.Set(IniFile.Config, "Login", "uActiveAccountProfile", index);
+
+            this.textBoxUserName.Text = IniFiles.Instance.GetString(IniFile.Config, "Login", $"s76UserName{index + 1}", "");
+            this.textBoxPassword.Text = IniFiles.Instance.GetString(IniFile.Config, "Login", $"s76Password{index + 1}", "");
+        }
+
+        private void MakePictureBoxButton(PictureBox pictureBox, String localizedStringID)
+        {
+            pictureBox.Paint += new PaintEventHandler((paintSender, paintEventArgs) =>
+            {
+                paintEventArgs.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                string text = Translation.localizedStrings[localizedStringID];
+
+                Font font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+
+                SizeF textSize = paintEventArgs.Graphics.MeasureString(text, font);
+                PointF locationToDraw = new PointF();
+                locationToDraw.X = (pictureBox.Width / 2) - (textSize.Width / 2);
+                locationToDraw.Y = (pictureBox.Height / 2) - (textSize.Height / 2);
+
+                paintEventArgs.Graphics.DrawString(text, font, Brushes.White, locationToDraw);
+            });
+            pictureBox.MouseEnter += new EventHandler((mouseSender, mouseEventArgs) =>
+            {
+                pictureBox.Image = Resources.button_hover;
+                pictureBox.Cursor = Cursors.Hand;
+            });
+            pictureBox.MouseLeave += new EventHandler((mouseSender, mouseEventArgs) =>
+            {
+                pictureBox.Image = Resources.button;
+                pictureBox.Cursor = Cursors.Default;
+            });
         }
     }
 }

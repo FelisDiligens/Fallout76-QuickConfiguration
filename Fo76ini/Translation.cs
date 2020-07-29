@@ -17,6 +17,7 @@ namespace Fo76ini
         static Translation()
         {
             localizedStrings["newVersionAvailable"] = "There is a newer version available: {0}";
+            localizedStrings["updateNowButton"] = "Update now!"; 
             localizedStrings["modsDeploymentNecessary"] = "Deployment necessary";
             localizedStrings["modsAllDone"] = "All set";
             localizedStrings["modsFailed"] = "Something went wrong, see log files for details.";
