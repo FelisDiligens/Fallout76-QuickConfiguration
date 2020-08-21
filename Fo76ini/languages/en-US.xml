@@ -4,9 +4,10 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.7.1">
+<Language name="English (USA)" iso="en-US" version="1.8">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
+    <String text="Update now!" id="updateNowButton" />
     <String text="Deployment necessary" id="modsDeploymentNecessary" />
     <String text="All set" id="modsAllDone" />
     <String text="Something went wrong, see log files for details." id="modsFailed" />
@@ -18,11 +19,18 @@
     <String text="Separate (Frozen)" id="modsTableTypeSeparateFrozen" />
     <String text="Loose" id="modsTableTypeLoose" />
     <String text="Pending" id="modTableFrozenPending" />
-    <String text="Edit {0}" id="modDetailsTitle" />
-    <String text="Edit {0} mods" id="modDetailsTitleBulk" />
+    <String text="{0} mods selected" id="modDetailsTitleBulkSelected" />
+    <String text="in {0} hour(s) and {1} minute(s)" id="nmResetTime" />
+    <String text="Never" id="nmResetTimeNever" />
+    <String text="{0} left" id="nmRateLimitLeft" />
+    <String text="Basic" id="nmBasicAccount" />
+    <String text="Supporter" id="nmSupporterAccount" />
+    <String text="Premium" id="nmPremiumAccount" />
     <String text="N/A" id="notApplicable" />
     <String text="Yes" id="yes" />
     <String text="No" id="no" />
+    <String text="Valid" id="valid" />
+    <String text="Invalid" id="invalid" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -62,27 +70,61 @@
       <Option>16x</Option>
     </Dropdown>
     <Dropdown id="ShadowTextureResolution">
+      <Option>512 = Potato</Option>
       <Option>1024 = Low</Option>
       <Option>2048 = High (default)</Option>
       <Option>4096 = Ultra</Option>
+      <Option>8192 = Insane</Option>
     </Dropdown>
     <Dropdown id="ShadowBlurriness">
       <Option>1x</Option>
       <Option>2x</Option>
       <Option>3x = Default, recommended</Option>
     </Dropdown>
+    <Dropdown id="Files">
+      <Option>Fallout76.ini</Option>
+      <Option>Fallout76Prefs.ini</Option>
+      <Option>Fallout76Custom.ini</Option>
+    </Dropdown>
+    <Dropdown id="VoiceChatMode">
+      <Option>Auto</Option>
+      <Option>Area</Option>
+      <Option>Team</Option>
+      <Option>None</Option>
+    </Dropdown>
+    <Dropdown id="ShowActiveEffectsOnHUD">
+      <Option>Disabled</Option>
+      <Option>Detrimental</Option>
+      <Option>All</Option>
+    </Dropdown>
+    <Dropdown id="iDirShadowSplits">
+      <Option>1 - Low</Option>
+      <Option>2 - High / Medium</Option>
+      <Option>3 - Ultra</Option>
+    </Dropdown>
     <Dropdown id="ModInstallAs">
       <Option>Bundled *.ba2 archive</Option>
       <Option>Separate *.ba2 archive</Option>
       <Option>Loose files</Option>
     </Dropdown>
-    <Dropdown id="ModArchiveFormat">
+    <Dropdown id="ModArchivePreset">
+      <Option>-- Please select --</Option>
       <Option>Auto-detect</Option>
-      <Option>General</Option>
+      <Option>General / Interface / Materials / Animations</Option>
       <Option>Textures (*.dds files)</Option>
+      <Option>Sound FX / Music / Voice</Option>
     </Dropdown>
   </Dropdowns>
   <Messageboxes>
+    <Messagebox title="Couldn't parse *.ini files" id="iniParsingError">At least one of the game's *.ini files is corrupted or contains a syntax error.
+
+You might:
+    -&gt; read the error message and fix the error or
+    -&gt; delete the invalid *.ini file and start Fallout 76 to create a new, valid *.ini file
+    -&gt; and then try again.
+
+ERROR MESSAGE:
+{0}</Messagebox>
     <Messagebox title="Backup and save" id="backupAndSave">Do you want to create a backup before applying all changes?
 
     Press "Yes" to create a backup and save.
@@ -108,6 +150,13 @@ Some UI elements might not be functioning correctly.
 {0}</Messagebox>
     <Messagebox title="Do you want to switch?" id="msstoreRestartRequired">Switching to or from the Microsoft Store edition requires a restart of the tool.</Messagebox>
     <Messagebox title="Couldn't launch game: {0}" id="msstoreRunExecutableFailed">Unfortunately, it's not possible to launch the executable directly due to "security" restrictions. Thanks Microsoft, we hate it. :(</Messagebox>
+    <Messagebox title="Couldn't add your custom *.ini tweaks" id="customIniFilesParsingError">At least one of your custom *.ini files contains an error.
+{0}</Messagebox>
+    <Messagebox title="Display resolution might be too low" id="displayResolutionTooLow">Your display resolution is not supported.
+The windows might be to big to fit on screen.
+Your display size: {0}
+Minimum display size: {1}
+Recommended display size: 1920 x 1080</Messagebox>
     <Messagebox title="Done" id="modsDisabledDone">Mods have been disabled and removed from the game.</Messagebox>
     <Messagebox title="Done" id="modsDeployedDone">Mods are deployed.</Messagebox>
     <Messagebox title="Something went wrong" id="modsDeploymentFailed">Mods might not be deployed.
@@ -148,154 +197,468 @@ Are you sure you want to continue?</Messagebox>
     <Messagebox title="Done" id="modsRepairDDSDone">*.dds files have been repaired.</Messagebox>
     <Messagebox title="Access denied" id="modsAccessDenied">{0}
 Please start the tool as admin and try again.</Messagebox>
+    <Messagebox title="Would you like to repack bundled archives?" id="modsRepackFrozenBundledArchives">There are frozen bundled archives available. Would you like to repack bundled archives again?
+
+   Yes - I made changes to my mod list and would like to repack my bundled archives again. (slow)
+
+   No  - I didn't make changes, please deploy my frozen bundled archives. (quick)</Messagebox>
     <Messagebox title="Mods are still deployed" id="nwModeEnabledButModsAreDeployed">You've enabled the Nuclear Winter mode, but your mods are still deployed.
 Do you want to disable them now?</Messagebox>
     <Messagebox title="Do you want to re-enable your mods again?" id="nwModeDisabledAndModsAreStillDisabled">You've disabled the Nuclear Winter mode, but your mods are still disabled.
 Do you want to deploy them now?</Messagebox>
+    <Messagebox title="Mod information updated" id="nexusModsRemoteInfoRefreshedSuccess">Mod information updated and thumbnails downloaded.</Messagebox>
+    <Messagebox title="Failed" id="nexusModsProfileRefreshFailed">Couldn't update your profile:
+{0}</Messagebox>
+    <Messagebox title="Are you sure?" id="nexusModsDeleteThumbnails">Do you really want to delete all thumbnails?</Messagebox>
+    <Messagebox title="Done" id="nexusModsDeleteThumbnailsSuccess">Thumbnails deleted.</Messagebox>
+    <Messagebox title="Something went wrong" id="nexusModsDeleteThumbnailsFailed">Thumbnails couldn't be deleted.
+Try again later.</Messagebox>
+    <Messagebox title="Are you sure?" id="nexusModsRemoveProfile">Do you really want to remove your profile from the mod manager?</Messagebox>
+    <Messagebox title="Done" id="nexusModsRemoveProfileSuccess">Profile removed.</Messagebox>
+    <Messagebox title="Are you sure?" id="nexusModsRemoveRemoteInfo">Do you really want to remove mod information?</Messagebox>
+    <Messagebox title="Done" id="nexusModsRemoveRemoteInfoSuccess">Mod information removed.</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Quick Configuration">
-    <Button text="Manage mods" id="buttonManageMods" />
-    <Button text="Launch game" id="buttonLaunchGame" />
-    <Button text="Apply" id="buttonApply" />
-    <TabContainer id="tabControl1">
-      <Tab text="Info" id="tabPageInfo">
-        <Group text="Update available" id="groupBoxUpdate">
-          <Button text="Update now!" id="buttonUpdateNow" />
-          <Link text="Or download and install manually..." id="linkLabelManualDownloadPage" />
-        </Group>
+    <ToolStrip id="toolStrip1">
+      <ToolStripButton text="Apply" id="toolStripButtonApply" />
+      <ToolStripButton text="Launch" id="toolStripButtonLaunchGame" />
+      <ToolStripSeparator text="" id="toolStripSeparator1" />
+      <ToolStripButton text="Mods" id="toolStripButtonManageMods" />
+      <ToolStripSeparator text="" id="toolStripSeparator2" />
+      <ToolStripSplitButton text="Update" id="toolStripSplitButtonUpdate">
+        <ToolStripMenuItem text="Update tool" id="updateToolToolStripMenuItem" />
+        <ToolStripMenuItem text="Check for updates" id="checkForUpdatesToolStripMenuItem" />
+        <ToolStripMenuItem text="Download / update language files" id="downloadUpdateLanguageFilesToolStripMenuItem" />
+        <ToolStripMenuItem text="Show update.log.txt" id="showUpdaterlogtxtToolStripMenuItem" />
+      </ToolStripSplitButton>
+      <ToolStripDropDownButton text="Explore" id="toolStripDropDownButtonExplore">
+        <ToolStripMenuItem text="Game installation folder" id="gameFolderToolStripMenuItem" />
+        <ToolStripMenuItem text="Game configuration folder" id="gamesConfigurationFolderToolStripMenuItem" />
+        <ToolStripSeparator text="" id="toolStripSeparator4" />
+        <ToolStripMenuItem text="Tool configuration folder" id="toolConfigurationFolderToolStripMenuItem" />
+        <ToolStripMenuItem text="Tool languages folder" id="toolLanguagesFolderToolStripMenuItem" />
+        <ToolStripMenuItem text="Tool installation folder" id="toolInstallationFolderToolStripMenuItem" />
+        <ToolStripSeparator text="" id="toolStripSeparator5" />
+        <ToolStripMenuItem text="Steam screenshot folder" id="steamScreenshotFolderToolStripMenuItem" />
+        <ToolStripMenuItem text="Game photos folder" id="gamePhotosFolderToolStripMenuItem" />
+        <ToolStripSeparator text="" id="toolStripSeparator6" />
+        <ToolStripMenuItem text="Edit Fallout76.ini" id="editFallout76iniToolStripMenuItem" />
+        <ToolStripMenuItem text="Edit Fallout76Prefs.ini" id="editFallout76PrefsiniToolStripMenuItem" />
+        <ToolStripMenuItem text="Edit Fallout76Custom.ini" id="editFallout76CustominiToolStripMenuItem" />
+      </ToolStripDropDownButton>
+      <ToolStripSeparator text="" id="toolStripSeparator3" />
+      <ToolStripButton text="NexusMods" id="toolStripButtonNexusMods" />
+    </ToolStrip>
+    <TabControl id="tabControl1">
+      <TabPage text="Info" id="tabPageInfo">
+        <Panel id="panelUpdate">
+          <LinkLabel text="Or download and install manually..." id="linkLabelManualDownloadPage" />
+        </Panel>
+        <Panel id="panel1">
+          <GroupBox text="Localization" id="groupBoxLocalization">
+            <Label text="This language is out-dated.\nSome elements might not be translated yet." id="labelOutdatedLanguage" />
+            <Label text="Language:" id="labelLanguage" />
+            <Button text="Download / update language files" id="buttonDownloadLanguages" />
+          </GroupBox>
+          <GroupBox text="Game edition" id="groupBoxGameEdition">
+            <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
+            <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
+            <RadioButton text="Steam" id="radioButtonEditionSteam" />
+            <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+          </GroupBox>
+          <GroupBox text="Launch options" id="groupBoxLaunchOptions">
+            <Label text="Fallout 76 cannot be run directly, if installed through the Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
+            <Label text="Tip: Enter your login credentials under the &quot;General&quot; tab." id="labelLaunchOptionTip" />
+            <RadioButton text="Run &quot;Fallout76.exe&quot; directly" id="radioButtonLaunchViaExecutable" />
+            <RadioButton text="Launch via Steam / Bethesda.net / MS Store (recommended)" id="radioButtonLaunchViaLink" />
+          </GroupBox>
+          <GroupBox text="Paths" id="groupBoxGamePaths">
+            <Label text="Game location:" id="labelGamePath" />
+            <Button text="..." id="buttonPickGamePath" />
+          </GroupBox>
+          <GroupBox text="Options" id="groupBoxOptions">
+            <CheckBox text="[Experimental] Deny NTFS write permission." id="checkBoxDenyNTFSWritePermission">
+              <Tooltip>This will deny write permission to the "Fallout 76" folder.
+Use this, if the read-only option doesn't work.
+
+Affected folder: %UserProfile%\Documents\My Games\Fallout 76</Tooltip>
+            </CheckBox>
+            <CheckBox text="I use more than one game edition." id="checkBoxMultipleGameEditionsUsed">
+              <Tooltip>Check this, if you're modding more than one game edition.
+If checked, sResourceIndexFileList will be saved for every game edition separately.</Tooltip>
+            </CheckBox>
+            <CheckBox text="Nuclear Winter Mode" id="checkBoxNWMode">
+              <Tooltip>Renames Fallout76Custom.ini, disables mods (if desired), renames *.dll files (if desired).</Tooltip>
+            </CheckBox>
+            <CheckBox text="Make *.ini files read-only" id="checkBoxReadOnly">
+              <Tooltip>This option will make all *.ini files read-only immediately.
+Enable this if your settings get reverted.
+
+Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
+            </CheckBox>
+          </GroupBox>
+          <GroupBox text="Behavior" id="groupBoxBehavior">
+            <CheckBox text="Don't check for updates." id="checkBoxIgnoreUpdates" />
+            <CheckBox text="Open mod manager on startup." id="checkBoxOpenManageModsOnLaunch" />
+            <CheckBox text="Close the tool when the game is launched" id="checkBoxQuitOnGameLaunch">
+              <Tooltip>Does only work when the game is launched through the tool.</Tooltip>
+            </CheckBox>
+            <CheckBox text="Don't ask me, when &quot;Apply&quot; is clicked." id="checkBoxSkipBackupQuestion">
+              <Tooltip>Skips the backup question when "Apply" is clicked.
+Note: This way, it will NOT create a backup!</Tooltip>
+            </CheckBox>
+            <CheckBox text="Automatically apply changes when tool is closed or game is launched." id="checkBoxAutoApply">
+              <Tooltip>No need to press apply anymore.</Tooltip>
+            </CheckBox>
+          </GroupBox>
+        </Panel>
         <Label text="Translation by:" id="labelTranslationBy" />
         <Label text="Author:" id="labelAuthor" />
         <Label text="Version:" id="labelVersion" />
         <Label text="This tool allows you to quickly tweak INI settings.\nTip: Hover over an option, if you're unsure what it does." id="labelDescription" />
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
-      </Tab>
-      <Tab text="Settings" id="tabPageSettings">
-        <Button text="Open configuration folder" id="buttonOpenConfigPath" />
-        <Group text="Launch options" id="groupBoxLaunchOptions">
-          <Label text="Fallout 76 cannot be run directly, if installed through the Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
-          <Label text="Tip: Enter your login credentials under the &quot;General&quot; tab." id="labelLaunchOptionTip" />
-          <Radiobutton text="Run &quot;Fallout76.exe&quot; directly" id="radioButtonLaunchViaExecutable" />
-          <Radiobutton text="Launch via Steam / Bethesda.net / MS Store (recommended)" id="radioButtonLaunchViaLink" />
-        </Group>
-        <Group text="Paths" id="groupBoxGamePaths">
-          <Label text="Game location:" id="labelGamePath" />
-          <Button text="..." id="buttonPickGamePath" />
-        </Group>
-        <Button text="Force auto-update" id="buttonForceUpdate" />
-        <Group text="Behavior" id="groupBoxBehavior">
-          <Checkbox text="Don't check for updates." id="checkBoxIgnoreUpdates" />
-          <Checkbox text="Open mod manager on startup." id="checkBoxOpenManageModsOnLaunch" />
-          <Checkbox text="Close the tool when the game is launched" id="checkBoxQuitOnGameLaunch">
-            <Tooltip>Does only work when the game is launched through the tool.</Tooltip>
-          </Checkbox>
-          <Checkbox text="Don't ask me, when &quot;Apply&quot; is clicked." id="checkBoxSkipBackupQuestion">
-            <Tooltip>Skips the backup question when "Apply" is clicked.
-Note: This way, it will NOT create a backup!</Tooltip>
-          </Checkbox>
-          <Checkbox text="Automatically apply changes when tool is closed or game is launched." id="checkBoxAutoApply">
-            <Tooltip>No need to press apply anymore.</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Localization" id="groupBoxLocalization">
-          <Label text="This language is out-dated.\nSome elements might not be translated yet." id="labelOutdatedLanguage" />
-          <Label text="Language:" id="labelLanguage" />
-          <Button text="Download / update language files" id="buttonDownloadLanguages" />
-        </Group>
-        <Group text="Options" id="groupBoxOptions">
-          <Checkbox text="[Experimental] Deny NTFS write permission." id="checkBoxDenyNTFSWritePermission">
-            <Tooltip>This will deny write permission to the "Fallout 76" folder.
-Use this, if the read-only option doesn't work.
-
-Affected folder: %UserProfile%\Documents\My Games\Fallout 76</Tooltip>
-          </Checkbox>
-          <Checkbox text="I use more than one game edition." id="checkBoxMultipleGameEditionsUsed">
-            <Tooltip>Check this, if you're modding more than one game edition.
-If checked, sResourceIndexFileList will be saved for every game edition separately.</Tooltip>
-          </Checkbox>
-          <Checkbox text="Nuclear Winter Mode" id="checkBoxNWMode">
-            <Tooltip>Currently only renames Fallout76Custom.ini to Fallout76Custom.ini.nwmodebak.</Tooltip>
-          </Checkbox>
-          <Checkbox text="Make *.ini files read-only" id="checkBoxReadOnly">
-            <Tooltip>This option will make all *.ini files read-only immediately.
-Enable this if your settings get reverted.
-
-Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Button text="Fix settings from v1.3.1 and earlier" id="buttonFixIssuesEarlierVersion" />
-        <Group text="Game edition" id="groupBoxGameEdition">
-          <Radiobutton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
-          <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
-          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
-          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
-        </Group>
-      </Tab>
-      <Tab text="General" id="tabPageGeneral">
-        <Group text="Camera" id="groupBoxCamera">
-          <Checkbox text="Force auto vanity mode" id="checkBoxForceVanityMode">
-            <Tooltip>Affected values: bForceAutoVanityMode
-Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Enable auto vanity mode" id="checkBoxVanityMode">
-            <Tooltip>When this option is checked, the camera will spin around the character after no input was given for a certain amount of time.
-Not sure if it does anything, though. I stood around for 5 minutes and the camera didn't spin. Needs more testing.
-
-Affected values: bDisableAutoVanityMode
-Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Login" id="groupBoxLogin">
-          <Label text="Your credentials are saved into Fallout76Custom.ini\nThis way, you don't have to login if you start Fallout 76\nwithout the launcher.\nMight only work if the game is installed via Bethesda.net." id="labelCredentialsExplanation" />
-          <Checkbox text="Show password" id="checkBoxShowPassword" />
-          <Label text="Password:" id="labelPassword" />
-          <Label text="User name:" id="labelUserName" />
-        </Group>
-        <Group text="Interface" id="groupBoxInterface">
-          <Checkbox text="Show compass" id="checkBoxShowCompass">
-            <Tooltip>Affected values: bShowCompass
+      </TabPage>
+      <TabPage text="General" id="tabPageGeneral">
+        <Panel id="panel4">
+          <GroupBox text="Interface" id="groupBoxGeneralInterface">
+            <CheckBox text="Show floating quest text" id="checkBoxShowFloatingQuestText">
+              <Tooltip>Affected values: bShowFloatingQuestText
 Affected files: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Show floating damage numbers in Nuclear Winter" id="checkBoxShowDamageNumbersNW">
-            <Tooltip>Affected values: bShowDamageNumbers
+            </CheckBox>
+            <CheckBox text="Show floating damage numbers (Adventure mode)" id="checkBoxShowDamageNumbersA">
+              <Tooltip>Affected values: bShowDamageNumbers
 Affected files: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Show floating damage numbers in Adventure mode" id="checkBoxShowDamageNumbersA">
-            <Tooltip>Affected values: bShowDamageNumbers
+            </CheckBox>
+            <CheckBox text="Enable public team notifications\n" id="checkBoxShowPublicTeamNotifications">
+              <Tooltip>Affected values: bShowPublicTeamNotifications
 Affected files: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Show general subtitles" id="checkBoxGeneralSubtitles">
-            <Tooltip>Affected values: bGeneralSubtitles
+            </CheckBox>
+            <CheckBox text="Show other players' names" id="checkBoxShowOtherPlayersNames">
+              <Tooltip>Affected values: bShowOtherPlayersNames
 Affected files: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Show dialogue subtitles" id="checkBoxDialogueSubtitles">
-            <Tooltip>Affected values: bDialogueSubtitles
+            </CheckBox>
+            <CheckBox text="Show floating quest markers\n" id="checkBoxShowFloatingQuestMarkers">
+              <Tooltip>Affected values: bShowFloatingQuestMarkers
 Affected files: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Main Menu" id="groupBoxMainMenu">
-          <Checkbox text="Show splash screen with news on startup" id="checkBoxShowSplash">
-            <Tooltip>If unchecked, the game won't bother you with news on startup.
+            </CheckBox>
+            <CheckBox text="Enable Power Armor HUD" id="checkBoxEnablePowerArmorHUD">
+              <Tooltip>Affected values: bEnablePowerArmorHUD
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="Show item rarity colors (Nuclear Winter)" id="checkBoxItemRarityColorsNW">
+              <Tooltip>Affected values: bEnableItemRarityColors
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <Label text="Floating quest markers draw distance" id="labelFloatingQuestMarkersDistance" />
+            <Label text="Show active effects on HUD:" id="labelShowActiveEffectsOnHUD">
+              <Tooltip>Affected values: uHUDActiveEffectWidget
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </Label>
+            <CheckBox text="Show floating damage numbers (Nuclear Winter)" id="checkBoxShowDamageNumbersNW">
+              <Tooltip>Affected values: bShowDamageNumbers
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <TrackBar id="sliderFloatingQuestMarkersDistance">
+              <Tooltip>Affected values: fFloatingQuestMarkersDistance
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </TrackBar>
+            <CheckBox text="Show crosshair" id="checkBoxShowCrosshair">
+              <Tooltip>Affected values: bCrosshairEnabled
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="Show compass" id="checkBoxShowCompass">
+              <Tooltip>Affected values: bShowCompass
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <TrackBar id="sliderHUDOpacity">
+              <Tooltip>Affected values: fHUDOpacity
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </TrackBar>
+            <Label text="HUD Opacity" id="labelHUDOpacity" />
+          </GroupBox>
+          <GroupBox text="Quests" id="groupBoxQuests">
+            <CheckBox text="Daily Quests Active when started" id="checkBoxEnableQuestAutoTrackDaily">
+              <Tooltip>Affected values: bEnableQuestAutoTrackOther
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="Event Quests Active when started" id="checkBoxEnableQuestAutoTrackEvent">
+              <Tooltip>Affected values: bEnableQuestAutoTrackEvent
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="Miscellaneous Quests Active when started" id="checkBoxEnableQuestAutoTrackMisc">
+              <Tooltip>Affected values: bEnableQuestAutoTrackMisc
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="Side Quests Active when started" id="checkBoxEnableQuestAutoTrackSide">
+              <Tooltip>Affected values: bEnableQuestAutoTrackSide
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="Main Quests Active when started" id="checkBoxEnableQuestAutoTrackMain">
+              <Tooltip>Affected values: bEnableQuestAutoTrackMain
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+          </GroupBox>
+          <GroupBox text="Main Menu" id="groupBoxMainMenu">
+            <CheckBox text="Show splash screen with news on startup" id="checkBoxShowSplash">
+              <Tooltip>If unchecked, the game won't bother you with news on startup.
 
 Affected values: bShowSplash
 Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Play intro videos" id="checkBoxIntroVideos">
-            <Tooltip>When this option is unchecked, the game will start without displaying the Bethesda logo video.
+            </CheckBox>
+            <CheckBox text="Play intro videos" id="checkBoxIntroVideos">
+              <Tooltip>When this option is unchecked, the game will start without displaying the Bethesda logo video.
 
 Affected values: sIntroSequence, uMainMenuDelayBeforeAllowSkip
 Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Play music in main menu" id="checkBoxMainMenuMusic">
-            <Tooltip>If unchecked, the game won't play background music in the main menu.
+            </CheckBox>
+          </GroupBox>
+        </Panel>
+        <GroupBox text="Login with Bethesda.net" id="groupBoxLogin">
+          <RadioButton text="Account #8" id="radioButtonAccount8" />
+          <RadioButton text="Account #7" id="radioButtonAccount7" />
+          <RadioButton text="Account #6" id="radioButtonAccount6" />
+          <RadioButton text="Account #5" id="radioButtonAccount5" />
+          <RadioButton text="Account #4" id="radioButtonAccount4" />
+          <RadioButton text="Account #3" id="radioButtonAccount3" />
+          <RadioButton text="Account #2" id="radioButtonAccount2" />
+          <RadioButton text="Account #1" id="radioButtonAccount1" />
+          <Label text="Profiles:" id="labelAccountProfiles" />
+          <CheckBox text="Disable Steam" id="checkBoxDisableSteam" />
+          <Label text="Your credentials are saved into Fallout76Custom.ini\nThis way, you don't have to enter your username and password manually\nif you start Fallout 76 without the launcher.\n\nIf you use Steam and want to use your Bethesda.net account\n(e.g. to spent Atoms), tick Disable Steam.\nNOTE: Your achievements will be disabled as well!" id="labelCredentialsExplanation" />
+          <CheckBox text="Show password" id="checkBoxShowPassword" />
+          <Label text="Password:" id="labelPassword" />
+          <Label text="User name:" id="labelUserName" />
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Video" id="tabPageVideo">
+        <Panel id="panel3">
+          <GroupBox text="Graphics" id="groupBoxGraphics">
+            <GroupBox text="TAA Sharpening" id="groupBoxTAASharpening">
+              <TrackBar id="sliderTAAPostSharpen">
+                <Tooltip>Sharpens the image.
 
-Affected values: bPlayMainMenuMusic
+Default: 0.2
+Recommended: 0.4
+
+Affected values: fTAAPostSharpen
 Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-      </Tab>
-      <Tab text="Display" id="tabPageDisplay">
-        <Checkbox text="Fix HUD for 5:4 and 4:3 resolutions (partly)" id="checkBoxFixHUDFor5_4and4_3">
-          <Tooltip>Fixes hidden / borked
+              </TrackBar>
+              <Label text="Post sharpen" id="labelTAAPostSharpen" />
+              <TrackBar id="sliderTAAPostOverlay">
+                <Tooltip>Sharpens the image.
+
+Recommended: 0.2
+Default: 0.2
+
+Affected values: fTAAPostOverlay
+Affected files: Fallout76Custom.ini</Tooltip>
+              </TrackBar>
+              <Label text="Post overlay" id="labelTAAPostOverlay" />
+            </GroupBox>
+            <Label text="Anti-Aliasing:" id="labelAntiAliasing">
+              <Tooltip>Reduces aliasing by blurring edges of objects.
+
+TAA - Temporal Anti-Aliasing: Relatively expensive, default
+FXAA - Fast Approximate Anti-Aliasing: Slightly improves performance, aliasing slightly visible
+Off - Improves performance, aliasing clearly visible
+
+NOTE: For some reason FXAA doesn't work. The game just disables AA entirely. Atleast for me.
+
+Default: TAA
+Affected values: sAntiAliasing
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </Label>
+            <GroupBox text="Grass" id="groupBoxGrass">
+              <TrackBar id="sliderGrassFadeDistance">
+                <Tooltip>Sets the distance grass will begin to fade.
+
+Medium is 4500
+High is 5500
+Ultra is 7000
+
+Affected values: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
+Affected files: Fallout76Prefs.ini
+</Tooltip>
+              </TrackBar>
+              <Label text="Fade distance" id="labelGrassFadeDistance" />
+              <CheckBox text="Enable grass" id="checkBoxGrass">
+                <Tooltip>Enables/disables the grass ingame.
+
+Affected values: bAllowCreateGrass
+Affected files: Fallout76Custom.ini</Tooltip>
+              </CheckBox>
+            </GroupBox>
+            <GroupBox text="LOD" id="groupBoxLOD">
+              <TrackBar id="sliderLODActors">
+                <Tooltip>Sets the distance actors (=Players, NPCs) will begin to fade.
+
+Affected values: fLODFadeOutMultActors
+Affected files: Fallout76Prefs.ini
+</Tooltip>
+              </TrackBar>
+              <Label text="Fade distance" id="labelLODFadeDistance" />
+              <TrackBar id="sliderLODItems">
+                <Tooltip>Sets the distance items will begin to fade.
+
+Affected values: fLODFadeOutMultItems
+Affected files: Fallout76Prefs.ini</Tooltip>
+              </TrackBar>
+              <TrackBar id="sliderLODObjects">
+                <Tooltip>Sets the distance objects will begin to fade.
+
+Affected values: fLODFadeOutMultObjects
+Affected files: Fallout76Prefs.ini</Tooltip>
+              </TrackBar>
+              <Label text="Actors" id="labelLODActors" />
+              <Label text="Items" id="labelLODItems" />
+              <Label text="Objects" id="labelLODObjects" />
+            </GroupBox>
+            <CheckBox text="Frame rate cap (VSync)" id="checkBoxVSync">
+              <Tooltip>Unchecking this will uncap the frame rate.
+
+Enable this if you experience screen tearing.
+Disable this if you experience input lag.
+
+Please note: Cap the game to 60 FPS manually. (e.g. using NVIDIA's Control Panel)
+
+
+Default: Enabled
+Affected values: iPresentInterval
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <GroupBox text="Lighting" id="groupBoxLighting">
+              <CheckBox text="Volumetric Lighting" id="checkBoxGodrays">
+                <Tooltip>Unchecking this will disable godrays.
+
+Affected values: bVolumetricLightingEnable
+Affected files: Fallout76Prefs.ini</Tooltip>
+              </CheckBox>
+            </GroupBox>
+            <Label text="Anisotropic filter:" id="labelAnisotropicFiltering">
+              <Tooltip>Reduces aliasing of textures when viewed from oblique angles.
+
+Default: 8
+Affected values: iMaxAnisotropy
+Affected files: Fallout76Prefs.ini</Tooltip>
+            </Label>
+            <GroupBox text="Shadows" id="groupBoxShadows">
+              <TrackBar id="sliderfBlendSplitDirShadow">
+                <Tooltip>Distance at which the game will transition to lower-res a shadow "segment".
+MUST be a multiple of 12.
+
+Affected values: fBlendSplitDirShadow
+Affected files: Fallout76Prefs.ini</Tooltip>
+              </TrackBar>
+              <Label text="&quot;Segment&quot; transition distance" id="labelfBlendSplitDirShadow" />
+              <Label text="Transition segments:" id="label2">
+                <Tooltip>Amount of "segments" of lower-res shadows at a distance.
+A value of 1 forces the game to render only the lowest resolution shadows.
+
+Affected values: iDirShadowSplits
+Affected files: Fallout76Prefs.ini</Tooltip>
+              </Label>
+              <TrackBar id="sliderShadowDistance">
+                <Tooltip>Sets the distance that shadows are rendered.
+
+Ultra is 150000
+High is 120000
+Medium is 90000
+Low is 60000
+
+I think, setting it to a low value will disable shadows. Needs more testing.
+
+Affected values: fShadowDistance, fDirShadowDistance
+Affected files: Fallout76Prefs.ini
+</Tooltip>
+              </TrackBar>
+              <Label text="Blurriness:" id="labelShadowBlurriness">
+                <Tooltip>Blurs shadows. Especially useful, if you set a lower shadow resolution.
+
+Affected values: uiOrthoShadowFilter
+Affected files: Fallout76Prefs.ini</Tooltip>
+              </Label>
+              <Label text="Fade distance" id="labelShadowDistance" />
+              <Label text="Texture map resolution:" id="labelShadowTextureResolution">
+                <Tooltip>Resolution of shadows. Higher settings will make shadows more detailed.
+
+Affected values: iShadowMapResolution
+Affected files: Fallout76Prefs.ini</Tooltip>
+              </Label>
+            </GroupBox>
+            <GroupBox text="Water" id="groupBoxWater">
+              <CheckBox text="Displacement" id="checkBoxWaterDisplacement">
+                <Tooltip>Enables/disables water displacement (ripples, waves).
+
+Affected values: bUseWaterDisplacements
+Affected files: Fallout76Prefs.ini</Tooltip>
+              </CheckBox>
+            </GroupBox>
+            <GroupBox text="Weather" id="groupBoxWeather">
+              <CheckBox text="Fog" id="checkBoxFogEnabled">
+                <Tooltip>Affected values: bFogEnabled
+Affected files: Fallout76Prefs.ini</Tooltip>
+              </CheckBox>
+              <CheckBox text="Wetness Occlusion" id="checkBoxWeatherWetnessOcclusion">
+                <Tooltip>Toggles environmental and clothing wetness occlusion
+
+Affected values: bWetnessOcclusion
+Affected files: Fallout76.ini</Tooltip>
+              </CheckBox>
+              <CheckBox text="Rain Occlusion" id="checkBoxWeatherRainOcclusion">
+                <Tooltip>When checked, rain won't be rendered around your character
+if you're beneath an elevated highway or in a building,
+and rain drops and splashes won't be rendered on the floor.
+
+Affected values: bRainOcclusion
+Affected files: Fallout76.ini</Tooltip>
+              </CheckBox>
+            </GroupBox>
+            <GroupBox text="Post-processing" id="groupBoxPostProcessing">
+              <CheckBox text="Ambient Occlusion" id="checkBoxAmbientOcclusion">
+                <Tooltip>Unchecking this will disable ambient occlusion.
+Ambient occlusion basically adds fake shadows to places light sources can't reach (concave edges).
+
+Affected values: bSAOEnable
+Affected files: Fallout76Prefs.ini</Tooltip>
+              </CheckBox>
+              <CheckBox text="Depth of Field" id="checkBoxDepthOfField">
+                <Tooltip>Unchecking this will disable all Depth of Field effects.
+
+Affected files: Fallout76Custom.ini
+Affected values:
+   bDynamicDepthOfField
+   fDOFBlendRatio
+   fDOFMinFocalCoefDist
+   fDOFMaxFocalCoefDist
+   fDOFDynamicFarRange
+   fDOFCenterWeightInt
+   fDOFFarDistance</Tooltip>
+              </CheckBox>
+              <CheckBox text="Motion Blur" id="checkBoxMotionBlur">
+                <Tooltip>Blurs moving objects when turning the camera.
+
+Affected values: bMBEnable
+Affected files: Fallout76Custom.ini</Tooltip>
+              </CheckBox>
+              <CheckBox text="Radial Blur" id="checkBoxRadialBlur">
+                <Tooltip>Blurs the screen when the player is hurt (e.g. hit by bullets) or under water.
+Unchecking this might result in a clear view underwater.
+
+Affected values: bDoRadialBlur, iRadialBlurLevel
+Affected files: Fallout76Custom.ini</Tooltip>
+              </CheckBox>
+              <CheckBox text="Lens Flare" id="checkBoxLensFlare">
+                <Tooltip>Unchecking this will disable Lens Flare.
+
+Affected values: bLensFlare
+Affected files: Fallout76Prefs.ini</Tooltip>
+              </CheckBox>
+            </GroupBox>
+          </GroupBox>
+        </Panel>
+        <GroupBox text="Display" id="groupBoxDisplay">
+          <CheckBox text="Fix HUD for 5:4 and 4:3 resolutions (partly)" id="checkBoxFixHUDFor5_4and4_3">
+            <Tooltip>Fixes hidden / borked
   * lock picking screen and
   * Power Armor HUD
 for 5:4 and 4:3 screens.
@@ -304,45 +667,43 @@ Mostly untested.
 
 Affected values: fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
 Affected files: Fallout76Custom.ini</Tooltip>
-        </Checkbox>
-        <Button text="Detect resolution" id="buttonDetectResolution" />
-        <Checkbox text="Always active" id="checkBoxAlwaysActive">
-          <Tooltip>Disable this if you want the game to pause if another window is in front.
+          </CheckBox>
+          <Button text="Detect resolution" id="buttonDetectResolution" />
+          <Label text="Custom resolution:" id="labelCustomResolution">
+            <Tooltip>Set resolution to "Custom" for this option to become available.</Tooltip>
+          </Label>
+          <CheckBox text="Always active" id="checkBoxAlwaysActive">
+            <Tooltip>Disable this if you want the game to pause if another window is in front.
 
 Affected values: bAlwaysActive
 Affected files: Fallout76Custom.ini</Tooltip>
-        </Checkbox>
-        <Checkbox text="Top-most window" id="checkBoxTopMostWindow">
-          <Tooltip>Checking this will keep the game's window in foreground.
+          </CheckBox>
+          <Label text="Resolution:" id="labelResolution">
+            <Tooltip>Changes the resolution.
+Setting it to "Custom" will allow you to set your own values.
+
+Affected values: iSize W, iSize H
+Affected files: Fallout76Prefsini</Tooltip>
+          </Label>
+          <CheckBox text="Top-most window" id="checkBoxTopMostWindow">
+            <Tooltip>Checking this will keep the game's window in foreground.
 NOTE: This will prevent you from being able to Alt+Tab on single monitors.
 
 Affected values: bTopMostWindow
 Affected files: Fallout76Prefs.ini</Tooltip>
-        </Checkbox>
-        <Group text="Field of View" id="groupBoxFieldOfView">
-          <Label text="World FOV (3rd person):" id="labelWorldFOV">
-            <Tooltip>Changes the field of view of the 3rd person perspective.
+          </CheckBox>
+          <NumericUpDown id="numCustomResW">
+            <Tooltip>Changes the horizontal resolution (width).
 
-Default: 80
-Affected values: fDefaultWorldFOV
-Affected files: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
-          </Label>
-          <Label text="1st person FOV:" id="labelFirstPersonFOV">
-            <Tooltip>Changes the field of view of the 1st person perspective.
-
-Default: 80
-Affected values: fDefault1stPersonFOV
-Affected files: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
-          </Label>
-        </Group>
-        <Number id="numCustomResH">
-          <Tooltip>Changes the vertical resolution (height).
+Affected values: iSize W</Tooltip>
+          </NumericUpDown>
+          <NumericUpDown id="numCustomResH">
+            <Tooltip>Changes the vertical resolution (height).
 
 Affected values: iSize H</Tooltip>
-        </Number>
-        <Label text="X" id="labelCustomResolutionSpacer" />
-        <Label text="Display mode:" id="labelDisplayMode">
-          <Tooltip>Changes the display mode.
+          </NumericUpDown>
+          <Label text="Display mode:" id="labelDisplayMode">
+            <Tooltip>Changes the display mode.
 
 
 Fullscreen: Real fullscreen mode
@@ -357,253 +718,154 @@ Looks pixelated (it uses Nearest Neighbor), if the resolution is low.
 
 Affected values: bFull Screen, bBorderless
 Affected files: Fallout76Prefs.ini</Tooltip>
-        </Label>
-        <Number id="numCustomResW">
-          <Tooltip>Changes the horizontal resolution (width).
-
-Affected values: iSize W</Tooltip>
-        </Number>
-        <Label text="Resolution:" id="labelResolution">
-          <Tooltip>Changes the resolution.
-Setting it to "Custom" will allow you to set your own values.
-
-Affected values: iSize W, iSize H
-Affected files: Fallout76Prefsini</Tooltip>
-        </Label>
-        <Label text="Custom resolution:" id="labelCustomResolution">
-          <Tooltip>Set resolution to "Custom" for this option to become available.</Tooltip>
-        </Label>
-      </Tab>
-      <Tab text="Graphics" id="tabPageGraphics">
-        <Group text="TAA Sharpening" id="groupBoxTAASharpening">
-          <Label text="Post sharpen" id="labelTAAPostSharpen" />
-          <Slider id="sliderTAAPostSharpen">
-            <Tooltip>Sharpens the image.
-
-Default: 0.2
-Recommended: 0.4
-
-Affected values: fTAAPostSharpen
-Affected files: Fallout76Custom.ini</Tooltip>
-          </Slider>
-          <Label text="Post overlay" id="labelTAAPostOverlay" />
-          <Slider id="sliderTAAPostOverlay">
-            <Tooltip>Sharpens the image.
-
-Recommended: 0.2
-Default: 0.2
-
-Affected values: fTAAPostOverlay
-Affected files: Fallout76Custom.ini</Tooltip>
-          </Slider>
-        </Group>
-        <Group text="Grass" id="groupBoxGrass">
-          <Slider id="sliderGrassFadeDistance">
-            <Tooltip>Sets the distance grass will begin to fade.
-
-Medium is 4500
-High is 5500
-Ultra is 7000
-
-Affected values: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
-Affected files: Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Label text="Fade distance" id="labelGrassFadeDistance" />
-          <Checkbox text="Enable grass" id="checkBoxGrass">
-            <Tooltip>Enables/disables the grass ingame.
-
-Affected values: bAllowCreateGrass
-Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="LOD" id="groupBoxLOD">
-          <Label text="Fade distance" id="labelLODFadeDistance" />
-          <Slider id="sliderLODActors">
-            <Tooltip>Sets the distance actors (=Players, NPCs) will begin to fade.
-
-Affected values: fLODFadeOutMultActors
-Affected files: Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Slider id="sliderLODItems">
-            <Tooltip>Sets the distance items will begin to fade.
-
-Affected values: fLODFadeOutMultItems
-Affected files: Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Slider id="sliderLODObjects">
-            <Tooltip>Sets the distance objects will begin to fade.
-
-Affected values: fLODFadeOutMultObjects
-Affected files: Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Label text="Actors" id="labelLODActors" />
-          <Label text="Items" id="labelLODItems" />
-          <Label text="Objects" id="labelLODObjects" />
-        </Group>
-        <Group text="Lighting" id="groupBoxLighting">
-          <Checkbox text="Volumetric Lighting" id="checkBoxGodrays">
-            <Tooltip>Unchecking this will disable godrays.
-
-Affected values: bVolumetricLightingEnable
-Affected files: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Shadows" id="groupBoxShadows">
-          <Label text="Blurriness:" id="labelShadowBlurriness">
-            <Tooltip>Blurs shadows. Especially useful, if you set a lower shadow resolution.
-
-Affected values: uiOrthoShadowFilter
-Affected files: Fallout76Prefs.ini</Tooltip>
           </Label>
-          <Slider id="sliderShadowDistance">
-            <Tooltip>Sets the distance that shadows are rendered.
-
-Ultra is 150000
-High is 120000
-Medium is 90000
-Low is 60000
-
-I think, setting it to a low value will disable shadows. Needs more testing.
-
-Affected values: fShadowDistance, fDirShadowDistance
-Affected files: Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Label text="Distance" id="labelShadowDistance" />
-          <Label text="Texture map resolution:" id="labelShadowTextureResolution">
-            <Tooltip>Resolution of shadows. Higher settings will make shadows more detailed.
-
-Affected values: iShadowMapResolution
-Affected files: Fallout76Prefs.ini</Tooltip>
-          </Label>
-        </Group>
-        <Group text="Water" id="groupBoxWater">
-          <Checkbox text="Displacement" id="checkBoxWaterDisplacement">
-            <Tooltip>Enables/disables water displacement (ripples, waves).
-
-Affected values: bUseWaterDisplacements
-Affected files: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Post-processing" id="groupBoxPostProcessing">
-          <Checkbox text="Ambient Occlusion" id="checkBoxAmbientOcclusion">
-            <Tooltip>Unchecking this will disable ambient occlusion.
-Ambient occlusion basically adds fake shadows to places light sources can't reach (concave edges).
-
-Affected values: bSAOEnable
-Affected files: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Depth of Field" id="checkBoxDepthOfField">
-            <Tooltip>Unchecking this will disable all Depth of Field effects.
-
-Affected files: Fallout76Custom.ini
-Affected values:
-   bDynamicDepthOfField
-   fDOFBlendRatio
-   fDOFMinFocalCoefDist
-   fDOFMaxFocalCoefDist
-   fDOFDynamicFarRange
-   fDOFCenterWeightInt
-   fDOFFarDistance</Tooltip>
-          </Checkbox>
-          <Checkbox text="Motion Blur" id="checkBoxMotionBlur">
-            <Tooltip>Blurs moving objects when turning the camera.
-
-Affected values: bMBEnable
+          <Label text="X" id="labelCustomResolutionSpacer" />
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Audio" id="tabPageAudio">
+        <GroupBox text="Audio" id="groupBoxAudio">
+          <CheckBox text="Enable audio" id="checkBoxEnableAudio">
+            <Tooltip>Affected values: bEnableAudio
 Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Radial Blur" id="checkBoxRadialBlur">
-            <Tooltip>Blurs the screen when the player is hurt (e.g. hit by bullets) or under water.
-Unchecking this might result in a clear view underwater.
+          </CheckBox>
+          <CheckBox text="Play music in main menu" id="checkBoxMainMenuMusic">
+            <Tooltip>If unchecked, the game won't play background music in the main menu.
 
-Affected values: bDoRadialBlur, iRadialBlurLevel
+Affected values: bPlayMainMenuMusic
 Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Lens Flare" id="checkBoxLensFlare">
-            <Tooltip>Unchecking this will disable Lens Flare.
-
-Affected values: bLensFlare
+          </CheckBox>
+        </GroupBox>
+        <GroupBox text="Voice" id="groupBoxVoice">
+          <Label text="Voice Chat Mode:" id="labelVoiceChatMode" />
+          <CheckBox text="Enable Push-To-Talk" id="checkBoxPushToTalk">
+            <Tooltip>Affected values: bVoicePushToTalkEnabled
 Affected files: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Weather" id="groupBoxWeather">
-          <Checkbox text="Fog" id="checkBoxFogEnabled">
-            <Tooltip>Affected values: bFogEnabled
+          </CheckBox>
+        </GroupBox>
+        <GroupBox text="Volume" id="groupBoxAudioVolume">
+          <TrackBar id="sliderAudioChat">
+            <Tooltip>Changes the volume of the voice chat.
+
+Affected values: uVivoxVoiceVolume
 Affected files: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Wetness Occlusion" id="checkBoxWeatherWetnessOcclusion">
-            <Tooltip>Toggles environmental and clothing wetness occlusion
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal6">
+            <Tooltip>Changes the volume of fVal6.
 
-Affected values: bWetnessOcclusion
-Affected files: Fallout76.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Rain Occlusion" id="checkBoxWeatherRainOcclusion">
-            <Tooltip>When checked, rain won't be rendered around your character
-if you're beneath an elevated highway or in a building,
-and rain drops and splashes won't be rendered on the floor.
-
-Affected values: bRainOcclusion
-Affected files: Fallout76.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Label text="Anisotropic filter:" id="labelAnisotropicFiltering">
-          <Tooltip>Reduces aliasing of textures when viewed from oblique angles.
-
-Default: 8
-Affected values: iMaxAnisotropy
+Affected values: fVal6
 Affected files: Fallout76Prefs.ini</Tooltip>
-        </Label>
-        <Checkbox text="Frame rate cap (VSync)" id="checkBoxVSync">
-          <Tooltip>Unchecking this will uncap the frame rate.
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal5">
+            <Tooltip>Changes the volume of fVal5.
 
-Enable this if you experience screen tearing.
-Disable this if you experience input lag.
-
-Please note: Cap the game to 60 FPS manually. (e.g. using NVIDIA's Control Panel)
-
-
-Default: Enabled
-Affected values: iPresentInterval
+Affected values: fVal5
 Affected files: Fallout76Prefs.ini</Tooltip>
-        </Checkbox>
-        <Label text="Anti-Aliasing:" id="labelAntiAliasing">
-          <Tooltip>Reduces aliasing by blurring edges of objects.
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal4">
+            <Tooltip>Changes the volume of fVal4.
 
-TAA - Temporal Anti-Aliasing: Relatively expensive, default
-FXAA - Fast Approximate Anti-Aliasing: Slightly improves performance, aliasing slightly visible
-Off - Improves performance, aliasing clearly visible
-
-NOTE: For some reason FXAA doesn't work. The game just disables AA entirely. Atleast for me.
-
-Default: TAA
-Affected values: sAntiAliasing
+Affected values: fVal4
 Affected files: Fallout76Prefs.ini</Tooltip>
-        </Label>
-      </Tab>
-      <Tab text="Controls" id="tabPageControls">
-        <Group text="Gamepad" id="groupBoxGamepad">
-          <Checkbox text="Enable gamepad" id="checkBoxGamepadEnabled">
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal3">
+            <Tooltip>Changes the volume of fVal3.
+
+Affected values: fVal3
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal2">
+            <Tooltip>Changes the volume of fVal2.
+
+Affected values: fVal2
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal1">
+            <Tooltip>Changes the volume of fVal1.
+
+Affected values: fVal1
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <Label text="Master volume" id="labelVolumeMaster" />
+          <TrackBar id="sliderVolumeMaster">
+            <Tooltip>Changes the overall volume of the game.
+
+Affected values: fAudioMasterVolume
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal0">
+            <Tooltip>Changes the volume of fVal0.
+
+Affected values: fVal0
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <Label text="Chat volume" id="labelAudioChat" />
+          <Label text="Menu Music" id="labelAudiofVal0" />
+          <Label text="Pip-Boy Radio" id="labelAudiofVal6" />
+          <Label text="World Radios" id="labelAudiofVal1" />
+          <Label text="Footsteps" id="labelAudiofVal5" />
+          <Label text="Voice" id="labelAudiofVal2" />
+          <Label text="Effects" id="labelAudiofVal4" />
+          <Label text="Music" id="labelAudiofVal3" />
+        </GroupBox>
+        <GroupBox text="Interface" id="groupBoxAudioInterface">
+          <TrackBar id="sliderConversationHistorySize">
+            <Tooltip>Affected values: fConversationHistorySize
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <Label text="Conversation history size (number of rows):" id="labelConversationHistorySize" />
+          <CheckBox text="Show dialogue history" id="checkBoxDialogueHistory">
+            <Tooltip>Affected values: bShowDialogueHistory
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+          <CheckBox text="Show dialogue subtitles" id="checkBoxDialogueSubtitles">
+            <Tooltip>Affected values: bDialogueSubtitles
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+          <CheckBox text="Show general subtitles" id="checkBoxGeneralSubtitles">
+            <Tooltip>Affected values: bGeneralSubtitles
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Controls" id="tabPageControls">
+        <GroupBox text="Gamepad" id="groupBoxGamepad">
+          <CheckBox text="Enable gamepad" id="checkBoxGamepadEnabled">
             <Tooltip>Uncheck this, if you have a gamepad plugged in, but want to use your keyboard and mouse instead.
 Leave this checked otherwise.
 
 Affected values: bGamepadEnable
 Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Enable gamepad rumble (Force Feedback)" id="checkBoxGamepadRumble">
+          </CheckBox>
+          <CheckBox text="Enable gamepad rumble (Force Feedback)" id="checkBoxGamepadRumble">
             <Tooltip>Enables rumbling (force feedback) of your gamepad.
 
 Affected values: bGamePadRumble
 Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Mouse" id="groupBoxMouse">
-          <Checkbox text="Mouse acceleration" id="checkBoxMouseAcceleration">
+          </CheckBox>
+        </GroupBox>
+        <GroupBox text="Mouse" id="groupBoxMouse">
+          <CheckBox text="Invert X" id="checkBoxMouseInvertX">
+            <Tooltip>Affected values: bInvertXValues
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+          <CheckBox text="Invert Y" id="checkBoxMouseInvertY">
+            <Tooltip>Affected values: bInvertYValues
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+          <TrackBar id="sliderMouseSensitivity">
+            <Tooltip>Mouse sensitivity
+
+Affected values: fMouseHeadingSensitivity, fMouseHeadingSensitivityY
+Affected files: Fallout76Custom.ini</Tooltip>
+          </TrackBar>
+          <CheckBox text="Mouse acceleration" id="checkBoxMouseAcceleration">
             <Tooltip>This option might not have any effect. Placebo?
 Doesn't hurt to turn it off, though.
 
 Affected values: bMouseAcceleration
 Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Fix aim sensitivity" id="checkBoxFixAimSensitivity">
+          </CheckBox>
+          <CheckBox text="Fix aim sensitivity" id="checkBoxFixAimSensitivity">
             <Tooltip>If checked, the aim sensitivity will be equal to normal sensitivity.
 If unchecked (default), the sensitivity will be lower when aiming down iron sights.
 
@@ -614,15 +876,9 @@ Note 2: This might not work in-game while crouching.
 
 Affected values: fIronSightsFOVRotateMult
 Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
+          </CheckBox>
           <Label text="Sensitivity" id="labelMouseSensitivity" />
-          <Slider id="sliderMouseSensitivity">
-            <Tooltip>Mouse sensitivity
-
-Affected values: fMouseHeadingSensitivity, fMouseHeadingSensitivityY
-Affected files: Fallout76Custom.ini</Tooltip>
-          </Slider>
-          <Checkbox text="Fix mouse horizontal/vertical sensitivity" id="checkBoxFixMouseSensitivity">
+          <CheckBox text="Fix mouse horizontal/vertical sensitivity" id="checkBoxFixMouseSensitivity">
             <Tooltip>If checked, the sensitivity for looking up/down and left/right will be equal.
 If unchecked (default), the sensitivity for looking left/right will likely be higher than up/down.
 
@@ -637,11 +893,106 @@ The sensitivity depends on your display's aspect ratio:
 Default: Disabled (.021 for both)
 Affected values: fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
 Affected files: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-      </Tab>
-      <Tab text="Pipboy" id="tabPagePipBoy">
-        <Group text="Resolution" id="groupBoxPipboyResolution">
+          </CheckBox>
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Camera" id="tabPageCamera">
+        <GroupBox text="Camera options" id="groupBoxCameraOptions">
+          <Label text="Switch delay (seconds):" id="labelSwitchDelay">
+            <Tooltip>Affected values: f1st3rdSwitchDelay
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Label>
+        </GroupBox>
+        <GroupBox text="Camera distance" id="groupBoxCameraDistance">
+          <Label text="fPitchZoomOutMaxDist:" id="labelPitchZoomOutMaxDist">
+            <Tooltip>By how much the camera gets zoomed out when you look at the ground in 3rd person.
+
+Affected values: fPitchZoomOutMaxDist
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Label text="Maximum:" id="labelCameraDistanceMaximum">
+            <Tooltip>Affected values: fVanityModeMaxDist
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Label text="Minimum:" id="labelCameraDistanceMinimum">
+            <Tooltip>Affected values: fVanityModeMinDist
+Affected files: Fallout76Custom.ini
+</Tooltip>
+          </Label>
+        </GroupBox>
+        <GroupBox text="Camera position (WORK IN PROGRESS)" id="groupBoxCameraPositionWIP">
+          <Button text="Center" id="buttonCameraPositionCenter" />
+          <Button text="Reset" id="buttonCameraPositionReset" />
+          <Label text="Player:" id="labelCameraPositionPlayer" />
+          <Label text="Change position for:" id="labelCameraPositionFor" />
+          <CheckBox text="bApplyCameraNodeAnimations" id="checkBoxbApplyCameraNodeAnimations">
+            <Tooltip>When disabled, sets the camera's position into the characters head.
+You'll need to zoom out in third person.
+If enabled, sets the camera's position behind the right shoulder.
+
+Might cause issues.
+
+Default: Enabled
+Affected values: bApplyCameraNodeAnimations
+Affected files: Fallout76Custom.ini
+</Tooltip>
+          </CheckBox>
+          <RadioButton text="Melee combat" id="radioButtonCameraPositionMeleeCombat" />
+          <RadioButton text="Combat" id="radioButtonCameraPositionCombat" />
+          <RadioButton text="Unarmed" id="radioButtonCameraPositionUnarmed" />
+          <Label text="Further" id="labelCameraFurther" />
+          <Label text="Closer" id="labelCameraCloser" />
+          <Label text="Up" id="labelCameraUp" />
+          <Label text="Down" id="labelCameraDown" />
+          <Label text="Right" id="labelCameraRight" />
+          <Label text="Left" id="labelCameraLeft" />
+        </GroupBox>
+        <GroupBox text="Field of View" id="groupBoxFieldOfView">
+          <Label text="fDefaultFOV (Causes issues with HUD):" id="labelfDefaultFOV">
+            <Tooltip>Causes issues with the GUI.
+
+Default: 80
+Affected values: fDefaultFOV
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Label text="3rd person aim FOV:" id="labelADSFOV">
+            <Tooltip>Changes the field of view of the 3rd person perspective while aiming.
+
+Default: 50
+Affected values: f3rdPersonAimFOV
+Affected files: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Label text="3rd person FOV:" id="labelWorldFOV">
+            <Tooltip>Changes the field of view of the 3rd person perspective.
+
+Default: 80
+Affected values: fDefaultWorldFOV
+Affected files: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+          </Label>
+          <Label text="1st person FOV:" id="labelFirstPersonFOV">
+            <Tooltip>Changes the field of view of the 1st person perspective.
+
+Default: 80
+Affected values: fDefault1stPersonFOV
+Affected files: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+          </Label>
+        </GroupBox>
+        <GroupBox text="Vanity (Spinning camera)" id="groupBoxCameraVanity">
+          <CheckBox text="Force auto vanity mode" id="checkBoxForceVanityMode">
+            <Tooltip>Affected values: bForceAutoVanityMode
+Affected files: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
+          <CheckBox text="Enable auto vanity mode" id="checkBoxVanityMode">
+            <Tooltip>When this option is checked, the camera will spin around the character after no input was given for a certain amount of time.
+Not sure if it does anything, though. I stood around for 5 minutes and the camera didn't spin. Needs more testing.
+
+Affected values: bDisableAutoVanityMode
+Affected files: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Pipboy" id="tabPagePipBoy">
+        <GroupBox text="Resolution" id="groupBoxPipboyResolution">
           <Label text="These settings affect both the Pipboy and the Quickboy." id="labelPipboyResolutionSideNote" />
           <Button text="Set recommended resolution" id="buttonPipboyTargetSetRecommended">
             <Tooltip>Recommended values: 1752x1400</Tooltip>
@@ -649,31 +1000,31 @@ Affected files: Fallout76Custom.ini</Tooltip>
           <Button text="Reset to default" id="buttonPipboyTargetReset">
             <Tooltip>Default values: 876x700</Tooltip>
           </Button>
-          <Number id="numPipboyTargetHeight">
+          <NumericUpDown id="numPipboyTargetHeight">
             <Tooltip>Changes the resolution height of the Pipboy/Quickboy.
 
 Affected values: uPipboyTargetHeight
 Affected files: Fallout76Prefs.ini</Tooltip>
-          </Number>
-          <Number id="numPipboyTargetWidth">
+          </NumericUpDown>
+          <NumericUpDown id="numPipboyTargetWidth">
             <Tooltip>Changes the resolution width of the Pipboy/Quickboy.
 
 Affected values: uPipboyTargetWidth
 Affected files: Fallout76Prefs.ini</Tooltip>
-          </Number>
+          </NumericUpDown>
           <Label text="X" id="labelPipboyResolutionSpacer" />
-        </Group>
-        <Group text="Mode" id="groupBoxPipboyMode">
-          <Radiobutton text="Use QuickBoy" id="radioButtonQuickboy">
+        </GroupBox>
+        <GroupBox text="Mode" id="groupBoxPipboyMode">
+          <RadioButton text="Use QuickBoy" id="radioButtonQuickboy">
             <Tooltip>Affected values: bQuickboyMode
 Affected files: Fallout76Prefs.ini</Tooltip>
-          </Radiobutton>
-          <Radiobutton text="Use PipBoy" id="radioButtonPipboy">
+          </RadioButton>
+          <RadioButton text="Use PipBoy" id="radioButtonPipboy">
             <Tooltip>Affected values: bQuickboyMode
 Affected files: Fallout76Prefs.ini</Tooltip>
-          </Radiobutton>
-        </Group>
-        <Group text="Colors" id="groupBoxPipboyColors">
+          </RadioButton>
+        </GroupBox>
+        <GroupBox text="Colors" id="groupBoxPipboyColors">
           <Label text="Power Armor Color" id="label1">
             <Tooltip>Changes the color of the Pip-Boy which is accessed from the Power Armor.
 
@@ -694,31 +1045,77 @@ Affected files: Fallout76Custom.ini</Tooltip>
 Affected files: Fallout76Prefs.ini</Tooltip>
           </Label>
           <Button text="Pick color" id="buttonColorPickPipboy" />
-        </Group>
-      </Tab>
-    </TabContainer>
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Gallery" id="tabPageGallery">
+        <GroupBox text="Gallery" id="groupBoxGallery">
+          <Label text="Click 'Refresh gallery' to display screenshots and photos." id="labelGalleryTip" />
+        </GroupBox>
+        <GroupBox text="Options" id="groupBoxScreenshotOptions">
+          <Label text="Thumbnail size:" id="labelGalleryThumbnailSize" />
+          <Button text="Refresh gallery" id="buttonRefreshGallery" />
+          <Label text="Screenshot index:" id="labelScreenshotIndex" />
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Custom" id="tabPageCustom">
+        <Button text="Save" id="buttonCustomSave" />
+        <Label text="Overwrite lines in file:" id="labelCustomFile" />
+      </TabPage>
+    </TabControl>
   </Form1>
   <FormMods title="Manage mods">
-    <Element id="panel1">
+    <Panel id="panel1">
       <Button text="Deploy" id="buttonModsDeploy" />
-      <Checkbox text="Disable mods" id="checkBoxDisableMods" />
-    </Element>
-    <TabContainer id="tabControl1">
-      <Tab text="Mod order" id="tabPageModOrder">
-        <Tool id="toolStrip1">
-          <Button text="Add mod (from archive)" id="toolStripButtonAddMod" />
-          <Button text="Add mod (from *.ba2 archive)" id="toolStripButtonAddModFrozen" />
-          <Button text="Add mod (from folder)" id="toolStripButtonAddModFolder" />
-          <Button text="Check/uncheck all" id="toolStripButtonCheckAll" />
-          <Button text="Move up" id="toolStripButtonMoveUp" />
-          <Button text="Move down" id="toolStripButtonMoveDown" />
-          <Button text="Edit mod details" id="toolStripButtonModEdit" />
-          <Button text="Unfreeze" id="toolStripButtonUnfreeze" />
-          <Button text="Open mod folder" id="toolStripButtonModOpenFolder" />
-          <Button text="Delete mod" id="toolStripButtonDeleteMod" />
-        </Tool>
+      <CheckBox text="Disable mods" id="checkBoxDisableMods" />
+    </Panel>
+    <TabControl id="tabControl1">
+      <TabPage text="Mod order" id="tabPageModOrder">
+        <Panel id="panelModDetails">
+          <GroupBox text="Installation options" id="groupBoxModDetailsInstallationOptions">
+            <Button text="..." id="buttonModPickRootDir" />
+            <Label text="Install as:" id="labelModInstallAs" />
+            <Label text="Preset:" id="labelModArchivePreset" />
+            <CheckBox text="Freeze" id="checkBoxFreezeArchive">
+              <Tooltip>If you 'freeze' an archive, it does not get recreated when deploying.
+This will speed up deployment.
+
+This is especially useful, if the archive is HUGE (1GiB or more) and the files aren't changing.</Tooltip>
+            </CheckBox>
+            <Label text="Install into:" id="labelModInstallInto" />
+          </GroupBox>
+          <Button text="Unfreeze" id="buttonModUnfreeze" />
+          <GroupBox text="Details" id="groupBoxModDetailsDetails">
+            <Label text="Version:" id="labelModVersion" />
+            <Label text="Mod name:" id="labelModName" />
+            <Button text="Suggest" id="buttonModDetailsSuggestArchiveName" />
+            <Label text="Mod folder name:" id="labelModFolderName" />
+            <Label text="Webpage (URL):" id="labelModURL" />
+            <Label text="Archive name:" id="labelModArchiveName" />
+          </GroupBox>
+          <Label text="Installation options are disabled, because the mod is frozen." id="labelModUnfreeze" />
+          <Label text="&lt; Mod name goes here &gt;" id="labelModTitle" />
+          <CheckBox text="Enable this mod" id="checkBoxModDetailsEnabled" />
+          <Label text="NOTE: Frozen mods will be ignored." id="labelModDetailsBulkFrozenModsWarning" />
+        </Panel>
+        <ToolStrip id="toolStrip1">
+          <ToolStripButton text="Add mod (from archive)" id="toolStripButtonAddMod" />
+          <ToolStripButton text="Add mod (from *.ba2 archive)" id="toolStripButtonAddModFrozen" />
+          <ToolStripButton text="Add mod (from folder)" id="toolStripButtonAddModFolder" />
+          <ToolStripSeparator text="" id="toolStripSeparator4" />
+          <ToolStripButton text="Check/uncheck all" id="toolStripButtonCheckAll" />
+          <ToolStripSeparator text="" id="toolStripSeparator2" />
+          <ToolStripButton text="Move up" id="toolStripButtonMoveUp" />
+          <ToolStripButton text="Move down" id="toolStripButtonMoveDown" />
+          <ToolStripSeparator text="" id="toolStripSeparator3" />
+          <ToolStripButton text="Edit mod details" id="toolStripButtonModEdit" />
+          <ToolStripButton text="Unfreeze" id="toolStripButtonUnfreeze" />
+          <ToolStripButton text="Open mod folder" id="toolStripButtonModOpenFolder" />
+          <ToolStripSeparator text="" id="toolStripSeparator5" />
+          <ToolStripButton text="Delete mod" id="toolStripButtonDeleteMod" />
+        </ToolStrip>
         <ListView id="listViewMods">
           <Column>Mod name</Column>
+          <Column>Version</Column>
           <Column>Type</Column>
           <Column>Install into</Column>
           <Column>Archive name</Column>
@@ -726,87 +1123,82 @@ Affected files: Fallout76Prefs.ini</Tooltip>
           <Column>Compressed?</Column>
           <Column>Frozen?</Column>
         </ListView>
-      </Tab>
-      <Tab text="Settings" id="tabPageModsSettings">
-        <Group text="Behavior" id="groupBoxModsBehavior">
-          <Checkbox text="Make hard links instead of copying files manually." id="checkBoxModsUseHardlinks">
-            <Tooltip>May reduce disk space and deployment time.
-Does not apply to bundled archives.</Tooltip>
-          </Checkbox>
-          <Checkbox text="Unfreeze *.ba2 files by default" id="checkBoxAddArchivesAsBundled" />
-        </Group>
-        <Group text="Lists" id="groupBoxLists">
+        <Panel id="panel2">
+          <Button text="Apply" id="buttonModDetailsApply" />
+          <Button text="Cancel" id="buttonModDetailsCancel" />
+          <Button text="OK" id="buttonModDetailsOK" />
+        </Panel>
+      </TabPage>
+      <TabPage text="Settings" id="tabPageModsSettings">
+        <GroupBox text="Behavior" id="groupBoxModsBehavior">
+          <CheckBox text="[Experimental] Freeze bundled archives" id="checkBoxFreezeBundledArchives">
+            <Tooltip>Instead of rebuilding bundled archives, it will save a bundled copy and ask you if you want to update it on deploy.</Tooltip>
+          </CheckBox>
+          <CheckBox text="Make hard links instead of copying files manually (recommended)" id="checkBoxModsUseHardlinks">
+            <Tooltip>Reduces disk space and deployment time.</Tooltip>
+          </CheckBox>
+          <CheckBox text="Unfreeze *.ba2 files by default" id="checkBoxAddArchivesAsBundled" />
+        </GroupBox>
+        <GroupBox text="Lists" id="groupBoxLists">
           <Button text="Reset" id="buttonModsResetTextboxes" />
           <Button text="Apply changes" id="buttonModsApplyTextBoxes" />
           <Button text="Clean lists" id="buttonModsCleanLists" />
           <Label text="sResourceIndexFileList (Used by mod manager)" id="labelsResourceIndexFileList" />
           <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
-        </Group>
-      </Tab>
-    </TabContainer>
-    <Menu id="menuStrip1">
-      <Item text="File" id="fileToolStripMenuItem">
-        <Item text="Add mod" id="addModarchiveToolStripMenuItem">
-          <Item text="From archive" id="fromArchiveToolStripMenuItem" />
-          <Item text="From *.ba2 archive (frozen)" id="fromba2ArchivefrozenToolStripMenuItem" />
-          <Item text="From folder" id="fromFolderToolStripMenuItem" />
-        </Item>
-        <Item text="Import installed mods" id="toolStripMenuItemModsImport" />
-        <Item text="" id="toolStripSeparator1" />
-        <Item text="Deploy" id="deployToolStripMenuItem" />
-      </Item>
-      <Item text="View" id="editToolStripMenuItem">
-        <Item text="Show conflicting files" id="showConflictingFilesToolStripMenuItem" />
-        <Item text="Reload UI" id="reloadUIToolStripMenuItem" />
-      </Item>
-      <Item text="Tools" id="toolsToolStripMenuItem">
-        <Item text="Repair all *.dds files" id="repairddsFilesToolStripMenuItem" />
-        <Item text="Archive2" id="archive2ToolStripMenuItem">
-          <Item text="Open Archive2" id="openArchive2ToolStripMenuItem" />
-          <Item text="Explore *.ba2 archive" id="exploreba2ArchiveToolStripMenuItem" />
-        </Item>
-      </Item>
-      <Item text="Help" id="helpToolStripMenuItem">
-        <Item text="Show README" id="showREADMEToolStripMenuItem" />
-        <Item text="Log files" id="logFilesToolStripMenuItem">
-          <Item text="Show modmanager.log.txt" id="showModmanagerlogtxtToolStripMenuItem" />
-          <Item text="Show archive2.log.txt" id="showArchive2logtxtToolStripMenuItem" />
-        </Item>
-      </Item>
-    </Menu>
+        </GroupBox>
+      </TabPage>
+      <TabPage text="NexusMods" id="tabPageNexusMods">
+        <Button text="Delete mod information" id="buttonNMDeleteModInfo" />
+        <CheckBox text="Show API Key" id="checkBoxShowAPIKey" />
+        <Button text="Remove profile and API key" id="buttonNMRemoveAll" />
+        <Label text="The mod manager can retrieve mod version and thumbnail via the NexusMods API for you.\nTo access the API, you'll need to provide your personal API key.\n\nYour personal API key will be stored locally and will be used for the following purposes:\n- retrieving mod information, such as name, version, and thumbnails\n- displaying some account information, such as user name, profile picture, account status, and rate limit\n- show if updates are available\n\nSince your personal API key is linked to your account, NEVER share the key with any other user, or app you don't trust.\n\nI'm not affiliated with NexusMods. This feature is unofficial and uses the public API." id="labelNMInfo" />
+        <LinkLabel text="Get your API key" id="linkLabelNMGetAPIKey" />
+        <Button text="Update mod information" id="buttonNMUpdateModInfo" />
+        <Panel id="panel3">
+          <Label text="Invalid" id="labelNMAPIKeyStatus" />
+          <Label text="API key:" id="labelNMDescAPIKey" />
+          <Label text="Anonymous" id="labelNMUserName" />
+          <Label text="Membership:" id="labelNMDescMembership" />
+          <Label text="Never" id="labelNMDailyRateLimitReset" />
+          <Label text="Basic" id="labelNMMembership" />
+          <Label text="Limit reset:" id="labelNMDescLimitReset" />
+          <Label text="Daily rate limit:" id="labelNMDescDailyRateLimit" />
+          <Label text="0 left" id="labelNMDailyRateLimit" />
+        </Panel>
+        <Button text="Update profile" id="buttonNMUpdateProfile" />
+        <Button text="Delete thumbnails" id="buttonNMDeleteThumbnails" />
+        <Label text="API Key:" id="labelNMAPIKeyTextBox" />
+      </TabPage>
+    </TabControl>
+    <MenuStrip id="menuStrip1">
+      <ToolStripMenuItem text="File" id="fileToolStripMenuItem">
+        <ToolStripMenuItem text="Add mod" id="addModarchiveToolStripMenuItem">
+          <ToolStripMenuItem text="From archive" id="fromArchiveToolStripMenuItem" />
+          <ToolStripMenuItem text="From *.ba2 archive (frozen)" id="fromba2ArchivefrozenToolStripMenuItem" />
+          <ToolStripMenuItem text="From folder" id="fromFolderToolStripMenuItem" />
+        </ToolStripMenuItem>
+        <ToolStripMenuItem text="Import installed mods" id="toolStripMenuItemModsImport" />
+        <ToolStripSeparator text="" id="toolStripSeparator1" />
+        <ToolStripMenuItem text="Deploy" id="deployToolStripMenuItem" />
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="View" id="editToolStripMenuItem">
+        <ToolStripMenuItem text="Show conflicting files" id="showConflictingFilesToolStripMenuItem" />
+        <ToolStripMenuItem text="Reload UI" id="reloadUIToolStripMenuItem" />
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="Tools" id="toolsToolStripMenuItem">
+        <ToolStripMenuItem text="Archive2" id="archive2ToolStripMenuItem">
+          <ToolStripMenuItem text="Open Archive2" id="openArchive2ToolStripMenuItem" />
+          <ToolStripMenuItem text="Explore *.ba2 archive" id="exploreba2ArchiveToolStripMenuItem" />
+        </ToolStripMenuItem>
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="Help" id="helpToolStripMenuItem">
+        <ToolStripMenuItem text="Show README" id="showREADMEToolStripMenuItem" />
+        <ToolStripMenuItem text="Show guide" id="showGuideToolStripMenuItem" />
+        <ToolStripMenuItem text="Log files" id="logFilesToolStripMenuItem">
+          <ToolStripMenuItem text="Show modmanager.log.txt" id="showModmanagerlogtxtToolStripMenuItem" />
+          <ToolStripMenuItem text="Show archive2.log.txt" id="showArchive2logtxtToolStripMenuItem" />
+        </ToolStripMenuItem>
+      </ToolStripMenuItem>
+    </MenuStrip>
   </FormMods>
-  <FormModDetails>
-    <Button text="Cancel" id="buttonModDetailsCancel" />
-    <Button text="OK" id="buttonModDetailsOK" />
-    <Label text="..." id="labelModDetailsStatus" />
-    <Button text="Apply" id="buttonModDetailsApply" />
-    <Element id="panel1">
-      <Checkbox text="Enable this mod" id="checkBoxModDetailsEnabled" />
-      <Label text="NOTE: Frozen mods will be ignored." id="labelModDetailsBulkFrozenModsWarning" />
-      <Group text="Presets" id="groupBoxSeparateArchivePresets">
-        <Radiobutton text="Custom" id="radioButtonSeparateArchiveCustom" />
-        <Radiobutton text="Sounds" id="radioButtonSeparateArchiveSounds" />
-        <Radiobutton text="Textures (*.dds files)" id="radioButtonSeparateArchiveTextures" />
-        <Radiobutton text="General / Interface / Materials" id="radioButtonSeparateArchiveGeneral" />
-      </Group>
-      <Label text="Installation options are disabled, because the mod is frozen." id="labelModUnfreeze" />
-      <Button text="Unfreeze" id="buttonModUnfreeze" />
-      <Checkbox text="Freeze" id="checkBoxFreezeArchive">
-        <Tooltip>If you 'freeze' an archive, it does not get recreated when deploying.
-This will speed up deployment.
-
-This is especially useful, if the archive is HUGE (1GiB or more) and the files aren't changing.</Tooltip>
-      </Checkbox>
-      <Button text="Repair *.dds files" id="buttonModRepairDDS" />
-      <Checkbox text="Compress archive" id="checkBoxModBA2Compression" />
-      <Label text="Archive name:" id="labelModArchiveName" />
-      <Button text="Open folder" id="buttonModOpenFolder" />
-      <Label text="Mod folder name:" id="labelModFolderName" />
-      <Label text="Archive format:" id="labelModArchiveFormat" />
-      <Label text="Install as:" id="labelModInstallAs" />
-      <Label text="Mod name:" id="labelModName" />
-      <Button text="..." id="buttonModPickRootDir" />
-      <Label text="Install into:" id="labelModInstallInto" />
-    </Element>
-  </FormModDetails>
 </Language>
