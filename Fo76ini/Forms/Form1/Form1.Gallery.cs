@@ -26,7 +26,7 @@ namespace Fo76ini
             //this.backgroundWorkerLoadGallery.ProgressChanged += backgroundWorker1_ProgressChanged;
             this.backgroundWorkerLoadGallery.RunWorkerCompleted += backgroundWorkerLoadGallery_RunWorkerCompleted;
             this.backgroundWorkerLoadGallery.WorkerReportsProgress = true;
-            this.backgroundWorkerLoadGallery.WorkerSupportsCancellation = true;
+            //this.backgroundWorkerLoadGallery.WorkerSupportsCancellation = true;
 
             this.listViewScreenshots.DoubleClick += listViewScreenshots_DoubleClick;
             //this.sliderGalleryThumbnailSize.ValueChanged += sliderGalleryThumbnailSize_ValueChanged;
@@ -74,17 +74,30 @@ namespace Fo76ini
             this.Invoke(() => this.listViewScreenshots.LargeImageList = this.galleryImageList);
 
             /*
+             * Thumbnails folder:
+             */
+            String thumbnailsPath = Path.Combine(Shared.AppConfigFolder, "thumbnails", "screenshots");
+            if (!Directory.Exists(thumbnailsPath))
+                Directory.CreateDirectory(thumbnailsPath);
+
+            /*
              * Search the game folder for screenshots:
              * C:\...\Fallout76\*.png
              */
-            if (Directory.Exists(ManagedMods.Instance.GamePath))
+            if (Directory.Exists(Shared.GamePath))
             {
-                IEnumerable<String> screenshots = Directory.EnumerateFiles(ManagedMods.Instance.GamePath, "*.png", SearchOption.TopDirectoryOnly);
+                IEnumerable<String> screenshots = Directory.EnumerateFiles(Shared.GamePath, "*.png", SearchOption.TopDirectoryOnly);
                 foreach (String filePath in screenshots)
                 {
                     String fileName = Path.GetFileName(filePath);
+                    String thumbPath = Path.Combine(thumbnailsPath, fileName) + ".jpg";
+                    Bitmap thumbnail;
 
-                    Bitmap thumbnail = new Bitmap(filePath);
+                    if (!File.Exists(thumbPath))
+                        thumbnail = new Bitmap(Utils.MakeThumbnail(filePath, thumbPath));
+                    else
+                        thumbnail = new Bitmap(thumbPath);
+
                     this.Invoke(() => galleryImageList.Images.Add(fileName, thumbnail));
 
                     var item = new ListViewItem();
@@ -114,7 +127,12 @@ namespace Fo76ini
 
                     String thumbnailFilePath = fileName.Replace(".png", "-thumbnail.png");
                     if (!File.Exists(thumbnailFilePath))
-                        thumbnailFilePath = filePath;
+                    {
+                        thumbnailFilePath = Path.Combine(thumbnailsPath, fileName + ".jpg");
+                        if (!File.Exists(thumbnailFilePath))
+                            Utils.MakeThumbnail(filePath, thumbnailFilePath);
+                        //thumbnailFilePath = filePath;
+                    }
 
                     Bitmap thumbnail = new Bitmap(thumbnailFilePath);
                     this.Invoke(() => galleryImageList.Images.Add(fileName, thumbnail));
@@ -148,7 +166,12 @@ namespace Fo76ini
 
                         String thumbnailFilePath = Path.Combine(steamThumbnailFolder, fileName);
                         if (!File.Exists(thumbnailFilePath))
-                            thumbnailFilePath = filePath;
+                        {
+                            thumbnailFilePath = Path.Combine(thumbnailsPath, fileName + ".jpg");
+                            if (!File.Exists(thumbnailFilePath))
+                                Utils.MakeThumbnail(filePath, thumbnailFilePath);
+                            //thumbnailFilePath = filePath;
+                        }
 
                         Bitmap thumbnail = new Bitmap(thumbnailFilePath);
                         this.Invoke(() => galleryImageList.Images.Add(fileName, thumbnail));
@@ -181,7 +204,8 @@ namespace Fo76ini
         private void sliderGalleryThumbnailSize_Scroll(object sender, EventArgs e)
         {
             galleryImageSizeMult = this.sliderGalleryThumbnailSize.Value * 3 + 1;
-            this.listViewScreenshots.LargeImageList.ImageSize = new Size(16 * galleryImageSizeMult, 9 * galleryImageSizeMult);
+            if (this.listViewScreenshots.LargeImageList != null)
+                this.listViewScreenshots.LargeImageList.ImageSize = new Size(16 * galleryImageSizeMult, 9 * galleryImageSizeMult);
         }
 
         private void Invoke(Action func)

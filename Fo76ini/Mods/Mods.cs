@@ -1,4 +1,6 @@
-﻿using SharpCompress.Common;
+﻿using Fo76ini.Mods;
+using Newtonsoft.Json.Linq;
+using SharpCompress.Common;
 using SharpCompress.Readers;
 using System;
 using System.Collections.Generic;
@@ -6,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -43,6 +46,74 @@ namespace Fo76ini
         private String root;
         private bool enabled;
 
+        public int ID = -1;
+        private String url = "";
+        public String Version = "";
+        /*public String LatestVersion = "";
+        public String ThumbnailURL = "";
+        public String Thumbnail = "";
+        public String PublicName = "";*/
+
+        public String URL
+        {
+            get
+            {
+                return this.url;
+            }
+            set
+            {
+                this.url = value;
+                this.ID = NexusMods.GetIDFromURL(value);
+            }
+        }
+
+        /*
+         * Directly access NexusMods' info
+         */
+        public String PublicName
+        {
+            get
+            {
+                if (this.ID >= 0 && NexusMods.Mods.ContainsKey(this.ID))
+                    return NexusMods.Mods[this.ID].Title;
+                else
+                    return this.Title;
+            }
+        }
+
+        public String Thumbnail
+        {
+            get
+            {
+                if (this.ID >= 0 && NexusMods.Mods.ContainsKey(this.ID))
+                    return NexusMods.Mods[this.ID].Thumbnail;
+                else
+                    return "";
+            }
+        }
+
+        public String LatestVersion
+        {
+            get
+            {
+                if (this.ID >= 0 && NexusMods.Mods.ContainsKey(this.ID))
+                    return NexusMods.Mods[this.ID].LatestVersion;
+                else
+                    return "";
+            }
+        }
+
+        public NMMod RemoteInfo
+        {
+            get
+            {
+                if (this.ID >= 0 && NexusMods.Mods.ContainsKey(this.ID))
+                    return NexusMods.Mods[this.ID];
+                else
+                    return null;
+            }
+        }
+
         /* Does only apply for FileType.Loose */
         private List<String> looseFiles = new List<String>();
 
@@ -76,6 +147,14 @@ namespace Fo76ini
             this.archiveName = mod.archiveName;
             this.freeze = mod.freeze;
             this.frozen = mod.frozen;
+
+            this.ID = mod.ID;
+            this.URL = mod.URL;
+            this.Version = mod.Version;
+            /*this.LatestVersion = mod.LatestVersion;
+            this.ThumbnailURL = mod.ThumbnailURL;
+            this.Thumbnail = mod.Thumbnail;
+            this.PublicName = mod.PublicName;*/
         }
 
         public Mod CreateCopy()
@@ -120,7 +199,7 @@ namespace Fo76ini
 
         public String GetManagedPath()
         {
-            return Path.Combine(ManagedMods.Instance.GamePath, "Mods", this.ManagedFolder);
+            return Path.Combine(Shared.GamePath, "Mods", this.ManagedFolder);
         }
 
         public String RootFolder
@@ -164,7 +243,7 @@ namespace Fo76ini
                     updateProgress($"Freezing {this.Title}", -1);
 
                 // Create archive:
-                String tempPath = Path.Combine(ManagedMods.Instance.GamePath, "Mods", "frozen.ba2");
+                String tempPath = Path.Combine(Shared.GamePath, "Mods", "frozen.ba2");
                 Archive2.Create(tempPath, GetManagedPath(), ManagedMods.Instance.GetArchive2Preset(this));
 
                 // Failed?
@@ -219,7 +298,7 @@ namespace Fo76ini
                 this.freeze = false;
 
                 // Move frozen.ba2 out of folder:
-                String tempPath = Path.Combine(ManagedMods.Instance.GamePath, "Mods", "frozen.ba2");
+                String tempPath = Path.Combine(Shared.GamePath, "Mods", "frozen.ba2");
                 File.Move(GetFrozenArchivePath(), tempPath);
 
                 // Remove contents of managed folder:
@@ -289,6 +368,24 @@ namespace Fo76ini
                 new XAttribute("modFolder", this.managedFolderName),
                 new XAttribute("installType", this.GetTypeName()));
 
+            if (this.URL != "")
+                xmlMod.Add(new XAttribute("url", this.URL));
+
+            if (this.Version != "")
+                xmlMod.Add(new XAttribute("version", this.Version));
+
+            /*if (this.LatestVersion != "")
+                xmlMod.Add(new XAttribute("latestVersion", this.LatestVersion));
+
+            if (this.ThumbnailURL != "")
+                xmlMod.Add(new XAttribute("thumbnailUrl", this.ThumbnailURL));
+
+            if (this.Thumbnail != "")
+                xmlMod.Add(new XAttribute("thumbnail", this.Thumbnail));
+
+            if (this.PublicName != "")
+                xmlMod.Add(new XAttribute("publicName", this.PublicName));*/
+
             if (this.Type == Mod.FileType.Loose && this.enabled)
                 foreach (String filePath in this.looseFiles)
                     xmlMod.Add(new XElement("File", new XAttribute("path", filePath)));
@@ -321,6 +418,25 @@ namespace Fo76ini
             Mod mod = new Mod();
             mod.Title = xmlMod.Attribute("title").Value;
             mod.ManagedFolder = xmlMod.Attribute("modFolder").Value;
+
+            if (xmlMod.Attribute("url") != null)
+                mod.URL = xmlMod.Attribute("url").Value;
+
+            if (xmlMod.Attribute("version") != null)
+                mod.Version = xmlMod.Attribute("version").Value;
+
+            /*if (xmlMod.Attribute("latestVersion") != null)
+                mod.LatestVersion = xmlMod.Attribute("latestVersion").Value;
+
+            if (xmlMod.Attribute("thumbnailUrl") != null)
+                mod.ThumbnailURL = xmlMod.Attribute("thumbnailUrl").Value;
+
+            if (xmlMod.Attribute("thumbnail") != null)
+                mod.Thumbnail = xmlMod.Attribute("thumbnail").Value;
+
+            if (xmlMod.Attribute("publicName") != null)
+                mod.PublicName = xmlMod.Attribute("publicName").Value;*/
+
             try
             {
                 mod.isEnabled = Convert.ToBoolean(xmlMod.Attribute("enabled").Value);
@@ -426,30 +542,18 @@ namespace Fo76ini
 
         private ManagedMods()
         {
-            this.GameEdition = (GameEdition)(IniFiles.Instance.GetInt(IniFile.Config, "Preferences", "uGameEdition", 0));
+            Shared.LoadGameEdition();
+            Shared.LoadGamePath();
 
-            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", this.GamePathKey, "");
             bool nwMode = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bDisableMods", false);
-            if (gamePath.Length > 0)
-            {
-                this.GamePath = gamePath;
-            }
             this.nuclearWinterMode = nwMode;
-
             this.logFile = new Log(Log.GetFilePath("modmanager.log.txt"));
         }
 
         private List<Mod> mods = new List<Mod>();
         private List<Mod> changedMods = new List<Mod>();
-        private String gamePath = null;
         public bool nuclearWinterMode = false;
-        public GameEdition GameEdition;
         public Log logFile;
-
-        public String GamePathKey
-        {
-            get { return ManagedMods.GetGamePathKey(this.GameEdition); }
-        }
 
         // Use lower-case, plz
         private List<String> whitelistedDlls = new List<String>() {
@@ -518,7 +622,7 @@ namespace Fo76ini
 
         private void DeleteAt(int index)
         {
-            String managedFolderPath = Path.Combine(gamePath, "Mods", this.changedMods[index].ManagedFolder);
+            String managedFolderPath = Path.Combine(Shared.GamePath, "Mods", this.changedMods[index].ManagedFolder);
             if (Directory.Exists(managedFolderPath))
                 Directory.Delete(managedFolderPath, true);
             this.changedMods.RemoveAt(index);
@@ -569,7 +673,7 @@ namespace Fo76ini
 
         public bool ValidateGamePath()
         {
-            return this.ValidateGamePath(this.gamePath);
+            return this.ValidateGamePath(Shared.GamePath);
         }
 
         public String RenameManagedFolder(String currentManagedFolderName, String newManagedFolderName)
@@ -577,7 +681,7 @@ namespace Fo76ini
             newManagedFolderName = Utils.GetValidFileName(newManagedFolderName);
             if (currentManagedFolderName == newManagedFolderName)
                 return currentManagedFolderName;
-            if (!Directory.Exists(Path.Combine(this.GamePath, "Mods", currentManagedFolderName)))
+            if (!Directory.Exists(Path.Combine(Shared.GamePath, "Mods", currentManagedFolderName)))
                 return currentManagedFolderName;
 
             Mod deployedMod = null;
@@ -595,7 +699,7 @@ namespace Fo76ini
             }
 
             String currentManagedFolderPath = deployedMod.GetManagedPath();
-            String newManagedFolderPath = Utils.GetUniquePath(Path.Combine(ManagedMods.Instance.GamePath, "Mods", newManagedFolderName));
+            String newManagedFolderPath = Utils.GetUniquePath(Path.Combine(Shared.GamePath, "Mods", newManagedFolderName));
             newManagedFolderName = Path.GetFileName(newManagedFolderPath);
             try
             {
@@ -627,8 +731,8 @@ namespace Fo76ini
 
             // Detect mod type:
             // String[] resourceFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx", "lodsettings" };
-            String[] generalFolders = new string[] { "meshes", "strings", "interface" };
-            String[] textureFolders = new string[] { "textures", "effects", "materials" };
+            String[] generalFolders = new string[] { "meshes", "strings", "interface", "materials" };
+            String[] textureFolders = new string[] { "textures", "effects" };
             String[] soundFolders = new string[] { "sound", "music" };
 
             int generalFoldersCount = 0;
@@ -843,7 +947,7 @@ namespace Fo76ini
         public void InstallModArchiveFrozen(String filePath, Action<String, int> updateProgress = null, Action<bool> done = null)
         {
             // Some conditions have to be met:
-            if (this.gamePath == null)
+            if (Shared.GamePath == null)
             {
                 this.logFile.WriteLine("Couldn't import *.ba2 file: No game path has been set.");
                 if (done != null)
@@ -872,14 +976,14 @@ namespace Fo76ini
             try
             {
                 // Create Mods folder:
-                if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
-                    Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
+                if (!Directory.Exists(Path.Combine(Shared.GamePath, "Mods")))
+                    Directory.CreateDirectory(Path.Combine(Shared.GamePath, "Mods"));
 
                 // Get paths:
                 filePath = Path.GetFullPath(filePath);
                 String fileName = Path.GetFileNameWithoutExtension(filePath);
                 String fileExtension = Path.GetExtension(filePath);
-                String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", fileName));
+                String managedFolderPath = Utils.GetUniquePath(Path.Combine(Shared.GamePath, "Mods", fileName));
                 String managedFolder = Path.GetFileName(managedFolderPath);
 
                 // Create a new mod:
@@ -937,7 +1041,7 @@ namespace Fo76ini
         public void InstallModArchive(String filePath, Action<String, int> updateProgress = null, Action<bool> done = null)
         {
             // Some conditions have to be met:
-            if (this.gamePath == null)
+            if (Shared.GamePath == null)
             {
                 this.logFile.WriteLine("Couldn't import *.ba2 file: No game path has been set.");
                 if (done != null)
@@ -976,14 +1080,14 @@ namespace Fo76ini
             try
             {
                 // Create Mods folder:
-                if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
-                    Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
+                if (!Directory.Exists(Path.Combine(Shared.GamePath, "Mods")))
+                    Directory.CreateDirectory(Path.Combine(Shared.GamePath, "Mods"));
 
                 // Get paths:
                 filePath = Path.GetFullPath(filePath);
                 String fileName = Path.GetFileNameWithoutExtension(filePath);
                 String fileExtension = Path.GetExtension(filePath);
-                String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", fileName));
+                String managedFolderPath = Utils.GetUniquePath(Path.Combine(Shared.GamePath, "Mods", fileName));
                 String managedFolder = Path.GetFileName(managedFolderPath);
                 /*if (Directory.Exists(managedFolderPath))
                 {
@@ -1040,7 +1144,7 @@ namespace Fo76ini
         public void InstallModFolder(String folderPath, Action<String, int> updateProgress = null, Action<bool> done = null)
         {
             // Some conditions have to be met:
-            if (this.gamePath == null)
+            if (Shared.GamePath == null)
             {
                 this.logFile.WriteLine("Couldn't import *.ba2 file: No game path has been set.");
                 if (done != null)
@@ -1079,13 +1183,13 @@ namespace Fo76ini
             try
             {
                 // Create Mods folder:
-                if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
-                    Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
+                if (!Directory.Exists(Path.Combine(Shared.GamePath, "Mods")))
+                    Directory.CreateDirectory(Path.Combine(Shared.GamePath, "Mods"));
 
                 // Get paths:
                 folderPath = Path.GetFullPath(folderPath);
                 String folderName = Path.GetFileName(folderPath);
-                String managedFolderPath = Utils.GetUniquePath(Path.Combine(this.GamePath, "Mods", folderName));
+                String managedFolderPath = Utils.GetUniquePath(Path.Combine(Shared.GamePath, "Mods", folderName));
                 String managedFolder = Path.GetFileName(managedFolderPath);
 
                 // Create a new mod:
@@ -1239,7 +1343,7 @@ namespace Fo76ini
             return false;
         }
 
-        public String GamePath
+        /*public String GamePath
         {
             get { return this.gamePath; }
             set
@@ -1247,16 +1351,16 @@ namespace Fo76ini
                 if (value != null && Directory.Exists(value))
                     this.gamePath = Path.GetFullPath(value);
             }
-        }
+        }*/
 
         public String GetModPath(int index)
         {
-            return Path.Combine(this.gamePath, "Mods", this.changedMods[index].ManagedFolder);
+            return Path.Combine(Shared.GamePath, "Mods", this.changedMods[index].ManagedFolder);
         }
 
         public String GetInstalledModPath(int index)
         {
-            return Path.Combine(this.gamePath, "Mods", this.mods[index].ManagedFolder);
+            return Path.Combine(Shared.GamePath, "Mods", this.mods[index].ManagedFolder);
         }
 
         public struct Conflict
@@ -1273,7 +1377,7 @@ namespace Fo76ini
             for (int i = 1; i < this.changedMods.Count; i++)
             {
                 Mod lowerMod = this.changedMods[i];
-                String lowerPath = Path.Combine(this.gamePath, "Mods", lowerMod.ManagedFolder);
+                String lowerPath = Path.Combine(Shared.GamePath, "Mods", lowerMod.ManagedFolder);
                 if (!lowerMod.isEnabled && Directory.Exists(lowerPath))
                     continue;
                 List<String> lowerRelPaths = new List<String>();
@@ -1286,7 +1390,7 @@ namespace Fo76ini
                     Conflict conflict = new Conflict();
                     conflict.conflictingFiles = new List<String>();
                     Mod upperMod = this.changedMods[l];
-                    String upperPath = Path.Combine(this.gamePath, "Mods", upperMod.ManagedFolder);
+                    String upperPath = Path.Combine(Shared.GamePath, "Mods", upperMod.ManagedFolder);
                     if (!upperMod.isEnabled && Directory.Exists(upperPath))
                         continue;
                     IEnumerable<String> upperFiles = Directory.EnumerateFiles(upperPath, "*.*", SearchOption.AllDirectories);
@@ -1334,7 +1438,7 @@ namespace Fo76ini
             // Import every archive:
             foreach (String archiveName in installedMods)
             {
-                String path = Path.Combine(this.gamePath, "Data", archiveName);
+                String path = Path.Combine(Shared.GamePath, "Data", archiveName);
                 Console.WriteLine(path);
                 if (File.Exists(path))
                 {
@@ -1391,7 +1495,7 @@ namespace Fo76ini
             this.mods.Clear();
             this.changedMods.Clear();
 
-            this.gamePath = "";
+            Shared.ClearGamePath();
         }
 
         public void Load()
@@ -1399,12 +1503,12 @@ namespace Fo76ini
             this.mods.Clear();
             this.changedMods.Clear();
 
-            if (this.gamePath == null)
+            if (Shared.GamePath == null)
                 return;
 
             this.LoadINILists();
 
-            String manifestPath = Path.Combine(this.gamePath, "Mods", "manifest.xml");
+            String manifestPath = Path.Combine(Shared.GamePath, "Mods", "manifest.xml");
 
             if (!File.Exists(manifestPath))
                 return;
@@ -1416,7 +1520,7 @@ namespace Fo76ini
                 try
                 {
                     Mod mod = Mod.Deserialize(xmlMod);
-                    if (!Directory.Exists(Path.Combine(this.gamePath, "Mods", mod.ManagedFolder)))
+                    if (!Directory.Exists(Path.Combine(Shared.GamePath, "Mods", mod.ManagedFolder)))
                         continue;
                     this.AddInstalledMod(mod);
                 }
@@ -1430,17 +1534,17 @@ namespace Fo76ini
 
         public void Save()
         {
-            if (this.gamePath == null)
+            if (Shared.GamePath == null)
             {
                 MsgBox.ShowID("modsGamePathNotSet", MessageBoxIcon.Error);
                 return;
             }
 
-            if (!Directory.Exists(Path.Combine(this.gamePath, "Mods")))
-                Directory.CreateDirectory(Path.Combine(this.gamePath, "Mods"));
+            if (!Directory.Exists(Path.Combine(Shared.GamePath, "Mods")))
+                Directory.CreateDirectory(Path.Combine(Shared.GamePath, "Mods"));
 
             this.CopyINILists();
-            this.Serialize().Save(Path.Combine(this.gamePath, "Mods", "manifest.xml"));
+            this.Serialize().Save(Path.Combine(Shared.GamePath, "Mods", "manifest.xml"));
         }
 
         private class DeployArchive
@@ -1471,7 +1575,7 @@ namespace Fo76ini
             {
                 this.logFile.WriteLine("\n\n");
                 this.logFile.WriteTimeStamp();
-                this.logFile.WriteLine($"Version {Form1.VERSION}, deploying...");
+                this.logFile.WriteLine($"Version {Shared.VERSION}, deploying...");
 
                 /*
                  * Check if everything is ready for deployment:
@@ -1488,7 +1592,7 @@ namespace Fo76ini
                 }
 
                 // Game path existing?
-                if (this.gamePath == null)
+                if (Shared.GamePath == null)
                 {
                     if (done != null)
                         done(false);
@@ -1496,7 +1600,7 @@ namespace Fo76ini
                 }
 
                 // Game path valid?
-                if (!Directory.Exists(Path.Combine(this.gamePath, "Data")))
+                if (!Directory.Exists(Path.Combine(Shared.GamePath, "Data")))
                 {
                     MsgBox.ShowID("modsGamePathInvalid", MessageBoxIcon.Error);
                     this.logFile.WriteLine("Failed: Game path invalid");
@@ -1548,7 +1652,7 @@ namespace Fo76ini
                 this.logFile.WriteLine("Deployment method: " + (useHardlinks ? "Make hard links" : "Make copies (slow)"));
 
                 // Create temp folder:
-                String tempPath = Path.Combine(this.gamePath, "temp");
+                String tempPath = Path.Combine(Shared.GamePath, "temp");
                 if (Directory.Exists(tempPath))
                     Directory.Delete(tempPath, true);
                 Directory.CreateDirectory(tempPath);
@@ -1565,13 +1669,18 @@ namespace Fo76ini
                 bool freezeBundledArchives = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bFreezeBundledArchives", false);
                 bool frozenBundledArchivesAvailable = false;
                 bool repackBundledArchives = true;
+                String frozenBundledFolder = Path.Combine(Shared.GamePath, "Mods", "_frozen");
                 if (freezeBundledArchives)
                 {
                     this.logFile.WriteLine($"NOTE: Experimental feature 'Freeze bundled archives' enabled.");
 
+                    // Create folder:
+                    if (!Directory.Exists(frozenBundledFolder))
+                        Directory.CreateDirectory(frozenBundledFolder);
+
                     // Do we have frozen archives?
                     foreach (DeployArchive archive in archives)
-                        frozenBundledArchivesAvailable = frozenBundledArchivesAvailable || File.Exists(Path.Combine(this.gamePath, "Mods", generalArchive.archiveName));
+                        frozenBundledArchivesAvailable = frozenBundledArchivesAvailable || File.Exists(Path.Combine(frozenBundledFolder, archive.archiveName));
 
                     // Don't repack archives when disabling mods:
                     if (this.nuclearWinterMode)
@@ -1615,7 +1724,7 @@ namespace Fo76ini
                     {
                         foreach (String relFilePath in mod.LooseFiles)
                         {
-                            String installedFilePath = Path.Combine(this.gamePath, mod.RootFolder, relFilePath).Replace("\\.\\", "\\");
+                            String installedFilePath = Path.Combine(Shared.GamePath, mod.RootFolder, relFilePath).Replace("\\.\\", "\\");
 
                             // Delete file, if existing:
                             if (File.Exists(installedFilePath))
@@ -1639,7 +1748,7 @@ namespace Fo76ini
                     }
                     else if (mod.Type == Mod.FileType.SeparateBA2)
                     {
-                        String path = Path.Combine(this.gamePath, "Data", mod.ArchiveName);
+                        String path = Path.Combine(Shared.GamePath, "Data", mod.ArchiveName);
                         if (File.Exists(path))
                             File.Delete(path);
 
@@ -1687,7 +1796,7 @@ namespace Fo76ini
                     if (updateProgress != null)
                         updateProgress($"[2/4] Deploying mod {progressModName}", progressPercent);
 
-                    String managedFolderPath = Path.Combine(this.gamePath, "Mods", mod.ManagedFolder);
+                    String managedFolderPath = Path.Combine(Shared.GamePath, "Mods", mod.ManagedFolder);
                     if (!Directory.Exists(managedFolderPath))
                     {
                         //MessageBox.Show($"Directory \"{managedFolderPath}\" does not exist.\nPlease restart the mod manager and add the mod again.", $"Mod {mod.Title} couldn't be deployed.", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1824,7 +1933,7 @@ namespace Fo76ini
                                 updateProgress($"[2/4] Copying frozen *ba2 archive of mod {progressModName}", progressPercent + (int)(modPercent * 100));
 
                             string frozenPath = mod.GetFrozenArchivePath();
-                            string destPath = Path.Combine(this.gamePath, "Data", mod.ArchiveName);
+                            string destPath = Path.Combine(Shared.GamePath, "Data", mod.ArchiveName);
                             if (useHardlinks)
                                 Utils.CreateHardLink(frozenPath, destPath, true);
                             else
@@ -1847,7 +1956,7 @@ namespace Fo76ini
                             // Create archive:
                             if (updateProgress != null)
                                 updateProgress($"[2/4] Creating a *ba2 archive of mod {progressModName}", progressPercent + (int)(modPercent * 100));
-                            Archive2.Create(Path.Combine(this.gamePath, "Data", mod.ArchiveName), managedFolderPath, preset);
+                            Archive2.Create(Path.Combine(Shared.GamePath, "Data", mod.ArchiveName), managedFolderPath, preset);
                         }
                         sResourceIndexFileList.Add(mod.ArchiveName);
                     }
@@ -1868,7 +1977,7 @@ namespace Fo76ini
                                 updateProgress($"[2/4] Copying file {f} of {count} (\"{Path.GetFileName(filePath)}\") of mod {progressModName}", progressPercent + (int)((float)f++ / (float)count * modPercent * 100));
                             String relPath = Utils.MakeRelativePath(managedFolderPath, filePath);
                             modRelPaths.Add(relPath);
-                            String destinationPath = Path.Combine(this.gamePath, mod.RootFolder, relPath);
+                            String destinationPath = Path.Combine(Shared.GamePath, mod.RootFolder, relPath);
                             Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
                             if (!allModRelPaths.Contains(relPath) && File.Exists(destinationPath) && !File.Exists(destinationPath + ".old"))
                                 File.Move(destinationPath, destinationPath + ".old");
@@ -1901,8 +2010,8 @@ namespace Fo76ini
                     // Create / delete archives:
                     foreach (DeployArchive archive in archives)
                     {
-                        String bundledFrozenArchivePath = Path.Combine(this.gamePath, "Mods", archive.archiveName);
-                        String bundledLiveArchivePath = Path.Combine(this.gamePath, "Data", archive.archiveName);
+                        String bundledFrozenArchivePath = Path.Combine(frozenBundledFolder, archive.archiveName);
+                        String bundledLiveArchivePath = Path.Combine(Shared.GamePath, "Data", archive.archiveName);
 
                         if (!this.nuclearWinterMode && archive.count > 0)
                         {
@@ -1969,8 +2078,8 @@ namespace Fo76ini
                         if (updateProgress != null)
                             updateProgress($"[3/4] Deploying {archive.archiveName}...", -1);
 
-                        String bundledFrozenArchivePath = Path.Combine(this.gamePath, "Mods", archive.archiveName);
-                        String bundledLiveArchivePath = Path.Combine(this.gamePath, "Data", archive.archiveName);
+                        String bundledFrozenArchivePath = Path.Combine(frozenBundledFolder, archive.archiveName);
+                        String bundledLiveArchivePath = Path.Combine(Shared.GamePath, "Data", archive.archiveName);
 
                         if (this.nuclearWinterMode)
                         {
@@ -2014,7 +2123,7 @@ namespace Fo76ini
                 if (this.nuclearWinterMode)
                 {
                     // String[] files = Directory.GetFiles(this.GamePath, "*.dll", SearchOption.AllDirectories);
-                    IEnumerable<String> files = Directory.EnumerateFiles(this.GamePath, "*.dll");/*, SearchOption.AllDirectories);*/ // Don't change the *.dll files in the /Mods/ folder!!
+                    IEnumerable<String> files = Directory.EnumerateFiles(Shared.GamePath, "*.dll");/*, SearchOption.AllDirectories);*/ // Don't change the *.dll files in the /Mods/ folder!!
                     this.logFile.WriteLine($"   Renaming not \'whitelisted\' \'*.dll\' files to \'*.dll.nwmode\'.");
                     foreach (String filePath in files)
                     {
@@ -2036,7 +2145,7 @@ namespace Fo76ini
                 }
                 else
                 {
-                    IEnumerable<String> files = Directory.EnumerateFiles(this.GamePath, "*.dll.nwmode");/*, SearchOption.AllDirectories);*/
+                    IEnumerable<String> files = Directory.EnumerateFiles(Shared.GamePath, "*.dll.nwmode");/*, SearchOption.AllDirectories);*/
                     int count = files.Count();
                     if (count > 0)
                     {
@@ -2091,7 +2200,7 @@ namespace Fo76ini
                 // sResourceDataDirsFinal
                 sResourceDataDirsFinal.Clear();
                 String[] resourceFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx", "lodsettings" };
-                foreach (String folder in Directory.GetDirectories(Path.Combine(this.gamePath, "Data")))
+                foreach (String folder in Directory.GetDirectories(Path.Combine(Shared.GamePath, "Data")))
                 {
                     String folderName = Path.GetFileName(folder);
                     if (resourceFolders.Contains(folderName.ToLower()))
@@ -2146,7 +2255,7 @@ namespace Fo76ini
             if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false))
                 return;
 
-            String suffix = ManagedMods.GetEditionSuffix(this.GameEdition);
+            String suffix = ManagedMods.GetEditionSuffix(Shared.GameEdition);
             IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix, String.Join(",", IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "")));
             IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceArchive2List" + suffix, String.Join(",", IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "")));
             IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceDataDirsFinal" + suffix, String.Join(",", IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", "")));
@@ -2158,7 +2267,7 @@ namespace Fo76ini
             if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false))
                 return;
 
-            String suffix = ManagedMods.GetEditionSuffix(this.GameEdition);
+            String suffix = ManagedMods.GetEditionSuffix(Shared.GameEdition);
             String sResourceIndexFileList = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix, "");
             String sResourceArchive2List = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceArchive2List" + suffix, "");
             String sResourceDataDirsFinal = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceDataDirsFinal" + suffix, "");
@@ -2176,160 +2285,6 @@ namespace Fo76ini
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Mods", "sResourceArchive2List");
             if (IniFiles.Instance.GetString(IniFile.F76Custom, "Mods", "sResourceDataDirsFinal", "").Trim().Length == 0)
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Mods", "sResourceDataDirsFinal");
-        }
-    }
-
-    public class Archive2
-    {
-        public static Log logFile;
-        private static String archive2Path = ".\\Archive2\\Archive2.exe";
-
-        public static String Archive2Path
-        {
-            get { return Archive2.archive2Path; }
-        }
-
-        static Archive2()
-        {
-            logFile = new Log(Log.GetFilePath("archive2.log.txt"));
-        }
-
-        public enum Compression
-        {
-            None,
-            Default,
-            XBox
-        }
-
-        public enum Format
-        {
-            General,
-            DDS,
-            XBoxDDS,
-            GNF
-        }
-
-        public struct Preset
-        {
-            public Archive2.Compression compression;
-            public Archive2.Format format;
-        }
-
-        public static Archive2.Compression GetCompression(String compressionStr)
-        {
-            switch (compressionStr)
-            {
-                case "None":
-                    return Archive2.Compression.None;
-                case "Default":
-                    return Archive2.Compression.Default;
-                case "XBox":
-                    return Archive2.Compression.XBox;
-                default:
-                    throw new InvalidDataException($"Invalid ba2 compression type: {compressionStr}");
-            }
-        }
-
-        public static Archive2.Format GetFormat(String formatStr)
-        {
-            switch (formatStr)
-            {
-                case "General":
-                    return Archive2.Format.General;
-                case "DDS":
-                    return Archive2.Format.DDS;
-                case "XBoxDDS":
-                    return Archive2.Format.XBoxDDS;
-                case "GNF":
-                    return Archive2.Format.GNF;
-                default:
-                    throw new ArgumentException($"Invalid ba2 format type: {formatStr}");
-            }
-        }
-
-        private static void Call(String arguments)
-        {
-            if (Archive2.archive2Path == null)
-                return;
-
-            using (Process proc = new Process())
-            {
-                logFile.WriteTimeStamp();
-                logFile.WriteLine($">> Archive2.exe {arguments}");
-                proc.StartInfo.UseShellExecute = false; // = true
-                proc.StartInfo.RedirectStandardOutput = true; // // ...
-                proc.StartInfo.RedirectStandardError = true; // // ...
-                proc.StartInfo.FileName = Archive2.archive2Path;
-                proc.StartInfo.Arguments = arguments;
-                proc.StartInfo.CreateNoWindow = true; // // ...
-                proc.Start();
-
-                //MessageBox.Show(/*proc.StandardOutput.ReadToEnd(), */$"Archive2.exe {arguments}");
-                logFile.WriteLine(proc.StandardOutput.ReadToEnd());
-                logFile.WriteLine(proc.StandardError.ReadToEnd());
-                proc.WaitForExit();
-            }
-        }
-
-        private static void CallParallel(String arguments)
-        {
-            if (Archive2.archive2Path == null)
-                return;
-
-            using (Process proc = new Process())
-            {
-                proc.StartInfo.UseShellExecute = false;
-                proc.StartInfo.FileName = Archive2.archive2Path;
-                proc.StartInfo.Arguments = arguments;
-                proc.StartInfo.CreateNoWindow = true;
-                proc.Start();
-            }
-        }
-
-        public static void Extract(String ba2Archive, String outputFolder)
-        {
-            Archive2.Call($"\"{ba2Archive}\" -extract=\"{outputFolder}\" -quiet");
-        }
-
-        public static void Explore(String ba2Archive)
-        {
-            Archive2.CallParallel($"\"{ba2Archive}\"");
-        }
-
-        public static void Explore()
-        {
-            Archive2.CallParallel("");
-        }
-
-        public static void Create(String ba2Archive, String folder)
-        {
-            Archive2.Create(ba2Archive, folder, Archive2.Compression.Default, Archive2.Format.General);
-        }
-
-        public static void Create(String ba2Archive, String folder, Archive2.Preset preset)
-        {
-            Archive2.Create(ba2Archive, folder, preset.compression, preset.format);
-        }
-
-        public static void Create(String ba2Archive, String folder, Archive2.Compression compression, Archive2.Format format)
-        {
-            if (!Directory.Exists(folder))
-                return;
-
-            String compressionStr = Enum.GetName(typeof(Archive2.Compression), (int)compression);
-            String formatStr = Enum.GetName(typeof(Archive2.Format), (int)format);
-            folder = Path.GetFullPath(folder);
-            Archive2.Call($"\"{folder}\" -create=\"{ba2Archive}\" -compression={compressionStr} -format={formatStr} -root=\"{folder}\" -tempFiles -quiet");
-        }
-
-        public static bool ValidatePath(String path)
-        {
-            return path != null && File.Exists(path) && path.EndsWith(".exe");
-        }
-
-        public static bool ValidatePath()
-        {
-            return ValidatePath(Archive2.Archive2Path);
         }
     }
 }

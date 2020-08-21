@@ -20,14 +20,6 @@ namespace Fo76ini
         F76Custom,
         Config
     }
-    public enum GameEdition
-    {
-        Unknown = 0,
-        BethesdaNet = 1,
-        Steam = 2,
-        BethesdaNetPTS = 3,
-        MSStore = 4
-    }
 
     public class IniFiles
     {
@@ -53,12 +45,12 @@ namespace Fo76ini
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-        private static IniFiles instance = null;
-        private static readonly object padlock = new object();
-
         public bool nuclearWinterMode = false;
 
-        public GameEdition GameEdition;
+        //public GameEdition GameEdition;
+
+        private static IniFiles instance = null;
+        private static readonly object padlock = new object();
 
         public static IniFiles Instance
         {
@@ -78,7 +70,7 @@ namespace Fo76ini
         public String GetIniName(IniFile iniFile, GameEdition edition = GameEdition.Unknown)
         {
             if (edition == GameEdition.Unknown)
-                edition = this.GameEdition;
+                edition = Shared.GameEdition;
             bool msstore = edition == GameEdition.MSStore;
             switch (iniFile)
             {
@@ -150,8 +142,8 @@ namespace Fo76ini
             this.GetIniName(IniFile.F76Prefs) = Path.Combine(this.iniParentPath, "Fallout76Prefs.ini");
             this.GetIniName(IniFile.F76Custom) = Path.Combine(this.iniParentPath, "Fallout76Custom.ini");*/
             String pre1point6ConfigPath = Path.Combine(this.iniParentPath, "QuickConfiguration.ini");
-            String oldConfigPath = Path.Combine(Form1.OldAppConfigFolder, "config.ini");
-            this.configPath = Path.Combine(Form1.AppConfigFolder, "config.ini");
+            String oldConfigPath = Path.Combine(Shared.OldAppConfigFolder, "config.ini");
+            this.configPath = Path.Combine(Shared.AppConfigFolder, "config.ini");
 
             // Backwards-compatibility: Move config file to new location:
 
@@ -195,11 +187,12 @@ namespace Fo76ini
             // Do Fallout76.ini and Fallout76Prefs.ini exist?
             if (!File.Exists(GetIniPath(IniFile.F76)) || !File.Exists(GetIniPath(IniFile.F76Prefs)))
             {
-                if (this.GameEdition == GameEdition.MSStore)
+                if (Shared.GameEdition == GameEdition.MSStore)
                 {
                     // Do Fallout76.ini and Fallout76Prefs.ini exist?
                     if (File.Exists(GetIniPath(IniFile.F76, GameEdition.Steam)) && File.Exists(GetIniPath(IniFile.F76Prefs, GameEdition.Steam)))
-                        this.GameEdition = GameEdition.Steam;
+                        Shared.ChangeGameEdition(GameEdition.Steam);
+                        //this.GameEdition = GameEdition.Steam;
                     else
                         throw new FileNotFoundException($"{GetIniName(IniFile.F76)} and {GetIniName(IniFile.F76Prefs)} not found");
                 }
@@ -207,7 +200,8 @@ namespace Fo76ini
                 {
                     // Do Project76.ini and Project76Prefs.ini exist?
                     if (File.Exists(GetIniPath(IniFile.F76, GameEdition.MSStore)) && File.Exists(GetIniPath(IniFile.F76Prefs, GameEdition.MSStore)))
-                        this.GameEdition = GameEdition.MSStore;
+                        Shared.ChangeGameEdition(GameEdition.MSStore);
+                        //this.GameEdition = GameEdition.MSStore;
                     else
                         throw new FileNotFoundException($"{GetIniName(IniFile.F76)} and {GetIniName(IniFile.F76Prefs)} not found");
                 }
@@ -246,7 +240,7 @@ namespace Fo76ini
         public void ChangeGameEdition(GameEdition edition)
         {
             //bool reloadRequired = (this.GameEdition == GameEdition.MSStore && edition != GameEdition.MSStore) || (this.GameEdition != GameEdition.MSStore && edition == GameEdition.MSStore);
-            this.GameEdition = edition;
+            //this.GameEdition = edition;
             /*if (reloadRequired)
                 LoadGameInis();*/
             UpdateLastModifiedDates();

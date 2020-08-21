@@ -88,6 +88,9 @@ namespace Fo76ini
                     break;
             }
 
+            this.checkBoxbApplyCameraNodeAnimations.Checked = false;
+            IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations", false);
+
             if (value < 0)
                 Console.WriteLine($"Camera is offset to the left by {-value / camOffsetToMetersRatio} meters.");
             else if (value > 0)
@@ -113,6 +116,9 @@ namespace Fo76ini
                     IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatAddY", value);
                     break;
             }
+
+            this.checkBoxbApplyCameraNodeAnimations.Checked = false;
+            IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations", false);
 
             if (value < 0)
                 Console.WriteLine($"Camera is zoomed out by {-value / camOffsetToMetersRatio} meters.");
@@ -142,6 +148,9 @@ namespace Fo76ini
                     IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatPosZ", value);
                     break;
             }
+
+            this.checkBoxbApplyCameraNodeAnimations.Checked = false;
+            IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations", false);
 
             if (value < 0)
                 Console.WriteLine($"Camera is offset downwards by {-value / camOffsetToMetersRatio} meters.");
@@ -187,6 +196,9 @@ namespace Fo76ini
                     IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatPosZ", 0);
                     break;
             }
+
+            this.checkBoxbApplyCameraNodeAnimations.Checked = false;
+            IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations", false);
 
             UpdateCameraPositionUI();
         }

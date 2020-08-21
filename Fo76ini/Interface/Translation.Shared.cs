@@ -1,42 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Media;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace Fo76ini
 {
-    public class MsgBox
+    public partial class Localization
     {
-        public String Title;
-        public String Text;
-        private String id;
-
-        public String ID
+        private static void AddSharedStrings()
         {
-            get { return id; }
+            localizedStrings["newVersionAvailable"] = "There is a newer version available: {0}";
+            localizedStrings["updateNowButton"] = "Update now!";
+            localizedStrings["modsDeploymentNecessary"] = "Deployment necessary";
+            localizedStrings["modsAllDone"] = "All set";
+            localizedStrings["modsFailed"] = "Something went wrong, see log files for details.";
+            localizedStrings["modsTableFormatGeneral"] = "General";
+            localizedStrings["modsTableFormatTextures"] = "Textures";
+            localizedStrings["modsTableFormatAutoDetect"] = "Auto";
+            localizedStrings["modsTableTypeBundled"] = "Bundled";
+            localizedStrings["modsTableTypeSeparate"] = "Separate";
+            localizedStrings["modsTableTypeSeparateFrozen"] = "Separate (Frozen)";
+            localizedStrings["modsTableTypeLoose"] = "Loose";
+            localizedStrings["modTableFrozenPending"] = "Pending";
+            //localizedStrings["modDetailsTitle"] = "Edit {0}";
+            //localizedStrings["modDetailsTitleBulk"] = "Edit {0} mods";
+            localizedStrings["modDetailsTitleBulkSelected"] = "{0} mods selected";
+            localizedStrings["nmResetTime"] = "in {0} hour(s) and {1} minute(s)";
+            localizedStrings["nmResetTimeNever"] = "Never";
+            localizedStrings["nmRateLimitLeft"] = "{0} left";
+            localizedStrings["nmBasicAccount"] = "Basic";
+            localizedStrings["nmSupporterAccount"] = "Supporter";
+            localizedStrings["nmPremiumAccount"] = "Premium";
+            localizedStrings["notApplicable"] = "N/A";
+            localizedStrings["yes"] = "Yes";
+            localizedStrings["no"] = "No";
+            localizedStrings["valid"] = "Valid";
+            localizedStrings["invalid"] = "Invalid";
         }
 
-        public MsgBox (String id, String title, String text)
-        {
-            this.Title = title;
-            this.Text = text;
-            this.id = id;
-        }
-
-        /*
-         * I don't know where to put this, so I'll put this here:
-         */
         public static void AddSharedMessageBoxes()
         {
             // Form1:
+            MsgBox.Add("iniParsingError",
+                "Couldn't parse *.ini files",
+                "At least one of the game's *.ini files is corrupted or contains a syntax error.\n\nYou might:\n    -> read the error message and fix the error or\n    -> delete the invalid *.ini file and start Fallout 76 to create a new, valid *.ini file\n    -> and then try again.\n\nERROR MESSAGE:\n{0}"
+            );
+
             MsgBox.Add("backupAndSave",
                 "Backup and save",
                 "Do you want to create a backup before applying all changes?\n\n" +
-                "    Press \"Yes\" to create a backup and save.\n" + 
+                "    Press \"Yes\" to create a backup and save.\n" +
                 "    Press \"No\" to save without backup.\n" +
                 "    Press \"Cancel\" to abort."
             );
@@ -67,9 +81,9 @@ namespace Fo76ini
             MsgBox.Add("iniFilesModified",
                 "Files modified",
                 "*.ini files have been modified outside of the tool while it's running.\n" +
-                "NOTE: Any changes will be overwritten, if clicked on \"Apply\" or if mods are managed.\n" + 
+                "NOTE: Any changes will be overwritten, if clicked on \"Apply\" or if mods are managed.\n" +
                 "Please restart the tool to work with the new values."
-            ); 
+            );
 
             MsgBox.Add("onLoadFuncException",
                 "Error while loading UI",
@@ -99,7 +113,19 @@ namespace Fo76ini
                 "Unfortunately, it's not possible to launch the executable directly due to \"security\" restrictions. Thanks Microsoft, we hate it. :("
             );
 
+            MsgBox.Add("customIniFilesParsingError",
+                "Couldn't add your custom *.ini tweaks",
+                "At least one of your custom *.ini files contains an error.\n{0}"
+            );
+
+            MsgBox.Add("displayResolutionTooLow",
+                "Display resolution might be too low",
+                "Your display resolution is not supported.\nThe windows might be to big to fit on screen.\nYour display size: {0}\nMinimum display size: {1}\nRecommended display size: 1920 x 1080"
+            );
+
+
             // Mods:
+
             MsgBox.Add("modsDisabledDone",
                 "Done",
                 "Mods have been disabled and removed from the game."
@@ -185,7 +211,7 @@ namespace Fo76ini
 
             MsgBox.Add("modsOnCloseDeploymentNecessary",
                 "Are you sure?",
-                "You haven't deployed the changes you made.\n" + 
+                "You haven't deployed the changes you made.\n" +
                 "Are you sure you want to close the mod manager?"
             );
 
@@ -243,7 +269,7 @@ namespace Fo76ini
 
             MsgBox.Add("nwModeEnabledButModsAreDeployed",
                 "Mods are still deployed",
-                "You've enabled the Nuclear Winter mode, but your mods are still deployed.\n" + 
+                "You've enabled the Nuclear Winter mode, but your mods are still deployed.\n" +
                 "Do you want to disable them now?"
             );
 
@@ -252,136 +278,54 @@ namespace Fo76ini
                 "You've disabled the Nuclear Winter mode, but your mods are still disabled.\n" +
                 "Do you want to deploy them now?"
             );
-        }
-
-        private static Dictionary<String, MsgBox> msgBoxes = new Dictionary<String, MsgBox>();
-        public static void Add(MsgBox msgBox)
-        {
-            MsgBox.msgBoxes[msgBox.id] = msgBox;
-        }
-        public static void Add(String id, String title, String text)
-        {
-            MsgBox.msgBoxes[id] = new MsgBox(id, title, text);
-        }
-        public static MsgBox Get(String key)
-        {
-            if (MsgBox.msgBoxes.ContainsKey(key))
-                return MsgBox.msgBoxes[key];
-            else
-                return new MsgBox("notfound", $"-- Messagebox \"{key}\" not found --", $"If you read this, the programmer screwed up, lol.\nAvailable messageboxes:\n{String.Join("\n", MsgBox.msgBoxes.Keys.ToArray())}");
-        }
-
-        public MsgBox FormatTitle(params String[] values)
-        {
-            try
-            {
-                return new MsgBox(this.ID, String.Format(this.Title, values), this.Text);
-            }
-            catch (FormatException ex)
-            {
-                return this;
-            }
-        }
-
-        public MsgBox FormatText(params String[] values)
-        {
-            try
-            {
-                return new MsgBox(this.ID, this.Title, String.Format(this.Text, values));
-            }
-            catch (FormatException ex)
-            {
-                return this;
-            }
-        }
 
 
+            // NexusMods
 
-        public static DialogResult ShowID(String id)
-        {
-            return MsgBox.Get(id).Show();
-        }
+            MsgBox.Add("nexusModsRemoteInfoRefreshedSuccess",
+                "Mod information updated",
+                "Mod information updated and thumbnails downloaded."
+            );
 
-        public static DialogResult ShowID(String id, MessageBoxButtons buttons, MessageBoxIcon icon)
-        {
-            return MsgBox.Get(id).Show(buttons, icon);
-        }
+            MsgBox.Add("nexusModsProfileRefreshFailed",
+                "Failed",
+                "Couldn't update your profile:\n{0}"
+            );
 
-        public static DialogResult ShowID(String id, MessageBoxButtons buttons)
-        {
-            return MsgBox.Get(id).Show(buttons);
-        }
+            MsgBox.Add("nexusModsDeleteThumbnails",
+                "Are you sure?",
+                "Do you really want to delete all thumbnails?"
+            );
 
-        public static DialogResult ShowID(String id, MessageBoxIcon icon)
-        {
-            return MsgBox.Get(id).Show(icon);
-        }
+            MsgBox.Add("nexusModsDeleteThumbnailsSuccess",
+                "Done",
+                "Thumbnails deleted."
+            );
 
-        public DialogResult Show()
-        {
-            SystemSounds.Asterisk.Play();
-            return MessageBox.Show(this.Text, this.Title);
-        }
+            MsgBox.Add("nexusModsDeleteThumbnailsFailed",
+                "Something went wrong",
+                "Thumbnails couldn't be deleted.\nTry again later."
+            );
 
-        public DialogResult Show(MessageBoxButtons buttons, MessageBoxIcon icon)
-        {
-            SystemSounds.Asterisk.Play();
-            return MessageBox.Show(this.Text, this.Title, buttons, icon);
-        }
+            MsgBox.Add("nexusModsRemoveProfile",
+                "Are you sure?",
+                "Do you really want to remove your profile from the mod manager?"
+            );
 
-        public DialogResult Show(MessageBoxButtons buttons)
-        {
-            SystemSounds.Asterisk.Play();
-            return MessageBox.Show(this.Text, this.Title, buttons);
-        }
+            MsgBox.Add("nexusModsRemoveProfileSuccess",
+                "Done",
+                "Profile removed."
+            );
 
-        public DialogResult Show(MessageBoxIcon icon)
-        {
-            SystemSounds.Asterisk.Play();
-            return MessageBox.Show(this.Text, this.Title, MessageBoxButtons.OK, icon);
-        }
+            MsgBox.Add("nexusModsRemoveRemoteInfo",
+                "Are you sure?",
+                "Do you really want to remove mod information?"
+            );
 
-        public void Popup()
-        {
-            Utils.CreatePopup(this.Title, this.Text).Popup();
-            SystemSounds.Asterisk.Play();
-        }
-
-        public void Popup(MessageBoxIcon icon)
-        {
-            Utils.CreatePopup(this.Title, this.Text, icon).Popup();
-            SystemSounds.Asterisk.Play();
-        }
-
-        public static XElement Serialize()
-        {
-            XElement xmlMessageBoxes = new XElement("Messageboxes");
-            foreach (KeyValuePair<String, MsgBox> entry in MsgBox.msgBoxes)
-            {
-                xmlMessageBoxes.Add(
-                    new XElement("Messagebox",
-                        new XAttribute("title", entry.Value.Title),
-                        new XAttribute("id", entry.Value.ID),
-                        entry.Value.Text
-                    )
-                );
-            }
-            return xmlMessageBoxes;
-        }
-
-        public static void Deserialize(XElement xmlMessageBoxes)
-        {
-            if (xmlMessageBoxes != null)
-            {
-                foreach (XElement xmlMessageBox in xmlMessageBoxes.Descendants("Messagebox"))
-                {
-                    MsgBox.Add(new MsgBox(
-                        xmlMessageBox.Attribute("id").Value,
-                        xmlMessageBox.Attribute("title").Value,
-                        xmlMessageBox.Value
-                    ));
-                }
-            }
+            MsgBox.Add("nexusModsRemoveRemoteInfoSuccess",
+                "Done",
+                "Mod information removed."
+            );
         }
     }
 }

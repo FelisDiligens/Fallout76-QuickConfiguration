@@ -14,6 +14,7 @@ using System.Globalization;
 using System.Drawing;
 using System.Drawing.Imaging;
 using Tulpep.NotificationWindow;
+using System.Drawing.Drawing2D;
 
 namespace Fo76ini
 {
@@ -537,6 +538,70 @@ namespace Fo76ini
                     throw new Exception($"Trying to create a hardlink in \"{newLinkPath}\" but this file already exists.");
             }
             return Utils.CreateHardLink(newLinkPath, originalFilePath, IntPtr.Zero);
+        }
+
+        public static ImageCodecInfo GetImageEncoder(ImageFormat format)
+        {
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+            foreach (ImageCodecInfo codec in codecs)
+            {
+                if (codec.FormatID == format.Guid)
+                {
+                    return codec;
+                }
+            }
+            return null;
+        }
+
+        // https://stackoverflow.com/questions/2808887/create-thumbnail-image
+        // https://stackoverflow.com/questions/1940581/c-sharp-image-resizing-to-different-size-while-preserving-aspect-ratio
+        // https://stackoverflow.com/questions/1484759/quality-of-a-saved-jpg-in-c-sharp
+        /*
+         * Creates an thumbnail as *.jpg with a given width and height.
+         * Instead of stretching the image, it'll resize it while maintaining the aspect ratio.
+         * A black padding will be drawn if the aspect ratios don't match.
+         */
+        public static Image MakeThumbnail(Image image, string thumbnailPath, int canvasWidth = 160, int canvasHeight = 90, long quality = 70L)
+        {
+            Image thumbnail = new Bitmap(canvasWidth, canvasHeight);
+            Graphics graphic = Graphics.FromImage(thumbnail);
+
+            graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphic.SmoothingMode = SmoothingMode.HighQuality;
+            graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            graphic.CompositingQuality = CompositingQuality.HighQuality;
+
+            // Figure out the ratio
+            double ratioX = (double)canvasWidth / (double)image.Width;
+            double ratioY = (double)canvasHeight / (double)image.Height;
+            // use whichever multiplier is smaller
+            double ratio = ratioX < ratioY ? ratioX : ratioY;
+
+            // now we can get the new height and width
+            int newHeight = Convert.ToInt32(image.Height * ratio);
+            int newWidth = Convert.ToInt32(image.Width * ratio);
+
+            // Now calculate the X,Y position of the upper-left corner 
+            // (one of these will always be zero)
+            int posX = Convert.ToInt32((canvasWidth - (image.Width * ratio)) / 2);
+            int posY = Convert.ToInt32((canvasHeight - (image.Height * ratio)) / 2);
+
+            graphic.Clear(Color.Black); // background color, padding
+            graphic.DrawImage(image, posX, posY, newWidth, newHeight);
+
+            // Save the thumbnails as JPEG:
+            ImageCodecInfo jgpEncoder = Utils.GetImageEncoder(ImageFormat.Jpeg);
+            EncoderParameters encoderParameters = new EncoderParameters(1);
+            encoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
+            thumbnail.Save(thumbnailPath, jgpEncoder, encoderParameters);
+
+            return thumbnail;
+        }
+
+        public static Image MakeThumbnail(string filePath, string thumbnailPath, int canvasWidth = 160, int canvasHeight = 90, long quality = 70L)
+        {
+            Image image = Image.FromFile(filePath);
+            return Utils.MakeThumbnail(image, thumbnailPath, canvasWidth, canvasHeight, quality);
         }
     }
 }

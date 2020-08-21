@@ -117,203 +117,68 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="checkBoxVanityMode.ToolTip" xml:space="preserve">
-    <value>When this option is checked, the camera will spin around the character after no input was given for a certain amount of time.
-Not sure if it does anything, though. I stood around for 5 minutes and the camera didn't spin. Needs more testing.
-
-Affected values: bDisableAutoVanityMode
-Affected files: Fallout76Custom.ini</value>
-  </data>
-  <data name="labelDisplayMode.ToolTip" xml:space="preserve">
-    <value>Changes the display mode.
-
-
-Fullscreen: Real fullscreen mode
-
-Windowed: Windowed mode with border
-
-Borderless windowed: Make sure, the resolution matches your display's resolution.
-
-Borderless windowed (Fullscreen): Window will be maximized to fit your screen.
-Looks pixelated (it uses Nearest Neighbor), if the resolution is low.
-
-
-Affected values: bFull Screen, bBorderless
-Affected files: Fallout76Prefs.ini</value>
-  </data>
-  <data name="checkBoxTopMostWindow.ToolTip" xml:space="preserve">
-    <value>Checking this will keep the game's window in foreground.
-NOTE: This will prevent you from being able to Alt+Tab on single monitors.
-
-Affected values: bTopMostWindow
-Affected files: Fallout76Prefs.ini</value>
-  </data>
-  <data name="checkBoxFixHUDFor5_4and4_3.ToolTip" xml:space="preserve">
-    <value>Fixes hidden / borked
-  * lock picking screen and
-  * Power Armor HUD
-for 5:4 and 4:3 screens.
-
-Mostly untested.
-
-Affected values: fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
-Affected files: Fallout76Custom.ini</value>
-  </data>
-  <data name="labelAntiAliasing.ToolTip" xml:space="preserve">
-    <value>Reduces aliasing by blurring edges of objects.
-
-TAA - Temporal Anti-Aliasing: Relatively expensive, default
-FXAA - Fast Approximate Anti-Aliasing: Slightly improves performance, aliasing slightly visible
-Off - Improves performance, aliasing clearly visible
-
-NOTE: For some reason FXAA doesn't work. The game just disables AA entirely. Atleast for me.
-
-Default: TAA
-Affected values: sAntiAliasing
-Affected files: Fallout76Prefs.ini</value>
-  </data>
-  <data name="checkBoxVSync.ToolTip" xml:space="preserve">
-    <value>Unchecking this will uncap the frame rate.
-
-Enable this if you experience screen tearing.
-Disable this if you experience input lag.
-
-Please note: Cap the game to 60 FPS manually. (e.g. using NVIDIA's Control Panel)
-
-
-Default: Enabled
-Affected values: iPresentInterval
-Affected files: Fallout76Prefs.ini</value>
-  </data>
-  <data name="checkBoxWeatherRainOcclusion.ToolTip" xml:space="preserve">
-    <value>When checked, rain won't be rendered around your character
-if you're beneath an elevated highway or in a building,
-and rain drops and splashes won't be rendered on the floor.
-
-Affected values: bRainOcclusion
-Affected files: Fallout76.ini</value>
-  </data>
-  <data name="checkBoxRadialBlur.ToolTip" xml:space="preserve">
-    <value>Blurs the screen when the player is hurt (e.g. hit by bullets) or under water.
-Unchecking this might result in a clear view underwater.
-
-Affected values: bDoRadialBlur, iRadialBlurLevel
-Affected files: Fallout76Custom.ini</value>
-  </data>
-  <data name="checkBoxDepthOfField.ToolTip" xml:space="preserve">
-    <value>Unchecking this will disable all Depth of Field effects.
-
-Affected files: Fallout76Custom.ini
-Affected values:
-   bDynamicDepthOfField
-   fDOFBlendRatio
-   fDOFMinFocalCoefDist
-   fDOFMaxFocalCoefDist
-   fDOFDynamicFarRange
-   fDOFCenterWeightInt
-   fDOFFarDistance</value>
-  </data>
-  <data name="checkBoxAmbientOcclusion.ToolTip" xml:space="preserve">
-    <value>Unchecking this will disable ambient occlusion.
-Ambient occlusion basically adds fake shadows to places light sources can't reach (concave edges).
-
-Affected values: bSAOEnable
-Affected files: Fallout76Prefs.ini</value>
-  </data>
-  <data name="checkBoxFixMouseSensitivity.ToolTip" xml:space="preserve">
-    <value>If checked, the sensitivity for looking up/down and left/right will be equal.
-If unchecked (default), the sensitivity for looking left/right will likely be higher than up/down.
-
-When checked, your mouse sensitivity might increase.
-
-The sensitivity depends on your display's aspect ratio:
-    For 4:3, the value of X is .028
-    For 16:9, the value of X is .03738
-    For 16:10, the value of X is .0336
-    For 21:9, the value of X is .042
-
-Default: Disabled (.021 for both)
-Affected values: fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
-Affected files: Fallout76Custom.ini</value>
-  </data>
-  <data name="checkBoxFixAimSensitivity.ToolTip" xml:space="preserve">
-    <value>If checked, the aim sensitivity will be equal to normal sensitivity.
-If unchecked (default), the sensitivity will be lower when aiming down iron sights.
-
-Note: This might only work on 16:9 monitors.
-If it works for you on an other monitor (e.g. 21:9), please let me know.
-
-Note 2: This might not work in-game while crouching.
-
-Affected values: fIronSightsFOVRotateMult
-Affected files: Fallout76Custom.ini</value>
-  </data>
-  <data name="sliderGrassFadeDistance.ToolTip" xml:space="preserve">
-    <value>Sets the distance grass will begin to fade.
-
-Medium is 4500
-High is 5500
-Ultra is 7000
-
-Affected values: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
-Affected files: Fallout76Prefs.ini
-</value>
-  </data>
-  <data name="sliderShadowDistance.ToolTip" xml:space="preserve">
-    <value>Sets the distance that shadows are rendered.
-
-Ultra is 150000
-High is 120000
-Medium is 90000
-Low is 60000
-
-I think, setting it to a low value will disable shadows. Needs more testing.
-
-Affected values: fShadowDistance, fDirShadowDistance
-Affected files: Fallout76Prefs.ini
-</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Amount of "segments" of lower-res shadows at a distance.
-A value of 1 forces the game to render only the lowest resolution shadows.
-
-Affected values: iDirShadowSplits
-Affected files: Fallout76Prefs.ini</value>
-  </data>
-  <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>107, 17</value>
-  </metadata>
-  <metadata name="timerCheckFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>221, 17</value>
-  </metadata>
-  <metadata name="openFileDialogGamePath.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>864, 17</value>
-  </metadata>
-  <data name="labelCredentialsExplanation.Text" xml:space="preserve">
-    <value>Your credentials are saved into Fallout76Custom.ini
-This way, you don't have to enter your username and password manually
-if you start Fallout 76 without the launcher.
-
-If you use Steam and want to use your Bethesda.net account
-(e.g. to spent Atoms), tick Disable Steam.
-NOTE: Your achievements will be disabled as well!</value>
-  </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1054, 17</value>
+    <value>222, 17</value>
   </metadata>
-  <metadata name="backgroundWorkerLoadGallery.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1159, 17</value>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
   </metadata>
-  <metadata name="backgroundWorkerGetLatestVersion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1380, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>82</value>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>222, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripButtonMoveUp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC+SURBVEhL7ZBBCsIwEEVDjVsFryhMVsVkpTu9VqELD+Cd
+        NNMO2uiM6aR2IfTDg5L+zqTPqFLXm45Zsg+7yh2uCD7T6Y8CsLbOt9aFe49v8YzeTkw3PDSv4U+a6Uui
+        ivTm78Q/Kdb1oUWiRJesRUKhK6tFYoyu0VokvunSa5FgdBVrkRjqguO2An/ji+XgTJzdLxFiwZ+4jxNi
+        h+r6rFy4sEMHYIfq+sTbnbmhCbFDdX1mX7AoymZRlM0fKDLmARhb1lLZqDWmAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="labelNMInfo.Text" xml:space="preserve">
+    <value>The mod manager can retrieve mod version and thumbnail via the NexusMods API for you.
+To access the API, you'll need to provide your personal API key.
+
+Your personal API key will be stored locally and will be used for the following purposes:
+- retrieving mod information, such as name, version, and thumbnails
+- displaying some account information, such as user name, profile picture, account status, and rate limit
+- show if updates are available
+
+Since your personal API key is linked to your account, NEVER share the key with any other user, or app you don't trust.
+
+I'm not affiliated with NexusMods. This feature is unofficial and uses the public API.</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
+  <metadata name="openFileDialogMod.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>327, 17</value>
+  </metadata>
+  <metadata name="folderBrowserDialogMod.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>486, 17</value>
+  </metadata>
+  <metadata name="openFileDialogGamePath.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>674, 17</value>
+  </metadata>
+  <metadata name="openFileDialogBA2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>864, 17</value>
+  </metadata>
+  <metadata name="folderBrowserDialogPickRootDir.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="backgroundWorkerRetrieveModInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>243, 56</value>
+  </metadata>
+  <metadata name="backgroundWorkerRetrieveProfileInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>491, 56</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>151</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAUAEBAAAAEAIABoBAAAVgAAABgYAAABACAAiAkAAL4EAAAgIAAAAQAgAKgQAABGDgAAMDAAAAEA

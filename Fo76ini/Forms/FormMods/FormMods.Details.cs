@@ -1,4 +1,5 @@
 ﻿using Fo76ini.Properties;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,9 +25,12 @@ namespace Fo76ini
         private bool bulk = false;
         private int modCount = 1;
 
+        private int editedIndex;
+        private List<int> editedIndices;
+
         private void InitializeDetailControls()
         {
-            ComboBoxContainer.Add("ModInstallAs", new ComboBoxContainer(
+            DropDown.Add("ModInstallAs", new DropDown(
                 this.comboBoxModInstallAs,
                 new String[] {
                     "Bundled *.ba2 archive",
@@ -34,7 +39,7 @@ namespace Fo76ini
                 }
             ));
 
-            ComboBoxContainer.Add("ModArchivePreset", new ComboBoxContainer(
+            DropDown.Add("ModArchivePreset", new DropDown(
                 this.comboBoxModArchivePreset,
                 new String[] {
                     "-- Please select --",
@@ -67,10 +72,19 @@ namespace Fo76ini
         private void pictureBoxCollapseDetails_Click(object sender, EventArgs e)
         {
             if (this.panelModDetails.Visible)
-                buttonModDetailsCancel_Click(sender, e);
-                //CollapseSidePanel();
+                //CloseSidePanel();
+                CollapseSidePanel();
             else
                 ExpandSidePanel();
+        }
+
+        private void CloseSidePanel()
+        {
+            this.ModDetailsClosed();
+            this.CollapseAndHideSidePanel();
+
+            // Reset image, so the thumbnail gets unloaded:
+            this.pictureBoxModThumbnail.Image = Resources.bg;
         }
 
         private void CollapseAndHideSidePanel()
@@ -120,6 +134,12 @@ namespace Fo76ini
             if (mod != null)
                 this.changedMod = mod.CreateCopy();
 
+            String thumbnailPath = Path.Combine(Shared.GamePath, "Mods", this.changedMod.Thumbnail);
+            if (File.Exists(thumbnailPath))
+                this.pictureBoxModThumbnail.Image = Image.FromFile(thumbnailPath);
+            else
+                this.pictureBoxModThumbnail.Image = Resources.bg;
+
             if (modCount > 1)
             {
                 this.bulk = true;
@@ -141,12 +161,14 @@ namespace Fo76ini
             this.checkBoxModDetailsEnabled.Checked = this.changedMod.isEnabled;
 
             if (this.modCount > 1)
-                this.labelModTitle.Text = String.Format(Translation.localizedStrings["modDetailsTitleBulk"], this.modCount);
+                this.labelModTitle.Text = String.Format(Localization.localizedStrings["modDetailsTitleBulkSelected"], this.modCount);
             else
-                this.labelModTitle.Text = this.changedMod.Title;
+                this.labelModTitle.Text = this.changedMod.PublicName != "" ? this.changedMod.PublicName : this.changedMod.Title;
             this.textBoxModName.Text = this.changedMod.Title;
             this.textBoxModFolderName.Text = this.changedMod.ManagedFolder;
             this.textBoxModRootDir.Text = this.changedMod.RootFolder;
+            this.textBoxModURL.Text = this.changedMod.URL;
+            this.textBoxModVersion.Text = this.changedMod.Version;
 
             switch (this.changedMod.Type)
             {
@@ -224,7 +246,7 @@ namespace Fo76ini
             /*this.comboBoxModArchivePreset.Enabled = !isFrozen;
             this.comboBoxModInstallAs.Enabled = !isFrozen;
             this.buttonModRepairDDS.Enabled = !isFrozen;*/
-            this.groupBoxModDetailsInstallationOptions.Enabled = !isFrozen;
+            this.groupBoxModDetailsInstallationOptions.Visible = !isFrozen;
 
             // Preset
             if (!isFrozen && this.changedMod.Type == Mod.FileType.SeparateBA2)
@@ -341,10 +363,10 @@ namespace Fo76ini
 
         private void buttonModPickRootDir_Click(object sender, EventArgs e)
         {
-            this.folderBrowserDialogPickRootDir.SelectedPath = Path.Combine(ManagedMods.Instance.GamePath, "Data");
+            this.folderBrowserDialogPickRootDir.SelectedPath = Path.Combine(Shared.GamePath, "Data");
             if (this.folderBrowserDialogPickRootDir.ShowDialog() == DialogResult.OK)
             {
-                String rootFolder = Utils.MakeRelativePath(ManagedMods.Instance.GamePath, this.folderBrowserDialogPickRootDir.SelectedPath);
+                String rootFolder = Utils.MakeRelativePath(Shared.GamePath, this.folderBrowserDialogPickRootDir.SelectedPath);
                 this.textBoxModRootDir.Text = rootFolder;
                 this.changedMod.RootFolder = rootFolder;
             }
@@ -365,7 +387,11 @@ namespace Fo76ini
         private void textBoxModName_TextChanged(object sender, EventArgs e)
         {
             if (textBoxModName.Focused)
+            {
                 this.changedMod.Title = this.textBoxModName.Text;
+                if (this.changedMod.PublicName == "")
+                    this.labelModTitle.Text = this.changedMod.Title;
+            }
         }
 
         private void checkBoxModDetailsEnabled_CheckedChanged(object sender, EventArgs e)
@@ -381,6 +407,16 @@ namespace Fo76ini
         private void textBoxModFolderName_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxModURL_TextChanged(object sender, EventArgs e)
+        {
+            this.changedMod.URL = this.textBoxModURL.Text;
+        }
+
+        private void textBoxModVersion_TextChanged(object sender, EventArgs e)
+        {
+            this.changedMod.Version = this.textBoxModVersion.Text;
         }
 
 
@@ -433,8 +469,7 @@ namespace Fo76ini
 
         private void buttonModDetailsCancel_Click(object sender, EventArgs e)
         {
-            this.ModDetailsClosed();
-            this.CollapseAndHideSidePanel();
+            this.CloseSidePanel();
         }
 
         private void buttonModDetailsOK_Click(object sender, EventArgs e)

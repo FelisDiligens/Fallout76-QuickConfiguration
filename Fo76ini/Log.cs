@@ -62,7 +62,7 @@ namespace Fo76ini
         public static String GetFilePath(String fileName)
         {
             // return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", fileName);
-            return Path.Combine(Form1.AppConfigFolder, fileName);
+            return Path.Combine(Shared.AppConfigFolder, fileName);
         }
     }
 }

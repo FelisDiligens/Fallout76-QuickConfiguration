@@ -7,120 +7,6 @@ using System.Windows.Forms;
 
 namespace Fo76ini
 {
-    public struct ComboBoxContainer
-    {
-        public ComboBox comboBox;
-        private List<String> items;
-
-        public static Dictionary<String, ComboBoxContainer> Dict = new Dictionary<String, ComboBoxContainer>();
-
-        public static void Add(String key, ComboBoxContainer comboBox)
-        {
-            Dict.Add(key, comboBox);
-        }
-
-        public static ComboBoxContainer Get(String key)
-        {
-            return Dict[key];
-        }
-
-        public static bool ContainsKey(String key)
-        {
-            return Dict.ContainsKey(key);
-        }
-
-        public ComboBoxContainer(ComboBox comboBox)
-        {
-            this.comboBox = comboBox;
-            this.items = new List<String>();
-            foreach (object item in comboBox.Items)
-                this.items.Add((String)item);
-        }
-
-        public ComboBoxContainer(ComboBox comboBox, List<String> items)
-        {
-            this.comboBox = comboBox;
-            this.items = items;
-            this.comboBox.Items.Clear();
-            this.comboBox.Items.AddRange(this.items.ToArray());
-        }
-
-        public ComboBoxContainer(ComboBox comboBox, String[] items)
-        {
-            this.comboBox = comboBox;
-            this.items = new List<String>();
-            foreach (String item in items)
-                this.items.Add(item);
-            this.comboBox.Items.Clear();
-            this.comboBox.Items.AddRange(this.items.ToArray());
-        }
-
-        public void Add(String item)
-        {
-            this.comboBox.Items.Add(item);
-            this.items.Add(item);
-        }
-
-        public void AddRange(String[] items)
-        {
-            this.comboBox.Items.AddRange(items);
-            foreach (String item in items)
-                this.items.Add(item);
-        }
-
-        public bool Contains(String item)
-        {
-            return this.items.Contains(item);
-        }
-
-        public int FindIndex(String match)
-        {
-            return this.items.FindIndex(x => x == match);
-        }
-
-        public int FindIndex(Predicate<string> match)
-        {
-            return this.items.FindIndex(match);
-        }
-
-        public void Clear()
-        {
-            this.comboBox.Items.Clear();
-            this.items.Clear();
-        }
-
-        public void SetRange(String[] items)
-        {
-            this.Clear();
-            this.comboBox.Items.AddRange(items);
-            foreach (String item in items)
-                this.items.Add(item);
-        }
-
-        public List<String> Items
-        {
-            get { return this.items; }
-            set
-            {
-                this.items = value;
-                this.comboBox.Items.Clear();
-                this.comboBox.Items.AddRange(value.ToArray());
-            }
-        }
-
-        public int SelectedIndex
-        {
-            get { return this.comboBox.SelectedIndex; }
-            set { this.comboBox.SelectedIndex = value; }
-        }
-
-        public String SelectedItem
-        {
-            get { return this.items[this.comboBox.SelectedIndex]; }
-        }
-    }
-
-
     public class UILoader
     {
         public delegate void OnLoadUIFunction();
@@ -148,6 +34,7 @@ namespace Fo76ini
         {
             OnLoadUI.Add(func);
         }
+
 
         /*
          **************************************************************
