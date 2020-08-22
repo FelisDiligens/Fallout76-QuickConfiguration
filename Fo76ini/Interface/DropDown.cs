@@ -156,6 +156,12 @@ namespace Fo76ini
             foreach (XElement element in xmlDropDown.Descendants("Option"))
                 options.Add(element.Value);
 
+            if (options.Count() != this.Items.Count())
+            {
+                Console.WriteLine($"Invalid dropdown option count of '{xmlDropDown.Attribute("id").Value}'. Expected {this.Items.Count()}, got {options.Count()}.");
+                return;
+            }
+
             this.ReplaceRange(options.ToArray<String>());
         }
 

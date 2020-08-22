@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.8">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.8.0h1">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Update now!" id="updateNowButton" />
@@ -68,9 +68,11 @@
       <Option>16x</Option>
     </Dropdown>
     <Dropdown id="ShadowTextureResolution">
+      <Option>512 = Kartoffel</Option>
       <Option>1024 = Niedrig</Option>
       <Option>2048 = Hoch (Standard)</Option>
       <Option>4096 = Ultra</Option>
+      <Option>8192 = Verrückt</Option>
     </Dropdown>
     <Dropdown id="ShadowBlurriness">
       <Option>1x</Option>
