@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.7.1">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.8">
   <Strings>
     <String text="Доступна новая версия: {0}" id="newVersionAvailable" />
+    <String text="Обновить!" id="updateNowButton" />
     <String text="Необходима установка" id="modsDeploymentNecessary" />
     <String text="Всё установлено" id="modsAllDone" />
     <String text="Что-то пошло не так, смотрите лог-файлы для получения подробной информации." id="modsFailed" />
@@ -13,11 +14,20 @@
     <String text="Отдельный (Заморожен)" id="modsTableTypeSeparateFrozen" />
     <String text="Без архива" id="modsTableTypeLoose" />
     <String text="В очереди" id="modTableFrozenPending" />
-    <String text="Править {0}" id="modDetailsTitle" />
-    <String text="Править {0} модов" id="modDetailsTitleBulk" />
+    <String text="Модов выбрано: {0}" id="modDetailsTitleBulkSelected" />
+    <String text="за {0} часа(ов) и {1} минут(ы)" id="nmResetTime" />
+    <String text="Никогда" id="nmResetTimeNever" />
+    <String text="{0} осталось" id="nmRateLimitLeft" />
+    <String text="Основной" id="nmBasicAccount" />
+    <String text="Поддержка" id="nmSupporterAccount" />
+    <String text="Премиум" id="nmPremiumAccount" />
     <String text="Не выбрано" id="notApplicable" />
     <String text="Да" id="yes" />
     <String text="Нет" id="no" />
+    <String text="Верный" id="valid" />
+    <String text="Неверный" id="invalid" />
+    <String text="Править {0}" id="modDetailsTitle" />
+    <String text="Править {0} модов" id="modDetailsTitleBulk" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -66,18 +76,50 @@
       <Option>2x</Option>
       <Option>3x = По-умолчанию, рекомендуется</Option>
     </Dropdown>
+    <Dropdown id="Files">
+      <Option>Fallout76.ini</Option>
+      <Option>Fallout76Prefs.ini</Option>
+      <Option>Fallout76Custom.ini</Option>
+    </Dropdown>
+    <Dropdown id="VoiceChatMode">
+      <Option>Авто</Option>
+      <Option>Нет</Option>
+      <Option>Область</Option>
+      <Option>Группа</Option>
+    </Dropdown>
+    <Dropdown id="ShowActiveEffectsOnHUD">
+      <Option>Отключены</Option>
+      <Option>Вредные</Option>
+      <Option>Все</Option>
+    </Dropdown>
+    <Dropdown id="iDirShadowSplits">
+      <Option>1 - Низкие</Option>
+      <Option>2 - Высокие / Средние</Option>
+      <Option>3 - Ультра</Option>
+    </Dropdown>
     <Dropdown id="ModInstallAs">
       <Option>Объединённый архив *.ba2</Option>
       <Option>Отдельный архив *.ba2</Option>
       <Option>Незапакованные файлы</Option>
     </Dropdown>
-    <Dropdown id="ModArchiveFormat">
-      <Option>Автоопределение</Option>
-      <Option>По-умолчанию</Option>
+    <Dropdown id="ModArchivePreset">
+      <Option>-- Выберите --</Option>
+      <Option>Автовыбор</Option>
+      <Option>Основные / Интерфейс / Материалы / Анимации</Option>
       <Option>Текстуры (файлы *.dds)</Option>
+      <Option>Звуки / Музыка / Голоса</Option>
     </Dropdown>
   </Dropdowns>
   <Messageboxes>
+    <Messagebox title="Couldn't parse *.ini files" id="iniParsingError">По крайней мере, один из игровых файлов *.ini повреждён или содержит синтаксическую ошибку.
+
+Рекомендации:
+    -&gt; прочитайте сообщение об ошибке и исправьте ошибку или
+    -&gt; удалите недопустимый *.ini-файл и запустите Fallout 76, чтобы создать новый
+    -&gt; и попробуйте снова.
+
+СООБЩЕНИЕ ОБ ОШИБКЕ:
+{0}</Messagebox>
     <Messagebox title="Резервная копия" id="backupAndSave">Сделать резервную копию перед сохранением?
 
     Нажмите "Да" чтобы создать резервную копию и сохранить.
@@ -85,14 +127,14 @@
     Нажмите "Отмена" для отмены сохранения.</Messagebox>
     <Messagebox title="Изменения применены" id="changesApplied">Изменения применены. Вы можете запустить игру.</Messagebox>
     <Messagebox title="Выберите версию игры" id="chooseGameEdition">Пожалуйста выберите вашу версию игры.</Messagebox>
-    <Messagebox title="Fallout76.ini и Fallout76Prefs.ini" id="runGameToGenerateINI">Пожалуйста запустите игру перед использованием конфигуратора.
+    <Messagebox title="Fallout76.ini и Fallout76Prefs.ini" id="runGameToGenerateINI">Пожалуйста запустите игру перед использованием программы.
 Это создаст необходимые для настройки файлы.</Messagebox>
     <Messagebox title="Готово" id="oldValuesResetToDefault">Несколько значений восстановлено на дефолтные.
 Это касается только нестабильных значений из предыдущих версий.
 Не забудьте нажать кнопку "Применить".</Messagebox>
-    <Messagebox title="Files modified" id="iniFilesModified">*.ini файлы были изменены другой программой во время работы конфигуратора.
+    <Messagebox title="Files modified" id="iniFilesModified">*.ini файлы были изменены другой программой во время работы программы.
 Примечание: любые изменения будут перезаписаны, если нажать на кнопку "Применить" или кнопку "Установить" в управлении модами.
-Пожалуйста, перезагрузите конфигуратор для получения новых значений.</Messagebox>
+Пожалуйста, перезагрузите программу для получения новых значений.</Messagebox>
     <Messagebox title="Ошибка при загрузке UI" id="onLoadFuncException">{0} исключений во время загрузки пользовательского интерфейса.
 Это может быть вызвано поврежденными ini-файлами.
 Некоторые элементы пользовательского интерфейса могут работать неправильно.
@@ -101,8 +143,15 @@
     <Messagebox title="Готово" id="downloadLanguagesFinished">Загруженные языковые файлы: {0}</Messagebox>
     <Messagebox title="Неудача" id="downloadLanguagesFailed">Не удалось загрузить языковые файлы.
 {0}</Messagebox>
-    <Messagebox title="Хотите переключить?" id="msstoreRestartRequired">Для перехода на версию Microsoft Store или обратно необходимо перезапустить конфигуратор.</Messagebox>
+    <Messagebox title="Хотите переключить?" id="msstoreRestartRequired">Для перехода на версию Microsoft Store или обратно необходимо перезапустить программу.</Messagebox>
     <Messagebox title="Невозможно запустить игру: {0}" id="msstoreRunExecutableFailed">К сожалению, запустить исполняемый файл напрямую невозможно из-за ограничений "безопасности". Спасибо за это Microsoft. :(</Messagebox>
+    <Messagebox title="Couldn't add your custom *.ini tweaks" id="customIniFilesParsingError">По крайней мере, один из ваших файлов *.ini содержит ошибку.
+{0}</Messagebox>
+    <Messagebox title="Разрешение дисплея может быть слишком низким" id="displayResolutionTooLow">Разрешение вашего дисплея не поддерживается.
+Окна могут не поместиться на экране.
+Размер дисплея: {0}
+Минимальный размер дисплея: {1}
+Рекомендуемый размер дисплея: 1920 x 1080</Messagebox>
     <Messagebox title="Готово" id="modsDisabledDone">Моды были отключены и удалены из игры.</Messagebox>
     <Messagebox title="Готово" id="modsDeployedDone">Моды установлены.</Messagebox>
     <Messagebox title="Что-то пошло не так" id="modsDeploymentFailed">Невозможно установить моды.
@@ -141,415 +190,267 @@
 Вы уверены, что хотите продолжить?</Messagebox>
     <Messagebox title="Готово" id="modsRepairDDSDone">*.dds файлы восстановлены.</Messagebox>
     <Messagebox title="Отказано в доступе" id="modsAccessDenied">{0}
-Пожалуйста, запустите конфигуратор от имени администратора и повторите попытку.</Messagebox>
+Пожалуйста, запустите программу от имени администратора и повторите попытку.</Messagebox>
+    <Messagebox title="Would you like to repack bundled archives?" id="modsRepackFrozenBundledArchives">Есть замороженные архивы в комплекте. Не хотите ли вы снова переупаковать собранные архивы?
+
+Да - я внес изменения в свой список модов и хотел бы снова упаковать свои архивы. (медленный)
+
+Нет - я не вносил изменений, пожалуйста, примените мои замороженные архивы в комплекте. (быстрый)</Messagebox>
     <Messagebox title="Моды всё ещё установлены" id="nwModeEnabledButModsAreDeployed">Вы включили режим Nuclear Winter, но ваши моды все еще установлены.
 Вы хотите отключить их прямо сейчас?</Messagebox>
     <Messagebox title="Вы хотите включить моды?" id="nwModeDisabledAndModsAreStillDisabled">Вы отключили режим Nuclear Winter, но ваши моды всё ещё отключены.
 Вы хотите включить их сейчас?</Messagebox>
+    <Messagebox title="Mod information updated" id="nexusModsRemoteInfoRefreshedSuccess">Информация о моде обновлена, а миниатюры загружены.</Messagebox>
+    <Messagebox title="Failed" id="nexusModsProfileRefreshFailed">Не удалось обновить профиль:
+{0}</Messagebox>
+    <Messagebox title="Are you sure?" id="nexusModsDeleteThumbnails">Вы действительно хотите удалить все миниатюры?</Messagebox>
+    <Messagebox title="Done" id="nexusModsDeleteThumbnailsSuccess">Миниатюры удалены.</Messagebox>
+    <Messagebox title="Something went wrong" id="nexusModsDeleteThumbnailsFailed">Миниатюры невозможно удалить.
+Попробуйте позже.</Messagebox>
+    <Messagebox title="Are you sure?" id="nexusModsRemoveProfile">Вы действительно хотите удалить свой профиль из менеджера модов?</Messagebox>
+    <Messagebox title="Done" id="nexusModsRemoveProfileSuccess">Профиль удален.</Messagebox>
+    <Messagebox title="Are you sure?" id="nexusModsRemoveRemoteInfo">Вы действительно хотите удалить информацию о моде?</Messagebox>
+    <Messagebox title="Done" id="nexusModsRemoveRemoteInfoSuccess">Информация о моде удалена.</Messagebox>
   </Messageboxes>
   <Form1 title="Fallout 76 Quick Configuration">
-    <Button text="Управление модами" id="buttonManageMods" />
-    <Button text="Запустить игру" id="buttonLaunchGame" />
-    <Button text="Применить" id="buttonApply" />
-    <TabContainer id="tabControl1">
-      <Tab text="Инфо" id="tabPageInfo">
-        <Group text="Доступно обновление" id="groupBoxUpdate">
-          <Button text="Обновить!" id="buttonUpdateNow" />
-          <Link text="Или скачать и установить вручную..." id="linkLabelManualDownloadPage" />
-        </Group>
+    <ToolStrip id="toolStrip1">
+      <ToolStripButton text="Применить" id="toolStripButtonApply" />
+      <ToolStripButton text="Запустить" id="toolStripButtonLaunchGame" />
+      <ToolStripSeparator text="" id="toolStripSeparator1" />
+      <ToolStripButton text="Моды" id="toolStripButtonManageMods" />
+      <ToolStripSeparator text="" id="toolStripSeparator2" />
+      <ToolStripSplitButton text="Обновление" id="toolStripSplitButtonUpdate">
+        <ToolStripMenuItem text="Обновить программу" id="updateToolToolStripMenuItem" />
+        <ToolStripMenuItem text="Проверить обновления" id="checkForUpdatesToolStripMenuItem" />
+        <ToolStripMenuItem text="Скачать обновлённые языки" id="downloadUpdateLanguageFilesToolStripMenuItem" />
+        <ToolStripMenuItem text="Показать лог обновления" id="showUpdaterlogtxtToolStripMenuItem" />
+      </ToolStripSplitButton>
+      <ToolStripDropDownButton text="Просмотр" id="toolStripDropDownButtonExplore">
+        <ToolStripMenuItem text="Папка установки игры" id="gameFolderToolStripMenuItem" />
+        <ToolStripMenuItem text="Папка настроек игры" id="gamesConfigurationFolderToolStripMenuItem" />
+        <ToolStripSeparator text="" id="toolStripSeparator4" />
+        <ToolStripMenuItem text="Папка настроек программы" id="toolConfigurationFolderToolStripMenuItem" />
+        <ToolStripMenuItem text="Папка языковых файлов" id="toolLanguagesFolderToolStripMenuItem" />
+        <ToolStripMenuItem text="Папка установки программы" id="toolInstallationFolderToolStripMenuItem" />
+        <ToolStripSeparator text="" id="toolStripSeparator5" />
+        <ToolStripMenuItem text="Папка скриншотов Steam" id="steamScreenshotFolderToolStripMenuItem" />
+        <ToolStripMenuItem text="Папка фотографий игры" id="gamePhotosFolderToolStripMenuItem" />
+        <ToolStripSeparator text="" id="toolStripSeparator6" />
+        <ToolStripMenuItem text="Открыть Fallout76.ini" id="editFallout76iniToolStripMenuItem" />
+        <ToolStripMenuItem text="Открыть Fallout76Prefs.ini" id="editFallout76PrefsiniToolStripMenuItem" />
+        <ToolStripMenuItem text="Открыть Fallout76Custom.ini" id="editFallout76CustominiToolStripMenuItem" />
+      </ToolStripDropDownButton>
+      <ToolStripSeparator text="" id="toolStripSeparator3" />
+      <ToolStripButton text="NexusMods" id="toolStripButtonNexusMods" />
+    </ToolStrip>
+    <TabControl id="tabControl1">
+      <TabPage text="Инфо" id="tabPageInfo">
+        <Panel id="panelUpdate">
+          <LinkLabel text="Или скачать и установить вручную..." id="linkLabelManualDownloadPage" />
+        </Panel>
+        <Panel id="panel1">
+          <GroupBox text="Перевод" id="groupBoxLocalization">
+            <Label text="Этот языковой файл устарел.\nНекоторые элементы могут быть не переведены." id="labelOutdatedLanguage" />
+            <Label text="Язык:" id="labelLanguage" />
+            <Button text="Скачать/обновить языки" id="buttonDownloadLanguages" />
+          </GroupBox>
+          <GroupBox text="Версия игры" id="groupBoxGameEdition">
+            <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
+            <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
+            <RadioButton text="Steam" id="radioButtonEditionSteam" />
+            <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+          </GroupBox>
+          <GroupBox text="Варианты запуска" id="groupBoxLaunchOptions">
+            <Label text="Fallout 76 не может быть запущен напрямую, если он установлен через магазин Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
+            <Label text="Примечание: введите свои учетные данные для входа в систему на вкладке &quot;Основное&quot;." id="labelLaunchOptionTip" />
+            <RadioButton text="Запускать &quot;Fallout76.exe&quot; напрямую" id="radioButtonLaunchViaExecutable" />
+            <RadioButton text="Запускать через Steam / Bethesda.net (рекомендуется)" id="radioButtonLaunchViaLink" />
+          </GroupBox>
+          <GroupBox text="Пути" id="groupBoxGamePaths">
+            <Label text="Папка игры:" id="labelGamePath" />
+            <Button text="..." id="buttonPickGamePath" />
+          </GroupBox>
+          <GroupBox text="Настройки" id="groupBoxOptions">
+            <CheckBox text="[Экспериментально] Запретить NTFS запись на диск" id="checkBoxDenyNTFSWritePermission">
+              <Tooltip>Это приведет к запрету записи в папку "Fallout 76".
+Используйте, если опция только для чтения не работает.
+
+Затрагивает папку: %Мои документы%\My Games\Fallout 76</Tooltip>
+            </CheckBox>
+            <CheckBox text="Использовать несколько версий игры" id="checkBoxMultipleGameEditionsUsed">
+              <Tooltip>Поставьте галочку, если вы используете моды более чем для одной версии игры.
+В этом случае sResourceIndexFileList будет сохранен для каждой версии игры отдельно.</Tooltip>
+            </CheckBox>
+            <CheckBox text="Режим Nuclear Winter" id="checkBoxNWMode">
+              <Tooltip>На данный момент переименовывает Fallout76Custom.ini в Fallout76Custom.ini.nwmodebak.</Tooltip>
+            </CheckBox>
+            <CheckBox text="INI только для чтения" id="checkBoxReadOnly">
+              <Tooltip>Этот вариант сделает все *.ini-файлы доступными только для чтения.
+	Включите эту функцию, если ваши настройки сбрасываются после запуска игры.
+
+	Затрагивает файлы: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
+            </CheckBox>
+          </GroupBox>
+          <GroupBox text="Поведение" id="groupBoxBehavior">
+            <CheckBox text="Не проверять обновления" id="checkBoxIgnoreUpdates" />
+            <CheckBox text="Открывать управление модами при запуске" id="checkBoxOpenManageModsOnLaunch" />
+            <CheckBox text="Закрывать программу при запуске игры" id="checkBoxQuitOnGameLaunch">
+              <Tooltip>Работает только при запуске игры из программы.</Tooltip>
+            </CheckBox>
+            <CheckBox text="Не выдавать запрос при нажатии &quot;Применить&quot;" id="checkBoxSkipBackupQuestion">
+              <Tooltip>Пропускает вопрос резервного копирования при нажатии кнопки "Применить".
+Примечание: При этом резервная копия создаваться НЕ БУДЕТ!</Tooltip>
+            </CheckBox>
+            <CheckBox text="Применять изменения при закрытии программы или запуске игры" id="checkBoxAutoApply">
+              <Tooltip>Больше не нужно будет нажимать кнопку "Применить".</Tooltip>
+            </CheckBox>
+          </GroupBox>
+        </Panel>
         <Label text="Перевод:" id="labelTranslationBy" />
         <Label text="Автор:" id="labelAuthor" />
         <Label text="Версия:" id="labelVersion" />
         <Label text="Эта программа  поможет быстро  настроить ваши\nфайлы INI. Наведите на нужную настройку, чтобы\nполучить подсказку." id="labelDescription" />
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
-      </Tab>
-      <Tab text="Настройки" id="tabPageSettings">
-        <Button text="Открыть папку настроек" id="buttonOpenConfigPath" />
-        <Group text="Варианты запуска" id="groupBoxLaunchOptions">
-          <Label text="Fallout 76 не может быть запущен напрямую, если он установлен через магазин Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
-          <Label text="Примечание: введите свои учетные данные для входа в систему на вкладке &quot;Основное&quot;." id="labelLaunchOptionTip" />
-          <Radiobutton text="Запускать &quot;Fallout76.exe&quot; напрямую" id="radioButtonLaunchViaExecutable" />
-          <Radiobutton text="Запускать через Steam / Bethesda.net (рекомендуется)" id="radioButtonLaunchViaLink" />
-        </Group>
-        <Group text="Пути" id="groupBoxGamePaths">
-          <Label text="Папка игры:" id="labelGamePath" />
-          <Button text="..." id="buttonPickGamePath" />
-        </Group>
-        <Button text="Принудительное обновление" id="buttonForceUpdate" />
-        <Group text="Поведение" id="groupBoxBehavior">
-          <Checkbox text="Не проверять обновления" id="checkBoxIgnoreUpdates" />
-          <Checkbox text="Открывать управление модами при запуске" id="checkBoxOpenManageModsOnLaunch" />
-          <Checkbox text="Закрывать конфигуратор при запуске игры" id="checkBoxQuitOnGameLaunch">
-            <Tooltip>Работает только при запуске игры из конфигуратора.</Tooltip>
-          </Checkbox>
-          <Checkbox text="Не выдавать запрос при нажатии &quot;Применить&quot;" id="checkBoxSkipBackupQuestion">
-            <Tooltip>Пропускает вопрос резервного копирования при нажатии кнопки "Применить".
-Примечание: При этом резервная копия создаваться НЕ БУДЕТ!</Tooltip>
-          </Checkbox>
-          <Checkbox text="Применять изменения при закрытии конфигуратора или запуске игры" id="checkBoxAutoApply">
-            <Tooltip>Больше не нужно будет нажимать кнопку "Применить".</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Перевод" id="groupBoxLocalization">
-          <Label text="Этот языковой файл устарел.\nНекоторые элементы могут быть не переведены." id="labelOutdatedLanguage" />
-          <Label text="Язык:" id="labelLanguage" />
-          <Button text="Скачать/обновить языки" id="buttonDownloadLanguages" />
-        </Group>
-        <Group text="Настройки" id="groupBoxOptions">
-          <Checkbox text="[Экспериментально] Запретить NTFS запись на диск" id="checkBoxDenyNTFSWritePermission">
-            <Tooltip>Это приведет к запрету записи в папку "Fallout 76".
-Используйте, если опция только для чтения не работает.
-
-Затрагивает папку: %Мои документы%\My Games\Fallout 76</Tooltip>
-          </Checkbox>
-          <Checkbox text="Использовать несколько версий игры" id="checkBoxMultipleGameEditionsUsed">
-            <Tooltip>Поставьте галочку, если вы используете моды более чем для одной версии игры.
-В этом случае sResourceIndexFileList будет сохранен для каждой версии игры отдельно.</Tooltip>
-          </Checkbox>
-          <Checkbox text="Режим Nuclear Winter" id="checkBoxNWMode">
-            <Tooltip>На данный момент переименовывает Fallout76Custom.ini в Fallout76Custom.ini.nwmodebak.</Tooltip>
-          </Checkbox>
-          <Checkbox text="INI только для чтения" id="checkBoxReadOnly">
-            <Tooltip>Этот вариант сделает все *.ini-файлы доступными только для чтения.
-	Включите эту функцию, если ваши настройки сбрасываются после запуска игры.
-
-	Затрагивает файлы: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Button text="Исправить настройки версии v1.3.1 и ниже" id="buttonFixIssuesEarlierVersion" />
-        <Group text="Версия игры" id="groupBoxGameEdition">
-          <Radiobutton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
-          <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
-          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
-          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
-        </Group>
-      </Tab>
-      <Tab text="Основное" id="tabPageGeneral">
-        <Group text="Камера" id="groupBoxCamera">
-          <Checkbox text="Вращать камеру при неактивности (принудительно)" id="checkBoxForceVanityMode">
-            <Tooltip>Затрагивает параметры: bForceAutoVanityMode
-Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Вращать камеру при неактивности" id="checkBoxVanityMode">
-            <Tooltip>Если эта опция включена, камера будет вращаться вокруг игрока после того, как в течение определенного времени не совершалось никаких действий.
-Хотя я не уверен, что эта настройка вообще что-то делает. Я стоял около 5 минут, и камера не вращалась. Нужно еще проверить.
-
-Затрагивает параметры: bDisableAutoVanityMode
-Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Логин" id="groupBoxLogin">
-          <Label text="Ваши учетные данные сохраняются в Fallout76Custom.ini.\nТаким образом, вам не нужно входить в систему, если\n вы запускаете Fallout 76 без лаунчера." id="labelCredentialsExplanation" />
-          <Checkbox text="Показать пароль" id="checkBoxShowPassword" />
-          <Label text="Пароль:" id="labelPassword" />
-          <Label text="Логин:" id="labelUserName" />
-        </Group>
-        <Group text="Интерфейс" id="groupBoxInterface">
-          <Checkbox text="Показывать компас" id="checkBoxShowCompass">
-            <Tooltip>Затрагивает параметры: bShowCompass
+      </TabPage>
+      <TabPage text="Основное" id="tabPageGeneral">
+        <Panel id="panel4">
+          <GroupBox text="Интерфейс" id="groupBoxGeneralInterface">
+            <CheckBox text="Показывать плавающий текст заданий" id="checkBoxShowFloatingQuestText">
+              <Tooltip>Затрагивает параметры: bShowFloatingQuestText
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Показать всплывающие числа урона в Nuclear Winter" id="checkBoxShowDamageNumbersNW">
-            <Tooltip>Затрагивает параметры: bShowDamageNumbers
+            </CheckBox>
+            <CheckBox text="Показать всплывающие числа урона в приключении" id="checkBoxShowDamageNumbersA">
+              <Tooltip>Затрагивает параметры: bShowDamageNumbers
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Показать всплывающие числа урона в приключении" id="checkBoxShowDamageNumbersA">
-            <Tooltip>Затрагивает параметры: bShowDamageNumbers
+            </CheckBox>
+            <CheckBox text="Показывать уведомления публичных групп\n" id="checkBoxShowPublicTeamNotifications">
+              <Tooltip>Затрагивает параметры: bShowPublicTeamNotifications
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Показывать общие субтитры" id="checkBoxGeneralSubtitles">
-            <Tooltip>Затрагивает параметры: bGeneralSubtitles
+            </CheckBox>
+            <CheckBox text="Показывать имена других игроков" id="checkBoxShowOtherPlayersNames">
+              <Tooltip>Затрагивает параметры: bShowOtherPlayersNames
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Показывать субтитры в диалогах" id="checkBoxDialogueSubtitles">
-            <Tooltip>Затрагивает параметры: bDialogueSubtitles
+            </CheckBox>
+            <CheckBox text="Показывать плавающие маркеры заданий\n" id="checkBoxShowFloatingQuestMarkers">
+              <Tooltip>Затрагивает параметры: bShowFloatingQuestMarkers
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Главное меню" id="groupBoxMainMenu">
-          <Checkbox text="Показать заставку с новостями при запуске" id="checkBoxShowSplash">
-            <Tooltip>Если эта галочка не установлен, игра не будет беспокоить вас новостями при запуске.
+            </CheckBox>
+            <CheckBox text="Включить интерфейс силовой брони" id="checkBoxEnablePowerArmorHUD">
+              <Tooltip>Затрагивает параметры: bEnablePowerArmorHUD
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="Показывать цвета редкости предметов (Nuclear Winter)" id="checkBoxItemRarityColorsNW">
+              <Tooltip>Затрагивает параметры: bEnableItemRarityColors
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <Label text="Дистанция отображения маркеров заданий" id="labelFloatingQuestMarkersDistance" />
+            <Label text="Эффекты в интерфейсе:" id="labelShowActiveEffectsOnHUD">
+              <Tooltip>Затрагивает параметры: uHUDActiveEffectWidget
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </Label>
+            <CheckBox text="Показать всплывающие числа урона в Nuclear Winter" id="checkBoxShowDamageNumbersNW">
+              <Tooltip>Затрагивает параметры: bShowDamageNumbers
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <TrackBar id="sliderFloatingQuestMarkersDistance">
+              <Tooltip>Затрагивает параметры: fFloatingQuestMarkersDistance
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </TrackBar>
+            <CheckBox text="Показывать прицел" id="checkBoxShowCrosshair">
+              <Tooltip>Затрагивает параметры: bCrosshairEnabled
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="Показывать компас" id="checkBoxShowCompass">
+              <Tooltip>Затрагивает параметры: bShowCompass
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <TrackBar id="sliderHUDOpacity">
+              <Tooltip>Затрагивает параметры: fHUDOpacity
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </TrackBar>
+            <Label text="Прозрачность интерфейса" id="labelHUDOpacity" />
+          </GroupBox>
+          <GroupBox text="Задания" id="groupBoxQuests">
+            <CheckBox text="Ежеденевные задания активны при получении" id="checkBoxEnableQuestAutoTrackDaily">
+              <Tooltip>Затрагивает параметры: bEnableQuestAutoTrackOther
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="События активны при получении" id="checkBoxEnableQuestAutoTrackEvent">
+              <Tooltip>Затрагивает параметры: bEnableQuestAutoTrackEvent
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="Разные задания активны при получении" id="checkBoxEnableQuestAutoTrackMisc">
+              <Tooltip>Затрагивает параметры: bEnableQuestAutoTrackMisc
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="Побочные задания активны при получении" id="checkBoxEnableQuestAutoTrackSide">
+              <Tooltip>Затрагивает параметры: bEnableQuestAutoTrackSide
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <CheckBox text="Основные задания активны при получении" id="checkBoxEnableQuestAutoTrackMain">
+              <Tooltip>Затрагивает параметры: bEnableQuestAutoTrackMain
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+          </GroupBox>
+          <GroupBox text="Главное меню" id="groupBoxMainMenu">
+            <CheckBox text="Показать заставку с новостями при запуске" id="checkBoxShowSplash">
+              <Tooltip>Если эта галочка не установлена, игра не будет беспокоить вас новостями при запуске.
 
 Затрагивает параметры: bShowSplash
 Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Показывать вступительные ролики" id="checkBoxIntroVideos">
-            <Tooltip>Если этот параметр не установлен, игра начнется без отображения видео с логотипом Bethesda.
+            </CheckBox>
+            <CheckBox text="Показывать вступительные ролики" id="checkBoxIntroVideos">
+              <Tooltip>Если этот параметр не установлен, игра начнется без отображения видео с логотипом Bethesda.
 
 Затрагивает параметры: sIntroSequence, uMainMenuDelayBeforeAllowSkip
 Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Воспроизводить музыку в главном меню" id="checkBoxMainMenuMusic">
-            <Tooltip>Если эта галочка не установлен, то игра не будет воспроизводить фоновую музыку в главном меню.
-
-Затрагивает параметры: bPlayMainMenuMusic
-Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-      </Tab>
-      <Tab text="Экран" id="tabPageDisplay">
-        <Checkbox text="Исправить интерфейс для разрешения 5:4 и 4:3" id="checkBoxFixHUDFor5_4and4_3">
-          <Tooltip>Исправляет невидимые/сломанные:
-  * замки при взломе
-  * интерфейс силовой брони
-для разрешения 5:4 и 4:3.
-
-На разрешении 1280 на 1024 работает идеально. На других не проверялось.
-
-Затрагивает параметры: fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
-Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-        </Checkbox>
-        <Button text="Обнаружить разрешение" id="buttonDetectResolution" />
-        <Checkbox text="Всегда активно" id="checkBoxAlwaysActive">
-          <Tooltip>Отключите это, если вы хотите, чтобы игра приостановилась в фоновом режиме.
-
-Затрагивает параметры: bAlwaysActive
-Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-        </Checkbox>
-        <Checkbox text="Поверх всех окон" id="checkBoxTopMostWindow">
-          <Tooltip>Поставьте галочку, чтобы игра была всегда на переднем плане.
-ВНИМАНИЕ: Сделает невозможным использование Alt+Tab.
-
-Затрагивает параметры: bTopMostWindow
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-        </Checkbox>
-        <Group text="Поле зрения" id="groupBoxFieldOfView">
-          <Label text="От третьего лица:" id="labelWorldFOV">
-            <Tooltip>Меняет поле зрения от третьего лица.
-
-По-умолчанию: 80
-Затрагивает параметры: fDefaultWorldFOV
-Затрагивает файлы: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
-          </Label>
-          <Label text="От первого лица:" id="labelFirstPersonFOV">
-            <Tooltip>Меняет поле зрения от первого лица.
-
-По-умолчанию: 80
-Затрагивает параметры: fDefault1stPersonFOV
-Затрагивает файлы: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
-          </Label>
-        </Group>
-        <Number id="numCustomResH">
-          <Tooltip>Изменяет вертикальное разрешение (высоту).
-
-Затрагивает параметры: iSize H</Tooltip>
-        </Number>
-        <Label text="X" id="labelCustomResolutionSpacer" />
-        <Label text="Режим экрана:" id="labelDisplayMode">
-          <Tooltip>Изменяет режим отображения.
-
-Затрагивает параметры: bFull Screen, bBorderless
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-        </Label>
-        <Number id="numCustomResW">
-          <Tooltip>Изменяет горизонтальное разрешение (ширину).
-
-Затрагивает параметры: iSize W</Tooltip>
-        </Number>
-        <Label text="Разрешение:" id="labelResolution">
-          <Tooltip>Изменяет разрешение.
-Выбор опции "Другое" позволит вам установить свои собственные значения.
-
-Затрагивает параметры: iSize W, iSize H
-Затрагивает файлы: Fallout76Prefsini</Tooltip>
-        </Label>
-        <Label text="Пользовательское:" id="labelCustomResolution">
-          <Tooltip>Установите опцию на "Другое", чтобы эта настройка стала доступной.</Tooltip>
-        </Label>
-      </Tab>
-      <Tab text="Графика" id="tabPageGraphics">
-        <Group text="Резкость TAA" id="groupBoxTAASharpening">
-          <Label text="Резкость" id="labelTAAPostSharpen" />
-          <Slider id="sliderTAAPostSharpen">
-            <Tooltip>Делает изображение чётче.
+            </CheckBox>
+          </GroupBox>
+        </Panel>
+        <GroupBox text="Логин" id="groupBoxLogin">
+          <RadioButton text="Профиль 8" id="radioButtonAccount8" />
+          <RadioButton text="Профиль 7" id="radioButtonAccount7" />
+          <RadioButton text="Профиль 6" id="radioButtonAccount6" />
+          <RadioButton text="Профиль 5" id="radioButtonAccount5" />
+          <RadioButton text="Профиль 4" id="radioButtonAccount4" />
+          <RadioButton text="Профиль 3" id="radioButtonAccount3" />
+          <RadioButton text="Профиль 2" id="radioButtonAccount2" />
+          <RadioButton text="Профиль 1" id="radioButtonAccount1" />
+          <Label text="Профили:" id="labelAccountProfiles" />
+          <CheckBox text="Отключить Steam" id="checkBoxDisableSteam" />
+          <Label text="Ваши учетные данные сохраняются в Fallout76Custom.ini.\nТаким образом, вам не нужно входить в систему, если\n вы запускаете Fallout 76 без лаунчера." id="labelCredentialsExplanation" />
+          <CheckBox text="Показать пароль" id="checkBoxShowPassword" />
+          <Label text="Пароль:" id="labelPassword" />
+          <Label text="Логин:" id="labelUserName" />
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Видео" id="tabPageVideo">
+        <Panel id="panel3">
+          <GroupBox text="Графика" id="groupBoxGraphics">
+            <GroupBox text="Резкость TAA" id="groupBoxTAASharpening">
+              <TrackBar id="sliderTAAPostSharpen">
+                <Tooltip>Делает изображение чётче.
 
 По-умолчанию: 0.2
 Рекомендуемое: 0.4
 
 Затрагивает параметры: fTAAPostSharpen
 Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Slider>
-          <Label text="Наложение" id="labelTAAPostOverlay" />
-          <Slider id="sliderTAAPostOverlay">
-            <Tooltip>Делает изображение чётче.
+              </TrackBar>
+              <Label text="Резкость" id="labelTAAPostSharpen" />
+              <TrackBar id="sliderTAAPostOverlay">
+                <Tooltip>Делает изображение чётче.
 
 Рекомендуемое: 0.2
 По-умолчанию: 0.2
 
 Затрагивает параметры: fTAAPostOverlay
 Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Slider>
-        </Group>
-        <Group text="Трава" id="groupBoxGrass">
-          <Slider id="sliderGrassFadeDistance">
-            <Tooltip>Устанавливает расстояние, на котором исчезает трава.
-
-Средний - 4500
-Максимум - 5500
-Ультра - 7000
-
-Затрагивает параметры: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Label text="Расстояние исчезновения" id="labelGrassFadeDistance" />
-          <Checkbox text="Включить траву" id="checkBoxGrass">
-            <Tooltip>Полностью включает или отключает траву.
-
-Затрагивает параметры: bAllowCreateGrass
-Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="LOD" id="groupBoxLOD">
-          <Label text="Расстояние исчезновения" id="labelLODFadeDistance" />
-          <Slider id="sliderLODActors">
-            <Tooltip>Устанавливает расстояние, на котором исчезают игроки и NPC.
-
-Затрагивает параметры: fLODFadeOutMultActors
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Slider id="sliderLODItems">
-            <Tooltip>Устанавливает расстояние, на котором исчезают предметы.
-
-Затрагивает параметры: fLODFadeOutMultItems
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Slider id="sliderLODObjects">
-            <Tooltip>Устанавливает расстояние, на котором исчезают объекты.
-
-Затрагивает параметры: fLODFadeOutMultObjects
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Label text="Актёры" id="labelLODActors" />
-          <Label text="Предметы" id="labelLODItems" />
-          <Label text="Объекты" id="labelLODObjects" />
-        </Group>
-        <Group text="Освещение" id="groupBoxLighting">
-          <Checkbox text="Лучи бога" id="checkBoxGodrays">
-            <Tooltip>Снимите галочку, чтобы отключить лучи бога.
-
-Затрагивает параметры: bVolumetricLightingEnable
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Тени" id="groupBoxShadows">
-          <Label text="Размытие:" id="labelShadowBlurriness">
-            <Tooltip>Размывает тени. Особенно полезно, если вы устанавливаете более низкое разрешение теней.
-
-Затрагивает параметры: uiOrthoShadowFilter
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Label>
-          <Slider id="sliderShadowDistance">
-            <Tooltip>Задает расстояние, на котором отображаются тени.
-
-Ультра - 150000
-Высокое - 120000
-Среднее - 90000
-Низкое - 60000
-
-Я думаю, что установка его на низкое значение отключит тени. Нужно еще проверить.
-
-Затрагивает параметры: fShadowDistance, fDirShadowDistance
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Label text="Расстояние" id="labelShadowDistance" />
-          <Label text="Разрешение теней:" id="labelShadowTextureResolution">
-            <Tooltip>Разрешение теней. Более высокие настройки сделают тени более детализированными.
-
-Затрагивает параметры: iShadowMapResolution
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Label>
-        </Group>
-        <Group text="Вода" id="groupBoxWater">
-          <Checkbox text="Движение" id="checkBoxWaterDisplacement">
-            <Tooltip>Включает или отключает движение воды (рябь, волны).
-
-Затрагивает параметры: bUseWaterDisplacements
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Постобработка" id="groupBoxPostProcessing">
-          <Checkbox text="Окклюзия" id="checkBoxAmbientOcclusion">
-            <Tooltip>Снятие этой галочки приведет к отключению внешней окклюзии.
-В основном добавляет фальшивые тени в те места, до которых источники света не могут дотянуться.
-
-Затрагивает параметры: bSAOEnable
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Глубина резкости" id="checkBoxDepthOfField">
-            <Tooltip>Снятие этой галочки приведет к отключению всех эффектов глубины резкости.
-
-Затрагивает файлы: Fallout76Custom.ini
-Затрагивает параметры:
-   bDynamicDepthOfField
-   fDOFBlendRatio
-   fDOFMinFocalCoefDist
-   fDOFMaxFocalCoefDist
-   fDOFDynamicFarRange
-   fDOFCenterWeightInt
-   fDOFFarDistance</Tooltip>
-          </Checkbox>
-          <Checkbox text="Размытие в движении" id="checkBoxMotionBlur">
-            <Tooltip>Размытие движущихся объектов при повороте камеры.
-
-Затрагивает параметры: bMBEnable
-Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Радиальное размытие" id="checkBoxRadialBlur">
-            <Tooltip>Размывает экран, когда игрок ранен (например, попал под пули) или под водой.
-Снятие этой галочки может привести к четкому виду под водой.
-
-Затрагивает параметры: bDoRadialBlur, iRadialBlurLevel
-Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Блики" id="checkBoxLensFlare">
-            <Tooltip>Снятие этой галочки отключит блики на экране.
-
-Затрагивает параметры: bLensFlare
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Погода" id="groupBoxWeather">
-          <Checkbox text="Туман" id="checkBoxFogEnabled">
-            <Tooltip>Затрагивает параметры: bFogEnabled
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Влажность" id="checkBoxWeatherWetnessOcclusion">
-            <Tooltip>Переключает влажность одежды и ландшафта.
-
-Затрагивает параметры: bWetnessOcclusion
-Затрагивает файлы: Fallout76.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Дождевая окклюзия" id="checkBoxWeatherRainOcclusion">
-            <Tooltip>Если эта галочка установлена, дождь не будет отображаться в помещениях и под объектами.
-
-Примечание: При отключении могут возникать графические ошибки. Такие, как белые пятна на экране. Или даже полностью белый экран.
-
-Затрагивает параметры: bRainOcclusion
-Затрагивает файлы: Fallout76.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Label text="Анизотропная фильтр.:" id="labelAnisotropicFiltering">
-          <Tooltip>Улучшает сглаживание текстур при просмотре под косыми углами.
-
-По-умолчанию: 8
-Затрагивает параметры: iMaxAnisotropy
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-        </Label>
-        <Checkbox text="Вертиальная синхронизация" id="checkBoxVSync">
-          <Tooltip>Сняв эту галочку, вы уберёте ограничение частоты кадров.
-
-Включите, если у вас бывают разрывы текстур.
-Отключите, если вы испытываете задержку отклика.
-
-Пожалуйста, обратите внимание: ограничьте игру до 60 кадров в секунду вручную. (например, с помощью Панели управления NVIDIA)
-
-
-По-умолчанию: Включено
-Затрагивает параметры: iPresentInterval
-Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-        </Checkbox>
-        <Label text="Анти-Алиасинг:" id="labelAntiAliasing">
-          <Tooltip>Улучшает сглаживание за счет размытия краев объектов.
+              </TrackBar>
+              <Label text="Наложение" id="labelTAAPostOverlay" />
+            </GroupBox>
+            <Label text="Сглаживание:" id="labelAntiAliasing">
+              <Tooltip>Улучшает сглаживание за счет размытия краев объектов.
 
 TAA - временное сглаживание: относительно дорого, по-умолчанию
 FXAA - быстрое приблизительное сглаживание: слегка улучшает производительность, неровности слегка заметны
@@ -560,32 +461,390 @@ Off - улучшает производительность, неровност�
 По-умолчанию: TAA
 Затрагивает параметры: sAntiAliasing
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-        </Label>
-      </Tab>
-      <Tab text="Управление" id="tabPageControls">
-        <Group text="Геймпад" id="groupBoxGamepad">
-          <Checkbox text="Использовать" id="checkBoxGamepadEnabled">
+            </Label>
+            <GroupBox text="Трава" id="groupBoxGrass">
+              <TrackBar id="sliderGrassFadeDistance">
+                <Tooltip>Устанавливает расстояние, на котором исчезает трава.
+
+Средний - 4500
+Максимум - 5500
+Ультра - 7000
+
+Затрагивает параметры: fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </TrackBar>
+              <Label text="Расстояние исчезновения" id="labelGrassFadeDistance" />
+              <CheckBox text="Включить траву" id="checkBoxGrass">
+                <Tooltip>Полностью включает или отключает траву.
+
+Затрагивает параметры: bAllowCreateGrass
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+              </CheckBox>
+            </GroupBox>
+            <GroupBox text="LOD" id="groupBoxLOD">
+              <TrackBar id="sliderLODActors">
+                <Tooltip>Устанавливает расстояние, на котором исчезают игроки и неигровые персонажи.
+
+Затрагивает параметры: fLODFadeOutMultActors
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </TrackBar>
+              <Label text="Расстояние исчезновения" id="labelLODFadeDistance" />
+              <TrackBar id="sliderLODItems">
+                <Tooltip>Устанавливает расстояние, на котором исчезают предметы.
+
+Затрагивает параметры: fLODFadeOutMultItems
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </TrackBar>
+              <TrackBar id="sliderLODObjects">
+                <Tooltip>Устанавливает расстояние, на котором исчезают объекты.
+
+Затрагивает параметры: fLODFadeOutMultObjects
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </TrackBar>
+              <Label text="Актёры" id="labelLODActors" />
+              <Label text="Предметы" id="labelLODItems" />
+              <Label text="Объекты" id="labelLODObjects" />
+            </GroupBox>
+            <CheckBox text="Вертиальная синхронизация" id="checkBoxVSync">
+              <Tooltip>Сняв эту галочку, вы уберёте ограничение частоты кадров.
+
+Включите, если у вас бывают разрывы текстур.
+Отключите, если вы испытываете задержку отклика.
+
+Пожалуйста, обратите внимание: ограничьте игру до 60 кадров в секунду вручную. (например, с помощью Панели управления NVIDIA)
+
+
+По-умолчанию: Включено
+Затрагивает параметры: iPresentInterval
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </CheckBox>
+            <GroupBox text="Освещение" id="groupBoxLighting">
+              <CheckBox text="Лучи бога" id="checkBoxGodrays">
+                <Tooltip>Снимите галочку, чтобы отключить лучи бога.
+
+Затрагивает параметры: bVolumetricLightingEnable
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </CheckBox>
+            </GroupBox>
+            <Label text="Анизотропная фильтр.:" id="labelAnisotropicFiltering">
+              <Tooltip>Улучшает сглаживание текстур при просмотре под косыми углами.
+
+По-умолчанию: 8
+Затрагивает параметры: iMaxAnisotropy
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+            </Label>
+            <GroupBox text="Тени" id="groupBoxShadows">
+              <TrackBar id="sliderfBlendSplitDirShadow">
+                <Tooltip>Расстояние, на котором игра перейдет на более низкое разрешение теней.
+Должно быть кратно 12.
+
+Затрагивает параметры: fBlendSplitDirShadow
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </TrackBar>
+              <Label text="Расстояние сегментов" id="labelfBlendSplitDirShadow" />
+              <Label text="Количество сегментов:" id="label2">
+                <Tooltip>Количество сегментов теней низкого разрешения на расстоянии.
+Значение 1 заставляет игру отображать только тени с самым низким разрешением.
+
+Затрагивает параметры: iDirShadowSplits
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </Label>
+              <TrackBar id="sliderShadowDistance">
+                <Tooltip>Задает расстояние, на котором отображаются тени.
+
+Ультра - 150000
+Высокое - 120000
+Среднее - 90000
+Низкое - 60000
+
+Я думаю, что установка его на низкое значение отключит тени. Нужно еще проверить.
+
+Затрагивает параметры: fShadowDistance, fDirShadowDistance
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </TrackBar>
+              <Label text="Размытие:" id="labelShadowBlurriness">
+                <Tooltip>Размывает тени. Особенно полезно, если вы устанавливаете более низкое разрешение теней.
+
+Затрагивает параметры: uiOrthoShadowFilter
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </Label>
+              <Label text="Расстояние" id="labelShadowDistance" />
+              <Label text="Разрешение теней:" id="labelShadowTextureResolution">
+                <Tooltip>Разрешение теней. Более высокие настройки сделают тени более детализированными.
+
+Затрагивает параметры: iShadowMapResolution
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </Label>
+            </GroupBox>
+            <GroupBox text="Вода" id="groupBoxWater">
+              <CheckBox text="Движение" id="checkBoxWaterDisplacement">
+                <Tooltip>Включает или отключает движение воды (рябь, волны).
+
+Затрагивает параметры: bUseWaterDisplacements
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </CheckBox>
+            </GroupBox>
+            <GroupBox text="Погода" id="groupBoxWeather">
+              <CheckBox text="Туман" id="checkBoxFogEnabled">
+                <Tooltip>Затрагивает параметры: bFogEnabled
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </CheckBox>
+              <CheckBox text="Влажность" id="checkBoxWeatherWetnessOcclusion">
+                <Tooltip>Переключает влажность одежды и ландшафта.
+
+Затрагивает параметры: bWetnessOcclusion
+Затрагивает файлы: Fallout76.ini</Tooltip>
+              </CheckBox>
+              <CheckBox text="Дождевая окклюзия" id="checkBoxWeatherRainOcclusion">
+                <Tooltip>Если эта галочка установлена, дождь не будет отображаться в помещениях и под объектами.
+
+Примечание: При отключении могут возникать графические ошибки. Такие, как белые пятна на экране. Или даже полностью белый экран.
+
+Затрагивает параметры: bRainOcclusion
+Затрагивает файлы: Fallout76.ini</Tooltip>
+              </CheckBox>
+            </GroupBox>
+            <GroupBox text="Постобработка" id="groupBoxPostProcessing">
+              <CheckBox text="Окклюзия" id="checkBoxAmbientOcclusion">
+                <Tooltip>Снятие этой галочки приведет к отключению внешней окклюзии.
+В основном добавляет фальшивые тени в те места, до которых источники света не могут дотянуться.
+
+Затрагивает параметры: bSAOEnable
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </CheckBox>
+              <CheckBox text="Глубина резкости" id="checkBoxDepthOfField">
+                <Tooltip>Снятие этой галочки приведет к отключению всех эффектов глубины резкости.
+
+Затрагивает файлы: Fallout76Custom.ini
+Затрагивает параметры:
+   bDynamicDepthOfField
+   fDOFBlendRatio
+   fDOFMinFocalCoefDist
+   fDOFMaxFocalCoefDist
+   fDOFDynamicFarRange
+   fDOFCenterWeightInt
+   fDOFFarDistance</Tooltip>
+              </CheckBox>
+              <CheckBox text="Размытие в движении" id="checkBoxMotionBlur">
+                <Tooltip>Размытие движущихся объектов при повороте камеры.
+
+Затрагивает параметры: bMBEnable
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+              </CheckBox>
+              <CheckBox text="Радиальное размытие" id="checkBoxRadialBlur">
+                <Tooltip>Размывает экран, когда игрок ранен (например, попал под пули) или под водой.
+Снятие этой галочки может привести к четкому виду под водой.
+
+Затрагивает параметры: bDoRadialBlur, iRadialBlurLevel
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+              </CheckBox>
+              <CheckBox text="Блики" id="checkBoxLensFlare">
+                <Tooltip>Снятие этой галочки отключит блики на экране.
+
+Затрагивает параметры: bLensFlare
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+              </CheckBox>
+            </GroupBox>
+          </GroupBox>
+        </Panel>
+        <GroupBox text="Экран" id="groupBoxDisplay">
+          <CheckBox text="Исправить интерфейс для разрешения 5:4 и 4:3" id="checkBoxFixHUDFor5_4and4_3">
+            <Tooltip>Исправляет невидимые/сломанные:
+  * замки при взломе
+  * интерфейс силовой брони
+для разрешения 5:4 и 4:3.
+
+На разрешении 1280 на 1024 работает идеально. На других не проверялось.
+
+Затрагивает параметры: fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
+          <Button text="Обнаружить разрешение" id="buttonDetectResolution" />
+          <Label text="Пользовательское:" id="labelCustomResolution">
+            <Tooltip>Установите опцию на "Другое", чтобы эта настройка стала доступной.</Tooltip>
+          </Label>
+          <CheckBox text="Всегда активно" id="checkBoxAlwaysActive">
+            <Tooltip>Отключите это, если вы хотите, чтобы игра приостановилась в фоновом режиме.
+
+Затрагивает параметры: bAlwaysActive
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
+          <Label text="Разрешение:" id="labelResolution">
+            <Tooltip>Изменяет разрешение.
+Выбор опции "Другое" позволит вам установить свои собственные значения.
+
+Затрагивает параметры: iSize W, iSize H
+Затрагивает файлы: Fallout76Prefsini</Tooltip>
+          </Label>
+          <CheckBox text="Поверх всех окон" id="checkBoxTopMostWindow">
+            <Tooltip>Поставьте галочку, чтобы игра была всегда на переднем плане.
+ВНИМАНИЕ: Сделает невозможным использование Alt+Tab.
+
+Затрагивает параметры: bTopMostWindow
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+          <NumericUpDown id="numCustomResW">
+            <Tooltip>Изменяет горизонтальное разрешение (ширину).
+
+Затрагивает параметры: iSize W</Tooltip>
+          </NumericUpDown>
+          <NumericUpDown id="numCustomResH">
+            <Tooltip>Изменяет вертикальное разрешение (высоту).
+
+Затрагивает параметры: iSize H</Tooltip>
+          </NumericUpDown>
+          <Label text="Режим экрана:" id="labelDisplayMode">
+            <Tooltip>Изменяет режим отображения.
+
+Затрагивает параметры: bFull Screen, bBorderless
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </Label>
+          <Label text="X" id="labelCustomResolutionSpacer" />
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Звук" id="tabPageAudio">
+        <GroupBox text="Звук" id="groupBoxAudio">
+          <CheckBox text="Включить звук" id="checkBoxEnableAudio">
+            <Tooltip>Затрагивает параметры: bEnableAudio
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
+          <CheckBox text="Воспроизводить музыку в главном меню" id="checkBoxMainMenuMusic">
+            <Tooltip>Если эта галочка не установлен, то игра не будет воспроизводить фоновую музыку в главном меню.
+
+Затрагивает параметры: bPlayMainMenuMusic
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
+        </GroupBox>
+        <GroupBox text="Голос" id="groupBoxVoice">
+          <Label text="Режим голосового чата:" id="labelVoiceChatMode" />
+          <CheckBox text="Включить 'Нажми и говори'" id="checkBoxPushToTalk">
+            <Tooltip>Затрагивает параметры: bVoicePushToTalkEnabled
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+        </GroupBox>
+        <GroupBox text="Громкость" id="groupBoxAudioVolume">
+          <TrackBar id="sliderAudioChat">
+            <Tooltip>Изменяет громкость голосового чата.
+
+Затрагивает параметры: uVivoxVoiceVolume
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal6">
+            <Tooltip>Изменяет громкость радио.
+
+Затрагивает параметры: fVal6
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal5">
+            <Tooltip>Изменяет громкость шагов.
+
+Затрагивает параметры: fVal5
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal4">
+            <Tooltip>Изменяет громкость эффектов.
+
+Затрагивает параметры: fVal4
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal3">
+            <Tooltip>Изменяет громкость музыки.
+
+Затрагивает параметры: fVal3
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal2">
+            <Tooltip>Изменяет громкость голоса.
+
+Затрагивает параметры: fVal2
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal1">
+            <Tooltip>Изменяет громкость радио в мире.
+
+Затрагивает параметры: fVal1
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <Label text="Общая громкость" id="labelVolumeMaster" />
+          <TrackBar id="sliderVolumeMaster">
+            <Tooltip>Изменяет общую громкость игры.
+
+Затрагивает параметры: fAudioMasterVolume
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <TrackBar id="sliderAudiofVal0">
+            <Tooltip>Изменяет громкость музыки в меню.
+
+Затрагивает параметры: fVal0
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <Label text="Голосовой чат" id="labelAudioChat" />
+          <Label text="Музыка в меню" id="labelAudiofVal0" />
+          <Label text="Радио" id="labelAudiofVal6" />
+          <Label text="Радио в мире" id="labelAudiofVal1" />
+          <Label text="Шаги" id="labelAudiofVal5" />
+          <Label text="Голос" id="labelAudiofVal2" />
+          <Label text="Эффекты" id="labelAudiofVal4" />
+          <Label text="Музыка" id="labelAudiofVal3" />
+        </GroupBox>
+        <GroupBox text="Интерфейс" id="groupBoxAudioInterface">
+          <TrackBar id="sliderConversationHistorySize">
+            <Tooltip>Затрагивает параметры: fConversationHistorySize
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </TrackBar>
+          <Label text="Размер истории диалога (число строк):" id="labelConversationHistorySize" />
+          <CheckBox text="Показывать историю диалога" id="checkBoxDialogueHistory">
+            <Tooltip>Затрагивает параметры: bShowDialogueHistory
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+          <CheckBox text="Показывать субтитры в диалогах" id="checkBoxDialogueSubtitles">
+            <Tooltip>Затрагивает параметры: bDialogueSubtitles
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+          <CheckBox text="Показывать общие субтитры" id="checkBoxGeneralSubtitles">
+            <Tooltip>Затрагивает параметры: bGeneralSubtitles
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Управление" id="tabPageControls">
+        <GroupBox text="Геймпад" id="groupBoxGamepad">
+          <CheckBox text="Использовать" id="checkBoxGamepadEnabled">
             <Tooltip>Снимите эту галочку, если у вас есть подключенный геймпад, но вы хотите использовать вместо него клавиатуру и мышь.
 В противном случает оставьте без изменений.
 
 Затрагивает параметры: bGamepadEnable
 Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Включить вибрацию геймпада" id="checkBoxGamepadRumble">
+          </CheckBox>
+          <CheckBox text="Включить вибрацию геймпада" id="checkBoxGamepadRumble">
             <Tooltip>Включает вибрацию вашего геймпада.
 
 Затрагивает параметры: bGamePadRumble
 Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="Мышь" id="groupBoxMouse">
-          <Checkbox text="Ускорение мыши" id="checkBoxMouseAcceleration">
+          </CheckBox>
+        </GroupBox>
+        <GroupBox text="Мышь" id="groupBoxMouse">
+          <CheckBox text="Инвертировать по горизонтали" id="checkBoxMouseInvertX">
+            <Tooltip>Затрагивает параметры: bInvertXValues
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+          <CheckBox text="Инвертировать по вертикали" id="checkBoxMouseInvertY">
+            <Tooltip>Затрагивает параметры: bInvertYValues
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </CheckBox>
+          <TrackBar id="sliderMouseSensitivity">
+            <Tooltip>Чувствительность мыши. На мониторах 5:4 рекомендуется выставить на 0.0300.
+
+Затрагивает параметры: fMouseHeadingSensitivity, fMouseHeadingSensitivityY
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </TrackBar>
+          <CheckBox text="Ускорение мыши" id="checkBoxMouseAcceleration">
             <Tooltip>Этот вариант может не иметь никакого эффекта. Впрочем, не помешает его выключить.
 
 Затрагивает параметры: bMouseAcceleration
 Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="Исправить чувствительность прицела" id="checkBoxFixAimSensitivity">
+          </CheckBox>
+          <CheckBox text="Исправить чувствительность прицела" id="checkBoxFixAimSensitivity">
             <Tooltip>Если галочка установлена, то чувствительность прицела будет нормальной.
 Если эта галочка не установлена (по-умолчанию), то чувствительность будет ниже при движении прицела вниз.
 
@@ -594,15 +853,9 @@ Off - улучшает производительность, неровност�
 
 Затрагивает параметры: fIronSightsFOVRotateMult
 Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
+          </CheckBox>
           <Label text="Чувствительность" id="labelMouseSensitivity" />
-          <Slider id="sliderMouseSensitivity">
-            <Tooltip>Чувствительность мыши. На мониторах 5:4 рекомендуется выставить на 0.0300.
-
-Затрагивает параметры: fMouseHeadingSensitivity, fMouseHeadingSensitivityY
-Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Slider>
-          <Checkbox text="Исправить гориз. и верт. чувствительность мыши" id="checkBoxFixMouseSensitivity">
+          <CheckBox text="Исправить гориз. и верт. чувствительность мыши" id="checkBoxFixMouseSensitivity">
             <Tooltip>Если эта галочка установлена, то чувствительность при взгляде вверх/вниз и влево/вправо будет одинаковой.
 Если не установлена (по-умолчанию), чувствительность взгляда влево/вправо, скорее всего, будет выше, чем вверх/вниз.
 
@@ -617,11 +870,106 @@ Off - улучшает производительность, неровност�
 По-умолчанию: Отключено (.021 для обоих)
 Затрагивает параметры: fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
 Затрагивает файлы: Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-      </Tab>
-      <Tab text="Pip-Boy" id="tabPagePipBoy">
-        <Group text="Разрешение" id="groupBoxPipboyResolution">
+          </CheckBox>
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Камера" id="tabPageCamera">
+        <GroupBox text="Настройка камеры" id="groupBoxCameraOptions">
+          <Label text="Задержка переключения (секунды):" id="labelSwitchDelay">
+            <Tooltip>Затрагивает параметры: f1st3rdSwitchDelay
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </Label>
+        </GroupBox>
+        <GroupBox text="Расстояние камеры" id="groupBoxCameraDistance">
+          <Label text="Шаг отдаления:" id="labelPitchZoomOutMaxDist">
+            <Tooltip>Влияет на то, насколько отдаляется камера, когда вы смотрите на землю от 3-его лица.
+
+Затрагивает параметры: fPitchZoomOutMaxDist
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Label text="Максимум:" id="labelCameraDistanceMaximum">
+            <Tooltip>Затрагивает параметры: fVanityModeMaxDist
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Label text="Минимум:" id="labelCameraDistanceMinimum">
+            <Tooltip>Затрагивает параметры: fVanityModeMinDist
+Затрагивает файлы: Fallout76Custom.ini
+</Tooltip>
+          </Label>
+        </GroupBox>
+        <GroupBox text="Положение камеры (РАБОТА В ПРОЦЕССЕ!)" id="groupBoxCameraPositionWIP">
+          <Button text="По центру" id="buttonCameraPositionCenter" />
+          <Button text="Сбросить" id="buttonCameraPositionReset" />
+          <Label text="Игрок:" id="labelCameraPositionPlayer" />
+          <Label text="Изменить для:" id="labelCameraPositionFor" />
+          <CheckBox text="Применить анимацию узла" id="checkBoxbApplyCameraNodeAnimations">
+            <Tooltip>Когда галочка не устновлена, положение камеры находится в голове игрока.
+Вам нужно будет уменьшить масштаб от третьего лица.
+Если галочка установлена, положение камеры находится за правым плечом.
+
+Это может вызвать проблемы.
+
+По-умолчанию: Включено
+Затрагивает параметры: bApplyCameraNodeAnimations
+Затрагивает файлы: Fallout76Custom.ini
+</Tooltip>
+          </CheckBox>
+          <RadioButton text="Ближний бой" id="radioButtonCameraPositionMeleeCombat" />
+          <RadioButton text="Стрельба" id="radioButtonCameraPositionCombat" />
+          <RadioButton text="Без оружия" id="radioButtonCameraPositionUnarmed" />
+          <Label text="Дальше" id="labelCameraFurther" />
+          <Label text="Ближе" id="labelCameraCloser" />
+          <Label text="Выше" id="labelCameraUp" />
+          <Label text="Ниже" id="labelCameraDown" />
+          <Label text="Правее" id="labelCameraRight" />
+          <Label text="Левее" id="labelCameraLeft" />
+        </GroupBox>
+        <GroupBox text="Поле зрения" id="groupBoxFieldOfView">
+          <Label text="По-умолчанию:" id="labelfDefaultFOV">
+            <Tooltip>Могут возникать проблемы с интерфейсом.
+
+По-умолчанию: 80
+Затрагивает параметры: fDefaultFOV
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Label text="Поле зрения прицеливания:" id="labelADSFOV">
+            <Tooltip>Изменяет поле зрения от третьего лица во время прицеливания.
+
+По-умолчанию: 50
+Затрагивает параметры: f3rdPersonAimFOV
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </Label>
+          <Label text="От третьего лица:" id="labelWorldFOV">
+            <Tooltip>Изменяет поле зрения от третьего лица.
+
+По-умолчанию: 80
+Затрагивает параметры: fDefaultWorldFOV
+Затрагивает файлы: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+          </Label>
+          <Label text="От первого лица:" id="labelFirstPersonFOV">
+            <Tooltip>Изменяет поле зрения от первого лица.
+
+По-умолчанию: 80
+Затрагивает параметры: fDefault1stPersonFOV
+Затрагивает файлы: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+          </Label>
+        </GroupBox>
+        <GroupBox text="Вращение камеры" id="groupBoxCameraVanity">
+          <CheckBox text="Вращать камеру при неактивности (принудительно)" id="checkBoxForceVanityMode">
+            <Tooltip>Затрагивает параметры: bForceAutoVanityMode
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
+          <CheckBox text="Вращать камеру при неактивности" id="checkBoxVanityMode">
+            <Tooltip>Если эта опция включена, камера будет вращаться вокруг игрока после того, как в течение определенного времени не совершалось никаких действий.
+Хотя я не уверен, что эта настройка вообще что-то делает. Я стоял около 5 минут, и камера не вращалась. Нужно еще проверить.
+
+Затрагивает параметры: bDisableAutoVanityMode
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Pip-Boy" id="tabPagePipBoy">
+        <GroupBox text="Разрешение" id="groupBoxPipboyResolution">
           <Label text="Эти настройки влияют на Pip-Boy и Quick-Boy." id="labelPipboyResolutionSideNote" />
           <Button text="Рекомендуемое" id="buttonPipboyTargetSetRecommended">
             <Tooltip>Рекомендуемые значения: 1752x1400</Tooltip>
@@ -629,36 +977,36 @@ Off - улучшает производительность, неровност�
           <Button text="По-умолчанию" id="buttonPipboyTargetReset">
             <Tooltip>Значения по-умолчанию: 876x700</Tooltip>
           </Button>
-          <Number id="numPipboyTargetHeight">
+          <NumericUpDown id="numPipboyTargetHeight">
             <Tooltip>Изменяет высоту разрешения Pip-Boy и Quick-Boy.
 
 Затрагивает параметры: uPipboyTargetHeight
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Number>
-          <Number id="numPipboyTargetWidth">
+          </NumericUpDown>
+          <NumericUpDown id="numPipboyTargetWidth">
             <Tooltip>Изменяет ширину разрешения Pip-Boy и Quick-Boy.
 
 Затрагивает параметры: uPipboyTargetWidth
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Number>
+          </NumericUpDown>
           <Label text="X" id="labelPipboyResolutionSpacer" />
-        </Group>
-        <Group text="Режим" id="groupBoxPipboyMode">
-          <Radiobutton text="Quick-Boy" id="radioButtonQuickboy">
+        </GroupBox>
+        <GroupBox text="Режим" id="groupBoxPipboyMode">
+          <RadioButton text="Quick-Boy" id="radioButtonQuickboy">
             <Tooltip>Затрагивает параметры: bQuickboyMode
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Radiobutton>
-          <Radiobutton text="Pip-Boy" id="radioButtonPipboy">
+          </RadioButton>
+          <RadioButton text="Pip-Boy" id="radioButtonPipboy">
             <Tooltip>Затрагивает параметры: bQuickboyMode
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
-          </Radiobutton>
-        </Group>
-        <Group text="Цвета" id="groupBoxPipboyColors">
+          </RadioButton>
+        </GroupBox>
+        <GroupBox text="Цвета" id="groupBoxPipboyColors">
           <Label text="Цвет в СБ" id="label1">
             <Tooltip>Изменяет цвет Pip-Boy, доступ к которому осуществляется из Силовой брони.
 
-Affected values: fPAEffectColorR, fPAEffectColorG, fPAEffectColorB
-Affected files: Fallout76Custom.ini</Tooltip>
+Затрагивает параметры: fPAEffectColorR, fPAEffectColorG, fPAEffectColorB
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
           </Label>
           <Button text="Выбрать" id="buttonColorPickPAPipboy" />
           <Button text="Сбросить" id="buttonColorResetPipboy" />
@@ -674,31 +1022,77 @@ Affected files: Fallout76Custom.ini</Tooltip>
 Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
           </Label>
           <Button text="Выбрать" id="buttonColorPickPipboy" />
-        </Group>
-      </Tab>
-    </TabContainer>
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Галерея" id="tabPageGallery">
+        <GroupBox text="Галерея" id="groupBoxGallery">
+          <Label text="Нажмите 'Обновить галерею' для отображения скриншотов и фотографий." id="labelGalleryTip" />
+        </GroupBox>
+        <GroupBox text="Настройки" id="groupBoxScreenshotOptions">
+          <Label text="Размер миниатюры:" id="labelGalleryThumbnailSize" />
+          <Button text="Обновить галерею" id="buttonRefreshGallery" />
+          <Label text="Индекс скриншота:" id="labelScreenshotIndex" />
+        </GroupBox>
+      </TabPage>
+      <TabPage text="Другое" id="tabPageCustom">
+        <Button text="Сохранить" id="buttonCustomSave" />
+        <Label text="Заменить строки в файле:" id="labelCustomFile" />
+      </TabPage>
+    </TabControl>
   </Form1>
   <FormMods title="Настройка модов">
-    <Element id="panel1">
+    <Panel id="panel1">
       <Button text="Применить" id="buttonModsDeploy" />
-      <Checkbox text="Отключить моды" id="checkBoxDisableMods" />
-    </Element>
-    <TabContainer id="tabControl1">
-      <Tab text="Список модов" id="tabPageModOrder">
-        <Tool id="toolStrip1">
-          <Button text="Добавить мод из архива" id="toolStripButtonAddMod" />
-          <Button text="Добавить мод из архива *.ba2" id="toolStripButtonAddModFrozen" />
-          <Button text="Добавить мод из папки" id="toolStripButtonAddModFolder" />
-          <Button text="Отметить/снять все" id="toolStripButtonCheckAll" />
-          <Button text="Выше" id="toolStripButtonMoveUp" />
-          <Button text="Ниже" id="toolStripButtonMoveDown" />
-          <Button text="Сведения о моде" id="toolStripButtonModEdit" />
-          <Button text="Разморозить" id="toolStripButtonUnfreeze" />
-          <Button text="Открыть папку" id="toolStripButtonModOpenFolder" />
-          <Button text="Удалить мод" id="toolStripButtonDeleteMod" />
-        </Tool>
+      <CheckBox text="Отключить моды" id="checkBoxDisableMods" />
+    </Panel>
+    <TabControl id="tabControl1">
+      <TabPage text="Список модов" id="tabPageModOrder">
+        <Panel id="panelModDetails">
+          <GroupBox text="Настройка установки" id="groupBoxModDetailsInstallationOptions">
+            <Button text="..." id="buttonModPickRootDir" />
+            <Label text="Установлен как:" id="labelModInstallAs" />
+            <Label text="Предустановка:" id="labelModArchivePreset" />
+            <CheckBox text="Заморозить" id="checkBoxFreezeArchive">
+              <Tooltip>Если вы "заморозите" архив, он не будет распаковываться при установке.
+Это ускорит процесс.
+
+Особенно полезно, если архив огромен (1GiB или больше) и файлы не меняются.</Tooltip>
+            </CheckBox>
+            <Label text="Папка установки:" id="labelModInstallInto" />
+          </GroupBox>
+          <Button text="Разморозить" id="buttonModUnfreeze" />
+          <GroupBox text="Детали" id="groupBoxModDetailsDetails">
+            <Label text="Версия:" id="labelModVersion" />
+            <Label text="Название:" id="labelModName" />
+            <Button text="Предложить" id="buttonModDetailsSuggestArchiveName" />
+            <Label text="Папка мода:" id="labelModFolderName" />
+            <Label text="Ссылка на страницу:" id="labelModURL" />
+            <Label text="Имя архива:" id="labelModArchiveName" />
+          </GroupBox>
+          <Label text="Параметры установки отключены, так как мод заморожен." id="labelModUnfreeze" />
+          <Label text="&lt; Название мода сюда &gt;" id="labelModTitle" />
+          <CheckBox text="Включить мод" id="checkBoxModDetailsEnabled" />
+          <Label text="Примечание: замороженные моды будут пропущены." id="labelModDetailsBulkFrozenModsWarning" />
+        </Panel>
+        <ToolStrip id="toolStrip1">
+          <ToolStripButton text="Добавить мод из архива" id="toolStripButtonAddMod" />
+          <ToolStripButton text="Добавить мод из архива *.ba2" id="toolStripButtonAddModFrozen" />
+          <ToolStripButton text="Добавить мод из папки" id="toolStripButtonAddModFolder" />
+          <ToolStripSeparator text="" id="toolStripSeparator4" />
+          <ToolStripButton text="Отметить/снять все" id="toolStripButtonCheckAll" />
+          <ToolStripSeparator text="" id="toolStripSeparator2" />
+          <ToolStripButton text="Выше" id="toolStripButtonMoveUp" />
+          <ToolStripButton text="Ниже" id="toolStripButtonMoveDown" />
+          <ToolStripSeparator text="" id="toolStripSeparator3" />
+          <ToolStripButton text="Сведения о моде" id="toolStripButtonModEdit" />
+          <ToolStripButton text="Разморозить" id="toolStripButtonUnfreeze" />
+          <ToolStripButton text="Открыть папку" id="toolStripButtonModOpenFolder" />
+          <ToolStripSeparator text="" id="toolStripSeparator5" />
+          <ToolStripButton text="Удалить мод" id="toolStripButtonDeleteMod" />
+        </ToolStrip>
         <ListView id="listViewMods">
           <Column>Название</Column>
+          <Column>Версия</Column>
           <Column>Тип</Column>
           <Column>Путь установки</Column>
           <Column>Имя архива</Column>
@@ -706,87 +1100,83 @@ Affected files: Fallout76Custom.ini</Tooltip>
           <Column>Сжатый?</Column>
           <Column>Заморожен?</Column>
         </ListView>
-      </Tab>
-      <Tab text="Настройки" id="tabPageModsSettings">
-        <Group text="Поведение" id="groupBoxModsBehavior">
-          <Checkbox text="Создавать жесткие ссылки вместо копирования файлов вручную" id="checkBoxModsUseHardlinks">
+        <Panel id="panel2">
+          <Button text="Применить" id="buttonModDetailsApply" />
+          <Button text="Отмена" id="buttonModDetailsCancel" />
+          <Button text="OK" id="buttonModDetailsOK" />
+        </Panel>
+      </TabPage>
+      <TabPage text="Настройки" id="tabPageModsSettings">
+        <GroupBox text="Поведение" id="groupBoxModsBehavior">
+          <CheckBox text="[Экспериментально] Заморозить упакованные архивы" id="checkBoxFreezeBundledArchives">
+            <Tooltip>Вместо того чтобы пересоздавать архивы, программа сохранит их копию и спросит вас, хотите ли вы обновить её при установке.</Tooltip>
+          </CheckBox>
+          <CheckBox text="Создавать жесткие ссылки вместо копирования файлов вручную" id="checkBoxModsUseHardlinks">
             <Tooltip>Может сократить дисковое пространство и время установки.
 Не относится к пакетным архивам.</Tooltip>
-          </Checkbox>
-          <Checkbox text="Разморозить файлы *.ba2 по умолчанию" id="checkBoxAddArchivesAsBundled" />
-        </Group>
-        <Group text="Списки" id="groupBoxLists">
+          </CheckBox>
+          <CheckBox text="Разморозить файлы *.ba2 по умолчанию" id="checkBoxAddArchivesAsBundled" />
+        </GroupBox>
+        <GroupBox text="Списки" id="groupBoxLists">
           <Button text="Сбросить" id="buttonModsResetTextboxes" />
           <Button text="Применить изменения" id="buttonModsApplyTextBoxes" />
           <Button text="Очистить списки" id="buttonModsCleanLists" />
           <Label text="sResourceIndexFileList (Используется в управлении модами)" id="labelsResourceIndexFileList" />
           <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
-        </Group>
-      </Tab>
-    </TabContainer>
-    <Menu id="menuStrip1">
-      <Item text="Файл" id="fileToolStripMenuItem">
-        <Item text="Добавить мод" id="addModarchiveToolStripMenuItem">
-          <Item text="Из архива" id="fromArchiveToolStripMenuItem" />
-          <Item text="Из архива *.ba2 (заморожен)" id="fromba2ArchivefrozenToolStripMenuItem" />
-          <Item text="Из папки" id="fromFolderToolStripMenuItem" />
-        </Item>
-        <Item text="Импортировать установленные моды" id="toolStripMenuItemModsImport" />
-        <Item text="" id="toolStripSeparator1" />
-        <Item text="Установить" id="deployToolStripMenuItem" />
-      </Item>
-      <Item text="Вид" id="editToolStripMenuItem">
-        <Item text="Показать конфликты модов" id="showConflictingFilesToolStripMenuItem" />
-        <Item text="Перезагрузить интерфейс" id="reloadUIToolStripMenuItem" />
-      </Item>
-      <Item text="Инструменты" id="toolsToolStripMenuItem">
-        <Item text="Восстановить все файлы *.dds" id="repairddsFilesToolStripMenuItem" />
-        <Item text="Archive2" id="archive2ToolStripMenuItem">
-          <Item text="Запустить Archive2" id="openArchive2ToolStripMenuItem" />
-          <Item text="Просмотреть архив *.ba2" id="exploreba2ArchiveToolStripMenuItem" />
-        </Item>
-      </Item>
-      <Item text="Помощь" id="helpToolStripMenuItem">
-        <Item text="Показать README" id="showREADMEToolStripMenuItem" />
-        <Item text="Лог-файлы" id="logFilesToolStripMenuItem">
-          <Item text="Просмотреть modmanager.log.txt" id="showModmanagerlogtxtToolStripMenuItem" />
-          <Item text="Просмотреть archive2.log.txt" id="showArchive2logtxtToolStripMenuItem" />
-        </Item>
-      </Item>
-    </Menu>
+        </GroupBox>
+      </TabPage>
+      <TabPage text="NexusMods" id="tabPageNexusMods">
+        <Button text="Удалить информацию о моде" id="buttonNMDeleteModInfo" />
+        <CheckBox text="Показать ключ API" id="checkBoxShowAPIKey" />
+        <Button text="Удалить профиль и ключ API" id="buttonNMRemoveAll" />
+        <Label text="Менеджер модов может получить версию модов и миниатюру через API NexusMods для вас.\nЧтобы получить доступ к API, вам нужно будет предоставить свой личный ключ API.\nВаш личный ключ API будет храниться локально и использоваться для следующих целей:\n- получение информации о моде, такой как имя, версия и миниатюры\n- отображение некоторой информации об учетной записи, такой как имя пользователя, изображение профиля, статус учетной записи и ограничение скорости\n- если ваш личный ключ API связан с вашей учетной записью, никогда не делитесь им с другими пользователями или приложениями, которым вы не доверяете.\nЯ не связан с NexusMods. Эта функция является неофициальной и использует публичный API." id="labelNMInfo" />
+        <LinkLabel text="Получите свой ключ API" id="linkLabelNMGetAPIKey" />
+        <Button text="Обновить информацию о моде" id="buttonNMUpdateModInfo" />
+        <Panel id="panel3">
+          <Label text="Неверный" id="labelNMAPIKeyStatus" />
+          <Label text="Ключ API:" id="labelNMDescAPIKey" />
+          <Label text="Anonymous" id="labelNMUserName" />
+          <Label text="Пользователь:" id="labelNMDescMembership" />
+          <Label text="за -18 часа(ов) и -10 минут(ы)" id="labelNMDailyRateLimitReset" />
+          <Label text="Основной" id="labelNMMembership" />
+          <Label text="Сброс лимита:" id="labelNMDescLimitReset" />
+          <Label text="Суточный лимит скорости:" id="labelNMDescDailyRateLimit" />
+          <Label text="0 осталось" id="labelNMDailyRateLimit" />
+        </Panel>
+        <Button text="Обновить профиль" id="buttonNMUpdateProfile" />
+        <Button text="Удаление миниатюр" id="buttonNMDeleteThumbnails" />
+        <Label text="Ключ API:" id="labelNMAPIKeyTextBox" />
+      </TabPage>
+    </TabControl>
+    <MenuStrip id="menuStrip1">
+      <ToolStripMenuItem text="Файл" id="fileToolStripMenuItem">
+        <ToolStripMenuItem text="Добавить мод" id="addModarchiveToolStripMenuItem">
+          <ToolStripMenuItem text="Из архива" id="fromArchiveToolStripMenuItem" />
+          <ToolStripMenuItem text="Из архива *.ba2 (заморожен)" id="fromba2ArchivefrozenToolStripMenuItem" />
+          <ToolStripMenuItem text="Из папки" id="fromFolderToolStripMenuItem" />
+        </ToolStripMenuItem>
+        <ToolStripMenuItem text="Импортировать установленные моды" id="toolStripMenuItemModsImport" />
+        <ToolStripSeparator text="" id="toolStripSeparator1" />
+        <ToolStripMenuItem text="Установить" id="deployToolStripMenuItem" />
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="Вид" id="editToolStripMenuItem">
+        <ToolStripMenuItem text="Показать конфликты модов" id="showConflictingFilesToolStripMenuItem" />
+        <ToolStripMenuItem text="Перезагрузить интерфейс" id="reloadUIToolStripMenuItem" />
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="Инструменты" id="toolsToolStripMenuItem">
+        <ToolStripMenuItem text="Archive2" id="archive2ToolStripMenuItem">
+          <ToolStripMenuItem text="Запустить Archive2" id="openArchive2ToolStripMenuItem" />
+          <ToolStripMenuItem text="Просмотреть архив *.ba2" id="exploreba2ArchiveToolStripMenuItem" />
+        </ToolStripMenuItem>
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="Помощь" id="helpToolStripMenuItem">
+        <ToolStripMenuItem text="Показать README" id="showREADMEToolStripMenuItem" />
+        <ToolStripMenuItem text="Показать руководство" id="showGuideToolStripMenuItem" />
+        <ToolStripMenuItem text="Лог-файлы" id="logFilesToolStripMenuItem">
+          <ToolStripMenuItem text="Просмотреть modmanager.log.txt" id="showModmanagerlogtxtToolStripMenuItem" />
+          <ToolStripMenuItem text="Просмотреть archive2.log.txt" id="showArchive2logtxtToolStripMenuItem" />
+        </ToolStripMenuItem>
+      </ToolStripMenuItem>
+    </MenuStrip>
   </FormMods>
-  <FormModDetails>
-    <Button text="Отмена" id="buttonModDetailsCancel" />
-    <Button text="OK" id="buttonModDetailsOK" />
-    <Label text="..." id="labelModDetailsStatus" />
-    <Button text="Применить" id="buttonModDetailsApply" />
-    <Element id="panel1">
-      <Checkbox text="Включить мод" id="checkBoxModDetailsEnabled" />
-      <Label text="Примечание: замороженные моды будут пропущены." id="labelModDetailsBulkFrozenModsWarning" />
-      <Group text="Пресеты" id="groupBoxSeparateArchivePresets">
-        <Radiobutton text="Другое" id="radioButtonSeparateArchiveCustom" />
-        <Radiobutton text="Звуки" id="radioButtonSeparateArchiveSounds" />
-        <Radiobutton text="Текстуры (файлы *.dds)" id="radioButtonSeparateArchiveTextures" />
-        <Radiobutton text="Общее / Интерфейс" id="radioButtonSeparateArchiveGeneral" />
-      </Group>
-      <Label text="Параметры установки отключены, так как мод заморожен." id="labelModUnfreeze" />
-      <Button text="Разморозить" id="buttonModUnfreeze" />
-      <Checkbox text="Заморозить" id="checkBoxFreezeArchive">
-        <Tooltip>Если вы "заморозите" архив, он не будет распаковываться при установке.
-Это ускорит процесс.
-
-Особенно полезно, если архив огромен (1GiB или больше) и файлы не меняются.</Tooltip>
-      </Checkbox>
-      <Button text="Восстановить файлы *.dds" id="buttonModRepairDDS" />
-      <Checkbox text="Сжать архив" id="checkBoxModBA2Compression" />
-      <Label text="Имя архива:" id="labelModArchiveName" />
-      <Button text="Открыть папку" id="buttonModOpenFolder" />
-      <Label text="Папка мода:" id="labelModFolderName" />
-      <Label text="Формат архива:" id="labelModArchiveFormat" />
-      <Label text="Установлен как:" id="labelModInstallAs" />
-      <Label text="Название:" id="labelModName" />
-      <Button text="..." id="buttonModPickRootDir" />
-      <Label text="Папка установки:" id="labelModInstallInto" />
-    </Element>
-  </FormModDetails>
 </Language>
