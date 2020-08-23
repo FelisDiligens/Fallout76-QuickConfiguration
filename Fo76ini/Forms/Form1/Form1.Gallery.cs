@@ -81,31 +81,39 @@ namespace Fo76ini
                 Directory.CreateDirectory(thumbnailsPath);
 
             /*
-             * Search the game folder for screenshots:
+             * Search the game folders for screenshots:
              * C:\...\Fallout76\*.png
              */
-            if (Directory.Exists(Shared.GamePath))
+            String[] gamePaths = new String[] {
+                IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathSteam", ""),
+                IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNet", ""),
+                IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNetPTS", "")
+            };
+            foreach (String gamePath in gamePaths)
             {
-                IEnumerable<String> screenshots = Directory.EnumerateFiles(Shared.GamePath, "*.png", SearchOption.TopDirectoryOnly);
-                foreach (String filePath in screenshots)
+                if (Directory.Exists(gamePath))
                 {
-                    String fileName = Path.GetFileName(filePath);
-                    String thumbPath = Path.Combine(thumbnailsPath, fileName) + ".jpg";
-                    Bitmap thumbnail;
+                    IEnumerable<String> screenshots = Directory.EnumerateFiles(gamePath, "*.png", SearchOption.TopDirectoryOnly);
+                    foreach (String filePath in screenshots)
+                    {
+                        String fileName = Path.GetFileName(filePath);
+                        String thumbPath = Path.Combine(thumbnailsPath, fileName) + ".jpg";
+                        Bitmap thumbnail;
 
-                    if (!File.Exists(thumbPath))
-                        thumbnail = new Bitmap(Utils.MakeThumbnail(filePath, thumbPath));
-                    else
-                        thumbnail = new Bitmap(thumbPath);
+                        if (!File.Exists(thumbPath))
+                            thumbnail = new Bitmap(Utils.MakeThumbnail(filePath, thumbPath));
+                        else
+                            thumbnail = new Bitmap(thumbPath);
 
-                    this.Invoke(() => galleryImageList.Images.Add(fileName, thumbnail));
+                        this.Invoke(() => galleryImageList.Images.Add(fileName, thumbnail));
 
-                    var item = new ListViewItem();
-                    item.Text = fileName;
-                    item.ImageKey = fileName;
-                    this.Invoke(() => this.listViewScreenshots.Items.Add(item));
+                        var item = new ListViewItem();
+                        item.Text = fileName;
+                        item.ImageKey = fileName;
+                        this.Invoke(() => this.listViewScreenshots.Items.Add(item));
 
-                    this.galleryImagePaths.Add(filePath);
+                        this.galleryImagePaths.Add(filePath);
+                    }
                 }
             }
 
