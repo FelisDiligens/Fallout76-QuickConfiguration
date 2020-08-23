@@ -86,14 +86,14 @@
     </Dropdown>
     <Dropdown id="VoiceChatMode">
       <Option>Automatisch</Option>
-      <Option>Umgebung</Option>
+      <Option>Gebiet</Option>
       <Option>Team</Option>
-      <Option>Aus</Option>
+      <Option>Keine</Option>
     </Dropdown>
     <Dropdown id="ShowActiveEffectsOnHUD">
-      <Option>Nichts</Option>
-      <Option>Nur schädliches</Option>
-      <Option>Alles</Option>
+      <Option>Deaktiviert</Option>
+      <Option>Schädlich</Option>
+      <Option>Alle</Option>
     </Dropdown>
     <Dropdown id="iDirShadowSplits">
       <Option>1 - Niedrig</Option>
@@ -329,37 +329,37 @@ So braucht man nicht mehr auf "Anwenden" zu drücken.</Tooltip>
       </TabPage>
       <TabPage text="Allgemein" id="tabPageGeneral">
         <Panel id="panel4">
-          <GroupBox text="Interface" id="groupBoxGeneralInterface">
-            <CheckBox text="Show floating quest text" id="checkBoxShowFloatingQuestText">
+          <GroupBox text="Oberfläche" id="groupBoxGeneralInterface">
+            <CheckBox text="Schwebende Questtexte zeigen" id="checkBoxShowFloatingQuestText">
               <Tooltip>Betroffene Werte: bShowFloatingQuestText
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </CheckBox>
-            <CheckBox text="Zeige Schadenspunkte im Abenteuermodus an" id="checkBoxShowDamageNumbersA">
+            <CheckBox text="Zeige Schadenswerte im Abenteuermodus an" id="checkBoxShowDamageNumbersA">
               <Tooltip>Betroffene Werte: bShowDamageNumbers
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </CheckBox>
-            <CheckBox text="Enable public team notifications\n" id="checkBoxShowPublicTeamNotifications">
+            <CheckBox text="Benachrichtigungen vom öffentlichen Team aktivieren\n" id="checkBoxShowPublicTeamNotifications">
               <Tooltip>Betroffene Werte: bShowPublicTeamNotifications
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </CheckBox>
-            <CheckBox text="Zeige Namen anderer Spieler" id="checkBoxShowOtherPlayersNames">
+            <CheckBox text="Namen anderer Spieler anzeigen" id="checkBoxShowOtherPlayersNames">
               <Tooltip>Betroffene Werte: bShowOtherPlayersNames
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </CheckBox>
-            <CheckBox text="Zeige schwebende Questmarker\n" id="checkBoxShowFloatingQuestMarkers">
+            <CheckBox text="Schwebende Markierungen zeigen\n" id="checkBoxShowFloatingQuestMarkers">
               <Tooltip>Betroffene Werte: bShowFloatingQuestMarkers
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </CheckBox>
-            <CheckBox text="Aktivere Power Armor HUD" id="checkBoxEnablePowerArmorHUD">
+            <CheckBox text="Powerrüstungs-HUD aktiveren" id="checkBoxEnablePowerArmorHUD">
               <Tooltip>Betroffene Werte: bEnablePowerArmorHUD
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </CheckBox>
-            <CheckBox text="Raritätsfarben von Gegenständen anzeigen (Nuclear Winter)" id="checkBoxItemRarityColorsNW">
+            <CheckBox text="Gegenstandsseltenheit in Farben anzeigen (Nuclear Winter)" id="checkBoxItemRarityColorsNW">
               <Tooltip>Betroffene Werte: bEnableItemRarityColors
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </CheckBox>
-            <Label text="Einblendedistanz schwebender Questmarker" id="labelFloatingQuestMarkersDistance" />
-            <Label text="Zeige aktive Effekte auf der HUD:" id="labelShowActiveEffectsOnHUD">
+            <Label text="Anzeigeentfernung für schwebende Markierungen" id="labelFloatingQuestMarkersDistance" />
+            <Label text="Aktive Effekte auf der HUD anzeigen:" id="labelShowActiveEffectsOnHUD">
               <Tooltip>Betroffene Werte: uHUDActiveEffectWidget
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </Label>
@@ -383,14 +383,14 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
               <Tooltip>Betroffene Werte: fHUDOpacity
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </TrackBar>
-            <Label text="HUD-Deckkraft" id="labelHUDOpacity" />
+            <Label text="HUD-Transparenz" id="labelHUDOpacity" />
           </GroupBox>
           <GroupBox text="Quests" id="groupBoxQuests">
-            <CheckBox text="Tägliche Quests beim Start aktiv schalten" id="checkBoxEnableQuestAutoTrackDaily">
+            <CheckBox text="Tagesquests beim Start aktiv schalten" id="checkBoxEnableQuestAutoTrackDaily">
               <Tooltip>Betroffene Werte: bEnableQuestAutoTrackOther
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </CheckBox>
-            <CheckBox text="Eventquests beim Start aktiv schalten" id="checkBoxEnableQuestAutoTrackEvent">
+            <CheckBox text="Event-Quests beim Start aktiv schalten" id="checkBoxEnableQuestAutoTrackEvent">
               <Tooltip>Betroffene Werte: bEnableQuestAutoTrackEvent
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </CheckBox>
@@ -663,7 +663,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </GroupBox>
           </GroupBox>
         </Panel>
-        <GroupBox text="Display" id="groupBoxDisplay">
+        <GroupBox text="Anzeige" id="groupBoxDisplay">
           <CheckBox text="Behebe HUD für 5:4 und 4:3 Auflösung (zum Teil)" id="checkBoxFixHUDFor5_4and4_3">
             <Tooltip>Behebt verstecktes / falsch dargestelltes
   * Schlösser knacken und
@@ -731,7 +731,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
       </TabPage>
       <TabPage text="Audio" id="tabPageAudio">
         <GroupBox text="Audio" id="groupBoxAudio">
-          <CheckBox text="Enable audio" id="checkBoxEnableAudio">
+          <CheckBox text="Audio aktivieren" id="checkBoxEnableAudio">
             <Tooltip>Betroffene Werte: bEnableAudio
 Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </CheckBox>
@@ -742,14 +742,14 @@ Betroffene Werte: bPlayMainMenuMusic
 Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </CheckBox>
         </GroupBox>
-        <GroupBox text="Sprachchat" id="groupBoxVoice">
-          <Label text="Sprachchat-Modus:" id="labelVoiceChatMode" />
+        <GroupBox text="Voice-Chat" id="groupBoxVoice">
+          <Label text="Voice-Chat-Modus:" id="labelVoiceChatMode" />
           <CheckBox text="Push-To-Talk aktivieren" id="checkBoxPushToTalk">
             <Tooltip>Betroffene Werte: bVoicePushToTalkEnabled
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </CheckBox>
         </GroupBox>
-        <GroupBox text="Volume" id="groupBoxAudioVolume">
+        <GroupBox text="Lautstärke" id="groupBoxAudioVolume">
           <TrackBar id="sliderAudioChat">
             <Tooltip>Ändert die Lautstärke des Voice-Chats.
 
@@ -792,7 +792,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
 Betroffene Werte: fVal1
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </TrackBar>
-          <Label text="Hauptlautstärke" id="labelVolumeMaster" />
+          <Label text="Gesamtlautstärke" id="labelVolumeMaster" />
           <TrackBar id="sliderVolumeMaster">
             <Tooltip>Ändert die Gesamtlautstärke des Spiels.
 
@@ -806,11 +806,11 @@ Betroffene Werte: fVal0
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </TrackBar>
           <Label text="Chat-Lautstärke" id="labelAudioChat" />
-          <Label text="Menü-Musik" id="labelAudiofVal0" />
-          <Label text="Pip-Boy Radio" id="labelAudiofVal6" />
-          <Label text="Weltradios" id="labelAudiofVal1" />
+          <Label text="Menümusik" id="labelAudiofVal0" />
+          <Label text="Pip-Boy-Radio" id="labelAudiofVal6" />
+          <Label text="Weltradiosender" id="labelAudiofVal1" />
           <Label text="Schritte" id="labelAudiofVal5" />
-          <Label text="Stimmen" id="labelAudiofVal2" />
+          <Label text="Stimme" id="labelAudiofVal2" />
           <Label text="Effekte" id="labelAudiofVal4" />
           <Label text="Musik" id="labelAudiofVal3" />
         </GroupBox>
@@ -1085,7 +1085,7 @@ Affected files: Fallout76Prefs.ini</Tooltip>
           <GroupBox text="Installationsoptionen" id="groupBoxModDetailsInstallationOptions">
             <Button text="..." id="buttonModPickRootDir" />
             <Label text="Installieren als:" id="labelModInstallAs" />
-            <Label text="Voreinstellung:" id="labelModArchivePreset" />
+            <Label text="Vorgabe:" id="labelModArchivePreset" />
             <CheckBox text="Einfrieren" id="checkBoxFreezeArchive">
               <Tooltip>Wenn du ein Archiv "einfierst", dann wird es beim Anwenden nicht erneut erstellt.
 Das beschleunigt die Installtion von Mods.
