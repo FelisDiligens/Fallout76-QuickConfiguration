@@ -4,7 +4,7 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.8.0h1">
+<Language name="English (USA)" iso="en-US" version="1.8.1">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Update now!" id="updateNowButton" />
@@ -145,6 +145,9 @@ This might be caused by corrupted ini files.
 Some UI elements might not be functioning correctly.
 
 {1}</Messagebox>
+    <Messagebox title="Invalid *.ini values found" id="iniValuesInvalid">{0} *.ini value(s) are invalid:
+
+{1}</Messagebox>
     <Messagebox title="Done" id="downloadLanguagesFinished">Downloaded language files: {0}</Messagebox>
     <Messagebox title="Failed" id="downloadLanguagesFailed">Downloading languages failed.
 {0}</Messagebox>
@@ -221,7 +224,11 @@ Try again later.</Messagebox>
   <Form1 title="Fallout 76 Quick Configuration">
     <ToolStrip id="toolStrip1">
       <ToolStripButton text="Apply" id="toolStripButtonApply" />
-      <ToolStripButton text="Launch" id="toolStripButtonLaunchGame" />
+      <ToolStripSplitButton text="Launch" id="toolStripSplitButtonLaunchGame">
+        <ToolStripMenuItem text="Launch Steam version" id="launchViaSteamToolStripMenuItem" />
+        <ToolStripMenuItem text="Launch Bethesda.net version" id="launchViaBethesdanetToolStripMenuItem" />
+        <ToolStripMenuItem text="Launch Bethesda.net (PTS) version" id="launchViaBethesdanetPTSToolStripMenuItem" />
+      </ToolStripSplitButton>
       <ToolStripSeparator text="" id="toolStripSeparator1" />
       <ToolStripButton text="Mods" id="toolStripButtonManageMods" />
       <ToolStripSeparator text="" id="toolStripSeparator2" />
@@ -1054,7 +1061,13 @@ Affected files: Fallout76Prefs.ini</Tooltip>
         <GroupBox text="Options" id="groupBoxScreenshotOptions">
           <Label text="Thumbnail size:" id="labelGalleryThumbnailSize" />
           <Button text="Refresh gallery" id="buttonRefreshGallery" />
-          <Label text="Screenshot index:" id="labelScreenshotIndex" />
+          <Label text="Screenshot index:" id="labelScreenshotIndex">
+            <Tooltip>When you take screenshots ingame with the print screen button, it saves them in the game directory as "ScreenShotX.png".
+The "X" being the screenshot index.
+
+Affected values: iScreenShotIndex
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </Label>
         </GroupBox>
       </TabPage>
       <TabPage text="Custom" id="tabPageCustom">

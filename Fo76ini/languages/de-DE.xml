@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.8.0h1">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.8.1">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Update now!" id="updateNowButton" />
@@ -85,7 +85,7 @@
       <Option>Fallout76Custom.ini</Option>
     </Dropdown>
     <Dropdown id="VoiceChatMode">
-      <Option>Autom.</Option>
+      <Option>Automatisch</Option>
       <Option>Umgebung</Option>
       <Option>Team</Option>
       <Option>Aus</Option>
@@ -108,7 +108,7 @@
     <Dropdown id="ModArchivePreset">
       <Option>-- Bitte auswählen --</Option>
       <Option>Automatisch erkennen</Option>
-      <Option>Allgmeines / Oberfläche / Materialien / Animationen</Option>
+      <Option>Allgemeines / Oberfläche / Materialien / Animationen</Option>
       <Option>Texturen (*.dds Dateien)</Option>
       <Option>Geräusche / Musik / Stimmen</Option>
     </Dropdown>
@@ -141,6 +141,9 @@ Bitte starten Sie das Tool neu, um mit den neuen Werten zu arbeiten.</Messagebox
     <Messagebox title="Fehler" id="onLoadFuncException">{0} Ausnahme(n) sind aufgetreten, während die UI geladen wurde.
 Das kann durch beschädigte *.ini Dateien verursacht worden sein.
 Einige UI-Elemente könnten unter Umständen nicht korrekt funktionieren.
+
+{1}</Messagebox>
+    <Messagebox title="Ungültige *.ini Werte gefunden" id="iniValuesInvalid">{0} *.ini Wert(e) sind ungültig:
 
 {1}</Messagebox>
     <Messagebox title="Fertig" id="downloadLanguagesFinished">Heruntergeladene Sprachdateien: {0}</Messagebox>
@@ -222,26 +225,30 @@ Bitte wähle Archive2.exe</Messagebox>
   <Form1 title="Fallout 76 Schnellkonfiguration">
     <ToolStrip id="toolStrip1">
       <ToolStripButton text="Anwenden" id="toolStripButtonApply" />
-      <ToolStripButton text="Starten" id="toolStripButtonLaunchGame" />
+      <ToolStripSplitButton text="Starten" id="toolStripSplitButtonLaunchGame">
+        <ToolStripMenuItem text="Starte Steam-Version" id="launchViaSteamToolStripMenuItem" />
+        <ToolStripMenuItem text="Starte Bethesda.net-Version" id="launchViaBethesdanetToolStripMenuItem" />
+        <ToolStripMenuItem text="Starte Bethesda.net (PTS)-Version" id="launchViaBethesdanetPTSToolStripMenuItem" />
+      </ToolStripSplitButton>
       <ToolStripSeparator text="" id="toolStripSeparator1" />
       <ToolStripButton text="Mods" id="toolStripButtonManageMods" />
       <ToolStripSeparator text="" id="toolStripSeparator2" />
-      <ToolStripSplitButton text="Update" id="toolStripSplitButtonUpdate">
-        <ToolStripMenuItem text="Tool aktualisieren" id="updateToolToolStripMenuItem" />
-        <ToolStripMenuItem text="Nach Aktualisierungen suchen." id="checkForUpdatesToolStripMenuItem" />
+      <ToolStripSplitButton text="Aktualisieren" id="toolStripSplitButtonUpdate">
+        <ToolStripMenuItem text="Programm aktualisieren" id="updateToolToolStripMenuItem" />
+        <ToolStripMenuItem text="Nach Aktualisierungen suchen" id="checkForUpdatesToolStripMenuItem" />
         <ToolStripMenuItem text="Sprachdateien herunterladen / aktualisieren" id="downloadUpdateLanguageFilesToolStripMenuItem" />
-        <ToolStripMenuItem text="Zeige update.log.txt" id="showUpdaterlogtxtToolStripMenuItem" />
+        <ToolStripMenuItem text="Öffne update.log.txt" id="showUpdaterlogtxtToolStripMenuItem" />
       </ToolStripSplitButton>
       <ToolStripDropDownButton text="Öffnen" id="toolStripDropDownButtonExplore">
         <ToolStripMenuItem text="Spielinstallationsordner" id="gameFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Spielkonfigurationsordner" id="gamesConfigurationFolderToolStripMenuItem" />
         <ToolStripSeparator text="" id="toolStripSeparator4" />
         <ToolStripMenuItem text="Toolkonfigurationsordner" id="toolConfigurationFolderToolStripMenuItem" />
-        <ToolStripMenuItem text="Tool 'languages'-Ordner" id="toolLanguagesFolderToolStripMenuItem" />
+        <ToolStripMenuItem text="Toolsprachdateienordner" id="toolLanguagesFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Toolinstallationsordner" id="toolInstallationFolderToolStripMenuItem" />
         <ToolStripSeparator text="" id="toolStripSeparator5" />
-        <ToolStripMenuItem text="Steam Screenshots-Ordner" id="steamScreenshotFolderToolStripMenuItem" />
-        <ToolStripMenuItem text="Spiel 'photos'-Ordner" id="gamePhotosFolderToolStripMenuItem" />
+        <ToolStripMenuItem text="Steams Screenshots-Ordner" id="steamScreenshotFolderToolStripMenuItem" />
+        <ToolStripMenuItem text="Fotos-Ordner" id="gamePhotosFolderToolStripMenuItem" />
         <ToolStripSeparator text="" id="toolStripSeparator6" />
         <ToolStripMenuItem text="Bearbeite Fallout76.ini" id="editFallout76iniToolStripMenuItem" />
         <ToolStripMenuItem text="Bearbeite Fallout76Prefs.ini" id="editFallout76PrefsiniToolStripMenuItem" />
@@ -259,7 +266,7 @@ Bitte wähle Archive2.exe</Messagebox>
           <GroupBox text="Lokalisierung" id="groupBoxLocalization">
             <Label text="Diese Sprachdatei ist veraltet.\nEinige Elemente könnten noch nicht übersetzt worden sein." id="labelOutdatedLanguage" />
             <Label text="Sprache:" id="labelLanguage" />
-            <Button text="Sprachen herunterladen / aktualisieren" id="buttonDownloadLanguages" />
+            <Button text="Sprachdateien herunterladen / aktualisieren" id="buttonDownloadLanguages" />
           </GroupBox>
           <GroupBox text="Spieledition" id="groupBoxGameEdition">
             <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
@@ -268,8 +275,8 @@ Bitte wähle Archive2.exe</Messagebox>
             <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
           </GroupBox>
           <GroupBox text="Startoptionen" id="groupBoxLaunchOptions">
-            <Label text="Fallout 76 kann nicht direkt ausgeführt werden, wenn es über den Microsoft Store installiert wurde." id="labelLaunchOptionMSStoreNotice" />
             <Label text="Tipp: Gib deine Zugangsdaten im &quot;Allgemein&quot;-Tab ein." id="labelLaunchOptionTip" />
+            <Label text="Fallout 76 kann nicht direkt ausgeführt werden, wenn es über den Microsoft Store installiert wurde." id="labelLaunchOptionMSStoreNotice" />
             <RadioButton text="Starte &quot;Fallout76.exe&quot; direkt" id="radioButtonLaunchViaExecutable" />
             <RadioButton text="Starte via Steam / Bethesda.net (empfohlen)" id="radioButtonLaunchViaLink" />
           </GroupBox>
@@ -278,13 +285,13 @@ Bitte wähle Archive2.exe</Messagebox>
             <Button text="..." id="buttonPickGamePath" />
           </GroupBox>
           <GroupBox text="Optionen" id="groupBoxOptions">
-            <CheckBox text="[Experimentell] Verweigere NTFS-Schreibberechtigung." id="checkBoxDenyNTFSWritePermission">
+            <CheckBox text="[Experimentell] Verweigere NTFS-Schreibberechtigung" id="checkBoxDenyNTFSWritePermission">
               <Tooltip>Wenn aktiv, wird jedem das Schreiben im Fallout 76 Ordner verweigert.
 Benutze dies, wenn die der herkömmliche Schreibschutz nichts bringt.
 
 Betroffener Ordner: %UserProfile%\Documents\My Games\Fallout 76</Tooltip>
             </CheckBox>
-            <CheckBox text="Ich verwende mehrere Spieleditionen." id="checkBoxMultipleGameEditionsUsed">
+            <CheckBox text="Ich verwende mehrere Spieleditionen" id="checkBoxMultipleGameEditionsUsed">
               <Tooltip>Hake das an, wenn du Mods für mehr als eine Spieledition installierst.
 Wenn angehakt, dann wird sResourceIndexFileList für jede einzelne Spieledition separat gespeichtert.</Tooltip>
             </CheckBox>
@@ -299,16 +306,16 @@ Betroffene Dateien: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
             </CheckBox>
           </GroupBox>
           <GroupBox text="Verhalten" id="groupBoxBehavior">
-            <CheckBox text="Prüfe nicht auf Updates." id="checkBoxIgnoreUpdates" />
-            <CheckBox text="Öffne den Mod Manager wenn das Tool gestartet wird." id="checkBoxOpenManageModsOnLaunch" />
-            <CheckBox text="Schließe das Tool, wenn das Spiel gestartet wird." id="checkBoxQuitOnGameLaunch">
+            <CheckBox text="Prüfe nicht auf Updates" id="checkBoxIgnoreUpdates" />
+            <CheckBox text="Öffne den Mod Manager wenn das Tool gestartet wird" id="checkBoxOpenManageModsOnLaunch" />
+            <CheckBox text="Schließe das Tool, wenn das Spiel gestartet wird" id="checkBoxQuitOnGameLaunch">
               <Tooltip>Funktionert nur, wenn das Spiel mit dem Tool gestartet wird.</Tooltip>
             </CheckBox>
-            <CheckBox text="Frage nicht, wenn &quot;Anwenden&quot; gedrückt wird." id="checkBoxSkipBackupQuestion">
+            <CheckBox text="Frage nicht, wenn &quot;Anwenden&quot; gedrückt wird" id="checkBoxSkipBackupQuestion">
               <Tooltip>Überspringt die Backup-Frage, wenn "Anwenden" gedrückt wird.
 Beachte: Es wird dann kein Backup erstellt!</Tooltip>
             </CheckBox>
-            <CheckBox text="Automatisch Änderungen anwenden, wenn das Tool geschlossen." id="checkBoxAutoApply">
+            <CheckBox text="Automatisch Änderungen anwenden, wenn das Tool geschlossen" id="checkBoxAutoApply">
               <Tooltip>... oder das Spiel gestartet wird.
 So braucht man nicht mehr auf "Anwenden" zu drücken.</Tooltip>
             </CheckBox>
@@ -416,15 +423,15 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </GroupBox>
         </Panel>
         <GroupBox text="Anmelden" id="groupBoxLogin">
-          <RadioButton text="Konto #8" id="radioButtonAccount8" />
-          <RadioButton text="Konto #7" id="radioButtonAccount7" />
-          <RadioButton text="Konto #6" id="radioButtonAccount6" />
-          <RadioButton text="Konto #5" id="radioButtonAccount5" />
-          <RadioButton text="Konto #4" id="radioButtonAccount4" />
-          <RadioButton text="Konto #3" id="radioButtonAccount3" />
-          <RadioButton text="Konto #2" id="radioButtonAccount2" />
-          <RadioButton text="Konto #1" id="radioButtonAccount1" />
-          <Label text="Profile:" id="labelAccountProfiles" />
+          <RadioButton text="Konto 8" id="radioButtonAccount8" />
+          <RadioButton text="Konto 7" id="radioButtonAccount7" />
+          <RadioButton text="Konto 6" id="radioButtonAccount6" />
+          <RadioButton text="Konto 5" id="radioButtonAccount5" />
+          <RadioButton text="Konto 4" id="radioButtonAccount4" />
+          <RadioButton text="Konto 3" id="radioButtonAccount3" />
+          <RadioButton text="Konto 2" id="radioButtonAccount2" />
+          <RadioButton text="Konto 1" id="radioButtonAccount1" />
+          <Label text="Profil:" id="labelAccountProfiles" />
           <CheckBox text="Steam deaktivieren" id="checkBoxDisableSteam" />
           <Label text="Deine Anmeldedaten werden in Fallout76Custom.ini gespeichert.\nSomit musst du dich nicht erneut anmelden,\nwenn du Fallout 76 ohne Launcher startest.\n\nWenn du Steam benutzt und du dich mit Bethesda.net anmelden möchtest\n(um z.B. Atoms auszugeben), deaktivere Steam.\nBEACHTE: Deine Errungenschaften werden dabei auch deaktiviert!" id="labelCredentialsExplanation" />
           <CheckBox text="Passwort anzeigen" id="checkBoxShowPassword" />
@@ -844,11 +851,11 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </CheckBox>
         </GroupBox>
         <GroupBox text="Maus" id="groupBoxMouse">
-          <CheckBox text="Invert X" id="checkBoxMouseInvertX">
+          <CheckBox text="X-Achse umkehren" id="checkBoxMouseInvertX">
             <Tooltip>Betroffene Werte: bInvertXValues
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </CheckBox>
-          <CheckBox text="Invert Y" id="checkBoxMouseInvertY">
+          <CheckBox text="Y-Achse umkehren" id="checkBoxMouseInvertY">
             <Tooltip>Betroffene Werte: bInvertYValues
 Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </CheckBox>
@@ -975,7 +982,7 @@ Betroffene Werte: fDefault1stPersonFOV
 Betroffene Dateien: Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
           </Label>
         </GroupBox>
-        <GroupBox text="Vanity (Spinning camera)" id="groupBoxCameraVanity">
+        <GroupBox text="Inaktivität (drehende Kamera)" id="groupBoxCameraVanity">
           <CheckBox text="Erzwinge drehende Kamera wenn inaktiv" id="checkBoxForceVanityMode">
             <Tooltip>Betroffene Werte: bForceAutoVanityMode
 Betroffene Dateien: Fallout76Custom.ini</Tooltip>
@@ -1052,7 +1059,13 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         <GroupBox text="Optionen" id="groupBoxScreenshotOptions">
           <Label text="Thumbnail-Größe:" id="labelGalleryThumbnailSize" />
           <Button text="Galerie aktualisieren" id="buttonRefreshGallery" />
-          <Label text="Screenshot-Index:" id="labelScreenshotIndex" />
+          <Label text="Screenshot-Index:" id="labelScreenshotIndex">
+            <Tooltip>When you take screenshots ingame with the print screen button, it saves them in the game directory as "ScreenShotX.png".
+The "X" being the screenshot index.
+
+Affected values: iScreenShotIndex
+Affected files: Fallout76Prefs.ini</Tooltip>
+          </Label>
         </GroupBox>
       </TabPage>
       <TabPage text="Benutzerdefiniert" id="tabPageCustom">
@@ -1067,12 +1080,12 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
       <CheckBox text="Mods deaktivieren" id="checkBoxDisableMods" />
     </Panel>
     <TabControl id="tabControl1">
-      <TabPage text="Mod-Reihenfolge" id="tabPageModOrder">
+      <TabPage text="Modliste" id="tabPageModOrder">
         <Panel id="panelModDetails">
-          <GroupBox text="Installation options" id="groupBoxModDetailsInstallationOptions">
+          <GroupBox text="Installationsoptionen" id="groupBoxModDetailsInstallationOptions">
             <Button text="..." id="buttonModPickRootDir" />
             <Label text="Installieren als:" id="labelModInstallAs" />
-            <Label text="Preset:" id="labelModArchivePreset" />
+            <Label text="Voreinstellung:" id="labelModArchivePreset" />
             <CheckBox text="Einfrieren" id="checkBoxFreezeArchive">
               <Tooltip>Wenn du ein Archiv "einfierst", dann wird es beim Anwenden nicht erneut erstellt.
 Das beschleunigt die Installtion von Mods.
@@ -1132,7 +1145,7 @@ Das ist insbesondere nützlich, wenn das Archiv RIESIG ist (1GiB oder mehr) und 
           <CheckBox text="[Experimentell] Friere gebündelte Archive ein" id="checkBoxFreezeBundledArchives">
             <Tooltip>Anstatt gebündelte Archive neu zu erstellen, wird eine gebündelte Kopie gespeichert und du werdst gefragt, ob du sie beim Anwenden aktualisieren möchtest.</Tooltip>
           </CheckBox>
-          <CheckBox text="Erstelle harte Links anstatt Dateien zu kopieren." id="checkBoxModsUseHardlinks">
+          <CheckBox text="Erstelle harte Links anstatt Dateien zu kopieren" id="checkBoxModsUseHardlinks">
             <Tooltip>Könnte Speicherplatz frei machen und beim Anwenden Zeit sparen.
 Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
           </CheckBox>
@@ -1154,10 +1167,15 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
         <LinkLabel text="Hol dir deinen API-Key" id="linkLabelNMGetAPIKey" />
         <Button text="Modinformationen aktualisieren" id="buttonNMUpdateModInfo" />
         <Panel id="panel3">
+          <Label text="Ungültig" id="labelNMAPIKeyStatus" />
           <Label text="API-Key:" id="labelNMDescAPIKey" />
+          <Label text="Anonymous" id="labelNMUserName" />
           <Label text="Mitgliedschaft:" id="labelNMDescMembership" />
+          <Label text="in -10 Stunde(n) und -16 Minute(n)" id="labelNMDailyRateLimitReset" />
+          <Label text="Basic" id="labelNMMembership" />
           <Label text="Limit wird zurückgesetzt:" id="labelNMDescLimitReset" />
           <Label text="Tägliches Ratenlimit:" id="labelNMDescDailyRateLimit" />
+          <Label text="0 übrig" id="labelNMDailyRateLimit" />
         </Panel>
         <Button text="Profil aktualisieren" id="buttonNMUpdateProfile" />
         <Button text="Thumbnails löschen" id="buttonNMDeleteThumbnails" />
