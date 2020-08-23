@@ -4,7 +4,7 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.8.1">
+<Language name="English (USA)" iso="en-US" version="1.8.1h1">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Update now!" id="updateNowButton" />

@@ -194,9 +194,12 @@ namespace Fo76ini
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Create folder, if not present:
+            // Create folders, if not present:
             if (!Directory.Exists(Shared.AppConfigFolder))
                 Directory.CreateDirectory(Shared.AppConfigFolder);
+
+            if (!Directory.Exists(Localization.languageFolder))
+                Directory.CreateDirectory(Localization.languageFolder);
 
             // Create note to old config folder to inform users, if present:
             if (Directory.Exists(Shared.OldAppConfigFolder))

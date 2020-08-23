@@ -413,6 +413,9 @@ namespace Fo76ini
             }
 
             // Save it:
+            if (!Directory.Exists(Localization.languageFolder))
+                Directory.CreateDirectory(Localization.languageFolder);
+
             xmlDoc.Save(this.filePath);
         }
 
