@@ -21,6 +21,8 @@ namespace Fo76ini
         private static List<Translation> translations = new List<Translation>();
         private static DropDown comboBoxTranslations;
 
+        public static String locale = "en-US";
+
         static Localization()
         {
             AddSharedStrings();
@@ -61,6 +63,7 @@ namespace Fo76ini
             int languageIndex = GetTranslationIndex(selectedLanguageISO);
             int enUSIndex = GetTranslationIndex("en-US");
             Localization.comboBoxTranslations.SelectedIndex = languageIndex > -1 ? languageIndex : enUSIndex;
+            Localization.locale = selectedLanguageISO;
         }
 
         public static void GenerateTemplate(Translation translation, List<Form> forms, List<ToolTip> toolTips)
@@ -128,6 +131,7 @@ namespace Fo76ini
 
             // Set sLanguage in config.ini:
             IniFiles.Instance.Set(IniFile.Config, "Preferences", "sLanguage", translation.ISO);
+            Localization.locale = translation.ISO;
 
             GenerateTemplate(translation, new List<Form> { form1, formMods }, new List<ToolTip> { form1.toolTip, formMods.toolTip });
         }

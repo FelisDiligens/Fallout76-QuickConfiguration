@@ -283,15 +283,6 @@ A value of 1 forces the game to render only the lowest resolution shadows.
 Affected values: iDirShadowSplits
 Affected files: Fallout76Prefs.ini</value>
   </data>
-  <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>107, 17</value>
-  </metadata>
-  <metadata name="timerCheckFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>221, 17</value>
-  </metadata>
-  <metadata name="openFileDialogGamePath.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>864, 17</value>
-  </metadata>
   <data name="checkBoxbApplyCameraNodeAnimations.ToolTip" xml:space="preserve">
     <value>When disabled, sets the camera's position into the characters head.
 You'll need to zoom out in third person.
@@ -304,6 +295,15 @@ Affected values: bApplyCameraNodeAnimations
 Affected files: Fallout76Custom.ini
 </value>
   </data>
+  <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>107, 17</value>
+  </metadata>
+  <metadata name="timerCheckFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>221, 17</value>
+  </metadata>
+  <metadata name="openFileDialogGamePath.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>864, 17</value>
+  </metadata>
   <data name="labelCredentialsExplanation.Text" xml:space="preserve">
     <value>Your credentials are saved into Fallout76Custom.ini
 This way, you don't have to enter your username and password manually

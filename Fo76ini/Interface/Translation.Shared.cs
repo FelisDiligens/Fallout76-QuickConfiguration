@@ -93,6 +93,12 @@ namespace Fo76ini
                 "{1}"
             );
 
+            MsgBox.Add("iniValuesInvalid",
+                "Invalid *.ini values found",
+                "{0} *.ini value(s) are invalid:\n\n" +
+                "{1}"
+            );
+
             MsgBox.Add("downloadLanguagesFinished",
                 "Done",
                 "Downloaded language files: {0}"

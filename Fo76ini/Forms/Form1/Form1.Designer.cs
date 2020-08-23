@@ -134,6 +134,7 @@
             this.labelPitchZoomOutMaxDist = new System.Windows.Forms.Label();
             this.labelCameraDistanceMaximum = new System.Windows.Forms.Label();
             this.labelCameraDistanceMinimum = new System.Windows.Forms.Label();
+            this.checkBoxbApplyCameraNodeAnimations = new System.Windows.Forms.CheckBox();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
@@ -152,7 +153,6 @@
             this.buttonCameraPositionReset = new System.Windows.Forms.Button();
             this.labelCameraPositionPlayer = new System.Windows.Forms.Label();
             this.labelCameraPositionFor = new System.Windows.Forms.Label();
-            this.checkBoxbApplyCameraNodeAnimations = new System.Windows.Forms.CheckBox();
             this.radioButtonCameraPositionMeleeCombat = new System.Windows.Forms.RadioButton();
             this.radioButtonCameraPositionCombat = new System.Windows.Forms.RadioButton();
             this.radioButtonCameraPositionUnarmed = new System.Windows.Forms.RadioButton();
@@ -350,7 +350,10 @@
             this.textBoxCustom = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonApply = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLaunchGame = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSplitButtonLaunchGame = new System.Windows.Forms.ToolStripSplitButton();
+            this.launchViaSteamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.launchViaBethesdanetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.launchViaBethesdanetPTSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonManageMods = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -1863,6 +1866,17 @@
             this.labelCameraDistanceMinimum.Text = "Minimum:";
             this.toolTip.SetToolTip(this.labelCameraDistanceMinimum, "Affected values: fVanityModeMinDist\r\nAffected files: Fallout76Custom.ini\r\n");
             // 
+            // checkBoxbApplyCameraNodeAnimations
+            // 
+            this.checkBoxbApplyCameraNodeAnimations.AutoSize = true;
+            this.checkBoxbApplyCameraNodeAnimations.Location = new System.Drawing.Point(222, 429);
+            this.checkBoxbApplyCameraNodeAnimations.Name = "checkBoxbApplyCameraNodeAnimations";
+            this.checkBoxbApplyCameraNodeAnimations.Size = new System.Drawing.Size(171, 17);
+            this.checkBoxbApplyCameraNodeAnimations.TabIndex = 46;
+            this.checkBoxbApplyCameraNodeAnimations.Text = "bApplyCameraNodeAnimations";
+            this.toolTip.SetToolTip(this.checkBoxbApplyCameraNodeAnimations, resources.GetString("checkBoxbApplyCameraNodeAnimations.ToolTip"));
+            this.checkBoxbApplyCameraNodeAnimations.UseVisualStyleBackColor = true;
+            // 
             // timerCheckFiles
             // 
             this.timerCheckFiles.Interval = 5000;
@@ -2110,17 +2124,6 @@
             this.labelCameraPositionFor.Size = new System.Drawing.Size(121, 13);
             this.labelCameraPositionFor.TabIndex = 47;
             this.labelCameraPositionFor.Text = "Change position for:";
-            // 
-            // checkBoxbApplyCameraNodeAnimations
-            // 
-            this.checkBoxbApplyCameraNodeAnimations.AutoSize = true;
-            this.checkBoxbApplyCameraNodeAnimations.Location = new System.Drawing.Point(222, 429);
-            this.checkBoxbApplyCameraNodeAnimations.Name = "checkBoxbApplyCameraNodeAnimations";
-            this.checkBoxbApplyCameraNodeAnimations.Size = new System.Drawing.Size(171, 17);
-            this.checkBoxbApplyCameraNodeAnimations.TabIndex = 46;
-            this.checkBoxbApplyCameraNodeAnimations.Text = "bApplyCameraNodeAnimations";
-            this.toolTip.SetToolTip(this.checkBoxbApplyCameraNodeAnimations, resources.GetString("checkBoxbApplyCameraNodeAnimations.ToolTip"));
-            this.checkBoxbApplyCameraNodeAnimations.UseVisualStyleBackColor = true;
             // 
             // radioButtonCameraPositionMeleeCombat
             // 
@@ -4722,7 +4725,7 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonApply,
-            this.toolStripButtonLaunchGame,
+            this.toolStripSplitButtonLaunchGame,
             this.toolStripSeparator1,
             this.toolStripButtonManageMods,
             this.toolStripSeparator2,
@@ -4749,17 +4752,42 @@
             this.toolStripButtonApply.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonApply.Click += new System.EventHandler(this.toolStripButtonApply_Click);
             // 
-            // toolStripButtonLaunchGame
+            // toolStripSplitButtonLaunchGame
             // 
-            this.toolStripButtonLaunchGame.Image = global::Fo76ini.Properties.Resources.play_24;
-            this.toolStripButtonLaunchGame.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonLaunchGame.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLaunchGame.Name = "toolStripButtonLaunchGame";
-            this.toolStripButtonLaunchGame.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.toolStripButtonLaunchGame.Size = new System.Drawing.Size(90, 43);
-            this.toolStripButtonLaunchGame.Text = "Launch";
-            this.toolStripButtonLaunchGame.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonLaunchGame.Click += new System.EventHandler(this.toolStripButtonLaunchGame_Click);
+            this.toolStripSplitButtonLaunchGame.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.launchViaSteamToolStripMenuItem,
+            this.launchViaBethesdanetToolStripMenuItem,
+            this.launchViaBethesdanetPTSToolStripMenuItem});
+            this.toolStripSplitButtonLaunchGame.Image = global::Fo76ini.Properties.Resources.play_24;
+            this.toolStripSplitButtonLaunchGame.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripSplitButtonLaunchGame.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButtonLaunchGame.Name = "toolStripSplitButtonLaunchGame";
+            this.toolStripSplitButtonLaunchGame.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.toolStripSplitButtonLaunchGame.Size = new System.Drawing.Size(102, 43);
+            this.toolStripSplitButtonLaunchGame.Text = "Launch";
+            this.toolStripSplitButtonLaunchGame.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripSplitButtonLaunchGame.ButtonClick += new System.EventHandler(this.toolStripSplitButtonLaunchGame_ButtonClick);
+            // 
+            // launchViaSteamToolStripMenuItem
+            // 
+            this.launchViaSteamToolStripMenuItem.Name = "launchViaSteamToolStripMenuItem";
+            this.launchViaSteamToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.launchViaSteamToolStripMenuItem.Text = "Launch Steam version";
+            this.launchViaSteamToolStripMenuItem.Click += new System.EventHandler(this.launchViaSteamToolStripMenuItem_Click);
+            // 
+            // launchViaBethesdanetToolStripMenuItem
+            // 
+            this.launchViaBethesdanetToolStripMenuItem.Name = "launchViaBethesdanetToolStripMenuItem";
+            this.launchViaBethesdanetToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.launchViaBethesdanetToolStripMenuItem.Text = "Launch Bethesda.net version";
+            this.launchViaBethesdanetToolStripMenuItem.Click += new System.EventHandler(this.launchViaBethesdanetToolStripMenuItem_Click);
+            // 
+            // launchViaBethesdanetPTSToolStripMenuItem
+            // 
+            this.launchViaBethesdanetPTSToolStripMenuItem.Name = "launchViaBethesdanetPTSToolStripMenuItem";
+            this.launchViaBethesdanetPTSToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.launchViaBethesdanetPTSToolStripMenuItem.Text = "Launch Bethesda.net (PTS) version";
+            this.launchViaBethesdanetPTSToolStripMenuItem.Click += new System.EventHandler(this.launchViaBethesdanetPTSToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -5352,7 +5380,6 @@
         private System.Windows.Forms.Label labelMouseSensitivity;
         private System.Windows.Forms.CheckBox checkBoxFixMouseSensitivity;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonLaunchGame;
         private System.Windows.Forms.ToolStripButton toolStripButtonApply;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButtonManageMods;
@@ -5505,6 +5532,10 @@
         private System.Windows.Forms.Panel panelUpdate;
         private System.ComponentModel.BackgroundWorker backgroundWorkerDownloadLanguages;
         private System.Windows.Forms.PictureBox pictureBoxSpinnerDownloadLanguages;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButtonLaunchGame;
+        private System.Windows.Forms.ToolStripMenuItem launchViaSteamToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem launchViaBethesdanetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem launchViaBethesdanetPTSToolStripMenuItem;
     }
 }
 

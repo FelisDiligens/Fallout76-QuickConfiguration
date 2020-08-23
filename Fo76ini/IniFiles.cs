@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Fo76ini
@@ -757,6 +758,30 @@ namespace Fo76ini
 
 
 
+
+        public bool ExpectBool(String section, String key)
+        {
+            String value = this.GetString(section, key).Trim();
+            return value == "1" || value == "0";
+        }
+
+        public bool ExpectInt(String section, String key)
+        {
+            String value = this.GetString(section, key).Trim();
+            return Regex.IsMatch(value, @"^-?\d+$");
+        }
+
+        public bool ExpectUInt(String section, String key)
+        {
+            String value = this.GetString(section, key).Trim();
+            return Regex.IsMatch(value, @"^\d+$");
+        }
+
+        public bool ExpectFloat(String section, String key)
+        {
+            String value = this.GetString(section, key).Trim();
+            return Regex.IsMatch(value, @"-?[0-9\.]+");
+        }
 
 
 

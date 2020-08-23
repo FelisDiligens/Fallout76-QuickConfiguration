@@ -275,6 +275,7 @@ namespace Fo76ini
                 rbutton.CheckedChanged += new System.EventHandler(this.radioButtonAccount_CheckedChanged);
 
             // Setup UI:
+            CheckAllINIValues();
             ColorIni2Ui();
             UpdateCameraPositionUI();
             AddAllEventHandler();
@@ -396,6 +397,101 @@ namespace Fo76ini
 
             // Checking version in background:
             this.backgroundWorkerGetLatestVersion.RunWorkerAsync();
+        }
+
+        private void ExpectBool(List<String> errors, String section, String key)
+        {
+            if (!IniFiles.Instance.Exists(section, key))
+                return;
+            if (!IniFiles.Instance.ExpectBool(section, key))
+                errors.Add($"[{section}] {key}: expected boolean (0 or 1), got {IniFiles.Instance.GetString(section, key, "")}");
+        }
+
+        private void ExpectInt(List<String> errors, String section, String key)
+        {
+            if (!IniFiles.Instance.Exists(section, key))
+                return;
+            if (!IniFiles.Instance.ExpectInt(section, key))
+                errors.Add($"[{section}] {key}: expected integer, got {IniFiles.Instance.GetString(section, key)}");
+        }
+
+        private void ExpectUInt(List<String> errors, String section, String key)
+        {
+            if (!IniFiles.Instance.Exists(section, key))
+                return;
+            if (!IniFiles.Instance.ExpectUInt(section, key))
+                errors.Add($"[{section}] {key}: expected unsigned integer, got {IniFiles.Instance.GetString(section, key)}");
+        }
+
+        private void ExpectFloat(List<String> errors, String section, String key)
+        {
+            if (!IniFiles.Instance.Exists(section, key))
+                return;
+            if (!IniFiles.Instance.ExpectFloat(section, key))
+                errors.Add($"[{section}] {key}: expected floating point number, got {IniFiles.Instance.GetString(section, key)}");
+        }
+
+        private void CheckAllINIValues()
+        {
+            List<String> errors = new List<String>();
+
+            /*
+             * Check values:
+             */
+            ExpectBool(errors, "General", "bSteamEnabled");
+            // TODO: Add more checks
+
+            ExpectFloat(errors, "GamePlay", "fFloatingQuestMarkersDistance");
+            ExpectFloat(errors, "Display", "fConversationHistorySize");
+            ExpectFloat(errors, "MAIN", "fHUDOpacity");
+            ExpectFloat(errors, "Display", "fDirShadowDistance");
+            ExpectFloat(errors, "LOD", "fLODFadeOutMultObjects");
+            ExpectFloat(errors, "LOD", "fLODFadeOutMultItems");
+            ExpectFloat(errors, "LOD", "fLODFadeOutMultActors");
+            ExpectFloat(errors, "Grass", "fGrassStartFadeDistance");
+            ExpectFloat(errors, "Display", "fTAAPostOverlay");
+            ExpectFloat(errors, "Display", "fTAAPostSharpen");
+            ExpectFloat(errors, "AudioMenu", "fAudioMasterVolume");
+            ExpectFloat(errors, "AudioMenu", "fVal0");
+            ExpectFloat(errors, "AudioMenu", "fVal1");
+            ExpectFloat(errors, "AudioMenu", "fVal2");
+            ExpectFloat(errors, "AudioMenu", "fVal3");
+            ExpectFloat(errors, "AudioMenu", "fVal4");
+            ExpectFloat(errors, "AudioMenu", "fVal5");
+            ExpectFloat(errors, "AudioMenu", "fVal6");
+            ExpectFloat(errors, "Controls", "fMouseHeadingXScale");
+            ExpectFloat(errors, "Controls", "fMouseHeadingSensitivity");
+            ExpectFloat(errors, "Interface", "fLockPositionY");
+            ExpectFloat(errors, "Interface", "fUIPowerArmorGeometry_TranslateZ");
+            ExpectFloat(errors, "Interface", "fUIPowerArmorGeometry_TranslateY");
+            ExpectFloat(errors, "Main", "fIronSightsFOVRotateMult");
+            ExpectFloat(errors, "Display", "fDefault1stPersonFOV");
+            ExpectFloat(errors, "Display", "fDefaultWorldFOV");
+            ExpectFloat(errors, "Display", "fDefaultFOV");
+            ExpectFloat(errors, "Camera", "f3rdPersonAimFOV");
+            ExpectFloat(errors, "Camera", "fVanityModeMinDist");
+            ExpectFloat(errors, "Camera", "fVanityModeMaxDist");
+            ExpectFloat(errors, "Camera", "fPitchZoomOutMaxDist");
+            ExpectFloat(errors, "Camera", "f1st3rdSwitchDelay");
+
+            ExpectUInt(errors, "Display", "iSize W");
+            ExpectUInt(errors, "Display", "iSize H");
+            ExpectUInt(errors, "Interface", "uHUDActiveEffectWidget");
+            ExpectUInt(errors, "Display", "uiOrthoShadowFilter");
+            ExpectUInt(errors, "Voice", "uTransmitPreference");
+            ExpectUInt(errors, "Display", "uPipboyTargetWidth");
+            ExpectUInt(errors, "Display", "uPipboyTargetHeight");
+
+            ExpectInt(errors, "Display", "iScreenShotIndex");
+            ExpectInt(errors, "Display", "iShadowMapResolution");
+            ExpectInt(errors, "Display", "iDirShadowSplits");
+            ExpectInt(errors, "Display", "iPresentInterval");
+            ExpectInt(errors, "Display", "iMaxAnisotropy");
+
+            if (errors.Count > 0)
+            {
+                MsgBox.Get("iniValuesInvalid").FormatText(errors.Count.ToString(), string.Join("\n", errors.ToArray())).Show(MessageBoxIcon.Warning);
+            }
         }
 
         private void AddAllEventHandler()
@@ -1138,11 +1234,12 @@ namespace Fo76ini
         }
 
         // "Launch Game" button:
-        private void toolStripButtonLaunchGame_Click(object sender, EventArgs e)
+        private void toolStripSplitButtonLaunchGame_ButtonClick(object sender, EventArgs e)
         {
             uint uGameEdition = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uGameEdition", 0);
             uint uLaunchOption = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uLaunchOption", 1);
             String process = null;
+            bool runExecutable = false;
             if (uLaunchOption == 1)
             {
                 switch (uGameEdition)
@@ -1172,6 +1269,7 @@ namespace Fo76ini
                     return;
                 }
                 process = Path.GetFullPath(Path.Combine(Shared.GamePath, Shared.GameEdition == GameEdition.MSStore ? "Project76_GamePass.exe" : "Fallout76.exe"));
+                runExecutable = true;
             }
             if (process != null)
             {
@@ -1179,7 +1277,20 @@ namespace Fo76ini
                     ApplyChanges();
                 try
                 {
-                    System.Diagnostics.Process.Start(process);
+                    if (runExecutable)
+                    {
+                        // https://stackoverflow.com/questions/8720594/application-crashing-on-startup-using-process-start
+                        // https://www.vbforums.com/showthread.php?489619-RESOLVED-2-0-Process-Start()-crashing-external-app
+                        Process pr = new Process();
+                        pr.StartInfo.FileName = process; // Shared.GameEdition == GameEdition.MSStore ? "Project76_GamePass.exe" : "Fallout76.exe";
+                        pr.StartInfo.WorkingDirectory = Shared.GamePath;
+                        pr.StartInfo.UseShellExecute = false;
+                        pr.Start();
+                    }
+                    else
+                    {
+                        System.Diagnostics.Process.Start(process);
+                    }
                     if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bQuitOnLaunch", false))
                         this.Close();
                 }
@@ -1761,6 +1872,52 @@ namespace Fo76ini
                 pictureBox.Image = Resources.button;
                 pictureBox.Cursor = Cursors.Default;
             });
+        }
+
+        private void launchViaSteamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Launch Steam version:
+            System.Diagnostics.Process.Start("steam://run/1151340");
+        }
+
+        private void launchViaBethesdanetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Launch Bethesda.net version:
+            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNet", "");
+            String execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
+
+            uint uLaunchOption = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uLaunchOption", 1);
+
+            if (uLaunchOption == 1 || !File.Exists(execPath))
+                System.Diagnostics.Process.Start("bethesdanet://run/20");
+            else
+            {
+                Process pr = new Process();
+                pr.StartInfo.FileName = execPath;
+                pr.StartInfo.WorkingDirectory = gamePath;
+                pr.StartInfo.UseShellExecute = false;
+                pr.Start();
+            }
+        }
+
+        private void launchViaBethesdanetPTSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Launch Bethesda.net (PTS) version:
+            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNetPTS", "");
+            String execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
+
+            uint uLaunchOption = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uLaunchOption", 1);
+
+            if (uLaunchOption == 1 || !File.Exists(execPath))
+                System.Diagnostics.Process.Start("bethesdanet://run/57");
+            else
+            {
+                Process pr = new Process();
+                pr.StartInfo.FileName = execPath;
+                pr.StartInfo.WorkingDirectory = gamePath;
+                pr.StartInfo.UseShellExecute = false;
+                pr.Start();
+            }
         }
     }
 }

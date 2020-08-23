@@ -77,25 +77,25 @@ namespace Fo76ini
 
         public void LinkCustom(CheckBox checkBox, Func<bool> getState, Action<bool> setState)
         {
-            OnLoadUI.Add(() => checkBox.Checked = getState());
+            this.Add(() => checkBox.Checked = getState());
             checkBox.MouseClick += (object sender, MouseEventArgs e) => setState(checkBox.Checked);
         }
 
         public void LinkCustom(ComboBox comboBox, Func<int> getState, Action<int> setState)
         {
-            OnLoadUI.Add(() => comboBox.SelectedIndex = getState());
+            this.Add(() => comboBox.SelectedIndex = getState());
             comboBox.SelectionChangeCommitted += (object sender, EventArgs e) => setState(comboBox.SelectedIndex);
         }
 
         public void LinkCustom(NumericUpDown num, Func<int> getState, Action<int> setState)
         {
-            OnLoadUI.Add(() => num.Value = Utils.Clamp(getState(), Convert.ToInt32(num.Minimum), Convert.ToInt32(num.Maximum)));
+            this.Add(() => num.Value = Utils.Clamp(getState(), Convert.ToInt32(num.Minimum), Convert.ToInt32(num.Maximum)));
             num.ValueChanged += (object sender, EventArgs e) => setState(Convert.ToInt32(num.Value));
         }
 
         public void LinkCustom(NumericUpDown num, Func<float> getState, Action<float> setState)
         {
-            OnLoadUI.Add(() => num.Value = Convert.ToDecimal(Utils.Clamp(getState(), Convert.ToSingle(num.Minimum), Convert.ToSingle(num.Maximum))));
+            this.Add(() => num.Value = Convert.ToDecimal(Utils.Clamp(getState(), Convert.ToSingle(num.Minimum), Convert.ToSingle(num.Maximum))));
             num.ValueChanged += (object sender, EventArgs e) => setState(Convert.ToSingle(num.Value));
         }
 
@@ -106,7 +106,7 @@ namespace Fo76ini
 
         public void LinkBool(CheckBox checkBox, IniFile f, String section, String key, bool defaultValue, bool negated = false)
         {
-            OnLoadUI.Add(() => {
+            this.Add(() => {
                 bool val = IniFiles.Instance.GetBool(f, section, key, defaultValue);
                 checkBox.Checked = negated ? !val : val;
             });
@@ -120,7 +120,7 @@ namespace Fo76ini
 
         public void LinkBool(RadioButton radioButtonTrue, RadioButton radioButtonFalse, IniFile f, String section, String key, bool defaultValue)
         {
-            OnLoadUI.Add(() => {
+            this.Add(() => {
                 bool val = IniFiles.Instance.GetBool(f, section, key, defaultValue);
                 if (val)
                     radioButtonTrue.Checked = true;
@@ -139,7 +139,7 @@ namespace Fo76ini
 
         public void LinkInt(NumericUpDown num, IniFile f, String section, String key, int defaultValue)
         {
-            OnLoadUI.Add(() => {
+            this.Add(() => {
                 num.Value = Utils.Clamp(IniFiles.Instance.GetInt(f, section, key, defaultValue), Convert.ToInt32(num.Minimum), Convert.ToInt32(num.Maximum));
             });
             num.ValueChanged += (object sender, EventArgs e) => {
@@ -152,7 +152,7 @@ namespace Fo76ini
 
         public void LinkInt(TrackBar slider, IniFile f, String section, String key, int defaultValue)
         {
-            OnLoadUI.Add(() => {
+            this.Add(() => {
                 slider.Value = Utils.Clamp(IniFiles.Instance.GetInt(f, section, key, defaultValue), Convert.ToInt32(slider.Minimum), Convert.ToInt32(slider.Maximum));
             });
             slider.ValueChanged += (object sender, EventArgs e) => {
@@ -165,7 +165,7 @@ namespace Fo76ini
 
         public void LinkFloat(NumericUpDown num, IniFile f, String section, String key, float defaultValue)
         {
-            OnLoadUI.Add(() => {
+            this.Add(() => {
                 num.Value = Convert.ToDecimal(Utils.Clamp(IniFiles.Instance.GetFloat(f, section, key, defaultValue), Convert.ToSingle(num.Minimum), Convert.ToSingle(num.Maximum)));
             });
             num.ValueChanged += (object sender, EventArgs e) => {
@@ -178,7 +178,7 @@ namespace Fo76ini
 
         public void LinkString(TextBox textBox, IniFile f, String section, String key, String defaultValue)
         {
-            OnLoadUI.Add(() => textBox.Text = IniFiles.Instance.GetString(section, key, defaultValue));
+            this.Add(() => textBox.Text = IniFiles.Instance.GetString(section, key, defaultValue));
             textBox.TextChanged += (object sender, EventArgs e) => {
                 if (f == IniFile.F76Custom && textBox.Text == defaultValue)
                     IniFiles.Instance.Remove(f, section, key);
@@ -192,7 +192,7 @@ namespace Fo76ini
             if (radioButtons.Length != associatedValues.Length)
                 throw new ArgumentException("LinkList: radioButtons and associatedValues have to have the same length!");
 
-            OnLoadUI.Add(() => {
+            this.Add(() => {
                 String value = IniFiles.Instance.GetString(f, section, key, defaultValue);
                 int index = Array.IndexOf(associatedValues, value);
                 if (index > -1)
@@ -218,7 +218,7 @@ namespace Fo76ini
             if (comboBox.Items.Count != associatedValues.Length)
                 throw new ArgumentException("LinkList: comboBox has to have as many items as associatedValues has!");
 
-            OnLoadUI.Add(() => {
+            this.Add(() => {
                 String value = IniFiles.Instance.GetString(f, section, key, defaultValue);
                 int index = Array.IndexOf(associatedValues, value);
                 if (index > -1)
