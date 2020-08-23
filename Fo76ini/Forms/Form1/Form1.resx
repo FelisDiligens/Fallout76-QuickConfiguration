@@ -313,6 +313,13 @@ If you use Steam and want to use your Bethesda.net account
 (e.g. to spent Atoms), tick Disable Steam.
 NOTE: Your achievements will be disabled as well!</value>
   </data>
+  <data name="labelScreenshotIndex.ToolTip" xml:space="preserve">
+    <value>When you take screenshots ingame with the print screen button, it saves them in the game directory as "ScreenShotX.png".
+The "X" being the screenshot index.
+
+Affected values: iScreenShotIndex
+Affected files: Fallout76Prefs.ini</value>
+  </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1054, 17</value>
   </metadata>

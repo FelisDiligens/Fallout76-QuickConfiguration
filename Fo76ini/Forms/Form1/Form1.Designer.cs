@@ -1357,10 +1357,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderVolumeMaster.BackColor = System.Drawing.SystemColors.Window;
             this.sliderVolumeMaster.LargeChange = 20;
-            this.sliderVolumeMaster.Location = new System.Drawing.Point(115, 25);
+            this.sliderVolumeMaster.Location = new System.Drawing.Point(134, 25);
             this.sliderVolumeMaster.Maximum = 100;
             this.sliderVolumeMaster.Name = "sliderVolumeMaster";
-            this.sliderVolumeMaster.Size = new System.Drawing.Size(278, 45);
+            this.sliderVolumeMaster.Size = new System.Drawing.Size(259, 45);
             this.sliderVolumeMaster.SmallChange = 10;
             this.sliderVolumeMaster.TabIndex = 27;
             this.sliderVolumeMaster.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -1385,10 +1385,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal0.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal0.LargeChange = 20;
-            this.sliderAudiofVal0.Location = new System.Drawing.Point(115, 126);
+            this.sliderAudiofVal0.Location = new System.Drawing.Point(134, 126);
             this.sliderAudiofVal0.Maximum = 100;
             this.sliderAudiofVal0.Name = "sliderAudiofVal0";
-            this.sliderAudiofVal0.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal0.Size = new System.Drawing.Size(259, 45);
             this.sliderAudiofVal0.SmallChange = 10;
             this.sliderAudiofVal0.TabIndex = 31;
             this.sliderAudiofVal0.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -1402,10 +1402,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal1.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal1.LargeChange = 20;
-            this.sliderAudiofVal1.Location = new System.Drawing.Point(115, 156);
+            this.sliderAudiofVal1.Location = new System.Drawing.Point(134, 156);
             this.sliderAudiofVal1.Maximum = 100;
             this.sliderAudiofVal1.Name = "sliderAudiofVal1";
-            this.sliderAudiofVal1.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal1.Size = new System.Drawing.Size(259, 45);
             this.sliderAudiofVal1.SmallChange = 10;
             this.sliderAudiofVal1.TabIndex = 34;
             this.sliderAudiofVal1.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -1419,10 +1419,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal2.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal2.LargeChange = 20;
-            this.sliderAudiofVal2.Location = new System.Drawing.Point(115, 186);
+            this.sliderAudiofVal2.Location = new System.Drawing.Point(134, 186);
             this.sliderAudiofVal2.Maximum = 100;
             this.sliderAudiofVal2.Name = "sliderAudiofVal2";
-            this.sliderAudiofVal2.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal2.Size = new System.Drawing.Size(259, 45);
             this.sliderAudiofVal2.SmallChange = 10;
             this.sliderAudiofVal2.TabIndex = 37;
             this.sliderAudiofVal2.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -1436,10 +1436,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal3.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal3.LargeChange = 20;
-            this.sliderAudiofVal3.Location = new System.Drawing.Point(115, 216);
+            this.sliderAudiofVal3.Location = new System.Drawing.Point(134, 216);
             this.sliderAudiofVal3.Maximum = 100;
             this.sliderAudiofVal3.Name = "sliderAudiofVal3";
-            this.sliderAudiofVal3.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal3.Size = new System.Drawing.Size(259, 45);
             this.sliderAudiofVal3.SmallChange = 10;
             this.sliderAudiofVal3.TabIndex = 40;
             this.sliderAudiofVal3.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -1453,10 +1453,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal4.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal4.LargeChange = 20;
-            this.sliderAudiofVal4.Location = new System.Drawing.Point(115, 246);
+            this.sliderAudiofVal4.Location = new System.Drawing.Point(134, 246);
             this.sliderAudiofVal4.Maximum = 100;
             this.sliderAudiofVal4.Name = "sliderAudiofVal4";
-            this.sliderAudiofVal4.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal4.Size = new System.Drawing.Size(259, 45);
             this.sliderAudiofVal4.SmallChange = 10;
             this.sliderAudiofVal4.TabIndex = 43;
             this.sliderAudiofVal4.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -1470,10 +1470,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal5.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal5.LargeChange = 20;
-            this.sliderAudiofVal5.Location = new System.Drawing.Point(115, 276);
+            this.sliderAudiofVal5.Location = new System.Drawing.Point(134, 276);
             this.sliderAudiofVal5.Maximum = 100;
             this.sliderAudiofVal5.Name = "sliderAudiofVal5";
-            this.sliderAudiofVal5.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal5.Size = new System.Drawing.Size(259, 45);
             this.sliderAudiofVal5.SmallChange = 10;
             this.sliderAudiofVal5.TabIndex = 46;
             this.sliderAudiofVal5.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -1487,10 +1487,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal6.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal6.LargeChange = 20;
-            this.sliderAudiofVal6.Location = new System.Drawing.Point(115, 306);
+            this.sliderAudiofVal6.Location = new System.Drawing.Point(134, 306);
             this.sliderAudiofVal6.Maximum = 100;
             this.sliderAudiofVal6.Name = "sliderAudiofVal6";
-            this.sliderAudiofVal6.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudiofVal6.Size = new System.Drawing.Size(259, 45);
             this.sliderAudiofVal6.SmallChange = 10;
             this.sliderAudiofVal6.TabIndex = 49;
             this.sliderAudiofVal6.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -1504,10 +1504,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudioChat.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudioChat.LargeChange = 20;
-            this.sliderAudioChat.Location = new System.Drawing.Point(115, 61);
+            this.sliderAudioChat.Location = new System.Drawing.Point(134, 61);
             this.sliderAudioChat.Maximum = 100;
             this.sliderAudioChat.Name = "sliderAudioChat";
-            this.sliderAudioChat.Size = new System.Drawing.Size(278, 45);
+            this.sliderAudioChat.Size = new System.Drawing.Size(259, 45);
             this.sliderAudioChat.SmallChange = 10;
             this.sliderAudioChat.TabIndex = 52;
             this.sliderAudioChat.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -4658,6 +4658,7 @@
             this.labelScreenshotIndex.Size = new System.Drawing.Size(92, 13);
             this.labelScreenshotIndex.TabIndex = 0;
             this.labelScreenshotIndex.Text = "Screenshot index:";
+            this.toolTip.SetToolTip(this.labelScreenshotIndex, resources.GetString("labelScreenshotIndex.ToolTip"));
             // 
             // tabPageCustom
             // 
@@ -4688,7 +4689,7 @@
             // 
             this.comboBoxCustomFile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCustomFile.FormattingEnabled = true;
-            this.comboBoxCustomFile.Location = new System.Drawing.Point(161, 6);
+            this.comboBoxCustomFile.Location = new System.Drawing.Point(204, 6);
             this.comboBoxCustomFile.Name = "comboBoxCustomFile";
             this.comboBoxCustomFile.Size = new System.Drawing.Size(188, 21);
             this.comboBoxCustomFile.TabIndex = 2;

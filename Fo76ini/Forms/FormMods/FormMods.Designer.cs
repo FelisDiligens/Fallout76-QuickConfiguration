@@ -1325,7 +1325,7 @@
             // 
             this.labelNMAPIKeyStatus.AutoSize = true;
             this.labelNMAPIKeyStatus.ForeColor = System.Drawing.Color.Red;
-            this.labelNMAPIKeyStatus.Location = new System.Drawing.Point(275, 85);
+            this.labelNMAPIKeyStatus.Location = new System.Drawing.Point(296, 85);
             this.labelNMAPIKeyStatus.Name = "labelNMAPIKeyStatus";
             this.labelNMAPIKeyStatus.Size = new System.Drawing.Size(38, 13);
             this.labelNMAPIKeyStatus.TabIndex = 75;
@@ -1377,7 +1377,7 @@
             // 
             this.labelNMDailyRateLimitReset.AutoSize = true;
             this.labelNMDailyRateLimitReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDailyRateLimitReset.Location = new System.Drawing.Point(275, 128);
+            this.labelNMDailyRateLimitReset.Location = new System.Drawing.Point(296, 128);
             this.labelNMDailyRateLimitReset.Name = "labelNMDailyRateLimitReset";
             this.labelNMDailyRateLimitReset.Size = new System.Drawing.Size(36, 13);
             this.labelNMDailyRateLimitReset.TabIndex = 72;
@@ -1387,7 +1387,7 @@
             // 
             this.labelNMMembership.AutoSize = true;
             this.labelNMMembership.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMMembership.Location = new System.Drawing.Point(275, 64);
+            this.labelNMMembership.Location = new System.Drawing.Point(296, 64);
             this.labelNMMembership.Name = "labelNMMembership";
             this.labelNMMembership.Size = new System.Drawing.Size(33, 13);
             this.labelNMMembership.TabIndex = 68;
@@ -1417,7 +1417,7 @@
             // 
             this.labelNMDailyRateLimit.AutoSize = true;
             this.labelNMDailyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDailyRateLimit.Location = new System.Drawing.Point(275, 107);
+            this.labelNMDailyRateLimit.Location = new System.Drawing.Point(296, 107);
             this.labelNMDailyRateLimit.Name = "labelNMDailyRateLimit";
             this.labelNMDailyRateLimit.Size = new System.Drawing.Size(30, 13);
             this.labelNMDailyRateLimit.TabIndex = 70;
