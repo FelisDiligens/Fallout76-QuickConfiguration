@@ -2,7 +2,7 @@
 <Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.8.1">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
-    <String text="Update now!" id="updateNowButton" />
+    <String text="Jetzt aktualisieren!" id="updateNowButton" />
     <String text="Übernehmen von Änderungen notwendig" id="modsDeploymentNecessary" />
     <String text="Alles erledigt" id="modsAllDone" />
     <String text="Etwas ist schiefgelaufen, siehe Logdateien für Details." id="modsFailed" />
