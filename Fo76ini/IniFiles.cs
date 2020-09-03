@@ -46,7 +46,11 @@ namespace Fo76ini
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-        public bool nuclearWinterMode = false;
+        //public bool nuclearWinterMode = false;
+        public bool renameF76Custom = false;
+        public const String nwF76CustomEnding = ".nwmodebak";
+
+        public bool fixCustomIniDuplicateValues = true;
 
         //public GameEdition GameEdition;
 
@@ -251,8 +255,8 @@ namespace Fo76ini
         {
             SaveIni(this.GetIniPath(IniFile.F76), this.fo76Data, readOnly);
             SaveIni(this.GetIniPath(IniFile.F76Prefs), this.fo76PrefsData, readOnly);
-            if (this.nuclearWinterMode)
-                SaveIni(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak", this.fo76CustomData, readOnly);
+            if (this.renameF76Custom)
+                SaveIni(this.GetIniPath(IniFile.F76Custom) + nwF76CustomEnding, this.fo76CustomData, readOnly);
             else
                 SaveIni(this.GetIniPath(IniFile.F76Custom), this.fo76CustomData, readOnly);
             UpdateLastModifiedDates();
@@ -261,21 +265,27 @@ namespace Fo76ini
         public void ResolveNWMode()
         {
             SetNTFSWritePermission(true);
-            if (this.nuclearWinterMode)
+            if (this.renameF76Custom)
             {
-                if (!File.Exists(this.GetIniPath(IniFile.F76Custom)))
-                    return;
-                if (!File.Exists(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak"))
-                    File.Copy(this.GetIniPath(IniFile.F76Custom), this.GetIniPath(IniFile.F76Custom) + ".nwmodebak");
-                Utils.DeleteFile(this.GetIniPath(IniFile.F76Custom));
+                foreach (GameEdition edition in Enum.GetValues(typeof(GameEdition)))
+                {
+                    if (!File.Exists(this.GetIniPath(IniFile.F76Custom, edition)))
+                        return;
+                    if (!File.Exists(this.GetIniPath(IniFile.F76Custom, edition) + nwF76CustomEnding))
+                        File.Copy(this.GetIniPath(IniFile.F76Custom, edition), this.GetIniPath(IniFile.F76Custom, edition) + nwF76CustomEnding);
+                    Utils.DeleteFile(this.GetIniPath(IniFile.F76Custom, edition));
+                }
             }
             else
             {
-                if (!File.Exists(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak"))
-                    return;
-                if (!File.Exists(this.GetIniPath(IniFile.F76Custom)))
-                    File.Copy(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak", this.GetIniPath(IniFile.F76Custom));
-                Utils.DeleteFile(this.GetIniPath(IniFile.F76Custom) + ".nwmodebak");
+                foreach (GameEdition edition in Enum.GetValues(typeof(GameEdition)))
+                {
+                    if (!File.Exists(this.GetIniPath(IniFile.F76Custom, edition) + nwF76CustomEnding))
+                        return;
+                    if (!File.Exists(this.GetIniPath(IniFile.F76Custom, edition)))
+                        File.Copy(this.GetIniPath(IniFile.F76Custom, edition) + nwF76CustomEnding, this.GetIniPath(IniFile.F76Custom, edition));
+                    Utils.DeleteFile(this.GetIniPath(IniFile.F76Custom, edition) + nwF76CustomEnding);
+                }
             }
             UpdateLastModifiedDates();
 
@@ -713,7 +723,7 @@ namespace Fo76ini
             // then the value in Custom will overshadow Prefs, when GetString is called.
             // Of course people start to report that their values are reset. Who can blame them?
             // Soooo, we are going to set the same value in Custom if IniFile f is something else but Custom. Great? Great.
-            if ((f == IniFile.F76 || f == IniFile.F76Prefs) && Exists(IniFile.F76Custom, section, key))
+            if (fixCustomIniDuplicateValues && (f == IniFile.F76 || f == IniFile.F76Prefs) && Exists(IniFile.F76Custom, section, key))
                 this.fo76CustomData[section][key] = value;
         }
 

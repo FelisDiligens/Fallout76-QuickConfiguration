@@ -85,7 +85,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Fo76ini.Properties.Resources.error;
+            this.pictureBox1.Image = global::Fo76ini.Properties.Resources.error_64;
             this.pictureBox1.Location = new System.Drawing.Point(12, 9);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);

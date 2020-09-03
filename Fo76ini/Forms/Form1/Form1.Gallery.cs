@@ -17,6 +17,13 @@ namespace Fo76ini
         private List<String> galleryImagePaths = new List<String>();
         private ImageList galleryImageList = new ImageList();
 
+        private static String[] ValidImageFormats = new String[] { 
+            ".png",
+            ".jpg",
+            ".gif",
+            ".jpeg"
+        };
+
         private int galleryImageSizeMult = 4;
 
         private void LoadGallery()
@@ -28,8 +35,12 @@ namespace Fo76ini
             this.backgroundWorkerLoadGallery.WorkerReportsProgress = true;
             //this.backgroundWorkerLoadGallery.WorkerSupportsCancellation = true;
 
-            this.listViewScreenshots.DoubleClick += listViewScreenshots_DoubleClick;
+            this.listViewScreenshots.MouseDoubleClick += listViewScreenshots_MouseDoubleClick;
+            this.listViewScreenshots.MouseUp += listViewScreenshots_MouseUp;
             //this.sliderGalleryThumbnailSize.ValueChanged += sliderGalleryThumbnailSize_ValueChanged;
+
+            this.textBoxGalleryPaths.Text = IniFiles.Instance.GetString(IniFile.Config, "Gallery", "sCustomPathsList", "").Replace(",", "\r\n");
+            this.checkBoxGallerySearchRecursively.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Gallery", "bSearchDirectoriesRecursively", false);
         }
 
         private void UpdateScreenShotGalleryThreaded()
@@ -194,14 +205,62 @@ namespace Fo76ini
                 }
             }
 
+            /*
+             * Search additional paths added by the user:
+             */
+            foreach (String path in GetAdditionalPathList())
+            {
+                Console.WriteLine(path);
+                String folderName = new DirectoryInfo(path).Name;
+                IEnumerable<String> pictures = Directory.EnumerateFiles(path, "*.*",
+                    this.checkBoxGallerySearchRecursively.Checked ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly
+                );
+                foreach (String filePath in pictures)
+                {
+                    FileInfo info = new FileInfo(filePath);
+                    String fileName = info.Name;
+
+                    if (!ValidImageFormats.Contains(info.Extension))
+                        continue;
+
+                    String thumbnailFilePath = Path.Combine(thumbnailsPath, folderName + "-" + fileName + ".jpg");
+                    if (!File.Exists(thumbnailFilePath))
+                        Utils.MakeThumbnail(filePath, thumbnailFilePath);
+
+                    Bitmap thumbnail = new Bitmap(thumbnailFilePath);
+                    this.Invoke(() => galleryImageList.Images.Add(fileName, thumbnail));
+
+                    var item = new ListViewItem();
+                    item.Text = fileName;
+                    item.ImageKey = fileName;
+                    this.Invoke(() => this.listViewScreenshots.Items.Add(item));
+
+                    this.galleryImagePaths.Add(filePath);
+                }
+            }
+
             this.Invoke(() => this.pictureBoxGalleryLoadingGIF.Visible = false);
             this.Invoke(() => this.buttonRefreshGallery.Enabled = true);
         }
 
-        private void listViewScreenshots_DoubleClick(object sender, EventArgs e)
+        private List<String> GetAdditionalPathList()
         {
-            int index = this.listViewScreenshots.SelectedIndices[0];
-            Process.Start(galleryImagePaths[index]);
+            List<String> paths = new List<String>();
+            foreach (String path in this.textBoxGalleryPaths.Text.Replace("\r\n", "\n").Split('\n'))
+            {
+                if (Directory.Exists(path.Trim()))
+                    paths.Add(path.Trim());
+            }
+            return paths;
+        }
+
+        private void listViewScreenshots_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                int index = this.listViewScreenshots.SelectedIndices[0];
+                Process.Start(galleryImagePaths[index]);
+            }
         }
 
         private void buttonRefreshGallery_Click(object sender, EventArgs e)
@@ -216,9 +275,131 @@ namespace Fo76ini
                 this.listViewScreenshots.LargeImageList.ImageSize = new Size(16 * galleryImageSizeMult, 9 * galleryImageSizeMult);
         }
 
+        private void buttonGalleryDeleteThumbnails_Click(object sender, EventArgs e)
+        {
+            if (MsgBox.ShowID("galleryDeleteThumbnails", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                // Remove every image from memory:
+                this.galleryImageList.Images.Clear();
+                this.galleryImagePaths.Clear();
+                this.listViewScreenshots.Items.Clear();
+
+                // Delete thumbnails:
+                String thumbnailsPath = Path.Combine(Shared.AppConfigFolder, "thumbnails", "screenshots");
+                try
+                {
+                    Directory.Delete(thumbnailsPath, true);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.GetType().Name}: {ex.Message}", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Setup UI:
+                this.labelGalleryTip.Visible = true;
+            }
+        }
+
+        private void textBoxGalleryPaths_TextChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "Gallery", "sCustomPathsList", this.textBoxGalleryPaths.Text.Replace("\r\n", ",").Replace("\n", ","));
+        }
+
+        private void checkBoxGallerySearchRecursively_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "Gallery", "bSearchDirectoriesRecursively", this.checkBoxGallerySearchRecursively.Checked);
+        }
+
         private void Invoke(Action func)
         {
             this.pictureBoxGalleryLoadingGIF.Invoke(func);
+        }
+
+
+        /*
+         * Context menu
+         */
+
+        List<int> galleryContextMenuItems = new List<int>();
+
+        private void listViewScreenshots_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && this.listViewScreenshots.SelectedItems.Count > 0)
+            {
+                this.galleryContextMenuItems.Clear();
+                foreach (ListViewItem item in this.listViewScreenshots.SelectedItems)
+                    this.galleryContextMenuItems.Add(item.Index);
+                // this.listViewMods.Items[index]
+
+                this.contextMenuStripGallery.Show();
+                this.contextMenuStripGallery.Top = Cursor.Position.Y;
+                this.contextMenuStripGallery.Left = Cursor.Position.X;
+            }
+        }
+
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // I doubt anyone wants to actually open multiple images at once
+            int index = galleryContextMenuItems[0];
+            Process.Start(galleryImagePaths[index]);
+        }
+
+        private void openFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Open all folders, but no duplicates:
+            List<String> folders = new List<String>();
+            foreach (int index in galleryContextMenuItems)
+            {
+                String folder = Path.GetDirectoryName(galleryImagePaths[index]);
+                if (!folders.Contains(folder))
+                    folders.Add(folder);
+            }
+            foreach (String folder in folders)
+                Utils.OpenExplorer(folder);
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<String> files = new List<String>();
+            foreach (int index in galleryContextMenuItems)
+                files.Add(galleryImagePaths[index]);
+            ClipboardUtils.CutFiles(files);
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<String> files = new List<String>();
+            foreach (int index in galleryContextMenuItems)
+                files.Add(galleryImagePaths[index]);
+            ClipboardUtils.CopyFiles(files);
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool ok = false;
+            if (galleryContextMenuItems.Count == 1)
+            {
+                String fileName = Path.GetFileName(galleryImagePaths[galleryContextMenuItems[0]]);
+                ok = MsgBox.Get("galleryDeleteScreenshot").FormatTitle(fileName).FormatText(fileName).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            }
+            else
+            {
+                ok = MsgBox.Get("galleryDeleteScreenshots").FormatTitle(galleryContextMenuItems.Count.ToString()).FormatText(galleryContextMenuItems.Count.ToString()).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            }
+
+            if (ok)
+            {
+                foreach (int index in galleryContextMenuItems)
+                {
+                    String path = galleryImagePaths[index];
+                    if (File.Exists(path))
+                        File.Delete(path);
+                }
+
+                UpdateScreenShotGalleryThreaded();
+            }
         }
     }
 }

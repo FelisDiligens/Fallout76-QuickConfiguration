@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.8.1h1">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.8.2">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Jetzt aktualisieren!" id="updateNowButton" />
@@ -26,6 +26,8 @@
     <String text="Nein" id="no" />
     <String text="Gültig" id="valid" />
     <String text="Ungültig" id="invalid" />
+    <String text="Nuclear Winter" id="nuclearwintermode" />
+    <String text="Abenteuer" id="adventuremode" />
     <String text="Bearbeite {0}" id="modDetailsTitle" />
     <String text="Bearbeite {0} Mods" id="modDetailsTitleBulk" />
     <String text="Nach dem Anwenden" id="modTableFrozenUponDeployment" />
@@ -72,7 +74,6 @@
       <Option>1024 = Niedrig</Option>
       <Option>2048 = Hoch (Standard)</Option>
       <Option>4096 = Ultra</Option>
-      <Option>8192 = Verrückt</Option>
     </Dropdown>
     <Dropdown id="ShadowBlurriness">
       <Option>1x</Option>
@@ -158,6 +159,14 @@ Die Fenster könnten zu groß sein, um auf den Bildschirm zu passen.
 Deine Auflösung: {0}
 Mindestauflösung: {1}
 Empfohlene Auflösung: 1920 x 1080</Messagebox>
+    <Messagebox title="Restart required." id="restartRequired">A restart of the tool is required for changes to take effect.
+Are you sure, you want to change this option now?</Messagebox>
+    <Messagebox title="{0} löschen?" id="galleryDeleteScreenshot">Du bist dabei, '{0}' zu löschen. Bist du sicher?</Messagebox>
+    <Messagebox title="{0} Dateien löschen?" id="galleryDeleteScreenshots">Du bist dabei, {0} Dateien zu löschen. Bist du sicher?</Messagebox>
+    <Messagebox title="Are you sure?" id="galleryDeleteThumbnails">Are you sure you want to delete the gallery's thumbnails?
+The next time you click on 'Refresh gallery', it will take significantly longer as it recreates all thumbnails.</Messagebox>
+    <Messagebox title="NW-Modus deaktiviert" id="nwModeDisabled">Du kannst jetzt den Abenteuermodus spielen.</Messagebox>
+    <Messagebox title="NW-Modus aktiviert" id="nwModeEnabled">Du kannst jetzt den Nuclear Winter Modus spielen.</Messagebox>
     <Messagebox title="Fertig" id="modsDisabledDone">Mods wurden deaktiviert und vom Spiel entfernt.</Messagebox>
     <Messagebox title="Fertig" id="modsDeployedDone">Mods wurden installiert.</Messagebox>
     <Messagebox title="Etwas ist schiefgelaufen" id="modsDeploymentFailed">Mods könnten nicht installiert worden sein.
@@ -212,7 +221,7 @@ Möchtest du sie jetzt wieder installieren?</Messagebox>
 {0}</Messagebox>
     <Messagebox title="Bist du sicher?" id="nexusModsDeleteThumbnails">Möchtest du wirklich alle Thumbnails löschen?</Messagebox>
     <Messagebox title="Fertig" id="nexusModsDeleteThumbnailsSuccess">Thumbnails gelöscht.</Messagebox>
-    <Messagebox title="Something went wrong" id="nexusModsDeleteThumbnailsFailed">Thumbnails konnten nicht gelöscht werden.
+    <Messagebox title="Etwas ist schief gelaufen" id="nexusModsDeleteThumbnailsFailed">Thumbnails konnten nicht gelöscht werden.
 Versuche es später nochmal.</Messagebox>
     <Messagebox title="Bist du sicher?" id="nexusModsRemoveProfile">Möchtest du wirklich dein Profil aus dem Modmanager entfernen?</Messagebox>
     <Messagebox title="Fertig" id="nexusModsRemoveProfileSuccess">Profile entfernt.</Messagebox>
@@ -225,14 +234,13 @@ Bitte wähle Archive2.exe</Messagebox>
   <Form1 title="Fallout 76 Schnellkonfiguration">
     <ToolStrip id="toolStrip1">
       <ToolStripButton text="Anwenden" id="toolStripButtonApply" />
+      <ToolStripButton text="Nuclear Winter" id="toolStripButtonToggleNuclearWinterMode" />
       <ToolStripSplitButton text="Starten" id="toolStripSplitButtonLaunchGame">
         <ToolStripMenuItem text="Starte Steam-Version" id="launchViaSteamToolStripMenuItem" />
         <ToolStripMenuItem text="Starte Bethesda.net-Version" id="launchViaBethesdanetToolStripMenuItem" />
         <ToolStripMenuItem text="Starte Bethesda.net (PTS)-Version" id="launchViaBethesdanetPTSToolStripMenuItem" />
       </ToolStripSplitButton>
-      <ToolStripSeparator text="" id="toolStripSeparator1" />
       <ToolStripButton text="Mods" id="toolStripButtonManageMods" />
-      <ToolStripSeparator text="" id="toolStripSeparator2" />
       <ToolStripSplitButton text="Aktualisieren" id="toolStripSplitButtonUpdate">
         <ToolStripMenuItem text="Programm aktualisieren" id="updateToolToolStripMenuItem" />
         <ToolStripMenuItem text="Nach Aktualisierungen suchen" id="checkForUpdatesToolStripMenuItem" />
@@ -242,28 +250,37 @@ Bitte wähle Archive2.exe</Messagebox>
       <ToolStripDropDownButton text="Öffnen" id="toolStripDropDownButtonExplore">
         <ToolStripMenuItem text="Spielinstallationsordner" id="gameFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Spielkonfigurationsordner" id="gamesConfigurationFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator4" />
         <ToolStripMenuItem text="Toolkonfigurationsordner" id="toolConfigurationFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Toolsprachdateienordner" id="toolLanguagesFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Toolinstallationsordner" id="toolInstallationFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator5" />
         <ToolStripMenuItem text="Steams Screenshots-Ordner" id="steamScreenshotFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Fotos-Ordner" id="gamePhotosFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator6" />
         <ToolStripMenuItem text="Bearbeite Fallout76.ini" id="editFallout76iniToolStripMenuItem" />
         <ToolStripMenuItem text="Bearbeite Fallout76Prefs.ini" id="editFallout76PrefsiniToolStripMenuItem" />
         <ToolStripMenuItem text="Bearbeite Fallout76Custom.ini" id="editFallout76CustominiToolStripMenuItem" />
       </ToolStripDropDownButton>
-      <ToolStripSeparator text="" id="toolStripSeparator3" />
       <ToolStripButton text="NexusMods" id="toolStripButtonNexusMods" />
     </ToolStrip>
     <TabControl id="tabControl1">
       <TabPage text="Info" id="tabPageInfo">
+        <LinkLabel text="Lizenzierte Arbeit" id="linkLabelAttribution" />
         <Panel id="panelUpdate">
           <LinkLabel text="Oder lade es manuell herunter..." id="linkLabelManualDownloadPage" />
         </Panel>
+        <Label text="Nuclear Winter Modus ist aktiv." id="labelNWModeActive" />
         <Panel id="panel1">
+          <GroupBox text="Nuclear Winter Optionen" id="groupBoxNuclearWinterMode">
+            <CheckBox text="Mods automatisch installieren" id="checkBoxNWAutoDeployMods" />
+            <Label text="Modoptionen:" id="labelNWmodoptions" />
+            <Label text="*.dll-Optionen:" id="labelNWdlloptions" />
+            <Label text="*.ini-Optionen:" id="labelNWinioptions" />
+            <RadioButton text="Einfach nur die Resource-Listen entfernen" id="radioButtonNWRemoveLists" />
+            <RadioButton text="Fallout76Custom.ini umbennenen" id="radioButtonNWRenameINI" />
+            <CheckBox text="Mods automatisch entfernen" id="checkBoxNWAutoDisableMods" />
+            <CheckBox text="Hinzugefügte *.dll-Dateien umbennenen" id="checkBoxNWRenameDLL" />
+          </GroupBox>
           <GroupBox text="Lokalisierung" id="groupBoxLocalization">
+            <Button text="Neuladen" id="buttonRefreshLanguage" />
             <Label text="Diese Sprachdatei ist veraltet.\nEinige Elemente könnten noch nicht übersetzt worden sein." id="labelOutdatedLanguage" />
             <Label text="Sprache:" id="labelLanguage" />
             <Button text="Sprachdateien herunterladen / aktualisieren" id="buttonDownloadLanguages" />
@@ -275,8 +292,8 @@ Bitte wähle Archive2.exe</Messagebox>
             <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
           </GroupBox>
           <GroupBox text="Startoptionen" id="groupBoxLaunchOptions">
-            <Label text="Tipp: Gib deine Zugangsdaten im &quot;Allgemein&quot;-Tab ein." id="labelLaunchOptionTip" />
             <Label text="Fallout 76 kann nicht direkt ausgeführt werden, wenn es über den Microsoft Store installiert wurde." id="labelLaunchOptionMSStoreNotice" />
+            <Label text="Tipp: Gib deine Zugangsdaten im &quot;Allgemein&quot;-Tab ein." id="labelLaunchOptionTip" />
             <RadioButton text="Starte &quot;Fallout76.exe&quot; direkt" id="radioButtonLaunchViaExecutable" />
             <RadioButton text="Starte via Steam / Bethesda.net (empfohlen)" id="radioButtonLaunchViaLink" />
           </GroupBox>
@@ -285,6 +302,11 @@ Bitte wähle Archive2.exe</Messagebox>
             <Button text="..." id="buttonPickGamePath" />
           </GroupBox>
           <GroupBox text="Optionen" id="groupBoxOptions">
+            <CheckBox text="Don't use Fallout76Custom.ini for tweaks." id="checkBoxAlternativeINIMode">
+              <Tooltip>Puts tweaks into Fallout76.ini and Fallout76Prefs.ini instead.
+Does not affect the mod manager.
+You may need to remove tweaks from Fallout76Custom.ini manually.</Tooltip>
+            </CheckBox>
             <CheckBox text="[Experimentell] Verweigere NTFS-Schreibberechtigung" id="checkBoxDenyNTFSWritePermission">
               <Tooltip>Wenn aktiv, wird jedem das Schreiben im Fallout 76 Ordner verweigert.
 Benutze dies, wenn die der herkömmliche Schreibschutz nichts bringt.
@@ -295,9 +317,6 @@ Betroffener Ordner: %UserProfile%\Documents\My Games\Fallout 76</Tooltip>
               <Tooltip>Hake das an, wenn du Mods für mehr als eine Spieledition installierst.
 Wenn angehakt, dann wird sResourceIndexFileList für jede einzelne Spieledition separat gespeichtert.</Tooltip>
             </CheckBox>
-            <CheckBox text="Nuclear Winter Modus" id="checkBoxNWMode">
-              <Tooltip>Zurzeit benennt dies nur "Fallout76Custom.ini" in "Fallout76Custom.ini.nwmodebak" um.</Tooltip>
-            </CheckBox>
             <CheckBox text="*.ini Schreibschutz aktivieren" id="checkBoxReadOnly">
               <Tooltip>Diese Option macht alle *.ini Datei schreibgeschützt.
 Aktiviere das, wenn deine Einstellungen vom Spiel rückgängig gemacht werden.
@@ -306,6 +325,7 @@ Betroffene Dateien: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
             </CheckBox>
           </GroupBox>
           <GroupBox text="Verhalten" id="groupBoxBehavior">
+            <CheckBox text="Play notification sound" id="checkBoxPlayNotificationSound" />
             <CheckBox text="Prüfe nicht auf Updates" id="checkBoxIgnoreUpdates" />
             <CheckBox text="Öffne den Mod Manager wenn das Tool gestartet wird" id="checkBoxOpenManageModsOnLaunch" />
             <CheckBox text="Schließe das Tool, wenn das Spiel gestartet wird" id="checkBoxQuitOnGameLaunch">
@@ -1057,6 +1077,9 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           <Label text="Klicke 'Galerie aktualisieren', um Screenshots und Fotos anzuzeigen." id="labelGalleryTip" />
         </GroupBox>
         <GroupBox text="Optionen" id="groupBoxScreenshotOptions">
+          <Button text="Delete thumbnails" id="buttonGalleryDeleteThumbnails" />
+          <CheckBox text="Search subfolders recursively" id="checkBoxGallerySearchRecursively" />
+          <Label text="Additonal paths (newline separated):" id="label3" />
           <Label text="Thumbnail-Größe:" id="labelGalleryThumbnailSize" />
           <Button text="Galerie aktualisieren" id="buttonRefreshGallery" />
           <Label text="Screenshot-Index:" id="labelScreenshotIndex">
@@ -1073,6 +1096,13 @@ Affected files: Fallout76Prefs.ini</Tooltip>
         <Label text="Überschreibe Zeilen in der Datei:" id="labelCustomFile" />
       </TabPage>
     </TabControl>
+    <ContextMenuStrip id="contextMenuStrip1">
+      <ToolStripMenuItem text="Öffnen" id="openToolStripMenuItem" />
+      <ToolStripMenuItem text="Ordner öffnen" id="openFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Ausschneiden" id="cutToolStripMenuItem" />
+      <ToolStripMenuItem text="Kopieren" id="copyToolStripMenuItem" />
+      <ToolStripMenuItem text="Löschen" id="deleteToolStripMenuItem" />
+    </ContextMenuStrip>
   </Form1>
   <FormMods title="Mods verwalten">
     <Panel id="panel1">
@@ -1112,16 +1142,12 @@ Das ist insbesondere nützlich, wenn das Archiv RIESIG ist (1GiB oder mehr) und 
           <ToolStripButton text="Mod hinzufügen (Archiv)" id="toolStripButtonAddMod" />
           <ToolStripButton text="Mod hinzufügen (*.ba2 Archiv)" id="toolStripButtonAddModFrozen" />
           <ToolStripButton text="Mod hinzufügen (Ordner)" id="toolStripButtonAddModFolder" />
-          <ToolStripSeparator text="" id="toolStripSeparator4" />
           <ToolStripButton text="Alle Mods (de)aktivieren" id="toolStripButtonCheckAll" />
-          <ToolStripSeparator text="" id="toolStripSeparator2" />
           <ToolStripButton text="Eins rauf" id="toolStripButtonMoveUp" />
           <ToolStripButton text="Eins runter" id="toolStripButtonMoveDown" />
-          <ToolStripSeparator text="" id="toolStripSeparator3" />
           <ToolStripButton text="Modeigenschaften ändern" id="toolStripButtonModEdit" />
           <ToolStripButton text="Auftauen" id="toolStripButtonUnfreeze" />
           <ToolStripButton text="Modordner öffnen" id="toolStripButtonModOpenFolder" />
-          <ToolStripSeparator text="" id="toolStripSeparator5" />
           <ToolStripButton text="Mod(s) löschen" id="toolStripButtonDeleteMod" />
         </ToolStrip>
         <ListView id="listViewMods">
@@ -1142,6 +1168,7 @@ Das ist insbesondere nützlich, wenn das Archiv RIESIG ist (1GiB oder mehr) und 
       </TabPage>
       <TabPage text="Einstellungen" id="tabPageModsSettings">
         <GroupBox text="Verhalten" id="groupBoxModsBehavior">
+          <CheckBox text="Schreibe sResourceDataDirsFinal nach Fallout76Custom.ini" id="checkBoxModsWriteSResourceDataDirsFinal" />
           <CheckBox text="[Experimentell] Friere gebündelte Archive ein" id="checkBoxFreezeBundledArchives">
             <Tooltip>Anstatt gebündelte Archive neu zu erstellen, wird eine gebündelte Kopie gespeichert und du werdst gefragt, ob du sie beim Anwenden aktualisieren möchtest.</Tooltip>
           </CheckBox>
@@ -1171,7 +1198,7 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
           <Label text="API-Key:" id="labelNMDescAPIKey" />
           <Label text="Anonymous" id="labelNMUserName" />
           <Label text="Mitgliedschaft:" id="labelNMDescMembership" />
-          <Label text="in -10 Stunde(n) und -16 Minute(n)" id="labelNMDailyRateLimitReset" />
+          <Label text="Nie" id="labelNMDailyRateLimitReset" />
           <Label text="Basic" id="labelNMMembership" />
           <Label text="Limit wird zurückgesetzt:" id="labelNMDescLimitReset" />
           <Label text="Tägliches Ratenlimit:" id="labelNMDescDailyRateLimit" />
@@ -1190,7 +1217,6 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
           <ToolStripMenuItem text="von Ordner" id="fromFolderToolStripMenuItem" />
         </ToolStripMenuItem>
         <ToolStripMenuItem text="Manuell installierte Mods importieren" id="toolStripMenuItemModsImport" />
-        <ToolStripSeparator text="" id="toolStripSeparator1" />
         <ToolStripMenuItem text="Änderungen anwenden" id="deployToolStripMenuItem" />
       </ToolStripMenuItem>
       <ToolStripMenuItem text="Ansicht" id="editToolStripMenuItem">

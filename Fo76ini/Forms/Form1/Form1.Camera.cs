@@ -75,21 +75,22 @@ namespace Fo76ini
 
             float value = normalized * camOffsetMultiplier;
 
+            bool alternativeMode = IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAlternativeINIMode", false);
             switch (camPosMode)
             {
                 case CameraPositionMode.Unarmed:
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderPosX", value);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderPosX", value);
                     break;
                 case CameraPositionMode.Combat:
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderCombatPosX", value);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderCombatPosX", value);
                     break;
                 case CameraPositionMode.MeleeCombat:
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatPosX", value);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderMeleeCombatPosX", value);
                     break;
             }
 
             this.checkBoxbApplyCameraNodeAnimations.Checked = false;
-            IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations", false);
+            IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "bApplyCameraNodeAnimations", false);
 
             if (value < 0)
                 Console.WriteLine($"Camera is offset to the left by {-value / camOffsetToMetersRatio} meters.");
@@ -107,18 +108,19 @@ namespace Fo76ini
 
             float value = normalized * camOffsetMultiplier;
 
+            bool alternativeMode = IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAlternativeINIMode", false);
             switch (camPosMode)
             {
                 case CameraPositionMode.Combat:
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderCombatAddY", value);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderCombatAddY", value);
                     break;
                 case CameraPositionMode.MeleeCombat:
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatAddY", value);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderMeleeCombatAddY", value);
                     break;
             }
 
             this.checkBoxbApplyCameraNodeAnimations.Checked = false;
-            IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations", false);
+            IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "bApplyCameraNodeAnimations", false);
 
             if (value < 0)
                 Console.WriteLine($"Camera is zoomed out by {-value / camOffsetToMetersRatio} meters.");
@@ -136,21 +138,22 @@ namespace Fo76ini
 
             float value = normalized * camOffsetMultiplier;
 
+            bool alternativeMode = IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAlternativeINIMode", false);
             switch (camPosMode)
             {
                 case CameraPositionMode.Unarmed:
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderPosZ", value);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderPosZ", value);
                     break;
                 case CameraPositionMode.Combat:
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderCombatPosZ", value);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderCombatPosZ", value);
                     break;
                 case CameraPositionMode.MeleeCombat:
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatPosZ", value);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderMeleeCombatPosZ", value);
                     break;
             }
 
             this.checkBoxbApplyCameraNodeAnimations.Checked = false;
-            IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations", false);
+            IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "bApplyCameraNodeAnimations", false);
 
             if (value < 0)
                 Console.WriteLine($"Camera is offset downwards by {-value / camOffsetToMetersRatio} meters.");
@@ -162,6 +165,8 @@ namespace Fo76ini
 
         private void buttonCameraPositionReset_Click(object sender, EventArgs e)
         {
+            this.checkBoxbApplyCameraNodeAnimations.Checked = true;
+
             IniFiles.Instance.Remove(IniFile.F76Custom, "Camera", "fOverShoulderPosX");
             IniFiles.Instance.Remove(IniFile.F76Custom, "Camera", "fOverShoulderPosZ");
             IniFiles.Instance.Remove(IniFile.F76Custom, "Camera", "fOverShoulderCombatPosX");
@@ -171,34 +176,57 @@ namespace Fo76ini
             IniFiles.Instance.Remove(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatAddY");
             IniFiles.Instance.Remove(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatPosZ");
 
-            this.checkBoxbApplyCameraNodeAnimations.Checked = true;
             IniFiles.Instance.Remove(IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations");
+
+            bool alternativeMode = IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAlternativeINIMode", false);
+            if (alternativeMode)
+            {
+                /*
+                IniFiles.Instance.Set(IniFile.F76, "Camera", "fOverShoulderPosX", 0.0f);
+                IniFiles.Instance.Set(IniFile.F76, "Camera", "fOverShoulderPosZ", 0.0f);
+                IniFiles.Instance.Set(IniFile.F76, "Camera", "fOverShoulderCombatPosX", 0.0f);
+                IniFiles.Instance.Set(IniFile.F76, "Camera", "fOverShoulderCombatAddY", 0.0f);
+                IniFiles.Instance.Set(IniFile.F76, "Camera", "fOverShoulderCombatPosZ", 0.0f);
+                IniFiles.Instance.Set(IniFile.F76, "Camera", "fOverShoulderMeleeCombatPosX", 0.0f);
+                IniFiles.Instance.Set(IniFile.F76, "Camera", "fOverShoulderMeleeCombatAddY", 0.0f);
+                IniFiles.Instance.Set(IniFile.F76, "Camera", "fOverShoulderMeleeCombatPosZ", 0.0f);
+                */
+                IniFiles.Instance.Remove(IniFile.F76, "Camera", "fOverShoulderPosX");
+                IniFiles.Instance.Remove(IniFile.F76, "Camera", "fOverShoulderPosZ");
+                IniFiles.Instance.Remove(IniFile.F76, "Camera", "fOverShoulderCombatPosX");
+                IniFiles.Instance.Remove(IniFile.F76, "Camera", "fOverShoulderCombatAddY");
+                IniFiles.Instance.Remove(IniFile.F76, "Camera", "fOverShoulderCombatPosZ");
+                IniFiles.Instance.Remove(IniFile.F76, "Camera", "fOverShoulderMeleeCombatPosX");
+                IniFiles.Instance.Remove(IniFile.F76, "Camera", "fOverShoulderMeleeCombatAddY");
+                IniFiles.Instance.Remove(IniFile.F76, "Camera", "fOverShoulderMeleeCombatPosZ");
+            }
 
             UpdateCameraPositionUI();
         }
 
         private void buttonCameraPositionCenter_Click(object sender, EventArgs e)
         {
+            bool alternativeMode = IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAlternativeINIMode", false);
             switch (camPosMode)
             {
                 case CameraPositionMode.Unarmed:
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderPosX", 0);
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderPosZ", 0);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderPosX", 0);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderPosZ", 0);
                     break;
                 case CameraPositionMode.Combat:
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderCombatPosX", 0);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderCombatPosX", 0);
                     //IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderCombatAddY", value);
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderCombatPosZ", 0);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderCombatPosZ", 0);
                     break;
                 case CameraPositionMode.MeleeCombat:
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatPosX", 0);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderMeleeCombatPosX", 0);
                     //IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatAddY", value);
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "fOverShoulderMeleeCombatPosZ", 0);
+                    IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fOverShoulderMeleeCombatPosZ", 0);
                     break;
             }
 
             this.checkBoxbApplyCameraNodeAnimations.Checked = false;
-            IniFiles.Instance.Set(IniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations", false);
+            IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "bApplyCameraNodeAnimations", false);
 
             UpdateCameraPositionUI();
         }

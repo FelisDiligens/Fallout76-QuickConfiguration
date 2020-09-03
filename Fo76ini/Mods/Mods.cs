@@ -546,13 +546,16 @@ namespace Fo76ini
             Shared.LoadGamePath();
 
             bool nwMode = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bDisableMods", false);
-            this.nuclearWinterMode = nwMode;
+            this.ModsDisabled = nwMode;
+            this.WriteDataDirs = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bWriteSResourceDataDirsFinal", false);
             this.logFile = new Log(Log.GetFilePath("modmanager.log.txt"));
         }
 
         private List<Mod> mods = new List<Mod>();
         private List<Mod> changedMods = new List<Mod>();
-        public bool nuclearWinterMode = false;
+        public bool ModsDisabled = false;
+        public bool WriteToF76Custom = true;
+        public bool WriteDataDirs = false;
         public Log logFile;
 
         // Use lower-case, plz
@@ -1506,7 +1509,8 @@ namespace Fo76ini
             if (Shared.GamePath == null)
                 return;
 
-            this.LoadINILists();
+            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false))
+                this.LoadINILists();
 
             String manifestPath = Path.Combine(Shared.GamePath, "Mods", "manifest.xml");
 
@@ -1637,10 +1641,10 @@ namespace Fo76ini
                  */
 
                 // NW Mode:
-                if (this.nuclearWinterMode)
+                if (this.ModsDisabled)
                 {
                     this.logFile.WriteLine("NOTE: Nuclear Winter mode enabled. (Disable Mods checkbox checked)");
-                    IniFiles.Instance.Set(IniFile.Config, "Mods", "bDisableMods", this.nuclearWinterMode);
+                    IniFiles.Instance.Set(IniFile.Config, "Mods", "bDisableMods", this.ModsDisabled);
                 }
                 else
                 {
@@ -1683,7 +1687,7 @@ namespace Fo76ini
                         frozenBundledArchivesAvailable = frozenBundledArchivesAvailable || File.Exists(Path.Combine(frozenBundledFolder, archive.archiveName));
 
                     // Don't repack archives when disabling mods:
-                    if (this.nuclearWinterMode)
+                    if (this.ModsDisabled)
                         repackBundledArchives = false;
 
                     // Ask user whether to deploy frozen archives or repack them:
@@ -1693,8 +1697,7 @@ namespace Fo76ini
 
                 // Parse lists:
                 // sResourceIndexFileList, sResourceArchive2List, sResourceDataDirsFinal
-                List<String> sResourceIndexFileList = new List<String>(IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
-                sResourceIndexFileList.AddRange(IniFiles.Instance.GetString(IniFile.Config, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+                List<String> sResourceIndexFileList = LoadResourceList("sResourceIndexFileList");
                 List<String> sResourceDataDirsFinal = new List<String>(IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
 
 
@@ -1703,6 +1706,7 @@ namespace Fo76ini
                  * Beginning of deployment:
                  *****************************************************
                  */
+
 
                 /*
                  * Remove any leftover files from previous installations:
@@ -1784,7 +1788,7 @@ namespace Fo76ini
                      * Skip if mod is disabled.
                      * Show error if mod folder wasn't found
                      */
-                    if (this.nuclearWinterMode)
+                    if (this.ModsDisabled)
                         break;
 
                     if (!mod.isEnabled)
@@ -2013,7 +2017,7 @@ namespace Fo76ini
                         String bundledFrozenArchivePath = Path.Combine(frozenBundledFolder, archive.archiveName);
                         String bundledLiveArchivePath = Path.Combine(Shared.GamePath, "Data", archive.archiveName);
 
-                        if (!this.nuclearWinterMode && archive.count > 0)
+                        if (!this.ModsDisabled && archive.count > 0)
                         {
                             // Deploy when files exist and NW mode is disabled:
                             if (updateProgress != null)
@@ -2053,7 +2057,7 @@ namespace Fo76ini
                             // Remove archive when NW mode is active or mod is disabled:
 
                             // Delete files:
-                            if (!this.nuclearWinterMode && File.Exists(bundledFrozenArchivePath))
+                            if (!this.ModsDisabled && File.Exists(bundledFrozenArchivePath))
                             {
                                 this.logFile.WriteLine($"Removing frozen {archive.archiveName}");
                                 File.Delete(bundledFrozenArchivePath);
@@ -2081,7 +2085,7 @@ namespace Fo76ini
                         String bundledFrozenArchivePath = Path.Combine(frozenBundledFolder, archive.archiveName);
                         String bundledLiveArchivePath = Path.Combine(Shared.GamePath, "Data", archive.archiveName);
 
-                        if (this.nuclearWinterMode)
+                        if (this.ModsDisabled)
                         {
                             this.logFile.WriteLine($"Removing {archive.archiveName}");
                             File.Delete(bundledLiveArchivePath);
@@ -2120,96 +2124,34 @@ namespace Fo76ini
 
 
                 // Renaming *.dll files
-                if (this.nuclearWinterMode)
-                {
-                    // String[] files = Directory.GetFiles(this.GamePath, "*.dll", SearchOption.AllDirectories);
-                    IEnumerable<String> files = Directory.EnumerateFiles(Shared.GamePath, "*.dll");/*, SearchOption.AllDirectories);*/ // Don't change the *.dll files in the /Mods/ folder!!
-                    this.logFile.WriteLine($"   Renaming not \'whitelisted\' \'*.dll\' files to \'*.dll.nwmode\'.");
-                    foreach (String filePath in files)
-                    {
-                        String fileName = Path.GetFileName(filePath);
-                        if (!this.whitelistedDlls.Contains(fileName.ToLower()))
-                        {
-                            if (!File.Exists(filePath + ".nwmode"))
-                            {
-                                File.Move(filePath, filePath + ".nwmode");
-                                this.logFile.WriteLine($"      Renamed {fileName}");
-                            }
-                            else
-                            {
-                                // File.Delete(filePath);
-                                this.logFile.WriteLine($"      Failed to rename {fileName}");
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    IEnumerable<String> files = Directory.EnumerateFiles(Shared.GamePath, "*.dll.nwmode");/*, SearchOption.AllDirectories);*/
-                    int count = files.Count();
-                    if (count > 0)
-                    {
-                        this.logFile.WriteLine($"   Renaming \'*.dll.nwmode\' files to \'*.dll\'. ({count})");
-                        foreach (String filePath in files)
-                        {
-                            String fileName = Path.GetFileName(filePath);
-                            String originalFilePath = Path.Combine(Path.GetDirectoryName(filePath), fileName.Replace(".dll.nwmode", ".dll"));
-                            if (!File.Exists(originalFilePath))
-                            {
-                                File.Move(filePath, originalFilePath);
-                                this.logFile.WriteLine($"      Renamed {fileName}");
-                            }
-                            else
-                            {
-                                // Assuming that the same *.dll file has been copied during deployment:
-                                File.Delete(filePath); // we can just delete it.
-                                this.logFile.WriteLine($"      Deleted {fileName}");
-                            }
-                        }
-                    }
-                }
+                if (!this.ModsDisabled)
+                    RestoreAddedDLLs();
 
                 // Writing lists to *.ini files
                 this.logFile.WriteLine($"   Changing values in *.ini files...");
-                if (this.nuclearWinterMode)
-                {
-                    if (sResourceIndexFileList.Count() > 0)
-                    {
-                        IniFiles.Instance.Set(IniFile.Config, "Archive", "sResourceIndexFileList", String.Join(",", sResourceIndexFileList.Distinct()));
-                        this.logFile.WriteLine($"      sResourceIndexFileList copied to QuickConfiguration.ini.");
-                    }
-                    else
-                        IniFiles.Instance.Remove(IniFile.Config, "Archive", "sResourceIndexFileList");
-                    IniFiles.Instance.Remove(IniFile.F76Custom, "Archive", "sResourceIndexFileList");
-                }
-                else
-                {
-                    if (sResourceIndexFileList.Count() > 0)
-                    {
-                        IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", String.Join(",", sResourceIndexFileList.Distinct()));
-                        this.logFile.WriteLine($"      sResourceIndexFileList={String.Join(",", sResourceIndexFileList.Distinct())}");
-                    }
-                    else
-                    {
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Archive", "sResourceIndexFileList");
-                        this.logFile.WriteLine($"      sResourceIndexFileList removed.");
-                    }
-                    IniFiles.Instance.Remove(IniFile.Config, "Archive", "sResourceIndexFileList");
-                }
+                SaveResourceList("sResourceIndexFileList", sResourceIndexFileList);
 
                 // sResourceDataDirsFinal
-                sResourceDataDirsFinal.Clear();
-                String[] resourceFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx", "lodsettings" };
-                foreach (String folder in Directory.GetDirectories(Path.Combine(Shared.GamePath, "Data")))
+                if (this.WriteDataDirs)
                 {
-                    String folderName = Path.GetFileName(folder);
-                    if (resourceFolders.Contains(folderName.ToLower()))
-                        sResourceDataDirsFinal.Add(folderName.ToUpper() + "\\");
-                }
-                if (sResourceDataDirsFinal.Count() > 0)
-                {
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", String.Join(",", sResourceDataDirsFinal.Distinct()));
-                    IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "bInvalidateOlderFiles", true);
+                    sResourceDataDirsFinal.Clear();
+                    String[] resourceFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx", "lodsettings" };
+                    foreach (String folder in Directory.GetDirectories(Path.Combine(Shared.GamePath, "Data")))
+                    {
+                        String folderName = Path.GetFileName(folder);
+                        if (resourceFolders.Contains(folderName.ToLower()))
+                            sResourceDataDirsFinal.Add(folderName.ToUpper() + "\\");
+                    }
+                    if (sResourceDataDirsFinal.Count() > 0)
+                    {
+                        IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", String.Join(",", sResourceDataDirsFinal.Distinct()));
+                        IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "bInvalidateOlderFiles", true);
+                    }
+                    else
+                    {
+                        IniFiles.Instance.Remove(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal");
+                        IniFiles.Instance.Remove(IniFile.F76Custom, "Archive", "bInvalidateOlderFiles");
+                    }
                 }
                 else
                 {
@@ -2250,39 +2192,126 @@ namespace Fo76ini
             }
         }
 
+        public List<String> LoadResourceList (String key)
+        {
+            List<String> list = new List<String>(IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", key, "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+            list.AddRange(IniFiles.Instance.GetString(IniFile.Config, "Archive", key, "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+            return list;
+        }
+
+        public void SaveResourceList (String key, List<String> list)
+        {
+            list = list.Distinct().ToList();
+            int count = list.Count();
+            String value = String.Join(",", list);
+              
+            IniFile iniFile = WriteToF76Custom ? IniFile.F76Custom : IniFile.Config;
+            IniFile otherIniFile = !WriteToF76Custom ? IniFile.F76Custom : IniFile.Config;
+
+            //this.logFile.WriteLine($"   Changing values in *.ini files...");
+            this.logFile.WriteLine($"       writting to {IniFiles.Instance.GetIniName(iniFile)}");
+            if (count > 0)
+            {
+                IniFiles.Instance.Set(iniFile, "Archive", key, value);
+                this.logFile.WriteLine($"      {key}={value}");
+            }
+            else
+            {
+                IniFiles.Instance.Remove(iniFile, "Archive", key);
+                this.logFile.WriteLine($"      {key} removed.");
+            }
+            IniFiles.Instance.Remove(otherIniFile, "Archive", key);
+        }
+
+        public void ResolveNWResourceLists()
+        {
+            SaveResourceList("sResourceIndexFileList", LoadResourceList("sResourceIndexFileList"));
+            SaveResourceList("sResourceArchive2List", LoadResourceList("sResourceArchive2List"));
+            CopyINILists();
+        }
+
+        public void RenameAddedDLLs()
+        {
+            // Iterate through every *.dll file in game path:
+            IEnumerable<String> files = Directory.EnumerateFiles(Shared.GamePath, "*.dll");
+            this.logFile.WriteLine($"Renaming \'*.dll\' files to \'*.dll.nwmode\'.");
+            foreach (String filePath in files)
+            {
+                // If not whitelisted...
+                String fileName = Path.GetFileName(filePath);
+                if (!this.whitelistedDlls.Contains(fileName.ToLower()))
+                {
+                    // ... rename it:
+                    if (!File.Exists(filePath + ".nwmode"))
+                    {
+                        File.Move(filePath, filePath + ".nwmode");
+                        this.logFile.WriteLine($"   Renamed {fileName}");
+                    }
+
+                    // ... or delete it:
+                    else
+                    {
+                        File.Delete(filePath);
+                        this.logFile.WriteLine($"   Deleted {fileName}");
+                    }
+                }
+            }
+        }
+
+        public void RestoreAddedDLLs()
+        {
+            // Iterate through every *.dll.nwmode file in game path:
+            IEnumerable<String> files = Directory.EnumerateFiles(Shared.GamePath, "*.dll.nwmode");
+            this.logFile.WriteLine($"Restoring \'*.dll.nwmode\' files to \'*.dll\'.");
+            foreach (String filePath in files)
+            {
+                String fileName = Path.GetFileName(filePath);
+                String originalFilePath = Path.Combine(Path.GetDirectoryName(filePath), fileName.Replace(".dll.nwmode", ".dll"));
+
+                // Rename or delete, if the original exists:
+                if (!File.Exists(originalFilePath))
+                {
+                    File.Move(filePath, originalFilePath);
+                    this.logFile.WriteLine($"   Renamed {fileName}");
+                }
+                else
+                {
+                    // Assuming that the same *.dll file has been copied during deployment:
+                    File.Delete(filePath); // we can just delete it.
+                    this.logFile.WriteLine($"   Deleted {fileName}");
+                }
+            }
+        }
+
         public void CopyINILists()
         {
-            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false))
-                return;
-
             String suffix = ManagedMods.GetEditionSuffix(Shared.GameEdition);
-            IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix, String.Join(",", IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "")));
-            IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceArchive2List" + suffix, String.Join(",", IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "")));
+            IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix, String.Join(",", LoadResourceList("sResourceIndexFileList")));
+            IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceArchive2List" + suffix, String.Join(",", LoadResourceList("sResourceArchive2List")));
             IniFiles.Instance.Set(IniFile.Config, "Mods", "sResourceDataDirsFinal" + suffix, String.Join(",", IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", "")));
             IniFiles.Instance.SaveConfig();
         }
 
         public void LoadINILists()
         {
-            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false))
-                return;
-
             String suffix = ManagedMods.GetEditionSuffix(Shared.GameEdition);
-            String sResourceIndexFileList = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix, "");
-            String sResourceArchive2List = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceArchive2List" + suffix, "");
+            List<String> sResourceIndexFileList = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceIndexFileList" + suffix, "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<String> sResourceArchive2List = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceArchive2List" + suffix, "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             String sResourceDataDirsFinal = IniFiles.Instance.GetString(IniFile.Config, "Mods", "sResourceDataDirsFinal" + suffix, "");
 
-            if (sResourceIndexFileList.Length > 0 || IniFiles.Instance.Exists(IniFile.F76Custom, "Mods", "sResourceIndexFileList"))
-                IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", sResourceIndexFileList);
-            if (sResourceArchive2List.Length > 0 || IniFiles.Instance.Exists(IniFile.F76Custom, "Mods", "sResourceArchive2List"))
-                IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceArchive2List", sResourceArchive2List);
-            if (sResourceDataDirsFinal.Length > 0 || IniFiles.Instance.Exists(IniFile.F76Custom, "Mods", "sResourceDataDirsFinal"))
+            if (sResourceIndexFileList.Count > 0 || IniFiles.Instance.Exists(IniFile.F76Custom, "Mods", "sResourceIndexFileList"))
+                SaveResourceList("sResourceIndexFileList", sResourceIndexFileList);
+                //IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", sResourceIndexFileList);
+            if (sResourceArchive2List.Count > 0 || IniFiles.Instance.Exists(IniFile.F76Custom, "Mods", "sResourceArchive2List"))
+                SaveResourceList("sResourceArchive2List", sResourceArchive2List);
+                // IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceArchive2List", sResourceArchive2List);
+            if (sResourceDataDirsFinal.Length > 0 && this.WriteDataDirs || IniFiles.Instance.Exists(IniFile.F76Custom, "Mods", "sResourceDataDirsFinal"))
                 IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceDataDirsFinal", sResourceDataDirsFinal);
 
-            if (IniFiles.Instance.GetString(IniFile.F76Custom, "Mods", "sResourceIndexFileList", "").Trim().Length == 0)
+            /*if (IniFiles.Instance.GetString(IniFile.F76Custom, "Mods", "sResourceIndexFileList", "").Trim().Length == 0)
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Mods", "sResourceIndexFileList");
             if (IniFiles.Instance.GetString(IniFile.F76Custom, "Mods", "sResourceArchive2List", "").Trim().Length == 0)
-                IniFiles.Instance.Remove(IniFile.F76Custom, "Mods", "sResourceArchive2List");
+                IniFiles.Instance.Remove(IniFile.F76Custom, "Mods", "sResourceArchive2List");*/
             if (IniFiles.Instance.GetString(IniFile.F76Custom, "Mods", "sResourceDataDirsFinal", "").Trim().Length == 0)
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Mods", "sResourceDataDirsFinal");
         }

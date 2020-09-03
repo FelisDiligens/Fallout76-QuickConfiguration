@@ -93,7 +93,7 @@ namespace Fo76ini
 
         private void buttonNMUpdateProfile_Click(object sender, EventArgs e)
         {
-            this.pictureBoxNMProfilePicture.Image = Resources.Spinner_200px;
+            this.pictureBoxNMProfilePicture.Image = Resources.Spinner_200;
             this.backgroundWorkerRetrieveProfileInfo.RunWorkerAsync();
         }
 

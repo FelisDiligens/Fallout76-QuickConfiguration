@@ -29,6 +29,9 @@ namespace Fo76ini
             InitializeDetailControls();
             InitializeNMControls();
 
+            LocalizedForm form = new LocalizedForm(this, this.toolTip);
+            Localization.LocalizedForms.Add(form);
+
             // Game Edition
             /*uiLoader.LinkList(
                 new RadioButton[] { this.radioButtonEditionBethesdaNet, this.radioButtonEditionSteam },
@@ -325,15 +328,14 @@ namespace Fo76ini
         {
             if (!IniFiles.Instance.IsLoaded())
                 return;
-            this.checkBoxDisableMods.Checked = ManagedMods.Instance.nuclearWinterMode;
+            this.checkBoxDisableMods.Checked = ManagedMods.Instance.ModsDisabled;
             this.checkBoxAddArchivesAsBundled.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUnpackBA2ByDefault", false);
             this.checkBoxModsUseHardlinks.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUseHardlinks", true);
             this.checkBoxFreezeBundledArchives.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bFreezeBundledArchives", false);
-            
+
             //this.textBoxGamePath.Text = Shared.GamePath;
 
-            this.textBoxsResourceArchive2List.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
-            this.textBoxsResourceIndexFileList.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+            LoadTextBoxResourceLists();
 
             this.textBoxAPIKey.Text = NexusMods.Profile.APIKey;
         }
@@ -463,6 +465,10 @@ namespace Fo76ini
                 // Reload UI:
                 reloadUIToolStripMenuItem_Click(sender, e);
             }
+            /*else if (e.Control == true && e.Shift && e.KeyCode == Keys.F12)
+            {
+                FormConsole.Instance.OpenUI();
+            }*/
 
             // These shortcuts only apply to the mod list:
             if (this.listViewMods.Focused)
@@ -520,7 +526,7 @@ namespace Fo76ini
         // Disable mods
         private void checkBoxDisableMods_CheckedChanged(object sender, EventArgs e)
         {
-            ManagedMods.Instance.nuclearWinterMode = checkBoxDisableMods.Checked;
+            ManagedMods.Instance.ModsDisabled = checkBoxDisableMods.Checked;
             DisplayDeploymentNecessary();
         }
 
@@ -972,6 +978,12 @@ namespace Fo76ini
          * Settings
          */
 
+        private void LoadTextBoxResourceLists()
+        {
+            this.textBoxsResourceIndexFileList.Text = String.Join(Environment.NewLine, ManagedMods.Instance.LoadResourceList("sResourceIndexFileList"));
+            this.textBoxsResourceArchive2List.Text = String.Join(Environment.NewLine, ManagedMods.Instance.LoadResourceList("sResourceArchive2List"));
+        }
+
         // Clean lists
         private void buttonModsCleanLists_Click(object sender, EventArgs e)
         {
@@ -1003,8 +1015,12 @@ namespace Fo76ini
         // Apply changes
         private void buttonModsApplyTextBoxes_Click(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceArchive2List", String.Join(",", this.textBoxsResourceArchive2List.Text.Replace(Environment.NewLine, "\n").Split(new char[] { '\n', ',' }, StringSplitOptions.RemoveEmptyEntries)));
-            IniFiles.Instance.Set(IniFile.F76Custom, "Archive", "sResourceIndexFileList", String.Join(",", this.textBoxsResourceIndexFileList.Text.Replace(Environment.NewLine, "\n").Split(new char[] { '\n', ',' }, StringSplitOptions.RemoveEmptyEntries)));
+            /*IniFile iniFile = ManagedMods.Instance.WriteToF76Custom ? IniFile.F76Custom : IniFile.Config;
+            IniFiles.Instance.Set(iniFile, "Archive", "sResourceArchive2List", String.Join(",", this.textBoxsResourceArchive2List.Text.Replace(Environment.NewLine, "\n").Split(new char[] { '\n', ',' }, StringSplitOptions.RemoveEmptyEntries)));
+            IniFiles.Instance.Set(iniFile, "Archive", "sResourceIndexFileList", String.Join(",", this.textBoxsResourceIndexFileList.Text.Replace(Environment.NewLine, "\n").Split(new char[] { '\n', ',' }, StringSplitOptions.RemoveEmptyEntries)));*/
+            ManagedMods.Instance.logFile.WriteLine("\n\nSaving changes to resource lists...");
+            ManagedMods.Instance.SaveResourceList("sResourceIndexFileList", this.textBoxsResourceIndexFileList.Text.Replace(Environment.NewLine, "\n").Split(new char[] { '\n', ',' }, StringSplitOptions.RemoveEmptyEntries).ToList());
+            ManagedMods.Instance.SaveResourceList("sResourceArchive2List", this.textBoxsResourceArchive2List.Text.Replace(Environment.NewLine, "\n").Split(new char[] { '\n', ',' }, StringSplitOptions.RemoveEmptyEntries).ToList());
             ManagedMods.Instance.CopyINILists();
             IniFiles.Instance.SaveAll();
         }
@@ -1012,8 +1028,7 @@ namespace Fo76ini
         // Reset
         private void buttonModsResetTextboxes_Click(object sender, EventArgs e)
         {
-            this.textBoxsResourceArchive2List.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceArchive2List", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
-            this.textBoxsResourceIndexFileList.Text = String.Join(Environment.NewLine, IniFiles.Instance.GetString(IniFile.F76Custom, "Archive", "sResourceIndexFileList", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+            LoadTextBoxResourceLists();
         }
 
 
@@ -1047,6 +1062,13 @@ namespace Fo76ini
         private void checkBoxFreezeBundledArchives_CheckedChanged(object sender, EventArgs e)
         {
             IniFiles.Instance.Set(IniFile.Config, "Mods", "bFreezeBundledArchives", this.checkBoxFreezeBundledArchives.Checked);
+            IniFiles.Instance.SaveConfig();
+        }
+
+        private void checkBoxModsWriteSResourceDataDirsFinal_CheckedChanged(object sender, EventArgs e)
+        {
+            ManagedMods.Instance.WriteDataDirs = this.checkBoxModsWriteSResourceDataDirsFinal.Checked;
+            IniFiles.Instance.Set(IniFile.Config, "Mods", "bWriteSResourceDataDirsFinal", this.checkBoxModsWriteSResourceDataDirsFinal.Checked);
             IniFiles.Instance.SaveConfig();
         }
 
@@ -1208,7 +1230,7 @@ namespace Fo76ini
                         {
                             DisplayAllDone();
 
-                            if (ManagedMods.Instance.nuclearWinterMode)
+                            if (ManagedMods.Instance.ModsDisabled)
                                 MsgBox.Get("modsDisabledDone").Popup(MessageBoxIcon.Information);
                             else
                                 MsgBox.Get("modsDeployedDone").Popup(MessageBoxIcon.Information);

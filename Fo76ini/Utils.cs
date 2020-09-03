@@ -458,7 +458,7 @@ namespace Fo76ini
             //popup.Image = Properties.Resources.info;
             popup.AnimationDuration = 400;
             popup.Delay = 5000;
-            popup.TitleText = "Quick Configuration: " + title;
+            popup.TitleText = title;
             popup.ContentText = text;
 
             popup.Size = new Size(500, 200);
@@ -488,13 +488,13 @@ namespace Fo76ini
             switch (icon)
             {
                 case MessageBoxIcon.Information:
-                    popup.Image = Properties.Resources.info;
+                    popup.Image = Properties.Resources.info_64;
                     break;
                 case MessageBoxIcon.Warning:
-                    popup.Image = Properties.Resources.warning;
+                    popup.Image = Properties.Resources.warning_64;
                     break;
                 case MessageBoxIcon.Error:
-                    popup.Image = Properties.Resources.error;
+                    popup.Image = Properties.Resources.error_64;
                     break;
             }
             popup.ImagePadding = new Padding(10);

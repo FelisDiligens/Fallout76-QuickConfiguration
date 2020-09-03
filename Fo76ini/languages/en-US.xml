@@ -4,7 +4,7 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.8.1h1">
+<Language name="English (USA)" iso="en-US" version="1.8.2">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Update now!" id="updateNowButton" />
@@ -31,6 +31,8 @@
     <String text="No" id="no" />
     <String text="Valid" id="valid" />
     <String text="Invalid" id="invalid" />
+    <String text="Nuclear Winter" id="nuclearwintermode" />
+    <String text="Adventure" id="adventuremode" />
   </Strings>
   <Dropdowns>
     <Dropdown id="Resolution">
@@ -74,7 +76,6 @@
       <Option>1024 = Low</Option>
       <Option>2048 = High (default)</Option>
       <Option>4096 = Ultra</Option>
-      <Option>8192 = Insane</Option>
     </Dropdown>
     <Dropdown id="ShadowBlurriness">
       <Option>1x</Option>
@@ -160,6 +161,14 @@ The windows might be to big to fit on screen.
 Your display size: {0}
 Minimum display size: {1}
 Recommended display size: 1920 x 1080</Messagebox>
+    <Messagebox title="Restart required." id="restartRequired">A restart of the tool is required for changes to take effect.
+Are you sure, you want to change this option now?</Messagebox>
+    <Messagebox title="Delete {0}?" id="galleryDeleteScreenshot">You are about to delete '{0}'. Are you sure?</Messagebox>
+    <Messagebox title="Delete {0} files?" id="galleryDeleteScreenshots">You are about to delete {0} files. Are you sure?</Messagebox>
+    <Messagebox title="Are you sure?" id="galleryDeleteThumbnails">Are you sure you want to delete the gallery's thumbnails?
+The next time you click on 'Refresh gallery', it will take significantly longer as it recreates all thumbnails.</Messagebox>
+    <Messagebox title="NW mode disabled" id="nwModeDisabled">You can now launch into Adventure mode.</Messagebox>
+    <Messagebox title="NW mode enabled" id="nwModeEnabled">You can now launch into Nuclear Winter mode.</Messagebox>
     <Messagebox title="Done" id="modsDisabledDone">Mods have been disabled and removed from the game.</Messagebox>
     <Messagebox title="Done" id="modsDeployedDone">Mods are deployed.</Messagebox>
     <Messagebox title="Something went wrong" id="modsDeploymentFailed">Mods might not be deployed.
@@ -224,14 +233,13 @@ Try again later.</Messagebox>
   <Form1 title="Fallout 76 Quick Configuration">
     <ToolStrip id="toolStrip1">
       <ToolStripButton text="Apply" id="toolStripButtonApply" />
+      <ToolStripButton text="Nuclear Winter" id="toolStripButtonToggleNuclearWinterMode" />
       <ToolStripSplitButton text="Launch" id="toolStripSplitButtonLaunchGame">
         <ToolStripMenuItem text="Launch Steam version" id="launchViaSteamToolStripMenuItem" />
         <ToolStripMenuItem text="Launch Bethesda.net version" id="launchViaBethesdanetToolStripMenuItem" />
         <ToolStripMenuItem text="Launch Bethesda.net (PTS) version" id="launchViaBethesdanetPTSToolStripMenuItem" />
       </ToolStripSplitButton>
-      <ToolStripSeparator text="" id="toolStripSeparator1" />
       <ToolStripButton text="Mods" id="toolStripButtonManageMods" />
-      <ToolStripSeparator text="" id="toolStripSeparator2" />
       <ToolStripSplitButton text="Update" id="toolStripSplitButtonUpdate">
         <ToolStripMenuItem text="Update tool" id="updateToolToolStripMenuItem" />
         <ToolStripMenuItem text="Check for updates" id="checkForUpdatesToolStripMenuItem" />
@@ -241,28 +249,37 @@ Try again later.</Messagebox>
       <ToolStripDropDownButton text="Explore" id="toolStripDropDownButtonExplore">
         <ToolStripMenuItem text="Game installation folder" id="gameFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Game configuration folder" id="gamesConfigurationFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator4" />
         <ToolStripMenuItem text="Tool configuration folder" id="toolConfigurationFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Tool languages folder" id="toolLanguagesFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Tool installation folder" id="toolInstallationFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator5" />
         <ToolStripMenuItem text="Steam screenshot folder" id="steamScreenshotFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Game photos folder" id="gamePhotosFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator6" />
         <ToolStripMenuItem text="Edit Fallout76.ini" id="editFallout76iniToolStripMenuItem" />
         <ToolStripMenuItem text="Edit Fallout76Prefs.ini" id="editFallout76PrefsiniToolStripMenuItem" />
         <ToolStripMenuItem text="Edit Fallout76Custom.ini" id="editFallout76CustominiToolStripMenuItem" />
       </ToolStripDropDownButton>
-      <ToolStripSeparator text="" id="toolStripSeparator3" />
       <ToolStripButton text="NexusMods" id="toolStripButtonNexusMods" />
     </ToolStrip>
     <TabControl id="tabControl1">
       <TabPage text="Info" id="tabPageInfo">
+        <LinkLabel text="Licensed work" id="linkLabelAttribution" />
         <Panel id="panelUpdate">
           <LinkLabel text="Or download and install manually..." id="linkLabelManualDownloadPage" />
         </Panel>
+        <Label text="Nuclear Winter mode is active." id="labelNWModeActive" />
         <Panel id="panel1">
+          <GroupBox text="Nuclear Winter options" id="groupBoxNuclearWinterMode">
+            <CheckBox text="Deploy mods upon disabling" id="checkBoxNWAutoDeployMods" />
+            <Label text="Mod options:" id="labelNWmodoptions" />
+            <Label text="*.dll options:" id="labelNWdlloptions" />
+            <Label text="*.ini options:" id="labelNWinioptions" />
+            <RadioButton text="Just remove archive resource lists" id="radioButtonNWRemoveLists" />
+            <RadioButton text="Rename Fallout76Custom.ini" id="radioButtonNWRenameINI" />
+            <CheckBox text="Remove mods upon enabling" id="checkBoxNWAutoDisableMods" />
+            <CheckBox text="Rename added *.dll files" id="checkBoxNWRenameDLL" />
+          </GroupBox>
           <GroupBox text="Localization" id="groupBoxLocalization">
+            <Button text="Refresh" id="buttonRefreshLanguage" />
             <Label text="This language is out-dated.\nSome elements might not be translated yet." id="labelOutdatedLanguage" />
             <Label text="Language:" id="labelLanguage" />
             <Button text="Download / update language files" id="buttonDownloadLanguages" />
@@ -284,6 +301,11 @@ Try again later.</Messagebox>
             <Button text="..." id="buttonPickGamePath" />
           </GroupBox>
           <GroupBox text="Options" id="groupBoxOptions">
+            <CheckBox text="Don't use Fallout76Custom.ini for tweaks." id="checkBoxAlternativeINIMode">
+              <Tooltip>Puts tweaks into Fallout76.ini and Fallout76Prefs.ini instead.
+Does not affect the mod manager.
+You may need to remove tweaks from Fallout76Custom.ini manually.</Tooltip>
+            </CheckBox>
             <CheckBox text="[Experimental] Deny NTFS write permission." id="checkBoxDenyNTFSWritePermission">
               <Tooltip>This will deny write permission to the "Fallout 76" folder.
 Use this, if the read-only option doesn't work.
@@ -294,9 +316,6 @@ Affected folder: %UserProfile%\Documents\My Games\Fallout 76</Tooltip>
               <Tooltip>Check this, if you're modding more than one game edition.
 If checked, sResourceIndexFileList will be saved for every game edition separately.</Tooltip>
             </CheckBox>
-            <CheckBox text="Nuclear Winter Mode" id="checkBoxNWMode">
-              <Tooltip>Renames Fallout76Custom.ini, disables mods (if desired), renames *.dll files (if desired).</Tooltip>
-            </CheckBox>
             <CheckBox text="Make *.ini files read-only" id="checkBoxReadOnly">
               <Tooltip>This option will make all *.ini files read-only immediately.
 Enable this if your settings get reverted.
@@ -305,6 +324,7 @@ Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
             </CheckBox>
           </GroupBox>
           <GroupBox text="Behavior" id="groupBoxBehavior">
+            <CheckBox text="Play notification sound" id="checkBoxPlayNotificationSound" />
             <CheckBox text="Don't check for updates." id="checkBoxIgnoreUpdates" />
             <CheckBox text="Open mod manager on startup." id="checkBoxOpenManageModsOnLaunch" />
             <CheckBox text="Close the tool when the game is launched" id="checkBoxQuitOnGameLaunch">
@@ -1059,6 +1079,9 @@ Affected files: Fallout76Prefs.ini</Tooltip>
           <Label text="Click 'Refresh gallery' to display screenshots and photos." id="labelGalleryTip" />
         </GroupBox>
         <GroupBox text="Options" id="groupBoxScreenshotOptions">
+          <Button text="Delete thumbnails" id="buttonGalleryDeleteThumbnails" />
+          <CheckBox text="Search subfolders recursively" id="checkBoxGallerySearchRecursively" />
+          <Label text="Additonal paths (newline separated):" id="label3" />
           <Label text="Thumbnail size:" id="labelGalleryThumbnailSize" />
           <Button text="Refresh gallery" id="buttonRefreshGallery" />
           <Label text="Screenshot index:" id="labelScreenshotIndex">
@@ -1075,6 +1098,13 @@ Affected files: Fallout76Prefs.ini</Tooltip>
         <Label text="Overwrite lines in file:" id="labelCustomFile" />
       </TabPage>
     </TabControl>
+    <ContextMenuStrip id="contextMenuStrip1">
+      <ToolStripMenuItem text="Open" id="openToolStripMenuItem" />
+      <ToolStripMenuItem text="Open folder" id="openFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Cut" id="cutToolStripMenuItem" />
+      <ToolStripMenuItem text="Copy" id="copyToolStripMenuItem" />
+      <ToolStripMenuItem text="Delete" id="deleteToolStripMenuItem" />
+    </ContextMenuStrip>
   </Form1>
   <FormMods title="Manage mods">
     <Panel id="panel1">
@@ -1114,16 +1144,12 @@ This is especially useful, if the archive is HUGE (1GiB or more) and the files a
           <ToolStripButton text="Add mod (from archive)" id="toolStripButtonAddMod" />
           <ToolStripButton text="Add mod (from *.ba2 archive)" id="toolStripButtonAddModFrozen" />
           <ToolStripButton text="Add mod (from folder)" id="toolStripButtonAddModFolder" />
-          <ToolStripSeparator text="" id="toolStripSeparator4" />
           <ToolStripButton text="Check/uncheck all" id="toolStripButtonCheckAll" />
-          <ToolStripSeparator text="" id="toolStripSeparator2" />
           <ToolStripButton text="Move up" id="toolStripButtonMoveUp" />
           <ToolStripButton text="Move down" id="toolStripButtonMoveDown" />
-          <ToolStripSeparator text="" id="toolStripSeparator3" />
           <ToolStripButton text="Edit mod details" id="toolStripButtonModEdit" />
           <ToolStripButton text="Unfreeze" id="toolStripButtonUnfreeze" />
           <ToolStripButton text="Open mod folder" id="toolStripButtonModOpenFolder" />
-          <ToolStripSeparator text="" id="toolStripSeparator5" />
           <ToolStripButton text="Delete mod" id="toolStripButtonDeleteMod" />
         </ToolStrip>
         <ListView id="listViewMods">
@@ -1144,6 +1170,7 @@ This is especially useful, if the archive is HUGE (1GiB or more) and the files a
       </TabPage>
       <TabPage text="Settings" id="tabPageModsSettings">
         <GroupBox text="Behavior" id="groupBoxModsBehavior">
+          <CheckBox text="Write sResourceDataDirsFinal to Fallout76Custom.ini" id="checkBoxModsWriteSResourceDataDirsFinal" />
           <CheckBox text="[Experimental] Freeze bundled archives" id="checkBoxFreezeBundledArchives">
             <Tooltip>Instead of rebuilding bundled archives, it will save a bundled copy and ask you if you want to update it on deploy.</Tooltip>
           </CheckBox>
@@ -1191,7 +1218,6 @@ This is especially useful, if the archive is HUGE (1GiB or more) and the files a
           <ToolStripMenuItem text="From folder" id="fromFolderToolStripMenuItem" />
         </ToolStripMenuItem>
         <ToolStripMenuItem text="Import installed mods" id="toolStripMenuItemModsImport" />
-        <ToolStripSeparator text="" id="toolStripSeparator1" />
         <ToolStripMenuItem text="Deploy" id="deployToolStripMenuItem" />
       </ToolStripMenuItem>
       <ToolStripMenuItem text="View" id="editToolStripMenuItem">

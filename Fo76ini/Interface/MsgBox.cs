@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -14,6 +15,24 @@ namespace Fo76ini
         public String Title;
         public String Text;
         private String id;
+
+        public const String NotificationSoundFile = @"notify.wav";
+        private static SoundPlayer SoundPlayer = new SoundPlayer(NotificationSoundFile);
+
+        public static void PlayNotificationSound()
+        {
+            // Don't play sound, if disabled:
+            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bPlayNotificationSound", true))
+                return;
+
+            // Play alert.wav if available:
+            if (File.Exists(NotificationSoundFile))
+                SoundPlayer.Play();
+
+            // Fallback to system sound if alert.wav is not available:
+            else
+                SystemSounds.Asterisk.Play();
+        }
 
         public String ID
         {
@@ -117,13 +136,13 @@ namespace Fo76ini
         public void Popup()
         {
             Utils.CreatePopup(this.Title, this.Text).Popup();
-            SystemSounds.Asterisk.Play();
+            PlayNotificationSound();
         }
 
         public void Popup(MessageBoxIcon icon)
         {
             Utils.CreatePopup(this.Title, this.Text, icon).Popup();
-            SystemSounds.Asterisk.Play();
+            PlayNotificationSound();
         }
 
         public static XElement SerializeAll()

@@ -37,6 +37,8 @@ namespace Fo76ini
             localizedStrings["no"] = "No";
             localizedStrings["valid"] = "Valid";
             localizedStrings["invalid"] = "Invalid";
+            localizedStrings["nuclearwintermode"] = "Nuclear Winter";
+            localizedStrings["adventuremode"] = "Adventure";
         }
 
         public static void AddSharedMessageBoxes()
@@ -127,6 +129,42 @@ namespace Fo76ini
             MsgBox.Add("displayResolutionTooLow",
                 "Display resolution might be too low",
                 "Your display resolution is not supported.\nThe windows might be to big to fit on screen.\nYour display size: {0}\nMinimum display size: {1}\nRecommended display size: 1920 x 1080"
+            );
+
+            MsgBox.Add("restartRequired",
+                "Restart required.",
+                "A restart of the tool is required for changes to take effect.\nAre you sure, you want to change this option now?"
+            );
+
+
+            // Gallery:
+
+            MsgBox.Add("galleryDeleteScreenshot",
+                "Delete {0}?",
+                "You are about to delete '{0}'. Are you sure?"
+            );
+
+            MsgBox.Add("galleryDeleteScreenshots",
+                "Delete {0} files?",
+                "You are about to delete {0} files. Are you sure?"
+            );
+
+            MsgBox.Add("galleryDeleteThumbnails",
+                "Are you sure?",
+                "Are you sure you want to delete the gallery's thumbnails?\nThe next time you click on 'Refresh gallery', it will take significantly longer as it recreates all thumbnails."
+            );
+
+
+            // Nuclear Winter:
+
+            MsgBox.Add("nwModeDisabled",
+                "NW mode disabled",
+                "You can now launch into Adventure mode."
+            );
+
+            MsgBox.Add("nwModeEnabled",
+                "NW mode enabled",
+                "You can now launch into Nuclear Winter mode."
             );
 
 

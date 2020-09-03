@@ -102,6 +102,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClipboardUtils.cs" />
     <Compile Include="Forms\ExceptionDialog\FormExceptionDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +154,7 @@
     <Compile Include="Interface\UILoader.cs" />
     <Compile Include="Shared.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="Volume.cs" />
     <EmbeddedResource Include="Forms\ExceptionDialog\FormExceptionDialog.resx">
       <DependentUpon>FormExceptionDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,21 +190,30 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\folder-open.png" />
-    <None Include="icons\pencil.png" />
-    <None Include="icons\arrow-down.png" />
-    <None Include="icons\arrow-up.png" />
-    <None Include="icons\bin.png" />
-    <None Include="icons\folder-plus.png" />
-    <None Include="icons\plus.png" />
-    <None Include="icons\checkbox-checked.png" />
-    <None Include="icons\info.png" />
-    <None Include="icons\warning.png" />
-    <None Include="icons\error.png" />
-    <None Include="icons\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icon-60.png" />
+    <None Include="Resources\icon.png" />
+    <None Include="Resources\error-5-64.png" />
+    <None Include="Resources\info-2-64.png" />
+    <None Include="Resources\info-2-48.png" />
+    <None Include="Resources\warning-5-64.png" />
+    <None Include="Resources\help-128.png" />
+    <None Include="Resources\user-white.png" />
+    <None Include="Resources\user-6-512.png" />
+    <None Include="Resources\arrow-up.png" />
+    <None Include="Resources\arrow-down.png" />
+    <None Include="Resources\add-snowflake-24.png" />
+    <None Include="Resources\thaw-24.png" />
+    <None Include="Resources\snowflake-16-24.png" />
+    <None Include="Resources\checked-checkbox-24%281%29.png" />
+    <None Include="Resources\add-folder-24.png" />
+    <None Include="Resources\plus-24.png" />
+    <None Include="Resources\add-file-24.png" />
+    <None Include="Resources\folder-3-24.png" />
+    <None Include="Resources\edit-2-24.png" />
+    <None Include="Resources\delete-24.png" />
+    <None Include="Resources\adventures-24.png" />
+    <None Include="Resources\fire-2-24.png" />
     <None Include="Resources\bg.jpg" />
     <None Include="Resources\user_white.png" />
     <None Include="Resources\user.png" />
@@ -231,8 +242,6 @@
     <None Include="Resources\msstore.png" />
     <None Include="Resources\xbox.png" />
     <None Include="Resources\steam.png" />
-    <None Include="icons\defrost.png" />
-    <None Include="icons\frozen-plus.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

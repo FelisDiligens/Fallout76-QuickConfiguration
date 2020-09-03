@@ -78,7 +78,6 @@
             this.checkBoxSkipBackupQuestion = new System.Windows.Forms.CheckBox();
             this.checkBoxQuitOnGameLaunch = new System.Windows.Forms.CheckBox();
             this.checkBoxReadOnly = new System.Windows.Forms.CheckBox();
-            this.checkBoxNWMode = new System.Windows.Forms.CheckBox();
             this.checkBoxMultipleGameEditionsUsed = new System.Windows.Forms.CheckBox();
             this.checkBoxDenyNTFSWritePermission = new System.Windows.Forms.CheckBox();
             this.checkBoxFixMouseSensitivity = new System.Windows.Forms.CheckBox();
@@ -135,6 +134,8 @@
             this.labelCameraDistanceMaximum = new System.Windows.Forms.Label();
             this.labelCameraDistanceMinimum = new System.Windows.Forms.Label();
             this.checkBoxbApplyCameraNodeAnimations = new System.Windows.Forms.CheckBox();
+            this.labelScreenshotIndex = new System.Windows.Forms.Label();
+            this.checkBoxAlternativeINIMode = new System.Windows.Forms.CheckBox();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
@@ -258,13 +259,25 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
+            this.linkLabelAttribution = new System.Windows.Forms.LinkLabel();
             this.panelUpdate = new System.Windows.Forms.Panel();
             this.labelNewVersion = new System.Windows.Forms.Label();
             this.linkLabelManualDownloadPage = new System.Windows.Forms.LinkLabel();
             this.pictureBoxUpdateButton = new System.Windows.Forms.PictureBox();
+            this.labelNWModeActive = new System.Windows.Forms.Label();
             this.pictureBoxSpinnerCheckForUpdates = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBoxNuclearWinterMode = new System.Windows.Forms.GroupBox();
+            this.checkBoxNWAutoDeployMods = new System.Windows.Forms.CheckBox();
+            this.labelNWmodoptions = new System.Windows.Forms.Label();
+            this.labelNWdlloptions = new System.Windows.Forms.Label();
+            this.labelNWinioptions = new System.Windows.Forms.Label();
+            this.radioButtonNWRemoveLists = new System.Windows.Forms.RadioButton();
+            this.radioButtonNWRenameINI = new System.Windows.Forms.RadioButton();
+            this.checkBoxNWAutoDisableMods = new System.Windows.Forms.CheckBox();
+            this.checkBoxNWRenameDLL = new System.Windows.Forms.CheckBox();
             this.groupBoxLocalization = new System.Windows.Forms.GroupBox();
+            this.buttonRefreshLanguage = new System.Windows.Forms.Button();
             this.pictureBoxSpinnerDownloadLanguages = new System.Windows.Forms.PictureBox();
             this.labelOutdatedLanguage = new System.Windows.Forms.Label();
             this.labelLanguage = new System.Windows.Forms.Label();
@@ -290,6 +303,7 @@
             this.buttonPickGamePath = new System.Windows.Forms.Button();
             this.groupBoxOptions = new System.Windows.Forms.GroupBox();
             this.groupBoxBehavior = new System.Windows.Forms.GroupBox();
+            this.checkBoxPlayNotificationSound = new System.Windows.Forms.CheckBox();
             this.checkBoxIgnoreUpdates = new System.Windows.Forms.CheckBox();
             this.checkBoxOpenManageModsOnLaunch = new System.Windows.Forms.CheckBox();
             this.labelGameEdition = new System.Windows.Forms.Label();
@@ -338,11 +352,14 @@
             this.labelGalleryTip = new System.Windows.Forms.Label();
             this.listViewScreenshots = new System.Windows.Forms.ListView();
             this.groupBoxScreenshotOptions = new System.Windows.Forms.GroupBox();
+            this.buttonGalleryDeleteThumbnails = new System.Windows.Forms.Button();
+            this.checkBoxGallerySearchRecursively = new System.Windows.Forms.CheckBox();
+            this.textBoxGalleryPaths = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.sliderGalleryThumbnailSize = new System.Windows.Forms.TrackBar();
             this.labelGalleryThumbnailSize = new System.Windows.Forms.Label();
             this.buttonRefreshGallery = new System.Windows.Forms.Button();
             this.numScreenshotIndex = new System.Windows.Forms.NumericUpDown();
-            this.labelScreenshotIndex = new System.Windows.Forms.Label();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
             this.buttonCustomSave = new System.Windows.Forms.Button();
             this.comboBoxCustomFile = new System.Windows.Forms.ComboBox();
@@ -350,6 +367,7 @@
             this.textBoxCustom = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonApply = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonToggleNuclearWinterMode = new System.Windows.Forms.ToolStripButton();
             this.toolStripSplitButtonLaunchGame = new System.Windows.Forms.ToolStripSplitButton();
             this.launchViaSteamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.launchViaBethesdanetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -381,6 +399,17 @@
             this.backgroundWorkerLoadGallery = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerGetLatestVersion = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerDownloadLanguages = new System.ComponentModel.BackgroundWorker();
+            this.contextMenuStripGallery = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorkerEnableNWMode = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorkerDisableNWMode = new System.ComponentModel.BackgroundWorker();
+            this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
@@ -471,6 +500,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdateButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBoxNuclearWinterMode.SuspendLayout();
             this.groupBoxLocalization.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
             this.groupBoxGameEdition.SuspendLayout();
@@ -509,6 +539,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numScreenshotIndex)).BeginInit();
             this.tabPageCustom.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.contextMenuStripGallery.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
             this.SuspendLayout();
             // 
             // toolTip
@@ -1106,7 +1138,7 @@
             // checkBoxReadOnly
             // 
             this.checkBoxReadOnly.AutoSize = true;
-            this.checkBoxReadOnly.Location = new System.Drawing.Point(10, 65);
+            this.checkBoxReadOnly.Location = new System.Drawing.Point(10, 42);
             this.checkBoxReadOnly.Name = "checkBoxReadOnly";
             this.checkBoxReadOnly.Size = new System.Drawing.Size(140, 17);
             this.checkBoxReadOnly.TabIndex = 4;
@@ -1116,19 +1148,6 @@
         "out 76\\*.ini");
             this.checkBoxReadOnly.UseVisualStyleBackColor = true;
             this.checkBoxReadOnly.CheckedChanged += new System.EventHandler(this.checkBoxReadOnly_CheckedChanged);
-            // 
-            // checkBoxNWMode
-            // 
-            this.checkBoxNWMode.AutoSize = true;
-            this.checkBoxNWMode.Location = new System.Drawing.Point(10, 42);
-            this.checkBoxNWMode.Name = "checkBoxNWMode";
-            this.checkBoxNWMode.Size = new System.Drawing.Size(127, 17);
-            this.checkBoxNWMode.TabIndex = 17;
-            this.checkBoxNWMode.Text = "Nuclear Winter Mode";
-            this.toolTip.SetToolTip(this.checkBoxNWMode, "Renames Fallout76Custom.ini, disables mods (if desired), renames *.dll files (if " +
-        "desired).");
-            this.checkBoxNWMode.UseVisualStyleBackColor = true;
-            this.checkBoxNWMode.CheckedChanged += new System.EventHandler(this.checkBoxNWMode_CheckedChanged);
             // 
             // checkBoxMultipleGameEditionsUsed
             // 
@@ -1145,7 +1164,7 @@
             // checkBoxDenyNTFSWritePermission
             // 
             this.checkBoxDenyNTFSWritePermission.AutoSize = true;
-            this.checkBoxDenyNTFSWritePermission.Location = new System.Drawing.Point(10, 88);
+            this.checkBoxDenyNTFSWritePermission.Location = new System.Drawing.Point(10, 65);
             this.checkBoxDenyNTFSWritePermission.Name = "checkBoxDenyNTFSWritePermission";
             this.checkBoxDenyNTFSWritePermission.Size = new System.Drawing.Size(231, 17);
             this.checkBoxDenyNTFSWritePermission.TabIndex = 19;
@@ -1876,6 +1895,30 @@
             this.checkBoxbApplyCameraNodeAnimations.Text = "bApplyCameraNodeAnimations";
             this.toolTip.SetToolTip(this.checkBoxbApplyCameraNodeAnimations, resources.GetString("checkBoxbApplyCameraNodeAnimations.ToolTip"));
             this.checkBoxbApplyCameraNodeAnimations.UseVisualStyleBackColor = true;
+            // 
+            // labelScreenshotIndex
+            // 
+            this.labelScreenshotIndex.AutoSize = true;
+            this.labelScreenshotIndex.Location = new System.Drawing.Point(7, 20);
+            this.labelScreenshotIndex.Name = "labelScreenshotIndex";
+            this.labelScreenshotIndex.Size = new System.Drawing.Size(92, 13);
+            this.labelScreenshotIndex.TabIndex = 0;
+            this.labelScreenshotIndex.Text = "Screenshot index:";
+            this.toolTip.SetToolTip(this.labelScreenshotIndex, resources.GetString("labelScreenshotIndex.ToolTip"));
+            // 
+            // checkBoxAlternativeINIMode
+            // 
+            this.checkBoxAlternativeINIMode.AutoSize = true;
+            this.checkBoxAlternativeINIMode.Location = new System.Drawing.Point(10, 88);
+            this.checkBoxAlternativeINIMode.Name = "checkBoxAlternativeINIMode";
+            this.checkBoxAlternativeINIMode.Size = new System.Drawing.Size(220, 17);
+            this.checkBoxAlternativeINIMode.TabIndex = 20;
+            this.checkBoxAlternativeINIMode.Text = "Don\'t use Fallout76Custom.ini for tweaks.";
+            this.toolTip.SetToolTip(this.checkBoxAlternativeINIMode, "Puts tweaks into Fallout76.ini and Fallout76Prefs.ini instead.\r\nDoes not affect t" +
+        "he mod manager.\r\nYou may need to remove tweaks from Fallout76Custom.ini manually" +
+        ".");
+            this.checkBoxAlternativeINIMode.UseVisualStyleBackColor = true;
+            this.checkBoxAlternativeINIMode.CheckedChanged += new System.EventHandler(this.checkBoxAlternativeINIMode_CheckedChanged);
             // 
             // timerCheckFiles
             // 
@@ -3528,7 +3571,9 @@
             // tabPageInfo
             // 
             this.tabPageInfo.AutoScroll = true;
+            this.tabPageInfo.Controls.Add(this.linkLabelAttribution);
             this.tabPageInfo.Controls.Add(this.panelUpdate);
+            this.tabPageInfo.Controls.Add(this.labelNWModeActive);
             this.tabPageInfo.Controls.Add(this.pictureBoxSpinnerCheckForUpdates);
             this.tabPageInfo.Controls.Add(this.panel1);
             this.tabPageInfo.Controls.Add(this.labelGameEdition);
@@ -3551,13 +3596,24 @@
             this.tabPageInfo.Text = "Info";
             this.tabPageInfo.UseVisualStyleBackColor = true;
             // 
+            // linkLabelAttribution
+            // 
+            this.linkLabelAttribution.AutoSize = true;
+            this.linkLabelAttribution.Location = new System.Drawing.Point(90, 202);
+            this.linkLabelAttribution.Name = "linkLabelAttribution";
+            this.linkLabelAttribution.Size = new System.Drawing.Size(76, 13);
+            this.linkLabelAttribution.TabIndex = 41;
+            this.linkLabelAttribution.TabStop = true;
+            this.linkLabelAttribution.Text = "Licensed work";
+            this.linkLabelAttribution.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAttribution_LinkClicked);
+            // 
             // panelUpdate
             // 
             this.panelUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelUpdate.Controls.Add(this.labelNewVersion);
             this.panelUpdate.Controls.Add(this.linkLabelManualDownloadPage);
             this.panelUpdate.Controls.Add(this.pictureBoxUpdateButton);
-            this.panelUpdate.Location = new System.Drawing.Point(93, 355);
+            this.panelUpdate.Location = new System.Drawing.Point(93, 357);
             this.panelUpdate.Name = "panelUpdate";
             this.panelUpdate.Size = new System.Drawing.Size(287, 100);
             this.panelUpdate.TabIndex = 39;
@@ -3595,9 +3651,20 @@
             this.pictureBoxUpdateButton.TabStop = false;
             this.pictureBoxUpdateButton.Click += new System.EventHandler(this.pictureBoxUpdateButton_Click);
             // 
+            // labelNWModeActive
+            // 
+            this.labelNWModeActive.AutoSize = true;
+            this.labelNWModeActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNWModeActive.ForeColor = System.Drawing.Color.OrangeRed;
+            this.labelNWModeActive.Location = new System.Drawing.Point(90, 172);
+            this.labelNWModeActive.Name = "labelNWModeActive";
+            this.labelNWModeActive.Size = new System.Drawing.Size(202, 15);
+            this.labelNWModeActive.TabIndex = 40;
+            this.labelNWModeActive.Text = "Nuclear Winter mode is active.";
+            // 
             // pictureBoxSpinnerCheckForUpdates
             // 
-            this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Spinner_24px;
+            this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Spinner_24;
             this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(173, 110);
             this.pictureBoxSpinnerCheckForUpdates.Name = "pictureBoxSpinnerCheckForUpdates";
             this.pictureBoxSpinnerCheckForUpdates.Size = new System.Drawing.Size(24, 24);
@@ -3612,34 +3679,145 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 6);
+            this.panel1.Controls.Add(this.groupBoxNuclearWinterMode);
             this.panel1.Controls.Add(this.groupBoxLocalization);
             this.panel1.Controls.Add(this.groupBoxGameEdition);
             this.panel1.Controls.Add(this.groupBoxLaunchOptions);
             this.panel1.Controls.Add(this.groupBoxGamePaths);
             this.panel1.Controls.Add(this.groupBoxOptions);
             this.panel1.Controls.Add(this.groupBoxBehavior);
-            this.panel1.Location = new System.Drawing.Point(414, 0);
+            this.panel1.Location = new System.Drawing.Point(415, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(438, 464);
+            this.panel1.Size = new System.Drawing.Size(437, 468);
             this.panel1.TabIndex = 36;
+            // 
+            // groupBoxNuclearWinterMode
+            // 
+            this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWAutoDeployMods);
+            this.groupBoxNuclearWinterMode.Controls.Add(this.labelNWmodoptions);
+            this.groupBoxNuclearWinterMode.Controls.Add(this.labelNWdlloptions);
+            this.groupBoxNuclearWinterMode.Controls.Add(this.labelNWinioptions);
+            this.groupBoxNuclearWinterMode.Controls.Add(this.radioButtonNWRemoveLists);
+            this.groupBoxNuclearWinterMode.Controls.Add(this.radioButtonNWRenameINI);
+            this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWAutoDisableMods);
+            this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWRenameDLL);
+            this.groupBoxNuclearWinterMode.Location = new System.Drawing.Point(22, 548);
+            this.groupBoxNuclearWinterMode.Name = "groupBoxNuclearWinterMode";
+            this.groupBoxNuclearWinterMode.Size = new System.Drawing.Size(392, 224);
+            this.groupBoxNuclearWinterMode.TabIndex = 40;
+            this.groupBoxNuclearWinterMode.TabStop = false;
+            this.groupBoxNuclearWinterMode.Text = "Nuclear Winter options";
+            // 
+            // checkBoxNWAutoDeployMods
+            // 
+            this.checkBoxNWAutoDeployMods.AutoSize = true;
+            this.checkBoxNWAutoDeployMods.Location = new System.Drawing.Point(10, 193);
+            this.checkBoxNWAutoDeployMods.Name = "checkBoxNWAutoDeployMods";
+            this.checkBoxNWAutoDeployMods.Size = new System.Drawing.Size(158, 17);
+            this.checkBoxNWAutoDeployMods.TabIndex = 25;
+            this.checkBoxNWAutoDeployMods.Text = "Deploy mods upon disabling";
+            this.checkBoxNWAutoDeployMods.UseVisualStyleBackColor = true;
+            // 
+            // labelNWmodoptions
+            // 
+            this.labelNWmodoptions.AutoSize = true;
+            this.labelNWmodoptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNWmodoptions.Location = new System.Drawing.Point(7, 152);
+            this.labelNWmodoptions.Name = "labelNWmodoptions";
+            this.labelNWmodoptions.Size = new System.Drawing.Size(80, 13);
+            this.labelNWmodoptions.TabIndex = 24;
+            this.labelNWmodoptions.Text = "Mod options:";
+            // 
+            // labelNWdlloptions
+            // 
+            this.labelNWdlloptions.AutoSize = true;
+            this.labelNWdlloptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNWdlloptions.Location = new System.Drawing.Point(7, 99);
+            this.labelNWdlloptions.Name = "labelNWdlloptions";
+            this.labelNWdlloptions.Size = new System.Drawing.Size(78, 13);
+            this.labelNWdlloptions.TabIndex = 23;
+            this.labelNWdlloptions.Text = "*.dll options:";
+            // 
+            // labelNWinioptions
+            // 
+            this.labelNWinioptions.AutoSize = true;
+            this.labelNWinioptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNWinioptions.Location = new System.Drawing.Point(7, 23);
+            this.labelNWinioptions.Name = "labelNWinioptions";
+            this.labelNWinioptions.Size = new System.Drawing.Size(78, 13);
+            this.labelNWinioptions.TabIndex = 22;
+            this.labelNWinioptions.Text = "*.ini options:";
+            // 
+            // radioButtonNWRemoveLists
+            // 
+            this.radioButtonNWRemoveLists.AutoSize = true;
+            this.radioButtonNWRemoveLists.Location = new System.Drawing.Point(10, 64);
+            this.radioButtonNWRemoveLists.Name = "radioButtonNWRemoveLists";
+            this.radioButtonNWRemoveLists.Size = new System.Drawing.Size(184, 17);
+            this.radioButtonNWRemoveLists.TabIndex = 21;
+            this.radioButtonNWRemoveLists.TabStop = true;
+            this.radioButtonNWRemoveLists.Text = "Just remove archive resource lists";
+            this.radioButtonNWRemoveLists.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNWRenameINI
+            // 
+            this.radioButtonNWRenameINI.AutoSize = true;
+            this.radioButtonNWRenameINI.Location = new System.Drawing.Point(10, 41);
+            this.radioButtonNWRenameINI.Name = "radioButtonNWRenameINI";
+            this.radioButtonNWRenameINI.Size = new System.Drawing.Size(159, 17);
+            this.radioButtonNWRenameINI.TabIndex = 20;
+            this.radioButtonNWRenameINI.TabStop = true;
+            this.radioButtonNWRenameINI.Text = "Rename Fallout76Custom.ini";
+            this.radioButtonNWRenameINI.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxNWAutoDisableMods
+            // 
+            this.checkBoxNWAutoDisableMods.AutoSize = true;
+            this.checkBoxNWAutoDisableMods.Location = new System.Drawing.Point(10, 170);
+            this.checkBoxNWAutoDisableMods.Name = "checkBoxNWAutoDisableMods";
+            this.checkBoxNWAutoDisableMods.Size = new System.Drawing.Size(164, 17);
+            this.checkBoxNWAutoDisableMods.TabIndex = 19;
+            this.checkBoxNWAutoDisableMods.Text = "Remove mods upon enabling";
+            this.checkBoxNWAutoDisableMods.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxNWRenameDLL
+            // 
+            this.checkBoxNWRenameDLL.AutoSize = true;
+            this.checkBoxNWRenameDLL.Location = new System.Drawing.Point(10, 117);
+            this.checkBoxNWRenameDLL.Name = "checkBoxNWRenameDLL";
+            this.checkBoxNWRenameDLL.Size = new System.Drawing.Size(140, 17);
+            this.checkBoxNWRenameDLL.TabIndex = 18;
+            this.checkBoxNWRenameDLL.Text = "Rename added *.dll files";
+            this.checkBoxNWRenameDLL.UseVisualStyleBackColor = true;
             // 
             // groupBoxLocalization
             // 
+            this.groupBoxLocalization.Controls.Add(this.buttonRefreshLanguage);
             this.groupBoxLocalization.Controls.Add(this.pictureBoxSpinnerDownloadLanguages);
             this.groupBoxLocalization.Controls.Add(this.labelOutdatedLanguage);
             this.groupBoxLocalization.Controls.Add(this.labelLanguage);
             this.groupBoxLocalization.Controls.Add(this.buttonDownloadLanguages);
             this.groupBoxLocalization.Controls.Add(this.comboBoxLanguage);
-            this.groupBoxLocalization.Location = new System.Drawing.Point(23, 6);
+            this.groupBoxLocalization.Location = new System.Drawing.Point(22, 6);
             this.groupBoxLocalization.Name = "groupBoxLocalization";
             this.groupBoxLocalization.Size = new System.Drawing.Size(392, 111);
             this.groupBoxLocalization.TabIndex = 30;
             this.groupBoxLocalization.TabStop = false;
             this.groupBoxLocalization.Text = "Localization";
             // 
+            // buttonRefreshLanguage
+            // 
+            this.buttonRefreshLanguage.Location = new System.Drawing.Point(295, 77);
+            this.buttonRefreshLanguage.Name = "buttonRefreshLanguage";
+            this.buttonRefreshLanguage.Size = new System.Drawing.Size(90, 23);
+            this.buttonRefreshLanguage.TabIndex = 40;
+            this.buttonRefreshLanguage.Text = "Refresh";
+            this.buttonRefreshLanguage.UseVisualStyleBackColor = true;
+            this.buttonRefreshLanguage.Click += new System.EventHandler(this.buttonRefreshLanguage_Click);
+            // 
             // pictureBoxSpinnerDownloadLanguages
             // 
-            this.pictureBoxSpinnerDownloadLanguages.Image = global::Fo76ini.Properties.Resources.Spinner_24px;
+            this.pictureBoxSpinnerDownloadLanguages.Image = global::Fo76ini.Properties.Resources.Spinner_24;
             this.pictureBoxSpinnerDownloadLanguages.Location = new System.Drawing.Point(68, 48);
             this.pictureBoxSpinnerDownloadLanguages.Name = "pictureBoxSpinnerDownloadLanguages";
             this.pictureBoxSpinnerDownloadLanguages.Size = new System.Drawing.Size(24, 24);
@@ -3701,7 +3879,7 @@
             this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionBethesdaNetPTS);
             this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionSteam);
             this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionBethesdaNet);
-            this.groupBoxGameEdition.Location = new System.Drawing.Point(23, 123);
+            this.groupBoxGameEdition.Location = new System.Drawing.Point(22, 123);
             this.groupBoxGameEdition.Name = "groupBoxGameEdition";
             this.groupBoxGameEdition.Size = new System.Drawing.Size(392, 144);
             this.groupBoxGameEdition.TabIndex = 27;
@@ -3711,7 +3889,7 @@
             // pictureBoxMSStore
             // 
             this.pictureBoxMSStore.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.msstore_24px;
+            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.msstore_24;
             this.pictureBoxMSStore.Location = new System.Drawing.Point(11, 109);
             this.pictureBoxMSStore.Name = "pictureBoxMSStore";
             this.pictureBoxMSStore.Size = new System.Drawing.Size(24, 24);
@@ -3731,7 +3909,7 @@
             // pictureBoxBethesdaNetPTS
             // 
             this.pictureBoxBethesdaNetPTS.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNetPTS.Image = global::Fo76ini.Properties.Resources.bethesda_24px;
+            this.pictureBoxBethesdaNetPTS.Image = global::Fo76ini.Properties.Resources.bethesda_24;
             this.pictureBoxBethesdaNetPTS.Location = new System.Drawing.Point(11, 49);
             this.pictureBoxBethesdaNetPTS.Name = "pictureBoxBethesdaNetPTS";
             this.pictureBoxBethesdaNetPTS.Size = new System.Drawing.Size(24, 24);
@@ -3741,7 +3919,7 @@
             // pictureBoxBethesdaNet
             // 
             this.pictureBoxBethesdaNet.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNet.Image = global::Fo76ini.Properties.Resources.bethesda_24px;
+            this.pictureBoxBethesdaNet.Image = global::Fo76ini.Properties.Resources.bethesda_24;
             this.pictureBoxBethesdaNet.Location = new System.Drawing.Point(11, 19);
             this.pictureBoxBethesdaNet.Name = "pictureBoxBethesdaNet";
             this.pictureBoxBethesdaNet.Size = new System.Drawing.Size(24, 24);
@@ -3798,7 +3976,7 @@
             this.groupBoxLaunchOptions.Controls.Add(this.labelLaunchOptionTip);
             this.groupBoxLaunchOptions.Controls.Add(this.radioButtonLaunchViaExecutable);
             this.groupBoxLaunchOptions.Controls.Add(this.radioButtonLaunchViaLink);
-            this.groupBoxLaunchOptions.Location = new System.Drawing.Point(23, 324);
+            this.groupBoxLaunchOptions.Location = new System.Drawing.Point(22, 324);
             this.groupBoxLaunchOptions.Name = "groupBoxLaunchOptions";
             this.groupBoxLaunchOptions.Size = new System.Drawing.Size(392, 93);
             this.groupBoxLaunchOptions.TabIndex = 34;
@@ -3855,7 +4033,7 @@
             this.groupBoxGamePaths.Controls.Add(this.labelGamePath);
             this.groupBoxGamePaths.Controls.Add(this.textBoxGamePath);
             this.groupBoxGamePaths.Controls.Add(this.buttonPickGamePath);
-            this.groupBoxGamePaths.Location = new System.Drawing.Point(23, 273);
+            this.groupBoxGamePaths.Location = new System.Drawing.Point(22, 273);
             this.groupBoxGamePaths.Name = "groupBoxGamePaths";
             this.groupBoxGamePaths.Size = new System.Drawing.Size(392, 45);
             this.groupBoxGamePaths.TabIndex = 33;
@@ -3894,30 +4072,43 @@
             // 
             // groupBoxOptions
             // 
+            this.groupBoxOptions.Controls.Add(this.checkBoxAlternativeINIMode);
             this.groupBoxOptions.Controls.Add(this.checkBoxDenyNTFSWritePermission);
             this.groupBoxOptions.Controls.Add(this.checkBoxMultipleGameEditionsUsed);
-            this.groupBoxOptions.Controls.Add(this.checkBoxNWMode);
             this.groupBoxOptions.Controls.Add(this.checkBoxReadOnly);
-            this.groupBoxOptions.Location = new System.Drawing.Point(23, 423);
+            this.groupBoxOptions.Location = new System.Drawing.Point(22, 423);
             this.groupBoxOptions.Name = "groupBoxOptions";
-            this.groupBoxOptions.Size = new System.Drawing.Size(392, 116);
+            this.groupBoxOptions.Size = new System.Drawing.Size(392, 119);
             this.groupBoxOptions.TabIndex = 28;
             this.groupBoxOptions.TabStop = false;
             this.groupBoxOptions.Text = "Options";
             // 
             // groupBoxBehavior
             // 
+            this.groupBoxBehavior.Controls.Add(this.checkBoxPlayNotificationSound);
             this.groupBoxBehavior.Controls.Add(this.checkBoxIgnoreUpdates);
             this.groupBoxBehavior.Controls.Add(this.checkBoxOpenManageModsOnLaunch);
             this.groupBoxBehavior.Controls.Add(this.checkBoxQuitOnGameLaunch);
             this.groupBoxBehavior.Controls.Add(this.checkBoxSkipBackupQuestion);
             this.groupBoxBehavior.Controls.Add(this.checkBoxAutoApply);
-            this.groupBoxBehavior.Location = new System.Drawing.Point(23, 545);
+            this.groupBoxBehavior.Location = new System.Drawing.Point(22, 778);
             this.groupBoxBehavior.Name = "groupBoxBehavior";
-            this.groupBoxBehavior.Size = new System.Drawing.Size(392, 132);
+            this.groupBoxBehavior.Size = new System.Drawing.Size(392, 168);
             this.groupBoxBehavior.TabIndex = 31;
             this.groupBoxBehavior.TabStop = false;
             this.groupBoxBehavior.Text = "Behavior";
+            // 
+            // checkBoxPlayNotificationSound
+            // 
+            this.checkBoxPlayNotificationSound.AutoSize = true;
+            this.checkBoxPlayNotificationSound.Checked = true;
+            this.checkBoxPlayNotificationSound.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxPlayNotificationSound.Location = new System.Drawing.Point(9, 135);
+            this.checkBoxPlayNotificationSound.Name = "checkBoxPlayNotificationSound";
+            this.checkBoxPlayNotificationSound.Size = new System.Drawing.Size(132, 17);
+            this.checkBoxPlayNotificationSound.TabIndex = 25;
+            this.checkBoxPlayNotificationSound.Text = "Play notification sound";
+            this.checkBoxPlayNotificationSound.UseVisualStyleBackColor = true;
             // 
             // checkBoxIgnoreUpdates
             // 
@@ -3947,7 +4138,7 @@
             this.labelGameEdition.BackColor = System.Drawing.Color.Black;
             this.labelGameEdition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGameEdition.ForeColor = System.Drawing.Color.White;
-            this.labelGameEdition.Location = new System.Drawing.Point(0, 422);
+            this.labelGameEdition.Location = new System.Drawing.Point(0, 424);
             this.labelGameEdition.Name = "labelGameEdition";
             this.labelGameEdition.Size = new System.Drawing.Size(73, 36);
             this.labelGameEdition.TabIndex = 22;
@@ -3958,8 +4149,8 @@
             // 
             this.pictureBoxGameEdition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxGameEdition.BackColor = System.Drawing.Color.Black;
-            this.pictureBoxGameEdition.Image = global::Fo76ini.Properties.Resources.question_mark;
-            this.pictureBoxGameEdition.Location = new System.Drawing.Point(6, 355);
+            this.pictureBoxGameEdition.Image = global::Fo76ini.Properties.Resources.help_128;
+            this.pictureBoxGameEdition.Location = new System.Drawing.Point(6, 357);
             this.pictureBoxGameEdition.Name = "pictureBoxGameEdition";
             this.pictureBoxGameEdition.Size = new System.Drawing.Size(60, 60);
             this.pictureBoxGameEdition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -3969,7 +4160,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.Image = global::Fo76ini.Properties.Resources.icon;
+            this.pictureBox1.Image = global::Fo76ini.Properties.Resources.icon_60;
             this.pictureBox1.Location = new System.Drawing.Point(6, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(60, 60);
@@ -3984,7 +4175,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Black;
             this.pictureBox2.Location = new System.Drawing.Point(-4, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(77, 758);
+            this.pictureBox2.Size = new System.Drawing.Size(77, 657);
             this.pictureBox2.TabIndex = 18;
             this.pictureBox2.TabStop = false;
             // 
@@ -4548,7 +4739,7 @@
             this.pictureBoxGalleryLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxGalleryLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200px;
+            this.pictureBoxGalleryLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
             this.pictureBoxGalleryLoadingGIF.Location = new System.Drawing.Point(7, 21);
             this.pictureBoxGalleryLoadingGIF.Name = "pictureBoxGalleryLoadingGIF";
             this.pictureBoxGalleryLoadingGIF.Size = new System.Drawing.Size(530, 424);
@@ -4586,6 +4777,10 @@
             // 
             this.groupBoxScreenshotOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxScreenshotOptions.Controls.Add(this.buttonGalleryDeleteThumbnails);
+            this.groupBoxScreenshotOptions.Controls.Add(this.checkBoxGallerySearchRecursively);
+            this.groupBoxScreenshotOptions.Controls.Add(this.textBoxGalleryPaths);
+            this.groupBoxScreenshotOptions.Controls.Add(this.label3);
             this.groupBoxScreenshotOptions.Controls.Add(this.sliderGalleryThumbnailSize);
             this.groupBoxScreenshotOptions.Controls.Add(this.labelGalleryThumbnailSize);
             this.groupBoxScreenshotOptions.Controls.Add(this.buttonRefreshGallery);
@@ -4597,6 +4792,50 @@
             this.groupBoxScreenshotOptions.TabIndex = 0;
             this.groupBoxScreenshotOptions.TabStop = false;
             this.groupBoxScreenshotOptions.Text = "Options";
+            // 
+            // buttonGalleryDeleteThumbnails
+            // 
+            this.buttonGalleryDeleteThumbnails.Location = new System.Drawing.Point(10, 163);
+            this.buttonGalleryDeleteThumbnails.Name = "buttonGalleryDeleteThumbnails";
+            this.buttonGalleryDeleteThumbnails.Size = new System.Drawing.Size(272, 23);
+            this.buttonGalleryDeleteThumbnails.TabIndex = 66;
+            this.buttonGalleryDeleteThumbnails.Text = "Delete thumbnails";
+            this.buttonGalleryDeleteThumbnails.UseVisualStyleBackColor = true;
+            this.buttonGalleryDeleteThumbnails.Click += new System.EventHandler(this.buttonGalleryDeleteThumbnails_Click);
+            // 
+            // checkBoxGallerySearchRecursively
+            // 
+            this.checkBoxGallerySearchRecursively.AutoSize = true;
+            this.checkBoxGallerySearchRecursively.Location = new System.Drawing.Point(10, 428);
+            this.checkBoxGallerySearchRecursively.Name = "checkBoxGallerySearchRecursively";
+            this.checkBoxGallerySearchRecursively.Size = new System.Drawing.Size(164, 17);
+            this.checkBoxGallerySearchRecursively.TabIndex = 65;
+            this.checkBoxGallerySearchRecursively.Text = "Search subfolders recursively";
+            this.checkBoxGallerySearchRecursively.UseVisualStyleBackColor = true;
+            this.checkBoxGallerySearchRecursively.CheckedChanged += new System.EventHandler(this.checkBoxGallerySearchRecursively_CheckedChanged);
+            // 
+            // textBoxGalleryPaths
+            // 
+            this.textBoxGalleryPaths.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxGalleryPaths.Location = new System.Drawing.Point(10, 227);
+            this.textBoxGalleryPaths.Multiline = true;
+            this.textBoxGalleryPaths.Name = "textBoxGalleryPaths";
+            this.textBoxGalleryPaths.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxGalleryPaths.Size = new System.Drawing.Size(272, 195);
+            this.textBoxGalleryPaths.TabIndex = 64;
+            this.textBoxGalleryPaths.WordWrap = false;
+            this.textBoxGalleryPaths.TextChanged += new System.EventHandler(this.textBoxGalleryPaths_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 211);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(178, 13);
+            this.label3.TabIndex = 63;
+            this.label3.Text = "Additonal paths (newline separated):";
             // 
             // sliderGalleryThumbnailSize
             // 
@@ -4649,16 +4888,6 @@
             this.numScreenshotIndex.Name = "numScreenshotIndex";
             this.numScreenshotIndex.Size = new System.Drawing.Size(135, 20);
             this.numScreenshotIndex.TabIndex = 3;
-            // 
-            // labelScreenshotIndex
-            // 
-            this.labelScreenshotIndex.AutoSize = true;
-            this.labelScreenshotIndex.Location = new System.Drawing.Point(7, 20);
-            this.labelScreenshotIndex.Name = "labelScreenshotIndex";
-            this.labelScreenshotIndex.Size = new System.Drawing.Size(92, 13);
-            this.labelScreenshotIndex.TabIndex = 0;
-            this.labelScreenshotIndex.Text = "Screenshot index:";
-            this.toolTip.SetToolTip(this.labelScreenshotIndex, resources.GetString("labelScreenshotIndex.ToolTip"));
             // 
             // tabPageCustom
             // 
@@ -4726,6 +4955,7 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonApply,
+            this.toolStripButtonToggleNuclearWinterMode,
             this.toolStripSplitButtonLaunchGame,
             this.toolStripSeparator1,
             this.toolStripButtonManageMods,
@@ -4753,13 +4983,25 @@
             this.toolStripButtonApply.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonApply.Click += new System.EventHandler(this.toolStripButtonApply_Click);
             // 
+            // toolStripButtonToggleNuclearWinterMode
+            // 
+            this.toolStripButtonToggleNuclearWinterMode.Image = global::Fo76ini.Properties.Resources.fire;
+            this.toolStripButtonToggleNuclearWinterMode.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonToggleNuclearWinterMode.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonToggleNuclearWinterMode.Name = "toolStripButtonToggleNuclearWinterMode";
+            this.toolStripButtonToggleNuclearWinterMode.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.toolStripButtonToggleNuclearWinterMode.Size = new System.Drawing.Size(110, 43);
+            this.toolStripButtonToggleNuclearWinterMode.Text = "Nuclear Winter";
+            this.toolStripButtonToggleNuclearWinterMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonToggleNuclearWinterMode.Click += new System.EventHandler(this.toolStripButtonToggleNuclearWinterMode_Click);
+            // 
             // toolStripSplitButtonLaunchGame
             // 
             this.toolStripSplitButtonLaunchGame.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.launchViaSteamToolStripMenuItem,
             this.launchViaBethesdanetToolStripMenuItem,
             this.launchViaBethesdanetPTSToolStripMenuItem});
-            this.toolStripSplitButtonLaunchGame.Image = global::Fo76ini.Properties.Resources.play_24;
+            this.toolStripSplitButtonLaunchGame.Image = global::Fo76ini.Properties.Resources.play;
             this.toolStripSplitButtonLaunchGame.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripSplitButtonLaunchGame.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButtonLaunchGame.Name = "toolStripSplitButtonLaunchGame";
@@ -4799,7 +5041,7 @@
             // 
             // toolStripButtonManageMods
             // 
-            this.toolStripButtonManageMods.Image = global::Fo76ini.Properties.Resources.pencil;
+            this.toolStripButtonManageMods.Image = global::Fo76ini.Properties.Resources.edit_24;
             this.toolStripButtonManageMods.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonManageMods.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonManageMods.Name = "toolStripButtonManageMods";
@@ -4822,7 +5064,7 @@
             this.checkForUpdatesToolStripMenuItem,
             this.downloadUpdateLanguageFilesToolStripMenuItem,
             this.showUpdaterlogtxtToolStripMenuItem});
-            this.toolStripSplitButtonUpdate.Image = global::Fo76ini.Properties.Resources.available_updates_24;
+            this.toolStripSplitButtonUpdate.Image = global::Fo76ini.Properties.Resources.available_updates;
             this.toolStripSplitButtonUpdate.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripSplitButtonUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButtonUpdate.Name = "toolStripSplitButtonUpdate";
@@ -4876,7 +5118,7 @@
             this.editFallout76iniToolStripMenuItem,
             this.editFallout76PrefsiniToolStripMenuItem,
             this.editFallout76CustominiToolStripMenuItem});
-            this.toolStripDropDownButtonExplore.Image = global::Fo76ini.Properties.Resources.folder_open;
+            this.toolStripDropDownButtonExplore.Image = global::Fo76ini.Properties.Resources.folder_24;
             this.toolStripDropDownButtonExplore.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripDropDownButtonExplore.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonExplore.Name = "toolStripDropDownButtonExplore";
@@ -5000,11 +5242,94 @@
             // 
             this.backgroundWorkerDownloadLanguages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDownloadLanguages_DoWork);
             // 
+            // contextMenuStripGallery
+            // 
+            this.contextMenuStripGallery.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.openFolderToolStripMenuItem,
+            this.toolStripSeparator7,
+            this.cutToolStripMenuItem,
+            this.copyToolStripMenuItem,
+            this.toolStripSeparator8,
+            this.deleteToolStripMenuItem});
+            this.contextMenuStripGallery.Name = "contextMenuStrip1";
+            this.contextMenuStripGallery.Size = new System.Drawing.Size(138, 126);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // openFolderToolStripMenuItem
+            // 
+            this.openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
+            this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.openFolderToolStripMenuItem.Text = "Open folder";
+            this.openFolderToolStripMenuItem.Click += new System.EventHandler(this.openFolderToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(134, 6);
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.cutToolStripMenuItem.Text = "Cut";
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(134, 6);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // backgroundWorkerEnableNWMode
+            // 
+            this.backgroundWorkerEnableNWMode.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEnableNWMode_DoWork);
+            // 
+            // backgroundWorkerDisableNWMode
+            // 
+            this.backgroundWorkerDisableNWMode.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDisableNWMode_DoWork);
+            // 
+            // pictureBoxLoadingGIF
+            // 
+            this.pictureBoxLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxLoadingGIF.BackColor = System.Drawing.SystemColors.Window;
+            this.pictureBoxLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
+            this.pictureBoxLoadingGIF.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxLoadingGIF.Name = "pictureBoxLoadingGIF";
+            this.pictureBoxLoadingGIF.Size = new System.Drawing.Size(16, 563);
+            this.pictureBoxLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxLoadingGIF.TabIndex = 15;
+            this.pictureBoxLoadingGIF.TabStop = false;
+            this.pictureBoxLoadingGIF.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.pictureBoxLoadingGIF);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -5129,6 +5454,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdateButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.groupBoxNuclearWinterMode.ResumeLayout(false);
+            this.groupBoxNuclearWinterMode.PerformLayout();
             this.groupBoxLocalization.ResumeLayout(false);
             this.groupBoxLocalization.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).EndInit();
@@ -5180,6 +5507,8 @@
             this.tabPageCustom.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.contextMenuStripGallery.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5346,7 +5675,6 @@
         private System.Windows.Forms.GroupBox groupBoxOptions;
         private System.Windows.Forms.CheckBox checkBoxDenyNTFSWritePermission;
         private System.Windows.Forms.CheckBox checkBoxMultipleGameEditionsUsed;
-        private System.Windows.Forms.CheckBox checkBoxNWMode;
         private System.Windows.Forms.CheckBox checkBoxReadOnly;
         private System.Windows.Forms.GroupBox groupBoxBehavior;
         private System.Windows.Forms.CheckBox checkBoxIgnoreUpdates;
@@ -5537,6 +5865,36 @@
         private System.Windows.Forms.ToolStripMenuItem launchViaSteamToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem launchViaBethesdanetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem launchViaBethesdanetPTSToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripGallery;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openFolderToolStripMenuItem;
+        private System.Windows.Forms.Button buttonRefreshLanguage;
+        private System.Windows.Forms.CheckBox checkBoxAlternativeINIMode;
+        private System.Windows.Forms.TextBox textBoxGalleryPaths;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBoxGallerySearchRecursively;
+        private System.Windows.Forms.Button buttonGalleryDeleteThumbnails;
+        private System.Windows.Forms.ToolStripButton toolStripButtonToggleNuclearWinterMode;
+        private System.Windows.Forms.GroupBox groupBoxNuclearWinterMode;
+        private System.Windows.Forms.CheckBox checkBoxNWAutoDeployMods;
+        private System.Windows.Forms.Label labelNWmodoptions;
+        private System.Windows.Forms.Label labelNWdlloptions;
+        private System.Windows.Forms.Label labelNWinioptions;
+        private System.Windows.Forms.RadioButton radioButtonNWRemoveLists;
+        private System.Windows.Forms.RadioButton radioButtonNWRenameINI;
+        private System.Windows.Forms.CheckBox checkBoxNWAutoDisableMods;
+        private System.Windows.Forms.CheckBox checkBoxNWRenameDLL;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerEnableNWMode;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerDisableNWMode;
+        private System.Windows.Forms.Label labelNWModeActive;
+        private System.Windows.Forms.PictureBox pictureBoxLoadingGIF;
+        private System.Windows.Forms.LinkLabel linkLabelAttribution;
+        private System.Windows.Forms.CheckBox checkBoxPlayNotificationSound;
     }
 }
 

@@ -117,6 +117,7 @@
             this.buttonModDetailsOK = new System.Windows.Forms.Button();
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
             this.groupBoxModsBehavior = new System.Windows.Forms.GroupBox();
+            this.checkBoxModsWriteSResourceDataDirsFinal = new System.Windows.Forms.CheckBox();
             this.checkBoxFreezeBundledArchives = new System.Windows.Forms.CheckBox();
             this.checkBoxModsUseHardlinks = new System.Windows.Forms.CheckBox();
             this.checkBoxAddArchivesAsBundled = new System.Windows.Forms.CheckBox();
@@ -422,7 +423,7 @@
             this.pictureBoxModsLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxModsLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200px;
+            this.pictureBoxModsLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
             this.pictureBoxModsLoadingGIF.Location = new System.Drawing.Point(39, 0);
             this.pictureBoxModsLoadingGIF.Name = "pictureBoxModsLoadingGIF";
             this.pictureBoxModsLoadingGIF.Size = new System.Drawing.Size(813, 544);
@@ -437,7 +438,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxCollapseDetails.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pictureBoxCollapseDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxCollapseDetails.Image = global::Fo76ini.Properties.Resources.arrow_right_black;
+            this.pictureBoxCollapseDetails.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCollapseDetails.Image")));
             this.pictureBoxCollapseDetails.Location = new System.Drawing.Point(476, 0);
             this.pictureBoxCollapseDetails.Name = "pictureBoxCollapseDetails";
             this.pictureBoxCollapseDetails.Size = new System.Drawing.Size(24, 544);
@@ -792,7 +793,7 @@
             // 
             this.toolStripButtonAddMod.AutoSize = false;
             this.toolStripButtonAddMod.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddMod.Image = global::Fo76ini.Properties.Resources.plus;
+            this.toolStripButtonAddMod.Image = global::Fo76ini.Properties.Resources.plus_24;
             this.toolStripButtonAddMod.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonAddMod.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAddMod.Name = "toolStripButtonAddMod";
@@ -804,7 +805,7 @@
             // 
             this.toolStripButtonAddModFrozen.AutoSize = false;
             this.toolStripButtonAddModFrozen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddModFrozen.Image = global::Fo76ini.Properties.Resources.frozen_plus;
+            this.toolStripButtonAddModFrozen.Image = global::Fo76ini.Properties.Resources.add_snowflake_24;
             this.toolStripButtonAddModFrozen.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonAddModFrozen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAddModFrozen.Name = "toolStripButtonAddModFrozen";
@@ -816,7 +817,7 @@
             // 
             this.toolStripButtonAddModFolder.AutoSize = false;
             this.toolStripButtonAddModFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddModFolder.Image = global::Fo76ini.Properties.Resources.folder_plus;
+            this.toolStripButtonAddModFolder.Image = global::Fo76ini.Properties.Resources.add_folder_24;
             this.toolStripButtonAddModFolder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonAddModFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAddModFolder.Name = "toolStripButtonAddModFolder";
@@ -834,7 +835,7 @@
             // 
             this.toolStripButtonCheckAll.AutoSize = false;
             this.toolStripButtonCheckAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonCheckAll.Image = global::Fo76ini.Properties.Resources.checkbox_checked;
+            this.toolStripButtonCheckAll.Image = global::Fo76ini.Properties.Resources.checked_checkbox_24;
             this.toolStripButtonCheckAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonCheckAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCheckAll.Name = "toolStripButtonCheckAll";
@@ -852,7 +853,7 @@
             // 
             this.toolStripButtonMoveUp.AutoSize = false;
             this.toolStripButtonMoveUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonMoveUp.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonMoveUp.Image")));
+            this.toolStripButtonMoveUp.Image = global::Fo76ini.Properties.Resources.arrow_up;
             this.toolStripButtonMoveUp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonMoveUp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonMoveUp.Name = "toolStripButtonMoveUp";
@@ -882,7 +883,7 @@
             // 
             this.toolStripButtonModEdit.AutoSize = false;
             this.toolStripButtonModEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonModEdit.Image = global::Fo76ini.Properties.Resources.pencil;
+            this.toolStripButtonModEdit.Image = global::Fo76ini.Properties.Resources.edit_24;
             this.toolStripButtonModEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonModEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonModEdit.Name = "toolStripButtonModEdit";
@@ -894,7 +895,7 @@
             // 
             this.toolStripButtonUnfreeze.AutoSize = false;
             this.toolStripButtonUnfreeze.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonUnfreeze.Image = global::Fo76ini.Properties.Resources.defrost;
+            this.toolStripButtonUnfreeze.Image = global::Fo76ini.Properties.Resources.thaw_24;
             this.toolStripButtonUnfreeze.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonUnfreeze.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonUnfreeze.Name = "toolStripButtonUnfreeze";
@@ -906,7 +907,7 @@
             // 
             this.toolStripButtonModOpenFolder.AutoSize = false;
             this.toolStripButtonModOpenFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonModOpenFolder.Image = global::Fo76ini.Properties.Resources.folder_open;
+            this.toolStripButtonModOpenFolder.Image = global::Fo76ini.Properties.Resources.folder_24;
             this.toolStripButtonModOpenFolder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonModOpenFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonModOpenFolder.Name = "toolStripButtonModOpenFolder";
@@ -924,7 +925,7 @@
             // 
             this.toolStripButtonDeleteMod.AutoSize = false;
             this.toolStripButtonDeleteMod.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDeleteMod.Image = global::Fo76ini.Properties.Resources.bin;
+            this.toolStripButtonDeleteMod.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDeleteMod.Image")));
             this.toolStripButtonDeleteMod.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonDeleteMod.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonDeleteMod.Name = "toolStripButtonDeleteMod";
@@ -1068,20 +1069,32 @@
             // 
             this.groupBoxModsBehavior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxModsBehavior.Controls.Add(this.checkBoxModsWriteSResourceDataDirsFinal);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxFreezeBundledArchives);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxModsUseHardlinks);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
             this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 6);
             this.groupBoxModsBehavior.Name = "groupBoxModsBehavior";
-            this.groupBoxModsBehavior.Size = new System.Drawing.Size(1289, 96);
+            this.groupBoxModsBehavior.Size = new System.Drawing.Size(840, 123);
             this.groupBoxModsBehavior.TabIndex = 60;
             this.groupBoxModsBehavior.TabStop = false;
             this.groupBoxModsBehavior.Text = "Behavior";
             // 
+            // checkBoxModsWriteSResourceDataDirsFinal
+            // 
+            this.checkBoxModsWriteSResourceDataDirsFinal.AutoSize = true;
+            this.checkBoxModsWriteSResourceDataDirsFinal.Location = new System.Drawing.Point(6, 100);
+            this.checkBoxModsWriteSResourceDataDirsFinal.Name = "checkBoxModsWriteSResourceDataDirsFinal";
+            this.checkBoxModsWriteSResourceDataDirsFinal.Size = new System.Drawing.Size(274, 17);
+            this.checkBoxModsWriteSResourceDataDirsFinal.TabIndex = 3;
+            this.checkBoxModsWriteSResourceDataDirsFinal.Text = "Write sResourceDataDirsFinal to Fallout76Custom.ini";
+            this.checkBoxModsWriteSResourceDataDirsFinal.UseVisualStyleBackColor = true;
+            this.checkBoxModsWriteSResourceDataDirsFinal.CheckedChanged += new System.EventHandler(this.checkBoxModsWriteSResourceDataDirsFinal_CheckedChanged);
+            // 
             // checkBoxFreezeBundledArchives
             // 
             this.checkBoxFreezeBundledArchives.AutoSize = true;
-            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(6, 65);
+            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(6, 42);
             this.checkBoxFreezeBundledArchives.Name = "checkBoxFreezeBundledArchives";
             this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(211, 17);
             this.checkBoxFreezeBundledArchives.TabIndex = 2;
@@ -1094,7 +1107,7 @@
             // checkBoxModsUseHardlinks
             // 
             this.checkBoxModsUseHardlinks.AutoSize = true;
-            this.checkBoxModsUseHardlinks.Location = new System.Drawing.Point(6, 42);
+            this.checkBoxModsUseHardlinks.Location = new System.Drawing.Point(6, 19);
             this.checkBoxModsUseHardlinks.Name = "checkBoxModsUseHardlinks";
             this.checkBoxModsUseHardlinks.Size = new System.Drawing.Size(331, 17);
             this.checkBoxModsUseHardlinks.TabIndex = 1;
@@ -1106,7 +1119,7 @@
             // checkBoxAddArchivesAsBundled
             // 
             this.checkBoxAddArchivesAsBundled.AutoSize = true;
-            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(6, 77);
             this.checkBoxAddArchivesAsBundled.Name = "checkBoxAddArchivesAsBundled";
             this.checkBoxAddArchivesAsBundled.Size = new System.Drawing.Size(167, 17);
             this.checkBoxAddArchivesAsBundled.TabIndex = 0;
@@ -1126,9 +1139,9 @@
             this.groupBoxLists.Controls.Add(this.labelsResourceIndexFileList);
             this.groupBoxLists.Controls.Add(this.textBoxsResourceArchive2List);
             this.groupBoxLists.Controls.Add(this.labelsResourceArchive2List);
-            this.groupBoxLists.Location = new System.Drawing.Point(6, 108);
+            this.groupBoxLists.Location = new System.Drawing.Point(6, 135);
             this.groupBoxLists.Name = "groupBoxLists";
-            this.groupBoxLists.Size = new System.Drawing.Size(1289, 430);
+            this.groupBoxLists.Size = new System.Drawing.Size(840, 403);
             this.groupBoxLists.TabIndex = 59;
             this.groupBoxLists.TabStop = false;
             this.groupBoxLists.Text = "Lists";
@@ -1136,7 +1149,7 @@
             // buttonModsResetTextboxes
             // 
             this.buttonModsResetTextboxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModsResetTextboxes.Location = new System.Drawing.Point(1052, 401);
+            this.buttonModsResetTextboxes.Location = new System.Drawing.Point(603, 374);
             this.buttonModsResetTextboxes.Name = "buttonModsResetTextboxes";
             this.buttonModsResetTextboxes.Size = new System.Drawing.Size(98, 23);
             this.buttonModsResetTextboxes.TabIndex = 60;
@@ -1147,7 +1160,7 @@
             // buttonModsApplyTextBoxes
             // 
             this.buttonModsApplyTextBoxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModsApplyTextBoxes.Location = new System.Drawing.Point(1156, 401);
+            this.buttonModsApplyTextBoxes.Location = new System.Drawing.Point(707, 374);
             this.buttonModsApplyTextBoxes.Name = "buttonModsApplyTextBoxes";
             this.buttonModsApplyTextBoxes.Size = new System.Drawing.Size(127, 23);
             this.buttonModsApplyTextBoxes.TabIndex = 59;
@@ -1163,13 +1176,13 @@
             this.textBoxsResourceIndexFileList.Location = new System.Drawing.Point(210, 37);
             this.textBoxsResourceIndexFileList.Multiline = true;
             this.textBoxsResourceIndexFileList.Name = "textBoxsResourceIndexFileList";
-            this.textBoxsResourceIndexFileList.Size = new System.Drawing.Size(1073, 358);
+            this.textBoxsResourceIndexFileList.Size = new System.Drawing.Size(624, 331);
             this.textBoxsResourceIndexFileList.TabIndex = 54;
             // 
             // buttonModsCleanLists
             // 
             this.buttonModsCleanLists.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModsCleanLists.Location = new System.Drawing.Point(6, 401);
+            this.buttonModsCleanLists.Location = new System.Drawing.Point(6, 374);
             this.buttonModsCleanLists.Name = "buttonModsCleanLists";
             this.buttonModsCleanLists.Size = new System.Drawing.Size(98, 23);
             this.buttonModsCleanLists.TabIndex = 58;
@@ -1193,7 +1206,7 @@
             this.textBoxsResourceArchive2List.Location = new System.Drawing.Point(6, 37);
             this.textBoxsResourceArchive2List.Multiline = true;
             this.textBoxsResourceArchive2List.Name = "textBoxsResourceArchive2List";
-            this.textBoxsResourceArchive2List.Size = new System.Drawing.Size(198, 358);
+            this.textBoxsResourceArchive2List.Size = new System.Drawing.Size(198, 331);
             this.textBoxsResourceArchive2List.TabIndex = 57;
             // 
             // labelsResourceArchive2List
@@ -1344,7 +1357,7 @@
             // pictureBoxNMProfilePicture
             // 
             this.pictureBoxNMProfilePicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxNMProfilePicture.Image = global::Fo76ini.Properties.Resources.user_white;
+            this.pictureBoxNMProfilePicture.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNMProfilePicture.Image")));
             this.pictureBoxNMProfilePicture.Location = new System.Drawing.Point(20, 20);
             this.pictureBoxNMProfilePicture.Name = "pictureBoxNMProfilePicture";
             this.pictureBoxNMProfilePicture.Size = new System.Drawing.Size(128, 128);
@@ -1697,5 +1710,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerRetrieveProfileInfo;
         private System.Windows.Forms.CheckBox checkBoxShowAPIKey;
         private System.Windows.Forms.Button buttonNMDeleteModInfo;
+        private System.Windows.Forms.CheckBox checkBoxModsWriteSResourceDataDirsFinal;
     }
 }

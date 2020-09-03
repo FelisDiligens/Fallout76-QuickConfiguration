@@ -21,6 +21,8 @@ namespace Fo76ini
         private static List<Translation> translations = new List<Translation>();
         private static DropDown comboBoxTranslations;
 
+        public static List<LocalizedForm> LocalizedForms = new List<LocalizedForm>();
+
         public static String locale = "en-US";
 
         static Localization()
@@ -46,6 +48,7 @@ namespace Fo76ini
                 Directory.CreateDirectory(languageFolder);
 
             // Look into the folder and add all language files to the dropdown menu:
+            Localization.translations.Clear();
             Localization.comboBoxTranslations.Clear();
             foreach (string filePath in Directory.GetFiles(languageFolder))
             {
@@ -55,6 +58,7 @@ namespace Fo76ini
                     translation.Load(filePath);
                     Localization.translations.Add(translation);
                     Localization.comboBoxTranslations.Add(translation.Name);
+                    //Localization.comboBoxTranslations.Add($"{translation.Name} [{translation.Version}]");
                 }
             }
 
@@ -66,20 +70,19 @@ namespace Fo76ini
             Localization.locale = selectedLanguageISO;
         }
 
-        public static void GenerateTemplate(Translation translation, List<Form> forms, List<ToolTip> toolTips)
+        public static void GenerateTemplate(Translation translation)
         {
-            translation.Version = Shared.VERSION;
-            translation.Save(translation.ISO + ".template.xml", forms, toolTips);
+            translation.Save(translation.ISO + ".template.xml", Shared.VERSION);
         }
 
-        public static void GenerateTemplate(List<Form> forms, List<ToolTip> toolTips)
+        public static void GenerateTemplate()
         {
             Translation english = new Translation();
             english.Name = "English (USA)";
             english.ISO = "en-US";
             english.Author = "datasnake";
             english.Version = Shared.VERSION;
-            english.Save("en-US.xml", forms, toolTips);
+            english.Save("en-US.xml", Shared.VERSION);
         }
 
         public static Translation GetTranslation()
@@ -105,35 +108,6 @@ namespace Fo76ini
                 index++;
             }
             return -1;
-        }
-
-        public static void ChangeLanguage(Translation translation, Form1 form1, FormMods formMods)
-        {
-            // Apply translation to forms:
-            translation.Apply(form1, form1.toolTip);
-            translation.Apply(formMods, formMods.toolTip);
-
-            // Set labels and stuff:
-            // TODO: Move this back to Form1
-            form1.labelOutdatedLanguage.Visible = translation.IsOutdated();
-
-            form1.labelTranslationAuthor.Visible = false;
-            form1.labelTranslationBy.Visible = false;
-            if (translation.Author != "")
-            {
-                form1.labelTranslationAuthor.Visible = true;
-                form1.labelTranslationBy.Visible = true;
-                form1.labelTranslationAuthor.Text = translation.Author;
-            }
-
-            form1.CheckVersion();
-            formMods.UpdateUI();
-
-            // Set sLanguage in config.ini:
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "sLanguage", translation.ISO);
-            Localization.locale = translation.ISO;
-
-            GenerateTemplate(translation, new List<Form> { form1, formMods }, new List<ToolTip> { form1.toolTip, formMods.toolTip });
         }
 
         public static XElement SerializeStrings()
@@ -230,78 +204,90 @@ namespace Fo76ini
          * Deserialization:
          */
 
-        public void Apply(Form form, ToolTip toolTip)
+        public void Apply()
         {
             // Read *.xml file:
             XDocument xmlDoc = XDocument.Load(this.filePath);
             XElement xmlRoot = xmlDoc.Element("Language");
 
-            XElement xmlForm = xmlRoot.Element(form.Name);
-            if (xmlForm == null)
-                throw new InvalidXmlException($"Couldn't find <{form.Name}>");
+            foreach (LocalizedForm form in Localization.LocalizedForms)
+            {
+                XElement xmlForm = xmlRoot.Element(form.Form.Name);
+                if (xmlForm == null)
+                    throw new InvalidXmlException($"Couldn't find <{form.Form.Name}>");
 
-            // Set title, if it exists:
-            if (xmlForm.Attribute("title") != null)
-                form.Text = xmlForm.Attribute("title").Value;
+                // Set title, if it exists:
+                if (xmlForm.Attribute("title") != null)
+                    form.Form.Text = xmlForm.Attribute("title").Value;
 
-            // Forms:
-            DeserializeDictionaries(xmlRoot);
-            Deserialize(xmlForm, form, toolTip);
+                // Forms:
+                DeserializeDictionaries(xmlRoot);
+                DeserializeControls(xmlForm, form.Form, form.ToolTip);
+                foreach (Control subControl in form.SpecialControls)
+                    DeserializeControl(xmlForm, subControl, form.ToolTip);
 
-            // Message boxes:
-            XElement xmlMsgBox = xmlRoot.Element("Messageboxes");
-            if (xmlMsgBox != null)
-                MsgBox.Deserialize(xmlMsgBox);
+                // Message boxes:
+                XElement xmlMsgBox = xmlRoot.Element("Messageboxes");
+                if (xmlMsgBox != null)
+                    MsgBox.Deserialize(xmlMsgBox);
 
-            // Strings:
-            XElement xmlStrings = xmlRoot.Element("Strings");
-            if (xmlStrings != null)
-                Localization.DeserializeStrings(xmlStrings);
+                // Strings:
+                XElement xmlStrings = xmlRoot.Element("Strings");
+                if (xmlStrings != null)
+                    Localization.DeserializeStrings(xmlStrings);
 
-            // Drop downs:
-            XElement xmlDropDowns = xmlRoot.Element("Dropdowns");
-            if (xmlDropDowns != null)
-                DropDown.DeserializeAll(xmlDropDowns);
+                // Drop downs:
+                XElement xmlDropDowns = xmlRoot.Element("Dropdowns");
+                if (xmlDropDowns != null)
+                    DropDown.DeserializeAll(xmlDropDowns);
+            }
         }
 
-        private void Deserialize(XElement xmlRoot, Control control, ToolTip toolTip)
+        private void DeserializeControl(XElement xmlRoot, Control subControl, ToolTip toolTip)
+        {
+            if (subControl.Name != null &&
+                subControl.Name.Length > 0)
+            {
+                // Set text:
+                if (dictText.ContainsKey(subControl.Name))
+                    subControl.Text = FromSafeString(dictText[subControl.Name]);
+
+                // Set tooltip:
+                if (dictTooltip.ContainsKey(subControl.Name))
+                    toolTip.SetToolTip(subControl, dictTooltip[subControl.Name]);
+
+
+                /*
+                 * Set stuff depending on the type of the control:
+                 */
+
+                // Search through the *.xml file and find the right item:
+                foreach (XElement xmlControl in xmlRoot.Descendants())
+                {
+                    if (xmlControl.Attribute("id") != null && xmlControl.Attribute("id").Value == subControl.Name)
+                    {
+                        // Set stuff:
+                        if (subControl is MenuStrip ||
+                            subControl is ToolStrip ||
+                            subControl is ContextMenuStrip)
+                            DeserializeStrip(subControl, GetXMLDescendantsDict(xmlControl));
+                        else if (subControl is ListView)
+                            DeserializeListView((ListView)subControl, xmlControl);
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void DeserializeControls(XElement xmlRoot, Control control, ToolTip toolTip)
         {
             // Go through every control:
             foreach (Control subControl in control.Controls)
             {
-                if (subControl.Name != null &&
-                    subControl.Name.Length > 0)
-                {
-                    // Set text:
-                    if (dictText.ContainsKey(subControl.Name))
-                        subControl.Text = FromSafeString(dictText[subControl.Name]);
-
-                    // Set tooltip:
-                    if (dictTooltip.ContainsKey(subControl.Name))
-                        toolTip.SetToolTip(subControl, dictTooltip[subControl.Name]);
-
-
-                    /*
-                     * Set stuff depending on the type of the control:
-                     */
-
-                    // Search through the *.xml file and find the right item:
-                    foreach (XElement xmlControl in xmlRoot.Descendants())
-                    {
-                        if (xmlControl.Attribute("id") != null && xmlControl.Attribute("id").Value == subControl.Name)
-                        {
-                            // Set stuff:
-                            if (subControl is MenuStrip || subControl is ToolStrip)
-                                DeserializeStrip(subControl, GetXMLDescendantsDict(xmlControl));
-                            else if (subControl is ListView)
-                                DeserializeListView((ListView)subControl, xmlControl);
-                            break;
-                        }
-                    }
-                }
+                DeserializeControl(xmlRoot, subControl, toolTip);
 
                 // Recursive, yay!
-                Deserialize(xmlRoot, subControl, toolTip);
+                DeserializeControls(xmlRoot, subControl, toolTip);
             }
         }
 
@@ -311,6 +297,8 @@ namespace Fo76ini
                 DeserializeStripItems(((MenuStrip)item).Items, dict);
             else if (item is ToolStrip)
                 DeserializeStripItems(((ToolStrip)item).Items, dict);
+            else if (item is ContextMenuStrip)
+                DeserializeStripItems(((ContextMenuStrip)item).Items, dict);
             else if (item is ToolStripSplitButton)
                 DeserializeStripItems(((ToolStripSplitButton)item).DropDownItems, dict);
             else if (item is ToolStripDropDownButton)
@@ -381,10 +369,10 @@ namespace Fo76ini
          * Serialization:
          */
 
-        public void Save(String fileName, List<Form> forms, List<ToolTip> toolTips)
+        public void Save(String fileName, String version)
         {
-            this.fileName = fileName;
-            this.filePath = Path.Combine(Localization.languageFolder, this.fileName);
+            String newFileName = fileName;
+            String newFilePath = Path.Combine(Localization.languageFolder, newFileName);
 
             // Create document and root:
             XDocument xmlDoc = new XDocument();
@@ -395,7 +383,7 @@ namespace Fo76ini
                 xmlRoot.Add(new XAttribute("author", this.Author));
             if (this.ISO == "en-US")
                 xmlDoc.AddFirst(new XComment("\n     This file is auto-generated on program start.\n     Therefore any changes made to this file will be overriden.\n     You can use this as a template for your own translation, though.\n"));
-            xmlRoot.Add(new XAttribute("version", Shared.VERSION));
+            xmlRoot.Add(new XAttribute("version", version));
             xmlDoc.Add(xmlRoot);
 
             // Serialize external stuff:
@@ -404,11 +392,12 @@ namespace Fo76ini
             xmlRoot.Add(MsgBox.SerializeAll());
 
             // Serialize all control elements:
-            int index = 0;
-            foreach (Form form in forms)
+            foreach (LocalizedForm form in Localization.LocalizedForms)
             {
-                XElement xmlForm = new XElement(form.Name, new XAttribute("title", form.Text));
-                Serialize(xmlForm, form, toolTips[index++]);
+                XElement xmlForm = new XElement(form.Form.Name, new XAttribute("title", form.Form.Text));
+                SerializeControls(xmlForm, form.Form, form.ToolTip);
+                foreach (Control control in form.SpecialControls)
+                    SerializeControl(xmlForm, control, form.ToolTip);
                 xmlRoot.Add(xmlForm);
             }
 
@@ -416,75 +405,84 @@ namespace Fo76ini
             if (!Directory.Exists(Localization.languageFolder))
                 Directory.CreateDirectory(Localization.languageFolder);
 
-            xmlDoc.Save(this.filePath);
+            xmlDoc.Save(newFilePath);
         }
 
-        private int Serialize(XElement xmlElement, Control control, ToolTip toolTip)
+        private int SerializeControl(XElement xmlElement, Control subControl, ToolTip toolTip)
+        {
+            int count = 0;
+            if (subControl.Name != null &&
+                subControl.Name.Length > 0 &&
+                !blackList.Contains(subControl.Name) &&
+                !subControl.Name.ToLower().Contains("separator"))
+            {
+                XElement subElement = new XElement(subControl.GetType().Name);
+                bool addSubElement = false;
+
+                // Add text:
+                if (subControl.Text != null &&
+                    subControl.Text.Length > 0 &&
+                    !(subControl is NumericUpDown) &&
+                    !(subControl is ComboBox) &&
+                    !(subControl is CheckedListBox) &&
+                    !(subControl is ProgressBar) &&
+                    !(subControl is TrackBar) &&
+                    !(subControl is PictureBox) &&
+                    !(subControl is TextBox) &&
+                    !(subControl is MenuStrip) &&
+                    !(subControl is ToolStrip) &&
+                    !(subControl is ContextMenuStrip) &&
+                    !(subControl is ListView))
+                {
+                    subElement.Add(new XAttribute("text", ToSafeString(subControl.Text)));
+                    addSubElement = true;
+                }
+
+                // Add tooltip text:
+                if (toolTip.GetToolTip(subControl) != null &&
+                    toolTip.GetToolTip(subControl).Length > 0)
+                {
+                    subElement.Add(new XElement("Tooltip", toolTip.GetToolTip(subControl)));
+                    addSubElement = true;
+                }
+
+                // Add sub-elements:
+                int subCount = SerializeControls(subElement, subControl, toolTip);
+
+                if (subControl is MenuStrip ||
+                    subControl is ToolStrip ||
+                    subControl is ContextMenuStrip)
+                {
+                    subCount += SerializeStripItems(subElement, subControl);
+                }
+
+                if (subControl is ListView)
+                {
+                    foreach (ColumnHeader col in ((ListView)subControl).Columns)
+                    {
+                        subElement.Add(new XElement("Column", col.Text));
+                        subCount++;
+                    }
+                }
+
+                // Add XElement to parent:
+                if (addSubElement || subCount > 0)
+                {
+                    subElement.Add(new XAttribute("id", subControl.Name));
+                    xmlElement.Add(subElement);
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        private int SerializeControls(XElement xmlElement, Control control, ToolTip toolTip)
         {
             // Recursively add control elements to the XML file:
             int count = 0;
             foreach (Control subControl in control.Controls)
             {
-                if (subControl.Name != null &&
-                    subControl.Name.Length > 0 &&
-                    !blackList.Contains(subControl.Name) &&
-                    !subControl.Name.ToLower().Contains("separator"))
-                {
-                    XElement subElement = new XElement(subControl.GetType().Name);
-                    bool addSubElement = false;
-
-                    // Add text:
-                    if (subControl.Text != null &&
-                        subControl.Text.Length > 0 &&
-                        !(subControl is NumericUpDown) &&
-                        !(subControl is ComboBox) &&
-                        !(subControl is CheckedListBox) &&
-                        !(subControl is ProgressBar) &&
-                        !(subControl is TrackBar) &&
-                        !(subControl is PictureBox) &&
-                        !(subControl is TextBox) &&
-                        !(subControl is MenuStrip) &&
-                        !(subControl is ToolStrip) &&
-                        !(subControl is ListView))
-                    {
-                        subElement.Add(new XAttribute("text", ToSafeString(subControl.Text)));
-                        addSubElement = true;
-                    }
-
-                    // Add tooltip text:
-                    if (toolTip.GetToolTip(subControl) != null &&
-                        toolTip.GetToolTip(subControl).Length > 0)
-                    {
-                        subElement.Add(new XElement("Tooltip", toolTip.GetToolTip(subControl)));
-                        addSubElement = true;
-                    }
-
-                    // Add sub-elements:
-                    int subCount = Serialize(subElement, subControl, toolTip);
-
-                    if (subControl is MenuStrip ||
-                        subControl is ToolStrip)
-                    {
-                        subCount += SerializeStripItems(subElement, subControl);
-                    }
-                    
-                    if (subControl is ListView)
-                    {
-                        foreach (ColumnHeader col in ((ListView)subControl).Columns)
-                        {
-                            subElement.Add(new XElement("Column", col.Text));
-                            subCount++;
-                        }
-                    }
-
-                    // Add XElement to parent:
-                    if (addSubElement || subCount > 0)
-                    {
-                        subElement.Add(new XAttribute("id", subControl.Name));
-                        xmlElement.Add(subElement);
-                        count++;
-                    }
-                }
+                count += SerializeControl(xmlElement, subControl, toolTip);
             }
             return count;
         }
@@ -502,12 +500,17 @@ namespace Fo76ini
                 items = ((ToolStrip)stripItem).Items;
             else if (stripItem is MenuStrip)
                 items = ((ToolStrip)stripItem).Items;
+            else if (stripItem is ContextMenuStrip)
+                items = ((ContextMenuStrip)stripItem).Items;
             else
                 return 0;
 
             int count = 0;
             foreach (ToolStripItem item in items)
             {
+                if (item is ToolStripSeparator)
+                    continue;
+
                 XElement xmlToolStripItem = new XElement(item.GetType().Name,
                     new XAttribute("text", item.Text),
                     new XAttribute("id", item.Name));
@@ -553,6 +556,19 @@ namespace Fo76ini
                    let component = (Component)field.GetValue(this)
                    where component != null
                    select component;
+        }
+    }
+
+    public class LocalizedForm
+    {
+        public Form Form;
+        public ToolTip ToolTip;
+        public List<Control> SpecialControls = new List<Control>();
+
+        public LocalizedForm(Form form, ToolTip toolTip)
+        {
+            this.Form = form;
+            this.ToolTip = toolTip;
         }
     }
 }

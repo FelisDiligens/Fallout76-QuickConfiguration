@@ -63,9 +63,39 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_folder_24 {
+            get {
+                object obj = ResourceManager.GetObject("add-folder-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_snowflake_24 {
+            get {
+                object obj = ResourceManager.GetObject("add_snowflake_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap adventures {
+            get {
+                object obj = ResourceManager.GetObject("adventures", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_down {
             get {
-                object obj = ResourceManager.GetObject("arrow_down", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow-down", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +105,7 @@ namespace Fo76ini.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap arrow_left_black {
             get {
-                object obj = ResourceManager.GetObject("arrow_left_black", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow-left-black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +115,7 @@ namespace Fo76ini.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap arrow_right_black {
             get {
-                object obj = ResourceManager.GetObject("arrow_right_black", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow-right-black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +133,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap available_updates_24 {
+        internal static System.Drawing.Bitmap available_updates {
             get {
-                object obj = ResourceManager.GetObject("available-updates-24", resourceCulture);
+                object obj = ResourceManager.GetObject("available-updates", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +153,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bethesda_24px {
+        internal static System.Drawing.Bitmap bethesda_24 {
             get {
-                object obj = ResourceManager.GetObject("bethesda_24px", resourceCulture);
+                object obj = ResourceManager.GetObject("bethesda-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -135,7 +165,7 @@ namespace Fo76ini.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap bethesda_pts {
             get {
-                object obj = ResourceManager.GetObject("bethesda_pts", resourceCulture);
+                object obj = ResourceManager.GetObject("bethesda-pts", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,16 +176,6 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap bg {
             get {
                 object obj = ResourceManager.GetObject("bg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap bin {
-            get {
-                object obj = ResourceManager.GetObject("bin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -175,7 +195,7 @@ namespace Fo76ini.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap button_hover {
             get {
-                object obj = ResourceManager.GetObject("button_hover", resourceCulture);
+                object obj = ResourceManager.GetObject("button-hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +203,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap checkbox_checked {
+        internal static System.Drawing.Bitmap checked_checkbox_24 {
             get {
-                object obj = ResourceManager.GetObject("checkbox_checked", resourceCulture);
+                object obj = ResourceManager.GetObject("checked-checkbox-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +213,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap defrost {
+        internal static System.Drawing.Bitmap delete_24 {
             get {
-                object obj = ResourceManager.GetObject("defrost", resourceCulture);
+                object obj = ResourceManager.GetObject("delete-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +223,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap error {
+        internal static System.Drawing.Bitmap edit_24 {
             get {
-                object obj = ResourceManager.GetObject("error", resourceCulture);
+                object obj = ResourceManager.GetObject("edit-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +233,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folder_open {
+        internal static System.Drawing.Bitmap error_64 {
             get {
-                object obj = ResourceManager.GetObject("folder_open", resourceCulture);
+                object obj = ResourceManager.GetObject("error-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +243,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folder_plus {
+        internal static System.Drawing.Bitmap fire {
             get {
-                object obj = ResourceManager.GetObject("folder_plus", resourceCulture);
+                object obj = ResourceManager.GetObject("fire", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +253,19 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap frozen_plus {
+        internal static System.Drawing.Bitmap folder_24 {
             get {
-                object obj = ResourceManager.GetObject("frozen_plus", resourceCulture);
+                object obj = ResourceManager.GetObject("folder-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap help_128 {
+            get {
+                object obj = ResourceManager.GetObject("help-128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +293,19 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap info {
+        internal static System.Drawing.Bitmap icon_60 {
             get {
-                object obj = ResourceManager.GetObject("info", resourceCulture);
+                object obj = ResourceManager.GetObject("icon-60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap info_64 {
+            get {
+                object obj = ResourceManager.GetObject("info-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +323,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap msstore_24px {
+        internal static System.Drawing.Bitmap msstore_24 {
             get {
-                object obj = ResourceManager.GetObject("msstore_24px", resourceCulture);
+                object obj = ResourceManager.GetObject("msstore-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -303,9 +343,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pencil {
+        internal static System.Drawing.Bitmap play {
             get {
-                object obj = ResourceManager.GetObject("pencil", resourceCulture);
+                object obj = ResourceManager.GetObject("play", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -313,29 +353,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap play_24 {
+        internal static System.Drawing.Bitmap plus_24 {
             get {
-                object obj = ResourceManager.GetObject("play-24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap plus {
-            get {
-                object obj = ResourceManager.GetObject("plus", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap question_mark {
-            get {
-                object obj = ResourceManager.GetObject("question_mark", resourceCulture);
+                object obj = ResourceManager.GetObject("plus_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -363,9 +383,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Spinner_200px {
+        internal static System.Drawing.Bitmap snowflake_24 {
             get {
-                object obj = ResourceManager.GetObject("Spinner_200px", resourceCulture);
+                object obj = ResourceManager.GetObject("snowflake-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -373,9 +393,19 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Spinner_24px {
+        internal static System.Drawing.Bitmap Spinner_200 {
             get {
-                object obj = ResourceManager.GetObject("Spinner_24px", resourceCulture);
+                object obj = ResourceManager.GetObject("Spinner-200", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Spinner_24 {
+            get {
+                object obj = ResourceManager.GetObject("Spinner-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -403,9 +433,19 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap thaw_24 {
+            get {
+                object obj = ResourceManager.GetObject("thaw_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap user_black {
             get {
-                object obj = ResourceManager.GetObject("user_black", resourceCulture);
+                object obj = ResourceManager.GetObject("user-black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -415,7 +455,7 @@ namespace Fo76ini.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap user_white {
             get {
-                object obj = ResourceManager.GetObject("user_white", resourceCulture);
+                object obj = ResourceManager.GetObject("user-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -433,9 +473,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap warning {
+        internal static System.Drawing.Bitmap warning_64 {
             get {
-                object obj = ResourceManager.GetObject("warning", resourceCulture);
+                object obj = ResourceManager.GetObject("warning-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -453,9 +493,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap xbox_24px {
+        internal static System.Drawing.Bitmap xbox_24 {
             get {
-                object obj = ResourceManager.GetObject("xbox_24px", resourceCulture);
+                object obj = ResourceManager.GetObject("xbox-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

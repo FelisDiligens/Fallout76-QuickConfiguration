@@ -18,10 +18,43 @@ namespace Fo76ini
 {
     partial class Form1
     {
+        public void ChangeLanguage(Form1 form1, FormMods formMods)
+        {
+            // Apply translation to forms:
+            Translation translation = Localization.GetTranslation();
+            translation.Apply();
+
+            // Set labels and stuff:
+            form1.labelOutdatedLanguage.Visible = translation.IsOutdated();
+
+            form1.labelTranslationAuthor.Visible = false;
+            form1.labelTranslationBy.Visible = false;
+            if (translation.Author != "")
+            {
+                form1.labelTranslationAuthor.Visible = true;
+                form1.labelTranslationBy.Visible = true;
+                form1.labelTranslationAuthor.Text = translation.Author;
+            }
+
+            form1.RefreshNWModeButtonAppearance();
+            form1.CheckVersion();
+            formMods.UpdateUI();
+
+            // Force redraw:
+            form1.Refresh();
+            formMods.Refresh();
+
+            // Set sLanguage in config.ini:
+            IniFiles.Instance.Set(IniFile.Config, "Preferences", "sLanguage", translation.ISO);
+            Localization.locale = translation.ISO;
+
+            if (translation.ISO != "en-US")
+                Localization.GenerateTemplate(translation);
+        }
+
         private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Translation translation = Localization.GetTranslation();
-            Localization.ChangeLanguage(translation, this, this.formMods);
+            ChangeLanguage(this, this.formMods);
         }
 
         private void buttonDownloadLanguages_Click(object sender, EventArgs e)
@@ -81,6 +114,16 @@ namespace Fo76ini
             this.buttonDownloadLanguages.Enabled = true;
             this.pictureBoxSpinnerDownloadLanguages.Visible = false;
             Localization.LookupLanguages();
+        }
+
+        private void buttonRefreshLanguage_Click(object sender, EventArgs e)
+        {
+            Localization.LookupLanguages();
+            this.RefreshNWModeButtonAppearance();
+            this.CheckVersion();
+            formMods.UpdateUI();
+            this.Refresh();
+            this.formMods.Refresh();
         }
     }
 }

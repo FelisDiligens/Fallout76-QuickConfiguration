@@ -36,6 +36,8 @@ namespace Fo76ini
         /// </summary>
         private void ColorUi2Ini()
         {
+            bool alternativeMode = IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAlternativeINIMode", false);
+
             // Pip-Boy Color
             this.PipboyColor = this.colorPreviewPipboy.BackColor;
 
@@ -49,6 +51,12 @@ namespace Fo76ini
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Pipboy", "fQuickBoyEffectColorR");
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Pipboy", "fQuickBoyEffectColorG");
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Pipboy", "fQuickBoyEffectColorB");
+                if (alternativeMode)
+                {
+                    IniFiles.Instance.Set(IniFile.F76, "Pipboy", "fQuickBoyEffectColorR", 0.97f);
+                    IniFiles.Instance.Set(IniFile.F76, "Pipboy", "fQuickBoyEffectColorG", 0.94f);
+                    IniFiles.Instance.Set(IniFile.F76, "Pipboy", "fQuickBoyEffectColorB", 0.72f);
+                }
             }
 
             // Power Armor Pip-Boy Color
@@ -61,6 +69,12 @@ namespace Fo76ini
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Pipboy", "fPAEffectColorR");
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Pipboy", "fPAEffectColorG");
                 IniFiles.Instance.Remove(IniFile.F76Custom, "Pipboy", "fPAEffectColorB");
+                if (alternativeMode)
+                {
+                    IniFiles.Instance.Set(IniFile.F76, "Pipboy", "fPAEffectColorR", 1.0f);
+                    IniFiles.Instance.Set(IniFile.F76, "Pipboy", "fPAEffectColorG", 0.82f);
+                    IniFiles.Instance.Set(IniFile.F76, "Pipboy", "fPAEffectColorB", 0.41f);
+                }
             }
         }
 
@@ -113,9 +127,10 @@ namespace Fo76ini
                 float r = Convert.ToSingle(value.R) / 255f;
                 float g = Convert.ToSingle(value.G) / 255f;
                 float b = Convert.ToSingle(value.B) / 255f;
-                IniFiles.Instance.Set(IniFile.F76Custom, "Pipboy", "fQuickBoyEffectColorR", r);
-                IniFiles.Instance.Set(IniFile.F76Custom, "Pipboy", "fQuickBoyEffectColorG", g);
-                IniFiles.Instance.Set(IniFile.F76Custom, "Pipboy", "fQuickBoyEffectColorB", b);
+                bool alternativeMode = IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAlternativeINIMode", false);
+                IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Pipboy", "fQuickBoyEffectColorR", r);
+                IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Pipboy", "fQuickBoyEffectColorG", g);
+                IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Pipboy", "fQuickBoyEffectColorB", b);
             }
         }
 
@@ -138,9 +153,10 @@ namespace Fo76ini
                 float r = Convert.ToSingle(value.R) / 255f;
                 float g = Convert.ToSingle(value.G) / 255f;
                 float b = Convert.ToSingle(value.B) / 255f;
-                IniFiles.Instance.Set(IniFile.F76Custom, "Pipboy", "fPAEffectColorR", r);
-                IniFiles.Instance.Set(IniFile.F76Custom, "Pipboy", "fPAEffectColorG", g);
-                IniFiles.Instance.Set(IniFile.F76Custom, "Pipboy", "fPAEffectColorB", b);
+                bool alternativeMode = IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAlternativeINIMode", false);
+                IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Pipboy", "fPAEffectColorR", r);
+                IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Pipboy", "fPAEffectColorG", g);
+                IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Pipboy", "fPAEffectColorB", b);
             }
         }
 
