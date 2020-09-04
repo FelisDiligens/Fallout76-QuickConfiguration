@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.8.0h1">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.8.2">
   <Strings>
     <String text="Доступна новая версия: {0}" id="newVersionAvailable" />
     <String text="Обновить!" id="updateNowButton" />
@@ -26,6 +26,8 @@
     <String text="Нет" id="no" />
     <String text="Верный" id="valid" />
     <String text="Неверный" id="invalid" />
+    <String text="Nuclear Winter" id="nuclearwintermode" />
+    <String text="Приключение" id="adventuremode" />
     <String text="Править {0}" id="modDetailsTitle" />
     <String text="Править {0} модов" id="modDetailsTitleBulk" />
   </Strings>
@@ -67,6 +69,7 @@
       <Option>16x</Option>
     </Dropdown>
     <Dropdown id="ShadowTextureResolution">
+      <Option>512 = Ниже некуда</Option>
       <Option>1024 = Низкое</Option>
       <Option>2048 = Высокое (по-умолчанию)</Option>
       <Option>4096 = Ультра</Option>
@@ -140,6 +143,9 @@
 Некоторые элементы пользовательского интерфейса могут работать неправильно.
 
 {1}</Messagebox>
+    <Messagebox title="Обнаружены неправильные значения в *.ini" id="iniValuesInvalid">{0} неправильные значения в *.ini:
+
+{1}</Messagebox>
     <Messagebox title="Готово" id="downloadLanguagesFinished">Загруженные языковые файлы: {0}</Messagebox>
     <Messagebox title="Неудача" id="downloadLanguagesFailed">Не удалось загрузить языковые файлы.
 {0}</Messagebox>
@@ -152,6 +158,14 @@
 Размер дисплея: {0}
 Минимальный размер дисплея: {1}
 Рекомендуемый размер дисплея: 1920 x 1080</Messagebox>
+    <Messagebox title="Необходим перезапуск" id="restartRequired">Чтобы изменения вступили в силу, необходимо перезапустить программу.
+Вы уверены, что хотите изменить эту опцию?</Messagebox>
+    <Messagebox title="Удалить {0}?" id="galleryDeleteScreenshot">Вы собираетесь удалить '{0}'. Вы уверены?</Messagebox>
+    <Messagebox title="Удалить файлы: {0}?" id="galleryDeleteScreenshots">Вы собираетесь удалить файлы: {0}. Вы уверены?</Messagebox>
+    <Messagebox title="Вы уверены?" id="galleryDeleteThumbnails">Вы уверены, что хотите удалить все миниатюры галереи?
+В следующий раз, когда вы нажмете на кнопку "Обновить галерею", это займет значительно больше времени, так как они будут созданы заново.</Messagebox>
+    <Messagebox title="NW режим отключен" id="nwModeDisabled">Теперь вы можете запустить игру в режиме Приключение.</Messagebox>
+    <Messagebox title="NW режим включен" id="nwModeEnabled">Теперь вы можете запустить игру в режиме Nuclear Winter.</Messagebox>
     <Messagebox title="Готово" id="modsDisabledDone">Моды были отключены и удалены из игры.</Messagebox>
     <Messagebox title="Готово" id="modsDeployedDone">Моды установлены.</Messagebox>
     <Messagebox title="Что-то пошло не так" id="modsDeploymentFailed">Невозможно установить моды.
@@ -215,10 +229,13 @@
   <Form1 title="Fallout 76 Quick Configuration">
     <ToolStrip id="toolStrip1">
       <ToolStripButton text="Применить" id="toolStripButtonApply" />
-      <ToolStripButton text="Запустить" id="toolStripButtonLaunchGame" />
-      <ToolStripSeparator text="" id="toolStripSeparator1" />
+      <ToolStripButton text="Nuclear Winter" id="toolStripButtonToggleNuclearWinterMode" />
+      <ToolStripSplitButton text="Запустить" id="toolStripSplitButtonLaunchGame">
+        <ToolStripMenuItem text="Запустить версию Steam" id="launchViaSteamToolStripMenuItem" />
+        <ToolStripMenuItem text="Запустить версию Bethesda.net" id="launchViaBethesdanetToolStripMenuItem" />
+        <ToolStripMenuItem text="Запустить версию Bethesda.net (PTS)" id="launchViaBethesdanetPTSToolStripMenuItem" />
+      </ToolStripSplitButton>
       <ToolStripButton text="Моды" id="toolStripButtonManageMods" />
-      <ToolStripSeparator text="" id="toolStripSeparator2" />
       <ToolStripSplitButton text="Обновление" id="toolStripSplitButtonUpdate">
         <ToolStripMenuItem text="Обновить программу" id="updateToolToolStripMenuItem" />
         <ToolStripMenuItem text="Проверить обновления" id="checkForUpdatesToolStripMenuItem" />
@@ -228,28 +245,37 @@
       <ToolStripDropDownButton text="Просмотр" id="toolStripDropDownButtonExplore">
         <ToolStripMenuItem text="Папка установки игры" id="gameFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Папка настроек игры" id="gamesConfigurationFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator4" />
         <ToolStripMenuItem text="Папка настроек программы" id="toolConfigurationFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Папка языковых файлов" id="toolLanguagesFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Папка установки программы" id="toolInstallationFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator5" />
         <ToolStripMenuItem text="Папка скриншотов Steam" id="steamScreenshotFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Папка фотографий игры" id="gamePhotosFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator6" />
         <ToolStripMenuItem text="Открыть Fallout76.ini" id="editFallout76iniToolStripMenuItem" />
         <ToolStripMenuItem text="Открыть Fallout76Prefs.ini" id="editFallout76PrefsiniToolStripMenuItem" />
         <ToolStripMenuItem text="Открыть Fallout76Custom.ini" id="editFallout76CustominiToolStripMenuItem" />
       </ToolStripDropDownButton>
-      <ToolStripSeparator text="" id="toolStripSeparator3" />
       <ToolStripButton text="NexusMods" id="toolStripButtonNexusMods" />
     </ToolStrip>
     <TabControl id="tabControl1">
       <TabPage text="Инфо" id="tabPageInfo">
+        <LinkLabel text="Лицензии" id="linkLabelAttribution" />
         <Panel id="panelUpdate">
           <LinkLabel text="Или скачать и установить вручную..." id="linkLabelManualDownloadPage" />
         </Panel>
+        <Label text="Режим Nuclear Winter включен" id="labelNWModeActive" />
         <Panel id="panel1">
+          <GroupBox text="Настройки Nuclear Winter" id="groupBoxNuclearWinterMode">
+            <CheckBox text="Установить моды при отключении" id="checkBoxNWAutoDeployMods" />
+            <Label text="Настройки модов:" id="labelNWmodoptions" />
+            <Label text="Настройки *.dll:" id="labelNWdlloptions" />
+            <Label text="Настройки *.ini:" id="labelNWinioptions" />
+            <RadioButton text="Просто удалять списки архивов" id="radioButtonNWRemoveLists" />
+            <RadioButton text="Переименовывать Fallout76Custom.ini" id="radioButtonNWRenameINI" />
+            <CheckBox text="Удалять моды при включении" id="checkBoxNWAutoDisableMods" />
+            <CheckBox text="Переименовывать добавленные *.dll" id="checkBoxNWRenameDLL" />
+          </GroupBox>
           <GroupBox text="Перевод" id="groupBoxLocalization">
+            <Button text="Обновить" id="buttonRefreshLanguage" />
             <Label text="Этот языковой файл устарел.\nНекоторые элементы могут быть не переведены." id="labelOutdatedLanguage" />
             <Label text="Язык:" id="labelLanguage" />
             <Button text="Скачать/обновить языки" id="buttonDownloadLanguages" />
@@ -271,6 +297,11 @@
             <Button text="..." id="buttonPickGamePath" />
           </GroupBox>
           <GroupBox text="Настройки" id="groupBoxOptions">
+            <CheckBox text="Не использовать Fallout76Custom.ini для настроек" id="checkBoxAlternativeINIMode">
+              <Tooltip>Помещает настройки в Fallout76.ini и Fallout76Prefs.ini.
+Не влияет на Управление модами.
+Возможно, вам придется удалить настройки из Fallout76Custom.ini вручную.</Tooltip>
+            </CheckBox>
             <CheckBox text="[Экспериментально] Запретить NTFS запись на диск" id="checkBoxDenyNTFSWritePermission">
               <Tooltip>Это приведет к запрету записи в папку "Fallout 76".
 Используйте, если опция только для чтения не работает.
@@ -281,9 +312,6 @@
               <Tooltip>Поставьте галочку, если вы используете моды более чем для одной версии игры.
 В этом случае sResourceIndexFileList будет сохранен для каждой версии игры отдельно.</Tooltip>
             </CheckBox>
-            <CheckBox text="Режим Nuclear Winter" id="checkBoxNWMode">
-              <Tooltip>На данный момент переименовывает Fallout76Custom.ini в Fallout76Custom.ini.nwmodebak.</Tooltip>
-            </CheckBox>
             <CheckBox text="INI только для чтения" id="checkBoxReadOnly">
               <Tooltip>Этот вариант сделает все *.ini-файлы доступными только для чтения.
 	Включите эту функцию, если ваши настройки сбрасываются после запуска игры.
@@ -292,6 +320,7 @@
             </CheckBox>
           </GroupBox>
           <GroupBox text="Поведение" id="groupBoxBehavior">
+            <CheckBox text="Проигрывать звук уведомлений" id="checkBoxPlayNotificationSound" />
             <CheckBox text="Не проверять обновления" id="checkBoxIgnoreUpdates" />
             <CheckBox text="Открывать управление модами при запуске" id="checkBoxOpenManageModsOnLaunch" />
             <CheckBox text="Закрывать программу при запуске игры" id="checkBoxQuitOnGameLaunch">
@@ -1029,9 +1058,17 @@ Off - улучшает производительность, неровност�
           <Label text="Нажмите 'Обновить галерею' для отображения скриншотов и фотографий." id="labelGalleryTip" />
         </GroupBox>
         <GroupBox text="Настройки" id="groupBoxScreenshotOptions">
+          <Button text="Удалить миниатюры" id="buttonGalleryDeleteThumbnails" />
+          <CheckBox text="Рекурсивный поиск вложенных папок" id="checkBoxGallerySearchRecursively" />
+          <Label text="Дополнительные пути (разделенные новой строкой):" id="label3" />
           <Label text="Размер миниатюры:" id="labelGalleryThumbnailSize" />
           <Button text="Обновить галерею" id="buttonRefreshGallery" />
-          <Label text="Индекс скриншота:" id="labelScreenshotIndex" />
+          <Label text="Индекс скриншота:" id="labelScreenshotIndex">
+            <Tooltip>Когда вы делаете скриншоты в игре с помощью кнопки print screen, она сохраняет их в папке игры как "ScreenShotX.png". Где "X" - это индекс скриншота.
+
+Затрагивает параметры: iScreenShotIndex
+Затрагивает файлы: Fallout76Prefs.ini</Tooltip>
+          </Label>
         </GroupBox>
       </TabPage>
       <TabPage text="Другое" id="tabPageCustom">
@@ -1039,6 +1076,13 @@ Off - улучшает производительность, неровност�
         <Label text="Заменить строки в файле:" id="labelCustomFile" />
       </TabPage>
     </TabControl>
+    <ContextMenuStrip id="contextMenuStrip1">
+      <ToolStripMenuItem text="Открыть" id="openToolStripMenuItem" />
+      <ToolStripMenuItem text="Открыть папку" id="openFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Вырезать" id="cutToolStripMenuItem" />
+      <ToolStripMenuItem text="Копировать" id="copyToolStripMenuItem" />
+      <ToolStripMenuItem text="Удалить" id="deleteToolStripMenuItem" />
+    </ContextMenuStrip>
   </Form1>
   <FormMods title="Настройка модов">
     <Panel id="panel1">
@@ -1078,16 +1122,12 @@ Off - улучшает производительность, неровност�
           <ToolStripButton text="Добавить мод из архива" id="toolStripButtonAddMod" />
           <ToolStripButton text="Добавить мод из архива *.ba2" id="toolStripButtonAddModFrozen" />
           <ToolStripButton text="Добавить мод из папки" id="toolStripButtonAddModFolder" />
-          <ToolStripSeparator text="" id="toolStripSeparator4" />
           <ToolStripButton text="Отметить/снять все" id="toolStripButtonCheckAll" />
-          <ToolStripSeparator text="" id="toolStripSeparator2" />
           <ToolStripButton text="Выше" id="toolStripButtonMoveUp" />
           <ToolStripButton text="Ниже" id="toolStripButtonMoveDown" />
-          <ToolStripSeparator text="" id="toolStripSeparator3" />
           <ToolStripButton text="Сведения о моде" id="toolStripButtonModEdit" />
           <ToolStripButton text="Разморозить" id="toolStripButtonUnfreeze" />
           <ToolStripButton text="Открыть папку" id="toolStripButtonModOpenFolder" />
-          <ToolStripSeparator text="" id="toolStripSeparator5" />
           <ToolStripButton text="Удалить мод" id="toolStripButtonDeleteMod" />
         </ToolStrip>
         <ListView id="listViewMods">
@@ -1108,6 +1148,7 @@ Off - улучшает производительность, неровност�
       </TabPage>
       <TabPage text="Настройки" id="tabPageModsSettings">
         <GroupBox text="Поведение" id="groupBoxModsBehavior">
+          <CheckBox text="Записать sResourceDataDirsFinal в Fallout76Custom.ini" id="checkBoxModsWriteSResourceDataDirsFinal" />
           <CheckBox text="[Экспериментально] Заморозить упакованные архивы" id="checkBoxFreezeBundledArchives">
             <Tooltip>Вместо того чтобы пересоздавать архивы, программа сохранит их копию и спросит вас, хотите ли вы обновить её при установке.</Tooltip>
           </CheckBox>
@@ -1156,7 +1197,6 @@ Off - улучшает производительность, неровност�
           <ToolStripMenuItem text="Из папки" id="fromFolderToolStripMenuItem" />
         </ToolStripMenuItem>
         <ToolStripMenuItem text="Импортировать установленные моды" id="toolStripMenuItemModsImport" />
-        <ToolStripSeparator text="" id="toolStripSeparator1" />
         <ToolStripMenuItem text="Установить" id="deployToolStripMenuItem" />
       </ToolStripMenuItem>
       <ToolStripMenuItem text="Вид" id="editToolStripMenuItem">
