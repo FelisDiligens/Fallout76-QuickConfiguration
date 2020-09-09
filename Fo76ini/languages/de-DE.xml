@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.8.2">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.8.3">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Jetzt aktualisieren!" id="updateNowButton" />
@@ -443,6 +443,12 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           </GroupBox>
         </Panel>
         <GroupBox text="Anmelden" id="groupBoxLogin">
+          <CheckBox text="Automatisch einloggen" id="checkBoxAutoSignin">
+            <Tooltip>Wenn dies aktiv ist, wird die Anmeldeaufforderung übersprungen, wenn die Anmeldedaten angeben sind.
+
+Betroffene Werte: bAutoSignin
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
           <RadioButton text="Konto 8" id="radioButtonAccount8" />
           <RadioButton text="Konto 7" id="radioButtonAccount7" />
           <RadioButton text="Konto 6" id="radioButtonAccount6" />
@@ -452,7 +458,10 @@ Betroffene Dateien: Fallout76Custom.ini</Tooltip>
           <RadioButton text="Konto 2" id="radioButtonAccount2" />
           <RadioButton text="Konto 1" id="radioButtonAccount1" />
           <Label text="Profil:" id="labelAccountProfiles" />
-          <CheckBox text="Steam deaktivieren" id="checkBoxDisableSteam" />
+          <CheckBox text="Steam deaktivieren" id="checkBoxDisableSteam">
+            <Tooltip>Betroffene Werte: bSteamEnabled
+Betroffene Dateien: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
           <Label text="Deine Anmeldedaten werden in Fallout76Custom.ini gespeichert.\nSomit musst du dich nicht erneut anmelden,\nwenn du Fallout 76 ohne Launcher startest.\n\nWenn du Steam benutzt und du dich mit Bethesda.net anmelden möchtest\n(um z.B. Atoms auszugeben), deaktivere Steam.\nBEACHTE: Deine Errungenschaften werden dabei auch deaktiviert!" id="labelCredentialsExplanation" />
           <CheckBox text="Passwort anzeigen" id="checkBoxShowPassword" />
           <Label text="Passwort:" id="labelPassword" />
@@ -1194,15 +1203,15 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
         <LinkLabel text="Hol dir deinen API-Key" id="linkLabelNMGetAPIKey" />
         <Button text="Modinformationen aktualisieren" id="buttonNMUpdateModInfo" />
         <Panel id="panel3">
-          <Label text="Ungültig" id="labelNMAPIKeyStatus" />
+          <Label text="Gültig" id="labelNMAPIKeyStatus" />
           <Label text="API-Key:" id="labelNMDescAPIKey" />
-          <Label text="Anonymous" id="labelNMUserName" />
+          <Label text="datasnake01" id="labelNMUserName" />
           <Label text="Mitgliedschaft:" id="labelNMDescMembership" />
-          <Label text="Nie" id="labelNMDailyRateLimitReset" />
-          <Label text="Basic" id="labelNMMembership" />
+          <Label text="in 18 Stunde(n) und 28 Minute(n)" id="labelNMDailyRateLimitReset" />
+          <Label text="Premium" id="labelNMMembership" />
           <Label text="Limit wird zurückgesetzt:" id="labelNMDescLimitReset" />
           <Label text="Tägliches Ratenlimit:" id="labelNMDescDailyRateLimit" />
-          <Label text="0 übrig" id="labelNMDailyRateLimit" />
+          <Label text="2500 übrig" id="labelNMDailyRateLimit" />
         </Panel>
         <Button text="Profil aktualisieren" id="buttonNMUpdateProfile" />
         <Button text="Thumbnails löschen" id="buttonNMDeleteThumbnails" />

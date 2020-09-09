@@ -4,7 +4,7 @@
      Therefore any changes made to this file will be overriden.
      You can use this as a template for your own translation, though.
 -->
-<Language name="English (USA)" iso="en-US" version="1.8.2">
+<Language name="English (USA)" iso="en-US" version="1.8.3">
   <Strings>
     <String text="There is a newer version available: {0}" id="newVersionAvailable" />
     <String text="Update now!" id="updateNowButton" />
@@ -441,6 +441,12 @@ Affected files: Fallout76Custom.ini</Tooltip>
           </GroupBox>
         </Panel>
         <GroupBox text="Login with Bethesda.net" id="groupBoxLogin">
+          <CheckBox text="Automatically sign-in" id="checkBoxAutoSignin">
+            <Tooltip>Enabling this will skip the login prompt if you provide your login credentials.
+
+Affected values: bAutoSignin
+Affected files: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
           <RadioButton text="Account #8" id="radioButtonAccount8" />
           <RadioButton text="Account #7" id="radioButtonAccount7" />
           <RadioButton text="Account #6" id="radioButtonAccount6" />
@@ -450,7 +456,10 @@ Affected files: Fallout76Custom.ini</Tooltip>
           <RadioButton text="Account #2" id="radioButtonAccount2" />
           <RadioButton text="Account #1" id="radioButtonAccount1" />
           <Label text="Profiles:" id="labelAccountProfiles" />
-          <CheckBox text="Disable Steam" id="checkBoxDisableSteam" />
+          <CheckBox text="Disable Steam" id="checkBoxDisableSteam">
+            <Tooltip>Affected values: bSteamEnabled
+Affected files: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
           <Label text="Your credentials are saved into Fallout76Custom.ini\nThis way, you don't have to enter your username and password manually\nif you start Fallout 76 without the launcher.\n\nIf you use Steam and want to use your Bethesda.net account\n(e.g. to spent Atoms), tick Disable Steam.\nNOTE: Your achievements will be disabled as well!" id="labelCredentialsExplanation" />
           <CheckBox text="Show password" id="checkBoxShowPassword" />
           <Label text="Password:" id="labelPassword" />

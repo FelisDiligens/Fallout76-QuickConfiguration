@@ -88,9 +88,9 @@ namespace Fo76ini
         {
             get
             {
-                float r = IniFiles.Instance.GetFloat("Pipboy", "fPipboyEffectColorR", 0.1f);
-                float g = IniFiles.Instance.GetFloat("Pipboy", "fPipboyEffectColorG", 1.0f);
-                float b = IniFiles.Instance.GetFloat("Pipboy", "fPipboyEffectColorB", 0.5f);
+                float r = Utils.Clamp<float>(IniFiles.Instance.GetFloat("Pipboy", "fPipboyEffectColorR", 0.1f), 0f, 1f);
+                float g = Utils.Clamp<float>(IniFiles.Instance.GetFloat("Pipboy", "fPipboyEffectColorG", 1.0f), 0f, 1f);
+                float b = Utils.Clamp<float>(IniFiles.Instance.GetFloat("Pipboy", "fPipboyEffectColorB", 0.5f), 0f, 1f);
                 return Color.FromArgb(
                     Convert.ToInt32(r * 255),
                     Convert.ToInt32(g * 255),
@@ -113,9 +113,9 @@ namespace Fo76ini
         {
             get
             {
-                float r = IniFiles.Instance.GetFloat("Pipboy", "fQuickBoyEffectColorR", 1.0f);
-                float g = IniFiles.Instance.GetFloat("Pipboy", "fQuickBoyEffectColorG", 0.78f);
-                float b = IniFiles.Instance.GetFloat("Pipboy", "fQuickBoyEffectColorB", 0.0f);
+                float r = Utils.Clamp<float>(IniFiles.Instance.GetFloat("Pipboy", "fQuickBoyEffectColorR", 1.0f), 0f, 1f);
+                float g = Utils.Clamp<float>(IniFiles.Instance.GetFloat("Pipboy", "fQuickBoyEffectColorG", 0.78f), 0f, 1f);
+                float b = Utils.Clamp<float>(IniFiles.Instance.GetFloat("Pipboy", "fQuickBoyEffectColorB", 0.0f), 0f, 1f);
                 return Color.FromArgb(
                     Convert.ToInt32(r * 255),
                     Convert.ToInt32(g * 255),
@@ -139,9 +139,9 @@ namespace Fo76ini
         {
             get
             {
-                float r = IniFiles.Instance.GetFloat("Pipboy", "fPAEffectColorR", 1.0f);
-                float g = IniFiles.Instance.GetFloat("Pipboy", "fPAEffectColorG", 0.78f);
-                float b = IniFiles.Instance.GetFloat("Pipboy", "fPAEffectColorB", 0.0f);
+                float r = Utils.Clamp<float>(IniFiles.Instance.GetFloat("Pipboy", "fPAEffectColorR", 1.0f), 0f, 1f);
+                float g = Utils.Clamp<float>(IniFiles.Instance.GetFloat("Pipboy", "fPAEffectColorG", 0.78f), 0f, 1f);
+                float b = Utils.Clamp<float>(IniFiles.Instance.GetFloat("Pipboy", "fPAEffectColorB", 0.0f), 0f, 1f);
                 return Color.FromArgb(
                     Convert.ToInt32(r * 255),
                     Convert.ToInt32(g * 255),
