@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.8.2">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.8.3">
   <Strings>
     <String text="Доступна новая версия: {0}" id="newVersionAvailable" />
     <String text="Обновить!" id="updateNowButton" />
@@ -437,6 +437,12 @@
           </GroupBox>
         </Panel>
         <GroupBox text="Логин" id="groupBoxLogin">
+          <CheckBox text="Входить автоматически" id="checkBoxAutoSignin">
+            <Tooltip>Включение этого параметра приведет к пропуску запроса на вход, если вы предоставите свои данные для входа.
+
+Затрагивает параметры: bAutoSignin
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
           <RadioButton text="Профиль 8" id="radioButtonAccount8" />
           <RadioButton text="Профиль 7" id="radioButtonAccount7" />
           <RadioButton text="Профиль 6" id="radioButtonAccount6" />
@@ -446,7 +452,10 @@
           <RadioButton text="Профиль 2" id="radioButtonAccount2" />
           <RadioButton text="Профиль 1" id="radioButtonAccount1" />
           <Label text="Профили:" id="labelAccountProfiles" />
-          <CheckBox text="Отключить Steam" id="checkBoxDisableSteam" />
+          <CheckBox text="Отключить Steam" id="checkBoxDisableSteam">
+            <Tooltip>Затрагивает параметры: bSteamEnabled
+Затрагивает файлы: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
           <Label text="Ваши учетные данные сохраняются в Fallout76Custom.ini.\nТаким образом, вам не нужно входить в систему, если\n вы запускаете Fallout 76 без лаунчера." id="labelCredentialsExplanation" />
           <CheckBox text="Показать пароль" id="checkBoxShowPassword" />
           <Label text="Пароль:" id="labelPassword" />
@@ -1178,7 +1187,7 @@ Off - улучшает производительность, неровност�
           <Label text="Ключ API:" id="labelNMDescAPIKey" />
           <Label text="Anonymous" id="labelNMUserName" />
           <Label text="Пользователь:" id="labelNMDescMembership" />
-          <Label text="за -18 часа(ов) и -10 минут(ы)" id="labelNMDailyRateLimitReset" />
+          <Label text="за -18 часа(ов) и -15 минут(ы)" id="labelNMDailyRateLimitReset" />
           <Label text="Основной" id="labelNMMembership" />
           <Label text="Сброс лимита:" id="labelNMDescLimitReset" />
           <Label text="Суточный лимит скорости:" id="labelNMDescDailyRateLimit" />
