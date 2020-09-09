@@ -196,8 +196,8 @@ namespace Fo76ini
                 {
                     // Do Fallout76.ini and Fallout76Prefs.ini exist?
                     if (File.Exists(GetIniPath(IniFile.F76, GameEdition.Steam)) && File.Exists(GetIniPath(IniFile.F76Prefs, GameEdition.Steam)))
-                        Shared.ChangeGameEdition(GameEdition.Steam);
-                        //this.GameEdition = GameEdition.Steam;
+                        //Shared.ChangeGameEdition(GameEdition.Steam);
+                        Shared.GameEdition = GameEdition.Steam;
                     else
                         throw new FileNotFoundException($"{GetIniName(IniFile.F76)} and {GetIniName(IniFile.F76Prefs)} not found");
                 }
@@ -205,8 +205,8 @@ namespace Fo76ini
                 {
                     // Do Project76.ini and Project76Prefs.ini exist?
                     if (File.Exists(GetIniPath(IniFile.F76, GameEdition.MSStore)) && File.Exists(GetIniPath(IniFile.F76Prefs, GameEdition.MSStore)))
-                        Shared.ChangeGameEdition(GameEdition.MSStore);
-                        //this.GameEdition = GameEdition.MSStore;
+                        //Shared.ChangeGameEdition(GameEdition.MSStore);
+                        Shared.GameEdition = GameEdition.MSStore;
                     else
                         throw new FileNotFoundException($"{GetIniName(IniFile.F76)} and {GetIniName(IniFile.F76Prefs)} not found");
                 }
@@ -248,6 +248,8 @@ namespace Fo76ini
             //this.GameEdition = edition;
             /*if (reloadRequired)
                 LoadGameInis();*/
+            IniFiles.Instance.Set(IniFile.Config, "Preferences", "uGameEdition", (int)edition);
+
             UpdateLastModifiedDates();
         }
 

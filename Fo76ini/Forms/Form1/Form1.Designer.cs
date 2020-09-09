@@ -410,6 +410,7 @@
             this.backgroundWorkerEnableNWMode = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerDisableNWMode = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
+            this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
@@ -3384,6 +3385,7 @@
             // 
             // groupBoxLogin
             // 
+            this.groupBoxLogin.Controls.Add(this.checkBoxAutoSignin);
             this.groupBoxLogin.Controls.Add(this.radioButtonAccount8);
             this.groupBoxLogin.Controls.Add(this.radioButtonAccount7);
             this.groupBoxLogin.Controls.Add(this.radioButtonAccount6);
@@ -3499,7 +3501,7 @@
             // checkBoxDisableSteam
             // 
             this.checkBoxDisableSteam.AutoSize = true;
-            this.checkBoxDisableSteam.Location = new System.Drawing.Point(12, 165);
+            this.checkBoxDisableSteam.Location = new System.Drawing.Point(12, 199);
             this.checkBoxDisableSteam.Name = "checkBoxDisableSteam";
             this.checkBoxDisableSteam.Size = new System.Drawing.Size(94, 17);
             this.checkBoxDisableSteam.TabIndex = 6;
@@ -3511,7 +3513,7 @@
             this.labelCredentialsExplanation.AutoSize = true;
             this.labelCredentialsExplanation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCredentialsExplanation.ForeColor = System.Drawing.Color.DimGray;
-            this.labelCredentialsExplanation.Location = new System.Drawing.Point(9, 200);
+            this.labelCredentialsExplanation.Location = new System.Drawing.Point(9, 235);
             this.labelCredentialsExplanation.Name = "labelCredentialsExplanation";
             this.labelCredentialsExplanation.Size = new System.Drawing.Size(349, 91);
             this.labelCredentialsExplanation.TabIndex = 5;
@@ -5324,6 +5326,18 @@
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
             // 
+            // checkBoxAutoSignin
+            // 
+            this.checkBoxAutoSignin.AutoSize = true;
+            this.checkBoxAutoSignin.Location = new System.Drawing.Point(12, 176);
+            this.checkBoxAutoSignin.Name = "checkBoxAutoSignin";
+            this.checkBoxAutoSignin.Size = new System.Drawing.Size(121, 17);
+            this.checkBoxAutoSignin.TabIndex = 20;
+            this.checkBoxAutoSignin.Text = "Automatically sign-in";
+            this.toolTip.SetToolTip(this.checkBoxAutoSignin, "Enabling this will skip the login prompt if you provide your login credentials.\r\n" +
+        "\r\nAffected values: bAutoSignin\r\nAffected files: Fallout76Custom.ini");
+            this.checkBoxAutoSignin.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5895,6 +5909,7 @@
         private System.Windows.Forms.PictureBox pictureBoxLoadingGIF;
         private System.Windows.Forms.LinkLabel linkLabelAttribution;
         private System.Windows.Forms.CheckBox checkBoxPlayNotificationSound;
+        private System.Windows.Forms.CheckBox checkBoxAutoSignin;
     }
 }
 

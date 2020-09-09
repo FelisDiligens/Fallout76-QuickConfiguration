@@ -236,11 +236,10 @@ namespace Fo76ini
 
             this.formMods = new FormMods();
 
-            // Load QuickConfiguration.ini
+            // Load config.ini
             IniFiles.Instance.LoadConfig();
 
             // Load the languages
-            //LookupLanguages();
             Localization.AssignDropBox(this.comboBoxLanguage);
             Localization.GenerateTemplate();
             Localization.LookupLanguages();
@@ -588,12 +587,30 @@ namespace Fo76ini
              */
 
             // Game Edition
-            uiLoader.LinkList(
+            /*uiLoader.LinkList(
                 new RadioButton[] { this.radioButtonEditionBethesdaNet, this.radioButtonEditionSteam, this.radioButtonEditionBethesdaNetPTS, this.radioButtonEditionMSStore },
                 new String[] { "1", "2", "3", "4" },
                 IniFile.Config, "Preferences", "uGameEdition",
                 "0"
-            );
+            );*/
+            uiLoader.Add(() =>
+            {
+                switch (Shared.GameEdition)
+                {
+                    case GameEdition.Steam:
+                        this.radioButtonEditionSteam.Checked = true;
+                        break;
+                    case GameEdition.BethesdaNet:
+                        this.radioButtonEditionBethesdaNet.Checked = true;
+                        break;
+                    case GameEdition.BethesdaNetPTS:
+                        this.radioButtonEditionBethesdaNetPTS.Checked = true;
+                        break;
+                    case GameEdition.MSStore:
+                        this.radioButtonEditionMSStore.Checked = true;
+                        break;
+                }
+            });
 
             // Launch options
             uiLoader.LinkList(
@@ -656,6 +673,9 @@ namespace Fo76ini
 
             // Disable Steam:
             uiLoader.LinkBoolNegated(this.checkBoxDisableSteam, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "General", "bSteamEnabled", true);
+
+            // Automatically sign-in:
+            uiLoader.LinkBool(this.checkBoxAutoSignin, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Login", "bAutoSignin", false);
 
             // Play intro videos
             uiLoader.LinkCustom(this.checkBoxIntroVideos,
@@ -1627,11 +1647,11 @@ namespace Fo76ini
 
         private void toolStripButtonManageMods_Click(object sender, EventArgs e)
         {
-            if (!formModsBackupCreated)
+            /*if (!formModsBackupCreated)
             {
                 IniFiles.Instance.BackupAll("Backup_BeforeManageMods"); // Just to be sure...
                 formModsBackupCreated = true;
-            }
+            }*/
             this.formMods.OpenUI();
         }
 
