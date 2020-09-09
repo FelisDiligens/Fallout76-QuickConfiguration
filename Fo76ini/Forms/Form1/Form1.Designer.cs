@@ -136,6 +136,7 @@
             this.checkBoxbApplyCameraNodeAnimations = new System.Windows.Forms.CheckBox();
             this.labelScreenshotIndex = new System.Windows.Forms.Label();
             this.checkBoxAlternativeINIMode = new System.Windows.Forms.CheckBox();
+            this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
@@ -410,7 +411,6 @@
             this.backgroundWorkerEnableNWMode = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerDisableNWMode = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
@@ -1920,6 +1920,18 @@
         ".");
             this.checkBoxAlternativeINIMode.UseVisualStyleBackColor = true;
             this.checkBoxAlternativeINIMode.CheckedChanged += new System.EventHandler(this.checkBoxAlternativeINIMode_CheckedChanged);
+            // 
+            // checkBoxAutoSignin
+            // 
+            this.checkBoxAutoSignin.AutoSize = true;
+            this.checkBoxAutoSignin.Location = new System.Drawing.Point(12, 176);
+            this.checkBoxAutoSignin.Name = "checkBoxAutoSignin";
+            this.checkBoxAutoSignin.Size = new System.Drawing.Size(121, 17);
+            this.checkBoxAutoSignin.TabIndex = 20;
+            this.checkBoxAutoSignin.Text = "Automatically sign-in";
+            this.toolTip.SetToolTip(this.checkBoxAutoSignin, "Enabling this will skip the login prompt if you provide your login credentials.\r\n" +
+        "\r\nAffected values: bAutoSignin\r\nAffected files: Fallout76Custom.ini");
+            this.checkBoxAutoSignin.UseVisualStyleBackColor = true;
             // 
             // timerCheckFiles
             // 
@@ -3506,6 +3518,7 @@
             this.checkBoxDisableSteam.Size = new System.Drawing.Size(94, 17);
             this.checkBoxDisableSteam.TabIndex = 6;
             this.checkBoxDisableSteam.Text = "Disable Steam";
+            this.toolTip.SetToolTip(this.checkBoxDisableSteam, "Affected values: bSteamEnabled\r\nAffected files: Fallout76Custom.ini");
             this.checkBoxDisableSteam.UseVisualStyleBackColor = true;
             // 
             // labelCredentialsExplanation
@@ -5325,18 +5338,6 @@
             this.pictureBoxLoadingGIF.TabIndex = 15;
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
-            // 
-            // checkBoxAutoSignin
-            // 
-            this.checkBoxAutoSignin.AutoSize = true;
-            this.checkBoxAutoSignin.Location = new System.Drawing.Point(12, 176);
-            this.checkBoxAutoSignin.Name = "checkBoxAutoSignin";
-            this.checkBoxAutoSignin.Size = new System.Drawing.Size(121, 17);
-            this.checkBoxAutoSignin.TabIndex = 20;
-            this.checkBoxAutoSignin.Text = "Automatically sign-in";
-            this.toolTip.SetToolTip(this.checkBoxAutoSignin, "Enabling this will skip the login prompt if you provide your login credentials.\r\n" +
-        "\r\nAffected values: bAutoSignin\r\nAffected files: Fallout76Custom.ini");
-            this.checkBoxAutoSignin.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
