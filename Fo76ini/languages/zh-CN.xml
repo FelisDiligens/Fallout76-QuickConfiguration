@@ -1,471 +1,651 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="中文 (简体)" iso="zh-CN" author="Broodahood" version="1.6.2">
-  <Strings>
-    <String text="有更新的版本可用：{0}" id="newVersionAvailable" />
-    <String text="必要安装" id="modsDeploymentNecessary" />
-    <String text="完成" id="modsAllDone" />
-    <String text="通用" id="modsTableFormatGeneral" />
-    <String text="材质" id="modsTableFormatTextures" />
-    <String text="自动" id="modsTableFormatAutoDetect" />
-    <String text="捆绑" id="modsTableTypeBundled" />
-    <String text="分开" id="modsTableTypeSeparate" />
-    <String text="分开（冷冻）" id="modsTableTypeSeparateFrozen" />
-    <String text="未压缩" id="modsTableTypeLoose" />
-    <String text="待定" id="modTableFrozenPending" />
-    <String text="编辑 {0}" id="modDetailsTitle" />
-    <String text="编辑 {0} 模组" id="modDetailsTitleBulk" />
-    <String text="无" id="notApplicable" />
-    <String text="是" id="yes" />
-    <String text="否" id="no" />
-  </Strings>
-  <Dropdowns>
-    <Dropdown id="Resolution">
-      <Option>自定义</Option>
-      <Option>640x480</Option>
-      <Option>800x600</Option>
-      <Option>1280x720</Option>
-      <Option>1280x768</Option>
-      <Option>1152x864</Option>
-      <Option>1440x900</Option>
-      <Option>1600x900</Option>
-      <Option>1280x960</Option>
-      <Option>1920x1080</Option>
-      <Option>2560x1080</Option>
-      <Option>3440x1440</Option>
-      <Option>2560x1440</Option>
-      <Option>3200x1800</Option>
-      <Option>5120x2160</Option>
-      <Option>5120x2880</Option>
-    </Dropdown>
-    <Dropdown id="DisplayMode">
-      <Option>全屏</Option>
-      <Option>窗口化</Option>
-      <Option>无边框窗口化</Option>
-      <Option>无边框窗口化（全屏）</Option>
-    </Dropdown>
-    <Dropdown id="AntiAliasing">
-      <Option>TAA（默认）</Option>
-      <Option>FXAA</Option>
-      <Option>禁用</Option>
-    </Dropdown>
-    <Dropdown id="AnisotropicFiltering">
-      <Option>关闭</Option>
-      <Option>2x</Option>
-      <Option>4x</Option>
-      <Option>8x（默认）</Option>
-      <Option>16x</Option>
-    </Dropdown>
-    <Dropdown id="ShadowTextureResolution">
-      <Option>1024 = 低</Option>
-      <Option>2048 = 高（默认）</Option>
-      <Option>4096 = 超高</Option>
-    </Dropdown>
-    <Dropdown id="ShadowBlurriness">
-      <Option>1x</Option>
-      <Option>2x</Option>
-      <Option>3x = 默认，推荐</Option>
-    </Dropdown>
-    <Dropdown id="ModInstallAs">
-      <Option>捆绑*.ba2文件</Option>
-      <Option>分开*.ba2文件</Option>
-      <Option>散装文件</Option>
-    </Dropdown>
-    <Dropdown id="ModArchiveFormat">
-      <Option>自动检测</Option>
-      <Option>常规</Option>
-      <Option>材质（*.dds文件）</Option>
-    </Dropdown>
-  </Dropdowns>
-  <Messageboxes>
-    <Messagebox title="备份并保存" id="backupAndSave">你想在应用这些更改前创建备份文件吗？
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     This file is auto-generated on program start.
+     Therefore any changes made to this file will be overriden.
+     You can use this as a template for your own translation, though.
+-->
+<Language name="中文（简体）" iso="zh-CN" author="喵大福" version="1.8.2">
+    <Strings>
+        <String text="当前有更新的版本可用: {0}" id="newVersionAvailable" />
+        <String text="立即更新！" id="updateNowButton" />
+        <String text="部署必要的" id="modsDeploymentNecessary" />
+        <String text="全部部署" id="modsAllDone" />
+        <String text="出现错误，请查看日志文件" id="modsFailed" />
+        <String text="通用" id="modsTableFormatGeneral" />
+        <String text="材质" id="modsTableFormatTextures" />
+        <String text="自动" id="modsTableFormatAutoDetect" />
+        <String text="捆绑包" id="modsTableTypeBundled" />
+        <String text="分离模组Separate" id="modsTableTypeSeparate" />
+        <String text="分离已冻结模组Separate (Frozen)" id="modsTableTypeSeparateFrozen" />
+        <String text="释放" id="modsTableTypeLoose" />
+        <String text="挂起" id="modTableFrozenPending" />
+        <String text="当前{0}个模组被选中" id="modDetailsTitleBulkSelected" />
+        <String text="在{0} 小时(s) 和 {1} 分钟(s)后" id="nmResetTime" />
+        <String text="从不" id="nmResetTimeNever" />
+        <String text="{0} 剩余" id="nmRateLimitLeft" />
+        <String text="基础成员" id="nmBasicAccount" />
+        <String text="赞助者" id="nmSupporterAccount" />
+        <String text="优质用户" id="nmPremiumAccount" />
+        <String text="N/A" id="notApplicable" />
+        <String text="是" id="yes" />
+        <String text="否" id="no" />
+        <String text="有效" id="valid" />
+        <String text="无效" id="invalid" />
+        <String text="核冬天模式" id="nuclearwintermode" />
+        <String text="冒险模式" id="adventuremode" />
+    </Strings>
+    <Dropdowns>
+        <Dropdown id="Resolution">
+            <Option>Custom</Option>
+            <Option>640x480</Option>
+            <Option>800x600</Option>
+            <Option>1280x720</Option>
+            <Option>1280x768</Option>
+            <Option>1152x864</Option>
+            <Option>1440x900</Option>
+            <Option>1600x900</Option>
+            <Option>1280x960</Option>
+            <Option>1920x1080</Option>
+            <Option>2560x1080</Option>
+            <Option>3440x1440</Option>
+            <Option>2560x1440</Option>
+            <Option>3200x1800</Option>
+            <Option>5120x2160</Option>
+            <Option>5120x2880</Option>
+        </Dropdown>
+        <Dropdown id="DisplayMode">
+            <Option>Fullscreen</Option>
+            <Option>Windowed</Option>
+            <Option>Borderless windowed</Option>
+            <Option>Borderless windowed (Fullscreen)</Option>
+        </Dropdown>
+        <Dropdown id="AntiAliasing">
+            <Option>TAA (default)</Option>
+            <Option>FXAA</Option>
+            <Option>Disabled</Option>
+        </Dropdown>
+        <Dropdown id="AnisotropicFiltering">
+            <Option>None</Option>
+            <Option>2x</Option>
+            <Option>4x</Option>
+            <Option>8x (default)</Option>
+            <Option>16x</Option>
+        </Dropdown>
+        <Dropdown id="ShadowTextureResolution">
+            <Option>512 = Potato</Option>
+            <Option>1024 = Low</Option>
+            <Option>2048 = High (default)</Option>
+            <Option>4096 = Ultra</Option>
+        </Dropdown>
+        <Dropdown id="ShadowBlurriness">
+            <Option>1x</Option>
+            <Option>2x</Option>
+            <Option>3x = Default, recommended</Option>
+        </Dropdown>
+        <Dropdown id="Files">
+            <Option>Fallout76.ini</Option>
+            <Option>Fallout76Prefs.ini</Option>
+            <Option>Fallout76Custom.ini</Option>
+        </Dropdown>
+        <Dropdown id="VoiceChatMode">
+            <Option>Auto</Option>
+            <Option>Area</Option>
+            <Option>Team</Option>
+            <Option>None</Option>
+        </Dropdown>
+        <Dropdown id="ShowActiveEffectsOnHUD">
+            <Option>Disabled</Option>
+            <Option>Detrimental</Option>
+            <Option>All</Option>
+        </Dropdown>
+        <Dropdown id="iDirShadowSplits">
+            <Option>1 - Low</Option>
+            <Option>2 - High / Medium</Option>
+            <Option>3 - Ultra</Option>
+        </Dropdown>
+        <Dropdown id="ModInstallAs">
+            <Option>Bundled *.ba2 archive</Option>
+            <Option>Separate *.ba2 archive</Option>
+            <Option>Loose files</Option>
+        </Dropdown>
+        <Dropdown id="ModArchivePreset">
+            <Option>-- Please select --</Option>
+            <Option>Auto-detect</Option>
+            <Option>General / Interface / Materials / Animations</Option>
+            <Option>Textures (*.dds files)</Option>
+            <Option>Sound FX / Music / Voice</Option>
+        </Dropdown>
+    </Dropdowns>
+    <Messageboxes>
+        <Messagebox title="无法解析*.ini配置文件" id="iniParsingError">至少有1个游戏的*.ini配置文件损坏或存在语法错误。
 
-    按 “是” 来创建备份并保存更改。
-    按 “否” 在不创建备份的情况下保存更改。
-    按 “取消” 来终止操作。</Messagebox>
-    <Messagebox title="已应用更改" id="changesApplied">已应用更改，你可以启动游戏了。</Messagebox>
-    <Messagebox title="选择游戏版本" id="chooseGameEdition">请在“常规”一栏下选择你的游戏版本。</Messagebox>
-    <Messagebox title="未找到Fallout76.ini和Fallout76Prefs.ini" id="runGameToGenerateINI">请在使用此工具前至少运行一次游戏。
-游戏会在首次启动时自动生成这些文件。</Messagebox>
-    <Messagebox title="完成" id="oldValuesResetToDefault">一些设置已被恢复为默认。
-只有先前版本留下的不稳定数值受到影响。
-不要忘记点击“应用”来保存设置。</Messagebox>
-    <Messagebox title="文件被修改" id="iniFilesModified">*.ini文件在本工具运行时受到其他渠道修改。
-注意：如果点击“应用”，任何相关变更都将被覆写。
-请重启工具让其读取受到更改的数据。</Messagebox>
-    <Messagebox title="加载UI时出现异常" id="onLoadFuncException">加载UI时出现{0}项异常。
-原因可能为ini文件损坏。
-部分UI功能可能无法正常运作。
+你可以：
+    -&gt; 阅读错误信息并修复错误或
+    -&gt; 删除无效的*.ini配置文件并打开辐射76生成一个新的，有效的*.ini配置文件
+    -&gt; 并在此之后再次尝试。
+
+ERROR MESSAGE:
+{0}</Messagebox>
+    <Messagebox title="Backup and save" id="backupAndSave">Do you want to create a backup before applying all changes?
+
+    Press "Yes" to create a backup and save.
+    Press "No" to save without backup.
+    Press "Cancel" to abort.</Messagebox>
+    <Messagebox title="Changes applied" id="changesApplied">Changes have been applied. You may start the game now.</Messagebox>
+    <Messagebox title="Choose Game Edition" id="chooseGameEdition">Please pick your game edition under the Settings tab.</Messagebox>
+    <Messagebox title="{0} and {1} not found" id="runGameToGenerateINI">Please run the game first before using this tool.
+The game will generate those files on first start-up.</Messagebox>
+    <Messagebox title="Done" id="oldValuesResetToDefault">Some values have been reset to default.
+Only unstable values from previous versions are affected.
+Don't forget to click 'Apply'.</Messagebox>
+    <Messagebox title="Files modified" id="iniFilesModified">*.ini files have been modified outside of the tool while it's running.
+NOTE: Any changes will be overwritten, if clicked on "Apply" or if mods are managed.
+Please restart the tool to work with the new values.</Messagebox>
+        <Messagebox title="Error while loading UI" id="onLoadFuncException">{0} exception(s) occured while the UI was loaded.
+This might be caused by corrupted ini files.
+Some UI elements might not be functioning correctly.
 
 {1}</Messagebox>
-    <Messagebox title="完成" id="downloadLanguagesFinished">已下载语言文件：{0}</Messagebox>
-    <Messagebox title="失败" id="downloadLanguagesFailed">语言文件下载失败
+        <Messagebox title="Invalid *.ini values found" id="iniValuesInvalid">{0} *.ini value(s) are invalid:
+
+{1}</Messagebox>
+        <Messagebox title="Done" id="downloadLanguagesFinished">Downloaded language files: {0}</Messagebox>
+        <Messagebox title="Failed" id="downloadLanguagesFailed">Downloading languages failed.
 {0}</Messagebox>
-    <Messagebox title="完成" id="modsDisabledDone">模组已被禁用并移除游戏。</Messagebox>
-    <Messagebox title="完成" id="modsDeployedDone">模组已安装。</Messagebox>
-    <Messagebox title="Archive2 is missing" id="modsArchive2Missing">.\Archive2\Archive2.exe 文件缺失
-请手动重新安装本工具，或手动安装Archive2。</Messagebox>
-    <Messagebox title="未设置游戏路径" id="modsGamePathNotSet">请设置游戏路径（Fallout76.exe的所在文件夹）</Messagebox>
-    <Messagebox title="路径错误" id="modsGamePathInvalid">游戏路径错误。</Messagebox>
-    <Messagebox title="模组{0}无法被安装" id="modsDeployErrorModDirNotFound">目录{0}不存在。
-请重启模组管理器并重新添加模组。</Messagebox>
-    <Messagebox title="模组{0}无法被安装" id="modsDeployErrorBA2RootIsNotData">目录{0}不存在。
-请重启模组管理器并重新添加模组。</Messagebox>
-    <Messagebox title="确认？" id="modsDeleteBtn">你确定想要删除模组{0}吗？</Messagebox>
-    <Messagebox title="确认？" id="modsDeleteBulkBtn">你确定想要删除模组{0}吗？</Messagebox>
-    <Messagebox title="无法解压文件" id="modsExtractUnknownError">{0}</Messagebox>
-    <Messagebox title="无法解压文件" id="modsExtractUnknownErrorText">请手动解压文件并将模组以文件夹形式添加。</Messagebox>
-    <Messagebox title="无法解压7-Zip文件" id="modsExtractUnknownError7zip">{0}</Messagebox>
-    <Messagebox title="不支持的文件格式" id="modsArchiveTypeNotSupported">发现{0}个不支持的文件。
-请手动解压文件并将模组以文件夹形式添加。</Messagebox>
-    <Messagebox title="耶！" id="modsNoConflictingFiles">未发现冲突文件。</Messagebox>
-    <Messagebox title="必要安装" id="modsDeploymentNecessary">必须先安装所有模组。</Messagebox>
-    <Messagebox title="确认？" id="modsOnCloseDeploymentNecessary">你尚未保存你做出的更改。
-你确定要关闭模组管理器吗？</Messagebox>
-    <Messagebox title="模组文件夹不存在" id="modDirNotExist">路径{0}不存在。
-模组文件夹已被移除，但目录仍在列表中。</Messagebox>
-    <Messagebox title="无效 manifest.xml 目录" id="modsInvalidManifestEntry">模组目录因无效而被忽视。
-错误：{0}</Messagebox>
-    <Messagebox title="无效 manifest.xml 目录" id="modsInvalidManifestRoot">&lt;Mods&gt;的标签具有无效属性。
-错误：{0}</Messagebox>
-    <Messagebox title="添加已手动安装的模组？" id="modsImportQuestion">你确定想要添加未在模组管理器处理的已安装模组吗？</Messagebox>
-    <Messagebox title="模组冲突" id="modsSameArchiveName">部分模组具有相同命名："{0}"
-冲突的模组名字：{1}</Messagebox>
-    <Messagebox title="无法重命名文件夹" id="modDetailsMoveManagedFolderFailed">管理中的模组文件夹无法被重新命名。
-错误信息："{0}"</Messagebox>
-    <Messagebox title="确认？" id="modsRepairDDSQuestion">本操作将会尝试修复所有*.dds文件。
-有可能会消耗大量时间，取决于文件的尺寸和数量。
-你确定要继续吗？</Messagebox>
-    <Messagebox title="完成" id="modsRepairDDSDone">*.dds文件已被修复。</Messagebox>
-    <Messagebox title="模组仍被激活" id="nwModeEnabledButModsAreDeployed">你启用了核冬天模式，但你的模组仍被激活。
-你想现在禁用它们吗？</Messagebox>
-    <Messagebox title="需要Archive2" id="modsArchive2NotSet">请下载Archive2并设置路径以用于解压*.ba2文件。</Messagebox>
-    <Messagebox title="路径错误" id="modsArchive2Invalid">Archive2路径错误。
-请选择Archive2.exe</Messagebox>
-  </Messageboxes>
-  <Form1 title="辐射76快速设置">
-    <Button text="模组管理器" id="buttonManageMods" />
-    <Button text="启动游戏" id="buttonLaunchGame" />
-    <Button text="应用" id="buttonApply" />
-    <TabContainer id="tabControl1">
-      <Tab text="信息" id="tabPageInfo">
-        <Group text="有可用更新" id="groupBoxUpdate">
-          <Button text="现在更新！" id="buttonUpdateNow" />
-          <Link text="或手动下载并安装……" id="linkLabelManualDownloadPage" />
-        </Group>
-        <Label text="汉化：" id="labelTranslationBy" />
-        <Label text="作者：" id="labelAuthor" />
-        <Label text="版本：" id="labelVersion" />
-        <Label text="本工具可以让你快速调整INI设置。\n提示：用鼠标指向任意选项，会显示其更改的细节。" id="labelDescription" />
-        <Label text="辐射76快速设置" id="labelTitle" />
-      </Tab>
-      <Tab text="设置" id="tabPageSettings">
-        <Group text="启动设置" id="groupBoxLaunchOptions">
-          <Label text="提示：在&quot;常规&quot;一栏下输入你的登录信息。" id="labelLaunchOptionTip" />
-          <Radiobutton text="直接启动&quot;Fallout76.exe&quot;。" id="radioButtonLaunchViaExecutable" />
-          <Radiobutton text="通过Steam / Bethesda.net启动（推荐）" id="radioButtonLaunchViaLink" />
-        </Group>
-        <Group text="路径" id="groupBoxGamePaths">
-          <Label text="游戏位置：" id="labelGamePath" />
-          <Button text="..." id="buttonPickGamePath" />
-        </Group>
-        <Button text="强制自动更新" id="buttonForceUpdate" />
-        <Group text="行为" id="groupBoxBehavior">
-          <Checkbox text="不检查更新" id="checkBoxIgnoreUpdates" />
-          <Checkbox text="启动时自动开启模组管理器" id="checkBoxOpenManageModsOnLaunch" />
-          <Checkbox text="游戏启动时自动关闭" id="checkBoxQuitOnGameLaunch">
-            <Tooltip>只在通过工具启动游戏时生效。</Tooltip>
-          </Checkbox>
-          <Checkbox text="当点击&quot;应用&quot;时不再询问。" id="checkBoxSkipBackupQuestion">
-            <Tooltip>当点击“应用”后将会跳过询问备份的信息框。
-注意：此操作将禁用备份功能！</Tooltip>
-          </Checkbox>
-          <Checkbox text="当工具被关闭或游戏启动时自动应用更改。" id="checkBoxAutoApply">
-            <Tooltip>不再需要点击应用按钮。</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="本地化" id="groupBoxLocalization">
-          <Label text="该语言文件为旧版本。\n部分内容可能尚未被翻译。" id="labelOutdatedLanguage" />
-          <Label text="语言(Lang)：" id="labelLanguage" />
-          <Button text="下载 / 更新语言文件" id="buttonDownloadLanguages" />
-        </Group>
-        <Group text="设置" id="groupBoxOptions">
-          <Checkbox text="我使用多个游戏版本" id="checkBoxMultipleGameEditionsUsed">
-            <Tooltip>如使用多个游戏版本，请勾选。
-如勾选，sResourceIndexFileList将会为不同版本的游戏分开储存。</Tooltip>
-          </Checkbox>
-          <Checkbox text="核冬天模式" id="checkBoxNWMode">
-            <Tooltip>目前只将Fallout76Custom.ini重命名为Fallout76Custom.ini.nwmodebak.</Tooltip>
-          </Checkbox>
-          <Checkbox text="将.ini文件设置为只读" id="checkBoxReadOnly">
-            <Tooltip>该设置会立即将所有ini格式文件设置为只读模式。
-如果你发现设置会被游戏自动重置的话请勾选该项。
+        <Messagebox title="Do you want to switch?" id="msstoreRestartRequired">Switching to or from the Microsoft Store edition requires a restart of the tool.</Messagebox>
+        <Messagebox title="Couldn't launch game: {0}" id="msstoreRunExecutableFailed">Unfortunately, it's not possible to launch the executable directly due to "security" restrictions. Thanks Microsoft, we hate it. :(</Messagebox>
+        <Messagebox title="Couldn't add your custom *.ini tweaks" id="customIniFilesParsingError">At least one of your custom *.ini files contains an error.
+{0}</Messagebox>
+        <Messagebox title="Display resolution might be too low" id="displayResolutionTooLow">Your display resolution is not supported.
+The windows might be to big to fit on screen.
+Your display size: {0}
+Minimum display size: {1}
+Recommended display size: 1920 x 1080</Messagebox>
+        <Messagebox title="Restart required." id="restartRequired">A restart of the tool is required for changes to take effect.
+Are you sure, you want to change this option now?</Messagebox>
+        <Messagebox title="Delete {0}?" id="galleryDeleteScreenshot">You are about to delete '{0}'. Are you sure?</Messagebox>
+        <Messagebox title="Delete {0} files?" id="galleryDeleteScreenshots">You are about to delete {0} files. Are you sure?</Messagebox>
+        <Messagebox title="Are you sure?" id="galleryDeleteThumbnails">Are you sure you want to delete the gallery's thumbnails?
+The next time you click on 'Refresh gallery', it will take significantly longer as it recreates all thumbnails.</Messagebox>
+        <Messagebox title="NW mode disabled" id="nwModeDisabled">You can now launch into Adventure mode.</Messagebox>
+        <Messagebox title="NW mode enabled" id="nwModeEnabled">You can now launch into Nuclear Winter mode.</Messagebox>
+        <Messagebox title="Done" id="modsDisabledDone">Mods have been disabled and removed from the game.</Messagebox>
+        <Messagebox title="Done" id="modsDeployedDone">Mods are deployed.</Messagebox>
+        <Messagebox title="Something went wrong" id="modsDeploymentFailed">Mods might not be deployed.
+Please check the log files.</Messagebox>
+        <Messagebox title="Archive2 is missing" id="modsArchive2Missing">.\Archive2\Archive2.exe is missing.
+Please download this tool again, or install Archive2 manually.</Messagebox>
+        <Messagebox title="Game path not set" id="modsGamePathNotSet">Please set the path to the game (where Fallout76.exe resides).</Messagebox>
+        <Messagebox title="Wrong path" id="modsGamePathInvalid">Wrong game folder path.</Messagebox>
+        <Messagebox title="Mod {0} couldn't be deployed." id="modsDeployErrorModDirNotFound">Directory {0} does not exist.
+Please restart the mod manager and add the mod again.</Messagebox>
+        <Messagebox title="Mod {0} couldn't be deployed." id="modsDeployErrorBA2RootIsNotData">The root folder has to be set to ".\Data" for mods, that are to be installed as a *.ba2 archive.
+Please fix the "Install into" setting and try again.</Messagebox>
+        <Messagebox title="Are you sure?" id="modsDeleteBtn">Are you sure you want to delete the mod {0}?</Messagebox>
+        <Messagebox title="Are you sure?" id="modsDeleteBulkBtn">Are you sure you want to delete {0} mods?</Messagebox>
+        <Messagebox title="Archive couldn't be uncompressed" id="modsExtractUnknownError">{0}</Messagebox>
+        <Messagebox title="Archive couldn't be uncompressed" id="modsExtractUnknownErrorText">Please uncompress the archive and add the mod as a folder.</Messagebox>
+        <Messagebox title="7-Zip archive couldn't be uncompressed" id="modsExtractUnknownError7zip">{0}</Messagebox>
+        <Messagebox title="Unsupported file format" id="modsArchiveTypeNotSupported">{0} files are not supported.
+Please uncompress the archive and add the mod as a folder.</Messagebox>
+        <Messagebox title="Yay!" id="modsNoConflictingFiles">No conflicting files found.</Messagebox>
+        <Messagebox title="Deployment necessary" id="modsDeploymentNecessary">For this action, you have to deploy all mods first.</Messagebox>
+        <Messagebox title="Are you sure?" id="modsOnCloseDeploymentNecessary">You haven't deployed the changes you made.
+Are you sure you want to close the mod manager?</Messagebox>
+        <Messagebox title="Mod folder does not exist." id="modDirNotExist">The path {0} does not exist.
+The mod folder was removed without removing the entry in the manifest.</Messagebox>
+        <Messagebox title="Invalid manifest.xml entry" id="modsInvalidManifestEntry">A mod entry is invalid and was ignored.
+Error: {0}</Messagebox>
+        <Messagebox title="Invalid manifest.xml entry" id="modsInvalidManifestRoot">The &lt;Mods&gt; tag has invalid attributes.
+Error: {0}</Messagebox>
+        <Messagebox title="Import manually installed mods?" id="modsImportQuestion">Are you sure you want to add mods installed outside of the mod manager?</Messagebox>
+        <Messagebox title="Conflicting mods" id="modsSameArchiveName">Some mods have the same archive name: "{0}".
+Conflicting mod name: {1}</Messagebox>
+        <Messagebox title="Failed to rename folder" id="modDetailsMoveManagedFolderFailed">Managed mod folder couldn't be renamed.
+Error message: "{0}".</Messagebox>
+        <Messagebox title="Are you sure?" id="modsRepairDDSQuestion">This will attempt to repair all *.dds files.
+It can take a long time, depending on file size and number of files.
+Are you sure you want to continue?</Messagebox>
+        <Messagebox title="Done" id="modsRepairDDSDone">*.dds files have been repaired.</Messagebox>
+        <Messagebox title="Access denied" id="modsAccessDenied">{0}
+Please start the tool as admin and try again.</Messagebox>
+        <Messagebox title="Would you like to repack bundled archives?" id="modsRepackFrozenBundledArchives">There are frozen bundled archives available. Would you like to repack bundled archives again?
 
-受影响文件：%用户%\我的文档\My Games\Fallout 76\*.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Button text="修复v1.3.1及以前版本的设置数据" id="buttonFixIssuesEarlierVersion" />
-        <Group text="游戏版本" id="groupBoxGameEdition">
-          <Radiobutton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
-          <Radiobutton text="Steam" id="radioButtonEditionSteam" />
-          <Radiobutton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
-        </Group>
-      </Tab>
-      <Tab text="常规" id="tabPageGeneral">
-        <Group text="镜头" id="groupBoxCamera">
-          <Checkbox text="强制自动旋转模式" id="checkBoxForceVanityMode">
-            <Tooltip>受影响设置：bForceAutoVanityMode
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="启动自动旋转模式" id="checkBoxVanityMode">
-            <Tooltip>如勾选，镜头会在玩家在不做出任何操作一定时间后自动围着玩家缓速旋转。
-该项仍在测试阶段。
+   Yes - I made changes to my mod list and would like to repack my bundled archives again. (slow)
 
-受影响设置：bDisableAutoVanityMode
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="登录" id="groupBoxLogin">
-          <Label text="你的密码会被保存至Fallout76Custom.ini\n此操作可以在不需要登录的情况下启动Fallout 76" id="labelCredentialsExplanation" />
-          <Checkbox text="显示密码" id="checkBoxShowPassword" />
-          <Label text="密码：" id="labelPassword" />
-          <Label text="用户名：" id="labelUserName" />
-        </Group>
-        <Group text="界面" id="groupBoxInterface">
-          <Checkbox text="显示指南针" id="checkBoxShowCompass">
-            <Tooltip>受影响设置：bShowCompass
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="在核冬天中显示浮动伤害数字" id="checkBoxShowDamageNumbersNW">
-            <Tooltip>受影响设值：bShowDamageNumbers
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="在冒险模式下显示浮动伤害数字" id="checkBoxShowDamageNumbersA">
-            <Tooltip>受影响设值：bShowDamageNumbers
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="显示常规字幕" id="checkBoxGeneralSubtitles">
-            <Tooltip>受影响设值：bGeneralSubtitles
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="显示对话字幕" id="checkBoxDialogueSubtitles">
-            <Tooltip>受影响设值：bDialogueSubtitles
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="主菜单" id="groupBoxMainMenu">
-          <Checkbox text="启动游戏时显示新闻加载画面" id="checkBoxShowSplash">
-            <Tooltip>取消勾选时，游戏不会在启动时显示新闻。
+   No  - I didn't make changes, please deploy my frozen bundled archives. (quick)</Messagebox>
+        <Messagebox title="Mods are still deployed" id="nwModeEnabledButModsAreDeployed">You've enabled the Nuclear Winter mode, but your mods are still deployed.
+Do you want to disable them now?</Messagebox>
+        <Messagebox title="Do you want to re-enable your mods again?" id="nwModeDisabledAndModsAreStillDisabled">You've disabled the Nuclear Winter mode, but your mods are still disabled.
+Do you want to deploy them now?</Messagebox>
+        <Messagebox title="Mod information updated" id="nexusModsRemoteInfoRefreshedSuccess">Mod information updated and thumbnails downloaded.</Messagebox>
+        <Messagebox title="Failed" id="nexusModsProfileRefreshFailed">Couldn't update your profile:
+{0}</Messagebox>
+        <Messagebox title="Are you sure?" id="nexusModsDeleteThumbnails">Do you really want to delete all thumbnails?</Messagebox>
+        <Messagebox title="Done" id="nexusModsDeleteThumbnailsSuccess">Thumbnails deleted.</Messagebox>
+        <Messagebox title="Something went wrong" id="nexusModsDeleteThumbnailsFailed">Thumbnails couldn't be deleted.
+Try again later.</Messagebox>
+        <Messagebox title="Are you sure?" id="nexusModsRemoveProfile">Do you really want to remove your profile from the mod manager?</Messagebox>
+        <Messagebox title="Done" id="nexusModsRemoveProfileSuccess">Profile removed.</Messagebox>
+        <Messagebox title="Are you sure?" id="nexusModsRemoveRemoteInfo">Do you really want to remove mod information?</Messagebox>
+        <Messagebox title="Done" id="nexusModsRemoveRemoteInfoSuccess">Mod information removed.</Messagebox>
+    </Messageboxes>
+    <Form1 title="【辐射76.ini文件】快速配置器（喵大福汉化）">
+        <ToolStrip id="toolStrip1">
+            <ToolStripButton text="应用生效" id="toolStripButtonApply" />
+            <ToolStripButton text="核冬天模式" id="toolStripButtonToggleNuclearWinterMode" />
+            <ToolStripSplitButton text="启动" id="toolStripSplitButtonLaunchGame">
+                <ToolStripMenuItem text="启动Steam版本" id="launchViaSteamToolStripMenuItem" />
+                <ToolStripMenuItem text="启动Bethesda版本" id="launchViaBethesdanetToolStripMenuItem" />
+                <ToolStripMenuItem text="启动Bethesda（测试）版本" id="launchViaBethesdanetPTSToolStripMenuItem" />
+            </ToolStripSplitButton>
+            <ToolStripButton text="模组" id="toolStripButtonManageMods" />
+            <ToolStripSplitButton text="更新" id="toolStripSplitButtonUpdate">
+                <ToolStripMenuItem text="更新工具" id="updateToolToolStripMenuItem" />
+                <ToolStripMenuItem text="检查更新" id="checkForUpdatesToolStripMenuItem" />
+                <ToolStripMenuItem text="下载/更新汉化文件" id="downloadUpdateLanguageFilesToolStripMenuItem" />
+                <ToolStripMenuItem text="查看更新日志" id="showUpdaterlogtxtToolStripMenuItem" />
+            </ToolStripSplitButton>
+            <ToolStripDropDownButton text="浏览" id="toolStripDropDownButtonExplore">
+                <ToolStripMenuItem text="查看游戏安装路径" id="gameFolderToolStripMenuItem" />
+                <ToolStripMenuItem text="查看游戏配置路径" id="gamesConfigurationFolderToolStripMenuItem" />
+                <ToolStripMenuItem text="查看工具配置路径" id="toolConfigurationFolderToolStripMenuItem" />
+                <ToolStripMenuItem text="查看工具语言包路径" id="toolLanguagesFolderToolStripMenuItem" />
+                <ToolStripMenuItem text="查看工具安装路径" id="toolInstallationFolderToolStripMenuItem" />
+                <ToolStripMenuItem text="查看Steam截图" id="steamScreenshotFolderToolStripMenuItem" />
+                <ToolStripMenuItem text="查看游戏相簿" id="gamePhotosFolderToolStripMenuItem" />
+                <ToolStripMenuItem text="编辑Fallout76.ini文件" id="editFallout76iniToolStripMenuItem" />
+                <ToolStripMenuItem text="编辑Fallout76Prefs.ini文件" id="editFallout76PrefsiniToolStripMenuItem" />
+                <ToolStripMenuItem text="编辑Fallout76Custom.ini文件" id="editFallout76CustominiToolStripMenuItem" />
+            </ToolStripDropDownButton>
+            <ToolStripButton text="前往NexusMods官网" id="toolStripButtonNexusMods" />
+        </ToolStrip>
+        <TabControl id="tabControl1">
+            <TabPage text="信息" id="tabPageInfo">
+                <LinkLabel text="授权相关" id="linkLabelAttribution" />
+                <Panel id="panelUpdate">
+                    <LinkLabel text="手动下载和安装..." id="linkLabelManualDownloadPage" />
+                </Panel>
+                <Label text="核冬天模式已激活。" id="labelNWModeActive" />
+                <Panel id="panel1">
+                    <GroupBox text="核冬天选项" id="groupBoxNuclearWinterMode">
+                        <CheckBox text="部署不可用模组" id="checkBoxNWAutoDeployMods" />
+                        <Label text="模组文件选项：" id="labelNWmodoptions" />
+                        <Label text="*.dll文件选项：" id="labelNWdlloptions" />
+                        <Label text="*.ini文件选项：" id="labelNWinioptions" />
+                        <RadioButton text="仅移除模组（archive）资源列表" id="radioButtonNWRemoveLists" />
+                        <RadioButton text="重命名Fallout76Custom.ini文件" id="radioButtonNWRenameINI" />
+                        <CheckBox text="移除可用模组" id="checkBoxNWAutoDisableMods" />
+                        <CheckBox text="移除已添加的*.dll文件" id="checkBoxNWRenameDLL" />
+                    </GroupBox>
+                    <GroupBox text="选择语言包配置文件" id="groupBoxLocalization">
+                        <Button text="刷新" id="buttonRefreshLanguage" />
+                        <Label text="当前汉化包已过期\n某些元素可能无法被汉化。" id="labelOutdatedLanguage" />
+                        <Label text="当前语言选择：" id="labelLanguage" />
+                        <Button text="下载/更新汉化配置文件" id="buttonDownloadLanguages" />
+                    </GroupBox>
+                    <GroupBox text="选择游戏版本" id="groupBoxGameEdition">
+                        <RadioButton text="微软商城/XBox游戏商店版本" id="radioButtonEditionMSStore" />
+                        <RadioButton text="Bethesda.net(测试)版本" id="radioButtonEditionBethesdaNetPTS" />
+                        <RadioButton text="Steam版本" id="radioButtonEditionSteam" />
+                        <RadioButton text="Bethesda.net版本" id="radioButtonEditionBethesdaNet" />
+                    </GroupBox>
+                    <GroupBox text="启动选项" id="groupBoxLaunchOptions">
+                        <Label text="通过微软商城安装的辐射76将无法直接启动。" id="labelLaunchOptionMSStoreNotice" />
+                        <Label text="Tip: 提示：请在 &quot;通用&quot;页签下输入你的登录信息" id="labelLaunchOptionTip" />
+                        <RadioButton text="使用Fallout76.exe直接启动" id="radioButtonLaunchViaExecutable" />
+                        <RadioButton text="使用Steam/Bethesda.net/微软商城启动(推荐)" id="radioButtonLaunchViaLink" />
+                    </GroupBox>
+                    <GroupBox text="选择游戏路径" id="groupBoxGamePaths">
+                        <Label text="游戏路径：" id="labelGamePath" />
+                        <Button text="..." id="buttonPickGamePath" />
+                    </GroupBox>
+                    <GroupBox text="更多选项" id="groupBoxOptions">
+                        <CheckBox text="不调整Fallout76Custom.ini配置文件" id="checkBoxAlternativeINIMode">
+                            <Tooltip>改动将调整Fallout76.ini和Fallout76Prefs.ini文件。
+对模组管理器不生效。
+你可能需要手动从Fallout76Custom.ini文件中移除改动。</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="[客户端]拒绝NTFS写入许可" id="checkBoxDenyNTFSWritePermission">
+                            <Tooltip>这将拒绝辐射76文件夹的写入权限。当只读选项不生效时使用此选项。
+影响的文件路径：%UserProfile%\Documents\My Games\Fallout 76</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="我有不止一个游戏版本" id="checkBoxMultipleGameEditionsUsed">
+                            <Tooltip>勾选此项，如果你希望对多个游戏版本添加模组，
+勾选后，文件将独立存放于各游戏版本</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="将*.ini文件改为只读文件" id="checkBoxReadOnly">
+                            <Tooltip>这选项将立即将所有*.ini文件属性改为只读，如果你的设置被意外恢复，请启用此功能。
+影响的配置文件：%UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
+                        </CheckBox>
+                    </GroupBox>
+                    <GroupBox text="操作习惯设置" id="groupBoxBehavior">
+                        <CheckBox text="播放通知音效" id="checkBoxPlayNotificationSound" />
+                        <CheckBox text="关闭自动更新检测" id="checkBoxIgnoreUpdates" />
+                        <CheckBox text="启动时打开模组管理器" id="checkBoxOpenManageModsOnLaunch" />
+                        <CheckBox text="游戏启动时关闭工具" id="checkBoxQuitOnGameLaunch">
+                            <Tooltip>仅当通过此工具启动时生效</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="点击 &quot;应用 &quot;按钮后不再询问" id="checkBoxSkipBackupQuestion">
+                            <Tooltip>跳过是否进行备份操作问询，点击 &quot;应用 &quot;按钮直接生效。
+注意：此模式下将不再生成备份文件！</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="当工具关闭时或游戏启动时自动应用改动" id="checkBoxAutoApply">
+                            <Tooltip>无需再点击 &quot;应用 &quot;按钮了</Tooltip>
+                        </CheckBox>
+                    </GroupBox>
+                </Panel>
+                <Label text="翻译自：" id="labelTranslationBy" />
+                <Label text="作者：" id="labelAuthor" />
+                <Label text="当前版本：" id="labelVersion" />
+                <Label text="该工具用于快速配置【辐射76.ini】文件。\n提示:如果你不清楚某选项的作用，请将鼠标悬停在该选项\n上。" id="labelDescription" />
+                <Label text="【辐射76.ini文件】快速配置器" id="labelTitle" />
+            </TabPage>
+            <TabPage text="通用" id="tabPageGeneral">
+                <Panel id="panel4">
+                    <GroupBox text="界面相关" id="groupBoxGeneralInterface">
+                        <CheckBox text="显示浮动任务文字提示" id="checkBoxShowFloatingQuestText">
+                            <Tooltip>影响的参数值：bShowFloatingQuestText
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="显示浮动伤害数字（冒险模式）" id="checkBoxShowDamageNumbersA">
+                            <Tooltip>影响的参数值：bShowDamageNumbers
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="启用公共团队通知\n" id="checkBoxShowPublicTeamNotifications">
+                            <Tooltip>影响的参数值：bShowPublicTeamNotifications
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="显示其他玩家姓名" id="checkBoxShowOtherPlayersNames">
+                            <Tooltip>影响的参数值：bShowOtherPlayersNames
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="显示浮动任务标记\n" id="checkBoxShowFloatingQuestMarkers">
+                            <Tooltip>影响的参数值：bShowFloatingQuestMarkers
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="开启动力装甲HUD" id="checkBoxEnablePowerArmorHUD">
+                            <Tooltip>影响的参数值：bEnablePowerArmorHUD
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="显示物品稀有程度（核冬天模式）" id="checkBoxItemRarityColorsNW">
+                            <Tooltip>影响的参数值：bEnableItemRarityColors
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <Label text="浮动任务标记绘制距离" id="labelFloatingQuestMarkersDistance" />
+                        <Label text="在HUD上显示活动效果：" id="labelShowActiveEffectsOnHUD">
+                            <Tooltip>影响的参数值：uHUDActiveEffectWidget
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </Label>
+                        <CheckBox text="显示浮动伤害数字（核冬天模式）" id="checkBoxShowDamageNumbersNW">
+                            <Tooltip>影响的参数值：bShowDamageNumbers
+影响的配置文件： Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <TrackBar id="sliderFloatingQuestMarkersDistance">
+                            <Tooltip>影响的参数值：fFloatingQuestMarkersDistance
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </TrackBar>
+                        <CheckBox text="显示准星" id="checkBoxShowCrosshair">
+                            <Tooltip>影响的参数值：bCrosshairEnabled
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="显示指南针" id="checkBoxShowCompass">
+                            <Tooltip>影响的参数值：bShowCompass
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <TrackBar id="划动HUD不透明度">
+                            <Tooltip>影响的参数值：fHUDOpacity
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </TrackBar>
+                        <Label text="HUD不透明度" id="labelHUDOpacity" />
+                    </GroupBox>
+                    <GroupBox text="任务相关" id="groupBoxQuests">
+                        <CheckBox text="日常任务开始时自动激活" id="checkBoxEnableQuestAutoTrackDaily">
+                            <Tooltip>影响的参数值：bEnableQuestAutoTrackOther
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="事件任务开始时自动激活" id="checkBoxEnableQuestAutoTrackEvent">
+                            <Tooltip>影响的参数值：bEnableQuestAutoTrackEvent
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="其他任务开始时自动激活" id="checkBoxEnableQuestAutoTrackMisc">
+                            <Tooltip>影响的参数值：bEnableQuestAutoTrackMisc
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="支线任务开始时自动激活" id="checkBoxEnableQuestAutoTrackSide">
+                            <Tooltip>影响的参数值：bEnableQuestAutoTrackSide
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="主线任务开始时自动激活" id="checkBoxEnableQuestAutoTrackMain">
+                            <Tooltip>影响的参数值：bEnableQuestAutoTrackMain
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                    </GroupBox>
+                    <GroupBox text="主菜单相关" id="groupBoxMainMenu">
+                        <CheckBox text="启动时显示闪屏和新闻" id="checkBoxShowSplash">
+                            <Tooltip>如果取消勾选，游戏启动时将不再展示新闻。
 
-受影响设置：bShowSplash
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="播放开场动画" id="checkBoxIntroVideos">
-            <Tooltip>如取消勾选，游戏在启动时将不会显示Bethesda图标动画。
+影响的参数值：bShowSplash
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                        </CheckBox>
+                        <CheckBox text="启动时播放Bethesda介绍视频" id="checkBoxIntroVideos">
+                            <Tooltip>如果取消勾选，游戏启动时将不再播放Bethesda的介绍视频。
 
-受影响设置：sIntroSequence, uMainMenuDelayBeforeAllowSkip
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="在主菜单时播放音乐" id="checkBoxMainMenuMusic">
-            <Tooltip>如取消勾选，游戏将不会在主菜单中播放背景音乐。
-
-受影响设置：bPlayMainMenuMusic
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-      </Tab>
-      <Tab text="显示" id="tabPageDisplay">
-        <Button text="检测分辨率" id="buttonDetectResolution" />
-        <Checkbox text="永是优先" id="checkBoxAlwaysActive">
-          <Tooltip>如果你想要游戏在有其他窗口弹出时自动暂停则禁用该项。
-
-受影响设置：bAlwaysActive
-受影响文件：Fallout76Custom.ini</Tooltip>
-        </Checkbox>
-        <Checkbox text="窗口置前" id="checkBoxTopMostWindow">
-          <Tooltip>勾选此项会一直将游戏窗口置前。
-注意：在使用单个显示器时，勾选该项将屏蔽Alt+Tab系统粘滞键。
-
-受影响设置：bTopMostWindow
-受影响文件：Fallout76Prefs.ini</Tooltip>
-        </Checkbox>
-        <Group text="视野" id="groupBoxFieldOfView">
-          <Label text="世界视野（第三人称）：" id="labelWorldFOV">
-            <Tooltip>更改第三人称视角的视野。
-
-默认：80
-受影响设置：fDefaultWorldFOV
-受影响文件：Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
-          </Label>
-          <Label text="第一人称视野：" id="labelFirstPersonFOV">
-            <Tooltip>更改第一人称视角的视野。
-
-默认：80
-受影响设置：fDefault1stPersonFOV
-受影响文件：Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
-          </Label>
-        </Group>
-        <Number id="numCustomResH">
-          <Tooltip>更改垂直分辨率（高度）。
-
-受影响设置：iSize H</Tooltip>
-        </Number>
-        <Label text="X" id="labelCustomResolutionSpacer" />
-        <Label text="显示模式：" id="labelDisplayMode">
-          <Tooltip>更改显示模式。
-
-
-全屏：完整全屏化
-
-窗口化：带边框窗口模式
-
-无边框窗口化：请确保你的分辨率设置和显示器分辨率一致。
-
-无边框窗口化（全屏）：窗口将最大化并自动适应你的显示器分辨率。
-如果分辨率过低，画面会模糊。
-
-
-受影响设置：bFull Screen, bBorderless
-受影响文件：Fallout76Prefs.ini</Tooltip>
-        </Label>
-        <Number id="numCustomResW">
-          <Tooltip>更改水平分辨率（宽度）。
-
-受影响设置：iSize W</Tooltip>
-        </Number>
-        <Label text="分辨率：" id="labelResolution">
-          <Tooltip>更改分辨率。
-将其更改为“自定义”可以在下方设置你想要的数值。
-
-受影响设置：iSize W, iSize H
-受影响文件：Fallout76Prefsini</Tooltip>
-        </Label>
-        <Label text="自定义分辨率：" id="labelCustomResolution">
-          <Tooltip>将分辨率设置为“自定义”来解锁该选项。</Tooltip>
-        </Label>
-      </Tab>
-      <Tab text="画质" id="tabPageGraphics">
-        <Group text="TAA锐化" id="groupBoxTAASharpening">
-          <Label text="后处理锐化" id="labelTAAPostSharpen" />
-          <Slider id="sliderTAAPostSharpen">
-            <Tooltip>锐化图像。
+影响的参数值：sIntroSequence, uMainMenuDelayBeforeAllowSkip
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                        </CheckBox>
+                    </GroupBox>
+                </Panel>
+                <GroupBox text="使用Bethesda.net登录" id="groupBoxLogin">
+                    <RadioButton text="账号#8" id="radioButtonAccount8" />
+                    <RadioButton text="账号#7" id="radioButtonAccount7" />
+                    <RadioButton text="账号#6" id="radioButtonAccount6" />
+                    <RadioButton text="账号#5" id="radioButtonAccount5" />
+                    <RadioButton text="账号#4" id="radioButtonAccount4" />
+                    <RadioButton text="账号#3" id="radioButtonAccount3" />
+                    <RadioButton text="账号#2" id="radioButtonAccount2" />
+                    <RadioButton text="账号#1" id="radioButtonAccount1" />
+                    <Label text="配置文件：" id="labelAccountProfiles" />
+                    <CheckBox text="禁用Steam" id="checkBoxDisableSteam" />
+                    <Label text="你的登录信息已被存入Fallout76Custom.ini文件。\n此模式下，你将不再需要手动输入用户名和密码。\n即使你未用启动器启动辐射76。\n\n如果你使用Steam并希望使用你的Bethesda.net账号\n(举例：为了消费原子币), 请勾选禁用Steam选项\n注意：你的成就也将无法完成！" id="labelCredentialsExplanation" />
+                    <CheckBox text="显示密码" id="checkBoxShowPassword" />
+                    <Label text="密码：" id="labelPassword" />
+                    <Label text="用户名：" id="labelUserName" />
+                </GroupBox>
+            </TabPage>
+            <TabPage text="图像" id="tabPageVideo">
+                <Panel id="panel3">
+                    <GroupBox text="图形相关设置" id="groupBoxGraphics">
+                        <GroupBox text="TAA锐化设置" id="groupBoxTAASharpening">
+                            <TrackBar id="sliderTAAPostSharpen">
+                                <Tooltip>用于画质增强
 
 默认：0.2
 推荐：0.4
 
-受影响设置：fTAAPostSharpen
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Slider>
-          <Label text="后处理叠加" id="labelTAAPostOverlay" />
-          <Slider id="sliderTAAPostOverlay">
-            <Tooltip>锐化图像。
+影响的参数值：fTAAPostSharpen
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                            </TrackBar>
+                            <Label text="调整锐化度" id="labelTAAPostSharpen" />
+                            <TrackBar id="sliderTAAPostOverlay">
+                                <Tooltip>用于画质增强
 
-默认：0.2
 推荐：0.2
+默认：0.2
 
-受影响设置：fTAAPostOverlay
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Slider>
-        </Group>
-        <Group text="草丛" id="groupBoxGrass">
-          <Slider id="sliderGrassFadeDistance">
-            <Tooltip>设置距离玩家多远时草丛会开始淡出。
+影响的参数值：fTAAPostOverlay
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                            </TrackBar>
+                            <Label text="调整重叠度" id="labelTAAPostOverlay" />
+                        </GroupBox>
+                        <Label text="抗锯齿类型：" id="labelAntiAliasing">
+                            <Tooltip>通过模糊物体边缘来减少对象锯齿。
 
-中 4500
-高 5500
-超高 7000
+TAA - 实时抗锯齿技术，对硬件要求较高，抗锯齿效果明显，默认
+FXAA - 快速近视抗锯齿技术：轻微提升运行速度，锯齿隐约可见
+关闭（Disabled） - 提高运行速度，锯齿清晰可见
+注意：因为某些原因导致FXAA不生效。至少对我而言，这游戏自始至终无法消除锯齿。
 
-受影响设置：fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Label text="淡出距离" id="labelGrassFadeDistance" />
-          <Checkbox text="开启草丛" id="checkBoxGrass">
-            <Tooltip>在游戏中启用/禁用草丛。
+默认：TAA
+影响的参数值：sAntiAliasing
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </Label>
+                        <GroupBox text="草地" id="groupBoxGrass">
+                            <TrackBar id="sliderGrassFadeDistance">
+                                <Tooltip>设置草地淡出距离
 
-受影响设置：bAllowCreateGrass
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="LOD" id="groupBoxLOD">
-          <Label text="淡出距离" id="labelLODFadeDistance" />
-          <Slider id="sliderLODActors">
-            <Tooltip>设置距离玩家多远时人物（玩家、NPC等）会开始淡出。
+中等（Medium）设置为4500
+高级(High)设置为5500
+极致(Ultra)设置为7000
 
-受影响设置：fLODFadeOutMultActors
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Slider id="sliderLODItems">
-            <Tooltip>设置距离玩家多远时物品会开始淡出。
+影响的参数值：fGrassStartFadeDistance, fGrassMinStartFadeDistance, fGrassMaxStartFadeDistance
+影响的配置文件：Fallout76Prefs.ini
+</Tooltip>
+                            </TrackBar>
+                            <Label text="淡出距离" id="labelGrassFadeDistance" />
+                            <CheckBox text="启用草地" id="checkBoxGrass">
+                                <Tooltip>启用/禁用游戏中草地
 
-受影响设置：fLODFadeOutMultItems
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Slider id="sliderLODObjects">
-            <Tooltip>设置距离玩家多远时物体会开始淡出。
+影响的参数值：bAllowCreateGrass
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                            </CheckBox>
+                        </GroupBox>
+                        <GroupBox text="多细节层次设置" id="groupBoxLOD">
+                            <TrackBar id="sliderLODActors">
+                                <Tooltip>设置角色（玩家，NPC等）淡出距离
 
-受影响设置：fLODFadeOutMultObjects
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Label text="人物" id="labelLODActors" />
-          <Label text="物品" id="labelLODItems" />
-          <Label text="物体" id="labelLODObjects" />
-        </Group>
-        <Group text="光线" id="groupBoxLighting">
-          <Checkbox text="体积光照" id="checkBoxGodrays">
-            <Tooltip>取消勾选会禁用体积光照。
+影响的参数值：fLODFadeOutMultActors
+影响的配置文件：Fallout76Prefs.ini
+</Tooltip>
+                            </TrackBar>
+                            <Label text="淡出距离" id="labelLODFadeDistance" />
+                            <TrackBar id="sliderLODItems">
+                                <Tooltip>到达设置的距离后，物品将开始淡出
 
-受影响设置：bVolumetricLightingEnable
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="阴影" id="groupBoxShadows">
-          <Label text="模糊：" id="labelShadowBlurriness">
-            <Tooltip>模糊阴影，如果你的阴影分辨率较低则非常实用。
+影响的参数值：fLODFadeOutMultItems
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                            </TrackBar>
+                            <TrackBar id="sliderLODObjects">
+                                <Tooltip>到达设置的距离后，对象将开始淡出
 
-受影响设置：uiOrthoShadowFilter
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Label>
-          <Slider id="sliderShadowDistance">
-            <Tooltip>设置阴影渲染的距离。
+影响的参数值：fLODFadeOutMultObjects
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                            </TrackBar>
+                            <Label text="角色" id="labelLODActors" />
+                            <Label text="物品" id="labelLODItems" />
+                            <Label text="对象" id="labelLODObjects" />
+                        </GroupBox>
+                        <CheckBox text="垂直同步(VSync)" id="checkBoxVSync">
+                            <Tooltip>取消将关闭垂直同步。
+如果您遇到屏幕撕裂，请启用此功能。
+如果你遇到输入延迟，请禁用此功能。
 
-超高 150000
-高 120000
-中 90000
-低 60000
+请注意:手动将游戏FPS上限设定为60。(例如：使用NVIDIA的控制面板)
 
-将数值设置为低可能会禁用阴影，需要更多测试。
+默认：启用
+影响的参数值：iPresentInterval
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </CheckBox>
+                        <GroupBox text="光照效果设置" id="groupBoxLighting">
+                            <CheckBox text="体积光技术" id="checkBoxGodrays">
+                                <Tooltip>取消将禁用体积光技术。
 
-受影响设置：fShadowDistance, fDirShadowDistance
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Slider>
-          <Label text="距离" id="labelShadowDistance" />
-          <Label text="贴图分辨率：" id="labelShadowTextureResolution">
-            <Tooltip>阴影贴图分辨率。该项数值越高，阴影细节则更高。
+影响的参数值：bVolumetricLightingEnable
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                            </CheckBox>
+                        </GroupBox>
+                        <Label text="各项异性过滤：" id="labelAnisotropicFiltering">
+                            <Tooltip>减少从斜角度查看物体材质导致的锯齿。
 
-受影响设置：iShadowMapResolution
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Label>
-        </Group>
-        <Group text="水" id="groupBoxWater">
-          <Checkbox text="动态" id="checkBoxWaterDisplacement">
-            <Tooltip>启用/禁用动态水面（波纹、波浪）。
+默认： 8
+影响的参数值：iMaxAnisotropy
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                        </Label>
+                        <GroupBox text="阴影设置" id="groupBoxShadows">
+                            <TrackBar id="sliderfBlendSplitDirShadow">
+                                <Tooltip>游戏在低分辨率下的阴影“过渡段”距离。
+必须是12的倍数。
 
-受影响设置：bUseWaterDisplacements
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="后处理" id="groupBoxPostProcessing">
-          <Checkbox text="环境光遮蔽" id="checkBoxAmbientOcclusion">
-            <Tooltip>取消勾选会禁用环境光遮蔽。
-环境光遮蔽可以在光线无法达到的地方填充假阴影（凹型边缘）。
+影响的参数值：fBlendSplitDirShadow
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                            </TrackBar>
+                            <Label text="&quot;过渡段&quot; 过渡距离" id="labelfBlendSplitDirShadow" />
+                            <Label text="过渡段：" id="label2">
+                                <Tooltip>远处渲染低分辨率下阴影的“过渡段”数量。
+设置值为1时，会迫使游戏只渲染最低分辨率的阴影。
 
-受影响设置：bSAOEnable
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="景深" id="checkBoxDepthOfField">
-            <Tooltip>取消勾选会禁用全部景深效果。
+影响的参数值：iDirShadowSplits
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                            </Label>
+                            <TrackBar id="sliderShadowDistance">
+                                <Tooltip>设置阴影渲染的距离。
 
-受影响文件：Fallout76Custom.ini
-受影响设置：
+极致（Ultra）设置为150000
+高级（High）设置为120000
+中等（Medium）设置为90000
+低（Low）设置为60000
+
+我认为，设置为低将禁用阴影。该项仍需要更多测试。
+
+影响的参数值：fShadowDistance, fDirShadowDistance
+影响的配置文件：Fallout76Prefs.ini
+</Tooltip>
+                            </TrackBar>
+                            <Label text="模糊强度：" id="labelShadowBlurriness">
+                                <Tooltip>模糊阴影。如果你的阴影分辨率设置较低，该功能将十分好用。
+
+影响的参数值：uiOrthoShadowFilter
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                            </Label>
+                            <Label text="淡出距离" id="labelShadowDistance" />
+                            <Label text="材质贴图分辨率：" id="labelShadowTextureResolution">
+                                <Tooltip>阴影分辨率。设置越高展示阴影越细节。
+                                	
+影响的参数值：iShadowMapResolution
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                            </Label>
+                        </GroupBox>
+                        <GroupBox text="波纹效果设置" id="groupBoxWater">
+                            <CheckBox text="波纹效果" id="checkBoxWaterDisplacement">
+                                <Tooltip>启用/禁用波纹效果（涟漪，水波）
+
+影响的参数值：bUseWaterDisplacements
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                            </CheckBox>
+                        </GroupBox>
+                        <GroupBox text="天气设置" id="groupBoxWeather">
+                            <CheckBox text="雾天效果" id="checkBoxFogEnabled">
+                                <Tooltip>影响的参数值：bFogEnabled
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                            </CheckBox>
+                            <CheckBox text="潮湿遮挡效果" id="checkBoxWeatherWetnessOcclusion">
+                                <Tooltip>Toggles environmental and clothing wetness occlusion
+
+影响的参数值：bWetnessOcclusion
+影响的配置文件：Fallout76.ini</Tooltip>
+                            </CheckBox>
+                            <CheckBox text="雨水遮挡效果" id="checkBoxWeatherRainOcclusion">
+                                <Tooltip>When checked, rain won't be rendered around your character
+if you're beneath an elevated highway or in a building,
+and rain drops and splashes won't be rendered on the floor.
+
+影响的参数值：bRainOcclusion
+影响的配置文件：Fallout76.ini</Tooltip>
+                            </CheckBox>
+                        </GroupBox>
+                        <GroupBox text="后期处理设置" id="groupBoxPostProcessing">
+                            <CheckBox text="环境光遮罩效果" id="checkBoxAmbientOcclusion">
+                                <Tooltip>取消此选项将禁用环境光遮罩。
+环境光遮蔽基本上为光源无法到达的地方(凹边)添加了假阴影。
+
+影响的参数值：bSAOEnable
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                            </CheckBox>
+                            <CheckBox text="景深效果" id="checkBoxDepthOfField">
+                                <Tooltip>.取消此选项将禁用所有的景深效果。
+
+影响的配置文件：Fallout76Custom.ini
+影响的参数值：
    bDynamicDepthOfField
    fDOFBlendRatio
    fDOFMinFocalCoefDist
@@ -473,290 +653,580 @@
    fDOFDynamicFarRange
    fDOFCenterWeightInt
    fDOFFarDistance</Tooltip>
-          </Checkbox>
-          <Checkbox text="运动模糊" id="checkBoxMotionBlur">
-            <Tooltip>在镜头转动时模糊移动物体。
+                            </CheckBox>
+                            <CheckBox text="动态模糊效果" id="checkBoxMotionBlur">
+                                <Tooltip>当镜头转动时模糊移动的物体。
 
-受影响设置：bMBEnable
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="径向模糊" id="checkBoxRadialBlur">
-            <Tooltip>在玩家受到伤害（例如被子弹击中）或在水下时模糊屏幕。
-取消勾选有可能在水下获得清晰视野。
+影响的参数值：bMBEnable
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                            </CheckBox>
+                            <CheckBox text="径向模糊效果" id="checkBoxRadialBlur">
+                                <Tooltip>当玩家受伤（举例：被子弹集中）或处于水下时模糊屏幕。
+取消此选项将在水下有一个清晰的视角。
 
-受影响设置：bDoRadialBlur, iRadialBlurLevel
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="镜头光晕" id="checkBoxLensFlare">
-            <Tooltip>取消勾选会禁用镜头光晕。
+影响的参数值：bDoRadialBlur, iRadialBlurLevel
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                            </CheckBox>
+                            <CheckBox text="镜头光晕效果" id="checkBoxLensFlare">
+                                <Tooltip>取消此选项将禁用镜头光晕效果。
 
-受影响设置：bLensFlare
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="天气" id="groupBoxWeather">
-          <Checkbox text="迷雾" id="checkBoxFogEnabled">
-            <Tooltip>受影响设置：bFogEnabled
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="湿度遮蔽" id="checkBoxWeatherWetnessOcclusion">
-            <Tooltip>开启环境与服装湿度遮蔽。
+影响的参数值：bLensFlare
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                            </CheckBox>
+                        </GroupBox>
+                    </GroupBox>
+                </Panel>
+                <GroupBox text="显示设置" id="groupBoxDisplay">
+                    <CheckBox text="修复5：4和4:3显示比例下的HUD（部分情况可用）" id="checkBoxFixHUDFor5_4and4_3">
+                        <Tooltip>修复无边框和边框模式下锁屏
+  * 锁屏和
+  * 动力装甲HUD
+针对5:4和4:3屏幕。
 
-受影响设置：bWetnessOcclusion
-受影响文件：Fallout76.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="雨水遮蔽" id="checkBoxWeatherRainOcclusion">
-            <Tooltip>勾选时，雨水不会在玩家周围渲染。
-如果你在高架公路下或建筑里时，
-雨滴飞溅不会在地面上渲染。
+大部分未经测试。
 
-受影响设置：bRainOcclusion
-受影响文件：Fallout76.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Label text="各向异性滤镜：" id="labelAnisotropicFiltering">
-          <Tooltip>从倾斜角度查看时，减少纹理的混叠。
+影响的参数值：fLockPositionY, fUIPowerArmorGeometry_TranslateZ, fUIPowerArmorGeometry_TranslateY
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </CheckBox>
+                    <Button text="检测分辨率" id="buttonDetectResolution" />
+                    <Label text="自定义分辨率：" id="labelCustomResolution">
+                        <Tooltip>Set resolution to "Custom" for this option to become available.</Tooltip>
+                    </Label>
+                    <CheckBox text="保持活跃" id="checkBoxAlwaysActive">
+                        <Tooltip>如果你想让其他窗口在最前时暂停游戏选择禁用此项。
+                        	
+影响的参数值：bAlwaysActive
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </CheckBox>
+                    <Label text="分辨率：" id="labelResolution">
+                        <Tooltip>改变分辨率设置。
+设置成“自定义”将允许你调整成自定义参数。
 
-默认：8
-受影响设置：iMaxAnisotropy
-受影响文件：Fallout76Prefs.ini</Tooltip>
-        </Label>
-        <Checkbox text="垂直同步" id="checkBoxVSync">
-          <Tooltip>取消勾选会禁用帧数锁。
+影响的参数值：iSize W, iSize H
+影响的配置文件：Fallout76Prefsini</Tooltip>
+                    </Label>
+                    <CheckBox text="窗口置顶" id="checkBoxTopMostWindow">
+                        <Tooltip>勾选此项将保持游戏在最前。
+注意：这将阻止你使用单一显示器的Alt+Tab切屏功能。
 
-如果发现有画面撕裂则勾选。
-如果发现控制延迟则取消勾选。
+影响的参数值：bTopMostWindow
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </CheckBox>
+                    <NumericUpDown id="numCustomResW">
+                        <Tooltip>改变水平分辨率(宽度)。
 
-请注意：可以手动将游戏帧数设置为60 FPS（例如使用NVIDIA控制面板）
+影响的参数值：iSize W</Tooltip>
+                    </NumericUpDown>
+                    <NumericUpDown id="numCustomResH">
+                        <Tooltip>改变垂直分辨率(高度)。
+
+影响的参数值：iSize H</Tooltip>
+                    </NumericUpDown>
+                    <Label text="显示模式：" id="labelDisplayMode">
+                        <Tooltip>修改显示模式。
+
+
+全屏模式（Fullscreen）：真实的全屏模式
+
+窗口模式（Windowed）：有边框的窗口模式
+
+无边框窗口模式（Borderless）： 确保分辨率与显示器的分辨率匹配的窗口模式。
+
+全屏无边框窗口模式 (Fullscreen)：窗口将最大化以适应你的屏幕。
+如果分辨率太低，可能看起来会像素化（使用了相邻单位的像素）
+
+
+影响的参数值：bFull Screen, bBorderless
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </Label>
+                    <Label text="X" id="labelCustomResolutionSpacer" />
+                </GroupBox>
+            </TabPage>
+            <TabPage text="音效" id="tabPageAudio">
+                <GroupBox text="音效设置" id="groupBoxAudio">
+                    <CheckBox text="启用音效" id="checkBoxEnableAudio">
+                        <Tooltip>影响的参数值：bEnableAudio
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </CheckBox>
+                    <CheckBox text="主菜单播放音乐" id="checkBoxMainMenuMusic">
+                        <Tooltip>取消此选项，游戏在主菜单将不再播放背景音乐。
+                        	
+影响的参数值：bPlayMainMenuMusic
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </CheckBox>
+                </GroupBox>
+                <GroupBox text="语音设置" id="groupBoxVoice">
+                    <Label text="语音聊天模式：" id="labelVoiceChatMode" />
+                    <CheckBox text="启用按键说话" id="checkBoxPushToTalk">
+                        <Tooltip>影响的参数值：bVoicePushToTalkEnabled
+影响的参数值：Fallout76Prefs.ini</Tooltip>
+                    </CheckBox>
+                </GroupBox>
+                <GroupBox text="音量设置" id="groupBoxAudioVolume">
+                    <TrackBar id="sliderAudioChat">
+                        <Tooltip>改变聊天的音量大小。
+
+影响的参数值：uVivoxVoiceVolume
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </TrackBar>
+                    <TrackBar id="sliderAudiofVal6">
+                        <Tooltip>改变哔哔小子广播音量大小。
+
+影响的参数值：fVal6
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </TrackBar>
+                    <TrackBar id="sliderAudiofVal5">
+                        <Tooltip>改变脚步声音量大小。
+
+影响的参数值：fVal5
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </TrackBar>
+                    <TrackBar id="sliderAudiofVal4">
+                        <Tooltip>改变效果音量大小。
+
+影响的参数值：fVal4
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </TrackBar>
+                    <TrackBar id="sliderAudiofVal3">
+                        <Tooltip>改变音乐音量大小。
+
+影响的参数值：fVal3
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </TrackBar>
+                    <TrackBar id="sliderAudiofVal2">
+                        <Tooltip>改变语音音量大小。
+
+影响的参数值：fVal2
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </TrackBar>
+                    <TrackBar id="sliderAudiofVal1">
+                        <Tooltip>改变世界广播音量大小。
+
+影响的参数值：fVal1
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </TrackBar>
+                    <Label text="总音量" id="labelVolumeMaster" />
+                    <TrackBar id="sliderVolumeMaster">
+                        <Tooltip>改变游戏全局音量大小。
+
+影响的参数值：fAudioMasterVolume
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </TrackBar>
+                    <TrackBar id="sliderAudiofVal0">
+                        <Tooltip>改变菜单音乐的音量大小。
+
+影响的参数值：fVal0
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </TrackBar>
+                    <Label text="聊天" id="labelAudioChat" />
+                    <Label text="菜单音乐" id="labelAudiofVal0" />
+                    <Label text="哔哔小子广播" id="labelAudiofVal6" />
+                    <Label text="世界广播" id="labelAudiofVal1" />
+                    <Label text="脚步声" id="labelAudiofVal5" />
+                    <Label text="语音" id="labelAudiofVal2" />
+                    <Label text="效果" id="labelAudiofVal4" />
+                    <Label text="音乐" id="labelAudiofVal3" />
+                </GroupBox>
+                <GroupBox text="界面设置" id="groupBoxAudioInterface">
+                    <TrackBar id="sliderConversationHistorySize">
+                        <Tooltip>影响的参数值：fConversationHistorySize
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </TrackBar>
+                    <Label text="历史对话大小设置（展示行数）：" id="labelConversationHistorySize" />
+                    <CheckBox text="显示历史对话" id="checkBoxDialogueHistory">
+                        <Tooltip>影响的参数值：bShowDialogueHistory
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </CheckBox>
+                    <CheckBox text="显示对话字幕" id="checkBoxDialogueSubtitles">
+                        <Tooltip>影响的参数值：bDialogueSubtitles
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </CheckBox>
+                    <CheckBox text="显示一般字幕" id="checkBoxGeneralSubtitles">
+                        <Tooltip>影响的参数值：bGeneralSubtitles
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </CheckBox>
+                </GroupBox>
+            </TabPage>
+            <TabPage text="控制" id="tabPageControls">
+                <GroupBox text="手柄设置" id="groupBoxGamepad">
+                    <CheckBox text="启用手柄控制" id="checkBoxGamepadEnabled">
+                        <Tooltip>如果你已经插入了手柄，但想用键盘和鼠标来代替的话，取消这个选项。
+                        	否则保持勾选。
+
+影响的参数值：bGamepadEnable
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </CheckBox>
+                    <CheckBox text="启用手柄抖动（受力反馈）" id="checkBoxGamepadRumble">
+                        <Tooltip>启用你手柄的抖动（受力反馈）功能。
+                        	
+影响的参数值：bGamePadRumble
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </CheckBox>
+                </GroupBox>
+                <GroupBox text="鼠标设置" id="groupBoxMouse">
+                    <CheckBox text="鼠标X轴反转" id="checkBoxMouseInvertX">
+                        <Tooltip>影响的参数值：bInvertXValues
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </CheckBox>
+                    <CheckBox text="鼠标Y轴反转" id="checkBoxMouseInvertY">
+                        <Tooltip>影响的参数值：bInvertYValues
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </CheckBox>
+                    <TrackBar id="sliderMouseSensitivity">
+                        <Tooltip>鼠标灵敏度
+
+影响的参数值：fMouseHeadingSensitivity, fMouseHeadingSensitivityY
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </TrackBar>
+                    <CheckBox text="鼠标加速" id="checkBoxMouseAcceleration">
+                        <Tooltip>此选项可能没有任何效果。心理作用？
+不过，把它关掉也无妨。
+
+影响的参数值：bMouseAcceleration
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </CheckBox>
+                    <CheckBox text="修复瞄准灵敏度" id="checkBoxFixAimSensitivity">
+                        <Tooltip>如勾选，目标灵敏度将等于正常灵敏度。
+如未勾选(默认)，当使用机械瞄准时，灵敏度会降低。
+注意：这可能仅在16：9的显示器生效。
+如果想在其他显示比例的显示上生效（比如21:9），请告知我。
+
+注意2：游戏中蹲伏瞄准可能不会生效。
+
+影响的参数值：fIronSightsFOVRotateMult
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </CheckBox>
+                    <Label text="灵敏度" id="labelMouseSensitivity" />
+                    <CheckBox text="修复鼠标水平/垂直灵敏度" id="checkBoxFixMouseSensitivity">
+                        <Tooltip>如勾选此项上下左右的移动灵敏度将相同。
+如未勾选（默认），左右移动的灵敏度可能会高于上下移动的灵敏度。
+
+勾选后，你的鼠标灵敏度可能会有所提升。
+
+灵敏度设置依赖于你的显示器显示比例：
+对4:3的显示器而言，设置值为0.28
+对16:9的显示器而言，设置值为0.28
+对16:10的显示器而言，设置值为0.28
+对21:9的显示器而言，设置值为0.28
+
+默认设置：禁用（0.21，针对所有显示器）
+影响的参数值： fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </CheckBox>
+                </GroupBox>
+            </TabPage>
+            <TabPage text="镜头" id="tabPageCamera">
+                <GroupBox text="镜头选项设置" id="groupBoxCameraOptions">
+                    <Label text="切换延迟（秒）：" id="labelSwitchDelay">
+                        <Tooltip>影响的参数值：f1st3rdSwitchDelay
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </Label>
+                </GroupBox>
+                <GroupBox text="镜头距离设置" id="groupBoxCameraDistance">
+                    <Label text="俯仰最大距离：" id="labelPitchZoomOutMaxDist">
+                        <Tooltip>当你用第三人称看地面时，镜头被放大了多少。
+影响的参数值：fPitchZoomOutMaxDist
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </Label>
+                    <Label text="最大值：" id="labelCameraDistanceMaximum">
+                        <Tooltip>影响的参数值：fVanityModeMaxDist
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </Label>
+                    <Label text="最小值：" id="labelCameraDistanceMinimum">
+                        <Tooltip>影响的参数值：fVanityModeMinDist
+影响的配置文件：Fallout76Custom.ini
+</Tooltip>
+                    </Label>
+                </GroupBox>
+                <GroupBox text="镜头定位（正在运行）" id="groupBoxCameraPositionWIP">
+                    <Button text="居中" id="buttonCameraPositionCenter" />
+                    <Button text="重置" id="buttonCameraPositionReset" />
+                    <Label text="玩家位置：" id="labelCameraPositionPlayer" />
+                    <Label text="调整定位至：" id="labelCameraPositionFor" />
+                    <CheckBox text="应用镜头节点动画" id="checkBoxbApplyCameraNodeAnimations">
+                        <Tooltip>当禁用时，镜头将被定位到玩家角色头顶上。
+你需要用第三人称来放大。
+如果启用，镜头位置将定位到右肩的后面。
+
+可能导致问题。
 
 默认：启用
-受影响设置：iPresentInterval
-受影响文件：Fallout76Prefs.ini</Tooltip>
-        </Checkbox>
-        <Label text="抗锯齿：" id="labelAntiAliasing">
-          <Tooltip>通过模糊物体边缘来减少画面锯齿。
+影响的参数值：bApplyCameraNodeAnimations
+影响的配置文件：Fallout76Custom.ini
+</Tooltip>
+                    </CheckBox>
+                    <RadioButton text="近战" id="radioButtonCameraPositionMeleeCombat" />
+                    <RadioButton text="战斗" id="radioButtonCameraPositionCombat" />
+                    <RadioButton text="徒手" id="radioButtonCameraPositionUnarmed" />
+                    <Label text="更远" id="labelCameraFurther" />
+                    <Label text="更近" id="labelCameraCloser" />
+                    <Label text="上" id="labelCameraUp" />
+                    <Label text="下" id="labelCameraDown" />
+                    <Label text="右" id="labelCameraRight" />
+                    <Label text="左" id="labelCameraLeft" />
+                </GroupBox>
+                <GroupBox text="视距设置" id="groupBoxFieldOfView">
+                    <Label text="默认视距（HUD模式下导致问题）:" id="labelfDefaultFOV">
+                        <Tooltip>导致GUI问题。
 
-TAA - 实时抗锯齿：对配置要求较高，默认
-FXAA - 快速概括式抗锯齿：略微提高性能表现，锯齿可见
-关闭 - 提升性能表现，锯齿清晰可见
+默认：80
+影响的参数值：fDefaultFOV
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </Label>
+                    <Label text="第三人称瞄准视距：" id="labelADSFOV">
+                        <Tooltip>改变第三人称瞄准时的视距。
 
-注意：出于某些原因FXAA似乎无法正常工作。游戏可能会完全关闭抗锯齿，需要测试。
+默认：50
+影响的参数值：f3rdPersonAimFOV
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </Label>
+                    <Label text="第三人称视距：" id="labelWorldFOV">
+                        <Tooltip>改变第三人称时的视距。
 
-默认：TAA
-受影响设置：sAntiAliasing
-受影响文件：Fallout76Prefs.ini</Tooltip>
-        </Label>
-      </Tab>
-      <Tab text="控制" id="tabPageControls">
-        <Group text="游戏手柄" id="groupBoxGamepad">
-          <Checkbox text="开启游戏手柄" id="checkBoxGamepadEnabled">
-            <Tooltip>如果你已插入游戏手柄，但想要使用键盘和鼠标的话则取消勾选。
-否则将其留成勾选状态。
+默认：80
+影响的参数值：fDefaultWorldFOV
+影响的配置文件：Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+                    </Label>
+                    <Label text="第一人称视距：" id="labelFirstPersonFOV">
+                        <Tooltip>改变第一人称时的视距。
 
-受影响设置：bGamepadEnable
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="启用手柄震动（受力反馈）" id="checkBoxGamepadRumble">
-            <Tooltip>启用游戏手柄震动功能（受力反馈）。
+默认：80
+影响的参数值：fDefault1stPersonFOV
+影响的配置文件：Fallout76Custom.ini, Fallout76Prefs.ini</Tooltip>
+                    </Label>
+                </GroupBox>
+                <GroupBox text="待机模式 (镜头自转)" id="groupBoxCameraVanity">
+                    <CheckBox text="强制启用自动待机模式" id="checkBoxForceVanityMode">
+                        <Tooltip>影响的参数值：bForceAutoVanityMode
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </CheckBox>
+                    <CheckBox text="启用自动待机模式" id="checkBoxVanityMode">
+                        <Tooltip>启用此选项是，镜头在玩家一段时间无任何指令输入后将围绕玩家自动旋转。
+但我不确定他是否有效。我尝试站立挂机了5分钟，镜头并未旋转。仍需更多测试。
+影响的参数值：bDisableAutoVanityMode
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </CheckBox>
+                </GroupBox>
+            </TabPage>
+            <TabPage text="哔哔小子" id="tabPagePipBoy">
+                <GroupBox text="分辨率设置" id="groupBoxPipboyResolution">
+                    <Label text="这些设置将同时生效与哔哔小子和急速小子" id="labelPipboyResolutionSideNote" />
+                    <Button text="使用推荐分辨率" id="buttonPipboyTargetSetRecommended">
+                        <Tooltip>推荐值：1752x1400</Tooltip>
+                    </Button>
+                    <Button text="恢复默认值" id="buttonPipboyTargetReset">
+                        <Tooltip>默认值：876x700</Tooltip>
+                    </Button>
+                    <NumericUpDown id="numPipboyTargetHeight">
+                        <Tooltip>改变哔哔小子/急速小子的分辨率高度。
 
-受影响设置：bGamePadRumble
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-        <Group text="鼠标" id="groupBoxMouse">
-          <Checkbox text="鼠标加速" id="checkBoxMouseAcceleration">
-            <Tooltip>该项仍在测试阶段，可能无效。
+影响的参数值：uPipboyTargetHeight
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </NumericUpDown>
+                    <NumericUpDown id="numPipboyTargetWidth">
+                        <Tooltip>改变哔哔小子/急速小子的分辨率宽度。
 
-受影响设置：bMouseAcceleration
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Checkbox text="修复瞄准灵敏度" id="checkBoxFixAimSensitivity">
-            <Tooltip>勾选时，瞄准灵敏度将等于正常灵敏度。
-取消勾选时（默认），使用机瞄的灵敏度将会低于正常。
+影响的参数值：uPipboyTargetWidth
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </NumericUpDown>
+                    <Label text="X" id="labelPipboyResolutionSpacer" />
+                </GroupBox>
+                <GroupBox text="模式选择" id="groupBoxPipboyMode">
+                    <RadioButton text="使用急速小子" id="radioButtonQuickboy">
+                        <Tooltip>影响的参数值：bQuickboyMode
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </RadioButton>
+                    <RadioButton text="使用哔哔小子" id="radioButtonPipboy">
+                        <Tooltip>影响的参数值：bQuickboyMode
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </RadioButton>
+                </GroupBox>
+                <GroupBox text="颜色设置" id="groupBoxPipboyColors">
+                    <Label text="动力装甲界面颜色" id="label1">
+                        <Tooltip>改变访问动力装甲时哔哔小子的颜色。
 
-注意：本项有可能只适用于16:9比例的显示器。
-如果在其它比例的显示器（例如21:9）也生效，请告知工具作者。
+影响的参数值：fPAEffectColorR, fPAEffectColorG, fPAEffectColorB
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </Label>
+                    <Button text="选取颜色" id="buttonColorPickPAPipboy" />
+                    <Button text="重置" id="buttonColorResetPipboy" />
+                    <Button text="重置" id="buttonColorResetPAPipboy" />
+                    <Label text="急速小子颜色" id="labelQuickboyColor">
+                        <Tooltip>影响的参数值：fQuickBoyEffectColorR, fQuickBoyEffectColorG, fQuickBoyEffectColorB
+影响的配置文件：Fallout76Custom.ini</Tooltip>
+                    </Label>
+                    <Button text="选取颜色" id="buttonColorPickQuickboy" />
+                    <Button text="重置" id="buttonColorResetQuickboy" />
+                    <Label text="哔哔小子颜色" id="labelPipboyColor">
+                        <Tooltip>影响的参数值：fPipboyEffectColorR, fPipboyEffectColorG, fPipboyEffectColorB
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </Label>
+                    <Button text="选取颜色" id="buttonColorPickPipboy" />
+                </GroupBox>
+            </TabPage>
+            <TabPage text="画廊" id="tabPageGallery">
+                <GroupBox text="画廊设置" id="groupBoxGallery">
+                    <Label text="点击“刷新画廊”来显示屏幕截图和照片。" id="labelGalleryTip" />
+                </GroupBox>
+                <GroupBox text="选项" id="groupBoxScreenshotOptions">
+                    <Button text="删除缩略图" id="buttonGalleryDeleteThumbnails" />
+                    <CheckBox text="从根目录中找寻指定子文件" id="checkBoxGallerySearchRecursively" />
+                    <Label text="添加路径(换行分隔)：" id="label3" />
+                    <Label text="缩略图大小：" id="labelGalleryThumbnailSize" />
+                    <Button text="刷新画廊" id="buttonRefreshGallery" />
+                    <Label text="截图起始计数：" id="labelScreenshotIndex">
+                        <Tooltip>当你在游戏中使用PrintScreen键进行截图时，保存的截图文件将以你输入的起始计数中值开始记录，如设置0，则保存文件名为“Screenshot0.jpg”
+                        	
+影响的参数值：iScreenShotIndex
+影响的配置文件：Fallout76Prefs.ini</Tooltip>
+                    </Label>
+                </GroupBox>
+            </TabPage>
+            <TabPage text="自定义" id="tabPageCustom">
+                <Button text="保存" id="buttonCustomSave" />
+                <Label text="覆盖文件中的行：" id="labelCustomFile" />
+            </TabPage>
+        </TabControl>
+        <ContextMenuStrip id="contextMenuStrip1">
+            <ToolStripMenuItem text="打开" id="openToolStripMenuItem" />
+            <ToolStripMenuItem text="来自文件夹" id="openFolderToolStripMenuItem" />
+            <ToolStripMenuItem text="剪切" id="cutToolStripMenuItem" />
+            <ToolStripMenuItem text="复制" id="copyToolStripMenuItem" />
+            <ToolStripMenuItem text="删除" id="deleteToolStripMenuItem" />
+        </ContextMenuStrip>
+    </Form1>
+    <FormMods title="管理模组">
+        <Panel id="panel1">
+            <Button text="部署" id="buttonModsDeploy" />
+            <CheckBox text="禁用模组" id="checkBoxDisableMods" />
+        </Panel>
+        <TabControl id="tabControl1">
+            <TabPage text="模组清单" id="tabPageModOrder">
+                <Panel id="panelModDetails">
+                    <GroupBox text="安装选项" id="groupBoxModDetailsInstallationOptions">
+                        <Button text="..." id="buttonModPickRootDir" />
+                        <Label text="安装至：" id="labelModInstallAs" />
+                        <Label text="预置：" id="labelModArchivePreset" />
+                        <CheckBox text="冻结" id="checkBoxFreezeArchive">
+                            <Tooltip>如果你冻结了某个模组（archive），它将不会在部署时再次创建。
+这将提升部署模组的速度。
 
-受影响设置：fIronSightsFOVRotateMult
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-          <Label text="灵敏度" id="labelMouseSensitivity" />
-          <Slider id="sliderMouseSensitivity">
-            <Tooltip>鼠标灵敏度
-
-受影响设置：fMouseHeadingSensitivity, fMouseHeadingSensitivityY
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Slider>
-          <Checkbox text="修正鼠标垂直/水平灵敏度" id="checkBoxFixMouseSensitivity">
-            <Tooltip>如勾选，上/下和左/右的镜头移动灵敏度将会相等。
-如取消勾选，左/右的镜头移动灵敏度会相对高于上/下。
-
-勾选时，你的鼠标灵敏度会适度加速。
-
-灵敏度将取决于你的显示屏高宽比：
-    比例4:3，X数值则等于.028
-    比例16:9，X数值则等于.03738
-    比例16:10，X数值则等于.0336
-    比例21:9，X数值则等于.042
-
-默认：禁用（双向数值等于.021）
-受影响设置：fMouseHeadingXScale, fMouseHeadingYScale, fPitchSpeedRatio, fIronSightsPitchSpeedRatio
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Checkbox>
-        </Group>
-      </Tab>
-      <Tab text="哔哔小子" id="tabPagePipBoy">
-        <Group text="分辨率" id="groupBoxPipboyResolution">
-          <Label text="哔哔小子和快速小子都受到该选项影响。" id="labelPipboyResolutionSideNote" />
-          <Button text="设为推荐分辨率" id="buttonPipboyTargetSetRecommended">
-            <Tooltip>推荐分辨率：1752x1400</Tooltip>
-          </Button>
-          <Button text="重置为默认" id="buttonPipboyTargetReset">
-            <Tooltip>默认分辨率：876x700</Tooltip>
-          </Button>
-          <Number id="numPipboyTargetHeight">
-            <Tooltip>更改哔哔小子/快速小子分辨率的高度。
-
-受影响设置：uPipboyTargetHeight
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Number>
-          <Number id="numPipboyTargetWidth">
-            <Tooltip>更改哔哔小子/快速小子分辨率的宽度。
-
-受影响设置：uPipboyTargetWidth
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Number>
-          <Label text="X" id="labelPipboyResolutionSpacer" />
-        </Group>
-        <Group text="模式" id="groupBoxPipboyMode">
-          <Radiobutton text="使用快速小子" id="radioButtonQuickboy">
-            <Tooltip>受影响设置：bQuickboyMode
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Radiobutton>
-          <Radiobutton text="使用哔哔小子" id="radioButtonPipboy">
-            <Tooltip>受影响设置：bQuickboyMode
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Radiobutton>
-        </Group>
-        <Group text="颜色" id="groupBoxPipboyColors">
-          <Label text="动力装甲颜色" id="label1">
-            <Tooltip>更改在动力装甲内使用的哔哔小子的颜色。
-
-受影响设置：fPAEffectColorR, fPAEffectColorG, fPAEffectColorB
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Label>
-          <Button text="选择颜色" id="buttonColorPickPAPipboy" />
-          <Button text="重置" id="buttonColorResetPipboy" />
-          <Button text="重置" id="buttonColorResetPAPipboy" />
-          <Label text="快速小子颜色" id="labelQuickboyColor">
-            <Tooltip>受影响设置：fQuickBoyEffectColorR, fQuickBoyEffectColorG, fQuickBoyEffectColorB
-受影响文件：Fallout76Custom.ini</Tooltip>
-          </Label>
-          <Button text="选择颜色" id="buttonColorPickQuickboy" />
-          <Button text="重置" id="buttonColorResetQuickboy" />
-          <Label text="哔哔小子颜色" id="labelPipboyColor">
-            <Tooltip>受影响设置：fPipboyEffectColorR, fPipboyEffectColorG, fPipboyEffectColorB
-受影响文件：Fallout76Prefs.ini</Tooltip>
-          </Label>
-          <Button text="选择颜色" id="buttonColorPickPipboy" />
-        </Group>
-      </Tab>
-    </TabContainer>
-  </Form1>
-  <FormMods title="模组管理器">
-    <Element id="panel1">
-      <Button text="安装" id="buttonModsDeploy" />
-      <Checkbox text="禁用模组" id="checkBoxDisableMods" />
-    </Element>
-    <TabContainer id="tabControl1">
-      <Tab text="模组序列" id="tabPageModOrder">
-        <Tool id="toolStrip1">
-          <Button text="添加模组(文件)" id="toolStripButtonAddMod" />
-          <Button text="添加模组（来自*.ba2文件）" id="toolStripButtonAddModFrozen" />
-          <Button text="添加模组(文件夹)" id="toolStripButtonAddModFolder" />
-          <Button text="全选/取消全选" id="toolStripButtonCheckAll" />
-          <Button text="上移" id="toolStripButtonMoveUp" />
-          <Button text="下移" id="toolStripButtonMoveDown" />
-          <Button text="编辑模组描述" id="toolStripButtonModEdit" />
-          <Button text="解冻" id="toolStripButtonUnfreeze" />
-          <Button text="打开模组文件夹" id="toolStripButtonModOpenFolder" />
-          <Button text="删除模组" id="toolStripButtonDeleteMod" />
-        </Tool>
-        <ListView id="listViewMods">
-          <Column>模组名字</Column>
-          <Column>种类</Column>
-          <Column>安装信息</Column>
-          <Column>文件名字</Column>
-          <Column>文件类型</Column>
-          <Column>压缩?</Column>
-          <Column>冷冻?</Column>
-        </ListView>
-      </Tab>
-      <Tab text="设置" id="tabPageModsSettings">
-        <Group text="列表" id="groupBoxLists">
-          <Button text="重置" id="buttonModsResetTextboxes" />
-          <Button text="应用更改" id="buttonModsApplyTextBoxes" />
-          <Button text="清理列表" id="buttonModsCleanLists" />
-          <Label text="sResourceIndexFileList（模组管理器使用）" id="labelsResourceIndexFileList" />
-          <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
-        </Group>
-      </Tab>
-    </TabContainer>
-    <Menu id="menuStrip1">
-      <Item text="文件" id="fileToolStripMenuItem">
-        <Item text="新增模组" id="addModarchiveToolStripMenuItem">
-          <Item text="选择文件" id="fromArchiveToolStripMenuItem" />
-          <Item text="来自*.ba2文件（冷冻）" id="fromba2ArchivefrozenToolStripMenuItem" />
-          <Item text="选择文件夹" id="fromFolderToolStripMenuItem" />
-        </Item>
-        <Item text="添加已安装的模组" id="toolStripMenuItemModsImport" />
-        <Item text="" id="toolStripSeparator1" />
-        <Item text="安装" id="deployToolStripMenuItem" />
-      </Item>
-      <Item text="浏览" id="editToolStripMenuItem">
-        <Item text="显示冲突文件" id="showConflictingFilesToolStripMenuItem" />
-        <Item text="重新加载UI" id="reloadUIToolStripMenuItem" />
-      </Item>
-      <Item text="工具" id="toolsToolStripMenuItem">
-        <Item text="修复全部*.dds文件" id="repairddsFilesToolStripMenuItem" />
-      </Item>
-      <Item text="帮助" id="helpToolStripMenuItem">
-        <Item text="打开说明" id="showREADMEToolStripMenuItem" />
-      </Item>
-    </Menu>
-  </FormMods>
-  <FormModDetails>
-    <Button text="取消" id="buttonModDetailsCancel" />
-    <Button text="好" id="buttonModDetailsOK" />
-    <Label text="..." id="labelModDetailsStatus" />
-    <Button text="应用" id="buttonModDetailsApply" />
-    <Element id="panel1">
-      <Checkbox text="激活该模组" id="checkBoxModDetailsEnabled" />
-      <Label text="注意：冷冻的模组将被忽视。" id="labelModDetailsBulkFrozenModsWarning" />
-      <Group text="预设" id="groupBoxSeparateArchivePresets">
-        <Radiobutton text="自定义" id="radioButtonSeparateArchiveCustom" />
-        <Radiobutton text="声音" id="radioButtonSeparateArchiveSounds" />
-        <Radiobutton text="材质（*.dds文件）" id="radioButtonSeparateArchiveTextures" />
-        <Radiobutton text="常规 / 界面" id="radioButtonSeparateArchiveGeneral" />
-      </Group>
-      <Label text="安装设置被禁用，因为模组为冷冻状态。" id="labelModUnfreeze" />
-      <Button text="解冻" id="buttonModUnfreeze" />
-      <Checkbox text="冷冻" id="checkBoxFreezeArchive">
-        <Tooltip>如'冷冻'一份文件，它将不会在激活时重新创建。
-此设置会加速激活加载。
-
-当文件过大（如1GB或更大）且文件不变的时候，该操作极为有效。</Tooltip>
-      </Checkbox>
-      <Button text="修复*.dds文件" id="buttonModRepairDDS" />
-      <Checkbox text="压缩文件" id="checkBoxModBA2Compression" />
-      <Label text="文件名字：" id="labelModArchiveName" />
-      <Button text="打开文件夹" id="buttonModOpenFolder" />
-      <Label text="模组文件夹名字：" id="labelModFolderName" />
-      <Label text="文件类型：" id="labelModArchiveFormat" />
-      <Label text="安装为：" id="labelModInstallAs" />
-      <Label text="模组名字：" id="labelModName" />
-      <Button text="..." id="buttonModPickRootDir" />
-      <Label text="安装至：" id="labelModInstallInto" />
-    </Element>
-  </FormModDetails>
+这非常实用，尤其有些模组非常巨大（1GB或以上）并且文件不会被改变。</Tooltip>
+                        </CheckBox>
+                        <Label text="安装至：" id="labelModInstallInto" />
+                    </GroupBox>
+                    <Button text="解冻" id="buttonModUnfreeze" />
+                    <GroupBox text="详情" id="groupBoxModDetailsDetails">
+                        <Label text="版本号：" id="labelModVersion" />
+                        <Label text="模组名称：" id="labelModName" />
+                        <Button text="建议" id="buttonModDetailsSuggestArchiveName" />
+                        <Label text="模组文件名：" id="labelModFolderName" />
+                        <Label text="模组地址 (URL)：" id="labelModURL" />
+                        <Label text="模组（Archive）名称：" id="labelModArchiveName" />
+                    </GroupBox>
+                    <Label text="安装选项不可用，因为该模组已被冻结。" id="labelModUnfreeze" />
+                    <Label text="&lt;在此处输入模组名称&gt;" id="labelModTitle" />
+                    <CheckBox text="启用此模组" id="checkBoxModDetailsEnabled" />
+                    <Label text="注意：被冻结的模组会被忽视。" id="labelModDetailsBulkFrozenModsWarning" />
+                </Panel>
+                <ToolStrip id="toolStrip1">
+                    <ToolStripButton text="添加模组(来自archive)" id="toolStripButtonAddMod" />
+                    <ToolStripButton text="添加模组(来自*.ba2 archive)" id="toolStripButtonAddModFrozen" />
+                    <ToolStripButton text="添加模组(来自文件夹)" id="toolStripButtonAddModFolder" />
+                    <ToolStripButton text="选中/取消选中所有" id="toolStripButtonCheckAll" />
+                    <ToolStripButton text="上移" id="toolStripButtonMoveUp" />
+                    <ToolStripButton text="下移" id="toolStripButtonMoveDown" />
+                    <ToolStripButton text="编辑模组详细信息" id="toolStripButtonModEdit" />
+                    <ToolStripButton text="解冻" id="toolStripButtonUnfreeze" />
+                    <ToolStripButton text="打开模组所在文件夹" id="toolStripButtonModOpenFolder" />
+                    <ToolStripButton text="删除模组" id="toolStripButtonDeleteMod" />
+                </ToolStrip>
+                <ListView id="listViewMods">
+                    <Column>模组名称</Column>
+                    <Column>版本</Column>
+                    <Column>类型</Column>
+                    <Column>安装信息</Column>
+                    <Column>Archive名称</Column>
+                    <Column>Archive格式</Column>
+                    <Column>是/否压缩</Column>
+                    <Column>是/否被冻结</Column>
+                </ListView>
+                <Panel id="panel2">
+                    <Button text="应用" id="buttonModDetailsApply" />
+                    <Button text="取消" id="buttonModDetailsCancel" />
+                    <Button text="好的" id="buttonModDetailsOK" />
+                </Panel>
+            </TabPage>
+            <TabPage text="设置" id="tabPageModsSettings">
+                <GroupBox text="操作习惯设置" id="groupBoxModsBehavior">
+                    <CheckBox text="写入sResourceDataDirsFinal至Fallout76Custom.ini配置文件" id="checkBoxModsWriteSResourceDataDirsFinal" />
+                    <CheckBox text="[客户端] 冻结捆绑模组包（archives）" id="checkBoxFreezeBundledArchives">
+                        <Tooltip>它不会重建捆绑包（archives），而是会保存捆绑包的副本，并在部署时询问您是否想更新它</Tooltip>
+                    </CheckBox>
+                    <CheckBox text="生成强关联，而不是手动复制文件（推荐）" id="checkBoxModsUseHardlinks">
+                        <Tooltip>减少磁盘占用空间和模组部署时间</Tooltip>
+                    </CheckBox>
+                    <CheckBox text="解冻*.ba2文件并恢复至默认" id="checkBoxAddArchivesAsBundled" />
+                </GroupBox>
+                <GroupBox text="清单" id="groupBoxLists">
+                    <Button text="重置" id="buttonModsResetTextboxes" />
+                    <Button text="应用改变" id="buttonModsApplyTextBoxes" />
+                    <Button text="清除清单" id="buttonModsCleanLists" />
+                    <Label text="sResourceIndexFileList (模组管理器使用)配置文件" id="labelsResourceIndexFileList" />
+                    <Label text="sResourceArchive2List配置文件" id="labelsResourceArchive2List" />
+                </GroupBox>
+            </TabPage>
+            <TabPage text="NexusMods" id="tabPageNexusMods">
+                <Button text="删除模组信息" id="buttonNMDeleteModInfo" />
+                <CheckBox text="显示API密钥" id="checkBoxShowAPIKey" />
+                <Button text="移除配置文件和API密钥" id="buttonNMRemoveAll" />
+                <Label text="该模组管理器可以通过NexusMods API接口为你检索模组版本和缩略图。\n用于访问API，你需要提供你的私人API密钥。\n\n你的私人API密钥将存储在本地，并将用于以下目的：\n-检索mod信息，例如名称、版本和缩略图\n-显示一些帐户信息，如用户名、个人资料图片、帐户状态和利率限制\n-显示更新是否可用\n\n由于您的个人API密钥链接到您的帐户，永远不要与任何其他用户或您不信任的应用程序共享密钥。\n\n我（作者）与NexusMods没有关系。这个特性是非官方的并使用公共API。" id="labelNMInfo" />
+                <LinkLabel text="获取你的API密钥" id="linkLabelNMGetAPIKey" />
+                <Button text="更新模组信息" id="buttonNMUpdateModInfo" />
+                <Panel id="panel3">
+                    <Label text="无效" id="labelNMAPIKeyStatus" />
+                    <Label text="API密钥：" id="labelNMDescAPIKey" />
+                    <Label text="匿名" id="labelNMUserName" />
+                    <Label text="成员类型：" id="labelNMDescMembership" />
+                    <Label text="从不" id="labelNMDailyRateLimitReset" />
+                    <Label text="基础成员" id="labelNMMembership" />
+                    <Label text="限制重置：" id="labelNMDescLimitReset" />
+                    <Label text="每日速度限制：" id="labelNMDescDailyRateLimit" />
+                    <Label text="0 剩余" id="labelNMDailyRateLimit" />
+                </Panel>
+                <Button text="更新配置文件" id="buttonNMUpdateProfile" />
+                <Button text="删除缩略图" id="buttonNMDeleteThumbnails" />
+                <Label text="API密钥：" id="labelNMAPIKeyTextBox" />
+            </TabPage>
+        </TabControl>
+        <MenuStrip id="menuStrip1">
+            <ToolStripMenuItem text="文件" id="fileToolStripMenuItem">
+                <ToolStripMenuItem text="添加模组" id="addModarchiveToolStripMenuItem">
+                    <ToolStripMenuItem text="来自archive文件" id="fromArchiveToolStripMenuItem" />
+                    <ToolStripMenuItem text="来自*.ba2 archive (frozen)文件" id="fromba2ArchivefrozenToolStripMenuItem" />
+                    <ToolStripMenuItem text="来自文件夹" id="fromFolderToolStripMenuItem" />
+                </ToolStripMenuItem>
+                <ToolStripMenuItem text="导入已安装的模组" id="toolStripMenuItemModsImport" />
+                <ToolStripMenuItem text="部署模组文件（生效）" id="deployToolStripMenuItem" />
+            </ToolStripMenuItem>
+            <ToolStripMenuItem text="查看" id="editToolStripMenuItem">
+                <ToolStripMenuItem text="查看冲突文件日志" id="showConflictingFilesToolStripMenuItem" />
+                <ToolStripMenuItem text="重载UI" id="reloadUIToolStripMenuItem" />
+            </ToolStripMenuItem>
+            <ToolStripMenuItem text="工具" id="toolsToolStripMenuItem">
+                <ToolStripMenuItem text="Archive2相关" id="archive2ToolStripMenuItem">
+                    <ToolStripMenuItem text="打开Archive2" id="openArchive2ToolStripMenuItem" />
+                    <ToolStripMenuItem text="查找*.ba2 archive文件" id="exploreba2ArchiveToolStripMenuItem" />
+                </ToolStripMenuItem>
+            </ToolStripMenuItem>
+            <ToolStripMenuItem text="帮助" id="helpToolStripMenuItem">
+                <ToolStripMenuItem text="查看（README）文件" id="showREADMEToolStripMenuItem" />
+                <ToolStripMenuItem text="查看指南" id="showGuideToolStripMenuItem" />
+                <ToolStripMenuItem text="查看日志文件" id="logFilesToolStripMenuItem">
+                    <ToolStripMenuItem text="查看modmanager.log.txt文件" id="showModmanagerlogtxtToolStripMenuItem" />
+                    <ToolStripMenuItem text="查看archive2.log.txt文件" id="showArchive2logtxtToolStripMenuItem" />
+                </ToolStripMenuItem>
+            </ToolStripMenuItem>
+        </MenuStrip>
+    </FormMods>
 </Language>
