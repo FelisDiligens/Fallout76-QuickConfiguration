@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Polski" iso="pl-PL" author="Gray770" version="1.8.1h1">
+<Language name="Polski" iso="pl-PL" author="Gray770" version="1.8.3">
   <Strings>
     <String text="Nowsza wersja jest dostępna: {0}" id="newVersionAvailable" />
     <String text="Update now!" id="updateNowButton" />
@@ -26,6 +26,8 @@
     <String text="Nie" id="no" />
     <String text="Prawidłowy" id="valid" />
     <String text="Nieprawidłowy" id="invalid" />
+    <String text="Nuclear Winter" id="nuclearwintermode" />
+    <String text="Adventure" id="adventuremode" />
     <String text="Edytuj {0}" id="modDetailsTitle" />
     <String text="Edytuj {0} modów" id="modDetailsTitleBulk" />
   </Strings>
@@ -67,11 +69,10 @@
       <Option>16x</Option>
     </Dropdown>
     <Dropdown id="ShadowTextureResolution">
-      <Option>512 = Potato</Option>
-      <Option>1024 = Low</Option>
-      <Option>2048 = High (default)</Option>
+      <Option>512 = Ziemniak</Option>
+      <Option>1024 = Niskie</Option>
+      <Option>2048 = Wysokie (domyślne)</Option>
       <Option>4096 = Ultra</Option>
-      <Option>8192 = Insane</Option>
     </Dropdown>
     <Dropdown id="ShadowBlurriness">
       <Option>1x</Option>
@@ -150,17 +151,25 @@ Niektóre elementy mogą działać nieprawidłowo
 {0}</Messagebox>
     <Messagebox title="Czy na pewno chcesz przełączyć wersje gry?" id="msstoreRestartRequired">Przełączenie się na/z Microsoft Store wymaga restartu narzędzia.</Messagebox>
     <Messagebox title="Nie można uruchomić gry: {0}" id="msstoreRunExecutableFailed">Niestety, uruchomienie gry przez .exe jest nie możliwe. Thanks Microsoft, we hate it. :(</Messagebox>
-    <Messagebox title="Couldn't add your custom *.ini tweaks" id="customIniFilesParsingError">At least one of your custom *.ini files contains an error.
+    <Messagebox title="Nie udało się dodać twoich linijek do *.ini " id="customIniFilesParsingError">Jeden lub więcej plików *.ini zawiera błąd.
 {0}</Messagebox>
-    <Messagebox title="Display resolution might be too low" id="displayResolutionTooLow">Your display resolution is not supported.
-The windows might be to big to fit on screen.
-Your display size: {0}
-Minimum display size: {1}
-Recommended display size: 1920 x 1080</Messagebox>
+    <Messagebox title="Rozdzielczość może być zbyt niska" id="displayResolutionTooLow">Twoja rozdzielczość ekranu nie jest wspierana.
+Okno może się nie zmieścić na ekranie.
+Twoja rozdzielczość: {0}
+Minimalna rozdzielczość: {1}
+Zalecana rozdzielczość: 1920 x 1080</Messagebox>
+    <Messagebox title="Restart wymagany" id="restartRequired">Restart narzędzia jest wymagany by zmiany zostały zastosowane.
+Czy jesteś pewien, że chcesz zmienić tą opcje?</Messagebox>
+    <Messagebox title="Usunąć {0}?" id="galleryDeleteScreenshot">Usuniesz '{0}'. Czy jesteś pewien?</Messagebox>
+    <Messagebox title="Usunąć {0} plików?" id="galleryDeleteScreenshots">Usuniesz {0} plików. Czy jesteś pewien?</Messagebox>
+    <Messagebox title="Czy jesteś pewien?" id="galleryDeleteThumbnails">Czy jesteś pewien że chcesz usunąć miniaturki zdjęć?
+Następnym razem gdy klikniesz 'Odśwież galerię', załadowanie wszystkich miniaturek potrwa dłużej.</Messagebox>
+    <Messagebox title="Tryb NW wyłączony" id="nwModeDisabled">Możesz teraz włączyć tryb Przygodowy.</Messagebox>
+    <Messagebox title="Tryb NW włączony" id="nwModeEnabled">Możesz teraz włączyć tryb Nuclear Winter.</Messagebox>
     <Messagebox title="Gotowe" id="modsDisabledDone">Mody zostały wyłączone i usunięte z gry.</Messagebox>
     <Messagebox title="Gotowe" id="modsDeployedDone">Mody zostały wdrożone</Messagebox>
     <Messagebox title="Coś poszło nie tak" id="modsDeploymentFailed">Modyfikacje mogły nie zostać wdrożone.
-Please check the log files.</Messagebox>
+Sprawdź logi.</Messagebox>
     <Messagebox title="Nie można znaleźć Archive2" id="modsArchive2Missing">Nie można znaleźć .\Archive2\Archive2.exe 
 Pobierz te narzędzie jeszcze raz lub pobierz Archive2 samodzielnie</Messagebox>
     <Messagebox title="Ścieżka gry nie wybrana" id="modsGamePathNotSet">Ustaw ścieżke gry (folder z Fallout76.exe).</Messagebox>
@@ -220,14 +229,13 @@ Spróbuj ponownie później.</Messagebox>
   <Form1 title="Fallout 76 Quick Configuration">
     <ToolStrip id="toolStrip1">
       <ToolStripButton text="Zastosuj" id="toolStripButtonApply" />
+      <ToolStripButton text="Nuclear Winter" id="toolStripButtonToggleNuclearWinterMode" />
       <ToolStripSplitButton text="Uruchom" id="toolStripSplitButtonLaunchGame">
         <ToolStripMenuItem text="Uruchom wersje Steam" id="launchViaSteamToolStripMenuItem" />
         <ToolStripMenuItem text="Uruchom wersje Bethesda.net" id="launchViaBethesdanetToolStripMenuItem" />
         <ToolStripMenuItem text="Uruchom wersje Bethesda.net (PTS)" id="launchViaBethesdanetPTSToolStripMenuItem" />
       </ToolStripSplitButton>
-      <ToolStripSeparator text="" id="toolStripSeparator1" />
       <ToolStripButton text="Modyfikacje" id="toolStripButtonManageMods" />
-      <ToolStripSeparator text="" id="toolStripSeparator2" />
       <ToolStripSplitButton text="Aktualizacja" id="toolStripSplitButtonUpdate">
         <ToolStripMenuItem text="Aktualizuj narzędzie" id="updateToolToolStripMenuItem" />
         <ToolStripMenuItem text="Sprawdź aktualizacje" id="checkForUpdatesToolStripMenuItem" />
@@ -237,28 +245,37 @@ Spróbuj ponownie później.</Messagebox>
       <ToolStripDropDownButton text="Otwórz" id="toolStripDropDownButtonExplore">
         <ToolStripMenuItem text="Folder instalacyjny gry" id="gameFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Folder konfiguracyjny gry" id="gamesConfigurationFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator4" />
         <ToolStripMenuItem text="Folder konfiguracyjny narzędzia" id="toolConfigurationFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Folder z tłumaczeniami narzędzia" id="toolLanguagesFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Folder instalacyjny narzędzia" id="toolInstallationFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator5" />
         <ToolStripMenuItem text="Folder zrzutów ekranu Steam" id="steamScreenshotFolderToolStripMenuItem" />
         <ToolStripMenuItem text="Folder zdjęć z gry" id="gamePhotosFolderToolStripMenuItem" />
-        <ToolStripSeparator text="" id="toolStripSeparator6" />
         <ToolStripMenuItem text="Edytuj Fallout76.ini" id="editFallout76iniToolStripMenuItem" />
         <ToolStripMenuItem text="Edytuj Fallout76Prefs.ini" id="editFallout76PrefsiniToolStripMenuItem" />
         <ToolStripMenuItem text="Edytuj Fallout76Custom.ini" id="editFallout76CustominiToolStripMenuItem" />
       </ToolStripDropDownButton>
-      <ToolStripSeparator text="" id="toolStripSeparator3" />
       <ToolStripButton text="NexusMods" id="toolStripButtonNexusMods" />
     </ToolStrip>
     <TabControl id="tabControl1">
       <TabPage text="Info" id="tabPageInfo">
+        <LinkLabel text="Licensed work" id="linkLabelAttribution" />
         <Panel id="panelUpdate">
           <LinkLabel text="Lub pobierz i zainstaluj samodzielnie" id="linkLabelManualDownloadPage" />
         </Panel>
+        <Label text="Tryb Nuclear Winter mode jest aktywny." id="labelNWModeActive" />
         <Panel id="panel1">
+          <GroupBox text="Opcje Nuclear Winter" id="groupBoxNuclearWinterMode">
+            <CheckBox text="Wdróż mody zamiast je wyłączać" id="checkBoxNWAutoDeployMods" />
+            <Label text="Opcje modyfikacji:" id="labelNWmodoptions" />
+            <Label text="Opcje *.dll:" id="labelNWdlloptions" />
+            <Label text="Opcje *.ini:" id="labelNWinioptions" />
+            <RadioButton text="Usuń listę modyfikacji z pliku Fallout76Custom.ini" id="radioButtonNWRemoveLists" />
+            <RadioButton text="Zmień nazwę Fallout76Custom.ini" id="radioButtonNWRenameINI" />
+            <CheckBox text="Usuń mody zamiast je włączać" id="checkBoxNWAutoDisableMods" />
+            <CheckBox text="Zmień nazwę dodanych plików *.dll" id="checkBoxNWRenameDLL" />
+          </GroupBox>
           <GroupBox text="Lokalizacja" id="groupBoxLocalization">
+            <Button text="Odśwież" id="buttonRefreshLanguage" />
             <Label text="Te tłumaczenie jest przestarzałe\nNiektóre elementy mogą być nieprzetłumaczone" id="labelOutdatedLanguage" />
             <Label text="Język:" id="labelLanguage" />
             <Button text="Pobierz / zaktualizuj tłumaczenie" id="buttonDownloadLanguages" />
@@ -280,6 +297,11 @@ Spróbuj ponownie później.</Messagebox>
             <Button text="..." id="buttonPickGamePath" />
           </GroupBox>
           <GroupBox text="Opcje" id="groupBoxOptions">
+            <CheckBox text="Nie używaj Fallout76Custom.ini do zmian." id="checkBoxAlternativeINIMode">
+              <Tooltip>Wstawia tweaks do Fallout76.ini i Fallout76Prefs.ini zamiast do Fallout76Custom.ini.
+Ta opcja nie ma wpływu na menedżer modyfikacji.
+Może być konieczne usunięcie tweaks ręcznie z Fallout76Custom.ini.</Tooltip>
+            </CheckBox>
             <CheckBox text="[Experimental] Wyłącz uprawienia zapisu NTFS." id="checkBoxDenyNTFSWritePermission">
               <Tooltip>Ta opcja wyłączy uprawnienia do edycji foldera "Fallout 76".
 Użyj tego, jeśli opcja read-only nie działa.
@@ -290,9 +312,6 @@ Zmiany w: %UserProfile%\Documents\My Games\Fallout 76</Tooltip>
               <Tooltip>Zaznacz tą opcje jeśli modyfikujesz więcej niż jedną wersje gry.
 Jeśli zaznaczone linijka "sResourceIndexFileList" zostanie zapisana dla każdej wersji odzielnie.</Tooltip>
             </CheckBox>
-            <CheckBox text="Tryb Nuclear Winter" id="checkBoxNWMode">
-              <Tooltip>Obecnie tylko nazwa Fallout76Custom.ini zmienia się na Fallout76Custom.ini.nwmodebak.</Tooltip>
-            </CheckBox>
             <CheckBox text="Pliki *.ini tylko do odczytu" id="checkBoxReadOnly">
               <Tooltip>Ta opcja ustawi wszystkie pliki *.ini tylko do odczytu.
 
@@ -300,6 +319,7 @@ Pliki: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
             </CheckBox>
           </GroupBox>
           <GroupBox text="Program" id="groupBoxBehavior">
+            <CheckBox text="Odtwarzaj dzwięk powiadomień" id="checkBoxPlayNotificationSound" />
             <CheckBox text="Nie sprawdzaj aktualizacji." id="checkBoxIgnoreUpdates" />
             <CheckBox text="Otwórz menedżer modów gdy narzędzie jest włączane." id="checkBoxOpenManageModsOnLaunch" />
             <CheckBox text="Wyłącz narzędzie gry gra jest włączona." id="checkBoxQuitOnGameLaunch">
@@ -416,6 +436,12 @@ Zmiany w: Fallout76Custom.ini</Tooltip>
           </GroupBox>
         </Panel>
         <GroupBox text="Logowanie" id="groupBoxLogin">
+          <CheckBox text="Automatycznie loguj" id="checkBoxAutoSignin">
+            <Tooltip>Włączenie tej opcji będzie pomijać część logowania jeśli ustawisz wyżej, swoje dane logowania.
+
+Zmieniona wartość: bAutoSignin
+Zmiany w: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
           <RadioButton text="Konto #8" id="radioButtonAccount8" />
           <RadioButton text="Konto #7" id="radioButtonAccount7" />
           <RadioButton text="Konto #6" id="radioButtonAccount6" />
@@ -425,7 +451,10 @@ Zmiany w: Fallout76Custom.ini</Tooltip>
           <RadioButton text="Konto #2" id="radioButtonAccount2" />
           <RadioButton text="Konto #1" id="radioButtonAccount1" />
           <Label text="Profile:" id="labelAccountProfiles" />
-          <CheckBox text="Wyłącz Steam" id="checkBoxDisableSteam" />
+          <CheckBox text="Wyłącz Steam" id="checkBoxDisableSteam">
+            <Tooltip>Zmieniona wartość: bSteamEnabled
+Zmiany w: Fallout76Custom.ini</Tooltip>
+          </CheckBox>
           <Label text="Ta opcja zapisuje dane logowania w pliku Fallout76Custom.ini\nDzięki czemu nie musisz sie logować gdy włączasz gre przez pliki" id="labelCredentialsExplanation" />
           <CheckBox text="Pokaż hasło" id="checkBoxShowPassword" />
           <Label text="Hasło:" id="labelPassword" />
@@ -1043,6 +1072,9 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
           <Label text="Naciśnij 'Odśwież galerię' w celu wyświetlenia zrzutów ekranu oraz zdjęć." id="labelGalleryTip" />
         </GroupBox>
         <GroupBox text="Opcje" id="groupBoxScreenshotOptions">
+          <Button text="Usuń miniaturki" id="buttonGalleryDeleteThumbnails" />
+          <CheckBox text="Przeszukaj podfoldery rekurencyjnie" id="checkBoxGallerySearchRecursively" />
+          <Label text="Dodatkowe ścieżki:" id="label3" />
           <Label text="Rozmiar miniaturki:" id="labelGalleryThumbnailSize" />
           <Button text="Odśwież galerię" id="buttonRefreshGallery" />
           <Label text="Index zrzutu ekranu:" id="labelScreenshotIndex">
@@ -1059,6 +1091,13 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
         <Label text="Nadpisuj linijki w pliku:" id="labelCustomFile" />
       </TabPage>
     </TabControl>
+    <ContextMenuStrip id="contextMenuStrip1">
+      <ToolStripMenuItem text="Open" id="openToolStripMenuItem" />
+      <ToolStripMenuItem text="Open folder" id="openFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Cut" id="cutToolStripMenuItem" />
+      <ToolStripMenuItem text="Copy" id="copyToolStripMenuItem" />
+      <ToolStripMenuItem text="Delete" id="deleteToolStripMenuItem" />
+    </ContextMenuStrip>
   </Form1>
   <FormMods title="Modyfikacje">
     <Panel id="panel1">
@@ -1098,16 +1137,12 @@ Jest to przydatne gdy archiwum jest wielkie (1GiB lub więcej)</Tooltip>
           <ToolStripButton text="Dodaj mod (z archiwum)" id="toolStripButtonAddMod" />
           <ToolStripButton text="Dodaj mod (z archiwum *.ba2)" id="toolStripButtonAddModFrozen" />
           <ToolStripButton text="Dodaj mod (z folderu)" id="toolStripButtonAddModFolder" />
-          <ToolStripSeparator text="" id="toolStripSeparator4" />
           <ToolStripButton text="Zaznacz/odznacz wszystko" id="toolStripButtonCheckAll" />
-          <ToolStripSeparator text="" id="toolStripSeparator2" />
           <ToolStripButton text="Przenieść w góre" id="toolStripButtonMoveUp" />
           <ToolStripButton text="Przenieść w dół" id="toolStripButtonMoveDown" />
-          <ToolStripSeparator text="" id="toolStripSeparator3" />
           <ToolStripButton text="Edytuj detale modów" id="toolStripButtonModEdit" />
           <ToolStripButton text="Odmróź" id="toolStripButtonUnfreeze" />
           <ToolStripButton text="Otwórz folder modow" id="toolStripButtonModOpenFolder" />
-          <ToolStripSeparator text="" id="toolStripSeparator5" />
           <ToolStripButton text="Usuń modyfikacje" id="toolStripButtonDeleteMod" />
         </ToolStrip>
         <ListView id="listViewMods">
@@ -1128,6 +1163,7 @@ Jest to przydatne gdy archiwum jest wielkie (1GiB lub więcej)</Tooltip>
       </TabPage>
       <TabPage text="Ustawienia" id="tabPageModsSettings">
         <GroupBox text="Zachowanie" id="groupBoxModsBehavior">
+          <CheckBox text="Zapisz sResourceDataDirsFinal w Fallout76Custom.ini" id="checkBoxModsWriteSResourceDataDirsFinal" />
           <CheckBox text="[Experimental] Zamróź zapakowane archiwa" id="checkBoxFreezeBundledArchives">
             <Tooltip>Zamiast przebudowywania zapakowanych archiwum, narzędzie zapisuje zapakowaną kopie i pyta czy chcesz ją zaktualizować.</Tooltip>
           </CheckBox>
@@ -1154,15 +1190,15 @@ Więcej o Hard-Links możesz przeczytać w artykule "How to install mods using F
         <LinkLabel text="Uzyskaj swój klucz API" id="linkLabelNMGetAPIKey" />
         <Button text="Zaktualizuj informacje o modyfikacjach" id="buttonNMUpdateModInfo" />
         <Panel id="panel3">
-          <Label text="Nieprawidłowy" id="labelNMAPIKeyStatus" />
+          <Label text="Prawidłowy" id="labelNMAPIKeyStatus" />
           <Label text="Klucz API:" id="labelNMDescAPIKey" />
-          <Label text="Anonim" id="labelNMUserName" />
+          <Label text="Gray770" id="labelNMUserName" />
           <Label text="Członkostwo:" id="labelNMDescMembership" />
-          <Label text="in -16 hour(s) and -41 minute(s)" id="labelNMDailyRateLimitReset" />
+          <Label text="w ciągu -8 godzin(y) i -29 minut(y)" id="labelNMDailyRateLimitReset" />
           <Label text="Basic" id="labelNMMembership" />
           <Label text="Reset limitu:" id="labelNMDescLimitReset" />
           <Label text="Dzienny reset limitu:" id="labelNMDescDailyRateLimit" />
-          <Label text="0 pozostało" id="labelNMDailyRateLimit" />
+          <Label text="2499 zostało" id="labelNMDailyRateLimit" />
         </Panel>
         <Button text="Zaktualizuj profil" id="buttonNMUpdateProfile" />
         <Button text="Usuń miniaturki" id="buttonNMDeleteThumbnails" />
@@ -1177,7 +1213,6 @@ Więcej o Hard-Links możesz przeczytać w artykule "How to install mods using F
           <ToolStripMenuItem text="Z folderu" id="fromFolderToolStripMenuItem" />
         </ToolStripMenuItem>
         <ToolStripMenuItem text="Importuj zainstalowane modyfikacje" id="toolStripMenuItemModsImport" />
-        <ToolStripSeparator text="" id="toolStripSeparator1" />
         <ToolStripMenuItem text="Wdróż" id="deployToolStripMenuItem" />
       </ToolStripMenuItem>
       <ToolStripMenuItem text="Widok" id="editToolStripMenuItem">
@@ -1192,7 +1227,7 @@ Więcej o Hard-Links możesz przeczytać w artykule "How to install mods using F
       </ToolStripMenuItem>
       <ToolStripMenuItem text="Pomoc" id="helpToolStripMenuItem">
         <ToolStripMenuItem text="Pokaż README" id="showREADMEToolStripMenuItem" />
-        <ToolStripMenuItem text="Show guide" id="showGuideToolStripMenuItem" />
+        <ToolStripMenuItem text="Pokaż poradnik" id="showGuideToolStripMenuItem" />
         <ToolStripMenuItem text="Logi" id="logFilesToolStripMenuItem">
           <ToolStripMenuItem text="Otwórz modmanager.log.txt" id="showModmanagerlogtxtToolStripMenuItem" />
           <ToolStripMenuItem text="Otwórz archive2.log.txt" id="showArchive2logtxtToolStripMenuItem" />
