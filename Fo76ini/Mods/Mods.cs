@@ -2057,7 +2057,7 @@ namespace Fo76ini
                         String bundledFrozenArchivePath = Path.Combine(frozenBundledFolder, archive.archiveName);
                         String bundledLiveArchivePath = Path.Combine(Shared.GamePath, "Data", archive.archiveName);
 
-                        if (!this.ModsDisabled && archive.count > 0 && Utils.IsDirectoryEmpty(archive.tempPath))
+                        if (!this.ModsDisabled && archive.count > 0 && !Utils.IsDirectoryEmpty(archive.tempPath))
                         {
                             // Deploy when files exist and NW mode is disabled:
                             if (updateProgress != null)
