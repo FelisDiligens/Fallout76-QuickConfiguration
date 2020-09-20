@@ -72,6 +72,8 @@ namespace Fo76ini
         {
             Mods.Clear();
 
+            NexusMods.Profile.Load();
+
             if (Shared.GamePath == null)
                 return;
 
@@ -95,8 +97,6 @@ namespace Fo76ini
                     // TODO: Handle invalid entries.
                 }
             }
-
-            NexusMods.Profile.Load();
         }
 
         public static void RefreshModInfo(String url)
@@ -449,13 +449,6 @@ namespace Fo76ini
 
         public APIRequest(String url)
         {
-            // https://stackoverflow.com/questions/2859790/the-request-was-aborted-could-not-create-ssl-tls-secure-channel
-            // On Windows 7, the API request would fail with this error message:
-            // WebException: "The request was aborted: Could not create SSL/TLS secure channel"
-            // Adding these lines fixes it:
-            ServicePointManager.Expect100Continue = true;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
             this.url = url;
             this.request = (HttpWebRequest)WebRequest.Create(this.url);
         }

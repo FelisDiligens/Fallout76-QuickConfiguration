@@ -137,6 +137,7 @@
             this.labelScreenshotIndex = new System.Windows.Forms.Label();
             this.checkBoxAlternativeINIMode = new System.Windows.Forms.CheckBox();
             this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
+            this.checkBoxDisableSteam = new System.Windows.Forms.CheckBox();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
@@ -252,7 +253,6 @@
             this.radioButtonAccount2 = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount1 = new System.Windows.Forms.RadioButton();
             this.labelAccountProfiles = new System.Windows.Forms.Label();
-            this.checkBoxDisableSteam = new System.Windows.Forms.CheckBox();
             this.labelCredentialsExplanation = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
@@ -260,6 +260,7 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
+            this.linkLabelWhatsNew = new System.Windows.Forms.LinkLabel();
             this.linkLabelAttribution = new System.Windows.Forms.LinkLabel();
             this.panelUpdate = new System.Windows.Forms.Panel();
             this.labelNewVersion = new System.Windows.Forms.Label();
@@ -1933,6 +1934,17 @@
         "\r\nAffected values: bAutoSignin\r\nAffected files: Fallout76Custom.ini");
             this.checkBoxAutoSignin.UseVisualStyleBackColor = true;
             // 
+            // checkBoxDisableSteam
+            // 
+            this.checkBoxDisableSteam.AutoSize = true;
+            this.checkBoxDisableSteam.Location = new System.Drawing.Point(12, 199);
+            this.checkBoxDisableSteam.Name = "checkBoxDisableSteam";
+            this.checkBoxDisableSteam.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxDisableSteam.TabIndex = 6;
+            this.checkBoxDisableSteam.Text = "Disable Steam";
+            this.toolTip.SetToolTip(this.checkBoxDisableSteam, "Affected values: bSteamEnabled\r\nAffected files: Fallout76Custom.ini");
+            this.checkBoxDisableSteam.UseVisualStyleBackColor = true;
+            // 
             // timerCheckFiles
             // 
             this.timerCheckFiles.Interval = 5000;
@@ -3510,17 +3522,6 @@
             this.labelAccountProfiles.TabIndex = 7;
             this.labelAccountProfiles.Text = "Profiles:";
             // 
-            // checkBoxDisableSteam
-            // 
-            this.checkBoxDisableSteam.AutoSize = true;
-            this.checkBoxDisableSteam.Location = new System.Drawing.Point(12, 199);
-            this.checkBoxDisableSteam.Name = "checkBoxDisableSteam";
-            this.checkBoxDisableSteam.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxDisableSteam.TabIndex = 6;
-            this.checkBoxDisableSteam.Text = "Disable Steam";
-            this.toolTip.SetToolTip(this.checkBoxDisableSteam, "Affected values: bSteamEnabled\r\nAffected files: Fallout76Custom.ini");
-            this.checkBoxDisableSteam.UseVisualStyleBackColor = true;
-            // 
             // labelCredentialsExplanation
             // 
             this.labelCredentialsExplanation.AutoSize = true;
@@ -3586,6 +3587,7 @@
             // tabPageInfo
             // 
             this.tabPageInfo.AutoScroll = true;
+            this.tabPageInfo.Controls.Add(this.linkLabelWhatsNew);
             this.tabPageInfo.Controls.Add(this.linkLabelAttribution);
             this.tabPageInfo.Controls.Add(this.panelUpdate);
             this.tabPageInfo.Controls.Add(this.labelNWModeActive);
@@ -3611,10 +3613,21 @@
             this.tabPageInfo.Text = "Info";
             this.tabPageInfo.UseVisualStyleBackColor = true;
             // 
+            // linkLabelWhatsNew
+            // 
+            this.linkLabelWhatsNew.AutoSize = true;
+            this.linkLabelWhatsNew.Location = new System.Drawing.Point(90, 205);
+            this.linkLabelWhatsNew.Name = "linkLabelWhatsNew";
+            this.linkLabelWhatsNew.Size = new System.Drawing.Size(69, 13);
+            this.linkLabelWhatsNew.TabIndex = 42;
+            this.linkLabelWhatsNew.TabStop = true;
+            this.linkLabelWhatsNew.Text = "What\'s new?";
+            this.linkLabelWhatsNew.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWhatsNew_LinkClicked);
+            // 
             // linkLabelAttribution
             // 
             this.linkLabelAttribution.AutoSize = true;
-            this.linkLabelAttribution.Location = new System.Drawing.Point(90, 202);
+            this.linkLabelAttribution.Location = new System.Drawing.Point(90, 232);
             this.linkLabelAttribution.Name = "linkLabelAttribution";
             this.linkLabelAttribution.Size = new System.Drawing.Size(76, 13);
             this.linkLabelAttribution.TabIndex = 41;
@@ -5911,6 +5924,7 @@
         private System.Windows.Forms.LinkLabel linkLabelAttribution;
         private System.Windows.Forms.CheckBox checkBoxPlayNotificationSound;
         private System.Windows.Forms.CheckBox checkBoxAutoSignin;
+        private System.Windows.Forms.LinkLabel linkLabelWhatsNew;
     }
 }
 

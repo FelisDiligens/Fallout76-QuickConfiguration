@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -130,6 +131,40 @@ namespace Fo76ini_Updater
                     return ver1[i] - ver2[i];
             }
             return 0;*/
+        }
+
+        /// <summary>
+        /// Clamps the value between min and max.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="val"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static T Clamp<T>(T val, T min, T max) where T : IComparable<T>
+        {
+            // https://stackoverflow.com/questions/2683442/where-can-i-find-the-clamp-function-in-net
+
+            if (val.CompareTo(min) < 0) return min;
+            else if (val.CompareTo(max) > 0) return max;
+            else return val;
+        }
+
+        public static void OpenNotepad(String path)
+        {
+            if (File.Exists(path))
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = "notepad.exe",
+                    Arguments = path
+                };
+                Process.Start(startInfo);
+            }
+            else
+            {
+                throw new FileNotFoundException($"File \"{path}\" does not exist!");
+            }
         }
     }
 }

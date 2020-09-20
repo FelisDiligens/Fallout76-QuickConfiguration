@@ -33,17 +33,25 @@
             this.labelStatus = new System.Windows.Forms.Label();
             this.buttonTryAgainAdmin = new System.Windows.Forms.Button();
             this.pictureBoxLoading = new System.Windows.Forms.PictureBox();
+            this.buttonShowLogFile = new System.Windows.Forms.Button();
+            this.backgroundWorkerGatherInfo = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorkerInstall = new System.ComponentModel.BackgroundWorker();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoading)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStartTool
             // 
-            this.buttonStartTool.Location = new System.Drawing.Point(12, 104);
+            this.buttonStartTool.BackColor = System.Drawing.Color.Teal;
+            this.buttonStartTool.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStartTool.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStartTool.ForeColor = System.Drawing.Color.White;
+            this.buttonStartTool.Location = new System.Drawing.Point(12, 83);
             this.buttonStartTool.Name = "buttonStartTool";
-            this.buttonStartTool.Size = new System.Drawing.Size(260, 23);
+            this.buttonStartTool.Size = new System.Drawing.Size(260, 36);
             this.buttonStartTool.TabIndex = 0;
             this.buttonStartTool.Text = "Start tool";
-            this.buttonStartTool.UseVisualStyleBackColor = true;
+            this.buttonStartTool.UseVisualStyleBackColor = false;
             this.buttonStartTool.Click += new System.EventHandler(this.buttonStartTool_Click);
             // 
             // labelStatus
@@ -58,11 +66,11 @@
             // 
             // buttonTryAgainAdmin
             // 
-            this.buttonTryAgainAdmin.Location = new System.Drawing.Point(12, 75);
+            this.buttonTryAgainAdmin.Location = new System.Drawing.Point(12, 125);
             this.buttonTryAgainAdmin.Name = "buttonTryAgainAdmin";
             this.buttonTryAgainAdmin.Size = new System.Drawing.Size(260, 23);
             this.buttonTryAgainAdmin.TabIndex = 2;
-            this.buttonTryAgainAdmin.Text = "Try again, run as admin";
+            this.buttonTryAgainAdmin.Text = "Try again (Run as admin)";
             this.buttonTryAgainAdmin.UseVisualStyleBackColor = true;
             this.buttonTryAgainAdmin.Click += new System.EventHandler(this.buttonTryAgainAdmin_Click);
             // 
@@ -75,11 +83,39 @@
             this.pictureBoxLoading.TabIndex = 3;
             this.pictureBoxLoading.TabStop = false;
             // 
+            // buttonShowLogFile
+            // 
+            this.buttonShowLogFile.Location = new System.Drawing.Point(12, 154);
+            this.buttonShowLogFile.Name = "buttonShowLogFile";
+            this.buttonShowLogFile.Size = new System.Drawing.Size(260, 23);
+            this.buttonShowLogFile.TabIndex = 4;
+            this.buttonShowLogFile.Text = "Show updater.log.txt";
+            this.buttonShowLogFile.UseVisualStyleBackColor = true;
+            this.buttonShowLogFile.Click += new System.EventHandler(this.buttonShowLogFile_Click);
+            // 
+            // backgroundWorkerGatherInfo
+            // 
+            this.backgroundWorkerGatherInfo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerGatherInfo_DoWork);
+            // 
+            // backgroundWorkerInstall
+            // 
+            this.backgroundWorkerInstall.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerInstall_DoWork);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(12, 83);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(260, 12);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar.TabIndex = 5;
+            // 
             // Updater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 141);
+            this.ClientSize = new System.Drawing.Size(284, 194);
+            this.Controls.Add(this.progressBar);
+            this.Controls.Add(this.buttonShowLogFile);
             this.Controls.Add(this.pictureBoxLoading);
             this.Controls.Add(this.buttonTryAgainAdmin);
             this.Controls.Add(this.labelStatus);
@@ -87,9 +123,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(300, 130);
             this.Name = "Updater";
-            this.Text = "Updater v2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Updater v3";
             this.Load += new System.EventHandler(this.Updater_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoading)).EndInit();
             this.ResumeLayout(false);
@@ -102,6 +138,10 @@
         private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.Button buttonTryAgainAdmin;
         private System.Windows.Forms.PictureBox pictureBoxLoading;
+        private System.Windows.Forms.Button buttonShowLogFile;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerGatherInfo;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerInstall;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

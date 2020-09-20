@@ -18,7 +18,7 @@ namespace Fo76ini
 
     public class Shared
     {
-        public const String VERSION = "1.8.3";
+        public const String VERSION = "1.8.4";
 
         public static String OldAppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration");
         public static String AppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");

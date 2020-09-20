@@ -289,6 +289,7 @@ namespace Fo76ini
         public static bool IsDirectoryEmpty(string path)
         {
             // https://stackoverflow.com/questions/755574/how-to-quickly-check-if-folder-is-empty-net
+            // https://stackoverflow.com/a/954837
             return !Directory.EnumerateFileSystemEntries(path).Any();
         }
 

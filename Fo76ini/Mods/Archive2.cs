@@ -78,8 +78,8 @@ namespace Fo76ini.Mods
 
         private static void Call(String arguments)
         {
-            if (Archive2.archive2Path == null)
-                return;
+            if (!Archive2.ValidatePath())
+                throw new Archive2Exception("Path to Archive2.exe not specified or Archive2.exe not found.");
 
             using (Process proc = new Process())
             {
@@ -102,8 +102,8 @@ namespace Fo76ini.Mods
 
         private static void CallParallel(String arguments)
         {
-            if (Archive2.archive2Path == null)
-                return;
+            if (!Archive2.ValidatePath())
+                throw new Archive2Exception("Path to Archive2.exe not specified or Archive2.exe not found.");
 
             using (Process proc = new Process())
             {
@@ -118,6 +118,11 @@ namespace Fo76ini.Mods
         public static void Extract(String ba2Archive, String outputFolder)
         {
             Archive2.Call($"\"{ba2Archive}\" -extract=\"{outputFolder}\" -quiet");
+
+            if (!Directory.Exists(outputFolder))
+                throw new Archive2Exception("Extraction failed, folder has not been created.");
+            else if (Utils.IsDirectoryEmpty(outputFolder))
+                throw new Archive2Exception("Extraction failed, folder is empty.");
         }
 
         public static void Explore(String ba2Archive)
@@ -142,13 +147,16 @@ namespace Fo76ini.Mods
 
         public static void Create(String ba2Archive, String folder, Archive2.Compression compression, Archive2.Format format)
         {
-            if (!Directory.Exists(folder))
-                return;
+            if (!Directory.Exists(folder) || Utils.IsDirectoryEmpty(folder))
+                throw new DirectoryNotFoundException($"The specified folder \"{folder}\" does not exist or is empty.");
 
             String compressionStr = Enum.GetName(typeof(Archive2.Compression), (int)compression);
             String formatStr = Enum.GetName(typeof(Archive2.Format), (int)format);
             folder = Path.GetFullPath(folder);
             Archive2.Call($"\"{folder}\" -create=\"{ba2Archive}\" -compression={compressionStr} -format={formatStr} -root=\"{folder}\" -tempFiles -quiet");
+
+            if (!File.Exists(ba2Archive))
+                throw new Archive2Exception("Packing failed, archive has not been created.");
         }
 
         public static bool ValidatePath(String path)
@@ -160,5 +168,12 @@ namespace Fo76ini.Mods
         {
             return ValidatePath(Archive2.Archive2Path);
         }
+    }
+
+    public class Archive2Exception : Exception
+    {
+        public Archive2Exception() { }
+        public Archive2Exception(string message) : base(message) { }
+        public Archive2Exception(string message, Exception inner) : base(message, inner) { }
     }
 }

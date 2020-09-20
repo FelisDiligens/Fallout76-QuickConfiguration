@@ -9,19 +9,19 @@ namespace Fo76ini_Updater
 {
     public class Log
     {
-        private String path;
+        public String Path;
 
         public Log(String path)
         {
-            this.path = Path.GetFullPath(path);
+            this.Path = System.IO.Path.GetFullPath(path);
         }
 
         private StreamWriter Open()
         {
-            if (File.Exists(this.path))
-                return File.AppendText(this.path);
+            if (File.Exists(this.Path))
+                return File.AppendText(this.Path);
             else
-                return File.CreateText(this.path);
+                return File.CreateText(this.Path);
         }
 
         public void Write<T>(T line)
@@ -56,7 +56,7 @@ namespace Fo76ini_Updater
 
         public static String GetFilePath(String fileName)
         {
-            return Path.Combine(Updater.AppConfigFolder, fileName);
+            return System.IO.Path.Combine(Updater.AppConfigFolder, fileName);
         }
     }
 }

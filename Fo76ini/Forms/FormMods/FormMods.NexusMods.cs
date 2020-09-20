@@ -29,6 +29,8 @@ namespace Fo76ini
 
         public void UpdateNMProfile()
         {
+            this.textBoxAPIKey.Text = NexusMods.Profile.APIKey;
+
             this.labelNMUserName.Text = NexusMods.Profile.UserName;
             
             switch (NexusMods.Profile.Status)
@@ -93,12 +95,16 @@ namespace Fo76ini
 
         private void buttonNMUpdateProfile_Click(object sender, EventArgs e)
         {
+            if (this.backgroundWorkerRetrieveProfileInfo.IsBusy)
+                return;
             this.pictureBoxNMProfilePicture.Image = Resources.Spinner_200;
             this.backgroundWorkerRetrieveProfileInfo.RunWorkerAsync();
         }
 
         private void buttonNMUpdateModInfo_Click(object sender, EventArgs e)
         {
+            if (this.backgroundWorkerRetrieveModInfo.IsBusy)
+                return;
             this.backgroundWorkerRetrieveModInfo.RunWorkerAsync();
         }
 
@@ -187,7 +193,10 @@ namespace Fo76ini
             this.UpdateModList();
             this.ProgressBarContinuous(100);
             this.DisplayAllDone();
-            this.backgroundWorkerRetrieveProfileInfo.RunWorkerAsync();
+
+            if (!this.backgroundWorkerRetrieveModInfo.IsBusy)
+                this.backgroundWorkerRetrieveProfileInfo.RunWorkerAsync();
+
             MsgBox.Get("nexusModsRemoteInfoRefreshedSuccess").Popup();
         }
 

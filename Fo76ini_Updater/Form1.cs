@@ -24,75 +24,532 @@ namespace Fo76ini_Updater
     {
         public static String AppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");
 
-        WebClient client;
         Log log;
 
+        Config config;
+
         String workingDir;
-        String installationPath;
-        String configPath;
-        String downloadUrl;
         String downloadPath;
-        String downloadFile;
         String extractionPath;
         String executablePath;
-        String iniPath;
 
-        FileIniDataParser iniParser;
-        IniData config;
+        bool aborted = false;
+
+        private Size CollapsedSize = new Size(300, 140);
+        private Size ExpandedSize = new Size(300, 170);
+        private Size FullyExpandedSize = new Size(300, 230);
 
         public Updater()
         {
             InitializeComponent();
+
+            this.backgroundWorkerGatherInfo.RunWorkerCompleted += backgroundWorkerGatherInfo_RunWorkerCompleted;
         }
 
-        private void LoadIni ()
-        {
-            IniParserConfiguration iniParserConfig = new IniParserConfiguration();
-            iniParserConfig.AllowCreateSectionsOnFly = true;
-            iniParserConfig.AssigmentSpacer = "";
-            iniParserConfig.CaseInsensitive = true;
-            iniParserConfig.CommentRegex = new System.Text.RegularExpressions.Regex(@";.*");
-
-            this.iniParser = new FileIniDataParser(new IniDataParser(iniParserConfig));
-            config = this.iniParser.ReadFile(iniPath, new UTF8Encoding(false));
-        }
-
-        private void SaveIni()
-        {
-            this.iniParser.WriteFile(this.iniPath, this.config, new UTF8Encoding(false));
-        }
+        /*
+         * Execution order:
+         * 
+         * (Preparation)
+         * 1. Updater_Load
+         * 
+         * (Gathering information)
+         * 2. backgroundWorkerGatherInfo_DoWork
+         * 3. backgroundWorkerGatherInfo_RunWorkerCompleted
+         * 
+         * (Downloading)
+         * 4. Download
+         * 5. DownloadFileCompleted
+         * 
+         * (Installing)
+         * 6. backgroundWorkerInstall_DoWork
+         */
 
         private void Updater_Load(object sender, EventArgs e)
         {
             this.pictureBoxLoading.Visible = false;
+            this.progressBar.Visible = false;
 
-            //configPath = Path.GetFullPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration"));
-            configPath = Path.GetFullPath(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration"));
-            iniPath = Path.Combine(configPath, "config.ini");
+            config = new Config();
+            config.LoadIni();
 
-            LoadIni();
-            if (config["Updater"]["sInstallationPath"] == null)
+            if (!config.HasInstallationPath())
             {
                 FailState("Please run the updater through Fo76ini.exe.");
                 Collapse();
                 return;
             }
 
-            installationPath = config["Updater"]["sInstallationPath"];
             workingDir = Path.GetFullPath(AppContext.BaseDirectory);
-            extractionPath = Path.Combine(workingDir, "update");
-            executablePath = Path.Combine(installationPath, "Fo76ini.exe");
-
-            client = new WebClient();
-            client.CachePolicy = new RequestCachePolicy(RequestCacheLevel.BypassCache);
-            //client.Headers["User-Agent"] = "Fallout76-QuickConfiguration-Updater";
+            executablePath = Path.Combine(config.InstallationPath, "Fo76ini.exe");
 
             log = new Log(Log.GetFilePath("update.log.txt"));
 
-            Thread thread = new Thread(DoUpdate);
+            /* Thread thread = new Thread(DoUpdate);
             thread.IsBackground = true;
-            thread.Start();
+            thread.Start();*/
+
+            Collapse();
+            log.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------");
+            log.WriteTimeStamp();
+
+            this.backgroundWorkerGatherInfo.RunWorkerAsync();
         }
+
+        private void backgroundWorkerGatherInfo_DoWork(object sender, DoWorkEventArgs e)
+        {
+            /*
+             * Step 1: Gather information
+             */
+
+            // The tool has to be closed:
+            Invoke(() => SetLabel("Waiting for the tool to terminate...", Color.DimGray));
+            while (Utils.IsProcessRunning("Fo76ini"))
+                Thread.Sleep(500);
+
+            Invoke(() => this.pictureBoxLoading.Visible = true);
+            Invoke(() => SetLabel("Updating, please wait...", Color.Black));
+
+            // Get Download URL:
+            Invoke(() => SetLabel($"Updating, please wait...\nContacting GitHub API...", Color.Black));
+            if (!CheckRateLimit())
+                aborted = true;
+            if (!GetLatestReleaseURL())
+                aborted = true;
+        }
+
+        private void backgroundWorkerGatherInfo_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (aborted)
+                return;
+
+            // Compare versions:
+            if (config.HasVersionStrings() && Utils.CompareVersions(config.InstalledVersion, config.LatestVersion) >= 0)
+            {
+                // If update isn't necessary, then ask user, if they want to continue anyway:
+                if (MessageBox.Show($"You already have the latest version.\nYour version: {config.InstalledVersion}\nLatest version: {config.LatestVersion}\nDo you want to continue updating anyway?", "Continue anyway?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                {
+                    Invoke(() => SetLabel("You already have the latest version."));
+                    Invoke(Expand);
+                    return;
+                }
+            }
+
+            Download();
+        }
+
+        private void Download()
+        {
+            /*
+             * Step 2: Download
+             */
+
+            SetLabel($"Updating, please wait...\nDownloading {config.DownloadFileName}...", Color.Black);
+            log.WriteLine($"Downloading file from {config.DownloadURL}");
+
+            downloadPath = Path.Combine(workingDir, config.DownloadFileName);
+
+            WebClient client = new WebClient();
+            client.CachePolicy = new RequestCachePolicy(RequestCacheLevel.BypassCache);
+            client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressChanged);
+            client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleted);
+            client.DownloadFileAsync(new Uri(config.DownloadURL), downloadPath);
+
+            this.progressBar.Visible = true;
+        }
+
+        private void DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            int percentage = Utils.Clamp((int)(e.BytesReceived / (float)e.TotalBytesToReceive * 100), 0, 100);
+            this.progressBar.Value = percentage;
+            SetLabel($"Updating, please wait...\nDownloading {config.DownloadFileName} ({percentage}%)...", Color.Black);
+        }
+
+        private void DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            this.progressBar.Visible = false;
+
+            if (e.Error != null)
+            {
+                Invoke(() => FailState("Couldn't download file,\ncheck update.log.txt for details."));
+                log.WriteLine($"Couldn't download file, exception occured.\n{e.Error.GetType().Name}: {e.Error.Message}");
+                aborted = true;
+            }
+            else if (!File.Exists(downloadPath))
+            {
+                log.WriteLine($"{config.DownloadFileName} couldn't be found.");
+                Invoke(() => FailState("Something went wrong,\ncheck update.log.txt for details."));
+                aborted = true;
+            }
+            else
+            {
+                // If no error happened, proceed installation:
+                this.backgroundWorkerInstall.RunWorkerAsync();
+            }
+        }
+
+        private void backgroundWorkerInstall_DoWork(object sender, DoWorkEventArgs e)
+        {
+            /*
+             * Step 3: Installation
+             */
+
+            // Unpacking
+            Invoke(() => SetLabel($"Updating, please wait...\nExtracting contents of {config.DownloadFileName}...", Color.Black));
+            if (!ExtractArchive())
+                return;
+
+            // Replacing old files
+            log.WriteLine("Installing update...");
+            log.WriteLine($"From: {extractionPath}");
+            log.WriteLine($"To:   {config.InstallationPath}");
+            IEnumerable<String> files = Directory.EnumerateFiles(extractionPath, "*.*", SearchOption.AllDirectories);
+            try
+            {
+                foreach (String file in files)
+                {
+                    String relPath = Utils.MakeRelativePath(extractionPath, file);
+                    log.WriteLine($" - Copying \"{relPath}\"");
+                    Invoke(() => SetLabel($"Updating, please wait...\nCopying {relPath}...", Color.Black));
+
+                    String destPath = Path.Combine(config.InstallationPath, relPath);
+                    if (!Directory.Exists(Path.GetDirectoryName(destPath)))
+                        Directory.CreateDirectory(Path.GetDirectoryName(destPath));
+
+                    File.Copy(
+                        file,
+                        destPath,
+                        true
+                    );
+                }
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                Invoke(() => FailState("Couldn't copy files, access denied.\nTry again, but run 'updater.exe' as admin.", ex));
+                return;
+            }
+            catch (IOException ex)
+            {
+                Invoke(() => FailState("Couldn't copy files.\nPlease run the updater through Fo76ini.exe.", ex));
+                return;
+            }
+            Invoke(() => SetLabel($"Updating, please wait...", Color.Black));
+
+            // Clean up
+            log.WriteLine("Cleaning up files...");
+            if (File.Exists(downloadPath))
+                File.Delete(downloadPath);
+            if (Directory.Exists(extractionPath))
+                Directory.Delete(extractionPath, true);
+
+            // Expand to show buttons:
+            log.WriteLine("Update finished\n\n");
+            Invoke(() => SetLabel("Update finished", Color.ForestGreen));
+            Invoke(Expand);
+        }
+
+        private void DoUpdate()
+        {
+            Invoke(Collapse);
+            log.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------");
+            log.WriteTimeStamp();
+
+            // The tool has to be closed:
+            Invoke(() => SetLabel("Waiting for the tool to exit...", Color.DimGray));
+            while (Utils.IsProcessRunning("Fo76ini"))
+                Thread.Sleep(500);
+
+            Invoke(() => this.pictureBoxLoading.Visible = true);
+            Invoke(() => SetLabel("Updating, please wait...", Color.Black));
+
+            // Get Download URL:
+            Invoke(() => SetLabel($"Updating, please wait...\nContacting GitHub API...", Color.Black));
+            if (!CheckRateLimit())
+                return;
+            if (!GetLatestReleaseURL())
+                return;
+
+            // Compare versions:
+            if (config.HasVersionStrings() && Utils.CompareVersions(config.InstalledVersion, config.LatestVersion) >= 0)
+            {
+                // If update isn't necessary, then ask user, if they want to continue anyway:
+                if (MessageBox.Show($"You already have the latest version.\nYour version: {config.InstalledVersion}\nLatest version: {config.LatestVersion}\nDo you want to continue updating anyway?", "Continue anyway?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                {
+                    Invoke(() => SetLabel("You already have the latest version."));
+                    Invoke(Expand);
+                    return;
+                }
+            }
+
+            // Download:
+            downloadPath = Path.Combine(workingDir, config.DownloadFileName);
+            Invoke(() => SetLabel($"Updating, please wait...\nDownloading {config.DownloadFileName}...", Color.Black));
+            try
+            {
+                log.WriteLine($"Downloading file from {config.DownloadURL}");
+                WebClient client = new WebClient();
+                client.CachePolicy = new RequestCachePolicy(RequestCacheLevel.BypassCache);
+                client.DownloadFile(config.DownloadURL, downloadPath);
+            }
+            catch (WebException ex)
+            {
+                Invoke(() => FailState("Couldn't download file,\ncheck update.log.txt for details.", ex));
+                return;
+            }
+            if (!File.Exists(downloadPath))
+            {
+                log.WriteLine($"{config.DownloadFileName} couldn't be found.");
+                Invoke(() => FailState("Something went wrong,\ncheck update.log.txt for details."));
+                return;
+            }
+
+            // Unpacking
+            Invoke(() => SetLabel($"Updating, please wait...\nExtracting contents of {config.DownloadFileName}...", Color.Black));
+            if (!ExtractArchive())
+                return;
+
+            // Replacing old files
+            log.WriteLine("Installing update...");
+            log.WriteLine($"From: {extractionPath}");
+            log.WriteLine($"To:   {config.InstallationPath}");
+            IEnumerable<String> files = Directory.EnumerateFiles(extractionPath, "*.*", SearchOption.AllDirectories);
+            try
+            {
+                foreach (String file in files)
+                {
+                    String relPath = Utils.MakeRelativePath(extractionPath, file);
+                    log.WriteLine($" - Copying \"{relPath}\"");
+                    Invoke(() => SetLabel($"Updating, please wait...\nCopying {relPath}...", Color.Black));
+
+                    String destPath = Path.Combine(config.InstallationPath, relPath);
+                    if (!Directory.Exists(Path.GetDirectoryName(destPath)))
+                        Directory.CreateDirectory(Path.GetDirectoryName(destPath));
+
+                    File.Copy(
+                        file,
+                        destPath,
+                        true
+                    );
+                }
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                Invoke(() => FailState("Couldn't copy files, access denied.\nTry again, but run 'updater.exe' as admin.", ex));
+                return;
+            }
+            catch (IOException ex)
+            {
+                Invoke(() => FailState("Couldn't copy files.\nPlease run the updater through Fo76ini.exe.", ex));
+                return;
+            }
+            Invoke(() => SetLabel($"Updating, please wait...", Color.Black));
+
+            // Clean up
+            log.WriteLine("Cleaning up files...");
+            if (File.Exists(downloadPath))
+                File.Delete(downloadPath);
+            if (Directory.Exists(extractionPath))
+                Directory.Delete(extractionPath, true);
+
+            // Expand to show buttons:
+            log.WriteLine("Update finished\n\n");
+            Invoke(() => SetLabel("Update finished", Color.ForestGreen));
+            Invoke(Expand);
+        }
+
+        private bool CheckRateLimit()
+        {
+            int limit = 0;
+            int limitRemaining = 0;
+            DateTime limitReset;
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://api.github.com/rate_limit");
+                request.UserAgent = "Fallout76-QuickConfiguration-Updater";
+                request.Accept = "application/vnd.github.v3+json";
+
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                limit = Convert.ToInt32(response.Headers["X-RateLimit-Limit"]);
+                limitRemaining = Convert.ToInt32(response.Headers["X-RateLimit-Remaining"]);
+                limitReset = Utils.UnixTimeStampToDateTime(Convert.ToDouble(response.Headers["X-RateLimit-Reset"]));
+
+                log.WriteLine($"API Rate Limit: {limitRemaining} of {limit} remaining.");
+                if (limitRemaining <= 0)
+                {
+                    log.WriteLine("API Rate Limit exceeded.");
+                    Invoke(() => FailState($"Can't access API, rate limit exceeded.\nTry again at {limitReset}"));
+                    return false;
+                }
+            }
+            catch (WebException ex)
+            {
+
+            }
+            return true;
+        }
+
+        private bool GetLatestReleaseURL()
+        {
+            // https://developer.github.com/v3/repos/releases/#get-the-latest-release
+            log.WriteLine("Retrieving download URL with GitHub API...");
+            JObject json;
+
+            /*
+             * *********************************************
+             * (1/2) Make request, get response
+             * *********************************************
+             */
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://api.github.com/repos/FelisDiligens/Fallout76-QuickConfiguration/releases/latest");
+                request.UserAgent = "Fallout76-QuickConfiguration-Updater";
+                request.Accept = "application/vnd.github.v3+json";
+
+                // https://developer.github.com/v3/#conditional-requests
+                // "Making a conditional request and receiving a 304 response does not count against your Rate Limit"
+                if (config.HasCachedDownloadURL())
+                {
+                    if (config.HasETag())
+                        request.Headers["If-Non-Match"] = config.ETag;
+                    if (config.HasLastModified())
+                        request.IfModifiedSince = DateTime.Parse(config.LastModified); //, "ddd, dd MMM yyyy HH:mm:ss"); // (GitHub's date strings are conform to RFC 1123)
+                }
+
+                // Get the response and...
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                // ... skip if 304 - Not Modified:
+                if (response.StatusCode == HttpStatusCode.NotModified)
+                {
+                    log.WriteLine($"HTTP 304 - Not Modified: Cached download url is still valid.");
+                    return true;
+                }
+
+                // ... otherwise get *.json:
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    json = JObject.Parse(reader.ReadToEnd());
+                }
+                config.ETag = (String)response.Headers["ETag"];
+                config.LatestVersion = (String)response.Headers["Last-Modified"];
+                config.SaveIni();
+            }
+            catch (WebException ex)
+            {
+                if (ex.Response != null)
+                {
+                    // If we got a response...
+                    HttpWebResponse response = ((HttpWebResponse)ex.Response);
+
+                    // ... skip if 304 - Not Modified:
+                    if (response.StatusCode == HttpStatusCode.NotModified)
+                    {
+                        log.WriteLine($"HTTP 304 - Not Modified: Cached download url is still valid.");
+                        return true;
+                    }
+
+                    // ... otherwise abort with error message:
+                    else
+                    {
+                        log.WriteLine($"Failed: Request denied. Dumping response to {Updater.AppConfigFolder}\\githubAPIresp.json.\n{ex}");
+                        using (Stream s = File.Create(Path.Combine(Updater.AppConfigFolder, "githubAPIresp.json")))
+                        {
+                            response.GetResponseStream().CopyTo(s);
+                        }
+                        log.WriteLine($"Response headers:\nX-RateLimit-Limit: {response.Headers["X-RateLimit-Limit"]}\nX-RateLimit-Remaining: {response.Headers["X-RateLimit-Remaining"]}\nX-RateLimit-Reset: {response.Headers["X-RateLimit-Reset"]}");
+                        Invoke(() => FailState("Error: API request denied,\ncheck update.log.txt for details.", ex));
+                    }
+                }
+                else
+                {
+                    log.WriteLine($"Failed: Unable to contact GitHub API.\n{ex}");
+                    Invoke(() => FailState("Unable to contact GitHub API.\nCheck your network connection.", ex));
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                log.WriteLine($"Failed - Unhandled exception:\n{ex}");
+                Invoke(() => FailState("Something went wrong,\ncheck update.log.txt for details.", ex));
+                return false;
+            }
+
+            /*
+             * *********************************************
+             * (2/2) Extract information
+             * *********************************************
+             */
+
+            // Find version
+            String tagName = json["tag_name"].ToString();
+            config.LatestVersion = tagName;
+
+            // Find download URL
+            JArray assets = (JArray)json["assets"];
+
+            String browserDownloadURL = null;
+            String fileName = null;
+            foreach (JObject asset in assets)
+            {
+                fileName = (String)asset["name"];
+                String contentType = (String)asset["content_type"];
+                // if (contentType == "application/x-msdownload" && Path.GetExtension(fileName) == ".exe")
+                if (contentType == "application/x-zip-compressed" && Path.GetExtension(fileName) == ".zip")
+                {
+                    // String url = (String)asset["url"];
+                    browserDownloadURL = (String)asset["browser_download_url"];
+                }
+            }
+
+            if (browserDownloadURL != null)
+            {
+                log.WriteLine($"Download URL found.");
+                config.DownloadURL = browserDownloadURL;
+                config.DownloadFileName = fileName;
+                config.SaveIni();
+                return true;
+            }
+            log.WriteLine("Failed: Download URL not found.");
+            Invoke(() => FailState("Couldn't get download URL,\ncheck update.log.txt for details."));
+            return false;
+        }
+
+        private bool ExtractArchive()
+        {
+            extractionPath = Path.Combine(workingDir, Path.GetFileNameWithoutExtension(config.DownloadFileName));
+            //extractionPath = Path.Combine(workingDir, "extracted");
+            String sevenZipPath = Path.GetFullPath(".\\7z\\7za.exe");
+            String arguments = $"x \"{downloadPath}\" -r -o\"{extractionPath}\" -y *";
+            using (Process proc = new Process())
+            {
+                log.WriteLine("--------------------------------------------------------------------");
+                log.WriteLine($"Unpacking file");
+                log.WriteLine($">> 7za.exe {arguments}");
+                proc.StartInfo.UseShellExecute = false;
+                proc.StartInfo.RedirectStandardOutput = true;
+                proc.StartInfo.RedirectStandardError = true;
+                proc.StartInfo.FileName = sevenZipPath;
+                proc.StartInfo.Arguments = arguments;
+                proc.StartInfo.CreateNoWindow = true;
+                proc.Start();
+
+                log.WriteLine(proc.StandardOutput.ReadToEnd() + "\n");
+                log.WriteLine(proc.StandardError.ReadToEnd() + "\n");
+                proc.WaitForExit();
+            }
+            if (!Directory.Exists(extractionPath))
+            {
+                Invoke(() => FailState("Something went wrong,\ncheck update.log.txt for details."));
+                return false;
+            }
+            log.WriteLine("--------------------------------------------------------------------");
+            return true;
+        }
+
+
+        /*
+         * Event handler
+         */
 
         private void buttonStartTool_Click(object sender, EventArgs e)
         {
@@ -134,284 +591,23 @@ namespace Fo76ini_Updater
             }
         }
 
-        private bool GetLatestReleaseURL()
+        private void buttonShowLogFile_Click(object sender, EventArgs e)
         {
-            // https://developer.github.com/v3/repos/releases/#get-the-latest-release
-            log.WriteLine("Retrieving download URL with GitHub API...");
-            JObject json;
-
-            // Check rate limit
-            int limit = 0;
-            int limitRemaining = 0;
-            DateTime limitReset;
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://api.github.com/rate_limit");
-                request.UserAgent = "Fallout76-QuickConfiguration-Updater";
-                request.Accept = "application/vnd.github.v3+json";
-
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                limit = Convert.ToInt32(response.Headers["X-RateLimit-Limit"]);
-                limitRemaining = Convert.ToInt32(response.Headers["X-RateLimit-Remaining"]);
-                limitReset = Utils.UnixTimeStampToDateTime(Convert.ToDouble(response.Headers["X-RateLimit-Reset"]));
-
-                log.WriteLine($"API Rate Limit: {limitRemaining} of {limit} remaining.");
-                if (limitRemaining <= 0)
-                {
-                    log.WriteLine("API Rate Limit exceeded.");
-                    Invoke(() => FailState($"Can't access API, rate limit exceeded.\nTry again at {limitReset}"));
-                    return false;
-                }
-            }
-            catch (WebException ex)
-            {
-
-            }
-
-            // Make request
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://api.github.com/repos/FelisDiligens/Fallout76-QuickConfiguration/releases/latest");
-                request.UserAgent = "Fallout76-QuickConfiguration-Updater";
-                request.Accept = "application/vnd.github.v3+json";
-
-                // https://developer.github.com/v3/#conditional-requests
-                // "Making a conditional request and receiving a 304 response does not count against your Rate Limit"
-                if (config["Updater"]["sLastDownloadURL"] != null && config["Updater"]["sLastDownloadFileName"] != null)
-                {
-                    if (config["Updater"]["sAPI_ETag"] != null)
-                        request.Headers["If-Non-Match"] = config["Updater"]["sAPI_ETag"];
-                    if (config["Updater"]["sAPI_Last-Modified"] != null)
-                        //request.Headers["If-Modified-Since"] = config["Updater"]["sAPI_Last-Modified"];
-                        request.IfModifiedSince = DateTime.Parse(config["Updater"]["sAPI_Last-Modified"]); //, "ddd, dd MMM yyyy HH:mm:ss"); // (GitHub's date strings are conform to RFC 1123)
-                }
-
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                //raw = client.DownloadData("https://api.github.com/repos/FelisDiligens/Fallout76-QuickConfiguration/releases/latest");
-                //resp = JObject.Parse(Encoding.UTF8.GetString(raw));
-                if (response.StatusCode == HttpStatusCode.NotModified)
-                {
-                    log.WriteLine($"HTTP 304 - Not Modified: Cached download url is still valid.");
-                    downloadUrl = config["Updater"]["sLastDownloadURL"];
-                    downloadFile = config["Updater"]["sLastDownloadFileName"];
-                    return true;
-                }
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    json = JObject.Parse(reader.ReadToEnd());
-                }
-                config["Updater"]["sAPI_ETag"] = (String)response.Headers["ETag"];
-                config["Updater"]["sAPI_Last-Modified"] = (String)response.Headers["Last-Modified"];
-                SaveIni();
-            }
-            catch (WebException ex)
-            {
-                if (ex.Response != null)
-                {
-                    HttpWebResponse response = ((HttpWebResponse)ex.Response);
-                    if (response.StatusCode == HttpStatusCode.NotModified)
-                    {
-                        log.WriteLine($"HTTP 304 - Not Modified: Cached download url is still valid.");
-                        downloadUrl = config["Updater"]["sLastDownloadURL"];
-                        downloadFile = config["Updater"]["sLastDownloadFileName"];
-                        return true;
-                    }
-                    else
-                    {
-                        log.WriteLine($"Failed: Request denied. Dumping response to githubAPIresp.json.\n{ex}");
-                        using (Stream s = File.Create(Path.Combine(configPath, "githubAPIresp.json")))
-                        {
-                            response.GetResponseStream().CopyTo(s);
-                        }
-                        log.WriteLine($"Response headers:\nX-RateLimit-Limit: {response.Headers["X-RateLimit-Limit"]}\nX-RateLimit-Remaining: {response.Headers["X-RateLimit-Remaining"]}\nX-RateLimit-Reset: {response.Headers["X-RateLimit-Reset"]}");
-                        Invoke(() => FailState("Error: API request denied,\ncheck update.log.txt for details.", ex));
-                    }
-                }
-                else
-                {
-                    log.WriteLine($"Failed: Unable to contact GitHub API.\n{ex}");
-                    Invoke(() => FailState("Unable to contact GitHub API.\nCheck your network connection.", ex));
-                }
-                return false;
-            }
-            catch (Exception ex)
-            {
-                log.WriteLine($"Failed - Unhandled exception:\n{ex}");
-                Invoke(() => FailState("Something went wrong,\ncheck update.log.txt for details.", ex));
-                return false;
-            }
-
-            // Find version
-            String tagName = json["tag_name"].ToString();
-            config["Updater"]["sTagName"] = tagName;
-
-            // Find download URL
-            JArray assets = (JArray)json["assets"];
-
-            String browserDownloadURL = null;
-            String fileName = null;
-            foreach (JObject asset in assets)
-            {
-                fileName = (String)asset["name"];
-                String contentType = (String)asset["content_type"];
-                // if (contentType == "application/x-msdownload" && Path.GetExtension(name) == ".exe")
-                if (contentType == "application/x-zip-compressed" && Path.GetExtension(fileName) == ".zip")
-                {
-                    // String url = (String)asset["url"];
-                    browserDownloadURL = (String)asset["browser_download_url"];
-                }
-            }
-
-            if (browserDownloadURL != null)
-            {
-                log.WriteLine($"Download URL found.");
-                downloadUrl = browserDownloadURL;
-                downloadFile = fileName;
-                config["Updater"]["sLastDownloadURL"] = downloadUrl;
-                config["Updater"]["sLastDownloadFileName"] = downloadFile;
-                SaveIni();
-                return true;
-            }
-            log.WriteLine("Failed: Download URL not found.");
-            Invoke(() => FailState("Something went wrong,\ncheck update.log.txt for details."));
-            return false;
+            if (File.Exists(log.Path))
+                Utils.OpenNotepad(log.Path);
         }
 
-        private void DoUpdate()
-        {
-            Invoke(Collapse);
-            log.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------");
-            log.WriteTimeStamp();
 
-            // The tool has to be closed:
-            Invoke(() => SetLabel("Waiting for the tool to exit...", Color.DimGray));
-            while (Utils.IsProcessRunning("Fo76ini"))
-                Thread.Sleep(500);
 
-            Invoke(() => this.pictureBoxLoading.Visible = true);
-            Invoke(() => SetLabel("Updating, please wait...", Color.Black));
-
-            // Get Download URL:
-            Invoke(() => SetLabel($"Updating, please wait...\nContacting GitHub API...", Color.Black));
-            if (!GetLatestReleaseURL())
-                return;
-
-            // Compare versions:
-            if (config["Updater"]["sTagName"] != null && config["General"]["sVersion"] != null && Utils.CompareVersions(config["General"]["sVersion"], config["Updater"]["sTagName"]) >= 0)
-            {
-                if (MessageBox.Show($"You already have the latest version.\nYour version: {config["General"]["sVersion"]}\nLatest version: {config["Updater"]["sTagName"]}\nDo you want to continue updating anyway?", "Continue anyway?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-                {
-                    Invoke(() => SetLabel("You already have the latest version."));
-                    Invoke(Expand);
-                    Invoke(() => this.pictureBoxLoading.Visible = false);
-                    return;
-                }
-            }
-
-            // Download:
-            downloadPath = Path.Combine(workingDir, downloadFile);
-            Invoke(() => SetLabel($"Updating, please wait...\nDownloading {this.downloadFile}...", Color.Black));
-            try
-            {
-                log.WriteLine($"Downloading file from {downloadUrl}");
-                client.DownloadFile(downloadUrl, downloadPath);
-            }
-            catch (WebException ex)
-            {
-                Invoke(() => FailState("Couldn't download file,\ncheck update.log.txt for details.", ex));
-                return;
-            }
-            if (!File.Exists(downloadPath))
-            {
-                log.WriteLine($"{downloadFile} couldn't be found.");
-                Invoke(() => FailState("Something went wrong,\ncheck update.log.txt for details."));
-                return;
-            }
-
-            // Unpacking
-            Invoke(() => SetLabel($"Updating, please wait...\nExtracting contents of {this.downloadFile}...", Color.Black));
-            String sevenZipPath = Path.GetFullPath(".\\7z\\7za.exe");
-            String arguments = $"x \"{downloadPath}\" -r -o\"{extractionPath}\" -y *";
-            using (Process proc = new Process())
-            {
-                log.WriteLine("--------------------------------------------------------------------");
-                log.WriteLine($"Unpacking file");
-                log.WriteLine($">> 7za.exe {arguments}");
-                proc.StartInfo.UseShellExecute = false;
-                proc.StartInfo.RedirectStandardOutput = true;
-                proc.StartInfo.RedirectStandardError = true;
-                proc.StartInfo.FileName = sevenZipPath;
-                proc.StartInfo.Arguments = arguments;
-                proc.StartInfo.CreateNoWindow = true;
-                proc.Start();
-
-                log.WriteLine(proc.StandardOutput.ReadToEnd() + "\n");
-                log.WriteLine(proc.StandardError.ReadToEnd() + "\n");
-                proc.WaitForExit();
-            }
-            if (!Directory.Exists(extractionPath))
-            {
-                Invoke(() => FailState("Something went wrong,\ncheck update.log.txt for details."));
-                return;
-            }
-            log.WriteLine("--------------------------------------------------------------------");
-
-            // Replacing old files
-            log.WriteLine("Installing update...");
-            log.WriteLine($"From: {extractionPath}");
-            log.WriteLine($"To:   {installationPath}");
-            IEnumerable<String> files = Directory.EnumerateFiles(extractionPath, "*.*", SearchOption.AllDirectories);
-            try
-            {
-                foreach (String file in files)
-                {
-                    String relPath = Utils.MakeRelativePath(extractionPath, file);
-                    log.WriteLine($" - Copying \"{relPath}\"");
-                    Invoke(() => SetLabel($"Updating, please wait...\nCopying {relPath}...", Color.Black));
-
-                    String destPath = Path.Combine(installationPath, relPath);
-                    if (!Directory.Exists(Path.GetDirectoryName(destPath)))
-                        Directory.CreateDirectory(Path.GetDirectoryName(destPath));
-
-                    File.Copy(
-                        file,
-                        destPath,
-                        true
-                    );
-                }
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                Invoke(() => FailState("Couldn't copy files, access denied.\nTry again, but run 'updater.exe' as admin.", ex));
-                return;
-            }
-            catch (IOException ex)
-            {
-                Invoke(() => FailState("Couldn't copy files.\nPlease run the updater through Fo76ini.exe.", ex));
-                return;
-            }
-            Invoke(() => SetLabel($"Updating, please wait...", Color.Black));
-
-            // Clean up
-            log.WriteLine("Cleaning up files...");
-            if (File.Exists(downloadPath))
-                File.Delete(downloadPath);
-            if (Directory.Exists(extractionPath))
-                Directory.Delete(extractionPath, true);
-
-            // Starting Fo76ini.exe
-            log.WriteLine("Update finished\n\n");
-            Invoke(() => SetLabel("Update finished", Color.ForestGreen));
-            Invoke(Expand);
-            Invoke(() => this.pictureBoxLoading.Visible = false);
-        }
+        /*
+         * Stuff
+         */
 
         private void FailState(String text, Exception ex)
         {
             this.pictureBoxLoading.Visible = false;
             log.WriteLine(ex);
-            Expand();
+            ExpandFully();
             SetLabel(text, Color.Red);
             this.buttonTryAgainAdmin.Visible = true;
         } // UnauthorizedAccessException, WebException, FileNotFoundException
@@ -419,7 +615,7 @@ namespace Fo76ini_Updater
         private void FailState(String text)
         {
             this.pictureBoxLoading.Visible = false;
-            Expand();
+            ExpandFully();
             SetLabel(text, Color.Red);
             this.buttonTryAgainAdmin.Visible = true;
         }
@@ -442,17 +638,40 @@ namespace Fo76ini_Updater
 
         private void Expand()
         {
-            this.MaximumSize = new Size(300, 180);
-            this.Size = this.MaximumSize;
-            this.buttonStartTool.Enabled = true;
+            this.SetSize(ExpandedSize);
+
+            this.buttonStartTool.Visible = true;
+            this.buttonTryAgainAdmin.Visible = false;
+            this.buttonShowLogFile.Visible = false;
+
+            this.pictureBoxLoading.Visible = false;
+        }
+
+        private void ExpandFully()
+        {
+            this.SetSize(FullyExpandedSize);
+
+            this.buttonStartTool.Visible = true;
+            this.buttonTryAgainAdmin.Visible = true;
+            this.buttonShowLogFile.Visible = true;
+
+            this.pictureBoxLoading.Visible = false;
         }
 
         private void Collapse()
         {
-            this.MaximumSize = this.MinimumSize;
-            this.Size = this.MinimumSize;
-            this.buttonStartTool.Enabled = false;
+            this.SetSize(CollapsedSize);
+
+            this.buttonStartTool.Visible = false;
             this.buttonTryAgainAdmin.Visible = false;
+            this.buttonShowLogFile.Visible = false;
+        }
+
+        private void SetSize(Size size)
+        {
+            this.Size = size;
+            this.MaximumSize = size;
+            this.MinimumSize = size;
         }
     }
 }

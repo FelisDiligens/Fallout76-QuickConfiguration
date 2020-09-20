@@ -336,8 +336,6 @@ namespace Fo76ini
             //this.textBoxGamePath.Text = Shared.GamePath;
 
             LoadTextBoxResourceLists();
-
-            this.textBoxAPIKey.Text = NexusMods.Profile.APIKey;
         }
 
         private void UpdateLabel(bool success = true)

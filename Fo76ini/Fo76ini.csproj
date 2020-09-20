@@ -139,6 +139,12 @@
     <Compile Include="Forms\FormMods\FormMods.NexusMods.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\FormWhatsNew\FormWhatsNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormWhatsNew\FormWhatsNew.Designer.cs">
+      <DependentUpon>FormWhatsNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interface\DropDown.cs" />
     <Compile Include="Interface\InvalidXmlException.cs" />
     <Compile Include="Interface\Translation.Shared.cs" />
@@ -163,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMods\FormMods.resx">
       <DependentUpon>FormMods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormWhatsNew\FormWhatsNew.resx">
+      <DependentUpon>FormWhatsNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

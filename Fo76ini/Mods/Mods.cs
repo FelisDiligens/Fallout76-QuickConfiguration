@@ -270,6 +270,14 @@ namespace Fo76ini
                     done(true);
 
             }
+            catch (Archive2Exception ex)
+            {
+                ManagedMods.Instance.logFile.WriteLine($"Archive2Exception occured while freezing mod '{this.Title}': {ex.Message}\n{ex.StackTrace}\n");
+                MsgBox.Get("archive2InstallRequirements").Show(MessageBoxIcon.Error);
+                if (done != null)
+                    done(false);
+                return;
+            }
             catch (Exception ex)
             {
                 ManagedMods.Instance.logFile.WriteLine($"Unhandled exception occured while freezing mod '{this.Title}': {ex.Message}\n{ex.StackTrace}\n");
@@ -314,6 +322,14 @@ namespace Fo76ini
 
                 if (done != null)
                     done(true);
+            }
+            catch (Archive2Exception ex)
+            {
+                ManagedMods.Instance.logFile.WriteLine($"Archive2Exception occured while unfreezing mod '{this.Title}': {ex.Message}\n{ex.StackTrace}\n");
+                MsgBox.Get("archive2InstallRequirements").Show(MessageBoxIcon.Error);
+                if (done != null)
+                    done(false);
+                return;
             }
             catch (Exception ex)
             {
@@ -868,6 +884,7 @@ namespace Fo76ini
 
                 if (updateProgress != null)
                     updateProgress($"Extracting {fileName}.ba2 ...", -1);
+
                 Archive2.Extract(filePath, destinationPath);
 
                 return true;
@@ -1120,17 +1137,25 @@ namespace Fo76ini
                 if (done != null)
                     done(true);
             }
+            catch (Archive2Exception ex)
+            {
+                ManagedMods.Instance.logFile.WriteLine($"Archive2Exception occured while importing an archive: {ex.Message}\n{ex.StackTrace}\n");
+                MsgBox.Get("archive2InstallRequirements").Show(MessageBoxIcon.Error);
+                if (done != null)
+                    done(false);
+                return;
+            }
             catch (UnauthorizedAccessException ex)
             {
                 MsgBox.Get("modsAccessDenied").FormatText("UnauthorizedAccessException: " + ex.Message).Show(MessageBoxIcon.Error);
-                this.logFile.WriteLine($"UnauthorizedAccessException occured while importing a folder: {ex.Message}\n{ex.StackTrace}\n");
+                this.logFile.WriteLine($"UnauthorizedAccessException occured while importing an archive: {ex.Message}\n{ex.StackTrace}\n");
                 if (done != null)
                     done(false);
                 return;
             }
             catch (Exception ex)
             {
-                this.logFile.WriteLine($"Unhandled exception occured while importing a *.ba2 file: {ex.Message}\n{ex.StackTrace}\n");
+                this.logFile.WriteLine($"Unhandled exception occured while importing an archive: {ex.Message}\n{ex.StackTrace}\n");
                 if (done != null)
                     done(false);
                 return;
@@ -1149,7 +1174,7 @@ namespace Fo76ini
             // Some conditions have to be met:
             if (Shared.GamePath == null)
             {
-                this.logFile.WriteLine("Couldn't import *.ba2 file: No game path has been set.");
+                this.logFile.WriteLine("Couldn't import folder: No game path has been set.");
                 if (done != null)
                     done(false);
                 return;
@@ -1236,6 +1261,14 @@ namespace Fo76ini
 
                 if (done != null)
                     done(true);
+            }
+            catch (Archive2Exception ex)
+            {
+                ManagedMods.Instance.logFile.WriteLine($"Archive2Exception occured while importing a folder: {ex.Message}\n{ex.StackTrace}\n");
+                MsgBox.Get("archive2InstallRequirements").Show(MessageBoxIcon.Error);
+                if (done != null)
+                    done(false);
+                return;
             }
             catch (UnauthorizedAccessException ex)
             {
@@ -1911,6 +1944,13 @@ namespace Fo76ini
                             continue;
                         }
 
+                        // Check if folder is empty:
+                        if (!mod.isFrozen() && Utils.IsDirectoryEmpty(mod.GetManagedPath()))
+                        {
+                            this.logFile.WriteLine($"[Separate] Skipping {mod.Title} because it's folder is empty.");
+                            continue;
+                        }
+
                         if (mod.freeze)
                         {
                             if (mod.isFrozen())
@@ -2017,7 +2057,7 @@ namespace Fo76ini
                         String bundledFrozenArchivePath = Path.Combine(frozenBundledFolder, archive.archiveName);
                         String bundledLiveArchivePath = Path.Combine(Shared.GamePath, "Data", archive.archiveName);
 
-                        if (!this.ModsDisabled && archive.count > 0)
+                        if (!this.ModsDisabled && archive.count > 0 && Utils.IsDirectoryEmpty(archive.tempPath))
                         {
                             // Deploy when files exist and NW mode is disabled:
                             if (updateProgress != null)
@@ -2177,16 +2217,24 @@ namespace Fo76ini
                 if (done != null)
                     done(true);
             }
+            catch (Archive2Exception ex)
+            {
+                ManagedMods.Instance.logFile.WriteLine($"Archive2Exception occured while deploying: {ex.Message}\n{ex.StackTrace}\n");
+                MsgBox.Get("archive2InstallRequirements").Show(MessageBoxIcon.Error);
+                if (done != null)
+                    done(false);
+                return;
+            }
             catch (UnauthorizedAccessException ex)
             {
                 MsgBox.Get("modsAccessDenied").FormatText("UnauthorizedAccessException: " + ex.Message).Show(MessageBoxIcon.Error);
-                this.logFile.WriteLine($"UnauthorizedAccessException occured while importing a folder: {ex.Message}\n{ex.StackTrace}\n");
+                this.logFile.WriteLine($"UnauthorizedAccessException occured while deploying: {ex.Message}\n{ex.StackTrace}\n");
                 if (done != null)
                     done(false);
             }
             catch (Exception ex)
             {
-                this.logFile.WriteLine($"Unhandled exception occured: {ex.Message}\n{ex.StackTrace}");
+                this.logFile.WriteLine($"Unhandled exception occured: \"{ex.GetType().Name}: {ex.Message}\"\n{ex.StackTrace}");
                 if (done != null)
                     done(false);
             }

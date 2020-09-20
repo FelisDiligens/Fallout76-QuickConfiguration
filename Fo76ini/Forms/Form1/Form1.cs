@@ -1,4 +1,5 @@
-﻿using Fo76ini.Properties;
+﻿using Fo76ini.Forms.FormWhatsNew;
+using Fo76ini.Properties;
 using IniParser.Model;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace Fo76ini
     public partial class Form1 : Form
     {
         private UILoader uiLoader = new UILoader();
+
+        private FormWhatsNew formWhatsNew = null;
 
         private FormMods formMods;
         private bool formModsBackupCreated = false;
@@ -156,6 +159,7 @@ namespace Fo76ini
 
             // Event handler:
             this.FormClosing += this.Form1_FormClosing;
+            this.Shown += this.Form1_Shown;
             this.KeyDown += this.Form1_KeyDown;
 
             this.backgroundWorkerGetLatestVersion.RunWorkerCompleted += backgroundWorkerGetLatestVersion_RunWorkerCompleted;
@@ -270,9 +274,8 @@ namespace Fo76ini
 
             // Load mods:
             ManagedMods.Instance.Load();
-            this.formMods.UpdateUI();
-
             NexusMods.Load();
+            this.formMods.UpdateUI();
 
             // Account profiles:
             this.accountProfileRadioButtons = new RadioButton[] { this.radioButtonAccount1, this.radioButtonAccount2, this.radioButtonAccount3, this.radioButtonAccount4, this.radioButtonAccount5, this.radioButtonAccount6, this.radioButtonAccount7, this.radioButtonAccount8 };
@@ -308,11 +311,26 @@ namespace Fo76ini
             this.LoadGallery();
 
             MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
+        }
 
+        private void Form1_Shown(Object sender, EventArgs e)
+        {
             // Check display resolution
             int[] res = Utils.GetDisplayResolution();
             if (res[0] < 920 || res[1] < 750)
                 MsgBox.Get("displayResolutionTooLow").FormatText($"{res[0]} x {res[1]}", "920 x 750").Show(MessageBoxIcon.Warning);
+
+            // Display "What's new?" dialog
+            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bDisableWhatsNew", false) &&
+                Utils.CompareVersions(Shared.VERSION, IniFiles.Instance.GetString(IniFile.Config, "General", "sPreviousVersion", "1.0.0")) > 0)
+                ShowWhatsNew();
+        }
+
+        private void ShowWhatsNew()
+        {
+            if (this.formWhatsNew == null)
+                this.formWhatsNew = new FormWhatsNew();
+            this.formWhatsNew.ShowDialog();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -327,6 +345,7 @@ namespace Fo76ini
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
+                IniFiles.Instance.Set(IniFile.Config, "General", "sPreviousVersion", Shared.VERSION);
                 IniFiles.Instance.SaveWindowState("Form1", this);
                 if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAutoApply", false))
                     ApplyChanges();
@@ -2215,6 +2234,11 @@ namespace Fo76ini
         private void linkLabelAttribution_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Utils.OpenNotepad(@"Attribution.txt");
+        }
+
+        private void linkLabelWhatsNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ShowWhatsNew();
         }
 
         #endregion
