@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Polski" iso="pl-PL" author="Gray770" version="1.8.3">
+<Language name="Polski" iso="pl-PL" author="Gray770" version="1.8.4h1">
   <Strings>
     <String text="Nowsza wersja jest dostępna: {0}" id="newVersionAvailable" />
     <String text="Update now!" id="updateNowButton" />
@@ -211,6 +211,8 @@ Uruchom narzędzie jako administrator i spróbuj ponownie.</Messagebox>
    Tak - Dokonałem zmian w mojej liście modów i chciałbym przepakować moje spakowane archiwa. (wolne)
 
    Nie  - Nie dokonałem żadnych zmian, wdróż zamrożone zapakowane archiwa (szybkie)</Messagebox>
+    <Messagebox title="Archive2 nie udało sie zapakować/wypakować archiwum" id="archive2InstallRequirements">Upewnij się że masz zainstalowane: 'Visual C++ Redistributable for Visual Studio 2012 Update 4'.
+Link możesz znaleźć na stronie NexusMods.</Messagebox>
     <Messagebox title="Mody nadal są włączone" id="nwModeEnabledButModsAreDeployed">Włączyłeś tryb Nuclear Winter ale twoje mody nadal są włączone.
 Czy chcesz je wyłączyć?</Messagebox>
     <Messagebox title="Czy chcesz włączyć mody?" id="nwModeDisabledAndModsAreStillDisabled">Wyłączyłeś tryb Nuclear Winter lecz twoje mody nadal są wyłączone.
@@ -258,6 +260,7 @@ Spróbuj ponownie później.</Messagebox>
     </ToolStrip>
     <TabControl id="tabControl1">
       <TabPage text="Info" id="tabPageInfo">
+        <LinkLabel text="Co nowego?" id="linkLabelWhatsNew" />
         <LinkLabel text="Licensed work" id="linkLabelAttribution" />
         <Panel id="panelUpdate">
           <LinkLabel text="Lub pobierz i zainstaluj samodzielnie" id="linkLabelManualDownloadPage" />
@@ -1092,11 +1095,11 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
       </TabPage>
     </TabControl>
     <ContextMenuStrip id="contextMenuStrip1">
-      <ToolStripMenuItem text="Open" id="openToolStripMenuItem" />
-      <ToolStripMenuItem text="Open folder" id="openFolderToolStripMenuItem" />
-      <ToolStripMenuItem text="Cut" id="cutToolStripMenuItem" />
-      <ToolStripMenuItem text="Copy" id="copyToolStripMenuItem" />
-      <ToolStripMenuItem text="Delete" id="deleteToolStripMenuItem" />
+      <ToolStripMenuItem text="Otwórz" id="openToolStripMenuItem" />
+      <ToolStripMenuItem text="Otwórz folder" id="openFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Wytnij" id="cutToolStripMenuItem" />
+      <ToolStripMenuItem text="Kopiuj" id="copyToolStripMenuItem" />
+      <ToolStripMenuItem text="Usuń" id="deleteToolStripMenuItem" />
     </ContextMenuStrip>
   </Form1>
   <FormMods title="Modyfikacje">
@@ -1190,15 +1193,15 @@ Więcej o Hard-Links możesz przeczytać w artykule "How to install mods using F
         <LinkLabel text="Uzyskaj swój klucz API" id="linkLabelNMGetAPIKey" />
         <Button text="Zaktualizuj informacje o modyfikacjach" id="buttonNMUpdateModInfo" />
         <Panel id="panel3">
-          <Label text="Prawidłowy" id="labelNMAPIKeyStatus" />
+          <Label text="Nieprawidłowy" id="labelNMAPIKeyStatus" />
           <Label text="Klucz API:" id="labelNMDescAPIKey" />
-          <Label text="Gray770" id="labelNMUserName" />
+          <Label text="Anonymous" id="labelNMUserName" />
           <Label text="Członkostwo:" id="labelNMDescMembership" />
-          <Label text="w ciągu -8 godzin(y) i -29 minut(y)" id="labelNMDailyRateLimitReset" />
+          <Label text="w ciągu -11 godzin(y) i 0 minut(y)" id="labelNMDailyRateLimitReset" />
           <Label text="Basic" id="labelNMMembership" />
           <Label text="Reset limitu:" id="labelNMDescLimitReset" />
           <Label text="Dzienny reset limitu:" id="labelNMDescDailyRateLimit" />
-          <Label text="2499 zostało" id="labelNMDailyRateLimit" />
+          <Label text="0 zostało" id="labelNMDailyRateLimit" />
         </Panel>
         <Button text="Zaktualizuj profil" id="buttonNMUpdateProfile" />
         <Button text="Usuń miniaturki" id="buttonNMDeleteThumbnails" />

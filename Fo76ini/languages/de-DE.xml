@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.8.3">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.8.4h1">
   <Strings>
     <String text="Eine neue Version ist verfügbar: {0}" id="newVersionAvailable" />
     <String text="Jetzt aktualisieren!" id="updateNowButton" />
@@ -159,12 +159,12 @@ Die Fenster könnten zu groß sein, um auf den Bildschirm zu passen.
 Deine Auflösung: {0}
 Mindestauflösung: {1}
 Empfohlene Auflösung: 1920 x 1080</Messagebox>
-    <Messagebox title="Restart required." id="restartRequired">A restart of the tool is required for changes to take effect.
-Are you sure, you want to change this option now?</Messagebox>
+    <Messagebox title="Neustart erforderlich" id="restartRequired">Ein Neustart des Tools ist erforderlich um die Änderungen, damit die Änderungen wirksam werden.
+Bist du sicher, dass du diese Option jetzt ändern möchtest?</Messagebox>
     <Messagebox title="{0} löschen?" id="galleryDeleteScreenshot">Du bist dabei, '{0}' zu löschen. Bist du sicher?</Messagebox>
     <Messagebox title="{0} Dateien löschen?" id="galleryDeleteScreenshots">Du bist dabei, {0} Dateien zu löschen. Bist du sicher?</Messagebox>
-    <Messagebox title="Are you sure?" id="galleryDeleteThumbnails">Are you sure you want to delete the gallery's thumbnails?
-The next time you click on 'Refresh gallery', it will take significantly longer as it recreates all thumbnails.</Messagebox>
+    <Messagebox title="Bist du sicher?" id="galleryDeleteThumbnails">Möchtest du die Thumbnails wirklich löschen?
+Wenn du das nächste Mal auf "Galerie aktualisieren" klickst, wird es erheblich länger dauern, da alle Thumbnails neu generiert werden.</Messagebox>
     <Messagebox title="NW-Modus deaktiviert" id="nwModeDisabled">Du kannst jetzt den Abenteuermodus spielen.</Messagebox>
     <Messagebox title="NW-Modus aktiviert" id="nwModeEnabled">Du kannst jetzt den Nuclear Winter Modus spielen.</Messagebox>
     <Messagebox title="Fertig" id="modsDisabledDone">Mods wurden deaktiviert und vom Spiel entfernt.</Messagebox>
@@ -212,11 +212,13 @@ Starte das Tool als Administrator und versuche es erneut.</Messagebox>
    Ja - Ich habe meine Modliste geändert und würde sie gerne erneut verpacken. (langsam)
 
    Nein - Ich habe keine Veränderungen gemacht, bitte benutze die gefrorenen Archive. (schnell)</Messagebox>
+    <Messagebox title="Archive2 konnte ein Archiv nicht packen / extrahieren" id="archive2InstallRequirements">Stelle bitte sicher, dass du 'Visual C++ Redistributable für Visual Studio 2012 Update 4' auf dem PC installiert hast.
+Du kannst einen Link auf der NexusMods-Seite finden.</Messagebox>
     <Messagebox title="Mods sind noch installiert" id="nwModeEnabledButModsAreDeployed">Du hast den Nuclear Winter Modus aktiviert, aber deine Mods sind noch installiert.
 Möchtest du sie jetzt deinstallieren?</Messagebox>
     <Messagebox title="Möchtest du deine Mods wieder installieren?" id="nwModeDisabledAndModsAreStillDisabled">Du hast den Nuclear Winter Modus deaktiviert, aber deine Mods wurden dadurch nicht reaktiviert.
 Möchtest du sie jetzt wieder installieren?</Messagebox>
-    <Messagebox title="Mod information updated" id="nexusModsRemoteInfoRefreshedSuccess">Mod information updated and thumbnails downloaded.</Messagebox>
+    <Messagebox title="Mod-Informationen aktualisiert" id="nexusModsRemoteInfoRefreshedSuccess">Mod-Informationen aktualisiert and Thumbnails heruntergeladen.</Messagebox>
     <Messagebox title="Fehlgeschlagen" id="nexusModsProfileRefreshFailed">Dein Profil konnte nicht aktualisiert werden:
 {0}</Messagebox>
     <Messagebox title="Bist du sicher?" id="nexusModsDeleteThumbnails">Möchtest du wirklich alle Thumbnails löschen?</Messagebox>
@@ -263,6 +265,7 @@ Bitte wähle Archive2.exe</Messagebox>
     </ToolStrip>
     <TabControl id="tabControl1">
       <TabPage text="Info" id="tabPageInfo">
+        <LinkLabel text="Was gibt's Neues?" id="linkLabelWhatsNew" />
         <LinkLabel text="Lizenzierte Arbeit" id="linkLabelAttribution" />
         <Panel id="panelUpdate">
           <LinkLabel text="Oder lade es manuell herunter..." id="linkLabelManualDownloadPage" />
@@ -1092,11 +1095,11 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           <Label text="Thumbnail-Größe:" id="labelGalleryThumbnailSize" />
           <Button text="Galerie aktualisieren" id="buttonRefreshGallery" />
           <Label text="Screenshot-Index:" id="labelScreenshotIndex">
-            <Tooltip>When you take screenshots ingame with the print screen button, it saves them in the game directory as "ScreenShotX.png".
-The "X" being the screenshot index.
+            <Tooltip>Wenn du Screenshots im Spiel mit der 'Drucken'-Taste aufnimmst, werden diese im Spielverzeichnis als "ScreenShotX.png" gespeichert.
+Das "X" bezeichnet den Screenshot-Index.
 
-Affected values: iScreenShotIndex
-Affected files: Fallout76Prefs.ini</Tooltip>
+Betroffene Werte: iScreenShotIndex
+Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </Label>
         </GroupBox>
       </TabPage>
@@ -1207,7 +1210,7 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
           <Label text="API-Key:" id="labelNMDescAPIKey" />
           <Label text="datasnake01" id="labelNMUserName" />
           <Label text="Mitgliedschaft:" id="labelNMDescMembership" />
-          <Label text="in 18 Stunde(n) und 28 Minute(n)" id="labelNMDailyRateLimitReset" />
+          <Label text="in -12 Stunde(n) und 0 Minute(n)" id="labelNMDailyRateLimitReset" />
           <Label text="Premium" id="labelNMMembership" />
           <Label text="Limit wird zurückgesetzt:" id="labelNMDescLimitReset" />
           <Label text="Tägliches Ratenlimit:" id="labelNMDescDailyRateLimit" />
