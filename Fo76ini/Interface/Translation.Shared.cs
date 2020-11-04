@@ -311,6 +311,11 @@ namespace Fo76ini
                 "   No  - I didn't make changes, please deploy my frozen bundled archives. (quick)"
             );
 
+            MsgBox.Add("archive2Error",
+                "Archive2 failed to pack/extract an archive",
+                "Please check the log files."
+            );
+
             MsgBox.Add("archive2InstallRequirements",
                 "Archive2 failed to pack/extract an archive",
                 "Please make sure you've installed 'Visual C++ Redistributable for Visual Studio 2012 Update 4'.\n" +

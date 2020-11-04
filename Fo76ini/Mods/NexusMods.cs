@@ -70,6 +70,8 @@ namespace Fo76ini
 
         public static void Load()
         {
+            Form1.logFile.WriteLine("[NexusMods]\tLoading...");
+
             Mods.Clear();
 
             NexusMods.Profile.Load();
@@ -278,6 +280,8 @@ namespace Fo76ini
 
         public void Update()
         {
+            Form1.logFile.WriteLine("[NMProfile]\tUpdating...");
+
             // Make API request:
             APIRequest request = new APIRequest("https://api.nexusmods.com/v1/users/validate.json");
             request.Headers["apikey"] = this.APIKey;
@@ -344,6 +348,8 @@ namespace Fo76ini
 
         public void Save()
         {
+            Form1.logFile.WriteLine("[NMProfile]\tSaving...");
+
             IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sAPIKey", this.APIKey);
             IniFiles.Instance.Set(IniFile.Config, "NexusMods", "bAPIKeyValid", this.ValidKey);
             IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sUserName", this.UserName);
@@ -368,6 +374,8 @@ namespace Fo76ini
 
         public void Load()
         {
+            Form1.logFile.WriteLine("[NMProfile]\tLoading...");
+
             this.APIKey = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sAPIKey", "");
             this.ValidKey = IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bAPIKeyValid", false);
             this.UserName = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sUserName", "Anonymous");

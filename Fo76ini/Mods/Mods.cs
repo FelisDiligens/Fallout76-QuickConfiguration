@@ -273,7 +273,7 @@ namespace Fo76ini
             catch (Archive2Exception ex)
             {
                 ManagedMods.Instance.logFile.WriteLine($"Archive2Exception occured while freezing mod '{this.Title}': {ex.Message}\n{ex.StackTrace}\n");
-                MsgBox.Get("archive2InstallRequirements").Show(MessageBoxIcon.Error);
+                MsgBox.Get("archive2Error").Show(MessageBoxIcon.Error);
                 if (done != null)
                     done(false);
                 return;
@@ -326,7 +326,7 @@ namespace Fo76ini
             catch (Archive2Exception ex)
             {
                 ManagedMods.Instance.logFile.WriteLine($"Archive2Exception occured while unfreezing mod '{this.Title}': {ex.Message}\n{ex.StackTrace}\n");
-                MsgBox.Get("archive2InstallRequirements").Show(MessageBoxIcon.Error);
+                MsgBox.Get("archive2Error").Show(MessageBoxIcon.Error);
                 if (done != null)
                     done(false);
                 return;
@@ -1140,7 +1140,7 @@ namespace Fo76ini
             catch (Archive2Exception ex)
             {
                 ManagedMods.Instance.logFile.WriteLine($"Archive2Exception occured while importing an archive: {ex.Message}\n{ex.StackTrace}\n");
-                MsgBox.Get("archive2InstallRequirements").Show(MessageBoxIcon.Error);
+                MsgBox.Get("archive2Error").Show(MessageBoxIcon.Error);
                 if (done != null)
                     done(false);
                 return;
@@ -1265,7 +1265,7 @@ namespace Fo76ini
             catch (Archive2Exception ex)
             {
                 ManagedMods.Instance.logFile.WriteLine($"Archive2Exception occured while importing a folder: {ex.Message}\n{ex.StackTrace}\n");
-                MsgBox.Get("archive2InstallRequirements").Show(MessageBoxIcon.Error);
+                MsgBox.Get("archive2Error").Show(MessageBoxIcon.Error);
                 if (done != null)
                     done(false);
                 return;
@@ -2217,10 +2217,18 @@ namespace Fo76ini
                 if (done != null)
                     done(true);
             }
+            catch (Archive2RequirementsException ex)
+            {
+                ManagedMods.Instance.logFile.WriteLine($"Archive2RequirementsException occured while deploying: {ex.Message}\n{ex.StackTrace}\n");
+                MsgBox.Get("archive2InstallRequirements").Show(MessageBoxIcon.Error);
+                if (done != null)
+                    done(false);
+                return;
+            }
             catch (Archive2Exception ex)
             {
                 ManagedMods.Instance.logFile.WriteLine($"Archive2Exception occured while deploying: {ex.Message}\n{ex.StackTrace}\n");
-                MsgBox.Get("archive2InstallRequirements").Show(MessageBoxIcon.Error);
+                MsgBox.Get("archive2Error").Show(MessageBoxIcon.Error);
                 if (done != null)
                     done(false);
                 return;

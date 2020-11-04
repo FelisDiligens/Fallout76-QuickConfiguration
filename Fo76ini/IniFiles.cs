@@ -137,6 +137,8 @@ namespace Fo76ini
 
         private IniFiles()
         {
+            Form1.logFile.WriteLine("[IniFiles] Instantiating...");
+
             // Get the paths:
             this.iniParentPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
@@ -187,13 +189,18 @@ namespace Fo76ini
 
         public void LoadGameInis()
         {
+            Form1.logFile.WriteLine("[IniFiles]\tLoading game's *.ini files");
+
             // Parse all INI files, if existing:
 
             // Do Fallout76.ini and Fallout76Prefs.ini exist?
             if (!File.Exists(GetIniPath(IniFile.F76)) || !File.Exists(GetIniPath(IniFile.F76Prefs)))
             {
+                Form1.logFile.WriteLine($"[IniFiles] Either {GetIniPath(IniFile.F76)} or {GetIniPath(IniFile.F76Prefs)} doesn't exist.");
                 if (Shared.GameEdition == GameEdition.MSStore)
                 {
+                    Form1.logFile.WriteLine("[IniFiles]\tMSStore version is selected. Try to fallback to Steam version.");
+
                     // Do Fallout76.ini and Fallout76Prefs.ini exist?
                     if (File.Exists(GetIniPath(IniFile.F76, GameEdition.Steam)) && File.Exists(GetIniPath(IniFile.F76Prefs, GameEdition.Steam)))
                         //Shared.ChangeGameEdition(GameEdition.Steam);
@@ -203,6 +210,8 @@ namespace Fo76ini
                 }
                 else
                 {
+                    Form1.logFile.WriteLine($"[IniFiles]\t{Shared.GetEditionSuffix(Shared.GameEdition)} version is selected. Try to fallback to MSStore version.");
+
                     // Do Project76.ini and Project76Prefs.ini exist?
                     if (File.Exists(GetIniPath(IniFile.F76, GameEdition.MSStore)) && File.Exists(GetIniPath(IniFile.F76Prefs, GameEdition.MSStore)))
                         //Shared.ChangeGameEdition(GameEdition.MSStore);
@@ -215,6 +224,8 @@ namespace Fo76ini
             // Does Fallout76Custom.ini exist? If not, create it.
             /*if (!File.Exists(this.GetIniPath(IniFile.F76Custom)))
                 File.CreateText(this.GetIniPath(IniFile.F76Custom)).Close();*/
+
+            Form1.logFile.WriteLine("[IniFiles]\tParsing *.ini files...");
 
             // Parse *.ini files:
             this.fo76Data = LoadIni(GetIniPath(IniFile.F76), false);
@@ -244,6 +255,7 @@ namespace Fo76ini
 
         public void ChangeGameEdition(GameEdition edition)
         {
+            Form1.logFile.WriteLine($"[IniFiles]\tChangeGameEdition({edition})");
             //bool reloadRequired = (this.GameEdition == GameEdition.MSStore && edition != GameEdition.MSStore) || (this.GameEdition != GameEdition.MSStore && edition == GameEdition.MSStore);
             //this.GameEdition = edition;
             /*if (reloadRequired)
@@ -255,6 +267,7 @@ namespace Fo76ini
 
         public void SaveGameInis(bool readOnly = false)
         {
+            Form1.logFile.WriteLine($"[IniFiles]\tSaveGameInis(readOnly = {readOnly})");
             SaveIni(this.GetIniPath(IniFile.F76), this.fo76Data, readOnly);
             SaveIni(this.GetIniPath(IniFile.F76Prefs), this.fo76PrefsData, readOnly);
             if (this.renameF76Custom)
@@ -266,6 +279,7 @@ namespace Fo76ini
 
         public void ResolveNWMode()
         {
+            Form1.logFile.WriteLine("[IniFiles]\tResolveNWMode()");
             SetNTFSWritePermission(true);
             if (this.renameF76Custom)
             {
@@ -411,6 +425,8 @@ namespace Fo76ini
 
         public IniData LoadIni(String path, bool ignoreErrors)
         {
+            Form1.logFile.WriteLine($"[IniFiles]\tLoading {path}");
+
             if (!File.Exists(path))
                 return new IniData();
             try
@@ -432,6 +448,8 @@ namespace Fo76ini
 
         public void SaveIni(String path, IniData data, bool readOnly = false)
         {
+            Form1.logFile.WriteLine($"[IniFiles]\tSaving {path}");
+
             if (data == null)
                 return;
 

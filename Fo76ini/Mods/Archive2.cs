@@ -94,9 +94,16 @@ namespace Fo76ini.Mods
                 proc.Start();
 
                 //MessageBox.Show(/*proc.StandardOutput.ReadToEnd(), */$"Archive2.exe {arguments}");
-                logFile.WriteLine(proc.StandardOutput.ReadToEnd());
-                logFile.WriteLine(proc.StandardError.ReadToEnd());
+                /*logFile.WriteLine(proc.StandardOutput.ReadToEnd());
+                logFile.WriteLine(proc.StandardError.ReadToEnd());*/
+
+                String output = proc.StandardOutput.ReadToEnd() + "\n" + proc.StandardError.ReadToEnd();
+                logFile.WriteLine(output);
                 proc.WaitForExit();
+
+                // System.IO.FileNotFoundException: Could not load file or assembly 'Archive2Interop.dll'
+                if (output.Contains("System.IO.FileNotFoundException:") && output.Contains("'Archive2Interop.dll'"))
+                    throw new Archive2RequirementsException("System.IO.FileNotFoundException: Could not load file or assembly 'Archive2Interop.dll'. 'Visual C++ Redistributable for Visual Studio 2012 Update 4' is likely not installed.");
             }
         }
 
@@ -175,5 +182,12 @@ namespace Fo76ini.Mods
         public Archive2Exception() { }
         public Archive2Exception(string message) : base(message) { }
         public Archive2Exception(string message, Exception inner) : base(message, inner) { }
+    }
+
+    public class Archive2RequirementsException : Archive2Exception
+    {
+        public Archive2RequirementsException() { }
+        public Archive2RequirementsException(string message) : base(message) { }
+        public Archive2RequirementsException(string message, Exception inner) : base(message, inner) { }
     }
 }

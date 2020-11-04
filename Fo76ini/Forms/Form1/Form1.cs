@@ -16,6 +16,8 @@ namespace Fo76ini
 {
     public partial class Form1 : Form
     {
+        public static Log logFile = new Log(Log.GetFilePath("tool.log.txt"));
+
         private UILoader uiLoader = new UILoader();
 
         private FormWhatsNew formWhatsNew = null;
@@ -33,10 +35,16 @@ namespace Fo76ini
 
         public Form1()
         {
+            Form1.logFile.WriteLine("\n\n");
+            Form1.logFile.WriteTimeStamp();
+            Form1.logFile.WriteLine($"Version {Shared.VERSION}");
+            Form1.logFile.WriteLine("[Form1]\tInitializing...");
+
             Form1.instance = this;
 
             InitializeComponent();
 
+            Form1.logFile.WriteLine("[Form1]\tAdding Form1 to Localization.LocalizedForms");
             LocalizedForm form = new LocalizedForm(this, this.toolTip);
             form.SpecialControls.Add(this.contextMenuStripGallery);
             Localization.LocalizedForms.Add(form);
@@ -202,16 +210,21 @@ namespace Fo76ini
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Form1.logFile.WriteLine("[Form1]\tLoading...");
+
             // Create folders, if not present:
+            Form1.logFile.WriteLine($"[Form1]\tCreating {Shared.AppConfigFolder}");
             if (!Directory.Exists(Shared.AppConfigFolder))
                 Directory.CreateDirectory(Shared.AppConfigFolder);
 
+            Form1.logFile.WriteLine($"[Form1]\tCreating {Localization.languageFolder}");
             if (!Directory.Exists(Localization.languageFolder))
                 Directory.CreateDirectory(Localization.languageFolder);
 
             // Create note to old config folder to inform users, if present:
             if (Directory.Exists(Shared.OldAppConfigFolder))
             {
+                Form1.logFile.WriteLine($"[Form1]\tOld config folder detected, moving config from {Shared.OldAppConfigFolder} to {Shared.AppConfigFolder}");
                 try
                 {
                     using (StreamWriter f = new StreamWriter(Path.Combine(Shared.OldAppConfigFolder, "READ ME - CONFIG FOLDER HAS BEEN MOVED.txt")))
@@ -244,6 +257,7 @@ namespace Fo76ini
             IniFiles.Instance.LoadConfig();
 
             // Load the languages
+            Form1.logFile.WriteLine("[Form1]\tLoading translations");
             Localization.AssignDropBox(this.comboBoxLanguage);
             Localization.GenerateTemplate();
             Localization.LookupLanguages();
@@ -251,54 +265,58 @@ namespace Fo76ini
             // Load *.ini files:
             try
             {
+                Form1.logFile.WriteLine("[Form1]\tLoading game edition setting...");
                 Shared.LoadGameEdition();
+                Form1.logFile.WriteLine("[Form1]\tLoading game's *.ini files");
                 IniFiles.Instance.LoadGameInis();
             }
             catch (IniParser.Exceptions.ParsingException exc)
             {
                 //MessageBox.Show(exc.Message, "Couldn't parse *.ini files", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Form1.logFile.WriteLine($"[Form1]\tParsingException occured: {exc.Message}\n{exc.StackTrace}");
                 MsgBox.Get("iniParsingError").FormatText(exc.Message).Show(MessageBoxIcon.Error);
                 Application.Exit();
                 return;
             }
             catch (FileNotFoundException exc)
             {
+                Form1.logFile.WriteLine($"[Form1]\tFileNotFoundException occured: {exc.Message}\n{exc.StackTrace}");
                 MsgBox.Get("runGameToGenerateINI").FormatTitle(IniFiles.Instance.GetIniName(IniFile.F76), IniFiles.Instance.GetIniName(IniFile.F76Prefs)).Show(MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
                 return;
             }
 
+            Form1.logFile.WriteLine("[Form1]\tEnabling timerCheckFiles");
             this.timerCheckFiles.Enabled = true;
 
             LoadNuclearWinterConfiguration();
 
             // Load mods:
+            Form1.logFile.WriteLine("[Form1]\tLoading mods");
             ManagedMods.Instance.Load();
             NexusMods.Load();
             this.formMods.UpdateUI();
 
             // Account profiles:
+            Form1.logFile.WriteLine("[Form1]\tLoading account profiles");
             this.accountProfileRadioButtons = new RadioButton[] { this.radioButtonAccount1, this.radioButtonAccount2, this.radioButtonAccount3, this.radioButtonAccount4, this.radioButtonAccount5, this.radioButtonAccount6, this.radioButtonAccount7, this.radioButtonAccount8 };
             foreach (RadioButton rbutton in this.accountProfileRadioButtons)
                 rbutton.CheckedChanged += new System.EventHandler(this.radioButtonAccount_CheckedChanged);
 
             // Setup UI:
+            Form1.logFile.WriteLine("[Form1]\tSetting up UI elements");
             CheckAllINIValues();
             ColorIni2Ui();
             UpdateCameraPositionUI();
             AddAllEventHandler();
             uiLoader.Update();
 
-            CheckVersion();
-
-            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false))
-                this.formMods.OpenUI();
-
             IniFiles.Instance.LoadWindowState("Form1", this);
 
             // Remove updater, if present:
             try
             {
+                Form1.logFile.WriteLine("[Form1]\tRemoving Updater from config folder");
                 String updaterPath = Path.Combine(Shared.AppConfigFolder, "Updater");
                 if (Directory.Exists(updaterPath))
                     Directory.Delete(updaterPath, true);
@@ -306,28 +324,47 @@ namespace Fo76ini
             catch
             {
                 // Yeah, well or not.
+                Form1.logFile.WriteLine("[Form1]\tRemoving Updater failed");
             }
 
             this.LoadGallery();
 
             MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
+
+            Form1.logFile.WriteLine("[Form1]\tLoading finished.");
         }
 
         private void Form1_Shown(Object sender, EventArgs e)
         {
             // Check display resolution
+            Form1.logFile.WriteLine("[Form1]\tChecking display resolution.");
             int[] res = Utils.GetDisplayResolution();
             if (res[0] < 920 || res[1] < 750)
                 MsgBox.Get("displayResolutionTooLow").FormatText($"{res[0]} x {res[1]}", "920 x 750").Show(MessageBoxIcon.Warning);
 
+            // Check for updates
+            CheckVersion();
+
+            // Open mod manager on launch:
+            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false))
+                this.formMods.OpenUI();
+
             // Display "What's new?" dialog
+            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bIgnoreUpdates", false))
+                ShowWhatsNewConditionally();
+        }
+
+        private void ShowWhatsNewConditionally()
+        {
             if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bDisableWhatsNew", false) &&
-                Utils.CompareVersions(Shared.VERSION, IniFiles.Instance.GetString(IniFile.Config, "General", "sPreviousVersion", "1.0.0")) > 0)
+                Utils.CompareVersions(Shared.VERSION, IniFiles.Instance.GetString(IniFile.Config, "General", "sPreviousVersion", "1.0.0")) > 0 &&
+                (Shared.LatestVersion == null || Utils.CompareVersions(Shared.LatestVersion, Shared.VERSION) == 0))
                 ShowWhatsNew();
         }
 
         private void ShowWhatsNew()
         {
+            Form1.logFile.WriteLine("[Form1]\tShowing \"What's New\".");
             if (this.formWhatsNew == null)
                 this.formWhatsNew = new FormWhatsNew();
             this.formWhatsNew.ShowDialog();
@@ -360,7 +397,6 @@ namespace Fo76ini
 
         #region Check version
 
-        private String latestVersion = null;
         private void backgroundWorkerGetLatestVersion_DoWork(object sender, DoWorkEventArgs e)
         {
             //this.latestVersion = VERSION;
@@ -369,11 +405,11 @@ namespace Fo76ini
                 System.Net.WebClient wc = new System.Net.WebClient();
                 // wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.BypassCache);
                 byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/VERSION");
-                this.latestVersion = Encoding.UTF8.GetString(raw).Trim();
+                Shared.LatestVersion = Encoding.UTF8.GetString(raw).Trim();
             }
             catch (System.Net.WebException exc)
             {
-                this.latestVersion = null;
+                Shared.LatestVersion = null;
                 return;
             }
         }
@@ -382,8 +418,10 @@ namespace Fo76ini
         {
             this.pictureBoxSpinnerCheckForUpdates.Visible = false;
 
+            ShowWhatsNewConditionally();
+
             // Failed:
-            if (this.latestVersion == null)
+            if (Shared.LatestVersion == null)
             {
                 this.labelConfigVersion.ForeColor = Color.Black;
                 panelUpdate.Visible = false;
@@ -391,12 +429,12 @@ namespace Fo76ini
             }
 
             // Compare versions:
-            int cmp = Utils.CompareVersions(this.latestVersion, Shared.VERSION);
+            int cmp = Utils.CompareVersions(Shared.LatestVersion, Shared.VERSION);
             if (cmp > 0)
             {
                 // Update available:
                 panelUpdate.Visible = true;
-                labelNewVersion.Text = String.Format(Localization.GetString("newVersionAvailable"), latestVersion);
+                labelNewVersion.Text = String.Format(Localization.GetString("newVersionAvailable"), Shared.LatestVersion);
                 labelNewVersion.ForeColor = Color.Crimson;
                 this.labelConfigVersion.ForeColor = Color.Red;
             }
@@ -416,6 +454,8 @@ namespace Fo76ini
 
         public void CheckVersion(bool force = false)
         {
+            Form1.logFile.WriteLine("[Form1]\tChecking version...");
+
             if (this.backgroundWorkerGetLatestVersion.IsBusy)
                 return;
 
@@ -549,6 +589,8 @@ namespace Fo76ini
         #region Linking *.ini values to control elements
         private void AddAllEventHandler()
         {
+            Form1.logFile.WriteLine("[Form1]\tAdding event handler...");
+
             // Link numericUpDown and sliders:
             UILoader.LinkSlider(this.sliderGrassFadeDistance, this.numGrassFadeDistance, 1);
             //LinkSlider(this.sliderGrassDensity, this.numGrassDensity, 1, true);
@@ -578,6 +620,10 @@ namespace Fo76ini
             UILoader.LinkSlider(this.sliderCameraDistanceMinimum, this.numCameraDistanceMinimum, 1);
             UILoader.LinkSlider(this.sliderCameraDistanceMaximum, this.numCameraDistanceMaximum, 1);
             UILoader.LinkSlider(this.sliderfPitchZoomOutMaxDist, this.numfPitchZoomOutMaxDist, 1);
+
+            UILoader.LinkSlider(this.trackBarPhotomodeTranslationSpeed, this.numericUpDownPhotomodeTranslationSpeed, 10);
+            UILoader.LinkSlider(this.trackBarPhotomodeRotationSpeed, this.numericUpDownPhotomodeRotationSpeed, 10);
+            UILoader.LinkSlider(this.trackBarPhotomodeRange, this.numericUpDownPhotomodeRange, 1);
 
 
             /*
@@ -1041,6 +1087,32 @@ namespace Fo76ini
             // Lighting / Volumetric Lighting
             uiLoader.LinkBool(this.checkBoxGodrays, IniFile.F76Prefs, "Display", "bVolumetricLightingEnable", true);
 
+            // Effects / Disable gore
+            uiLoader.LinkCustom(this.checkBoxDisableGore,
+                () => IniFiles.Instance.GetBool("General", "bDisableAllGore", false),
+                (value) =>
+                {
+                    if (alternativeMode)
+                    {
+                        IniFiles.Instance.Set(IniFile.F76, "General", "bDisableAllGore", value);
+                        IniFiles.Instance.Set(IniFile.F76, "General", "bBloodSpatterEnabled", !value);
+                    }
+                    else
+                    {
+                        if (value)
+                        {
+                            IniFiles.Instance.Set(IniFile.F76Custom, "General", "bDisableAllGore", true);
+                            IniFiles.Instance.Set(IniFile.F76Custom, "General", "bBloodSpatterEnabled", false);
+                        }
+                        else
+                        {
+                            IniFiles.Instance.Remove(IniFile.F76Custom, "General", "bDisableAllGore");
+                            IniFiles.Instance.Remove(IniFile.F76Custom, "General", "bBloodSpatterEnabled");
+                        }
+                    }
+                }
+            );
+
             // Shadows / Texture map resolution
             uiLoader.LinkList(this.comboBoxShadowTextureResolution,
                 new String[] { "512", "1024", "2048", "4096" },
@@ -1232,6 +1304,10 @@ namespace Fo76ini
              * Camera
              */
 
+            // Photomode options:
+            uiLoader.LinkInt(this.numericUpDownPhotomodeRange, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fSelfieModeRange", 500);
+            uiLoader.LinkFloat(this.numericUpDownPhotomodeTranslationSpeed, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fSelfieCameraTranslationSpeed", 2.5f);
+            uiLoader.LinkFloat(this.numericUpDownPhotomodeRotationSpeed, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fSelfieCameraRotationSpeed", 1.5f);
 
             // Vanity mode
             uiLoader.LinkBool(this.checkBoxVanityMode, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "bDisableAutoVanityMode", false, true);
@@ -1336,6 +1412,8 @@ namespace Fo76ini
 
         private void LoadNuclearWinterConfiguration()
         {
+            Form1.logFile.WriteLine("[Form1]\tLoading nuclear winter configuration");
+
             // NW mode enabled?
             Shared.NuclearWinterMode = IniFiles.Instance.GetBool(IniFile.Config, "NuclearWinter", "bNWMode",
                 IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bNWMode", false) // backward compatibility
@@ -1680,10 +1758,13 @@ namespace Fo76ini
 
         private void ChangeGameEdition(GameEdition edition)
         {
+            Form1.logFile.WriteLine($"[Form1]\tChangeGameEdition({edition})");
+
             bool restartRequired = Shared.GameEdition != GameEdition.Unknown && ((Shared.GameEdition == GameEdition.MSStore && edition != GameEdition.MSStore) || (Shared.GameEdition != GameEdition.MSStore && edition == GameEdition.MSStore));
 
             if (restartRequired && MsgBox.Get("msstoreRestartRequired").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
+                Form1.logFile.WriteLine("[Form1]\tRestart required, but user decided not to switch.");
                 switch (Shared.GameEdition)
                 {
                     case GameEdition.Steam:
@@ -1748,6 +1829,7 @@ namespace Fo76ini
 
             if (restartRequired)
             {
+                Form1.logFile.WriteLine("[Form1]\tRestarting...");
                 IniFiles.Instance.SaveWindowState("Form1", this);
                 Application.Restart();
             }

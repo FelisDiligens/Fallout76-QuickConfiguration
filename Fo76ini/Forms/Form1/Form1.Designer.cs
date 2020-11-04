@@ -138,12 +138,27 @@
             this.checkBoxAlternativeINIMode = new System.Windows.Forms.CheckBox();
             this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
             this.checkBoxDisableSteam = new System.Windows.Forms.CheckBox();
+            this.checkBoxDisableGore = new System.Windows.Forms.CheckBox();
+            this.labelPhotomodeTranslationSpeed = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBoxSelfieCamera = new System.Windows.Forms.GroupBox();
+            this.numericUpDownPhotomodeRange = new System.Windows.Forms.NumericUpDown();
+            this.trackBarPhotomodeRange = new System.Windows.Forms.TrackBar();
+            this.numericUpDownPhotomodeTranslationSpeed = new System.Windows.Forms.NumericUpDown();
+            this.trackBarPhotomodeTranslationSpeed = new System.Windows.Forms.TrackBar();
+            this.groupBoxFieldOfView = new System.Windows.Forms.GroupBox();
+            this.numfDefaultFOV = new System.Windows.Forms.NumericUpDown();
+            this.numADSFOV = new System.Windows.Forms.NumericUpDown();
+            this.numWorldFOV = new System.Windows.Forms.NumericUpDown();
+            this.numFirstPersonFOV = new System.Windows.Forms.NumericUpDown();
             this.groupBoxCameraOptions = new System.Windows.Forms.GroupBox();
             this.numCameraSwitchDelay = new System.Windows.Forms.NumericUpDown();
+            this.groupBoxCameraVanity = new System.Windows.Forms.GroupBox();
             this.groupBoxCameraDistance = new System.Windows.Forms.GroupBox();
             this.numfPitchZoomOutMaxDist = new System.Windows.Forms.NumericUpDown();
             this.sliderfPitchZoomOutMaxDist = new System.Windows.Forms.TrackBar();
@@ -169,12 +184,6 @@
             this.trackBarCameraZ = new System.Windows.Forms.TrackBar();
             this.trackBarCameraY = new System.Windows.Forms.TrackBar();
             this.pictureBoxVaultBoy = new System.Windows.Forms.PictureBox();
-            this.groupBoxFieldOfView = new System.Windows.Forms.GroupBox();
-            this.numfDefaultFOV = new System.Windows.Forms.NumericUpDown();
-            this.numADSFOV = new System.Windows.Forms.NumericUpDown();
-            this.numWorldFOV = new System.Windows.Forms.NumericUpDown();
-            this.numFirstPersonFOV = new System.Windows.Forms.NumericUpDown();
-            this.groupBoxCameraVanity = new System.Windows.Forms.GroupBox();
             this.tabPagePipBoy = new System.Windows.Forms.TabPage();
             this.groupBoxPipboyResolution = new System.Windows.Forms.GroupBox();
             this.labelPipboyResolutionSideNote = new System.Windows.Forms.Label();
@@ -198,6 +207,7 @@
             this.tabPageVideo = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBoxGraphics = new System.Windows.Forms.GroupBox();
+            this.groupBoxGraphicEffects = new System.Windows.Forms.GroupBox();
             this.groupBoxTAASharpening = new System.Windows.Forms.GroupBox();
             this.labelTAAPostSharpen = new System.Windows.Forms.Label();
             this.numTAAPostSharpen = new System.Windows.Forms.NumericUpDown();
@@ -412,6 +422,9 @@
             this.backgroundWorkerEnableNWMode = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerDisableNWMode = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
+            this.numericUpDownPhotomodeRotationSpeed = new System.Windows.Forms.NumericUpDown();
+            this.trackBarPhotomodeRotationSpeed = new System.Windows.Forms.TrackBar();
+            this.labelPhotomodeRotationSpeed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
@@ -438,8 +451,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderfBlendSplitDirShadow)).BeginInit();
             this.tabPageCamera.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.groupBoxSelfieCamera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).BeginInit();
+            this.groupBoxFieldOfView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWorldFOV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFirstPersonFOV)).BeginInit();
             this.groupBoxCameraOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCameraSwitchDelay)).BeginInit();
+            this.groupBoxCameraVanity.SuspendLayout();
             this.groupBoxCameraDistance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderfPitchZoomOutMaxDist)).BeginInit();
@@ -452,12 +477,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCameraZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCameraY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaultBoy)).BeginInit();
-            this.groupBoxFieldOfView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numWorldFOV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFirstPersonFOV)).BeginInit();
-            this.groupBoxCameraVanity.SuspendLayout();
             this.tabPagePipBoy.SuspendLayout();
             this.groupBoxPipboyResolution.SuspendLayout();
             this.groupBoxPipboyMode.SuspendLayout();
@@ -472,6 +491,7 @@
             this.tabPageVideo.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBoxGraphics.SuspendLayout();
+            this.groupBoxGraphicEffects.SuspendLayout();
             this.groupBoxTAASharpening.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTAAPostSharpen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTAAPostOverlay)).BeginInit();
@@ -543,6 +563,8 @@
             this.toolStrip1.SuspendLayout();
             this.contextMenuStripGallery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).BeginInit();
             this.SuspendLayout();
             // 
             // toolTip
@@ -1849,7 +1871,7 @@
             // labelSwitchDelay
             // 
             this.labelSwitchDelay.AutoSize = true;
-            this.labelSwitchDelay.Location = new System.Drawing.Point(9, 23);
+            this.labelSwitchDelay.Location = new System.Drawing.Point(6, 23);
             this.labelSwitchDelay.Name = "labelSwitchDelay";
             this.labelSwitchDelay.Size = new System.Drawing.Size(119, 13);
             this.labelSwitchDelay.TabIndex = 0;
@@ -1945,6 +1967,40 @@
             this.toolTip.SetToolTip(this.checkBoxDisableSteam, "Affected values: bSteamEnabled\r\nAffected files: Fallout76Custom.ini");
             this.checkBoxDisableSteam.UseVisualStyleBackColor = true;
             // 
+            // checkBoxDisableGore
+            // 
+            this.checkBoxDisableGore.AutoSize = true;
+            this.checkBoxDisableGore.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxDisableGore.Name = "checkBoxDisableGore";
+            this.checkBoxDisableGore.Size = new System.Drawing.Size(85, 17);
+            this.checkBoxDisableGore.TabIndex = 0;
+            this.checkBoxDisableGore.Text = "Disable gore";
+            this.toolTip.SetToolTip(this.checkBoxDisableGore, "Affected values: bDisableAllGore, bBloodSpatterEnabled\r\nAffected files: Fallout76" +
+        "Custom.ini");
+            this.checkBoxDisableGore.UseVisualStyleBackColor = true;
+            // 
+            // labelPhotomodeTranslationSpeed
+            // 
+            this.labelPhotomodeTranslationSpeed.AutoSize = true;
+            this.labelPhotomodeTranslationSpeed.Location = new System.Drawing.Point(6, 23);
+            this.labelPhotomodeTranslationSpeed.Name = "labelPhotomodeTranslationSpeed";
+            this.labelPhotomodeTranslationSpeed.Size = new System.Drawing.Size(94, 13);
+            this.labelPhotomodeTranslationSpeed.TabIndex = 57;
+            this.labelPhotomodeTranslationSpeed.Text = "Translation speed:";
+            this.toolTip.SetToolTip(this.labelPhotomodeTranslationSpeed, "Default: 2.5\r\nAffected values: fSelfieCameraTranslationSpeed\r\nAffected files: Fal" +
+        "lout76Custom.ini");
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 60;
+            this.label4.Text = "Range limit:";
+            this.toolTip.SetToolTip(this.label4, "Default: 500\r\nAffected values: fSelfieModeRange\r\nAffected files: Fallout76Custom." +
+        "ini");
+            // 
             // timerCheckFiles
             // 
             this.timerCheckFiles.Interval = 5000;
@@ -1959,11 +2015,8 @@
             // tabPageCamera
             // 
             this.tabPageCamera.AutoScroll = true;
-            this.tabPageCamera.Controls.Add(this.groupBoxCameraOptions);
-            this.tabPageCamera.Controls.Add(this.groupBoxCameraDistance);
+            this.tabPageCamera.Controls.Add(this.panel2);
             this.tabPageCamera.Controls.Add(this.groupBoxCameraPositionWIP);
-            this.tabPageCamera.Controls.Add(this.groupBoxFieldOfView);
-            this.tabPageCamera.Controls.Add(this.groupBoxCameraVanity);
             this.tabPageCamera.Location = new System.Drawing.Point(4, 22);
             this.tabPageCamera.Name = "tabPageCamera";
             this.tabPageCamera.Padding = new System.Windows.Forms.Padding(3);
@@ -1972,13 +2025,252 @@
             this.tabPageCamera.Text = "Camera";
             this.tabPageCamera.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoScroll = true;
+            this.panel2.AutoScrollMargin = new System.Drawing.Size(6, 6);
+            this.panel2.Controls.Add(this.groupBoxSelfieCamera);
+            this.panel2.Controls.Add(this.groupBoxFieldOfView);
+            this.panel2.Controls.Add(this.groupBoxCameraOptions);
+            this.panel2.Controls.Add(this.groupBoxCameraVanity);
+            this.panel2.Controls.Add(this.groupBoxCameraDistance);
+            this.panel2.Location = new System.Drawing.Point(405, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(447, 464);
+            this.panel2.TabIndex = 36;
+            // 
+            // groupBoxSelfieCamera
+            // 
+            this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeRange);
+            this.groupBoxSelfieCamera.Controls.Add(this.numericUpDownPhotomodeRotationSpeed);
+            this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeRotationSpeed);
+            this.groupBoxSelfieCamera.Controls.Add(this.labelPhotomodeRotationSpeed);
+            this.groupBoxSelfieCamera.Controls.Add(this.numericUpDownPhotomodeRange);
+            this.groupBoxSelfieCamera.Controls.Add(this.label4);
+            this.groupBoxSelfieCamera.Controls.Add(this.numericUpDownPhotomodeTranslationSpeed);
+            this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeTranslationSpeed);
+            this.groupBoxSelfieCamera.Controls.Add(this.labelPhotomodeTranslationSpeed);
+            this.groupBoxSelfieCamera.Location = new System.Drawing.Point(5, 384);
+            this.groupBoxSelfieCamera.Name = "groupBoxSelfieCamera";
+            this.groupBoxSelfieCamera.Size = new System.Drawing.Size(419, 134);
+            this.groupBoxSelfieCamera.TabIndex = 36;
+            this.groupBoxSelfieCamera.TabStop = false;
+            this.groupBoxSelfieCamera.Text = "Photomode options";
+            // 
+            // numericUpDownPhotomodeRange
+            // 
+            this.numericUpDownPhotomodeRange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDownPhotomodeRange.Location = new System.Drawing.Point(336, 85);
+            this.numericUpDownPhotomodeRange.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numericUpDownPhotomodeRange.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownPhotomodeRange.Name = "numericUpDownPhotomodeRange";
+            this.numericUpDownPhotomodeRange.Size = new System.Drawing.Size(74, 20);
+            this.numericUpDownPhotomodeRange.TabIndex = 62;
+            this.numericUpDownPhotomodeRange.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            // 
+            // trackBarPhotomodeRange
+            // 
+            this.trackBarPhotomodeRange.BackColor = System.Drawing.Color.White;
+            this.trackBarPhotomodeRange.LargeChange = 100;
+            this.trackBarPhotomodeRange.Location = new System.Drawing.Point(131, 85);
+            this.trackBarPhotomodeRange.Maximum = 2000;
+            this.trackBarPhotomodeRange.Minimum = 10;
+            this.trackBarPhotomodeRange.Name = "trackBarPhotomodeRange";
+            this.trackBarPhotomodeRange.Size = new System.Drawing.Size(186, 45);
+            this.trackBarPhotomodeRange.SmallChange = 20;
+            this.trackBarPhotomodeRange.TabIndex = 61;
+            this.trackBarPhotomodeRange.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPhotomodeRange.Value = 500;
+            // 
+            // numericUpDownPhotomodeTranslationSpeed
+            // 
+            this.numericUpDownPhotomodeTranslationSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDownPhotomodeTranslationSpeed.DecimalPlaces = 1;
+            this.numericUpDownPhotomodeTranslationSpeed.Location = new System.Drawing.Point(336, 21);
+            this.numericUpDownPhotomodeTranslationSpeed.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDownPhotomodeTranslationSpeed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownPhotomodeTranslationSpeed.Name = "numericUpDownPhotomodeTranslationSpeed";
+            this.numericUpDownPhotomodeTranslationSpeed.Size = new System.Drawing.Size(74, 20);
+            this.numericUpDownPhotomodeTranslationSpeed.TabIndex = 59;
+            this.numericUpDownPhotomodeTranslationSpeed.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            65536});
+            // 
+            // trackBarPhotomodeTranslationSpeed
+            // 
+            this.trackBarPhotomodeTranslationSpeed.BackColor = System.Drawing.Color.White;
+            this.trackBarPhotomodeTranslationSpeed.LargeChange = 50;
+            this.trackBarPhotomodeTranslationSpeed.Location = new System.Drawing.Point(131, 21);
+            this.trackBarPhotomodeTranslationSpeed.Maximum = 50;
+            this.trackBarPhotomodeTranslationSpeed.Minimum = 5;
+            this.trackBarPhotomodeTranslationSpeed.Name = "trackBarPhotomodeTranslationSpeed";
+            this.trackBarPhotomodeTranslationSpeed.Size = new System.Drawing.Size(186, 45);
+            this.trackBarPhotomodeTranslationSpeed.SmallChange = 10;
+            this.trackBarPhotomodeTranslationSpeed.TabIndex = 58;
+            this.trackBarPhotomodeTranslationSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPhotomodeTranslationSpeed.Value = 25;
+            // 
+            // groupBoxFieldOfView
+            // 
+            this.groupBoxFieldOfView.Controls.Add(this.numfDefaultFOV);
+            this.groupBoxFieldOfView.Controls.Add(this.labelfDefaultFOV);
+            this.groupBoxFieldOfView.Controls.Add(this.labelADSFOV);
+            this.groupBoxFieldOfView.Controls.Add(this.numADSFOV);
+            this.groupBoxFieldOfView.Controls.Add(this.numWorldFOV);
+            this.groupBoxFieldOfView.Controls.Add(this.numFirstPersonFOV);
+            this.groupBoxFieldOfView.Controls.Add(this.labelWorldFOV);
+            this.groupBoxFieldOfView.Controls.Add(this.labelFirstPersonFOV);
+            this.groupBoxFieldOfView.Location = new System.Drawing.Point(5, 6);
+            this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
+            this.groupBoxFieldOfView.Size = new System.Drawing.Size(419, 154);
+            this.groupBoxFieldOfView.TabIndex = 21;
+            this.groupBoxFieldOfView.TabStop = false;
+            this.groupBoxFieldOfView.Text = "Field of View";
+            // 
+            // numfDefaultFOV
+            // 
+            this.numfDefaultFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfDefaultFOV.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numfDefaultFOV.Location = new System.Drawing.Point(275, 120);
+            this.numfDefaultFOV.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numfDefaultFOV.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numfDefaultFOV.Name = "numfDefaultFOV";
+            this.numfDefaultFOV.Size = new System.Drawing.Size(135, 20);
+            this.numfDefaultFOV.TabIndex = 7;
+            this.numfDefaultFOV.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            // 
+            // numADSFOV
+            // 
+            this.numADSFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numADSFOV.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numADSFOV.Location = new System.Drawing.Point(275, 82);
+            this.numADSFOV.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numADSFOV.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numADSFOV.Name = "numADSFOV";
+            this.numADSFOV.Size = new System.Drawing.Size(135, 20);
+            this.numADSFOV.TabIndex = 4;
+            this.numADSFOV.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // numWorldFOV
+            // 
+            this.numWorldFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numWorldFOV.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numWorldFOV.Location = new System.Drawing.Point(275, 45);
+            this.numWorldFOV.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numWorldFOV.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numWorldFOV.Name = "numWorldFOV";
+            this.numWorldFOV.Size = new System.Drawing.Size(135, 20);
+            this.numWorldFOV.TabIndex = 3;
+            this.numWorldFOV.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            // 
+            // numFirstPersonFOV
+            // 
+            this.numFirstPersonFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numFirstPersonFOV.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numFirstPersonFOV.Location = new System.Drawing.Point(275, 19);
+            this.numFirstPersonFOV.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numFirstPersonFOV.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numFirstPersonFOV.Name = "numFirstPersonFOV";
+            this.numFirstPersonFOV.Size = new System.Drawing.Size(135, 20);
+            this.numFirstPersonFOV.TabIndex = 2;
+            this.numFirstPersonFOV.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            // 
             // groupBoxCameraOptions
             // 
             this.groupBoxCameraOptions.Controls.Add(this.numCameraSwitchDelay);
             this.groupBoxCameraOptions.Controls.Add(this.labelSwitchDelay);
-            this.groupBoxCameraOptions.Location = new System.Drawing.Point(413, 323);
+            this.groupBoxCameraOptions.Location = new System.Drawing.Point(5, 323);
             this.groupBoxCameraOptions.Name = "groupBoxCameraOptions";
-            this.groupBoxCameraOptions.Size = new System.Drawing.Size(433, 55);
+            this.groupBoxCameraOptions.Size = new System.Drawing.Size(419, 55);
             this.groupBoxCameraOptions.TabIndex = 35;
             this.groupBoxCameraOptions.TabStop = false;
             this.groupBoxCameraOptions.Text = "Camera options";
@@ -1986,7 +2278,7 @@
             // numCameraSwitchDelay
             // 
             this.numCameraSwitchDelay.DecimalPlaces = 4;
-            this.numCameraSwitchDelay.Location = new System.Drawing.Point(304, 21);
+            this.numCameraSwitchDelay.Location = new System.Drawing.Point(290, 19);
             this.numCameraSwitchDelay.Maximum = new decimal(new int[] {
             5,
             0,
@@ -2006,6 +2298,17 @@
             0,
             131072});
             // 
+            // groupBoxCameraVanity
+            // 
+            this.groupBoxCameraVanity.Controls.Add(this.checkBoxForceVanityMode);
+            this.groupBoxCameraVanity.Controls.Add(this.checkBoxVanityMode);
+            this.groupBoxCameraVanity.Location = new System.Drawing.Point(5, 524);
+            this.groupBoxCameraVanity.Name = "groupBoxCameraVanity";
+            this.groupBoxCameraVanity.Size = new System.Drawing.Size(419, 74);
+            this.groupBoxCameraVanity.TabIndex = 16;
+            this.groupBoxCameraVanity.TabStop = false;
+            this.groupBoxCameraVanity.Text = "Vanity (Spinning camera)";
+            // 
             // groupBoxCameraDistance
             // 
             this.groupBoxCameraDistance.Controls.Add(this.numfPitchZoomOutMaxDist);
@@ -2017,9 +2320,9 @@
             this.groupBoxCameraDistance.Controls.Add(this.labelCameraDistanceMaximum);
             this.groupBoxCameraDistance.Controls.Add(this.labelCameraDistanceMinimum);
             this.groupBoxCameraDistance.Controls.Add(this.sliderCameraDistanceMinimum);
-            this.groupBoxCameraDistance.Location = new System.Drawing.Point(413, 166);
+            this.groupBoxCameraDistance.Location = new System.Drawing.Point(5, 166);
             this.groupBoxCameraDistance.Name = "groupBoxCameraDistance";
-            this.groupBoxCameraDistance.Size = new System.Drawing.Size(433, 151);
+            this.groupBoxCameraDistance.Size = new System.Drawing.Size(419, 151);
             this.groupBoxCameraDistance.TabIndex = 34;
             this.groupBoxCameraDistance.TabStop = false;
             this.groupBoxCameraDistance.Text = "Camera distance";
@@ -2032,7 +2335,7 @@
             0,
             0,
             0});
-            this.numfPitchZoomOutMaxDist.Location = new System.Drawing.Point(350, 99);
+            this.numfPitchZoomOutMaxDist.Location = new System.Drawing.Point(336, 99);
             this.numfPitchZoomOutMaxDist.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -2054,7 +2357,7 @@
             this.sliderfPitchZoomOutMaxDist.Location = new System.Drawing.Point(131, 101);
             this.sliderfPitchZoomOutMaxDist.Maximum = 200;
             this.sliderfPitchZoomOutMaxDist.Name = "sliderfPitchZoomOutMaxDist";
-            this.sliderfPitchZoomOutMaxDist.Size = new System.Drawing.Size(213, 45);
+            this.sliderfPitchZoomOutMaxDist.Size = new System.Drawing.Size(186, 45);
             this.sliderfPitchZoomOutMaxDist.SmallChange = 10;
             this.sliderfPitchZoomOutMaxDist.TabIndex = 58;
             this.sliderfPitchZoomOutMaxDist.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2068,7 +2371,7 @@
             0,
             0,
             0});
-            this.numCameraDistanceMaximum.Location = new System.Drawing.Point(350, 51);
+            this.numCameraDistanceMaximum.Location = new System.Drawing.Point(336, 51);
             this.numCameraDistanceMaximum.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -2091,7 +2394,7 @@
             0,
             0,
             0});
-            this.numCameraDistanceMinimum.Location = new System.Drawing.Point(350, 20);
+            this.numCameraDistanceMinimum.Location = new System.Drawing.Point(336, 20);
             this.numCameraDistanceMinimum.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -2109,7 +2412,7 @@
             this.sliderCameraDistanceMaximum.Maximum = 1000;
             this.sliderCameraDistanceMaximum.Minimum = 100;
             this.sliderCameraDistanceMaximum.Name = "sliderCameraDistanceMaximum";
-            this.sliderCameraDistanceMaximum.Size = new System.Drawing.Size(213, 45);
+            this.sliderCameraDistanceMaximum.Size = new System.Drawing.Size(186, 45);
             this.sliderCameraDistanceMaximum.SmallChange = 50;
             this.sliderCameraDistanceMaximum.TabIndex = 54;
             this.sliderCameraDistanceMaximum.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2122,7 +2425,7 @@
             this.sliderCameraDistanceMinimum.Location = new System.Drawing.Point(131, 19);
             this.sliderCameraDistanceMinimum.Maximum = 100;
             this.sliderCameraDistanceMinimum.Name = "sliderCameraDistanceMinimum";
-            this.sliderCameraDistanceMinimum.Size = new System.Drawing.Size(213, 45);
+            this.sliderCameraDistanceMinimum.Size = new System.Drawing.Size(186, 45);
             this.sliderCameraDistanceMinimum.SmallChange = 10;
             this.sliderCameraDistanceMinimum.TabIndex = 51;
             this.sliderCameraDistanceMinimum.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2328,146 +2631,6 @@
             this.pictureBoxVaultBoy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxVaultBoy.TabIndex = 33;
             this.pictureBoxVaultBoy.TabStop = false;
-            // 
-            // groupBoxFieldOfView
-            // 
-            this.groupBoxFieldOfView.Controls.Add(this.numfDefaultFOV);
-            this.groupBoxFieldOfView.Controls.Add(this.labelfDefaultFOV);
-            this.groupBoxFieldOfView.Controls.Add(this.labelADSFOV);
-            this.groupBoxFieldOfView.Controls.Add(this.numADSFOV);
-            this.groupBoxFieldOfView.Controls.Add(this.numWorldFOV);
-            this.groupBoxFieldOfView.Controls.Add(this.numFirstPersonFOV);
-            this.groupBoxFieldOfView.Controls.Add(this.labelWorldFOV);
-            this.groupBoxFieldOfView.Controls.Add(this.labelFirstPersonFOV);
-            this.groupBoxFieldOfView.Location = new System.Drawing.Point(413, 6);
-            this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
-            this.groupBoxFieldOfView.Size = new System.Drawing.Size(433, 154);
-            this.groupBoxFieldOfView.TabIndex = 21;
-            this.groupBoxFieldOfView.TabStop = false;
-            this.groupBoxFieldOfView.Text = "Field of View";
-            // 
-            // numfDefaultFOV
-            // 
-            this.numfDefaultFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numfDefaultFOV.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numfDefaultFOV.Location = new System.Drawing.Point(289, 120);
-            this.numfDefaultFOV.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.numfDefaultFOV.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numfDefaultFOV.Name = "numfDefaultFOV";
-            this.numfDefaultFOV.Size = new System.Drawing.Size(135, 20);
-            this.numfDefaultFOV.TabIndex = 7;
-            this.numfDefaultFOV.Value = new decimal(new int[] {
-            80,
-            0,
-            0,
-            0});
-            // 
-            // numADSFOV
-            // 
-            this.numADSFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numADSFOV.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numADSFOV.Location = new System.Drawing.Point(289, 82);
-            this.numADSFOV.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.numADSFOV.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numADSFOV.Name = "numADSFOV";
-            this.numADSFOV.Size = new System.Drawing.Size(135, 20);
-            this.numADSFOV.TabIndex = 4;
-            this.numADSFOV.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
-            // numWorldFOV
-            // 
-            this.numWorldFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numWorldFOV.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numWorldFOV.Location = new System.Drawing.Point(289, 45);
-            this.numWorldFOV.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.numWorldFOV.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numWorldFOV.Name = "numWorldFOV";
-            this.numWorldFOV.Size = new System.Drawing.Size(135, 20);
-            this.numWorldFOV.TabIndex = 3;
-            this.numWorldFOV.Value = new decimal(new int[] {
-            80,
-            0,
-            0,
-            0});
-            // 
-            // numFirstPersonFOV
-            // 
-            this.numFirstPersonFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numFirstPersonFOV.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numFirstPersonFOV.Location = new System.Drawing.Point(289, 19);
-            this.numFirstPersonFOV.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.numFirstPersonFOV.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numFirstPersonFOV.Name = "numFirstPersonFOV";
-            this.numFirstPersonFOV.Size = new System.Drawing.Size(135, 20);
-            this.numFirstPersonFOV.TabIndex = 2;
-            this.numFirstPersonFOV.Value = new decimal(new int[] {
-            80,
-            0,
-            0,
-            0});
-            // 
-            // groupBoxCameraVanity
-            // 
-            this.groupBoxCameraVanity.Controls.Add(this.checkBoxForceVanityMode);
-            this.groupBoxCameraVanity.Controls.Add(this.checkBoxVanityMode);
-            this.groupBoxCameraVanity.Location = new System.Drawing.Point(413, 384);
-            this.groupBoxCameraVanity.Name = "groupBoxCameraVanity";
-            this.groupBoxCameraVanity.Size = new System.Drawing.Size(433, 74);
-            this.groupBoxCameraVanity.TabIndex = 16;
-            this.groupBoxCameraVanity.TabStop = false;
-            this.groupBoxCameraVanity.Text = "Vanity (Spinning camera)";
             // 
             // tabPagePipBoy
             // 
@@ -2748,6 +2911,7 @@
             // 
             // groupBoxGraphics
             // 
+            this.groupBoxGraphics.Controls.Add(this.groupBoxGraphicEffects);
             this.groupBoxGraphics.Controls.Add(this.groupBoxTAASharpening);
             this.groupBoxGraphics.Controls.Add(this.labelAntiAliasing);
             this.groupBoxGraphics.Controls.Add(this.groupBoxGrass);
@@ -2767,6 +2931,16 @@
             this.groupBoxGraphics.TabIndex = 26;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
+            // 
+            // groupBoxGraphicEffects
+            // 
+            this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
+            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(9, 261);
+            this.groupBoxGraphicEffects.Name = "groupBoxGraphicEffects";
+            this.groupBoxGraphicEffects.Size = new System.Drawing.Size(187, 46);
+            this.groupBoxGraphicEffects.TabIndex = 39;
+            this.groupBoxGraphicEffects.TabStop = false;
+            this.groupBoxGraphicEffects.Text = "Effects";
             // 
             // groupBoxTAASharpening
             // 
@@ -3018,9 +3192,9 @@
             // groupBoxLighting
             // 
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
-            this.groupBoxLighting.Location = new System.Drawing.Point(9, 261);
+            this.groupBoxLighting.Location = new System.Drawing.Point(202, 261);
             this.groupBoxLighting.Name = "groupBoxLighting";
-            this.groupBoxLighting.Size = new System.Drawing.Size(381, 46);
+            this.groupBoxLighting.Size = new System.Drawing.Size(188, 46);
             this.groupBoxLighting.TabIndex = 28;
             this.groupBoxLighting.TabStop = false;
             this.groupBoxLighting.Text = "Lighting";
@@ -5352,6 +5526,55 @@
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
             // 
+            // numericUpDownPhotomodeRotationSpeed
+            // 
+            this.numericUpDownPhotomodeRotationSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDownPhotomodeRotationSpeed.DecimalPlaces = 1;
+            this.numericUpDownPhotomodeRotationSpeed.Location = new System.Drawing.Point(336, 51);
+            this.numericUpDownPhotomodeRotationSpeed.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDownPhotomodeRotationSpeed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownPhotomodeRotationSpeed.Name = "numericUpDownPhotomodeRotationSpeed";
+            this.numericUpDownPhotomodeRotationSpeed.Size = new System.Drawing.Size(74, 20);
+            this.numericUpDownPhotomodeRotationSpeed.TabIndex = 65;
+            this.numericUpDownPhotomodeRotationSpeed.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            65536});
+            // 
+            // trackBarPhotomodeRotationSpeed
+            // 
+            this.trackBarPhotomodeRotationSpeed.BackColor = System.Drawing.Color.White;
+            this.trackBarPhotomodeRotationSpeed.LargeChange = 50;
+            this.trackBarPhotomodeRotationSpeed.Location = new System.Drawing.Point(131, 51);
+            this.trackBarPhotomodeRotationSpeed.Maximum = 50;
+            this.trackBarPhotomodeRotationSpeed.Minimum = 5;
+            this.trackBarPhotomodeRotationSpeed.Name = "trackBarPhotomodeRotationSpeed";
+            this.trackBarPhotomodeRotationSpeed.Size = new System.Drawing.Size(186, 45);
+            this.trackBarPhotomodeRotationSpeed.SmallChange = 10;
+            this.trackBarPhotomodeRotationSpeed.TabIndex = 64;
+            this.trackBarPhotomodeRotationSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPhotomodeRotationSpeed.Value = 15;
+            // 
+            // labelPhotomodeRotationSpeed
+            // 
+            this.labelPhotomodeRotationSpeed.AutoSize = true;
+            this.labelPhotomodeRotationSpeed.Location = new System.Drawing.Point(6, 53);
+            this.labelPhotomodeRotationSpeed.Name = "labelPhotomodeRotationSpeed";
+            this.labelPhotomodeRotationSpeed.Size = new System.Drawing.Size(82, 13);
+            this.labelPhotomodeRotationSpeed.TabIndex = 63;
+            this.labelPhotomodeRotationSpeed.Text = "Rotation speed:";
+            this.toolTip.SetToolTip(this.labelPhotomodeRotationSpeed, "Default: 1.5\r\nAffected values: fSelfieCameraRotationSpeed\r\nAffected files: Fallou" +
+        "t76Custom.ini");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5392,9 +5615,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderfBlendSplitDirShadow)).EndInit();
             this.tabPageCamera.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.groupBoxSelfieCamera.ResumeLayout(false);
+            this.groupBoxSelfieCamera.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).EndInit();
+            this.groupBoxFieldOfView.ResumeLayout(false);
+            this.groupBoxFieldOfView.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWorldFOV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFirstPersonFOV)).EndInit();
             this.groupBoxCameraOptions.ResumeLayout(false);
             this.groupBoxCameraOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCameraSwitchDelay)).EndInit();
+            this.groupBoxCameraVanity.ResumeLayout(false);
+            this.groupBoxCameraVanity.PerformLayout();
             this.groupBoxCameraDistance.ResumeLayout(false);
             this.groupBoxCameraDistance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).EndInit();
@@ -5409,14 +5647,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCameraZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCameraY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaultBoy)).EndInit();
-            this.groupBoxFieldOfView.ResumeLayout(false);
-            this.groupBoxFieldOfView.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numWorldFOV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFirstPersonFOV)).EndInit();
-            this.groupBoxCameraVanity.ResumeLayout(false);
-            this.groupBoxCameraVanity.PerformLayout();
             this.tabPagePipBoy.ResumeLayout(false);
             this.groupBoxPipboyResolution.ResumeLayout(false);
             this.groupBoxPipboyResolution.PerformLayout();
@@ -5437,6 +5667,8 @@
             this.panel3.ResumeLayout(false);
             this.groupBoxGraphics.ResumeLayout(false);
             this.groupBoxGraphics.PerformLayout();
+            this.groupBoxGraphicEffects.ResumeLayout(false);
+            this.groupBoxGraphicEffects.PerformLayout();
             this.groupBoxTAASharpening.ResumeLayout(false);
             this.groupBoxTAASharpening.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTAAPostSharpen)).EndInit();
@@ -5537,6 +5769,8 @@
             this.toolStrip1.PerformLayout();
             this.contextMenuStripGallery.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5925,6 +6159,19 @@
         private System.Windows.Forms.CheckBox checkBoxPlayNotificationSound;
         private System.Windows.Forms.CheckBox checkBoxAutoSignin;
         private System.Windows.Forms.LinkLabel linkLabelWhatsNew;
+        private System.Windows.Forms.GroupBox groupBoxGraphicEffects;
+        private System.Windows.Forms.CheckBox checkBoxDisableGore;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.GroupBox groupBoxSelfieCamera;
+        private System.Windows.Forms.NumericUpDown numericUpDownPhotomodeTranslationSpeed;
+        private System.Windows.Forms.TrackBar trackBarPhotomodeTranslationSpeed;
+        private System.Windows.Forms.Label labelPhotomodeTranslationSpeed;
+        private System.Windows.Forms.NumericUpDown numericUpDownPhotomodeRange;
+        private System.Windows.Forms.TrackBar trackBarPhotomodeRange;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown numericUpDownPhotomodeRotationSpeed;
+        private System.Windows.Forms.TrackBar trackBarPhotomodeRotationSpeed;
+        private System.Windows.Forms.Label labelPhotomodeRotationSpeed;
     }
 }
 
