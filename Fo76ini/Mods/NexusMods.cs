@@ -20,6 +20,10 @@ namespace Fo76ini
 
         public static Dictionary<int, NMMod> Mods = new Dictionary<int, NMMod>();
 
+        public static String FolderPath = Path.Combine(Shared.AppConfigFolder, "nexusmods");
+        public static String ThumbnailsPath = Path.Combine(Shared.AppConfigFolder, "thumbnails", "nexusmods");
+        public static String RemoteXMLPath = Path.Combine(NexusMods.FolderPath, "remote.xml"); // Path.Combine(Shared.GamePath, "Mods", "remote.xml")
+
         public static NMProfile Profile
         {
             get
@@ -41,10 +45,10 @@ namespace Fo76ini
                 return;
             }
 
-            if (!Directory.Exists(Path.Combine(Shared.GamePath, "Mods")))
-                Directory.CreateDirectory(Path.Combine(Shared.GamePath, "Mods"));
+            if (!Directory.Exists(NexusMods.FolderPath))
+                Directory.CreateDirectory(NexusMods.FolderPath);
 
-            Serialize().Save(Path.Combine(Shared.GamePath, "Mods", "remote.xml"));
+            Serialize().Save(NexusMods.RemoteXMLPath);
 
             NexusMods.Profile.Save();
         }
@@ -79,12 +83,10 @@ namespace Fo76ini
             if (Shared.GamePath == null)
                 return;
 
-            String path = Path.Combine(Shared.GamePath, "Mods", "remote.xml");
-
-            if (!File.Exists(path))
+            if (!File.Exists(NexusMods.RemoteXMLPath))
                 return;
 
-            XDocument xmlDoc = XDocument.Load(path);
+            XDocument xmlDoc = XDocument.Load(NexusMods.RemoteXMLPath);
             foreach (XElement xmlMod in xmlDoc.Descendants("Mod"))
             {
                 try
@@ -112,9 +114,8 @@ namespace Fo76ini
         {
             Mods.Clear();
 
-            String path = Path.Combine(Shared.GamePath, "Mods", "remote.xml");
-            if (!File.Exists(path))
-                File.Delete(path);
+            if (File.Exists(NexusMods.RemoteXMLPath))
+                File.Delete(NexusMods.RemoteXMLPath);
         }
 
         public static int GetIDFromURL(String url)
@@ -139,6 +140,7 @@ namespace Fo76ini
         public String ThumbnailURL = "";
         public String Thumbnail = "";
         public String Title = "";
+        public long LastUpdated = -1;
 
         public NMMod (String url)
         {
@@ -167,25 +169,19 @@ namespace Fo76ini
                 this.LatestVersion = json["version"].ToString();
 
                 // Download thumbnail:
-                String folderPath = Path.Combine(Shared.GamePath, "Mods", "_thumbs");
-                if (!Directory.Exists(folderPath))
-                    Directory.CreateDirectory(folderPath);
+                if (!Directory.Exists(NexusMods.ThumbnailsPath))
+                    Directory.CreateDirectory(NexusMods.ThumbnailsPath);
 
                 try
                 {
-                    //Uri uri = new Uri(this.ThumbnailURL);
-                    String thumbName = $"thumb_{this.ID}.jpg"; //Path.GetExtension(Path.GetFileName(uri.LocalPath));
-                    String thumbPath = Path.Combine(folderPath, thumbName);
+                    String thumbName = $"thumb_{this.ID}.jpg"; // Path.GetExtension(Path.GetFileName(uri.LocalPath));
+                    String thumbPath = Path.Combine(NexusMods.ThumbnailsPath, thumbName);
 
-                    this.Thumbnail = "_thumbs\\" + thumbName;
+                    this.Thumbnail = thumbName;
 
                     // "https://staticdelivery.nexusmods.com/mods/2590/images/84/84-1542823522-262308780.png"
 
                     // Download if non-existent:
-                    /*if (!File.Exists(thumbPath))
-                        using (var client = new WebClient())
-                            client.DownloadFile(this.ThumbnailURL, thumbPath);*/
-
                     if (!File.Exists(thumbPath))
                     {
                         var thumbRequest = WebRequest.Create(this.ThumbnailURL);
@@ -194,8 +190,6 @@ namespace Fo76ini
                         {
                             Image image = Image.FromStream(stream);
                             Utils.MakeThumbnail(image, thumbPath, 360, 190, 90L);
-                            //Image thumb = image.GetThumbnailImage(360, 190, () => false, IntPtr.Zero);
-                            //thumb.Save(thumbPath);
                         }
                     }
                 }
@@ -211,47 +205,58 @@ namespace Fo76ini
                 // TODO: Handle: Couldn't retrieve info.
                 Console.WriteLine($"Couldn't retrieve info.\n{request.Exception.GetType().Name}: {request.Exception.Message}\n{request.GetText()}");
             }
+            this.LastUpdated = Utils.GetUnixTimeStamp();
         }
 
         public XElement Serialize()
         {
             XElement xmlMod = new XElement("Mod");
 
-            xmlMod.Add(new XAttribute("url", this.URL));
+            xmlMod.Add(new XAttribute("id", this.ID));
+
+            //xmlMod.Add(new XAttribute("url", this.URL));
 
             if (this.Title != "")
-                xmlMod.Add(new XAttribute("title", this.Title));
+                xmlMod.Add(new XElement("Title", this.Title));
 
             if (this.LatestVersion != "")
-                xmlMod.Add(new XAttribute("latestVersion", this.LatestVersion));
+                xmlMod.Add(new XElement("Version", this.LatestVersion));
 
-            if (this.Thumbnail != "")
-                xmlMod.Add(new XAttribute("thumbnail", this.Thumbnail));
+            if (this.Thumbnail != "" && this.ThumbnailURL != "")
+            {
+                XElement thumbnail = new XElement("Thumbnail");
+                thumbnail.Add(new XElement("URL", this.ThumbnailURL));
+                thumbnail.Add(new XElement("File", this.Thumbnail));
+                xmlMod.Add(thumbnail);
+            }
 
-            if (this.ThumbnailURL != "")
-                xmlMod.Add(new XAttribute("thumbnailUrl", this.ThumbnailURL));
+            xmlMod.Add(new XElement("LastUpdated", this.LastUpdated));
 
             return xmlMod;
         }
 
         public static NMMod Deserialize(XElement xmlMod)
         {
-            if (xmlMod.Attribute("url") == null)
-                throw new InvalidDataException("'url' attribute wasn't provided.");
+            if (xmlMod.Attribute("id") == null)
+                throw new InvalidDataException("'id' attribute wasn't provided.");
 
-            NMMod mod = new NMMod(xmlMod.Attribute("url").Value);
+            NMMod mod = new NMMod(Convert.ToInt32(xmlMod.Attribute("id").Value));
 
-            if (xmlMod.Attribute("latestVersion") != null)
-                mod.LatestVersion = xmlMod.Attribute("latestVersion").Value;
+            if (xmlMod.Element("Title") != null)
+                mod.Title = xmlMod.Element("Title").Value;
 
-            if (xmlMod.Attribute("thumbnailUrl") != null)
-                mod.ThumbnailURL = xmlMod.Attribute("thumbnailUrl").Value;
+            if (xmlMod.Element("Version") != null)
+                mod.LatestVersion = xmlMod.Element("Version").Value;
 
-            if (xmlMod.Attribute("thumbnail") != null)
-                mod.Thumbnail = xmlMod.Attribute("thumbnail").Value;
+            XElement thumbnail = xmlMod.Element("Thumbnail");
+            if (thumbnail != null)
+            {
+                mod.ThumbnailURL = thumbnail.Element("URL").Value;
+                mod.Thumbnail = thumbnail.Element("File").Value;
+            }
 
-            if (xmlMod.Attribute("title") != null)
-                mod.Title = xmlMod.Attribute("title").Value;
+            if (xmlMod.Element("LastUpdated") != null)
+                mod.LastUpdated = Convert.ToInt64(xmlMod.Element("LastUpdated").Value);
 
             return mod;
         }

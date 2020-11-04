@@ -710,5 +710,10 @@ namespace Fo76ini
             // Return the information we've gathered.
             return operatingSystem;
         }
+
+        public static long GetUnixTimeStamp()
+        {
+            return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        }
     }
 }
