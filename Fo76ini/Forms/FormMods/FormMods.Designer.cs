@@ -130,13 +130,21 @@
             this.textBoxsResourceArchive2List = new System.Windows.Forms.TextBox();
             this.labelsResourceArchive2List = new System.Windows.Forms.Label();
             this.tabPageNexusMods = new System.Windows.Forms.TabPage();
+            this.checkBoxNMDownloadThumbnails = new System.Windows.Forms.CheckBox();
+            this.labelNMOptions = new System.Windows.Forms.Label();
+            this.checkBoxNMUpdateProfile = new System.Windows.Forms.CheckBox();
             this.buttonNMDeleteModInfo = new System.Windows.Forms.Button();
             this.checkBoxShowAPIKey = new System.Windows.Forms.CheckBox();
             this.buttonNMRemoveAll = new System.Windows.Forms.Button();
             this.labelNMInfo = new System.Windows.Forms.Label();
-            this.linkLabelNMGetAPIKey = new System.Windows.Forms.LinkLabel();
             this.buttonNMUpdateModInfo = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.labelNMNotLoggedIn = new System.Windows.Forms.Label();
+            this.labelNMUserID = new System.Windows.Forms.Label();
+            this.labelNMDescUserID = new System.Windows.Forms.Label();
+            this.labelNMHourlyRateLimit = new System.Windows.Forms.Label();
+            this.linkLabelNMGetAPIKey = new System.Windows.Forms.LinkLabel();
+            this.labelNMDescHourlyRateLimit = new System.Windows.Forms.Label();
             this.labelNMAPIKeyStatus = new System.Windows.Forms.Label();
             this.labelNMDescAPIKey = new System.Windows.Forms.Label();
             this.pictureBoxNMProfilePicture = new System.Windows.Forms.PictureBox();
@@ -161,6 +169,7 @@
             this.folderBrowserDialogPickRootDir = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorkerRetrieveModInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
+            this.buttonModDetailsNM = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -1008,6 +1017,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.buttonModDetailsNM);
             this.panel2.Controls.Add(this.buttonModDetailsApply);
             this.panel2.Controls.Add(this.buttonModDetailsCancel);
             this.panel2.Controls.Add(this.buttonModDetailsOK);
@@ -1220,11 +1230,13 @@
             // 
             // tabPageNexusMods
             // 
+            this.tabPageNexusMods.Controls.Add(this.checkBoxNMDownloadThumbnails);
+            this.tabPageNexusMods.Controls.Add(this.labelNMOptions);
+            this.tabPageNexusMods.Controls.Add(this.checkBoxNMUpdateProfile);
             this.tabPageNexusMods.Controls.Add(this.buttonNMDeleteModInfo);
             this.tabPageNexusMods.Controls.Add(this.checkBoxShowAPIKey);
             this.tabPageNexusMods.Controls.Add(this.buttonNMRemoveAll);
             this.tabPageNexusMods.Controls.Add(this.labelNMInfo);
-            this.tabPageNexusMods.Controls.Add(this.linkLabelNMGetAPIKey);
             this.tabPageNexusMods.Controls.Add(this.buttonNMUpdateModInfo);
             this.tabPageNexusMods.Controls.Add(this.panel3);
             this.tabPageNexusMods.Controls.Add(this.buttonNMUpdateProfile);
@@ -1236,17 +1248,53 @@
             this.tabPageNexusMods.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageNexusMods.Size = new System.Drawing.Size(852, 544);
             this.tabPageNexusMods.TabIndex = 2;
-            this.tabPageNexusMods.Text = "NexusMods";
+            this.tabPageNexusMods.Text = "NexusMods API";
             this.tabPageNexusMods.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxNMDownloadThumbnails
+            // 
+            this.checkBoxNMDownloadThumbnails.AutoSize = true;
+            this.checkBoxNMDownloadThumbnails.Checked = true;
+            this.checkBoxNMDownloadThumbnails.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxNMDownloadThumbnails.Location = new System.Drawing.Point(271, 362);
+            this.checkBoxNMDownloadThumbnails.Name = "checkBoxNMDownloadThumbnails";
+            this.checkBoxNMDownloadThumbnails.Size = new System.Drawing.Size(127, 17);
+            this.checkBoxNMDownloadThumbnails.TabIndex = 89;
+            this.checkBoxNMDownloadThumbnails.Text = "Download thumbnails";
+            this.checkBoxNMDownloadThumbnails.UseVisualStyleBackColor = true;
+            this.checkBoxNMDownloadThumbnails.CheckedChanged += new System.EventHandler(this.checkBoxNMDownloadThumbnails_CheckedChanged);
+            // 
+            // labelNMOptions
+            // 
+            this.labelNMOptions.AutoSize = true;
+            this.labelNMOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNMOptions.Location = new System.Drawing.Point(268, 317);
+            this.labelNMOptions.Name = "labelNMOptions";
+            this.labelNMOptions.Size = new System.Drawing.Size(61, 16);
+            this.labelNMOptions.TabIndex = 87;
+            this.labelNMOptions.Text = "Options";
+            // 
+            // checkBoxNMUpdateProfile
+            // 
+            this.checkBoxNMUpdateProfile.AutoSize = true;
+            this.checkBoxNMUpdateProfile.Checked = true;
+            this.checkBoxNMUpdateProfile.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxNMUpdateProfile.Location = new System.Drawing.Point(271, 339);
+            this.checkBoxNMUpdateProfile.Name = "checkBoxNMUpdateProfile";
+            this.checkBoxNMUpdateProfile.Size = new System.Drawing.Size(156, 17);
+            this.checkBoxNMUpdateProfile.TabIndex = 86;
+            this.checkBoxNMUpdateProfile.Text = "Update profile automatically";
+            this.checkBoxNMUpdateProfile.UseVisualStyleBackColor = true;
+            this.checkBoxNMUpdateProfile.CheckedChanged += new System.EventHandler(this.checkBoxNMUpdateProfile_CheckedChanged);
             // 
             // buttonNMDeleteModInfo
             // 
             this.buttonNMDeleteModInfo.BackColor = System.Drawing.Color.Firebrick;
             this.buttonNMDeleteModInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNMDeleteModInfo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMDeleteModInfo.Location = new System.Drawing.Point(6, 376);
+            this.buttonNMDeleteModInfo.Location = new System.Drawing.Point(9, 359);
             this.buttonNMDeleteModInfo.Name = "buttonNMDeleteModInfo";
-            this.buttonNMDeleteModInfo.Size = new System.Drawing.Size(272, 28);
+            this.buttonNMDeleteModInfo.Size = new System.Drawing.Size(240, 28);
             this.buttonNMDeleteModInfo.TabIndex = 85;
             this.buttonNMDeleteModInfo.Text = "Delete mod information";
             this.buttonNMDeleteModInfo.UseVisualStyleBackColor = false;
@@ -1256,7 +1304,7 @@
             // 
             this.checkBoxShowAPIKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxShowAPIKey.AutoSize = true;
-            this.checkBoxShowAPIKey.Location = new System.Drawing.Point(6, 519);
+            this.checkBoxShowAPIKey.Location = new System.Drawing.Point(85, 521);
             this.checkBoxShowAPIKey.Name = "checkBoxShowAPIKey";
             this.checkBoxShowAPIKey.Size = new System.Drawing.Size(94, 17);
             this.checkBoxShowAPIKey.TabIndex = 84;
@@ -1270,9 +1318,9 @@
             this.buttonNMRemoveAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNMRemoveAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNMRemoveAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMRemoveAll.Location = new System.Drawing.Point(6, 321);
+            this.buttonNMRemoveAll.Location = new System.Drawing.Point(9, 304);
             this.buttonNMRemoveAll.Name = "buttonNMRemoveAll";
-            this.buttonNMRemoveAll.Size = new System.Drawing.Size(272, 49);
+            this.buttonNMRemoveAll.Size = new System.Drawing.Size(240, 49);
             this.buttonNMRemoveAll.TabIndex = 82;
             this.buttonNMRemoveAll.Text = "Remove profile and API key";
             this.buttonNMRemoveAll.UseVisualStyleBackColor = false;
@@ -1282,23 +1330,11 @@
             // 
             this.labelNMInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelNMInfo.ForeColor = System.Drawing.Color.DimGray;
-            this.labelNMInfo.Location = new System.Drawing.Point(515, 178);
+            this.labelNMInfo.Location = new System.Drawing.Point(515, 189);
             this.labelNMInfo.Name = "labelNMInfo";
             this.labelNMInfo.Size = new System.Drawing.Size(320, 260);
             this.labelNMInfo.TabIndex = 80;
             this.labelNMInfo.Text = resources.GetString("labelNMInfo.Text");
-            // 
-            // linkLabelNMGetAPIKey
-            // 
-            this.linkLabelNMGetAPIKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabelNMGetAPIKey.AutoSize = true;
-            this.linkLabelNMGetAPIKey.Location = new System.Drawing.Point(515, 438);
-            this.linkLabelNMGetAPIKey.Name = "linkLabelNMGetAPIKey";
-            this.linkLabelNMGetAPIKey.Size = new System.Drawing.Size(87, 13);
-            this.linkLabelNMGetAPIKey.TabIndex = 79;
-            this.linkLabelNMGetAPIKey.TabStop = true;
-            this.linkLabelNMGetAPIKey.Text = "Get your API key";
-            this.linkLabelNMGetAPIKey.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNMGetAPIKey_LinkClicked);
             // 
             // buttonNMUpdateModInfo
             // 
@@ -1306,11 +1342,14 @@
             this.buttonNMUpdateModInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNMUpdateModInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNMUpdateModInfo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMUpdateModInfo.Location = new System.Drawing.Point(6, 177);
+            this.buttonNMUpdateModInfo.Image = global::Fo76ini.Properties.Resources.available_updates_48;
+            this.buttonNMUpdateModInfo.Location = new System.Drawing.Point(9, 178);
             this.buttonNMUpdateModInfo.Name = "buttonNMUpdateModInfo";
-            this.buttonNMUpdateModInfo.Size = new System.Drawing.Size(272, 83);
+            this.buttonNMUpdateModInfo.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonNMUpdateModInfo.Size = new System.Drawing.Size(240, 120);
             this.buttonNMUpdateModInfo.TabIndex = 78;
             this.buttonNMUpdateModInfo.Text = "Update mod information";
+            this.buttonNMUpdateModInfo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonNMUpdateModInfo.UseVisualStyleBackColor = false;
             this.buttonNMUpdateModInfo.Click += new System.EventHandler(this.buttonNMUpdateModInfo_Click);
             // 
@@ -1319,6 +1358,12 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.panel3.Controls.Add(this.labelNMNotLoggedIn);
+            this.panel3.Controls.Add(this.labelNMUserID);
+            this.panel3.Controls.Add(this.labelNMDescUserID);
+            this.panel3.Controls.Add(this.labelNMHourlyRateLimit);
+            this.panel3.Controls.Add(this.linkLabelNMGetAPIKey);
+            this.panel3.Controls.Add(this.labelNMDescHourlyRateLimit);
             this.panel3.Controls.Add(this.labelNMAPIKeyStatus);
             this.panel3.Controls.Add(this.labelNMDescAPIKey);
             this.panel3.Controls.Add(this.pictureBoxNMProfilePicture);
@@ -1331,8 +1376,71 @@
             this.panel3.Controls.Add(this.labelNMDailyRateLimit);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1301, 171);
+            this.panel3.Size = new System.Drawing.Size(856, 171);
             this.panel3.TabIndex = 75;
+            // 
+            // labelNMNotLoggedIn
+            // 
+            this.labelNMNotLoggedIn.AutoSize = true;
+            this.labelNMNotLoggedIn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelNMNotLoggedIn.Location = new System.Drawing.Point(173, 57);
+            this.labelNMNotLoggedIn.Name = "labelNMNotLoggedIn";
+            this.labelNMNotLoggedIn.Size = new System.Drawing.Size(335, 13);
+            this.labelNMNotLoggedIn.TabIndex = 80;
+            this.labelNMNotLoggedIn.Text = "Not logged in. Please enter your API key and click on \'Update profile\'.";
+            // 
+            // labelNMUserID
+            // 
+            this.labelNMUserID.AutoSize = true;
+            this.labelNMUserID.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelNMUserID.Location = new System.Drawing.Point(296, 107);
+            this.labelNMUserID.Name = "labelNMUserID";
+            this.labelNMUserID.Size = new System.Drawing.Size(16, 13);
+            this.labelNMUserID.TabIndex = 79;
+            this.labelNMUserID.Text = "-1";
+            // 
+            // labelNMDescUserID
+            // 
+            this.labelNMDescUserID.AutoSize = true;
+            this.labelNMDescUserID.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelNMDescUserID.Location = new System.Drawing.Point(173, 107);
+            this.labelNMDescUserID.Name = "labelNMDescUserID";
+            this.labelNMDescUserID.Size = new System.Drawing.Size(46, 13);
+            this.labelNMDescUserID.TabIndex = 78;
+            this.labelNMDescUserID.Text = "User-ID:";
+            // 
+            // labelNMHourlyRateLimit
+            // 
+            this.labelNMHourlyRateLimit.AutoSize = true;
+            this.labelNMHourlyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelNMHourlyRateLimit.Location = new System.Drawing.Point(611, 85);
+            this.labelNMHourlyRateLimit.Name = "labelNMHourlyRateLimit";
+            this.labelNMHourlyRateLimit.Size = new System.Drawing.Size(30, 13);
+            this.labelNMHourlyRateLimit.TabIndex = 77;
+            this.labelNMHourlyRateLimit.Text = "0 left";
+            // 
+            // linkLabelNMGetAPIKey
+            // 
+            this.linkLabelNMGetAPIKey.AutoSize = true;
+            this.linkLabelNMGetAPIKey.LinkColor = System.Drawing.Color.Aqua;
+            this.linkLabelNMGetAPIKey.Location = new System.Drawing.Point(173, 74);
+            this.linkLabelNMGetAPIKey.Name = "linkLabelNMGetAPIKey";
+            this.linkLabelNMGetAPIKey.Size = new System.Drawing.Size(87, 13);
+            this.linkLabelNMGetAPIKey.TabIndex = 79;
+            this.linkLabelNMGetAPIKey.TabStop = true;
+            this.linkLabelNMGetAPIKey.Text = "Get your API key";
+            this.linkLabelNMGetAPIKey.VisitedLinkColor = System.Drawing.Color.Fuchsia;
+            this.linkLabelNMGetAPIKey.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNMGetAPIKey_LinkClicked);
+            // 
+            // labelNMDescHourlyRateLimit
+            // 
+            this.labelNMDescHourlyRateLimit.AutoSize = true;
+            this.labelNMDescHourlyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelNMDescHourlyRateLimit.Location = new System.Drawing.Point(483, 85);
+            this.labelNMDescHourlyRateLimit.Name = "labelNMDescHourlyRateLimit";
+            this.labelNMDescHourlyRateLimit.Size = new System.Drawing.Size(81, 13);
+            this.labelNMDescHourlyRateLimit.TabIndex = 76;
+            this.labelNMDescHourlyRateLimit.Text = "Hourly rate limit:";
             // 
             // labelNMAPIKeyStatus
             // 
@@ -1356,7 +1464,6 @@
             // 
             // pictureBoxNMProfilePicture
             // 
-            this.pictureBoxNMProfilePicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxNMProfilePicture.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNMProfilePicture.Image")));
             this.pictureBoxNMProfilePicture.Location = new System.Drawing.Point(20, 20);
             this.pictureBoxNMProfilePicture.Name = "pictureBoxNMProfilePicture";
@@ -1390,7 +1497,7 @@
             // 
             this.labelNMDailyRateLimitReset.AutoSize = true;
             this.labelNMDailyRateLimitReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDailyRateLimitReset.Location = new System.Drawing.Point(296, 128);
+            this.labelNMDailyRateLimitReset.Location = new System.Drawing.Point(611, 107);
             this.labelNMDailyRateLimitReset.Name = "labelNMDailyRateLimitReset";
             this.labelNMDailyRateLimitReset.Size = new System.Drawing.Size(36, 13);
             this.labelNMDailyRateLimitReset.TabIndex = 72;
@@ -1410,7 +1517,7 @@
             // 
             this.labelNMDescLimitReset.AutoSize = true;
             this.labelNMDescLimitReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescLimitReset.Location = new System.Drawing.Point(173, 128);
+            this.labelNMDescLimitReset.Location = new System.Drawing.Point(483, 107);
             this.labelNMDescLimitReset.Name = "labelNMDescLimitReset";
             this.labelNMDescLimitReset.Size = new System.Drawing.Size(57, 13);
             this.labelNMDescLimitReset.TabIndex = 71;
@@ -1420,7 +1527,7 @@
             // 
             this.labelNMDescDailyRateLimit.AutoSize = true;
             this.labelNMDescDailyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescDailyRateLimit.Location = new System.Drawing.Point(173, 107);
+            this.labelNMDescDailyRateLimit.Location = new System.Drawing.Point(483, 64);
             this.labelNMDescDailyRateLimit.Name = "labelNMDescDailyRateLimit";
             this.labelNMDescDailyRateLimit.Size = new System.Drawing.Size(74, 13);
             this.labelNMDescDailyRateLimit.TabIndex = 69;
@@ -1430,7 +1537,7 @@
             // 
             this.labelNMDailyRateLimit.AutoSize = true;
             this.labelNMDailyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDailyRateLimit.Location = new System.Drawing.Point(296, 107);
+            this.labelNMDailyRateLimit.Location = new System.Drawing.Point(611, 64);
             this.labelNMDailyRateLimit.Name = "labelNMDailyRateLimit";
             this.labelNMDailyRateLimit.Size = new System.Drawing.Size(30, 13);
             this.labelNMDailyRateLimit.TabIndex = 70;
@@ -1440,12 +1547,16 @@
             // 
             this.buttonNMUpdateProfile.BackColor = System.Drawing.Color.Teal;
             this.buttonNMUpdateProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNMUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNMUpdateProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(6, 266);
+            this.buttonNMUpdateProfile.Image = global::Fo76ini.Properties.Resources.available_updates_48;
+            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(255, 177);
             this.buttonNMUpdateProfile.Name = "buttonNMUpdateProfile";
-            this.buttonNMUpdateProfile.Size = new System.Drawing.Size(272, 49);
+            this.buttonNMUpdateProfile.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonNMUpdateProfile.Size = new System.Drawing.Size(120, 120);
             this.buttonNMUpdateProfile.TabIndex = 77;
             this.buttonNMUpdateProfile.Text = "Update profile";
+            this.buttonNMUpdateProfile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonNMUpdateProfile.UseVisualStyleBackColor = false;
             this.buttonNMUpdateProfile.Click += new System.EventHandler(this.buttonNMUpdateProfile_Click);
             // 
@@ -1454,9 +1565,9 @@
             this.buttonNMDeleteThumbnails.BackColor = System.Drawing.Color.Firebrick;
             this.buttonNMDeleteThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNMDeleteThumbnails.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMDeleteThumbnails.Location = new System.Drawing.Point(6, 410);
+            this.buttonNMDeleteThumbnails.Location = new System.Drawing.Point(9, 393);
             this.buttonNMDeleteThumbnails.Name = "buttonNMDeleteThumbnails";
-            this.buttonNMDeleteThumbnails.Size = new System.Drawing.Size(272, 28);
+            this.buttonNMDeleteThumbnails.Size = new System.Drawing.Size(240, 28);
             this.buttonNMDeleteThumbnails.TabIndex = 76;
             this.buttonNMDeleteThumbnails.Text = "Delete thumbnails";
             this.buttonNMDeleteThumbnails.UseVisualStyleBackColor = false;
@@ -1466,9 +1577,9 @@
             // 
             this.textBoxAPIKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAPIKey.Location = new System.Drawing.Point(6, 493);
+            this.textBoxAPIKey.Location = new System.Drawing.Point(85, 494);
             this.textBoxAPIKey.Name = "textBoxAPIKey";
-            this.textBoxAPIKey.Size = new System.Drawing.Size(840, 20);
+            this.textBoxAPIKey.Size = new System.Drawing.Size(761, 20);
             this.textBoxAPIKey.TabIndex = 64;
             this.textBoxAPIKey.UseSystemPasswordChar = true;
             this.textBoxAPIKey.TextChanged += new System.EventHandler(this.textBoxAPIKey_TextChanged);
@@ -1477,7 +1588,7 @@
             // 
             this.labelNMAPIKeyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelNMAPIKeyTextBox.AutoSize = true;
-            this.labelNMAPIKeyTextBox.Location = new System.Drawing.Point(6, 477);
+            this.labelNMAPIKeyTextBox.Location = new System.Drawing.Point(6, 497);
             this.labelNMAPIKeyTextBox.Name = "labelNMAPIKeyTextBox";
             this.labelNMAPIKeyTextBox.Size = new System.Drawing.Size(48, 13);
             this.labelNMAPIKeyTextBox.TabIndex = 63;
@@ -1527,6 +1638,21 @@
             // backgroundWorkerRetrieveProfileInfo
             // 
             this.backgroundWorkerRetrieveProfileInfo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerRetrieveProfileInfo_DoWork);
+            // 
+            // buttonModDetailsNM
+            // 
+            this.buttonModDetailsNM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonModDetailsNM.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonModDetailsNM.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.buttonModDetailsNM.FlatAppearance.BorderSize = 0;
+            this.buttonModDetailsNM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModDetailsNM.Image = global::Fo76ini.Properties.Resources.nexus_24;
+            this.buttonModDetailsNM.Location = new System.Drawing.Point(11, 7);
+            this.buttonModDetailsNM.Name = "buttonModDetailsNM";
+            this.buttonModDetailsNM.Size = new System.Drawing.Size(36, 36);
+            this.buttonModDetailsNM.TabIndex = 75;
+            this.buttonModDetailsNM.UseVisualStyleBackColor = false;
+            this.buttonModDetailsNM.Visible = false;
             // 
             // FormMods
             // 
@@ -1711,5 +1837,14 @@
         private System.Windows.Forms.CheckBox checkBoxShowAPIKey;
         private System.Windows.Forms.Button buttonNMDeleteModInfo;
         private System.Windows.Forms.CheckBox checkBoxModsWriteSResourceDataDirsFinal;
+        private System.Windows.Forms.Label labelNMHourlyRateLimit;
+        private System.Windows.Forms.Label labelNMDescHourlyRateLimit;
+        private System.Windows.Forms.Label labelNMUserID;
+        private System.Windows.Forms.Label labelNMDescUserID;
+        private System.Windows.Forms.Label labelNMNotLoggedIn;
+        private System.Windows.Forms.Label labelNMOptions;
+        private System.Windows.Forms.CheckBox checkBoxNMUpdateProfile;
+        private System.Windows.Forms.CheckBox checkBoxNMDownloadThumbnails;
+        private System.Windows.Forms.Button buttonModDetailsNM;
     }
 }

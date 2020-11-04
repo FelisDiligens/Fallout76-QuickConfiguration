@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClipboardUtils.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="Forms\ExceptionDialog\FormExceptionDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +170,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMods\FormMods.resx">
       <DependentUpon>FormMods.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWhatsNew\FormWhatsNew.resx">
       <DependentUpon>FormWhatsNew.cs</DependentUpon>
@@ -200,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\available-updates-48.png" />
     <None Include="Resources\icon-60.png" />
     <None Include="Resources\icon.png" />
     <None Include="Resources\error-5-64.png" />

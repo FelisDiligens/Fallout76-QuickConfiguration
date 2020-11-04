@@ -385,6 +385,11 @@ namespace Fo76ini
             return Convert.ToInt32(Convert.ToDecimal(num, enUS)); // "0.0" => (int)0
         }
 
+        public static long ToLong(string num)
+        {
+            return Convert.ToInt64(Convert.ToDecimal(num, enUS)); // "0.0" => (int)0
+        }
+
         public static String ToString(float num)
         {
             Thread.CurrentThread.CurrentCulture = enUS;
@@ -395,6 +400,12 @@ namespace Fo76ini
         {
             Thread.CurrentThread.CurrentCulture = enUS;
             return num.ToString("F99").TrimEnd('0').TrimEnd('.');
+        }
+
+        public static String ToString(long num)
+        {
+            Thread.CurrentThread.CurrentCulture = enUS;
+            return num.ToString("D");
         }
 
         public static String ToString(int num)

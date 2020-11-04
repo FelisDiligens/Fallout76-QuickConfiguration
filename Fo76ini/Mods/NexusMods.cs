@@ -74,8 +74,6 @@ namespace Fo76ini
 
         public static void Load()
         {
-            Form1.logFile.WriteLine("[NexusMods]\tLoading...");
-
             Mods.Clear();
 
             NexusMods.Profile.Load();
@@ -172,32 +170,39 @@ namespace Fo76ini
                 if (!Directory.Exists(NexusMods.ThumbnailsPath))
                     Directory.CreateDirectory(NexusMods.ThumbnailsPath);
 
-                try
+                if (IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bDownloadThumbnailsOnUpdate", true))
                 {
-                    String thumbName = $"thumb_{this.ID}.jpg"; // Path.GetExtension(Path.GetFileName(uri.LocalPath));
-                    String thumbPath = Path.Combine(NexusMods.ThumbnailsPath, thumbName);
-
-                    this.Thumbnail = thumbName;
-
-                    // "https://staticdelivery.nexusmods.com/mods/2590/images/84/84-1542823522-262308780.png"
-
-                    // Download if non-existent:
-                    if (!File.Exists(thumbPath))
+                    try
                     {
-                        var thumbRequest = WebRequest.Create(this.ThumbnailURL);
-                        using (var thumbResponse = thumbRequest.GetResponse())
-                        using (var stream = thumbResponse.GetResponseStream())
+                        String thumbName = $"thumb_{this.ID}.jpg"; // Path.GetExtension(Path.GetFileName(uri.LocalPath));
+                        String thumbPath = Path.Combine(NexusMods.ThumbnailsPath, thumbName);
+
+                        this.Thumbnail = thumbName;
+
+                        // "https://staticdelivery.nexusmods.com/mods/2590/images/84/84-1542823522-262308780.png"
+
+                        // Download if non-existent:
+                        if (!File.Exists(thumbPath))
                         {
-                            Image image = Image.FromStream(stream);
-                            Utils.MakeThumbnail(image, thumbPath, 360, 190, 90L);
+                            var thumbRequest = WebRequest.Create(this.ThumbnailURL);
+                            using (var thumbResponse = thumbRequest.GetResponse())
+                            using (var stream = thumbResponse.GetResponseStream())
+                            {
+                                Image image = Image.FromStream(stream);
+                                Utils.MakeThumbnail(image, thumbPath, 360, 190, 90L);
+                            }
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        // Failed.
+                        // TODO: Handle: Thumbnail couldn't be downloaded.
+                        Console.WriteLine($"Couldn't download thumbnail.\n{ex.GetType().Name}: {ex.Message}");
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    // Failed.
-                    // TODO: Handle: Thumbnail couldn't be downloaded.
-                    Console.WriteLine($"Couldn't download thumbnail.\n{ex.GetType().Name}: {ex.Message}");
+                    Console.WriteLine("Thumbnail download disabled. (bDownloadThumbnailsOnUpdate=0)");
                 }
             }
             else
@@ -272,11 +277,13 @@ namespace Fo76ini
         }
 
         public String APIKey;
+        public long UserID;
         public String UserName = "Anonymous";
         public String ProfilePictureURL;
         public String ProfilePicture;
         public Membership Status;
         public int DailyRateLimit;
+        public int HourlyRateLimit;
         public String DailyRateLimitResetString;
         public DateTime DailyRateLimitReset;
         public bool ValidKey;
@@ -285,8 +292,6 @@ namespace Fo76ini
 
         public void Update()
         {
-            Form1.logFile.WriteLine("[NMProfile]\tUpdating...");
-
             // Make API request:
             APIRequest request = new APIRequest("https://api.nexusmods.com/v1/users/validate.json");
             request.Headers["apikey"] = this.APIKey;
@@ -297,6 +302,7 @@ namespace Fo76ini
 
                 this.UserName = json["name"].ToString();
                 this.ProfilePictureURL = json["profile_url"].ToString();
+                this.UserID = Convert.ToInt64(json["user_id"].ToString());
 
                 if (json["is_premium"].Value<bool>() || json["is_premium?"].Value<bool>())
                     this.Status = Membership.Premium;
@@ -307,13 +313,13 @@ namespace Fo76ini
 
                 this.DailyRateLimit = Convert.ToInt32(request.ResponseHeaders["x-rl-daily-remaining"]);
                 this.DailyRateLimitResetString = request.ResponseHeaders["x-rl-daily-reset"];
+                this.HourlyRateLimit = Convert.ToInt32(request.ResponseHeaders["X-RL-Hourly-Remaining"]);
                 ParseDailyRateLimitReset();
 
                 DownloadProfilePicture();
 
                 /*
                  Unused values:
-                  - "user_id"
                   - "key"
                   - "email"
                  */
@@ -337,7 +343,7 @@ namespace Fo76ini
             {
                 Uri uri = new Uri(this.ProfilePictureURL);
                 this.ProfilePicture = "profile" + Path.GetExtension(Path.GetFileName(uri.LocalPath));
-                String path = Path.Combine(Shared.AppConfigFolder, this.ProfilePicture);
+                String path = Path.Combine(NexusMods.FolderPath, this.ProfilePicture);
 
                 // Download if non-existent:
                 if (!File.Exists(path))
@@ -353,14 +359,14 @@ namespace Fo76ini
 
         public void Save()
         {
-            Form1.logFile.WriteLine("[NMProfile]\tSaving...");
-
             IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sAPIKey", this.APIKey);
+            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "iUserID", this.UserID);
             IniFiles.Instance.Set(IniFile.Config, "NexusMods", "bAPIKeyValid", this.ValidKey);
             IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sUserName", this.UserName);
             IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sProfileURL", this.ProfilePictureURL);
             IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sProfile", this.ProfilePicture);
             IniFiles.Instance.Set(IniFile.Config, "NexusMods", "iDailyRateLimit", this.DailyRateLimit);
+            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "iHourlyRateLimit", this.HourlyRateLimit);
             IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sDailyRateLimitReset", this.DailyRateLimitResetString);
             switch (this.Status)
             {
@@ -379,14 +385,14 @@ namespace Fo76ini
 
         public void Load()
         {
-            Form1.logFile.WriteLine("[NMProfile]\tLoading...");
-
             this.APIKey = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sAPIKey", "");
+            this.UserID = IniFiles.Instance.GetLong(IniFile.Config, "NexusMods", "iUserID", -1);
             this.ValidKey = IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bAPIKeyValid", false);
             this.UserName = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sUserName", "Anonymous");
             this.ProfilePictureURL = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sPicURL", "");
             this.ProfilePicture = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sProfile", "");
             this.DailyRateLimit = IniFiles.Instance.GetInt(IniFile.Config, "NexusMods", "iDailyRateLimit", 0);
+            this.HourlyRateLimit = IniFiles.Instance.GetInt(IniFile.Config, "NexusMods", "iHourlyRateLimit", 0);
             this.DailyRateLimitResetString = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sDailyRateLimitReset", "");
             int status = IniFiles.Instance.GetInt(IniFile.Config, "NexusMods", "uStatus", 0);
             switch (status)
@@ -421,18 +427,22 @@ namespace Fo76ini
             this.APIKey = "";
             this.ValidKey = false;
             this.UserName = "Anonymous";
+            this.UserID = -1;
             this.ProfilePicture = "";
             this.ProfilePictureURL = "";
             this.Status = Membership.Basic;
             this.DailyRateLimit = 0;
+            this.HourlyRateLimit = 0;
             this.DailyRateLimitResetString = "";
 
             IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "sAPIKey");
             IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "bAPIKeyValid");
             IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "sUserName");
+            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "iUserID");
             IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "sProfileURL");
             IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "sProfile");
             IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "iDailyRateLimit");
+            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "iHourlyRateLimit");
             IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "sDailyRateLimitReset");
             IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "uStatus");
 

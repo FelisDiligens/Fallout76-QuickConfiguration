@@ -35,19 +35,15 @@ namespace Fo76ini
         public static void LoadGameEdition()
         {
             Shared.GameEdition = (GameEdition)(IniFiles.Instance.GetInt(IniFile.Config, "Preferences", "uGameEdition", 0));
-            Form1.logFile.WriteLine($"[Shared] Loaded game edition setting ({Shared.GameEdition})");
         }
 
         public static void SaveGameEdition()
         {
             IniFiles.Instance.Set(IniFile.Config, "Preferences", "uGameEdition", (uint)Shared.GameEdition);
-            Form1.logFile.WriteLine($"[Shared] Saved game edition setting ({Shared.GameEdition})");
         }
 
         public static void ChangeGameEdition(GameEdition gameEdition)
         {
-            Form1.logFile.WriteLine($"[Shared] Changing game edition to {gameEdition}");
-
             Shared.GameEdition = gameEdition;
 
             // ManagedMods:
@@ -71,14 +67,12 @@ namespace Fo76ini
             String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", Shared.GamePathKey, "");
             if (gamePath.Length > 0)
                 Shared.GamePath = gamePath;
-            Form1.logFile.WriteLine($"[Shared] Loaded game path: {Shared.GamePath}");
         }
 
         public static void SaveGamePath ()
         {
             IniFiles.Instance.Set(IniFile.Config, "Preferences", Shared.GamePathKey, Shared.GamePath);
             IniFiles.Instance.SaveConfig();
-            Form1.logFile.WriteLine($"[Shared] Saved game path: {Shared.GamePathKey} = {Shared.GamePath}");
         }
 
         public static void ClearGamePath()

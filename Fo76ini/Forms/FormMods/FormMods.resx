@@ -137,24 +137,24 @@
         DyeKoO97KVuAZVVVzlLXNZ0JoWFMaBgP727vyC4kjhEWfQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 17</value>
-  </metadata>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>222, 17</value>
+  </metadata>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
   </metadata>
   <data name="toolStripButtonDeleteMod.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHCSURBVEhL5ZbNK0RhFMZPkoUkSZaylGQhSZI0SdL8JZMs
-        ZGFlJ0mSJMlKVrOWhYUmZKGUje+PJFlYWVhI0vg915ExbnNnrs2UU0/nPV/P88773u4di7JTs45zs8yZ
-        2RP+WdCa/B7o9rZ4BlEzJPe7Zu/4R8gfBK1zci3eXroxPAGyCK3hGw7NqoVjs3riFa9Ne3u0sSMdRyIH
-        GyIBkzm5ABCP47PMbOflO53up+k4jsxeNPRHvCLa5rSfdmlWi8BMSHNcLOgYnd6MoEmXFtIYG2y61ekD
-        gRqSKX7Fkor4HTBaCpjb8tlVjmjk1qzO6b+NYr+awKKnijZmpjQLedJTvy1fAJ/SUwI69Hji10Fad0at
-        RTX8mPdGC1yY9fldBAIIzmsIJJz0CoJ7XSC9XarpSLx3WvE/EaB5SXEcAfLDikOt3AWCN0F5CNC4rLis
-        BFjPKi4oQEOvC6wojiMAhhSHGsVA4GsI0lYIk+QbMmaV+ATEAwhU6WXmtXb1MjPHurAATT0usClCT0da
-        1qwCsbQE8IOe/m3a1Qk6fkx3rG/wV46LPAR577kFb/LXZo1OF27sQN/lfRD8RSkWzB3oBJzGzewDGDQg
-        k0MYE7QAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHCSURBVEhL5ZbNK0RhFMZPkoUkSZaylGQhSZI0SZK/ZJKF
+        LKzsJEmSJk1Wspq1LCwkyUIpG1/jo0mThZWFhSSN33MdGTO3GXNtppx6Ou/5ep533vd271g5uzDruTLb
+        vzR7wj8LWpM/BP3eFs0gaocku2/2jn+E/EHQOi/X4e2VG8OzIIfQJr7lxKxeODNrJk56bcHbyxs70nHE
+        8rAtEjCXlwsA8Qw+x8xeQb7X6X6ajuPU7EVDf8Qrol1O+2nXZo0ILIY0R8WqjtHpzQjadGkhjZHBpjud
+        PhBoIBnnVyRUxB+AqUrA3K7PbnBEkxmzJqf/NorDagJrnvq1MTOvWcgnPFVshQL4uJ4S0KPHE78FUroz
+        ah2q4ae9t7xA2mzI7yIQQHBFQyDmpDcQZHWB9PappiPx3gXF/0SA5oTiKALkxxWHWrULBG+C6hCgcV1x
+        VQmwXlJcUoCGQRdIKo4iAMYUhxrFQOBrCNJOCCfIt5CvxccgHkGgTi8zr3Wrl5ll1qUFaBpwgR0Rerqs
+        5cxqEEtJAD/q6WLTrs7R8WO6Z32Hv3GkCxDkvScD3uRvzVqdLtzYgb7LRyD4i/JbMHesE3AaN7MPXQUg
+        Yy7JZ6QAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="labelNMInfo.Text" xml:space="preserve">
@@ -214,6 +214,9 @@ I'm not affiliated with NexusMods. This feature is unofficial and uses the publi
         McYYY0w/GDHiH4RSOYX/ZZhxAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
   <metadata name="openFileDialogMod.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>327, 17</value>
   </metadata>

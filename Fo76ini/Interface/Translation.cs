@@ -43,8 +43,6 @@ namespace Fo76ini
 
         public static void LookupLanguages()
         {
-            Form1.logFile.WriteLine("[Localization]\tLooking up languages...");
-
             // Create 'languages' folder:
             if (!Directory.Exists(languageFolder))
                 Directory.CreateDirectory(languageFolder);
@@ -60,7 +58,6 @@ namespace Fo76ini
                     translation.Load(filePath);
                     Localization.translations.Add(translation);
                     Localization.comboBoxTranslations.Add(translation.Name);
-                    Form1.logFile.WriteLine($"[Localization]\tAdded language to list: {translation.Name} ({filePath})");
                     //Localization.comboBoxTranslations.Add($"{translation.Name} [{translation.Version}]");
                 }
             }
@@ -166,8 +163,6 @@ namespace Fo76ini
 
         public void Load(String fileName)
         {
-            Form1.logFile.WriteLine($"[Translation]\tReading {fileName}");
-
             this.fileName = fileName;
             this.filePath = Path.Combine(Localization.languageFolder, this.fileName);
 
@@ -211,8 +206,6 @@ namespace Fo76ini
 
         public void Apply()
         {
-            Form1.logFile.WriteLine($"[Translation]\tApplying {this.Name}");
-
             // Read *.xml file:
             XDocument xmlDoc = XDocument.Load(this.filePath);
             XElement xmlRoot = xmlDoc.Element("Language");

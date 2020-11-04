@@ -25,13 +25,10 @@ namespace Fo76ini
 
         public FormMods()
         {
-            Form1.logFile.WriteLine("[FormMods]\tInstantiating...");
-
             InitializeComponent();
             InitializeDetailControls();
             InitializeNMControls();
 
-            Form1.logFile.WriteLine("[Form1]\tAdding FormMods to Localization.LocalizedForms");
             LocalizedForm form = new LocalizedForm(this, this.toolTip);
             Localization.LocalizedForms.Add(form);
 
@@ -59,7 +56,6 @@ namespace Fo76ini
 
         public void OpenUI()
         {
-            Form1.logFile.WriteLine("[FormMods]\tOpening UI");
             //Utils.SetFormPosition(this, Form1.Instance.Location.X + Form1.Instance.Width, Form1.Instance.Location.Y);
             Utils.SetFormPosition(this, Form1.Instance.Location.X + 100, Form1.Instance.Location.Y + 50);
             this.WindowState = FormWindowState.Normal;
@@ -70,16 +66,16 @@ namespace Fo76ini
 
         public void UpdateUI()
         {
-            Form1.logFile.WriteLine("[FormMods]\tUpdating UI");
             UpdateModList();
             UpdateSettings();
             UpdateLabel();
-            UpdateNMProfile();
+            RefreshNMUI();
+            if (IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bAutoUpdateProfile", true))
+                UpdateNMProfile();
         }
 
         private void UpdateModList()
         {
-            Form1.logFile.WriteLine("[FormMods]\tUpdating mod list");
             /*
              * Iterate one row at a time...
              */

@@ -27,12 +27,35 @@ namespace Fo76ini
          * Interface:
          */
 
-        public void UpdateNMProfile()
+        public void RefreshNMUI()
         {
+            bool loggedIn = NexusMods.Profile.ValidKey || NexusMods.Profile.UserID > 0;
+            this.labelNMNotLoggedIn.Visible = !loggedIn;
+
+            this.labelNMDailyRateLimit.Visible = loggedIn;
+            this.labelNMHourlyRateLimit.Visible = loggedIn;
+            this.labelNMDailyRateLimitReset.Visible = loggedIn;
+            this.labelNMDescDailyRateLimit.Visible = loggedIn;
+            this.labelNMDescHourlyRateLimit.Visible = loggedIn;
+            this.labelNMDescLimitReset.Visible = loggedIn;
+            this.labelNMDescMembership.Visible = loggedIn;
+            this.labelNMDescUserID.Visible = loggedIn;
+            this.labelNMMembership.Visible = loggedIn;
+            this.labelNMUserID.Visible = loggedIn;
+            this.labelNMDescAPIKey.Visible = loggedIn;
+            this.labelNMAPIKeyStatus.Visible = loggedIn;
+
+            //this.labelNMInfo.Visible = !loggedIn;
+            this.linkLabelNMGetAPIKey.Visible = !loggedIn;
+
+            this.buttonNMUpdateModInfo.Enabled = loggedIn;
+
+
             this.textBoxAPIKey.Text = NexusMods.Profile.APIKey;
 
             this.labelNMUserName.Text = NexusMods.Profile.UserName;
-            
+            this.labelNMUserID.Text = NexusMods.Profile.UserID.ToString();
+
             switch (NexusMods.Profile.Status)
             {
                 case NMProfile.Membership.Premium:
@@ -62,6 +85,7 @@ namespace Fo76ini
             }
 
             this.labelNMDailyRateLimit.Text = String.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.Profile.DailyRateLimit);
+            this.labelNMHourlyRateLimit.Text = String.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.Profile.HourlyRateLimit);
             if (NexusMods.Profile.DailyRateLimitResetString != "")
             {
                 TimeSpan diff = NexusMods.Profile.DailyRateLimitReset - DateTime.Now;
@@ -75,10 +99,14 @@ namespace Fo76ini
             this.pictureBoxNMProfilePicture.Image = Resources.user_white;
             if (NexusMods.Profile.ProfilePicture != null)
             {
-                String profilePicPath = Path.Combine(Shared.AppConfigFolder, NexusMods.Profile.ProfilePicture);
+                String profilePicPath = Path.Combine(NexusMods.FolderPath, NexusMods.Profile.ProfilePicture);
                 if (File.Exists(profilePicPath))
                     this.pictureBoxNMProfilePicture.Image = Image.FromFile(profilePicPath);
             }
+
+            this.checkBoxNMUpdateProfile.Checked = IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bAutoUpdateProfile", true);
+            //this.checkBoxNMUpdateModInfo.Checked = IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bAutoUpdateModInfo", false);
+            this.checkBoxNMDownloadThumbnails.Checked = IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bDownloadThumbnailsOnUpdate", true);
         }
 
         /*
@@ -93,12 +121,19 @@ namespace Fo76ini
             NexusMods.Profile.APIKey = this.textBoxAPIKey.Text;
         }
 
-        private void buttonNMUpdateProfile_Click(object sender, EventArgs e)
+        private void UpdateNMProfile()
         {
             if (this.backgroundWorkerRetrieveProfileInfo.IsBusy)
                 return;
+            if (this.textBoxAPIKey.Text == "")
+                return;
             this.pictureBoxNMProfilePicture.Image = Resources.Spinner_200;
             this.backgroundWorkerRetrieveProfileInfo.RunWorkerAsync();
+        }
+
+        private void buttonNMUpdateProfile_Click(object sender, EventArgs e)
+        {
+            UpdateNMProfile();
         }
 
         private void buttonNMUpdateModInfo_Click(object sender, EventArgs e)
@@ -120,7 +155,7 @@ namespace Fo76ini
             {
                 try
                 {
-                    String path = Path.Combine(Shared.GamePath, "Mods", "_thumbs");
+                    String path = Path.Combine(NexusMods.ThumbnailsPath);
                     if (Directory.Exists(path))
                         Directory.Delete(path, true);
                     MsgBox.Get("nexusModsDeleteThumbnailsSuccess").Popup(MessageBoxIcon.Information);
@@ -139,7 +174,7 @@ namespace Fo76ini
                 this.pictureBoxNMProfilePicture.Image = Resources.user_white;
                 this.textBoxAPIKey.Text = "";
                 NexusMods.Profile.Remove();
-                UpdateNMProfile();
+                RefreshNMUI();
                 MsgBox.Get("nexusModsRemoveProfileSuccess").Popup(MessageBoxIcon.Information);
             }
         }
@@ -158,6 +193,26 @@ namespace Fo76ini
                 this.UpdateModList();
                 MsgBox.Get("nexusModsRemoveRemoteInfoSuccess").Popup(MessageBoxIcon.Information);
             }
+        }
+
+        // Options:
+
+        private void checkBoxNMUpdateProfile_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "bAutoUpdateProfile", this.checkBoxNMUpdateProfile.Checked);
+            IniFiles.Instance.SaveConfig();
+        }
+
+        /*private void checkBoxNMUpdateModInfo_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "bAutoUpdateModInfo", this.checkBoxNMUpdateModInfo.Checked);
+            IniFiles.Instance.SaveConfig();
+        }*/
+
+        private void checkBoxNMDownloadThumbnails_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "bDownloadThumbnailsOnUpdate", this.checkBoxNMDownloadThumbnails.Checked);
+            IniFiles.Instance.SaveConfig();
         }
 
         /*
@@ -211,7 +266,7 @@ namespace Fo76ini
 
         private void backgroundWorkerRetrieveProfileInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            UpdateNMProfile();
+            RefreshNMUI();
         }
     }
 }
