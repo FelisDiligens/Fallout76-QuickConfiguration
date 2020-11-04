@@ -134,7 +134,7 @@ namespace Fo76ini
             if (mod != null)
                 this.changedMod = mod.CreateCopy();
 
-            String thumbnailPath = Path.Combine(Shared.GamePath, "Mods", this.changedMod.Thumbnail);
+            String thumbnailPath = Path.Combine(NexusMods.ThumbnailsPath, this.changedMod.Thumbnail);
             if (File.Exists(thumbnailPath))
                 this.pictureBoxModThumbnail.Image = Image.FromFile(thumbnailPath);
             else
