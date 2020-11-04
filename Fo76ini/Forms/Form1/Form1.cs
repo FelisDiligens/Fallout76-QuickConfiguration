@@ -23,7 +23,6 @@ namespace Fo76ini
         private FormWhatsNew formWhatsNew = null;
 
         private FormMods formMods;
-        private bool formModsBackupCreated = false;
 
         private RadioButton[] accountProfileRadioButtons;
 

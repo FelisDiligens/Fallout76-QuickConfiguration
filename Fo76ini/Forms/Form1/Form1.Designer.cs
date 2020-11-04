@@ -141,14 +141,17 @@
             this.checkBoxDisableGore = new System.Windows.Forms.CheckBox();
             this.labelPhotomodeTranslationSpeed = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.labelPhotomodeRotationSpeed = new System.Windows.Forms.Label();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBoxSelfieCamera = new System.Windows.Forms.GroupBox();
-            this.numericUpDownPhotomodeRange = new System.Windows.Forms.NumericUpDown();
             this.trackBarPhotomodeRange = new System.Windows.Forms.TrackBar();
+            this.numericUpDownPhotomodeRotationSpeed = new System.Windows.Forms.NumericUpDown();
+            this.trackBarPhotomodeRotationSpeed = new System.Windows.Forms.TrackBar();
+            this.numericUpDownPhotomodeRange = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownPhotomodeTranslationSpeed = new System.Windows.Forms.NumericUpDown();
             this.trackBarPhotomodeTranslationSpeed = new System.Windows.Forms.TrackBar();
             this.groupBoxFieldOfView = new System.Windows.Forms.GroupBox();
@@ -422,9 +425,6 @@
             this.backgroundWorkerEnableNWMode = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerDisableNWMode = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.numericUpDownPhotomodeRotationSpeed = new System.Windows.Forms.NumericUpDown();
-            this.trackBarPhotomodeRotationSpeed = new System.Windows.Forms.TrackBar();
-            this.labelPhotomodeRotationSpeed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
@@ -453,8 +453,10 @@
             this.tabPageCamera.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBoxSelfieCamera.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).BeginInit();
             this.groupBoxFieldOfView.SuspendLayout();
@@ -563,8 +565,6 @@
             this.toolStrip1.SuspendLayout();
             this.contextMenuStripGallery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).BeginInit();
             this.SuspendLayout();
             // 
             // toolTip
@@ -1832,6 +1832,7 @@
             // labelfDefaultFOV
             // 
             this.labelfDefaultFOV.AutoSize = true;
+            this.labelfDefaultFOV.ForeColor = System.Drawing.Color.Red;
             this.labelfDefaultFOV.Location = new System.Drawing.Point(6, 122);
             this.labelfDefaultFOV.Name = "labelfDefaultFOV";
             this.labelfDefaultFOV.Size = new System.Drawing.Size(193, 13);
@@ -2001,6 +2002,17 @@
             this.toolTip.SetToolTip(this.label4, "Default: 500\r\nAffected values: fSelfieModeRange\r\nAffected files: Fallout76Custom." +
         "ini");
             // 
+            // labelPhotomodeRotationSpeed
+            // 
+            this.labelPhotomodeRotationSpeed.AutoSize = true;
+            this.labelPhotomodeRotationSpeed.Location = new System.Drawing.Point(6, 53);
+            this.labelPhotomodeRotationSpeed.Name = "labelPhotomodeRotationSpeed";
+            this.labelPhotomodeRotationSpeed.Size = new System.Drawing.Size(82, 13);
+            this.labelPhotomodeRotationSpeed.TabIndex = 63;
+            this.labelPhotomodeRotationSpeed.Text = "Rotation speed:";
+            this.toolTip.SetToolTip(this.labelPhotomodeRotationSpeed, "Default: 1.5\r\nAffected values: fSelfieCameraRotationSpeed\r\nAffected files: Fallou" +
+        "t76Custom.ini");
+            // 
             // timerCheckFiles
             // 
             this.timerCheckFiles.Interval = 5000;
@@ -2060,6 +2072,58 @@
             this.groupBoxSelfieCamera.TabStop = false;
             this.groupBoxSelfieCamera.Text = "Photomode options";
             // 
+            // trackBarPhotomodeRange
+            // 
+            this.trackBarPhotomodeRange.BackColor = System.Drawing.Color.White;
+            this.trackBarPhotomodeRange.LargeChange = 100;
+            this.trackBarPhotomodeRange.Location = new System.Drawing.Point(131, 85);
+            this.trackBarPhotomodeRange.Maximum = 2000;
+            this.trackBarPhotomodeRange.Minimum = 10;
+            this.trackBarPhotomodeRange.Name = "trackBarPhotomodeRange";
+            this.trackBarPhotomodeRange.Size = new System.Drawing.Size(186, 45);
+            this.trackBarPhotomodeRange.SmallChange = 20;
+            this.trackBarPhotomodeRange.TabIndex = 61;
+            this.trackBarPhotomodeRange.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPhotomodeRange.Value = 500;
+            // 
+            // numericUpDownPhotomodeRotationSpeed
+            // 
+            this.numericUpDownPhotomodeRotationSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDownPhotomodeRotationSpeed.DecimalPlaces = 1;
+            this.numericUpDownPhotomodeRotationSpeed.Location = new System.Drawing.Point(336, 51);
+            this.numericUpDownPhotomodeRotationSpeed.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDownPhotomodeRotationSpeed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownPhotomodeRotationSpeed.Name = "numericUpDownPhotomodeRotationSpeed";
+            this.numericUpDownPhotomodeRotationSpeed.Size = new System.Drawing.Size(74, 20);
+            this.numericUpDownPhotomodeRotationSpeed.TabIndex = 65;
+            this.numericUpDownPhotomodeRotationSpeed.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            65536});
+            // 
+            // trackBarPhotomodeRotationSpeed
+            // 
+            this.trackBarPhotomodeRotationSpeed.BackColor = System.Drawing.Color.White;
+            this.trackBarPhotomodeRotationSpeed.LargeChange = 50;
+            this.trackBarPhotomodeRotationSpeed.Location = new System.Drawing.Point(131, 51);
+            this.trackBarPhotomodeRotationSpeed.Maximum = 50;
+            this.trackBarPhotomodeRotationSpeed.Minimum = 5;
+            this.trackBarPhotomodeRotationSpeed.Name = "trackBarPhotomodeRotationSpeed";
+            this.trackBarPhotomodeRotationSpeed.Size = new System.Drawing.Size(186, 45);
+            this.trackBarPhotomodeRotationSpeed.SmallChange = 10;
+            this.trackBarPhotomodeRotationSpeed.TabIndex = 64;
+            this.trackBarPhotomodeRotationSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPhotomodeRotationSpeed.Value = 15;
+            // 
             // numericUpDownPhotomodeRange
             // 
             this.numericUpDownPhotomodeRange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2082,20 +2146,6 @@
             0,
             0,
             0});
-            // 
-            // trackBarPhotomodeRange
-            // 
-            this.trackBarPhotomodeRange.BackColor = System.Drawing.Color.White;
-            this.trackBarPhotomodeRange.LargeChange = 100;
-            this.trackBarPhotomodeRange.Location = new System.Drawing.Point(131, 85);
-            this.trackBarPhotomodeRange.Maximum = 2000;
-            this.trackBarPhotomodeRange.Minimum = 10;
-            this.trackBarPhotomodeRange.Name = "trackBarPhotomodeRange";
-            this.trackBarPhotomodeRange.Size = new System.Drawing.Size(186, 45);
-            this.trackBarPhotomodeRange.SmallChange = 20;
-            this.trackBarPhotomodeRange.TabIndex = 61;
-            this.trackBarPhotomodeRange.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPhotomodeRange.Value = 500;
             // 
             // numericUpDownPhotomodeTranslationSpeed
             // 
@@ -5526,55 +5576,6 @@
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
             // 
-            // numericUpDownPhotomodeRotationSpeed
-            // 
-            this.numericUpDownPhotomodeRotationSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownPhotomodeRotationSpeed.DecimalPlaces = 1;
-            this.numericUpDownPhotomodeRotationSpeed.Location = new System.Drawing.Point(336, 51);
-            this.numericUpDownPhotomodeRotationSpeed.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.numericUpDownPhotomodeRotationSpeed.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownPhotomodeRotationSpeed.Name = "numericUpDownPhotomodeRotationSpeed";
-            this.numericUpDownPhotomodeRotationSpeed.Size = new System.Drawing.Size(74, 20);
-            this.numericUpDownPhotomodeRotationSpeed.TabIndex = 65;
-            this.numericUpDownPhotomodeRotationSpeed.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            65536});
-            // 
-            // trackBarPhotomodeRotationSpeed
-            // 
-            this.trackBarPhotomodeRotationSpeed.BackColor = System.Drawing.Color.White;
-            this.trackBarPhotomodeRotationSpeed.LargeChange = 50;
-            this.trackBarPhotomodeRotationSpeed.Location = new System.Drawing.Point(131, 51);
-            this.trackBarPhotomodeRotationSpeed.Maximum = 50;
-            this.trackBarPhotomodeRotationSpeed.Minimum = 5;
-            this.trackBarPhotomodeRotationSpeed.Name = "trackBarPhotomodeRotationSpeed";
-            this.trackBarPhotomodeRotationSpeed.Size = new System.Drawing.Size(186, 45);
-            this.trackBarPhotomodeRotationSpeed.SmallChange = 10;
-            this.trackBarPhotomodeRotationSpeed.TabIndex = 64;
-            this.trackBarPhotomodeRotationSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPhotomodeRotationSpeed.Value = 15;
-            // 
-            // labelPhotomodeRotationSpeed
-            // 
-            this.labelPhotomodeRotationSpeed.AutoSize = true;
-            this.labelPhotomodeRotationSpeed.Location = new System.Drawing.Point(6, 53);
-            this.labelPhotomodeRotationSpeed.Name = "labelPhotomodeRotationSpeed";
-            this.labelPhotomodeRotationSpeed.Size = new System.Drawing.Size(82, 13);
-            this.labelPhotomodeRotationSpeed.TabIndex = 63;
-            this.labelPhotomodeRotationSpeed.Text = "Rotation speed:";
-            this.toolTip.SetToolTip(this.labelPhotomodeRotationSpeed, "Default: 1.5\r\nAffected values: fSelfieCameraRotationSpeed\r\nAffected files: Fallou" +
-        "t76Custom.ini");
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5618,8 +5619,10 @@
             this.panel2.ResumeLayout(false);
             this.groupBoxSelfieCamera.ResumeLayout(false);
             this.groupBoxSelfieCamera.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).EndInit();
             this.groupBoxFieldOfView.ResumeLayout(false);
@@ -5769,8 +5772,6 @@
             this.toolStrip1.PerformLayout();
             this.contextMenuStripGallery.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
