@@ -345,17 +345,17 @@ namespace Fo76ini
             CheckVersion();
 
             // Open mod manager on launch:
-            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false))
+            if (Configuration.bOpenModManagerOnLaunch)
                 this.formMods.OpenUI();
 
             // Display "What's new?" dialog
-            if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bIgnoreUpdates", false))
+            if (!Configuration.bIgnoreUpdates)
                 ShowWhatsNewConditionally();
         }
 
         private void ShowWhatsNewConditionally()
         {
-            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bDisableWhatsNew", false) &&
+            if (!Configuration.bDisableWhatsNew &&
                 Utils.CompareVersions(Shared.VERSION, IniFiles.Instance.GetString(IniFile.Config, "General", "sPreviousVersion", "1.0.0")) > 0 &&
                 (Shared.LatestVersion == null || Utils.CompareVersions(Shared.LatestVersion, Shared.VERSION) == 0))
                 ShowWhatsNew();
@@ -383,7 +383,7 @@ namespace Fo76ini
             {
                 IniFiles.Instance.Set(IniFile.Config, "General", "sPreviousVersion", Shared.VERSION);
                 IniFiles.Instance.SaveWindowState("Form1", this);
-                if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAutoApply", false))
+                if (Configuration.bAutoApply)
                     ApplyChanges();
             }
         }
@@ -465,7 +465,7 @@ namespace Fo76ini
 
             panelUpdate.Visible = false;
 
-            if (!force && IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bIgnoreUpdates", false))
+            if (!force && Configuration.bIgnoreUpdates)
             {
                 this.labelConfigVersion.ForeColor = Color.Black;
                 return;
@@ -632,7 +632,7 @@ namespace Fo76ini
              */
 
             // ALTERNATIVE MODE
-            bool alternativeMode = IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAlternativeINIMode", false);
+            bool alternativeMode = Configuration.bAlternativeINIMode;
             this.checkBoxAlternativeINIMode.Checked = alternativeMode;
             IniFiles.Instance.fixCustomIniDuplicateValues = IniFiles.Instance.fixCustomIniDuplicateValues && !alternativeMode; // Disable a fix, if alternative mode is enabled.
 
@@ -1414,15 +1414,13 @@ namespace Fo76ini
             Form1.logFile.WriteLine("[Form1]\tLoading nuclear winter configuration");
 
             // NW mode enabled?
-            Shared.NuclearWinterMode = IniFiles.Instance.GetBool(IniFile.Config, "NuclearWinter", "bNWMode",
-                IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bNWMode", false) // backward compatibility
-            );
+            Shared.NuclearWinterMode = Configuration.bNWMode;
 
             // Show label:
             this.labelNWModeActive.Visible = Shared.NuclearWinterMode;
 
             // Fallout76Custom.ini renamed?
-            IniFiles.Instance.renameF76Custom = Shared.NuclearWinterMode && IniFiles.Instance.GetBool(IniFile.Config, "NuclearWinter", "bRenameCustomINI", true);
+            IniFiles.Instance.renameF76Custom = Shared.NuclearWinterMode && Configuration.bRenameCustomINI;
 
             // Change button appearance:
             RefreshNWModeButtonAppearance();
@@ -1465,7 +1463,7 @@ namespace Fo76ini
             ManagedMods.Instance.ResolveNWResourceLists();
 
             // Rename *.ini:
-            IniFiles.Instance.renameF76Custom = IniFiles.Instance.GetBool(IniFile.Config, "NuclearWinter", "bRenameCustomINI", true);
+            IniFiles.Instance.renameF76Custom = Configuration.bRenameCustomINI;
             IniFiles.Instance.ResolveNWMode();
 
 
@@ -1474,8 +1472,7 @@ namespace Fo76ini
              */
 
             // Mods are deployed, automatically disable mods?
-            if (!ManagedMods.Instance.ModsDisabled &&
-                IniFiles.Instance.GetBool(IniFile.Config, "NuclearWinter", "bAutoDisableMods", false))
+            if (!ManagedMods.Instance.ModsDisabled && Configuration.bAutoDisableMods)
             {
                 ManagedMods.Instance.ModsDisabled = true;
                 this.Invoke(this.formMods.OpenUI);
@@ -1490,7 +1487,7 @@ namespace Fo76ini
              */
 
             // Rename added *.dll files:
-            if (IniFiles.Instance.GetBool(IniFile.Config, "NuclearWinter", "bRenameDLLs", true))
+            if (Configuration.bRenameDLLs)
                 ManagedMods.Instance.RenameAddedDLLs();
 
 
@@ -1499,9 +1496,7 @@ namespace Fo76ini
              */
 
             // Save configuration:
-            IniFiles.Instance.Set(IniFile.Config, "NuclearWinter", "bNWMode", true);
-            //IniFiles.Instance.Set(IniFile.Config, "Preferences", "bNWMode", true);
-            IniFiles.Instance.Remove(IniFile.Config, "Preferences", "bNWMode");
+            Configuration.bNWMode = true;
             IniFiles.Instance.SaveAll();
         }
 
@@ -1528,7 +1523,7 @@ namespace Fo76ini
             // Mods haven't been deployed yet, automatically enable mods?
             if (ManagedMods.Instance.ModsDisabled &&
                 ManagedMods.Instance.Mods.Count() > 0 &&
-                IniFiles.Instance.GetBool(IniFile.Config, "NuclearWinter", "bAutoDeployMods", false))
+                Configuration.bAutoDisableMods)
             {
                 ManagedMods.Instance.ModsDisabled = false;
                 this.Invoke(this.formMods.OpenUI);
@@ -1551,9 +1546,7 @@ namespace Fo76ini
              */
 
             // Save configuration:
-            IniFiles.Instance.Set(IniFile.Config, "NuclearWinter", "bNWMode", false);
-            //IniFiles.Instance.Set(IniFile.Config, "Preferences", "bNWMode", false);
-            IniFiles.Instance.Remove(IniFile.Config, "Preferences", "bNWMode");
+            Configuration.bNWMode = false;
             IniFiles.Instance.SaveAll();
         }
 
@@ -1618,7 +1611,7 @@ namespace Fo76ini
         private void toolStripButtonApply_Click(object sender, EventArgs e)
         {
             // Show a messagebox to ask the user, if they want to make a backup.
-            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bSkipBackupQuestion", false))
+            if (!Configuration.bSkipBackupQuestion)
             {
                 DialogResult res = MsgBox.Get("backupAndSave").Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (res == DialogResult.Cancel)
@@ -1642,8 +1635,8 @@ namespace Fo76ini
         // "Launch Game" button:
         private void toolStripSplitButtonLaunchGame_ButtonClick(object sender, EventArgs e)
         {
-            uint uGameEdition = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uGameEdition", 0);
-            uint uLaunchOption = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uLaunchOption", 1);
+            uint uGameEdition = Configuration.uGameEdition;
+            uint uLaunchOption = Configuration.uLaunchOption;
             String process = null;
             bool runExecutable = false;
             if (uLaunchOption == 1)
@@ -1679,7 +1672,7 @@ namespace Fo76ini
             }
             if (process != null)
             {
-                if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAutoApply", false))
+                if (Configuration.bAutoApply)
                     ApplyChanges();
                 try
                 {
@@ -1697,7 +1690,7 @@ namespace Fo76ini
                     {
                         System.Diagnostics.Process.Start(process);
                     }
-                    if (IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bQuitOnLaunch", false))
+                    if (Configuration.bQuitOnLaunch)
                         this.Close();
                 }
                 catch (Exception ex)
@@ -1888,22 +1881,22 @@ namespace Fo76ini
 
         private void checkBoxQuitOnGameLaunch_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bQuitOnLaunch", this.checkBoxQuitOnGameLaunch.Checked);
+            Configuration.bQuitOnLaunch = this.checkBoxQuitOnGameLaunch.Checked;
         }
 
         private void checkBoxAutoApply_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bAutoApply", this.checkBoxAutoApply.Checked);
+            Configuration.bAutoApply = this.checkBoxAutoApply.Checked;
         }
 
         private void checkBoxSkipBackupQuestion_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bSkipBackupQuestion", this.checkBoxSkipBackupQuestion.Checked);
+            Configuration.bSkipBackupQuestion = this.checkBoxSkipBackupQuestion.Checked;
         }
 
         private void checkBoxOpenManageModsOnLaunch_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", this.checkBoxOpenManageModsOnLaunch.Checked);
+            Configuration.bOpenModManagerOnLaunch = this.checkBoxOpenManageModsOnLaunch.Checked;
         }
 
         private void buttonUpdateNow_Click(object sender, EventArgs e)
@@ -1950,7 +1943,7 @@ namespace Fo76ini
 
         private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bIgnoreUpdates", this.checkBoxIgnoreUpdates.Checked);
+            Configuration.bIgnoreUpdates = this.checkBoxIgnoreUpdates.Checked;
             this.CheckVersion();
         }
 
@@ -2169,14 +2162,14 @@ namespace Fo76ini
 
         private void checkBoxAlternativeINIMode_CheckedChanged(object sender, EventArgs e)
         {
-            bool altMode = IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAlternativeINIMode", false);
+            bool altMode = Configuration.bAlternativeINIMode;
 
             if (this.checkBoxAlternativeINIMode.Checked == altMode)
                 return;
 
             if (MsgBox.ShowID("restartRequired", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                IniFiles.Instance.Set(IniFile.Config, "Preferences", "bAlternativeINIMode", this.checkBoxAlternativeINIMode.Checked);
+                Configuration.bAlternativeINIMode = this.checkBoxAlternativeINIMode.Checked;
                 IniFiles.Instance.SaveConfig();
                 //Application.Exit();
                 Application.Restart();
@@ -2259,7 +2252,7 @@ namespace Fo76ini
             String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNet", "");
             String execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
 
-            uint uLaunchOption = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uLaunchOption", 1);
+            uint uLaunchOption = Configuration.uLaunchOption;
 
             if (uLaunchOption == 1 || !File.Exists(execPath))
                 System.Diagnostics.Process.Start("bethesdanet://run/20");
@@ -2279,7 +2272,7 @@ namespace Fo76ini
             String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNetPTS", "");
             String execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
 
-            uint uLaunchOption = IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uLaunchOption", 1);
+            uint uLaunchOption = Configuration.uLaunchOption;
 
             if (uLaunchOption == 1 || !File.Exists(execPath))
                 System.Diagnostics.Process.Start("bethesdanet://run/57");
