@@ -195,6 +195,12 @@ namespace Fo76ini
             }
         }
 
+        private void pictureBoxNMProfilePicture_Click(object sender, EventArgs e)
+        {
+            if (NexusMods.Profile.UserID >= 0)
+                System.Diagnostics.Process.Start($"https://www.nexusmods.com/users/{NexusMods.Profile.UserID}");
+        }
+
         // Options:
 
         private void checkBoxNMUpdateProfile_CheckedChanged(object sender, EventArgs e)

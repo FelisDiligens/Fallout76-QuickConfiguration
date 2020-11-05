@@ -112,6 +112,7 @@
             this.columnHeaderCompression = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderFrozenState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonModDetailsNM = new System.Windows.Forms.Button();
             this.buttonModDetailsApply = new System.Windows.Forms.Button();
             this.buttonModDetailsCancel = new System.Windows.Forms.Button();
             this.buttonModDetailsOK = new System.Windows.Forms.Button();
@@ -169,7 +170,6 @@
             this.folderBrowserDialogPickRootDir = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorkerRetrieveModInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
-            this.buttonModDetailsNM = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -1026,6 +1026,21 @@
             this.panel2.Size = new System.Drawing.Size(356, 47);
             this.panel2.TabIndex = 75;
             // 
+            // buttonModDetailsNM
+            // 
+            this.buttonModDetailsNM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonModDetailsNM.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonModDetailsNM.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.buttonModDetailsNM.FlatAppearance.BorderSize = 0;
+            this.buttonModDetailsNM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModDetailsNM.Image = global::Fo76ini.Properties.Resources.nexus_24;
+            this.buttonModDetailsNM.Location = new System.Drawing.Point(11, 7);
+            this.buttonModDetailsNM.Name = "buttonModDetailsNM";
+            this.buttonModDetailsNM.Size = new System.Drawing.Size(36, 36);
+            this.buttonModDetailsNM.TabIndex = 75;
+            this.buttonModDetailsNM.UseVisualStyleBackColor = false;
+            this.buttonModDetailsNM.Visible = false;
+            // 
             // buttonModDetailsApply
             // 
             this.buttonModDetailsApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1464,6 +1479,7 @@
             // 
             // pictureBoxNMProfilePicture
             // 
+            this.pictureBoxNMProfilePicture.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxNMProfilePicture.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNMProfilePicture.Image")));
             this.pictureBoxNMProfilePicture.Location = new System.Drawing.Point(20, 20);
             this.pictureBoxNMProfilePicture.Name = "pictureBoxNMProfilePicture";
@@ -1471,6 +1487,7 @@
             this.pictureBoxNMProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxNMProfilePicture.TabIndex = 65;
             this.pictureBoxNMProfilePicture.TabStop = false;
+            this.pictureBoxNMProfilePicture.Click += new System.EventHandler(this.pictureBoxNMProfilePicture_Click);
             // 
             // labelNMUserName
             // 
@@ -1638,21 +1655,6 @@
             // backgroundWorkerRetrieveProfileInfo
             // 
             this.backgroundWorkerRetrieveProfileInfo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerRetrieveProfileInfo_DoWork);
-            // 
-            // buttonModDetailsNM
-            // 
-            this.buttonModDetailsNM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModDetailsNM.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonModDetailsNM.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.buttonModDetailsNM.FlatAppearance.BorderSize = 0;
-            this.buttonModDetailsNM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModDetailsNM.Image = global::Fo76ini.Properties.Resources.nexus_24;
-            this.buttonModDetailsNM.Location = new System.Drawing.Point(11, 7);
-            this.buttonModDetailsNM.Name = "buttonModDetailsNM";
-            this.buttonModDetailsNM.Size = new System.Drawing.Size(36, 36);
-            this.buttonModDetailsNM.TabIndex = 75;
-            this.buttonModDetailsNM.UseVisualStyleBackColor = false;
-            this.buttonModDetailsNM.Visible = false;
             // 
             // FormMods
             // 
