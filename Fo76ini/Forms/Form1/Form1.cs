@@ -1,4 +1,5 @@
 ﻿using Fo76ini.Forms.FormWhatsNew;
+using Fo76ini.Mods;
 using Fo76ini.Properties;
 using IniParser.Model;
 using System;

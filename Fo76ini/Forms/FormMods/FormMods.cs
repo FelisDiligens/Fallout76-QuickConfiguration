@@ -406,7 +406,7 @@ namespace Fo76ini
         public void ModDetailsFeedback(Mod changedMod)
         {
             if (editedIndices.Count() == 1)
-                ManagedMods.Instance.Mods[editedIndex] = changedMod.CreateCopy();
+                ManagedMods.Instance.Mods[editedIndex] = changedMod.CreateDeepCopy();
             else
             {
                 foreach (int index in editedIndices)

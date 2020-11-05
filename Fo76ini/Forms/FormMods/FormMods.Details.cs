@@ -132,7 +132,7 @@ namespace Fo76ini
             isUpdatingUI = true;
 
             if (mod != null)
-                this.changedMod = mod.CreateCopy();
+                this.changedMod = mod.CreateDeepCopy();
 
             String thumbnailPath = Path.Combine(NexusMods.ThumbnailsPath, this.changedMod.Thumbnail);
             if (File.Exists(thumbnailPath))

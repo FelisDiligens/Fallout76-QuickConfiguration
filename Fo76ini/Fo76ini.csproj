@@ -151,6 +151,7 @@
     <Compile Include="Interface\Translation.Shared.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Mods\Archive2.cs" />
+    <Compile Include="Mods\ManagedMod.cs" />
     <Compile Include="Mods\Mods.cs" />
     <Compile Include="IniFiles.cs" />
     <Compile Include="Interface\MsgBox.cs" />

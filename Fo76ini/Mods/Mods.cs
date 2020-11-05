@@ -157,7 +157,7 @@ namespace Fo76ini
             this.PublicName = mod.PublicName;*/
         }
 
-        public Mod CreateCopy()
+        public Mod CreateDeepCopy()
         {
             return new Mod(this);
         }
@@ -630,7 +630,7 @@ namespace Fo76ini
         {
             List<Mod> copy = new List<Mod>();
             foreach (Mod mod in original)
-                copy.Add(mod.CreateCopy());
+                copy.Add(mod.CreateDeepCopy());
             return copy;
         }
 
@@ -1289,7 +1289,7 @@ namespace Fo76ini
 
         private void AddInstalledMod(Mod mod)
         {
-            mods.Add(mod.CreateCopy());
+            mods.Add(mod.CreateDeepCopy());
             AddMod(mod);
         }
 

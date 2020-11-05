@@ -18,7 +18,7 @@ namespace Fo76ini
 
     public class Shared
     {
-        public const String VERSION = "1.8.5";
+        public const String VERSION = "1.9.0";
         public static String LatestVersion = null;
 
         public static String OldAppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration");
