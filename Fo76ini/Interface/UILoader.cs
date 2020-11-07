@@ -99,12 +99,12 @@ namespace Fo76ini
             num.ValueChanged += (object sender, EventArgs e) => setState(Convert.ToSingle(num.Value));
         }
 
-        public void LinkBoolNegated(CheckBox checkBox, IniFile f, String section, String key, bool defaultValue)
+        public void LinkBoolNegated(CheckBox checkBox, IniFile f, string section, string key, bool defaultValue)
         {
             LinkBool(checkBox, f, section, key, defaultValue, true);
         }
 
-        public void LinkBool(CheckBox checkBox, IniFile f, String section, String key, bool defaultValue, bool negated = false)
+        public void LinkBool(CheckBox checkBox, IniFile f, string section, string key, bool defaultValue, bool negated = false)
         {
             this.Add(() => {
                 bool val = IniFiles.Instance.GetBool(f, section, key, defaultValue);
@@ -118,7 +118,7 @@ namespace Fo76ini
             };
         }
 
-        public void LinkBool(RadioButton radioButtonTrue, RadioButton radioButtonFalse, IniFile f, String section, String key, bool defaultValue)
+        public void LinkBool(RadioButton radioButtonTrue, RadioButton radioButtonFalse, IniFile f, string section, string key, bool defaultValue)
         {
             this.Add(() => {
                 bool val = IniFiles.Instance.GetBool(f, section, key, defaultValue);
@@ -137,7 +137,7 @@ namespace Fo76ini
             };
         }
 
-        public void LinkInt(NumericUpDown num, IniFile f, String section, String key, int defaultValue)
+        public void LinkInt(NumericUpDown num, IniFile f, string section, string key, int defaultValue)
         {
             this.Add(() => {
                 num.Value = Utils.Clamp(IniFiles.Instance.GetInt(f, section, key, defaultValue), Convert.ToInt32(num.Minimum), Convert.ToInt32(num.Maximum));
@@ -150,7 +150,7 @@ namespace Fo76ini
             };
         }
 
-        public void LinkInt(TrackBar slider, IniFile f, String section, String key, int defaultValue)
+        public void LinkInt(TrackBar slider, IniFile f, string section, string key, int defaultValue)
         {
             this.Add(() => {
                 slider.Value = Utils.Clamp(IniFiles.Instance.GetInt(f, section, key, defaultValue), Convert.ToInt32(slider.Minimum), Convert.ToInt32(slider.Maximum));
@@ -163,7 +163,7 @@ namespace Fo76ini
             };
         }
 
-        public void LinkFloat(NumericUpDown num, IniFile f, String section, String key, float defaultValue)
+        public void LinkFloat(NumericUpDown num, IniFile f, string section, string key, float defaultValue)
         {
             this.Add(() => {
                 num.Value = Convert.ToDecimal(Utils.Clamp(IniFiles.Instance.GetFloat(f, section, key, defaultValue), Convert.ToSingle(num.Minimum), Convert.ToSingle(num.Maximum)));
@@ -176,7 +176,7 @@ namespace Fo76ini
             };
         }
 
-        public void LinkString(TextBox textBox, IniFile f, String section, String key, String defaultValue)
+        public void LinkString(TextBox textBox, IniFile f, string section, string key, string defaultValue)
         {
             this.Add(() => textBox.Text = IniFiles.Instance.GetString(section, key, defaultValue));
             textBox.TextChanged += (object sender, EventArgs e) => {
@@ -187,13 +187,13 @@ namespace Fo76ini
             };
         }
 
-        public void LinkList(RadioButton[] radioButtons, String[] associatedValues, IniFile f, String section, String key, String defaultValue)
+        public void LinkList(RadioButton[] radioButtons, string[] associatedValues, IniFile f, string section, string key, string defaultValue)
         {
             if (radioButtons.Length != associatedValues.Length)
                 throw new ArgumentException("LinkList: radioButtons and associatedValues have to have the same length!");
 
             this.Add(() => {
-                String value = IniFiles.Instance.GetString(f, section, key, defaultValue);
+                string value = IniFiles.Instance.GetString(f, section, key, defaultValue);
                 int index = Array.IndexOf(associatedValues, value);
                 if (index > -1)
                 {
@@ -205,7 +205,7 @@ namespace Fo76ini
             for (int i = 0; i < radioButtons.Length; i++)
             {
                 RadioButton radioButton = radioButtons[i];
-                String associatedValue = associatedValues[i];
+                string associatedValue = associatedValues[i];
                 radioButton.MouseClick += (object sender, MouseEventArgs e) => {
                     if (radioButton.Checked)
                         IniFiles.Instance.Set(f, section, key, associatedValue);
@@ -213,13 +213,13 @@ namespace Fo76ini
             }
         }
 
-        public void LinkList(ComboBox comboBox, String[] associatedValues, IniFile f, String section, String key, String defaultValue, int defaultComboBoxIndex)
+        public void LinkList(ComboBox comboBox, string[] associatedValues, IniFile f, string section, string key, string defaultValue, int defaultComboBoxIndex)
         {
             if (comboBox.Items.Count != associatedValues.Length)
                 throw new ArgumentException("LinkList: comboBox has to have as many items as associatedValues has!");
 
             this.Add(() => {
-                String value = IniFiles.Instance.GetString(f, section, key, defaultValue);
+                string value = IniFiles.Instance.GetString(f, section, key, defaultValue);
                 int index = Array.IndexOf(associatedValues, value);
                 if (index > -1)
                     comboBox.SelectedIndex = index;

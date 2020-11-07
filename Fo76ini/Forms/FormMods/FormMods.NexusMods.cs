@@ -1,4 +1,5 @@
-﻿using Fo76ini.Properties;
+﻿using Fo76ini.Mods;
+using Fo76ini.Properties;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -84,12 +85,12 @@ namespace Fo76ini
                 this.labelNMAPIKeyStatus.ForeColor = Color.PaleGreen;
             }
 
-            this.labelNMDailyRateLimit.Text = String.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.Profile.DailyRateLimit);
-            this.labelNMHourlyRateLimit.Text = String.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.Profile.HourlyRateLimit);
+            this.labelNMDailyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.Profile.DailyRateLimit);
+            this.labelNMHourlyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.Profile.HourlyRateLimit);
             if (NexusMods.Profile.DailyRateLimitResetString != "")
             {
                 TimeSpan diff = NexusMods.Profile.DailyRateLimitReset - DateTime.Now;
-                this.labelNMDailyRateLimitReset.Text = String.Format(Localization.GetString("nmResetTime"), diff.Hours, diff.Minutes);
+                this.labelNMDailyRateLimitReset.Text = string.Format(Localization.GetString("nmResetTime"), diff.Hours, diff.Minutes);
             }
             else
             {
@@ -99,7 +100,7 @@ namespace Fo76ini
             this.pictureBoxNMProfilePicture.Image = Resources.user_white;
             if (NexusMods.Profile.ProfilePicture != null)
             {
-                String profilePicPath = Path.Combine(NexusMods.FolderPath, NexusMods.Profile.ProfilePicture);
+                string profilePicPath = Path.Combine(NexusMods.FolderPath, NexusMods.Profile.ProfilePicture);
                 if (File.Exists(profilePicPath))
                     this.pictureBoxNMProfilePicture.Image = Image.FromFile(profilePicPath);
             }
@@ -155,7 +156,7 @@ namespace Fo76ini
             {
                 try
                 {
-                    String path = Path.Combine(NexusMods.ThumbnailsPath);
+                    string path = Path.Combine(NexusMods.ThumbnailsPath);
                     if (Directory.Exists(path))
                         Directory.Delete(path, true);
                     MsgBox.Get("nexusModsDeleteThumbnailsSuccess").Popup(MessageBoxIcon.Information);
@@ -231,7 +232,7 @@ namespace Fo76ini
         {
             int i = 1;
             int len = ManagedMods.Instance.Mods.Count();
-            foreach (Mod mod in ManagedMods.Instance.Mods)
+            foreach (ManagedMod mod in ManagedMods.Instance.Mods)
             {
                 if (mod.URL != "")
                 {
@@ -246,7 +247,7 @@ namespace Fo76ini
         private void backgroundWorkerRetrieveModInfo_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             this.ProgressBarContinuous(e.ProgressPercentage);
-            this.Display((String)e.UserState);
+            this.Display((string)e.UserState);
         }
 
         private void backgroundWorkerRetrieveModInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

@@ -32,7 +32,7 @@ namespace Fo76ini.Forms.ExceptionDialog
                                              "\r\n" +
                                              $"************** Exception Text **************\r\n{ex.GetType()}: {ex.Message}\r\n{ex.StackTrace}\r\n";
             }
-            catch (Exception e)
+            catch
             {
                 form.textBoxDebugText.Text = $"************** Exception Text **************\r\n{ex.GetType()}: {ex.Message}\r\n{ex.StackTrace}\r\n";
             }

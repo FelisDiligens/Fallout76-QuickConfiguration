@@ -198,5 +198,20 @@ namespace Fo76ini
         }
 
         #endregion
+
+
+        #region [Mods] section
+        public static bool bUseHardlinks
+        {
+            get
+            {
+                return IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUseHardlinks", true);
+            }
+            set
+            {
+                IniFiles.Instance.Set(IniFile.Config, "Mods", "bUseHardlinks", value);
+            }
+        }
+        #endregion
     }
 }

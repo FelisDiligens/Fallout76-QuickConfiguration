@@ -22,7 +22,7 @@ namespace Fo76ini
     {
         public static CultureInfo enUS = CultureInfo.CreateSpecificCulture("en-US");
 
-        public static String SevenZipPath = Path.GetFullPath(".\\7z\\7za.exe");
+        public static string SevenZipPath = Path.GetFullPath(".\\7z\\7za.exe");
 
         /// <summary>
         /// Returns a path relative to "workingDirectory".
@@ -67,7 +67,7 @@ namespace Fo76ini
             // we go a few levels back:
             if (workingDirectory.StartsWith(fullPath))
             {
-                return String.Concat(Enumerable.Repeat("..\\", baseDirs.Length - fileDirs.Length));
+                return string.Concat(Enumerable.Repeat("..\\", baseDirs.Length - fileDirs.Length));
             }
 
             // skip all leading directories that match
@@ -128,9 +128,9 @@ namespace Fo76ini
             File.Delete(targetFile);
         }
 
-        public static String GetValidFileName(string value, string extension = "")
+        public static string GetValidFileName(string value, string extension = "")
         {
-            String newName = "";
+            string newName = "";
             if (value.Trim().Length < 0)
             {
                 newName = "untitled";
@@ -155,7 +155,7 @@ namespace Fo76ini
         /// </summary>
         /// <param name="fullPath"></param>
         /// <returns></returns>
-        public static String GetUniquePath(string fullPath)
+        public static string GetUniquePath(string fullPath)
         {
             // https://stackoverflow.com/a/13049909
             int count = 1;
@@ -187,15 +187,15 @@ namespace Fo76ini
 
             long totalFolderSize = 0;
 
-            IEnumerable<String> files = Directory.GetFiles(path);
-            foreach (String filePath in files)
+            IEnumerable<string> files = Directory.GetFiles(path);
+            foreach (string filePath in files)
             {
                 FileInfo info = new FileInfo(filePath);
                 totalFolderSize += info.Length;
             }
 
-            IEnumerable<String> folders = Directory.GetDirectories(path);
-            foreach (String folderPath in folders)
+            IEnumerable<string> folders = Directory.GetDirectories(path);
+            foreach (string folderPath in folders)
             {
                 totalFolderSize += GetSizeInBytes(folderPath);
             }
@@ -205,7 +205,7 @@ namespace Fo76ini
 
         // https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net
         // Copy-paste because, I'm lazy. Don't jugde me! :P
-        public static String GetFormatedSize(long size)
+        public static string GetFormatedSize(long size)
         {
             string[] sizes = { "B", "KB", "MB", "GB", "TB" };
             double len = (double)size;
@@ -216,7 +216,7 @@ namespace Fo76ini
                 len = len / 1024;
             }
 
-            return String.Format("{0:0.#} {1}", len, sizes[order]);
+            return string.Format("{0:0.#} {1}", len, sizes[order]);
         }
 
         /// <summary>
@@ -236,7 +236,7 @@ namespace Fo76ini
             else return val;
         }
 
-        public static void OpenExplorer(String path)
+        public static void OpenExplorer(string path)
         {
             // https://www.codeproject.com/Questions/852563/How-to-open-file-explorer-at-given-location-in-csh
 
@@ -256,7 +256,7 @@ namespace Fo76ini
             }
         }
 
-        public static void OpenNotepad(String path)
+        public static void OpenNotepad(string path)
         {
             if (File.Exists(path))
             {
@@ -390,31 +390,31 @@ namespace Fo76ini
             return Convert.ToInt64(Convert.ToDecimal(num, enUS)); // "0.0" => (int)0
         }
 
-        public static String ToString(float num)
+        public static string ToString(float num)
         {
             Thread.CurrentThread.CurrentCulture = enUS;
             return num.ToString("F99").TrimEnd('0').TrimEnd('.');
         }
 
-        public static String ToString(double num)
+        public static string ToString(double num)
         {
             Thread.CurrentThread.CurrentCulture = enUS;
             return num.ToString("F99").TrimEnd('0').TrimEnd('.');
         }
 
-        public static String ToString(long num)
+        public static string ToString(long num)
         {
             Thread.CurrentThread.CurrentCulture = enUS;
             return num.ToString("D");
         }
 
-        public static String ToString(int num)
+        public static string ToString(int num)
         {
             Thread.CurrentThread.CurrentCulture = enUS;
             return num.ToString("D");
         }
 
-        public static String ToString(uint num)
+        public static string ToString(uint num)
         {
             Thread.CurrentThread.CurrentCulture = enUS;
             return num.ToString("D");
@@ -431,10 +431,10 @@ namespace Fo76ini
             form.Location = new Point(x, y);
         }
 
-        public static List<int> ParseVersion(String versionString)
+        public static List<int> ParseVersion(string versionString)
         {
             List<int> version = new List<int>();
-            foreach (String chunk in versionString.Trim().Split(new char[] { 'v', '.', 'h', ' ' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (string chunk in versionString.Trim().Split(new char[] { 'v', '.', 'h', ' ' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 bool isNumeric = int.TryParse(chunk.Trim(), out int n);
                 if (isNumeric)
@@ -447,7 +447,7 @@ namespace Fo76ini
             return version; // "1.3.1h2" => { 1, 3, 1, 2 }
         }
 
-        public static int CompareVersions(String ver1Str, String ver2Str)
+        public static int CompareVersions(string ver1Str, string ver2Str)
         {
             var ver1 = ParseVersion(ver1Str);
             var ver2 = ParseVersion(ver2Str);
@@ -461,7 +461,7 @@ namespace Fo76ini
         }
 
 
-        public static PopupNotifier CreatePopup (String title, String text)
+        public static PopupNotifier CreatePopup (string title, string text)
         {
             // https://www.c-sharpcorner.com/article/working-with-popup-notification-in-windows-forms/
             // https://github.com/Tulpep/Notification-Popup-Window
@@ -494,7 +494,7 @@ namespace Fo76ini
             return popup;
         }
 
-        public static PopupNotifier CreatePopup(String title, String text, MessageBoxIcon icon)
+        public static PopupNotifier CreatePopup(string title, string text, MessageBoxIcon icon)
         {
             var popup = Utils.CreatePopup(title, text);
             switch (icon)
@@ -535,12 +535,12 @@ namespace Fo76ini
             IntPtr lpSecurityAttributes
         );
 
-        public static bool CreateHardLink(String originalFilePath, String newLinkPath)
+        public static bool CreateHardLink(string originalFilePath, string newLinkPath)
         {
             return Utils.CreateHardLink(newLinkPath, originalFilePath, IntPtr.Zero);
         }
 
-        public static bool CreateHardLink(String originalFilePath, String newLinkPath, bool overwrite)
+        public static bool CreateHardLink(string originalFilePath, string newLinkPath, bool overwrite)
         {
             if (File.Exists(newLinkPath))
             {
@@ -617,9 +617,9 @@ namespace Fo76ini
         }
 
         // https://stackoverflow.com/questions/3639129/c-sharp-how-do-you-get-the-operating-system-architecture-x86-or-x64
-        public static String GetOSArchitecture()
+        public static string GetOSArchitecture()
         {
-            if (!String.IsNullOrEmpty(Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432")))
+            if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432")))
                 return "64-bit";
             return "32-bit";
         }
@@ -628,7 +628,7 @@ namespace Fo76ini
         // https://andrewensley.com/2009/06/c-detect-windows-os-part-1/
         // https://docs.microsoft.com/en-us/windows/win32/sysinfo/operating-system-version
         // https://www.prugg.at/2019/09/09/properly-detect-windows-version-in-c-net-even-windows-10/
-        public static String GetOSName()
+        public static string GetOSName()
         {
             // Get Operating system information.
             OperatingSystem os = Environment.OSVersion;

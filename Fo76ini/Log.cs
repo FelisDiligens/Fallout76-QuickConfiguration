@@ -9,9 +9,9 @@ namespace Fo76ini
 {
     public class Log
     {
-        private String path;
+        private string path;
 
-        public Log(String path)
+        public Log(string path)
         {
             this.path = Path.GetFullPath(path);
         }
@@ -36,30 +36,30 @@ namespace Fo76ini
                 sw.WriteLine(line);
         }
 
-        public void WriteFormat(String line, params String[] values)
+        public void WriteFormat(string line, params string[] values)
         {
             using (StreamWriter sw = Open())
-                sw.Write(String.Format(line, values));
+                sw.Write(string.Format(line, values));
         }
 
-        public void WriteLineFormat(String line, params String[] values)
+        public void WriteLineFormat(string line, params string[] values)
         {
             using (StreamWriter sw = Open())
-                sw.WriteLine(String.Format(line, values));
+                sw.WriteLine(string.Format(line, values));
         }
 
-        public void WriteTimeStamp(String suffix = "")
+        public void WriteTimeStamp(string suffix = "")
         {
             using (StreamWriter sw = Open())
                 sw.WriteLine($"{ DateTime.Now.ToLongDateString()}, { DateTime.Now.ToLongTimeString()} {suffix}");
         }
 
-        public String GetFilePath()
+        public string GetFilePath()
         {
             return path;
         }
 
-        public static String GetFilePath(String fileName)
+        public static string GetFilePath(string fileName)
         {
             // return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", fileName);
             return Path.Combine(Shared.AppConfigFolder, fileName);

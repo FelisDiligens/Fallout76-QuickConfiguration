@@ -232,11 +232,6 @@ namespace Fo76ini
                 "Please uncompress the archive and add the mod as a folder."
             );
 
-            MsgBox.Add("modsExtractUnknownError7zip",
-                "7-Zip archive couldn't be uncompressed",
-                "{0}"
-            );
-
             MsgBox.Add("modsArchiveTypeNotSupported",
                 "Unsupported file format",
                 "{0} files are not supported.\n" +

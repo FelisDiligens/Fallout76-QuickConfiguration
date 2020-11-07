@@ -51,7 +51,7 @@ namespace Fo76ini.Forms.FormWhatsNew
 
         private void backgroundWorkerDownloadRTF_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            richTextBox.Rtf = (String)e.Result;
+            richTextBox.Rtf = (string)e.Result;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

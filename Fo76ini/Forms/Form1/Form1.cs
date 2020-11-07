@@ -46,7 +46,7 @@ namespace Fo76ini
             // https://en.wikipedia.org/wiki/List_of_common_resolutions
             DropDown.Add("Resolution", new DropDown(
                 this.comboBoxResolution,
-                new String[] {
+                new string[] {
                     "Custom",
                     "640x480",
                     "800x600",
@@ -68,7 +68,7 @@ namespace Fo76ini
 
             DropDown.Add("DisplayMode", new DropDown(
                 this.comboBoxDisplayMode,
-                new String[] {
+                new string[] {
                     "Fullscreen",
                     "Windowed",
                     "Borderless windowed",
@@ -78,7 +78,7 @@ namespace Fo76ini
 
             DropDown.Add("AntiAliasing", new DropDown(
                 this.comboBoxAntiAliasing,
-                new String[] {
+                new string[] {
                     "TAA (default)",
                     "FXAA",
                     "Disabled"
@@ -87,7 +87,7 @@ namespace Fo76ini
 
             DropDown.Add("AnisotropicFiltering", new DropDown(
                 this.comboBoxAnisotropicFiltering,
-                new String[] {
+                new string[] {
                     "None",
                     "2x",
                     "4x",
@@ -98,7 +98,7 @@ namespace Fo76ini
 
             DropDown.Add("ShadowTextureResolution", new DropDown(
                 this.comboBoxShadowTextureResolution,
-                new String[] {
+                new string[] {
                     "512 = Potato",
                     "1024 = Low",
                     "2048 = High (default)",
@@ -108,7 +108,7 @@ namespace Fo76ini
 
             DropDown.Add("ShadowBlurriness", new DropDown(
                 this.comboBoxShadowBlurriness,
-                new String[] {
+                new string[] {
                     "1x",
                     "2x",
                     "3x = Default, recommended"
@@ -117,7 +117,7 @@ namespace Fo76ini
 
             DropDown.Add("Files", new DropDown(
                 this.comboBoxCustomFile,
-                new String[] {
+                new string[] {
                     "Fallout76.ini",
                     "Fallout76Prefs.ini",
                     "Fallout76Custom.ini"
@@ -127,7 +127,7 @@ namespace Fo76ini
 
             DropDown.Add("VoiceChatMode", new DropDown(
                 this.comboBoxVoiceChatMode,
-                new String[] {
+                new string[] {
                     "Auto",
                     "Area",
                     "Team",
@@ -137,7 +137,7 @@ namespace Fo76ini
 
             DropDown.Add("ShowActiveEffectsOnHUD", new DropDown(
                 this.comboBoxShowActiveEffectsOnHUD,
-                new String[] {
+                new string[] {
                     "Disabled",
                     "Detrimental",
                     "All"
@@ -146,7 +146,7 @@ namespace Fo76ini
 
             DropDown.Add("iDirShadowSplits", new DropDown(
                 this.comboBoxiDirShadowSplits,
-                new String[] {
+                new string[] {
                     "1 - Low",
                     "2 - High / Medium",
                     "3 - Ultra"
@@ -293,7 +293,7 @@ namespace Fo76ini
             // Remove updater, if present:
             try
             {
-                String updaterPath = Path.Combine(Shared.AppConfigFolder, "Updater");
+                string updaterPath = Path.Combine(Shared.AppConfigFolder, "Updater");
                 if (Directory.Exists(updaterPath))
                     Directory.Delete(updaterPath, true);
             }
@@ -307,7 +307,7 @@ namespace Fo76ini
             MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
         }
 
-        private void Form1_Shown(Object sender, EventArgs e)
+        private void Form1_Shown(object sender, EventArgs e)
         {
             // Check display resolution
             int[] res = Utils.GetDisplayResolution();
@@ -405,7 +405,7 @@ namespace Fo76ini
             {
                 // Update available:
                 panelUpdate.Visible = true;
-                labelNewVersion.Text = String.Format(Localization.GetString("newVersionAvailable"), Shared.LatestVersion);
+                labelNewVersion.Text = string.Format(Localization.GetString("newVersionAvailable"), Shared.LatestVersion);
                 labelNewVersion.ForeColor = Color.Crimson;
                 this.labelConfigVersion.ForeColor = Color.Red;
             }
@@ -458,7 +458,7 @@ namespace Fo76ini
 
         #region *.ini values integrity check
 
-        private void ExpectBool(List<String> errors, String section, String key)
+        private void ExpectBool(List<string> errors, string section, string key)
         {
             if (!IniFiles.Instance.Exists(section, key))
                 return;
@@ -466,7 +466,7 @@ namespace Fo76ini
                 errors.Add($"[{section}] {key}: expected boolean (0 or 1), got {IniFiles.Instance.GetString(section, key, "")}");
         }
 
-        private void ExpectInt(List<String> errors, String section, String key)
+        private void ExpectInt(List<string> errors, string section, string key)
         {
             if (!IniFiles.Instance.Exists(section, key))
                 return;
@@ -474,7 +474,7 @@ namespace Fo76ini
                 errors.Add($"[{section}] {key}: expected integer, got {IniFiles.Instance.GetString(section, key)}");
         }
 
-        private void ExpectUInt(List<String> errors, String section, String key)
+        private void ExpectUInt(List<string> errors, string section, string key)
         {
             if (!IniFiles.Instance.Exists(section, key))
                 return;
@@ -482,7 +482,7 @@ namespace Fo76ini
                 errors.Add($"[{section}] {key}: expected unsigned integer, got {IniFiles.Instance.GetString(section, key)}");
         }
 
-        private void ExpectFloat(List<String> errors, String section, String key)
+        private void ExpectFloat(List<string> errors, string section, string key)
         {
             if (!IniFiles.Instance.Exists(section, key))
                 return;
@@ -492,7 +492,7 @@ namespace Fo76ini
 
         private void CheckAllINIValues()
         {
-            List<String> errors = new List<String>();
+            List<string> errors = new List<string>();
 
             /*
              * Check values:
@@ -647,7 +647,7 @@ namespace Fo76ini
             // Launch options
             uiLoader.LinkList(
                 new RadioButton[] { this.radioButtonLaunchViaLink, this.radioButtonLaunchViaExecutable },
-                new String[] { "1", "2" },
+                new string[] { "1", "2" },
                 IniFile.Config, "Preferences", "uLaunchOption",
                 "1"
             );
@@ -698,7 +698,7 @@ namespace Fo76ini
 
             uiLoader.LinkList(
                 this.accountProfileRadioButtons,
-                new String[] { "1", "2", "3", "4", "5", "6", "7", "8" },
+                new string[] { "1", "2", "3", "4", "5", "6", "7", "8" },
                 IniFile.Config, "Login", "uActiveAccountProfile",
                 "1"
             );
@@ -712,7 +712,7 @@ namespace Fo76ini
             // Play intro videos
             uiLoader.LinkCustom(this.checkBoxIntroVideos,
                 () => {
-                    String sIntroSequence = IniFiles.Instance.GetString("General", "sIntroSequence", "BGSLogo4k.bk2").Trim();
+                    string sIntroSequence = IniFiles.Instance.GetString("General", "sIntroSequence", "BGSLogo4k.bk2").Trim();
                     return sIntroSequence.Length > 0 && sIntroSequence != "0";
                 },
                 (value) => {
@@ -798,7 +798,7 @@ namespace Fo76ini
             // Show active effects on HUD
             uiLoader.LinkList(
                 this.comboBoxShowActiveEffectsOnHUD,
-                new String[] { "0", "1", "2" },
+                new string[] { "0", "1", "2" },
                 IniFile.F76Prefs, "Interface", "uHUDActiveEffectWidget",
                 "2", 2
             );
@@ -875,7 +875,7 @@ namespace Fo76ini
 
                     if (value != 0)
                     {
-                        String[] splitted = this.comboBoxResolution.SelectedItem.ToString().Split(new String[] { "x" }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] splitted = this.comboBoxResolution.SelectedItem.ToString().Split(new string[] { "x" }, StringSplitOptions.RemoveEmptyEntries);
                         int width = Convert.ToInt32(splitted[0]);
                         int height = Convert.ToInt32(splitted[1]);
                         IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "iSize W", width);
@@ -942,13 +942,13 @@ namespace Fo76ini
 
             // Anti-Aliasing
             uiLoader.LinkList(this.comboBoxAntiAliasing,
-                new String[] { "TAA", "FXAA", "" },
+                new string[] { "TAA", "FXAA", "" },
                 IniFile.F76Prefs, "Display", "sAntiAliasing",
                 "TAA", 2);
 
             // Anisotropic filtering
             uiLoader.LinkList(this.comboBoxAnisotropicFiltering,
-                new String[] { "0", "2", "4", "8", "16" },
+                new string[] { "0", "2", "4", "8", "16" },
                 IniFile.F76Prefs, "Display", "iMaxAnisotropy",
                 "8", 3);
 
@@ -1082,19 +1082,19 @@ namespace Fo76ini
 
             // Shadows / Texture map resolution
             uiLoader.LinkList(this.comboBoxShadowTextureResolution,
-                new String[] { "512", "1024", "2048", "4096" },
+                new string[] { "512", "1024", "2048", "4096" },
                 IniFile.F76Prefs, "Display", "iShadowMapResolution",
                 "2048", 1);
 
             // Shadows / Blurriness
             uiLoader.LinkList(this.comboBoxShadowBlurriness,
-                new String[] { "1", "2", "3" },
+                new string[] { "1", "2", "3" },
                 IniFile.F76Prefs, "Display", "uiOrthoShadowFilter",
                 "3", 2);
 
             // Amount of shadow "segments": iDirShadowSplits
             uiLoader.LinkList(this.comboBoxiDirShadowSplits,
-                new String[] { "1", "2", "3" },
+                new string[] { "1", "2", "3" },
                 IniFile.F76Prefs, "Display", "iDirShadowSplits",
                 "3", 2);
 
@@ -1149,7 +1149,7 @@ namespace Fo76ini
             uiLoader.LinkFloat(this.numAudiofVal6, IniFile.F76Prefs, "AudioMenu", "fVal6", 1.0f);
 
             uiLoader.LinkList(this.comboBoxVoiceChatMode,
-                new String[] { "0", "1", "2", "3" },
+                new string[] { "0", "1", "2", "3" },
                 IniFile.F76Prefs, "Voice", "uTransmitPreference",
                 "0", 0);
 
@@ -1419,14 +1419,16 @@ namespace Fo76ini
 
         private void backgroundWorkerEnableNWMode_DoWork(object sender, DoWorkEventArgs e)
         {
+            // TODO: NW MODE broken
+            return;
+
             Shared.NuclearWinterMode = true;
 
             /*
              * Fallout76Custom.ini:
              */
             // Remove resource lists:
-            ManagedMods.Instance.WriteToF76Custom = false;
-            ManagedMods.Instance.ResolveNWResourceLists();
+            // TODO: NW MODE broken
 
             // Rename *.ini:
             IniFiles.Instance.renameF76Custom = Configuration.bRenameCustomINI;
@@ -1438,14 +1440,14 @@ namespace Fo76ini
              */
 
             // Mods are deployed, automatically disable mods?
-            if (!ManagedMods.Instance.ModsDisabled && Configuration.bAutoDisableMods)
+            /*if (!ManagedMods.Instance.ModsDisabled && Configuration.bAutoDisableMods)
             {
                 ManagedMods.Instance.ModsDisabled = true;
                 this.Invoke(this.formMods.OpenUI);
                 this.formMods.Deploy();
                 this.Invoke(this.formMods.Hide);
                 this.Invoke(() => { this.Focus(); });
-            }
+            }*/
 
 
             /*
@@ -1453,8 +1455,8 @@ namespace Fo76ini
              */
 
             // Rename added *.dll files:
-            if (Configuration.bRenameDLLs)
-                ManagedMods.Instance.RenameAddedDLLs();
+            /*if (Configuration.bRenameDLLs)
+                ManagedMods.Instance.RenameAddedDLLs();*/
 
 
             /*
@@ -1468,14 +1470,15 @@ namespace Fo76ini
 
         private void backgroundWorkerDisableNWMode_DoWork(object sender, DoWorkEventArgs e)
         {
+            // TODO: NW MODE broken
+            return;
+
             Shared.NuclearWinterMode = false;
 
             /*
              * Fallout76Custom.ini:
              */
             // Restore archive lists:
-            ManagedMods.Instance.WriteToF76Custom = true;
-            ManagedMods.Instance.ResolveNWResourceLists();
 
             // Restore *.ini:
             IniFiles.Instance.renameF76Custom = false;
@@ -1487,7 +1490,7 @@ namespace Fo76ini
              */
 
             // Mods haven't been deployed yet, automatically enable mods?
-            if (ManagedMods.Instance.ModsDisabled &&
+            /*if (ManagedMods.Instance.ModsDisabled &&
                 ManagedMods.Instance.Mods.Count() > 0 &&
                 Configuration.bAutoDisableMods)
             {
@@ -1496,7 +1499,7 @@ namespace Fo76ini
                 this.formMods.Deploy();
                 this.Invoke(this.formMods.Hide);
                 this.Invoke(() => { this.Focus(); });
-            }
+            }*/
 
 
             /*
@@ -1504,7 +1507,7 @@ namespace Fo76ini
              */
 
             // Restore added *.dll files:
-            ManagedMods.Instance.RestoreAddedDLLs();
+            //ManagedMods.Instance.RestoreAddedDLLs();
 
 
             /*
@@ -1541,21 +1544,21 @@ namespace Fo76ini
             // Add custom lines to *.ini files:
             try
             {
-                String f76Path = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76.add.ini");
+                string f76Path = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76.add.ini");
                 if (File.Exists(f76Path))
                 {
                     IniData f76Data = IniFiles.Instance.LoadIni(f76Path, false);
                     IniFiles.Instance.Merge(IniFile.F76, f76Data);
                 }
 
-                String f76PPath = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76Prefs.add.ini");
+                string f76PPath = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76Prefs.add.ini");
                 if (File.Exists(f76PPath))
                 {
                     IniData f76PData = IniFiles.Instance.LoadIni(f76PPath, false);
                     IniFiles.Instance.Merge(IniFile.F76Prefs, f76PData);
                 }
 
-                String f76CPath = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76Custom.add.ini");
+                string f76CPath = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76Custom.add.ini");
                 if (File.Exists(f76CPath))
                 {
                     IniData f76CData = IniFiles.Instance.LoadIni(f76CPath, false);
@@ -1603,7 +1606,7 @@ namespace Fo76ini
         {
             uint uGameEdition = Configuration.uGameEdition;
             uint uLaunchOption = Configuration.uLaunchOption;
-            String process = null;
+            string process = null;
             bool runExecutable = false;
             if (uLaunchOption == 1)
             {
@@ -1628,7 +1631,7 @@ namespace Fo76ini
             }
             else if (uLaunchOption == 2)
             {
-                if (!ManagedMods.Instance.ValidateGamePath())
+                if (!Shared.ValidateGamePath())
                 {
                     MsgBox.Get("modsGamePathNotSet").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -1825,7 +1828,7 @@ namespace Fo76ini
         private void buttonDetectResolution_Click(object sender, EventArgs e)
         {
             int[] res = Utils.GetDisplayResolution();
-            String resStr = $"{res[0]}x{res[1]}";
+            string resStr = $"{res[0]}x{res[1]}";
 
             DropDown resolution = DropDown.Get("Resolution");
             if (resolution.Contains(resStr))
@@ -1864,13 +1867,13 @@ namespace Fo76ini
         private void buttonUpdateNow_Click(object sender, EventArgs e)
         {
             // Set sInstallationPath:
-            String installationPath = Path.GetFullPath(AppContext.BaseDirectory);
+            string installationPath = Path.GetFullPath(AppContext.BaseDirectory);
             IniFiles.Instance.Set(IniFile.Config, "Updater", "sInstallationPath", installationPath);
             IniFiles.Instance.SaveConfig();
 
             // Copy updater.exe to <config-path>\Updater\:
-            String updaterPath = Path.Combine(Shared.AppConfigFolder, "Updater");
-            List<String> updaterFiles = new List<String>() {
+            string updaterPath = Path.Combine(Shared.AppConfigFolder, "Updater");
+            List<string> updaterFiles = new List<string>() {
                 "7z\\7za.dll",
                 "7z\\7za.exe",
                 "7z\\7zxa.dll",
@@ -1884,7 +1887,7 @@ namespace Fo76ini
             };
             Directory.CreateDirectory(updaterPath);
             Directory.CreateDirectory(Path.Combine(updaterPath, "7z"));
-            foreach (String file in updaterFiles)
+            foreach (string file in updaterFiles)
                 File.Copy(file, Path.Combine(updaterPath, file), true);
 
             // Run updater.exe:
@@ -1924,7 +1927,7 @@ namespace Fo76ini
             }
             if (this.openFileDialogGamePath.ShowDialog() == DialogResult.OK)
             {
-                String path = Path.GetDirectoryName(this.openFileDialogGamePath.FileName); // We want the path where Fallout76.exe resides.
+                string path = Path.GetDirectoryName(this.openFileDialogGamePath.FileName); // We want the path where Fallout76.exe resides.
                 if (Directory.Exists(Path.Combine(path, "Data")))
                 {
                     this.textBoxGamePath.Text = path;
@@ -2021,11 +2024,11 @@ namespace Fo76ini
                 Utils.OpenNotepad(Path.Combine(Shared.AppConfigFolder, "update.log.txt"));
         }
 
-        private String customAddFilePath = "";
+        private string customAddFilePath = "";
 
         private void comboBoxCustomFile_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String fileName = "Invalid.add.ini";
+            string fileName = "Invalid.add.ini";
             switch (this.comboBoxCustomFile.SelectedIndex)
             {
                 case 0:
@@ -2090,7 +2093,7 @@ namespace Fo76ini
 
         private void steamScreenshotFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String steamFolder = @"C:\Program Files (x86)\Steam\userdata\";
+            string steamFolder = @"C:\Program Files (x86)\Steam\userdata\";
             if (Directory.Exists(steamFolder))
             {
                 steamFolder = Path.Combine(Directory.GetDirectories(steamFolder)[0], @"760\remote\1151340\screenshots");
@@ -2100,7 +2103,7 @@ namespace Fo76ini
 
         private void gamePhotosFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String photosFolder = Path.Combine(IniFiles.Instance.iniParentPath, "Photos");
+            string photosFolder = Path.Combine(IniFiles.Instance.iniParentPath, "Photos");
             if (Directory.Exists(photosFolder))
             {
                 photosFolder = Directory.GetDirectories(photosFolder)[0];
@@ -2173,7 +2176,7 @@ namespace Fo76ini
             this.textBoxPassword.Text = IniFiles.Instance.GetString(IniFile.Config, "Login", $"s76Password{index + 1}", "");
         }
 
-        private void MakePictureBoxButton(PictureBox pictureBox, String localizedStringID)
+        private void MakePictureBoxButton(PictureBox pictureBox, string localizedStringID)
         {
             pictureBox.Paint += new PaintEventHandler((paintSender, paintEventArgs) =>
             {
@@ -2211,8 +2214,8 @@ namespace Fo76ini
         private void launchViaBethesdanetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Launch Bethesda.net version:
-            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNet", "");
-            String execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
+            string gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNet", "");
+            string execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
 
             uint uLaunchOption = Configuration.uLaunchOption;
 
@@ -2231,8 +2234,8 @@ namespace Fo76ini
         private void launchViaBethesdanetPTSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Launch Bethesda.net (PTS) version:
-            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNetPTS", "");
-            String execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
+            string gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNetPTS", "");
+            string execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
 
             uint uLaunchOption = Configuration.uLaunchOption;
 

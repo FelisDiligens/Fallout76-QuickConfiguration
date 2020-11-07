@@ -18,7 +18,7 @@ namespace Fo76ini
         public static extern int waveOutSetVolume(IntPtr h, uint dwVolume);
 
         private static uint _savedVolumeLevel;
-        private static Boolean VolumeLevelSaved = false;
+        private static bool VolumeLevelSaved = false;
 
         // ----------------------------------------------------------------------------
         public static void On()

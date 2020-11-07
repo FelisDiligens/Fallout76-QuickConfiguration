@@ -10,7 +10,7 @@ namespace Fo76ini
     // https://stackoverflow.com/questions/2077981/cut-files-to-clipboard-in-c-sharp
     public class ClipboardUtils
     {
-        public static void CopyFile(String file)
+        public static void CopyFile(string file)
         {
             FileSystemInfo fsinfo = null;
             if (File.Exists(file))
@@ -23,7 +23,7 @@ namespace Fo76ini
                 DragDropEffects.Copy);
         }
 
-        public static void CutFile(String file)
+        public static void CutFile(string file)
         {
             FileSystemInfo fsinfo = null;
             if (File.Exists(file))
@@ -36,24 +36,24 @@ namespace Fo76ini
                 DragDropEffects.Move);
         }
 
-        public static void CopyFiles(IEnumerable<String> filesAndFolders)
+        public static void CopyFiles(IEnumerable<string> filesAndFolders)
         {
             ClipboardUtils.PutFilesOnClipboard(
                 ClipboardUtils.GetFileSystemInfoList(filesAndFolders),
                 DragDropEffects.Copy);
         }
 
-        public static void CutFiles(IEnumerable<String> filesAndFolders)
+        public static void CutFiles(IEnumerable<string> filesAndFolders)
         {
             ClipboardUtils.PutFilesOnClipboard(
                 ClipboardUtils.GetFileSystemInfoList(filesAndFolders),
                 DragDropEffects.Move);
         }
 
-        private static List<FileSystemInfo> GetFileSystemInfoList (IEnumerable<String> filesAndFolders)
+        private static List<FileSystemInfo> GetFileSystemInfoList (IEnumerable<string> filesAndFolders)
         {
             List<FileSystemInfo> fileSystemInfos = new List<FileSystemInfo>();
-            foreach (String fileOrFolder in filesAndFolders)
+            foreach (string fileOrFolder in filesAndFolders)
             {
                 FileSystemInfo fsinfo = null;
 

@@ -16,14 +16,14 @@ namespace Fo76ini
 {
     public partial class Localization
     {
-        public static Dictionary<String, String> localizedStrings = new Dictionary<String, String>();
-        public static String languageFolder = Path.Combine(Shared.AppConfigFolder, "languages");
+        public static Dictionary<string, string> localizedStrings = new Dictionary<string, string>();
+        public static string languageFolder = Path.Combine(Shared.AppConfigFolder, "languages");
         private static List<Translation> translations = new List<Translation>();
         private static DropDown comboBoxTranslations;
 
         public static List<LocalizedForm> LocalizedForms = new List<LocalizedForm>();
 
-        public static String locale = "en-US";
+        public static string locale = "en-US";
 
         static Localization()
         {
@@ -31,7 +31,7 @@ namespace Fo76ini
             AddSharedMessageBoxes();
         }
 
-        public static String GetString(String str)
+        public static string GetString(string str)
         {
             return Localization.localizedStrings[str];
         }
@@ -63,7 +63,7 @@ namespace Fo76ini
             }
 
             // Set language:
-            String selectedLanguageISO = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sLanguage", CultureInfo.CurrentUICulture.Name);
+            string selectedLanguageISO = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sLanguage", CultureInfo.CurrentUICulture.Name);
             int languageIndex = GetTranslationIndex(selectedLanguageISO);
             int enUSIndex = GetTranslationIndex("en-US");
             Localization.comboBoxTranslations.SelectedIndex = languageIndex > -1 ? languageIndex : enUSIndex;
@@ -90,7 +90,7 @@ namespace Fo76ini
             return translations[comboBoxTranslations.SelectedIndex];
         }
 
-        public static Translation GetTranslation(String iso)
+        public static Translation GetTranslation(string iso)
         {
             foreach (Translation translation in Localization.translations)
                 if (translation.ISO == iso)
@@ -98,7 +98,7 @@ namespace Fo76ini
             return null;
         }
 
-        public static int GetTranslationIndex(String iso)
+        public static int GetTranslationIndex(string iso)
         {
             int index = 0;
             foreach (Translation translation in Localization.translations)
@@ -113,7 +113,7 @@ namespace Fo76ini
         public static XElement SerializeStrings()
         {
             XElement xmlStrings = new XElement("Strings");
-            foreach (KeyValuePair<String, String> pair in Localization.localizedStrings)
+            foreach (KeyValuePair<string, string> pair in Localization.localizedStrings)
                 xmlStrings.Add(new XElement("String",
                     new XAttribute("text", pair.Value),
                     new XAttribute("id", pair.Key)));
@@ -132,17 +132,17 @@ namespace Fo76ini
 
     public class Translation
     {
-        public String Name;
-        public String ISO;
-        public String Version;
-        public String Author;
-        private String fileName;
-        private String filePath;
+        public string Name;
+        public string ISO;
+        public string Version;
+        public string Author;
+        private string fileName;
+        private string filePath;
 
-        private Dictionary<String, String> dictText = new Dictionary<String, String>();
-        private Dictionary<String, String> dictTooltip = new Dictionary<String, String>();
+        private Dictionary<string, string> dictText = new Dictionary<string, string>();
+        private Dictionary<string, string> dictTooltip = new Dictionary<string, string>();
 
-        private static List<String> blackList = new List<String>
+        private static List<string> blackList = new List<string>
         {
             "labelConfigVersion",
             "labelAuthorName",
@@ -161,7 +161,7 @@ namespace Fo76ini
          * Public stuff:
          */
 
-        public void Load(String fileName)
+        public void Load(string fileName)
         {
             this.fileName = fileName;
             this.filePath = Path.Combine(Localization.languageFolder, this.fileName);
@@ -291,7 +291,7 @@ namespace Fo76ini
             }
         }
 
-        private void DeserializeStrip(Component item, Dictionary<String, String> dict)
+        private void DeserializeStrip(Component item, Dictionary<string, string> dict)
         {
             if (item is MenuStrip)
                 DeserializeStripItems(((MenuStrip)item).Items, dict);
@@ -305,7 +305,7 @@ namespace Fo76ini
                 DeserializeStripItems(((ToolStripDropDownButton)item).DropDownItems, dict);
         }
 
-        private void DeserializeStripItems(ToolStripItemCollection items, Dictionary<String, String> dict)
+        private void DeserializeStripItems(ToolStripItemCollection items, Dictionary<string, string> dict)
         {
             foreach (ToolStripItem item in items)
             {
@@ -369,10 +369,10 @@ namespace Fo76ini
          * Serialization:
          */
 
-        public void Save(String fileName, String version)
+        public void Save(string fileName, string version)
         {
-            String newFileName = fileName;
-            String newFilePath = Path.Combine(Localization.languageFolder, newFileName);
+            string newFileName = fileName;
+            string newFilePath = Path.Combine(Localization.languageFolder, newFileName);
 
             // Create document and root:
             XDocument xmlDoc = new XDocument();
@@ -528,19 +528,19 @@ namespace Fo76ini
          * Other stuff:
          */
 
-        private String ToSafeString(String s)
+        private string ToSafeString(string s)
         {
             return Regex.Replace(s, @"\r\n?|\n", "\\n").Replace("\t", "\\t").Replace("\\", "\\\\").Replace("\\\\n", "\\n").Replace("\\\\t", "\\t");
         }
 
-        private String FromSafeString(String s)
+        private string FromSafeString(string s)
         {
             return s.Replace("\\n", "\n").Replace("\\t", "\t").Replace("\\\\", "\\");
         }
 
-        private Dictionary<String, String> GetXMLDescendantsDict(XElement xmlItems)
+        private Dictionary<string, string> GetXMLDescendantsDict(XElement xmlItems)
         {
-            Dictionary<String, String> dict = new Dictionary<String, String>();
+            Dictionary<string, string> dict = new Dictionary<string, string>();
             foreach (XElement item in xmlItems.Descendants())
             {
                 dict[item.Attribute("id").Value] = item.Attribute("text").Value;

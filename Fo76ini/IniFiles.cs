@@ -34,7 +34,7 @@ namespace Fo76ini
         /*protected String fo76Path;
         protected String fo76PrefsPath;
         protected String fo76CustomPath;*/
-        protected String configPath;
+        protected string configPath;
 
         protected DateTime fo76ModTime;
         protected DateTime fo76PrefsModTime;
@@ -42,13 +42,13 @@ namespace Fo76ini
 
         protected Encoding iniEncoding = new UTF8Encoding(false); // UTF-8 without BOM
 
-        public String iniParentPath;
+        public string iniParentPath;
 
         protected System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
         //public bool nuclearWinterMode = false;
         public bool renameF76Custom = false;
-        public const String nwF76CustomEnding = ".nwmodebak";
+        public const string nwF76CustomEnding = ".nwmodebak";
 
         public bool fixCustomIniDuplicateValues = true;
 
@@ -72,7 +72,7 @@ namespace Fo76ini
             }
         }
 
-        public String GetIniName(IniFile iniFile, GameEdition edition = GameEdition.Unknown)
+        public string GetIniName(IniFile iniFile, GameEdition edition = GameEdition.Unknown)
         {
             if (edition == GameEdition.Unknown)
                 edition = Shared.GameEdition;
@@ -91,7 +91,7 @@ namespace Fo76ini
             return null;
         }
 
-        public String GetIniPath(IniFile iniFile, GameEdition edition)
+        public string GetIniPath(IniFile iniFile, GameEdition edition)
         {
             switch (iniFile)
             {
@@ -105,7 +105,7 @@ namespace Fo76ini
             return null;
         }
 
-        public String GetIniPath(IniFile iniFile)
+        public string GetIniPath(IniFile iniFile)
         {
             switch (iniFile)
             {
@@ -146,8 +146,8 @@ namespace Fo76ini
             /*this.GetIniName(IniFile.F76) = Path.Combine(this.iniParentPath, "Fallout76.ini");
             this.GetIniName(IniFile.F76Prefs) = Path.Combine(this.iniParentPath, "Fallout76Prefs.ini");
             this.GetIniName(IniFile.F76Custom) = Path.Combine(this.iniParentPath, "Fallout76Custom.ini");*/
-            String pre1point6ConfigPath = Path.Combine(this.iniParentPath, "QuickConfiguration.ini");
-            String oldConfigPath = Path.Combine(Shared.OldAppConfigFolder, "config.ini");
+            string pre1point6ConfigPath = Path.Combine(this.iniParentPath, "QuickConfiguration.ini");
+            string oldConfigPath = Path.Combine(Shared.OldAppConfigFolder, "config.ini");
             this.configPath = Path.Combine(Shared.AppConfigFolder, "config.ini");
 
             // Backwards-compatibility: Move config file to new location:
@@ -351,12 +351,12 @@ namespace Fo76ini
         /// <summary>
         /// Create a backup folder and copy all *.ini files into it.
         /// </summary>
-        public void BackupAll(String backupFolder = null)
+        public void BackupAll(string backupFolder = null)
         {
             if (backupFolder == null)
                 backupFolder = DateTime.Now.ToString("Backup_yyyy-MM-dd_HH-mm-ss");
-            String backupPath = Path.Combine(this.iniParentPath, backupFolder);
-            String tempPath;
+            string backupPath = Path.Combine(this.iniParentPath, backupFolder);
+            string tempPath;
 
             if (Directory.Exists(backupPath))
                 Utils.DeleteDirectory(backupPath);
@@ -394,11 +394,11 @@ namespace Fo76ini
 
         protected void RemoveEmptySections(IniData data)
         {
-            List<String> sectionNames = new List<String>();
+            List<string> sectionNames = new List<string>();
             foreach (SectionData section in data.Sections)
                 if (section.Keys.Count == 0)
                     sectionNames.Add(section.SectionName);
-            foreach (String sectionName in sectionNames)
+            foreach (string sectionName in sectionNames)
                 data.Sections.RemoveSection(sectionName);
         }
 
@@ -409,7 +409,7 @@ namespace Fo76ini
          ********************************************************************************************************************************************
          */
 
-        public IniData LoadIni(String path, bool ignoreErrors)
+        public IniData LoadIni(string path, bool ignoreErrors)
         {
             if (!File.Exists(path))
                 return new IniData();
@@ -425,12 +425,12 @@ namespace Fo76ini
             }
         }
 
-        public IniData LoadIni(String path)
+        public IniData LoadIni(string path)
         {
             return LoadIni(path, true);
         }
 
-        public void SaveIni(String path, IniData data, bool readOnly = false)
+        public void SaveIni(string path, IniData data, bool readOnly = false)
         {
             if (data == null)
                 return;
@@ -457,7 +457,7 @@ namespace Fo76ini
          ********************************************************************************************************************************************
          */
 
-        protected void SetFileReadOnlyAttribute(String path, bool readOnly)
+        protected void SetFileReadOnlyAttribute(string path, bool readOnly)
         {
             SetNTFSWritePermission(true);
 
@@ -535,7 +535,7 @@ namespace Fo76ini
          ********************************************************************************************************************************************
          */
 
-        public bool Exists(String section, String key)
+        public bool Exists(string section, string key)
         {
             foreach (IniData data in new IniData[] { this.configData, this.fo76Data, this.fo76PrefsData, this.fo76CustomData })
             {
@@ -548,7 +548,7 @@ namespace Fo76ini
             return false;
         }
 
-        public bool Exists(IniFile f, String section, String key)
+        public bool Exists(IniFile f, string section, string key)
         {
             return GetIniData(f)[section][key] != null;
         }
@@ -561,9 +561,9 @@ namespace Fo76ini
         /// <param name="key"></param>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public String GetString(String section, String key, String defaultValue)
+        public string GetString(string section, string key, string defaultValue)
         {
-            String value = defaultValue;
+            string value = defaultValue;
             foreach (IniData data in new IniData[] { this.configData, this.fo76Data, this.fo76PrefsData, this.fo76CustomData })
             {
                 if (data != null)
@@ -575,9 +575,9 @@ namespace Fo76ini
             return value;
         }
 
-        public String GetString(String section, String key)
+        public string GetString(string section, string key)
         {
-            String value = GetString(section, key, null);
+            string value = GetString(section, key, null);
             if (value == null)
                 throw new KeyNotFoundException($"Couldn't find [{section}] {key} in any *.ini file.");
             return value;
@@ -595,9 +595,9 @@ namespace Fo76ini
         /// </summary>
         /// <param name="sectionKeyDefaultPairs"></param>
         /// <returns></returns>
-        public String[] GetString(String[][] sectionKeyDefaultPairs)
+        public string[] GetString(string[][] sectionKeyDefaultPairs)
         {
-            String[] values = new String[sectionKeyDefaultPairs.Length];
+            string[] values = new string[sectionKeyDefaultPairs.Length];
             for (int i = 0; i < sectionKeyDefaultPairs.Length; i++)
             {
                 if (sectionKeyDefaultPairs[i].Length > 2)
@@ -612,8 +612,8 @@ namespace Fo76ini
                 {
                     if (data != null)
                     {
-                        String section = sectionKeyDefaultPairs[i][0];
-                        String key = sectionKeyDefaultPairs[i][1];
+                        string section = sectionKeyDefaultPairs[i][0];
+                        string key = sectionKeyDefaultPairs[i][1];
                         if (data[section][key] != null)
                             values[i] = data[section][key];
                     }
@@ -622,121 +622,121 @@ namespace Fo76ini
             return values;
         }
 
-        public String GetString(IniFile f, String section, String key)
+        public string GetString(IniFile f, string section, string key)
         {
-            String value = GetIniData(f)[section][key];
+            string value = GetIniData(f)[section][key];
             if (value == null)
                 throw new KeyNotFoundException($"Couldn't find [{section}] {key} in {GetIniName(f)}");
             return value;
         }
 
-        public String GetString(IniFile f, String section, String key, String defaultValue)
+        public string GetString(IniFile f, string section, string key, string defaultValue)
         {
-            String value = GetIniData(f)[section][key];
+            string value = GetIniData(f)[section][key];
             return value != null ? value : defaultValue;
         }
 
-        public bool GetBool(IniFile f, String section, String key)
+        public bool GetBool(IniFile f, string section, string key)
         {
             return GetString(f, section, key) == "1";
         }
 
-        public bool GetBool(IniFile f, String section, String key, bool defaultValue)
+        public bool GetBool(IniFile f, string section, string key, bool defaultValue)
         {
             return GetString(f, section, key, defaultValue ? "1" : "0") == "1";
         }
 
-        public bool GetBool(String section, String key)
+        public bool GetBool(string section, string key)
         {
             return GetString(section, key) == "1";
         }
 
-        public bool GetBool(String section, String key, bool defaultValue)
+        public bool GetBool(string section, string key, bool defaultValue)
         {
             return GetString(section, key, defaultValue ? "1" : "0") == "1";
         }
 
-        public float GetFloat(IniFile f, String section, String key)
+        public float GetFloat(IniFile f, string section, string key)
         {
             return Utils.ToFloat(GetString(f, section, key));
         }
 
-        public float GetFloat(IniFile f, String section, String key, float defaultValue)
+        public float GetFloat(IniFile f, string section, string key, float defaultValue)
         {
             return Utils.ToFloat(GetString(f, section, key, defaultValue.ToString(enUS)));
         }
 
-        public float GetFloat(String section, String key)
+        public float GetFloat(string section, string key)
         {
             return Utils.ToFloat(GetString(section, key));
         }
 
-        public float GetFloat(String section, String key, float defaultValue)
+        public float GetFloat(string section, string key, float defaultValue)
         {
             return Utils.ToFloat(GetString(section, key, defaultValue.ToString(enUS)));
         }
 
-        public uint GetUInt(IniFile f, String section, String key)
+        public uint GetUInt(IniFile f, string section, string key)
         {
             return Utils.ToUInt(GetString(f, section, key));
         }
 
-        public uint GetUInt(IniFile f, String section, String key, uint defaultValue)
+        public uint GetUInt(IniFile f, string section, string key, uint defaultValue)
         {
             return Utils.ToUInt(GetString(f, section, key, defaultValue.ToString(enUS)));
         }
 
-        public uint GetUInt(String section, String key)
+        public uint GetUInt(string section, string key)
         {
             return Utils.ToUInt(GetString(section, key));
         }
 
-        public uint GetUInt(String section, String key, uint defaultValue)
+        public uint GetUInt(string section, string key, uint defaultValue)
         {
             return Utils.ToUInt(GetString(section, key, defaultValue.ToString(enUS)));
         }
 
-        public int GetInt(IniFile f, String section, String key)
+        public int GetInt(IniFile f, string section, string key)
         {
             return Utils.ToInt(GetString(f, section, key));
         }
 
-        public int GetInt(IniFile f, String section, String key, int defaultValue)
+        public int GetInt(IniFile f, string section, string key, int defaultValue)
         {
             return Utils.ToInt(GetString(f, section, key, defaultValue.ToString(enUS)));
         }
 
-        public int GetInt(String section, String key)
+        public int GetInt(string section, string key)
         {
             return Utils.ToInt(GetString(section, key));
         }
 
-        public int GetInt(String section, String key, int defaultValue)
+        public int GetInt(string section, string key, int defaultValue)
         {
             return Utils.ToInt(GetString(section, key, defaultValue.ToString(enUS)));
         }
 
-        public long GetLong(IniFile f, String section, String key)
+        public long GetLong(IniFile f, string section, string key)
         {
             return Utils.ToLong(GetString(f, section, key));
         }
 
-        public long GetLong(IniFile f, String section, String key, int defaultValue)
+        public long GetLong(IniFile f, string section, string key, int defaultValue)
         {
             return Utils.ToLong(GetString(f, section, key, defaultValue.ToString(enUS)));
         }
 
-        public long GetLong(String section, String key)
+        public long GetLong(string section, string key)
         {
             return Utils.ToLong(GetString(section, key));
         }
 
-        public long GetLong(String section, String key, int defaultValue)
+        public long GetLong(string section, string key, int defaultValue)
         {
             return Utils.ToLong(GetString(section, key, defaultValue.ToString(enUS)));
         }
 
-        public void Set(IniFile f, String section, String key, String value)
+        public void Set(IniFile f, string section, string key, string value)
         {
             GetIniData(f)[section][key] = value;
 
@@ -749,43 +749,43 @@ namespace Fo76ini
                 this.fo76CustomData[section][key] = value;
         }
 
-        public void Set(IniFile f, String section, String key, int value)
+        public void Set(IniFile f, string section, string key, int value)
         {
             Set(f, section, key, Utils.ToString(value));
         }
 
-        public void Set(IniFile f, String section, String key, uint value)
+        public void Set(IniFile f, string section, string key, uint value)
         {
             Set(f, section, key, Utils.ToString(value));
         }
 
-        public void Set(IniFile f, String section, String key, long value)
+        public void Set(IniFile f, string section, string key, long value)
         {
             Set(f, section, key, Utils.ToString(value));
         }
 
-        public void Set(IniFile f, String section, String key, float value)
+        public void Set(IniFile f, string section, string key, float value)
         {
             Set(f, section, key, Utils.ToString(value));
         }
 
-        public void Set(IniFile f, String section, String key, double value)
+        public void Set(IniFile f, string section, string key, double value)
         {
             Set(f, section, key, Utils.ToString(value));
         }
 
-        public void Set(IniFile f, String section, String key, bool value)
+        public void Set(IniFile f, string section, string key, bool value)
         {
             Set(f, section, key, value ? "1" : "0");
         }
 
-        public void Remove(IniFile f, String section, String key)
+        public void Remove(IniFile f, string section, string key)
         {
             if (Exists(f, section, key))
                 GetIniData(f)[section].RemoveKey(key);
         }
 
-        public void RemoveAll(String section, String key)
+        public void RemoveAll(string section, string key)
         {
             Remove(IniFile.F76, section, key);
             Remove(IniFile.F76Prefs, section, key);
@@ -796,27 +796,27 @@ namespace Fo76ini
 
 
 
-        public bool ExpectBool(String section, String key)
+        public bool ExpectBool(string section, string key)
         {
-            String value = this.GetString(section, key).Trim();
+            string value = this.GetString(section, key).Trim();
             return value == "1" || value == "0";
         }
 
-        public bool ExpectInt(String section, String key)
+        public bool ExpectInt(string section, string key)
         {
-            String value = this.GetString(section, key).Trim();
+            string value = this.GetString(section, key).Trim();
             return Regex.IsMatch(value, @"^-?\d+$");
         }
 
-        public bool ExpectUInt(String section, String key)
+        public bool ExpectUInt(string section, string key)
         {
-            String value = this.GetString(section, key).Trim();
+            string value = this.GetString(section, key).Trim();
             return Regex.IsMatch(value, @"^\d+$");
         }
 
-        public bool ExpectFloat(String section, String key)
+        public bool ExpectFloat(string section, string key)
         {
-            String value = this.GetString(section, key).Trim();
+            string value = this.GetString(section, key).Trim();
             return Regex.IsMatch(value, @"-?[0-9\.]+");
         }
 
@@ -828,13 +828,13 @@ namespace Fo76ini
          ********************************************************************************************************************************************
          */
 
-        protected void MergeLists(IniFile f, String section, String key)
+        protected void MergeLists(IniFile f, string section, string key)
         {
-            String list = "";
+            string list = "";
             bool found = false;
             int i = -1;
-            IEnumerable<String> lines = File.ReadLines(GetIniPath(f));
-            foreach (String line in lines)
+            IEnumerable<string> lines = File.ReadLines(GetIniPath(f));
+            foreach (string line in lines)
             {
                 if (line.TrimStart().ToLower().StartsWith(key.ToLower()))
                 {
@@ -846,7 +846,7 @@ namespace Fo76ini
                     }
                 }
             }
-            list = String.Join<String>(",",
+            list = string.Join<string>(",",
                     list.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(s => s.Trim()).Distinct().ToArray()
                             ).Trim(',').Replace(",,", ",");
@@ -887,7 +887,7 @@ namespace Fo76ini
         }
 
         // https://stackoverflow.com/questions/1873658/net-windows-forms-remember-windows-size-and-location
-        public void SaveWindowState(String formName, Form form)
+        public void SaveWindowState(string formName, Form form)
         {
             if (form.WindowState == FormWindowState.Maximized)
             {
@@ -908,7 +908,7 @@ namespace Fo76ini
             this.SaveConfig();
         }
 
-        public void LoadWindowState(String formName, Form form)
+        public void LoadWindowState(string formName, Form form)
         {
             int locX = this.GetInt(IniFile.Config, formName, "iLocationX", -1);
             int locY = this.GetInt(IniFile.Config, formName, "iLocationY", -1);
@@ -924,21 +924,21 @@ namespace Fo76ini
                 form.WindowState = FormWindowState.Maximized;
         }
 
-        public void SaveListViewState(String formName, ListView listView)
+        public void SaveListViewState(string formName, ListView listView)
         {
             List<int> widths = new List<int>();
             foreach (ColumnHeader column in listView.Columns)
             {
                 widths.Add(column.Width);
             }
-            this.Set(IniFile.Config, formName, "sColumnWidths", String.Join(",", widths));
+            this.Set(IniFile.Config, formName, "sColumnWidths", string.Join(",", widths));
         }
 
-        public void LoadListViewState(String formName, ListView listView)
+        public void LoadListViewState(string formName, ListView listView)
         {
             List<int> lWidths = new List<int>();
-            String[] sWidths = this.GetString(IniFile.Config, formName, "sColumnWidths", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (String sWidth in sWidths)
+            string[] sWidths = this.GetString(IniFile.Config, formName, "sColumnWidths", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string sWidth in sWidths)
                 lWidths.Add(Convert.ToInt32(sWidth));
 
             int i = 0;

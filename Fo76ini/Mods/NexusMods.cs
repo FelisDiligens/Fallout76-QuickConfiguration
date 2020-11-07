@@ -20,9 +20,9 @@ namespace Fo76ini
 
         public static Dictionary<int, NMMod> Mods = new Dictionary<int, NMMod>();
 
-        public static String FolderPath = Path.Combine(Shared.AppConfigFolder, "nexusmods");
-        public static String ThumbnailsPath = Path.Combine(Shared.AppConfigFolder, "thumbnails", "nexusmods");
-        public static String RemoteXMLPath = Path.Combine(NexusMods.FolderPath, "remote.xml"); // Path.Combine(Shared.GamePath, "Mods", "remote.xml")
+        public static string FolderPath = Path.Combine(Shared.AppConfigFolder, "nexusmods");
+        public static string ThumbnailsPath = Path.Combine(Shared.AppConfigFolder, "thumbnails", "nexusmods");
+        public static string RemoteXMLPath = Path.Combine(NexusMods.FolderPath, "remote.xml"); // Path.Combine(Shared.GamePath, "Mods", "remote.xml")
 
         public static NMProfile Profile
         {
@@ -92,7 +92,7 @@ namespace Fo76ini
                     NMMod mod = NMMod.Deserialize(xmlMod);
                     Mods[mod.ID] = mod;
                 }
-                catch (Exception ex)
+                catch// (Exception ex)
                 {
                     /* InvalidDataException, ArgumentException */
                     //MsgBox.Get("modsInvalidManifestEntry").FormatText(ex.Message).Show(MessageBoxIcon.Warning);
@@ -101,7 +101,7 @@ namespace Fo76ini
             }
         }
 
-        public static void RefreshModInfo(String url)
+        public static void RefreshModInfo(string url)
         {
             NMMod mod = new NMMod(url);
             mod.RequestInformation();
@@ -116,13 +116,13 @@ namespace Fo76ini
                 File.Delete(NexusMods.RemoteXMLPath);
         }
 
-        public static int GetIDFromURL(String url)
+        public static int GetIDFromURL(string url)
         {
             // "https://www.nexusmods.com/fallout76/mods/419?tab=files"
             if (url == "" || !url.Contains("www.nexusmods.com/fallout76/mods"))
                 return -1;
 
-            String modId = url.Substring(url.IndexOf("fallout76/mods/") + 15);
+            string modId = url.Substring(url.IndexOf("fallout76/mods/") + 15);
             if (modId.Contains("?"))
                 modId = modId.Substring(0, modId.IndexOf("?"));
 
@@ -133,14 +133,29 @@ namespace Fo76ini
     public class NMMod
     {
         public int ID = -1;
-        public String URL = "";
-        public String LatestVersion = "";
-        public String ThumbnailURL = "";
-        public String Thumbnail = "";
-        public String Title = "";
-        public long LastUpdated = -1;
+        public string URL = "";
+        public string Title = "";
+        public string LatestVersion = "";
+        public string Author = "";
+        public string Uploader = "";
+        public string Summary = "";
+        public int EndorsementCount = 0;
+        public string Thumbnail = "";
+        public string ThumbnailURL = "";
+        public long CreatedTimestamp = -1;
+        public long UpdatedTimestamp = -1;
+        public long LastAccessTimestamp = -1;
+        public bool ContainsAdultContent = false;
+        public EndorseStatus Endorsement = EndorseStatus.Undecided;
 
-        public NMMod (String url)
+        public enum EndorseStatus
+        {
+            Undecided,
+            Endorsed,
+            Abstained
+        }
+
+        public NMMod (string url)
         {
             this.URL = url;
             this.ID = NexusMods.GetIDFromURL(url);
@@ -163,8 +178,31 @@ namespace Fo76ini
                 // Get data:
                 JObject json = request.GetJSON();
                 this.Title = json["name"].ToString();
+                this.Author = json["author"].ToString();
+                this.Uploader = json["uploaded_by"].ToString();
+                this.Summary = json["summary"].ToString();
+                this.EndorsementCount = json["endorsement_count"].ToObject<int>();
+                this.CreatedTimestamp = json["created_timestamp"].ToObject<long>();
+                this.UpdatedTimestamp = json["updated_timestamp"].ToObject<long>();
+                this.ContainsAdultContent = json["contains_adult_content"].ToObject<bool>();
                 this.ThumbnailURL = json["picture_url"].ToString();
                 this.LatestVersion = json["version"].ToString();
+
+                JObject endorsement = (JObject)json["endorsement"];
+                string endorseStatus = endorsement["endorse_status"].ToString();
+                switch (endorseStatus)
+                {
+                    case "Endorsed":
+                        this.Endorsement = EndorseStatus.Endorsed;
+                        break;
+                    case "Abstained":
+                        this.Endorsement = EndorseStatus.Abstained;
+                        break;
+                    case "Undecided":
+                    default:
+                        this.Endorsement = EndorseStatus.Undecided;
+                        break;
+                }
 
                 // Download thumbnail:
                 if (!Directory.Exists(NexusMods.ThumbnailsPath))
@@ -174,8 +212,8 @@ namespace Fo76ini
                 {
                     try
                     {
-                        String thumbName = $"thumb_{this.ID}.jpg"; // Path.GetExtension(Path.GetFileName(uri.LocalPath));
-                        String thumbPath = Path.Combine(NexusMods.ThumbnailsPath, thumbName);
+                        string thumbName = $"thumb_{this.ID}.jpg"; // Path.GetExtension(Path.GetFileName(uri.LocalPath));
+                        string thumbPath = Path.Combine(NexusMods.ThumbnailsPath, thumbName);
 
                         this.Thumbnail = thumbName;
 
@@ -210,22 +248,35 @@ namespace Fo76ini
                 // TODO: Handle: Couldn't retrieve info.
                 Console.WriteLine($"Couldn't retrieve info.\n{request.Exception.GetType().Name}: {request.Exception.Message}\n{request.GetText()}");
             }
-            this.LastUpdated = Utils.GetUnixTimeStamp();
+            this.LastAccessTimestamp = Utils.GetUnixTimeStamp();
         }
 
         public XElement Serialize()
         {
-            XElement xmlMod = new XElement("Mod");
-
-            xmlMod.Add(new XAttribute("id", this.ID));
-
-            //xmlMod.Add(new XAttribute("url", this.URL));
+            XElement xmlMod = new XElement("Mod",
+                new XAttribute("id", this.ID),
+                new XAttribute("nsfw", this.ContainsAdultContent));
 
             if (this.Title != "")
                 xmlMod.Add(new XElement("Title", this.Title));
 
             if (this.LatestVersion != "")
                 xmlMod.Add(new XElement("Version", this.LatestVersion));
+
+            if (this.Author != "")
+                xmlMod.Add(new XElement("CreatedBy", this.Author));
+
+            if (this.Uploader != "")
+                xmlMod.Add(new XElement("UploadedBy", this.Uploader));
+
+            xmlMod.Add(new XElement("EndorsementCount", this.EndorsementCount));
+            xmlMod.Add(new XElement("CreatedTimestamp", this.CreatedTimestamp));
+            xmlMod.Add(new XElement("UpdatedTimestamp", this.UpdatedTimestamp));
+
+            string endorseState = Enum.GetName(typeof(EndorseStatus), (int)this.Endorsement);
+            xmlMod.Add(new XElement("EndorseState", endorseState));
+
+            xmlMod.Add(new XElement("Summary", this.Summary));
 
             if (this.Thumbnail != "" && this.ThumbnailURL != "")
             {
@@ -235,7 +286,7 @@ namespace Fo76ini
                 xmlMod.Add(thumbnail);
             }
 
-            xmlMod.Add(new XElement("LastUpdated", this.LastUpdated));
+            xmlMod.Add(new XElement("LastUpdated", this.LastAccessTimestamp));
 
             return xmlMod;
         }
@@ -253,6 +304,27 @@ namespace Fo76ini
             if (xmlMod.Element("Version") != null)
                 mod.LatestVersion = xmlMod.Element("Version").Value;
 
+            if (xmlMod.Element("CreatedBy") != null)
+                mod.Author = xmlMod.Element("CreatedBy").Value;
+
+            if (xmlMod.Element("UploadedBy") != null)
+                mod.Uploader = xmlMod.Element("UploadedBy").Value;
+
+            if (xmlMod.Element("Summary") != null)
+                mod.Summary = xmlMod.Element("Summary").Value;
+
+            if (xmlMod.Element("EndorsementCount") != null)
+                mod.EndorsementCount = Convert.ToInt32(xmlMod.Element("EndorsementCount").Value);
+
+            if (xmlMod.Element("CreatedTimestamp") != null)
+                mod.CreatedTimestamp = Convert.ToInt64(xmlMod.Element("CreatedTimestamp").Value);
+
+            if (xmlMod.Element("UpdatedTimestamp") != null)
+                mod.UpdatedTimestamp = Convert.ToInt64(xmlMod.Element("UpdatedTimestamp").Value);
+
+            if (xmlMod.Attribute("nsfw") != null)
+                mod.ContainsAdultContent = Convert.ToBoolean(xmlMod.Attribute("nsfw").Value);
+
             XElement thumbnail = xmlMod.Element("Thumbnail");
             if (thumbnail != null)
             {
@@ -260,8 +332,25 @@ namespace Fo76ini
                 mod.Thumbnail = thumbnail.Element("File").Value;
             }
 
+            if (xmlMod.Element("EndorseState") != null)
+            {
+                switch (xmlMod.Element("EndorseState").Value)
+                {
+                    case "Endorsed":
+                        mod.Endorsement = EndorseStatus.Endorsed;
+                        break;
+                    case "Abstained":
+                        mod.Endorsement = EndorseStatus.Abstained;
+                        break;
+                    case "Undecided":
+                    default:
+                        mod.Endorsement = EndorseStatus.Undecided;
+                        break;
+                }
+            }
+
             if (xmlMod.Element("LastUpdated") != null)
-                mod.LastUpdated = Convert.ToInt64(xmlMod.Element("LastUpdated").Value);
+                mod.LastAccessTimestamp = Convert.ToInt64(xmlMod.Element("LastUpdated").Value);
 
             return mod;
         }
@@ -276,15 +365,15 @@ namespace Fo76ini
             Premium
         }
 
-        public String APIKey;
+        public string APIKey;
         public long UserID;
-        public String UserName = "Anonymous";
-        public String ProfilePictureURL;
-        public String ProfilePicture;
+        public string UserName = "Anonymous";
+        public string ProfilePictureURL;
+        public string ProfilePicture;
         public Membership Status;
         public int DailyRateLimit;
         public int HourlyRateLimit;
-        public String DailyRateLimitResetString;
+        public string DailyRateLimitResetString;
         public DateTime DailyRateLimitReset;
         public bool ValidKey;
 
@@ -343,7 +432,7 @@ namespace Fo76ini
             {
                 Uri uri = new Uri(this.ProfilePictureURL);
                 this.ProfilePicture = "profile" + Path.GetExtension(Path.GetFileName(uri.LocalPath));
-                String path = Path.Combine(NexusMods.FolderPath, this.ProfilePicture);
+                string path = Path.Combine(NexusMods.FolderPath, this.ProfilePicture);
 
                 // Download if non-existent:
                 if (!File.Exists(path))
@@ -416,7 +505,7 @@ namespace Fo76ini
             {
                 this.DailyRateLimitReset = DateTime.ParseExact(this.DailyRateLimitResetString, "yyyy-MM-dd HH:mm:ss zzz", System.Globalization.CultureInfo.InvariantCulture);
             }
-            catch (System.FormatException e)
+            catch// (System.FormatException e)
             {
                 // TODO: Handle this.
             }
@@ -462,7 +551,7 @@ namespace Fo76ini
 
     public class APIRequest
     {
-        public String url;
+        public string url;
 
         private HttpWebRequest request;
         private HttpWebResponse response;
@@ -470,7 +559,7 @@ namespace Fo76ini
         public WebException Exception;
         private bool success;
 
-        public APIRequest(String url)
+        public APIRequest(string url)
         {
             this.url = url;
             this.request = (HttpWebRequest)WebRequest.Create(this.url);
@@ -495,9 +584,9 @@ namespace Fo76ini
             }
         }
 
-        public String GetText()
+        public string GetText()
         {
-            String resp;
+            string resp;
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -531,13 +620,13 @@ namespace Fo76ini
             get => this.success;
         }
 
-        public String UserAgent
+        public string UserAgent
         {
             get => this.request.UserAgent;
             set => this.request.UserAgent = value;
         }
 
-        public String Accept
+        public string Accept
         {
             get => this.request.Accept;
             set => this.request.Accept = value;

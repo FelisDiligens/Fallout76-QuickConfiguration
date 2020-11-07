@@ -14,10 +14,10 @@ namespace Fo76ini
 {
     public partial class Form1
     {
-        private List<String> galleryImagePaths = new List<String>();
+        private List<string> galleryImagePaths = new List<string>();
         private ImageList galleryImageList = new ImageList();
 
-        private static String[] ValidImageFormats = new String[] { 
+        private static string[] ValidImageFormats = new string[] { 
             ".png",
             ".jpg",
             ".gif",
@@ -87,7 +87,7 @@ namespace Fo76ini
             /*
              * Thumbnails folder:
              */
-            String thumbnailsPath = Path.Combine(Shared.AppConfigFolder, "thumbnails", "screenshots");
+            string thumbnailsPath = Path.Combine(Shared.AppConfigFolder, "thumbnails", "screenshots");
             if (!Directory.Exists(thumbnailsPath))
                 Directory.CreateDirectory(thumbnailsPath);
 
@@ -95,20 +95,20 @@ namespace Fo76ini
              * Search the game folders for screenshots:
              * C:\...\Fallout76\*.png
              */
-            String[] gamePaths = new String[] {
+            string[] gamePaths = new string[] {
                 IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathSteam", ""),
                 IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNet", ""),
                 IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNetPTS", "")
             };
-            foreach (String gamePath in gamePaths)
+            foreach (string gamePath in gamePaths)
             {
                 if (Directory.Exists(gamePath))
                 {
-                    IEnumerable<String> screenshots = Directory.EnumerateFiles(gamePath, "*.png", SearchOption.TopDirectoryOnly);
-                    foreach (String filePath in screenshots)
+                    IEnumerable<string> screenshots = Directory.EnumerateFiles(gamePath, "*.png", SearchOption.TopDirectoryOnly);
+                    foreach (string filePath in screenshots)
                     {
-                        String fileName = Path.GetFileName(filePath);
-                        String thumbPath = Path.Combine(thumbnailsPath, fileName) + ".jpg";
+                        string fileName = Path.GetFileName(filePath);
+                        string thumbPath = Path.Combine(thumbnailsPath, fileName) + ".jpg";
                         Bitmap thumbnail;
 
                         if (!File.Exists(thumbPath))
@@ -133,18 +133,18 @@ namespace Fo76ini
              * C:\Users\<your name>\Documents\My Games\Fallout 76\Photos\<UUID>\*.png
              * C:\Users\<your name>\Documents\My Games\Fallout 76\Photos\<UUID>\*-thumbnail.png
              */
-            String photosFolder = Path.Combine(IniFiles.Instance.iniParentPath, "Photos");
+            string photosFolder = Path.Combine(IniFiles.Instance.iniParentPath, "Photos");
             if (Directory.Exists(photosFolder))
             {
-                IEnumerable<String> photos = Directory.EnumerateFiles(photosFolder, "*.png", SearchOption.AllDirectories);
-                foreach (String filePath in photos)
+                IEnumerable<string> photos = Directory.EnumerateFiles(photosFolder, "*.png", SearchOption.AllDirectories);
+                foreach (string filePath in photos)
                 {
-                    String fileName = Path.GetFileName(filePath);
+                    string fileName = Path.GetFileName(filePath);
 
                     if (fileName.EndsWith("-thumbnail.png"))
                         continue;
 
-                    String thumbnailFilePath = fileName.Replace(".png", "-thumbnail.png");
+                    string thumbnailFilePath = fileName.Replace(".png", "-thumbnail.png");
                     if (!File.Exists(thumbnailFilePath))
                     {
                         thumbnailFilePath = Path.Combine(thumbnailsPath, fileName + ".jpg");
@@ -170,20 +170,20 @@ namespace Fo76ini
              * C:\Program Files (x86)\Steam\userdata\<user id>\760\remote\1151340\screenshots\*.jpg
              * C:\Program Files (x86)\Steam\userdata\<user id>\760\remote\1151340\screenshots\thumbnails\*.jpg
              */
-            String steamFolder = @"C:\Program Files (x86)\Steam\userdata\";
+            string steamFolder = @"C:\Program Files (x86)\Steam\userdata\";
             if (Directory.Exists(steamFolder))
             {
                 steamFolder = Path.Combine(Directory.GetDirectories(steamFolder)[0], @"760\remote\1151340\screenshots");
-                String steamThumbnailFolder = Path.Combine(steamFolder, "thumbnails");
+                string steamThumbnailFolder = Path.Combine(steamFolder, "thumbnails");
 
                 if (Directory.Exists(steamFolder))
                 {
-                    List<String> screenshots = Directory.GetFiles(steamFolder, "*.jpg", SearchOption.TopDirectoryOnly).ToList();
-                    foreach (String filePath in screenshots)
+                    List<string> screenshots = Directory.GetFiles(steamFolder, "*.jpg", SearchOption.TopDirectoryOnly).ToList();
+                    foreach (string filePath in screenshots)
                     {
-                        String fileName = Path.GetFileName(filePath);
+                        string fileName = Path.GetFileName(filePath);
 
-                        String thumbnailFilePath = Path.Combine(steamThumbnailFolder, fileName);
+                        string thumbnailFilePath = Path.Combine(steamThumbnailFolder, fileName);
                         if (!File.Exists(thumbnailFilePath))
                         {
                             thumbnailFilePath = Path.Combine(thumbnailsPath, fileName + ".jpg");
@@ -208,22 +208,22 @@ namespace Fo76ini
             /*
              * Search additional paths added by the user:
              */
-            foreach (String path in GetAdditionalPathList())
+            foreach (string path in GetAdditionalPathList())
             {
                 Console.WriteLine(path);
-                String folderName = new DirectoryInfo(path).Name;
-                IEnumerable<String> pictures = Directory.EnumerateFiles(path, "*.*",
+                string folderName = new DirectoryInfo(path).Name;
+                IEnumerable<string> pictures = Directory.EnumerateFiles(path, "*.*",
                     this.checkBoxGallerySearchRecursively.Checked ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly
                 );
-                foreach (String filePath in pictures)
+                foreach (string filePath in pictures)
                 {
                     FileInfo info = new FileInfo(filePath);
-                    String fileName = info.Name;
+                    string fileName = info.Name;
 
                     if (!ValidImageFormats.Contains(info.Extension))
                         continue;
 
-                    String thumbnailFilePath = Path.Combine(thumbnailsPath, folderName + "-" + fileName + ".jpg");
+                    string thumbnailFilePath = Path.Combine(thumbnailsPath, folderName + "-" + fileName + ".jpg");
                     if (!File.Exists(thumbnailFilePath))
                         Utils.MakeThumbnail(filePath, thumbnailFilePath);
 
@@ -243,10 +243,10 @@ namespace Fo76ini
             this.Invoke(() => this.buttonRefreshGallery.Enabled = true);
         }
 
-        private List<String> GetAdditionalPathList()
+        private List<string> GetAdditionalPathList()
         {
-            List<String> paths = new List<String>();
-            foreach (String path in this.textBoxGalleryPaths.Text.Replace("\r\n", "\n").Split('\n'))
+            List<string> paths = new List<string>();
+            foreach (string path in this.textBoxGalleryPaths.Text.Replace("\r\n", "\n").Split('\n'))
             {
                 if (Directory.Exists(path.Trim()))
                     paths.Add(path.Trim());
@@ -285,7 +285,7 @@ namespace Fo76ini
                 this.listViewScreenshots.Items.Clear();
 
                 // Delete thumbnails:
-                String thumbnailsPath = Path.Combine(Shared.AppConfigFolder, "thumbnails", "screenshots");
+                string thumbnailsPath = Path.Combine(Shared.AppConfigFolder, "thumbnails", "screenshots");
                 try
                 {
                     Directory.Delete(thumbnailsPath, true);
@@ -349,20 +349,20 @@ namespace Fo76ini
         private void openFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Open all folders, but no duplicates:
-            List<String> folders = new List<String>();
+            List<string> folders = new List<string>();
             foreach (int index in galleryContextMenuItems)
             {
-                String folder = Path.GetDirectoryName(galleryImagePaths[index]);
+                string folder = Path.GetDirectoryName(galleryImagePaths[index]);
                 if (!folders.Contains(folder))
                     folders.Add(folder);
             }
-            foreach (String folder in folders)
+            foreach (string folder in folders)
                 Utils.OpenExplorer(folder);
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<String> files = new List<String>();
+            List<string> files = new List<string>();
             foreach (int index in galleryContextMenuItems)
                 files.Add(galleryImagePaths[index]);
             ClipboardUtils.CutFiles(files);
@@ -370,7 +370,7 @@ namespace Fo76ini
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<String> files = new List<String>();
+            List<string> files = new List<string>();
             foreach (int index in galleryContextMenuItems)
                 files.Add(galleryImagePaths[index]);
             ClipboardUtils.CopyFiles(files);
@@ -381,7 +381,7 @@ namespace Fo76ini
             bool ok = false;
             if (galleryContextMenuItems.Count == 1)
             {
-                String fileName = Path.GetFileName(galleryImagePaths[galleryContextMenuItems[0]]);
+                string fileName = Path.GetFileName(galleryImagePaths[galleryContextMenuItems[0]]);
                 ok = MsgBox.Get("galleryDeleteScreenshot").FormatTitle(fileName).FormatText(fileName).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
             }
             else
@@ -393,7 +393,7 @@ namespace Fo76ini
             {
                 foreach (int index in galleryContextMenuItems)
                 {
-                    String path = galleryImagePaths[index];
+                    string path = galleryImagePaths[index];
                     if (File.Exists(path))
                         File.Delete(path);
                 }

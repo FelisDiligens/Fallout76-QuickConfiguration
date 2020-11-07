@@ -18,15 +18,15 @@ namespace Fo76ini
 
     public class Shared
     {
-        public const String VERSION = "1.9.0";
-        public static String LatestVersion = null;
+        public const string VERSION = "2.0.0";
+        public static string LatestVersion = null;
 
-        public static String OldAppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration");
-        public static String AppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");
+        public static string OldAppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration");
+        public static string AppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");
 
         public static System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-        private static String gamePath = null;
+        private static string gamePath = null;
 
         public static GameEdition GameEdition = GameEdition.Unknown;
 
@@ -47,8 +47,7 @@ namespace Fo76ini
             Shared.GameEdition = gameEdition;
 
             // ManagedMods:
-            ManagedMods.Instance.CopyINILists();
-            ManagedMods.Instance.Unload();
+            // ManagedMods.Instance.CopyINILists();
 
             // IniFiles:
             IniFiles.Instance.ChangeGameEdition(Shared.GameEdition);
@@ -64,7 +63,7 @@ namespace Fo76ini
 
         public static void LoadGamePath ()
         {
-            String gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", Shared.GamePathKey, "");
+            string gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", Shared.GamePathKey, "");
             if (gamePath.Length > 0)
                 Shared.GamePath = gamePath;
         }
@@ -80,7 +79,17 @@ namespace Fo76ini
             Shared.gamePath = "";
         }
 
-        public static String GamePath
+        public static bool ValidateGamePath(string path)
+        {
+            return path != null && path.Trim().Length > 0 && Directory.Exists(path) && Directory.Exists(Path.Combine(path, "Data"));
+        }
+
+        public static bool ValidateGamePath()
+        {
+            return ValidateGamePath(Shared.GamePath);
+        }
+
+        public static string GamePath
         {
             get { return Shared.gamePath; }
             set
@@ -90,32 +99,32 @@ namespace Fo76ini
             }
         }
 
-        public static String GameEditionSuffix
+        public static string GameEditionSuffix
         {
             get { return Shared.GetEditionSuffix(Shared.GameEdition); }
         }
 
-        public static String GamePathKey
+        public static string GamePathKey
         {
             get { return Shared.GetGamePathKey(Shared.GameEdition); }
         }
 
-        public static String GetGamePathKey(int gameEdition)
+        public static string GetGamePathKey(int gameEdition)
         {
             return Shared.GetGamePathKey((GameEdition)gameEdition);
         }
 
-        public static String GetGamePathKey(GameEdition gameEdition)
+        public static string GetGamePathKey(GameEdition gameEdition)
         {
             return "sGamePath" + GetEditionSuffix(gameEdition);
         }
 
-        public static String GetEditionSuffix(int gameEdition)
+        public static string GetEditionSuffix(int gameEdition)
         {
             return Shared.GetEditionSuffix((GameEdition)gameEdition);
         }
 
-        public static String GetEditionSuffix(GameEdition gameEdition)
+        public static string GetEditionSuffix(GameEdition gameEdition)
         {
             switch (gameEdition)
             {
