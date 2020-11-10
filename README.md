@@ -10,7 +10,7 @@
 </p>
   
 <p align="center">
-  <a href="https://github.com/FelisDiligens/Fallout76-QuickConfiguration/releases">
+  <a href="https://github.com/FelisDiligens/Fallout76-QuickConfiguration/releases/latest">
     <img src="https://github.com/FelisDiligens/Fallout76-QuickConfiguration/raw/master/Images/getitfromgithub_button.png"/>
   </a>
   <a href="https://www.nexusmods.com/fallout76/mods/546?tab=files">
@@ -25,7 +25,6 @@
   <a href="https://www.nexusmods.com/fallout76/mods/546?tab=bugs">Bugs</a>
 </p>
 
-_* You need an account to download from NexusMods_
 
 ## Features
 * Install and manage mods.
