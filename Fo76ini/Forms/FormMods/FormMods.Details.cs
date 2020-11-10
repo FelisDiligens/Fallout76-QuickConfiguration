@@ -1,34 +1,34 @@
-﻿using Fo76ini.Mods;
+﻿using Fo76ini.Interface;
+using Fo76ini.Mods;
+using Fo76ini.NexusAPI;
 using Fo76ini.Properties;
-using Newtonsoft.Json.Linq;
+using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Media;
-using System.Net;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fo76ini
 {
+    // TODO: Should we remove bulk editing?
+    // Bulk editing was kinda tacked on and doesn't really work that well anyway.
+    // Removing it might be bad, though. Who knows, maybe someone uses this feature extensively?
     public partial class FormMods : Form
     {
         private ManagedMod changedMod;
 
-        private bool isUpdatingUI = false;
+        private bool isUpdatingSidePanel = false;
         private bool bulk = false;
         private int modCount = 1;
 
         private int editedIndex;
         private List<int> editedIndices;
 
+        /// <summary>
+        /// Sets up elements, adds event handlers, etc.
+        /// </summary>
         private void InitializeDetailControls()
         {
             DropDown.Add("ModInstallAs", new DropDown(
@@ -73,7 +73,6 @@ namespace Fo76ini
         private void pictureBoxCollapseDetails_Click(object sender, EventArgs e)
         {
             if (this.panelModDetails.Visible)
-                //CloseSidePanel();
                 CollapseSidePanel();
             else
                 ExpandSidePanel();
@@ -129,20 +128,12 @@ namespace Fo76ini
 
         public void UpdateSidePanel(ManagedMod mod = null, int modCount = -1)
         {
-            ExpandSidePanel();
-            isUpdatingUI = true;
-
+            // What mod are we editing?
             if (mod != null)
                 this.changedMod = mod.CreateDeepCopy();
 
-            if (this.changedMod.RemoteInfo != null && this.changedMod.RemoteInfo.Thumbnail != "")
-            {
-                string thumbnailPath = Path.Combine(NexusMods.ThumbnailsPath, this.changedMod.RemoteInfo.Thumbnail);
-                if (File.Exists(thumbnailPath))
-                    this.pictureBoxModThumbnail.Image = Image.FromFile(thumbnailPath);
-                else
-                    this.pictureBoxModThumbnail.Image = Resources.bg;
-            }
+            if (this.changedMod == null)
+                return;
 
             if (modCount > 1)
             {
@@ -155,153 +146,100 @@ namespace Fo76ini
                 this.modCount = 1;
             }
 
-            // Not bulk?
-            if (!this.bulk)
+            // Expand side panel:
+            ExpandSidePanel();
+            isUpdatingSidePanel = true;
+
+            // Update thumbnail:
+            if (this.changedMod.RemoteInfo != null && this.changedMod.RemoteInfo.Thumbnail != "")
             {
-                this.labelModArchiveName.Visible = true;
-                this.textBoxModArchiveName.Visible = true;
+                string thumbnailPath = Path.Combine(NexusMods.ThumbnailsPath, this.changedMod.RemoteInfo.Thumbnail);
+                if (File.Exists(thumbnailPath))
+                    this.pictureBoxModThumbnail.Image = Image.FromFile(thumbnailPath);
+                else
+                    this.pictureBoxModThumbnail.Image = Resources.bg;
             }
 
-            this.checkBoxModDetailsEnabled.Checked = this.changedMod.PendingDiskState.Enabled;
+            // Populate values:
+            this.checkBoxModDetailsEnabled.Checked = this.changedMod.Enabled;
+            this.checkBoxFreezeArchive.Checked = this.changedMod.Freeze;
+            this.textBoxModArchiveName.Text = this.changedMod.ArchiveName;
+            this.textBoxModName.Text = this.changedMod.Title;
+            this.textBoxModRootDir.Text = this.changedMod.RootFolder;
+            this.textBoxModURL.Text = this.changedMod.URL;
+            this.textBoxModVersion.Text = this.changedMod.Version;
+
+            switch (this.changedMod.Method)
+            {
+                case ManagedMod.DeploymentMethod.BundledBA2:
+                    this.comboBoxModInstallAs.SelectedIndex = 0;
+                    break;
+                case ManagedMod.DeploymentMethod.SeparateBA2:
+                    this.comboBoxModInstallAs.SelectedIndex = 1;
+                    break;
+                case ManagedMod.DeploymentMethod.Loose:
+                    this.comboBoxModInstallAs.SelectedIndex = 2;
+                    break;
+            }
 
             if (this.modCount > 1)
                 this.labelModTitle.Text = string.Format(Localization.localizedStrings["modDetailsTitleBulkSelected"], this.modCount);
             else
                 this.labelModTitle.Text = this.changedMod.RemoteInfo != null && this.changedMod.RemoteInfo.Title != "" ? this.changedMod.RemoteInfo.Title : this.changedMod.Title;
-            this.textBoxModName.Text = this.changedMod.Title;
-            this.textBoxModRootDir.Text = this.changedMod.PendingDiskState.RootFolder;
-            this.textBoxModURL.Text = this.changedMod.URL;
-            this.textBoxModVersion.Text = this.changedMod.Version;
 
-            switch (this.changedMod.PendingDiskState.Method)
-            {
-                case ManagedMod.DiskState.DeploymentMethod.BundledBA2:
-                    this.comboBoxModInstallAs.SelectedIndex = 0;
+            // Install into visible?
+            this.labelModInstallInto.Visible = this.changedMod.Method == ManagedMod.DeploymentMethod.Loose;
+            this.textBoxModRootDir.Visible = this.changedMod.Method == ManagedMod.DeploymentMethod.Loose;
+            this.buttonModPickRootDir.Visible = this.changedMod.Method == ManagedMod.DeploymentMethod.Loose;
 
-                    //this.checkBoxModBA2Compression.Checked = ManagedMods.Instance.bundledCompression != Archive2.Compression.None;
-                    //this.checkBoxModBA2Compression.Checked = ManagedMods.Instance.bundledTexturesCompression != Archive2.Compression.None;
-                    this.checkBoxFreezeArchive.Visible = false;
+            // Preset visible?
+            this.comboBoxModArchivePreset.Visible = this.changedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2;
+            this.labelModArchivePreset.Visible = this.changedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2;
 
-                    //this.textBoxModArchiveName.Text = "";
-                    this.textBoxModArchiveName.Visible = false;
-                    this.labelModArchiveName.Visible = false;
-                    this.buttonModDetailsSuggestArchiveName.Visible = false;
+            // Archive name visible?
+            this.labelModArchiveName.Visible = this.changedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2;
+            this.textBoxModArchiveName.Visible = this.changedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2;
+            this.buttonModDetailsSuggestArchiveName.Visible = this.changedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2;
 
-                    this.labelModUnfreeze.Visible = false;
-                    this.buttonModUnfreeze.Visible = false;
-
-                    this.comboBoxModArchivePreset.Visible = false;
-                    this.labelModArchivePreset.Visible = false;
-
-                    this.labelModInstallInto.Visible = false;
-                    this.textBoxModRootDir.Visible = false;
-                    this.buttonModPickRootDir.Visible = false;
-                    break;
-                case ManagedMod.DiskState.DeploymentMethod.SeparateBA2:
-                    this.comboBoxModInstallAs.SelectedIndex = 1;
-
-                    this.checkBoxFreezeArchive.Checked = this.changedMod.PendingDiskState.Frozen;
-                    this.checkBoxFreezeArchive.Visible = true;
-                    this.labelModUnfreeze.Visible = this.changedMod.FrozenDiskState.Frozen;
-                    this.buttonModUnfreeze.Visible = this.changedMod.FrozenDiskState.Frozen;
-
-                    this.comboBoxModArchivePreset.Visible = true;
-                    this.labelModArchivePreset.Visible = true;
-
-                    this.textBoxModArchiveName.Text = this.changedMod.PendingDiskState.ArchiveName;
-                    this.textBoxModArchiveName.Visible = true;
-                    this.buttonModDetailsSuggestArchiveName.Visible = true;
-                    this.labelModArchiveName.Visible = true;
-
-                    this.labelModInstallInto.Enabled = false;
-                    this.textBoxModRootDir.Enabled = false;
-                    this.buttonModPickRootDir.Enabled = false;
-                    this.labelModInstallInto.Visible = true;
-                    this.textBoxModRootDir.Visible = true;
-                    this.buttonModPickRootDir.Visible = true;
-                    break;
-                case ManagedMod.DiskState.DeploymentMethod.Loose:
-                    this.comboBoxModInstallAs.SelectedIndex = 2;
-                    this.textBoxModArchiveName.Visible = false;
-                    this.buttonModDetailsSuggestArchiveName.Visible = false;
-                    this.labelModArchiveName.Visible = false;
-                    this.comboBoxModArchivePreset.Visible = false;
-                    this.labelModArchivePreset.Visible = false;
-
-                    this.checkBoxFreezeArchive.Visible = false;
-                    this.labelModUnfreeze.Visible = false;
-                    this.buttonModUnfreeze.Visible = false;
-
-                    this.labelModUnfreeze.Visible = false;
-                    this.buttonModUnfreeze.Visible = false;
-
-                    this.labelModInstallInto.Enabled = true;
-                    this.textBoxModRootDir.Enabled = true;
-                    this.buttonModPickRootDir.Enabled = true;
-                    this.labelModInstallInto.Visible = true;
-                    this.textBoxModRootDir.Visible = true;
-                    this.buttonModPickRootDir.Visible = true;
-                    break;
-            }
+            // Frozen visible?
+            this.checkBoxFreezeArchive.Visible = this.changedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2;
 
             // Is frozen?
-            bool isFrozen = this.changedMod.FrozenDiskState.Frozen;
-            /*this.comboBoxModArchivePreset.Enabled = !isFrozen;
-            this.comboBoxModInstallAs.Enabled = !isFrozen;
-            this.buttonModRepairDDS.Enabled = !isFrozen;*/
-            this.groupBoxModDetailsInstallationOptions.Visible = !isFrozen;
+            this.groupBoxModDetailsInstallationOptions.Visible = !this.changedMod.Frozen;
 
             // Preset
-            if (!isFrozen && this.changedMod.PendingDiskState.Method == ManagedMod.DiskState.DeploymentMethod.SeparateBA2)
+            if (!this.changedMod.Frozen && this.changedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2)
             {
-                bool isCompressed = this.changedMod.PendingDiskState.Compression == ManagedMod.DiskState.ArchiveCompression.Compressed;
-                switch (this.changedMod.PendingDiskState.Format)
+                bool isCompressed = this.changedMod.Compression == ManagedMod.ArchiveCompression.Compressed;
+                switch (this.changedMod.Format)
                 {
-                    case ManagedMod.DiskState.ArchiveFormat.General:
+                    case ManagedMod.ArchiveFormat.General:
                         if (isCompressed)
                             this.comboBoxModArchivePreset.SelectedIndex = 2; // General
                         else
                             this.comboBoxModArchivePreset.SelectedIndex = 4; // Sound FX
                         break;
-                    case ManagedMod.DiskState.ArchiveFormat.Textures:
+                    case ManagedMod.ArchiveFormat.Textures:
                         this.comboBoxModArchivePreset.SelectedIndex = 3;     // Textures
                         break;
-                    case ManagedMod.DiskState.ArchiveFormat.Auto:
+                    case ManagedMod.ArchiveFormat.Auto:
                         this.comboBoxModArchivePreset.SelectedIndex = 1;     // Auto-detect
                         break;
                     default:
                         this.comboBoxModArchivePreset.SelectedIndex = 0;     // Please select
                         break;
                 }
-                if (this.changedMod.PendingDiskState.Compression == ManagedMod.DiskState.ArchiveCompression.Auto)
+                if (this.changedMod.Compression == ManagedMod.ArchiveCompression.Auto)
                     this.comboBoxModArchivePreset.SelectedIndex = 1;
             }
 
             // Bulk?
             this.checkBoxModDetailsEnabled.Visible = !this.bulk;
-            this.labelModName.Visible = !this.bulk;
-            this.textBoxModName.Visible = !this.bulk;
-            this.labelModFolderName.Visible = !this.bulk;
-            this.textBoxModFolderName.Visible = !this.bulk;
-
-            //this.buttonModOpenFolder.Visible = !this.bulk;
-            //this.buttonModRepairDDS.Visible = !this.bulk;
             this.buttonModUnfreeze.Enabled = !this.bulk;
-
-            /*this.separator1.Visible = !this.bulk;
-            this.separator2.Visible = !this.bulk;*/
-
             this.labelModDetailsBulkFrozenModsWarning.Visible = this.bulk;
-            if (this.bulk)
-            {
-                this.labelModArchiveName.Visible = false;
-                this.textBoxModArchiveName.Visible = false;
-                this.buttonModDetailsSuggestArchiveName.Visible = false;
-            }
-
             this.groupBoxModDetailsDetails.Visible = !this.bulk;
 
-            isUpdatingUI = false;
+            isUpdatingSidePanel = false;
         }
 
         /*
@@ -310,20 +248,20 @@ namespace Fo76ini
 
         private void comboBoxModInstallAs_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (isUpdatingUI)
+            if (isUpdatingSidePanel)
                 return;
             switch (this.comboBoxModInstallAs.SelectedIndex)
             {
                 case 0: // Bundled *.ba2 archive
-                    this.changedMod.PendingDiskState.Method = ManagedMod.DiskState.DeploymentMethod.BundledBA2;
-                    this.changedMod.PendingDiskState.Frozen = false;
+                    this.changedMod.Method = ManagedMod.DeploymentMethod.BundledBA2;
+                    this.changedMod.Freeze = false;
                     break;
                 case 1: // Separate *.ba2 archive
-                    this.changedMod.PendingDiskState.Method = ManagedMod.DiskState.DeploymentMethod.SeparateBA2;
+                    this.changedMod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
                     break;
                 case 2: // Loose files
-                    this.changedMod.PendingDiskState.Method = ManagedMod.DiskState.DeploymentMethod.Loose;
-                    this.changedMod.PendingDiskState.Frozen = false;
+                    this.changedMod.Method = ManagedMod.DeploymentMethod.Loose;
+                    this.changedMod.Freeze = false;
                     break;
             }
             UpdateSidePanel();
@@ -331,29 +269,26 @@ namespace Fo76ini
 
         private void comboBoxModArchivePreset_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (isUpdatingUI)
+            if (isUpdatingSidePanel)
                 return;
             switch (this.comboBoxModArchivePreset.SelectedIndex)
             {
                 case 0: // Please select
-                    /*this.changedMod.Format = Mod.ArchiveFormat.Auto;
-                    this.changedMod.Compression = Archive2.Compression.Default;*/
-                    break;
                 case 1: // Auto-detect
-                    this.changedMod.PendingDiskState.Format = ManagedMod.DiskState.ArchiveFormat.Auto;
-                    this.changedMod.PendingDiskState.Compression = ManagedMod.DiskState.ArchiveCompression.Auto;
+                    this.changedMod.Format = ManagedMod.ArchiveFormat.Auto;
+                    this.changedMod.Compression = ManagedMod.ArchiveCompression.Auto;
                     break;
                 case 2: // General
-                    this.changedMod.PendingDiskState.Format = ManagedMod.DiskState.ArchiveFormat.General;
-                    this.changedMod.PendingDiskState.Compression = ManagedMod.DiskState.ArchiveCompression.Compressed;
+                    this.changedMod.Format = ManagedMod.ArchiveFormat.General;
+                    this.changedMod.Compression = ManagedMod.ArchiveCompression.Compressed;
                     break;
                 case 3: // Textures
-                    this.changedMod.PendingDiskState.Format = ManagedMod.DiskState.ArchiveFormat.Textures;
-                    this.changedMod.PendingDiskState.Compression = ManagedMod.DiskState.ArchiveCompression.Compressed;
+                    this.changedMod.Format = ManagedMod.ArchiveFormat.Textures;
+                    this.changedMod.Compression = ManagedMod.ArchiveCompression.Compressed;
                     break;
                 case 4: // Audio
-                    this.changedMod.PendingDiskState.Format = ManagedMod.DiskState.ArchiveFormat.General;
-                    this.changedMod.PendingDiskState.Compression = ManagedMod.DiskState.ArchiveCompression.Uncompressed;
+                    this.changedMod.Format = ManagedMod.ArchiveFormat.General;
+                    this.changedMod.Compression = ManagedMod.ArchiveCompression.Uncompressed;
                     break;
             }
             UpdateSidePanel();
@@ -361,25 +296,25 @@ namespace Fo76ini
 
         private void buttonModPickRootDir_Click(object sender, EventArgs e)
         {
-            this.folderBrowserDialogPickRootDir.SelectedPath = Path.Combine(Shared.GamePath, "Data");
+            this.folderBrowserDialogPickRootDir.SelectedPath = Path.Combine(Shared.GamePath, "Data"); // TODO: Shared.GamePath in FormMods.Details. REMOVE!
             if (this.folderBrowserDialogPickRootDir.ShowDialog() == DialogResult.OK)
             {
                 string rootFolder = Utils.MakeRelativePath(Shared.GamePath, this.folderBrowserDialogPickRootDir.SelectedPath);
                 this.textBoxModRootDir.Text = rootFolder;
-                this.changedMod.PendingDiskState.RootFolder = rootFolder;
+                this.changedMod.RootFolder = rootFolder;
             }
         }
 
         private void textBoxModRootDir_TextChanged(object sender, EventArgs e)
         {
             if (this.textBoxModRootDir.Focused && Directory.Exists(this.textBoxModRootDir.Text))
-                this.changedMod.PendingDiskState.RootFolder = this.textBoxModRootDir.Text;
+                this.changedMod.RootFolder = this.textBoxModRootDir.Text;
         }
 
         private void textBoxModArchiveName_TextChanged(object sender, EventArgs e)
         {
             if (this.textBoxModArchiveName.Focused)
-                this.changedMod.PendingDiskState.ArchiveName = this.textBoxModArchiveName.Text;
+                this.changedMod.ArchiveName = this.textBoxModArchiveName.Text;
         }
 
         private void textBoxModName_TextChanged(object sender, EventArgs e)
@@ -394,17 +329,12 @@ namespace Fo76ini
 
         private void checkBoxModDetailsEnabled_CheckedChanged(object sender, EventArgs e)
         {
-            this.changedMod.PendingDiskState.Enabled = this.checkBoxModDetailsEnabled.Checked;
+            this.changedMod.Enabled = this.checkBoxModDetailsEnabled.Checked;
         }
 
         private void checkBoxFreezeArchive_CheckedChanged(object sender, EventArgs e)
         {
-            this.changedMod.PendingDiskState.Frozen = this.checkBoxFreezeArchive.Checked;
-        }
-
-        private void textBoxModFolderName_TextChanged(object sender, EventArgs e)
-        {
-
+            this.changedMod.Freeze = this.checkBoxFreezeArchive.Checked;
         }
 
         private void textBoxModURL_TextChanged(object sender, EventArgs e)
@@ -456,8 +386,8 @@ namespace Fo76ini
 
         private void buttonModDetailsSuggestArchiveName_Click(object sender, EventArgs e)
         {
-            this.changedMod.PendingDiskState.ArchiveName = Utils.GetValidFileName(this.changedMod.Title, ".ba2");
-            this.textBoxModArchiveName.Text = this.changedMod.PendingDiskState.ArchiveName;
+            this.changedMod.ArchiveName = Utils.GetValidFileName(this.changedMod.Title, ".ba2");
+            this.textBoxModArchiveName.Text = this.changedMod.ArchiveName;
         }
 
         private void buttonModDetailsApply_Click(object sender, EventArgs e)

@@ -17,6 +17,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Fo76ini;
 
 namespace Fo76ini_Updater
 {
@@ -593,8 +594,8 @@ namespace Fo76ini_Updater
 
         private void buttonShowLogFile_Click(object sender, EventArgs e)
         {
-            if (File.Exists(log.Path))
-                Utils.OpenNotepad(log.Path);
+            if (File.Exists(log.GetFilePath()))
+                Utils.OpenNotepad(log.GetFilePath());
         }
 
 

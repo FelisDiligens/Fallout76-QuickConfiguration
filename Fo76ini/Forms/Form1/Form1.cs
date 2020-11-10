@@ -1,16 +1,21 @@
-﻿using Fo76ini.Forms.FormWhatsNew;
-using Fo76ini.Mods;
+﻿using Fo76ini.Forms.FormNexusAPI;
+using Fo76ini.Forms.FormProfiles;
+using Fo76ini.Forms.FormSplash;
+using Fo76ini.Forms.FormWhatsNew;
+using Fo76ini.Interface;
+using Fo76ini.NexusAPI;
+using Fo76ini.Profiles;
 using Fo76ini.Properties;
-using IniParser.Model;
+using Fo76ini.Tweaks;
+using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Media;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Fo76ini
@@ -185,7 +190,6 @@ namespace Fo76ini
         /// <summary>
         /// Disable scroll wheel on UI elements (NumericUpDown and ComboBox) to prevent the user from accidentally changing values
         /// </summary>
-        /// <param name="control"></param>
         private void PreventChangeOnMouseWheelForAllElements(Control control)
         {
             foreach (Control subControl in control.Controls)
@@ -203,45 +207,13 @@ namespace Fo76ini
         private void Form1_Load(object sender, EventArgs e)
         {
             // Create folders, if not present:
-            if (!Directory.Exists(Shared.AppConfigFolder))
-                Directory.CreateDirectory(Shared.AppConfigFolder);
-
-            if (!Directory.Exists(Localization.languageFolder))
-                Directory.CreateDirectory(Localization.languageFolder);
-
-            // Create note to old config folder to inform users, if present:
-            if (Directory.Exists(Shared.OldAppConfigFolder))
-            {
-                try
-                {
-                    using (StreamWriter f = new StreamWriter(Path.Combine(Shared.OldAppConfigFolder, "READ ME - CONFIG FOLDER HAS BEEN MOVED.txt")))
-                    {
-                        f.Write(
-                            "Hi,\n\n"+
-                            "the entire configuration folder has been moved from\n" +
-                            "C:\\Users\\USERNAME\\Documents\\Fallout 76 Quick Configuration\\\n" +
-                            "to\n" +
-                            "C:\\Users\\USERNAME\\AppData\\Local\\Fallout 76 Quick Configuration\\\n" +
-                            "due to write-permission issues.\n\n" +
-                            "Therefore changes to these files won't have any effect.\n" +
-                            "It's safe to delete this folder, if you don't need the log files.\n\n" +
-                            "Users reported that the tool is crashing for them, because it can't write to the aforementioned folder.\n" +
-                            "So I moved it in the hope that it'll fix the issue, at least in part.\n" +
-                            "Also, it's a better place anyway, as the Documents folder is supposed to contain documents. (Who knew?)\n\n" +
-                            "Anyways, happy hunting!"
-                        );
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show(@"All configuration files have been moved to 'C:\Users\<yourname>\AppData\Local\Fallout 76 Quick Configuration'. Delete the old folder to stop this message from displaying.", "Old configuration path found");
-                }
-            }
+            Directory.CreateDirectory(Shared.AppConfigFolder);
+            Directory.CreateDirectory(Localization.languageFolder);
 
             this.formMods = new FormMods();
 
             // Load config.ini
-            IniFiles.Instance.LoadConfig();
+            IniFiles.LoadConfig();
 
             // Load the languages
             Localization.AssignDropBox(this.comboBoxLanguage);
@@ -252,7 +224,12 @@ namespace Fo76ini
             try
             {
                 Shared.LoadGameEdition();
-                IniFiles.Instance.LoadGameInis();
+                Shared.LoadGamePath();
+                // TODO: Properly implement GameInstance, plz.
+                GameInstance game = new GameInstance();
+                game.GamePath = Shared.GamePath;
+                game.Edition = Shared.GameEdition;
+                IniFiles.Load(game);
             }
             catch (IniParser.Exceptions.ParsingException exc)
             {
@@ -262,7 +239,9 @@ namespace Fo76ini
             }
             catch (FileNotFoundException exc)
             {
-                MsgBox.Get("runGameToGenerateINI").FormatTitle(IniFiles.Instance.GetIniName(IniFile.F76), IniFiles.Instance.GetIniName(IniFile.F76Prefs)).Show(MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // TODO: Format changed, msgbox broken
+                //MsgBox.Get("runGameToGenerateINI").FormatTitle(IniFiles.Instance.GetIniName(LegacyIniFile.F76), IniFiles.Instance.GetIniName(LegacyIniFile.F76Prefs)).Show(MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MsgBox.Get("runGameToGenerateINI").Show(MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
                 return;
             }
@@ -272,8 +251,9 @@ namespace Fo76ini
             LoadNuclearWinterConfiguration();
 
             // Load mods:
-            ManagedMods.Instance.Load();
+            /*ManagedMods.Instance.Load();*/
             NexusMods.Load();
+            this.formMods.LoadMods(Shared.GamePath); // TODO: Uhh...
             this.formMods.UpdateUI();
 
             // Account profiles:
@@ -282,13 +262,15 @@ namespace Fo76ini
                 rbutton.CheckedChanged += new System.EventHandler(this.radioButtonAccount_CheckedChanged);
 
             // Setup UI:
-            CheckAllINIValues();
-            ColorIni2Ui();
             UpdateCameraPositionUI();
             AddAllEventHandler();
             uiLoader.Update();
 
-            IniFiles.Instance.LoadWindowState("Form1", this);
+            // TODO: LinkedTweaks init
+            LinkControlsToTweaks();
+            LinkedTweaks.LoadValues();
+
+            Configuration.LoadWindowState("Form1", this);
 
             // Remove updater, if present:
             try
@@ -318,18 +300,18 @@ namespace Fo76ini
             CheckVersion();
 
             // Open mod manager on launch:
-            if (Configuration.bOpenModManagerOnLaunch)
-                this.formMods.OpenUI();
+            /*if (IniFiles.Config.GetBool("Preferences", "bOpenModManagerOnLaunch", false))
+                this.formMods.OpenUI();*/
 
             // Display "What's new?" dialog
-            if (!Configuration.bIgnoreUpdates)
+            if (!IniFiles.Config.GetBool("Preferences", "bIgnoreUpdates", false))
                 ShowWhatsNewConditionally();
         }
 
         private void ShowWhatsNewConditionally()
         {
-            if (!Configuration.bDisableWhatsNew &&
-                Utils.CompareVersions(Shared.VERSION, IniFiles.Instance.GetString(IniFile.Config, "General", "sPreviousVersion", "1.0.0")) > 0 &&
+            if (!IniFiles.Config.GetBool("Preferences", "bDisableWhatsNew", false) &&
+                Utils.CompareVersions(Shared.VERSION, IniFiles.Config.GetString("General", "sPreviousVersion", "1.0.0")) > 0 &&
                 (Shared.LatestVersion == null || Utils.CompareVersions(Shared.LatestVersion, Shared.VERSION) == 0))
                 ShowWhatsNew();
         }
@@ -353,9 +335,9 @@ namespace Fo76ini
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                IniFiles.Instance.Set(IniFile.Config, "General", "sPreviousVersion", Shared.VERSION);
-                IniFiles.Instance.SaveWindowState("Form1", this);
-                if (Configuration.bAutoApply)
+                IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
+                Configuration.SaveWindowState("Form1", this);
+                if (IniFiles.Config.GetBool("Preferences", "bAutoApply", false))
                     ApplyChanges();
             }
         }
@@ -431,11 +413,11 @@ namespace Fo76ini
             this.labelConfigVersion.Text = Shared.VERSION;
             /*using (StreamWriter f = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration", "VERSION")))
                 f.Write(VERSION);*/
-            IniFiles.Instance.Set(IniFile.Config, "General", "sVersion", Shared.VERSION);
+            IniFiles.Config.Set("General", "sVersion", Shared.VERSION);
 
             panelUpdate.Visible = false;
 
-            if (!force && Configuration.bIgnoreUpdates)
+            if (!force && IniFiles.Config.GetBool("Preferences", "bIgnoreUpdates", false))
             {
                 this.labelConfigVersion.ForeColor = Color.Black;
                 return;
@@ -455,105 +437,6 @@ namespace Fo76ini
          * *.ini values
          **************************************************************
          */
-
-        #region *.ini values integrity check
-
-        private void ExpectBool(List<string> errors, string section, string key)
-        {
-            if (!IniFiles.Instance.Exists(section, key))
-                return;
-            if (!IniFiles.Instance.ExpectBool(section, key))
-                errors.Add($"[{section}] {key}: expected boolean (0 or 1), got {IniFiles.Instance.GetString(section, key, "")}");
-        }
-
-        private void ExpectInt(List<string> errors, string section, string key)
-        {
-            if (!IniFiles.Instance.Exists(section, key))
-                return;
-            if (!IniFiles.Instance.ExpectInt(section, key))
-                errors.Add($"[{section}] {key}: expected integer, got {IniFiles.Instance.GetString(section, key)}");
-        }
-
-        private void ExpectUInt(List<string> errors, string section, string key)
-        {
-            if (!IniFiles.Instance.Exists(section, key))
-                return;
-            if (!IniFiles.Instance.ExpectUInt(section, key))
-                errors.Add($"[{section}] {key}: expected unsigned integer, got {IniFiles.Instance.GetString(section, key)}");
-        }
-
-        private void ExpectFloat(List<string> errors, string section, string key)
-        {
-            if (!IniFiles.Instance.Exists(section, key))
-                return;
-            if (!IniFiles.Instance.ExpectFloat(section, key))
-                errors.Add($"[{section}] {key}: expected floating point number, got {IniFiles.Instance.GetString(section, key)}");
-        }
-
-        private void CheckAllINIValues()
-        {
-            List<string> errors = new List<string>();
-
-            /*
-             * Check values:
-             */
-            ExpectBool(errors, "General", "bSteamEnabled");
-            // TODO: Add more checks
-
-            ExpectFloat(errors, "GamePlay", "fFloatingQuestMarkersDistance");
-            ExpectFloat(errors, "Display", "fConversationHistorySize");
-            ExpectFloat(errors, "MAIN", "fHUDOpacity");
-            ExpectFloat(errors, "Display", "fDirShadowDistance");
-            ExpectFloat(errors, "LOD", "fLODFadeOutMultObjects");
-            ExpectFloat(errors, "LOD", "fLODFadeOutMultItems");
-            ExpectFloat(errors, "LOD", "fLODFadeOutMultActors");
-            ExpectFloat(errors, "Grass", "fGrassStartFadeDistance");
-            ExpectFloat(errors, "Display", "fTAAPostOverlay");
-            ExpectFloat(errors, "Display", "fTAAPostSharpen");
-            ExpectFloat(errors, "AudioMenu", "fAudioMasterVolume");
-            ExpectFloat(errors, "AudioMenu", "fVal0");
-            ExpectFloat(errors, "AudioMenu", "fVal1");
-            ExpectFloat(errors, "AudioMenu", "fVal2");
-            ExpectFloat(errors, "AudioMenu", "fVal3");
-            ExpectFloat(errors, "AudioMenu", "fVal4");
-            ExpectFloat(errors, "AudioMenu", "fVal5");
-            ExpectFloat(errors, "AudioMenu", "fVal6");
-            ExpectFloat(errors, "Controls", "fMouseHeadingXScale");
-            ExpectFloat(errors, "Controls", "fMouseHeadingSensitivity");
-            ExpectFloat(errors, "Interface", "fLockPositionY");
-            ExpectFloat(errors, "Interface", "fUIPowerArmorGeometry_TranslateZ");
-            ExpectFloat(errors, "Interface", "fUIPowerArmorGeometry_TranslateY");
-            ExpectFloat(errors, "Main", "fIronSightsFOVRotateMult");
-            ExpectFloat(errors, "Display", "fDefault1stPersonFOV");
-            ExpectFloat(errors, "Display", "fDefaultWorldFOV");
-            ExpectFloat(errors, "Display", "fDefaultFOV");
-            ExpectFloat(errors, "Camera", "f3rdPersonAimFOV");
-            ExpectFloat(errors, "Camera", "fVanityModeMinDist");
-            ExpectFloat(errors, "Camera", "fVanityModeMaxDist");
-            ExpectFloat(errors, "Camera", "fPitchZoomOutMaxDist");
-            ExpectFloat(errors, "Camera", "f1st3rdSwitchDelay");
-
-            ExpectUInt(errors, "Display", "iSize W");
-            ExpectUInt(errors, "Display", "iSize H");
-            ExpectUInt(errors, "Interface", "uHUDActiveEffectWidget");
-            ExpectUInt(errors, "Display", "uiOrthoShadowFilter");
-            ExpectUInt(errors, "Voice", "uTransmitPreference");
-            ExpectUInt(errors, "Display", "uPipboyTargetWidth");
-            ExpectUInt(errors, "Display", "uPipboyTargetHeight");
-
-            ExpectInt(errors, "Display", "iScreenShotIndex");
-            ExpectInt(errors, "Display", "iShadowMapResolution");
-            ExpectInt(errors, "Display", "iDirShadowSplits");
-            ExpectInt(errors, "Display", "iPresentInterval");
-            ExpectInt(errors, "Display", "iMaxAnisotropy");
-
-            if (errors.Count > 0)
-            {
-                MsgBox.Get("iniValuesInvalid").FormatText(errors.Count.ToString(), string.Join("\n", errors.ToArray())).Show(MessageBoxIcon.Warning);
-            }
-        }
-
-        #endregion
 
         #region Linking *.ini values to control elements
         private void AddAllEventHandler()
@@ -593,26 +476,18 @@ namespace Fo76ini
             UILoader.LinkSlider(this.trackBarPhotomodeRange, this.numericUpDownPhotomodeRange, 1);
 
 
+#if false
             /*
              ********************************************
              * Link control elements:
              ********************************************
              */
 
-            // ALTERNATIVE MODE
-            bool alternativeMode = Configuration.bAlternativeINIMode;
-            this.checkBoxAlternativeINIMode.Checked = alternativeMode;
-            IniFiles.Instance.fixCustomIniDuplicateValues = IniFiles.Instance.fixCustomIniDuplicateValues && !alternativeMode; // Disable a fix, if alternative mode is enabled.
-
-
             // Make *.ini files read-only
             uiLoader.LinkCustom(this.checkBoxReadOnly,
-                IniFiles.Instance.AreINIsReadOnly,
-                IniFiles.Instance.SetINIsReadOnly
+                IniFiles.AreINIsReadOnly,
+                IniFiles.SetINIsReadOnly
             );
-
-            // Deny NTFS write-permission
-            uiLoader.LinkBool(this.checkBoxDenyNTFSWritePermission, IniFile.Config, "Preferences", "bDenyNTFSWritePermission", false);
 
             /*
              * Settings
@@ -648,7 +523,7 @@ namespace Fo76ini
             uiLoader.LinkList(
                 new RadioButton[] { this.radioButtonLaunchViaLink, this.radioButtonLaunchViaExecutable },
                 new string[] { "1", "2" },
-                IniFile.Config, "Preferences", "uLaunchOption",
+                LegacyIniFile.Config, "Preferences", "uLaunchOption",
                 "1"
             );
 
@@ -656,36 +531,37 @@ namespace Fo76ini
             //uiLoader.LinkBool(this.checkBoxNWMode, IniFile.Config, "Preferences", "bNWMode", false);
 
             // Close the tool when the game is launched
-            uiLoader.LinkBool(this.checkBoxQuitOnGameLaunch, IniFile.Config, "Preferences", "bQuitOnLaunch", false);
+            // [ITweak added]
+            uiLoader.LinkBool(this.checkBoxQuitOnGameLaunch, LegacyIniFile.Config, "Preferences", "bQuitOnLaunch", false);
 
             // Automatically apply changes when tool is closed or game is launched
-            uiLoader.LinkBool(this.checkBoxAutoApply, IniFile.Config, "Preferences", "bAutoApply", false);
+            uiLoader.LinkBool(this.checkBoxAutoApply, LegacyIniFile.Config, "Preferences", "bAutoApply", false);
 
             // Don't ask me, when "Apply" is clicked.
-            uiLoader.LinkBool(this.checkBoxSkipBackupQuestion, IniFile.Config, "Preferences", "bSkipBackupQuestion", false);
+            uiLoader.LinkBool(this.checkBoxSkipBackupQuestion, LegacyIniFile.Config, "Preferences", "bSkipBackupQuestion", false);
 
             // Open mod manager when tool is launched.
-            uiLoader.LinkBool(this.checkBoxOpenManageModsOnLaunch, IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false);
+            uiLoader.LinkBool(this.checkBoxOpenManageModsOnLaunch, LegacyIniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false);
 
             // Don't check for updates on startup.
-            uiLoader.LinkBool(this.checkBoxIgnoreUpdates, IniFile.Config, "Preferences", "bIgnoreUpdates", false);
+            uiLoader.LinkBool(this.checkBoxIgnoreUpdates, LegacyIniFile.Config, "Preferences", "bIgnoreUpdates", false);
 
             // Does the user use multiple game editions when modding?
-            uiLoader.LinkBool(this.checkBoxMultipleGameEditionsUsed, IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false);
+            uiLoader.LinkBool(this.checkBoxMultipleGameEditionsUsed, LegacyIniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false);
 
             // Play alert sound:
-            uiLoader.LinkBool(this.checkBoxPlayNotificationSound, IniFile.Config, "Preferences", "bPlayNotificationSound", true);
+            uiLoader.LinkBool(this.checkBoxPlayNotificationSound, LegacyIniFile.Config, "Preferences", "bPlayNotificationSound", true);
 
 
             // NW: Fallout76Custom.ini options
-            uiLoader.LinkBool(this.radioButtonNWRenameINI, this.radioButtonNWRemoveLists, IniFile.Config, "NuclearWinter", "bRenameCustomINI", true);
+            uiLoader.LinkBool(this.radioButtonNWRenameINI, this.radioButtonNWRemoveLists, LegacyIniFile.Config, "NuclearWinter", "bRenameCustomINI", true);
 
             // NW: *.dll options
-            uiLoader.LinkBool(this.checkBoxNWRenameDLL, IniFile.Config, "NuclearWinter", "bRenameDLLs", true);
+            uiLoader.LinkBool(this.checkBoxNWRenameDLL, LegacyIniFile.Config, "NuclearWinter", "bRenameDLLs", true);
 
             // NW: Mod options
-            uiLoader.LinkBool(this.checkBoxNWAutoDeployMods, IniFile.Config, "NuclearWinter", "bAutoDeployMods", false);
-            uiLoader.LinkBool(this.checkBoxNWAutoDisableMods, IniFile.Config, "NuclearWinter", "bAutoDisableMods", false);
+            uiLoader.LinkBool(this.checkBoxNWAutoDeployMods, LegacyIniFile.Config, "NuclearWinter", "bAutoDeployMods", false);
+            uiLoader.LinkBool(this.checkBoxNWAutoDisableMods, LegacyIniFile.Config, "NuclearWinter", "bAutoDisableMods", false);
 
 
             /*
@@ -693,118 +569,115 @@ namespace Fo76ini
              */
 
             // Credentials
-            uiLoader.LinkString(this.textBoxUserName, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Login", "s76UserName", "");
-            uiLoader.LinkString(this.textBoxPassword, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Login", "s76Password", "");
+            // TODO: Rewrite Login Profiles
+            uiLoader.LinkString(this.textBoxUserName, LegacyIniFile.F76Custom, "Login", "s76UserName", "");
+            uiLoader.LinkString(this.textBoxPassword, LegacyIniFile.F76Custom, "Login", "s76Password", "");
 
             uiLoader.LinkList(
                 this.accountProfileRadioButtons,
                 new string[] { "1", "2", "3", "4", "5", "6", "7", "8" },
-                IniFile.Config, "Login", "uActiveAccountProfile",
+                LegacyIniFile.Config, "Login", "uActiveAccountProfile",
                 "1"
             );
 
             // Disable Steam:
-            uiLoader.LinkBoolNegated(this.checkBoxDisableSteam, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "General", "bSteamEnabled", true);
+            // [ITweak added]
+            uiLoader.LinkBoolNegated(this.checkBoxDisableSteam, LegacyIniFile.F76Custom, "General", "bSteamEnabled", true);
 
             // Automatically sign-in:
-            uiLoader.LinkBool(this.checkBoxAutoSignin, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Login", "bAutoSignin", false);
+            uiLoader.LinkBool(this.checkBoxAutoSignin, LegacyIniFile.F76Custom, "Login", "bAutoSignin", false);
 
             // Play intro videos
             uiLoader.LinkCustom(this.checkBoxIntroVideos,
                 () => {
-                    string sIntroSequence = IniFiles.Instance.GetString("General", "sIntroSequence", "BGSLogo4k.bk2").Trim();
+                    string sIntroSequence = IniFiles.GetString("General", "sIntroSequence", "BGSLogo4k.bk2").Trim();
                     return sIntroSequence.Length > 0 && sIntroSequence != "0";
                 },
                 (value) => {
                     if (value)
                     {
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "General", "sIntroSequence");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "General", "uMainMenuDelayBeforeAllowSkip");
-                        if (alternativeMode)
-                        {
-                            IniFiles.Instance.Set(IniFile.F76, "General", "sIntroSequence", true);
-                            IniFiles.Instance.Set(IniFile.F76, "General", "uMainMenuDelayBeforeAllowSkip", 5000);
-                        }
+                        IniFiles.F76Custom.Remove("General", "sIntroSequence");
+                        IniFiles.F76Custom.Remove("General", "uMainMenuDelayBeforeAllowSkip");
                     }
                     else
                     {
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "General", "sIntroSequence", "");
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "General", "uMainMenuDelayBeforeAllowSkip", "0");
+                        IniFiles.F76Custom.Set("General", "sIntroSequence", "");
+                        IniFiles.F76Custom.Set("General", "uMainMenuDelayBeforeAllowSkip", "0");
                     }
                 }
             );
 
             // Play music in main menu
-            uiLoader.LinkBool(this.checkBoxMainMenuMusic, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "General", "bPlayMainMenuMusic", true);
+            uiLoader.LinkBool(this.checkBoxMainMenuMusic, LegacyIniFile.F76Custom, "General", "bPlayMainMenuMusic", true);
 
             // Show splash screen with news on startup
-            uiLoader.LinkBoolNegated(this.checkBoxShowSplash, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "General", "bSkipSplash", false);
+            uiLoader.LinkBoolNegated(this.checkBoxShowSplash, LegacyIniFile.F76Custom, "General", "bSkipSplash", false);
 
             // General subtitles
-            uiLoader.LinkBool(this.checkBoxGeneralSubtitles, IniFile.F76Prefs, "Interface", "bGeneralSubtitles", false);
+            uiLoader.LinkBool(this.checkBoxGeneralSubtitles, LegacyIniFile.F76Prefs, "Interface", "bGeneralSubtitles", false);
 
             // Dialogue subtitles
-            uiLoader.LinkBool(this.checkBoxDialogueSubtitles, IniFile.F76Prefs, "Interface", "bDialogueSubtitles", false);
+            uiLoader.LinkBool(this.checkBoxDialogueSubtitles, LegacyIniFile.F76Prefs, "Interface", "bDialogueSubtitles", false);
 
             // Dialogue history
-            uiLoader.LinkBool(this.checkBoxDialogueHistory, IniFile.F76Prefs, "MAIN", "bShowDialogueHistory", false);
+            uiLoader.LinkBool(this.checkBoxDialogueHistory, LegacyIniFile.F76Prefs, "MAIN", "bShowDialogueHistory", false);
 
             // Show damage numbers in nuclear winter
-            uiLoader.LinkBool(this.checkBoxShowDamageNumbersNW, IniFile.F76Prefs, "NuclearWinter", "bShowDamageNumbers", true);
+            uiLoader.LinkBool(this.checkBoxShowDamageNumbersNW, LegacyIniFile.F76Prefs, "NuclearWinter", "bShowDamageNumbers", true);
 
             // Show damage numbers in adventure mode
-            uiLoader.LinkBool(this.checkBoxShowDamageNumbersA, IniFile.F76Prefs, "Adventure", "bShowDamageNumbers", false);
+            uiLoader.LinkBool(this.checkBoxShowDamageNumbersA, LegacyIniFile.F76Prefs, "Adventure", "bShowDamageNumbers", false);
 
             // Show item rarity colors
-            uiLoader.LinkBool(this.checkBoxItemRarityColorsNW, IniFile.F76Prefs, "NuclearWinter", "bEnableItemRarityColors", true);
+            uiLoader.LinkBool(this.checkBoxItemRarityColorsNW, LegacyIniFile.F76Prefs, "NuclearWinter", "bEnableItemRarityColors", true);
 
             // Show Public Team Notifications
-            uiLoader.LinkBool(this.checkBoxShowPublicTeamNotifications, IniFile.F76Prefs, "GamePlay", "bShowPublicTeamNotifications", true);
+            uiLoader.LinkBool(this.checkBoxShowPublicTeamNotifications, LegacyIniFile.F76Prefs, "GamePlay", "bShowPublicTeamNotifications", true);
 
             // Show Floating Quest Markers
-            uiLoader.LinkBool(this.checkBoxShowFloatingQuestMarkers, IniFile.F76Prefs, "GamePlay", "bShowFloatingQuestMarkers", true);
+            uiLoader.LinkBool(this.checkBoxShowFloatingQuestMarkers, LegacyIniFile.F76Prefs, "GamePlay", "bShowFloatingQuestMarkers", true);
 
             // Show Floating Quest Text
-            uiLoader.LinkBool(this.checkBoxShowFloatingQuestText, IniFile.F76Prefs, "GamePlay", "bShowFloatingQuestText", true);
+            uiLoader.LinkBool(this.checkBoxShowFloatingQuestText, LegacyIniFile.F76Prefs, "GamePlay", "bShowFloatingQuestText", true);
 
             // Floating Quest Markers Draw Distance
-            uiLoader.LinkFloat(this.numFloatingQuestMarkersDistance, IniFile.F76Prefs, "GamePlay", "fFloatingQuestMarkersDistance", 100.0f);
+            uiLoader.LinkFloat(this.numFloatingQuestMarkersDistance, LegacyIniFile.F76Prefs, "GamePlay", "fFloatingQuestMarkersDistance", 100.0f);
 
             // Show compass
-            uiLoader.LinkBool(this.checkBoxShowCompass, IniFile.F76Prefs, "Interface", "bShowCompass", true);
+            uiLoader.LinkBool(this.checkBoxShowCompass, LegacyIniFile.F76Prefs, "Interface", "bShowCompass", true);
 
             // Show crosshair
-            uiLoader.LinkBool(this.checkBoxShowCrosshair, IniFile.F76Prefs, "MAIN", "bCrosshairEnabled", true);
+            uiLoader.LinkBool(this.checkBoxShowCrosshair, LegacyIniFile.F76Prefs, "MAIN", "bCrosshairEnabled", true);
 
             // Enable Power Armor HUD
-            uiLoader.LinkBool(this.checkBoxEnablePowerArmorHUD, IniFile.F76Prefs, "MAIN", "bEnablePowerArmorHUD", true);
+            uiLoader.LinkBool(this.checkBoxEnablePowerArmorHUD, LegacyIniFile.F76Prefs, "MAIN", "bEnablePowerArmorHUD", true);
 
             // Show Other Players' Names
-            uiLoader.LinkBool(this.checkBoxShowOtherPlayersNames, IniFile.F76Prefs, "Display", "bShowOtherPlayersNames", true);
+            uiLoader.LinkBool(this.checkBoxShowOtherPlayersNames, LegacyIniFile.F76Prefs, "Display", "bShowOtherPlayersNames", true);
 
             // Quests:
-            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackMain, IniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackMain", true);
-            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackSide, IniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackSide", true);
-            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackMisc, IniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackMisc", true);
-            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackEvent, IniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackEvent", true);
-            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackDaily, IniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackOther", false);
+            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackMain, LegacyIniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackMain", true);
+            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackSide, LegacyIniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackSide", true);
+            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackMisc, LegacyIniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackMisc", true);
+            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackEvent, LegacyIniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackEvent", true);
+            uiLoader.LinkBool(this.checkBoxEnableQuestAutoTrackDaily, LegacyIniFile.F76Prefs, "MAIN", "bEnableQuestAutoTrackOther", false);
 
             // Conversation History Size
-            uiLoader.LinkFloat(this.numConversationHistorySize, IniFile.F76Prefs, "Display", "fConversationHistorySize", 4.0f);
+            uiLoader.LinkFloat(this.numConversationHistorySize, LegacyIniFile.F76Prefs, "Display", "fConversationHistorySize", 4.0f);
 
             // HUD Opacity
-            uiLoader.LinkFloat(this.numHUDOpacity, IniFile.F76Prefs, "MAIN", "fHUDOpacity", 1.0f);
+            uiLoader.LinkFloat(this.numHUDOpacity, LegacyIniFile.F76Prefs, "MAIN", "fHUDOpacity", 1.0f);
 
             // Show active effects on HUD
             uiLoader.LinkList(
                 this.comboBoxShowActiveEffectsOnHUD,
                 new string[] { "0", "1", "2" },
-                IniFile.F76Prefs, "Interface", "uHUDActiveEffectWidget",
+                LegacyIniFile.F76Prefs, "Interface", "uHUDActiveEffectWidget",
                 "2", 2
             );
 
             // Screenshot index
-            uiLoader.LinkInt(this.numScreenshotIndex, IniFile.F76Prefs, "Display", "iScreenShotIndex", 0);
+            uiLoader.LinkInt(this.numScreenshotIndex, LegacyIniFile.F76Prefs, "Display", "iScreenShotIndex", 0);
 
 
             /*
@@ -814,9 +687,9 @@ namespace Fo76ini
             // Display mode
             uiLoader.LinkCustom(this.comboBoxDisplayMode,
                 () => {
-                    bool bFullScreen = IniFiles.Instance.GetBool("Display", "bFull Screen", true);
-                    bool bBorderless = IniFiles.Instance.GetBool("Display", "bBorderless", true);
-                    bool bMaximizeWindow = IniFiles.Instance.GetBool("Display", "bMaximizeWindow", true);
+                    bool bFullScreen = IniFiles.GetBool("Display", "bFull Screen", true);
+                    bool bBorderless = IniFiles.GetBool("Display", "bBorderless", true);
+                    bool bMaximizeWindow = IniFiles.GetBool("Display", "bMaximizeWindow", true);
 
                     if (bFullScreen)
                         return 0; // Fullscreen
@@ -852,17 +725,17 @@ namespace Fo76ini
                             bMaximizeWindow = false;
                             break;
                     }
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "bFull Screen", bFullScreen);
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "bBorderless", bBorderless);
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "bMaximizeWindow", bMaximizeWindow);
+                    IniFiles.F76Prefs.Set("Display", "bFull Screen", bFullScreen);
+                    IniFiles.F76Prefs.Set("Display", "bBorderless", bBorderless);
+                    IniFiles.F76Prefs.Set("Display", "bMaximizeWindow", bMaximizeWindow);
                 }
             );
 
             // Resolution
             uiLoader.LinkCustom(this.comboBoxResolution,
                 () => {
-                    int width = IniFiles.Instance.GetInt("Display", "iSize W", 1920);
-                    int height = IniFiles.Instance.GetInt("Display", "iSize H", 1080);
+                    int width = IniFiles.GetInt("Display", "iSize W", 1920);
+                    int height = IniFiles.GetInt("Display", "iSize H", 1080);
                     int resIndex = Array.IndexOf(DropDown.Get("Resolution").Items.ToArray(), $"{width}x{height}");
                     this.numCustomResW.Value = width;
                     this.numCustomResH.Value = height;
@@ -878,8 +751,8 @@ namespace Fo76ini
                         string[] splitted = this.comboBoxResolution.SelectedItem.ToString().Split(new string[] { "x" }, StringSplitOptions.RemoveEmptyEntries);
                         int width = Convert.ToInt32(splitted[0]);
                         int height = Convert.ToInt32(splitted[1]);
-                        IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "iSize W", width);
-                        IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "iSize H", height);
+                        IniFiles.F76Prefs.Set("Display", "iSize W", width);
+                        IniFiles.F76Prefs.Set("Display", "iSize H", height);
                         this.numCustomResW.Value = width;
                         this.numCustomResH.Value = height;
                     }
@@ -887,8 +760,8 @@ namespace Fo76ini
             );
 
             // Custom Resolution
-            uiLoader.LinkInt(this.numCustomResW, IniFile.F76Prefs, "Display", "iSize W", 1920);
-            uiLoader.LinkInt(this.numCustomResH, IniFile.F76Prefs, "Display", "iSize H", 1080);
+            uiLoader.LinkInt(this.numCustomResW, LegacyIniFile.F76Prefs, "Display", "iSize W", 1920);
+            uiLoader.LinkInt(this.numCustomResH, LegacyIniFile.F76Prefs, "Display", "iSize H", 1080);
 
             // Hide (or show) custom resolution on load:
             uiLoader.Add(() =>
@@ -899,37 +772,31 @@ namespace Fo76ini
             });
 
             // Top most window
-            uiLoader.LinkBool(this.checkBoxTopMostWindow, IniFile.F76Prefs, "Display", "bTopMostWindow", false);
+            uiLoader.LinkBool(this.checkBoxTopMostWindow, LegacyIniFile.F76Prefs, "Display", "bTopMostWindow", false);
 
             // Always active
-            uiLoader.LinkBool(this.checkBoxAlwaysActive, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "General", "bAlwaysActive", true);
+            uiLoader.LinkBool(this.checkBoxAlwaysActive, LegacyIniFile.F76Custom, "General", "bAlwaysActive", true);
 
             // Fix HUD for 5:4 and 4:3 screens
             uiLoader.LinkCustom(this.checkBoxFixHUDFor5_4and4_3,
                 () => {
                     return
-                        Math.Abs(IniFiles.Instance.GetFloat("Interface", "fLockPositionY", 0f) - 100f) < 0.1 &&
-                        Math.Abs(IniFiles.Instance.GetFloat("Interface", "fUIPowerArmorGeometry_TranslateZ", 0f) - -18.5f) < 0.1 &&
-                        Math.Abs(IniFiles.Instance.GetFloat("Interface", "fUIPowerArmorGeometry_TranslateY", 0f) - 460f) < 0.1;
+                        Math.Abs(IniFiles.GetFloat("Interface", "fLockPositionY", 0f) - 100f) < 0.1 &&
+                        Math.Abs(IniFiles.GetFloat("Interface", "fUIPowerArmorGeometry_TranslateZ", 0f) - -18.5f) < 0.1 &&
+                        Math.Abs(IniFiles.GetFloat("Interface", "fUIPowerArmorGeometry_TranslateY", 0f) - 460f) < 0.1;
                 },
                 (value) => {
                     if (value)
                     {
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Interface", "fLockPositionY", 100f);
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Interface", "fUIPowerArmorGeometry_TranslateZ", -18.5f);
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Interface", "fUIPowerArmorGeometry_TranslateY", 460f);
+                        IniFiles.F76Custom.Set("Interface", "fLockPositionY", 100f);
+                        IniFiles.F76Custom.Set("Interface", "fUIPowerArmorGeometry_TranslateZ", -18.5f);
+                        IniFiles.F76Custom.Set("Interface", "fUIPowerArmorGeometry_TranslateY", 460f);
                     }
                     else
                     {
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Interface", "fLockPositionY");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Interface", "fUIPowerArmorGeometry_TranslateZ");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Interface", "fUIPowerArmorGeometry_TranslateY");
-                        if (alternativeMode)
-                        {
-                            IniFiles.Instance.Set(IniFile.F76, "Interface", "fLockPositionY", -10.0f);
-                            IniFiles.Instance.Set(IniFile.F76, "Interface", "fUIPowerArmorGeometry_TranslateZ", 0.0);
-                            IniFiles.Instance.Set(IniFile.F76, "Interface", "fUIPowerArmorGeometry_TranslateY", 350.0);
-                        }
+                        IniFiles.F76Custom.Remove("Interface", "fLockPositionY");
+                        IniFiles.F76Custom.Remove("Interface", "fUIPowerArmorGeometry_TranslateZ");
+                        IniFiles.F76Custom.Remove("Interface", "fUIPowerArmorGeometry_TranslateY");
                     }
                 }
             );
@@ -943,26 +810,27 @@ namespace Fo76ini
             // Anti-Aliasing
             uiLoader.LinkList(this.comboBoxAntiAliasing,
                 new string[] { "TAA", "FXAA", "" },
-                IniFile.F76Prefs, "Display", "sAntiAliasing",
+                LegacyIniFile.F76Prefs, "Display", "sAntiAliasing",
                 "TAA", 2);
 
             // Anisotropic filtering
             uiLoader.LinkList(this.comboBoxAnisotropicFiltering,
                 new string[] { "0", "2", "4", "8", "16" },
-                IniFile.F76Prefs, "Display", "iMaxAnisotropy",
+                LegacyIniFile.F76Prefs, "Display", "iMaxAnisotropy",
                 "8", 3);
 
+            // TODO: iPresentInterval
             // iPresentInterval
             // I'm not so sure about this anymore:!alternativeMode ? IniFile.F76Custom : IniFile.F76
             //    Actually, it's not VSync but a fps cap, which is determined this way: Monitor refresh rate divided by iPresentInterval
             //    A 120 Hz monitor and iPresentInterval set to 2 will result in a 60fps cap.
             //uiLoader.LinkBool(this.checkBoxVSync, IniFile.F76Prefs, "Display", "iPresentInterval", true);
             uiLoader.LinkCustom(this.checkBoxVSync,
-                () => IniFiles.Instance.GetInt("Display", "iPresentInterval", 1) != 0,
+                () => IniFiles.GetInt("Display", "iPresentInterval", 1) != 0,
                 (value) => {
                     if (value)
                     {
-                        int defaultValue = IniFiles.Instance.GetInt(IniFile.Config, "Display", "iPresentInterval", -1);
+                        int defaultValue = IniFiles.Config.GetInt("Display", "iPresentInterval", -1);
                         if (defaultValue <= 0)
                         {
                             defaultValue = 1;
@@ -970,51 +838,41 @@ namespace Fo76ini
                             //int refreshRate = Utils.GetDisplayRefreshRate();
                             //defaultValue = Utils.Clamp(Convert.ToInt32(Math.Round(Convert.ToSingle(refreshRate) / 60f)), 1, 4);
                         }
-                        IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "iPresentInterval", defaultValue);
+                        IniFiles.F76Prefs.Set("Display", "iPresentInterval", defaultValue);
                     }
                     else
                     {
-                        int defaultValue = IniFiles.Instance.GetInt("Display", "iPresentInterval", -1);
+                        int defaultValue = IniFiles.GetInt("Display", "iPresentInterval", -1);
                         if (defaultValue > 0)
-                            IniFiles.Instance.Set(IniFile.Config, "Display", "iPresentInterval", defaultValue);
-                        IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "iPresentInterval", 0);
+                            IniFiles.Config.Set("Display", "iPresentInterval", defaultValue);
+                        IniFiles.F76Prefs.Set("Display", "iPresentInterval", 0);
                     }
                 }
             );
 
             // Depth of Field
             uiLoader.LinkCustom(this.checkBoxDepthOfField,
-                () => IniFiles.Instance.GetBool("ImageSpace", "bDynamicDepthOfField", true),
+                () => IniFiles.GetBool("ImageSpace", "bDynamicDepthOfField", true),
                 (value) => {
                     if (value)
                     {
-                        if (alternativeMode)
-                        {
-                            IniFiles.Instance.Set(IniFile.F76, "ImageSpace", "bDynamicDepthOfField", true);
-                            IniFiles.Instance.Set(IniFile.F76, "Display", "fDOFBlendRatio", 10.0f);
-                            IniFiles.Instance.Set(IniFile.F76, "Display", "fDOFMinFocalCoefDist", 500.0f);
-                            IniFiles.Instance.Set(IniFile.F76, "Display", "fDOFMaxFocalCoefDist", 15000.0f);
-                            IniFiles.Instance.Set(IniFile.F76, "Display", "fDOFDynamicFarRange", 120000.0f);
-                            IniFiles.Instance.Set(IniFile.F76, "Display", "fDOFCenterWeightInt", 38.0f);
-                            IniFiles.Instance.Set(IniFile.F76, "Display", "fDOFFarDistance", 15000.0f);
-                        }
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "ImageSpace", "bDynamicDepthOfField");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Display", "fDOFBlendRatio");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Display", "fDOFMinFocalCoefDist");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Display", "fDOFMaxFocalCoefDist");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Display", "fDOFDynamicFarRange");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Display", "fDOFCenterWeightInt");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Display", "fDOFFarDistance");
+                        IniFiles.F76Custom.Remove("ImageSpace", "bDynamicDepthOfField");
+                        IniFiles.F76Custom.Remove("Display", "fDOFBlendRatio");
+                        IniFiles.F76Custom.Remove("Display", "fDOFMinFocalCoefDist");
+                        IniFiles.F76Custom.Remove("Display", "fDOFMaxFocalCoefDist");
+                        IniFiles.F76Custom.Remove("Display", "fDOFDynamicFarRange");
+                        IniFiles.F76Custom.Remove("Display", "fDOFCenterWeightInt");
+                        IniFiles.F76Custom.Remove("Display", "fDOFFarDistance");
                     }
                     else
                     {
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "ImageSpace", "bDynamicDepthOfField", false);
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Display", "fDOFBlendRatio", 0);
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Display", "fDOFMinFocalCoefDist", 999999);
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Display", "fDOFMaxFocalCoefDist", 99999999);
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Display", "fDOFDynamicFarRange", 99999999);
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Display", "fDOFCenterWeightInt", 0);
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Display", "fDOFFarDistance", 99999999);
+                        IniFiles.F76Custom.Set("ImageSpace", "bDynamicDepthOfField", false);
+                        IniFiles.F76Custom.Set("Display", "fDOFBlendRatio", 0);
+                        IniFiles.F76Custom.Set("Display", "fDOFMinFocalCoefDist", 999999);
+                        IniFiles.F76Custom.Set("Display", "fDOFMaxFocalCoefDist", 99999999);
+                        IniFiles.F76Custom.Set("Display", "fDOFDynamicFarRange", 99999999);
+                        IniFiles.F76Custom.Set("Display", "fDOFCenterWeightInt", 0);
+                        IniFiles.F76Custom.Set("Display", "fDOFFarDistance", 99999999);
 
                         /*
                            Things I wanted to add:
@@ -1028,54 +886,46 @@ namespace Fo76ini
             );
 
             // Motion Blur
-            uiLoader.LinkBool(this.checkBoxMotionBlur, !alternativeMode ? IniFile.F76Custom : IniFile.F76Prefs, "ImageSpace", "bMBEnable", true);
+            uiLoader.LinkBool(this.checkBoxMotionBlur, LegacyIniFile.F76CustomPrefs, "ImageSpace", "bMBEnable", true);
 
             // Radial Blur
-            uiLoader.LinkBool(this.checkBoxRadialBlur, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "ImageSpace", "bDoRadialBlur", true);
+            uiLoader.LinkBool(this.checkBoxRadialBlur, LegacyIniFile.F76Custom, "ImageSpace", "bDoRadialBlur", true);
 
             // Lens Flare
-            uiLoader.LinkBool(this.checkBoxLensFlare, IniFile.F76Prefs, "ImageSpace", "bLensFlare", true);
+            uiLoader.LinkBool(this.checkBoxLensFlare, LegacyIniFile.F76Prefs, "ImageSpace", "bLensFlare", true);
 
             // Ambient Occlusion
-            uiLoader.LinkBool(this.checkBoxAmbientOcclusion, IniFile.F76Prefs, "Display", "bSAOEnable", true);
+            uiLoader.LinkBool(this.checkBoxAmbientOcclusion, LegacyIniFile.F76Prefs, "Display", "bSAOEnable", true);
 
             // Water / Displacement
-            uiLoader.LinkBool(this.checkBoxWaterDisplacement, IniFile.F76Prefs, "Water", "bUseWaterDisplacements", true);
+            uiLoader.LinkBool(this.checkBoxWaterDisplacement, LegacyIniFile.F76Prefs, "Water", "bUseWaterDisplacements", true);
 
             // Weather / Fog
-            uiLoader.LinkBool(this.checkBoxFogEnabled, IniFile.F76Prefs, "Weather", "bFogEnabled", true);
+            uiLoader.LinkBool(this.checkBoxFogEnabled, LegacyIniFile.F76Prefs, "Weather", "bFogEnabled", true);
 
             // Weather / Rain Occlusion
-            uiLoader.LinkBool(this.checkBoxWeatherRainOcclusion, IniFile.F76, "Weather", "bRainOcclusion", true);
+            uiLoader.LinkBool(this.checkBoxWeatherRainOcclusion, LegacyIniFile.F76, "Weather", "bRainOcclusion", true);
 
             // Weather / Wetness Occlusion
-            uiLoader.LinkBool(this.checkBoxWeatherWetnessOcclusion, IniFile.F76, "Weather", "bWetnessOcclusion", true);
+            uiLoader.LinkBool(this.checkBoxWeatherWetnessOcclusion, LegacyIniFile.F76, "Weather", "bWetnessOcclusion", true);
 
             // Lighting / Volumetric Lighting
-            uiLoader.LinkBool(this.checkBoxGodrays, IniFile.F76Prefs, "Display", "bVolumetricLightingEnable", true);
+            uiLoader.LinkBool(this.checkBoxGodrays, LegacyIniFile.F76Prefs, "Display", "bVolumetricLightingEnable", true);
 
             // Effects / Disable gore
             uiLoader.LinkCustom(this.checkBoxDisableGore,
-                () => IniFiles.Instance.GetBool("General", "bDisableAllGore", false),
+                () => IniFiles.GetBool("General", "bDisableAllGore", false),
                 (value) =>
                 {
-                    if (alternativeMode)
+                    if (value)
                     {
-                        IniFiles.Instance.Set(IniFile.F76, "General", "bDisableAllGore", value);
-                        IniFiles.Instance.Set(IniFile.F76, "General", "bBloodSpatterEnabled", !value);
+                        IniFiles.F76Custom.Set("General", "bDisableAllGore", true);
+                        IniFiles.F76Custom.Set("General", "bBloodSpatterEnabled", false);
                     }
                     else
                     {
-                        if (value)
-                        {
-                            IniFiles.Instance.Set(IniFile.F76Custom, "General", "bDisableAllGore", true);
-                            IniFiles.Instance.Set(IniFile.F76Custom, "General", "bBloodSpatterEnabled", false);
-                        }
-                        else
-                        {
-                            IniFiles.Instance.Remove(IniFile.F76Custom, "General", "bDisableAllGore");
-                            IniFiles.Instance.Remove(IniFile.F76Custom, "General", "bBloodSpatterEnabled");
-                        }
+                        IniFiles.F76Custom.Remove("General", "bDisableAllGore");
+                        IniFiles.F76Custom.Remove("General", "bBloodSpatterEnabled");
                     }
                 }
             );
@@ -1083,40 +933,40 @@ namespace Fo76ini
             // Shadows / Texture map resolution
             uiLoader.LinkList(this.comboBoxShadowTextureResolution,
                 new string[] { "512", "1024", "2048", "4096" },
-                IniFile.F76Prefs, "Display", "iShadowMapResolution",
+                LegacyIniFile.F76Prefs, "Display", "iShadowMapResolution",
                 "2048", 1);
 
             // Shadows / Blurriness
             uiLoader.LinkList(this.comboBoxShadowBlurriness,
                 new string[] { "1", "2", "3" },
-                IniFile.F76Prefs, "Display", "uiOrthoShadowFilter",
+                LegacyIniFile.F76Prefs, "Display", "uiOrthoShadowFilter",
                 "3", 2);
 
             // Amount of shadow "segments": iDirShadowSplits
             uiLoader.LinkList(this.comboBoxiDirShadowSplits,
                 new string[] { "1", "2", "3" },
-                IniFile.F76Prefs, "Display", "iDirShadowSplits",
+                LegacyIniFile.F76Prefs, "Display", "iDirShadowSplits",
                 "3", 2);
 
             // Shadow / Shadow distance
             // fShadowDistance was replaced by fDirShadowDistance in Fallout 4
-            uiLoader.LinkInt(this.numShadowDistance, IniFile.F76Prefs, "Display", "fDirShadowDistance", 3000);
+            uiLoader.LinkInt(this.numShadowDistance, LegacyIniFile.F76Prefs, "Display", "fDirShadowDistance", 3000);
 
             // LOD Fade Distances
-            uiLoader.LinkFloat(this.numLODObjects, IniFile.F76Prefs, "LOD", "fLODFadeOutMultObjects", 6.0f);
-            uiLoader.LinkFloat(this.numLODItems, IniFile.F76Prefs, "LOD", "fLODFadeOutMultItems", 2.5f);
-            uiLoader.LinkFloat(this.numLODActors, IniFile.F76Prefs, "LOD", "fLODFadeOutMultActors", 4.5f);
+            uiLoader.LinkFloat(this.numLODObjects, LegacyIniFile.F76Prefs, "LOD", "fLODFadeOutMultObjects", 6.0f);
+            uiLoader.LinkFloat(this.numLODItems, LegacyIniFile.F76Prefs, "LOD", "fLODFadeOutMultItems", 2.5f);
+            uiLoader.LinkFloat(this.numLODActors, LegacyIniFile.F76Prefs, "LOD", "fLODFadeOutMultActors", 4.5f);
 
             // Grass / Enable grass
-            uiLoader.LinkBool(this.checkBoxGrass, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Grass", "bAllowCreateGrass", true);
+            uiLoader.LinkBool(this.checkBoxGrass, LegacyIniFile.F76Custom, "Grass", "bAllowCreateGrass", true);
 
             // Grass / Fade distance
             uiLoader.LinkCustom(this.numGrassFadeDistance,
-                () => IniFiles.Instance.GetFloat("Grass", "fGrassStartFadeDistance", 3000),
+                () => IniFiles.GetFloat("Grass", "fGrassStartFadeDistance", 3000),
                 (value) => {
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Grass", "fGrassStartFadeDistance", value);
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Grass", "fGrassMinStartFadeDistance", 0);
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Grass", "fGrassMaxStartFadeDistance", value);
+                    IniFiles.F76Prefs.Set("Grass", "fGrassStartFadeDistance", value);
+                    IniFiles.F76Prefs.Set("Grass", "fGrassMinStartFadeDistance", 0);
+                    IniFiles.F76Prefs.Set("Grass", "fGrassMaxStartFadeDistance", value);
                 }
             );
 
@@ -1125,8 +975,8 @@ namespace Fo76ini
 
             // TAA Sharpening
 
-            uiLoader.LinkFloat(this.numTAAPostOverlay, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Display", "fTAAPostOverlay", 0.21f);
-            uiLoader.LinkFloat(this.numTAAPostSharpen, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Display", "fTAAPostSharpen", 0.21f);
+            uiLoader.LinkFloat(this.numTAAPostOverlay, LegacyIniFile.F76Custom, "Display", "fTAAPostOverlay", 0.21f);
+            uiLoader.LinkFloat(this.numTAAPostSharpen, LegacyIniFile.F76Custom, "Display", "fTAAPostSharpen", 0.21f);
 
 
 
@@ -1134,23 +984,23 @@ namespace Fo76ini
              * Audio
              */
 
-            uiLoader.LinkBool(this.checkBoxEnableAudio, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Audio", "bEnableAudio", true);
+            uiLoader.LinkBool(this.checkBoxEnableAudio, LegacyIniFile.F76Custom, "Audio", "bEnableAudio", true);
 
-            uiLoader.LinkBool(this.checkBoxPushToTalk, IniFile.F76Prefs, "Voice", "bVoicePushToTalkEnabled", true);
+            uiLoader.LinkBool(this.checkBoxPushToTalk, LegacyIniFile.F76Prefs, "Voice", "bVoicePushToTalkEnabled", true);
 
-            uiLoader.LinkFloat(this.numVolumeMaster, IniFile.F76Prefs, "AudioMenu", "fAudioMasterVolume", 1.0f);
-            uiLoader.LinkInt(this.numAudioChat, IniFile.F76Prefs, "Voice", "uVivoxVoiceVolume", 100);
-            uiLoader.LinkFloat(this.numAudiofVal0, IniFile.F76Prefs, "AudioMenu", "fVal0", 1.0f);
-            uiLoader.LinkFloat(this.numAudiofVal1, IniFile.F76Prefs, "AudioMenu", "fVal1", 1.0f);
-            uiLoader.LinkFloat(this.numAudiofVal2, IniFile.F76Prefs, "AudioMenu", "fVal2", 1.0f);
-            uiLoader.LinkFloat(this.numAudiofVal3, IniFile.F76Prefs, "AudioMenu", "fVal3", 1.0f);
-            uiLoader.LinkFloat(this.numAudiofVal4, IniFile.F76Prefs, "AudioMenu", "fVal4", 1.0f);
-            uiLoader.LinkFloat(this.numAudiofVal5, IniFile.F76Prefs, "AudioMenu", "fVal5", 1.0f);
-            uiLoader.LinkFloat(this.numAudiofVal6, IniFile.F76Prefs, "AudioMenu", "fVal6", 1.0f);
+            uiLoader.LinkFloat(this.numVolumeMaster, LegacyIniFile.F76Prefs, "AudioMenu", "fAudioMasterVolume", 1.0f);
+            uiLoader.LinkInt(this.numAudioChat, LegacyIniFile.F76Prefs, "Voice", "uVivoxVoiceVolume", 100);
+            uiLoader.LinkFloat(this.numAudiofVal0, LegacyIniFile.F76Prefs, "AudioMenu", "fVal0", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal1, LegacyIniFile.F76Prefs, "AudioMenu", "fVal1", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal2, LegacyIniFile.F76Prefs, "AudioMenu", "fVal2", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal3, LegacyIniFile.F76Prefs, "AudioMenu", "fVal3", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal4, LegacyIniFile.F76Prefs, "AudioMenu", "fVal4", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal5, LegacyIniFile.F76Prefs, "AudioMenu", "fVal5", 1.0f);
+            uiLoader.LinkFloat(this.numAudiofVal6, LegacyIniFile.F76Prefs, "AudioMenu", "fVal6", 1.0f);
 
             uiLoader.LinkList(this.comboBoxVoiceChatMode,
                 new string[] { "0", "1", "2", "3" },
-                IniFile.F76Prefs, "Voice", "uTransmitPreference",
+                LegacyIniFile.F76Prefs, "Voice", "uTransmitPreference",
                 "0", 0);
 
 
@@ -1158,16 +1008,16 @@ namespace Fo76ini
              * Controls
              */
 
-            uiLoader.LinkBool(this.checkBoxMouseAcceleration, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Controls", "bMouseAcceleration", true);
+            uiLoader.LinkBool(this.checkBoxMouseAcceleration, LegacyIniFile.F76Custom, "Controls", "bMouseAcceleration", true);
 
             // Fix mouse sensitivity
             uiLoader.LinkCustom(this.checkBoxFixMouseSensitivity,
-                () => IniFiles.Instance.GetFloat("Controls", "fMouseHeadingXScale", 0.021f) != IniFiles.Instance.GetFloat("Controls", "fMouseHeadingYScale", 0.021f),
+                () => IniFiles.GetFloat("Controls", "fMouseHeadingXScale", 0.021f) != IniFiles.GetFloat("Controls", "fMouseHeadingYScale", 0.021f),
                 (value) => { 
                     if (value)
                     {
-                        int width = IniFiles.Instance.GetInt("Display", "iSize W", 1920);
-                        int height = IniFiles.Instance.GetInt("Display", "iSize H", 1080);
+                        int width = IniFiles.GetInt("Display", "iSize W", 1920);
+                        int height = IniFiles.GetInt("Display", "iSize H", 1080);
                         float aspectRatio = width / height;
                         float YScale = 0.0f;
 
@@ -1191,67 +1041,55 @@ namespace Fo76ini
                         else
                             YScale = aspectRatio * 0.021f;
 
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Controls", "fMouseHeadingXScale", 0.021f);
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Controls", "fMouseHeadingYScale", YScale);
+                        IniFiles.F76Custom.Set("Controls", "fMouseHeadingXScale", 0.021f);
+                        IniFiles.F76Custom.Set("Controls", "fMouseHeadingYScale", YScale);
 
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Controls", "fPitchSpeedRatio", 1.0f);
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Controls", "fIronSightsPitchSpeedRatio", 1.0f);
+                        IniFiles.F76Custom.Set("Controls", "fPitchSpeedRatio", 1.0f);
+                        IniFiles.F76Custom.Set("Controls", "fIronSightsPitchSpeedRatio", 1.0f);
                     }
                     else
                     {
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Controls", "fMouseHeadingXScale");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Controls", "fMouseHeadingYScale");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Controls", "fPitchSpeedRatio");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Controls", "fIronSightsPitchSpeedRatio");
-                        if (alternativeMode)
-                        {
-                            IniFiles.Instance.Set(IniFile.F76Custom, "Controls", "fMouseHeadingXScale", 0.021f);
-                            IniFiles.Instance.Set(IniFile.F76Custom, "Controls", "fMouseHeadingYScale", 0.021f);
-                            IniFiles.Instance.Set(IniFile.F76Custom, "Controls", "fPitchSpeedRatio", 0.5625f);
-                            IniFiles.Instance.Set(IniFile.F76Custom, "Controls", "fIronSightsPitchSpeedRatio", 0.8f);
-                        }
+                        IniFiles.F76Custom.Remove("Controls", "fMouseHeadingXScale");
+                        IniFiles.F76Custom.Remove("Controls", "fMouseHeadingYScale");
+                        IniFiles.F76Custom.Remove("Controls", "fPitchSpeedRatio");
+                        IniFiles.F76Custom.Remove("Controls", "fIronSightsPitchSpeedRatio");
                     }
                 }
             );
 
             // Fix aim sensitivity
             uiLoader.LinkCustom(this.checkBoxFixAimSensitivity,
-                () => Math.Abs(IniFiles.Instance.GetFloat("Main", "fIronSightsFOVRotateMult", 0f) - 2.14f) < 0.1f,
+                () => Math.Abs(IniFiles.GetFloat("Main", "fIronSightsFOVRotateMult", 0f) - 2.14f) < 0.1f,
                 (value) => {
                     if (value)
                     {
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Controls", "fIronSightsFOVRotateMult", 2.136363636f);
-                        IniFiles.Instance.Set(!alternativeMode ? IniFile.F76Custom : IniFile.F76, "Main", "fIronSightsFOVRotateMult", 2.136363636f);
+                        IniFiles.F76Custom.Set("Controls", "fIronSightsFOVRotateMult", 2.136363636f);
+                        IniFiles.F76Custom.Set("Main", "fIronSightsFOVRotateMult", 2.136363636f);
                     }
                     else
                     {
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Controls", "fIronSightsFOVRotateMult");
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Main", "fIronSightsFOVRotateMult");
-                        if (alternativeMode)
-                        {
-                            IniFiles.Instance.Set(IniFile.F76, "Controls", "fIronSightsFOVRotateMult", 1.0f);
-                            IniFiles.Instance.Set(IniFile.F76, "Main", "fIronSightsFOVRotateMult", 1.0f);
-                        }
+                        IniFiles.F76Custom.Remove("Controls", "fIronSightsFOVRotateMult");
+                        IniFiles.F76Custom.Remove("Main", "fIronSightsFOVRotateMult");
                     }
                 }
             );
 
             // Mouse sensitivity slider
             uiLoader.LinkCustom(this.numMouseSensitivity,
-                () => IniFiles.Instance.GetFloat("Controls", "fMouseHeadingSensitivity", 0.03f),
+                () => IniFiles.GetFloat("Controls", "fMouseHeadingSensitivity", 0.03f),
                 (value) => {
                     // Fallout76Custom.ini had no effect. I hope Fallout76Prefs.ini will have an effect this time:
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Controls", "fMouseHeadingSensitivity", value);
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Controls", "fMouseHeadingSensitivityY", value);
+                    IniFiles.F76Prefs.Set("Controls", "fMouseHeadingSensitivity", value);
+                    IniFiles.F76Prefs.Set("Controls", "fMouseHeadingSensitivityY", value);
                 }
             );
 
             // Gamepad
-            uiLoader.LinkBool(this.checkBoxGamepadEnabled, IniFile.F76Prefs, "General", "bGamepadEnable", true);
-            uiLoader.LinkBool(this.checkBoxGamepadRumble, !alternativeMode ? IniFile.F76Custom : IniFile.F76Prefs, "Controls", "bGamePadRumble", true);
+            uiLoader.LinkBool(this.checkBoxGamepadEnabled, LegacyIniFile.F76Prefs, "General", "bGamepadEnable", true);
+            uiLoader.LinkBool(this.checkBoxGamepadRumble, LegacyIniFile.F76CustomPrefs, "Controls", "bGamePadRumble", true);
 
-            uiLoader.LinkBool(this.checkBoxMouseInvertX, IniFile.F76Prefs, "Controls", "bInvertXValues", false);
-            uiLoader.LinkBool(this.checkBoxMouseInvertY, IniFile.F76Prefs, "Controls", "bInvertYValues", false);
+            uiLoader.LinkBool(this.checkBoxMouseInvertX, LegacyIniFile.F76Prefs, "Controls", "bInvertXValues", false);
+            uiLoader.LinkBool(this.checkBoxMouseInvertY, LegacyIniFile.F76Prefs, "Controls", "bInvertYValues", false);
 
 
 
@@ -1260,11 +1098,11 @@ namespace Fo76ini
              */
 
             // Radiobuttons, Quickboy or Pipboy
-            uiLoader.LinkBool(this.radioButtonQuickboy, this.radioButtonPipboy, IniFile.F76Prefs, "Pipboy", "bQuickboyMode", false);
+            uiLoader.LinkBool(this.radioButtonQuickboy, this.radioButtonPipboy, LegacyIniFile.F76Prefs, "Pipboy", "bQuickboyMode", false);
 
             // Resolution
-            uiLoader.LinkInt(this.numPipboyTargetWidth, IniFile.F76Prefs, "Display", "uPipboyTargetWidth", 876);
-            uiLoader.LinkInt(this.numPipboyTargetHeight, IniFile.F76Prefs, "Display", "uPipboyTargetHeight", 700);
+            uiLoader.LinkInt(this.numPipboyTargetWidth, LegacyIniFile.F76Prefs, "Display", "uPipboyTargetWidth", 876);
+            uiLoader.LinkInt(this.numPipboyTargetHeight, LegacyIniFile.F76Prefs, "Display", "uPipboyTargetHeight", 700);
 
 
             /*
@@ -1272,13 +1110,13 @@ namespace Fo76ini
              */
 
             // Photomode options:
-            uiLoader.LinkInt(this.numericUpDownPhotomodeRange, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fSelfieModeRange", 500);
-            uiLoader.LinkFloat(this.numericUpDownPhotomodeTranslationSpeed, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fSelfieCameraTranslationSpeed", 2.5f);
-            uiLoader.LinkFloat(this.numericUpDownPhotomodeRotationSpeed, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fSelfieCameraRotationSpeed", 1.5f);
+            uiLoader.LinkInt(this.numericUpDownPhotomodeRange, LegacyIniFile.F76Custom, "Camera", "fSelfieModeRange", 500);
+            uiLoader.LinkFloat(this.numericUpDownPhotomodeTranslationSpeed, LegacyIniFile.F76Custom, "Camera", "fSelfieCameraTranslationSpeed", 2.5f);
+            uiLoader.LinkFloat(this.numericUpDownPhotomodeRotationSpeed, LegacyIniFile.F76Custom, "Camera", "fSelfieCameraRotationSpeed", 1.5f);
 
             // Vanity mode
-            uiLoader.LinkBool(this.checkBoxVanityMode, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "bDisableAutoVanityMode", false, true);
-            uiLoader.LinkBool(this.checkBoxForceVanityMode, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "bForceAutoVanityMode", false);
+            uiLoader.LinkBool(this.checkBoxVanityMode, LegacyIniFile.F76Custom, "Camera", "bDisableAutoVanityMode", false, true);
+            uiLoader.LinkBool(this.checkBoxForceVanityMode, LegacyIniFile.F76Custom, "Camera", "bForceAutoVanityMode", false);
             uiLoader.LinkCustom(this.checkBoxVanityMode,
                 () => this.checkBoxVanityMode.Checked,
                 (value) =>
@@ -1287,9 +1125,7 @@ namespace Fo76ini
                     if (!this.checkBoxVanityMode.Checked)
                     {
                         this.checkBoxForceVanityMode.Checked = false;
-                        IniFiles.Instance.Remove(IniFile.F76Custom, "Camera", "bForceAutoVanityMode");
-                        if (alternativeMode)
-                            IniFiles.Instance.Set(IniFile.F76, "Camera", "bForceAutoVanityMode", false);
+                        IniFiles.F76Custom.Remove("Camera", "bForceAutoVanityMode");
                     }
                 }
             );
@@ -1297,50 +1133,41 @@ namespace Fo76ini
 
             // 1st person FOV
             uiLoader.LinkCustom(this.numFirstPersonFOV,
-                () => IniFiles.Instance.GetFloat("Display", "fDefault1stPersonFOV", 80),
+                () => IniFiles.GetFloat("Display", "fDefault1stPersonFOV", 80),
                 (value) => {
-                    if (!alternativeMode)
-                    {
-                        IniFiles.Instance.Set(IniFile.F76Custom, "Display", "fDefault1stPersonFOV", value);
-                        IniFiles.Instance.Set(IniFile.F76Custom, "Interface", "fDefault1stPersonFOV", value);
-                    }
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "fDefault1stPersonFOV", value);
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Interface", "fDefault1stPersonFOV", value);
+                    IniFiles.F76Prefs.Set("Display", "fDefault1stPersonFOV", value);
+                    IniFiles.F76Prefs.Set("Interface", "fDefault1stPersonFOV", value);
                 }
             );
 
             // World FOV
             uiLoader.LinkCustom(this.numWorldFOV,
-                () => IniFiles.Instance.GetFloat("Display", "fDefaultWorldFOV", 80),
+                () => IniFiles.GetFloat("Display", "fDefaultWorldFOV", 80),
                 (value) => {
-                    if (!alternativeMode)
-                    {
-                        IniFiles.Instance.Set(IniFile.F76Custom, "Display", "fDefaultWorldFOV", value);
-                        IniFiles.Instance.Set(IniFile.F76Custom, "Interface", "fDefaultWorldFOV", value);
-                    }
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Display", "fDefaultWorldFOV", value);
-                    IniFiles.Instance.Set(IniFile.F76Prefs, "Interface", "fDefaultWorldFOV", value);
+                    IniFiles.F76Prefs.Set("Display", "fDefaultWorldFOV", value);
+                    IniFiles.F76Prefs.Set("Interface", "fDefaultWorldFOV", value);
                 }
             );
 
             // 3rd person ADS FOV
-            uiLoader.LinkInt(this.numADSFOV, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "f3rdPersonAimFOV", 50);
+            uiLoader.LinkInt(this.numADSFOV, LegacyIniFile.F76Custom, "Camera", "f3rdPersonAimFOV", 50);
 
             // fDefaultFOV
-            uiLoader.LinkInt(this.numfDefaultFOV, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Display", "fDefaultFOV", 80);
+            uiLoader.LinkInt(this.numfDefaultFOV, LegacyIniFile.F76Custom, "Display", "fDefaultFOV", 80);
 
             // bApplyCameraNodeAnimations
-            uiLoader.LinkBool(this.checkBoxbApplyCameraNodeAnimations, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "bApplyCameraNodeAnimations", true);
+            uiLoader.LinkBool(this.checkBoxbApplyCameraNodeAnimations, LegacyIniFile.F76Custom, "Camera", "bApplyCameraNodeAnimations", true);
 
             // Camera distance
-            uiLoader.LinkInt(this.numCameraDistanceMinimum, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fVanityModeMinDist", 0);
-            uiLoader.LinkInt(this.numCameraDistanceMaximum, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fVanityModeMaxDist", 150);
+            uiLoader.LinkInt(this.numCameraDistanceMinimum, LegacyIniFile.F76Custom, "Camera", "fVanityModeMinDist", 0);
+            uiLoader.LinkInt(this.numCameraDistanceMaximum, LegacyIniFile.F76Custom, "Camera", "fVanityModeMaxDist", 150);
 
             // fPitchZoomOutMaxDist
-            uiLoader.LinkInt(this.numfPitchZoomOutMaxDist, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "fPitchZoomOutMaxDist", 100);
+            uiLoader.LinkInt(this.numfPitchZoomOutMaxDist, LegacyIniFile.F76Custom, "Camera", "fPitchZoomOutMaxDist", 100);
 
             // Switch delay
-            uiLoader.LinkFloat(this.numCameraSwitchDelay, !alternativeMode ? IniFile.F76Custom : IniFile.F76, "Camera", "f1st3rdSwitchDelay", 0.25f);
+            uiLoader.LinkFloat(this.numCameraSwitchDelay, LegacyIniFile.F76Custom, "Camera", "f1st3rdSwitchDelay", 0.25f);
+#endif
         }
 
         #endregion
@@ -1386,7 +1213,8 @@ namespace Fo76ini
             this.labelNWModeActive.Visible = Shared.NuclearWinterMode;
 
             // Fallout76Custom.ini renamed?
-            IniFiles.Instance.renameF76Custom = Shared.NuclearWinterMode && Configuration.bRenameCustomINI;
+            // TODO: NW mode broke
+            //IniFiles.Instance.renameF76Custom = Shared.NuclearWinterMode && IniFiles.Config.GetBool("NuclearWinter", "bRenameCustomINI", true);
 
             // Change button appearance:
             RefreshNWModeButtonAppearance();
@@ -1431,8 +1259,8 @@ namespace Fo76ini
             // TODO: NW MODE broken
 
             // Rename *.ini:
-            IniFiles.Instance.renameF76Custom = Configuration.bRenameCustomINI;
-            IniFiles.Instance.ResolveNWMode();
+            //IniFiles.Instance.renameF76Custom = IniFiles.Config.GetBool("NuclearWinter", "bRenameCustomINI", true);
+            //IniFiles.Instance.ResolveNWMode();
 
 
             /*
@@ -1465,7 +1293,7 @@ namespace Fo76ini
 
             // Save configuration:
             Configuration.bNWMode = true;
-            IniFiles.Instance.SaveAll();
+            //IniFiles.Instance.SaveAll();
         }
 
         private void backgroundWorkerDisableNWMode_DoWork(object sender, DoWorkEventArgs e)
@@ -1481,8 +1309,8 @@ namespace Fo76ini
             // Restore archive lists:
 
             // Restore *.ini:
-            IniFiles.Instance.renameF76Custom = false;
-            IniFiles.Instance.ResolveNWMode();
+            //IniFiles.Instance.renameF76Custom = false;
+            //IniFiles.Instance.ResolveNWMode();
 
 
             /*
@@ -1516,7 +1344,7 @@ namespace Fo76ini
 
             // Save configuration:
             Configuration.bNWMode = false;
-            IniFiles.Instance.SaveAll();
+            //IniFiles.Instance.SaveAll();
         }
 
         private void backgroundWorkerEnableNWMode_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -1542,52 +1370,52 @@ namespace Fo76ini
         public void ApplyChanges()
         {
             // Add custom lines to *.ini files:
-            try
+            /*try
             {
-                string f76Path = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76.add.ini");
+                string f76Path = Path.Combine(IniFiles.ParentPath, "Fallout76.add.ini");
                 if (File.Exists(f76Path))
                 {
                     IniData f76Data = IniFiles.Instance.LoadIni(f76Path, false);
-                    IniFiles.Instance.Merge(IniFile.F76, f76Data);
+                    IniFiles.Instance.Merge(LegacyIniFile.F76, f76Data);
                 }
 
                 string f76PPath = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76Prefs.add.ini");
                 if (File.Exists(f76PPath))
                 {
                     IniData f76PData = IniFiles.Instance.LoadIni(f76PPath, false);
-                    IniFiles.Instance.Merge(IniFile.F76Prefs, f76PData);
+                    IniFiles.Instance.Merge(LegacyIniFile.F76Prefs, f76PData);
                 }
 
                 string f76CPath = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76Custom.add.ini");
                 if (File.Exists(f76CPath))
                 {
                     IniData f76CData = IniFiles.Instance.LoadIni(f76CPath, false);
-                    IniFiles.Instance.Merge(IniFile.F76Custom, f76CData);
+                    IniFiles.Instance.Merge(LegacyIniFile.F76Custom, f76CData);
                 }
             }
             catch (IniParser.Exceptions.ParsingException e)
             {
                 MsgBox.Get("customIniFilesParsingError").FormatText(e.Message).Show(MessageBoxIcon.Error);
-            }
+            }*/
 
             // Save changes:
-            ColorUi2Ini();
-            IniFiles.Instance.SaveAll(this.checkBoxReadOnly.Checked);
-            IniFiles.Instance.ResolveNWMode();
+            IniFiles.Save();
+            //IniFiles.Instance.ResolveNWMode();
         }
 
         // "Apply" button:
         private void toolStripButtonApply_Click(object sender, EventArgs e)
         {
+            //TODO: Rework THIS!
             // Show a messagebox to ask the user, if they want to make a backup.
-            if (!Configuration.bSkipBackupQuestion)
+            if (!IniFiles.Config.GetBool("Preferences", "bSkipBackupQuestion", false))
             {
                 DialogResult res = MsgBox.Get("backupAndSave").Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (res == DialogResult.Cancel)
                     return;
-                else if (res == DialogResult.Yes)
-                    // Make backups
-                    IniFiles.Instance.BackupAll();
+                //else if (res == DialogResult.Yes)
+                // Make backups
+                //IniFiles.Instance.BackupAll();
             }
 
             // Save stuff to INI
@@ -1598,14 +1426,14 @@ namespace Fo76ini
         // [ ] "Make *.ini files read-only" checkbox:
         private void checkBoxReadOnly_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.SetINIsReadOnly(this.checkBoxReadOnly.Checked);
+            IniFiles.SetINIsReadOnly(this.checkBoxReadOnly.Checked);
         }
 
         // "Launch Game" button:
         private void toolStripSplitButtonLaunchGame_ButtonClick(object sender, EventArgs e)
         {
-            uint uGameEdition = Configuration.uGameEdition;
-            uint uLaunchOption = Configuration.uLaunchOption;
+            uint uGameEdition = IniFiles.Config.GetUInt("Preferences", "uGameEdition", 0);
+            uint uLaunchOption = IniFiles.Config.GetUInt("Preferences", "uLaunchOption", 1);
             string process = null;
             bool runExecutable = false;
             if (uLaunchOption == 1)
@@ -1641,7 +1469,7 @@ namespace Fo76ini
             }
             if (process != null)
             {
-                if (Configuration.bAutoApply)
+                if (IniFiles.Config.GetBool("Preferences", "bAutoApply", false))
                     ApplyChanges();
                 try
                 {
@@ -1659,7 +1487,7 @@ namespace Fo76ini
                     {
                         System.Diagnostics.Process.Start(process);
                     }
-                    if (Configuration.bQuitOnLaunch)
+                    if (IniFiles.Config.GetBool("Preferences", "bQuitOnLaunch", false))
                         this.Close();
                 }
                 catch (Exception ex)
@@ -1719,6 +1547,8 @@ namespace Fo76ini
 
         private void ChangeGameEdition(GameEdition edition)
         {
+            // TODO
+            /*
             bool restartRequired = Shared.GameEdition != GameEdition.Unknown && ((Shared.GameEdition == GameEdition.MSStore && edition != GameEdition.MSStore) || (Shared.GameEdition != GameEdition.MSStore && edition == GameEdition.MSStore));
 
             if (restartRequired && MsgBox.Get("msstoreRestartRequired").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -1779,7 +1609,7 @@ namespace Fo76ini
             {
                 this.radioButtonLaunchViaExecutable.Enabled = true;
             }*/
-
+            /*
             Shared.ChangeGameEdition(edition);
             //this.formMods.ChangeGameEdition(edition);
             this.formMods.UpdateUI();
@@ -1787,33 +1617,9 @@ namespace Fo76ini
 
             if (restartRequired)
             {
-                IniFiles.Instance.SaveWindowState("Form1", this);
+                Configuration.SaveWindowState("Form1", this);
                 Application.Restart();
-            }
-        }
-
-        private void radioButtonEditionSteam_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.radioButtonEditionSteam.Checked)
-                ChangeGameEdition(GameEdition.Steam);
-        }
-
-        private void radioButtonEditionBethesdaNet_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.radioButtonEditionBethesdaNet.Checked)
-                ChangeGameEdition(GameEdition.BethesdaNet);
-        }
-
-        private void radioButtonEditionBethesdaNetPTS_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.radioButtonEditionBethesdaNetPTS.Checked)
-                ChangeGameEdition(GameEdition.BethesdaNetPTS);
-        }
-
-        private void radioButtonEditionMSStore_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.radioButtonEditionMSStore.Checked)
-                ChangeGameEdition(GameEdition.MSStore);
+            }*/
         }
 
         // Show password:
@@ -1846,30 +1652,20 @@ namespace Fo76ini
 
         private void checkBoxQuitOnGameLaunch_CheckedChanged(object sender, EventArgs e)
         {
-            Configuration.bQuitOnLaunch = this.checkBoxQuitOnGameLaunch.Checked;
+            IniFiles.Config.Set("Preferences", "bQuitOnLaunch", this.checkBoxQuitOnGameLaunch.Checked);
         }
 
         private void checkBoxAutoApply_CheckedChanged(object sender, EventArgs e)
         {
-            Configuration.bAutoApply = this.checkBoxAutoApply.Checked;
-        }
-
-        private void checkBoxSkipBackupQuestion_CheckedChanged(object sender, EventArgs e)
-        {
-            Configuration.bSkipBackupQuestion = this.checkBoxSkipBackupQuestion.Checked;
-        }
-
-        private void checkBoxOpenManageModsOnLaunch_CheckedChanged(object sender, EventArgs e)
-        {
-            Configuration.bOpenModManagerOnLaunch = this.checkBoxOpenManageModsOnLaunch.Checked;
+            IniFiles.Config.Set("Preferences", "bAutoApply", this.checkBoxAutoApply.Checked);
         }
 
         private void buttonUpdateNow_Click(object sender, EventArgs e)
         {
             // Set sInstallationPath:
             string installationPath = Path.GetFullPath(AppContext.BaseDirectory);
-            IniFiles.Instance.Set(IniFile.Config, "Updater", "sInstallationPath", installationPath);
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Set("Updater", "sInstallationPath", installationPath);
+            IniFiles.Config.Save();
 
             // Copy updater.exe to <config-path>\Updater\:
             string updaterPath = Path.Combine(Shared.AppConfigFolder, "Updater");
@@ -1908,76 +1704,10 @@ namespace Fo76ini
 
         private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
         {
-            Configuration.bIgnoreUpdates = this.checkBoxIgnoreUpdates.Checked;
+            IniFiles.Config.Set("Preferences", "bIgnoreUpdates", this.checkBoxIgnoreUpdates.Checked);
             this.CheckVersion();
         }
 
-
-        /*
-         * Game path
-         */
-
-        // Pick game path
-        private void buttonPickGamePath_Click(object sender, EventArgs e)
-        {
-            if (ManagedMods.Instance.isDeploymentNecessary())
-            {
-                MsgBox.ShowID("modsDeploymentNecessary");
-                return;
-            }
-            if (this.openFileDialogGamePath.ShowDialog() == DialogResult.OK)
-            {
-                string path = Path.GetDirectoryName(this.openFileDialogGamePath.FileName); // We want the path where Fallout76.exe resides.
-                if (Directory.Exists(Path.Combine(path, "Data")))
-                {
-                    this.textBoxGamePath.Text = path;
-                    Shared.GamePath = path;
-                    Shared.SaveGamePath();
-                    ManagedMods.Instance.Load();
-                }
-                else
-                    MsgBox.ShowID("modsGamePathInvalid");
-            }
-        }
-
-        // Game path textbox changed
-        private void textBoxGamePath_TextChanged(object sender, EventArgs e)
-        {
-            if (this.textBoxGamePath.Focused)
-            {
-                if (ManagedMods.Instance.isDeploymentNecessary())
-                {
-                    if (this.textBoxGamePath.Text != Shared.GamePath)
-                        this.textBoxGamePath.Text = Shared.GamePath;
-                    return;
-                }
-                else if (Directory.Exists(Path.Combine(this.textBoxGamePath.Text, "Data")))
-                {
-                    Shared.GamePath = this.textBoxGamePath.Text;
-                    Shared.SaveGamePath();
-                    ManagedMods.Instance.Load();
-                    this.textBoxGamePath.ForeColor = Color.Black;
-                    this.textBoxGamePath.BackColor = Color.White;
-                }
-                else
-                {
-                    this.textBoxGamePath.ForeColor = Color.White;
-                    this.textBoxGamePath.BackColor = Color.Red;
-                }
-            }
-        }
-
-        private void radioButtonLaunchViaExecutable_CheckedChanged(object sender, EventArgs e)
-        {
-            this.labelLaunchOptionTip.Visible = false;
-            this.labelLaunchOptionMSStoreNotice.Visible = false;
-
-            if (Shared.GameEdition == GameEdition.BethesdaNet || Shared.GameEdition == GameEdition.BethesdaNetPTS)
-                this.labelLaunchOptionTip.Visible = this.radioButtonLaunchViaExecutable.Checked;
-
-            else if (Shared.GameEdition == GameEdition.MSStore)
-                this.labelLaunchOptionMSStoreNotice.Visible = this.radioButtonLaunchViaExecutable.Checked;
-        }
 
         /*
          * Tool strip:
@@ -2005,7 +1735,7 @@ namespace Fo76ini
 
         private void gamesConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Utils.OpenExplorer(IniFiles.Instance.iniParentPath);
+            Utils.OpenExplorer(IniFiles.ParentPath);
         }
 
         private void toolStripButtonNexusMods_Click(object sender, EventArgs e)
@@ -2041,7 +1771,7 @@ namespace Fo76ini
                     fileName = "Fallout76Custom.add.ini";
                     break;
             }
-            this.customAddFilePath = Path.Combine(IniFiles.Instance.iniParentPath, fileName);
+            this.customAddFilePath = Path.Combine(IniFiles.ParentPath, fileName);
 
             if (File.Exists(this.customAddFilePath))
                 this.textBoxCustom.Text = File.ReadAllText(this.customAddFilePath);
@@ -2075,20 +1805,20 @@ namespace Fo76ini
 
         private void editFallout76iniToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(IniFiles.Instance.GetIniPath(IniFile.F76)))
-                Utils.OpenNotepad(IniFiles.Instance.GetIniPath(IniFile.F76));
+            if (File.Exists(IniFiles.F76.Path))
+                Utils.OpenNotepad(IniFiles.F76.Path);
         }
 
         private void editFallout76PrefsiniToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(IniFiles.Instance.GetIniPath(IniFile.F76Prefs)))
-                Utils.OpenNotepad(IniFiles.Instance.GetIniPath(IniFile.F76Prefs));
+            if (File.Exists(IniFiles.F76Prefs.Path))
+                Utils.OpenNotepad(IniFiles.F76Prefs.Path);
         }
 
         private void editFallout76CustominiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(IniFiles.Instance.GetIniPath(IniFile.F76Custom)))
-                Utils.OpenNotepad(IniFiles.Instance.GetIniPath(IniFile.F76Custom));
+            if (File.Exists(IniFiles.F76Custom.Path))
+                Utils.OpenNotepad(IniFiles.F76Custom.Path);
         }
 
         private void steamScreenshotFolderToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2103,7 +1833,7 @@ namespace Fo76ini
 
         private void gamePhotosFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string photosFolder = Path.Combine(IniFiles.Instance.iniParentPath, "Photos");
+            string photosFolder = Path.Combine(IniFiles.ParentPath, "Photos");
             if (Directory.Exists(photosFolder))
             {
                 photosFolder = Directory.GetDirectories(photosFolder)[0];
@@ -2126,15 +1856,9 @@ namespace Fo76ini
         }
 
         private void checkBoxAlternativeINIMode_CheckedChanged(object sender, EventArgs e)
-        {
-            bool altMode = Configuration.bAlternativeINIMode;
-
-            if (this.checkBoxAlternativeINIMode.Checked == altMode)
-                return;
-
+        {/*
             if (MsgBox.ShowID("restartRequired", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Configuration.bAlternativeINIMode = this.checkBoxAlternativeINIMode.Checked;
                 IniFiles.Instance.SaveConfig();
                 //Application.Exit();
                 Application.Restart();
@@ -2143,7 +1867,7 @@ namespace Fo76ini
             else
             {
                 this.checkBoxAlternativeINIMode.Checked = altMode;
-            }
+            }*/
         }
 
 
@@ -2155,25 +1879,25 @@ namespace Fo76ini
         {
             int index = GetSelectedAccountProfile();
             if (this.textBoxUserName.Text == "")
-                IniFiles.Instance.Remove(IniFile.Config, "Login", $"s76UserName{index + 1}");
+                IniFiles.Config.Remove("Login", $"s76UserName{index + 1}");
             else
-                IniFiles.Instance.Set(IniFile.Config, "Login", $"s76UserName{index + 1}", this.textBoxUserName.Text);
+                IniFiles.Config.Set("Login", $"s76UserName{index + 1}", this.textBoxUserName.Text);
         }
 
         private void textBoxPassword_TextChanged(object sender, EventArgs e)
         {
             int index = GetSelectedAccountProfile();
             if (this.textBoxPassword.Text == "")
-                IniFiles.Instance.Remove(IniFile.Config, "Login", $"s76Password{index + 1}");
+                IniFiles.Config.Remove("Login", $"s76Password{index + 1}");
             else
-                IniFiles.Instance.Set(IniFile.Config, "Login", $"s76Password{index + 1}", this.textBoxPassword.Text);
+                IniFiles.Config.Set("Login", $"s76Password{index + 1}", this.textBoxPassword.Text);
         }
 
         private void radioButtonAccount_CheckedChanged(object sender, EventArgs e)
         {
             int index = GetSelectedAccountProfile();
-            this.textBoxUserName.Text = IniFiles.Instance.GetString(IniFile.Config, "Login", $"s76UserName{index + 1}", "");
-            this.textBoxPassword.Text = IniFiles.Instance.GetString(IniFile.Config, "Login", $"s76Password{index + 1}", "");
+            this.textBoxUserName.Text = IniFiles.Config.GetString("Login", $"s76UserName{index + 1}", "");
+            this.textBoxPassword.Text = IniFiles.Config.GetString("Login", $"s76Password{index + 1}", "");
         }
 
         private void MakePictureBoxButton(PictureBox pictureBox, string localizedStringID)
@@ -2214,10 +1938,10 @@ namespace Fo76ini
         private void launchViaBethesdanetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Launch Bethesda.net version:
-            string gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNet", "");
+            string gamePath = IniFiles.Config.GetString("Preferences", "sGamePathBethesdaNet", "");
             string execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
 
-            uint uLaunchOption = Configuration.uLaunchOption;
+            uint uLaunchOption = IniFiles.Config.GetUInt("Preferences", "uLaunchOption", 1);
 
             if (uLaunchOption == 1 || !File.Exists(execPath))
                 System.Diagnostics.Process.Start("bethesdanet://run/20");
@@ -2234,10 +1958,10 @@ namespace Fo76ini
         private void launchViaBethesdanetPTSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Launch Bethesda.net (PTS) version:
-            string gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNetPTS", "");
+            string gamePath = IniFiles.Config.GetString("Preferences", "sGamePathBethesdaNetPTS", "");
             string execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
 
-            uint uLaunchOption = Configuration.uLaunchOption;
+            uint uLaunchOption = IniFiles.Config.GetUInt("Preferences", "uLaunchOption", 1);
 
             if (uLaunchOption == 1 || !File.Exists(execPath))
                 System.Diagnostics.Process.Start("bethesdanet://run/57");
@@ -2256,10 +1980,11 @@ namespace Fo76ini
         // Check, if *.ini files have been changed:
         private void timerCheckFiles_Tick(object sender, EventArgs e)
         {
+            // TODO: Do we reeeeaaally need this?
             // Check every 5 seconds, if files have been modified:
-            if (IniFiles.Instance.FilesHaveBeenModified())
+            /*if (IniFiles.FilesHaveBeenModified())
             {
-                IniFiles.Instance.UpdateLastModifiedDates();
+                IniFiles.UpdateLastModifiedDates();
 
                 // Don't prompt, if Fallout 76 is running....
                 if (Shared.GameEdition == GameEdition.MSStore ?
@@ -2267,7 +1992,7 @@ namespace Fo76ini
                         !Utils.IsProcessRunning("Project76") :
                         !Utils.IsProcessRunning("Fallout76"))
                     MsgBox.Get("iniFilesModified").Popup(MessageBoxIcon.Warning);
-            }
+            }*/
         }
 
         private void linkLabelAttribution_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -2281,5 +2006,15 @@ namespace Fo76ini
         }
 
         #endregion
+
+        private void toolStripButtonProfiles_Click(object sender, EventArgs e)
+        {
+            (new FormProfiles()).ShowDialog();
+        }
+
+        private void toolStripButtonNexusMods_Click_1(object sender, EventArgs e)
+        {
+            (new FormNexus()).ShowDialog();
+        }
     }
 }

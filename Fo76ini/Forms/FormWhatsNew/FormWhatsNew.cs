@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
@@ -29,8 +24,8 @@ namespace Fo76ini.Forms.FormWhatsNew
 
         private void FormWhatsNew_Load(object sender, EventArgs e)
         {
-            if (IniFiles.Instance.Exists(IniFile.Config, "Debug", "sWhatsNewFilePath"))
-                richTextBox.LoadFile(IniFiles.Instance.GetString(IniFile.Config, "Debug", "sWhatsNewFilePath"));
+            if (IniFiles.Config.Exists("Debug", "sWhatsNewFilePath"))
+                richTextBox.LoadFile(IniFiles.Config.GetString("Debug", "sWhatsNewFilePath"));
             else
                 this.backgroundWorkerDownloadRTF.RunWorkerAsync();
         }
@@ -61,8 +56,8 @@ namespace Fo76ini.Forms.FormWhatsNew
 
         private void checkBoxDontShowAgain_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bDisableWhatsNew", this.checkBoxDontShowAgain.Checked);
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Set("Preferences", "bDisableWhatsNew", this.checkBoxDontShowAgain.Checked);
+            IniFiles.Config.Save();
         }
     }
 }

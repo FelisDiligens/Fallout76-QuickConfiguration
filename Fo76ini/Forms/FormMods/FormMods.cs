@@ -1,16 +1,16 @@
-﻿using Fo76ini.Mods;
+﻿using Fo76ini.Interface;
+using Fo76ini.Mods;
+using Fo76ini.NexusAPI;
+using Fo76ini.Tweaks.ResourceLists;
+using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fo76ini
@@ -21,6 +21,8 @@ namespace Fo76ini
 
         private int selectedIndex = -1;
         private List<int> selectedIndices = new List<int>();
+
+        private ManagedMods Mods;
 
         /// <summary>
         /// isUpdating is set to true when updating the UI.
@@ -51,6 +53,12 @@ namespace Fo76ini
             this.listViewMods.MouseUp += listViewMods_MouseUp;
         }
 
+        public void LoadMods(string GamePath)
+        {
+            Mods = new ManagedMods(GamePath);
+            Mods.Load();
+        }
+
         /// <summary>
         /// Opens the window and updates the form.
         /// </summary>
@@ -73,7 +81,7 @@ namespace Fo76ini
             UpdateSettings();
             UpdateLabel();
             RefreshNMUI();
-            if (IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bAutoUpdateProfile", true))
+            if (IniFiles.Config.GetBool("NexusMods", "bAutoUpdateProfile", true))
                 UpdateNMProfile();
         }
 
@@ -87,7 +95,7 @@ namespace Fo76ini
              */
             isUpdating = true;
             this.listViewMods.Items.Clear();
-            for (int i = 0; i < ManagedMods.Instance.Mods.Count; i++)
+            for (int i = 0; i < Mods.Count; i++)
             {
                 /*
                  * Define sub-items
@@ -118,10 +126,10 @@ namespace Fo76ini
                  * Get some info
                  */
 
-                ManagedMod mod = ManagedMods.Instance.Mods[i];
+                ManagedMod mod = Mods[i];
                 NMMod nmMod = mod.RemoteInfo;
 
-                bool enabled = mod.PendingDiskState.Enabled;
+                bool enabled = mod.Enabled;
 
 
                 /*
@@ -156,12 +164,12 @@ namespace Fo76ini
 
                 // Frozen?
                 // TODO: Symbols
-                if (mod.CurrentDiskState.Frozen)
+                if (mod.Frozen)
                 {
                     frozen.Text = "Frozen";
                     frozen.ForeColor = Color.DarkCyan;
                 }
-                else if (mod.PendingDiskState.Frozen)
+                else if (mod.Freeze)
                 {
                     frozen.Text = "Pending";
                     frozen.ForeColor = Color.DarkBlue;
@@ -170,13 +178,13 @@ namespace Fo76ini
                     frozen.Text = "Thawed";
 
                 // Archive format
-                switch (mod.PendingDiskState.Format)
+                switch (mod.Format)
                 {
-                    case ManagedMod.DiskState.ArchiveFormat.General:
+                    case ManagedMod.ArchiveFormat.General:
                         format.Text = Localization.GetString("modsTableFormatGeneral");
                         format.ForeColor = Color.OrangeRed;
                         break;
-                    case ManagedMod.DiskState.ArchiveFormat.Textures:
+                    case ManagedMod.ArchiveFormat.Textures:
                         format.Text = Localization.GetString("modsTableFormatTextures");
                         format.ForeColor = Color.RoyalBlue;
                         break;
@@ -187,13 +195,13 @@ namespace Fo76ini
                 }
 
                 // Archive compression
-                switch (mod.PendingDiskState.Compression)
+                switch (mod.Compression)
                 {
-                    case ManagedMod.DiskState.ArchiveCompression.Compressed:
+                    case ManagedMod.ArchiveCompression.Compressed:
                         compressed.Text = Localization.GetString("yes");
                         compressed.ForeColor = Color.DarkGreen;
                         break;
-                    case ManagedMod.DiskState.ArchiveCompression.Uncompressed:
+                    case ManagedMod.ArchiveCompression.Uncompressed:
                         compressed.Text = Localization.GetString("no");
                         compressed.ForeColor = Color.Black;
                         break;
@@ -204,12 +212,12 @@ namespace Fo76ini
                 }
 
                 // Fill stuff depending on installation type
-                switch (mod.PendingDiskState.Method)
+                switch (mod.Method)
                 {
                     /*
                      * Bundled *.ba2 archive
                      */
-                    case ManagedMod.DiskState.DeploymentMethod.BundledBA2:
+                    case ManagedMod.DeploymentMethod.BundledBA2:
                         // Installation type
                         type.Text = Localization.GetString("modsTableTypeBundled");
                         type.ForeColor = Color.OrangeRed;
@@ -243,9 +251,9 @@ namespace Fo76ini
                     /*
                      * Separate *.ba2 archive
                      */
-                    case ManagedMod.DiskState.DeploymentMethod.SeparateBA2:
+                    case ManagedMod.DeploymentMethod.SeparateBA2:
                         // Installation type
-                        if (mod.PendingDiskState.Frozen)
+                        if (mod.Freeze)
                         {
                             type.Text = Localization.GetString("modsTableTypeSeparateFrozen");
                             type.ForeColor = Color.Teal;
@@ -257,7 +265,7 @@ namespace Fo76ini
                         }
 
                         // Archive name
-                        archiveName.Text = mod.PendingDiskState.ArchiveName;
+                        archiveName.Text = mod.ArchiveName;
 
                         // Root dir
                         rootDir.Text = "Data";
@@ -268,7 +276,7 @@ namespace Fo76ini
                     /*
                      * Loose files
                      */
-                    case ManagedMod.DiskState.DeploymentMethod.Loose:
+                    case ManagedMod.DeploymentMethod.Loose:
                         // Installation type
                         type.Text = Localization.GetString("modsTableTypeLoose");
                         type.ForeColor = Color.MediumVioletRed;
@@ -294,7 +302,7 @@ namespace Fo76ini
                         frozen.ForeColor = Color.Silver;
 
                         // Root dir
-                        rootDir.Text = mod.PendingDiskState.RootFolder;
+                        rootDir.Text = mod.RootFolder;
                         break;
                 }
 
@@ -327,14 +335,14 @@ namespace Fo76ini
 
         private void UpdateSettings()
         {
-            if (!IniFiles.Instance.IsLoaded())
-                return;
+            /*if (!IniFiles.Instance.IsLoaded())
+                return;*/
             // TODO: Disable mods
             //this.checkBoxDisableMods.Checked = ManagedMods.Instance.ModsDisabled;
             // TODO: Configuration rewrite
-            this.checkBoxAddArchivesAsBundled.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUnpackBA2ByDefault", false);
-            this.checkBoxModsUseHardlinks.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUseHardlinks", true);
-            this.checkBoxFreezeBundledArchives.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bFreezeBundledArchives", false);
+            this.checkBoxAddArchivesAsBundled.Checked = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
+            this.checkBoxModsUseHardlinks.Checked = IniFiles.Config.GetBool("Mods", "bUseHardlinks", true);
+            this.checkBoxFreezeBundledArchives.Checked = IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false);
 
             //this.textBoxGamePath.Text = Shared.GamePath;
 
@@ -343,7 +351,7 @@ namespace Fo76ini
 
         private void UpdateLabel(bool success = true)
         {
-            if (ManagedMods.Instance.isDeploymentNecessary())
+            if (Mods.isDeploymentNecessary())
                 this.DisplayDeploymentNecessary();
             else if (success)
                 this.DisplayAllDone();
@@ -407,12 +415,12 @@ namespace Fo76ini
         public void ModDetailsFeedback(ManagedMod changedMod)
         {
             if (editedIndices.Count() == 1)
-                ManagedMods.Instance.Mods[editedIndex] = changedMod.CreateDeepCopy();
+                Mods[editedIndex] = changedMod.CreateDeepCopy();
             else
             {
                 foreach (int index in editedIndices)
                 {
-                    if (!ManagedMods.Instance.Mods[index].FrozenDiskState.Frozen)
+                    if (!Mods[index].Frozen)
                     {
                         // TODO: Bulk mod edit
                         /*ManagedMod.DiskState pendingState = ManagedMods.Instance.Mods[index].PendingDiskState;
@@ -440,16 +448,16 @@ namespace Fo76ini
 
         private void FormMods_Load(object sender, EventArgs e)
         {
-            IniFiles.Instance.LoadWindowState("FormMods", this);
-            IniFiles.Instance.LoadListViewState("FormMods", this.listViewMods);
+            Configuration.LoadWindowState("FormMods", this);
+            Configuration.LoadListViewState("FormMods", this.listViewMods);
         }
 
         private void FormMods_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                IniFiles.Instance.SaveWindowState("FormMods", this);
-                IniFiles.Instance.SaveListViewState("FormMods", this.listViewMods);
+                Configuration.SaveWindowState("FormMods", this);
+                Configuration.SaveListViewState("FormMods", this.listViewMods);
                 e.Cancel = true;
                 if (this.buttonModsDeploy.Enabled && (true || MsgBox.ShowID("modsOnCloseDeploymentNecessary", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                     Hide();
@@ -562,8 +570,8 @@ namespace Fo76ini
             }
 
             if (modCount == 1)
-                UpdateSidePanel(ManagedMods.Instance.Mods[editedIndex], 1);
-                //this.formModDetails.UpdateUI(ManagedMods.Instance.Mods[selectedIndex], 1);
+                UpdateSidePanel(Mods[editedIndex], 1);
+            //this.formModDetails.UpdateUI(ManagedMods.Instance.Mods[selectedIndex], 1);
             else
             {
                 // TODO: BULK MOD EDIT
@@ -610,7 +618,7 @@ namespace Fo76ini
             {
                 foreach (int index in selectedIndices)
                 {
-                    string path = ManagedMods.Instance.Mods[index].GetManagedFolderPath();
+                    string path = Mods[index].ManagedFolderPath;
                     if (Directory.Exists(path))
                         Utils.OpenExplorer(path);
                     else
@@ -637,7 +645,7 @@ namespace Fo76ini
                 return;
             else if (selectedIndices.Count == 1)
             {
-                selectedIndex = ManagedMods.Instance.MoveModUp(selectedIndex);
+                selectedIndex = Mods.MoveModUp(selectedIndex);
                 selectedIndices.Clear();
             }
             else
@@ -646,7 +654,7 @@ namespace Fo76ini
                 selectedIndices = selectedIndices.OrderBy(i => i).ToList();
                 List<int> newSelectedIndices = new List<int>();
                 foreach (int index in selectedIndices)
-                    newSelectedIndices.Add(ManagedMods.Instance.MoveModUp(index));
+                    newSelectedIndices.Add(Mods.MoveModUp(index));
                 selectedIndices = newSelectedIndices;
             }
             UpdateModList();
@@ -665,7 +673,7 @@ namespace Fo76ini
                 return;
             else if (selectedIndices.Count == 1)
             {
-                selectedIndex = ManagedMods.Instance.MoveModDown(selectedIndex);
+                selectedIndex = Mods.MoveModDown(selectedIndex);
                 selectedIndices.Clear();
             }
             else
@@ -674,7 +682,7 @@ namespace Fo76ini
                 selectedIndices = selectedIndices.OrderByDescending(i => i).ToList();
                 List<int> newSelectedIndices = new List<int>();
                 foreach (int index in selectedIndices)
-                    newSelectedIndices.Add(ManagedMods.Instance.MoveModDown(index));
+                    newSelectedIndices.Add(Mods.MoveModDown(index));
                 selectedIndices = newSelectedIndices;
             }
             UpdateModList();
@@ -689,12 +697,12 @@ namespace Fo76ini
 
             if (e.NewValue == CheckState.Checked)
             {
-                ManagedMods.Instance.EnableMod(e.Index);
+                Mods.EnableMod(e.Index);
                 listViewMods.Items[e.Index].ForeColor = Color.DarkGreen;
             }
             else if (e.NewValue == CheckState.Unchecked)
             {
-                ManagedMods.Instance.DisableMod(e.Index);
+                Mods.DisableMod(e.Index);
                 listViewMods.Items[e.Index].ForeColor = Color.DarkRed;
             }
 
@@ -717,8 +725,8 @@ namespace Fo76ini
                         break;
                     }
                 }
-                foreach (ManagedMod mod in ManagedMods.Instance.Mods)
-                    mod.PendingDiskState.Enabled = state;
+                foreach (ManagedMod mod in Mods)
+                    mod.Enabled = state;
             }
             else
             {
@@ -731,7 +739,7 @@ namespace Fo76ini
                     }
                 }
                 foreach (ListViewItem item in this.listViewMods.SelectedItems)
-                    ManagedMods.Instance.Mods[item.Index].PendingDiskState.Enabled = state;
+                    Mods[item.Index].Enabled = state;
             }
             UpdateModList();
             UpdateLabel();
@@ -759,7 +767,7 @@ namespace Fo76ini
             }
             else
             {
-                ManagedMod mod = ManagedMods.Instance.Mods[selectedIndex];
+                ManagedMod mod = Mods[selectedIndex];
                 DialogResult res = MsgBox.Get("modsDeleteBtn").FormatText(mod.Title).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
@@ -853,7 +861,7 @@ namespace Fo76ini
         {
             if (MsgBox.ShowID("modsImportQuestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                ManagedMods.Instance.ImportInstalledMods();
+                ModInstallations.ImportInstalledMods(Mods);
                 this.UpdateModList();
 
                 CloseSidePanel();
@@ -869,7 +877,7 @@ namespace Fo76ini
         // View > Show conflicting files
         private void showConflictingFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<ModHelpers.Conflict> conflicts = ModHelpers.GetConflictingFiles(ManagedMods.Instance.Mods);
+            List<ModHelpers.Conflict> conflicts = ModHelpers.GetConflictingFiles(Mods.Mods);
             if (conflicts.Count == 0)
             {
                 MsgBox.ShowID("modsNoConflictingFiles", MessageBoxIcon.Information);
@@ -881,7 +889,7 @@ namespace Fo76ini
                 f.WriteLine("Conflicting mods:");
                 foreach (ModHelpers.Conflict conflict in conflicts)
                 {
-                    f.WriteLine("\n* " +conflict.conflictText + " (" + conflict.conflictingFiles.Count + " conflicting file" + (conflict.conflictingFiles.Count == 1 ? "" : "s") + ")");
+                    f.WriteLine("\n* " + conflict.conflictText + " (" + conflict.conflictingFiles.Count + " conflicting file" + (conflict.conflictingFiles.Count == 1 ? "" : "s") + ")");
                     foreach (string conflictingFile in conflict.conflictingFiles)
                         f.WriteLine("    -> " + conflictingFile);
                 }
@@ -927,8 +935,9 @@ namespace Fo76ini
         // Help > Log files > Show modmanager.log.txt
         private void showModmanagerlogtxtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(ManagedMods.Instance.logFile.GetFilePath()))
-                Utils.OpenNotepad(ManagedMods.Instance.logFile.GetFilePath());
+            // TODO: Logfile
+            /*if (File.Exists(ManagedMods.Instance.logFile.GetFilePath()))
+                Utils.OpenNotepad(ManagedMods.Instance.logFile.GetFilePath());*/
         }
 
         // Help > Log files > Show archive2.log.txt
@@ -972,17 +981,17 @@ namespace Fo76ini
         // Apply changes
         private void buttonModsApplyTextBoxes_Click(object sender, EventArgs e)
         {
-            ManagedMods.Instance.logFile.WriteLine("\n\nSaving changes to resource lists...");
+            //ManagedMods.Instance.logFile.WriteLine("\n\nSaving changes to resource lists...");
 
             ResourceList IndexFileList = ResourceList.FromString(this.textBoxsResourceIndexFileList.Text);
-            IndexFileList.AssociateINI(IniFile.F76Custom, "Archive", "sResourceIndexFileList");
+            IndexFileList.AssociateTweak(ResourceListTweak.GetSResourceIndexFileList());
             IndexFileList.CommitToINI();
 
             ResourceList Archive2List = ResourceList.FromString(this.textBoxsResourceArchive2List.Text);
-            Archive2List.AssociateINI(IniFile.F76Custom, "Archive", "sResourceArchive2List");
+            IndexFileList.AssociateTweak(ResourceListTweak.GetSResourceArchive2List());
             Archive2List.CommitToINI();
 
-            IniFiles.Instance.SaveAll();
+            IniFiles.Save();
         }
 
         // Reset
@@ -1007,22 +1016,22 @@ namespace Fo76ini
         // Alternative *.ba2 import method
         private void checkBoxAddArchivesAsBundled_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Mods", "bUnpackBA2ByDefault", this.checkBoxAddArchivesAsBundled.Checked);
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Set("Mods", "bUnpackBA2ByDefault", this.checkBoxAddArchivesAsBundled.Checked);
+            IniFiles.Config.Save();
         }
 
         // Hard links
         private void checkBoxModsUseHardlinks_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Mods", "bUseHardlinks", this.checkBoxModsUseHardlinks.Checked);
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Set("Mods", "bUseHardlinks", this.checkBoxModsUseHardlinks.Checked);
+            IniFiles.Config.Save();
         }
 
         // Freeze bundled archives
         private void checkBoxFreezeBundledArchives_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Mods", "bFreezeBundledArchives", this.checkBoxFreezeBundledArchives.Checked);
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Set("Mods", "bFreezeBundledArchives", this.checkBoxFreezeBundledArchives.Checked);
+            IniFiles.Config.Save();
         }
 
         private void checkBoxModsWriteSResourceDataDirsFinal_CheckedChanged(object sender, EventArgs e)
@@ -1030,7 +1039,7 @@ namespace Fo76ini
             // TODO: sResourceDataDirsFinal checkbox
             /*ManagedMods.Instance.WriteDataDirs = this.checkBoxModsWriteSResourceDataDirsFinal.Checked;
             IniFiles.Instance.Set(IniFile.Config, "Mods", "bWriteSResourceDataDirsFinal", this.checkBoxModsWriteSResourceDataDirsFinal.Checked);
-            IniFiles.Instance.SaveConfig();*/
+            IniFiles.Config.Save();*/
         }
 
 
@@ -1040,7 +1049,9 @@ namespace Fo76ini
 
         private void InstallModArchive(string path)
         {
-            Invoke(() => DisableUI());
+            // TODO: Multi-threading??
+            ModInstallations.InstallArchive(Mods, path, false);
+            /*Invoke(() => DisableUI());
             Invoke(() => ProgressBarMarquee());
             ManagedMods.Instance.InstallModArchive(path,
                 (text, percent) => {
@@ -1054,11 +1065,14 @@ namespace Fo76ini
                     Invoke(() => UpdateModList());
                     Invoke(() => UpdateLabel(success));
                 }
-            );
+            );*/
         }
 
         private void InstallModArchiveFrozen(string path)
         {
+            // TODO: Multi-threading??
+            ModInstallations.InstallArchive(Mods, path, true);
+            /*
             Invoke(() => DisableUI());
             Invoke(() => ProgressBarMarquee());
             ManagedMods.Instance.InstallModArchiveFrozen(path,
@@ -1073,12 +1087,14 @@ namespace Fo76ini
                     Invoke(() => UpdateModList());
                     Invoke(() => UpdateLabel(success));
                 }
-            );
+            );*/
         }
 
         private void InstallModFolder(string path)
         {
-            Invoke(() => DisableUI());
+            // TODO: Multi-threading??
+            ModInstallations.InstallFolder(Mods, path);
+            /*Invoke(() => DisableUI());
             Invoke(() => ProgressBarContinuous(0));
             ManagedMods.Instance.InstallModFolder(path,
                 (text, percent) => {
@@ -1093,14 +1109,14 @@ namespace Fo76ini
                     Invoke(() => UpdateModList());
                     Invoke(() => UpdateLabel(success));
                 }
-            );
+            );*/
         }
 
         private void InstallBulk(string[] files)
         {
             foreach (string filePath in files)
             {
-                bool unpackBA2ByDefault = IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUnpackBA2ByDefault", false);
+                bool unpackBA2ByDefault = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
                 string fullFilePath = Path.GetFullPath(filePath);
                 if (fullFilePath.Length > 259 && Directory.Exists(@"\\?\" + fullFilePath))
                     fullFilePath = @"\\?\" + fullFilePath;
@@ -1129,7 +1145,9 @@ namespace Fo76ini
 
         private void UnfreezeBulkMods(List<int> indices)
         {
-            Invoke(DisableUI);
+            // TODO: Multi-threading??
+            ModActions.Unfreeze(Mods, indices);
+            /*Invoke(DisableUI);
             ManagedMods.Instance.UnfreezeMods(indices,
                 (text, percent) => {
                     Invoke(() => Display(text));
@@ -1140,12 +1158,14 @@ namespace Fo76ini
                     Invoke(() => UpdateModList());
                     Invoke(() => UpdateLabel());
                 }
-            );
+            );*/
         }
 
         private void DeleteMod(int index)
         {
-            Invoke(() => DisableUI());
+            // TODO: Multi-threading??
+            ModActions.DeleteMod(Mods, index);
+            /*Invoke(() => DisableUI());
             Invoke(() => ProgressBarMarquee());
             ManagedMods.Instance.DeleteMod(index, () => {
                 Invoke(() => ProgressBarContinuous(100));
@@ -1153,12 +1173,14 @@ namespace Fo76ini
                 Invoke(() => selectedIndex = -1);
                 Invoke(() => UpdateModList());
                 Invoke(() => UpdateLabel());
-            });
+            }); */
         }
 
         private void DeleteModsBulk(List<int> indices)
         {
-            Invoke(() => DisableUI());
+            // TODO: Multi-threading??
+            ModActions.DeleteMods(Mods, indices);
+            /*Invoke(() => DisableUI());
             Invoke(() => ProgressBarMarquee());
             ManagedMods.Instance.DeleteMods(indices, () => {
                 Invoke(() => ProgressBarContinuous(100));
@@ -1166,12 +1188,14 @@ namespace Fo76ini
                 Invoke(() => selectedIndex = -1);
                 Invoke(() => UpdateModList());
                 Invoke(() => UpdateLabel());
-            });
+            });*/
         }
 
         public void Deploy()
         {
-            Invoke(() => this.pictureBoxModsLoadingGIF.Visible = true);
+            // TODO: Multi-threading??
+            ModDeployment.Deploy(Mods);
+            /*Invoke(() => this.pictureBoxModsLoadingGIF.Visible = true);
             Invoke(() => ShowLoadingUI());
             Invoke(() => ProgressBarContinuous(0));
             Invoke(() => Display("Deploying..."));
@@ -1191,11 +1215,10 @@ namespace Fo76ini
                         {
                             DisplayAllDone();
 
-                            // TODO: Disable mods checkbox
-                            /*if (ManagedMods.Instance.ModsDisabled)
+                            if (Mods.ModsDisabled)
                                 MsgBox.Get("modsDisabledDone").Popup(MessageBoxIcon.Information);
                             else
-                                */MsgBox.Get("modsDeployedDone").Popup(MessageBoxIcon.Information);
+                                MsgBox.Get("modsDeployedDone").Popup(MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -1204,7 +1227,7 @@ namespace Fo76ini
                         }
                     });
                 }
-            );
+            );*/
         }
 
         private void Invoke(Action func)
@@ -1255,6 +1278,11 @@ namespace Fo76ini
             this.labelModsDeploy.Visible = true;
             this.labelModsDeploy.ForeColor = Color.Red;
             this.labelModsDeploy.Text = Localization.GetString("modsFailed");
+        }
+
+        private void saveDEVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mods.Save();
         }
     }
 }

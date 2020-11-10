@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Fo76ini.Utilities;
+using System;
 using System.Windows.Forms;
 
 namespace Fo76ini.Forms.ExceptionDialog
@@ -19,7 +13,7 @@ namespace Fo76ini.Forms.ExceptionDialog
             this.FormClosing += this.FormExceptionDialog_FormClosing;
         }
 
-        public static FormExceptionDialog OpenDialog (Exception ex)
+        public static FormExceptionDialog OpenDialog(Exception ex)
         {
             FormExceptionDialog form = new FormExceptionDialog();
 

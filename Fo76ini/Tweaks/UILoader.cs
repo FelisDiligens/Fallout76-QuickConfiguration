@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Fo76ini.Interface;
+using Fo76ini.Utilities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fo76ini
 {
+    // LEGACY CODE
     public class UILoader
     {
         public delegate void OnLoadUIFunction();
@@ -14,6 +14,7 @@ namespace Fo76ini
 
         public void Update()
         {
+            // TODO: Weird exception handling...
             List<Exception> exceptions = new List<Exception>();
             foreach (OnLoadUIFunction func in OnLoadUI)
             {
@@ -74,7 +75,7 @@ namespace Fo76ini
         // comboBox.SelectedIndexChanged => comboBox.SelectionChangeCommitted
         // checkBox.CheckedChanged       => checkBox.MouseClick
         // radioButton.CheckedChanged    => radioButton.MouseClick
-
+        /*
         public void LinkCustom(CheckBox checkBox, Func<bool> getState, Action<bool> setState)
         {
             this.Add(() => checkBox.Checked = getState());
@@ -99,29 +100,29 @@ namespace Fo76ini
             num.ValueChanged += (object sender, EventArgs e) => setState(Convert.ToSingle(num.Value));
         }
 
-        public void LinkBoolNegated(CheckBox checkBox, IniFile f, string section, string key, bool defaultValue)
+        public void LinkBoolNegated(CheckBox checkBox, LegacyIniFile f, string section, string key, bool defaultValue)
         {
             LinkBool(checkBox, f, section, key, defaultValue, true);
         }
 
-        public void LinkBool(CheckBox checkBox, IniFile f, string section, string key, bool defaultValue, bool negated = false)
+        public void LinkBool(CheckBox checkBox, LegacyIniFile f, string section, string key, bool defaultValue, bool negated = false)
         {
             this.Add(() => {
-                bool val = IniFiles.Instance.GetBool(f, section, key, defaultValue);
+                bool val = LegacyIniFiles.Instance.GetBool(f, section, key, defaultValue);
                 checkBox.Checked = negated ? !val : val;
             });
             checkBox.MouseClick += (object sender, MouseEventArgs e) => {
-                if (f == IniFile.F76Custom && (negated ? !checkBox.Checked : checkBox.Checked) == defaultValue)
-                    IniFiles.Instance.Remove(f, section, key);
+                if (f == LegacyIniFile.F76Custom && (negated ? !checkBox.Checked : checkBox.Checked) == defaultValue)
+                    LegacyIniFiles.Instance.Remove(f, section, key);
                 else
-                    IniFiles.Instance.Set(f, section, key, negated ? !checkBox.Checked : checkBox.Checked);
+                    LegacyIniFiles.Instance.Set(f, section, key, negated ? !checkBox.Checked : checkBox.Checked);
             };
         }
 
-        public void LinkBool(RadioButton radioButtonTrue, RadioButton radioButtonFalse, IniFile f, string section, string key, bool defaultValue)
+        public void LinkBool(RadioButton radioButtonTrue, RadioButton radioButtonFalse, LegacyIniFile f, string section, string key, bool defaultValue)
         {
             this.Add(() => {
-                bool val = IniFiles.Instance.GetBool(f, section, key, defaultValue);
+                bool val = LegacyIniFiles.Instance.GetBool(f, section, key, defaultValue);
                 if (val)
                     radioButtonTrue.Checked = true;
                 else
@@ -129,71 +130,71 @@ namespace Fo76ini
             });
             radioButtonTrue.MouseClick += (object sender, MouseEventArgs e) => {
                 if (radioButtonTrue.Checked)
-                    IniFiles.Instance.Set(f, section, key, true);
+                    LegacyIniFiles.Instance.Set(f, section, key, true);
             };
             radioButtonFalse.MouseClick += (object sender, MouseEventArgs e) => {
                 if (radioButtonFalse.Checked)
-                    IniFiles.Instance.Set(f, section, key, false);
+                    LegacyIniFiles.Instance.Set(f, section, key, false);
             };
         }
 
-        public void LinkInt(NumericUpDown num, IniFile f, string section, string key, int defaultValue)
+        public void LinkInt(NumericUpDown num, LegacyIniFile f, string section, string key, int defaultValue)
         {
             this.Add(() => {
-                num.Value = Utils.Clamp(IniFiles.Instance.GetInt(f, section, key, defaultValue), Convert.ToInt32(num.Minimum), Convert.ToInt32(num.Maximum));
+                num.Value = Utils.Clamp(LegacyIniFiles.Instance.GetInt(f, section, key, defaultValue), Convert.ToInt32(num.Minimum), Convert.ToInt32(num.Maximum));
             });
             num.ValueChanged += (object sender, EventArgs e) => {
-                if (f == IniFile.F76Custom && num.Value == defaultValue)
-                    IniFiles.Instance.Remove(f, section, key);
+                if (f == LegacyIniFile.F76Custom && num.Value == defaultValue)
+                    LegacyIniFiles.Instance.Remove(f, section, key);
                 else
-                    IniFiles.Instance.Set(f, section, key, Convert.ToInt32(num.Value));
+                    LegacyIniFiles.Instance.Set(f, section, key, Convert.ToInt32(num.Value));
             };
         }
 
-        public void LinkInt(TrackBar slider, IniFile f, string section, string key, int defaultValue)
+        public void LinkInt(TrackBar slider, LegacyIniFile f, string section, string key, int defaultValue)
         {
             this.Add(() => {
-                slider.Value = Utils.Clamp(IniFiles.Instance.GetInt(f, section, key, defaultValue), Convert.ToInt32(slider.Minimum), Convert.ToInt32(slider.Maximum));
+                slider.Value = Utils.Clamp(LegacyIniFiles.Instance.GetInt(f, section, key, defaultValue), Convert.ToInt32(slider.Minimum), Convert.ToInt32(slider.Maximum));
             });
             slider.ValueChanged += (object sender, EventArgs e) => {
-                if (f == IniFile.F76Custom && slider.Value == defaultValue)
-                    IniFiles.Instance.Remove(f, section, key);
+                if (f == LegacyIniFile.F76Custom && slider.Value == defaultValue)
+                    LegacyIniFiles.Instance.Remove(f, section, key);
                 else
-                    IniFiles.Instance.Set(f, section, key, Convert.ToInt32(slider.Value));
+                    LegacyIniFiles.Instance.Set(f, section, key, Convert.ToInt32(slider.Value));
             };
         }
 
-        public void LinkFloat(NumericUpDown num, IniFile f, string section, string key, float defaultValue)
+        public void LinkFloat(NumericUpDown num, LegacyIniFile f, string section, string key, float defaultValue)
         {
             this.Add(() => {
-                num.Value = Convert.ToDecimal(Utils.Clamp(IniFiles.Instance.GetFloat(f, section, key, defaultValue), Convert.ToSingle(num.Minimum), Convert.ToSingle(num.Maximum)));
+                num.Value = Convert.ToDecimal(Utils.Clamp(LegacyIniFiles.Instance.GetFloat(f, section, key, defaultValue), Convert.ToSingle(num.Minimum), Convert.ToSingle(num.Maximum)));
             });
             num.ValueChanged += (object sender, EventArgs e) => {
-                if (f == IniFile.F76Custom && Convert.ToSingle(num.Value) == defaultValue)
-                    IniFiles.Instance.Remove(f, section, key);
+                if (f == LegacyIniFile.F76Custom && Convert.ToSingle(num.Value) == defaultValue)
+                    LegacyIniFiles.Instance.Remove(f, section, key);
                 else
-                    IniFiles.Instance.Set(f, section, key, Convert.ToSingle(num.Value));
+                    LegacyIniFiles.Instance.Set(f, section, key, Convert.ToSingle(num.Value));
             };
         }
 
-        public void LinkString(TextBox textBox, IniFile f, string section, string key, string defaultValue)
+        public void LinkString(TextBox textBox, LegacyIniFile f, string section, string key, string defaultValue)
         {
-            this.Add(() => textBox.Text = IniFiles.Instance.GetString(section, key, defaultValue));
+            this.Add(() => textBox.Text = LegacyIniFiles.Instance.GetString(section, key, defaultValue));
             textBox.TextChanged += (object sender, EventArgs e) => {
-                if (f == IniFile.F76Custom && textBox.Text == defaultValue)
-                    IniFiles.Instance.Remove(f, section, key);
+                if (f == LegacyIniFile.F76Custom && textBox.Text == defaultValue)
+                    LegacyIniFiles.Instance.Remove(f, section, key);
                 else
-                    IniFiles.Instance.Set(f, section, key, textBox.Text);
+                    LegacyIniFiles.Instance.Set(f, section, key, textBox.Text);
             };
         }
 
-        public void LinkList(RadioButton[] radioButtons, string[] associatedValues, IniFile f, string section, string key, string defaultValue)
+        public void LinkList(RadioButton[] radioButtons, string[] associatedValues, LegacyIniFile f, string section, string key, string defaultValue)
         {
             if (radioButtons.Length != associatedValues.Length)
                 throw new ArgumentException("LinkList: radioButtons and associatedValues have to have the same length!");
 
             this.Add(() => {
-                string value = IniFiles.Instance.GetString(f, section, key, defaultValue);
+                string value = LegacyIniFiles.Instance.GetString(f, section, key, defaultValue);
                 int index = Array.IndexOf(associatedValues, value);
                 if (index > -1)
                 {
@@ -208,18 +209,18 @@ namespace Fo76ini
                 string associatedValue = associatedValues[i];
                 radioButton.MouseClick += (object sender, MouseEventArgs e) => {
                     if (radioButton.Checked)
-                        IniFiles.Instance.Set(f, section, key, associatedValue);
+                        LegacyIniFiles.Instance.Set(f, section, key, associatedValue);
                 };
             }
         }
 
-        public void LinkList(ComboBox comboBox, string[] associatedValues, IniFile f, string section, string key, string defaultValue, int defaultComboBoxIndex)
+        public void LinkList(ComboBox comboBox, string[] associatedValues, LegacyIniFile f, string section, string key, string defaultValue, int defaultComboBoxIndex)
         {
             if (comboBox.Items.Count != associatedValues.Length)
                 throw new ArgumentException("LinkList: comboBox has to have as many items as associatedValues has!");
 
             this.Add(() => {
-                string value = IniFiles.Instance.GetString(f, section, key, defaultValue);
+                string value = LegacyIniFiles.Instance.GetString(f, section, key, defaultValue);
                 int index = Array.IndexOf(associatedValues, value);
                 if (index > -1)
                     comboBox.SelectedIndex = index;
@@ -227,8 +228,8 @@ namespace Fo76ini
                     comboBox.SelectedIndex = defaultComboBoxIndex;
             });
             comboBox.SelectionChangeCommitted += (object sender, EventArgs e) => {
-                IniFiles.Instance.Set(f, section, key, associatedValues[comboBox.SelectedIndex]);
+                LegacyIniFiles.Instance.Set(f, section, key, associatedValues[comboBox.SelectedIndex]);
             };
-        }
+        }*/
     }
 }

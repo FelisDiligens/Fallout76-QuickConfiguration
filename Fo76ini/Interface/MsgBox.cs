@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Fo76ini.Utilities;
 
-namespace Fo76ini
+namespace Fo76ini.Interface
 {
     public class MsgBox
     {
@@ -24,7 +23,7 @@ namespace Fo76ini
         public static void PlayNotificationSound()
         {
             // Don't play sound, if disabled:
-            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bPlayNotificationSound", true))
+            if (!IniFiles.Config.GetBool("Preferences", "bPlayNotificationSound", true))
                 return;
 
             // Play alert.wav if available:
@@ -39,7 +38,7 @@ namespace Fo76ini
         public static void PlayErrorNotificationSound()
         {
             // Don't play sound, if disabled:
-            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bPlayNotificationSound", true))
+            if (!IniFiles.Config.GetBool("Preferences", "bPlayNotificationSound", true))
                 return;
 
             // Play alert.wav if available:
@@ -56,13 +55,13 @@ namespace Fo76ini
             get { return id; }
         }
 
-        public MsgBox (string id, string title, string text)
+        public MsgBox(string id, string title, string text)
         {
             this.Title = title;
             this.Text = text;
             this.id = id;
         }
-        
+
         private static Dictionary<string, MsgBox> msgBoxes = new Dictionary<string, MsgBox>();
         public static void Add(MsgBox msgBox)
         {

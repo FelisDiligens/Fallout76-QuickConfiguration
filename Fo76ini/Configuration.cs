@@ -1,15 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Fo76ini
 {
-    // TODO: Rewrite every IniFiles.Instance.GetXXX to use the Configuration class instead.
-    public class Configuration
+    public static class Configuration
     {
-        #region [Preferences] section
+        // https://stackoverflow.com/questions/1873658/net-windows-forms-remember-windows-size-and-location
+        public static void SaveWindowState(string formName, Form form)
+        {
+            if (form.WindowState == FormWindowState.Maximized)
+            {
+                IniFiles.Config.Set(formName, "iLocationX", form.RestoreBounds.Location.X);
+                IniFiles.Config.Set(formName, "iLocationY", form.RestoreBounds.Location.Y);
+                IniFiles.Config.Set(formName, "iWidth", form.RestoreBounds.Size.Width);
+                IniFiles.Config.Set(formName, "iHeight", form.RestoreBounds.Size.Height);
+                IniFiles.Config.Set(formName, "bMaximised", true);
+            }
+            else
+            {
+                IniFiles.Config.Set(formName, "iLocationX", form.Location.X);
+                IniFiles.Config.Set(formName, "iLocationY", form.Location.Y);
+                IniFiles.Config.Set(formName, "iWidth", form.Size.Width);
+                IniFiles.Config.Set(formName, "iHeight", form.Size.Height);
+                IniFiles.Config.Set(formName, "bMaximised", false);
+            }
+            IniFiles.Config.Save();
+        }
+
+        public static void LoadWindowState(string formName, Form form)
+        {
+            int locX = IniFiles.Config.GetInt(formName, "iLocationX", -1);
+            int locY = IniFiles.Config.GetInt(formName, "iLocationY", -1);
+            if (locX >= 0 && locY >= 0)
+                form.Location = new System.Drawing.Point(locX, locY);
+
+            int width = IniFiles.Config.GetInt(formName, "iWidth", form.Size.Width);
+            int height = IniFiles.Config.GetInt(formName, "iHeight", form.Size.Height);
+            if (width >= form.MinimumSize.Width && height >= form.MinimumSize.Height)
+                form.Size = new System.Drawing.Size(width, height);
+
+            if (IniFiles.Config.GetBool(formName, "bMaximised", false))
+                form.WindowState = FormWindowState.Maximized;
+        }
+
+        public static void SaveListViewState(string formName, ListView listView)
+        {
+            List<int> widths = new List<int>();
+            foreach (ColumnHeader column in listView.Columns)
+            {
+                widths.Add(column.Width);
+            }
+            IniFiles.Config.Set(formName, "sColumnWidths", string.Join(",", widths));
+        }
+
+        public static void LoadListViewState(string formName, ListView listView)
+        {
+            List<int> lWidths = new List<int>();
+            string[] sWidths = IniFiles.Config.GetString(formName, "sColumnWidths", "").Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string sWidth in sWidths)
+                lWidths.Add(Convert.ToInt32(sWidth));
+
+            int i = 0;
+            foreach (ColumnHeader column in listView.Columns)
+            {
+                if (i < lWidths.Count)
+                    column.Width = lWidths[i++];
+            }
+        }
+
+        /*#region [Preferences] section
 
         // Effect:  When true, opens mod manager on tool launch.
         // Default: false
@@ -17,11 +77,11 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", false);
+                return IniFiles.Config.GetBool("Preferences", "bOpenModManagerOnLaunch", false);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "Preferences", "bOpenModManagerOnLaunch", value);
+                IniFiles.Config.Set("Preferences", "bOpenModManagerOnLaunch", value);
             }
         }
 
@@ -31,11 +91,11 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bIgnoreUpdates", false);
+                return IniFiles.Config.GetBool("Preferences", "bIgnoreUpdates", false);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "Preferences", "bIgnoreUpdates", value);
+                IniFiles.Config.Set("Preferences", "bIgnoreUpdates", value);
             }
         }
 
@@ -45,11 +105,11 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bDisableWhatsNew", false);
+                return IniFiles.Config.GetBool("Preferences", "bDisableWhatsNew", false);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "Preferences", "bDisableWhatsNew", value);
+                IniFiles.Config.Set("Preferences", "bDisableWhatsNew", value);
             }
         }
 
@@ -59,11 +119,11 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAutoApply", false);
+                return IniFiles.Config.GetBool("Preferences", "bAutoApply", false);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "Preferences", "bAutoApply", value);
+                IniFiles.Config.Set("Preferences", "bAutoApply", value);
             }
         }
 
@@ -73,11 +133,11 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bAlternativeINIMode", false);
+                return IniFiles.Config.GetBool( "Preferences", "bAlternativeINIMode", false);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "Preferences", "bAlternativeINIMode", value);
+                IniFiles.Config.Set("Preferences", "bAlternativeINIMode", value);
             }
         }
 
@@ -87,11 +147,11 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bDenyNTFSWritePermission", false);
+                return IniFiles.Config.GetBool( "Preferences", "bDenyNTFSWritePermission", false);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "Preferences", "bDenyNTFSWritePermission", value);
+                IniFiles.Config.Set("Preferences", "bDenyNTFSWritePermission", value);
             }
         }
 
@@ -101,11 +161,11 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bSkipBackupQuestion", false);
+                return IniFiles.Config.GetBool( "Preferences", "bSkipBackupQuestion", false);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "Preferences", "bSkipBackupQuestion", value);
+                IniFiles.Config.Set("Preferences", "bSkipBackupQuestion", value);
             }
         }
 
@@ -113,7 +173,7 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uGameEdition", 0);
+                return IniFiles.Config.GetUInt("Preferences", "uGameEdition", 0);
             }
         }
 
@@ -121,7 +181,7 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetUInt(IniFile.Config, "Preferences", "uLaunchOption", 1);
+                return IniFiles.Config.GetUInt("Preferences", "uLaunchOption", 1);
             }
         }
 
@@ -131,43 +191,43 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bQuitOnLaunch", false);
+                return IniFiles.Config.GetBool( "Preferences", "bQuitOnLaunch", false);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "Preferences", "bQuitOnLaunch", value);
+                IniFiles.Config.Set("Preferences", "bQuitOnLaunch", value);
             }
         }
         #endregion
 
 
         #region [NuclearWinter] section
-
+        */
         // Default: false
         public static bool bNWMode
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "NuclearWinter", "bNWMode",
-                        IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bNWMode", false)); // backward compatibility
+                return IniFiles.Config.GetBool("NuclearWinter", "bNWMode",
+                        IniFiles.Config.GetBool("Preferences", "bNWMode", false)); // backward compatibility
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "NuclearWinter", "bNWMode", value);
-                IniFiles.Instance.Remove(IniFile.Config, "Preferences", "bNWMode");
+                IniFiles.Config.Set("NuclearWinter", "bNWMode", value);
+                IniFiles.Config.Remove("Preferences", "bNWMode");
             }
         }
-
+        /*
         // Default: true
         public static bool bRenameCustomINI
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "NuclearWinter", "bRenameCustomINI", true);
+                return IniFiles.Config.GetBool( "NuclearWinter", "bRenameCustomINI", true);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "NuclearWinter", "bRenameCustomINI", value);
+                IniFiles.Config.Set("NuclearWinter", "bRenameCustomINI", value);
             }
         }
 
@@ -176,11 +236,11 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "bAutoDisableMods", "bAutoDisableMods", false);
+                return IniFiles.Config.GetBool( "bAutoDisableMods", "bAutoDisableMods", false);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "NuclearWinter", "bAutoDisableMods", value);
+                IniFiles.Config.Set("NuclearWinter", "bAutoDisableMods", value);
             }
         }
 
@@ -189,29 +249,53 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "NuclearWinter", "bRenameDLLs", true);
+                return IniFiles.Config.GetBool( "NuclearWinter", "bRenameDLLs", true);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "NuclearWinter", "bRenameDLLs", value);
+                IniFiles.Config.Set("NuclearWinter", "bRenameDLLs", value);
             }
         }
 
         #endregion
 
 
-        #region [Mods] section
+        #region [Mods] section*/
         public static bool bUseHardlinks
         {
             get
             {
-                return IniFiles.Instance.GetBool(IniFile.Config, "Mods", "bUseHardlinks", true);
+                return IniFiles.Config.GetBool("Mods", "bUseHardlinks", true);
             }
             set
             {
-                IniFiles.Instance.Set(IniFile.Config, "Mods", "bUseHardlinks", value);
+                IniFiles.Config.Set("Mods", "bUseHardlinks", value);
+            }
+        }/*
+
+        public static bool bFreezeBundledArchives
+        {
+            get
+            {
+                return IniFiles.Config.GetBool( "Mods", "bFreezeBundledArchives", false);
+            }
+            set
+            {
+                IniFiles.Config.Set("Mods", "bFreezeBundledArchives", value);
             }
         }
-        #endregion
+
+        public static bool bUnpackBA2ByDefault
+        {
+            get
+            {
+                return IniFiles.Config.GetBool( "Mods", "bUnpackBA2ByDefault", false);
+            }
+            set
+            {
+                IniFiles.Config.Set("Mods", "bUnpackBA2ByDefault", value);
+            }
+        }
+        #endregion*/
     }
 }

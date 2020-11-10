@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Fo76ini
+namespace Fo76ini.Utilities
 {
     // https://stackoverflow.com/questions/2077981/cut-files-to-clipboard-in-c-sharp
     public class ClipboardUtils
@@ -50,7 +50,7 @@ namespace Fo76ini
                 DragDropEffects.Move);
         }
 
-        private static List<FileSystemInfo> GetFileSystemInfoList (IEnumerable<string> filesAndFolders)
+        private static List<FileSystemInfo> GetFileSystemInfoList(IEnumerable<string> filesAndFolders)
         {
             List<FileSystemInfo> fileSystemInfos = new List<FileSystemInfo>();
             foreach (string fileOrFolder in filesAndFolders)

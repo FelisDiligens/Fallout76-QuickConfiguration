@@ -71,6 +71,11 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Collections.Specialized, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.Specialized.4.3.0\lib\net46\System.Collections.Specialized.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
@@ -99,7 +104,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClipboardUtils.cs" />
+    <Compile Include="Forms\FormSplash\FormSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSplash\FormSplash.Designer.cs">
+      <DependentUpon>FormSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormTextPrompt\TextPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormTextPrompt\TextPrompt.Designer.cs">
+      <DependentUpon>TextPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\ClipboardUtils.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Forms\ExceptionDialog\FormExceptionDialog.cs">
       <SubType>Form</SubType>
@@ -107,7 +124,10 @@
     <Compile Include="Forms\ExceptionDialog\FormExceptionDialog.Designer.cs">
       <DependentUpon>FormExceptionDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1\Form1.Colors.cs">
+    <Compile Include="Forms\Form1\ColorPreview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1\Form1.LinkControls.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Form1\Form1.cs">
@@ -125,12 +145,6 @@
     <Compile Include="Forms\Form1\Form1.Language.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormMods\FormModDetails\FormModDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormMods\FormModDetails\FormModDetails.Designer.cs">
-      <DependentUpon>FormModDetails.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormMods\FormMods.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,46 +157,79 @@
     <Compile Include="Forms\FormMods\FormMods.NexusMods.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\FormNexusAPI\FormNexus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormNexusAPI\FormNexus.Designer.cs">
+      <DependentUpon>FormNexus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormProfiles\FormProfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormProfiles\FormProfiles.Designer.cs">
+      <DependentUpon>FormProfiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormWhatsNew\FormWhatsNew.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormWhatsNew\FormWhatsNew.Designer.cs">
       <DependentUpon>FormWhatsNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profiles\GameInstance.cs" />
+    <Compile Include="IniFile.cs" />
+    <Compile Include="IniFiles.cs" />
     <Compile Include="Interface\DropDown.cs" />
     <Compile Include="Interface\InvalidXmlException.cs" />
     <Compile Include="Interface\Translation.Shared.cs" />
-    <Compile Include="Log.cs" />
-    <Compile Include="Mods\Archive2.cs" />
+    <Compile Include="Profiles\Profile.cs" />
+    <Compile Include="Profiles\ProfileManager.cs" />
+    <Compile Include="Tweaks\Colors\PipboyColorTweak.cs" />
+    <Compile Include="Tweaks\Colors\PowerArmorPipboyColorTweak.cs" />
+    <Compile Include="Tweaks\Colors\QuickboyColorTweak.cs" />
+    <Compile Include="Tweaks\General\EnableSteamTweak.cs" />
+    <Compile Include="Tweaks\ITweak.cs" />
+    <Compile Include="Utilities\Log.cs" />
+    <Compile Include="Utilities\Archive2.cs" />
     <Compile Include="Mods\ManagedMod.cs" />
     <Compile Include="Mods\ModActions.cs" />
     <Compile Include="Mods\ModDeployment.cs" />
     <Compile Include="Mods\ModHelpers.cs" />
     <Compile Include="Mods\ModInstallations.cs" />
-    <Compile Include="Mods\Mods.cs" />
-    <Compile Include="IniFiles.cs" />
+    <Compile Include="Mods\ManagedMods.cs" />
     <Compile Include="Interface\MsgBox.cs" />
-    <Compile Include="Mods\NexusMods.cs" />
+    <Compile Include="NexusAPI\NexusMods.cs" />
     <Compile Include="Mods\ResourceList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\Translation.cs" />
-    <Compile Include="Interface\UILoader.cs" />
+    <Compile Include="Tweaks\ResourceLists\ResourceListTweak.cs" />
+    <Compile Include="Tweaks\UILoader.cs" />
     <Compile Include="Shared.cs" />
-    <Compile Include="Utils.cs" />
-    <Compile Include="Volume.cs" />
+    <Compile Include="Tweaks\Config\ToolQuitOnLaunchTweak.cs" />
+    <Compile Include="Tweaks\LinkedTweaks.cs" />
+    <Compile Include="Utilities\Utils.cs" />
+    <Compile Include="Utilities\Volume.cs" />
     <EmbeddedResource Include="Forms\ExceptionDialog\FormExceptionDialog.resx">
       <DependentUpon>FormExceptionDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMods\FormModDetails\FormModDetails.resx">
-      <DependentUpon>FormModDetails.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMods\FormMods.resx">
       <DependentUpon>FormMods.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormNexusAPI\FormNexus.resx">
+      <DependentUpon>FormNexus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormProfiles\FormProfiles.resx">
+      <DependentUpon>FormProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSplash\FormSplash.resx">
+      <DependentUpon>FormSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormTextPrompt\TextPrompt.resx">
+      <DependentUpon>TextPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWhatsNew\FormWhatsNew.resx">
       <DependentUpon>FormWhatsNew.cs</DependentUpon>
@@ -213,7 +260,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\text-24.png" />
+    <None Include="banner.png" />
     <Content Include="icon.ico" />
+    <None Include="Resources\delete-48.png" />
+    <None Include="Resources\exit-48.png" />
+    <None Include="Resources\cog-24.png" />
     <None Include="Resources\heart-24.png" />
     <None Include="Resources\heart-48.png" />
     <None Include="Resources\available-updates-48.png" />
@@ -281,5 +333,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,18 +1,10 @@
-﻿using IniParser.Model;
+﻿using Fo76ini.Interface;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace Fo76ini
 {
@@ -38,14 +30,14 @@ namespace Fo76ini
 
             form1.RefreshNWModeButtonAppearance();
             form1.CheckVersion();
-            formMods.UpdateUI();
+            // formMods.UpdateUI(); // TODO: Changing the language before loading mods crashes the tool on startup.
 
             // Force redraw:
             form1.Refresh();
-            formMods.Refresh();
+            // formMods.Refresh();
 
             // Set sLanguage in config.ini:
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "sLanguage", translation.ISO);
+            IniFiles.Config.Set("Preferences", "sLanguage", translation.ISO);
             Localization.locale = translation.ISO;
 
             if (translation.ISO != "en-US")

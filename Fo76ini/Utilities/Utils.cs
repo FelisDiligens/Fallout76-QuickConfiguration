@@ -1,24 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using System.Threading;
-using System.Globalization;
-using System.Drawing;
-using System.Drawing.Imaging;
+using System.Windows.Forms;
 using Tulpep.NotificationWindow;
-using System.Drawing.Drawing2D;
 
-namespace Fo76ini
+namespace Fo76ini.Utilities
 {
-    class Utils
+    public static class Utils
     {
         public static CultureInfo enUS = CultureInfo.CreateSpecificCulture("en-US");
 
@@ -102,7 +98,6 @@ namespace Fo76ini
         public static void DeleteDirectory(string targetDir)
         {
             // https://stackoverflow.com/questions/1157246/unauthorizedaccessexception-trying-to-delete-a-file-in-a-folder-where-i-can-dele
-            IniFiles.Instance.SetNTFSWritePermission(true);
             File.SetAttributes(targetDir, FileAttributes.Normal);
 
             string[] files = Directory.GetFiles(targetDir);
@@ -461,7 +456,7 @@ namespace Fo76ini
         }
 
 
-        public static PopupNotifier CreatePopup (string title, string text)
+        public static PopupNotifier CreatePopup(string title, string text)
         {
             // https://www.c-sharpcorner.com/article/working-with-popup-notification-in-windows-forms/
             // https://github.com/Tulpep/Notification-Popup-Window
@@ -725,6 +720,15 @@ namespace Fo76ini
         public static long GetUnixTimeStamp()
         {
             return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        }
+
+        // https://stackoverflow.com/a/250400
+        public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            return dtDateTime;
         }
     }
 }

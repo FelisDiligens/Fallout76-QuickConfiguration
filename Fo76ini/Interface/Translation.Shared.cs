@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Fo76ini.Interface;
 
 namespace Fo76ini
 {
@@ -39,6 +35,8 @@ namespace Fo76ini
             localizedStrings["invalid"] = "Invalid";
             localizedStrings["nuclearwintermode"] = "Nuclear Winter";
             localizedStrings["adventuremode"] = "Adventure";
+            localizedStrings["affectedValues"] = "Affected values";
+            localizedStrings["affectedFiles"] = "Affected files";
         }
 
         public static void AddSharedMessageBoxes()
@@ -375,6 +373,19 @@ namespace Fo76ini
             MsgBox.Add("nexusModsRemoveRemoteInfoSuccess",
                 "Done",
                 "Mod information removed."
+            );
+
+            // TODO: Replace a lot of the message boxes with generic ones for easier translation.
+            // Generic questions:
+            MsgBox.Add("deleteQuestion",
+                "Are you sure?",
+                "Do you want to delete \"{0}\"?"
+            );
+
+            // Profile manager:
+            MsgBox.Add("errorAtLeastOneGameOrProfile",
+                "Cannot delete game or profile",
+                "At least one game or profile is needed."
             );
         }
     }

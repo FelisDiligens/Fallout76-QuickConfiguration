@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Fo76ini.Tweaks;
+using Fo76ini.Tweaks.ResourceLists;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fo76ini.Mods
 {
@@ -25,9 +24,7 @@ namespace Fo76ini.Mods
 
         private List<string> resourceList = new List<string>();
 
-        private IniFile iniFile;
-        private string section;
-        private string key;
+        private ITweak<string> tweak;
 
         public int Count => this.resourceList.Count;
 
@@ -53,20 +50,10 @@ namespace Fo76ini.Mods
         /// Reads the Mods\resources.txt file and loads it's contents.
         /// </summary>
         /// <returns></returns>
-        public static ResourceList FromTXT()
+        public static ResourceList FromTXT(String path)
         {
-            ResourceList list = ResourceList.GetResourceIndexFileList();
-
-            if (File.Exists(ManagedMods.Instance.GetResourcesPath()))
-            {
-                string text = File.ReadAllText(ManagedMods.Instance.GetResourcesPath());
-                list.resourceList = ResourceList.ToList(text);
-            }
-            else
-            {
-                list.Clear();
-            }
-
+            ResourceList list = new ResourceList();
+            list.LoadTXT(path);
             return list;
         }
 
@@ -77,37 +64,23 @@ namespace Fo76ini.Mods
         /// <param name="section"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static ResourceList FromINI (IniFile iniFile, string section, string key)
+        public static ResourceList FromTweak(ITweak<string> tweak)
         {
-            return new ResourceList(iniFile, section, key);
+            return new ResourceList(tweak);
         }
 
-        /// <summary>
-        /// Loads the resource list from the [Archive] section of Fallout76Custom.ini.
-        /// </summary>
-        /// <param name="key">The *.ini key in the [Archive] section of Fallout76Custom.ini</param>
-        /// <returns></returns>
-        public static ResourceList FromINI(string key)
-        {
-            return new ResourceList(IniFile.F76Custom, "Archive", key);
-        }
-
-        /// <summary>
-        /// Loads the following resource list from Fallout76Custom.ini: [Archive]sResourceIndexFileList=...
-        /// </summary>
-        /// <returns></returns>
-        public static ResourceList GetResourceIndexFileList()
-        {
-            return new ResourceList(IniFile.F76Custom, "Archive", "sResourceIndexFileList");
-        }
-
-        /// <summary>
-        /// Loads the following resource list from Fallout76Custom.ini: [Archive]sResourceArchive2List=...
-        /// </summary>
-        /// <returns></returns>
         public static ResourceList GetResourceArchive2List()
         {
-            return new ResourceList(IniFile.F76Custom, "Archive", "sResourceArchive2List");
+            return ResourceList.FromTweak(
+                ResourceListTweak.GetSResourceArchive2List()
+            );
+        }
+
+        public static ResourceList GetResourceIndexFileList()
+        {
+            return ResourceList.FromTweak(
+                ResourceListTweak.GetSResourceIndexFileList()
+            );
         }
 
         /// <summary>
@@ -121,9 +94,9 @@ namespace Fo76ini.Mods
         /// <param name="iniFile"></param>
         /// <param name="section"></param>
         /// <param name="key"></param>
-        private ResourceList (IniFile iniFile, string section, string key)
+        private ResourceList(ITweak<string> tweak)
         {
-            AssociateINI(iniFile, section, key);
+            AssociateTweak(tweak);
             LoadFromINI();
         }
 
@@ -131,7 +104,7 @@ namespace Fo76ini.Mods
          * Converting from and to string:
          */
 
-        private static List<string> ToList (string sResourceList)
+        private static List<string> ToList(string sResourceList)
         {
             return (new List<string>(sResourceList.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))).Distinct().Select(x => x.Trim()).ToList();
         }
@@ -146,57 +119,33 @@ namespace Fo76ini.Mods
             return ResourceList.ToString(this.resourceList);
         }
 
-
-        /*
-         * Writting to and reading from *.ini file:
-         */
-
-        private void SetINIString(string sResourceList)
-        {
-            IniFiles.Instance.Set(iniFile, section, key, sResourceList);
-        }
-
-        private void RemoveINIString()
-        {
-            IniFiles.Instance.Remove(iniFile, section, key);
-        }
-
-        private string GetINIString()
-        {
-            return IniFiles.Instance.GetString(iniFile, section, key, "");
-        }
-
         /// <summary>
         /// Loads the resource list from the associated *.ini file.
         /// </summary>
         public void LoadFromINI()
         {
-            this.resourceList = ResourceList.ToList(GetINIString());
+            this.resourceList = ResourceList.ToList(tweak.GetValue());
         }
 
         /// <summary>
         /// Commits changes to the resource list for the associated *.ini file.
-        /// Use IniFiles.Instance.SaveAll() to write *.ini file to disk.
+        /// Use IniFiles.Save() to write *.ini file to disk.
         /// </summary>
         public void CommitToINI()
         {
             if (this.resourceList.Count > 0)
-                SetINIString(ToString());
+                tweak.SetValue(ToString());
             else
-                RemoveINIString();
+                tweak.ResetValue();
         }
 
         /// <summary>
         /// Associate a value in an *.ini file to save to and load from.
         /// </summary>
-        /// <param name="iniFile"></param>
-        /// <param name="section"></param>
-        /// <param name="key"></param>
-        public void AssociateINI (IniFile iniFile, string section, string key)
+        /// <param name="tweak"></param>
+        public void AssociateTweak(ITweak<string> tweak)
         {
-            this.iniFile = iniFile;
-            this.section = section;
-            this.key = key;
+            this.tweak = tweak;
         }
 
 
@@ -207,19 +156,19 @@ namespace Fo76ini.Mods
         /// <summary>
         /// Writes list to the Mods\resources.txt file.
         /// </summary>
-        public void SaveTXT()
+        public void SaveTXT(String path)
         {
             File.WriteAllText(
-                ManagedMods.Instance.GetResourcesPath(),
+                path,
                 this.ToString()
             );
         }
 
-        public void LoadTXT()
+        public void LoadTXT(String path)
         {
-            if (File.Exists(ManagedMods.Instance.GetResourcesPath()))
+            if (File.Exists(path))
             {
-                string text = File.ReadAllText(ManagedMods.Instance.GetResourcesPath());
+                string text = File.ReadAllText(path);
                 this.resourceList = ResourceList.ToList(text);
             }
             else

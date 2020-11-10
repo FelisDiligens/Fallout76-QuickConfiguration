@@ -1,13 +1,12 @@
-﻿using System;
+﻿using Fo76ini.Interface;
+using Fo76ini.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fo76ini
@@ -17,7 +16,7 @@ namespace Fo76ini
         private List<string> galleryImagePaths = new List<string>();
         private ImageList galleryImageList = new ImageList();
 
-        private static string[] ValidImageFormats = new string[] { 
+        private static string[] ValidImageFormats = new string[] {
             ".png",
             ".jpg",
             ".gif",
@@ -39,8 +38,8 @@ namespace Fo76ini
             this.listViewScreenshots.MouseUp += listViewScreenshots_MouseUp;
             //this.sliderGalleryThumbnailSize.ValueChanged += sliderGalleryThumbnailSize_ValueChanged;
 
-            this.textBoxGalleryPaths.Text = IniFiles.Instance.GetString(IniFile.Config, "Gallery", "sCustomPathsList", "").Replace(",", "\r\n");
-            this.checkBoxGallerySearchRecursively.Checked = IniFiles.Instance.GetBool(IniFile.Config, "Gallery", "bSearchDirectoriesRecursively", false);
+            this.textBoxGalleryPaths.Text = IniFiles.Config.GetString("Gallery", "sCustomPathsList", "").Replace(",", "\r\n");
+            this.checkBoxGallerySearchRecursively.Checked = IniFiles.Config.GetBool("Gallery", "bSearchDirectoriesRecursively", false);
         }
 
         private void UpdateScreenShotGalleryThreaded()
@@ -96,9 +95,9 @@ namespace Fo76ini
              * C:\...\Fallout76\*.png
              */
             string[] gamePaths = new string[] {
-                IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathSteam", ""),
-                IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNet", ""),
-                IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sGamePathBethesdaNetPTS", "")
+                IniFiles.Config.GetString("Preferences", "sGamePathSteam", ""),
+                IniFiles.Config.GetString("Preferences", "sGamePathBethesdaNet", ""),
+                IniFiles.Config.GetString("Preferences", "sGamePathBethesdaNetPTS", "")
             };
             foreach (string gamePath in gamePaths)
             {
@@ -133,7 +132,7 @@ namespace Fo76ini
              * C:\Users\<your name>\Documents\My Games\Fallout 76\Photos\<UUID>\*.png
              * C:\Users\<your name>\Documents\My Games\Fallout 76\Photos\<UUID>\*-thumbnail.png
              */
-            string photosFolder = Path.Combine(IniFiles.Instance.iniParentPath, "Photos");
+            string photosFolder = Path.Combine(IniFiles.ParentPath, "Photos");
             if (Directory.Exists(photosFolder))
             {
                 IEnumerable<string> photos = Directory.EnumerateFiles(photosFolder, "*.png", SearchOption.AllDirectories);
@@ -303,12 +302,12 @@ namespace Fo76ini
 
         private void textBoxGalleryPaths_TextChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Gallery", "sCustomPathsList", this.textBoxGalleryPaths.Text.Replace("\r\n", ",").Replace("\n", ","));
+            IniFiles.Config.Set("Gallery", "sCustomPathsList", this.textBoxGalleryPaths.Text.Replace("\r\n", ",").Replace("\n", ","));
         }
 
         private void checkBoxGallerySearchRecursively_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Gallery", "bSearchDirectoriesRecursively", this.checkBoxGallerySearchRecursively.Checked);
+            IniFiles.Config.Set("Gallery", "bSearchDirectoriesRecursively", this.checkBoxGallerySearchRecursively.Checked);
         }
 
         private void Invoke(Action func)

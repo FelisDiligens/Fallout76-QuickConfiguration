@@ -1,74 +1,39 @@
-﻿using System;
+﻿using Fo76ini.Utilities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Fo76ini.Mods
 {
     /// <summary>
     /// Bundles functions that help with working with mods.
-    /// They don't change the state of a mod.
+    /// They don't affect any files and don't change any state.
     /// </summary>
     public static class ModHelpers
     {
         /// <summary>
-        /// Extracts an archive into the given folder. (Throws exceptions)
+        /// Converts ManagedMod.ArchiveCompression and ManagedMod.ArchiveFormat to an Archive2.Preset.
+        /// Automatically determines appropriate compression and format if needed.
         /// </summary>
-        /// <param name="archivePath"></param>
-        /// <param name="destinationPath"></param>
-        /// <param name="updateProgress"></param>
-        public static void ExtractArchive(string archivePath, string destinationPath, Action<string, int> updateProgress = null)
+        public static Archive2.Preset GetArchive2Preset(ManagedMod mod)
         {
-            string filePath = Path.GetFullPath(archivePath);
-            string fileName = Path.GetFileName(filePath);
-            string fileExtension = Path.GetExtension(filePath);
-
-            Directory.CreateDirectory(destinationPath);
-
-            if (updateProgress != null)
-                updateProgress($"Extracting {fileName} ...", -1);
-
-            if (fileExtension.ToLower() == ".ba2")
-            {
-                // Use Archive2.exe to extract:
-                Archive2.Extract(filePath, destinationPath);
-                // Might throw a Archive2Exception
-            }
-            else if ((new string[] { ".zip", ".rar", ".tar", ".7z" }).Contains(fileExtension.ToLower()))
-            {
-                // Use 7-Zip (7za.exe) to extract:
-                Utils.ExtractArchive(filePath, destinationPath);
-
-                if (!Directory.Exists(destinationPath))
-                    throw new FileNotFoundException("Something went wrong.");
-                    //MsgBox.ShowID("modsExtractUnknownErrorText", MessageBoxIcon.Error);
-                    //MsgBox.Get("modsExtractUnknownErrorText").FormatText(exc.Message).Show(MessageBoxIcon.Error);
-            }
-            else
-            {
-                throw new NotSupportedException($"File type not supported: {fileExtension}");
-                //MsgBox.Get("modsArchiveTypeNotSupported").FormatText(fileExtension).Show(MessageBoxIcon.Error);
-            }
+            return GetArchive2Preset(mod.ManagedFolderPath, mod.Format, mod.Compression);
         }
 
         /// <summary>
-        /// Basically converts ManagedMod.DiskState to Archive2.Preset.
+        /// Converts ManagedMod.ArchiveCompression and ManagedMod.ArchiveFormat to an Archive2.Preset.
         /// Automatically determines appropriate compression and format if needed.
         /// </summary>
-        /// <param name="diskState"></param>
-        /// <returns></returns>
-        public static Archive2.Preset GetArchive2Preset(ManagedMod.DiskState diskState)
+        public static Archive2.Preset GetArchive2Preset(String managedFolderPath, ManagedMod.ArchiveFormat format, ManagedMod.ArchiveCompression compression)
         {
             var preset = new Archive2.Preset();
 
             // No detection needed, "convert" ArchiveCompression to Archive2.Compression and ArchiveFormat to Archive2.Format:
-            if (diskState.Compression != ManagedMod.DiskState.ArchiveCompression.Auto && diskState.Format != ManagedMod.DiskState.ArchiveFormat.Auto)
+            if (compression != ManagedMod.ArchiveCompression.Auto && format != ManagedMod.ArchiveFormat.Auto)
             {
-                preset.compression = diskState.Compression == ManagedMod.DiskState.ArchiveCompression.Compressed ? Archive2.Compression.Default : Archive2.Compression.None;
-                preset.format = diskState.Format == ManagedMod.DiskState.ArchiveFormat.General ? Archive2.Format.General : Archive2.Format.DDS;
+                preset.compression = compression == ManagedMod.ArchiveCompression.Compressed ? Archive2.Compression.Default : Archive2.Compression.None;
+                preset.format = format == ManagedMod.ArchiveFormat.General ? Archive2.Format.General : Archive2.Format.DDS;
 
                 return preset;
             }
@@ -83,7 +48,6 @@ namespace Fo76ini.Mods
             int textureFoldersCount = 0;
             int soundFoldersCount = 0;
 
-            string managedFolderPath = diskState.GetManagedFolderPath();
             IEnumerable<string> folders = Directory.EnumerateDirectories(managedFolderPath);
             foreach (string path in folders)
             {
@@ -96,9 +60,6 @@ namespace Fo76ini.Mods
                 else if (soundFolders.Contains(folderName))
                     soundFoldersCount++;
             }
-
-            //int fileCount = Directory.EnumerateFiles(managedFolderPath).Count();
-            //if (fileCount == 0)
 
             if (soundFoldersCount > generalFoldersCount && soundFoldersCount > textureFoldersCount)
             {
@@ -143,10 +104,10 @@ namespace Fo76ini.Mods
             for (int i = 1; i < mods.Count; i++)
             {
                 ManagedMod lowerMod = mods[i];
-                string lowerPath = lowerMod.GetManagedFolderPath();
+                string lowerPath = lowerMod.ManagedFolderPath;
 
                 // If not enabled or non-existant, we don't need to check.
-                if (!lowerMod.isEnabled() || !Directory.Exists(lowerPath))
+                if (!lowerMod.Enabled || !Directory.Exists(lowerPath))
                     continue;
 
                 // Get a list of files with relative paths:
@@ -158,10 +119,10 @@ namespace Fo76ini.Mods
                 for (int l = 0; l < i; l++)
                 {
                     ManagedMod upperMod = mods[l];
-                    string upperPath = upperMod.GetManagedFolderPath();
+                    string upperPath = upperMod.ManagedFolderPath;
 
                     // If not enabled or non-existant, we don't need to check.
-                    if (!upperMod.isEnabled() || !Directory.Exists(upperPath))
+                    if (!upperMod.Enabled || !Directory.Exists(upperPath))
                         continue;
 
                     Conflict conflict = new Conflict();
@@ -193,26 +154,24 @@ namespace Fo76ini.Mods
         /// <summary>
         /// Searches through the list of mods and returns a list of conflicting archive names.
         /// </summary>
-        /// <param name="mods"></param>
-        /// <returns></returns>
         public static List<Conflict> GetConflictingArchiveNames(List<ManagedMod> mods)
         {
             List<string> customArchiveNames = new List<string>();
             List<Conflict> conflictingArchiveNames = new List<Conflict>();
             foreach (ManagedMod mod in mods)
             {
-                if (mod.PendingDiskState.Method == ManagedMod.DiskState.DeploymentMethod.SeparateBA2 && mod.isEnabled())
+                if (mod.Method == ManagedMod.DeploymentMethod.SeparateBA2 && mod.Enabled)
                 {
-                    if (customArchiveNames.Contains(mod.PendingDiskState.ArchiveName.ToLower()))
+                    if (customArchiveNames.Contains(mod.ArchiveName.ToLower()))
                     {
                         Conflict conflict = new Conflict();
-                        conflict.conflictText = $"{mod.Title} uses a taken archive name: {mod.PendingDiskState.ArchiveName}";
-                        conflict.conflictingArchiveName = mod.PendingDiskState.ArchiveName;
+                        conflict.conflictText = $"{mod.Title} uses a taken archive name: {mod.ArchiveName}";
+                        conflict.conflictingArchiveName = mod.ArchiveName;
                         conflictingArchiveNames.Add(conflict);
                     }
                     else
                     {
-                        customArchiveNames.Add(mod.PendingDiskState.ArchiveName.ToLower());
+                        customArchiveNames.Add(mod.ArchiveName.ToLower());
                     }
                 }
             }

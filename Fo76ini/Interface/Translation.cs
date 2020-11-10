@@ -4,13 +4,12 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net.Security;
 using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Fo76ini.Interface;
+using Fo76ini.Utilities;
 
 namespace Fo76ini
 {
@@ -31,6 +30,11 @@ namespace Fo76ini
             AddSharedMessageBoxes();
         }
 
+        /// <summary>
+        /// Returns a localized string identified by 'str'.
+        /// </summary>
+        /// <param name="str">String identifier</param>
+        /// <returns>Localized string</returns>
         public static string GetString(string str)
         {
             return Localization.localizedStrings[str];
@@ -44,26 +48,29 @@ namespace Fo76ini
         public static void LookupLanguages()
         {
             // Create 'languages' folder:
-            if (!Directory.Exists(languageFolder))
-                Directory.CreateDirectory(languageFolder);
+            Directory.CreateDirectory(languageFolder);
 
             // Look into the folder and add all language files to the dropdown menu:
             Localization.translations.Clear();
             Localization.comboBoxTranslations.Clear();
             foreach (string filePath in Directory.GetFiles(languageFolder))
             {
-                if (filePath.EndsWith(".xml") && !filePath.EndsWith(".template.xml"))
+                try
                 {
-                    Translation translation = new Translation();
-                    translation.Load(filePath);
-                    Localization.translations.Add(translation);
-                    Localization.comboBoxTranslations.Add(translation.Name);
-                    //Localization.comboBoxTranslations.Add($"{translation.Name} [{translation.Version}]");
+                    if (filePath.EndsWith(".xml") && !filePath.EndsWith(".template.xml"))
+                    {
+                        Translation translation = new Translation();
+                        translation.Load(filePath);
+                        Localization.translations.Add(translation);
+                        Localization.comboBoxTranslations.Add(translation.Name);
+                        //Localization.comboBoxTranslations.Add($"{translation.Name} [{translation.Version}]");
+                    }
                 }
+                catch { } // TODO: Loading language failed...
             }
 
             // Set language:
-            string selectedLanguageISO = IniFiles.Instance.GetString(IniFile.Config, "Preferences", "sLanguage", CultureInfo.CurrentUICulture.Name);
+            string selectedLanguageISO = IniFiles.Config.GetString("Preferences", "sLanguage", CultureInfo.CurrentUICulture.Name);
             int languageIndex = GetTranslationIndex(selectedLanguageISO);
             int enUSIndex = GetTranslationIndex("en-US");
             Localization.comboBoxTranslations.SelectedIndex = languageIndex > -1 ? languageIndex : enUSIndex;
@@ -402,9 +409,7 @@ namespace Fo76ini
             }
 
             // Save it:
-            if (!Directory.Exists(Localization.languageFolder))
-                Directory.CreateDirectory(Localization.languageFolder);
-
+            Directory.CreateDirectory(Localization.languageFolder);
             xmlDoc.Save(newFilePath);
         }
 
@@ -514,7 +519,7 @@ namespace Fo76ini
                 XElement xmlToolStripItem = new XElement(item.GetType().Name,
                     new XAttribute("text", item.Text),
                     new XAttribute("id", item.Name));
-                
+
                 count += SerializeStripItems(xmlToolStripItem, item);
                 count++;
                 parent.Add(xmlToolStripItem);

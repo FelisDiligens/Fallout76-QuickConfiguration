@@ -1,129 +1,127 @@
-﻿using System;
+﻿using Fo76ini.Utilities;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Fo76ini.Mods
 {
     /// <summary>
-    /// Bundles functions that change the state or the files of a mod.
+    /// Bundles functions that change the state or the files of a mod, but don't affect game files.
     /// </summary>
     public static class ModActions
     {
-        /*public static void RenameManagedFolder(ManagedMod mod)
-        {
-            // Don't unnecessarily move folder:
-            if (mod.CurrentDiskState.ManagedFolderName == mod.PendingDiskState.ManagedFolderName)
-                return;
-
-            // Rename folder:
-            if (Directory.Exists(mod.CurrentDiskState.GetManagedFolderPath()))
-                Directory.Move(mod.CurrentDiskState.GetManagedFolderPath(), mod.PendingDiskState.GetManagedFolderPath());
-
-            // Change DiskState and save:
-            mod.CurrentDiskState.ManagedFolderName = mod.PendingDiskState.ManagedFolderName;
-            ManagedMods.Instance.Save();
-        }*/
-
-        public static void Delete(ManagedMod mod)
+        /// <summary>
+        /// Deletes all files of 'mod'.
+        /// This includes the managed folder and frozen archive.
+        /// </summary>
+        public static void DeleteFiles(ManagedMod mod)
         {
             // Delete managed folder:
-            if (Directory.Exists(mod.CurrentDiskState.GetManagedFolderPath()))
-                Directory.Delete(mod.CurrentDiskState.GetManagedFolderPath(), true);
+            if (Directory.Exists(mod.ManagedFolderPath))
+                Directory.Delete(mod.ManagedFolderPath, true);
 
             // Delete frozen archive:
-            if (mod.FrozenDiskState.Frozen &&
-                mod.FrozenDiskState.Method == ManagedMod.DiskState.DeploymentMethod.SeparateBA2 &&
-                File.Exists(mod.FrozenDiskState.GetFrozenArchivePath()))
+            if (/*mod.Frozen &&
+                mod.PreviousMethod == ManagedMod.DeploymentMethod.SeparateBA2 &&*/
+                File.Exists(mod.FrozenArchivePath))
             {
-                File.Delete(mod.FrozenDiskState.GetFrozenArchivePath());
+                File.Delete(mod.FrozenArchivePath);
             }
+        }
+
+        /// <summary>
+        /// Deletes all files of the mod and removes it from the list.
+        /// </summary>
+        public static void DeleteMod(ManagedMods mods, int index)
+        {
+            ModActions.DeleteFiles(mods[index]);
+            mods.RemoveAt(index);
+        }
+
+        /// <summary>
+        /// Deletes multiple mods and removes them from the list.
+        /// </summary>
+        public static void DeleteMods(ManagedMods mods, List<int> indices)
+        {
+            indices = indices.OrderByDescending(i => i).ToList();
+            foreach (int index in indices)
+            {
+                ModActions.DeleteFiles(mods[index]);
+                mods.RemoveAt(index);
+            }
+        }
+
+        /// <summary>
+        /// Freezes the mod.
+        /// </summary>
+        public static void Freeze(ManagedMods mods, int index)
+        {
+            ModActions.Freeze(mods[index]);
+            mods.Save();
+        }
+
+        /// <summary>
+        /// Freezes the mods.
+        /// </summary>
+        public static void Freeze(ManagedMods mods, IEnumerable<int> indices)
+        {
+            foreach (int index in indices)
+                ModActions.Freeze(mods[index]);
+            mods.Save();
         }
 
         public static void Freeze(ManagedMod mod)
         {
             // TODO: Remove connection to ManagedMods
             // Only freeze if not already frozen:
-            if (mod.FrozenDiskState.Frozen)
+            if (mod.Frozen && File.Exists(mod.FrozenArchivePath))
             {
                 // TODO: ModActions.Freeze: Should the mod get "refrozen"?
-                ManagedMods.Instance.logFile.WriteLine($"Cannot freeze a mod ('{mod.Title}') that is already frozen.\n");
+                //ManagedMods.Instance.logFile.WriteLine($"Cannot freeze a mod ('{mod.Title}') that is already frozen.\n");
                 return;
             }
 
-            Directory.CreateDirectory(mod.CurrentDiskState.GetFrozenDataPath());
-
-            string managedPath = mod.CurrentDiskState.GetManagedFolderPath();
-            string frozenPath = mod.PendingDiskState.GetFrozenArchivePath();
+            Directory.CreateDirectory(mod.FrozenDataPath);
 
             // Create archive:
-            Archive2.Create(frozenPath, managedPath, ModHelpers.GetArchive2Preset(mod.PendingDiskState));
-
-            // Failed?
-            if (!File.Exists(frozenPath))
-            {
-                ManagedMods.Instance.logFile.WriteLine("Error while freezing mod: Couldn't create *.ba2 file. Please check archive2.log.txt.\n");
-                return;
-            }
+            Archive2.Create(mod.FrozenArchivePath, mod.ManagedFolderPath, ModHelpers.GetArchive2Preset(mod));
 
             // Change DiskState and save:
-            mod.FrozenDiskState = mod.CurrentDiskState.CreateDeepCopy();
-            mod.FrozenDiskState.Frozen = true;
-            mod.FrozenDiskState.Method = ManagedMod.DiskState.DeploymentMethod.SeparateBA2;
-            mod.FrozenDiskState.ArchiveName = mod.FrozenDiskState.GetFrozenArchiveName();
-            mod.FrozenDiskState.Compression = mod.PendingDiskState.Compression;
-            mod.FrozenDiskState.Format = mod.PendingDiskState.Format;
-            ManagedMods.Instance.Save();
+            mod.Frozen = true;
+            mod.FrozenCompression = mod.Compression;
+            mod.FrozenFormat = mod.Format;
         }
 
-        public static void Unfreeze(ManagedMod mod, Action<string, int> updateProgress = null, Action<bool> done = null)
+        /// <summary>
+        /// Unfreezes the mod.
+        /// </summary>
+        public static void Unfreeze(ManagedMods mods, int index)
         {
-            try
-            {
-                // Only unfreeze if actually frozen:
-                if (!mod.FrozenDiskState.Frozen)
-                {
-                    ManagedMods.Instance.logFile.WriteLine($"Cannot unfreeze a mod ('{mod.Title}') that isn't frozen.\n");
-                    if (done != null)
-                        done(false);
-                    return;
-                }
-
-                if (updateProgress != null)
-                    updateProgress($"Unfreezing {mod.Title}", -1);
-
-                // Delete *.ba2:
-                File.Delete(mod.FrozenDiskState.GetFrozenArchivePath());
-
-                // Change DiskState and save:
-                mod.FrozenDiskState.Frozen = false;
-
-                if (done != null)
-                    done(true);
-            }
-            catch (Archive2Exception ex)
-            {
-                ManagedMods.Instance.logFile.WriteLine($"Archive2Exception occured while unfreezing mod '{mod.Title}': {ex.Message}\n{ex.StackTrace}\n");
-                MsgBox.Get("archive2Error").Show(MessageBoxIcon.Error);
-                if (done != null)
-                    done(false);
-                return;
-            }
-            catch (Exception ex)
-            {
-                ManagedMods.Instance.logFile.WriteLine($"Unhandled exception occured while unfreezing mod '{mod.Title}': {ex.Message}\n{ex.StackTrace}\n");
-                if (done != null)
-                    done(false);
-                return;
-            }
+            ModActions.Unfreeze(mods[index]);
         }
 
-        private static void ManipulateModFolder(ManagedMod mod, Action<string, int> updateProgress = null)
+        /// <summary>
+        /// Unfreezes the mods.
+        /// </summary>
+        public static void Unfreeze(ManagedMods mods, IEnumerable<int> indices)
         {
-            string managedFolderPath = mod.CurrentDiskState.GetManagedFolderPath();
+            foreach (int index in indices)
+                ModActions.Unfreeze(mods[index]);
+        }
+
+        public static void Unfreeze(ManagedMod mod)
+        {
+            // Delete *.ba2:
+            if (File.Exists(mod.FrozenArchivePath))
+                File.Delete(mod.FrozenArchivePath);
+
+            // Change DiskState and save:
+            mod.Frozen = false;
+        }
+
+        public static void ManipulateModFolder(ManagedMod mod)
+        {
+            string managedFolderPath = mod.ManagedFolderPath;
             foreach (string path in Directory.EnumerateFiles(managedFolderPath))
             {
                 // If a *.ba2 archive was found, extract it:
@@ -162,10 +160,9 @@ namespace Fo76ini.Mods
                     if (name == "textures" && Directory.EnumerateFiles(managedFolderPath).Count() == 0)
                     {
                         // ... set ba2 format type to DDS
-                        if (mod.PendingDiskState.Format != ManagedMod.DiskState.ArchiveFormat.Auto)
+                        if (mod.Format != ManagedMod.ArchiveFormat.Auto)
                         {
-                            mod.PendingDiskState.Format = ManagedMod.DiskState.ArchiveFormat.Textures;
-                            mod.PendingDiskState.RootFolder = "Data";
+                            mod.Format = ManagedMod.ArchiveFormat.Textures;
                             break;
                         }
                     }
@@ -182,81 +179,8 @@ namespace Fo76ini.Mods
                 if (extension == ".dll")
                 {
                     // ... then it probably has to be installed as loose files into the root directory:
-                    mod.PendingDiskState.Method = ManagedMod.DiskState.DeploymentMethod.Loose;
-                    mod.PendingDiskState.RootFolder = ".";
-                }
-            }
-        }
-
-        // Use lower-case, plz
-        private static List<string> whitelistedDlls = new List<string>() {
-            "bink2w64.dll",
-            "chrome_elf.dll",
-            "concrt140.dll",
-            "d3dcompiler_43.dll",
-            "libcef.dll",
-            "libegl.dll", // "libEGL.dll",
-            "libglesv2.dll", // "libGLESv2.dll",
-            "msvcp140.dll",
-            "ortp_x64.dll",
-            "steam_api64.dll",
-            "vccorlib140.dll",
-            "vcruntime140.dll",
-            "vivoxsdk_x64.dll",
-            "d3dcompiler_46.dll",
-            "d3dcompiler_47.dll"
-            // "x3daudio1_7.dll" ?
-        };
-
-        public static void RenameAddedDLLs()
-        {
-            // Iterate through every *.dll file in game path:
-            IEnumerable<string> files = Directory.EnumerateFiles(Shared.GamePath, "*.dll");
-            ManagedMods.Instance.logFile.WriteLine($"Renaming \'*.dll\' files to \'*.dll.nwmode\'.");
-            foreach (string filePath in files)
-            {
-                // If not whitelisted...
-                string fileName = Path.GetFileName(filePath);
-                if (!whitelistedDlls.Contains(fileName.ToLower()))
-                {
-                    // ... rename it:
-                    if (!File.Exists(filePath + ".nwmode"))
-                    {
-                        File.Move(filePath, filePath + ".nwmode");
-                        ManagedMods.Instance.logFile.WriteLine($"   Renamed {fileName}");
-                    }
-
-                    // ... or delete it:
-                    else
-                    {
-                        File.Delete(filePath);
-                        ManagedMods.Instance.logFile.WriteLine($"   Deleted {fileName}");
-                    }
-                }
-            }
-        }
-
-        public static void RestoreAddedDLLs()
-        {
-            // Iterate through every *.dll.nwmode file in game path:
-            IEnumerable<string> files = Directory.EnumerateFiles(Shared.GamePath, "*.dll.nwmode");
-            ManagedMods.Instance.logFile.WriteLine($"Restoring \'*.dll.nwmode\' files to \'*.dll\'.");
-            foreach (string filePath in files)
-            {
-                string fileName = Path.GetFileName(filePath);
-                string originalFilePath = Path.Combine(Path.GetDirectoryName(filePath), fileName.Replace(".dll.nwmode", ".dll"));
-
-                // Rename or delete, if the original exists:
-                if (!File.Exists(originalFilePath))
-                {
-                    File.Move(filePath, originalFilePath);
-                    ManagedMods.Instance.logFile.WriteLine($"   Renamed {fileName}");
-                }
-                else
-                {
-                    // Assuming that the same *.dll file has been copied during deployment:
-                    File.Delete(filePath); // we can just delete it.
-                    ManagedMods.Instance.logFile.WriteLine($"   Deleted {fileName}");
+                    mod.Method = ManagedMod.DeploymentMethod.Loose;
+                    mod.RootFolder = ".";
                 }
             }
         }

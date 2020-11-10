@@ -1,80 +1,72 @@
-﻿using System;
+﻿using Fo76ini.Utilities;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fo76ini.Mods
 {
+    /// <summary>
+    /// Bundles functions that add, remove, or change game files.
+    /// Managed mods --> Game files
+    /// </summary>
     public static class ModDeployment
     {
         // TODO: Disable mods checkbox
-        // TODO: Frozen bundled archives
 
-        public static void DeployAll (List<ManagedMod> mods, ResourceList resources)
+        public static void Deploy(ManagedMods mods)
         {
             // Check for conflicts:
-            List<ModHelpers.Conflict> conflicts = ModHelpers.GetConflictingArchiveNames(mods);
+            List<ModHelpers.Conflict> conflicts = ModHelpers.GetConflictingArchiveNames(mods.Mods);
             if (conflicts.Count > 0)
                 throw new DeploymentFailedException("Conflicting archive names.");
 
+            // Restore *.dll files:
+            RestoreAddedDLLs(mods.GamePath);
+
             // Remove all currently deployed mods:
-            ModDeployment.RemoveAll(mods, resources);
+            ModDeployment.RemoveAll(mods);
 
-            // Deploy all mods:
-            DeployArchiveList archives = new DeployArchiveList();
+            // Deploy all SeparateBA2 and Loose mods:
             foreach (ManagedMod mod in mods)
-                ModDeployment.Deploy(mod, resources, archives);
-            ModDeployment.PackBundledArchives(resources, archives);
-
-            // TODO: RestoreAddedDLLs();
-        }
-
-        /// <summary>
-        /// Used in the deployment chain to deploy a single mod.
-        /// BundledBA2 method merely copies files into temporary folder for packing.
-        /// </summary>
-        private static void Deploy (ManagedMod mod, ResourceList resources, DeployArchiveList archives)
-        {
-            if (mod.CurrentDiskState.Enabled &&
-                Directory.Exists(mod.GetManagedFolderPath()) &&
-                !Utils.IsDirectoryEmpty(mod.GetManagedFolderPath()))
             {
-                switch (mod.CurrentDiskState.Method)
+                if (mod.Enabled &&
+                    Directory.Exists(mod.ManagedFolderPath) &&
+                    !Utils.IsDirectoryEmpty(mod.ManagedFolderPath))
                 {
-                    case ManagedMod.DiskState.DeploymentMethod.BundledBA2:
-                        CopyFilesToTempSorted(mod, resources, archives);
-                        mod.CurrentDiskState = mod.PendingDiskState.CreateDeepCopy();
-                        break;
-                    case ManagedMod.DiskState.DeploymentMethod.SeparateBA2:
-                        DeploySeparateArchive(mod, resources);
-                        break;
-                    case ManagedMod.DiskState.DeploymentMethod.Loose:
-                        DeployLooseFiles(mod);
-                        break;
+                    switch (mod.Method)
+                    {
+                        case ManagedMod.DeploymentMethod.SeparateBA2:
+                            DeploySeparateArchive(mod, mods.Resources);
+                            break;
+                        case ManagedMod.DeploymentMethod.Loose:
+                            DeployLooseFiles(mod, mods.GamePath);
+                            break;
+                    }
                 }
             }
+
+            // Deploy all BundledBA2 mods:
+            ModDeployment.DeployBundledArchives(mods);
         }
 
         /// <summary>
         /// Used in the deployment chain to deploy a single mod with the Loose method.
         /// </summary>
-        private static void DeployLooseFiles(ManagedMod mod)
+        private static void DeployLooseFiles(ManagedMod mod, String GamePath)
         {
-            mod.CurrentDiskState = mod.PendingDiskState.CreateDeepCopy();
-            mod.CurrentDiskState.LooseFiles.Clear();
+            mod.LooseFiles.Clear();
 
             // Iterate over each file in the managed folder ...
-            foreach (string filePath in Directory.EnumerateFiles(mod.GetManagedFolderPath(), "*.*", SearchOption.AllDirectories))
+            foreach (string filePath in Directory.EnumerateFiles(mod.ManagedFolderPath, "*.*", SearchOption.AllDirectories))
             {
                 // ... extract the relative path ...
-                string relPath = Utils.MakeRelativePath(mod.GetManagedFolderPath(), filePath);
-                mod.CurrentDiskState.LooseFiles.Add(relPath);
+                string relPath = Utils.MakeRelativePath(mod.ManagedFolderPath, filePath);
+                mod.LooseFiles.Add(relPath);
 
                 // ... determine the full destination path ...
-                string destinationPath = Path.Combine(Shared.GamePath, mod.PendingDiskState.RootFolder, relPath);
+                string destinationPath = Path.Combine(GamePath, mod.RootFolder, relPath);
                 FileInfo destInfo = new FileInfo(destinationPath);
                 Directory.CreateDirectory(destInfo.DirectoryName);
 
@@ -88,6 +80,10 @@ namespace Fo76ini.Mods
                 else
                     File.Copy(filePath, destinationPath, true);
             }
+
+            mod.CurrentRootFolder = mod.RootFolder;
+            mod.Deployed = true;
+            mod.PreviousMethod = ManagedMod.DeploymentMethod.Loose;
         }
 
         /// <summary>
@@ -97,51 +93,107 @@ namespace Fo76ini.Mods
         private static void DeploySeparateArchive(ManagedMod mod, ResourceList resources)
         {
             // If mod is supposed to be deployed frozen...
-            if (mod.PendingDiskState.Frozen)
+            if (mod.Freeze)
             {
                 // ... freeze if necessary ...
-                if (!mod.FrozenDiskState.Frozen)
+                if (!mod.Frozen)
                     ModActions.Freeze(mod);
 
                 // ... and copy it to the Data folder.
                 if (Configuration.bUseHardlinks)
                     Utils.CreateHardLink(
-                        mod.FrozenDiskState.GetFrozenArchivePath(),
-                        mod.PendingDiskState.GetArchivePath(),
+                        mod.FrozenArchivePath,
+                        mod.ArchivePath,
                         true);
                 else
                     File.Copy(
-                        mod.FrozenDiskState.GetFrozenArchivePath(),
-                        mod.PendingDiskState.GetArchivePath(),
+                        mod.FrozenArchivePath,
+                        mod.ArchivePath,
                         true);
             }
 
             // If mod isn't supposed to be deployed frozen...
             else
             {
-                // ... create a new archive ...
-                Archive2.Create(
-                    mod.PendingDiskState.GetArchivePath(),
-                    mod.GetManagedFolderPath(),
-                    ModHelpers.GetArchive2Preset(mod.PendingDiskState));
+                // ... unfreeze mod if needed ...
+                if (mod.Frozen)
+                    ModActions.Unfreeze(mod);
 
-                // ... and delete the frozen archive if existing.
-                if (mod.FrozenDiskState.Frozen)
-                    File.Delete(mod.FrozenDiskState.GetFrozenArchivePath());
+                // ... and create a new archive.
+                Archive2.Create(
+                    mod.ArchivePath,
+                    mod.ManagedFolderPath,
+                    ModHelpers.GetArchive2Preset(mod));
             }
 
             // Finally, update the disk state ...
-            mod.CurrentDiskState = mod.PendingDiskState.CreateDeepCopy();
-            mod.FrozenDiskState = mod.CurrentDiskState.CreateDeepCopy();
+            mod.CurrentArchiveName = mod.ArchiveName;
+            mod.CurrentCompression = mod.Frozen ? mod.FrozenCompression : mod.Compression;
+            mod.CurrentFormat = mod.Frozen ? mod.FrozenFormat : mod.Format;
+            mod.Deployed = true;
+            mod.PreviousMethod = ManagedMod.DeploymentMethod.SeparateBA2;
 
             // ... and add the archive to the resource list.
-            resources.Add(mod.PendingDiskState.ArchiveName);
+            resources.Add(mod.ArchiveName);
+        }
+
+        /// <summary>
+        /// Used in the deployment chain to deploy mods with the BundledBA2 method.
+        /// </summary>
+        private static void DeployBundledArchives(ManagedMods mods, bool freezeArchives = false, bool invalidateFrozenArchives = true)
+        {
+            DeployArchiveList archives = new DeployArchiveList(mods.GamePath);
+
+            // We want to use frozen archives but haven't invalidated them...
+            // ... so just copy bundled archives if available:
+            if (freezeArchives && !invalidateFrozenArchives)
+            {
+                CopyFrozenBundledArchives(mods.Resources, archives);
+                return;
+            }
+
+            // Otherwise iterate over each enabled mod...
+            foreach (ManagedMod mod in mods)
+            {
+                if (mod.Enabled)
+                {
+                    // ... copy it's files into temporary folders ...
+                    CopyFilesToTempSorted(mod, mods.Resources, archives);
+                    mod.Deployed = true;
+                }
+            }
+
+            // ... and pack those folders to archives.
+            PackBundledArchives(mods.Resources, archives, freezeArchives);
+        }
+
+        /// <summary>
+        /// Used in the deployment chain to copy frozen bundled archives from FrozenData to Data.
+        /// </summary>
+        private static void CopyFrozenBundledArchives(ResourceList resources, DeployArchiveList archives)
+        {
+            // For each archive...
+            foreach (DeployArchive archive in archives)
+            {
+                // ... if it had been frozen ...
+                if (File.Exists(archive.GetFrozenArchivePath()))
+                {
+                    // ... copy it into the Data folder ...
+                    if (Configuration.bUseHardlinks)
+                        Utils.CreateHardLink(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
+                    else
+                        File.Copy(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
+
+                    // ... and add it to the resource list.
+                    resources.Insert(0, archive.ArchiveName);
+                }
+            }
         }
 
         /// <summary>
         /// Used in the deployment chain to pack each bundled temporary folder to an archive.
         /// </summary>
-        private static void PackBundledArchives(ResourceList resources, DeployArchiveList archives)
+        private static void PackBundledArchives(ResourceList resources, DeployArchiveList archives, bool freezeArchives)
         {
             // For each archive...
             foreach (DeployArchive archive in archives)
@@ -150,7 +202,21 @@ namespace Fo76ini.Mods
                 if (archive.Count > 0 && !Utils.IsDirectoryEmpty(archive.TempPath))
                 {
                     // ... pack the temporary folder to an archive ...
-                    Archive2.Create(archive.GetArchivePath(), archive.TempPath, archive.Compression, archive.Format);
+                    if (freezeArchives)
+                    {
+                        // either freeze to FrozenData and then copy to Data:
+                        Archive2.Create(archive.GetFrozenArchivePath(), archive.TempPath, archive.Compression, archive.Format);
+
+                        if (Configuration.bUseHardlinks)
+                            Utils.CreateHardLink(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
+                        else
+                            File.Copy(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
+                    }
+                    else
+                    {
+                        // or create directly in Data:
+                        Archive2.Create(archive.GetArchivePath(), archive.TempPath, archive.Compression, archive.Format);
+                    }
 
                     // ... and add it to the resource list.
                     resources.Insert(0, archive.ArchiveName);
@@ -169,14 +235,14 @@ namespace Fo76ini.Mods
         private static void CopyFilesToTempSorted(ManagedMod mod, ResourceList resources, DeployArchiveList archives)
         {
             // Iterate over each file in the managed folder:
-            IEnumerable<string> files = Directory.EnumerateFiles(mod.GetManagedFolderPath(), "*.*", SearchOption.AllDirectories);
+            IEnumerable<string> files = Directory.EnumerateFiles(mod.ManagedFolderPath, "*.*", SearchOption.AllDirectories);
             foreach (string filePath in files)
             {
                 FileInfo info = new FileInfo(filePath);
                 string fileExtension = info.Extension.ToLower();
 
                 // Make a relative path:
-                string relativePath = Utils.MakeRelativePath(mod.GetManagedFolderPath(), filePath);
+                string relativePath = Utils.MakeRelativePath(mod.ManagedFolderPath, filePath);
 
                 // Determine the type of archive:
                 string destinationPath;
@@ -207,43 +273,42 @@ namespace Fo76ini.Mods
             }
         }
 
-        public static void RemoveAll (List<ManagedMod> mods, ResourceList resources)
+        public static void RemoveAll(ManagedMods mods)
         {
             // Delete bundled archives:
-            DeployArchiveList deployArchives = new DeployArchiveList();
+            DeployArchiveList deployArchives = new DeployArchiveList(mods.GamePath);
             foreach (DeployArchive deployArchive in deployArchives)
             {
-                File.Delete(deployArchive.GetArchivePath());
-                resources.Remove(deployArchive.ArchiveName);
+                if (File.Exists(deployArchive.GetArchivePath()))
+                    File.Delete(deployArchive.GetArchivePath());
+                mods.Resources.Remove(deployArchive.ArchiveName);
             }
 
             // Remove mods:
             foreach (ManagedMod mod in mods)
-                ModDeployment.Remove(mod, resources);
+                ModDeployment.Remove(mod, mods.Resources, mods.GamePath);
 
-            // Save state:
-            // ManagedMods.Instance.Save();
-            // list.SaveTXT();
+            mods.Save();
         }
 
-        private static void Remove (ManagedMod mod, ResourceList resources)
+        private static void Remove(ManagedMod mod, ResourceList resources, String GamePath)
         {
-            if (mod.CurrentDiskState.Enabled)
+            if (mod.Deployed)
             {
-                switch (mod.CurrentDiskState.Method)
+                switch (mod.PreviousMethod)
                 {
-                    case ManagedMod.DiskState.DeploymentMethod.BundledBA2:
+                    case ManagedMod.DeploymentMethod.BundledBA2:
                         break;
 
-                    case ManagedMod.DiskState.DeploymentMethod.SeparateBA2:
-                        File.Delete(mod.CurrentDiskState.GetArchivePath());
-                        resources.Remove(mod.CurrentDiskState.ArchiveName);
+                    case ManagedMod.DeploymentMethod.SeparateBA2:
+                        File.Delete(mod.CurrentArchivePath);
+                        resources.Remove(mod.CurrentArchiveName);
                         break;
 
-                    case ManagedMod.DiskState.DeploymentMethod.Loose:
-                        foreach (string relFilePath in mod.CurrentDiskState.LooseFiles)
+                    case ManagedMod.DeploymentMethod.Loose:
+                        foreach (string relFilePath in mod.LooseFiles)
                         {
-                            string installedFilePath = Path.GetFullPath(Path.Combine(Shared.GamePath, mod.CurrentDiskState.RootFolder, relFilePath)); // .Replace("\\.\\", "\\")
+                            string installedFilePath = Path.GetFullPath(Path.Combine(GamePath, mod.CurrentRootFolder, relFilePath)); // .Replace("\\.\\", "\\")
 
                             // Delete file, if existing:
                             File.Delete(installedFilePath);
@@ -251,7 +316,7 @@ namespace Fo76ini.Mods
                             // Rename backup, if there is one:
                             if (File.Exists(installedFilePath + ".old"))
                                 File.Move(installedFilePath + ".old", installedFilePath);
-                            
+
                             // Remove empty folders one by one, if existing:
                             else
                                 RemoveEmptyFolders(Path.GetDirectoryName(installedFilePath));
@@ -259,11 +324,84 @@ namespace Fo76ini.Mods
                         break;
                 }
 
-                mod.CurrentDiskState.Enabled = false;
+                mod.Deployed = false;
             }
         }
 
-        private static void RemoveEmptyFolders (string parent)
+        // Use lower-case, plz
+        private static List<string> whitelistedDlls = new List<string>() {
+            "bink2w64.dll",
+            "chrome_elf.dll",
+            "concrt140.dll",
+            "d3dcompiler_43.dll",
+            "libcef.dll",
+            "libegl.dll", // "libEGL.dll",
+            "libglesv2.dll", // "libGLESv2.dll",
+            "msvcp140.dll",
+            "ortp_x64.dll",
+            "steam_api64.dll",
+            "vccorlib140.dll",
+            "vcruntime140.dll",
+            "vivoxsdk_x64.dll",
+            "d3dcompiler_46.dll",
+            "d3dcompiler_47.dll"
+            // "x3daudio1_7.dll" ?
+        };
+
+        public static void RenameAddedDLLs(string GamePath)
+        {
+            // Iterate through every *.dll file in game path:
+            IEnumerable<string> files = Directory.EnumerateFiles(GamePath, "*.dll");
+            //ManagedMods.Instance.logFile.WriteLine($"Renaming \'*.dll\' files to \'*.dll.nwmode\'.");
+            foreach (string filePath in files)
+            {
+                // If not whitelisted...
+                string fileName = Path.GetFileName(filePath);
+                if (!whitelistedDlls.Contains(fileName.ToLower()))
+                {
+                    // ... rename it:
+                    if (!File.Exists(filePath + ".nwmode"))
+                    {
+                        File.Move(filePath, filePath + ".nwmode");
+                        //ManagedMods.Instance.logFile.WriteLine($"   Renamed {fileName}");
+                    }
+
+                    // ... or delete it:
+                    else
+                    {
+                        File.Delete(filePath);
+                        //ManagedMods.Instance.logFile.WriteLine($"   Deleted {fileName}");
+                    }
+                }
+            }
+        }
+
+        public static void RestoreAddedDLLs(string GamePath)
+        {
+            // Iterate through every *.dll.nwmode file in game path:
+            IEnumerable<string> files = Directory.EnumerateFiles(GamePath, "*.dll.nwmode");
+            //ManagedMods.Instance.logFile.WriteLine($"Restoring \'*.dll.nwmode\' files to \'*.dll\'.");
+            foreach (string filePath in files)
+            {
+                string fileName = Path.GetFileName(filePath);
+                string originalFilePath = Path.Combine(Path.GetDirectoryName(filePath), fileName.Replace(".dll.nwmode", ".dll"));
+
+                // Rename or delete, if the original exists:
+                if (!File.Exists(originalFilePath))
+                {
+                    File.Move(filePath, originalFilePath);
+                    //ManagedMods.Instance.logFile.WriteLine($"   Renamed {fileName}");
+                }
+                else
+                {
+                    // Assuming that the same *.dll file has been copied during deployment:
+                    File.Delete(filePath); // we can just delete it.
+                    //ManagedMods.Instance.logFile.WriteLine($"   Deleted {fileName}");
+                }
+            }
+        }
+
+        private static void RemoveEmptyFolders(string parent)
         {
             while (Directory.Exists(parent) && Utils.IsDirectoryEmpty(parent))
             {
@@ -278,26 +416,25 @@ namespace Fo76ini.Mods
             public DeployArchive TexturesArchive;
             public DeployArchive SoundsArchive;
 
-            public DeployArchiveList()
-            {
-                string tempPath = GetTempPath();
+            public string GamePath;
+            public string TempPath;
 
-                GeneralArchive = new DeployArchive("General", tempPath);
-                TexturesArchive = new DeployArchive("Textures", tempPath);
+            public DeployArchiveList(String gamePath)
+            {
+                this.GamePath = gamePath;
+                this.TempPath = Path.Combine(GamePath, "tmp");
+
+                GeneralArchive = new DeployArchive("General", GamePath, TempPath);
+                TexturesArchive = new DeployArchive("Textures", GamePath, TempPath);
                 TexturesArchive.Format = Archive2.Format.DDS;
-                SoundsArchive = new DeployArchive("Sounds", tempPath);
+                SoundsArchive = new DeployArchive("Sounds", GamePath, TempPath);
                 SoundsArchive.Compression = Archive2.Compression.None;
             }
 
             public void DeleteTempFolder()
             {
-                if (Directory.Exists(GetTempPath()))
-                    Directory.Delete(GetTempPath(), true);
-            }
-
-            public string GetTempPath()
-            {
-                return Path.Combine(Shared.GamePath, "tmp");
+                if (Directory.Exists(TempPath))
+                    Directory.Delete(TempPath, true);
             }
 
             public List<DeployArchive> GetList()
@@ -318,14 +455,16 @@ namespace Fo76ini.Mods
 
         private class DeployArchive
         {
+            public string GamePath;
             public string TempPath;
             public string ArchiveName;
             public Archive2.Format Format = Archive2.Format.General;
             public Archive2.Compression Compression = Archive2.Compression.Default;
             public int Count = 0;
 
-            public DeployArchive(string name, string tempFolderPath)
+            public DeployArchive(string name, string gamePath, string tempFolderPath)
             {
+                this.GamePath = gamePath;
                 this.TempPath = Path.Combine(tempFolderPath, name);
                 if (name == "General")
                     this.ArchiveName = "Bundled.ba2";
@@ -339,12 +478,12 @@ namespace Fo76ini.Mods
 
             public string GetArchivePath()
             {
-                return Path.Combine(Shared.GamePath, "Data", this.ArchiveName);
+                return Path.Combine(GamePath, "Data", this.ArchiveName);
             }
 
             public string GetFrozenArchivePath()
             {
-                return Path.Combine(Shared.GamePath, "FrozenData", this.ArchiveName);
+                return Path.Combine(GamePath, "FrozenData", this.ArchiveName);
             }
         }
 

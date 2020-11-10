@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fo76ini
+// Doesn't work
+namespace Fo76ini.Utilities
 {
     // https://stackoverflow.com/questions/1738980/how-do-i-disable-the-c-sharp-message-box-beep
     // https://stackoverflow.com/a/26700191

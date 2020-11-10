@@ -1,15 +1,12 @@
-﻿using Fo76ini.Mods;
+﻿using Fo76ini.Interface;
+using Fo76ini.Mods;
+using Fo76ini.NexusAPI;
 using Fo76ini.Properties;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fo76ini
@@ -105,9 +102,9 @@ namespace Fo76ini
                     this.pictureBoxNMProfilePicture.Image = Image.FromFile(profilePicPath);
             }
 
-            this.checkBoxNMUpdateProfile.Checked = IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bAutoUpdateProfile", true);
+            this.checkBoxNMUpdateProfile.Checked = IniFiles.Config.GetBool("NexusMods", "bAutoUpdateProfile", true);
             //this.checkBoxNMUpdateModInfo.Checked = IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bAutoUpdateModInfo", false);
-            this.checkBoxNMDownloadThumbnails.Checked = IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bDownloadThumbnailsOnUpdate", true);
+            this.checkBoxNMDownloadThumbnails.Checked = IniFiles.Config.GetBool("NexusMods", "bDownloadThumbnailsOnUpdate", true);
         }
 
         /*
@@ -117,8 +114,8 @@ namespace Fo76ini
         // API Key:
         private void textBoxAPIKey_TextChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sAPIKey", this.textBoxAPIKey.Text);
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Set("NexusMods", "sAPIKey", this.textBoxAPIKey.Text);
+            IniFiles.Config.Save();
             NexusMods.Profile.APIKey = this.textBoxAPIKey.Text;
         }
 
@@ -206,8 +203,8 @@ namespace Fo76ini
 
         private void checkBoxNMUpdateProfile_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "bAutoUpdateProfile", this.checkBoxNMUpdateProfile.Checked);
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Set("NexusMods", "bAutoUpdateProfile", this.checkBoxNMUpdateProfile.Checked);
+            IniFiles.Config.Save();
         }
 
         /*private void checkBoxNMUpdateModInfo_CheckedChanged(object sender, EventArgs e)
@@ -218,8 +215,8 @@ namespace Fo76ini
 
         private void checkBoxNMDownloadThumbnails_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "bDownloadThumbnailsOnUpdate", this.checkBoxNMDownloadThumbnails.Checked);
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Set("NexusMods", "bDownloadThumbnailsOnUpdate", this.checkBoxNMDownloadThumbnails.Checked);
+            IniFiles.Config.Save();
         }
 
         /*
@@ -231,8 +228,8 @@ namespace Fo76ini
         private void backgroundWorkerRetrieveModInfo_DoWork(object sender, DoWorkEventArgs e)
         {
             int i = 1;
-            int len = ManagedMods.Instance.Mods.Count();
-            foreach (ManagedMod mod in ManagedMods.Instance.Mods)
+            int len = Mods.Count();
+            foreach (ManagedMod mod in Mods)
             {
                 if (mod.URL != "")
                 {

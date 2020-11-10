@@ -1,17 +1,15 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Fo76ini.Interface;
+using Fo76ini.Utilities;
 
-namespace Fo76ini
+namespace Fo76ini.NexusAPI
 {
     public static class NexusMods
     {
@@ -37,13 +35,18 @@ namespace Fo76ini
             }
         }
 
+        public static bool IsLoggedIn
+        {
+            get { return NexusMods.Profile.ValidKey || NexusMods.Profile.UserID > 0; }
+        }
+
         public static void Save()
         {
-            if (Shared.GamePath == null)
+            /*if (Shared.GamePath == null)
             {
                 MsgBox.ShowID("modsGamePathNotSet", MessageBoxIcon.Error);
                 return;
-            }
+            }*/
 
             if (!Directory.Exists(NexusMods.FolderPath))
                 Directory.CreateDirectory(NexusMods.FolderPath);
@@ -78,8 +81,8 @@ namespace Fo76ini
 
             NexusMods.Profile.Load();
 
-            if (Shared.GamePath == null)
-                return;
+            /*if (Shared.GamePath == null)
+                return;*/
 
             if (!File.Exists(NexusMods.RemoteXMLPath))
                 return;
@@ -155,13 +158,13 @@ namespace Fo76ini
             Abstained
         }
 
-        public NMMod (string url)
+        public NMMod(string url)
         {
             this.URL = url;
             this.ID = NexusMods.GetIDFromURL(url);
         }
 
-        public NMMod (int id)
+        public NMMod(int id)
         {
             this.ID = id;
             this.URL = $"https://www.nexusmods.com/fallout76/mods/{id}";
@@ -208,7 +211,7 @@ namespace Fo76ini
                 if (!Directory.Exists(NexusMods.ThumbnailsPath))
                     Directory.CreateDirectory(NexusMods.ThumbnailsPath);
 
-                if (IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bDownloadThumbnailsOnUpdate", true))
+                if (IniFiles.Config.GetBool("NexusMods", "bDownloadThumbnailsOnUpdate", true))
                 {
                     try
                     {
@@ -412,7 +415,7 @@ namespace Fo76ini
                   - "key"
                   - "email"
                  */
-                
+
                 ValidKey = true;
             }
             else
@@ -448,42 +451,42 @@ namespace Fo76ini
 
         public void Save()
         {
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sAPIKey", this.APIKey);
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "iUserID", this.UserID);
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "bAPIKeyValid", this.ValidKey);
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sUserName", this.UserName);
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sProfileURL", this.ProfilePictureURL);
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sProfile", this.ProfilePicture);
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "iDailyRateLimit", this.DailyRateLimit);
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "iHourlyRateLimit", this.HourlyRateLimit);
-            IniFiles.Instance.Set(IniFile.Config, "NexusMods", "sDailyRateLimitReset", this.DailyRateLimitResetString);
+            IniFiles.Config.Set("NexusMods", "sAPIKey", this.APIKey);
+            IniFiles.Config.Set("NexusMods", "iUserID", this.UserID);
+            IniFiles.Config.Set("NexusMods", "bAPIKeyValid", this.ValidKey);
+            IniFiles.Config.Set("NexusMods", "sUserName", this.UserName);
+            IniFiles.Config.Set("NexusMods", "sProfileURL", this.ProfilePictureURL);
+            IniFiles.Config.Set("NexusMods", "sProfile", this.ProfilePicture);
+            IniFiles.Config.Set("NexusMods", "iDailyRateLimit", this.DailyRateLimit);
+            IniFiles.Config.Set("NexusMods", "iHourlyRateLimit", this.HourlyRateLimit);
+            IniFiles.Config.Set("NexusMods", "sDailyRateLimitReset", this.DailyRateLimitResetString);
             switch (this.Status)
             {
                 case Membership.Supporter:
-                    IniFiles.Instance.Set(IniFile.Config, "NexusMods", "uStatus", 1);
+                    IniFiles.Config.Set("NexusMods", "uStatus", 1);
                     break;
                 case Membership.Premium:
-                    IniFiles.Instance.Set(IniFile.Config, "NexusMods", "uStatus", 2);
+                    IniFiles.Config.Set("NexusMods", "uStatus", 2);
                     break;
                 default:
-                    IniFiles.Instance.Set(IniFile.Config, "NexusMods", "uStatus", 0);
+                    IniFiles.Config.Set("NexusMods", "uStatus", 0);
                     break;
             }
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Save();
         }
 
         public void Load()
         {
-            this.APIKey = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sAPIKey", "");
-            this.UserID = IniFiles.Instance.GetLong(IniFile.Config, "NexusMods", "iUserID", -1);
-            this.ValidKey = IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bAPIKeyValid", false);
-            this.UserName = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sUserName", "Anonymous");
-            this.ProfilePictureURL = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sPicURL", "");
-            this.ProfilePicture = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sProfile", "");
-            this.DailyRateLimit = IniFiles.Instance.GetInt(IniFile.Config, "NexusMods", "iDailyRateLimit", 0);
-            this.HourlyRateLimit = IniFiles.Instance.GetInt(IniFile.Config, "NexusMods", "iHourlyRateLimit", 0);
-            this.DailyRateLimitResetString = IniFiles.Instance.GetString(IniFile.Config, "NexusMods", "sDailyRateLimitReset", "");
-            int status = IniFiles.Instance.GetInt(IniFile.Config, "NexusMods", "uStatus", 0);
+            this.APIKey = IniFiles.Config.GetString("NexusMods", "sAPIKey", "");
+            this.UserID = IniFiles.Config.GetLong("NexusMods", "iUserID", -1);
+            this.ValidKey = IniFiles.Config.GetBool("NexusMods", "bAPIKeyValid", false);
+            this.UserName = IniFiles.Config.GetString("NexusMods", "sUserName", "Anonymous");
+            this.ProfilePictureURL = IniFiles.Config.GetString("NexusMods", "sPicURL", "");
+            this.ProfilePicture = IniFiles.Config.GetString("NexusMods", "sProfile", "");
+            this.DailyRateLimit = IniFiles.Config.GetInt("NexusMods", "iDailyRateLimit", 0);
+            this.HourlyRateLimit = IniFiles.Config.GetInt("NexusMods", "iHourlyRateLimit", 0);
+            this.DailyRateLimitResetString = IniFiles.Config.GetString("NexusMods", "sDailyRateLimitReset", "");
+            int status = IniFiles.Config.GetInt("NexusMods", "uStatus", 0);
             switch (status)
             {
                 case 1:
@@ -524,18 +527,18 @@ namespace Fo76ini
             this.HourlyRateLimit = 0;
             this.DailyRateLimitResetString = "";
 
-            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "sAPIKey");
-            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "bAPIKeyValid");
-            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "sUserName");
-            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "iUserID");
-            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "sProfileURL");
-            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "sProfile");
-            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "iDailyRateLimit");
-            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "iHourlyRateLimit");
-            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "sDailyRateLimitReset");
-            IniFiles.Instance.Remove(IniFile.Config, "NexusMods", "uStatus");
+            IniFiles.Config.Remove("NexusMods", "sAPIKey");
+            IniFiles.Config.Remove("NexusMods", "bAPIKeyValid");
+            IniFiles.Config.Remove("NexusMods", "sUserName");
+            IniFiles.Config.Remove("NexusMods", "iUserID");
+            IniFiles.Config.Remove("NexusMods", "sProfileURL");
+            IniFiles.Config.Remove("NexusMods", "sProfile");
+            IniFiles.Config.Remove("NexusMods", "iDailyRateLimit");
+            IniFiles.Config.Remove("NexusMods", "iHourlyRateLimit");
+            IniFiles.Config.Remove("NexusMods", "sDailyRateLimitReset");
+            IniFiles.Config.Remove("NexusMods", "uStatus");
 
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Save();
 
             try
             {

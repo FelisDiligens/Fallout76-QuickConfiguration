@@ -1,30 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using System.Windows.Forms;
+using Fo76ini.Profiles;
 
 namespace Fo76ini
 {
-    public enum GameEdition
-    {
-        Unknown = 0,
-        BethesdaNet = 1,
-        Steam = 2,
-        BethesdaNetPTS = 3,
-        MSStore = 4
-    }
-
     public class Shared
     {
         public const string VERSION = "2.0.0";
         public static string LatestVersion = null;
 
-        public static string OldAppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "Fallout 76 Quick Configuration");
+        public static string AppInstallationFolder = Directory.GetParent(Application.ExecutablePath).ToString();
         public static string AppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");
 
-        public static System.Globalization.CultureInfo enUS = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+        public static readonly System.Globalization.CultureInfo en_US = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
         private static string gamePath = null;
 
@@ -34,12 +22,12 @@ namespace Fo76ini
 
         public static void LoadGameEdition()
         {
-            Shared.GameEdition = (GameEdition)(IniFiles.Instance.GetInt(IniFile.Config, "Preferences", "uGameEdition", 0));
+            Shared.GameEdition = (GameEdition)(IniFiles.Config.GetInt("Preferences", "uGameEdition", 0));
         }
 
         public static void SaveGameEdition()
         {
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "uGameEdition", (uint)Shared.GameEdition);
+            IniFiles.Config.Set("Preferences", "uGameEdition", (uint)Shared.GameEdition);
         }
 
         public static void ChangeGameEdition(GameEdition gameEdition)
@@ -50,28 +38,29 @@ namespace Fo76ini
             // ManagedMods.Instance.CopyINILists();
 
             // IniFiles:
-            IniFiles.Instance.ChangeGameEdition(Shared.GameEdition);
+            // TODO: ChangeGameEdition
+            //IniFiles.ChangeGameEdition(Shared.GameEdition);
             SaveGameEdition();
 
             // ManagedMods:
             Shared.LoadGamePath();
-            ManagedMods.Instance.Load();
+            //ManagedMods.Instance.Load();
 
             // FormMods:
             // formMods.UpdateUI();
         }
 
-        public static void LoadGamePath ()
+        public static void LoadGamePath()
         {
-            string gamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", Shared.GamePathKey, "");
+            string gamePath = IniFiles.Config.GetString("Preferences", Shared.GamePathKey, "");
             if (gamePath.Length > 0)
                 Shared.GamePath = gamePath;
         }
 
-        public static void SaveGamePath ()
+        public static void SaveGamePath()
         {
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", Shared.GamePathKey, Shared.GamePath);
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Set("Preferences", Shared.GamePathKey, Shared.GamePath);
+            IniFiles.Config.Save();
         }
 
         public static void ClearGamePath()
