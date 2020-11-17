@@ -21,7 +21,7 @@ namespace Fo76ini.Forms.ExceptionDialog
             {
                 form.textBoxDebugText.Text = $"Operating system:  {Utils.GetOSName()} {Utils.GetOSArchitecture()}\r\n" +
                                              $"Program version:   {Shared.VERSION}\r\n" +
-                                             $"Program locale:    {Localization.locale}\r\n" +
+                                             $"Program locale:    {Localization.Locale}\r\n" +
                                              $"Game edition:      {Shared.GameEdition}\r\n" +
                                              "\r\n" +
                                              $"************** Exception Text **************\r\n{ex.GetType()}: {ex.Message}\r\n{ex.StackTrace}\r\n";

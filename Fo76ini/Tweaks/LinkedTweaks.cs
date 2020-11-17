@@ -1,26 +1,68 @@
 ﻿using Fo76ini.Forms.Form1;
+using Fo76ini.Tweaks.Video;
 using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Fo76ini.Tweaks
 {
     public static class LinkedTweaks
     {
         private static Dictionary<Control, ITweakInfo> LinkedTweakInfos = new Dictionary<Control, ITweakInfo>();
+        public static Dictionary<string, string> TranslatedDescriptions = new Dictionary<string, string>();
         private static List<Action> SetValueActions = new List<Action>();
 
+        /// <summary>
+        /// Gets a list of names of control elements that have been linked to a tweak info.
+        /// </summary>
+        public static List<string> GetListOfLinkedControlNames()
+        {
+            return LinkedTweakInfos.Keys
+                .Select(x => x.Name)
+                .Where(x => x != "")
+                .ToList();
+        }
+
+        /// <summary>
+        /// (Re)sets all control values.
+        /// </summary>
         public static void LoadValues()
         {
             foreach (Action action in SetValueActions)
                 action();
         }
 
+        public static string BuildToolTipText(string description, string affectedFiles, string affectedValues)
+        {
+            string toolTipText = "";
+
+            if (description != null && description != "")
+                toolTipText += description;
+
+            if ((description != null && description != "") && (affectedFiles != null && affectedFiles != ""))
+                toolTipText += "\n\n";
+
+            if (affectedValues != null && affectedValues != "")
+                toolTipText += Localization.GetString("affectedValues") + ": " + affectedValues;
+
+            if ((affectedValues != null && affectedValues != "") && (affectedFiles != null && affectedFiles != ""))
+                toolTipText += "\n";
+
+            if (affectedFiles != null && affectedFiles != "")
+                toolTipText += Localization.GetString("affectedFiles") + ": " + affectedFiles;
+
+            return toolTipText;
+        }
+
         public static void SetToolTip(ITweakInfo info, Control control, ToolTip tip)
         {
-            tip.SetToolTip(control, $"{info.Description}\n\n{Localization.GetString("affectedFiles")}: {info.AffectedFiles}\n{Localization.GetString("affectedValues")}: {info.AffectedValues}");
+            string description = info.Description;
+            TranslatedDescriptions.TryGetValue(info.Identifier, out description);
+            tip.SetToolTip(control, BuildToolTipText(description, info.AffectedFiles, info.AffectedValues));
         }
 
         public static void SetToolTips(ToolTip tip)
@@ -28,6 +70,39 @@ namespace Fo76ini.Tweaks
             foreach (var pair in LinkedTweakInfos)
                 SetToolTip(pair.Value, pair.Key, tip);
         }
+
+        /// <summary>
+        /// Link a tweak to a control's tooltip.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="tweakInfo"></param>
+        public static void LinkInfo(Control control, ITweakInfo tweakInfo)
+        {
+            LinkedTweakInfos.Add(control, tweakInfo);
+
+            if (!TranslatedDescriptions.ContainsKey(tweakInfo.Identifier))
+                TranslatedDescriptions[tweakInfo.Identifier] = tweakInfo.Description;
+        }
+
+        public static XElement SerializeTweakDescriptionList()
+        {
+            XElement parent = new XElement("TweakDescriptions");
+            foreach (var pair in TranslatedDescriptions)
+                if (pair.Value != "")
+                    parent.Add(new XElement("Description", new XAttribute("id", pair.Key), pair.Value));
+            return parent;
+        }
+
+        public static void DeserializeTweakDescriptionList(XElement xmlDescriptionList)
+        {
+            foreach (XElement xmlDescription in xmlDescriptionList.Descendants("Description"))
+            {
+                string id = xmlDescription.Attribute("id").Value;
+                string desc = xmlDescription.Value;
+                TranslatedDescriptions[id] = desc;
+            }
+        }
+
 
         /*
          **************************************************************
@@ -71,11 +146,6 @@ namespace Fo76ini.Tweaks
          **************************************************************
          */
 
-        public static void LinkInfo(Control control, ITweakInfo tweakInfo)
-        {
-            LinkedTweakInfos.Add(control, tweakInfo);
-        }
-
         public static void LinkTweak(CheckBox checkBox, ITweak<bool> tweak)
         {
             SetValueActions.Add(() => checkBox.Checked = tweak.GetValue());
@@ -86,12 +156,6 @@ namespace Fo76ini.Tweaks
         {
             SetValueActions.Add(() => checkBox.Checked = !tweak.GetValue());
             checkBox.MouseClick += (object sender, MouseEventArgs e) => tweak.SetValue(!checkBox.Checked);
-        }
-
-        public static void LinkTweak(ComboBox comboBox, ITweak<int> tweak)
-        {
-            SetValueActions.Add(() => comboBox.SelectedIndex = tweak.GetValue());
-            comboBox.SelectionChangeCommitted += (object sender, EventArgs e) => tweak.SetValue(comboBox.SelectedIndex);
         }
 
         public static void LinkTweak(RadioButton radioButtonTrue, RadioButton radioButtonFalse, ITweak<bool> tweak)
@@ -137,9 +201,9 @@ namespace Fo76ini.Tweaks
         }
 
         // TODO: This needs to be refined:
-        public static void LinkTweak(ComboBox comboBox, string[] associatedValues, ITweak<string> tweak)
+        public static void LinkTweak<T>(ComboBox comboBox, T[] associatedValues, ITweak<T> tweak)
         {
-            // This could potentially crash the tool on load:
+            // TODO: This could potentially crash the tool on load:
             if (comboBox.Items.Count != associatedValues.Length)
                 throw new ArgumentException("LinkTweak: comboBox has to have as many items as associatedValues has!");
 
@@ -159,6 +223,18 @@ namespace Fo76ini.Tweaks
             {
                 tweak.SetValue(associatedValues[comboBox.SelectedIndex]);
             };
+        }
+
+        public static void LinkTweak(ComboBox comboBox, ITweak<int> tweak)
+        {
+            SetValueActions.Add(() => comboBox.SelectedIndex = tweak.GetValue());
+            comboBox.SelectionChangeCommitted += (object sender, EventArgs e) => tweak.SetValue(comboBox.SelectedIndex);
+        }
+
+        public static void LinkTweak(ComboBox comboBox, IEnumTweak tweak)
+        {
+            SetValueActions.Add(() => comboBox.SelectedIndex = tweak.GetInt());
+            comboBox.SelectionChangeCommitted += (object sender, EventArgs e) => tweak.SetInt(comboBox.SelectedIndex);
         }
 
         public static void LinkTweak(NumericUpDown num, ITweak<int> tweak)
@@ -196,6 +272,7 @@ namespace Fo76ini.Tweaks
 
             pickColor.Click += (object sender, EventArgs e) =>
             {
+                colorDialog.Color = tweak.GetValue();
                 if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
                     preview.BackColor = colorDialog.Color;
@@ -208,6 +285,28 @@ namespace Fo76ini.Tweaks
                 tweak.ResetValue();
                 preview.BackColor = tweak.GetValue();
             };
+        }
+
+        public static void LinkSize(NumericUpDown width, NumericUpDown height, ITweak<Size> tweak)
+        {
+            SetValueActions.Add(() =>
+            {
+                Size size = tweak.GetValue();
+                width.Value = size.Width;
+                height.Value = size.Height;
+            });
+
+            EventHandler sizeChanged = (object sender, EventArgs e) =>
+            {
+                Size newSize = new Size(
+                    Convert.ToInt32(width.Value),
+                    Convert.ToInt32(height.Value)
+                );
+                tweak.SetValue(newSize);
+            };
+
+            width.ValueChanged += sizeChanged;
+            height.ValueChanged += sizeChanged;
         }
     }
 }

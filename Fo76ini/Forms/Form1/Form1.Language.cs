@@ -1,4 +1,5 @@
 ﻿using Fo76ini.Interface;
+using Fo76ini.Profiles;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -10,45 +11,26 @@ namespace Fo76ini
 {
     partial class Form1
     {
-        public void ChangeLanguage(Form1 form1, FormMods formMods)
+        public void OnLanguageChanged(object sender, TranslationEventArgs e)
         {
-            // Apply translation to forms:
-            Translation translation = Localization.GetTranslation();
-            translation.Apply();
+            Translation translation = (Translation)sender;
 
             // Set labels and stuff:
-            form1.labelOutdatedLanguage.Visible = translation.IsOutdated();
+            this.labelOutdatedLanguage.Visible = translation.IsOutdated();
 
-            form1.labelTranslationAuthor.Visible = false;
-            form1.labelTranslationBy.Visible = false;
-            if (translation.Author != "")
-            {
-                form1.labelTranslationAuthor.Visible = true;
-                form1.labelTranslationBy.Visible = true;
-                form1.labelTranslationAuthor.Text = translation.Author;
-            }
+            this.labelTranslationAuthor.Visible = e.HasAuthor;
+            this.labelTranslationBy.Visible = e.HasAuthor;
+            this.labelTranslationAuthor.Text = e.HasAuthor ? translation.Author : "";
 
-            form1.RefreshNWModeButtonAppearance();
-            form1.CheckVersion();
-            // formMods.UpdateUI(); // TODO: Changing the language before loading mods crashes the tool on startup.
+            this.RefreshNWModeButtonAppearance();
+            this.CheckVersion();
 
-            // Force redraw:
-            form1.Refresh();
-            // formMods.Refresh();
-
-            // Set sLanguage in config.ini:
-            IniFiles.Config.Set("Preferences", "sLanguage", translation.ISO);
-            Localization.locale = translation.ISO;
-
-            if (translation.ISO != "en-US")
-                Localization.GenerateTemplate(translation);
+            this.Refresh(); // Forces redraw
         }
+        // TODO: FormMods needs OnLanguageChanged code.
+        // formMods.UpdateUI(); // TODO: Changing the language before loading mods crashes the tool on startup.
 
-        private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ChangeLanguage(this, this.formMods);
-        }
-
+        // TODO: Rewrite "Download / update language files" code
         private void buttonDownloadLanguages_Click(object sender, EventArgs e)
         {
             if (this.backgroundWorkerDownloadLanguages.IsBusy)
@@ -76,7 +58,7 @@ namespace Fo76ini
 
                 foreach (string file in list)
                 {
-                    wc.DownloadFile("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/" + file, Path.Combine(Localization.languageFolder, file));
+                    wc.DownloadFile("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/" + file, Path.Combine(Localization.LanguageFolder, file));
                 }
 
                 errorMessageDownloadLanguages = null;
@@ -110,6 +92,7 @@ namespace Fo76ini
 
         private void buttonRefreshLanguage_Click(object sender, EventArgs e)
         {
+            // TODO
             Localization.LookupLanguages();
             this.RefreshNWModeButtonAppearance();
             this.CheckVersion();

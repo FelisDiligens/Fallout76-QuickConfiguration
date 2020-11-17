@@ -12,6 +12,13 @@ namespace Fo76ini.Forms.FormWhatsNew
         {
             InitializeComponent();
 
+            // Make this form translatable:
+            Localization.LocalizedForms.Add(new LocalizedForm(this, null));
+
+            Translation.BlackList.AddRange(new string[] {
+                "richTextBox"
+            });
+
             this.FormClosing += this.Form1_FormClosing;
             this.backgroundWorkerDownloadRTF.RunWorkerCompleted += backgroundWorkerDownloadRTF_RunWorkerCompleted;
         }

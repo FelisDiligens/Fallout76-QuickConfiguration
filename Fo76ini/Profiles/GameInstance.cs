@@ -40,7 +40,12 @@ namespace Fo76ini.Profiles
 
         public Profile SelectedProfile
         {
-            get { return Profiles[SelectedProfileIndex]; }
+            get
+            {
+                if (SelectedProfileIndex >= 0)
+                    return Profiles[SelectedProfileIndex];
+                return null;
+            }
         }
 
         /// <summary>

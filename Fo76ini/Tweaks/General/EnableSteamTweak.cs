@@ -8,7 +8,7 @@
 
         public string AffectedFiles => "Fallout76Custom.ini";
 
-        public string AffectedValues => "bSteamEnabled";
+        public string AffectedValues => "[General]bSteamEnabled";
 
         public string Identifier => this.GetType().FullName;
 

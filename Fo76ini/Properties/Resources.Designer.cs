@@ -263,6 +263,16 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap download_2_24 {
+            get {
+                object obj = ResourceManager.GetObject("download-2-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edit_24 {
             get {
                 object obj = ResourceManager.GetObject("edit-24", resourceCulture);
@@ -383,6 +393,16 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mouse_icon {
+            get {
+                object obj = ResourceManager.GetObject("mouse-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap msstore {
             get {
                 object obj = ResourceManager.GetObject("msstore", resourceCulture);
@@ -406,6 +426,36 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap nexus_24 {
             get {
                 object obj = ResourceManager.GetObject("nexus-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pipboy_preview_bg {
+            get {
+                object obj = ResourceManager.GetObject("pipboy_preview_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pipboy_preview_fg {
+            get {
+                object obj = ResourceManager.GetObject("pipboy_preview_fg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pipboy_preview_fg_masked {
+            get {
+                object obj = ResourceManager.GetObject("pipboy_preview_fg_masked", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -576,6 +626,16 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap xbox_24 {
             get {
                 object obj = ResourceManager.GetObject("xbox-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Xbox_One_Controller_icon {
+            get {
+                object obj = ResourceManager.GetObject("Xbox-One-Controller-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -42,7 +42,7 @@
             // 
             // buttonStartTool
             // 
-            this.buttonStartTool.BackColor = System.Drawing.Color.Teal;
+            this.buttonStartTool.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonStartTool.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStartTool.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStartTool.ForeColor = System.Drawing.Color.White;
@@ -125,7 +125,7 @@
             this.MinimizeBox = false;
             this.Name = "Updater";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Updater v3";
+            this.Text = "Updater v4";
             this.Load += new System.EventHandler(this.Updater_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoading)).EndInit();
             this.ResumeLayout(false);

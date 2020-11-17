@@ -14,18 +14,17 @@ namespace Fo76ini.Forms.FormProfiles
     {
         private bool UpdatingUI = false;
 
-        ProfileManager gameInstances;
-
         public FormProfiles()
         {
             InitializeComponent();
+
+            // Make this form translatable:
+            Localization.LocalizedForms.Add(new LocalizedForm(this, null));
 
             this.listViewGameInstances.HeaderStyle = ColumnHeaderStyle.None;
 
             this.FormClosing += this.Form1_FormClosing;
 
-            gameInstances = new ProfileManager();
-            gameInstances.Load();
             UpdateUI();
         }
 
@@ -33,7 +32,8 @@ namespace Fo76ini.Forms.FormProfiles
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                gameInstances.Save();
+                ProfileManager.Save();
+                ProfileManager.Feedback();
             }
         }
 
@@ -43,14 +43,14 @@ namespace Fo76ini.Forms.FormProfiles
 
             // For each managed game instance...
             this.listViewGameInstances.Items.Clear();
-            foreach (GameInstance game in gameInstances.Games)
+            foreach (GameInstance game in ProfileManager.Games)
             {
                 // ... add it to the list.
                 ListViewItem gameItem = new ListViewItem(game.Title, GetImageIndex(game.Edition));
                 this.listViewGameInstances.Items.Add(gameItem);
 
                 // If it is the currently selected game, then...
-                if (gameInstances.IsSelected(game))
+                if (ProfileManager.IsSelected(game))
                 {
                     // ... select it in the list ...
                     gameItem.Selected = true;
@@ -114,9 +114,9 @@ namespace Fo76ini.Forms.FormProfiles
             if (this.listViewGameInstances.SelectedItems != null && this.listViewGameInstances.SelectedItems.Count > 0)
             {
                 int index = this.listViewGameInstances.SelectedItems[0].Index;
-                if (gameInstances.SelectedGameIndex != index)
+                if (ProfileManager.SelectedGameIndex != index)
                 {
-                    gameInstances.SelectedGameIndex = index;
+                    ProfileManager.SelectedGameIndex = index;
                     UpdateUI();
                 }
             }
@@ -126,7 +126,7 @@ namespace Fo76ini.Forms.FormProfiles
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.SelectedProfileIndex = this.listBoxProfile.SelectedIndex;
+            ProfileManager.SelectedGame.SelectedProfileIndex = this.listBoxProfile.SelectedIndex;
             UpdateUI();
         }
 
@@ -134,8 +134,8 @@ namespace Fo76ini.Forms.FormProfiles
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.Edition = GameEdition.BethesdaNet;
-            gameInstances.SelectedGame.SetDefaultSettings(GameEdition.BethesdaNet);
+            ProfileManager.SelectedGame.Edition = GameEdition.BethesdaNet;
+            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.BethesdaNet);
             UpdateUI();
         }
 
@@ -143,8 +143,8 @@ namespace Fo76ini.Forms.FormProfiles
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.Edition = GameEdition.BethesdaNetPTS;
-            gameInstances.SelectedGame.SetDefaultSettings(GameEdition.BethesdaNetPTS);
+            ProfileManager.SelectedGame.Edition = GameEdition.BethesdaNetPTS;
+            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.BethesdaNetPTS);
             UpdateUI();
         }
 
@@ -152,8 +152,8 @@ namespace Fo76ini.Forms.FormProfiles
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.Edition = GameEdition.Steam;
-            gameInstances.SelectedGame.SetDefaultSettings(GameEdition.Steam);
+            ProfileManager.SelectedGame.Edition = GameEdition.Steam;
+            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.Steam);
             UpdateUI();
         }
 
@@ -161,8 +161,8 @@ namespace Fo76ini.Forms.FormProfiles
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.Edition = GameEdition.MSStore;
-            gameInstances.SelectedGame.SetDefaultSettings(GameEdition.MSStore);
+            ProfileManager.SelectedGame.Edition = GameEdition.MSStore;
+            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.MSStore);
             UpdateUI();
         }
 
@@ -170,64 +170,64 @@ namespace Fo76ini.Forms.FormProfiles
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.GamePath = this.textBoxGamePath.Text;
-            this.textBoxGamePath.ForeColor = gameInstances.SelectedGame.ValidateGamePath() ? Color.Black : Color.Maroon;
+            ProfileManager.SelectedGame.GamePath = this.textBoxGamePath.Text;
+            this.textBoxGamePath.ForeColor = ProfileManager.SelectedGame.ValidateGamePath() ? Color.Black : Color.Maroon;
         }
 
         private void radioButtonLaunchViaLink_CheckedChanged(object sender, EventArgs e)
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.PreferredLaunchOption = LaunchOption.OpenURL;
+            ProfileManager.SelectedGame.PreferredLaunchOption = LaunchOption.OpenURL;
         }
 
         private void radioButtonLaunchViaExecutable_CheckedChanged(object sender, EventArgs e)
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.PreferredLaunchOption = LaunchOption.RunExec;
+            ProfileManager.SelectedGame.PreferredLaunchOption = LaunchOption.RunExec;
         }
 
         private void textBoxIniPrefix_TextChanged(object sender, EventArgs e)
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.IniPrefix = this.textBoxIniPrefix.Text;
+            ProfileManager.SelectedGame.IniPrefix = this.textBoxIniPrefix.Text;
         }
 
         private void textBoxExecutable_TextChanged(object sender, EventArgs e)
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.ExecutableName = this.textBoxExecutable.Text;
+            ProfileManager.SelectedGame.ExecutableName = this.textBoxExecutable.Text;
         }
 
         private void textBoxParameters_TextChanged(object sender, EventArgs e)
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.ExecParameters = this.textBoxParameters.Text;
+            ProfileManager.SelectedGame.ExecParameters = this.textBoxParameters.Text;
         }
 
         private void textBoxLaunchURL_TextChanged(object sender, EventArgs e)
         {
             if (UpdatingUI)
                 return;
-            gameInstances.SelectedGame.LauncherURL = this.textBoxLaunchURL.Text;
+            ProfileManager.SelectedGame.LauncherURL = this.textBoxLaunchURL.Text;
         }
 
         private void buttonPickGamePath_Click(object sender, EventArgs e)
         {
             if (UpdatingUI)
                 return;
-            this.openFileDialogGamePath.FileName = gameInstances.SelectedGame.ExecutableName;
+            this.openFileDialogGamePath.FileName = ProfileManager.SelectedGame.ExecutableName;
             if (this.openFileDialogGamePath.ShowDialog() == DialogResult.OK)
             {
                 string path = Path.GetDirectoryName(this.openFileDialogGamePath.FileName); // We want the path where Fallout76.exe resides.
                 if (GameInstance.ValidateGamePath(path))
                 {
                     this.textBoxGamePath.Text = path;
-                    gameInstances.SelectedGame.GamePath = path;
+                    ProfileManager.SelectedGame.GamePath = path;
                     UpdateUI();
                 }
                 else
@@ -238,16 +238,16 @@ namespace Fo76ini.Forms.FormProfiles
         private void AddNewGame()
         {
             GameInstance game = new GameInstance();
-            this.gameInstances.AddGame(game);
-            this.gameInstances.SelectGame(game);
+            ProfileManager.AddGame(game);
+            ProfileManager.SelectGame(game);
         }
 
         private void AddNewProfile()
         {
             Profile profile = new Profile();
             profile.CopyINI();
-            this.gameInstances.SelectedGame.AddProfile(profile);
-            this.gameInstances.SelectedGame.SelectProfile(profile);
+            ProfileManager.SelectedGame.AddProfile(profile);
+            ProfileManager.SelectedGame.SelectProfile(profile);
         }
 
         private void toolStripButtonAddGame_Click(object sender, EventArgs e)
@@ -265,26 +265,26 @@ namespace Fo76ini.Forms.FormProfiles
 
         private void contextMenuStripGame_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.gameToolStripMenuItem.Text = gameInstances.SelectedGame.Title;
+            this.gameToolStripMenuItem.Text = ProfileManager.SelectedGame.Title;
         }
 
         private void contextMenuStripProfile_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.profileToolStripMenuItem.Text = gameInstances.SelectedGame.SelectedProfile.Name;
+            this.profileToolStripMenuItem.Text = ProfileManager.SelectedGame.SelectedProfile.Name;
         }
 
         private void openFolderProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Utils.OpenExplorer(gameInstances.SelectedGame.SelectedProfile.FolderPath);
+            Utils.OpenExplorer(ProfileManager.SelectedGame.SelectedProfile.FolderPath);
         }
 
         private void renameProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String oldName = gameInstances.SelectedGame.SelectedProfile.Name;
+            String oldName = ProfileManager.SelectedGame.SelectedProfile.Name;
             TextPrompt.Prompt($"Edit name of profile {oldName}", oldName, (newName) => {
                 if (newName.Trim() != "")
                 {
-                    gameInstances.SelectedGame.SelectedProfile.Name = newName;
+                    ProfileManager.SelectedGame.SelectedProfile.Name = newName;
                     UpdateUI();
                 }
             });
@@ -292,33 +292,33 @@ namespace Fo76ini.Forms.FormProfiles
 
         private void deleteProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (gameInstances.SelectedGame.Profiles.Count == 1)
+            if (ProfileManager.SelectedGame.Profiles.Count == 1)
             {
                 MsgBox.Get("errorAtLeastOneGameOrProfile").Show(MessageBoxIcon.Error);
                 return;
             }
 
-            if (MsgBox.Get("deleteQuestion").FormatText(gameInstances.SelectedGame.SelectedProfile.Name).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MsgBox.Get("deleteQuestion").FormatText(ProfileManager.SelectedGame.SelectedProfile.Name).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                gameInstances.SelectedGame.SelectedProfile.DeleteFolder();
-                gameInstances.SelectedGame.RemoveProfile(gameInstances.SelectedGame.SelectedProfile);
-                gameInstances.SelectedGame.SelectedProfileIndex -= 1;
+                ProfileManager.SelectedGame.SelectedProfile.DeleteFolder();
+                ProfileManager.SelectedGame.RemoveProfile(ProfileManager.SelectedGame.SelectedProfile);
+                ProfileManager.SelectedGame.SelectedProfileIndex -= 1;
                 UpdateUI();
             }
         }
 
         private void launchGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.gameInstances.SelectedGame.LaunchGame();
+            ProfileManager.SelectedGame.LaunchGame();
         }
 
         private void renameGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String oldName = gameInstances.SelectedGame.Title;
+            String oldName = ProfileManager.SelectedGame.Title;
             TextPrompt.Prompt($"Edit title of game {oldName}", oldName, (newName) => {
                 if (newName.Trim() != "")
                 {
-                    gameInstances.SelectedGame.Title = newName;
+                    ProfileManager.SelectedGame.Title = newName;
                     UpdateUI();
                 }
             });
@@ -326,19 +326,56 @@ namespace Fo76ini.Forms.FormProfiles
 
         private void removeGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (gameInstances.Games.Count == 1)
+            if (ProfileManager.Count == 1)
             {
                 MsgBox.Get("errorAtLeastOneGameOrProfile").Show(MessageBoxIcon.Error);
                 return;
             }
 
-            if (MsgBox.Get("deleteQuestion").FormatText(gameInstances.SelectedGame.Title).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MsgBox.Get("deleteQuestion").FormatText(ProfileManager.SelectedGame.Title).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                gameInstances.SelectedGame.DeleteProfiles();
-                gameInstances.RemoveGame(gameInstances.SelectedGame);
-                gameInstances.SelectedGameIndex -= 1;
+                ProfileManager.SelectedGame.DeleteProfiles();
+                ProfileManager.RemoveGame(ProfileManager.SelectedGame);
+                ProfileManager.SelectedGameIndex -= 1;
                 UpdateUI();
             }
+        }
+
+        private void buttonAutoDetect_Click(object sender, EventArgs e)
+        {
+            // Search most common installation directories (probably good enough for now):
+            string foundPath = "";
+            string steamPath = @"C:\Program Files(x86)\Steam\steamapps\common\Fallout76";
+            string bethNetPath = @"C:\Program Files (x86)\Bethesda.net Launcher\games\Fallout76";
+            string xboxPathC = @"C:\Program Files\ModifiableWindowsApps\Fallout76";
+            string xboxPathD = @"D:\Program Files\ModifiableWindowsApps\Fallout76";
+
+            GameEdition edition = ProfileManager.SelectedGame.Edition;
+
+            if (edition == GameEdition.Steam && GameInstance.ValidateGamePath(steamPath))
+                foundPath = steamPath;
+
+            if ((edition == GameEdition.BethesdaNet || edition == GameEdition.BethesdaNetPTS) && GameInstance.ValidateGamePath(bethNetPath))
+                foundPath = bethNetPath;
+
+            if (edition == GameEdition.MSStore && GameInstance.ValidateGamePath(xboxPathC))
+                foundPath = xboxPathC;
+
+            if (edition == GameEdition.MSStore && GameInstance.ValidateGamePath(xboxPathD))
+                foundPath = xboxPathD;
+
+            /*
+              Registry? I only found this:
+                Path: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Fallout 76
+                Name: Path
+                Type: REG_SZ
+                Data: "D:\Bethesda.net\Fallout76"
+             */
+
+            if (foundPath != "")
+                TextPrompt.Prompt("Found a path. Proceed?", foundPath, (newPath) => this.textBoxGamePath.Text = newPath);
+            else
+                MsgBox.ShowID("gamePathAutoDetectFailed", MessageBoxIcon.Information);
         }
     }
 }

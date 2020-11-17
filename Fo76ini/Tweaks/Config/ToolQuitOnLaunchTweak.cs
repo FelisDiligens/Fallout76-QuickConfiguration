@@ -2,7 +2,7 @@
 {
     class ToolQuitOnLaunchTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "When enabled, closes the tool when the game is launched.";
+        public string Description => "When enabled, closes the tool when the game is launched.\nOnly works if launched through the tool.";
 
         public string AffectedFiles => "config.ini";
 

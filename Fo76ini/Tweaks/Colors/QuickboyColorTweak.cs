@@ -14,7 +14,13 @@ namespace Fo76ini.Tweaks.Colors
 
         public string AffectedFiles => "Fallout76Custom.ini";
 
-        public string AffectedValues => "fQuickBoyEffectColorR, fQuickBoyEffectColorG, fPipboyEffectColorB";
+        public string AffectedValues => String.Join(
+             Environment.NewLine,
+             "",
+             "  [Pipboy]fQuickBoyEffectColorR",
+             "  [Pipboy]fQuickBoyEffectColorG",
+             "  [Pipboy]fQuickBoyEffectColorB",
+             "");
 
         public Color GetValue()
         {

@@ -390,40 +390,54 @@ namespace Fo76ini.NexusAPI
             request.Execute();
             if (request.Success && request.StatusCode == 200)
             {
-                JObject json = request.GetJSON();
+                try
+                {
+                    JObject json = request.GetJSON();
 
-                this.UserName = json["name"].ToString();
-                this.ProfilePictureURL = json["profile_url"].ToString();
-                this.UserID = Convert.ToInt64(json["user_id"].ToString());
+                    this.UserName = json["name"].ToString();
+                    this.ProfilePictureURL = json["profile_url"].ToString();
+                    this.UserID = Convert.ToInt64(json["user_id"].ToString());
 
-                if (json["is_premium"].Value<bool>() || json["is_premium?"].Value<bool>())
-                    this.Status = Membership.Premium;
-                else if (json["is_supporter"].Value<bool>() || json["is_supporter?"].Value<bool>())
-                    this.Status = Membership.Supporter;
-                else
-                    this.Status = Membership.Basic;
+                    if (json["is_premium"].Value<bool>() || json["is_premium?"].Value<bool>())
+                        this.Status = Membership.Premium;
+                    else if (json["is_supporter"].Value<bool>() || json["is_supporter?"].Value<bool>())
+                        this.Status = Membership.Supporter;
+                    else
+                        this.Status = Membership.Basic;
 
-                this.DailyRateLimit = Convert.ToInt32(request.ResponseHeaders["x-rl-daily-remaining"]);
-                this.DailyRateLimitResetString = request.ResponseHeaders["x-rl-daily-reset"];
-                this.HourlyRateLimit = Convert.ToInt32(request.ResponseHeaders["X-RL-Hourly-Remaining"]);
-                ParseDailyRateLimitReset();
+                    this.DailyRateLimit = Convert.ToInt32(request.ResponseHeaders["x-rl-daily-remaining"]);
+                    this.DailyRateLimitResetString = request.ResponseHeaders["x-rl-daily-reset"];
+                    this.HourlyRateLimit = Convert.ToInt32(request.ResponseHeaders["X-RL-Hourly-Remaining"]);
+                    ParseDailyRateLimitReset();
 
-                DownloadProfilePicture();
+                    DownloadProfilePicture();
 
-                /*
-                 Unused values:
-                  - "key"
-                  - "email"
-                 */
+                    /*
+                     Unused values:
+                      - "key"
+                      - "email"
+                     */
 
-                ValidKey = true;
+                    ValidKey = true;
+                }
+                catch (Exception e)
+                {
+                    MsgBox.Get("nexusModsProfileRefreshFailed").FormatText($"Unexpected exception: {e.Message}").Show(MessageBoxIcon.Error);
+                }
             }
             else
             {
-                if (request.Success)
-                    MsgBox.Get("nexusModsProfileRefreshFailed").FormatText($"Server returned: HTTP {request.StatusCode}\n{request.GetJSON()["message"].ToString()}").Show(MessageBoxIcon.Error);
-                else
-                    MsgBox.Get("nexusModsProfileRefreshFailed").FormatText($"WebException: {request.Exception.Message}").Show(MessageBoxIcon.Error);
+                try
+                {
+                    if (request.Success)
+                        MsgBox.Get("nexusModsProfileRefreshFailed").FormatText($"Server returned: HTTP {request.StatusCode}\n{request.GetJSON()["message"].ToString()}").Show(MessageBoxIcon.Error);
+                    else
+                        MsgBox.Get("nexusModsProfileRefreshFailed").FormatText($"WebException: {request.Exception.Message}").Show(MessageBoxIcon.Error);
+                }
+                catch (Exception e)
+                {
+                    MsgBox.Get("nexusModsProfileRefreshFailed").FormatText($"Unexpected exception: {e.Message}").Show(MessageBoxIcon.Error);
+                }
 
                 ValidKey = false;
             }

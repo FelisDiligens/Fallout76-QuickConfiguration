@@ -19,8 +19,16 @@ namespace Fo76ini.Forms.FormNexusAPI
         public FormNexus()
         {
             InitializeComponent();
+
+            // Make this form translatable:
+            Localization.LocalizedForms.Add(new LocalizedForm(this, null));
+
             this.backgroundWorkerRetrieveProfileInfo.DoWork += backgroundWorkerRetrieveProfileInfo_DoWork;
             this.backgroundWorkerRetrieveProfileInfo.RunWorkerCompleted += backgroundWorkerRetrieveProfileInfo_RunWorkerCompleted;
+        }
+
+        private void FormNexus_Load(object sender, EventArgs e)
+        {
             RefreshNMUI();
         }
 

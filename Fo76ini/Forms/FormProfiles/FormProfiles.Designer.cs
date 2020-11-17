@@ -30,15 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProfiles));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Default", 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Default", 0);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "Steam"}, 2, System.Drawing.Color.Empty, System.Drawing.SystemColors.Window, null);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Microsoft Store", 3);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Microsoft Store", 3);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonAddGame = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonAddProfile = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTip = new System.Windows.Forms.Label();
             this.labelSettings = new System.Windows.Forms.Label();
@@ -47,7 +49,10 @@
             this.listBoxProfile = new System.Windows.Forms.ListBox();
             this.contextMenuStripProfile = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFolderProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.renameProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelSettings = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBoxLaunchURL = new System.Windows.Forms.TextBox();
@@ -66,6 +71,10 @@
             this.textBoxGamePath = new System.Windows.Forms.TextBox();
             this.buttonPickGamePath = new System.Windows.Forms.Button();
             this.groupBoxGameEdition = new System.Windows.Forms.GroupBox();
+            this.pictureBoxMSStore = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSteam = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBethesdaNetPTS = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBethesdaNet = new System.Windows.Forms.PictureBox();
             this.radioButtonEditionMSStore = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionBethesdaNetPTS = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionSteam = new System.Windows.Forms.RadioButton();
@@ -74,20 +83,12 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripGame = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
-            this.openFolderProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBoxMSStore = new System.Windows.Forms.PictureBox();
-            this.pictureBoxSteam = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBethesdaNetPTS = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBethesdaNet = new System.Windows.Forms.PictureBox();
             this.launchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.renameGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButtonAddGame = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonAddProfile = new System.Windows.Forms.ToolStripButton();
+            this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
+            this.buttonAutoDetect = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.contextMenuStripProfile.SuspendLayout();
@@ -96,11 +97,11 @@
             this.groupBoxLaunchOptions.SuspendLayout();
             this.groupBoxGameLocation.SuspendLayout();
             this.groupBoxGameEdition.SuspendLayout();
-            this.contextMenuStripGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).BeginInit();
+            this.contextMenuStripGame.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -126,11 +127,33 @@
             this.toolStrip1.TabIndex = 15;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripButtonAddGame
+            // 
+            this.toolStripButtonAddGame.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAddGame.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAddGame.Image")));
+            this.toolStripButtonAddGame.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddGame.Name = "toolStripButtonAddGame";
+            this.toolStripButtonAddGame.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.toolStripButtonAddGame.Size = new System.Drawing.Size(74, 23);
+            this.toolStripButtonAddGame.Text = "Add game";
+            this.toolStripButtonAddGame.Click += new System.EventHandler(this.toolStripButtonAddGame_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 26);
+            // 
+            // toolStripButtonAddProfile
+            // 
+            this.toolStripButtonAddProfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAddProfile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAddProfile.Image")));
+            this.toolStripButtonAddProfile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddProfile.Name = "toolStripButtonAddProfile";
+            this.toolStripButtonAddProfile.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.toolStripButtonAddProfile.Size = new System.Drawing.Size(78, 23);
+            this.toolStripButtonAddProfile.Text = "Add profile";
+            this.toolStripButtonAddProfile.Click += new System.EventHandler(this.toolStripButtonAddProfile_Click);
             // 
             // panel1
             // 
@@ -229,10 +252,34 @@
             this.profileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.profileToolStripMenuItem.Text = "Default";
             // 
+            // openFolderProfileToolStripMenuItem
+            // 
+            this.openFolderProfileToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.folder_24;
+            this.openFolderProfileToolStripMenuItem.Name = "openFolderProfileToolStripMenuItem";
+            this.openFolderProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.openFolderProfileToolStripMenuItem.Text = "Open folder";
+            this.openFolderProfileToolStripMenuItem.Click += new System.EventHandler(this.openFolderProfileToolStripMenuItem_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(134, 6);
+            // 
+            // renameProfileToolStripMenuItem
+            // 
+            this.renameProfileToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.text_24;
+            this.renameProfileToolStripMenuItem.Name = "renameProfileToolStripMenuItem";
+            this.renameProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.renameProfileToolStripMenuItem.Text = "Rename";
+            this.renameProfileToolStripMenuItem.Click += new System.EventHandler(this.renameProfileToolStripMenuItem_Click);
+            // 
+            // deleteProfileToolStripMenuItem
+            // 
+            this.deleteProfileToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.delete_24;
+            this.deleteProfileToolStripMenuItem.Name = "deleteProfileToolStripMenuItem";
+            this.deleteProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.deleteProfileToolStripMenuItem.Text = "Delete";
+            this.deleteProfileToolStripMenuItem.Click += new System.EventHandler(this.deleteProfileToolStripMenuItem_Click);
             // 
             // panelSettings
             // 
@@ -259,7 +306,7 @@
             this.groupBox2.Controls.Add(this.labelExecutable);
             this.groupBox2.Controls.Add(this.textBoxIniPrefix);
             this.groupBox2.Controls.Add(this.labelIniPrefix);
-            this.groupBox2.Location = new System.Drawing.Point(7, 330);
+            this.groupBox2.Location = new System.Drawing.Point(7, 362);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(306, 128);
             this.groupBox2.TabIndex = 38;
@@ -341,7 +388,7 @@
             this.groupBoxLaunchOptions.Controls.Add(this.labelLaunchOptionMSStoreNotice);
             this.groupBoxLaunchOptions.Controls.Add(this.radioButtonLaunchViaExecutable);
             this.groupBoxLaunchOptions.Controls.Add(this.radioButtonLaunchViaLink);
-            this.groupBoxLaunchOptions.Location = new System.Drawing.Point(7, 216);
+            this.groupBoxLaunchOptions.Location = new System.Drawing.Point(7, 248);
             this.groupBoxLaunchOptions.Name = "groupBoxLaunchOptions";
             this.groupBoxLaunchOptions.Size = new System.Drawing.Size(306, 108);
             this.groupBoxLaunchOptions.TabIndex = 36;
@@ -384,11 +431,12 @@
             // 
             // groupBoxGameLocation
             // 
+            this.groupBoxGameLocation.Controls.Add(this.buttonAutoDetect);
             this.groupBoxGameLocation.Controls.Add(this.textBoxGamePath);
             this.groupBoxGameLocation.Controls.Add(this.buttonPickGamePath);
             this.groupBoxGameLocation.Location = new System.Drawing.Point(7, 155);
             this.groupBoxGameLocation.Name = "groupBoxGameLocation";
-            this.groupBoxGameLocation.Size = new System.Drawing.Size(306, 55);
+            this.groupBoxGameLocation.Size = new System.Drawing.Size(306, 87);
             this.groupBoxGameLocation.TabIndex = 37;
             this.groupBoxGameLocation.TabStop = false;
             this.groupBoxGameLocation.Text = "Game location";
@@ -430,6 +478,46 @@
             this.groupBoxGameEdition.TabIndex = 35;
             this.groupBoxGameEdition.TabStop = false;
             this.groupBoxGameEdition.Text = "Game edition";
+            // 
+            // pictureBoxMSStore
+            // 
+            this.pictureBoxMSStore.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.msstore_24;
+            this.pictureBoxMSStore.Location = new System.Drawing.Point(11, 109);
+            this.pictureBoxMSStore.Name = "pictureBoxMSStore";
+            this.pictureBoxMSStore.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxMSStore.TabIndex = 29;
+            this.pictureBoxMSStore.TabStop = false;
+            // 
+            // pictureBoxSteam
+            // 
+            this.pictureBoxSteam.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxSteam.Image = global::Fo76ini.Properties.Resources.steam_24px;
+            this.pictureBoxSteam.Location = new System.Drawing.Point(11, 79);
+            this.pictureBoxSteam.Name = "pictureBoxSteam";
+            this.pictureBoxSteam.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxSteam.TabIndex = 28;
+            this.pictureBoxSteam.TabStop = false;
+            // 
+            // pictureBoxBethesdaNetPTS
+            // 
+            this.pictureBoxBethesdaNetPTS.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxBethesdaNetPTS.Image = global::Fo76ini.Properties.Resources.bethesda_24;
+            this.pictureBoxBethesdaNetPTS.Location = new System.Drawing.Point(11, 49);
+            this.pictureBoxBethesdaNetPTS.Name = "pictureBoxBethesdaNetPTS";
+            this.pictureBoxBethesdaNetPTS.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxBethesdaNetPTS.TabIndex = 27;
+            this.pictureBoxBethesdaNetPTS.TabStop = false;
+            // 
+            // pictureBoxBethesdaNet
+            // 
+            this.pictureBoxBethesdaNet.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxBethesdaNet.Image = global::Fo76ini.Properties.Resources.bethesda_24;
+            this.pictureBoxBethesdaNet.Location = new System.Drawing.Point(11, 19);
+            this.pictureBoxBethesdaNet.Name = "pictureBoxBethesdaNet";
+            this.pictureBoxBethesdaNet.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxBethesdaNet.TabIndex = 26;
+            this.pictureBoxBethesdaNet.TabStop = false;
             // 
             // radioButtonEditionMSStore
             // 
@@ -484,11 +572,11 @@
             this.listViewGameInstances.FullRowSelect = true;
             this.listViewGameInstances.HideSelection = false;
             this.listViewGameInstances.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5});
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10});
             this.listViewGameInstances.LabelWrap = false;
             this.listViewGameInstances.LargeImageList = this.imageList1;
             this.listViewGameInstances.Location = new System.Drawing.Point(11, 27);
@@ -526,81 +614,6 @@
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.gameToolStripMenuItem.Text = "Game";
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
-            // 
-            // openFileDialogGamePath
-            // 
-            this.openFileDialogGamePath.FileName = "Fallout76.exe";
-            this.openFileDialogGamePath.Filter = "Executable|*.exe";
-            this.openFileDialogGamePath.FilterIndex = 2;
-            // 
-            // openFolderProfileToolStripMenuItem
-            // 
-            this.openFolderProfileToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.folder_24;
-            this.openFolderProfileToolStripMenuItem.Name = "openFolderProfileToolStripMenuItem";
-            this.openFolderProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.openFolderProfileToolStripMenuItem.Text = "Open folder";
-            this.openFolderProfileToolStripMenuItem.Click += new System.EventHandler(this.openFolderProfileToolStripMenuItem_Click);
-            // 
-            // renameProfileToolStripMenuItem
-            // 
-            this.renameProfileToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.text_24;
-            this.renameProfileToolStripMenuItem.Name = "renameProfileToolStripMenuItem";
-            this.renameProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.renameProfileToolStripMenuItem.Text = "Rename";
-            this.renameProfileToolStripMenuItem.Click += new System.EventHandler(this.renameProfileToolStripMenuItem_Click);
-            // 
-            // deleteProfileToolStripMenuItem
-            // 
-            this.deleteProfileToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.delete_24;
-            this.deleteProfileToolStripMenuItem.Name = "deleteProfileToolStripMenuItem";
-            this.deleteProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.deleteProfileToolStripMenuItem.Text = "Delete";
-            this.deleteProfileToolStripMenuItem.Click += new System.EventHandler(this.deleteProfileToolStripMenuItem_Click);
-            // 
-            // pictureBoxMSStore
-            // 
-            this.pictureBoxMSStore.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.msstore_24;
-            this.pictureBoxMSStore.Location = new System.Drawing.Point(11, 109);
-            this.pictureBoxMSStore.Name = "pictureBoxMSStore";
-            this.pictureBoxMSStore.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxMSStore.TabIndex = 29;
-            this.pictureBoxMSStore.TabStop = false;
-            // 
-            // pictureBoxSteam
-            // 
-            this.pictureBoxSteam.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxSteam.Image = global::Fo76ini.Properties.Resources.steam_24px;
-            this.pictureBoxSteam.Location = new System.Drawing.Point(11, 79);
-            this.pictureBoxSteam.Name = "pictureBoxSteam";
-            this.pictureBoxSteam.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxSteam.TabIndex = 28;
-            this.pictureBoxSteam.TabStop = false;
-            // 
-            // pictureBoxBethesdaNetPTS
-            // 
-            this.pictureBoxBethesdaNetPTS.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNetPTS.Image = global::Fo76ini.Properties.Resources.bethesda_24;
-            this.pictureBoxBethesdaNetPTS.Location = new System.Drawing.Point(11, 49);
-            this.pictureBoxBethesdaNetPTS.Name = "pictureBoxBethesdaNetPTS";
-            this.pictureBoxBethesdaNetPTS.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxBethesdaNetPTS.TabIndex = 27;
-            this.pictureBoxBethesdaNetPTS.TabStop = false;
-            // 
-            // pictureBoxBethesdaNet
-            // 
-            this.pictureBoxBethesdaNet.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNet.Image = global::Fo76ini.Properties.Resources.bethesda_24;
-            this.pictureBoxBethesdaNet.Location = new System.Drawing.Point(11, 19);
-            this.pictureBoxBethesdaNet.Name = "pictureBoxBethesdaNet";
-            this.pictureBoxBethesdaNet.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxBethesdaNet.TabIndex = 26;
-            this.pictureBoxBethesdaNet.TabStop = false;
-            // 
             // launchGameToolStripMenuItem
             // 
             this.launchGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.play;
@@ -608,6 +621,11 @@
             this.launchGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.launchGameToolStripMenuItem.Text = "Launch";
             this.launchGameToolStripMenuItem.Click += new System.EventHandler(this.launchGameToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
             // 
             // renameGameToolStripMenuItem
             // 
@@ -625,27 +643,21 @@
             this.removeGameToolStripMenuItem.Text = "Remove";
             this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
             // 
-            // toolStripButtonAddGame
+            // openFileDialogGamePath
             // 
-            this.toolStripButtonAddGame.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonAddGame.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAddGame.Image")));
-            this.toolStripButtonAddGame.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddGame.Name = "toolStripButtonAddGame";
-            this.toolStripButtonAddGame.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.toolStripButtonAddGame.Size = new System.Drawing.Size(74, 23);
-            this.toolStripButtonAddGame.Text = "Add game";
-            this.toolStripButtonAddGame.Click += new System.EventHandler(this.toolStripButtonAddGame_Click);
+            this.openFileDialogGamePath.FileName = "Fallout76.exe";
+            this.openFileDialogGamePath.Filter = "Executable|*.exe";
+            this.openFileDialogGamePath.FilterIndex = 2;
             // 
-            // toolStripButtonAddProfile
+            // buttonAutoDetect
             // 
-            this.toolStripButtonAddProfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonAddProfile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAddProfile.Image")));
-            this.toolStripButtonAddProfile.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddProfile.Name = "toolStripButtonAddProfile";
-            this.toolStripButtonAddProfile.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.toolStripButtonAddProfile.Size = new System.Drawing.Size(78, 23);
-            this.toolStripButtonAddProfile.Text = "Add profile";
-            this.toolStripButtonAddProfile.Click += new System.EventHandler(this.toolStripButtonAddProfile_Click);
+            this.buttonAutoDetect.Location = new System.Drawing.Point(6, 48);
+            this.buttonAutoDetect.Name = "buttonAutoDetect";
+            this.buttonAutoDetect.Size = new System.Drawing.Size(294, 23);
+            this.buttonAutoDetect.TabIndex = 32;
+            this.buttonAutoDetect.Text = "Attempt auto-detect";
+            this.buttonAutoDetect.UseVisualStyleBackColor = true;
+            this.buttonAutoDetect.Click += new System.EventHandler(this.buttonAutoDetect_Click);
             // 
             // FormProfiles
             // 
@@ -676,11 +688,11 @@
             this.groupBoxGameLocation.PerformLayout();
             this.groupBoxGameEdition.ResumeLayout(false);
             this.groupBoxGameEdition.PerformLayout();
-            this.contextMenuStripGame.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).EndInit();
+            this.contextMenuStripGame.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -740,5 +752,6 @@
         private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
         private System.Windows.Forms.Label labelTip;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Button buttonAutoDetect;
     }
 }

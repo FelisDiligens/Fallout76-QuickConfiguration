@@ -104,6 +104,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FormSettings\FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSettings\FormSettings.Designer.cs">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormSplash\FormSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,81 @@
     <Compile Include="Forms\FormTextPrompt\TextPrompt.Designer.cs">
       <DependentUpon>TextPrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface\Versioning.cs" />
+    <Compile Include="Tweaks\Audio\EnableAudioTweak.cs" />
+    <Compile Include="Tweaks\Audio\VoiceChatModeTweak.cs" />
+    <Compile Include="Tweaks\Audio\VoicePushToTalkEnabledTweak.cs" />
+    <Compile Include="Tweaks\Config\AutoApplyTweak.cs" />
+    <Compile Include="Tweaks\Config\IgnoreUpdatesTweak.cs" />
+    <Compile Include="Tweaks\Config\PlayNotificationSoundsTweak.cs" />
+    <Compile Include="Tweaks\Controls\EnableGamepadRumbleTweak.cs" />
+    <Compile Include="Tweaks\Controls\FixAimSensitivityTweak.cs" />
+    <Compile Include="Tweaks\Controls\FixMouseSensitivityTweak.cs" />
+    <Compile Include="Tweaks\Controls\GamepadEnableTweak.cs" />
+    <Compile Include="Tweaks\Controls\MouseAccelerationTweak.cs" />
+    <Compile Include="Tweaks\Controls\MouseInvertXTweak.cs" />
+    <Compile Include="Tweaks\Controls\MouseInvertYTweak.cs" />
+    <Compile Include="Tweaks\Controls\MouseSensitivityTweak.cs" />
+    <Compile Include="Tweaks\General\AutoSigninTweak.cs" />
+    <Compile Include="Tweaks\General\IntroVideoTweak.cs" />
+    <Compile Include="Tweaks\Audio\PlayMainMenuMusicTweak.cs" />
+    <Compile Include="Tweaks\General\ScreenshotIndexTweak.cs" />
+    <Compile Include="Tweaks\General\SkipStartupSplash.cs" />
+    <Compile Include="Tweaks\Graphics\AmbientOcclusionTweak.cs" />
+    <Compile Include="Tweaks\Graphics\AnisotropicFilteringTweak.cs" />
+    <Compile Include="Tweaks\Graphics\AntiAliasingTweak.cs" />
+    <Compile Include="Tweaks\Graphics\BlendSplitDirShadowTweak.cs" />
+    <Compile Include="Tweaks\Graphics\DirShadowSplitsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\DisableAllGoreTweak.cs" />
+    <Compile Include="Tweaks\Graphics\EnableDepthOfFieldTweak.cs" />
+    <Compile Include="Tweaks\Graphics\EnableGrassTweak.cs" />
+    <Compile Include="Tweaks\Graphics\FogTweak.cs" />
+    <Compile Include="Tweaks\Graphics\GrassFadeDistanceTweak.cs" />
+    <Compile Include="Tweaks\Graphics\LensFlareTweak.cs" />
+    <Compile Include="Tweaks\Graphics\LODFadeOutMultActorsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\LODFadeOutMultItemsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\LODFadeOutMultObjectsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\MotionBlurTweak.cs" />
+    <Compile Include="Tweaks\Graphics\RadialBlurTweak.cs" />
+    <Compile Include="Tweaks\Graphics\RainOcclusionTweak.cs" />
+    <Compile Include="Tweaks\Graphics\ShadowBlurrinessTweak.cs" />
+    <Compile Include="Tweaks\Graphics\ShadowDistanceTweak.cs" />
+    <Compile Include="Tweaks\Graphics\ShadowMapResolutionTweak.cs" />
+    <Compile Include="Tweaks\Graphics\TAAPostOverlayTweak.cs" />
+    <Compile Include="Tweaks\Graphics\TAAPostSharpenTweak.cs" />
+    <Compile Include="Tweaks\Graphics\VolumetricLightingTweak.cs" />
+    <Compile Include="Tweaks\Graphics\WaterDisplacementsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\WetnessOcclusionTweak.cs" />
+    <Compile Include="Tweaks\IniFiles\INIReadOnlyTweak.cs" />
+    <Compile Include="Tweaks\Interface\ActiveEffectsOnHUDTweak.cs" />
+    <Compile Include="Tweaks\Interface\AutoTrackQuestWhenStartedTweak.cs" />
+    <Compile Include="Tweaks\Interface\ConversationHistorySizeTweak.cs" />
+    <Compile Include="Tweaks\Interface\DialogueSubtitlesTweak.cs" />
+    <Compile Include="Tweaks\Interface\EnableItemRarityColorsTweak.cs" />
+    <Compile Include="Tweaks\Interface\EnablePowerArmorHUDTweak.cs" />
+    <Compile Include="Tweaks\Interface\FixHUD4to3RatioTweak.cs" />
+    <Compile Include="Tweaks\Interface\FloatingQuestMarkersDistanceTweak.cs" />
+    <Compile Include="Tweaks\Interface\GeneralSubtitlesTweak.cs" />
+    <Compile Include="Tweaks\Interface\HUDOpacityTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowCompassTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowCrosshairTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowDamageNumbersAdventureTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowDamageNumbersNuclearWinterTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowDialogueHistoryTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowFloatingQuestMarkersTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowFloatingQuestTextTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowOtherPlayersNamesTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowPublicTeamNotificationsTweak.cs" />
+    <Compile Include="Tweaks\Pipboy\PipboyTargetResolution.cs" />
+    <Compile Include="Tweaks\Pipboy\QuickboyModeEnabledTweak.cs" />
+    <Compile Include="Tweaks\Video\DisplayModeTweak.cs" />
+    <Compile Include="Tweaks\Video\DisplaySizeTweak.cs" />
+    <Compile Include="Tweaks\Video\PresentIntervalTweak.cs" />
+    <Compile Include="Tweaks\Video\TopMostWindowTweak.cs" />
+    <Compile Include="Tweaks\Video\WindowAlwaysActiveTweak.cs" />
+    <Compile Include="Tweaks\Volume\AudioMenuValTweak.cs" />
+    <Compile Include="Tweaks\Volume\MasterVolumeTweak.cs" />
+    <Compile Include="Tweaks\Volume\VivoxVoiceVolumeTweak.cs" />
     <Compile Include="Utilities\ClipboardUtils.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Forms\ExceptionDialog\FormExceptionDialog.cs">
@@ -225,6 +306,9 @@
     <EmbeddedResource Include="Forms\FormProfiles\FormProfiles.resx">
       <DependentUpon>FormProfiles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSettings\FormSettings.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSplash\FormSplash.resx">
       <DependentUpon>FormSplash.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +344,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pipboy_preview_fg_masked.png" />
+    <None Include="Resources\pipboy_preview_fg.png" />
+    <None Include="Resources\pipboy_preview_bg.png" />
+    <None Include="Resources\Xbox-One-Controller-icon.png" />
+    <None Include="Resources\mouse-icon.png" />
+    <None Include="Resources\download-2-24.png" />
     <None Include="Resources\text-24.png" />
     <None Include="banner.png" />
     <Content Include="icon.ico" />
@@ -286,7 +376,6 @@
     <None Include="Resources\checked-checkbox-24%281%29.png" />
     <None Include="Resources\add-folder-24.png" />
     <None Include="Resources\plus-24.png" />
-    <None Include="Resources\add-file-24.png" />
     <None Include="Resources\folder-3-24.png" />
     <None Include="Resources\edit-2-24.png" />
     <None Include="Resources\delete-24.png" />

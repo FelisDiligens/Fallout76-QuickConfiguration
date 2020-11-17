@@ -1,32 +1,22 @@
-﻿using IniParser;
-using IniParser.Model;
-using IniParser.Model.Configuration;
-using IniParser.Parser;
+﻿using Fo76ini;
+using Fo76ini.Utilities;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Cache;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Fo76ini;
 
 namespace Fo76ini_Updater
 {
     public partial class Updater : Form
     {
-        public static String AppConfigFolder = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");
-
         Log log;
-
         Config config;
 
         String workingDir;
@@ -36,6 +26,12 @@ namespace Fo76ini_Updater
 
         bool aborted = false;
 
+        /*
+         * The form changes sizes depending on the current process.
+         * While updating, it is collapsed.
+         * If successfully updated, it is expanded.
+         * If something went wrong, it gets fully expanded.
+         */
         private Size CollapsedSize = new Size(300, 140);
         private Size ExpandedSize = new Size(300, 170);
         private Size FullyExpandedSize = new Size(300, 230);
@@ -85,10 +81,6 @@ namespace Fo76ini_Updater
 
             log = new Log(Log.GetFilePath("update.log.txt"));
 
-            /* Thread thread = new Thread(DoUpdate);
-            thread.IsBackground = true;
-            thread.Start();*/
-
             Collapse();
             log.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------");
             log.WriteTimeStamp();
@@ -107,7 +99,7 @@ namespace Fo76ini_Updater
             while (Utils.IsProcessRunning("Fo76ini"))
                 Thread.Sleep(500);
 
-            Invoke(() => this.pictureBoxLoading.Visible = true);
+            Invoke(ShowLoadingGIF);
             Invoke(() => SetLabel("Updating, please wait...", Color.Black));
 
             // Get Download URL:
@@ -155,19 +147,20 @@ namespace Fo76ini_Updater
             client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleted);
             client.DownloadFileAsync(new Uri(config.DownloadURL), downloadPath);
 
-            this.progressBar.Visible = true;
+            ShowProgressbar();
         }
 
         private void DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
+            // Display download progress:
             int percentage = Utils.Clamp((int)(e.BytesReceived / (float)e.TotalBytesToReceive * 100), 0, 100);
             this.progressBar.Value = percentage;
-            SetLabel($"Updating, please wait...\nDownloading {config.DownloadFileName} ({percentage}%)...", Color.Black);
+            SetLabel($"Updating, please wait...\nDownloading {config.DownloadFileName} ({Utils.GetFormatedSize(e.BytesReceived)} of {Utils.GetFormatedSize(e.TotalBytesToReceive)}, {percentage}%)...", Color.Black);
         }
 
         private void DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            this.progressBar.Visible = false;
+            HideProgressbar();
 
             if (e.Error != null)
             {
@@ -193,115 +186,6 @@ namespace Fo76ini_Updater
             /*
              * Step 3: Installation
              */
-
-            // Unpacking
-            Invoke(() => SetLabel($"Updating, please wait...\nExtracting contents of {config.DownloadFileName}...", Color.Black));
-            if (!ExtractArchive())
-                return;
-
-            // Replacing old files
-            log.WriteLine("Installing update...");
-            log.WriteLine($"From: {extractionPath}");
-            log.WriteLine($"To:   {config.InstallationPath}");
-            IEnumerable<String> files = Directory.EnumerateFiles(extractionPath, "*.*", SearchOption.AllDirectories);
-            try
-            {
-                foreach (String file in files)
-                {
-                    String relPath = Utils.MakeRelativePath(extractionPath, file);
-                    log.WriteLine($" - Copying \"{relPath}\"");
-                    Invoke(() => SetLabel($"Updating, please wait...\nCopying {relPath}...", Color.Black));
-
-                    String destPath = Path.Combine(config.InstallationPath, relPath);
-                    if (!Directory.Exists(Path.GetDirectoryName(destPath)))
-                        Directory.CreateDirectory(Path.GetDirectoryName(destPath));
-
-                    File.Copy(
-                        file,
-                        destPath,
-                        true
-                    );
-                }
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                Invoke(() => FailState("Couldn't copy files, access denied.\nTry again, but run 'updater.exe' as admin.", ex));
-                return;
-            }
-            catch (IOException ex)
-            {
-                Invoke(() => FailState("Couldn't copy files.\nPlease run the updater through Fo76ini.exe.", ex));
-                return;
-            }
-            Invoke(() => SetLabel($"Updating, please wait...", Color.Black));
-
-            // Clean up
-            log.WriteLine("Cleaning up files...");
-            if (File.Exists(downloadPath))
-                File.Delete(downloadPath);
-            if (Directory.Exists(extractionPath))
-                Directory.Delete(extractionPath, true);
-
-            // Expand to show buttons:
-            log.WriteLine("Update finished\n\n");
-            Invoke(() => SetLabel("Update finished", Color.ForestGreen));
-            Invoke(Expand);
-        }
-
-        private void DoUpdate()
-        {
-            Invoke(Collapse);
-            log.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------");
-            log.WriteTimeStamp();
-
-            // The tool has to be closed:
-            Invoke(() => SetLabel("Waiting for the tool to exit...", Color.DimGray));
-            while (Utils.IsProcessRunning("Fo76ini"))
-                Thread.Sleep(500);
-
-            Invoke(() => this.pictureBoxLoading.Visible = true);
-            Invoke(() => SetLabel("Updating, please wait...", Color.Black));
-
-            // Get Download URL:
-            Invoke(() => SetLabel($"Updating, please wait...\nContacting GitHub API...", Color.Black));
-            if (!CheckRateLimit())
-                return;
-            if (!GetLatestReleaseURL())
-                return;
-
-            // Compare versions:
-            if (config.HasVersionStrings() && Utils.CompareVersions(config.InstalledVersion, config.LatestVersion) >= 0)
-            {
-                // If update isn't necessary, then ask user, if they want to continue anyway:
-                if (MessageBox.Show($"You already have the latest version.\nYour version: {config.InstalledVersion}\nLatest version: {config.LatestVersion}\nDo you want to continue updating anyway?", "Continue anyway?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-                {
-                    Invoke(() => SetLabel("You already have the latest version."));
-                    Invoke(Expand);
-                    return;
-                }
-            }
-
-            // Download:
-            downloadPath = Path.Combine(workingDir, config.DownloadFileName);
-            Invoke(() => SetLabel($"Updating, please wait...\nDownloading {config.DownloadFileName}...", Color.Black));
-            try
-            {
-                log.WriteLine($"Downloading file from {config.DownloadURL}");
-                WebClient client = new WebClient();
-                client.CachePolicy = new RequestCachePolicy(RequestCacheLevel.BypassCache);
-                client.DownloadFile(config.DownloadURL, downloadPath);
-            }
-            catch (WebException ex)
-            {
-                Invoke(() => FailState("Couldn't download file,\ncheck update.log.txt for details.", ex));
-                return;
-            }
-            if (!File.Exists(downloadPath))
-            {
-                log.WriteLine($"{config.DownloadFileName} couldn't be found.");
-                Invoke(() => FailState("Something went wrong,\ncheck update.log.txt for details."));
-                return;
-            }
 
             // Unpacking
             Invoke(() => SetLabel($"Updating, please wait...\nExtracting contents of {config.DownloadFileName}...", Color.Black));
@@ -452,8 +336,8 @@ namespace Fo76ini_Updater
                     // ... otherwise abort with error message:
                     else
                     {
-                        log.WriteLine($"Failed: Request denied. Dumping response to {Updater.AppConfigFolder}\\githubAPIresp.json.\n{ex}");
-                        using (Stream s = File.Create(Path.Combine(Updater.AppConfigFolder, "githubAPIresp.json")))
+                        log.WriteLine($"Failed: Request denied. Dumping response to {Shared.AppConfigFolder}\\githubAPIresp.json.\n{ex}");
+                        using (Stream s = File.Create(Path.Combine(Shared.AppConfigFolder, "githubAPIresp.json")))
                         {
                             response.GetResponseStream().CopyTo(s);
                         }
@@ -606,7 +490,7 @@ namespace Fo76ini_Updater
 
         private void FailState(String text, Exception ex)
         {
-            this.pictureBoxLoading.Visible = false;
+            HideLoadingGIF();
             log.WriteLine(ex);
             ExpandFully();
             SetLabel(text, Color.Red);
@@ -615,7 +499,7 @@ namespace Fo76ini_Updater
 
         private void FailState(String text)
         {
-            this.pictureBoxLoading.Visible = false;
+            HideLoadingGIF();
             ExpandFully();
             SetLabel(text, Color.Red);
             this.buttonTryAgainAdmin.Visible = true;
@@ -673,6 +557,26 @@ namespace Fo76ini_Updater
             this.Size = size;
             this.MaximumSize = size;
             this.MinimumSize = size;
+        }
+
+        private void ShowLoadingGIF()
+        {
+            this.pictureBoxLoading.Visible = true;
+        }
+
+        private void HideLoadingGIF()
+        {
+            this.pictureBoxLoading.Visible = false;
+        }
+
+        private void ShowProgressbar()
+        {
+            this.progressBar.Visible = true;
+        }
+
+        private void HideProgressbar()
+        {
+            this.progressBar.Visible = false;
         }
     }
 }

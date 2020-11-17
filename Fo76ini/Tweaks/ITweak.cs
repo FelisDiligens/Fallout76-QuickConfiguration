@@ -30,4 +30,19 @@
 
         string AffectedValues { get; }
     }
+
+    /// <summary>
+    /// Makes it possible to interface with an ITweak<CustomEnum> using integer.
+    /// </summary>
+    public interface IEnumTweak
+    {
+        int GetInt();
+
+        void SetInt(int value);
+
+        /// <summary>
+        /// Get the amount of names in an enum.
+        /// </summary>
+        int Count { get; }
+    }
 }

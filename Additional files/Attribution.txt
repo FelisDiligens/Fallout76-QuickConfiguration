@@ -1,0 +1,59 @@
+ICONS
+  Most icons have been downloaded from iconsdb.com:
+
+    "Soylent red fire 2 icon" by recognizeapp.com is licensed under CC BY 4.0
+    https://www.iconsdb.com/soylent-red-icons/fire-2-icon.html
+
+    "Royal blue save icon" by icons8.com is licensed under CC BY-ND 3.0
+    https://www.iconsdb.com/royal-blue-icons/save-icon.html
+
+    "Caribbean blue checked checkbox icon" by icons8.com is licensed under CC BY-ND 3.0
+    https://www.iconsdb.com/caribbean-blue-icons/checked-checkbox-icon.html
+
+    "Orange folder 3 icon" by icons8.com is licensed under CC BY-ND 3.0
+    https://www.iconsdb.com/orange-icons/folder-3-icon.html
+
+    "Soylent red delete icon" by icons8.com is licensed under CC BY-ND 3.0
+    https://www.iconsdb.com/soylent-red-icons/delete-icon.html
+
+    "Orange adventures icon" by icons8.com is licensed under CC BY-ND 3.0
+    https://www.iconsdb.com/orange-icons/adventures-icon.html
+
+    "Royal blue help icon" by icons8.com is licensed under CC BY-ND 3.0
+    https://www.iconsdb.com/royal-blue-icons/help-icon.html
+
+    "Black heart 69 ico" is licensed under CC0 1.0 Universal
+    https://www.iconsdb.com/black-icons/heart-69-icon.html
+
+    "Royal blue cog icon" by Iconic is licensed under MIT License
+    https://www.iconsdb.com/royal-blue-icons/cog-icon.html
+
+    "Black exit icon" is licensed under CC0 1.0 Universal
+    https://www.iconsdb.com/black-icons/exit-icon.html
+
+    "Black text icon" by icons8 is licensed under Creative Commons Attribution-NoDerivs 3.0
+    https://www.iconsdb.com/black-icons/text-icon.html
+
+    "Guacamole green download 2 icon" by James Lynch is licensed under CC0 1.0 Universal (CC0 1.0)
+    https://www.iconsdb.com/guacamole-green-icons/download-2-icon.html
+
+    "Mouse Icon" by VisualPharm is licensed under "Linkware"
+    https://www.iconarchive.com/show/hardware-icons-by-visualpharm/mouse-icon.html
+    https://visualpharm.com/
+
+    "Xbox One Controller Icon" by Prepaid Game Cards is licensed under CC Attribution 4.0.
+    https://iconarchive.com/show/gaming-gadgets-icons-by-prepaidgamecards/Xbox-One-Controller-icon.html
+    http://www.prepaidgamecards.com/
+
+
+  Loading *.gif's: 'Spinner' and 'Gear' released under Loading.io FREE License.
+
+
+SOUNDS
+  "Chord Alert Notification" (notify.wav) by graham_makes is licensed under CC BY 3.0
+  (changed by adding a fade out effect and turning the volume down):
+  https://freesound.org/people/graham_makes/sounds/457518/
+
+  "error2.wav" (error.wav) by chrisw92 is licensed under CC BY 3.0
+  (changed by adding a reverb and equalizing the volume on left and right channel):
+  https://freesound.org/people/chrisw92/sounds/110931/

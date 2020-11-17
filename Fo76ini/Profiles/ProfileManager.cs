@@ -11,44 +11,71 @@ namespace Fo76ini.Profiles
     /// <summary>
     /// Loads, saves, and manages game instances and profiles.
     /// </summary>
-    public class ProfileManager
+    public static class ProfileManager
     {
-        public List<GameInstance> Games = new List<GameInstance>();
-        public int SelectedGameIndex;
+        public static event ProfileEventHandler ProfileChanged;
+        private static List<GameInstance> games = new List<GameInstance>();
+        private static int selectedGameIndex;
 
-        public static string XMLPath = Path.Combine(Shared.AppConfigFolder, "profiles.xml");
-
-        public void AddGame(GameInstance game)
+        public static IEnumerable<GameInstance> Games
         {
-            this.Games.Add(game);
+            get { return games.Select(x => x); }
         }
 
-        public void RemoveGame(GameInstance game)
+        public static int Count
         {
-            this.Games.Remove(game);
+            get { return games.Count; }
         }
 
-        public int FindIndex(GameInstance game)
+        public static int SelectedGameIndex
         {
-            return Games.FindIndex((GameInstance search) => search == game);
-        }
-
-        public void SelectGame(GameInstance game)
-        {
-            this.SelectedGameIndex = FindIndex(game);
-        }
-
-        public GameInstance SelectedGame
-        {
-            get
+            get { return selectedGameIndex; }
+            set
             {
-                if (SelectedGameIndex < 0 || SelectedGameIndex >= Games.Count)
-                    return null;
-                return Games[SelectedGameIndex];
+                selectedGameIndex = value;
+                Feedback();
             }
         }
 
-        public bool IsSelected(GameInstance game)
+        public static void Feedback()
+        {
+            if (ProfileChanged != null)
+                ProfileChanged(null, BuildProfileEventArgs());
+        }
+
+        public static string XMLPath = Path.Combine(Shared.AppConfigFolder, "profiles.xml");
+
+        public static void AddGame(GameInstance game)
+        {
+            games.Add(game);
+        }
+
+        public static void RemoveGame(GameInstance game)
+        {
+            games.Remove(game);
+        }
+
+        public static int FindIndex(GameInstance game)
+        {
+            return games.FindIndex((GameInstance search) => search == game);
+        }
+
+        public static void SelectGame(GameInstance game)
+        {
+            SelectedGameIndex = FindIndex(game);
+        }
+
+        public static GameInstance SelectedGame
+        {
+            get
+            {
+                if (SelectedGameIndex < 0 || SelectedGameIndex >= games.Count)
+                    return null;
+                return games[SelectedGameIndex];
+            }
+        }
+
+        public static bool IsSelected(GameInstance game)
         {
             return SelectedGameIndex >= 0 && SelectedGameIndex == FindIndex(game);
         }
@@ -58,21 +85,21 @@ namespace Fo76ini.Profiles
             get { return games[selectedGameGuid].SelectedProfile; }
         }*/
 
-        public void Save()
+        public static void Save()
         {
             XDocument xmlDoc = new XDocument();
             XElement xmlRoot = new XElement("Games",
                 new XAttribute("selected", SelectedGameIndex)
             );
 
-            foreach (GameInstance game in Games)
+            foreach (GameInstance game in games)
                 xmlRoot.Add(game.Serialize());
 
             xmlDoc.Add(xmlRoot);
             xmlDoc.Save(XMLPath);
         }
 
-        public void Load()
+        public static void Load()
         {
             if (!File.Exists(XMLPath))
             {
@@ -82,20 +109,23 @@ namespace Fo76ini.Profiles
 
             XDocument xmlDoc = XDocument.Load(XMLPath);
 
-            this.Games.Clear();
+            games.Clear();
             foreach (XElement xmlGame in xmlDoc.Descendants("Game"))
-                this.AddGame(GameInstance.Deserialize(xmlGame));
+                AddGame(GameInstance.Deserialize(xmlGame));
 
-            this.SelectedGameIndex = Convert.ToInt32(xmlDoc.Root.Attribute("selected").Value);
+            SelectedGameIndex = Convert.ToInt32(xmlDoc.Root.Attribute("selected").Value);
+
+            // Call event handler:
+            Feedback();
         }
 
-        private void Init()
+        private static void Init()
         {
             // If tool has been started for the first time, no profiles are available.
             // Create profiles and save the xml.
 
             // No games?
-            if (Games.Count == 0)
+            if (games.Count == 0)
             {
                 // Do we have legacy profiles?
                 if (IniFiles.Config != null && IniFiles.Config.Exists("Preferences", "uGameEdition"))
@@ -113,25 +143,25 @@ namespace Fo76ini.Profiles
                     defaultGame.AddProfile(defaultProfile);
                     defaultGame.SelectProfile(defaultProfile);
 
-                    this.AddGame(defaultGame);
-                    this.SelectGame(defaultGame);
+                    AddGame(defaultGame);
+                    SelectGame(defaultGame);
                 }
             }
             
             // No game selected?
-            if (this.SelectedGameIndex < 0)
+            if (SelectedGameIndex < 0)
             {
                 // Select first game in list:
-                this.SelectedGameIndex = 0;
+                SelectedGameIndex = 0;
             }
 
-            this.Save();
+            Save();
         }
 
         /// <summary>
         /// Converts legacy profiles from v1.8.4h1 and prior to new format.
         /// </summary>
-        private void ConvertLegacyFormat()
+        private static void ConvertLegacyFormat()
         {
             // sGamePath [ + MSStore / BethesdaNet / BethesdaNetPTS / Steam ]
             // uLaunchOption (1 = OpenURL) (2 = RunExec)
@@ -159,14 +189,14 @@ namespace Fo76ini.Profiles
                         IniFiles.Config.GetUInt("Preferences", "uLaunchOption", 1)
                     );
 
-                    this.AddGame(game);
+                    AddGame(game);
                     if (selected)
-                        this.SelectGame(game);
+                        SelectGame(game);
                 }
             }
         }
 
-        private GameInstance ConvertLegacyFormat(string sGamePath, bool selected, GameEdition edition, uint uLaunchOption)
+        private static GameInstance ConvertLegacyFormat(string sGamePath, bool selected, GameEdition edition, uint uLaunchOption)
         {
             GameInstance game = new GameInstance();
             game.GamePath = sGamePath;
@@ -199,5 +229,30 @@ namespace Fo76ini.Profiles
 
             return game;
         }
+
+        private static ProfileEventArgs BuildProfileEventArgs()
+        {
+            ProfileEventArgs args = new ProfileEventArgs();
+            args.ActiveGameInstance = SelectedGame;
+            args.ActiveProfile = SelectedGame.SelectedProfile;
+            args.GameIndex = SelectedGameIndex;
+            if (args.ActiveProfile != null)
+            {
+                args.ProfileIndex = SelectedGame.SelectedProfileIndex;
+                args.ProfileGuid = SelectedGame.SelectedProfile.guid;
+            }
+            return args;
+        }
+    }
+
+    public delegate void ProfileEventHandler(object sender, ProfileEventArgs e);
+
+    public class ProfileEventArgs : EventArgs
+    {
+        public GameInstance ActiveGameInstance;
+        public Profile ActiveProfile;
+        public int GameIndex;
+        public int ProfileIndex;
+        public Guid ProfileGuid;
     }
 }

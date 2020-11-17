@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Fo76ini.Interface;
+using Fo76ini.Tweaks;
 using Fo76ini.Utilities;
 
 namespace Fo76ini
@@ -16,13 +17,20 @@ namespace Fo76ini
     public partial class Localization
     {
         public static Dictionary<string, string> localizedStrings = new Dictionary<string, string>();
-        public static string languageFolder = Path.Combine(Shared.AppConfigFolder, "languages");
-        private static List<Translation> translations = new List<Translation>();
-        private static DropDown comboBoxTranslations;
+        public static readonly string LanguageFolder = Path.Combine(Shared.AppConfigFolder, "languages");
 
+        /// <summary>
+        /// Current locale
+        /// </summary>
+        public static string Locale = "en-US";
+
+        /// <summary>
+        /// Add your form to this list if you want it to get translated.
+        /// </summary>
         public static List<LocalizedForm> LocalizedForms = new List<LocalizedForm>();
 
-        public static string locale = "en-US";
+        private static List<Translation> translations = new List<Translation>();
+        private static DropDown comboBoxTranslations;
 
         static Localization()
         {
@@ -40,20 +48,36 @@ namespace Fo76ini
             return Localization.localizedStrings[str];
         }
 
-        public static void AssignDropBox(ComboBox comboBoxLanguage)
+        /// <summary>
+        /// Assigns a dropdown menu to hold all languages.
+        /// Also assigns an event handler 'SelectedIndexChanged' to automatically translate forms.
+        /// </summary>
+        /// <param name="comboBoxLanguage"></param>
+        public static void AssignDropDown(ComboBox comboBoxLanguage)
         {
             Localization.comboBoxTranslations = new DropDown(comboBoxLanguage);
+            comboBoxLanguage.SelectedIndexChanged += (object sender, EventArgs e) =>
+            {
+                Translation translation = Localization.GetTranslation();
+                translation.Apply();
+
+                IniFiles.Config.Set("Preferences", "sLanguage", translation.ISO);
+                Localization.Locale = translation.ISO;
+
+                if (translation.ISO != "en-US")
+                    Localization.GenerateTemplate(translation);
+            };
         }
 
         public static void LookupLanguages()
         {
-            // Create 'languages' folder:
-            Directory.CreateDirectory(languageFolder);
+            // Create 'languages' folder if not existing:
+            Directory.CreateDirectory(LanguageFolder);
 
             // Look into the folder and add all language files to the dropdown menu:
             Localization.translations.Clear();
             Localization.comboBoxTranslations.Clear();
-            foreach (string filePath in Directory.GetFiles(languageFolder))
+            foreach (string filePath in Directory.GetFiles(LanguageFolder))
             {
                 try
                 {
@@ -74,7 +98,7 @@ namespace Fo76ini
             int languageIndex = GetTranslationIndex(selectedLanguageISO);
             int enUSIndex = GetTranslationIndex("en-US");
             Localization.comboBoxTranslations.SelectedIndex = languageIndex > -1 ? languageIndex : enUSIndex;
-            Localization.locale = selectedLanguageISO;
+            Localization.Locale = selectedLanguageISO;
         }
 
         public static void GenerateTemplate(Translation translation)
@@ -82,7 +106,7 @@ namespace Fo76ini
             translation.Save(translation.ISO + ".template.xml", Shared.VERSION);
         }
 
-        public static void GenerateTemplate()
+        public static void GenerateDefaultTemplate()
         {
             Translation english = new Translation();
             english.Name = "English (USA)";
@@ -146,19 +170,26 @@ namespace Fo76ini
         private string fileName;
         private string filePath;
 
+        /// <summary>
+        /// Add event handler to reload UI elements after the program has been translated to another language.
+        /// </summary>
+        public static event TranslationEventHandler LanguageChanged;
+
+        /// <summary>
+        /// Add control elements to this list if you want them to not be translated.
+        /// </summary>
+        public static List<string> BlackList = new List<string>
+        {
+            "labelModsDeploy" // TODO: Move to formmods.
+        };
+
         private Dictionary<string, string> dictText = new Dictionary<string, string>();
         private Dictionary<string, string> dictTooltip = new Dictionary<string, string>();
 
-        private static List<string> blackList = new List<string>
-        {
-            "labelConfigVersion",
-            "labelAuthorName",
-            "labelTranslationAuthor",
-            "groupBoxWIP",
-            "labelNewVersion",
-            "labelModsDeploy",
-            "labelGameEdition"
-        };
+        /// <summary>
+        /// Names of controls to ignore when setting tooltips
+        /// </summary>
+        private List<string> ignoreTooltipsOfTheseControls = new List<string>();
 
         public Translation()
         {
@@ -171,7 +202,7 @@ namespace Fo76ini
         public void Load(string fileName)
         {
             this.fileName = fileName;
-            this.filePath = Path.Combine(Localization.languageFolder, this.fileName);
+            this.filePath = Path.Combine(Localization.LanguageFolder, this.fileName);
 
             /*
              *  Read *.xml file:
@@ -217,18 +248,23 @@ namespace Fo76ini
             XDocument xmlDoc = XDocument.Load(this.filePath);
             XElement xmlRoot = xmlDoc.Element("Language");
 
+            ignoreTooltipsOfTheseControls = LinkedTweaks.GetListOfLinkedControlNames();
+
+            // Translate each form individually:
             foreach (LocalizedForm form in Localization.LocalizedForms)
             {
                 XElement xmlForm = xmlRoot.Element(form.Form.Name);
+
+                // Ignore non-existing forms
                 if (xmlForm == null)
-                    throw new InvalidXmlException($"Couldn't find <{form.Form.Name}>");
+                    continue; // throw new InvalidXmlException($"Couldn't find <{form.Form.Name}>");
 
                 // Set title, if it exists:
                 if (xmlForm.Attribute("title") != null)
                     form.Form.Text = xmlForm.Attribute("title").Value;
 
                 // Forms:
-                DeserializeDictionaries(xmlRoot);
+                DeserializeDictionaries(xmlForm); // TODO: xmlRoot replaced with xmlForm. Good idea?
                 DeserializeControls(xmlForm, form.Form, form.ToolTip);
                 foreach (Control subControl in form.SpecialControls)
                     DeserializeControl(xmlForm, subControl, form.ToolTip);
@@ -243,24 +279,46 @@ namespace Fo76ini
                 if (xmlStrings != null)
                     Localization.DeserializeStrings(xmlStrings);
 
+                // TODO: Generalize this. No outside references, plz:
+
+                // TODO: Doesn't make sense to deserialize them multiple times:
+
                 // Drop downs:
                 XElement xmlDropDowns = xmlRoot.Element("Dropdowns");
                 if (xmlDropDowns != null)
                     DropDown.DeserializeAll(xmlDropDowns);
+
+                // Tweak descriptions:
+                XElement xmlTweakDescriptions = xmlRoot.Element("TweakDescriptions");
+                if (xmlTweakDescriptions != null)
+                    LinkedTweaks.DeserializeTweakDescriptionList(xmlTweakDescriptions);
+                if (form.ToolTip != null)
+                    LinkedTweaks.SetToolTips(form.ToolTip);
+            }
+
+            // Call event handler:
+            if (LanguageChanged != null)
+            {
+                TranslationEventArgs e = new TranslationEventArgs();
+                e.HasAuthor = this.Author != "";
+                //e.ActiveTranslation = this;
+                LanguageChanged(this, e);
             }
         }
 
         private void DeserializeControl(XElement xmlRoot, Control subControl, ToolTip toolTip)
         {
             if (subControl.Name != null &&
-                subControl.Name.Length > 0)
+                subControl.Name.Length > 0 &&
+                !BlackList.Contains(subControl.Name))
             {
                 // Set text:
                 if (dictText.ContainsKey(subControl.Name))
                     subControl.Text = FromSafeString(dictText[subControl.Name]);
 
                 // Set tooltip:
-                if (dictTooltip.ContainsKey(subControl.Name))
+                if (dictTooltip.ContainsKey(subControl.Name) &&
+                    !ignoreTooltipsOfTheseControls.Contains(subControl.Name))
                     toolTip.SetToolTip(subControl, dictTooltip[subControl.Name]);
 
 
@@ -379,7 +437,7 @@ namespace Fo76ini
         public void Save(string fileName, string version)
         {
             string newFileName = fileName;
-            string newFilePath = Path.Combine(Localization.languageFolder, newFileName);
+            string newFilePath = Path.Combine(Localization.LanguageFolder, newFileName);
 
             // Create document and root:
             XDocument xmlDoc = new XDocument();
@@ -394,9 +452,13 @@ namespace Fo76ini
             xmlDoc.Add(xmlRoot);
 
             // Serialize external stuff:
+            // TODO: Find a way to remove the references, plz:
             xmlRoot.Add(Localization.SerializeStrings());
             xmlRoot.Add(DropDown.SerializeAll());
             xmlRoot.Add(MsgBox.SerializeAll());
+            xmlRoot.Add(LinkedTweaks.SerializeTweakDescriptionList());
+
+            ignoreTooltipsOfTheseControls = LinkedTweaks.GetListOfLinkedControlNames();
 
             // Serialize all control elements:
             foreach (LocalizedForm form in Localization.LocalizedForms)
@@ -409,7 +471,7 @@ namespace Fo76ini
             }
 
             // Save it:
-            Directory.CreateDirectory(Localization.languageFolder);
+            Directory.CreateDirectory(Localization.LanguageFolder);
             xmlDoc.Save(newFilePath);
         }
 
@@ -418,7 +480,7 @@ namespace Fo76ini
             int count = 0;
             if (subControl.Name != null &&
                 subControl.Name.Length > 0 &&
-                !blackList.Contains(subControl.Name) &&
+                !BlackList.Contains(subControl.Name) &&
                 !subControl.Name.ToLower().Contains("separator"))
             {
                 XElement subElement = new XElement(subControl.GetType().Name);
@@ -444,8 +506,10 @@ namespace Fo76ini
                 }
 
                 // Add tooltip text:
-                if (toolTip.GetToolTip(subControl) != null &&
-                    toolTip.GetToolTip(subControl).Length > 0)
+                if (toolTip != null &&
+                    toolTip.GetToolTip(subControl) != null &&
+                    toolTip.GetToolTip(subControl).Length > 0 &&
+                    !ignoreTooltipsOfTheseControls.Contains(subControl.Name))
                 {
                     subElement.Add(new XElement("Tooltip", toolTip.GetToolTip(subControl)));
                     addSubElement = true;
@@ -562,6 +626,14 @@ namespace Fo76ini
                    where component != null
                    select component;
         }
+    }
+
+    public delegate void TranslationEventHandler(object sender, TranslationEventArgs e);
+
+    public class TranslationEventArgs : EventArgs
+    {
+        //public Translation ActiveTranslation;
+        public bool HasAuthor;
     }
 
     public class LocalizedForm

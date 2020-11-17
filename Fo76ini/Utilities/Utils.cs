@@ -356,10 +356,10 @@ namespace Fo76ini.Utilities
             return vDevMode.dmDisplayFrequency;
         }
 
-        public static int[] GetDisplayResolution()
+        public static Size GetDisplayResolution()
         {
             DEVMODE vDevMode = Utils.GetDisplayInfo();
-            return new int[] { vDevMode.dmPelsWidth, vDevMode.dmPelsHeight };
+            return new Size(vDevMode.dmPelsWidth, vDevMode.dmPelsHeight);
         }
 
 

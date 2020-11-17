@@ -387,6 +387,11 @@ namespace Fo76ini
                 "Cannot delete game or profile",
                 "At least one game or profile is needed."
             );
+
+            MsgBox.Add("gamePathAutoDetectFailed",
+                "Auto-detect failed",
+                "Couldn't find any common game path. If you haven't selected a game edition, select the right one and try again."
+            );
         }
     }
 }
