@@ -11,6 +11,7 @@ namespace Fo76ini
 
     partial class Form1
     {
+#if false
         private CameraPositionMode camPosMode = CameraPositionMode.Unarmed;
 
         private float camOffsetMultiplier = 50;
@@ -210,5 +211,6 @@ namespace Fo76ini
             camPosMode = CameraPositionMode.MeleeCombat;
             UpdateCameraPositionUI();
         }
+#endif
     }
 }

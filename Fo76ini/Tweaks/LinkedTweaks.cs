@@ -270,6 +270,11 @@ namespace Fo76ini.Tweaks
         {
             SetValueActions.Add(() => preview.BackColor = tweak.GetValue());
 
+            preview.BackColorChanged += (object sender, EventArgs e) =>
+            {
+                tweak.SetValue(preview.BackColor);
+            };
+
             pickColor.Click += (object sender, EventArgs e) =>
             {
                 colorDialog.Color = tweak.GetValue();

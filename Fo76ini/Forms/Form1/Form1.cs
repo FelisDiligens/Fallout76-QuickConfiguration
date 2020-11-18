@@ -25,8 +25,7 @@ namespace Fo76ini
     {
         private FormMods formMods;
         private FormWhatsNew formWhatsNew;
-        private FormNexus formNexus;
-        private FormProfiles formProfiles;
+        private FormSettings formSettings;
 
         private GameInstance game;
 
@@ -48,9 +47,6 @@ namespace Fo76ini
 
             // Handle translations:
             Translation.LanguageChanged += OnLanguageChanged;
-
-            // Assign a dropdown menu to hold languages:
-            Localization.AssignDropDown(this.comboBoxLanguage);
 
             // Add control elements to blacklist:
             Translation.BlackList.AddRange(new string[] {
@@ -279,7 +275,7 @@ namespace Fo76ini
             this.KeyDown += this.Form1_KeyDown;
 
             this.backgroundWorkerGetLatestVersion.RunWorkerCompleted += backgroundWorkerGetLatestVersion_RunWorkerCompleted;
-            this.backgroundWorkerDownloadLanguages.RunWorkerCompleted += backgroundWorkerDownloadLanguages_RunWorkerCompleted;
+            //this.backgroundWorkerDownloadLanguages.RunWorkerCompleted += backgroundWorkerDownloadLanguages_RunWorkerCompleted;
 
             this.backgroundWorkerEnableNWMode.RunWorkerCompleted += backgroundWorkerEnableNWMode_RunWorkerCompleted;
             this.backgroundWorkerDisableNWMode.RunWorkerCompleted += backgroundWorkerDisableNWMode_RunWorkerCompleted;
@@ -437,7 +433,7 @@ namespace Fo76ini
 
             // Load game instances
             ProfileManager.Load();
-            formProfiles = new FormProfiles();
+            formSettings = new FormSettings();
 
             // TODO: Uh... where to put this?
             IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
@@ -457,6 +453,8 @@ namespace Fo76ini
             /*ManagedMods.Instance.Load();*/
             NexusMods.Load();
             //TODO: this.formMods.LoadMods(Shared.GamePath);
+
+            this.formMods = new FormMods();
             //this.formMods.UpdateUI();
 
             // Account profiles:
@@ -466,7 +464,7 @@ namespace Fo76ini
                 rbutton.CheckedChanged += new System.EventHandler(this.radioButtonAccount_CheckedChanged);*/
 
             // Setup UI:
-            UpdateCameraPositionUI(); // TODO: Rework camera UI
+            // UpdateCameraPositionUI(); // TODO: Rework camera UI
 
             Configuration.LoadWindowState("Form1", this);
 
@@ -852,12 +850,6 @@ namespace Fo76ini
             MsgBox.Get("changesApplied").Popup(MessageBoxIcon.Information);
         }
 
-        // [ ] "Make *.ini files read-only" checkbox:
-        private void checkBoxReadOnly_CheckedChanged(object sender, EventArgs e)
-        {
-            IniFiles.SetINIsReadOnly(this.checkBoxReadOnly.Checked);
-        }
-
         // "Launch Game" button:
         private void toolStripSplitButtonLaunchGame_ButtonClick(object sender, EventArgs e)
         {
@@ -1059,16 +1051,6 @@ namespace Fo76ini
             this.textBoxPassword.PasswordChar = !this.checkBoxShowPassword.Checked ? '\u2022' : '\0';
         }
 
-        private void checkBoxQuitOnGameLaunch_CheckedChanged(object sender, EventArgs e)
-        {
-            IniFiles.Config.Set("Preferences", "bQuitOnLaunch", this.checkBoxQuitOnGameLaunch.Checked);
-        }
-
-        private void checkBoxAutoApply_CheckedChanged(object sender, EventArgs e)
-        {
-            IniFiles.Config.Set("Preferences", "bAutoApply", this.checkBoxAutoApply.Checked);
-        }
-
         private void buttonUpdateNow_Click(object sender, EventArgs e)
         {
             // Set sInstallationPath:
@@ -1095,7 +1077,8 @@ namespace Fo76ini
 
         private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Config.Set("Preferences", "bIgnoreUpdates", this.checkBoxIgnoreUpdates.Checked);
+            // TODO: When checkBoxIgnoreUpdates gets checked, call this.CheckVersion();
+            //IniFiles.Config.Set("Preferences", "bIgnoreUpdates", this.checkBoxIgnoreUpdates.Checked);
             this.CheckVersion();
         }
 
@@ -1401,14 +1384,12 @@ namespace Fo76ini
 
         private void toolStripButtonProfiles_Click(object sender, EventArgs e)
         {
-            // TODO
-            (new FormSettings()).ShowDialog();
+            formSettings.ShowDialog();
         }
 
-        private void toolStripButtonNexusMods_Click_1(object sender, EventArgs e)
+        private void linkLabelOpenSettings_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // TODO
-            (new FormNexus()).ShowDialog();
+            formSettings.ShowDialog();
         }
 
         // Detect resolution:
@@ -1489,35 +1470,49 @@ namespace Fo76ini
                 this.comboBoxResolution.SelectedIndex = 0;
         }
 
-        // TODO: Properly implement pipboy color presets
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        // TODO: Changing the back color doesn't seem to change the ini values
+        private void buttonPresetFo3Green_Click(object sender, EventArgs e)
+        {
+            this.colorPreviewPipboy.BackColor = Color.FromArgb(26, 255, 128);
+        }
+
+        private void buttonPresetFoNVAmber_Click(object sender, EventArgs e)
         {
             this.colorPreviewPipboy.BackColor = Color.FromArgb(255, 182, 66);
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            this.colorPreviewPipboy.BackColor = Color.FromArgb(26, 255, 128);
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            this.colorPreviewPipboy.BackColor = Color.FromArgb(18, 255, 21);
-        }
-
-        private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
-        {
-            this.colorPreviewPipboy.BackColor = Color.FromArgb(26, 255, 128);
-        }
-
-        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        private void buttonPresetFo3Blue_Click(object sender, EventArgs e)
         {
             this.colorPreviewPipboy.BackColor = Color.FromArgb(46, 207, 255);
         }
 
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        private void buttonPresetFo3White_Click(object sender, EventArgs e)
         {
             this.colorPreviewPipboy.BackColor = Color.FromArgb(192, 255, 255);
+        }
+
+        private void buttonPresetFo4Green_Click(object sender, EventArgs e)
+        {
+            this.colorPreviewPipboy.BackColor = Color.FromArgb(18, 255, 21);
+        }
+
+        private void buttonPresetFo76Green_Click(object sender, EventArgs e)
+        {
+            this.colorPreviewPipboy.BackColor = Color.FromArgb(26, 255, 128);
+        }
+
+        private void buttonCameraPositionReset_Click(object sender, EventArgs e)
+        {
+            this.applyCameraNodeAnimationsTweak.ResetValue();
+            this.cameraOverShoulderPosXTweak.ResetValue();
+            this.cameraOverShoulderPosZTweak.ResetValue();
+            this.cameraOverShoulderCombatPosXTweak.ResetValue();
+            this.cameraOverShoulderCombatPosZTweak.ResetValue();
+            this.cameraOverShoulderCombatAddYTweak.ResetValue();
+            this.cameraOverShoulderMeleeCombatPosXTweak.ResetValue();
+            this.cameraOverShoulderMeleeCombatPosZTweak.ResetValue();
+            this.cameraOverShoulderMeleeCombatAddYTweak.ResetValue();
+            LinkedTweaks.LoadValues();
         }
     }
 }

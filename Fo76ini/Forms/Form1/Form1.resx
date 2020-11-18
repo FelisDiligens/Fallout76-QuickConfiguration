@@ -235,6 +235,13 @@ Affected values: bApplyCameraNodeAnimations
 Affected files: Fallout76Custom.ini
 </value>
   </data>
+  <data name="labeliDirShadowSplits.ToolTip" xml:space="preserve">
+    <value>Amount of "segments" of lower-res shadows at a distance.
+A value of 1 forces the game to render only the lowest resolution shadows.
+
+Affected values: iDirShadowSplits
+Affected files: Fallout76Prefs.ini</value>
+  </data>
   <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>107, 17</value>
   </metadata>
@@ -244,13 +251,6 @@ Affected files: Fallout76Custom.ini
   <metadata name="openFileDialogGamePath.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>864, 17</value>
   </metadata>
-  <data name="labeliDirShadowSplits.ToolTip" xml:space="preserve">
-    <value>Amount of "segments" of lower-res shadows at a distance.
-A value of 1 forces the game to render only the lowest resolution shadows.
-
-Affected values: iDirShadowSplits
-Affected files: Fallout76Prefs.ini</value>
-  </data>
   <data name="labelCredentialsExplanation.Text" xml:space="preserve">
     <value>Your credentials are saved into Fallout76Custom.ini
 This way, you don't have to enter your username and password manually
@@ -265,9 +265,6 @@ NOTE: Your achievements will be disabled as well!</value>
   </metadata>
   <metadata name="backgroundWorkerGetLatestVersion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1380, 17</value>
-  </metadata>
-  <metadata name="backgroundWorkerDownloadLanguages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1629, 17</value>
   </metadata>
   <metadata name="contextMenuStripGallery.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1900, 17</value>

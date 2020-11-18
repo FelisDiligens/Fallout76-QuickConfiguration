@@ -13,6 +13,9 @@ namespace Fo76ini
 {
     public partial class FormMods : Form
     {
+        // TODO: Remove
+
+#if false
         private void InitializeNMControls()
         {
             this.backgroundWorkerRetrieveModInfo.ProgressChanged += backgroundWorkerRetrieveModInfo_ProgressChanged;
@@ -272,5 +275,7 @@ namespace Fo76ini
         {
             RefreshNMUI();
         }
+
+#endif
     }
 }

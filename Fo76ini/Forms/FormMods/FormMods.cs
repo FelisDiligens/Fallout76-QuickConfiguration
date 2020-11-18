@@ -35,7 +35,7 @@ namespace Fo76ini
         {
             InitializeComponent();
             InitializeDetailControls();
-            InitializeNMControls();
+            //InitializeNMControls();
 
             LocalizedForm form = new LocalizedForm(this, this.toolTip);
             Localization.LocalizedForms.Add(form);
@@ -68,7 +68,7 @@ namespace Fo76ini
             //Utils.SetFormPosition(this, Form1.Instance.Location.X + Form1.Instance.Width, Form1.Instance.Location.Y);
             //Utils.SetFormPosition(this, Form1.Instance.Location.X + 100, Form1.Instance.Location.Y + 50);
             this.WindowState = FormWindowState.Normal;
-            this.UpdateUI();
+            //this.UpdateUI(); // TODO
             this.Show();
             this.Focus();
         }
@@ -81,9 +81,10 @@ namespace Fo76ini
             UpdateModList();
             UpdateSettings();
             UpdateLabel();
-            RefreshNMUI();
-            if (IniFiles.Config.GetBool("NexusMods", "bAutoUpdateProfile", true))
-                UpdateNMProfile();
+            //RefreshNMUI();
+            // TODO: Move to settings window
+            /*if (IniFiles.Config.GetBool("NexusMods", "bAutoUpdateProfile", true))
+                UpdateNMProfile();*/
         }
 
         /// <summary>
@@ -1284,6 +1285,11 @@ namespace Fo76ini
         private void saveDEVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Mods.Save();
+        }
+
+        private void linkLabelOpenSettings_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // TODO
         }
     }
 }

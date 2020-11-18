@@ -47,6 +47,10 @@
             this.archive2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openArchive2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exploreba2ArchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nexusModsAPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateModInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.endorseModsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showREADMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +62,8 @@
             this.labelModsDeploy = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageModOrder = new System.Windows.Forms.TabPage();
+            this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCollapseDetails = new System.Windows.Forms.PictureBox();
             this.panelModDetails = new System.Windows.Forms.Panel();
             this.groupBoxModDetailsDetails = new System.Windows.Forms.GroupBox();
             this.textBoxModVersion = new System.Windows.Forms.TextBox();
@@ -84,12 +90,24 @@
             this.labelModTitle = new System.Windows.Forms.Label();
             this.checkBoxModDetailsEnabled = new System.Windows.Forms.CheckBox();
             this.labelModDetailsBulkFrozenModsWarning = new System.Windows.Forms.Label();
+            this.pictureBoxModThumbnail = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonAddMod = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAddModFrozen = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAddModFolder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonCheckAll = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonMoveUp = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonMoveDown = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonModEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonUnfreeze = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonModOpenFolder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonModEndorse = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonDeleteMod = new System.Windows.Forms.ToolStripButton();
             this.listViewMods = new System.Windows.Forms.ListView();
             this.columnHeaderModTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderVersion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -100,6 +118,7 @@
             this.columnHeaderCompression = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderFrozenState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonModDetailsNM = new System.Windows.Forms.Button();
             this.buttonModDetailsApply = new System.Windows.Forms.Button();
             this.buttonModDetailsCancel = new System.Windows.Forms.Button();
             this.buttonModDetailsOK = new System.Windows.Forms.Button();
@@ -118,32 +137,8 @@
             this.textBoxsResourceArchive2List = new System.Windows.Forms.TextBox();
             this.labelsResourceArchive2List = new System.Windows.Forms.Label();
             this.tabPageNexusMods = new System.Windows.Forms.TabPage();
-            this.checkBoxNMDownloadThumbnails = new System.Windows.Forms.CheckBox();
-            this.labelNMOptions = new System.Windows.Forms.Label();
-            this.checkBoxNMUpdateProfile = new System.Windows.Forms.CheckBox();
-            this.buttonNMDeleteModInfo = new System.Windows.Forms.Button();
-            this.checkBoxShowAPIKey = new System.Windows.Forms.CheckBox();
-            this.buttonNMRemoveAll = new System.Windows.Forms.Button();
-            this.labelNMInfo = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.labelNMNotLoggedIn = new System.Windows.Forms.Label();
-            this.labelNMUserID = new System.Windows.Forms.Label();
-            this.labelNMDescUserID = new System.Windows.Forms.Label();
-            this.labelNMHourlyRateLimit = new System.Windows.Forms.Label();
-            this.linkLabelNMGetAPIKey = new System.Windows.Forms.LinkLabel();
-            this.labelNMDescHourlyRateLimit = new System.Windows.Forms.Label();
-            this.labelNMAPIKeyStatus = new System.Windows.Forms.Label();
-            this.labelNMDescAPIKey = new System.Windows.Forms.Label();
-            this.labelNMUserName = new System.Windows.Forms.Label();
-            this.labelNMDescMembership = new System.Windows.Forms.Label();
-            this.labelNMDailyRateLimitReset = new System.Windows.Forms.Label();
-            this.labelNMMembership = new System.Windows.Forms.Label();
-            this.labelNMDescLimitReset = new System.Windows.Forms.Label();
-            this.labelNMDescDailyRateLimit = new System.Windows.Forms.Label();
-            this.labelNMDailyRateLimit = new System.Windows.Forms.Label();
-            this.buttonNMDeleteThumbnails = new System.Windows.Forms.Button();
-            this.textBoxAPIKey = new System.Windows.Forms.TextBox();
-            this.labelNMAPIKeyTextBox = new System.Windows.Forms.Label();
+            this.buttonNWEndorseAllMods = new System.Windows.Forms.Button();
+            this.buttonNMUpdateModInfo = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialogMod = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialogMod = new System.Windows.Forms.FolderBrowserDialog();
@@ -154,47 +149,24 @@
             this.folderBrowserDialogPickRootDir = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorkerRetrieveModInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
-            this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCollapseDetails = new System.Windows.Forms.PictureBox();
-            this.pictureBoxModThumbnail = new System.Windows.Forms.PictureBox();
-            this.toolStripButtonAddMod = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonAddModFrozen = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonAddModFolder = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonCheckAll = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonMoveUp = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonMoveDown = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonModEdit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonUnfreeze = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonModOpenFolder = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonModEndorse = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonDeleteMod = new System.Windows.Forms.ToolStripButton();
-            this.buttonModDetailsNM = new System.Windows.Forms.Button();
-            this.buttonNWEndorseAllMods = new System.Windows.Forms.Button();
-            this.pictureBoxNMProfilePicture = new System.Windows.Forms.PictureBox();
-            this.buttonNMUpdateModInfo = new System.Windows.Forms.Button();
-            this.buttonNMUpdateProfile = new System.Windows.Forms.Button();
-            this.nexusModsAPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateModInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.endorseModsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelNexusModsMovedNotice = new System.Windows.Forms.Label();
+            this.linkLabelOpenSettings = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCollapseDetails)).BeginInit();
             this.panelModDetails.SuspendLayout();
             this.groupBoxModDetailsDetails.SuspendLayout();
             this.groupBoxModDetailsInstallationOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModThumbnail)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPageModsSettings.SuspendLayout();
             this.groupBoxModsBehavior.SuspendLayout();
             this.groupBoxLists.SuspendLayout();
             this.tabPageNexusMods.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCollapseDetails)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModThumbnail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -317,7 +289,7 @@
             this.openArchive2ToolStripMenuItem,
             this.exploreba2ArchiveToolStripMenuItem});
             this.archive2ToolStripMenuItem.Name = "archive2ToolStripMenuItem";
-            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.archive2ToolStripMenuItem.Text = "Archive2";
             // 
             // openArchive2ToolStripMenuItem
@@ -333,6 +305,34 @@
             this.exploreba2ArchiveToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.exploreba2ArchiveToolStripMenuItem.Text = "Explore *.ba2 archive";
             this.exploreba2ArchiveToolStripMenuItem.Click += new System.EventHandler(this.exploreba2ArchiveToolStripMenuItem_Click);
+            // 
+            // nexusModsAPIToolStripMenuItem
+            // 
+            this.nexusModsAPIToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateModInformationToolStripMenuItem,
+            this.endorseModsToolStripMenuItem,
+            this.checkForUpdatesToolStripMenuItem});
+            this.nexusModsAPIToolStripMenuItem.Name = "nexusModsAPIToolStripMenuItem";
+            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.nexusModsAPIToolStripMenuItem.Text = "NexusMods API";
+            // 
+            // updateModInformationToolStripMenuItem
+            // 
+            this.updateModInformationToolStripMenuItem.Name = "updateModInformationToolStripMenuItem";
+            this.updateModInformationToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.updateModInformationToolStripMenuItem.Text = "Update mod information";
+            // 
+            // endorseModsToolStripMenuItem
+            // 
+            this.endorseModsToolStripMenuItem.Name = "endorseModsToolStripMenuItem";
+            this.endorseModsToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.endorseModsToolStripMenuItem.Text = "Endorse mods";
+            // 
+            // checkForUpdatesToolStripMenuItem
+            // 
+            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
             // 
             // helpToolStripMenuItem
             // 
@@ -442,6 +442,35 @@
             this.tabPageModOrder.TabIndex = 0;
             this.tabPageModOrder.Text = "Mod order";
             this.tabPageModOrder.UseVisualStyleBackColor = true;
+            // 
+            // pictureBoxModsLoadingGIF
+            // 
+            this.pictureBoxModsLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxModsLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
+            this.pictureBoxModsLoadingGIF.Location = new System.Drawing.Point(39, 0);
+            this.pictureBoxModsLoadingGIF.Name = "pictureBoxModsLoadingGIF";
+            this.pictureBoxModsLoadingGIF.Size = new System.Drawing.Size(165, 544);
+            this.pictureBoxModsLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxModsLoadingGIF.TabIndex = 57;
+            this.pictureBoxModsLoadingGIF.TabStop = false;
+            this.pictureBoxModsLoadingGIF.Visible = false;
+            // 
+            // pictureBoxCollapseDetails
+            // 
+            this.pictureBoxCollapseDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCollapseDetails.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.pictureBoxCollapseDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxCollapseDetails.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCollapseDetails.Image")));
+            this.pictureBoxCollapseDetails.Location = new System.Drawing.Point(476, 0);
+            this.pictureBoxCollapseDetails.Name = "pictureBoxCollapseDetails";
+            this.pictureBoxCollapseDetails.Size = new System.Drawing.Size(24, 544);
+            this.pictureBoxCollapseDetails.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxCollapseDetails.TabIndex = 59;
+            this.pictureBoxCollapseDetails.TabStop = false;
+            this.pictureBoxCollapseDetails.Click += new System.EventHandler(this.pictureBoxCollapseDetails_Click);
             // 
             // panelModDetails
             // 
@@ -739,6 +768,18 @@
             this.labelModDetailsBulkFrozenModsWarning.TabIndex = 69;
             this.labelModDetailsBulkFrozenModsWarning.Text = "NOTE: Frozen mods will be ignored.";
             // 
+            // pictureBoxModThumbnail
+            // 
+            this.pictureBoxModThumbnail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxModThumbnail.Image = global::Fo76ini.Properties.Resources.bg;
+            this.pictureBoxModThumbnail.Location = new System.Drawing.Point(-1, -6);
+            this.pictureBoxModThumbnail.Name = "pictureBoxModThumbnail";
+            this.pictureBoxModThumbnail.Size = new System.Drawing.Size(356, 193);
+            this.pictureBoxModThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxModThumbnail.TabIndex = 71;
+            this.pictureBoxModThumbnail.TabStop = false;
+            // 
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.White;
@@ -768,11 +809,59 @@
             this.toolStrip1.TabIndex = 44;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripButtonAddMod
+            // 
+            this.toolStripButtonAddMod.AutoSize = false;
+            this.toolStripButtonAddMod.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAddMod.Image = global::Fo76ini.Properties.Resources.plus_24;
+            this.toolStripButtonAddMod.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonAddMod.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddMod.Name = "toolStripButtonAddMod";
+            this.toolStripButtonAddMod.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonAddMod.Text = "Add mod (from archive)";
+            this.toolStripButtonAddMod.Click += new System.EventHandler(this.toolStripButtonAddMod_Click);
+            // 
+            // toolStripButtonAddModFrozen
+            // 
+            this.toolStripButtonAddModFrozen.AutoSize = false;
+            this.toolStripButtonAddModFrozen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAddModFrozen.Image = global::Fo76ini.Properties.Resources.add_snowflake_24;
+            this.toolStripButtonAddModFrozen.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonAddModFrozen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddModFrozen.Name = "toolStripButtonAddModFrozen";
+            this.toolStripButtonAddModFrozen.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonAddModFrozen.Text = "Add mod (from *.ba2 archive)";
+            this.toolStripButtonAddModFrozen.Click += new System.EventHandler(this.toolStripButtonAddModFrozen_Click);
+            // 
+            // toolStripButtonAddModFolder
+            // 
+            this.toolStripButtonAddModFolder.AutoSize = false;
+            this.toolStripButtonAddModFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAddModFolder.Image = global::Fo76ini.Properties.Resources.add_folder_24;
+            this.toolStripButtonAddModFolder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonAddModFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddModFolder.Name = "toolStripButtonAddModFolder";
+            this.toolStripButtonAddModFolder.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonAddModFolder.Text = "Add mod (from folder)";
+            this.toolStripButtonAddModFolder.Click += new System.EventHandler(this.toolStripButtonAddModFolder_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(28, 6);
+            // 
+            // toolStripButtonCheckAll
+            // 
+            this.toolStripButtonCheckAll.AutoSize = false;
+            this.toolStripButtonCheckAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonCheckAll.Image = global::Fo76ini.Properties.Resources.checked_checkbox_24;
+            this.toolStripButtonCheckAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonCheckAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCheckAll.Name = "toolStripButtonCheckAll";
+            this.toolStripButtonCheckAll.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonCheckAll.Text = "Check/uncheck all";
+            this.toolStripButtonCheckAll.Click += new System.EventHandler(this.toolStripButtonCheckAll_Click);
             // 
             // toolStripSeparator2
             // 
@@ -780,11 +869,71 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(28, 6);
             // 
+            // toolStripButtonMoveUp
+            // 
+            this.toolStripButtonMoveUp.AutoSize = false;
+            this.toolStripButtonMoveUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonMoveUp.Image = global::Fo76ini.Properties.Resources.arrow_up;
+            this.toolStripButtonMoveUp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonMoveUp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonMoveUp.Name = "toolStripButtonMoveUp";
+            this.toolStripButtonMoveUp.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonMoveUp.Text = "Move up";
+            this.toolStripButtonMoveUp.Click += new System.EventHandler(this.toolStripButtonMoveUp_Click);
+            // 
+            // toolStripButtonMoveDown
+            // 
+            this.toolStripButtonMoveDown.AutoSize = false;
+            this.toolStripButtonMoveDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonMoveDown.Image = global::Fo76ini.Properties.Resources.arrow_down;
+            this.toolStripButtonMoveDown.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonMoveDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonMoveDown.Name = "toolStripButtonMoveDown";
+            this.toolStripButtonMoveDown.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonMoveDown.Text = "Move down";
+            this.toolStripButtonMoveDown.Click += new System.EventHandler(this.toolStripButtonMoveDown_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(28, 6);
+            // 
+            // toolStripButtonModEdit
+            // 
+            this.toolStripButtonModEdit.AutoSize = false;
+            this.toolStripButtonModEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonModEdit.Image = global::Fo76ini.Properties.Resources.edit_24;
+            this.toolStripButtonModEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonModEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonModEdit.Name = "toolStripButtonModEdit";
+            this.toolStripButtonModEdit.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonModEdit.Text = "Edit mod details";
+            this.toolStripButtonModEdit.Click += new System.EventHandler(this.toolStripButtonModEdit_Click);
+            // 
+            // toolStripButtonUnfreeze
+            // 
+            this.toolStripButtonUnfreeze.AutoSize = false;
+            this.toolStripButtonUnfreeze.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonUnfreeze.Image = global::Fo76ini.Properties.Resources.thaw_24;
+            this.toolStripButtonUnfreeze.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonUnfreeze.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonUnfreeze.Name = "toolStripButtonUnfreeze";
+            this.toolStripButtonUnfreeze.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonUnfreeze.Text = "Unfreeze";
+            this.toolStripButtonUnfreeze.Click += new System.EventHandler(this.toolStripButtonUnfreeze_Click);
+            // 
+            // toolStripButtonModOpenFolder
+            // 
+            this.toolStripButtonModOpenFolder.AutoSize = false;
+            this.toolStripButtonModOpenFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonModOpenFolder.Image = global::Fo76ini.Properties.Resources.folder_24;
+            this.toolStripButtonModOpenFolder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonModOpenFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonModOpenFolder.Name = "toolStripButtonModOpenFolder";
+            this.toolStripButtonModOpenFolder.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonModOpenFolder.Text = "Open mod folder";
+            this.toolStripButtonModOpenFolder.Click += new System.EventHandler(this.toolStripButtonModOpenFolder_Click);
             // 
             // toolStripSeparator6
             // 
@@ -792,11 +941,35 @@
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(28, 6);
             // 
+            // toolStripButtonModEndorse
+            // 
+            this.toolStripButtonModEndorse.AutoSize = false;
+            this.toolStripButtonModEndorse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonModEndorse.Image = global::Fo76ini.Properties.Resources.heart_24;
+            this.toolStripButtonModEndorse.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonModEndorse.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonModEndorse.Name = "toolStripButtonModEndorse";
+            this.toolStripButtonModEndorse.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonModEndorse.Text = "Open mod folder";
+            this.toolStripButtonModEndorse.ToolTipText = "Endorse mod";
+            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(28, 6);
+            // 
+            // toolStripButtonDeleteMod
+            // 
+            this.toolStripButtonDeleteMod.AutoSize = false;
+            this.toolStripButtonDeleteMod.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDeleteMod.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDeleteMod.Image")));
+            this.toolStripButtonDeleteMod.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonDeleteMod.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDeleteMod.Name = "toolStripButtonDeleteMod";
+            this.toolStripButtonDeleteMod.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonDeleteMod.Text = "Delete mod";
+            this.toolStripButtonDeleteMod.Click += new System.EventHandler(this.toolStripButtonDeleteMod_Click);
             // 
             // listViewMods
             // 
@@ -881,6 +1054,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(356, 47);
             this.panel2.TabIndex = 75;
+            // 
+            // buttonModDetailsNM
+            // 
+            this.buttonModDetailsNM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonModDetailsNM.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonModDetailsNM.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.buttonModDetailsNM.FlatAppearance.BorderSize = 0;
+            this.buttonModDetailsNM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModDetailsNM.Image = global::Fo76ini.Properties.Resources.nexus_24;
+            this.buttonModDetailsNM.Location = new System.Drawing.Point(11, 7);
+            this.buttonModDetailsNM.Name = "buttonModDetailsNM";
+            this.buttonModDetailsNM.Size = new System.Drawing.Size(36, 36);
+            this.buttonModDetailsNM.TabIndex = 75;
+            this.buttonModDetailsNM.UseVisualStyleBackColor = false;
             // 
             // buttonModDetailsApply
             // 
@@ -1086,326 +1273,49 @@
             // 
             // tabPageNexusMods
             // 
+            this.tabPageNexusMods.Controls.Add(this.linkLabelOpenSettings);
+            this.tabPageNexusMods.Controls.Add(this.labelNexusModsMovedNotice);
             this.tabPageNexusMods.Controls.Add(this.buttonNWEndorseAllMods);
-            this.tabPageNexusMods.Controls.Add(this.checkBoxNMDownloadThumbnails);
-            this.tabPageNexusMods.Controls.Add(this.labelNMOptions);
-            this.tabPageNexusMods.Controls.Add(this.checkBoxNMUpdateProfile);
-            this.tabPageNexusMods.Controls.Add(this.buttonNMDeleteModInfo);
-            this.tabPageNexusMods.Controls.Add(this.checkBoxShowAPIKey);
-            this.tabPageNexusMods.Controls.Add(this.buttonNMRemoveAll);
-            this.tabPageNexusMods.Controls.Add(this.labelNMInfo);
-            this.tabPageNexusMods.Controls.Add(this.panel3);
-            this.tabPageNexusMods.Controls.Add(this.buttonNMDeleteThumbnails);
-            this.tabPageNexusMods.Controls.Add(this.textBoxAPIKey);
-            this.tabPageNexusMods.Controls.Add(this.labelNMAPIKeyTextBox);
             this.tabPageNexusMods.Controls.Add(this.buttonNMUpdateModInfo);
-            this.tabPageNexusMods.Controls.Add(this.buttonNMUpdateProfile);
             this.tabPageNexusMods.Location = new System.Drawing.Point(4, 22);
             this.tabPageNexusMods.Name = "tabPageNexusMods";
             this.tabPageNexusMods.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageNexusMods.Size = new System.Drawing.Size(852, 544);
             this.tabPageNexusMods.TabIndex = 2;
-            this.tabPageNexusMods.Text = "NexusMods API";
+            this.tabPageNexusMods.Text = "NexusMods";
             this.tabPageNexusMods.UseVisualStyleBackColor = true;
             // 
-            // checkBoxNMDownloadThumbnails
+            // buttonNWEndorseAllMods
             // 
-            this.checkBoxNMDownloadThumbnails.AutoSize = true;
-            this.checkBoxNMDownloadThumbnails.Checked = true;
-            this.checkBoxNMDownloadThumbnails.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNMDownloadThumbnails.Location = new System.Drawing.Point(271, 365);
-            this.checkBoxNMDownloadThumbnails.Name = "checkBoxNMDownloadThumbnails";
-            this.checkBoxNMDownloadThumbnails.Size = new System.Drawing.Size(127, 17);
-            this.checkBoxNMDownloadThumbnails.TabIndex = 89;
-            this.checkBoxNMDownloadThumbnails.Text = "Download thumbnails";
-            this.checkBoxNMDownloadThumbnails.UseVisualStyleBackColor = true;
-            this.checkBoxNMDownloadThumbnails.CheckedChanged += new System.EventHandler(this.checkBoxNMDownloadThumbnails_CheckedChanged);
+            this.buttonNWEndorseAllMods.BackColor = System.Drawing.Color.Crimson;
+            this.buttonNWEndorseAllMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNWEndorseAllMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNWEndorseAllMods.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNWEndorseAllMods.Image = global::Fo76ini.Properties.Resources.heart_48;
+            this.buttonNWEndorseAllMods.Location = new System.Drawing.Point(252, 6);
+            this.buttonNWEndorseAllMods.Name = "buttonNWEndorseAllMods";
+            this.buttonNWEndorseAllMods.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNWEndorseAllMods.Size = new System.Drawing.Size(120, 120);
+            this.buttonNWEndorseAllMods.TabIndex = 90;
+            this.buttonNWEndorseAllMods.Text = "Endorse mods";
+            this.buttonNWEndorseAllMods.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNWEndorseAllMods.UseVisualStyleBackColor = false;
             // 
-            // labelNMOptions
+            // buttonNMUpdateModInfo
             // 
-            this.labelNMOptions.AutoSize = true;
-            this.labelNMOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNMOptions.Location = new System.Drawing.Point(268, 320);
-            this.labelNMOptions.Name = "labelNMOptions";
-            this.labelNMOptions.Size = new System.Drawing.Size(61, 16);
-            this.labelNMOptions.TabIndex = 87;
-            this.labelNMOptions.Text = "Options";
-            // 
-            // checkBoxNMUpdateProfile
-            // 
-            this.checkBoxNMUpdateProfile.AutoSize = true;
-            this.checkBoxNMUpdateProfile.Checked = true;
-            this.checkBoxNMUpdateProfile.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNMUpdateProfile.Location = new System.Drawing.Point(271, 342);
-            this.checkBoxNMUpdateProfile.Name = "checkBoxNMUpdateProfile";
-            this.checkBoxNMUpdateProfile.Size = new System.Drawing.Size(156, 17);
-            this.checkBoxNMUpdateProfile.TabIndex = 86;
-            this.checkBoxNMUpdateProfile.Text = "Update profile automatically";
-            this.checkBoxNMUpdateProfile.UseVisualStyleBackColor = true;
-            this.checkBoxNMUpdateProfile.CheckedChanged += new System.EventHandler(this.checkBoxNMUpdateProfile_CheckedChanged);
-            // 
-            // buttonNMDeleteModInfo
-            // 
-            this.buttonNMDeleteModInfo.BackColor = System.Drawing.Color.Firebrick;
-            this.buttonNMDeleteModInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMDeleteModInfo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMDeleteModInfo.Location = new System.Drawing.Point(9, 359);
-            this.buttonNMDeleteModInfo.Name = "buttonNMDeleteModInfo";
-            this.buttonNMDeleteModInfo.Size = new System.Drawing.Size(240, 28);
-            this.buttonNMDeleteModInfo.TabIndex = 85;
-            this.buttonNMDeleteModInfo.Text = "Delete mod information";
-            this.buttonNMDeleteModInfo.UseVisualStyleBackColor = false;
-            this.buttonNMDeleteModInfo.Click += new System.EventHandler(this.buttonNMDeleteModInfo_Click);
-            // 
-            // checkBoxShowAPIKey
-            // 
-            this.checkBoxShowAPIKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBoxShowAPIKey.AutoSize = true;
-            this.checkBoxShowAPIKey.Location = new System.Drawing.Point(85, 521);
-            this.checkBoxShowAPIKey.Name = "checkBoxShowAPIKey";
-            this.checkBoxShowAPIKey.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxShowAPIKey.TabIndex = 84;
-            this.checkBoxShowAPIKey.Text = "Show API Key";
-            this.checkBoxShowAPIKey.UseVisualStyleBackColor = true;
-            this.checkBoxShowAPIKey.CheckedChanged += new System.EventHandler(this.checkBoxShowAPIKey_CheckedChanged);
-            // 
-            // buttonNMRemoveAll
-            // 
-            this.buttonNMRemoveAll.BackColor = System.Drawing.Color.Firebrick;
-            this.buttonNMRemoveAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMRemoveAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNMRemoveAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMRemoveAll.Location = new System.Drawing.Point(9, 304);
-            this.buttonNMRemoveAll.Name = "buttonNMRemoveAll";
-            this.buttonNMRemoveAll.Size = new System.Drawing.Size(240, 49);
-            this.buttonNMRemoveAll.TabIndex = 82;
-            this.buttonNMRemoveAll.Text = "Remove profile and API key";
-            this.buttonNMRemoveAll.UseVisualStyleBackColor = false;
-            this.buttonNMRemoveAll.Click += new System.EventHandler(this.buttonNMRemoveAll_Click);
-            // 
-            // labelNMInfo
-            // 
-            this.labelNMInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelNMInfo.ForeColor = System.Drawing.Color.DimGray;
-            this.labelNMInfo.Location = new System.Drawing.Point(515, 189);
-            this.labelNMInfo.Name = "labelNMInfo";
-            this.labelNMInfo.Size = new System.Drawing.Size(320, 260);
-            this.labelNMInfo.TabIndex = 80;
-            this.labelNMInfo.Text = resources.GetString("labelNMInfo.Text");
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.panel3.Controls.Add(this.labelNMNotLoggedIn);
-            this.panel3.Controls.Add(this.labelNMUserID);
-            this.panel3.Controls.Add(this.labelNMDescUserID);
-            this.panel3.Controls.Add(this.labelNMHourlyRateLimit);
-            this.panel3.Controls.Add(this.linkLabelNMGetAPIKey);
-            this.panel3.Controls.Add(this.labelNMDescHourlyRateLimit);
-            this.panel3.Controls.Add(this.labelNMAPIKeyStatus);
-            this.panel3.Controls.Add(this.labelNMDescAPIKey);
-            this.panel3.Controls.Add(this.pictureBoxNMProfilePicture);
-            this.panel3.Controls.Add(this.labelNMUserName);
-            this.panel3.Controls.Add(this.labelNMDescMembership);
-            this.panel3.Controls.Add(this.labelNMDailyRateLimitReset);
-            this.panel3.Controls.Add(this.labelNMMembership);
-            this.panel3.Controls.Add(this.labelNMDescLimitReset);
-            this.panel3.Controls.Add(this.labelNMDescDailyRateLimit);
-            this.panel3.Controls.Add(this.labelNMDailyRateLimit);
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(856, 171);
-            this.panel3.TabIndex = 75;
-            // 
-            // labelNMNotLoggedIn
-            // 
-            this.labelNMNotLoggedIn.AutoSize = true;
-            this.labelNMNotLoggedIn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMNotLoggedIn.Location = new System.Drawing.Point(173, 57);
-            this.labelNMNotLoggedIn.Name = "labelNMNotLoggedIn";
-            this.labelNMNotLoggedIn.Size = new System.Drawing.Size(335, 13);
-            this.labelNMNotLoggedIn.TabIndex = 80;
-            this.labelNMNotLoggedIn.Text = "Not logged in. Please enter your API key and click on \'Update profile\'.";
-            // 
-            // labelNMUserID
-            // 
-            this.labelNMUserID.AutoSize = true;
-            this.labelNMUserID.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMUserID.Location = new System.Drawing.Point(296, 107);
-            this.labelNMUserID.Name = "labelNMUserID";
-            this.labelNMUserID.Size = new System.Drawing.Size(16, 13);
-            this.labelNMUserID.TabIndex = 79;
-            this.labelNMUserID.Text = "-1";
-            // 
-            // labelNMDescUserID
-            // 
-            this.labelNMDescUserID.AutoSize = true;
-            this.labelNMDescUserID.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescUserID.Location = new System.Drawing.Point(173, 107);
-            this.labelNMDescUserID.Name = "labelNMDescUserID";
-            this.labelNMDescUserID.Size = new System.Drawing.Size(46, 13);
-            this.labelNMDescUserID.TabIndex = 78;
-            this.labelNMDescUserID.Text = "User-ID:";
-            // 
-            // labelNMHourlyRateLimit
-            // 
-            this.labelNMHourlyRateLimit.AutoSize = true;
-            this.labelNMHourlyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMHourlyRateLimit.Location = new System.Drawing.Point(611, 85);
-            this.labelNMHourlyRateLimit.Name = "labelNMHourlyRateLimit";
-            this.labelNMHourlyRateLimit.Size = new System.Drawing.Size(30, 13);
-            this.labelNMHourlyRateLimit.TabIndex = 77;
-            this.labelNMHourlyRateLimit.Text = "0 left";
-            // 
-            // linkLabelNMGetAPIKey
-            // 
-            this.linkLabelNMGetAPIKey.AutoSize = true;
-            this.linkLabelNMGetAPIKey.LinkColor = System.Drawing.Color.Aqua;
-            this.linkLabelNMGetAPIKey.Location = new System.Drawing.Point(173, 74);
-            this.linkLabelNMGetAPIKey.Name = "linkLabelNMGetAPIKey";
-            this.linkLabelNMGetAPIKey.Size = new System.Drawing.Size(87, 13);
-            this.linkLabelNMGetAPIKey.TabIndex = 79;
-            this.linkLabelNMGetAPIKey.TabStop = true;
-            this.linkLabelNMGetAPIKey.Text = "Get your API key";
-            this.linkLabelNMGetAPIKey.VisitedLinkColor = System.Drawing.Color.Fuchsia;
-            this.linkLabelNMGetAPIKey.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNMGetAPIKey_LinkClicked);
-            // 
-            // labelNMDescHourlyRateLimit
-            // 
-            this.labelNMDescHourlyRateLimit.AutoSize = true;
-            this.labelNMDescHourlyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescHourlyRateLimit.Location = new System.Drawing.Point(483, 85);
-            this.labelNMDescHourlyRateLimit.Name = "labelNMDescHourlyRateLimit";
-            this.labelNMDescHourlyRateLimit.Size = new System.Drawing.Size(81, 13);
-            this.labelNMDescHourlyRateLimit.TabIndex = 76;
-            this.labelNMDescHourlyRateLimit.Text = "Hourly rate limit:";
-            // 
-            // labelNMAPIKeyStatus
-            // 
-            this.labelNMAPIKeyStatus.AutoSize = true;
-            this.labelNMAPIKeyStatus.ForeColor = System.Drawing.Color.Red;
-            this.labelNMAPIKeyStatus.Location = new System.Drawing.Point(296, 85);
-            this.labelNMAPIKeyStatus.Name = "labelNMAPIKeyStatus";
-            this.labelNMAPIKeyStatus.Size = new System.Drawing.Size(38, 13);
-            this.labelNMAPIKeyStatus.TabIndex = 75;
-            this.labelNMAPIKeyStatus.Text = "Invalid";
-            // 
-            // labelNMDescAPIKey
-            // 
-            this.labelNMDescAPIKey.AutoSize = true;
-            this.labelNMDescAPIKey.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescAPIKey.Location = new System.Drawing.Point(173, 85);
-            this.labelNMDescAPIKey.Name = "labelNMDescAPIKey";
-            this.labelNMDescAPIKey.Size = new System.Drawing.Size(47, 13);
-            this.labelNMDescAPIKey.TabIndex = 74;
-            this.labelNMDescAPIKey.Text = "API key:";
-            // 
-            // labelNMUserName
-            // 
-            this.labelNMUserName.AutoSize = true;
-            this.labelNMUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNMUserName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMUserName.Location = new System.Drawing.Point(170, 20);
-            this.labelNMUserName.Name = "labelNMUserName";
-            this.labelNMUserName.Size = new System.Drawing.Size(169, 33);
-            this.labelNMUserName.TabIndex = 66;
-            this.labelNMUserName.Text = "Anonymous";
-            // 
-            // labelNMDescMembership
-            // 
-            this.labelNMDescMembership.AutoSize = true;
-            this.labelNMDescMembership.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescMembership.Location = new System.Drawing.Point(173, 64);
-            this.labelNMDescMembership.Name = "labelNMDescMembership";
-            this.labelNMDescMembership.Size = new System.Drawing.Size(67, 13);
-            this.labelNMDescMembership.TabIndex = 67;
-            this.labelNMDescMembership.Text = "Membership:";
-            // 
-            // labelNMDailyRateLimitReset
-            // 
-            this.labelNMDailyRateLimitReset.AutoSize = true;
-            this.labelNMDailyRateLimitReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDailyRateLimitReset.Location = new System.Drawing.Point(611, 107);
-            this.labelNMDailyRateLimitReset.Name = "labelNMDailyRateLimitReset";
-            this.labelNMDailyRateLimitReset.Size = new System.Drawing.Size(36, 13);
-            this.labelNMDailyRateLimitReset.TabIndex = 72;
-            this.labelNMDailyRateLimitReset.Text = "Never";
-            // 
-            // labelNMMembership
-            // 
-            this.labelNMMembership.AutoSize = true;
-            this.labelNMMembership.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMMembership.Location = new System.Drawing.Point(296, 64);
-            this.labelNMMembership.Name = "labelNMMembership";
-            this.labelNMMembership.Size = new System.Drawing.Size(33, 13);
-            this.labelNMMembership.TabIndex = 68;
-            this.labelNMMembership.Text = "Basic";
-            // 
-            // labelNMDescLimitReset
-            // 
-            this.labelNMDescLimitReset.AutoSize = true;
-            this.labelNMDescLimitReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescLimitReset.Location = new System.Drawing.Point(483, 107);
-            this.labelNMDescLimitReset.Name = "labelNMDescLimitReset";
-            this.labelNMDescLimitReset.Size = new System.Drawing.Size(57, 13);
-            this.labelNMDescLimitReset.TabIndex = 71;
-            this.labelNMDescLimitReset.Text = "Limit reset:";
-            // 
-            // labelNMDescDailyRateLimit
-            // 
-            this.labelNMDescDailyRateLimit.AutoSize = true;
-            this.labelNMDescDailyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescDailyRateLimit.Location = new System.Drawing.Point(483, 64);
-            this.labelNMDescDailyRateLimit.Name = "labelNMDescDailyRateLimit";
-            this.labelNMDescDailyRateLimit.Size = new System.Drawing.Size(74, 13);
-            this.labelNMDescDailyRateLimit.TabIndex = 69;
-            this.labelNMDescDailyRateLimit.Text = "Daily rate limit:";
-            // 
-            // labelNMDailyRateLimit
-            // 
-            this.labelNMDailyRateLimit.AutoSize = true;
-            this.labelNMDailyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDailyRateLimit.Location = new System.Drawing.Point(611, 64);
-            this.labelNMDailyRateLimit.Name = "labelNMDailyRateLimit";
-            this.labelNMDailyRateLimit.Size = new System.Drawing.Size(30, 13);
-            this.labelNMDailyRateLimit.TabIndex = 70;
-            this.labelNMDailyRateLimit.Text = "0 left";
-            // 
-            // buttonNMDeleteThumbnails
-            // 
-            this.buttonNMDeleteThumbnails.BackColor = System.Drawing.Color.Firebrick;
-            this.buttonNMDeleteThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMDeleteThumbnails.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMDeleteThumbnails.Location = new System.Drawing.Point(9, 393);
-            this.buttonNMDeleteThumbnails.Name = "buttonNMDeleteThumbnails";
-            this.buttonNMDeleteThumbnails.Size = new System.Drawing.Size(240, 28);
-            this.buttonNMDeleteThumbnails.TabIndex = 76;
-            this.buttonNMDeleteThumbnails.Text = "Delete thumbnails";
-            this.buttonNMDeleteThumbnails.UseVisualStyleBackColor = false;
-            this.buttonNMDeleteThumbnails.Click += new System.EventHandler(this.buttonNMDeleteThumbnails_Click);
-            // 
-            // textBoxAPIKey
-            // 
-            this.textBoxAPIKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAPIKey.Location = new System.Drawing.Point(85, 494);
-            this.textBoxAPIKey.Name = "textBoxAPIKey";
-            this.textBoxAPIKey.Size = new System.Drawing.Size(761, 20);
-            this.textBoxAPIKey.TabIndex = 64;
-            this.textBoxAPIKey.UseSystemPasswordChar = true;
-            this.textBoxAPIKey.TextChanged += new System.EventHandler(this.textBoxAPIKey_TextChanged);
-            // 
-            // labelNMAPIKeyTextBox
-            // 
-            this.labelNMAPIKeyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelNMAPIKeyTextBox.AutoSize = true;
-            this.labelNMAPIKeyTextBox.Location = new System.Drawing.Point(6, 497);
-            this.labelNMAPIKeyTextBox.Name = "labelNMAPIKeyTextBox";
-            this.labelNMAPIKeyTextBox.Size = new System.Drawing.Size(48, 13);
-            this.labelNMAPIKeyTextBox.TabIndex = 63;
-            this.labelNMAPIKeyTextBox.Text = "API Key:";
+            this.buttonNMUpdateModInfo.BackColor = System.Drawing.Color.Teal;
+            this.buttonNMUpdateModInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNMUpdateModInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNMUpdateModInfo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNMUpdateModInfo.Image = global::Fo76ini.Properties.Resources.available_updates_48;
+            this.buttonNMUpdateModInfo.Location = new System.Drawing.Point(6, 6);
+            this.buttonNMUpdateModInfo.Name = "buttonNMUpdateModInfo";
+            this.buttonNMUpdateModInfo.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNMUpdateModInfo.Size = new System.Drawing.Size(240, 120);
+            this.buttonNMUpdateModInfo.TabIndex = 78;
+            this.buttonNMUpdateModInfo.Text = "Update mod information";
+            this.buttonNMUpdateModInfo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNMUpdateModInfo.UseVisualStyleBackColor = false;
             // 
             // openFileDialogMod
             // 
@@ -1446,288 +1356,35 @@
             // backgroundWorkerRetrieveModInfo
             // 
             this.backgroundWorkerRetrieveModInfo.WorkerReportsProgress = true;
-            this.backgroundWorkerRetrieveModInfo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerRetrieveModInfo_DoWork);
             // 
             // backgroundWorkerRetrieveProfileInfo
             // 
-            this.backgroundWorkerRetrieveProfileInfo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerRetrieveProfileInfo_DoWork);
             // 
-            // pictureBoxModsLoadingGIF
+            // labelNexusModsMovedNotice
             // 
-            this.pictureBoxModsLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelNexusModsMovedNotice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxModsLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
-            this.pictureBoxModsLoadingGIF.Location = new System.Drawing.Point(39, 0);
-            this.pictureBoxModsLoadingGIF.Name = "pictureBoxModsLoadingGIF";
-            this.pictureBoxModsLoadingGIF.Size = new System.Drawing.Size(165, 544);
-            this.pictureBoxModsLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxModsLoadingGIF.TabIndex = 57;
-            this.pictureBoxModsLoadingGIF.TabStop = false;
-            this.pictureBoxModsLoadingGIF.Visible = false;
+            this.labelNexusModsMovedNotice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNexusModsMovedNotice.Location = new System.Drawing.Point(6, 231);
+            this.labelNexusModsMovedNotice.Name = "labelNexusModsMovedNotice";
+            this.labelNexusModsMovedNotice.Size = new System.Drawing.Size(840, 54);
+            this.labelNexusModsMovedNotice.TabIndex = 91;
+            this.labelNexusModsMovedNotice.Text = "The NexusMods tab has been moved into the settings window.";
+            this.labelNexusModsMovedNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBoxCollapseDetails
+            // linkLabelOpenSettings
             // 
-            this.pictureBoxCollapseDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.linkLabelOpenSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxCollapseDetails.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pictureBoxCollapseDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxCollapseDetails.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCollapseDetails.Image")));
-            this.pictureBoxCollapseDetails.Location = new System.Drawing.Point(476, 0);
-            this.pictureBoxCollapseDetails.Name = "pictureBoxCollapseDetails";
-            this.pictureBoxCollapseDetails.Size = new System.Drawing.Size(24, 544);
-            this.pictureBoxCollapseDetails.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxCollapseDetails.TabIndex = 59;
-            this.pictureBoxCollapseDetails.TabStop = false;
-            this.pictureBoxCollapseDetails.Click += new System.EventHandler(this.pictureBoxCollapseDetails_Click);
-            // 
-            // pictureBoxModThumbnail
-            // 
-            this.pictureBoxModThumbnail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxModThumbnail.Image = global::Fo76ini.Properties.Resources.bg;
-            this.pictureBoxModThumbnail.Location = new System.Drawing.Point(-1, -6);
-            this.pictureBoxModThumbnail.Name = "pictureBoxModThumbnail";
-            this.pictureBoxModThumbnail.Size = new System.Drawing.Size(356, 193);
-            this.pictureBoxModThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxModThumbnail.TabIndex = 71;
-            this.pictureBoxModThumbnail.TabStop = false;
-            // 
-            // toolStripButtonAddMod
-            // 
-            this.toolStripButtonAddMod.AutoSize = false;
-            this.toolStripButtonAddMod.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddMod.Image = global::Fo76ini.Properties.Resources.plus_24;
-            this.toolStripButtonAddMod.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonAddMod.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddMod.Name = "toolStripButtonAddMod";
-            this.toolStripButtonAddMod.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonAddMod.Text = "Add mod (from archive)";
-            this.toolStripButtonAddMod.Click += new System.EventHandler(this.toolStripButtonAddMod_Click);
-            // 
-            // toolStripButtonAddModFrozen
-            // 
-            this.toolStripButtonAddModFrozen.AutoSize = false;
-            this.toolStripButtonAddModFrozen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddModFrozen.Image = global::Fo76ini.Properties.Resources.add_snowflake_24;
-            this.toolStripButtonAddModFrozen.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonAddModFrozen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddModFrozen.Name = "toolStripButtonAddModFrozen";
-            this.toolStripButtonAddModFrozen.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonAddModFrozen.Text = "Add mod (from *.ba2 archive)";
-            this.toolStripButtonAddModFrozen.Click += new System.EventHandler(this.toolStripButtonAddModFrozen_Click);
-            // 
-            // toolStripButtonAddModFolder
-            // 
-            this.toolStripButtonAddModFolder.AutoSize = false;
-            this.toolStripButtonAddModFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddModFolder.Image = global::Fo76ini.Properties.Resources.add_folder_24;
-            this.toolStripButtonAddModFolder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonAddModFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddModFolder.Name = "toolStripButtonAddModFolder";
-            this.toolStripButtonAddModFolder.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonAddModFolder.Text = "Add mod (from folder)";
-            this.toolStripButtonAddModFolder.Click += new System.EventHandler(this.toolStripButtonAddModFolder_Click);
-            // 
-            // toolStripButtonCheckAll
-            // 
-            this.toolStripButtonCheckAll.AutoSize = false;
-            this.toolStripButtonCheckAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonCheckAll.Image = global::Fo76ini.Properties.Resources.checked_checkbox_24;
-            this.toolStripButtonCheckAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonCheckAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonCheckAll.Name = "toolStripButtonCheckAll";
-            this.toolStripButtonCheckAll.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonCheckAll.Text = "Check/uncheck all";
-            this.toolStripButtonCheckAll.Click += new System.EventHandler(this.toolStripButtonCheckAll_Click);
-            // 
-            // toolStripButtonMoveUp
-            // 
-            this.toolStripButtonMoveUp.AutoSize = false;
-            this.toolStripButtonMoveUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonMoveUp.Image = global::Fo76ini.Properties.Resources.arrow_up;
-            this.toolStripButtonMoveUp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonMoveUp.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonMoveUp.Name = "toolStripButtonMoveUp";
-            this.toolStripButtonMoveUp.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonMoveUp.Text = "Move up";
-            this.toolStripButtonMoveUp.Click += new System.EventHandler(this.toolStripButtonMoveUp_Click);
-            // 
-            // toolStripButtonMoveDown
-            // 
-            this.toolStripButtonMoveDown.AutoSize = false;
-            this.toolStripButtonMoveDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonMoveDown.Image = global::Fo76ini.Properties.Resources.arrow_down;
-            this.toolStripButtonMoveDown.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonMoveDown.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonMoveDown.Name = "toolStripButtonMoveDown";
-            this.toolStripButtonMoveDown.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonMoveDown.Text = "Move down";
-            this.toolStripButtonMoveDown.Click += new System.EventHandler(this.toolStripButtonMoveDown_Click);
-            // 
-            // toolStripButtonModEdit
-            // 
-            this.toolStripButtonModEdit.AutoSize = false;
-            this.toolStripButtonModEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonModEdit.Image = global::Fo76ini.Properties.Resources.edit_24;
-            this.toolStripButtonModEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonModEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonModEdit.Name = "toolStripButtonModEdit";
-            this.toolStripButtonModEdit.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonModEdit.Text = "Edit mod details";
-            this.toolStripButtonModEdit.Click += new System.EventHandler(this.toolStripButtonModEdit_Click);
-            // 
-            // toolStripButtonUnfreeze
-            // 
-            this.toolStripButtonUnfreeze.AutoSize = false;
-            this.toolStripButtonUnfreeze.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonUnfreeze.Image = global::Fo76ini.Properties.Resources.thaw_24;
-            this.toolStripButtonUnfreeze.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonUnfreeze.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonUnfreeze.Name = "toolStripButtonUnfreeze";
-            this.toolStripButtonUnfreeze.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonUnfreeze.Text = "Unfreeze";
-            this.toolStripButtonUnfreeze.Click += new System.EventHandler(this.toolStripButtonUnfreeze_Click);
-            // 
-            // toolStripButtonModOpenFolder
-            // 
-            this.toolStripButtonModOpenFolder.AutoSize = false;
-            this.toolStripButtonModOpenFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonModOpenFolder.Image = global::Fo76ini.Properties.Resources.folder_24;
-            this.toolStripButtonModOpenFolder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonModOpenFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonModOpenFolder.Name = "toolStripButtonModOpenFolder";
-            this.toolStripButtonModOpenFolder.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonModOpenFolder.Text = "Open mod folder";
-            this.toolStripButtonModOpenFolder.Click += new System.EventHandler(this.toolStripButtonModOpenFolder_Click);
-            // 
-            // toolStripButtonModEndorse
-            // 
-            this.toolStripButtonModEndorse.AutoSize = false;
-            this.toolStripButtonModEndorse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonModEndorse.Image = global::Fo76ini.Properties.Resources.heart_24;
-            this.toolStripButtonModEndorse.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonModEndorse.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonModEndorse.Name = "toolStripButtonModEndorse";
-            this.toolStripButtonModEndorse.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonModEndorse.Text = "Open mod folder";
-            this.toolStripButtonModEndorse.ToolTipText = "Endorse mod";
-            // 
-            // toolStripButtonDeleteMod
-            // 
-            this.toolStripButtonDeleteMod.AutoSize = false;
-            this.toolStripButtonDeleteMod.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDeleteMod.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDeleteMod.Image")));
-            this.toolStripButtonDeleteMod.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonDeleteMod.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDeleteMod.Name = "toolStripButtonDeleteMod";
-            this.toolStripButtonDeleteMod.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonDeleteMod.Text = "Delete mod";
-            this.toolStripButtonDeleteMod.Click += new System.EventHandler(this.toolStripButtonDeleteMod_Click);
-            // 
-            // buttonModDetailsNM
-            // 
-            this.buttonModDetailsNM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModDetailsNM.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonModDetailsNM.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.buttonModDetailsNM.FlatAppearance.BorderSize = 0;
-            this.buttonModDetailsNM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModDetailsNM.Image = global::Fo76ini.Properties.Resources.nexus_24;
-            this.buttonModDetailsNM.Location = new System.Drawing.Point(11, 7);
-            this.buttonModDetailsNM.Name = "buttonModDetailsNM";
-            this.buttonModDetailsNM.Size = new System.Drawing.Size(36, 36);
-            this.buttonModDetailsNM.TabIndex = 75;
-            this.buttonModDetailsNM.UseVisualStyleBackColor = false;
-            // 
-            // buttonNWEndorseAllMods
-            // 
-            this.buttonNWEndorseAllMods.BackColor = System.Drawing.Color.Crimson;
-            this.buttonNWEndorseAllMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNWEndorseAllMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNWEndorseAllMods.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNWEndorseAllMods.Image = global::Fo76ini.Properties.Resources.heart_48;
-            this.buttonNWEndorseAllMods.Location = new System.Drawing.Point(381, 177);
-            this.buttonNWEndorseAllMods.Name = "buttonNWEndorseAllMods";
-            this.buttonNWEndorseAllMods.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNWEndorseAllMods.Size = new System.Drawing.Size(120, 120);
-            this.buttonNWEndorseAllMods.TabIndex = 90;
-            this.buttonNWEndorseAllMods.Text = "Endorse mods";
-            this.buttonNWEndorseAllMods.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNWEndorseAllMods.UseVisualStyleBackColor = false;
-            // 
-            // pictureBoxNMProfilePicture
-            // 
-            this.pictureBoxNMProfilePicture.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxNMProfilePicture.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNMProfilePicture.Image")));
-            this.pictureBoxNMProfilePicture.Location = new System.Drawing.Point(20, 20);
-            this.pictureBoxNMProfilePicture.Name = "pictureBoxNMProfilePicture";
-            this.pictureBoxNMProfilePicture.Size = new System.Drawing.Size(128, 128);
-            this.pictureBoxNMProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxNMProfilePicture.TabIndex = 65;
-            this.pictureBoxNMProfilePicture.TabStop = false;
-            this.pictureBoxNMProfilePicture.Click += new System.EventHandler(this.pictureBoxNMProfilePicture_Click);
-            // 
-            // buttonNMUpdateModInfo
-            // 
-            this.buttonNMUpdateModInfo.BackColor = System.Drawing.Color.Teal;
-            this.buttonNMUpdateModInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMUpdateModInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNMUpdateModInfo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMUpdateModInfo.Image = global::Fo76ini.Properties.Resources.available_updates_48;
-            this.buttonNMUpdateModInfo.Location = new System.Drawing.Point(9, 178);
-            this.buttonNMUpdateModInfo.Name = "buttonNMUpdateModInfo";
-            this.buttonNMUpdateModInfo.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNMUpdateModInfo.Size = new System.Drawing.Size(240, 120);
-            this.buttonNMUpdateModInfo.TabIndex = 78;
-            this.buttonNMUpdateModInfo.Text = "Update mod information";
-            this.buttonNMUpdateModInfo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNMUpdateModInfo.UseVisualStyleBackColor = false;
-            this.buttonNMUpdateModInfo.Click += new System.EventHandler(this.buttonNMUpdateModInfo_Click);
-            // 
-            // buttonNMUpdateProfile
-            // 
-            this.buttonNMUpdateProfile.BackColor = System.Drawing.Color.Teal;
-            this.buttonNMUpdateProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNMUpdateProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMUpdateProfile.Image = global::Fo76ini.Properties.Resources.available_updates_48;
-            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(255, 177);
-            this.buttonNMUpdateProfile.Name = "buttonNMUpdateProfile";
-            this.buttonNMUpdateProfile.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNMUpdateProfile.Size = new System.Drawing.Size(120, 120);
-            this.buttonNMUpdateProfile.TabIndex = 77;
-            this.buttonNMUpdateProfile.Text = "Update profile";
-            this.buttonNMUpdateProfile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNMUpdateProfile.UseVisualStyleBackColor = false;
-            this.buttonNMUpdateProfile.Click += new System.EventHandler(this.buttonNMUpdateProfile_Click);
-            // 
-            // nexusModsAPIToolStripMenuItem
-            // 
-            this.nexusModsAPIToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateModInformationToolStripMenuItem,
-            this.endorseModsToolStripMenuItem,
-            this.checkForUpdatesToolStripMenuItem});
-            this.nexusModsAPIToolStripMenuItem.Name = "nexusModsAPIToolStripMenuItem";
-            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.nexusModsAPIToolStripMenuItem.Text = "NexusMods API";
-            // 
-            // updateModInformationToolStripMenuItem
-            // 
-            this.updateModInformationToolStripMenuItem.Name = "updateModInformationToolStripMenuItem";
-            this.updateModInformationToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.updateModInformationToolStripMenuItem.Text = "Update mod information";
-            // 
-            // endorseModsToolStripMenuItem
-            // 
-            this.endorseModsToolStripMenuItem.Name = "endorseModsToolStripMenuItem";
-            this.endorseModsToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.endorseModsToolStripMenuItem.Text = "Endorse mods";
-            // 
-            // checkForUpdatesToolStripMenuItem
-            // 
-            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
+            this.linkLabelOpenSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelOpenSettings.Location = new System.Drawing.Point(6, 285);
+            this.linkLabelOpenSettings.Name = "linkLabelOpenSettings";
+            this.linkLabelOpenSettings.Size = new System.Drawing.Size(840, 26);
+            this.linkLabelOpenSettings.TabIndex = 92;
+            this.linkLabelOpenSettings.TabStop = true;
+            this.linkLabelOpenSettings.Text = "Open settings";
+            this.linkLabelOpenSettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabelOpenSettings.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelOpenSettings_LinkClicked);
             // 
             // FormMods
             // 
@@ -1750,12 +1407,15 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageModOrder.ResumeLayout(false);
             this.tabPageModOrder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCollapseDetails)).EndInit();
             this.panelModDetails.ResumeLayout(false);
             this.panelModDetails.PerformLayout();
             this.groupBoxModDetailsDetails.ResumeLayout(false);
             this.groupBoxModDetailsDetails.PerformLayout();
             this.groupBoxModDetailsInstallationOptions.ResumeLayout(false);
             this.groupBoxModDetailsInstallationOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModThumbnail)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1765,15 +1425,8 @@
             this.groupBoxLists.ResumeLayout(false);
             this.groupBoxLists.PerformLayout();
             this.tabPageNexusMods.ResumeLayout(false);
-            this.tabPageNexusMods.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCollapseDetails)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModThumbnail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1881,25 +1534,7 @@
         private System.Windows.Forms.Label labelModURL;
         private System.Windows.Forms.PictureBox pictureBoxModThumbnail;
         private System.Windows.Forms.TabPage tabPageNexusMods;
-        private System.Windows.Forms.Label labelNMUserName;
-        private System.Windows.Forms.PictureBox pictureBoxNMProfilePicture;
-        private System.Windows.Forms.TextBox textBoxAPIKey;
-        private System.Windows.Forms.Label labelNMAPIKeyTextBox;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label labelNMDescMembership;
-        private System.Windows.Forms.Label labelNMDailyRateLimitReset;
-        private System.Windows.Forms.Label labelNMMembership;
-        private System.Windows.Forms.Label labelNMDescLimitReset;
-        private System.Windows.Forms.Label labelNMDescDailyRateLimit;
-        private System.Windows.Forms.Label labelNMDailyRateLimit;
         private System.Windows.Forms.Button buttonNMUpdateModInfo;
-        private System.Windows.Forms.Button buttonNMUpdateProfile;
-        private System.Windows.Forms.Button buttonNMDeleteThumbnails;
-        private System.Windows.Forms.Label labelNMInfo;
-        private System.Windows.Forms.LinkLabel linkLabelNMGetAPIKey;
-        private System.Windows.Forms.Label labelNMAPIKeyStatus;
-        private System.Windows.Forms.Label labelNMDescAPIKey;
-        private System.Windows.Forms.Button buttonNMRemoveAll;
         private System.Windows.Forms.GroupBox groupBoxModDetailsInstallationOptions;
         private System.Windows.Forms.GroupBox groupBoxModDetailsDetails;
         private System.Windows.Forms.TextBox textBoxModVersion;
@@ -1907,17 +1542,7 @@
         private System.Windows.Forms.ColumnHeader columnHeaderVersion;
         private System.ComponentModel.BackgroundWorker backgroundWorkerRetrieveModInfo;
         private System.ComponentModel.BackgroundWorker backgroundWorkerRetrieveProfileInfo;
-        private System.Windows.Forms.CheckBox checkBoxShowAPIKey;
-        private System.Windows.Forms.Button buttonNMDeleteModInfo;
         private System.Windows.Forms.CheckBox checkBoxModsWriteSResourceDataDirsFinal;
-        private System.Windows.Forms.Label labelNMHourlyRateLimit;
-        private System.Windows.Forms.Label labelNMDescHourlyRateLimit;
-        private System.Windows.Forms.Label labelNMUserID;
-        private System.Windows.Forms.Label labelNMDescUserID;
-        private System.Windows.Forms.Label labelNMNotLoggedIn;
-        private System.Windows.Forms.Label labelNMOptions;
-        private System.Windows.Forms.CheckBox checkBoxNMUpdateProfile;
-        private System.Windows.Forms.CheckBox checkBoxNMDownloadThumbnails;
         private System.Windows.Forms.Button buttonModDetailsNM;
         private System.Windows.Forms.Button buttonNWEndorseAllMods;
         private System.Windows.Forms.ToolStripButton toolStripButtonModEndorse;
@@ -1928,5 +1553,7 @@
         private System.Windows.Forms.ToolStripMenuItem updateModInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem endorseModsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
+        private System.Windows.Forms.Label labelNexusModsMovedNotice;
+        private System.Windows.Forms.LinkLabel linkLabelOpenSettings;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Fo76ini.Tweaks;
 using Fo76ini.Tweaks.Audio;
+using Fo76ini.Tweaks.Camera;
 using Fo76ini.Tweaks.Colors;
 using Fo76ini.Tweaks.Config;
 using Fo76ini.Tweaks.Controls;
@@ -25,11 +26,11 @@ namespace Fo76ini
         public void LinkInfo()
         {
             // Info tab
-            LinkedTweaks.LinkInfo(checkBoxReadOnly, iniReadOnlyTweak);
+            /*LinkedTweaks.LinkInfo(checkBoxReadOnly, iniReadOnlyTweak);
             LinkedTweaks.LinkInfo(checkBoxAutoApply, autoApplyTweak);
             LinkedTweaks.LinkInfo(checkBoxIgnoreUpdates, ignoreUpdatesTweak);
             LinkedTweaks.LinkInfo(checkBoxPlayNotificationSound, playNotificationSoundsTweak);
-            LinkedTweaks.LinkInfo(checkBoxQuitOnGameLaunch, toolQuitOnLaunchTweak);
+            LinkedTweaks.LinkInfo(checkBoxQuitOnGameLaunch, toolQuitOnLaunchTweak);*/
 
             // General tab
             LinkedTweaks.LinkInfo(checkBoxEnableSteam, enableSteamTweak);
@@ -160,6 +161,50 @@ namespace Fo76ini
             LinkedTweaks.LinkInfo(checkBoxGamepadRumble, enableGamepadRumbleTweak);
 
             // Camera tab
+            LinkedTweaks.LinkInfo(this.checkBoxbApplyCameraNodeAnimations, applyCameraNodeAnimationsTweak);
+            LinkedTweaks.LinkInfo(this.numfOverShoulderPosX, cameraOverShoulderPosXTweak);
+            LinkedTweaks.LinkInfo(this.numfOverShoulderPosZ, cameraOverShoulderPosZTweak);
+            LinkedTweaks.LinkInfo(this.numfOverShoulderCombatPosX, cameraOverShoulderCombatPosXTweak);
+            LinkedTweaks.LinkInfo(this.numfOverShoulderCombatPosZ, cameraOverShoulderCombatPosZTweak);
+            LinkedTweaks.LinkInfo(this.numfOverShoulderCombatAddY, cameraOverShoulderCombatAddYTweak);
+            LinkedTweaks.LinkInfo(this.numfOverShoulderMeleeCombatPosX, cameraOverShoulderMeleeCombatPosXTweak);
+            LinkedTweaks.LinkInfo(this.numfOverShoulderMeleeCombatPosZ, cameraOverShoulderMeleeCombatPosZTweak);
+            LinkedTweaks.LinkInfo(this.numfOverShoulderMeleeCombatAddY, cameraOverShoulderMeleeCombatAddYTweak);
+            LinkedTweaks.LinkInfo(this.trackBarfOverShoulderPosX, cameraOverShoulderPosXTweak);
+            LinkedTweaks.LinkInfo(this.trackBarfOverShoulderPosZ, cameraOverShoulderPosZTweak);
+            LinkedTweaks.LinkInfo(this.trackBarfOverShoulderCombatPosX, cameraOverShoulderCombatPosXTweak);
+            LinkedTweaks.LinkInfo(this.trackBarfOverShoulderCombatPosZ, cameraOverShoulderCombatPosZTweak);
+            LinkedTweaks.LinkInfo(this.trackBarfOverShoulderCombatAddY, cameraOverShoulderCombatAddYTweak);
+            LinkedTweaks.LinkInfo(this.trackBarfOverShoulderMeleeCombatPosX, cameraOverShoulderMeleeCombatPosXTweak);
+            LinkedTweaks.LinkInfo(this.trackBarfOverShoulderMeleeCombatPosZ, cameraOverShoulderMeleeCombatPosZTweak);
+            LinkedTweaks.LinkInfo(this.trackBarfOverShoulderMeleeCombatAddY, cameraOverShoulderMeleeCombatAddYTweak);
+            LinkedTweaks.LinkInfo(this.numericUpDownPhotomodeRange, selfieModeRangeTweak);
+            LinkedTweaks.LinkInfo(this.numericUpDownPhotomodeTranslationSpeed, selfieCameraTranslationSpeedTweak);
+            LinkedTweaks.LinkInfo(this.numericUpDownPhotomodeRotationSpeed, selfieCameraRotationSpeedTweak);
+            LinkedTweaks.LinkInfo(this.labelPhotomodeRange, selfieModeRangeTweak);
+            LinkedTweaks.LinkInfo(this.labelPhotomodeTranslationSpeed, selfieCameraTranslationSpeedTweak);
+            LinkedTweaks.LinkInfo(this.labelPhotomodeRotationSpeed, selfieCameraRotationSpeedTweak);
+            LinkedTweaks.LinkInfo(this.trackBarPhotomodeRange, selfieModeRangeTweak);
+            LinkedTweaks.LinkInfo(this.trackBarPhotomodeTranslationSpeed, selfieCameraTranslationSpeedTweak);
+            LinkedTweaks.LinkInfo(this.trackBarPhotomodeRotationSpeed, selfieCameraRotationSpeedTweak);
+            LinkedTweaks.LinkInfo(this.checkBoxVanityMode, disableAutoVanityModeTweak);
+            LinkedTweaks.LinkInfo(this.checkBoxForceVanityMode, forceAutoVanityModeTweak);
+            LinkedTweaks.LinkInfo(this.numCameraSwitchDelay, firstThirdPerspectiveSwitchDelayTweak);
+            LinkedTweaks.LinkInfo(this.labelSwitchDelay, firstThirdPerspectiveSwitchDelayTweak);
+            LinkedTweaks.LinkInfo(numFirstPersonFOV, fov1stPersonTweak);
+            LinkedTweaks.LinkInfo(numWorldFOV, fov3rdPersonTweak);
+            LinkedTweaks.LinkInfo(numADSFOV, fov3rdADSTweak);
+            LinkedTweaks.LinkInfo(numfDefaultFOV, defaultFOVTweak);
+            LinkedTweaks.LinkInfo(labelFirstPersonFOV, fov1stPersonTweak);
+            LinkedTweaks.LinkInfo(labelWorldFOV, fov3rdPersonTweak);
+            LinkedTweaks.LinkInfo(labelADSFOV, fov3rdADSTweak);
+            LinkedTweaks.LinkInfo(labelfDefaultFOV, defaultFOVTweak);
+            LinkedTweaks.LinkInfo(numCameraDistanceMinimum, vanityModeMinDistTweak);
+            LinkedTweaks.LinkInfo(numCameraDistanceMaximum, vanityModeMaxDistTweak);
+            LinkedTweaks.LinkInfo(numfPitchZoomOutMaxDist, pitchZoomOutMaxDistTweak);
+            LinkedTweaks.LinkInfo(labelCameraDistanceMinimum, vanityModeMinDistTweak);
+            LinkedTweaks.LinkInfo(labelCameraDistanceMaximum, vanityModeMaxDistTweak);
+            LinkedTweaks.LinkInfo(labelPitchZoomOutMaxDist, pitchZoomOutMaxDistTweak);
 
             // Pipboy tab
             LinkedTweaks.LinkInfo(buttonColorPickPipboy, pipboyColorTweak);
@@ -212,6 +257,16 @@ namespace Fo76ini
             LinkedTweaks.LinkSlider(this.trackBarPhotomodeTranslationSpeed, this.numericUpDownPhotomodeTranslationSpeed, 10);
             LinkedTweaks.LinkSlider(this.trackBarPhotomodeRotationSpeed, this.numericUpDownPhotomodeRotationSpeed, 10);
             LinkedTweaks.LinkSlider(this.trackBarPhotomodeRange, this.numericUpDownPhotomodeRange, 1);
+
+
+            LinkedTweaks.LinkSlider(this.trackBarfOverShoulderPosX, this.numfOverShoulderPosX, 1);
+            LinkedTweaks.LinkSlider(this.trackBarfOverShoulderPosZ, this.numfOverShoulderPosZ, 1);
+            LinkedTweaks.LinkSlider(this.trackBarfOverShoulderCombatPosX, this.numfOverShoulderCombatPosX, 1);
+            LinkedTweaks.LinkSlider(this.trackBarfOverShoulderCombatPosZ, this.numfOverShoulderCombatPosZ, 1);
+            LinkedTweaks.LinkSlider(this.trackBarfOverShoulderCombatAddY, this.numfOverShoulderCombatAddY, 1);
+            LinkedTweaks.LinkSlider(this.trackBarfOverShoulderMeleeCombatPosX, this.numfOverShoulderMeleeCombatPosX, 1);
+            LinkedTweaks.LinkSlider(this.trackBarfOverShoulderMeleeCombatPosZ, this.numfOverShoulderMeleeCombatPosZ, 1);
+            LinkedTweaks.LinkSlider(this.trackBarfOverShoulderMeleeCombatAddY, this.numfOverShoulderMeleeCombatAddY, 1);
         }
 
         /// <summary>
@@ -226,7 +281,7 @@ namespace Fo76ini
              */
 
             // Make *.ini files read-only
-            LinkedTweaks.LinkTweak(checkBoxReadOnly, iniReadOnlyTweak);
+            /*LinkedTweaks.LinkTweak(checkBoxReadOnly, iniReadOnlyTweak);
 
             // Automatically apply changes when tool is closed or game is launched
             LinkedTweaks.LinkTweak(checkBoxAutoApply, autoApplyTweak);
@@ -238,7 +293,7 @@ namespace Fo76ini
             LinkedTweaks.LinkTweak(checkBoxPlayNotificationSound, playNotificationSoundsTweak);
 
             // Close the tool when the game is launched.
-            LinkedTweaks.LinkTweak(checkBoxQuitOnGameLaunch, toolQuitOnLaunchTweak);
+            LinkedTweaks.LinkTweak(checkBoxQuitOnGameLaunch, toolQuitOnLaunchTweak);*/
 
 
 
@@ -535,6 +590,50 @@ namespace Fo76ini
              * Camera tab
              */
 
+            // 1st person FOV
+            LinkedTweaks.LinkTweak(numFirstPersonFOV, fov1stPersonTweak);
+
+            // World FOV
+            LinkedTweaks.LinkTweak(numWorldFOV, fov3rdPersonTweak);
+
+            // 3rd person ADS FOV
+            LinkedTweaks.LinkTweak(numADSFOV, fov3rdADSTweak);
+
+            // fDefaultFOV
+            LinkedTweaks.LinkTweak(numfDefaultFOV, defaultFOVTweak);
+
+            // Camera distance
+            LinkedTweaks.LinkTweak(numCameraDistanceMinimum, vanityModeMinDistTweak);
+            LinkedTweaks.LinkTweak(numCameraDistanceMaximum, vanityModeMaxDistTweak);
+
+            // fPitchZoomOutMaxDist
+            LinkedTweaks.LinkTweak(numfPitchZoomOutMaxDist, pitchZoomOutMaxDistTweak);
+
+            // Switch delay
+            LinkedTweaks.LinkTweak(this.numCameraSwitchDelay, firstThirdPerspectiveSwitchDelayTweak);
+
+            // Photomode options:
+            LinkedTweaks.LinkTweak(this.numericUpDownPhotomodeRange, selfieModeRangeTweak);
+            LinkedTweaks.LinkTweak(this.numericUpDownPhotomodeTranslationSpeed, selfieCameraTranslationSpeedTweak);
+            LinkedTweaks.LinkTweak(this.numericUpDownPhotomodeRotationSpeed, selfieCameraRotationSpeedTweak);
+
+            // Vanity mode
+            LinkedTweaks.LinkTweakNegated(this.checkBoxVanityMode, disableAutoVanityModeTweak);
+            LinkedTweaks.LinkTweak(this.checkBoxForceVanityMode, forceAutoVanityModeTweak);
+
+            // bApplyCameraNodeAnimations
+            LinkedTweaks.LinkTweak(this.checkBoxbApplyCameraNodeAnimations, applyCameraNodeAnimationsTweak);
+
+            // OverShoulder sliders:
+            LinkedTweaks.LinkTweak(this.numfOverShoulderPosX, cameraOverShoulderPosXTweak);
+            LinkedTweaks.LinkTweak(this.numfOverShoulderPosZ, cameraOverShoulderPosZTweak);
+            LinkedTweaks.LinkTweak(this.numfOverShoulderCombatPosX, cameraOverShoulderCombatPosXTweak);
+            LinkedTweaks.LinkTweak(this.numfOverShoulderCombatPosZ, cameraOverShoulderCombatPosZTweak);
+            LinkedTweaks.LinkTweak(this.numfOverShoulderCombatAddY, cameraOverShoulderCombatAddYTweak);
+            LinkedTweaks.LinkTweak(this.numfOverShoulderMeleeCombatPosX, cameraOverShoulderMeleeCombatPosXTweak);
+            LinkedTweaks.LinkTweak(this.numfOverShoulderMeleeCombatPosZ, cameraOverShoulderMeleeCombatPosZTweak);
+            LinkedTweaks.LinkTweak(this.numfOverShoulderMeleeCombatAddY, cameraOverShoulderMeleeCombatAddYTweak);
+
 
 
             /*
@@ -551,11 +650,11 @@ namespace Fo76ini
          */
 
         // Info tab
-        private INIReadOnlyTweak iniReadOnlyTweak = new INIReadOnlyTweak();
+        /*private INIReadOnlyTweak iniReadOnlyTweak = new INIReadOnlyTweak();
         private AutoApplyTweak autoApplyTweak = new AutoApplyTweak();
         private IgnoreUpdatesTweak ignoreUpdatesTweak = new IgnoreUpdatesTweak();
         private PlayNotificationSoundsTweak playNotificationSoundsTweak = new PlayNotificationSoundsTweak();
-        private ToolQuitOnLaunchTweak toolQuitOnLaunchTweak = new ToolQuitOnLaunchTweak();
+        private ToolQuitOnLaunchTweak toolQuitOnLaunchTweak = new ToolQuitOnLaunchTweak();*/
 
         // General tab
         private EnableSteamTweak enableSteamTweak = new EnableSteamTweak();
@@ -659,7 +758,34 @@ namespace Fo76ini
         private QuickboyModeEnabledTweak quickboyModeEnabledTweak = new QuickboyModeEnabledTweak();
         private PipboyTargetResolution pipboyTargetResolution = new PipboyTargetResolution();
 
-        // Camera tab
+        // Camera 
+        private FOV1stPersonTweak fov1stPersonTweak = new FOV1stPersonTweak();
+        private FOV3rdPersonTweak fov3rdPersonTweak = new FOV3rdPersonTweak();
+        private FOV3rdADSTweak fov3rdADSTweak = new FOV3rdADSTweak();
+        private DefaultFOVTweak defaultFOVTweak = new DefaultFOVTweak();
+
+        private VanityModeMinDistTweak vanityModeMinDistTweak = new VanityModeMinDistTweak();
+        private VanityModeMaxDistTweak vanityModeMaxDistTweak = new VanityModeMaxDistTweak();
+        private PitchZoomOutMaxDistTweak pitchZoomOutMaxDistTweak = new PitchZoomOutMaxDistTweak();
+
+        private FirstThirdPerspectiveSwitchDelayTweak firstThirdPerspectiveSwitchDelayTweak = new FirstThirdPerspectiveSwitchDelayTweak();
+
+        private DisableAutoVanityModeTweak disableAutoVanityModeTweak = new DisableAutoVanityModeTweak();
+        private ForceAutoVanityModeTweak forceAutoVanityModeTweak = new ForceAutoVanityModeTweak();
+
+        private SelfieModeRangeTweak selfieModeRangeTweak = new SelfieModeRangeTweak();
+        private SelfieCameraTranslationSpeedTweak selfieCameraTranslationSpeedTweak = new SelfieCameraTranslationSpeedTweak();
+        private SelfieCameraRotationSpeedTweak selfieCameraRotationSpeedTweak = new SelfieCameraRotationSpeedTweak();
+
+        private ApplyCameraNodeAnimationsTweak applyCameraNodeAnimationsTweak = new ApplyCameraNodeAnimationsTweak();
+        private CameraOverShoulderPosXTweak cameraOverShoulderPosXTweak = new CameraOverShoulderPosXTweak();
+        private CameraOverShoulderPosZTweak cameraOverShoulderPosZTweak = new CameraOverShoulderPosZTweak();
+        private CameraOverShoulderCombatPosXTweak cameraOverShoulderCombatPosXTweak = new CameraOverShoulderCombatPosXTweak();
+        private CameraOverShoulderCombatPosZTweak cameraOverShoulderCombatPosZTweak = new CameraOverShoulderCombatPosZTweak();
+        private CameraOverShoulderCombatAddYTweak cameraOverShoulderCombatAddYTweak = new CameraOverShoulderCombatAddYTweak();
+        private CameraOverShoulderMeleeCombatPosXTweak cameraOverShoulderMeleeCombatPosXTweak = new CameraOverShoulderMeleeCombatPosXTweak();
+        private CameraOverShoulderMeleeCombatPosZTweak cameraOverShoulderMeleeCombatPosZTweak = new CameraOverShoulderMeleeCombatPosZTweak();
+        private CameraOverShoulderMeleeCombatAddYTweak cameraOverShoulderMeleeCombatAddYTweak = new CameraOverShoulderMeleeCombatAddYTweak();
 
         // Gallery tab
         private ScreenshotIndexTweak screenshotIndexTweak = new ScreenshotIndexTweak();
