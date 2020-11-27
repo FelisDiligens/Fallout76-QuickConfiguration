@@ -1,11 +1,14 @@
 ﻿using Fo76ini.Interface;
 using Fo76ini.Mods;
 using Fo76ini.NexusAPI;
+using Fo76ini.Profiles;
 using Fo76ini.Tweaks.ResourceLists;
 using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -17,11 +20,10 @@ namespace Fo76ini
 {
     public partial class FormMods : Form
     {
-        // TODO: Validate game path, game edition, etc. before opening!
-
         private int selectedIndex = -1;
         private List<int> selectedIndices = new List<int>();
 
+        private GameInstance game;
         private ManagedMods Mods;
 
         /// <summary>
@@ -31,14 +33,23 @@ namespace Fo76ini
         /// </summary>
         private bool isUpdating = false;
 
+        #region Related to opening, closing, or (re)loading the entire form
         public FormMods()
         {
             InitializeComponent();
             InitializeDetailControls();
-            //InitializeNMControls();
 
+            // Handle changes:
+            ProfileManager.ProfileChanged += OnProfileChanged;
+
+            // Make this form translatable:
             LocalizedForm form = new LocalizedForm(this, this.toolTip);
             Localization.LocalizedForms.Add(form);
+
+            // Add control elements to blacklist:
+            Translation.BlackList.AddRange(new string[] {
+                "labelModsDeploy"
+            });
 
             this.FormClosing += this.FormMods_FormClosing;
             this.KeyDown += this.FormMods_KeyDown;
@@ -53,10 +64,83 @@ namespace Fo76ini
             this.listViewMods.MouseUp += listViewMods_MouseUp;
         }
 
-        public void LoadMods(string GamePath)
+        private void OnProfileChanged(object sender, ProfileEventArgs e)
+        {
+            this.game = e.ActiveGameInstance;
+            ReloadModManager();
+            // TODO ChangeGameEdition in FormMods - Old code
+            /*public void ChangeGameEdition(GameEdition gameEdition)
+            {
+                ManagedMods.Instance.CopyINILists();
+                ManagedMods.Instance.Unload();
+                IniFiles.Instance.Set(IniFile.Config, "Preferences", "uGameEdition", (uint)gameEdition);
+                ManagedMods.Instance.GameEdition = gameEdition;
+                Shared.GamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", Shared.GamePathKey, "");
+                //this.textBoxGamePath.Text = Shared.GamePath;
+                ManagedMods.Instance.Load();
+                UpdateUI();
+            }*/
+        }
+
+        private void FormMods_Load(object sender, EventArgs e)
+        {
+            Configuration.LoadWindowState("FormMods", this);
+            Configuration.LoadListViewState("FormMods", this.listViewMods);
+        }
+
+        private void FormMods_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Configuration.SaveWindowState("FormMods", this);
+                Configuration.SaveListViewState("FormMods", this.listViewMods);
+                e.Cancel = true;
+                if (this.buttonModsDeploy.Enabled && (true || MsgBox.ShowID("modsOnCloseDeploymentNecessary", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                    Hide();
+            }
+        }
+
+        private void LoadMods(string GamePath)
         {
             Mods = new ManagedMods(GamePath);
             Mods.Load();
+        }
+
+        private void ReloadModManager()
+        {
+            if (!IniFiles.IsLoaded())
+                return;
+            LoadMods(this.game.GamePath);
+            UpdateUI();
+        }
+
+        /// <summary>
+        /// Checks whether the game path has been set, all required executables exist, and so on.
+        /// Displays messageboxes if something is amiss.
+        /// </summary>
+        /// <returns>true if all is good. false if something is amiss.</returns>
+        private bool CheckIntegrity()
+        {
+            if (this.game == null)
+                return false;
+
+            if (!this.game.ValidateGamePath())
+            {
+                MsgBox.ShowID("modsGamePathNotSet", MessageBoxIcon.Error);
+                return false;
+            }
+            if (!Archive2.ValidatePath())
+            {
+                MsgBox.ShowID("modsArchive2Missing", MessageBoxIcon.Error);
+                return false;
+            }
+            if (!File.Exists(Path.Combine(Shared.AppInstallationFolder, "7z", "7za.exe")))
+            {
+                MsgBox.ShowID("7ZipMissing", MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -64,29 +148,28 @@ namespace Fo76ini
         /// </summary>
         public void OpenUI()
         {
-            // TODO: Set window position
-            //Utils.SetFormPosition(this, Form1.Instance.Location.X + Form1.Instance.Width, Form1.Instance.Location.Y);
-            //Utils.SetFormPosition(this, Form1.Instance.Location.X + 100, Form1.Instance.Location.Y + 50);
+            if (!CheckIntegrity())
+                return;
+
             this.WindowState = FormWindowState.Normal;
-            //this.UpdateUI(); // TODO
-            this.Show();
-            this.Focus();
+            ReloadModManager();
+            Show();
+            Focus();
         }
 
         /// <summary>
         /// Updates the form.
         /// </summary>
-        public void UpdateUI()
+        private void UpdateUI()
         {
             UpdateModList();
             UpdateSettings();
-            UpdateLabel();
-            //RefreshNMUI();
-            // TODO: Move to settings window
-            /*if (IniFiles.Config.GetBool("NexusMods", "bAutoUpdateProfile", true))
-                UpdateNMProfile();*/
+            UpdateProgressLabel();
         }
 
+        #endregion
+
+        #region User interface
         /// <summary>
         /// Goes through the mod list and updates the list view.
         /// </summary>
@@ -165,19 +248,18 @@ namespace Fo76ini
                 }
 
                 // Frozen?
-                // TODO: Symbols
                 if (mod.Frozen)
                 {
-                    frozen.Text = "Frozen";
+                    frozen.Text = Localization.GetString("yes"); // "Frozen"
                     frozen.ForeColor = Color.DarkCyan;
                 }
                 else if (mod.Freeze)
                 {
-                    frozen.Text = "Pending";
+                    frozen.Text = Localization.GetString("modTableFrozenPending"); // "Pending"
                     frozen.ForeColor = Color.DarkBlue;
                 }
                 else
-                    frozen.Text = "Thawed";
+                    frozen.Text = Localization.GetString("no"); // "Thawed"
 
                 // Archive format
                 switch (mod.Format)
@@ -337,28 +419,12 @@ namespace Fo76ini
 
         private void UpdateSettings()
         {
-            /*if (!IniFiles.Instance.IsLoaded())
-                return;*/
-            // TODO: Disable mods
-            //this.checkBoxDisableMods.Checked = ManagedMods.Instance.ModsDisabled;
-            // TODO: Configuration rewrite
+            this.checkBoxDisableMods.Checked = this.Mods.ModsDisabled;
             this.checkBoxAddArchivesAsBundled.Checked = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
             this.checkBoxModsUseHardlinks.Checked = IniFiles.Config.GetBool("Mods", "bUseHardlinks", true);
             this.checkBoxFreezeBundledArchives.Checked = IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false);
 
-            //this.textBoxGamePath.Text = Shared.GamePath;
-
             LoadTextBoxResourceLists();
-        }
-
-        private void UpdateLabel(bool success = true)
-        {
-            if (Mods.isDeploymentNecessary())
-                this.DisplayDeploymentNecessary();
-            else if (success)
-                this.DisplayAllDone();
-            else
-                this.DisplayFailState();
         }
 
         private void UpdateSelectedIndices()
@@ -414,6 +480,8 @@ namespace Fo76ini
             this.tabPageModsSettings.Enabled = false;
         }
 
+        #endregion
+
         public void ModDetailsFeedback(ManagedMod changedMod)
         {
             if (editedIndices.Count() == 1)
@@ -445,32 +513,38 @@ namespace Fo76ini
 
 
         /*
+         **********************************************************************************
          * Event handler
+         **********************************************************************************
          */
 
-        private void FormMods_Load(object sender, EventArgs e)
+        // Deploy
+        private void buttonModsDeploy_Click(object sender, EventArgs e)
         {
-            Configuration.LoadWindowState("FormMods", this);
-            Configuration.LoadListViewState("FormMods", this.listViewMods);
+            Thread thread = new Thread(Deploy);
+            thread.IsBackground = true;
+            thread.Start();
         }
 
-        private void FormMods_FormClosing(object sender, FormClosingEventArgs e)
+        // Disable mods
+        private void checkBoxDisableMods_CheckedChanged(object sender, EventArgs e)
         {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                Configuration.SaveWindowState("FormMods", this);
-                Configuration.SaveListViewState("FormMods", this.listViewMods);
-                e.Cancel = true;
-                if (this.buttonModsDeploy.Enabled && (true || MsgBox.ShowID("modsOnCloseDeploymentNecessary", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
-                    Hide();
-            }
+            this.Mods.ModsDisabled = checkBoxDisableMods.Checked;
+            DisplayDeploymentNecessary();
         }
+
+        private void saveDEVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mods.Save(); // TODO: Remove "Save (DEV)" button
+        }
+
+        #region All event handler that control the ListView
 
         private void FormMods_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
-                // Open README
+                // Open guide
                 showGuideToolStripMenuItem_Click(sender, e);
             }
             else if (e.KeyCode == Keys.F5)
@@ -523,22 +597,6 @@ namespace Fo76ini
                 toolStripButtonModEdit_Click(sender, (EventArgs)e);
         }
 
-        // Deploy
-        private void buttonModsDeploy_Click(object sender, EventArgs e)
-        {
-            Thread thread = new Thread(Deploy);
-            thread.IsBackground = true;
-            thread.Start();
-        }
-
-        // Disable mods
-        private void checkBoxDisableMods_CheckedChanged(object sender, EventArgs e)
-        {
-            // TODO: Disable mods checkbox
-            // ManagedMods.Instance.ModsDisabled = checkBoxDisableMods.Checked;
-            DisplayDeploymentNecessary();
-        }
-
         // Drag & Drop
         void listViewMods_DragEnter(object sender, DragEventArgs e)
         {
@@ -553,9 +611,29 @@ namespace Fo76ini
             thread.Start();
         }
 
-        /*
-         * Mod order buttons
-         */
+        // Mod enabled/disabled
+        private void listViewMods_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (isUpdating)
+                return;
+
+            if (e.NewValue == CheckState.Checked)
+            {
+                Mods.EnableMod(e.Index);
+                listViewMods.Items[e.Index].ForeColor = Color.DarkGreen;
+            }
+            else if (e.NewValue == CheckState.Unchecked)
+            {
+                Mods.DisableMod(e.Index);
+                listViewMods.Items[e.Index].ForeColor = Color.DarkRed;
+            }
+
+            UpdateProgressLabel();
+        }
+
+        #endregion
+
+        #region Toolstrip event handler
 
         // Edit mod details:
         private void toolStripButtonModEdit_Click(object sender, EventArgs e)
@@ -629,7 +707,7 @@ namespace Fo76ini
             }
             else
             {
-                string path = Path.Combine(Shared.GamePath, "Mods");
+                string path = Path.Combine(this.game.GamePath, "Mods");
                 if (Directory.Exists(path))
                     Utils.OpenExplorer(path);
             }
@@ -660,7 +738,7 @@ namespace Fo76ini
                 selectedIndices = newSelectedIndices;
             }
             UpdateModList();
-            UpdateLabel();
+            UpdateProgressLabel();
         }
 
         // Move down
@@ -688,27 +766,7 @@ namespace Fo76ini
                 selectedIndices = newSelectedIndices;
             }
             UpdateModList();
-            UpdateLabel();
-        }
-
-        // Mod enabled/disabled
-        private void listViewMods_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (isUpdating)
-                return;
-
-            if (e.NewValue == CheckState.Checked)
-            {
-                Mods.EnableMod(e.Index);
-                listViewMods.Items[e.Index].ForeColor = Color.DarkGreen;
-            }
-            else if (e.NewValue == CheckState.Unchecked)
-            {
-                Mods.DisableMod(e.Index);
-                listViewMods.Items[e.Index].ForeColor = Color.DarkRed;
-            }
-
-            UpdateLabel();
+            UpdateProgressLabel();
         }
 
         // Check/uncheck all
@@ -744,7 +802,7 @@ namespace Fo76ini
                     Mods[item.Index].Enabled = state;
             }
             UpdateModList();
-            UpdateLabel();
+            UpdateProgressLabel();
         }
 
         // Delete mod
@@ -755,7 +813,8 @@ namespace Fo76ini
                 return;
             if (this.listViewMods.SelectedItems.Count > 1)
             {
-                DialogResult res = MsgBox.Get("modsDeleteBulkBtn").FormatText(this.listViewMods.SelectedItems.Count.ToString()).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                string count = this.listViewMods.SelectedItems.Count.ToString();
+                DialogResult res = MsgBox.Get("deleteMultipleQuestion").FormatTitle(count).FormatText(count).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
                     deleteAccepted = true;
@@ -770,7 +829,7 @@ namespace Fo76ini
             else
             {
                 ManagedMod mod = Mods[selectedIndex];
-                DialogResult res = MsgBox.Get("modsDeleteBtn").FormatText(mod.Title).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult res = MsgBox.Get("deleteQuestion").FormatTitle(mod.Title).FormatText(mod.Title).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
                     deleteAccepted = true;
@@ -787,13 +846,7 @@ namespace Fo76ini
         private void toolStripButtonAddMod_Click(object sender, EventArgs e)
         {
             if (this.openFileDialogMod.ShowDialog() == DialogResult.OK)
-            {
-                Thread thread = new Thread(() => InstallModArchive(this.openFileDialogMod.FileName));
-                thread.IsBackground = true;
-                thread.Start();
-
-                CloseSidePanel();
-            }
+                InstallModArchiveThreaded(this.openFileDialogMod.FileName, false);
         }
 
         // Add mod folder
@@ -813,13 +866,7 @@ namespace Fo76ini
         private void toolStripButtonAddModFrozen_Click(object sender, EventArgs e)
         {
             if (this.openFileDialogBA2.ShowDialog() == DialogResult.OK)
-            {
-                Thread thread = new Thread(() => InstallModArchiveFrozen(this.openFileDialogBA2.FileName));
-                thread.IsBackground = true;
-                thread.Start();
-
-                CloseSidePanel();
-            }
+                InstallModArchiveThreaded(this.openFileDialogBA2.FileName, true);
         }
 
         // Unfreeze
@@ -835,7 +882,9 @@ namespace Fo76ini
         }
 
 
+        #endregion
 
+        #region Menustrip
         /*
          * Menu
          */
@@ -879,6 +928,7 @@ namespace Fo76ini
         // View > Show conflicting files
         private void showConflictingFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // TODO: "Show conflicting files"... uhhh, well. As long as it works, I guess?
             List<ModHelpers.Conflict> conflicts = ModHelpers.GetConflictingFiles(Mods.Mods);
             if (conflicts.Count == 0)
             {
@@ -921,17 +971,15 @@ namespace Fo76ini
             }
         }
 
-        // Help > Show README
+        // Help > Show guide
         private void showGuideToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/articles/40");
+            Process.Start("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Mod-Manager-Guide");
+            // Previous pages:
+            // https://www.nexusmods.com/fallout76/articles/40
             // https://www.nexusmods.com/fallout76/mods/546
             // https://felisdiligens.github.io/Fo76ini/ManageMods.html
-        }
-
-        private void showREADMEToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/mods/546");
+            // Well, I have moved info pages a lot, lol.
         }
 
         // Help > Log files > Show modmanager.log.txt
@@ -949,12 +997,14 @@ namespace Fo76ini
                 Utils.OpenNotepad(Archive2.logFile.GetFilePath());
         }
 
+        #endregion
 
 
         /*
          * Settings
          */
 
+        #region Resource list textboxes
         private void LoadTextBoxResourceLists()
         {
             this.textBoxsResourceIndexFileList.Text = ResourceList.GetResourceIndexFileList().ToString();
@@ -968,8 +1018,8 @@ namespace Fo76ini
             ResourceList Archive2List = ResourceList.FromString(this.textBoxsResourceArchive2List.Text);
 
             // Remove non-existing files:
-            IndexFileList.CleanUp();
-            Archive2List.CleanUp();
+            IndexFileList.CleanUp(this.game.GamePath);
+            Archive2List.CleanUp(this.game.GamePath);
 
             // Remove duplicates:
             foreach (string ba2file in Archive2List)
@@ -1002,19 +1052,9 @@ namespace Fo76ini
             LoadTextBoxResourceLists();
         }
 
+        #endregion
 
-        /*public void ChangeGameEdition(GameEdition gameEdition)
-        {
-            ManagedMods.Instance.CopyINILists();
-            ManagedMods.Instance.Unload();
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "uGameEdition", (uint)gameEdition);
-            ManagedMods.Instance.GameEdition = gameEdition;
-            Shared.GamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", Shared.GamePathKey, "");
-            //this.textBoxGamePath.Text = Shared.GamePath;
-            ManagedMods.Instance.Load();
-            UpdateUI();
-        }*/
-
+        #region Settings - Checkboxes
         // Alternative *.ba2 import method
         private void checkBoxAddArchivesAsBundled_CheckedChanged(object sender, EventArgs e)
         {
@@ -1043,6 +1083,7 @@ namespace Fo76ini
             IniFiles.Instance.Set(IniFile.Config, "Mods", "bWriteSResourceDataDirsFinal", this.checkBoxModsWriteSResourceDataDirsFinal.Checked);
             IniFiles.Config.Save();*/
         }
+        #endregion
 
 
         /*
@@ -1232,33 +1273,63 @@ namespace Fo76ini
             );*/
         }
 
-        private void Invoke(Action func)
+
+
+        /*
+         **********************************************************************************
+         * New threaded methods
+         **********************************************************************************
+         */
+
+        // TODO: Error handling
+
+        private void InstallModArchiveThreaded(string path, bool freeze)
         {
-            this.progressBarMods.Invoke(func);
+            DisableUI();
+            CloseSidePanel();
+            RunThreaded(() => {
+                ModInstallations.InstallArchive(Mods, path, freeze, UpdateProgress);
+                return true;
+            }, (success) => {
+                EnableUI();
+                if (success)
+                {
+                    selectedIndex = Mods.Count - 1;
+                    UpdateModList();
+                }
+            });
         }
 
-        private void ProgressBarMarquee()
+
+
+        /*
+         **********************************************************************************
+         * Utility methods
+         **********************************************************************************
+         */
+
+        private void RunThreaded(Func<bool> doWork, Action<bool> finishWork)
         {
-            this.progressBarMods.Style = ProgressBarStyle.Marquee;
-            //this.progressBarMods.MarqueeAnimationSpeed = 15;
+            Thread thread = new Thread(() =>
+            {
+                bool result = doWork();
+                this.Invoke(new Action(() => finishWork(result)));
+            });
+            thread.IsBackground = true;
+            thread.Start();
         }
 
-        private void ProgressBarContinuous(int value)
+        private void UpdateProgress(Progress progress)
         {
-            this.progressBarMods.Style = ProgressBarStyle.Continuous;
-            this.progressBarMods.Value = Utils.Clamp(value, 0, 100);
+            this.progressBarMods.Invoke(new Action(() => {
+                this.labelModsDeploy.Visible = true;
+                progress.Update(labelModsDeploy, progressBarMods);
+            }));
         }
 
         private void HideLabel()
         {
             this.labelModsDeploy.Visible = false;
-        }
-
-        private void Display(string text)
-        {
-            this.labelModsDeploy.ForeColor = Color.Black;
-            this.labelModsDeploy.Text = text;
-            this.labelModsDeploy.Visible = true;
         }
 
         private void DisplayDeploymentNecessary()
@@ -1275,21 +1346,12 @@ namespace Fo76ini
             this.labelModsDeploy.Text = Localization.GetString("modsAllDone");
         }
 
-        private void DisplayFailState()
+        private void UpdateProgressLabel()
         {
-            this.labelModsDeploy.Visible = true;
-            this.labelModsDeploy.ForeColor = Color.Red;
-            this.labelModsDeploy.Text = Localization.GetString("modsFailed");
-        }
-
-        private void saveDEVToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Mods.Save();
-        }
-
-        private void linkLabelOpenSettings_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // TODO
+            if (Mods.isDeploymentNecessary())
+                this.DisplayDeploymentNecessary();
+            else
+                this.DisplayAllDone();
         }
     }
 }

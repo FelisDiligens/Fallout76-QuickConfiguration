@@ -131,8 +131,6 @@
             this.checkBoxShowPublicTeamNotifications = new System.Windows.Forms.CheckBox();
             this.checkBoxShowFloatingQuestMarkers = new System.Windows.Forms.CheckBox();
             this.checkBoxShowFloatingQuestText = new System.Windows.Forms.CheckBox();
-            this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
-            this.checkBoxEnableSteam = new System.Windows.Forms.CheckBox();
             this.checkBoxSkipSplash = new System.Windows.Forms.CheckBox();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
@@ -222,9 +220,7 @@
             this.buttonColorPickPipboy = new System.Windows.Forms.Button();
             this.tabPageControls = new System.Windows.Forms.TabPage();
             this.groupBoxGamepad = new System.Windows.Forms.GroupBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.groupBoxMouse = new System.Windows.Forms.GroupBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.numMouseSensitivity = new System.Windows.Forms.NumericUpDown();
             this.labelMouseSensitivity = new System.Windows.Forms.Label();
             this.tabPageVideo = new System.Windows.Forms.TabPage();
@@ -280,15 +276,25 @@
             this.groupBoxQuests = new System.Windows.Forms.GroupBox();
             this.groupBoxMainMenu = new System.Windows.Forms.GroupBox();
             this.groupBoxLogin = new System.Windows.Forms.GroupBox();
-            this.radioButtonAccount8 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount7 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount6 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount5 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount4 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount3 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount2 = new System.Windows.Forms.RadioButton();
+            this.groupBoxLoginProfiles = new System.Windows.Forms.GroupBox();
             this.radioButtonAccount1 = new System.Windows.Forms.RadioButton();
-            this.labelAccountProfiles = new System.Windows.Forms.Label();
+            this.radioButtonAccount16 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount2 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount15 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount3 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount14 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount4 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount13 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount5 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount12 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount6 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount11 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount7 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount10 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount8 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAccount9 = new System.Windows.Forms.RadioButton();
+            this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableSteam = new System.Windows.Forms.CheckBox();
             this.labelCredentialsExplanation = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
@@ -383,16 +389,12 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonApply = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonToggleNuclearWinterMode = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSplitButtonLaunchGame = new System.Windows.Forms.ToolStripSplitButton();
-            this.launchViaSteamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.launchViaBethesdanetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.launchViaBethesdanetPTSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButtonLaunchGame = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonManageMods = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSplitButtonUpdate = new System.Windows.Forms.ToolStripSplitButton();
             this.updateToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.downloadUpdateLanguageFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showUpdaterlogtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButtonExplore = new System.Windows.Forms.ToolStripDropDownButton();
             this.gameFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -411,10 +413,10 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelGame = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelGameText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelProfile = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelProfileText = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelEdition = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelEditionText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelNuclearWinterModeActive = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
@@ -502,9 +504,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).BeginInit();
             this.tabPageControls.SuspendLayout();
             this.groupBoxGamepad.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.groupBoxMouse.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivity)).BeginInit();
             this.tabPageVideo.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -536,6 +536,7 @@
             this.groupBoxQuests.SuspendLayout();
             this.groupBoxMainMenu.SuspendLayout();
             this.groupBoxLogin.SuspendLayout();
+            this.groupBoxLoginProfiles.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
             this.groupBoxSettings.SuspendLayout();
             this.panelUpdate.SuspendLayout();
@@ -1857,26 +1858,6 @@
             this.checkBoxShowFloatingQuestText.Text = "Show floating quest text";
             this.checkBoxShowFloatingQuestText.UseVisualStyleBackColor = true;
             // 
-            // checkBoxAutoSignin
-            // 
-            this.checkBoxAutoSignin.AutoSize = true;
-            this.checkBoxAutoSignin.Location = new System.Drawing.Point(12, 176);
-            this.checkBoxAutoSignin.Name = "checkBoxAutoSignin";
-            this.checkBoxAutoSignin.Size = new System.Drawing.Size(121, 17);
-            this.checkBoxAutoSignin.TabIndex = 20;
-            this.checkBoxAutoSignin.Text = "Automatically sign-in";
-            this.checkBoxAutoSignin.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxEnableSteam
-            // 
-            this.checkBoxEnableSteam.AutoSize = true;
-            this.checkBoxEnableSteam.Location = new System.Drawing.Point(12, 199);
-            this.checkBoxEnableSteam.Name = "checkBoxEnableSteam";
-            this.checkBoxEnableSteam.Size = new System.Drawing.Size(92, 17);
-            this.checkBoxEnableSteam.TabIndex = 6;
-            this.checkBoxEnableSteam.Text = "Enable Steam";
-            this.checkBoxEnableSteam.UseVisualStyleBackColor = true;
-            // 
             // checkBoxSkipSplash
             // 
             this.checkBoxSkipSplash.AutoSize = true;
@@ -2823,8 +2804,10 @@
             // 
             // buttonPresetFo3Green
             // 
-            this.buttonPresetFo3Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.buttonPresetFo3Green.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.buttonPresetFo3Green.BackColor = System.Drawing.Color.White;
+            this.buttonPresetFo3Green.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.buttonPresetFo3Green.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.buttonPresetFo3Green.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.buttonPresetFo3Green.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo3Green.Location = new System.Drawing.Point(41, 19);
             this.buttonPresetFo3Green.Name = "buttonPresetFo3Green";
@@ -2837,8 +2820,10 @@
             // 
             // buttonPresetFo3White
             // 
-            this.buttonPresetFo3White.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.buttonPresetFo3White.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.buttonPresetFo3White.BackColor = System.Drawing.Color.White;
+            this.buttonPresetFo3White.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.buttonPresetFo3White.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.buttonPresetFo3White.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.buttonPresetFo3White.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo3White.Location = new System.Drawing.Point(41, 109);
             this.buttonPresetFo3White.Name = "buttonPresetFo3White";
@@ -2851,8 +2836,10 @@
             // 
             // buttonPresetFoNVAmber
             // 
-            this.buttonPresetFoNVAmber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.buttonPresetFoNVAmber.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.buttonPresetFoNVAmber.BackColor = System.Drawing.Color.White;
+            this.buttonPresetFoNVAmber.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.buttonPresetFoNVAmber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.buttonPresetFoNVAmber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.buttonPresetFoNVAmber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFoNVAmber.Location = new System.Drawing.Point(41, 49);
             this.buttonPresetFoNVAmber.Name = "buttonPresetFoNVAmber";
@@ -2865,8 +2852,10 @@
             // 
             // buttonPresetFo76Green
             // 
-            this.buttonPresetFo76Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.buttonPresetFo76Green.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.buttonPresetFo76Green.BackColor = System.Drawing.Color.White;
+            this.buttonPresetFo76Green.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.buttonPresetFo76Green.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.buttonPresetFo76Green.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.buttonPresetFo76Green.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo76Green.Location = new System.Drawing.Point(276, 49);
             this.buttonPresetFo76Green.Name = "buttonPresetFo76Green";
@@ -2897,8 +2886,10 @@
             // 
             // buttonPresetFo4Green
             // 
-            this.buttonPresetFo4Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.buttonPresetFo4Green.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.buttonPresetFo4Green.BackColor = System.Drawing.Color.White;
+            this.buttonPresetFo4Green.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.buttonPresetFo4Green.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.buttonPresetFo4Green.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.buttonPresetFo4Green.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo4Green.Location = new System.Drawing.Point(276, 19);
             this.buttonPresetFo4Green.Name = "buttonPresetFo4Green";
@@ -2920,8 +2911,10 @@
             // 
             // buttonPresetFo3Blue
             // 
-            this.buttonPresetFo3Blue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.buttonPresetFo3Blue.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.buttonPresetFo3Blue.BackColor = System.Drawing.Color.White;
+            this.buttonPresetFo3Blue.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.buttonPresetFo3Blue.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.buttonPresetFo3Blue.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.buttonPresetFo3Blue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo3Blue.Location = new System.Drawing.Point(41, 79);
             this.buttonPresetFo3Blue.Name = "buttonPresetFo3Blue";
@@ -3131,7 +3124,6 @@
             // 
             // groupBoxGamepad
             // 
-            this.groupBoxGamepad.Controls.Add(this.pictureBox4);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadEnabled);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadRumble);
             this.groupBoxGamepad.Location = new System.Drawing.Point(451, 6);
@@ -3141,19 +3133,8 @@
             this.groupBoxGamepad.TabStop = false;
             this.groupBoxGamepad.Text = "Gamepad";
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::Fo76ini.Properties.Resources.Xbox_One_Controller_icon;
-            this.pictureBox4.Location = new System.Drawing.Point(6, 313);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(389, 133);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox4.TabIndex = 30;
-            this.pictureBox4.TabStop = false;
-            // 
             // groupBoxMouse
             // 
-            this.groupBoxMouse.Controls.Add(this.pictureBox3);
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertX);
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertY);
             this.groupBoxMouse.Controls.Add(this.sliderMouseSensitivity);
@@ -3168,16 +3149,6 @@
             this.groupBoxMouse.TabIndex = 4;
             this.groupBoxMouse.TabStop = false;
             this.groupBoxMouse.Text = "Mouse";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Fo76ini.Properties.Resources.mouse_icon;
-            this.pictureBox3.Location = new System.Drawing.Point(6, 313);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(426, 133);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 29;
-            this.pictureBox3.TabStop = false;
             // 
             // numMouseSensitivity
             // 
@@ -3788,7 +3759,7 @@
             // 
             this.labelCustomResolutionSpacer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelCustomResolutionSpacer.AutoSize = true;
-            this.labelCustomResolutionSpacer.Location = new System.Drawing.Point(267, 74);
+            this.labelCustomResolutionSpacer.Location = new System.Drawing.Point(268, 74);
             this.labelCustomResolutionSpacer.Name = "labelCustomResolutionSpacer";
             this.labelCustomResolutionSpacer.Size = new System.Drawing.Size(14, 13);
             this.labelCustomResolutionSpacer.TabIndex = 7;
@@ -3951,16 +3922,8 @@
             // 
             // groupBoxLogin
             // 
+            this.groupBoxLogin.Controls.Add(this.groupBoxLoginProfiles);
             this.groupBoxLogin.Controls.Add(this.checkBoxAutoSignin);
-            this.groupBoxLogin.Controls.Add(this.radioButtonAccount8);
-            this.groupBoxLogin.Controls.Add(this.radioButtonAccount7);
-            this.groupBoxLogin.Controls.Add(this.radioButtonAccount6);
-            this.groupBoxLogin.Controls.Add(this.radioButtonAccount5);
-            this.groupBoxLogin.Controls.Add(this.radioButtonAccount4);
-            this.groupBoxLogin.Controls.Add(this.radioButtonAccount3);
-            this.groupBoxLogin.Controls.Add(this.radioButtonAccount2);
-            this.groupBoxLogin.Controls.Add(this.radioButtonAccount1);
-            this.groupBoxLogin.Controls.Add(this.labelAccountProfiles);
             this.groupBoxLogin.Controls.Add(this.checkBoxEnableSteam);
             this.groupBoxLogin.Controls.Add(this.labelCredentialsExplanation);
             this.groupBoxLogin.Controls.Add(this.textBoxPassword);
@@ -3975,103 +3938,218 @@
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Login with Bethesda.net";
             // 
-            // radioButtonAccount8
+            // groupBoxLoginProfiles
             // 
-            this.radioButtonAccount8.AutoSize = true;
-            this.radioButtonAccount8.Location = new System.Drawing.Point(353, 131);
-            this.radioButtonAccount8.Name = "radioButtonAccount8";
-            this.radioButtonAccount8.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount8.TabIndex = 19;
-            this.radioButtonAccount8.Text = "Account #8";
-            this.radioButtonAccount8.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount7
-            // 
-            this.radioButtonAccount7.AutoSize = true;
-            this.radioButtonAccount7.Location = new System.Drawing.Point(266, 131);
-            this.radioButtonAccount7.Name = "radioButtonAccount7";
-            this.radioButtonAccount7.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount7.TabIndex = 18;
-            this.radioButtonAccount7.Text = "Account #7";
-            this.radioButtonAccount7.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount6
-            // 
-            this.radioButtonAccount6.AutoSize = true;
-            this.radioButtonAccount6.Location = new System.Drawing.Point(179, 131);
-            this.radioButtonAccount6.Name = "radioButtonAccount6";
-            this.radioButtonAccount6.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount6.TabIndex = 17;
-            this.radioButtonAccount6.Text = "Account #6";
-            this.radioButtonAccount6.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount5
-            // 
-            this.radioButtonAccount5.AutoSize = true;
-            this.radioButtonAccount5.Location = new System.Drawing.Point(92, 131);
-            this.radioButtonAccount5.Name = "radioButtonAccount5";
-            this.radioButtonAccount5.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount5.TabIndex = 16;
-            this.radioButtonAccount5.Text = "Account #5";
-            this.radioButtonAccount5.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount4
-            // 
-            this.radioButtonAccount4.AutoSize = true;
-            this.radioButtonAccount4.Location = new System.Drawing.Point(353, 108);
-            this.radioButtonAccount4.Name = "radioButtonAccount4";
-            this.radioButtonAccount4.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount4.TabIndex = 15;
-            this.radioButtonAccount4.Text = "Account #4";
-            this.radioButtonAccount4.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount3
-            // 
-            this.radioButtonAccount3.AutoSize = true;
-            this.radioButtonAccount3.Location = new System.Drawing.Point(266, 108);
-            this.radioButtonAccount3.Name = "radioButtonAccount3";
-            this.radioButtonAccount3.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount3.TabIndex = 14;
-            this.radioButtonAccount3.Text = "Account #3";
-            this.radioButtonAccount3.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount2
-            // 
-            this.radioButtonAccount2.AutoSize = true;
-            this.radioButtonAccount2.Location = new System.Drawing.Point(179, 108);
-            this.radioButtonAccount2.Name = "radioButtonAccount2";
-            this.radioButtonAccount2.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount2.TabIndex = 13;
-            this.radioButtonAccount2.Text = "Account #2";
-            this.radioButtonAccount2.UseVisualStyleBackColor = true;
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount1);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount16);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount2);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount15);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount3);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount14);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount4);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount13);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount5);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount12);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount6);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount11);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount7);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount10);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount8);
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount9);
+            this.groupBoxLoginProfiles.Location = new System.Drawing.Point(6, 300);
+            this.groupBoxLoginProfiles.Name = "groupBoxLoginProfiles";
+            this.groupBoxLoginProfiles.Size = new System.Drawing.Size(431, 146);
+            this.groupBoxLoginProfiles.TabIndex = 29;
+            this.groupBoxLoginProfiles.TabStop = false;
+            this.groupBoxLoginProfiles.Text = "Profiles";
             // 
             // radioButtonAccount1
             // 
             this.radioButtonAccount1.AutoSize = true;
-            this.radioButtonAccount1.Location = new System.Drawing.Point(92, 108);
+            this.radioButtonAccount1.Location = new System.Drawing.Point(6, 19);
             this.radioButtonAccount1.Name = "radioButtonAccount1";
             this.radioButtonAccount1.Size = new System.Drawing.Size(81, 17);
             this.radioButtonAccount1.TabIndex = 12;
             this.radioButtonAccount1.Text = "Account #1";
             this.radioButtonAccount1.UseVisualStyleBackColor = true;
             // 
-            // labelAccountProfiles
+            // radioButtonAccount16
             // 
-            this.labelAccountProfiles.AutoSize = true;
-            this.labelAccountProfiles.Location = new System.Drawing.Point(9, 110);
-            this.labelAccountProfiles.Name = "labelAccountProfiles";
-            this.labelAccountProfiles.Size = new System.Drawing.Size(44, 13);
-            this.labelAccountProfiles.TabIndex = 7;
-            this.labelAccountProfiles.Text = "Profiles:";
+            this.radioButtonAccount16.AutoSize = true;
+            this.radioButtonAccount16.Location = new System.Drawing.Point(312, 88);
+            this.radioButtonAccount16.Name = "radioButtonAccount16";
+            this.radioButtonAccount16.Size = new System.Drawing.Size(87, 17);
+            this.radioButtonAccount16.TabIndex = 28;
+            this.radioButtonAccount16.Text = "Account #16";
+            this.radioButtonAccount16.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount2
+            // 
+            this.radioButtonAccount2.AutoSize = true;
+            this.radioButtonAccount2.Location = new System.Drawing.Point(108, 19);
+            this.radioButtonAccount2.Name = "radioButtonAccount2";
+            this.radioButtonAccount2.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonAccount2.TabIndex = 13;
+            this.radioButtonAccount2.Text = "Account #2";
+            this.radioButtonAccount2.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount15
+            // 
+            this.radioButtonAccount15.AutoSize = true;
+            this.radioButtonAccount15.Location = new System.Drawing.Point(210, 88);
+            this.radioButtonAccount15.Name = "radioButtonAccount15";
+            this.radioButtonAccount15.Size = new System.Drawing.Size(87, 17);
+            this.radioButtonAccount15.TabIndex = 27;
+            this.radioButtonAccount15.Text = "Account #15";
+            this.radioButtonAccount15.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount3
+            // 
+            this.radioButtonAccount3.AutoSize = true;
+            this.radioButtonAccount3.Location = new System.Drawing.Point(210, 19);
+            this.radioButtonAccount3.Name = "radioButtonAccount3";
+            this.radioButtonAccount3.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonAccount3.TabIndex = 14;
+            this.radioButtonAccount3.Text = "Account #3";
+            this.radioButtonAccount3.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount14
+            // 
+            this.radioButtonAccount14.AutoSize = true;
+            this.radioButtonAccount14.Location = new System.Drawing.Point(108, 88);
+            this.radioButtonAccount14.Name = "radioButtonAccount14";
+            this.radioButtonAccount14.Size = new System.Drawing.Size(87, 17);
+            this.radioButtonAccount14.TabIndex = 26;
+            this.radioButtonAccount14.Text = "Account #14";
+            this.radioButtonAccount14.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount4
+            // 
+            this.radioButtonAccount4.AutoSize = true;
+            this.radioButtonAccount4.Location = new System.Drawing.Point(312, 19);
+            this.radioButtonAccount4.Name = "radioButtonAccount4";
+            this.radioButtonAccount4.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonAccount4.TabIndex = 15;
+            this.radioButtonAccount4.Text = "Account #4";
+            this.radioButtonAccount4.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount13
+            // 
+            this.radioButtonAccount13.AutoSize = true;
+            this.radioButtonAccount13.Location = new System.Drawing.Point(6, 88);
+            this.radioButtonAccount13.Name = "radioButtonAccount13";
+            this.radioButtonAccount13.Size = new System.Drawing.Size(87, 17);
+            this.radioButtonAccount13.TabIndex = 25;
+            this.radioButtonAccount13.Text = "Account #13";
+            this.radioButtonAccount13.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount5
+            // 
+            this.radioButtonAccount5.AutoSize = true;
+            this.radioButtonAccount5.Location = new System.Drawing.Point(6, 42);
+            this.radioButtonAccount5.Name = "radioButtonAccount5";
+            this.radioButtonAccount5.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonAccount5.TabIndex = 16;
+            this.radioButtonAccount5.Text = "Account #5";
+            this.radioButtonAccount5.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount12
+            // 
+            this.radioButtonAccount12.AutoSize = true;
+            this.radioButtonAccount12.Location = new System.Drawing.Point(312, 65);
+            this.radioButtonAccount12.Name = "radioButtonAccount12";
+            this.radioButtonAccount12.Size = new System.Drawing.Size(87, 17);
+            this.radioButtonAccount12.TabIndex = 24;
+            this.radioButtonAccount12.Text = "Account #12";
+            this.radioButtonAccount12.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount6
+            // 
+            this.radioButtonAccount6.AutoSize = true;
+            this.radioButtonAccount6.Location = new System.Drawing.Point(108, 42);
+            this.radioButtonAccount6.Name = "radioButtonAccount6";
+            this.radioButtonAccount6.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonAccount6.TabIndex = 17;
+            this.radioButtonAccount6.Text = "Account #6";
+            this.radioButtonAccount6.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount11
+            // 
+            this.radioButtonAccount11.AutoSize = true;
+            this.radioButtonAccount11.Location = new System.Drawing.Point(210, 65);
+            this.radioButtonAccount11.Name = "radioButtonAccount11";
+            this.radioButtonAccount11.Size = new System.Drawing.Size(87, 17);
+            this.radioButtonAccount11.TabIndex = 23;
+            this.radioButtonAccount11.Text = "Account #11";
+            this.radioButtonAccount11.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount7
+            // 
+            this.radioButtonAccount7.AutoSize = true;
+            this.radioButtonAccount7.Location = new System.Drawing.Point(210, 42);
+            this.radioButtonAccount7.Name = "radioButtonAccount7";
+            this.radioButtonAccount7.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonAccount7.TabIndex = 18;
+            this.radioButtonAccount7.Text = "Account #7";
+            this.radioButtonAccount7.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount10
+            // 
+            this.radioButtonAccount10.AutoSize = true;
+            this.radioButtonAccount10.Location = new System.Drawing.Point(108, 65);
+            this.radioButtonAccount10.Name = "radioButtonAccount10";
+            this.radioButtonAccount10.Size = new System.Drawing.Size(87, 17);
+            this.radioButtonAccount10.TabIndex = 22;
+            this.radioButtonAccount10.Text = "Account #10";
+            this.radioButtonAccount10.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount8
+            // 
+            this.radioButtonAccount8.AutoSize = true;
+            this.radioButtonAccount8.Location = new System.Drawing.Point(312, 42);
+            this.radioButtonAccount8.Name = "radioButtonAccount8";
+            this.radioButtonAccount8.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonAccount8.TabIndex = 19;
+            this.radioButtonAccount8.Text = "Account #8";
+            this.radioButtonAccount8.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAccount9
+            // 
+            this.radioButtonAccount9.AutoSize = true;
+            this.radioButtonAccount9.Location = new System.Drawing.Point(6, 65);
+            this.radioButtonAccount9.Name = "radioButtonAccount9";
+            this.radioButtonAccount9.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonAccount9.TabIndex = 21;
+            this.radioButtonAccount9.Text = "Account #9";
+            this.radioButtonAccount9.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxAutoSignin
+            // 
+            this.checkBoxAutoSignin.AutoSize = true;
+            this.checkBoxAutoSignin.Location = new System.Drawing.Point(12, 103);
+            this.checkBoxAutoSignin.Name = "checkBoxAutoSignin";
+            this.checkBoxAutoSignin.Size = new System.Drawing.Size(121, 17);
+            this.checkBoxAutoSignin.TabIndex = 20;
+            this.checkBoxAutoSignin.Text = "Automatically sign-in";
+            this.checkBoxAutoSignin.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnableSteam
+            // 
+            this.checkBoxEnableSteam.AutoSize = true;
+            this.checkBoxEnableSteam.Location = new System.Drawing.Point(12, 126);
+            this.checkBoxEnableSteam.Name = "checkBoxEnableSteam";
+            this.checkBoxEnableSteam.Size = new System.Drawing.Size(92, 17);
+            this.checkBoxEnableSteam.TabIndex = 6;
+            this.checkBoxEnableSteam.Text = "Enable Steam";
+            this.checkBoxEnableSteam.UseVisualStyleBackColor = true;
             // 
             // labelCredentialsExplanation
             // 
-            this.labelCredentialsExplanation.AutoSize = true;
             this.labelCredentialsExplanation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCredentialsExplanation.ForeColor = System.Drawing.Color.DimGray;
-            this.labelCredentialsExplanation.Location = new System.Drawing.Point(9, 235);
+            this.labelCredentialsExplanation.Location = new System.Drawing.Point(9, 153);
             this.labelCredentialsExplanation.Name = "labelCredentialsExplanation";
-            this.labelCredentialsExplanation.Size = new System.Drawing.Size(349, 91);
+            this.labelCredentialsExplanation.Size = new System.Drawing.Size(428, 144);
             this.labelCredentialsExplanation.TabIndex = 5;
             this.labelCredentialsExplanation.Text = resources.GetString("labelCredentialsExplanation.Text");
             // 
@@ -4190,7 +4268,7 @@
             // linkLabelWhatsNew
             // 
             this.linkLabelWhatsNew.AutoSize = true;
-            this.linkLabelWhatsNew.Location = new System.Drawing.Point(90, 205);
+            this.linkLabelWhatsNew.Location = new System.Drawing.Point(90, 222);
             this.linkLabelWhatsNew.Name = "linkLabelWhatsNew";
             this.linkLabelWhatsNew.Size = new System.Drawing.Size(69, 13);
             this.linkLabelWhatsNew.TabIndex = 42;
@@ -4201,7 +4279,7 @@
             // linkLabelAttribution
             // 
             this.linkLabelAttribution.AutoSize = true;
-            this.linkLabelAttribution.Location = new System.Drawing.Point(90, 232);
+            this.linkLabelAttribution.Location = new System.Drawing.Point(90, 249);
             this.linkLabelAttribution.Name = "linkLabelAttribution";
             this.linkLabelAttribution.Size = new System.Drawing.Size(76, 13);
             this.linkLabelAttribution.TabIndex = 41;
@@ -4258,7 +4336,7 @@
             this.labelNWModeActive.AutoSize = true;
             this.labelNWModeActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNWModeActive.ForeColor = System.Drawing.Color.OrangeRed;
-            this.labelNWModeActive.Location = new System.Drawing.Point(90, 172);
+            this.labelNWModeActive.Location = new System.Drawing.Point(90, 189);
             this.labelNWModeActive.Name = "labelNWModeActive";
             this.labelNWModeActive.Size = new System.Drawing.Size(202, 15);
             this.labelNWModeActive.TabIndex = 40;
@@ -4267,7 +4345,7 @@
             // pictureBoxSpinnerCheckForUpdates
             // 
             this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Spinner_24;
-            this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(173, 110);
+            this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(173, 127);
             this.pictureBoxSpinnerCheckForUpdates.Name = "pictureBoxSpinnerCheckForUpdates";
             this.pictureBoxSpinnerCheckForUpdates.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxSpinnerCheckForUpdates.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -4318,7 +4396,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Black;
             this.pictureBox2.Location = new System.Drawing.Point(-4, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(77, 638);
+            this.pictureBox2.Size = new System.Drawing.Size(77, 468);
             this.pictureBox2.TabIndex = 18;
             this.pictureBox2.TabStop = false;
             // 
@@ -4327,7 +4405,7 @@
             this.labelTranslationAuthor.AutoSize = true;
             this.labelTranslationAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationAuthor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationAuthor.Location = new System.Drawing.Point(203, 149);
+            this.labelTranslationAuthor.Location = new System.Drawing.Point(203, 166);
             this.labelTranslationAuthor.Name = "labelTranslationAuthor";
             this.labelTranslationAuthor.Size = new System.Drawing.Size(64, 15);
             this.labelTranslationAuthor.TabIndex = 12;
@@ -4338,7 +4416,7 @@
             this.labelTranslationBy.AutoSize = true;
             this.labelTranslationBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationBy.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationBy.Location = new System.Drawing.Point(90, 149);
+            this.labelTranslationBy.Location = new System.Drawing.Point(90, 166);
             this.labelTranslationBy.Name = "labelTranslationBy";
             this.labelTranslationBy.Size = new System.Drawing.Size(101, 15);
             this.labelTranslationBy.TabIndex = 11;
@@ -4348,7 +4426,7 @@
             // 
             this.labelAuthorName.AutoSize = true;
             this.labelAuthorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAuthorName.Location = new System.Drawing.Point(203, 131);
+            this.labelAuthorName.Location = new System.Drawing.Point(203, 148);
             this.labelAuthorName.Name = "labelAuthorName";
             this.labelAuthorName.Size = new System.Drawing.Size(64, 15);
             this.labelAuthorName.TabIndex = 10;
@@ -4358,7 +4436,7 @@
             // 
             this.labelConfigVersion.AutoSize = true;
             this.labelConfigVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelConfigVersion.Location = new System.Drawing.Point(203, 114);
+            this.labelConfigVersion.Location = new System.Drawing.Point(203, 131);
             this.labelConfigVersion.Name = "labelConfigVersion";
             this.labelConfigVersion.Size = new System.Drawing.Size(14, 15);
             this.labelConfigVersion.TabIndex = 9;
@@ -4368,7 +4446,7 @@
             // 
             this.labelAuthor.AutoSize = true;
             this.labelAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAuthor.Location = new System.Drawing.Point(90, 131);
+            this.labelAuthor.Location = new System.Drawing.Point(90, 148);
             this.labelAuthor.Name = "labelAuthor";
             this.labelAuthor.Size = new System.Drawing.Size(52, 15);
             this.labelAuthor.TabIndex = 8;
@@ -4378,7 +4456,7 @@
             // 
             this.labelVersion.AutoSize = true;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVersion.Location = new System.Drawing.Point(90, 114);
+            this.labelVersion.Location = new System.Drawing.Point(90, 131);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(59, 15);
             this.labelVersion.TabIndex = 7;
@@ -4386,14 +4464,13 @@
             // 
             // labelDescription
             // 
-            this.labelDescription.AutoSize = true;
             this.labelDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDescription.Location = new System.Drawing.Point(90, 59);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(268, 26);
+            this.labelDescription.Size = new System.Drawing.Size(342, 65);
             this.labelDescription.TabIndex = 6;
-            this.labelDescription.Text = "This tool allows you to quickly tweak INI settings.\r\nTip: Hover over an option, i" +
-    "f you\'re unsure what it does.";
+            this.labelDescription.Text = "This tool allows you to change various game settings and install mods.\r\nTip: Hove" +
+    "r over an option, if you\'re unsure what it does.";
             // 
             // labelTitle
             // 
@@ -5188,7 +5265,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonApply,
             this.toolStripButtonToggleNuclearWinterMode,
-            this.toolStripSplitButtonLaunchGame,
+            this.toolStripButtonLaunchGame,
             this.toolStripSeparator3,
             this.toolStripButtonManageMods,
             this.toolStripSeparator9,
@@ -5226,42 +5303,17 @@
             this.toolStripButtonToggleNuclearWinterMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonToggleNuclearWinterMode.Click += new System.EventHandler(this.toolStripButtonToggleNuclearWinterMode_Click);
             // 
-            // toolStripSplitButtonLaunchGame
+            // toolStripButtonLaunchGame
             // 
-            this.toolStripSplitButtonLaunchGame.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.launchViaSteamToolStripMenuItem,
-            this.launchViaBethesdanetToolStripMenuItem,
-            this.launchViaBethesdanetPTSToolStripMenuItem});
-            this.toolStripSplitButtonLaunchGame.Image = global::Fo76ini.Properties.Resources.play;
-            this.toolStripSplitButtonLaunchGame.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripSplitButtonLaunchGame.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButtonLaunchGame.Name = "toolStripSplitButtonLaunchGame";
-            this.toolStripSplitButtonLaunchGame.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.toolStripSplitButtonLaunchGame.Size = new System.Drawing.Size(102, 43);
-            this.toolStripSplitButtonLaunchGame.Text = "Launch";
-            this.toolStripSplitButtonLaunchGame.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripSplitButtonLaunchGame.ButtonClick += new System.EventHandler(this.toolStripSplitButtonLaunchGame_ButtonClick);
-            // 
-            // launchViaSteamToolStripMenuItem
-            // 
-            this.launchViaSteamToolStripMenuItem.Name = "launchViaSteamToolStripMenuItem";
-            this.launchViaSteamToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.launchViaSteamToolStripMenuItem.Text = "Launch Steam version";
-            this.launchViaSteamToolStripMenuItem.Click += new System.EventHandler(this.launchViaSteamToolStripMenuItem_Click);
-            // 
-            // launchViaBethesdanetToolStripMenuItem
-            // 
-            this.launchViaBethesdanetToolStripMenuItem.Name = "launchViaBethesdanetToolStripMenuItem";
-            this.launchViaBethesdanetToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.launchViaBethesdanetToolStripMenuItem.Text = "Launch Bethesda.net version";
-            this.launchViaBethesdanetToolStripMenuItem.Click += new System.EventHandler(this.launchViaBethesdanetToolStripMenuItem_Click);
-            // 
-            // launchViaBethesdanetPTSToolStripMenuItem
-            // 
-            this.launchViaBethesdanetPTSToolStripMenuItem.Name = "launchViaBethesdanetPTSToolStripMenuItem";
-            this.launchViaBethesdanetPTSToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.launchViaBethesdanetPTSToolStripMenuItem.Text = "Launch Bethesda.net (PTS) version";
-            this.launchViaBethesdanetPTSToolStripMenuItem.Click += new System.EventHandler(this.launchViaBethesdanetPTSToolStripMenuItem_Click);
+            this.toolStripButtonLaunchGame.Image = global::Fo76ini.Properties.Resources.play;
+            this.toolStripButtonLaunchGame.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonLaunchGame.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLaunchGame.Name = "toolStripButtonLaunchGame";
+            this.toolStripButtonLaunchGame.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.toolStripButtonLaunchGame.Size = new System.Drawing.Size(90, 43);
+            this.toolStripButtonLaunchGame.Text = "Launch";
+            this.toolStripButtonLaunchGame.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonLaunchGame.Click += new System.EventHandler(this.toolStripButtonLaunchGame_Click);
             // 
             // toolStripButtonManageMods
             // 
@@ -5292,7 +5344,6 @@
             this.toolStripSplitButtonUpdate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.updateToolToolStripMenuItem,
             this.checkForUpdatesToolStripMenuItem,
-            this.downloadUpdateLanguageFilesToolStripMenuItem,
             this.showUpdaterlogtxtToolStripMenuItem});
             this.toolStripSplitButtonUpdate.Image = global::Fo76ini.Properties.Resources.available_updates;
             this.toolStripSplitButtonUpdate.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -5307,28 +5358,21 @@
             // updateToolToolStripMenuItem
             // 
             this.updateToolToolStripMenuItem.Name = "updateToolToolStripMenuItem";
-            this.updateToolToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.updateToolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateToolToolStripMenuItem.Text = "Update tool";
             this.updateToolToolStripMenuItem.Click += new System.EventHandler(this.buttonUpdateNow_Click);
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
-            // 
-            // downloadUpdateLanguageFilesToolStripMenuItem
-            // 
-            this.downloadUpdateLanguageFilesToolStripMenuItem.Name = "downloadUpdateLanguageFilesToolStripMenuItem";
-            this.downloadUpdateLanguageFilesToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
-            this.downloadUpdateLanguageFilesToolStripMenuItem.Text = "Download / update language files";
-            this.downloadUpdateLanguageFilesToolStripMenuItem.Click += new System.EventHandler(this.buttonDownloadLanguages_Click);
             // 
             // showUpdaterlogtxtToolStripMenuItem
             // 
             this.showUpdaterlogtxtToolStripMenuItem.Name = "showUpdaterlogtxtToolStripMenuItem";
-            this.showUpdaterlogtxtToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.showUpdaterlogtxtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showUpdaterlogtxtToolStripMenuItem.Text = "Show update.log.txt";
             this.showUpdaterlogtxtToolStripMenuItem.Click += new System.EventHandler(this.showUpdaterlogtxtToolStripMenuItem_Click);
             // 
@@ -5447,10 +5491,10 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelGame,
             this.toolStripStatusLabelGameText,
-            this.toolStripStatusLabelProfile,
-            this.toolStripStatusLabelProfileText,
             this.toolStripStatusLabelEdition,
-            this.toolStripStatusLabelEditionText});
+            this.toolStripStatusLabelEditionText,
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabelNuclearWinterModeActive});
             this.statusStrip1.Location = new System.Drawing.Point(0, 559);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
@@ -5462,28 +5506,14 @@
             this.toolStripStatusLabelGame.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabelGame.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.toolStripStatusLabelGame.Name = "toolStripStatusLabelGame";
-            this.toolStripStatusLabelGame.Size = new System.Drawing.Size(43, 17);
-            this.toolStripStatusLabelGame.Text = "Game:";
+            this.toolStripStatusLabelGame.Size = new System.Drawing.Size(83, 17);
+            this.toolStripStatusLabelGame.Text = "Game profile:";
             // 
             // toolStripStatusLabelGameText
             // 
             this.toolStripStatusLabelGameText.Name = "toolStripStatusLabelGameText";
             this.toolStripStatusLabelGameText.Size = new System.Drawing.Size(12, 17);
             this.toolStripStatusLabelGameText.Text = "?";
-            // 
-            // toolStripStatusLabelProfile
-            // 
-            this.toolStripStatusLabelProfile.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatusLabelProfile.Margin = new System.Windows.Forms.Padding(30, 3, 0, 2);
-            this.toolStripStatusLabelProfile.Name = "toolStripStatusLabelProfile";
-            this.toolStripStatusLabelProfile.Size = new System.Drawing.Size(47, 17);
-            this.toolStripStatusLabelProfile.Text = "Profile:";
-            // 
-            // toolStripStatusLabelProfileText
-            // 
-            this.toolStripStatusLabelProfileText.Name = "toolStripStatusLabelProfileText";
-            this.toolStripStatusLabelProfileText.Size = new System.Drawing.Size(12, 17);
-            this.toolStripStatusLabelProfileText.Text = "?";
             // 
             // toolStripStatusLabelEdition
             // 
@@ -5498,6 +5528,20 @@
             this.toolStripStatusLabelEditionText.Name = "toolStripStatusLabelEditionText";
             this.toolStripStatusLabelEditionText.Size = new System.Drawing.Size(12, 17);
             this.toolStripStatusLabelEditionText.Text = "?";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(499, 17);
+            this.toolStripStatusLabel1.Spring = true;
+            // 
+            // toolStripStatusLabelNuclearWinterModeActive
+            // 
+            this.toolStripStatusLabelNuclearWinterModeActive.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabelNuclearWinterModeActive.ForeColor = System.Drawing.Color.OrangeRed;
+            this.toolStripStatusLabelNuclearWinterModeActive.Name = "toolStripStatusLabelNuclearWinterModeActive";
+            this.toolStripStatusLabelNuclearWinterModeActive.Size = new System.Drawing.Size(175, 17);
+            this.toolStripStatusLabelNuclearWinterModeActive.Text = "Nuclear Winter mode is active";
             // 
             // pictureBoxLoadingGIF
             // 
@@ -5627,10 +5671,8 @@
             this.tabPageControls.ResumeLayout(false);
             this.groupBoxGamepad.ResumeLayout(false);
             this.groupBoxGamepad.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.groupBoxMouse.ResumeLayout(false);
             this.groupBoxMouse.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivity)).EndInit();
             this.tabPageVideo.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -5678,6 +5720,8 @@
             this.groupBoxMainMenu.PerformLayout();
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
+            this.groupBoxLoginProfiles.ResumeLayout(false);
+            this.groupBoxLoginProfiles.PerformLayout();
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
             this.groupBoxSettings.ResumeLayout(false);
@@ -5830,14 +5874,6 @@
         private System.Windows.Forms.CheckBox checkBoxShowCompass;
         private System.Windows.Forms.CheckBox checkBoxShowDamageNumbersNW;
         private System.Windows.Forms.CheckBox checkBoxShowDamageNumbersA;
-        private System.Windows.Forms.GroupBox groupBoxLogin;
-        private System.Windows.Forms.CheckBox checkBoxEnableSteam;
-        private System.Windows.Forms.Label labelCredentialsExplanation;
-        private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.TextBox textBoxUserName;
-        private System.Windows.Forms.CheckBox checkBoxShowPassword;
-        private System.Windows.Forms.Label labelPassword;
-        private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.GroupBox groupBoxMainMenu;
         private System.Windows.Forms.CheckBox checkBoxSkipSplash;
         private System.Windows.Forms.CheckBox checkBoxIntroVideos;
@@ -5973,15 +6009,6 @@
         private System.Windows.Forms.NumericUpDown numfDefaultFOV;
         private System.Windows.Forms.Label labelfDefaultFOV;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label labelAccountProfiles;
-        private System.Windows.Forms.RadioButton radioButtonAccount4;
-        private System.Windows.Forms.RadioButton radioButtonAccount3;
-        private System.Windows.Forms.RadioButton radioButtonAccount2;
-        private System.Windows.Forms.RadioButton radioButtonAccount1;
-        private System.Windows.Forms.RadioButton radioButtonAccount8;
-        private System.Windows.Forms.RadioButton radioButtonAccount7;
-        private System.Windows.Forms.RadioButton radioButtonAccount6;
-        private System.Windows.Forms.RadioButton radioButtonAccount5;
         private System.Windows.Forms.Panel panel3;
         private System.ComponentModel.BackgroundWorker backgroundWorkerGetLatestVersion;
         private System.Windows.Forms.PictureBox pictureBoxSpinnerCheckForUpdates;
@@ -6004,7 +6031,6 @@
         private System.Windows.Forms.Label labelNWModeActive;
         private System.Windows.Forms.PictureBox pictureBoxLoadingGIF;
         private System.Windows.Forms.LinkLabel linkLabelAttribution;
-        private System.Windows.Forms.CheckBox checkBoxAutoSignin;
         private System.Windows.Forms.LinkLabel linkLabelWhatsNew;
         private System.Windows.Forms.GroupBox groupBoxGraphicEffects;
         private System.Windows.Forms.CheckBox checkBoxDisableGore;
@@ -6024,10 +6050,6 @@
         private Forms.Form1.ColorPreview colorPreviewPAPipboy;
         private System.Windows.Forms.ToolStripButton toolStripButtonApply;
         private System.Windows.Forms.ToolStripButton toolStripButtonToggleNuclearWinterMode;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButtonLaunchGame;
-        private System.Windows.Forms.ToolStripMenuItem launchViaSteamToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem launchViaBethesdanetToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem launchViaBethesdanetPTSToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripButtonManageMods;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
@@ -6035,7 +6057,6 @@
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButtonUpdate;
         private System.Windows.Forms.ToolStripMenuItem updateToolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem downloadUpdateLanguageFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showUpdaterlogtxtToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonExplore;
         private System.Windows.Forms.ToolStripMenuItem gameFolderToolStripMenuItem;
@@ -6056,12 +6077,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelGame;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelGameText;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelProfile;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelProfileText;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelEdition;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelEditionText;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.GroupBox groupBoxPipboyColorPreview;
         private System.Windows.Forms.PictureBox pictureBoxPipboyPreview;
         private System.Windows.Forms.Label labelPipboyColorPreviewNotice;
@@ -6115,6 +6132,35 @@
         private System.Windows.Forms.GroupBox groupBoxSettings;
         private System.Windows.Forms.LinkLabel linkLabelOpenSettings;
         private System.Windows.Forms.Label labelSettingsNotice;
+        private System.Windows.Forms.ToolStripButton toolStripButtonLaunchGame;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelNuclearWinterModeActive;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.GroupBox groupBoxLogin;
+        private System.Windows.Forms.GroupBox groupBoxLoginProfiles;
+        private System.Windows.Forms.RadioButton radioButtonAccount1;
+        private System.Windows.Forms.RadioButton radioButtonAccount16;
+        private System.Windows.Forms.RadioButton radioButtonAccount2;
+        private System.Windows.Forms.RadioButton radioButtonAccount15;
+        private System.Windows.Forms.RadioButton radioButtonAccount3;
+        private System.Windows.Forms.RadioButton radioButtonAccount14;
+        private System.Windows.Forms.RadioButton radioButtonAccount4;
+        private System.Windows.Forms.RadioButton radioButtonAccount13;
+        private System.Windows.Forms.RadioButton radioButtonAccount5;
+        private System.Windows.Forms.RadioButton radioButtonAccount12;
+        private System.Windows.Forms.RadioButton radioButtonAccount6;
+        private System.Windows.Forms.RadioButton radioButtonAccount11;
+        private System.Windows.Forms.RadioButton radioButtonAccount7;
+        private System.Windows.Forms.RadioButton radioButtonAccount10;
+        private System.Windows.Forms.RadioButton radioButtonAccount8;
+        private System.Windows.Forms.RadioButton radioButtonAccount9;
+        private System.Windows.Forms.CheckBox checkBoxAutoSignin;
+        private System.Windows.Forms.CheckBox checkBoxEnableSteam;
+        private System.Windows.Forms.Label labelCredentialsExplanation;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.TextBox textBoxUserName;
+        private System.Windows.Forms.CheckBox checkBoxShowPassword;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.Label labelUserName;
     }
 }
 

@@ -1,6 +1,4 @@
-﻿using Fo76ini.Forms.FormNexusAPI;
-using Fo76ini.Forms.FormProfiles;
-using Fo76ini.Forms.FormSettings;
+﻿using Fo76ini.Forms.FormSettings;
 using Fo76ini.Forms.FormWhatsNew;
 using Fo76ini.Interface;
 using Fo76ini.NexusAPI;
@@ -8,6 +6,7 @@ using Fo76ini.Profiles;
 using Fo76ini.Properties;
 using Fo76ini.Tweaks;
 using Fo76ini.Utilities;
+using IniParser.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,8 +22,8 @@ namespace Fo76ini
 {
     public partial class Form1 : Form
     {
-        private FormMods formMods;
-        private FormWhatsNew formWhatsNew;
+        private FormMods formMods = new FormMods();
+        private FormWhatsNew formWhatsNew = new FormWhatsNew();
         private FormSettings formSettings;
 
         private GameInstance game;
@@ -56,14 +55,18 @@ namespace Fo76ini
                 "groupBoxWIP",
                 "labelNewVersion",
                 "labelGameEdition",
-                "buttonDownloadLanguages",
-                "buttonRefreshLanguage"
+                "toolStripStatusLabelGameText",
+                "toolStripStatusLabelEditionText",
+                "toolStripStatusLabel1",
+                "labelPipboyResolutionSpacer"
             });
 
 
             /*
              * Dropdowns
              */
+
+            #region Dropdowns
 
             // Let's add options to the drop-down menus:
 
@@ -74,7 +77,6 @@ namespace Fo76ini
             // https://www.reneelab.com/video-with-4-3-format.html
             // https://www.overclock.net/threads/list-of-display-resolutions-aspect-ratios.539967/
             // https://en.wikipedia.org/wiki/List_of_common_resolutions
-            // TODO: Put iSizeW and iSizeH into Fallout76Custom.ini instead of Prefs.ini: https://www.reddit.com/r/fo76/comments/9z6jan/if_you_change_your_resolution_in/
             DropDown.Add("Resolution", new DropDown(
                 this.comboBoxResolution,
                 new string[] {
@@ -223,16 +225,6 @@ namespace Fo76ini
                 }
             ));
 
-            DropDown.Add("Files", new DropDown(
-                this.comboBoxCustomFile,
-                new string[] {
-                    "Fallout76.ini",
-                    "Fallout76Prefs.ini",
-                    "Fallout76Custom.ini"
-                }
-            ));
-            this.comboBoxCustomFile.SelectedIndex = 0;
-
             DropDown.Add("VoiceChatMode", new DropDown(
                 this.comboBoxVoiceChatMode,
                 new string[] {
@@ -261,6 +253,7 @@ namespace Fo76ini
                 }
             ));
 
+            #endregion
 
             /*
              * Event handlers:
@@ -275,58 +268,88 @@ namespace Fo76ini
             this.KeyDown += this.Form1_KeyDown;
 
             this.backgroundWorkerGetLatestVersion.RunWorkerCompleted += backgroundWorkerGetLatestVersion_RunWorkerCompleted;
-            //this.backgroundWorkerDownloadLanguages.RunWorkerCompleted += backgroundWorkerDownloadLanguages_RunWorkerCompleted;
 
             this.backgroundWorkerEnableNWMode.RunWorkerCompleted += backgroundWorkerEnableNWMode_RunWorkerCompleted;
             this.backgroundWorkerDisableNWMode.RunWorkerCompleted += backgroundWorkerDisableNWMode_RunWorkerCompleted;
+            InitAccountProfileRadiobuttons();
 
-
-            // TODO: Pipboy screen preview
+            // Pipboy screen preview:
             InitPipboyScreen();
             this.colorPreviewPipboy.BackColorChanged += colorPreviewPipboy_BackColorChanged;
         }
 
-        private PictureBox maskedPipScreen;
-        private PictureBox colorizedPipScreen;
-
-        private void InitPipboyScreen()
+        private void Form1_Load(object sender, EventArgs e)
         {
-            maskedPipScreen = new PictureBox();
-            maskedPipScreen.Image = Resources.pipboy_preview_fg_masked;
-            maskedPipScreen.SizeMode = this.pictureBoxPipboyPreview.SizeMode;
-            maskedPipScreen.Size = this.pictureBoxPipboyPreview.Size;
+            // Create folders, if not present:
+            Directory.CreateDirectory(Shared.AppConfigFolder);
+            Directory.CreateDirectory(Localization.LanguageFolder);
+            Directory.CreateDirectory(IniFiles.ParentPath);
 
-            colorizedPipScreen = new PictureBox();
-            colorizedPipScreen.Image = Resources.pipboy_preview_fg;
-            colorizedPipScreen.SizeMode = this.pictureBoxPipboyPreview.SizeMode;
-            colorizedPipScreen.Size = this.pictureBoxPipboyPreview.Size;
+            // Link tweaks
+            LinkInfo();
+            LinkSliders();
+            LinkControlsToTweaks();
 
-            colorizedPipScreen.Controls.Add(maskedPipScreen);
-            this.pictureBoxPipboyPreview.Controls.Add(colorizedPipScreen);
-        }
+            // Load config.ini
+            IniFiles.LoadConfig();
 
-        private void UpdatePipboyScreen(Color targetColor)
-        {
-            Bitmap bmp = new Bitmap(Resources.pipboy_preview_fg);
-            for (int x = 0; x < bmp.Width; x++)
+            // Load game instances
+            ProfileManager.Load();
+            formSettings = new FormSettings();
+
+            IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
+
+            // TODO: Do we still need this?
+            //this.timerCheckFiles.Enabled = true;
+
+            // TODO: NW MODE BROKEN
+            //LoadNuclearWinterConfiguration();
+
+            // Load mods:
+            /*ManagedMods.Instance.Load();*/
+            NexusMods.Load();
+            //TODO: this.formMods.LoadMods(Shared.GamePath);
+
+            // this.formMods = new FormMods();
+            // this.formMods.UpdateUI();
+
+            // Load translations
+            //LinkedTweaks.SetToolTips();
+            Localization.GenerateDefaultTemplate();
+            Localization.LookupLanguages();
+
+            // Setup UI:
+            // UpdateCameraPositionUI(); // TODO: Rework camera UI
+
+            Configuration.LoadWindowState("Form1", this);
+
+            // Remove updater, if present:
+            try
             {
-                for (int y = 0; y < bmp.Height; y++)
-                {
-                    Color oldColor = bmp.GetPixel(x, y);
-                    int r = (int)Utils.Clamp(oldColor.R / 255.0 * targetColor.R, 0, 255);
-                    int g = (int)Utils.Clamp(oldColor.G / 255.0 * targetColor.G, 0, 255);
-                    int b = (int)Utils.Clamp(oldColor.B / 255.0 * targetColor.B, 0, 255);
-                    Color newColor = Color.FromArgb(oldColor.A, r, g, b);
-                    bmp.SetPixel(x, y, newColor);
-                }
+                string updaterPath = Path.Combine(Shared.AppConfigFolder, "Updater");
+                if (Directory.Exists(updaterPath))
+                    Directory.Delete(updaterPath, true);
             }
-            colorizedPipScreen.Image = bmp;
+            catch
+            {
+                // Yeah, well or not.
+            }
+
+            this.LoadGallery(); // TODO: Rework gallery
+
+            MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
         }
 
-        private void colorPreviewPipboy_BackColorChanged(object sender, EventArgs e)
+        private void Form1_Shown(object sender, EventArgs e)
         {
-            UpdatePipboyScreen(this.colorPreviewPipboy.BackColor);
+            // Check for updates
+            CheckVersion();
+
+            // Display "What's new?" dialog
+            if (!IniFiles.Config.GetBool("Preferences", "bIgnoreUpdates", false))
+                ShowWhatsNewConditionally();
         }
+
 
         // Winforms Double Buffering
         // https://stackoverflow.com/questions/3718380/winforms-double-buffering/3718648#3718648
@@ -367,17 +390,8 @@ namespace Fo76ini
             }
             catch (IniParser.Exceptions.ParsingException exc)
             {
-                // TODO: Uhh......
+                // TODO: Change the ini parsing error.
                 MsgBox.Get("iniParsingError").FormatText(exc.Message).Show(MessageBoxIcon.Error);
-                //Application.Exit();
-                return;
-            }
-            catch (FileNotFoundException exc)
-            {
-                // TODO: Format changed, msgbox broken
-                // TODO: We should warn, or ask to generate new files, I guess...
-                //MsgBox.Get("runGameToGenerateINI").FormatTitle(IniFiles.Instance.GetIniName(LegacyIniFile.F76), IniFiles.Instance.GetIniName(LegacyIniFile.F76Prefs)).Show(MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MsgBox.Get("runGameToGenerateINI").Show(MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //Application.Exit();
                 return;
             }
@@ -387,117 +401,36 @@ namespace Fo76ini
             switch (e.ActiveGameInstance.Edition)
             {
                 case GameEdition.Steam:
-                    this.pictureBoxGameEdition.Image = Properties.Resources.steam;
+                    this.pictureBoxGameEdition.Image = Resources.steam;
                     this.toolStripStatusLabelEditionText.Text = "Steam";
                     this.labelGameEdition.Text = "Steam";
                     break;
                 case GameEdition.BethesdaNet:
-                    this.pictureBoxGameEdition.Image = Properties.Resources.bethesda;
+                    this.pictureBoxGameEdition.Image = Resources.bethesda;
                     this.toolStripStatusLabelEditionText.Text = "Bethesda.net";
                     this.labelGameEdition.Text = "Bethesda";
                     break;
                 case GameEdition.BethesdaNetPTS:
-                    this.pictureBoxGameEdition.Image = Properties.Resources.bethesda_pts;
+                    this.pictureBoxGameEdition.Image = Resources.bethesda_pts;
                     this.toolStripStatusLabelEditionText.Text = "Bethesda.net (PTS)";
                     this.labelGameEdition.Text = "Bethesda\n(PTS)";
                     break;
                 case GameEdition.MSStore:
-                    this.pictureBoxGameEdition.Image = Properties.Resources.msstore;
+                    this.pictureBoxGameEdition.Image = Resources.msstore;
                     this.toolStripStatusLabelEditionText.Text = "Microsoft Store";
                     this.labelGameEdition.Text = "Microsoft\nStore";
                     break;
                 default:
-                    this.pictureBoxGameEdition.Image = Properties.Resources.help_128;
-                    this.toolStripStatusLabelEditionText.Text = "?";
-                    this.labelGameEdition.Text = "Unknown";
+                    this.pictureBoxGameEdition.Image = Resources.help_128;
+                    this.toolStripStatusLabelEditionText.Text = Localization.GetString("unknown");
+                    this.labelGameEdition.Text = Localization.GetString("unknown");
                     break;
             }
 
+            LoadAccountProfile();
+            LoadCustomTab();
+
             this.toolStripStatusLabelGameText.Text = e.ActiveGameInstance?.Title;
-            this.toolStripStatusLabelProfileText.Text = e.ActiveProfile?.Name;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            // Create folders, if not present:
-            Directory.CreateDirectory(Shared.AppConfigFolder);
-            Directory.CreateDirectory(Localization.LanguageFolder);
-
-            // Link tweaks
-            LinkInfo();
-            LinkSliders();
-            LinkControlsToTweaks();
-
-            // Load config.ini
-            IniFiles.LoadConfig();
-
-            // Load game instances
-            ProfileManager.Load();
-            formSettings = new FormSettings();
-
-            // TODO: Uh... where to put this?
-            IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
-
-            // Load translations
-            LinkedTweaks.SetToolTips(this.toolTip);
-            Localization.GenerateDefaultTemplate();
-            Localization.LookupLanguages();
-
-            // TODO: Do we still need this?
-            //this.timerCheckFiles.Enabled = true;
-
-            // TODO: NW MODE BROKEN
-            //LoadNuclearWinterConfiguration();
-
-            // Load mods:
-            /*ManagedMods.Instance.Load();*/
-            NexusMods.Load();
-            //TODO: this.formMods.LoadMods(Shared.GamePath);
-
-            this.formMods = new FormMods();
-            //this.formMods.UpdateUI();
-
-            // Account profiles:
-            // TODO: Account profiles
-            /*this.accountProfileRadioButtons = new RadioButton[] { this.radioButtonAccount1, this.radioButtonAccount2, this.radioButtonAccount3, this.radioButtonAccount4, this.radioButtonAccount5, this.radioButtonAccount6, this.radioButtonAccount7, this.radioButtonAccount8 };
-            foreach (RadioButton rbutton in this.accountProfileRadioButtons)
-                rbutton.CheckedChanged += new System.EventHandler(this.radioButtonAccount_CheckedChanged);*/
-
-            // Setup UI:
-            // UpdateCameraPositionUI(); // TODO: Rework camera UI
-
-            Configuration.LoadWindowState("Form1", this);
-
-            // Remove updater, if present:
-            try
-            {
-                string updaterPath = Path.Combine(Shared.AppConfigFolder, "Updater");
-                if (Directory.Exists(updaterPath))
-                    Directory.Delete(updaterPath, true);
-            }
-            catch
-            {
-                // Yeah, well or not.
-            }
-
-            this.LoadGallery(); // TODO: Rework gallery
-
-            MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
-        }
-
-        private void Form1_Shown(object sender, EventArgs e)
-        {
-            // Check display resolution
-            Size res = Utils.GetDisplayResolution();
-            if (res.Width < 920 || res.Height < 750)
-                MsgBox.Get("displayResolutionTooLow").FormatText($"{res.Width} x {res.Height}", "920 x 750").Show(MessageBoxIcon.Warning);
-
-            // Check for updates
-            CheckVersion();
-
-            // Display "What's new?" dialog
-            if (!IniFiles.Config.GetBool("Preferences", "bIgnoreUpdates", false))
-                ShowWhatsNewConditionally();
         }
 
         private void ShowWhatsNewConditionally()
@@ -510,8 +443,6 @@ namespace Fo76ini
 
         private void ShowWhatsNew()
         {
-            if (this.formWhatsNew == null)
-                this.formWhatsNew = new FormWhatsNew();
             this.formWhatsNew.ShowDialog();
         }
 
@@ -519,7 +450,7 @@ namespace Fo76ini
         {
             if (e.KeyCode == Keys.F1)
             {
-                // TODO: Do we need this?
+                Process.Start("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki");
             }
         }
 
@@ -797,34 +728,26 @@ namespace Fo76ini
         public void ApplyChanges()
         {
             // Add custom lines to *.ini files:
-            /*try
+            try
             {
-                string f76Path = Path.Combine(IniFiles.ParentPath, "Fallout76.add.ini");
-                if (File.Exists(f76Path))
-                {
-                    IniData f76Data = IniFiles.Instance.LoadIni(f76Path, false);
-                    IniFiles.Instance.Merge(LegacyIniFile.F76, f76Data);
-                }
+                IniFile addF76 = new IniFile(Path.Combine(IniFiles.ParentPath, $"{game.IniPrefix}.add.ini"));
+                addF76.Load();
+                IniFiles.F76.Merge(addF76);
 
-                string f76PPath = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76Prefs.add.ini");
-                if (File.Exists(f76PPath))
-                {
-                    IniData f76PData = IniFiles.Instance.LoadIni(f76PPath, false);
-                    IniFiles.Instance.Merge(LegacyIniFile.F76Prefs, f76PData);
-                }
+                IniFile addF76Prefs = new IniFile(Path.Combine(IniFiles.ParentPath, $"{game.IniPrefix}Prefs.add.ini"));
+                addF76Prefs.Load();
+                IniFiles.F76Prefs.Merge(addF76Prefs);
 
-                string f76CPath = Path.Combine(IniFiles.Instance.iniParentPath, "Fallout76Custom.add.ini");
-                if (File.Exists(f76CPath))
-                {
-                    IniData f76CData = IniFiles.Instance.LoadIni(f76CPath, false);
-                    IniFiles.Instance.Merge(LegacyIniFile.F76Custom, f76CData);
-                }
+                IniFile addF76Custom = new IniFile(Path.Combine(IniFiles.ParentPath, $"{game.IniPrefix}Custom.add.ini"));
+                addF76Custom.Load();
+                IniFiles.F76Custom.Merge(addF76Custom);
             }
             catch (IniParser.Exceptions.ParsingException e)
             {
                 MsgBox.Get("customIniFilesParsingError").FormatText(e.Message).Show(MessageBoxIcon.Error);
-            }*/
+            }
 
+            // TODO: Backups?
             // Save changes:
             IniFiles.Save();
             //IniFiles.Instance.ResolveNWMode();
@@ -833,222 +756,22 @@ namespace Fo76ini
         // "Apply" button:
         private void toolStripButtonApply_Click(object sender, EventArgs e)
         {
-            //TODO: Rework THIS!
-            // Show a messagebox to ask the user, if they want to make a backup.
-            if (!IniFiles.Config.GetBool("Preferences", "bSkipBackupQuestion", false))
-            {
-                DialogResult res = MsgBox.Get("backupAndSave").Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (res == DialogResult.Cancel)
-                    return;
-                //else if (res == DialogResult.Yes)
-                // Make backups
-                //IniFiles.Instance.BackupAll();
-            }
-
-            // Save stuff to INI
             ApplyChanges();
             MsgBox.Get("changesApplied").Popup(MessageBoxIcon.Information);
         }
 
-        // "Launch Game" button:
-        private void toolStripSplitButtonLaunchGame_ButtonClick(object sender, EventArgs e)
+        private void toolStripButtonLaunchGame_Click(object sender, EventArgs e)
         {
-            uint uGameEdition = IniFiles.Config.GetUInt("Preferences", "uGameEdition", 0);
-            uint uLaunchOption = IniFiles.Config.GetUInt("Preferences", "uLaunchOption", 1);
-            string process = null;
-            bool runExecutable = false;
-            if (uLaunchOption == 1)
-            {
-                switch (uGameEdition)
-                {
-                    case (uint)GameEdition.BethesdaNet:
-                        process = "bethesdanet://run/20";
-                        break;
-                    case (uint)GameEdition.Steam:
-                        process = "steam://run/1151340"; // "steam://runappid/1151340"
-                        break;
-                    case (uint)GameEdition.BethesdaNetPTS:
-                        process = "bethesdanet://run/57";
-                        break;
-                    case (uint)GameEdition.MSStore:
-                        process = "ms-windows-store://pdp/?ProductId=9nkgnmnk3k3z";
-                        break;
-                    default:
-                        MsgBox.Get("chooseGameEdition").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                }
-            }
-            else if (uLaunchOption == 2)
-            {
-                if (!Shared.ValidateGamePath())
-                {
-                    MsgBox.Get("modsGamePathNotSet").Show(MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                process = Path.GetFullPath(Path.Combine(Shared.GamePath, Shared.GameEdition == GameEdition.MSStore ? "Project76_GamePass.exe" : "Fallout76.exe"));
-                runExecutable = true;
-            }
-            if (process != null)
-            {
-                if (IniFiles.Config.GetBool("Preferences", "bAutoApply", false))
-                    ApplyChanges();
-                try
-                {
-                    if (runExecutable)
-                    {
-                        // https://stackoverflow.com/questions/8720594/application-crashing-on-startup-using-process-start
-                        // https://www.vbforums.com/showthread.php?489619-RESOLVED-2-0-Process-Start()-crashing-external-app
-                        Process pr = new Process();
-                        pr.StartInfo.FileName = process; // Shared.GameEdition == GameEdition.MSStore ? "Project76_GamePass.exe" : "Fallout76.exe";
-                        pr.StartInfo.WorkingDirectory = Shared.GamePath;
-                        pr.StartInfo.UseShellExecute = false;
-                        pr.Start();
-                    }
-                    else
-                    {
-                        System.Diagnostics.Process.Start(process);
-                    }
-                    if (IniFiles.Config.GetBool("Preferences", "bQuitOnLaunch", false))
-                        this.Close();
-                }
-                catch (Exception ex)
-                {
-                    if (Shared.GameEdition == GameEdition.MSStore)
-                    {
-                        MsgBox.Get("msstoreRunExecutableFailed").FormatTitle(ex.Message).Show(MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-            }
+            this.game.LaunchGame();
         }
 
         #endregion
-
-        #region Event handlers
 
         // "Get the latest version from NexusMods" link:
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             linkLabelManualDownloadPage.LinkVisited = true;
-            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/mods/546?tab=files");
-        }
-
-
-        /*
-         * Pipboy
-         */
-
-        private void buttonPipboyTargetReset_Click(object sender, EventArgs e)
-        {
-            this.numPipboyTargetWidth.Value = 876;
-            this.numPipboyTargetHeight.Value = 700;
-        }
-
-        private void buttonPipboyTargetSetRecommended_Click(object sender, EventArgs e)
-        {
-            this.numPipboyTargetWidth.Value = 1752;
-            this.numPipboyTargetHeight.Value = 1400;
-        }
-
-
-
-        private void toolStripButtonManageMods_Click(object sender, EventArgs e)
-        {
-            /*if (!formModsBackupCreated)
-            {
-                IniFiles.Instance.BackupAll("Backup_BeforeManageMods"); // Just to be sure...
-                formModsBackupCreated = true;
-            }*/
-            this.formMods.OpenUI();
-        }
-
-        /*
-         * Game edition
-         */
-
-        private void ChangeGameEdition(GameEdition edition)
-        {
-            // TODO
-            /*
-            bool restartRequired = Shared.GameEdition != GameEdition.Unknown && ((Shared.GameEdition == GameEdition.MSStore && edition != GameEdition.MSStore) || (Shared.GameEdition != GameEdition.MSStore && edition == GameEdition.MSStore));
-
-            if (restartRequired && MsgBox.Get("msstoreRestartRequired").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                switch (Shared.GameEdition)
-                {
-                    case GameEdition.Steam:
-                        this.radioButtonEditionSteam.Checked = true;
-                        break;
-                    case GameEdition.BethesdaNet:
-                        this.radioButtonEditionBethesdaNet.Checked = true;
-                        break;
-                    case GameEdition.BethesdaNetPTS:
-                        this.radioButtonEditionBethesdaNetPTS.Checked = true;
-                        break;
-                    case GameEdition.MSStore:
-                        this.radioButtonEditionMSStore.Checked = true;
-                        break;
-                }
-                return;
-            }
-
-            // Change image
-            switch (edition)
-            {
-                case GameEdition.Steam:
-                    this.pictureBoxGameEdition.Image = Properties.Resources.steam;
-                    this.labelGameEdition.Text = "Steam";
-                    break;
-                case GameEdition.BethesdaNet:
-                    this.pictureBoxGameEdition.Image = Properties.Resources.bethesda;
-                    this.labelGameEdition.Text = "Bethesda";
-                    break;
-                case GameEdition.BethesdaNetPTS:
-                    this.pictureBoxGameEdition.Image = Properties.Resources.bethesda_pts;
-                    this.labelGameEdition.Text = "Bethesda\n(PTS)";
-                    break;
-                case GameEdition.MSStore:
-                    this.pictureBoxGameEdition.Image = Properties.Resources.msstore;
-                    this.labelGameEdition.Text = "Microsoft\nStore";
-                    break;
-                default:
-                    this.pictureBoxGameEdition.Image = Properties.Resources.help_128;
-                    this.labelGameEdition.Text = "Unknown";
-                    break;
-            }
-
-            // Currently, no way to launch game executable, if installed via MS Store:
-            /*if (edition == GameEdition.MSStore)
-            {
-                IniFiles.Instance.Set(IniFile.Config, "Preferences", "uLaunchOption", 1);
-
-                this.radioButtonLaunchViaExecutable.Checked = false;
-                this.radioButtonLaunchViaExecutable.Enabled = false;
-                this.radioButtonLaunchViaLink.Checked = true;
-            }
-            else
-            {
-                this.radioButtonLaunchViaExecutable.Enabled = true;
-            }*/
-            /*
-            Shared.ChangeGameEdition(edition);
-            //this.formMods.ChangeGameEdition(edition);
-            this.formMods.UpdateUI();
-            this.textBoxGamePath.Text = Shared.GamePath;
-
-            if (restartRequired)
-            {
-                Configuration.SaveWindowState("Form1", this);
-                Application.Restart();
-            }*/
-        }
-
-        // Show password:
-        private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
-        {
-            // https://stackoverflow.com/questions/8185747/how-can-i-unmask-password-text-box-and-mask-it-back-to-password
-            this.textBoxPassword.UseSystemPasswordChar = !this.checkBoxShowPassword.Checked;
-            this.textBoxPassword.PasswordChar = !this.checkBoxShowPassword.Checked ? '\u2022' : '\0';
+            Process.Start("https://www.nexusmods.com/fallout76/mods/546?tab=files");
         }
 
         private void buttonUpdateNow_Click(object sender, EventArgs e)
@@ -1082,10 +805,16 @@ namespace Fo76ini
             this.CheckVersion();
         }
 
+        #region Tool strip
 
         /*
          * Tool strip:
          */
+
+        private void toolStripButtonManageMods_Click(object sender, EventArgs e)
+        {
+            this.formMods.OpenUI();
+        }
 
         private void toolConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1104,7 +833,7 @@ namespace Fo76ini
 
         private void gameFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Utils.OpenExplorer(Shared.GamePath);
+            Utils.OpenExplorer(this.game.GamePath);
         }
 
         private void gamesConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1126,55 +855,6 @@ namespace Fo76ini
         {
             if (File.Exists(Path.Combine(Shared.AppConfigFolder, "update.log.txt")))
                 Utils.OpenNotepad(Path.Combine(Shared.AppConfigFolder, "update.log.txt"));
-        }
-
-        private string customAddFilePath = "";
-
-        private void comboBoxCustomFile_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string fileName = "Invalid.add.ini";
-            switch (this.comboBoxCustomFile.SelectedIndex)
-            {
-                case 0:
-                    fileName = "Fallout76.add.ini";
-                    break;
-                case 1:
-                    fileName = "Fallout76Prefs.add.ini";
-                    break;
-                case 2:
-                    fileName = "Fallout76Custom.add.ini";
-                    break;
-            }
-            this.customAddFilePath = Path.Combine(IniFiles.ParentPath, fileName);
-
-            if (File.Exists(this.customAddFilePath))
-                this.textBoxCustom.Text = File.ReadAllText(this.customAddFilePath);
-            else
-                this.textBoxCustom.Text = "";
-
-            this.buttonCustomSave.Text = this.buttonCustomSave.Text.TrimEnd('*');
-        }
-
-        private void textBoxCustom_TextChanged(object sender, EventArgs e)
-        {
-            if (!this.buttonCustomSave.Text.EndsWith("*"))
-                this.buttonCustomSave.Text += "*";
-        }
-
-        private void buttonCustomSave_Click(object sender, EventArgs e)
-        {
-            if (this.textBoxCustom.Text == "")
-            {
-                if (File.Exists(this.customAddFilePath))
-                    File.Delete(this.customAddFilePath);
-            }
-            else
-            {
-                File.WriteAllText(this.customAddFilePath, this.textBoxCustom.Text);
-            }
-
-            if (this.buttonCustomSave.Text.EndsWith("*"))
-                this.buttonCustomSave.Text = this.buttonCustomSave.Text.TrimEnd('*');
         }
 
         private void editFallout76iniToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1215,64 +895,44 @@ namespace Fo76ini
             }
         }
 
-        private int GetSelectedAccountProfile()
+        private void toolStripButtonProfiles_Click(object sender, EventArgs e)
         {
-            // TODO: Account profiles
-            int index = 0;
-            /*foreach (RadioButton rbutton in this.accountProfileRadioButtons)
-            {
-                if (rbutton.Checked)
-                    break;
-                index++;
-            }
-            if (index >= this.accountProfileRadioButtons.Length)
-                index = 0;*/
-            return index;
+            formSettings.ShowDialog();
         }
 
-        private void checkBoxAlternativeINIMode_CheckedChanged(object sender, EventArgs e)
-        {/*
-            if (MsgBox.ShowID("restartRequired", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        #endregion
+
+        // Check, if *.ini files have been changed:
+        private void timerCheckFiles_Tick(object sender, EventArgs e)
+        {
+            // TODO: Do we reeeeaaally need this?
+            // Check every 5 seconds, if files have been modified:
+            /*if (IniFiles.FilesHaveBeenModified())
             {
-                IniFiles.Instance.SaveConfig();
-                //Application.Exit();
-                Application.Restart();
-                Environment.Exit(0);
-            }
-            else
-            {
-                this.checkBoxAlternativeINIMode.Checked = altMode;
+                IniFiles.UpdateLastModifiedDates();
+
+                // Don't prompt, if Fallout 76 is running....
+                if (Shared.GameEdition == GameEdition.MSStore ?
+                        //!Utils.IsProcessRunning("Project76_GamePass") :
+                        !Utils.IsProcessRunning("Project76") :
+                        !Utils.IsProcessRunning("Fallout76"))
+                    MsgBox.Get("iniFilesModified").Popup(MessageBoxIcon.Warning);
             }*/
         }
 
-
-        /*
-         * Credentials
-         */
-
-        private void textBoxUserName_TextChanged(object sender, EventArgs e)
+        private void linkLabelAttribution_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            int index = GetSelectedAccountProfile();
-            if (this.textBoxUserName.Text == "")
-                IniFiles.Config.Remove("Login", $"s76UserName{index + 1}");
-            else
-                IniFiles.Config.Set("Login", $"s76UserName{index + 1}", this.textBoxUserName.Text);
+            Utils.OpenNotepad(@"Attribution.txt");
         }
 
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        private void linkLabelWhatsNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            int index = GetSelectedAccountProfile();
-            if (this.textBoxPassword.Text == "")
-                IniFiles.Config.Remove("Login", $"s76Password{index + 1}");
-            else
-                IniFiles.Config.Set("Login", $"s76Password{index + 1}", this.textBoxPassword.Text);
+            ShowWhatsNew();
         }
 
-        private void radioButtonAccount_CheckedChanged(object sender, EventArgs e)
+        private void linkLabelOpenSettings_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            int index = GetSelectedAccountProfile();
-            this.textBoxUserName.Text = IniFiles.Config.GetString("Login", $"s76UserName{index + 1}", "");
-            this.textBoxPassword.Text = IniFiles.Config.GetString("Login", $"s76Password{index + 1}", "");
+            formSettings.ShowDialog();
         }
 
         private void MakePictureBoxButton(PictureBox pictureBox, string localizedStringID)
@@ -1304,93 +964,197 @@ namespace Fo76ini
             });
         }
 
-        private void launchViaSteamToolStripMenuItem_Click(object sender, EventArgs e)
+        #region Credentials
+        /*
+         * Credentials
+         */
+
+        List<RadioButton> accountProfileRadioButtons
         {
-            // Launch Steam version:
-            System.Diagnostics.Process.Start("steam://run/1151340");
-        }
-
-        private void launchViaBethesdanetToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Launch Bethesda.net version:
-            string gamePath = IniFiles.Config.GetString("Preferences", "sGamePathBethesdaNet", "");
-            string execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
-
-            uint uLaunchOption = IniFiles.Config.GetUInt("Preferences", "uLaunchOption", 1);
-
-            if (uLaunchOption == 1 || !File.Exists(execPath))
-                System.Diagnostics.Process.Start("bethesdanet://run/20");
-            else
+            get
             {
-                Process pr = new Process();
-                pr.StartInfo.FileName = execPath;
-                pr.StartInfo.WorkingDirectory = gamePath;
-                pr.StartInfo.UseShellExecute = false;
-                pr.Start();
+                return new List<RadioButton> {
+                    radioButtonAccount1,
+                    radioButtonAccount2,
+                    radioButtonAccount3,
+                    radioButtonAccount4,
+                    radioButtonAccount5,
+                    radioButtonAccount6,
+                    radioButtonAccount7,
+                    radioButtonAccount8,
+                    radioButtonAccount9,
+                    radioButtonAccount10,
+                    radioButtonAccount11,
+                    radioButtonAccount12,
+                    radioButtonAccount13,
+                    radioButtonAccount14,
+                    radioButtonAccount15,
+                    radioButtonAccount16
+                };
             }
         }
 
-        private void launchViaBethesdanetPTSToolStripMenuItem_Click(object sender, EventArgs e)
+        // Show password:
+        private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
         {
-            // Launch Bethesda.net (PTS) version:
-            string gamePath = IniFiles.Config.GetString("Preferences", "sGamePathBethesdaNetPTS", "");
-            string execPath = Path.GetFullPath(Path.Combine(gamePath, "Fallout76.exe"));
+            // https://stackoverflow.com/questions/8185747/how-can-i-unmask-password-text-box-and-mask-it-back-to-password
+            this.textBoxPassword.UseSystemPasswordChar = !this.checkBoxShowPassword.Checked;
+            this.textBoxPassword.PasswordChar = !this.checkBoxShowPassword.Checked ? '\u2022' : '\0';
+        }
 
-            uint uLaunchOption = IniFiles.Config.GetUInt("Preferences", "uLaunchOption", 1);
-
-            if (uLaunchOption == 1 || !File.Exists(execPath))
-                System.Diagnostics.Process.Start("bethesdanet://run/57");
+        private void textBoxUserName_TextChanged(object sender, EventArgs e)
+        {
+            int index = GetSelectedAccountProfileRadiobuttonIndex();
+            if (this.textBoxUserName.Text == "")
+            {
+                IniFiles.Config.Remove("Login", $"s76UserName{index}");
+                IniFiles.F76Custom.Remove("Login", "s76UserName");
+            }
             else
             {
-                Process pr = new Process();
-                pr.StartInfo.FileName = execPath;
-                pr.StartInfo.WorkingDirectory = gamePath;
-                pr.StartInfo.UseShellExecute = false;
-                pr.Start();
+                IniFiles.Config.Set("Login", $"s76UserName{index}", this.textBoxUserName.Text);
+                IniFiles.F76Custom.Set("Login", "s76UserName", this.textBoxUserName.Text);
             }
         }
 
-
-
-        // Check, if *.ini files have been changed:
-        private void timerCheckFiles_Tick(object sender, EventArgs e)
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
         {
-            // TODO: Do we reeeeaaally need this?
-            // Check every 5 seconds, if files have been modified:
-            /*if (IniFiles.FilesHaveBeenModified())
+            int index = GetSelectedAccountProfileRadiobuttonIndex();
+            if (this.textBoxPassword.Text == "")
             {
-                IniFiles.UpdateLastModifiedDates();
-
-                // Don't prompt, if Fallout 76 is running....
-                if (Shared.GameEdition == GameEdition.MSStore ?
-                        //!Utils.IsProcessRunning("Project76_GamePass") :
-                        !Utils.IsProcessRunning("Project76") :
-                        !Utils.IsProcessRunning("Fallout76"))
-                    MsgBox.Get("iniFilesModified").Popup(MessageBoxIcon.Warning);
-            }*/
+                IniFiles.Config.Remove("Login", $"s76Password{index}");
+                IniFiles.F76Custom.Remove("Login", "s76Password");
+            }
+            else
+            {
+                IniFiles.Config.Set("Login", $"s76Password{index}", this.textBoxPassword.Text);
+                IniFiles.F76Custom.Set("Login", "s76Password", this.textBoxPassword.Text);
+            }
         }
 
-        private void linkLabelAttribution_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        // If a radiobuttons gets checked, load username and password of a profile.
+        private void radioButtonAccount_CheckedChanged(object sender, EventArgs e)
         {
-            Utils.OpenNotepad(@"Attribution.txt");
+            int index = GetSelectedAccountProfileRadiobuttonIndex();
+            IniFiles.Config.Set("Login", "uActiveAccountProfile", index);
+            if (index == 0)
+            {
+                this.textBoxUserName.Text = IniFiles.GetString("Login", "s76UserName", "");
+                this.textBoxPassword.Text = IniFiles.GetString("Login", "s76Password", "");
+            }
+            else
+            {
+                this.textBoxUserName.Text = IniFiles.Config.GetString("Login", $"s76UserName{index}", "");
+                this.textBoxPassword.Text = IniFiles.Config.GetString("Login", $"s76Password{index}", "");
+            }
         }
 
-        private void linkLabelWhatsNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private int GetSelectedAccountProfileRadiobuttonIndex()
         {
-            ShowWhatsNew();
+            int index = 1;
+            foreach (RadioButton rbutton in accountProfileRadioButtons)
+            {
+                if (rbutton.Checked)
+                    break;
+                index++;
+            }
+            if (index > accountProfileRadioButtons.Count)
+                index = 0;
+            return index;
+        }
+
+        private void SetSelectedAccountProfileRadiobuttonIndex(int index)
+        {
+            if (index <= 0)
+            {
+                accountProfileRadioButtons[0].Checked = true;
+                return;
+            }
+            accountProfileRadioButtons[index - 1].Checked = true;
+        }
+
+        // Assigns event handler to radiobuttons (Account #1, Account #2, ...):
+        private void InitAccountProfileRadiobuttons()
+        {
+            foreach (RadioButton rbutton in accountProfileRadioButtons)
+                rbutton.CheckedChanged += radioButtonAccount_CheckedChanged;
+        }
+
+        // Gets current account profile and sets the according radiobutton
+        private void LoadAccountProfile()
+        {
+            int index = IniFiles.Config.GetInt("Login", "uActiveAccountProfile", 0);
+            SetSelectedAccountProfileRadiobuttonIndex(index);
+        }
+        #endregion
+
+        #region Custom tab
+
+        private string customAddFilePath = null;
+
+        private void comboBoxCustomFile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string fileName;
+            switch (this.comboBoxCustomFile.SelectedIndex)
+            {
+                case 0:
+                    fileName = $"{game.IniPrefix}.add.ini";
+                    break;
+                case 1:
+                    fileName = $"{game.IniPrefix}Prefs.add.ini";
+                    break;
+                case 2:
+                    fileName = $"{game.IniPrefix}Custom.add.ini";
+                    break;
+                default:
+                    return;
+            }
+            this.customAddFilePath = Path.Combine(IniFiles.ParentPath, fileName);
+
+            if (File.Exists(this.customAddFilePath))
+                this.textBoxCustom.Text = File.ReadAllText(this.customAddFilePath);
+            else
+                this.textBoxCustom.Text = "";
+
+            this.buttonCustomSave.Text = this.buttonCustomSave.Text.TrimEnd('*');
+        }
+
+        private void textBoxCustom_TextChanged(object sender, EventArgs e)
+        {
+            if (!this.buttonCustomSave.Text.EndsWith("*"))
+                this.buttonCustomSave.Text += "*";
+        }
+
+        private void buttonCustomSave_Click(object sender, EventArgs e)
+        {
+            if (this.textBoxCustom.Text == "")
+            {
+                if (File.Exists(this.customAddFilePath))
+                    File.Delete(this.customAddFilePath);
+            }
+            else
+            {
+                File.WriteAllText(this.customAddFilePath, this.textBoxCustom.Text);
+            }
+
+            if (this.buttonCustomSave.Text.EndsWith("*"))
+                this.buttonCustomSave.Text = this.buttonCustomSave.Text.TrimEnd('*');
+        }
+
+        private void LoadCustomTab ()
+        {
+            this.comboBoxCustomFile.Items.Clear();
+            this.comboBoxCustomFile.Items.AddRange(new string[] {
+                $"{game.IniPrefix}.ini",
+                $"{game.IniPrefix}Prefs.ini",
+                $"{game.IniPrefix}Custom.ini"
+            });
+            this.comboBoxCustomFile.SelectedIndex = 0;
         }
 
         #endregion
 
-        private void toolStripButtonProfiles_Click(object sender, EventArgs e)
-        {
-            formSettings.ShowDialog();
-        }
-
-        private void linkLabelOpenSettings_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            formSettings.ShowDialog();
-        }
+        #region Resolution combobox
 
         // Detect resolution:
         private void buttonDetectResolution_Click(object sender, EventArgs e)
@@ -1445,7 +1209,7 @@ namespace Fo76ini
         /// </summary>
         /// <param name="size"></param>
         /// <returns>The first occurence if a match was found. Otherwise -1.</returns>
-        private int FindIndexInComboBox(Size size)
+        private int FindIndexInResolutionComboBox(Size size)
         {
             for (int i = 0; i < this.comboBoxResolution.Items.Count; i++)
             {
@@ -1463,14 +1227,17 @@ namespace Fo76ini
                 Convert.ToInt32(numCustomResW.Value),
                 Convert.ToInt32(numCustomResH.Value)
             );
-            int i = FindIndexInComboBox(size);
+            int i = FindIndexInResolutionComboBox(size);
             if (i > -1)
                 this.comboBoxResolution.SelectedIndex = i;
             else
                 this.comboBoxResolution.SelectedIndex = 0;
         }
 
-        // TODO: Changing the back color doesn't seem to change the ini values
+        #endregion
+
+        #region Pipboy
+
         private void buttonPresetFo3Green_Click(object sender, EventArgs e)
         {
             this.colorPreviewPipboy.BackColor = Color.FromArgb(26, 255, 128);
@@ -1514,5 +1281,63 @@ namespace Fo76ini
             this.cameraOverShoulderMeleeCombatAddYTweak.ResetValue();
             LinkedTweaks.LoadValues();
         }
+
+
+        private PictureBox maskedPipScreen;
+        private PictureBox colorizedPipScreen;
+
+        private void InitPipboyScreen()
+        {
+            maskedPipScreen = new PictureBox();
+            maskedPipScreen.Image = Resources.pipboy_preview_fg_masked;
+            maskedPipScreen.SizeMode = this.pictureBoxPipboyPreview.SizeMode;
+            maskedPipScreen.Size = this.pictureBoxPipboyPreview.Size;
+
+            colorizedPipScreen = new PictureBox();
+            colorizedPipScreen.Image = Resources.pipboy_preview_fg;
+            colorizedPipScreen.SizeMode = this.pictureBoxPipboyPreview.SizeMode;
+            colorizedPipScreen.Size = this.pictureBoxPipboyPreview.Size;
+
+            colorizedPipScreen.Controls.Add(maskedPipScreen);
+            this.pictureBoxPipboyPreview.Controls.Add(colorizedPipScreen);
+        }
+
+        private void UpdatePipboyScreen(Color targetColor)
+        {
+            Bitmap bmp = new Bitmap(Resources.pipboy_preview_fg);
+            for (int x = 0; x < bmp.Width; x++)
+            {
+                for (int y = 0; y < bmp.Height; y++)
+                {
+                    Color oldColor = bmp.GetPixel(x, y);
+                    int r = (int)Utils.Clamp(oldColor.R / 255.0 * targetColor.R, 0, 255);
+                    int g = (int)Utils.Clamp(oldColor.G / 255.0 * targetColor.G, 0, 255);
+                    int b = (int)Utils.Clamp(oldColor.B / 255.0 * targetColor.B, 0, 255);
+                    Color newColor = Color.FromArgb(oldColor.A, r, g, b);
+                    bmp.SetPixel(x, y, newColor);
+                }
+            }
+            colorizedPipScreen.Image = bmp;
+        }
+
+        private void colorPreviewPipboy_BackColorChanged(object sender, EventArgs e)
+        {
+            UpdatePipboyScreen(this.colorPreviewPipboy.BackColor);
+        }
+
+        private void buttonPipboyTargetReset_Click(object sender, EventArgs e)
+        {
+            this.numPipboyTargetWidth.Value = 876;
+            this.numPipboyTargetHeight.Value = 700;
+        }
+
+        private void buttonPipboyTargetSetRecommended_Click(object sender, EventArgs e)
+        {
+            this.numPipboyTargetWidth.Value = 1752;
+            this.numPipboyTargetHeight.Value = 1400;
+        }
+
+
+        #endregion
     }
 }

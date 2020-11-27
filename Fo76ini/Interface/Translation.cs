@@ -178,10 +178,7 @@ namespace Fo76ini
         /// <summary>
         /// Add control elements to this list if you want them to not be translated.
         /// </summary>
-        public static List<string> BlackList = new List<string>
-        {
-            "labelModsDeploy" // TODO: Move to formmods.
-        };
+        public static List<string> BlackList = new List<string>{};
 
         private Dictionary<string, string> dictText = new Dictionary<string, string>();
         private Dictionary<string, string> dictTooltip = new Dictionary<string, string>();
@@ -293,7 +290,7 @@ namespace Fo76ini
                 if (xmlTweakDescriptions != null)
                     LinkedTweaks.DeserializeTweakDescriptionList(xmlTweakDescriptions);
                 if (form.ToolTip != null)
-                    LinkedTweaks.SetToolTips(form.ToolTip);
+                    LinkedTweaks.SetToolTips(); // TODO: No need to call it per form anymore
             }
 
             // Call event handler:
@@ -446,17 +443,43 @@ namespace Fo76ini
             xmlRoot.Add(new XAttribute("iso", this.ISO));
             if (this.ISO != "en-US" && this.Author.Length > 0)
                 xmlRoot.Add(new XAttribute("author", this.Author));
+
             if (this.ISO == "en-US")
-                xmlDoc.AddFirst(new XComment("\n     This file is auto-generated on program start.\n     Therefore any changes made to this file will be overriden.\n     You can use this as a template for your own translation, though.\n"));
+                xmlDoc.AddFirst(
+                    new XComment("\n" +
+                    "     This file is auto-generated on program start.\n" +
+                    "     Therefore any changes made to this file will be overwritten.\n" +
+                    "     You can use this as a template for your own translation, though.\n" +
+                    "\n" +
+                    "     If you need help with translating, you can find a guide here:\n" +
+                    "     https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations\n"));
+            else
+                xmlDoc.AddFirst(
+                    new XComment("\n" +
+                    "     This is a template that contains some of the already translated elements.\n" +
+                    "     You can rename it from \"*.template.xml\" to \"*.xml\" and translate the added elements.\n" +
+                    "\n" +
+                    "     If you need help with translating, you can find a guide here:\n" +
+                    "     https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations\n"));
+
             xmlRoot.Add(new XAttribute("version", version));
             xmlDoc.Add(xmlRoot);
 
             // Serialize external stuff:
             // TODO: Find a way to remove the references, plz:
-            xmlRoot.Add(Localization.SerializeStrings());
-            xmlRoot.Add(DropDown.SerializeAll());
-            xmlRoot.Add(MsgBox.SerializeAll());
-            xmlRoot.Add(LinkedTweaks.SerializeTweakDescriptionList());
+            XElement xmlStrings = Localization.SerializeStrings();
+            XElement xmlDropDowns = DropDown.SerializeAll();
+            XElement xmlMsgBoxes = MsgBox.SerializeAll();
+            XElement xmlDescriptions = LinkedTweaks.SerializeTweakDescriptionList();
+            string separator = "".PadLeft(150, '*');
+            xmlStrings.AddFirst(new XComment($"\n        Strings\n        {separator}\n        Basically little text snippets that can be used everywhere.\n    "));
+            xmlDropDowns.AddFirst(new XComment($"\n        Dropdowns\n        {separator}\n        Make sure that the amount of options stays the same.\n    "));
+            xmlMsgBoxes.AddFirst(new XComment($"\n        Message boxes\n        {separator}\n        The {"{0}"} is a placeholder, btw.\n    "));
+            xmlDescriptions.AddFirst(new XComment($"\n        Descriptions\n        {separator}\n        These are the descriptions of almost all tweaks.\n        They appear in tool tips, when the user hovers over a tweak with the mouse cursor.\n    "));
+            xmlRoot.Add(xmlStrings);
+            xmlRoot.Add(xmlDropDowns);
+            xmlRoot.Add(xmlMsgBoxes);
+            xmlRoot.Add(xmlDescriptions);
 
             ignoreTooltipsOfTheseControls = LinkedTweaks.GetListOfLinkedControlNames();
 
@@ -464,6 +487,7 @@ namespace Fo76ini
             foreach (LocalizedForm form in Localization.LocalizedForms)
             {
                 XElement xmlForm = new XElement(form.Form.Name, new XAttribute("title", form.Form.Text));
+                xmlForm.AddFirst(new XComment($"\n        {form.Form.Name}\n        {separator}\n        {form.Form.Text}\n    "));
                 SerializeControls(xmlForm, form.Form, form.ToolTip);
                 foreach (Control control in form.SpecialControls)
                     SerializeControl(xmlForm, control, form.ToolTip);
@@ -485,6 +509,14 @@ namespace Fo76ini
             {
                 XElement subElement = new XElement(subControl.GetType().Name);
                 bool addSubElement = false;
+
+                // Add (hopefully) helpful comment?
+                if (subControl is TabPage)
+                    subElement.Add(new XComment($" ********** Tab \"{subControl.Text}\" ********** "));
+                else if (subControl is GroupBox)
+                    subElement.Add(new XComment($" Group \"{subControl.Text}\" "));
+                else if (subControl is MenuStrip)
+                    subElement.Add(new XComment($" Menu "));
 
                 // Add text:
                 if (subControl.Text != null &&

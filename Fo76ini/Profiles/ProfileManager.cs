@@ -9,7 +9,7 @@ using System.Xml.Linq;
 namespace Fo76ini.Profiles
 {
     /// <summary>
-    /// Loads, saves, and manages game instances and profiles.
+    /// Loads, saves, and manages game profiles.
     /// </summary>
     public static class ProfileManager
     {
@@ -130,19 +130,19 @@ namespace Fo76ini.Profiles
                 // Do we have legacy profiles?
                 if (IniFiles.Config != null && IniFiles.Config.Exists("Preferences", "uGameEdition"))
                 {
-                    // then convert them.
+                    // then convert them:
                     ConvertLegacyFormat();
                 }
                 else
                 {
-                    // else create a new game + profile from scratch:
-                    Profile defaultProfile = new Profile();
-                    defaultProfile.CopyINI();
-
+                    // else create a new game profile from scratch:
                     GameInstance defaultGame = new GameInstance();
-                    defaultGame.AddProfile(defaultProfile);
-                    defaultGame.SelectProfile(defaultProfile);
-
+                    if (File.Exists(Path.Combine(IniFiles.ParentPath, "Project76.ini")))
+                    {
+                        // "Project76.ini" exists, which means the user has it from the Microsoft Store
+                        defaultGame.Edition = GameEdition.MSStore;
+                        defaultGame.SetDefaultSettings(GameEdition.MSStore);
+                    }
                     AddGame(defaultGame);
                     SelectGame(defaultGame);
                 }
@@ -168,79 +168,56 @@ namespace Fo76ini.Profiles
             // uGameEdition
 
             // Iterate over each possible key:
+            List<GameEdition> editions = new List<GameEdition> { GameEdition.BethesdaNet, GameEdition.Steam, GameEdition.BethesdaNetPTS, GameEdition.MSStore };
             List<string> gamePathKeys = new List<string>() { "sGamePathBethesdaNet", "sGamePathSteam", "sGamePathBethesdaNetPTS", "sGamePathMSStore" };
             for (int i = 0; i < gamePathKeys.Count; i++)
             {
-                // If key exists:
-                if (IniFiles.Config.Exists("Preferences", gamePathKeys[i]))
+                // Get the game path. Skip if empty.
+                string gamePath = IniFiles.Config.GetString("Preferences", gamePathKeys[i], "");
+                if (gamePath == "")
+                    continue;
+
+                GameInstance game = new GameInstance();
+                game.GamePath = gamePath;
+                game.Edition = editions[i]; // (GameEdition)(i + 1)
+                game.SetDefaultSettings(game.Edition);
+
+                // If the index matches uGameEdition, then this is the default game edition:
+                bool selected = IniFiles.Config.GetUInt("Preferences", "uGameEdition", 0) - 1 == i;
+
+                if (selected)
                 {
-                    // If the index matches uGameEdition, then this is the default game edition:
-                    bool selected = IniFiles.Config.GetUInt("Preferences", "uGameEdition", 0) - 1 == i;
-
-                    // Get the game path. Skip if empty.
-                    string gamePath = IniFiles.Config.GetString("Preferences", gamePathKeys[i]);
-                    if (gamePath == "")
-                        continue;
-
-                    GameInstance game = ConvertLegacyFormat(
-                        IniFiles.Config.GetString("Preferences", gamePathKeys[i]),
-                        selected,
-                        (GameEdition)(i + 1),
-                        IniFiles.Config.GetUInt("Preferences", "uLaunchOption", 1)
-                    );
-
-                    AddGame(game);
-                    if (selected)
-                        SelectGame(game);
+                    uint uLaunchOption = IniFiles.Config.GetUInt("Preferences", "uLaunchOption", 1);
+                    game.PreferredLaunchOption = uLaunchOption == 2 ? LaunchOption.RunExec : LaunchOption.OpenURL;
                 }
+
+                switch (game.Edition)
+                {
+                    case GameEdition.BethesdaNet:
+                        game.Title = "Bethesda.net";
+                        break;
+                    case GameEdition.BethesdaNetPTS:
+                        game.Title = "Bethesda.net (PTS)";
+                        break;
+                    case GameEdition.Steam:
+                        game.Title = "Steam";
+                        break;
+                    case GameEdition.MSStore:
+                        game.Title = "Microsoft Store";
+                        break;
+                }
+
+                AddGame(game);
+                if (selected)
+                    SelectGame(game);
             }
-        }
-
-        private static GameInstance ConvertLegacyFormat(string sGamePath, bool selected, GameEdition edition, uint uLaunchOption)
-        {
-            GameInstance game = new GameInstance();
-            game.GamePath = sGamePath;
-            if (selected)
-                game.PreferredLaunchOption = uLaunchOption == 2 ? LaunchOption.RunExec : LaunchOption.OpenURL;
-
-            game.Edition = edition;
-            game.SetDefaultSettings(edition);
-
-            switch (edition)
-            {
-                case GameEdition.BethesdaNet:
-                    game.Title = "Bethesda.net";
-                    break;
-                case GameEdition.BethesdaNetPTS:
-                    game.Title = "Bethesda.net (PTS)";
-                    break;
-                case GameEdition.Steam:
-                    game.Title = "Steam";
-                    break;
-                case GameEdition.MSStore:
-                    game.Title = "Microsoft Store";
-                    break;
-            }
-
-            Profile defaultProfile = new Profile();
-            defaultProfile.CopyINI();
-            game.AddProfile(defaultProfile);
-            game.SelectProfile(defaultProfile);
-
-            return game;
         }
 
         private static ProfileEventArgs BuildProfileEventArgs()
         {
             ProfileEventArgs args = new ProfileEventArgs();
             args.ActiveGameInstance = SelectedGame;
-            args.ActiveProfile = SelectedGame.SelectedProfile;
             args.GameIndex = SelectedGameIndex;
-            if (args.ActiveProfile != null)
-            {
-                args.ProfileIndex = SelectedGame.SelectedProfileIndex;
-                args.ProfileGuid = SelectedGame.SelectedProfile.guid;
-            }
             return args;
         }
     }
@@ -250,9 +227,6 @@ namespace Fo76ini.Profiles
     public class ProfileEventArgs : EventArgs
     {
         public GameInstance ActiveGameInstance;
-        public Profile ActiveProfile;
         public int GameIndex;
-        public int ProfileIndex;
-        public Guid ProfileGuid;
     }
 }

@@ -381,11 +381,11 @@ namespace Fo76ini
             if (galleryContextMenuItems.Count == 1)
             {
                 string fileName = Path.GetFileName(galleryImagePaths[galleryContextMenuItems[0]]);
-                ok = MsgBox.Get("galleryDeleteScreenshot").FormatTitle(fileName).FormatText(fileName).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+                ok = MsgBox.Get("deleteQuestion").FormatTitle(fileName).FormatText(fileName).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
             }
             else
             {
-                ok = MsgBox.Get("galleryDeleteScreenshots").FormatTitle(galleryContextMenuItems.Count.ToString()).FormatText(galleryContextMenuItems.Count.ToString()).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+                ok = MsgBox.Get("deleteMultipleQuestion").FormatTitle(galleryContextMenuItems.Count.ToString()).FormatText(galleryContextMenuItems.Count.ToString()).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
             }
 
             if (ok)

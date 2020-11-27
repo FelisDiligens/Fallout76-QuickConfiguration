@@ -27,16 +27,5 @@ namespace Fo76ini
         }
         // TODO: FormMods needs OnLanguageChanged code.
         // formMods.UpdateUI(); // TODO: Changing the language before loading mods crashes the tool on startup.
-
-        // TODO: Rewrite "Download / update language files" code
-        private void buttonDownloadLanguages_Click(object sender, EventArgs e)
-        {
-            /*if (this.backgroundWorkerDownloadLanguages.IsBusy)
-                return;
-            this.groupBoxLocalization.Focus();
-            this.buttonDownloadLanguages.Enabled = false;
-            this.pictureBoxSpinnerDownloadLanguages.Visible = true;
-            this.backgroundWorkerDownloadLanguages.RunWorkerAsync();*/
-        }
     }
 }

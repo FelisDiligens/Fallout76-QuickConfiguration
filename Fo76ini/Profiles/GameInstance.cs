@@ -35,18 +35,6 @@ namespace Fo76ini.Profiles
         public string ExecParameters = "";
         public string LauncherURL;
         public LaunchOption PreferredLaunchOption = LaunchOption.OpenURL;
-        public List<Profile> Profiles = new List<Profile>();
-        public int SelectedProfileIndex = -1;
-
-        public Profile SelectedProfile
-        {
-            get
-            {
-                if (SelectedProfileIndex >= 0)
-                    return Profiles[SelectedProfileIndex];
-                return null;
-            }
-        }
 
         /// <summary>
         /// Sets the default settings (such as executable name, ini prefix, and launcher url) for the game edition.
@@ -101,13 +89,6 @@ namespace Fo76ini.Profiles
                 new XElement("LaunchOption", PreferredLaunchOption.ToString())
             );
 
-            XElement xmlProfiles = new XElement("Profiles",
-                new XAttribute("selected", this.SelectedProfileIndex)
-            );
-            foreach (Profile profile in Profiles)
-                xmlProfiles.Add(profile.Serialize());
-            xmlGameInstance.Add(xmlProfiles);
-
             return xmlGameInstance;
         }
 
@@ -127,10 +108,6 @@ namespace Fo76ini.Profiles
 
             if (Enum.TryParse(xmlGameInstance.Element("LaunchOption").Value, out LaunchOption launchOption))
                 game.PreferredLaunchOption = launchOption;
-
-            game.SelectedProfileIndex = Convert.ToInt32(xmlGameInstance.Element("Profiles").Attribute("selected").Value);
-            foreach (XElement xmlProfile in xmlGameInstance.Element("Profiles").Descendants("Profile"))
-                game.AddProfile(Profile.Deserialize(xmlProfile));
 
             return game;
         }
@@ -156,7 +133,7 @@ namespace Fo76ini.Profiles
                     break;
                 case LaunchOption.RunExec:
                     Process pr = new Process();
-                    pr.StartInfo.FileName = this.ExecutableName;
+                    pr.StartInfo.FileName = Path.Combine(this.GamePath, this.ExecutableName);
                     pr.StartInfo.WorkingDirectory = this.GamePath;
                     pr.StartInfo.Arguments = this.ExecParameters;
                     pr.StartInfo.UseShellExecute = false;
@@ -179,28 +156,6 @@ namespace Fo76ini.Profiles
         public bool ValidateGamePath()
         {
             return ValidateGamePath(GamePath);
-        }
-
-        public void AddProfile(Profile profile)
-        {
-            this.Profiles.Add(profile);
-        }
-
-        public void RemoveProfile(Profile profile)
-        {
-            this.Profiles.Remove(profile);
-        }
-
-        public void SelectProfile(Profile profile)
-        {
-            this.SelectedProfileIndex = Profiles.FindIndex((Profile search) => search == profile);
-        }
-
-        public void DeleteProfiles()
-        {
-            foreach (Profile profile in this.Profiles)
-                profile.DeleteFolder();
-            this.Profiles.Clear();
         }
     }
 }

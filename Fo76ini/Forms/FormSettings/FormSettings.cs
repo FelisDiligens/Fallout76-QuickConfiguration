@@ -37,6 +37,18 @@ namespace Fo76ini.Forms.FormSettings
             // Assign a dropdown menu to hold languages:
             Localization.AssignDropDown(this.comboBoxLanguage);
 
+            Translation.BlackList.AddRange(new string[] {
+                "buttonDownloadLanguages",
+                "buttonRefreshLanguage",
+                "labelNMUserID",
+                "labelNMHourlyRateLimit",
+                "labelNMAPIKeyStatus",
+                "labelNMUserName",
+                "labelNMDailyRateLimitReset",
+                "labelNMMembership",
+                "labelNMDailyRateLimit"
+            });
+
             // Link tweaks
             LinkInfo();
             LinkControlsToTweaks();
@@ -53,6 +65,8 @@ namespace Fo76ini.Forms.FormSettings
             LinkedTweaks.LoadValues();
             UpdateGamesTab();
             RefreshNMUI();
+            if (IniFiles.Config.GetBool("NexusMods", "bAutoUpdateProfile", true))
+                UpdateNMProfile();
         }
 
         private void FormSettings_FormClosing(object sender, FormClosingEventArgs e)
@@ -70,11 +84,11 @@ namespace Fo76ini.Forms.FormSettings
 
         public void LinkInfo()
         {
-            LinkedTweaks.LinkInfo(checkBoxReadOnly, iniReadOnlyTweak);
-            LinkedTweaks.LinkInfo(checkBoxAutoApply, autoApplyTweak);
-            LinkedTweaks.LinkInfo(checkBoxIgnoreUpdates, ignoreUpdatesTweak);
-            LinkedTweaks.LinkInfo(checkBoxPlayNotificationSound, playNotificationSoundsTweak);
-            LinkedTweaks.LinkInfo(checkBoxQuitOnGameLaunch, toolQuitOnLaunchTweak);
+            LinkedTweaks.LinkInfo(checkBoxReadOnly, toolTip, iniReadOnlyTweak);
+            LinkedTweaks.LinkInfo(checkBoxAutoApply, toolTip, autoApplyTweak);
+            LinkedTweaks.LinkInfo(checkBoxIgnoreUpdates, toolTip, ignoreUpdatesTweak);
+            LinkedTweaks.LinkInfo(checkBoxPlayNotificationSound, toolTip, playNotificationSoundsTweak);
+            LinkedTweaks.LinkInfo(checkBoxQuitOnGameLaunch, toolTip, toolQuitOnLaunchTweak);
         }
 
         public void LinkControlsToTweaks()
@@ -132,10 +146,24 @@ namespace Fo76ini.Forms.FormSettings
                     }*/
 
                     // ... and update the settings:
-                    this.radioButtonEditionBethesdaNet.Checked = game.Edition == GameEdition.BethesdaNet;
-                    this.radioButtonEditionBethesdaNetPTS.Checked = game.Edition == GameEdition.BethesdaNetPTS;
-                    this.radioButtonEditionSteam.Checked = game.Edition == GameEdition.Steam;
-                    this.radioButtonEditionMSStore.Checked = game.Edition == GameEdition.MSStore;
+                    switch (game.Edition)
+                    {
+                        case GameEdition.BethesdaNet:
+                            this.radioButtonEditionBethesdaNet.Checked = true;
+                            break;
+                        case GameEdition.BethesdaNetPTS:
+                            this.radioButtonEditionBethesdaNetPTS.Checked = true;
+                            break;
+                        case GameEdition.Steam:
+                            this.radioButtonEditionSteam.Checked = true;
+                            break;
+                        case GameEdition.MSStore:
+                            this.radioButtonEditionMSStore.Checked = true;
+                            break;
+                        default:
+                            this.radioButtonEditionUnknown.Checked = true;
+                            break;
+                    }
 
                     this.radioButtonLaunchViaLink.Checked = game.PreferredLaunchOption == LaunchOption.OpenURL;
                     this.radioButtonLaunchViaExecutable.Checked = game.PreferredLaunchOption == LaunchOption.RunExec;
@@ -218,6 +246,14 @@ namespace Fo76ini.Forms.FormSettings
                 return;
             ProfileManager.SelectedGame.Edition = GameEdition.MSStore;
             ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.MSStore);
+            UpdateGamesTab();
+        }
+
+        private void radioButtonEditionUnknown_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+            ProfileManager.SelectedGame.Edition = GameEdition.Unknown;
             UpdateGamesTab();
         }
 
@@ -359,9 +395,11 @@ namespace Fo76ini.Forms.FormSettings
                 return;
             }
 
-            if (MsgBox.Get("deleteQuestion").FormatText(ProfileManager.SelectedGame.Title).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MsgBox.Get("deleteQuestion")
+                .FormatTitle(ProfileManager.SelectedGame.Title)
+                .FormatText(ProfileManager.SelectedGame.Title)
+                .Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                ProfileManager.SelectedGame.DeleteProfiles();
                 ProfileManager.RemoveGame(ProfileManager.SelectedGame);
                 ProfileManager.SelectedGameIndex -= 1;
                 UpdateGamesTab();
@@ -405,41 +443,38 @@ namespace Fo76ini.Forms.FormSettings
             // Download / update languages:
             try
             {
-                System.Net.WebClient wc = new System.Net.WebClient();
+                WebClient wc = new WebClient();
                 wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.BypassCache);
 
-                byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/list.txt");
+                byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Translations/list.txt");
                 string encoded = Encoding.UTF8.GetString(raw).Trim();
 
                 string[] list = encoded.Split('\n', ',');
 
                 foreach (string file in list)
                 {
-                    wc.DownloadFile("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/" + file, Path.Combine(Localization.LanguageFolder, file));
+                    wc.DownloadFile("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Translations/" + file, Path.Combine(Localization.LanguageFolder, file));
                 }
 
                 errorMessageDownloadLanguages = null;
                 messageDownloadLanguages = string.Join(", ", list);
-                //MsgBox.Get("downloadLanguagesFinished").FormatText(String.Join(", ", list)).Popup(MessageBoxIcon.Information);
             }
             catch (WebException ex)
             {
                 errorMessageDownloadLanguages = ex.ToString();
                 messageDownloadLanguages = null;
-                //MsgBox.Get("downloadLanguagesFailed").FormatText(ex.ToString()).Popup(MessageBoxIcon.Error);
             }
             catch
             {
                 errorMessageDownloadLanguages = "Unknown error";
                 messageDownloadLanguages = null;
-                //MsgBox.Get("downloadLanguagesFailed").FormatText("Unknown error").Popup(MessageBoxIcon.Error);
             }
         }
 
         private void backgroundWorkerDownloadLanguages_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (errorMessageDownloadLanguages != null)
-                MsgBox.Get("downloadLanguagesFailed").FormatText(errorMessageDownloadLanguages).Popup(MessageBoxIcon.Error);
+                MsgBox.Get("failed").FormatText("Downloading language files failed.\n" + errorMessageDownloadLanguages).Popup(MessageBoxIcon.Error);
             else
                 MsgBox.Get("downloadLanguagesFinished").FormatText(messageDownloadLanguages).Popup(MessageBoxIcon.Information);
             this.buttonDownloadLanguages.Enabled = true;
@@ -555,13 +590,13 @@ namespace Fo76ini.Forms.FormSettings
 
         private void buttonNWLogout_Click(object sender, EventArgs e)
         {
-            if (MsgBox.Get("nexusModsRemoveProfile").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MsgBox.Get("areYouSure").FormatText("Do you really want to remove your profile?").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.pictureBoxNMProfilePicture.Image = Resources.user_white;
                 this.textBoxAPIKey.Text = "";
                 NexusMods.Profile.Remove();
                 RefreshNMUI();
-                MsgBox.Get("nexusModsRemoveProfileSuccess").Popup(MessageBoxIcon.Information);
+                MsgBox.Get("done").FormatText("Logged out").Popup(MessageBoxIcon.Information);
             }
         }
 
@@ -569,28 +604,25 @@ namespace Fo76ini.Forms.FormSettings
         {
             // TODO: Simplify this, add new msgbox
 
-            if (MsgBox.Get("nexusModsRemoveRemoteInfo").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MsgBox.Get("areYouSure").FormatText("Do you really want to delete all remote information?").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 NexusMods.ClearRemoteInfo();
                 // TODO: UpdateModList?
                 //this.UpdateModList();
-                MsgBox.Get("nexusModsRemoveRemoteInfoSuccess").Popup(MessageBoxIcon.Information);
-            }
 
-            if (MsgBox.Get("nexusModsDeleteThumbnails").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
                 // TODO: Make this a method of NexusMods
                 try
                 {
                     string path = Path.Combine(NexusMods.ThumbnailsPath);
                     if (Directory.Exists(path))
                         Directory.Delete(path, true);
-                    MsgBox.Get("nexusModsDeleteThumbnailsSuccess").Popup(MessageBoxIcon.Information);
                 }
                 catch
                 {
-                    MsgBox.Get("nexusModsDeleteThumbnailsFailed").Popup(MessageBoxIcon.Error);
+                    // Uhh....
                 }
+
+                MsgBox.Get("done").FormatText("Removed remote information").Popup(MessageBoxIcon.Information);
             }
         }
 

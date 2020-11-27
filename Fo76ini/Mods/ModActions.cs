@@ -1,4 +1,5 @@
 ﻿using Fo76ini.Utilities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -119,16 +120,18 @@ namespace Fo76ini.Mods
             mod.Frozen = false;
         }
 
-        public static void ManipulateModFolder(ManagedMod mod)
+        public static void ManipulateModFolder(ManagedMod mod, Action<Progress> ProgressChanged = null)
         {
             string managedFolderPath = mod.ManagedFolderPath;
             foreach (string path in Directory.EnumerateFiles(managedFolderPath))
             {
+                // TODO: Install as frozen by default?
                 // If a *.ba2 archive was found, extract it:
                 if (path.EndsWith(".ba2"))
                 {
                     try
                     {
+                        ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {Path.GetFileName(path)}"));
                         Archive2.Extract(path, managedFolderPath);
                         File.Delete(path);
                     }
@@ -137,6 +140,8 @@ namespace Fo76ini.Mods
             }
 
             //String[] typicalFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx" };
+
+            ProgressChanged?.Invoke(Progress.Indetermined("Cleaning mod folder up, detecting installation options."));
 
             // Do it two times, because it changes files, so we need to check again.
             for (int i = 0; i < 2; i++)
@@ -183,6 +188,8 @@ namespace Fo76ini.Mods
                     mod.RootFolder = ".";
                 }
             }
+
+            ProgressChanged?.Invoke(Progress.Done("Extracting finished."));
         }
     }
 }

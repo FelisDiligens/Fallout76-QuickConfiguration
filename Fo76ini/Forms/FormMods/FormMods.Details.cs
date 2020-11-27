@@ -296,10 +296,10 @@ namespace Fo76ini
 
         private void buttonModPickRootDir_Click(object sender, EventArgs e)
         {
-            this.folderBrowserDialogPickRootDir.SelectedPath = Path.Combine(Shared.GamePath, "Data"); // TODO: Shared.GamePath in FormMods.Details. REMOVE!
+            this.folderBrowserDialogPickRootDir.SelectedPath = Path.Combine(this.game.GamePath, "Data");
             if (this.folderBrowserDialogPickRootDir.ShowDialog() == DialogResult.OK)
             {
-                string rootFolder = Utils.MakeRelativePath(Shared.GamePath, this.folderBrowserDialogPickRootDir.SelectedPath);
+                string rootFolder = Utils.MakeRelativePath(this.game.GamePath, this.folderBrowserDialogPickRootDir.SelectedPath);
                 this.textBoxModRootDir.Text = rootFolder;
                 this.changedMod.RootFolder = rootFolder;
             }
@@ -356,7 +356,7 @@ namespace Fo76ini
         {
             Thread thread = new Thread(() =>
             {
-                Invoke(() => ProgressBarMarquee());
+                //Invoke(() => ProgressBarMarquee());
                 //Invoke(() => Display("Unfreezing..."));
                 // TODO: Unfreeze
                 /*this.changedMod.Unfreeze(

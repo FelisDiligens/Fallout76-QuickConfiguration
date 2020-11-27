@@ -16,86 +16,96 @@ namespace Fo76ini.Mods
         /// Extracts the archive and adds the mod to the list.
         /// Saves the xml file afterwards.
         /// </summary>
-        public static void InstallArchive(ManagedMods mods, string filePath, bool useSourceBA2Archive)
+        /// <param name="useSourceBA2Archive">When false, creates a new "frozen" mod.</param>
+        public static void InstallArchive(ManagedMods mods, string filePath, bool useSourceBA2Archive = false, Action<Progress> ProgressChanged = null)
         {
-            ManagedMod newMod = ModInstallations.FromArchive(filePath, useSourceBA2Archive);
+            ManagedMod newMod = ModInstallations.FromArchive(mods.GamePath, filePath, useSourceBA2Archive, ProgressChanged);
             mods.Add(newMod);
-            //mods.Save();
+            mods.Save();
+            ProgressChanged?.Invoke(Progress.Done("Mod archive installed."));
         }
 
         /// <summary>
         /// Creates a new mod from any supported archive. (zip, tar, rar, 7z, ba2)
         /// BA2 files can be installed frozen if needed.
         /// </summary>
+        /// <param name="gamePath">Path to the game installation</param>
         /// <param name="filePath">Path to archive</param>
         /// <param name="useSourceBA2Archive">When false, creates a new "frozen" mod.</param>
         /// <returns></returns>
-        public static ManagedMod FromArchive(string filePath, bool useSourceBA2Archive = false)
+        private static ManagedMod FromArchive(string gamePath, string filePath, bool useSourceBA2Archive = false, Action<Progress> ProgressChanged = null)
         {
             // Get path information:
-            filePath = EnsureLongPathSupport(filePath);
-            string fileNameWOEx = Path.GetFileNameWithoutExtension(filePath);
-            string fileExtension = Path.GetExtension(filePath);
+            string longFilePath = EnsureLongPathSupport(filePath);
+            string fileNameWOEx = Path.GetFileNameWithoutExtension(longFilePath);
+            string fileExtension = Path.GetExtension(longFilePath);
 
             // Install mod:
-            ManagedMod mod = new ManagedMod();
-            mod.Title = fileNameWOEx;
-            mod.ArchiveName = fileNameWOEx + ".ba2";
+            ManagedMod newMod = new ManagedMod(gamePath);
+            newMod.Title = fileNameWOEx;
+            newMod.ArchiveName = fileNameWOEx + ".ba2";
 
             // Extract mod:
-            ModInstallations.ExtractArchive(filePath, mod.ManagedFolderPath);
-            // ManipulateModFolder(mod, managedFolderPath, updateProgress);
+            ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {Path.GetFileName(filePath)}"));
+            ModInstallations.ExtractArchive(longFilePath, newMod.ManagedFolderPath);
 
             // Freeze mod conditionally:
             if (useSourceBA2Archive && fileExtension == ".ba2")
             {
                 // Copy *.ba2 into FrozenData:
-                FileInfo frozenPath = new FileInfo(mod.FrozenArchivePath);
+                FileInfo frozenPath = new FileInfo(newMod.FrozenArchivePath);
+                ProgressChanged?.Invoke(Progress.Indetermined($"Copying {Path.GetFileName(filePath)} to {frozenPath.DirectoryName}"));
                 Directory.CreateDirectory(frozenPath.DirectoryName);
-                File.Copy(filePath, frozenPath.FullName, true);
+                File.Copy(longFilePath, frozenPath.FullName, true);
 
-                mod.Frozen = true;
-                mod.Freeze = true;
-                mod.PreviousMethod = ManagedMod.DeploymentMethod.SeparateBA2;
-                mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
+                newMod.Frozen = true;
+                newMod.Freeze = true;
+                newMod.PreviousMethod = ManagedMod.DeploymentMethod.SeparateBA2;
+                newMod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
+            }
+            else
+            {
+                ModActions.ManipulateModFolder(newMod, ProgressChanged);
             }
 
-            return mod;
+            return newMod;
         }
 
         /// <summary>
         /// Copies the folder and adds the mod to the list.
         /// Saves the xml file afterwards.
         /// </summary>
-        public static void InstallFolder(ManagedMods mods, string folderPath)
+        public static void InstallFolder(ManagedMods mods, string folderPath, Action<Progress> ProgressChanged = null)
         {
-            ManagedMod newMod = ModInstallations.FromFolder(folderPath);
+            ManagedMod newMod = ModInstallations.FromFolder(mods.GamePath, folderPath, ProgressChanged);
             mods.Add(newMod);
-            //mods.Save();
+            mods.Save();
+            ProgressChanged?.Invoke(Progress.Done("Mod folder installed."));
         }
 
         /// <summary>
         /// Creates a new mod from a folder.
         /// </summary>
+        /// <param name="gamePath">Path to the game installation</param>
         /// <param name="folderPath">Path to folder</param>
         /// <returns></returns>
-        public static ManagedMod FromFolder(string folderPath)
+        private static ManagedMod FromFolder(string gamePath, string folderPath, Action<Progress> ProgressChanged = null)
         {
             // Get path information:
             folderPath = EnsureLongPathSupport(folderPath);
             string folderName = Path.GetFileName(folderPath);
 
             // Install mod:
-            ManagedMod mod = new ManagedMod();
-            mod.Title = folderName;
-            mod.ArchiveName = folderName + ".ba2";
+            ManagedMod newMod = new ManagedMod(gamePath);
+            newMod.Title = folderName;
+            newMod.ArchiveName = folderName + ".ba2";
 
             // Copy folder:
-            CopyDirectory(folderPath, mod.ManagedFolderPath);
+            CopyDirectory(folderPath, newMod.ManagedFolderPath, ProgressChanged);
 
-            // ManipulateModFolder(mod, managedFolderPath, updateProgress);
+            ModActions.ManipulateModFolder(newMod, ProgressChanged);
 
-            return mod;
+            return newMod;
         }
 
         /// <summary>
@@ -168,16 +178,16 @@ namespace Fo76ini.Mods
         /// <param name="archivePath"></param>
         /// <param name="destinationPath"></param>
         /// <param name="updateProgress"></param>
-        public static void ExtractArchive(string archivePath, string destinationPath, Action<string, int> updateProgress = null)
+        public static void ExtractArchive(string archivePath, string destinationPath, Action<Progress> ProgressChanged = null)
         {
+            // TODO: Make a ModUtilities.cs?
             string filePath = Path.GetFullPath(archivePath);
             string fileName = Path.GetFileName(filePath);
             string fileExtension = Path.GetExtension(filePath);
 
             Directory.CreateDirectory(destinationPath);
 
-            if (updateProgress != null)
-                updateProgress($"Extracting {fileName} ...", -1);
+            ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {fileName} ..."));
 
             if (fileExtension.ToLower() == ".ba2")
             {
@@ -200,6 +210,8 @@ namespace Fo76ini.Mods
                 throw new NotSupportedException($"File type not supported: {fileExtension}");
                 //MsgBox.Get("modsArchiveTypeNotSupported").FormatText(fileExtension).Show(MessageBoxIcon.Error);
             }
+
+            ProgressChanged?.Invoke(Progress.Done("Extracting finished."));
         }
 
         /// <summary>
@@ -207,14 +219,17 @@ namespace Fo76ini.Mods
         /// </summary>
         /// <param name="sourcePath">Path *from* where we copy files.</param>
         /// <param name="destinationPath">Path *to* where we copy files.</param>
-        public static void CopyDirectory(string sourcePath, string destinationPath)
+        public static void CopyDirectory(string sourcePath, string destinationPath, Action<Progress> ProgressChanged = null)
         {
-            DirectoryInfo dir = new DirectoryInfo(sourcePath);
-
             Directory.CreateDirectory(destinationPath);
 
-            foreach (FileInfo file in dir.GetFiles())
+            DirectoryInfo dir = new DirectoryInfo(sourcePath);
+
+            foreach (FileInfo file in dir.EnumerateFiles("*.*", SearchOption.TopDirectoryOnly))
+            {
                 file.CopyTo(Path.Combine(destinationPath, file.Name), true);
+                ProgressChanged?.Invoke(Progress.Indetermined($"Copying {file.Name} ({Utils.GetFormatedSize(file.Length)})"));
+            }
 
             foreach (DirectoryInfo subdir in dir.GetDirectories())
                 CopyDirectory(subdir.FullName, Path.Combine(destinationPath, subdir.Name));

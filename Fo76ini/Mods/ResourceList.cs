@@ -238,12 +238,12 @@ namespace Fo76ini.Mods
         /// <summary>
         /// Removes resources that aren't existing on disk.
         /// </summary>
-        public void CleanUp()
+        public void CleanUp(string gamePath)
         {
             string[] temp = new string[this.Count()];
             this.CopyTo(temp, this.Count());
             foreach (string ba2file in temp)
-                if (!File.Exists(Path.Combine(Shared.GamePath, "Data", ba2file)))
+                if (!File.Exists(Path.Combine(gamePath, "Data", ba2file)))
                     this.Remove(ba2file);
         }
     }

@@ -28,6 +28,7 @@ namespace Fo76ini.Tweaks.Video
 
         public void SetValue(Size value)
         {
+            // TODO: Put iSizeW and iSizeH into Fallout76Custom.ini instead of Prefs.ini: https://www.reddit.com/r/fo76/comments/9z6jan/if_you_change_your_resolution_in/
             IniFiles.F76Prefs.Set("Display", "iSize W", value.Width);
             IniFiles.F76Prefs.Set("Display", "iSize H", value.Height);
         }

@@ -200,6 +200,9 @@ namespace Fo76ini.Utilities
 
         // https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net
         // Copy-paste because, I'm lazy. Don't jugde me! :P
+        /// <summary>
+        /// Formats size in bytes into a string.
+        /// </summary>
         public static string GetFormatedSize(long size)
         {
             string[] sizes = { "B", "KB", "MB", "GB", "TB" };

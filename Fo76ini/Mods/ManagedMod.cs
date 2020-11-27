@@ -161,7 +161,7 @@ namespace Fo76ini.Mods
         /// <summary>
         /// How the mod should get installed. (Pending disk state)
         /// </summary>
-        public DeploymentMethod Method;
+        public DeploymentMethod Method = DeploymentMethod.BundledBA2;
 
         /// <summary>
         /// How it should get compressed on deployment.
@@ -219,7 +219,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public string CurrentArchivePath
         {
-            get { return Path.Combine(Shared.GamePath, "Data", this.ArchiveName); }
+            get { return Path.Combine(GamePath, "Data", this.ArchiveName); }
         }
 
         private string archiveName;
@@ -244,7 +244,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public string ArchivePath
         {
-            get { return Path.Combine(Shared.GamePath, "Data", this.ArchiveName); }
+            get { return Path.Combine(GamePath, "Data", this.ArchiveName); }
         }
 
         /// <summary>
@@ -262,7 +262,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public string ManagedFolderPath
         {
-            get { return Path.Combine(Shared.GamePath, "Mods", ManagedFolderName); }
+            get { return Path.Combine(GamePath, "Mods", ManagedFolderName); }
         }
 
         /// <summary>
@@ -271,7 +271,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public string FrozenDataPath
         {
-            get { return Path.Combine(Shared.GamePath, "FrozenData"); }
+            get { return Path.Combine(GamePath, "FrozenData"); }
         }
 
         /// <summary>
@@ -298,14 +298,17 @@ namespace Fo76ini.Mods
         public string Version = "1.0";
         private string url = "";
         public int ID = -1;
+        public readonly string GamePath;
 
-        public ManagedMod(Guid uuid)
+        public ManagedMod(string gamePath, Guid uuid)
         {
+            this.GamePath = gamePath;
             this.guid = uuid;
         }
 
-        public ManagedMod()
+        public ManagedMod(string gamePath)
         {
+            this.GamePath = gamePath;
             this.guid = Guid.NewGuid();
         }
 
@@ -324,6 +327,7 @@ namespace Fo76ini.Mods
             this.URL = mod.URL;
             this.Version = mod.Version;
             this.guid = mod.guid;
+            this.GamePath = mod.GamePath;
 
 
             /*
@@ -454,9 +458,9 @@ namespace Fo76ini.Mods
             return xmlMod;
         }
 
-        public static ManagedMod Deserialize(XElement xmlMod)
+        public static ManagedMod Deserialize(XElement xmlMod, string GamePath)
         {
-            ManagedMod mod = new ManagedMod(new Guid(xmlMod.Attribute("guid").Value));
+            ManagedMod mod = new ManagedMod(GamePath, new Guid(xmlMod.Attribute("guid").Value));
             mod.Title = xmlMod.Element("Title").Value;
             mod.Version = xmlMod.Element("Version").Value;
 

@@ -52,7 +52,6 @@
             this.endorseModsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showREADMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showModmanagerlogtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,8 +136,9 @@
             this.textBoxsResourceArchive2List = new System.Windows.Forms.TextBox();
             this.labelsResourceArchive2List = new System.Windows.Forms.Label();
             this.tabPageNexusMods = new System.Windows.Forms.TabPage();
-            this.buttonNWEndorseAllMods = new System.Windows.Forms.Button();
-            this.buttonNMUpdateModInfo = new System.Windows.Forms.Button();
+            this.labelNexusModsMovedNotice2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelNexusModsMovedNotice = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialogMod = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialogMod = new System.Windows.Forms.FolderBrowserDialog();
@@ -149,8 +149,6 @@
             this.folderBrowserDialogPickRootDir = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorkerRetrieveModInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
-            this.labelNexusModsMovedNotice = new System.Windows.Forms.Label();
-            this.linkLabelOpenSettings = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -166,6 +164,7 @@
             this.groupBoxModsBehavior.SuspendLayout();
             this.groupBoxLists.SuspendLayout();
             this.tabPageNexusMods.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -337,24 +336,16 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showREADMEToolStripMenuItem,
             this.showGuideToolStripMenuItem,
             this.logFilesToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // showREADMEToolStripMenuItem
-            // 
-            this.showREADMEToolStripMenuItem.Name = "showREADMEToolStripMenuItem";
-            this.showREADMEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.showREADMEToolStripMenuItem.Text = "Show README";
-            this.showREADMEToolStripMenuItem.Click += new System.EventHandler(this.showREADMEToolStripMenuItem_Click);
-            // 
             // showGuideToolStripMenuItem
             // 
             this.showGuideToolStripMenuItem.Name = "showGuideToolStripMenuItem";
-            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.showGuideToolStripMenuItem.Text = "Show guide";
             this.showGuideToolStripMenuItem.Click += new System.EventHandler(this.showGuideToolStripMenuItem_Click);
             // 
@@ -364,7 +355,7 @@
             this.showModmanagerlogtxtToolStripMenuItem,
             this.showArchive2logtxtToolStripMenuItem});
             this.logFilesToolStripMenuItem.Name = "logFilesToolStripMenuItem";
-            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.logFilesToolStripMenuItem.Text = "Log files";
             // 
             // showModmanagerlogtxtToolStripMenuItem
@@ -567,8 +558,7 @@
             // 
             // labelModDetailsBulk
             // 
-            this.labelModDetailsBulk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelModDetailsBulk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelModDetailsBulk.ForeColor = System.Drawing.Color.Red;
             this.labelModDetailsBulk.Location = new System.Drawing.Point(11, 258);
@@ -591,7 +581,7 @@
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.comboBoxModArchivePreset);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.textBoxModArchiveName);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModArchiveName);
-            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(8, 329);
+            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(8, 325);
             this.groupBoxModDetailsInstallationOptions.Name = "groupBoxModDetailsInstallationOptions";
             this.groupBoxModDetailsInstallationOptions.Size = new System.Drawing.Size(341, 165);
             this.groupBoxModDetailsInstallationOptions.TabIndex = 74;
@@ -727,6 +717,8 @@
             // 
             // labelModUnfreeze
             // 
+            this.labelModUnfreeze.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelModUnfreeze.ForeColor = System.Drawing.Color.Red;
             this.labelModUnfreeze.Location = new System.Drawing.Point(3, 405);
             this.labelModUnfreeze.Name = "labelModUnfreeze";
@@ -1273,10 +1265,9 @@
             // 
             // tabPageNexusMods
             // 
-            this.tabPageNexusMods.Controls.Add(this.linkLabelOpenSettings);
+            this.tabPageNexusMods.Controls.Add(this.labelNexusModsMovedNotice2);
+            this.tabPageNexusMods.Controls.Add(this.pictureBox1);
             this.tabPageNexusMods.Controls.Add(this.labelNexusModsMovedNotice);
-            this.tabPageNexusMods.Controls.Add(this.buttonNWEndorseAllMods);
-            this.tabPageNexusMods.Controls.Add(this.buttonNMUpdateModInfo);
             this.tabPageNexusMods.Location = new System.Drawing.Point(4, 22);
             this.tabPageNexusMods.Name = "tabPageNexusMods";
             this.tabPageNexusMods.Padding = new System.Windows.Forms.Padding(3);
@@ -1285,37 +1276,41 @@
             this.tabPageNexusMods.Text = "NexusMods";
             this.tabPageNexusMods.UseVisualStyleBackColor = true;
             // 
-            // buttonNWEndorseAllMods
+            // labelNexusModsMovedNotice2
             // 
-            this.buttonNWEndorseAllMods.BackColor = System.Drawing.Color.Crimson;
-            this.buttonNWEndorseAllMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNWEndorseAllMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNWEndorseAllMods.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNWEndorseAllMods.Image = global::Fo76ini.Properties.Resources.heart_48;
-            this.buttonNWEndorseAllMods.Location = new System.Drawing.Point(252, 6);
-            this.buttonNWEndorseAllMods.Name = "buttonNWEndorseAllMods";
-            this.buttonNWEndorseAllMods.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNWEndorseAllMods.Size = new System.Drawing.Size(120, 120);
-            this.buttonNWEndorseAllMods.TabIndex = 90;
-            this.buttonNWEndorseAllMods.Text = "Endorse mods";
-            this.buttonNWEndorseAllMods.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNWEndorseAllMods.UseVisualStyleBackColor = false;
+            this.labelNexusModsMovedNotice2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelNexusModsMovedNotice2.Location = new System.Drawing.Point(6, 409);
+            this.labelNexusModsMovedNotice2.Name = "labelNexusModsMovedNotice2";
+            this.labelNexusModsMovedNotice2.Size = new System.Drawing.Size(840, 23);
+            this.labelNexusModsMovedNotice2.TabIndex = 93;
+            this.labelNexusModsMovedNotice2.Text = "Other options such as \"Update mod information\" can be found in the menu under Too" +
+    "ls → NexusMods API.";
+            this.labelNexusModsMovedNotice2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // buttonNMUpdateModInfo
+            // pictureBox1
             // 
-            this.buttonNMUpdateModInfo.BackColor = System.Drawing.Color.Teal;
-            this.buttonNMUpdateModInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMUpdateModInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNMUpdateModInfo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMUpdateModInfo.Image = global::Fo76ini.Properties.Resources.available_updates_48;
-            this.buttonNMUpdateModInfo.Location = new System.Drawing.Point(6, 6);
-            this.buttonNMUpdateModInfo.Name = "buttonNMUpdateModInfo";
-            this.buttonNMUpdateModInfo.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNMUpdateModInfo.Size = new System.Drawing.Size(240, 120);
-            this.buttonNMUpdateModInfo.TabIndex = 78;
-            this.buttonNMUpdateModInfo.Text = "Update mod information";
-            this.buttonNMUpdateModInfo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNMUpdateModInfo.UseVisualStyleBackColor = false;
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::Fo76ini.Properties.Resources.Fo76ini_LDu4jzf2p3;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 259);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(840, 147);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 92;
+            this.pictureBox1.TabStop = false;
+            // 
+            // labelNexusModsMovedNotice
+            // 
+            this.labelNexusModsMovedNotice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelNexusModsMovedNotice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNexusModsMovedNotice.Location = new System.Drawing.Point(6, 89);
+            this.labelNexusModsMovedNotice.Name = "labelNexusModsMovedNotice";
+            this.labelNexusModsMovedNotice.Size = new System.Drawing.Size(840, 167);
+            this.labelNexusModsMovedNotice.TabIndex = 91;
+            this.labelNexusModsMovedNotice.Text = "The NexusMods tab has been moved into the settings window.";
+            this.labelNexusModsMovedNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // openFileDialogMod
             // 
@@ -1357,35 +1352,6 @@
             // 
             this.backgroundWorkerRetrieveModInfo.WorkerReportsProgress = true;
             // 
-            // backgroundWorkerRetrieveProfileInfo
-            // 
-            // 
-            // labelNexusModsMovedNotice
-            // 
-            this.labelNexusModsMovedNotice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelNexusModsMovedNotice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNexusModsMovedNotice.Location = new System.Drawing.Point(6, 231);
-            this.labelNexusModsMovedNotice.Name = "labelNexusModsMovedNotice";
-            this.labelNexusModsMovedNotice.Size = new System.Drawing.Size(840, 54);
-            this.labelNexusModsMovedNotice.TabIndex = 91;
-            this.labelNexusModsMovedNotice.Text = "The NexusMods tab has been moved into the settings window.";
-            this.labelNexusModsMovedNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // linkLabelOpenSettings
-            // 
-            this.linkLabelOpenSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabelOpenSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelOpenSettings.Location = new System.Drawing.Point(6, 285);
-            this.linkLabelOpenSettings.Name = "linkLabelOpenSettings";
-            this.linkLabelOpenSettings.Size = new System.Drawing.Size(840, 26);
-            this.linkLabelOpenSettings.TabIndex = 92;
-            this.linkLabelOpenSettings.TabStop = true;
-            this.linkLabelOpenSettings.Text = "Open settings";
-            this.linkLabelOpenSettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabelOpenSettings.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelOpenSettings_LinkClicked);
-            // 
             // FormMods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1425,6 +1391,7 @@
             this.groupBoxLists.ResumeLayout(false);
             this.groupBoxLists.PerformLayout();
             this.tabPageNexusMods.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -1503,7 +1470,6 @@
         private System.Windows.Forms.ToolStripMenuItem showModmanagerlogtxtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showArchive2logtxtToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBoxFreezeBundledArchives;
-        private System.Windows.Forms.ToolStripMenuItem showREADMEToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBoxModsLoadingGIF;
         private System.Windows.Forms.Panel panelModDetails;
         private System.Windows.Forms.CheckBox checkBoxModDetailsEnabled;
@@ -1534,7 +1500,6 @@
         private System.Windows.Forms.Label labelModURL;
         private System.Windows.Forms.PictureBox pictureBoxModThumbnail;
         private System.Windows.Forms.TabPage tabPageNexusMods;
-        private System.Windows.Forms.Button buttonNMUpdateModInfo;
         private System.Windows.Forms.GroupBox groupBoxModDetailsInstallationOptions;
         private System.Windows.Forms.GroupBox groupBoxModDetailsDetails;
         private System.Windows.Forms.TextBox textBoxModVersion;
@@ -1544,7 +1509,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerRetrieveProfileInfo;
         private System.Windows.Forms.CheckBox checkBoxModsWriteSResourceDataDirsFinal;
         private System.Windows.Forms.Button buttonModDetailsNM;
-        private System.Windows.Forms.Button buttonNWEndorseAllMods;
         private System.Windows.Forms.ToolStripButton toolStripButtonModEndorse;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem saveDEVToolStripMenuItem;
@@ -1554,6 +1518,7 @@
         private System.Windows.Forms.ToolStripMenuItem endorseModsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
         private System.Windows.Forms.Label labelNexusModsMovedNotice;
-        private System.Windows.Forms.LinkLabel linkLabelOpenSettings;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label labelNexusModsMovedNotice2;
     }
 }

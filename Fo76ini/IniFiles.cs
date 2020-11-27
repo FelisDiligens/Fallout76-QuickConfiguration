@@ -35,16 +35,34 @@ namespace Fo76ini
 
         public static void Load(GameInstance game)
         {
-            F76 = new IniFile(Path.Combine(ParentPath, $"{game.IniPrefix}.ini"));
-            F76Prefs = new IniFile(Path.Combine(ParentPath, $"{game.IniPrefix}Prefs.ini"));
-            F76Custom = new IniFile(Path.Combine(ParentPath, $"{game.IniPrefix}Custom.ini"));
-
-            // Fix lists before loading files.
-            FixDuplicateResourceLists();
+            F76 = new IniFile(
+                Path.Combine(ParentPath, $"{game.IniPrefix}.ini"),
+                Path.Combine(Shared.AppInstallationFolder, "DefaultINI", "Fallout76.ini")
+            );
+            F76Prefs = new IniFile(
+                Path.Combine(ParentPath, $"{game.IniPrefix}Prefs.ini"),
+                Path.Combine(Shared.AppInstallationFolder, "DefaultINI", "Medium.ini")
+            );
+            F76Custom = new IniFile(
+                Path.Combine(ParentPath, $"{game.IniPrefix}Custom.ini")
+           );
 
             F76.Load();
             F76Prefs.Load();
             F76Custom.Load();
+
+            FixDuplicateResourceLists();
+        }
+
+        public static bool IsLoaded()
+        {
+            return
+                F76 != null &&
+                F76Prefs != null &&
+                F76Custom != null &&
+                F76.IsLoaded() &&
+                F76Prefs.IsLoaded() &&
+                F76Custom.IsLoaded();
         }
 
         public static void SetINIsReadOnly(bool readOnly)
@@ -111,7 +129,11 @@ namespace Fo76ini
 
         public static bool GetBool(string section, string key, bool defaultValue)
         {
-            return GetString(section, key, defaultValue ? "1" : "0") == "1";
+            string value = GetString(section, key, defaultValue ? "1" : "0");
+            if (IniFile.ValidBoolValues.Contains(value))
+                return value == "1";
+            else
+                return defaultValue;
         }
 
         public static float GetFloat(string section, string key)
@@ -121,7 +143,14 @@ namespace Fo76ini
 
         public static float GetFloat(string section, string key, float defaultValue)
         {
-            return Utils.ToFloat(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            try
+            {
+                return Utils.ToFloat(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            }
+            catch
+            {
+                return defaultValue;
+            }
         }
 
         public static uint GetUInt(string section, string key)
@@ -131,7 +160,14 @@ namespace Fo76ini
 
         public static uint GetUInt(string section, string key, uint defaultValue)
         {
-            return Utils.ToUInt(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            try
+            {
+                return Utils.ToUInt(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            }
+            catch
+            {
+                return defaultValue;
+            }
         }
 
         public static int GetInt(string section, string key)
@@ -141,7 +177,14 @@ namespace Fo76ini
 
         public static int GetInt(string section, string key, int defaultValue)
         {
-            return Utils.ToInt(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            try
+            {
+                return Utils.ToInt(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            }
+            catch
+            {
+                return defaultValue;
+            }
         }
 
         public static long GetLong(string section, string key)
@@ -151,7 +194,14 @@ namespace Fo76ini
 
         public static long GetLong(string section, string key, int defaultValue)
         {
-            return Utils.ToLong(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            try
+            {
+                return Utils.ToLong(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            }
+            catch
+            {
+                return defaultValue;
+            }
         }
 
         /*

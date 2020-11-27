@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Fo76ini.Tweaks.Pipboy
 {
-    class PipboyTargetResolution : ITweak<Size>, ITweakInfo
+    class PipboyTargetResolutionTweak : ITweak<Size>, ITweakInfo
     {
         public string Description => "";
 

@@ -12,7 +12,13 @@ namespace Fo76ini.Tweaks
 {
     public static class LinkedTweaks
     {
-        private static Dictionary<Control, ITweakInfo> LinkedTweakInfos = new Dictionary<Control, ITweakInfo>();
+        private struct LinkedControl
+        {
+            public Control Control;
+            public ToolTip Tip;
+        }
+
+        private static Dictionary<LinkedControl, ITweakInfo> LinkedTweakInfos = new Dictionary<LinkedControl, ITweakInfo>();
         public static Dictionary<string, string> TranslatedDescriptions = new Dictionary<string, string>();
         private static List<Action> SetValueActions = new List<Action>();
 
@@ -22,7 +28,7 @@ namespace Fo76ini.Tweaks
         public static List<string> GetListOfLinkedControlNames()
         {
             return LinkedTweakInfos.Keys
-                .Select(x => x.Name)
+                .Select(x => x.Control.Name)
                 .Where(x => x != "")
                 .ToList();
         }
@@ -58,17 +64,17 @@ namespace Fo76ini.Tweaks
             return toolTipText;
         }
 
-        public static void SetToolTip(ITweakInfo info, Control control, ToolTip tip)
+        private static void SetToolTip(ITweakInfo info, LinkedControl linkedControl)
         {
             string description = info.Description;
             TranslatedDescriptions.TryGetValue(info.Identifier, out description);
-            tip.SetToolTip(control, BuildToolTipText(description, info.AffectedFiles, info.AffectedValues));
+            linkedControl.Tip.SetToolTip(linkedControl.Control, BuildToolTipText(description, info.AffectedFiles, info.AffectedValues));
         }
 
-        public static void SetToolTips(ToolTip tip)
+        public static void SetToolTips()
         {
             foreach (var pair in LinkedTweakInfos)
-                SetToolTip(pair.Value, pair.Key, tip);
+                SetToolTip(pair.Value, pair.Key);
         }
 
         /// <summary>
@@ -76,9 +82,12 @@ namespace Fo76ini.Tweaks
         /// </summary>
         /// <param name="control"></param>
         /// <param name="tweakInfo"></param>
-        public static void LinkInfo(Control control, ITweakInfo tweakInfo)
+        public static void LinkInfo(Control control, ToolTip tip, ITweakInfo tweakInfo)
         {
-            LinkedTweakInfos.Add(control, tweakInfo);
+            LinkedControl linkedControl = new LinkedControl();
+            linkedControl.Control = control;
+            linkedControl.Tip = tip;
+            LinkedTweakInfos.Add(linkedControl, tweakInfo);
 
             if (!TranslatedDescriptions.ContainsKey(tweakInfo.Identifier))
                 TranslatedDescriptions[tweakInfo.Identifier] = tweakInfo.Description;

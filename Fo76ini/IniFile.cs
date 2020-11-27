@@ -6,6 +6,7 @@ using IniParser.Parser;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Fo76ini
@@ -13,6 +14,7 @@ namespace Fo76ini
     public class IniFile
     {
         public readonly string Path;
+        public string DefaultPath; // Fallback to this path, if the actual path doesn't exist. (To load defaults)
 
         public bool IsReadOnly
         {
@@ -36,9 +38,10 @@ namespace Fo76ini
         private Encoding encoding = new UTF8Encoding(false); // UTF-8 without BOM
         //private static readonly System.Globalization.CultureInfo en_US = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-        public IniFile(String path)
+        public IniFile(String path, String defaultPath = null)
         {
             this.Path = path;
+            this.DefaultPath = defaultPath;
 
             // Configuring INI parser
             IniParserConfiguration iniParserConfig = new IniParserConfiguration();
@@ -75,6 +78,8 @@ namespace Fo76ini
             {
                 if (File.Exists(Path))
                     data = this.iniParser.ReadFile(Path, encoding);
+                else if (DefaultPath != null && File.Exists(DefaultPath))
+                    data = this.iniParser.ReadFile(DefaultPath, encoding);
                 else
                     data = new IniData();
             }
@@ -84,6 +89,21 @@ namespace Fo76ini
                 throw new IniParser.Exceptions.ParsingException($"{Path} couldn't be parsed: {e.Message}", e);
             }
             UpdateLastModifiedDate();
+        }
+
+        public bool IsLoaded()
+        {
+            return data != null;
+        }
+
+        public void Merge(IniFile f)
+        {
+            this.data.Merge(f.data);
+        }
+
+        public void Merge(IniData d)
+        {
+            this.data.Merge(d);
         }
 
         public bool FileHasBeenModified()
@@ -145,6 +165,8 @@ namespace Fo76ini
             return data[section][key];
         }
 
+        public static readonly string[] ValidBoolValues = new string[] { "1", "0", "" };
+
         public bool GetBool(string section, string key)
         {
             return GetString(section, key) == "1";
@@ -152,7 +174,11 @@ namespace Fo76ini
 
         public bool GetBool(string section, string key, bool defaultValue)
         {
-            return GetString(section, key, defaultValue ? "1" : "0") == "1";
+            string value = GetString(section, key, defaultValue ? "1" : "0");
+            if (ValidBoolValues.Contains(value))
+                return value == "1";
+            else
+                return defaultValue;
         }
 
         public float GetFloat(string section, string key)
@@ -162,7 +188,14 @@ namespace Fo76ini
 
         public float GetFloat(string section, string key, float defaultValue)
         {
-            return Utils.ToFloat(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            try
+            {
+                return Utils.ToFloat(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            }
+            catch
+            {
+                return defaultValue;
+            }
         }
 
         public uint GetUInt(string section, string key)
@@ -172,7 +205,14 @@ namespace Fo76ini
 
         public uint GetUInt(string section, string key, uint defaultValue)
         {
-            return Utils.ToUInt(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            try
+            {
+                return Utils.ToUInt(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            }
+            catch
+            {
+                return defaultValue;
+            }
         }
 
         public int GetInt(string section, string key)
@@ -182,7 +222,14 @@ namespace Fo76ini
 
         public int GetInt(string section, string key, int defaultValue)
         {
-            return Utils.ToInt(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            try
+            {
+                return Utils.ToInt(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            }
+            catch
+            {
+                return defaultValue;
+            }
         }
 
         public long GetLong(string section, string key)
@@ -192,7 +239,14 @@ namespace Fo76ini
 
         public long GetLong(string section, string key, int defaultValue)
         {
-            return Utils.ToLong(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            try
+            {
+                return Utils.ToLong(GetString(section, key, defaultValue.ToString(Shared.en_US)));
+            }
+            catch
+            {
+                return defaultValue;
+            }
         }
 
         public void Set(string section, string key, string value)

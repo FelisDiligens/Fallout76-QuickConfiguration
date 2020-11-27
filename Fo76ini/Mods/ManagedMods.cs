@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Fo76ini.Interface;
+using Fo76ini.Profiles;
 
 namespace Fo76ini.Mods
 {
@@ -115,7 +116,7 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
-        /// Compares CurrentDiskState with PendingDiskState and returns true, if they're different.
+        /// Compares current disk state and pending disk state and returns true, if they're different.
         /// </summary>
         /// <returns></returns>
         public bool isDeploymentNecessary()
@@ -170,7 +171,7 @@ namespace Fo76ini.Mods
             {
                 try
                 {
-                    ManagedMod mod = ManagedMod.Deserialize(xmlMod);
+                    ManagedMod mod = ManagedMod.Deserialize(xmlMod, GamePath);
                     /*if (!Directory.Exists(mod.GetManagedPath()))
                         continue;*/
                     mods.Add(mod);
@@ -192,7 +193,7 @@ namespace Fo76ini.Mods
             this.Mods.Clear();
             this.Resources.Clear();
 
-            if (!Shared.ValidateGamePath(GamePath))
+            if (!GameInstance.ValidateGamePath(GamePath))
                 return;
 
             // TODO: Wtf does that do? (LoadINILists)

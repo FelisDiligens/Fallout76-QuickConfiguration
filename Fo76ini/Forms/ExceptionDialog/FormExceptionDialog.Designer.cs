@@ -39,6 +39,7 @@
             // 
             // buttonCloseProgram
             // 
+            this.buttonCloseProgram.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCloseProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCloseProgram.Location = new System.Drawing.Point(358, 371);
             this.buttonCloseProgram.Name = "buttonCloseProgram";
@@ -50,6 +51,7 @@
             // 
             // buttonCopyText
             // 
+            this.buttonCopyText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCopyText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCopyText.Location = new System.Drawing.Point(219, 371);
             this.buttonCopyText.Name = "buttonCopyText";
@@ -72,6 +74,9 @@
             // 
             // textBoxDebugText
             // 
+            this.textBoxDebugText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxDebugText.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxDebugText.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxDebugText.Location = new System.Drawing.Point(13, 82);
@@ -103,8 +108,6 @@
             this.Controls.Add(this.buttonCopyText);
             this.Controls.Add(this.buttonCloseProgram);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(520, 450);
             this.MinimumSize = new System.Drawing.Size(520, 450);
             this.Name = "FormExceptionDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

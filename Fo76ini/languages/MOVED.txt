@@ -1,0 +1,2 @@
+I moved this folder from ./Fo76ini/languages to ./Translations
+I'll keep this folder here for backwards-compatibility, though.

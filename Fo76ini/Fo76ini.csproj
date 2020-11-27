@@ -123,6 +123,7 @@
       <DependentUpon>TextPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\Versioning.cs" />
+    <Compile Include="Progress.cs" />
     <Compile Include="Tweaks\Audio\EnableAudioTweak.cs" />
     <Compile Include="Tweaks\Audio\VoiceChatModeTweak.cs" />
     <Compile Include="Tweaks\Audio\VoicePushToTalkEnabledTweak.cs" />
@@ -257,20 +258,11 @@
     <Compile Include="Forms\FormMods\FormMods.Details.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormMods\FormMods.NexusMods.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Forms\FormNexusAPI\FormNexus.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormNexusAPI\FormNexus.Designer.cs">
       <DependentUpon>FormNexus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormProfiles\FormProfiles.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormProfiles\FormProfiles.Designer.cs">
-      <DependentUpon>FormProfiles.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormWhatsNew\FormWhatsNew.cs">
       <SubType>Form</SubType>
@@ -284,7 +276,6 @@
     <Compile Include="Interface\DropDown.cs" />
     <Compile Include="Interface\InvalidXmlException.cs" />
     <Compile Include="Interface\Translation.Shared.cs" />
-    <Compile Include="Profiles\Profile.cs" />
     <Compile Include="Profiles\ProfileManager.cs" />
     <Compile Include="Tweaks\Colors\PipboyColorTweak.cs" />
     <Compile Include="Tweaks\Colors\PowerArmorPipboyColorTweak.cs" />
@@ -325,9 +316,6 @@
     <EmbeddedResource Include="Forms\FormNexusAPI\FormNexus.resx">
       <DependentUpon>FormNexus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormProfiles\FormProfiles.resx">
-      <DependentUpon>FormProfiles.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSettings\FormSettings.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -366,6 +354,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Fo76ini_LDu4jzf2p3.png" />
     <None Include="Resources\pipboy_preview_fg_masked.png" />
     <None Include="Resources\pipboy_preview_fg.png" />
     <None Include="Resources\pipboy_preview_bg.png" />

@@ -422,7 +422,7 @@ namespace Fo76ini.NexusAPI
                 }
                 catch (Exception e)
                 {
-                    MsgBox.Get("nexusModsProfileRefreshFailed").FormatText($"Unexpected exception: {e.Message}").Show(MessageBoxIcon.Error);
+                    MsgBox.Get("failed").FormatText($"Unexpected exception: {e.Message}").Show(MessageBoxIcon.Error);
                 }
             }
             else
@@ -430,13 +430,13 @@ namespace Fo76ini.NexusAPI
                 try
                 {
                     if (request.Success)
-                        MsgBox.Get("nexusModsProfileRefreshFailed").FormatText($"Server returned: HTTP {request.StatusCode}\n{request.GetJSON()["message"].ToString()}").Show(MessageBoxIcon.Error);
+                        MsgBox.Get("failed").FormatText($"Server returned: HTTP {request.StatusCode}\n{request.GetJSON()["message"].ToString()}").Show(MessageBoxIcon.Error);
                     else
-                        MsgBox.Get("nexusModsProfileRefreshFailed").FormatText($"WebException: {request.Exception.Message}").Show(MessageBoxIcon.Error);
+                        MsgBox.Get("failed").FormatText($"WebException: {request.Exception.Message}").Show(MessageBoxIcon.Error);
                 }
                 catch (Exception e)
                 {
-                    MsgBox.Get("nexusModsProfileRefreshFailed").FormatText($"Unexpected exception: {e.Message}").Show(MessageBoxIcon.Error);
+                    MsgBox.Get("failed").FormatText($"Unexpected exception: {e.Message}").Show(MessageBoxIcon.Error);
                 }
 
                 ValidKey = false;
