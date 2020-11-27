@@ -10,7 +10,7 @@ namespace Fo76ini
             localizedStrings["updateNowButton"] = "Update now!";
             localizedStrings["unknown"] = "Unknown";
             localizedStrings["modsDeploymentNecessary"] = "Deployment necessary";
-            localizedStrings["modsAllDone"] = "All set";
+            //localizedStrings["modsAllDone"] = "All set";
             localizedStrings["modsFailed"] = "Something went wrong, see log files for details.";
             localizedStrings["modsTableFormatGeneral"] = "General";
             localizedStrings["modsTableFormatTextures"] = "Textures";

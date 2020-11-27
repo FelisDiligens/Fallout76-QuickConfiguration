@@ -45,7 +45,10 @@ namespace Fo76ini
         /// <returns>Localized string</returns>
         public static string GetString(string str)
         {
-            return Localization.localizedStrings[str];
+            if (Localization.localizedStrings.ContainsKey(str))
+                return Localization.localizedStrings[str];
+            else
+                return $"\"{str}\" NOT FOUND";
         }
 
         /// <summary>

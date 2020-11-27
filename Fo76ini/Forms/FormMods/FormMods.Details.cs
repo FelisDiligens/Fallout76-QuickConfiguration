@@ -15,6 +15,8 @@ namespace Fo76ini
     // TODO: Should we remove bulk editing?
     // Bulk editing was kinda tacked on and doesn't really work that well anyway.
     // Removing it might be bad, though. Who knows, maybe someone uses this feature extensively?
+
+    // TODO: Needs to be rewritten. It should not copy the mod. Instead, it should directly use the indexer.
     public partial class FormMods : Form
     {
         private ManagedMod changedMod;
@@ -354,34 +356,17 @@ namespace Fo76ini
 
         private void buttonModUnfreeze_Click(object sender, EventArgs e)
         {
-            Thread thread = new Thread(() =>
-            {
-                //Invoke(() => ProgressBarMarquee());
-                //Invoke(() => Display("Unfreezing..."));
-                // TODO: Unfreeze
-                /*this.changedMod.Unfreeze(
-                    (text, percent) =>
-                    {
-                        Invoke(() => Display(text));
-                        //Invoke(() => ProgressBarContinuous(percent));
-                    },
-                    (success) =>
-                    {
-                        Invoke(() =>
-                        {
-                            Invoke(() => ProgressBarContinuous(100));
-                            this.ModDetailsFeedback(this.changedMod);
-                            UpdateSidePanel();
-                            if (success)
-                                DisplayAllDone();
-                            else
-                                DisplayFailState();
-                        });
-                    }
-                );*/
+            RunThreaded(() => {
+                DisableUI();
+            }, () => {
+                // TODO: This will cause issues:
+                ModActions.Unfreeze(Mods, editedIndex, UpdateProgress);
+                return true;
+            }, (success) => {
+                UpdateSidePanel();
+                UpdateUI();
+                EnableUI();
             });
-            thread.IsBackground = true;
-            thread.Start();
         }
 
         private void buttonModDetailsSuggestArchiveName_Click(object sender, EventArgs e)

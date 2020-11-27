@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace Fo76ini.Mods
 {
@@ -15,8 +16,11 @@ namespace Fo76ini.Mods
     {
         // TODO: Disable mods checkbox
 
-        public static void Deploy(ManagedMods mods)
+        public static void Deploy(ManagedMods mods, Action<Progress> ProgressChanged)
         {
+            // TODO: ProgressChanged
+            ProgressChanged?.Invoke(Progress.Indetermined("Deploying..."));
+
             // Check for conflicts:
             List<ModHelpers.Conflict> conflicts = ModHelpers.GetConflictingArchiveNames(mods.Mods);
             if (conflicts.Count > 0)
@@ -27,10 +31,12 @@ namespace Fo76ini.Mods
 
             // Remove all currently deployed mods:
             ModDeployment.RemoveAll(mods);
+            mods.Save();
 
             // Deploy all SeparateBA2 and Loose mods:
             foreach (ManagedMod mod in mods)
             {
+                ProgressChanged?.Invoke(Progress.Indetermined($"Deploying {mod.Title}..."));
                 if (mod.Enabled &&
                     Directory.Exists(mod.ManagedFolderPath) &&
                     !Utils.IsDirectoryEmpty(mod.ManagedFolderPath))
@@ -39,16 +45,22 @@ namespace Fo76ini.Mods
                     {
                         case ManagedMod.DeploymentMethod.SeparateBA2:
                             DeploySeparateArchive(mod, mods.Resources);
+                            mods.Save();
                             break;
                         case ManagedMod.DeploymentMethod.Loose:
                             DeployLooseFiles(mod, mods.GamePath);
+                            mods.Save();
                             break;
                     }
                 }
             }
 
             // Deploy all BundledBA2 mods:
+            ProgressChanged?.Invoke(Progress.Indetermined($"Building bundled archives..."));
             ModDeployment.DeployBundledArchives(mods);
+
+            mods.Save();
+            ProgressChanged?.Invoke(Progress.Done("Mods deployed."));
         }
 
         /// <summary>
@@ -155,7 +167,7 @@ namespace Fo76ini.Mods
             // Otherwise iterate over each enabled mod...
             foreach (ManagedMod mod in mods)
             {
-                if (mod.Enabled)
+                if (mod.Enabled && mod.Method == ManagedMod.DeploymentMethod.BundledBA2)
                 {
                     // ... copy it's files into temporary folders ...
                     CopyFilesToTempSorted(mod, mods.Resources, archives);

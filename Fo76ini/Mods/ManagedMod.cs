@@ -501,12 +501,29 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
-        /// Compares CurrentDiskState with PendingDiskState and returns true, if they're different.
+        /// Compares current disk state with pending disk state and returns true, if they're different.
         /// </summary>
         /// <returns></returns>
         public bool isDeploymentNecessary()
         {
-            // TODO: isDeploymentNecessary()
+            if (Deployed != Enabled)
+                return true;
+
+            if (CurrentArchiveName != ArchiveName)
+                return true;
+
+            if (CurrentFormat != Format)
+                return true;
+
+            if (CurrentCompression != Compression)
+                return true;
+
+            if (CurrentRootFolder != RootFolder)
+                return true;
+
+            if (PreviousMethod != Method)
+                return true;
+
             return false;
         }
     }

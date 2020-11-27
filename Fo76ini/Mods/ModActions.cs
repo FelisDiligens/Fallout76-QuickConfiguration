@@ -105,18 +105,27 @@ namespace Fo76ini.Mods
         /// <summary>
         /// Unfreezes the mod.
         /// </summary>
-        public static void Unfreeze(ManagedMods mods, int index)
+        public static void Unfreeze(ManagedMods mods, int index, Action<Progress> ProgressChanged = null)
         {
             ModActions.Unfreeze(mods[index]);
+            mods.Save();
+            ProgressChanged?.Invoke(Progress.Done("Mod thawed."));
         }
 
         /// <summary>
         /// Unfreezes the mods.
         /// </summary>
-        public static void Unfreeze(ManagedMods mods, IEnumerable<int> indices)
+        public static void Unfreeze(ManagedMods mods, IEnumerable<int> indices, Action<Progress> ProgressChanged = null)
         {
+            int count = indices.Count();
+            int n = 1;
             foreach (int index in indices)
+            {
                 ModActions.Unfreeze(mods[index]);
+                ProgressChanged?.Invoke(Progress.Ongoing($"Unfreezing {n} of {count} mod(s)...", (float)n++ / (float)count));
+            }
+            mods.Save();
+            ProgressChanged?.Invoke(Progress.Done($"{count} mod(s) thawed."));
         }
 
         public static void Unfreeze(ManagedMod mod)

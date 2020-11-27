@@ -48,7 +48,11 @@ namespace Fo76ini
 
             // Add control elements to blacklist:
             Translation.BlackList.AddRange(new string[] {
-                "labelModsDeploy"
+                "labelModTitle",
+                "labelModsDeploy",
+                "toolStripStatusLabelModCount",
+                "toolStripStatusLabelDeploymentStatus",
+                "toolStripStatusLabelSpacer"
             });
 
             this.FormClosing += this.FormMods_FormClosing;
@@ -164,7 +168,7 @@ namespace Fo76ini
         {
             UpdateModList();
             UpdateSettings();
-            UpdateProgressLabel();
+            UpdateStatusStrip();
         }
 
         #endregion
@@ -521,9 +525,7 @@ namespace Fo76ini
         // Deploy
         private void buttonModsDeploy_Click(object sender, EventArgs e)
         {
-            Thread thread = new Thread(Deploy);
-            thread.IsBackground = true;
-            thread.Start();
+            DeployModsThreaded();
         }
 
         // Disable mods
@@ -531,11 +533,6 @@ namespace Fo76ini
         {
             this.Mods.ModsDisabled = checkBoxDisableMods.Checked;
             DisplayDeploymentNecessary();
-        }
-
-        private void saveDEVToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Mods.Save(); // TODO: Remove "Save (DEV)" button
         }
 
         #region All event handler that control the ListView
@@ -627,7 +624,7 @@ namespace Fo76ini
                 listViewMods.Items[e.Index].ForeColor = Color.DarkRed;
             }
 
-            UpdateProgressLabel();
+            UpdateStatusStrip();
         }
 
         #endregion
@@ -737,7 +734,7 @@ namespace Fo76ini
                 selectedIndices = newSelectedIndices;
             }
             UpdateModList();
-            UpdateProgressLabel();
+            UpdateStatusStrip();
         }
 
         // Move down
@@ -765,7 +762,7 @@ namespace Fo76ini
                 selectedIndices = newSelectedIndices;
             }
             UpdateModList();
-            UpdateProgressLabel();
+            UpdateStatusStrip();
         }
 
         // Check/uncheck all
@@ -801,7 +798,7 @@ namespace Fo76ini
                     Mods[item.Index].Enabled = state;
             }
             UpdateModList();
-            UpdateProgressLabel();
+            UpdateStatusStrip();
         }
 
         // Delete mod
@@ -857,10 +854,7 @@ namespace Fo76ini
             List<int> indices = new List<int>();
             foreach (ListViewItem item in this.listViewMods.SelectedItems)
                 indices.Add(item.Index);
-            Thread thread = new Thread(() => UnfreezeBulkMods(indices));
-            thread.IsBackground = true;
-            thread.Start();
-            CloseSidePanel();
+            UnfreezeModsThreaded(indices);
         }
 
 
@@ -894,7 +888,7 @@ namespace Fo76ini
         {
             if (MsgBox.ShowID("modsImportQuestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                ModInstallations.ImportInstalledMods(Mods);
+                ModInstallations.ImportInstalledMods(Mods); // TODO: Threaded
                 this.UpdateModList();
 
                 CloseSidePanel();
@@ -905,6 +899,12 @@ namespace Fo76ini
         private void deployToolStripMenuItem_Click(object sender, EventArgs e)
         {
             buttonModsDeploy_Click(sender, e);
+        }
+
+        // File > Save
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mods.Save();
         }
 
         // View > Show conflicting files
@@ -951,6 +951,26 @@ namespace Fo76ini
             {
                 Archive2.Explore(this.openFileDialogBA2.FileName);
             }
+        }
+
+        // Tools > NexusMods > Update mod information
+        private void updateModInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateRemoteModInfoThreaded();
+        }
+
+        // Tools > NexusMods > Endorse mods
+        private void endorseModsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: NexusMods: Endorse mods
+            MessageBox.Show("Not implemented yet.");
+        }
+
+        // Tools > NexusMods > Check for updates
+        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: NexusMods: Check for updates
+            MessageBox.Show("Not implemented yet.");
         }
 
         // Help > Show guide
@@ -1057,77 +1077,7 @@ namespace Fo76ini
             IniFiles.Config.Set("Mods", "bFreezeBundledArchives", this.checkBoxFreezeBundledArchives.Checked);
             IniFiles.Config.Save();
         }
-
-        private void checkBoxModsWriteSResourceDataDirsFinal_CheckedChanged(object sender, EventArgs e)
-        {
-            // TODO: sResourceDataDirsFinal checkbox
-            /*ManagedMods.Instance.WriteDataDirs = this.checkBoxModsWriteSResourceDataDirsFinal.Checked;
-            IniFiles.Instance.Set(IniFile.Config, "Mods", "bWriteSResourceDataDirsFinal", this.checkBoxModsWriteSResourceDataDirsFinal.Checked);
-            IniFiles.Config.Save();*/
-        }
         #endregion
-
-
-        /*
-         * Threads
-         */
-
-        private void UnfreezeBulkMods(List<int> indices)
-        {
-            // TODO: Multi-threading??
-            ModActions.Unfreeze(Mods, indices);
-            /*Invoke(DisableUI);
-            ManagedMods.Instance.UnfreezeMods(indices,
-                (text, percent) => {
-                    Invoke(() => Display(text));
-                    Invoke(() => { if (percent >= 0) { ProgressBarContinuous(percent); } else { ProgressBarMarquee(); } });
-                },
-                () => {
-                    Invoke(() => EnableUI());
-                    Invoke(() => UpdateModList());
-                    Invoke(() => UpdateLabel());
-                }
-            );*/
-        }
-
-        public void Deploy()
-        {
-            // TODO: Multi-threading??
-            ModDeployment.Deploy(Mods);
-            /*Invoke(() => this.pictureBoxModsLoadingGIF.Visible = true);
-            Invoke(() => ShowLoadingUI());
-            Invoke(() => ProgressBarContinuous(0));
-            Invoke(() => Display("Deploying..."));
-            ManagedMods.Instance.Deploy(
-                (text, percent) => {
-                    Invoke(() => Display(text));
-                    Invoke(() => { if (percent >= 0) { ProgressBarContinuous(percent); } else { ProgressBarMarquee(); } });
-                },
-                (success) => {
-                    Invoke(() => {
-                        UpdateUI();
-                        ProgressBarContinuous(100);
-                        EnableUI();
-                        this.pictureBoxModsLoadingGIF.Visible = false;
-
-                        if (success)
-                        {
-                            DisplayAllDone();
-
-                            if (Mods.ModsDisabled)
-                                MsgBox.Get("modsDisabledDone").Popup(MessageBoxIcon.Information);
-                            else
-                                MsgBox.Get("modsDeployedDone").Popup(MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            DisplayFailState();
-                            MsgBox.Get("modsDeploymentFailed").Popup(MessageBoxIcon.Information);
-                        }
-                    });
-                }
-            );*/
-        }
 
 
 
@@ -1136,12 +1086,14 @@ namespace Fo76ini
          * Threaded methods
          **********************************************************************************
          */
+        #region Threaded methods
 
         private void InstallModArchiveThreaded(string path, bool freeze)
         {
-            DisableUI();
-            CloseSidePanel();
             RunThreaded(() => {
+                DisableUI();
+                CloseSidePanel();
+            }, () => {
                 try
                 {
                     ModInstallations.InstallArchive(Mods, path, freeze, UpdateProgress);
@@ -1170,18 +1122,18 @@ namespace Fo76ini
             }, (success) => {
                 EnableUI();
                 if (success)
-                {
                     selectedIndex = Mods.Count - 1;
-                }
                 UpdateModList();
+                UpdateStatusStrip();
             });
         }
 
         private void InstallModFolderThreaded(string path)
         {
-            DisableUI();
-            CloseSidePanel();
             RunThreaded(() => {
+                DisableUI();
+                CloseSidePanel();
+            }, () => {
                 try
                 {
                     ModInstallations.InstallFolder(Mods, path, UpdateProgress);
@@ -1205,18 +1157,18 @@ namespace Fo76ini
             }, (success) => {
                 EnableUI();
                 if (success)
-                {
                     selectedIndex = Mods.Count - 1;
-                }
                 UpdateModList();
+                UpdateStatusStrip();
             });
         }
 
         private void InstallBulkThreaded(string[] files)
         {
-            DisableUI();
-            CloseSidePanel();
             RunThreaded(() => {
+                DisableUI();
+                CloseSidePanel();
+            }, () => {
                 try
                 {
                     InstallBulk(files);
@@ -1250,6 +1202,7 @@ namespace Fo76ini
                     UpdateProgress(Progress.Done("Mods imported."));
                 }
                 UpdateModList();
+                UpdateStatusStrip();
             });
         }
 
@@ -1270,9 +1223,10 @@ namespace Fo76ini
 
         private void DeleteModThreaded(int index)
         {
-            DisableUI();
-            CloseSidePanel();
             RunThreaded(() => {
+                CloseSidePanel();
+                DisableUI();
+            }, () => {
                 ModActions.DeleteMod(Mods, index, UpdateProgress);
                 return true;
             }, (success) => {
@@ -1280,27 +1234,99 @@ namespace Fo76ini
                 if (success)
                     selectedIndex = -1;
                 UpdateModList();
+                UpdateStatusStrip();
             });
         }
 
         private void DeleteModsBulkThreaded(List<int> indices)
         {
-            ModActions.DeleteMods(Mods, indices);
-            DisableUI();
-            CloseSidePanel();
             RunThreaded(() => {
+                CloseSidePanel();
+                DisableUI();
+            }, () => {
                 ModActions.DeleteMods(Mods, indices, UpdateProgress);
                 return true;
             }, (success) => {
                 EnableUI();
                 if (success)
-                {
                     selectedIndex = -1;
-                }
                 UpdateModList();
+                UpdateStatusStrip();
             });
         }
 
+        private void UnfreezeModsThreaded(List<int> indices)
+        {
+            RunThreaded(() => {
+                CloseSidePanel();
+                DisableUI();
+            }, () => {
+                ModActions.Unfreeze(Mods, indices, UpdateProgress);
+                return true;
+            }, (success) => {
+                UpdateUI();
+                EnableUI();
+            });
+        }
+
+        private void DeployModsThreaded()
+        {
+            RunThreaded(() => {
+                CloseSidePanel();
+                ShowLoadingUI();
+            }, () => {
+                // TODO: Error handling
+                ModDeployment.Deploy(Mods, UpdateProgress);
+                return true;
+            }, (success) => {
+                if (success)
+                {
+                    if (Mods.ModsDisabled)
+                        MsgBox.Get("modsDisabledDone").Popup(MessageBoxIcon.Information);
+                    else
+                        MsgBox.Get("modsDeployedDone").Popup(MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MsgBox.Get("modsDeploymentFailed").Popup(MessageBoxIcon.Information);
+                }
+                UpdateUI();
+                EnableUI();
+            });
+        }
+
+        private void UpdateRemoteModInfoThreaded()
+        {
+            RunThreaded(() => {
+                CloseSidePanel();
+                DisableUI();
+            }, () => {
+                UpdateRemoteModInfo(UpdateProgress);
+                return true;
+            }, (success) => {
+                EnableUI();
+                UpdateModList();
+                UpdateStatusStrip();
+            });
+        }
+
+        private void UpdateRemoteModInfo(Action<Progress> ProgressChanged = null)
+        {
+            int i = 1;
+            int len = Mods.Count();
+            foreach (ManagedMod mod in Mods)
+            {
+                if (mod.URL != "")
+                {
+                    ProgressChanged?.Invoke(Progress.Ongoing($"[{i}/{len}] Requesting info for \"{mod.Title}\"", (float)i / (float)len));
+                    NexusMods.RefreshModInfo(mod.URL);
+                }
+                i++;
+            }
+            ProgressChanged?.Invoke(Progress.Done("Mod information updated."));
+            NexusMods.Save();
+        }
+        #endregion
 
 
         /*
@@ -1308,11 +1334,13 @@ namespace Fo76ini
          * Utility methods
          **********************************************************************************
          */
+        #region Utility methods
 
-        private void RunThreaded(Func<bool> doWork, Action<bool> finishWork)
+        private void RunThreaded(Action prepareWork, Func<bool> doWork, Action<bool> finishWork)
         {
             Thread thread = new Thread(() =>
             {
+                this.Invoke(prepareWork);
                 bool result = doWork();
                 this.Invoke(new Action(() => finishWork(result)));
             });
@@ -1328,31 +1356,28 @@ namespace Fo76ini
             }));
         }
 
-        private void HideLabel()
-        {
-            this.labelModsDeploy.Visible = false;
-        }
-
         private void DisplayDeploymentNecessary()
         {
-            this.labelModsDeploy.Visible = true;
-            this.labelModsDeploy.ForeColor = Color.Crimson;
-            this.labelModsDeploy.Text = Localization.GetString("modsDeploymentNecessary");
+            this.toolStripStatusLabelDeploymentStatus.Visible = true;
+            this.toolStripStatusLabelDeploymentStatus.ForeColor = Color.Crimson;
+            this.toolStripStatusLabelDeploymentStatus.Text = Localization.GetString("modsDeploymentNecessary");
         }
 
         private void DisplayAllDone()
         {
-            this.labelModsDeploy.Visible = true;
-            this.labelModsDeploy.ForeColor = Color.DarkGreen;
-            this.labelModsDeploy.Text = Localization.GetString("modsAllDone");
+            this.toolStripStatusLabelDeploymentStatus.Visible = false;
         }
 
-        private void UpdateProgressLabel()
+        private void UpdateStatusStrip()
         {
             if (Mods.isDeploymentNecessary())
                 this.DisplayDeploymentNecessary();
             else
                 this.DisplayAllDone();
+
+            this.toolStripStatusLabelModCount.Text = Mods.Count().ToString();
         }
+
+        #endregion
     }
 }
