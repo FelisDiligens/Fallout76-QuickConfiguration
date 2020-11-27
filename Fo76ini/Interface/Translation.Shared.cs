@@ -152,6 +152,12 @@ namespace Fo76ini
                 "You can find a link on the NexusMods page."
             );
 
+            MsgBox.Add("modsArchiveTypeNotSupported",
+                "Unsupported file format",
+                "{0} files are not supported.\n" +
+                "Please uncompress the archive and add the mod as a folder."
+            );
+
 
             // NexusMods:
 

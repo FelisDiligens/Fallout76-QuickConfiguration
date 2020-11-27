@@ -134,7 +134,7 @@ namespace Fo76ini
                 MsgBox.ShowID("modsArchive2Missing", MessageBoxIcon.Error);
                 return false;
             }
-            if (!File.Exists(Path.Combine(Shared.AppInstallationFolder, "7z", "7za.exe")))
+            if (!File.Exists(Utils.SevenZipPath))
             {
                 MsgBox.ShowID("7ZipMissing", MessageBoxIcon.Error);
                 return false;
@@ -600,15 +600,14 @@ namespace Fo76ini
         // Drag & Drop
         void listViewMods_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
         }
 
         void listViewMods_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            Thread thread = new Thread(() => InstallBulk(files));
-            thread.IsBackground = true;
-            thread.Start();
+            InstallBulkThreaded(files);
         }
 
         // Mod enabled/disabled
@@ -808,7 +807,6 @@ namespace Fo76ini
         // Delete mod
         private void toolStripButtonDeleteMod_Click(object sender, EventArgs e)
         {
-            bool deleteAccepted = false;
             if (selectedIndex < 0)
                 return;
             if (this.listViewMods.SelectedItems.Count > 1)
@@ -817,13 +815,10 @@ namespace Fo76ini
                 DialogResult res = MsgBox.Get("deleteMultipleQuestion").FormatTitle(count).FormatText(count).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
-                    deleteAccepted = true;
                     List<int> indices = new List<int>();
                     foreach (ListViewItem item in this.listViewMods.SelectedItems)
                         indices.Add(item.Index);
-                    Thread thread = new Thread(() => DeleteModsBulk(indices));
-                    thread.IsBackground = true;
-                    thread.Start();
+                    DeleteModsBulkThreaded(indices);
                 }
             }
             else
@@ -831,15 +826,8 @@ namespace Fo76ini
                 ManagedMod mod = Mods[selectedIndex];
                 DialogResult res = MsgBox.Get("deleteQuestion").FormatTitle(mod.Title).FormatText(mod.Title).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
-                {
-                    deleteAccepted = true;
-                    Thread thread = new Thread(() => DeleteMod(selectedIndex));
-                    thread.IsBackground = true;
-                    thread.Start();
-                }
+                    DeleteModThreaded(selectedIndex);
             }
-            if (deleteAccepted)
-                CloseSidePanel();
         }
 
         // Add mod archive
@@ -853,13 +841,7 @@ namespace Fo76ini
         private void toolStripButtonAddModFolder_Click(object sender, EventArgs e)
         {
             if (this.folderBrowserDialogMod.ShowDialog() == DialogResult.OK)
-            {
-                Thread thread = new Thread(() => InstallModFolder(this.folderBrowserDialogMod.SelectedPath));
-                thread.IsBackground = true;
-                thread.Start();
-
-                CloseSidePanel();
-            }
+                InstallModFolderThreaded(this.folderBrowserDialogMod.SelectedPath);
         }
 
         // Add frozen mod archive (*.ba2)
@@ -1090,102 +1072,6 @@ namespace Fo76ini
          * Threads
          */
 
-        private void InstallModArchive(string path)
-        {
-            // TODO: Multi-threading??
-            ModInstallations.InstallArchive(Mods, path, false);
-            /*Invoke(() => DisableUI());
-            Invoke(() => ProgressBarMarquee());
-            ManagedMods.Instance.InstallModArchive(path,
-                (text, percent) => {
-                    Invoke(() => Display(text));
-                },
-                (success) => {
-                    Invoke(() => ProgressBarContinuous(100));
-                    Invoke(() => HideLabel());
-                    Invoke(() => EnableUI());
-                    Invoke(() => selectedIndex = ManagedMods.Instance.Mods.Count - 1);
-                    Invoke(() => UpdateModList());
-                    Invoke(() => UpdateLabel(success));
-                }
-            );*/
-        }
-
-        private void InstallModArchiveFrozen(string path)
-        {
-            // TODO: Multi-threading??
-            ModInstallations.InstallArchive(Mods, path, true);
-            /*
-            Invoke(() => DisableUI());
-            Invoke(() => ProgressBarMarquee());
-            ManagedMods.Instance.InstallModArchiveFrozen(path,
-                (text, percent) => {
-                    Invoke(() => Display(text));
-                },
-                (success) => {
-                    Invoke(() => ProgressBarContinuous(100));
-                    Invoke(() => HideLabel());
-                    Invoke(() => EnableUI());
-                    Invoke(() => selectedIndex = ManagedMods.Instance.Mods.Count - 1);
-                    Invoke(() => UpdateModList());
-                    Invoke(() => UpdateLabel(success));
-                }
-            );*/
-        }
-
-        private void InstallModFolder(string path)
-        {
-            // TODO: Multi-threading??
-            ModInstallations.InstallFolder(Mods, path);
-            /*Invoke(() => DisableUI());
-            Invoke(() => ProgressBarContinuous(0));
-            ManagedMods.Instance.InstallModFolder(path,
-                (text, percent) => {
-                    Invoke(() => Display(text));
-                    Invoke(() => { if (percent >= 0) { ProgressBarContinuous(percent); } else { ProgressBarMarquee(); } });
-                },
-                (success) => {
-                    Invoke(() => ProgressBarContinuous(100));
-                    Invoke(() => HideLabel());
-                    Invoke(() => EnableUI());
-                    Invoke(() => selectedIndex = ManagedMods.Instance.Mods.Count - 1);
-                    Invoke(() => UpdateModList());
-                    Invoke(() => UpdateLabel(success));
-                }
-            );*/
-        }
-
-        private void InstallBulk(string[] files)
-        {
-            foreach (string filePath in files)
-            {
-                bool unpackBA2ByDefault = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
-                string fullFilePath = Path.GetFullPath(filePath);
-                if (fullFilePath.Length > 259 && Directory.Exists(@"\\?\" + fullFilePath))
-                    fullFilePath = @"\\?\" + fullFilePath;
-                try
-                {
-                    if (Directory.Exists(fullFilePath))
-                        InstallModFolder(fullFilePath);
-                    else if ((new string[] { ".zip", ".rar", ".7z", ".tar", ".tar.gz", ".gz" }).Contains(Path.GetExtension(fullFilePath)))
-                        InstallModArchive(fullFilePath);
-                    else if (Path.GetExtension(fullFilePath).ToLower() == ".ba2")
-                    {
-                        if (unpackBA2ByDefault)
-                            InstallModArchive(fullFilePath);
-                        else
-                            InstallModArchiveFrozen(fullFilePath);
-                    }
-                    else
-                        MsgBox.Get("modsArchiveTypeNotSupported").FormatText(Path.GetExtension(fullFilePath)).Show(MessageBoxIcon.Error);
-                }
-                catch (FileNotFoundException exc)
-                {
-                    Console.WriteLine($"File not found: ({fullFilePath.Length}) {exc.Message}");
-                }
-            }
-        }
-
         private void UnfreezeBulkMods(List<int> indices)
         {
             // TODO: Multi-threading??
@@ -1202,36 +1088,6 @@ namespace Fo76ini
                     Invoke(() => UpdateLabel());
                 }
             );*/
-        }
-
-        private void DeleteMod(int index)
-        {
-            // TODO: Multi-threading??
-            ModActions.DeleteMod(Mods, index);
-            /*Invoke(() => DisableUI());
-            Invoke(() => ProgressBarMarquee());
-            ManagedMods.Instance.DeleteMod(index, () => {
-                Invoke(() => ProgressBarContinuous(100));
-                Invoke(() => EnableUI());
-                Invoke(() => selectedIndex = -1);
-                Invoke(() => UpdateModList());
-                Invoke(() => UpdateLabel());
-            }); */
-        }
-
-        private void DeleteModsBulk(List<int> indices)
-        {
-            // TODO: Multi-threading??
-            ModActions.DeleteMods(Mods, indices);
-            /*Invoke(() => DisableUI());
-            Invoke(() => ProgressBarMarquee());
-            ManagedMods.Instance.DeleteMods(indices, () => {
-                Invoke(() => ProgressBarContinuous(100));
-                Invoke(() => EnableUI());
-                Invoke(() => selectedIndex = -1);
-                Invoke(() => UpdateModList());
-                Invoke(() => UpdateLabel());
-            });*/
         }
 
         public void Deploy()
@@ -1277,26 +1133,171 @@ namespace Fo76ini
 
         /*
          **********************************************************************************
-         * New threaded methods
+         * Threaded methods
          **********************************************************************************
          */
-
-        // TODO: Error handling
 
         private void InstallModArchiveThreaded(string path, bool freeze)
         {
             DisableUI();
             CloseSidePanel();
             RunThreaded(() => {
-                ModInstallations.InstallArchive(Mods, path, freeze, UpdateProgress);
+                try
+                {
+                    ModInstallations.InstallArchive(Mods, path, freeze, UpdateProgress);
+                }
+                catch (Archive2RequirementsException exc)
+                {
+                    MsgBox.ShowID("archive2InstallRequirements", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (Archive2Exception exc)
+                {
+                    MsgBox.ShowID("archive2Error", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (NotSupportedException exc)
+                {
+                    MsgBox.ShowID("modsArchiveTypeNotSupported", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (Exception exc)
+                {
+                    MsgBox.Get("failed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+                    return false;
+                }
                 return true;
             }, (success) => {
                 EnableUI();
                 if (success)
                 {
                     selectedIndex = Mods.Count - 1;
-                    UpdateModList();
                 }
+                UpdateModList();
+            });
+        }
+
+        private void InstallModFolderThreaded(string path)
+        {
+            DisableUI();
+            CloseSidePanel();
+            RunThreaded(() => {
+                try
+                {
+                    ModInstallations.InstallFolder(Mods, path, UpdateProgress);
+                }
+                catch (Archive2RequirementsException exc)
+                {
+                    MsgBox.ShowID("archive2InstallRequirements", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (Archive2Exception exc)
+                {
+                    MsgBox.ShowID("archive2Error", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (Exception exc)
+                {
+                    MsgBox.Get("failed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+                    return false;
+                }
+                return true;
+            }, (success) => {
+                EnableUI();
+                if (success)
+                {
+                    selectedIndex = Mods.Count - 1;
+                }
+                UpdateModList();
+            });
+        }
+
+        private void InstallBulkThreaded(string[] files)
+        {
+            DisableUI();
+            CloseSidePanel();
+            RunThreaded(() => {
+                try
+                {
+                    InstallBulk(files);
+                }
+                catch (Archive2RequirementsException exc)
+                {
+                    MsgBox.ShowID("archive2InstallRequirements", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (Archive2Exception exc)
+                {
+                    MsgBox.ShowID("archive2Error", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (NotSupportedException exc)
+                {
+                    MsgBox.ShowID("modsArchiveTypeNotSupported", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (Exception exc)
+                {
+                    MsgBox.Get("failed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+                    return false;
+                }
+                return true;
+            }, (success) => {
+                EnableUI();
+                if (success)
+                {
+                    selectedIndex = -1;
+                    UpdateProgress(Progress.Done("Mods imported."));
+                }
+                UpdateModList();
+            });
+        }
+
+        private void InstallBulk(string[] files)
+        {
+            bool unpackBA2ByDefault = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
+            int i = 0;
+            foreach (string filePath in files)
+            {
+                UpdateProgress(Progress.Ongoing($"Importing {++i} of {files.Length} files/folders...", (float)i / (float)files.Length));
+                string longFilePath = ModInstallations.EnsureLongPathSupport(filePath);
+                if (Directory.Exists(longFilePath))
+                    ModInstallations.InstallFolder(Mods, filePath);
+                else
+                    ModInstallations.InstallArchive(Mods, filePath, !unpackBA2ByDefault);
+            }
+        }
+
+        private void DeleteModThreaded(int index)
+        {
+            DisableUI();
+            CloseSidePanel();
+            RunThreaded(() => {
+                ModActions.DeleteMod(Mods, index, UpdateProgress);
+                return true;
+            }, (success) => {
+                EnableUI();
+                if (success)
+                    selectedIndex = -1;
+                UpdateModList();
+            });
+        }
+
+        private void DeleteModsBulkThreaded(List<int> indices)
+        {
+            ModActions.DeleteMods(Mods, indices);
+            DisableUI();
+            CloseSidePanel();
+            RunThreaded(() => {
+                ModActions.DeleteMods(Mods, indices, UpdateProgress);
+                return true;
+            }, (success) => {
+                EnableUI();
+                if (success)
+                {
+                    selectedIndex = -1;
+                }
+                UpdateModList();
             });
         }
 

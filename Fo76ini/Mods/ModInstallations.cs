@@ -189,27 +189,22 @@ namespace Fo76ini.Mods
 
             ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {fileName} ..."));
 
+            /*
+             * Depending on file extention:
+             */
+
+            // Use Archive2.exe to extract:
             if (fileExtension.ToLower() == ".ba2")
-            {
-                // Use Archive2.exe to extract:
                 Archive2.Extract(filePath, destinationPath);
-                // Might throw a Archive2Exception
-            }
+
+            // Use 7-Zip (7za.exe) to extract:
             else if ((new string[] { ".zip", ".rar", ".tar", ".7z" }).Contains(fileExtension.ToLower()))
-            {
-                // Use 7-Zip (7za.exe) to extract:
                 Utils.ExtractArchive(filePath, destinationPath);
 
-                if (!Directory.Exists(destinationPath))
-                    throw new FileNotFoundException("Something went wrong.");
-                //MsgBox.ShowID("modsExtractUnknownErrorText", MessageBoxIcon.Error);
-                //MsgBox.Get("modsExtractUnknownErrorText").FormatText(exc.Message).Show(MessageBoxIcon.Error);
-            }
+            // Not supported:
             else
-            {
                 throw new NotSupportedException($"File type not supported: {fileExtension}");
-                //MsgBox.Get("modsArchiveTypeNotSupported").FormatText(fileExtension).Show(MessageBoxIcon.Error);
-            }
+
 
             ProgressChanged?.Invoke(Progress.Done("Extracting finished."));
         }
@@ -241,8 +236,13 @@ namespace Fo76ini.Mods
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns>The file path with an added @"\\?\" at the beginning if needed.</returns>
-        private static string EnsureLongPathSupport(string filePath)
+        public static string EnsureLongPathSupport(string filePath)
         {
+            /*
+                string fullFilePath = Path.GetFullPath(filePath);
+                if (fullFilePath.Length > 259 && Directory.Exists(@"\\?\" + fullFilePath))
+                    fullFilePath = @"\\?\" + fullFilePath;
+             */
             if (!File.Exists(filePath))
             {
                 // Path too long?

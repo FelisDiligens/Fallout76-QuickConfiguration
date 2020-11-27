@@ -15,7 +15,7 @@ namespace Fo76ini.Mods
         /// Deletes all files of 'mod'.
         /// This includes the managed folder and frozen archive.
         /// </summary>
-        public static void DeleteFiles(ManagedMod mod)
+        private static void DeleteFiles(ManagedMod mod)
         {
             // Delete managed folder:
             if (Directory.Exists(mod.ManagedFolderPath))
@@ -32,24 +32,33 @@ namespace Fo76ini.Mods
 
         /// <summary>
         /// Deletes all files of the mod and removes it from the list.
+        /// Saves the xml file afterwards.
         /// </summary>
-        public static void DeleteMod(ManagedMods mods, int index)
+        public static void DeleteMod(ManagedMods mods, int index, Action<Progress> ProgressChanged = null)
         {
             ModActions.DeleteFiles(mods[index]);
             mods.RemoveAt(index);
+            mods.Save();
+            ProgressChanged?.Invoke(Progress.Done("Mod deleted."));
         }
 
         /// <summary>
         /// Deletes multiple mods and removes them from the list.
+        /// Saves the xml file afterwards.
         /// </summary>
-        public static void DeleteMods(ManagedMods mods, List<int> indices)
+        public static void DeleteMods(ManagedMods mods, List<int> indices, Action<Progress> ProgressChanged = null)
         {
             indices = indices.OrderByDescending(i => i).ToList();
+            int fi = 0;
+            int count = indices.Count();
             foreach (int index in indices)
             {
+                ProgressChanged?.Invoke(Progress.Ongoing($"Deleting mod {++fi} of {count}.", (float)(fi - 1) / (float)count));
                 ModActions.DeleteFiles(mods[index]);
                 mods.RemoveAt(index);
+                mods.Save();
             }
+            ProgressChanged?.Invoke(Progress.Done($"{count} mods deleted."));
         }
 
         /// <summary>

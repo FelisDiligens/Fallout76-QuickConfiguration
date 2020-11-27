@@ -282,6 +282,9 @@ namespace Fo76ini.Utilities
             proc.Arguments = string.Format("x \"{0}\" -y -o\"{1}\"", sourceArchive, destination);
             Process x = Process.Start(proc);
             x.WaitForExit();
+
+            if (!Directory.Exists(destination))
+                throw new FileNotFoundException("Something went wrong.");
         }
 
         public static bool IsDirectoryEmpty(string path)
