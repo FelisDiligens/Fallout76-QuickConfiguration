@@ -123,6 +123,7 @@
       <DependentUpon>TextPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\Versioning.cs" />
+    <Compile Include="Mods\LegacyManagedMods.cs" />
     <Compile Include="Progress.cs" />
     <Compile Include="Tweaks\Audio\EnableAudioTweak.cs" />
     <Compile Include="Tweaks\Audio\VoiceChatModeTweak.cs" />

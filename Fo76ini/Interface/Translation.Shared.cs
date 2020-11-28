@@ -158,6 +158,15 @@ namespace Fo76ini
                 "Please uncompress the archive and add the mod as a folder."
             );
 
+            MsgBox.Add("modsLegacyFormatDetected",
+                "Legacy version found",
+                "It seems like you've managed mods before, but with a version prior to v1.9.0.\n" +
+                "How mods are managed and stored has changed significantly.\n" +
+                "As a result, they must be converted to the new format.\n\n" +
+                "NOTE: This will rename folders and unfreeze archives. After they're converted, they may take up more space, depending on how many mods were frozen. Downgrading will still be possible, but some mods might load incorrectly.\n\n" +
+                "Would you like to convert them now? It won't take long."
+            );
+
 
             // NexusMods:
 

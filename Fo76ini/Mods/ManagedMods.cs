@@ -224,6 +224,8 @@ namespace Fo76ini.Mods
             this.Resources.SaveTXT(ResourcesPath);
             this.Resources.CommitToINI();
             IniFiles.Save();
+
+            LegacyManagedMods.GenerateLegacyXML(this);
         }
 
         public void Add(ManagedMod item)

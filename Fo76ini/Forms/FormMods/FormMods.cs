@@ -52,7 +52,8 @@ namespace Fo76ini
                 "labelModsDeploy",
                 "toolStripStatusLabelModCount",
                 "toolStripStatusLabelDeploymentStatus",
-                "toolStripStatusLabelSpacer"
+                "toolStripStatusLabelSpacer",
+                "toolStripStatusLabelEnabledCount"
             });
 
             this.FormClosing += this.FormMods_FormClosing;
@@ -118,6 +119,32 @@ namespace Fo76ini
             UpdateUI();
         }
 
+        private bool ConvertLegacyConditional()
+        {
+            if (LegacyManagedMods.CheckLegacy(game.GamePath))
+            {
+                DialogResult resp = MsgBox.ShowID("modsLegacyFormatDetected", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resp == DialogResult.No)
+                    return false;
+                else if (resp == DialogResult.Yes)
+                    ConvertLegacyThreaded();
+            }
+            return true;
+        }
+
+        private void ConvertLegacyThreaded()
+        {
+            RunThreaded(() => {
+                ShowLoadingUI();
+            }, () => {
+                LegacyManagedMods.ConvertLegacy(Mods, UpdateProgress);
+                return true;
+            }, (success) => {
+                UpdateUI();
+                EnableUI();
+            });
+        }
+
         /// <summary>
         /// Checks whether the game path has been set, all required executables exist, and so on.
         /// Displays messageboxes if something is amiss.
@@ -157,6 +184,10 @@ namespace Fo76ini
 
             this.WindowState = FormWindowState.Normal;
             ReloadModManager();
+
+            if (!ConvertLegacyConditional())
+                return;
+
             Show();
             Focus();
         }
@@ -1376,6 +1407,12 @@ namespace Fo76ini
                 this.DisplayAllDone();
 
             this.toolStripStatusLabelModCount.Text = Mods.Count().ToString();
+
+            int enabledCount = 0;
+            foreach (ManagedMod mod in Mods)
+                if (mod.Enabled)
+                    enabledCount++;
+            this.toolStripStatusLabelEnabledCount.Text = enabledCount.ToString();
         }
 
         #endregion

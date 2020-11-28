@@ -38,8 +38,8 @@
             this.fromFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemModsImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.deployToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deployToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showConflictingFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,6 +149,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelDescModCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelModCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelDescEnabledCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelEnabledCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelSpacer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDeploymentStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
@@ -240,13 +242,6 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
             // 
-            // deployToolStripMenuItem
-            // 
-            this.deployToolStripMenuItem.Name = "deployToolStripMenuItem";
-            this.deployToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.deployToolStripMenuItem.Text = "Deploy mods";
-            this.deployToolStripMenuItem.Click += new System.EventHandler(this.deployToolStripMenuItem_Click);
-            // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.save_24;
@@ -254,6 +249,13 @@
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.saveToolStripMenuItem.Text = "Save changes";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // deployToolStripMenuItem
+            // 
+            this.deployToolStripMenuItem.Name = "deployToolStripMenuItem";
+            this.deployToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.deployToolStripMenuItem.Text = "Deploy mods";
+            this.deployToolStripMenuItem.Click += new System.EventHandler(this.deployToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -294,7 +296,7 @@
             this.openArchive2ToolStripMenuItem,
             this.exploreba2ArchiveToolStripMenuItem});
             this.archive2ToolStripMenuItem.Name = "archive2ToolStripMenuItem";
-            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.archive2ToolStripMenuItem.Text = "Archive2";
             // 
             // openArchive2ToolStripMenuItem
@@ -318,7 +320,7 @@
             this.endorseModsToolStripMenuItem,
             this.checkForUpdatesToolStripMenuItem});
             this.nexusModsAPIToolStripMenuItem.Name = "nexusModsAPIToolStripMenuItem";
-            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.nexusModsAPIToolStripMenuItem.Text = "NexusMods API";
             // 
             // updateModInformationToolStripMenuItem
@@ -355,7 +357,7 @@
             // 
             this.showGuideToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.help_24;
             this.showGuideToolStripMenuItem.Name = "showGuideToolStripMenuItem";
-            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.showGuideToolStripMenuItem.Text = "Show guide";
             this.showGuideToolStripMenuItem.Click += new System.EventHandler(this.showGuideToolStripMenuItem_Click);
             // 
@@ -365,7 +367,7 @@
             this.showModmanagerlogtxtToolStripMenuItem,
             this.showArchive2logtxtToolStripMenuItem});
             this.logFilesToolStripMenuItem.Name = "logFilesToolStripMenuItem";
-            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.logFilesToolStripMenuItem.Text = "Log files";
             // 
             // showModmanagerlogtxtToolStripMenuItem
@@ -407,7 +409,7 @@
             this.labelModsDeploy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelModsDeploy.AutoSize = true;
             this.labelModsDeploy.ForeColor = System.Drawing.Color.DarkGreen;
-            this.labelModsDeploy.Location = new System.Drawing.Point(10, 607);
+            this.labelModsDeploy.Location = new System.Drawing.Point(9, 607);
             this.labelModsDeploy.Name = "labelModsDeploy";
             this.labelModsDeploy.Size = new System.Drawing.Size(38, 13);
             this.labelModsDeploy.TabIndex = 52;
@@ -1350,6 +1352,8 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelDescModCount,
             this.toolStripStatusLabelModCount,
+            this.toolStripStatusLabelDescEnabledCount,
+            this.toolStripStatusLabelEnabledCount,
             this.toolStripStatusLabelSpacer,
             this.toolStripStatusLabelDeploymentStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 659);
@@ -1372,10 +1376,24 @@
             this.toolStripStatusLabelModCount.Size = new System.Drawing.Size(13, 17);
             this.toolStripStatusLabelModCount.Text = "0";
             // 
+            // toolStripStatusLabelDescEnabledCount
+            // 
+            this.toolStripStatusLabelDescEnabledCount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabelDescEnabledCount.Margin = new System.Windows.Forms.Padding(50, 3, 3, 2);
+            this.toolStripStatusLabelDescEnabledCount.Name = "toolStripStatusLabelDescEnabledCount";
+            this.toolStripStatusLabelDescEnabledCount.Size = new System.Drawing.Size(53, 17);
+            this.toolStripStatusLabelDescEnabledCount.Text = "Enabled:";
+            // 
+            // toolStripStatusLabelEnabledCount
+            // 
+            this.toolStripStatusLabelEnabledCount.Name = "toolStripStatusLabelEnabledCount";
+            this.toolStripStatusLabelEnabledCount.Size = new System.Drawing.Size(13, 17);
+            this.toolStripStatusLabelEnabledCount.Text = "0";
+            // 
             // toolStripStatusLabelSpacer
             // 
             this.toolStripStatusLabelSpacer.Name = "toolStripStatusLabelSpacer";
-            this.toolStripStatusLabelSpacer.Size = new System.Drawing.Size(649, 17);
+            this.toolStripStatusLabelSpacer.Size = new System.Drawing.Size(530, 17);
             this.toolStripStatusLabelSpacer.Spring = true;
             this.toolStripStatusLabelSpacer.Text = " ";
             // 
@@ -1559,5 +1577,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelModCount;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelSpacer;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDeploymentStatus;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDescEnabledCount;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelEnabledCount;
     }
 }

@@ -249,7 +249,7 @@ namespace Fo76ini.Mods
 
         /// <summary>
         /// Get the folder name (not path). This folder stores the mod's files.
-        /// Example: @"2f2d3b3b-b21b-4ec2-b555-c8806a801b16"
+        /// Example: @"{2f2d3b3b-b21b-4ec2-b555-c8806a801b16}"
         /// </summary>
         public string ManagedFolderName
         {
@@ -258,7 +258,7 @@ namespace Fo76ini.Mods
 
         /// <summary>
         /// Get the path to where the mod's files are stored.
-        /// Example: @"C:\Program Files (x86)\Steam\steamapps\common\Fallout 76\Mods\2f2d3b3b-b21b-4ec2-b555-c8806a801b16"
+        /// Example: @"C:\Program Files (x86)\Steam\steamapps\common\Fallout 76\Mods\{2f2d3b3b-b21b-4ec2-b555-c8806a801b16}"
         /// </summary>
         public string ManagedFolderPath
         {
@@ -284,7 +284,7 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
-        /// Path to where the mod's frozen archive is stored.
+        /// Path to the mod's frozen archive.
         /// Example: @"C:\Program Files (x86)\Steam\steamapps\common\Fallout 76\FrozenData\{2f2d3b3b-b21b-4ec2-b555-c8806a801b16}.ba2"
         /// </summary>
         public string FrozenArchivePath
