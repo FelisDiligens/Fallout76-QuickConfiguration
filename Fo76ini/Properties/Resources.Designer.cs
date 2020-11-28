@@ -353,6 +353,16 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap heart_broken_24 {
+            get {
+                object obj = ResourceManager.GetObject("heart_broken_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap help_128 {
             get {
                 object obj = ResourceManager.GetObject("help-128", resourceCulture);
@@ -566,6 +576,26 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap thaw_24 {
             get {
                 object obj = ResourceManager.GetObject("thaw_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thumb_down_24 {
+            get {
+                object obj = ResourceManager.GetObject("thumb_down_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thumb_up_24 {
+            get {
+                object obj = ResourceManager.GetObject("thumb_up_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -40,6 +40,9 @@ namespace Fo76ini
             localizedStrings["adventuremode"] = "Adventure";
             localizedStrings["affectedValues"] = "Affected values";
             localizedStrings["affectedFiles"] = "Affected files";
+            localizedStrings["endorsedText"] = "You have endorsed this mod.";
+            localizedStrings["notEndorsedText"] = "You have not endorsed this mod yet.";
+            localizedStrings["abstainedText"] = "You have abstained from endorsing this mod.";
         }
 
         public static void AddSharedMessageBoxes()

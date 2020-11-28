@@ -50,6 +50,10 @@ namespace Fo76ini
             Translation.BlackList.AddRange(new string[] {
                 "labelModTitle",
                 "labelModsDeploy",
+                "labelModSummary",
+                "labelModLatestVersion",
+                "labelModAuthor",
+                "labelModEndorseStatus",
                 "toolStripStatusLabelModCount",
                 "toolStripStatusLabelDeploymentStatus",
                 "toolStripStatusLabelSpacer",

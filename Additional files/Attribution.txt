@@ -37,13 +37,11 @@ ICONS
     "Guacamole green download 2 icon" by James Lynch is licensed under CC0 1.0 Universal (CC0 1.0)
     https://www.iconsdb.com/guacamole-green-icons/download-2-icon.html
 
-    "Mouse Icon" by VisualPharm is licensed under "Linkware"
-    https://www.iconarchive.com/show/hardware-icons-by-visualpharm/mouse-icon.html
-    https://visualpharm.com/
+    "Black thumb up icon" by puppetscientists is licensed under CC0 1.0 Universal (CC0 1.0)
+    https://www.iconsdb.com/black-icons/thumb-up-icon.html
 
-    "Xbox One Controller Icon" by Prepaid Game Cards is licensed under CC Attribution 4.0.
-    https://iconarchive.com/show/gaming-gadgets-icons-by-prepaidgamecards/Xbox-One-Controller-icon.html
-    http://www.prepaidgamecards.com/
+    "Black thumb down icon" by puppetscientists is licensed under CC0 1.0 Universal (CC0 1.0)
+    https://www.iconsdb.com/black-icons/thumb-down-icon.html
 
 
   Loading *.gif's: 'Spinner' and 'Gear' released under Loading.io FREE License.

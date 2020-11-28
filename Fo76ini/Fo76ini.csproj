@@ -355,6 +355,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\heart-broken-24.png" />
+    <None Include="Resources\thumb-down-24.png" />
+    <None Include="Resources\thumb-up-24.png" />
     <None Include="Resources\Fo76ini_LDu4jzf2p3.png" />
     <None Include="Resources\pipboy_preview_fg_masked.png" />
     <None Include="Resources\pipboy_preview_fg.png" />

@@ -241,6 +241,35 @@ namespace Fo76ini
             this.labelModDetailsBulkFrozenModsWarning.Visible = this.bulk;
             this.groupBoxModDetailsDetails.Visible = !this.bulk;
 
+            // NexusMods info:
+            if (this.changedMod.RemoteInfo != null)
+            {
+                this.panelModDetailsNexusMods.Visible = true;
+                this.labelModLatestVersion.Text = this.changedMod.RemoteInfo.LatestVersion;
+                this.labelModAuthor.Text = this.changedMod.RemoteInfo.Author;
+                this.labelModSummary.Text = this.changedMod.RemoteInfo.Summary;
+                switch (this.changedMod.RemoteInfo.Endorsement)
+                {
+                    case NMMod.EndorseStatus.Endorsed:
+                        this.labelModEndorseStatus.Text = Localization.GetString("endorsedText");
+                        this.labelModEndorseStatus.ForeColor = Color.DarkGreen;
+                        break;
+                    case NMMod.EndorseStatus.Abstained:
+                        this.labelModEndorseStatus.Text = Localization.GetString("abstainedText");
+                        this.labelModEndorseStatus.ForeColor = Color.DarkRed;
+                        break;
+                    case NMMod.EndorseStatus.Undecided:
+                    default:
+                        this.labelModEndorseStatus.Text = Localization.GetString("notEndorsedText");
+                        this.labelModEndorseStatus.ForeColor = Color.DarkOrange;
+                        break;
+                }
+            }
+            else
+            {
+                this.panelModDetailsNexusMods.Visible = false;
+            }
+
             isUpdatingSidePanel = false;
         }
 
