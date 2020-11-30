@@ -569,21 +569,20 @@ namespace Fo76ini.Utilities
         // https://stackoverflow.com/questions/2808887/create-thumbnail-image
         // https://stackoverflow.com/questions/1940581/c-sharp-image-resizing-to-different-size-while-preserving-aspect-ratio
         // https://stackoverflow.com/questions/1484759/quality-of-a-saved-jpg-in-c-sharp
-        /*
-         * Creates an thumbnail as *.jpg with a given width and height.
-         * Instead of stretching the image, it'll resize it while maintaining the aspect ratio.
-         * A black padding will be drawn if the aspect ratios don't match.
-         */
-        public static Image MakeThumbnail(Image image, string thumbnailPath, int canvasWidth = 160, int canvasHeight = 90, long quality = 70L)
+        /// <summary>
+        /// Creates an thumbnail as *.jpg with a given width and height.
+        /// Instead of stretching the image, it'll resize it while maintaining the aspect ratio.
+        /// A black padding can be drawn if the aspect ratios don't match.
+        /// </summary>
+        /// <param name="image">Input image</param>
+        /// <param name="thumbnailPath">Path to *.jpg thumbnail (output)</param>
+        /// <param name="drawBorders">Whether or not to draw a black border if the aspect ratios don't match</param>
+        /// <param name="canvasWidth">Max thumbnail width</param>
+        /// <param name="canvasHeight">Max thumbnail height</param>
+        /// <param name="quality">JPG Quality (percentage) between 0 and 100</param>
+        /// <returns>The thumbnail as Image object</returns>
+        public static Image MakeThumbnail(Image image, string thumbnailPath, bool drawBorders = false, int canvasWidth = 160, int canvasHeight = 90, long quality = 70L)
         {
-            Image thumbnail = new Bitmap(canvasWidth, canvasHeight);
-            Graphics graphic = Graphics.FromImage(thumbnail);
-
-            graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            graphic.SmoothingMode = SmoothingMode.HighQuality;
-            graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            graphic.CompositingQuality = CompositingQuality.HighQuality;
-
             // Figure out the ratio
             double ratioX = (double)canvasWidth / (double)image.Width;
             double ratioY = (double)canvasHeight / (double)image.Height;
@@ -594,27 +593,59 @@ namespace Fo76ini.Utilities
             int newHeight = Convert.ToInt32(image.Height * ratio);
             int newWidth = Convert.ToInt32(image.Width * ratio);
 
-            // Now calculate the X,Y position of the upper-left corner 
-            // (one of these will always be zero)
-            int posX = Convert.ToInt32((canvasWidth - (image.Width * ratio)) / 2);
-            int posY = Convert.ToInt32((canvasHeight - (image.Height * ratio)) / 2);
+            // Create new image:
+            Image thumbnail;
+            if (drawBorders)
+                thumbnail = new Bitmap(canvasWidth, canvasHeight);
+            else
+                thumbnail = new Bitmap(newWidth, newHeight);
+            Graphics graphic = Graphics.FromImage(thumbnail);
 
-            graphic.Clear(Color.Black); // background color, padding
-            graphic.DrawImage(image, posX, posY, newWidth, newHeight);
+            graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphic.SmoothingMode = SmoothingMode.HighQuality;
+            graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            graphic.CompositingQuality = CompositingQuality.HighQuality;
+
+            if (drawBorders)
+            {
+                // Now calculate the X,Y position of the upper-left corner 
+                // (one of these will always be zero)
+                int posX = Convert.ToInt32((canvasWidth - (image.Width * ratio)) / 2);
+                int posY = Convert.ToInt32((canvasHeight - (image.Height * ratio)) / 2);
+
+                graphic.Clear(Color.Black); // background color, padding
+                graphic.DrawImage(image, posX, posY, newWidth, newHeight);
+            }
+            else
+            {
+                graphic.DrawImage(image, 0, 0, newWidth, newHeight);
+            }
 
             // Save the thumbnails as JPEG:
             ImageCodecInfo jgpEncoder = Utils.GetImageEncoder(ImageFormat.Jpeg);
             EncoderParameters encoderParameters = new EncoderParameters(1);
-            encoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
+            encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, quality);
             thumbnail.Save(thumbnailPath, jgpEncoder, encoderParameters);
 
             return thumbnail;
         }
 
-        public static Image MakeThumbnail(string filePath, string thumbnailPath, int canvasWidth = 160, int canvasHeight = 90, long quality = 70L)
+        /// <summary>
+        /// Creates an thumbnail as *.jpg with a given width and height.
+        /// Instead of stretching the image, it'll resize it while maintaining the aspect ratio.
+        /// A black padding can be drawn if the aspect ratios don't match.
+        /// </summary>
+        /// <param name="filePath">Path to image (input)</param>
+        /// <param name="thumbnailPath">Path to *.jpg thumbnail (output)</param>
+        /// <param name="drawBorders">Whether or not to draw a black border if the aspect ratios don't match</param>
+        /// <param name="canvasWidth">Max thumbnail width</param>
+        /// <param name="canvasHeight">Max thumbnail height</param>
+        /// <param name="quality">JPG Quality (percentage) between 0 and 100</param>
+        /// <returns>The thumbnail as Image object</returns>
+        public static Image MakeThumbnail(string filePath, string thumbnailPath, bool drawBorders = false, int canvasWidth = 160, int canvasHeight = 90, long quality = 70L)
         {
             Image image = Image.FromFile(filePath);
-            return Utils.MakeThumbnail(image, thumbnailPath, canvasWidth, canvasHeight, quality);
+            return Utils.MakeThumbnail(image, thumbnailPath, drawBorders, canvasWidth, canvasHeight, quality);
         }
 
         // https://stackoverflow.com/questions/3639129/c-sharp-how-do-you-get-the-operating-system-architecture-x86-or-x64

@@ -106,17 +106,22 @@ namespace Fo76ini.Mods
 
         private static List<string> ToList(string sResourceList)
         {
-            return (new List<string>(sResourceList.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))).Distinct().Select(x => x.Trim()).ToList();
+            return (new List<string>(sResourceList.Split(new char[] { ',', '\n' }, StringSplitOptions.RemoveEmptyEntries))).Distinct().Select(x => x.Trim()).ToList();
         }
 
-        private static string ToString(List<string> resourceList)
+        private static string ToString(List<string> resourceList, string separator = ",")
         {
-            return string.Join(",", resourceList.Distinct());
+            return string.Join(separator, resourceList.Distinct());
         }
 
         public override string ToString()
         {
             return ResourceList.ToString(this.resourceList);
+        }
+
+        public string ToString(string separator)
+        {
+            return ResourceList.ToString(this.resourceList, separator);
         }
 
         /// <summary>
@@ -241,10 +246,16 @@ namespace Fo76ini.Mods
         public void CleanUp(string gamePath)
         {
             string[] temp = new string[this.Count()];
-            this.CopyTo(temp, this.Count());
+            this.CopyTo(temp, 0);
             foreach (string ba2file in temp)
                 if (!File.Exists(Path.Combine(gamePath, "Data", ba2file)))
                     this.Remove(ba2file);
+        }
+
+        public void ReplaceRange(ResourceList other)
+        {
+            this.resourceList.Clear();
+            this.resourceList.AddRange(other);
         }
     }
 }

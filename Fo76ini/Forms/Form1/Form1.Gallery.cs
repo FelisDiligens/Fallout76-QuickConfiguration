@@ -111,7 +111,7 @@ namespace Fo76ini
                         Bitmap thumbnail;
 
                         if (!File.Exists(thumbPath))
-                            thumbnail = new Bitmap(Utils.MakeThumbnail(filePath, thumbPath));
+                            thumbnail = new Bitmap(Utils.MakeThumbnail(filePath, thumbPath, true));
                         else
                             thumbnail = new Bitmap(thumbPath);
 
@@ -148,7 +148,7 @@ namespace Fo76ini
                     {
                         thumbnailFilePath = Path.Combine(thumbnailsPath, fileName + ".jpg");
                         if (!File.Exists(thumbnailFilePath))
-                            Utils.MakeThumbnail(filePath, thumbnailFilePath);
+                            Utils.MakeThumbnail(filePath, thumbnailFilePath, true);
                         //thumbnailFilePath = filePath;
                     }
 
@@ -187,7 +187,7 @@ namespace Fo76ini
                         {
                             thumbnailFilePath = Path.Combine(thumbnailsPath, fileName + ".jpg");
                             if (!File.Exists(thumbnailFilePath))
-                                Utils.MakeThumbnail(filePath, thumbnailFilePath);
+                                Utils.MakeThumbnail(filePath, thumbnailFilePath, true);
                             //thumbnailFilePath = filePath;
                         }
 
@@ -224,7 +224,7 @@ namespace Fo76ini
 
                     string thumbnailFilePath = Path.Combine(thumbnailsPath, folderName + "-" + fileName + ".jpg");
                     if (!File.Exists(thumbnailFilePath))
-                        Utils.MakeThumbnail(filePath, thumbnailFilePath);
+                        Utils.MakeThumbnail(filePath, thumbnailFilePath, true);
 
                     Bitmap thumbnail = new Bitmap(thumbnailFilePath);
                     this.Invoke(() => galleryImageList.Images.Add(fileName, thumbnail));

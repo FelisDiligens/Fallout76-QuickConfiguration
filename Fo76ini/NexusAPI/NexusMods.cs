@@ -230,7 +230,7 @@ namespace Fo76ini.NexusAPI
                             using (var stream = thumbResponse.GetResponseStream())
                             {
                                 Image image = Image.FromStream(stream);
-                                Utils.MakeThumbnail(image, thumbPath, 360, 190, 90L);
+                                Utils.MakeThumbnail(image, thumbPath, false, 400, 160, 90L);
                             }
                         }
                     }
@@ -249,9 +249,69 @@ namespace Fo76ini.NexusAPI
             else
             {
                 // TODO: Handle: Couldn't retrieve info.
-                Console.WriteLine($"Couldn't retrieve info.\n{request.Exception.GetType().Name}: {request.Exception.Message}\n{request.GetText()}");
+                Console.WriteLine($"Couldn't retrieve info.\n{request.Exception.GetType().Name}: {request.Exception.Message}\n{request.ResponseText}");
             }
             this.LastAccessTimestamp = Utils.GetUnixTimeStamp();
+        }
+
+        public bool Endorse(string endorsedVersion)
+        {
+            APIRequest request = new APIRequest("https://api.nexusmods.com/v1/games/fallout76/mods/" + this.ID + "/endorse.json");
+            request.Headers["apikey"] = NexusMods.Profile.APIKey;
+            request.Method = "POST";
+            // Without a version: {"code":400,"message":"You must provide a version"}
+            request.RequestContentType = "application/x-www-form-urlencoded";
+            request.PostData = $"version={endorsedVersion}";
+            request.Execute();
+            if (request.Success)
+            {
+                JObject json = request.GetJSON();
+                if (json.ContainsKey("status") && json["status"].ToString() == "Endorsed")
+                {
+                    this.Endorsement = EndorseStatus.Endorsed;
+                    return true;
+                }
+                else
+                {
+                    MsgBox.Get("failed").FormatText($"Couldn't endorse mod.\nServer message: {json["message"]}").Show(MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            else
+            {
+                MsgBox.Get("failed").FormatText($"Couldn't endorse mod.\nError: {request.Exception.Message}").Show(MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool Abstain(string abstainedVersion)
+        {
+            APIRequest request = new APIRequest("https://api.nexusmods.com/v1/games/fallout76/mods/" + this.ID + "/abstain.json");
+            request.Headers["apikey"] = NexusMods.Profile.APIKey;
+            request.Method = "POST";
+            // Without a version: {"code":400,"message":"You must provide a version"}
+            request.RequestContentType = "application/x-www-form-urlencoded";
+            request.PostData = $"version={abstainedVersion}";
+            request.Execute();
+            if (request.Success)
+            {
+                JObject json = request.GetJSON();
+                if (json.ContainsKey("status") && json["status"].ToString() == "Abstained")
+                {
+                    this.Endorsement = EndorseStatus.Abstained;
+                    return true;
+                }
+                else
+                {
+                    MsgBox.Get("failed").FormatText($"Couldn't abstain from endorsing mod.\nServer message: {json["message"]}").Show(MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            else
+            {
+                MsgBox.Get("failed").FormatText($"Couldn't abstain from endorsing mod.\nError: {request.Exception.Message}").Show(MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         public XElement Serialize()
@@ -563,90 +623,6 @@ namespace Fo76ini.NexusAPI
             {
                 Console.WriteLine($"Couldn't remove profile picture: {ex.Message}");
             }
-        }
-    }
-
-    public class APIRequest
-    {
-        public string url;
-
-        private HttpWebRequest request;
-        private HttpWebResponse response;
-
-        public WebException Exception;
-        private bool success;
-
-        public APIRequest(string url)
-        {
-            this.url = url;
-            this.request = (HttpWebRequest)WebRequest.Create(this.url);
-        }
-
-        public void Execute()
-        {
-            this.success = false;
-            try
-            {
-                this.response = (HttpWebResponse)request.GetResponse();
-                this.success = true;
-            }
-            catch (WebException ex)
-            {
-                if (ex.Response != null)
-                {
-                    this.response = (HttpWebResponse)ex.Response;
-                    this.success = true;
-                }
-                this.Exception = ex;
-            }
-        }
-
-        public string GetText()
-        {
-            string resp;
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                resp = reader.ReadToEnd();
-            }
-            return resp;
-        }
-
-        public JObject GetJSON()
-        {
-            return JObject.Parse(this.GetText());
-        }
-
-        public WebHeaderCollection ResponseHeaders
-        {
-            get => response.Headers;
-        }
-
-        public WebHeaderCollection Headers
-        {
-            get => request.Headers;
-        }
-
-        public int StatusCode
-        {
-            get => (int)response.StatusCode;
-        }
-
-        public bool Success
-        {
-            get => this.success;
-        }
-
-        public string UserAgent
-        {
-            get => this.request.UserAgent;
-            set => this.request.UserAgent = value;
-        }
-
-        public string Accept
-        {
-            get => this.request.Accept;
-            set => this.request.Accept = value;
         }
     }
 }

@@ -149,19 +149,49 @@ namespace Fo76ini.Interface
             return MessageBox.Show(this.Text, this.Title, MessageBoxButtons.OK, icon);
         }
 
-        public void Popup()
+        public static DialogResult Show(string title, string text, MessageBoxButtons buttons, MessageBoxIcon icon)
         {
-            Utils.CreatePopup(this.Title, this.Text).Popup();
+            return MessageBox.Show(text, title, buttons, icon);
+        }
+
+        public static DialogResult Show(string title, string text, MessageBoxButtons buttons)
+        {
+            return MessageBox.Show(text, title, buttons);
+        }
+
+        public static DialogResult Show(string title, string text, MessageBoxIcon icon)
+        {
+            return MessageBox.Show(text, title, MessageBoxButtons.OK, icon);
+        }
+
+        public static DialogResult Show(string title, string text)
+        {
+            return MessageBox.Show(text, title);
+        }
+
+        public static void Popup(string title, string text)
+        {
+            Utils.CreatePopup(title, text).Popup();
             PlayNotificationSound();
         }
 
-        public void Popup(MessageBoxIcon icon)
+        public static void Popup(string title, string text, MessageBoxIcon icon)
         {
-            Utils.CreatePopup(this.Title, this.Text, icon).Popup();
+            Utils.CreatePopup(title, text, icon).Popup();
             if (icon == MessageBoxIcon.Warning || icon == MessageBoxIcon.Error)
                 PlayErrorNotificationSound();
             else
                 PlayNotificationSound();
+        }
+
+        public void Popup()
+        {
+            MsgBox.Popup(this.Title, this.Text);
+        }
+
+        public void Popup(MessageBoxIcon icon)
+        {
+            MsgBox.Popup(this.Title, this.Text, icon);
         }
 
         public static XElement SerializeAll()

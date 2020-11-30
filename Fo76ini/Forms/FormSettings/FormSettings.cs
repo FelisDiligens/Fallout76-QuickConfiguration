@@ -80,6 +80,24 @@ namespace Fo76ini.Forms.FormSettings
             }
         }
 
+        /// <summary>
+        /// Opens the "General" tab and shows the form as a modal dialog box (ShowDialog).
+        /// </summary>
+        public void ShowSettings()
+        {
+            this.tabControl1.SelectedTab = this.tabPageGeneral;
+            this.ShowDialog();
+        }
+
+        /// <summary>
+        /// Opens the "Game profiles" tab and shows the form as a modal dialog box (ShowDialog).
+        /// </summary>
+        public void ShowProfiles()
+        {
+            this.tabControl1.SelectedTab = this.tabPageGameProfiles;
+            this.ShowDialog();
+        }
+
         #region General
 
         public void LinkInfo()

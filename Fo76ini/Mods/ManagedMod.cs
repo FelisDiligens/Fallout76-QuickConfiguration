@@ -20,7 +20,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public enum DeploymentMethod
         {
-            Loose,
+            LooseFiles,
             BundledBA2,
             SeparateBA2
         }
@@ -71,7 +71,8 @@ namespace Fo76ini.Mods
             switch (method)
             {
                 case "Loose":
-                    return DeploymentMethod.Loose;
+                case "LooseFiles":
+                    return DeploymentMethod.LooseFiles;
                 case "BundledBA2":
                     return DeploymentMethod.BundledBA2;
                 case "SeparateBA2":
@@ -423,7 +424,7 @@ namespace Fo76ini.Mods
             );
 
             XElement xmlLooseFiles = new XElement("InstalledLooseFiles");
-            if (this.PreviousMethod == DeploymentMethod.Loose && this.Deployed)
+            if (this.PreviousMethod == DeploymentMethod.LooseFiles && this.Deployed)
                 foreach (string filePath in this.LooseFiles)
                     xmlLooseFiles.Add(new XElement("File", new XAttribute("path", filePath)));
 
@@ -509,20 +510,28 @@ namespace Fo76ini.Mods
             if (Deployed != Enabled)
                 return true;
 
-            if (CurrentArchiveName != ArchiveName)
-                return true;
-
-            if (CurrentFormat != Format)
-                return true;
-
-            if (CurrentCompression != Compression)
-                return true;
-
-            if (CurrentRootFolder != RootFolder)
-                return true;
-
             if (PreviousMethod != Method)
                 return true;
+
+            if (Method == DeploymentMethod.SeparateBA2)
+            {
+                if (CurrentArchiveName != ArchiveName)
+                    return true;
+
+                if (CurrentFormat != Format)
+                    return true;
+
+                if (CurrentCompression != Compression)
+                    return true;
+
+                if (Freeze && !Frozen)
+                    return true;
+            }
+            else if (Method == DeploymentMethod.LooseFiles)
+            {
+                if (CurrentRootFolder != RootFolder)
+                    return true;
+            }
 
             return false;
         }

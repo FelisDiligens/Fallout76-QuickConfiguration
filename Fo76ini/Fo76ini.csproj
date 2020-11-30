@@ -221,6 +221,7 @@
     <Compile Include="Tweaks\Volume\AudioMenuValTweak.cs" />
     <Compile Include="Tweaks\Volume\MasterVolumeTweak.cs" />
     <Compile Include="Tweaks\Volume\VivoxVoiceVolumeTweak.cs" />
+    <Compile Include="Utilities\APIRequest.cs" />
     <Compile Include="Utilities\ClipboardUtils.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Forms\ExceptionDialog\FormExceptionDialog.cs">

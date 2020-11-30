@@ -54,6 +54,8 @@ namespace Fo76ini
                 "labelModLatestVersion",
                 "labelModAuthor",
                 "labelModEndorseStatus",
+                "labelModGUID",
+                "labelModInstallWarning",
                 "toolStripStatusLabelModCount",
                 "toolStripStatusLabelDeploymentStatus",
                 "toolStripStatusLabelSpacer",
@@ -70,7 +72,6 @@ namespace Fo76ini
             this.listViewMods.AllowDrop = true;
             this.listViewMods.DragEnter += new DragEventHandler(listViewMods_DragEnter);
             this.listViewMods.DragDrop += new DragEventHandler(listViewMods_DragDrop);
-            this.listViewMods.MouseUp += listViewMods_MouseUp;
         }
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)
@@ -218,6 +219,7 @@ namespace Fo76ini
              * Iterate one row at a time...
              */
             isUpdating = true;
+            UpdateSelectedIndices();
             this.listViewMods.Items.Clear();
             for (int i = 0; i < Mods.Count; i++)
             {
@@ -399,7 +401,7 @@ namespace Fo76ini
                     /*
                      * Loose files
                      */
-                    case ManagedMod.DeploymentMethod.Loose:
+                    case ManagedMod.DeploymentMethod.LooseFiles:
                         // Installation type
                         type.Text = Localization.GetString("modsTableTypeLoose");
                         type.ForeColor = Color.MediumVioletRed;
@@ -463,7 +465,7 @@ namespace Fo76ini
             this.checkBoxModsUseHardlinks.Checked = IniFiles.Config.GetBool("Mods", "bUseHardlinks", true);
             this.checkBoxFreezeBundledArchives.Checked = IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false);
 
-            LoadTextBoxResourceLists();
+            LoadTextBoxResourceList();
         }
 
         private void UpdateSelectedIndices()
@@ -475,9 +477,11 @@ namespace Fo76ini
 
         private void RestoreSelectedIndices()
         {
-            this.listViewMods.Clear();
-            foreach (int index in this.selectedIndices)
-                this.listViewMods.Items[index].Selected = true;
+            foreach (ListViewItem item in this.listViewMods.Items)
+                if (selectedIndices.Contains(item.Index))
+                    item.Selected = true;
+                else
+                    item.Selected = false;
         }
 
         private void EnableUI()
@@ -514,41 +518,20 @@ namespace Fo76ini
         {
             DisableUI();
             this.tabControl1.Enabled = true;
-            this.pictureBoxModsLoadingGIF.Visible = true;
             this.tabControl1.SelectedIndex = 0;
             this.tabPageModsSettings.Enabled = false;
+
+            this.pictureBoxModsLoadingGIF.Visible = true;
+            this.pictureBoxModsLoadingGIF.Width = this.Width;
+            this.pictureBoxModsLoadingGIF.Height = this.tabControl1.Height;
+            this.pictureBoxModsLoadingGIF.Anchor =
+                AnchorStyles.Top    |
+                AnchorStyles.Bottom |
+                AnchorStyles.Left   |
+                AnchorStyles.Right;
         }
 
         #endregion
-
-        public void ModDetailsFeedback(ManagedMod changedMod)
-        {
-            if (editedIndices.Count() == 1)
-                Mods[editedIndex] = changedMod.CreateDeepCopy();
-            else
-            {
-                foreach (int index in editedIndices)
-                {
-                    if (!Mods[index].Frozen)
-                    {
-                        // TODO: Bulk mod edit
-                        /*ManagedMod.DiskState pendingState = ManagedMods.Instance.Mods[index].PendingDiskState;
-                        pendingState.Method = changedMod.PendingDiskState.Method;
-                        pendingState.Compression = changedMod.PendingDiskState.Compression;
-                        pendingState.Format = changedMod.PendingDiskState.Format;
-                        pendingState.RootFolder = changedMod.PendingDiskState.RootFolder;
-                        pendingState.Frozen = changedMod.PendingDiskState.Frozen;*/
-                    }
-                }
-            }
-            UpdateModList();
-        }
-
-        public void ModDetailsClosed()
-        {
-            UpdateModList();
-            EnableUI();
-        }
 
 
         /*
@@ -567,7 +550,7 @@ namespace Fo76ini
         private void checkBoxDisableMods_CheckedChanged(object sender, EventArgs e)
         {
             this.Mods.ModsDisabled = checkBoxDisableMods.Checked;
-            DisplayDeploymentNecessary();
+            UpdateStatusStrip();
         }
 
         #region All event handler that control the ListView
@@ -597,11 +580,6 @@ namespace Fo76ini
                     // Delete mods:
                     toolStripButtonDeleteMod_Click(sender, e);
                 }
-                else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
-                {
-                    // Edit mods:
-                    toolStripButtonModEdit_Click(sender, e);
-                }
                 else if (e.Control && e.KeyCode == Keys.Up)
                 {
                     // Move mods up:
@@ -617,16 +595,18 @@ namespace Fo76ini
 
         private void listViewMods_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (isUpdating)
+                return;
+
             if (this.listViewMods.SelectedItems.Count > 0)
                 selectedIndex = this.listViewMods.SelectedItems[0].Index;
             else
                 selectedIndex = -1;
-        }
 
-        private void listViewMods_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-                toolStripButtonModEdit_Click(sender, (EventArgs)e);
+            // Edit mod:
+            UpdateSelectedIndices();
+            if (selectedIndices.Count() > 0)
+                EditMods(selectedIndices);
         }
 
         // Drag & Drop
@@ -665,61 +645,6 @@ namespace Fo76ini
         #endregion
 
         #region Toolstrip event handler
-
-        // Edit mod details:
-        private void toolStripButtonModEdit_Click(object sender, EventArgs e)
-        {
-            UpdateSelectedIndices();
-            this.editedIndex = this.selectedIndex;
-            this.editedIndices = this.selectedIndices.ToList(); // Make a shallow copy
-
-            int modCount = editedIndices.Count();
-            if (modCount <= 0 || editedIndex < 0)
-            {
-                SystemSounds.Beep.Play();
-                return;
-            }
-
-            if (modCount == 1)
-                UpdateSidePanel(Mods[editedIndex], 1);
-            //this.formModDetails.UpdateUI(ManagedMods.Instance.Mods[selectedIndex], 1);
-            else
-            {
-                // TODO: BULK MOD EDIT
-                /*
-                LegacyMod bulkMod = new LegacyMod();
-                LegacyMod fallbackMod = null;
-                int realModCount = 0;
-                foreach (int index in editedIndices)
-                {
-                    LegacyMod mod = ManagedMods.Instance.Mods[index];
-                    if (mod.isFrozen())
-                        continue;
-                    fallbackMod = mod;
-                    bulkMod.Type = mod.Type;
-                    bulkMod.Compression = mod.Compression;
-                    bulkMod.Format = mod.Format;
-                    bulkMod.freeze = false;
-                    realModCount++;
-                }
-                bulkMod.RootFolder = "Data";
-                if (realModCount == 0)
-                {
-                    SystemSounds.Beep.Play();
-                    return;
-                }
-                else if (realModCount == 1)
-                    UpdateSidePanel(fallbackMod != null ? fallbackMod : ManagedMods.Instance.Mods[editedIndex], 1);
-                //this.formModDetails.UpdateUI(fallbackMod != null ? fallbackMod : ManagedMods.Instance.Mods[editedIndex], 1);
-                else
-                    UpdateSidePanel(bulkMod, realModCount);
-                    //this.formModDetails.UpdateUI(bulkMod, realModCount);*/
-            }
-
-            //DisableUI_SidePanelOpen();
-            //Utils.SetFormPosition(this.formModDetails, this.Location.X + (int)(this.Width / 2 - this.formModDetails.Width / 2), this.Location.Y + (int)(this.Height / 2 - this.formModDetails.Height / 2));
-            //this.formModDetails.Show();
-        }
 
         // Open mod folder:
         private void toolStripButtonModOpenFolder_Click(object sender, EventArgs e)
@@ -883,15 +808,6 @@ namespace Fo76ini
                 InstallModArchiveThreaded(this.openFileDialogBA2.FileName, true);
         }
 
-        // Unfreeze
-        private void toolStripButtonUnfreeze_Click(object sender, EventArgs e)
-        {
-            List<int> indices = new List<int>();
-            foreach (ListViewItem item in this.listViewMods.SelectedItems)
-                indices.Add(item.Index);
-            UnfreezeModsThreaded(indices);
-        }
-
 
         #endregion
 
@@ -940,6 +856,8 @@ namespace Fo76ini
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Mods.Save();
+            this.labelModsDeploy.Text = "Changed saved.";
+            this.labelModsDeploy.ForeColor = Color.DarkGreen;
         }
 
         // View > Show conflicting files
@@ -973,6 +891,26 @@ namespace Fo76ini
             this.UpdateUI();
         }
 
+        // View > Show loading animation
+        private void showLoadingAnimationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RunThreaded(() => {
+                ShowLoadingUI();
+            }, () => {
+                for (int i = 1; i <= 5 * 2; i++)
+                {
+                    this.progressBarMods.Invoke(new Action(() => {
+                        this.progressBarMods.Value = (int)((float)i * 100 / 10);
+                    }));
+                    Thread.Sleep(500);
+                }
+                return true;
+            }, (success) => {
+                this.progressBarMods.Value = 0;
+                EnableUI();
+            });
+        }
+
         // Tools > Archive2 > Open Archive2
         private void openArchive2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -997,15 +935,14 @@ namespace Fo76ini
         // Tools > NexusMods > Endorse mods
         private void endorseModsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: NexusMods: Endorse mods
-            MessageBox.Show("Not implemented yet.");
+            if (MsgBox.ShowID("nexusModsEndorseAllQuestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                EndorseModsThreaded();
         }
 
         // Tools > NexusMods > Check for updates
         private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: NexusMods: Check for updates
-            MessageBox.Show("Not implemented yet.");
+            CheckForUpdatesThreaded();
         }
 
         // Help > Show guide
@@ -1042,51 +979,37 @@ namespace Fo76ini
          */
 
         #region Resource list textboxes
-        private void LoadTextBoxResourceLists()
+        private void LoadTextBoxResourceList()
         {
-            this.textBoxsResourceIndexFileList.Text = ResourceList.GetResourceIndexFileList().ToString();
-            this.textBoxsResourceArchive2List.Text = ResourceList.GetResourceArchive2List().ToString();
+            this.textBoxResourceList.Text = Mods.Resources.ToString("\n").Replace("\n", "\r\n");
         }
 
         // Clean lists
-        private void buttonModsCleanLists_Click(object sender, EventArgs e)
+        private void buttonModsCleanList_Click(object sender, EventArgs e)
         {
-            ResourceList IndexFileList = ResourceList.FromString(this.textBoxsResourceIndexFileList.Text);
-            ResourceList Archive2List = ResourceList.FromString(this.textBoxsResourceArchive2List.Text);
+            // TODO: Doesn't work
+            // Load list:
+            ResourceList list = ResourceList.FromString(this.textBoxResourceList.Text.Replace("\r\n", "\n"));
 
             // Remove non-existing files:
-            IndexFileList.CleanUp(this.game.GamePath);
-            Archive2List.CleanUp(this.game.GamePath);
+            list.CleanUp(this.game.GamePath);
 
-            // Remove duplicates:
-            foreach (string ba2file in Archive2List)
-                if (IndexFileList.Contains(ba2file))
-                    Archive2List.Remove(ba2file);
-
-            this.textBoxsResourceIndexFileList.Text = IndexFileList.ToString();
-            this.textBoxsResourceArchive2List.Text = Archive2List.ToString();
+            LoadTextBoxResourceList();
         }
 
         // Apply changes
-        private void buttonModsApplyTextBoxes_Click(object sender, EventArgs e)
+        private void buttonModsApplyTextBox_Click(object sender, EventArgs e)
         {
-            //ManagedMods.Instance.logFile.WriteLine("\n\nSaving changes to resource lists...");
-
-            ResourceList IndexFileList = ResourceList.FromString(this.textBoxsResourceIndexFileList.Text);
-            IndexFileList.AssociateTweak(ResourceListTweak.GetSResourceIndexFileList());
-            IndexFileList.CommitToINI();
-
-            ResourceList Archive2List = ResourceList.FromString(this.textBoxsResourceArchive2List.Text);
-            IndexFileList.AssociateTweak(ResourceListTweak.GetSResourceArchive2List());
-            Archive2List.CommitToINI();
-
-            IniFiles.Save();
+            ResourceList list = ResourceList.FromString(this.textBoxResourceList.Text.Replace("\r\n", "\n"));
+            Mods.Resources.ReplaceRange(list);
+            Mods.Save();
+            LoadTextBoxResourceList();
         }
 
         // Reset
-        private void buttonModsResetTextboxes_Click(object sender, EventArgs e)
+        private void buttonModsResetTextbox_Click(object sender, EventArgs e)
         {
-            LoadTextBoxResourceLists();
+            LoadTextBoxResourceList();
         }
 
         #endregion
@@ -1290,20 +1213,6 @@ namespace Fo76ini
             });
         }
 
-        private void UnfreezeModsThreaded(List<int> indices)
-        {
-            RunThreaded(() => {
-                CloseSidePanel();
-                DisableUI();
-            }, () => {
-                ModActions.Unfreeze(Mods, indices, UpdateProgress);
-                return true;
-            }, (success) => {
-                UpdateUI();
-                EnableUI();
-            });
-        }
-
         private void DeployModsThreaded()
         {
             RunThreaded(() => {
@@ -1334,7 +1243,7 @@ namespace Fo76ini
         {
             RunThreaded(() => {
                 CloseSidePanel();
-                DisableUI();
+                ShowLoadingUI();
             }, () => {
                 UpdateRemoteModInfo(UpdateProgress);
                 return true;
@@ -1345,18 +1254,85 @@ namespace Fo76ini
             });
         }
 
-        private void UpdateRemoteModInfo(Action<Progress> ProgressChanged = null)
+        private void CheckForUpdatesThreaded()
         {
-            int i = 1;
-            int len = Mods.Count();
+            RunThreaded(() => {
+                CloseSidePanel();
+                ShowLoadingUI();
+            }, () => {
+                UpdateRemoteModInfo(UpdateProgress);
+                return true;
+            }, (success) => {
+                EnableUI();
+                UpdateModList();
+                UpdateStatusStrip();
+
+                List<string> modsWithUpdates = new List<string>();
+                foreach (ManagedMod mod in Mods)
+                    if (mod.RemoteInfo != null && Utils.CompareVersions(mod.Version, mod.RemoteInfo.LatestVersion) < 0)
+                        modsWithUpdates.Add($"{mod.Title} (updated from {mod.Version} to {mod.RemoteInfo.LatestVersion})");
+
+                if (modsWithUpdates.Count() > 0)
+                {
+                    MsgBox.Show("Updates available", $"{modsWithUpdates.Count()} updates found:\n\n{String.Join("\n", modsWithUpdates)}");
+                }
+            });
+        }
+
+        private void EndorseModsThreaded()
+        {
+            RunThreaded(() => {
+                CloseSidePanel();
+                DisableUI();
+            }, () => {
+                EndorseMods(UpdateProgress);
+                return true;
+            }, (success) => {
+                EnableUI();
+            });
+        }
+
+        private void EndorseMods(Action<Progress> ProgressChanged = null)
+        {
+            int i = 0;
             foreach (ManagedMod mod in Mods)
             {
+                i++;
+                if (mod.RemoteInfo != null && mod.RemoteInfo.Endorsement != NMMod.EndorseStatus.Endorsed)
+                {
+                    mod.RemoteInfo.Endorse(mod.Version);
+                    ProgressChanged?.Invoke(Progress.Ongoing($"Endorsing \"{mod.Title}\"", (float)i / (float)Mods.Count()));
+                }
+            }
+            ProgressChanged?.Invoke(Progress.Done("All mods endorsed."));
+        }
+
+        private void UpdateRemoteModInfo(Action<Progress> ProgressChanged = null)
+        {
+            int i = 0;
+            int len = Mods.Count();
+            List<int> updatedIDs = new List<int>();
+            foreach (ManagedMod mod in Mods)
+            {
+                i++;
                 if (mod.URL != "")
                 {
+                    // Don't update mods twice:
+                    if (updatedIDs.Contains(mod.ID))
+                        continue;
+                    updatedIDs.Add(mod.ID);
+
+                    // Don't update mods in quick succession (1 minute):
+                    if (mod.RemoteInfo != null)
+                    {
+                        long lastUpdated = Utils.GetUnixTimeStamp() - mod.RemoteInfo.LastAccessTimestamp;
+                        if (lastUpdated < 60)
+                            continue;
+                    }
+
                     ProgressChanged?.Invoke(Progress.Ongoing($"[{i}/{len}] Requesting info for \"{mod.Title}\"", (float)i / (float)len));
                     NexusMods.RefreshModInfo(mod.URL);
                 }
-                i++;
             }
             ProgressChanged?.Invoke(Progress.Done("Mod information updated."));
             NexusMods.Save();

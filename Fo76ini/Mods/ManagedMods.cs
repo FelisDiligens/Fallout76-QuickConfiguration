@@ -122,8 +122,13 @@ namespace Fo76ini.Mods
         public bool isDeploymentNecessary()
         {
             foreach (ManagedMod mod in Mods)
+            {
+                if (mod.Deployed && this.ModsDisabled)
+                    return true;
+
                 if (mod.isDeploymentNecessary())
                     return true;
+            }
             return false;
         }
 

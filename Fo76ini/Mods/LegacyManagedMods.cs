@@ -108,7 +108,7 @@ namespace Fo76ini.Mods
                     switch (xmlMod.Attribute("installType").Value)
                     {
                         case "Loose":
-                            mod.PreviousMethod = ManagedMod.DeploymentMethod.Loose;
+                            mod.PreviousMethod = ManagedMod.DeploymentMethod.LooseFiles;
                             break;
                         case "SeparateBA2":
                             mod.PreviousMethod = ManagedMod.DeploymentMethod.SeparateBA2;
@@ -234,10 +234,10 @@ namespace Fo76ini.Mods
                         //xmlMod.Add(new XAttribute("frozen", mod.Frozen));
                 }
 
-                if (mod.PreviousMethod == ManagedMod.DeploymentMethod.Loose && mod.CurrentRootFolder != "")
+                if (mod.PreviousMethod == ManagedMod.DeploymentMethod.LooseFiles && mod.CurrentRootFolder != "")
                     xmlMod.Add(new XAttribute("root", mod.CurrentRootFolder));
 
-                if (mod.PreviousMethod == ManagedMod.DeploymentMethod.Loose && mod.Deployed)
+                if (mod.PreviousMethod == ManagedMod.DeploymentMethod.LooseFiles && mod.Deployed)
                     foreach (String filePath in mod.LooseFiles)
                         xmlMod.Add(new XElement("File", new XAttribute("path", filePath)));
 
@@ -262,7 +262,7 @@ namespace Fo76ini.Mods
         {
             switch (mod.PreviousMethod)
             {
-                case ManagedMod.DeploymentMethod.Loose:
+                case ManagedMod.DeploymentMethod.LooseFiles:
                     return "Loose";
                 case ManagedMod.DeploymentMethod.SeparateBA2:
                     return "SeparateBA2";

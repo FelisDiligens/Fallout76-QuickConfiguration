@@ -19,7 +19,7 @@ namespace Fo76ini
             localizedStrings["modsTableTypeSeparate"] = "Separate";
             localizedStrings["modsTableTypeSeparateFrozen"] = "Separate (Frozen)";
             localizedStrings["modsTableTypeLoose"] = "Loose";
-            //localizedStrings["modTableFrozenPending"] = "Pending";
+            localizedStrings["modTableFrozenPending"] = "Pending";
             localizedStrings["modTableFrozen"] = "Frozen";
             //localizedStrings["modTableThawed"] = "Thawed";
             //localizedStrings["modDetailsTitle"] = "Edit {0}";
@@ -176,6 +176,11 @@ namespace Fo76ini
             MsgBox.Add("nexusModsRemoteInfoRefreshedSuccess",
                 "Mod information updated",
                 "Mod information updated and thumbnails downloaded."
+            );
+
+            MsgBox.Add("nexusModsEndorseAllQuestion",
+                "Endorse all mods?",
+                "This will endorse all your installed mods. Are you sure?"
             );
 
 

@@ -4253,7 +4253,7 @@
             this.linkLabelOpenSettings.TabStop = true;
             this.linkLabelOpenSettings.Text = "Open settings";
             this.linkLabelOpenSettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabelOpenSettings.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelOpenSettings_LinkClicked);
+            this.linkLabelOpenSettings.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.showSettings_OnClick);
             // 
             // labelSettingsNotice
             // 
@@ -4365,6 +4365,7 @@
             this.labelGameEdition.TabIndex = 22;
             this.labelGameEdition.Text = "Unknown";
             this.labelGameEdition.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelGameEdition.Click += new System.EventHandler(this.showProfiles_OnClick);
             // 
             // pictureBoxGameEdition
             // 
@@ -4377,6 +4378,7 @@
             this.pictureBoxGameEdition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxGameEdition.TabIndex = 21;
             this.pictureBoxGameEdition.TabStop = false;
+            this.pictureBoxGameEdition.Click += new System.EventHandler(this.showProfiles_OnClick);
             // 
             // pictureBox1
             // 
@@ -5337,7 +5339,7 @@
             this.toolStripButtonSettings.Size = new System.Drawing.Size(93, 43);
             this.toolStripButtonSettings.Text = "Settings";
             this.toolStripButtonSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonSettings.Click += new System.EventHandler(this.toolStripButtonProfiles_Click);
+            this.toolStripButtonSettings.Click += new System.EventHandler(this.showSettings_OnClick);
             // 
             // toolStripSplitButtonUpdate
             // 

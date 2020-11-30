@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Default", 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Default", 0);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "Steam"}, 2, System.Drawing.Color.Empty, System.Drawing.SystemColors.Window, null);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Microsoft Store", 3);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Microsoft Store", 3);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSettings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
@@ -55,8 +55,11 @@
             this.checkBoxQuitOnGameLaunch = new System.Windows.Forms.CheckBox();
             this.checkBoxAutoApply = new System.Windows.Forms.CheckBox();
             this.groupBoxLocalization = new System.Windows.Forms.GroupBox();
+            this.buttonRefreshLanguage = new System.Windows.Forms.Button();
+            this.pictureBoxSpinnerDownloadLanguages = new System.Windows.Forms.PictureBox();
             this.labelOutdatedLanguage = new System.Windows.Forms.Label();
             this.labelLanguage = new System.Windows.Forms.Label();
+            this.buttonDownloadLanguages = new System.Windows.Forms.Button();
             this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
             this.tabPageGameProfiles = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -80,6 +83,12 @@
             this.textBoxGamePath = new System.Windows.Forms.TextBox();
             this.buttonPickGamePath = new System.Windows.Forms.Button();
             this.groupBoxGameEdition = new System.Windows.Forms.GroupBox();
+            this.radioButtonEditionUnknown = new System.Windows.Forms.RadioButton();
+            this.pictureBoxUnknown = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMSStore = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSteam = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBethesdaNetPTS = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBethesdaNet = new System.Windows.Forms.PictureBox();
             this.radioButtonEditionMSStore = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionBethesdaNetPTS = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionSteam = new System.Windows.Forms.RadioButton();
@@ -89,12 +98,18 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripGame = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.launchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.renameGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.labelTip = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonAddGame = new System.Windows.Forms.ToolStripButton();
             this.tabPageNexusMods = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonNWDeleteAll = new System.Windows.Forms.Button();
+            this.buttonNWLogout = new System.Windows.Forms.Button();
             this.checkBoxNMDownloadThumbnails = new System.Windows.Forms.CheckBox();
             this.labelNMOptions = new System.Windows.Forms.Label();
             this.checkBoxNMUpdateProfile = new System.Windows.Forms.CheckBox();
@@ -102,6 +117,7 @@
             this.labelNMInfo = new System.Windows.Forms.Label();
             this.textBoxAPIKey = new System.Windows.Forms.TextBox();
             this.labelNMAPIKeyTextBox = new System.Windows.Forms.Label();
+            this.buttonNMUpdateProfile = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelNMNotLoggedIn = new System.Windows.Forms.Label();
             this.labelNMUserID = new System.Windows.Forms.Label();
@@ -111,6 +127,7 @@
             this.labelNMDescHourlyRateLimit = new System.Windows.Forms.Label();
             this.labelNMAPIKeyStatus = new System.Windows.Forms.Label();
             this.labelNMDescAPIKey = new System.Windows.Forms.Label();
+            this.pictureBoxNMProfilePicture = new System.Windows.Forms.PictureBox();
             this.labelNMUserName = new System.Windows.Forms.Label();
             this.labelNMDescMembership = new System.Windows.Forms.Label();
             this.labelNMDailyRateLimitReset = new System.Windows.Forms.Label();
@@ -122,29 +139,13 @@
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorkerDownloadLanguages = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
-            this.buttonRefreshLanguage = new System.Windows.Forms.Button();
-            this.pictureBoxSpinnerDownloadLanguages = new System.Windows.Forms.PictureBox();
-            this.buttonDownloadLanguages = new System.Windows.Forms.Button();
-            this.pictureBoxMSStore = new System.Windows.Forms.PictureBox();
-            this.pictureBoxSteam = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBethesdaNetPTS = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBethesdaNet = new System.Windows.Forms.PictureBox();
-            this.launchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButtonAddGame = new System.Windows.Forms.ToolStripButton();
-            this.buttonNWDeleteAll = new System.Windows.Forms.Button();
-            this.buttonNWLogout = new System.Windows.Forms.Button();
-            this.buttonNMUpdateProfile = new System.Windows.Forms.Button();
-            this.pictureBoxNMProfilePicture = new System.Windows.Forms.PictureBox();
-            this.pictureBoxUnknown = new System.Windows.Forms.PictureBox();
-            this.radioButtonEditionUnknown = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxOptions.SuspendLayout();
             this.groupBoxNuclearWinterMode.SuspendLayout();
             this.groupBoxBehavior.SuspendLayout();
             this.groupBoxLocalization.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
             this.tabPageGameProfiles.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxSettings.SuspendLayout();
@@ -153,19 +154,18 @@
             this.groupBoxLaunchOptions.SuspendLayout();
             this.groupBoxGameLocation.SuspendLayout();
             this.groupBoxGameEdition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).BeginInit();
             this.groupBoxGame.SuspendLayout();
             this.contextMenuStripGame.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabPageNexusMods.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -380,6 +380,34 @@
             this.groupBoxLocalization.TabStop = false;
             this.groupBoxLocalization.Text = "Localization";
             // 
+            // buttonRefreshLanguage
+            // 
+            this.buttonRefreshLanguage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRefreshLanguage.BackColor = System.Drawing.Color.Transparent;
+            this.buttonRefreshLanguage.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.buttonRefreshLanguage.FlatAppearance.BorderSize = 0;
+            this.buttonRefreshLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefreshLanguage.Image = global::Fo76ini.Properties.Resources.available_updates;
+            this.buttonRefreshLanguage.Location = new System.Drawing.Point(351, 49);
+            this.buttonRefreshLanguage.Name = "buttonRefreshLanguage";
+            this.buttonRefreshLanguage.Size = new System.Drawing.Size(32, 32);
+            this.buttonRefreshLanguage.TabIndex = 40;
+            this.toolTip.SetToolTip(this.buttonRefreshLanguage, "Refresh language list and reapply translation");
+            this.buttonRefreshLanguage.UseVisualStyleBackColor = false;
+            this.buttonRefreshLanguage.Click += new System.EventHandler(this.buttonRefreshLanguage_Click);
+            // 
+            // pictureBoxSpinnerDownloadLanguages
+            // 
+            this.pictureBoxSpinnerDownloadLanguages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxSpinnerDownloadLanguages.Image = global::Fo76ini.Properties.Resources.Spinner_24;
+            this.pictureBoxSpinnerDownloadLanguages.Location = new System.Drawing.Point(283, 53);
+            this.pictureBoxSpinnerDownloadLanguages.Name = "pictureBoxSpinnerDownloadLanguages";
+            this.pictureBoxSpinnerDownloadLanguages.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxSpinnerDownloadLanguages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxSpinnerDownloadLanguages.TabIndex = 40;
+            this.pictureBoxSpinnerDownloadLanguages.TabStop = false;
+            this.pictureBoxSpinnerDownloadLanguages.Visible = false;
+            // 
             // labelOutdatedLanguage
             // 
             this.labelOutdatedLanguage.AutoSize = true;
@@ -398,6 +426,21 @@
             this.labelLanguage.Size = new System.Drawing.Size(58, 13);
             this.labelLanguage.TabIndex = 16;
             this.labelLanguage.Text = "Language:";
+            // 
+            // buttonDownloadLanguages
+            // 
+            this.buttonDownloadLanguages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDownloadLanguages.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.buttonDownloadLanguages.FlatAppearance.BorderSize = 0;
+            this.buttonDownloadLanguages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDownloadLanguages.Image = global::Fo76ini.Properties.Resources.download_2_24;
+            this.buttonDownloadLanguages.Location = new System.Drawing.Point(313, 49);
+            this.buttonDownloadLanguages.Name = "buttonDownloadLanguages";
+            this.buttonDownloadLanguages.Size = new System.Drawing.Size(32, 32);
+            this.buttonDownloadLanguages.TabIndex = 20;
+            this.toolTip.SetToolTip(this.buttonDownloadLanguages, "Download / update language files");
+            this.buttonDownloadLanguages.UseVisualStyleBackColor = true;
+            this.buttonDownloadLanguages.Click += new System.EventHandler(this.buttonDownloadLanguages_Click);
             // 
             // comboBoxLanguage
             // 
@@ -659,6 +702,67 @@
             this.groupBoxGameEdition.TabStop = false;
             this.groupBoxGameEdition.Text = "Game edition";
             // 
+            // radioButtonEditionUnknown
+            // 
+            this.radioButtonEditionUnknown.AutoSize = true;
+            this.radioButtonEditionUnknown.Location = new System.Drawing.Point(43, 142);
+            this.radioButtonEditionUnknown.Name = "radioButtonEditionUnknown";
+            this.radioButtonEditionUnknown.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonEditionUnknown.TabIndex = 31;
+            this.radioButtonEditionUnknown.Text = "Other";
+            this.radioButtonEditionUnknown.UseVisualStyleBackColor = true;
+            this.radioButtonEditionUnknown.CheckedChanged += new System.EventHandler(this.radioButtonEditionUnknown_CheckedChanged);
+            // 
+            // pictureBoxUnknown
+            // 
+            this.pictureBoxUnknown.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxUnknown.Image = global::Fo76ini.Properties.Resources.help_24;
+            this.pictureBoxUnknown.Location = new System.Drawing.Point(11, 139);
+            this.pictureBoxUnknown.Name = "pictureBoxUnknown";
+            this.pictureBoxUnknown.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxUnknown.TabIndex = 30;
+            this.pictureBoxUnknown.TabStop = false;
+            // 
+            // pictureBoxMSStore
+            // 
+            this.pictureBoxMSStore.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.msstore_24;
+            this.pictureBoxMSStore.Location = new System.Drawing.Point(11, 109);
+            this.pictureBoxMSStore.Name = "pictureBoxMSStore";
+            this.pictureBoxMSStore.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxMSStore.TabIndex = 29;
+            this.pictureBoxMSStore.TabStop = false;
+            // 
+            // pictureBoxSteam
+            // 
+            this.pictureBoxSteam.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxSteam.Image = global::Fo76ini.Properties.Resources.steam_24px;
+            this.pictureBoxSteam.Location = new System.Drawing.Point(11, 79);
+            this.pictureBoxSteam.Name = "pictureBoxSteam";
+            this.pictureBoxSteam.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxSteam.TabIndex = 28;
+            this.pictureBoxSteam.TabStop = false;
+            // 
+            // pictureBoxBethesdaNetPTS
+            // 
+            this.pictureBoxBethesdaNetPTS.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxBethesdaNetPTS.Image = global::Fo76ini.Properties.Resources.bethesda_24;
+            this.pictureBoxBethesdaNetPTS.Location = new System.Drawing.Point(11, 49);
+            this.pictureBoxBethesdaNetPTS.Name = "pictureBoxBethesdaNetPTS";
+            this.pictureBoxBethesdaNetPTS.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxBethesdaNetPTS.TabIndex = 27;
+            this.pictureBoxBethesdaNetPTS.TabStop = false;
+            // 
+            // pictureBoxBethesdaNet
+            // 
+            this.pictureBoxBethesdaNet.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxBethesdaNet.Image = global::Fo76ini.Properties.Resources.bethesda_24;
+            this.pictureBoxBethesdaNet.Location = new System.Drawing.Point(11, 19);
+            this.pictureBoxBethesdaNet.Name = "pictureBoxBethesdaNet";
+            this.pictureBoxBethesdaNet.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxBethesdaNet.TabIndex = 26;
+            this.pictureBoxBethesdaNet.TabStop = false;
+            // 
             // radioButtonEditionMSStore
             // 
             this.radioButtonEditionMSStore.AutoSize = true;
@@ -726,11 +830,11 @@
             this.listViewGameInstances.FullRowSelect = true;
             this.listViewGameInstances.HideSelection = false;
             this.listViewGameInstances.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5});
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10});
             this.listViewGameInstances.LabelWrap = false;
             this.listViewGameInstances.LargeImageList = this.imageList1;
             this.listViewGameInstances.Location = new System.Drawing.Point(3, 18);
@@ -768,10 +872,34 @@
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.gameToolStripMenuItem.Text = "Game";
             // 
+            // launchGameToolStripMenuItem
+            // 
+            this.launchGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.play;
+            this.launchGameToolStripMenuItem.Name = "launchGameToolStripMenuItem";
+            this.launchGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.launchGameToolStripMenuItem.Text = "Launch";
+            this.launchGameToolStripMenuItem.Click += new System.EventHandler(this.launchGameToolStripMenuItem_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
+            // 
+            // renameGameToolStripMenuItem
+            // 
+            this.renameGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.text_24;
+            this.renameGameToolStripMenuItem.Name = "renameGameToolStripMenuItem";
+            this.renameGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.renameGameToolStripMenuItem.Text = "Rename";
+            this.renameGameToolStripMenuItem.Click += new System.EventHandler(this.renameGameToolStripMenuItem_Click);
+            // 
+            // removeGameToolStripMenuItem
+            // 
+            this.removeGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.delete_24;
+            this.removeGameToolStripMenuItem.Name = "removeGameToolStripMenuItem";
+            this.removeGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeGameToolStripMenuItem.Text = "Remove";
+            this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
             // 
             // imageList1
             // 
@@ -808,6 +936,18 @@
             this.toolStrip1.TabIndex = 19;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripButtonAddGame
+            // 
+            this.toolStripButtonAddGame.BackColor = System.Drawing.Color.White;
+            this.toolStripButtonAddGame.Image = global::Fo76ini.Properties.Resources.plus_24;
+            this.toolStripButtonAddGame.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripButtonAddGame.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddGame.Name = "toolStripButtonAddGame";
+            this.toolStripButtonAddGame.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.toolStripButtonAddGame.Size = new System.Drawing.Size(90, 24);
+            this.toolStripButtonAddGame.Text = "Add game";
+            this.toolStripButtonAddGame.Click += new System.EventHandler(this.toolStripButtonAddGame_Click);
+            // 
             // tabPageNexusMods
             // 
             this.tabPageNexusMods.Controls.Add(this.panel2);
@@ -840,6 +980,40 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(766, 339);
             this.panel2.TabIndex = 78;
+            // 
+            // buttonNWDeleteAll
+            // 
+            this.buttonNWDeleteAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonNWDeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNWDeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNWDeleteAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNWDeleteAll.Image = global::Fo76ini.Properties.Resources.delete_48;
+            this.buttonNWDeleteAll.Location = new System.Drawing.Point(266, 7);
+            this.buttonNWDeleteAll.Name = "buttonNWDeleteAll";
+            this.buttonNWDeleteAll.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNWDeleteAll.Size = new System.Drawing.Size(120, 120);
+            this.buttonNWDeleteAll.TabIndex = 104;
+            this.buttonNWDeleteAll.Text = "Delete cache";
+            this.buttonNWDeleteAll.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNWDeleteAll.UseVisualStyleBackColor = false;
+            this.buttonNWDeleteAll.Click += new System.EventHandler(this.buttonNWDeleteAll_Click);
+            // 
+            // buttonNWLogout
+            // 
+            this.buttonNWLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(62)))));
+            this.buttonNWLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNWLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNWLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNWLogout.Image = global::Fo76ini.Properties.Resources.exit_48;
+            this.buttonNWLogout.Location = new System.Drawing.Point(140, 7);
+            this.buttonNWLogout.Name = "buttonNWLogout";
+            this.buttonNWLogout.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNWLogout.Size = new System.Drawing.Size(120, 120);
+            this.buttonNWLogout.TabIndex = 103;
+            this.buttonNWLogout.Text = "Logout";
+            this.buttonNWLogout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNWLogout.UseVisualStyleBackColor = false;
+            this.buttonNWLogout.Click += new System.EventHandler(this.buttonNWLogout_Click);
             // 
             // checkBoxNMDownloadThumbnails
             // 
@@ -919,6 +1093,23 @@
             this.labelNMAPIKeyTextBox.Size = new System.Drawing.Size(48, 13);
             this.labelNMAPIKeyTextBox.TabIndex = 91;
             this.labelNMAPIKeyTextBox.Text = "API Key:";
+            // 
+            // buttonNMUpdateProfile
+            // 
+            this.buttonNMUpdateProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
+            this.buttonNMUpdateProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNMUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNMUpdateProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNMUpdateProfile.Image = global::Fo76ini.Properties.Resources.available_updates_48;
+            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(12, 7);
+            this.buttonNMUpdateProfile.Name = "buttonNMUpdateProfile";
+            this.buttonNMUpdateProfile.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNMUpdateProfile.Size = new System.Drawing.Size(120, 120);
+            this.buttonNMUpdateProfile.TabIndex = 94;
+            this.buttonNMUpdateProfile.Text = "Update profile";
+            this.buttonNMUpdateProfile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNMUpdateProfile.UseVisualStyleBackColor = false;
+            this.buttonNMUpdateProfile.Click += new System.EventHandler(this.buttonNMUpdateProfile_Click);
             // 
             // panel3
             // 
@@ -1029,6 +1220,18 @@
             this.labelNMDescAPIKey.TabIndex = 74;
             this.labelNMDescAPIKey.Text = "API key:";
             // 
+            // pictureBoxNMProfilePicture
+            // 
+            this.pictureBoxNMProfilePicture.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxNMProfilePicture.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNMProfilePicture.Image")));
+            this.pictureBoxNMProfilePicture.Location = new System.Drawing.Point(20, 20);
+            this.pictureBoxNMProfilePicture.Name = "pictureBoxNMProfilePicture";
+            this.pictureBoxNMProfilePicture.Size = new System.Drawing.Size(128, 128);
+            this.pictureBoxNMProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxNMProfilePicture.TabIndex = 65;
+            this.pictureBoxNMProfilePicture.TabStop = false;
+            this.pictureBoxNMProfilePicture.Click += new System.EventHandler(this.pictureBoxNMProfilePicture_Click);
+            // 
             // labelNMUserName
             // 
             this.labelNMUserName.AutoSize = true;
@@ -1121,209 +1324,6 @@
             // 
             this.backgroundWorkerRetrieveProfileInfo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerRetrieveProfileInfo_DoWork);
             // 
-            // buttonRefreshLanguage
-            // 
-            this.buttonRefreshLanguage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonRefreshLanguage.BackColor = System.Drawing.Color.Transparent;
-            this.buttonRefreshLanguage.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.buttonRefreshLanguage.FlatAppearance.BorderSize = 0;
-            this.buttonRefreshLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRefreshLanguage.Image = global::Fo76ini.Properties.Resources.available_updates;
-            this.buttonRefreshLanguage.Location = new System.Drawing.Point(351, 49);
-            this.buttonRefreshLanguage.Name = "buttonRefreshLanguage";
-            this.buttonRefreshLanguage.Size = new System.Drawing.Size(32, 32);
-            this.buttonRefreshLanguage.TabIndex = 40;
-            this.toolTip.SetToolTip(this.buttonRefreshLanguage, "Refresh language list and reapply translation");
-            this.buttonRefreshLanguage.UseVisualStyleBackColor = false;
-            this.buttonRefreshLanguage.Click += new System.EventHandler(this.buttonRefreshLanguage_Click);
-            // 
-            // pictureBoxSpinnerDownloadLanguages
-            // 
-            this.pictureBoxSpinnerDownloadLanguages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxSpinnerDownloadLanguages.Image = global::Fo76ini.Properties.Resources.Spinner_24;
-            this.pictureBoxSpinnerDownloadLanguages.Location = new System.Drawing.Point(283, 53);
-            this.pictureBoxSpinnerDownloadLanguages.Name = "pictureBoxSpinnerDownloadLanguages";
-            this.pictureBoxSpinnerDownloadLanguages.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxSpinnerDownloadLanguages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxSpinnerDownloadLanguages.TabIndex = 40;
-            this.pictureBoxSpinnerDownloadLanguages.TabStop = false;
-            this.pictureBoxSpinnerDownloadLanguages.Visible = false;
-            // 
-            // buttonDownloadLanguages
-            // 
-            this.buttonDownloadLanguages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDownloadLanguages.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.buttonDownloadLanguages.FlatAppearance.BorderSize = 0;
-            this.buttonDownloadLanguages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDownloadLanguages.Image = global::Fo76ini.Properties.Resources.download_2_24;
-            this.buttonDownloadLanguages.Location = new System.Drawing.Point(313, 49);
-            this.buttonDownloadLanguages.Name = "buttonDownloadLanguages";
-            this.buttonDownloadLanguages.Size = new System.Drawing.Size(32, 32);
-            this.buttonDownloadLanguages.TabIndex = 20;
-            this.toolTip.SetToolTip(this.buttonDownloadLanguages, "Download / update language files");
-            this.buttonDownloadLanguages.UseVisualStyleBackColor = true;
-            this.buttonDownloadLanguages.Click += new System.EventHandler(this.buttonDownloadLanguages_Click);
-            // 
-            // pictureBoxMSStore
-            // 
-            this.pictureBoxMSStore.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.msstore_24;
-            this.pictureBoxMSStore.Location = new System.Drawing.Point(11, 109);
-            this.pictureBoxMSStore.Name = "pictureBoxMSStore";
-            this.pictureBoxMSStore.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxMSStore.TabIndex = 29;
-            this.pictureBoxMSStore.TabStop = false;
-            // 
-            // pictureBoxSteam
-            // 
-            this.pictureBoxSteam.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxSteam.Image = global::Fo76ini.Properties.Resources.steam_24px;
-            this.pictureBoxSteam.Location = new System.Drawing.Point(11, 79);
-            this.pictureBoxSteam.Name = "pictureBoxSteam";
-            this.pictureBoxSteam.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxSteam.TabIndex = 28;
-            this.pictureBoxSteam.TabStop = false;
-            // 
-            // pictureBoxBethesdaNetPTS
-            // 
-            this.pictureBoxBethesdaNetPTS.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNetPTS.Image = global::Fo76ini.Properties.Resources.bethesda_24;
-            this.pictureBoxBethesdaNetPTS.Location = new System.Drawing.Point(11, 49);
-            this.pictureBoxBethesdaNetPTS.Name = "pictureBoxBethesdaNetPTS";
-            this.pictureBoxBethesdaNetPTS.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxBethesdaNetPTS.TabIndex = 27;
-            this.pictureBoxBethesdaNetPTS.TabStop = false;
-            // 
-            // pictureBoxBethesdaNet
-            // 
-            this.pictureBoxBethesdaNet.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNet.Image = global::Fo76ini.Properties.Resources.bethesda_24;
-            this.pictureBoxBethesdaNet.Location = new System.Drawing.Point(11, 19);
-            this.pictureBoxBethesdaNet.Name = "pictureBoxBethesdaNet";
-            this.pictureBoxBethesdaNet.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxBethesdaNet.TabIndex = 26;
-            this.pictureBoxBethesdaNet.TabStop = false;
-            // 
-            // launchGameToolStripMenuItem
-            // 
-            this.launchGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.play;
-            this.launchGameToolStripMenuItem.Name = "launchGameToolStripMenuItem";
-            this.launchGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.launchGameToolStripMenuItem.Text = "Launch";
-            this.launchGameToolStripMenuItem.Click += new System.EventHandler(this.launchGameToolStripMenuItem_Click);
-            // 
-            // renameGameToolStripMenuItem
-            // 
-            this.renameGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.text_24;
-            this.renameGameToolStripMenuItem.Name = "renameGameToolStripMenuItem";
-            this.renameGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.renameGameToolStripMenuItem.Text = "Rename";
-            this.renameGameToolStripMenuItem.Click += new System.EventHandler(this.renameGameToolStripMenuItem_Click);
-            // 
-            // removeGameToolStripMenuItem
-            // 
-            this.removeGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.delete_24;
-            this.removeGameToolStripMenuItem.Name = "removeGameToolStripMenuItem";
-            this.removeGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.removeGameToolStripMenuItem.Text = "Remove";
-            this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
-            // 
-            // toolStripButtonAddGame
-            // 
-            this.toolStripButtonAddGame.BackColor = System.Drawing.Color.White;
-            this.toolStripButtonAddGame.Image = global::Fo76ini.Properties.Resources.plus_24;
-            this.toolStripButtonAddGame.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolStripButtonAddGame.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddGame.Name = "toolStripButtonAddGame";
-            this.toolStripButtonAddGame.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.toolStripButtonAddGame.Size = new System.Drawing.Size(90, 24);
-            this.toolStripButtonAddGame.Text = "Add game";
-            this.toolStripButtonAddGame.Click += new System.EventHandler(this.toolStripButtonAddGame_Click);
-            // 
-            // buttonNWDeleteAll
-            // 
-            this.buttonNWDeleteAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.buttonNWDeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNWDeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNWDeleteAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNWDeleteAll.Image = global::Fo76ini.Properties.Resources.delete_48;
-            this.buttonNWDeleteAll.Location = new System.Drawing.Point(266, 7);
-            this.buttonNWDeleteAll.Name = "buttonNWDeleteAll";
-            this.buttonNWDeleteAll.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNWDeleteAll.Size = new System.Drawing.Size(120, 120);
-            this.buttonNWDeleteAll.TabIndex = 104;
-            this.buttonNWDeleteAll.Text = "Delete cache";
-            this.buttonNWDeleteAll.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNWDeleteAll.UseVisualStyleBackColor = false;
-            this.buttonNWDeleteAll.Click += new System.EventHandler(this.buttonNWDeleteAll_Click);
-            // 
-            // buttonNWLogout
-            // 
-            this.buttonNWLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(62)))));
-            this.buttonNWLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNWLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNWLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNWLogout.Image = global::Fo76ini.Properties.Resources.exit_48;
-            this.buttonNWLogout.Location = new System.Drawing.Point(140, 7);
-            this.buttonNWLogout.Name = "buttonNWLogout";
-            this.buttonNWLogout.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNWLogout.Size = new System.Drawing.Size(120, 120);
-            this.buttonNWLogout.TabIndex = 103;
-            this.buttonNWLogout.Text = "Logout";
-            this.buttonNWLogout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNWLogout.UseVisualStyleBackColor = false;
-            this.buttonNWLogout.Click += new System.EventHandler(this.buttonNWLogout_Click);
-            // 
-            // buttonNMUpdateProfile
-            // 
-            this.buttonNMUpdateProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
-            this.buttonNMUpdateProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNMUpdateProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMUpdateProfile.Image = global::Fo76ini.Properties.Resources.available_updates_48;
-            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(12, 7);
-            this.buttonNMUpdateProfile.Name = "buttonNMUpdateProfile";
-            this.buttonNMUpdateProfile.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNMUpdateProfile.Size = new System.Drawing.Size(120, 120);
-            this.buttonNMUpdateProfile.TabIndex = 94;
-            this.buttonNMUpdateProfile.Text = "Update profile";
-            this.buttonNMUpdateProfile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNMUpdateProfile.UseVisualStyleBackColor = false;
-            this.buttonNMUpdateProfile.Click += new System.EventHandler(this.buttonNMUpdateProfile_Click);
-            // 
-            // pictureBoxNMProfilePicture
-            // 
-            this.pictureBoxNMProfilePicture.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxNMProfilePicture.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNMProfilePicture.Image")));
-            this.pictureBoxNMProfilePicture.Location = new System.Drawing.Point(20, 20);
-            this.pictureBoxNMProfilePicture.Name = "pictureBoxNMProfilePicture";
-            this.pictureBoxNMProfilePicture.Size = new System.Drawing.Size(128, 128);
-            this.pictureBoxNMProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxNMProfilePicture.TabIndex = 65;
-            this.pictureBoxNMProfilePicture.TabStop = false;
-            this.pictureBoxNMProfilePicture.Click += new System.EventHandler(this.pictureBoxNMProfilePicture_Click);
-            // 
-            // pictureBoxUnknown
-            // 
-            this.pictureBoxUnknown.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxUnknown.Image = global::Fo76ini.Properties.Resources.help_24;
-            this.pictureBoxUnknown.Location = new System.Drawing.Point(11, 139);
-            this.pictureBoxUnknown.Name = "pictureBoxUnknown";
-            this.pictureBoxUnknown.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxUnknown.TabIndex = 30;
-            this.pictureBoxUnknown.TabStop = false;
-            // 
-            // radioButtonEditionUnknown
-            // 
-            this.radioButtonEditionUnknown.AutoSize = true;
-            this.radioButtonEditionUnknown.Location = new System.Drawing.Point(43, 142);
-            this.radioButtonEditionUnknown.Name = "radioButtonEditionUnknown";
-            this.radioButtonEditionUnknown.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonEditionUnknown.TabIndex = 31;
-            this.radioButtonEditionUnknown.Text = "Other";
-            this.radioButtonEditionUnknown.UseVisualStyleBackColor = true;
-            this.radioButtonEditionUnknown.CheckedChanged += new System.EventHandler(this.radioButtonEditionUnknown_CheckedChanged);
-            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1348,6 +1348,7 @@
             this.groupBoxBehavior.PerformLayout();
             this.groupBoxLocalization.ResumeLayout(false);
             this.groupBoxLocalization.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).EndInit();
             this.tabPageGameProfiles.ResumeLayout(false);
             this.tabPageGameProfiles.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1362,6 +1363,11 @@
             this.groupBoxGameLocation.PerformLayout();
             this.groupBoxGameEdition.ResumeLayout(false);
             this.groupBoxGameEdition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).EndInit();
             this.groupBoxGame.ResumeLayout(false);
             this.contextMenuStripGame.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
@@ -1371,13 +1377,7 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -14,11 +14,11 @@ namespace Fo76ini.Mods
     /// </summary>
     public static class ModDeployment
     {
-        // TODO: Disable mods checkbox
+        // TODO: Clean FrozenData?
 
         public static void Deploy(ManagedMods mods, Action<Progress> ProgressChanged)
         {
-            // TODO: ProgressChanged
+            // TODO: More descriptive ProgressChanged
             ProgressChanged?.Invoke(Progress.Indetermined("Deploying..."));
 
             // Check for conflicts:
@@ -30,37 +30,44 @@ namespace Fo76ini.Mods
             RestoreAddedDLLs(mods.GamePath);
 
             // Remove all currently deployed mods:
+            ProgressChanged?.Invoke(Progress.Indetermined("Removing mods..."));
             ModDeployment.RemoveAll(mods);
             mods.Save();
 
-            // Deploy all SeparateBA2 and Loose mods:
-            foreach (ManagedMod mod in mods)
+            // If mods are enabled:
+            if (!mods.ModsDisabled)
             {
-                ProgressChanged?.Invoke(Progress.Indetermined($"Deploying {mod.Title}..."));
-                if (mod.Enabled &&
-                    Directory.Exists(mod.ManagedFolderPath) &&
-                    !Utils.IsDirectoryEmpty(mod.ManagedFolderPath))
+                // Deploy all SeparateBA2 and Loose mods:
+                foreach (ManagedMod mod in mods)
                 {
-                    switch (mod.Method)
+                    ProgressChanged?.Invoke(Progress.Indetermined($"Deploying {mod.Title}..."));
+                    if (mod.Enabled &&
+                        Directory.Exists(mod.ManagedFolderPath) &&
+                        !Utils.IsDirectoryEmpty(mod.ManagedFolderPath))
                     {
-                        case ManagedMod.DeploymentMethod.SeparateBA2:
-                            DeploySeparateArchive(mod, mods.Resources);
-                            mods.Save();
-                            break;
-                        case ManagedMod.DeploymentMethod.Loose:
-                            DeployLooseFiles(mod, mods.GamePath);
-                            mods.Save();
-                            break;
+                        switch (mod.Method)
+                        {
+                            case ManagedMod.DeploymentMethod.SeparateBA2:
+                                DeploySeparateArchive(mod, mods.Resources);
+                                mods.Save();
+                                break;
+                            case ManagedMod.DeploymentMethod.LooseFiles:
+                                DeployLooseFiles(mod, mods.GamePath);
+                                mods.Save();
+                                break;
+                        }
                     }
                 }
+
+                // Deploy all BundledBA2 mods:
+                ProgressChanged?.Invoke(Progress.Indetermined($"Building bundled archives..."));
+                ModDeployment.DeployBundledArchives(mods);
+
+                mods.Save();
+                ProgressChanged?.Invoke(Progress.Done("Mods deployed."));
             }
-
-            // Deploy all BundledBA2 mods:
-            ProgressChanged?.Invoke(Progress.Indetermined($"Building bundled archives..."));
-            ModDeployment.DeployBundledArchives(mods);
-
-            mods.Save();
-            ProgressChanged?.Invoke(Progress.Done("Mods deployed."));
+            else
+                ProgressChanged?.Invoke(Progress.Done("Mods removed."));
         }
 
         /// <summary>
@@ -95,7 +102,7 @@ namespace Fo76ini.Mods
 
             mod.CurrentRootFolder = mod.RootFolder;
             mod.Deployed = true;
-            mod.PreviousMethod = ManagedMod.DeploymentMethod.Loose;
+            mod.PreviousMethod = ManagedMod.DeploymentMethod.LooseFiles;
         }
 
         /// <summary>
@@ -208,7 +215,7 @@ namespace Fo76ini.Mods
         private static void PackBundledArchives(ResourceList resources, DeployArchiveList archives, bool freezeArchives)
         {
             // For each archive...
-            foreach (DeployArchive archive in archives)
+            foreach (DeployArchive archive in archives.Reverse())
             {
                 // ... if needed ...
                 if (archive.Count > 0 && !Utils.IsDirectoryEmpty(archive.TempPath))
@@ -317,13 +324,14 @@ namespace Fo76ini.Mods
                         resources.Remove(mod.CurrentArchiveName);
                         break;
 
-                    case ManagedMod.DeploymentMethod.Loose:
+                    case ManagedMod.DeploymentMethod.LooseFiles:
                         foreach (string relFilePath in mod.LooseFiles)
                         {
                             string installedFilePath = Path.GetFullPath(Path.Combine(GamePath, mod.CurrentRootFolder, relFilePath)); // .Replace("\\.\\", "\\")
 
                             // Delete file, if existing:
-                            File.Delete(installedFilePath);
+                            if (File.Exists(installedFilePath))
+                                File.Delete(installedFilePath);
 
                             // Rename backup, if there is one:
                             if (File.Exists(installedFilePath + ".old"))
@@ -333,6 +341,7 @@ namespace Fo76ini.Mods
                             else
                                 RemoveEmptyFolders(Path.GetDirectoryName(installedFilePath));
                         }
+                        mod.LooseFiles.Clear();
                         break;
                 }
 

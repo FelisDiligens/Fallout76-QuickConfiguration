@@ -30,6 +30,7 @@ namespace Fo76ini
 
         public Form1()
         {
+            Console.WriteLine(Shared.AppUserAgent);
             InitializeComponent();
 
             // Handle changes:
@@ -895,9 +896,14 @@ namespace Fo76ini
             }
         }
 
-        private void toolStripButtonProfiles_Click(object sender, EventArgs e)
+        private void showSettings_OnClick(object sender, EventArgs e)
         {
-            formSettings.ShowDialog();
+            formSettings.ShowSettings();
+        }
+
+        private void showProfiles_OnClick(object sender, EventArgs e)
+        {
+            formSettings.ShowProfiles();
         }
 
         #endregion
@@ -928,11 +934,6 @@ namespace Fo76ini
         private void linkLabelWhatsNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ShowWhatsNew();
-        }
-
-        private void linkLabelOpenSettings_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            formSettings.ShowDialog();
         }
 
         private void MakePictureBoxButton(PictureBox pictureBox, string localizedStringID)

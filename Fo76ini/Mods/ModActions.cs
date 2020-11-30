@@ -140,24 +140,39 @@ namespace Fo76ini.Mods
 
         public static void ManipulateModFolder(ManagedMod mod, Action<Progress> ProgressChanged = null)
         {
-            string managedFolderPath = mod.ManagedFolderPath;
-            foreach (string path in Directory.EnumerateFiles(managedFolderPath))
+            int fileCount = Directory.EnumerateFiles(mod.ManagedFolderPath).Count();
+            int folderCount = Directory.EnumerateDirectories(mod.ManagedFolderPath).Count();
+
+            foreach (string path in Directory.EnumerateFiles(mod.ManagedFolderPath))
             {
-                // TODO: Install as frozen by default?
                 // If a *.ba2 archive was found, extract it:
-                if (path.EndsWith(".ba2"))
+                if (path.ToLower().EndsWith(".ba2"))
                 {
                     try
                     {
                         ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {Path.GetFileName(path)}"));
-                        Archive2.Extract(path, managedFolderPath);
+                        Archive2.Extract(path, mod.ManagedFolderPath);
+
+                        // Freeze if it's the only file here:
+                        if (!IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false) && fileCount == 1)
+                        {
+                            ProgressChanged?.Invoke(Progress.Indetermined($"Copying {Path.GetFileName(path)}"));
+                            File.Copy(path, mod.FrozenArchivePath);
+
+                            mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
+                            mod.Format = ManagedMod.ArchiveFormat.Auto;
+                            mod.Compression = ManagedMod.ArchiveCompression.Auto;
+                            mod.CurrentFormat = mod.Format;
+                            mod.CurrentCompression = mod.Compression;
+                            mod.Frozen = true;
+                            mod.Freeze = true;
+                        }
+
                         File.Delete(path);
                     }
                     catch (Archive2Exception ex) { }
                 }
             }
-
-            //String[] typicalFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx" };
 
             ProgressChanged?.Invoke(Progress.Indetermined("Cleaning mod folder up, detecting installation options."));
 
@@ -165,35 +180,40 @@ namespace Fo76ini.Mods
             for (int i = 0; i < 2; i++)
             {
                 // Search through all folders in the mod folder.
-                foreach (string path in Directory.GetDirectories(managedFolderPath))
+                foreach (string path in Directory.EnumerateDirectories(mod.ManagedFolderPath))
                 {
                     string name = Path.GetFileName(path).ToLower();
 
                     // If only a data folder is in the mod folder... 
-                    if (name == "data" && Directory.EnumerateFiles(managedFolderPath).Count() == 0)
+                    if (name == "data" && fileCount == 0 && folderCount == 1)
                     {
                         // ... move all files in data on up:
-                        Directory.Move(path, managedFolderPath);
-                        // Delete the empty data folder afterwards:
-                        // Directory.Delete(path);
+                        Directory.Move(path, mod.ManagedFolderPath);
                         break;
                     }
 
-                    // If the mod folder contains "textures"...
-                    if (name == "textures" && Directory.EnumerateFiles(managedFolderPath).Count() == 0)
+                    // If the mod folder only contains "textures"...
+                    if (name == "textures" && fileCount == 0 && folderCount == 1)
                     {
                         // ... set ba2 format type to DDS
-                        if (mod.Format != ManagedMod.ArchiveFormat.Auto)
-                        {
-                            mod.Format = ManagedMod.ArchiveFormat.Textures;
-                            break;
-                        }
+                        mod.Format = ManagedMod.ArchiveFormat.Textures;
+                        mod.Compression = ManagedMod.ArchiveCompression.Compressed;
+                        break;
+                    }
+
+                    // If the mod folder only contains "strings"...
+                    if (name == "strings" && fileCount == 0 && folderCount == 1)
+                    {
+                        // ... set ba2 format type to DDS
+                        mod.Method = ManagedMod.DeploymentMethod.LooseFiles;
+                        mod.RootFolder = "Data";
+                        break;
                     }
                 }
             }
 
             // Search through all files in the mod folder.
-            foreach (string path in Directory.EnumerateFiles(managedFolderPath))
+            foreach (string path in Directory.EnumerateFiles(mod.ManagedFolderPath))
             {
                 string name = Path.GetFileName(path).ToLower();
                 string extension = Path.GetExtension(path).ToLower();
@@ -202,7 +222,7 @@ namespace Fo76ini.Mods
                 if (extension == ".dll")
                 {
                     // ... then it probably has to be installed as loose files into the root directory:
-                    mod.Method = ManagedMod.DeploymentMethod.Loose;
+                    mod.Method = ManagedMod.DeploymentMethod.LooseFiles;
                     mod.RootFolder = ".";
                 }
             }

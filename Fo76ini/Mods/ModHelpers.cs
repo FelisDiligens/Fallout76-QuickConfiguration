@@ -12,6 +12,11 @@ namespace Fo76ini.Mods
     /// </summary>
     public static class ModHelpers
     {
+        public static string[] ResourceFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx", "lodsettings" };
+        public static string[] GeneralFolders = new string[] { "meshes", "strings", "interface", "materials" };
+        public static string[] TextureFolders = new string[] { "textures", "effects" };
+        public static string[] SoundFolders = new string[] { "sound", "music" };
+
         /// <summary>
         /// Converts ManagedMod.ArchiveCompression and ManagedMod.ArchiveFormat to an Archive2.Preset.
         /// Automatically determines appropriate compression and format if needed.
@@ -39,10 +44,6 @@ namespace Fo76ini.Mods
             }
 
             // Detect mod type:
-            // String[] resourceFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx", "lodsettings" };
-            string[] generalFolders = new string[] { "meshes", "strings", "interface", "materials" };
-            string[] textureFolders = new string[] { "textures", "effects" };
-            string[] soundFolders = new string[] { "sound", "music" };
 
             int generalFoldersCount = 0;
             int textureFoldersCount = 0;
@@ -53,11 +54,11 @@ namespace Fo76ini.Mods
             {
                 string folderName = Path.GetFileName(path).ToLower();
 
-                if (generalFolders.Contains(folderName))
+                if (GeneralFolders.Contains(folderName))
                     generalFoldersCount++;
-                else if (textureFolders.Contains(folderName))
+                else if (TextureFolders.Contains(folderName))
                     textureFoldersCount++;
-                else if (soundFolders.Contains(folderName))
+                else if (SoundFolders.Contains(folderName))
                     soundFoldersCount++;
             }
 

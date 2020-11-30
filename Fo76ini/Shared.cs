@@ -10,11 +10,41 @@ namespace Fo76ini
         public const string VERSION = "1.9.0";
         public static string LatestVersion = null;
 
-        public static string AppInstallationFolder = Directory.GetParent(Application.ExecutablePath).ToString();
-        public static string AppConfigFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");
+        public static readonly string AppInstallationFolder = Directory.GetParent(Application.ExecutablePath).ToString();
+        public static readonly string AppConfigFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");
 
         public static readonly System.Globalization.CultureInfo en_US = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
         public static bool NuclearWinterMode = false;
+
+        // https://stackoverflow.com/a/49754978
+        public static readonly string DotNetFrameworkVersion;
+
+        public static readonly string AppUserAgent;
+
+        static Shared ()
+        {
+            // Find DotNetFrameworkVersion:
+            string DotNetTargetFrameworkName = AppDomain.CurrentDomain.SetupInformation.TargetFrameworkName;
+            int i = DotNetTargetFrameworkName.IndexOf("v");
+            if (i >= 0)
+                DotNetFrameworkVersion = DotNetTargetFrameworkName.Substring(i + 1);
+            else
+                DotNetFrameworkVersion = DotNetTargetFrameworkName;
+
+            // Build user-agent:
+            string os = "";
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+                os = $"Windows NT {Environment.OSVersion.Version}; ";
+            else
+                os = $"{Environment.OSVersion.Platform} {Environment.OSVersion.Version}; ";
+
+            if (Environment.Is64BitOperatingSystem)
+                os += "x64";
+            else
+                os += "x86";
+
+            AppUserAgent = $"Fo76QConf/{Shared.VERSION} ({os}) .NETFramework/{Shared.DotNetFrameworkVersion}";
+        }
     }
 }
