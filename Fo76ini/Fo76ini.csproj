@@ -356,6 +356,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\download-2-48.png" />
+    <None Include="Resources\like.png" />
+    <None Include="Resources\dislike.png" />
     <None Include="Resources\heart-broken-24.png" />
     <None Include="Resources\thumb-down-24.png" />
     <None Include="Resources\thumb-up-24.png" />

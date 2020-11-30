@@ -64,6 +64,12 @@
             this.pictureBoxCollapseDetails = new System.Windows.Forms.PictureBox();
             this.panelModDetails = new System.Windows.Forms.Panel();
             this.panelModDetailsInner = new System.Windows.Forms.Panel();
+            this.groupBoxModReplace = new System.Windows.Forms.GroupBox();
+            this.labelModDetailsReplace = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.panelModDetailsReplaceDragAndDrop = new System.Windows.Forms.Panel();
+            this.linkLabelModReplaceFilesWithFolder = new System.Windows.Forms.LinkLabel();
+            this.linkLabelModReplaceFilesWithArchive = new System.Windows.Forms.LinkLabel();
             this.groupBoxModDetailsInstallationOptions = new System.Windows.Forms.GroupBox();
             this.labelModInstallWarning = new System.Windows.Forms.Label();
             this.buttonModPickRootDir = new System.Windows.Forms.Button();
@@ -79,8 +85,11 @@
             this.labelModArchiveName = new System.Windows.Forms.Label();
             this.groupBoxModDetailsDetails = new System.Windows.Forms.GroupBox();
             this.panelModDetailsNexusMods = new System.Windows.Forms.Panel();
+            this.linkLabelModDownloadFile = new System.Windows.Forms.LinkLabel();
+            this.linkLabelOpenOnNexus = new System.Windows.Forms.LinkLabel();
             this.buttonModAbstain = new System.Windows.Forms.Button();
             this.buttonModEndorse = new System.Windows.Forms.Button();
+            this.linkLabelModSetLatestVersion = new System.Windows.Forms.LinkLabel();
             this.labelModEndorseStatus = new System.Windows.Forms.Label();
             this.labelModSummaryDesc = new System.Windows.Forms.Label();
             this.labelModAuthor = new System.Windows.Forms.Label();
@@ -134,7 +143,6 @@
             this.labelNexusModsMovedNotice2 = new System.Windows.Forms.Label();
             this.labelNexusModsMovedNotice = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialogMod = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialogMod = new System.Windows.Forms.FolderBrowserDialog();
@@ -150,13 +158,14 @@
             this.toolStripStatusLabelEnabledCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelSpacer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDeploymentStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.linkLabelOpenOnNexus = new System.Windows.Forms.LinkLabel();
+            this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCollapseDetails)).BeginInit();
             this.panelModDetails.SuspendLayout();
             this.panelModDetailsInner.SuspendLayout();
+            this.groupBoxModReplace.SuspendLayout();
             this.groupBoxModDetailsInstallationOptions.SuspendLayout();
             this.groupBoxModDetailsDetails.SuspendLayout();
             this.panelModDetailsNexusMods.SuspendLayout();
@@ -167,9 +176,9 @@
             this.groupBoxLists.SuspendLayout();
             this.tabPageNexusMods.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).BeginInit();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -479,12 +488,80 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelModDetailsInner.AutoScroll = true;
             this.panelModDetailsInner.AutoScrollMargin = new System.Drawing.Size(0, 8);
+            this.panelModDetailsInner.Controls.Add(this.groupBoxModReplace);
             this.panelModDetailsInner.Controls.Add(this.groupBoxModDetailsInstallationOptions);
             this.panelModDetailsInner.Controls.Add(this.groupBoxModDetailsDetails);
-            this.panelModDetailsInner.Location = new System.Drawing.Point(0, 212);
+            this.panelModDetailsInner.Location = new System.Drawing.Point(0, 210);
             this.panelModDetailsInner.Name = "panelModDetailsInner";
-            this.panelModDetailsInner.Size = new System.Drawing.Size(394, 253);
+            this.panelModDetailsInner.Size = new System.Drawing.Size(394, 254);
             this.panelModDetailsInner.TabIndex = 76;
+            // 
+            // groupBoxModReplace
+            // 
+            this.groupBoxModReplace.Controls.Add(this.labelModDetailsReplace);
+            this.groupBoxModReplace.Controls.Add(this.linkLabel1);
+            this.groupBoxModReplace.Controls.Add(this.panelModDetailsReplaceDragAndDrop);
+            this.groupBoxModReplace.Controls.Add(this.linkLabelModReplaceFilesWithFolder);
+            this.groupBoxModReplace.Controls.Add(this.linkLabelModReplaceFilesWithArchive);
+            this.groupBoxModReplace.Location = new System.Drawing.Point(6, 608);
+            this.groupBoxModReplace.Name = "groupBoxModReplace";
+            this.groupBoxModReplace.Size = new System.Drawing.Size(365, 136);
+            this.groupBoxModReplace.TabIndex = 75;
+            this.groupBoxModReplace.TabStop = false;
+            this.groupBoxModReplace.Text = "Add / Replace mod files";
+            // 
+            // labelModDetailsReplace
+            // 
+            this.labelModDetailsReplace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelModDetailsReplace.ForeColor = System.Drawing.Color.Gray;
+            this.labelModDetailsReplace.Location = new System.Drawing.Point(175, 76);
+            this.labelModDetailsReplace.Name = "labelModDetailsReplace";
+            this.labelModDetailsReplace.Size = new System.Drawing.Size(168, 52);
+            this.labelModDetailsReplace.TabIndex = 0;
+            this.labelModDetailsReplace.Text = "Drag-and-drop an archive or a folder into the left box to add/replace files.";
+            this.labelModDetailsReplace.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(173, 60);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(111, 13);
+            this.linkLabel1.TabIndex = 5;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Delete folder contents";
+            // 
+            // panelModDetailsReplaceDragAndDrop
+            // 
+            this.panelModDetailsReplaceDragAndDrop.AllowDrop = true;
+            this.panelModDetailsReplaceDragAndDrop.BackgroundImage = global::Fo76ini.Properties.Resources.download_2_48;
+            this.panelModDetailsReplaceDragAndDrop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panelModDetailsReplaceDragAndDrop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelModDetailsReplaceDragAndDrop.Location = new System.Drawing.Point(6, 19);
+            this.panelModDetailsReplaceDragAndDrop.Name = "panelModDetailsReplaceDragAndDrop";
+            this.panelModDetailsReplaceDragAndDrop.Size = new System.Drawing.Size(159, 108);
+            this.panelModDetailsReplaceDragAndDrop.TabIndex = 4;
+            // 
+            // linkLabelModReplaceFilesWithFolder
+            // 
+            this.linkLabelModReplaceFilesWithFolder.AutoSize = true;
+            this.linkLabelModReplaceFilesWithFolder.Location = new System.Drawing.Point(173, 39);
+            this.linkLabelModReplaceFilesWithFolder.Name = "linkLabelModReplaceFilesWithFolder";
+            this.linkLabelModReplaceFilesWithFolder.Size = new System.Drawing.Size(88, 13);
+            this.linkLabelModReplaceFilesWithFolder.TabIndex = 1;
+            this.linkLabelModReplaceFilesWithFolder.TabStop = true;
+            this.linkLabelModReplaceFilesWithFolder.Text = "Import from folder";
+            // 
+            // linkLabelModReplaceFilesWithArchive
+            // 
+            this.linkLabelModReplaceFilesWithArchive.AutoSize = true;
+            this.linkLabelModReplaceFilesWithArchive.Location = new System.Drawing.Point(173, 19);
+            this.linkLabelModReplaceFilesWithArchive.Name = "linkLabelModReplaceFilesWithArchive";
+            this.linkLabelModReplaceFilesWithArchive.Size = new System.Drawing.Size(97, 13);
+            this.linkLabelModReplaceFilesWithArchive.TabIndex = 0;
+            this.linkLabelModReplaceFilesWithArchive.TabStop = true;
+            this.linkLabelModReplaceFilesWithArchive.Text = "Import from archive";
             // 
             // groupBoxModDetailsInstallationOptions
             // 
@@ -500,9 +577,9 @@
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.comboBoxModArchivePreset);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.textBoxModArchiveName);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModArchiveName);
-            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(6, 9);
+            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(6, 13);
             this.groupBoxModDetailsInstallationOptions.Name = "groupBoxModDetailsInstallationOptions";
-            this.groupBoxModDetailsInstallationOptions.Size = new System.Drawing.Size(365, 221);
+            this.groupBoxModDetailsInstallationOptions.Size = new System.Drawing.Size(365, 225);
             this.groupBoxModDetailsInstallationOptions.TabIndex = 74;
             this.groupBoxModDetailsInstallationOptions.TabStop = false;
             this.groupBoxModDetailsInstallationOptions.Text = "Installation options";
@@ -512,7 +589,7 @@
             this.labelModInstallWarning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelModInstallWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(107)))), ((int)(((byte)(8)))));
-            this.labelModInstallWarning.Location = new System.Drawing.Point(7, 148);
+            this.labelModInstallWarning.Location = new System.Drawing.Point(7, 152);
             this.labelModInstallWarning.Name = "labelModInstallWarning";
             this.labelModInstallWarning.Size = new System.Drawing.Size(352, 66);
             this.labelModInstallWarning.TabIndex = 49;
@@ -643,9 +720,9 @@
             this.groupBoxModDetailsDetails.Controls.Add(this.labelModName);
             this.groupBoxModDetailsDetails.Controls.Add(this.labelModURL);
             this.groupBoxModDetailsDetails.Controls.Add(this.textBoxModName);
-            this.groupBoxModDetailsDetails.Location = new System.Drawing.Point(6, 236);
+            this.groupBoxModDetailsDetails.Location = new System.Drawing.Point(6, 244);
             this.groupBoxModDetailsDetails.Name = "groupBoxModDetailsDetails";
-            this.groupBoxModDetailsDetails.Size = new System.Drawing.Size(365, 325);
+            this.groupBoxModDetailsDetails.Size = new System.Drawing.Size(365, 358);
             this.groupBoxModDetailsDetails.TabIndex = 73;
             this.groupBoxModDetailsDetails.TabStop = false;
             this.groupBoxModDetailsDetails.Text = "Details";
@@ -654,9 +731,11 @@
             // 
             this.panelModDetailsNexusMods.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelModDetailsNexusMods.Controls.Add(this.linkLabelModDownloadFile);
             this.panelModDetailsNexusMods.Controls.Add(this.linkLabelOpenOnNexus);
             this.panelModDetailsNexusMods.Controls.Add(this.buttonModAbstain);
             this.panelModDetailsNexusMods.Controls.Add(this.buttonModEndorse);
+            this.panelModDetailsNexusMods.Controls.Add(this.linkLabelModSetLatestVersion);
             this.panelModDetailsNexusMods.Controls.Add(this.labelModEndorseStatus);
             this.panelModDetailsNexusMods.Controls.Add(this.labelModSummaryDesc);
             this.panelModDetailsNexusMods.Controls.Add(this.labelModAuthor);
@@ -666,8 +745,30 @@
             this.panelModDetailsNexusMods.Controls.Add(this.labelModAuthorDesc);
             this.panelModDetailsNexusMods.Location = new System.Drawing.Point(1, 99);
             this.panelModDetailsNexusMods.Name = "panelModDetailsNexusMods";
-            this.panelModDetailsNexusMods.Size = new System.Drawing.Size(363, 220);
+            this.panelModDetailsNexusMods.Size = new System.Drawing.Size(363, 255);
             this.panelModDetailsNexusMods.TabIndex = 53;
+            // 
+            // linkLabelModDownloadFile
+            // 
+            this.linkLabelModDownloadFile.AutoSize = true;
+            this.linkLabelModDownloadFile.Location = new System.Drawing.Point(6, 233);
+            this.linkLabelModDownloadFile.Name = "linkLabelModDownloadFile";
+            this.linkLabelModDownloadFile.Size = new System.Drawing.Size(202, 13);
+            this.linkLabelModDownloadFile.TabIndex = 63;
+            this.linkLabelModDownloadFile.TabStop = true;
+            this.linkLabelModDownloadFile.Text = "Download latest version from NexusMods";
+            this.linkLabelModDownloadFile.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModDownloadFile_LinkClicked);
+            // 
+            // linkLabelOpenOnNexus
+            // 
+            this.linkLabelOpenOnNexus.AutoSize = true;
+            this.linkLabelOpenOnNexus.Location = new System.Drawing.Point(6, 211);
+            this.linkLabelOpenOnNexus.Name = "linkLabelOpenOnNexus";
+            this.linkLabelOpenOnNexus.Size = new System.Drawing.Size(108, 13);
+            this.linkLabelOpenOnNexus.TabIndex = 62;
+            this.linkLabelOpenOnNexus.TabStop = true;
+            this.linkLabelOpenOnNexus.Text = "Open the mod\'s page";
+            this.linkLabelOpenOnNexus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelOpenOnNexus_LinkClicked);
             // 
             // buttonModAbstain
             // 
@@ -675,7 +776,7 @@
             this.buttonModAbstain.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.buttonModAbstain.FlatAppearance.BorderSize = 0;
             this.buttonModAbstain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModAbstain.Image = global::Fo76ini.Properties.Resources.thumb_down_24;
+            this.buttonModAbstain.Image = global::Fo76ini.Properties.Resources.dislike;
             this.buttonModAbstain.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonModAbstain.Location = new System.Drawing.Point(50, 158);
             this.buttonModAbstain.Name = "buttonModAbstain";
@@ -691,7 +792,7 @@
             this.buttonModEndorse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonModEndorse.FlatAppearance.BorderSize = 0;
             this.buttonModEndorse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModEndorse.Image = global::Fo76ini.Properties.Resources.thumb_up_24;
+            this.buttonModEndorse.Image = global::Fo76ini.Properties.Resources.like;
             this.buttonModEndorse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonModEndorse.Location = new System.Drawing.Point(8, 158);
             this.buttonModEndorse.Name = "buttonModEndorse";
@@ -700,6 +801,18 @@
             this.toolTip.SetToolTip(this.buttonModEndorse, "Endorse this mod.");
             this.buttonModEndorse.UseVisualStyleBackColor = false;
             this.buttonModEndorse.Click += new System.EventHandler(this.buttonModEndorse_Click);
+            // 
+            // linkLabelModSetLatestVersion
+            // 
+            this.linkLabelModSetLatestVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabelModSetLatestVersion.Location = new System.Drawing.Point(220, 5);
+            this.linkLabelModSetLatestVersion.Name = "linkLabelModSetLatestVersion";
+            this.linkLabelModSetLatestVersion.Size = new System.Drawing.Size(137, 13);
+            this.linkLabelModSetLatestVersion.TabIndex = 2;
+            this.linkLabelModSetLatestVersion.TabStop = true;
+            this.linkLabelModSetLatestVersion.Text = "Set latest version";
+            this.linkLabelModSetLatestVersion.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.linkLabelModSetLatestVersion.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModSetLatestVersion_LinkClicked);
             // 
             // labelModEndorseStatus
             // 
@@ -828,7 +941,7 @@
             this.labelModTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelModTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelModTitle.Location = new System.Drawing.Point(-12, 161);
+            this.labelModTitle.Location = new System.Drawing.Point(-12, 159);
             this.labelModTitle.Name = "labelModTitle";
             this.labelModTitle.Padding = new System.Windows.Forms.Padding(16, 2, 0, 2);
             this.labelModTitle.Size = new System.Drawing.Size(411, 25);
@@ -838,7 +951,7 @@
             // checkBoxModDetailsEnabled
             // 
             this.checkBoxModDetailsEnabled.AutoSize = true;
-            this.checkBoxModDetailsEnabled.Location = new System.Drawing.Point(10, 189);
+            this.checkBoxModDetailsEnabled.Location = new System.Drawing.Point(10, 187);
             this.checkBoxModDetailsEnabled.Name = "checkBoxModDetailsEnabled";
             this.checkBoxModDetailsEnabled.Size = new System.Drawing.Size(101, 17);
             this.checkBoxModDetailsEnabled.TabIndex = 61;
@@ -852,9 +965,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxModThumbnail.BackColor = System.Drawing.Color.Black;
             this.pictureBoxModThumbnail.Image = global::Fo76ini.Properties.Resources.bg;
-            this.pictureBoxModThumbnail.Location = new System.Drawing.Point(-1, -2);
+            this.pictureBoxModThumbnail.Location = new System.Drawing.Point(-2, -2);
             this.pictureBoxModThumbnail.Name = "pictureBoxModThumbnail";
-            this.pictureBoxModThumbnail.Size = new System.Drawing.Size(396, 162);
+            this.pictureBoxModThumbnail.Size = new System.Drawing.Size(400, 160);
             this.pictureBoxModThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxModThumbnail.TabIndex = 71;
             this.pictureBoxModThumbnail.TabStop = false;
@@ -1254,20 +1367,6 @@
             this.pictureBox1.TabIndex = 92;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBoxModsLoadingGIF
-            // 
-            this.pictureBoxModsLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxModsLoadingGIF.BackColor = System.Drawing.Color.White;
-            this.pictureBoxModsLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
-            this.pictureBoxModsLoadingGIF.Location = new System.Drawing.Point(0, 27);
-            this.pictureBoxModsLoadingGIF.Name = "pictureBoxModsLoadingGIF";
-            this.pictureBoxModsLoadingGIF.Size = new System.Drawing.Size(16, 490);
-            this.pictureBoxModsLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxModsLoadingGIF.TabIndex = 57;
-            this.pictureBoxModsLoadingGIF.TabStop = false;
-            this.pictureBoxModsLoadingGIF.Visible = false;
-            // 
             // openFileDialogMod
             // 
             this.openFileDialogMod.Filter = "All Archives|*.zip;*.rar;*.7z;*.tar;*.ba2";
@@ -1361,16 +1460,19 @@
             this.toolStripStatusLabelDeploymentStatus.Size = new System.Drawing.Size(126, 17);
             this.toolStripStatusLabelDeploymentStatus.Text = "Deployment necessary";
             // 
-            // linkLabelOpenOnNexus
+            // pictureBoxModsLoadingGIF
             // 
-            this.linkLabelOpenOnNexus.AutoSize = true;
-            this.linkLabelOpenOnNexus.Location = new System.Drawing.Point(9, 201);
-            this.linkLabelOpenOnNexus.Name = "linkLabelOpenOnNexus";
-            this.linkLabelOpenOnNexus.Size = new System.Drawing.Size(108, 13);
-            this.linkLabelOpenOnNexus.TabIndex = 62;
-            this.linkLabelOpenOnNexus.TabStop = true;
-            this.linkLabelOpenOnNexus.Text = "Open the mod\'s page";
-            this.linkLabelOpenOnNexus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelOpenOnNexus_LinkClicked);
+            this.pictureBoxModsLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxModsLoadingGIF.BackColor = System.Drawing.Color.White;
+            this.pictureBoxModsLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
+            this.pictureBoxModsLoadingGIF.Location = new System.Drawing.Point(0, 27);
+            this.pictureBoxModsLoadingGIF.Name = "pictureBoxModsLoadingGIF";
+            this.pictureBoxModsLoadingGIF.Size = new System.Drawing.Size(16, 490);
+            this.pictureBoxModsLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxModsLoadingGIF.TabIndex = 57;
+            this.pictureBoxModsLoadingGIF.TabStop = false;
+            this.pictureBoxModsLoadingGIF.Visible = false;
             // 
             // FormMods
             // 
@@ -1399,6 +1501,8 @@
             this.panelModDetails.ResumeLayout(false);
             this.panelModDetails.PerformLayout();
             this.panelModDetailsInner.ResumeLayout(false);
+            this.groupBoxModReplace.ResumeLayout(false);
+            this.groupBoxModReplace.PerformLayout();
             this.groupBoxModDetailsInstallationOptions.ResumeLayout(false);
             this.groupBoxModDetailsInstallationOptions.PerformLayout();
             this.groupBoxModDetailsDetails.ResumeLayout(false);
@@ -1415,11 +1519,11 @@
             this.groupBoxLists.PerformLayout();
             this.tabPageNexusMods.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1548,5 +1652,13 @@
         private System.Windows.Forms.Button buttonModAbstain;
         private System.Windows.Forms.Label labelModInstallWarning;
         private System.Windows.Forms.LinkLabel linkLabelOpenOnNexus;
+        private System.Windows.Forms.GroupBox groupBoxModReplace;
+        private System.Windows.Forms.LinkLabel linkLabelModReplaceFilesWithFolder;
+        private System.Windows.Forms.LinkLabel linkLabelModReplaceFilesWithArchive;
+        private System.Windows.Forms.Panel panelModDetailsReplaceDragAndDrop;
+        private System.Windows.Forms.Label labelModDetailsReplace;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabelModSetLatestVersion;
+        private System.Windows.Forms.LinkLabel linkLabelModDownloadFile;
     }
 }

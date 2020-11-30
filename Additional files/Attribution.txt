@@ -37,11 +37,9 @@ ICONS
     "Guacamole green download 2 icon" by James Lynch is licensed under CC0 1.0 Universal (CC0 1.0)
     https://www.iconsdb.com/guacamole-green-icons/download-2-icon.html
 
-    "Black thumb up icon" by puppetscientists is licensed under CC0 1.0 Universal (CC0 1.0)
-    https://www.iconsdb.com/black-icons/thumb-up-icon.html
 
-    "Black thumb down icon" by puppetscientists is licensed under CC0 1.0 Universal (CC0 1.0)
-    https://www.iconsdb.com/black-icons/thumb-down-icon.html
+  Thumbs up and down icons made by Those Icons from www.flaticon.com
+  https://www.flaticon.com/free-icon/like_2087973?term=thumbs%20up&page=1&position=5&related_item_id=2087973
 
 
   Loading *.gif's: 'Spinner' and 'Gear' released under Loading.io FREE License.

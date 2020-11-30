@@ -202,12 +202,12 @@ namespace Fo76ini.Mods
         /// <summary>
         /// The folder where loose files are currently copied to.
         /// </summary>
-        public string CurrentRootFolder;
+        public string CurrentRootFolder = ".";
 
         /// <summary>
         /// The folder where to copy loose files to on deployment.
         /// </summary>
-        public string RootFolder;
+        public string RootFolder = ".";
 
         /// <summary>
         /// If deployed as SeparateBA2, what is the archive in Data called? (SeparateBA2)

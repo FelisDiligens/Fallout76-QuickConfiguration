@@ -84,17 +84,7 @@ namespace Fo76ini
 
         private void FormModsDetails_Resize(object sender, EventArgs e)
         {
-            // Resize the group boxes within the side bar to fit, regardless of whether or not the scrollbar is shown:
-            if (this.panelModDetailsInner.VerticalScroll.Visible)
-            {
-                this.groupBoxModDetailsInstallationOptions.Width = this.panelModDetailsInner.Width - 28;
-                this.groupBoxModDetailsDetails.Width = this.panelModDetailsInner.Width - 28;
-            }
-            else
-            {
-                this.groupBoxModDetailsInstallationOptions.Width = this.panelModDetailsInner.Width - 14;
-                this.groupBoxModDetailsDetails.Width = this.panelModDetailsInner.Width - 14;
-            }
+            UpdateSidePanelGroupBoxesWidth();
         }
 
         private void EditMod(int index)
@@ -199,6 +189,8 @@ namespace Fo76ini
             this.listViewMods.Width = tabWidth - this.listViewMods.Location.X - panelWidth - buttonWidth + 2;
 
             sidePanelStatus = SidePanelStatus.Expanded;
+
+            UpdateSidePanelGroupBoxes();
         }
 
 
@@ -221,6 +213,7 @@ namespace Fo76ini
                 UpdateSidePanelOneMod();
 
             UpdateWarningLabel();
+            UpdateSidePanelGroupBoxes();
 
             isUpdatingSidePanel = false;
         }
@@ -230,6 +223,8 @@ namespace Fo76ini
             this.checkBoxModDetailsEnabled.Visible = true;
             this.groupBoxModDetailsDetails.Visible = true;
             this.linkLabelOpenOnNexus.LinkVisited = false;
+            this.linkLabelModDownloadFile.LinkVisited = false;
+            this.groupBoxModReplace.Visible = true;
 
             // Update thumbnail:
             this.pictureBoxModThumbnail.Image = Resources.bg;
@@ -265,9 +260,17 @@ namespace Fo76ini
             this.labelModTitle.Text = this.editedMod.RemoteInfo != null && this.editedMod.RemoteInfo.Title != "" ? this.editedMod.RemoteInfo.Title : this.editedMod.Title;
 
             // Install into visible?
-            this.labelModInstallInto.Visible = this.editedMod.Method == ManagedMod.DeploymentMethod.LooseFiles;
-            this.textBoxModRootDir.Visible = this.editedMod.Method == ManagedMod.DeploymentMethod.LooseFiles;
-            this.buttonModPickRootDir.Visible = this.editedMod.Method == ManagedMod.DeploymentMethod.LooseFiles;
+            this.labelModInstallInto.Enabled = this.editedMod.Method == ManagedMod.DeploymentMethod.LooseFiles;
+            this.textBoxModRootDir.Enabled = this.editedMod.Method == ManagedMod.DeploymentMethod.LooseFiles;
+            this.buttonModPickRootDir.Enabled = this.editedMod.Method == ManagedMod.DeploymentMethod.LooseFiles;
+
+            bool installIntoVisible = this.editedMod.Method == ManagedMod.DeploymentMethod.LooseFiles || this.editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2;
+            this.labelModInstallInto.Visible = installIntoVisible;
+            this.textBoxModRootDir.Visible = installIntoVisible;
+            this.buttonModPickRootDir.Visible = installIntoVisible;
+
+            if (this.editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2)
+                this.textBoxModRootDir.Text = "Data";
 
             // Preset visible?
             this.comboBoxModArchivePreset.Visible = this.editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2;
@@ -313,7 +316,11 @@ namespace Fo76ini
                 this.panelModDetailsNexusMods.Visible = true;
                 this.labelModLatestVersion.Text = this.editedMod.RemoteInfo.LatestVersion;
                 this.labelModAuthor.Text = this.editedMod.RemoteInfo.Author;
-                this.labelModSummary.Text = this.editedMod.RemoteInfo.Summary;
+                this.labelModSummary.Text =
+                    this.editedMod.RemoteInfo.Summary
+                        .Replace("<br>", "\n")
+                        .Replace("<br/>", "\n")
+                        .Replace("<br />", "\n");
                 this.buttonModEndorse.Enabled = true;
                 this.buttonModAbstain.Enabled = true;
                 switch (this.editedMod.RemoteInfo.Endorsement)
@@ -345,6 +352,7 @@ namespace Fo76ini
         {
             this.checkBoxModDetailsEnabled.Visible = false;
             this.groupBoxModDetailsDetails.Visible = false;
+            this.groupBoxModReplace.Visible = false;
 
             this.pictureBoxModThumbnail.Image = Resources.bg;
             this.labelModTitle.Text = string.Format(Localization.localizedStrings["modDetailsTitleBulkSelected"], this.editedModCount);
@@ -353,6 +361,9 @@ namespace Fo76ini
             this.labelModInstallInto.Visible = true;
             this.textBoxModRootDir.Visible = true;
             this.buttonModPickRootDir.Visible = true;
+            this.labelModInstallInto.Enabled = true;
+            this.textBoxModRootDir.Enabled = true;
+            this.buttonModPickRootDir.Enabled = true;
 
             // Preset visible
             this.comboBoxModArchivePreset.Visible = true;
@@ -373,6 +384,51 @@ namespace Fo76ini
         }
 
         /// <summary>
+        /// Resizes the group boxes within the side bar to fit, regardless of whether or not the scrollbar is shown.
+        /// </summary>
+        private void UpdateSidePanelGroupBoxesWidth()
+        {
+            int width;
+            if (this.panelModDetailsInner.VerticalScroll.Visible)
+                width = this.panelModDetailsInner.Width - 28;
+            else
+                width = this.panelModDetailsInner.Width - 14;
+
+            this.groupBoxModDetailsInstallationOptions.Width = width;
+            this.groupBoxModDetailsDetails.Width = width;
+            this.groupBoxModReplace.Width = width;
+        }
+
+        private void UpdateSidePanelGroupBoxes()
+        {
+            // Determine optimal height:
+            int margin = 12;
+            foreach (GroupBox box in new GroupBox[] { groupBoxModDetailsInstallationOptions, groupBoxModDetailsDetails })
+            {
+                int newHeight = 0;
+                foreach (Control control in box.Controls)
+                {
+                    if (control.Visible)
+                    {
+                        int temp = control.Top + control.Height + margin;
+                        if (newHeight < temp)
+                            newHeight = temp;
+                    }
+                }
+                box.Height = newHeight;
+            }
+
+            // Place groupboxes underneath each other:
+            margin = 6;
+            GroupBox[] groupBoxes = new GroupBox[] { groupBoxModDetailsInstallationOptions, groupBoxModDetailsDetails, groupBoxModReplace };
+
+            for (int i = 1; i < groupBoxes.Length; i++)
+                groupBoxes[i].Top = groupBoxes[i - 1].Top + groupBoxes[i - 1].Height + margin;
+
+            UpdateSidePanelGroupBoxesWidth();
+        }
+
+        /// <summary>
         /// Attempt to detect whether the chosen mod installation options could cause the mod not to work properly.
         /// Update the label with (hopefully) helpful information for troubleshooting.
         /// </summary>
@@ -381,8 +437,11 @@ namespace Fo76ini
             if (editingBulk)
             {
                 this.labelModInstallWarning.Text = "";
+                this.labelModInstallWarning.Visible = false;
                 return;
             }
+
+            this.labelModInstallWarning.Visible = true;
 
             /*
              * "Index" the mod folder first:
@@ -473,7 +532,7 @@ namespace Fo76ini
             }
 
             // Any *.dll files?
-            if (dllFound && (editedMod.Method != ManagedMod.DeploymentMethod.LooseFiles || editedMod.RootFolder != "." || editedMod.RootFolder != ""))
+            if (dllFound && (editedMod.Method != ManagedMod.DeploymentMethod.LooseFiles || (editedMod.RootFolder != "." && editedMod.RootFolder != "")))
             {
                 this.labelModInstallWarning.Text = "Tip: *.dll files are usually installed as \"Loose files\" into the top directory (\".\").";
                 return;
@@ -487,6 +546,7 @@ namespace Fo76ini
             }
 
             this.labelModInstallWarning.Text = "";
+            this.labelModInstallWarning.Visible = false;
         }
 
 
@@ -521,6 +581,8 @@ namespace Fo76ini
                 UpdateSidePanel();
             UpdateModList();
             UpdateStatusStrip();
+            UpdateWarningLabel();
+            UpdateSidePanelGroupBoxes();
             Mods.Save();
         }
 
@@ -560,6 +622,8 @@ namespace Fo76ini
                 UpdateSidePanel();
             UpdateModList();
             UpdateStatusStrip();
+            UpdateWarningLabel();
+            UpdateSidePanelGroupBoxes();
             Mods.Save();
         }
 
@@ -577,6 +641,8 @@ namespace Fo76ini
             }
             UpdateModList();
             UpdateStatusStrip();
+            UpdateWarningLabel();
+            UpdateSidePanelGroupBoxes();
             Mods.Save();
         }
 
@@ -584,11 +650,13 @@ namespace Fo76ini
         {
             if (isUpdatingSidePanel)
                 return;
-            if (this.textBoxModRootDir.Focused && Directory.Exists(this.textBoxModRootDir.Text))
+            if (this.textBoxModRootDir.Focused)
                 foreach (int index in editedIndices)
                     Mods[index].RootFolder = this.textBoxModRootDir.Text;
             UpdateModList();
             UpdateStatusStrip();
+            UpdateWarningLabel();
+            UpdateSidePanelGroupBoxes();
             Mods.Save();
         }
 
@@ -672,6 +740,21 @@ namespace Fo76ini
         {
             Process.Start(editedMod.URL);
             this.linkLabelOpenOnNexus.LinkVisited = true;
+        }
+
+        private void linkLabelModSetLatestVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!editingBulk && editedMod.RemoteInfo != null && editedMod.RemoteInfo.LatestVersion != "")
+            {
+                this.editedMod.Version = editedMod.RemoteInfo.LatestVersion;
+                this.textBoxModVersion.Text = editedMod.RemoteInfo.LatestVersion;
+            }
+        }
+
+        private void linkLabelModDownloadFile_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://www.nexusmods.com/fallout76/mods/" + editedMod.ID.ToString() + "?tab=files");
+            this.linkLabelModDownloadFile.LinkVisited = true;
         }
 
 

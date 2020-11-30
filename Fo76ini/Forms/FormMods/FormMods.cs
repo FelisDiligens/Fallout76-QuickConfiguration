@@ -120,6 +120,7 @@ namespace Fo76ini
         {
             if (!IniFiles.IsLoaded())
                 return;
+            CloseSidePanel();
             LoadMods(this.game.GamePath);
             UpdateUI();
         }
@@ -567,10 +568,6 @@ namespace Fo76ini
                 // Reload UI:
                 reloadUIToolStripMenuItem_Click(sender, e);
             }
-            /*else if (e.Control == true && e.Shift && e.KeyCode == Keys.F12)
-            {
-                FormConsole.Instance.OpenUI();
-            }*/
 
             // These shortcuts only apply to the mod list:
             if (this.listViewMods.Focused)
@@ -640,6 +637,8 @@ namespace Fo76ini
             }
 
             UpdateStatusStrip();
+            if (sidePanelStatus != SidePanelStatus.Closed)
+                UpdateSidePanel();
         }
 
         #endregion
@@ -759,6 +758,8 @@ namespace Fo76ini
             }
             UpdateModList();
             UpdateStatusStrip();
+            if (sidePanelStatus != SidePanelStatus.Closed)
+                UpdateSidePanel();
         }
 
         // Delete mod
@@ -889,6 +890,8 @@ namespace Fo76ini
         private void reloadUIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.UpdateUI();
+            if (this.sidePanelStatus != SidePanelStatus.Closed)
+                UpdateSidePanel();
         }
 
         // View > Show loading animation
