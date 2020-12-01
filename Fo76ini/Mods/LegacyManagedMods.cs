@@ -40,6 +40,9 @@ namespace Fo76ini.Mods
                 return;
             }
 
+            // Make a backup:
+            File.Copy(Path.Combine(mods.ModsPath, "manifest.xml"), Path.Combine(mods.ModsPath, "manifest.old.xml"), true);
+
             int modCount = xmlDoc.Descendants("Mod").Count();
             int modIndex = 0;
             foreach (XElement xmlMod in xmlDoc.Descendants("Mod"))

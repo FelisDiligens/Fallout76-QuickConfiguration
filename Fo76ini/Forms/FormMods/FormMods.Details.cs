@@ -804,6 +804,16 @@ namespace Fo76ini
             UpdateSidePanel();
         }
 
+        // Invalidate frozen archive
+        private void linkLabelModInvalidateFrozenArchive_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (editingBulk)
+                return;
+            editedMod.Frozen = false;
+            UpdateModList();
+            UpdateSidePanel();
+        }
+
 
         /*
          * NexusAPI

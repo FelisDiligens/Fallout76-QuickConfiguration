@@ -72,6 +72,7 @@
             this.linkLabelModReplaceFilesWithFolder = new System.Windows.Forms.LinkLabel();
             this.linkLabelModReplaceFilesWithArchive = new System.Windows.Forms.LinkLabel();
             this.groupBoxModDetailsInstallationOptions = new System.Windows.Forms.GroupBox();
+            this.linkLabelModAutoDetectInstallOptions = new System.Windows.Forms.LinkLabel();
             this.labelModInstallWarning = new System.Windows.Forms.Label();
             this.buttonModPickRootDir = new System.Windows.Forms.Button();
             this.labelModInstallAs = new System.Windows.Forms.Label();
@@ -160,7 +161,7 @@
             this.toolStripStatusLabelSpacer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDeploymentStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.linkLabelModAutoDetectInstallOptions = new System.Windows.Forms.LinkLabel();
+            this.linkLabelModInvalidateFrozenArchive = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -314,7 +315,7 @@
             this.openArchive2ToolStripMenuItem,
             this.exploreba2ArchiveToolStripMenuItem});
             this.archive2ToolStripMenuItem.Name = "archive2ToolStripMenuItem";
-            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.archive2ToolStripMenuItem.Text = "Archive2";
             // 
             // openArchive2ToolStripMenuItem
@@ -338,7 +339,7 @@
             this.endorseModsToolStripMenuItem,
             this.checkForUpdatesToolStripMenuItem});
             this.nexusModsAPIToolStripMenuItem.Name = "nexusModsAPIToolStripMenuItem";
-            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nexusModsAPIToolStripMenuItem.Text = "NexusMods API";
             // 
             // updateModInformationToolStripMenuItem
@@ -375,7 +376,7 @@
             // 
             this.showGuideToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.help_24;
             this.showGuideToolStripMenuItem.Name = "showGuideToolStripMenuItem";
-            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showGuideToolStripMenuItem.Text = "Show guide";
             this.showGuideToolStripMenuItem.Click += new System.EventHandler(this.showGuideToolStripMenuItem_Click);
             // 
@@ -385,7 +386,7 @@
             this.showModmanagerlogtxtToolStripMenuItem,
             this.showArchive2logtxtToolStripMenuItem});
             this.logFilesToolStripMenuItem.Name = "logFilesToolStripMenuItem";
-            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logFilesToolStripMenuItem.Text = "Log files";
             // 
             // showModmanagerlogtxtToolStripMenuItem
@@ -513,7 +514,7 @@
             this.groupBoxModReplace.Controls.Add(this.panelModDetailsReplaceDragAndDrop);
             this.groupBoxModReplace.Controls.Add(this.linkLabelModReplaceFilesWithFolder);
             this.groupBoxModReplace.Controls.Add(this.linkLabelModReplaceFilesWithArchive);
-            this.groupBoxModReplace.Location = new System.Drawing.Point(6, 607);
+            this.groupBoxModReplace.Location = new System.Drawing.Point(6, 637);
             this.groupBoxModReplace.Name = "groupBoxModReplace";
             this.groupBoxModReplace.Size = new System.Drawing.Size(365, 136);
             this.groupBoxModReplace.TabIndex = 75;
@@ -578,6 +579,7 @@
             // 
             // groupBoxModDetailsInstallationOptions
             // 
+            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.linkLabelModInvalidateFrozenArchive);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.linkLabelModAutoDetectInstallOptions);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModInstallWarning);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.buttonModPickRootDir);
@@ -593,10 +595,21 @@
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModArchiveName);
             this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(6, 376);
             this.groupBoxModDetailsInstallationOptions.Name = "groupBoxModDetailsInstallationOptions";
-            this.groupBoxModDetailsInstallationOptions.Size = new System.Drawing.Size(365, 225);
+            this.groupBoxModDetailsInstallationOptions.Size = new System.Drawing.Size(365, 255);
             this.groupBoxModDetailsInstallationOptions.TabIndex = 74;
             this.groupBoxModDetailsInstallationOptions.TabStop = false;
             this.groupBoxModDetailsInstallationOptions.Text = "Installation options";
+            // 
+            // linkLabelModAutoDetectInstallOptions
+            // 
+            this.linkLabelModAutoDetectInstallOptions.AutoSize = true;
+            this.linkLabelModAutoDetectInstallOptions.Location = new System.Drawing.Point(7, 217);
+            this.linkLabelModAutoDetectInstallOptions.Name = "linkLabelModAutoDetectInstallOptions";
+            this.linkLabelModAutoDetectInstallOptions.Size = new System.Drawing.Size(189, 13);
+            this.linkLabelModAutoDetectInstallOptions.TabIndex = 50;
+            this.linkLabelModAutoDetectInstallOptions.TabStop = true;
+            this.linkLabelModAutoDetectInstallOptions.Text = "Attempt auto-detect installation options";
+            this.linkLabelModAutoDetectInstallOptions.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModAutoDetectInstallOptions_LinkClicked);
             // 
             // labelModInstallWarning
             // 
@@ -1374,7 +1387,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::Fo76ini.Properties.Resources.Fo76ini_LDu4jzf2p3;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 196);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 196);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(737, 147);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -1488,16 +1501,16 @@
             this.pictureBoxModsLoadingGIF.TabStop = false;
             this.pictureBoxModsLoadingGIF.Visible = false;
             // 
-            // linkLabelModAutoDetectInstallOptions
+            // linkLabelModInvalidateFrozenArchive
             // 
-            this.linkLabelModAutoDetectInstallOptions.AutoSize = true;
-            this.linkLabelModAutoDetectInstallOptions.Location = new System.Drawing.Point(7, 205);
-            this.linkLabelModAutoDetectInstallOptions.Name = "linkLabelModAutoDetectInstallOptions";
-            this.linkLabelModAutoDetectInstallOptions.Size = new System.Drawing.Size(151, 13);
-            this.linkLabelModAutoDetectInstallOptions.TabIndex = 50;
-            this.linkLabelModAutoDetectInstallOptions.TabStop = true;
-            this.linkLabelModAutoDetectInstallOptions.Text = "Auto-detect installation options";
-            this.linkLabelModAutoDetectInstallOptions.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModAutoDetectInstallOptions_LinkClicked);
+            this.linkLabelModInvalidateFrozenArchive.AutoSize = true;
+            this.linkLabelModInvalidateFrozenArchive.Location = new System.Drawing.Point(7, 236);
+            this.linkLabelModInvalidateFrozenArchive.Name = "linkLabelModInvalidateFrozenArchive";
+            this.linkLabelModInvalidateFrozenArchive.Size = new System.Drawing.Size(123, 13);
+            this.linkLabelModInvalidateFrozenArchive.TabIndex = 51;
+            this.linkLabelModInvalidateFrozenArchive.TabStop = true;
+            this.linkLabelModInvalidateFrozenArchive.Text = "Invalidate frozen archive";
+            this.linkLabelModInvalidateFrozenArchive.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModInvalidateFrozenArchive_LinkClicked);
             // 
             // FormMods
             // 
@@ -1687,5 +1700,6 @@
         private System.Windows.Forms.Panel panelModDetailsReplaceDragAndDrop;
         private System.Windows.Forms.ToolStripMenuItem emptyModToolStripMenuItem;
         private System.Windows.Forms.LinkLabel linkLabelModAutoDetectInstallOptions;
+        private System.Windows.Forms.LinkLabel linkLabelModInvalidateFrozenArchive;
     }
 }

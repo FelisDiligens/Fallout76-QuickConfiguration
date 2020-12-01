@@ -262,7 +262,10 @@ namespace Fo76ini.Mods
 
                 // Extract archives within folder:
                 if (fileExtension == ".ba2" || Utils.SevenZipSupportedFileTypes.Contains(fileExtension))
+                {
                     ModInstallations.ExtractArchive(filePath, folderPath, ProgressChanged);
+                    File.Delete(filePath);
+                }
 
                 // Delete crap:
                 else if (fileExtension == ".txt")
