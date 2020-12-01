@@ -433,8 +433,8 @@ namespace Fo76ini.Mods
                     new XAttribute("isDeployed", this.Deployed),
                     new XElement("InstallationMethod", GetMethodName(this.PreviousMethod)),
                     new XElement("ArchiveName", this.CurrentArchiveName),
-                    new XElement("ArchiveFormat", GetFormatName(this.Format)),
-                    new XElement("ArchiveCompression", GetCompressionName(this.Compression)),
+                    new XElement("ArchiveFormat", GetFormatName(this.CurrentFormat)),
+                    new XElement("ArchiveCompression", GetCompressionName(this.CurrentCompression)),
                     new XElement("RootFolder", this.CurrentRootFolder),
                     xmlLooseFiles
                 ),
@@ -442,8 +442,8 @@ namespace Fo76ini.Mods
                     new XAttribute("isEnabled", this.Enabled),
                     new XElement("InstallationMethod", GetMethodName(this.Method)),
                     new XElement("ArchiveName", this.ArchiveName),
-                    new XElement("ArchiveFormat", GetFormatName(this.CurrentFormat)),
-                    new XElement("ArchiveCompression", GetCompressionName(this.CurrentCompression)),
+                    new XElement("ArchiveFormat", GetFormatName(this.Format)),
+                    new XElement("ArchiveCompression", GetCompressionName(this.Compression)),
                     new XElement("RootFolder", this.RootFolder)
                 ),
                 new XElement("FrozenData",

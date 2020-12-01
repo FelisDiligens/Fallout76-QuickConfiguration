@@ -223,7 +223,7 @@ namespace Fo76ini.Mods
                 if (mod.Version != "")
                     xmlMod.Add(new XAttribute("version", mod.Version));
                 
-                if (mod.PreviousMethod == ManagedMod.DeploymentMethod.SeparateBA2)
+                if (mod.PreviousMethod == ManagedMod.DeploymentMethod.SeparateBA2 && mod.CurrentArchiveName != null)
                 {
                     xmlMod.Add(new XAttribute("archiveName", mod.CurrentArchiveName));
                     xmlMod.Add(new XAttribute("compression", GetLegacyArchiveCompressionName(mod)));

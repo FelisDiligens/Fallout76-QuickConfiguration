@@ -79,7 +79,8 @@ namespace Fo76ini.Mods
             }
             else
             {
-                ModActions.ManipulateModFolder(newMod, ProgressChanged);
+                ModActions.CleanUpFolder(newMod.ManagedFolderPath, ProgressChanged);
+                ModActions.DetectOptimalModInstallationOptions(newMod);
             }
 
             return newMod;
@@ -98,11 +99,11 @@ namespace Fo76ini.Mods
 
             ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {Path.GetFileName(filePath)}"));
             ModInstallations.ExtractArchive(longFilePath, tempFolderPath);
+            ModActions.CleanUpFolder(tempFolderPath, ProgressChanged);
             CopyDirectory(tempFolderPath, mod.ManagedFolderPath, ProgressChanged);
 
             Directory.Delete(tempFolderPath, true);
 
-            //ModActions.ManipulateModFolder(newMod, ProgressChanged);
             ProgressChanged?.Invoke(Progress.Done("Archive added to mod."));
         }
 
@@ -138,7 +139,8 @@ namespace Fo76ini.Mods
             // Copy folder:
             CopyDirectory(folderPath, newMod.ManagedFolderPath, ProgressChanged);
 
-            ModActions.ManipulateModFolder(newMod, ProgressChanged);
+            ModActions.CleanUpFolder(newMod.ManagedFolderPath, ProgressChanged);
+            ModActions.DetectOptimalModInstallationOptions(newMod);
 
             return newMod;
         }
@@ -154,7 +156,7 @@ namespace Fo76ini.Mods
             CopyDirectory(longFolderPath,
                 copyFolder ? Path.Combine(mod.ManagedFolderPath, folderName) : mod.ManagedFolderPath,
                 ProgressChanged);
-            //ModActions.ManipulateModFolder(newMod, ProgressChanged);
+            // TODO: ModActions.CleanUpFolder(newMod.ManagedFolderPath, ProgressChanged);
             ProgressChanged?.Invoke(Progress.Done("Folder added to mod."));
         }
 
@@ -248,7 +250,7 @@ namespace Fo76ini.Mods
                 Archive2.Extract(filePath, destinationPath);
 
             // Use 7-Zip (7za.exe) to extract:
-            else if ((new string[] { ".zip", ".rar", ".tar", ".7z" }).Contains(fileExtension.ToLower()))
+            else if (Utils.SevenZipSupportedFileTypes.Contains(fileExtension.ToLower()))
                 Utils.ExtractArchive(filePath, destinationPath);
 
             // Not supported:
@@ -278,6 +280,32 @@ namespace Fo76ini.Mods
 
             foreach (DirectoryInfo subdir in dir.GetDirectories())
                 CopyDirectory(subdir.FullName, Path.Combine(destinationPath, subdir.Name));
+        }
+
+        /// <summary>
+        /// Recursively move every file and subdirectory to a new destination.
+        /// </summary>
+        /// <param name="sourcePath">Path *from* where we move files.</param>
+        /// <param name="destinationPath">Path *to* where we move files.</param>
+        public static void MoveDirectory(string sourcePath, string destinationPath, Action<Progress> ProgressChanged = null)
+        {
+            Directory.CreateDirectory(destinationPath);
+
+            DirectoryInfo dir = new DirectoryInfo(sourcePath);
+
+            foreach (FileInfo file in dir.EnumerateFiles("*.*", SearchOption.TopDirectoryOnly))
+            {
+                // file.MoveTo has no "bool overwrite" for some reason:
+                file.CopyTo(Path.Combine(destinationPath, file.Name), true);
+                file.Delete();
+                ProgressChanged?.Invoke(Progress.Indetermined($"Moving {file.Name} ({Utils.GetFormatedSize(file.Length)})"));
+            }
+
+            foreach (DirectoryInfo subdir in dir.GetDirectories())
+                MoveDirectory(subdir.FullName, Path.Combine(destinationPath, subdir.Name));
+
+            if (Directory.EnumerateFileSystemEntries(sourcePath).Count() == 0)
+                Directory.Delete(sourcePath);
         }
 
         /// <summary>

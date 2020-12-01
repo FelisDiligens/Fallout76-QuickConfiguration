@@ -794,6 +794,16 @@ namespace Fo76ini
                 AddFolderToModThreaded(this.folderBrowserDialogMod.SelectedPath);
         }
 
+        // Auto-detect installation options
+        private void linkLabelModAutoDetectInstallOptions_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (editingBulk)
+                return;
+
+            ModActions.DetectOptimalModInstallationOptions(editedMod);
+            UpdateSidePanel();
+        }
+
 
         /*
          * NexusAPI

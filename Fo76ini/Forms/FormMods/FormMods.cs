@@ -1161,12 +1161,12 @@ namespace Fo76ini
                 {
                     MsgBox.ShowID("modsArchiveTypeNotSupported", MessageBoxIcon.Error);
                     return false;
-                }
+                }/*
                 catch (Exception exc)
                 {
                     MsgBox.Get("failed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
                     return false;
-                }
+                }*/
                 return true;
             }, (success) => {
                 EnableUI();

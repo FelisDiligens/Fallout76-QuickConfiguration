@@ -12,7 +12,7 @@ namespace Fo76ini.Mods
     /// </summary>
     public static class ModHelpers
     {
-        public static string[] ResourceFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx", "lodsettings" };
+        public static string[] ResourceFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx", "lodsettings", "video" };
         public static string[] GeneralFolders = new string[] { "meshes", "strings", "interface", "materials" };
         public static string[] TextureFolders = new string[] { "textures", "effects" };
         public static string[] SoundFolders = new string[] { "sound", "music" };

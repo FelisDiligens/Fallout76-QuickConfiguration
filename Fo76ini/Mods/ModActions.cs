@@ -138,98 +138,136 @@ namespace Fo76ini.Mods
             mod.Frozen = false;
         }
 
-        public static void ManipulateModFolder(ManagedMod mod, Action<Progress> ProgressChanged = null)
+        public static void DetectOptimalModInstallationOptions(ManagedMod mod, Action<Progress> ProgressChanged = null)
         {
-            // TODO: ManipulateModFolder
-            return;
-            ProgressChanged?.Invoke(Progress.Indetermined("Cleaning mod folder up, detecting installation options."));
+            ProgressChanged?.Invoke(Progress.Indetermined("Detecting installation options."));
 
-            int fileCount = Directory.EnumerateFiles(mod.ManagedFolderPath).Count();
-            int folderCount = Directory.EnumerateDirectories(mod.ManagedFolderPath).Count();
+            /*
+             * Searching through folder:
+             */
 
-            // Do it two times, because it changes files, so we need to check again.
-            for (int i = 0; i < 2; i++)
+            bool resourceFoldersFound = false;
+            bool generalFoldersFound = false;
+            bool texturesFolderFound = false;
+            bool soundFoldersFound = false;
+            bool stringsFolderFound = false;
+            bool dataFolderFound = false;
+            bool videoFolderFound = false;
+            bool dllFound = false;
+
+            foreach (string folderPath in Directory.EnumerateDirectories(mod.ManagedFolderPath))
             {
-                // Search through all folders in the mod folder.
-                foreach (string path in Directory.EnumerateDirectories(mod.ManagedFolderPath))
-                {
-                    string name = Path.GetFileName(path).ToLower();
+                string folderName = Path.GetFileName(folderPath).ToLower();
 
-                    // If only a data folder is in the mod folder... 
-                    if (name == "data" && fileCount == 0 && folderCount == 1)
-                    {
-                        // ... move all files in data on up:
-                        Directory.Move(path, mod.ManagedFolderPath);
-                        break;
-                    }
-
-                    // If the mod folder only contains "textures"...
-                    if (name == "textures" && fileCount == 0 && folderCount == 1)
-                    {
-                        // ... set ba2 format type to DDS
-                        mod.Format = ManagedMod.ArchiveFormat.Textures;
-                        mod.Compression = ManagedMod.ArchiveCompression.Compressed;
-                        break;
-                    }
-
-                    // If the mod folder only contains "strings"...
-                    if (name == "strings" && fileCount == 0 && folderCount == 1)
-                    {
-                        // ... set ba2 format type to DDS
-                        mod.Method = ManagedMod.DeploymentMethod.LooseFiles;
-                        mod.RootFolder = "Data";
-                        break;
-                    }
-                }
+                if (ModHelpers.ResourceFolders.Contains(folderName))
+                    resourceFoldersFound = true;
+                if (ModHelpers.GeneralFolders.Contains(folderName))
+                    generalFoldersFound = true;
+                if (ModHelpers.TextureFolders.Contains(folderName))
+                    texturesFolderFound = true;
+                if (ModHelpers.SoundFolders.Contains(folderName))
+                    soundFoldersFound = true;
+                if (folderName == "strings")
+                    stringsFolderFound = true;
+                if (folderName == "data")
+                    dataFolderFound = true;
+                if (folderName == "video")
+                    videoFolderFound = true;
             }
 
-            foreach (string path in Directory.EnumerateFiles(mod.ManagedFolderPath))
+            foreach (string filePath in Directory.EnumerateFiles(mod.ManagedFolderPath))
             {
-                // If a *.ba2 archive was found, extract it:
-                if (path.ToLower().EndsWith(".ba2"))
-                {
-                    try
-                    {
-                        ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {Path.GetFileName(path)}"));
-                        Archive2.Extract(path, mod.ManagedFolderPath);
+                string fileExtension = Path.GetExtension(filePath).ToLower();
 
-                        // Freeze if it's the only file here:
-                        if (!IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false) && fileCount == 1)
-                        {
-                            ProgressChanged?.Invoke(Progress.Indetermined($"Copying {Path.GetFileName(path)}"));
-                            File.Copy(path, mod.FrozenArchivePath);
-
-                            mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
-                            mod.Format = ManagedMod.ArchiveFormat.Auto;
-                            mod.Compression = ManagedMod.ArchiveCompression.Auto;
-                            mod.CurrentFormat = mod.Format;
-                            mod.CurrentCompression = mod.Compression;
-                            mod.Frozen = true;
-                            mod.Freeze = true;
-                        }
-
-                        File.Delete(path);
-                    }
-                    catch (Archive2Exception ex) { }
-                }
+                if (fileExtension == ".dll")
+                    dllFound = true;
             }
 
-            // Search through all files in the mod folder.
-            foreach (string path in Directory.EnumerateFiles(mod.ManagedFolderPath))
-            {
-                string name = Path.GetFileName(path).ToLower();
-                string extension = Path.GetExtension(path).ToLower();
 
-                // If the mod contains *.dll files...
-                if (extension == ".dll")
-                {
-                    // ... then it probably has to be installed as loose files into the root directory:
-                    mod.Method = ManagedMod.DeploymentMethod.LooseFiles;
-                    mod.RootFolder = ".";
-                }
+            /*
+             * Detecting optimal installation options:
+             */
+
+            if (resourceFoldersFound)
+            {
+                mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
+                mod.Format = ManagedMod.ArchiveFormat.Auto;
+                mod.Compression = ManagedMod.ArchiveCompression.Auto;
+                mod.RootFolder = "Data";
             }
 
-            ProgressChanged?.Invoke(Progress.Done("Extracting finished."));
+            if (stringsFolderFound || videoFolderFound)
+            {
+                mod.Method = ManagedMod.DeploymentMethod.LooseFiles;
+                mod.RootFolder = "Data";
+            }
+
+            if (dllFound || dataFolderFound)
+            {
+                mod.Method = ManagedMod.DeploymentMethod.LooseFiles;
+                mod.RootFolder = ".";
+            }
+
+            if (generalFoldersFound)
+            {
+                mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
+                mod.Format = ManagedMod.ArchiveFormat.General;
+                mod.Compression = ManagedMod.ArchiveCompression.Compressed;
+                mod.RootFolder = "Data";
+            }
+
+            if (texturesFolderFound)
+            {
+                mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
+                mod.Format = ManagedMod.ArchiveFormat.Textures;
+                mod.Compression = ManagedMod.ArchiveCompression.Compressed;
+                mod.RootFolder = "Data";
+            }
+
+            if (soundFoldersFound)
+            {
+                mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
+                mod.Format = ManagedMod.ArchiveFormat.General;
+                mod.Compression = ManagedMod.ArchiveCompression.Uncompressed;
+                mod.RootFolder = "Data";
+            }
+
+            if (generalFoldersFound && texturesFolderFound ||
+                generalFoldersFound && soundFoldersFound   ||
+                texturesFolderFound && soundFoldersFound)
+            {
+                mod.Method = ManagedMod.DeploymentMethod.BundledBA2;
+                mod.Format = ManagedMod.ArchiveFormat.Auto;
+                mod.Compression = ManagedMod.ArchiveCompression.Auto;
+                mod.RootFolder = "Data";
+            }
+        }
+
+        public static void CleanUpFolder(string folderPath, Action<Progress> ProgressChanged = null)
+        {
+            ProgressChanged?.Invoke(Progress.Indetermined("Cleaning up mod folder."));
+
+            foreach (string subFolderPath in Directory.EnumerateDirectories(folderPath))
+            {
+                string subFolderName = Path.GetFileName(subFolderPath).ToLower();
+
+                // Move data folder one up:
+                if (subFolderName == "data")
+                    ModInstallations.MoveDirectory(subFolderPath, folderPath);
+            }
+
+            foreach (String filePath in Directory.EnumerateFiles(folderPath))
+            {
+                string fileExtension = Path.GetExtension(filePath).ToLower().Trim();
+
+                // Extract archives within folder:
+                if (fileExtension == ".ba2" || Utils.SevenZipSupportedFileTypes.Contains(fileExtension))
+                    ModInstallations.ExtractArchive(filePath, folderPath, ProgressChanged);
+
+                // Delete crap:
+                else if (fileExtension == ".txt")
+                    File.Delete(filePath);
+            }
         }
     }
 }

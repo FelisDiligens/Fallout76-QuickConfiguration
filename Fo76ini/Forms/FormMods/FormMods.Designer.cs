@@ -160,6 +160,7 @@
             this.toolStripStatusLabelSpacer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDeploymentStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
+            this.linkLabelModAutoDetectInstallOptions = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -528,7 +529,7 @@
             this.labelModDetailsReplace.Name = "labelModDetailsReplace";
             this.labelModDetailsReplace.Size = new System.Drawing.Size(168, 52);
             this.labelModDetailsReplace.TabIndex = 0;
-            this.labelModDetailsReplace.Text = "Drag-and-drop an archive or a folder into the left box to add/replace files.";
+            this.labelModDetailsReplace.Text = "Drag-and-drop files/folders into the left box to add/replace files.";
             this.labelModDetailsReplace.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // linkLabelModDeleteFolderContents
@@ -558,10 +559,10 @@
             this.linkLabelModReplaceFilesWithFolder.AutoSize = true;
             this.linkLabelModReplaceFilesWithFolder.Location = new System.Drawing.Point(173, 39);
             this.linkLabelModReplaceFilesWithFolder.Name = "linkLabelModReplaceFilesWithFolder";
-            this.linkLabelModReplaceFilesWithFolder.Size = new System.Drawing.Size(88, 13);
+            this.linkLabelModReplaceFilesWithFolder.Size = new System.Drawing.Size(65, 13);
             this.linkLabelModReplaceFilesWithFolder.TabIndex = 1;
             this.linkLabelModReplaceFilesWithFolder.TabStop = true;
-            this.linkLabelModReplaceFilesWithFolder.Text = "Import from folder";
+            this.linkLabelModReplaceFilesWithFolder.Text = "Import folder";
             this.linkLabelModReplaceFilesWithFolder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModReplaceFilesWithFolder_LinkClicked);
             // 
             // linkLabelModReplaceFilesWithArchive
@@ -569,14 +570,15 @@
             this.linkLabelModReplaceFilesWithArchive.AutoSize = true;
             this.linkLabelModReplaceFilesWithArchive.Location = new System.Drawing.Point(173, 19);
             this.linkLabelModReplaceFilesWithArchive.Name = "linkLabelModReplaceFilesWithArchive";
-            this.linkLabelModReplaceFilesWithArchive.Size = new System.Drawing.Size(97, 13);
+            this.linkLabelModReplaceFilesWithArchive.Size = new System.Drawing.Size(74, 13);
             this.linkLabelModReplaceFilesWithArchive.TabIndex = 0;
             this.linkLabelModReplaceFilesWithArchive.TabStop = true;
-            this.linkLabelModReplaceFilesWithArchive.Text = "Import from archive";
+            this.linkLabelModReplaceFilesWithArchive.Text = "Import archive";
             this.linkLabelModReplaceFilesWithArchive.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModReplaceFilesWithArchive_LinkClicked);
             // 
             // groupBoxModDetailsInstallationOptions
             // 
+            this.groupBoxModDetailsInstallationOptions.Controls.Add(this.linkLabelModAutoDetectInstallOptions);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModInstallWarning);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.buttonModPickRootDir);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModInstallAs);
@@ -1486,6 +1488,17 @@
             this.pictureBoxModsLoadingGIF.TabStop = false;
             this.pictureBoxModsLoadingGIF.Visible = false;
             // 
+            // linkLabelModAutoDetectInstallOptions
+            // 
+            this.linkLabelModAutoDetectInstallOptions.AutoSize = true;
+            this.linkLabelModAutoDetectInstallOptions.Location = new System.Drawing.Point(7, 205);
+            this.linkLabelModAutoDetectInstallOptions.Name = "linkLabelModAutoDetectInstallOptions";
+            this.linkLabelModAutoDetectInstallOptions.Size = new System.Drawing.Size(151, 13);
+            this.linkLabelModAutoDetectInstallOptions.TabIndex = 50;
+            this.linkLabelModAutoDetectInstallOptions.TabStop = true;
+            this.linkLabelModAutoDetectInstallOptions.Text = "Auto-detect installation options";
+            this.linkLabelModAutoDetectInstallOptions.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModAutoDetectInstallOptions_LinkClicked);
+            // 
             // FormMods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1673,5 +1686,6 @@
         private System.Windows.Forms.LinkLabel linkLabelModDownloadFile;
         private System.Windows.Forms.Panel panelModDetailsReplaceDragAndDrop;
         private System.Windows.Forms.ToolStripMenuItem emptyModToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel linkLabelModAutoDetectInstallOptions;
     }
 }
