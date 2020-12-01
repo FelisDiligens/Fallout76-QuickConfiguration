@@ -1,4 +1,5 @@
-﻿using Fo76ini.Utilities;
+﻿using Fo76ini.Interface;
+using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +13,19 @@ namespace Fo76ini.Mods
     /// </summary>
     public static class ModInstallations
     {
+        /// <summary>
+        /// Adds a new blank mod.
+        /// </summary>
+        public static void InstallBlank(ManagedMods mods)
+        {
+            ManagedMod newMod = new ManagedMod(mods.GamePath);
+            newMod.Title = "Untitled";
+            newMod.ArchiveName = "untitled.ba2";
+            Directory.CreateDirectory(newMod.ManagedFolderPath);
+            mods.Add(newMod);
+            mods.Save();
+        }
+
         /// <summary>
         /// Extracts the archive and adds the mod to the list.
         /// Saves the xml file afterwards.
@@ -72,6 +86,27 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
+        /// Extracts the archive and then copy and replaces from the temp folder into the managed mod folder.
+        /// </summary>
+        public static void AddArchive(ManagedMod mod, string filePath, Action<Progress> ProgressChanged = null)
+        {
+            string longFilePath = EnsureLongPathSupport(filePath);
+            string tempFolderPath = Path.Combine(Path.GetTempPath(), $"tmp_{mod.guid}");
+            if (Directory.Exists(tempFolderPath))
+                Directory.Delete(tempFolderPath, true);
+            Directory.CreateDirectory(tempFolderPath);
+
+            ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {Path.GetFileName(filePath)}"));
+            ModInstallations.ExtractArchive(longFilePath, tempFolderPath);
+            CopyDirectory(tempFolderPath, mod.ManagedFolderPath, ProgressChanged);
+
+            Directory.Delete(tempFolderPath, true);
+
+            //ModActions.ManipulateModFolder(newMod, ProgressChanged);
+            ProgressChanged?.Invoke(Progress.Done("Archive added to mod."));
+        }
+
+        /// <summary>
         /// Copies the folder and adds the mod to the list.
         /// Saves the xml file afterwards.
         /// </summary>
@@ -106,6 +141,21 @@ namespace Fo76ini.Mods
             ModActions.ManipulateModFolder(newMod, ProgressChanged);
 
             return newMod;
+        }
+
+        /// <summary>
+        /// Copies and replaces from the external folder into the managed mod folder.
+        /// </summary>
+        /// <param name="copyFolder">If true, will copy the folder instead of it's contents.</param>
+        public static void AddFolder(ManagedMod mod, string folderPath, bool copyFolder, Action<Progress> ProgressChanged = null)
+        {
+            string longFolderPath = EnsureLongPathSupport(folderPath);
+            string folderName = Path.GetFileName(folderPath);
+            CopyDirectory(longFolderPath,
+                copyFolder ? Path.Combine(mod.ManagedFolderPath, folderName) : mod.ManagedFolderPath,
+                ProgressChanged);
+            //ModActions.ManipulateModFolder(newMod, ProgressChanged);
+            ProgressChanged?.Invoke(Progress.Done("Folder added to mod."));
         }
 
         /// <summary>

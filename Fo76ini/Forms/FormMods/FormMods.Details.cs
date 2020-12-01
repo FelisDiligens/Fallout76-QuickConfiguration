@@ -79,6 +79,13 @@ namespace Fo76ini
 
             this.Resize += this.FormModsDetails_Resize;
 
+            /*
+             * Drag&Drop
+             */
+            this.panelModDetailsReplaceDragAndDrop.AllowDrop = true;
+            this.panelModDetailsReplaceDragAndDrop.DragEnter += new DragEventHandler(panelModDetailsReplaceDragAndDrop_DragEnter);
+            this.panelModDetailsReplaceDragAndDrop.DragDrop += new DragEventHandler(panelModDetailsReplaceDragAndDrop_DragDrop);
+
             CloseSidePanel();
         }
 
@@ -403,7 +410,7 @@ namespace Fo76ini
         {
             // Determine optimal height:
             int margin = 12;
-            foreach (GroupBox box in new GroupBox[] { groupBoxModDetailsInstallationOptions, groupBoxModDetailsDetails })
+            foreach (GroupBox box in new GroupBox[] { groupBoxModDetailsDetails, groupBoxModDetailsInstallationOptions })
             {
                 int newHeight = 0;
                 foreach (Control control in box.Controls)
@@ -420,7 +427,7 @@ namespace Fo76ini
 
             // Place groupboxes underneath each other:
             margin = 6;
-            GroupBox[] groupBoxes = new GroupBox[] { groupBoxModDetailsInstallationOptions, groupBoxModDetailsDetails, groupBoxModReplace };
+            GroupBox[] groupBoxes = new GroupBox[] { groupBoxModDetailsDetails, groupBoxModDetailsInstallationOptions, groupBoxModReplace };
 
             for (int i = 1; i < groupBoxes.Length; i++)
                 groupBoxes[i].Top = groupBoxes[i - 1].Top + groupBoxes[i - 1].Height + margin;
@@ -730,18 +737,21 @@ namespace Fo76ini
          * Actions
          */
 
+        // Suggest archive name
         private void buttonModDetailsSuggestArchiveName_Click(object sender, EventArgs e)
         {
             this.editedMod.ArchiveName = Utils.GetValidFileName(this.editedMod.Title, ".ba2");
             this.textBoxModArchiveName.Text = this.editedMod.ArchiveName;
         }
 
+        // Open webpage
         private void linkLabelOpenOnNexus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(editedMod.URL);
             this.linkLabelOpenOnNexus.LinkVisited = true;
         }
 
+        // Set latest version
         private void linkLabelModSetLatestVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (!editingBulk && editedMod.RemoteInfo != null && editedMod.RemoteInfo.LatestVersion != "")
@@ -751,10 +761,37 @@ namespace Fo76ini
             }
         }
 
+        // Download latest
         private void linkLabelModDownloadFile_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://www.nexusmods.com/fallout76/mods/" + editedMod.ID.ToString() + "?tab=files");
             this.linkLabelModDownloadFile.LinkVisited = true;
+        }
+
+        // Delete folder contents
+        private void linkLabelModDeleteFolderContents_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (MsgBox.Get("areYouSure").FormatText("Are you sure, you want to delete the folder contents?").Show(MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (Directory.Exists(editedMod.ManagedFolderPath))
+                    Directory.Delete(editedMod.ManagedFolderPath, true);
+                Directory.CreateDirectory(editedMod.ManagedFolderPath);
+                UpdateProgress(Progress.Done("Deleted files."));
+            }
+        }
+
+        // Import from archive
+        private void linkLabelModReplaceFilesWithArchive_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (this.openFileDialogMod.ShowDialog() == DialogResult.OK)
+                AddArchiveToModThreaded(this.openFileDialogMod.FileName);
+        }
+
+        // Import from folder
+        private void linkLabelModReplaceFilesWithFolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (this.folderBrowserDialogMod.ShowDialog() == DialogResult.OK)
+                AddFolderToModThreaded(this.folderBrowserDialogMod.SelectedPath);
         }
 
 
@@ -792,6 +829,133 @@ namespace Fo76ini
             if (this.editedMod.RemoteInfo != null)
                 if (this.editedMod.RemoteInfo.Abstain(this.editedMod.Version))
                     UpdateSidePanel();
+        }
+
+
+        /*
+         * Drag & drop
+         */
+
+        private void panelModDetailsReplaceDragAndDrop_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+        }
+
+        private void panelModDetailsReplaceDragAndDrop_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            AddToModBulkThreaded(files);
+        }
+
+        private void AddFolderToModThreaded(string folderPath)
+        {
+            RunThreaded(() => {
+                DisableUI();
+            }, () => {
+                try
+                {
+                    ModInstallations.AddFolder(editedMod, folderPath, false, UpdateProgress);
+                }
+                catch (Exception exc)
+                {
+                    MsgBox.Get("failed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+                    return false;
+                }
+                return true;
+            }, (success) => {
+                EnableUI();
+                UpdateSidePanel();
+            });
+        }
+
+        private void AddArchiveToModThreaded(string filePath)
+        {
+            RunThreaded(() => {
+                DisableUI();
+            }, () => {
+                try
+                {
+                    ModInstallations.AddArchive(editedMod, filePath, UpdateProgress);
+                }
+                catch (Archive2RequirementsException exc)
+                {
+                    MsgBox.ShowID("archive2InstallRequirements", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (Archive2Exception exc)
+                {
+                    MsgBox.ShowID("archive2Error", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (Exception exc)
+                {
+                    MsgBox.Get("failed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+                    return false;
+                }
+                return true;
+            }, (success) => {
+                EnableUI();
+                UpdateSidePanel();
+            });
+        }
+
+        private void AddToModBulkThreaded(string[] files)
+        {
+            RunThreaded(() => {
+                DisableUI();
+            }, () => {
+                try
+                {
+                    AddToModBulk(files, UpdateProgress);
+                }
+                catch (Archive2RequirementsException exc)
+                {
+                    MsgBox.ShowID("archive2InstallRequirements", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (Archive2Exception exc)
+                {
+                    MsgBox.ShowID("archive2Error", MessageBoxIcon.Error);
+                    return false;
+                }
+                catch (Exception exc)
+                {
+                    MsgBox.Get("failed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+                    return false;
+                }
+                return true;
+            }, (success) => {
+                EnableUI();
+                UpdateSidePanel();
+            });
+        }
+
+        private void AddToModBulk(string[] files, Action<Progress> ProgressChanged = null)
+        {
+            if (editingBulk)
+                return;
+            int i = 0;
+            string phaseStr = "Importing {0} of {1} files/folders - {2}";
+            foreach (string filePath in files)
+            {
+                Action<Progress> PhasedProgressChanged = Progress.BuildPhasedProgressChanged(ProgressChanged, phaseStr, i++, files.Length);
+
+                string fileExtension = Path.GetExtension(filePath);
+                string fileName = Path.GetFileName(filePath);
+                string longFilePath = ModInstallations.EnsureLongPathSupport(filePath);
+
+                if (Directory.Exists(longFilePath))
+                    ModInstallations.AddFolder(editedMod, filePath, true, PhasedProgressChanged);
+                else if ((new string[] { ".ba2", ".zip", ".rar", ".tar", ".7z" }).Contains(fileExtension.ToLower()))
+                    ModInstallations.AddArchive(editedMod, filePath, PhasedProgressChanged);
+                else
+                {
+                    PhasedProgressChanged.Invoke(Progress.Indetermined($"Copying '{fileName}'..."));
+                    File.Copy(longFilePath, Path.Combine(editedMod.ManagedFolderPath, fileName), true);
+                }
+            }
+            ProgressChanged?.Invoke(Progress.Done("File(s)/folder(s) added."));
         }
     }
 }

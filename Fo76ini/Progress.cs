@@ -118,11 +118,43 @@ namespace Fo76ini
             label.Text = Text;
         }
 
-        public Progress AsPhase (int currentPhase, int phaseCount, float progressSoFar, float phaseAmountsTo)
+        /// <summary>
+        /// Changes the progress object to be part of a "phase".
+        /// 
+        /// Example:
+        /// "'some.jpg' - 58% copied"
+        /// [******    ] 58%
+        /// 
+        /// turns into
+        /// 
+        /// "Copying 5 of 39 files - 'some.jpg' - 58% copied"
+        /// [*         ] 12%
+        /// </summary>
+        /// <param name="formattedPhaseStr">Example: "Copying {0} of {1} files - {2}"</param>
+        /// <param name="currentPhase"></param>
+        /// <param name="phaseCount"></param>
+        /// <returns></returns>
+        public Progress AsPhase(string formattedPhaseStr, int currentPhase, int phaseCount)
         {
-            this.Percentage = progressSoFar + this.Percentage * phaseAmountsTo;
-            this.Text = $"[{currentPhase}/{phaseCount}] {this.Text}";
+            return this.AsPhase(formattedPhaseStr, currentPhase, phaseCount, (float)(currentPhase - 1) / (float)phaseCount, 1f / (float)phaseCount);
+        }
+
+        public Progress AsPhase (string formattedPhaseStr, int currentPhase, int phaseCount, float progressSoFar, float phaseAmountsTo)
+        {
+            if (this.Percentage >= 0 && this.Percentage <= 100)
+                this.Percentage = progressSoFar + this.Percentage * phaseAmountsTo;
+            else
+                this.Percentage = progressSoFar;
+            this.Text = String.Format(formattedPhaseStr, currentPhase, phaseCount, this.Text);
+            this.IsDone = false;
             return this;
+        }
+
+        public static Action<Progress> BuildPhasedProgressChanged(Action<Progress> originalProgressChanged, string formattedPhaseStr, int currentPhase, int phaseCount)
+        {
+            return (progress) => {
+                originalProgressChanged(progress.AsPhase(formattedPhaseStr, currentPhase, phaseCount));
+            };
         }
     }
 }

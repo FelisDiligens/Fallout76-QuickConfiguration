@@ -569,6 +569,12 @@ namespace Fo76ini
                 reloadUIToolStripMenuItem_Click(sender, e);
             }
 
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                // Save changes:
+                saveToolStripMenuItem_Click(sender, e);
+            }
+
             // These shortcuts only apply to the mod list:
             if (this.listViewMods.Focused)
             {
@@ -817,6 +823,13 @@ namespace Fo76ini
          * Menu
          */
 
+        // File > Add mod > Empty mod
+        private void emptyModToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModInstallations.InstallBlank(Mods);
+            UpdateModList();
+        }
+
         // File > Add mod > From archive
         private void fromArchiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -857,7 +870,7 @@ namespace Fo76ini
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Mods.Save();
-            this.labelModsDeploy.Text = "Changed saved.";
+            this.labelModsDeploy.Text = "Changes saved.";
             this.labelModsDeploy.ForeColor = Color.DarkGreen;
         }
 

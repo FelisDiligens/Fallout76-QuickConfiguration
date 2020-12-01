@@ -140,41 +140,12 @@ namespace Fo76ini.Mods
 
         public static void ManipulateModFolder(ManagedMod mod, Action<Progress> ProgressChanged = null)
         {
+            // TODO: ManipulateModFolder
+            return;
+            ProgressChanged?.Invoke(Progress.Indetermined("Cleaning mod folder up, detecting installation options."));
+
             int fileCount = Directory.EnumerateFiles(mod.ManagedFolderPath).Count();
             int folderCount = Directory.EnumerateDirectories(mod.ManagedFolderPath).Count();
-
-            foreach (string path in Directory.EnumerateFiles(mod.ManagedFolderPath))
-            {
-                // If a *.ba2 archive was found, extract it:
-                if (path.ToLower().EndsWith(".ba2"))
-                {
-                    try
-                    {
-                        ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {Path.GetFileName(path)}"));
-                        Archive2.Extract(path, mod.ManagedFolderPath);
-
-                        // Freeze if it's the only file here:
-                        if (!IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false) && fileCount == 1)
-                        {
-                            ProgressChanged?.Invoke(Progress.Indetermined($"Copying {Path.GetFileName(path)}"));
-                            File.Copy(path, mod.FrozenArchivePath);
-
-                            mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
-                            mod.Format = ManagedMod.ArchiveFormat.Auto;
-                            mod.Compression = ManagedMod.ArchiveCompression.Auto;
-                            mod.CurrentFormat = mod.Format;
-                            mod.CurrentCompression = mod.Compression;
-                            mod.Frozen = true;
-                            mod.Freeze = true;
-                        }
-
-                        File.Delete(path);
-                    }
-                    catch (Archive2Exception ex) { }
-                }
-            }
-
-            ProgressChanged?.Invoke(Progress.Indetermined("Cleaning mod folder up, detecting installation options."));
 
             // Do it two times, because it changes files, so we need to check again.
             for (int i = 0; i < 2; i++)
@@ -209,6 +180,37 @@ namespace Fo76ini.Mods
                         mod.RootFolder = "Data";
                         break;
                     }
+                }
+            }
+
+            foreach (string path in Directory.EnumerateFiles(mod.ManagedFolderPath))
+            {
+                // If a *.ba2 archive was found, extract it:
+                if (path.ToLower().EndsWith(".ba2"))
+                {
+                    try
+                    {
+                        ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {Path.GetFileName(path)}"));
+                        Archive2.Extract(path, mod.ManagedFolderPath);
+
+                        // Freeze if it's the only file here:
+                        if (!IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false) && fileCount == 1)
+                        {
+                            ProgressChanged?.Invoke(Progress.Indetermined($"Copying {Path.GetFileName(path)}"));
+                            File.Copy(path, mod.FrozenArchivePath);
+
+                            mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
+                            mod.Format = ManagedMod.ArchiveFormat.Auto;
+                            mod.Compression = ManagedMod.ArchiveCompression.Auto;
+                            mod.CurrentFormat = mod.Format;
+                            mod.CurrentCompression = mod.Compression;
+                            mod.Frozen = true;
+                            mod.Freeze = true;
+                        }
+
+                        File.Delete(path);
+                    }
+                    catch (Archive2Exception ex) { }
                 }
             }
 

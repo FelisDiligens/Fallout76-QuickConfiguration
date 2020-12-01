@@ -33,6 +33,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addModarchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emptyModToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fromArchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fromba2ArchivefrozenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fromFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +67,7 @@
             this.panelModDetailsInner = new System.Windows.Forms.Panel();
             this.groupBoxModReplace = new System.Windows.Forms.GroupBox();
             this.labelModDetailsReplace = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabelModDeleteFolderContents = new System.Windows.Forms.LinkLabel();
             this.panelModDetailsReplaceDragAndDrop = new System.Windows.Forms.Panel();
             this.linkLabelModReplaceFilesWithFolder = new System.Windows.Forms.LinkLabel();
             this.linkLabelModReplaceFilesWithArchive = new System.Windows.Forms.LinkLabel();
@@ -209,6 +210,7 @@
             // addModarchiveToolStripMenuItem
             // 
             this.addModarchiveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.emptyModToolStripMenuItem,
             this.fromArchiveToolStripMenuItem,
             this.fromba2ArchivefrozenToolStripMenuItem,
             this.fromFolderToolStripMenuItem});
@@ -216,6 +218,13 @@
             this.addModarchiveToolStripMenuItem.Name = "addModarchiveToolStripMenuItem";
             this.addModarchiveToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.addModarchiveToolStripMenuItem.Text = "Add mod";
+            // 
+            // emptyModToolStripMenuItem
+            // 
+            this.emptyModToolStripMenuItem.Name = "emptyModToolStripMenuItem";
+            this.emptyModToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.emptyModToolStripMenuItem.Text = "Empty mod";
+            this.emptyModToolStripMenuItem.Click += new System.EventHandler(this.emptyModToolStripMenuItem_Click);
             // 
             // fromArchiveToolStripMenuItem
             // 
@@ -499,16 +508,16 @@
             // groupBoxModReplace
             // 
             this.groupBoxModReplace.Controls.Add(this.labelModDetailsReplace);
-            this.groupBoxModReplace.Controls.Add(this.linkLabel1);
+            this.groupBoxModReplace.Controls.Add(this.linkLabelModDeleteFolderContents);
             this.groupBoxModReplace.Controls.Add(this.panelModDetailsReplaceDragAndDrop);
             this.groupBoxModReplace.Controls.Add(this.linkLabelModReplaceFilesWithFolder);
             this.groupBoxModReplace.Controls.Add(this.linkLabelModReplaceFilesWithArchive);
-            this.groupBoxModReplace.Location = new System.Drawing.Point(6, 608);
+            this.groupBoxModReplace.Location = new System.Drawing.Point(6, 607);
             this.groupBoxModReplace.Name = "groupBoxModReplace";
             this.groupBoxModReplace.Size = new System.Drawing.Size(365, 136);
             this.groupBoxModReplace.TabIndex = 75;
             this.groupBoxModReplace.TabStop = false;
-            this.groupBoxModReplace.Text = "Add / Replace mod files";
+            this.groupBoxModReplace.Text = "Add / replace mod files";
             // 
             // labelModDetailsReplace
             // 
@@ -522,15 +531,16 @@
             this.labelModDetailsReplace.Text = "Drag-and-drop an archive or a folder into the left box to add/replace files.";
             this.labelModDetailsReplace.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // linkLabel1
+            // linkLabelModDeleteFolderContents
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(173, 60);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(111, 13);
-            this.linkLabel1.TabIndex = 5;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Delete folder contents";
+            this.linkLabelModDeleteFolderContents.AutoSize = true;
+            this.linkLabelModDeleteFolderContents.Location = new System.Drawing.Point(173, 60);
+            this.linkLabelModDeleteFolderContents.Name = "linkLabelModDeleteFolderContents";
+            this.linkLabelModDeleteFolderContents.Size = new System.Drawing.Size(111, 13);
+            this.linkLabelModDeleteFolderContents.TabIndex = 5;
+            this.linkLabelModDeleteFolderContents.TabStop = true;
+            this.linkLabelModDeleteFolderContents.Text = "Delete folder contents";
+            this.linkLabelModDeleteFolderContents.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModDeleteFolderContents_LinkClicked);
             // 
             // panelModDetailsReplaceDragAndDrop
             // 
@@ -552,6 +562,7 @@
             this.linkLabelModReplaceFilesWithFolder.TabIndex = 1;
             this.linkLabelModReplaceFilesWithFolder.TabStop = true;
             this.linkLabelModReplaceFilesWithFolder.Text = "Import from folder";
+            this.linkLabelModReplaceFilesWithFolder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModReplaceFilesWithFolder_LinkClicked);
             // 
             // linkLabelModReplaceFilesWithArchive
             // 
@@ -562,6 +573,7 @@
             this.linkLabelModReplaceFilesWithArchive.TabIndex = 0;
             this.linkLabelModReplaceFilesWithArchive.TabStop = true;
             this.linkLabelModReplaceFilesWithArchive.Text = "Import from archive";
+            this.linkLabelModReplaceFilesWithArchive.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModReplaceFilesWithArchive_LinkClicked);
             // 
             // groupBoxModDetailsInstallationOptions
             // 
@@ -577,7 +589,7 @@
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.comboBoxModArchivePreset);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.textBoxModArchiveName);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModArchiveName);
-            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(6, 13);
+            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(6, 376);
             this.groupBoxModDetailsInstallationOptions.Name = "groupBoxModDetailsInstallationOptions";
             this.groupBoxModDetailsInstallationOptions.Size = new System.Drawing.Size(365, 225);
             this.groupBoxModDetailsInstallationOptions.TabIndex = 74;
@@ -720,7 +732,7 @@
             this.groupBoxModDetailsDetails.Controls.Add(this.labelModName);
             this.groupBoxModDetailsDetails.Controls.Add(this.labelModURL);
             this.groupBoxModDetailsDetails.Controls.Add(this.textBoxModName);
-            this.groupBoxModDetailsDetails.Location = new System.Drawing.Point(6, 244);
+            this.groupBoxModDetailsDetails.Location = new System.Drawing.Point(6, 12);
             this.groupBoxModDetailsDetails.Name = "groupBoxModDetailsDetails";
             this.groupBoxModDetailsDetails.Size = new System.Drawing.Size(365, 358);
             this.groupBoxModDetailsDetails.TabIndex = 73;
@@ -855,9 +867,9 @@
             this.labelModSummary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelModSummary.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelModSummary.Location = new System.Drawing.Point(6, 74);
+            this.labelModSummary.Location = new System.Drawing.Point(9, 74);
             this.labelModSummary.Name = "labelModSummary";
-            this.labelModSummary.Size = new System.Drawing.Size(351, 60);
+            this.labelModSummary.Size = new System.Drawing.Size(348, 60);
             this.labelModSummary.TabIndex = 55;
             this.labelModSummary.Text = "< Summary goes here >";
             // 
@@ -1655,10 +1667,11 @@
         private System.Windows.Forms.GroupBox groupBoxModReplace;
         private System.Windows.Forms.LinkLabel linkLabelModReplaceFilesWithFolder;
         private System.Windows.Forms.LinkLabel linkLabelModReplaceFilesWithArchive;
-        private System.Windows.Forms.Panel panelModDetailsReplaceDragAndDrop;
         private System.Windows.Forms.Label labelModDetailsReplace;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabelModDeleteFolderContents;
         private System.Windows.Forms.LinkLabel linkLabelModSetLatestVersion;
         private System.Windows.Forms.LinkLabel linkLabelModDownloadFile;
+        private System.Windows.Forms.Panel panelModDetailsReplaceDragAndDrop;
+        private System.Windows.Forms.ToolStripMenuItem emptyModToolStripMenuItem;
     }
 }

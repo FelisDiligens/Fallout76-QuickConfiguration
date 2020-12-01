@@ -124,7 +124,7 @@ namespace Fo76ini
 
             MsgBox.Add("7ZipMissing",
                 "7-Zip is missing",
-                ".\\7z\\7za.exe is missing.\nTry to reinstall this tool, or copy 7-Zip manually."
+                ".\\7z\\7z.exe is missing.\nTry to reinstall this tool, or copy 7-Zip manually."
             );
 
             MsgBox.Add("modsNoConflictingFiles",

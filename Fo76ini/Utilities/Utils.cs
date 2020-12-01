@@ -18,7 +18,16 @@ namespace Fo76ini.Utilities
     {
         public static CultureInfo enUS = CultureInfo.CreateSpecificCulture("en-US");
 
-        public static string SevenZipPath = Path.GetFullPath(".\\7z\\7za.exe");
+        public static string SevenZipPath = Path.GetFullPath(".\\7z\\7z.exe");
+        public static readonly string[] SevenZipSupportedFileTypes = new string[] {
+            ".7z",
+            ".zip",
+            ".rar",
+            ".tar",
+            ".xz",
+            ".gz",
+            ".bz2"
+        };
 
         /// <summary>
         /// Returns a path relative to "workingDirectory".
@@ -274,7 +283,10 @@ namespace Fo76ini.Utilities
         public static void ExtractArchive(string sourceArchive, string destination)
         {
             if (!File.Exists(Utils.SevenZipPath))
-                throw new FileNotFoundException("7z\\7za.exe could not be found.");
+                throw new FileNotFoundException("7z\\7z.exe could not be found.");
+
+            if (!Utils.SevenZipSupportedFileTypes.Contains(Path.GetExtension(sourceArchive).ToLower()))
+                throw new NotSupportedException($"{Path.GetExtension(sourceArchive)} archives are not supported.");
 
             ProcessStartInfo proc = new ProcessStartInfo();
             proc.WindowStyle = ProcessWindowStyle.Hidden;
@@ -283,8 +295,8 @@ namespace Fo76ini.Utilities
             Process x = Process.Start(proc);
             x.WaitForExit();
 
-            if (!Directory.Exists(destination))
-                throw new FileNotFoundException("Something went wrong.");
+            if (!Directory.Exists(destination) || Directory.EnumerateFileSystemEntries(destination).Count() == 0)
+                throw new FileNotFoundException($"Something went wrong:\n{x.StandardOutput.ReadToEnd()}");
         }
 
         public static bool IsDirectoryEmpty(string path)
