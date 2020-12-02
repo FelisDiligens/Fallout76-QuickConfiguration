@@ -61,8 +61,38 @@ namespace Fo76ini.Forms.FormIniError
 
         private void buttonResetFile_Click(object sender, EventArgs e)
         {
-            MsgBox.Show("Warning", "This will reset (some if not all) of your settings.\nAre you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            // TODO: Reset *.ini file
+            DialogResult result = MsgBox.Show("Warning", "This will reset (some if not all) of your settings.\nAre you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            
+            if (result == DialogResult.Yes)
+            {
+                // Reset Fallout76Prefs.ini:
+                if (Exception.FileName.EndsWith("Prefs.ini"))
+                {
+                    File.Copy(
+                        IniFiles.DefaultF76PrefsPath,
+                        Exception.FilePath,
+                        true
+                    );
+                }
+
+                // Delete Fallout76Custom.ini:
+                else if (Exception.FileName.EndsWith("Custom.ini"))
+                {
+                    File.Delete(Exception.FilePath);
+                }
+
+                // Reset Fallout76.ini:
+                else
+                {
+                    File.Copy(
+                        IniFiles.DefaultF76Path,
+                        Exception.FilePath,
+                        true
+                    );
+                }
+
+                this.DialogResult = DialogResult.Ignore;
+            }
         }
 
         private void buttonOpenEditor_Click(object sender, EventArgs e)
@@ -84,6 +114,7 @@ namespace Fo76ini.Forms.FormIniError
 
         private void linkLabelShowHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            // TODO: New wiki page
             Utils.OpenURL("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting#couldnt-parse-ini-files-error-message-on-start");
         }
     }

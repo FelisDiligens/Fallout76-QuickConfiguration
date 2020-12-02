@@ -16,6 +16,10 @@ namespace Fo76ini
 
         public static readonly string ParentPath;
         public static readonly string ConfigPath;
+        public static readonly string DefaultsPath;
+
+        public static readonly string DefaultF76Path;
+        public static readonly string DefaultF76PrefsPath;
 
         static IniFiles()
         {
@@ -25,6 +29,10 @@ namespace Fo76ini
             );
 
             ConfigPath = Path.Combine(Shared.AppConfigFolder, "config.ini");
+
+            DefaultsPath = Path.Combine(Shared.AppInstallationFolder, "DefaultINI");
+            DefaultF76Path = Path.Combine(DefaultsPath, "Fallout76.ini");
+            DefaultF76PrefsPath = Path.Combine(DefaultsPath, "Medium.ini");
         }
 
         public static void LoadConfig()
@@ -37,11 +45,11 @@ namespace Fo76ini
         {
             F76 = new IniFile(
                 Path.Combine(ParentPath, $"{game.IniPrefix}.ini"),
-                Path.Combine(Shared.AppInstallationFolder, "DefaultINI", "Fallout76.ini")
+                DefaultF76Path
             );
             F76Prefs = new IniFile(
                 Path.Combine(ParentPath, $"{game.IniPrefix}Prefs.ini"),
-                Path.Combine(Shared.AppInstallationFolder, "DefaultINI", "Medium.ini")
+                DefaultF76PrefsPath
             );
             F76Custom = new IniFile(
                 Path.Combine(ParentPath, $"{game.IniPrefix}Custom.ini")

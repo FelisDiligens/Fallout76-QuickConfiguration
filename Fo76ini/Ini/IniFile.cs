@@ -94,6 +94,22 @@ namespace Fo76ini
             UpdateLastModifiedDate();
         }
 
+        public void LoadDefault()
+        {
+            try
+            {
+                if (DefaultPath != null && File.Exists(DefaultPath))
+                    data = this.iniParser.ReadFile(DefaultPath, encoding);
+                else
+                    data = new IniData();
+            }
+            catch
+            {
+                data = new IniData();
+            }
+            UpdateLastModifiedDate();
+        }
+
         public bool IsLoaded()
         {
             return data != null;

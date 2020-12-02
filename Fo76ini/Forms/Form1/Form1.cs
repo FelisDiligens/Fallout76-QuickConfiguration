@@ -383,7 +383,13 @@ namespace Fo76ini
                 {
                     DialogResult result = FormIniError.OpenDialog(exc);
                     if (result == DialogResult.Retry)
+                    {
                         continue;
+                    }
+                    else if (result == DialogResult.Ignore)
+                    {
+                        continue;
+                    }
                     else if (result == DialogResult.Abort)
                     {
                         Environment.Exit(-1);
@@ -594,6 +600,7 @@ namespace Fo76ini
             }
             catch (IniParser.Exceptions.ParsingException e)
             {
+                // TODO
                 MsgBox.Get("customIniFilesParsingError").FormatText(e.Message).Show(MessageBoxIcon.Error);
             }
 
