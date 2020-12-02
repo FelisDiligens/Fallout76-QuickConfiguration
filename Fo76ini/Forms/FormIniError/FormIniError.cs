@@ -21,6 +21,8 @@ namespace Fo76ini.Forms.FormIniError
         public FormIniError()
         {
             InitializeComponent();
+
+            this.FormClosing += FormIniError_FormClosing;
         }
 
         public static DialogResult OpenDialog(IniParsingException exc)
@@ -55,6 +57,8 @@ namespace Fo76ini.Forms.FormIniError
                 }
             }
             reader.Close();
+
+            form.HideDetails();
 
             return form.ShowDialog();
         }
@@ -116,6 +120,38 @@ namespace Fo76ini.Forms.FormIniError
         {
             // TODO: New wiki page
             Utils.OpenURL("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting#couldnt-parse-ini-files-error-message-on-start");
+        }
+
+        private void buttonToggleDetails_Click(object sender, EventArgs e)
+        {
+            if (this.panelDetails.Visible)
+                HideDetails();
+            else
+                ShowDetails();
+        }
+
+        private void FormIniError_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Environment.Exit(Exception.HResult);
+            }
+        }
+
+        private void ShowDetails()
+        {
+            this.panelDetails.Visible = true;
+            this.buttonToggleDetails.Text = "/\\ Hide details";
+            this.Height = this.panelDetails.Top + this.panelDetails.Height + 38;
+            this.Top -= 200;
+        }
+
+        private void HideDetails()
+        {
+            this.panelDetails.Visible = false;
+            this.buttonToggleDetails.Text = "\\/ Show details";
+            this.Height = this.panelDetails.Top + 38;
+            this.Top += 200;
         }
     }
 }

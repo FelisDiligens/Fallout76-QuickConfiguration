@@ -290,6 +290,8 @@ namespace Fo76ini
 
             // Frozen visible?
             this.checkBoxFreezeArchive.Visible = this.editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2;
+            this.linkLabelModInvalidateFrozenArchive.Visible = this.editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2 && 
+                                                                this.editedMod.Frozen;
 
             // Preset
             if (this.editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2)
