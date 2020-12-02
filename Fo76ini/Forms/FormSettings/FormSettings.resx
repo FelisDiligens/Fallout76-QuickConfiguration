@@ -120,19 +120,6 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="labelNMInfo.Text" xml:space="preserve">
-    <value>The mod manager can retrieve mod version and thumbnail via the NexusMods API for you.
-To access the API, you'll need to provide your personal API key.
-
-Your personal API key will be stored locally and will be used for the following purposes:
-- retrieving mod information, such as name, version, and thumbnails
-- displaying some account information, such as user name, profile picture, account status, and rate limit
-- show if updates are available
-
-Since your personal API key is linked to your account, NEVER share the key with any other user, or app you don't trust.
-
-I'm not affiliated with NexusMods. This feature is unofficial and uses the public API.</value>
-  </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>107, 17</value>
   </metadata>
@@ -147,7 +134,7 @@ I'm not affiliated with NexusMods. This feature is unofficial and uses the publi
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADI
-        DAAAAk1TRnQBSQFMAgEBBAEAAVABAAFQAQABGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DAAAAk1TRnQBSQFMAgEBBAEAAVgBAAFYAQABGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABYAMAATADAAEBAQABCAYAARIYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -207,6 +194,19 @@ I'm not affiliated with NexusMods. This feature is unofficial and uses the publi
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="labelNMInfo.Text" xml:space="preserve">
+    <value>The mod manager can retrieve mod version and thumbnail via the NexusMods API for you.
+To access the API, you'll need to provide your personal API key.
+
+Your personal API key will be stored locally and will be used for the following purposes:
+- retrieving mod information, such as name, version, and thumbnails
+- displaying some account information, such as user name, profile picture, account status, and rate limit
+- show if updates are available
+
+Since your personal API key is linked to your account, NEVER share the key with any other user, or app you don't trust.
+
+I'm not affiliated with NexusMods. This feature is unofficial and uses the public API.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBoxNMProfilePicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

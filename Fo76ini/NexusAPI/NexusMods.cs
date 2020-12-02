@@ -172,6 +172,12 @@ namespace Fo76ini.NexusAPI
 
         public void RequestInformation()
         {
+            if (!NexusMods.IsLoggedIn)
+            {
+                MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
+                return;
+            }
+
             // Make API request:
             APIRequest request = new APIRequest("https://api.nexusmods.com/v1/games/fallout76/mods/" + this.ID + ".json");
             request.Headers["apikey"] = NexusMods.Profile.APIKey;

@@ -802,6 +802,7 @@ namespace Fo76ini
 
             ModActions.DetectOptimalModInstallationOptions(editedMod);
             UpdateSidePanel();
+            UpdateModList();
         }
 
         // Invalidate frozen archive
@@ -830,6 +831,12 @@ namespace Fo76ini
                 return;
             }
 
+            if (!NexusMods.IsLoggedIn)
+            {
+                MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
+                return;
+            }
+
             if (this.editedMod.RemoteInfo != null)
                 if (this.editedMod.RemoteInfo.Endorse(this.editedMod.Version))
                     UpdateSidePanel();
@@ -843,6 +850,12 @@ namespace Fo76ini
             if (this.editedMod.Version == "")
             {
                 MsgBox.Show("Can't abstain from endorsing", "You must provide a version.", MessageBoxIcon.Information);
+                return;
+            }
+
+            if (!NexusMods.IsLoggedIn)
+            {
+                MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
                 return;
             }
 

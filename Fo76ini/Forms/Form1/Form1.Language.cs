@@ -20,7 +20,7 @@ namespace Fo76ini
             this.labelTranslationBy.Visible = e.HasAuthor;
             this.labelTranslationAuthor.Text = e.HasAuthor ? translation.Author : "";
 
-            this.RefreshNWModeButtonAppearance();
+            // TODO: UpdateUI?
             this.CheckVersion();
 
             this.Refresh(); // Forces redraw

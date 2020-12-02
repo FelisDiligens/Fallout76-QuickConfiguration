@@ -211,6 +211,9 @@
     <Compile Include="Tweaks\Interface\ShowFloatingQuestTextTweak.cs" />
     <Compile Include="Tweaks\Interface\ShowOtherPlayersNamesTweak.cs" />
     <Compile Include="Tweaks\Interface\ShowPublicTeamNotificationsTweak.cs" />
+    <Compile Include="Tweaks\NuclearWinterMode\DeployModsOnNWModeTweak.cs" />
+    <Compile Include="Tweaks\NuclearWinterMode\RemoveModsOnNWModeTweak.cs" />
+    <Compile Include="Tweaks\NuclearWinterMode\RenameDLLsTweak.cs" />
     <Compile Include="Tweaks\Pipboy\PipboyTargetResolution.cs" />
     <Compile Include="Tweaks\Pipboy\QuickboyModeEnabledTweak.cs" />
     <Compile Include="Tweaks\Video\DisplayModeTweak.cs" />

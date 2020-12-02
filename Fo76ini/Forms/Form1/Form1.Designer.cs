@@ -382,15 +382,13 @@
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorkerEnableNWMode = new System.ComponentModel.BackgroundWorker();
-            this.backgroundWorkerDisableNWMode = new System.ComponentModel.BackgroundWorker();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonApply = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonToggleNuclearWinterMode = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLaunchGame = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonManageMods = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonToggleNuclearWinterMode = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSplitButtonUpdate = new System.Windows.Forms.ToolStripSplitButton();
             this.updateToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -4318,7 +4316,7 @@
             this.linkLabelManualDownloadPage.TabIndex = 2;
             this.linkLabelManualDownloadPage.TabStop = true;
             this.linkLabelManualDownloadPage.Text = "Or download and install manually...";
-            this.linkLabelManualDownloadPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.linkLabelManualDownloadPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelManualDownloadPage_LinkClicked);
             // 
             // pictureBoxUpdateButton
             // 
@@ -5240,14 +5238,6 @@
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
-            // backgroundWorkerEnableNWMode
-            // 
-            this.backgroundWorkerEnableNWMode.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEnableNWMode_DoWork);
-            // 
-            // backgroundWorkerDisableNWMode
-            // 
-            this.backgroundWorkerDisableNWMode.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDisableNWMode_DoWork);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -5266,10 +5256,10 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonApply,
-            this.toolStripButtonToggleNuclearWinterMode,
             this.toolStripButtonLaunchGame,
             this.toolStripSeparator3,
             this.toolStripButtonManageMods,
+            this.toolStripButtonToggleNuclearWinterMode,
             this.toolStripSeparator9,
             this.toolStripButtonSettings,
             this.toolStripSplitButtonUpdate,
@@ -5292,18 +5282,6 @@
             this.toolStripButtonApply.Text = "Apply";
             this.toolStripButtonApply.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonApply.Click += new System.EventHandler(this.toolStripButtonApply_Click);
-            // 
-            // toolStripButtonToggleNuclearWinterMode
-            // 
-            this.toolStripButtonToggleNuclearWinterMode.Image = global::Fo76ini.Properties.Resources.fire;
-            this.toolStripButtonToggleNuclearWinterMode.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonToggleNuclearWinterMode.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonToggleNuclearWinterMode.Name = "toolStripButtonToggleNuclearWinterMode";
-            this.toolStripButtonToggleNuclearWinterMode.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.toolStripButtonToggleNuclearWinterMode.Size = new System.Drawing.Size(110, 43);
-            this.toolStripButtonToggleNuclearWinterMode.Text = "Nuclear Winter";
-            this.toolStripButtonToggleNuclearWinterMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonToggleNuclearWinterMode.Click += new System.EventHandler(this.toolStripButtonToggleNuclearWinterMode_Click);
             // 
             // toolStripButtonLaunchGame
             // 
@@ -5328,6 +5306,18 @@
             this.toolStripButtonManageMods.Text = "Mods";
             this.toolStripButtonManageMods.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonManageMods.Click += new System.EventHandler(this.toolStripButtonManageMods_Click);
+            // 
+            // toolStripButtonToggleNuclearWinterMode
+            // 
+            this.toolStripButtonToggleNuclearWinterMode.Image = global::Fo76ini.Properties.Resources.fire;
+            this.toolStripButtonToggleNuclearWinterMode.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonToggleNuclearWinterMode.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonToggleNuclearWinterMode.Name = "toolStripButtonToggleNuclearWinterMode";
+            this.toolStripButtonToggleNuclearWinterMode.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.toolStripButtonToggleNuclearWinterMode.Size = new System.Drawing.Size(110, 43);
+            this.toolStripButtonToggleNuclearWinterMode.Text = "Nuclear Winter";
+            this.toolStripButtonToggleNuclearWinterMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonToggleNuclearWinterMode.Click += new System.EventHandler(this.toolStripButtonToggleNuclearWinterMode_Click);
             // 
             // toolStripButtonSettings
             // 
@@ -5534,7 +5524,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(499, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(468, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // toolStripStatusLabelNuclearWinterModeActive
@@ -6028,8 +6018,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxGallerySearchRecursively;
         private System.Windows.Forms.Button buttonGalleryDeleteThumbnails;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerEnableNWMode;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerDisableNWMode;
         private System.Windows.Forms.Label labelNWModeActive;
         private System.Windows.Forms.PictureBox pictureBoxLoadingGIF;
         private System.Windows.Forms.LinkLabel linkLabelAttribution;

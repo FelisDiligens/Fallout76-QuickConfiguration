@@ -26,7 +26,7 @@ namespace Fo76ini.Mods
         public ResourceList Resources = ResourceList.GetResourceIndexFileList();
         public readonly string GamePath = "";
         public bool ModsDisabled = false;
-        public bool InvalidateFrozenBundledArchives = true;
+        public bool NuclearWinterModeEnabled = false;
 
         /// <summary>
         /// Path where mods get stored. ("Fallout76\Mods")
@@ -150,7 +150,8 @@ namespace Fo76ini.Mods
 
             XDocument xmlDoc = new XDocument();
             XElement xmlRoot = new XElement("ManagedMods",
-                new XAttribute("enabled", !this.ModsDisabled)
+                new XAttribute("enabled", !this.ModsDisabled),
+                new XAttribute("nwmode", this.NuclearWinterModeEnabled)
             );
             xmlDoc.Add(xmlRoot);
 
@@ -171,7 +172,13 @@ namespace Fo76ini.Mods
         public List<ManagedMod> Deserialize(XDocument xmlDoc)
         {
             List<ManagedMod> mods = new List<ManagedMod>();
-            this.ModsDisabled = !Convert.ToBoolean(xmlDoc.Root.Attribute("enabled").Value);
+
+            if (xmlDoc.Root.Attribute("enabled") != null)
+                this.ModsDisabled = !Convert.ToBoolean(xmlDoc.Root.Attribute("enabled").Value);
+
+            if (xmlDoc.Root.Attribute("nwmode") != null)
+                this.NuclearWinterModeEnabled = Convert.ToBoolean(xmlDoc.Root.Attribute("nwmode").Value);
+
             foreach (XElement xmlMod in xmlDoc.Descendants("Mod"))
             {
                 try
@@ -227,7 +234,10 @@ namespace Fo76ini.Mods
 
             this.Serialize(this.Mods).Save(XMLPath);
             this.Resources.SaveTXT(ResourcesPath);
-            this.Resources.CommitToINI();
+            if (NuclearWinterModeEnabled)
+                IniFiles.F76Custom.Remove("Archive", "sResourceIndexFileList");
+            else
+                this.Resources.CommitToINI(); // TODO: Where else do we have CommitToINI?
             IniFiles.Save();
 
             LegacyManagedMods.GenerateLegacyXML(this);

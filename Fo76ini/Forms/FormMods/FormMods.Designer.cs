@@ -72,6 +72,7 @@
             this.linkLabelModReplaceFilesWithFolder = new System.Windows.Forms.LinkLabel();
             this.linkLabelModReplaceFilesWithArchive = new System.Windows.Forms.LinkLabel();
             this.groupBoxModDetailsInstallationOptions = new System.Windows.Forms.GroupBox();
+            this.linkLabelModInvalidateFrozenArchive = new System.Windows.Forms.LinkLabel();
             this.linkLabelModAutoDetectInstallOptions = new System.Windows.Forms.LinkLabel();
             this.labelModInstallWarning = new System.Windows.Forms.Label();
             this.buttonModPickRootDir = new System.Windows.Forms.Button();
@@ -161,7 +162,6 @@
             this.toolStripStatusLabelSpacer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDeploymentStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.linkLabelModInvalidateFrozenArchive = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -376,7 +376,7 @@
             // 
             this.showGuideToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.help_24;
             this.showGuideToolStripMenuItem.Name = "showGuideToolStripMenuItem";
-            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.showGuideToolStripMenuItem.Text = "Show guide";
             this.showGuideToolStripMenuItem.Click += new System.EventHandler(this.showGuideToolStripMenuItem_Click);
             // 
@@ -386,7 +386,7 @@
             this.showModmanagerlogtxtToolStripMenuItem,
             this.showArchive2logtxtToolStripMenuItem});
             this.logFilesToolStripMenuItem.Name = "logFilesToolStripMenuItem";
-            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.logFilesToolStripMenuItem.Text = "Log files";
             // 
             // showModmanagerlogtxtToolStripMenuItem
@@ -599,6 +599,17 @@
             this.groupBoxModDetailsInstallationOptions.TabIndex = 74;
             this.groupBoxModDetailsInstallationOptions.TabStop = false;
             this.groupBoxModDetailsInstallationOptions.Text = "Installation options";
+            // 
+            // linkLabelModInvalidateFrozenArchive
+            // 
+            this.linkLabelModInvalidateFrozenArchive.AutoSize = true;
+            this.linkLabelModInvalidateFrozenArchive.Location = new System.Drawing.Point(7, 236);
+            this.linkLabelModInvalidateFrozenArchive.Name = "linkLabelModInvalidateFrozenArchive";
+            this.linkLabelModInvalidateFrozenArchive.Size = new System.Drawing.Size(123, 13);
+            this.linkLabelModInvalidateFrozenArchive.TabIndex = 51;
+            this.linkLabelModInvalidateFrozenArchive.TabStop = true;
+            this.linkLabelModInvalidateFrozenArchive.Text = "Invalidate frozen archive";
+            this.linkLabelModInvalidateFrozenArchive.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModInvalidateFrozenArchive_LinkClicked);
             // 
             // linkLabelModAutoDetectInstallOptions
             // 
@@ -1476,15 +1487,16 @@
             // toolStripStatusLabelSpacer
             // 
             this.toolStripStatusLabelSpacer.Name = "toolStripStatusLabelSpacer";
-            this.toolStripStatusLabelSpacer.Size = new System.Drawing.Size(430, 17);
+            this.toolStripStatusLabelSpacer.Size = new System.Drawing.Size(423, 17);
             this.toolStripStatusLabelSpacer.Spring = true;
             this.toolStripStatusLabelSpacer.Text = " ";
             // 
             // toolStripStatusLabelDeploymentStatus
             // 
+            this.toolStripStatusLabelDeploymentStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabelDeploymentStatus.ForeColor = System.Drawing.Color.Crimson;
             this.toolStripStatusLabelDeploymentStatus.Name = "toolStripStatusLabelDeploymentStatus";
-            this.toolStripStatusLabelDeploymentStatus.Size = new System.Drawing.Size(126, 17);
+            this.toolStripStatusLabelDeploymentStatus.Size = new System.Drawing.Size(133, 17);
             this.toolStripStatusLabelDeploymentStatus.Text = "Deployment necessary";
             // 
             // pictureBoxModsLoadingGIF
@@ -1500,17 +1512,6 @@
             this.pictureBoxModsLoadingGIF.TabIndex = 57;
             this.pictureBoxModsLoadingGIF.TabStop = false;
             this.pictureBoxModsLoadingGIF.Visible = false;
-            // 
-            // linkLabelModInvalidateFrozenArchive
-            // 
-            this.linkLabelModInvalidateFrozenArchive.AutoSize = true;
-            this.linkLabelModInvalidateFrozenArchive.Location = new System.Drawing.Point(7, 236);
-            this.linkLabelModInvalidateFrozenArchive.Name = "linkLabelModInvalidateFrozenArchive";
-            this.linkLabelModInvalidateFrozenArchive.Size = new System.Drawing.Size(123, 13);
-            this.linkLabelModInvalidateFrozenArchive.TabIndex = 51;
-            this.linkLabelModInvalidateFrozenArchive.TabStop = true;
-            this.linkLabelModInvalidateFrozenArchive.Text = "Invalidate frozen archive";
-            this.linkLabelModInvalidateFrozenArchive.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModInvalidateFrozenArchive_LinkClicked);
             // 
             // FormMods
             // 

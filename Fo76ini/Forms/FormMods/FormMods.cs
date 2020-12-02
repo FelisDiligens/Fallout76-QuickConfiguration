@@ -26,6 +26,8 @@ namespace Fo76ini
         private GameInstance game;
         private ManagedMods Mods;
 
+        public static event NuclearWinterEventHandler NWModeUpdated;
+
         /// <summary>
         /// isUpdating is set to true when updating the UI.
         /// The value is checked in event handlers and if it is true, the event will be ignored.
@@ -123,6 +125,7 @@ namespace Fo76ini
             CloseSidePanel();
             LoadMods(this.game.GamePath);
             UpdateUI();
+            TriggerNWModeUpdated();
         }
 
         private bool ConvertLegacyConditional()
@@ -534,6 +537,136 @@ namespace Fo76ini
 
         #endregion
 
+        /*
+         **********************************************************************************
+         * Nuclear Winter mode
+         **********************************************************************************
+         */
+
+        #region Nuclear Winter mode
+
+        public void ToggleNuclearWinterMode()
+        {
+            if (Mods.NuclearWinterModeEnabled)
+                DisableNuclearWinterMode();
+            else
+                EnableNuclearWinterMode();
+        }
+
+        public void EnableNuclearWinterMode()
+        {
+            Mods.NuclearWinterModeEnabled = true;
+
+            // Uninstall mods:
+            if (!Mods.ModsDisabled &&
+                IniFiles.Config.GetBool("NuclearWinter", "bAutoDisableMods", true))
+            {
+                Mods.ModsDisabled = true;
+                this.DeployMods();
+            }
+
+            // Rename added *.dll files:
+            if (IniFiles.Config.GetBool("NuclearWinter", "bRenameDLLs", true))
+                ModDeployment.RenameAddedDLLs(Mods.GamePath);
+
+            // Backwards-compatibility:
+            IniFiles.Config.Set("NuclearWinter", "bNWMode", true);
+            IniFiles.Config.Set("Preferences", "bNWMode", true);
+
+            // Save and update UI:
+            Mods.Save();
+            TriggerNWModeUpdated();
+        }
+
+        public void DisableNuclearWinterMode()
+        {
+            Mods.NuclearWinterModeEnabled = false;
+
+            // Install mods:
+            if (Mods.ModsDisabled && Mods.Count() > 0 &&
+                IniFiles.Config.GetBool("NuclearWinter", "bAutoDeployMods", true))
+            {
+                Mods.ModsDisabled = false;
+                this.DeployMods();
+            }
+
+            // Restore added *.dll files:
+            ModDeployment.RestoreAddedDLLs(Mods.GamePath);
+
+            // Backwards-compatibility:
+            IniFiles.Config.Set("NuclearWinter", "bNWMode", false);
+            IniFiles.Config.Set("Preferences", "bNWMode", false);
+
+            // Save and update UI:
+            Mods.Save();
+            TriggerNWModeUpdated();
+        }
+
+        private void TriggerNWModeUpdated()
+        {
+            if (NWModeUpdated != null)
+                NWModeUpdated(null, BuildNuclearWinterEventArgs());
+        }
+
+        public bool IsNuclearWinterModeEnabled()
+        {
+            return Mods.NuclearWinterModeEnabled;
+        }
+
+        public void ToggleNuclearWinterModeThreaded()
+        {
+            if (Mods.NuclearWinterModeEnabled)
+                DisableNuclearWinterModeThreaded();
+            else
+                EnableNuclearWinterModeThreaded();
+        }
+
+        public void EnableNuclearWinterModeThreaded()
+        {
+            Show();
+            Focus();
+            RunThreaded(() => {
+                CloseSidePanel();
+                ShowLoadingUI();
+            }, () => {
+                EnableNuclearWinterMode();
+                return true;
+            }, (success) => {
+                if (success)
+                    MsgBox.Get("nwModeDisabled").Popup(MessageBoxIcon.Information);
+                UpdateUI();
+                EnableUI();
+                Hide();
+            });
+        }
+
+        public void DisableNuclearWinterModeThreaded()
+        {
+            Show();
+            Focus();
+            RunThreaded(() => {
+                CloseSidePanel();
+                ShowLoadingUI();
+            }, () => {
+                DisableNuclearWinterMode();
+                return true;
+            }, (success) => {
+                if (success)
+                    MsgBox.Get("nwModeDisabled").Popup(MessageBoxIcon.Information);
+                UpdateUI();
+                EnableUI();
+                Hide();
+            });
+        }
+
+        private NuclearWinterEventArgs BuildNuclearWinterEventArgs()
+        {
+            NuclearWinterEventArgs args = new NuclearWinterEventArgs();
+            args.NuclearWinterModeEnabled = Mods.NuclearWinterModeEnabled;
+            return args;
+        }
+
+        #endregion
 
         /*
          **********************************************************************************
@@ -1075,21 +1208,25 @@ namespace Fo76ini
                 catch (Archive2RequirementsException exc)
                 {
                     MsgBox.ShowID("archive2InstallRequirements", MessageBoxIcon.Error);
+                    UpdateProgress(Progress.Aborted("Archive2 installation requirements not met.", exc));
                     return false;
                 }
                 catch (Archive2Exception exc)
                 {
                     MsgBox.ShowID("archive2Error", MessageBoxIcon.Error);
+                    UpdateProgress(Progress.Aborted("Archive2 error", exc));
                     return false;
                 }
                 catch (NotSupportedException exc)
                 {
                     MsgBox.ShowID("modsArchiveTypeNotSupported", MessageBoxIcon.Error);
+                    UpdateProgress(Progress.Aborted("Failed", exc));
                     return false;
                 }
                 catch (Exception exc)
                 {
                     MsgBox.Get("failed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+                    UpdateProgress(Progress.Aborted("Failed", exc));
                     return false;
                 }
                 return true;
@@ -1115,16 +1252,19 @@ namespace Fo76ini
                 catch (Archive2RequirementsException exc)
                 {
                     MsgBox.ShowID("archive2InstallRequirements", MessageBoxIcon.Error);
+                    UpdateProgress(Progress.Aborted("Archive2 installation requirements not met.", exc));
                     return false;
                 }
                 catch (Archive2Exception exc)
                 {
                     MsgBox.ShowID("archive2Error", MessageBoxIcon.Error);
+                    UpdateProgress(Progress.Aborted("Archive2 error", exc));
                     return false;
                 }
                 catch (Exception exc)
                 {
                     MsgBox.Get("failed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+                    UpdateProgress(Progress.Aborted("Failed", exc));
                     return false;
                 }
                 return true;
@@ -1150,23 +1290,27 @@ namespace Fo76ini
                 catch (Archive2RequirementsException exc)
                 {
                     MsgBox.ShowID("archive2InstallRequirements", MessageBoxIcon.Error);
+                    UpdateProgress(Progress.Aborted("Archive2 installation requirements not met.", exc));
                     return false;
                 }
                 catch (Archive2Exception exc)
                 {
                     MsgBox.ShowID("archive2Error", MessageBoxIcon.Error);
+                    UpdateProgress(Progress.Aborted("Archive2 error", exc));
                     return false;
                 }
                 catch (NotSupportedException exc)
                 {
                     MsgBox.ShowID("modsArchiveTypeNotSupported", MessageBoxIcon.Error);
+                    UpdateProgress(Progress.Aborted("Failed", exc));
                     return false;
-                }/*
+                }
                 catch (Exception exc)
                 {
                     MsgBox.Get("failed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+                    UpdateProgress(Progress.Aborted("Failed", exc));
                     return false;
-                }*/
+                }
                 return true;
             }, (success) => {
                 EnableUI();
@@ -1229,15 +1373,40 @@ namespace Fo76ini
             });
         }
 
+        private bool DeployMods()
+        {
+            try
+            {
+                ModDeployment.Deploy(Mods, UpdateProgress);
+            }
+            catch (Archive2RequirementsException exc)
+            {
+                MsgBox.ShowID("archive2InstallRequirements", MessageBoxIcon.Error);
+                UpdateProgress(Progress.Aborted("Archive2 installation requirements not met.", exc));
+                return false;
+            }
+            catch (Archive2Exception exc)
+            {
+                MsgBox.ShowID("archive2Error", MessageBoxIcon.Error);
+                UpdateProgress(Progress.Aborted("Archive2 error", exc));
+                return false;
+            }
+            catch (Exception exc)
+            {
+                MsgBox.Get("failed").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+                UpdateProgress(Progress.Aborted("Failed", exc));
+                return false;
+            }
+            return true;
+        }
+
         private void DeployModsThreaded()
         {
             RunThreaded(() => {
                 CloseSidePanel();
                 ShowLoadingUI();
             }, () => {
-                // TODO: Error handling
-                ModDeployment.Deploy(Mods, UpdateProgress);
-                return true;
+                return DeployMods();
             }, (success) => {
                 if (success)
                 {
@@ -1257,6 +1426,11 @@ namespace Fo76ini
 
         private void UpdateRemoteModInfoThreaded()
         {
+            if (!NexusMods.IsLoggedIn)
+            {
+                MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
+                return;
+            }
             RunThreaded(() => {
                 CloseSidePanel();
                 ShowLoadingUI();
@@ -1272,6 +1446,11 @@ namespace Fo76ini
 
         private void CheckForUpdatesThreaded()
         {
+            if (!NexusMods.IsLoggedIn)
+            {
+                MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
+                return;
+            }
             RunThreaded(() => {
                 CloseSidePanel();
                 ShowLoadingUI();
@@ -1297,6 +1476,11 @@ namespace Fo76ini
 
         private void EndorseModsThreaded()
         {
+            if (!NexusMods.IsLoggedIn)
+            {
+                MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
+                return;
+            }
             RunThreaded(() => {
                 CloseSidePanel();
                 DisableUI();
@@ -1412,5 +1596,13 @@ namespace Fo76ini
         }
 
         #endregion
+    }
+
+
+    public delegate void NuclearWinterEventHandler(object sender, NuclearWinterEventArgs e);
+
+    public class NuclearWinterEventArgs : EventArgs
+    {
+        public bool NuclearWinterModeEnabled;
     }
 }

@@ -6,6 +6,7 @@ using Fo76ini.Properties;
 using Fo76ini.Tweaks;
 using Fo76ini.Tweaks.Config;
 using Fo76ini.Tweaks.Inis;
+using Fo76ini.Tweaks.NuclearWinterMode;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -107,6 +108,9 @@ namespace Fo76ini.Forms.FormSettings
             LinkedTweaks.LinkInfo(checkBoxIgnoreUpdates, toolTip, ignoreUpdatesTweak);
             LinkedTweaks.LinkInfo(checkBoxPlayNotificationSound, toolTip, playNotificationSoundsTweak);
             LinkedTweaks.LinkInfo(checkBoxQuitOnGameLaunch, toolTip, toolQuitOnLaunchTweak);
+            LinkedTweaks.LinkInfo(checkBoxNWRenameDLL, toolTip, renameDLLsTweak);
+            LinkedTweaks.LinkInfo(checkBoxNWAutoDeployMods, toolTip, deployModsOnNWModeTweak);
+            LinkedTweaks.LinkInfo(checkBoxNWAutoDisableMods, toolTip, removeModsOnNWModeTweak);
         }
 
         public void LinkControlsToTweaks()
@@ -125,6 +129,20 @@ namespace Fo76ini.Forms.FormSettings
 
             // Close the tool when the game is launched.
             LinkedTweaks.LinkTweak(checkBoxQuitOnGameLaunch, toolQuitOnLaunchTweak);
+
+
+            /*
+             * Nuclear Winter options
+             */
+
+            // Rename added *.dll files
+            LinkedTweaks.LinkTweak(checkBoxNWRenameDLL, renameDLLsTweak);
+
+            // Automatically deploy mods
+            LinkedTweaks.LinkTweak(checkBoxNWAutoDeployMods, deployModsOnNWModeTweak);
+
+            // Automatically remove mods
+            LinkedTweaks.LinkTweak(checkBoxNWAutoDisableMods, removeModsOnNWModeTweak);
         }
 
         #endregion
@@ -603,6 +621,11 @@ namespace Fo76ini.Forms.FormSettings
 
         private void buttonNMUpdateProfile_Click(object sender, EventArgs e)
         {
+            if (this.textBoxAPIKey.Text == "")
+            {
+                MsgBox.Show("No API key entered", "Please enter your API key first before updating your profile.", MessageBoxIcon.Information);
+                return;
+            }
             UpdateNMProfile();
         }
 
@@ -710,5 +733,9 @@ namespace Fo76ini.Forms.FormSettings
         private IgnoreUpdatesTweak ignoreUpdatesTweak = new IgnoreUpdatesTweak();
         private PlayNotificationSoundsTweak playNotificationSoundsTweak = new PlayNotificationSoundsTweak();
         private ToolQuitOnLaunchTweak toolQuitOnLaunchTweak = new ToolQuitOnLaunchTweak();
+
+        private DeployModsOnNWModeTweak deployModsOnNWModeTweak = new DeployModsOnNWModeTweak();
+        private RemoveModsOnNWModeTweak removeModsOnNWModeTweak = new RemoveModsOnNWModeTweak();
+        private RenameDLLsTweak renameDLLsTweak = new RenameDLLsTweak();
     }
 }

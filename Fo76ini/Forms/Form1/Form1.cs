@@ -1,6 +1,7 @@
 ﻿using Fo76ini.Forms.FormSettings;
 using Fo76ini.Forms.FormWhatsNew;
 using Fo76ini.Interface;
+using Fo76ini.Mods;
 using Fo76ini.NexusAPI;
 using Fo76ini.Profiles;
 using Fo76ini.Properties;
@@ -35,6 +36,7 @@ namespace Fo76ini
 
             // Handle changes:
             ProfileManager.ProfileChanged += OnProfileChanged;
+            FormMods.NWModeUpdated += OnNWModeUpdated;
 
             /*
              * Translations
@@ -270,8 +272,6 @@ namespace Fo76ini
 
             this.backgroundWorkerGetLatestVersion.RunWorkerCompleted += backgroundWorkerGetLatestVersion_RunWorkerCompleted;
 
-            this.backgroundWorkerEnableNWMode.RunWorkerCompleted += backgroundWorkerEnableNWMode_RunWorkerCompleted;
-            this.backgroundWorkerDisableNWMode.RunWorkerCompleted += backgroundWorkerDisableNWMode_RunWorkerCompleted;
             InitAccountProfileRadiobuttons();
 
             // Pipboy screen preview:
@@ -539,19 +539,17 @@ namespace Fo76ini
          */
 
         #region Nuclear Winter Mode
-        // Nuclear Winter mode
 
-        private void toolStripButtonToggleNuclearWinterMode_Click(object sender, EventArgs e)
+        private void OnNWModeUpdated(object sender, NuclearWinterEventArgs e)
         {
-            if (Shared.NuclearWinterMode)
-                DisableNuclearWinterMode();
-            else
-                EnableNuclearWinterMode();
+            this.labelNWModeActive.Invoke(new Action(() => {
+                UpdateNWModeUI(e.NuclearWinterModeEnabled);
+            }));
         }
-
-        private void RefreshNWModeButtonAppearance()
+        
+        private void UpdateNWModeUI (bool nwModeEnabled)
         {
-            if (Shared.NuclearWinterMode)
+            if (nwModeEnabled)
             {
                 this.toolStripButtonToggleNuclearWinterMode.Text = Localization.GetString("adventuremode");
                 this.toolStripButtonToggleNuclearWinterMode.Image = Resources.adventures;
@@ -561,168 +559,20 @@ namespace Fo76ini
                 this.toolStripButtonToggleNuclearWinterMode.Text = Localization.GetString("nuclearwintermode");
                 this.toolStripButtonToggleNuclearWinterMode.Image = Resources.fire;
             }
+
+            this.labelNWModeActive.Visible = nwModeEnabled;
+            this.toolStripStatusLabelNuclearWinterModeActive.Visible = nwModeEnabled;
+
+            EnableUI();
+            Focus();
         }
 
-        private void LoadNuclearWinterConfiguration()
-        {
-            // NW mode enabled?
-            Shared.NuclearWinterMode = Configuration.bNWMode;
-
-            // Show label:
-            this.labelNWModeActive.Visible = Shared.NuclearWinterMode;
-
-            // Fallout76Custom.ini renamed?
-            // TODO: NW mode broke
-            //IniFiles.Instance.renameF76Custom = Shared.NuclearWinterMode && IniFiles.Config.GetBool("NuclearWinter", "bRenameCustomINI", true);
-
-            // Change button appearance:
-            RefreshNWModeButtonAppearance();
-        }
-
-        public void DisableUI()
-        {
-            this.pictureBoxLoadingGIF.Visible = true;
-            this.pictureBoxLoadingGIF.Width = this.Width;
-        }
-
-        public void EnableUI()
-        {
-            this.pictureBoxLoadingGIF.Visible = false;
-        }
-
-        private void EnableNuclearWinterMode()
+        private void toolStripButtonToggleNuclearWinterMode_Click(object sender, EventArgs e)
         {
             DisableUI();
-            this.backgroundWorkerEnableNWMode.RunWorkerAsync();
-            this.labelNWModeActive.Visible = true;
+            formMods.ToggleNuclearWinterModeThreaded();
         }
 
-        private void DisableNuclearWinterMode()
-        {
-            DisableUI();
-            this.backgroundWorkerDisableNWMode.RunWorkerAsync();
-            this.labelNWModeActive.Visible = false;
-        }
-
-        private void backgroundWorkerEnableNWMode_DoWork(object sender, DoWorkEventArgs e)
-        {
-            // TODO: NW MODE broken
-            return;
-
-            Shared.NuclearWinterMode = true;
-
-            /*
-             * Fallout76Custom.ini:
-             */
-            // Remove resource lists:
-            // TODO: NW MODE broken
-
-            // Rename *.ini:
-            //IniFiles.Instance.renameF76Custom = IniFiles.Config.GetBool("NuclearWinter", "bRenameCustomINI", true);
-            //IniFiles.Instance.ResolveNWMode();
-
-
-            /*
-             * Mods:
-             */
-
-            // Mods are deployed, automatically disable mods?
-            /*if (!ManagedMods.Instance.ModsDisabled && Configuration.bAutoDisableMods)
-            {
-                ManagedMods.Instance.ModsDisabled = true;
-                this.Invoke(this.formMods.OpenUI);
-                this.formMods.Deploy();
-                this.Invoke(this.formMods.Hide);
-                this.Invoke(() => { this.Focus(); });
-            }*/
-
-
-            /*
-             * *.dll's:
-             */
-
-            // Rename added *.dll files:
-            /*if (Configuration.bRenameDLLs)
-                ManagedMods.Instance.RenameAddedDLLs();*/
-
-
-            /*
-             * Configuration:
-             */
-
-            // Save configuration:
-            Configuration.bNWMode = true;
-            //IniFiles.Instance.SaveAll();
-        }
-
-        private void backgroundWorkerDisableNWMode_DoWork(object sender, DoWorkEventArgs e)
-        {
-            // TODO: NW MODE broken
-            return;
-
-            Shared.NuclearWinterMode = false;
-
-            /*
-             * Fallout76Custom.ini:
-             */
-            // Restore archive lists:
-
-            // Restore *.ini:
-            //IniFiles.Instance.renameF76Custom = false;
-            //IniFiles.Instance.ResolveNWMode();
-
-
-            /*
-             * Mods:
-             */
-
-            // Mods haven't been deployed yet, automatically enable mods?
-            /*if (ManagedMods.Instance.ModsDisabled &&
-                ManagedMods.Instance.Mods.Count() > 0 &&
-                Configuration.bAutoDisableMods)
-            {
-                ManagedMods.Instance.ModsDisabled = false;
-                this.Invoke(this.formMods.OpenUI);
-                this.formMods.Deploy();
-                this.Invoke(this.formMods.Hide);
-                this.Invoke(() => { this.Focus(); });
-            }*/
-
-
-            /*
-             * *.dll's:
-             */
-
-            // Restore added *.dll files:
-            //ManagedMods.Instance.RestoreAddedDLLs();
-
-
-            /*
-             * Configuration:
-             */
-
-            // Save configuration:
-            Configuration.bNWMode = false;
-            //IniFiles.Instance.SaveAll();
-        }
-
-        private void backgroundWorkerEnableNWMode_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            // Popup:
-            MsgBox.Get("nwModeEnabled").Popup(MessageBoxIcon.Information);
-
-            RefreshNWModeButtonAppearance();
-            EnableUI();
-        }
-
-        private void backgroundWorkerDisableNWMode_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            // Popup:
-            MsgBox.Get("nwModeDisabled").Popup(MessageBoxIcon.Information);
-
-            RefreshNWModeButtonAppearance();
-            EnableUI();
-        }
         #endregion
 
         #region Apply, Launch, and so on.
@@ -769,7 +619,7 @@ namespace Fo76ini
         #endregion
 
         // "Get the latest version from NexusMods" link:
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkLabelManualDownloadPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             linkLabelManualDownloadPage.LinkVisited = true;
             Process.Start("https://www.nexusmods.com/fallout76/mods/546?tab=files");
@@ -963,6 +813,17 @@ namespace Fo76ini
                 pictureBox.Image = Resources.button;
                 pictureBox.Cursor = Cursors.Default;
             });
+        }
+
+        public void DisableUI()
+        {
+            this.pictureBoxLoadingGIF.Visible = true;
+            this.pictureBoxLoadingGIF.Width = this.Width;
+        }
+
+        public void EnableUI()
+        {
+            this.pictureBoxLoadingGIF.Visible = false;
         }
 
         #region Credentials

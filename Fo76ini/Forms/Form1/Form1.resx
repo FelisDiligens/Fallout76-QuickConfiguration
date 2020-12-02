@@ -267,13 +267,7 @@ NOTE: Your achievements will be disabled as well!</value>
     <value>1380, 17</value>
   </metadata>
   <metadata name="contextMenuStripGallery.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1900, 17</value>
-  </metadata>
-  <metadata name="backgroundWorkerEnableNWMode.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>561, 11</value>
-  </metadata>
-  <metadata name="backgroundWorkerDisableNWMode.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>571, 42</value>
+    <value>1056, 82</value>
   </metadata>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1054, 17</value>

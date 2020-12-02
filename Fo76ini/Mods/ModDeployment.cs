@@ -52,7 +52,7 @@ namespace Fo76ini.Mods
                                 mods.Save();
                                 break;
                             case ManagedMod.DeploymentMethod.LooseFiles:
-                                DeployLooseFiles(mod, mods.GamePath);
+                                DeployLooseFiles(mods, mod, mods.GamePath);
                                 mods.Save();
                                 break;
                         }
@@ -73,7 +73,7 @@ namespace Fo76ini.Mods
         /// <summary>
         /// Used in the deployment chain to deploy a single mod with the Loose method.
         /// </summary>
-        private static void DeployLooseFiles(ManagedMod mod, String GamePath)
+        private static void DeployLooseFiles(ManagedMods mods, ManagedMod mod, String GamePath)
         {
             mod.LooseFiles.Clear();
 
@@ -90,7 +90,7 @@ namespace Fo76ini.Mods
                 Directory.CreateDirectory(destInfo.DirectoryName);
 
                 // ... make a backup if the file already exists ...
-                if (File.Exists(destinationPath) && !File.Exists(destinationPath + ".old"))
+                if (File.Exists(destinationPath) && !DoesLooseFileBelongToMod(mods, destinationPath) && !File.Exists(destinationPath + ".old"))
                     File.Move(destinationPath, destinationPath + ".old");
 
                 // ... and copy the file (and replace it if necessary).
@@ -429,6 +429,29 @@ namespace Fo76ini.Mods
                 Directory.Delete(parent);
                 parent = Path.GetDirectoryName(parent);
             }
+        }
+
+        /// <summary>
+        /// Searches through each mod.LooseFiles entry to find if the file belongs to a mod.
+        /// </summary>
+        /// <param name="mods"></param>
+        /// <param name="fullPath">Has to be a full path, not a relative path</param>
+        /// <returns>true, if a mod has installed this file. false otherwise.</returns>
+        private static bool DoesLooseFileBelongToMod(ManagedMods mods, string fullPath)
+        {
+            foreach (ManagedMod mod in mods)
+            {
+                if (mod.PreviousMethod == ManagedMod.DeploymentMethod.LooseFiles)
+                {
+                    foreach (string relPath in mod.LooseFiles)
+                    {
+                        string installedPath = Path.Combine(mods.GamePath, mod.RootFolder, relPath);
+                        if (installedPath == fullPath)
+                            return true;
+                    }
+                }
+            }
+            return false;
         }
 
         private class DeployArchiveList : IEnumerable<DeployArchive>

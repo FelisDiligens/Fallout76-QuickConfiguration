@@ -170,6 +170,11 @@ namespace Fo76ini
                 "Would you like to convert them now? It won't take long."
             );
 
+            MsgBox.Add("modsInvalidManifestEntry",
+                "Invalid manifest.xml entry",
+                "A mod entry is invalid and was ignored.\nError: {0}"
+            );
+
 
             // NexusMods:
 
@@ -181,6 +186,11 @@ namespace Fo76ini
             MsgBox.Add("nexusModsEndorseAllQuestion",
                 "Endorse all mods?",
                 "This will endorse all your installed mods. Are you sure?"
+            );
+
+            MsgBox.Add("nexusModsNotLoggedIn",
+                "Not logged in",
+                "Please log in first to access the NexusMods API"
             );
 
 

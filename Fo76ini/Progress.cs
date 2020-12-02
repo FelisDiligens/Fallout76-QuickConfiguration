@@ -116,6 +116,8 @@ namespace Fo76ini
                 label.ForeColor = Color.Black;
 
             label.Text = Text;
+            if (Exc != null)
+                label.Text += " - " + Exc.Message;
         }
 
         /// <summary>

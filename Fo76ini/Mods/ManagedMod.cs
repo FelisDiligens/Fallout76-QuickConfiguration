@@ -510,6 +510,9 @@ namespace Fo76ini.Mods
             if (Deployed != Enabled)
                 return true;
 
+            if (!Enabled && !Deployed)
+                return false;
+
             if (PreviousMethod != Method)
                 return true;
 
