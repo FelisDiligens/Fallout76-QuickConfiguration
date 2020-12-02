@@ -280,6 +280,27 @@ namespace Fo76ini.Utilities
             }
         }
 
+        public static void OpenFile(string path)
+        {
+            if (File.Exists(path))
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo(path)
+                {
+                    UseShellExecute = true
+                };
+                Process.Start(startInfo);
+            }
+            else
+            {
+                throw new FileNotFoundException($"File \"{path}\" does not exist!");
+            }
+        }
+
+        public static void OpenURL(string url)
+        {
+            Process.Start(url);
+        }
+
         public static void ExtractArchive(string sourceArchive, string destination)
         {
             if (!File.Exists(Utils.SevenZipPath))
@@ -313,7 +334,7 @@ namespace Fo76ini.Utilities
          * https://docs.microsoft.com/de-de/windows/win32/api/winuser/nf-winuser-enumdisplaysettingsa?redirectedfrom=MSDN
          */
 
-        [DllImport("user32.dll")]
+                [DllImport("user32.dll")]
         private static extern bool EnumDisplaySettings(
               string deviceName, int modeNum, ref DEVMODE devMode);
         private const int ENUM_CURRENT_SETTINGS = -1;

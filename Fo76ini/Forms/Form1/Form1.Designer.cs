@@ -5524,7 +5524,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(468, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(499, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // toolStripStatusLabelNuclearWinterModeActive

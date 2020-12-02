@@ -104,6 +104,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FormIniError\FormIniError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIniError\FormIniError.Designer.cs">
+      <DependentUpon>FormIniError.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormSettings\FormSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,7 @@
     <Compile Include="Forms\FormTextPrompt\TextPrompt.Designer.cs">
       <DependentUpon>TextPrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ini\IniParsingException.cs" />
     <Compile Include="Interface\Versioning.cs" />
     <Compile Include="Mods\LegacyManagedMods.cs" />
     <Compile Include="Progress.cs" />
@@ -276,8 +283,8 @@
       <DependentUpon>FormWhatsNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Profiles\GameInstance.cs" />
-    <Compile Include="IniFile.cs" />
-    <Compile Include="IniFiles.cs" />
+    <Compile Include="Ini\IniFile.cs" />
+    <Compile Include="Ini\IniFiles.cs" />
     <Compile Include="Interface\DropDown.cs" />
     <Compile Include="Interface\InvalidXmlException.cs" />
     <Compile Include="Interface\Translation.Shared.cs" />
@@ -306,6 +313,7 @@
     <Compile Include="Shared.cs" />
     <Compile Include="Tweaks\Config\ToolQuitOnLaunchTweak.cs" />
     <Compile Include="Tweaks\LinkedTweaks.cs" />
+    <Compile Include="Utilities\RichTextBoxExtensions.cs" />
     <Compile Include="Utilities\Utils.cs" />
     <Compile Include="Utilities\Volume.cs" />
     <EmbeddedResource Include="Forms\ExceptionDialog\FormExceptionDialog.resx">
@@ -313,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIniError\FormIniError.resx">
+      <DependentUpon>FormIniError.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMods\FormMods.resx">
       <DependentUpon>FormMods.cs</DependentUpon>

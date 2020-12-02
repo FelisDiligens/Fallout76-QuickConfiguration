@@ -90,6 +90,13 @@ namespace Fo76ini
             return F76.FileHasBeenModified() || F76Prefs.FileHasBeenModified() || F76Custom.FileHasBeenModified();
         }
 
+        public static void UpdateLastModifiedDates()
+        {
+            F76.UpdateLastModifiedDate();
+            F76Prefs.UpdateLastModifiedDate();
+            F76Custom.UpdateLastModifiedDate();
+        }
+
 
         /*
          *********************************************************************************************************************************************

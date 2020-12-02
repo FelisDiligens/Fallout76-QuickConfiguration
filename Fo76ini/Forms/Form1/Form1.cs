@@ -1,5 +1,7 @@
-﻿using Fo76ini.Forms.FormSettings;
+﻿using Fo76ini.Forms.FormIniError;
+using Fo76ini.Forms.FormSettings;
 using Fo76ini.Forms.FormWhatsNew;
+using Fo76ini.Ini;
 using Fo76ini.Interface;
 using Fo76ini.Mods;
 using Fo76ini.NexusAPI;
@@ -298,29 +300,11 @@ namespace Fo76ini
             ProfileManager.Load();
             formSettings = new FormSettings();
 
-            IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
-
-            // TODO: Do we still need this?
-            //this.timerCheckFiles.Enabled = true;
-
-            // TODO: NW MODE BROKEN
-            //LoadNuclearWinterConfiguration();
-
-            // Load mods:
-            /*ManagedMods.Instance.Load();*/
-            NexusMods.Load();
-            //TODO: this.formMods.LoadMods(Shared.GamePath);
-
-            // this.formMods = new FormMods();
-            // this.formMods.UpdateUI();
+            this.timerCheckFiles.Enabled = true;
 
             // Load translations
-            //LinkedTweaks.SetToolTips();
             Localization.GenerateDefaultTemplate();
             Localization.LookupLanguages();
-
-            // Setup UI:
-            // UpdateCameraPositionUI(); // TODO: Rework camera UI
 
             Configuration.LoadWindowState("Form1", this);
 
@@ -336,7 +320,7 @@ namespace Fo76ini
                 // Yeah, well or not.
             }
 
-            this.LoadGallery(); // TODO: Rework gallery
+            this.LoadGallery();
 
             MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
         }
@@ -349,6 +333,8 @@ namespace Fo76ini
             // Display "What's new?" dialog
             if (!IniFiles.Config.GetBool("Preferences", "bIgnoreUpdates", false))
                 ShowWhatsNewConditionally();
+
+            IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
         }
 
 
@@ -385,16 +371,28 @@ namespace Fo76ini
         private void OnProfileChanged(object sender, ProfileEventArgs e)
         {
             this.game = e.ActiveGameInstance;
-            try
+            this.timerCheckFiles.Enabled = false;
+            while (true)
             {
-                IniFiles.Load(game);
-            }
-            catch (IniParser.Exceptions.ParsingException exc)
-            {
-                // TODO: Change the ini parsing error.
-                MsgBox.Get("iniParsingError").FormatText(exc.Message).Show(MessageBoxIcon.Error);
-                //Application.Exit();
-                return;
+                try
+                {
+                    IniFiles.Load(game);
+                    break;
+                }
+                catch (IniParsingException exc)
+                {
+                    DialogResult result = FormIniError.OpenDialog(exc);
+                    if (result == DialogResult.Retry)
+                        continue;
+                    else if (result == DialogResult.Abort)
+                    {
+                        Environment.Exit(-1);
+                        return;
+                    }
+                    //MsgBox.Get("iniParsingError").FormatText(exc.Message).Show(MessageBoxIcon.Error);
+                    //Application.Exit();
+                    //return;
+                }
             }
             LinkedTweaks.LoadValues();
 
@@ -432,6 +430,7 @@ namespace Fo76ini
             LoadCustomTab();
 
             this.toolStripStatusLabelGameText.Text = e.ActiveGameInstance?.Title;
+            this.timerCheckFiles.Enabled = true;
         }
 
         private void ShowWhatsNewConditionally()
@@ -601,7 +600,6 @@ namespace Fo76ini
             // TODO: Backups?
             // Save changes:
             IniFiles.Save();
-            //IniFiles.Instance.ResolveNWMode();
         }
 
         // "Apply" button:
@@ -711,19 +709,19 @@ namespace Fo76ini
         private void editFallout76iniToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (File.Exists(IniFiles.F76.Path))
-                Utils.OpenNotepad(IniFiles.F76.Path);
+                Utils.OpenFile(IniFiles.F76.Path);
         }
 
         private void editFallout76PrefsiniToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (File.Exists(IniFiles.F76Prefs.Path))
-                Utils.OpenNotepad(IniFiles.F76Prefs.Path);
+                Utils.OpenFile(IniFiles.F76Prefs.Path);
         }
 
         private void editFallout76CustominiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (File.Exists(IniFiles.F76Custom.Path))
-                Utils.OpenNotepad(IniFiles.F76Custom.Path);
+                Utils.OpenFile(IniFiles.F76Custom.Path);
         }
 
         private void steamScreenshotFolderToolStripMenuItem_Click(object sender, EventArgs e)
@@ -761,19 +759,17 @@ namespace Fo76ini
         // Check, if *.ini files have been changed:
         private void timerCheckFiles_Tick(object sender, EventArgs e)
         {
-            // TODO: Do we reeeeaaally need this?
+            // TODO: Give an option to reload the *.ini files.
             // Check every 5 seconds, if files have been modified:
-            /*if (IniFiles.FilesHaveBeenModified())
+            if (IniFiles.FilesHaveBeenModified())
             {
                 IniFiles.UpdateLastModifiedDates();
 
-                // Don't prompt, if Fallout 76 is running....
-                if (Shared.GameEdition == GameEdition.MSStore ?
-                        //!Utils.IsProcessRunning("Project76_GamePass") :
-                        !Utils.IsProcessRunning("Project76") :
-                        !Utils.IsProcessRunning("Fallout76"))
+                // Don't prompt, if Fallout 76 is running...
+                if (!Utils.IsProcessRunning("Project76") &&  // !Utils.IsProcessRunning("Project76_GamePass") && 
+                    !Utils.IsProcessRunning("Fallout76"))
                     MsgBox.Get("iniFilesModified").Popup(MessageBoxIcon.Warning);
-            }*/
+            }
         }
 
         private void linkLabelAttribution_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

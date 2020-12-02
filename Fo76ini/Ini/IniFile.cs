@@ -1,4 +1,5 @@
-﻿using Fo76ini.Utilities;
+﻿using Fo76ini.Ini;
+using Fo76ini.Utilities;
 using IniParser;
 using IniParser.Model;
 using IniParser.Model.Configuration;
@@ -70,6 +71,7 @@ namespace Fo76ini
             SetFileReadOnlyAttribute(false);
             this.iniParser.WriteFile(Path, data, encoding);
             SetFileReadOnlyAttribute(readOnly);
+            UpdateLastModifiedDate();
         }
 
         public void Load()
@@ -83,10 +85,11 @@ namespace Fo76ini
                 else
                     data = new IniData();
             }
-            catch (IniParser.Exceptions.ParsingException e)
+            catch (IniParser.Exceptions.ParsingException exc)
             {
                 // Add the path to the exception (since IniParser doesn't do this) and throw again:
-                throw new IniParser.Exceptions.ParsingException($"{Path} couldn't be parsed: {e.Message}", e);
+                // throw new IniParser.Exceptions.ParsingException($"{Path} couldn't be parsed: {e.Message}", e);
+                throw IniParsingException.CreateException(exc, Path);
             }
             UpdateLastModifiedDate();
         }
@@ -111,7 +114,7 @@ namespace Fo76ini
             return this.lastModified != File.GetLastWriteTime(Path);
         }
 
-        private void UpdateLastModifiedDate()
+        public void UpdateLastModifiedDate()
         {
             this.lastModified = File.GetLastWriteTime(Path);
         }

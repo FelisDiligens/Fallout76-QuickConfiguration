@@ -72,6 +72,13 @@ namespace Fo76ini
                 "Downloaded language files: {0}"
             );
 
+            MsgBox.Add("iniFilesModified",
+                "Files modified",
+                "*.ini files have been modified outside of the tool while it's running.\n" +
+                "NOTE: Any changes will be overwritten, if clicked on \"Apply\" or if mods are managed.\n" +
+                "Please restart the tool to work with the new values."
+            );
+
 
             // Gallery:
 
