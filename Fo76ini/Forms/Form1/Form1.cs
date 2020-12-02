@@ -33,7 +33,6 @@ namespace Fo76ini
 
         public Form1()
         {
-            Console.WriteLine(Shared.AppUserAgent);
             InitializeComponent();
 
             // Handle changes:
@@ -265,7 +264,7 @@ namespace Fo76ini
              */
 
             // Disable scroll wheel on UI elements to prevent the user from accidentally changing values:
-            PreventChangeOnMouseWheelForAllElements(this);
+            Utils.PreventChangeOnMouseWheelForAllElements(this);
 
             // Event handler:
             this.FormClosing += this.Form1_FormClosing;
@@ -337,37 +336,6 @@ namespace Fo76ini
             IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
         }
 
-
-        // Winforms Double Buffering
-        // https://stackoverflow.com/questions/3718380/winforms-double-buffering/3718648#3718648
-        // fixes the visual artifacts when scrolling
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
-                return cp;
-            }
-        }
-
-        /// <summary>
-        /// Disable scroll wheel on UI elements (NumericUpDown and ComboBox) to prevent the user from accidentally changing values
-        /// </summary>
-        private void PreventChangeOnMouseWheelForAllElements(Control control)
-        {
-            foreach (Control subControl in control.Controls)
-            {
-                // NumericUpDown and ComboBox:
-                if (subControl.Name.StartsWith("num") || subControl.Name.StartsWith("comboBox") || subControl.Name.StartsWith("slider"))
-                    subControl.MouseWheel += (object sender, MouseEventArgs e) => ((HandledMouseEventArgs)e).Handled = true;
-
-                // TabControl, TabPage, and GroupBox:
-                if (subControl.Name.StartsWith("tab") || subControl.Name.StartsWith("groupBox") || subControl.Name.StartsWith("panel"))
-                    PreventChangeOnMouseWheelForAllElements(subControl);
-            }
-        }
-
         private void OnProfileChanged(object sender, ProfileEventArgs e)
         {
             this.game = e.ActiveGameInstance;
@@ -401,6 +369,8 @@ namespace Fo76ini
                 }
             }
             LinkedTweaks.LoadValues();
+            // TODO: For some reason, it won't update the resolution combobox, unless I add this workaround:
+            numCustomRes_ValueChanged(null, null);
 
             // Change image
             switch (e.ActiveGameInstance.Edition)
@@ -437,6 +407,20 @@ namespace Fo76ini
 
             this.toolStripStatusLabelGameText.Text = e.ActiveGameInstance?.Title;
             this.timerCheckFiles.Enabled = true;
+        }
+
+
+        // Winforms Double Buffering
+        // https://stackoverflow.com/questions/3718380/winforms-double-buffering/3718648#3718648
+        // fixes the visual artifacts when scrolling
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
         }
 
         private void ShowWhatsNewConditionally()
@@ -598,10 +582,9 @@ namespace Fo76ini
                 addF76Custom.Load();
                 IniFiles.F76Custom.Merge(addF76Custom);
             }
-            catch (IniParser.Exceptions.ParsingException e)
+            catch (IniParsingException exc)
             {
-                // TODO
-                MsgBox.Get("customIniFilesParsingError").FormatText(e.Message).Show(MessageBoxIcon.Error);
+                MsgBox.Get("customIniFilesParsingError").FormatText(exc.Message).Show(MessageBoxIcon.Error);
             }
 
             // TODO: Backups?
@@ -652,13 +635,6 @@ namespace Fo76ini
                 startInfo.Verb = "runas";
             Process.Start(startInfo);
             Application.Exit();
-        }
-
-        private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
-        {
-            // TODO: When checkBoxIgnoreUpdates gets checked, call this.CheckVersion();
-            //IniFiles.Config.Set("Preferences", "bIgnoreUpdates", this.checkBoxIgnoreUpdates.Checked);
-            this.CheckVersion();
         }
 
         #region Tool strip

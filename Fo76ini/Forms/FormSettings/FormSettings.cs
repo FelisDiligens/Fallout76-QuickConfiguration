@@ -648,15 +648,12 @@ namespace Fo76ini.Forms.FormSettings
 
         private void buttonNWDeleteAll_Click(object sender, EventArgs e)
         {
-            // TODO: Simplify this, add new msgbox
-
             if (MsgBox.Get("areYouSure").FormatText("Do you really want to delete all remote information?").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 NexusMods.ClearRemoteInfo();
-                // TODO: UpdateModList?
-                //this.UpdateModList();
+                // TODO: Call FormMods.UpdateModList after deleting remote info
 
-                // TODO: Make this a method of NexusMods
+                // TODO: Make this a method of NexusMods (Delete remote info)
                 try
                 {
                     string path = Path.Combine(NexusMods.ThumbnailsPath);
@@ -742,5 +739,10 @@ namespace Fo76ini.Forms.FormSettings
         private DeployModsOnNWModeTweak deployModsOnNWModeTweak = new DeployModsOnNWModeTweak();
         private RemoveModsOnNWModeTweak removeModsOnNWModeTweak = new RemoveModsOnNWModeTweak();
         private RenameDLLsTweak renameDLLsTweak = new RenameDLLsTweak();
+
+        private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
+        {
+            // TODO: When checkBoxIgnoreUpdates gets checked, call Form1.CheckVersion
+        }
     }
 }

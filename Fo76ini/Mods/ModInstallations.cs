@@ -163,9 +163,10 @@ namespace Fo76ini.Mods
         /// <summary>
         /// Looks through the resource lists in the *.ini and imports *.ba2 archives.
         /// </summary>
-        public static void ImportInstalledMods(ManagedMods mods)
+        public static void ImportInstalledMods(ManagedMods mods, Action<Progress> ProgressChanged = null)
         {
-            // TODO: Should use resources.txt
+            // TODO: ProgressChanged for ImportInstalledMods
+            ProgressChanged?.Invoke(Progress.Indetermined("Importing already installed mods..."));
 
             // Get all archives:
             ResourceList IndexFileList = ResourceList.GetResourceIndexFileList();
@@ -179,6 +180,7 @@ namespace Fo76ini.Mods
             List<string> installedMods = new List<string>();
             installedMods.AddRange(IndexFileList);
             installedMods.AddRange(Archive2List);
+            installedMods.AddRange(mods.Resources);
 
             // Remove bundled archives:
             installedMods = installedMods.FindAll(e => !e.ToLower().Contains("bundled"));
@@ -193,6 +195,9 @@ namespace Fo76ini.Mods
                 if (archiveName.StartsWith("SeventySix"))
                     installedMods.Remove(archiveName);
             foreach (string archiveName in Archive2List)
+                if (archiveName.StartsWith("SeventySix"))
+                    installedMods.Remove(archiveName);
+            foreach (string archiveName in mods.Resources)
                 if (archiveName.StartsWith("SeventySix"))
                     installedMods.Remove(archiveName);
 
@@ -221,7 +226,7 @@ namespace Fo76ini.Mods
             Archive2List.CommitToINI();
             //IniFiles.Instance.SaveAll();
 
-            //mods.Save();
+            mods.Save();
         }
 
         /// <summary>

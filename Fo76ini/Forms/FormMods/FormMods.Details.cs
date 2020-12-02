@@ -79,6 +79,9 @@ namespace Fo76ini
 
             this.Resize += this.FormModsDetails_Resize;
 
+            // Disable scroll wheel on UI elements to prevent the user from accidentally changing values:
+            Utils.PreventChangeOnMouseWheelForAllElements(this.panelModDetailsInner);
+
             /*
              * Drag&Drop
              */

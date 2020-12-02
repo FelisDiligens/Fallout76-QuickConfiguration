@@ -800,5 +800,24 @@ namespace Fo76ini.Utilities
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
             return dtDateTime;
         }
+
+
+
+        /// <summary>
+        /// Disable scroll wheel on UI elements (NumericUpDown and ComboBox) to prevent the user from accidentally changing values
+        /// </summary>
+        public static void PreventChangeOnMouseWheelForAllElements(Control control)
+        {
+            foreach (Control subControl in control.Controls)
+            {
+                // NumericUpDown and ComboBox:
+                if (subControl.Name.StartsWith("num") || subControl.Name.StartsWith("comboBox") || subControl.Name.StartsWith("slider"))
+                    subControl.MouseWheel += (object sender, MouseEventArgs e) => ((HandledMouseEventArgs)e).Handled = true;
+
+                // TabControl, TabPage, and GroupBox:
+                if (subControl.Name.StartsWith("tab") || subControl.Name.StartsWith("groupBox") || subControl.Name.StartsWith("panel"))
+                    PreventChangeOnMouseWheelForAllElements(subControl);
+            }
+        }
     }
 }

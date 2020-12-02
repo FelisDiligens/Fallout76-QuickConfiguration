@@ -80,18 +80,6 @@ namespace Fo76ini
         {
             this.game = e.ActiveGameInstance;
             ReloadModManager();
-            // TODO ChangeGameEdition in FormMods - Old code
-            /*public void ChangeGameEdition(GameEdition gameEdition)
-            {
-                ManagedMods.Instance.CopyINILists();
-                ManagedMods.Instance.Unload();
-                IniFiles.Instance.Set(IniFile.Config, "Preferences", "uGameEdition", (uint)gameEdition);
-                ManagedMods.Instance.GameEdition = gameEdition;
-                Shared.GamePath = IniFiles.Instance.GetString(IniFile.Config, "Preferences", Shared.GamePathKey, "");
-                //this.textBoxGamePath.Text = Shared.GamePath;
-                ManagedMods.Instance.Load();
-                UpdateUI();
-            }*/
         }
 
         private void FormMods_Load(object sender, EventArgs e)
@@ -986,7 +974,7 @@ namespace Fo76ini
         {
             if (MsgBox.ShowID("modsImportQuestion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                ModInstallations.ImportInstalledMods(Mods); // TODO: Threaded
+                ImportInstalledModsThreaded(UpdateProgress);
                 this.UpdateModList();
 
                 CloseSidePanel();
@@ -1136,7 +1124,7 @@ namespace Fo76ini
         // Clean lists
         private void buttonModsCleanList_Click(object sender, EventArgs e)
         {
-            // TODO: Doesn't work
+            // TODO: Clean lists - Doesn't work
             // Load list:
             ResourceList list = ResourceList.FromString(this.textBoxResourceList.Text.Replace("\r\n", "\n"));
 
@@ -1537,6 +1525,20 @@ namespace Fo76ini
             ProgressChanged?.Invoke(Progress.Done("Mod information updated."));
             NexusMods.Save();
         }
+
+        private void ImportInstalledModsThreaded(Action<Progress> ProgressChanged = null)
+        {
+            RunThreaded(() => {
+                ShowLoadingUI();
+                CloseSidePanel();
+            }, () => {
+                ModInstallations.ImportInstalledMods(Mods, ProgressChanged);
+                return true;
+            }, (success) => {
+                EnableUI();
+            });
+        }
+
         #endregion
 
 

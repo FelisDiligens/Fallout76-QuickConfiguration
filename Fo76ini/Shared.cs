@@ -20,6 +20,7 @@ namespace Fo76ini
         // https://stackoverflow.com/a/49754978
         public static readonly string DotNetFrameworkVersion;
 
+        // Example: "Fo76QConf/1.9.0 (Windows NT 10.0.19042.0; x64) .NETFramework/4.7.2"
         public static readonly string AppUserAgent;
 
         static Shared ()

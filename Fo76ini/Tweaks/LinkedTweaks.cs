@@ -10,6 +10,9 @@ using System.Xml.Linq;
 
 namespace Fo76ini.Tweaks
 {
+    /// <summary>
+    /// Links tweaks to control elements. Initializes them.
+    /// </summary>
     public static class LinkedTweaks
     {
         private struct LinkedControl

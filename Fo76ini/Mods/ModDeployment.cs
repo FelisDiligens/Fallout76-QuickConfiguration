@@ -179,6 +179,7 @@ namespace Fo76ini.Mods
                     // ... copy it's files into temporary folders ...
                     CopyFilesToTempSorted(mod, mods.Resources, archives);
                     mod.Deployed = true;
+                    mod.PreviousMethod = ManagedMod.DeploymentMethod.BundledBA2;
                 }
             }
 

@@ -111,7 +111,6 @@
             this.pictureBoxModThumbnail = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAddMod = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonAddModFrozen = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonAddModFolder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonCheckAll = new System.Windows.Forms.ToolStripButton();
@@ -1017,7 +1016,6 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonAddMod,
-            this.toolStripButtonAddModFrozen,
             this.toolStripButtonAddModFolder,
             this.toolStripSeparator4,
             this.toolStripButtonCheckAll,
@@ -1046,18 +1044,6 @@
             this.toolStripButtonAddMod.Size = new System.Drawing.Size(30, 30);
             this.toolStripButtonAddMod.Text = "Add mod (from archive)";
             this.toolStripButtonAddMod.Click += new System.EventHandler(this.toolStripButtonAddMod_Click);
-            // 
-            // toolStripButtonAddModFrozen
-            // 
-            this.toolStripButtonAddModFrozen.AutoSize = false;
-            this.toolStripButtonAddModFrozen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddModFrozen.Image = global::Fo76ini.Properties.Resources.add_snowflake_24;
-            this.toolStripButtonAddModFrozen.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonAddModFrozen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddModFrozen.Name = "toolStripButtonAddModFrozen";
-            this.toolStripButtonAddModFrozen.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonAddModFrozen.Text = "Add mod (from *.ba2 archive)";
-            this.toolStripButtonAddModFrozen.Click += new System.EventHandler(this.toolStripButtonAddModFrozen_Click);
             // 
             // toolStripButtonAddModFolder
             // 
@@ -1615,7 +1601,6 @@
         private System.Windows.Forms.ToolStripMenuItem reloadUIToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader columnHeaderFrozenState;
         private System.Windows.Forms.ColumnHeader columnHeaderCompression;
-        private System.Windows.Forms.ToolStripButton toolStripButtonAddModFrozen;
         private System.Windows.Forms.OpenFileDialog openFileDialogBA2;
         private System.Windows.Forms.ToolStripMenuItem fromba2ArchivefrozenToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBoxLists;
