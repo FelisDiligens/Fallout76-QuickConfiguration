@@ -112,6 +112,7 @@ namespace Fo76ini
             LinkedTweaks.LinkInfo(numTAAPostSharpen, toolTip, taaPostSharpenTweak);
             LinkedTweaks.LinkInfo(sliderTAAPostOverlay, toolTip, taaPostOverlayTweak);
             LinkedTweaks.LinkInfo(sliderTAAPostSharpen, toolTip, taaPostSharpenTweak);
+            LinkedTweaks.LinkInfo(checkBoxScreenSpaceReflections, toolTip, screenSpaceReflectionsTweak);
 
             // Audio tab
             LinkedTweaks.LinkInfo(checkBoxEnableAudio, toolTip, enableAudioTweak);
@@ -476,6 +477,9 @@ namespace Fo76ini
             LinkedTweaks.LinkTweak(numTAAPostOverlay, taaPostOverlayTweak);
             LinkedTweaks.LinkTweak(numTAAPostSharpen, taaPostSharpenTweak);
 
+            // Screen Space Reflections:
+            LinkedTweaks.LinkTweak(checkBoxScreenSpaceReflections, screenSpaceReflectionsTweak);
+
 
 
             /*
@@ -720,6 +724,7 @@ namespace Fo76ini
         private BlendSplitDirShadowTweak blendSplitDirShadowTweak = new BlendSplitDirShadowTweak();
         private TAAPostOverlayTweak taaPostOverlayTweak = new TAAPostOverlayTweak();
         private TAAPostSharpenTweak taaPostSharpenTweak = new TAAPostSharpenTweak();
+        private ScreenSpaceReflectionsTweak screenSpaceReflectionsTweak = new ScreenSpaceReflectionsTweak();
 
         // Audio tab
         private EnableAudioTweak enableAudioTweak = new EnableAudioTweak();
