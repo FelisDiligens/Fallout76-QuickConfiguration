@@ -128,6 +128,12 @@
     <Compile Include="Forms\FormTextPrompt\TextPrompt.Designer.cs">
       <DependentUpon>TextPrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormWelcome\FormWelcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormWelcome\FormWelcome.Designer.cs">
+      <DependentUpon>FormWelcome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ini\IniParsingException.cs" />
     <Compile Include="Interface\Versioning.cs" />
     <Compile Include="Mods\LegacyManagedMods.cs" />
@@ -339,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormTextPrompt\TextPrompt.resx">
       <DependentUpon>TextPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormWelcome\FormWelcome.resx">
+      <DependentUpon>FormWelcome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWhatsNew\FormWhatsNew.resx">
       <DependentUpon>FormWhatsNew.cs</DependentUpon>

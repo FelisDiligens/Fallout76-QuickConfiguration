@@ -325,10 +325,10 @@ namespace Fo76ini.Forms.FormSettings
             }
         }
 
-        private void buttonAutoDetect_Click(object sender, EventArgs e)
+        public static string AutoDetectGamePath ()
         {
             // Search most common installation directories (probably good enough for now):
-            string foundPath = "";
+            string foundPath = null;
             string steamPath = @"C:\Program Files(x86)\Steam\steamapps\common\Fallout76";
             string bethNetPath = @"C:\Program Files (x86)\Bethesda.net Launcher\games\Fallout76";
             string xboxPathC = @"C:\Program Files\ModifiableWindowsApps\Fallout76";
@@ -356,7 +356,13 @@ namespace Fo76ini.Forms.FormSettings
                 Data: "D:\Bethesda.net\Fallout76"
              */
 
-            if (foundPath != "")
+            return foundPath;
+        }
+
+        private void buttonAutoDetect_Click(object sender, EventArgs e)
+        {
+            string foundPath = AutoDetectGamePath();
+            if (foundPath != null)
                 TextPrompt.Prompt("Found a path. Proceed?", foundPath, (newPath) => this.textBoxGamePath.Text = newPath);
             else
                 MsgBox.ShowID("gamePathAutoDetectFailed", MessageBoxIcon.Information);

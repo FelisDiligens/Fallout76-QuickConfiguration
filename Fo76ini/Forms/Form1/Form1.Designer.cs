@@ -5563,6 +5563,7 @@
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(900, 620);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fallout 76 Quick Configuration";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).EndInit();

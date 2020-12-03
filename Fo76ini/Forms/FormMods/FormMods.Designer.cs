@@ -1515,6 +1515,7 @@
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(800, 640);
             this.Name = "FormMods";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage mods";
             this.Load += new System.EventHandler(this.FormMods_Load);
             this.menuStrip1.ResumeLayout(false);

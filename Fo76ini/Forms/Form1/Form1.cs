@@ -1,5 +1,6 @@
 ﻿using Fo76ini.Forms.FormIniError;
 using Fo76ini.Forms.FormSettings;
+using Fo76ini.Forms.FormWelcome;
 using Fo76ini.Forms.FormWhatsNew;
 using Fo76ini.Ini;
 using Fo76ini.Interface;
@@ -31,9 +32,14 @@ namespace Fo76ini
 
         private GameInstance game;
 
+        public readonly bool FirstStart;
+
         public Form1()
         {
             InitializeComponent();
+
+            // Determine whether this is the very first start of the tool on the system:
+            FirstStart = !File.Exists(IniFiles.ConfigPath) && !File.Exists(ProfileManager.XMLPath);
 
             // Handle changes:
             ProfileManager.ProfileChanged += OnProfileChanged;
@@ -326,6 +332,10 @@ namespace Fo76ini
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            // Show welcome dialog:
+            if (FirstStart)
+                FormWelcome.OpenDialog();
+
             // Check for updates
             CheckVersion();
 
@@ -425,9 +435,17 @@ namespace Fo76ini
 
         private void ShowWhatsNewConditionally()
         {
+            /*
+             * Show "What's new" dialog when:
+             * -> What's new dialog hasn't been disabled AND
+             * -> The previously opened version is older than the current one AND
+             * -> There is no newer version available AND
+             * -> The tool hasn't been started for the first time.
+             */
             if (!IniFiles.Config.GetBool("Preferences", "bDisableWhatsNew", false) &&
                 Utils.CompareVersions(Shared.VERSION, IniFiles.Config.GetString("General", "sPreviousVersion", "1.0.0")) > 0 &&
-                (Shared.LatestVersion == null || Utils.CompareVersions(Shared.LatestVersion, Shared.VERSION) == 0))
+                (Shared.LatestVersion == null || Utils.CompareVersions(Shared.LatestVersion, Shared.VERSION) == 0) &&
+                !FirstStart)
                 ShowWhatsNew();
         }
 
