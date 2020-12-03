@@ -1,4 +1,5 @@
-﻿using Fo76ini.Utilities;
+﻿using Fo76ini.Profiles;
+using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,14 +20,14 @@ namespace Fo76ini.Mods
         {
             return Directory.Exists(Path.Combine(gamePath, "Mods")) && 
                 File.Exists(Path.Combine(gamePath, "Mods", "manifest.xml")) &&
-                !File.Exists(Path.Combine(gamePath, "Mods", "managed.xml"));
+                XDocument.Load(Path.Combine(gamePath, "Mods", "manifest.xml")).Root.Attribute("doNotImport") == null;
         }
 
         /// <summary>
         /// Loads and converts legacy managed mods to the new format.
         /// It adds them to an already existing ManagedMods object.
         /// </summary>
-        public static void ConvertLegacy(ManagedMods mods, Action<Progress> ProgressChanged = null)
+        public static void ConvertLegacy(ManagedMods mods, GameEdition edition, Action<Progress> ProgressChanged = null)
         {
             Directory.CreateDirectory(Path.Combine(mods.GamePath, "FrozenData"));
 
@@ -186,6 +187,17 @@ namespace Fo76ini.Mods
                 }*/
 
                 mods.Add(mod);
+            }
+
+            // Legacy resource list:
+            if (IniFiles.Config.GetBool("Preferences", "bMultipleGameEditionsUsed", false))
+            {
+                string backedUpList = IniFiles.Config.GetString("Mods", $"sResourceIndexFileList{edition}", "");
+                string actualList = IniFiles.F76Custom.GetString("Archive", "sResourceIndexFileList", "");
+                if (backedUpList != "")
+                    mods.Resources.ReplaceRange(ResourceList.FromString(backedUpList));
+                else if (actualList != "")
+                    mods.Resources.ReplaceRange(ResourceList.FromString(actualList));
             }
 
             ProgressChanged?.Invoke(Progress.Ongoing("Saving XML...", 1f));

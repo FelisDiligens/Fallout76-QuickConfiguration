@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace Fo76ini
 {
@@ -264,6 +266,60 @@ namespace Fo76ini
             MergeLists(F76Custom, "Archive", "sResourceIndexFileList");
             MergeLists(F76Custom, "Archive", "sResourceArchive2List");
             MergeLists(F76Custom, "Archive", "sResourceDataDirsFinal");
+        }
+
+        /*
+         *********************************************************************************************************************************************
+         * Backwards-compatibility:
+         ********************************************************************************************************************************************
+         */
+
+        /// <summary>
+        /// Allows or denies write permission to the *.ini parent path (%USERPROFILE%\Documents\My Games\Fallout 76).
+        /// </summary>
+        /// <param name="writePermission">true to allow, false to deny</param>
+        /// <returns>true if successful, false otherwise</returns>
+        public static bool SetNTFSWritePermission(bool writePermission)
+        {
+            try
+            {
+                // https://stackoverflow.com/questions/7451861/setting-ntfs-permissions-in-c-net
+                // https://stackoverflow.com/questions/11478917/programmatically-adding-permissions-to-a-folder/11479031
+
+                // 'Allow' AND 'Deny' are ticked, wtf?
+                // Explanation: https://answers.microsoft.com/en-us/windows/forum/all/permission-entry-neither-allow-nor-deny-is-checked/5d210777-b466-49e6-855a-6dc1e85563df
+
+                DirectoryInfo dInfo = new DirectoryInfo(ParentPath);
+                DirectorySecurity dSecurity = dInfo.GetAccessControl();
+
+                FileSystemRights rights = FileSystemRights.Write;
+
+                // SID: https://support.microsoft.com/en-in/help/243330/well-known-security-identifiers-in-windows-operating-systems
+                // String account = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                // SecurityIdentifier sidAll = new SecurityIdentifier("S-1-1-0");
+                // SecurityIdentifier sidAdmins = new SecurityIdentifier("S-1-5-32-544");
+                SecurityIdentifier sidUsers = new SecurityIdentifier("S-1-5-32-545");
+
+                AccessControlType access = writePermission ? AccessControlType.Allow : AccessControlType.Deny;
+
+                if (writePermission)
+                {
+                    dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
+                    dSecurity.AddAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+                }
+                else
+                {
+                    dSecurity.AddAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Deny));
+                    dSecurity.RemoveAccessRule(new FileSystemAccessRule(sidUsers, rights, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+                }
+                dInfo.SetAccessControl(dSecurity);
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

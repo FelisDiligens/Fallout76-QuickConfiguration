@@ -23,7 +23,7 @@ namespace Fo76ini.Mods
         }
 
         public List<ManagedMod> Mods = new List<ManagedMod>();
-        public ResourceList Resources = ResourceList.GetResourceIndexFileList();
+        public ResourceList Resources = ResourceList.GetDefaultList();
         public readonly string GamePath = "";
         public bool ModsDisabled = false;
         public bool NuclearWinterModeEnabled = false;

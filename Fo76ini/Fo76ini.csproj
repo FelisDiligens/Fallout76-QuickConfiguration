@@ -203,6 +203,7 @@
     <Compile Include="Tweaks\Graphics\TAAPostSharpenTweak.cs" />
     <Compile Include="Tweaks\Graphics\VolumetricLightingTweak.cs" />
     <Compile Include="Tweaks\Graphics\WaterDisplacementsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\ScreenSpaceReflectionsTweak.cs" />
     <Compile Include="Tweaks\Graphics\WetnessOcclusionTweak.cs" />
     <Compile Include="Tweaks\IniFiles\INIReadOnlyTweak.cs" />
     <Compile Include="Tweaks\Interface\ActiveEffectsOnHUDTweak.cs" />

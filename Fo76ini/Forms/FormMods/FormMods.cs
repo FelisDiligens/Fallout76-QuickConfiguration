@@ -134,7 +134,7 @@ namespace Fo76ini
             RunThreaded(() => {
                 ShowLoadingUI();
             }, () => {
-                LegacyManagedMods.ConvertLegacy(Mods, UpdateProgress);
+                LegacyManagedMods.ConvertLegacy(Mods, game.Edition, UpdateProgress);
                 return true;
             }, (success) => {
                 UpdateUI();

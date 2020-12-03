@@ -69,6 +69,13 @@ namespace Fo76ini.Mods
             return new ResourceList(tweak);
         }
 
+        public static ResourceList GetDefaultList()
+        {
+            return ResourceList.FromTweak(
+                ResourceListTweak.GetDefaultList()
+            );
+        }
+
         public static ResourceList GetResourceArchive2List()
         {
             return ResourceList.FromTweak(

@@ -41,6 +41,11 @@ namespace Fo76ini.Profiles
         {
             if (ProfileChanged != null)
                 ProfileChanged(null, BuildProfileEventArgs());
+
+            // Backwards-compatibility:
+            IniFiles.Config.Set("Preferences", "uGameEdition", (int)SelectedGame.Edition);
+            IniFiles.Config.Set("Preferences", "sGamePath", SelectedGame.GamePath);
+            IniFiles.Config.Set("Preferences", $"sGamePath{SelectedGame.Edition}", SelectedGame.GamePath);
         }
 
         public static string XMLPath = Path.Combine(Shared.AppConfigFolder, "profiles.xml");
@@ -163,6 +168,21 @@ namespace Fo76ini.Profiles
         /// </summary>
         private static void ConvertLegacyFormat()
         {
+            // Some people might have denied NTFS write permission. Give permission back:
+            IniFiles.SetNTFSWritePermission(true);
+            IniFiles.Config.Remove("Preferences", "bDenyNTFSWritePermission");
+
+            // If NWMode was active, then the Fallout76Custom.ini might have been renamed to Fallout76Custom.ini.nwmodebak
+            // Rename it back:
+            string f76C_NW = Path.Combine(IniFiles.ParentPath, "Fallout76Custom.ini.nwmodebak");
+            string f76C = Path.Combine(IniFiles.ParentPath, "Fallout76Custom.ini");
+            string p76C_NW = Path.Combine(IniFiles.ParentPath, "Project76Custom.ini.nwmodebak");
+            string p76C = Path.Combine(IniFiles.ParentPath, "Project76Custom.ini");
+            if (File.Exists(f76C_NW) && !File.Exists(f76C))
+                File.Move(f76C_NW, f76C);
+            if (File.Exists(p76C_NW) && !File.Exists(p76C))
+                File.Move(p76C_NW, p76C);
+
             // sGamePath [ + MSStore / BethesdaNet / BethesdaNetPTS / Steam ]
             // uLaunchOption (1 = OpenURL) (2 = RunExec)
             // uGameEdition
