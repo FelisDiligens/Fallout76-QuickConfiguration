@@ -493,14 +493,14 @@ namespace Fo76ini.Forms.FormSettings
                 WebClient wc = new WebClient();
                 wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.BypassCache);
 
-                byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Translations/list.txt");
+                byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/list.txt");
                 string encoded = Encoding.UTF8.GetString(raw).Trim();
 
                 string[] list = encoded.Split('\n', ',');
 
                 foreach (string file in list)
                 {
-                    wc.DownloadFile("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Translations/" + file, Path.Combine(Localization.LanguageFolder, file));
+                    wc.DownloadFile("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/" + file, Path.Combine(Localization.LanguageFolder, file));
                 }
 
                 errorMessageDownloadLanguages = null;
