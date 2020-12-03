@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fo76ini.Interface;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -129,15 +130,29 @@ namespace Fo76ini.Profiles
             switch (option)
             {
                 case LaunchOption.OpenURL:
-                    Process.Start(this.LauncherURL);
+                    try
+                    {
+                        Process.Start(this.LauncherURL);
+                    }
+                    catch
+                    {
+                        MsgBox.Show("Couldn't start game", "Please make sure to provide a valid 'Launcher URL'.", System.Windows.Forms.MessageBoxIcon.Error);
+                    }
                     break;
                 case LaunchOption.RunExec:
-                    Process pr = new Process();
-                    pr.StartInfo.FileName = Path.Combine(this.GamePath, this.ExecutableName);
-                    pr.StartInfo.WorkingDirectory = this.GamePath;
-                    pr.StartInfo.Arguments = this.ExecParameters;
-                    pr.StartInfo.UseShellExecute = false;
-                    pr.Start();
+                    try
+                    {
+                        Process pr = new Process();
+                        pr.StartInfo.FileName = Path.Combine(this.GamePath, this.ExecutableName);
+                        pr.StartInfo.WorkingDirectory = this.GamePath;
+                        pr.StartInfo.Arguments = this.ExecParameters;
+                        pr.StartInfo.UseShellExecute = false;
+                        pr.Start();
+                    }
+                    catch
+                    {
+                        MsgBox.Show("Couldn't start game", "Please make sure that the game path and executable name are correct.", System.Windows.Forms.MessageBoxIcon.Error);
+                    }
                     break;
             }
         }
