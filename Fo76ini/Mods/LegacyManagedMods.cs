@@ -48,9 +48,17 @@ namespace Fo76ini.Mods
                 return;
             }
 
-            // Make a backup:
+            // Make backups:
             File.Copy(Path.Combine(mods.ModsPath, "manifest.xml"), Path.Combine(mods.ModsPath, "manifest.old.xml"), true);
+            if (File.Exists(Path.Combine(mods.ModsPath, "managed.xml")))
+                File.Copy(Path.Combine(mods.ModsPath, "managed.xml"), Path.Combine(mods.ModsPath, "managed.old.xml"), true);
 
+            // Converting the legacy list will completely erase the current mod list:
+            mods.Mods.Clear();
+
+            /*
+             * Converting: 
+             */
             int modCount = xmlDoc.Descendants("Mod").Count();
             int modIndex = 0;
             foreach (XElement xmlMod in xmlDoc.Descendants("Mod"))
