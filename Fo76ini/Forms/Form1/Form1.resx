@@ -235,13 +235,6 @@ Affected values: bApplyCameraNodeAnimations
 Affected files: Fallout76Custom.ini
 </value>
   </data>
-  <data name="labeliDirShadowSplits.ToolTip" xml:space="preserve">
-    <value>Amount of "segments" of lower-res shadows at a distance.
-A value of 1 forces the game to render only the lowest resolution shadows.
-
-Affected values: iDirShadowSplits
-Affected files: Fallout76Prefs.ini</value>
-  </data>
   <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>123, 17</value>
   </metadata>
@@ -259,6 +252,13 @@ if you start Fallout 76 without the launcher.
 If you use Steam and want to use your Bethesda.net account
 (e.g. to spent Atoms), untick Enable Steam.
 NOTE: Your achievements will be disabled as well!</value>
+  </data>
+  <data name="labeliDirShadowSplits.ToolTip" xml:space="preserve">
+    <value>Amount of "segments" of lower-res shadows at a distance.
+A value of 1 forces the game to render only the lowest resolution shadows.
+
+Affected values: iDirShadowSplits
+Affected files: Fallout76Prefs.ini</value>
   </data>
   <metadata name="backgroundWorkerLoadGallery.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>498, 13</value>

@@ -104,8 +104,6 @@
             this.labelPhotomodeTranslationSpeed = new System.Windows.Forms.Label();
             this.labelPhotomodeRange = new System.Windows.Forms.Label();
             this.labelPhotomodeRotationSpeed = new System.Windows.Forms.Label();
-            this.labeliDirShadowSplits = new System.Windows.Forms.Label();
-            this.sliderfBlendSplitDirShadow = new System.Windows.Forms.TrackBar();
             this.checkBoxTopMostWindow = new System.Windows.Forms.CheckBox();
             this.labelScreenshotIndex = new System.Windows.Forms.Label();
             this.labelPipboyColor = new System.Windows.Forms.Label();
@@ -226,10 +224,6 @@
             this.tabPageVideo = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBoxGraphics = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numfBlendSplitDirShadow = new System.Windows.Forms.NumericUpDown();
-            this.labelfBlendSplitDirShadow = new System.Windows.Forms.Label();
-            this.comboBoxiDirShadowSplits = new System.Windows.Forms.ComboBox();
             this.groupBoxGraphicEffects = new System.Windows.Forms.GroupBox();
             this.groupBoxTAASharpening = new System.Windows.Forms.GroupBox();
             this.labelTAAPostSharpen = new System.Windows.Forms.Label();
@@ -415,8 +409,15 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelNuclearWinterModeActive = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tabPageDangerZone = new System.Windows.Forms.TabPage();
+            this.groupBoxVideoDZ = new System.Windows.Forms.GroupBox();
             this.checkBoxScreenSpaceReflections = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.numfBlendSplitDirShadow = new System.Windows.Forms.NumericUpDown();
+            this.labelfBlendSplitDirShadow = new System.Windows.Forms.Label();
+            this.sliderfBlendSplitDirShadow = new System.Windows.Forms.TrackBar();
+            this.comboBoxiDirShadowSplits = new System.Windows.Forms.ComboBox();
+            this.labeliDirShadowSplits = new System.Windows.Forms.Label();
             this.groupBoxShadows2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
@@ -442,7 +443,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.sliderFloatingQuestMarkersDistance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderfBlendSplitDirShadow)).BeginInit();
             this.tabPageCamera.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBoxCameraPosition.SuspendLayout();
@@ -509,8 +509,6 @@
             this.tabPageVideo.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBoxGraphics.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numfBlendSplitDirShadow)).BeginInit();
             this.groupBoxGraphicEffects.SuspendLayout();
             this.groupBoxTAASharpening.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTAAPostSharpen)).BeginInit();
@@ -572,7 +570,11 @@
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
+            this.tabPageDangerZone.SuspendLayout();
+            this.groupBoxVideoDZ.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfBlendSplitDirShadow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderfBlendSplitDirShadow)).BeginInit();
             this.groupBoxShadows2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1582,35 +1584,6 @@
             this.labelPhotomodeRotationSpeed.Text = "Rotation speed:";
             this.toolTip.SetToolTip(this.labelPhotomodeRotationSpeed, "Default: 1.5\r\nAffected values: fSelfieCameraRotationSpeed\r\nAffected files: Fallou" +
         "t76Custom.ini");
-            // 
-            // labeliDirShadowSplits
-            // 
-            this.labeliDirShadowSplits.AutoSize = true;
-            this.labeliDirShadowSplits.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labeliDirShadowSplits.Location = new System.Drawing.Point(9, 24);
-            this.labeliDirShadowSplits.Name = "labeliDirShadowSplits";
-            this.labeliDirShadowSplits.Size = new System.Drawing.Size(142, 13);
-            this.labeliDirShadowSplits.TabIndex = 33;
-            this.labeliDirShadowSplits.Text = "Shadow transition segments:";
-            this.toolTip.SetToolTip(this.labeliDirShadowSplits, resources.GetString("labeliDirShadowSplits.ToolTip"));
-            // 
-            // sliderfBlendSplitDirShadow
-            // 
-            this.sliderfBlendSplitDirShadow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderfBlendSplitDirShadow.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderfBlendSplitDirShadow.LargeChange = 10000;
-            this.sliderfBlendSplitDirShadow.Location = new System.Drawing.Point(14, 76);
-            this.sliderfBlendSplitDirShadow.Minimum = 1;
-            this.sliderfBlendSplitDirShadow.Name = "sliderfBlendSplitDirShadow";
-            this.sliderfBlendSplitDirShadow.Size = new System.Drawing.Size(255, 45);
-            this.sliderfBlendSplitDirShadow.SmallChange = 1000;
-            this.sliderfBlendSplitDirShadow.TabIndex = 36;
-            this.sliderfBlendSplitDirShadow.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.toolTip.SetToolTip(this.sliderfBlendSplitDirShadow, "Distance at which the game will transition to lower-res a shadow \"segment\".\r\nMUST" +
-        " be a multiple of 12.\r\n\r\nAffected values: fBlendSplitDirShadow\r\nAffected files: " +
-        "Fallout76Prefs.ini");
-            this.sliderfBlendSplitDirShadow.Value = 4;
             // 
             // checkBoxTopMostWindow
             // 
@@ -3217,7 +3190,6 @@
             // 
             // groupBoxGraphics
             // 
-            this.groupBoxGraphics.Controls.Add(this.groupBox1);
             this.groupBoxGraphics.Controls.Add(this.groupBoxGraphicEffects);
             this.groupBoxGraphics.Controls.Add(this.groupBoxTAASharpening);
             this.groupBoxGraphics.Controls.Add(this.labelAntiAliasing);
@@ -3234,66 +3206,10 @@
             this.groupBoxGraphics.Controls.Add(this.groupBoxPostProcessing);
             this.groupBoxGraphics.Location = new System.Drawing.Point(3, 6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(402, 1166);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(402, 915);
             this.groupBoxGraphics.TabIndex = 26;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.groupBoxShadows2);
-            this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.ForeColor = System.Drawing.Color.Red;
-            this.groupBox1.Location = new System.Drawing.Point(9, 912);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(381, 245);
-            this.groupBox1.TabIndex = 40;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "⚠️ Danger Zone";
-            // 
-            // numfBlendSplitDirShadow
-            // 
-            this.numfBlendSplitDirShadow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numfBlendSplitDirShadow.Increment = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numfBlendSplitDirShadow.Location = new System.Drawing.Point(275, 76);
-            this.numfBlendSplitDirShadow.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.numfBlendSplitDirShadow.Name = "numfBlendSplitDirShadow";
-            this.numfBlendSplitDirShadow.Size = new System.Drawing.Size(74, 20);
-            this.numfBlendSplitDirShadow.TabIndex = 38;
-            this.numfBlendSplitDirShadow.Value = new decimal(new int[] {
-            48,
-            0,
-            0,
-            0});
-            // 
-            // labelfBlendSplitDirShadow
-            // 
-            this.labelfBlendSplitDirShadow.AutoSize = true;
-            this.labelfBlendSplitDirShadow.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelfBlendSplitDirShadow.Location = new System.Drawing.Point(11, 59);
-            this.labelfBlendSplitDirShadow.Name = "labelfBlendSplitDirShadow";
-            this.labelfBlendSplitDirShadow.Size = new System.Drawing.Size(187, 13);
-            this.labelfBlendSplitDirShadow.TabIndex = 37;
-            this.labelfBlendSplitDirShadow.Text = "Shadow \"segment\" transition distance";
-            // 
-            // comboBoxiDirShadowSplits
-            // 
-            this.comboBoxiDirShadowSplits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxiDirShadowSplits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxiDirShadowSplits.FormattingEnabled = true;
-            this.comboBoxiDirShadowSplits.Location = new System.Drawing.Point(195, 21);
-            this.comboBoxiDirShadowSplits.Name = "comboBoxiDirShadowSplits";
-            this.comboBoxiDirShadowSplits.Size = new System.Drawing.Size(154, 21);
-            this.comboBoxiDirShadowSplits.TabIndex = 34;
             // 
             // groupBoxGraphicEffects
             // 
@@ -4485,6 +4401,7 @@
             this.tabControl1.Controls.Add(this.tabPagePipBoy);
             this.tabControl1.Controls.Add(this.tabPageGallery);
             this.tabControl1.Controls.Add(this.tabPageCustom);
+            this.tabControl1.Controls.Add(this.tabPageDangerZone);
             this.tabControl1.Location = new System.Drawing.Point(12, 59);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -5539,16 +5456,29 @@
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
             // 
-            // groupBox4
+            // tabPageDangerZone
             // 
-            this.groupBox4.Controls.Add(this.checkBoxScreenSpaceReflections);
-            this.groupBox4.ForeColor = System.Drawing.Color.Red;
-            this.groupBox4.Location = new System.Drawing.Point(10, 164);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(359, 67);
-            this.groupBox4.TabIndex = 39;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Water";
+            this.tabPageDangerZone.Controls.Add(this.groupBoxVideoDZ);
+            this.tabPageDangerZone.ForeColor = System.Drawing.Color.Red;
+            this.tabPageDangerZone.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDangerZone.Name = "tabPageDangerZone";
+            this.tabPageDangerZone.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDangerZone.Size = new System.Drawing.Size(852, 464);
+            this.tabPageDangerZone.TabIndex = 11;
+            this.tabPageDangerZone.Text = "⚠️ Danger Zone";
+            this.tabPageDangerZone.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxVideoDZ
+            // 
+            this.groupBoxVideoDZ.Controls.Add(this.groupBoxShadows2);
+            this.groupBoxVideoDZ.Controls.Add(this.groupBox4);
+            this.groupBoxVideoDZ.ForeColor = System.Drawing.Color.Red;
+            this.groupBoxVideoDZ.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxVideoDZ.Name = "groupBoxVideoDZ";
+            this.groupBoxVideoDZ.Size = new System.Drawing.Size(381, 245);
+            this.groupBoxVideoDZ.TabIndex = 41;
+            this.groupBoxVideoDZ.TabStop = false;
+            this.groupBoxVideoDZ.Text = "⚠️ Video";
             // 
             // checkBoxScreenSpaceReflections
             // 
@@ -5564,6 +5494,90 @@
             this.toolTip.SetToolTip(this.checkBoxScreenSpaceReflections, "Enables/disables water displacement (ripples, waves).\r\n\r\nAffected values: bUseWat" +
         "erDisplacements\r\nAffected files: Fallout76Prefs.ini");
             this.checkBoxScreenSpaceReflections.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.checkBoxScreenSpaceReflections);
+            this.groupBox4.ForeColor = System.Drawing.Color.Red;
+            this.groupBox4.Location = new System.Drawing.Point(10, 164);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(359, 67);
+            this.groupBox4.TabIndex = 39;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Water";
+            // 
+            // numfBlendSplitDirShadow
+            // 
+            this.numfBlendSplitDirShadow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfBlendSplitDirShadow.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numfBlendSplitDirShadow.Location = new System.Drawing.Point(275, 76);
+            this.numfBlendSplitDirShadow.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numfBlendSplitDirShadow.Name = "numfBlendSplitDirShadow";
+            this.numfBlendSplitDirShadow.Size = new System.Drawing.Size(74, 20);
+            this.numfBlendSplitDirShadow.TabIndex = 38;
+            this.numfBlendSplitDirShadow.Value = new decimal(new int[] {
+            48,
+            0,
+            0,
+            0});
+            // 
+            // labelfBlendSplitDirShadow
+            // 
+            this.labelfBlendSplitDirShadow.AutoSize = true;
+            this.labelfBlendSplitDirShadow.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelfBlendSplitDirShadow.Location = new System.Drawing.Point(11, 59);
+            this.labelfBlendSplitDirShadow.Name = "labelfBlendSplitDirShadow";
+            this.labelfBlendSplitDirShadow.Size = new System.Drawing.Size(187, 13);
+            this.labelfBlendSplitDirShadow.TabIndex = 37;
+            this.labelfBlendSplitDirShadow.Text = "Shadow \"segment\" transition distance";
+            // 
+            // sliderfBlendSplitDirShadow
+            // 
+            this.sliderfBlendSplitDirShadow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderfBlendSplitDirShadow.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderfBlendSplitDirShadow.LargeChange = 10000;
+            this.sliderfBlendSplitDirShadow.Location = new System.Drawing.Point(14, 76);
+            this.sliderfBlendSplitDirShadow.Minimum = 1;
+            this.sliderfBlendSplitDirShadow.Name = "sliderfBlendSplitDirShadow";
+            this.sliderfBlendSplitDirShadow.Size = new System.Drawing.Size(255, 45);
+            this.sliderfBlendSplitDirShadow.SmallChange = 1000;
+            this.sliderfBlendSplitDirShadow.TabIndex = 36;
+            this.sliderfBlendSplitDirShadow.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.sliderfBlendSplitDirShadow, "Distance at which the game will transition to lower-res a shadow \"segment\".\r\nMUST" +
+        " be a multiple of 12.\r\n\r\nAffected values: fBlendSplitDirShadow\r\nAffected files: " +
+        "Fallout76Prefs.ini");
+            this.sliderfBlendSplitDirShadow.Value = 4;
+            // 
+            // comboBoxiDirShadowSplits
+            // 
+            this.comboBoxiDirShadowSplits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxiDirShadowSplits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxiDirShadowSplits.FormattingEnabled = true;
+            this.comboBoxiDirShadowSplits.Location = new System.Drawing.Point(195, 21);
+            this.comboBoxiDirShadowSplits.Name = "comboBoxiDirShadowSplits";
+            this.comboBoxiDirShadowSplits.Size = new System.Drawing.Size(154, 21);
+            this.comboBoxiDirShadowSplits.TabIndex = 34;
+            // 
+            // labeliDirShadowSplits
+            // 
+            this.labeliDirShadowSplits.AutoSize = true;
+            this.labeliDirShadowSplits.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labeliDirShadowSplits.Location = new System.Drawing.Point(9, 24);
+            this.labeliDirShadowSplits.Name = "labeliDirShadowSplits";
+            this.labeliDirShadowSplits.Size = new System.Drawing.Size(142, 13);
+            this.labeliDirShadowSplits.TabIndex = 33;
+            this.labeliDirShadowSplits.Text = "Shadow transition segments:";
+            this.toolTip.SetToolTip(this.labeliDirShadowSplits, resources.GetString("labeliDirShadowSplits.ToolTip"));
             // 
             // groupBoxShadows2
             // 
@@ -5620,7 +5634,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.sliderFloatingQuestMarkersDistance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderfBlendSplitDirShadow)).EndInit();
             this.tabPageCamera.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.groupBoxCameraPosition.ResumeLayout(false);
@@ -5701,8 +5714,6 @@
             this.panel3.ResumeLayout(false);
             this.groupBoxGraphics.ResumeLayout(false);
             this.groupBoxGraphics.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numfBlendSplitDirShadow)).EndInit();
             this.groupBoxGraphicEffects.ResumeLayout(false);
             this.groupBoxGraphicEffects.PerformLayout();
             this.groupBoxTAASharpening.ResumeLayout(false);
@@ -5789,8 +5800,12 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).EndInit();
+            this.tabPageDangerZone.ResumeLayout(false);
+            this.groupBoxVideoDZ.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfBlendSplitDirShadow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderfBlendSplitDirShadow)).EndInit();
             this.groupBoxShadows2.ResumeLayout(false);
             this.groupBoxShadows2.PerformLayout();
             this.ResumeLayout(false);
@@ -6106,12 +6121,6 @@
         private System.Windows.Forms.GroupBox groupBoxPipboyColorPreview;
         private System.Windows.Forms.PictureBox pictureBoxPipboyPreview;
         private System.Windows.Forms.Label labelPipboyColorPreviewNotice;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TrackBar sliderfBlendSplitDirShadow;
-        private System.Windows.Forms.NumericUpDown numfBlendSplitDirShadow;
-        private System.Windows.Forms.Label labelfBlendSplitDirShadow;
-        private System.Windows.Forms.ComboBox comboBoxiDirShadowSplits;
-        private System.Windows.Forms.Label labeliDirShadowSplits;
         private Forms.Form1.ColorPreview colorPreviewPresetFo3Green;
         private System.Windows.Forms.Button buttonPresetFo3Green;
         private Forms.Form1.ColorPreview colorPreviewPresetFo76Green;
@@ -6184,7 +6193,14 @@
         private System.Windows.Forms.CheckBox checkBoxShowPassword;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelUserName;
+        private System.Windows.Forms.TabPage tabPageDangerZone;
+        private System.Windows.Forms.GroupBox groupBoxVideoDZ;
         private System.Windows.Forms.GroupBox groupBoxShadows2;
+        private System.Windows.Forms.Label labeliDirShadowSplits;
+        private System.Windows.Forms.ComboBox comboBoxiDirShadowSplits;
+        private System.Windows.Forms.TrackBar sliderfBlendSplitDirShadow;
+        private System.Windows.Forms.Label labelfBlendSplitDirShadow;
+        private System.Windows.Forms.NumericUpDown numfBlendSplitDirShadow;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox checkBoxScreenSpaceReflections;
     }

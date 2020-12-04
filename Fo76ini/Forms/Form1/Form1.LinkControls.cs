@@ -459,15 +459,6 @@ namespace Fo76ini
             // Grass fade distance
             LinkedTweaks.LinkTweak(numGrassFadeDistance, grassFadeDistanceTweak);
 
-            // Amount of shadow "segments": iDirShadowSplits
-            LinkedTweaks.LinkTweak(
-                comboBoxiDirShadowSplits,
-                new int[] { 1, 2, 3 },
-                dirShadowSplitsTweak);
-
-            // BlendSplitDirShadowTweak / Shadow "segment" transition distance
-            LinkedTweaks.LinkTweak(numfBlendSplitDirShadow, blendSplitDirShadowTweak);
-
             // LOD Fade Distances
             LinkedTweaks.LinkTweak(numLODObjects, lodFadeOutMultObjectsTweak);
             LinkedTweaks.LinkTweak(numLODItems, lodFadeOutMultItemsTweak);
@@ -476,9 +467,6 @@ namespace Fo76ini
             // TAA Sharpening
             LinkedTweaks.LinkTweak(numTAAPostOverlay, taaPostOverlayTweak);
             LinkedTweaks.LinkTweak(numTAAPostSharpen, taaPostSharpenTweak);
-
-            // Screen Space Reflections:
-            LinkedTweaks.LinkTweak(checkBoxScreenSpaceReflections, screenSpaceReflectionsTweak);
 
 
 
@@ -650,6 +638,22 @@ namespace Fo76ini
 
             // Screenshot index
             LinkedTweaks.LinkTweak(numScreenshotIndex, screenshotIndexTweak);
+        }
+
+
+        public void LinkDangerZoneControls ()
+        {
+            // Screen Space Reflections:
+            LinkedTweaks.LinkTweak(checkBoxScreenSpaceReflections, screenSpaceReflectionsTweak);
+
+            // Amount of shadow "segments": iDirShadowSplits
+            LinkedTweaks.LinkTweak(
+                comboBoxiDirShadowSplits,
+                new int[] { 1, 2, 3 },
+                dirShadowSplitsTweak);
+
+            // BlendSplitDirShadowTweak / Shadow "segment" transition distance
+            LinkedTweaks.LinkTweak(numfBlendSplitDirShadow, blendSplitDirShadowTweak);
         }
 
 

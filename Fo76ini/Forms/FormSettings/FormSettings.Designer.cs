@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Default", 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Default", 0);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "Steam"}, 2, System.Drawing.Color.Empty, System.Drawing.SystemColors.Window, null);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Microsoft Store", 3);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Microsoft Store", 3);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSettings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
+            this.groupBoxActions = new System.Windows.Forms.GroupBox();
+            this.linkLabelEnableDangerZone = new System.Windows.Forms.LinkLabel();
             this.groupBoxOptions = new System.Windows.Forms.GroupBox();
             this.checkBoxReadOnly = new System.Windows.Forms.CheckBox();
             this.groupBoxNuclearWinterMode = new System.Windows.Forms.GroupBox();
@@ -138,6 +140,7 @@
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
+            this.groupBoxActions.SuspendLayout();
             this.groupBoxOptions.SuspendLayout();
             this.groupBoxNuclearWinterMode.SuspendLayout();
             this.groupBoxBehavior.SuspendLayout();
@@ -178,6 +181,7 @@
             // 
             // tabPageGeneral
             // 
+            this.tabPageGeneral.Controls.Add(this.groupBoxActions);
             this.tabPageGeneral.Controls.Add(this.groupBoxOptions);
             this.tabPageGeneral.Controls.Add(this.groupBoxNuclearWinterMode);
             this.tabPageGeneral.Controls.Add(this.groupBoxBehavior);
@@ -189,6 +193,29 @@
             this.tabPageGeneral.TabIndex = 0;
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxActions
+            // 
+            this.groupBoxActions.Controls.Add(this.linkLabelEnableDangerZone);
+            this.groupBoxActions.Location = new System.Drawing.Point(6, 227);
+            this.groupBoxActions.Name = "groupBoxActions";
+            this.groupBoxActions.Size = new System.Drawing.Size(390, 78);
+            this.groupBoxActions.TabIndex = 43;
+            this.groupBoxActions.TabStop = false;
+            this.groupBoxActions.Text = "Actions";
+            // 
+            // linkLabelEnableDangerZone
+            // 
+            this.linkLabelEnableDangerZone.AutoSize = true;
+            this.linkLabelEnableDangerZone.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabelEnableDangerZone.LinkColor = System.Drawing.Color.Red;
+            this.linkLabelEnableDangerZone.Location = new System.Drawing.Point(8, 18);
+            this.linkLabelEnableDangerZone.Name = "linkLabelEnableDangerZone";
+            this.linkLabelEnableDangerZone.Size = new System.Drawing.Size(121, 13);
+            this.linkLabelEnableDangerZone.TabIndex = 44;
+            this.linkLabelEnableDangerZone.TabStop = true;
+            this.linkLabelEnableDangerZone.Text = "⚠️ Enable Danger Zone";
+            this.linkLabelEnableDangerZone.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelEnableDangerZone_LinkClicked);
             // 
             // groupBoxOptions
             // 
@@ -219,7 +246,7 @@
             this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWRenameDLL);
             this.groupBoxNuclearWinterMode.Location = new System.Drawing.Point(402, 59);
             this.groupBoxNuclearWinterMode.Name = "groupBoxNuclearWinterMode";
-            this.groupBoxNuclearWinterMode.Size = new System.Drawing.Size(358, 171);
+            this.groupBoxNuclearWinterMode.Size = new System.Drawing.Size(358, 162);
             this.groupBoxNuclearWinterMode.TabIndex = 41;
             this.groupBoxNuclearWinterMode.TabStop = false;
             this.groupBoxNuclearWinterMode.Text = "Nuclear Winter options";
@@ -282,7 +309,7 @@
             this.groupBoxBehavior.Controls.Add(this.checkBoxAutoApply);
             this.groupBoxBehavior.Location = new System.Drawing.Point(6, 103);
             this.groupBoxBehavior.Name = "groupBoxBehavior";
-            this.groupBoxBehavior.Size = new System.Drawing.Size(390, 127);
+            this.groupBoxBehavior.Size = new System.Drawing.Size(390, 118);
             this.groupBoxBehavior.TabIndex = 32;
             this.groupBoxBehavior.TabStop = false;
             this.groupBoxBehavior.Text = "Behavior";
@@ -793,11 +820,11 @@
             this.listViewGameInstances.FullRowSelect = true;
             this.listViewGameInstances.HideSelection = false;
             this.listViewGameInstances.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5});
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10});
             this.listViewGameInstances.LabelWrap = false;
             this.listViewGameInstances.LargeImageList = this.imageList1;
             this.listViewGameInstances.Location = new System.Drawing.Point(3, 18);
@@ -1303,6 +1330,8 @@
             this.Load += new System.EventHandler(this.FormSettings_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageGeneral.ResumeLayout(false);
+            this.groupBoxActions.ResumeLayout(false);
+            this.groupBoxActions.PerformLayout();
             this.groupBoxOptions.ResumeLayout(false);
             this.groupBoxOptions.PerformLayout();
             this.groupBoxNuclearWinterMode.ResumeLayout(false);
@@ -1447,5 +1476,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerRetrieveProfileInfo;
         private System.Windows.Forms.RadioButton radioButtonEditionUnknown;
         private System.Windows.Forms.PictureBox pictureBoxUnknown;
+        private System.Windows.Forms.GroupBox groupBoxActions;
+        private System.Windows.Forms.LinkLabel linkLabelEnableDangerZone;
     }
 }

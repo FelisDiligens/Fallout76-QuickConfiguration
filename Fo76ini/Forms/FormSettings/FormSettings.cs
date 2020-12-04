@@ -25,6 +25,10 @@ namespace Fo76ini.Forms.FormSettings
     {
         private bool UpdatingUI = false;
 
+        public static event EventHandler SettingsClosing;
+
+        public static bool DangerZoneEnabled = false;
+
         public FormSettings()
         {
             InitializeComponent();
@@ -82,6 +86,8 @@ namespace Fo76ini.Forms.FormSettings
                 e.Cancel = true;
                 ProfileManager.Save();
                 ProfileManager.Feedback();
+                if (SettingsClosing != null)
+                    SettingsClosing(this, null);
                 this.Hide();
             }
         }
@@ -148,6 +154,21 @@ namespace Fo76ini.Forms.FormSettings
 
             // Automatically remove mods
             LinkedTweaks.LinkTweak(checkBoxNWAutoDisableMods, removeModsOnNWModeTweak);
+        }
+
+        private void linkLabelEnableDangerZone_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (MsgBox.Show("Warning", "Tweaks in the danger zone might introduce graphical glitches or make the game crash.\nAre you sure you want to enable it?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                == DialogResult.Yes)
+            {
+                DangerZoneEnabled = true;
+                this.linkLabelEnableDangerZone.Enabled = false;
+            }
+        }
+
+        private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
+        {
+            // TODO: When checkBoxIgnoreUpdates gets checked, call Form1.CheckVersion
         }
 
         #endregion
@@ -745,10 +766,5 @@ namespace Fo76ini.Forms.FormSettings
         private DeployModsOnNWModeTweak deployModsOnNWModeTweak = new DeployModsOnNWModeTweak();
         private RemoveModsOnNWModeTweak removeModsOnNWModeTweak = new RemoveModsOnNWModeTweak();
         private RenameDLLsTweak renameDLLsTweak = new RenameDLLsTweak();
-
-        private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
-        {
-            // TODO: When checkBoxIgnoreUpdates gets checked, call Form1.CheckVersion
-        }
     }
 }

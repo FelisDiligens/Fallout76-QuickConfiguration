@@ -284,6 +284,17 @@ namespace Fo76ini
             // Pipboy screen preview:
             InitPipboyScreen();
             this.colorPreviewPipboy.BackColorChanged += colorPreviewPipboy_BackColorChanged;
+
+            // Danger Zone:
+            this.tabControl1.TabPages.Remove(this.tabPageDangerZone);
+            FormSettings.SettingsClosing += (object sender, EventArgs e) =>
+            {
+                if (FormSettings.DangerZoneEnabled && !this.tabControl1.TabPages.Contains(this.tabPageDangerZone))
+                {
+                    this.tabControl1.TabPages.Add(this.tabPageDangerZone);
+                    LinkDangerZoneControls();
+                }
+            };
         }
 
         private void Form1_Load(object sender, EventArgs e)
