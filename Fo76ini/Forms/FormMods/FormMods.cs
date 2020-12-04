@@ -15,6 +15,7 @@ using System.Linq;
 using System.Media;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Fo76ini
 {
@@ -110,10 +111,17 @@ namespace Fo76ini
         {
             if (!IniFiles.IsLoaded())
                 return;
-            CloseSidePanel();
-            LoadMods(this.game.GamePath);
-            UpdateUI();
-            TriggerNWModeUpdated();
+            try
+            {
+                CloseSidePanel();
+                LoadMods(this.game.GamePath);
+                UpdateUI();
+                TriggerNWModeUpdated();
+            }
+            catch (Exception exc)
+            {
+                MsgBox.Popup("Failed to load mods", $"Failed to load mods.\n{exc.GetType()}: {exc.Message}", MessageBoxIcon.Error);
+            }
         }
 
         private bool ConvertLegacyConditional()

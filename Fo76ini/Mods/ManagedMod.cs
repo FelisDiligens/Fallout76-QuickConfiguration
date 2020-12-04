@@ -461,42 +461,85 @@ namespace Fo76ini.Mods
 
         public static ManagedMod Deserialize(XElement xmlMod, string GamePath)
         {
+            if (xmlMod.Attribute("guid") == null)
+                throw new Exception("Invalid *.xml entry for mod.");
+
             ManagedMod mod = new ManagedMod(GamePath, new Guid(xmlMod.Attribute("guid").Value));
-            mod.Title = xmlMod.Element("Title").Value;
-            mod.Version = xmlMod.Element("Version").Value;
+
+            if (xmlMod.Element("Title") == null)
+                throw new Exception("Invalid *.xml entry for mod.");
+            else
+                mod.Title = xmlMod.Element("Title").Value;
+
+            if (xmlMod.Element("Version") != null)
+                mod.Version = xmlMod.Element("Version").Value;
 
             XElement xmlNexusMods = xmlMod.Element("NexusMods");
-            mod.ID = Convert.ToInt32(xmlNexusMods.Attribute("id").Value);
-            mod.URL = xmlNexusMods.Element("URL").Value;
+            int modId;
+            if (xmlNexusMods != null && xmlNexusMods.Attribute("id") != null && xmlNexusMods.Element("URL") != null)
+            {
+                if (xmlNexusMods.Attribute("id").TryParseInt(out modId))
+                    mod.ID = modId;
+                mod.URL = xmlNexusMods.Element("URL").Value;
+            }
 
             XElement xmlDiskState = xmlMod.Element("DiskState");
+            if (xmlDiskState == null)
+                throw new Exception("Invalid *.xml entry for mod.");
 
             XElement xmlCurrentDiskState = xmlDiskState.Element("Current");
-            mod.Deployed = Convert.ToBoolean(xmlCurrentDiskState.Attribute("isDeployed").Value);
-            mod.PreviousMethod = GetMethod(xmlCurrentDiskState.Element("InstallationMethod").Value);
-            mod.CurrentFormat = GetFormat(xmlCurrentDiskState.Element("ArchiveFormat").Value);
-            mod.CurrentCompression = GetCompression(xmlCurrentDiskState.Element("ArchiveCompression").Value);
-            mod.CurrentArchiveName = xmlCurrentDiskState.Element("ArchiveName").Value;
-            mod.CurrentRootFolder = xmlCurrentDiskState.Element("RootFolder").Value;
+            if (xmlCurrentDiskState == null)
+                throw new Exception("Invalid *.xml entry for mod.");
+            if (xmlCurrentDiskState.Attribute("isDeployed") != null &&
+                xmlCurrentDiskState.Attribute("isDeployed").TryParseBool(out bool deployed))
+                mod.Deployed = deployed;
+            if (xmlCurrentDiskState.Element("InstallationMethod") != null)
+                mod.PreviousMethod = GetMethod(xmlCurrentDiskState.Element("InstallationMethod").Value);
+            if (xmlCurrentDiskState.Element("ArchiveFormat") != null)
+                mod.CurrentFormat = GetFormat(xmlCurrentDiskState.Element("ArchiveFormat").Value);
+            if (xmlCurrentDiskState.Element("ArchiveCompression") != null)
+                mod.CurrentCompression = GetCompression(xmlCurrentDiskState.Element("ArchiveCompression").Value);
+            if (xmlCurrentDiskState.Element("ArchiveName") != null)
+                mod.CurrentArchiveName = xmlCurrentDiskState.Element("ArchiveName").Value;
+            if (xmlCurrentDiskState.Element("RootFolder") != null)
+                mod.CurrentRootFolder = xmlCurrentDiskState.Element("RootFolder").Value;
 
             XElement xmlInstalledLooseFiles = xmlCurrentDiskState.Element("InstalledLooseFiles");
-            foreach (XElement xmlFile in xmlInstalledLooseFiles.Descendants("File"))
-                if (xmlFile.Attribute("path") != null)
-                    mod.LooseFiles.Add(xmlFile.Attribute("path").Value);
+            if (xmlInstalledLooseFiles != null)
+                foreach (XElement xmlFile in xmlInstalledLooseFiles.Descendants("File"))
+                    if (xmlFile.Attribute("path") != null)
+                        mod.LooseFiles.Add(xmlFile.Attribute("path").Value);
 
             XElement xmlPendingDiskState = xmlDiskState.Element("Pending");
-            mod.Enabled = Convert.ToBoolean(xmlPendingDiskState.Attribute("isEnabled").Value);
-            mod.Method = GetMethod(xmlPendingDiskState.Element("InstallationMethod").Value);
-            mod.ArchiveName = xmlPendingDiskState.Element("ArchiveName").Value;
-            mod.Format = GetFormat(xmlPendingDiskState.Element("ArchiveFormat").Value);
-            mod.Compression = GetCompression(xmlPendingDiskState.Element("ArchiveCompression").Value);
-            mod.RootFolder = xmlPendingDiskState.Element("RootFolder").Value;
+            if (xmlPendingDiskState == null)
+                throw new Exception("Invalid *.xml entry for mod.");
+            if (xmlPendingDiskState.Attribute("isEnabled") != null &&
+                xmlPendingDiskState.Attribute("isEnabled").TryParseBool(out bool enabled))
+                mod.Enabled = enabled;
+            if (xmlPendingDiskState.Element("InstallationMethod") != null)
+                mod.Method = GetMethod(xmlPendingDiskState.Element("InstallationMethod").Value);
+            if (xmlPendingDiskState.Element("ArchiveName") != null)
+                mod.ArchiveName = xmlPendingDiskState.Element("ArchiveName").Value;
+            if (xmlPendingDiskState.Element("ArchiveFormat") != null)
+                mod.Format = GetFormat(xmlPendingDiskState.Element("ArchiveFormat").Value);
+            if (xmlPendingDiskState.Element("ArchiveCompression") != null)
+                mod.Compression = GetCompression(xmlPendingDiskState.Element("ArchiveCompression").Value);
+            if (xmlPendingDiskState.Element("RootFolder") != null)
+                mod.RootFolder = xmlPendingDiskState.Element("RootFolder").Value;
 
             XElement xmlFrozenDiskState = xmlDiskState.Element("FrozenData");
-            mod.Frozen = Convert.ToBoolean(xmlFrozenDiskState.Attribute("isFrozen").Value);
-            mod.Freeze = Convert.ToBoolean(xmlFrozenDiskState.Attribute("freeze").Value);
-            mod.FrozenFormat = GetFormat(xmlFrozenDiskState.Element("ArchiveFormat").Value);
-            mod.FrozenCompression = GetCompression(xmlFrozenDiskState.Element("ArchiveCompression").Value);
+            if (xmlFrozenDiskState == null)
+                throw new Exception("Invalid *.xml entry for mod.");
+            if (xmlFrozenDiskState.Attribute("isFrozen") != null &&
+                xmlFrozenDiskState.Attribute("isFrozen").TryParseBool(out bool frozen))
+                mod.Frozen = frozen;
+            if (xmlFrozenDiskState.Attribute("freeze") != null &&
+                xmlFrozenDiskState.Attribute("freeze").TryParseBool(out bool freeze))
+                mod.Freeze = freeze;
+            if (xmlFrozenDiskState.Element("ArchiveFormat") != null)
+                mod.FrozenFormat = GetFormat(xmlFrozenDiskState.Element("ArchiveFormat").Value);
+            if (xmlFrozenDiskState.Element("ArchiveCompression") != null)
+                mod.FrozenCompression = GetCompression(xmlFrozenDiskState.Element("ArchiveCompression").Value);
 
             return mod;
         }
