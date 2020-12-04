@@ -14,15 +14,16 @@ namespace Fo76ini
 {
     public class IniFile
     {
-        public readonly string Path;
+        public readonly string FilePath;
+        public readonly string FileName;
         public string DefaultPath; // Fallback to this path, if the actual path doesn't exist. (To load defaults)
 
         public bool IsReadOnly
         {
             get
             {
-                if (File.Exists(Path))
-                    return new FileInfo(Path).IsReadOnly;
+                if (File.Exists(FilePath))
+                    return new FileInfo(FilePath).IsReadOnly;
                 else
                     return false;
             }
@@ -41,7 +42,8 @@ namespace Fo76ini
 
         public IniFile(String path, String defaultPath = null)
         {
-            this.Path = path;
+            this.FilePath = path;
+            this.FileName = Path.GetFileName(path);
             this.DefaultPath = defaultPath;
 
             // Configuring INI parser
@@ -69,7 +71,7 @@ namespace Fo76ini
             RemoveEmptySections();
             bool readOnly = this.IsReadOnly;
             SetFileReadOnlyAttribute(false);
-            this.iniParser.WriteFile(Path, data, encoding);
+            this.iniParser.WriteFile(FilePath, data, encoding);
             SetFileReadOnlyAttribute(readOnly);
             UpdateLastModifiedDate();
         }
@@ -78,8 +80,8 @@ namespace Fo76ini
         {
             try
             {
-                if (File.Exists(Path))
-                    data = this.iniParser.ReadFile(Path, encoding);
+                if (File.Exists(FilePath))
+                    data = this.iniParser.ReadFile(FilePath, encoding);
                 else if (DefaultPath != null && File.Exists(DefaultPath))
                     data = this.iniParser.ReadFile(DefaultPath, encoding);
                 else
@@ -89,7 +91,7 @@ namespace Fo76ini
             {
                 // Add the path to the exception (since IniParser doesn't do this) and throw again:
                 // throw new IniParser.Exceptions.ParsingException($"{Path} couldn't be parsed: {e.Message}", e);
-                throw IniParsingException.CreateException(exc, Path);
+                throw IniParsingException.CreateException(exc, FilePath);
             }
             UpdateLastModifiedDate();
         }
@@ -127,12 +129,12 @@ namespace Fo76ini
 
         public bool FileHasBeenModified()
         {
-            return this.lastModified != File.GetLastWriteTime(Path);
+            return this.lastModified != File.GetLastWriteTime(FilePath);
         }
 
         public void UpdateLastModifiedDate()
         {
-            this.lastModified = File.GetLastWriteTime(Path);
+            this.lastModified = File.GetLastWriteTime(FilePath);
         }
 
         protected void RemoveEmptySections()
@@ -148,16 +150,16 @@ namespace Fo76ini
         protected void SetFileReadOnlyAttribute(bool readOnly)
         {
             // https://stackoverflow.com/questions/8081242/c-sharp-make-file-read-write-from-readonly
-            if (File.Exists(Path))
+            if (File.Exists(FilePath))
             {
-                var attr = File.GetAttributes(Path);
+                var attr = File.GetAttributes(FilePath);
 
                 if (readOnly)
                     attr = attr | FileAttributes.ReadOnly;
                 else
                     attr = attr & ~FileAttributes.ReadOnly;
 
-                File.SetAttributes(Path, attr);
+                File.SetAttributes(FilePath, attr);
             }
         }
 

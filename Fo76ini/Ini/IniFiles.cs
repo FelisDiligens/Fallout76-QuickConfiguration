@@ -89,10 +89,20 @@ namespace Fo76ini
 
         public static void Save()
         {
+            Backup();
             F76.Save();
             F76Prefs.Save();
             F76Custom.Save();
             Config.Save();
+        }
+
+        public static void Backup()
+        {
+            string backupDir = Path.Combine(ParentPath, "Backups", DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
+            Directory.CreateDirectory(backupDir);
+            File.Copy(F76.FilePath, Path.Combine(backupDir, F76.FileName), true);
+            File.Copy(F76Prefs.FilePath, Path.Combine(backupDir, F76Prefs.FileName), true);
+            File.Copy(F76Custom.FilePath, Path.Combine(backupDir, F76Custom.FileName), true);
         }
 
         public static bool FilesHaveBeenModified()
@@ -232,7 +242,7 @@ namespace Fo76ini
             string list = "";
             bool found = false;
             int i = -1;
-            IEnumerable<string> lines = File.ReadLines(ini.Path);
+            IEnumerable<string> lines = File.ReadLines(ini.FilePath);
             foreach (string line in lines)
             {
                 if (line.TrimStart().ToLower().StartsWith(key.ToLower()))
@@ -260,7 +270,7 @@ namespace Fo76ini
             // sResourceDataDirsFinal added in v.1.3.1
             // Case insensitive, and whitespace around '=' ignored as of v1.4
 
-            if (!File.Exists(F76Custom.Path))
+            if (!File.Exists(F76Custom.FilePath))
                 return;
 
             MergeLists(F76Custom, "Archive", "sResourceIndexFileList");

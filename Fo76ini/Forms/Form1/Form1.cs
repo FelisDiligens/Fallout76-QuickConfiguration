@@ -616,7 +616,6 @@ namespace Fo76ini
                 MsgBox.Get("customIniFilesParsingError").FormatText(exc.Message).Show(MessageBoxIcon.Error);
             }
 
-            // TODO: Backups?
             // Save changes:
             IniFiles.Save();
         }
@@ -720,20 +719,20 @@ namespace Fo76ini
 
         private void editFallout76iniToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(IniFiles.F76.Path))
-                Utils.OpenFile(IniFiles.F76.Path);
+            if (File.Exists(IniFiles.F76.FilePath))
+                Utils.OpenFile(IniFiles.F76.FilePath);
         }
 
         private void editFallout76PrefsiniToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(IniFiles.F76Prefs.Path))
-                Utils.OpenFile(IniFiles.F76Prefs.Path);
+            if (File.Exists(IniFiles.F76Prefs.FilePath))
+                Utils.OpenFile(IniFiles.F76Prefs.FilePath);
         }
 
         private void editFallout76CustominiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(IniFiles.F76Custom.Path))
-                Utils.OpenFile(IniFiles.F76Custom.Path);
+            if (File.Exists(IniFiles.F76Custom.FilePath))
+                Utils.OpenFile(IniFiles.F76Custom.FilePath);
         }
 
         private void steamScreenshotFolderToolStripMenuItem_Click(object sender, EventArgs e)
