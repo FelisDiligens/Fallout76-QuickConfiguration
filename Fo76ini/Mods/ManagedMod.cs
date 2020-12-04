@@ -295,7 +295,7 @@ namespace Fo76ini.Mods
 
         public readonly Guid guid;
 
-        private string title;
+        private string title = "Untitled";
         public string Version = "1.0";
         private string url = "";
         public int ID = -1;

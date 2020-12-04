@@ -129,7 +129,9 @@ namespace Fo76ini.NexusAPI
             if (modId.Contains("?"))
                 modId = modId.Substring(0, modId.IndexOf("?"));
 
-            return Convert.ToInt32(modId);
+            if (Int32.TryParse(modId, out int result))
+                return result;
+            return -1;
         }
     }
 

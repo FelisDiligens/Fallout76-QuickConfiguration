@@ -18,9 +18,16 @@ namespace Fo76ini.Mods
         /// </summary>
         public static bool CheckLegacy(string gamePath)
         {
-            return Directory.Exists(Path.Combine(gamePath, "Mods")) && 
-                File.Exists(Path.Combine(gamePath, "Mods", "manifest.xml")) &&
-                XDocument.Load(Path.Combine(gamePath, "Mods", "manifest.xml")).Root.Attribute("doNotImport") == null;
+            try
+            {
+                return Directory.Exists(Path.Combine(gamePath, "Mods")) &&
+                    File.Exists(Path.Combine(gamePath, "Mods", "manifest.xml")) &&
+                    XDocument.Load(Path.Combine(gamePath, "Mods", "manifest.xml")).Root.Attribute("doNotImport") == null;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
