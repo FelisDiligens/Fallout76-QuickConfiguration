@@ -134,11 +134,7 @@ namespace Fo76ini
             if (mod != null)
                 this.changedMod = mod.CreateCopy();
 
-            String thumbnailPath = Path.Combine(Shared.GamePath, "Mods", this.changedMod.Thumbnail);
-            if (File.Exists(thumbnailPath))
-                this.pictureBoxModThumbnail.Image = Image.FromFile(thumbnailPath);
-            else
-                this.pictureBoxModThumbnail.Image = Resources.bg;
+            this.pictureBoxModThumbnail.Image = Resources.bg;
 
             if (modCount > 1)
             {
@@ -163,7 +159,7 @@ namespace Fo76ini
             if (this.modCount > 1)
                 this.labelModTitle.Text = String.Format(Localization.localizedStrings["modDetailsTitleBulkSelected"], this.modCount);
             else
-                this.labelModTitle.Text = this.changedMod.PublicName != "" ? this.changedMod.PublicName : this.changedMod.Title;
+                this.labelModTitle.Text = this.changedMod.Title;
             this.textBoxModName.Text = this.changedMod.Title;
             this.textBoxModFolderName.Text = this.changedMod.ManagedFolder;
             this.textBoxModRootDir.Text = this.changedMod.RootFolder;
@@ -389,8 +385,7 @@ namespace Fo76ini
             if (textBoxModName.Focused)
             {
                 this.changedMod.Title = this.textBoxModName.Text;
-                if (this.changedMod.PublicName == "")
-                    this.labelModTitle.Text = this.changedMod.Title;
+                this.labelModTitle.Text = this.changedMod.Title;
             }
         }
 

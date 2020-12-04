@@ -67,8 +67,8 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SharpCompress, Version=0.25.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
-      <HintPath>packages\SharpCompress.0.25.0\lib\net46\SharpCompress.dll</HintPath>
+    <Reference Include="SharpCompress, Version=0.26.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>packages\SharpCompress.0.26.0\lib\net46\SharpCompress.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -136,9 +136,6 @@
     <Compile Include="Forms\FormMods\FormMods.Details.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormMods\FormMods.NexusMods.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Forms\FormWhatsNew\FormWhatsNew.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,7 +150,6 @@
     <Compile Include="Mods\Mods.cs" />
     <Compile Include="IniFiles.cs" />
     <Compile Include="Interface\MsgBox.cs" />
-    <Compile Include="Mods\NexusMods.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\Translation.cs" />

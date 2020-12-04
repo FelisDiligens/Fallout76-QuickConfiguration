@@ -274,7 +274,6 @@ namespace Fo76ini
 
             // Load mods:
             ManagedMods.Instance.Load();
-            NexusMods.Load();
             this.formMods.UpdateUI();
 
             // Account profiles:

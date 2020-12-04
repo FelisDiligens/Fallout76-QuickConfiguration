@@ -27,7 +27,6 @@ namespace Fo76ini
         {
             InitializeComponent();
             InitializeDetailControls();
-            InitializeNMControls();
 
             LocalizedForm form = new LocalizedForm(this, this.toolTip);
             Localization.LocalizedForms.Add(form);
@@ -69,7 +68,6 @@ namespace Fo76ini
             UpdateModList();
             UpdateSettings();
             UpdateLabel();
-            UpdateNMProfile();
         }
 
         private void UpdateModList()
@@ -132,27 +130,8 @@ namespace Fo76ini
                     size.ForeColor = Color.DarkGreen;*/
 
                 // Version:
-                if (mod.LatestVersion != "" && mod.Version != "")
-                {
-                    int cmp = Utils.CompareVersions(mod.LatestVersion, mod.Version);
-                    if (cmp > 0)
-                    {
-                        // Update available:
-                        version.Text = $"{mod.Version} ({mod.LatestVersion})";
-                        version.ForeColor = Color.DarkRed;
-                    }
-                    else
-                    {
-                        // Latest version:
-                        version.Text = $"{mod.Version}";
-                        version.ForeColor = Color.DarkGreen;
-                    }
-                }
-                else if (mod.Version != "")
-                {
-                    version.Text = $"{mod.Version}";
-                    version.ForeColor = Color.Gray;
-                }
+                version.Text = $"{mod.Version}";
+                version.ForeColor = Color.Gray;
 
                 // Frozen?
                 if (mod.isFrozen())

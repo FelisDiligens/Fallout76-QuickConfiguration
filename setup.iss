@@ -6,9 +6,9 @@
 #define MyAppURL "https://www.nexusmods.com/fallout76/mods/546"
 #define MyAppExeName "Fo76ini.exe"
 
-#define ProjectVersion "1.8.4h1"
-#define ProjectBaseDir "C:\Users\Thomas\Documents\Fallout 76 Quick Configuration - Project files"
-#define ProjectGitDir "C:\Users\Thomas\Documents\Fallout 76 Quick Configuration - Project files\Fallout76-QuickConfiguration"
+#define ProjectVersion "1.8.4h2"
+#define ProjectBaseDir "D:\Workspace\Fallout 76 Quick Configuration"
+#define ProjectGitDir "D:\Workspace\Fallout 76 Quick Configuration\Fallout76-QuickConfiguration"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.

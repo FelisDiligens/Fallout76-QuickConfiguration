@@ -63,54 +63,7 @@ namespace Fo76ini
             set
             {
                 this.url = value;
-                this.ID = NexusMods.GetIDFromURL(value);
-            }
-        }
-
-        /*
-         * Directly access NexusMods' info
-         */
-        public String PublicName
-        {
-            get
-            {
-                if (this.ID >= 0 && NexusMods.Mods.ContainsKey(this.ID))
-                    return NexusMods.Mods[this.ID].Title;
-                else
-                    return this.Title;
-            }
-        }
-
-        public String Thumbnail
-        {
-            get
-            {
-                if (this.ID >= 0 && NexusMods.Mods.ContainsKey(this.ID))
-                    return NexusMods.Mods[this.ID].Thumbnail;
-                else
-                    return "";
-            }
-        }
-
-        public String LatestVersion
-        {
-            get
-            {
-                if (this.ID >= 0 && NexusMods.Mods.ContainsKey(this.ID))
-                    return NexusMods.Mods[this.ID].LatestVersion;
-                else
-                    return "";
-            }
-        }
-
-        public NMMod RemoteInfo
-        {
-            get
-            {
-                if (this.ID >= 0 && NexusMods.Mods.ContainsKey(this.ID))
-                    return NexusMods.Mods[this.ID];
-                else
-                    return null;
+                this.ID = -1;
             }
         }
 
