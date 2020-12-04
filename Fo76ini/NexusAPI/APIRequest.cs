@@ -7,63 +7,82 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json.Linq;
 
-namespace Fo76ini.Utilities
+namespace Fo76ini.NexusAPI
 {
+    /// <summary>
+    /// Wrapper around the classes of System.Net.
+    /// Used to make requests to the NexusMods' API.
+    /// </summary>
     public class APIRequest
     {
-        public string url;
+        public string URL;
 
         private HttpWebRequest request;
         private HttpWebResponse response;
 
-        public WebException Exception;
+        public WebException Exception = null;
 
         public string PostData = "";
 
         public APIRequest(string url)
         {
-            this.url = url;
-            this.request = (HttpWebRequest)WebRequest.Create(this.url);
+            this.URL = url;
+            this.request = (HttpWebRequest)WebRequest.Create(this.URL);
+
             this.UserAgent = Shared.AppUserAgent;
+            this.Headers["Application-Version"] = Shared.VERSION;
+            this.Headers["Application-Name"] = "Fallout 76 Quick Configuration";
         }
 
+        /// <summary>
+        /// Sends the request and reads the response.
+        /// </summary>
         public void Execute()
         {
             this.Success = false;
             try
             {
-                if (Method.ToUpper() == "POST")
+                // Send POST data, if needed:
+                if (Method.ToUpper() == "POST" && PostData.Trim() != "")
                     using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                         streamWriter.Write(PostData);
+
+                // Get response:
                 this.response = (HttpWebResponse)request.GetResponse();
                 this.Success = true;
 
+                // Read the response:
                 using (Stream stream = response.GetResponseStream())
                 using (StreamReader reader = new StreamReader(stream))
                 {
                     ResponseText = reader.ReadToEnd();
                 }
+
+                this.Exception = null;
             }
             catch (WebException ex)
             {
+                // If the status code isn't 200 (or rather 2xx), it will throw an exception:
                 if (ex.Response != null)
                 {
+                    // Get response:
                     this.response = (HttpWebResponse)ex.Response;
                     this.Success = true;
 
+                    // Read the response:
                     using (Stream stream = response.GetResponseStream())
                     using (StreamReader reader = new StreamReader(stream))
                     {
                         ResponseText = reader.ReadToEnd();
                     }
                 }
+
                 this.Exception = ex;
             }
         }
 
         public JObject GetJSON()
         {
-            // TODO: throw new Newtonsoft.Json.JsonReaderException("Test");
             return JObject.Parse(ResponseText);
         }
 
@@ -77,11 +96,14 @@ namespace Fo76ini.Utilities
             get => request.Headers;
         }
 
-        public int StatusCode
+        public HttpStatusCode StatusCode
         {
-            get => (int)response.StatusCode;
+            get => response.StatusCode;
         }
 
+        /// <summary>
+        /// Whether the request was successful.
+        /// </summary>
         public bool Success { get; private set; }
         public string ResponseText { get; private set; }
 

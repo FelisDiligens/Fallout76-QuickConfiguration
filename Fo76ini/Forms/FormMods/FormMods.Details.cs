@@ -238,11 +238,10 @@ namespace Fo76ini
 
             // Update thumbnail:
             this.pictureBoxModThumbnail.Image = Resources.bg;
-            if (this.editedMod.RemoteInfo != null && this.editedMod.RemoteInfo.Thumbnail != "")
+            if (this.editedMod.RemoteInfo != null && this.editedMod.RemoteInfo.ThumbnailFileName != "")
             {
-                string thumbnailPath = Path.Combine(NexusMods.ThumbnailsPath, this.editedMod.RemoteInfo.Thumbnail);
-                if (File.Exists(thumbnailPath))
-                    this.pictureBoxModThumbnail.Image = Image.FromFile(thumbnailPath);
+                if (File.Exists(this.editedMod.RemoteInfo.ThumbnailFilePath))
+                    this.pictureBoxModThumbnail.Image = Image.FromFile(this.editedMod.RemoteInfo.ThumbnailFilePath);
             }
 
             // Populate values:
@@ -832,11 +831,11 @@ namespace Fo76ini
 
             if (this.editedMod.Version == "")
             {
-                MsgBox.Show("Can't endorse", "You must provide a version.", MessageBoxIcon.Information);
+                MsgBox.Show("Can't endorse", "Please enter a version and try again.", MessageBoxIcon.Information);
                 return;
             }
 
-            if (!NexusMods.IsLoggedIn)
+            if (!NexusMods.User.IsLoggedIn)
             {
                 MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
                 return;
@@ -854,11 +853,11 @@ namespace Fo76ini
 
             if (this.editedMod.Version == "")
             {
-                MsgBox.Show("Can't abstain from endorsing", "You must provide a version.", MessageBoxIcon.Information);
+                MsgBox.Show("Can't abstain from endorsing", "Please enter a version and try again.", MessageBoxIcon.Information);
                 return;
             }
 
-            if (!NexusMods.IsLoggedIn)
+            if (!NexusMods.User.IsLoggedIn)
             {
                 MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
                 return;

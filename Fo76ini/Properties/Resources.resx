@@ -118,17 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="bethesda" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bethesda-launcher.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Spinner-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gear-0.4s-200px.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="info-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info-2-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Images\banner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pipboy_preview_fg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pipboy_preview_fg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="checked-checkbox-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\checked-checkbox-24(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,8 +136,8 @@
   <data name="Spinner-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Spinner-1s-24px-white.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="download_2_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\download-2-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="play" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\play-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,11 +163,20 @@
   <data name="available_updates_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\available-updates-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="msstore" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msstore.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="like" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\like.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon-60" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon-60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="xbox-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\xbox_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fo76ini_LDu4jzf2p3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fo76ini_LDu4jzf2p3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="available-updates" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\available-updates-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,11 +193,11 @@
   <data name="help-128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\help-128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="thaw_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\thaw-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="edit-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit-2-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thaw_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thaw-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="snowflake-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\snowflake-16-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,11 +214,14 @@
   <data name="adventures" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\adventures-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="save-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="delete-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Spinner-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gear-0.4s-200px.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="VaultBoyThumbsUp_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VaultBoyThumbsUp_200px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bethesda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bethesda-launcher.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="warning-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\warning-5-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,8 +232,8 @@
   <data name="heart-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\heart-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pipboy_preview_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pipboy_preview_bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="add-archive-3-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add-archive-3-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrow-right-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_right_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,8 +247,8 @@
   <data name="button-hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\button_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="text-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\text-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="save-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bethesda-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bethesda_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -259,11 +268,17 @@
   <data name="arrow-up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow-up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exit-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exit-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="text-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="msstore" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msstore.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pipboy_preview_fg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pipboy_preview_fg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heart_broken_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heart-broken-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pipboy_preview_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pipboy_preview_bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="steam_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\steam_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -274,31 +289,22 @@
   <data name="msstore-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\msstore_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="error-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\error-5-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="user-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="VaultBoyThumbsUp_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VaultBoyThumbsUp_200px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="error-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\error-5-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Fo76ini_LDu4jzf2p3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fo76ini_LDu4jzf2p3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="heart_broken_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\heart-broken-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exit-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dislike" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dislike.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="like" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\like.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="download_2_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\download-2-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="checkbox-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\checkbox-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

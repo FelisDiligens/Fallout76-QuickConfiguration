@@ -137,6 +137,8 @@
     <Compile Include="Ini\IniParsingException.cs" />
     <Compile Include="Interface\Versioning.cs" />
     <Compile Include="Mods\LegacyManagedMods.cs" />
+    <Compile Include="NexusAPI\NMMod.cs" />
+    <Compile Include="NexusAPI\NMUserProfile.cs" />
     <Compile Include="Progress.cs" />
     <Compile Include="Tweaks\Audio\EnableAudioTweak.cs" />
     <Compile Include="Tweaks\Audio\VoiceChatModeTweak.cs" />
@@ -238,7 +240,7 @@
     <Compile Include="Tweaks\Volume\AudioMenuValTweak.cs" />
     <Compile Include="Tweaks\Volume\MasterVolumeTweak.cs" />
     <Compile Include="Tweaks\Volume\VivoxVoiceVolumeTweak.cs" />
-    <Compile Include="Utilities\APIRequest.cs" />
+    <Compile Include="NexusAPI\APIRequest.cs" />
     <Compile Include="Utilities\ClipboardUtils.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Forms\ExceptionDialog\FormExceptionDialog.cs">
@@ -380,6 +382,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\checkbox-24.png" />
+    <None Include="Resources\add-archive-3-24.png" />
     <None Include="Resources\download-2-48.png" />
     <None Include="Resources\like.png" />
     <None Include="Resources\dislike.png" />

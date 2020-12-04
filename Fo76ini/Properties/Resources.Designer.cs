@@ -63,6 +63,16 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_archive_3_24 {
+            get {
+                object obj = ResourceManager.GetObject("add-archive-3-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_folder_24 {
             get {
                 object obj = ResourceManager.GetObject("add-folder-24", resourceCulture);
@@ -216,6 +226,16 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap button_hover {
             get {
                 object obj = ResourceManager.GetObject("button-hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap checkbox_24 {
+            get {
+                object obj = ResourceManager.GetObject("checkbox-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

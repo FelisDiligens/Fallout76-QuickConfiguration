@@ -560,7 +560,7 @@ namespace Fo76ini.Forms.FormSettings
 
         public void RefreshNMUI()
         {
-            bool loggedIn = NexusMods.IsLoggedIn;
+            bool loggedIn = NexusMods.User.IsLoggedIn;
 
             this.labelNMNotLoggedIn.Visible = !loggedIn;
             this.linkLabelNMGetAPIKey.Visible = !loggedIn;
@@ -579,29 +579,29 @@ namespace Fo76ini.Forms.FormSettings
             this.labelNMAPIKeyStatus.Visible = loggedIn;
 
 
-            this.textBoxAPIKey.Text = NexusMods.Profile.APIKey;
+            this.textBoxAPIKey.Text = NexusMods.User.APIKey;
 
-            this.labelNMUserName.Text = NexusMods.Profile.UserName;
-            this.labelNMUserID.Text = NexusMods.Profile.UserID.ToString();
+            this.labelNMUserName.Text = NexusMods.User.UserName;
+            this.labelNMUserID.Text = NexusMods.User.UserID.ToString();
 
-            switch (NexusMods.Profile.Status)
+            switch (NexusMods.User.Status)
             {
-                case NMProfile.Membership.Premium:
+                case NMUserProfile.Membership.Premium:
                     this.labelNMMembership.Text = Localization.GetString("nmPremiumAccount");
                     this.labelNMMembership.ForeColor = Color.PaleGreen;
                     break;
-                case NMProfile.Membership.Supporter:
+                case NMUserProfile.Membership.Supporter:
                     this.labelNMMembership.Text = Localization.GetString("nmSupporterAccount");
                     this.labelNMMembership.ForeColor = Color.Orange;
                     break;
-                case NMProfile.Membership.Basic:
+                case NMUserProfile.Membership.Basic:
                 default:
                     this.labelNMMembership.Text = Localization.GetString("nmBasicAccount");
                     this.labelNMMembership.ForeColor = Color.White;
                     break;
             }
 
-            if (!NexusMods.Profile.ValidKey)
+            if (!NexusMods.User.ValidKey)
             {
                 this.labelNMAPIKeyStatus.Text = Localization.GetString("invalid");
                 this.labelNMAPIKeyStatus.ForeColor = Color.Red;
@@ -612,24 +612,23 @@ namespace Fo76ini.Forms.FormSettings
                 this.labelNMAPIKeyStatus.ForeColor = Color.PaleGreen;
             }
 
-            this.labelNMDailyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.Profile.DailyRateLimit);
-            this.labelNMHourlyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.Profile.HourlyRateLimit);
-            if (NexusMods.Profile.DailyRateLimitResetString != "")
+            this.labelNMDailyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.User.DailyRateLimit);
+            this.labelNMHourlyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.User.HourlyRateLimit);
+            if (NexusMods.User.DailyRateLimitResetString != "" && NexusMods.User.DailyRateLimitReset != null)
             {
-                TimeSpan diff = NexusMods.Profile.DailyRateLimitReset - DateTime.Now;
+                TimeSpan diff = NexusMods.User.DailyRateLimitReset - DateTime.Now;
                 this.labelNMDailyRateLimitReset.Text = string.Format(Localization.GetString("nmResetTime"), diff.Hours, diff.Minutes);
             }
             else
             {
-                this.labelNMDailyRateLimitReset.Text = Localization.GetString("nmResetTimeNever");
+                this.labelNMDailyRateLimitReset.Text = Localization.GetString("unknown");
             }
 
             this.pictureBoxNMProfilePicture.Image = Resources.user_white;
-            if (NexusMods.Profile.ProfilePicture != null)
+            if (NexusMods.User.ProfilePictureFileName != null)
             {
-                string profilePicPath = Path.Combine(NexusMods.FolderPath, NexusMods.Profile.ProfilePicture);
-                if (File.Exists(profilePicPath))
-                    this.pictureBoxNMProfilePicture.Image = Image.FromFile(profilePicPath);
+                if (File.Exists(NexusMods.User.ProfilePictureFilePath))
+                    this.pictureBoxNMProfilePicture.Image = Image.FromFile(NexusMods.User.ProfilePictureFilePath);
             }
 
             this.checkBoxNMUpdateProfile.Checked = IniFiles.Config.GetBool("NexusMods", "bAutoUpdateProfile", true);
@@ -663,11 +662,11 @@ namespace Fo76ini.Forms.FormSettings
 
         private void buttonNWLogout_Click(object sender, EventArgs e)
         {
-            if (MsgBox.Get("areYouSure").FormatText("Do you really want to remove your profile?").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MsgBox.Get("areYouSure").FormatText("Do you really want to log out?").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.pictureBoxNMProfilePicture.Image = Resources.user_white;
                 this.textBoxAPIKey.Text = "";
-                NexusMods.Profile.Remove();
+                NexusMods.User.Remove();
                 RefreshNMUI();
                 MsgBox.Get("done").FormatText("Logged out").Popup(MessageBoxIcon.Information);
             }
@@ -677,21 +676,8 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (MsgBox.Get("areYouSure").FormatText("Do you really want to delete all remote information?").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                NexusMods.ClearRemoteInfo();
                 // TODO: Call FormMods.UpdateModList after deleting remote info
-
-                // TODO: Make this a method of NexusMods (Delete remote info)
-                try
-                {
-                    string path = Path.Combine(NexusMods.ThumbnailsPath);
-                    if (Directory.Exists(path))
-                        Directory.Delete(path, true);
-                }
-                catch
-                {
-                    // Uhh....
-                }
-
+                NexusMods.DeleteCache();
                 MsgBox.Get("done").FormatText("Removed remote information").Popup(MessageBoxIcon.Information);
             }
         }
@@ -706,7 +692,7 @@ namespace Fo76ini.Forms.FormSettings
         {
             IniFiles.Config.Set("NexusMods", "sAPIKey", this.textBoxAPIKey.Text);
             IniFiles.Config.Save();
-            NexusMods.Profile.APIKey = this.textBoxAPIKey.Text;
+            NexusMods.User.APIKey = this.textBoxAPIKey.Text;
         }
 
         private void checkBoxShowAPIKey_CheckedChanged(object sender, EventArgs e)
@@ -717,8 +703,8 @@ namespace Fo76ini.Forms.FormSettings
 
         private void pictureBoxNMProfilePicture_Click(object sender, EventArgs e)
         {
-            if (NexusMods.Profile.UserID >= 0)
-                System.Diagnostics.Process.Start($"https://www.nexusmods.com/users/{NexusMods.Profile.UserID}");
+            if (NexusMods.User.UserID >= 0)
+                System.Diagnostics.Process.Start($"https://www.nexusmods.com/users/{NexusMods.User.UserID}");
         }
 
 
@@ -745,9 +731,9 @@ namespace Fo76ini.Forms.FormSettings
 
         private void backgroundWorkerRetrieveProfileInfo_DoWork(object sender, DoWorkEventArgs e)
         {
-            NexusMods.Profile.Load();
-            NexusMods.Profile.Update();
-            NexusMods.Profile.Save();
+            NexusMods.User.Load();
+            NexusMods.User.Update();
+            NexusMods.User.Save();
         }
 
         private void backgroundWorkerRetrieveProfileInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

@@ -37,9 +37,15 @@ ICONS
     "Guacamole green download 2 icon" by James Lynch is licensed under CC0 1.0 Universal (CC0 1.0)
     https://www.iconsdb.com/guacamole-green-icons/download-2-icon.html
 
+    "Black archive 3 icon" by bulb9 is licensed under CC0 1.0 Universal (CC0 1.0)
+    https://www.iconsdb.com/black-icons/archive-3-icon.html
+
 
   Thumbs up and down icons made by Those Icons from www.flaticon.com
   https://www.flaticon.com/free-icon/like_2087973?term=thumbs%20up&page=1&position=5&related_item_id=2087973
+
+  Checkbox icon made by Freepik from www.flaticon.com
+  https://www.flaticon.com/free-icon/checkbox_1287087?term=checkbox&page=1&position=1&related_item_id=1287087
 
 
   Loading *.gif's: 'Spinner' and 'Gear' released under Loading.io FREE License.

@@ -93,10 +93,11 @@ namespace Fo76ini
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
+                CloseSidePanel();
                 Configuration.SaveWindowState("FormMods", this);
                 Configuration.SaveListViewState("FormMods", this.listViewMods);
                 e.Cancel = true;
-                if (this.buttonModsDeploy.Enabled && (true || MsgBox.ShowID("modsOnCloseDeploymentNecessary", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                if (this.buttonModsDeploy.Enabled)
                     Hide();
             }
         }
@@ -937,13 +938,6 @@ namespace Fo76ini
                 InstallModFolderThreaded(this.folderBrowserDialogMod.SelectedPath);
         }
 
-        // Add frozen mod archive (*.ba2)
-        private void toolStripButtonAddModFrozen_Click(object sender, EventArgs e)
-        {
-            if (this.openFileDialogBA2.ShowDialog() == DialogResult.OK)
-                InstallModArchiveThreaded(this.openFileDialogBA2.FileName, true);
-        }
-
 
         #endregion
 
@@ -974,7 +968,8 @@ namespace Fo76ini
         // File > Add mod > From *.ba2 archive (frozen)
         private void fromba2ArchivefrozenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            toolStripButtonAddModFrozen_Click(sender, e);
+            if (this.openFileDialogBA2.ShowDialog() == DialogResult.OK)
+                InstallModArchiveThreaded(this.openFileDialogBA2.FileName, true);
         }
 
         // File > Import installed mods
@@ -1422,7 +1417,7 @@ namespace Fo76ini
 
         private void UpdateRemoteModInfoThreaded()
         {
-            if (!NexusMods.IsLoggedIn)
+            if (!NexusMods.User.IsLoggedIn)
             {
                 MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
                 return;
@@ -1442,7 +1437,7 @@ namespace Fo76ini
 
         private void CheckForUpdatesThreaded()
         {
-            if (!NexusMods.IsLoggedIn)
+            if (!NexusMods.User.IsLoggedIn)
             {
                 MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
                 return;
@@ -1472,7 +1467,7 @@ namespace Fo76ini
 
         private void EndorseModsThreaded()
         {
-            if (!NexusMods.IsLoggedIn)
+            if (!NexusMods.User.IsLoggedIn)
             {
                 MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
                 return;
@@ -1527,7 +1522,7 @@ namespace Fo76ini
                     }
 
                     ProgressChanged?.Invoke(Progress.Ongoing($"[{i}/{len}] Requesting info for \"{mod.Title}\"", (float)i / (float)len));
-                    NexusMods.RefreshModInfo(mod.URL);
+                    NexusMods.RequestModInformation(mod.URL);
                 }
             }
             ProgressChanged?.Invoke(Progress.Done("Mod information updated."));

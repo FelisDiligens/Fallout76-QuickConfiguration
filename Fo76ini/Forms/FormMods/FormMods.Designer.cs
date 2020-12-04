@@ -222,6 +222,7 @@
             // 
             // emptyModToolStripMenuItem
             // 
+            this.emptyModToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.plus_24;
             this.emptyModToolStripMenuItem.Name = "emptyModToolStripMenuItem";
             this.emptyModToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.emptyModToolStripMenuItem.Text = "Empty mod";
@@ -229,6 +230,7 @@
             // 
             // fromArchiveToolStripMenuItem
             // 
+            this.fromArchiveToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.add_archive_3_24;
             this.fromArchiveToolStripMenuItem.Name = "fromArchiveToolStripMenuItem";
             this.fromArchiveToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.fromArchiveToolStripMenuItem.Text = "From archive";
@@ -236,6 +238,7 @@
             // 
             // fromba2ArchivefrozenToolStripMenuItem
             // 
+            this.fromba2ArchivefrozenToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.add_snowflake_24;
             this.fromba2ArchivefrozenToolStripMenuItem.Name = "fromba2ArchivefrozenToolStripMenuItem";
             this.fromba2ArchivefrozenToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.fromba2ArchivefrozenToolStripMenuItem.Text = "From *.ba2 archive (frozen)";
@@ -243,6 +246,7 @@
             // 
             // fromFolderToolStripMenuItem
             // 
+            this.fromFolderToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.add_folder_24;
             this.fromFolderToolStripMenuItem.Name = "fromFolderToolStripMenuItem";
             this.fromFolderToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.fromFolderToolStripMenuItem.Text = "From folder";
@@ -1029,7 +1033,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(3, 3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(31, 458);
+            this.toolStrip1.Size = new System.Drawing.Size(32, 458);
             this.toolStrip1.TabIndex = 44;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1037,7 +1041,7 @@
             // 
             this.toolStripButtonAddMod.AutoSize = false;
             this.toolStripButtonAddMod.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddMod.Image = global::Fo76ini.Properties.Resources.plus_24;
+            this.toolStripButtonAddMod.Image = global::Fo76ini.Properties.Resources.add_archive_3_24;
             this.toolStripButtonAddMod.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonAddMod.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAddMod.Name = "toolStripButtonAddMod";
@@ -1061,13 +1065,13 @@
             // 
             this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(28, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(29, 6);
             // 
             // toolStripButtonCheckAll
             // 
             this.toolStripButtonCheckAll.AutoSize = false;
             this.toolStripButtonCheckAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonCheckAll.Image = global::Fo76ini.Properties.Resources.checked_checkbox_24;
+            this.toolStripButtonCheckAll.Image = global::Fo76ini.Properties.Resources.checkbox_24;
             this.toolStripButtonCheckAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonCheckAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCheckAll.Name = "toolStripButtonCheckAll";
@@ -1079,7 +1083,7 @@
             // 
             this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(28, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(29, 6);
             // 
             // toolStripButtonMoveUp
             // 
@@ -1109,7 +1113,7 @@
             // 
             this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(28, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(29, 6);
             // 
             // toolStripButtonModOpenFolder
             // 
@@ -1127,7 +1131,7 @@
             // 
             this.toolStripSeparator6.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(28, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(29, 6);
             // 
             // toolStripButtonDeleteMod
             // 

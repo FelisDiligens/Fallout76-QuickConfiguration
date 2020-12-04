@@ -26,7 +26,8 @@ namespace Fo76ini
             //localizedStrings["modDetailsTitleBulk"] = "Edit {0} mods";
             localizedStrings["modDetailsTitleBulkSelected"] = "{0} mods selected";
             localizedStrings["nmResetTime"] = "in {0} hour(s) and {1} minute(s)";
-            localizedStrings["nmResetTimeNever"] = "Never";
+            //localizedStrings["nmResetTimeNever"] = "Never";
+            localizedStrings["nmResetTimeUnknown"] = "Unknown";
             localizedStrings["nmRateLimitLeft"] = "{0} left";
             localizedStrings["nmBasicAccount"] = "Basic";
             localizedStrings["nmSupporterAccount"] = "Supporter";
@@ -197,7 +198,7 @@ namespace Fo76ini
 
             MsgBox.Add("nexusModsNotLoggedIn",
                 "Not logged in",
-                "Please log in first to access the NexusMods API"
+                "Please log in to NexusMods first and try again"
             );
 
 
