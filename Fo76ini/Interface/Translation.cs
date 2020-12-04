@@ -93,7 +93,10 @@ namespace Fo76ini
                         //Localization.comboBoxTranslations.Add($"{translation.Name} [{translation.Version}]");
                     }
                 }
-                catch { } // TODO: Loading language failed...
+                catch (Exception exc)
+                {
+                    MsgBox.Show("Loading translation failed", $"The translation '{Path.GetFileNameWithoutExtension(filePath)}' couldn't be loaded while looking through the languages folder.\n{exc.GetType()}: {exc.Message}", MessageBoxIcon.Warning);
+                }
             }
 
             // Set language:
@@ -208,26 +211,36 @@ namespace Fo76ini
              *  Read *.xml file:
              */
 
-            // Get <Language> root:
-            XDocument xmlDoc = XDocument.Load(filePath);
-            if (xmlDoc.Element("Language") == null)
-                throw new InvalidXmlException("Root has to be <Language>");
-            XElement lang = xmlDoc.Element("Language");
+            try
+            {
+                // Get <Language> root:
+                XDocument xmlDoc = XDocument.Load(filePath);
+                if (xmlDoc.Element("Language") == null)
+                    throw new InvalidXmlException("Root has to be <Language>");
+                XElement lang = xmlDoc.Element("Language");
 
-            // Get name, iso, and version attribute:
-            if (lang.Attribute("name") == null ||
-                    lang.Attribute("iso") == null ||
-                    lang.Attribute("version") == null)
-                throw new InvalidXmlException($"'{fileName}': Root element does not have 'name', 'iso', or 'version' attribute.");
+                // Get name, iso, and version attribute:
+                if (lang.Attribute("name") == null ||
+                        lang.Attribute("iso") == null ||
+                        lang.Attribute("version") == null)
+                    throw new InvalidXmlException($"'{fileName}': Root element does not have 'name', 'iso', or 'version' attribute.");
 
-            // Fill information:
-            this.ISO = lang.Attribute("iso").Value;
-            this.Name = lang.Attribute("name").Value;
-            this.Version = lang.Attribute("version").Value;
-            if (lang.Attribute("author") != null)
-                this.Author = lang.Attribute("author").Value;
-            else
+                // Fill information:
+                this.ISO = lang.Attribute("iso").Value;
+                this.Name = lang.Attribute("name").Value;
+                this.Version = lang.Attribute("version").Value;
+                if (lang.Attribute("author") != null)
+                    this.Author = lang.Attribute("author").Value;
+                else
+                    this.Author = "";
+            }
+            catch
+            {
+                this.ISO = Path.GetFileNameWithoutExtension(filePath);
+                this.Name = $"Invalid translation '{Path.GetFileNameWithoutExtension(filePath)}'";
+                this.Version = "1.0";
                 this.Author = "";
+            }
         }
 
         public bool IsOutdated()
@@ -244,65 +257,72 @@ namespace Fo76ini
 
         public void Apply()
         {
-            // Read *.xml file:
-            XDocument xmlDoc = XDocument.Load(this.filePath);
-            XElement xmlRoot = xmlDoc.Element("Language");
-
-            ignoreTooltipsOfTheseControls = LinkedTweaks.GetListOfLinkedControlNames();
-
-            // Translate each form individually:
-            foreach (LocalizedForm form in Localization.LocalizedForms)
+            try
             {
-                XElement xmlForm = xmlRoot.Element(form.Form.Name);
+                // Read *.xml file:
+                XDocument xmlDoc = XDocument.Load(this.filePath);
+                XElement xmlRoot = xmlDoc.Element("Language");
 
-                // Ignore non-existing forms
-                if (xmlForm == null)
-                    continue; // throw new InvalidXmlException($"Couldn't find <{form.Form.Name}>");
+                ignoreTooltipsOfTheseControls = LinkedTweaks.GetListOfLinkedControlNames();
 
-                // Set title, if it exists:
-                if (xmlForm.Attribute("title") != null)
-                    form.Form.Text = xmlForm.Attribute("title").Value;
+                // Translate each form individually:
+                foreach (LocalizedForm form in Localization.LocalizedForms)
+                {
+                    XElement xmlForm = xmlRoot.Element(form.Form.Name);
 
-                // Forms:
-                DeserializeDictionaries(xmlForm); // TODO: xmlRoot replaced with xmlForm. Good idea?
-                DeserializeControls(xmlForm, form.Form, form.ToolTip);
-                foreach (Control subControl in form.SpecialControls)
-                    DeserializeControl(xmlForm, subControl, form.ToolTip);
+                    // Ignore non-existing forms
+                    if (xmlForm == null)
+                        continue; // throw new InvalidXmlException($"Couldn't find <{form.Form.Name}>");
 
-                // Message boxes:
-                XElement xmlMsgBox = xmlRoot.Element("Messageboxes");
-                if (xmlMsgBox != null)
-                    MsgBox.Deserialize(xmlMsgBox);
+                    // Set title, if it exists:
+                    if (xmlForm.Attribute("title") != null)
+                        form.Form.Text = xmlForm.Attribute("title").Value;
 
-                // Strings:
-                XElement xmlStrings = xmlRoot.Element("Strings");
-                if (xmlStrings != null)
-                    Localization.DeserializeStrings(xmlStrings);
+                    // Forms:
+                    DeserializeDictionaries(xmlForm); // TODO: xmlRoot replaced with xmlForm. Good idea?
+                    DeserializeControls(xmlForm, form.Form, form.ToolTip);
+                    foreach (Control subControl in form.SpecialControls)
+                        DeserializeControl(xmlForm, subControl, form.ToolTip);
 
-                // TODO: Generalize this. No outside references, plz:
+                    // Message boxes:
+                    XElement xmlMsgBox = xmlRoot.Element("Messageboxes");
+                    if (xmlMsgBox != null)
+                        MsgBox.Deserialize(xmlMsgBox);
 
-                // TODO: Doesn't make sense to deserialize them multiple times:
+                    // Strings:
+                    XElement xmlStrings = xmlRoot.Element("Strings");
+                    if (xmlStrings != null)
+                        Localization.DeserializeStrings(xmlStrings);
 
-                // Drop downs:
-                XElement xmlDropDowns = xmlRoot.Element("Dropdowns");
-                if (xmlDropDowns != null)
-                    DropDown.DeserializeAll(xmlDropDowns);
+                    // TODO: Generalize this. No outside references, plz:
 
-                // Tweak descriptions:
-                XElement xmlTweakDescriptions = xmlRoot.Element("TweakDescriptions");
-                if (xmlTweakDescriptions != null)
-                    LinkedTweaks.DeserializeTweakDescriptionList(xmlTweakDescriptions);
-                if (form.ToolTip != null)
-                    LinkedTweaks.SetToolTips(); // TODO: No need to call it per form anymore
+                    // TODO: Doesn't make sense to deserialize them multiple times:
+
+                    // Drop downs:
+                    XElement xmlDropDowns = xmlRoot.Element("Dropdowns");
+                    if (xmlDropDowns != null)
+                        DropDown.DeserializeAll(xmlDropDowns);
+
+                    // Tweak descriptions:
+                    XElement xmlTweakDescriptions = xmlRoot.Element("TweakDescriptions");
+                    if (xmlTweakDescriptions != null)
+                        LinkedTweaks.DeserializeTweakDescriptionList(xmlTweakDescriptions);
+                    if (form.ToolTip != null)
+                        LinkedTweaks.SetToolTips(); // TODO: No need to call it per form anymore
+                }
+
+                // Call event handler:
+                if (LanguageChanged != null)
+                {
+                    TranslationEventArgs e = new TranslationEventArgs();
+                    e.HasAuthor = this.Author != "";
+                    //e.ActiveTranslation = this;
+                    LanguageChanged(this, e);
+                }
             }
-
-            // Call event handler:
-            if (LanguageChanged != null)
+            catch (Exception exc)
             {
-                TranslationEventArgs e = new TranslationEventArgs();
-                e.HasAuthor = this.Author != "";
-                //e.ActiveTranslation = this;
-                LanguageChanged(this, e);
+                MsgBox.Show("Loading translation failed", $"The translation '{Path.GetFileNameWithoutExtension(filePath)}' couldn't be loaded.\n{exc.GetType()}: {exc.Message}", MessageBoxIcon.Warning);
             }
         }
 
