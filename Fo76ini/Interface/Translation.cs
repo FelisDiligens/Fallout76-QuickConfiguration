@@ -95,7 +95,7 @@ namespace Fo76ini
                 }
                 catch (Exception exc)
                 {
-                    MsgBox.Show("Loading translation failed", $"The translation '{Path.GetFileNameWithoutExtension(filePath)}' couldn't be loaded while looking through the languages folder.\n{exc.GetType()}: {exc.Message}", MessageBoxIcon.Warning);
+                    MsgBox.Popup("Loading translation failed", $"The translation '{Path.GetFileNameWithoutExtension(filePath)}' couldn't be loaded.\n{exc.GetType()}: {exc.Message}", MessageBoxIcon.Warning);
                 }
             }
 
@@ -211,36 +211,26 @@ namespace Fo76ini
              *  Read *.xml file:
              */
 
-            try
-            {
-                // Get <Language> root:
-                XDocument xmlDoc = XDocument.Load(filePath);
-                if (xmlDoc.Element("Language") == null)
-                    throw new InvalidXmlException("Root has to be <Language>");
-                XElement lang = xmlDoc.Element("Language");
+            // Get <Language> root:
+            XDocument xmlDoc = XDocument.Load(filePath);
+            if (xmlDoc.Element("Language") == null)
+                throw new InvalidXmlException("Root has to be <Language>");
+            XElement lang = xmlDoc.Element("Language");
 
-                // Get name, iso, and version attribute:
-                if (lang.Attribute("name") == null ||
-                        lang.Attribute("iso") == null ||
-                        lang.Attribute("version") == null)
-                    throw new InvalidXmlException($"'{fileName}': Root element does not have 'name', 'iso', or 'version' attribute.");
+            // Get name, iso, and version attribute:
+            if (lang.Attribute("name") == null ||
+                    lang.Attribute("iso") == null ||
+                    lang.Attribute("version") == null)
+                throw new InvalidXmlException($"'{fileName}': Root element does not have 'name', 'iso', or 'version' attribute.");
 
-                // Fill information:
-                this.ISO = lang.Attribute("iso").Value;
-                this.Name = lang.Attribute("name").Value;
-                this.Version = lang.Attribute("version").Value;
-                if (lang.Attribute("author") != null)
-                    this.Author = lang.Attribute("author").Value;
-                else
-                    this.Author = "";
-            }
-            catch
-            {
-                this.ISO = Path.GetFileNameWithoutExtension(filePath);
-                this.Name = $"Invalid translation '{Path.GetFileNameWithoutExtension(filePath)}'";
-                this.Version = "1.0";
+            // Fill information:
+            this.ISO = lang.Attribute("iso").Value;
+            this.Name = lang.Attribute("name").Value;
+            this.Version = lang.Attribute("version").Value;
+            if (lang.Attribute("author") != null)
+                this.Author = lang.Attribute("author").Value;
+            else
                 this.Author = "";
-            }
         }
 
         public bool IsOutdated()
@@ -322,7 +312,7 @@ namespace Fo76ini
             }
             catch (Exception exc)
             {
-                MsgBox.Show("Loading translation failed", $"The translation '{Path.GetFileNameWithoutExtension(filePath)}' couldn't be loaded.\n{exc.GetType()}: {exc.Message}", MessageBoxIcon.Warning);
+                MsgBox.Show("Loading translation failed", $"The translation '{Path.GetFileNameWithoutExtension(filePath)}' couldn't be loaded.\n{exc.GetType()}: {exc.Message}", MessageBoxIcon.Error);
             }
         }
 
