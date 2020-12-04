@@ -27,7 +27,6 @@ namespace Fo76ini
             localizedStrings["modDetailsTitleBulkSelected"] = "{0} mods selected";
             localizedStrings["nmResetTime"] = "in {0} hour(s) and {1} minute(s)";
             //localizedStrings["nmResetTimeNever"] = "Never";
-            localizedStrings["nmResetTimeUnknown"] = "Unknown";
             localizedStrings["nmRateLimitLeft"] = "{0} left";
             localizedStrings["nmBasicAccount"] = "Basic";
             localizedStrings["nmSupporterAccount"] = "Supporter";

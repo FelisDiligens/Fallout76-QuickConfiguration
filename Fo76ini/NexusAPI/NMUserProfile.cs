@@ -45,7 +45,6 @@ namespace Fo76ini.NexusAPI
         public int DailyRateLimit;
         public int HourlyRateLimit;
         public string DailyRateLimitResetString;
-        public DateTime DailyRateLimitReset = null;
 
         /// <summary>
         /// Whether the user is currently logged in.
@@ -86,7 +85,6 @@ namespace Fo76ini.NexusAPI
                     DailyRateLimit = Convert.ToInt32(request.ResponseHeaders["x-rl-daily-remaining"]);
                     DailyRateLimitResetString = request.ResponseHeaders["x-rl-daily-reset"];
                     HourlyRateLimit = Convert.ToInt32(request.ResponseHeaders["X-RL-Hourly-Remaining"]);
-                    ParseDailyRateLimitReset();
 
                     DownloadProfilePicture();
 
@@ -174,19 +172,19 @@ namespace Fo76ini.NexusAPI
             HourlyRateLimit = IniFiles.Config.GetInt("NexusMods", "iHourlyRateLimit", 0);
             DailyRateLimitResetString = IniFiles.Config.GetString("NexusMods", "sDailyRateLimitReset", "");
             Enum.TryParse(IniFiles.Config.GetString("NexusMods", "sMembership", "Basic"), out Status);
-            ParseDailyRateLimitReset();
         }
 
-        private void ParseDailyRateLimitReset()
+        public bool TryParseDailyRateLimitReset(out DateTime result)
         {
             try
             {
-                DailyRateLimitReset = DateTime.ParseExact(DailyRateLimitResetString, "yyyy-MM-dd HH:mm:ss zzz", System.Globalization.CultureInfo.InvariantCulture);
+                result = DateTime.ParseExact(DailyRateLimitResetString, "yyyy-MM-dd HH:mm:ss zzz", System.Globalization.CultureInfo.InvariantCulture);
+                return true;
             }
             catch
             {
-                // TODO: Handle exception.
-                DailyRateLimitReset = null;
+                result = DateTime.Now;
+                return false;
             }
         }
 

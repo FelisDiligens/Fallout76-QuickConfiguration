@@ -279,12 +279,6 @@
     <Compile Include="Forms\FormMods\FormMods.Details.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormNexusAPI\FormNexus.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormNexusAPI\FormNexus.Designer.cs">
-      <DependentUpon>FormNexus.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormWhatsNew\FormWhatsNew.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -337,9 +331,6 @@
     <EmbeddedResource Include="Forms\FormMods\FormMods.resx">
       <DependentUpon>FormMods.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormNexusAPI\FormNexus.resx">
-      <DependentUpon>FormNexus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSettings\FormSettings.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>

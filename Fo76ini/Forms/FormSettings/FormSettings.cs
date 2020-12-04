@@ -614,9 +614,11 @@ namespace Fo76ini.Forms.FormSettings
 
             this.labelNMDailyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.User.DailyRateLimit);
             this.labelNMHourlyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.User.HourlyRateLimit);
-            if (NexusMods.User.DailyRateLimitResetString != "" && NexusMods.User.DailyRateLimitReset != null)
+            DateTime dailyRateLimitReset;
+            if (NexusMods.User.DailyRateLimitResetString != "" &&
+                NexusMods.User.TryParseDailyRateLimitReset(out dailyRateLimitReset))
             {
-                TimeSpan diff = NexusMods.User.DailyRateLimitReset - DateTime.Now;
+                TimeSpan diff = dailyRateLimitReset - DateTime.Now;
                 this.labelNMDailyRateLimitReset.Text = string.Format(Localization.GetString("nmResetTime"), diff.Hours, diff.Minutes);
             }
             else
