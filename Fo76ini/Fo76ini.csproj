@@ -373,6 +373,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\external-link-16.png" />
     <None Include="Resources\checkbox-24.png" />
     <None Include="Resources\add-archive-3-24.png" />
     <None Include="Resources\download-2-48.png" />

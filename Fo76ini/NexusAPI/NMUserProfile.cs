@@ -98,7 +98,7 @@ namespace Fo76ini.NexusAPI
                 }
                 catch (Exception e)
                 {
-                    MsgBox.Get("failed").FormatText($"Unexpected exception: {e.Message}").Show(MessageBoxIcon.Error);
+                    MsgBox.Get("failed").FormatText($"Unexpected exception: {e.Message}\n{e.StackTrace}\n\n{e.InnerException}").Show(MessageBoxIcon.Error);
                 }
             }
             else
@@ -128,8 +128,11 @@ namespace Fo76ini.NexusAPI
 
                 // Download if non-existent:
                 if (!File.Exists(ProfilePictureFilePath))
+                {
+                    Directory.CreateDirectory(NexusMods.FolderPath);
                     using (var client = new WebClient())
                         client.DownloadFile(ProfilePictureURL, ProfilePictureFilePath);
+                }
             }
             catch (UriFormatException exc)
             {

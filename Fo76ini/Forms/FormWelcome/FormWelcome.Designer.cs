@@ -34,6 +34,8 @@ namespace Fo76ini.Forms.FormWelcome
             this.labelTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBoxGameLocation = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.buttonAutoDetect = new System.Windows.Forms.Button();
             this.textBoxGamePath = new System.Windows.Forms.TextBox();
             this.buttonPickGamePath = new System.Windows.Forms.Button();
@@ -49,9 +51,8 @@ namespace Fo76ini.Forms.FormWelcome
             this.radioButtonEditionSteam = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionBethesdaNet = new System.Windows.Forms.RadioButton();
             this.buttonOK = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBoxGameLocation.SuspendLayout();
             this.groupBoxGameEdition.SuspendLayout();
@@ -65,13 +66,11 @@ namespace Fo76ini.Forms.FormWelcome
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 43);
+            this.label1.Location = new System.Drawing.Point(12, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(357, 65);
+            this.label1.Size = new System.Drawing.Size(422, 28);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Hi, it seems like you started the tool for the first time!\r\n\r\n» Now, I know you\'r" +
-    "e a busy fellow, so I won\'t take up much of your time.\r\n   I just need to verify" +
-    " some information, that\'s all! «";
+            this.label1.Text = "Hi, it seems like you started the tool for the first time!\r\n";
             // 
             // labelTitle
             // 
@@ -106,6 +105,27 @@ namespace Fo76ini.Forms.FormWelcome
             this.groupBoxGameLocation.TabIndex = 41;
             this.groupBoxGameLocation.TabStop = false;
             this.groupBoxGameLocation.Text = "Game location";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(8, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(386, 34);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "You can skip the game location, if you don\'t want to install mods.";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Location = new System.Drawing.Point(8, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(386, 88);
+            this.label2.TabIndex = 33;
+            this.label2.Text = resources.GetString("label2.Text");
             // 
             // buttonAutoDetect
             // 
@@ -274,38 +294,29 @@ namespace Fo76ini.Forms.FormWelcome
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Location = new System.Drawing.Point(8, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(386, 88);
-            this.label2.TabIndex = 33;
-            this.label2.Text = resources.GetString("label2.Text");
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 84);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(386, 34);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "You can skip the game location, if you don\'t want to install mods.";
-            // 
             // openFileDialogGamePath
             // 
             this.openFileDialogGamePath.FileName = "Fallout76.exe";
             this.openFileDialogGamePath.Filter = "Executable|*.exe";
             this.openFileDialogGamePath.FilterIndex = 2;
             // 
+            // label4
+            // 
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.label4.Location = new System.Drawing.Point(12, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(422, 46);
+            this.label4.TabIndex = 42;
+            this.label4.Text = "» Now, I know you\'re a busy fellow, so I won\'t take up much of your time.\r\n   I j" +
+    "ust need to verify some information, that\'s all! «\r\n       – Vault-Tec rep, Oct." +
+    " 2077";
+            // 
             // FormWelcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 581);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
@@ -355,5 +366,6 @@ namespace Fo76ini.Forms.FormWelcome
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.OpenFileDialog openFileDialogGamePath;
+        private System.Windows.Forms.Label label4;
     }
 }

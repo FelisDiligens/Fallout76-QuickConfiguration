@@ -705,6 +705,14 @@ namespace Fo76ini
                 saveToolStripMenuItem_Click(sender, e);
             }
 
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                // Select all:
+                foreach (ListViewItem item in this.listViewMods.Items)
+                    item.Selected = true;
+                UpdateSelectedIndices();
+            }
+
             // These shortcuts only apply to the mod list:
             if (this.listViewMods.Focused)
             {
@@ -1460,7 +1468,11 @@ namespace Fo76ini
 
                 if (modsWithUpdates.Count() > 0)
                 {
-                    MsgBox.Show("Updates available", $"{modsWithUpdates.Count()} updates found:\n\n{String.Join("\n", modsWithUpdates)}");
+                    MsgBox.Show("Updates available", $"{modsWithUpdates.Count()} updates found:\n\n{String.Join("\n", modsWithUpdates)}", MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MsgBox.Show("Up to date", "No updates found.", MessageBoxIcon.Information);
                 }
             });
         }

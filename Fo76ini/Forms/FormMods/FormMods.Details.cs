@@ -200,7 +200,7 @@ namespace Fo76ini
 
             sidePanelStatus = SidePanelStatus.Expanded;
 
-            UpdateSidePanelGroupBoxes();
+            UpdateSidePanelControls();
         }
 
 
@@ -223,7 +223,7 @@ namespace Fo76ini
                 UpdateSidePanelOneMod();
 
             UpdateWarningLabel();
-            UpdateSidePanelGroupBoxes();
+            UpdateSidePanelControls();
 
             isUpdatingSidePanel = false;
         }
@@ -232,16 +232,22 @@ namespace Fo76ini
         {
             this.checkBoxModDetailsEnabled.Visible = true;
             this.groupBoxModDetailsDetails.Visible = true;
-            this.linkLabelOpenOnNexus.LinkVisited = false;
-            this.linkLabelModDownloadFile.LinkVisited = false;
             this.groupBoxModReplace.Visible = true;
 
             // Update thumbnail:
-            this.pictureBoxModThumbnail.Image = Resources.bg;
-            if (this.editedMod.RemoteInfo != null && this.editedMod.RemoteInfo.ThumbnailFileName != "")
+            if (this.editedMod.RemoteInfo != null &&
+                this.editedMod.RemoteInfo.ThumbnailFileName != "" &&
+                File.Exists(this.editedMod.RemoteInfo.ThumbnailFilePath))
             {
-                if (File.Exists(this.editedMod.RemoteInfo.ThumbnailFilePath))
-                    this.pictureBoxModThumbnail.Image = Image.FromFile(this.editedMod.RemoteInfo.ThumbnailFilePath);
+                // Thumbnail exists, load it:
+                this.pictureBoxModThumbnail.Image = Image.FromFile(this.editedMod.RemoteInfo.ThumbnailFilePath);
+                this.pictureBoxModThumbnail.Visible = true;
+            }
+            else
+            {
+                // No thumbnail for us:
+                this.pictureBoxModThumbnail.Image = Resources.bg;
+                this.pictureBoxModThumbnail.Visible = false;
             }
 
             // Populate values:
@@ -325,6 +331,11 @@ namespace Fo76ini
             if (this.editedMod.RemoteInfo != null)
             {
                 this.panelModDetailsNexusMods.Visible = true;
+                this.buttonModEndorse.Visible = true;
+                this.buttonModAbstain.Visible = true;
+                this.labelModEndorseStatus.Visible = true;
+                this.labelModSummary.Visible = true;
+
                 this.labelModLatestVersion.Text = this.editedMod.RemoteInfo.LatestVersion;
                 this.labelModAuthor.Text = this.editedMod.RemoteInfo.Author;
                 this.labelModSummary.Text =
@@ -356,6 +367,10 @@ namespace Fo76ini
             else
             {
                 this.panelModDetailsNexusMods.Visible = false;
+                this.buttonModEndorse.Visible = false;
+                this.buttonModAbstain.Visible = false;
+                this.labelModEndorseStatus.Visible = false;
+                this.labelModSummary.Visible = false;
             }
         }
 
@@ -392,6 +407,13 @@ namespace Fo76ini
             // Populate values:
             this.comboBoxModInstallAs.SelectedIndex = 0; // BundledBA2
             this.comboBoxModArchivePreset.SelectedIndex = 0; // Please select
+
+            // NexusMods:
+            this.panelModDetailsNexusMods.Visible = false;
+            this.buttonModEndorse.Visible = false;
+            this.buttonModAbstain.Visible = false;
+            this.labelModEndorseStatus.Visible = false;
+            this.labelModSummary.Visible = false;
         }
 
         /// <summary>
@@ -410,10 +432,48 @@ namespace Fo76ini
             this.groupBoxModReplace.Width = width;
         }
 
-        private void UpdateSidePanelGroupBoxes()
+        private void UpdateSidePanelControls()
         {
-            // Determine optimal height:
-            int margin = 12;
+            int groupboxMargin = 6;
+            int controlMargin = 8;
+            int groupboxBottomMargin = 12;
+
+            // Is thumbnail visible?
+            if (this.pictureBoxModThumbnail.Visible)
+            {
+                // Move header underneath thumbnail:
+                this.panelModDetailsHeader.Top = this.pictureBoxModThumbnail.Top + this.pictureBoxModThumbnail.Height;
+                this.panelModDetailsInner.Height = this.panelModDetails.Height - this.panelModDetailsHeader.Height - this.pictureBoxModThumbnail.Height;
+            }
+            else
+            {
+                // Move header up:
+                this.panelModDetailsHeader.Top = 0;
+                this.panelModDetailsInner.Height = this.panelModDetails.Height - this.panelModDetailsHeader.Height;
+            }
+            this.panelModDetailsInner.Top = this.panelModDetailsHeader.Top + this.panelModDetailsHeader.Height;
+
+            // Is summary visible?
+            if (this.labelModSummary.Visible)
+                // Place first groupbox underneath summary:
+                this.groupBoxModDetailsDetails.Top = this.labelModSummary.Top + this.labelModSummary.Height + controlMargin;
+            else
+                // Place first groupbox on top:
+                this.groupBoxModDetailsDetails.Top = groupboxMargin;
+
+            // Place controls on the bottom:
+            int newTop = 0;
+            foreach (Control control in new Control[] { comboBoxModInstallAs, textBoxModRootDir, comboBoxModArchivePreset, textBoxModArchiveName, checkBoxFreezeArchive })
+                if (control.Visible && control.Top + control.Height > newTop)
+                    newTop = control.Top + control.Height;
+
+            this.labelModInstallWarning.Top = newTop + controlMargin;
+            if (this.labelModInstallWarning.Visible)
+                this.linkLabelModAutoDetectInstallOptions.Top = this.labelModInstallWarning.Top + this.labelModInstallWarning.Height + controlMargin;
+            else
+                this.linkLabelModAutoDetectInstallOptions.Top = newTop + controlMargin;
+
+            // Determine optimal height of groupboxes:
             foreach (GroupBox box in new GroupBox[] { groupBoxModDetailsDetails, groupBoxModDetailsInstallationOptions })
             {
                 int newHeight = 0;
@@ -421,7 +481,7 @@ namespace Fo76ini
                 {
                     if (control.Visible)
                     {
-                        int temp = control.Top + control.Height + margin;
+                        int temp = control.Top + control.Height + groupboxBottomMargin;
                         if (newHeight < temp)
                             newHeight = temp;
                     }
@@ -430,11 +490,9 @@ namespace Fo76ini
             }
 
             // Place groupboxes underneath each other:
-            margin = 6;
             GroupBox[] groupBoxes = new GroupBox[] { groupBoxModDetailsDetails, groupBoxModDetailsInstallationOptions, groupBoxModReplace };
-
             for (int i = 1; i < groupBoxes.Length; i++)
-                groupBoxes[i].Top = groupBoxes[i - 1].Top + groupBoxes[i - 1].Height + margin;
+                groupBoxes[i].Top = groupBoxes[i - 1].Top + groupBoxes[i - 1].Height + groupboxMargin;
 
             UpdateSidePanelGroupBoxesWidth();
         }
@@ -593,7 +651,7 @@ namespace Fo76ini
             UpdateModList();
             UpdateStatusStrip();
             UpdateWarningLabel();
-            UpdateSidePanelGroupBoxes();
+            UpdateSidePanelControls();
             Mods.Save();
         }
 
@@ -634,7 +692,7 @@ namespace Fo76ini
             UpdateModList();
             UpdateStatusStrip();
             UpdateWarningLabel();
-            UpdateSidePanelGroupBoxes();
+            UpdateSidePanelControls();
             Mods.Save();
         }
 
@@ -653,7 +711,7 @@ namespace Fo76ini
             UpdateModList();
             UpdateStatusStrip();
             UpdateWarningLabel();
-            UpdateSidePanelGroupBoxes();
+            UpdateSidePanelControls();
             Mods.Save();
         }
 
@@ -667,7 +725,7 @@ namespace Fo76ini
             UpdateModList();
             UpdateStatusStrip();
             UpdateWarningLabel();
-            UpdateSidePanelGroupBoxes();
+            UpdateSidePanelControls();
             Mods.Save();
         }
 
@@ -746,13 +804,18 @@ namespace Fo76ini
         {
             this.editedMod.ArchiveName = Utils.GetValidFileName(this.editedMod.Title, ".ba2");
             this.textBoxModArchiveName.Text = this.editedMod.ArchiveName;
+            UpdateSidePanel();
+            UpdateModList();
+            Mods.Save();
         }
 
         // Open webpage
-        private void linkLabelOpenOnNexus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void buttonModOpenPage_Click(object sender, EventArgs e)
         {
-            Process.Start(editedMod.URL);
-            this.linkLabelOpenOnNexus.LinkVisited = true;
+            if (editedMod.ID >= 0)
+                Process.Start("https://www.nexusmods.com/fallout76/mods/" + editedMod.ID.ToString()/* + "?tab=files"*/);
+            else if (editedMod.URL != "")
+                Process.Start(editedMod.URL);
         }
 
         // Set latest version
@@ -763,13 +826,6 @@ namespace Fo76ini
                 this.editedMod.Version = editedMod.RemoteInfo.LatestVersion;
                 this.textBoxModVersion.Text = editedMod.RemoteInfo.LatestVersion;
             }
-        }
-
-        // Download latest
-        private void linkLabelModDownloadFile_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("https://www.nexusmods.com/fallout76/mods/" + editedMod.ID.ToString() + "?tab=files");
-            this.linkLabelModDownloadFile.LinkVisited = true;
         }
 
         // Delete folder contents
@@ -801,10 +857,13 @@ namespace Fo76ini
         // Auto-detect installation options
         private void linkLabelModAutoDetectInstallOptions_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (editingBulk)
-                return;
-
-            ModActions.DetectOptimalModInstallationOptions(editedMod);
+            if (!editingBulk)
+                ModActions.DetectOptimalModInstallationOptions(editedMod);
+            else
+            {
+                foreach (int index in editedIndices)
+                    ModActions.DetectOptimalModInstallationOptions(Mods[index]);
+            }
             UpdateSidePanel();
             UpdateModList();
         }

@@ -100,9 +100,12 @@ namespace Fo76ini
         {
             string backupDir = Path.Combine(ParentPath, "Backups", DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
             Directory.CreateDirectory(backupDir);
-            File.Copy(F76.FilePath, Path.Combine(backupDir, F76.FileName), true);
-            File.Copy(F76Prefs.FilePath, Path.Combine(backupDir, F76Prefs.FileName), true);
-            File.Copy(F76Custom.FilePath, Path.Combine(backupDir, F76Custom.FileName), true);
+            if (File.Exists(F76.FilePath))
+                File.Copy(F76.FilePath, Path.Combine(backupDir, F76.FileName), true);
+            if (File.Exists(F76Prefs.FilePath))
+                File.Copy(F76Prefs.FilePath, Path.Combine(backupDir, F76Prefs.FileName), true);
+            if (File.Exists(F76Custom.FilePath))
+                File.Copy(F76Custom.FilePath, Path.Combine(backupDir, F76Custom.FileName), true);
         }
 
         public static bool FilesHaveBeenModified()
