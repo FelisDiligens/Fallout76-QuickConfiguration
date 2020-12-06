@@ -43,6 +43,9 @@ ICONS
     "Orange external link 2 icon" by Iconic licensed under MIT License.
     https://www.iconsdb.com/orange-icons/external-link-2-icon.html
 
+    "Black login icon" by icons8.com is licensed under Creative Commons Attribution-NoDerivs 3.0
+    https://www.iconsdb.com/black-icons/login-icon.html
+
 
   Thumbs up and down icons made by Those Icons from www.flaticon.com
   https://www.flaticon.com/free-icon/like_2087973?term=thumbs%20up&page=1&position=5&related_item_id=2087973

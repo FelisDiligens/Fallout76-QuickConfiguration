@@ -65,5 +65,33 @@ namespace Fo76ini.Utilities
                 return false;
             }
         }
+
+        public static bool TryParseLong(this XAttribute element, out long result)
+        {
+            try
+            {
+                result = XmlConvert.ToInt64(element.Value);
+                return true;
+            }
+            catch
+            {
+                result = 0;
+                return false;
+            }
+        }
+
+        public static bool TryParseLong(this XElement element, out long result)
+        {
+            try
+            {
+                result = XmlConvert.ToInt64(element.Value);
+                return true;
+            }
+            catch
+            {
+                result = 0;
+                return false;
+            }
+        }
     }
 }

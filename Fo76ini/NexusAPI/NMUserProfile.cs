@@ -23,35 +23,30 @@ namespace Fo76ini.NexusAPI
             Premium
         }
 
-        public string APIKey;
-
-        /// <summary>
-        /// Whether the API key is valid.
-        /// </summary>
-        public bool ValidKey;
+        public string APIKey = "";
 
         public string UserName = "Anonymous";
-        public long UserID;
-        public Membership Status;
+        public long UserID = -1;
+        public Membership Status = Membership.Basic;
 
-        public string ProfilePictureURL;
-        public string ProfilePictureFileName;
+        public string ProfilePictureURL = "";
+        public string ProfilePictureFileName = "";
 
         public string ProfilePictureFilePath
         {
             get => Path.Combine(NexusMods.FolderPath, ProfilePictureFileName);
         }
 
-        public int DailyRateLimit;
-        public int HourlyRateLimit;
-        public string DailyRateLimitResetString;
+        public int DailyRateLimit = 0;
+        public int HourlyRateLimit = 0;
+        public string DailyRateLimitResetString = "";
 
         /// <summary>
         /// Whether the user is currently logged in.
         /// </summary>
         public bool IsLoggedIn
         {
-            get { return ValidKey || UserID > 0; }
+            get { return APIKey != null && APIKey != "" && UserID > 0; }
         }
 
         public NMUserProfile() { }
@@ -93,8 +88,6 @@ namespace Fo76ini.NexusAPI
                       - "key"
                       - "email"
                      */
-
-                    ValidKey = true;
                 }
                 catch (Exception e)
                 {
@@ -114,8 +107,6 @@ namespace Fo76ini.NexusAPI
                 {
                     MsgBox.Get("failed").FormatText($"Unexpected exception: {e.Message}").Show(MessageBoxIcon.Error);
                 }
-
-                ValidKey = false;
             }
         }
 
@@ -143,38 +134,137 @@ namespace Fo76ini.NexusAPI
         }
 
         /// <summary>
-        /// Saves user profile information to the configuration.
+        /// Saves user profile information to account.xml
         /// </summary>
         public void Save()
         {
-            IniFiles.Config.Set("NexusMods", "sAPIKey", APIKey);
-            IniFiles.Config.Set("NexusMods", "iUserID", UserID);
-            IniFiles.Config.Set("NexusMods", "bAPIKeyValid", ValidKey);
-            IniFiles.Config.Set("NexusMods", "sUserName", UserName);
-            IniFiles.Config.Set("NexusMods", "sProfileURL", ProfilePictureURL);
-            IniFiles.Config.Set("NexusMods", "sProfile", ProfilePictureFileName);
-            IniFiles.Config.Set("NexusMods", "iDailyRateLimit", DailyRateLimit);
-            IniFiles.Config.Set("NexusMods", "iHourlyRateLimit", HourlyRateLimit);
-            IniFiles.Config.Set("NexusMods", "sDailyRateLimitReset", DailyRateLimitResetString);
-            IniFiles.Config.Set("NexusMods", "sMembership", Status.ToString());
-            IniFiles.Config.Save();
+            /*
+             <Account id="41275740">
+                 <Authentification>
+                     <APIKey>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</APIKey>
+                 </Authentification>
+                 <Profile>
+                     <Username>datasnake01</Username>
+                     <Membership>Premium</Membership>
+                     <Picture url="https://xxxxxxx" file="profile.jpg"/>
+                 </Profile>
+                 <RateLimit daily="2500" hourly="100">
+                     <DailyResetTime>2020-12-07 00:00:00 +0010</DailyResetTime>
+                 </RateLimit>
+             </Account>
+             */
+
+            XDocument xmlDoc = new XDocument();
+            XElement xmlRoot = new XElement("Account", new XAttribute("id", UserID));
+            xmlDoc.Add(xmlRoot);
+
+            /*
+             * Authentification
+             */
+
+            // Add apikey:
+            XElement xmlAuth = new XElement("Authentification");
+            if (APIKey != null && APIKey != "")
+                xmlAuth.Add(new XElement("APIKey", APIKey));
+            xmlRoot.Add(xmlAuth);
+
+
+            /*
+             * Profile
+             */
+
+            XElement xmlProfile = new XElement("Profile",
+                new XElement("Username", UserName),
+                new XElement("Membership", Status.ToString())
+            );
+            xmlRoot.Add(xmlProfile);
+
+            if (ProfilePictureURL != "" && ProfilePictureFileName != "")
+            {
+                xmlProfile.Add(new XElement("Picture",
+                    new XAttribute("url", ProfilePictureURL),
+                    new XAttribute("file", ProfilePictureFileName)
+                ));
+            }
+
+
+            /*
+             * RateLimit
+             */
+
+            xmlRoot.Add(new XElement("RateLimit",
+                new XAttribute("daily", DailyRateLimit),
+                new XAttribute("hourly", HourlyRateLimit),
+                new XElement("DailyResetTime", DailyRateLimitResetString)
+            ));
+
+            xmlDoc.Save(NexusMods.AccountXMLPath);
         }
 
         /// <summary>
-        /// Loads user profile information from the configuration.
+        /// Loads user profile information from account.xml
         /// </summary>
-        public void Load()
+        public bool Load()
         {
-            APIKey = IniFiles.Config.GetString("NexusMods", "sAPIKey", "");
-            UserID = IniFiles.Config.GetLong("NexusMods", "iUserID", -1);
-            ValidKey = IniFiles.Config.GetBool("NexusMods", "bAPIKeyValid", false);
-            UserName = IniFiles.Config.GetString("NexusMods", "sUserName", "Anonymous");
-            ProfilePictureURL = IniFiles.Config.GetString("NexusMods", "sPicURL", "");
-            ProfilePictureFileName = IniFiles.Config.GetString("NexusMods", "sProfile", "");
-            DailyRateLimit = IniFiles.Config.GetInt("NexusMods", "iDailyRateLimit", 0);
-            HourlyRateLimit = IniFiles.Config.GetInt("NexusMods", "iHourlyRateLimit", 0);
-            DailyRateLimitResetString = IniFiles.Config.GetString("NexusMods", "sDailyRateLimitReset", "");
-            Enum.TryParse(IniFiles.Config.GetString("NexusMods", "sMembership", "Basic"), out Status);
+            if (!File.Exists(NexusMods.AccountXMLPath))
+                return false;
+
+            XDocument xmlDoc = XDocument.Load(NexusMods.AccountXMLPath);
+            XElement xmlRoot = xmlDoc.Root;
+
+            if (xmlRoot.Attribute("id") != null)
+                if (!xmlRoot.Attribute("id").TryParseLong(out UserID))
+                    UserID = -1;
+
+            /*
+             * Authentification
+             */
+
+            XElement xmlAuth = xmlRoot.Element("Authentification");
+            if (xmlAuth != null && xmlAuth.Element("APIKey") != null)
+                APIKey = xmlAuth.Element("APIKey").Value;
+
+
+            /*
+             * Profile
+             */
+
+            XElement xmlProfile = xmlRoot.Element("Profile");
+            if (xmlProfile != null)
+            {
+                if (xmlProfile.Element("Username") != null)
+                    UserName = xmlProfile.Element("Username").Value;
+                if (xmlProfile.Element("Membership") != null)
+                    Enum.TryParse(xmlProfile.Element("Membership").Value, out Status);
+
+                // Profile picture
+                XElement xmlProfilePicture = xmlProfile.Element("Picture");
+                if (xmlProfilePicture.Attribute("url") != null && xmlProfilePicture.Attribute("file") != null)
+                {
+                    ProfilePictureURL = xmlProfilePicture.Attribute("url").Value;
+                    ProfilePictureFileName = xmlProfilePicture.Attribute("file").Value;
+                }
+            }
+
+
+            /*
+             * RateLimit
+             */
+
+            XElement xmlRateLimit = xmlRoot.Element("RateLimit");
+            if (xmlRateLimit != null)
+            {
+                if (xmlRateLimit.Attribute("daily") != null)
+                    xmlRateLimit.Attribute("daily").TryParseInt(out DailyRateLimit);
+
+                if (xmlRateLimit.Attribute("hourly") != null)
+                    xmlRateLimit.Attribute("hourly").TryParseInt(out HourlyRateLimit);
+
+                if (xmlRateLimit.Element("DailyResetTime") != null)
+                    DailyRateLimitResetString = xmlRateLimit.Element("DailyResetTime").Value;
+            }
+
+            return true;
         }
 
         public bool TryParseDailyRateLimitReset(out DateTime result)
@@ -197,7 +287,6 @@ namespace Fo76ini.NexusAPI
         public void Remove()
         {
             APIKey = "";
-            ValidKey = false;
             UserName = "Anonymous";
             UserID = -1;
             ProfilePictureFileName = "";
@@ -207,6 +296,7 @@ namespace Fo76ini.NexusAPI
             HourlyRateLimit = 0;
             DailyRateLimitResetString = "";
 
+            // Remove old values from config.ini:
             IniFiles.Config.Remove("NexusMods", "sAPIKey");
             IniFiles.Config.Remove("NexusMods", "bAPIKeyValid");
             IniFiles.Config.Remove("NexusMods", "sUserName");
@@ -217,9 +307,13 @@ namespace Fo76ini.NexusAPI
             IniFiles.Config.Remove("NexusMods", "iHourlyRateLimit");
             IniFiles.Config.Remove("NexusMods", "sDailyRateLimitReset");
             IniFiles.Config.Remove("NexusMods", "sMembership");
-
             IniFiles.Config.Save();
 
+            // Remove accounts.xml:
+            if (File.Exists(NexusMods.AccountXMLPath))
+                File.Delete(NexusMods.AccountXMLPath);
+
+            // Remove profile picture:
             try
             {
                 if (File.Exists(ProfilePictureFileName))

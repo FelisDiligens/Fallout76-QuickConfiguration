@@ -11,7 +11,7 @@ namespace Fo76ini.NexusAPI
 {
     /// <summary>
     /// Wrapper around the classes of System.Net.
-    /// Used to make requests to the NexusMods' API.
+    /// Used to make HTTPS requests to the NexusMods' API.
     /// </summary>
     public class APIRequest
     {
@@ -31,7 +31,7 @@ namespace Fo76ini.NexusAPI
 
             this.UserAgent = Shared.AppUserAgent;
             this.Headers["Application-Version"] = Shared.VERSION;
-            this.Headers["Application-Name"] = "Fallout 76 Quick Configuration";
+            this.Headers["Application-Name"] = NexusMods.ApplicationName;
         }
 
         /// <summary>

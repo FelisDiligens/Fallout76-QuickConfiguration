@@ -7,6 +7,7 @@ using Fo76ini.Tweaks;
 using Fo76ini.Tweaks.Config;
 using Fo76ini.Tweaks.Inis;
 using Fo76ini.Tweaks.NuclearWinterMode;
+using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,6 +69,8 @@ namespace Fo76ini.Forms.FormSettings
             this.backgroundWorkerDownloadLanguages.RunWorkerCompleted += backgroundWorkerDownloadLanguages_RunWorkerCompleted;
             this.backgroundWorkerRetrieveProfileInfo.RunWorkerCompleted += backgroundWorkerRetrieveProfileInfo_RunWorkerCompleted;
             this.FormClosing += FormSettings_FormClosing;
+
+            SingleSignOn.APIKeyReceived += SingleSignOn_APIKeyReceived;
         }
 
         private void FormSettings_Load(object sender, EventArgs e)
@@ -560,11 +563,14 @@ namespace Fo76ini.Forms.FormSettings
 
         public void RefreshNMUI()
         {
+            /*
+             * Visiblility of labels:
+             */
+
             bool loggedIn = NexusMods.User.IsLoggedIn;
 
+            // Labels:
             this.labelNMNotLoggedIn.Visible = !loggedIn;
-            this.linkLabelNMGetAPIKey.Visible = !loggedIn;
-
             this.labelNMDailyRateLimit.Visible = loggedIn;
             this.labelNMHourlyRateLimit.Visible = loggedIn;
             this.labelNMDailyRateLimitReset.Visible = loggedIn;
@@ -575,11 +581,34 @@ namespace Fo76ini.Forms.FormSettings
             this.labelNMDescUserID.Visible = loggedIn;
             this.labelNMMembership.Visible = loggedIn;
             this.labelNMUserID.Visible = loggedIn;
-            this.labelNMDescAPIKey.Visible = loggedIn;
-            this.labelNMAPIKeyStatus.Visible = loggedIn;
 
 
-            this.textBoxAPIKey.Text = NexusMods.User.APIKey;
+            /*
+             * Position and visiblility of buttons:
+             */
+
+            int buttonMargin = 6;  // px
+            int buttonOffset = 25; // px
+
+            Button[] buttons = new Button[] { buttonNMLogin, buttonNWLogout, buttonNMUpdateProfile, buttonNWDeleteCache };
+            bool[] visiblity = new bool[] { !loggedIn, loggedIn, loggedIn, true };
+
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                int left = buttonOffset;
+                for (int j = 0; j < i; j++)
+                {
+                    if (j >= 0 && visiblity[j])
+                        left += buttons[j].Width + buttonMargin;
+                }
+                buttons[i].Left = left;
+                buttons[i].Visible = visiblity[i];
+            }
+
+
+            /*
+             * Fill in information:
+             */
 
             this.labelNMUserName.Text = NexusMods.User.UserName;
             this.labelNMUserID.Text = NexusMods.User.UserID.ToString();
@@ -599,17 +628,6 @@ namespace Fo76ini.Forms.FormSettings
                     this.labelNMMembership.Text = Localization.GetString("nmBasicAccount");
                     this.labelNMMembership.ForeColor = Color.White;
                     break;
-            }
-
-            if (!NexusMods.User.ValidKey)
-            {
-                this.labelNMAPIKeyStatus.Text = Localization.GetString("invalid");
-                this.labelNMAPIKeyStatus.ForeColor = Color.Red;
-            }
-            else
-            {
-                this.labelNMAPIKeyStatus.Text = Localization.GetString("valid");
-                this.labelNMAPIKeyStatus.ForeColor = Color.PaleGreen;
             }
 
             this.labelNMDailyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.User.DailyRateLimit);
@@ -646,19 +664,41 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (this.backgroundWorkerRetrieveProfileInfo.IsBusy)
                 return;
-            if (this.textBoxAPIKey.Text == "")
+            if (NexusMods.User.APIKey == "")
                 return;
             this.pictureBoxNMProfilePicture.Image = Resources.Spinner_200;
             this.backgroundWorkerRetrieveProfileInfo.RunWorkerAsync();
         }
 
+        private void buttonNMLogin_Click(object sender, EventArgs e)
+        {
+            MsgBox.Popup("Login to NexusMods", "When the web browser opens, please click on 'Authorize' to login in.", MessageBoxIcon.Information);
+            backgroundWorkerSSOLogin.RunWorkerAsync();
+        }
+
+        private void SingleSignOn_APIKeyReceived(object sender, SSOEventArgs e)
+        {
+            if (e.success)
+            {
+                NexusMods.User.APIKey = e.APIKey;
+                MsgBox.Popup("Success", "You are now logged in with your NexusMods account.", MessageBoxIcon.Information);
+                this.tabPageNexusMods.Invoke(new Action(() => {
+                    UpdateNMProfile();
+                }));
+            }
+            else
+            {
+                MsgBox.Popup("Failed", "Something went wrong.", MessageBoxIcon.Error);
+            }
+        }
+
         private void buttonNMUpdateProfile_Click(object sender, EventArgs e)
         {
-            if (this.textBoxAPIKey.Text == "")
+            /*if (this.textBoxAPIKey.Text == "")
             {
                 MsgBox.Show("No API key entered", "Please enter your API key first before updating your profile.", MessageBoxIcon.Information);
                 return;
-            }
+            }*/
             UpdateNMProfile();
         }
 
@@ -667,14 +707,13 @@ namespace Fo76ini.Forms.FormSettings
             if (MsgBox.Get("areYouSure").FormatText("Do you really want to log out?").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.pictureBoxNMProfilePicture.Image = Resources.user_white;
-                this.textBoxAPIKey.Text = "";
                 NexusMods.User.Remove();
                 RefreshNMUI();
                 MsgBox.Get("done").FormatText("Logged out").Popup(MessageBoxIcon.Information);
             }
         }
 
-        private void buttonNWDeleteAll_Click(object sender, EventArgs e)
+        private void buttonNWDeleteCache_Click(object sender, EventArgs e)
         {
             if (MsgBox.Get("areYouSure").FormatText("Do you really want to delete all remote information?").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -684,29 +723,10 @@ namespace Fo76ini.Forms.FormSettings
             }
         }
 
-        private void linkLabelNMGetAPIKey_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            linkLabelNMGetAPIKey.LinkVisited = true;
-            System.Diagnostics.Process.Start("https://www.nexusmods.com/users/myaccount?tab=api%20access");
-        }
-
-        private void textBoxAPIKey_TextChanged(object sender, EventArgs e)
-        {
-            IniFiles.Config.Set("NexusMods", "sAPIKey", this.textBoxAPIKey.Text);
-            IniFiles.Config.Save();
-            NexusMods.User.APIKey = this.textBoxAPIKey.Text;
-        }
-
-        private void checkBoxShowAPIKey_CheckedChanged(object sender, EventArgs e)
-        {
-            this.textBoxAPIKey.UseSystemPasswordChar = !this.checkBoxShowAPIKey.Checked;
-            this.textBoxAPIKey.PasswordChar = !this.checkBoxShowAPIKey.Checked ? '\u2022' : '\0';
-        }
-
         private void pictureBoxNMProfilePicture_Click(object sender, EventArgs e)
         {
             if (NexusMods.User.UserID >= 0)
-                System.Diagnostics.Process.Start($"https://www.nexusmods.com/users/{NexusMods.User.UserID}");
+                Utils.OpenURL("https://www.nexusmods.com/users/"+ NexusMods.User.UserID);
         }
 
 
@@ -733,7 +753,6 @@ namespace Fo76ini.Forms.FormSettings
 
         private void backgroundWorkerRetrieveProfileInfo_DoWork(object sender, DoWorkEventArgs e)
         {
-            NexusMods.User.Load();
             NexusMods.User.Update();
             NexusMods.User.Save();
         }
@@ -741,6 +760,11 @@ namespace Fo76ini.Forms.FormSettings
         private void backgroundWorkerRetrieveProfileInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             RefreshNMUI();
+        }
+
+        private void backgroundWorkerSSOLogin_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SingleSignOn.Connect();
         }
 
         #endregion

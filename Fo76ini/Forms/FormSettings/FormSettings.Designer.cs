@@ -54,8 +54,11 @@
             this.checkBoxQuitOnGameLaunch = new System.Windows.Forms.CheckBox();
             this.checkBoxAutoApply = new System.Windows.Forms.CheckBox();
             this.groupBoxLocalization = new System.Windows.Forms.GroupBox();
+            this.buttonRefreshLanguage = new System.Windows.Forms.Button();
+            this.pictureBoxSpinnerDownloadLanguages = new System.Windows.Forms.PictureBox();
             this.labelOutdatedLanguage = new System.Windows.Forms.Label();
             this.labelLanguage = new System.Windows.Forms.Label();
+            this.buttonDownloadLanguages = new System.Windows.Forms.Button();
             this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
             this.tabPageGameProfiles = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -80,6 +83,11 @@
             this.buttonPickGamePath = new System.Windows.Forms.Button();
             this.groupBoxGameEdition = new System.Windows.Forms.GroupBox();
             this.radioButtonEditionUnknown = new System.Windows.Forms.RadioButton();
+            this.pictureBoxUnknown = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMSStore = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSteam = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBethesdaNetPTS = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBethesdaNet = new System.Windows.Forms.PictureBox();
             this.radioButtonEditionMSStore = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionBethesdaNetPTS = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionSteam = new System.Windows.Forms.RadioButton();
@@ -89,27 +97,31 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripGame = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.launchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.renameGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.labelTip = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonAddGame = new System.Windows.Forms.ToolStripButton();
             this.tabPageNexusMods = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonNMLogin = new System.Windows.Forms.Button();
+            this.buttonNWDeleteCache = new System.Windows.Forms.Button();
+            this.buttonNWLogout = new System.Windows.Forms.Button();
             this.checkBoxNMDownloadThumbnails = new System.Windows.Forms.CheckBox();
             this.labelNMOptions = new System.Windows.Forms.Label();
             this.checkBoxNMUpdateProfile = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowAPIKey = new System.Windows.Forms.CheckBox();
-            this.textBoxAPIKey = new System.Windows.Forms.TextBox();
-            this.labelNMAPIKeyTextBox = new System.Windows.Forms.Label();
+            this.buttonNMUpdateProfile = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelNMNotLoggedIn = new System.Windows.Forms.Label();
             this.labelNMUserID = new System.Windows.Forms.Label();
             this.labelNMDescUserID = new System.Windows.Forms.Label();
             this.labelNMHourlyRateLimit = new System.Windows.Forms.Label();
-            this.linkLabelNMGetAPIKey = new System.Windows.Forms.LinkLabel();
             this.labelNMDescHourlyRateLimit = new System.Windows.Forms.Label();
-            this.labelNMAPIKeyStatus = new System.Windows.Forms.Label();
-            this.labelNMDescAPIKey = new System.Windows.Forms.Label();
+            this.pictureBoxNMProfilePicture = new System.Windows.Forms.PictureBox();
             this.labelNMUserName = new System.Windows.Forms.Label();
             this.labelNMDescMembership = new System.Windows.Forms.Label();
             this.labelNMDailyRateLimitReset = new System.Windows.Forms.Label();
@@ -121,22 +133,7 @@
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorkerDownloadLanguages = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
-            this.buttonRefreshLanguage = new System.Windows.Forms.Button();
-            this.pictureBoxSpinnerDownloadLanguages = new System.Windows.Forms.PictureBox();
-            this.buttonDownloadLanguages = new System.Windows.Forms.Button();
-            this.pictureBoxUnknown = new System.Windows.Forms.PictureBox();
-            this.pictureBoxMSStore = new System.Windows.Forms.PictureBox();
-            this.pictureBoxSteam = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBethesdaNetPTS = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBethesdaNet = new System.Windows.Forms.PictureBox();
-            this.launchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButtonAddGame = new System.Windows.Forms.ToolStripButton();
-            this.buttonNWDeleteAll = new System.Windows.Forms.Button();
-            this.buttonNWLogout = new System.Windows.Forms.Button();
-            this.buttonNMUpdateProfile = new System.Windows.Forms.Button();
-            this.pictureBoxNMProfilePicture = new System.Windows.Forms.PictureBox();
+            this.backgroundWorkerSSOLogin = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxActions.SuspendLayout();
@@ -144,6 +141,7 @@
             this.groupBoxNuclearWinterMode.SuspendLayout();
             this.groupBoxBehavior.SuspendLayout();
             this.groupBoxLocalization.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
             this.tabPageGameProfiles.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxSettings.SuspendLayout();
@@ -152,18 +150,17 @@
             this.groupBoxLaunchOptions.SuspendLayout();
             this.groupBoxGameLocation.SuspendLayout();
             this.groupBoxGameEdition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).BeginInit();
             this.groupBoxGame.SuspendLayout();
             this.contextMenuStripGame.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabPageNexusMods.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -369,6 +366,34 @@
             this.groupBoxLocalization.TabStop = false;
             this.groupBoxLocalization.Text = "Localization";
             // 
+            // buttonRefreshLanguage
+            // 
+            this.buttonRefreshLanguage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRefreshLanguage.BackColor = System.Drawing.Color.Transparent;
+            this.buttonRefreshLanguage.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.buttonRefreshLanguage.FlatAppearance.BorderSize = 0;
+            this.buttonRefreshLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefreshLanguage.Image = global::Fo76ini.Properties.Resources.available_updates;
+            this.buttonRefreshLanguage.Location = new System.Drawing.Point(351, 49);
+            this.buttonRefreshLanguage.Name = "buttonRefreshLanguage";
+            this.buttonRefreshLanguage.Size = new System.Drawing.Size(32, 32);
+            this.buttonRefreshLanguage.TabIndex = 40;
+            this.toolTip.SetToolTip(this.buttonRefreshLanguage, "Refresh language list and reapply translation");
+            this.buttonRefreshLanguage.UseVisualStyleBackColor = false;
+            this.buttonRefreshLanguage.Click += new System.EventHandler(this.buttonRefreshLanguage_Click);
+            // 
+            // pictureBoxSpinnerDownloadLanguages
+            // 
+            this.pictureBoxSpinnerDownloadLanguages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxSpinnerDownloadLanguages.Image = global::Fo76ini.Properties.Resources.Spinner_24;
+            this.pictureBoxSpinnerDownloadLanguages.Location = new System.Drawing.Point(283, 53);
+            this.pictureBoxSpinnerDownloadLanguages.Name = "pictureBoxSpinnerDownloadLanguages";
+            this.pictureBoxSpinnerDownloadLanguages.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxSpinnerDownloadLanguages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxSpinnerDownloadLanguages.TabIndex = 40;
+            this.pictureBoxSpinnerDownloadLanguages.TabStop = false;
+            this.pictureBoxSpinnerDownloadLanguages.Visible = false;
+            // 
             // labelOutdatedLanguage
             // 
             this.labelOutdatedLanguage.AutoSize = true;
@@ -387,6 +412,21 @@
             this.labelLanguage.Size = new System.Drawing.Size(58, 13);
             this.labelLanguage.TabIndex = 16;
             this.labelLanguage.Text = "Language:";
+            // 
+            // buttonDownloadLanguages
+            // 
+            this.buttonDownloadLanguages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDownloadLanguages.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.buttonDownloadLanguages.FlatAppearance.BorderSize = 0;
+            this.buttonDownloadLanguages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDownloadLanguages.Image = global::Fo76ini.Properties.Resources.download_2_24;
+            this.buttonDownloadLanguages.Location = new System.Drawing.Point(313, 49);
+            this.buttonDownloadLanguages.Name = "buttonDownloadLanguages";
+            this.buttonDownloadLanguages.Size = new System.Drawing.Size(32, 32);
+            this.buttonDownloadLanguages.TabIndex = 20;
+            this.toolTip.SetToolTip(this.buttonDownloadLanguages, "Download / update language files");
+            this.buttonDownloadLanguages.UseVisualStyleBackColor = true;
+            this.buttonDownloadLanguages.Click += new System.EventHandler(this.buttonDownloadLanguages_Click);
             // 
             // comboBoxLanguage
             // 
@@ -659,6 +699,56 @@
             this.radioButtonEditionUnknown.UseVisualStyleBackColor = true;
             this.radioButtonEditionUnknown.CheckedChanged += new System.EventHandler(this.radioButtonEditionUnknown_CheckedChanged);
             // 
+            // pictureBoxUnknown
+            // 
+            this.pictureBoxUnknown.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxUnknown.Image = global::Fo76ini.Properties.Resources.help_24;
+            this.pictureBoxUnknown.Location = new System.Drawing.Point(11, 139);
+            this.pictureBoxUnknown.Name = "pictureBoxUnknown";
+            this.pictureBoxUnknown.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxUnknown.TabIndex = 30;
+            this.pictureBoxUnknown.TabStop = false;
+            // 
+            // pictureBoxMSStore
+            // 
+            this.pictureBoxMSStore.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.msstore_24;
+            this.pictureBoxMSStore.Location = new System.Drawing.Point(11, 109);
+            this.pictureBoxMSStore.Name = "pictureBoxMSStore";
+            this.pictureBoxMSStore.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxMSStore.TabIndex = 29;
+            this.pictureBoxMSStore.TabStop = false;
+            // 
+            // pictureBoxSteam
+            // 
+            this.pictureBoxSteam.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxSteam.Image = global::Fo76ini.Properties.Resources.steam_24px;
+            this.pictureBoxSteam.Location = new System.Drawing.Point(11, 79);
+            this.pictureBoxSteam.Name = "pictureBoxSteam";
+            this.pictureBoxSteam.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxSteam.TabIndex = 28;
+            this.pictureBoxSteam.TabStop = false;
+            // 
+            // pictureBoxBethesdaNetPTS
+            // 
+            this.pictureBoxBethesdaNetPTS.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxBethesdaNetPTS.Image = global::Fo76ini.Properties.Resources.bethesda_24;
+            this.pictureBoxBethesdaNetPTS.Location = new System.Drawing.Point(11, 49);
+            this.pictureBoxBethesdaNetPTS.Name = "pictureBoxBethesdaNetPTS";
+            this.pictureBoxBethesdaNetPTS.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxBethesdaNetPTS.TabIndex = 27;
+            this.pictureBoxBethesdaNetPTS.TabStop = false;
+            // 
+            // pictureBoxBethesdaNet
+            // 
+            this.pictureBoxBethesdaNet.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxBethesdaNet.Image = global::Fo76ini.Properties.Resources.bethesda_24;
+            this.pictureBoxBethesdaNet.Location = new System.Drawing.Point(11, 19);
+            this.pictureBoxBethesdaNet.Name = "pictureBoxBethesdaNet";
+            this.pictureBoxBethesdaNet.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxBethesdaNet.TabIndex = 26;
+            this.pictureBoxBethesdaNet.TabStop = false;
+            // 
             // radioButtonEditionMSStore
             // 
             this.radioButtonEditionMSStore.AutoSize = true;
@@ -768,10 +858,34 @@
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.gameToolStripMenuItem.Text = "Game";
             // 
+            // launchGameToolStripMenuItem
+            // 
+            this.launchGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.play;
+            this.launchGameToolStripMenuItem.Name = "launchGameToolStripMenuItem";
+            this.launchGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.launchGameToolStripMenuItem.Text = "Launch";
+            this.launchGameToolStripMenuItem.Click += new System.EventHandler(this.launchGameToolStripMenuItem_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
+            // 
+            // renameGameToolStripMenuItem
+            // 
+            this.renameGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.text_24;
+            this.renameGameToolStripMenuItem.Name = "renameGameToolStripMenuItem";
+            this.renameGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.renameGameToolStripMenuItem.Text = "Rename";
+            this.renameGameToolStripMenuItem.Click += new System.EventHandler(this.renameGameToolStripMenuItem_Click);
+            // 
+            // removeGameToolStripMenuItem
+            // 
+            this.removeGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.delete_24;
+            this.removeGameToolStripMenuItem.Name = "removeGameToolStripMenuItem";
+            this.removeGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeGameToolStripMenuItem.Text = "Remove";
+            this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
             // 
             // imageList1
             // 
@@ -808,6 +922,18 @@
             this.toolStrip1.TabIndex = 19;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripButtonAddGame
+            // 
+            this.toolStripButtonAddGame.BackColor = System.Drawing.Color.White;
+            this.toolStripButtonAddGame.Image = global::Fo76ini.Properties.Resources.plus_24;
+            this.toolStripButtonAddGame.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripButtonAddGame.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddGame.Name = "toolStripButtonAddGame";
+            this.toolStripButtonAddGame.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.toolStripButtonAddGame.Size = new System.Drawing.Size(90, 24);
+            this.toolStripButtonAddGame.Text = "Add game";
+            this.toolStripButtonAddGame.Click += new System.EventHandler(this.toolStripButtonAddGame_Click);
+            // 
             // tabPageNexusMods
             // 
             this.tabPageNexusMods.Controls.Add(this.panel2);
@@ -826,26 +952,86 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
-            this.panel2.Controls.Add(this.buttonNWDeleteAll);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.buttonNMLogin);
+            this.panel2.Controls.Add(this.buttonNWDeleteCache);
             this.panel2.Controls.Add(this.buttonNWLogout);
             this.panel2.Controls.Add(this.checkBoxNMDownloadThumbnails);
             this.panel2.Controls.Add(this.labelNMOptions);
             this.panel2.Controls.Add(this.checkBoxNMUpdateProfile);
-            this.panel2.Controls.Add(this.checkBoxShowAPIKey);
-            this.panel2.Controls.Add(this.textBoxAPIKey);
-            this.panel2.Controls.Add(this.labelNMAPIKeyTextBox);
             this.panel2.Controls.Add(this.buttonNMUpdateProfile);
             this.panel2.Location = new System.Drawing.Point(0, 169);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(766, 339);
             this.panel2.TabIndex = 78;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(10, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 16);
+            this.label1.TabIndex = 106;
+            this.label1.Text = "Actions";
+            // 
+            // buttonNMLogin
+            // 
+            this.buttonNMLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
+            this.buttonNMLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNMLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNMLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNMLogin.Image = global::Fo76ini.Properties.Resources.login_48;
+            this.buttonNMLogin.Location = new System.Drawing.Point(25, 36);
+            this.buttonNMLogin.Name = "buttonNMLogin";
+            this.buttonNMLogin.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNMLogin.Size = new System.Drawing.Size(120, 120);
+            this.buttonNMLogin.TabIndex = 105;
+            this.buttonNMLogin.Text = "Log in";
+            this.buttonNMLogin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNMLogin.UseVisualStyleBackColor = false;
+            this.buttonNMLogin.Click += new System.EventHandler(this.buttonNMLogin_Click);
+            // 
+            // buttonNWDeleteCache
+            // 
+            this.buttonNWDeleteCache.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonNWDeleteCache.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNWDeleteCache.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNWDeleteCache.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNWDeleteCache.Image = global::Fo76ini.Properties.Resources.delete_48;
+            this.buttonNWDeleteCache.Location = new System.Drawing.Point(403, 36);
+            this.buttonNWDeleteCache.Name = "buttonNWDeleteCache";
+            this.buttonNWDeleteCache.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNWDeleteCache.Size = new System.Drawing.Size(120, 120);
+            this.buttonNWDeleteCache.TabIndex = 104;
+            this.buttonNWDeleteCache.Text = "Delete cache";
+            this.buttonNWDeleteCache.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNWDeleteCache.UseVisualStyleBackColor = false;
+            this.buttonNWDeleteCache.Click += new System.EventHandler(this.buttonNWDeleteCache_Click);
+            // 
+            // buttonNWLogout
+            // 
+            this.buttonNWLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(62)))));
+            this.buttonNWLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNWLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNWLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNWLogout.Image = global::Fo76ini.Properties.Resources.exit_48;
+            this.buttonNWLogout.Location = new System.Drawing.Point(151, 36);
+            this.buttonNWLogout.Name = "buttonNWLogout";
+            this.buttonNWLogout.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNWLogout.Size = new System.Drawing.Size(120, 120);
+            this.buttonNWLogout.TabIndex = 103;
+            this.buttonNWLogout.Text = "Logout";
+            this.buttonNWLogout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNWLogout.UseVisualStyleBackColor = false;
+            this.buttonNWLogout.Click += new System.EventHandler(this.buttonNWLogout_Click);
+            // 
             // checkBoxNMDownloadThumbnails
             // 
             this.checkBoxNMDownloadThumbnails.AutoSize = true;
             this.checkBoxNMDownloadThumbnails.Checked = true;
             this.checkBoxNMDownloadThumbnails.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNMDownloadThumbnails.Location = new System.Drawing.Point(15, 191);
+            this.checkBoxNMDownloadThumbnails.Location = new System.Drawing.Point(25, 231);
             this.checkBoxNMDownloadThumbnails.Name = "checkBoxNMDownloadThumbnails";
             this.checkBoxNMDownloadThumbnails.Size = new System.Drawing.Size(127, 17);
             this.checkBoxNMDownloadThumbnails.TabIndex = 102;
@@ -857,7 +1043,7 @@
             // 
             this.labelNMOptions.AutoSize = true;
             this.labelNMOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNMOptions.Location = new System.Drawing.Point(12, 146);
+            this.labelNMOptions.Location = new System.Drawing.Point(10, 183);
             this.labelNMOptions.Name = "labelNMOptions";
             this.labelNMOptions.Size = new System.Drawing.Size(61, 16);
             this.labelNMOptions.TabIndex = 101;
@@ -868,7 +1054,7 @@
             this.checkBoxNMUpdateProfile.AutoSize = true;
             this.checkBoxNMUpdateProfile.Checked = true;
             this.checkBoxNMUpdateProfile.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNMUpdateProfile.Location = new System.Drawing.Point(15, 168);
+            this.checkBoxNMUpdateProfile.Location = new System.Drawing.Point(25, 208);
             this.checkBoxNMUpdateProfile.Name = "checkBoxNMUpdateProfile";
             this.checkBoxNMUpdateProfile.Size = new System.Drawing.Size(156, 17);
             this.checkBoxNMUpdateProfile.TabIndex = 100;
@@ -876,38 +1062,22 @@
             this.checkBoxNMUpdateProfile.UseVisualStyleBackColor = true;
             this.checkBoxNMUpdateProfile.CheckedChanged += new System.EventHandler(this.checkBoxNMUpdateProfile_CheckedChanged);
             // 
-            // checkBoxShowAPIKey
+            // buttonNMUpdateProfile
             // 
-            this.checkBoxShowAPIKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBoxShowAPIKey.AutoSize = true;
-            this.checkBoxShowAPIKey.Location = new System.Drawing.Point(110, 310);
-            this.checkBoxShowAPIKey.Name = "checkBoxShowAPIKey";
-            this.checkBoxShowAPIKey.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxShowAPIKey.TabIndex = 98;
-            this.checkBoxShowAPIKey.Text = "Show API Key";
-            this.checkBoxShowAPIKey.UseVisualStyleBackColor = true;
-            this.checkBoxShowAPIKey.CheckedChanged += new System.EventHandler(this.checkBoxShowAPIKey_CheckedChanged);
-            // 
-            // textBoxAPIKey
-            // 
-            this.textBoxAPIKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAPIKey.Location = new System.Drawing.Point(110, 284);
-            this.textBoxAPIKey.Name = "textBoxAPIKey";
-            this.textBoxAPIKey.Size = new System.Drawing.Size(641, 20);
-            this.textBoxAPIKey.TabIndex = 92;
-            this.textBoxAPIKey.UseSystemPasswordChar = true;
-            this.textBoxAPIKey.TextChanged += new System.EventHandler(this.textBoxAPIKey_TextChanged);
-            // 
-            // labelNMAPIKeyTextBox
-            // 
-            this.labelNMAPIKeyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelNMAPIKeyTextBox.AutoSize = true;
-            this.labelNMAPIKeyTextBox.Location = new System.Drawing.Point(12, 287);
-            this.labelNMAPIKeyTextBox.Name = "labelNMAPIKeyTextBox";
-            this.labelNMAPIKeyTextBox.Size = new System.Drawing.Size(92, 13);
-            this.labelNMAPIKeyTextBox.TabIndex = 91;
-            this.labelNMAPIKeyTextBox.Text = "Personal API Key:";
+            this.buttonNMUpdateProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
+            this.buttonNMUpdateProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNMUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNMUpdateProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNMUpdateProfile.Image = global::Fo76ini.Properties.Resources.available_updates_48;
+            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(277, 36);
+            this.buttonNMUpdateProfile.Name = "buttonNMUpdateProfile";
+            this.buttonNMUpdateProfile.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNMUpdateProfile.Size = new System.Drawing.Size(120, 120);
+            this.buttonNMUpdateProfile.TabIndex = 94;
+            this.buttonNMUpdateProfile.Text = "Update profile";
+            this.buttonNMUpdateProfile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNMUpdateProfile.UseVisualStyleBackColor = false;
+            this.buttonNMUpdateProfile.Click += new System.EventHandler(this.buttonNMUpdateProfile_Click);
             // 
             // panel3
             // 
@@ -918,10 +1088,7 @@
             this.panel3.Controls.Add(this.labelNMUserID);
             this.panel3.Controls.Add(this.labelNMDescUserID);
             this.panel3.Controls.Add(this.labelNMHourlyRateLimit);
-            this.panel3.Controls.Add(this.linkLabelNMGetAPIKey);
             this.panel3.Controls.Add(this.labelNMDescHourlyRateLimit);
-            this.panel3.Controls.Add(this.labelNMAPIKeyStatus);
-            this.panel3.Controls.Add(this.labelNMDescAPIKey);
             this.panel3.Controls.Add(this.pictureBoxNMProfilePicture);
             this.panel3.Controls.Add(this.labelNMUserName);
             this.panel3.Controls.Add(this.labelNMDescMembership);
@@ -941,15 +1108,15 @@
             this.labelNMNotLoggedIn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelNMNotLoggedIn.Location = new System.Drawing.Point(173, 57);
             this.labelNMNotLoggedIn.Name = "labelNMNotLoggedIn";
-            this.labelNMNotLoggedIn.Size = new System.Drawing.Size(335, 13);
+            this.labelNMNotLoggedIn.Size = new System.Drawing.Size(73, 13);
             this.labelNMNotLoggedIn.TabIndex = 80;
-            this.labelNMNotLoggedIn.Text = "Not logged in. Please enter your API key and click on \'Update profile\'.";
+            this.labelNMNotLoggedIn.Text = "Not logged in.";
             // 
             // labelNMUserID
             // 
             this.labelNMUserID.AutoSize = true;
             this.labelNMUserID.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMUserID.Location = new System.Drawing.Point(296, 107);
+            this.labelNMUserID.Location = new System.Drawing.Point(296, 85);
             this.labelNMUserID.Name = "labelNMUserID";
             this.labelNMUserID.Size = new System.Drawing.Size(16, 13);
             this.labelNMUserID.TabIndex = 79;
@@ -959,7 +1126,7 @@
             // 
             this.labelNMDescUserID.AutoSize = true;
             this.labelNMDescUserID.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescUserID.Location = new System.Drawing.Point(173, 107);
+            this.labelNMDescUserID.Location = new System.Drawing.Point(173, 85);
             this.labelNMDescUserID.Name = "labelNMDescUserID";
             this.labelNMDescUserID.Size = new System.Drawing.Size(46, 13);
             this.labelNMDescUserID.TabIndex = 78;
@@ -975,19 +1142,6 @@
             this.labelNMHourlyRateLimit.TabIndex = 77;
             this.labelNMHourlyRateLimit.Text = "0 left";
             // 
-            // linkLabelNMGetAPIKey
-            // 
-            this.linkLabelNMGetAPIKey.AutoSize = true;
-            this.linkLabelNMGetAPIKey.LinkColor = System.Drawing.Color.Aqua;
-            this.linkLabelNMGetAPIKey.Location = new System.Drawing.Point(173, 74);
-            this.linkLabelNMGetAPIKey.Name = "linkLabelNMGetAPIKey";
-            this.linkLabelNMGetAPIKey.Size = new System.Drawing.Size(87, 13);
-            this.linkLabelNMGetAPIKey.TabIndex = 79;
-            this.linkLabelNMGetAPIKey.TabStop = true;
-            this.linkLabelNMGetAPIKey.Text = "Get your API key";
-            this.linkLabelNMGetAPIKey.VisitedLinkColor = System.Drawing.Color.Fuchsia;
-            this.linkLabelNMGetAPIKey.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNMGetAPIKey_LinkClicked);
-            // 
             // labelNMDescHourlyRateLimit
             // 
             this.labelNMDescHourlyRateLimit.AutoSize = true;
@@ -998,25 +1152,17 @@
             this.labelNMDescHourlyRateLimit.TabIndex = 76;
             this.labelNMDescHourlyRateLimit.Text = "Hourly rate limit:";
             // 
-            // labelNMAPIKeyStatus
+            // pictureBoxNMProfilePicture
             // 
-            this.labelNMAPIKeyStatus.AutoSize = true;
-            this.labelNMAPIKeyStatus.ForeColor = System.Drawing.Color.Red;
-            this.labelNMAPIKeyStatus.Location = new System.Drawing.Point(296, 85);
-            this.labelNMAPIKeyStatus.Name = "labelNMAPIKeyStatus";
-            this.labelNMAPIKeyStatus.Size = new System.Drawing.Size(38, 13);
-            this.labelNMAPIKeyStatus.TabIndex = 75;
-            this.labelNMAPIKeyStatus.Text = "Invalid";
-            // 
-            // labelNMDescAPIKey
-            // 
-            this.labelNMDescAPIKey.AutoSize = true;
-            this.labelNMDescAPIKey.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescAPIKey.Location = new System.Drawing.Point(173, 85);
-            this.labelNMDescAPIKey.Name = "labelNMDescAPIKey";
-            this.labelNMDescAPIKey.Size = new System.Drawing.Size(47, 13);
-            this.labelNMDescAPIKey.TabIndex = 74;
-            this.labelNMDescAPIKey.Text = "API key:";
+            this.pictureBoxNMProfilePicture.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxNMProfilePicture.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNMProfilePicture.Image")));
+            this.pictureBoxNMProfilePicture.Location = new System.Drawing.Point(20, 20);
+            this.pictureBoxNMProfilePicture.Name = "pictureBoxNMProfilePicture";
+            this.pictureBoxNMProfilePicture.Size = new System.Drawing.Size(128, 128);
+            this.pictureBoxNMProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxNMProfilePicture.TabIndex = 65;
+            this.pictureBoxNMProfilePicture.TabStop = false;
+            this.pictureBoxNMProfilePicture.Click += new System.EventHandler(this.pictureBoxNMProfilePicture_Click);
             // 
             // labelNMUserName
             // 
@@ -1110,197 +1256,9 @@
             // 
             this.backgroundWorkerRetrieveProfileInfo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerRetrieveProfileInfo_DoWork);
             // 
-            // buttonRefreshLanguage
+            // backgroundWorkerSSOLogin
             // 
-            this.buttonRefreshLanguage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonRefreshLanguage.BackColor = System.Drawing.Color.Transparent;
-            this.buttonRefreshLanguage.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.buttonRefreshLanguage.FlatAppearance.BorderSize = 0;
-            this.buttonRefreshLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRefreshLanguage.Image = global::Fo76ini.Properties.Resources.available_updates;
-            this.buttonRefreshLanguage.Location = new System.Drawing.Point(351, 49);
-            this.buttonRefreshLanguage.Name = "buttonRefreshLanguage";
-            this.buttonRefreshLanguage.Size = new System.Drawing.Size(32, 32);
-            this.buttonRefreshLanguage.TabIndex = 40;
-            this.toolTip.SetToolTip(this.buttonRefreshLanguage, "Refresh language list and reapply translation");
-            this.buttonRefreshLanguage.UseVisualStyleBackColor = false;
-            this.buttonRefreshLanguage.Click += new System.EventHandler(this.buttonRefreshLanguage_Click);
-            // 
-            // pictureBoxSpinnerDownloadLanguages
-            // 
-            this.pictureBoxSpinnerDownloadLanguages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxSpinnerDownloadLanguages.Image = global::Fo76ini.Properties.Resources.Spinner_24;
-            this.pictureBoxSpinnerDownloadLanguages.Location = new System.Drawing.Point(283, 53);
-            this.pictureBoxSpinnerDownloadLanguages.Name = "pictureBoxSpinnerDownloadLanguages";
-            this.pictureBoxSpinnerDownloadLanguages.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxSpinnerDownloadLanguages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxSpinnerDownloadLanguages.TabIndex = 40;
-            this.pictureBoxSpinnerDownloadLanguages.TabStop = false;
-            this.pictureBoxSpinnerDownloadLanguages.Visible = false;
-            // 
-            // buttonDownloadLanguages
-            // 
-            this.buttonDownloadLanguages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDownloadLanguages.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.buttonDownloadLanguages.FlatAppearance.BorderSize = 0;
-            this.buttonDownloadLanguages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDownloadLanguages.Image = global::Fo76ini.Properties.Resources.download_2_24;
-            this.buttonDownloadLanguages.Location = new System.Drawing.Point(313, 49);
-            this.buttonDownloadLanguages.Name = "buttonDownloadLanguages";
-            this.buttonDownloadLanguages.Size = new System.Drawing.Size(32, 32);
-            this.buttonDownloadLanguages.TabIndex = 20;
-            this.toolTip.SetToolTip(this.buttonDownloadLanguages, "Download / update language files");
-            this.buttonDownloadLanguages.UseVisualStyleBackColor = true;
-            this.buttonDownloadLanguages.Click += new System.EventHandler(this.buttonDownloadLanguages_Click);
-            // 
-            // pictureBoxUnknown
-            // 
-            this.pictureBoxUnknown.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxUnknown.Image = global::Fo76ini.Properties.Resources.help_24;
-            this.pictureBoxUnknown.Location = new System.Drawing.Point(11, 139);
-            this.pictureBoxUnknown.Name = "pictureBoxUnknown";
-            this.pictureBoxUnknown.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxUnknown.TabIndex = 30;
-            this.pictureBoxUnknown.TabStop = false;
-            // 
-            // pictureBoxMSStore
-            // 
-            this.pictureBoxMSStore.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.msstore_24;
-            this.pictureBoxMSStore.Location = new System.Drawing.Point(11, 109);
-            this.pictureBoxMSStore.Name = "pictureBoxMSStore";
-            this.pictureBoxMSStore.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxMSStore.TabIndex = 29;
-            this.pictureBoxMSStore.TabStop = false;
-            // 
-            // pictureBoxSteam
-            // 
-            this.pictureBoxSteam.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxSteam.Image = global::Fo76ini.Properties.Resources.steam_24px;
-            this.pictureBoxSteam.Location = new System.Drawing.Point(11, 79);
-            this.pictureBoxSteam.Name = "pictureBoxSteam";
-            this.pictureBoxSteam.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxSteam.TabIndex = 28;
-            this.pictureBoxSteam.TabStop = false;
-            // 
-            // pictureBoxBethesdaNetPTS
-            // 
-            this.pictureBoxBethesdaNetPTS.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNetPTS.Image = global::Fo76ini.Properties.Resources.bethesda_24;
-            this.pictureBoxBethesdaNetPTS.Location = new System.Drawing.Point(11, 49);
-            this.pictureBoxBethesdaNetPTS.Name = "pictureBoxBethesdaNetPTS";
-            this.pictureBoxBethesdaNetPTS.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxBethesdaNetPTS.TabIndex = 27;
-            this.pictureBoxBethesdaNetPTS.TabStop = false;
-            // 
-            // pictureBoxBethesdaNet
-            // 
-            this.pictureBoxBethesdaNet.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNet.Image = global::Fo76ini.Properties.Resources.bethesda_24;
-            this.pictureBoxBethesdaNet.Location = new System.Drawing.Point(11, 19);
-            this.pictureBoxBethesdaNet.Name = "pictureBoxBethesdaNet";
-            this.pictureBoxBethesdaNet.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxBethesdaNet.TabIndex = 26;
-            this.pictureBoxBethesdaNet.TabStop = false;
-            // 
-            // launchGameToolStripMenuItem
-            // 
-            this.launchGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.play;
-            this.launchGameToolStripMenuItem.Name = "launchGameToolStripMenuItem";
-            this.launchGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.launchGameToolStripMenuItem.Text = "Launch";
-            this.launchGameToolStripMenuItem.Click += new System.EventHandler(this.launchGameToolStripMenuItem_Click);
-            // 
-            // renameGameToolStripMenuItem
-            // 
-            this.renameGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.text_24;
-            this.renameGameToolStripMenuItem.Name = "renameGameToolStripMenuItem";
-            this.renameGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.renameGameToolStripMenuItem.Text = "Rename";
-            this.renameGameToolStripMenuItem.Click += new System.EventHandler(this.renameGameToolStripMenuItem_Click);
-            // 
-            // removeGameToolStripMenuItem
-            // 
-            this.removeGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.delete_24;
-            this.removeGameToolStripMenuItem.Name = "removeGameToolStripMenuItem";
-            this.removeGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.removeGameToolStripMenuItem.Text = "Remove";
-            this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
-            // 
-            // toolStripButtonAddGame
-            // 
-            this.toolStripButtonAddGame.BackColor = System.Drawing.Color.White;
-            this.toolStripButtonAddGame.Image = global::Fo76ini.Properties.Resources.plus_24;
-            this.toolStripButtonAddGame.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolStripButtonAddGame.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddGame.Name = "toolStripButtonAddGame";
-            this.toolStripButtonAddGame.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.toolStripButtonAddGame.Size = new System.Drawing.Size(90, 24);
-            this.toolStripButtonAddGame.Text = "Add game";
-            this.toolStripButtonAddGame.Click += new System.EventHandler(this.toolStripButtonAddGame_Click);
-            // 
-            // buttonNWDeleteAll
-            // 
-            this.buttonNWDeleteAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.buttonNWDeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNWDeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNWDeleteAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNWDeleteAll.Image = global::Fo76ini.Properties.Resources.delete_48;
-            this.buttonNWDeleteAll.Location = new System.Drawing.Point(266, 7);
-            this.buttonNWDeleteAll.Name = "buttonNWDeleteAll";
-            this.buttonNWDeleteAll.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNWDeleteAll.Size = new System.Drawing.Size(120, 120);
-            this.buttonNWDeleteAll.TabIndex = 104;
-            this.buttonNWDeleteAll.Text = "Delete cache";
-            this.buttonNWDeleteAll.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNWDeleteAll.UseVisualStyleBackColor = false;
-            this.buttonNWDeleteAll.Click += new System.EventHandler(this.buttonNWDeleteAll_Click);
-            // 
-            // buttonNWLogout
-            // 
-            this.buttonNWLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(62)))));
-            this.buttonNWLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNWLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNWLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNWLogout.Image = global::Fo76ini.Properties.Resources.exit_48;
-            this.buttonNWLogout.Location = new System.Drawing.Point(140, 7);
-            this.buttonNWLogout.Name = "buttonNWLogout";
-            this.buttonNWLogout.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNWLogout.Size = new System.Drawing.Size(120, 120);
-            this.buttonNWLogout.TabIndex = 103;
-            this.buttonNWLogout.Text = "Logout";
-            this.buttonNWLogout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNWLogout.UseVisualStyleBackColor = false;
-            this.buttonNWLogout.Click += new System.EventHandler(this.buttonNWLogout_Click);
-            // 
-            // buttonNMUpdateProfile
-            // 
-            this.buttonNMUpdateProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
-            this.buttonNMUpdateProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNMUpdateProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMUpdateProfile.Image = global::Fo76ini.Properties.Resources.available_updates_48;
-            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(12, 7);
-            this.buttonNMUpdateProfile.Name = "buttonNMUpdateProfile";
-            this.buttonNMUpdateProfile.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNMUpdateProfile.Size = new System.Drawing.Size(120, 120);
-            this.buttonNMUpdateProfile.TabIndex = 94;
-            this.buttonNMUpdateProfile.Text = "Update profile";
-            this.buttonNMUpdateProfile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNMUpdateProfile.UseVisualStyleBackColor = false;
-            this.buttonNMUpdateProfile.Click += new System.EventHandler(this.buttonNMUpdateProfile_Click);
-            // 
-            // pictureBoxNMProfilePicture
-            // 
-            this.pictureBoxNMProfilePicture.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxNMProfilePicture.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNMProfilePicture.Image")));
-            this.pictureBoxNMProfilePicture.Location = new System.Drawing.Point(20, 20);
-            this.pictureBoxNMProfilePicture.Name = "pictureBoxNMProfilePicture";
-            this.pictureBoxNMProfilePicture.Size = new System.Drawing.Size(128, 128);
-            this.pictureBoxNMProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxNMProfilePicture.TabIndex = 65;
-            this.pictureBoxNMProfilePicture.TabStop = false;
-            this.pictureBoxNMProfilePicture.Click += new System.EventHandler(this.pictureBoxNMProfilePicture_Click);
+            this.backgroundWorkerSSOLogin.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSSOLogin_DoWork);
             // 
             // FormSettings
             // 
@@ -1328,6 +1286,7 @@
             this.groupBoxBehavior.PerformLayout();
             this.groupBoxLocalization.ResumeLayout(false);
             this.groupBoxLocalization.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).EndInit();
             this.tabPageGameProfiles.ResumeLayout(false);
             this.tabPageGameProfiles.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1342,6 +1301,11 @@
             this.groupBoxGameLocation.PerformLayout();
             this.groupBoxGameEdition.ResumeLayout(false);
             this.groupBoxGameEdition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).EndInit();
             this.groupBoxGame.ResumeLayout(false);
             this.contextMenuStripGame.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
@@ -1351,12 +1315,6 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).EndInit();
             this.ResumeLayout(false);
 
@@ -1424,10 +1382,7 @@
         private System.Windows.Forms.Label labelNMUserID;
         private System.Windows.Forms.Label labelNMDescUserID;
         private System.Windows.Forms.Label labelNMHourlyRateLimit;
-        private System.Windows.Forms.LinkLabel linkLabelNMGetAPIKey;
         private System.Windows.Forms.Label labelNMDescHourlyRateLimit;
-        private System.Windows.Forms.Label labelNMAPIKeyStatus;
-        private System.Windows.Forms.Label labelNMDescAPIKey;
         private System.Windows.Forms.PictureBox pictureBoxNMProfilePicture;
         private System.Windows.Forms.Label labelNMUserName;
         private System.Windows.Forms.Label labelNMDescMembership;
@@ -1437,14 +1392,11 @@
         private System.Windows.Forms.Label labelNMDescDailyRateLimit;
         private System.Windows.Forms.Label labelNMDailyRateLimit;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button buttonNWDeleteAll;
+        private System.Windows.Forms.Button buttonNWDeleteCache;
         private System.Windows.Forms.Button buttonNWLogout;
         private System.Windows.Forms.CheckBox checkBoxNMDownloadThumbnails;
         private System.Windows.Forms.Label labelNMOptions;
         private System.Windows.Forms.CheckBox checkBoxNMUpdateProfile;
-        private System.Windows.Forms.CheckBox checkBoxShowAPIKey;
-        private System.Windows.Forms.TextBox textBoxAPIKey;
-        private System.Windows.Forms.Label labelNMAPIKeyTextBox;
         private System.Windows.Forms.Button buttonNMUpdateProfile;
         public System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ImageList imageList1;
@@ -1465,5 +1417,8 @@
         private System.Windows.Forms.PictureBox pictureBoxUnknown;
         private System.Windows.Forms.GroupBox groupBoxActions;
         private System.Windows.Forms.LinkLabel linkLabelEnableDangerZone;
+        private System.Windows.Forms.Button buttonNMLogin;
+        private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerSSOLogin;
     }
 }

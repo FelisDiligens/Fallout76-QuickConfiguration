@@ -14,15 +14,24 @@ namespace Fo76ini.NexusAPI
     public static class NexusMods
     {
         public const string APIDomain = "https://api.nexusmods.com";
+        public const string SSODomain = "wss://sso.nexusmods.com";
+        public const string ApplicationSlug = "fo76quickconfiguration";
+        public const string ApplicationName = "Fallout 76 Quick Configuration";
 
         public static string FolderPath = Path.Combine(Shared.AppConfigFolder, "nexusmods");
         public static string ThumbnailsPath = Path.Combine(Shared.AppConfigFolder, "thumbnails", "nexusmods");
-        public static string RemoteXMLPath = Path.Combine(NexusMods.FolderPath, "remote.xml");
+        public static string RemoteXMLPath = Path.Combine(NexusMods.FolderPath, "mods.xml");
+        public static string AccountXMLPath = Path.Combine(NexusMods.FolderPath, "account.xml");
 
         public static Dictionary<int, NMMod> Mods = new Dictionary<int, NMMod>();
 
         private static readonly object padlock = new object();
         private static NMUserProfile _nmprofile = null;
+
+        static NexusMods ()
+        {
+            SingleSignOn.APIKeyReceived += OnSSOLogin;
+        }
 
         public static NMUserProfile User
         {
@@ -97,6 +106,15 @@ namespace Fo76ini.NexusAPI
                     // TODO: Handle invalid entries.
                 }
             }
+        }
+
+        private static void OnSSOLogin(object sender, SSOEventArgs e)
+        {
+            /*if (e.success)
+            {
+                User.APIKey = e.APIKey;
+                User.Save();
+            }*/
         }
 
         /// <summary>
