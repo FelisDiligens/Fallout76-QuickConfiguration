@@ -95,6 +95,7 @@ namespace Fo76ini
             LinkedTweaks.LinkInfo(labelShadowTextureResolution, toolTip, shadowMapResolutionTweak);
             LinkedTweaks.LinkInfo(comboBoxShadowTextureResolution, toolTip, shadowMapResolutionTweak);
             LinkedTweaks.LinkInfo(comboBoxShadowBlurriness, toolTip, shadowBlurrinessTweak);
+            LinkedTweaks.LinkInfo(labelShadowBlurriness, toolTip, shadowBlurrinessTweak);
             LinkedTweaks.LinkInfo(numShadowDistance, toolTip, shadowDistanceTweak);
             LinkedTweaks.LinkInfo(sliderShadowDistance, toolTip, shadowDistanceTweak);
             LinkedTweaks.LinkInfo(numLODObjects, toolTip, lodFadeOutMultObjectsTweak);
@@ -113,6 +114,7 @@ namespace Fo76ini
             LinkedTweaks.LinkInfo(sliderTAAPostOverlay, toolTip, taaPostOverlayTweak);
             LinkedTweaks.LinkInfo(sliderTAAPostSharpen, toolTip, taaPostSharpenTweak);
             LinkedTweaks.LinkInfo(checkBoxScreenSpaceReflections, toolTip, screenSpaceReflectionsTweak);
+            LinkedTweaks.LinkInfo(numGrassFadeDistance, toolTip, grassFadeDistanceTweak);
 
             // Audio tab
             LinkedTweaks.LinkInfo(checkBoxEnableAudio, toolTip, enableAudioTweak);
