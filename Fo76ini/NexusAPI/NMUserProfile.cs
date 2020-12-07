@@ -286,16 +286,6 @@ namespace Fo76ini.NexusAPI
         /// </summary>
         public void Remove()
         {
-            APIKey = "";
-            UserName = "Anonymous";
-            UserID = -1;
-            ProfilePictureFileName = "";
-            ProfilePictureURL = "";
-            Status = Membership.Basic;
-            DailyRateLimit = 0;
-            HourlyRateLimit = 0;
-            DailyRateLimitResetString = "";
-
             // Remove old values from config.ini:
             IniFiles.Config.Remove("NexusMods", "sAPIKey");
             IniFiles.Config.Remove("NexusMods", "bAPIKeyValid");
@@ -316,13 +306,24 @@ namespace Fo76ini.NexusAPI
             // Remove profile picture:
             try
             {
-                if (File.Exists(ProfilePictureFileName))
-                    File.Delete(ProfilePictureFileName);
+                if (File.Exists(ProfilePictureFilePath))
+                    File.Delete(ProfilePictureFilePath);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Couldn't remove profile picture: {ex.Message}");
             }
+
+            // Reset values:
+            APIKey = "";
+            UserName = "Anonymous";
+            UserID = -1;
+            ProfilePictureFileName = "";
+            ProfilePictureURL = "";
+            Status = Membership.Basic;
+            DailyRateLimit = 0;
+            HourlyRateLimit = 0;
+            DailyRateLimitResetString = "";
         }
     }
 }

@@ -645,10 +645,16 @@ namespace Fo76ini.Forms.FormSettings
             }
 
             this.pictureBoxNMProfilePicture.Image = Resources.user_white;
-            if (NexusMods.User.ProfilePictureFileName != null)
+            if (NexusMods.User.ProfilePictureFileName != null &&
+                File.Exists(NexusMods.User.ProfilePictureFilePath))
             {
-                if (File.Exists(NexusMods.User.ProfilePictureFilePath))
-                    this.pictureBoxNMProfilePicture.Image = Image.FromFile(NexusMods.User.ProfilePictureFilePath);
+                Bitmap bitmap;
+                using (Image img = Image.FromFile(NexusMods.User.ProfilePictureFilePath))
+                {
+                    bitmap = new Bitmap(img);
+                    this.pictureBoxNMProfilePicture.Image = bitmap;
+                    //this.pictureBoxNMProfilePicture.Image = Image.FromFile(NexusMods.User.ProfilePictureFilePath);
+                }
             }
 
             this.checkBoxNMUpdateProfile.Checked = IniFiles.Config.GetBool("NexusMods", "bAutoUpdateProfile", true);
@@ -672,7 +678,7 @@ namespace Fo76ini.Forms.FormSettings
 
         private void buttonNMLogin_Click(object sender, EventArgs e)
         {
-            MsgBox.Popup("Login to NexusMods", "When the web browser opens, please click on 'Authorize' to login in.", MessageBoxIcon.Information);
+            MsgBox.Show("Login to NexusMods", "When the web browser opens, please click on 'Authorize' to login in.\nClick 'OK' to continue.", MessageBoxIcon.Information);
             backgroundWorkerSSOLogin.RunWorkerAsync();
         }
 
@@ -681,8 +687,8 @@ namespace Fo76ini.Forms.FormSettings
             if (e.success)
             {
                 NexusMods.User.APIKey = e.APIKey;
-                MsgBox.Popup("Success", "You are now logged in with your NexusMods account.", MessageBoxIcon.Information);
                 this.tabPageNexusMods.Invoke(new Action(() => {
+                    MsgBox.Popup("Success", "You are now logged in with your NexusMods account.", MessageBoxIcon.Information);
                     UpdateNMProfile();
                 }));
             }
