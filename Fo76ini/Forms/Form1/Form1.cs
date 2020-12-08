@@ -918,6 +918,12 @@ namespace Fo76ini
             }
         }
 
+        private void radioButtonAccountNone_CheckedChanged(object sender, EventArgs e)
+        {
+            this.textBoxUserName.Text = IniFiles.GetString("Login", "s76UserName", "");
+            this.textBoxPassword.Text = IniFiles.GetString("Login", "s76Password", "");
+        }
+
         private int GetSelectedAccountProfileRadiobuttonIndex()
         {
             int index = 1;
@@ -936,7 +942,7 @@ namespace Fo76ini
         {
             if (index <= 0)
             {
-                accountProfileRadioButtons[0].Checked = true;
+                this.radioButtonAccountNone.Checked = true;
                 return;
             }
             accountProfileRadioButtons[index - 1].Checked = true;
@@ -952,7 +958,22 @@ namespace Fo76ini
         // Gets current account profile and sets the according radiobutton
         private void LoadAccountProfile()
         {
-            int index = IniFiles.Config.GetInt("Login", "uActiveAccountProfile", 0);
+            //int index = IniFiles.Config.GetInt("Login", "uActiveAccountProfile", 0);
+            int index = 0;
+            string username = IniFiles.GetString("Login", "s76UserName", "");
+            string password = IniFiles.GetString("Login", "s76Password", "");
+            if (username != "" && password != "")
+            {
+                for (int i = 1; i <= accountProfileRadioButtons.Count(); i++)
+                {
+                    if (username == IniFiles.Config.GetString("Login", $"s76UserName{i}", "") &&
+                        password == IniFiles.Config.GetString("Login", $"s76Password{i}", ""))
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+            }
             SetSelectedAccountProfileRadiobuttonIndex(index);
         }
         #endregion

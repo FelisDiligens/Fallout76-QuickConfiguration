@@ -273,6 +273,7 @@
             this.groupBoxMainMenu = new System.Windows.Forms.GroupBox();
             this.groupBoxLogin = new System.Windows.Forms.GroupBox();
             this.groupBoxLoginProfiles = new System.Windows.Forms.GroupBox();
+            this.radioButtonAccountNone = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount1 = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount16 = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount2 = new System.Windows.Forms.RadioButton();
@@ -3887,6 +3888,7 @@
             // 
             // groupBoxLoginProfiles
             // 
+            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccountNone);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount1);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount16);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount2);
@@ -3903,17 +3905,29 @@
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount10);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount8);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount9);
-            this.groupBoxLoginProfiles.Location = new System.Drawing.Point(11, 300);
+            this.groupBoxLoginProfiles.Location = new System.Drawing.Point(11, 296);
             this.groupBoxLoginProfiles.Name = "groupBoxLoginProfiles";
-            this.groupBoxLoginProfiles.Size = new System.Drawing.Size(421, 139);
+            this.groupBoxLoginProfiles.Size = new System.Drawing.Size(421, 143);
             this.groupBoxLoginProfiles.TabIndex = 29;
             this.groupBoxLoginProfiles.TabStop = false;
             this.groupBoxLoginProfiles.Text = "Profiles";
             // 
+            // radioButtonAccountNone
+            // 
+            this.radioButtonAccountNone.AutoSize = true;
+            this.radioButtonAccountNone.Location = new System.Drawing.Point(14, 20);
+            this.radioButtonAccountNone.Name = "radioButtonAccountNone";
+            this.radioButtonAccountNone.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonAccountNone.TabIndex = 29;
+            this.radioButtonAccountNone.TabStop = true;
+            this.radioButtonAccountNone.Text = "None";
+            this.radioButtonAccountNone.UseVisualStyleBackColor = true;
+            this.radioButtonAccountNone.CheckedChanged += new System.EventHandler(this.radioButtonAccountNone_CheckedChanged);
+            // 
             // radioButtonAccount1
             // 
             this.radioButtonAccount1.AutoSize = true;
-            this.radioButtonAccount1.Location = new System.Drawing.Point(14, 23);
+            this.radioButtonAccount1.Location = new System.Drawing.Point(14, 46);
             this.radioButtonAccount1.Name = "radioButtonAccount1";
             this.radioButtonAccount1.Size = new System.Drawing.Size(81, 17);
             this.radioButtonAccount1.TabIndex = 12;
@@ -3923,7 +3937,7 @@
             // radioButtonAccount16
             // 
             this.radioButtonAccount16.AutoSize = true;
-            this.radioButtonAccount16.Location = new System.Drawing.Point(320, 92);
+            this.radioButtonAccount16.Location = new System.Drawing.Point(320, 115);
             this.radioButtonAccount16.Name = "radioButtonAccount16";
             this.radioButtonAccount16.Size = new System.Drawing.Size(87, 17);
             this.radioButtonAccount16.TabIndex = 28;
@@ -3933,7 +3947,7 @@
             // radioButtonAccount2
             // 
             this.radioButtonAccount2.AutoSize = true;
-            this.radioButtonAccount2.Location = new System.Drawing.Point(116, 23);
+            this.radioButtonAccount2.Location = new System.Drawing.Point(116, 46);
             this.radioButtonAccount2.Name = "radioButtonAccount2";
             this.radioButtonAccount2.Size = new System.Drawing.Size(81, 17);
             this.radioButtonAccount2.TabIndex = 13;
@@ -3943,7 +3957,7 @@
             // radioButtonAccount15
             // 
             this.radioButtonAccount15.AutoSize = true;
-            this.radioButtonAccount15.Location = new System.Drawing.Point(218, 92);
+            this.radioButtonAccount15.Location = new System.Drawing.Point(218, 115);
             this.radioButtonAccount15.Name = "radioButtonAccount15";
             this.radioButtonAccount15.Size = new System.Drawing.Size(87, 17);
             this.radioButtonAccount15.TabIndex = 27;
@@ -3953,7 +3967,7 @@
             // radioButtonAccount3
             // 
             this.radioButtonAccount3.AutoSize = true;
-            this.radioButtonAccount3.Location = new System.Drawing.Point(218, 23);
+            this.radioButtonAccount3.Location = new System.Drawing.Point(218, 46);
             this.radioButtonAccount3.Name = "radioButtonAccount3";
             this.radioButtonAccount3.Size = new System.Drawing.Size(81, 17);
             this.radioButtonAccount3.TabIndex = 14;
@@ -3963,7 +3977,7 @@
             // radioButtonAccount14
             // 
             this.radioButtonAccount14.AutoSize = true;
-            this.radioButtonAccount14.Location = new System.Drawing.Point(116, 92);
+            this.radioButtonAccount14.Location = new System.Drawing.Point(116, 115);
             this.radioButtonAccount14.Name = "radioButtonAccount14";
             this.radioButtonAccount14.Size = new System.Drawing.Size(87, 17);
             this.radioButtonAccount14.TabIndex = 26;
@@ -3973,7 +3987,7 @@
             // radioButtonAccount4
             // 
             this.radioButtonAccount4.AutoSize = true;
-            this.radioButtonAccount4.Location = new System.Drawing.Point(320, 23);
+            this.radioButtonAccount4.Location = new System.Drawing.Point(320, 46);
             this.radioButtonAccount4.Name = "radioButtonAccount4";
             this.radioButtonAccount4.Size = new System.Drawing.Size(81, 17);
             this.radioButtonAccount4.TabIndex = 15;
@@ -3983,7 +3997,7 @@
             // radioButtonAccount13
             // 
             this.radioButtonAccount13.AutoSize = true;
-            this.radioButtonAccount13.Location = new System.Drawing.Point(14, 92);
+            this.radioButtonAccount13.Location = new System.Drawing.Point(14, 115);
             this.radioButtonAccount13.Name = "radioButtonAccount13";
             this.radioButtonAccount13.Size = new System.Drawing.Size(87, 17);
             this.radioButtonAccount13.TabIndex = 25;
@@ -3993,7 +4007,7 @@
             // radioButtonAccount5
             // 
             this.radioButtonAccount5.AutoSize = true;
-            this.radioButtonAccount5.Location = new System.Drawing.Point(14, 46);
+            this.radioButtonAccount5.Location = new System.Drawing.Point(14, 69);
             this.radioButtonAccount5.Name = "radioButtonAccount5";
             this.radioButtonAccount5.Size = new System.Drawing.Size(81, 17);
             this.radioButtonAccount5.TabIndex = 16;
@@ -4003,7 +4017,7 @@
             // radioButtonAccount12
             // 
             this.radioButtonAccount12.AutoSize = true;
-            this.radioButtonAccount12.Location = new System.Drawing.Point(320, 69);
+            this.radioButtonAccount12.Location = new System.Drawing.Point(320, 92);
             this.radioButtonAccount12.Name = "radioButtonAccount12";
             this.radioButtonAccount12.Size = new System.Drawing.Size(87, 17);
             this.radioButtonAccount12.TabIndex = 24;
@@ -4013,7 +4027,7 @@
             // radioButtonAccount6
             // 
             this.radioButtonAccount6.AutoSize = true;
-            this.radioButtonAccount6.Location = new System.Drawing.Point(116, 46);
+            this.radioButtonAccount6.Location = new System.Drawing.Point(116, 69);
             this.radioButtonAccount6.Name = "radioButtonAccount6";
             this.radioButtonAccount6.Size = new System.Drawing.Size(81, 17);
             this.radioButtonAccount6.TabIndex = 17;
@@ -4023,7 +4037,7 @@
             // radioButtonAccount11
             // 
             this.radioButtonAccount11.AutoSize = true;
-            this.radioButtonAccount11.Location = new System.Drawing.Point(218, 69);
+            this.radioButtonAccount11.Location = new System.Drawing.Point(218, 92);
             this.radioButtonAccount11.Name = "radioButtonAccount11";
             this.radioButtonAccount11.Size = new System.Drawing.Size(87, 17);
             this.radioButtonAccount11.TabIndex = 23;
@@ -4033,7 +4047,7 @@
             // radioButtonAccount7
             // 
             this.radioButtonAccount7.AutoSize = true;
-            this.radioButtonAccount7.Location = new System.Drawing.Point(218, 46);
+            this.radioButtonAccount7.Location = new System.Drawing.Point(218, 69);
             this.radioButtonAccount7.Name = "radioButtonAccount7";
             this.radioButtonAccount7.Size = new System.Drawing.Size(81, 17);
             this.radioButtonAccount7.TabIndex = 18;
@@ -4043,7 +4057,7 @@
             // radioButtonAccount10
             // 
             this.radioButtonAccount10.AutoSize = true;
-            this.radioButtonAccount10.Location = new System.Drawing.Point(116, 69);
+            this.radioButtonAccount10.Location = new System.Drawing.Point(116, 92);
             this.radioButtonAccount10.Name = "radioButtonAccount10";
             this.radioButtonAccount10.Size = new System.Drawing.Size(87, 17);
             this.radioButtonAccount10.TabIndex = 22;
@@ -4053,7 +4067,7 @@
             // radioButtonAccount8
             // 
             this.radioButtonAccount8.AutoSize = true;
-            this.radioButtonAccount8.Location = new System.Drawing.Point(320, 46);
+            this.radioButtonAccount8.Location = new System.Drawing.Point(320, 69);
             this.radioButtonAccount8.Name = "radioButtonAccount8";
             this.radioButtonAccount8.Size = new System.Drawing.Size(81, 17);
             this.radioButtonAccount8.TabIndex = 19;
@@ -4063,7 +4077,7 @@
             // radioButtonAccount9
             // 
             this.radioButtonAccount9.AutoSize = true;
-            this.radioButtonAccount9.Location = new System.Drawing.Point(14, 69);
+            this.radioButtonAccount9.Location = new System.Drawing.Point(14, 92);
             this.radioButtonAccount9.Name = "radioButtonAccount9";
             this.radioButtonAccount9.Size = new System.Drawing.Size(81, 17);
             this.radioButtonAccount9.TabIndex = 21;
@@ -6203,6 +6217,7 @@
         private System.Windows.Forms.NumericUpDown numfBlendSplitDirShadow;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox checkBoxScreenSpaceReflections;
+        private System.Windows.Forms.RadioButton radioButtonAccountNone;
     }
 }
 
