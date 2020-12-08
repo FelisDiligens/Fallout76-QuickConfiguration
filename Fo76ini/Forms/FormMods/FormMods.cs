@@ -580,11 +580,12 @@ namespace Fo76ini
             Mods.NuclearWinterModeEnabled = false;
 
             // Install mods:
-            if (Mods.ModsDisabled && Mods.Count() > 0 &&
+            if (Mods.ModsDisabled &&
                 IniFiles.Config.GetBool("NuclearWinter", "bAutoDeployMods", true))
             {
                 Mods.ModsDisabled = false;
-                this.DeployMods();
+                if (Mods.Count() > 0)
+                    this.DeployMods();
             }
 
             // Restore added *.dll files:
@@ -681,6 +682,7 @@ namespace Fo76ini
         private void checkBoxDisableMods_CheckedChanged(object sender, EventArgs e)
         {
             this.Mods.ModsDisabled = checkBoxDisableMods.Checked;
+            this.Mods.Save();
             UpdateStatusStrip();
         }
 
