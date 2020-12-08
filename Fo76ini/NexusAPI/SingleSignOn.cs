@@ -12,6 +12,10 @@ using Websocket.Client.Models;
 
 namespace Fo76ini.NexusAPI
 {
+    // TODO: Possible bug in SingleSignOn
+    // There might be a bug where if no message is received from the server within 30 seconds (see TimeSpan ReconnectTimeout),
+    // the client will try to reconnect and the login fails.
+
     public static class SingleSignOn
     {
         public static event SSOEventHandler SSOFinished;
@@ -19,7 +23,7 @@ namespace Fo76ini.NexusAPI
         private static Guid uuidv4;
         private static string connectionToken = null;
 
-        private static readonly TimeSpan ReconnectTimeout = TimeSpan.FromSeconds(5);
+        private static readonly TimeSpan ReconnectTimeout = TimeSpan.FromSeconds(60);
 
         private static WebsocketClient client = null;
 
