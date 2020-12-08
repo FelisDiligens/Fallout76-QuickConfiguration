@@ -109,6 +109,7 @@ namespace Fo76ini.Profiles
             if (!File.Exists(XMLPath))
             {
                 Init();
+                Feedback(); // This is important.
                 return;
             }
 
