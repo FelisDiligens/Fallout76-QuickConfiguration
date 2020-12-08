@@ -30,7 +30,7 @@ namespace Fo76ini.NexusAPI
 
         static NexusMods ()
         {
-            SingleSignOn.APIKeyReceived += OnSSOLogin;
+            SingleSignOn.SSOFinished += OnSSOLogin;
         }
 
         public static NMUserProfile User

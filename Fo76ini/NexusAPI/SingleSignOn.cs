@@ -14,30 +14,33 @@ namespace Fo76ini.NexusAPI
 {
     public static class SingleSignOn
     {
-        public static event SSOEventHandler APIKeyReceived;
+        public static event SSOEventHandler SSOFinished;
 
         private static Guid uuidv4;
         private static string connectionToken = null;
 
-        private static readonly TimeSpan ReconnectTimeout = TimeSpan.FromSeconds(30); // TODO 5 sec?
+        private static readonly TimeSpan ReconnectTimeout = TimeSpan.FromSeconds(5);
+
+        private static WebsocketClient client = null;
+
+        private static bool success = false;
 
         public static void Connect ()
         {
-            var client = new WebsocketClient(new Uri(NexusMods.SSODomain))
-            {
-                IsReconnectionEnabled = false
-            };
-            //client.ReconnectTimeout = ReconnectTimeout;
-            //client.ReconnectionHappened.Subscribe(OnReconnect);
+            if (client != null && client.IsRunning)
+                client.Stop(System.Net.WebSockets.WebSocketCloseStatus.NormalClosure, "");
+
+            success = false;
+            client = new WebsocketClient(new Uri(NexusMods.SSODomain));
+            client.ReconnectTimeout = ReconnectTimeout;
+            client.ReconnectionHappened.Subscribe(OnReconnect);
             client.MessageReceived.Subscribe(OnMessage);
-            client.DisconnectionHappened.Subscribe((info) => { Console.WriteLine($"DisconnectionHappened: {info.CloseStatusDescription}"); });
+            client.DisconnectionHappened.Subscribe(OnDisconnect);
             client.Start();
 
             string data = BuildLoginData();
 
             client.Send(data); // SendInstant
-
-            Utils.OpenURL("https://www.nexusmods.com/sso?id=" + uuidv4 + "&application=" + NexusMods.ApplicationSlug);
         }
 
         private static void OnMessage(ResponseMessage msg)
@@ -51,16 +54,22 @@ namespace Fo76ini.NexusAPI
                     JObject data = (JObject)response["data"];
 
                     if (data.ContainsKey("connection_token"))
+                    {
                         connectionToken = data["connection_token"].ToString();
+
+                        Utils.OpenURL("https://www.nexusmods.com/sso?id=" + uuidv4 + "&application=" + NexusMods.ApplicationSlug);
+                    }
 
                     if (data.ContainsKey("api_key"))
                     {
+                        success = true;
+
                         SSOEventArgs e = new SSOEventArgs();
                         e.APIKey = data["api_key"].ToString();
                         e.success = true;
 
-                        if (APIKeyReceived != null)
-                            APIKeyReceived(null, e);
+                        if (SSOFinished != null)
+                            SSOFinished(null, e);
                     }
                 }
                 else
@@ -78,6 +87,33 @@ namespace Fo76ini.NexusAPI
         private static void OnReconnect(ReconnectionInfo info)
         {
             Console.WriteLine($"Reconnection happened, type: {info.Type}");
+        }
+
+        private static void OnDisconnect(DisconnectionInfo info)
+        {
+            Console.WriteLine(
+                $"---- Disconnection happened. ----\n" +
+                $"Reason:      {info.CloseStatus}\n" +
+                $"Message:     {info.CloseStatusDescription}\n" +
+                $"Subprotocol: {info.SubProtocol}\n" +
+                $"Exception:   {info.Exception}\n" +
+                $"---------------------------------");
+
+            if (success)
+            {
+                info.CancelReconnection = true;
+            }
+            else if (info.Exception != null)
+            {
+                info.CancelReconnection = true;
+
+                SSOEventArgs e = new SSOEventArgs();
+                e.Exception = info.Exception;
+                e.success = false;
+
+                if (SSOFinished != null)
+                    SSOFinished(null, e);
+            }
         }
 
 
@@ -107,6 +143,7 @@ namespace Fo76ini.NexusAPI
     public class SSOEventArgs : EventArgs
     {
         public bool success;
-        public string APIKey;
+        public string APIKey = "";
+        public Exception Exception = null;
     }
 }

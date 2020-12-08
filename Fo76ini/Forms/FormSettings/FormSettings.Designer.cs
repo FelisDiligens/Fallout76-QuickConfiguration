@@ -107,7 +107,9 @@
             this.toolStripButtonAddGame = new System.Windows.Forms.ToolStripButton();
             this.tabPageNexusMods = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelAPIKey = new System.Windows.Forms.Label();
+            this.checkBoxShowAPIKey = new System.Windows.Forms.CheckBox();
+            this.textBoxAPIKey = new System.Windows.Forms.TextBox();
             this.buttonNMLogin = new System.Windows.Forms.Button();
             this.buttonNWDeleteCache = new System.Windows.Forms.Button();
             this.buttonNWLogout = new System.Windows.Forms.Button();
@@ -134,6 +136,10 @@
             this.backgroundWorkerDownloadLanguages = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerSSOLogin = new System.ComponentModel.BackgroundWorker();
+            this.buttonNMLoginManually = new System.Windows.Forms.Button();
+            this.linkLabelAPIKeyHelp = new System.Windows.Forms.LinkLabel();
+            this.pictureBoxAPIKeyHelp = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxActions.SuspendLayout();
@@ -162,6 +168,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -952,6 +959,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.pictureBoxAPIKeyHelp);
+            this.panel2.Controls.Add(this.linkLabelAPIKeyHelp);
+            this.panel2.Controls.Add(this.buttonNMLoginManually);
+            this.panel2.Controls.Add(this.labelAPIKey);
+            this.panel2.Controls.Add(this.checkBoxShowAPIKey);
+            this.panel2.Controls.Add(this.textBoxAPIKey);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.buttonNMLogin);
             this.panel2.Controls.Add(this.buttonNWDeleteCache);
@@ -965,15 +978,34 @@
             this.panel2.Size = new System.Drawing.Size(766, 339);
             this.panel2.TabIndex = 78;
             // 
-            // label1
+            // labelAPIKey
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 16);
-            this.label1.TabIndex = 106;
-            this.label1.Text = "Actions";
+            this.labelAPIKey.AutoSize = true;
+            this.labelAPIKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAPIKey.Location = new System.Drawing.Point(6, 239);
+            this.labelAPIKey.Name = "labelAPIKey";
+            this.labelAPIKey.Size = new System.Drawing.Size(62, 16);
+            this.labelAPIKey.TabIndex = 109;
+            this.labelAPIKey.Text = "API Key";
+            // 
+            // checkBoxShowAPIKey
+            // 
+            this.checkBoxShowAPIKey.AutoSize = true;
+            this.checkBoxShowAPIKey.Location = new System.Drawing.Point(20, 314);
+            this.checkBoxShowAPIKey.Name = "checkBoxShowAPIKey";
+            this.checkBoxShowAPIKey.Size = new System.Drawing.Size(93, 17);
+            this.checkBoxShowAPIKey.TabIndex = 108;
+            this.checkBoxShowAPIKey.Text = "Show API key";
+            this.checkBoxShowAPIKey.UseVisualStyleBackColor = true;
+            this.checkBoxShowAPIKey.CheckedChanged += new System.EventHandler(this.checkBoxShowAPIKey_CheckedChanged);
+            // 
+            // textBoxAPIKey
+            // 
+            this.textBoxAPIKey.Location = new System.Drawing.Point(20, 288);
+            this.textBoxAPIKey.Name = "textBoxAPIKey";
+            this.textBoxAPIKey.Size = new System.Drawing.Size(726, 20);
+            this.textBoxAPIKey.TabIndex = 107;
+            this.textBoxAPIKey.TextChanged += new System.EventHandler(this.textBoxAPIKey_TextChanged);
             // 
             // buttonNMLogin
             // 
@@ -982,7 +1014,7 @@
             this.buttonNMLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNMLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonNMLogin.Image = global::Fo76ini.Properties.Resources.login_48;
-            this.buttonNMLogin.Location = new System.Drawing.Point(25, 36);
+            this.buttonNMLogin.Location = new System.Drawing.Point(20, 23);
             this.buttonNMLogin.Name = "buttonNMLogin";
             this.buttonNMLogin.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNMLogin.Size = new System.Drawing.Size(120, 120);
@@ -999,7 +1031,7 @@
             this.buttonNWDeleteCache.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNWDeleteCache.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonNWDeleteCache.Image = global::Fo76ini.Properties.Resources.delete_48;
-            this.buttonNWDeleteCache.Location = new System.Drawing.Point(403, 36);
+            this.buttonNWDeleteCache.Location = new System.Drawing.Point(524, 23);
             this.buttonNWDeleteCache.Name = "buttonNWDeleteCache";
             this.buttonNWDeleteCache.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNWDeleteCache.Size = new System.Drawing.Size(120, 120);
@@ -1016,7 +1048,7 @@
             this.buttonNWLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNWLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonNWLogout.Image = global::Fo76ini.Properties.Resources.exit_48;
-            this.buttonNWLogout.Location = new System.Drawing.Point(151, 36);
+            this.buttonNWLogout.Location = new System.Drawing.Point(272, 23);
             this.buttonNWLogout.Name = "buttonNWLogout";
             this.buttonNWLogout.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNWLogout.Size = new System.Drawing.Size(120, 120);
@@ -1031,7 +1063,7 @@
             this.checkBoxNMDownloadThumbnails.AutoSize = true;
             this.checkBoxNMDownloadThumbnails.Checked = true;
             this.checkBoxNMDownloadThumbnails.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNMDownloadThumbnails.Location = new System.Drawing.Point(25, 231);
+            this.checkBoxNMDownloadThumbnails.Location = new System.Drawing.Point(20, 200);
             this.checkBoxNMDownloadThumbnails.Name = "checkBoxNMDownloadThumbnails";
             this.checkBoxNMDownloadThumbnails.Size = new System.Drawing.Size(127, 17);
             this.checkBoxNMDownloadThumbnails.TabIndex = 102;
@@ -1043,7 +1075,7 @@
             // 
             this.labelNMOptions.AutoSize = true;
             this.labelNMOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNMOptions.Location = new System.Drawing.Point(10, 183);
+            this.labelNMOptions.Location = new System.Drawing.Point(6, 155);
             this.labelNMOptions.Name = "labelNMOptions";
             this.labelNMOptions.Size = new System.Drawing.Size(61, 16);
             this.labelNMOptions.TabIndex = 101;
@@ -1054,7 +1086,7 @@
             this.checkBoxNMUpdateProfile.AutoSize = true;
             this.checkBoxNMUpdateProfile.Checked = true;
             this.checkBoxNMUpdateProfile.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNMUpdateProfile.Location = new System.Drawing.Point(25, 208);
+            this.checkBoxNMUpdateProfile.Location = new System.Drawing.Point(20, 177);
             this.checkBoxNMUpdateProfile.Name = "checkBoxNMUpdateProfile";
             this.checkBoxNMUpdateProfile.Size = new System.Drawing.Size(156, 17);
             this.checkBoxNMUpdateProfile.TabIndex = 100;
@@ -1069,7 +1101,7 @@
             this.buttonNMUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNMUpdateProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonNMUpdateProfile.Image = global::Fo76ini.Properties.Resources.available_updates_48;
-            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(277, 36);
+            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(398, 23);
             this.buttonNMUpdateProfile.Name = "buttonNMUpdateProfile";
             this.buttonNMUpdateProfile.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNMUpdateProfile.Size = new System.Drawing.Size(120, 120);
@@ -1260,6 +1292,53 @@
             // 
             this.backgroundWorkerSSOLogin.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSSOLogin_DoWork);
             // 
+            // buttonNMLoginManually
+            // 
+            this.buttonNMLoginManually.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
+            this.buttonNMLoginManually.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNMLoginManually.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNMLoginManually.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNMLoginManually.Image = global::Fo76ini.Properties.Resources.login_48;
+            this.buttonNMLoginManually.Location = new System.Drawing.Point(146, 23);
+            this.buttonNMLoginManually.Name = "buttonNMLoginManually";
+            this.buttonNMLoginManually.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNMLoginManually.Size = new System.Drawing.Size(120, 120);
+            this.buttonNMLoginManually.TabIndex = 110;
+            this.buttonNMLoginManually.Text = "Log in with key";
+            this.buttonNMLoginManually.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNMLoginManually.UseVisualStyleBackColor = false;
+            this.buttonNMLoginManually.Click += new System.EventHandler(this.buttonNMLoginManually_Click);
+            // 
+            // linkLabelAPIKeyHelp
+            // 
+            this.linkLabelAPIKeyHelp.AutoSize = true;
+            this.linkLabelAPIKeyHelp.Location = new System.Drawing.Point(51, 264);
+            this.linkLabelAPIKeyHelp.Name = "linkLabelAPIKeyHelp";
+            this.linkLabelAPIKeyHelp.Size = new System.Drawing.Size(158, 13);
+            this.linkLabelAPIKeyHelp.TabIndex = 111;
+            this.linkLabelAPIKeyHelp.TabStop = true;
+            this.linkLabelAPIKeyHelp.Text = "How do I login with an API key?";
+            this.linkLabelAPIKeyHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAPIKeyHelp_LinkClicked);
+            // 
+            // pictureBoxAPIKeyHelp
+            // 
+            this.pictureBoxAPIKeyHelp.Image = global::Fo76ini.Properties.Resources.help_24;
+            this.pictureBoxAPIKeyHelp.Location = new System.Drawing.Point(20, 258);
+            this.pictureBoxAPIKeyHelp.Name = "pictureBoxAPIKeyHelp";
+            this.pictureBoxAPIKeyHelp.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxAPIKeyHelp.TabIndex = 112;
+            this.pictureBoxAPIKeyHelp.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 16);
+            this.label1.TabIndex = 106;
+            this.label1.Text = "Actions";
+            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1316,6 +1395,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1418,7 +1498,13 @@
         private System.Windows.Forms.GroupBox groupBoxActions;
         private System.Windows.Forms.LinkLabel linkLabelEnableDangerZone;
         private System.Windows.Forms.Button buttonNMLogin;
-        private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorkerSSOLogin;
+        private System.Windows.Forms.Label labelAPIKey;
+        private System.Windows.Forms.CheckBox checkBoxShowAPIKey;
+        private System.Windows.Forms.TextBox textBoxAPIKey;
+        private System.Windows.Forms.Button buttonNMLoginManually;
+        private System.Windows.Forms.PictureBox pictureBoxAPIKeyHelp;
+        private System.Windows.Forms.LinkLabel linkLabelAPIKeyHelp;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -70,7 +70,7 @@ namespace Fo76ini.Forms.FormSettings
             this.backgroundWorkerRetrieveProfileInfo.RunWorkerCompleted += backgroundWorkerRetrieveProfileInfo_RunWorkerCompleted;
             this.FormClosing += FormSettings_FormClosing;
 
-            SingleSignOn.APIKeyReceived += SingleSignOn_APIKeyReceived;
+            SingleSignOn.SSOFinished += SingleSignOn_SSOFinished;
         }
 
         private void FormSettings_Load(object sender, EventArgs e)
@@ -561,6 +561,11 @@ namespace Fo76ini.Forms.FormSettings
          * Interface:
          */
 
+        /// <summary>
+        /// As a last resort, if the SSO fails, the user can enter their API key manually.
+        /// </summary>
+        private bool APIKeyTextboxEnabled = false;
+
         public void RefreshNMUI()
         {
             /*
@@ -590,8 +595,8 @@ namespace Fo76ini.Forms.FormSettings
             int buttonMargin = 6;  // px
             int buttonOffset = 25; // px
 
-            Button[] buttons = new Button[] { buttonNMLogin, buttonNWLogout, buttonNMUpdateProfile, buttonNWDeleteCache };
-            bool[] visiblity = new bool[] { !loggedIn, loggedIn, loggedIn, true };
+            Button[] buttons = new Button[] { buttonNMLogin, buttonNMLoginManually, buttonNWLogout, buttonNMUpdateProfile, buttonNWDeleteCache };
+            bool[] visiblity = new bool[] { !loggedIn, APIKeyTextboxEnabled, loggedIn, loggedIn, true };
 
             for (int i = 0; i < buttons.Length; i++)
             {
@@ -603,6 +608,22 @@ namespace Fo76ini.Forms.FormSettings
                 }
                 buttons[i].Left = left;
                 buttons[i].Visible = visiblity[i];
+            }
+
+
+            /*
+             * API Key textbox:
+             */
+
+            this.textBoxAPIKey.Visible = APIKeyTextboxEnabled;
+            this.checkBoxShowAPIKey.Visible = APIKeyTextboxEnabled;
+            this.labelAPIKey.Visible = APIKeyTextboxEnabled;
+            this.linkLabelAPIKeyHelp.Visible = APIKeyTextboxEnabled;
+            this.pictureBoxAPIKeyHelp.Visible = APIKeyTextboxEnabled;
+
+            if (APIKeyTextboxEnabled)
+            {
+                this.textBoxAPIKey.Text = NexusMods.User.APIKey;
             }
 
 
@@ -682,29 +703,47 @@ namespace Fo76ini.Forms.FormSettings
             backgroundWorkerSSOLogin.RunWorkerAsync();
         }
 
-        private void SingleSignOn_APIKeyReceived(object sender, SSOEventArgs e)
+        private void SingleSignOn_SSOFinished(object sender, SSOEventArgs e)
         {
-            if (e.success)
-            {
-                NexusMods.User.APIKey = e.APIKey;
-                this.tabPageNexusMods.Invoke(new Action(() => {
+            // The SSOFinished event handler is called from another thread, therefore Invoke is required:
+            this.tabPageNexusMods.Invoke(new Action(() => {
+                if (e.success)
+                {
+                    NexusMods.User.APIKey = e.APIKey;
                     MsgBox.Popup("Success", "You are now logged in with your NexusMods account.", MessageBoxIcon.Information);
                     UpdateNMProfile();
-                }));
-            }
-            else
-            {
-                MsgBox.Popup("Failed", "Something went wrong.", MessageBoxIcon.Error);
-            }
+                }
+                else
+                {
+                    if (e.Exception != null)
+                    {
+                        if (e.Exception is PlatformNotSupportedException)
+                        {
+                            MsgBox.Show("Failed", "** WebSockets are not supported on Windows 7 and older. **\nBut you can still enter the API key manually to login. Please follow the instructions on the GitHub wiki.", MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MsgBox.Show("Failed", $"{e.Exception.GetType()}: {e.Exception.Message}", MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MsgBox.Popup("Failed", "Something went wrong.", MessageBoxIcon.Error);
+                    }
+
+                    APIKeyTextboxEnabled = true;
+                    RefreshNMUI();
+                }
+            }));
+        }
+
+        private void buttonNMLoginManually_Click(object sender, EventArgs e)
+        {
+            UpdateNMProfile();
         }
 
         private void buttonNMUpdateProfile_Click(object sender, EventArgs e)
         {
-            /*if (this.textBoxAPIKey.Text == "")
-            {
-                MsgBox.Show("No API key entered", "Please enter your API key first before updating your profile.", MessageBoxIcon.Information);
-                return;
-            }*/
             UpdateNMProfile();
         }
 
@@ -733,6 +772,22 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (NexusMods.User.UserID >= 0)
                 Utils.OpenURL("https://www.nexusmods.com/users/"+ NexusMods.User.UserID);
+        }
+
+        private void checkBoxShowAPIKey_CheckedChanged(object sender, EventArgs e)
+        {
+            this.textBoxAPIKey.UseSystemPasswordChar = !this.checkBoxShowAPIKey.Checked;
+            this.textBoxAPIKey.PasswordChar = !this.checkBoxShowAPIKey.Checked ? '\u2022' : '\0';
+        }
+
+        private void textBoxAPIKey_TextChanged(object sender, EventArgs e)
+        {
+            NexusMods.User.APIKey = this.textBoxAPIKey.Text;
+        }
+
+        private void linkLabelAPIKeyHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // TODO: Send them to the wiki!
         }
 
 
