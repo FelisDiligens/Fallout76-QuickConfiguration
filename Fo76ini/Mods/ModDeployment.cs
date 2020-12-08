@@ -177,7 +177,7 @@ namespace Fo76ini.Mods
                 if (mod.Enabled && mod.Method == ManagedMod.DeploymentMethod.BundledBA2)
                 {
                     // ... copy it's files into temporary folders ...
-                    CopyFilesToTempSorted(mod, mods.Resources, archives);
+                    CopyFilesToTempSorted(mod, archives);
                     mod.Deployed = true;
                     mod.PreviousMethod = ManagedMod.DeploymentMethod.BundledBA2;
                 }
@@ -252,7 +252,7 @@ namespace Fo76ini.Mods
         /// It sorts files into different temporary folders.
         /// Each temporary folder gets packed to a bundled *.ba2 archive.
         /// </summary>
-        private static void CopyFilesToTempSorted(ManagedMod mod, ResourceList resources, DeployArchiveList archives)
+        private static void CopyFilesToTempSorted(ManagedMod mod, DeployArchiveList archives)
         {
             // Iterate over each file in the managed folder:
             IEnumerable<string> files = Directory.EnumerateFiles(mod.ManagedFolderPath, "*.*", SearchOption.AllDirectories);
@@ -303,6 +303,7 @@ namespace Fo76ini.Mods
                     File.Delete(deployArchive.GetArchivePath());
                 mods.Resources.Remove(deployArchive.ArchiveName);
             }
+            deployArchives.DeleteTempFolder();
 
             // Remove mods:
             foreach (ManagedMod mod in mods)
