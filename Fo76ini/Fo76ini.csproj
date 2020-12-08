@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F657CC3C-8FDF-4D1A-AE64-2F7E8A883D3C}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>Fo76ini</RootNamespace>
     <AssemblyName>Fo76ini</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>

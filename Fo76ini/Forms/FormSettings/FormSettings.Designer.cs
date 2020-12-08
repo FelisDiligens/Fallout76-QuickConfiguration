@@ -1005,6 +1005,7 @@
             this.textBoxAPIKey.Name = "textBoxAPIKey";
             this.textBoxAPIKey.Size = new System.Drawing.Size(726, 20);
             this.textBoxAPIKey.TabIndex = 107;
+            this.textBoxAPIKey.UseSystemPasswordChar = true;
             this.textBoxAPIKey.TextChanged += new System.EventHandler(this.textBoxAPIKey_TextChanged);
             // 
             // buttonNMLogin

@@ -596,7 +596,7 @@ namespace Fo76ini.Forms.FormSettings
             int buttonOffset = 25; // px
 
             Button[] buttons = new Button[] { buttonNMLogin, buttonNMLoginManually, buttonNWLogout, buttonNMUpdateProfile, buttonNWDeleteCache };
-            bool[] visiblity = new bool[] { !loggedIn, APIKeyTextboxEnabled, loggedIn, loggedIn, true };
+            bool[] visiblity = new bool[] { !loggedIn, !loggedIn && APIKeyTextboxEnabled, loggedIn, loggedIn, true };
 
             for (int i = 0; i < buttons.Length; i++)
             {
@@ -787,7 +787,7 @@ namespace Fo76ini.Forms.FormSettings
 
         private void linkLabelAPIKeyHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // TODO: Send them to the wiki!
+            Utils.OpenURL("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting:-Login-with-NexusMods-failed");
         }
 
 

@@ -239,7 +239,7 @@ namespace Fo76ini.NexusAPI
 
                 // Profile picture
                 XElement xmlProfilePicture = xmlProfile.Element("Picture");
-                if (xmlProfilePicture.Attribute("url") != null && xmlProfilePicture.Attribute("file") != null)
+                if (xmlProfilePicture != null && xmlProfilePicture.Attribute("url") != null && xmlProfilePicture.Attribute("file") != null)
                 {
                     ProfilePictureURL = xmlProfilePicture.Attribute("url").Value;
                     ProfilePictureFileName = xmlProfilePicture.Attribute("file").Value;
