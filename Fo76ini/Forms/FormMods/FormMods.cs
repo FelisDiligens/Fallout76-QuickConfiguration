@@ -208,6 +208,7 @@ namespace Fo76ini
         /// </summary>
         private void UpdateUI()
         {
+            UpdateSelectedIndices();
             UpdateModList();
             UpdateSettings();
             UpdateStatusStrip();
@@ -225,7 +226,7 @@ namespace Fo76ini
              * Iterate one row at a time...
              */
             isUpdating = true;
-            UpdateSelectedIndices();
+            //UpdateSelectedIndices();
             this.listViewMods.Items.Clear();
             for (int i = 0; i < Mods.Count; i++)
             {
@@ -483,6 +484,7 @@ namespace Fo76ini
 
         private void RestoreSelectedIndices()
         {
+            // Doesn't work.
             foreach (ListViewItem item in this.listViewMods.Items)
                 if (selectedIndices.Contains(item.Index))
                     item.Selected = true;
@@ -823,26 +825,26 @@ namespace Fo76ini
         private void toolStripButtonMoveUp_Click(object sender, EventArgs e)
         {
             UpdateSelectedIndices();
-            CloseSidePanel();
+            //CloseSidePanel();
             /*if (selectedIndex < 0)
                 return;
             selectedIndex = ManagedMods.Instance.MoveModUp(selectedIndex);*/
+            List<int> newSelectedIndices = new List<int>();
             if (selectedIndices.Count <= 0)
                 return;
             else if (selectedIndices.Count == 1)
             {
                 selectedIndex = Mods.MoveModUp(selectedIndex);
-                selectedIndices.Clear();
+                newSelectedIndices.Add(selectedIndex);
             }
             else
             {
                 selectedIndex = -1;
                 selectedIndices = selectedIndices.OrderBy(i => i).ToList();
-                List<int> newSelectedIndices = new List<int>();
                 foreach (int index in selectedIndices)
                     newSelectedIndices.Add(Mods.MoveModUp(index));
-                selectedIndices = newSelectedIndices;
             }
+            selectedIndices = newSelectedIndices;
             UpdateModList();
             UpdateStatusStrip();
         }
@@ -851,26 +853,26 @@ namespace Fo76ini
         private void toolStripButtonMoveDown_Click(object sender, EventArgs e)
         {
             UpdateSelectedIndices();
-            CloseSidePanel();
+            //CloseSidePanel();
             /*if (selectedIndex < 0)
                 return;
             selectedIndex = ManagedMods.Instance.MoveModDown(selectedIndex);*/
+            List<int> newSelectedIndices = new List<int>();
             if (selectedIndices.Count <= 0)
                 return;
             else if (selectedIndices.Count == 1)
             {
                 selectedIndex = Mods.MoveModDown(selectedIndex);
-                selectedIndices.Clear();
+                newSelectedIndices.Add(selectedIndex);
             }
             else
             {
                 selectedIndex = -1;
                 selectedIndices = selectedIndices.OrderByDescending(i => i).ToList();
-                List<int> newSelectedIndices = new List<int>();
                 foreach (int index in selectedIndices)
                     newSelectedIndices.Add(Mods.MoveModDown(index));
-                selectedIndices = newSelectedIndices;
             }
+            selectedIndices = newSelectedIndices;
             UpdateModList();
             UpdateStatusStrip();
         }
@@ -907,6 +909,7 @@ namespace Fo76ini
                 foreach (ListViewItem item in this.listViewMods.SelectedItems)
                     Mods[item.Index].Enabled = state;
             }
+            UpdateSelectedIndices();
             UpdateModList();
             UpdateStatusStrip();
             if (sidePanelStatus != SidePanelStatus.Closed)
@@ -1238,7 +1241,11 @@ namespace Fo76ini
             }, (success) => {
                 EnableUI();
                 if (success)
+                {
                     selectedIndex = Mods.Count - 1;
+                    selectedIndices.Clear();
+                    selectedIndices.Add(selectedIndex);
+                }
                 UpdateModList();
                 UpdateStatusStrip();
             });
@@ -1276,7 +1283,11 @@ namespace Fo76ini
             }, (success) => {
                 EnableUI();
                 if (success)
+                {
                     selectedIndex = Mods.Count - 1;
+                    selectedIndices.Clear();
+                    selectedIndices.Add(selectedIndex);
+                }
                 UpdateModList();
                 UpdateStatusStrip();
             });
@@ -1322,6 +1333,7 @@ namespace Fo76ini
                 if (success)
                 {
                     selectedIndex = -1;
+                    selectedIndices.Clear();
                     UpdateProgress(Progress.Done("Mods imported."));
                 }
                 UpdateModList();
@@ -1355,7 +1367,10 @@ namespace Fo76ini
             }, (success) => {
                 EnableUI();
                 if (success)
+                {
                     selectedIndex = -1;
+                    selectedIndices.Clear();
+                }
                 UpdateModList();
                 UpdateStatusStrip();
             });
@@ -1372,7 +1387,10 @@ namespace Fo76ini
             }, (success) => {
                 EnableUI();
                 if (success)
+                {
                     selectedIndex = -1;
+                    selectedIndices.Clear();
+                }
                 UpdateModList();
                 UpdateStatusStrip();
             });
@@ -1444,8 +1462,7 @@ namespace Fo76ini
                 return true;
             }, (success) => {
                 EnableUI();
-                UpdateModList();
-                UpdateStatusStrip();
+                UpdateUI();
             });
         }
 
@@ -1467,6 +1484,7 @@ namespace Fo76ini
                 UpdateModList();
                 UpdateStatusStrip();
 
+                // TODO: Check for updates could be so much better.
                 List<string> modsWithUpdates = new List<string>();
                 foreach (ManagedMod mod in Mods)
                     if (mod.RemoteInfo != null && Utils.CompareVersions(mod.Version, mod.RemoteInfo.LatestVersion) < 0)

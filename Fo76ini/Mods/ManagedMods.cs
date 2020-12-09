@@ -77,6 +77,12 @@ namespace Fo76ini.Mods
         /// <returns></returns>
         private int MoveMod(int oldIndex, int newIndex)
         {
+            if (oldIndex >= this.Mods.Count ||
+                oldIndex < 0 ||
+                newIndex >= this.Mods.Count ||
+                newIndex < 0)
+                return oldIndex;
+
             // https://stackoverflow.com/questions/450233/generic-list-moving-an-item-within-the-list
             ManagedMod mod = this.Mods[oldIndex];
 
