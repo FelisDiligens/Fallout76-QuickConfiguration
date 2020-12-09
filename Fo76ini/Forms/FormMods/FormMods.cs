@@ -106,6 +106,8 @@ namespace Fo76ini
         {
             Mods = new ManagedMods(GamePath);
             Mods.Load();
+            if (!LegacyManagedMods.CheckLegacy(GamePath))
+                Mods.SaveResources();
         }
 
         private void ReloadModManager()
@@ -115,7 +117,7 @@ namespace Fo76ini
             try
             {
                 CloseSidePanel();
-                LoadMods(this.game.GamePath);
+                LoadMods(game.GamePath);
                 UpdateUI();
                 TriggerNWModeUpdated();
             }

@@ -26,7 +26,7 @@ namespace Fo76ini
 {
     public partial class Form1 : Form
     {
-        private FormMods formMods = new FormMods();
+        private FormMods formMods;
         private FormWhatsNew formWhatsNew = new FormWhatsNew();
         private FormSettings formSettings;
 
@@ -43,6 +43,9 @@ namespace Fo76ini
 
             // Handle changes:
             ProfileManager.ProfileChanged += OnProfileChanged;
+
+            // Create FormMods:
+            formMods = new FormMods();
             FormMods.NWModeUpdated += OnNWModeUpdated;
 
             /*

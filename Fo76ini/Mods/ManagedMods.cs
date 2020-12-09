@@ -208,10 +208,6 @@ namespace Fo76ini.Mods
             if (!GameInstance.ValidateGamePath(GamePath))
                 return;
 
-            // TODO: Wtf does that do? (LoadINILists)
-            //if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bMultipleGameEditionsUsed", false))
-            //    this.LoadINILists();
-
             if (!File.Exists(XMLPath))
                 return;
 
@@ -222,25 +218,28 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
-        /// Serializes the list of mods and saves it to managed.xml
+        /// Serializes the list of mods and saves it to managed.xml. Also saves resource list.
         /// </summary>
         public void Save()
         {
             if (!Directory.Exists(Path.Combine(this.GamePath, "Mods")))
                 Directory.CreateDirectory(Path.Combine(this.GamePath, "Mods"));
 
-            // TODO: Wtf does that do? (CopyINILists)
-            //this.CopyINILists();
-
             this.Serialize(this.Mods).Save(XMLPath);
+            SaveResources();
+        }
+
+        /// <summary>
+        /// Saves the resource list
+        /// </summary>
+        public void SaveResources()
+        {
             this.Resources.SaveTXT(ResourcesPath);
             if (NuclearWinterModeEnabled)
                 IniFiles.F76Custom.Remove("Archive", "sResourceIndexFileList");
             else
                 this.Resources.CommitToINI(); // TODO: Where else do we have CommitToINI?
-            IniFiles.Save();
-
-            LegacyManagedMods.GenerateLegacyXML(this);
+            IniFiles.F76Custom.Save();
         }
 
         public void Add(ManagedMod item)
