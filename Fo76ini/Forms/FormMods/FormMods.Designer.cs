@@ -591,7 +591,7 @@
             this.groupBoxModReplace.Controls.Add(this.panelModDetailsReplaceDragAndDrop);
             this.groupBoxModReplace.Controls.Add(this.linkLabelModReplaceFilesWithFolder);
             this.groupBoxModReplace.Controls.Add(this.linkLabelModReplaceFilesWithArchive);
-            this.groupBoxModReplace.Location = new System.Drawing.Point(6, 495);
+            this.groupBoxModReplace.Location = new System.Drawing.Point(6, 486);
             this.groupBoxModReplace.Name = "groupBoxModReplace";
             this.groupBoxModReplace.Size = new System.Drawing.Size(365, 136);
             this.groupBoxModReplace.TabIndex = 75;
@@ -673,9 +673,9 @@
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.comboBoxModArchivePreset);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.textBoxModArchiveName);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModArchiveName);
-            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(6, 252);
+            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(6, 233);
             this.groupBoxModDetailsInstallationOptions.Name = "groupBoxModDetailsInstallationOptions";
-            this.groupBoxModDetailsInstallationOptions.Size = new System.Drawing.Size(365, 238);
+            this.groupBoxModDetailsInstallationOptions.Size = new System.Drawing.Size(365, 247);
             this.groupBoxModDetailsInstallationOptions.TabIndex = 74;
             this.groupBoxModDetailsInstallationOptions.TabStop = false;
             this.groupBoxModDetailsInstallationOptions.Text = "Installation options";
@@ -684,7 +684,7 @@
             // 
             this.linkLabelModInvalidateFrozenArchive.AutoSize = true;
             this.linkLabelModInvalidateFrozenArchive.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabelModInvalidateFrozenArchive.Location = new System.Drawing.Point(110, 127);
+            this.linkLabelModInvalidateFrozenArchive.Location = new System.Drawing.Point(110, 131);
             this.linkLabelModInvalidateFrozenArchive.Name = "linkLabelModInvalidateFrozenArchive";
             this.linkLabelModInvalidateFrozenArchive.Size = new System.Drawing.Size(123, 13);
             this.linkLabelModInvalidateFrozenArchive.TabIndex = 51;
@@ -696,7 +696,7 @@
             // 
             this.linkLabelModAutoDetectInstallOptions.AutoSize = true;
             this.linkLabelModAutoDetectInstallOptions.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabelModAutoDetectInstallOptions.Location = new System.Drawing.Point(7, 216);
+            this.linkLabelModAutoDetectInstallOptions.Location = new System.Drawing.Point(7, 220);
             this.linkLabelModAutoDetectInstallOptions.Name = "linkLabelModAutoDetectInstallOptions";
             this.linkLabelModAutoDetectInstallOptions.Size = new System.Drawing.Size(189, 13);
             this.linkLabelModAutoDetectInstallOptions.TabIndex = 50;
@@ -709,7 +709,7 @@
             this.labelModInstallWarning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelModInstallWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(107)))), ((int)(((byte)(8)))));
-            this.labelModInstallWarning.Location = new System.Drawing.Point(7, 150);
+            this.labelModInstallWarning.Location = new System.Drawing.Point(7, 154);
             this.labelModInstallWarning.Name = "labelModInstallWarning";
             this.labelModInstallWarning.Size = new System.Drawing.Size(352, 66);
             this.labelModInstallWarning.TabIndex = 49;
@@ -718,7 +718,7 @@
             // buttonModPickRootDir
             // 
             this.buttonModPickRootDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModPickRootDir.Location = new System.Drawing.Point(333, 42);
+            this.buttonModPickRootDir.Location = new System.Drawing.Point(333, 44);
             this.buttonModPickRootDir.Name = "buttonModPickRootDir";
             this.buttonModPickRootDir.Size = new System.Drawing.Size(26, 24);
             this.buttonModPickRootDir.TabIndex = 5;
@@ -729,7 +729,7 @@
             // labelModInstallAs
             // 
             this.labelModInstallAs.AutoSize = true;
-            this.labelModInstallAs.Location = new System.Drawing.Point(6, 20);
+            this.labelModInstallAs.Location = new System.Drawing.Point(6, 24);
             this.labelModInstallAs.Name = "labelModInstallAs";
             this.labelModInstallAs.Size = new System.Drawing.Size(51, 13);
             this.labelModInstallAs.TabIndex = 41;
@@ -738,7 +738,7 @@
             // labelModArchivePreset
             // 
             this.labelModArchivePreset.AutoSize = true;
-            this.labelModArchivePreset.Location = new System.Drawing.Point(6, 73);
+            this.labelModArchivePreset.Location = new System.Drawing.Point(6, 75);
             this.labelModArchivePreset.Name = "labelModArchivePreset";
             this.labelModArchivePreset.Size = new System.Drawing.Size(40, 13);
             this.labelModArchivePreset.TabIndex = 43;
@@ -747,7 +747,7 @@
             // checkBoxFreezeArchive
             // 
             this.checkBoxFreezeArchive.AutoSize = true;
-            this.checkBoxFreezeArchive.Location = new System.Drawing.Point(10, 126);
+            this.checkBoxFreezeArchive.Location = new System.Drawing.Point(10, 130);
             this.checkBoxFreezeArchive.Name = "checkBoxFreezeArchive";
             this.checkBoxFreezeArchive.Size = new System.Drawing.Size(58, 17);
             this.checkBoxFreezeArchive.TabIndex = 9;
@@ -761,7 +761,7 @@
             // labelModInstallInto
             // 
             this.labelModInstallInto.AutoSize = true;
-            this.labelModInstallInto.Location = new System.Drawing.Point(6, 47);
+            this.labelModInstallInto.Location = new System.Drawing.Point(6, 51);
             this.labelModInstallInto.Name = "labelModInstallInto";
             this.labelModInstallInto.Size = new System.Drawing.Size(57, 13);
             this.labelModInstallInto.TabIndex = 38;
@@ -773,7 +773,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxModInstallAs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxModInstallAs.FormattingEnabled = true;
-            this.comboBoxModInstallAs.Location = new System.Drawing.Point(113, 17);
+            this.comboBoxModInstallAs.Location = new System.Drawing.Point(113, 21);
             this.comboBoxModInstallAs.Name = "comboBoxModInstallAs";
             this.comboBoxModInstallAs.Size = new System.Drawing.Size(246, 21);
             this.comboBoxModInstallAs.TabIndex = 3;
@@ -782,7 +782,7 @@
             // buttonModDetailsSuggestArchiveName
             // 
             this.buttonModDetailsSuggestArchiveName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModDetailsSuggestArchiveName.Location = new System.Drawing.Point(290, 95);
+            this.buttonModDetailsSuggestArchiveName.Location = new System.Drawing.Point(290, 99);
             this.buttonModDetailsSuggestArchiveName.Name = "buttonModDetailsSuggestArchiveName";
             this.buttonModDetailsSuggestArchiveName.Size = new System.Drawing.Size(69, 23);
             this.buttonModDetailsSuggestArchiveName.TabIndex = 48;
@@ -794,7 +794,7 @@
             // 
             this.textBoxModRootDir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxModRootDir.Location = new System.Drawing.Point(113, 44);
+            this.textBoxModRootDir.Location = new System.Drawing.Point(113, 48);
             this.textBoxModRootDir.Name = "textBoxModRootDir";
             this.textBoxModRootDir.Size = new System.Drawing.Size(214, 20);
             this.textBoxModRootDir.TabIndex = 4;
@@ -806,7 +806,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxModArchivePreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxModArchivePreset.FormattingEnabled = true;
-            this.comboBoxModArchivePreset.Location = new System.Drawing.Point(113, 70);
+            this.comboBoxModArchivePreset.Location = new System.Drawing.Point(113, 74);
             this.comboBoxModArchivePreset.Name = "comboBoxModArchivePreset";
             this.comboBoxModArchivePreset.Size = new System.Drawing.Size(246, 21);
             this.comboBoxModArchivePreset.TabIndex = 6;
@@ -816,7 +816,7 @@
             // 
             this.textBoxModArchiveName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxModArchiveName.Location = new System.Drawing.Point(113, 97);
+            this.textBoxModArchiveName.Location = new System.Drawing.Point(113, 101);
             this.textBoxModArchiveName.Name = "textBoxModArchiveName";
             this.textBoxModArchiveName.Size = new System.Drawing.Size(171, 20);
             this.textBoxModArchiveName.TabIndex = 7;
@@ -825,7 +825,7 @@
             // labelModArchiveName
             // 
             this.labelModArchiveName.AutoSize = true;
-            this.labelModArchiveName.Location = new System.Drawing.Point(7, 100);
+            this.labelModArchiveName.Location = new System.Drawing.Point(7, 104);
             this.labelModArchiveName.Name = "labelModArchiveName";
             this.labelModArchiveName.Size = new System.Drawing.Size(75, 13);
             this.labelModArchiveName.TabIndex = 41;
@@ -841,7 +841,7 @@
             this.groupBoxModDetailsDetails.Controls.Add(this.labelModName);
             this.groupBoxModDetailsDetails.Controls.Add(this.labelModURL);
             this.groupBoxModDetailsDetails.Controls.Add(this.textBoxModName);
-            this.groupBoxModDetailsDetails.Location = new System.Drawing.Point(6, 82);
+            this.groupBoxModDetailsDetails.Location = new System.Drawing.Point(6, 63);
             this.groupBoxModDetailsDetails.Name = "groupBoxModDetailsDetails";
             this.groupBoxModDetailsDetails.Size = new System.Drawing.Size(365, 164);
             this.groupBoxModDetailsDetails.TabIndex = 73;
@@ -857,7 +857,7 @@
             this.buttonModOpenPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonModOpenPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModOpenPage.Image = global::Fo76ini.Properties.Resources.external_link_16;
-            this.buttonModOpenPage.Location = new System.Drawing.Point(331, 44);
+            this.buttonModOpenPage.Location = new System.Drawing.Point(331, 41);
             this.buttonModOpenPage.Name = "buttonModOpenPage";
             this.buttonModOpenPage.Size = new System.Drawing.Size(28, 28);
             this.buttonModOpenPage.TabIndex = 54;
@@ -873,7 +873,7 @@
             this.panelModDetailsNexusMods.Controls.Add(this.labelModLatestVersion);
             this.panelModDetailsNexusMods.Controls.Add(this.labelModLatestVersionDesc);
             this.panelModDetailsNexusMods.Controls.Add(this.labelModAuthorDesc);
-            this.panelModDetailsNexusMods.Location = new System.Drawing.Point(1, 99);
+            this.panelModDetailsNexusMods.Location = new System.Drawing.Point(1, 96);
             this.panelModDetailsNexusMods.Name = "panelModDetailsNexusMods";
             this.panelModDetailsNexusMods.Size = new System.Drawing.Size(363, 57);
             this.panelModDetailsNexusMods.TabIndex = 53;
@@ -931,7 +931,7 @@
             // 
             this.textBoxModVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxModVersion.Location = new System.Drawing.Point(142, 74);
+            this.textBoxModVersion.Location = new System.Drawing.Point(142, 71);
             this.textBoxModVersion.Name = "textBoxModVersion";
             this.textBoxModVersion.Size = new System.Drawing.Size(217, 20);
             this.textBoxModVersion.TabIndex = 52;
@@ -940,7 +940,7 @@
             // labelModVersion
             // 
             this.labelModVersion.AutoSize = true;
-            this.labelModVersion.Location = new System.Drawing.Point(7, 77);
+            this.labelModVersion.Location = new System.Drawing.Point(7, 74);
             this.labelModVersion.Name = "labelModVersion";
             this.labelModVersion.Size = new System.Drawing.Size(86, 13);
             this.labelModVersion.TabIndex = 51;
@@ -950,7 +950,7 @@
             // 
             this.textBoxModURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxModURL.Location = new System.Drawing.Point(142, 48);
+            this.textBoxModURL.Location = new System.Drawing.Point(142, 45);
             this.textBoxModURL.Name = "textBoxModURL";
             this.textBoxModURL.Size = new System.Drawing.Size(186, 20);
             this.textBoxModURL.TabIndex = 50;
@@ -959,7 +959,7 @@
             // labelModName
             // 
             this.labelModName.AutoSize = true;
-            this.labelModName.Location = new System.Drawing.Point(6, 25);
+            this.labelModName.Location = new System.Drawing.Point(6, 22);
             this.labelModName.Name = "labelModName";
             this.labelModName.Size = new System.Drawing.Size(60, 13);
             this.labelModName.TabIndex = 25;
@@ -968,7 +968,7 @@
             // labelModURL
             // 
             this.labelModURL.AutoSize = true;
-            this.labelModURL.Location = new System.Drawing.Point(6, 51);
+            this.labelModURL.Location = new System.Drawing.Point(6, 48);
             this.labelModURL.Name = "labelModURL";
             this.labelModURL.Size = new System.Drawing.Size(88, 13);
             this.labelModURL.TabIndex = 49;
@@ -978,7 +978,7 @@
             // 
             this.textBoxModName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxModName.Location = new System.Drawing.Point(142, 22);
+            this.textBoxModName.Location = new System.Drawing.Point(142, 19);
             this.textBoxModName.Name = "textBoxModName";
             this.textBoxModName.Size = new System.Drawing.Size(217, 20);
             this.textBoxModName.TabIndex = 1;
@@ -991,7 +991,7 @@
             this.labelModSummary.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelModSummary.Location = new System.Drawing.Point(6, 5);
             this.labelModSummary.Name = "labelModSummary";
-            this.labelModSummary.Size = new System.Drawing.Size(348, 74);
+            this.labelModSummary.Size = new System.Drawing.Size(365, 55);
             this.labelModSummary.TabIndex = 55;
             this.labelModSummary.Text = "< Summary goes here >";
             // 

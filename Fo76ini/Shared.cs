@@ -45,7 +45,7 @@ namespace Fo76ini
             else
                 os += "x86";
 
-            AppUserAgent = $"Fo76QConf/{Shared.VERSION} ({os}) .NETFramework/{Shared.DotNetFrameworkVersion}";
+            AppUserAgent = $"Fo76QuickConfiguration/{Shared.VERSION} ({os}) .NETFramework/{Shared.DotNetFrameworkVersion}";
         }
     }
 }

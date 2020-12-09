@@ -118,8 +118,7 @@ namespace Fo76ini.Forms.FormIniError
 
         private void linkLabelShowHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // TODO: New wiki page
-            Utils.OpenURL("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting#couldnt-parse-ini-files-error-message-on-start");
+            Utils.OpenURL("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting:-*.ini-files");
         }
 
         private void buttonToggleDetails_Click(object sender, EventArgs e)
