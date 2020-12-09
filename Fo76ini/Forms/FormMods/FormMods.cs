@@ -466,7 +466,7 @@ namespace Fo76ini
             this.checkBoxModsUseHardlinks.Checked = IniFiles.Config.GetBool("Mods", "bUseHardlinks", true);
             this.checkBoxFreezeBundledArchives.Checked = IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false);
 
-            LoadTextBoxResourceList();
+            LoadTextBoxResourceList(Mods.Resources);
         }
 
         private void UpdateSelectedIndices()
@@ -1129,22 +1129,21 @@ namespace Fo76ini
          */
 
         #region Resource list textboxes
-        private void LoadTextBoxResourceList()
+        private void LoadTextBoxResourceList(ResourceList list)
         {
-            this.textBoxResourceList.Text = Mods.Resources.ToString("\n").Replace("\n", "\r\n");
+            this.textBoxResourceList.Text = list.ToString("\n").Replace("\n", "\r\n");
         }
 
         // Clean lists
         private void buttonModsCleanList_Click(object sender, EventArgs e)
         {
-            // TODO: Clean lists - Doesn't work
             // Load list:
             ResourceList list = ResourceList.FromString(this.textBoxResourceList.Text.Replace("\r\n", "\n"));
 
             // Remove non-existing files:
             list.CleanUp(this.game.GamePath);
 
-            LoadTextBoxResourceList();
+            LoadTextBoxResourceList(list);
         }
 
         // Apply changes
@@ -1153,13 +1152,13 @@ namespace Fo76ini
             ResourceList list = ResourceList.FromString(this.textBoxResourceList.Text.Replace("\r\n", "\n"));
             Mods.Resources.ReplaceRange(list);
             Mods.Save();
-            LoadTextBoxResourceList();
+            LoadTextBoxResourceList(Mods.Resources);
         }
 
         // Reset
         private void buttonModsResetTextbox_Click(object sender, EventArgs e)
         {
-            LoadTextBoxResourceList();
+            LoadTextBoxResourceList(Mods.Resources);
         }
 
         #endregion
