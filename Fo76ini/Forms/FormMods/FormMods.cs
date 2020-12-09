@@ -106,13 +106,13 @@ namespace Fo76ini
         {
             Mods = new ManagedMods(GamePath);
             Mods.Load();
-            if (!LegacyManagedMods.CheckLegacy(GamePath))
-                Mods.SaveResources();
         }
 
         private void ReloadModManager()
         {
             if (!IniFiles.IsLoaded())
+                return;
+            if (!game.ValidateGamePath())
                 return;
             try
             {
@@ -120,6 +120,9 @@ namespace Fo76ini
                 LoadMods(game.GamePath);
                 UpdateUI();
                 TriggerNWModeUpdated();
+
+                if (!LegacyManagedMods.CheckLegacy(game.GamePath))
+                    Mods.SaveResources();
             }
             catch (Exception exc)
             {
