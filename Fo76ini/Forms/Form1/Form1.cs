@@ -647,25 +647,30 @@ namespace Fo76ini
         private void buttonUpdateNow_Click(object sender, EventArgs e)
         {
             // Set sInstallationPath:
-            string installationPath = Path.GetFullPath(AppContext.BaseDirectory);
-            IniFiles.Config.Set("Updater", "sInstallationPath", installationPath);
+            //string installationPath = Path.GetFullPath(AppContext.BaseDirectory);
+            IniFiles.Config.Set("Updater", "sInstallationPath", Shared.AppInstallationFolder);
             IniFiles.Config.Save();
 
             // Copy updater.exe to <config-path>\Updater\:
             string updaterPath = Path.Combine(Shared.AppConfigFolder, "Updater");
             Directory.CreateDirectory(updaterPath);
             Directory.CreateDirectory(Path.Combine(updaterPath, "7z"));
-            foreach (string file in Directory.EnumerateFiles(Shared.AppInstallationFolder, "*", SearchOption.AllDirectories))
-                File.Copy(file, Path.Combine(updaterPath, file), true);
+            foreach (string filePath in Directory.EnumerateFiles(Shared.AppInstallationFolder, "*", SearchOption.AllDirectories))
+            {
+                string relPath = Utils.MakeRelativePath(Shared.AppInstallationFolder, filePath);
+                string destPath = Path.Combine(updaterPath, relPath);
+                Directory.CreateDirectory(Path.GetDirectoryName(destPath));
+                File.Copy(filePath, destPath, true);
+            }
 
             // Run updater.exe:
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = Path.Combine(updaterPath, "updater.exe");
             // If the program is installed into C:\Program Files (x86)\ then run the updater as admin:
-            if (installationPath.Contains("C:\\Program Files"))
+            if (Shared.AppInstallationFolder.Contains("C:\\Program Files"))
                 startInfo.Verb = "runas";
             Process.Start(startInfo);
-            Application.Exit();
+            Environment.Exit(0);
         }
 
         #region Tool strip
