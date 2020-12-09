@@ -403,13 +403,13 @@ namespace Fo76ini_Updater
         {
             extractionPath = Path.Combine(workingDir, Path.GetFileNameWithoutExtension(config.DownloadFileName));
             //extractionPath = Path.Combine(workingDir, "extracted");
-            String sevenZipPath = Path.GetFullPath(".\\7z\\7za.exe");
+            String sevenZipPath = Path.GetFullPath(".\\7z\\7z.exe");
             String arguments = $"x \"{downloadPath}\" -r -o\"{extractionPath}\" -y *";
             using (Process proc = new Process())
             {
                 log.WriteLine("--------------------------------------------------------------------");
                 log.WriteLine($"Unpacking file");
-                log.WriteLine($">> 7za.exe {arguments}");
+                log.WriteLine($">> 7z.exe {arguments}");
                 proc.StartInfo.UseShellExecute = false;
                 proc.StartInfo.RedirectStandardOutput = true;
                 proc.StartInfo.RedirectStandardError = true;
