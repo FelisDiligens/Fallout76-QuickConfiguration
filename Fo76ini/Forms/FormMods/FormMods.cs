@@ -1525,7 +1525,7 @@ namespace Fo76ini
             foreach (ManagedMod mod in Mods)
             {
                 i++;
-                if (mod.RemoteInfo != null && mod.RemoteInfo.Endorsement != NMMod.EndorseStatus.Endorsed)
+                if (mod.RemoteInfo != null && mod.Version != null && mod.Version != "" && mod.RemoteInfo.Endorsement != NMMod.EndorseStatus.Endorsed)
                 {
                     mod.RemoteInfo.Endorse(mod.Version);
                     ProgressChanged?.Invoke(Progress.Ongoing($"Endorsing \"{mod.Title}\"", (float)i / (float)Mods.Count()));

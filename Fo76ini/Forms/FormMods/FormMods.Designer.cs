@@ -521,6 +521,7 @@
             this.buttonModAbstain.TabIndex = 73;
             this.toolTip.SetToolTip(this.buttonModAbstain, "Abstain from endorsing this mod.");
             this.buttonModAbstain.UseVisualStyleBackColor = false;
+            this.buttonModAbstain.Click += new System.EventHandler(this.buttonModAbstain_Click);
             // 
             // buttonModEndorse
             // 
@@ -536,6 +537,7 @@
             this.buttonModEndorse.TabIndex = 72;
             this.toolTip.SetToolTip(this.buttonModEndorse, "Endorse this mod.");
             this.buttonModEndorse.UseVisualStyleBackColor = false;
+            this.buttonModEndorse.Click += new System.EventHandler(this.buttonModEndorse_Click);
             // 
             // labelModEndorseStatus
             // 
@@ -991,7 +993,7 @@
             this.labelModSummary.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelModSummary.Location = new System.Drawing.Point(6, 5);
             this.labelModSummary.Name = "labelModSummary";
-            this.labelModSummary.Size = new System.Drawing.Size(365, 55);
+            this.labelModSummary.Size = new System.Drawing.Size(348, 55);
             this.labelModSummary.TabIndex = 55;
             this.labelModSummary.Text = "< Summary goes here >";
             // 
