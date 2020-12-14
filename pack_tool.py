@@ -3,11 +3,11 @@ import time, os, shutil
 from distutils.dir_util import copy_tree
 init()
 
-PROJECT_GIT_DIR  = "C:\\Users\\Thomas\\Documents\\Fallout 76 Quick Configuration - Project files\\Fallout76-QuickConfiguration\\"
-PACK_TARGET_DIR  = "C:\\Users\\Thomas\\Documents\\Fallout 76 Quick Configuration - Project files\\Files\\Main Files\\"
+PROJECT_GIT_DIR  = "D:\\Workspace\\Fallout 76 Quick Configuration\\Fallout76-QuickConfiguration\\"
+PACK_TARGET_DIR  = "D:\\Workspace\\Fallout 76 Quick Configuration\\Files\\Main Files\\"
 
-SEVENZIP_PATH    = "C:\\Portable\\7z\\7za.exe"
-RCEDIT_PATH      = "C:\\Portable\\rcedit-x64.exe"
+SEVENZIP_PATH    = "D:\\Portable\\7z\\7z.exe"
+RCEDIT_PATH      = "D:\\Portable\\rcedit-x64.exe"
 
 RELEASE_BIN_DIR  = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\bin\\Release")
 EXECUTABLE_PATH  = os.path.join(RELEASE_BIN_DIR, "Fo76ini.exe")
@@ -67,6 +67,11 @@ def pack_release():
     print("-----------------------------------------")
     print("Done.")
 
+def extract_release():
+    print("Extracting release...")
+    target_dir = os.path.join(PACK_TARGET_DIR, "v" + VERSION)
+    os.system("{0} x \"{1}\" -r -o\"{2}\" *".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_bin.zip"), os.path.join(target_dir, "v" + VERSION + "_bin")))
+
 def use_rcedit():
     print("Setting executable version to '{0}'...".format(VERSION))
     os.system("{0} \"{1}\" --set-file-version {2} --set-product-version {2}".format(RCEDIT_PATH, EXECUTABLE_PATH, VERSION))
@@ -87,7 +92,7 @@ def update_inno():
     pass
 
 def build_inno():
-    print("NOT IMPLEMENTED")
+    os.system("setup.iss")
     pass
 
 def open_dir():
@@ -129,11 +134,12 @@ if __name__ == "__main__":
 
 {Fore.BLUE}Pack release
 {Fore.MAGENTA}(5){Fore.RESET} Pack release
-{Fore.MAGENTA}(6){Fore.RESET} Update inno setup script
-{Fore.MAGENTA}(7){Fore.RESET} Build inno setup
+{Fore.MAGENTA}(6){Fore.RESET} Extract *.zip
+{Fore.MAGENTA}(7){Fore.RESET} Update inno setup script
+{Fore.MAGENTA}(8){Fore.RESET} Build inno setup
 
 {Fore.BLUE}Others
-{Fore.MAGENTA}(8){Fore.RESET} Open target folder
+{Fore.MAGENTA}(9){Fore.RESET} Open target folder
 {Fore.MAGENTA}(0){Fore.RESET} Exit
 -----------------------------------------""")
         i = input(">>> ").strip()
@@ -149,10 +155,12 @@ if __name__ == "__main__":
         elif i == "5":
             pack_release()
         elif i == "6":
-            update_inno()
+            extract_release()
         elif i == "7":
-            build_inno()
+            update_inno()
         elif i == "8":
+            build_inno()
+        elif i == "9":
             open_dir()
         elif i == "0" or i == "":
             print("""Bye bye!
