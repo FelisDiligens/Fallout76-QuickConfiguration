@@ -717,14 +717,6 @@ namespace Fo76ini
                 saveToolStripMenuItem_Click(sender, e);
             }
 
-            if (e.Control && e.KeyCode == Keys.A)
-            {
-                // Select all:
-                foreach (ListViewItem item in this.listViewMods.Items)
-                    item.Selected = true;
-                UpdateSelectedIndices();
-            }
-
             // These shortcuts only apply to the mod list:
             if (this.listViewMods.Focused)
             {
@@ -742,6 +734,13 @@ namespace Fo76ini
                 {
                     // Move mods down:
                     toolStripButtonMoveDown_Click(sender, e);
+                }
+                else if (e.Control && e.KeyCode == Keys.A)
+                {
+                    // Select all:
+                    foreach (ListViewItem item in this.listViewMods.Items)
+                        item.Selected = true;
+                    UpdateSelectedIndices();
                 }
             }
         }
