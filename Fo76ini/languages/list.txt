@@ -6,3 +6,4 @@ ru-RU.xml
 sv-SE.xml
 zh-CN.xml
 zh-TW.xml
+ja-JP.xml
