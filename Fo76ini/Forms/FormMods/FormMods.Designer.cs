@@ -550,8 +550,7 @@
             // 
             // labelModTitle
             // 
-            this.labelModTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelModTitle.AutoEllipsis = true;
             this.labelModTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelModTitle.Location = new System.Drawing.Point(-12, 2);
             this.labelModTitle.Name = "labelModTitle";
@@ -993,7 +992,7 @@
             this.labelModSummary.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelModSummary.Location = new System.Drawing.Point(6, 5);
             this.labelModSummary.Name = "labelModSummary";
-            this.labelModSummary.Size = new System.Drawing.Size(348, 55);
+            this.labelModSummary.Size = new System.Drawing.Size(331, 55);
             this.labelModSummary.TabIndex = 55;
             this.labelModSummary.Text = "< Summary goes here >";
             // 
@@ -1242,9 +1241,9 @@
             this.checkBoxFreezeBundledArchives.AutoSize = true;
             this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(6, 42);
             this.checkBoxFreezeBundledArchives.Name = "checkBoxFreezeBundledArchives";
-            this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(142, 17);
+            this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(211, 17);
             this.checkBoxFreezeBundledArchives.TabIndex = 2;
-            this.checkBoxFreezeBundledArchives.Text = "Freeze bundled archives";
+            this.checkBoxFreezeBundledArchives.Text = "[Experimental] Freeze bundled archives";
             this.toolTip.SetToolTip(this.checkBoxFreezeBundledArchives, "Instead of rebuilding bundled archives, it will save a bundled copy and ask you i" +
         "f you want to update it on deploy.");
             this.checkBoxFreezeBundledArchives.UseVisualStyleBackColor = true;
