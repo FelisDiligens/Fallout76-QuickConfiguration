@@ -196,11 +196,11 @@ namespace Fo76ini
             this.WindowState = FormWindowState.Normal;
             ReloadModManager();
 
-            if (!ConvertLegacyConditional())
-                return;
-
             Show();
             Focus();
+
+            if (!ConvertLegacyConditional())
+                return;
         }
 
         /// <summary>
