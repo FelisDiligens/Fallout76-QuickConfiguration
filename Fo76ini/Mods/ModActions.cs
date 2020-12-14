@@ -93,8 +93,16 @@ namespace Fo76ini.Mods
 
             Directory.CreateDirectory(mod.FrozenDataPath);
 
+            // Getting preset:
+            Archive2.Preset preset = ModHelpers.GetArchive2Preset(mod);
+
+            ModDeployment.LogFile.WriteLine($"      Freezing mod '{mod.Title}'...");
+            ModDeployment.LogFile.WriteLine($"         Format:      {preset.format}");
+            ModDeployment.LogFile.WriteLine($"         Compression: {preset.compression}");
+            ModDeployment.LogFile.WriteLine($"         Destination: FrozenData\\{mod.FrozenArchiveName}");
+
             // Create archive:
-            Archive2.Create(mod.FrozenArchivePath, mod.ManagedFolderPath, ModHelpers.GetArchive2Preset(mod));
+            Archive2.Create(mod.FrozenArchivePath, mod.ManagedFolderPath, preset);
 
             // Change DiskState and save:
             mod.Frozen = true;

@@ -1119,16 +1119,15 @@ namespace Fo76ini
         // Help > Log files > Show modmanager.log.txt
         private void showModmanagerlogtxtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: Logfile
-            /*if (File.Exists(ManagedMods.Instance.logFile.GetFilePath()))
-                Utils.OpenNotepad(ManagedMods.Instance.logFile.GetFilePath());*/
+            if (File.Exists(ModDeployment.LogFile.GetFilePath()))
+                Utils.OpenNotepad(ModDeployment.LogFile.GetFilePath());
         }
 
         // Help > Log files > Show archive2.log.txt
         private void showArchive2logtxtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Archive2.logFile.GetFilePath()))
-                Utils.OpenNotepad(Archive2.logFile.GetFilePath());
+            if (File.Exists(Archive2.LogFile.GetFilePath()))
+                Utils.OpenNotepad(Archive2.LogFile.GetFilePath());
         }
 
         #endregion
@@ -1402,7 +1401,10 @@ namespace Fo76ini
         {
             try
             {
-                ModDeployment.Deploy(Mods, UpdateProgress);
+                bool invalidateBundledFrozenArchives = true;
+                if (IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false))
+                    invalidateBundledFrozenArchives = MsgBox.Get("modsRepackFrozenBundledArchives").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+                ModDeployment.Deploy(Mods, UpdateProgress, invalidateBundledFrozenArchives);
             }
             catch (Archive2RequirementsException exc)
             {

@@ -6,7 +6,7 @@ namespace Fo76ini.Utilities
 {
     public class Archive2
     {
-        public static Log logFile;
+        public static Log LogFile;
         private static string archive2Path = ".\\Archive2\\Archive2.exe";
 
         public static string Archive2Path
@@ -16,7 +16,7 @@ namespace Fo76ini.Utilities
 
         static Archive2()
         {
-            logFile = new Log(Log.GetFilePath("archive2.log.txt"));
+            LogFile = new Log(Log.GetFilePath("archive2.log.txt"));
         }
 
         public enum Compression
@@ -79,8 +79,8 @@ namespace Fo76ini.Utilities
 
             using (Process proc = new Process())
             {
-                logFile.WriteTimeStamp();
-                logFile.WriteLine($">> Archive2.exe {arguments}");
+                LogFile.WriteTimeStamp();
+                LogFile.WriteLine($">> Archive2.exe {arguments}");
                 proc.StartInfo.UseShellExecute = false; // = true
                 proc.StartInfo.RedirectStandardOutput = true; // // ...
                 proc.StartInfo.RedirectStandardError = true; // // ...
@@ -94,7 +94,7 @@ namespace Fo76ini.Utilities
                 logFile.WriteLine(proc.StandardError.ReadToEnd());*/
 
                 string output = proc.StandardOutput.ReadToEnd() + "\n" + proc.StandardError.ReadToEnd();
-                logFile.WriteLine(output);
+                LogFile.WriteLine(output);
                 proc.WaitForExit();
 
                 // System.IO.FileNotFoundException: Could not load file or assembly 'Archive2Interop.dll'

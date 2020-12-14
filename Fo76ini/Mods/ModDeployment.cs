@@ -15,16 +15,32 @@ namespace Fo76ini.Mods
     public static class ModDeployment
     {
         // TODO: Clean FrozenData?
+        public static Log LogFile;
 
-        public static void Deploy(ManagedMods mods, Action<Progress> ProgressChanged)
+        static ModDeployment()
         {
+            ModDeployment.LogFile = new Log(Log.GetFilePath("modmanager.log.txt"));
+        }
+
+        public static void Deploy(ManagedMods mods, Action<Progress> ProgressChanged, bool invalidateBundledFrozenArchives = true)
+        {
+            LogFile.WriteLine("\n\n");
+            LogFile.WriteTimeStamp();
+            LogFile.WriteLine($"Version {Shared.VERSION}, deploying...");
+
             // TODO: More descriptive ProgressChanged
             ProgressChanged?.Invoke(Progress.Indetermined("Deploying..."));
 
             // Check for conflicts:
+            LogFile.WriteLine("Checking for conflicting archive names...");
             List<ModHelpers.Conflict> conflicts = ModHelpers.GetConflictingArchiveNames(mods.Mods);
             if (conflicts.Count > 0)
+            {
+                LogFile.WriteLine("Conflicts found, abort.");
+                foreach (ModHelpers.Conflict conflict in conflicts)
+                    LogFile.WriteLine($"   Conflict: {conflict.conflictText}");
                 throw new DeploymentFailedException("Conflicting archive names.");
+            }
 
             // Restore *.dll files:
             RestoreAddedDLLs(mods.GamePath);
@@ -37,6 +53,8 @@ namespace Fo76ini.Mods
             // If mods are enabled:
             if (!mods.ModsDisabled)
             {
+                LogFile.WriteLine("Installing mods...");
+
                 // Deploy all SeparateBA2 and Loose mods:
                 foreach (ManagedMod mod in mods)
                 {
@@ -61,13 +79,15 @@ namespace Fo76ini.Mods
 
                 // Deploy all BundledBA2 mods:
                 ProgressChanged?.Invoke(Progress.Indetermined($"Building bundled archives..."));
-                ModDeployment.DeployBundledArchives(mods);
+                ModDeployment.DeployBundledArchives(mods, IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false), invalidateBundledFrozenArchives);
 
                 mods.Save();
                 ProgressChanged?.Invoke(Progress.Done("Mods deployed."));
             }
             else
                 ProgressChanged?.Invoke(Progress.Done("Mods removed."));
+
+            LogFile.WriteLine("Deployment finished.");
         }
 
         /// <summary>
@@ -75,6 +95,8 @@ namespace Fo76ini.Mods
         /// </summary>
         private static void DeployLooseFiles(ManagedMods mods, ManagedMod mod, String GamePath)
         {
+            LogFile.WriteLine($"   Installing mod '{mod.Title}' as LooseFiles");
+
             mod.LooseFiles.Clear();
 
             // Iterate over each file in the managed folder ...
@@ -94,6 +116,7 @@ namespace Fo76ini.Mods
                     File.Move(destinationPath, destinationPath + ".old");
 
                 // ... and copy the file (and replace it if necessary).
+                LogFile.WriteLine($"      Copying: \"{relPath}\"");
                 if (Configuration.bUseHardlinks)
                     Utils.CreateHardLink(filePath, destinationPath, true);
                 else
@@ -111,12 +134,19 @@ namespace Fo76ini.Mods
         /// </summary>
         private static void DeploySeparateArchive(ManagedMod mod, ResourceList resources)
         {
+            LogFile.WriteLine($"   Installing mod '{mod.Title}' as SeparateBA2");
+
             // If mod is supposed to be deployed frozen...
             if (mod.Freeze)
             {
                 // ... freeze if necessary ...
                 if (!mod.Frozen)
+                {
+                    //LogFile.WriteLine($"      Freezing mod...");
                     ModActions.Freeze(mod);
+                }
+
+                LogFile.WriteLine($"      Copying frozen archive...");
 
                 // ... and copy it to the Data folder.
                 if (Configuration.bUseHardlinks)
@@ -136,13 +166,23 @@ namespace Fo76ini.Mods
             {
                 // ... unfreeze mod if needed ...
                 if (mod.Frozen)
+                {
+                    LogFile.WriteLine($"      Unfreezing mod...");
                     ModActions.Unfreeze(mod);
+                }
+
+                // Getting preset:
+                Archive2.Preset preset = ModHelpers.GetArchive2Preset(mod);
+
+                LogFile.WriteLine($"      Creating new archive...");
+                LogFile.WriteLine($"         Format:      {preset.format}");
+                LogFile.WriteLine($"         Compression: {preset.compression}");
 
                 // ... and create a new archive.
                 Archive2.Create(
                     mod.ArchivePath,
                     mod.ManagedFolderPath,
-                    ModHelpers.GetArchive2Preset(mod));
+                    preset);
             }
 
             // Finally, update the disk state ...
@@ -154,6 +194,8 @@ namespace Fo76ini.Mods
 
             // ... and add the archive to the resource list.
             resources.Add(mod.ArchiveName);
+
+            LogFile.WriteLine($"      Installed.");
         }
 
         /// <summary>
@@ -161,6 +203,7 @@ namespace Fo76ini.Mods
         /// </summary>
         private static void DeployBundledArchives(ManagedMods mods, bool freezeArchives = false, bool invalidateFrozenArchives = true)
         {
+            LogFile.WriteLine($"   Installing BundledBA2 mods...");
             DeployArchiveList archives = new DeployArchiveList(mods.GamePath);
 
             // We want to use frozen archives but haven't invalidated them...
@@ -176,6 +219,8 @@ namespace Fo76ini.Mods
             {
                 if (mod.Enabled && mod.Method == ManagedMod.DeploymentMethod.BundledBA2)
                 {
+                    LogFile.WriteLine($"      Copy files of mod '{mod.Title}' to temp folder...");
+
                     // ... copy it's files into temporary folders ...
                     CopyFilesToTempSorted(mod, archives);
                     mod.Deployed = true;
@@ -192,12 +237,16 @@ namespace Fo76ini.Mods
         /// </summary>
         private static void CopyFrozenBundledArchives(ResourceList resources, DeployArchiveList archives)
         {
+            LogFile.WriteLine($"      Copy frozen bundled archives...");
+
             // For each archive...
             foreach (DeployArchive archive in archives)
             {
                 // ... if it had been frozen ...
                 if (File.Exists(archive.GetFrozenArchivePath()))
                 {
+                    LogFile.WriteLine($"         Copying {archive.ArchiveName}");
+
                     // ... copy it into the Data folder ...
                     if (Configuration.bUseHardlinks)
                         Utils.CreateHardLink(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
@@ -224,6 +273,8 @@ namespace Fo76ini.Mods
                     // ... pack the temporary folder to an archive ...
                     if (freezeArchives)
                     {
+                        LogFile.WriteLine($"      Freezing archive '{archive.ArchiveName}'");
+
                         // either freeze to FrozenData and then copy to Data:
                         Archive2.Create(archive.GetFrozenArchivePath(), archive.TempPath, archive.Compression, archive.Format);
 
@@ -234,6 +285,8 @@ namespace Fo76ini.Mods
                     }
                     else
                     {
+                        LogFile.WriteLine($"      Creating archive '{archive.ArchiveName}'");
+
                         // or create directly in Data:
                         Archive2.Create(archive.GetArchivePath(), archive.TempPath, archive.Compression, archive.Format);
                     }
@@ -244,6 +297,7 @@ namespace Fo76ini.Mods
             }
 
             // Clean up after we're finished.
+            LogFile.WriteLine($"      Deleting temporary folder...");
             archives.DeleteTempFolder();
         }
 
@@ -295,19 +349,26 @@ namespace Fo76ini.Mods
 
         public static void RemoveAll(ManagedMods mods)
         {
+            LogFile.WriteLine("Removing all installed mods");
+
             // Delete bundled archives:
             DeployArchiveList deployArchives = new DeployArchiveList(mods.GamePath);
             foreach (DeployArchive deployArchive in deployArchives)
             {
+                LogFile.WriteLine($"   Removing {deployArchive.ArchiveName}");
                 if (File.Exists(deployArchive.GetArchivePath()))
                     File.Delete(deployArchive.GetArchivePath());
                 mods.Resources.Remove(deployArchive.ArchiveName);
             }
+            LogFile.WriteLine($"   Deleting temporary folders");
             deployArchives.DeleteTempFolder();
 
             // Remove mods:
             foreach (ManagedMod mod in mods)
+            {
+                LogFile.WriteLine($"   Removing mod {mod.Title}");
                 ModDeployment.Remove(mod, mods.Resources, mods.GamePath);
+            }
 
             mods.Save();
         }
@@ -319,14 +380,17 @@ namespace Fo76ini.Mods
                 switch (mod.PreviousMethod)
                 {
                     case ManagedMod.DeploymentMethod.BundledBA2:
+                        LogFile.WriteLine($"      Skipped (mod is bundled)");
                         break;
 
                     case ManagedMod.DeploymentMethod.SeparateBA2:
+                        LogFile.WriteLine($"      Deleting {mod.CurrentArchiveName}");
                         File.Delete(mod.CurrentArchivePath);
                         resources.Remove(mod.CurrentArchiveName);
                         break;
 
                     case ManagedMod.DeploymentMethod.LooseFiles:
+                        LogFile.WriteLine($"      Deleting loose files");
                         foreach (string relFilePath in mod.LooseFiles)
                         {
                             string installedFilePath = Path.GetFullPath(Path.Combine(GamePath, mod.CurrentRootFolder, relFilePath)); // .Replace("\\.\\", "\\")
@@ -373,9 +437,9 @@ namespace Fo76ini.Mods
 
         public static void RenameAddedDLLs(string GamePath)
         {
+            LogFile.WriteLine("Renaming non-whitelisted *.dll to *.dll.nwmode");
             // Iterate through every *.dll file in game path:
             IEnumerable<string> files = Directory.EnumerateFiles(GamePath, "*.dll");
-            //ManagedMods.Instance.logFile.WriteLine($"Renaming \'*.dll\' files to \'*.dll.nwmode\'.");
             foreach (string filePath in files)
             {
                 // If not whitelisted...
@@ -386,14 +450,14 @@ namespace Fo76ini.Mods
                     if (!File.Exists(filePath + ".nwmode"))
                     {
                         File.Move(filePath, filePath + ".nwmode");
-                        //ManagedMods.Instance.logFile.WriteLine($"   Renamed {fileName}");
+                        LogFile.WriteLine($"   Renamed {fileName}");
                     }
 
                     // ... or delete it:
                     else
                     {
                         File.Delete(filePath);
-                        //ManagedMods.Instance.logFile.WriteLine($"   Deleted {fileName}");
+                        LogFile.WriteLine($"   Deleted {fileName}");
                     }
                 }
             }
@@ -401,9 +465,9 @@ namespace Fo76ini.Mods
 
         public static void RestoreAddedDLLs(string GamePath)
         {
+            LogFile.WriteLine("Renaming *.dll.nwmode to *.dll");
             // Iterate through every *.dll.nwmode file in game path:
             IEnumerable<string> files = Directory.EnumerateFiles(GamePath, "*.dll.nwmode");
-            //ManagedMods.Instance.logFile.WriteLine($"Restoring \'*.dll.nwmode\' files to \'*.dll\'.");
             foreach (string filePath in files)
             {
                 string fileName = Path.GetFileName(filePath);
@@ -413,13 +477,13 @@ namespace Fo76ini.Mods
                 if (!File.Exists(originalFilePath))
                 {
                     File.Move(filePath, originalFilePath);
-                    //ManagedMods.Instance.logFile.WriteLine($"   Renamed {fileName}");
+                    LogFile.WriteLine($"   Renamed {fileName}");
                 }
                 else
                 {
                     // Assuming that the same *.dll file has been copied during deployment:
                     File.Delete(filePath); // we can just delete it.
-                    //ManagedMods.Instance.logFile.WriteLine($"   Deleted {fileName}");
+                    LogFile.WriteLine($"   Deleted {fileName}");
                 }
             }
         }
