@@ -200,7 +200,10 @@ namespace Fo76ini
             Focus();
 
             if (!ConvertLegacyConditional())
+            {
+                Hide();
                 return;
+            }
         }
 
         /// <summary>

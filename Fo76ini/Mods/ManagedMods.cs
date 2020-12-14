@@ -233,6 +233,7 @@ namespace Fo76ini.Mods
 
             this.Serialize(this.Mods).Save(XMLPath);
             SaveResources();
+            LegacyManagedMods.GenerateLegacyXML(this);
         }
 
         /// <summary>
