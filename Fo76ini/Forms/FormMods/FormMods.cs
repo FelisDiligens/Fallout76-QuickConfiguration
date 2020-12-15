@@ -554,6 +554,9 @@ namespace Fo76ini
 
         public void ToggleNuclearWinterMode()
         {
+            if (Mods == null)
+                return;
+
             if (Mods.NuclearWinterModeEnabled)
                 DisableNuclearWinterMode();
             else
@@ -562,6 +565,9 @@ namespace Fo76ini
 
         public void EnableNuclearWinterMode()
         {
+            if (Mods == null)
+                return;
+
             Mods.NuclearWinterModeEnabled = true;
 
             // Uninstall mods:
@@ -587,6 +593,9 @@ namespace Fo76ini
 
         public void DisableNuclearWinterMode()
         {
+            if (Mods == null)
+                return;
+
             Mods.NuclearWinterModeEnabled = false;
 
             // Install mods:
@@ -623,6 +632,9 @@ namespace Fo76ini
 
         public void ToggleNuclearWinterModeThreaded()
         {
+            if (Mods == null)
+                return;
+
             if (Mods.NuclearWinterModeEnabled)
                 DisableNuclearWinterModeThreaded();
             else

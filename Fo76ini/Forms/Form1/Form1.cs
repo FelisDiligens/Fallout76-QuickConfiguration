@@ -47,6 +47,7 @@ namespace Fo76ini
             // Create FormMods:
             formMods = new FormMods();
             FormMods.NWModeUpdated += OnNWModeUpdated;
+            UpdateNWModeUI(false);
 
             /*
              * Translations

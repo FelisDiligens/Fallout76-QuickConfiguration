@@ -119,7 +119,18 @@ namespace Fo76ini.Profiles
             foreach (XElement xmlGame in xmlDoc.Descendants("Game"))
                 AddGame(GameInstance.Deserialize(xmlGame));
 
-            SelectedGameIndex = Convert.ToInt32(xmlDoc.Root.Attribute("selected").Value);
+            if (games.Count > 0)
+            {
+                int index = Convert.ToInt32(xmlDoc.Root.Attribute("selected").Value);
+                if (index < 0 || index >= games.Count)
+                    SelectedGameIndex = 0;
+                else
+                    SelectedGameIndex = index;
+            }
+            else
+            {
+                CreateNewDefaultProfile();
+            }
 
             // Call event handler:
             Feedback();
@@ -142,26 +153,31 @@ namespace Fo76ini.Profiles
                 else
                 {
                     // else create a new game profile from scratch:
-                    GameInstance defaultGame = new GameInstance();
-                    if (File.Exists(Path.Combine(IniFiles.ParentPath, "Project76.ini")))
-                    {
-                        // "Project76.ini" exists, which means the user has it from the Microsoft Store
-                        defaultGame.Edition = GameEdition.MSStore;
-                        defaultGame.SetDefaultSettings(GameEdition.MSStore);
-                    }
-                    AddGame(defaultGame);
-                    SelectGame(defaultGame);
+                    CreateNewDefaultProfile();
                 }
             }
             
             // No game selected?
-            if (SelectedGameIndex < 0)
+            if (SelectedGameIndex < 0 || SelectedGameIndex >= games.Count)
             {
                 // Select first game in list:
                 SelectedGameIndex = 0;
             }
 
             Save();
+        }
+
+        private static void CreateNewDefaultProfile()
+        {
+            GameInstance defaultGame = new GameInstance();
+            if (File.Exists(Path.Combine(IniFiles.ParentPath, "Project76.ini")))
+            {
+                // "Project76.ini" exists, which means the user has it from the Microsoft Store
+                defaultGame.Edition = GameEdition.MSStore;
+                defaultGame.SetDefaultSettings(GameEdition.MSStore);
+            }
+            AddGame(defaultGame);
+            SelectGame(defaultGame);
         }
 
         /// <summary>
@@ -232,6 +248,10 @@ namespace Fo76ini.Profiles
                 if (selected)
                     SelectGame(game);
             }
+
+            // No previous game edition found?
+            // Create a new one:
+            CreateNewDefaultProfile();
         }
 
         private static ProfileEventArgs BuildProfileEventArgs()
