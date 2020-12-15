@@ -3,71 +3,87 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Fo76ini.Utilities;
 
-namespace Fo76ini
+namespace Fo76ini.Interface
 {
     public class MsgBox
     {
-        public String Title;
-        public String Text;
-        private String id;
+        public string Title;
+        public string Text;
+        private string id;
 
-        public const String NotificationSoundFile = @"notify.wav";
-        private static SoundPlayer SoundPlayer = new SoundPlayer(NotificationSoundFile);
+        public const string NotificationSoundFile = @"notify.wav";
+        public const string ErrorSoundFile = @"error.wav";
+        private static SoundPlayer NotifySoundPlayer = new SoundPlayer(NotificationSoundFile);
+        private static SoundPlayer ErrorSoundPlayer = new SoundPlayer(ErrorSoundFile);
 
         public static void PlayNotificationSound()
         {
             // Don't play sound, if disabled:
-            if (!IniFiles.Instance.GetBool(IniFile.Config, "Preferences", "bPlayNotificationSound", true))
+            if (!IniFiles.Config.GetBool("Preferences", "bPlayNotificationSound", true))
                 return;
 
             // Play alert.wav if available:
             if (File.Exists(NotificationSoundFile))
-                SoundPlayer.Play();
+                NotifySoundPlayer.Play();
 
             // Fallback to system sound if alert.wav is not available:
             else
                 SystemSounds.Asterisk.Play();
         }
 
-        public String ID
+        public static void PlayErrorNotificationSound()
+        {
+            // Don't play sound, if disabled:
+            if (!IniFiles.Config.GetBool("Preferences", "bPlayNotificationSound", true))
+                return;
+
+            // Play alert.wav if available:
+            if (File.Exists(ErrorSoundFile))
+                ErrorSoundPlayer.Play();
+
+            // Fallback to system sound if alert.wav is not available:
+            else
+                SystemSounds.Hand.Play();
+        }
+
+        public string ID
         {
             get { return id; }
         }
 
-        public MsgBox (String id, String title, String text)
+        public MsgBox(string id, string title, string text)
         {
             this.Title = title;
             this.Text = text;
             this.id = id;
         }
-        
-        private static Dictionary<String, MsgBox> msgBoxes = new Dictionary<String, MsgBox>();
+
+        private static Dictionary<string, MsgBox> msgBoxes = new Dictionary<string, MsgBox>();
         public static void Add(MsgBox msgBox)
         {
             MsgBox.msgBoxes[msgBox.id] = msgBox;
         }
-        public static void Add(String id, String title, String text)
+        public static void Add(string id, string title, string text)
         {
             MsgBox.msgBoxes[id] = new MsgBox(id, title, text);
         }
-        public static MsgBox Get(String key)
+        public static MsgBox Get(string key)
         {
             if (MsgBox.msgBoxes.ContainsKey(key))
                 return MsgBox.msgBoxes[key];
             else
-                return new MsgBox("notfound", $"-- Messagebox \"{key}\" not found --", $"If you read this, the programmer screwed up, lol.\nAvailable messageboxes:\n{String.Join("\n", MsgBox.msgBoxes.Keys.ToArray())}");
+                return new MsgBox("notfound", $"-- Messagebox \"{key}\" not found --", "If you read this, the programmer screwed up, lol."); // $"\nAvailable messageboxes:\n{string.Join("\n", MsgBox.msgBoxes.Keys.ToArray())}"
         }
 
-        public MsgBox FormatTitle(params String[] values)
+        public MsgBox FormatTitle(params string[] values)
         {
             try
             {
-                return new MsgBox(this.ID, String.Format(this.Title, values), this.Text);
+                return new MsgBox(this.ID, string.Format(this.Title, values), this.Text);
             }
             catch (FormatException ex)
             {
@@ -75,11 +91,11 @@ namespace Fo76ini
             }
         }
 
-        public MsgBox FormatText(params String[] values)
+        public MsgBox FormatText(params string[] values)
         {
             try
             {
-                return new MsgBox(this.ID, this.Title, String.Format(this.Text, values));
+                return new MsgBox(this.ID, this.Title, string.Format(this.Text, values));
             }
             catch (FormatException ex)
             {
@@ -89,66 +105,99 @@ namespace Fo76ini
 
 
 
-        public static DialogResult ShowID(String id)
+        public static DialogResult ShowID(string id)
         {
             return MsgBox.Get(id).Show();
         }
 
-        public static DialogResult ShowID(String id, MessageBoxButtons buttons, MessageBoxIcon icon)
+        public static DialogResult ShowID(string id, MessageBoxButtons buttons, MessageBoxIcon icon)
         {
             return MsgBox.Get(id).Show(buttons, icon);
         }
 
-        public static DialogResult ShowID(String id, MessageBoxButtons buttons)
+        public static DialogResult ShowID(string id, MessageBoxButtons buttons)
         {
             return MsgBox.Get(id).Show(buttons);
         }
 
-        public static DialogResult ShowID(String id, MessageBoxIcon icon)
+        public static DialogResult ShowID(string id, MessageBoxIcon icon)
         {
             return MsgBox.Get(id).Show(icon);
         }
 
         public DialogResult Show()
         {
-            SystemSounds.Asterisk.Play();
+            //SystemSounds.Asterisk.Play();
             return MessageBox.Show(this.Text, this.Title);
         }
 
         public DialogResult Show(MessageBoxButtons buttons, MessageBoxIcon icon)
         {
-            SystemSounds.Asterisk.Play();
+            //SystemSounds.Asterisk.Play();
             return MessageBox.Show(this.Text, this.Title, buttons, icon);
         }
 
         public DialogResult Show(MessageBoxButtons buttons)
         {
-            SystemSounds.Asterisk.Play();
+            //SystemSounds.Asterisk.Play();
             return MessageBox.Show(this.Text, this.Title, buttons);
         }
 
         public DialogResult Show(MessageBoxIcon icon)
         {
-            SystemSounds.Asterisk.Play();
+            //SystemSounds.Asterisk.Play();
             return MessageBox.Show(this.Text, this.Title, MessageBoxButtons.OK, icon);
+        }
+
+        public static DialogResult Show(string title, string text, MessageBoxButtons buttons, MessageBoxIcon icon)
+        {
+            return MessageBox.Show(text, title, buttons, icon);
+        }
+
+        public static DialogResult Show(string title, string text, MessageBoxButtons buttons)
+        {
+            return MessageBox.Show(text, title, buttons);
+        }
+
+        public static DialogResult Show(string title, string text, MessageBoxIcon icon)
+        {
+            return MessageBox.Show(text, title, MessageBoxButtons.OK, icon);
+        }
+
+        public static DialogResult Show(string title, string text)
+        {
+            return MessageBox.Show(text, title);
+        }
+
+        public static void Popup(string title, string text)
+        {
+            Utils.CreatePopup(title, text).Popup();
+            PlayNotificationSound();
+        }
+
+        public static void Popup(string title, string text, MessageBoxIcon icon)
+        {
+            Utils.CreatePopup(title, text, icon).Popup();
+            if (icon == MessageBoxIcon.Warning || icon == MessageBoxIcon.Error)
+                PlayErrorNotificationSound();
+            else
+                PlayNotificationSound();
         }
 
         public void Popup()
         {
-            Utils.CreatePopup(this.Title, this.Text).Popup();
-            PlayNotificationSound();
+            MsgBox.Popup(this.Title, this.Text);
         }
 
         public void Popup(MessageBoxIcon icon)
         {
-            Utils.CreatePopup(this.Title, this.Text, icon).Popup();
-            PlayNotificationSound();
+            MsgBox.Popup(this.Title, this.Text, icon);
         }
 
         public static XElement SerializeAll()
         {
             XElement xmlMessageBoxes = new XElement("Messageboxes");
-            foreach (KeyValuePair<String, MsgBox> entry in MsgBox.msgBoxes)
+            foreach (KeyValuePair<string, MsgBox> entry in MsgBox.msgBoxes)
                 xmlMessageBoxes.Add(entry.Value.Serialize());
             return xmlMessageBoxes;
         }

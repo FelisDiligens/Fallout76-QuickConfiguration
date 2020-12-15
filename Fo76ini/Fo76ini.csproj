@@ -60,6 +60,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <HintPath>packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
@@ -67,12 +70,14 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SharpCompress, Version=0.26.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
-      <HintPath>packages\SharpCompress.0.26.0\lib\net46\SharpCompress.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Specialized, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.Specialized.4.3.0\lib\net46\System.Collections.Specialized.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -82,12 +87,25 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.Reactive, Version=4.3.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reactive.4.3.2\lib\net46\System.Reactive.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Encoding.CodePages, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Text.Encoding.CodePages.4.7.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+      <HintPath>packages\System.Text.Encoding.CodePages.4.7.1\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
+    <Reference Include="System.Threading.Channels, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Channels.4.7.0\lib\netstandard2.0\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -97,19 +115,165 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tulpep.NotificationWindow, Version=1.1.31.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Tulpep.NotificationWindow.1.1.31\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.37.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Tulpep.NotificationWindow.1.1.37\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
     </Reference>
+    <Reference Include="Websocket.Client, Version=4.3.0.0, Culture=neutral, PublicKeyToken=ae648c6d12f59b1b, processorArchitecture=MSIL">
+      <HintPath>packages\Websocket.Client.4.3.21\lib\netstandard2.0\Websocket.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClipboardUtils.cs" />
+    <Compile Include="Forms\FormIniError\FormIniError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIniError\FormIniError.Designer.cs">
+      <DependentUpon>FormIniError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSettings\FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSettings\FormSettings.Designer.cs">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSplash\FormSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSplash\FormSplash.Designer.cs">
+      <DependentUpon>FormSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormTextPrompt\TextPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormTextPrompt\TextPrompt.Designer.cs">
+      <DependentUpon>TextPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormWelcome\FormWelcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormWelcome\FormWelcome.Designer.cs">
+      <DependentUpon>FormWelcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ini\IniParsingException.cs" />
+    <Compile Include="Interface\Versioning.cs" />
+    <Compile Include="Mods\LegacyManagedMods.cs" />
+    <Compile Include="NexusAPI\NMMod.cs" />
+    <Compile Include="NexusAPI\NMUserProfile.cs" />
+    <Compile Include="NexusAPI\SingleSignOn.cs" />
+    <Compile Include="Progress.cs" />
+    <Compile Include="Tweaks\Audio\EnableAudioTweak.cs" />
+    <Compile Include="Tweaks\Audio\VoiceChatModeTweak.cs" />
+    <Compile Include="Tweaks\Audio\VoicePushToTalkEnabledTweak.cs" />
+    <Compile Include="Tweaks\Camera\ApplyCameraNodeAnimationsTweak.cs" />
+    <Compile Include="Tweaks\Camera\CameraOverShoulderCombatAddYTweak.cs" />
+    <Compile Include="Tweaks\Camera\CameraOverShoulderCombatPosXTweak.cs" />
+    <Compile Include="Tweaks\Camera\CameraOverShoulderCombatPosZTweak.cs" />
+    <Compile Include="Tweaks\Camera\CameraOverShoulderMeleeCombatAddYTweak.cs" />
+    <Compile Include="Tweaks\Camera\CameraOverShoulderMeleeCombatPosXTweak.cs" />
+    <Compile Include="Tweaks\Camera\CameraOverShoulderMeleeCombatPosZTweak.cs" />
+    <Compile Include="Tweaks\Camera\CameraOverShoulderPosXTweak.cs" />
+    <Compile Include="Tweaks\Camera\CameraOverShoulderPosZTweak.cs" />
+    <Compile Include="Tweaks\Camera\DefaultFOVTweak.cs" />
+    <Compile Include="Tweaks\Camera\DisableAutoVanityModeTweak.cs" />
+    <Compile Include="Tweaks\Camera\FirstThirdPerspectiveSwitchDelayTweak.cs" />
+    <Compile Include="Tweaks\Camera\ForceAutoVanityModeTweak.cs" />
+    <Compile Include="Tweaks\Camera\FOV1stPersonTweak.cs" />
+    <Compile Include="Tweaks\Camera\FOV3rdADSTweak.cs" />
+    <Compile Include="Tweaks\Camera\FOV3rdPersonTweak.cs" />
+    <Compile Include="Tweaks\Camera\PitchZoomOutMaxDistTweak.cs" />
+    <Compile Include="Tweaks\Camera\SelfieCameraRotationSpeedTweak.cs" />
+    <Compile Include="Tweaks\Camera\SelfieCameraTranslationSpeedTweak.cs" />
+    <Compile Include="Tweaks\Camera\SelfieModeRangeTweak.cs" />
+    <Compile Include="Tweaks\Camera\VanityModeMaxDistTweak.cs" />
+    <Compile Include="Tweaks\Camera\VanityModeMinDistTweak.cs" />
+    <Compile Include="Tweaks\Config\AutoApplyTweak.cs" />
+    <Compile Include="Tweaks\Config\IgnoreUpdatesTweak.cs" />
+    <Compile Include="Tweaks\Config\PlayNotificationSoundsTweak.cs" />
+    <Compile Include="Tweaks\Controls\EnableGamepadRumbleTweak.cs" />
+    <Compile Include="Tweaks\Controls\FixAimSensitivityTweak.cs" />
+    <Compile Include="Tweaks\Controls\FixMouseSensitivityTweak.cs" />
+    <Compile Include="Tweaks\Controls\GamepadEnableTweak.cs" />
+    <Compile Include="Tweaks\Controls\MouseAccelerationTweak.cs" />
+    <Compile Include="Tweaks\Controls\MouseInvertXTweak.cs" />
+    <Compile Include="Tweaks\Controls\MouseInvertYTweak.cs" />
+    <Compile Include="Tweaks\Controls\MouseSensitivityTweak.cs" />
+    <Compile Include="Tweaks\General\AutoSigninTweak.cs" />
+    <Compile Include="Tweaks\General\IntroVideoTweak.cs" />
+    <Compile Include="Tweaks\Audio\PlayMainMenuMusicTweak.cs" />
+    <Compile Include="Tweaks\General\ScreenshotIndexTweak.cs" />
+    <Compile Include="Tweaks\General\SkipStartupSplash.cs" />
+    <Compile Include="Tweaks\Graphics\AmbientOcclusionTweak.cs" />
+    <Compile Include="Tweaks\Graphics\AnisotropicFilteringTweak.cs" />
+    <Compile Include="Tweaks\Graphics\AntiAliasingTweak.cs" />
+    <Compile Include="Tweaks\Graphics\BlendSplitDirShadowTweak.cs" />
+    <Compile Include="Tweaks\Graphics\DirShadowSplitsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\DisableAllGoreTweak.cs" />
+    <Compile Include="Tweaks\Graphics\EnableDepthOfFieldTweak.cs" />
+    <Compile Include="Tweaks\Graphics\EnableGrassTweak.cs" />
+    <Compile Include="Tweaks\Graphics\FogTweak.cs" />
+    <Compile Include="Tweaks\Graphics\GrassFadeDistanceTweak.cs" />
+    <Compile Include="Tweaks\Graphics\LensFlareTweak.cs" />
+    <Compile Include="Tweaks\Graphics\LODFadeOutMultActorsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\LODFadeOutMultItemsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\LODFadeOutMultObjectsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\MotionBlurTweak.cs" />
+    <Compile Include="Tweaks\Graphics\RadialBlurTweak.cs" />
+    <Compile Include="Tweaks\Graphics\RainOcclusionTweak.cs" />
+    <Compile Include="Tweaks\Graphics\ShadowBlurrinessTweak.cs" />
+    <Compile Include="Tweaks\Graphics\ShadowDistanceTweak.cs" />
+    <Compile Include="Tweaks\Graphics\ShadowMapResolutionTweak.cs" />
+    <Compile Include="Tweaks\Graphics\TAAPostOverlayTweak.cs" />
+    <Compile Include="Tweaks\Graphics\TAAPostSharpenTweak.cs" />
+    <Compile Include="Tweaks\Graphics\VolumetricLightingTweak.cs" />
+    <Compile Include="Tweaks\Graphics\WaterDisplacementsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\ScreenSpaceReflectionsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\WetnessOcclusionTweak.cs" />
+    <Compile Include="Tweaks\IniFiles\INIReadOnlyTweak.cs" />
+    <Compile Include="Tweaks\Interface\ActiveEffectsOnHUDTweak.cs" />
+    <Compile Include="Tweaks\Interface\AutoTrackQuestWhenStartedTweak.cs" />
+    <Compile Include="Tweaks\Interface\ConversationHistorySizeTweak.cs" />
+    <Compile Include="Tweaks\Interface\DialogueSubtitlesTweak.cs" />
+    <Compile Include="Tweaks\Interface\EnableItemRarityColorsTweak.cs" />
+    <Compile Include="Tweaks\Interface\EnablePowerArmorHUDTweak.cs" />
+    <Compile Include="Tweaks\Interface\FixHUD4to3RatioTweak.cs" />
+    <Compile Include="Tweaks\Interface\FloatingQuestMarkersDistanceTweak.cs" />
+    <Compile Include="Tweaks\Interface\GeneralSubtitlesTweak.cs" />
+    <Compile Include="Tweaks\Interface\HUDOpacityTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowCompassTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowCrosshairTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowDamageNumbersAdventureTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowDamageNumbersNuclearWinterTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowDialogueHistoryTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowFloatingQuestMarkersTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowFloatingQuestTextTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowOtherPlayersNamesTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowPublicTeamNotificationsTweak.cs" />
+    <Compile Include="Tweaks\NuclearWinterMode\DeployModsOnNWModeTweak.cs" />
+    <Compile Include="Tweaks\NuclearWinterMode\RemoveModsOnNWModeTweak.cs" />
+    <Compile Include="Tweaks\NuclearWinterMode\RenameDLLsTweak.cs" />
+    <Compile Include="Tweaks\Pipboy\PipboyTargetResolution.cs" />
+    <Compile Include="Tweaks\Pipboy\QuickboyModeEnabledTweak.cs" />
+    <Compile Include="Tweaks\Video\DisplayModeTweak.cs" />
+    <Compile Include="Tweaks\Video\DisplaySizeTweak.cs" />
+    <Compile Include="Tweaks\Video\PresentIntervalTweak.cs" />
+    <Compile Include="Tweaks\Video\TopMostWindowTweak.cs" />
+    <Compile Include="Tweaks\Video\WindowAlwaysActiveTweak.cs" />
+    <Compile Include="Tweaks\Volume\AudioMenuValTweak.cs" />
+    <Compile Include="Tweaks\Volume\MasterVolumeTweak.cs" />
+    <Compile Include="Tweaks\Volume\VivoxVoiceVolumeTweak.cs" />
+    <Compile Include="NexusAPI\APIRequest.cs" />
+    <Compile Include="Utilities\ClipboardUtils.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="Forms\ExceptionDialog\FormExceptionDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ExceptionDialog\FormExceptionDialog.Designer.cs">
       <DependentUpon>FormExceptionDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1\Form1.Colors.cs">
+    <Compile Include="Forms\Form1\ColorPreview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1\Form1.LinkControls.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Form1\Form1.cs">
@@ -142,29 +306,64 @@
     <Compile Include="Forms\FormWhatsNew\FormWhatsNew.Designer.cs">
       <DependentUpon>FormWhatsNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profiles\GameInstance.cs" />
+    <Compile Include="Ini\IniFile.cs" />
+    <Compile Include="Ini\IniFiles.cs" />
     <Compile Include="Interface\DropDown.cs" />
     <Compile Include="Interface\InvalidXmlException.cs" />
     <Compile Include="Interface\Translation.Shared.cs" />
-    <Compile Include="Log.cs" />
-    <Compile Include="Mods\Archive2.cs" />
-    <Compile Include="Mods\Mods.cs" />
-    <Compile Include="IniFiles.cs" />
+    <Compile Include="Profiles\ProfileManager.cs" />
+    <Compile Include="Tweaks\Colors\PipboyColorTweak.cs" />
+    <Compile Include="Tweaks\Colors\PowerArmorPipboyColorTweak.cs" />
+    <Compile Include="Tweaks\Colors\QuickboyColorTweak.cs" />
+    <Compile Include="Tweaks\General\EnableSteamTweak.cs" />
+    <Compile Include="Tweaks\ITweak.cs" />
+    <Compile Include="Utilities\Log.cs" />
+    <Compile Include="Utilities\Archive2.cs" />
+    <Compile Include="Mods\ManagedMod.cs" />
+    <Compile Include="Mods\ModActions.cs" />
+    <Compile Include="Mods\ModDeployment.cs" />
+    <Compile Include="Mods\ModHelpers.cs" />
+    <Compile Include="Mods\ModInstallations.cs" />
+    <Compile Include="Mods\ManagedMods.cs" />
     <Compile Include="Interface\MsgBox.cs" />
+    <Compile Include="NexusAPI\NexusMods.cs" />
+    <Compile Include="Mods\ResourceList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\Translation.cs" />
-    <Compile Include="Interface\UILoader.cs" />
+    <Compile Include="Tweaks\ResourceLists\ResourceListTweak.cs" />
     <Compile Include="Shared.cs" />
-    <Compile Include="Utils.cs" />
-    <Compile Include="Volume.cs" />
+    <Compile Include="Tweaks\Config\ToolQuitOnLaunchTweak.cs" />
+    <Compile Include="Tweaks\LinkedTweaks.cs" />
+    <Compile Include="Utilities\RichTextBoxExtensions.cs" />
+    <Compile Include="Utilities\Utils.cs" />
+    <Compile Include="Utilities\Volume.cs" />
+    <Compile Include="Utilities\XMLExtensions.cs" />
     <EmbeddedResource Include="Forms\ExceptionDialog\FormExceptionDialog.resx">
       <DependentUpon>FormExceptionDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIniError\FormIniError.resx">
+      <DependentUpon>FormIniError.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMods\FormMods.resx">
       <DependentUpon>FormMods.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSettings\FormSettings.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSplash\FormSplash.resx">
+      <DependentUpon>FormSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormTextPrompt\TextPrompt.resx">
+      <DependentUpon>TextPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormWelcome\FormWelcome.resx">
+      <DependentUpon>FormWelcome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWhatsNew\FormWhatsNew.resx">
       <DependentUpon>FormWhatsNew.cs</DependentUpon>
@@ -195,7 +394,32 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\login-48.png" />
+    <None Include="Resources\external-link-16.png" />
+    <None Include="Resources\checkbox-24.png" />
+    <None Include="Resources\add-archive-3-24.png" />
+    <None Include="Resources\download-2-48.png" />
+    <None Include="Resources\like.png" />
+    <None Include="Resources\dislike.png" />
+    <None Include="Resources\heart-broken-24.png" />
+    <None Include="Resources\thumb-down-24.png" />
+    <None Include="Resources\thumb-up-24.png" />
+    <None Include="Resources\Fo76ini_LDu4jzf2p3.png" />
+    <None Include="Resources\pipboy_preview_fg_masked.png" />
+    <None Include="Resources\pipboy_preview_fg.png" />
+    <None Include="Resources\pipboy_preview_bg.png" />
+    <None Include="Resources\Xbox-One-Controller-icon.png" />
+    <None Include="Resources\mouse-icon.png" />
+    <None Include="Resources\download-2-24.png" />
+    <None Include="Resources\text-24.png" />
+    <None Include="banner.png" />
     <Content Include="icon.ico" />
+    <None Include="Resources\delete-48.png" />
+    <None Include="Resources\exit-48.png" />
+    <None Include="Resources\cog-24.png" />
+    <None Include="Resources\heart-24.png" />
+    <None Include="Resources\heart-48.png" />
+    <None Include="Resources\available-updates-48.png" />
     <None Include="Resources\icon-60.png" />
     <None Include="Resources\icon.png" />
     <None Include="Resources\error-5-64.png" />
@@ -213,7 +437,6 @@
     <None Include="Resources\checked-checkbox-24%281%29.png" />
     <None Include="Resources\add-folder-24.png" />
     <None Include="Resources\plus-24.png" />
-    <None Include="Resources\add-file-24.png" />
     <None Include="Resources\folder-3-24.png" />
     <None Include="Resources\edit-2-24.png" />
     <None Include="Resources\delete-24.png" />
@@ -260,5 +483,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

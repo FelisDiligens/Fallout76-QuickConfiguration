@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Fo76ini
+namespace Fo76ini.Interface
 {
     [Serializable]
     internal class InvalidXmlException : Exception

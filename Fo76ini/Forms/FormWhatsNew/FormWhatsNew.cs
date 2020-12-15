@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
@@ -16,6 +11,13 @@ namespace Fo76ini.Forms.FormWhatsNew
         public FormWhatsNew()
         {
             InitializeComponent();
+
+            // Make this form translatable:
+            Localization.LocalizedForms.Add(new LocalizedForm(this, null));
+
+            Translation.BlackList.AddRange(new string[] {
+                "richTextBox"
+            });
 
             this.FormClosing += this.Form1_FormClosing;
             this.backgroundWorkerDownloadRTF.RunWorkerCompleted += backgroundWorkerDownloadRTF_RunWorkerCompleted;
@@ -29,8 +31,8 @@ namespace Fo76ini.Forms.FormWhatsNew
 
         private void FormWhatsNew_Load(object sender, EventArgs e)
         {
-            if (IniFiles.Instance.Exists(IniFile.Config, "Debug", "sWhatsNewFilePath"))
-                richTextBox.LoadFile(IniFiles.Instance.GetString(IniFile.Config, "Debug", "sWhatsNewFilePath"));
+            if (IniFiles.Config.Exists("Debug", "sWhatsNewFilePath"))
+                richTextBox.LoadFile(IniFiles.Config.GetString("Debug", "sWhatsNewFilePath"));
             else
                 this.backgroundWorkerDownloadRTF.RunWorkerAsync();
         }
@@ -51,7 +53,7 @@ namespace Fo76ini.Forms.FormWhatsNew
 
         private void backgroundWorkerDownloadRTF_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            richTextBox.Rtf = (String)e.Result;
+            richTextBox.Rtf = (string)e.Result;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -61,8 +63,8 @@ namespace Fo76ini.Forms.FormWhatsNew
 
         private void checkBoxDontShowAgain_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Instance.Set(IniFile.Config, "Preferences", "bDisableWhatsNew", this.checkBoxDontShowAgain.Checked);
-            IniFiles.Instance.SaveConfig();
+            IniFiles.Config.Set("Preferences", "bDisableWhatsNew", this.checkBoxDontShowAgain.Checked);
+            IniFiles.Config.Save();
         }
     }
 }

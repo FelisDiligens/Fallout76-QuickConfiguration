@@ -1,31 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace Fo76ini
+namespace Fo76ini.Interface
 {
     public struct DropDown
     {
         public ComboBox comboBox;
-        private List<String> items;
+        private List<string> items;
 
-        public static Dictionary<String, DropDown> Dict = new Dictionary<String, DropDown>();
+        public static Dictionary<string, DropDown> Dict = new Dictionary<string, DropDown>();
 
-        public static void Add(String key, DropDown comboBox)
+        public static void Add(string key, DropDown comboBox)
         {
             Dict.Add(key, comboBox);
         }
 
-        public static DropDown Get(String key)
+        public static DropDown Get(string key)
         {
             return Dict[key];
         }
 
-        public static bool ContainsKey(String key)
+        public static bool ContainsKey(string key)
         {
             return Dict.ContainsKey(key);
         }
@@ -33,12 +31,12 @@ namespace Fo76ini
         public DropDown(ComboBox comboBox)
         {
             this.comboBox = comboBox;
-            this.items = new List<String>();
+            this.items = new List<string>();
             foreach (object item in comboBox.Items)
-                this.items.Add((String)item);
+                this.items.Add((string)item);
         }
 
-        public DropDown(ComboBox comboBox, List<String> items)
+        public DropDown(ComboBox comboBox, List<string> items)
         {
             this.comboBox = comboBox;
             this.items = items;
@@ -46,35 +44,35 @@ namespace Fo76ini
             this.comboBox.Items.AddRange(this.items.ToArray());
         }
 
-        public DropDown(ComboBox comboBox, String[] items)
+        public DropDown(ComboBox comboBox, string[] items)
         {
             this.comboBox = comboBox;
-            this.items = new List<String>();
-            foreach (String item in items)
+            this.items = new List<string>();
+            foreach (string item in items)
                 this.items.Add(item);
             this.comboBox.Items.Clear();
             this.comboBox.Items.AddRange(this.items.ToArray());
         }
 
-        public void Add(String item)
+        public void Add(string item)
         {
             this.comboBox.Items.Add(item);
             this.items.Add(item);
         }
 
-        public void AddRange(String[] items)
+        public void AddRange(string[] items)
         {
             this.comboBox.Items.AddRange(items);
-            foreach (String item in items)
+            foreach (string item in items)
                 this.items.Add(item);
         }
 
-        public bool Contains(String item)
+        public bool Contains(string item)
         {
             return this.items.Contains(item);
         }
 
-        public int FindIndex(String match)
+        public int FindIndex(string match)
         {
             return this.items.FindIndex(x => x == match);
         }
@@ -90,15 +88,15 @@ namespace Fo76ini
             this.items.Clear();
         }
 
-        public void SetRange(String[] items)
+        public void SetRange(string[] items)
         {
             this.Clear();
             this.comboBox.Items.AddRange(items);
-            foreach (String item in items)
+            foreach (string item in items)
                 this.items.Add(item);
         }
 
-        public void ReplaceRange(String[] items)
+        public void ReplaceRange(string[] items)
         {
             int selectedIndex = this.comboBox.SelectedIndex;
             this.SetRange(items);
@@ -108,16 +106,16 @@ namespace Fo76ini
         public static XElement SerializeAll()
         {
             XElement xmlDropDowns = new XElement("Dropdowns");
-            foreach (KeyValuePair<String, DropDown> pair in DropDown.Dict)
+            foreach (KeyValuePair<string, DropDown> pair in DropDown.Dict)
                 xmlDropDowns.Add(pair.Value.Serialize(pair.Key));
             return xmlDropDowns;
         }
 
-        public XElement Serialize(String id)
+        public XElement Serialize(string id)
         {
             XElement xmlDropDown = new XElement("Dropdown");
             xmlDropDown.Add(new XAttribute("id", id));
-            foreach (String option in this.Items)
+            foreach (string option in this.Items)
                 xmlDropDown.Add(new XElement("Option", option));
             return xmlDropDown;
         }
@@ -134,7 +132,7 @@ namespace Fo76ini
             foreach (XElement xmlDropDown in xmlDropDowns.Descendants("Dropdown"))
             {
                 // Get id:
-                String id = xmlDropDown.Attribute("id").Value;
+                string id = xmlDropDown.Attribute("id").Value;
 
                 // If such a combobox exists, deserialize:
                 if (DropDown.ContainsKey(id))
@@ -152,7 +150,7 @@ namespace Fo76ini
                   ...
                </Dropdown>
              */
-            List<String> options = new List<String>();
+            List<string> options = new List<string>();
             foreach (XElement element in xmlDropDown.Descendants("Option"))
                 options.Add(element.Value);
 
@@ -162,10 +160,10 @@ namespace Fo76ini
                 return;
             }
 
-            this.ReplaceRange(options.ToArray<String>());
+            this.ReplaceRange(options.ToArray<string>());
         }
 
-        public List<String> Items
+        public List<string> Items
         {
             get { return this.items; }
             set
@@ -182,7 +180,7 @@ namespace Fo76ini
             set { this.comboBox.SelectedIndex = value; }
         }
 
-        public String SelectedItem
+        public string SelectedItem
         {
             get { return this.items[this.comboBox.SelectedIndex]; }
         }
