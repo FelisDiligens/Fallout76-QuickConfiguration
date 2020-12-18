@@ -554,9 +554,6 @@ namespace Fo76ini
 
         public void ToggleNuclearWinterMode()
         {
-            if (Mods == null)
-                return;
-
             if (Mods.NuclearWinterModeEnabled)
                 DisableNuclearWinterMode();
             else
@@ -565,8 +562,9 @@ namespace Fo76ini
 
         public void EnableNuclearWinterMode()
         {
-            if (Mods == null)
-                return;
+            ModDeployment.LogFile.WriteLine("\n");
+            ModDeployment.LogFile.WriteTimeStamp();
+            ModDeployment.LogFile.WriteLine("Enabling Nuclear Winter mode");
 
             Mods.NuclearWinterModeEnabled = true;
 
@@ -589,12 +587,14 @@ namespace Fo76ini
             // Save and update UI:
             Mods.Save();
             TriggerNWModeUpdated();
+            ModDeployment.LogFile.WriteLine("NW mode enabled, done.");
         }
 
         public void DisableNuclearWinterMode()
         {
-            if (Mods == null)
-                return;
+            ModDeployment.LogFile.WriteLine("\n");
+            ModDeployment.LogFile.WriteTimeStamp();
+            ModDeployment.LogFile.WriteLine("Disabling Nuclear Winter mode");
 
             Mods.NuclearWinterModeEnabled = false;
 
@@ -617,6 +617,7 @@ namespace Fo76ini
             // Save and update UI:
             Mods.Save();
             TriggerNWModeUpdated();
+            ModDeployment.LogFile.WriteLine("NW mode disabled, done.");
         }
 
         private void TriggerNWModeUpdated()
@@ -633,7 +634,11 @@ namespace Fo76ini
         public void ToggleNuclearWinterModeThreaded()
         {
             if (Mods == null)
+            {
+                MsgBox.ShowID("modsGamePathNotSet", MessageBoxIcon.Error);
+                TriggerNWModeUpdated();
                 return;
+            }
 
             if (Mods.NuclearWinterModeEnabled)
                 DisableNuclearWinterModeThreaded();
@@ -653,7 +658,7 @@ namespace Fo76ini
                 return true;
             }, (success) => {
                 if (success)
-                    MsgBox.Get("nwModeDisabled").Popup(MessageBoxIcon.Information);
+                    MsgBox.Get("nwModeEnabled").Popup(MessageBoxIcon.Information);
                 UpdateUI();
                 EnableUI();
                 Hide();
@@ -682,7 +687,10 @@ namespace Fo76ini
         private NuclearWinterEventArgs BuildNuclearWinterEventArgs()
         {
             NuclearWinterEventArgs args = new NuclearWinterEventArgs();
-            args.NuclearWinterModeEnabled = Mods.NuclearWinterModeEnabled;
+            if (Mods != null)
+                args.NuclearWinterModeEnabled = Mods.NuclearWinterModeEnabled;
+            else
+                args.NuclearWinterModeEnabled = false;
             return args;
         }
 

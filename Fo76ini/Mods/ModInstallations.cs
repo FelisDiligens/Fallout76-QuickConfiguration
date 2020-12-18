@@ -192,13 +192,13 @@ namespace Fo76ini.Mods
 
             // Ignore any game files ("SeventySix - *.ba2"):
             foreach (string archiveName in IndexFileList)
-                if (archiveName.StartsWith("SeventySix"))
+                if (archiveName.Trim().ToLower().StartsWith("seventysix"))
                     installedMods.Remove(archiveName);
             foreach (string archiveName in Archive2List)
-                if (archiveName.StartsWith("SeventySix"))
+                if (archiveName.Trim().ToLower().StartsWith("seventysix"))
                     installedMods.Remove(archiveName);
             foreach (string archiveName in mods.Resources)
-                if (archiveName.StartsWith("SeventySix"))
+                if (archiveName.Trim().ToLower().StartsWith("seventysix"))
                     installedMods.Remove(archiveName);
 
             /*
@@ -208,8 +208,7 @@ namespace Fo76ini.Mods
             foreach (string archiveName in installedMods)
             {
                 string path = Path.Combine(mods.GamePath, "Data", archiveName);
-                Console.WriteLine(path);
-                if (File.Exists(path))
+                if (File.Exists(path) && !archiveName.Trim().ToLower().StartsWith("seventysix"))
                 {
                     // Import archive:
                     ModInstallations.InstallArchive(mods, path, true);

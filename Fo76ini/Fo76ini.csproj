@@ -394,6 +394,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\snow.gif" />
+    <None Include="Resources\snow4.gif" />
+    <None Include="Resources\snow2.gif" />
     <None Include="Resources\login-48.png" />
     <None Include="Resources\external-link-16.png" />
     <None Include="Resources\checkbox-24.png" />

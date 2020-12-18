@@ -27,6 +27,7 @@ namespace Fo76ini.Mods
             LogFile.WriteLine("\n\n");
             LogFile.WriteTimeStamp();
             LogFile.WriteLine($"Version {Shared.VERSION}, deploying...");
+            LogFile.WriteLine($"Game path: {mods.GamePath}");
 
             // TODO: More descriptive ProgressChanged
             ProgressChanged?.Invoke(Progress.Indetermined("Deploying..."));
@@ -88,6 +89,7 @@ namespace Fo76ini.Mods
                 ProgressChanged?.Invoke(Progress.Done("Mods removed."));
 
             LogFile.WriteLine("Deployment finished.");
+            LogFile.WriteLine($"Resource list ({mods.Resources.Count} files): \"{mods.Resources}\"");
         }
 
         /// <summary>

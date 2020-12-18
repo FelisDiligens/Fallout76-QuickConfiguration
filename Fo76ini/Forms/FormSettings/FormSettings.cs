@@ -35,7 +35,9 @@ namespace Fo76ini.Forms.FormSettings
             InitializeComponent();
 
             // Make this form translatable:
-            Localization.LocalizedForms.Add(new LocalizedForm(this, toolTip));
+            LocalizedForm form = new LocalizedForm(this, this.toolTip);
+            form.SpecialControls.Add(this.contextMenuStripGame);
+            Localization.LocalizedForms.Add(form);
 
             // Handle translations:
             Translation.LanguageChanged += OnLanguageChanged;

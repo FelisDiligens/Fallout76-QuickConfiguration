@@ -568,6 +568,7 @@
             this.checkBoxModDetailsEnabled.TabIndex = 74;
             this.checkBoxModDetailsEnabled.Text = "Enable this mod";
             this.checkBoxModDetailsEnabled.UseVisualStyleBackColor = true;
+            this.checkBoxModDetailsEnabled.CheckedChanged += new System.EventHandler(this.checkBoxModDetailsEnabled_CheckedChanged);
             // 
             // panelModDetailsInner
             // 
@@ -992,7 +993,7 @@
             this.labelModSummary.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelModSummary.Location = new System.Drawing.Point(6, 5);
             this.labelModSummary.Name = "labelModSummary";
-            this.labelModSummary.Size = new System.Drawing.Size(331, 55);
+            this.labelModSummary.Size = new System.Drawing.Size(314, 55);
             this.labelModSummary.TabIndex = 55;
             this.labelModSummary.Text = "< Summary goes here >";
             // 

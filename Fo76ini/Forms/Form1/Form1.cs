@@ -343,6 +343,36 @@ namespace Fo76ini
             this.LoadGallery();
 
             MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
+
+
+            /*
+             * Because easter eggs are fun:
+             */
+
+            this.pictureBoxSnow.Visible = false;
+            if ((DateTime.Now.Month == 12 && DateTime.Now.Day >= 24) ||
+                (DateTime.Now.Month == 1 && DateTime.Now.Day <= 2))
+                EnableWinterEasteregg();
+        }
+
+        private void EnableWinterEasteregg()
+        {
+            this.pictureBoxSnow.Visible = true;
+            this.tabPageInfo.BackColor = Color.FromArgb(54, 70, 93);
+
+            foreach (Control control in new Control[] { labelTitle, labelDescription, labelVersion, labelConfigVersion, labelAuthor, labelAuthorName, labelTranslationAuthor, labelTranslationBy, labelNWModeActive, linkLabelAttribution, linkLabelWhatsNew, groupBoxSettings})
+            {
+                control.Parent.Controls.Remove(control);
+                this.pictureBoxSnow.Controls.Add(control);
+
+                control.Top -= this.pictureBoxSnow.Top;
+                control.Left -= this.pictureBoxSnow.Left;
+                control.ForeColor = Color.White;
+                control.BackColor = Color.Transparent;
+            }
+
+            this.labelDescription.Text = "Merry Christmas and a happy new year!";
+            this.labelSettingsNotice.ForeColor = Color.White;
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -633,7 +663,11 @@ namespace Fo76ini
 
         private void toolStripButtonLaunchGame_Click(object sender, EventArgs e)
         {
+            if (IniFiles.Config.GetBool("Preferences", "bAutoApply", false))
+                ApplyChanges();
             this.game.LaunchGame();
+            if (IniFiles.Config.GetBool("Preferences", "bQuitOnLaunch", false))
+                Application.Exit();
         }
 
         #endregion

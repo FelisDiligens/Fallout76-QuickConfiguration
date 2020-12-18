@@ -298,6 +298,7 @@
             this.checkBoxShowPassword = new System.Windows.Forms.CheckBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
             this.groupBoxSettings = new System.Windows.Forms.GroupBox();
             this.linkLabelOpenSettings = new System.Windows.Forms.LinkLabel();
@@ -322,7 +323,7 @@
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelDescription = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.pictureBoxSnow = new System.Windows.Forms.PictureBox();
             this.tabPageAudio = new System.Windows.Forms.TabPage();
             this.groupBoxAudio = new System.Windows.Forms.GroupBox();
             this.groupBoxVoice = new System.Windows.Forms.GroupBox();
@@ -537,6 +538,7 @@
             this.groupBoxMainMenu.SuspendLayout();
             this.groupBoxLogin.SuspendLayout();
             this.groupBoxLoginProfiles.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
             this.groupBoxSettings.SuspendLayout();
             this.panelUpdate.SuspendLayout();
@@ -545,7 +547,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGameEdition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSnow)).BeginInit();
             this.tabPageAudio.SuspendLayout();
             this.groupBoxAudio.SuspendLayout();
             this.groupBoxVoice.SuspendLayout();
@@ -4165,9 +4167,32 @@
             this.labelUserName.TabIndex = 0;
             this.labelUserName.Text = "User name:";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPageInfo);
+            this.tabControl1.Controls.Add(this.tabPageGeneral);
+            this.tabControl1.Controls.Add(this.tabPageVideo);
+            this.tabControl1.Controls.Add(this.tabPageAudio);
+            this.tabControl1.Controls.Add(this.tabPageControls);
+            this.tabControl1.Controls.Add(this.tabPageCamera);
+            this.tabControl1.Controls.Add(this.tabPagePipBoy);
+            this.tabControl1.Controls.Add(this.tabPageGallery);
+            this.tabControl1.Controls.Add(this.tabPageCustom);
+            this.tabControl1.Controls.Add(this.tabPageDangerZone);
+            this.tabControl1.Location = new System.Drawing.Point(12, 59);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(860, 490);
+            this.tabControl1.TabIndex = 7;
+            // 
             // tabPageInfo
             // 
             this.tabPageInfo.AutoScroll = true;
+            this.tabPageInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tabPageInfo.Controls.Add(this.groupBoxSettings);
             this.tabPageInfo.Controls.Add(this.linkLabelWhatsNew);
             this.tabPageInfo.Controls.Add(this.linkLabelAttribution);
@@ -4186,6 +4211,7 @@
             this.tabPageInfo.Controls.Add(this.labelVersion);
             this.tabPageInfo.Controls.Add(this.labelDescription);
             this.tabPageInfo.Controls.Add(this.labelTitle);
+            this.tabPageInfo.Controls.Add(this.pictureBoxSnow);
             this.tabPageInfo.Location = new System.Drawing.Point(4, 22);
             this.tabPageInfo.Name = "tabPageInfo";
             this.tabPageInfo.Padding = new System.Windows.Forms.Padding(3);
@@ -4427,6 +4453,7 @@
             // 
             // labelDescription
             // 
+            this.labelDescription.BackColor = System.Drawing.Color.Transparent;
             this.labelDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDescription.Location = new System.Drawing.Point(90, 59);
             this.labelDescription.Name = "labelDescription";
@@ -4445,27 +4472,15 @@
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Fallout 76 Quick Configuration";
             // 
-            // tabControl1
+            // pictureBoxSnow
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPageInfo);
-            this.tabControl1.Controls.Add(this.tabPageGeneral);
-            this.tabControl1.Controls.Add(this.tabPageVideo);
-            this.tabControl1.Controls.Add(this.tabPageAudio);
-            this.tabControl1.Controls.Add(this.tabPageControls);
-            this.tabControl1.Controls.Add(this.tabPageCamera);
-            this.tabControl1.Controls.Add(this.tabPagePipBoy);
-            this.tabControl1.Controls.Add(this.tabPageGallery);
-            this.tabControl1.Controls.Add(this.tabPageCustom);
-            this.tabControl1.Controls.Add(this.tabPageDangerZone);
-            this.tabControl1.Location = new System.Drawing.Point(12, 59);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(860, 490);
-            this.tabControl1.TabIndex = 7;
+            this.pictureBoxSnow.Image = global::Fo76ini.Properties.Resources.snow;
+            this.pictureBoxSnow.Location = new System.Drawing.Point(72, 0);
+            this.pictureBoxSnow.Name = "pictureBoxSnow";
+            this.pictureBoxSnow.Size = new System.Drawing.Size(780, 342);
+            this.pictureBoxSnow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxSnow.TabIndex = 45;
+            this.pictureBoxSnow.TabStop = false;
             // 
             // tabPageAudio
             // 
@@ -5770,6 +5785,7 @@
             this.groupBoxLogin.PerformLayout();
             this.groupBoxLoginProfiles.ResumeLayout(false);
             this.groupBoxLoginProfiles.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
             this.groupBoxSettings.ResumeLayout(false);
@@ -5780,7 +5796,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGameEdition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSnow)).EndInit();
             this.tabPageAudio.ResumeLayout(false);
             this.groupBoxAudio.ResumeLayout(false);
             this.groupBoxAudio.PerformLayout();
@@ -6218,6 +6234,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox checkBoxScreenSpaceReflections;
         private System.Windows.Forms.RadioButton radioButtonAccountNone;
+        private System.Windows.Forms.PictureBox pictureBoxSnow;
     }
 }
 

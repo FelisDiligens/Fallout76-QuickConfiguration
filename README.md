@@ -30,7 +30,7 @@
 * Install and manage mods.
 * Change your resolution and display mode.
 * Disable VSync.
-* Use up to 8 account profiles for login in-game.
+* Use up to 16 account profiles for login in-game.
 * Change various graphic settings.
 * Change volume, audio, interface, and voice chat settings.
 * Mouse sensitivity fix for ALL aspect ratios.
@@ -39,7 +39,7 @@
 * Change the color and resolution of your Pipboy.
 * Access all your screenshots and photos in the gallery.
 * Some other tweaks and options.
-* Make backups before applying.
+* Makes backups before applying.
 * Make *.ini files read-only.
 * Easy, automated updates.
 
