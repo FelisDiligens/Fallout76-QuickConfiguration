@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.0h1">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.0h2">
   <Strings>
     <!--
         Strings
@@ -480,7 +480,7 @@
     <!--
         FormWhatsNew
         ******************************************************************************************************************************************************
-        What's new?
+        Что нового?
     -->
     <Label text="Что нового?" id="labelTitle" />
     <Button text="Закрыть" id="buttonClose" />
@@ -519,7 +519,7 @@
           </Panel>
           <Panel id="panelModDetailsInner">
             <GroupBox text="Добавление/замена файлов модов" id="groupBoxModReplace">
-              <!-- Group "Add / replace mod files" -->
+              <!-- Group "Добавление/замена файлов модов" -->
               <Label text="Перетащите файлы/папки в левое поле, чтобы добавить/заменить файлы." id="labelModDetailsReplace" />
               <LinkLabel text="Удалить содержимое папки" id="linkLabelModDeleteFolderContents" />
               <LinkLabel text="Импортировать папку" id="linkLabelModReplaceFilesWithFolder" />
@@ -681,7 +681,7 @@
       <TabPage text="Инфо" id="tabPageInfo">
         <!-- ********** Tab "Инфо" ********** -->
         <GroupBox text="Настройки" id="groupBoxSettings">
-          <!-- Group "Settings" -->
+          <!-- Group "Настройки" -->
           <LinkLabel text="Открыть настройки" id="linkLabelOpenSettings" />
           <Label text="Всё, что было здесь раньше, перенесено в настройки." id="labelSettingsNotice" />
         </GroupBox>
@@ -733,7 +733,7 @@
         <GroupBox text="Логин" id="groupBoxLogin">
           <!-- Group "Логин" -->
           <GroupBox text="Профили" id="groupBoxLoginProfiles">
-            <!-- Group "Profiles" -->
+            <!-- Group "Профили" -->
             <RadioButton text="Нет" id="radioButtonAccountNone" />
             <RadioButton text="Профиль 1" id="radioButtonAccount1" />
             <RadioButton text="Профиль 16" id="radioButtonAccount16" />
@@ -766,7 +766,7 @@
           <GroupBox text="Графика" id="groupBoxGraphics">
             <!-- Group "Графика" -->
             <GroupBox text="Эффекты" id="groupBoxGraphicEffects">
-              <!-- Group "Effects" -->
+              <!-- Group "Эффекты" -->
               <CheckBox text="Отключить брызги крови" id="checkBoxDisableGore" />
             </GroupBox>
             <GroupBox text="Резкость TAA" id="groupBoxTAASharpening">
@@ -894,15 +894,15 @@
         <!-- ********** Tab "Камера" ********** -->
         <Panel id="panel2">
           <GroupBox text="Расположение камеры (Экспериментально)" id="groupBoxCameraPosition">
-            <!-- Group "Camera position (Experimental)" -->
+            <!-- Group "Расположение камеры (Экспериментально)" -->
             <GroupBox text="Ближний бой" id="groupBox3">
-              <!-- Group "Melee combat camera position" -->
+              <!-- Group "Ближний бой" -->
               <Label text="Дальше/Ближе (fOverShoulderMeleeCombatAddY)" id="labelfOverShoulderMeleeCombatAddY" />
               <Label text="Левее/Правее (fOverShoulderMeleeCombatPosX)" id="labelfOverShoulderMeleeCombatPosX" />
               <Label text="Выше/Ниже (fOverShoulderMeleeCombatPosZ)" id="labelfOverShoulderMeleeCombatPosZ" />
             </GroupBox>
             <GroupBox text="Стрельба" id="groupBox2">
-              <!-- Group "Combat camera position" -->
+              <!-- Group "Стрельба" -->
               <Label text="Дальше/Ближе (fOverShoulderCombatAddY)" id="labelfOverShoulderCombatAddY" />
               <Label text="Левее/Правее (fOverShoulderCombatPosX)" id="labelfOverShoulderCombatPosX" />
               <Label text="Выше/Ниже (fOverShoulderCombatPosZ)" id="labelfOverShoulderCombatPosZ" />
@@ -910,13 +910,13 @@
             <Button text="Сбросить" id="buttonCameraPositionReset" />
             <CheckBox text="Применить анимацию узла" id="checkBoxbApplyCameraNodeAnimations" />
             <GroupBox text="Без оружия" id="groupBoxUnarmedCameraPosition">
-              <!-- Group "Unarmed camera position" -->
+              <!-- Group "Без оружия" -->
               <Label text="Левее/Правее (fOverShoulderPosX)" id="labelfOverShoulderPosX" />
               <Label text="Выше/Ниже (fOverShoulderPosZ)" id="labelfOverShoulderPosZ" />
             </GroupBox>
           </GroupBox>
           <GroupBox text="Фоторежим" id="groupBoxSelfieCamera">
-            <!-- Group "Photomode options" -->
+            <!-- Group "Фоторежим" -->
             <Label text="Скорость поворота:" id="labelPhotomodeRotationSpeed" />
             <Label text="Ограничение расстояния:" id="labelPhotomodeRange" />
             <Label text="Скорость перемещения:" id="labelPhotomodeTranslationSpeed" />
@@ -945,7 +945,7 @@
       <TabPage text="Pip-Boy" id="tabPagePipBoy">
         <!-- ********** Tab "Pip-Boy" ********** -->
         <GroupBox text="Предустановки" id="groupBoxPipboyColorPresets">
-          <!-- Group "Presets" -->
+          <!-- Group "Предустановки" -->
           <Button text="Зелёная Столичная пустошь" id="buttonPresetFo3Green" />
           <Button text="Классический белый" id="buttonPresetFo3White" />
           <Button text="Янтарная Мохавская пустошь" id="buttonPresetFoNVAmber" />
@@ -954,7 +954,7 @@
           <Button text="Классический синий" id="buttonPresetFo3Blue" />
         </GroupBox>
         <GroupBox text="Просмотр" id="groupBoxPipboyColorPreview">
-          <!-- Group "Preview" -->
+          <!-- Group "Просмотр" -->
           <Label text="Предварительный просмотр лишь приблизителен, поэтому в игре всё может выглядеть совсем иначе." id="labelPipboyColorPreviewNotice" />
         </GroupBox>
         <GroupBox text="Разрешение" id="groupBoxPipboyResolution">
@@ -1019,21 +1019,21 @@
     <!--
         FormSettings
         ******************************************************************************************************************************************************
-        Settings
+        Настройки
     -->
     <TabControl id="tabControl1">
       <TabPage text="Основные" id="tabPageGeneral">
-        <!-- ********** Tab "General" ********** -->
+        <!-- ********** Tab "Основные" ********** -->
         <GroupBox text="Действия" id="groupBoxActions">
-          <!-- Group "Actions" -->
+          <!-- Group "Действия" -->
           <LinkLabel text="⚠️ Включить Опасную зону" id="linkLabelEnableDangerZone" />
         </GroupBox>
         <GroupBox text="Настройки" id="groupBoxOptions">
-          <!-- Group "Options" -->
+          <!-- Group "Настройки" -->
           <CheckBox text="Сделать *.ini только для чтения" id="checkBoxReadOnly" />
         </GroupBox>
         <GroupBox text="Режим Nuclear Winter" id="groupBoxNuclearWinterMode">
-          <!-- Group "Nuclear Winter options" -->
+          <!-- Group "Режим Nuclear Winter" -->
           <CheckBox text="Автоматически устанавливать моды при отключении" id="checkBoxNWAutoDeployMods" />
           <Label text="Настройки модов:" id="labelNWmodoptions" />
           <Label text="Настройки *.dll:" id="labelNWdlloptions" />
@@ -1041,44 +1041,44 @@
           <CheckBox text="Переименовать добавленные файлы *.dll" id="checkBoxNWRenameDLL" />
         </GroupBox>
         <GroupBox text="Поведение" id="groupBoxBehavior">
-          <!-- Group "Behavior" -->
+          <!-- Group "Поведение" -->
           <CheckBox text="Звук уведомлений" id="checkBoxPlayNotificationSound" />
           <CheckBox text="Не проверять обновления" id="checkBoxIgnoreUpdates" />
           <CheckBox text="Закрывать программу при запуске игры" id="checkBoxQuitOnGameLaunch" />
           <CheckBox text="Применять изменения при закрытии программы или запуске игры" id="checkBoxAutoApply" />
         </GroupBox>
         <GroupBox text="Перевод" id="groupBoxLocalization">
-          <!-- Group "Localization" -->
+          <!-- Group "Перевод" -->
           <Label text="Этот перевод устарел.\nНекоторые элементы, возможно, еще не переведены." id="labelOutdatedLanguage" />
           <Label text="Язык:" id="labelLanguage" />
         </GroupBox>
       </TabPage>
       <TabPage text="Профили" id="tabPageGameProfiles">
-        <!-- ********** Tab "Game profiles" ********** -->
+        <!-- ********** Tab "Профили" ********** -->
         <Panel id="panel1">
           <GroupBox text="Настройки" id="groupBoxSettings">
-            <!-- Group "Settings" -->
+            <!-- Group "Настройки" -->
             <Panel id="panelSettings">
               <GroupBox text="Дополнительно" id="groupBox2">
-                <!-- Group "Advanced" -->
+                <!-- Group "Дополнительно" -->
                 <Label text="Ссылка запуска:" id="labelLaunchURL" />
                 <Label text="Параметры:" id="labelParameters" />
                 <Label text="Файл *.exe:" id="labelExecutable" />
                 <Label text="Префикс *.ini:" id="labelIniPrefix" />
               </GroupBox>
               <GroupBox text="Параметры запуска" id="groupBoxLaunchOptions">
-                <!-- Group "Launch options" -->
+                <!-- Group "Параметры запуска" -->
                 <Label text="Fallout 76 не может быть запущен напрямую, если он установлен через Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
                 <RadioButton text="Запускать &quot;Fallout76.exe&quot; напрямую" id="radioButtonLaunchViaExecutable" />
                 <RadioButton text="Запускать через Steam/Bethesda.net (рекомендуется)" id="radioButtonLaunchViaLink" />
               </GroupBox>
               <GroupBox text="Расположение" id="groupBoxGameLocation">
-                <!-- Group "Game location" -->
+                <!-- Group "Расположение" -->
                 <Button text="Обнаружить автоматически" id="buttonAutoDetect" />
                 <Button text="..." id="buttonPickGamePath" />
               </GroupBox>
               <GroupBox text="Версия игры" id="groupBoxGameEdition">
-                <!-- Group "Game edition" -->
+                <!-- Group "Версия игры" -->
                 <RadioButton text="Другое" id="radioButtonEditionUnknown" />
                 <RadioButton text="Microsoft Store/Xbox Game Pass" id="radioButtonEditionMSStore" />
                 <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
@@ -1088,7 +1088,7 @@
             </Panel>
           </GroupBox>
           <GroupBox text="Игра" id="groupBoxGame">
-            <!-- Group "Game" -->
+            <!-- Group "Игра" -->
             <ListView id="listViewGameInstances">
               <Column>Игра</Column>
             </ListView>
@@ -1125,5 +1125,11 @@
         </Panel>
       </TabPage>
     </TabControl>
+    <ContextMenuStrip id="contextMenuStripGame">
+      <ToolStripMenuItem text="Игра" id="gameToolStripMenuItem" />
+      <ToolStripMenuItem text="Запуск" id="launchGameToolStripMenuItem" />
+      <ToolStripMenuItem text="Переименовать" id="renameGameToolStripMenuItem" />
+      <ToolStripMenuItem text="Удалить" id="removeGameToolStripMenuItem" />
+    </ContextMenuStrip>
   </FormSettings>
 </Language>
