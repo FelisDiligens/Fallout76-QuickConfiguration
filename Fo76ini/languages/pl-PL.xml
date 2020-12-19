@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Polski" iso="pl-PL" author="Gray770" version="1.9.0h1">
+<Language name="Polski" iso="pl-PL" author="Gray770" version="1.9.0h2">
   <Strings>
     <!--
         Strings
@@ -428,7 +428,7 @@ Sprawia, że woda znikna lub staje się czarna jak smoła!!</Description>
   ⇨ Ultra - 7000
   ⇨ Wysokie - 5500
   ⇨ Średnie - 4500</Description>
-    <Description id="Fo76ini.Tweaks.Audio.EnableAudioTweak"></Description>
+	<Description id="Fo76ini.Tweaks.Audio.EnableAudioTweak">Jeśli odznaczone, w grze nie będzie dźwięku.</Description>
     <Description id="Fo76ini.Tweaks.Audio.PlayMainMenuMusicTweak">Jeśli odznaczone, gra włączy się bez muzyki w menu.</Description>
     <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal0">Zmienia głośność 'Muzyka w menu'</Description>
     <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal1">Zmienia głośność 'Stacje radiowe w świecie'</Description>
@@ -489,7 +489,7 @@ Działa tylko gdy gra jest uruchamiana przez narzędzie</Description>
     <!--
         FormWhatsNew
         ******************************************************************************************************************************************************
-        What's new?
+        Co nowego?
     -->
     <Label text="Co nowego?" id="labelTitle" />
     <Button text="Zamknij" id="buttonClose" />
@@ -528,7 +528,7 @@ Działa tylko gdy gra jest uruchamiana przez narzędzie</Description>
           </Panel>
           <Panel id="panelModDetailsInner">
             <GroupBox text="Dodaj / zastąp pliki modyfikacji" id="groupBoxModReplace">
-              <!-- Group "Add / replace mod files" -->
+              <!-- Group "Dodaj / zastąp pliki modyfikacji" -->
               <Label text="Przeciągnij i upuśc pliki/foldery w pole po lewej by dodać/zastąpić pliki." id="labelModDetailsReplace" />
               <LinkLabel text="Usuń zawartość folderu" id="linkLabelModDeleteFolderContents" />
               <LinkLabel text="Importuj folder" id="linkLabelModReplaceFilesWithFolder" />
@@ -691,7 +691,7 @@ Więcej o Hard-Links możesz przeczytać w artykule "How to install mods using F
       <TabPage text="Info" id="tabPageInfo">
         <!-- ********** Tab "Info" ********** -->
         <GroupBox text="Ustawienia" id="groupBoxSettings">
-          <!-- Group "Settings" -->
+          <!-- Group "Ustawienia" -->
           <LinkLabel text="Otwórz ustawienia" id="linkLabelOpenSettings" />
           <Label text="Wszystko co tu było, zostało przeniesione do ustawień." id="labelSettingsNotice" />
         </GroupBox>
@@ -743,7 +743,7 @@ Więcej o Hard-Links możesz przeczytać w artykule "How to install mods using F
         <GroupBox text="Logowanie" id="groupBoxLogin">
           <!-- Group "Logowanie" -->
           <GroupBox text="Profile" id="groupBoxLoginProfiles">
-            <!-- Group "Profiles" -->
+            <!-- Group "Profile" -->
             <RadioButton text="Żadne" id="radioButtonAccountNone" />
             <RadioButton text="Konto #1" id="radioButtonAccount1" />
             <RadioButton text="Konto #16" id="radioButtonAccount16" />
@@ -776,7 +776,7 @@ Więcej o Hard-Links możesz przeczytać w artykule "How to install mods using F
           <GroupBox text="Grafika" id="groupBoxGraphics">
             <!-- Group "Grafika" -->
             <GroupBox text="Efekty" id="groupBoxGraphicEffects">
-              <!-- Group "Effects" -->
+              <!-- Group "Efekty" -->
               <CheckBox text="Wyłącz przemoc" id="checkBoxDisableGore" />
             </GroupBox>
             <GroupBox text="Wyostrzanie TAA" id="groupBoxTAASharpening">
@@ -876,7 +876,7 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
           <Label text="Muzyka" id="labelAudiofVal3" />
         </GroupBox>
         <GroupBox text="Interfejs" id="groupBoxAudioInterface">
-          <!-- Group "Interface" -->
+          <!-- Group "Interfejs" -->
           <Label text="Wielkość okna historii rozmowy:" id="labelConversationHistorySize" />
           <CheckBox text="Pokaż historie dialogów" id="checkBoxDialogueHistory" />
           <CheckBox text="Pokaż dialogowe napisy" id="checkBoxDialogueSubtitles" />
@@ -904,15 +904,15 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
         <!-- ********** Tab "Kamera" ********** -->
         <Panel id="panel2">
           <GroupBox text="Pozycja kamery (Experimental)" id="groupBoxCameraPosition">
-            <!-- Group "Camera position (Experimental)" -->
+            <!-- Group "Pozycja kamery (Experimental)" -->
             <GroupBox text="Pozycja kamery podczas walki wręcz" id="groupBox3">
-              <!-- Group "Melee combat camera position" -->
+              <!-- Group "Pozycja kamery podczas walki wręcz" -->
               <Label text="Dalej/Bliżej (fOverShoulderMeleeCombatAddY)" id="labelfOverShoulderMeleeCombatAddY" />
               <Label text="Lewa/Prawa (fOverShoulderMeleeCombatPosX)" id="labelfOverShoulderMeleeCombatPosX" />
               <Label text="Dół/Góra (fOverShoulderMeleeCombatPosZ)" id="labelfOverShoulderMeleeCombatPosZ" />
             </GroupBox>
             <GroupBox text="Pozycja kamery w walce" id="groupBox2">
-              <!-- Group "Combat camera position" -->
+              <!-- Group "Pozycja kamery w walce" -->
               <Label text="Dalej/Bliżej (fOverShoulderCombatAddY)" id="labelfOverShoulderCombatAddY" />
               <Label text="Lewa/Prawa (fOverShoulderCombatPosX)" id="labelfOverShoulderCombatPosX" />
               <Label text="Dół/Góra (fOverShoulderCombatPosZ)" id="labelfOverShoulderCombatPosZ" />
@@ -920,13 +920,13 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
             <Button text="Zresetuj" id="buttonCameraPositionReset" />
             <CheckBox text="bApplyCameraNodeAnimations" id="checkBoxbApplyCameraNodeAnimations" />
             <GroupBox text="Pozycja kamey gdy nieuzbrojony" id="groupBoxUnarmedCameraPosition">
-              <!-- Group "Unarmed camera position" -->
+              <!-- Group "Pozycja kamey gdy nieuzbrojony" -->
               <Label text="Lewa/Prawa (fOverShoulderPosX)" id="labelfOverShoulderPosX" />
               <Label text="Dół/Góra (fOverShoulderPosZ)" id="labelfOverShoulderPosZ" />
             </GroupBox>
           </GroupBox>
           <GroupBox text="Opcje trybu fotograficznego" id="groupBoxSelfieCamera">
-            <!-- Group "Photomode options" -->
+            <!-- Group "Opcje trybu fotograficznego" -->
             <Label text="Prędkość obrotu:" id="labelPhotomodeRotationSpeed" />
             <Label text="Zasięg:" id="labelPhotomodeRange" />
             <Label text="Prędkość przejścia:" id="labelPhotomodeTranslationSpeed" />
@@ -955,7 +955,7 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
       <TabPage text="Pipboy" id="tabPagePipBoy">
         <!-- ********** Tab "Pipboy" ********** -->
         <GroupBox text="Presety" id="groupBoxPipboyColorPresets">
-          <!-- Group "Presets" -->
+          <!-- Group "Presety" -->
           <Button text="Capital Wasteland Green" id="buttonPresetFo3Green" />
           <Button text="Classic White" id="buttonPresetFo3White" />
           <Button text="Mojave Wasteland Amber" id="buttonPresetFoNVAmber" />
@@ -964,7 +964,7 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
           <Button text="Classic Blue" id="buttonPresetFo3Blue" />
         </GroupBox>
         <GroupBox text="Podgląd" id="groupBoxPipboyColorPreview">
-          <!-- Group "Preview" -->
+          <!-- Group "Podgląd" -->
           <Label text="Podgląd jest tylko przybliżeniem,\ndlatego kolor może nie wyglądać dokładnie tak samo jak w grze." id="labelPipboyColorPreviewNotice" />
         </GroupBox>
         <GroupBox text="Rozdzielczość" id="groupBoxPipboyResolution">
@@ -1033,17 +1033,17 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
     -->
     <TabControl id="tabControl1">
       <TabPage text="Ogólne" id="tabPageGeneral">
-        <!-- ********** Tab "General" ********** -->
+        <!-- ********** Tab "Ogólne" ********** -->
         <GroupBox text="Ogólne" id="groupBoxActions">
-          <!-- Group "Actions" -->
+          <!-- Group "Ogólne" -->
           <LinkLabel text="⚠️ Włącz Danger Zone" id="linkLabelEnableDangerZone" />
         </GroupBox>
         <GroupBox text="Opcje" id="groupBoxOptions">
-          <!-- Group "Options" -->
+          <!-- Group "Opcje" -->
           <CheckBox text="Pliki *.ini tylko do odczytu" id="checkBoxReadOnly" />
         </GroupBox>
         <GroupBox text="Opcje Nuclear Winter" id="groupBoxNuclearWinterMode">
-          <!-- Group "Nuclear Winter options" -->
+          <!-- Group "Opcje Nuclear Winter" -->
           <CheckBox text="Wdróż mody zamiast je wyłączać" id="checkBoxNWAutoDeployMods" />
           <Label text="Opcje modyfikacji:" id="labelNWmodoptions" />
           <Label text="Opcje *.dll:" id="labelNWdlloptions" />
@@ -1051,44 +1051,44 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
           <CheckBox text="Zmień nazwę dodanych plików *.dll" id="checkBoxNWRenameDLL" />
         </GroupBox>
         <GroupBox text="Zachowanie" id="groupBoxBehavior">
-          <!-- Group "Behavior" -->
+          <!-- Group "Zachowanie" -->
           <CheckBox text="Odtwarzaj dzwięk powiadomień." id="checkBoxPlayNotificationSound" />
           <CheckBox text="Nie sprawdzaj aktualizacji." id="checkBoxIgnoreUpdates" />
           <CheckBox text="Wyłącz narzędzie gry gra jest uruchamiana" id="checkBoxQuitOnGameLaunch" />
           <CheckBox text="Auto zastosowywanie zmian gdy narzędzie jest zamykane/gra jest włączana." id="checkBoxAutoApply" />
         </GroupBox>
         <GroupBox text="Lokalizacja" id="groupBoxLocalization">
-          <!-- Group "Localization" -->
+          <!-- Group "Lokalizacja" -->
           <Label text="Te tłumaczenie jest przestarzałe\nNiektóre elementy mogą być nieprzetłumaczone" id="labelOutdatedLanguage" />
           <Label text="Język:" id="labelLanguage" />
         </GroupBox>
       </TabPage>
       <TabPage text="Profile gry" id="tabPageGameProfiles">
-        <!-- ********** Tab "Game profiles" ********** -->
+        <!-- ********** Tab "Profile gry" ********** -->
         <Panel id="panel1">
           <GroupBox text="Opcje" id="groupBoxSettings">
-            <!-- Group "Settings" -->
+            <!-- Group "Opcje" -->
             <Panel id="panelSettings">
               <GroupBox text="Zaawansowane" id="groupBox2">
-                <!-- Group "Advanced" -->
+                <!-- Group "Zaawansowane" -->
                 <Label text="Adres URL:" id="labelLaunchURL" />
                 <Label text="Parametry:" id="labelParameters" />
                 <Label text="Executable:" id="labelExecutable" />
                 <Label text="Prefix *.ini:" id="labelIniPrefix" />
               </GroupBox>
               <GroupBox text="Opcje uruchamiania" id="groupBoxLaunchOptions">
-                <!-- Group "Launch options" -->
+                <!-- Group "Opcje uruchamiania" -->
                 <Label text="Fallout 76 nie może być uruchomiony bezpośrednio poprzez .exe, jeśli zainstalowany przez Microsoft Store." id="labelLaunchOptionMSStoreNotice" />
                 <RadioButton text="Uruchom gre poprzez &quot;Fallout76.exe&quot;" id="radioButtonLaunchViaExecutable" />
                 <RadioButton text="Uruchom poprzez Steam / Bethesda.net (zalecane)" id="radioButtonLaunchViaLink" />
               </GroupBox>
               <GroupBox text="Lokalizacja Gry" id="groupBoxGameLocation">
-                <!-- Group "Game location" -->
+                <!-- Group "Lokalizacja Gry" -->
                 <Button text="Wykryj automatycznie" id="buttonAutoDetect" />
                 <Button text="..." id="buttonPickGamePath" />
               </GroupBox>
               <GroupBox text="Edycja gry" id="groupBoxGameEdition">
-                <!-- Group "Game edition" -->
+                <!-- Group "Edycja gry" -->
                 <RadioButton text="Inne" id="radioButtonEditionUnknown" />
                 <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
                 <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
@@ -1098,7 +1098,7 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
             </Panel>
           </GroupBox>
           <GroupBox text="Gra" id="groupBoxGame">
-            <!-- Group "Game" -->
+            <!-- Group "Gra" -->
             <ListView id="listViewGameInstances">
               <Column>Game</Column>
             </ListView>
@@ -1135,5 +1135,11 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
         </Panel>
       </TabPage>
     </TabControl>
+    <ContextMenuStrip id="contextMenuStripGame">
+      <ToolStripMenuItem text="Gra" id="gameToolStripMenuItem" />
+      <ToolStripMenuItem text="Uruchom" id="launchGameToolStripMenuItem" />
+      <ToolStripMenuItem text="Zmień nazwę" id="renameGameToolStripMenuItem" />
+      <ToolStripMenuItem text="Usuń" id="removeGameToolStripMenuItem" />
+    </ContextMenuStrip>
   </FormSettings>
 </Language>
