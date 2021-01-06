@@ -1,15 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
-     This file is auto-generated on program start.
-     Therefore any changes made to this file will be overriden.
-     You can use this as a template for your own translation, though.
+     This is a template that contains some of the already translated elements.
+     You can rename it from "*.template.xml" to "*.xml" and translate the added elements.
+
+     If you need help with translating, you can find a guide here:
+     https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Japanese (日本語)" iso="ja-JP" version="1.8.4h2" author="haiji951753">
+<Language name="Japanese (日本語)" iso="ja-JP" author="haiji951753" version="1.9.0h2">
   <Strings>
+    <!--
+        Strings
+        ******************************************************************************************************************************************************
+        Basically little text snippets that can be used everywhere.
+    -->
     <String text="利用可能な新しいバージョンがあります: {0}" id="newVersionAvailable" />
     <String text="今すぐアップデート！" id="updateNowButton" />
+    <String text="Unknown" id="unknown" />
     <String text="展開が必要" id="modsDeploymentNecessary" />
-    <String text="All set" id="modsAllDone" />
     <String text="問題が発生しました。詳細については、ログファイルを参照してください。" id="modsFailed" />
     <String text="一般" id="modsTableFormatGeneral" />
     <String text="テクスチャ" id="modsTableFormatTextures" />
@@ -19,9 +26,9 @@
     <String text="分離 (フローズン)" id="modsTableTypeSeparateFrozen" />
     <String text="ルーズ" id="modsTableTypeLoose" />
     <String text="保留中" id="modTableFrozenPending" />
+    <String text="Frozen" id="modTableFrozen" />
     <String text="{0} 選択されMOD" id="modDetailsTitleBulkSelected" />
     <String text="{0} 時(s) {1} 分(s)" id="nmResetTime" />
-    <String text="決して" id="nmResetTimeNever" />
     <String text="{0} 左" id="nmRateLimitLeft" />
     <String text="ベーシック" id="nmBasicAccount" />
     <String text="サポーター" id="nmSupporterAccount" />
@@ -33,25 +40,129 @@
     <String text="無効" id="invalid" />
     <String text="Nuclear Winter" id="nuclearwintermode" />
     <String text="冒険" id="adventuremode" />
+    <String text="影響を受ける値" id="affectedValues" />
+    <String text="影響を受けるファイル" id="affectedFiles" />
+    <String text="あなたはこのmodを承認しました。" id="endorsedText" />
+    <String text="あなたはまだこのmodを承認していません。" id="notEndorsedText" />
+    <String text="あなたはこのmodを承認することを控えました。" id="abstainedText" />
+    <String text="All set" id="modsAllDone" />
+    <String text="決して" id="nmResetTimeNever" />
   </Strings>
   <Dropdowns>
+    <!--
+        Dropdowns
+        ******************************************************************************************************************************************************
+        Make sure that the amount of options stays the same.
+    -->
+    <Dropdown id="ModInstallAs">
+      <Option>Bundled *.ba2 archive</Option>
+      <Option>Separate *.ba2 archive</Option>
+      <Option>Loose files</Option>
+    </Dropdown>
+    <Dropdown id="ModArchivePreset">
+      <Option>-- 選択してください --</Option>
+      <Option>自動検出</Option>
+      <Option>一般/インターフェース/マテリアル/アニメーション</Option>
+      <Option>テクスチャ (*.dds files)</Option>
+      <Option>効果音　/ 音楽 / 音声</Option>
+    </Dropdown>
     <Dropdown id="Resolution">
-      <Option>カスタム</Option>
-      <Option>640x480</Option>
-      <Option>800x600</Option>
-      <Option>1280x720</Option>
-      <Option>1280x768</Option>
-      <Option>1152x864</Option>
-      <Option>1440x900</Option>
-      <Option>1600x900</Option>
-      <Option>1280x960</Option>
-      <Option>1920x1080</Option>
-      <Option>2560x1080</Option>
-      <Option>3440x1440</Option>
-      <Option>2560x1440</Option>
-      <Option>3200x1800</Option>
-      <Option>5120x2160</Option>
-      <Option>5120x2880</Option>
+      <Option>カスタム
+</Option>
+      <Option>
+      </Option>
+      <Option>┌───────────────────────────────┐</Option>
+      <Option>│  4:3                          │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [4:3]    640 x  480 (VGA)     │</Option>
+      <Option>│ [4:3]    800 x  600 (SVGA)    │</Option>
+      <Option>│ [4:3]    960 x  720           │</Option>
+      <Option>│ [4:3]   1024 x  768 (XGA)     │</Option>
+      <Option>│ [4:3]   1152 x  864           │</Option>
+      <Option>│ [4:3]   1280 x  960           │</Option>
+      <Option>│ [4:3]   1400 x 1050           │</Option>
+      <Option>│ [4:3]   1440 x 1080           │</Option>
+      <Option>│ [4:3]   1600 x 1200           │</Option>
+      <Option>│ [4:3]   1920 x 1440           │</Option>
+      <Option>│ [4:3]   2048 x 1536           │</Option>
+      <Option>│ [4:3]   2880 x 2160           │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  5:3                          │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [5:3]    800 x  480           │</Option>
+      <Option>│ [5:3]   1280 x  768 (WXGA)    │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  5:4                          │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [5:4]   1152 x  960           │</Option>
+      <Option>│ [5:4]   1280 x 1024           │</Option>
+      <Option>│ [5:4]   2560 x 2048           │</Option>
+      <Option>│ [5:4]   5120 x 4096           │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  8:5                          │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [8:5]   1280 x  800           │</Option>
+      <Option>│ [8:5]   1440 x  900           │</Option>
+      <Option>│ [8:5]   1680 x 1050           │</Option>
+      <Option>│ [8:5]   1920 x 1200           │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  16:9                         │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [16:9]  1024 x  576           │</Option>
+      <Option>│ [16:9]  1152 x  648           │</Option>
+      <Option>│ [16:9]  1280 x  720 (HD)      │</Option>
+      <Option>│ [16:9]  1360 x  768           │</Option>
+      <Option>│ [16:9]  1365 x  768           │</Option>
+      <Option>│ [16:9]  1366 x  768           │</Option>
+      <Option>│ [16:9]  1536 x  864           │</Option>
+      <Option>│ [16:9]  1600 x  900           │</Option>
+      <Option>│ [16:9]  1920 x 1080 (Full HD) │</Option>
+      <Option>│ [16:9]  2560 x 1440 (WQHD)    │</Option>
+      <Option>│ [16:9]  3200 x 1800           │</Option>
+      <Option>│ [16:9]  3840 x 2160 (4K UHD1) │</Option>
+      <Option>│ [16:9]  5120 x 2880 (5K)      │</Option>
+      <Option>│ [16:9]  7680 x 4320 (8K UHD2) │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  16:10                        │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [16:10]  640 x  400           │</Option>
+      <Option>│ [16:10] 1280 x  800           │</Option>
+      <Option>│ [16:10] 1440 x  900           │</Option>
+      <Option>│ [16:10] 1680 x 1050           │</Option>
+      <Option>│ [16:10] 1920 x 1200           │</Option>
+      <Option>│ [16:10] 2560 x 1600           │</Option>
+      <Option>│ [16:10] 3840 x 2400           │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  17:9                         │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [17:9]  2048 x 1080           │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  21:9                         │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [21:9]  1920 x  800           │</Option>
+      <Option>│ [21:9]  2560 x 1080           │</Option>
+      <Option>│ [21:9]  3440 x 1440           │</Option>
+      <Option>│ [21:9]  3840 x 1600           │</Option>
+      <Option>│ [21:9]  5120 x 2160           │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>└───────────────────────────────┘</Option>
+      <Option>
+      </Option>
     </Dropdown>
     <Dropdown id="DisplayMode">
       <Option>フルスクリーン
@@ -84,11 +195,6 @@
       <Option>2x</Option>
       <Option>3x = Default, recommended</Option>
     </Dropdown>
-    <Dropdown id="Files">
-      <Option>Fallout76.ini</Option>
-      <Option>Fallout76Prefs.ini</Option>
-      <Option>Fallout76Custom.ini</Option>
-    </Dropdown>
     <Dropdown id="VoiceChatMode">
       <Option>オート
 </Option>
@@ -108,20 +214,13 @@
       <Option>2 - High / Medium</Option>
       <Option>3 - Ultra</Option>
     </Dropdown>
-    <Dropdown id="ModInstallAs">
-      <Option>Bundled *.ba2 archive</Option>
-      <Option>Separate *.ba2 archive</Option>
-      <Option>Loose files</Option>
-    </Dropdown>
-    <Dropdown id="ModArchivePreset">
-      <Option>-- 選択してください --</Option>
-      <Option>自動検出</Option>
-      <Option>一般/インターフェース/マテリアル/アニメーション</Option>
-      <Option>テクスチャ (*.dds files)</Option>
-      <Option>効果音　/ 音楽 / 音声</Option>
-    </Dropdown>
   </Dropdowns>
   <Messageboxes>
+    <!--
+        Message boxes
+        ******************************************************************************************************************************************************
+        The {0} is a placeholder, btw.
+    -->
     <Messagebox title="*.iniファイルを解析できませんでした" id="iniParsingError">ゲームの*.iniファイルの少なくとも1つが壊れているか、構文エラーが含まれています。
 
 次のような場合があります。
@@ -131,21 +230,67 @@
 
 ERROR MESSAGE:
 {0}</Messagebox>
+    <Messagebox title="適用された変更" id="changesApplied">変更が適用されました。今からゲームを始めてもよろしい。</Messagebox>
+    <Messagebox title="完了" id="downloadLanguagesFinished">ダウンロードした言語ファイル: {0}</Messagebox>
+    <Messagebox title="変更されたファイル" id="iniFilesModified">*.iniファイルは、実行中にツールの外部で変更されています。
+NOTE:「[適用]」をクリックするか、変更が管理されている場合、変更は上書きされます。
+新しい値を使用するには、ツールを再起動してください。</Messagebox>
+    <Messagebox title="よろしいですか？" id="galleryDeleteThumbnails">ギャラリーのサムネイルを削除してもよろしいですか？
+次に[ギャラリーの更新]をクリックすると、すべてのサムネイルが再作成されるため、かなり時間がかかります。</Messagebox>
+    <Messagebox title="NWモードが無効" id="nwModeDisabled">これで、アドベンチャーモードで起動できます。</Messagebox>
+    <Messagebox title="NWモードが有効" id="nwModeEnabled">これでNuclear Winterが起動できます。</Messagebox>
+    <Messagebox title="完了" id="modsDisabledDone">Modは無効になり、ゲームから削除されました。</Messagebox>
+    <Messagebox title="完了" id="modsDeployedDone">Modがデプロイされます。</Messagebox>
+    <Messagebox title="何かがうまくいかなかった" id="modsDeploymentFailed">Modがデプロイされていない可能性があります。
+ログファイルを確認してください。</Messagebox>
+    <Messagebox title="Archive2がありません" id="modsArchive2Missing">.\ Archive2 \ Archive2.exeがありません。
+このツールを再度ダウンロードするか、Archive2を手動でインストールしてください。</Messagebox>
+    <Messagebox title="ゲームパスが設定されていません" id="modsGamePathNotSet">ゲームへのパス（Fallout76.exeが存在する場所）を設定してください。</Messagebox>
+    <Messagebox title="7-Zip is missing" id="7ZipMissing">.\7z\7z.exe is missing.
+Try to reinstall this tool, or copy 7-Zip manually.</Messagebox>
+    <Messagebox title="わーい！" id="modsNoConflictingFiles">競合するファイルは見つかりませんでした。</Messagebox>
+    <Messagebox title="手動でインストールしたMODをインポートしますか？" id="modsImportQuestion">Mod Managerの外部にインストールされたModを追加してもよろしいですか？</Messagebox>
+    <Messagebox title="バンドルされたアーカイブを再パックしますか？" id="modsRepackFrozenBundledArchives">利用可能な凍結されたバンドルアーカイブがあります。 バンドルされたアーカイブを再度パックしますか？
+
+    はい-modリストに変更を加えましたが、バンドルされたアーカイブを再度パックしたいと思います。 （スロー）
+
+    いいえ-変更はしていません。凍結されたバンドルアーカイブをデプロイしてください。 （クイック）</Messagebox>
+    <Messagebox title="Archive2 failed to pack/extract an archive" id="archive2Error">Archive2 failed for an unknown reason.
+Please check the log files for details.</Messagebox>
+    <Messagebox title="Archive2はアーカイブのパック/抽出に失敗しました" id="archive2InstallRequirements">「VisualStudio2012 Update4用のVisualC ++再頒布可能パッケージ」がインストールされていることを確認してください。
+NexusModsページにリンクがあります。</Messagebox>
+    <Messagebox title="サポートされていないファイル形式" id="modsArchiveTypeNotSupported">{0}ファイルはサポートされていません。
+アーカイブを解凍し、modをフォルダとして追加してください。</Messagebox>
+    <Messagebox title="レガシーバージョンが見つかりました" id="modsLegacyFormatDetected">以前にmodを管理したことがあるようですが、v1.9.0より前のバージョンを使用しています。
+Modの管理方法と保存方法が大幅に変更されました。
+その結果、それらを新しい形式に変換する必要があります。
+
+注：これにより、フォルダの名前が変更され、アーカイブのフリーズが解除されます。 変換された後、フリーズされたmodの数によっては、より多くのスペースを占める可能性があります。 ダウングレードは引き続き可能ですが、一部のmodが正しくロードされない場合があります。
+
+今すぐ変換しますか？ 長くはかからないでしょう。</Messagebox>
+    <Messagebox title="無効なmanifest.xmlエントリ" id="modsInvalidManifestEntry">modエントリは無効であり、無視されました。
+エラー：{0}</Messagebox>
+    <Messagebox title="Mod情報が更新されました" id="nexusModsRemoteInfoRefreshedSuccess">Mod情報が更新され、サムネイルがダウンロードされました。</Messagebox>
+    <Messagebox title="すべての改造を支持しますか？" id="nexusModsEndorseAllQuestion">これにより、インストールされているすべてのModが承認されます。 よろしいですか？</Messagebox>
+    <Messagebox title="ログインしていない" id="nexusModsNotLoggedIn">最初にNexusModsにログインして、もう一度お試しください</Messagebox>
+    <Messagebox title="{0}を削除？" id="deleteQuestion">'{0}'を削除しようとしています。 よろしいですか？</Messagebox>
+    <Messagebox title="{0}ファイルを削除しますか？" id="deleteMultipleQuestion">{0}ファイルを削除しようとしています。 よろしいですか？</Messagebox>
+    <Messagebox title="失敗" id="failed">{0}</Messagebox>
+    <Messagebox title="完了" id="done">{0}</Messagebox>
+    <Messagebox title="よろしいですか?" id="areYouSure">{0}</Messagebox>
+    <Messagebox title="最後のゲームプロファイルを削除できません" id="errorAtLeastOneGameOrProfile">少なくとも1つのゲームプロファイルが必要です。</Messagebox>
+    <Messagebox title="自動検出に失敗しました" id="gamePathAutoDetectFailed">一般的なゲームパスが見つかりませんでした。 パスを手動で選択してください。</Messagebox>
     <Messagebox title="バックアップと保存" id="backupAndSave">すべての変更を適用する前にバックアップを作成しますか?
 
     「はい」を押してバックアップを作成し、保存します。
     バックアップしないで保存するときは「いいえ」を押します。
     中止するときは「キャンセル」を押します。</Messagebox>
-    <Messagebox title="適用された変更" id="changesApplied">変更が適用されました。今からゲームを始めてもよろしい。</Messagebox>
     <Messagebox title="ゲームエディションの選択" id="chooseGameEdition">設定タブでゲームエディションを選択してください。</Messagebox>
     <Messagebox title="{0} と {1} が見つかりません" id="runGameToGenerateINI">このツールを使用する前に、まずゲームを実行してください。
 ゲームは最初の起動時にこれらのファイルを生成します。</Messagebox>
     <Messagebox title="完了" id="oldValuesResetToDefault">一部の値がデフォルトにリセットされました。
 以前のバージョンの不安定な値のみが影響を受けます。
 必ず [適用] をクリックしてください。</Messagebox>
-    <Messagebox title="変更されたファイル" id="iniFilesModified">*.iniファイルは、実行中にツールの外部で変更されています。
-NOTE:「[適用]」をクリックするか、変更が管理されている場合、変更は上書きされます。
-新しい値を使用するには、ツールを再起動してください。</Messagebox>
     <Messagebox title="UIのロード中にエラーが発生しました" id="onLoadFuncException">UIのロード中に {0} 例外が発生しました。
 これは、破損したiniファイルが原因である可能性があります。
 一部のUI要素が正しく機能していない可能性があります。
@@ -154,7 +299,6 @@ NOTE:「[適用]」をクリックするか、変更が管理されている場�
     <Messagebox title="無効な* .ini値が見つかりました" id="iniValuesInvalid">{0} *.ini値が無効です:
 
 {1}</Messagebox>
-    <Messagebox title="完了" id="downloadLanguagesFinished">ダウンロードした言語ファイル: {0}</Messagebox>
     <Messagebox title="失敗しました" id="downloadLanguagesFailed">言語のダウンロードに失敗しました。
 {0}</Messagebox>
     <Messagebox title="切り替えますか？" id="msstoreRestartRequired">Microsoft Storeエディションに切り替えるには、ツールを再起動する必要があります。</Messagebox>
@@ -170,17 +314,6 @@ NOTE:「[適用]」をクリックするか、変更が管理されている場�
 よろしいですか、今すぐこのオプションを変更しますか？</Messagebox>
     <Messagebox title="削除 {0}?" id="galleryDeleteScreenshot">'{0}'を削除しようとしています。 よろしいですか？</Messagebox>
     <Messagebox title="{0}ファイルを削除しますか？" id="galleryDeleteScreenshots">{0}ファイルを削除しようとしています。よろしいですか？</Messagebox>
-    <Messagebox title="よろしいですか？" id="galleryDeleteThumbnails">ギャラリーのサムネイルを削除してもよろしいですか？
-次に[ギャラリーの更新]をクリックすると、すべてのサムネイルが再作成されるため、かなり時間がかかります。</Messagebox>
-    <Messagebox title="NWモードが無効" id="nwModeDisabled">これで、アドベンチャーモードで起動できます。</Messagebox>
-    <Messagebox title="NWモードが有効" id="nwModeEnabled">これでNuclear Winterが起動できます。</Messagebox>
-    <Messagebox title="完了" id="modsDisabledDone">Modは無効になり、ゲームから削除されました。</Messagebox>
-    <Messagebox title="完了" id="modsDeployedDone">Modがデプロイされます。</Messagebox>
-    <Messagebox title="何かがうまくいかなかった" id="modsDeploymentFailed">Modがデプロイされていない可能性があります。
-ログファイルを確認してください。</Messagebox>
-    <Messagebox title="Archive2がありません" id="modsArchive2Missing">.\ Archive2 \ Archive2.exeがありません。
-このツールを再度ダウンロードするか、Archive2を手動でインストールしてください。</Messagebox>
-    <Messagebox title="ゲームパスが設定されていません" id="modsGamePathNotSet">ゲームへのパス（Fallout76.exeが存在する場所）を設定してください。</Messagebox>
     <Messagebox title="間違ったパス" id="modsGamePathInvalid">ゲームフォルダのパスが間違っています。</Messagebox>
     <Messagebox title="Mod {0}をデプロイできませんでした。" id="modsDeployErrorModDirNotFound">ディレクトリ{0}は存在しません。
 Mod Managerを再起動して、Modを再度追加してください。</Messagebox>
@@ -191,19 +324,13 @@ Mod Managerを再起動して、Modを再度追加してください。</Message
     <Messagebox title="アーカイブを解凍できませんでした" id="modsExtractUnknownError">{0}</Messagebox>
     <Messagebox title="アーカイブを解凍できませんでした" id="modsExtractUnknownErrorText">アーカイブを解凍し、modをフォルダとして追加してください。</Messagebox>
     <Messagebox title="7-Zipアーカイブを解凍できませんでした" id="modsExtractUnknownError7zip">{0}</Messagebox>
-    <Messagebox title="サポートされていないファイル形式" id="modsArchiveTypeNotSupported">{0}ファイルはサポートされていません。
-アーカイブを解凍し、modをフォルダとして追加してください。</Messagebox>
-    <Messagebox title="わーい！" id="modsNoConflictingFiles">競合するファイルは見つかりませんでした。</Messagebox>
     <Messagebox title="展開が必要" id="modsDeploymentNecessary">このアクションでは、最初にすべてのmodをデプロイする必要があります。</Messagebox>
     <Messagebox title="よろしいですか？" id="modsOnCloseDeploymentNecessary">行った変更を展開していません。
 Mod Managerを閉じてもよろしいですか？</Messagebox>
     <Messagebox title="Modフォルダが存在しません。" id="modDirNotExist">パス{0}は存在しません。
 マニフェストのエントリを削除せずに、modフォルダが削除されました。</Messagebox>
-    <Messagebox title="無効なmanifest.xmlエントリ" id="modsInvalidManifestEntry">modエントリは無効であり、無視されました。
-エラー：{0}</Messagebox>
     <Messagebox title="無効なmanifest.xmlエントリ" id="modsInvalidManifestRoot">&lt;Mods&gt;タグに無効な属性があります。
 エラー：{0}</Messagebox>
-    <Messagebox title="手動でインストールしたMODをインポートしますか？" id="modsImportQuestion">Mod Managerの外部にインストールされたModを追加してもよろしいですか？</Messagebox>
     <Messagebox title="競合するMOD" id="modsSameArchiveName">一部のmodのアーカイブ名は同じです： "{0}"。
 競合するmod名：{1}</Messagebox>
     <Messagebox title="フォルダの名前を変更できませんでした" id="modDetailsMoveManagedFolderFailed">管理対象のmodフォルダーの名前を変更できませんでした。
@@ -214,18 +341,10 @@ Mod Managerを閉じてもよろしいですか？</Messagebox>
     <Messagebox title="完了" id="modsRepairDDSDone">* .ddsファイルが修復されました。</Messagebox>
     <Messagebox title="アクセスが拒否されました" id="modsAccessDenied">{0}
 管理者としてツールを起動して、再試行してください。</Messagebox>
-    <Messagebox title="バンドルされたアーカイブを再パックしますか？" id="modsRepackFrozenBundledArchives">利用可能な凍結されたバンドルアーカイブがあります。 バンドルされたアーカイブを再度パックしますか？
-
-    はい-modリストに変更を加えましたが、バンドルされたアーカイブを再度パックしたいと思います。 （スロー）
-
-    いいえ-変更はしていません。凍結されたバンドルアーカイブをデプロイしてください。 （クイック）</Messagebox>
-    <Messagebox title="Archive2はアーカイブのパック/抽出に失敗しました" id="archive2InstallRequirements">「VisualStudio2012 Update4用のVisualC ++再頒布可能パッケージ」がインストールされていることを確認してください。
-NexusModsページにリンクがあります。</Messagebox>
     <Messagebox title="Modはまだ展開されています" id="nwModeEnabledButModsAreDeployed">Nuclear Winterモードを有効にしましたが、Modはまだデプロイされています。
 今すぐ無効にしますか？</Messagebox>
     <Messagebox title="MODを再度有効にしますか？" id="nwModeDisabledAndModsAreStillDisabled">Nuclear Winterモードを無効にしましたが、MODはまだ無効になっています。
 今すぐ展開しますか？</Messagebox>
-    <Messagebox title="Mod情報が更新されました" id="nexusModsRemoteInfoRefreshedSuccess">Mod情報が更新され、サムネイルがダウンロードされました。</Messagebox>
     <Messagebox title="失敗しました" id="nexusModsProfileRefreshFailed">プロファイルを更新できませんでした：
 {0}</Messagebox>
     <Messagebox title="よろしいですか？" id="nexusModsDeleteThumbnails">本当にすべてのサムネイルを削除しますか？</Messagebox>
@@ -237,20 +356,337 @@ NexusModsページにリンクがあります。</Messagebox>
     <Messagebox title="よろしいですか？" id="nexusModsRemoveRemoteInfo">本当にmod情報を削除しますか？</Messagebox>
     <Messagebox title="完了" id="nexusModsRemoveRemoteInfoSuccess">Mod情報が削除されました。</Messagebox>
   </Messageboxes>
+  <TweakDescriptions>
+    <!--
+        Descriptions
+        ******************************************************************************************************************************************************
+        These are the descriptions of almost all tweaks.
+        They appear in tool tips, when the user hovers over a tweak with the mouse cursor.
+    -->
+    <Description id="Fo76ini.Tweaks.General.EnableSteamTweak">Steam統合を有効/無効にします。 Bethesda.netアカウントを使用するには、無効にしてください。</Description>
+    <Description id="Fo76ini.Tweaks.General.AutoSigninTweak">これを有効にすると、ログイン資格情報を入力した場合、ログインプロンプトがスキップされます。</Description>
+    <Description id="Fo76ini.Tweaks.General.IntroVideoTweak">このオプションを無効にすると、ゲームはBethesdaロゴビデオを表示せずに開始されます。</Description>
+    <Description id="Fo76ini.Tweaks.General.SkipStartupSplash">有効にすると、ゲームは起動時のニュースに煩わされることはありません。</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Main">有効にすると、新しく追加された「メイン」クエストを自動的に追跡します。</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Side">有効にすると、新しく追加された「サイド」クエストを自動的に追跡します。</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Side">有効にすると、新しく追加された「サイド」クエストを自動的に追跡します。</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Event">有効にすると、新しく追加された「イベント」クエストを自動的に追跡します。</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Event">有効にすると、新しく追加された「イベント」クエストを自動的に追跡します。</Description>
+    <Description id="Fo76ini.Tweaks.Video.DisplaySizeTweak">ディスプレイ解像度</Description>
+    <Description id="Fo76ini.Tweaks.Video.DisplayModeTweak">表示モードを変更します。
+
+•フルスクリーン：実際のフルスクリーンモード（最高のパフォーマンス）
+•ウィンドウ：境界線のあるウィンドウ（別名ウィンドウ装飾）でゲームを開始します。
+•ボーダーレスウィンドウ：Alt + Tabを簡単に実行できますが、解像度がディスプレイの解像度と一致していることを確認してください。 （デフォルト）
+•ボーダーレスウィンドウ（フルスクリーン）：「ボーダーレスウィンドウ」と同じですが、ウィンドウは画面に合わせて最大化されます。
+解像度がディスプレイよりも低い場合、これは最近傍を使用してアップスケールするため、ピクセル化されたように見えます。</Description>
+    <Description id="Fo76ini.Tweaks.Video.PresentIntervalTweak">これを無効にすると、フレームレートの上限が解除されます。
+
+•画面のティアリングが発生した場合は、これを有効にします。
+•入力ラグが発生した場合は、これを無効にしてください。
+
+⚠️これを有効にしても、画面のティアリングが解消されない場合があります。
+⚠️これを無効にする場合は、ゲームを手動で60FPSに制限することをお勧めします。 （例：NVIDIAのコントロールパネルを使用）
+
+ℹ️上限のないフレームレートでは、古いタイトルのように物理学が混乱することはありません。
+これはかなり前に（2018年に）Bethesdaによって修正されたためです。
+それでも、60に制限することをお勧めします。</Description>
+    <Description id="Fo76ini.Tweaks.Video.WindowAlwaysActiveTweak">別のウィンドウが前面にある場合にゲームを一時停止する場合は、これを無効にします。</Description>
+    <Description id="Fo76ini.Tweaks.Video.TopMostWindowTweak">これを有効にすると、ゲームのウィンドウが前面に表示されたままになります。
+⚠️これにより、単一のモニターでAlt + Tabを実行できなくなります。</Description>
+    <Description id="Fo76ini.Tweaks.Interface.FixHUD4to3RatioTweak">非表示/中断を修正
+   •ピッキング画面をロックし、
+   •パワーアーマーHUD
+5：4および4：3画面の場合。
+
+⚠️ほとんどテストされていません。</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.AntiAliasingTweak">オブジェクトのエッジを滑らかにします。
+
+•TAA-一時的なアンチエイリアシング：比較的高価で、アーティファクトが発生する可能性があります。デフォルト
+•FXAA-高速近似アンチエイリアシング：パフォーマンスがわずかに向上します
+•オフ-パフォーマンスを向上させ、視覚的な品質を低下させます
+
+⚠️FXAAが機能しない可能性があります。 ゲームは代わりにAAを無効にするだけかもしれません。</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.AnisotropicFilteringTweak">斜めの角度から見たときのテクスチャのエイリアシングを減らします。</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.EnableDepthOfFieldTweak">これを無効にすると、すべての被写界深度効果が無効になります。</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.AnisotropicFilteringTweak">斜めの角度から見たときのテクスチャのエイリアシングを減らします。</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.WaterDisplacementsTweak">水の移動（波紋、波）を有効/無効にします。</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ShadowMapResolutionTweak">影の解像度。 設定を高くすると、シャドウがより詳細になります。</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ShadowBlurrinessTweak">影をぼかす。 シャドウの解像度を低く設定する場合に特に便利です。</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ShadowDistanceTweak">影がレンダリングされる距離を設定します。
+  ⇨ Ultra  150000
+  ⇨ High  120000
+  ⇨ Medium  90000
+  ⇨ Low  60000</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.DirShadowSplitsTweak">離れた場所にある低解像度の影の「セグメント」の量。
+値が1の場合、ゲームは最低解像度のシャドウのみをレンダリングします。</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.BlendSplitDirShadowTweak">ゲームが低解像度のシャドウ「セグメント」に移行する距離。
+12の倍数でなければなりません。</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.TAAPostOverlayTweak">画像をシャープにします。
+デフォルト：0.21</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.TAAPostSharpenTweak">画像をシャープにします。
+デフォルト：0.21
+推奨：0.4</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ScreenSpaceReflectionsTweak">画面スペースの反射を有効/無効にします。
+水が消えたり真っ暗になったりします！</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.GrassFadeDistanceTweak">草が消え始める距離を設定します。
+  ⇨ Ultra  7000
+  ⇨ High  5500
+  ⇨ Medium  4500</Description>
+    <Description id="Fo76ini.Tweaks.Audio.EnableAudioTweak">無効にすると、ゲームは完全に無音になります。</Description>
+    <Description id="Fo76ini.Tweaks.Audio.PlayMainMenuMusicTweak">チェックを外すと、ゲームはメインメニューのバックグラウンドミュージックを再生しません。</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal0">「メニューミュージック」の音量を変更します</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal1">「ワールドラジオ」の音量を変更します</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal2">「音声」の音量を変更します</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal3">「音楽」の音量を変更します</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal4">「エフェクト」の音量を変更します</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal5">「足音」の音量を変更します</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal6">「Pip-Boyラジオ」の音量を変更します</Description>
+    <Description id="Fo76ini.Tweaks.Controls.FixMouseSensitivityTweak">有効にすると、上/下と左/右を見る感度が等しくなります。
+無効（デフォルト）の場合、左/右を見る感度は上/下よりも高くなる可能性があります。
+
+•マウスとキーボードを使用している場合は、これを有効にします。
+•ゲームパッドを使用している場合は、これを無効にします。
+
+⚠️有効にすると、マウスの感度が上がる可能性があります。 カーソル速度またはマウスDPIを下げます。
+
+ℹ️垂直感度は、ディスプレイのアスペクト比によって異なります。
+       ✓4：3の場合、Yの値は0.028です。
+       ✓16：9の場合、Yの値は0.03738です。
+       ✓16：10の場合、Yの値は0.0336です。
+       ✓21：9の場合、Yの値は0.042です。
+       ✓他のすべてのアスペクト比の場合、Yの値はアスペクト比の0.021倍に等しくなります。 （YScale = 0.021 *幅/高さ）</Description>
+    <Description id="Fo76ini.Tweaks.Controls.FixMouseSensitivityTweak">有効にすると、上/下と左/右を見る感度が等しくなります。
+無効（デフォルト）の場合、左/右を見る感度は上/下よりも高くなる可能性があります。
+
+•マウスとキーボードを使用している場合は、これを有効にします。
+•ゲームパッドを使用している場合は、これを無効にします。
+
+⚠️有効にすると、マウスの感度が上がる可能性があります。 カーソル速度またはマウスDPIを下げます。
+
+ℹ️垂直感度は、ディスプレイのアスペクト比によって異なります。
+       →4：3の場合、Yの値は0.028です。
+       →16：9の場合、Yの値は0.03738です。
+       →16：10の場合、Yの値は0.0336です。
+       →21：9の場合、Yの値は0.042です。      
+　　　 →他のすべてのアスペクト比の場合、Yの値はアスペクト比の0.021倍に等しくなります。 （YScale = 0.021 *幅/高さ）</Description>
+    <Description id="Fo76ini.Tweaks.Controls.MouseAccelerationTweak">ℹ️このオプションは効果がない可能性があります。</Description>
+    <Description id="Fo76ini.Tweaks.Controls.GamepadEnableTweak">ゲームパッドが接続されているが、代わりにキーボードとマウスを使用する場合は、これを無効にします。</Description>
+    <Description id="Fo76ini.Tweaks.Camera.ApplyCameraNodeAnimationsTweak">無効にすると、カメラの位置がキャラクターの頭に設定されます。
+第三者をズームアウトする必要があります。
+有効にすると、カメラの位置を右肩の後ろに設定します。
+
+⚠️無効にすると問題が発生する可能性があります。</Description>
+    <Description id="Fo76ini.Tweaks.Camera.ApplyCameraNodeAnimationsTweak">無効にすると、カメラの位置がキャラクターの頭に設定されます。
+第三者をズームアウトする必要があります。
+有効にすると、カメラの位置を右肩の後ろに設定します。
+
+⚠️無効にすると問題が発生する可能性があります。</Description>
+    <Description id="Fo76ini.Tweaks.Camera.FOV3rdADSTweak">照準を合わせながら3人称視点の視野を変更します。</Description>
+    <Description id="Fo76ini.Tweaks.Camera.DefaultFOVTweak">⚠️GUIで問題が発生します。</Description>
+    <Description id="Fo76ini.Tweaks.Camera.PitchZoomOutMaxDistTweak">三人称で地面を見たときにカメラがどれだけズームアウトするか。</Description>
+    <Description id="Fo76ini.Tweaks.Colors.PipboyColorTweak">Pipboyの色を変更します</Description>
+    <Description id="Fo76ini.Tweaks.Colors.QuickboyColorTweak">Quickboyの色を変更します</Description>
+    <Description id="Fo76ini.Tweaks.Colors.PowerArmorPipboyColorTweak">パワーアーマーQuickboyの色を変更します</Description>
+    <Description id="Fo76ini.Tweaks.Config.PlayNotificationSoundsTweak">有効にすると、ツールはカスタム通知音を再生します。</Description>
+    <Description id="Fo76ini.Tweaks.Inis.INIReadOnlyTweak">このオプションは、すべての* .iniファイルをすぐに読み取り専用にします。
+設定が元に戻る場合は、これを有効にします。</Description>
+    <Description id="Fo76ini.Tweaks.Config.AutoApplyTweak">もう適用を押す必要はありません。</Description>
+    <Description id="Fo76ini.Tweaks.Config.IgnoreUpdatesTweak">起動時に更新をチェックせず、大きな更新ボタンを非表示にします。</Description>
+    <Description id="Fo76ini.Tweaks.Config.PlayNotificationSoundsTweak">有効にすると、ツールはカスタム通知音を再生します。</Description>
+    <Description id="Fo76ini.Tweaks.NuclearWinterMode.DeployModsOnNWModeTweak">オンにすると、Nuclear Winter モードが無効になっているときにmodがデプロイされます。</Description>
+    <Description id="Fo76ini.Tweaks.NuclearWinterMode.RenameDLLsTweak">オンにすると、ゲームに属していない* .dllファイルの名前が変更されます。</Description>
+    <Description id="Fo76ini.Tweaks.NuclearWinterMode.DeployModsOnNWModeTweak">オンにすると、Nuclear Winterモードが無効になっているときにmodがデプロイされます。</Description>
+    <Description id="Fo76ini.Tweaks.Camera.PitchZoomOutMaxDistTweak">三人称で地面を見たときにカメラがどれだけズームアウトするか。</Description>
+  </TweakDescriptions>
+  <FormWhatsNew title="新着情報？">
+    <!--
+        FormWhatsNew
+        ******************************************************************************************************************************************************
+        What's new?
+    -->
+    <Label text="新着情報？" id="labelTitle" />
+    <Button text="閉じる" id="buttonClose" />
+    <CheckBox text="更新後であっても、これを再度表示しないでください。" id="checkBoxDontShowAgain" />
+  </FormWhatsNew>
+  <FormMods title="modsを管理する">
+    <!--
+        FormMods
+        ******************************************************************************************************************************************************
+        Manage mods
+    -->
+    <StatusStrip id="statusStrip1">
+      <ToolStripStatusLabel text="Modカウント：" id="toolStripStatusLabelDescModCount" />
+      <ToolStripStatusLabel text="9" id="toolStripStatusLabelModCount" />
+      <ToolStripStatusLabel text="有効：" id="toolStripStatusLabelDescEnabledCount" />
+      <ToolStripStatusLabel text="9" id="toolStripStatusLabelEnabledCount" />
+      <ToolStripStatusLabel text=" " id="toolStripStatusLabelSpacer" />
+      <ToolStripStatusLabel text="展開が必要" id="toolStripStatusLabelDeploymentStatus" />
+    </StatusStrip>
+    <Panel id="panel1">
+      <Button text="デプロイ" id="buttonModsDeploy" />
+      <CheckBox text="Modを無効にする" id="checkBoxDisableMods" />
+    </Panel>
+    <TabControl id="tabControl1">
+      <TabPage text="Mod オーダー" id="tabPageModOrder">
+        <!-- ********** Tab "Mod オーダー" ********** -->
+        <Panel id="panelModDetails">
+          <Panel id="panelModDetailsHeader">
+            <Button id="buttonModAbstain">
+              <Tooltip>このmodの承認を控えてください。</Tooltip>
+            </Button>
+            <Button id="buttonModEndorse">
+              <Tooltip>このmodを承認します。</Tooltip>
+            </Button>
+            <CheckBox text="このmodを有効にする" id="checkBoxModDetailsEnabled" />
+          </Panel>
+          <Panel id="panelModDetailsInner">
+            <GroupBox text="modファイルの追加/置換" id="groupBoxModReplace">
+              <!-- Group "modファイルの追加/置換" -->
+              <Label text="ファイル/フォルダを左側のボックスにドラッグアンドドロップして、ファイルを追加/置換します。" id="labelModDetailsReplace" />
+              <LinkLabel text="フォルダの内容を削除する" id="linkLabelModDeleteFolderContents" />
+              <LinkLabel text="インポートフォルダー" id="linkLabelModReplaceFilesWithFolder" />
+              <LinkLabel text="インポートアーカイブ" id="linkLabelModReplaceFilesWithArchive" />
+            </GroupBox>
+            <GroupBox text="インストールオプション" id="groupBoxModDetailsInstallationOptions">
+              <!-- Group "インストールオプション" -->
+              <LinkLabel text="凍結されたアーカイブを無効にする" id="linkLabelModInvalidateFrozenArchive" />
+              <LinkLabel text="インストールオプションの自動検出を試みます" id="linkLabelModAutoDetectInstallOptions" />
+              <Button text="..." id="buttonModPickRootDir" />
+              <Label text="としてインストール:" id="labelModInstallAs" />
+              <Label text="プリセット:" id="labelModArchivePreset" />
+              <CheckBox text="氷結" id="checkBoxFreezeArchive">
+                <Tooltip>アーカイブを「フリーズ」した場合、デプロイ時にアーカイブは再作成されません。
+これにより、展開がスピードアップします。
+
+これは、アーカイブが巨大（1GiB以上）でファイルが変更されていない場合に特に便利です。</Tooltip>
+              </CheckBox>
+              <Label text="にインストールする:" id="labelModInstallInto" />
+              <Button text="提案する" id="buttonModDetailsSuggestArchiveName" />
+              <Label text="アーカイブ名:" id="labelModArchiveName" />
+            </GroupBox>
+            <GroupBox text="詳細" id="groupBoxModDetailsDetails">
+              <!-- Group "詳細" -->
+              <Panel id="panelModDetailsNexusMods">
+                <LinkLabel text="最新バージョンを設定する" id="linkLabelModSetLatestVersion" />
+                <Label text="最新バージョン：" id="labelModLatestVersionDesc" />
+                <Label text="著者：" id="labelModAuthorDesc" />
+              </Panel>
+              <Label text="バージョン:" id="labelModVersion" />
+              <Label text="Mod名:" id="labelModName" />
+              <Label text="ウェブページ (URL):" id="labelModURL" />
+            </GroupBox>
+          </Panel>
+        </Panel>
+        <ToolStrip id="toolStrip1">
+          <ToolStripButton text="modの追加（アーカイブから）" id="toolStripButtonAddMod" />
+          <ToolStripButton text="modの追加（フォルダーから）" id="toolStripButtonAddModFolder" />
+          <ToolStripButton text="すべてチェック/チェック解除" id="toolStripButtonCheckAll" />
+          <ToolStripButton text="上に移動" id="toolStripButtonMoveUp" />
+          <ToolStripButton text="下に移動" id="toolStripButtonMoveDown" />
+          <ToolStripButton text="modフォルダーを開く" id="toolStripButtonModOpenFolder" />
+          <ToolStripButton text="modを削除する" id="toolStripButtonDeleteMod" />
+        </ToolStrip>
+        <ListView id="listViewMods">
+          <Column>Mod名
+</Column>
+          <Column>Version</Column>
+          <Column>タイプ
+</Column>
+          <Column>Install into</Column>
+          <Column>アーカイブ名</Column>
+          <Column>アーカイブ形式</Column>
+          <Column>圧縮されていますか？</Column>
+          <Column>フローズン？</Column>
+        </ListView>
+      </TabPage>
+      <TabPage text="設定" id="tabPageModsSettings">
+        <!-- ********** Tab "設定" ********** -->
+        <GroupBox text="動作" id="groupBoxModsBehavior">
+          <!-- Group "動作" -->
+          <CheckBox text="[試験的]バンドルされたアーカイブをフリーズする" id="checkBoxFreezeBundledArchives">
+            <Tooltip>バンドルされたアーカイブを再構築する代わりに、バンドルされたコピーを保存し、デプロイ時に更新するかどうかを尋ねます。
+</Tooltip>
+          </CheckBox>
+          <CheckBox text="ファイルを手動でコピーする代わりにハードリンクを作成する（推奨）" id="checkBoxModsUseHardlinks">
+            <Tooltip>ディスク容量と展開時間を削減します。</Tooltip>
+          </CheckBox>
+          <CheckBox text="デフォルトで* .ba2ファイルのフリーズを解除します" id="checkBoxAddArchivesAsBundled" />
+        </GroupBox>
+        <GroupBox text="リスト" id="groupBoxLists">
+          <!-- Group "リスト" -->
+          <Button text="リセット" id="buttonModsResetTextbox" />
+          <Button text="変更を適用する" id="buttonModsApplyTextBox" />
+          <Button text="クリーンリスト" id="buttonModsCleanList" />
+          <Label text="sResourceIndexFileList (modマネージャーで使用)" id="labelsResourceIndexFileList" />
+        </GroupBox>
+      </TabPage>
+      <TabPage text="NexusMods" id="tabPageNexusMods">
+        <!-- ********** Tab "NexusMods" ********** -->
+        <Label text="Mod情報の更新」などの他のオプションは、ツール→NexusModsAPIの下のメニューにあります。 NexusMods API." id="labelNexusModsMovedNotice2" />
+        <Label text="NexusModsタブが設定ウィンドウに移動しました。" id="labelNexusModsMovedNotice" />
+      </TabPage>
+    </TabControl>
+    <MenuStrip id="menuStrip1">
+      <!-- Menu -->
+      <ToolStripMenuItem text="ファイル" id="fileToolStripMenuItem">
+        <ToolStripMenuItem text="modを追加" id="addModarchiveToolStripMenuItem">
+          <ToolStripMenuItem text="Empty mod" id="emptyModToolStripMenuItem" />
+          <ToolStripMenuItem text="アーカイブから" id="fromArchiveToolStripMenuItem" />
+          <ToolStripMenuItem text="* .ba2アーカイブから（凍結）" id="fromba2ArchivefrozenToolStripMenuItem" />
+          <ToolStripMenuItem text="フォルダから" id="fromFolderToolStripMenuItem" />
+        </ToolStripMenuItem>
+        <ToolStripMenuItem text="インストールされたMODをインポートする" id="toolStripMenuItemModsImport" />
+        <ToolStripMenuItem text="変更内容を保存" id="saveToolStripMenuItem" />
+        <ToolStripMenuItem text="配置" id="deployToolStripMenuItem" />
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="ビュー" id="editToolStripMenuItem">
+        <ToolStripMenuItem text="競合するファイルを表示する" id="showConflictingFilesToolStripMenuItem" />
+        <ToolStripMenuItem text="UIをリロード" id="reloadUIToolStripMenuItem" />
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="ツール" id="toolsToolStripMenuItem">
+        <ToolStripMenuItem text="アーカイブ2" id="archive2ToolStripMenuItem">
+          <ToolStripMenuItem text="アーカイブ2を開く" id="openArchive2ToolStripMenuItem" />
+          <ToolStripMenuItem text="* .ba2アーカイブを探索する" id="exploreba2ArchiveToolStripMenuItem" />
+        </ToolStripMenuItem>
+        <ToolStripMenuItem text="NexusMods API" id="nexusModsAPIToolStripMenuItem">
+          <ToolStripMenuItem text="mod情報を更新する" id="updateModInformationToolStripMenuItem" />
+          <ToolStripMenuItem text="modを承認する" id="endorseModsToolStripMenuItem" />
+          <ToolStripMenuItem text="アップデートを確認する" id="checkForUpdatesToolStripMenuItem" />
+        </ToolStripMenuItem>
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="ヘルプ" id="helpToolStripMenuItem">
+        <ToolStripMenuItem text="ガイドを表示" id="showGuideToolStripMenuItem" />
+        <ToolStripMenuItem text="ログファイル" id="logFilesToolStripMenuItem">
+          <ToolStripMenuItem text="modmanager.log.txtを表示する" id="showModmanagerlogtxtToolStripMenuItem" />
+          <ToolStripMenuItem text="archive2.log.txtを表示する" id="showArchive2logtxtToolStripMenuItem" />
+        </ToolStripMenuItem>
+      </ToolStripMenuItem>
+    </MenuStrip>
+  </FormMods>
   <Form1 title="Fallout 76 Quick Configuration">
+    <!--
+        Form1
+        ******************************************************************************************************************************************************
+        Fallout 76 Quick Configuration
+    -->
+    <StatusStrip id="statusStrip1">
+      <ToolStripStatusLabel text="ゲームプロファイル：" id="toolStripStatusLabelGame" />
+      <ToolStripStatusLabel text="Steam" id="toolStripStatusLabelGameText" />
+      <ToolStripStatusLabel text="Edition:" id="toolStripStatusLabelEdition" />
+      <ToolStripStatusLabel text="Steam" id="toolStripStatusLabelEditionText" />
+      <ToolStripStatusLabel text="" id="toolStripStatusLabel1" />
+      <ToolStripStatusLabel text="Nuclear Winter モードがアクティブです" id="toolStripStatusLabelNuclearWinterModeActive" />
+    </StatusStrip>
     <ToolStrip id="toolStrip1">
       <ToolStripButton text="適応する" id="toolStripButtonApply" />
-      <ToolStripButton text="Nuclear Winter" id="toolStripButtonToggleNuclearWinterMode" />
-      <ToolStripSplitButton text="Launch" id="toolStripSplitButtonLaunchGame">
-        <ToolStripMenuItem text="Steamバージョンを起動" id="launchViaSteamToolStripMenuItem" />
-        <ToolStripMenuItem text="Bethesda.netバージョンを起動します" id="launchViaBethesdanetToolStripMenuItem" />
-        <ToolStripMenuItem text="Bethesda.net（PTS）バージョンを起動する" id="launchViaBethesdanetPTSToolStripMenuItem" />
-      </ToolStripSplitButton>
+      <ToolStripButton text="ゲーム起動" id="toolStripButtonLaunchGame" />
       <ToolStripButton text="Mods" id="toolStripButtonManageMods" />
+      <ToolStripButton text="Nuclear Winter" id="toolStripButtonToggleNuclearWinterMode" />
+      <ToolStripButton text="設定" id="toolStripButtonSettings" />
       <ToolStripSplitButton text="アップデート" id="toolStripSplitButtonUpdate">
         <ToolStripMenuItem text="アップデートツール" id="updateToolToolStripMenuItem" />
         <ToolStripMenuItem text="アップデートを確認する" id="checkForUpdatesToolStripMenuItem" />
-        <ToolStripMenuItem text="言語ファイルをダウンロード/更新" id="downloadUpdateLanguageFilesToolStripMenuItem" />
         <ToolStripMenuItem text="update.log.txt　を表示" id="showUpdaterlogtxtToolStripMenuItem" />
       </ToolStripSplitButton>
       <ToolStripDropDownButton text="Explore" id="toolStripDropDownButtonExplore">
@@ -265,88 +701,21 @@ NexusModsページにリンクがあります。</Messagebox>
         <ToolStripMenuItem text="Fallout76Prefs.iniを編集" id="editFallout76PrefsiniToolStripMenuItem" />
         <ToolStripMenuItem text="Fallout76Custom.iniを編集" id="editFallout76CustominiToolStripMenuItem" />
       </ToolStripDropDownButton>
-      <ToolStripButton text="NexusMods" id="toolStripButtonNexusMods" />
     </ToolStrip>
     <TabControl id="tabControl1">
       <TabPage text="情報" id="tabPageInfo">
+        <!-- ********** Tab "情報" ********** -->
+        <GroupBox text="設定" id="groupBoxSettings">
+          <!-- Group "Settings" -->
+          <LinkLabel text="設定を開く" id="linkLabelOpenSettings" />
+          <Label text="以前ここにあったものはすべて設定に移動されました。" id="labelSettingsNotice" />
+        </GroupBox>
         <LinkLabel text="新着情報？" id="linkLabelWhatsNew" />
         <LinkLabel text="ライセンス作品" id="linkLabelAttribution" />
         <Panel id="panelUpdate">
           <LinkLabel text="または、手動でダウンロードしてインストールします..." id="linkLabelManualDownloadPage" />
         </Panel>
         <Label text="Nuclear Winter モードが有効です" id="labelNWModeActive" />
-        <Panel id="panel1">
-          <GroupBox text="Nuclear Winter オプション" id="groupBoxNuclearWinterMode">
-            <CheckBox text="無効化時にMODをデプロイする" id="checkBoxNWAutoDeployMods" />
-            <Label text="Mod オプション:" id="labelNWmodoptions" />
-            <Label text="*.dll オプション:" id="labelNWdlloptions" />
-            <Label text="*.ini オプション:" id="labelNWinioptions" />
-            <RadioButton text="アーカイブ・リソース・リストの削除のみ" id="radioButtonNWRemoveLists" />
-            <RadioButton text="Fallout76Custom.iniの名前を変更します" id="radioButtonNWRenameINI" />
-            <CheckBox text="有効にするとmodを削除します" id="checkBoxNWAutoDisableMods" />
-            <CheckBox text="追加された* .dllファイルの名前を変更する" id="checkBoxNWRenameDLL" />
-          </GroupBox>
-          <GroupBox text="ローカリゼーション" id="groupBoxLocalization">
-            <Button text="更新" id="buttonRefreshLanguage" />
-            <Label text="この言語は古くなっています。\ n一部の要素はまだ翻訳されていない可能性があります。" id="labelOutdatedLanguage" />
-            <Label text="言語:" id="labelLanguage" />
-            <Button text="言語ファイルのダウンロード/更新" id="buttonDownloadLanguages" />
-          </GroupBox>
-          <GroupBox text="Game edition" id="groupBoxGameEdition">
-            <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
-            <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
-            <RadioButton text="Steam" id="radioButtonEditionSteam" />
-            <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
-          </GroupBox>
-          <GroupBox text="ランチャーオプション" id="groupBoxLaunchOptions">
-            <Label text="Microsoft Storeからインストールした場合、Fallout76を直接実行することはできません。" id="labelLaunchOptionMSStoreNotice" />
-            <Label text="ヒント：[全般]タブでログイン資格情報を入力します。" id="labelLaunchOptionTip" />
-            <RadioButton text="「Fallout76.exe」を直接実行する" id="radioButtonLaunchViaExecutable" />
-            <RadioButton text="Steam / Bethesda.net / MSストア経由で起動（推奨）" id="radioButtonLaunchViaLink" />
-          </GroupBox>
-          <GroupBox text="Paths" id="groupBoxGamePaths">
-            <Label text="ゲームの場所：" id="labelGamePath" />
-            <Button text="..." id="buttonPickGamePath" />
-          </GroupBox>
-          <GroupBox text="オプション" id="groupBoxOptions">
-            <CheckBox text="微調整にFallout76Custom.iniを使用しないでください。" id="checkBoxAlternativeINIMode">
-              <Tooltip>Puts tweaks into Fallout76.ini and Fallout76Prefs.ini instead.
-Does not affect the mod manager.
-You may need to remove tweaks from Fallout76Custom.ini manually.</Tooltip>
-            </CheckBox>
-            <CheckBox text="[試験的] NTFS書き込み許可を拒否します。" id="checkBoxDenyNTFSWritePermission">
-              <Tooltip>This will deny write permission to the "Fallout 76" folder.
-Use this, if the read-only option doesn't work.
-
-Affected folder: %UserProfile%\Documents\My Games\Fallout 76</Tooltip>
-            </CheckBox>
-            <CheckBox text="私は複数のゲームエディションを使用しています。" id="checkBoxMultipleGameEditionsUsed">
-              <Tooltip>Check this, if you're modding more than one game edition.
-If checked, sResourceIndexFileList will be saved for every game edition separately.</Tooltip>
-            </CheckBox>
-            <CheckBox text="* .iniファイルを読み取り専用にする" id="checkBoxReadOnly">
-              <Tooltip>This option will make all *.ini files read-only immediately.
-Enable this if your settings get reverted.
-
-Affected files: %UserProfile%\Documents\My Games\Fallout 76\*.ini</Tooltip>
-            </CheckBox>
-          </GroupBox>
-          <GroupBox text="動作" id="groupBoxBehavior">
-            <CheckBox text="通知音を鳴らす" id="checkBoxPlayNotificationSound" />
-            <CheckBox text="更新を確認しないでください。" id="checkBoxIgnoreUpdates" />
-            <CheckBox text="起動時にmodマネージャーを開きます。" id="checkBoxOpenManageModsOnLaunch" />
-            <CheckBox text="ゲームが起動したらツールを閉じます" id="checkBoxQuitOnGameLaunch">
-              <Tooltip>Does only work when the game is launched through the tool.</Tooltip>
-            </CheckBox>
-            <CheckBox text="「[適用]」がクリックされたときに確認しない" id="checkBoxSkipBackupQuestion">
-              <Tooltip>Skips the backup question when "Apply" is clicked.
-Note: This way, it will NOT create a backup!</Tooltip>
-            </CheckBox>
-            <CheckBox text="ツールを閉じたとき、またはゲームを起動したときに、自動的に変更を適用します。" id="checkBoxAutoApply">
-              <Tooltip>No need to press apply anymore.</Tooltip>
-            </CheckBox>
-          </GroupBox>
-        </Panel>
         <Label text="翻訳：" id="labelTranslationBy" />
         <Label text="著者：" id="labelAuthor" />
         <Label text="Version:" id="labelVersion" />
@@ -354,165 +723,85 @@ Note: This way, it will NOT create a backup!</Tooltip>
         <Label text="Fallout 76 Quick Configuration" id="labelTitle" />
       </TabPage>
       <TabPage text="一般" id="tabPageGeneral">
+        <!-- ********** Tab "一般" ********** -->
         <Panel id="panel4">
           <GroupBox text="インターフェース" id="groupBoxGeneralInterface">
-            <CheckBox text="フローティングクエストテキストを表示する" id="checkBoxShowFloatingQuestText">
-              <Tooltip>Affected values: bShowFloatingQuestText
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="浮遊ダメージ数を表示する（アドベンチャーモード）" id="checkBoxShowDamageNumbersA">
-              <Tooltip>Affected values: bShowDamageNumbers
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="公開チーム通知を有効にする \n" id="checkBoxShowPublicTeamNotifications">
-              <Tooltip>Affected values: bShowPublicTeamNotifications
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="他のプレイヤーの名前を表示する" id="checkBoxShowOtherPlayersNames">
-              <Tooltip>Affected values: bShowOtherPlayersNames
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="フローティングクエストマーカーを表示する\ n" id="checkBoxShowFloatingQuestMarkers">
-              <Tooltip>Affected values: bShowFloatingQuestMarkers
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="パワーアーマーHUDを有効にする" id="checkBoxEnablePowerArmorHUD">
-              <Tooltip>Affected values: bEnablePowerArmorHUD
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="アイテムのレア度の色を表示 (Nuclear Winter)" id="checkBoxItemRarityColorsNW">
-              <Tooltip>Affected values: bEnableItemRarityColors
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
+            <!-- Group "インターフェース" -->
+            <CheckBox text="フローティングクエストテキストを表示する" id="checkBoxShowFloatingQuestText" />
+            <CheckBox text="浮遊ダメージ数を表示する（アドベンチャーモード）" id="checkBoxShowDamageNumbersA" />
+            <CheckBox text="公開チーム通知を有効にする \n" id="checkBoxShowPublicTeamNotifications" />
+            <CheckBox text="他のプレイヤーの名前を表示する" id="checkBoxShowOtherPlayersNames" />
+            <CheckBox text="フローティングクエストマーカーを表示する\\ n" id="checkBoxShowFloatingQuestMarkers" />
+            <CheckBox text="パワーアーマーHUDを有効にする" id="checkBoxEnablePowerArmorHUD" />
+            <CheckBox text="アイテムのレア度の色を表示 (Nuclear Winter)" id="checkBoxItemRarityColorsNW" />
             <Label text="浮動クエストマーカーの描画距離" id="labelFloatingQuestMarkersDistance" />
-            <Label text="HUDにアクティブなエフェクトを表示:" id="labelShowActiveEffectsOnHUD">
-              <Tooltip>Affected values: uHUDActiveEffectWidget
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </Label>
-            <CheckBox text="浮遊ダメージ数を表示 (Nuclear Winter)" id="checkBoxShowDamageNumbersNW">
-              <Tooltip>Affected values: bShowDamageNumbers
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <TrackBar id="sliderFloatingQuestMarkersDistance">
-              <Tooltip>Affected values: fFloatingQuestMarkersDistance
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </TrackBar>
-            <CheckBox text="クロスヘアを表示" id="checkBoxShowCrosshair">
-              <Tooltip>Affected values: bCrosshairEnabled
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="コンパスを表示" id="checkBoxShowCompass">
-              <Tooltip>Affected values: bShowCompass
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <TrackBar id="sliderHUDOpacity">
-              <Tooltip>Affected values: fHUDOpacity
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </TrackBar>
+            <Label text="HUDにアクティブなエフェクトを表示:" id="labelShowActiveEffectsOnHUD" />
+            <CheckBox text="浮遊ダメージ数を表示 (Nuclear Winter)" id="checkBoxShowDamageNumbersNW" />
+            <CheckBox text="クロスヘアを表示" id="checkBoxShowCrosshair" />
+            <CheckBox text="コンパスを表示" id="checkBoxShowCompass" />
             <Label text="HUDの不透明度" id="labelHUDOpacity" />
           </GroupBox>
           <GroupBox text="クエスト" id="groupBoxQuests">
-            <CheckBox text="開始時にアクティブなデイリークエスト" id="checkBoxEnableQuestAutoTrackDaily">
-              <Tooltip>Affected values: bEnableQuestAutoTrackOther
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="開始時にアクティブなイベントクエスト" id="checkBoxEnableQuestAutoTrackEvent">
-              <Tooltip>Affected values: bEnableQuestAutoTrackEvent
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="開始時にアクティブなその他のクエスト" id="checkBoxEnableQuestAutoTrackMisc">
-              <Tooltip>Affected values: bEnableQuestAutoTrackMisc
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="開始時にアクティブなサイドクエスト" id="checkBoxEnableQuestAutoTrackSide">
-              <Tooltip>Affected values: bEnableQuestAutoTrackSide
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="開始時にアクティブなメインクエスト" id="checkBoxEnableQuestAutoTrackMain">
-              <Tooltip>Affected values: bEnableQuestAutoTrackMain
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
+            <!-- Group "クエスト" -->
+            <CheckBox text="開始時にアクティブなデイリークエスト" id="checkBoxEnableQuestAutoTrackDaily" />
+            <CheckBox text="開始時にアクティブなイベントクエスト" id="checkBoxEnableQuestAutoTrackEvent" />
+            <CheckBox text="開始時にアクティブなその他のクエスト" id="checkBoxEnableQuestAutoTrackMisc" />
+            <CheckBox text="開始時にアクティブなサイドクエスト" id="checkBoxEnableQuestAutoTrackSide" />
+            <CheckBox text="開始時にアクティブなメインクエスト" id="checkBoxEnableQuestAutoTrackMain" />
           </GroupBox>
           <GroupBox text="メインメニュー" id="groupBoxMainMenu">
-            <CheckBox text="起動時のニュースでスプラッシュ画面を表示する" id="checkBoxShowSplash">
-              <Tooltip>If unchecked, the game won't bother you with news on startup.
-
-Affected values: bShowSplash
-Affected files: Fallout76Custom.ini</Tooltip>
-            </CheckBox>
-            <CheckBox text="イントロビデオを再生する" id="checkBoxIntroVideos">
-              <Tooltip>When this option is unchecked, the game will start without displaying the Bethesda logo video.
-
-Affected values: sIntroSequence, uMainMenuDelayBeforeAllowSkip
-Affected files: Fallout76Custom.ini</Tooltip>
-            </CheckBox>
+            <!-- Group "メインメニュー" -->
+            <CheckBox text="起動時のニュースでスプラッシュ画面をスキップ" id="checkBoxSkipSplash" />
+            <CheckBox text="イントロビデオを再生する" id="checkBoxIntroVideos" />
           </GroupBox>
         </Panel>
         <GroupBox text="Bethesda.netでログイン" id="groupBoxLogin">
-          <CheckBox text="自動的にサインイン" id="checkBoxAutoSignin">
-            <Tooltip>Enabling this will skip the login prompt if you provide your login credentials.
-
-Affected values: bAutoSignin
-Affected files: Fallout76Custom.ini</Tooltip>
-          </CheckBox>
-          <RadioButton text="アカウント #8" id="radioButtonAccount8" />
-          <RadioButton text="アカウント #7" id="radioButtonAccount7" />
-          <RadioButton text="アカウント #6" id="radioButtonAccount6" />
-          <RadioButton text="アカウント #5" id="radioButtonAccount5" />
-          <RadioButton text="アカウント #4" id="radioButtonAccount4" />
-          <RadioButton text="アカウント #3" id="radioButtonAccount3" />
-          <RadioButton text="アカウント #2" id="radioButtonAccount2" />
-          <RadioButton text="アカウント #1" id="radioButtonAccount1" />
-          <Label text="プロファイル:" id="labelAccountProfiles" />
-          <CheckBox text="Steamを無効にする" id="checkBoxDisableSteam">
-            <Tooltip>Affected values: bSteamEnabled
-Affected files: Fallout76Custom.ini</Tooltip>
-          </CheckBox>
-          <Label text="資格情報はFallout76Custom.iniに保存されます\ nこのように、ランチャーなしでFallout76を起動する場合は\ nユーザー名とパスワードを手動で入力する必要はありません。\ n \ nSteamを使用していてBethesda.netアカウントを使用する場合 \ n（使用済みのAtomなど）、[Steamを無効にする]にチェックマークを付けます。\ n注：実績も無効になります。" id="labelCredentialsExplanation" />
+          <!-- Group "Bethesda.netでログイン" -->
+          <GroupBox text="Profiles" id="groupBoxLoginProfiles">
+            <!-- Group "Profiles" -->
+            <RadioButton text="None" id="radioButtonAccountNone" />
+            <RadioButton text="アカウント #1" id="radioButtonAccount1" />
+            <RadioButton text="アカウント #16" id="radioButtonAccount16" />
+            <RadioButton text="アカウント #2" id="radioButtonAccount2" />
+            <RadioButton text="アカウント #15" id="radioButtonAccount15" />
+            <RadioButton text="アカウント #3" id="radioButtonAccount3" />
+            <RadioButton text="アカウント #14" id="radioButtonAccount14" />
+            <RadioButton text="アカウント #4" id="radioButtonAccount4" />
+            <RadioButton text="アカウント #13" id="radioButtonAccount13" />
+            <RadioButton text="アカウント #5" id="radioButtonAccount5" />
+            <RadioButton text="アカウント #12" id="radioButtonAccount12" />
+            <RadioButton text="アカウント #6" id="radioButtonAccount6" />
+            <RadioButton text="アカウント #11" id="radioButtonAccount11" />
+            <RadioButton text="アカウント #7" id="radioButtonAccount7" />
+            <RadioButton text="アカウント #10" id="radioButtonAccount10" />
+            <RadioButton text="アカウント #8" id="radioButtonAccount8" />
+            <RadioButton text="アカウント #9" id="radioButtonAccount9" />
+          </GroupBox>
+          <CheckBox text="自動的にサインイン" id="checkBoxAutoSignin" />
+          <CheckBox text="Steamを有効にする" id="checkBoxEnableSteam" />
+          <Label text="資格情報はFallout76Custom.iniに保存されます\nこのように、ランチャーなしでFallout76を起動する場合は\nユーザー名とパスワードを手動で入力する必要はありません。\nSteamを使用していてBethesda.netアカウントを使用する場合 \n（使用済みのAtomなど）、[Steamを無効にする]にチェックマークを付けます。\n注：実績も無効になります。" id="labelCredentialsExplanation" />
           <CheckBox text="パスワードを表示" id="checkBoxShowPassword" />
           <Label text="パスワード:" id="labelPassword" />
           <Label text="ユーザー名:" id="labelUserName" />
         </GroupBox>
       </TabPage>
       <TabPage text="ビデオ" id="tabPageVideo">
+        <!-- ********** Tab "ビデオ" ********** -->
         <Panel id="panel3">
           <GroupBox text="グラフィックス" id="groupBoxGraphics">
+            <!-- Group "グラフィックス" -->
+            <GroupBox text="効果" id="groupBoxGraphicEffects">
+              <!-- Group "Effects" -->
+              <CheckBox text="ゴアを無効" id="checkBoxDisableGore" />
+            </GroupBox>
             <GroupBox text="TAA Sharpening" id="groupBoxTAASharpening">
-              <TrackBar id="sliderTAAPostSharpen">
-                <Tooltip>画像をシャープにします。
-
-デフォルト：0.2
-推奨：0.4
-
-影響を受ける値：fTAAPostSharpen
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-              </TrackBar>
+              <!-- Group "TAA Sharpening" -->
               <Label text="Post sharpen" id="labelTAAPostSharpen" />
-              <TrackBar id="sliderTAAPostOverlay">
-                <Tooltip>画像をシャープにします。
-
-推奨：0.2
-デフォルト：0.2
-
-影響を受ける値：fTAAPostOverlay
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-              </TrackBar>
               <Label text="Post overlay" id="labelTAAPostOverlay" />
             </GroupBox>
-            <Label text="アンチエイリアシング：" id="labelAntiAliasing">
-              <Tooltip>オブジェクトのエッジをぼかすことにより、エイリアシングを減らします。
-
-TAA-一時的なアンチエイリアシング：比較的高価で、デフォルト
-FXAA-高速近似アンチエイリアシング：パフォーマンスがわずかに向上し、エイリアシングがわずかに見える
-オフ-パフォーマンスが向上し、エイリアシングがはっきりと見える
-
-注：何らかの理由でFXAAは機能しません。 ゲームはAAを完全に無効にするだけです。 少なくとも私にとっては。
-
-Default: TAA
-Affected values: sAntiAliasing
-Affected files: Fallout76Prefs.ini</Tooltip>
-            </Label>
+            <Label text="アンチエイリアシング：" id="labelAntiAliasing" />
             <GroupBox text="草" id="groupBoxGrass">
+              <!-- Group "草" -->
               <TrackBar id="sliderGrassFadeDistance">
                 <Tooltip>草が消え始める距離を設定します。
 
@@ -525,321 +814,74 @@ Affected files: Fallout76Prefs.ini</Tooltip>
 </Tooltip>
               </TrackBar>
               <Label text="フェード距離" id="labelGrassFadeDistance" />
-              <CheckBox text="草を有効にする" id="checkBoxGrass">
-                <Tooltip>ゲーム内の草を有効/無効にします。
-
-影響を受ける値：bAllowCreateGrass
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-              </CheckBox>
+              <CheckBox text="草を有効にする" id="checkBoxGrass" />
             </GroupBox>
             <GroupBox text="LOD" id="groupBoxLOD">
-              <TrackBar id="sliderLODActors">
-                <Tooltip>アクター（=プレイヤー、NPC）がフェードし始める距離を設定します。
-
-影響を受ける値：fLODFadeOutMultActors
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </TrackBar>
+              <!-- Group "LOD" -->
               <Label text="フェード距離" id="labelLODFadeDistance" />
-              <TrackBar id="sliderLODItems">
-                <Tooltip>アイテムがフェードし始める距離を設定します。
-
-影響を受ける値：fLODFadeOutMultItems
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </TrackBar>
-              <TrackBar id="sliderLODObjects">
-                <Tooltip>オブジェクトがフェードし始める距離を設定します。
-
-影響を受ける値：fLODFadeOutMultObjects
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </TrackBar>
               <Label text="Actors" id="labelLODActors" />
               <Label text="アイテム" id="labelLODItems" />
               <Label text="オブジェクト" id="labelLODObjects" />
             </GroupBox>
-            <CheckBox text="垂直同期 (VSync)" id="checkBoxVSync">
-              <Tooltip>これをオフにすると、フレームレートの上限が解除されます。
-
-画面が裂ける場合は、これを有効にしてください。
-入力ラグが発生した場合は、これを無効にしてください。
-
-注意：ゲームを手動で60FPSに制限します。 （例：NVIDIAのコントロールパネルを使用）
-
-
-デフォルト：有効
-影響を受ける値：iPresentInterval
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-            </CheckBox>
+            <CheckBox text="垂直同期 (VSync)" id="checkBoxVSync" />
             <GroupBox text="ライティング" id="groupBoxLighting">
-              <CheckBox text="Volumetric Lighting" id="checkBoxGodrays">
-                <Tooltip>これをオフにすると、ゴッドレイが無効になります。
-
-影響を受ける値：bVolumetricLightingEnable
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </CheckBox>
+              <!-- Group "ライティング" -->
+              <CheckBox text="Volumetric Lighting" id="checkBoxGodrays" />
             </GroupBox>
-            <Label text="異方性フィルタリング：" id="labelAnisotropicFiltering">
-              <Tooltip>斜めから見たときのテクスチャのエイリアシングを減らします。
-
-デフォルト：8
-影響を受ける値：iMaxAnisotropy
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-            </Label>
+            <Label text="異方性フィルタリング：" id="labelAnisotropicFiltering" />
             <GroupBox text="影" id="groupBoxShadows">
-              <TrackBar id="sliderfBlendSplitDirShadow">
-                <Tooltip>ゲームが低解像度の影「セグメント」に移行する距離。
-12の倍数でなければなりません。
-
-影響を受ける値：fBlendSplitDirShadow
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </TrackBar>
-              <Label text="「セグメント」遷移距離" id="labelfBlendSplitDirShadow" />
-              <Label text="移行セグメント：" id="label2">
-                <Tooltip>離れた場所にある低解像度の影の「セグメント」の量。
-値が1の場合、ゲームは最低解像度のシャドウのみをレンダリングします。
-
-影響を受ける値：iDirShadowSplits
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </Label>
-              <TrackBar id="sliderShadowDistance">
-                <Tooltip>影がレンダリングされる距離を設定します。
-
-Ultraは150000です
-Highは120000です
-Mediumは90000です
-Lowは60000です
-
-低い値に設定するとシャドウが無効になると思います。 さらにテストが必要です。
-
-影響を受ける値：fShadowDistance、fDirShadowDistance
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </TrackBar>
-              <Label text="ぼやけ：" id="labelShadowBlurriness">
-                <Tooltip>影をぼかす。 シャドウの解像度を低く設定する場合に特に便利です。
-
-影響を受ける値：uiOrthoShadowFilter
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </Label>
+              <!-- Group "影" -->
+              <Label text="ぼやけ：" id="labelShadowBlurriness" />
               <Label text="フェード距離" id="labelShadowDistance" />
-              <Label text="テクスチャマップの解像度：" id="labelShadowTextureResolution">
-                <Tooltip>影の解像度。 設定を高くすると、シャドウがより詳細になります。
-
-影響を受ける値：iShadowMapResolution
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </Label>
+              <Label text="テクスチャマップの解像度：" id="labelShadowTextureResolution" />
             </GroupBox>
             <GroupBox text="水" id="groupBoxWater">
-              <CheckBox text="変位" id="checkBoxWaterDisplacement">
-                <Tooltip>水の移動（波紋、波）を有効/無効にします。
-
-影響を受ける値：bUseWaterDisplacements
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </CheckBox>
+              <!-- Group "水" -->
+              <CheckBox text="変位" id="checkBoxWaterDisplacement" />
             </GroupBox>
             <GroupBox text="天気" id="groupBoxWeather">
-              <CheckBox text="フォグ" id="checkBoxFogEnabled">
-                <Tooltip>影響を受ける値：bFogEnabled
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </CheckBox>
-              <CheckBox text="Wetness Occlusion" id="checkBoxWeatherWetnessOcclusion">
-                <Tooltip>環境と衣類の湿り気の閉塞を切り替えます
-
-影響を受ける値：bWetnessOcclusion
-影響を受けるファイル：Fallout76.ini</Tooltip>
-              </CheckBox>
-              <CheckBox text="Rain Occlusion" id="checkBoxWeatherRainOcclusion">
-                <Tooltip>チェックすると、キャラクターの周りに雨が降ることはありません
-高架道路の下や建物の中にいる場合は、
-雨滴や水しぶきは床に表示されません。
-
-影響を受ける値：bRainOcclusion
-影響を受けるファイル：Fallout76.ini</Tooltip>
-              </CheckBox>
+              <!-- Group "天気" -->
+              <CheckBox text="フォグ" id="checkBoxFogEnabled" />
+              <CheckBox text="Wetness Occlusion" id="checkBoxWeatherWetnessOcclusion" />
+              <CheckBox text="Rain Occlusion" id="checkBoxWeatherRainOcclusion" />
             </GroupBox>
             <GroupBox text="Post-processing" id="groupBoxPostProcessing">
-              <CheckBox text="Ambient Occlusion" id="checkBoxAmbientOcclusion">
-                <Tooltip>これをオフにすると、アンビエントオクルージョンが無効になります。
-アンビエントオクルージョンは基本的に、光源が到達できない場所（凹面のエッジ）に偽の影を追加します。
-
-影響を受ける値：bSAOEnable
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </CheckBox>
-              <CheckBox text="被写界深度" id="checkBoxDepthOfField">
-                <Tooltip>これをオフにすると、すべての被写界深度効果が無効になります。
-
-影響を受けるファイル：Fallout76Custom.ini
-影響を受ける値：
-    bDynamicDepthOfField
-    fDOFBlendRatio
-    fDOFMinFocalCoefDist
-    fDOFMaxFocalCoefDist
-    fDOFDynamicFarRange
-    fDOFCenterWeightInt
-    fDOFFarDistance</Tooltip>
-              </CheckBox>
-              <CheckBox text="モーションブラー" id="checkBoxMotionBlur">
-                <Tooltip>カメラを回すと、動く物体がぼやけます。
-
-影響を受ける値：bMBEnable
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-              </CheckBox>
-              <CheckBox text="ラジアルブラー" id="checkBoxRadialBlur">
-                <Tooltip>プレーヤーが怪我をしたとき（弾丸が当たったときなど）や水中で画面がぼやけます。
-これをオフにすると、水中がはっきりと見える可能性があります。
-
-影響を受ける値：bDoRadialBlur、iRadialBlurLevel
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-              </CheckBox>
-              <CheckBox text="レンズフレア" id="checkBoxLensFlare">
-                <Tooltip>これをオフにすると、レンズフレアが無効になります。
-
-影響を受ける値：bLensFlare
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-              </CheckBox>
+              <!-- Group "Post-processing" -->
+              <CheckBox text="Ambient Occlusion" id="checkBoxAmbientOcclusion" />
+              <CheckBox text="被写界深度" id="checkBoxDepthOfField" />
+              <CheckBox text="モーションブラー" id="checkBoxMotionBlur" />
+              <CheckBox text="ラジアルブラー" id="checkBoxRadialBlur" />
+              <CheckBox text="レンズフレア" id="checkBoxLensFlare" />
             </GroupBox>
           </GroupBox>
         </Panel>
         <GroupBox text="ディスプレイ" id="groupBoxDisplay">
-          <CheckBox text="5：4および4：3の解像度のHUDを修正（部分的に）" id="checkBoxFixHUDFor5_4and4_3">
-            <Tooltip>非表示/中断を修正
-   *ピッキング画面をロックし、
-   *パワーアーマーHUD
-5：4および4：3画面の場合。
-
-ほとんどテストされていません。
-
-影響を受ける値：fLockPositionY、fUIPowerArmorGeometry_TranslateZ、fUIPowerArmorGeometry_TranslateY
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </CheckBox>
+          <!-- Group "ディスプレイ" -->
+          <CheckBox text="5：4および4：3の解像度のHUDを修正（部分的に）" id="checkBoxFixHUDFor5_4and4_3" />
           <Button text="解像度を検出する" id="buttonDetectResolution" />
-          <Label text="カスタム解像度:" id="labelCustomResolution">
-            <Tooltip>このオプションを使用できるようにするには、解像度を「カスタム」に設定します。</Tooltip>
-          </Label>
-          <CheckBox text="常にアクティブ" id="checkBoxAlwaysActive">
-            <Tooltip>別のウィンドウが前面にある場合にゲームを一時停止する場合は、これを無効にします。
-
-影響を受ける値：bAlwaysActive
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </CheckBox>
-          <Label text="解決:" id="labelResolution">
-            <Tooltip>解像度を変更します。
-「カスタム」に設定すると、独自の値を設定できます。
-
-影響を受ける値：iSize W、iSize H
-影響を受けるファイル：Fallout76Prefsini</Tooltip>
-          </Label>
-          <CheckBox text="一番上のウィンドウ" id="checkBoxTopMostWindow">
-            <Tooltip>これをチェックすると、ゲームのウィンドウが前面に表示されたままになります。
-注：これにより、単一のモニターでAlt + Tabを実行できなくなります。
-
-影響を受ける値：bTopMostWindow
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </CheckBox>
-          <NumericUpDown id="numCustomResW">
-            <Tooltip>水平解像度（幅）を変更します。
-
-影響を受ける値：iSize W</Tooltip>
-          </NumericUpDown>
-          <NumericUpDown id="numCustomResH">
-            <Tooltip>垂直解像度（高さ）を変更します。
-
-影響を受ける値：iSize H</Tooltip>
-          </NumericUpDown>
-          <Label text="ディスプレイモード:" id="labelDisplayMode">
-            <Tooltip>表示モードを変更します。
-
-
-フルスクリーン：実際のフルスクリーンモード
-
-ウィンドウ：境界線のあるウィンドウモード
-
-フチなしウィンドウ：解像度がディスプレイの解像度と一致していることを確認してください。
-
-フチなしウィンドウ（フルスクリーン）：ウィンドウは画面に合わせて最大化されます。
-解像度が低い場合、ピクセル化されているように見えます（最近傍を使用します）。
-
-
-影響を受ける値：bFull Screen、bBorderless
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </Label>
+          <Label text="カスタム解像度:" id="labelCustomResolution" />
+          <CheckBox text="常にアクティブ" id="checkBoxAlwaysActive" />
+          <Label text="解決:" id="labelResolution" />
+          <CheckBox text="一番上のウィンドウ" id="checkBoxTopMostWindow" />
+          <Label text="ディスプレイモード:" id="labelDisplayMode" />
           <Label text="X" id="labelCustomResolutionSpacer" />
         </GroupBox>
       </TabPage>
       <TabPage text="オーディオ" id="tabPageAudio">
+        <!-- ********** Tab "オーディオ" ********** -->
         <GroupBox text="オーディオ" id="groupBoxAudio">
-          <CheckBox text="オーディオを有効にする" id="checkBoxEnableAudio">
-            <Tooltip>影響を受ける値：bEnableAudio
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </CheckBox>
-          <CheckBox text="メインメニューで音楽を再生する" id="checkBoxMainMenuMusic">
-            <Tooltip>チェックを外すと、ゲームはメインメニューのバックグラウンドミュージックを再生しません。
-
-影響を受ける値：bPlayMainMenuMusic
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </CheckBox>
+          <!-- Group "オーディオ" -->
+          <CheckBox text="オーディオを有効にする" id="checkBoxEnableAudio" />
+          <CheckBox text="メインメニューで音楽を再生する" id="checkBoxMainMenuMusic" />
         </GroupBox>
         <GroupBox text="音量" id="groupBoxVoice">
+          <!-- Group "音量" -->
           <Label text="ボイスチャットモード:" id="labelVoiceChatMode" />
-          <CheckBox text="プッシュツートークを有効にする" id="checkBoxPushToTalk">
-            <Tooltip>影響を受ける値：bVoicePushToTalkEnabled
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </CheckBox>
+          <CheckBox text="プッシュツートークを有効にする" id="checkBoxPushToTalk" />
         </GroupBox>
         <GroupBox text="ボリューム" id="groupBoxAudioVolume">
-          <TrackBar id="sliderAudioChat">
-            <Tooltip>ボイスチャットの音量を変更します。
-
-影響を受ける値：uVivoxVoiceVolume
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </TrackBar>
-          <TrackBar id="sliderAudiofVal6">
-            <Tooltip>fVal6の音量を変更します。
-
-影響を受ける値：fVal6
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </TrackBar>
-          <TrackBar id="sliderAudiofVal5">
-            <Tooltip>fVal5の音量を変更します。
-
-影響を受ける値：fVal5
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </TrackBar>
-          <TrackBar id="sliderAudiofVal4">
-            <Tooltip>fVal4の音量を変更します。
-
-影響を受ける値：fVal4
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </TrackBar>
-          <TrackBar id="sliderAudiofVal3">
-            <Tooltip>fVal3の音量を変更します。
-
-影響を受ける値：fVal3
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </TrackBar>
-          <TrackBar id="sliderAudiofVal2">
-            <Tooltip>fVal2の音量を変更します。
-
-影響を受ける値：fVal2
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </TrackBar>
-          <TrackBar id="sliderAudiofVal1">
-            <Tooltip>fVal1の音量を変更します。
-
-影響を受ける値：fVal1
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </TrackBar>
+          <!-- Group "ボリューム" -->
           <Label text="マスターボリューム" id="labelVolumeMaster" />
-          <TrackBar id="sliderVolumeMaster">
-            <Tooltip>ゲームの全体的な音量を変更します。
-
-影響を受ける値：fAudioMasterVolume
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </TrackBar>
-          <TrackBar id="sliderAudiofVal0">
-            <Tooltip>fVal0の音量を変更します。
-
-影響を受ける値：fVal0
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </TrackBar>
           <Label text="チャットボリューム" id="labelAudioChat" />
           <Label text="メニュー音楽" id="labelAudiofVal0" />
           <Label text="Pip-Boy Radio" id="labelAudiofVal6" />
@@ -850,186 +892,99 @@ Lowは60000です
           <Label text="音楽" id="labelAudiofVal3" />
         </GroupBox>
         <GroupBox text="インターフェース" id="groupBoxAudioInterface">
-          <TrackBar id="sliderConversationHistorySize">
-            <Tooltip>影響を受ける値：fConversationHistorySize
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </TrackBar>
+          <!-- Group "インターフェース" -->
           <Label text="会話履歴のサイズ（行数）：" id="labelConversationHistorySize" />
-          <CheckBox text="会話履歴を表示する" id="checkBoxDialogueHistory">
-            <Tooltip>影響を受ける値：bShowDialogueHistory
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </CheckBox>
-          <CheckBox text="ダイアログの字幕を表示する" id="checkBoxDialogueSubtitles">
-            <Tooltip>影響を受ける値：bDialogueSubtitles
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </CheckBox>
-          <CheckBox text="一般的な字幕を表示する" id="checkBoxGeneralSubtitles">
-            <Tooltip>影響を受ける値：bGeneralSubtitles
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </CheckBox>
+          <CheckBox text="会話履歴を表示する" id="checkBoxDialogueHistory" />
+          <CheckBox text="ダイアログの字幕を表示する" id="checkBoxDialogueSubtitles" />
+          <CheckBox text="一般的な字幕を表示する" id="checkBoxGeneralSubtitles" />
         </GroupBox>
       </TabPage>
       <TabPage text="コントロール" id="tabPageControls">
+        <!-- ********** Tab "コントロール" ********** -->
         <GroupBox text="ゲームパッド" id="groupBoxGamepad">
-          <CheckBox text="ゲームパッドを有効にする" id="checkBoxGamepadEnabled">
-            <Tooltip>ゲームパッドが接続されているが、代わりにキーボードとマウスを使用したい場合は、これをオフにします。
-それ以外の場合は、これをチェックしたままにします。
-
-影響を受ける値：bGamepadEnable
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </CheckBox>
-          <CheckBox text="ゲームパッドのランブルを有効にする（フォースフィードバック）" id="checkBoxGamepadRumble">
-            <Tooltip>ゲームパッドのゴロゴロ（フォースフィードバック）を有効にします。
-
-影響を受ける値：bGamePadRumble
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </CheckBox>
+          <!-- Group "ゲームパッド" -->
+          <CheckBox text="ゲームパッドを有効にする" id="checkBoxGamepadEnabled" />
+          <CheckBox text="ゲームパッドのランブルを有効にする（フォースフィードバック）" id="checkBoxGamepadRumble" />
         </GroupBox>
         <GroupBox text="マウス" id="groupBoxMouse">
-          <CheckBox text="Xを反転" id="checkBoxMouseInvertX">
-            <Tooltip>影響を受ける値：bInvertXValues
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </CheckBox>
-          <CheckBox text="Yを反転" id="checkBoxMouseInvertY">
-            <Tooltip>影響を受ける値：bInvertYValues
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </CheckBox>
-          <TrackBar id="sliderMouseSensitivity">
-            <Tooltip>マウス感度
-
-影響を受ける値：fMouseHeadingSensitivity、fMouseHeadingSensitivityY
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </TrackBar>
-          <CheckBox text="マウスの加速" id="checkBoxMouseAcceleration">
-            <Tooltip>このオプションは効果がない可能性があります。 プラセボ？
-ただし、オフにしても問題ありません。
-
-影響を受ける値：bMouseAcceleration
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </CheckBox>
-          <CheckBox text="エイム感度を修正" id="checkBoxFixAimSensitivity">
-            <Tooltip>チェックすると、照準感度は通常の感度と同じになります。
-チェックを外すと（デフォルト）、アイアンサイトを狙うときの感度が低くなります。
-
-注：これは16：9モニターでのみ機能する可能性があります。
-他のモニター（例：21：9）で機能する場合は、お知らせください。
-
-注2：しゃがんでいる間はゲーム内で動作しない場合があります。
-
-影響を受ける値：fIronSightsFOVRotateMult
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </CheckBox>
+          <!-- Group "マウス" -->
+          <CheckBox text="Xを反転" id="checkBoxMouseInvertX" />
+          <CheckBox text="Yを反転" id="checkBoxMouseInvertY" />
+          <CheckBox text="マウスの加速" id="checkBoxMouseAcceleration" />
+          <CheckBox text="エイム感度を修正" id="checkBoxFixAimSensitivity" />
           <Label text="感度" id="labelMouseSensitivity" />
-          <CheckBox text="マウスの水平/垂直感度を修正" id="checkBoxFixMouseSensitivity">
-            <Tooltip>チェックすると、上/下と左/右の感度が等しくなります。
-チェックを外すと（デフォルト）、左/右を見る感度は上/下よりも高くなる可能性があります。
-
-チェックすると、マウスの感度が上がる可能性があります。
-
-感度は、ディスプレイのアスペクト比によって異なります。
-     4：3の場合、Xの値は.028です。
-     16：9の場合、Xの値は.03738です。
-     16:10の場合、Xの値は.0336です。
-     21：9の場合、Xの値は.042です。
-
-デフォルト：無効（両方とも.021）
-影響を受ける値：fMouseHeadingXScale、fMouseHeadingYScale、fPitchSpeedRatio、fIronSightsPitchSpeedRatio
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </CheckBox>
+          <CheckBox text="マウスの水平/垂直感度を修正" id="checkBoxFixMouseSensitivity" />
         </GroupBox>
       </TabPage>
       <TabPage text="カメラ" id="tabPageCamera">
-        <GroupBox text="カメラオプション" id="groupBoxCameraOptions">
-          <Label text="スイッチ遅延（秒）：" id="labelSwitchDelay">
-            <Tooltip>影響を受ける値：f1st3rdSwitchDelay
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </Label>
-        </GroupBox>
-        <GroupBox text="カメラの距離" id="groupBoxCameraDistance">
-          <Label text="fPitchZoomOutMaxDist:" id="labelPitchZoomOutMaxDist">
-            <Tooltip>三人称で地面を見たときにカメラがどれだけズームアウトするか。
-
-影響を受ける値：fPitchZoomOutMaxDist
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </Label>
-          <Label text="最大：" id="labelCameraDistanceMaximum">
-            <Tooltip>影響を受ける値：fVanityModeMaxDist
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </Label>
-          <Label text="最小：" id="labelCameraDistanceMinimum">
-            <Tooltip>影響を受ける値：fVanityModeMinDist
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </Label>
-        </GroupBox>
-        <GroupBox text="カメラの位置（作業中）" id="groupBoxCameraPositionWIP">
-          <Button text="センター" id="buttonCameraPositionCenter" />
-          <Button text="5 / 5000" id="buttonCameraPositionReset" />
-          <Label text="プレイヤー：" id="labelCameraPositionPlayer" />
-          <Label text="次の位置を変更：" id="labelCameraPositionFor" />
-          <CheckBox text="bApplyCameraNodeAnimations" id="checkBoxbApplyCameraNodeAnimations">
-            <Tooltip>無効にすると、カメラの位置がキャラクターの頭に設定されます。
-第三者をズームアウトする必要があります。
-有効にすると、カメラの位置を右肩の後ろに設定します。
-
-問題が発生する可能性があります。
-
-デフォルト：有効
-影響を受ける値：bApplyCameraNodeAnimations
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </CheckBox>
-          <RadioButton text="近接戦闘" id="radioButtonCameraPositionMeleeCombat" />
-          <RadioButton text="戦闘" id="radioButtonCameraPositionCombat" />
-          <RadioButton text="非武装" id="radioButtonCameraPositionUnarmed" />
-          <Label text="さらに" id="labelCameraFurther" />
-          <Label text="クローザー" id="labelCameraCloser" />
-          <Label text="上" id="labelCameraUp" />
-          <Label text="下" id="labelCameraDown" />
-          <Label text="右" id="labelCameraRight" />
-          <Label text="左" id="labelCameraLeft" />
-        </GroupBox>
-        <GroupBox text="視野" id="groupBoxFieldOfView">
-          <Label text="fDefaultFOV（HUDで問題が発生します）：" id="labelfDefaultFOV">
-            <Tooltip>GUIで問題が発生します。
-
-デフォルト：80
-影響を受ける値：fDefaultFOV
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </Label>
-          <Label text="3rd person aim FOV:" id="labelADSFOV">
-            <Tooltip>照準を合わせながら3人称視点の視野を変更します。
-
-デフォルト：50
-影響を受ける値：f3rdPersonAimFOV
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </Label>
-          <Label text="3rd person FOV:" id="labelWorldFOV">
-            <Tooltip>三人称視点の視野を変更します。
-
-デフォルト：80
-影響を受ける値：fDefaultWorldFOV
-影響を受けるファイル：Fallout76Custom.ini、Fallout76Prefs.ini</Tooltip>
-          </Label>
-          <Label text="一人称FOV：" id="labelFirstPersonFOV">
-            <Tooltip>一人称視点の視野を変更します。
-
-デフォルト：80
-影響を受ける値：fDefault1stPersonFOV
-影響を受けるファイル：Fallout76Custom.ini、Fallout76Prefs.ini</Tooltip>
-          </Label>
-        </GroupBox>
-        <GroupBox text="Vanity (Spinning camera)" id="groupBoxCameraVanity">
-          <CheckBox text="自動バニティモードを強制する" id="checkBoxForceVanityMode">
-            <Tooltip>影響を受ける値：bForceAutoVanityMode
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </CheckBox>
-          <CheckBox text="自動バニティモードを有効にする" id="checkBoxVanityMode">
-            <Tooltip>このオプションをオンにすると、一定時間入力が行われなかった後、カメラがキャラクターの周りを回転します。
-しかし、それが何かをするかどうかはわかりません。 私は5分間立っていましたが、カメラは回転しませんでした。 さらにテストが必要です。</Tooltip>
-          </CheckBox>
-        </GroupBox>
+        <!-- ********** Tab "カメラ" ********** -->
+        <Panel id="panel2">
+          <GroupBox text="カメラの位置（実験的）" id="groupBoxCameraPosition">
+            <!-- Group "Camera position (Experimental)" -->
+            <GroupBox text="近接戦闘カメラの位置" id="groupBox3">
+              <!-- Group "Melee combat camera position" -->
+              <Label text="Further/Closer (fOverShoulderMeleeCombatAddY)" id="labelfOverShoulderMeleeCombatAddY" />
+              <Label text="Left/Right (fOverShoulderMeleeCombatPosX)" id="labelfOverShoulderMeleeCombatPosX" />
+              <Label text="Down/Up (fOverShoulderMeleeCombatPosZ)" id="labelfOverShoulderMeleeCombatPosZ" />
+            </GroupBox>
+            <GroupBox text="戦闘カメラの位置" id="groupBox2">
+              <!-- Group "Combat camera position" -->
+              <Label text="Further/Closer (fOverShoulderCombatAddY)" id="labelfOverShoulderCombatAddY" />
+              <Label text="Left/Right (fOverShoulderCombatPosX)" id="labelfOverShoulderCombatPosX" />
+              <Label text="Down/Up (fOverShoulderCombatPosZ)" id="labelfOverShoulderCombatPosZ" />
+            </GroupBox>
+            <Button text="位置リセット" id="buttonCameraPositionReset" />
+            <CheckBox text="bApplyCameraNodeAnimations" id="checkBoxbApplyCameraNodeAnimations" />
+            <GroupBox text="Unarmed camera position" id="groupBoxUnarmedCameraPosition">
+              <!-- Group "Unarmed camera position" -->
+              <Label text="Left/Right (fOverShoulderPosX)" id="labelfOverShoulderPosX" />
+              <Label text="Down/Up (fOverShoulderPosZ)" id="labelfOverShoulderPosZ" />
+            </GroupBox>
+          </GroupBox>
+          <GroupBox text="フォトモードオプション" id="groupBoxSelfieCamera">
+            <!-- Group "Photomode options" -->
+            <Label text="回転速度：" id="labelPhotomodeRotationSpeed" />
+            <Label text="範囲制限：" id="labelPhotomodeRange" />
+            <Label text="Translation speed:" id="labelPhotomodeTranslationSpeed" />
+          </GroupBox>
+          <GroupBox text="視野" id="groupBoxFieldOfView">
+            <!-- Group "視野" -->
+            <Label text="fDefaultFOV（HUDで問題が発生します）：" id="labelfDefaultFOV" />
+            <Label text="3rd person aim FOV:" id="labelADSFOV" />
+            <Label text="3rd person FOV:" id="labelWorldFOV" />
+            <Label text="一人称FOV：" id="labelFirstPersonFOV" />
+          </GroupBox>
+          <GroupBox text="カメラオプション" id="groupBoxCameraOptions">
+            <!-- Group "カメラオプション" -->
+            <CheckBox text="自動バニティモードを強制する" id="checkBoxForceVanityMode" />
+            <CheckBox text="自動バニティモードを有効にする" id="checkBoxVanityMode" />
+            <Label text="スイッチ遅延（秒）：" id="labelSwitchDelay" />
+          </GroupBox>
+          <GroupBox text="カメラの距離" id="groupBoxCameraDistance">
+            <!-- Group "カメラの距離" -->
+            <Label text="fPitchZoomOutMaxDist:" id="labelPitchZoomOutMaxDist" />
+            <Label text="最大：" id="labelCameraDistanceMaximum" />
+            <Label text="最小：" id="labelCameraDistanceMinimum" />
+          </GroupBox>
+        </Panel>
       </TabPage>
       <TabPage text="Pipboy" id="tabPagePipBoy">
+        <!-- ********** Tab "Pipboy" ********** -->
+        <GroupBox text="Pip-boy" id="groupBoxPipboyColorPresets">
+          <!-- Group "Presets" -->
+          <Button text="Capital Wasteland Green" id="buttonPresetFo3Green" />
+          <Button text="Classic White" id="buttonPresetFo3White" />
+          <Button text="Mojave Wasteland Amber" id="buttonPresetFoNVAmber" />
+          <Button text="Appalachia Green" id="buttonPresetFo76Green" />
+          <Button text="Commonwealth Green" id="buttonPresetFo4Green" />
+          <Button text="Classic Blue" id="buttonPresetFo3Blue" />
+        </GroupBox>
+        <GroupBox text="プレビュー" id="groupBoxPipboyColorPreview">
+          <!-- Group "Preview" -->
+          <Label text="プレビューは概算にすぎないため、ゲームではこのように表示されない場合があります。" id="labelPipboyColorPreviewNotice" />
+        </GroupBox>
         <GroupBox text="解決" id="groupBoxPipboyResolution">
+          <!-- Group "解決" -->
           <Label text="これらの設定は、PipboyとQuickboyの両方に影響します。" id="labelPipboyResolutionSideNote" />
           <Button text="推奨解像度を設定する" id="buttonPipboyTargetSetRecommended">
             <Tooltip>推奨値：1752x1400</Tooltip>
@@ -1037,72 +992,44 @@ Lowは60000です
           <Button text="デフォルトにリセット" id="buttonPipboyTargetReset">
             <Tooltip>デフォルト値：876x700</Tooltip>
           </Button>
-          <NumericUpDown id="numPipboyTargetHeight">
-            <Tooltip>ピップボーイ/クイックボーイの解像度の高さを変更します。
-影響を受ける値：uPipboyTargetHeight
-影響を受けるファイル：Fallout 76 Prefs.ini</Tooltip>
-          </NumericUpDown>
-          <NumericUpDown id="numPipboyTargetWidth">
-            <Tooltip>ピップボーイ/クイックボーイの解像度幅を変更します。
-影響を受ける値：uPipboyTargetWidth
-影響を受けるファイル：Fallout 76 Prefs.ini</Tooltip>
-          </NumericUpDown>
-          <Label text="X" id="labelPipboyResolutionSpacer" />
         </GroupBox>
         <GroupBox text="モード" id="groupBoxPipboyMode">
-          <RadioButton text="QuickBoyを使用する" id="radioButtonQuickboy">
-            <Tooltip>影響を受ける値：bQuickboyMode
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </RadioButton>
-          <RadioButton text="PipBoyを使用する" id="radioButtonPipboy">
-            <Tooltip>影響を受ける値：bQuickboyMode
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </RadioButton>
+          <!-- Group "モード" -->
+          <RadioButton text="QuickBoyを使用する" id="radioButtonQuickboy" />
+          <RadioButton text="PipBoyを使用する" id="radioButtonPipboy" />
         </GroupBox>
         <GroupBox text="色" id="groupBoxPipboyColors">
-          <Label text="パワーアーマーカラー" id="label1">
-            <Tooltip>パワーアーマーからアクセスするピップボーイの色を変更します。
-
-影響を受ける値：fPAEffectColorR、fPAEffectColorG、fPAEffectColorB
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </Label>
+          <!-- Group "色" -->
+          <Label text="パワーアーマーカラー" id="labelPowerArmorColor" />
           <Button text="色を選ぶ" id="buttonColorPickPAPipboy" />
           <Button text="リセット" id="buttonColorResetPipboy" />
           <Button text="リセット" id="buttonColorResetPAPipboy" />
-          <Label text="Quick-Boy カラー" id="labelQuickboyColor">
-            <Tooltip>影響を受ける値：fQuickBoyEffectColorR、fQuickBoyEffectColorG、fQuickBoyEffectColorB
-影響を受けるファイル：Fallout76Custom.ini</Tooltip>
-          </Label>
+          <Label text="Quick-Boy カラー" id="labelQuickboyColor" />
           <Button text="色を選ぶ" id="buttonColorPickQuickboy" />
           <Button text="リセット" id="buttonColorResetQuickboy" />
-          <Label text="Pip-Boy カラー" id="labelPipboyColor">
-            <Tooltip>影響を受ける値：fPipboyEffectColorR、fPipboyEffectColorG、fPipboyEffectColorB
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </Label>
+          <Label text="Pip-Boy カラー" id="labelPipboyColor" />
           <Button text="色を選ぶ" id="buttonColorPickPipboy" />
         </GroupBox>
       </TabPage>
       <TabPage text="ギャラリー" id="tabPageGallery">
+        <!-- ********** Tab "ギャラリー" ********** -->
         <GroupBox text="ギャラリー" id="groupBoxGallery">
+          <!-- Group "ギャラリー" -->
           <Label text="スクリーンショットと写真を表示するには、[ギャラリーの更新]をクリックします。" id="labelGalleryTip" />
         </GroupBox>
         <GroupBox text="オプション" id="groupBoxScreenshotOptions">
+          <!-- Group "オプション" -->
           <Button text="サムネイルを削除する" id="buttonGalleryDeleteThumbnails" />
           <CheckBox text="サブフォルダーを再帰的に検索する" id="checkBoxGallerySearchRecursively" />
           <Label text="追加のパス（改行は分離）：" id="label3" />
           <Label text="サムネイルのサイズ：" id="labelGalleryThumbnailSize" />
           <Button text="ギャラリーを更新" id="buttonRefreshGallery" />
-          <Label text="スクリーンショットのインデックス：" id="labelScreenshotIndex">
-            <Tooltip>画面の印刷ボタンを使用してゲーム内でスクリーンショットを撮ると、ゲームディレクトリに「ScreenShotX.png」として保存されます。
-「X」はスクリーンショットのインデックスです。
-
-影響を受ける値：iScreenShotIndex
-影響を受けるファイル：Fallout76Prefs.ini</Tooltip>
-          </Label>
+          <Label text="スクリーンショットのインデックス：" id="labelScreenshotIndex" />
         </GroupBox>
       </TabPage>
       <TabPage text="カスタム" id="tabPageCustom">
-        <Button text="Save" id="buttonCustomSave" />
+        <!-- ********** Tab "カスタム" ********** -->
+        <Button text="保存" id="buttonCustomSave" />
         <Label text="ファイル内の行を上書きします。" id="labelCustomFile" />
       </TabPage>
     </TabControl>
@@ -1114,119 +1041,121 @@ Lowは60000です
       <ToolStripMenuItem text="削除" id="deleteToolStripMenuItem" />
     </ContextMenuStrip>
   </Form1>
-  <FormMods title="Manage mods">
-    <Panel id="panel1">
-      <Button text="デプロイ" id="buttonModsDeploy" />
-      <CheckBox text="Modを無効にする" id="checkBoxDisableMods" />
-    </Panel>
+  <FormSettings title="設定">
+    <!--
+        FormSettings
+        ******************************************************************************************************************************************************
+        Settings
+    -->
     <TabControl id="tabControl1">
-      <TabPage text="Mod オーダー" id="tabPageModOrder">
-        <Panel id="panelModDetails">
-          <GroupBox text="インストールオプション" id="groupBoxModDetailsInstallationOptions">
-            <Button text="..." id="buttonModPickRootDir" />
-            <Label text="としてインストール:" id="labelModInstallAs" />
-            <Label text="プリセット:" id="labelModArchivePreset" />
-            <CheckBox text="氷結" id="checkBoxFreezeArchive">
-              <Tooltip>アーカイブを「フリーズ」した場合、デプロイ時にアーカイブは再作成されません。
-これにより、展開がスピードアップします。
-
-これは、アーカイブが巨大（1GiB以上）でファイルが変更されていない場合に特に便利です。</Tooltip>
-            </CheckBox>
-            <Label text="にインストールする:" id="labelModInstallInto" />
+      <TabPage text="一般" id="tabPageGeneral">
+        <!-- ********** Tab "General" ********** -->
+        <GroupBox text="アクション" id="groupBoxActions">
+          <!-- Group "Actions" -->
+          <LinkLabel text="⚠️ 危険ゾーンを有効にする" id="linkLabelEnableDangerZone" />
+        </GroupBox>
+        <GroupBox text="オプション" id="groupBoxOptions">
+          <!-- Group "Options" -->
+          <CheckBox text="* .iniファイルを読み取り専用にする" id="checkBoxReadOnly" />
+        </GroupBox>
+        <GroupBox text="Nuclear Winter オプション" id="groupBoxNuclearWinterMode">
+          <!-- Group "Nuclear Winter options" -->
+          <CheckBox text="無効にすると自動的にmodをデプロイします" id="checkBoxNWAutoDeployMods" />
+          <Label text="Mod オプション:" id="labelNWmodoptions" />
+          <Label text="*.dll オプション:" id="labelNWdlloptions" />
+          <CheckBox text="有効にすると自動的にMODを削除します" id="checkBoxNWAutoDisableMods" />
+          <CheckBox text="追加された* .dllファイルの名前を変更する" id="checkBoxNWRenameDLL" />
+        </GroupBox>
+        <GroupBox text="動作" id="groupBoxBehavior">
+          <!-- Group "Behavior" -->
+          <CheckBox text="通知音を鳴らす" id="checkBoxPlayNotificationSound" />
+          <CheckBox text="アップデートを確認しない" id="checkBoxIgnoreUpdates" />
+          <CheckBox text="ゲームが起動したらツールを閉じます" id="checkBoxQuitOnGameLaunch" />
+          <CheckBox text="ツールが閉じられたとき、またはゲームが起動されたときに、変更を自動的に適用します。" id="checkBoxAutoApply" />
+        </GroupBox>
+        <GroupBox text="Localization" id="groupBoxLocalization">
+          <!-- Group "Localization" -->
+          <Label text="この翻訳は古くなっています。\n一部の要素はまだ翻訳されていない可能性があります。" id="labelOutdatedLanguage" />
+          <Label text="言語：" id="labelLanguage" />
+        </GroupBox>
+      </TabPage>
+      <TabPage text="ゲームプロファイル" id="tabPageGameProfiles">
+        <!-- ********** Tab "Game profiles" ********** -->
+        <Panel id="panel1">
+          <GroupBox text="設定" id="groupBoxSettings">
+            <!-- Group "Settings" -->
+            <Panel id="panelSettings">
+              <GroupBox text="Advanced" id="groupBox2">
+                <!-- Group "Advanced" -->
+                <Label text="ランチャー URL:" id="labelLaunchURL" />
+                <Label text="パラメーター:" id="labelParameters" />
+                <Label text="実行可能ファイル:" id="labelExecutable" />
+                <Label text="*.ini Prefix:" id="labelIniPrefix" />
+              </GroupBox>
+              <GroupBox text="ランチャー　設定" id="groupBoxLaunchOptions">
+                <!-- Group "Launch options" -->
+                <Label text="Microsoft Storeからインストールした場合、Fallout76を直接実行することはできません。" id="labelLaunchOptionMSStoreNotice" />
+                <RadioButton text="「Fallout76.exe」を直接実行する" id="radioButtonLaunchViaExecutable" />
+                <RadioButton text="Steam / Bethesda.net経由で起動（推奨）" id="radioButtonLaunchViaLink" />
+              </GroupBox>
+              <GroupBox text="ゲームの場所" id="groupBoxGameLocation">
+                <!-- Group "Game location" -->
+                <Button text="自動検出を試みます" id="buttonAutoDetect" />
+                <Button text="..." id="buttonPickGamePath" />
+              </GroupBox>
+              <GroupBox text="Game edition" id="groupBoxGameEdition">
+                <!-- Group "Game edition" -->
+                <RadioButton text="Other" id="radioButtonEditionUnknown" />
+                <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
+                <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
+                <RadioButton text="Steam" id="radioButtonEditionSteam" />
+                <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+              </GroupBox>
+            </Panel>
           </GroupBox>
-          <Button text="解凍する" id="buttonModUnfreeze" />
-          <GroupBox text="詳細" id="groupBoxModDetailsDetails">
-            <Label text="バージョン:" id="labelModVersion" />
-            <Label text="Mod名:" id="labelModName" />
-            <Button text="提案する" id="buttonModDetailsSuggestArchiveName" />
-            <Label text="Modフォルダー名 :" id="labelModFolderName" />
-            <Label text="ウェブページ (URL):" id="labelModURL" />
-            <Label text="アーカイブ名:" id="labelModArchiveName" />
+          <GroupBox text="ゲーム" id="groupBoxGame">
+            <!-- Group "Game" -->
+            <ListView id="listViewGameInstances">
+              <Column>Game</Column>
+            </ListView>
           </GroupBox>
-          <Label text="modがフリーズしているため、インストールオプションは無効になっています。" id="labelModUnfreeze" />
-          <Label text="&lt;Mod名はここにあります&gt;" id="labelModTitle" />
-          <CheckBox text="このmodを有効にする" id="checkBoxModDetailsEnabled" />
-          <Label text="注：凍結された改造は無視されます。" id="labelModDetailsBulkFrozenModsWarning" />
+          <Label text="ヒント：その他のオプションについては、ゲームプロファイルを右クリックしてください。" id="labelTip" />
         </Panel>
         <ToolStrip id="toolStrip1">
-          <ToolStripButton text="modの追加（アーカイブから）" id="toolStripButtonAddMod" />
-          <ToolStripButton text="modを追加します（* .ba2アーカイブから）" id="toolStripButtonAddModFrozen" />
-          <ToolStripButton text="modの追加（フォルダーから）" id="toolStripButtonAddModFolder" />
-          <ToolStripButton text="すべてチェック/チェック解除" id="toolStripButtonCheckAll" />
-          <ToolStripButton text="上に移動" id="toolStripButtonMoveUp" />
-          <ToolStripButton text="下に移動" id="toolStripButtonMoveDown" />
-          <ToolStripButton text="modの詳細を編集する" id="toolStripButtonModEdit" />
-          <ToolStripButton text="解凍します" id="toolStripButtonUnfreeze" />
-          <ToolStripButton text="modフォルダーを開く" id="toolStripButtonModOpenFolder" />
-          <ToolStripButton text="modを削除する" id="toolStripButtonDeleteMod" />
+          <ToolStripButton text="ゲームを追加" id="toolStripButtonAddGame" />
         </ToolStrip>
-        <ListView id="listViewMods">
-          <Column>Mod名
-</Column>
-          <Column>Version</Column>
-          <Column>タイプ
-</Column>
-          <Column>Install into</Column>
-          <Column>Archive name</Column>
-          <Column>Archive format</Column>
-          <Column>圧縮されていますか？</Column>
-          <Column>フローズン？</Column>
-        </ListView>
+      </TabPage>
+      <TabPage text="NexusMods" id="tabPageNexusMods">
+        <!-- ********** Tab "NexusMods" ********** -->
         <Panel id="panel2">
-          <Button text="適用" id="buttonModDetailsApply" />
-          <Button text="キャンセル" id="buttonModDetailsCancel" />
-          <Button text="OK" id="buttonModDetailsOK" />
+          <LinkLabel text="APIキーでログインするにはどうすればよいですか？" id="linkLabelAPIKeyHelp" />
+          <Button text="キーでログイン" id="buttonNMLoginManually" />
+          <Label text="API キー" id="labelAPIKey" />
+          <CheckBox text="APIキーを表示" id="checkBoxShowAPIKey" />
+          <Label text="アクション" id="label1" />
+          <Button text="ログイン" id="buttonNMLogin" />
+          <Button text="キャッシュを削除" id="buttonNWDeleteCache" />
+          <Button text="ログアウト" id="buttonNWLogout" />
+          <CheckBox text="サムネイルをダウンロード" id="checkBoxNMDownloadThumbnails" />
+          <Label text="設定" id="labelNMOptions" />
+          <CheckBox text="プロファイルを自動的に更新します" id="checkBoxNMUpdateProfile" />
+          <Button text="プロファイルを更新する" id="buttonNMUpdateProfile" />
+        </Panel>
+        <Panel id="panel3">
+          <Label text="ログインしていない。" id="labelNMNotLoggedIn" />
+          <Label text="ユーザーID:" id="labelNMDescUserID" />
+          <Label text="時間あたりのレート制限：" id="labelNMDescHourlyRateLimit" />
+          <Label text="メンバーシップ：" id="labelNMDescMembership" />
+          <Label text="制限のリセット：" id="labelNMDescLimitReset" />
+          <Label text="1日のレート制限：" id="labelNMDescDailyRateLimit" />
         </Panel>
       </TabPage>
-      <TabPage text="設定" id="tabPageModsSettings">
-        <GroupBox text="動作" id="groupBoxModsBehavior">
-          <CheckBox text="sResourceDataDirsFinalをFallout76Custom.iniに書き込みます" id="checkBoxModsWriteSResourceDataDirsFinal" />
-          <CheckBox text="[試験的]バンドルされたアーカイブをフリーズする" id="checkBoxFreezeBundledArchives">
-            <Tooltip>バンドルされたアーカイブを再構築する代わりに、バンドルされたコピーを保存し、デプロイ時に更新するかどうかを尋ねます。
-</Tooltip>
-          </CheckBox>
-          <CheckBox text="ファイルを手動でコピーする代わりにハードリンクを作成する（推奨）" id="checkBoxModsUseHardlinks">
-            <Tooltip>ディスク容量と展開時間を削減します。</Tooltip>
-          </CheckBox>
-          <CheckBox text="デフォルトで* .ba2ファイルのフリーズを解除します" id="checkBoxAddArchivesAsBundled" />
-        </GroupBox>
-        <GroupBox text="リスト" id="groupBoxLists">
-          <Button text="リセット" id="buttonModsResetTextboxes" />
-          <Button text="変更を適用" id="buttonModsApplyTextBoxes" />
-          <Button text="クリーンリスト" id="buttonModsCleanLists" />
-          <Label text="sResourceIndexFileList (modマネージャーで使用)" id="labelsResourceIndexFileList" />
-          <Label text="sResourceArchive2List" id="labelsResourceArchive2List" />
-        </GroupBox>
-      </TabPage>
     </TabControl>
-    <MenuStrip id="menuStrip1">
-      <ToolStripMenuItem text="ファイル" id="fileToolStripMenuItem">
-        <ToolStripMenuItem text="modを追加" id="addModarchiveToolStripMenuItem">
-          <ToolStripMenuItem text="アーカイブから" id="fromArchiveToolStripMenuItem" />
-          <ToolStripMenuItem text="* .ba2アーカイブから（凍結）" id="fromba2ArchivefrozenToolStripMenuItem" />
-          <ToolStripMenuItem text="フォルダから" id="fromFolderToolStripMenuItem" />
-        </ToolStripMenuItem>
-        <ToolStripMenuItem text="インストールされたMODをインポートする" id="toolStripMenuItemModsImport" />
-        <ToolStripMenuItem text="配置" id="deployToolStripMenuItem" />
-      </ToolStripMenuItem>
-      <ToolStripMenuItem text="ビュー" id="editToolStripMenuItem">
-        <ToolStripMenuItem text="競合するファイルを表示する" id="showConflictingFilesToolStripMenuItem" />
-        <ToolStripMenuItem text="UIをリロード" id="reloadUIToolStripMenuItem" />
-      </ToolStripMenuItem>
-      <ToolStripMenuItem text="ツール" id="toolsToolStripMenuItem">
-        <ToolStripMenuItem text="アーカイブ2" id="archive2ToolStripMenuItem">
-          <ToolStripMenuItem text="アーカイブ2を開く" id="openArchive2ToolStripMenuItem" />
-          <ToolStripMenuItem text="* .ba2アーカイブを探索する" id="exploreba2ArchiveToolStripMenuItem" />
-        </ToolStripMenuItem>
-      </ToolStripMenuItem>
-      <ToolStripMenuItem text="ヘルプ" id="helpToolStripMenuItem">
-        <ToolStripMenuItem text="READMEを表示" id="showREADMEToolStripMenuItem" />
-        <ToolStripMenuItem text="ガイドを表示" id="showGuideToolStripMenuItem" />
-        <ToolStripMenuItem text="ログファイル" id="logFilesToolStripMenuItem">
-          <ToolStripMenuItem text="modmanager.log.txtを表示する" id="showModmanagerlogtxtToolStripMenuItem" />
-          <ToolStripMenuItem text="archive2.log.txtを表示する" id="showArchive2logtxtToolStripMenuItem" />
-        </ToolStripMenuItem>
-      </ToolStripMenuItem>
-    </MenuStrip>
-  </FormMods>
+    <ContextMenuStrip id="contextMenuStripGame">
+      <ToolStripMenuItem text="ゲーム" id="gameToolStripMenuItem" />
+      <ToolStripMenuItem text="ランチャー" id="launchGameToolStripMenuItem" />
+      <ToolStripMenuItem text="名前を変更" id="renameGameToolStripMenuItem" />
+      <ToolStripMenuItem text="削除" id="removeGameToolStripMenuItem" />
+    </ContextMenuStrip>
+  </FormSettings>
 </Language>
