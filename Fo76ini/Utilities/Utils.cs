@@ -132,6 +132,14 @@ namespace Fo76ini.Utilities
             File.Delete(targetFile);
         }
 
+        public static bool IsFileNameValid(string name)
+        {
+            List<char> invalidChars = new List<char>();
+            invalidChars.AddRange(Path.GetInvalidPathChars());
+            invalidChars.AddRange(Path.GetInvalidFileNameChars());
+            return !invalidChars.Any(c => name.Contains(c));
+        }
+
         public static string GetValidFileName(string value, string extension = "")
         {
             string newName = "";
@@ -811,11 +819,21 @@ namespace Fo76ini.Utilities
             foreach (Control subControl in control.Controls)
             {
                 // NumericUpDown and ComboBox:
-                if (subControl.Name.StartsWith("num") || subControl.Name.StartsWith("comboBox") || subControl.Name.StartsWith("slider"))
+                if (subControl is NumericUpDown ||
+                    subControl is ComboBox ||
+                    subControl is TrackBar ||
+                    subControl.Name.StartsWith("num") ||
+                    subControl.Name.StartsWith("comboBox") ||
+                    subControl.Name.StartsWith("slider"))
                     subControl.MouseWheel += (object sender, MouseEventArgs e) => ((HandledMouseEventArgs)e).Handled = true;
 
                 // TabControl, TabPage, and GroupBox:
-                if (subControl.Name.StartsWith("tab") || subControl.Name.StartsWith("groupBox") || subControl.Name.StartsWith("panel"))
+                if (subControl is TabControl ||
+                    subControl is TabPage ||
+                    subControl is GroupBox ||
+                    subControl.Name.StartsWith("tab") ||
+                    subControl.Name.StartsWith("groupBox") ||
+                    subControl.Name.StartsWith("panel"))
                     PreventChangeOnMouseWheelForAllElements(subControl);
             }
         }

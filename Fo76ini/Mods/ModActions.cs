@@ -146,6 +146,42 @@ namespace Fo76ini.Mods
             mod.Frozen = false;
         }
 
+        /// <summary>
+        /// Renames the managed folder.
+        /// </summary>
+        /// <param name="mod"></param>
+        /// <param name="newFolderName"></param>
+        /// <returns>True if successful, False otherwise</returns>
+        public static bool RenameFolder(ManagedMod mod, string newFolderName)
+        {
+            // Don't rename if folder name is equal:
+            if (mod.ManagedFolderName == newFolderName)
+                return false;
+
+            // Don't rename if folder name is invalid:
+            if (!Utils.IsFileNameValid(newFolderName))
+                return false;
+
+            // Don't rename if folder already exists:
+            string newFolderPath = Path.Combine(mod.GamePath, "Mods", newFolderName);
+            if (Directory.Exists(newFolderPath))
+                return false;
+
+            // Try to rename folder:
+            try
+            {
+                Directory.Move(mod.ManagedFolderPath, newFolderPath);
+            }
+            catch
+            {
+                return false;
+            }
+
+            // Successful?
+            mod.ManagedFolderName = newFolderName;
+            return true;
+        }
+
         public static void DetectOptimalModInstallationOptions(ManagedMod mod, Action<Progress> ProgressChanged = null)
         {
             ProgressChanged?.Invoke(Progress.Indetermined("Detecting installation options."));

@@ -589,6 +589,8 @@ namespace Fo76ini.Forms.FormSettings
             this.labelNMMembership.Visible = loggedIn;
             this.labelNMUserID.Visible = loggedIn;
 
+            this.linkLabelEnableAPIKey.Visible = !APIKeyTextboxEnabled && !loggedIn;
+
 
             /*
              * Position and visiblility of buttons:
@@ -737,6 +739,12 @@ namespace Fo76ini.Forms.FormSettings
                     RefreshNMUI();
                 }
             }));
+        }
+
+        private void linkLabelEnableAPIKey_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            APIKeyTextboxEnabled = true;
+            RefreshNMUI();
         }
 
         private void buttonNMLoginManually_Click(object sender, EventArgs e)

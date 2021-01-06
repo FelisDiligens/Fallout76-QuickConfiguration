@@ -35,7 +35,7 @@ namespace Fo76ini.Interface
                 SystemSounds.Asterisk.Play();
         }
 
-        public static void PlayErrorNotificationSound()
+        public static void PlayErrorSound()
         {
             // Don't play sound, if disabled:
             if (!IniFiles.Config.GetBool("Preferences", "bPlayNotificationSound", true))
@@ -179,7 +179,7 @@ namespace Fo76ini.Interface
         {
             Utils.CreatePopup(title, text, icon).Popup();
             if (icon == MessageBoxIcon.Warning || icon == MessageBoxIcon.Error)
-                PlayErrorNotificationSound();
+                PlayErrorSound();
             else
                 PlayNotificationSound();
         }

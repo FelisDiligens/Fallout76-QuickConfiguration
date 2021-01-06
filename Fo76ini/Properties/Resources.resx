@@ -313,7 +313,4 @@
   <data name="pipboy_preview_fg_masked" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pipboy_preview_fg_masked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="snow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\snow.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

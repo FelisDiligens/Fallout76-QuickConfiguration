@@ -35,7 +35,7 @@ namespace Fo76ini
             // General tab
             LinkedTweaks.LinkInfo(checkBoxEnableSteam, toolTip, enableSteamTweak);
             LinkedTweaks.LinkInfo(checkBoxAutoSignin, toolTip, autoSigninTweak);
-            LinkedTweaks.LinkInfo(checkBoxIntroVideos, toolTip, introVideoTweak);
+            LinkedTweaks.LinkInfo(checkBoxSkipIntroVideos, toolTip, introVideoTweak);
             LinkedTweaks.LinkInfo(checkBoxSkipSplash, toolTip, skipStartupSplash);
 
             LinkedTweaks.LinkInfo(checkBoxShowDamageNumbersNW, toolTip, showDamageNumbersNuclearWinterTweak);
@@ -314,8 +314,8 @@ namespace Fo76ini
             // Automatically sign-in
             LinkedTweaks.LinkTweak(checkBoxAutoSignin, autoSigninTweak);
 
-            // Play intro videos
-            LinkedTweaks.LinkTweak(checkBoxIntroVideos, introVideoTweak);
+            // Skip intro videos
+            LinkedTweaks.LinkTweakNegated(checkBoxSkipIntroVideos, introVideoTweak);
 
 
             // Show splash screen with news on startup

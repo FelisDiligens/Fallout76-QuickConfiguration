@@ -252,10 +252,7 @@ namespace Fo76ini.Mods
         /// Get the folder name (not path). This folder stores the mod's files.
         /// Example: @"{2f2d3b3b-b21b-4ec2-b555-c8806a801b16}"
         /// </summary>
-        public string ManagedFolderName
-        {
-            get { return "{" + guid.ToString() + "}"; }
-        }
+        public string ManagedFolderName;
 
         /// <summary>
         /// Get the path to where the mod's files are stored.
@@ -293,6 +290,11 @@ namespace Fo76ini.Mods
             get { return Path.Combine(FrozenDataPath, FrozenArchiveName); }
         }
 
+        /// <summary>
+        /// The user's notes about the mod.
+        /// </summary>
+        public string Notes = "";
+
         public readonly Guid guid;
 
         private string title = "Untitled";
@@ -305,12 +307,14 @@ namespace Fo76ini.Mods
         {
             this.GamePath = gamePath;
             this.guid = uuid;
+            this.ManagedFolderName = "{" + guid.ToString() + "}";
         }
 
         public ManagedMod(string gamePath)
         {
             this.GamePath = gamePath;
             this.guid = Guid.NewGuid();
+            this.ManagedFolderName = "{" + guid.ToString() + "}";
         }
 
         /// <summary>
@@ -329,6 +333,7 @@ namespace Fo76ini.Mods
             this.Version = mod.Version;
             this.guid = mod.guid;
             this.GamePath = mod.GamePath;
+            this.ManagedFolderName = mod.ManagedFolderName;
 
 
             /*
@@ -416,6 +421,7 @@ namespace Fo76ini.Mods
             XElement xmlMod = new XElement("Mod",
                 new XAttribute("guid", this.guid.ToString()),
                 new XElement("Title", this.Title),
+                new XElement("Folder", this.ManagedFolderName),
                 new XElement("Version", this.Version),
                 new XElement("NexusMods",
                     new XAttribute("id", this.ID),
@@ -453,8 +459,9 @@ namespace Fo76ini.Mods
                     new XElement("ArchiveCompression", GetCompressionName(this.FrozenCompression))
                 )
             );
-
             xmlMod.Add(xmlDiskState);
+
+            xmlMod.Add(new XElement("Notes", Notes));
 
             return xmlMod;
         }
@@ -470,6 +477,9 @@ namespace Fo76ini.Mods
                 throw new Exception("Invalid *.xml entry for mod.");
             else
                 mod.Title = xmlMod.Element("Title").Value;
+
+            if (xmlMod.Element("Folder") != null)
+                mod.ManagedFolderName = xmlMod.Element("Folder").Value;
 
             if (xmlMod.Element("Version") != null)
                 mod.Version = xmlMod.Element("Version").Value;
@@ -540,6 +550,10 @@ namespace Fo76ini.Mods
                 mod.FrozenFormat = GetFormat(xmlFrozenDiskState.Element("ArchiveFormat").Value);
             if (xmlFrozenDiskState.Element("ArchiveCompression") != null)
                 mod.FrozenCompression = GetCompression(xmlFrozenDiskState.Element("ArchiveCompression").Value);
+
+            XElement xmlNotes = xmlMod.Element("Notes");
+            if (xmlNotes != null)
+                mod.Notes = xmlNotes.Value;
 
             return mod;
         }

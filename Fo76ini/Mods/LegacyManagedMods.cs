@@ -75,6 +75,8 @@ namespace Fo76ini.Mods
                 string frozenArchivePath = Path.Combine(mods.ModsPath, managedFolderName, "frozen.ba2");
                 bool isFrozen = File.Exists(frozenArchivePath);
 
+                mod.ManagedFolderName = managedFolderName;
+
                 if (xmlMod.Attribute("title") != null)
                     mod.Title = xmlMod.Attribute("title").Value;
 
@@ -92,14 +94,14 @@ namespace Fo76ini.Mods
                     mod.Freeze = true;
                 }
 
-                // We need to rename the old folder to fit with the new format.
-                if (Directory.Exists(managedFolderPath))
+                // OBSOLETE: We need to rename the old folder to fit with the new format.
+                /*if (Directory.Exists(managedFolderPath))
                 {
                     ProgressChanged?.Invoke(Progress.Ongoing($"{progressTitle}: Moving managed folder...", progressPercentage));
                     if (Directory.Exists(mod.ManagedFolderPath))
                         Directory.Delete(mod.ManagedFolderPath, true);
                     Directory.Move(managedFolderPath, mod.ManagedFolderPath);
-                }
+                }*/
 
                 ProgressChanged?.Invoke(Progress.Ongoing($"{progressTitle}: Parsing XML...", progressPercentage));
 

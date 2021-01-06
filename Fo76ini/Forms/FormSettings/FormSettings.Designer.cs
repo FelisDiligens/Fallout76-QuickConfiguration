@@ -107,9 +107,13 @@
             this.toolStripButtonAddGame = new System.Windows.Forms.ToolStripButton();
             this.tabPageNexusMods = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBoxAPIKeyHelp = new System.Windows.Forms.PictureBox();
+            this.linkLabelAPIKeyHelp = new System.Windows.Forms.LinkLabel();
+            this.buttonNMLoginManually = new System.Windows.Forms.Button();
             this.labelAPIKey = new System.Windows.Forms.Label();
             this.checkBoxShowAPIKey = new System.Windows.Forms.CheckBox();
             this.textBoxAPIKey = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonNMLogin = new System.Windows.Forms.Button();
             this.buttonNWDeleteCache = new System.Windows.Forms.Button();
             this.buttonNWLogout = new System.Windows.Forms.Button();
@@ -136,10 +140,7 @@
             this.backgroundWorkerDownloadLanguages = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerSSOLogin = new System.ComponentModel.BackgroundWorker();
-            this.buttonNMLoginManually = new System.Windows.Forms.Button();
-            this.linkLabelAPIKeyHelp = new System.Windows.Forms.LinkLabel();
-            this.pictureBoxAPIKeyHelp = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.linkLabelEnableAPIKey = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxActions.SuspendLayout();
@@ -166,9 +167,9 @@
             this.toolStrip1.SuspendLayout();
             this.tabPageNexusMods.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -959,6 +960,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.linkLabelEnableAPIKey);
             this.panel2.Controls.Add(this.pictureBoxAPIKeyHelp);
             this.panel2.Controls.Add(this.linkLabelAPIKeyHelp);
             this.panel2.Controls.Add(this.buttonNMLoginManually);
@@ -977,6 +979,43 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(766, 339);
             this.panel2.TabIndex = 78;
+            // 
+            // pictureBoxAPIKeyHelp
+            // 
+            this.pictureBoxAPIKeyHelp.Image = global::Fo76ini.Properties.Resources.help_24;
+            this.pictureBoxAPIKeyHelp.Location = new System.Drawing.Point(20, 258);
+            this.pictureBoxAPIKeyHelp.Name = "pictureBoxAPIKeyHelp";
+            this.pictureBoxAPIKeyHelp.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxAPIKeyHelp.TabIndex = 112;
+            this.pictureBoxAPIKeyHelp.TabStop = false;
+            // 
+            // linkLabelAPIKeyHelp
+            // 
+            this.linkLabelAPIKeyHelp.AutoSize = true;
+            this.linkLabelAPIKeyHelp.Location = new System.Drawing.Point(51, 264);
+            this.linkLabelAPIKeyHelp.Name = "linkLabelAPIKeyHelp";
+            this.linkLabelAPIKeyHelp.Size = new System.Drawing.Size(158, 13);
+            this.linkLabelAPIKeyHelp.TabIndex = 111;
+            this.linkLabelAPIKeyHelp.TabStop = true;
+            this.linkLabelAPIKeyHelp.Text = "How do I login with an API key?";
+            this.linkLabelAPIKeyHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAPIKeyHelp_LinkClicked);
+            // 
+            // buttonNMLoginManually
+            // 
+            this.buttonNMLoginManually.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
+            this.buttonNMLoginManually.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNMLoginManually.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNMLoginManually.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNMLoginManually.Image = global::Fo76ini.Properties.Resources.login_48;
+            this.buttonNMLoginManually.Location = new System.Drawing.Point(146, 23);
+            this.buttonNMLoginManually.Name = "buttonNMLoginManually";
+            this.buttonNMLoginManually.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNMLoginManually.Size = new System.Drawing.Size(120, 120);
+            this.buttonNMLoginManually.TabIndex = 110;
+            this.buttonNMLoginManually.Text = "Log in with key";
+            this.buttonNMLoginManually.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNMLoginManually.UseVisualStyleBackColor = false;
+            this.buttonNMLoginManually.Click += new System.EventHandler(this.buttonNMLoginManually_Click);
             // 
             // labelAPIKey
             // 
@@ -1007,6 +1046,16 @@
             this.textBoxAPIKey.TabIndex = 107;
             this.textBoxAPIKey.UseSystemPasswordChar = true;
             this.textBoxAPIKey.TextChanged += new System.EventHandler(this.textBoxAPIKey_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 16);
+            this.label1.TabIndex = 106;
+            this.label1.Text = "Actions";
             // 
             // buttonNMLogin
             // 
@@ -1293,52 +1342,16 @@
             // 
             this.backgroundWorkerSSOLogin.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSSOLogin_DoWork);
             // 
-            // buttonNMLoginManually
+            // linkLabelEnableAPIKey
             // 
-            this.buttonNMLoginManually.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
-            this.buttonNMLoginManually.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMLoginManually.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNMLoginManually.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMLoginManually.Image = global::Fo76ini.Properties.Resources.login_48;
-            this.buttonNMLoginManually.Location = new System.Drawing.Point(146, 23);
-            this.buttonNMLoginManually.Name = "buttonNMLoginManually";
-            this.buttonNMLoginManually.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNMLoginManually.Size = new System.Drawing.Size(120, 120);
-            this.buttonNMLoginManually.TabIndex = 110;
-            this.buttonNMLoginManually.Text = "Log in with key";
-            this.buttonNMLoginManually.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNMLoginManually.UseVisualStyleBackColor = false;
-            this.buttonNMLoginManually.Click += new System.EventHandler(this.buttonNMLoginManually_Click);
-            // 
-            // linkLabelAPIKeyHelp
-            // 
-            this.linkLabelAPIKeyHelp.AutoSize = true;
-            this.linkLabelAPIKeyHelp.Location = new System.Drawing.Point(51, 264);
-            this.linkLabelAPIKeyHelp.Name = "linkLabelAPIKeyHelp";
-            this.linkLabelAPIKeyHelp.Size = new System.Drawing.Size(158, 13);
-            this.linkLabelAPIKeyHelp.TabIndex = 111;
-            this.linkLabelAPIKeyHelp.TabStop = true;
-            this.linkLabelAPIKeyHelp.Text = "How do I login with an API key?";
-            this.linkLabelAPIKeyHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAPIKeyHelp_LinkClicked);
-            // 
-            // pictureBoxAPIKeyHelp
-            // 
-            this.pictureBoxAPIKeyHelp.Image = global::Fo76ini.Properties.Resources.help_24;
-            this.pictureBoxAPIKeyHelp.Location = new System.Drawing.Point(20, 258);
-            this.pictureBoxAPIKeyHelp.Name = "pictureBoxAPIKeyHelp";
-            this.pictureBoxAPIKeyHelp.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxAPIKeyHelp.TabIndex = 112;
-            this.pictureBoxAPIKeyHelp.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 16);
-            this.label1.TabIndex = 106;
-            this.label1.Text = "Actions";
+            this.linkLabelEnableAPIKey.AutoSize = true;
+            this.linkLabelEnableAPIKey.Location = new System.Drawing.Point(6, 318);
+            this.linkLabelEnableAPIKey.Name = "linkLabelEnableAPIKey";
+            this.linkLabelEnableAPIKey.Size = new System.Drawing.Size(287, 13);
+            this.linkLabelEnableAPIKey.TabIndex = 113;
+            this.linkLabelEnableAPIKey.TabStop = true;
+            this.linkLabelEnableAPIKey.Text = "Login doesn\'t work? Click here to use your API key instead.";
+            this.linkLabelEnableAPIKey.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelEnableAPIKey_LinkClicked);
             // 
             // FormSettings
             // 
@@ -1393,10 +1406,10 @@
             this.tabPageNexusMods.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1507,5 +1520,6 @@
         private System.Windows.Forms.PictureBox pictureBoxAPIKeyHelp;
         private System.Windows.Forms.LinkLabel linkLabelAPIKeyHelp;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel linkLabelEnableAPIKey;
     }
 }

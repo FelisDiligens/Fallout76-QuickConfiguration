@@ -277,8 +277,7 @@ namespace Fo76ini
                 {
                     if (nmMod != null)
                     {
-                        int cmp = Utils.CompareVersions(nmMod.LatestVersion, mod.Version);
-                        if (cmp > 0)
+                        if (nmMod.LatestVersion != mod.Version)
                         {
                             // Update available:
                             version.Text = $"{mod.Version} ({nmMod.LatestVersion})";
@@ -1455,19 +1454,20 @@ namespace Fo76ini
             }, () => {
                 return DeployMods();
             }, (success) => {
+                UpdateUI();
+                EnableUI();
                 if (success)
                 {
                     if (Mods.ModsDisabled)
                         MsgBox.Get("modsDisabledDone").Popup(MessageBoxIcon.Information);
                     else
                         MsgBox.Get("modsDeployedDone").Popup(MessageBoxIcon.Information);
+                    DisplayAllDone();
                 }
                 else
                 {
                     MsgBox.Get("modsDeploymentFailed").Popup(MessageBoxIcon.Information);
                 }
-                UpdateUI();
-                EnableUI();
             });
         }
 
@@ -1511,7 +1511,7 @@ namespace Fo76ini
                 // TODO: Check for updates could be so much better.
                 List<string> modsWithUpdates = new List<string>();
                 foreach (ManagedMod mod in Mods)
-                    if (mod.RemoteInfo != null && Utils.CompareVersions(mod.Version, mod.RemoteInfo.LatestVersion) < 0)
+                    if (mod.RemoteInfo != null && mod.Version != mod.RemoteInfo.LatestVersion)
                         modsWithUpdates.Add($"{mod.Title} (updated from {mod.Version} to {mod.RemoteInfo.LatestVersion})");
 
                 if (modsWithUpdates.Count() > 0)

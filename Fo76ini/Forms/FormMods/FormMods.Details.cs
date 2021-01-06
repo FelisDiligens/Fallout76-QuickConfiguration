@@ -255,9 +255,11 @@ namespace Fo76ini
             this.checkBoxFreezeArchive.Checked = this.editedMod.Freeze;
             this.textBoxModArchiveName.Text = this.editedMod.ArchiveName;
             this.textBoxModName.Text = this.editedMod.Title;
+            this.textBoxModFolderName.Text = this.editedMod.ManagedFolderName;
             this.textBoxModRootDir.Text = this.editedMod.RootFolder;
             this.textBoxModURL.Text = this.editedMod.URL;
             this.textBoxModVersion.Text = this.editedMod.Version;
+            this.textBoxNotes.Text = this.editedMod.Notes.Replace("\n", "\r\n"); ;
 
             switch (this.editedMod.Method)
             {
@@ -490,7 +492,7 @@ namespace Fo76ini
             }
 
             // Place groupboxes underneath each other:
-            GroupBox[] groupBoxes = new GroupBox[] { groupBoxModDetailsDetails, groupBoxModDetailsInstallationOptions, groupBoxModReplace };
+            GroupBox[] groupBoxes = new GroupBox[] { groupBoxModDetailsDetails, groupBoxNotes, groupBoxModDetailsInstallationOptions, groupBoxModReplace };
             for (int i = 1; i < groupBoxes.Length; i++)
                 groupBoxes[i].Top = groupBoxes[i - 1].Top + groupBoxes[i - 1].Height + groupboxMargin;
 
@@ -622,6 +624,7 @@ namespace Fo76ini
         /*
          * Properties changed:
          */
+
 
         private void comboBoxModInstallAs_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -756,6 +759,15 @@ namespace Fo76ini
             }
         }
 
+        private void textBoxNotes_TextChanged(object sender, EventArgs e)
+        {
+            if (this.textBoxNotes.Focused)
+            {
+                this.editedMod.Notes = this.textBoxNotes.Text.Replace("\r\n", "\n");
+                Mods.Save();
+            }
+        }
+
         private void checkBoxModDetailsEnabled_CheckedChanged(object sender, EventArgs e)
         {
             if (isUpdatingSidePanel)
@@ -792,6 +804,23 @@ namespace Fo76ini
             this.editedMod.Version = this.textBoxModVersion.Text;
             UpdateModList();
             Mods.Save();
+        }
+
+        private void textBoxModFolderName_TextChanged(object sender, EventArgs e)
+        {
+            if (this.textBoxModFolderName.Focused)
+            {
+                if (ModActions.RenameFolder(editedMod, this.textBoxModFolderName.Text))
+                {
+                    Mods.Save();
+                    this.textBoxModFolderName.ForeColor = Color.Black;
+                }
+                else
+                {
+                    //this.textBoxModFolderName.Text = this.editedMod.ManagedFolderName;
+                    this.textBoxModFolderName.ForeColor = Color.Red;
+                }
+            }
         }
 
 

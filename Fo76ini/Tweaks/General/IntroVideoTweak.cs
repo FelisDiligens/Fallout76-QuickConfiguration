@@ -8,7 +8,7 @@ namespace Fo76ini.Tweaks.General
 {
     class IntroVideoTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "When this option is disabled, the game will start without displaying the Bethesda logo video.";
+        public string Description => "When this option is enabled, the game will start without displaying the Bethesda logo video.";
 
         public string AffectedFiles => "Fallout76Custom.ini";
 
