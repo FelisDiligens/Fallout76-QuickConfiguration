@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.0h2">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.1">
   <Strings>
     <!--
         Strings
@@ -518,6 +518,9 @@
             <CheckBox text="Включить мод" id="checkBoxModDetailsEnabled" />
           </Panel>
           <Panel id="panelModDetailsInner">
+            <GroupBox text="Заметки" id="groupBoxNotes">
+              <!-- Group "Notes" -->
+            </GroupBox>
             <GroupBox text="Добавление/замена файлов модов" id="groupBoxModReplace">
               <!-- Group "Добавление/замена файлов модов" -->
               <Label text="Перетащите файлы/папки в левое поле, чтобы добавить/заменить файлы." id="labelModDetailsReplace" />
@@ -544,6 +547,7 @@
             </GroupBox>
             <GroupBox text="Детали" id="groupBoxModDetailsDetails">
               <!-- Group "Детали" -->
+              <Label text="Папка:" id="labelModFolderName" />
               <Panel id="panelModDetailsNexusMods">
                 <LinkLabel text="Установить последнюю версию" id="linkLabelModSetLatestVersion" />
                 <Label text="Последняя версия:" id="labelModLatestVersionDesc" />
@@ -727,7 +731,7 @@
           <GroupBox text="Главное меню" id="groupBoxMainMenu">
             <!-- Group "Главное меню" -->
             <CheckBox text="Пропускать заставку с новостями при запуске" id="checkBoxSkipSplash" />
-            <CheckBox text="Показывать вступительные ролики" id="checkBoxIntroVideos" />
+            <CheckBox text="Пропускать вступительные ролики" id="checkBoxSkipIntroVideos" />
           </GroupBox>
         </Panel>
         <GroupBox text="Логин" id="groupBoxLogin">
@@ -1102,6 +1106,7 @@
       <TabPage text="NexusMods" id="tabPageNexusMods">
         <!-- ********** Tab "NexusMods" ********** -->
         <Panel id="panel2">
+          <LinkLabel text="Не получается войти? Нажмите здесь, чтобы использовать свой API-ключ." id="linkLabelEnableAPIKey" />
           <LinkLabel text="Как войти в систему с помощью API-ключа?" id="linkLabelAPIKeyHelp" />
           <Button text="Войти с помощью ключа" id="buttonNMLoginManually" />
           <Label text="API-ключ" id="labelAPIKey" />
