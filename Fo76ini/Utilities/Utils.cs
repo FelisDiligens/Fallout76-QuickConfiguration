@@ -17,8 +17,9 @@ namespace Fo76ini.Utilities
     public static class Utils
     {
         public static CultureInfo enUS = CultureInfo.CreateSpecificCulture("en-US");
-
-        public static string SevenZipPath = Path.GetFullPath(".\\7z\\7z.exe");
+        public static string SevenZipPath {
+            get { return IniFiles.Config.GetString("Preferences", "sSevenZipPath"); }
+        }
         public static readonly string[] SevenZipSupportedFileTypes = new string[] {
             ".7z",
             ".zip",

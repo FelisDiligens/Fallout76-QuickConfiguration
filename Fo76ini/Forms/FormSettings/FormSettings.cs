@@ -103,6 +103,9 @@ namespace Fo76ini.Forms.FormSettings
         public void ShowSettings()
         {
             this.tabControl1.SelectedTab = this.tabPageGeneral;
+            // Update the text fields for Archive2 and 7z
+            this.textBoxArchiveTwoPath.Text = archiveTwoPathTweak.GetValue();
+            this.textBoxSevenZipPath.Text = sevenZipPathTweak.GetValue();
             this.ShowDialog();
         }
 
@@ -840,6 +843,9 @@ namespace Fo76ini.Forms.FormSettings
 
         #endregion
 
+        private SevenZipPathTweak sevenZipPathTweak = new SevenZipPathTweak();
+        private ArchiveTwoPathTweak archiveTwoPathTweak = new ArchiveTwoPathTweak();
+
         private INIReadOnlyTweak iniReadOnlyTweak = new INIReadOnlyTweak();
         private AutoApplyTweak autoApplyTweak = new AutoApplyTweak();
         private IgnoreUpdatesTweak ignoreUpdatesTweak = new IgnoreUpdatesTweak();
@@ -849,5 +855,47 @@ namespace Fo76ini.Forms.FormSettings
         private DeployModsOnNWModeTweak deployModsOnNWModeTweak = new DeployModsOnNWModeTweak();
         private RemoveModsOnNWModeTweak removeModsOnNWModeTweak = new RemoveModsOnNWModeTweak();
         private RenameDLLsTweak renameDLLsTweak = new RenameDLLsTweak();
+
+        private void textBoxArchiveTwoPath_TextChanged(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+            archiveTwoPathTweak.SetValue(this.textBoxArchiveTwoPath.Text);
+        }
+
+        private void buttonPickArchiveTwoPath_Click(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+            this.openFileDialogArchiveTwoPath.FileName = archiveTwoPathTweak.DefaultValue;
+            if (this.openFileDialogArchiveTwoPath.ShowDialog() == DialogResult.OK)
+            {
+                string path = this.openFileDialogArchiveTwoPath.FileName;
+                this.textBoxArchiveTwoPath.Text = path;
+                archiveTwoPathTweak.SetValue(this.textBoxArchiveTwoPath.Text);
+                UpdateGamesTab();
+            }
+        }
+
+        private void textBoxSevenZipPath_TextChanged(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+            sevenZipPathTweak.SetValue(this.textBoxSevenZipPath.Text);
+        }
+
+        private void buttonPickSevenZipPath_Click(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+            this.openFileDialogSevenZipPath.FileName = sevenZipPathTweak.DefaultValue;
+            if (this.openFileDialogSevenZipPath.ShowDialog() == DialogResult.OK)
+            {
+                string path = this.openFileDialogSevenZipPath.FileName;
+                this.textBoxSevenZipPath.Text = path;
+                sevenZipPathTweak.SetValue(this.textBoxSevenZipPath.Text);
+                UpdateGamesTab();
+            }
+        }
     }
 }

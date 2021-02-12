@@ -7,11 +7,10 @@ namespace Fo76ini.Utilities
     public class Archive2
     {
         public static Log LogFile;
-        private static string archive2Path = ".\\Archive2\\Archive2.exe";
 
         public static string Archive2Path
         {
-            get { return Archive2.archive2Path; }
+            get { return IniFiles.Config.GetString("Preferences", "sArchiveTwoPath"); }
         }
 
         static Archive2()
@@ -84,7 +83,7 @@ namespace Fo76ini.Utilities
                 proc.StartInfo.UseShellExecute = false; // = true
                 proc.StartInfo.RedirectStandardOutput = true; // // ...
                 proc.StartInfo.RedirectStandardError = true; // // ...
-                proc.StartInfo.FileName = Archive2.archive2Path;
+                proc.StartInfo.FileName = Archive2Path;
                 proc.StartInfo.Arguments = arguments;
                 proc.StartInfo.CreateNoWindow = true; // // ...
                 proc.Start();
@@ -111,7 +110,7 @@ namespace Fo76ini.Utilities
             using (Process proc = new Process())
             {
                 proc.StartInfo.UseShellExecute = false;
-                proc.StartInfo.FileName = Archive2.archive2Path;
+                proc.StartInfo.FileName = Archive2Path;
                 proc.StartInfo.Arguments = arguments;
                 proc.StartInfo.CreateNoWindow = true;
                 proc.Start();
