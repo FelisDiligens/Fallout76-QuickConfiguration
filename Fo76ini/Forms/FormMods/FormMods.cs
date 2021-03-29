@@ -1383,8 +1383,7 @@ namespace Fo76ini
                     selectedIndex = -1;
                     selectedIndices.Clear();
                 }
-                UpdateModList();
-                UpdateStatusStrip();
+                UpdateUI();
             });
         }
 
@@ -1403,8 +1402,7 @@ namespace Fo76ini
                     selectedIndex = -1;
                     selectedIndices.Clear();
                 }
-                UpdateModList();
-                UpdateStatusStrip();
+                UpdateUI();
             });
         }
 
