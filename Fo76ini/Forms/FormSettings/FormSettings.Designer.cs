@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Default", 0);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Default", 0);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Steam"}, 2, System.Drawing.Color.Empty, System.Drawing.SystemColors.Window, null);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Microsoft Store", 3);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Microsoft Store", 3);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSettings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
@@ -107,6 +107,7 @@
             this.toolStripButtonAddGame = new System.Windows.Forms.ToolStripButton();
             this.tabPageNexusMods = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.linkLabelEnableAPIKey = new System.Windows.Forms.LinkLabel();
             this.pictureBoxAPIKeyHelp = new System.Windows.Forms.PictureBox();
             this.linkLabelAPIKeyHelp = new System.Windows.Forms.LinkLabel();
             this.buttonNMLoginManually = new System.Windows.Forms.Button();
@@ -140,7 +141,14 @@
             this.backgroundWorkerDownloadLanguages = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerSSOLogin = new System.ComponentModel.BackgroundWorker();
-            this.linkLabelEnableAPIKey = new System.Windows.Forms.LinkLabel();
+            this.labelArchiveTwoPath = new System.Windows.Forms.Label();
+            this.labelSevenZipPath = new System.Windows.Forms.Label();
+            this.textBoxArchiveTwoPath = new System.Windows.Forms.TextBox();
+            this.buttonArchiveTwoPath = new System.Windows.Forms.Button();
+            this.buttonPickSevenZipPath = new System.Windows.Forms.Button();
+            this.textBoxSevenZipPath = new System.Windows.Forms.TextBox();
+            this.openFileDialogArchiveTwoPath = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxActions.SuspendLayout();
@@ -223,10 +231,16 @@
             // 
             // groupBoxOptions
             // 
+            this.groupBoxOptions.Controls.Add(this.buttonPickSevenZipPath);
+            this.groupBoxOptions.Controls.Add(this.textBoxSevenZipPath);
+            this.groupBoxOptions.Controls.Add(this.buttonArchiveTwoPath);
+            this.groupBoxOptions.Controls.Add(this.textBoxArchiveTwoPath);
+            this.groupBoxOptions.Controls.Add(this.labelSevenZipPath);
+            this.groupBoxOptions.Controls.Add(this.labelArchiveTwoPath);
             this.groupBoxOptions.Controls.Add(this.checkBoxReadOnly);
             this.groupBoxOptions.Location = new System.Drawing.Point(402, 6);
             this.groupBoxOptions.Name = "groupBoxOptions";
-            this.groupBoxOptions.Size = new System.Drawing.Size(358, 47);
+            this.groupBoxOptions.Size = new System.Drawing.Size(358, 115);
             this.groupBoxOptions.TabIndex = 42;
             this.groupBoxOptions.TabStop = false;
             this.groupBoxOptions.Text = "Options";
@@ -248,7 +262,7 @@
             this.groupBoxNuclearWinterMode.Controls.Add(this.labelNWdlloptions);
             this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWAutoDisableMods);
             this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWRenameDLL);
-            this.groupBoxNuclearWinterMode.Location = new System.Drawing.Point(402, 59);
+            this.groupBoxNuclearWinterMode.Location = new System.Drawing.Point(402, 143);
             this.groupBoxNuclearWinterMode.Name = "groupBoxNuclearWinterMode";
             this.groupBoxNuclearWinterMode.Size = new System.Drawing.Size(358, 162);
             this.groupBoxNuclearWinterMode.TabIndex = 41;
@@ -824,11 +838,11 @@
             this.listViewGameInstances.FullRowSelect = true;
             this.listViewGameInstances.HideSelection = false;
             this.listViewGameInstances.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5});
             this.listViewGameInstances.LabelWrap = false;
             this.listViewGameInstances.LargeImageList = this.imageList1;
             this.listViewGameInstances.Location = new System.Drawing.Point(3, 18);
@@ -979,6 +993,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(766, 339);
             this.panel2.TabIndex = 78;
+            // 
+            // linkLabelEnableAPIKey
+            // 
+            this.linkLabelEnableAPIKey.AutoSize = true;
+            this.linkLabelEnableAPIKey.Location = new System.Drawing.Point(6, 318);
+            this.linkLabelEnableAPIKey.Name = "linkLabelEnableAPIKey";
+            this.linkLabelEnableAPIKey.Size = new System.Drawing.Size(287, 13);
+            this.linkLabelEnableAPIKey.TabIndex = 113;
+            this.linkLabelEnableAPIKey.TabStop = true;
+            this.linkLabelEnableAPIKey.Text = "Login doesn\'t work? Click here to use your API key instead.";
+            this.linkLabelEnableAPIKey.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelEnableAPIKey_LinkClicked);
             // 
             // pictureBoxAPIKeyHelp
             // 
@@ -1342,16 +1367,77 @@
             // 
             this.backgroundWorkerSSOLogin.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSSOLogin_DoWork);
             // 
-            // linkLabelEnableAPIKey
+            // labelArchiveTwoPath
             // 
-            this.linkLabelEnableAPIKey.AutoSize = true;
-            this.linkLabelEnableAPIKey.Location = new System.Drawing.Point(6, 318);
-            this.linkLabelEnableAPIKey.Name = "linkLabelEnableAPIKey";
-            this.linkLabelEnableAPIKey.Size = new System.Drawing.Size(287, 13);
-            this.linkLabelEnableAPIKey.TabIndex = 113;
-            this.linkLabelEnableAPIKey.TabStop = true;
-            this.linkLabelEnableAPIKey.Text = "Login doesn\'t work? Click here to use your API key instead.";
-            this.linkLabelEnableAPIKey.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelEnableAPIKey_LinkClicked);
+            this.labelArchiveTwoPath.AutoSize = true;
+            this.labelArchiveTwoPath.Location = new System.Drawing.Point(10, 49);
+            this.labelArchiveTwoPath.Name = "labelArchiveTwoPath";
+            this.labelArchiveTwoPath.Size = new System.Drawing.Size(77, 13);
+            this.labelArchiveTwoPath.TabIndex = 41;
+            this.labelArchiveTwoPath.Text = "Archive2 Path:";
+            // 
+            // labelSevenZipPath
+            // 
+            this.labelSevenZipPath.AutoSize = true;
+            this.labelSevenZipPath.Location = new System.Drawing.Point(39, 78);
+            this.labelSevenZipPath.Name = "labelSevenZipPath";
+            this.labelSevenZipPath.Size = new System.Drawing.Size(46, 13);
+            this.labelSevenZipPath.TabIndex = 42;
+            this.labelSevenZipPath.Text = "7z Path:";
+            // 
+            // textBoxArchiveTwoPath
+            // 
+            this.textBoxArchiveTwoPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxArchiveTwoPath.Location = new System.Drawing.Point(91, 46);
+            this.textBoxArchiveTwoPath.Name = "textBoxArchiveTwoPath";
+            this.textBoxArchiveTwoPath.Size = new System.Drawing.Size(227, 20);
+            this.textBoxArchiveTwoPath.TabIndex = 43;
+            this.textBoxArchiveTwoPath.TextChanged += new System.EventHandler(this.textBoxArchiveTwoPath_TextChanged);
+            // 
+            // buttonArchiveTwoPath
+            // 
+            this.buttonArchiveTwoPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonArchiveTwoPath.Location = new System.Drawing.Point(324, 44);
+            this.buttonArchiveTwoPath.Name = "buttonArchiveTwoPath";
+            this.buttonArchiveTwoPath.Size = new System.Drawing.Size(28, 23);
+            this.buttonArchiveTwoPath.TabIndex = 44;
+            this.buttonArchiveTwoPath.Text = "...";
+            this.buttonArchiveTwoPath.UseVisualStyleBackColor = true;
+            this.buttonArchiveTwoPath.Click += new System.EventHandler(this.buttonPickArchiveTwoPath_Click);
+            // 
+            // buttonPickSevenZipPath
+            // 
+            this.buttonPickSevenZipPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPickSevenZipPath.Location = new System.Drawing.Point(324, 73);
+            this.buttonPickSevenZipPath.Name = "buttonPickSevenZipPath";
+            this.buttonPickSevenZipPath.Size = new System.Drawing.Size(28, 23);
+            this.buttonPickSevenZipPath.TabIndex = 46;
+            this.buttonPickSevenZipPath.Text = "...";
+            this.buttonPickSevenZipPath.UseVisualStyleBackColor = true;
+            this.buttonPickSevenZipPath.Click += new System.EventHandler(this.buttonPickSevenZipPath_Click);
+            // 
+            // textBoxSevenZipPath
+            // 
+            this.textBoxSevenZipPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSevenZipPath.Location = new System.Drawing.Point(91, 75);
+            this.textBoxSevenZipPath.Name = "textBoxSevenZipPath";
+            this.textBoxSevenZipPath.Size = new System.Drawing.Size(227, 20);
+            this.textBoxSevenZipPath.TabIndex = 45;
+            this.textBoxSevenZipPath.TextChanged += new System.EventHandler(this.textBoxSevenZipPath_TextChanged);
+            // 
+            // openFileDialogArchiveTwoPath
+            // 
+            this.openFileDialogArchiveTwoPath.FileName = "Archive2.exe";
+            this.openFileDialogArchiveTwoPath.Filter = "Executable|*.exe";
+            this.openFileDialogArchiveTwoPath.FilterIndex = 2;
+            // 
+            // openFileDialogSevenZipPath
+            // 
+            this.openFileDialogSevenZipPath.FileName = "7z.exe";
+            this.openFileDialogSevenZipPath.Filter = "Executable|*.exe";
+            this.openFileDialogSevenZipPath.FilterIndex = 2;
             // 
             // FormSettings
             // 
@@ -1521,5 +1607,13 @@
         private System.Windows.Forms.LinkLabel linkLabelAPIKeyHelp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabelEnableAPIKey;
+        private System.Windows.Forms.Label labelSevenZipPath;
+        private System.Windows.Forms.Label labelArchiveTwoPath;
+        private System.Windows.Forms.TextBox textBoxArchiveTwoPath;
+        private System.Windows.Forms.Button buttonArchiveTwoPath;
+        private System.Windows.Forms.Button buttonPickSevenZipPath;
+        private System.Windows.Forms.TextBox textBoxSevenZipPath;
+        private System.Windows.Forms.OpenFileDialog openFileDialogArchiveTwoPath;
+        private System.Windows.Forms.OpenFileDialog openFileDialogSevenZipPath;
     }
 }

@@ -186,9 +186,11 @@
     <Compile Include="Tweaks\Camera\SelfieModeRangeTweak.cs" />
     <Compile Include="Tweaks\Camera\VanityModeMaxDistTweak.cs" />
     <Compile Include="Tweaks\Camera\VanityModeMinDistTweak.cs" />
+    <Compile Include="Tweaks\Config\ArchiveTwoPathTweak.cs" />
     <Compile Include="Tweaks\Config\AutoApplyTweak.cs" />
     <Compile Include="Tweaks\Config\IgnoreUpdatesTweak.cs" />
     <Compile Include="Tweaks\Config\PlayNotificationSoundsTweak.cs" />
+    <Compile Include="Tweaks\Config\SevenZipPathTweak.cs" />
     <Compile Include="Tweaks\Controls\EnableGamepadRumbleTweak.cs" />
     <Compile Include="Tweaks\Controls\FixAimSensitivityTweak.cs" />
     <Compile Include="Tweaks\Controls\FixMouseSensitivityTweak.cs" />
