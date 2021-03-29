@@ -12,7 +12,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public string AffectedFiles => "Fallout76Custom.ini";
 
-        public string AffectedValues => "[General]bDisableAllGore, bBloodSpatterEnabled";
+        public string AffectedValues => "[General]bDisableAllGore, bBloodSplatterEnabled";
 
         public bool DefaultValue => false;
 
@@ -28,12 +28,12 @@ namespace Fo76ini.Tweaks.Graphics
             if (value)
             {
                 IniFiles.F76Custom.Set("General", "bDisableAllGore", true);
-                IniFiles.F76Custom.Set("General", "bBloodSpatterEnabled", false);
+                IniFiles.F76Custom.Set("General", "bBloodSplatterEnabled", false);
             }
             else
             {
                 IniFiles.F76Custom.Remove("General", "bDisableAllGore");
-                IniFiles.F76Custom.Remove("General", "bBloodSpatterEnabled");
+                IniFiles.F76Custom.Remove("General", "bBloodSplatterEnabled");
             }
         }
 
