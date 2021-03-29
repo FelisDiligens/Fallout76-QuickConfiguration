@@ -375,7 +375,7 @@ namespace Fo76ini.Mods
             mods.Save();
         }
 
-        private static void Remove(ManagedMod mod, ResourceList resources, String GamePath)
+        public static void Remove(ManagedMod mod, ResourceList resources, String GamePath)
         {
             if (mod.Deployed)
             {

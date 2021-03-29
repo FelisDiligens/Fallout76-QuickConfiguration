@@ -36,6 +36,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public static void DeleteMod(ManagedMods mods, int index, Action<Progress> ProgressChanged = null)
         {
+            ModDeployment.Remove(mods[index], mods.Resources, mods.GamePath);
             ModActions.DeleteFiles(mods[index]);
             mods.RemoveAt(index);
             mods.Save();
@@ -54,9 +55,7 @@ namespace Fo76ini.Mods
             foreach (int index in indices)
             {
                 ProgressChanged?.Invoke(Progress.Ongoing($"Deleting mod {++fi} of {count}.", (float)(fi - 1) / (float)count));
-                ModActions.DeleteFiles(mods[index]);
-                mods.RemoveAt(index);
-                mods.Save();
+                ModActions.DeleteMod(mods, index);
             }
             ProgressChanged?.Invoke(Progress.Done($"{count} mods deleted."));
         }
