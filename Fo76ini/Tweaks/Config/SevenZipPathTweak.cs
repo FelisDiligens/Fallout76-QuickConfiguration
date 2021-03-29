@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fo76ini.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Fo76ini.Tweaks.Config
 
         public string AffectedValues => "sSevenZipPath";
 
-        public string DefaultValue => "./7z/7z.exe";
+        public string DefaultValue => Utils.DefaultSevenZipPath;
 
         public string Identifier => this.GetType().FullName;
 

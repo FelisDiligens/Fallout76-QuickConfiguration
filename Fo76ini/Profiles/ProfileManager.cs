@@ -251,7 +251,9 @@ namespace Fo76ini.Profiles
 
             // No previous game edition found?
             // Create a new one:
-            CreateNewDefaultProfile();
+            // CreateNewDefaultProfile();
+            // EDIT: Creating a new profile is no longer necessary.
+            //       At least, that's what I believe. I'll keep this comment here until I'm certain.
         }
 
         private static ProfileEventArgs BuildProfileEventArgs()

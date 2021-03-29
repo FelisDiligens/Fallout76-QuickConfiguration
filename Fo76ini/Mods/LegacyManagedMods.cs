@@ -56,6 +56,7 @@ namespace Fo76ini.Mods
             // Converting the legacy list will completely erase the current mod list:
             mods.Mods.Clear();
 
+
             /*
              * Converting: 
              */
@@ -206,7 +207,11 @@ namespace Fo76ini.Mods
                 mods.Add(mod);
             }
 
-            // Legacy resource list:
+
+            /*
+             * Legacy resource list:
+             */
+
             if (IniFiles.Config.GetBool("Preferences", "bMultipleGameEditionsUsed", false))
             {
                 string backedUpList = IniFiles.Config.GetString("Mods", $"sResourceIndexFileList{edition}", "");
@@ -216,6 +221,84 @@ namespace Fo76ini.Mods
                 else if (actualList != "")
                     mods.Resources.ReplaceRange(ResourceList.FromString(actualList));
             }
+
+
+            /*
+             * Rename bundled*.ba2 files:
+             */
+
+            // "bundled.ba2" => "Bundled.ba2"
+            if (File.Exists(Path.Combine(mods.GamePath, "Data", "bundled.ba2")))
+            {
+                File.Move(
+                    Path.Combine(mods.GamePath, "Data", "bundled.ba2"),
+                    Path.Combine(mods.GamePath, "Data", "Bundled.ba2")
+                );
+
+                mods.Resources.Remove("bundled.ba2");
+                mods.Resources.Add("Bundled.ba2");
+            }
+
+            // "bundled_textures.ba2" => "Bundled - Textures.ba2"
+            if (File.Exists(Path.Combine(mods.GamePath, "Data", "bundled_textures.ba2")))
+            {
+                File.Move(
+                    Path.Combine(mods.GamePath, "Data", "bundled_textures.ba2"),
+                    Path.Combine(mods.GamePath, "Data", "Bundled - Textures.ba2")
+                );
+
+                mods.Resources.Remove("bundled_textures.ba2");
+                mods.Resources.Add("Bundled - Textures.ba2");
+            }
+
+            // "bundled_sounds.ba2" => "Bundled - Sounds.ba2"
+            if (File.Exists(Path.Combine(mods.GamePath, "Data", "bundled_sounds.ba2")))
+            {
+                File.Move(
+                    Path.Combine(mods.GamePath, "Data", "bundled_sounds.ba2"),
+                    Path.Combine(mods.GamePath, "Data", "Bundled - Sounds.ba2")
+                );
+
+                mods.Resources.Remove("bundled_sounds.ba2");
+                mods.Resources.Add("Bundled - Sounds.ba2");
+            }
+
+
+            /*
+             * Remove frozen bundled*.ba2 files:
+             */
+
+            // "bundled.ba2" => "Bundled.ba2"
+            if (File.Exists(Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled.ba2")))
+            {
+                File.Move(
+                    Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled.ba2"),
+                    Path.Combine(mods.GamePath, "FrozenData", "Bundled.ba2")
+                );
+            }
+
+            // "bundled_textures.ba2" => "Bundled - Textures.ba2"
+            if (File.Exists(Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled_textures.ba2")))
+            {
+                File.Move(
+                    Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled_textures.ba2"),
+                    Path.Combine(mods.GamePath, "FrozenData", "Bundled - Textures.ba2")
+                );
+            }
+
+            // "bundled_sounds.ba2" => "Bundled - Sounds.ba2"
+            if (File.Exists(Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled_sounds.ba2")))
+            {
+                File.Move(
+                    Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled_sounds.ba2"),
+                    Path.Combine(mods.GamePath, "FrozenData", "Bundled - Sounds.ba2")
+                );
+            }
+
+
+            /*
+             * Saving XML:
+             */
 
             ProgressChanged?.Invoke(Progress.Ongoing("Saving XML...", 1f));
             mods.Save();

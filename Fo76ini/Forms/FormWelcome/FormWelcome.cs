@@ -72,8 +72,6 @@ namespace Fo76ini.Forms.FormWelcome
 
         private void radioButtonEditionBethesdaNet_CheckedChanged(object sender, EventArgs e)
         {
-            if (UpdatingUI)
-                return;
             ProfileManager.SelectedGame.Edition = GameEdition.BethesdaNet;
             ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.BethesdaNet);
             ProfileManager.SelectedGame.Title = "Bethesda.net";
@@ -81,8 +79,6 @@ namespace Fo76ini.Forms.FormWelcome
 
         private void radioButtonEditionBethesdaNetPTS_CheckedChanged(object sender, EventArgs e)
         {
-            if (UpdatingUI)
-                return;
             ProfileManager.SelectedGame.Edition = GameEdition.BethesdaNetPTS;
             ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.BethesdaNetPTS);
             ProfileManager.SelectedGame.Title = "Bethesda.net (PTS)";
@@ -90,8 +86,6 @@ namespace Fo76ini.Forms.FormWelcome
 
         private void radioButtonEditionSteam_CheckedChanged(object sender, EventArgs e)
         {
-            if (UpdatingUI)
-                return;
             ProfileManager.SelectedGame.Edition = GameEdition.Steam;
             ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.Steam);
             ProfileManager.SelectedGame.Title = "Steam";
@@ -99,8 +93,6 @@ namespace Fo76ini.Forms.FormWelcome
 
         private void radioButtonEditionMSStore_CheckedChanged(object sender, EventArgs e)
         {
-            if (UpdatingUI)
-                return;
             ProfileManager.SelectedGame.Edition = GameEdition.MSStore;
             ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.MSStore);
             ProfileManager.SelectedGame.Title = "Microsoft Store";
@@ -108,8 +100,6 @@ namespace Fo76ini.Forms.FormWelcome
 
         private void radioButtonEditionUnknown_CheckedChanged(object sender, EventArgs e)
         {
-            if (UpdatingUI)
-                return;
             ProfileManager.SelectedGame.Edition = GameEdition.Unknown;
             ProfileManager.SelectedGame.Title = "Unknown";
         }

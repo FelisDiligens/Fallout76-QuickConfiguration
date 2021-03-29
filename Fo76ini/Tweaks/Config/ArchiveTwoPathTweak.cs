@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fo76ini.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Fo76ini.Tweaks.Config
 
         public string AffectedValues => "sArchiveTwoPath";
 
-        public string DefaultValue => "./Archive2/Archive2.exe";
+        public string DefaultValue => Archive2.DefaultArchive2Path;
 
         public string Identifier => this.GetType().FullName;
 

@@ -8,9 +8,18 @@ namespace Fo76ini.Utilities
     {
         public static Log LogFile;
 
+        public static readonly string DefaultArchive2Path = ".\\Archive2\\Archive2.exe";
+
         public static string Archive2Path
         {
-            get { return IniFiles.Config.GetString("Preferences", "sArchiveTwoPath"); }
+            get
+            {
+                string path = Path.GetFullPath(IniFiles.Config.GetString("Preferences", "sArchiveTwoPath", DefaultArchive2Path));
+                if (File.Exists(path))
+                    return path;
+                else
+                    return Path.GetFullPath(DefaultArchive2Path);
+            }
         }
 
         static Archive2()
