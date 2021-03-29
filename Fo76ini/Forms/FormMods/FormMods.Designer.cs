@@ -130,8 +130,7 @@
             this.columnHeaderInstallAs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderInstallInto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderArchiveName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderArchiveFormat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderCompression = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderArchivePreset = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderFrozenState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
             this.groupBoxModsBehavior = new System.Windows.Forms.GroupBox();
@@ -323,7 +322,7 @@
             this.openArchive2ToolStripMenuItem,
             this.exploreba2ArchiveToolStripMenuItem});
             this.archive2ToolStripMenuItem.Name = "archive2ToolStripMenuItem";
-            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.archive2ToolStripMenuItem.Text = "Archive2";
             // 
             // openArchive2ToolStripMenuItem
@@ -347,7 +346,7 @@
             this.endorseModsToolStripMenuItem,
             this.checkForUpdatesToolStripMenuItem});
             this.nexusModsAPIToolStripMenuItem.Name = "nexusModsAPIToolStripMenuItem";
-            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.nexusModsAPIToolStripMenuItem.Text = "NexusMods API";
             // 
             // updateModInformationToolStripMenuItem
@@ -1044,7 +1043,7 @@
             this.labelModSummary.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelModSummary.Location = new System.Drawing.Point(6, 5);
             this.labelModSummary.Name = "labelModSummary";
-            this.labelModSummary.Size = new System.Drawing.Size(229, 55);
+            this.labelModSummary.Size = new System.Drawing.Size(331, 55);
             this.labelModSummary.TabIndex = 55;
             this.labelModSummary.Text = "< Summary goes here >";
             // 
@@ -1207,8 +1206,7 @@
             this.columnHeaderInstallAs,
             this.columnHeaderInstallInto,
             this.columnHeaderArchiveName,
-            this.columnHeaderArchiveFormat,
-            this.columnHeaderCompression,
+            this.columnHeaderArchivePreset,
             this.columnHeaderFrozenState});
             this.listViewMods.FullRowSelect = true;
             this.listViewMods.GridLines = true;
@@ -1247,15 +1245,10 @@
             this.columnHeaderArchiveName.Text = "Archive name";
             this.columnHeaderArchiveName.Width = 100;
             // 
-            // columnHeaderArchiveFormat
+            // columnHeaderArchivePreset
             // 
-            this.columnHeaderArchiveFormat.Text = "Archive format";
-            this.columnHeaderArchiveFormat.Width = 90;
-            // 
-            // columnHeaderCompression
-            // 
-            this.columnHeaderCompression.Text = "Compressed?";
-            this.columnHeaderCompression.Width = 75;
+            this.columnHeaderArchivePreset.Text = "Archive preset";
+            this.columnHeaderArchivePreset.Width = 200;
             // 
             // columnHeaderFrozenState
             // 
@@ -1640,7 +1633,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ColumnHeader columnHeaderModTitle;
         private System.Windows.Forms.ColumnHeader columnHeaderInstallAs;
-        private System.Windows.Forms.ColumnHeader columnHeaderArchiveFormat;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton toolStripButtonAddMod;
         private System.Windows.Forms.ToolStripButton toolStripButtonCheckAll;
@@ -1656,7 +1648,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reloadUIToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader columnHeaderFrozenState;
-        private System.Windows.Forms.ColumnHeader columnHeaderCompression;
         private System.Windows.Forms.OpenFileDialog openFileDialogBA2;
         private System.Windows.Forms.ToolStripMenuItem fromba2ArchivefrozenToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBoxLists;
@@ -1746,5 +1737,6 @@
         private System.Windows.Forms.TextBox textBoxNotes;
         private System.Windows.Forms.TextBox textBoxModFolderName;
         private System.Windows.Forms.Label labelModFolderName;
+        private System.Windows.Forms.ColumnHeader columnHeaderArchivePreset;
     }
 }

@@ -239,11 +239,10 @@ namespace Fo76ini
 
                 var type = new ListViewItem.ListViewSubItem();
                 var version = new ListViewItem.ListViewSubItem();
-                var format = new ListViewItem.ListViewSubItem();
                 var archiveName = new ListViewItem.ListViewSubItem();
                 var rootDir = new ListViewItem.ListViewSubItem();
                 var frozen = new ListViewItem.ListViewSubItem();
-                var compressed = new ListViewItem.ListViewSubItem();
+                var archivePreset = new ListViewItem.ListViewSubItem();
 
 
                 /*
@@ -251,10 +250,10 @@ namespace Fo76ini
                  */
 
                 Font notApplicable = new Font(
-                    format.Font.Name,
-                    format.Font.Size - 1,
+                    archivePreset.Font.Name,
+                    archivePreset.Font.Size - 1,
                     FontStyle.Italic,
-                    format.Font.Unit
+                    archivePreset.Font.Unit
                 );
 
 
@@ -311,38 +310,42 @@ namespace Fo76ini
                 else
                     frozen.Text = Localization.GetString("no"); // "Thawed"
 
-                // Archive format
-                switch (mod.Format)
+                // Archive preset
+                if (mod.Method == ManagedMod.DeploymentMethod.SeparateBA2)
                 {
-                    case ManagedMod.ArchiveFormat.General:
-                        format.Text = Localization.GetString("modsTableFormatGeneral");
-                        format.ForeColor = Color.OrangeRed;
-                        break;
-                    case ManagedMod.ArchiveFormat.Textures:
-                        format.Text = Localization.GetString("modsTableFormatTextures");
-                        format.ForeColor = Color.RoyalBlue;
-                        break;
-                    default:
-                        format.Text = Localization.GetString("modsTableFormatAutoDetect");
-                        format.ForeColor = Color.DimGray;
-                        break;
-                }
-
-                // Archive compression
-                switch (mod.Compression)
-                {
-                    case ManagedMod.ArchiveCompression.Compressed:
-                        compressed.Text = Localization.GetString("yes");
-                        compressed.ForeColor = Color.DarkGreen;
-                        break;
-                    case ManagedMod.ArchiveCompression.Uncompressed:
-                        compressed.Text = Localization.GetString("no");
-                        compressed.ForeColor = Color.Black;
-                        break;
-                    default:
-                        compressed.Text = Localization.GetString("modsTableFormatAutoDetect");
-                        compressed.ForeColor = Color.DimGray;
-                        break;
+                    bool isCompressed = mod.Compression == ManagedMod.ArchiveCompression.Compressed;
+                    switch (mod.Format)
+                    {
+                        case ManagedMod.ArchiveFormat.General:
+                            if (isCompressed)
+                            {
+                                archivePreset.Text = Localization.GetString("modsTablePresetGeneral"); // General
+                                archivePreset.ForeColor = Color.OrangeRed;
+                            }
+                            else
+                            {
+                                archivePreset.Text = Localization.GetString("modsTablePresetSoundFX"); // Sound FX
+                                archivePreset.ForeColor = Color.RoyalBlue;
+                            }
+                            break;
+                        case ManagedMod.ArchiveFormat.Textures:
+                            archivePreset.Text = Localization.GetString("modsTablePresetTextures");    // Textures
+                            archivePreset.ForeColor = Color.DarkGreen;
+                            break;
+                        case ManagedMod.ArchiveFormat.Auto:
+                            archivePreset.Text = Localization.GetString("auto");                       // Auto-detect
+                            archivePreset.ForeColor = Color.DimGray;
+                            break;
+                        default:
+                            archivePreset.Text = Localization.GetString("unknown");                    // Please select
+                            archivePreset.ForeColor = Color.Red;
+                            break;
+                    }
+                    if (mod.Compression == ManagedMod.ArchiveCompression.Auto)
+                    {
+                        archivePreset.Text = Localization.GetString("auto");                           // Auto-detect
+                        archivePreset.ForeColor = Color.DimGray;
+                    }
                 }
 
                 // Fill stuff depending on installation type
@@ -356,20 +359,15 @@ namespace Fo76ini
                         type.Text = Localization.GetString("modsTableTypeBundled");
                         type.ForeColor = Color.OrangeRed;
 
-                        // Archive format
-                        format.Text = Localization.GetString("notApplicable");
-                        format.Font = notApplicable;
-                        format.ForeColor = Color.Silver;
+                        // Archive preset
+                        archivePreset.Text = Localization.GetString("notApplicable");
+                        archivePreset.Font = notApplicable;
+                        archivePreset.ForeColor = Color.Silver;
 
                         // Archive name
                         archiveName.Text = "Bundled*.ba2";
                         archiveName.Font = notApplicable;
                         archiveName.ForeColor = Color.Silver;
-
-                        // Compressed?
-                        compressed.Text = Localization.GetString("notApplicable");
-                        compressed.Font = notApplicable;
-                        compressed.ForeColor = Color.Silver;
 
                         // Frozen?
                         frozen.Text = Localization.GetString("notApplicable");
@@ -415,20 +413,15 @@ namespace Fo76ini
                         type.Text = Localization.GetString("modsTableTypeLoose");
                         type.ForeColor = Color.MediumVioletRed;
 
-                        // Archive format
-                        format.Text = Localization.GetString("notApplicable");
-                        format.Font = notApplicable;
-                        format.ForeColor = Color.Silver;
+                        // Archive preset
+                        archivePreset.Text = Localization.GetString("notApplicable");
+                        archivePreset.Font = notApplicable;
+                        archivePreset.ForeColor = Color.Silver;
 
                         // Archive name
                         archiveName.Text = Localization.GetString("notApplicable");
                         archiveName.Font = notApplicable;
                         archiveName.ForeColor = Color.Silver;
-
-                        // Compressed?
-                        compressed.Text = Localization.GetString("notApplicable");
-                        compressed.Font = notApplicable;
-                        compressed.ForeColor = Color.Silver;
 
                         // Frozen?
                         frozen.Text = Localization.GetString("notApplicable");
@@ -453,8 +446,7 @@ namespace Fo76ini
                 //modItem.SubItems.Add(size);
                 modItem.SubItems.Add(rootDir);
                 modItem.SubItems.Add(archiveName);
-                modItem.SubItems.Add(format);
-                modItem.SubItems.Add(compressed);
+                modItem.SubItems.Add(archivePreset);
                 modItem.SubItems.Add(frozen);
                 modItem.Checked = enabled;
                 if (selectedIndex == i)

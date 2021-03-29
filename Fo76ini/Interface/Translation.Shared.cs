@@ -12,9 +12,9 @@ namespace Fo76ini
             localizedStrings["modsDeploymentNecessary"] = "Deployment necessary";
             //localizedStrings["modsAllDone"] = "All set";
             localizedStrings["modsFailed"] = "Something went wrong, see log files for details.";
-            localizedStrings["modsTableFormatGeneral"] = "General";
-            localizedStrings["modsTableFormatTextures"] = "Textures";
-            localizedStrings["modsTableFormatAutoDetect"] = "Auto";
+            localizedStrings["modsTablePresetGeneral"] = "General";
+            localizedStrings["modsTablePresetTextures"] = "Textures";
+            localizedStrings["modsTablePresetSoundFX"] = "Sound FX";
             localizedStrings["modsTableTypeBundled"] = "Bundled";
             localizedStrings["modsTableTypeSeparate"] = "Separate";
             localizedStrings["modsTableTypeSeparateFrozen"] = "Separate (Frozen)";
@@ -36,6 +36,8 @@ namespace Fo76ini
             localizedStrings["no"] = "No";
             localizedStrings["valid"] = "Valid";
             localizedStrings["invalid"] = "Invalid";
+            localizedStrings["auto"] = "Auto";
+            localizedStrings["unknown"] = "Unknown";
             localizedStrings["nuclearwintermode"] = "Nuclear Winter";
             localizedStrings["adventuremode"] = "Adventure";
             localizedStrings["affectedValues"] = "Affected values";
