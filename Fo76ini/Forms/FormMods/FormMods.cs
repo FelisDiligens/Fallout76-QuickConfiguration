@@ -957,6 +957,42 @@ namespace Fo76ini
             }
         }
 
+        // Freeze mod(s)
+        private void toolStripButtonFreeze_Click(object sender, EventArgs e)
+        {
+            if (selectedIndex < 0)
+                return;
+            if (this.listViewMods.SelectedItems.Count > 1)
+            {
+                foreach (ListViewItem item in this.listViewMods.SelectedItems)
+                    Mods[item.Index].Freeze = true;
+            }
+            else
+            {
+                Mods[selectedIndex].Freeze = true;
+            }
+            UpdateModList();
+            UpdateStatusStrip();
+        }
+
+        // Unfreeze mod(s)
+        private void toolStripButtonModUnfreeze_Click(object sender, EventArgs e)
+        {
+            if (selectedIndex < 0)
+                return;
+            if (this.listViewMods.SelectedItems.Count > 1)
+            {
+                foreach (ListViewItem item in this.listViewMods.SelectedItems)
+                    Mods[item.Index].Freeze = false;
+            }
+            else
+            {
+                Mods[selectedIndex].Freeze = false;
+            }
+            UpdateModList();
+            UpdateStatusStrip();
+        }
+
         // Add mod archive
         private void toolStripButtonAddMod_Click(object sender, EventArgs e)
         {

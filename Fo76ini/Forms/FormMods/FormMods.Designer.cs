@@ -122,6 +122,7 @@
             this.toolStripButtonMoveDown = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonModOpenFolder = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonModUnfreeze = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonDeleteMod = new System.Windows.Forms.ToolStripButton();
             this.listViewMods = new System.Windows.Forms.ListView();
@@ -163,6 +164,8 @@
             this.toolStripStatusLabelSpacer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDeploymentStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonFreeze = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -1073,12 +1076,15 @@
             this.toolStripButtonMoveDown,
             this.toolStripSeparator3,
             this.toolStripButtonModOpenFolder,
+            this.toolStripSeparator5,
+            this.toolStripButtonFreeze,
+            this.toolStripButtonModUnfreeze,
             this.toolStripSeparator6,
             this.toolStripButtonDeleteMod});
             this.toolStrip1.Location = new System.Drawing.Point(3, 3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(31, 458);
+            this.toolStrip1.Size = new System.Drawing.Size(32, 458);
             this.toolStrip1.TabIndex = 44;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1171,6 +1177,18 @@
             this.toolStripButtonModOpenFolder.Size = new System.Drawing.Size(30, 30);
             this.toolStripButtonModOpenFolder.Text = "Open mod folder";
             this.toolStripButtonModOpenFolder.Click += new System.EventHandler(this.toolStripButtonModOpenFolder_Click);
+            // 
+            // toolStripButtonModUnfreeze
+            // 
+            this.toolStripButtonModUnfreeze.AutoSize = false;
+            this.toolStripButtonModUnfreeze.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonModUnfreeze.Image = global::Fo76ini.Properties.Resources.thaw_24;
+            this.toolStripButtonModUnfreeze.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonModUnfreeze.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonModUnfreeze.Name = "toolStripButtonModUnfreeze";
+            this.toolStripButtonModUnfreeze.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonModUnfreeze.Text = "Unfreeze mod";
+            this.toolStripButtonModUnfreeze.Click += new System.EventHandler(this.toolStripButtonModUnfreeze_Click);
             // 
             // toolStripSeparator6
             // 
@@ -1542,6 +1560,25 @@
             this.pictureBoxModsLoadingGIF.TabStop = false;
             this.pictureBoxModsLoadingGIF.Visible = false;
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(28, 6);
+            // 
+            // toolStripButtonFreeze
+            // 
+            this.toolStripButtonFreeze.AutoSize = false;
+            this.toolStripButtonFreeze.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonFreeze.Image = global::Fo76ini.Properties.Resources.snowflake_24;
+            this.toolStripButtonFreeze.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonFreeze.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFreeze.Name = "toolStripButtonFreeze";
+            this.toolStripButtonFreeze.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonFreeze.Text = "Unfreeze mod";
+            this.toolStripButtonFreeze.ToolTipText = "Freeze mod";
+            this.toolStripButtonFreeze.Click += new System.EventHandler(this.toolStripButtonFreeze_Click);
+            // 
             // FormMods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1736,5 +1773,8 @@
         private System.Windows.Forms.TextBox textBoxModFolderName;
         private System.Windows.Forms.Label labelModFolderName;
         private System.Windows.Forms.ColumnHeader columnHeaderArchivePreset;
+        private System.Windows.Forms.ToolStripButton toolStripButtonModUnfreeze;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripButtonFreeze;
     }
 }
