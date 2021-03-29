@@ -114,6 +114,8 @@ namespace Fo76ini
                 return;
             if (!game.ValidateGamePath())
                 return;
+            if (!Directory.Exists(Path.Combine(game.GamePath, "Mods")))
+                Directory.CreateDirectory(Path.Combine(game.GamePath, "Mods"));
             try
             {
                 CloseSidePanel();
