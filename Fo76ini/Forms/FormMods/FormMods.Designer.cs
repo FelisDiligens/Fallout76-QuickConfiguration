@@ -1038,12 +1038,10 @@
             // 
             // labelModSummary
             // 
-            this.labelModSummary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelModSummary.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelModSummary.Location = new System.Drawing.Point(6, 5);
             this.labelModSummary.Name = "labelModSummary";
-            this.labelModSummary.Size = new System.Drawing.Size(331, 55);
+            this.labelModSummary.Size = new System.Drawing.Size(365, 55);
             this.labelModSummary.TabIndex = 55;
             this.labelModSummary.Text = "< Summary goes here >";
             // 
