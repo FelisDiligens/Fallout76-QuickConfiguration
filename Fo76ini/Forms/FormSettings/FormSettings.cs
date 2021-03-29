@@ -130,6 +130,10 @@ namespace Fo76ini.Forms.FormSettings
             LinkedTweaks.LinkInfo(checkBoxNWRenameDLL, toolTip, renameDLLsTweak);
             LinkedTweaks.LinkInfo(checkBoxNWAutoDeployMods, toolTip, deployModsOnNWModeTweak);
             LinkedTweaks.LinkInfo(checkBoxNWAutoDisableMods, toolTip, removeModsOnNWModeTweak);
+            LinkedTweaks.LinkInfo(labelArchiveTwoPath, toolTip, archiveTwoPathTweak);
+            LinkedTweaks.LinkInfo(labelSevenZipPath, toolTip, sevenZipPathTweak);
+            LinkedTweaks.LinkInfo(textBoxArchiveTwoPath, toolTip, archiveTwoPathTweak);
+            LinkedTweaks.LinkInfo(textBoxSevenZipPath, toolTip, sevenZipPathTweak);
         }
 
         public void LinkControlsToTweaks()

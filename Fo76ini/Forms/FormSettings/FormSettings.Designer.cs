@@ -41,6 +41,12 @@
             this.groupBoxActions = new System.Windows.Forms.GroupBox();
             this.linkLabelEnableDangerZone = new System.Windows.Forms.LinkLabel();
             this.groupBoxOptions = new System.Windows.Forms.GroupBox();
+            this.buttonPickSevenZipPath = new System.Windows.Forms.Button();
+            this.textBoxSevenZipPath = new System.Windows.Forms.TextBox();
+            this.buttonArchiveTwoPath = new System.Windows.Forms.Button();
+            this.textBoxArchiveTwoPath = new System.Windows.Forms.TextBox();
+            this.labelSevenZipPath = new System.Windows.Forms.Label();
+            this.labelArchiveTwoPath = new System.Windows.Forms.Label();
             this.checkBoxReadOnly = new System.Windows.Forms.CheckBox();
             this.groupBoxNuclearWinterMode = new System.Windows.Forms.GroupBox();
             this.checkBoxNWAutoDeployMods = new System.Windows.Forms.CheckBox();
@@ -141,14 +147,9 @@
             this.backgroundWorkerDownloadLanguages = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerSSOLogin = new System.ComponentModel.BackgroundWorker();
-            this.labelArchiveTwoPath = new System.Windows.Forms.Label();
-            this.labelSevenZipPath = new System.Windows.Forms.Label();
-            this.textBoxArchiveTwoPath = new System.Windows.Forms.TextBox();
-            this.buttonArchiveTwoPath = new System.Windows.Forms.Button();
-            this.buttonPickSevenZipPath = new System.Windows.Forms.Button();
-            this.textBoxSevenZipPath = new System.Windows.Forms.TextBox();
             this.openFileDialogArchiveTwoPath = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
+            this.groupBoxPaths = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxActions.SuspendLayout();
@@ -178,6 +179,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).BeginInit();
+            this.groupBoxPaths.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -193,6 +195,7 @@
             // 
             // tabPageGeneral
             // 
+            this.tabPageGeneral.Controls.Add(this.groupBoxPaths);
             this.tabPageGeneral.Controls.Add(this.groupBoxActions);
             this.tabPageGeneral.Controls.Add(this.groupBoxOptions);
             this.tabPageGeneral.Controls.Add(this.groupBoxNuclearWinterMode);
@@ -211,7 +214,7 @@
             this.groupBoxActions.Controls.Add(this.linkLabelEnableDangerZone);
             this.groupBoxActions.Location = new System.Drawing.Point(6, 227);
             this.groupBoxActions.Name = "groupBoxActions";
-            this.groupBoxActions.Size = new System.Drawing.Size(390, 78);
+            this.groupBoxActions.Size = new System.Drawing.Size(390, 91);
             this.groupBoxActions.TabIndex = 43;
             this.groupBoxActions.TabStop = false;
             this.groupBoxActions.Text = "Actions";
@@ -231,19 +234,73 @@
             // 
             // groupBoxOptions
             // 
-            this.groupBoxOptions.Controls.Add(this.buttonPickSevenZipPath);
-            this.groupBoxOptions.Controls.Add(this.textBoxSevenZipPath);
-            this.groupBoxOptions.Controls.Add(this.buttonArchiveTwoPath);
-            this.groupBoxOptions.Controls.Add(this.textBoxArchiveTwoPath);
-            this.groupBoxOptions.Controls.Add(this.labelSevenZipPath);
-            this.groupBoxOptions.Controls.Add(this.labelArchiveTwoPath);
             this.groupBoxOptions.Controls.Add(this.checkBoxReadOnly);
             this.groupBoxOptions.Location = new System.Drawing.Point(402, 6);
             this.groupBoxOptions.Name = "groupBoxOptions";
-            this.groupBoxOptions.Size = new System.Drawing.Size(358, 115);
+            this.groupBoxOptions.Size = new System.Drawing.Size(358, 59);
             this.groupBoxOptions.TabIndex = 42;
             this.groupBoxOptions.TabStop = false;
             this.groupBoxOptions.Text = "Options";
+            // 
+            // buttonPickSevenZipPath
+            // 
+            this.buttonPickSevenZipPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPickSevenZipPath.Location = new System.Drawing.Point(322, 48);
+            this.buttonPickSevenZipPath.Name = "buttonPickSevenZipPath";
+            this.buttonPickSevenZipPath.Size = new System.Drawing.Size(28, 23);
+            this.buttonPickSevenZipPath.TabIndex = 46;
+            this.buttonPickSevenZipPath.Text = "...";
+            this.buttonPickSevenZipPath.UseVisualStyleBackColor = true;
+            this.buttonPickSevenZipPath.Click += new System.EventHandler(this.buttonPickSevenZipPath_Click);
+            // 
+            // textBoxSevenZipPath
+            // 
+            this.textBoxSevenZipPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSevenZipPath.Location = new System.Drawing.Point(89, 50);
+            this.textBoxSevenZipPath.Name = "textBoxSevenZipPath";
+            this.textBoxSevenZipPath.Size = new System.Drawing.Size(227, 20);
+            this.textBoxSevenZipPath.TabIndex = 45;
+            this.textBoxSevenZipPath.TextChanged += new System.EventHandler(this.textBoxSevenZipPath_TextChanged);
+            // 
+            // buttonArchiveTwoPath
+            // 
+            this.buttonArchiveTwoPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonArchiveTwoPath.Location = new System.Drawing.Point(322, 19);
+            this.buttonArchiveTwoPath.Name = "buttonArchiveTwoPath";
+            this.buttonArchiveTwoPath.Size = new System.Drawing.Size(28, 23);
+            this.buttonArchiveTwoPath.TabIndex = 44;
+            this.buttonArchiveTwoPath.Text = "...";
+            this.buttonArchiveTwoPath.UseVisualStyleBackColor = true;
+            this.buttonArchiveTwoPath.Click += new System.EventHandler(this.buttonPickArchiveTwoPath_Click);
+            // 
+            // textBoxArchiveTwoPath
+            // 
+            this.textBoxArchiveTwoPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxArchiveTwoPath.Location = new System.Drawing.Point(89, 21);
+            this.textBoxArchiveTwoPath.Name = "textBoxArchiveTwoPath";
+            this.textBoxArchiveTwoPath.Size = new System.Drawing.Size(227, 20);
+            this.textBoxArchiveTwoPath.TabIndex = 43;
+            this.textBoxArchiveTwoPath.TextChanged += new System.EventHandler(this.textBoxArchiveTwoPath_TextChanged);
+            // 
+            // labelSevenZipPath
+            // 
+            this.labelSevenZipPath.AutoSize = true;
+            this.labelSevenZipPath.Location = new System.Drawing.Point(37, 53);
+            this.labelSevenZipPath.Name = "labelSevenZipPath";
+            this.labelSevenZipPath.Size = new System.Drawing.Size(46, 13);
+            this.labelSevenZipPath.TabIndex = 42;
+            this.labelSevenZipPath.Text = "7z Path:";
+            // 
+            // labelArchiveTwoPath
+            // 
+            this.labelArchiveTwoPath.AutoSize = true;
+            this.labelArchiveTwoPath.Location = new System.Drawing.Point(8, 24);
+            this.labelArchiveTwoPath.Name = "labelArchiveTwoPath";
+            this.labelArchiveTwoPath.Size = new System.Drawing.Size(77, 13);
+            this.labelArchiveTwoPath.TabIndex = 41;
+            this.labelArchiveTwoPath.Text = "Archive2 Path:";
             // 
             // checkBoxReadOnly
             // 
@@ -262,9 +319,9 @@
             this.groupBoxNuclearWinterMode.Controls.Add(this.labelNWdlloptions);
             this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWAutoDisableMods);
             this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWRenameDLL);
-            this.groupBoxNuclearWinterMode.Location = new System.Drawing.Point(402, 143);
+            this.groupBoxNuclearWinterMode.Location = new System.Drawing.Point(402, 71);
             this.groupBoxNuclearWinterMode.Name = "groupBoxNuclearWinterMode";
-            this.groupBoxNuclearWinterMode.Size = new System.Drawing.Size(358, 162);
+            this.groupBoxNuclearWinterMode.Size = new System.Drawing.Size(358, 150);
             this.groupBoxNuclearWinterMode.TabIndex = 41;
             this.groupBoxNuclearWinterMode.TabStop = false;
             this.groupBoxNuclearWinterMode.Text = "Nuclear Winter options";
@@ -1367,66 +1424,6 @@
             // 
             this.backgroundWorkerSSOLogin.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSSOLogin_DoWork);
             // 
-            // labelArchiveTwoPath
-            // 
-            this.labelArchiveTwoPath.AutoSize = true;
-            this.labelArchiveTwoPath.Location = new System.Drawing.Point(10, 49);
-            this.labelArchiveTwoPath.Name = "labelArchiveTwoPath";
-            this.labelArchiveTwoPath.Size = new System.Drawing.Size(77, 13);
-            this.labelArchiveTwoPath.TabIndex = 41;
-            this.labelArchiveTwoPath.Text = "Archive2 Path:";
-            // 
-            // labelSevenZipPath
-            // 
-            this.labelSevenZipPath.AutoSize = true;
-            this.labelSevenZipPath.Location = new System.Drawing.Point(39, 78);
-            this.labelSevenZipPath.Name = "labelSevenZipPath";
-            this.labelSevenZipPath.Size = new System.Drawing.Size(46, 13);
-            this.labelSevenZipPath.TabIndex = 42;
-            this.labelSevenZipPath.Text = "7z Path:";
-            // 
-            // textBoxArchiveTwoPath
-            // 
-            this.textBoxArchiveTwoPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxArchiveTwoPath.Location = new System.Drawing.Point(91, 46);
-            this.textBoxArchiveTwoPath.Name = "textBoxArchiveTwoPath";
-            this.textBoxArchiveTwoPath.Size = new System.Drawing.Size(227, 20);
-            this.textBoxArchiveTwoPath.TabIndex = 43;
-            this.textBoxArchiveTwoPath.TextChanged += new System.EventHandler(this.textBoxArchiveTwoPath_TextChanged);
-            // 
-            // buttonArchiveTwoPath
-            // 
-            this.buttonArchiveTwoPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonArchiveTwoPath.Location = new System.Drawing.Point(324, 44);
-            this.buttonArchiveTwoPath.Name = "buttonArchiveTwoPath";
-            this.buttonArchiveTwoPath.Size = new System.Drawing.Size(28, 23);
-            this.buttonArchiveTwoPath.TabIndex = 44;
-            this.buttonArchiveTwoPath.Text = "...";
-            this.buttonArchiveTwoPath.UseVisualStyleBackColor = true;
-            this.buttonArchiveTwoPath.Click += new System.EventHandler(this.buttonPickArchiveTwoPath_Click);
-            // 
-            // buttonPickSevenZipPath
-            // 
-            this.buttonPickSevenZipPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPickSevenZipPath.Location = new System.Drawing.Point(324, 73);
-            this.buttonPickSevenZipPath.Name = "buttonPickSevenZipPath";
-            this.buttonPickSevenZipPath.Size = new System.Drawing.Size(28, 23);
-            this.buttonPickSevenZipPath.TabIndex = 46;
-            this.buttonPickSevenZipPath.Text = "...";
-            this.buttonPickSevenZipPath.UseVisualStyleBackColor = true;
-            this.buttonPickSevenZipPath.Click += new System.EventHandler(this.buttonPickSevenZipPath_Click);
-            // 
-            // textBoxSevenZipPath
-            // 
-            this.textBoxSevenZipPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSevenZipPath.Location = new System.Drawing.Point(91, 75);
-            this.textBoxSevenZipPath.Name = "textBoxSevenZipPath";
-            this.textBoxSevenZipPath.Size = new System.Drawing.Size(227, 20);
-            this.textBoxSevenZipPath.TabIndex = 45;
-            this.textBoxSevenZipPath.TextChanged += new System.EventHandler(this.textBoxSevenZipPath_TextChanged);
-            // 
             // openFileDialogArchiveTwoPath
             // 
             this.openFileDialogArchiveTwoPath.FileName = "Archive2.exe";
@@ -1438,6 +1435,21 @@
             this.openFileDialogSevenZipPath.FileName = "7z.exe";
             this.openFileDialogSevenZipPath.Filter = "Executable|*.exe";
             this.openFileDialogSevenZipPath.FilterIndex = 2;
+            // 
+            // groupBoxPaths
+            // 
+            this.groupBoxPaths.Controls.Add(this.buttonPickSevenZipPath);
+            this.groupBoxPaths.Controls.Add(this.textBoxArchiveTwoPath);
+            this.groupBoxPaths.Controls.Add(this.textBoxSevenZipPath);
+            this.groupBoxPaths.Controls.Add(this.labelArchiveTwoPath);
+            this.groupBoxPaths.Controls.Add(this.buttonArchiveTwoPath);
+            this.groupBoxPaths.Controls.Add(this.labelSevenZipPath);
+            this.groupBoxPaths.Location = new System.Drawing.Point(402, 227);
+            this.groupBoxPaths.Name = "groupBoxPaths";
+            this.groupBoxPaths.Size = new System.Drawing.Size(358, 91);
+            this.groupBoxPaths.TabIndex = 44;
+            this.groupBoxPaths.TabStop = false;
+            this.groupBoxPaths.Text = "Paths";
             // 
             // FormSettings
             // 
@@ -1496,6 +1508,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).EndInit();
+            this.groupBoxPaths.ResumeLayout(false);
+            this.groupBoxPaths.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1615,5 +1629,6 @@
         private System.Windows.Forms.TextBox textBoxSevenZipPath;
         private System.Windows.Forms.OpenFileDialog openFileDialogArchiveTwoPath;
         private System.Windows.Forms.OpenFileDialog openFileDialogSevenZipPath;
+        private System.Windows.Forms.GroupBox groupBoxPaths;
     }
 }
