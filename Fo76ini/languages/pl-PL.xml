@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Polski" iso="pl-PL" author="Gray770" version="1.9.0h2">
+<Language name="Polski" iso="pl-PL" author="Gray770" version="1.9.2">
   <Strings>
     <!--
         Strings
@@ -18,9 +18,9 @@
     <String text="Unknown" id="unknown" />
     <String text="Wdrożenie wymagane" id="modsDeploymentNecessary" />
     <String text="Coś poszło nie tak, sprawdź logi." id="modsFailed" />
-    <String text="Ogólne" id="modsTableFormatGeneral" />
-    <String text="Tekstury" id="modsTableFormatTextures" />
-    <String text="Auto" id="modsTableFormatAutoDetect" />
+    <String text="General" id="modsTablePresetGeneral" />
+    <String text="Textures" id="modsTablePresetTextures" />
+    <String text="Sound FX" id="modsTablePresetSoundFX" />
     <String text="Zapakowane" id="modsTableTypeBundled" />
     <String text="Oddzielne" id="modsTableTypeSeparate" />
     <String text="Oddzielne (Zamrożone)" id="modsTableTypeSeparateFrozen" />
@@ -38,6 +38,7 @@
     <String text="Nie" id="no" />
     <String text="Prawidłowy" id="valid" />
     <String text="Nieprawidłowy" id="invalid" />
+    <String text="Auto" id="auto" />
     <String text="Nuclear Winter" id="nuclearwintermode" />
     <String text="Adventure" id="adventuremode" />
     <String text="Zmienione wartości" id="affectedValues" />
@@ -45,6 +46,9 @@
     <String text="Już poparłeś tą modyfikacje. You have endorsed this mod." id="endorsedText" />
     <String text="Nie poparłeś jeszcze tej modyfikacji." id="notEndorsedText" />
     <String text="Zrezygnowałeś z poparcia tej modyfikacji." id="abstainedText" />
+    <String text="Ogólne" id="modsTableFormatGeneral" />
+    <String text="Tekstury" id="modsTableFormatTextures" />
+    <String text="Auto" id="modsTableFormatAutoDetect" />
     <String text="Gotowe" id="modsAllDone" />
     <String text="Nigdy" id="nmResetTimeNever" />
     <String text="Edytuj {0}" id="modDetailsTitle" />
@@ -428,7 +432,7 @@ Sprawia, że woda znikna lub staje się czarna jak smoła!!</Description>
   ⇨ Ultra - 7000
   ⇨ Wysokie - 5500
   ⇨ Średnie - 4500</Description>
-	<Description id="Fo76ini.Tweaks.Audio.EnableAudioTweak">Jeśli odznaczone, w grze nie będzie dźwięku.</Description>
+    <Description id="Fo76ini.Tweaks.Audio.EnableAudioTweak">Jeśli odznaczone, w grze nie będzie dźwięku.</Description>
     <Description id="Fo76ini.Tweaks.Audio.PlayMainMenuMusicTweak">Jeśli odznaczone, gra włączy się bez muzyki w menu.</Description>
     <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal0">Zmienia głośność 'Muzyka w menu'</Description>
     <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal1">Zmienia głośność 'Stacje radiowe w świecie'</Description>
@@ -484,6 +488,8 @@ Działa tylko gdy gra jest uruchamiana przez narzędzie</Description>
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.RenameDLLsTweak">Gdy zaznaczone, zmienia nazwę każdego pliku *.dll który nie należy do gry.</Description>
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.DeployModsOnNWModeTweak">Gdy zaznaczone, modyfikacje zostaną wdrożone gdy tryb Nuclear Winter jest wyłączony.</Description>
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.RemoveModsOnNWModeTweak">Gdy zaznaczone, modyfikacje zostaną usunięte gdy tryb Nuclear Winter jest włącozny.</Description>
+    <Description id="Fo76ini.Tweaks.Config.ArchiveTwoPathTweak">Saves the path where it will load Archive2 from.</Description>
+    <Description id="Fo76ini.Tweaks.Config.SevenZipPathTweak">Saves the path where it will load 7-zip from.</Description>
   </TweakDescriptions>
   <FormWhatsNew title="Co nowego?">
     <!--
@@ -527,6 +533,9 @@ Działa tylko gdy gra jest uruchamiana przez narzędzie</Description>
             <CheckBox text="Włącz modyfikacje" id="checkBoxModDetailsEnabled" />
           </Panel>
           <Panel id="panelModDetailsInner">
+            <GroupBox text="Notes" id="groupBoxNotes">
+              <!-- Group "Notes" -->
+            </GroupBox>
             <GroupBox text="Dodaj / zastąp pliki modyfikacji" id="groupBoxModReplace">
               <!-- Group "Dodaj / zastąp pliki modyfikacji" -->
               <Label text="Przeciągnij i upuśc pliki/foldery w pole po lewej by dodać/zastąpić pliki." id="labelModDetailsReplace" />
@@ -553,6 +562,7 @@ Jest to przydatne gdy archiwum jest wielkie (1GiB lub więcej)</Tooltip>
             </GroupBox>
             <GroupBox text="Detale" id="groupBoxModDetailsDetails">
               <!-- Group "Detale" -->
+              <Label text="Folder name:" id="labelModFolderName" />
               <Panel id="panelModDetailsNexusMods">
                 <LinkLabel text="Ustaw najnowszą wersje" id="linkLabelModSetLatestVersion" />
                 <Label text="Najnowsza wersja:" id="labelModLatestVersionDesc" />
@@ -571,17 +581,18 @@ Jest to przydatne gdy archiwum jest wielkie (1GiB lub więcej)</Tooltip>
           <ToolStripButton text="Przenieść w góre" id="toolStripButtonMoveUp" />
           <ToolStripButton text="Przenieść w dół" id="toolStripButtonMoveDown" />
           <ToolStripButton text="Otwórz folder modow" id="toolStripButtonModOpenFolder" />
+          <ToolStripButton text="Odmróź modyfikacje" id="toolStripButtonFreeze" />
+          <ToolStripButton text="Odmróź modyfikacje" id="toolStripButtonModUnfreeze" />
           <ToolStripButton text="Usuń modyfikacje" id="toolStripButtonDeleteMod" />
         </ToolStrip>
         <ListView id="listViewMods">
           <Column>Nazwa modyfikacji</Column>
           <Column>Wersja</Column>
           <Column>Typ</Column>
-          <Column>Instalacja</Column>
+          <Column>Zainstalowane w</Column>
           <Column>Nazwa archiwum</Column>
-          <Column>Format archiwum</Column>
-          <Column>Skompresowane</Column>
-          <Column>Zamrożone</Column>
+          <Column>Preset archiwum</Column>
+          <Column>Zamrożone?</Column>
         </ListView>
       </TabPage>
       <TabPage text="Ustawienia" id="tabPageModsSettings">
@@ -737,7 +748,7 @@ Więcej o Hard-Links możesz przeczytać w artykule "How to install mods using F
           <GroupBox text="Menu główne" id="groupBoxMainMenu">
             <!-- Group "Menu główne" -->
             <CheckBox text="Pokaż wiadomości przy włączeniu gry" id="checkBoxSkipSplash" />
-            <CheckBox text="Odtwórz intro" id="checkBoxIntroVideos" />
+            <CheckBox text="Skip intro videos" id="checkBoxSkipIntroVideos" />
           </GroupBox>
         </Panel>
         <GroupBox text="Logowanie" id="groupBoxLogin">
@@ -1034,6 +1045,13 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
     <TabControl id="tabControl1">
       <TabPage text="Ogólne" id="tabPageGeneral">
         <!-- ********** Tab "Ogólne" ********** -->
+        <GroupBox text="Paths" id="groupBoxPaths">
+          <!-- Group "Paths" -->
+          <Button text="..." id="buttonPickSevenZipPath" />
+          <Label text="Archive2 Path:" id="labelArchiveTwoPath" />
+          <Button text="..." id="buttonArchiveTwoPath" />
+          <Label text="7z Path:" id="labelSevenZipPath" />
+        </GroupBox>
         <GroupBox text="Ogólne" id="groupBoxActions">
           <!-- Group "Ogólne" -->
           <LinkLabel text="⚠️ Włącz Danger Zone" id="linkLabelEnableDangerZone" />
@@ -1112,6 +1130,7 @@ Zmiany w: Fallout76Prefs.ini</Tooltip>
       <TabPage text="NexusMods" id="tabPageNexusMods">
         <!-- ********** Tab "NexusMods" ********** -->
         <Panel id="panel2">
+          <LinkLabel text="Login doesn't work? Click here to use your API key instead." id="linkLabelEnableAPIKey" />
           <LinkLabel text="Jak mogę się zalogować za pomocą klucza API?" id="linkLabelAPIKeyHelp" />
           <Button text="Zaloguj się kluczem" id="buttonNMLoginManually" />
           <Label text="Klucz API" id="labelAPIKey" />
