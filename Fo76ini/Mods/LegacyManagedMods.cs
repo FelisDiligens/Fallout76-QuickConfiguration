@@ -230,6 +230,9 @@ namespace Fo76ini.Mods
             // "bundled.ba2" => "Bundled.ba2"
             if (File.Exists(Path.Combine(mods.GamePath, "Data", "bundled.ba2")))
             {
+                if (File.Exists(Path.Combine(mods.GamePath, "Data", "Bundled.ba2")))
+                    File.Delete(Path.Combine(mods.GamePath, "Data", "Bundled.ba2"));
+
                 File.Move(
                     Path.Combine(mods.GamePath, "Data", "bundled.ba2"),
                     Path.Combine(mods.GamePath, "Data", "Bundled.ba2")
@@ -242,6 +245,9 @@ namespace Fo76ini.Mods
             // "bundled_textures.ba2" => "Bundled - Textures.ba2"
             if (File.Exists(Path.Combine(mods.GamePath, "Data", "bundled_textures.ba2")))
             {
+                if (File.Exists(Path.Combine(mods.GamePath, "Data", "Bundled - Textures.ba2")))
+                    File.Delete(Path.Combine(mods.GamePath, "Data", "Bundled - Textures.ba2"));
+
                 File.Move(
                     Path.Combine(mods.GamePath, "Data", "bundled_textures.ba2"),
                     Path.Combine(mods.GamePath, "Data", "Bundled - Textures.ba2")
@@ -254,6 +260,9 @@ namespace Fo76ini.Mods
             // "bundled_sounds.ba2" => "Bundled - Sounds.ba2"
             if (File.Exists(Path.Combine(mods.GamePath, "Data", "bundled_sounds.ba2")))
             {
+                if (File.Exists(Path.Combine(mods.GamePath, "Data", "Bundled - Sounds.ba2")))
+                    File.Delete(Path.Combine(mods.GamePath, "Data", "Bundled - Sounds.ba2"));
+
                 File.Move(
                     Path.Combine(mods.GamePath, "Data", "bundled_sounds.ba2"),
                     Path.Combine(mods.GamePath, "Data", "Bundled - Sounds.ba2")
@@ -271,6 +280,9 @@ namespace Fo76ini.Mods
             // "bundled.ba2" => "Bundled.ba2"
             if (File.Exists(Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled.ba2")))
             {
+                if (File.Exists(Path.Combine(mods.GamePath, "FrozenData", "Bundled.ba2")))
+                    File.Delete(Path.Combine(mods.GamePath, "FrozenData", "Bundled.ba2"));
+
                 File.Move(
                     Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled.ba2"),
                     Path.Combine(mods.GamePath, "FrozenData", "Bundled.ba2")
@@ -280,6 +292,9 @@ namespace Fo76ini.Mods
             // "bundled_textures.ba2" => "Bundled - Textures.ba2"
             if (File.Exists(Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled_textures.ba2")))
             {
+                if (File.Exists(Path.Combine(mods.GamePath, "FrozenData", "Bundled - Textures.ba2")))
+                    File.Delete(Path.Combine(mods.GamePath, "FrozenData", "Bundled - Textures.ba2"));
+
                 File.Move(
                     Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled_textures.ba2"),
                     Path.Combine(mods.GamePath, "FrozenData", "Bundled - Textures.ba2")
@@ -289,6 +304,9 @@ namespace Fo76ini.Mods
             // "bundled_sounds.ba2" => "Bundled - Sounds.ba2"
             if (File.Exists(Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled_sounds.ba2")))
             {
+                if (File.Exists(Path.Combine(mods.GamePath, "FrozenData", "Bundled - Sounds.ba2")))
+                    File.Delete(Path.Combine(mods.GamePath, "FrozenData", "Bundled - Sounds.ba2"));
+
                 File.Move(
                     Path.Combine(mods.GamePath, "Mods", "_frozen", "bundled_sounds.ba2"),
                     Path.Combine(mods.GamePath, "FrozenData", "Bundled - Sounds.ba2")
