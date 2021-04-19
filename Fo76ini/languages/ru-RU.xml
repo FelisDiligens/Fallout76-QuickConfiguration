@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.1">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.2">
   <Strings>
     <!--
         Strings
@@ -18,9 +18,9 @@
     <String text="Неизвестно" id="unknown" />
     <String text="Необходима установка" id="modsDeploymentNecessary" />
     <String text="Что-то пошло не так, смотрите лог-файлы для получения подробной информации." id="modsFailed" />
-    <String text="По-умолчанию" id="modsTableFormatGeneral" />
-    <String text="Текстуры" id="modsTableFormatTextures" />
-    <String text="Автовыбор" id="modsTableFormatAutoDetect" />
+    <String text="По-умолчанию" id="modsTablePresetGeneral" />
+    <String text="Текстуры" id="modsTablePresetTextures" />
+    <String text="Звук" id="modsTablePresetSoundFX" />
     <String text="Объединённый" id="modsTableTypeBundled" />
     <String text="Отдельный" id="modsTableTypeSeparate" />
     <String text="Отдельный (Заморожен)" id="modsTableTypeSeparateFrozen" />
@@ -38,6 +38,7 @@
     <String text="Нет" id="no" />
     <String text="Верный" id="valid" />
     <String text="Неверный" id="invalid" />
+    <String text="Авто" id="auto" />
     <String text="Nuclear Winter" id="nuclearwintermode" />
     <String text="Приключение" id="adventuremode" />
     <String text="Затронутые значения" id="affectedValues" />
@@ -45,6 +46,9 @@
     <String text="Вы поддержали этот мод." id="endorsedText" />
     <String text="Вы не поддерживали этот мод." id="notEndorsedText" />
     <String text="Вы воздержались от поддержки этого мода." id="abstainedText" />
+    <String text="По-умолчанию" id="modsTableFormatGeneral" />
+    <String text="Текстуры" id="modsTableFormatTextures" />
+    <String text="Автовыбор" id="modsTableFormatAutoDetect" />
     <String text="Всё установлено" id="modsAllDone" />
     <String text="Никогда" id="nmResetTimeNever" />
     <String text="Править {0}" id="modDetailsTitle" />
@@ -475,6 +479,8 @@
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.RenameDLLsTweak">Если включено, все файлы *.dll, которые не принадлежат игре, будут переименованы.</Description>
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.DeployModsOnNWModeTweak">Если включено, моды будут устанавливаться, когда режим Nuclear Winter отключен.</Description>
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.RemoveModsOnNWModeTweak">Если включено, моды будут отключаться, когда режим Nuclear Winter включен.</Description>
+    <Description id="Fo76ini.Tweaks.Config.ArchiveTwoPathTweak">Сохраняет путь, по которому будет загружаться Archive2.</Description>
+    <Description id="Fo76ini.Tweaks.Config.SevenZipPathTweak">Сохраняет путь, по которому будет загружаться 7-zip.</Description>
   </TweakDescriptions>
   <FormWhatsNew title="Что нового?">
     <!--
@@ -519,7 +525,7 @@
           </Panel>
           <Panel id="panelModDetailsInner">
             <GroupBox text="Заметки" id="groupBoxNotes">
-              <!-- Group "Notes" -->
+              <!-- Group "Заметки" -->
             </GroupBox>
             <GroupBox text="Добавление/замена файлов модов" id="groupBoxModReplace">
               <!-- Group "Добавление/замена файлов модов" -->
@@ -566,6 +572,8 @@
           <ToolStripButton text="Выше" id="toolStripButtonMoveUp" />
           <ToolStripButton text="Ниже" id="toolStripButtonMoveDown" />
           <ToolStripButton text="Открыть папку" id="toolStripButtonModOpenFolder" />
+          <ToolStripButton text="Разморозить мод" id="toolStripButtonFreeze" />
+          <ToolStripButton text="Разморозить мод" id="toolStripButtonModUnfreeze" />
           <ToolStripButton text="Удалить мод" id="toolStripButtonDeleteMod" />
         </ToolStrip>
         <ListView id="listViewMods">
@@ -575,7 +583,6 @@
           <Column>Путь установки</Column>
           <Column>Имя архива</Column>
           <Column>Формат архива</Column>
-          <Column>Сжатый?</Column>
           <Column>Заморожен?</Column>
         </ListView>
       </TabPage>
@@ -1028,6 +1035,13 @@
     <TabControl id="tabControl1">
       <TabPage text="Основные" id="tabPageGeneral">
         <!-- ********** Tab "Основные" ********** -->
+        <GroupBox text="Расположение" id="groupBoxPaths">
+          <!-- Group "Paths" -->
+          <Button text="..." id="buttonPickSevenZipPath" />
+          <Label text="Путь к Archive2:" id="labelArchiveTwoPath" />
+          <Button text="..." id="buttonArchiveTwoPath" />
+          <Label text="Путь к 7zip:" id="labelSevenZipPath" />
+        </GroupBox>
         <GroupBox text="Действия" id="groupBoxActions">
           <!-- Group "Действия" -->
           <LinkLabel text="⚠️ Включить Опасную зону" id="linkLabelEnableDangerZone" />
