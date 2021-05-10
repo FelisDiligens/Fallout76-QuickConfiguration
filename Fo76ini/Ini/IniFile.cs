@@ -76,7 +76,7 @@ namespace Fo76ini
             UpdateLastModifiedDate();
         }
 
-        public void Load()
+        public void Load(bool ignoreErrors = false)
         {
             try
             {
@@ -91,7 +91,9 @@ namespace Fo76ini
             {
                 // Add the path to the exception (since IniParser doesn't do this) and throw again:
                 // throw new IniParser.Exceptions.ParsingException($"{Path} couldn't be parsed: {e.Message}", e);
-                throw IniParsingException.CreateException(exc, FilePath);
+                if (!ignoreErrors)
+                    throw IniParsingException.CreateException(exc, FilePath);
+                data = new IniData();
             }
             UpdateLastModifiedDate();
         }

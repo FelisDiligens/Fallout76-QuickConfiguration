@@ -40,7 +40,7 @@ namespace Fo76ini
         public static void LoadConfig()
         {
             Config = new IniFile(ConfigPath);
-            Config.Load();
+            Config.Load(ignoreErrors: true);
         }
 
         public static void Load(GameInstance game)
