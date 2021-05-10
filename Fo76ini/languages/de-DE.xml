@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.9.2">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.9.2h1">
   <Strings>
     <!--
         Strings
@@ -365,135 +365,135 @@ Bitte wähle Archive2.exe</Messagebox>
         These are the descriptions of almost all tweaks.
         They appear in tool tips, when the user hovers over a tweak with the mouse cursor.
     -->
-    <Description id="Fo76ini.Tweaks.General.EnableSteamTweak">Enables/Disables Steam integration. Disable it to use your Bethesda.net account.</Description>
-    <Description id="Fo76ini.Tweaks.General.AutoSigninTweak">Enabling this, will skip the login prompt if you provide your login credentials.</Description>
-    <Description id="Fo76ini.Tweaks.General.IntroVideoTweak">When this option is enabled, the game will start without displaying the Bethesda logo video.</Description>
-    <Description id="Fo76ini.Tweaks.General.SkipStartupSplash">If enabled, the game won't bother you with news on startup.</Description>
-    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Main">If enabled, automatically tracks newly added 'Main' quests.</Description>
-    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Side">If enabled, automatically tracks newly added 'Side' quests.</Description>
-    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Misc">If enabled, automatically tracks newly added 'Miscellaneous' quests.</Description>
-    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Event">If enabled, automatically tracks newly added 'Event' quests.</Description>
-    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Other">If enabled, automatically tracks newly added 'Daily' quests.</Description>
-    <Description id="Fo76ini.Tweaks.Video.DisplaySizeTweak">Display resolution</Description>
-    <Description id="Fo76ini.Tweaks.Video.DisplayModeTweak">Changes the display mode.
+    <Description id="Fo76ini.Tweaks.General.EnableSteamTweak">(De)aktiviert die Steam-Integration. Deaktiviere es, um dein Bethesda.net Konto zu benutzen.</Description>
+    <Description id="Fo76ini.Tweaks.General.AutoSigninTweak">Wenn aktiv, wird die Anmeldeaufforderung übersprungen, wenn du die Anmeldedaten eingegeben hast.</Description>
+    <Description id="Fo76ini.Tweaks.General.IntroVideoTweak">Wenn diese Option aktiviert ist, wird das Spiel gestartet, ohne dass das Bethesda-Logo-Video angezeigt wird. </Description>
+    <Description id="Fo76ini.Tweaks.General.SkipStartupSplash">Wenn aktiviert, stört dich das Spiel beim Start nicht mit Neuigkeiten. </Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Main">Wenn aktiviert, werden neu hinzugefügte Hauptquests automatisch verfolgt.</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Side">Wenn aktiviert, werden neu hinzugefügte Nebenquests automatisch verfolgt. </Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Misc">Wenn aktiviert, werden neu hinzugefügte "Verschiedene" Quests automatisch verfolgt.</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Event">Wenn aktiviert, werden neu hinzugefügte Eventquests automatisch verfolgt.</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Other">Wenn aktiviert, werden neu hinzugefügte tägliche Quests automatisch verfolgt.</Description>
+    <Description id="Fo76ini.Tweaks.Video.DisplaySizeTweak">Bildschirmauflösung</Description>
+    <Description id="Fo76ini.Tweaks.Video.DisplayModeTweak">Ändert den Anzeigemodus.
 
-• Fullscreen: Real fullscreen mode (Best Performance)
-• Windowed: Starts the game in a window with border (aka. window decoration).
-• Borderless windowed: Allows you to painlessly Alt+Tab, but make sure the resolution matches your display's resolution. (Default)
-• Borderless windowed (Fullscreen): Same as "Borderless windowed", but window will be maximized to fit your screen.
-This will look pixelated, if the resolution is lower than your display, as it uses Nearest Neighbor to upscale it.</Description>
-    <Description id="Fo76ini.Tweaks.Video.PresentIntervalTweak">Disabling this will uncap the frame rate.
+• Vollbild: Echter Vollbildmodus (beste Leistung)
+• Fenster: Startet das Spiel in einem Fenster mit Rahmen (auch bekannt als Fensterdekoration).
+• Randloses Fenster: Ermöglicht das problemlose Drücken von Alt + Tab. Achte jedoch darauf, dass die Auflösung mit der Auflösung deines Displays übereinstimmt. (Standard)
+• Randloses Fenster (Vollbild): Wie "Randloses Fenster", jedoch wird das Fenster so maximiert, dass es zu deiner Auflösung passt.
+Das sieht pixelig aus, wenn die Auflösung niedriger als deine Anzeige ist, da Nearest Neighbour verwendet wird, um sie zu skalieren.</Description>
+    <Description id="Fo76ini.Tweaks.Video.PresentIntervalTweak">Durch Deaktivieren dieser Option wird die Frameratebegrenzung aufgehoben.
 
-• Enable this if you experience screen tearing.
-• Disable this if you experience input lag.
+• Aktiviere diese Option, wenn Screen Tearing auftritt.
+• Deaktiviere diese Option, wenn Input Lag auftritt.
 
-⚠️ Enabling this might NOT get rid of screen tearing.
-⚠️ If you disable this, it is recommended to cap the game to 60 FPS manually. (e.g. using NVIDIA's Control Panel)
+⚠️ Auch wenn es aktiviert ist, wird Screen Tearing möglicherweise NICHT entfernt.
+⚠️ Wenn es deaktiviert ist, wird generell empfohlen, das Spiel manuell auf 60 FPS zu begrenzen. (z.B. unter Verwendung der NVIDIA-Systemsteuerung)
 
-ℹ️ Uncapped frame rate shouldn't make the physics go haywire like in older titles,
-as this has been fixed by Bethesda quite a while ago (in 2018).
-Capping it to 60 is recommended nonetheless.</Description>
-    <Description id="Fo76ini.Tweaks.Video.WindowAlwaysActiveTweak">Disable this, if you want the game to pause if another window is in front.</Description>
-    <Description id="Fo76ini.Tweaks.Video.TopMostWindowTweak">Enabling this, will keep the game's window in the foreground.
-⚠️ This will prevent you from being able to Alt+Tab on single monitors.</Description>
-    <Description id="Fo76ini.Tweaks.Interface.FixHUD4to3RatioTweak">Fixes hidden / borked
-  • lock picking screen and
+ℹ️ Die unbegrenzte Bildrate sollte die Physik nicht wie bei älteren Titeln durcheinander bringen,
+da dies von Bethesda vor einiger Zeit (denke im Jahr 2018) behoben wurde.
+Es wird jedoch empfohlen, den Wert dennoch auf 60 zu begrenzen. </Description>
+    <Description id="Fo76ini.Tweaks.Video.WindowAlwaysActiveTweak">Deaktiviere diese Option, wenn das Spiel pausieren werden soll, wenn sich ein anderes Fenster vor dem Spiel befindet. </Description>
+    <Description id="Fo76ini.Tweaks.Video.TopMostWindowTweak">Wenn aktiv, bleibt das Spielfenster im Vordergrund.
+⚠️ Alt + Tab wird nicht mehr funktionieren, wenn du nur einen Monitor hast. </Description>
+    <Description id="Fo76ini.Tweaks.Interface.FixHUD4to3RatioTweak">Behebt verstecktes / verzerrtes
+  • Schlösserknacken Menu und
   • Power Armor HUD
-for 5:4 and 4:3 screens.
+für Bildschirme mit 5:4 und 4:3 Seitenverhältnis.
 
-⚠️ Mostly untested.</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.AntiAliasingTweak">Smoothes edges of objects.
+⚠️ Größstenteils ungetestet.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.AntiAliasingTweak">Glättet Kanten von Objekten.
 
-• TAA - Temporal Anti-Aliasing: Relatively expensive, can introduce artefacts, default
-• FXAA - Fast Approximate Anti-Aliasing: Slightly improves performance
-• Off - Improves performance, degrades visual quality
+• TAA - Temporales Anti-Aliasing: Relativ Hardware-hungrig, kann Artefakte einführen, Standard
+• FXAA - Fast Approximate Anti-Aliasing: Verbessert die Leistung geringfügig
+• Aus - Verbessert die Leistung, aber verschlechtert die visuelle Qualität
 
-⚠️ FXAA might not work. The game might just disable AA instead.</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.AnisotropicFilteringTweak">Reduces aliasing of textures when viewed from oblique angles.</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.EnableDepthOfFieldTweak">Disabling this will disable all Depth of Field effects.</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.RadialBlurTweak">Blurs the screen when the player is hurt (e.g. hit by bullets) or under water.
-⚠️ Disabling this might result in a clear view underwater.</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.WaterDisplacementsTweak">Enables/disables water displacement (ripples, waves).</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.ShadowMapResolutionTweak">Resolution of shadows. Higher settings will make shadows more detailed.</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.ShadowBlurrinessTweak">Blurs shadows. Especially useful, if you set a lower shadow resolution.</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.ShadowDistanceTweak">Sets the distance that shadows are rendered.
-  ⇨ Ultra is 150000
-  ⇨ High is 120000
-  ⇨ Medium is 90000
-  ⇨ Low is 60000</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.DirShadowSplitsTweak">Amount of "segments" of lower-res shadows at a distance.
-A value of 1 forces the game to render only the lowest resolution shadows.</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.BlendSplitDirShadowTweak">Distance at which the game will transition to lower-res a shadow "segment".
-MUST be a multiple of 12.</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.TAAPostOverlayTweak">Sharpens the image.
-Default: 0.21</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.TAAPostSharpenTweak">Sharpens the image.
-Default: 0.21
-Recommended: 0.4</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.ScreenSpaceReflectionsTweak">Enables/disables screen space reflections.
-Will make water disappear or become pitch black!</Description>
-    <Description id="Fo76ini.Tweaks.Graphics.GrassFadeDistanceTweak">Sets the distance grass will begin to fade.
-  ⇨ Ultra is 7000
-  ⇨ High is 5500
-  ⇨ Medium is 4500</Description>
-    <Description id="Fo76ini.Tweaks.Audio.EnableAudioTweak">If disabled, the game will be completely silent.</Description>
-    <Description id="Fo76ini.Tweaks.Audio.PlayMainMenuMusicTweak">If unchecked, the game won't play background music in the main menu.</Description>
-    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal0">Changes the volume of 'Menu Music'</Description>
-    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal1">Changes the volume of 'World Radios'</Description>
-    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal2">Changes the volume of 'Voice'</Description>
-    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal3">Changes the volume of 'Music'</Description>
-    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal4">Changes the volume of 'Effects'</Description>
-    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal5">Changes the volume of 'Footsteps'</Description>
-    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal6">Changes the volume of 'Pip-Boy Radio'</Description>
-    <Description id="Fo76ini.Tweaks.Controls.FixMouseSensitivityTweak">If enabled, the sensitivity for looking up/down and left/right will be equal.
-If disabled (default), the sensitivity for looking left/right will likely be higher than up/down.
+⚠️ FXAA funktioniert möglicherweise nicht. Das Spiel deaktiviert stattdessen möglicherweise einfach AA ganz. </Description>
+    <Description id="Fo76ini.Tweaks.Graphics.AnisotropicFilteringTweak">Reduziert das Aliasing von Texturen aus schrägen Winkeln.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.EnableDepthOfFieldTweak">Durch Deaktivieren dieser Option werden alle Tiefenschärfeeffekte deaktiviert.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.RadialBlurTweak">Macht den Bildschirm verschwommen, wenn der Spieler verletzt ist (z.B. wenn man von Kugeln getroffen wird) oder unter Wasser.
+⚠️ Wenn deaktiviert, kann dies zu einer klaren Sicht unter Wasser führen.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.WaterDisplacementsTweak">Aktiviert / deaktiviert die Wasserverdrängung (Wellen).</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ShadowMapResolutionTweak">Auflösung von Schatten. Höhere Einstellungen machen Schatten detaillierter.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ShadowBlurrinessTweak">Macht Schatten verschwommen. Besonders nützlich bei einer niedrigeren Schattenauflösung.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ShadowDistanceTweak">Legt den Abstand fest, in dem Schatten gerendert werden.
+   ⇨ Ultra ist 150000
+   ⇨ Hoch ist 120000
+   ⇨ Mittel ist 90000
+   ⇨ Niedrig ist 60000 </Description>
+    <Description id="Fo76ini.Tweaks.Graphics.DirShadowSplitsTweak">Anzahl der "Segmente" von Schatten mit niedrigerer Auflösung in einiger Entfernung.
+Ein Wert von 1 zwingt das Spiel, nur die Schatten mit der niedrigsten Auflösung zu rendern. </Description>
+    <Description id="Fo76ini.Tweaks.Graphics.BlendSplitDirShadowTweak">Entfernung, in der das Spiel zu einem Schatten- "Segment" mit niedrigerer Auflösung übergeht.
+MUSS ein Vielfaches von 12 sein. </Description>
+    <Description id="Fo76ini.Tweaks.Graphics.TAAPostOverlayTweak">Schärft das Bild.
+Standard: 0.21</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.TAAPostSharpenTweak">Schärft das Bild.
+Standard: 0.21
+Empfohlen: 0.4</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ScreenSpaceReflectionsTweak">Aktiviert / deaktiviert die Reflexionen des Bildschirmbereichs.
+Lässt Wasser verschwinden oder macht es pechschwarz!</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.GrassFadeDistanceTweak">Legt den Abstand fest, bei dem das Gras verschwindet.
+   ⇨ Ultra ist 7000
+   ⇨ Hoch ist 5500
+   ⇨ Mittel ist 4500 </Description>
+    <Description id="Fo76ini.Tweaks.Audio.EnableAudioTweak">Wenn deaktiviert, ist das Spiel vollständig stumm.</Description>
+    <Description id="Fo76ini.Tweaks.Audio.PlayMainMenuMusicTweak">Wenn deaktiviert, spielt das Spiel im Hauptmenü keine Hintergrundmusik ab. </Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal0">Ändert die Lautstärke der 'Menümusik'</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal1">Ändert die Lautstärke der 'Weltradios'</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal2">Ändert die Lautstärke der 'Stimmen'</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal3">Ändert die Lautstärke der 'Musik'</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal4">Ändert die Lautstärke der 'Effekte'</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal5">Ändert die Lautstärke der 'Fußschritte'</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal6">Ändert die Lautstärke des 'Pip-Boy Radios'</Description>
+    <Description id="Fo76ini.Tweaks.Controls.FixMouseSensitivityTweak">Wenn diese Option aktiviert ist, ist die Empfindlichkeit für das Schauen nach oben / unten und links / rechts gleich.
+Wenn deaktiviert (Standard), ist die Empfindlichkeit für das Schauen nach links / rechts wahrscheinlich höher als nach oben / unten.
 
-• Enable this if you're using Mouse &amp; Keyboard.
-• Disable this if you're using a Gamepad.
+• Aktiviere diese Option, wenn du Maus &amp; Tastatur verwendest.
+• Deaktiviere diese Option, wenn du ein Controller verwendest.
 
-⚠️ When enabled, your mouse sensitivity might increase. Decrease your cursor speed or mouse DPI.
+⚠️ Wenn diese Option aktiviert ist, kann sich die Mausempfindlichkeit erhöhen. Verringere die Cursorgeschwindigkeit oder die DPI der Maus.
 
-ℹ️ The vertical sensitivity depends on your display's aspect ratio:
-      ⇨ For 4:3, the value of Y is 0.028
-      ⇨ For 16:9, the value of Y is 0.03738
-      ⇨ For 16:10, the value of Y is 0.0336
-      ⇨ For 21:9, the value of Y is 0.042
-      ⇨ For all other aspect ratios, the value of Y is equals to 0.021 times the aspect ratio. (YScale = 0.021 * Width / Height)</Description>
-    <Description id="Fo76ini.Tweaks.Controls.FixAimSensitivityTweak">If enabled, the sensitivity won't change when aiming.
-If disabled (default), the sensitivity will be lowered when aiming down sights.
+ℹ️ Die vertikale Empfindlichkeit hängt vom Seitenverhältnis deines Bildschirms ab:
+       ⇨ Für 4:3 beträgt der Wert von Y 0,028
+       ⇨ Für 16:9 beträgt der Wert von Y 0,03738
+       ⇨ Für 16:10 beträgt der Wert von Y 0,0336
+       ⇨ Für 21:9 beträgt der Wert von Y 0,042
+       ⇨ Für alle anderen Seitenverhältnisse entspricht der Wert von Y dem 0,021-fachen des Seitenverhältnisses. (YScale = 0,021 * Breite / Höhe) </Description>
+    <Description id="Fo76ini.Tweaks.Controls.FixAimSensitivityTweak">Wenn diese Option aktiviert ist, ändert sich die Empfindlichkeit nicht, wenn man zielt.
+Wenn deaktiviert (Standardeinstellung), wird die Empfindlichkeit beim Zielen verringert.
 
-⚠️ This might only work on 16:9 monitors.
-⚠️ This might not work in-game while crouching.</Description>
-    <Description id="Fo76ini.Tweaks.Controls.MouseAccelerationTweak">ℹ️ This option might not have any effect.</Description>
-    <Description id="Fo76ini.Tweaks.Controls.GamepadEnableTweak">Disable this, if you have a gamepad plugged in, but want to use your keyboard and mouse instead.</Description>
-    <Description id="Fo76ini.Tweaks.Camera.ApplyCameraNodeAnimationsTweak">When disabled, sets the camera's position into the characters head.
-You'll need to zoom out in third person.
-If enabled, sets the camera's position behind the right shoulder.
+⚠️ Dies funktioniert möglicherweise nur auf 16:9-Monitoren.
+⚠️ Dies funktioniert möglicherweise nicht, wenn man geduckt ist.</Description>
+    <Description id="Fo76ini.Tweaks.Controls.MouseAccelerationTweak">ℹ️ Diese Option tut möglicherweise nichts.</Description>
+    <Description id="Fo76ini.Tweaks.Controls.GamepadEnableTweak">Deaktiviere diese Option, wenn du ein Controller angeschlossen hast, aber lieber stattdessen Maus und Tastatur verwenden möchtest.</Description>
+    <Description id="Fo76ini.Tweaks.Camera.ApplyCameraNodeAnimationsTweak">Wenn deaktiviert, wird die Kameraposition auf die Position vom Kopf des Charakters festgelegt.
+Du musst in rauszoomen, wenn du in 3rd-Person spielst.
+Wenn aktiviert, wird die Kameraposition hinter der rechten Schulter festgelegt.
 
-⚠️ Might cause issues if disabled.</Description>
-    <Description id="Fo76ini.Tweaks.Camera.DisableAutoVanityModeTweak">When enabled, the camera will spin around the character after no input was given for a certain amount of time.
-⚠️ Not sure if it does anything. I stood around for 5 minutes and the camera didn't spin. Needs more testing.</Description>
-    <Description id="Fo76ini.Tweaks.Camera.FOV3rdADSTweak">Changes the field of view of the 3rd person perspective while aiming.</Description>
-    <Description id="Fo76ini.Tweaks.Camera.DefaultFOVTweak">⚠️ Causes issues with the GUI.</Description>
-    <Description id="Fo76ini.Tweaks.Camera.PitchZoomOutMaxDistTweak">By how much the camera gets zoomed out when you look at the ground in 3rd person.</Description>
-    <Description id="Fo76ini.Tweaks.Colors.PipboyColorTweak">Changes the color of the Pipboy</Description>
-    <Description id="Fo76ini.Tweaks.Colors.QuickboyColorTweak">Changes the color of the Quickboy</Description>
-    <Description id="Fo76ini.Tweaks.Colors.PowerArmorPipboyColorTweak">Changes the color of the Power Armor Quickboy</Description>
-    <Description id="Fo76ini.Tweaks.General.ScreenshotIndexTweak">When you take screenshots ingame with the print screen button,
-it saves them in the game directory as "ScreenShotX.png".
-The "X" being the screenshot index.</Description>
-    <Description id="Fo76ini.Tweaks.Inis.INIReadOnlyTweak">This option will make all *.ini files read-only immediately.
-Enable this if your settings get reverted.</Description>
-    <Description id="Fo76ini.Tweaks.Config.AutoApplyTweak">No need to press apply anymore.</Description>
-    <Description id="Fo76ini.Tweaks.Config.IgnoreUpdatesTweak">Won't check for updates on startup and hides the big update button.</Description>
-    <Description id="Fo76ini.Tweaks.Config.PlayNotificationSoundsTweak">When enabled, the tool will play custom notification sounds.</Description>
-    <Description id="Fo76ini.Tweaks.Config.ToolQuitOnLaunchTweak">When enabled, closes the tool when the game is launched.
-Only works if launched through the tool.</Description>
-    <Description id="Fo76ini.Tweaks.NuclearWinterMode.RenameDLLsTweak">If checked, any *.dll files that don't belong to the game will be renamed.</Description>
-    <Description id="Fo76ini.Tweaks.NuclearWinterMode.DeployModsOnNWModeTweak">If checked, mods will be deployed when the Nuclear Winter mode is disabled.</Description>
-    <Description id="Fo76ini.Tweaks.NuclearWinterMode.RemoveModsOnNWModeTweak">If checked, mods will be removed when the Nuclear Winter mode is enabled.</Description>
-    <Description id="Fo76ini.Tweaks.Config.ArchiveTwoPathTweak">Saves the path where it will load Archive2 from.</Description>
-    <Description id="Fo76ini.Tweaks.Config.SevenZipPathTweak">Saves the path where it will load 7-zip from.</Description>
+⚠️ Kann Probleme verursachen, wenn deaktiviert. </Description>
+    <Description id="Fo76ini.Tweaks.Camera.DisableAutoVanityModeTweak">Wenn diese Option aktiviert ist, dreht sich die Kamera um den Charakter, nachdem für eine bestimmte Zeit nichts gedrückt wurde.
+⚠️ Ich bin mir nicht sicher, ob es etwas bringt. Ich stand 5 Minuten herum und die Kamera drehte sich nicht. Braucht mehr Tests. </Description>
+    <Description id="Fo76ini.Tweaks.Camera.FOV3rdADSTweak">Ändert das Sichtfeld der 3rd-Person Perspektive während des Zielens. </Description>
+    <Description id="Fo76ini.Tweaks.Camera.DefaultFOVTweak">⚠️ Verursacht Probleme mit der GUI.</Description>
+    <Description id="Fo76ini.Tweaks.Camera.PitchZoomOutMaxDistTweak">Um wie viel wird die Kamera herausgezoomt, wenn Sie in der 3. Person auf den Boden schauen.</Description>
+    <Description id="Fo76ini.Tweaks.Colors.PipboyColorTweak">Ändert die Farbe des Pipboys</Description>
+    <Description id="Fo76ini.Tweaks.Colors.QuickboyColorTweak">Ändert die Farbe des Quickboys</Description>
+    <Description id="Fo76ini.Tweaks.Colors.PowerArmorPipboyColorTweak">Ändert die Farbe des Power Armor Quickboys</Description>
+    <Description id="Fo76ini.Tweaks.General.ScreenshotIndexTweak">Wenn du im Spiel Screenshots mit der "Drucken"-Taste machst,
+werden sie im Spielverzeichnis als "ScreenShotX.png" abgelegt.
+Das "X" ist hier der Screenshot-Index. </Description>
+    <Description id="Fo76ini.Tweaks.Inis.INIReadOnlyTweak">Diese Option macht alle *.ini-Dateien sofort schreibgeschützt.
+Aktiviere diese Option, wenn die Einstellungen vom Spiel zurückgesetzt werden.</Description>
+    <Description id="Fo76ini.Tweaks.Config.AutoApplyTweak">Du müsst nicht mehr auf Übernehmen klicken.</Description>
+    <Description id="Fo76ini.Tweaks.Config.IgnoreUpdatesTweak">Wird beim Start nicht nach Updates suchen und versteckt den großen Update-Knopf.</Description>
+    <Description id="Fo76ini.Tweaks.Config.PlayNotificationSoundsTweak">Wenn aktiviert, spielt das Tool Benachrichtigungstöne ab.</Description>
+    <Description id="Fo76ini.Tweaks.Config.ToolQuitOnLaunchTweak">Wenn aktiviert, wird das Tool geschlossen, wenn das Spiel gestartet wird.
+Funktioniert jedoch nur, wenn das Spiel über das Tool gestartet wird.</Description>
+    <Description id="Fo76ini.Tweaks.NuclearWinterMode.RenameDLLsTweak">Wenn diese Option aktiviert ist, werden alle *.dll-Dateien, die nicht zum Spiel gehören, umbenannt. </Description>
+    <Description id="Fo76ini.Tweaks.NuclearWinterMode.DeployModsOnNWModeTweak">Wenn diese Option aktiviert ist, werden Mods installiert, wenn der Nuclear Winter-Modus deaktiviert wird.</Description>
+    <Description id="Fo76ini.Tweaks.NuclearWinterMode.RemoveModsOnNWModeTweak">Wenn diese Option aktiviert ist, werden Mods entfernt, wenn der Nuclear Winter-Modus aktiviert wird.</Description>
+    <Description id="Fo76ini.Tweaks.Config.ArchiveTwoPathTweak">Speichert den Pfad, von dem Archive2 geladen wird.</Description>
+    <Description id="Fo76ini.Tweaks.Config.SevenZipPathTweak">Speichert den Pfad, von dem aus 7-Zip geladen wird.</Description>
   </TweakDescriptions>
   <FormWhatsNew title="Was gibt's Neues?">
     <!--
