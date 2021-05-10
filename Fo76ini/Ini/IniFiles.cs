@@ -16,11 +16,29 @@ namespace Fo76ini
         public static IniFile F76Custom;
         public static IniFile Config;
 
+        /// <summary>
+        /// "C:\Users\[username]\Documents\My Games\Fallout 76\"
+        /// </summary>
         public static readonly string ParentPath;
+
+        /// <summary>
+        /// "%LOCALAPPDATA%\Fallout 76 Quick Configuration\config.ini"
+        /// </summary>
         public static readonly string ConfigPath;
+
+        /// <summary>
+        /// "...\DefaultINI"
+        /// </summary>
         public static readonly string DefaultsPath;
 
+        /// <summary>
+        /// "...\DefaultINI\Fallout76.ini"
+        /// </summary>
         public static readonly string DefaultF76Path;
+
+        /// <summary>
+        /// "...\DefaultINI\Medium.ini"
+        /// </summary>
         public static readonly string DefaultF76PrefsPath;
 
         static IniFiles()
@@ -37,12 +55,20 @@ namespace Fo76ini
             DefaultF76PrefsPath = Path.Combine(DefaultsPath, "Medium.ini");
         }
 
+        /// <summary>
+        /// (Re)Loads config.ini.
+        /// </summary>
         public static void LoadConfig()
         {
             Config = new IniFile(ConfigPath);
             Config.Load(ignoreErrors: true);
         }
 
+        /// <summary>
+        /// Loads xyz.ini, xyzPrefs.ini, and xyzCustom.ini.
+        /// ("xyz" being the *.ini prefix specified by the game instance)
+        /// </summary>
+        /// <param name="game"></param>
         public static void Load(GameInstance game)
         {
             F76 = new IniFile(
@@ -64,6 +90,10 @@ namespace Fo76ini
             FixDuplicateResourceLists();
         }
 
+        /// <summary>
+        /// Checks whether xyz.ini, xyzPrefs.ini, *AND* xyzCustom.ini have been loaded.
+        /// </summary>
+        /// <returns>true if loaded, false if not.</returns>
         public static bool IsLoaded()
         {
             return
@@ -87,6 +117,9 @@ namespace Fo76ini
             return F76.IsReadOnly && F76Prefs.IsReadOnly;
         }
 
+        /// <summary>
+        /// Makes a backup, then saves xyz.ini, xyzPrefs.ini, xyzCustom.ini, and config.ini.
+        /// </summary>
         public static void Save()
         {
             Backup();
@@ -96,6 +129,9 @@ namespace Fo76ini
             Config.Save();
         }
 
+        /// <summary>
+        /// Makes a backup of xyz.ini, xyzPrefs.ini, and xyzCustom.ini.
+        /// </summary>
         public static void Backup()
         {
             string backupDir = Path.Combine(ParentPath, "Backups", DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
@@ -108,6 +144,10 @@ namespace Fo76ini
                 File.Copy(F76Custom.FilePath, Path.Combine(backupDir, F76Custom.FileName), true);
         }
 
+        /// <summary>
+        /// Checks whether the files have been modified outside of the tool.
+        /// </summary>
+        /// <returns></returns>
         public static bool FilesHaveBeenModified()
         {
             return F76.FileHasBeenModified() || F76Prefs.FileHasBeenModified() || F76Custom.FileHasBeenModified();
@@ -127,6 +167,12 @@ namespace Fo76ini
          ********************************************************************************************************************************************
          */
 
+        /// <summary>
+        /// Checks whether [section]key exists in xyz.ini, xyzPrefs.ini, or xyzCustom.ini.
+        /// </summary>
+        /// <param name="section"></param>
+        /// <param name="key"></param>
+        /// <returns>true if found, false if it doesn't exist</returns>
         public static bool Exists(string section, string key)
         {
             foreach (IniFile ini in new IniFile[] { F76, F76Prefs, F76Custom })
@@ -234,6 +280,17 @@ namespace Fo76ini
             }
         }
 
+        /// <summary>
+        /// Removes [section]key from xyz.ini, xyzPrefs.ini, and xyzCustom.ini.
+        /// </summary>
+        /// <param name="section"></param>
+        /// <param name="key"></param>
+        public static void RemoveAll(string section, string key)
+        {
+            foreach (IniFile ini in new IniFile[] { F76, F76Prefs, F76Custom })
+                ini.Remove(section, key);
+        }
+
         /*
          *********************************************************************************************************************************************
          * Fixes for invalid *.ini files:
@@ -292,6 +349,7 @@ namespace Fo76ini
         /// </summary>
         /// <param name="writePermission">true to allow, false to deny</param>
         /// <returns>true if successful, false otherwise</returns>
+        [Obsolete]
         public static bool SetNTFSWritePermission(bool writePermission)
         {
             try

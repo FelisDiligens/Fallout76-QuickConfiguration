@@ -76,6 +76,13 @@ namespace Fo76ini
             UpdateLastModifiedDate();
         }
 
+        /// <summary>
+        /// Loads the *.ini file if it exists.
+        /// If not, try to load the defaults from DefaultPath.
+        /// If DefaultPath isn't specified or the default file doesn't exist, then create a new file.
+        /// Raises Fo76ini.Ini.IniParsingException unless ignoreErrors has been set to true.
+        /// </summary>
+        /// <param name="ignoreErrors">Set this to true to ignore any errors and create an empty file instead.</param>
         public void Load(bool ignoreErrors = false)
         {
             try
@@ -119,16 +126,29 @@ namespace Fo76ini
             return data != null;
         }
 
+        /// <summary>
+        /// Merges the other *.ini file into this one by overwriting existing values. Comments get appended.
+        /// </summary>
+        /// <param name="f"></param>
         public void Merge(IniFile f)
         {
             this.data.Merge(f.data);
         }
 
+
+        /// <summary>
+        /// Merges the other iniData into this one by overwriting existing values. Comments get appended.
+        /// </summary>
+        /// <param name="f"></param>
         public void Merge(IniData d)
         {
             this.data.Merge(d);
         }
 
+        /// <summary>
+        /// Check whether the file has been modified outside of the tool.
+        /// </summary>
+        /// <returns></returns>
         public bool FileHasBeenModified()
         {
             return this.lastModified != File.GetLastWriteTime(FilePath);
@@ -181,6 +201,9 @@ namespace Fo76ini
             return Exists(section, key) ? data[section][key] : defaultValue;
         }
 
+        /// <summary>
+        /// Raises KeyNotFoundException if [section]key couldn't be found. See GetString(section, key, defaultValue)
+        /// </summary>
         public string GetString(string section, string key)
         {
             if (!Exists(section, key))
@@ -190,6 +213,9 @@ namespace Fo76ini
 
         public static readonly string[] ValidBoolValues = new string[] { "1", "0", "" };
 
+        /// <summary>
+        /// Raises KeyNotFoundException if [section]key couldn't be found. See GetBool(section, key, defaultValue)
+        /// </summary>
         public bool GetBool(string section, string key)
         {
             return GetString(section, key) == "1";
@@ -204,6 +230,9 @@ namespace Fo76ini
                 return defaultValue;
         }
 
+        /// <summary>
+        /// Raises KeyNotFoundException if [section]key couldn't be found. See GetFloat(section, key, defaultValue)
+        /// </summary>
         public float GetFloat(string section, string key)
         {
             return Utils.ToFloat(GetString(section, key));
@@ -221,6 +250,9 @@ namespace Fo76ini
             }
         }
 
+        /// <summary>
+        /// Raises KeyNotFoundException if [section]key couldn't be found. See GetUInt(section, key, defaultValue)
+        /// </summary>
         public uint GetUInt(string section, string key)
         {
             return Utils.ToUInt(GetString(section, key));
@@ -238,6 +270,9 @@ namespace Fo76ini
             }
         }
 
+        /// <summary>
+        /// Raises KeyNotFoundException if [section]key couldn't be found. See GetInt(section, key, defaultValue)
+        /// </summary>
         public int GetInt(string section, string key)
         {
             return Utils.ToInt(GetString(section, key));
@@ -255,6 +290,9 @@ namespace Fo76ini
             }
         }
 
+        /// <summary>
+        /// Raises KeyNotFoundException if [section]key couldn't be found. See GetLong(section, key, defaultValue)
+        /// </summary>
         public long GetLong(string section, string key)
         {
             return Utils.ToLong(GetString(section, key));
