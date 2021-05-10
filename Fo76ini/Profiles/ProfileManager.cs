@@ -254,6 +254,30 @@ namespace Fo76ini.Profiles
             // CreateNewDefaultProfile();
             // EDIT: Creating a new profile is no longer necessary.
             //       At least, that's what I believe. I'll keep this comment here until I'm certain.
+
+            // Well, turns out, I'm an idiot, lol.
+            // By removing the call above I introduced a bug in v1.9.2 that only happens under very specific circumstances:
+
+            /*
+                System.NullReferenceException: Object reference not set to an instance of an object.
+                   at Fo76ini.IniFiles.Load(GameInstance game) in D:\Workspace\Fallout 76 Quick Configuration\Fallout76-QuickConfiguration\Fo76ini\Ini\IniFiles.cs:line 48
+                   ...
+
+                => This happens when:
+                     a) profiles.xml doesn't exist and
+                     b) config.ini exists and
+                     c) [Preferences]uGameEdition=? can be found in config.ini and
+                     d) no paths for any game editions have been specified before and are therefore missing from config.ini
+
+                => This happens because:
+                     ConvertLegacyFormat() is called and it does only look for keys like "sGamePathBethesdaNet" or "sGamePathSteam"... which might not be present.
+                     -> No game profile is created (game profile = null), therefore the tool crashes with a NullReferenceException.
+
+                => I can fix this by creating a game profile, if no profile has been created.
+             */
+
+            if (games.Count == 0)
+                CreateNewDefaultProfile();
         }
 
         private static ProfileEventArgs BuildProfileEventArgs()
