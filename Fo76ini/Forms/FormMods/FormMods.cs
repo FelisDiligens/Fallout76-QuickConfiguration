@@ -24,6 +24,8 @@ namespace Fo76ini
         private int selectedIndex = -1;
         private List<int> selectedIndices = new List<int>();
 
+        private bool preventClosing = false;
+
         private GameInstance game;
         private ManagedMods Mods;
 
@@ -97,7 +99,7 @@ namespace Fo76ini
                 Configuration.SaveWindowState("FormMods", this);
                 Configuration.SaveListViewState("FormMods", this.listViewMods);
                 e.Cancel = true;
-                if (this.buttonModsDeploy.Enabled)
+                if (!preventClosing)
                     Hide();
             }
         }
@@ -116,6 +118,7 @@ namespace Fo76ini
                 return;
             try
             {
+                EnableUI();
                 if (!Directory.Exists(Path.Combine(game.GamePath, "Mods")))
                     Directory.CreateDirectory(Path.Combine(game.GamePath, "Mods"));
                 CloseSidePanel();
@@ -129,6 +132,8 @@ namespace Fo76ini
             catch (Exception exc)
             {
                 MsgBox.Popup("Failed to load mods", $"Failed to load mods.\n{exc.GetType()}: {exc.Message}", MessageBoxIcon.Error);
+                this.DisableUI();
+                this.preventClosing = false;
             }
         }
 
@@ -498,6 +503,7 @@ namespace Fo76ini
             this.checkBoxDisableMods.Enabled = true;
             this.listViewMods.Enabled = true;
             this.toolStrip1.Enabled = true;
+            this.preventClosing = false;
         }
 
         private void DisableUI()
@@ -506,6 +512,7 @@ namespace Fo76ini
             this.buttonModsDeploy.Enabled = false;
             this.menuStrip1.Enabled = false;
             this.checkBoxDisableMods.Enabled = false;
+            this.preventClosing = true;
         }
 
         private void DisableUI_SidePanelOpen()
@@ -516,6 +523,7 @@ namespace Fo76ini
             this.checkBoxDisableMods.Enabled = false;
             this.menuStrip1.Enabled = false;
             this.tabPageModsSettings.Enabled = false;
+            this.preventClosing = true;
         }
 
         private void ShowLoadingUI()
