@@ -516,49 +516,26 @@ namespace Fo76ini.Forms.FormSettings
             Localization.LookupLanguages();
         }
 
-        private string errorMessageDownloadLanguages = null;
-        private string messageDownloadLanguages = null;
+        private Localization.DownloadResult languageFilesDownloadResult;
         private void backgroundWorkerDownloadLanguages_DoWork(object sender, DoWorkEventArgs e)
         {
-            // Download / update languages:
-            try
-            {
-                WebClient wc = new WebClient();
-                wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.BypassCache);
-
-                byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/list.txt");
-                string encoded = Encoding.UTF8.GetString(raw).Trim();
-
-                string[] list = encoded.Split('\n', ',');
-
-                foreach (string file in list)
-                {
-                    wc.DownloadFile("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/" + file, Path.Combine(Localization.LanguageFolder, file));
-                }
-
-                errorMessageDownloadLanguages = null;
-                messageDownloadLanguages = string.Join(", ", list);
-            }
-            catch (WebException ex)
-            {
-                errorMessageDownloadLanguages = ex.ToString();
-                messageDownloadLanguages = null;
-            }
-            catch
-            {
-                errorMessageDownloadLanguages = "Unknown error";
-                messageDownloadLanguages = null;
-            }
+            languageFilesDownloadResult = Localization.DownloadLanguageFiles();
         }
 
         private void backgroundWorkerDownloadLanguages_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (errorMessageDownloadLanguages != null)
-                MsgBox.Get("failed").FormatText("Downloading language files failed.\n" + errorMessageDownloadLanguages).Popup(MessageBoxIcon.Error);
+            if (!languageFilesDownloadResult.Success)
+                MsgBox.Get("failed")
+                    .FormatText("Downloading language files failed.\n" + languageFilesDownloadResult.ErrorMessage)
+                    .Popup(MessageBoxIcon.Error);
             else
-                MsgBox.Get("downloadLanguagesFinished").FormatText(messageDownloadLanguages).Popup(MessageBoxIcon.Information);
+                MsgBox.Get("downloadLanguagesFinished")
+                    .FormatText(String.Join(", ", languageFilesDownloadResult.FileList))
+                    .Popup(MessageBoxIcon.Information);
+
             this.buttonDownloadLanguages.Enabled = true;
             this.pictureBoxSpinnerDownloadLanguages.Visible = false;
+
             Localization.LookupLanguages();
         }
 

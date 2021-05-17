@@ -22,36 +22,39 @@ namespace Fo76ini.Forms.FormWelcome
         {
             InitializeComponent();
             this.FormClosing += FormWelcome_FormClosing;
+
+            // Make this form translatable:
+            LocalizedForm form = new LocalizedForm(this, null);
+            Localization.LocalizedForms.Add(form);
         }
 
-        public static DialogResult OpenDialog()
+        public DialogResult OpenDialog()
         {
-            FormWelcome form = new FormWelcome();
-            form.UpdatingUI = true;
+            this.UpdatingUI = true;
 
             switch (ProfileManager.SelectedGame.Edition)
             {
                 case GameEdition.BethesdaNet:
-                    form.radioButtonEditionBethesdaNet.Checked = true;
+                    this.radioButtonEditionBethesdaNet.Checked = true;
                     break;
                 case GameEdition.BethesdaNetPTS:
-                    form.radioButtonEditionBethesdaNetPTS.Checked = true;
+                    this.radioButtonEditionBethesdaNetPTS.Checked = true;
                     break;
                 case GameEdition.Steam:
-                    form.radioButtonEditionSteam.Checked = true;
+                    this.radioButtonEditionSteam.Checked = true;
                     break;
                 case GameEdition.MSStore:
-                    form.radioButtonEditionMSStore.Checked = true;
+                    this.radioButtonEditionMSStore.Checked = true;
                     break;
                 default:
-                    form.radioButtonEditionUnknown.Checked = true;
+                    this.radioButtonEditionUnknown.Checked = true;
                     break;
             }
 
-            form.textBoxGamePath.Text = ProfileManager.SelectedGame.GamePath;
+            this.textBoxGamePath.Text = ProfileManager.SelectedGame.GamePath;
 
-            form.UpdatingUI = false;
-            return form.ShowDialog();
+            this.UpdatingUI = false;
+            return this.ShowDialog();
         }
 
         private void FormWelcome_FormClosing(object sender, FormClosingEventArgs e)

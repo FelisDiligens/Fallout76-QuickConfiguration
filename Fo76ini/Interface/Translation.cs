@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -105,6 +107,50 @@ namespace Fo76ini
             int enUSIndex = GetTranslationIndex("en-US");
             Localization.comboBoxTranslations.SelectedIndex = languageIndex > -1 ? languageIndex : enUSIndex;
             Localization.Locale = selectedLanguageISO;
+        }
+
+        public struct DownloadResult
+        {
+            public string[] FileList;
+            public string ErrorMessage;
+            public bool Success;
+        }
+
+        public static DownloadResult DownloadLanguageFiles()
+        {
+            // Download / update languages:
+            try
+            {
+                // Create 'languages' folder if not existing:
+                Directory.CreateDirectory(LanguageFolder);
+
+                // Create new WebClient...
+                WebClient wc = new WebClient();
+                wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.BypassCache);
+
+                // Get a list of all available language files on GitHub:
+                byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/list.txt");
+                string encoded = Encoding.UTF8.GetString(raw).Trim();
+                string[] list = encoded.Split('\n', ',');
+
+                // Go through the list and download each language file from GitHub:
+                foreach (string file in list)
+                {
+                    wc.DownloadFile("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/" + file, Path.Combine(Localization.LanguageFolder, file));
+                }
+
+                DownloadResult result = new DownloadResult();
+                result.FileList = list;
+                result.Success = true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                DownloadResult result = new DownloadResult();
+                result.ErrorMessage = ex.ToString();
+                result.Success = false;
+                return result;
+            }
         }
 
         public static void GenerateTemplate(Translation translation)

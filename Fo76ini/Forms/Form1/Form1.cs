@@ -28,6 +28,7 @@ namespace Fo76ini
     {
         private FormMods formMods;
         private FormWhatsNew formWhatsNew = new FormWhatsNew();
+        private FormWelcome formWelcome = new FormWelcome();
         private FormSettings formSettings;
 
         private GameInstance game;
@@ -325,6 +326,8 @@ namespace Fo76ini
             this.timerCheckFiles.Enabled = true;
 
             // Load translations
+            if (FirstStart)
+                Localization.DownloadLanguageFiles(); // Download language on first start! Might hang the program for a while, if the internet connection is bad, though...
             Localization.GenerateDefaultTemplate();
             Localization.LookupLanguages();
 
@@ -351,7 +354,7 @@ namespace Fo76ini
         {
             // Show welcome dialog:
             if (FirstStart)
-                FormWelcome.OpenDialog();
+                formWelcome.OpenDialog();
 
             // Check for updates
             CheckVersion();
