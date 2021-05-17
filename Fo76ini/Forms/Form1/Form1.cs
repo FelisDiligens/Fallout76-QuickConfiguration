@@ -280,7 +280,7 @@ namespace Fo76ini
             this.FormClosing += this.Form1_FormClosing;
             this.Shown += this.Form1_Shown;
             this.KeyDown += this.Form1_KeyDown;
-            this.pictureBoxGameEdition.MouseHover += this.pictureBoxGameEdition_MouseHover;
+            this.pictureBoxGameEdition.MouseEnter += this.pictureBoxGameEdition_MouseEnter;
             this.pictureBoxGameEdition.MouseLeave += this.pictureBoxGameEdition_MouseLeave;
 
             this.backgroundWorkerGetLatestVersion.RunWorkerCompleted += backgroundWorkerGetLatestVersion_RunWorkerCompleted;
@@ -792,7 +792,7 @@ namespace Fo76ini
             formSettings.ShowProfiles();
         }
 
-        private void pictureBoxGameEdition_MouseHover(object sender, EventArgs e)
+        private void pictureBoxGameEdition_MouseEnter(object sender, EventArgs e)
         {
             switch (this.game.Edition)
             {
