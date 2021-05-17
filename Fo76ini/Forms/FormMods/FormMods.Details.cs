@@ -559,7 +559,7 @@ namespace Fo76ini
                 editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2) &&
                 !resourceFoldersFound)
             {
-                this.labelModInstallWarning.Text = "Couldn't find common resource folders (meshes, textures, sounds, materials, interface, and so on). The mod might fail to load.";
+                this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_WarningNoCommonResourceFoldersFound");
                 return;
             }
 
@@ -569,7 +569,7 @@ namespace Fo76ini
                  generalFoldersFound && soundFoldersFound   ||
                  texturesFolderFound && soundFoldersFound))
             {
-                this.labelModInstallWarning.Text = "Tip: Mixing general, texture, and sound files *might* cause the mod not to load correctly.\nIn case the mod doesn't work, you could try to set it to \"Bundled *.ba2 archive\".";
+                this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintMixedResourcesFound");
                 return;
             }
 
@@ -578,7 +578,7 @@ namespace Fo76ini
                 editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2 &&
                 editedMod.Format != ManagedMod.ArchiveFormat.General && editedMod.Format != ManagedMod.ArchiveFormat.Auto)
             {
-                this.labelModInstallWarning.Text = "Tip: For general mods, select the general preset or leave it on \"Auto-detect\".";
+                this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintWrongPresetForGeneralFiles");
                 return;
             }
 
@@ -588,7 +588,7 @@ namespace Fo76ini
                 (editedMod.Format != ManagedMod.ArchiveFormat.Textures && editedMod.Format != ManagedMod.ArchiveFormat.Auto ||
                 editedMod.Compression != ManagedMod.ArchiveCompression.Compressed && editedMod.Compression != ManagedMod.ArchiveCompression.Auto))
             {
-                this.labelModInstallWarning.Text = "Tip: For texture replacement mods, select the \"Textures (*.dds files)\" preset or leave it on \"Auto-detect\".";
+                this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintWrongPresetForTextures");
                 return;
             }
 
@@ -598,21 +598,21 @@ namespace Fo76ini
                 (editedMod.Format != ManagedMod.ArchiveFormat.General && editedMod.Format != ManagedMod.ArchiveFormat.Auto ||
                 editedMod.Compression != ManagedMod.ArchiveCompression.Uncompressed && editedMod.Compression != ManagedMod.ArchiveCompression.Auto))
             {
-                this.labelModInstallWarning.Text = "Tip: For sound replacement mods, select the \"Sound FX / Music / Voice\" preset or leave it on \"Auto-detect\".";
+                this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintWrongPresetForAudioFiles");
                 return;
             }
 
             // Any *.dll files?
             if (dllFound && (editedMod.Method != ManagedMod.DeploymentMethod.LooseFiles || (editedMod.RootFolder != "." && editedMod.RootFolder != "")))
             {
-                this.labelModInstallWarning.Text = "Tip: *.dll files are usually installed as \"Loose files\" into the top directory (\".\").";
+                this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintWrongInstallMethodForDLLs");
                 return;
             }
 
             // Strings not installed as loose files?
             if (stringsFolderFound && (editedMod.Method != ManagedMod.DeploymentMethod.LooseFiles || editedMod.RootFolder != "Data"))
             {
-                this.labelModInstallWarning.Text = "Tip: Strings are usually installed as \"Loose files\" into the \"Data\" folder.";
+                this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintWrongInstallMethodForStrings");
                 return;
             }
 

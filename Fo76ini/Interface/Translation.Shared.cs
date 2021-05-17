@@ -45,6 +45,13 @@ namespace Fo76ini
             localizedStrings["endorsedText"] = "You have endorsed this mod.";
             localizedStrings["notEndorsedText"] = "You have not endorsed this mod yet.";
             localizedStrings["abstainedText"] = "You have abstained from endorsing this mod.";
+            localizedStrings["modSidePanel_WarningNoCommonResourceFoldersFound"] = "Warning: Couldn't find common resource folders (meshes, textures, sounds, materials, interface, and so on). The mod might fail to load.";
+            localizedStrings["modSidePanel_HintMixedResourcesFound"] = "Hint: Mixing general, texture, and sound files *might* cause the mod to not load correctly.\nIn case the mod doesn't work, you could try to set it to \"Bundled *.ba2 archive\".";
+            localizedStrings["modSidePanel_HintWrongPresetForGeneralFiles"] = "Hint: For mods with general files, select the general preset or leave it on \"Auto-detect\".";
+            localizedStrings["modSidePanel_HintWrongPresetForTextures"] = "Hint: For texture replacement mods, select the \"Textures (*.dds files)\" preset or leave it on \"Auto-detect\".";
+            localizedStrings["modSidePanel_HintWrongPresetForAudioFiles"] = "Hint: For sound replacement mods, select the \"Sound FX / Music / Voice\" preset or leave it on \"Auto-detect\".";
+            localizedStrings["modSidePanel_HintWrongInstallMethodForDLLs"] = "Hint: *.dll files are usually installed as \"Loose files\" into the top directory (\".\").";
+            localizedStrings["modSidePanel_HintWrongInstallMethodForStrings"] = "Hint: Strings are usually installed as \"Loose files\" into the \"Data\" folder.";
         }
 
         public static void AddSharedMessageBoxes()
