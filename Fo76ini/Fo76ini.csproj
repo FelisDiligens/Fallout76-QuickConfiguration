@@ -396,6 +396,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\steam_hover.png" />
+    <None Include="Resources\msstore_hover.png" />
+    <None Include="Resources\help-128_hover.png" />
+    <None Include="Resources\bethesda-launcher-pts_hover.png" />
+    <None Include="Resources\bethesda-launcher_hover.png" />
     <None Include="Resources\snow.gif" />
     <None Include="Resources\snow4.gif" />
     <None Include="Resources\snow2.gif" />

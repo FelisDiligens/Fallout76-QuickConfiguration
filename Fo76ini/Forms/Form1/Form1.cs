@@ -280,6 +280,8 @@ namespace Fo76ini
             this.FormClosing += this.Form1_FormClosing;
             this.Shown += this.Form1_Shown;
             this.KeyDown += this.Form1_KeyDown;
+            this.pictureBoxGameEdition.MouseHover += this.pictureBoxGameEdition_MouseHover;
+            this.pictureBoxGameEdition.MouseLeave += this.pictureBoxGameEdition_MouseLeave;
 
             this.backgroundWorkerGetLatestVersion.RunWorkerCompleted += backgroundWorkerGetLatestVersion_RunWorkerCompleted;
 
@@ -788,6 +790,50 @@ namespace Fo76ini
         private void showProfiles_OnClick(object sender, EventArgs e)
         {
             formSettings.ShowProfiles();
+        }
+
+        private void pictureBoxGameEdition_MouseHover(object sender, EventArgs e)
+        {
+            switch (this.game.Edition)
+            {
+                case GameEdition.Steam:
+                    this.pictureBoxGameEdition.Image = Resources.steam_hover;
+                    break;
+                case GameEdition.BethesdaNet:
+                    this.pictureBoxGameEdition.Image = Resources.bethesda_hover;
+                    break;
+                case GameEdition.BethesdaNetPTS:
+                    this.pictureBoxGameEdition.Image = Resources.bethesda_pts_hover;
+                    break;
+                case GameEdition.MSStore:
+                    this.pictureBoxGameEdition.Image = Resources.msstore_hover;
+                    break;
+                default:
+                    this.pictureBoxGameEdition.Image = Resources.help_128_hover;
+                    break;
+            }
+        }
+
+        private void pictureBoxGameEdition_MouseLeave(object sender, EventArgs e)
+        {
+            switch (this.game.Edition)
+            {
+                case GameEdition.Steam:
+                    this.pictureBoxGameEdition.Image = Resources.steam;
+                    break;
+                case GameEdition.BethesdaNet:
+                    this.pictureBoxGameEdition.Image = Resources.bethesda;
+                    break;
+                case GameEdition.BethesdaNetPTS:
+                    this.pictureBoxGameEdition.Image = Resources.bethesda_pts;
+                    break;
+                case GameEdition.MSStore:
+                    this.pictureBoxGameEdition.Image = Resources.msstore;
+                    break;
+                default:
+                    this.pictureBoxGameEdition.Image = Resources.help_128;
+                    break;
+            }
         }
 
         #endregion

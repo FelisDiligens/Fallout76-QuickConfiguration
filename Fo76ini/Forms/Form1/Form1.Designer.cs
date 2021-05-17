@@ -4300,6 +4300,7 @@
             // 
             this.labelGameEdition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelGameEdition.BackColor = System.Drawing.Color.Black;
+            this.labelGameEdition.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelGameEdition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGameEdition.ForeColor = System.Drawing.Color.White;
             this.labelGameEdition.Location = new System.Drawing.Point(0, 405);
@@ -4314,6 +4315,7 @@
             // 
             this.pictureBoxGameEdition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxGameEdition.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxGameEdition.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxGameEdition.Image = global::Fo76ini.Properties.Resources.help_128;
             this.pictureBoxGameEdition.Location = new System.Drawing.Point(6, 338);
             this.pictureBoxGameEdition.Name = "pictureBoxGameEdition";

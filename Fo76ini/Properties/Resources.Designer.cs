@@ -193,9 +193,29 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bethesda_hover {
+            get {
+                object obj = ResourceManager.GetObject("bethesda_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bethesda_pts {
             get {
                 object obj = ResourceManager.GetObject("bethesda-pts", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bethesda_pts_hover {
+            get {
+                object obj = ResourceManager.GetObject("bethesda_pts_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -423,6 +443,16 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap help_128_hover {
+            get {
+                object obj = ResourceManager.GetObject("help_128_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap help_24 {
             get {
                 object obj = ResourceManager.GetObject("help-24", resourceCulture);
@@ -496,6 +526,16 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap msstore_24 {
             get {
                 object obj = ResourceManager.GetObject("msstore-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap msstore_hover {
+            get {
+                object obj = ResourceManager.GetObject("msstore_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -626,6 +666,16 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap steam_24px {
             get {
                 object obj = ResourceManager.GetObject("steam_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap steam_hover {
+            get {
+                object obj = ResourceManager.GetObject("steam_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
