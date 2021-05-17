@@ -523,7 +523,7 @@ Funktioniert jedoch nur, wenn das Spiel über das Tool gestartet wird.</Descript
     <Panel id="panel1">
       <GroupBox text="Spielpfad" id="groupBoxGameLocation">
         <!-- Group "Game location" -->
-        <Label text="Du kannst den Spielpfad aus lassen, wenn du keine Mods installieren möchtest. " id="label3" />
+        <Label text="Du kannst den Spielpfad auslassen, wenn du keine Mods installieren möchtest. " id="label3" />
         <Label text="Wenn du Schwierigkeiten hast, den Spielpfad zu finden:\n\nSteam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Fallout76\\\nBethesda.net: C:\\Program Files (x86)\\Bethesda.net Launcher\\games\\Fallout76\\\nMicrosoft Store: C:\\Program Files\\ModifiableWindowsApps\\Fallout76\\" id="label2" />
         <Button text="Automatisch erkennen" id="buttonAutoDetect" />
         <Button text="..." id="buttonPickGamePath" />
