@@ -518,7 +518,7 @@ Funktioniert jedoch nur, wenn das Spiel über das Tool gestartet wird.</Descript
         ******************************************************************************************************************************************************
         Welcome
     -->
-    <Label text="» Ich weiß, dass du sehr beschäftigt bist, daher werde ich nicht viel Zeit in Anspruch nehmen.\n   Ich muss nur einige Informationen überprüfen, das ist alles! «\n       – Vault-Tec-Vertreter, Oktober 2077 " id="label4" />
+    <Label text="» Ich weiß, dass du sehr beschäftigt bist, daher werde ich nicht viel Zeit\n   in Anspruch nehmen. Ich muss nur einige Informationen überprüfen, das ist alles! «\n       – Vault-Tec-Vertreter, Oktober 2077 " id="label4" />
     <Button text="OK" id="buttonOK" />
     <Panel id="panel1">
       <GroupBox text="Spielpfad" id="groupBoxGameLocation">
