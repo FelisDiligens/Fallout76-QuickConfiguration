@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Fo76ini;
+using Fo76ini.Interface;
 
 namespace Fo76ini.Tweaks.Inis
 {
@@ -26,7 +28,22 @@ namespace Fo76ini.Tweaks.Inis
 
         public void SetValue(bool value)
         {
-            IniFiles.SetINIsReadOnly(value);
+            try
+            {
+                IniFiles.SetINIsReadOnly(value);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MsgBox.Get("setInisReadOnlyFailed")
+                    .FormatText($"System.UnauthorizedAccessException: {ex.Message}")
+                    .Show(MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Get("setInisReadOnlyFailed")
+                    .FormatText(ex.ToString())
+                    .Show(MessageBoxIcon.Error);
+            }
         }
 
         public void ResetValue()

@@ -89,6 +89,15 @@ namespace Fo76ini
             );
 
 
+            // FormSettings:
+
+            MsgBox.Add("setInisReadOnlyFailed",
+                "Access denied",
+                "Couldn't set *.ini files to read-only. Try to start the tool with admin rights.\n" +
+                "{0}"
+            );
+
+
             // Gallery:
 
             MsgBox.Add("galleryDeleteThumbnails",
