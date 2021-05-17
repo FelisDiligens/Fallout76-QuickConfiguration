@@ -190,19 +190,29 @@
             this.sliderCameraDistanceMinimum = new System.Windows.Forms.TrackBar();
             this.tabPagePipBoy = new System.Windows.Forms.TabPage();
             this.groupBoxPipboyColorPresets = new System.Windows.Forms.GroupBox();
+            this.colorPreviewPresetFo76Green = new Fo76ini.Forms.Form1.ColorPreview();
+            this.colorPreviewPresetFo3Green = new Fo76ini.Forms.Form1.ColorPreview();
+            this.colorPreviewPresetFo3White = new Fo76ini.Forms.Form1.ColorPreview();
             this.buttonPresetFo3Green = new System.Windows.Forms.Button();
             this.buttonPresetFo3White = new System.Windows.Forms.Button();
             this.buttonPresetFoNVAmber = new System.Windows.Forms.Button();
             this.buttonPresetFo76Green = new System.Windows.Forms.Button();
+            this.colorPreviewPresetFoNVAmber = new Fo76ini.Forms.Form1.ColorPreview();
+            this.colorPreviewPresetFo3Blue = new Fo76ini.Forms.Form1.ColorPreview();
             this.buttonPresetFo4Green = new System.Windows.Forms.Button();
+            this.colorPreviewPresetFo4Green = new Fo76ini.Forms.Form1.ColorPreview();
             this.buttonPresetFo3Blue = new System.Windows.Forms.Button();
             this.groupBoxPipboyColorPreview = new System.Windows.Forms.GroupBox();
             this.labelPipboyColorPreviewNotice = new System.Windows.Forms.Label();
+            this.pictureBoxPipboyPreview = new System.Windows.Forms.PictureBox();
             this.groupBoxPipboyResolution = new System.Windows.Forms.GroupBox();
             this.labelPipboyResolutionSideNote = new System.Windows.Forms.Label();
             this.labelPipboyResolutionSpacer = new System.Windows.Forms.Label();
             this.groupBoxPipboyMode = new System.Windows.Forms.GroupBox();
             this.groupBoxPipboyColors = new System.Windows.Forms.GroupBox();
+            this.colorPreviewQuickboy = new Fo76ini.Forms.Form1.ColorPreview();
+            this.colorPreviewPAPipboy = new Fo76ini.Forms.Form1.ColorPreview();
+            this.colorPreviewPipboy = new Fo76ini.Forms.Form1.ColorPreview();
             this.buttonColorPickPAPipboy = new System.Windows.Forms.Button();
             this.buttonColorResetPipboy = new System.Windows.Forms.Button();
             this.buttonColorResetPAPipboy = new System.Windows.Forms.Button();
@@ -290,16 +300,18 @@
             this.labelUserName = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
-            this.groupBoxSettings = new System.Windows.Forms.GroupBox();
-            this.linkLabelOpenSettings = new System.Windows.Forms.LinkLabel();
-            this.labelSettingsNotice = new System.Windows.Forms.Label();
             this.linkLabelWhatsNew = new System.Windows.Forms.LinkLabel();
             this.linkLabelAttribution = new System.Windows.Forms.LinkLabel();
             this.panelUpdate = new System.Windows.Forms.Panel();
             this.labelNewVersion = new System.Windows.Forms.Label();
             this.linkLabelManualDownloadPage = new System.Windows.Forms.LinkLabel();
+            this.pictureBoxUpdateButton = new System.Windows.Forms.PictureBox();
             this.labelNWModeActive = new System.Windows.Forms.Label();
+            this.pictureBoxSpinnerCheckForUpdates = new System.Windows.Forms.PictureBox();
             this.labelGameEdition = new System.Windows.Forms.Label();
+            this.pictureBoxGameEdition = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelTranslationAuthor = new System.Windows.Forms.Label();
             this.labelTranslationBy = new System.Windows.Forms.Label();
             this.labelAuthorName = new System.Windows.Forms.Label();
@@ -337,6 +349,7 @@
             this.labelConversationHistorySize = new System.Windows.Forms.Label();
             this.tabPageGallery = new System.Windows.Forms.TabPage();
             this.groupBoxGallery = new System.Windows.Forms.GroupBox();
+            this.pictureBoxGalleryLoadingGIF = new System.Windows.Forms.PictureBox();
             this.labelGalleryTip = new System.Windows.Forms.Label();
             this.listViewScreenshots = new System.Windows.Forms.ListView();
             this.groupBoxScreenshotOptions = new System.Windows.Forms.GroupBox();
@@ -373,14 +386,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelGame = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelGameText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelEdition = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelEditionText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelNuclearWinterModeActive = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
             this.toolStripButtonApply = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLaunchGame = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonManageMods = new System.Windows.Forms.ToolStripButton();
@@ -404,22 +409,14 @@
             this.editFallout76iniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editFallout76PrefsiniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editFallout76CustominiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBoxUpdateButton = new System.Windows.Forms.PictureBox();
-            this.pictureBoxSpinnerCheckForUpdates = new System.Windows.Forms.PictureBox();
-            this.pictureBoxGameEdition = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.colorPreviewPresetFo76Green = new Fo76ini.Forms.Form1.ColorPreview();
-            this.colorPreviewPresetFo3Green = new Fo76ini.Forms.Form1.ColorPreview();
-            this.colorPreviewPresetFo3White = new Fo76ini.Forms.Form1.ColorPreview();
-            this.colorPreviewPresetFoNVAmber = new Fo76ini.Forms.Form1.ColorPreview();
-            this.colorPreviewPresetFo3Blue = new Fo76ini.Forms.Form1.ColorPreview();
-            this.colorPreviewPresetFo4Green = new Fo76ini.Forms.Form1.ColorPreview();
-            this.pictureBoxPipboyPreview = new System.Windows.Forms.PictureBox();
-            this.colorPreviewQuickboy = new Fo76ini.Forms.Form1.ColorPreview();
-            this.colorPreviewPAPipboy = new Fo76ini.Forms.Form1.ColorPreview();
-            this.colorPreviewPipboy = new Fo76ini.Forms.Form1.ColorPreview();
-            this.pictureBoxGalleryLoadingGIF = new System.Windows.Forms.PictureBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelGame = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelGameText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelEdition = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelEditionText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelNuclearWinterModeActive = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
@@ -490,10 +487,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMinimum)).BeginInit();
             this.tabPagePipBoy.SuspendLayout();
             this.groupBoxPipboyColorPresets.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo76Green)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Green)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3White)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFoNVAmber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Blue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo4Green)).BeginInit();
             this.groupBoxPipboyColorPreview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPipboyPreview)).BeginInit();
             this.groupBoxPipboyResolution.SuspendLayout();
             this.groupBoxPipboyMode.SuspendLayout();
             this.groupBoxPipboyColors.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewQuickboy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).BeginInit();
             this.tabPageControls.SuspendLayout();
             this.groupBoxGamepad.SuspendLayout();
             this.groupBoxMouse.SuspendLayout();
@@ -529,8 +536,12 @@
             this.groupBoxLoginProfiles.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
-            this.groupBoxSettings.SuspendLayout();
             this.panelUpdate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdateButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGameEdition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPageAudio.SuspendLayout();
             this.groupBoxAudio.SuspendLayout();
             this.groupBoxVoice.SuspendLayout();
@@ -548,6 +559,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).BeginInit();
             this.tabPageGallery.SuspendLayout();
             this.groupBoxGallery.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).BeginInit();
             this.groupBoxScreenshotOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numScreenshotIndex)).BeginInit();
@@ -561,22 +573,6 @@
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdateButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGameEdition)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo76Green)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Green)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3White)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFoNVAmber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Blue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo4Green)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPipboyPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewQuickboy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).BeginInit();
             this.SuspendLayout();
             // 
             // toolTip
@@ -2791,6 +2787,33 @@
             this.groupBoxPipboyColorPresets.TabStop = false;
             this.groupBoxPipboyColorPresets.Text = "Presets";
             // 
+            // colorPreviewPresetFo76Green
+            // 
+            this.colorPreviewPresetFo76Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.colorPreviewPresetFo76Green.Location = new System.Drawing.Point(246, 49);
+            this.colorPreviewPresetFo76Green.Name = "colorPreviewPresetFo76Green";
+            this.colorPreviewPresetFo76Green.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFo76Green.TabIndex = 62;
+            this.colorPreviewPresetFo76Green.TabStop = false;
+            // 
+            // colorPreviewPresetFo3Green
+            // 
+            this.colorPreviewPresetFo3Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.colorPreviewPresetFo3Green.Location = new System.Drawing.Point(11, 19);
+            this.colorPreviewPresetFo3Green.Name = "colorPreviewPresetFo3Green";
+            this.colorPreviewPresetFo3Green.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFo3Green.TabIndex = 52;
+            this.colorPreviewPresetFo3Green.TabStop = false;
+            // 
+            // colorPreviewPresetFo3White
+            // 
+            this.colorPreviewPresetFo3White.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colorPreviewPresetFo3White.Location = new System.Drawing.Point(11, 109);
+            this.colorPreviewPresetFo3White.Name = "colorPreviewPresetFo3White";
+            this.colorPreviewPresetFo3White.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFo3White.TabIndex = 58;
+            this.colorPreviewPresetFo3White.TabStop = false;
+            // 
             // buttonPresetFo3Green
             // 
             this.buttonPresetFo3Green.BackColor = System.Drawing.Color.White;
@@ -2855,6 +2878,24 @@
             this.buttonPresetFo76Green.UseVisualStyleBackColor = false;
             this.buttonPresetFo76Green.Click += new System.EventHandler(this.buttonPresetFo76Green_Click);
             // 
+            // colorPreviewPresetFoNVAmber
+            // 
+            this.colorPreviewPresetFoNVAmber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(182)))), ((int)(((byte)(66)))));
+            this.colorPreviewPresetFoNVAmber.Location = new System.Drawing.Point(11, 49);
+            this.colorPreviewPresetFoNVAmber.Name = "colorPreviewPresetFoNVAmber";
+            this.colorPreviewPresetFoNVAmber.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFoNVAmber.TabIndex = 54;
+            this.colorPreviewPresetFoNVAmber.TabStop = false;
+            // 
+            // colorPreviewPresetFo3Blue
+            // 
+            this.colorPreviewPresetFo3Blue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.colorPreviewPresetFo3Blue.Location = new System.Drawing.Point(11, 79);
+            this.colorPreviewPresetFo3Blue.Name = "colorPreviewPresetFo3Blue";
+            this.colorPreviewPresetFo3Blue.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFo3Blue.TabIndex = 56;
+            this.colorPreviewPresetFo3Blue.TabStop = false;
+            // 
             // buttonPresetFo4Green
             // 
             this.buttonPresetFo4Green.BackColor = System.Drawing.Color.White;
@@ -2870,6 +2911,15 @@
             this.buttonPresetFo4Green.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPresetFo4Green.UseVisualStyleBackColor = false;
             this.buttonPresetFo4Green.Click += new System.EventHandler(this.buttonPresetFo4Green_Click);
+            // 
+            // colorPreviewPresetFo4Green
+            // 
+            this.colorPreviewPresetFo4Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(255)))), ((int)(((byte)(21)))));
+            this.colorPreviewPresetFo4Green.Location = new System.Drawing.Point(246, 19);
+            this.colorPreviewPresetFo4Green.Name = "colorPreviewPresetFo4Green";
+            this.colorPreviewPresetFo4Green.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFo4Green.TabIndex = 60;
+            this.colorPreviewPresetFo4Green.TabStop = false;
             // 
             // buttonPresetFo3Blue
             // 
@@ -2908,6 +2958,16 @@
             this.labelPipboyColorPreviewNotice.Text = "The preview is only an approximation,\r\nso it might not look exactly like this in " +
     "game.";
             this.labelPipboyColorPreviewNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBoxPipboyPreview
+            // 
+            this.pictureBoxPipboyPreview.Image = global::Fo76ini.Properties.Resources.pipboy_preview_bg;
+            this.pictureBoxPipboyPreview.Location = new System.Drawing.Point(6, 18);
+            this.pictureBoxPipboyPreview.Name = "pictureBoxPipboyPreview";
+            this.pictureBoxPipboyPreview.Size = new System.Drawing.Size(370, 225);
+            this.pictureBoxPipboyPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxPipboyPreview.TabIndex = 0;
+            this.pictureBoxPipboyPreview.TabStop = false;
             // 
             // groupBoxPipboyResolution
             // 
@@ -2974,6 +3034,33 @@
             this.groupBoxPipboyColors.TabIndex = 35;
             this.groupBoxPipboyColors.TabStop = false;
             this.groupBoxPipboyColors.Text = "Colors";
+            // 
+            // colorPreviewQuickboy
+            // 
+            this.colorPreviewQuickboy.BackColor = System.Drawing.Color.Fuchsia;
+            this.colorPreviewQuickboy.Location = new System.Drawing.Point(11, 50);
+            this.colorPreviewQuickboy.Name = "colorPreviewQuickboy";
+            this.colorPreviewQuickboy.Size = new System.Drawing.Size(20, 20);
+            this.colorPreviewQuickboy.TabIndex = 42;
+            this.colorPreviewQuickboy.TabStop = false;
+            // 
+            // colorPreviewPAPipboy
+            // 
+            this.colorPreviewPAPipboy.BackColor = System.Drawing.Color.Fuchsia;
+            this.colorPreviewPAPipboy.Location = new System.Drawing.Point(11, 79);
+            this.colorPreviewPAPipboy.Name = "colorPreviewPAPipboy";
+            this.colorPreviewPAPipboy.Size = new System.Drawing.Size(20, 20);
+            this.colorPreviewPAPipboy.TabIndex = 41;
+            this.colorPreviewPAPipboy.TabStop = false;
+            // 
+            // colorPreviewPipboy
+            // 
+            this.colorPreviewPipboy.BackColor = System.Drawing.Color.Fuchsia;
+            this.colorPreviewPipboy.Location = new System.Drawing.Point(11, 21);
+            this.colorPreviewPipboy.Name = "colorPreviewPipboy";
+            this.colorPreviewPipboy.Size = new System.Drawing.Size(20, 20);
+            this.colorPreviewPipboy.TabIndex = 40;
+            this.colorPreviewPipboy.TabStop = false;
             // 
             // buttonColorPickPAPipboy
             // 
@@ -4096,7 +4183,6 @@
             // 
             this.tabPageInfo.AutoScroll = true;
             this.tabPageInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tabPageInfo.Controls.Add(this.groupBoxSettings);
             this.tabPageInfo.Controls.Add(this.linkLabelWhatsNew);
             this.tabPageInfo.Controls.Add(this.linkLabelAttribution);
             this.tabPageInfo.Controls.Add(this.panelUpdate);
@@ -4121,38 +4207,6 @@
             this.tabPageInfo.TabIndex = 4;
             this.tabPageInfo.Text = "Info";
             this.tabPageInfo.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxSettings
-            // 
-            this.groupBoxSettings.Controls.Add(this.linkLabelOpenSettings);
-            this.groupBoxSettings.Controls.Add(this.labelSettingsNotice);
-            this.groupBoxSettings.Location = new System.Drawing.Point(454, 6);
-            this.groupBoxSettings.Name = "groupBoxSettings";
-            this.groupBoxSettings.Size = new System.Drawing.Size(390, 91);
-            this.groupBoxSettings.TabIndex = 44;
-            this.groupBoxSettings.TabStop = false;
-            this.groupBoxSettings.Text = "Settings";
-            // 
-            // linkLabelOpenSettings
-            // 
-            this.linkLabelOpenSettings.Location = new System.Drawing.Point(5, 56);
-            this.linkLabelOpenSettings.Name = "linkLabelOpenSettings";
-            this.linkLabelOpenSettings.Size = new System.Drawing.Size(380, 23);
-            this.linkLabelOpenSettings.TabIndex = 3;
-            this.linkLabelOpenSettings.TabStop = true;
-            this.linkLabelOpenSettings.Text = "Open settings";
-            this.linkLabelOpenSettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabelOpenSettings.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.showSettings_OnClick);
-            // 
-            // labelSettingsNotice
-            // 
-            this.labelSettingsNotice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.labelSettingsNotice.Location = new System.Drawing.Point(5, 16);
-            this.labelSettingsNotice.Name = "labelSettingsNotice";
-            this.labelSettingsNotice.Size = new System.Drawing.Size(380, 46);
-            this.labelSettingsNotice.TabIndex = 2;
-            this.labelSettingsNotice.Text = "Everything that was here before has been moved into the settings.";
-            this.labelSettingsNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // linkLabelWhatsNew
             // 
@@ -4209,6 +4263,17 @@
             this.linkLabelManualDownloadPage.Text = "Or download and install manually...";
             this.linkLabelManualDownloadPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelManualDownloadPage_LinkClicked);
             // 
+            // pictureBoxUpdateButton
+            // 
+            this.pictureBoxUpdateButton.Image = global::Fo76ini.Properties.Resources.button;
+            this.pictureBoxUpdateButton.Location = new System.Drawing.Point(3, 24);
+            this.pictureBoxUpdateButton.Name = "pictureBoxUpdateButton";
+            this.pictureBoxUpdateButton.Size = new System.Drawing.Size(265, 50);
+            this.pictureBoxUpdateButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxUpdateButton.TabIndex = 38;
+            this.pictureBoxUpdateButton.TabStop = false;
+            this.pictureBoxUpdateButton.Click += new System.EventHandler(this.buttonUpdateNow_Click);
+            // 
             // labelNWModeActive
             // 
             this.labelNWModeActive.AutoSize = true;
@@ -4219,6 +4284,17 @@
             this.labelNWModeActive.Size = new System.Drawing.Size(202, 15);
             this.labelNWModeActive.TabIndex = 40;
             this.labelNWModeActive.Text = "Nuclear Winter mode is active.";
+            // 
+            // pictureBoxSpinnerCheckForUpdates
+            // 
+            this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Spinner_24;
+            this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(173, 127);
+            this.pictureBoxSpinnerCheckForUpdates.Name = "pictureBoxSpinnerCheckForUpdates";
+            this.pictureBoxSpinnerCheckForUpdates.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxSpinnerCheckForUpdates.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxSpinnerCheckForUpdates.TabIndex = 37;
+            this.pictureBoxSpinnerCheckForUpdates.TabStop = false;
+            this.pictureBoxSpinnerCheckForUpdates.Visible = false;
             // 
             // labelGameEdition
             // 
@@ -4234,6 +4310,41 @@
             this.labelGameEdition.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.labelGameEdition.Click += new System.EventHandler(this.showProfiles_OnClick);
             // 
+            // pictureBoxGameEdition
+            // 
+            this.pictureBoxGameEdition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxGameEdition.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxGameEdition.Image = global::Fo76ini.Properties.Resources.help_128;
+            this.pictureBoxGameEdition.Location = new System.Drawing.Point(6, 338);
+            this.pictureBoxGameEdition.Name = "pictureBoxGameEdition";
+            this.pictureBoxGameEdition.Size = new System.Drawing.Size(60, 60);
+            this.pictureBoxGameEdition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxGameEdition.TabIndex = 21;
+            this.pictureBoxGameEdition.TabStop = false;
+            this.pictureBoxGameEdition.Click += new System.EventHandler(this.showProfiles_OnClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Image = global::Fo76ini.Properties.Resources.icon_60;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox2.BackColor = System.Drawing.Color.Black;
+            this.pictureBox2.Location = new System.Drawing.Point(-4, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(77, 468);
+            this.pictureBox2.TabIndex = 18;
+            this.pictureBox2.TabStop = false;
+            // 
             // labelTranslationAuthor
             // 
             this.labelTranslationAuthor.AutoSize = true;
@@ -4241,9 +4352,9 @@
             this.labelTranslationAuthor.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelTranslationAuthor.Location = new System.Drawing.Point(203, 166);
             this.labelTranslationAuthor.Name = "labelTranslationAuthor";
-            this.labelTranslationAuthor.Size = new System.Drawing.Size(64, 15);
+            this.labelTranslationAuthor.Size = new System.Drawing.Size(172, 15);
             this.labelTranslationAuthor.TabIndex = 12;
-            this.labelTranslationAuthor.Text = "datasnake";
+            this.labelTranslationAuthor.Text = "FelisDiligens (aka. datasnake)";
             // 
             // labelTranslationBy
             // 
@@ -4262,9 +4373,9 @@
             this.labelAuthorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAuthorName.Location = new System.Drawing.Point(203, 148);
             this.labelAuthorName.Name = "labelAuthorName";
-            this.labelAuthorName.Size = new System.Drawing.Size(64, 15);
+            this.labelAuthorName.Size = new System.Drawing.Size(172, 15);
             this.labelAuthorName.TabIndex = 10;
-            this.labelAuthorName.Text = "datasnake";
+            this.labelAuthorName.Text = "FelisDiligens (aka. datasnake)";
             // 
             // labelConfigVersion
             // 
@@ -4302,7 +4413,7 @@
             this.labelDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDescription.Location = new System.Drawing.Point(90, 59);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(342, 65);
+            this.labelDescription.Size = new System.Drawing.Size(371, 65);
             this.labelDescription.TabIndex = 6;
             this.labelDescription.Text = "This tool allows you to change various game settings and install mods.\r\nTip: Hove" +
     "r over an option, if you\'re unsure what it does.";
@@ -4768,6 +4879,20 @@
             this.groupBoxGallery.TabStop = false;
             this.groupBoxGallery.Text = "Gallery";
             // 
+            // pictureBoxGalleryLoadingGIF
+            // 
+            this.pictureBoxGalleryLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxGalleryLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
+            this.pictureBoxGalleryLoadingGIF.Location = new System.Drawing.Point(7, 18);
+            this.pictureBoxGalleryLoadingGIF.Name = "pictureBoxGalleryLoadingGIF";
+            this.pictureBoxGalleryLoadingGIF.Size = new System.Drawing.Size(533, 427);
+            this.pictureBoxGalleryLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxGalleryLoadingGIF.TabIndex = 3;
+            this.pictureBoxGalleryLoadingGIF.TabStop = false;
+            this.pictureBoxGalleryLoadingGIF.Visible = false;
+            // 
             // labelGalleryTip
             // 
             this.labelGalleryTip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -5165,78 +5290,6 @@
             this.toolStrip1.TabIndex = 14;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelGame,
-            this.toolStripStatusLabelGameText,
-            this.toolStripStatusLabelEdition,
-            this.toolStripStatusLabelEditionText,
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabelNuclearWinterModeActive});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 559);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
-            this.statusStrip1.TabIndex = 16;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabelGame
-            // 
-            this.toolStripStatusLabelGame.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatusLabelGame.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
-            this.toolStripStatusLabelGame.Name = "toolStripStatusLabelGame";
-            this.toolStripStatusLabelGame.Size = new System.Drawing.Size(83, 17);
-            this.toolStripStatusLabelGame.Text = "Game profile:";
-            // 
-            // toolStripStatusLabelGameText
-            // 
-            this.toolStripStatusLabelGameText.Name = "toolStripStatusLabelGameText";
-            this.toolStripStatusLabelGameText.Size = new System.Drawing.Size(12, 17);
-            this.toolStripStatusLabelGameText.Text = "?";
-            // 
-            // toolStripStatusLabelEdition
-            // 
-            this.toolStripStatusLabelEdition.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatusLabelEdition.Margin = new System.Windows.Forms.Padding(30, 3, 0, 2);
-            this.toolStripStatusLabelEdition.Name = "toolStripStatusLabelEdition";
-            this.toolStripStatusLabelEdition.Size = new System.Drawing.Size(48, 17);
-            this.toolStripStatusLabelEdition.Text = "Edition:";
-            // 
-            // toolStripStatusLabelEditionText
-            // 
-            this.toolStripStatusLabelEditionText.Name = "toolStripStatusLabelEditionText";
-            this.toolStripStatusLabelEditionText.Size = new System.Drawing.Size(12, 17);
-            this.toolStripStatusLabelEditionText.Text = "?";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(499, 17);
-            this.toolStripStatusLabel1.Spring = true;
-            // 
-            // toolStripStatusLabelNuclearWinterModeActive
-            // 
-            this.toolStripStatusLabelNuclearWinterModeActive.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatusLabelNuclearWinterModeActive.ForeColor = System.Drawing.Color.OrangeRed;
-            this.toolStripStatusLabelNuclearWinterModeActive.Name = "toolStripStatusLabelNuclearWinterModeActive";
-            this.toolStripStatusLabelNuclearWinterModeActive.Size = new System.Drawing.Size(175, 17);
-            this.toolStripStatusLabelNuclearWinterModeActive.Text = "Nuclear Winter mode is active";
-            // 
-            // pictureBoxLoadingGIF
-            // 
-            this.pictureBoxLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxLoadingGIF.BackColor = System.Drawing.SystemColors.Window;
-            this.pictureBoxLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
-            this.pictureBoxLoadingGIF.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxLoadingGIF.Name = "pictureBoxLoadingGIF";
-            this.pictureBoxLoadingGIF.Size = new System.Drawing.Size(16, 583);
-            this.pictureBoxLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxLoadingGIF.TabIndex = 15;
-            this.pictureBoxLoadingGIF.TabStop = false;
-            this.pictureBoxLoadingGIF.Visible = false;
-            // 
             // toolStripButtonApply
             // 
             this.toolStripButtonApply.Image = global::Fo76ini.Properties.Resources.save_24;
@@ -5444,167 +5497,77 @@
             this.editFallout76CustominiToolStripMenuItem.Text = "Edit Fallout76Custom.ini";
             this.editFallout76CustominiToolStripMenuItem.Click += new System.EventHandler(this.editFallout76CustominiToolStripMenuItem_Click);
             // 
-            // pictureBoxUpdateButton
+            // statusStrip1
             // 
-            this.pictureBoxUpdateButton.Image = global::Fo76ini.Properties.Resources.button;
-            this.pictureBoxUpdateButton.Location = new System.Drawing.Point(3, 24);
-            this.pictureBoxUpdateButton.Name = "pictureBoxUpdateButton";
-            this.pictureBoxUpdateButton.Size = new System.Drawing.Size(265, 50);
-            this.pictureBoxUpdateButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxUpdateButton.TabIndex = 38;
-            this.pictureBoxUpdateButton.TabStop = false;
-            this.pictureBoxUpdateButton.Click += new System.EventHandler(this.buttonUpdateNow_Click);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelGame,
+            this.toolStripStatusLabelGameText,
+            this.toolStripStatusLabelEdition,
+            this.toolStripStatusLabelEditionText,
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabelNuclearWinterModeActive});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 559);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
+            this.statusStrip1.TabIndex = 16;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // pictureBoxSpinnerCheckForUpdates
+            // toolStripStatusLabelGame
             // 
-            this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Spinner_24;
-            this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(173, 127);
-            this.pictureBoxSpinnerCheckForUpdates.Name = "pictureBoxSpinnerCheckForUpdates";
-            this.pictureBoxSpinnerCheckForUpdates.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxSpinnerCheckForUpdates.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxSpinnerCheckForUpdates.TabIndex = 37;
-            this.pictureBoxSpinnerCheckForUpdates.TabStop = false;
-            this.pictureBoxSpinnerCheckForUpdates.Visible = false;
+            this.toolStripStatusLabelGame.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabelGame.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.toolStripStatusLabelGame.Name = "toolStripStatusLabelGame";
+            this.toolStripStatusLabelGame.Size = new System.Drawing.Size(83, 17);
+            this.toolStripStatusLabelGame.Text = "Game profile:";
             // 
-            // pictureBoxGameEdition
+            // toolStripStatusLabelGameText
             // 
-            this.pictureBoxGameEdition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxGameEdition.BackColor = System.Drawing.Color.Black;
-            this.pictureBoxGameEdition.Image = global::Fo76ini.Properties.Resources.help_128;
-            this.pictureBoxGameEdition.Location = new System.Drawing.Point(6, 338);
-            this.pictureBoxGameEdition.Name = "pictureBoxGameEdition";
-            this.pictureBoxGameEdition.Size = new System.Drawing.Size(60, 60);
-            this.pictureBoxGameEdition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxGameEdition.TabIndex = 21;
-            this.pictureBoxGameEdition.TabStop = false;
-            this.pictureBoxGameEdition.Click += new System.EventHandler(this.showProfiles_OnClick);
+            this.toolStripStatusLabelGameText.Name = "toolStripStatusLabelGameText";
+            this.toolStripStatusLabelGameText.Size = new System.Drawing.Size(12, 17);
+            this.toolStripStatusLabelGameText.Text = "?";
             // 
-            // pictureBox1
+            // toolStripStatusLabelEdition
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.Image = global::Fo76ini.Properties.Resources.icon_60;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
+            this.toolStripStatusLabelEdition.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabelEdition.Margin = new System.Windows.Forms.Padding(30, 3, 0, 2);
+            this.toolStripStatusLabelEdition.Name = "toolStripStatusLabelEdition";
+            this.toolStripStatusLabelEdition.Size = new System.Drawing.Size(48, 17);
+            this.toolStripStatusLabelEdition.Text = "Edition:";
             // 
-            // pictureBox2
+            // toolStripStatusLabelEditionText
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox2.BackColor = System.Drawing.Color.Black;
-            this.pictureBox2.Location = new System.Drawing.Point(-4, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(77, 468);
-            this.pictureBox2.TabIndex = 18;
-            this.pictureBox2.TabStop = false;
+            this.toolStripStatusLabelEditionText.Name = "toolStripStatusLabelEditionText";
+            this.toolStripStatusLabelEditionText.Size = new System.Drawing.Size(12, 17);
+            this.toolStripStatusLabelEditionText.Text = "?";
             // 
-            // colorPreviewPresetFo76Green
+            // toolStripStatusLabel1
             // 
-            this.colorPreviewPresetFo76Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.colorPreviewPresetFo76Green.Location = new System.Drawing.Point(246, 49);
-            this.colorPreviewPresetFo76Green.Name = "colorPreviewPresetFo76Green";
-            this.colorPreviewPresetFo76Green.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFo76Green.TabIndex = 62;
-            this.colorPreviewPresetFo76Green.TabStop = false;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(499, 17);
+            this.toolStripStatusLabel1.Spring = true;
             // 
-            // colorPreviewPresetFo3Green
+            // toolStripStatusLabelNuclearWinterModeActive
             // 
-            this.colorPreviewPresetFo3Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.colorPreviewPresetFo3Green.Location = new System.Drawing.Point(11, 19);
-            this.colorPreviewPresetFo3Green.Name = "colorPreviewPresetFo3Green";
-            this.colorPreviewPresetFo3Green.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFo3Green.TabIndex = 52;
-            this.colorPreviewPresetFo3Green.TabStop = false;
+            this.toolStripStatusLabelNuclearWinterModeActive.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabelNuclearWinterModeActive.ForeColor = System.Drawing.Color.OrangeRed;
+            this.toolStripStatusLabelNuclearWinterModeActive.Name = "toolStripStatusLabelNuclearWinterModeActive";
+            this.toolStripStatusLabelNuclearWinterModeActive.Size = new System.Drawing.Size(175, 17);
+            this.toolStripStatusLabelNuclearWinterModeActive.Text = "Nuclear Winter mode is active";
             // 
-            // colorPreviewPresetFo3White
+            // pictureBoxLoadingGIF
             // 
-            this.colorPreviewPresetFo3White.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.colorPreviewPresetFo3White.Location = new System.Drawing.Point(11, 109);
-            this.colorPreviewPresetFo3White.Name = "colorPreviewPresetFo3White";
-            this.colorPreviewPresetFo3White.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFo3White.TabIndex = 58;
-            this.colorPreviewPresetFo3White.TabStop = false;
-            // 
-            // colorPreviewPresetFoNVAmber
-            // 
-            this.colorPreviewPresetFoNVAmber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(182)))), ((int)(((byte)(66)))));
-            this.colorPreviewPresetFoNVAmber.Location = new System.Drawing.Point(11, 49);
-            this.colorPreviewPresetFoNVAmber.Name = "colorPreviewPresetFoNVAmber";
-            this.colorPreviewPresetFoNVAmber.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFoNVAmber.TabIndex = 54;
-            this.colorPreviewPresetFoNVAmber.TabStop = false;
-            // 
-            // colorPreviewPresetFo3Blue
-            // 
-            this.colorPreviewPresetFo3Blue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.colorPreviewPresetFo3Blue.Location = new System.Drawing.Point(11, 79);
-            this.colorPreviewPresetFo3Blue.Name = "colorPreviewPresetFo3Blue";
-            this.colorPreviewPresetFo3Blue.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFo3Blue.TabIndex = 56;
-            this.colorPreviewPresetFo3Blue.TabStop = false;
-            // 
-            // colorPreviewPresetFo4Green
-            // 
-            this.colorPreviewPresetFo4Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(255)))), ((int)(((byte)(21)))));
-            this.colorPreviewPresetFo4Green.Location = new System.Drawing.Point(246, 19);
-            this.colorPreviewPresetFo4Green.Name = "colorPreviewPresetFo4Green";
-            this.colorPreviewPresetFo4Green.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFo4Green.TabIndex = 60;
-            this.colorPreviewPresetFo4Green.TabStop = false;
-            // 
-            // pictureBoxPipboyPreview
-            // 
-            this.pictureBoxPipboyPreview.Image = global::Fo76ini.Properties.Resources.pipboy_preview_bg;
-            this.pictureBoxPipboyPreview.Location = new System.Drawing.Point(6, 18);
-            this.pictureBoxPipboyPreview.Name = "pictureBoxPipboyPreview";
-            this.pictureBoxPipboyPreview.Size = new System.Drawing.Size(370, 225);
-            this.pictureBoxPipboyPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxPipboyPreview.TabIndex = 0;
-            this.pictureBoxPipboyPreview.TabStop = false;
-            // 
-            // colorPreviewQuickboy
-            // 
-            this.colorPreviewQuickboy.BackColor = System.Drawing.Color.Fuchsia;
-            this.colorPreviewQuickboy.Location = new System.Drawing.Point(11, 50);
-            this.colorPreviewQuickboy.Name = "colorPreviewQuickboy";
-            this.colorPreviewQuickboy.Size = new System.Drawing.Size(20, 20);
-            this.colorPreviewQuickboy.TabIndex = 42;
-            this.colorPreviewQuickboy.TabStop = false;
-            // 
-            // colorPreviewPAPipboy
-            // 
-            this.colorPreviewPAPipboy.BackColor = System.Drawing.Color.Fuchsia;
-            this.colorPreviewPAPipboy.Location = new System.Drawing.Point(11, 79);
-            this.colorPreviewPAPipboy.Name = "colorPreviewPAPipboy";
-            this.colorPreviewPAPipboy.Size = new System.Drawing.Size(20, 20);
-            this.colorPreviewPAPipboy.TabIndex = 41;
-            this.colorPreviewPAPipboy.TabStop = false;
-            // 
-            // colorPreviewPipboy
-            // 
-            this.colorPreviewPipboy.BackColor = System.Drawing.Color.Fuchsia;
-            this.colorPreviewPipboy.Location = new System.Drawing.Point(11, 21);
-            this.colorPreviewPipboy.Name = "colorPreviewPipboy";
-            this.colorPreviewPipboy.Size = new System.Drawing.Size(20, 20);
-            this.colorPreviewPipboy.TabIndex = 40;
-            this.colorPreviewPipboy.TabStop = false;
-            // 
-            // pictureBoxGalleryLoadingGIF
-            // 
-            this.pictureBoxGalleryLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pictureBoxLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxGalleryLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
-            this.pictureBoxGalleryLoadingGIF.Location = new System.Drawing.Point(7, 18);
-            this.pictureBoxGalleryLoadingGIF.Name = "pictureBoxGalleryLoadingGIF";
-            this.pictureBoxGalleryLoadingGIF.Size = new System.Drawing.Size(533, 427);
-            this.pictureBoxGalleryLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxGalleryLoadingGIF.TabIndex = 3;
-            this.pictureBoxGalleryLoadingGIF.TabStop = false;
-            this.pictureBoxGalleryLoadingGIF.Visible = false;
+            this.pictureBoxLoadingGIF.BackColor = System.Drawing.SystemColors.Window;
+            this.pictureBoxLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
+            this.pictureBoxLoadingGIF.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxLoadingGIF.Name = "pictureBoxLoadingGIF";
+            this.pictureBoxLoadingGIF.Size = new System.Drawing.Size(16, 583);
+            this.pictureBoxLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxLoadingGIF.TabIndex = 15;
+            this.pictureBoxLoadingGIF.TabStop = false;
+            this.pictureBoxLoadingGIF.Visible = false;
             // 
             // Form1
             // 
@@ -5700,13 +5663,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMinimum)).EndInit();
             this.tabPagePipBoy.ResumeLayout(false);
             this.groupBoxPipboyColorPresets.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo76Green)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Green)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3White)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFoNVAmber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Blue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo4Green)).EndInit();
             this.groupBoxPipboyColorPreview.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPipboyPreview)).EndInit();
             this.groupBoxPipboyResolution.ResumeLayout(false);
             this.groupBoxPipboyResolution.PerformLayout();
             this.groupBoxPipboyMode.ResumeLayout(false);
             this.groupBoxPipboyMode.PerformLayout();
             this.groupBoxPipboyColors.ResumeLayout(false);
             this.groupBoxPipboyColors.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewQuickboy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).EndInit();
             this.tabPageControls.ResumeLayout(false);
             this.groupBoxGamepad.ResumeLayout(false);
             this.groupBoxGamepad.PerformLayout();
@@ -5761,9 +5734,13 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
-            this.groupBoxSettings.ResumeLayout(false);
             this.panelUpdate.ResumeLayout(false);
             this.panelUpdate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdateButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGameEdition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPageAudio.ResumeLayout(false);
             this.groupBoxAudio.ResumeLayout(false);
             this.groupBoxAudio.PerformLayout();
@@ -5785,6 +5762,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).EndInit();
             this.tabPageGallery.ResumeLayout(false);
             this.groupBoxGallery.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).EndInit();
             this.groupBoxScreenshotOptions.ResumeLayout(false);
             this.groupBoxScreenshotOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).EndInit();
@@ -5804,22 +5782,6 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdateButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGameEdition)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo76Green)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Green)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3White)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFoNVAmber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Blue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo4Green)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPipboyPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewQuickboy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6173,9 +6135,6 @@
         private System.Windows.Forms.NumericUpDown numfOverShoulderCombatPosZ;
         private System.Windows.Forms.NumericUpDown numfOverShoulderPosX;
         private System.Windows.Forms.NumericUpDown numfOverShoulderPosZ;
-        private System.Windows.Forms.GroupBox groupBoxSettings;
-        private System.Windows.Forms.LinkLabel linkLabelOpenSettings;
-        private System.Windows.Forms.Label labelSettingsNotice;
         private System.Windows.Forms.ToolStripButton toolStripButtonLaunchGame;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelNuclearWinterModeActive;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
