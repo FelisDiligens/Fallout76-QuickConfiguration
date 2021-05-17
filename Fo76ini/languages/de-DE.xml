@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="datasnake" version="1.9.2h1">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="FelisDiligens (aka. datasnake)" version="1.9.3">
   <Strings>
     <!--
         Strings
@@ -46,6 +46,13 @@
     <String text="Du hast diese Mod empfohlen." id="endorsedText" />
     <String text="Du hast diese Mod noch nicht bewertet." id="notEndorsedText" />
     <String text="Du hast dich von einer Empfehlung enthalten." id="abstainedText" />
+    <String text="Warnung: Übliche Ressourcenordner konnten nicht gefunden werden. (meshes, textures, sounds, materials, interface und so weiter)&#xA;Die Mod lädt möglicherweise nicht ordnungsgemäß." id="modSidePanel_WarningNoCommonResourceFoldersFound" />
+    <String text="Hinweis: Das Mischen von allgemeinen, Textur- und Audiodateien *könnte* dazu führen, dass die Mod nicht ordnungsgemäß geladen wird.&#xA;Falls die Mod nicht funktioniert, könntest du versuchen, es auf &quot;Gebündeltes *.ba2-Archiv&quot; zu setzen." id="modSidePanel_HintMixedResourcesFound" />
+    <String text="Hinweis: Für Mods mit allgemeinen Dateien, wähle am besten die Vorgabe &quot;Allgemeines / ...&quot; oder lasse es auf &quot;Automatisch erkennen&quot;." id="modSidePanel_HintWrongPresetForGeneralFiles" />
+    <String text="Hinweis: Für Mods, die Texturen ersetzen, wähle am besten die Vorgabe &quot;Texturen (*.dds Dateien)&quot; oder lasse es auf &quot;Automatisch erkennen&quot;." id="modSidePanel_HintWrongPresetForTextures" />
+    <String text="Hinweis: Für Mods, die Audiodateien ersetzen, wähle am besten die Vorgabe &quot;Soundeffekte / Musik / Stimmen&quot; oder lasse es auf &quot;Automatisch erkennen&quot;." id="modSidePanel_HintWrongPresetForAudioFiles" />
+    <String text="Hinweis: *.dll-Dateien werden normalerweise als &quot;lose Dateien&quot; in das Spiel-Verzeichnis (&quot;.&quot;) installiert." id="modSidePanel_HintWrongInstallMethodForDLLs" />
+    <String text="Hinweis: Strings werden normalerweise als &quot;lose Dateien&quot; in den &quot;Data&quot;-Ordner installiert." id="modSidePanel_HintWrongInstallMethodForStrings" />
     <String text="Alles erledigt" id="modsAllDone" />
     <String text="Allgemein" id="modsTableFormatGeneral" />
     <String text="Texturen" id="modsTableFormatTextures" />
@@ -505,6 +512,34 @@ Funktioniert jedoch nur, wenn das Spiel über das Tool gestartet wird.</Descript
     <Button text="Schließen" id="buttonClose" />
     <CheckBox text="Nicht mehr anzeigen, auch nicht nach einem Update." id="checkBoxDontShowAgain" />
   </FormWhatsNew>
+  <FormWelcome title="Willkommen">
+    <!--
+        FormWelcome
+        ******************************************************************************************************************************************************
+        Welcome
+    -->
+    <Label text="» Ich weiß, dass du sehr beschäftigt bist, daher werde ich nicht viel Zeit in Anspruch nehmen.\n   Ich muss nur einige Informationen überprüfen, das ist alles! «\n       – Vault-Tec-Vertreter, Oktober 2077 " id="label4" />
+    <Button text="OK" id="buttonOK" />
+    <Panel id="panel1">
+      <GroupBox text="Spielpfad" id="groupBoxGameLocation">
+        <!-- Group "Game location" -->
+        <Label text="Du kannst den Spielpfad aus lassen, wenn du keine Mods installieren möchtest. " id="label3" />
+        <Label text="Wenn du Schwierigkeiten hast, den Spielpfad zu finden:\n\nSteam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Fallout76\\\nBethesda.net: C:\\Program Files (x86)\\Bethesda.net Launcher\\games\\Fallout76\\\nMicrosoft Store: C:\\Program Files\\ModifiableWindowsApps\\Fallout76\\" id="label2" />
+        <Button text="Automatisch erkennen" id="buttonAutoDetect" />
+        <Button text="..." id="buttonPickGamePath" />
+      </GroupBox>
+      <GroupBox text="Spieledition" id="groupBoxGameEdition">
+        <!-- Group "Game edition" -->
+        <RadioButton text="Etwas anderes" id="radioButtonEditionUnknown" />
+        <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
+        <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
+        <RadioButton text="Steam" id="radioButtonEditionSteam" />
+        <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+      </GroupBox>
+    </Panel>
+    <Label text="Hallo! Es scheint, du hast das Tool zum ersten Mal gestartet!\n" id="label1" />
+    <Label text="Willkommen" id="labelTitle" />
+  </FormWelcome>
   <FormMods title="Mods verwalten">
     <!--
         FormMods
@@ -718,7 +753,7 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
         <Label text="Übersetzt von:" id="labelTranslationBy" />
         <Label text="Autor:" id="labelAuthor" />
         <Label text="Version:" id="labelVersion" />
-        <Label text="Dieses Tool erlaubt es dir, alles mögliche schnell einzustellen.\nTipp: Fahr mit der Maus über eine Option,\num mehr darüber zu lesen, was es tut." id="labelDescription" />
+        <Label text="Dieses Tool erlaubt es dir, alles mögliche schnell einzustellen.\nTipp: Fahr mit der Maus über eine Option, um mehr darüber zu lesen, was es tut." id="labelDescription" />
         <Label text="Fallout 76 Schnellkonfiguration" id="labelTitle" />
       </TabPage>
       <TabPage text="Allgemein" id="tabPageGeneral">
