@@ -713,6 +713,11 @@ namespace Fo76ini
 
         private void gameFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!this.game.ValidateGamePath())
+            {
+                MsgBox.ShowID("modsGamePathNotSet", MessageBoxIcon.Error);
+                return;
+            }
             Utils.OpenExplorer(this.game.GamePath);
         }
 
