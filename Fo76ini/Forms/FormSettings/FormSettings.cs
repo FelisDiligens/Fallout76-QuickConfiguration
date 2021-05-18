@@ -358,38 +358,52 @@ namespace Fo76ini.Forms.FormSettings
             }
         }
 
-        public static string AutoDetectGamePath ()
+        public static string AutoDetectGamePath()
         {
-            // Search most common installation directories (probably good enough for now):
-            string foundPath = null;
-            string steamPath = @"C:\Program Files(x86)\Steam\steamapps\common\Fallout76";
-            string bethNetPath = @"C:\Program Files (x86)\Bethesda.net Launcher\games\Fallout76";
-            string xboxPathC = @"C:\Program Files\ModifiableWindowsApps\Fallout76";
-            string xboxPathD = @"D:\Program Files\ModifiableWindowsApps\Fallout76";
-
-            GameEdition edition = ProfileManager.SelectedGame.Edition;
-
-            if (edition == GameEdition.Steam && GameInstance.ValidateGamePath(steamPath))
-                foundPath = steamPath;
-
-            if ((edition == GameEdition.BethesdaNet || edition == GameEdition.BethesdaNetPTS) && GameInstance.ValidateGamePath(bethNetPath))
-                foundPath = bethNetPath;
-
-            if (edition == GameEdition.MSStore && GameInstance.ValidateGamePath(xboxPathC))
-                foundPath = xboxPathC;
-
-            if (edition == GameEdition.MSStore && GameInstance.ValidateGamePath(xboxPathD))
-                foundPath = xboxPathD;
-
             /*
-              Registry? I only found this:
-                Path: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Fallout 76
-                Name: Path
-                Type: REG_SZ
-                Data: "D:\Bethesda.net\Fallout76"
+             * I could totally search through every single folder on a user's computer, but that would take way too long. So, I'll take shortcuts.
+             * This is not about to find a path for every user 100% of the time, but an attempt to find a path for MOST users in the shortest amount of time.
+             * If it can't find the path, the user likely knows enough about their computer to find it themselves. Even if it's a bit inconvenient.
              */
 
-            return foundPath;
+            // Search every drive:
+            foreach (DriveInfo d in DriveInfo.GetDrives())
+            {
+                // Only search fixed drives:
+                if (d.DriveType != DriveType.Fixed)
+                    continue;
+
+                // Search for "default" paths that are the most common:
+                string steamDefaultPath = Path.Combine(d.Name, @"Program Files (x86)\Steam\steamapps\common\Fallout76");
+                if (GameInstance.ValidateGamePath(steamDefaultPath))
+                    return steamDefaultPath;
+
+                string bethNetDefaultPath = Path.Combine(d.Name, @"Program Files (x86)\Bethesda.net Launcher\games\Fallout76");
+                if (GameInstance.ValidateGamePath(bethNetDefaultPath))
+                    return bethNetDefaultPath;
+
+                string xboxDefaultPath = Path.Combine(d.Name, @"Program Files\ModifiableWindowsApps\Fallout76");
+                if (GameInstance.ValidateGamePath(xboxDefaultPath))
+                    return xboxDefaultPath;
+
+                // Try some exotic ones, maybe?
+                string steamTopLevelPath = Path.Combine(d.Name, @"steamapps\common\Fallout76");
+                if (GameInstance.ValidateGamePath(steamTopLevelPath))
+                    return steamTopLevelPath;
+
+                // Search every top-level folder on the drive:
+                foreach (string path in Directory.EnumerateDirectories(d.Name))
+                {
+                    if (GameInstance.ValidateGamePath(path))
+                        return path;
+
+                    string steamSubDirPath = Path.Combine(path, @"steamapps\common\Fallout76");
+                    if (GameInstance.ValidateGamePath(steamSubDirPath))
+                        return steamSubDirPath;
+                }
+            }
+
+            return null;
         }
 
         private void buttonAutoDetect_Click(object sender, EventArgs e)
