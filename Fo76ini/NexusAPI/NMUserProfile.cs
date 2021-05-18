@@ -64,7 +64,7 @@ namespace Fo76ini.NexusAPI
             {
                 try
                 {
-                    JObject json = request.GetJSON();
+                    JObject json = request.GetJObject();
 
                     UserName = json["name"].ToString();
                     ProfilePictureURL = json["profile_url"].ToString();
@@ -99,7 +99,7 @@ namespace Fo76ini.NexusAPI
                 try
                 {
                     if (request.Success)
-                        MsgBox.Get("failed").FormatText($"Server returned: HTTP {request.StatusCode}\n{request.GetJSON()["message"]}").Show(MessageBoxIcon.Error);
+                        MsgBox.Get("failed").FormatText($"Server returned: HTTP {request.StatusCode}\n{request.GetJObject()["message"]}").Show(MessageBoxIcon.Error);
                     else
                         MsgBox.Get("failed").FormatText($"WebException: {request.Exception.Message}").Show(MessageBoxIcon.Error);
                 }

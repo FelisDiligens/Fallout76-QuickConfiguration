@@ -81,9 +81,14 @@ namespace Fo76ini.NexusAPI
             }
         }
 
-        public JObject GetJSON()
+        public JObject GetJObject()
         {
             return JObject.Parse(ResponseText);
+        }
+
+        public JArray GetJArray()
+        {
+            return JArray.Parse(ResponseText);
         }
 
         public WebHeaderCollection ResponseHeaders

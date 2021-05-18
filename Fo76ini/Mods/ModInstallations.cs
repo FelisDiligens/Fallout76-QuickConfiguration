@@ -167,6 +167,15 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
+        /// Downloads and installs a mod from NexusMods. (by e.g. using NXM links)
+        /// </summary>
+        /// <param name="key">Pass string.Empty or null if you have no key.</param>
+        public static void InstallRemote(ManagedMods mods, int modId, int fileId, string key, Action<Progress> ProgressChanged = null)
+        {
+
+        }
+
+        /// <summary>
         /// Looks through the resource lists in the *.ini and imports *.ba2 archives.
         /// </summary>
         public static void ImportInstalledMods(ManagedMods mods, Action<Progress> ProgressChanged = null)

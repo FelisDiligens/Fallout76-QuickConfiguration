@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Default", 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Default", 0);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "Steam"}, 2, System.Drawing.Color.Empty, System.Drawing.SystemColors.Window, null);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Microsoft Store", 3);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Microsoft Store", 3);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSettings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
@@ -150,6 +150,7 @@
             this.backgroundWorkerSSOLogin = new System.ComponentModel.BackgroundWorker();
             this.openFileDialogArchiveTwoPath = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
+            this.checkBoxHandleNXMLinks = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxPaths.SuspendLayout();
@@ -217,7 +218,7 @@
             this.groupBoxPaths.Controls.Add(this.labelArchiveTwoPath);
             this.groupBoxPaths.Controls.Add(this.buttonArchiveTwoPath);
             this.groupBoxPaths.Controls.Add(this.labelSevenZipPath);
-            this.groupBoxPaths.Location = new System.Drawing.Point(402, 227);
+            this.groupBoxPaths.Location = new System.Drawing.Point(402, 168);
             this.groupBoxPaths.Name = "groupBoxPaths";
             this.groupBoxPaths.Size = new System.Drawing.Size(358, 91);
             this.groupBoxPaths.TabIndex = 44;
@@ -287,9 +288,9 @@
             // groupBoxActions
             // 
             this.groupBoxActions.Controls.Add(this.linkLabelEnableDangerZone);
-            this.groupBoxActions.Location = new System.Drawing.Point(6, 227);
+            this.groupBoxActions.Location = new System.Drawing.Point(402, 265);
             this.groupBoxActions.Name = "groupBoxActions";
-            this.groupBoxActions.Size = new System.Drawing.Size(390, 91);
+            this.groupBoxActions.Size = new System.Drawing.Size(358, 50);
             this.groupBoxActions.TabIndex = 43;
             this.groupBoxActions.TabStop = false;
             this.groupBoxActions.Text = "Actions";
@@ -309,10 +310,11 @@
             // 
             // groupBoxOptions
             // 
+            this.groupBoxOptions.Controls.Add(this.checkBoxHandleNXMLinks);
             this.groupBoxOptions.Controls.Add(this.checkBoxReadOnly);
-            this.groupBoxOptions.Location = new System.Drawing.Point(402, 6);
+            this.groupBoxOptions.Location = new System.Drawing.Point(6, 227);
             this.groupBoxOptions.Name = "groupBoxOptions";
-            this.groupBoxOptions.Size = new System.Drawing.Size(358, 59);
+            this.groupBoxOptions.Size = new System.Drawing.Size(390, 88);
             this.groupBoxOptions.TabIndex = 42;
             this.groupBoxOptions.TabStop = false;
             this.groupBoxOptions.Text = "Options";
@@ -320,7 +322,7 @@
             // checkBoxReadOnly
             // 
             this.checkBoxReadOnly.AutoSize = true;
-            this.checkBoxReadOnly.Location = new System.Drawing.Point(11, 19);
+            this.checkBoxReadOnly.Location = new System.Drawing.Point(9, 19);
             this.checkBoxReadOnly.Name = "checkBoxReadOnly";
             this.checkBoxReadOnly.Size = new System.Drawing.Size(140, 17);
             this.checkBoxReadOnly.TabIndex = 4;
@@ -334,7 +336,7 @@
             this.groupBoxNuclearWinterMode.Controls.Add(this.labelNWdlloptions);
             this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWAutoDisableMods);
             this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWRenameDLL);
-            this.groupBoxNuclearWinterMode.Location = new System.Drawing.Point(402, 71);
+            this.groupBoxNuclearWinterMode.Location = new System.Drawing.Point(402, 12);
             this.groupBoxNuclearWinterMode.Name = "groupBoxNuclearWinterMode";
             this.groupBoxNuclearWinterMode.Size = new System.Drawing.Size(358, 150);
             this.groupBoxNuclearWinterMode.TabIndex = 41;
@@ -910,11 +912,11 @@
             this.listViewGameInstances.FullRowSelect = true;
             this.listViewGameInstances.HideSelection = false;
             this.listViewGameInstances.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5});
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10});
             this.listViewGameInstances.LabelWrap = false;
             this.listViewGameInstances.LargeImageList = this.imageList1;
             this.listViewGameInstances.Location = new System.Drawing.Point(3, 18);
@@ -1451,6 +1453,17 @@
             this.openFileDialogSevenZipPath.Filter = "Executable|*.exe";
             this.openFileDialogSevenZipPath.FilterIndex = 2;
             // 
+            // checkBoxHandleNXMLinks
+            // 
+            this.checkBoxHandleNXMLinks.AutoSize = true;
+            this.checkBoxHandleNXMLinks.Location = new System.Drawing.Point(9, 42);
+            this.checkBoxHandleNXMLinks.Name = "checkBoxHandleNXMLinks";
+            this.checkBoxHandleNXMLinks.Size = new System.Drawing.Size(245, 17);
+            this.checkBoxHandleNXMLinks.TabIndex = 7;
+            this.checkBoxHandleNXMLinks.Text = "Associate with \"Download with manager\" links";
+            this.checkBoxHandleNXMLinks.UseVisualStyleBackColor = true;
+            this.checkBoxHandleNXMLinks.CheckedChanged += new System.EventHandler(this.checkBoxHandleNXMLinks_CheckedChanged);
+            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1630,5 +1643,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialogArchiveTwoPath;
         private System.Windows.Forms.OpenFileDialog openFileDialogSevenZipPath;
         private System.Windows.Forms.GroupBox groupBoxPaths;
+        private System.Windows.Forms.CheckBox checkBoxHandleNXMLinks;
     }
 }

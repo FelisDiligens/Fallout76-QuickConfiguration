@@ -82,6 +82,7 @@ namespace Fo76ini.Forms.FormSettings
             RefreshNMUI();
             if (IniFiles.Config.GetBool("NexusMods", "bAutoUpdateProfile", true))
                 UpdateNMProfile();
+            this.checkBoxHandleNXMLinks.Checked = NXMHandler.IsRegistered();
         }
 
         private void FormSettings_FormClosing(object sender, FormClosingEventArgs e)
@@ -890,6 +891,31 @@ namespace Fo76ini.Forms.FormSettings
                 this.textBoxSevenZipPath.Text = path;
                 sevenZipPathTweak.SetValue(this.textBoxSevenZipPath.Text);
                 UpdateGamesTab();
+            }
+        }
+
+        private void checkBoxHandleNXMLinks_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isRegistered = NXMHandler.IsRegistered();
+            if (isRegistered == checkBoxHandleNXMLinks.Checked)
+                return;
+
+            try
+            {
+                if (isRegistered)
+                    NXMHandler.Unregister();
+                else
+                    NXMHandler.Register();
+            }
+            catch (System.UnauthorizedAccessException ex)
+            {
+                MsgBox.Show("Access denied", "Start the tool as admin and try again.", MessageBoxIcon.Error);
+                checkBoxHandleNXMLinks.Checked = isRegistered;
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show("Unknown error", "Start the tool as admin and try again.", MessageBoxIcon.Error);
+                checkBoxHandleNXMLinks.Checked = isRegistered;
             }
         }
     }

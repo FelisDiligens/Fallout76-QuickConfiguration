@@ -89,7 +89,7 @@ namespace Fo76ini.NexusAPI
                  * Get data:
                  */
 
-                JObject json = request.GetJSON();
+                JObject json = request.GetJObject();
                 this.Title = json["name"].ToString();
                 this.Author = json["author"].ToString();
                 this.Uploader = json["uploaded_by"].ToString();
@@ -162,6 +162,84 @@ namespace Fo76ini.NexusAPI
         }
 
         /// <summary>
+        /// Requests a download link for a file.
+        /// </summary>
+        /// <param name="nxmLink"></param>
+        /// <returns></returns>
+        public static string RequestDownloadLink(string nxmLink)
+        {
+            // nxm://fallout76/mods/<mod_id>/files/<file_id>?key=...&expires=1621492286&user_id=41275740
+            if (!nxmLink.StartsWith("nxm://"))
+                return null;
+
+            string key = "";
+            string expires = "-1";
+
+            string modId = nxmLink.Substring(nxmLink.IndexOf("fallout76/mods/") + 15);
+            modId = modId.Substring(0, modId.IndexOf("/files/"));
+
+            string fileId = nxmLink.Substring(nxmLink.IndexOf("/files/") + 7);
+            if (fileId.Contains("?"))
+                fileId = fileId.Substring(0, fileId.IndexOf("?"));
+
+            if (nxmLink.Contains("key="))
+            {
+                key = nxmLink.Substring(nxmLink.IndexOf("key=") + 4);
+                if (key.Contains("&"))
+                    key = key.Substring(0, key.IndexOf("&"));
+            }
+
+            if (nxmLink.Contains("expires="))
+            {
+                expires = nxmLink.Substring(nxmLink.IndexOf("expires=") + 8);
+                if (expires.Contains("&"))
+                    expires = expires.Substring(0, expires.IndexOf("&"));
+            }
+
+            return RequestDownloadLink(
+                Utils.ToInt(modId),
+                Utils.ToInt(fileId),
+                key,
+                Utils.ToInt(expires)
+            );
+        }
+
+        /// <summary>
+        /// Requests a download link for a file.
+        /// </summary>
+        /// <param name="modId"></param>
+        /// <param name="fileId"></param>
+        /// <param name="key"></param>
+        /// <param name="expires"></param>
+        /// <returns></returns>
+        public static string RequestDownloadLink(int modId, int fileId, string key = "", int expires = -1)
+        {
+            string requestUrl = "https://api.nexusmods.com/v1/games/fallout76/mods/" + modId + "/files/" + fileId + "/download_link.json";
+            if (key != null && key != "" && expires > 0)
+                requestUrl += "?key=" + key + "&expires=" + expires;
+
+            APIRequest request = new APIRequest(requestUrl);
+            request.Headers["apikey"] = NexusMods.User.APIKey;
+            request.Execute();
+            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            {
+                List<string> links = new List<string>();
+                JArray list = request.GetJArray();
+                foreach (JToken obj in list)
+                {
+                    links.Add(
+                        ((JObject)obj)["URI"].ToString()
+                    );
+                }
+                if (links.Count() > 0)
+                    return links[0];
+                return null;
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Endorses this mod.
         /// </summary>
         /// <param name="endorsedVersion">Version that will be endorsed.</param>
@@ -179,7 +257,7 @@ namespace Fo76ini.NexusAPI
             request.Execute();
             if (request.Success)
             {
-                JObject json = request.GetJSON();
+                JObject json = request.GetJObject();
                 if (json.ContainsKey("status") && json["status"].ToString() == "Endorsed")
                 {
                     this.Endorsement = EndorseStatus.Endorsed;
@@ -216,7 +294,7 @@ namespace Fo76ini.NexusAPI
             request.Execute();
             if (request.Success)
             {
-                JObject json = request.GetJSON();
+                JObject json = request.GetJObject();
                 if (json.ContainsKey("status") && json["status"].ToString() == "Abstained")
                 {
                     this.Endorsement = EndorseStatus.Abstained;

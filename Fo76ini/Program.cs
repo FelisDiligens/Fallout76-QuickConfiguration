@@ -21,6 +21,11 @@ namespace Fo76ini
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
+            // TODO: nxm protocol handler
+            // string[] args = Environment.GetCommandLineArgs();
+            // MsgBox.Show("Arguments", $"{String.Join("\n", args)}");
+            // args[1] = "nxm://fallout76/mods/<mod_id>/files/<file_id>?key=<long_random_string>&expires=<unix_timestamp>&user_id=<user_id>"
+
             Application.ThreadException += new ThreadExceptionEventHandler(HandleThreadException);
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(HandleUnhandledException);

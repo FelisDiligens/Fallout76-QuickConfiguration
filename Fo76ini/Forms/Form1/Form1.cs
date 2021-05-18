@@ -348,6 +348,15 @@ namespace Fo76ini
             this.LoadGallery();
 
             MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
+
+            // TODO: proper nxm protocol handler
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length > 1 && args[1].StartsWith("nxm://"))
+            {
+                MsgBox.Show("(WIP) NXM link", args[1]);
+                string downloadLink = NMMod.RequestDownloadLink(args[1]);
+                MsgBox.Show("(WIP) Download link", downloadLink);
+            }
         }
 
         private void Form1_Shown(object sender, EventArgs e)
