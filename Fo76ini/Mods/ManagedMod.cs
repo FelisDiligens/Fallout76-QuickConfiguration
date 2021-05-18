@@ -254,6 +254,15 @@ namespace Fo76ini.Mods
         /// </summary>
         public string ManagedFolderName;
 
+
+        /// <summary>
+        /// Example: @"{2f2d3b3b-b21b-4ec2-b555-c8806a801b16}"
+        /// </summary>
+        public string DefaultManagedFolderName
+        {
+            get { return "{" + guid.ToString() + "}"; }
+        }
+
         /// <summary>
         /// Get the path to where the mod's files are stored.
         /// Example: @"C:\Program Files (x86)\Steam\steamapps\common\Fallout 76\Mods\{2f2d3b3b-b21b-4ec2-b555-c8806a801b16}"
@@ -307,14 +316,14 @@ namespace Fo76ini.Mods
         {
             this.GamePath = gamePath;
             this.guid = uuid;
-            this.ManagedFolderName = "{" + guid.ToString() + "}";
+            this.ManagedFolderName = this.DefaultManagedFolderName;
         }
 
         public ManagedMod(string gamePath)
         {
             this.GamePath = gamePath;
             this.guid = Guid.NewGuid();
-            this.ManagedFolderName = "{" + guid.ToString() + "}";
+            this.ManagedFolderName = this.DefaultManagedFolderName;
         }
 
         /// <summary>

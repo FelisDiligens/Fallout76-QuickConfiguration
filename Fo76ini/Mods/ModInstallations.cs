@@ -58,6 +58,9 @@ namespace Fo76ini.Mods
             ManagedMod newMod = new ManagedMod(gamePath);
             newMod.Title = fileNameWOEx;
             newMod.ArchiveName = fileNameWOEx + ".ba2";
+            newMod.ManagedFolderName = fileNameWOEx;
+            if (!Utils.IsFileNameValid(newMod.ManagedFolderName) || Directory.Exists(newMod.ManagedFolderPath))
+                newMod.ManagedFolderName = newMod.DefaultManagedFolderName;
 
             // Extract mod:
             ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {Path.GetFileName(filePath)}"));
@@ -135,6 +138,9 @@ namespace Fo76ini.Mods
             ManagedMod newMod = new ManagedMod(gamePath);
             newMod.Title = folderName;
             newMod.ArchiveName = folderName + ".ba2";
+            newMod.ManagedFolderName = folderName;
+            if (!Utils.IsFileNameValid(newMod.ManagedFolderName) || Directory.Exists(newMod.ManagedFolderPath))
+                newMod.ManagedFolderName = newMod.DefaultManagedFolderName;
 
             // Copy folder:
             CopyDirectory(folderPath, newMod.ManagedFolderPath, ProgressChanged);
