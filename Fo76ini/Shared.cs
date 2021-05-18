@@ -7,7 +7,7 @@ namespace Fo76ini
 {
     public class Shared
     {
-        public const string VERSION = "1.9.3";
+        public const string VERSION = "1.9.4-dev";
         public static string LatestVersion = null;
 
         public static readonly string AppInstallationFolder = Directory.GetParent(Application.ExecutablePath).ToString();
