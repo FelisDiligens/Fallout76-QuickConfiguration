@@ -173,9 +173,13 @@ namespace Fo76ini.Mods
         /// <summary>
         /// Downloads and installs a mod from NexusMods. (by using NXM links)
         /// </summary>
-        public static void InstallRemote(ManagedMods mods, string nxmLink, Action<Progress> ProgressChanged = null)
+        /// <param name="useSourceBA2Archive">When false, creates a new "frozen" mod.</param>
+        public static void InstallRemote(ManagedMods mods, string nxmLinkStr, bool useSourceBA2Archive = false, Action<Progress> ProgressChanged = null)
         {
+            NXMLink nxmLink = NXMHandler.ParseLink(nxmLinkStr);
+
             // Get the download link from NexusMods:
+            ProgressChanged(Progress.Indetermined("Requesting mod download link..."));
             Uri dlLink = new Uri(NMMod.RequestDownloadLink(nxmLink));
             string dlFileName = dlLink.Segments.Last();
             string dlPath = Path.Combine(Shared.DownloadsFolder, dlFileName);
@@ -185,10 +189,18 @@ namespace Fo76ini.Mods
                 DownloadFile(dlLink.OriginalString, dlPath, ProgressChanged);
 
             // Get remote mod info:
-            // TODO
+            ProgressChanged(Progress.Indetermined("Requesting mod information and thumbnail..."));
+            NMMod nmMod = NexusMods.RequestModInformation(nxmLink.modId);
 
             // Install mod:
-            // TODO
+            ProgressChanged(Progress.Indetermined($"Installing '{nmMod.Title}'..."));
+            ManagedMod newMod = ModInstallations.FromArchive(mods.GamePath, dlPath, useSourceBA2Archive, ProgressChanged);
+            newMod.Title = nmMod.Title;
+            newMod.Version = nmMod.LatestVersion;
+            newMod.URL = nmMod.URL;
+            mods.Add(newMod);
+            mods.Save();
+            ProgressChanged?.Invoke(Progress.Done($"'{nmMod.Title}' installed."));
         }
 
         private static void DownloadFile(string url, string path, Action<Progress> ProgressChanged = null)

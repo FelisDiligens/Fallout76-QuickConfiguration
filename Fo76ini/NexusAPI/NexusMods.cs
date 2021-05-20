@@ -121,11 +121,23 @@ namespace Fo76ini.NexusAPI
         /// Requests remote information about a mod.
         /// </summary>
         /// <param name="url">The url to the mod page. Example: "https://www.nexusmods.com/fallout76/mods/419?tab=files"</param>
-        public static void RequestModInformation(string url)
+        public static NMMod RequestModInformation(string url)
         {
             NMMod mod = new NMMod(url);
             mod.RequestInformation();
             Mods[mod.ID] = mod;
+            return mod;
+        }
+
+        /// <summary>
+        /// Requests remote information about a mod.
+        /// </summary>
+        public static NMMod RequestModInformation(int modId)
+        {
+            NMMod mod = new NMMod(modId);
+            mod.RequestInformation();
+            Mods[mod.ID] = mod;
+            return mod;
         }
 
         /// <summary>
