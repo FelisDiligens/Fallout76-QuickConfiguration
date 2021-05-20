@@ -166,8 +166,7 @@
             this.toolStripStatusLabelSpacer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDeploymentStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.wIPDownloadModnxmLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wIPDownloadModmodIdFileIdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerCheckForNXM = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -327,7 +326,7 @@
             this.openArchive2ToolStripMenuItem,
             this.exploreba2ArchiveToolStripMenuItem});
             this.archive2ToolStripMenuItem.Name = "archive2ToolStripMenuItem";
-            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.archive2ToolStripMenuItem.Text = "Archive2";
             // 
             // openArchive2ToolStripMenuItem
@@ -349,31 +348,29 @@
             this.nexusModsAPIToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.updateModInformationToolStripMenuItem,
             this.endorseModsToolStripMenuItem,
-            this.checkForUpdatesToolStripMenuItem,
-            this.wIPDownloadModnxmLinkToolStripMenuItem,
-            this.wIPDownloadModmodIdFileIdToolStripMenuItem});
+            this.checkForUpdatesToolStripMenuItem});
             this.nexusModsAPIToolStripMenuItem.Name = "nexusModsAPIToolStripMenuItem";
-            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.nexusModsAPIToolStripMenuItem.Text = "NexusMods API";
             // 
             // updateModInformationToolStripMenuItem
             // 
             this.updateModInformationToolStripMenuItem.Name = "updateModInformationToolStripMenuItem";
-            this.updateModInformationToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.updateModInformationToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.updateModInformationToolStripMenuItem.Text = "Update mod information";
             this.updateModInformationToolStripMenuItem.Click += new System.EventHandler(this.updateModInformationToolStripMenuItem_Click);
             // 
             // endorseModsToolStripMenuItem
             // 
             this.endorseModsToolStripMenuItem.Name = "endorseModsToolStripMenuItem";
-            this.endorseModsToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.endorseModsToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.endorseModsToolStripMenuItem.Text = "Endorse mods";
             this.endorseModsToolStripMenuItem.Click += new System.EventHandler(this.endorseModsToolStripMenuItem_Click);
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
@@ -1583,18 +1580,10 @@
             this.pictureBoxModsLoadingGIF.TabStop = false;
             this.pictureBoxModsLoadingGIF.Visible = false;
             // 
-            // wIPDownloadModnxmLinkToolStripMenuItem
+            // timerCheckForNXM
             // 
-            this.wIPDownloadModnxmLinkToolStripMenuItem.Name = "wIPDownloadModnxmLinkToolStripMenuItem";
-            this.wIPDownloadModnxmLinkToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
-            this.wIPDownloadModnxmLinkToolStripMenuItem.Text = "[WIP] Download mod (nxm link)";
-            this.wIPDownloadModnxmLinkToolStripMenuItem.Click += new System.EventHandler(this.wIPDownloadModnxmLinkToolStripMenuItem_Click);
-            // 
-            // wIPDownloadModmodIdFileIdToolStripMenuItem
-            // 
-            this.wIPDownloadModmodIdFileIdToolStripMenuItem.Name = "wIPDownloadModmodIdFileIdToolStripMenuItem";
-            this.wIPDownloadModmodIdFileIdToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
-            this.wIPDownloadModmodIdFileIdToolStripMenuItem.Text = "[WIP] Download mod (mod id, file id)";
+            this.timerCheckForNXM.Interval = 1000;
+            this.timerCheckForNXM.Tick += new System.EventHandler(this.timerCheckForNXM_Tick);
             // 
             // FormMods
             // 
@@ -1793,7 +1782,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonModUnfreeze;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolStripButtonFreeze;
-        private System.Windows.Forms.ToolStripMenuItem wIPDownloadModnxmLinkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem wIPDownloadModmodIdFileIdToolStripMenuItem;
+        private System.Windows.Forms.Timer timerCheckForNXM;
     }
 }

@@ -505,6 +505,7 @@ namespace Fo76ini
             this.listViewMods.Enabled = true;
             this.toolStrip1.Enabled = true;
             this.preventClosing = false;
+            this.timerCheckForNXM.Start();
         }
 
         private void DisableUI()
@@ -514,6 +515,7 @@ namespace Fo76ini
             this.menuStrip1.Enabled = false;
             this.checkBoxDisableMods.Enabled = false;
             this.preventClosing = true;
+            this.timerCheckForNXM.Stop();
         }
 
         private void DisableUI_SidePanelOpen()
@@ -716,6 +718,18 @@ namespace Fo76ini
             this.Mods.ModsDisabled = checkBoxDisableMods.Checked;
             this.Mods.Save();
             UpdateStatusStrip();
+        }
+
+        // Timer:
+        private void timerCheckForNXM_Tick(object sender, EventArgs e)
+        {
+            string txtPath = Path.Combine(Shared.AppConfigFolder, "nxm.txt");
+            if (File.Exists(txtPath))
+            {
+                string nxmLink = File.ReadAllText(txtPath);
+                File.Delete(txtPath);
+                DownloadModThreaded(nxmLink, UpdateProgress);
+            }
         }
 
         #region All event handler that control the ListView
@@ -1639,6 +1653,20 @@ namespace Fo76ini
             });
         }
 
+        private void DownloadModThreaded(string nxmLink, Action<Progress> ProgressChanged = null)
+        {
+            RunThreaded(() => {
+                ShowLoadingUI();
+                CloseSidePanel();
+            }, () => {
+                ModInstallations.InstallRemote(Mods, nxmLink, ProgressChanged);
+                return true;
+            }, (success) => {
+                EnableUI();
+                MsgBox.Popup("Success", "Download finished", MessageBoxIcon.Information);
+            });
+        }
+
         #endregion
 
 
@@ -1698,22 +1726,6 @@ namespace Fo76ini
         }
 
         #endregion
-
-        // TODO: WIP
-        private void wIPDownloadModnxmLinkToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TextPrompt.Prompt("(WIP) Enter NXM link", (nxmLink) => {
-                RunThreaded(() => {
-                    ShowLoadingUI();
-                    CloseSidePanel();
-                }, () => {
-                    ModInstallations.InstallRemote(Mods, nxmLink, UpdateProgress);
-                    return true;
-                }, (success) => {
-                    EnableUI();
-                });
-            });
-        }
     }
 
 

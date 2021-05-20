@@ -18,7 +18,7 @@ namespace Fo76ini.Utilities
                 if (File.Exists(path))
                     return path;
                 else
-                    return Path.GetFullPath(DefaultArchive2Path);
+                    return Path.Combine(Shared.AppInstallationFolder, "Archive2\\Archive2.exe");
             }
         }
 

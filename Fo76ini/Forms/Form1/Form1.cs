@@ -349,16 +349,6 @@ namespace Fo76ini
             this.LoadGallery();
 
             MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
-
-            // TODO: proper nxm protocol handler
-            string[] args = Environment.GetCommandLineArgs();
-            if (args.Length > 1 && args[1].StartsWith("nxm://"))
-            {
-                /*MsgBox.Show("(WIP) NXM link", args[1]);
-                string downloadLink = NMMod.RequestDownloadLink(args[1]);
-                MsgBox.Show("(WIP) Download link", downloadLink);*/
-                TextPrompt.Prompt("NXM link", args[1], (x) => { });
-            }
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -375,6 +365,11 @@ namespace Fo76ini
                 ShowWhatsNewConditionally();
 
             IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
+
+            // If nxm:// link has been provided, open the mod manager:
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length > 1 && args[1].StartsWith("nxm://"))
+                this.formMods.OpenUI();
         }
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)

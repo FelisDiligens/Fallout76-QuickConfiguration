@@ -1,5 +1,8 @@
 ﻿using Fo76ini.Forms.ExceptionDialog;
+using Fo76ini.Interface;
+using Fo76ini.Utilities;
 using System;
+using System.IO;
 using System.Net;
 using System.Threading;
 using System.Windows.Forms;
@@ -21,10 +24,26 @@ namespace Fo76ini
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            // TODO: nxm protocol handler
-            // string[] args = Environment.GetCommandLineArgs();
-            // MsgBox.Show("Arguments", $"{String.Join("\n", args)}");
-            // args[1] = "nxm://fallout76/mods/<mod_id>/files/<file_id>?key=<long_random_string>&expires=<unix_timestamp>&user_id=<user_id>"
+            /*
+             * Handle NXM links:
+             */
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length > 1 && args[1].StartsWith("nxm://"))
+            {
+                File.WriteAllText(Path.Combine(Shared.AppConfigFolder, "nxm.txt"), args[1]);
+
+                // If the tool already runs, then just quit:
+                if (Utils.IsProcessRunning("Fo76ini"))
+                    return;
+                // if it doesn't, we'll open the mod manager later in Form1.cs.
+            }
+
+            // The program should only run once:
+            if (Utils.IsProcessRunning("Fo76ini"))
+            {
+                MsgBox.Show("Program already runs.", "An instance of this program already runs.", MessageBoxIcon.Error);
+                return;
+            }
 
             Application.ThreadException += new ThreadExceptionEventHandler(HandleThreadException);
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);

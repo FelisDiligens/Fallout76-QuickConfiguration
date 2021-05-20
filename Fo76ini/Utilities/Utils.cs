@@ -28,7 +28,7 @@ namespace Fo76ini.Utilities
                 if (File.Exists(path))
                     return path;
                 else
-                    return Path.GetFullPath(DefaultSevenZipPath);
+                    return Path.Combine(Shared.AppInstallationFolder, "7z\\7z.exe");
             }
         }
 
@@ -573,7 +573,9 @@ namespace Fo76ini.Utilities
         {
             foreach (Process process in Process.GetProcesses())
             {
-                if (process.ProcessName.ToLower().Contains(name.ToLower()))
+                // Check if a process with that name is already running, but ignore this process:
+                if (process.ProcessName.ToLower().Contains(name.ToLower()) &&
+                    process.Id != Process.GetCurrentProcess().Id)
                 {
                     return true;
                 }
