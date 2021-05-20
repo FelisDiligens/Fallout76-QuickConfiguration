@@ -174,19 +174,31 @@ namespace Fo76ini.Mods
         /// Downloads and installs a mod from NexusMods. (by using NXM links)
         /// </summary>
         /// <param name="useSourceBA2Archive">When false, creates a new "frozen" mod.</param>
-        public static void InstallRemote(ManagedMods mods, string nxmLinkStr, bool useSourceBA2Archive = false, Action<Progress> ProgressChanged = null)
+        public static bool InstallRemote(ManagedMods mods, string nxmLinkStr, bool useSourceBA2Archive = false, Action<Progress> ProgressChanged = null)
         {
             NXMLink nxmLink = NXMHandler.ParseLink(nxmLinkStr);
 
             // Get the download link from NexusMods:
             ProgressChanged(Progress.Indetermined("Requesting mod download link..."));
-            Uri dlLink = new Uri(NMMod.RequestDownloadLink(nxmLink));
+            string dlLinkStr = NMMod.RequestDownloadLink(nxmLink);
+            if (dlLinkStr == null)
+            {
+                ProgressChanged?.Invoke(Progress.Aborted("Couldn't retrieve download link..."));
+                return false;
+            }
+            Uri dlLink = new Uri(dlLinkStr);
             string dlFileName = dlLink.Segments.Last();
             string dlPath = Path.Combine(Shared.DownloadsFolder, dlFileName);
 
             // Download mod, unless we already have it:
             if (!File.Exists(dlPath))
                 DownloadFile(dlLink.OriginalString, dlPath, ProgressChanged);
+
+            if (!File.Exists(dlPath))
+            {
+                ProgressChanged?.Invoke(Progress.Aborted("Download failed."));
+                return false;
+            }
 
             // Get remote mod info:
             ProgressChanged(Progress.Indetermined("Requesting mod information and thumbnail..."));
@@ -201,6 +213,8 @@ namespace Fo76ini.Mods
             mods.Add(newMod);
             mods.Save();
             ProgressChanged?.Invoke(Progress.Done($"'{nmMod.Title}' installed."));
+
+            return true;
         }
 
         private static void DownloadFile(string url, string path, Action<Progress> ProgressChanged = null)

@@ -1655,16 +1655,23 @@ namespace Fo76ini
 
         private void DownloadModThreaded(string nxmLink, Action<Progress> ProgressChanged = null)
         {
+            if (!NexusMods.User.IsLoggedIn)
+            {
+                MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
+                return;
+            }
             bool unpackBA2ByDefault = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
             RunThreaded(() => {
                 ShowLoadingUI();
                 CloseSidePanel();
             }, () => {
-                ModInstallations.InstallRemote(Mods, nxmLink, !unpackBA2ByDefault, ProgressChanged);
-                return true;
+                return ModInstallations.InstallRemote(Mods, nxmLink, !unpackBA2ByDefault, ProgressChanged);
             }, (success) => {
                 EnableUI();
-                MsgBox.Popup("Success", "Mod downloaded and installed!", MessageBoxIcon.Information);
+                if (success)
+                    MsgBox.Popup("Success", "Mod downloaded and installed!", MessageBoxIcon.Information);
+                else
+                    MsgBox.Popup("Failed", "Something went wrong.", MessageBoxIcon.Error);
                 UpdateUI();
             });
         }
