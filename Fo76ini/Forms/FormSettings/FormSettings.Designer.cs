@@ -39,6 +39,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.groupBoxPaths = new System.Windows.Forms.GroupBox();
+            this.textBoxDownloadsPath = new System.Windows.Forms.TextBox();
+            this.labelDownloadsPath = new System.Windows.Forms.Label();
+            this.buttonPickDownloadsPath = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.buttonPickSevenZipPath = new System.Windows.Forms.Button();
             this.textBoxArchiveTwoPath = new System.Windows.Forms.TextBox();
             this.textBoxSevenZipPath = new System.Windows.Forms.TextBox();
@@ -151,11 +156,6 @@
             this.backgroundWorkerSSOLogin = new System.ComponentModel.BackgroundWorker();
             this.openFileDialogArchiveTwoPath = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxDownloadsPath = new System.Windows.Forms.TextBox();
-            this.labelDownloadsPath = new System.Windows.Forms.Label();
-            this.buttonPickDownloadsPath = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -235,6 +235,56 @@
             this.groupBoxPaths.TabIndex = 44;
             this.groupBoxPaths.TabStop = false;
             this.groupBoxPaths.Text = "Paths";
+            // 
+            // textBoxDownloadsPath
+            // 
+            this.textBoxDownloadsPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxDownloadsPath.Location = new System.Drawing.Point(113, 47);
+            this.textBoxDownloadsPath.Name = "textBoxDownloadsPath";
+            this.textBoxDownloadsPath.Size = new System.Drawing.Size(202, 20);
+            this.textBoxDownloadsPath.TabIndex = 49;
+            this.textBoxDownloadsPath.TextChanged += new System.EventHandler(this.textBoxDownloadsPath_TextChanged);
+            // 
+            // labelDownloadsPath
+            // 
+            this.labelDownloadsPath.AutoSize = true;
+            this.labelDownloadsPath.Location = new System.Drawing.Point(7, 50);
+            this.labelDownloadsPath.Name = "labelDownloadsPath";
+            this.labelDownloadsPath.Size = new System.Drawing.Size(92, 13);
+            this.labelDownloadsPath.TabIndex = 48;
+            this.labelDownloadsPath.Text = "Downloads folder:";
+            // 
+            // buttonPickDownloadsPath
+            // 
+            this.buttonPickDownloadsPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPickDownloadsPath.Location = new System.Drawing.Point(321, 45);
+            this.buttonPickDownloadsPath.Name = "buttonPickDownloadsPath";
+            this.buttonPickDownloadsPath.Size = new System.Drawing.Size(28, 23);
+            this.buttonPickDownloadsPath.TabIndex = 50;
+            this.buttonPickDownloadsPath.Text = "...";
+            this.buttonPickDownloadsPath.UseVisualStyleBackColor = true;
+            this.buttonPickDownloadsPath.Click += new System.EventHandler(this.buttonPickDownloadsPath_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(7, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Mod manager:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(7, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Programs:";
             // 
             // buttonPickSevenZipPath
             // 
@@ -335,12 +385,12 @@
             this.checkBoxHandleNXMLinks.AutoSize = true;
             this.checkBoxHandleNXMLinks.Location = new System.Drawing.Point(9, 42);
             this.checkBoxHandleNXMLinks.Name = "checkBoxHandleNXMLinks";
-            this.checkBoxHandleNXMLinks.Size = new System.Drawing.Size(245, 17);
+            this.checkBoxHandleNXMLinks.Size = new System.Drawing.Size(248, 17);
             this.checkBoxHandleNXMLinks.TabIndex = 7;
-            this.checkBoxHandleNXMLinks.Text = "Associate with \"Download with manager\" links";
-            this.toolTip.SetToolTip(this.checkBoxHandleNXMLinks, "Tick this box if you\'d like the mod manager to handle the \'Vortex\' / \'Download wi" +
-        "th manager\' links (nxm://).\r\nYou might need to start the tool as admin to enable" +
-        " this option.");
+            this.checkBoxHandleNXMLinks.Text = "Associate with \"Mod Manager Download\" links";
+            this.toolTip.SetToolTip(this.checkBoxHandleNXMLinks, "Tick this box if you\'d like the mod manager to handle the \'Vortex\' / \'Mod Manager" +
+        " Download\' links (nxm://).\r\nYou might need to start the tool as admin to enable " +
+        "this option.");
             this.checkBoxHandleNXMLinks.UseVisualStyleBackColor = true;
             this.checkBoxHandleNXMLinks.CheckedChanged += new System.EventHandler(this.checkBoxHandleNXMLinks_CheckedChanged);
             // 
@@ -1477,56 +1527,6 @@
             this.openFileDialogSevenZipPath.FileName = "7z.exe";
             this.openFileDialogSevenZipPath.Filter = "Executable|*.exe";
             this.openFileDialogSevenZipPath.FilterIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Programs:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
-            this.label3.TabIndex = 47;
-            this.label3.Text = "Mod manager:";
-            // 
-            // textBoxDownloadsPath
-            // 
-            this.textBoxDownloadsPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxDownloadsPath.Location = new System.Drawing.Point(113, 47);
-            this.textBoxDownloadsPath.Name = "textBoxDownloadsPath";
-            this.textBoxDownloadsPath.Size = new System.Drawing.Size(202, 20);
-            this.textBoxDownloadsPath.TabIndex = 49;
-            this.textBoxDownloadsPath.TextChanged += new System.EventHandler(this.textBoxDownloadsPath_TextChanged);
-            // 
-            // labelDownloadsPath
-            // 
-            this.labelDownloadsPath.AutoSize = true;
-            this.labelDownloadsPath.Location = new System.Drawing.Point(7, 50);
-            this.labelDownloadsPath.Name = "labelDownloadsPath";
-            this.labelDownloadsPath.Size = new System.Drawing.Size(92, 13);
-            this.labelDownloadsPath.TabIndex = 48;
-            this.labelDownloadsPath.Text = "Downloads folder:";
-            // 
-            // buttonPickDownloadsPath
-            // 
-            this.buttonPickDownloadsPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPickDownloadsPath.Location = new System.Drawing.Point(321, 45);
-            this.buttonPickDownloadsPath.Name = "buttonPickDownloadsPath";
-            this.buttonPickDownloadsPath.Size = new System.Drawing.Size(28, 23);
-            this.buttonPickDownloadsPath.TabIndex = 50;
-            this.buttonPickDownloadsPath.Text = "...";
-            this.buttonPickDownloadsPath.UseVisualStyleBackColor = true;
-            this.buttonPickDownloadsPath.Click += new System.EventHandler(this.buttonPickDownloadsPath_Click);
             // 
             // folderBrowserDialog
             // 
