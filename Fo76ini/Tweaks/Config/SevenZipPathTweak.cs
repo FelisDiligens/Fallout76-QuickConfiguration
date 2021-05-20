@@ -9,7 +9,7 @@ namespace Fo76ini.Tweaks.Config
 {
     class SevenZipPathTweak : ITweak<string>, ITweakInfo
     {
-        public string Description => "Saves the path where it will load 7-zip from.";
+        public string Description => "The tool uses 7z.exe to extract various archives (zip, rar, 7z).\nYou can set the path where the tool looks for 7z.exe.";
 
         public string AffectedFiles => "config.ini";
 

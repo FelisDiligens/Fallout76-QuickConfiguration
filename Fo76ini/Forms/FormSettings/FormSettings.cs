@@ -107,6 +107,7 @@ namespace Fo76ini.Forms.FormSettings
             // Update the text fields for Archive2 and 7z
             this.textBoxArchiveTwoPath.Text = archiveTwoPathTweak.GetValue();
             this.textBoxSevenZipPath.Text = sevenZipPathTweak.GetValue();
+            this.textBoxDownloadsPath.Text = downloadPathTweak.GetValue();
             this.ShowDialog();
         }
 
@@ -133,8 +134,13 @@ namespace Fo76ini.Forms.FormSettings
             LinkedTweaks.LinkInfo(checkBoxNWAutoDisableMods, toolTip, removeModsOnNWModeTweak);
             LinkedTweaks.LinkInfo(labelArchiveTwoPath, toolTip, archiveTwoPathTweak);
             LinkedTweaks.LinkInfo(labelSevenZipPath, toolTip, sevenZipPathTweak);
+            LinkedTweaks.LinkInfo(labelDownloadsPath, toolTip, downloadPathTweak);
             LinkedTweaks.LinkInfo(textBoxArchiveTwoPath, toolTip, archiveTwoPathTweak);
             LinkedTweaks.LinkInfo(textBoxSevenZipPath, toolTip, sevenZipPathTweak);
+            LinkedTweaks.LinkInfo(textBoxDownloadsPath, toolTip, downloadPathTweak);
+            LinkedTweaks.LinkInfo(buttonPickArchiveTwoPath, toolTip, archiveTwoPathTweak);
+            LinkedTweaks.LinkInfo(buttonPickSevenZipPath, toolTip, sevenZipPathTweak);
+            LinkedTweaks.LinkInfo(buttonPickDownloadsPath, toolTip, downloadPathTweak);
         }
 
         public void LinkControlsToTweaks()
@@ -841,6 +847,7 @@ namespace Fo76ini.Forms.FormSettings
 
         private SevenZipPathTweak sevenZipPathTweak = new SevenZipPathTweak();
         private ArchiveTwoPathTweak archiveTwoPathTweak = new ArchiveTwoPathTweak();
+        private DownloadPathTweak downloadPathTweak = new DownloadPathTweak();
 
         private INIReadOnlyTweak iniReadOnlyTweak = new INIReadOnlyTweak();
         private AutoApplyTweak autoApplyTweak = new AutoApplyTweak();
@@ -869,7 +876,6 @@ namespace Fo76ini.Forms.FormSettings
                 string path = this.openFileDialogArchiveTwoPath.FileName;
                 this.textBoxArchiveTwoPath.Text = path;
                 archiveTwoPathTweak.SetValue(this.textBoxArchiveTwoPath.Text);
-                UpdateGamesTab();
             }
         }
 
@@ -890,7 +896,26 @@ namespace Fo76ini.Forms.FormSettings
                 string path = this.openFileDialogSevenZipPath.FileName;
                 this.textBoxSevenZipPath.Text = path;
                 sevenZipPathTweak.SetValue(this.textBoxSevenZipPath.Text);
-                UpdateGamesTab();
+            }
+        }
+
+        private void textBoxDownloadsPath_TextChanged(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+            downloadPathTweak.SetValue(this.textBoxDownloadsPath.Text);
+        }
+
+        private void buttonPickDownloadsPath_Click(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+            this.openFileDialogSevenZipPath.FileName = downloadPathTweak.DefaultValue;
+            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string path = this.folderBrowserDialog.SelectedPath;
+                this.textBoxDownloadsPath.Text = path;
+                downloadPathTweak.SetValue(this.textBoxSevenZipPath.Text);
             }
         }
 

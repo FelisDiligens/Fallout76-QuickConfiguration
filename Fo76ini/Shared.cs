@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using Fo76ini.Profiles;
+using Syroot.Windows.IO;
 
 namespace Fo76ini
 {
@@ -11,9 +12,17 @@ namespace Fo76ini
         public static string LatestVersion = null;
 
         public static readonly string AppInstallationFolder = Directory.GetParent(Application.ExecutablePath).ToString();
-        public static readonly string AppConfigFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Fallout 76 Quick Configuration");
+        public static readonly string AppConfigFolder = Path.Combine(KnownFolders.LocalAppData.Path, "Fallout 76 Quick Configuration");
 
         public static readonly System.Globalization.CultureInfo en_US = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+
+        public static string DownloadsFolder
+        {
+            get
+            {
+                return Path.GetFullPath(IniFiles.Config.GetString("Preferences", "sDownloadPath", KnownFolders.Downloads.Path));
+            }
+        }
 
         public static bool NuclearWinterMode = false;
 

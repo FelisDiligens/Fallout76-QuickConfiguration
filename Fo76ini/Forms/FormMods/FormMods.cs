@@ -1,4 +1,5 @@
-﻿using Fo76ini.Interface;
+﻿using Fo76ini.Forms.FormTextPrompt;
+using Fo76ini.Interface;
 using Fo76ini.Mods;
 using Fo76ini.NexusAPI;
 using Fo76ini.Profiles;
@@ -1697,6 +1698,22 @@ namespace Fo76ini
         }
 
         #endregion
+
+        // TODO: WIP
+        private void wIPDownloadModnxmLinkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TextPrompt.Prompt("(WIP) Enter NXM link", (nxmLink) => {
+                RunThreaded(() => {
+                    ShowLoadingUI();
+                    CloseSidePanel();
+                }, () => {
+                    ModInstallations.InstallRemote(Mods, nxmLink, UpdateProgress);
+                    return true;
+                }, (success) => {
+                    EnableUI();
+                });
+            });
+        }
     }
 
 

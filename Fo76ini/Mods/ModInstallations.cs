@@ -1,9 +1,13 @@
 ﻿using Fo76ini.Interface;
+using Fo76ini.NexusAPI;
 using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Fo76ini.Mods
 {
@@ -167,12 +171,44 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
-        /// Downloads and installs a mod from NexusMods. (by e.g. using NXM links)
+        /// Downloads and installs a mod from NexusMods. (by using NXM links)
         /// </summary>
-        /// <param name="key">Pass string.Empty or null if you have no key.</param>
-        public static void InstallRemote(ManagedMods mods, int modId, int fileId, string key, Action<Progress> ProgressChanged = null)
+        public static void InstallRemote(ManagedMods mods, string nxmLink, Action<Progress> ProgressChanged = null)
         {
+            // Get the download link from NexusMods:
+            Uri dlLink = new Uri(NMMod.RequestDownloadLink(nxmLink));
+            string dlFileName = dlLink.Segments.Last();
+            string dlPath = Path.Combine(Shared.DownloadsFolder, dlFileName);
 
+            // Download mod, unless we already have it:
+            if (!File.Exists(dlPath))
+                DownloadFile(dlLink.OriginalString, dlPath, ProgressChanged);
+
+            // Get remote mod info:
+            // TODO
+
+            // Install mod:
+            // TODO
+        }
+
+        private static void DownloadFile(string url, string path, Action<Progress> ProgressChanged = null)
+        {
+            WebClient client = new WebClient();
+            if (ProgressChanged != null)
+            {
+                client.DownloadProgressChanged += (object sender, DownloadProgressChangedEventArgs e) => {
+                    ProgressChanged?.Invoke(Progress.Ongoing($"Downloading... ({e.ProgressPercentage}%)", e.ProgressPercentage / 100f));
+                };
+                client.DownloadFileCompleted += (object sender, AsyncCompletedEventArgs e) => {
+                    ProgressChanged?.Invoke(Progress.Done("Download finished."));
+                };
+            }
+            client.DownloadFileTaskAsync(url, path).Wait();
+        }
+
+        private static void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

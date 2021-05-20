@@ -122,6 +122,8 @@
             this.toolStripButtonMoveDown = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonModOpenFolder = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonFreeze = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonModUnfreeze = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonDeleteMod = new System.Windows.Forms.ToolStripButton();
@@ -164,8 +166,8 @@
             this.toolStripStatusLabelSpacer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDeploymentStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonFreeze = new System.Windows.Forms.ToolStripButton();
+            this.wIPDownloadModnxmLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wIPDownloadModmodIdFileIdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -325,7 +327,7 @@
             this.openArchive2ToolStripMenuItem,
             this.exploreba2ArchiveToolStripMenuItem});
             this.archive2ToolStripMenuItem.Name = "archive2ToolStripMenuItem";
-            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.archive2ToolStripMenuItem.Text = "Archive2";
             // 
             // openArchive2ToolStripMenuItem
@@ -347,29 +349,31 @@
             this.nexusModsAPIToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.updateModInformationToolStripMenuItem,
             this.endorseModsToolStripMenuItem,
-            this.checkForUpdatesToolStripMenuItem});
+            this.checkForUpdatesToolStripMenuItem,
+            this.wIPDownloadModnxmLinkToolStripMenuItem,
+            this.wIPDownloadModmodIdFileIdToolStripMenuItem});
             this.nexusModsAPIToolStripMenuItem.Name = "nexusModsAPIToolStripMenuItem";
-            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nexusModsAPIToolStripMenuItem.Text = "NexusMods API";
             // 
             // updateModInformationToolStripMenuItem
             // 
             this.updateModInformationToolStripMenuItem.Name = "updateModInformationToolStripMenuItem";
-            this.updateModInformationToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.updateModInformationToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.updateModInformationToolStripMenuItem.Text = "Update mod information";
             this.updateModInformationToolStripMenuItem.Click += new System.EventHandler(this.updateModInformationToolStripMenuItem_Click);
             // 
             // endorseModsToolStripMenuItem
             // 
             this.endorseModsToolStripMenuItem.Name = "endorseModsToolStripMenuItem";
-            this.endorseModsToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.endorseModsToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.endorseModsToolStripMenuItem.Text = "Endorse mods";
             this.endorseModsToolStripMenuItem.Click += new System.EventHandler(this.endorseModsToolStripMenuItem_Click);
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
@@ -1084,7 +1088,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(3, 3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(32, 458);
+            this.toolStrip1.Size = new System.Drawing.Size(31, 458);
             this.toolStrip1.TabIndex = 44;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1177,6 +1181,25 @@
             this.toolStripButtonModOpenFolder.Size = new System.Drawing.Size(30, 30);
             this.toolStripButtonModOpenFolder.Text = "Open mod folder";
             this.toolStripButtonModOpenFolder.Click += new System.EventHandler(this.toolStripButtonModOpenFolder_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(28, 6);
+            // 
+            // toolStripButtonFreeze
+            // 
+            this.toolStripButtonFreeze.AutoSize = false;
+            this.toolStripButtonFreeze.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonFreeze.Image = global::Fo76ini.Properties.Resources.snowflake_24;
+            this.toolStripButtonFreeze.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonFreeze.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFreeze.Name = "toolStripButtonFreeze";
+            this.toolStripButtonFreeze.Size = new System.Drawing.Size(30, 30);
+            this.toolStripButtonFreeze.Text = "Unfreeze mod";
+            this.toolStripButtonFreeze.ToolTipText = "Freeze mod";
+            this.toolStripButtonFreeze.Click += new System.EventHandler(this.toolStripButtonFreeze_Click);
             // 
             // toolStripButtonModUnfreeze
             // 
@@ -1560,24 +1583,18 @@
             this.pictureBoxModsLoadingGIF.TabStop = false;
             this.pictureBoxModsLoadingGIF.Visible = false;
             // 
-            // toolStripSeparator5
+            // wIPDownloadModnxmLinkToolStripMenuItem
             // 
-            this.toolStripSeparator5.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(28, 6);
+            this.wIPDownloadModnxmLinkToolStripMenuItem.Name = "wIPDownloadModnxmLinkToolStripMenuItem";
+            this.wIPDownloadModnxmLinkToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.wIPDownloadModnxmLinkToolStripMenuItem.Text = "[WIP] Download mod (nxm link)";
+            this.wIPDownloadModnxmLinkToolStripMenuItem.Click += new System.EventHandler(this.wIPDownloadModnxmLinkToolStripMenuItem_Click);
             // 
-            // toolStripButtonFreeze
+            // wIPDownloadModmodIdFileIdToolStripMenuItem
             // 
-            this.toolStripButtonFreeze.AutoSize = false;
-            this.toolStripButtonFreeze.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonFreeze.Image = global::Fo76ini.Properties.Resources.snowflake_24;
-            this.toolStripButtonFreeze.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonFreeze.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonFreeze.Name = "toolStripButtonFreeze";
-            this.toolStripButtonFreeze.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButtonFreeze.Text = "Unfreeze mod";
-            this.toolStripButtonFreeze.ToolTipText = "Freeze mod";
-            this.toolStripButtonFreeze.Click += new System.EventHandler(this.toolStripButtonFreeze_Click);
+            this.wIPDownloadModmodIdFileIdToolStripMenuItem.Name = "wIPDownloadModmodIdFileIdToolStripMenuItem";
+            this.wIPDownloadModmodIdFileIdToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.wIPDownloadModmodIdFileIdToolStripMenuItem.Text = "[WIP] Download mod (mod id, file id)";
             // 
             // FormMods
             // 
@@ -1776,5 +1793,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonModUnfreeze;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolStripButtonFreeze;
+        private System.Windows.Forms.ToolStripMenuItem wIPDownloadModnxmLinkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wIPDownloadModmodIdFileIdToolStripMenuItem;
     }
 }

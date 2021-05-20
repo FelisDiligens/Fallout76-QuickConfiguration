@@ -1,4 +1,5 @@
 ﻿using Fo76ini.Interface;
+using Fo76ini.Utilities;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,14 @@ using System.Windows.Forms;
 
 namespace Fo76ini.NexusAPI
 {
+    public struct NXMLink
+    {
+        public int modId;
+        public int fileId;
+        public string key;
+        public int expires;
+    }
+
     public static class NXMHandler
     {
         public static void Register()
@@ -50,6 +59,45 @@ namespace Fo76ini.NexusAPI
         private static string GetCommand()
         {
             return $"\"{Application.ExecutablePath}\" \"%1\"";
+        }
+
+        public static NXMLink ParseLink(string nxmLink)
+        {
+            // nxm://fallout76/mods/<mod_id>/files/<file_id>?key=...&expires=1621492286&user_id=41275740
+            if (!nxmLink.StartsWith("nxm://"))
+                throw new ArgumentException("Invalid nxm link: " + nxmLink);
+
+            string key = "";
+            string expires = "-1";
+
+            string modId = nxmLink.Substring(nxmLink.IndexOf("fallout76/mods/") + 15);
+            modId = modId.Substring(0, modId.IndexOf("/files/"));
+
+            string fileId = nxmLink.Substring(nxmLink.IndexOf("/files/") + 7);
+            if (fileId.Contains("?"))
+                fileId = fileId.Substring(0, fileId.IndexOf("?"));
+
+            if (nxmLink.Contains("key="))
+            {
+                key = nxmLink.Substring(nxmLink.IndexOf("key=") + 4);
+                if (key.Contains("&"))
+                    key = key.Substring(0, key.IndexOf("&"));
+            }
+
+            if (nxmLink.Contains("expires="))
+            {
+                expires = nxmLink.Substring(nxmLink.IndexOf("expires=") + 8);
+                if (expires.Contains("&"))
+                    expires = expires.Substring(0, expires.IndexOf("&"));
+            }
+
+            NXMLink parsed = new NXMLink();
+            parsed.modId = Utils.ToInt(modId);
+            parsed.fileId = Utils.ToInt(fileId);
+            parsed.key = key;
+            parsed.expires = Utils.ToInt(expires);
+
+            return parsed;
         }
     }
 }

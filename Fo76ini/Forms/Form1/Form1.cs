@@ -1,5 +1,6 @@
 ﻿using Fo76ini.Forms.FormIniError;
 using Fo76ini.Forms.FormSettings;
+using Fo76ini.Forms.FormTextPrompt;
 using Fo76ini.Forms.FormWelcome;
 using Fo76ini.Forms.FormWhatsNew;
 using Fo76ini.Ini;
@@ -353,9 +354,10 @@ namespace Fo76ini
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1 && args[1].StartsWith("nxm://"))
             {
-                MsgBox.Show("(WIP) NXM link", args[1]);
+                /*MsgBox.Show("(WIP) NXM link", args[1]);
                 string downloadLink = NMMod.RequestDownloadLink(args[1]);
-                MsgBox.Show("(WIP) Download link", downloadLink);
+                MsgBox.Show("(WIP) Download link", downloadLink);*/
+                TextPrompt.Prompt("NXM link", args[1], (x) => { });
             }
         }
 

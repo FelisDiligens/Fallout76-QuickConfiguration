@@ -9,7 +9,7 @@ namespace Fo76ini.Tweaks.Config
 {
     class ArchiveTwoPathTweak : ITweak<string>, ITweakInfo
     {
-        public string Description => "Saves the path where it will load Archive2 from.";
+        public string Description => "The tool uses Archive2.exe to extract and pack *.ba2 files.\nYou can set the path where the tool looks for Archive2.exe.";
 
         public string AffectedFiles => "config.ini";
 

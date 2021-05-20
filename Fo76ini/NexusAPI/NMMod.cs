@@ -164,44 +164,17 @@ namespace Fo76ini.NexusAPI
         /// <summary>
         /// Requests a download link for a file.
         /// </summary>
-        /// <param name="nxmLink"></param>
-        /// <returns></returns>
         public static string RequestDownloadLink(string nxmLink)
         {
-            // nxm://fallout76/mods/<mod_id>/files/<file_id>?key=...&expires=1621492286&user_id=41275740
-            if (!nxmLink.StartsWith("nxm://"))
-                return null;
+            return RequestDownloadLink(NXMHandler.ParseLink(nxmLink));
+        }
 
-            string key = "";
-            string expires = "-1";
-
-            string modId = nxmLink.Substring(nxmLink.IndexOf("fallout76/mods/") + 15);
-            modId = modId.Substring(0, modId.IndexOf("/files/"));
-
-            string fileId = nxmLink.Substring(nxmLink.IndexOf("/files/") + 7);
-            if (fileId.Contains("?"))
-                fileId = fileId.Substring(0, fileId.IndexOf("?"));
-
-            if (nxmLink.Contains("key="))
-            {
-                key = nxmLink.Substring(nxmLink.IndexOf("key=") + 4);
-                if (key.Contains("&"))
-                    key = key.Substring(0, key.IndexOf("&"));
-            }
-
-            if (nxmLink.Contains("expires="))
-            {
-                expires = nxmLink.Substring(nxmLink.IndexOf("expires=") + 8);
-                if (expires.Contains("&"))
-                    expires = expires.Substring(0, expires.IndexOf("&"));
-            }
-
-            return RequestDownloadLink(
-                Utils.ToInt(modId),
-                Utils.ToInt(fileId),
-                key,
-                Utils.ToInt(expires)
-            );
+        /// <summary>
+        /// Requests a download link for a file.
+        /// </summary>
+        public static string RequestDownloadLink(NXMLink nxmLink)
+        {
+            return RequestDownloadLink(nxmLink.modId, nxmLink.fileId, nxmLink.key, nxmLink.expires);
         }
 
         /// <summary>
@@ -211,7 +184,7 @@ namespace Fo76ini.NexusAPI
         /// <param name="fileId"></param>
         /// <param name="key"></param>
         /// <param name="expires"></param>
-        /// <returns></returns>
+        /// <returns>null if no download link retrieved.</returns>
         public static string RequestDownloadLink(int modId, int fileId, string key = "", int expires = -1)
         {
             string requestUrl = "https://api.nexusmods.com/v1/games/fallout76/mods/" + modId + "/files/" + fileId + "/download_link.json";
