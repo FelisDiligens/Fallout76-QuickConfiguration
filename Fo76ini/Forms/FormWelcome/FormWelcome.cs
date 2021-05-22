@@ -134,7 +134,8 @@ namespace Fo76ini.Forms.FormWelcome
         {
             string foundPath = FormSettings.FormSettings.AutoDetectGamePath();
             if (foundPath != null)
-                TextPrompt.Prompt("Found a path. Proceed?", foundPath, (newPath) => this.textBoxGamePath.Text = newPath);
+                //TextPrompt.Prompt("Found a path. Proceed?", foundPath, (newPath) => this.textBoxGamePath.Text = newPath);
+                this.textBoxGamePath.Text = foundPath;
             else
                 MsgBox.ShowID("gamePathAutoDetectFailed", MessageBoxIcon.Information);
         }

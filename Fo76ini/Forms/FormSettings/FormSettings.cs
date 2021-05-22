@@ -383,30 +383,78 @@ namespace Fo76ini.Forms.FormSettings
                 // Search for "default" paths that are the most common:
                 string steamDefaultPath = Path.Combine(d.Name, @"Program Files (x86)\Steam\steamapps\common\Fallout76");
                 if (GameInstance.ValidateGamePath(steamDefaultPath))
-                    return steamDefaultPath;
+                {
+                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(steamDefaultPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                    {
+                        case DialogResult.Yes:
+                            return steamDefaultPath;
+                        case DialogResult.Cancel:
+                            return null;
+                    }
+                }
 
                 string bethNetDefaultPath = Path.Combine(d.Name, @"Program Files (x86)\Bethesda.net Launcher\games\Fallout76");
                 if (GameInstance.ValidateGamePath(bethNetDefaultPath))
-                    return bethNetDefaultPath;
+                {
+                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(bethNetDefaultPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                    {
+                        case DialogResult.Yes:
+                            return bethNetDefaultPath;
+                        case DialogResult.Cancel:
+                            return null;
+                    }
+                }
 
                 string xboxDefaultPath = Path.Combine(d.Name, @"Program Files\ModifiableWindowsApps\Fallout76");
                 if (GameInstance.ValidateGamePath(xboxDefaultPath))
-                    return xboxDefaultPath;
+                {
+                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(xboxDefaultPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                    {
+                        case DialogResult.Yes:
+                            return xboxDefaultPath;
+                        case DialogResult.Cancel:
+                            return null;
+                    }
+                }
 
                 // Try some exotic ones, maybe?
                 string steamTopLevelPath = Path.Combine(d.Name, @"steamapps\common\Fallout76");
                 if (GameInstance.ValidateGamePath(steamTopLevelPath))
-                    return steamTopLevelPath;
+                {
+                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(steamTopLevelPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                    {
+                        case DialogResult.Yes:
+                            return steamTopLevelPath;
+                        case DialogResult.Cancel:
+                            return null;
+                    }
+                }
 
                 // Search every top-level folder on the drive:
                 foreach (string path in Directory.EnumerateDirectories(d.Name))
                 {
                     if (GameInstance.ValidateGamePath(path))
-                        return path;
+                    {
+                        switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(path).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                        {
+                            case DialogResult.Yes:
+                                return path;
+                            case DialogResult.Cancel:
+                                return null;
+                        }
+                    }
 
                     string steamSubDirPath = Path.Combine(path, @"steamapps\common\Fallout76");
                     if (GameInstance.ValidateGamePath(steamSubDirPath))
-                        return steamSubDirPath;
+                    {
+                        switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(steamSubDirPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                        {
+                            case DialogResult.Yes:
+                                return steamSubDirPath;
+                            case DialogResult.Cancel:
+                                return null;
+                        }
+                    }
                 }
             }
 
@@ -417,7 +465,8 @@ namespace Fo76ini.Forms.FormSettings
         {
             string foundPath = AutoDetectGamePath();
             if (foundPath != null)
-                TextPrompt.Prompt("Found a path. Proceed?", foundPath, (newPath) => this.textBoxGamePath.Text = newPath);
+                //TextPrompt.Prompt("Found a path. Proceed?", foundPath, (newPath) => this.textBoxGamePath.Text = newPath);
+                this.textBoxGamePath.Text = foundPath;
             else
                 MsgBox.ShowID("gamePathAutoDetectFailed", MessageBoxIcon.Information);
         }

@@ -63,7 +63,7 @@ namespace Fo76ini
             );*/
 
             // Form1:
-            MsgBox.Add("iniParsingError",
+            /*MsgBox.Add("iniParsingError",
                 "Couldn't parse *.ini files",
                 "At least one of the game's *.ini files is corrupted or contains a syntax error.\n" +
                 "\n" +
@@ -74,7 +74,7 @@ namespace Fo76ini
                 "\n" +
                 "ERROR MESSAGE:\n" +
                 "{0}"
-            );
+            );*/
 
             MsgBox.Add("changesApplied",
                 "Changes applied",
@@ -100,6 +100,24 @@ namespace Fo76ini
                 "Access denied",
                 "Couldn't set *.ini files to read-only. Try to start the tool with admin rights.\n" +
                 "{0}"
+            );
+
+
+            // Profile manager:
+
+            MsgBox.Add("errorAtLeastOneGameOrProfile",
+                "Cannot delete last game profile",
+                "At least one game profile is required."
+            );
+
+            MsgBox.Add("gamePathAutoDetectFailed",
+                "Auto-detect failed",
+                "Couldn't find any common game path. Please select the path manually."
+            );
+
+            MsgBox.Add("gamePathAutoDetectPathFound",
+                "Found a path",
+                "Do you want to use this path?\nFound: {0}\n\nClick 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort searching."
             );
 
 
@@ -250,19 +268,6 @@ namespace Fo76ini
             MsgBox.Add("areYouSure",
                 "Are you sure?",
                 "{0}"
-            );
-
-
-            // Profile manager:
-
-            MsgBox.Add("errorAtLeastOneGameOrProfile",
-                "Cannot delete last game profile",
-                "At least one game profile is required."
-            );
-
-            MsgBox.Add("gamePathAutoDetectFailed",
-                "Auto-detect failed",
-                "Couldn't find any common game path. Please select the path manually."
             );
         }
     }
