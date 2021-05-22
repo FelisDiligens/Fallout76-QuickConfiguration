@@ -910,12 +910,12 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (UpdatingUI)
                 return;
-            this.openFileDialogSevenZipPath.FileName = downloadPathTweak.DefaultValue;
+            this.folderBrowserDialog.SelectedPath = downloadPathTweak.DefaultValue;
             if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 string path = this.folderBrowserDialog.SelectedPath;
                 this.textBoxDownloadsPath.Text = path;
-                downloadPathTweak.SetValue(this.textBoxSevenZipPath.Text);
+                downloadPathTweak.SetValue(this.textBoxDownloadsPath.Text);
             }
         }
 

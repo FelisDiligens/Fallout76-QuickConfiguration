@@ -41,7 +41,7 @@ namespace Fo76ini
             // The program should only run once:
             if (Utils.IsProcessRunning("Fo76ini"))
             {
-                MsgBox.Show("Program already runs.", "An instance of this program already runs.", MessageBoxIcon.Error);
+                MsgBox.Show("Program already runs", "An instance of this program already runs. Exiting...", MessageBoxIcon.Error);
                 return;
             }
 

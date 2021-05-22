@@ -549,7 +549,7 @@
             // 
             // labelModEndorseStatus
             // 
-            this.labelModEndorseStatus.Location = new System.Drawing.Point(145, 38);
+            this.labelModEndorseStatus.Location = new System.Drawing.Point(145, 41);
             this.labelModEndorseStatus.Name = "labelModEndorseStatus";
             this.labelModEndorseStatus.Size = new System.Drawing.Size(246, 13);
             this.labelModEndorseStatus.TabIndex = 71;

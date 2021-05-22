@@ -56,8 +56,13 @@ namespace Fo76ini
 
         public static void AddSharedMessageBoxes()
         {
-            // Form1:
+            // General:
+            /*MsgBox.Add("onlyOneInstance",
+                "Program already runs",
+                "An instance of this program already runs. Exiting..."
+            );*/
 
+            // Form1:
             MsgBox.Add("iniParsingError",
                 "Couldn't parse *.ini files",
                 "At least one of the game's *.ini files is corrupted or contains a syntax error.\n" +

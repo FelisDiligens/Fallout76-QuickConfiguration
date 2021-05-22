@@ -722,7 +722,7 @@
             // numCustomResH
             // 
             this.numCustomResH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numCustomResH.Location = new System.Drawing.Point(283, 71);
+            this.numCustomResH.Location = new System.Drawing.Point(287, 71);
             this.numCustomResH.Maximum = new decimal(new int[] {
             8192,
             0,
@@ -734,7 +734,7 @@
             0,
             0});
             this.numCustomResH.Name = "numCustomResH";
-            this.numCustomResH.Size = new System.Drawing.Size(120, 20);
+            this.numCustomResH.Size = new System.Drawing.Size(116, 20);
             this.numCustomResH.TabIndex = 8;
             this.numCustomResH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip.SetToolTip(this.numCustomResH, "Changes the vertical resolution (height).\r\n\r\nAffected values: iSize H");
@@ -748,7 +748,7 @@
             // numCustomResW
             // 
             this.numCustomResW.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numCustomResW.Location = new System.Drawing.Point(146, 71);
+            this.numCustomResW.Location = new System.Drawing.Point(150, 71);
             this.numCustomResW.Maximum = new decimal(new int[] {
             8192,
             0,
@@ -760,7 +760,7 @@
             0,
             0});
             this.numCustomResW.Name = "numCustomResW";
-            this.numCustomResW.Size = new System.Drawing.Size(120, 20);
+            this.numCustomResW.Size = new System.Drawing.Size(116, 20);
             this.numCustomResW.TabIndex = 5;
             this.numCustomResW.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip.SetToolTip(this.numCustomResW, "Changes the horizontal resolution (width).\r\n\r\nAffected values: iSize W");
@@ -3658,9 +3658,9 @@
             this.comboBoxDisplayMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxDisplayMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDisplayMode.FormattingEnabled = true;
-            this.comboBoxDisplayMode.Location = new System.Drawing.Point(146, 20);
+            this.comboBoxDisplayMode.Location = new System.Drawing.Point(150, 20);
             this.comboBoxDisplayMode.Name = "comboBoxDisplayMode";
-            this.comboBoxDisplayMode.Size = new System.Drawing.Size(257, 21);
+            this.comboBoxDisplayMode.Size = new System.Drawing.Size(253, 21);
             this.comboBoxDisplayMode.TabIndex = 0;
             // 
             // comboBoxResolution
@@ -3669,18 +3669,18 @@
             this.comboBoxResolution.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxResolution.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxResolution.FormattingEnabled = true;
-            this.comboBoxResolution.Location = new System.Drawing.Point(146, 45);
+            this.comboBoxResolution.Location = new System.Drawing.Point(150, 45);
             this.comboBoxResolution.Name = "comboBoxResolution";
-            this.comboBoxResolution.Size = new System.Drawing.Size(257, 20);
+            this.comboBoxResolution.Size = new System.Drawing.Size(253, 20);
             this.comboBoxResolution.TabIndex = 4;
             this.comboBoxResolution.SelectedIndexChanged += new System.EventHandler(this.comboBoxResolution_SelectedIndexChanged);
             // 
             // buttonDetectResolution
             // 
             this.buttonDetectResolution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDetectResolution.Location = new System.Drawing.Point(146, 97);
+            this.buttonDetectResolution.Location = new System.Drawing.Point(150, 97);
             this.buttonDetectResolution.Name = "buttonDetectResolution";
-            this.buttonDetectResolution.Size = new System.Drawing.Size(257, 23);
+            this.buttonDetectResolution.Size = new System.Drawing.Size(253, 23);
             this.buttonDetectResolution.TabIndex = 23;
             this.buttonDetectResolution.Text = "Detect resolution";
             this.buttonDetectResolution.UseVisualStyleBackColor = true;
@@ -3699,7 +3699,7 @@
             // 
             this.labelCustomResolutionSpacer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelCustomResolutionSpacer.AutoSize = true;
-            this.labelCustomResolutionSpacer.Location = new System.Drawing.Point(268, 74);
+            this.labelCustomResolutionSpacer.Location = new System.Drawing.Point(269, 74);
             this.labelCustomResolutionSpacer.Name = "labelCustomResolutionSpacer";
             this.labelCustomResolutionSpacer.Size = new System.Drawing.Size(14, 13);
             this.labelCustomResolutionSpacer.TabIndex = 7;

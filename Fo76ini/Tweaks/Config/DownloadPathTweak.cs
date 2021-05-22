@@ -9,7 +9,7 @@ namespace Fo76ini.Tweaks.Config
 {
     public class DownloadPathTweak : ITweak<string>, ITweakInfo
     {
-        public string Description => "When you download mods using the 'Vortex' / 'Download with manager' button on NexusMods,\nthe tool will download the file to this folder.";
+        public string Description => "When you download mods using the 'Vortex' / 'Mod Manager Download' button on NexusMods,\nthe tool will download the file to this folder.";
 
         public string AffectedFiles => "config.ini";
 

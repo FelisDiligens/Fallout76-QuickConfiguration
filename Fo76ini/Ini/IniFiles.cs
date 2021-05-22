@@ -1,5 +1,6 @@
 ﻿using Fo76ini.Profiles;
 using Fo76ini.Utilities;
+using Syroot.Windows.IO;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,7 +45,7 @@ namespace Fo76ini
         static IniFiles()
         {
             ParentPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                KnownFolders.DocumentsLocalized.ExpandedPath, // Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
                 @"My Games\Fallout 76\"
             );
 
