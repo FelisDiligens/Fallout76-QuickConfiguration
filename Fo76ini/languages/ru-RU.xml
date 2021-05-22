@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.2">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.3">
   <Strings>
     <!--
         Strings
@@ -46,6 +46,13 @@
     <String text="Вы поддержали этот мод." id="endorsedText" />
     <String text="Вы не поддерживали этот мод." id="notEndorsedText" />
     <String text="Вы воздержались от поддержки этого мода." id="abstainedText" />
+    <String text="ВНИМАНИЕ: Не найдена папка с основными ресурсами (meshes, textures, sounds, materials, interface и т.д.). Мод невозможно загрузить." id="modSidePanel_WarningNoCommonResourceFoldersFound" />
+    <String text="Совет: Смешивание основных файлов, текстур и звуковых фалов *может* сделать мод неработоспособным.&#xA;Если это произошло, попробуйте установить тип на &quot;Объединённый&quot;." id="modSidePanel_HintMixedResourcesFound" />
+    <String text="Совет: Для мода с основными файлами, выберите основной пресет или используйте &quot;Автообнаружение&quot;." id="modSidePanel_HintWrongPresetForGeneralFiles" />
+    <String text="Совет: Для мода заменяющего текстуры, выберите пресет &quot;Текстуры&quot; или используйте &quot;Автообнаружение&quot;." id="modSidePanel_HintWrongPresetForTextures" />
+    <String text="Совет: Для мода заменяющего звуки, выберите пресет &quot;Звук&quot; или используйте &quot;Автообнаружение&quot;." id="modSidePanel_HintWrongPresetForAudioFiles" />
+    <String text="Совет: *.dll файлы устанавливаются как &quot;Без архива&quot; в основную папку игры." id="modSidePanel_HintWrongInstallMethodForDLLs" />
+    <String text="Совет: Строковые файлы устанавливаются как &quot;Без архива&quot; в папку &quot;Data&quot;." id="modSidePanel_HintWrongInstallMethodForStrings" />
     <String text="По-умолчанию" id="modsTableFormatGeneral" />
     <String text="Текстуры" id="modsTableFormatTextures" />
     <String text="Автовыбор" id="modsTableFormatAutoDetect" />
@@ -219,7 +226,7 @@
         ******************************************************************************************************************************************************
         The {0} is a placeholder, btw.
     -->
-    <Messagebox title="Couldn't parse *.ini files" id="iniParsingError">По крайней мере, один из игровых файлов *.ini повреждён или содержит синтаксическую ошибку.
+    <Messagebox title="Ошибка в файлах *.ini" id="iniParsingError">По крайней мере, один из игровых файлов *.ini повреждён или содержит синтаксическую ошибку.
 
 Рекомендации:
     -&gt; прочитайте сообщение об ошибке и исправьте ошибку или
@@ -230,9 +237,11 @@
 {0}</Messagebox>
     <Messagebox title="Изменения применены" id="changesApplied">Изменения применены. Вы можете запустить игру.</Messagebox>
     <Messagebox title="Готово" id="downloadLanguagesFinished">Загруженные языковые файлы: {0}</Messagebox>
-    <Messagebox title="Files modified" id="iniFilesModified">*.ini файлы были изменены другой программой во время работы программы.
+    <Messagebox title="Файлы изменены" id="iniFilesModified">*.ini файлы были изменены другой программой во время работы программы.
 Примечание: любые изменения будут перезаписаны, если нажать на кнопку "Применить" или кнопку "Установить" в управлении модами.
 Пожалуйста, перезагрузите программу для получения новых значений.</Messagebox>
+    <Messagebox title="Доступ запрещён" id="setInisReadOnlyFailed">Невозможно сделать *.ini файлы только для чтения. Попробуйте запустить программу от имени администратора.
+{0}</Messagebox>
     <Messagebox title="Вы уверены?" id="galleryDeleteThumbnails">Вы уверены, что хотите удалить все миниатюры галереи?
 В следующий раз, когда вы нажмете на кнопку "Обновить галерею", это займет значительно больше времени, так как они будут созданы заново.</Messagebox>
     <Messagebox title="NW режим отключен" id="nwModeDisabled">Теперь вы можете запустить игру в режиме Приключение.</Messagebox>
@@ -298,7 +307,7 @@
 {0}</Messagebox>
     <Messagebox title="Хотите переключить?" id="msstoreRestartRequired">Для перехода на версию Microsoft Store или обратно необходимо перезапустить программу.</Messagebox>
     <Messagebox title="Невозможно запустить игру: {0}" id="msstoreRunExecutableFailed">К сожалению, запустить исполняемый файл напрямую невозможно из-за ограничений "безопасности". Спасибо за это Microsoft. :(</Messagebox>
-    <Messagebox title="Couldn't add your custom *.ini tweaks" id="customIniFilesParsingError">По крайней мере, один из ваших файлов *.ini содержит ошибку.
+    <Messagebox title="Не удалось добавить пользовательские настройки *.ini" id="customIniFilesParsingError">По крайней мере, один из ваших файлов *.ini содержит ошибку.
 {0}</Messagebox>
     <Messagebox title="Разрешение дисплея может быть слишком низким" id="displayResolutionTooLow">Разрешение вашего дисплея не поддерживается.
 Окна могут не поместиться на экране.
@@ -340,16 +349,16 @@
 Вы хотите отключить их прямо сейчас?</Messagebox>
     <Messagebox title="Вы хотите включить моды?" id="nwModeDisabledAndModsAreStillDisabled">Вы отключили режим Nuclear Winter, но ваши моды всё ещё отключены.
 Вы хотите включить их сейчас?</Messagebox>
-    <Messagebox title="Failed" id="nexusModsProfileRefreshFailed">Не удалось обновить профиль:
+    <Messagebox title="Неудача" id="nexusModsProfileRefreshFailed">Не удалось обновить профиль:
 {0}</Messagebox>
-    <Messagebox title="Are you sure?" id="nexusModsDeleteThumbnails">Вы действительно хотите удалить все миниатюры?</Messagebox>
-    <Messagebox title="Done" id="nexusModsDeleteThumbnailsSuccess">Миниатюры удалены.</Messagebox>
-    <Messagebox title="Something went wrong" id="nexusModsDeleteThumbnailsFailed">Миниатюры невозможно удалить.
+    <Messagebox title="Вы уверены?" id="nexusModsDeleteThumbnails">Вы действительно хотите удалить все миниатюры?</Messagebox>
+    <Messagebox title="Успешно" id="nexusModsDeleteThumbnailsSuccess">Миниатюры удалены.</Messagebox>
+    <Messagebox title="Что-то пошло не так" id="nexusModsDeleteThumbnailsFailed">Миниатюры невозможно удалить.
 Попробуйте позже.</Messagebox>
-    <Messagebox title="Are you sure?" id="nexusModsRemoveProfile">Вы действительно хотите удалить свой профиль из менеджера модов?</Messagebox>
-    <Messagebox title="Done" id="nexusModsRemoveProfileSuccess">Профиль удален.</Messagebox>
-    <Messagebox title="Are you sure?" id="nexusModsRemoveRemoteInfo">Вы действительно хотите удалить информацию о моде?</Messagebox>
-    <Messagebox title="Done" id="nexusModsRemoveRemoteInfoSuccess">Информация о моде удалена.</Messagebox>
+    <Messagebox title="Вы уверены?" id="nexusModsRemoveProfile">Вы действительно хотите удалить свой профиль из менеджера модов?</Messagebox>
+    <Messagebox title="Успешно" id="nexusModsRemoveProfileSuccess">Профиль удален.</Messagebox>
+    <Messagebox title="Вы уверены?" id="nexusModsRemoveRemoteInfo">Вы действительно хотите удалить информацию о моде?</Messagebox>
+    <Messagebox title="Успешно" id="nexusModsRemoveRemoteInfoSuccess">Информация о моде удалена.</Messagebox>
   </Messageboxes>
   <TweakDescriptions>
     <!--
@@ -492,6 +501,34 @@
     <Button text="Закрыть" id="buttonClose" />
     <CheckBox text="Не показывайте это окно после обновления." id="checkBoxDontShowAgain" />
   </FormWhatsNew>
+  <FormWelcome title="Добро пожаловать">
+    <!--
+        FormWelcome
+        ******************************************************************************************************************************************************
+        Welcome
+    -->
+    <Label text="» Я знаю, что вы занятой человек, так что я не отниму у вас много времени.\n   Мне просто нужно проверить кое-какую информацию, вот и всё! «\n       – Представитель Волт-Тек, Окт. 2077" id="label4" />
+    <Button text="OK" id="buttonOK" />
+    <Panel id="panel1">
+      <GroupBox text="Расположение игры" id="groupBoxGameLocation">
+        <!-- Group "Game location" -->
+        <Label text="Вы можете пропустить выбор расположения, если не планируете устанавливать моды." id="label3" />
+        <Label text="Если у вас возникли проблемы с поиском места игры:\n\nSteam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Fallout76\\\nBethesda.net: C:\\Program Files (x86)\\Bethesda.net Launcher\\games\\Fallout76\\\nMicrosoft Store: C:\\Program Files﻿\\ModifiableWindowsApps\\Fallout76\\" id="label2" />
+        <Button text="Найти автоматически" id="buttonAutoDetect" />
+        <Button text="..." id="buttonPickGamePath" />
+      </GroupBox>
+      <GroupBox text="Версия игры" id="groupBoxGameEdition">
+        <!-- Group "Game edition" -->
+        <RadioButton text="Другая" id="radioButtonEditionUnknown" />
+        <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
+        <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
+        <RadioButton text="Steam" id="radioButtonEditionSteam" />
+        <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+      </GroupBox>
+    </Panel>
+    <Label text="Привет, похоже, вы запустили программу впервые!\n" id="label1" />
+    <Label text="Добро пожаловать" id="labelTitle" />
+  </FormWelcome>
   <FormMods title="Настройка модов">
     <!--
         FormMods
@@ -691,11 +728,6 @@
     <TabControl id="tabControl1">
       <TabPage text="Инфо" id="tabPageInfo">
         <!-- ********** Tab "Инфо" ********** -->
-        <GroupBox text="Настройки" id="groupBoxSettings">
-          <!-- Group "Настройки" -->
-          <LinkLabel text="Открыть настройки" id="linkLabelOpenSettings" />
-          <Label text="Всё, что было здесь раньше, перенесено в настройки." id="labelSettingsNotice" />
-        </GroupBox>
         <LinkLabel text="Что нового?" id="linkLabelWhatsNew" />
         <LinkLabel text="Лицензии" id="linkLabelAttribution" />
         <Panel id="panelUpdate">
@@ -1036,7 +1068,7 @@
       <TabPage text="Основные" id="tabPageGeneral">
         <!-- ********** Tab "Основные" ********** -->
         <GroupBox text="Расположение" id="groupBoxPaths">
-          <!-- Group "Paths" -->
+          <!-- Group "Расположение" -->
           <Button text="..." id="buttonPickSevenZipPath" />
           <Label text="Путь к Archive2:" id="labelArchiveTwoPath" />
           <Button text="..." id="buttonArchiveTwoPath" />
