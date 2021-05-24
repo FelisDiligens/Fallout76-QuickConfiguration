@@ -405,7 +405,7 @@ namespace Fo76ini.Forms.FormSettings
                     }
                 }
 
-                string xboxDefaultPath = Path.Combine(d.Name, @"Program Files\ModifiableWindowsApps\Fallout76");
+                string xboxDefaultPath = Path.Combine(d.Name, @"Program Files\ModifiableWindowsApps\Fallout 76");
                 if (GameInstance.ValidateGamePath(xboxDefaultPath))
                 {
                     switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(xboxDefaultPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))

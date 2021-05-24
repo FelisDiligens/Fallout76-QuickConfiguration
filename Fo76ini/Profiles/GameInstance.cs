@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace Fo76ini.Profiles
@@ -65,7 +66,29 @@ namespace Fo76ini.Profiles
                 case GameEdition.MSStore:
                     this.ExecutableName = "Project76_GamePass.exe";
                     this.IniPrefix = "Project76";
-                    this.LauncherURL = "ms-windows-store://pdp/?ProductId=9nkgnmnk3k3z";
+                    /*
+                     * Store link: @"ms-windows-store://pdp/?ProductId=9nkgnmnk3k3z"
+                     * Launch URL: @"shell:appsfolder\BethesdaSoftworks.Fallout76-PC_3275kfvn8vcwc!Fallout76"
+                     * 
+                     * Found a solution to launch the Xbox version of Fallout 76:
+                     * https://stackoverflow.com/questions/32074404/launching-windows-10-store-apps
+                     * https://stackoverflow.com/a/67156442
+                     * 
+                     * Enter in PowerShell:
+                     *    PS C:\> Get-StartApps
+                     *            ^ The above will list every UWP (Win10) AppID, like so:
+                     *            
+                     *    Name                                                 AppID
+                     *    ----                                                 -----
+                     *    ...
+                     *    Fallout 76                                           BethesdaSoftworks.Fallout76-PC_3275kfvn8vcwc!Fallout76
+                     *    
+                     * To start the app, enter in CMD:
+                     *    C:\> explorer shell:appsfolder\BethesdaSoftworks.Fallout76-PC_3275kfvn8vcwc!Fallout76
+                     *    
+                     * This also works with Process.Start(@"shell:appsfolder\BethesdaSoftworks.Fallout76-PC_3275kfvn8vcwc!Fallout76");
+                     */
+                    this.LauncherURL = @"shell:appsfolder\BethesdaSoftworks.Fallout76-PC_3275kfvn8vcwc!Fallout76";
                     this.PreferredLaunchOption = LaunchOption.OpenURL;
                     break;
                 default:
@@ -134,9 +157,9 @@ namespace Fo76ini.Profiles
                     {
                         Process.Start(this.LauncherURL);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        MsgBox.Show("Couldn't start game", "Please make sure to provide a valid 'Launcher URL'.", System.Windows.Forms.MessageBoxIcon.Error);
+                        MsgBox.Show("Couldn't start game", $"Please make sure to provide a valid 'Launcher URL'.\n\n{ex.GetType()}: {ex.Message}", MessageBoxIcon.Error);
                     }
                     break;
                 case LaunchOption.RunExec:
@@ -149,9 +172,9 @@ namespace Fo76ini.Profiles
                         pr.StartInfo.UseShellExecute = false;
                         pr.Start();
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        MsgBox.Show("Couldn't start game", "Please make sure that the game path and executable name are correct.", System.Windows.Forms.MessageBoxIcon.Error);
+                        MsgBox.Show("Couldn't start game", $"Please make sure that the game path and executable name are correct.\n\n{ex.GetType()}: {ex.Message}", MessageBoxIcon.Error);
                     }
                     break;
             }

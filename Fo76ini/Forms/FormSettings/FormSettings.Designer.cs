@@ -790,10 +790,10 @@
             this.radioButtonLaunchViaLink.AutoSize = true;
             this.radioButtonLaunchViaLink.Location = new System.Drawing.Point(10, 20);
             this.radioButtonLaunchViaLink.Name = "radioButtonLaunchViaLink";
-            this.radioButtonLaunchViaLink.Size = new System.Drawing.Size(261, 17);
+            this.radioButtonLaunchViaLink.Size = new System.Drawing.Size(296, 17);
             this.radioButtonLaunchViaLink.TabIndex = 0;
             this.radioButtonLaunchViaLink.TabStop = true;
-            this.radioButtonLaunchViaLink.Text = "Launch via Steam / Bethesda.net (recommended)";
+            this.radioButtonLaunchViaLink.Text = "Launch via Steam / Bethesda.net / Xbox (recommended)";
             this.radioButtonLaunchViaLink.UseVisualStyleBackColor = true;
             this.radioButtonLaunchViaLink.CheckedChanged += new System.EventHandler(this.radioButtonLaunchViaLink_CheckedChanged);
             // 
