@@ -38,6 +38,7 @@ namespace Fo76ini
             localizedStrings["invalid"] = "Invalid";
             localizedStrings["auto"] = "Auto";
             localizedStrings["unknown"] = "Unknown";
+            localizedStrings["selected"] = "selected";
             localizedStrings["nuclearwintermode"] = "Nuclear Winter";
             localizedStrings["adventuremode"] = "Adventure";
             localizedStrings["affectedValues"] = "Affected values";

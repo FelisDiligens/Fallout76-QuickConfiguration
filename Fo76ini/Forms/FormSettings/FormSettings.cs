@@ -67,6 +67,7 @@ namespace Fo76ini.Forms.FormSettings
 
             // Init components / assign event handler:
             this.listViewGameInstances.HeaderStyle = ColumnHeaderStyle.None;
+            this.listViewGameInstances.DoubleClick += listViewGameInstances_DoubleClick;
 
             this.backgroundWorkerDownloadLanguages.RunWorkerCompleted += backgroundWorkerDownloadLanguages_RunWorkerCompleted;
             this.backgroundWorkerRetrieveProfileInfo.RunWorkerCompleted += backgroundWorkerRetrieveProfileInfo_RunWorkerCompleted;
@@ -202,12 +203,17 @@ namespace Fo76ini.Forms.FormSettings
             this.listViewGameInstances.Items.Clear();
             foreach (GameInstance game in ProfileManager.Games)
             {
+                bool isSelected = ProfileManager.IsSelected(game);
+
                 // ... add it to the list.
-                ListViewItem gameItem = new ListViewItem(game.Title, GetImageIndex(game.Edition));
+                ListViewItem gameItem = new ListViewItem(
+                    game.Title + (isSelected ? $" [{Localization.GetString("selected")}]" : ""),
+                    GetImageIndex(game.Edition)
+                );
                 this.listViewGameInstances.Items.Add(gameItem);
 
                 // If it is the currently selected game, then...
-                if (ProfileManager.IsSelected(game))
+                if (isSelected)
                 {
                     // ... select it in the list ...
                     gameItem.Selected = true;
@@ -559,6 +565,13 @@ namespace Fo76ini.Forms.FormSettings
         private void contextMenuStripGame_Opening(object sender, CancelEventArgs e)
         {
             this.gameToolStripMenuItem.Text = ProfileManager.SelectedGame.Title;
+        }
+
+        private void listViewGameInstances_DoubleClick(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+            renameGameToolStripMenuItem_Click(sender, e);
         }
 
         #endregion
