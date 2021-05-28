@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="FelisDiligens (aka. datasnake)" version="1.9.3">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="FelisDiligens (aka. datasnake)" version="1.9.4">
   <Strings>
     <!--
         Strings
@@ -39,6 +39,7 @@
     <String text="Gültig" id="valid" />
     <String text="Ungültig" id="invalid" />
     <String text="Autom." id="auto" />
+    <String text="ausgewählt" id="selected" />
     <String text="Nuclear Winter" id="nuclearwintermode" />
     <String text="Abenteuer" id="adventuremode" />
     <String text="Betroffene Werte" id="affectedValues" />
@@ -227,20 +228,19 @@
         ******************************************************************************************************************************************************
         The {0} is a placeholder, btw.
     -->
-    <Messagebox title="*.ini Dateien konnten nicht gelesen werden." id="iniParsingError">Mindestens eines der *.ini Dateien ist beschädigt oder enthält einen Syntaxfehler.
-
-Du könntest:
-    -&gt; die Fehlermeldung lesen und den Fehler beheben, oder
-    -&gt; die ungültige *.ini Datei löschen, Fallout 76 erneut starten, um eine neue, gültige Datei zu generieren
-    -&gt; und es dann noch einmal versuchen.
-
-FEHLERMELDUNG:
-{0}</Messagebox>
     <Messagebox title="Änderungen gespeichert" id="changesApplied">Deine Änderungen wurden gespeichert. Du kannst das Spiel jetzt starten.</Messagebox>
     <Messagebox title="Fertig" id="downloadLanguagesFinished">Heruntergeladene Sprachdateien: {0}</Messagebox>
     <Messagebox title="Dateien modifiziert" id="iniFilesModified">*.ini Deteien wurden modifiziert, während das Tool läuft.
 Beachte: Alle Änderungen werden überschrieben, wenn auf "Anwenden" gedrückt oder Mods verwaltet werden.
 Bitte starten Sie das Tool neu, um mit den neuen Werten zu arbeiten.</Messagebox>
+    <Messagebox title="Access denied" id="setInisReadOnlyFailed">Couldn't set *.ini files to read-only. Try to start the tool with admin rights.
+{0}</Messagebox>
+    <Messagebox title="Letztes Spielprofil kann nicht gelöscht werden" id="errorAtLeastOneGameOrProfile">Mindestens ein Spielprofil wird benötigt.</Messagebox>
+    <Messagebox title="Automatische Erkennung fehlgeschlagen" id="gamePathAutoDetectFailed">Es konnte keines der üblichen Spielpfade gefunden werden. Bitte wähle den Pfad zum Spiel manuell aus.</Messagebox>
+    <Messagebox title="Pfad gefunden" id="gamePathAutoDetectPathFound">Möchtest du diesen Pfad anwenden?
+Gefunden: {0}
+
+Drücke "Ja", um den Pfad zu übernehmen; "Nein", um mit der Suche fortzufahren; und "Abbrechen", um die Suche zu unterbrechen.</Messagebox>
     <Messagebox title="Bist du sicher?" id="galleryDeleteThumbnails">Möchtest du die Thumbnails wirklich löschen?
 Wenn du das nächste Mal auf "Galerie aktualisieren" klickst, wird es erheblich länger dauern, da alle Thumbnails neu generiert werden.</Messagebox>
     <Messagebox title="NW-Modus deaktiviert" id="nwModeDisabled">Du kannst jetzt den Abenteuermodus spielen.</Messagebox>
@@ -284,8 +284,15 @@ Fehler: {0}</Messagebox>
     <Messagebox title="Fehlgeschlagen" id="failed">{0}</Messagebox>
     <Messagebox title="Fertiggestellt" id="done">{0}</Messagebox>
     <Messagebox title="Bist du sicher?" id="areYouSure">{0}</Messagebox>
-    <Messagebox title="Letztes Spielprofil kann nicht gelöscht werden" id="errorAtLeastOneGameOrProfile">Mindestens ein Spielprofil wird benötigt.</Messagebox>
-    <Messagebox title="Automatische Erkennung fehlgeschlagen" id="gamePathAutoDetectFailed">Es konnte keines der üblichen Spielpfade gefunden werden. Bitte wähle den Pfad zum Spiel manuell aus.</Messagebox>
+    <Messagebox title="*.ini Dateien konnten nicht gelesen werden." id="iniParsingError">Mindestens eines der *.ini Dateien ist beschädigt oder enthält einen Syntaxfehler.
+
+Du könntest:
+    -&gt; die Fehlermeldung lesen und den Fehler beheben, oder
+    -&gt; die ungültige *.ini Datei löschen, Fallout 76 erneut starten, um eine neue, gültige Datei zu generieren
+    -&gt; und es dann noch einmal versuchen.
+
+FEHLERMELDUNG:
+{0}</Messagebox>
     <Messagebox title="Backup erstellen und speichern" id="backupAndSave">Möchtest du ein Backup machen bevor deine Änderungen gespeichert werden?
 
     Drücke "Ja", um ein Backup zu erstellen und zu speichern.
@@ -501,12 +508,14 @@ Funktioniert jedoch nur, wenn das Spiel über das Tool gestartet wird.</Descript
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.RemoveModsOnNWModeTweak">Wenn diese Option aktiviert ist, werden Mods entfernt, wenn der Nuclear Winter-Modus aktiviert wird.</Description>
     <Description id="Fo76ini.Tweaks.Config.ArchiveTwoPathTweak">Speichert den Pfad, von dem Archive2 geladen wird.</Description>
     <Description id="Fo76ini.Tweaks.Config.SevenZipPathTweak">Speichert den Pfad, von dem aus 7-Zip geladen wird.</Description>
+    <Description id="Fo76ini.Tweaks.Config.DownloadPathTweak">Wenn du Mods mit dem 'Vortex' / 'Mod Manager Download' Knopf auf NexusMods herunterlädst,
+wird das Tool die Datei in diesen Ordner speichern.</Description>
   </TweakDescriptions>
   <FormWhatsNew title="Was gibt's Neues?">
     <!--
         FormWhatsNew
         ******************************************************************************************************************************************************
-        What's new?
+        Was gibt's Neues?
     -->
     <Label text="Was gibt's Neues?" id="labelTitle" />
     <Button text="Schließen" id="buttonClose" />
@@ -516,22 +525,22 @@ Funktioniert jedoch nur, wenn das Spiel über das Tool gestartet wird.</Descript
     <!--
         FormWelcome
         ******************************************************************************************************************************************************
-        Welcome
+        Willkommen
     -->
     <Label text="» Ich weiß, dass du sehr beschäftigt bist, daher werde ich nicht viel Zeit\n   in Anspruch nehmen. Ich muss nur einige Informationen überprüfen, das ist alles! «\n       – Vault-Tec-Vertreter, Oktober 2077 " id="label4" />
     <Button text="OK" id="buttonOK" />
     <Panel id="panel1">
       <GroupBox text="Spielpfad" id="groupBoxGameLocation">
-        <!-- Group "Game location" -->
+        <!-- Group "Spielpfad" -->
         <Label text="Du kannst den Spielpfad auslassen, wenn du keine Mods installieren möchtest. " id="label3" />
         <Label text="Wenn du Schwierigkeiten hast, den Spielpfad zu finden:\n\nSteam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Fallout76\\\nBethesda.net: C:\\Program Files (x86)\\Bethesda.net Launcher\\games\\Fallout76\\\nMicrosoft Store: C:\\Program Files\\ModifiableWindowsApps\\Fallout76\\" id="label2" />
         <Button text="Automatisch erkennen" id="buttonAutoDetect" />
         <Button text="..." id="buttonPickGamePath" />
       </GroupBox>
       <GroupBox text="Spieledition" id="groupBoxGameEdition">
-        <!-- Group "Game edition" -->
+        <!-- Group "Spieledition" -->
         <RadioButton text="Etwas anderes" id="radioButtonEditionUnknown" />
-        <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
+        <RadioButton text="Xbox (Game Pass) / Microsoft Store" id="radioButtonEditionMSStore" />
         <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
         <RadioButton text="Steam" id="radioButtonEditionSteam" />
         <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
@@ -573,10 +582,10 @@ Funktioniert jedoch nur, wenn das Spiel über das Tool gestartet wird.</Descript
           </Panel>
           <Panel id="panelModDetailsInner">
             <GroupBox text="Notizen" id="groupBoxNotes">
-              <!-- Group "Notes" -->
+              <!-- Group "Notizen" -->
             </GroupBox>
             <GroupBox text="Moddateien hinzufügen / ersetzen" id="groupBoxModReplace">
-              <!-- Group "Add / replace mod files" -->
+              <!-- Group "Moddateien hinzufügen / ersetzen" -->
               <Label text="Ziehe Dateien / Ordner per Drag &amp; Drop in das linke Feld, um Dateien hinzuzufügen / zu ersetzen." id="labelModDetailsReplace" />
               <LinkLabel text="Ordnerinhalte löschen" id="linkLabelModDeleteFolderContents" />
               <LinkLabel text="Ordner importieren" id="linkLabelModReplaceFilesWithFolder" />
@@ -654,11 +663,6 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
           <Button text="Liste aufräumen" id="buttonModsCleanList" />
           <Label text="Resourcenliste" id="labelsResourceIndexFileList" />
         </GroupBox>
-      </TabPage>
-      <TabPage text="NexusMods" id="tabPageNexusMods">
-        <!-- ********** Tab "NexusMods" ********** -->
-        <Label text="Andere Optionen, wie z.B. &quot;Modinformationen aktualisieren&quot; können im Menu unter Tools → NexusMods API gefunden werden." id="labelNexusModsMovedNotice2" />
-        <Label text="Der NexusMods-Reiter wurde in die Einstellungen verschoben." id="labelNexusModsMovedNotice" />
       </TabPage>
     </TabControl>
     <MenuStrip id="menuStrip1">
@@ -739,11 +743,6 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
     <TabControl id="tabControl1">
       <TabPage text="Info" id="tabPageInfo">
         <!-- ********** Tab "Info" ********** -->
-        <GroupBox text="Einstellungen" id="groupBoxSettings">
-          <!-- Group "Settings" -->
-          <LinkLabel text="Einstellungen öffnen" id="linkLabelOpenSettings" />
-          <Label text="Alles, was vorher hier war, wurde in die Einstellungen verschoben." id="labelSettingsNotice" />
-        </GroupBox>
         <LinkLabel text="Was gibt's Neues?" id="linkLabelWhatsNew" />
         <LinkLabel text="Lizenzierte Arbeit" id="linkLabelAttribution" />
         <Panel id="panelUpdate">
@@ -792,7 +791,7 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
         <GroupBox text="Anmelden" id="groupBoxLogin">
           <!-- Group "Anmelden" -->
           <GroupBox text="Profile" id="groupBoxLoginProfiles">
-            <!-- Group "Profiles" -->
+            <!-- Group "Profile" -->
             <RadioButton text="Keins" id="radioButtonAccountNone" />
             <RadioButton text="Konto 1" id="radioButtonAccount1" />
             <RadioButton text="Konto 16" id="radioButtonAccount16" />
@@ -825,7 +824,7 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
           <GroupBox text="Grafik" id="groupBoxGraphics">
             <!-- Group "Grafik" -->
             <GroupBox text="Effekte" id="groupBoxGraphicEffects">
-              <!-- Group "Effects" -->
+              <!-- Group "Effekte" -->
               <CheckBox text="Gewalt vermindern" id="checkBoxDisableGore" />
             </GroupBox>
             <GroupBox text="TAA-Schärfen" id="groupBoxTAASharpening">
@@ -935,7 +934,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
       <TabPage text="Steuerung" id="tabPageControls">
         <!-- ********** Tab "Steuerung" ********** -->
         <GroupBox text="Controller" id="groupBoxGamepad">
-          <!-- Group "Gamepad" -->
+          <!-- Group "Controller" -->
           <CheckBox text="Verwendung eines Controllers ermöglichen" id="checkBoxGamepadEnabled" />
           <CheckBox text="Vibration aktivieren" id="checkBoxGamepadRumble" />
         </GroupBox>
@@ -953,7 +952,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
         <!-- ********** Tab "Kamera" ********** -->
         <Panel id="panel2">
           <GroupBox text="Kameraposition (Experimentell)" id="groupBoxCameraPosition">
-            <!-- Group "Camera position (Experimental)" -->
+            <!-- Group "Kameraposition (Experimentell)" -->
             <GroupBox text="Melee combat camera position" id="groupBox3">
               <!-- Group "Melee combat camera position" -->
               <Label text="Further/Closer (fOverShoulderMeleeCombatAddY)" id="labelfOverShoulderMeleeCombatAddY" />
@@ -975,7 +974,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </GroupBox>
           </GroupBox>
           <GroupBox text="Fotomodus-Optionen" id="groupBoxSelfieCamera">
-            <!-- Group "Photomode options" -->
+            <!-- Group "Fotomodus-Optionen" -->
             <Label text="Drehgeschwindigkeit:" id="labelPhotomodeRotationSpeed" />
             <Label text="Maximale Entfernung:" id="labelPhotomodeRange" />
             <Label text="Bewegungsgeschwindigkeit:" id="labelPhotomodeTranslationSpeed" />
@@ -1004,7 +1003,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
       <TabPage text="Pipboy" id="tabPagePipBoy">
         <!-- ********** Tab "Pipboy" ********** -->
         <GroupBox text="Vorgaben" id="groupBoxPipboyColorPresets">
-          <!-- Group "Presets" -->
+          <!-- Group "Vorgaben" -->
           <Button text="Ödland der Hauptstadt Grün" id="buttonPresetFo3Green" />
           <Button text="Klassisches Weiß" id="buttonPresetFo3White" />
           <Button text="Mojave-Ödland Bernstein" id="buttonPresetFoNVAmber" />
@@ -1013,7 +1012,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           <Button text="Klassisches Blau" id="buttonPresetFo3Blue" />
         </GroupBox>
         <GroupBox text="Vorschau" id="groupBoxPipboyColorPreview">
-          <!-- Group "Preview" -->
+          <!-- Group "Vorschau" -->
           <Label text="Die Vorschau ist nur eine Annäherung,\ndaher sieht es im Spiel möglicherweise nicht genau so aus." id="labelPipboyColorPreviewNotice" />
         </GroupBox>
         <GroupBox text="Auflösung" id="groupBoxPipboyResolution">
@@ -1078,28 +1077,36 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
     <!--
         FormSettings
         ******************************************************************************************************************************************************
-        Settings
+        Einstellungen
     -->
     <TabControl id="tabControl1">
       <TabPage text="Allgemein" id="tabPageGeneral">
-        <!-- ********** Tab "General" ********** -->
+        <!-- ********** Tab "Allgemein" ********** -->
         <GroupBox text="Pfade" id="groupBoxPaths">
-          <!-- Group "Paths" -->
+          <!-- Group "Pfade" -->
+          <Label text="Downloads-Ordner:" id="labelDownloadsPath" />
+          <Button text="..." id="buttonPickDownloadsPath" />
+          <Label text="Mod-Manager:" id="label3" />
+          <Label text="Programme:" id="label2" />
           <Button text="..." id="buttonPickSevenZipPath" />
           <Label text="Archive2 Pfad:" id="labelArchiveTwoPath" />
-          <Button text="..." id="buttonArchiveTwoPath" />
+          <Button text="..." id="buttonPickArchiveTwoPath" />
           <Label text="7z Pfad:" id="labelSevenZipPath" />
         </GroupBox>
         <GroupBox text="Aktionen" id="groupBoxActions">
-          <!-- Group "Actions" -->
+          <!-- Group "Aktionen" -->
           <LinkLabel text="⚠️ Gefahrenzone aktivieren" id="linkLabelEnableDangerZone" />
         </GroupBox>
         <GroupBox text="Optionen" id="groupBoxOptions">
-          <!-- Group "Options" -->
+          <!-- Group "Optionen" -->
+          <CheckBox text="Mit &quot;Mod Manager Download&quot;-Links assoziieren" id="checkBoxHandleNXMLinks">
+            <Tooltip>Aktiviere diese Option, wenn du möchtest, dass der Mod-Manager auf die Links &quot;Vortex&quot; bzw. &quot;Mod Manager Download&quot; (nxm://) reagiert.
+Möglicherweise musst du das Tool vorher als Administrator starten, um diese Option zu aktivieren. (Das müsstest du nur einmal tun)</Tooltip>
+          </CheckBox>
           <CheckBox text="*.ini Dateien schreibschützen" id="checkBoxReadOnly" />
         </GroupBox>
         <GroupBox text="Nuclear Winter Optionen" id="groupBoxNuclearWinterMode">
-          <!-- Group "Nuclear Winter options" -->
+          <!-- Group "Nuclear Winter Optionen" -->
           <CheckBox text="Mods automatisch installieren, wenn NW deaktiviert wird" id="checkBoxNWAutoDeployMods" />
           <Label text="Modoptionen:" id="labelNWmodoptions" />
           <Label text="*.dll-Optionen:" id="labelNWdlloptions" />
@@ -1107,46 +1114,46 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           <CheckBox text="Hinzugefügte *.dll-Dateien umbenennen" id="checkBoxNWRenameDLL" />
         </GroupBox>
         <GroupBox text="Verhalten" id="groupBoxBehavior">
-          <!-- Group "Behavior" -->
+          <!-- Group "Verhalten" -->
           <CheckBox text="Benachrichtungsgeräusch abspielen" id="checkBoxPlayNotificationSound" />
           <CheckBox text="Nicht nach Aktualisierungen suchen" id="checkBoxIgnoreUpdates" />
           <CheckBox text="Das Tool schließen, wenn das Spiel gestartet wird" id="checkBoxQuitOnGameLaunch" />
           <CheckBox text="Änderungen automatisch anwenden, wenn das Tool geschlossen wird." id="checkBoxAutoApply" />
         </GroupBox>
         <GroupBox text="Übersetzung" id="groupBoxLocalization">
-          <!-- Group "Localization" -->
+          <!-- Group "Übersetzung" -->
           <Label text="Diese Übersetzung ist veraltet. Einige Elemente\nkönnten möglicherweise noch nicht übersetzt worden sein." id="labelOutdatedLanguage" />
           <Label text="Sprache:" id="labelLanguage" />
         </GroupBox>
       </TabPage>
       <TabPage text="Spielprofile" id="tabPageGameProfiles">
-        <!-- ********** Tab "Game profiles" ********** -->
+        <!-- ********** Tab "Spielprofile" ********** -->
         <Panel id="panel1">
           <GroupBox text="Einstellungen" id="groupBoxSettings">
-            <!-- Group "Settings" -->
+            <!-- Group "Einstellungen" -->
             <Panel id="panelSettings">
               <GroupBox text="Erweitert" id="groupBox2">
-                <!-- Group "Advanced" -->
+                <!-- Group "Erweitert" -->
                 <Label text="Start-URL:" id="labelLaunchURL" />
                 <Label text="Parameter:" id="labelParameters" />
                 <Label text="Ausführbare Datei:" id="labelExecutable" />
                 <Label text="*.ini-Präfix:" id="labelIniPrefix" />
               </GroupBox>
               <GroupBox text="Startoptionen" id="groupBoxLaunchOptions">
-                <!-- Group "Launch options" -->
+                <!-- Group "Startoptionen" -->
                 <Label text="Fallout 76 kann nicht direkt gestartet werden, wenn es über den Microsoft Store installiert wurde." id="labelLaunchOptionMSStoreNotice" />
                 <RadioButton text="Starte &quot;Fallout76.exe&quot; direkt" id="radioButtonLaunchViaExecutable" />
                 <RadioButton text="Starte über Steam / Bethesda.net (empfohlen)" id="radioButtonLaunchViaLink" />
               </GroupBox>
               <GroupBox text="Spielpfad" id="groupBoxGameLocation">
-                <!-- Group "Game location" -->
+                <!-- Group "Spielpfad" -->
                 <Button text="Automatisch erkennen" id="buttonAutoDetect" />
                 <Button text="..." id="buttonPickGamePath" />
               </GroupBox>
               <GroupBox text="Spieledition" id="groupBoxGameEdition">
-                <!-- Group "Game edition" -->
+                <!-- Group "Spieledition" -->
                 <RadioButton text="Etwas anderes" id="radioButtonEditionUnknown" />
-                <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
+                <RadioButton text="Xbox (Game Pass) / Microsoft Store" id="radioButtonEditionMSStore" />
                 <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
                 <RadioButton text="Steam" id="radioButtonEditionSteam" />
                 <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
@@ -1154,7 +1161,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             </Panel>
           </GroupBox>
           <GroupBox text="Spiel" id="groupBoxGame">
-            <!-- Group "Game" -->
+            <!-- Group "Spiel" -->
             <ListView id="listViewGameInstances">
               <Column>Spiel</Column>
             </ListView>

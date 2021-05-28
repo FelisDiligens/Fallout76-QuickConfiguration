@@ -229,9 +229,6 @@
   <data name="thaw_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thaw-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Fo76ini_LDu4jzf2p3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fo76ini_LDu4jzf2p3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="fire" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fire-2-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -327,5 +324,8 @@
   </data>
   <data name="steam_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\steam_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xbox_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xbox_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

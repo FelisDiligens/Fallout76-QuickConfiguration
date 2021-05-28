@@ -383,16 +383,6 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Fo76ini_LDu4jzf2p3 {
-            get {
-                object obj = ResourceManager.GetObject("Fo76ini_LDu4jzf2p3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap folder_24 {
             get {
                 object obj = ResourceManager.GetObject("folder-24", resourceCulture);
@@ -756,6 +746,16 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap xbox_24 {
             get {
                 object obj = ResourceManager.GetObject("xbox-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap xbox_hover {
+            get {
+                object obj = ResourceManager.GetObject("xbox_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

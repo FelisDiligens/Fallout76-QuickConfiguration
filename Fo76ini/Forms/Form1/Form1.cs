@@ -412,27 +412,27 @@ namespace Fo76ini
             switch (e.ActiveGameInstance.Edition)
             {
                 case GameEdition.Steam:
-                    this.pictureBoxGameEdition.Image = Resources.steam;
+                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.Steam);
                     this.toolStripStatusLabelEditionText.Text = "Steam";
                     this.labelGameEdition.Text = "Steam";
                     break;
                 case GameEdition.BethesdaNet:
-                    this.pictureBoxGameEdition.Image = Resources.bethesda;
+                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.BethesdaNet);
                     this.toolStripStatusLabelEditionText.Text = "Bethesda.net";
                     this.labelGameEdition.Text = "Bethesda";
                     break;
                 case GameEdition.BethesdaNetPTS:
-                    this.pictureBoxGameEdition.Image = Resources.bethesda_pts;
+                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.BethesdaNetPTS);
                     this.toolStripStatusLabelEditionText.Text = "Bethesda.net (PTS)";
                     this.labelGameEdition.Text = "Bethesda\n(PTS)";
                     break;
                 case GameEdition.MSStore:
-                    this.pictureBoxGameEdition.Image = Resources.msstore;
-                    this.toolStripStatusLabelEditionText.Text = "Microsoft Store";
-                    this.labelGameEdition.Text = "Microsoft\nStore";
+                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.MSStore);
+                    this.toolStripStatusLabelEditionText.Text = "Xbox / Microsoft Store";
+                    this.labelGameEdition.Text = "Xbox";
                     break;
                 default:
-                    this.pictureBoxGameEdition.Image = Resources.help_128;
+                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.Unknown);
                     this.toolStripStatusLabelEditionText.Text = Localization.GetString("unknown");
                     this.labelGameEdition.Text = Localization.GetString("unknown");
                     break;
@@ -803,46 +803,12 @@ namespace Fo76ini
 
         private void pictureBoxGameEdition_MouseEnter(object sender, EventArgs e)
         {
-            switch (this.game.Edition)
-            {
-                case GameEdition.Steam:
-                    this.pictureBoxGameEdition.Image = Resources.steam_hover;
-                    break;
-                case GameEdition.BethesdaNet:
-                    this.pictureBoxGameEdition.Image = Resources.bethesda_hover;
-                    break;
-                case GameEdition.BethesdaNetPTS:
-                    this.pictureBoxGameEdition.Image = Resources.bethesda_pts_hover;
-                    break;
-                case GameEdition.MSStore:
-                    this.pictureBoxGameEdition.Image = Resources.msstore_hover;
-                    break;
-                default:
-                    this.pictureBoxGameEdition.Image = Resources.help_128_hover;
-                    break;
-            }
+            this.pictureBoxGameEdition.Image = this.game.Get128pxHoverBitmap();
         }
 
         private void pictureBoxGameEdition_MouseLeave(object sender, EventArgs e)
         {
-            switch (this.game.Edition)
-            {
-                case GameEdition.Steam:
-                    this.pictureBoxGameEdition.Image = Resources.steam;
-                    break;
-                case GameEdition.BethesdaNet:
-                    this.pictureBoxGameEdition.Image = Resources.bethesda;
-                    break;
-                case GameEdition.BethesdaNetPTS:
-                    this.pictureBoxGameEdition.Image = Resources.bethesda_pts;
-                    break;
-                case GameEdition.MSStore:
-                    this.pictureBoxGameEdition.Image = Resources.msstore;
-                    break;
-                default:
-                    this.pictureBoxGameEdition.Image = Resources.help_128;
-                    break;
-            }
+            this.pictureBoxGameEdition.Image = this.game.Get128pxBitmap();
         }
 
         #endregion

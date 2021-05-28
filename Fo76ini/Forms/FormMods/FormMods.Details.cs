@@ -233,6 +233,7 @@ namespace Fo76ini
             this.checkBoxModDetailsEnabled.Visible = true;
             this.groupBoxModDetailsDetails.Visible = true;
             this.groupBoxModReplace.Visible = true;
+            this.groupBoxNotes.Visible = true;
 
             // Update thumbnail:
             if (this.editedMod.RemoteInfo != null &&
@@ -378,12 +379,16 @@ namespace Fo76ini
 
         private void UpdateSidePanelBulk()
         {
+            this.labelModTitle.Text = string.Format(Localization.localizedStrings["modDetailsTitleBulkSelected"], this.editedModCount);
+
             this.checkBoxModDetailsEnabled.Visible = false;
             this.groupBoxModDetailsDetails.Visible = false;
             this.groupBoxModReplace.Visible = false;
+            this.groupBoxNotes.Visible = false;
 
+            // No thumbnail for us:
             this.pictureBoxModThumbnail.Image = Resources.bg;
-            this.labelModTitle.Text = string.Format(Localization.localizedStrings["modDetailsTitleBulkSelected"], this.editedModCount);
+            this.pictureBoxModThumbnail.Visible = false;
 
             // Install into visible
             this.labelModInstallInto.Visible = true;

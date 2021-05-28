@@ -240,7 +240,7 @@ namespace Fo76ini.Profiles
                         game.Title = "Steam";
                         break;
                     case GameEdition.MSStore:
-                        game.Title = "Microsoft Store";
+                        game.Title = "Xbox / Microsoft Store";
                         break;
                 }
 

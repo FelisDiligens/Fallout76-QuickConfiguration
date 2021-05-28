@@ -994,14 +994,20 @@ namespace Fo76ini.Forms.FormSettings
                 else
                     NXMHandler.Register();
             }
-            catch (System.UnauthorizedAccessException ex)
+            catch (UnauthorizedAccessException ex)
             {
-                MsgBox.Show("Access denied", "Start the tool as admin and try again.", MessageBoxIcon.Error);
+                if (!Utils.HasAdminRights())
+                    MsgBox.Show("Access denied", "Start the tool as admin and try again.", MessageBoxIcon.Error);
+                else
+                    MsgBox.Show(ex.GetType().ToString(), ex.ToString(), MessageBoxIcon.Error);
                 checkBoxHandleNXMLinks.Checked = isRegistered;
             }
             catch (Exception ex)
             {
-                MsgBox.Show("Unknown error", "Start the tool as admin and try again.", MessageBoxIcon.Error);
+                if (!Utils.HasAdminRights())
+                    MsgBox.Show("Unknown error", "Start the tool as admin and try again.", MessageBoxIcon.Error);
+                else
+                    MsgBox.Show(ex.GetType().ToString(), ex.ToString(), MessageBoxIcon.Error);
                 checkBoxHandleNXMLinks.Checked = isRegistered;
             }
         }

@@ -1,8 +1,10 @@
 ﻿using Fo76ini.Interface;
+using Fo76ini.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -76,7 +78,7 @@ namespace Fo76ini.Profiles
                      * 
                      * Enter in PowerShell:
                      *    PS C:\> Get-StartApps
-                     *            ^ The above will list every UWP (Win10) AppID, like so:
+                     *            ^ The above will return a list:
                      *            
                      *    Name                                                 AppID
                      *    ----                                                 -----
@@ -185,7 +187,12 @@ namespace Fo76ini.Profiles
         /// </summary>
         public static bool ValidateGamePath(string path)
         {
-            return path != null && path.Trim().Length > 0 && Directory.Exists(path) && Directory.Exists(Path.Combine(path, "Data"));
+            return
+                path != null &&
+                path.Trim().Length > 0 &&
+                Directory.Exists(path) &&
+                Directory.Exists(Path.Combine(path, "Data")) &&
+                File.Exists(Path.Combine(path, "Data", "SeventySix.esm"));
         }
 
         /// <summary>
@@ -194,6 +201,52 @@ namespace Fo76ini.Profiles
         public bool ValidateGamePath()
         {
             return ValidateGamePath(GamePath);
+        }
+
+        public Bitmap Get128pxBitmap()
+        {
+            return Get128pxBitmap(this.Edition);
+        }
+
+        public static Bitmap Get128pxBitmap(GameEdition edition)
+        {
+            switch (edition)
+            {
+                case GameEdition.Steam:
+                    return Resources.steam;
+                case GameEdition.BethesdaNet:
+                    return Resources.bethesda;
+                case GameEdition.BethesdaNetPTS:
+                    return Resources.bethesda_pts;
+                case GameEdition.MSStore:
+                    //return Resources.msstore;
+                    return Resources.xbox;
+                default:
+                    return Resources.help_128;
+            }
+        }
+
+        public Bitmap Get128pxHoverBitmap()
+        {
+            return Get128pxHoverBitmap(this.Edition);
+        }
+
+        public static Bitmap Get128pxHoverBitmap(GameEdition edition)
+        {
+            switch (edition)
+            {
+                case GameEdition.Steam:
+                    return Resources.steam_hover;
+                case GameEdition.BethesdaNet:
+                    return Resources.bethesda_hover;
+                case GameEdition.BethesdaNetPTS:
+                    return Resources.bethesda_pts_hover;
+                case GameEdition.MSStore:
+                    //return Resources.msstore_hover;
+                    return Resources.xbox_hover;
+                default:
+                    return Resources.help_128_hover;
+            }
         }
     }
 }

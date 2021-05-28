@@ -64,6 +64,27 @@ namespace Fo76ini.NexusAPI
         public static NXMLink ParseLink(string nxmLink)
         {
             // nxm://fallout76/mods/<mod_id>/files/<file_id>?key=...&expires=1621492286&user_id=41275740
+
+            if (!nxmLink.StartsWith("nxm://"))
+                throw new ArgumentException("Invalid nxm link: " + nxmLink);
+
+            Uri uri = new Uri(nxmLink);
+            var query = uri.Query.Trim('?').Split('&')
+                         .ToDictionary(c => c.Split('=')[0],
+                                       c => Uri.UnescapeDataString(c.Split('=')[1]));
+
+            NXMLink parsed = new NXMLink();
+            parsed.modId = Utils.ToInt(uri.Segments[2].Trim('/'));
+            parsed.fileId = Utils.ToInt(uri.Segments[4].Trim('/'));
+            parsed.key = query["key"];
+            parsed.expires = Utils.ToInt(query["expires"]);
+
+            return parsed;
+        }
+
+        /*public static NXMLink ParseLink(string nxmLink)
+        {
+            // nxm://fallout76/mods/<mod_id>/files/<file_id>?key=...&expires=1621492286&user_id=41275740
             if (!nxmLink.StartsWith("nxm://"))
                 throw new ArgumentException("Invalid nxm link: " + nxmLink);
 
@@ -98,6 +119,6 @@ namespace Fo76ini.NexusAPI
             parsed.expires = Utils.ToInt(expires);
 
             return parsed;
-        }
+        }*/
     }
 }

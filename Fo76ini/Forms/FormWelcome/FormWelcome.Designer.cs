@@ -203,7 +203,7 @@ namespace Fo76ini.Forms.FormWelcome
             // pictureBoxMSStore
             // 
             this.pictureBoxMSStore.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.msstore_24;
+            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.xbox_24;
             this.pictureBoxMSStore.Location = new System.Drawing.Point(11, 109);
             this.pictureBoxMSStore.Name = "pictureBoxMSStore";
             this.pictureBoxMSStore.Size = new System.Drawing.Size(24, 24);
@@ -245,9 +245,9 @@ namespace Fo76ini.Forms.FormWelcome
             this.radioButtonEditionMSStore.AutoSize = true;
             this.radioButtonEditionMSStore.Location = new System.Drawing.Point(43, 112);
             this.radioButtonEditionMSStore.Name = "radioButtonEditionMSStore";
-            this.radioButtonEditionMSStore.Size = new System.Drawing.Size(188, 17);
+            this.radioButtonEditionMSStore.Size = new System.Drawing.Size(194, 17);
             this.radioButtonEditionMSStore.TabIndex = 3;
-            this.radioButtonEditionMSStore.Text = "Microsoft Store / Xbox Game Pass";
+            this.radioButtonEditionMSStore.Text = "Xbox (Game Pass) / Microsoft Store";
             this.radioButtonEditionMSStore.UseVisualStyleBackColor = true;
             this.radioButtonEditionMSStore.CheckedChanged += new System.EventHandler(this.radioButtonEditionMSStore_CheckedChanged);
             // 

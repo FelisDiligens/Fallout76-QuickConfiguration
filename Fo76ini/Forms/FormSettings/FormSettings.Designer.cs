@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Default", 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Default", 0);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "Steam"}, 2, System.Drawing.Color.Empty, System.Drawing.SystemColors.Window, null);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Microsoft Store", 3);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Xbox", 3);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSettings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
@@ -358,12 +358,11 @@
             // 
             // linkLabelEnableDangerZone
             // 
-            this.linkLabelEnableDangerZone.AutoSize = true;
             this.linkLabelEnableDangerZone.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linkLabelEnableDangerZone.LinkColor = System.Drawing.Color.Red;
-            this.linkLabelEnableDangerZone.Location = new System.Drawing.Point(7, 20);
+            this.linkLabelEnableDangerZone.Location = new System.Drawing.Point(7, 16);
             this.linkLabelEnableDangerZone.Name = "linkLabelEnableDangerZone";
-            this.linkLabelEnableDangerZone.Size = new System.Drawing.Size(121, 13);
+            this.linkLabelEnableDangerZone.Size = new System.Drawing.Size(342, 15);
             this.linkLabelEnableDangerZone.TabIndex = 44;
             this.linkLabelEnableDangerZone.TabStop = true;
             this.linkLabelEnableDangerZone.Text = "⚠️ Enable Danger Zone";
@@ -883,7 +882,7 @@
             // pictureBoxMSStore
             // 
             this.pictureBoxMSStore.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.msstore_24;
+            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.xbox_24;
             this.pictureBoxMSStore.Location = new System.Drawing.Point(11, 109);
             this.pictureBoxMSStore.Name = "pictureBoxMSStore";
             this.pictureBoxMSStore.Size = new System.Drawing.Size(24, 24);
@@ -925,9 +924,9 @@
             this.radioButtonEditionMSStore.AutoSize = true;
             this.radioButtonEditionMSStore.Location = new System.Drawing.Point(43, 112);
             this.radioButtonEditionMSStore.Name = "radioButtonEditionMSStore";
-            this.radioButtonEditionMSStore.Size = new System.Drawing.Size(188, 17);
+            this.radioButtonEditionMSStore.Size = new System.Drawing.Size(194, 17);
             this.radioButtonEditionMSStore.TabIndex = 3;
-            this.radioButtonEditionMSStore.Text = "Microsoft Store / Xbox Game Pass";
+            this.radioButtonEditionMSStore.Text = "Xbox (Game Pass) / Microsoft Store";
             this.radioButtonEditionMSStore.UseVisualStyleBackColor = true;
             this.radioButtonEditionMSStore.CheckedChanged += new System.EventHandler(this.radioButtonEditionMSStore_CheckedChanged);
             // 
@@ -987,11 +986,11 @@
             this.listViewGameInstances.FullRowSelect = true;
             this.listViewGameInstances.HideSelection = false;
             this.listViewGameInstances.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5});
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10});
             this.listViewGameInstances.LabelWrap = false;
             this.listViewGameInstances.LargeImageList = this.imageList1;
             this.listViewGameInstances.Location = new System.Drawing.Point(3, 18);
@@ -1065,7 +1064,7 @@
             this.imageList1.Images.SetKeyName(0, "help-24.png");
             this.imageList1.Images.SetKeyName(1, "bethesda_24px.png");
             this.imageList1.Images.SetKeyName(2, "steam_24px.png");
-            this.imageList1.Images.SetKeyName(3, "msstore_24px.png");
+            this.imageList1.Images.SetKeyName(3, "xbox_24px.png");
             // 
             // labelTip
             // 
@@ -1551,7 +1550,6 @@
             this.groupBoxPaths.ResumeLayout(false);
             this.groupBoxPaths.PerformLayout();
             this.groupBoxActions.ResumeLayout(false);
-            this.groupBoxActions.PerformLayout();
             this.groupBoxOptions.ResumeLayout(false);
             this.groupBoxOptions.PerformLayout();
             this.groupBoxNuclearWinterMode.ResumeLayout(false);

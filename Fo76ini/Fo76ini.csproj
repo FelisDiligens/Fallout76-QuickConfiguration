@@ -404,6 +404,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\xbox_hover.png" />
     <None Include="Resources\steam_hover.png" />
     <None Include="Resources\msstore_hover.png" />
     <None Include="Resources\help-128_hover.png" />

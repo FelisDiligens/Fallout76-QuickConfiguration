@@ -111,6 +111,7 @@ namespace Fo76ini
             Mods.Load();
         }
 
+
         private void ReloadModManager()
         {
             if (!IniFiles.IsLoaded())
@@ -132,7 +133,20 @@ namespace Fo76ini
             }
             catch (Exception exc)
             {
-                MsgBox.Popup("Failed to load mods", $"Failed to load mods.\n{exc.GetType()}: {exc.Message}", MessageBoxIcon.Error);
+                if (exc is UnauthorizedAccessException && !Utils.HasAdminRights())
+                {
+                    MsgBox.Popup("Failed to load mods",
+                        $"Try to start the program with admin rights.\n" +
+                        $"Right-click on the desktop icon or *.exe file and click on 'Run as administrator'.\n\n" +
+                        $"{exc.GetType()}: {exc.Message}",
+                        MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MsgBox.Popup("Failed to load mods", $"Failed to load mods.\n" +
+                        $"{exc.GetType()}: {exc.Message}", MessageBoxIcon.Error);
+                }
+
                 this.DisableUI();
                 this.preventClosing = false;
             }
@@ -728,6 +742,7 @@ namespace Fo76ini
             {
                 string nxmLink = File.ReadAllText(txtPath);
                 File.Delete(txtPath);
+                OpenUI();
                 DownloadModThreaded(nxmLink, UpdateProgress);
             }
         }

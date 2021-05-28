@@ -8,6 +8,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Principal;
 using System.Threading;
 using System.Windows.Forms;
 using Tulpep.NotificationWindow;
@@ -546,6 +547,8 @@ namespace Fo76ini.Utilities
                 GraphicsUnit.Pixel
             );
             popup.TitlePadding = new Padding(4);
+
+            popup.Click += Popup_Click;
             return popup;
         }
 
@@ -566,6 +569,18 @@ namespace Fo76ini.Utilities
             }
             popup.ImagePadding = new Padding(10);
             return popup;
+        }
+
+        // Copy text:
+        private static void Popup_Click(object sender, EventArgs e)
+        {
+            if (sender is PopupNotifier)
+            {
+                string text =
+                    ((PopupNotifier)sender).TitleText + "\n\n" +
+                    ((PopupNotifier)sender).ContentText;
+                Clipboard.SetText(text);
+            }
         }
 
         // https://stackoverflow.com/a/4722300
@@ -851,6 +866,24 @@ namespace Fo76ini.Utilities
                     subControl.Name.StartsWith("panel"))
                     PreventChangeOnMouseWheelForAllElements(subControl);
             }
+        }
+
+        /// <summary>
+        /// Checks whether the user has administrator rights.
+        /// </summary>
+        public static bool HasAdminRights()
+        {
+            try
+            {
+                WindowsIdentity user = WindowsIdentity.GetCurrent();
+                WindowsPrincipal principal = new WindowsPrincipal(user);
+                return principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+            catch
+            {
+                return false;
+            }
+            return false;
         }
     }
 }
