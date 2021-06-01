@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.3">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.4">
   <Strings>
     <!--
         Strings
@@ -39,6 +39,7 @@
     <String text="Верный" id="valid" />
     <String text="Неверный" id="invalid" />
     <String text="Авто" id="auto" />
+    <String text="выбрано" id="selected" />
     <String text="Nuclear Winter" id="nuclearwintermode" />
     <String text="Приключение" id="adventuremode" />
     <String text="Затронутые значения" id="affectedValues" />
@@ -226,15 +227,6 @@
         ******************************************************************************************************************************************************
         The {0} is a placeholder, btw.
     -->
-    <Messagebox title="Ошибка в файлах *.ini" id="iniParsingError">По крайней мере, один из игровых файлов *.ini повреждён или содержит синтаксическую ошибку.
-
-Рекомендации:
-    -&gt; прочитайте сообщение об ошибке и исправьте ошибку или
-    -&gt; удалите недопустимый *.ini-файл и запустите Fallout 76, чтобы создать новый
-    -&gt; и попробуйте снова.
-
-СООБЩЕНИЕ ОБ ОШИБКЕ:
-{0}</Messagebox>
     <Messagebox title="Изменения применены" id="changesApplied">Изменения применены. Вы можете запустить игру.</Messagebox>
     <Messagebox title="Готово" id="downloadLanguagesFinished">Загруженные языковые файлы: {0}</Messagebox>
     <Messagebox title="Файлы изменены" id="iniFilesModified">*.ini файлы были изменены другой программой во время работы программы.
@@ -242,6 +234,12 @@
 Пожалуйста, перезагрузите программу для получения новых значений.</Messagebox>
     <Messagebox title="Доступ запрещён" id="setInisReadOnlyFailed">Невозможно сделать *.ini файлы только для чтения. Попробуйте запустить программу от имени администратора.
 {0}</Messagebox>
+    <Messagebox title="Нельзя удалить последний профиль" id="errorAtLeastOneGameOrProfile">Необходим хотя бы один профиль.</Messagebox>
+    <Messagebox title="Не удалось найти игру" id="gamePathAutoDetectFailed">Путь к игре не обнаружен. Пожалуйста, укажите его вручную.</Messagebox>
+    <Messagebox title="Found a path" id="gamePathAutoDetectPathFound">Do you want to use this path?
+Found: {0}
+
+Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort searching.</Messagebox>
     <Messagebox title="Вы уверены?" id="galleryDeleteThumbnails">Вы уверены, что хотите удалить все миниатюры галереи?
 В следующий раз, когда вы нажмете на кнопку "Обновить галерею", это займет значительно больше времени, так как они будут созданы заново.</Messagebox>
     <Messagebox title="NW режим отключен" id="nwModeDisabled">Теперь вы можете запустить игру в режиме Приключение.</Messagebox>
@@ -282,8 +280,15 @@
     <Messagebox title="Не удалось" id="failed">{0}</Messagebox>
     <Messagebox title="Завершено" id="done">{0}</Messagebox>
     <Messagebox title="Вы уверены?" id="areYouSure">{0}</Messagebox>
-    <Messagebox title="Нельзя удалить последний профиль" id="errorAtLeastOneGameOrProfile">Необходим хотя бы один профиль.</Messagebox>
-    <Messagebox title="Не удалось найти игру" id="gamePathAutoDetectFailed">Путь к игре не обнаружен. Пожалуйста, укажите его вручную.</Messagebox>
+    <Messagebox title="Ошибка в файлах *.ini" id="iniParsingError">По крайней мере, один из игровых файлов *.ini повреждён или содержит синтаксическую ошибку.
+
+Рекомендации:
+    -&gt; прочитайте сообщение об ошибке и исправьте ошибку или
+    -&gt; удалите недопустимый *.ini-файл и запустите Fallout 76, чтобы создать новый
+    -&gt; и попробуйте снова.
+
+СООБЩЕНИЕ ОБ ОШИБКЕ:
+{0}</Messagebox>
     <Messagebox title="Резервная копия" id="backupAndSave">Сделать резервную копию перед сохранением?
 
     Нажмите "Да" чтобы создать резервную копию и сохранить.
@@ -490,6 +495,8 @@
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.RemoveModsOnNWModeTweak">Если включено, моды будут отключаться, когда режим Nuclear Winter включен.</Description>
     <Description id="Fo76ini.Tweaks.Config.ArchiveTwoPathTweak">Сохраняет путь, по которому будет загружаться Archive2.</Description>
     <Description id="Fo76ini.Tweaks.Config.SevenZipPathTweak">Сохраняет путь, по которому будет загружаться 7-zip.</Description>
+    <Description id="Fo76ini.Tweaks.Config.DownloadPathTweak">Когда вы загружаете моды с помощью кнопки "Vortex" / "Mod Manager Download" на NexusMods,
+программа загрузит файл в эту папку.</Description>
   </TweakDescriptions>
   <FormWhatsNew title="Что нового?">
     <!--
@@ -505,20 +512,20 @@
     <!--
         FormWelcome
         ******************************************************************************************************************************************************
-        Welcome
+        Добро пожаловать
     -->
     <Label text="» Я знаю, что вы занятой человек, так что я не отниму у вас много времени.\n   Мне просто нужно проверить кое-какую информацию, вот и всё! «\n       – Представитель Волт-Тек, Окт. 2077" id="label4" />
     <Button text="OK" id="buttonOK" />
     <Panel id="panel1">
       <GroupBox text="Расположение игры" id="groupBoxGameLocation">
-        <!-- Group "Game location" -->
+        <!-- Group "Расположение игры" -->
         <Label text="Вы можете пропустить выбор расположения, если не планируете устанавливать моды." id="label3" />
         <Label text="Если у вас возникли проблемы с поиском места игры:\n\nSteam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Fallout76\\\nBethesda.net: C:\\Program Files (x86)\\Bethesda.net Launcher\\games\\Fallout76\\\nMicrosoft Store: C:\\Program Files﻿\\ModifiableWindowsApps\\Fallout76\\" id="label2" />
         <Button text="Найти автоматически" id="buttonAutoDetect" />
         <Button text="..." id="buttonPickGamePath" />
       </GroupBox>
       <GroupBox text="Версия игры" id="groupBoxGameEdition">
-        <!-- Group "Game edition" -->
+        <!-- Group "Версия игры" -->
         <RadioButton text="Другая" id="radioButtonEditionUnknown" />
         <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
         <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
@@ -643,11 +650,6 @@
           <Button text="Очистить список" id="buttonModsCleanList" />
           <Label text="sResourceIndexFileList (Используется в управлении модами)" id="labelsResourceIndexFileList" />
         </GroupBox>
-      </TabPage>
-      <TabPage text="NexusMods" id="tabPageNexusMods">
-        <!-- ********** Tab "NexusMods" ********** -->
-        <Label text="Другие опции, такие как &quot;Обновить информацию о моде&quot; можно найти в меню Инструменты → NexusMods API." id="labelNexusModsMovedNotice2" />
-        <Label text="Вкладка NexusMods была перемещена в окно настроек." id="labelNexusModsMovedNotice" />
       </TabPage>
     </TabControl>
     <MenuStrip id="menuStrip1">
@@ -1069,9 +1071,13 @@
         <!-- ********** Tab "Основные" ********** -->
         <GroupBox text="Расположение" id="groupBoxPaths">
           <!-- Group "Расположение" -->
+          <Label text="Папка загрузки:" id="labelDownloadsPath" />
+          <Button text="..." id="buttonPickDownloadsPath" />
+          <Label text="Менеджер модов:" id="label3" />
+          <Label text="Программы:" id="label2" />
           <Button text="..." id="buttonPickSevenZipPath" />
           <Label text="Путь к Archive2:" id="labelArchiveTwoPath" />
-          <Button text="..." id="buttonArchiveTwoPath" />
+          <Button text="..." id="buttonPickArchiveTwoPath" />
           <Label text="Путь к 7zip:" id="labelSevenZipPath" />
         </GroupBox>
         <GroupBox text="Действия" id="groupBoxActions">
@@ -1080,6 +1086,10 @@
         </GroupBox>
         <GroupBox text="Настройки" id="groupBoxOptions">
           <!-- Group "Настройки" -->
+          <CheckBox text="Ассоциировать со ссылками &quot;Mod Manager Download&quot;" id="checkBoxHandleNXMLinks">
+            <Tooltip>Поставьте галочку, если хотите, чтобы менеджер модов обрабатывал ссылки "Vortex" / "Mod Manager Download" (nxm://).
+Возможно, вам потребуется запустить программу от имени администратора, чтобы включить эту настройку.</Tooltip>
+          </CheckBox>
           <CheckBox text="Сделать *.ini только для чтения" id="checkBoxReadOnly" />
         </GroupBox>
         <GroupBox text="Режим Nuclear Winter" id="groupBoxNuclearWinterMode">
