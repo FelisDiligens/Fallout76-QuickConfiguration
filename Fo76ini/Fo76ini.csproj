@@ -208,6 +208,7 @@
     <Compile Include="Tweaks\Controls\MouseInvertYTweak.cs" />
     <Compile Include="Tweaks\Controls\MouseSensitivityTweak.cs" />
     <Compile Include="Tweaks\General\AutoSigninTweak.cs" />
+    <Compile Include="Tweaks\General\FasterFadeInTweak.cs" />
     <Compile Include="Tweaks\General\IntroVideoTweak.cs" />
     <Compile Include="Tweaks\Audio\PlayMainMenuMusicTweak.cs" />
     <Compile Include="Tweaks\General\ScreenshotIndexTweak.cs" />

@@ -417,6 +417,8 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelNuclearWinterModeActive = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
+            this.groupBoxTweaks = new System.Windows.Forms.GroupBox();
+            this.checkBoxFasterFadeIn = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
@@ -573,6 +575,7 @@
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
+            this.groupBoxTweaks.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolTip
@@ -3725,6 +3728,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.AutoScroll = true;
             this.panel4.AutoScrollMargin = new System.Drawing.Size(0, 6);
+            this.panel4.Controls.Add(this.groupBoxTweaks);
             this.panel4.Controls.Add(this.groupBoxGeneralInterface);
             this.panel4.Controls.Add(this.groupBoxQuests);
             this.panel4.Controls.Add(this.groupBoxMainMenu);
@@ -3753,7 +3757,7 @@
             this.groupBoxGeneralInterface.Controls.Add(this.sliderHUDOpacity);
             this.groupBoxGeneralInterface.Controls.Add(this.labelHUDOpacity);
             this.groupBoxGeneralInterface.Controls.Add(this.comboBoxShowActiveEffectsOnHUD);
-            this.groupBoxGeneralInterface.Location = new System.Drawing.Point(6, 80);
+            this.groupBoxGeneralInterface.Location = new System.Drawing.Point(6, 132);
             this.groupBoxGeneralInterface.Name = "groupBoxGeneralInterface";
             this.groupBoxGeneralInterface.Size = new System.Drawing.Size(368, 408);
             this.groupBoxGeneralInterface.TabIndex = 26;
@@ -3842,7 +3846,7 @@
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMisc);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackSide);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMain);
-            this.groupBoxQuests.Location = new System.Drawing.Point(6, 494);
+            this.groupBoxQuests.Location = new System.Drawing.Point(6, 546);
             this.groupBoxQuests.Name = "groupBoxQuests";
             this.groupBoxQuests.Size = new System.Drawing.Size(368, 142);
             this.groupBoxQuests.TabIndex = 27;
@@ -5571,6 +5575,26 @@
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
             // 
+            // groupBoxTweaks
+            // 
+            this.groupBoxTweaks.Controls.Add(this.checkBoxFasterFadeIn);
+            this.groupBoxTweaks.Location = new System.Drawing.Point(6, 80);
+            this.groupBoxTweaks.Name = "groupBoxTweaks";
+            this.groupBoxTweaks.Size = new System.Drawing.Size(368, 46);
+            this.groupBoxTweaks.TabIndex = 28;
+            this.groupBoxTweaks.TabStop = false;
+            this.groupBoxTweaks.Text = "Tweaks";
+            // 
+            // checkBoxFasterFadeIn
+            // 
+            this.checkBoxFasterFadeIn.AutoSize = true;
+            this.checkBoxFasterFadeIn.Location = new System.Drawing.Point(7, 19);
+            this.checkBoxFasterFadeIn.Name = "checkBoxFasterFadeIn";
+            this.checkBoxFasterFadeIn.Size = new System.Drawing.Size(168, 17);
+            this.checkBoxFasterFadeIn.TabIndex = 1;
+            this.checkBoxFasterFadeIn.Text = "Speed up fade in after loading";
+            this.checkBoxFasterFadeIn.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5784,6 +5808,8 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).EndInit();
+            this.groupBoxTweaks.ResumeLayout(false);
+            this.groupBoxTweaks.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6177,6 +6203,8 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox checkBoxScreenSpaceReflections;
         private System.Windows.Forms.RadioButton radioButtonAccountNone;
+        private System.Windows.Forms.GroupBox groupBoxTweaks;
+        private System.Windows.Forms.CheckBox checkBoxFasterFadeIn;
     }
 }
 

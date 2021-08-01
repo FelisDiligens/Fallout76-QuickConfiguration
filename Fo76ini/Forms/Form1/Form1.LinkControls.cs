@@ -38,6 +38,8 @@ namespace Fo76ini
             LinkedTweaks.LinkInfo(checkBoxSkipIntroVideos, toolTip, introVideoTweak);
             LinkedTweaks.LinkInfo(checkBoxSkipSplash, toolTip, skipStartupSplash);
 
+            LinkedTweaks.LinkInfo(checkBoxFasterFadeIn, toolTip, fasterFadeInTweak);
+
             LinkedTweaks.LinkInfo(checkBoxShowDamageNumbersNW, toolTip, showDamageNumbersNuclearWinterTweak);
             LinkedTweaks.LinkInfo(checkBoxShowDamageNumbersA, toolTip, showDamageNumbersAdventureTweak);
             LinkedTweaks.LinkInfo(checkBoxItemRarityColorsNW, toolTip, enableItemRarityColorsTweak);
@@ -316,6 +318,10 @@ namespace Fo76ini
 
             // Skip intro videos
             LinkedTweaks.LinkTweakNegated(checkBoxSkipIntroVideos, introVideoTweak);
+
+
+            // Faster fade in
+            LinkedTweaks.LinkTweak(checkBoxFasterFadeIn, fasterFadeInTweak);
 
 
             // Show splash screen with news on startup
@@ -675,6 +681,8 @@ namespace Fo76ini
         private AutoSigninTweak autoSigninTweak = new AutoSigninTweak();
         private IntroVideoTweak introVideoTweak = new IntroVideoTweak();
         private SkipStartupSplash skipStartupSplash = new SkipStartupSplash();
+
+        private FasterFadeInTweak fasterFadeInTweak = new FasterFadeInTweak();
 
         private ShowDamageNumbersNuclearWinterTweak showDamageNumbersNuclearWinterTweak = new ShowDamageNumbersNuclearWinterTweak();
         private ShowDamageNumbersAdventureTweak showDamageNumbersAdventureTweak = new ShowDamageNumbersAdventureTweak();
