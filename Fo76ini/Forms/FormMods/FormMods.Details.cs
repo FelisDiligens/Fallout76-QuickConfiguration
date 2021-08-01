@@ -530,28 +530,37 @@ namespace Fo76ini
             bool stringsFolderFound = false;
             bool dllFound = false;
 
-            foreach (string folderPath in Directory.EnumerateDirectories(editedMod.ManagedFolderPath))
+            if (Directory.Exists(editedMod.ManagedFolderPath))
             {
-                string folderName = Path.GetFileName(folderPath).ToLower();
+                foreach (string folderPath in Directory.EnumerateDirectories(editedMod.ManagedFolderPath))
+                {
+                    string folderName = Path.GetFileName(folderPath).ToLower();
 
-                if (ModHelpers.ResourceFolders.Contains(folderName))
-                    resourceFoldersFound = true;
-                if (ModHelpers.GeneralFolders.Contains(folderName))
-                    generalFoldersFound = true;
-                if (ModHelpers.TextureFolders.Contains(folderName))
-                    texturesFolderFound = true;
-                if (ModHelpers.SoundFolders.Contains(folderName))
-                    soundFoldersFound = true;
-                if (folderName == "strings")
-                    stringsFolderFound = true;
+                    if (ModHelpers.ResourceFolders.Contains(folderName))
+                        resourceFoldersFound = true;
+                    if (ModHelpers.GeneralFolders.Contains(folderName))
+                        generalFoldersFound = true;
+                    if (ModHelpers.TextureFolders.Contains(folderName))
+                        texturesFolderFound = true;
+                    if (ModHelpers.SoundFolders.Contains(folderName))
+                        soundFoldersFound = true;
+                    if (folderName == "strings")
+                        stringsFolderFound = true;
+                }
+
+                foreach (string filePath in Directory.EnumerateFiles(editedMod.ManagedFolderPath))
+                {
+                    string fileExtension = Path.GetExtension(filePath).ToLower();
+
+                    if (fileExtension == ".dll")
+                        dllFound = true;
+                }
             }
-
-            foreach (string filePath in Directory.EnumerateFiles(editedMod.ManagedFolderPath))
+            else
             {
-                string fileExtension = Path.GetExtension(filePath).ToLower();
-
-                if (fileExtension == ".dll")
-                    dllFound = true;
+                this.labelModInstallWarning.Text = "Directory doesn't exist.";
+                this.labelModInstallWarning.Visible = true;
+                return;
             }
 
 
