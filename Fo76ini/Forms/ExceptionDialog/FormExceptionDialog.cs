@@ -38,7 +38,7 @@ namespace Fo76ini.Forms.ExceptionDialog
                                              $"Program version:   {Shared.VERSION}\r\n" +
                                              $"User agent:        {Shared.AppUserAgent}\r\n" +
                                              $"Running as admin:  " + (Utils.HasAdminRights() ? "Yes" : "No") + "\r\n" +
-                                             $"Game edition:      {currentGameEdition}" +
+                                             $"Game edition:      {currentGameEdition}\r\n" +
                                              $"System locale:     {System.Globalization.CultureInfo.CurrentUICulture.Name}\r\n" +
                                              $"App locale:        {Localization.Locale}" +
                                              "\r\n";
