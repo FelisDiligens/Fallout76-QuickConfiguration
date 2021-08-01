@@ -90,66 +90,71 @@ namespace Fo76ini.NexusAPI
                  */
 
                 JObject json = request.GetJObject();
-                this.Title = json["name"].ToString();
-                this.Author = json["author"].ToString();
-                this.Uploader = json["uploaded_by"].ToString();
-                this.Summary = json["summary"].ToString();
-                this.EndorsementCount = json["endorsement_count"].ToObject<int>();
-                this.CreatedTimestamp = json["created_timestamp"].ToObject<long>();
-                this.UpdatedTimestamp = json["updated_timestamp"].ToObject<long>();
-                this.ContainsAdultContent = json["contains_adult_content"].ToObject<bool>();
-                this.ThumbnailURL = json["picture_url"].ToString();
-                this.LatestVersion = json["version"].ToString();
 
-                JObject endorsement = (JObject)json["endorsement"];
-                string endorseStatus = endorsement["endorse_status"].ToString();
-                switch (endorseStatus)
+                // Is the mod available?
+                if (json["available"].ToObject<bool>())
                 {
-                    case "Endorsed":
-                        this.Endorsement = EndorseStatus.Endorsed;
-                        break;
-                    case "Abstained":
-                        this.Endorsement = EndorseStatus.Abstained;
-                        break;
-                    case "Undecided":
-                    default:
-                        this.Endorsement = EndorseStatus.Undecided;
-                        break;
-                }
+                    this.Title = json["name"].ToString();
+                    this.Author = json["author"].ToString();
+                    this.Uploader = json["uploaded_by"].ToString();
+                    this.Summary = json["summary"].ToString();
+                    this.EndorsementCount = json["endorsement_count"].ToObject<int>();
+                    this.CreatedTimestamp = json["created_timestamp"].ToObject<long>();
+                    this.UpdatedTimestamp = json["updated_timestamp"].ToObject<long>();
+                    this.ContainsAdultContent = json["contains_adult_content"].ToObject<bool>();
+                    this.ThumbnailURL = json["picture_url"].ToString();
+                    this.LatestVersion = json["version"].ToString();
 
-
-                /*
-                 * Download thumbnail:
-                 */
-
-                if (!Directory.Exists(NexusMods.ThumbnailsPath))
-                    Directory.CreateDirectory(NexusMods.ThumbnailsPath);
-
-                // If user opted in:
-                if (IniFiles.Config.GetBool("NexusMods", "bDownloadThumbnailsOnUpdate", true))
-                {
-                    try
+                    JObject endorsement = (JObject)json["endorsement"];
+                    string endorseStatus = endorsement["endorse_status"].ToString();
+                    switch (endorseStatus)
                     {
-                        // Example: "https://staticdelivery.nexusmods.com/mods/2590/images/84/84-1542823522-262308780.png"
+                        case "Endorsed":
+                            this.Endorsement = EndorseStatus.Endorsed;
+                            break;
+                        case "Abstained":
+                            this.Endorsement = EndorseStatus.Abstained;
+                            break;
+                        case "Undecided":
+                        default:
+                            this.Endorsement = EndorseStatus.Undecided;
+                            break;
+                    }
 
-                        // Download if non-existent:
-                        ThumbnailFileName = $"thumb_{this.ID}.jpg"; // Path.GetExtension(Path.GetFileName(uri.LocalPath));
-                        if (!File.Exists(ThumbnailFilePath))
+
+                    /*
+                     * Download thumbnail:
+                     */
+
+                    if (!Directory.Exists(NexusMods.ThumbnailsPath))
+                        Directory.CreateDirectory(NexusMods.ThumbnailsPath);
+
+                    // If user opted in:
+                    if (IniFiles.Config.GetBool("NexusMods", "bDownloadThumbnailsOnUpdate", true))
+                    {
+                        try
                         {
-                            var thumbRequest = WebRequest.Create(this.ThumbnailURL);
-                            using (var thumbResponse = thumbRequest.GetResponse())
-                            using (var stream = thumbResponse.GetResponseStream())
+                            // Example: "https://staticdelivery.nexusmods.com/mods/2590/images/84/84-1542823522-262308780.png"
+
+                            // Download if non-existent:
+                            ThumbnailFileName = $"thumb_{this.ID}.jpg"; // Path.GetExtension(Path.GetFileName(uri.LocalPath));
+                            if (!File.Exists(ThumbnailFilePath))
                             {
-                                // Create a thumbnail (small *.jpg) from the downloaded image:
-                                Image image = Image.FromStream(stream);
-                                Utils.MakeThumbnail(image, ThumbnailFilePath, false, 400, 160, 90L);
+                                var thumbRequest = WebRequest.Create(this.ThumbnailURL);
+                                using (var thumbResponse = thumbRequest.GetResponse())
+                                using (var stream = thumbResponse.GetResponseStream())
+                                {
+                                    // Create a thumbnail (small *.jpg) from the downloaded image:
+                                    Image image = Image.FromStream(stream);
+                                    Utils.MakeThumbnail(image, ThumbnailFilePath, false, 400, 160, 90L);
+                                }
                             }
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        // TODO: Handle: Thumbnail couldn't be downloaded.
-                        Console.WriteLine($"Couldn't download thumbnail.\n{ex.GetType().Name}: {ex.Message}");
+                        catch (Exception ex)
+                        {
+                            // TODO: Handle: Thumbnail couldn't be downloaded.
+                            Console.WriteLine($"Couldn't download thumbnail.\n{ex.GetType().Name}: {ex.Message}");
+                        }
                     }
                 }
             }
