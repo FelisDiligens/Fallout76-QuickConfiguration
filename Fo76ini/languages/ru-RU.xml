@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.4">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.5">
   <Strings>
     <!--
         Strings
@@ -376,6 +376,12 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
     <Description id="Fo76ini.Tweaks.General.AutoSigninTweak">Позволяет пропустить запрос входа в аккаунт, если указаны логин и пароль.</Description>
     <Description id="Fo76ini.Tweaks.General.IntroVideoTweak">Если эта опция отключена, игра начнется без отображения видео с логотипом Bethesda.</Description>
     <Description id="Fo76ini.Tweaks.General.SkipStartupSplash">Если эта функция включена, игра не будет беспокоить вас новостями при запуске.</Description>
+    <Description id="Fo76ini.Tweaks.General.FasterFadeInTweak">После загрузки в мир или быстрого путешествия игра воспроизводит анимацию / переходит в черный цвет,
+что также на некоторое время мешает вам двигаться. Эта настройка ускоряет указанную анимацию.
+Заслуга принадлежит u/LinuxVersion с reddit.
+
+⚠️ Если значения установлены слишком низкими или равными 0, игра застрянет на черном экране после загрузки.
+(Значения, используемые настройкой: fFadeToBlackFadeSeconds=0.2000 и fMinSecondsForLoadFadeIn=0.3000)</Description>
     <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Main">Если включено, то автоматически отслеживает недавно добавленные "Основные задания".</Description>
     <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Side">Если включено, то автоматически отслеживает недавно добавленные "Побочные задания".</Description>
     <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Misc">Если включено, то автоматически отслеживает недавно добавленные "Разные задания".</Description>
@@ -745,6 +751,10 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
       <TabPage text="Основное" id="tabPageGeneral">
         <!-- ********** Tab "Основное" ********** -->
         <Panel id="panel4">
+          <GroupBox text="Разное" id="groupBoxTweaks">
+            <!-- Group "Tweaks" -->
+            <CheckBox text="Исправить время загрузки мира" id="checkBoxFasterFadeIn" />
+          </GroupBox>
           <GroupBox text="Интерфейс" id="groupBoxGeneralInterface">
             <!-- Group "Интерфейс" -->
             <CheckBox text="Показывать плавающий текст заданий" id="checkBoxShowFloatingQuestText" />
