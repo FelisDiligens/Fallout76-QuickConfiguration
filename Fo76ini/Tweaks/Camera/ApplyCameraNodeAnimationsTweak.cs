@@ -16,7 +16,7 @@ namespace Fo76ini.Tweaks.Camera
             "",
             "⚠️ Might cause issues if disabled.");
 
-        public string AffectedFiles => "Fallout76Custom.ini";
+        public string AffectedFiles => "\n - Fallout76Prefs.ini\n - Fallout76Custom.ini";
 
         public string AffectedValues => "[Camera]bApplyCameraNodeAnimations";
 
@@ -32,6 +32,7 @@ namespace Fo76ini.Tweaks.Camera
         public void SetValue(bool value)
         {
             IniFiles.F76Prefs.Set("Camera", "bApplyCameraNodeAnimations", value);
+            IniFiles.F76Custom.Set("Camera", "bApplyCameraNodeAnimations", value);
         }
 
         public void ResetValue()
