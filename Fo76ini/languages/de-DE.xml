@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="FelisDiligens (aka. datasnake)" version="1.9.5">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="FelisDiligens (aka. datasnake)" version="1.9.6">
   <Strings>
     <!--
         Strings
@@ -521,6 +521,7 @@ Funktioniert jedoch nur, wenn das Spiel über das Tool gestartet wird.</Descript
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.RenameDLLsTweak">Wenn diese Option aktiviert ist, werden alle *.dll-Dateien, die nicht zum Spiel gehören, umbenannt. </Description>
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.DeployModsOnNWModeTweak">Wenn diese Option aktiviert ist, werden Mods installiert, wenn der Nuclear Winter-Modus deaktiviert wird.</Description>
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.RemoveModsOnNWModeTweak">Wenn diese Option aktiviert ist, werden Mods entfernt, wenn der Nuclear Winter-Modus aktiviert wird.</Description>
+    <Description id="Fo76ini.Tweaks.NuclearWinterMode.ShowNWModeButtonTweak">Wenn diese Option aktiviert ist, wird die Schaltfläche Nuclear Winter / Adventure-Modus im Hauptfenster angezeigt, sodass man immer noch den veralteten NW-Modus umschalten kann.</Description>
     <Description id="Fo76ini.Tweaks.Config.ArchiveTwoPathTweak">Speichert den Pfad, von dem Archive2 geladen wird.</Description>
     <Description id="Fo76ini.Tweaks.Config.SevenZipPathTweak">Speichert den Pfad, von dem aus 7-Zip geladen wird.</Description>
     <Description id="Fo76ini.Tweaks.Config.DownloadPathTweak">Wenn du Mods mit dem 'Vortex' / 'Mod Manager Download' Knopf auf NexusMods herunterlädst,
@@ -554,11 +555,10 @@ wird das Tool die Datei in diesen Ordner speichern.</Description>
       </GroupBox>
       <GroupBox text="Spieledition" id="groupBoxGameEdition">
         <!-- Group "Spieledition" -->
+        <RadioButton text="Steam (PTS)" id="radioButtonEditionSteamPTS" />
         <RadioButton text="Etwas anderes" id="radioButtonEditionUnknown" />
         <RadioButton text="Xbox (Game Pass) / Microsoft Store" id="radioButtonEditionMSStore" />
-        <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
         <RadioButton text="Steam" id="radioButtonEditionSteam" />
-        <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
       </GroupBox>
     </Panel>
     <Label text="Hallo! Es scheint, du hast das Tool zum ersten Mal gestartet!\n" id="label1" />
@@ -1124,8 +1124,9 @@ Möglicherweise musst du das Tool vorher als Administrator starten, um diese Opt
           </CheckBox>
           <CheckBox text="*.ini Dateien schreibschützen" id="checkBoxReadOnly" />
         </GroupBox>
-        <GroupBox text="Nuclear Winter Optionen" id="groupBoxNuclearWinterMode">
+        <GroupBox text="Nuclear Winter Optionen (veraltet)" id="groupBoxNuclearWinterMode">
           <!-- Group "Nuclear Winter Optionen" -->
+          <CheckBox text="Nuclear Winter Umschaltknopf im Hauptfenster anzeigen." id="checkBoxShowNWBtn" />
           <CheckBox text="Mods automatisch installieren, wenn NW deaktiviert wird" id="checkBoxNWAutoDeployMods" />
           <Label text="Modoptionen:" id="labelNWmodoptions" />
           <Label text="*.dll-Optionen:" id="labelNWdlloptions" />
@@ -1162,7 +1163,7 @@ Möglicherweise musst du das Tool vorher als Administrator starten, um diese Opt
                 <!-- Group "Startoptionen" -->
                 <Label text="Fallout 76 kann nicht direkt gestartet werden, wenn es über den Microsoft Store installiert wurde." id="labelLaunchOptionMSStoreNotice" />
                 <RadioButton text="Starte &quot;Fallout76.exe&quot; direkt" id="radioButtonLaunchViaExecutable" />
-                <RadioButton text="Starte über Steam / Bethesda.net (empfohlen)" id="radioButtonLaunchViaLink" />
+                <RadioButton text="Starte über Steam / Xbox (empfohlen)" id="radioButtonLaunchViaLink" />
               </GroupBox>
               <GroupBox text="Spielpfad" id="groupBoxGameLocation">
                 <!-- Group "Spielpfad" -->
@@ -1171,11 +1172,13 @@ Möglicherweise musst du das Tool vorher als Administrator starten, um diese Opt
               </GroupBox>
               <GroupBox text="Spieledition" id="groupBoxGameEdition">
                 <!-- Group "Spieledition" -->
+                <Label text="Der Bethesda.net-Launcher wurde am 11. Mai 2022 eingestellt.\nDie Optionen sind aus Gründen der Abwärtskompatibilität immer noch vorhanden. (Damit nichts kaputt geht)" id="labelEditionBackCompat" />
+                <RadioButton text="Steam (PTS)" id="radioButtonEditionSteamPTS" />
                 <RadioButton text="Etwas anderes" id="radioButtonEditionUnknown" />
                 <RadioButton text="Xbox (Game Pass) / Microsoft Store" id="radioButtonEditionMSStore" />
-                <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
+                <RadioButton text="Bethesda.net - PTS (veraltet)" id="radioButtonEditionBethesdaNetPTS" />
                 <RadioButton text="Steam" id="radioButtonEditionSteam" />
-                <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
+                <RadioButton text="Bethesda.net (veraltet)" id="radioButtonEditionBethesdaNet" />
               </GroupBox>
             </Panel>
           </GroupBox>

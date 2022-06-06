@@ -56,6 +56,7 @@
             this.checkBoxHandleNXMLinks = new System.Windows.Forms.CheckBox();
             this.checkBoxReadOnly = new System.Windows.Forms.CheckBox();
             this.groupBoxNuclearWinterMode = new System.Windows.Forms.GroupBox();
+            this.checkBoxShowNWBtn = new System.Windows.Forms.CheckBox();
             this.checkBoxNWAutoDeployMods = new System.Windows.Forms.CheckBox();
             this.labelNWmodoptions = new System.Windows.Forms.Label();
             this.labelNWdlloptions = new System.Windows.Forms.Label();
@@ -95,6 +96,7 @@
             this.textBoxGamePath = new System.Windows.Forms.TextBox();
             this.buttonPickGamePath = new System.Windows.Forms.Button();
             this.groupBoxGameEdition = new System.Windows.Forms.GroupBox();
+            this.labelEditionBackCompat = new System.Windows.Forms.Label();
             this.pictureBoxSteamPTS = new System.Windows.Forms.PictureBox();
             this.radioButtonEditionSteamPTS = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionUnknown = new System.Windows.Forms.RadioButton();
@@ -159,8 +161,6 @@
             this.openFileDialogArchiveTwoPath = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.labelEditionBackCompat = new System.Windows.Forms.Label();
-            this.checkBoxShowNWBtn = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxPaths.SuspendLayout();
@@ -422,6 +422,16 @@
             this.groupBoxNuclearWinterMode.TabIndex = 41;
             this.groupBoxNuclearWinterMode.TabStop = false;
             this.groupBoxNuclearWinterMode.Text = "Nuclear Winter options (deprecated)";
+            // 
+            // checkBoxShowNWBtn
+            // 
+            this.checkBoxShowNWBtn.AutoSize = true;
+            this.checkBoxShowNWBtn.Location = new System.Drawing.Point(10, 19);
+            this.checkBoxShowNWBtn.Name = "checkBoxShowNWBtn";
+            this.checkBoxShowNWBtn.Size = new System.Drawing.Size(270, 17);
+            this.checkBoxShowNWBtn.TabIndex = 26;
+            this.checkBoxShowNWBtn.Text = "Show Nuclear Winter toggle button in main window.";
+            this.checkBoxShowNWBtn.UseVisualStyleBackColor = true;
             // 
             // checkBoxNWAutoDeployMods
             // 
@@ -795,10 +805,10 @@
             this.radioButtonLaunchViaLink.AutoSize = true;
             this.radioButtonLaunchViaLink.Location = new System.Drawing.Point(10, 20);
             this.radioButtonLaunchViaLink.Name = "radioButtonLaunchViaLink";
-            this.radioButtonLaunchViaLink.Size = new System.Drawing.Size(296, 17);
+            this.radioButtonLaunchViaLink.Size = new System.Drawing.Size(222, 17);
             this.radioButtonLaunchViaLink.TabIndex = 0;
             this.radioButtonLaunchViaLink.TabStop = true;
-            this.radioButtonLaunchViaLink.Text = "Launch via Steam / Bethesda.net / Xbox (recommended)";
+            this.radioButtonLaunchViaLink.Text = "Launch via Steam / Xbox (recommended)";
             this.radioButtonLaunchViaLink.UseVisualStyleBackColor = true;
             this.radioButtonLaunchViaLink.CheckedChanged += new System.EventHandler(this.radioButtonLaunchViaLink_CheckedChanged);
             // 
@@ -866,6 +876,16 @@
             this.groupBoxGameEdition.TabIndex = 35;
             this.groupBoxGameEdition.TabStop = false;
             this.groupBoxGameEdition.Text = "Game edition";
+            // 
+            // labelEditionBackCompat
+            // 
+            this.labelEditionBackCompat.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelEditionBackCompat.Location = new System.Drawing.Point(6, 212);
+            this.labelEditionBackCompat.Name = "labelEditionBackCompat";
+            this.labelEditionBackCompat.Size = new System.Drawing.Size(357, 57);
+            this.labelEditionBackCompat.TabIndex = 34;
+            this.labelEditionBackCompat.Text = "The Bethesda.net launcher has been discontinued on May 11th, 2022.\r\nThe options a" +
+    "re still here for backwards-compatibility. (So nothing breaks)\r\n";
             // 
             // pictureBoxSteamPTS
             // 
@@ -1560,26 +1580,6 @@
             // folderBrowserDialog
             // 
             this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.UserProfile;
-            // 
-            // labelEditionBackCompat
-            // 
-            this.labelEditionBackCompat.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelEditionBackCompat.Location = new System.Drawing.Point(6, 212);
-            this.labelEditionBackCompat.Name = "labelEditionBackCompat";
-            this.labelEditionBackCompat.Size = new System.Drawing.Size(357, 57);
-            this.labelEditionBackCompat.TabIndex = 34;
-            this.labelEditionBackCompat.Text = "The Bethesda.net launcher has been discontinued on May 11th, 2022.\r\nThe options a" +
-    "re still here for backwards-compatibility. (So nothing breaks)\r\n";
-            // 
-            // checkBoxShowNWBtn
-            // 
-            this.checkBoxShowNWBtn.AutoSize = true;
-            this.checkBoxShowNWBtn.Location = new System.Drawing.Point(10, 19);
-            this.checkBoxShowNWBtn.Name = "checkBoxShowNWBtn";
-            this.checkBoxShowNWBtn.Size = new System.Drawing.Size(270, 17);
-            this.checkBoxShowNWBtn.TabIndex = 26;
-            this.checkBoxShowNWBtn.Text = "Show Nuclear Winter toggle button in main window.";
-            this.checkBoxShowNWBtn.UseVisualStyleBackColor = true;
             // 
             // FormSettings
             // 
