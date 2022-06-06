@@ -133,6 +133,7 @@ namespace Fo76ini.Forms.FormSettings
             LinkedTweaks.LinkInfo(checkBoxNWRenameDLL, toolTip, renameDLLsTweak);
             LinkedTweaks.LinkInfo(checkBoxNWAutoDeployMods, toolTip, deployModsOnNWModeTweak);
             LinkedTweaks.LinkInfo(checkBoxNWAutoDisableMods, toolTip, removeModsOnNWModeTweak);
+            LinkedTweaks.LinkInfo(checkBoxShowNWBtn, toolTip, showNWModeButtonTweak);
             LinkedTweaks.LinkInfo(labelArchiveTwoPath, toolTip, archiveTwoPathTweak);
             LinkedTweaks.LinkInfo(labelSevenZipPath, toolTip, sevenZipPathTweak);
             LinkedTweaks.LinkInfo(labelDownloadsPath, toolTip, downloadPathTweak);
@@ -174,6 +175,9 @@ namespace Fo76ini.Forms.FormSettings
 
             // Automatically remove mods
             LinkedTweaks.LinkTweak(checkBoxNWAutoDisableMods, removeModsOnNWModeTweak);
+
+            // Show/hide NW mode toggle button
+            LinkedTweaks.LinkTweak(checkBoxShowNWBtn, showNWModeButtonTweak);
         }
 
         private void linkLabelEnableDangerZone_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -933,6 +937,7 @@ namespace Fo76ini.Forms.FormSettings
         private DeployModsOnNWModeTweak deployModsOnNWModeTweak = new DeployModsOnNWModeTweak();
         private RemoveModsOnNWModeTweak removeModsOnNWModeTweak = new RemoveModsOnNWModeTweak();
         private RenameDLLsTweak renameDLLsTweak = new RenameDLLsTweak();
+        private ShowNWModeButtonTweak showNWModeButtonTweak = new ShowNWModeButtonTweak();
 
         private void textBoxArchiveTwoPath_TextChanged(object sender, EventArgs e)
         {

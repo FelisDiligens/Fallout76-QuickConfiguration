@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Default", 0);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Default", 0);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Steam"}, 2, System.Drawing.Color.Empty, System.Drawing.SystemColors.Window, null);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Xbox", 3);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Xbox", 3);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSettings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
@@ -160,6 +160,7 @@
             this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.labelEditionBackCompat = new System.Windows.Forms.Label();
+            this.checkBoxShowNWBtn = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxPaths.SuspendLayout();
@@ -233,7 +234,7 @@
             this.groupBoxPaths.Controls.Add(this.labelArchiveTwoPath);
             this.groupBoxPaths.Controls.Add(this.buttonPickArchiveTwoPath);
             this.groupBoxPaths.Controls.Add(this.labelSevenZipPath);
-            this.groupBoxPaths.Location = new System.Drawing.Point(402, 168);
+            this.groupBoxPaths.Location = new System.Drawing.Point(402, 6);
             this.groupBoxPaths.Name = "groupBoxPaths";
             this.groupBoxPaths.Size = new System.Drawing.Size(358, 167);
             this.groupBoxPaths.TabIndex = 44;
@@ -353,7 +354,7 @@
             // groupBoxActions
             // 
             this.groupBoxActions.Controls.Add(this.linkLabelEnableDangerZone);
-            this.groupBoxActions.Location = new System.Drawing.Point(402, 341);
+            this.groupBoxActions.Location = new System.Drawing.Point(402, 359);
             this.groupBoxActions.Name = "groupBoxActions";
             this.groupBoxActions.Size = new System.Drawing.Size(358, 50);
             this.groupBoxActions.TabIndex = 43;
@@ -409,22 +410,23 @@
             // 
             // groupBoxNuclearWinterMode
             // 
+            this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxShowNWBtn);
             this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWAutoDeployMods);
             this.groupBoxNuclearWinterMode.Controls.Add(this.labelNWmodoptions);
             this.groupBoxNuclearWinterMode.Controls.Add(this.labelNWdlloptions);
             this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWAutoDisableMods);
             this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWRenameDLL);
-            this.groupBoxNuclearWinterMode.Location = new System.Drawing.Point(402, 6);
+            this.groupBoxNuclearWinterMode.Location = new System.Drawing.Point(402, 179);
             this.groupBoxNuclearWinterMode.Name = "groupBoxNuclearWinterMode";
-            this.groupBoxNuclearWinterMode.Size = new System.Drawing.Size(358, 156);
+            this.groupBoxNuclearWinterMode.Size = new System.Drawing.Size(358, 174);
             this.groupBoxNuclearWinterMode.TabIndex = 41;
             this.groupBoxNuclearWinterMode.TabStop = false;
-            this.groupBoxNuclearWinterMode.Text = "Nuclear Winter options";
+            this.groupBoxNuclearWinterMode.Text = "Nuclear Winter options (deprecated)";
             // 
             // checkBoxNWAutoDeployMods
             // 
             this.checkBoxNWAutoDeployMods.AutoSize = true;
-            this.checkBoxNWAutoDeployMods.Location = new System.Drawing.Point(10, 117);
+            this.checkBoxNWAutoDeployMods.Location = new System.Drawing.Point(10, 142);
             this.checkBoxNWAutoDeployMods.Name = "checkBoxNWAutoDeployMods";
             this.checkBoxNWAutoDeployMods.Size = new System.Drawing.Size(221, 17);
             this.checkBoxNWAutoDeployMods.TabIndex = 25;
@@ -435,7 +437,7 @@
             // 
             this.labelNWmodoptions.AutoSize = true;
             this.labelNWmodoptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNWmodoptions.Location = new System.Drawing.Point(7, 76);
+            this.labelNWmodoptions.Location = new System.Drawing.Point(7, 101);
             this.labelNWmodoptions.Name = "labelNWmodoptions";
             this.labelNWmodoptions.Size = new System.Drawing.Size(80, 13);
             this.labelNWmodoptions.TabIndex = 24;
@@ -445,7 +447,7 @@
             // 
             this.labelNWdlloptions.AutoSize = true;
             this.labelNWdlloptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNWdlloptions.Location = new System.Drawing.Point(7, 23);
+            this.labelNWdlloptions.Location = new System.Drawing.Point(7, 48);
             this.labelNWdlloptions.Name = "labelNWdlloptions";
             this.labelNWdlloptions.Size = new System.Drawing.Size(78, 13);
             this.labelNWdlloptions.TabIndex = 23;
@@ -454,7 +456,7 @@
             // checkBoxNWAutoDisableMods
             // 
             this.checkBoxNWAutoDisableMods.AutoSize = true;
-            this.checkBoxNWAutoDisableMods.Location = new System.Drawing.Point(10, 94);
+            this.checkBoxNWAutoDisableMods.Location = new System.Drawing.Point(10, 119);
             this.checkBoxNWAutoDisableMods.Name = "checkBoxNWAutoDisableMods";
             this.checkBoxNWAutoDisableMods.Size = new System.Drawing.Size(224, 17);
             this.checkBoxNWAutoDisableMods.TabIndex = 19;
@@ -464,7 +466,7 @@
             // checkBoxNWRenameDLL
             // 
             this.checkBoxNWRenameDLL.AutoSize = true;
-            this.checkBoxNWRenameDLL.Location = new System.Drawing.Point(10, 41);
+            this.checkBoxNWRenameDLL.Location = new System.Drawing.Point(10, 66);
             this.checkBoxNWRenameDLL.Name = "checkBoxNWRenameDLL";
             this.checkBoxNWRenameDLL.Size = new System.Drawing.Size(140, 17);
             this.checkBoxNWRenameDLL.TabIndex = 18;
@@ -1014,11 +1016,11 @@
             this.listViewGameInstances.FullRowSelect = true;
             this.listViewGameInstances.HideSelection = false;
             this.listViewGameInstances.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5});
             this.listViewGameInstances.LabelWrap = false;
             this.listViewGameInstances.LargeImageList = this.imageList1;
             this.listViewGameInstances.Location = new System.Drawing.Point(3, 18);
@@ -1569,6 +1571,16 @@
             this.labelEditionBackCompat.Text = "The Bethesda.net launcher has been discontinued on May 11th, 2022.\r\nThe options a" +
     "re still here for backwards-compatibility. (So nothing breaks)\r\n";
             // 
+            // checkBoxShowNWBtn
+            // 
+            this.checkBoxShowNWBtn.AutoSize = true;
+            this.checkBoxShowNWBtn.Location = new System.Drawing.Point(10, 19);
+            this.checkBoxShowNWBtn.Name = "checkBoxShowNWBtn";
+            this.checkBoxShowNWBtn.Size = new System.Drawing.Size(270, 17);
+            this.checkBoxShowNWBtn.TabIndex = 26;
+            this.checkBoxShowNWBtn.Text = "Show Nuclear Winter toggle button in main window.";
+            this.checkBoxShowNWBtn.UseVisualStyleBackColor = true;
+            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1758,5 +1770,6 @@
         private System.Windows.Forms.PictureBox pictureBoxSteamPTS;
         private System.Windows.Forms.RadioButton radioButtonEditionSteamPTS;
         private System.Windows.Forms.Label labelEditionBackCompat;
+        private System.Windows.Forms.CheckBox checkBoxShowNWBtn;
     }
 }

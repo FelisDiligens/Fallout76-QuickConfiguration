@@ -49,7 +49,7 @@ namespace Fo76ini
             // Create FormMods:
             formMods = new FormMods();
             FormMods.NWModeUpdated += OnNWModeUpdated;
-            UpdateNWModeUI(false);
+            //UpdateNWModeUI(false);
 
             /*
              * Translations
@@ -346,6 +346,8 @@ namespace Fo76ini
                 // Yeah, well or not.
             }
 
+            // Load UI:
+            UpdateNWModeUI(false);
             this.LoadGallery();
 
             MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
@@ -600,6 +602,8 @@ namespace Fo76ini
 
             this.labelNWModeActive.Visible = nwModeEnabled;
             this.toolStripStatusLabelNuclearWinterModeActive.Visible = nwModeEnabled;
+
+            this.toolStripButtonToggleNuclearWinterMode.Visible = IniFiles.Config.GetBool("NuclearWinter", "bShowNWModeBtn", false);
 
             EnableUI();
             Focus();
