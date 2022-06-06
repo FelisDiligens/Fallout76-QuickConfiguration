@@ -87,7 +87,7 @@ Otherwise the .NET installer might fail.
 ### Contributors:
 * [QuadroTony](https://www.nexusmods.com/fallout76/users/3166296): A lot of bug reports, and ideas, as well as: bSkipSplash=1 disables the news splash on startup.
 * [infinitywulf](https://www.nexusmods.com/fallout76/users/2781727): Changing the color of the power armor PipBoy.
-* [Juinchi ](https://www.nexusmods.com/fallout76/users/3557603)and [Jolu42](https://www.nexusmods.com/fallout76/users/23655354): TAA sharpening
+* [Juinchi](https://www.nexusmods.com/fallout76/users/3557603) and [Jolu42](https://www.nexusmods.com/fallout76/users/23655354): TAA sharpening
 * [toarullen](https://www.nexusmods.com/users/1975046): bShowCompass
 * [Eckserah](https://www.nexusmods.com/users/65898136): A lot of valuable information as well as providing default *.ini values
 * [bolbman](https://www.nexusmods.com/users/4382192): PipBoy resolution, Camera tweaks
