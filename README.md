@@ -98,7 +98,10 @@ Otherwise the .NET installer might fail.
 * [Pacoboyd](https://www.nexusmods.com/fallout76/users/27163): Advice, ideas, and "bAutoSignin=1" tweak. 
 
 ### Translators:
-* Traditional and Simplified Chinese (v1.6.2) by [Broodahood](https://forums.nexusmods.com/index.php?/user/68821693-broodahood/) / Simplified Chinese (v1.8.2) by [micus2048](https://www.nexusmods.com/users/97619783)
+* Simplified Chinese
+  * for v1.9.5 (latest translation) by ColaNaramon (可乐の魂)
+  * for v1.8.2 by [micus2048](https://www.nexusmods.com/users/97619783)
+  * for v1.6.2 by [Broodahood](https://forums.nexusmods.com/index.php?/user/68821693-broodahood/)
 * Russian by [Sondju](https://forums.nexusmods.com/index.php?/user/6969601-sondju/)
 * French by Christophe Noret (aka. [kr1ss](https://www.nexusmods.com/fallout76/users/22658164)) and [3z3k3yl](https://forums.nexusmods.com/index.php?/user/26975924-3z3k3yl/)
 * Polish by [Gray770](https://forums.nexusmods.com/index.php?/user/91201958-gray770/)
