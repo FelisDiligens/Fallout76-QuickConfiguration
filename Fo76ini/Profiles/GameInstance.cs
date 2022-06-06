@@ -17,7 +17,8 @@ namespace Fo76ini.Profiles
         BethesdaNet = 1,
         Steam = 2,
         BethesdaNetPTS = 3,
-        MSStore = 4
+        MSStore = 4,
+        SteamPTS = 5
     }
 
     public enum LaunchOption
@@ -51,6 +52,12 @@ namespace Fo76ini.Profiles
                     this.ExecutableName = "Fallout76.exe";
                     this.IniPrefix = "Fallout76";
                     this.LauncherURL = "steam://run/1151340";
+                    this.PreferredLaunchOption = LaunchOption.OpenURL;
+                    break;
+                case GameEdition.SteamPTS:
+                    this.ExecutableName = "Fallout76.exe";
+                    this.IniPrefix = "Fallout76";
+                    this.LauncherURL = "steam://run/1836200";
                     this.PreferredLaunchOption = LaunchOption.OpenURL;
                     break;
                 case GameEdition.BethesdaNet:
@@ -214,6 +221,8 @@ namespace Fo76ini.Profiles
             {
                 case GameEdition.Steam:
                     return Resources.steam;
+                case GameEdition.SteamPTS:
+                    return Resources.steam;
                 case GameEdition.BethesdaNet:
                     return Resources.bethesda;
                 case GameEdition.BethesdaNetPTS:
@@ -236,6 +245,8 @@ namespace Fo76ini.Profiles
             switch (edition)
             {
                 case GameEdition.Steam:
+                    return Resources.steam_hover;
+                case GameEdition.SteamPTS:
                     return Resources.steam_hover;
                 case GameEdition.BethesdaNet:
                     return Resources.bethesda_hover;

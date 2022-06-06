@@ -244,6 +244,9 @@ namespace Fo76ini.Forms.FormSettings
                         case GameEdition.Steam:
                             this.radioButtonEditionSteam.Checked = true;
                             break;
+                        case GameEdition.SteamPTS:
+                            this.radioButtonEditionSteamPTS.Checked = true;
+                            break;
                         case GameEdition.MSStore:
                             this.radioButtonEditionMSStore.Checked = true;
                             break;
@@ -276,6 +279,7 @@ namespace Fo76ini.Forms.FormSettings
                 case GameEdition.BethesdaNetPTS:
                     return 1;
                 case GameEdition.Steam:
+                case GameEdition.SteamPTS:
                     return 2;
                 case GameEdition.MSStore:
                     return 3;
@@ -324,6 +328,15 @@ namespace Fo76ini.Forms.FormSettings
                 return;
             ProfileManager.SelectedGame.Edition = GameEdition.Steam;
             ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.Steam);
+            UpdateGamesTab();
+        }
+
+        private void radioButtonEditionSteamPTS_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+            ProfileManager.SelectedGame.Edition = GameEdition.SteamPTS;
+            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.SteamPTS);
             UpdateGamesTab();
         }
 

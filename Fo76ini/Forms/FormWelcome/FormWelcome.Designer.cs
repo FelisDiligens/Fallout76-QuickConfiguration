@@ -40,27 +40,24 @@ namespace Fo76ini.Forms.FormWelcome
             this.textBoxGamePath = new System.Windows.Forms.TextBox();
             this.buttonPickGamePath = new System.Windows.Forms.Button();
             this.groupBoxGameEdition = new System.Windows.Forms.GroupBox();
+            this.pictureBoxSteamPTS = new System.Windows.Forms.PictureBox();
+            this.radioButtonEditionSteamPTS = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionUnknown = new System.Windows.Forms.RadioButton();
             this.pictureBoxUnknown = new System.Windows.Forms.PictureBox();
             this.pictureBoxMSStore = new System.Windows.Forms.PictureBox();
             this.pictureBoxSteam = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBethesdaNetPTS = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBethesdaNet = new System.Windows.Forms.PictureBox();
             this.radioButtonEditionMSStore = new System.Windows.Forms.RadioButton();
-            this.radioButtonEditionBethesdaNetPTS = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionSteam = new System.Windows.Forms.RadioButton();
-            this.radioButtonEditionBethesdaNet = new System.Windows.Forms.RadioButton();
             this.buttonOK = new System.Windows.Forms.Button();
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBoxGameLocation.SuspendLayout();
             this.groupBoxGameEdition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteamPTS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -89,7 +86,7 @@ namespace Fo76ini.Forms.FormWelcome
             this.panel1.Controls.Add(this.groupBoxGameEdition);
             this.panel1.Location = new System.Drawing.Point(12, 114);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(422, 424);
+            this.panel1.Size = new System.Drawing.Size(422, 363);
             this.panel1.TabIndex = 40;
             // 
             // groupBoxGameLocation
@@ -99,9 +96,9 @@ namespace Fo76ini.Forms.FormWelcome
             this.groupBoxGameLocation.Controls.Add(this.buttonAutoDetect);
             this.groupBoxGameLocation.Controls.Add(this.textBoxGamePath);
             this.groupBoxGameLocation.Controls.Add(this.buttonPickGamePath);
-            this.groupBoxGameLocation.Location = new System.Drawing.Point(11, 190);
+            this.groupBoxGameLocation.Location = new System.Drawing.Point(11, 163);
             this.groupBoxGameLocation.Name = "groupBoxGameLocation";
-            this.groupBoxGameLocation.Size = new System.Drawing.Size(400, 224);
+            this.groupBoxGameLocation.Size = new System.Drawing.Size(400, 186);
             this.groupBoxGameLocation.TabIndex = 41;
             this.groupBoxGameLocation.TabStop = false;
             this.groupBoxGameLocation.Text = "Game location";
@@ -121,11 +118,13 @@ namespace Fo76ini.Forms.FormWelcome
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Location = new System.Drawing.Point(8, 127);
+            this.label2.Location = new System.Drawing.Point(8, 118);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(386, 88);
+            this.label2.Size = new System.Drawing.Size(386, 65);
             this.label2.TabIndex = 33;
-            this.label2.Text = resources.GetString("label2.Text");
+            this.label2.Text = "If you have trouble finding the game location:\r\n\r\nSteam: C:\\Program Files (x86)\\S" +
+    "team\\steamapps\\common\\Fallout76\\\r\nMicrosoft Store: C:\\Program Files﻿\\ModifiableW" +
+    "indowsApps\\Fallout76\\";
             // 
             // buttonAutoDetect
             // 
@@ -162,27 +161,46 @@ namespace Fo76ini.Forms.FormWelcome
             // 
             // groupBoxGameEdition
             // 
+            this.groupBoxGameEdition.Controls.Add(this.pictureBoxSteamPTS);
+            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionSteamPTS);
             this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionUnknown);
             this.groupBoxGameEdition.Controls.Add(this.pictureBoxUnknown);
             this.groupBoxGameEdition.Controls.Add(this.pictureBoxMSStore);
             this.groupBoxGameEdition.Controls.Add(this.pictureBoxSteam);
-            this.groupBoxGameEdition.Controls.Add(this.pictureBoxBethesdaNetPTS);
-            this.groupBoxGameEdition.Controls.Add(this.pictureBoxBethesdaNet);
             this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionMSStore);
-            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionBethesdaNetPTS);
             this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionSteam);
-            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionBethesdaNet);
             this.groupBoxGameEdition.Location = new System.Drawing.Point(11, 9);
             this.groupBoxGameEdition.Name = "groupBoxGameEdition";
-            this.groupBoxGameEdition.Size = new System.Drawing.Size(400, 175);
+            this.groupBoxGameEdition.Size = new System.Drawing.Size(400, 148);
             this.groupBoxGameEdition.TabIndex = 40;
             this.groupBoxGameEdition.TabStop = false;
             this.groupBoxGameEdition.Text = "Game edition";
             // 
+            // pictureBoxSteamPTS
+            // 
+            this.pictureBoxSteamPTS.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxSteamPTS.Image = global::Fo76ini.Properties.Resources.steam_24px;
+            this.pictureBoxSteamPTS.Location = new System.Drawing.Point(11, 49);
+            this.pictureBoxSteamPTS.Name = "pictureBoxSteamPTS";
+            this.pictureBoxSteamPTS.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxSteamPTS.TabIndex = 33;
+            this.pictureBoxSteamPTS.TabStop = false;
+            // 
+            // radioButtonEditionSteamPTS
+            // 
+            this.radioButtonEditionSteamPTS.AutoSize = true;
+            this.radioButtonEditionSteamPTS.Location = new System.Drawing.Point(43, 52);
+            this.radioButtonEditionSteamPTS.Name = "radioButtonEditionSteamPTS";
+            this.radioButtonEditionSteamPTS.Size = new System.Drawing.Size(85, 17);
+            this.radioButtonEditionSteamPTS.TabIndex = 32;
+            this.radioButtonEditionSteamPTS.Text = "Steam (PTS)";
+            this.radioButtonEditionSteamPTS.UseVisualStyleBackColor = true;
+            this.radioButtonEditionSteamPTS.CheckedChanged += new System.EventHandler(this.radioButtonEditionSteamPTS_CheckedChanged);
+            // 
             // radioButtonEditionUnknown
             // 
             this.radioButtonEditionUnknown.AutoSize = true;
-            this.radioButtonEditionUnknown.Location = new System.Drawing.Point(43, 142);
+            this.radioButtonEditionUnknown.Location = new System.Drawing.Point(43, 112);
             this.radioButtonEditionUnknown.Name = "radioButtonEditionUnknown";
             this.radioButtonEditionUnknown.Size = new System.Drawing.Size(51, 17);
             this.radioButtonEditionUnknown.TabIndex = 31;
@@ -194,7 +212,7 @@ namespace Fo76ini.Forms.FormWelcome
             // 
             this.pictureBoxUnknown.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxUnknown.Image = global::Fo76ini.Properties.Resources.help_24;
-            this.pictureBoxUnknown.Location = new System.Drawing.Point(11, 139);
+            this.pictureBoxUnknown.Location = new System.Drawing.Point(11, 109);
             this.pictureBoxUnknown.Name = "pictureBoxUnknown";
             this.pictureBoxUnknown.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxUnknown.TabIndex = 30;
@@ -204,7 +222,7 @@ namespace Fo76ini.Forms.FormWelcome
             // 
             this.pictureBoxMSStore.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.xbox_24;
-            this.pictureBoxMSStore.Location = new System.Drawing.Point(11, 109);
+            this.pictureBoxMSStore.Location = new System.Drawing.Point(11, 79);
             this.pictureBoxMSStore.Name = "pictureBoxMSStore";
             this.pictureBoxMSStore.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxMSStore.TabIndex = 29;
@@ -214,36 +232,16 @@ namespace Fo76ini.Forms.FormWelcome
             // 
             this.pictureBoxSteam.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxSteam.Image = global::Fo76ini.Properties.Resources.steam_24px;
-            this.pictureBoxSteam.Location = new System.Drawing.Point(11, 79);
+            this.pictureBoxSteam.Location = new System.Drawing.Point(11, 19);
             this.pictureBoxSteam.Name = "pictureBoxSteam";
             this.pictureBoxSteam.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxSteam.TabIndex = 28;
             this.pictureBoxSteam.TabStop = false;
             // 
-            // pictureBoxBethesdaNetPTS
-            // 
-            this.pictureBoxBethesdaNetPTS.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNetPTS.Image = global::Fo76ini.Properties.Resources.bethesda_24;
-            this.pictureBoxBethesdaNetPTS.Location = new System.Drawing.Point(11, 49);
-            this.pictureBoxBethesdaNetPTS.Name = "pictureBoxBethesdaNetPTS";
-            this.pictureBoxBethesdaNetPTS.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxBethesdaNetPTS.TabIndex = 27;
-            this.pictureBoxBethesdaNetPTS.TabStop = false;
-            // 
-            // pictureBoxBethesdaNet
-            // 
-            this.pictureBoxBethesdaNet.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNet.Image = global::Fo76ini.Properties.Resources.bethesda_24;
-            this.pictureBoxBethesdaNet.Location = new System.Drawing.Point(11, 19);
-            this.pictureBoxBethesdaNet.Name = "pictureBoxBethesdaNet";
-            this.pictureBoxBethesdaNet.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxBethesdaNet.TabIndex = 26;
-            this.pictureBoxBethesdaNet.TabStop = false;
-            // 
             // radioButtonEditionMSStore
             // 
             this.radioButtonEditionMSStore.AutoSize = true;
-            this.radioButtonEditionMSStore.Location = new System.Drawing.Point(43, 112);
+            this.radioButtonEditionMSStore.Location = new System.Drawing.Point(43, 82);
             this.radioButtonEditionMSStore.Name = "radioButtonEditionMSStore";
             this.radioButtonEditionMSStore.Size = new System.Drawing.Size(194, 17);
             this.radioButtonEditionMSStore.TabIndex = 3;
@@ -251,21 +249,10 @@ namespace Fo76ini.Forms.FormWelcome
             this.radioButtonEditionMSStore.UseVisualStyleBackColor = true;
             this.radioButtonEditionMSStore.CheckedChanged += new System.EventHandler(this.radioButtonEditionMSStore_CheckedChanged);
             // 
-            // radioButtonEditionBethesdaNetPTS
-            // 
-            this.radioButtonEditionBethesdaNetPTS.AutoSize = true;
-            this.radioButtonEditionBethesdaNetPTS.Location = new System.Drawing.Point(43, 52);
-            this.radioButtonEditionBethesdaNetPTS.Name = "radioButtonEditionBethesdaNetPTS";
-            this.radioButtonEditionBethesdaNetPTS.Size = new System.Drawing.Size(118, 17);
-            this.radioButtonEditionBethesdaNetPTS.TabIndex = 2;
-            this.radioButtonEditionBethesdaNetPTS.Text = "Bethesda.net (PTS)";
-            this.radioButtonEditionBethesdaNetPTS.UseVisualStyleBackColor = true;
-            this.radioButtonEditionBethesdaNetPTS.CheckedChanged += new System.EventHandler(this.radioButtonEditionBethesdaNetPTS_CheckedChanged);
-            // 
             // radioButtonEditionSteam
             // 
             this.radioButtonEditionSteam.AutoSize = true;
-            this.radioButtonEditionSteam.Location = new System.Drawing.Point(43, 82);
+            this.radioButtonEditionSteam.Location = new System.Drawing.Point(43, 22);
             this.radioButtonEditionSteam.Name = "radioButtonEditionSteam";
             this.radioButtonEditionSteam.Size = new System.Drawing.Size(55, 17);
             this.radioButtonEditionSteam.TabIndex = 1;
@@ -273,20 +260,9 @@ namespace Fo76ini.Forms.FormWelcome
             this.radioButtonEditionSteam.UseVisualStyleBackColor = true;
             this.radioButtonEditionSteam.CheckedChanged += new System.EventHandler(this.radioButtonEditionSteam_CheckedChanged);
             // 
-            // radioButtonEditionBethesdaNet
-            // 
-            this.radioButtonEditionBethesdaNet.AutoSize = true;
-            this.radioButtonEditionBethesdaNet.Location = new System.Drawing.Point(43, 22);
-            this.radioButtonEditionBethesdaNet.Name = "radioButtonEditionBethesdaNet";
-            this.radioButtonEditionBethesdaNet.Size = new System.Drawing.Size(88, 17);
-            this.radioButtonEditionBethesdaNet.TabIndex = 0;
-            this.radioButtonEditionBethesdaNet.Text = "Bethesda.net";
-            this.radioButtonEditionBethesdaNet.UseVisualStyleBackColor = true;
-            this.radioButtonEditionBethesdaNet.CheckedChanged += new System.EventHandler(this.radioButtonEditionBethesdaNet_CheckedChanged);
-            // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(300, 547);
+            this.buttonOK.Location = new System.Drawing.Point(300, 483);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(134, 27);
             this.buttonOK.TabIndex = 41;
@@ -315,7 +291,7 @@ namespace Fo76ini.Forms.FormWelcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 581);
+            this.ClientSize = new System.Drawing.Size(446, 521);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.panel1);
@@ -333,11 +309,10 @@ namespace Fo76ini.Forms.FormWelcome
             this.groupBoxGameLocation.PerformLayout();
             this.groupBoxGameEdition.ResumeLayout(false);
             this.groupBoxGameEdition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteamPTS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -356,16 +331,14 @@ namespace Fo76ini.Forms.FormWelcome
         private System.Windows.Forms.PictureBox pictureBoxUnknown;
         private System.Windows.Forms.PictureBox pictureBoxMSStore;
         private System.Windows.Forms.PictureBox pictureBoxSteam;
-        private System.Windows.Forms.PictureBox pictureBoxBethesdaNetPTS;
-        private System.Windows.Forms.PictureBox pictureBoxBethesdaNet;
         private System.Windows.Forms.RadioButton radioButtonEditionMSStore;
-        private System.Windows.Forms.RadioButton radioButtonEditionBethesdaNetPTS;
         private System.Windows.Forms.RadioButton radioButtonEditionSteam;
-        private System.Windows.Forms.RadioButton radioButtonEditionBethesdaNet;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.OpenFileDialog openFileDialogGamePath;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBoxSteamPTS;
+        private System.Windows.Forms.RadioButton radioButtonEditionSteamPTS;
     }
 }

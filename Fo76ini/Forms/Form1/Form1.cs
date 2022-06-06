@@ -416,6 +416,11 @@ namespace Fo76ini
                     this.toolStripStatusLabelEditionText.Text = "Steam";
                     this.labelGameEdition.Text = "Steam";
                     break;
+                case GameEdition.SteamPTS:
+                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.SteamPTS);
+                    this.toolStripStatusLabelEditionText.Text = "Steam (PTS)";
+                    this.labelGameEdition.Text = "Steam\n(PTS)";
+                    break;
                 case GameEdition.BethesdaNet:
                     this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.BethesdaNet);
                     this.toolStripStatusLabelEditionText.Text = "Bethesda.net";

@@ -34,14 +34,11 @@ namespace Fo76ini.Forms.FormWelcome
 
             switch (ProfileManager.SelectedGame.Edition)
             {
-                case GameEdition.BethesdaNet:
-                    this.radioButtonEditionBethesdaNet.Checked = true;
-                    break;
-                case GameEdition.BethesdaNetPTS:
-                    this.radioButtonEditionBethesdaNetPTS.Checked = true;
-                    break;
                 case GameEdition.Steam:
                     this.radioButtonEditionSteam.Checked = true;
+                    break;
+                case GameEdition.SteamPTS:
+                    this.radioButtonEditionSteamPTS.Checked = true;
                     break;
                 case GameEdition.MSStore:
                     this.radioButtonEditionMSStore.Checked = true;
@@ -73,25 +70,18 @@ namespace Fo76ini.Forms.FormWelcome
             this.DialogResult = DialogResult.OK;
         }
 
-        private void radioButtonEditionBethesdaNet_CheckedChanged(object sender, EventArgs e)
-        {
-            ProfileManager.SelectedGame.Edition = GameEdition.BethesdaNet;
-            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.BethesdaNet);
-            ProfileManager.SelectedGame.Title = "Bethesda.net";
-        }
-
-        private void radioButtonEditionBethesdaNetPTS_CheckedChanged(object sender, EventArgs e)
-        {
-            ProfileManager.SelectedGame.Edition = GameEdition.BethesdaNetPTS;
-            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.BethesdaNetPTS);
-            ProfileManager.SelectedGame.Title = "Bethesda.net (PTS)";
-        }
-
         private void radioButtonEditionSteam_CheckedChanged(object sender, EventArgs e)
         {
             ProfileManager.SelectedGame.Edition = GameEdition.Steam;
             ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.Steam);
             ProfileManager.SelectedGame.Title = "Steam";
+        }
+
+        private void radioButtonEditionSteamPTS_CheckedChanged(object sender, EventArgs e)
+        {
+            ProfileManager.SelectedGame.Edition = GameEdition.SteamPTS;
+            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.SteamPTS);
+            ProfileManager.SelectedGame.Title = "Steam (PTS)";
         }
 
         private void radioButtonEditionMSStore_CheckedChanged(object sender, EventArgs e)
