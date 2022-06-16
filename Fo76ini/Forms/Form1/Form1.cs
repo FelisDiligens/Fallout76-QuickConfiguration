@@ -603,7 +603,7 @@ namespace Fo76ini
             this.labelNWModeActive.Visible = nwModeEnabled;
             this.toolStripStatusLabelNuclearWinterModeActive.Visible = nwModeEnabled;
 
-            this.toolStripButtonToggleNuclearWinterMode.Visible = IniFiles.Config.GetBool("NuclearWinter", "bShowNWModeBtn", false);
+            this.toolStripButtonToggleNuclearWinterMode.Visible = nwModeEnabled || IniFiles.Config.GetBool("NuclearWinter", "bShowNWModeBtn", false);
 
             EnableUI();
             Focus();

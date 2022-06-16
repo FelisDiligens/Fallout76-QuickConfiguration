@@ -44,6 +44,8 @@ namespace Fo76ini.Tweaks.Graphics
                     return AntiAliasing.TAA;
                 case "FXAA":
                     return AntiAliasing.FXAA;
+                case "Disabled":
+                case "0":
                 case "":
                     return AntiAliasing.Disabled;
                 default:
@@ -53,7 +55,21 @@ namespace Fo76ini.Tweaks.Graphics
 
         public void SetValue(AntiAliasing value)
         {
-            IniFiles.F76Prefs.Set("Display", "sAntiAliasing", value.ToString());
+            switch (value)
+            {
+                case AntiAliasing.TAA:
+                    IniFiles.F76Prefs.Set("Display", "sAntiAliasing", "TAA");
+                    break;
+                case AntiAliasing.FXAA:
+                    IniFiles.F76Prefs.Set("Display", "sAntiAliasing", "FXAA");
+                    break;
+                case AntiAliasing.Disabled:
+                    IniFiles.F76Prefs.Set("Display", "sAntiAliasing", "");
+                    break;
+                default:
+                    IniFiles.F76Prefs.Set("Display", "sAntiAliasing", "TAA");
+                    break;
+            }
         }
 
         public void ResetValue()

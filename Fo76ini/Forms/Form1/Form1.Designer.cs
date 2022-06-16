@@ -263,6 +263,8 @@
             this.labelCustomResolutionSpacer = new System.Windows.Forms.Label();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBoxTweaks = new System.Windows.Forms.GroupBox();
+            this.checkBoxFasterFadeIn = new System.Windows.Forms.CheckBox();
             this.groupBoxGeneralInterface = new System.Windows.Forms.GroupBox();
             this.numFloatingQuestMarkersDistance = new System.Windows.Forms.NumericUpDown();
             this.labelFloatingQuestMarkersDistance = new System.Windows.Forms.Label();
@@ -417,8 +419,8 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelNuclearWinterModeActive = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.groupBoxTweaks = new System.Windows.Forms.GroupBox();
-            this.checkBoxFasterFadeIn = new System.Windows.Forms.CheckBox();
+            this.labelMoreFOV = new System.Windows.Forms.Label();
+            this.labelFOVWarn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
@@ -529,6 +531,7 @@
             this.groupBoxDisplay.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.groupBoxTweaks.SuspendLayout();
             this.groupBoxGeneralInterface.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFloatingQuestMarkersDistance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHUDOpacity)).BeginInit();
@@ -575,7 +578,6 @@
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
-            this.groupBoxTweaks.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolTip
@@ -614,7 +616,7 @@
             // labelFirstPersonFOV
             // 
             this.labelFirstPersonFOV.AutoSize = true;
-            this.labelFirstPersonFOV.Location = new System.Drawing.Point(6, 21);
+            this.labelFirstPersonFOV.Location = new System.Drawing.Point(5, 99);
             this.labelFirstPersonFOV.Name = "labelFirstPersonFOV";
             this.labelFirstPersonFOV.Size = new System.Drawing.Size(83, 13);
             this.labelFirstPersonFOV.TabIndex = 0;
@@ -626,11 +628,11 @@
             // labelWorldFOV
             // 
             this.labelWorldFOV.AutoSize = true;
-            this.labelWorldFOV.Location = new System.Drawing.Point(6, 47);
+            this.labelWorldFOV.Location = new System.Drawing.Point(6, 19);
             this.labelWorldFOV.Name = "labelWorldFOV";
-            this.labelWorldFOV.Size = new System.Drawing.Size(84, 13);
+            this.labelWorldFOV.Size = new System.Drawing.Size(167, 13);
             this.labelWorldFOV.TabIndex = 1;
-            this.labelWorldFOV.Text = "3rd person FOV:";
+            this.labelWorldFOV.Text = "Field of View (1st and 3rd person):";
             this.toolTip.SetToolTip(this.labelWorldFOV, "Changes the field of view of the 3rd person perspective.\r\n\r\nDefault: 80\r\nAffected" +
         " values: fDefaultWorldFOV\r\nAffected files: Fallout76Custom.ini, Fallout76Prefs.i" +
         "ni");
@@ -638,7 +640,7 @@
             // labelADSFOV
             // 
             this.labelADSFOV.AutoSize = true;
-            this.labelADSFOV.Location = new System.Drawing.Point(6, 84);
+            this.labelADSFOV.Location = new System.Drawing.Point(5, 125);
             this.labelADSFOV.Name = "labelADSFOV";
             this.labelADSFOV.Size = new System.Drawing.Size(103, 13);
             this.labelADSFOV.TabIndex = 5;
@@ -1480,7 +1482,7 @@
             // 
             this.labelfDefaultFOV.AutoSize = true;
             this.labelfDefaultFOV.ForeColor = System.Drawing.Color.Red;
-            this.labelfDefaultFOV.Location = new System.Drawing.Point(6, 122);
+            this.labelfDefaultFOV.Location = new System.Drawing.Point(5, 151);
             this.labelfDefaultFOV.Name = "labelfDefaultFOV";
             this.labelfDefaultFOV.Size = new System.Drawing.Size(193, 13);
             this.labelfDefaultFOV.TabIndex = 6;
@@ -2470,6 +2472,8 @@
             // 
             // groupBoxFieldOfView
             // 
+            this.groupBoxFieldOfView.Controls.Add(this.labelFOVWarn);
+            this.groupBoxFieldOfView.Controls.Add(this.labelMoreFOV);
             this.groupBoxFieldOfView.Controls.Add(this.numfDefaultFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelfDefaultFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelADSFOV);
@@ -2480,7 +2484,7 @@
             this.groupBoxFieldOfView.Controls.Add(this.labelFirstPersonFOV);
             this.groupBoxFieldOfView.Location = new System.Drawing.Point(6, 6);
             this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
-            this.groupBoxFieldOfView.Size = new System.Drawing.Size(395, 154);
+            this.groupBoxFieldOfView.Size = new System.Drawing.Size(395, 183);
             this.groupBoxFieldOfView.TabIndex = 21;
             this.groupBoxFieldOfView.TabStop = false;
             this.groupBoxFieldOfView.Text = "Field of View";
@@ -2493,7 +2497,7 @@
             0,
             0,
             0});
-            this.numfDefaultFOV.Location = new System.Drawing.Point(251, 120);
+            this.numfDefaultFOV.Location = new System.Drawing.Point(250, 149);
             this.numfDefaultFOV.Maximum = new decimal(new int[] {
             180,
             0,
@@ -2521,7 +2525,7 @@
             0,
             0,
             0});
-            this.numADSFOV.Location = new System.Drawing.Point(251, 82);
+            this.numADSFOV.Location = new System.Drawing.Point(250, 123);
             this.numADSFOV.Maximum = new decimal(new int[] {
             180,
             0,
@@ -2549,7 +2553,7 @@
             0,
             0,
             0});
-            this.numWorldFOV.Location = new System.Drawing.Point(251, 45);
+            this.numWorldFOV.Location = new System.Drawing.Point(251, 17);
             this.numWorldFOV.Maximum = new decimal(new int[] {
             180,
             0,
@@ -2577,7 +2581,7 @@
             0,
             0,
             0});
-            this.numFirstPersonFOV.Location = new System.Drawing.Point(251, 19);
+            this.numFirstPersonFOV.Location = new System.Drawing.Point(250, 97);
             this.numFirstPersonFOV.Maximum = new decimal(new int[] {
             180,
             0,
@@ -2603,7 +2607,7 @@
             this.groupBoxCameraOptions.Controls.Add(this.numCameraSwitchDelay);
             this.groupBoxCameraOptions.Controls.Add(this.checkBoxVanityMode);
             this.groupBoxCameraOptions.Controls.Add(this.labelSwitchDelay);
-            this.groupBoxCameraOptions.Location = new System.Drawing.Point(6, 166);
+            this.groupBoxCameraOptions.Location = new System.Drawing.Point(6, 195);
             this.groupBoxCameraOptions.Name = "groupBoxCameraOptions";
             this.groupBoxCameraOptions.Size = new System.Drawing.Size(395, 135);
             this.groupBoxCameraOptions.TabIndex = 35;
@@ -3737,6 +3741,26 @@
             this.panel4.Size = new System.Drawing.Size(397, 464);
             this.panel4.TabIndex = 28;
             // 
+            // groupBoxTweaks
+            // 
+            this.groupBoxTweaks.Controls.Add(this.checkBoxFasterFadeIn);
+            this.groupBoxTweaks.Location = new System.Drawing.Point(6, 80);
+            this.groupBoxTweaks.Name = "groupBoxTweaks";
+            this.groupBoxTweaks.Size = new System.Drawing.Size(368, 46);
+            this.groupBoxTweaks.TabIndex = 28;
+            this.groupBoxTweaks.TabStop = false;
+            this.groupBoxTweaks.Text = "Tweaks";
+            // 
+            // checkBoxFasterFadeIn
+            // 
+            this.checkBoxFasterFadeIn.AutoSize = true;
+            this.checkBoxFasterFadeIn.Location = new System.Drawing.Point(7, 19);
+            this.checkBoxFasterFadeIn.Name = "checkBoxFasterFadeIn";
+            this.checkBoxFasterFadeIn.Size = new System.Drawing.Size(168, 17);
+            this.checkBoxFasterFadeIn.TabIndex = 1;
+            this.checkBoxFasterFadeIn.Text = "Speed up fade in after loading";
+            this.checkBoxFasterFadeIn.UseVisualStyleBackColor = true;
+            // 
             // groupBoxGeneralInterface
             // 
             this.groupBoxGeneralInterface.Controls.Add(this.checkBoxShowFloatingQuestText);
@@ -4252,7 +4276,7 @@
             this.labelNewVersion.ForeColor = System.Drawing.Color.Crimson;
             this.labelNewVersion.Location = new System.Drawing.Point(3, 5);
             this.labelNewVersion.Name = "labelNewVersion";
-            this.labelNewVersion.Size = new System.Drawing.Size(216, 16);
+            this.labelNewVersion.Size = new System.Drawing.Size(215, 16);
             this.labelNewVersion.TabIndex = 16;
             this.labelNewVersion.Text = "There is a newer version available: {0}";
             // 
@@ -5575,25 +5599,25 @@
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
             // 
-            // groupBoxTweaks
+            // labelMoreFOV
             // 
-            this.groupBoxTweaks.Controls.Add(this.checkBoxFasterFadeIn);
-            this.groupBoxTweaks.Location = new System.Drawing.Point(6, 80);
-            this.groupBoxTweaks.Name = "groupBoxTweaks";
-            this.groupBoxTweaks.Size = new System.Drawing.Size(368, 46);
-            this.groupBoxTweaks.TabIndex = 28;
-            this.groupBoxTweaks.TabStop = false;
-            this.groupBoxTweaks.Text = "Tweaks";
+            this.labelMoreFOV.AutoSize = true;
+            this.labelMoreFOV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMoreFOV.Location = new System.Drawing.Point(6, 54);
+            this.labelMoreFOV.Name = "labelMoreFOV";
+            this.labelMoreFOV.Size = new System.Drawing.Size(111, 13);
+            this.labelMoreFOV.TabIndex = 8;
+            this.labelMoreFOV.Text = "More FOV tweaks:";
             // 
-            // checkBoxFasterFadeIn
+            // labelFOVWarn
             // 
-            this.checkBoxFasterFadeIn.AutoSize = true;
-            this.checkBoxFasterFadeIn.Location = new System.Drawing.Point(7, 19);
-            this.checkBoxFasterFadeIn.Name = "checkBoxFasterFadeIn";
-            this.checkBoxFasterFadeIn.Size = new System.Drawing.Size(168, 17);
-            this.checkBoxFasterFadeIn.TabIndex = 1;
-            this.checkBoxFasterFadeIn.Text = "Speed up fade in after loading";
-            this.checkBoxFasterFadeIn.UseVisualStyleBackColor = true;
+            this.labelFOVWarn.AutoSize = true;
+            this.labelFOVWarn.ForeColor = System.Drawing.Color.Red;
+            this.labelFOVWarn.Location = new System.Drawing.Point(6, 71);
+            this.labelFOVWarn.Name = "labelFOVWarn";
+            this.labelFOVWarn.Size = new System.Drawing.Size(192, 13);
+            this.labelFOVWarn.TabIndex = 9;
+            this.labelFOVWarn.Text = "These options might not work anymore.";
             // 
             // Form1
             // 
@@ -5745,6 +5769,8 @@
             this.groupBoxDisplay.PerformLayout();
             this.tabPageGeneral.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.groupBoxTweaks.ResumeLayout(false);
+            this.groupBoxTweaks.PerformLayout();
             this.groupBoxGeneralInterface.ResumeLayout(false);
             this.groupBoxGeneralInterface.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFloatingQuestMarkersDistance)).EndInit();
@@ -5808,8 +5834,6 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).EndInit();
-            this.groupBoxTweaks.ResumeLayout(false);
-            this.groupBoxTweaks.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6205,6 +6229,8 @@
         private System.Windows.Forms.RadioButton radioButtonAccountNone;
         private System.Windows.Forms.GroupBox groupBoxTweaks;
         private System.Windows.Forms.CheckBox checkBoxFasterFadeIn;
+        private System.Windows.Forms.Label labelFOVWarn;
+        private System.Windows.Forms.Label labelMoreFOV;
     }
 }
 

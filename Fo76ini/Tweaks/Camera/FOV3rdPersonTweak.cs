@@ -8,7 +8,7 @@ namespace Fo76ini.Tweaks.Camera
 {
     class FOV3rdPersonTweak : ITweak<float>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "Changes the Field of View of the 1st and 3rd person perspective.\nThis is the same value from the in-game FOV setting.";
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 
