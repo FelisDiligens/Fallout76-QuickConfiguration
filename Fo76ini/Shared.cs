@@ -24,8 +24,6 @@ namespace Fo76ini
             }
         }
 
-        public static bool NuclearWinterMode = false;
-
         // https://stackoverflow.com/a/49754978
         public static readonly string DotNetFrameworkVersion;
 
