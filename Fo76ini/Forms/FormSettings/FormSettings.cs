@@ -881,7 +881,7 @@ namespace Fo76ini.Forms.FormSettings
 
         private void linkLabelAPIKeyHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Utils.OpenURL("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting:-Login-with-NexusMods-failed");
+            Utils.OpenURL(Shared.URLs.AppNexusLoginFailedHelpURL);
         }
 
 

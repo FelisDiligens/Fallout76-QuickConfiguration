@@ -1,9 +1,9 @@
 de-DE.xml
 fr-FR.xml
+ja-JP.xml
 pl-PL.xml
 pt-BR.xml
 ru-RU.xml
 sv-SE.xml
 zh-CN.xml
 zh-TW.xml
-ja-JP.xml

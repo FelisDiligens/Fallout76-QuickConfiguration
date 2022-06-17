@@ -42,7 +42,7 @@ namespace Fo76ini.Forms.FormWhatsNew
             try
             {
                 WebClient wc = new WebClient();
-                byte[] raw = wc.DownloadData("https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/What's%20new.rtf");
+                byte[] raw = wc.DownloadData(Shared.URLs.RemoteWhatsNewRTFURL);
                 ev.Result = (object)Encoding.UTF8.GetString(raw).Trim();
             }
             catch (Exception ex)

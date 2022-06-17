@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Syroot.Windows.IO;
 
 namespace Fo76ini
 {
@@ -79,6 +81,14 @@ namespace Fo76ini
             set
             {
                 IniFiles.Config.Set("Mods", "bUseHardlinks", value);
+            }
+        }
+
+        public static string DownloadsFolder
+        {
+            get
+            {
+                return Path.GetFullPath(IniFiles.Config.GetString("Preferences", "sDownloadPath", KnownFolders.Downloads.Path));
             }
         }
     }

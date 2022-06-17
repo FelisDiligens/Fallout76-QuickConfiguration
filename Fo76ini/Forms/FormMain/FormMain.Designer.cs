@@ -5634,7 +5634,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fallout 76 Quick Configuration";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).EndInit();

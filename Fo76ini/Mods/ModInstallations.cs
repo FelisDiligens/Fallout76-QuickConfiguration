@@ -188,7 +188,7 @@ namespace Fo76ini.Mods
             }
             Uri dlLink = new Uri(dlLinkStr);
             string dlFileName = dlLink.Segments.Last();
-            string dlPath = Path.Combine(Shared.DownloadsFolder, dlFileName);
+            string dlPath = Path.Combine(Configuration.DownloadsFolder, dlFileName);
 
             // Download mod, unless we already have it:
             if (!File.Exists(dlPath))

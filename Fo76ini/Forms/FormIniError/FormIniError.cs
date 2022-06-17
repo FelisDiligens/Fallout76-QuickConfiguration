@@ -118,7 +118,7 @@ namespace Fo76ini.Forms.FormIniError
 
         private void linkLabelShowHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Utils.OpenURL("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting:-*.ini-files");
+            Utils.OpenURL(Shared.URLs.AppINIErrorHelpURL);
         }
 
         private void buttonToggleDetails_Click(object sender, EventArgs e)

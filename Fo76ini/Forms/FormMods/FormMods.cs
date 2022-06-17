@@ -1195,7 +1195,7 @@ namespace Fo76ini
         // Help > Show guide
         private void showGuideToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Mod-Manager-Guide");
+            Process.Start(Shared.URLs.AppModManagerHelpURL);
             // Previous pages:
             // https://www.nexusmods.com/fallout76/articles/40
             // https://www.nexusmods.com/fallout76/mods/546

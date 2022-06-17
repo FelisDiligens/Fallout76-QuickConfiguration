@@ -279,9 +279,9 @@ namespace Fo76ini
             Utils.PreventChangeOnMouseWheelForAllElements(this);
 
             // Event handler:
-            this.FormClosing += this.Form1_FormClosing;
-            this.Shown += this.Form1_Shown;
-            this.KeyDown += this.Form1_KeyDown;
+            this.FormClosing += this.FormMain_FormClosing;
+            this.Shown += this.FormMain_Shown;
+            this.KeyDown += this.FormMain_KeyDown;
             this.pictureBoxGameEdition.MouseEnter += this.pictureBoxGameEdition_MouseEnter;
             this.pictureBoxGameEdition.MouseLeave += this.pictureBoxGameEdition_MouseLeave;
 
@@ -305,7 +305,7 @@ namespace Fo76ini
             };
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormMain_Load(object sender, EventArgs e)
         {
             // Create folders, if not present:
             Directory.CreateDirectory(Shared.AppConfigFolder);
@@ -353,7 +353,7 @@ namespace Fo76ini
             MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
         }
 
-        private void Form1_Shown(object sender, EventArgs e)
+        private void FormMain_Shown(object sender, EventArgs e)
         {
             // Show welcome dialog:
             if (FirstStart)
@@ -487,15 +487,15 @@ namespace Fo76ini
             this.formWhatsNew.ShowDialog();
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
-                Process.Start("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki");
+                Process.Start(Shared.URLs.AppGithubWikiURL);
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
@@ -666,7 +666,7 @@ namespace Fo76ini
         private void linkLabelManualDownloadPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             linkLabelManualDownloadPage.LinkVisited = true;
-            Process.Start("https://www.nexusmods.com/fallout76/mods/546?tab=files");
+            Process.Start(Shared.URLs.AppNexusModsDownloadURL);
         }
 
         private void buttonUpdateNow_Click(object sender, EventArgs e)
@@ -748,7 +748,7 @@ namespace Fo76ini
 
         private void toolStripButtonNexusMods_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.nexusmods.com/fallout76/mods/546");
+            System.Diagnostics.Process.Start(Shared.URLs.AppNexusModsURL);
         }
 
         private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)

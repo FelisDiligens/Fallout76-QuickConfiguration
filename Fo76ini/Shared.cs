@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using Fo76ini.Profiles;
 using Syroot.Windows.IO;
 
 namespace Fo76ini
 {
+    /// <summary>
+    /// This class holds application-wide constants, such as paths, URLs, version, and so on.
+    /// </summary>
     public class Shared
     {
         public const string VERSION = "1.9.6.1";
@@ -16,19 +18,38 @@ namespace Fo76ini
 
         public static readonly System.Globalization.CultureInfo en_US = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-        public static string DownloadsFolder
-        {
-            get
-            {
-                return Path.GetFullPath(IniFiles.Config.GetString("Preferences", "sDownloadPath", KnownFolders.Downloads.Path));
-            }
-        }
-
         // https://stackoverflow.com/a/49754978
         public static readonly string DotNetFrameworkVersion;
 
-        // Example: "Fo76QConf/1.9.0 (Windows NT 10.0.19042.0; x64) .NETFramework/4.7.2"
+        /// <summary>
+        /// Used when communicating with the NexusMods API.
+        /// Example: "Fo76QuickConfiguration/1.9.6 (Windows NT 10.0.19042.0; x64) .NETFramework/4.7.2"
+        /// </summary>
         public static readonly string AppUserAgent;
+
+        /// <summary>
+        /// URLs used across the app are (mostly) stored here.
+        /// </summary>
+        public class URLs
+        {
+            // "Official" websites of Quick Configuration:
+            public const string AppNexusModsURL = "https://www.nexusmods.com/fallout76/mods/546";
+            public const string AppNexusModsDownloadURL = "https://www.nexusmods.com/fallout76/mods/546?tab=files";
+            public const string AppGithubURL = "https://github.com/FelisDiligens/Fallout76-QuickConfiguration";
+            public const string AppGithubDownloadURL = "https://github.com/FelisDiligens/Fallout76-QuickConfiguration/releases/latest";
+
+            // Help and Troubleshooting:
+            public const string AppGithubWikiURL = "https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki";
+            public const string AppModManagerHelpURL = "https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Mod-Manager-Guide";
+            public const string AppNexusLoginFailedHelpURL = "https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting:-Login-with-NexusMods-failed";
+            public const string AppINIErrorHelpURL = "https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting:-*.ini-files";
+
+            // Remote files:
+            // (These files are downloaded by the tool)
+            public const string RemoteLatestVersionURL = "https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/VERSION";
+            public const string RemoteWhatsNewRTFURL = "https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/What's%20new.rtf";
+            public const string RemoteLanguageFolderURL = "https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/";
+        }
 
         static Shared ()
         {
