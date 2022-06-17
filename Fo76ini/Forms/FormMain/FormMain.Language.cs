@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Fo76ini
 {
-    partial class Form1
+    partial class FormMain
     {
         public void OnLanguageChanged(object sender, TranslationEventArgs e)
         {

@@ -142,12 +142,6 @@
     <Compile Include="Forms\FormSettings\FormSettings.Designer.cs">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormSplash\FormSplash.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormSplash\FormSplash.Designer.cs">
-      <DependentUpon>FormSplash.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormTextPrompt\TextPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,31 +270,31 @@
     <Compile Include="NexusAPI\APIRequest.cs" />
     <Compile Include="Utilities\ClipboardUtils.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="Forms\ExceptionDialog\FormExceptionDialog.cs">
+    <Compile Include="Forms\FormExceptionDialog\FormExceptionDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ExceptionDialog\FormExceptionDialog.Designer.cs">
+    <Compile Include="Forms\FormExceptionDialog\FormExceptionDialog.Designer.cs">
       <DependentUpon>FormExceptionDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1\ColorPreview.cs">
+    <Compile Include="Forms\FormMain\ColorPreview.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\Form1\Form1.LinkControls.cs">
+    <Compile Include="Forms\FormMain\FormMain.LinkControls.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1\Form1.cs">
+    <Compile Include="Forms\FormMain\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\FormMain\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1\Form1.Camera.cs">
+    <Compile Include="Forms\FormMain\FormMain.Camera.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1\Form1.Gallery.cs">
+    <Compile Include="Forms\FormMain\FormMain.Gallery.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1\Form1.Language.cs">
+    <Compile Include="Forms\FormMain\FormMain.Language.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormMods\FormMods.cs">
@@ -352,11 +346,11 @@
     <Compile Include="Utilities\Utils.cs" />
     <Compile Include="Utilities\Volume.cs" />
     <Compile Include="Utilities\XMLExtensions.cs" />
-    <EmbeddedResource Include="Forms\ExceptionDialog\FormExceptionDialog.resx">
+    <EmbeddedResource Include="Forms\FormExceptionDialog\FormExceptionDialog.resx">
       <DependentUpon>FormExceptionDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormMain\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormIniError\FormIniError.resx">
       <DependentUpon>FormIniError.cs</DependentUpon>
@@ -367,9 +361,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSettings\FormSettings.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormSplash\FormSplash.resx">
-      <DependentUpon>FormSplash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormTextPrompt\TextPrompt.resx">
       <DependentUpon>TextPrompt.cs</DependentUpon>
@@ -433,7 +424,6 @@
     <None Include="Resources\mouse-icon.png" />
     <None Include="Resources\download-2-24.png" />
     <None Include="Resources\text-24.png" />
-    <None Include="banner.png" />
     <Content Include="icon.ico" />
     <None Include="Resources\delete-48.png" />
     <None Include="Resources\exit-48.png" />

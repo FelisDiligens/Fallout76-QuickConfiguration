@@ -25,7 +25,7 @@ using System.Windows.Forms;
 
 namespace Fo76ini
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
         private FormMods formMods;
         private FormWhatsNew formWhatsNew = new FormWhatsNew();
@@ -36,7 +36,7 @@ namespace Fo76ini
 
         public readonly bool FirstStart;
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
 

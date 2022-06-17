@@ -9,7 +9,7 @@ namespace Fo76ini
         MeleeCombat
     }
 
-    partial class Form1
+    partial class FormMain
     {
 #if false
         private CameraPositionMode camPosMode = CameraPositionMode.Unarmed;

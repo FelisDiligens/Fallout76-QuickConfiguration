@@ -18,7 +18,7 @@ namespace Fo76ini
      * A bit similar to the *.Designer.cs, adds event handlers to (almost) all controls.
      * That is, instantiate classes that implement ITweak, and link the controls to it's value (among other things).
      */
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Adds tooltip information (ITweakInfo)

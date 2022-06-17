@@ -1,6 +1,6 @@
 ﻿namespace Fo76ini
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.checkBoxVanityMode = new System.Windows.Forms.CheckBox();
             this.checkBoxForceVanityMode = new System.Windows.Forms.CheckBox();

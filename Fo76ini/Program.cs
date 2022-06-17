@@ -52,7 +52,7 @@ namespace Fo76ini
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Form1());
+            Application.Run(new FormMain());
         }
 
         private static void HandleThreadException(object sender, ThreadExceptionEventArgs e)
