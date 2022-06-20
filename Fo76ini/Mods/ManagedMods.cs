@@ -74,8 +74,8 @@ namespace Fo76ini.Mods
         /// <summary>
         /// Move a mod from one index to another.
         /// </summary>
-        /// <returns></returns>
-        private int MoveMod(int oldIndex, int newIndex)
+        /// <returns>New index</returns>
+        public int MoveMod(int oldIndex, int newIndex)
         {
             if (oldIndex >= this.Mods.Count ||
                 oldIndex < 0 ||
@@ -262,6 +262,11 @@ namespace Fo76ini.Mods
         public bool Contains(ManagedMod item)
         {
             return this.Mods.Contains(item);
+        }
+
+        public int IndexOf(ManagedMod item)
+        {
+            return this.Mods.IndexOf(item);
         }
 
         public void CopyTo(ManagedMod[] array, int arrayIndex)

@@ -152,7 +152,7 @@
         h3O+794LNTcycb68D3FSZJ5/NLwcXrmNNxrssUGdZmDytNs/G1B5Pl9xrL60rBd/O/VwnBvpQpWYNCvA
         ORS350VqWcXW7cA/ET+I3TBOQvGTuBnGoWW768fRzPx42tusjZOLvu2rdvHo0KWHy4gZUyIKWtJEnVPa
         HEg9MgLuyTHSiLF6c80U3IhyOXkciwYi3aYib6fM6yllJI+pvGzCHbE8bR72f7/XPs7LTWd7kQZZULaW
-        VLXJBN4fYX0Im8+wel2RtfL7bRUz7XLmX2+EL/hsUG32eNcmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+        VLXJBN4fYX0Im8+wel2RtfL7bRUz7XLmX2+EL/hsUG32eNcmAAAACXBIWXMAAAsMAAALDAE/QCLIAAAA
         B3RJTUUH5AcdDgggqHsnrAAAATJJREFUSEu1lT2ugkAUhQeEzsQNsBAa89ZBYaushAWwAiobExO611uw
         JAt/xnOJ11zGoyZmnOQLycnc8xGE0XnvfwoNY0JDpes6l+f5HPyVZeksbD+DhgqKZ1mW7XA9ghWQbITt
         Z9BQaZrGpWm6BR6lF7CJLsD6Bx6SK4pFNErYfgYNFSsIJGu2n0FDZRiGieAuOatEbsDCOmhoCQUCJCeV
@@ -179,7 +179,7 @@
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>346</value>
+    <value>218</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

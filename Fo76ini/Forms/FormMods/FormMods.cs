@@ -22,9 +22,6 @@ namespace Fo76ini
 {
     public partial class FormMods : Form
     {
-        private int selectedIndex = -1;
-        private List<int> selectedIndices = new List<int>();
-
         private bool preventClosing = false;
 
         private GameInstance game;
@@ -43,7 +40,8 @@ namespace Fo76ini
         public FormMods()
         {
             InitializeComponent();
-            InitializeDetailControls();
+            InitializeSidePanelControls();
+            InitializeObjectListView();
 
             // Handle changes:
             ProfileManager.ProfileChanged += OnProfileChanged;
@@ -70,14 +68,6 @@ namespace Fo76ini
 
             this.FormClosing += this.FormMods_FormClosing;
             this.KeyDown += this.FormMods_KeyDown;
-            this.listViewMods.ItemCheck += this.listViewMods_ItemCheck;
-
-            /*
-             * Drag&Drop
-             */
-            this.listViewMods.AllowDrop = true;
-            this.listViewMods.DragEnter += new DragEventHandler(listViewMods_DragEnter);
-            this.listViewMods.DragDrop += new DragEventHandler(listViewMods_DragDrop);
         }
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)
@@ -89,7 +79,7 @@ namespace Fo76ini
         private void FormMods_Load(object sender, EventArgs e)
         {
             Configuration.LoadWindowState("FormMods", this);
-            Configuration.LoadListViewState("FormMods", this.listViewMods);
+            Configuration.LoadListViewState("FormMods.OLV", this.objectListViewMods);
         }
 
         private void FormMods_FormClosing(object sender, FormClosingEventArgs e)
@@ -98,7 +88,7 @@ namespace Fo76ini
             {
                 CloseSidePanel();
                 Configuration.SaveWindowState("FormMods", this);
-                Configuration.SaveListViewState("FormMods", this.listViewMods);
+                Configuration.SaveListViewState("FormMods.OLV", this.objectListViewMods);
                 e.Cancel = true;
                 if (!preventClosing)
                     Hide();
@@ -233,7 +223,6 @@ namespace Fo76ini
         /// </summary>
         private void UpdateUI()
         {
-            UpdateSelectedIndices();
             UpdateModList();
             UpdateSettings();
             UpdateStatusStrip();
@@ -247,265 +236,9 @@ namespace Fo76ini
         /// </summary>
         private void UpdateModList()
         {
-            /*
-             * Iterate one row at a time...
-             */
             isUpdating = true;
-            //UpdateSelectedIndices();
-            this.listViewMods.Items.Clear();
-            for (int i = 0; i < Mods.Count; i++)
-            {
-                /*
-                 * Define sub-items
-                 */
-
-                var type = new ListViewItem.ListViewSubItem();
-                var version = new ListViewItem.ListViewSubItem();
-                var archiveName = new ListViewItem.ListViewSubItem();
-                var rootDir = new ListViewItem.ListViewSubItem();
-                var frozen = new ListViewItem.ListViewSubItem();
-                var archivePreset = new ListViewItem.ListViewSubItem();
-
-
-                /*
-                 * Define styles
-                 */
-
-                Font notApplicable = new Font(
-                    archivePreset.Font.Name,
-                    archivePreset.Font.Size - 1,
-                    FontStyle.Italic,
-                    archivePreset.Font.Unit
-                );
-
-
-                /*
-                 * Get some info
-                 */
-
-                ManagedMod mod = Mods[i];
-                NMMod nmMod = mod.RemoteInfo;
-
-                bool enabled = mod.Enabled;
-
-
-                /*
-                 * Fill sub-items
-                 */
-
-                // Version:
-                if (mod.Version != "")
-                {
-                    if (nmMod != null)
-                    {
-                        if (nmMod.LatestVersion != mod.Version)
-                        {
-                            // Update available:
-                            version.Text = $"{mod.Version} ({nmMod.LatestVersion})";
-                            version.ForeColor = Color.DarkRed;
-                        }
-                        else
-                        {
-                            // Latest version:
-                            version.Text = $"{mod.Version}";
-                            version.ForeColor = Color.DarkGreen;
-                        }
-                    }
-                    else
-                    {
-                        version.Text = $"{mod.Version}";
-                        version.ForeColor = Color.Gray;
-                    }
-                }
-
-                // Frozen?
-                if (mod.Frozen)
-                {
-                    frozen.Text = Localization.GetString("yes"); // "Frozen"
-                    frozen.ForeColor = Color.DarkCyan;
-                }
-                else if (mod.Freeze)
-                {
-                    frozen.Text = Localization.GetString("modTableFrozenPending"); // "Pending"
-                    frozen.ForeColor = Color.DarkBlue;
-                }
-                else
-                    frozen.Text = Localization.GetString("no"); // "Thawed"
-
-                // Archive preset
-                if (mod.Method == ManagedMod.DeploymentMethod.SeparateBA2)
-                {
-                    bool isCompressed = mod.Compression == ManagedMod.ArchiveCompression.Compressed;
-                    switch (mod.Format)
-                    {
-                        case ManagedMod.ArchiveFormat.General:
-                            if (isCompressed)
-                            {
-                                archivePreset.Text = Localization.GetString("modsTablePresetGeneral"); // General
-                                archivePreset.ForeColor = Color.OrangeRed;
-                            }
-                            else
-                            {
-                                archivePreset.Text = Localization.GetString("modsTablePresetSoundFX"); // Sound FX
-                                archivePreset.ForeColor = Color.RoyalBlue;
-                            }
-                            break;
-                        case ManagedMod.ArchiveFormat.Textures:
-                            archivePreset.Text = Localization.GetString("modsTablePresetTextures");    // Textures
-                            archivePreset.ForeColor = Color.DarkGreen;
-                            break;
-                        case ManagedMod.ArchiveFormat.Auto:
-                            archivePreset.Text = Localization.GetString("auto");                       // Auto-detect
-                            archivePreset.ForeColor = Color.DimGray;
-                            break;
-                        default:
-                            archivePreset.Text = Localization.GetString("unknown");                    // Please select
-                            archivePreset.ForeColor = Color.Red;
-                            break;
-                    }
-                    if (mod.Compression == ManagedMod.ArchiveCompression.Auto)
-                    {
-                        archivePreset.Text = Localization.GetString("auto");                           // Auto-detect
-                        archivePreset.ForeColor = Color.DimGray;
-                    }
-                }
-
-                // Fill stuff depending on installation type
-                switch (mod.Method)
-                {
-                    /*
-                     * Bundled *.ba2 archive
-                     */
-                    case ManagedMod.DeploymentMethod.BundledBA2:
-                        // Installation type
-                        type.Text = Localization.GetString("modsTableTypeBundled");
-                        type.ForeColor = Color.OrangeRed;
-
-                        // Archive preset
-                        archivePreset.Text = Localization.GetString("notApplicable");
-                        archivePreset.Font = notApplicable;
-                        archivePreset.ForeColor = Color.Silver;
-
-                        // Archive name
-                        archiveName.Text = "Bundled*.ba2";
-                        archiveName.Font = notApplicable;
-                        archiveName.ForeColor = Color.Silver;
-
-                        // Frozen?
-                        frozen.Text = Localization.GetString("notApplicable");
-                        frozen.Font = notApplicable;
-                        frozen.ForeColor = Color.Silver;
-
-                        // Root dir
-                        rootDir.Text = "Data";
-                        rootDir.Font = notApplicable;
-                        rootDir.ForeColor = Color.Silver;
-                        break;
-
-                    /*
-                     * Separate *.ba2 archive
-                     */
-                    case ManagedMod.DeploymentMethod.SeparateBA2:
-                        // Installation type
-                        if (mod.Freeze)
-                        {
-                            type.Text = Localization.GetString("modsTableTypeSeparateFrozen");
-                            type.ForeColor = Color.Teal;
-                        }
-                        else
-                        {
-                            type.Text = Localization.GetString("modsTableTypeSeparate");
-                            type.ForeColor = Color.Indigo;
-                        }
-
-                        // Archive name
-                        archiveName.Text = mod.ArchiveName;
-
-                        // Root dir
-                        rootDir.Text = "Data";
-                        rootDir.Font = notApplicable;
-                        rootDir.ForeColor = Color.Silver;
-                        break;
-
-                    /*
-                     * Loose files
-                     */
-                    case ManagedMod.DeploymentMethod.LooseFiles:
-                        // Installation type
-                        type.Text = Localization.GetString("modsTableTypeLoose");
-                        type.ForeColor = Color.MediumVioletRed;
-
-                        // Archive preset
-                        archivePreset.Text = Localization.GetString("notApplicable");
-                        archivePreset.Font = notApplicable;
-                        archivePreset.ForeColor = Color.Silver;
-
-                        // Archive name
-                        archiveName.Text = Localization.GetString("notApplicable");
-                        archiveName.Font = notApplicable;
-                        archiveName.ForeColor = Color.Silver;
-
-                        // Frozen?
-                        frozen.Text = Localization.GetString("notApplicable");
-                        frozen.Font = notApplicable;
-                        frozen.ForeColor = Color.Silver;
-
-                        // Root dir
-                        rootDir.Text = mod.RootFolder;
-                        break;
-                }
-
-
-                /*
-                 * Add row with our sub-items
-                 */
-
-                ListViewItem modItem = new ListViewItem(mod.Title, i);
-                modItem.UseItemStyleForSubItems = false;
-                modItem.ForeColor = enabled ? Color.DarkGreen : Color.DarkRed;
-                modItem.SubItems.Add(version);
-                modItem.SubItems.Add(type);
-                //modItem.SubItems.Add(size);
-                modItem.SubItems.Add(rootDir);
-                modItem.SubItems.Add(archiveName);
-                modItem.SubItems.Add(archivePreset);
-                modItem.SubItems.Add(frozen);
-                modItem.Checked = enabled;
-                if (selectedIndex == i)
-                    modItem.Selected = true;
-                if (selectedIndices.Contains(i))
-                    modItem.Selected = true;
-
-                this.listViewMods.Items.Add(modItem);
-            }
+            UpdateObjectListView();
             isUpdating = false;
-        }
-
-        private void UpdateSettings()
-        {
-            this.checkBoxDisableMods.Checked = this.Mods.ModsDisabled;
-            this.checkBoxAddArchivesAsBundled.Checked = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
-            this.checkBoxModsUseHardlinks.Checked = IniFiles.Config.GetBool("Mods", "bUseHardlinks", true);
-            this.checkBoxFreezeBundledArchives.Checked = IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false);
-
-            LoadTextBoxResourceList(Mods.Resources);
-        }
-
-        private void UpdateSelectedIndices()
-        {
-            this.selectedIndices.Clear();
-            foreach (ListViewItem item in this.listViewMods.SelectedItems)
-                this.selectedIndices.Add(item.Index);
-        }
-
-        private void RestoreSelectedIndices()
-        {
-            // Doesn't work.
-            foreach (ListViewItem item in this.listViewMods.Items)
-                if (selectedIndices.Contains(item.Index))
-                    item.Selected = true;
-                else
-                    item.Selected = false;
         }
 
         private void EnableUI()
@@ -516,7 +249,7 @@ namespace Fo76ini
             this.buttonModsDeploy.Enabled = true;
             this.menuStrip1.Enabled = true;
             this.checkBoxDisableMods.Enabled = true;
-            this.listViewMods.Enabled = true;
+            //this.listViewMods.Enabled = true;
             this.toolStrip1.Enabled = true;
             this.preventClosing = false;
             this.timerCheckForNXM.Start();
@@ -534,7 +267,7 @@ namespace Fo76ini
 
         private void DisableUI_SidePanelOpen()
         {
-            this.listViewMods.Enabled = false;
+            //this.listViewMods.Enabled = false;
             this.toolStrip1.Enabled = false;
             this.buttonModsDeploy.Enabled = false;
             this.checkBoxDisableMods.Enabled = false;
@@ -769,7 +502,7 @@ namespace Fo76ini
             }
 
             // These shortcuts only apply to the mod list:
-            if (this.listViewMods.Focused)
+            if (this.objectListViewMods.Focused)
             {
                 if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
                 {
@@ -788,63 +521,13 @@ namespace Fo76ini
                 }
                 else if (e.Control && e.KeyCode == Keys.A)
                 {
-                    // Select all:
-                    foreach (ListViewItem item in this.listViewMods.Items)
-                        item.Selected = true;
-                    UpdateSelectedIndices();
+                    SelectAll();
+                }
+                else if (e.Control && e.KeyCode == Keys.D)
+                {
+                    DeselectAll();
                 }
             }
-        }
-
-        private void listViewMods_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (isUpdating)
-                return;
-
-            if (this.listViewMods.SelectedItems.Count > 0)
-                selectedIndex = this.listViewMods.SelectedItems[0].Index;
-            else
-                selectedIndex = -1;
-
-            // Edit mod:
-            UpdateSelectedIndices();
-            if (selectedIndices.Count() > 0)
-                EditMods(selectedIndices);
-        }
-
-        // Drag & Drop
-        void listViewMods_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
-        }
-
-        void listViewMods_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            InstallBulkThreaded(files);
-        }
-
-        // Mod enabled/disabled
-        private void listViewMods_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (isUpdating)
-                return;
-
-            if (e.NewValue == CheckState.Checked)
-            {
-                Mods.EnableMod(e.Index);
-                listViewMods.Items[e.Index].ForeColor = Color.DarkGreen;
-            }
-            else if (e.NewValue == CheckState.Unchecked)
-            {
-                Mods.DisableMod(e.Index);
-                listViewMods.Items[e.Index].ForeColor = Color.DarkRed;
-            }
-
-            UpdateStatusStrip();
-            if (sidePanelStatus != SidePanelStatus.Closed)
-                UpdateSidePanel();
         }
 
         #endregion
@@ -854,115 +537,28 @@ namespace Fo76ini
         // Open mod folder:
         private void toolStripButtonModOpenFolder_Click(object sender, EventArgs e)
         {
-            UpdateSelectedIndices();
-            if (selectedIndices.Count > 0)
-            {
-                foreach (int index in selectedIndices)
-                {
-                    string path = Mods[index].ManagedFolderPath;
-                    if (Directory.Exists(path))
-                        Utils.OpenExplorer(path);
-                    else
-                        MsgBox.Get("modDirNotExist").FormatText(path).Show(MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                string path = Path.Combine(this.game.GamePath, "Mods");
-                if (Directory.Exists(path))
-                    Utils.OpenExplorer(path);
-            }
+            OpenSelectedModsFolder();
         }
 
         // Move up
         private void toolStripButtonMoveUp_Click(object sender, EventArgs e)
         {
-            UpdateSelectedIndices();
-            //CloseSidePanel();
-            /*if (selectedIndex < 0)
-                return;
-            selectedIndex = ManagedMods.Instance.MoveModUp(selectedIndex);*/
-            List<int> newSelectedIndices = new List<int>();
-            if (selectedIndices.Count <= 0)
-                return;
-            else if (selectedIndices.Count == 1)
-            {
-                selectedIndex = Mods.MoveModUp(selectedIndex);
-                newSelectedIndices.Add(selectedIndex);
-            }
-            else
-            {
-                selectedIndex = -1;
-                selectedIndices = selectedIndices.OrderBy(i => i).ToList();
-                foreach (int index in selectedIndices)
-                    newSelectedIndices.Add(Mods.MoveModUp(index));
-            }
-            selectedIndices = newSelectedIndices;
+            MoveSelectedModsUp();
             UpdateModList();
-            UpdateStatusStrip();
         }
 
         // Move down
         private void toolStripButtonMoveDown_Click(object sender, EventArgs e)
         {
-            UpdateSelectedIndices();
-            //CloseSidePanel();
-            /*if (selectedIndex < 0)
-                return;
-            selectedIndex = ManagedMods.Instance.MoveModDown(selectedIndex);*/
-            List<int> newSelectedIndices = new List<int>();
-            if (selectedIndices.Count <= 0)
-                return;
-            else if (selectedIndices.Count == 1)
-            {
-                selectedIndex = Mods.MoveModDown(selectedIndex);
-                newSelectedIndices.Add(selectedIndex);
-            }
-            else
-            {
-                selectedIndex = -1;
-                selectedIndices = selectedIndices.OrderByDescending(i => i).ToList();
-                foreach (int index in selectedIndices)
-                    newSelectedIndices.Add(Mods.MoveModDown(index));
-            }
-            selectedIndices = newSelectedIndices;
+            MoveSelectedModsDown();
             UpdateModList();
-            UpdateStatusStrip();
         }
 
         // Check/uncheck all
         private void toolStripButtonCheckAll_Click(object sender, EventArgs e)
         {
-            UpdateSelectedIndices();
-            bool state = false;
-            if (this.listViewMods.SelectedItems.Count <= 1)
-            {
-                selectedIndex = -1;
-                foreach (ListViewItem item in this.listViewMods.Items)
-                {
-                    if (!item.Checked)
-                    {
-                        state = true;
-                        break;
-                    }
-                }
-                foreach (ManagedMod mod in Mods)
-                    mod.Enabled = state;
-            }
-            else
-            {
-                foreach (ListViewItem item in this.listViewMods.SelectedItems)
-                {
-                    if (!item.Checked)
-                    {
-                        state = true;
-                        break;
-                    }
-                }
-                foreach (ListViewItem item in this.listViewMods.SelectedItems)
-                    Mods[item.Index].Enabled = state;
-            }
-            UpdateSelectedIndices();
+            ToggleCheckboxes();
+
             UpdateModList();
             UpdateStatusStrip();
             if (sidePanelStatus != SidePanelStatus.Closed)
@@ -972,63 +568,21 @@ namespace Fo76ini
         // Delete mod
         private void toolStripButtonDeleteMod_Click(object sender, EventArgs e)
         {
-            if (selectedIndex < 0)
-                return;
-            if (this.listViewMods.SelectedItems.Count > 1)
-            {
-                string count = this.listViewMods.SelectedItems.Count.ToString();
-                DialogResult res = MsgBox.Get("deleteMultipleQuestion").FormatTitle(count).FormatText(count).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (res == DialogResult.Yes)
-                {
-                    List<int> indices = new List<int>();
-                    foreach (ListViewItem item in this.listViewMods.SelectedItems)
-                        indices.Add(item.Index);
-                    DeleteModsBulkThreaded(indices);
-                }
-            }
-            else
-            {
-                ManagedMod mod = Mods[selectedIndex];
-                DialogResult res = MsgBox.Get("deleteQuestion").FormatTitle(mod.Title).FormatText(mod.Title).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (res == DialogResult.Yes)
-                    DeleteModThreaded(selectedIndex);
-            }
+            DeleteSelectedMods();
         }
 
         // Freeze mod(s)
         private void toolStripButtonFreeze_Click(object sender, EventArgs e)
         {
-            if (selectedIndex < 0)
-                return;
-            if (this.listViewMods.SelectedItems.Count > 1)
-            {
-                foreach (ListViewItem item in this.listViewMods.SelectedItems)
-                    Mods[item.Index].Freeze = true;
-            }
-            else
-            {
-                Mods[selectedIndex].Freeze = true;
-            }
+            FreezeSelectedMods();
             UpdateModList();
-            UpdateStatusStrip();
         }
 
         // Unfreeze mod(s)
         private void toolStripButtonModUnfreeze_Click(object sender, EventArgs e)
         {
-            if (selectedIndex < 0)
-                return;
-            if (this.listViewMods.SelectedItems.Count > 1)
-            {
-                foreach (ListViewItem item in this.listViewMods.SelectedItems)
-                    Mods[item.Index].Freeze = false;
-            }
-            else
-            {
-                Mods[selectedIndex].Freeze = false;
-            }
+            UnfreezeSelectedMods();
             UpdateModList();
-            UpdateStatusStrip();
         }
 
         // Add mod archive
@@ -1138,26 +692,6 @@ namespace Fo76ini
                 UpdateSidePanel();
         }
 
-        // View > Show loading animation
-        private void showLoadingAnimationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            RunThreaded(() => {
-                ShowLoadingUI();
-            }, () => {
-                for (int i = 1; i <= 5 * 2; i++)
-                {
-                    this.progressBarMods.Invoke(new Action(() => {
-                        this.progressBarMods.Value = (int)((float)i * 100 / 10);
-                    }));
-                    Thread.Sleep(500);
-                }
-                return true;
-            }, (success) => {
-                this.progressBarMods.Value = 0;
-                EnableUI();
-            });
-        }
-
         // Tools > Archive2 > Open Archive2
         private void openArchive2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1221,70 +755,6 @@ namespace Fo76ini
 
 
         /*
-         * Settings
-         */
-
-        #region Resource list textboxes
-        private void LoadTextBoxResourceList(ResourceList list)
-        {
-            this.textBoxResourceList.Text = list.ToString("\n").Replace("\n", "\r\n");
-        }
-
-        // Clean lists
-        private void buttonModsCleanList_Click(object sender, EventArgs e)
-        {
-            // Load list:
-            ResourceList list = ResourceList.FromString(this.textBoxResourceList.Text.Replace("\r\n", "\n"));
-
-            // Remove non-existing files:
-            list.CleanUp(this.game.GamePath);
-
-            LoadTextBoxResourceList(list);
-        }
-
-        // Apply changes
-        private void buttonModsApplyTextBox_Click(object sender, EventArgs e)
-        {
-            ResourceList list = ResourceList.FromString(this.textBoxResourceList.Text.Replace("\r\n", "\n"));
-            Mods.Resources.ReplaceRange(list);
-            Mods.Save();
-            LoadTextBoxResourceList(Mods.Resources);
-        }
-
-        // Reset
-        private void buttonModsResetTextbox_Click(object sender, EventArgs e)
-        {
-            LoadTextBoxResourceList(Mods.Resources);
-        }
-
-        #endregion
-
-        #region Settings - Checkboxes
-        // Alternative *.ba2 import method
-        private void checkBoxAddArchivesAsBundled_CheckedChanged(object sender, EventArgs e)
-        {
-            IniFiles.Config.Set("Mods", "bUnpackBA2ByDefault", this.checkBoxAddArchivesAsBundled.Checked);
-            IniFiles.Config.Save();
-        }
-
-        // Hard links
-        private void checkBoxModsUseHardlinks_CheckedChanged(object sender, EventArgs e)
-        {
-            IniFiles.Config.Set("Mods", "bUseHardlinks", this.checkBoxModsUseHardlinks.Checked);
-            IniFiles.Config.Save();
-        }
-
-        // Freeze bundled archives
-        private void checkBoxFreezeBundledArchives_CheckedChanged(object sender, EventArgs e)
-        {
-            IniFiles.Config.Set("Mods", "bFreezeBundledArchives", this.checkBoxFreezeBundledArchives.Checked);
-            IniFiles.Config.Save();
-        }
-        #endregion
-
-
-
-        /*
          **********************************************************************************
          * Threaded methods
          **********************************************************************************
@@ -1329,11 +799,7 @@ namespace Fo76ini
             }, (success) => {
                 EnableUI();
                 if (success)
-                {
-                    selectedIndex = Mods.Count - 1;
-                    selectedIndices.Clear();
-                    selectedIndices.Add(selectedIndex);
-                }
+                    SetSelectedIndex(Mods.Count - 1);
                 UpdateModList();
                 UpdateStatusStrip();
             });
@@ -1371,11 +837,7 @@ namespace Fo76ini
             }, (success) => {
                 EnableUI();
                 if (success)
-                {
-                    selectedIndex = Mods.Count - 1;
-                    selectedIndices.Clear();
-                    selectedIndices.Add(selectedIndex);
-                }
+                    SetSelectedIndex(Mods.Count - 1);
                 UpdateModList();
                 UpdateStatusStrip();
             });
@@ -1420,8 +882,7 @@ namespace Fo76ini
                 EnableUI();
                 if (success)
                 {
-                    selectedIndex = -1;
-                    selectedIndices.Clear();
+                    DeselectAll();
                     UpdateProgress(Progress.Done("Mods imported."));
                 }
                 UpdateModList();
@@ -1455,10 +916,7 @@ namespace Fo76ini
             }, (success) => {
                 EnableUI();
                 if (success)
-                {
-                    selectedIndex = -1;
-                    selectedIndices.Clear();
-                }
+                    DeselectAll();
                 UpdateUI();
             });
         }
@@ -1474,10 +932,7 @@ namespace Fo76ini
             }, (success) => {
                 EnableUI();
                 if (success)
-                {
-                    selectedIndex = -1;
-                    selectedIndices.Clear();
-                }
+                    DeselectAll();
                 UpdateUI();
             });
         }

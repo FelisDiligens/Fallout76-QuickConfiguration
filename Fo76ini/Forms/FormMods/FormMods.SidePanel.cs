@@ -24,27 +24,37 @@ namespace Fo76ini
         }
 
         private SidePanelStatus sidePanelStatus = SidePanelStatus.Closed;
-
         private bool isUpdatingSidePanel = false;
-        private int editedModCount = 1;
+        private List<ManagedMod> editedMods;
+
+        private int editedModCount
+        {
+            get { return editedMods.Count; }
+        }
 
         private ManagedMod editedMod
         {
-            get { return Mods[editedIndex]; }
+            get
+            {
+                if (editedModCount == 1)
+                    return editedMods[0];
+                return null;
+            }
+            set
+            {
+                this.editedMods = new List<ManagedMod> { value };
+            }
         }
 
-        private bool editingBulk
+        private bool isEditingBulk
         {
             get { return editedModCount > 1; }
         }
 
-        private int editedIndex;
-        private List<int> editedIndices;
-
         /// <summary>
         /// Sets up elements, adds event handlers, etc.
         /// </summary>
-        private void InitializeDetailControls()
+        private void InitializeSidePanelControls()
         {
             DropDown.Add("ModInstallAs", new DropDown(
                 this.comboBoxModInstallAs,
@@ -97,41 +107,68 @@ namespace Fo76ini
             UpdateSidePanelGroupBoxesWidth();
         }
 
-        private void EditMod(int index)
+        // TODO: Remove
+        private void old_EditMod(int index)
         {
-            this.editedIndex = index;
-            this.editedIndices = new List<int> { index };
-            this.editedModCount = 1;
-
-            if (editedIndex < 0 || editedIndex >= Mods.Count())
+            if (index < 0 || index >= Mods.Count())
             {
                 CloseSidePanel();
                 return;
             }
 
+            this.EditMod(Mods[index]);
+        }
+
+        /// <summary>
+        /// Edit the mod in the side panel.
+        /// Updates and opens the side panel automatically.
+        /// </summary>
+        /// <param name="mod"></param>
+        private void EditMod(ManagedMod mod)
+        {
+            this.editedMod = mod;
+
             UpdateSidePanel();
+
+            // Only expand, if the user hasn't collapsed it yet:
             if (sidePanelStatus == SidePanelStatus.Closed)
                 ExpandSidePanel();
         }
 
-        private void EditMods(List<int> indices)
+        // TODO: Remove
+        private void old_EditMods(List<int> indices)
         {
-            this.editedIndex = -1;
-            this.editedIndices = indices.ToList();
-            this.editedModCount = editedIndices.Count();
+            List<ManagedMod> mods = new List<ManagedMod>();
+            foreach (int index in indices.ToList())
+            {
+                mods.Add(Mods[index]);
+            }
+            this.EditMods(mods);
+        }
 
-            if (this.editedModCount <= 0)
+        /// <summary>
+        /// Edit the mods in the side panel.
+        /// Updates and opens the side panel automatically.
+        /// </summary>
+        /// <param name="mods"></param>
+        private void EditMods(List<ManagedMod> mods)
+        {
+            if (mods.Count <= 0)
             {
                 CloseSidePanel();
                 return;
             }
-            else if (this.editedModCount == 1)
+            else if (mods.Count == 1)
             {
-                EditMod(editedIndices[0]);
+                EditMod(mods[0]);
                 return;
             }
 
+            this.editedMods = mods;
+
             UpdateSidePanel();
+
+            // Only expand, if the user hasn't collapsed it yet:
             if (sidePanelStatus == SidePanelStatus.Closed)
                 ExpandSidePanel();
         }
@@ -141,6 +178,7 @@ namespace Fo76ini
             Side panel
         */
 
+        // Toggle the side panel, when the user clicks on the "<-" or "->" button.
         private void pictureBoxCollapseDetails_Click(object sender, EventArgs e)
         {
             if (sidePanelStatus != SidePanelStatus.Expanded)
@@ -158,7 +196,7 @@ namespace Fo76ini
             this.panelModDetails.Visible = false;
 
             int tabWidth = this.tabPageModOrder.Width;
-            this.listViewMods.Width = tabWidth - this.listViewMods.Location.X;
+            this.objectListViewMods.Width = tabWidth - this.objectListViewMods.Location.X;
 
             // Reset image, so the thumbnail gets unloaded:
             this.pictureBoxModThumbnail.Image = Resources.bg;
@@ -178,7 +216,7 @@ namespace Fo76ini
             int tabWidth = this.tabPageModOrder.Width;
             int buttonWidth = this.pictureBoxCollapseDetails.Width;
             this.pictureBoxCollapseDetails.Location = new Point(tabWidth - buttonWidth, this.pictureBoxCollapseDetails.Location.Y);
-            this.listViewMods.Width = tabWidth - this.listViewMods.Location.X - buttonWidth + 1;
+            this.objectListViewMods.Width = tabWidth - this.objectListViewMods.Location.X - buttonWidth + 1;
 
             sidePanelStatus = SidePanelStatus.Collapsed;
         }
@@ -196,7 +234,7 @@ namespace Fo76ini
             int buttonWidth = this.pictureBoxCollapseDetails.Width;
             int panelWidth = this.panelModDetails.Width;
             this.pictureBoxCollapseDetails.Location = new Point(tabWidth - panelWidth - buttonWidth + 1, this.pictureBoxCollapseDetails.Location.Y);
-            this.listViewMods.Width = tabWidth - this.listViewMods.Location.X - panelWidth - buttonWidth + 2;
+            this.objectListViewMods.Width = tabWidth - this.objectListViewMods.Location.X - panelWidth - buttonWidth + 2;
 
             sidePanelStatus = SidePanelStatus.Expanded;
 
@@ -210,14 +248,14 @@ namespace Fo76ini
 
         public void UpdateSidePanel()
         {
-            if (!editingBulk && (editedIndex < 0 || editedIndex >= Mods.Count()))
+            if (!isEditingBulk && editedMod == null)
                 return;
-            if (editingBulk && editedIndices.Count() < 0)
+            if (isEditingBulk && editedModCount <= 0)
                 return;
 
             isUpdatingSidePanel = true;
 
-            if (editingBulk)
+            if (isEditingBulk)
                 UpdateSidePanelBulk();
             else
                 UpdateSidePanelOneMod();
@@ -510,7 +548,7 @@ namespace Fo76ini
         /// </summary>
         private void UpdateWarningLabel()
         {
-            if (editingBulk)
+            if (isEditingBulk)
             {
                 this.labelModInstallWarning.Text = "";
                 this.labelModInstallWarning.Visible = false;
@@ -644,26 +682,25 @@ namespace Fo76ini
         {
             if (isUpdatingSidePanel)
                 return;
-            foreach (int index in editedIndices)
+            foreach (ManagedMod mod in editedMods)
             {
-                ManagedMod editedMod = Mods[index];
                 switch (this.comboBoxModInstallAs.SelectedIndex)
                 {
                     case 0: // Bundled *.ba2 archive
-                        editedMod.Method = ManagedMod.DeploymentMethod.BundledBA2;
+                        mod.Method = ManagedMod.DeploymentMethod.BundledBA2;
                         break;
                     case 1: // Separate *.ba2 archive
-                        editedMod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
+                        mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
                         break;
                     case 2: // Loose files
-                        editedMod.Method = ManagedMod.DeploymentMethod.LooseFiles;
+                        mod.Method = ManagedMod.DeploymentMethod.LooseFiles;
                         break;
                 }
-                if (editedMod.Frozen && (editedMod.Method != ManagedMod.DeploymentMethod.SeparateBA2 &&
-                    editedMod.PreviousMethod == ManagedMod.DeploymentMethod.SeparateBA2))
-                    ModActions.Unfreeze(editedMod);
+                if (mod.Frozen && (mod.Method != ManagedMod.DeploymentMethod.SeparateBA2 &&
+                    mod.PreviousMethod == ManagedMod.DeploymentMethod.SeparateBA2))
+                    ModActions.Unfreeze(mod);
             }
-            if (!editingBulk)
+            if (!isEditingBulk)
                 UpdateSidePanel();
             UpdateModList();
             UpdateStatusStrip();
@@ -676,35 +713,34 @@ namespace Fo76ini
         {
             if (isUpdatingSidePanel)
                 return;
-            foreach (int index in editedIndices)
+            foreach (ManagedMod mod in editedMods)
             {
-                ManagedMod editedMod = Mods[index];
                 switch (this.comboBoxModArchivePreset.SelectedIndex)
                 {
                     case 0: // Please select
                     case 1: // Auto-detect
-                        editedMod.Format = ManagedMod.ArchiveFormat.Auto;
-                        editedMod.Compression = ManagedMod.ArchiveCompression.Auto;
+                        mod.Format = ManagedMod.ArchiveFormat.Auto;
+                        mod.Compression = ManagedMod.ArchiveCompression.Auto;
                         break;
                     case 2: // General
-                        editedMod.Format = ManagedMod.ArchiveFormat.General;
-                        editedMod.Compression = ManagedMod.ArchiveCompression.Compressed;
+                        mod.Format = ManagedMod.ArchiveFormat.General;
+                        mod.Compression = ManagedMod.ArchiveCompression.Compressed;
                         break;
                     case 3: // Textures
-                        editedMod.Format = ManagedMod.ArchiveFormat.Textures;
-                        editedMod.Compression = ManagedMod.ArchiveCompression.Compressed;
+                        mod.Format = ManagedMod.ArchiveFormat.Textures;
+                        mod.Compression = ManagedMod.ArchiveCompression.Compressed;
                         break;
                     case 4: // Audio
-                        editedMod.Format = ManagedMod.ArchiveFormat.General;
-                        editedMod.Compression = ManagedMod.ArchiveCompression.Uncompressed;
+                        mod.Format = ManagedMod.ArchiveFormat.General;
+                        mod.Compression = ManagedMod.ArchiveCompression.Uncompressed;
                         break;
                 }
-                if (editedMod.Frozen &&
-                    (editedMod.Format != editedMod.CurrentFormat ||
-                     editedMod.Compression != editedMod.CurrentCompression))
-                    ModActions.Unfreeze(editedMod);
+                if (mod.Frozen &&
+                    (mod.Format != mod.CurrentFormat ||
+                     mod.Compression != mod.CurrentCompression))
+                    ModActions.Unfreeze(mod);
             }
-            if (!editingBulk)
+            if (!isEditingBulk)
                 UpdateSidePanel();
             UpdateModList();
             UpdateStatusStrip();
@@ -722,8 +758,8 @@ namespace Fo76ini
             {
                 string rootFolder = Utils.MakeRelativePath(this.Mods.GamePath, this.folderBrowserDialogPickRootDir.SelectedPath);
                 this.textBoxModRootDir.Text = rootFolder;
-                foreach (int index in editedIndices)
-                    Mods[index].RootFolder = rootFolder;
+                foreach (ManagedMod mod in editedMods)
+                    mod.RootFolder = rootFolder;
             }
             UpdateModList();
             UpdateStatusStrip();
@@ -737,8 +773,8 @@ namespace Fo76ini
             if (isUpdatingSidePanel)
                 return;
             if (this.textBoxModRootDir.Focused)
-                foreach (int index in editedIndices)
-                    Mods[index].RootFolder = this.textBoxModRootDir.Text;
+                foreach (ManagedMod mod in editedMods)
+                    mod.RootFolder = this.textBoxModRootDir.Text;
             UpdateModList();
             UpdateStatusStrip();
             UpdateWarningLabel();
@@ -796,8 +832,8 @@ namespace Fo76ini
         {
             if (isUpdatingSidePanel)
                 return;
-            foreach (int index in editedIndices)
-                Mods[index].Freeze = this.checkBoxFreezeArchive.Checked;
+            foreach (ManagedMod mod in editedMods)
+                mod.Freeze = this.checkBoxFreezeArchive.Checked;
             UpdateModList();
             UpdateStatusStrip();
             Mods.Save();
@@ -864,7 +900,7 @@ namespace Fo76ini
         // Set latest version
         private void linkLabelModSetLatestVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (!editingBulk && editedMod.RemoteInfo != null && editedMod.RemoteInfo.LatestVersion != "")
+            if (!isEditingBulk && editedMod.RemoteInfo != null && editedMod.RemoteInfo.LatestVersion != "")
             {
                 this.editedMod.Version = editedMod.RemoteInfo.LatestVersion;
                 this.textBoxModVersion.Text = editedMod.RemoteInfo.LatestVersion;
@@ -900,12 +936,12 @@ namespace Fo76ini
         // Auto-detect installation options
         private void linkLabelModAutoDetectInstallOptions_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (!editingBulk)
+            if (!isEditingBulk)
                 ModActions.DetectOptimalModInstallationOptions(editedMod);
             else
             {
-                foreach (int index in editedIndices)
-                    ModActions.DetectOptimalModInstallationOptions(Mods[index]);
+                foreach (ManagedMod mod in editedMods)
+                    ModActions.DetectOptimalModInstallationOptions(mod);
             }
             UpdateSidePanel();
             UpdateModList();
@@ -914,7 +950,7 @@ namespace Fo76ini
         // Invalidate frozen archive
         private void linkLabelModInvalidateFrozenArchive_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (editingBulk)
+            if (isEditingBulk)
                 return;
             editedMod.Frozen = false;
             UpdateModList();
@@ -928,7 +964,7 @@ namespace Fo76ini
 
         private void buttonModEndorse_Click(object sender, EventArgs e)
         {
-            if (editingBulk)
+            if (isEditingBulk)
                 return;
 
             if (this.editedMod.Version == "")
@@ -950,7 +986,7 @@ namespace Fo76ini
 
         private void buttonModAbstain_Click(object sender, EventArgs e)
         {
-            if (editingBulk)
+            if (isEditingBulk)
                 return;
 
             if (this.editedMod.Version == "")
@@ -1072,7 +1108,7 @@ namespace Fo76ini
 
         private void AddToModBulk(string[] files, Action<Progress> ProgressChanged = null)
         {
-            if (editingBulk)
+            if (isEditingBulk)
                 return;
             int i = 0;
             string phaseStr = "Importing {0} of {1} files/folders - {2}";

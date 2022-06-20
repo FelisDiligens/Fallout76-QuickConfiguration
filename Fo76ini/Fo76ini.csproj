@@ -83,6 +83,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -135,6 +136,9 @@
     </Compile>
     <Compile Include="Forms\FormIniError\FormIniError.Designer.cs">
       <DependentUpon>FormIniError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMods\FormMods.Settings.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormSettings\FormSettings.cs">
       <SubType>Form</SubType>
@@ -309,7 +313,7 @@
     <Compile Include="Forms\FormMods\FormMods.Designer.cs">
       <DependentUpon>FormMods.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMods\FormMods.Details.cs">
+    <Compile Include="Forms\FormMods\FormMods.SidePanel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormWhatsNew\FormWhatsNew.cs">
@@ -388,6 +392,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
+    <Compile Include="Forms\FormMods\FormMods.ModList.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -500,6 +507,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ObjectListView\ObjectListView2012.csproj">
+      <Project>{18FEDA0C-D147-4286-B39A-01204808106A}</Project>
+      <Name>ObjectListView2012</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
