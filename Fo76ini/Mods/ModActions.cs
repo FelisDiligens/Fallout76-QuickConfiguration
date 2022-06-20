@@ -18,15 +18,19 @@ namespace Fo76ini.Mods
         private static void DeleteFiles(ManagedMod mod)
         {
             // Delete managed folder:
-            if (Directory.Exists(mod.ManagedFolderPath))
-                Directory.Delete(mod.ManagedFolderPath, true);
+            DirectoryInfo managedFolder = new DirectoryInfo(mod.ManagedFolderPath);
+            if (managedFolder.Exists)
+            {
+                Utils.SetAttributesNormal(managedFolder); // Workaround for "System.UnauthorizedAccessException" when trying to delete a folder.
+                managedFolder.Delete(true);
+            }
 
             // Delete frozen archive:
-            if (/*mod.Frozen &&
-                mod.PreviousMethod == ManagedMod.DeploymentMethod.SeparateBA2 &&*/
-                File.Exists(mod.FrozenArchivePath))
+            FileInfo frozenArchiveFile = new FileInfo(mod.FrozenArchivePath);
+            if (frozenArchiveFile.Exists)
             {
-                File.Delete(mod.FrozenArchivePath);
+                Utils.SetAttributesNormal(frozenArchiveFile);
+                frozenArchiveFile.Delete();
             }
         }
 

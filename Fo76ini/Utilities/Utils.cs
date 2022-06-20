@@ -885,5 +885,33 @@ namespace Fo76ini.Utilities
             }
             return false;
         }
+
+        /// <summary>
+        /// Workaround for "System.UnauthorizedAccessException" when trying to delete a folder.
+        /// https://stackoverflow.com/questions/1701457/directory-delete-doesnt-work-access-denied-error-but-under-windows-explorer-it
+        /// </summary>
+        /// <param name="dir"></param>
+        public static void SetAttributesNormal(DirectoryInfo dir)
+        {
+            foreach (var subDir in dir.GetDirectories())
+            {
+                Utils.SetAttributesNormal(subDir);
+                subDir.Attributes = FileAttributes.Normal;
+            }
+            foreach (var file in dir.GetFiles())
+            {
+                Utils.SetAttributesNormal(file);
+            }
+        }
+
+        /// <summary>
+        /// Workaround for "System.UnauthorizedAccessException" when trying to delete a file.
+        /// https://stackoverflow.com/questions/1701457/directory-delete-doesnt-work-access-denied-error-but-under-windows-explorer-it
+        /// </summary>
+        /// <param name="file"></param>
+        public static void SetAttributesNormal(FileInfo file)
+        {
+            file.Attributes = FileAttributes.Normal;
+        }
     }
 }
