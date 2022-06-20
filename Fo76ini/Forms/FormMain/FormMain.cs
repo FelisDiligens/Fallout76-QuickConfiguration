@@ -2,7 +2,6 @@
 using Fo76ini.Forms.FormSettings;
 using Fo76ini.Forms.FormTextPrompt;
 using Fo76ini.Forms.FormWelcome;
-using Fo76ini.Forms.FormWhatsNew;
 using Fo76ini.Ini;
 using Fo76ini.Interface;
 using Fo76ini.Mods;
@@ -19,6 +18,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -28,7 +28,6 @@ namespace Fo76ini
     public partial class FormMain : Form
     {
         private FormMods formMods;
-        private FormWhatsNew formWhatsNew = new FormWhatsNew();
         private FormWelcome formWelcome = new FormWelcome();
         private FormSettings formSettings;
 
@@ -74,7 +73,8 @@ namespace Fo76ini
                 "toolStripStatusLabelGameText",
                 "toolStripStatusLabelEditionText",
                 "toolStripStatusLabel1",
-                "labelPipboyResolutionSpacer"
+                "labelPipboyResolutionSpacer",
+                "richTextBoxWhatsNew"
             });
 
 
@@ -350,6 +350,9 @@ namespace Fo76ini
             this.LoadGallery();
 
             MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
+
+            // What's new:
+            LoadWhatsNew();
         }
 
         private void FormMain_Shown(object sender, EventArgs e)
@@ -360,10 +363,6 @@ namespace Fo76ini
 
             // Check for updates
             CheckVersion();
-
-            // Display "What's new?" dialog
-            if (!IniFiles.Config.GetBool("Preferences", "bIgnoreUpdates", false))
-                ShowWhatsNewConditionally();
 
             IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
 
@@ -465,27 +464,6 @@ namespace Fo76ini
             }
         }
 
-        private void ShowWhatsNewConditionally()
-        {
-            /*
-             * Show "What's new" dialog when:
-             * -> What's new dialog hasn't been disabled AND
-             * -> The previously opened version is older than the current one AND
-             * -> There is no newer version available AND
-             * -> The tool hasn't been started for the first time.
-             */
-            if (!IniFiles.Config.GetBool("Preferences", "bDisableWhatsNew", false) &&
-                Utils.CompareVersions(Shared.VERSION, IniFiles.Config.GetString("General", "sPreviousVersion", "1.0.0")) > 0 &&
-                (Shared.LatestVersion == null || Utils.CompareVersions(Shared.LatestVersion, Shared.VERSION) == 0) &&
-                !FirstStart)
-                ShowWhatsNew();
-        }
-
-        private void ShowWhatsNew()
-        {
-            this.formWhatsNew.ShowDialog();
-        }
-
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -581,9 +559,6 @@ namespace Fo76ini
 
         private void OnNWModeUpdated(object sender, NuclearWinterEventArgs e)
         {
-            this.labelNWModeActive.Invoke(new Action(() => {
-                UpdateNWModeUI(e.NuclearWinterModeEnabled);
-            }));
         }
         
         private void UpdateNWModeUI (bool nwModeEnabled)
@@ -599,7 +574,6 @@ namespace Fo76ini
                 this.toolStripButtonToggleNuclearWinterMode.Image = Resources.fire;
             }
 
-            this.labelNWModeActive.Visible = nwModeEnabled;
             this.toolStripStatusLabelNuclearWinterModeActive.Visible = nwModeEnabled;
 
             this.toolStripButtonToggleNuclearWinterMode.Visible = nwModeEnabled || IniFiles.Config.GetBool("NuclearWinter", "bShowNWModeBtn", false);
@@ -835,16 +809,6 @@ namespace Fo76ini
                     !Utils.IsProcessRunning("Fallout76"))
                     MsgBox.Get("iniFilesModified").Popup(MessageBoxIcon.Warning);
             }
-        }
-
-        private void linkLabelAttribution_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Utils.OpenNotepad(@"Attribution.txt");
-        }
-
-        private void linkLabelWhatsNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            ShowWhatsNew();
         }
 
         private void MakePictureBoxButton(PictureBox pictureBox, string localizedStringID)
@@ -1192,6 +1156,38 @@ namespace Fo76ini
             this.cameraOverShoulderMeleeCombatPosZTweak.ResetValue();
             this.cameraOverShoulderMeleeCombatAddYTweak.ResetValue();
             LinkedTweaks.LoadValues();
+        }
+
+        /*
+         * What's new:
+         */
+
+        private void LoadWhatsNew()
+        {
+            string WhatsNewTestFile = Path.Combine(Shared.AppConfigFolder, "What's new.rtf");
+            if (File.Exists(WhatsNewTestFile))
+                this.richTextBoxWhatsNew.LoadFile(WhatsNewTestFile);
+            else
+                this.backgroundWorkerDownloadRTF.RunWorkerAsync();
+        }
+
+        private void backgroundWorkerDownloadRTF_DoWork(object sender, DoWorkEventArgs ev)
+        {
+            try
+            {
+                WebClient wc = new WebClient();
+                byte[] raw = wc.DownloadData(Shared.URLs.RemoteWhatsNewRTFURL);
+                ev.Result = (object)Encoding.UTF8.GetString(raw).Trim();
+            }
+            catch (Exception ex)
+            {
+                ev.Result = (object)$"{{\\rtf1Couldn't retrieve 'What's new.rtf': \"{ex.GetType().Name}: {ex.Message}\"}}";
+            }
+        }
+
+        private void backgroundWorkerDownloadRTF_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs ev)
+        {
+            this.richTextBoxWhatsNew.Rtf = (string)ev.Result;
         }
     }
 }
