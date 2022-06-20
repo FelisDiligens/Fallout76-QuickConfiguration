@@ -1,4 +1,4 @@
-﻿using Fo76ini.Forms.Form1;
+﻿using Fo76ini.Controls;
 using Fo76ini.Tweaks.Video;
 using Fo76ini.Utilities;
 using System;

@@ -289,9 +289,8 @@ namespace Fo76ini
 
             InitAccountProfileRadiobuttons();
 
-            // Pipboy screen preview:
-            InitPipboyScreen();
-            this.colorPreviewPipboy.BackColorChanged += colorPreviewPipboy_BackColorChanged;
+            // Pipboy:
+            InitPipboy();
 
             // Danger Zone:
             this.tabControl1.TabPages.Remove(this.tabPageDangerZone);
@@ -316,6 +315,7 @@ namespace Fo76ini
             LinkInfo();
             LinkSliders();
             LinkControlsToTweaks();
+            LinkPipboyControls();
 
             // Load config.ini
             IniFiles.LoadConfig();
@@ -1180,38 +1180,6 @@ namespace Fo76ini
 
         #endregion
 
-        #region Pipboy
-
-        private void buttonPresetFo3Green_Click(object sender, EventArgs e)
-        {
-            this.colorPreviewPipboy.BackColor = Color.FromArgb(26, 255, 128);
-        }
-
-        private void buttonPresetFoNVAmber_Click(object sender, EventArgs e)
-        {
-            this.colorPreviewPipboy.BackColor = Color.FromArgb(255, 182, 66);
-        }
-
-        private void buttonPresetFo3Blue_Click(object sender, EventArgs e)
-        {
-            this.colorPreviewPipboy.BackColor = Color.FromArgb(46, 207, 255);
-        }
-
-        private void buttonPresetFo3White_Click(object sender, EventArgs e)
-        {
-            this.colorPreviewPipboy.BackColor = Color.FromArgb(192, 255, 255);
-        }
-
-        private void buttonPresetFo4Green_Click(object sender, EventArgs e)
-        {
-            this.colorPreviewPipboy.BackColor = Color.FromArgb(18, 255, 21);
-        }
-
-        private void buttonPresetFo76Green_Click(object sender, EventArgs e)
-        {
-            this.colorPreviewPipboy.BackColor = Color.FromArgb(26, 255, 128);
-        }
-
         private void buttonCameraPositionReset_Click(object sender, EventArgs e)
         {
             this.applyCameraNodeAnimationsTweak.ResetValue();
@@ -1225,63 +1193,5 @@ namespace Fo76ini
             this.cameraOverShoulderMeleeCombatAddYTweak.ResetValue();
             LinkedTweaks.LoadValues();
         }
-
-
-        private PictureBox maskedPipScreen;
-        private PictureBox colorizedPipScreen;
-
-        private void InitPipboyScreen()
-        {
-            maskedPipScreen = new PictureBox();
-            maskedPipScreen.Image = Resources.pipboy_preview_fg_masked;
-            maskedPipScreen.SizeMode = this.pictureBoxPipboyPreview.SizeMode;
-            maskedPipScreen.Size = this.pictureBoxPipboyPreview.Size;
-
-            colorizedPipScreen = new PictureBox();
-            colorizedPipScreen.Image = Resources.pipboy_preview_fg;
-            colorizedPipScreen.SizeMode = this.pictureBoxPipboyPreview.SizeMode;
-            colorizedPipScreen.Size = this.pictureBoxPipboyPreview.Size;
-
-            colorizedPipScreen.Controls.Add(maskedPipScreen);
-            this.pictureBoxPipboyPreview.Controls.Add(colorizedPipScreen);
-        }
-
-        private void UpdatePipboyScreen(Color targetColor)
-        {
-            Bitmap bmp = new Bitmap(Resources.pipboy_preview_fg);
-            for (int x = 0; x < bmp.Width; x++)
-            {
-                for (int y = 0; y < bmp.Height; y++)
-                {
-                    Color oldColor = bmp.GetPixel(x, y);
-                    int r = (int)Utils.Clamp(oldColor.R / 255.0 * targetColor.R, 0, 255);
-                    int g = (int)Utils.Clamp(oldColor.G / 255.0 * targetColor.G, 0, 255);
-                    int b = (int)Utils.Clamp(oldColor.B / 255.0 * targetColor.B, 0, 255);
-                    Color newColor = Color.FromArgb(oldColor.A, r, g, b);
-                    bmp.SetPixel(x, y, newColor);
-                }
-            }
-            colorizedPipScreen.Image = bmp;
-        }
-
-        private void colorPreviewPipboy_BackColorChanged(object sender, EventArgs e)
-        {
-            UpdatePipboyScreen(this.colorPreviewPipboy.BackColor);
-        }
-
-        private void buttonPipboyTargetReset_Click(object sender, EventArgs e)
-        {
-            this.numPipboyTargetWidth.Value = 876;
-            this.numPipboyTargetHeight.Value = 700;
-        }
-
-        private void buttonPipboyTargetSetRecommended_Click(object sender, EventArgs e)
-        {
-            this.numPipboyTargetWidth.Value = 1752;
-            this.numPipboyTargetHeight.Value = 1400;
-        }
-
-
-        #endregion
     }
 }

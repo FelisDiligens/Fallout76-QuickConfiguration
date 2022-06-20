@@ -211,18 +211,6 @@ namespace Fo76ini
             LinkedTweaks.LinkInfo(labelCameraDistanceMaximum, toolTip, vanityModeMaxDistTweak);
             LinkedTweaks.LinkInfo(labelPitchZoomOutMaxDist, toolTip, pitchZoomOutMaxDistTweak);
 
-            // Pipboy tab
-            LinkedTweaks.LinkInfo(buttonColorPickPipboy, toolTip, pipboyColorTweak);
-            LinkedTweaks.LinkInfo(buttonColorPickQuickboy, toolTip, quickboyColorTweak);
-            LinkedTweaks.LinkInfo(buttonColorPickPAPipboy, toolTip, powerArmorPipboyColorTweak);
-            LinkedTweaks.LinkInfo(labelPipboyColor, toolTip, pipboyColorTweak);
-            LinkedTweaks.LinkInfo(labelQuickboyColor, toolTip, quickboyColorTweak);
-            LinkedTweaks.LinkInfo(labelPowerArmorColor, toolTip, powerArmorPipboyColorTweak);
-            LinkedTweaks.LinkInfo(numPipboyTargetHeight, toolTip, pipboyTargetResolutionTweak);
-            LinkedTweaks.LinkInfo(numPipboyTargetWidth, toolTip, pipboyTargetResolutionTweak);
-            LinkedTweaks.LinkInfo(radioButtonQuickboy, toolTip, quickboyModeEnabledTweak);
-            LinkedTweaks.LinkInfo(radioButtonPipboy, toolTip, quickboyModeEnabledTweak);
-
             // Gallery tab
             LinkedTweaks.LinkInfo(numScreenshotIndex, toolTip, screenshotIndexTweak);
             LinkedTweaks.LinkInfo(labelScreenshotIndex, toolTip, screenshotIndexTweak);
@@ -551,42 +539,6 @@ namespace Fo76ini
 
             // Vibration
             LinkedTweaks.LinkTweak(checkBoxGamepadRumble, enableGamepadRumbleTweak);
-
-
-
-            /*
-             * Pipboy tab
-             */
-
-            // Pipboy color
-            LinkedTweaks.LinkColor(
-                buttonColorPickPipboy,  // "Pick color" button
-                buttonColorResetPipboy, // "Reset" button
-                colorDialog,            // The color picking dialog that should open when clicking on "Pick color"
-                colorPreviewPipboy,     // The little, colored square that is left to the label.
-                pipboyColorTweak);
-
-            // Quickboy color
-            LinkedTweaks.LinkColor(
-                buttonColorPickQuickboy,
-                buttonColorResetQuickboy,
-                colorDialog,
-                colorPreviewQuickboy,
-                quickboyColorTweak);
-
-            // Power Armor Pipboy color
-            LinkedTweaks.LinkColor(
-                buttonColorPickPAPipboy,
-                buttonColorResetPAPipboy,
-                colorDialog,
-                colorPreviewPAPipboy,
-                powerArmorPipboyColorTweak);
-
-            // Radiobuttons, Quickboy or Pipboy mode
-            LinkedTweaks.LinkTweak(this.radioButtonQuickboy, this.radioButtonPipboy, quickboyModeEnabledTweak);
-            
-            // Pipboy resolution
-            LinkedTweaks.LinkSize(numPipboyTargetWidth, numPipboyTargetHeight, pipboyTargetResolutionTweak);
 
 
 

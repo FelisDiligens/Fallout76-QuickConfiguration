@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Fo76ini.Forms.Form1
+namespace Fo76ini.Controls
 {
     public class ColorPreview : PictureBox
     {

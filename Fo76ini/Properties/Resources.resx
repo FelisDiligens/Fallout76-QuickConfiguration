@@ -328,4 +328,22 @@
   <data name="xbox_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\xbox_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pipboy_preview_mask" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\pipboy-preview-mask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pipboy_preview_screen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\pipboy-preview-screen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="powerarmor_preview_mask" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\powerarmor-preview-mask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="powerarmor_preview_screen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\powerarmor-preview-screen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quickboy_preview_mask" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\quickboy-preview-mask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quickboy_preview_screen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\quickboy-preview-screen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
