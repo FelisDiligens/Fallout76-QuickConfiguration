@@ -84,6 +84,7 @@
             this.timerCheckForNXM = new System.Windows.Forms.Timer(this.components);
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
             this.groupBoxModsBehavior = new System.Windows.Forms.GroupBox();
+            this.checkBoxModsUseRemoteModNames = new System.Windows.Forms.CheckBox();
             this.checkBoxAddArchivesAsBundled = new System.Windows.Forms.CheckBox();
             this.groupBoxLists = new System.Windows.Forms.GroupBox();
             this.buttonModsResetTextbox = new System.Windows.Forms.Button();
@@ -440,7 +441,7 @@
             // checkBoxModsUseHardlinks
             // 
             this.checkBoxModsUseHardlinks.AutoSize = true;
-            this.checkBoxModsUseHardlinks.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxModsUseHardlinks.Location = new System.Drawing.Point(6, 52);
             this.checkBoxModsUseHardlinks.Name = "checkBoxModsUseHardlinks";
             this.checkBoxModsUseHardlinks.Size = new System.Drawing.Size(331, 17);
             this.checkBoxModsUseHardlinks.TabIndex = 1;
@@ -452,7 +453,7 @@
             // checkBoxFreezeBundledArchives
             // 
             this.checkBoxFreezeBundledArchives.AutoSize = true;
-            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(6, 42);
+            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(6, 75);
             this.checkBoxFreezeBundledArchives.Name = "checkBoxFreezeBundledArchives";
             this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(211, 17);
             this.checkBoxFreezeBundledArchives.TabIndex = 2;
@@ -637,20 +638,35 @@
             // 
             this.groupBoxModsBehavior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxModsBehavior.Controls.Add(this.checkBoxModsUseRemoteModNames);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxFreezeBundledArchives);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxModsUseHardlinks);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
             this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 6);
             this.groupBoxModsBehavior.Name = "groupBoxModsBehavior";
-            this.groupBoxModsBehavior.Size = new System.Drawing.Size(740, 95);
+            this.groupBoxModsBehavior.Size = new System.Drawing.Size(740, 128);
             this.groupBoxModsBehavior.TabIndex = 60;
             this.groupBoxModsBehavior.TabStop = false;
             this.groupBoxModsBehavior.Text = "Behavior";
             // 
+            // checkBoxModsUseRemoteModNames
+            // 
+            this.checkBoxModsUseRemoteModNames.AutoSize = true;
+            this.checkBoxModsUseRemoteModNames.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxModsUseRemoteModNames.Name = "checkBoxModsUseRemoteModNames";
+            this.checkBoxModsUseRemoteModNames.Size = new System.Drawing.Size(296, 17);
+            this.checkBoxModsUseRemoteModNames.TabIndex = 3;
+            this.checkBoxModsUseRemoteModNames.Text = "Show the mod title from the NexusMods page if available.";
+            this.toolTip.SetToolTip(this.checkBoxModsUseRemoteModNames, "If checked: Shows the mod\'s title as it is on NexusMods.\r\nIf unchecked: Shows the" +
+        " mod\'s title like you typed it into the side panel.\r\nThis is purely personal pre" +
+        "ference.");
+            this.checkBoxModsUseRemoteModNames.UseVisualStyleBackColor = true;
+            this.checkBoxModsUseRemoteModNames.CheckedChanged += new System.EventHandler(this.checkBoxModsUseRemoteModNames_CheckedChanged);
+            // 
             // checkBoxAddArchivesAsBundled
             // 
             this.checkBoxAddArchivesAsBundled.AutoSize = true;
-            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(6, 65);
+            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(6, 98);
             this.checkBoxAddArchivesAsBundled.Name = "checkBoxAddArchivesAsBundled";
             this.checkBoxAddArchivesAsBundled.Size = new System.Drawing.Size(167, 17);
             this.checkBoxAddArchivesAsBundled.TabIndex = 0;
@@ -668,9 +684,9 @@
             this.groupBoxLists.Controls.Add(this.textBoxResourceList);
             this.groupBoxLists.Controls.Add(this.buttonModsCleanList);
             this.groupBoxLists.Controls.Add(this.labelsResourceIndexFileList);
-            this.groupBoxLists.Location = new System.Drawing.Point(6, 107);
+            this.groupBoxLists.Location = new System.Drawing.Point(6, 140);
             this.groupBoxLists.Name = "groupBoxLists";
-            this.groupBoxLists.Size = new System.Drawing.Size(740, 351);
+            this.groupBoxLists.Size = new System.Drawing.Size(740, 318);
             this.groupBoxLists.TabIndex = 59;
             this.groupBoxLists.TabStop = false;
             this.groupBoxLists.Text = "Lists";
@@ -678,7 +694,7 @@
             // buttonModsResetTextbox
             // 
             this.buttonModsResetTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModsResetTextbox.Location = new System.Drawing.Point(503, 322);
+            this.buttonModsResetTextbox.Location = new System.Drawing.Point(503, 289);
             this.buttonModsResetTextbox.Name = "buttonModsResetTextbox";
             this.buttonModsResetTextbox.Size = new System.Drawing.Size(98, 23);
             this.buttonModsResetTextbox.TabIndex = 60;
@@ -689,7 +705,7 @@
             // buttonModsApplyTextBox
             // 
             this.buttonModsApplyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModsApplyTextBox.Location = new System.Drawing.Point(607, 322);
+            this.buttonModsApplyTextBox.Location = new System.Drawing.Point(607, 289);
             this.buttonModsApplyTextBox.Name = "buttonModsApplyTextBox";
             this.buttonModsApplyTextBox.Size = new System.Drawing.Size(127, 23);
             this.buttonModsApplyTextBox.TabIndex = 59;
@@ -705,13 +721,13 @@
             this.textBoxResourceList.Location = new System.Drawing.Point(6, 37);
             this.textBoxResourceList.Multiline = true;
             this.textBoxResourceList.Name = "textBoxResourceList";
-            this.textBoxResourceList.Size = new System.Drawing.Size(728, 279);
+            this.textBoxResourceList.Size = new System.Drawing.Size(728, 246);
             this.textBoxResourceList.TabIndex = 54;
             // 
             // buttonModsCleanList
             // 
             this.buttonModsCleanList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModsCleanList.Location = new System.Drawing.Point(6, 322);
+            this.buttonModsCleanList.Location = new System.Drawing.Point(6, 289);
             this.buttonModsCleanList.Name = "buttonModsCleanList";
             this.buttonModsCleanList.Size = new System.Drawing.Size(98, 23);
             this.buttonModsCleanList.TabIndex = 58;
@@ -1726,5 +1742,6 @@
         private BrightIdeasSoftware.OLVColumn olvColumnModInfo;
         private BrightIdeasSoftware.OLVColumn olvColumnInstallStatus;
         private BrightIdeasSoftware.OLVColumn olvColumnInstallInfo;
+        private System.Windows.Forms.CheckBox checkBoxModsUseRemoteModNames;
     }
 }

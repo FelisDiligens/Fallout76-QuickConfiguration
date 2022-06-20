@@ -19,6 +19,7 @@ namespace Fo76ini
             this.checkBoxAddArchivesAsBundled.Checked = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
             this.checkBoxModsUseHardlinks.Checked = IniFiles.Config.GetBool("Mods", "bUseHardlinks", true);
             this.checkBoxFreezeBundledArchives.Checked = IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false);
+            this.checkBoxModsUseRemoteModNames.Checked = IniFiles.Config.GetBool("Mods", "bShowRemoteModNames", true);
 
             LoadTextBoxResourceList(Mods.Resources);
         }
@@ -79,6 +80,14 @@ namespace Fo76ini
         {
             IniFiles.Config.Set("Mods", "bFreezeBundledArchives", this.checkBoxFreezeBundledArchives.Checked);
             IniFiles.Config.Save();
+        }
+
+        // Show the mod title from NexusMods, if available.
+        private void checkBoxModsUseRemoteModNames_CheckedChanged(object sender, EventArgs e)
+        {
+            IniFiles.Config.Set("Mods", "bShowRemoteModNames", this.checkBoxModsUseRemoteModNames.Checked);
+            IniFiles.Config.Save();
+            UpdateModList();
         }
         #endregion
     }

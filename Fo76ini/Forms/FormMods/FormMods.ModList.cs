@@ -42,6 +42,8 @@ namespace Fo76ini
 
                 this.Enabled = mod.Enabled;
 
+                bool showRemoteModNames = IniFiles.Config.GetBool("Mods", "bShowRemoteModNames", true);
+
                 /*
                  * Mod name & info
                  */
@@ -49,7 +51,7 @@ namespace Fo76ini
 
                 if (remoteMod != null)
                 {
-                    this.ModInfo = remoteMod.Title;
+                    this.ModInfo = showRemoteModNames ? remoteMod.Title : mod.Title;
 
                     // Version
                     if (mod.Version != "")
