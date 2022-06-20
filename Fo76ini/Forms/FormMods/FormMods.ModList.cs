@@ -425,7 +425,8 @@ namespace Fo76ini
         // On drop: Handle dropped file(s)...
         private void objectListViewMods_Dropped(object sender, OlvDropEventArgs e)
         {
-
+            string[] files = (string[])e.DragEventArgs.Data.GetData(DataFormats.FileDrop);
+            InstallBulkThreaded(files);
         }
 
         #endregion
