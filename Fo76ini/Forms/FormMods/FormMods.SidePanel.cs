@@ -912,8 +912,7 @@ namespace Fo76ini
         {
             if (MsgBox.Get("areYouSure").FormatText("Are you sure, you want to delete the folder contents?").Show(MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (Directory.Exists(editedMod.ManagedFolderPath))
-                    Directory.Delete(editedMod.ManagedFolderPath, true);
+                Utils.DeleteDirectory(editedMod.ManagedFolderPath);
                 Directory.CreateDirectory(editedMod.ManagedFolderPath);
                 UpdateProgress(Progress.Done("Deleted files."));
             }

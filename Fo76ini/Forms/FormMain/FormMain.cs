@@ -338,8 +338,7 @@ namespace Fo76ini
             try
             {
                 string updaterPath = Path.Combine(Shared.AppConfigFolder, "Updater");
-                if (Directory.Exists(updaterPath))
-                    Directory.Delete(updaterPath, true);
+                Utils.DeleteDirectory(updaterPath);
             }
             catch
             {

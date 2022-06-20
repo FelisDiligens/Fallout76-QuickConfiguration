@@ -545,8 +545,7 @@ namespace Fo76ini.Mods
 
             public void DeleteTempFolder()
             {
-                if (Directory.Exists(TempPath))
-                    Directory.Delete(TempPath, true);
+                Utils.DeleteDirectory(TempPath);
             }
 
             public List<DeployArchive> GetList()

@@ -155,8 +155,7 @@ namespace Fo76ini.NexusAPI
             try
             {
                 string path = Path.Combine(NexusMods.ThumbnailsPath);
-                if (Directory.Exists(path))
-                    Directory.Delete(path, true);
+                Utils.DeleteDirectory(path);
             }
             catch
             {

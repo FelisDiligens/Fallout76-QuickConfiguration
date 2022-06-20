@@ -100,8 +100,7 @@ namespace Fo76ini.Mods
         {
             string longFilePath = EnsureLongPathSupport(filePath);
             string tempFolderPath = Path.Combine(Path.GetTempPath(), $"tmp_{mod.guid}");
-            if (Directory.Exists(tempFolderPath))
-                Directory.Delete(tempFolderPath, true);
+            Utils.DeleteDirectory(tempFolderPath);
             Directory.CreateDirectory(tempFolderPath);
 
             ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {Path.GetFileName(filePath)}"));
@@ -109,7 +108,7 @@ namespace Fo76ini.Mods
             ModActions.CleanUpFolder(tempFolderPath, ProgressChanged);
             CopyDirectory(tempFolderPath, mod.ManagedFolderPath, ProgressChanged);
 
-            Directory.Delete(tempFolderPath, true);
+            Utils.DeleteDirectory(tempFolderPath);
 
             ProgressChanged?.Invoke(Progress.Done("Archive added to mod."));
         }

@@ -114,11 +114,7 @@ namespace Fo76ini.Utilities
             return result;
         }
 
-        /// <summary>
-        /// Recursively deletes directory, but sets file attributes to normal before it deletes them.
-        /// </summary>
-        /// <param name="targetDir"></param>
-        public static void DeleteDirectory(string targetDir)
+        /*public static void DeleteDirectory(string targetDir)
         {
             // https://stackoverflow.com/questions/1157246/unauthorizedaccessexception-trying-to-delete-a-file-in-a-folder-where-i-can-dele
             File.SetAttributes(targetDir, FileAttributes.Normal);
@@ -138,12 +134,64 @@ namespace Fo76ini.Utilities
             }
 
             Directory.Delete(targetDir, false);
+        }*/
+
+        /// <summary>
+        /// Recursively deletes directory if it exists, but sets file attributes to normal before it deletes them.
+        /// Workaround for "System.UnauthorizedAccessException" when trying to delete a folder.
+        /// </summary>
+        /// <param name="targetDir"></param>
+        public static void DeleteDirectory(string path)
+        {
+            DirectoryInfo folder = new DirectoryInfo(path);
+            if (folder.Exists)
+            {
+                Utils.SetAttributesNormal(folder);
+                folder.Delete(true);
+            }
         }
 
-        public static void DeleteFile(string targetFile)
+        /// <summary>
+        /// Delete file if it exists, but sets file attributes to normal before it deletes it.
+        /// Workaround for "System.UnauthorizedAccessException" when trying to delete a file.
+        /// </summary>
+        /// <param name="path"></param>
+        public static void DeleteFile(string path)
         {
-            File.SetAttributes(targetFile, FileAttributes.Normal);
-            File.Delete(targetFile);
+            FileInfo file = new FileInfo(path);
+            if (file.Exists)
+            {
+                Utils.SetAttributesNormal(file);
+                file.Delete();
+            }
+        }
+
+        /// <summary>
+        /// Workaround for "System.UnauthorizedAccessException" when trying to delete a folder.
+        /// https://stackoverflow.com/questions/1701457/directory-delete-doesnt-work-access-denied-error-but-under-windows-explorer-it
+        /// </summary>
+        /// <param name="dir"></param>
+        public static void SetAttributesNormal(DirectoryInfo dir)
+        {
+            foreach (var subDir in dir.GetDirectories())
+            {
+                Utils.SetAttributesNormal(subDir);
+                subDir.Attributes = FileAttributes.Normal;
+            }
+            foreach (var file in dir.GetFiles())
+            {
+                Utils.SetAttributesNormal(file);
+            }
+        }
+
+        /// <summary>
+        /// Workaround for "System.UnauthorizedAccessException" when trying to delete a file.
+        /// https://stackoverflow.com/questions/1701457/directory-delete-doesnt-work-access-denied-error-but-under-windows-explorer-it
+        /// </summary>
+        /// <param name="file"></param>
+        public static void SetAttributesNormal(FileInfo file)
+        {
+            file.Attributes = FileAttributes.Normal;
         }
 
         public static bool IsFileNameValid(string name)
@@ -884,34 +932,6 @@ namespace Fo76ini.Utilities
                 return false;
             }
             return false;
-        }
-
-        /// <summary>
-        /// Workaround for "System.UnauthorizedAccessException" when trying to delete a folder.
-        /// https://stackoverflow.com/questions/1701457/directory-delete-doesnt-work-access-denied-error-but-under-windows-explorer-it
-        /// </summary>
-        /// <param name="dir"></param>
-        public static void SetAttributesNormal(DirectoryInfo dir)
-        {
-            foreach (var subDir in dir.GetDirectories())
-            {
-                Utils.SetAttributesNormal(subDir);
-                subDir.Attributes = FileAttributes.Normal;
-            }
-            foreach (var file in dir.GetFiles())
-            {
-                Utils.SetAttributesNormal(file);
-            }
-        }
-
-        /// <summary>
-        /// Workaround for "System.UnauthorizedAccessException" when trying to delete a file.
-        /// https://stackoverflow.com/questions/1701457/directory-delete-doesnt-work-access-denied-error-but-under-windows-explorer-it
-        /// </summary>
-        /// <param name="file"></param>
-        public static void SetAttributesNormal(FileInfo file)
-        {
-            file.Attributes = FileAttributes.Normal;
         }
     }
 }

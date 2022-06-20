@@ -287,7 +287,7 @@ namespace Fo76ini
                 string thumbnailsPath = Path.Combine(Shared.AppConfigFolder, "thumbnails", "screenshots");
                 try
                 {
-                    Directory.Delete(thumbnailsPath, true);
+                    Utils.DeleteDirectory(thumbnailsPath);
                 }
                 catch (Exception ex)
                 {
