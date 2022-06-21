@@ -554,11 +554,11 @@ wird das Tool die Datei in diesen Ordner speichern.</Description>
     <Label text="Hallo! Es scheint, du hast das Tool zum ersten Mal gestartet!\n" id="label1" />
     <Label text="Willkommen" id="labelTitle" />
   </FormWelcome>
-  <FormMods title="Mods verwalten">
+  <FormMods title="Mod-Manager">
     <!--
         FormMods
         ******************************************************************************************************************************************************
-        Mods verwalten
+        Mod-Manager
     -->
     <StatusStrip id="statusStrip1">
       <ToolStripStatusLabel text="Modanzahl:" id="toolStripStatusLabelDescModCount" />
@@ -1070,7 +1070,7 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
             <Label text="Screenshot-Index:" id="labelScreenshotIndex" />
           </GroupBox>
         </Panel>
-        <Label text="Gallery" id="labelGallery" />
+        <Label text="Galerie" id="labelGallery" />
         <Panel id="panelGallery">
           <Label text="Klicke 'Galerie aktualisieren', um Screenshots und Fotos anzuzeigen." id="labelGalleryTip" />
         </Panel>

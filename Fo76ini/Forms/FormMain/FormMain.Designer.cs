@@ -367,13 +367,13 @@
             this.textBoxGalleryPaths = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.numScreenshotIndex = new System.Windows.Forms.NumericUpDown();
-            this.buttonGalleryShowOptions = new System.Windows.Forms.Button();
             this.labelGallery = new System.Windows.Forms.Label();
             this.panelGallery = new System.Windows.Forms.Panel();
             this.labelGalleryTip = new System.Windows.Forms.Label();
             this.pictureBoxGalleryLoadingGIF = new System.Windows.Forms.PictureBox();
             this.listViewScreenshots = new System.Windows.Forms.ListView();
             this.sliderGalleryThumbnailSize = new System.Windows.Forms.TrackBar();
+            this.buttonGalleryShowOptions = new System.Windows.Forms.Button();
             this.buttonRefreshGallery = new System.Windows.Forms.Button();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
             this.buttonCustomSave = new System.Windows.Forms.Button();
@@ -430,8 +430,8 @@
             this.toolStripStatusLabelEditionText = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelNuclearWinterModeActive = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
             this.backgroundWorkerDownloadRTF = new System.ComponentModel.BackgroundWorker();
+            this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
@@ -2784,7 +2784,7 @@
             this.tabPagePipBoy.Padding = new System.Windows.Forms.Padding(3);
             this.tabPagePipBoy.Size = new System.Drawing.Size(852, 464);
             this.tabPagePipBoy.TabIndex = 5;
-            this.tabPagePipBoy.Text = "Pipboy";
+            this.tabPagePipBoy.Text = "Pip-Boy";
             this.tabPagePipBoy.UseVisualStyleBackColor = true;
             // 
             // tabControlPipboy
@@ -5028,10 +5028,10 @@
             // tabPageGallery
             // 
             this.tabPageGallery.Controls.Add(this.panelGalleryOptions);
-            this.tabPageGallery.Controls.Add(this.buttonGalleryShowOptions);
             this.tabPageGallery.Controls.Add(this.labelGallery);
             this.tabPageGallery.Controls.Add(this.panelGallery);
             this.tabPageGallery.Controls.Add(this.sliderGalleryThumbnailSize);
+            this.tabPageGallery.Controls.Add(this.buttonGalleryShowOptions);
             this.tabPageGallery.Controls.Add(this.buttonRefreshGallery);
             this.tabPageGallery.Location = new System.Drawing.Point(4, 22);
             this.tabPageGallery.Name = "tabPageGallery";
@@ -5132,19 +5132,6 @@
             this.numScreenshotIndex.Size = new System.Drawing.Size(196, 20);
             this.numScreenshotIndex.TabIndex = 3;
             // 
-            // buttonGalleryShowOptions
-            // 
-            this.buttonGalleryShowOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGalleryShowOptions.BackColor = System.Drawing.Color.Transparent;
-            this.buttonGalleryShowOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGalleryShowOptions.Image = global::Fo76ini.Properties.Resources.cog_24;
-            this.buttonGalleryShowOptions.Location = new System.Drawing.Point(810, 6);
-            this.buttonGalleryShowOptions.Name = "buttonGalleryShowOptions";
-            this.buttonGalleryShowOptions.Size = new System.Drawing.Size(36, 36);
-            this.buttonGalleryShowOptions.TabIndex = 63;
-            this.buttonGalleryShowOptions.UseVisualStyleBackColor = false;
-            this.buttonGalleryShowOptions.Click += new System.EventHandler(this.buttonGalleryShowOptions_Click);
-            // 
             // labelGallery
             // 
             this.labelGallery.AutoSize = true;
@@ -5224,6 +5211,19 @@
             this.sliderGalleryThumbnailSize.TabIndex = 61;
             this.sliderGalleryThumbnailSize.Value = 1;
             this.sliderGalleryThumbnailSize.Scroll += new System.EventHandler(this.sliderGalleryThumbnailSize_Scroll);
+            // 
+            // buttonGalleryShowOptions
+            // 
+            this.buttonGalleryShowOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonGalleryShowOptions.BackColor = System.Drawing.Color.Transparent;
+            this.buttonGalleryShowOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGalleryShowOptions.Image = global::Fo76ini.Properties.Resources.cog_24;
+            this.buttonGalleryShowOptions.Location = new System.Drawing.Point(810, 6);
+            this.buttonGalleryShowOptions.Name = "buttonGalleryShowOptions";
+            this.buttonGalleryShowOptions.Size = new System.Drawing.Size(36, 36);
+            this.buttonGalleryShowOptions.TabIndex = 63;
+            this.buttonGalleryShowOptions.UseVisualStyleBackColor = false;
+            this.buttonGalleryShowOptions.Click += new System.EventHandler(this.buttonGalleryShowOptions_Click);
             // 
             // buttonRefreshGallery
             // 
@@ -5519,7 +5519,7 @@
             // 
             // toolStripButtonManageMods
             // 
-            this.toolStripButtonManageMods.Image = global::Fo76ini.Properties.Resources.edit_24;
+            this.toolStripButtonManageMods.Image = global::Fo76ini.Properties.Resources.puzzle_4_24;
             this.toolStripButtonManageMods.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonManageMods.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonManageMods.Name = "toolStripButtonManageMods";
@@ -5759,6 +5759,11 @@
             this.toolStripStatusLabelNuclearWinterModeActive.Size = new System.Drawing.Size(198, 17);
             this.toolStripStatusLabelNuclearWinterModeActive.Text = "Nuclear Winter mode is active";
             // 
+            // backgroundWorkerDownloadRTF
+            // 
+            this.backgroundWorkerDownloadRTF.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDownloadRTF_DoWork);
+            this.backgroundWorkerDownloadRTF.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerDownloadRTF_RunWorkerCompleted);
+            // 
             // pictureBoxLoadingGIF
             // 
             this.pictureBoxLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -5773,11 +5778,6 @@
             this.pictureBoxLoadingGIF.TabIndex = 15;
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
-            // 
-            // backgroundWorkerDownloadRTF
-            // 
-            this.backgroundWorkerDownloadRTF.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDownloadRTF_DoWork);
-            this.backgroundWorkerDownloadRTF.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerDownloadRTF_RunWorkerCompleted);
             // 
             // FormMain
             // 

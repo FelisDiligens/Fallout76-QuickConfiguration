@@ -412,6 +412,7 @@
     <Content Include="Resources\pipboy-preview-screen.png" />
     <Content Include="Resources\powerarmor-preview-mask.png" />
     <Content Include="Resources\powerarmor-preview-screen.png" />
+    <None Include="Resources\puzzle-4-24.png" />
     <Content Include="Resources\quickboy-preview-mask.png" />
     <Content Include="Resources\quickboy-preview-screen.png" />
     <None Include="Resources\xbox_hover.png" />

@@ -633,6 +633,16 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap puzzle_4_24 {
+            get {
+                object obj = ResourceManager.GetObject("puzzle_4_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap quickboy_preview_mask {
             get {
                 object obj = ResourceManager.GetObject("quickboy_preview_mask", resourceCulture);
