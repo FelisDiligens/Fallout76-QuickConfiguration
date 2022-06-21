@@ -63,7 +63,7 @@ namespace Fo76ini.Forms.FormWelcome
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 43);
+            this.label1.Location = new System.Drawing.Point(14, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(422, 28);
             this.label1.TabIndex = 8;
@@ -71,12 +71,12 @@ namespace Fo76ini.Forms.FormWelcome
             // 
             // labelTitle
             // 
-            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.Location = new System.Drawing.Point(12, 9);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(291, 24);
+            this.labelTitle.Size = new System.Drawing.Size(422, 34);
             this.labelTitle.TabIndex = 7;
-            this.labelTitle.Text = "Welcome";
+            this.labelTitle.Text = "Welcome!";
             // 
             // panel1
             // 
@@ -86,7 +86,7 @@ namespace Fo76ini.Forms.FormWelcome
             this.panel1.Controls.Add(this.groupBoxGameEdition);
             this.panel1.Location = new System.Drawing.Point(12, 114);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(422, 363);
+            this.panel1.Size = new System.Drawing.Size(422, 397);
             this.panel1.TabIndex = 40;
             // 
             // groupBoxGameLocation
@@ -96,9 +96,9 @@ namespace Fo76ini.Forms.FormWelcome
             this.groupBoxGameLocation.Controls.Add(this.buttonAutoDetect);
             this.groupBoxGameLocation.Controls.Add(this.textBoxGamePath);
             this.groupBoxGameLocation.Controls.Add(this.buttonPickGamePath);
-            this.groupBoxGameLocation.Location = new System.Drawing.Point(11, 163);
+            this.groupBoxGameLocation.Location = new System.Drawing.Point(11, 160);
             this.groupBoxGameLocation.Name = "groupBoxGameLocation";
-            this.groupBoxGameLocation.Size = new System.Drawing.Size(400, 186);
+            this.groupBoxGameLocation.Size = new System.Drawing.Size(400, 227);
             this.groupBoxGameLocation.TabIndex = 41;
             this.groupBoxGameLocation.TabStop = false;
             this.groupBoxGameLocation.Text = "Game location";
@@ -107,24 +107,23 @@ namespace Fo76ini.Forms.FormWelcome
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 84);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(8, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(386, 34);
             this.label3.TabIndex = 34;
             this.label3.Text = "You can skip the game location, if you don\'t want to install mods.";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Location = new System.Drawing.Point(8, 118);
+            this.label2.Location = new System.Drawing.Point(8, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(386, 65);
+            this.label2.Size = new System.Drawing.Size(386, 106);
             this.label2.TabIndex = 33;
-            this.label2.Text = "If you have trouble finding the game location:\r\n\r\nSteam: C:\\Program Files (x86)\\S" +
-    "team\\steamapps\\common\\Fallout76\\\r\nMicrosoft Store: C:\\Program Files﻿\\ModifiableW" +
-    "indowsApps\\Fallout76\\";
+            this.label2.Text = resources.GetString("label2.Text");
             // 
             // buttonAutoDetect
             // 
@@ -171,7 +170,7 @@ namespace Fo76ini.Forms.FormWelcome
             this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionSteam);
             this.groupBoxGameEdition.Location = new System.Drawing.Point(11, 9);
             this.groupBoxGameEdition.Name = "groupBoxGameEdition";
-            this.groupBoxGameEdition.Size = new System.Drawing.Size(400, 148);
+            this.groupBoxGameEdition.Size = new System.Drawing.Size(400, 145);
             this.groupBoxGameEdition.TabIndex = 40;
             this.groupBoxGameEdition.TabStop = false;
             this.groupBoxGameEdition.Text = "Game edition";
@@ -262,7 +261,7 @@ namespace Fo76ini.Forms.FormWelcome
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(300, 483);
+            this.buttonOK.Location = new System.Drawing.Point(300, 517);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(134, 27);
             this.buttonOK.TabIndex = 41;
@@ -291,7 +290,7 @@ namespace Fo76ini.Forms.FormWelcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 521);
+            this.ClientSize = new System.Drawing.Size(446, 550);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.panel1);

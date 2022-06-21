@@ -15,11 +15,13 @@ namespace Fo76ini.Mods
     public class ResourceList : ICollection<string>
     {
         public static List<string> KnownLists = new List<string>() {
-            "sResourceIndexFileList",
-            "sResourceArchive2List",
+            "sResourceIndexFileList",      // <- mod manager uses this
+            "sResourceArchive2List",       // <- a lot of people use this
+            "sResourceArchiveMisc",        // <- haven't seen this before
             "sResourceStartUpArchiveList",
             "SResourceArchiveList",
-            "SResourceArchiveList2"
+            "SResourceArchiveList2",
+            "SResourceArchiveMemoryCacheList"
         };
 
         private List<string> resourceList = new List<string>();

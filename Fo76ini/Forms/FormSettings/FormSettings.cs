@@ -340,6 +340,8 @@ namespace Fo76ini.Forms.FormSettings
                     }
                 }
 
+                // Bethesda.net launcher - no longer in use
+                /*
                 string bethNetDefaultPath = Path.Combine(d.Name, @"Program Files (x86)\Bethesda.net Launcher\games\Fallout76");
                 if (GameInstance.ValidateGamePath(bethNetDefaultPath))
                 {
@@ -351,8 +353,23 @@ namespace Fo76ini.Forms.FormSettings
                             return null;
                     }
                 }
+                */
 
-                string xboxDefaultPath = Path.Combine(d.Name, @"Program Files\ModifiableWindowsApps\Fallout 76");
+                // Old Xbox default path
+                string xboxModifiablePath = Path.Combine(d.Name, @"Program Files\ModifiableWindowsApps\Fallout 76");
+                if (GameInstance.ValidateGamePath(xboxModifiablePath))
+                {
+                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(xboxModifiablePath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                    {
+                        case DialogResult.Yes:
+                            return xboxModifiablePath;
+                        case DialogResult.Cancel:
+                            return null;
+                    }
+                }
+
+                // New Xbox default path
+                string xboxDefaultPath = Path.Combine(d.Name, @"XboxGames\Fallout 76\Content");
                 if (GameInstance.ValidateGamePath(xboxDefaultPath))
                 {
                     switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(xboxDefaultPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
@@ -364,14 +381,14 @@ namespace Fo76ini.Forms.FormSettings
                     }
                 }
 
-                // Try some exotic ones, maybe?
-                string steamTopLevelPath = Path.Combine(d.Name, @"steamapps\common\Fallout76");
-                if (GameInstance.ValidateGamePath(steamTopLevelPath))
+                // When you create a library on a drive through Steam's 
+                string steamLibraryPath = Path.Combine(d.Name, @"SteamLibrary\steamapps\common\Fallout76");
+                if (GameInstance.ValidateGamePath(steamLibraryPath))
                 {
-                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(steamTopLevelPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(steamLibraryPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
                     {
                         case DialogResult.Yes:
-                            return steamTopLevelPath;
+                            return steamLibraryPath;
                         case DialogResult.Cancel:
                             return null;
                     }
@@ -391,6 +408,7 @@ namespace Fo76ini.Forms.FormSettings
                         }
                     }
 
+                    // Search for a steamapps folder:
                     string steamSubDirPath = Path.Combine(path, @"steamapps\common\Fallout76");
                     if (GameInstance.ValidateGamePath(steamSubDirPath))
                     {
@@ -398,6 +416,19 @@ namespace Fo76ini.Forms.FormSettings
                         {
                             case DialogResult.Yes:
                                 return steamSubDirPath;
+                            case DialogResult.Cancel:
+                                return null;
+                        }
+                    }
+
+                    // New Xbox path:
+                    string xboxSubDirPath = Path.Combine(d.Name, @"Fallout 76\Content");
+                    if (GameInstance.ValidateGamePath(xboxSubDirPath))
+                    {
+                        switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(xboxSubDirPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                        {
+                            case DialogResult.Yes:
+                                return xboxSubDirPath;
                             case DialogResult.Cancel:
                                 return null;
                         }
