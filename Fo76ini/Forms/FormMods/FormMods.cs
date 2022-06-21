@@ -911,7 +911,15 @@ namespace Fo76ini
                 CloseSidePanel();
                 DisableUI();
             }, () => {
-                ModActions.DeleteMod(Mods, index, UpdateProgress);
+                try
+                {
+                    ModActions.DeleteMod(Mods, index, UpdateProgress);
+                }
+                catch (Exception ex)
+                {
+                    MsgBox.Show("Couldn't delete mod", $"{ex.GetType()}: {ex.Message}\n\nTry to run the mod manager with admin rights or delete the mod files yourself.\nIf the issue persists, write a bug report on NexusMods or GitHub.");
+                    return false;
+                }
                 return true;
             }, (success) => {
                 EnableUI();
@@ -927,7 +935,15 @@ namespace Fo76ini
                 CloseSidePanel();
                 DisableUI();
             }, () => {
-                ModActions.DeleteMods(Mods, indices, UpdateProgress);
+                try
+                {
+                    ModActions.DeleteMods(Mods, indices, UpdateProgress);
+                }
+                catch (Exception ex)
+                {
+                    MsgBox.Show("Couldn't delete mod", $"{ex.GetType()}: {ex.Message}\n\nTry to run the mod manager with admin rights or delete the mod files yourself.\nIf the issue persists, write a bug report on NexusMods or GitHub.");
+                    return false;
+                }
                 return true;
             }, (success) => {
                 EnableUI();

@@ -186,7 +186,7 @@ namespace Fo76ini.Mods
                 return false;
             }
             Uri dlLink = new Uri(dlLinkStr);
-            string dlFileName = dlLink.Segments.Last();
+            string dlFileName = Uri.UnescapeDataString(dlLink.Segments.Last());
             string dlPath = Path.Combine(Configuration.DownloadsFolder, dlFileName);
 
             // Download mod, unless we already have it:
