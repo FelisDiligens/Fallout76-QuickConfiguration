@@ -5,8 +5,7 @@
 </h3>
 
 <p align="center">
-  This tool allows you to change various game settings and install mods.<br>
-  Change FOV and Pipboy color, disable VSync, fix mouse sensitivity, and more.
+  This tool allows you to change various game settings and install mods.
 </p>
   
 <p align="center">
@@ -22,29 +21,28 @@
   <a href="https://www.nexusmods.com/fallout76/mods/546?tab=images">Screenshots</a> |
   <a href="https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki">Wiki & Guides</a> |
   <a href="https://www.nexusmods.com/fallout76/mods/546?tab=posts">Posts</a> |
-  <a href="https://www.nexusmods.com/fallout76/mods/546?tab=bugs">Bugs</a> |
-  <a href="https://www.nexusmods.com/users/41275740">Contact</a>
+  <a href="https://www.nexusmods.com/fallout76/mods/546?tab=bugs">Bugs</a>
 </p>
 
 
 ## Features
-* Install and manage mods.
-* Check if a mod has an update.
-* Change your resolution and display mode.
-* Disable VSync (frame rate cap).
-* Use up to 16 account profiles for login in-game.
-* Change various graphic settings.
-* Change volume, audio, interface, and voice chat settings.
-* Mouse sensitivity fix for ALL aspect ratios.
-* Change your FOV.
-* Change camera distance, position and more.
-* Change the color and resolution of your Pipboy.
-* Access all your screenshots and photos from the gallery.
-* Some other tweaks and options.
-* Toggle Nuclear Winter mode (removes mods and *.dll files).
-* Automatically creates backups of *.ini files.
-* Make *.ini files read-only.
-* Easy, automated updates.
+### *.ini tweaks
+- Change display, graphics, volume, audio, interface, and voice chat settings.
+- Disable VSync (frame rate cap).
+- Change your FOV.
+- Mouse sensitivity fix for ALL aspect ratios.
+
+### Pipboy customization
+- Change the color and resolution of your Pipboy and Quickboy.
+- Use color presets from previous Fallout games.
+- See a preview of how the color will look in the game.
+
+### Mod manager
+- Install and manage mods.
+- Check if a mod has an update. (Requires you to login to NexusMods)
+
+### Gallery
+- Access all your screenshots and photos from the gallery.
 
 ## Requirements
 This program is running on .NET Framework 4.7.2\
@@ -55,10 +53,10 @@ Archive2 needs [Visual C++ Redistributable for Visual Studio 2012 Update 4](http
 This **might** be preinstalled on your system as well. If your mods aren't deploying properly, try to install it.
 
 If you're still on Windows 7, make sure that you have Service Pack 1 and all updates installed.\
-Otherwise the .NET installer might fail.
+Otherwise the .NET installer might fail or the tool might not start.
 
 ## Installation
-1. Download and unzip/install. (Portable *.zip or setup)
+1. [Download](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/releases/latest) and unzip.
 2. Run and set the game edition and path in the Welcome screen.
 3. Tweak to your heart's content.
 4. Don't forget to hit "Apply".
@@ -109,9 +107,5 @@ Otherwise the .NET installer might fail.
 * Brazilian Portuguese by [Oruam](https://forums.nexusmods.com/index.php?/user/2944752-oruam/)
 * Japanese by [haiji951753](https://forums.nexusmods.com/index.php?/user/59398041-haiji951753/)
 
-### Images and Sounds:
-> [Attribution](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/blob/master/Additional%20files/Attribution.txt)
-
 ## License
-
 > © [MIT](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/blob/master/LICENSE)
