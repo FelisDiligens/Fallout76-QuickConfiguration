@@ -42,7 +42,7 @@ namespace Fo76ini
 
                 this.Enabled = mod.Enabled;
 
-                bool showRemoteModNames = IniFiles.Config.GetBool("Mods", "bShowRemoteModNames", true);
+                bool showRemoteModNames = IniFiles.Config.GetBool("Mods", "bShowRemoteModNames", false);
 
                 /*
                  * Mod name & info
@@ -61,7 +61,7 @@ namespace Fo76ini
                         if (remoteMod.LatestVersion != mod.Version)
                         {
                             // Update available:
-                            this.ModInfoDescription = $"Update available: {remoteMod.LatestVersion}";
+                            this.ModInfoDescription = $"{Localization.GetString("updateAvailable")}: {remoteMod.LatestVersion}";
                             this.ModInfoFG = Color.Fuchsia;
                         }
                     }
@@ -89,28 +89,28 @@ namespace Fo76ini
                     this.InstallStatusFG = Color.Blue;
                     if (mod.Enabled && !mod.Deployed)
                     {
-                        this.InstallStatus = "Pending for installation";
+                        this.InstallStatus = Localization.GetString("modTablePendingInstallation");
                     }
                     else if (!mod.Enabled && mod.Deployed)
                     {
-                        this.InstallStatus = "Pending for removal";
+                        this.InstallStatus = Localization.GetString("modTablePendingRemoval");
                     }
                     else
                     {
-                        this.InstallStatus = "Pending changes";
+                        this.InstallStatus = Localization.GetString("modTablePendingChanges");
                     }
                     if (!mod.Frozen && mod.Freeze)
                     {
-                        this.InstallStatus += " (Freeze)";
+                        this.InstallStatus += $" ({Localization.GetString("modTableFreeze")})";
                     }
                 }
                 else
                 {
-                    this.InstallStatus = mod.Enabled ? "Enabled" : "Disabled";
+                    this.InstallStatus = mod.Enabled ? Localization.GetString("enabled") : Localization.GetString("disabled");
                     this.InstallStatusFG = mod.Enabled ? Color.Green : Color.Red;
                     if (mod.Freeze && mod.Frozen)
                     {
-                        this.InstallStatus += " (Frozen)";
+                        this.InstallStatus += $" ({Localization.GetString("modTableFrozen")})";
                     }
                 }
 
@@ -129,26 +129,26 @@ namespace Fo76ini
                         case ManagedMod.ArchiveFormat.General:
                             if (isCompressed)
                             {
-                                installPreset = "General";
+                                installPreset = Localization.GetString("modsTablePresetGeneral"); // General
                             }
                             else
                             {
-                                installPreset = "Sound FX";
+                                installPreset = Localization.GetString("modsTablePresetSoundFX"); // Sound FX
                             }
                             break;
                         case ManagedMod.ArchiveFormat.Textures:
-                            installPreset = "Textures";
+                            installPreset = Localization.GetString("modsTablePresetTextures");    // Textures
                             break;
                         case ManagedMod.ArchiveFormat.Auto:
-                            installPreset = "Auto-detect";
+                            installPreset = Localization.GetString("auto");                       // Auto-detect
                             break;
                         default:
-                            installPreset = "Unknown";
+                            installPreset = Localization.GetString("unknown");                    // Please select
                             break;
                     }
                     if (mod.Compression == ManagedMod.ArchiveCompression.Auto)
                     {
-                        installPreset = "Auto-detect";
+                        installPreset = Localization.GetString("auto");                           // Auto-detect
                     }
                 }
 
@@ -243,6 +243,7 @@ namespace Fo76ini
 
         private void objectListViewMods_FormatRow(object sender, FormatRowEventArgs e)
         {
+            e.Item.Font = new Font(this.objectListViewMods.Font, FontStyle.Regular);
         }
 
         private void objectListViewMods_FormatCell(object sender, FormatCellEventArgs e)
@@ -260,6 +261,7 @@ namespace Fo76ini
             {
                 e.SubItem.ForeColor = row.InstallInfoFG;
             }
+            e.SubItem.Font = new Font(this.objectListViewMods.Font, FontStyle.Regular);
         }
         #endregion
 
@@ -428,7 +430,8 @@ namespace Fo76ini
         private void objectListViewMods_Dropped(object sender, OlvDropEventArgs e)
         {
             string[] files = (string[])e.DragEventArgs.Data.GetData(DataFormats.FileDrop);
-            InstallBulkThreaded(files);
+            if (files != null && files.Length > 0)
+                InstallBulkThreaded(files);
         }
 
         #endregion

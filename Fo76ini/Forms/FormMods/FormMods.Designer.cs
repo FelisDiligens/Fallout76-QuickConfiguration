@@ -66,6 +66,7 @@
             this.checkBoxFreezeArchive = new System.Windows.Forms.CheckBox();
             this.buttonModEndorse = new System.Windows.Forms.Button();
             this.buttonModAbstain = new System.Windows.Forms.Button();
+            this.checkBoxModsUseRemoteModNames = new System.Windows.Forms.CheckBox();
             this.openFileDialogMod = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialogMod = new System.Windows.Forms.FolderBrowserDialog();
             this.checkBoxDisableMods = new System.Windows.Forms.CheckBox();
@@ -84,7 +85,6 @@
             this.timerCheckForNXM = new System.Windows.Forms.Timer(this.components);
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
             this.groupBoxModsBehavior = new System.Windows.Forms.GroupBox();
-            this.checkBoxModsUseRemoteModNames = new System.Windows.Forms.CheckBox();
             this.checkBoxAddArchivesAsBundled = new System.Windows.Forms.CheckBox();
             this.groupBoxLists = new System.Windows.Forms.GroupBox();
             this.buttonModsResetTextbox = new System.Windows.Forms.Button();
@@ -509,6 +509,20 @@
             this.buttonModAbstain.UseVisualStyleBackColor = false;
             this.buttonModAbstain.Click += new System.EventHandler(this.buttonModAbstain_Click);
             // 
+            // checkBoxModsUseRemoteModNames
+            // 
+            this.checkBoxModsUseRemoteModNames.AutoSize = true;
+            this.checkBoxModsUseRemoteModNames.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxModsUseRemoteModNames.Name = "checkBoxModsUseRemoteModNames";
+            this.checkBoxModsUseRemoteModNames.Size = new System.Drawing.Size(296, 17);
+            this.checkBoxModsUseRemoteModNames.TabIndex = 3;
+            this.checkBoxModsUseRemoteModNames.Text = "Show the mod title from the NexusMods page if available.";
+            this.toolTip.SetToolTip(this.checkBoxModsUseRemoteModNames, "If checked: Shows the mod\'s title as it is on NexusMods.\r\nIf unchecked: Shows the" +
+        " mod\'s title like you typed it into the side panel.\r\nThis is purely personal pre" +
+        "ference.");
+            this.checkBoxModsUseRemoteModNames.UseVisualStyleBackColor = true;
+            this.checkBoxModsUseRemoteModNames.CheckedChanged += new System.EventHandler(this.checkBoxModsUseRemoteModNames_CheckedChanged);
+            // 
             // openFileDialogMod
             // 
             this.openFileDialogMod.Filter = "All Archives|*.zip;*.rar;*.7z;*.tar;*.ba2";
@@ -648,20 +662,6 @@
             this.groupBoxModsBehavior.TabIndex = 60;
             this.groupBoxModsBehavior.TabStop = false;
             this.groupBoxModsBehavior.Text = "Behavior";
-            // 
-            // checkBoxModsUseRemoteModNames
-            // 
-            this.checkBoxModsUseRemoteModNames.AutoSize = true;
-            this.checkBoxModsUseRemoteModNames.Location = new System.Drawing.Point(6, 19);
-            this.checkBoxModsUseRemoteModNames.Name = "checkBoxModsUseRemoteModNames";
-            this.checkBoxModsUseRemoteModNames.Size = new System.Drawing.Size(296, 17);
-            this.checkBoxModsUseRemoteModNames.TabIndex = 3;
-            this.checkBoxModsUseRemoteModNames.Text = "Show the mod title from the NexusMods page if available.";
-            this.toolTip.SetToolTip(this.checkBoxModsUseRemoteModNames, "If checked: Shows the mod\'s title as it is on NexusMods.\r\nIf unchecked: Shows the" +
-        " mod\'s title like you typed it into the side panel.\r\nThis is purely personal pre" +
-        "ference.");
-            this.checkBoxModsUseRemoteModNames.UseVisualStyleBackColor = true;
-            this.checkBoxModsUseRemoteModNames.CheckedChanged += new System.EventHandler(this.checkBoxModsUseRemoteModNames_CheckedChanged);
             // 
             // checkBoxAddArchivesAsBundled
             // 
@@ -1483,6 +1483,7 @@
             this.olvColumnModInfo,
             this.olvColumnInstallStatus,
             this.olvColumnInstallInfo});
+            this.objectListViewMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectListViewMods.FullRowSelect = true;
             this.objectListViewMods.GridLines = true;
             this.objectListViewMods.HasCollapsibleGroups = false;

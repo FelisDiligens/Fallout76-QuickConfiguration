@@ -304,7 +304,12 @@ namespace Fo76ini
                 // Translate each form individually:
                 foreach (LocalizedForm form in Localization.LocalizedForms)
                 {
-                    XElement xmlForm = xmlRoot.Element(form.Form.Name);
+                    // Because I renamed "Form1" to "FormMain", all translations break.
+                    // Add some backwards-compatibility:
+                    String formName = form.Form.Name;
+                    if (formName == "FormMain" && xmlRoot.Element(formName) == null)
+                        formName = "Form1";
+                    XElement xmlForm = xmlRoot.Element(formName);
 
                     // Ignore non-existing forms
                     if (xmlForm == null)
@@ -545,8 +550,13 @@ namespace Fo76ini
             // Serialize all control elements:
             foreach (LocalizedForm form in Localization.LocalizedForms)
             {
-                XElement xmlForm = new XElement(form.Form.Name, new XAttribute("title", form.Form.Text));
-                xmlForm.AddFirst(new XComment($"\n        {form.Form.Name}\n        {separator}\n        {form.Form.Text}\n    "));
+                // I renamed "Form1" to "FormMain" and this causes some issues with backwards-compatibility.
+                // In the translation files, let's still use "Form1", so nothing breaks:
+                String formName = form.Form.Name;
+                if (formName == "FormMain")
+                    formName = "Form1";
+                XElement xmlForm = new XElement(formName, new XAttribute("title", form.Form.Text));
+                xmlForm.AddFirst(new XComment($"\n        {formName}\n        {separator}\n        {form.Form.Text}\n    "));
                 SerializeControls(xmlForm, form.Form, form.ToolTip);
                 foreach (Control control in form.SpecialControls)
                     SerializeControl(xmlForm, control, form.ToolTip);

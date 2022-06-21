@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Deutsch (Deutschland)" iso="de-DE" author="FelisDiligens (aka. datasnake)" version="1.9.6">
+<Language name="Deutsch (Deutschland)" iso="de-DE" author="FelisDiligens (aka. datasnake)" version="1.10.0">
   <Strings>
     <!--
         Strings
@@ -27,6 +27,13 @@
     <String text="Lose" id="modsTableTypeLoose" />
     <String text="Ausstehend" id="modTableFrozenPending" />
     <String text="Gefroren" id="modTableFrozen" />
+    <String text="Einfrieren" id="modTableFreeze" />
+    <String text="Zur Installation ausstehend" id="modTablePendingInstallation" />
+    <String text="Zur Entfernung ausstehend" id="modTablePendingRemoval" />
+    <String text="Ausstehende Änderungen" id="modTablePendingChanges" />
+    <String text="Update verfügbar" id="updateAvailable" />
+    <String text="Aktiviert" id="enabled" />
+    <String text="Deaktiviert" id="disabled" />
     <String text="{0} Mods ausgewählt" id="modDetailsTitleBulkSelected" />
     <String text="in {0} Stunde(n) und {1} Minute(n)" id="nmResetTime" />
     <String text="{0} übrig" id="nmRateLimitLeft" />
@@ -62,9 +69,6 @@
     <String text="Bearbeite {0}" id="modDetailsTitle" />
     <String text="Bearbeite {0} Mods" id="modDetailsTitleBulk" />
     <String text="Nach dem Anwenden" id="modTableFrozenUponDeployment" />
-    <String text="Texturer" id="modsTableFormatTexturer" />
-    <String text="Packade" id="modsTableTypePackade" />
-    <String text="Separata" id="modsTableTypeSeparerade" />
   </Strings>
   <Dropdowns>
     <!--
@@ -374,12 +378,6 @@ Versuche es später nochmal.</Messagebox>
     <Messagebox title="Archive2 nicht installiert" id="modsArchive2NotSet">Bitte lade Archive2 runter und setze den Pfad, um *.ba2 Archive zu extrahieren.</Messagebox>
     <Messagebox title="Ungültiger Pfad" id="modsArchive2Invalid">Ungültiger Pfad zu Archive2.
 Bitte wähle Archive2.exe</Messagebox>
-    <Messagebox title="archive2 saknas" id="modsarchive2Missing">.\archive2\archive2.exe saknas.
-Vänligen ladda ner verktyget igen, eller installera archive2.exe manuellt.</Messagebox>
-    <Messagebox title="Filformatet stöds inte" id="modsarkivTypeNotSupported">{0} filer stöds ej.
-Vänligen packa upp arkivet och lägg till den här modden som en mapp.</Messagebox>
-    <Messagebox title="Konflikt mellan moddar har upptäckts" id="modsSamearkivName">Flera mods har samma arkiv-namn: "{0}".
-Mods med konflikter: {1}</Messagebox>
   </Messageboxes>
   <TweakDescriptions>
     <!--
@@ -502,15 +500,17 @@ Wenn aktiviert, wird die Kameraposition hinter der rechten Schulter festgelegt.
 ⚠️ Kann Probleme verursachen, wenn deaktiviert. </Description>
     <Description id="Fo76ini.Tweaks.Camera.DisableAutoVanityModeTweak">Wenn diese Option aktiviert ist, dreht sich die Kamera um den Charakter, nachdem für eine bestimmte Zeit nichts gedrückt wurde.
 ⚠️ Ich bin mir nicht sicher, ob es etwas bringt. Ich stand 5 Minuten herum und die Kamera drehte sich nicht. Braucht mehr Tests. </Description>
+    <Description id="Fo76ini.Tweaks.Camera.FOV3rdPersonTweak">Changes the Field of View of the 1st and 3rd person perspective.
+This is the same value from the in-game FOV setting.</Description>
     <Description id="Fo76ini.Tweaks.Camera.FOV3rdADSTweak">Ändert das Sichtfeld der 3rd-Person Perspektive während des Zielens. </Description>
     <Description id="Fo76ini.Tweaks.Camera.DefaultFOVTweak">⚠️ Verursacht Probleme mit der GUI.</Description>
     <Description id="Fo76ini.Tweaks.Camera.PitchZoomOutMaxDistTweak">Um wie viel wird die Kamera herausgezoomt, wenn Sie in der 3. Person auf den Boden schauen.</Description>
-    <Description id="Fo76ini.Tweaks.Colors.PipboyColorTweak">Ändert die Farbe des Pipboys</Description>
-    <Description id="Fo76ini.Tweaks.Colors.QuickboyColorTweak">Ändert die Farbe des Quickboys</Description>
-    <Description id="Fo76ini.Tweaks.Colors.PowerArmorPipboyColorTweak">Ändert die Farbe des Power Armor Quickboys</Description>
     <Description id="Fo76ini.Tweaks.General.ScreenshotIndexTweak">Wenn du im Spiel Screenshots mit der "Drucken"-Taste machst,
 werden sie im Spielverzeichnis als "ScreenShotX.png" abgelegt.
 Das "X" ist hier der Screenshot-Index. </Description>
+    <Description id="Fo76ini.Tweaks.Colors.PipboyColorTweak">Ändert die Farbe des Pipboys</Description>
+    <Description id="Fo76ini.Tweaks.Colors.QuickboyColorTweak">Ändert die Farbe des Quickboys</Description>
+    <Description id="Fo76ini.Tweaks.Colors.PowerArmorPipboyColorTweak">Ändert die Farbe des Power Armor Quickboys</Description>
     <Description id="Fo76ini.Tweaks.Inis.INIReadOnlyTweak">Diese Option macht alle *.ini-Dateien sofort schreibgeschützt.
 Aktiviere diese Option, wenn die Einstellungen vom Spiel zurückgesetzt werden.</Description>
     <Description id="Fo76ini.Tweaks.Config.AutoApplyTweak">Du müsst nicht mehr auf Übernehmen klicken.</Description>
@@ -527,16 +527,6 @@ Funktioniert jedoch nur, wenn das Spiel über das Tool gestartet wird.</Descript
     <Description id="Fo76ini.Tweaks.Config.DownloadPathTweak">Wenn du Mods mit dem 'Vortex' / 'Mod Manager Download' Knopf auf NexusMods herunterlädst,
 wird das Tool die Datei in diesen Ordner speichern.</Description>
   </TweakDescriptions>
-  <FormWhatsNew title="Was gibt's Neues?">
-    <!--
-        FormWhatsNew
-        ******************************************************************************************************************************************************
-        Was gibt's Neues?
-    -->
-    <Label text="Was gibt's Neues?" id="labelTitle" />
-    <Button text="Schließen" id="buttonClose" />
-    <CheckBox text="Nicht mehr anzeigen, auch nicht nach einem Update." id="checkBoxDontShowAgain" />
-  </FormWhatsNew>
   <FormWelcome title="Willkommen">
     <!--
         FormWelcome
@@ -648,20 +638,22 @@ Das ist insbesondere nützlich, wenn das Archiv RIESIG ist (1GiB oder mehr) und 
           <ToolStripButton text="Mod(s) auftauen" id="toolStripButtonModUnfreeze" />
           <ToolStripButton text="Mod(s) löschen" id="toolStripButtonDeleteMod" />
         </ToolStrip>
-        <ListView id="listViewMods">
-          <Column>Modname</Column>
-          <Column>Version</Column>
-          <Column>Typ</Column>
-          <Column>Installiere nach</Column>
-          <Column>Archivname</Column>
-          <Column>Archivvorgabe</Column>
-          <Column>Gefroren?</Column>
-        </ListView>
+        <ObjectListView id="objectListViewMods">
+          <Column></Column>
+          <Column>Modname &amp; -info</Column>
+          <Column>Status</Column>
+          <Column>Installation</Column>
+        </ObjectListView>
       </TabPage>
       <TabPage text="Einstellungen" id="tabPageModsSettings">
         <!-- ********** Tab "Einstellungen" ********** -->
         <GroupBox text="Verhalten" id="groupBoxModsBehavior">
           <!-- Group "Verhalten" -->
+          <CheckBox text="Zeige den Mod-Titel von der NexusMods-Seite an, falls verfügbar." id="checkBoxModsUseRemoteModNames">
+            <Tooltip>Wenn aktiviert: Zeigt den Titel des Mods so an, wie er auf NexusMods ist.
+Wenn nicht aktiviert: Zeigt den Titel des Mods so an, wie es in die Seitenleiste eingegeben wurde.
+Das ist Geschmackssache.</Tooltip>
+          </CheckBox>
           <CheckBox text="[Experimentell] Friere gebündelte Archive ein" id="checkBoxFreezeBundledArchives">
             <Tooltip>Anstatt gebündelte Archive neu zu erstellen, wird eine gebündelte Kopie gespeichert und du werdst gefragt, ob du sie beim Anwenden aktualisieren möchtest.</Tooltip>
           </CheckBox>
@@ -758,12 +750,9 @@ Wirkt sich nicht auf gebündelte Archive aus.</Tooltip>
     <TabControl id="tabControl1">
       <TabPage text="Info" id="tabPageInfo">
         <!-- ********** Tab "Info" ********** -->
-        <LinkLabel text="Was gibt's Neues?" id="linkLabelWhatsNew" />
-        <LinkLabel text="Lizenzierte Arbeit" id="linkLabelAttribution" />
         <Panel id="panelUpdate">
           <LinkLabel text="Oder lade es manuell herunter..." id="linkLabelManualDownloadPage" />
         </Panel>
-        <Label text="Nuclear Winter Modus ist aktiv." id="labelNWModeActive" />
         <Label text="Übersetzt von:" id="labelTranslationBy" />
         <Label text="Autor:" id="labelAuthor" />
         <Label text="Version:" id="labelVersion" />
@@ -1000,6 +989,8 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </GroupBox>
           <GroupBox text="Sichtfeld" id="groupBoxFieldOfView">
             <!-- Group "Sichtfeld" -->
+            <Label text="These options might not work anymore." id="labelFOVWarn" />
+            <Label text="More FOV tweaks:" id="labelMoreFOV" />
             <Label text="fDefaultFOV (Verursacht Probleme mit der HUD):" id="labelfDefaultFOV" />
             <Label text="Dritte Person Sichtfeld beim Zielen:" id="labelADSFOV" />
             <Label text="Dritte Person Sichtfeld:" id="labelWorldFOV" />
@@ -1019,8 +1010,34 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           </GroupBox>
         </Panel>
       </TabPage>
-      <TabPage text="Pipboy" id="tabPagePipBoy">
-        <!-- ********** Tab "Pipboy" ********** -->
+      <TabPage text="Pip-Boy" id="tabPagePipBoy">
+        <!-- ********** Tab "Pip-Boy" ********** -->
+        <TabControl id="tabControlPipboy">
+          <TabPage text="Pip-Boy" id="tabPagePipboyColor">
+            <!-- ********** Tab "Pip-Boy" ********** -->
+            <Label text="Vorschau" id="labelPreviewPipboy" />
+            <Label text="Die Vorschau ist nur eine Annäherung,\ndaher sieht es im Spiel möglicherweise nicht genau so aus." id="labelPipboyColorPreviewNotice" />
+            <Button text="Zurücksetzen" id="buttonColorResetPipboy" />
+            <Button text="Farbe wählen" id="buttonColorPickPipboy" />
+            <Label text="Pip-Boy Farbe" id="labelPipboyColor" />
+          </TabPage>
+          <TabPage text="Quick-Boy" id="tabPageQuickboyColor">
+            <!-- ********** Tab "Quick-Boy" ********** -->
+            <Label text="Vorschau" id="label1" />
+            <Label text="Die Vorschau ist nur eine Annäherung,\ndaher sieht es im Spiel möglicherweise nicht genau so aus." id="label4" />
+            <Button text="Farbe wählen" id="buttonColorPickQuickboy" />
+            <Button text="Zurücksetzen" id="buttonColorResetQuickboy" />
+            <Label text="Quick-Boy Farbe" id="labelQuickboyColor" />
+          </TabPage>
+          <TabPage text="Powerrüstung" id="tabPagePowerArmorColor">
+            <!-- ********** Tab "Powerrüstung" ********** -->
+            <Label text="Vorschau" id="label2" />
+            <Label text="Die Vorschau ist nur eine Annäherung,\ndaher sieht es im Spiel möglicherweise nicht genau so aus." id="label5" />
+            <Label text="Powerrüstungsfarbe" id="labelPowerArmorColor" />
+            <Button text="Farbe wählen" id="buttonColorPickPAPipboy" />
+            <Button text="Zurücksetzen" id="buttonColorResetPAPipboy" />
+          </TabPage>
+        </TabControl>
         <GroupBox text="Vorgaben" id="groupBoxPipboyColorPresets">
           <!-- Group "Vorgaben" -->
           <Button text="Ödland der Hauptstadt Grün" id="buttonPresetFo3Green" />
@@ -1030,53 +1047,33 @@ Betroffene Dateien: Fallout76Prefs.ini</Tooltip>
           <Button text="Commonwealth Grün" id="buttonPresetFo4Green" />
           <Button text="Klassisches Blau" id="buttonPresetFo3Blue" />
         </GroupBox>
-        <GroupBox text="Vorschau" id="groupBoxPipboyColorPreview">
-          <!-- Group "Vorschau" -->
-          <Label text="Die Vorschau ist nur eine Annäherung,\ndaher sieht es im Spiel möglicherweise nicht genau so aus." id="labelPipboyColorPreviewNotice" />
-        </GroupBox>
         <GroupBox text="Auflösung" id="groupBoxPipboyResolution">
           <!-- Group "Auflösung" -->
-          <Label text="Diese Einstellung betrifft den Pipboy und Quickboy." id="labelPipboyResolutionSideNote" />
-          <Button text="Empfohlene Auflösung" id="buttonPipboyTargetSetRecommended">
-            <Tooltip>Empfohlene Auflösung: 1752x1400</Tooltip>
-          </Button>
-          <Button text="Zurücksetzen" id="buttonPipboyTargetReset">
-            <Tooltip>Standardauflösung: 876x700</Tooltip>
-          </Button>
+          <LinkLabel text="Zurücksetzen" id="linkLabelPipboyTargetReset" />
+          <LinkLabel text="Empfohlene Auflösung verwenden" id="linkLabelPipboyTargetSetRecommended" />
+          <Label text="Diese Einstellung betrifft den Pip-Boy und Quick-Boy." id="labelPipboyResolutionSideNote" />
         </GroupBox>
         <GroupBox text="Modus" id="groupBoxPipboyMode">
           <!-- Group "Modus" -->
-          <RadioButton text="QuickBoy verwenden" id="radioButtonQuickboy" />
-          <RadioButton text="PipBoy verwenden" id="radioButtonPipboy" />
-        </GroupBox>
-        <GroupBox text="Farben" id="groupBoxPipboyColors">
-          <!-- Group "Farben" -->
-          <Label text="Power Armor Farbe" id="labelPowerArmorColor" />
-          <Button text="Farbe wählen" id="buttonColorPickPAPipboy" />
-          <Button text="Zurücksetzen" id="buttonColorResetPipboy" />
-          <Button text="Zurücksetzen" id="buttonColorResetPAPipboy" />
-          <Label text="Quick-Boy Farbe" id="labelQuickboyColor" />
-          <Button text="Farbe wählen" id="buttonColorPickQuickboy" />
-          <Button text="Zurücksetzen" id="buttonColorResetQuickboy" />
-          <Label text="Pip-Boy Farbe" id="labelPipboyColor" />
-          <Button text="Farbe wählen" id="buttonColorPickPipboy" />
+          <RadioButton text="Quick-Boy verwenden" id="radioButtonQuickboy" />
+          <RadioButton text="Pip-Boy verwenden" id="radioButtonPipboy" />
         </GroupBox>
       </TabPage>
       <TabPage text="Galerie" id="tabPageGallery">
         <!-- ********** Tab "Galerie" ********** -->
-        <GroupBox text="Galerie" id="groupBoxGallery">
-          <!-- Group "Galerie" -->
+        <Panel id="panelGalleryOptions">
+          <GroupBox text="Optionen" id="groupBoxScreenshotOptions">
+            <!-- Group "Optionen" -->
+            <Button text="Vorschaubilder löschen" id="buttonGalleryDeleteThumbnails" />
+            <CheckBox text="Unterordner rekursiv durchsuchen" id="checkBoxGallerySearchRecursively" />
+            <Label text="Zusätzliche Pfade (mit Zeilenumbruch getrennt):" id="label3" />
+            <Label text="Screenshot-Index:" id="labelScreenshotIndex" />
+          </GroupBox>
+        </Panel>
+        <Label text="Gallery" id="labelGallery" />
+        <Panel id="panelGallery">
           <Label text="Klicke 'Galerie aktualisieren', um Screenshots und Fotos anzuzeigen." id="labelGalleryTip" />
-        </GroupBox>
-        <GroupBox text="Optionen" id="groupBoxScreenshotOptions">
-          <!-- Group "Optionen" -->
-          <Button text="Vorschaubilder löschen" id="buttonGalleryDeleteThumbnails" />
-          <CheckBox text="Unterordner rekursiv durchsuchen" id="checkBoxGallerySearchRecursively" />
-          <Label text="Zusätzliche Pfade (mit Zeilenumbruch getrennt):" id="label3" />
-          <Label text="Vorschaubildgröße:" id="labelGalleryThumbnailSize" />
-          <Button text="Galerie aktualisieren" id="buttonRefreshGallery" />
-          <Label text="Screenshot-Index:" id="labelScreenshotIndex" />
-        </GroupBox>
+        </Panel>
       </TabPage>
       <TabPage text="Benutzerdefiniert" id="tabPageCustom">
         <!-- ********** Tab "Benutzerdefiniert" ********** -->
@@ -1125,7 +1122,7 @@ Möglicherweise musst du das Tool vorher als Administrator starten, um diese Opt
           <CheckBox text="*.ini Dateien schreibschützen" id="checkBoxReadOnly" />
         </GroupBox>
         <GroupBox text="Nuclear Winter Optionen (veraltet)" id="groupBoxNuclearWinterMode">
-          <!-- Group "Nuclear Winter Optionen" -->
+          <!-- Group "Nuclear Winter Optionen (veraltet)" -->
           <CheckBox text="Nuclear Winter Umschaltknopf im Hauptfenster anzeigen." id="checkBoxShowNWBtn" />
           <CheckBox text="Mods automatisch installieren, wenn NW deaktiviert wird" id="checkBoxNWAutoDeployMods" />
           <Label text="Modoptionen:" id="labelNWmodoptions" />

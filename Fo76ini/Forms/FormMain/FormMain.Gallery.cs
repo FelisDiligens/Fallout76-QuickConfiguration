@@ -40,6 +40,8 @@ namespace Fo76ini
 
             this.textBoxGalleryPaths.Text = IniFiles.Config.GetString("Gallery", "sCustomPathsList", "").Replace(",", "\r\n");
             this.checkBoxGallerySearchRecursively.Checked = IniFiles.Config.GetBool("Gallery", "bSearchDirectoriesRecursively", false);
+
+            HideGalleryOptions();
         }
 
         private void UpdateScreenShotGalleryThreaded()
@@ -265,6 +267,34 @@ namespace Fo76ini
         private void buttonRefreshGallery_Click(object sender, EventArgs e)
         {
             UpdateScreenShotGalleryThreaded();
+        }
+
+        private void ShowGalleryOptions()
+        {
+            this.panelGalleryOptions.Visible = true;
+            this.panelGallery.Width -= this.panelGalleryOptions.Width;
+        }
+
+        private void HideGalleryOptions()
+        {
+            this.panelGalleryOptions.Visible = false;
+            this.panelGallery.Width += this.panelGalleryOptions.Width;
+        }
+
+        private void buttonGalleryShowOptions_Click(object sender, EventArgs e)
+        {
+            bool isVisible = this.panelGalleryOptions.Visible;
+
+            // is visible? then hide it:
+            if (isVisible)
+            {
+                HideGalleryOptions();
+            }
+            // is not visible? then show it:
+            else
+            {
+                ShowGalleryOptions();
+            }
         }
 
         private void sliderGalleryThumbnailSize_Scroll(object sender, EventArgs e)

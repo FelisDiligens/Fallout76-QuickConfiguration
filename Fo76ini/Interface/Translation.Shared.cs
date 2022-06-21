@@ -21,6 +21,15 @@ namespace Fo76ini
             localizedStrings["modsTableTypeLoose"] = "Loose";
             localizedStrings["modTableFrozenPending"] = "Pending";
             localizedStrings["modTableFrozen"] = "Frozen";
+            localizedStrings["modTableFreeze"] = "Freeze";
+
+            localizedStrings["modTablePendingInstallation"] = "Pending for installation";
+            localizedStrings["modTablePendingRemoval"] = "Pending for removal";
+            localizedStrings["modTablePendingChanges"] = "Pending changes";
+            localizedStrings["updateAvailable"] = "Update available";
+            localizedStrings["enabled"] = "Enabled";
+            localizedStrings["disabled"] = "Disabled";
+
             //localizedStrings["modTableThawed"] = "Thawed";
             //localizedStrings["modDetailsTitle"] = "Edit {0}";
             //localizedStrings["modDetailsTitleBulk"] = "Edit {0} mods";

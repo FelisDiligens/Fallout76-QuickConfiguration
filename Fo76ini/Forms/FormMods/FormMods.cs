@@ -900,7 +900,7 @@ namespace Fo76ini
                 string longFilePath = ModInstallations.EnsureLongPathSupport(filePath);
                 if (Directory.Exists(longFilePath))
                     ModInstallations.InstallFolder(Mods, filePath);
-                else
+                else if (File.Exists(longFilePath))
                     ModInstallations.InstallArchive(Mods, filePath, !unpackBA2ByDefault);
             }
         }

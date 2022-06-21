@@ -74,7 +74,8 @@ namespace Fo76ini
                 "toolStripStatusLabelEditionText",
                 "toolStripStatusLabel1",
                 "labelPipboyResolutionSpacer",
-                "richTextBoxWhatsNew"
+                "richTextBoxWhatsNew",
+                "buttonRefreshGallery"
             });
 
 
@@ -559,6 +560,9 @@ namespace Fo76ini
 
         private void OnNWModeUpdated(object sender, NuclearWinterEventArgs e)
         {
+            this.Invoke(new Action(() => {
+                UpdateNWModeUI(e.NuclearWinterModeEnabled);
+            }));
         }
         
         private void UpdateNWModeUI (bool nwModeEnabled)

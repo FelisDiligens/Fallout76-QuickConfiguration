@@ -360,19 +360,21 @@
             this.numConversationHistorySize = new System.Windows.Forms.NumericUpDown();
             this.labelConversationHistorySize = new System.Windows.Forms.Label();
             this.tabPageGallery = new System.Windows.Forms.TabPage();
-            this.groupBoxGallery = new System.Windows.Forms.GroupBox();
-            this.pictureBoxGalleryLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.labelGalleryTip = new System.Windows.Forms.Label();
-            this.listViewScreenshots = new System.Windows.Forms.ListView();
+            this.panelGalleryOptions = new System.Windows.Forms.Panel();
             this.groupBoxScreenshotOptions = new System.Windows.Forms.GroupBox();
             this.buttonGalleryDeleteThumbnails = new System.Windows.Forms.Button();
             this.checkBoxGallerySearchRecursively = new System.Windows.Forms.CheckBox();
             this.textBoxGalleryPaths = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.sliderGalleryThumbnailSize = new System.Windows.Forms.TrackBar();
-            this.labelGalleryThumbnailSize = new System.Windows.Forms.Label();
-            this.buttonRefreshGallery = new System.Windows.Forms.Button();
             this.numScreenshotIndex = new System.Windows.Forms.NumericUpDown();
+            this.buttonGalleryShowOptions = new System.Windows.Forms.Button();
+            this.labelGallery = new System.Windows.Forms.Label();
+            this.panelGallery = new System.Windows.Forms.Panel();
+            this.labelGalleryTip = new System.Windows.Forms.Label();
+            this.pictureBoxGalleryLoadingGIF = new System.Windows.Forms.PictureBox();
+            this.listViewScreenshots = new System.Windows.Forms.ListView();
+            this.sliderGalleryThumbnailSize = new System.Windows.Forms.TrackBar();
+            this.buttonRefreshGallery = new System.Windows.Forms.Button();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
             this.buttonCustomSave = new System.Windows.Forms.Button();
             this.comboBoxCustomFile = new System.Windows.Forms.ComboBox();
@@ -574,11 +576,12 @@
             this.groupBoxAudioInterface.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).BeginInit();
             this.tabPageGallery.SuspendLayout();
-            this.groupBoxGallery.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).BeginInit();
+            this.panelGalleryOptions.SuspendLayout();
             this.groupBoxScreenshotOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numScreenshotIndex)).BeginInit();
+            this.panelGallery.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).BeginInit();
             this.tabPageCustom.SuspendLayout();
             this.tabPageDangerZone.SuspendLayout();
             this.groupBoxVideoDZ.SuspendLayout();
@@ -4383,10 +4386,12 @@
             // 
             this.panelWhatsNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelWhatsNew.BackColor = System.Drawing.Color.Silver;
             this.panelWhatsNew.Controls.Add(this.richTextBoxWhatsNew);
-            this.panelWhatsNew.Location = new System.Drawing.Point(489, 6);
+            this.panelWhatsNew.Location = new System.Drawing.Point(486, 0);
+            this.panelWhatsNew.Margin = new System.Windows.Forms.Padding(0);
             this.panelWhatsNew.Name = "panelWhatsNew";
-            this.panelWhatsNew.Size = new System.Drawing.Size(357, 452);
+            this.panelWhatsNew.Size = new System.Drawing.Size(370, 468);
             this.panelWhatsNew.TabIndex = 45;
             // 
             // richTextBoxWhatsNew
@@ -4394,17 +4399,18 @@
             this.richTextBoxWhatsNew.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxWhatsNew.BackColor = System.Drawing.SystemColors.Window;
+            this.richTextBoxWhatsNew.BackColor = System.Drawing.Color.Silver;
             this.richTextBoxWhatsNew.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxWhatsNew.Cursor = System.Windows.Forms.Cursors.Default;
-            this.richTextBoxWhatsNew.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxWhatsNew.Location = new System.Drawing.Point(6, 6);
-            this.richTextBoxWhatsNew.Margin = new System.Windows.Forms.Padding(6);
+            this.richTextBoxWhatsNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxWhatsNew.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.richTextBoxWhatsNew.Location = new System.Drawing.Point(10, 10);
+            this.richTextBoxWhatsNew.Margin = new System.Windows.Forms.Padding(10, 10, 0, 10);
             this.richTextBoxWhatsNew.Name = "richTextBoxWhatsNew";
             this.richTextBoxWhatsNew.ReadOnly = true;
-            this.richTextBoxWhatsNew.Size = new System.Drawing.Size(345, 440);
+            this.richTextBoxWhatsNew.Size = new System.Drawing.Size(356, 448);
             this.richTextBoxWhatsNew.TabIndex = 43;
-            this.richTextBoxWhatsNew.Text = "\n\n\n                               Loading content...";
+            this.richTextBoxWhatsNew.Text = "\n\n\n                          Loading \"What\'s new?\" content...";
             // 
             // panelUpdate
             // 
@@ -4412,7 +4418,7 @@
             this.panelUpdate.Controls.Add(this.labelNewVersion);
             this.panelUpdate.Controls.Add(this.linkLabelManualDownloadPage);
             this.panelUpdate.Controls.Add(this.pictureBoxUpdateButton);
-            this.panelUpdate.Location = new System.Drawing.Point(93, 338);
+            this.panelUpdate.Location = new System.Drawing.Point(93, 175);
             this.panelUpdate.Name = "panelUpdate";
             this.panelUpdate.Size = new System.Drawing.Size(287, 100);
             this.panelUpdate.TabIndex = 39;
@@ -4466,7 +4472,7 @@
             this.labelGameEdition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelGameEdition.BackColor = System.Drawing.Color.Black;
             this.labelGameEdition.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelGameEdition.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGameEdition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGameEdition.ForeColor = System.Drawing.Color.White;
             this.labelGameEdition.Location = new System.Drawing.Point(0, 405);
             this.labelGameEdition.Name = "labelGameEdition";
@@ -4515,69 +4521,69 @@
             // labelTranslationAuthor
             // 
             this.labelTranslationAuthor.AutoSize = true;
-            this.labelTranslationAuthor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTranslationAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationAuthor.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelTranslationAuthor.Location = new System.Drawing.Point(206, 140);
             this.labelTranslationAuthor.Name = "labelTranslationAuthor";
-            this.labelTranslationAuthor.Size = new System.Drawing.Size(160, 15);
+            this.labelTranslationAuthor.Size = new System.Drawing.Size(172, 15);
             this.labelTranslationAuthor.TabIndex = 12;
             this.labelTranslationAuthor.Text = "FelisDiligens (aka. datasnake)";
             // 
             // labelTranslationBy
             // 
             this.labelTranslationBy.AutoSize = true;
-            this.labelTranslationBy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTranslationBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationBy.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelTranslationBy.Location = new System.Drawing.Point(93, 140);
             this.labelTranslationBy.Name = "labelTranslationBy";
-            this.labelTranslationBy.Size = new System.Drawing.Size(86, 15);
+            this.labelTranslationBy.Size = new System.Drawing.Size(101, 15);
             this.labelTranslationBy.TabIndex = 11;
             this.labelTranslationBy.Text = "Translation by:";
             // 
             // labelAuthorName
             // 
             this.labelAuthorName.AutoSize = true;
-            this.labelAuthorName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAuthorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAuthorName.Location = new System.Drawing.Point(206, 122);
             this.labelAuthorName.Name = "labelAuthorName";
-            this.labelAuthorName.Size = new System.Drawing.Size(160, 15);
+            this.labelAuthorName.Size = new System.Drawing.Size(172, 15);
             this.labelAuthorName.TabIndex = 10;
             this.labelAuthorName.Text = "FelisDiligens (aka. datasnake)";
             // 
             // labelConfigVersion
             // 
             this.labelConfigVersion.AutoSize = true;
-            this.labelConfigVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConfigVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelConfigVersion.Location = new System.Drawing.Point(206, 105);
             this.labelConfigVersion.Name = "labelConfigVersion";
-            this.labelConfigVersion.Size = new System.Drawing.Size(12, 15);
+            this.labelConfigVersion.Size = new System.Drawing.Size(14, 15);
             this.labelConfigVersion.TabIndex = 9;
             this.labelConfigVersion.Text = "?";
             // 
             // labelAuthor
             // 
             this.labelAuthor.AutoSize = true;
-            this.labelAuthor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAuthor.Location = new System.Drawing.Point(93, 122);
             this.labelAuthor.Name = "labelAuthor";
-            this.labelAuthor.Size = new System.Drawing.Size(49, 15);
+            this.labelAuthor.Size = new System.Drawing.Size(52, 15);
             this.labelAuthor.TabIndex = 8;
             this.labelAuthor.Text = "Author:";
             // 
             // labelVersion
             // 
             this.labelVersion.AutoSize = true;
-            this.labelVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelVersion.Location = new System.Drawing.Point(93, 105);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(51, 15);
+            this.labelVersion.Size = new System.Drawing.Size(59, 15);
             this.labelVersion.TabIndex = 7;
             this.labelVersion.Text = "Version:";
             // 
             // labelDescription
             // 
             this.labelDescription.BackColor = System.Drawing.Color.Transparent;
-            this.labelDescription.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDescription.Location = new System.Drawing.Point(90, 54);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(393, 44);
@@ -5021,8 +5027,12 @@
             // 
             // tabPageGallery
             // 
-            this.tabPageGallery.Controls.Add(this.groupBoxGallery);
-            this.tabPageGallery.Controls.Add(this.groupBoxScreenshotOptions);
+            this.tabPageGallery.Controls.Add(this.panelGalleryOptions);
+            this.tabPageGallery.Controls.Add(this.buttonGalleryShowOptions);
+            this.tabPageGallery.Controls.Add(this.labelGallery);
+            this.tabPageGallery.Controls.Add(this.panelGallery);
+            this.tabPageGallery.Controls.Add(this.sliderGalleryThumbnailSize);
+            this.tabPageGallery.Controls.Add(this.buttonRefreshGallery);
             this.tabPageGallery.Location = new System.Drawing.Point(4, 22);
             this.tabPageGallery.Name = "tabPageGallery";
             this.tabPageGallery.Padding = new System.Windows.Forms.Padding(3);
@@ -5031,86 +5041,39 @@
             this.tabPageGallery.Text = "Gallery";
             this.tabPageGallery.UseVisualStyleBackColor = true;
             // 
-            // groupBoxGallery
+            // panelGalleryOptions
             // 
-            this.groupBoxGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panelGalleryOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxGallery.Controls.Add(this.pictureBoxGalleryLoadingGIF);
-            this.groupBoxGallery.Controls.Add(this.labelGalleryTip);
-            this.groupBoxGallery.Controls.Add(this.listViewScreenshots);
-            this.groupBoxGallery.Location = new System.Drawing.Point(6, 6);
-            this.groupBoxGallery.Name = "groupBoxGallery";
-            this.groupBoxGallery.Size = new System.Drawing.Size(546, 452);
-            this.groupBoxGallery.TabIndex = 2;
-            this.groupBoxGallery.TabStop = false;
-            this.groupBoxGallery.Text = "Gallery";
-            // 
-            // pictureBoxGalleryLoadingGIF
-            // 
-            this.pictureBoxGalleryLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxGalleryLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
-            this.pictureBoxGalleryLoadingGIF.Location = new System.Drawing.Point(7, 18);
-            this.pictureBoxGalleryLoadingGIF.Name = "pictureBoxGalleryLoadingGIF";
-            this.pictureBoxGalleryLoadingGIF.Size = new System.Drawing.Size(533, 427);
-            this.pictureBoxGalleryLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxGalleryLoadingGIF.TabIndex = 3;
-            this.pictureBoxGalleryLoadingGIF.TabStop = false;
-            this.pictureBoxGalleryLoadingGIF.Visible = false;
-            // 
-            // labelGalleryTip
-            // 
-            this.labelGalleryTip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelGalleryTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGalleryTip.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelGalleryTip.Location = new System.Drawing.Point(18, 197);
-            this.labelGalleryTip.Name = "labelGalleryTip";
-            this.labelGalleryTip.Size = new System.Drawing.Size(511, 39);
-            this.labelGalleryTip.TabIndex = 2;
-            this.labelGalleryTip.Text = "Click \'Refresh gallery\' to display screenshots and photos.";
-            this.labelGalleryTip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // listViewScreenshots
-            // 
-            this.listViewScreenshots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewScreenshots.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listViewScreenshots.HideSelection = false;
-            this.listViewScreenshots.Location = new System.Drawing.Point(6, 20);
-            this.listViewScreenshots.Name = "listViewScreenshots";
-            this.listViewScreenshots.Size = new System.Drawing.Size(534, 425);
-            this.listViewScreenshots.TabIndex = 1;
-            this.listViewScreenshots.UseCompatibleStateImageBehavior = false;
+            this.panelGalleryOptions.Controls.Add(this.groupBoxScreenshotOptions);
+            this.panelGalleryOptions.Location = new System.Drawing.Point(631, 42);
+            this.panelGalleryOptions.Name = "panelGalleryOptions";
+            this.panelGalleryOptions.Size = new System.Drawing.Size(221, 422);
+            this.panelGalleryOptions.TabIndex = 5;
             // 
             // groupBoxScreenshotOptions
             // 
-            this.groupBoxScreenshotOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBoxScreenshotOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxScreenshotOptions.Controls.Add(this.buttonGalleryDeleteThumbnails);
             this.groupBoxScreenshotOptions.Controls.Add(this.checkBoxGallerySearchRecursively);
             this.groupBoxScreenshotOptions.Controls.Add(this.textBoxGalleryPaths);
             this.groupBoxScreenshotOptions.Controls.Add(this.label3);
-            this.groupBoxScreenshotOptions.Controls.Add(this.sliderGalleryThumbnailSize);
-            this.groupBoxScreenshotOptions.Controls.Add(this.labelGalleryThumbnailSize);
-            this.groupBoxScreenshotOptions.Controls.Add(this.buttonRefreshGallery);
             this.groupBoxScreenshotOptions.Controls.Add(this.numScreenshotIndex);
             this.groupBoxScreenshotOptions.Controls.Add(this.labelScreenshotIndex);
-            this.groupBoxScreenshotOptions.Location = new System.Drawing.Point(558, 6);
+            this.groupBoxScreenshotOptions.Location = new System.Drawing.Point(3, 4);
             this.groupBoxScreenshotOptions.Name = "groupBoxScreenshotOptions";
-            this.groupBoxScreenshotOptions.Size = new System.Drawing.Size(288, 452);
+            this.groupBoxScreenshotOptions.Size = new System.Drawing.Size(212, 412);
             this.groupBoxScreenshotOptions.TabIndex = 0;
             this.groupBoxScreenshotOptions.TabStop = false;
             this.groupBoxScreenshotOptions.Text = "Options";
             // 
             // buttonGalleryDeleteThumbnails
             // 
-            this.buttonGalleryDeleteThumbnails.Location = new System.Drawing.Point(10, 163);
+            this.buttonGalleryDeleteThumbnails.Location = new System.Drawing.Point(10, 109);
             this.buttonGalleryDeleteThumbnails.Name = "buttonGalleryDeleteThumbnails";
-            this.buttonGalleryDeleteThumbnails.Size = new System.Drawing.Size(272, 23);
+            this.buttonGalleryDeleteThumbnails.Size = new System.Drawing.Size(196, 23);
             this.buttonGalleryDeleteThumbnails.TabIndex = 66;
             this.buttonGalleryDeleteThumbnails.Text = "Delete thumbnails";
             this.buttonGalleryDeleteThumbnails.UseVisualStyleBackColor = true;
@@ -5118,8 +5081,9 @@
             // 
             // checkBoxGallerySearchRecursively
             // 
+            this.checkBoxGallerySearchRecursively.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxGallerySearchRecursively.AutoSize = true;
-            this.checkBoxGallerySearchRecursively.Location = new System.Drawing.Point(10, 428);
+            this.checkBoxGallerySearchRecursively.Location = new System.Drawing.Point(10, 382);
             this.checkBoxGallerySearchRecursively.Name = "checkBoxGallerySearchRecursively";
             this.checkBoxGallerySearchRecursively.Size = new System.Drawing.Size(164, 17);
             this.checkBoxGallerySearchRecursively.TabIndex = 65;
@@ -5132,11 +5096,11 @@
             this.textBoxGalleryPaths.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxGalleryPaths.Location = new System.Drawing.Point(10, 227);
+            this.textBoxGalleryPaths.Location = new System.Drawing.Point(10, 170);
             this.textBoxGalleryPaths.Multiline = true;
             this.textBoxGalleryPaths.Name = "textBoxGalleryPaths";
             this.textBoxGalleryPaths.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxGalleryPaths.Size = new System.Drawing.Size(272, 195);
+            this.textBoxGalleryPaths.Size = new System.Drawing.Size(196, 206);
             this.textBoxGalleryPaths.TabIndex = 64;
             this.textBoxGalleryPaths.WordWrap = false;
             this.textBoxGalleryPaths.TextChanged += new System.EventHandler(this.textBoxGalleryPaths_TextChanged);
@@ -5144,50 +5108,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 211);
+            this.label3.Location = new System.Drawing.Point(7, 154);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(178, 13);
             this.label3.TabIndex = 63;
             this.label3.Text = "Additonal paths (newline separated):";
             // 
-            // sliderGalleryThumbnailSize
-            // 
-            this.sliderGalleryThumbnailSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderGalleryThumbnailSize.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderGalleryThumbnailSize.LargeChange = 1;
-            this.sliderGalleryThumbnailSize.Location = new System.Drawing.Point(10, 83);
-            this.sliderGalleryThumbnailSize.Maximum = 5;
-            this.sliderGalleryThumbnailSize.Minimum = 1;
-            this.sliderGalleryThumbnailSize.Name = "sliderGalleryThumbnailSize";
-            this.sliderGalleryThumbnailSize.Size = new System.Drawing.Size(272, 45);
-            this.sliderGalleryThumbnailSize.TabIndex = 61;
-            this.sliderGalleryThumbnailSize.Value = 1;
-            this.sliderGalleryThumbnailSize.Scroll += new System.EventHandler(this.sliderGalleryThumbnailSize_Scroll);
-            // 
-            // labelGalleryThumbnailSize
-            // 
-            this.labelGalleryThumbnailSize.AutoSize = true;
-            this.labelGalleryThumbnailSize.Location = new System.Drawing.Point(7, 67);
-            this.labelGalleryThumbnailSize.Name = "labelGalleryThumbnailSize";
-            this.labelGalleryThumbnailSize.Size = new System.Drawing.Size(80, 13);
-            this.labelGalleryThumbnailSize.TabIndex = 62;
-            this.labelGalleryThumbnailSize.Text = "Thumbnail size:";
-            // 
-            // buttonRefreshGallery
-            // 
-            this.buttonRefreshGallery.Location = new System.Drawing.Point(10, 134);
-            this.buttonRefreshGallery.Name = "buttonRefreshGallery";
-            this.buttonRefreshGallery.Size = new System.Drawing.Size(272, 23);
-            this.buttonRefreshGallery.TabIndex = 4;
-            this.buttonRefreshGallery.Text = "Refresh gallery";
-            this.buttonRefreshGallery.UseVisualStyleBackColor = true;
-            this.buttonRefreshGallery.Click += new System.EventHandler(this.buttonRefreshGallery_Click);
-            // 
             // numScreenshotIndex
             // 
             this.numScreenshotIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numScreenshotIndex.Location = new System.Drawing.Point(147, 18);
+            this.numScreenshotIndex.Location = new System.Drawing.Point(10, 36);
             this.numScreenshotIndex.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -5199,8 +5129,114 @@
             0,
             -2147483648});
             this.numScreenshotIndex.Name = "numScreenshotIndex";
-            this.numScreenshotIndex.Size = new System.Drawing.Size(135, 20);
+            this.numScreenshotIndex.Size = new System.Drawing.Size(196, 20);
             this.numScreenshotIndex.TabIndex = 3;
+            // 
+            // buttonGalleryShowOptions
+            // 
+            this.buttonGalleryShowOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonGalleryShowOptions.BackColor = System.Drawing.Color.Transparent;
+            this.buttonGalleryShowOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGalleryShowOptions.Image = global::Fo76ini.Properties.Resources.cog_24;
+            this.buttonGalleryShowOptions.Location = new System.Drawing.Point(810, 6);
+            this.buttonGalleryShowOptions.Name = "buttonGalleryShowOptions";
+            this.buttonGalleryShowOptions.Size = new System.Drawing.Size(36, 36);
+            this.buttonGalleryShowOptions.TabIndex = 63;
+            this.buttonGalleryShowOptions.UseVisualStyleBackColor = false;
+            this.buttonGalleryShowOptions.Click += new System.EventHandler(this.buttonGalleryShowOptions_Click);
+            // 
+            // labelGallery
+            // 
+            this.labelGallery.AutoSize = true;
+            this.labelGallery.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGallery.Location = new System.Drawing.Point(6, 10);
+            this.labelGallery.Name = "labelGallery";
+            this.labelGallery.Size = new System.Drawing.Size(68, 24);
+            this.labelGallery.TabIndex = 62;
+            this.labelGallery.Text = "Gallery";
+            // 
+            // panelGallery
+            // 
+            this.panelGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelGallery.AutoScroll = true;
+            this.panelGallery.Controls.Add(this.labelGalleryTip);
+            this.panelGallery.Controls.Add(this.pictureBoxGalleryLoadingGIF);
+            this.panelGallery.Controls.Add(this.listViewScreenshots);
+            this.panelGallery.Location = new System.Drawing.Point(6, 42);
+            this.panelGallery.Name = "panelGallery";
+            this.panelGallery.Size = new System.Drawing.Size(622, 416);
+            this.panelGallery.TabIndex = 0;
+            // 
+            // labelGalleryTip
+            // 
+            this.labelGalleryTip.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGalleryTip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGalleryTip.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelGalleryTip.Location = new System.Drawing.Point(20, 20);
+            this.labelGalleryTip.Margin = new System.Windows.Forms.Padding(20);
+            this.labelGalleryTip.Name = "labelGalleryTip";
+            this.labelGalleryTip.Size = new System.Drawing.Size(582, 376);
+            this.labelGalleryTip.TabIndex = 4;
+            this.labelGalleryTip.Text = "Click \"Refresh gallery\" to display screenshots and photos.";
+            this.labelGalleryTip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBoxGalleryLoadingGIF
+            // 
+            this.pictureBoxGalleryLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxGalleryLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
+            this.pictureBoxGalleryLoadingGIF.Location = new System.Drawing.Point(3, 4);
+            this.pictureBoxGalleryLoadingGIF.Name = "pictureBoxGalleryLoadingGIF";
+            this.pictureBoxGalleryLoadingGIF.Size = new System.Drawing.Size(616, 409);
+            this.pictureBoxGalleryLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxGalleryLoadingGIF.TabIndex = 3;
+            this.pictureBoxGalleryLoadingGIF.TabStop = false;
+            this.pictureBoxGalleryLoadingGIF.Visible = false;
+            // 
+            // listViewScreenshots
+            // 
+            this.listViewScreenshots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewScreenshots.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewScreenshots.HideSelection = false;
+            this.listViewScreenshots.Location = new System.Drawing.Point(3, 3);
+            this.listViewScreenshots.Name = "listViewScreenshots";
+            this.listViewScreenshots.Size = new System.Drawing.Size(616, 410);
+            this.listViewScreenshots.TabIndex = 1;
+            this.listViewScreenshots.UseCompatibleStateImageBehavior = false;
+            // 
+            // sliderGalleryThumbnailSize
+            // 
+            this.sliderGalleryThumbnailSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderGalleryThumbnailSize.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderGalleryThumbnailSize.LargeChange = 1;
+            this.sliderGalleryThumbnailSize.Location = new System.Drawing.Point(587, 6);
+            this.sliderGalleryThumbnailSize.Maximum = 5;
+            this.sliderGalleryThumbnailSize.Minimum = 1;
+            this.sliderGalleryThumbnailSize.Name = "sliderGalleryThumbnailSize";
+            this.sliderGalleryThumbnailSize.Size = new System.Drawing.Size(175, 45);
+            this.sliderGalleryThumbnailSize.TabIndex = 61;
+            this.sliderGalleryThumbnailSize.Value = 1;
+            this.sliderGalleryThumbnailSize.Scroll += new System.EventHandler(this.sliderGalleryThumbnailSize_Scroll);
+            // 
+            // buttonRefreshGallery
+            // 
+            this.buttonRefreshGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRefreshGallery.BackColor = System.Drawing.Color.Transparent;
+            this.buttonRefreshGallery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefreshGallery.Image = global::Fo76ini.Properties.Resources.available_updates;
+            this.buttonRefreshGallery.Location = new System.Drawing.Point(768, 6);
+            this.buttonRefreshGallery.Name = "buttonRefreshGallery";
+            this.buttonRefreshGallery.Size = new System.Drawing.Size(36, 36);
+            this.buttonRefreshGallery.TabIndex = 4;
+            this.buttonRefreshGallery.UseVisualStyleBackColor = false;
+            this.buttonRefreshGallery.Click += new System.EventHandler(this.buttonRefreshGallery_Click);
             // 
             // tabPageCustom
             // 
@@ -5681,44 +5717,46 @@
             // 
             // toolStripStatusLabelGame
             // 
-            this.toolStripStatusLabelGame.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabelGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabelGame.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.toolStripStatusLabelGame.Name = "toolStripStatusLabelGame";
-            this.toolStripStatusLabelGame.Size = new System.Drawing.Size(83, 17);
+            this.toolStripStatusLabelGame.Size = new System.Drawing.Size(94, 17);
             this.toolStripStatusLabelGame.Text = "Game profile:";
             // 
             // toolStripStatusLabelGameText
             // 
+            this.toolStripStatusLabelGameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabelGameText.Name = "toolStripStatusLabelGameText";
-            this.toolStripStatusLabelGameText.Size = new System.Drawing.Size(12, 17);
+            this.toolStripStatusLabelGameText.Size = new System.Drawing.Size(14, 17);
             this.toolStripStatusLabelGameText.Text = "?";
             // 
             // toolStripStatusLabelEdition
             // 
-            this.toolStripStatusLabelEdition.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabelEdition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabelEdition.Margin = new System.Windows.Forms.Padding(30, 3, 0, 2);
             this.toolStripStatusLabelEdition.Name = "toolStripStatusLabelEdition";
-            this.toolStripStatusLabelEdition.Size = new System.Drawing.Size(48, 17);
+            this.toolStripStatusLabelEdition.Size = new System.Drawing.Size(56, 17);
             this.toolStripStatusLabelEdition.Text = "Edition:";
             // 
             // toolStripStatusLabelEditionText
             // 
+            this.toolStripStatusLabelEditionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabelEditionText.Name = "toolStripStatusLabelEditionText";
-            this.toolStripStatusLabelEditionText.Size = new System.Drawing.Size(12, 17);
+            this.toolStripStatusLabelEditionText.Size = new System.Drawing.Size(14, 17);
             this.toolStripStatusLabelEditionText.Text = "?";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(499, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(453, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // toolStripStatusLabelNuclearWinterModeActive
             // 
-            this.toolStripStatusLabelNuclearWinterModeActive.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabelNuclearWinterModeActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabelNuclearWinterModeActive.ForeColor = System.Drawing.Color.OrangeRed;
             this.toolStripStatusLabelNuclearWinterModeActive.Name = "toolStripStatusLabelNuclearWinterModeActive";
-            this.toolStripStatusLabelNuclearWinterModeActive.Size = new System.Drawing.Size(175, 17);
+            this.toolStripStatusLabelNuclearWinterModeActive.Size = new System.Drawing.Size(198, 17);
             this.toolStripStatusLabelNuclearWinterModeActive.Text = "Nuclear Winter mode is active";
             // 
             // pictureBoxLoadingGIF
@@ -5939,12 +5977,14 @@
             this.groupBoxAudioInterface.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).EndInit();
             this.tabPageGallery.ResumeLayout(false);
-            this.groupBoxGallery.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).EndInit();
+            this.tabPageGallery.PerformLayout();
+            this.panelGalleryOptions.ResumeLayout(false);
             this.groupBoxScreenshotOptions.ResumeLayout(false);
             this.groupBoxScreenshotOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numScreenshotIndex)).EndInit();
+            this.panelGallery.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).EndInit();
             this.tabPageCustom.ResumeLayout(false);
             this.tabPageCustom.PerformLayout();
             this.tabPageDangerZone.ResumeLayout(false);
@@ -6174,11 +6214,8 @@
         private System.Windows.Forms.NumericUpDown numScreenshotIndex;
         private System.Windows.Forms.Label labelScreenshotIndex;
         private System.Windows.Forms.ListView listViewScreenshots;
-        private System.Windows.Forms.GroupBox groupBoxGallery;
         private System.Windows.Forms.Button buttonRefreshGallery;
         private System.Windows.Forms.TrackBar sliderGalleryThumbnailSize;
-        private System.Windows.Forms.Label labelGalleryThumbnailSize;
-        private System.Windows.Forms.Label labelGalleryTip;
         private System.Windows.Forms.PictureBox pictureBoxGalleryLoadingGIF;
         private System.Windows.Forms.GroupBox groupBoxCameraDistance;
         private System.Windows.Forms.TrackBar sliderCameraDistanceMaximum;
@@ -6366,6 +6403,11 @@
         private System.Windows.Forms.RichTextBox richTextBoxWhatsNew;
         private System.Windows.Forms.Panel panelWhatsNew;
         private System.ComponentModel.BackgroundWorker backgroundWorkerDownloadRTF;
+        private System.Windows.Forms.Label labelGallery;
+        private System.Windows.Forms.Panel panelGallery;
+        private System.Windows.Forms.Label labelGalleryTip;
+        private System.Windows.Forms.Button buttonGalleryShowOptions;
+        private System.Windows.Forms.Panel panelGalleryOptions;
     }
 }
 
