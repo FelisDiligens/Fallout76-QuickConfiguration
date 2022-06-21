@@ -1168,6 +1168,9 @@ namespace Fo76ini
 
         private void LoadWhatsNew()
         {
+            this.panelWhatsNew.Visible = true;
+            if (!IniFiles.Config.GetBool("Preferences", "bShowWhatsNew", true))
+                this.panelWhatsNew.Visible = false;
             string WhatsNewTestFile = Path.Combine(Shared.AppConfigFolder, "What's new.rtf");
             if (File.Exists(WhatsNewTestFile))
                 this.richTextBoxWhatsNew.LoadFile(WhatsNewTestFile);

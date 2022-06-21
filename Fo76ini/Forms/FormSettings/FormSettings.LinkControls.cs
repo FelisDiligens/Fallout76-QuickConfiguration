@@ -23,6 +23,7 @@ namespace Fo76ini.Forms.FormSettings
             LinkedTweaks.LinkInfo(checkBoxNWAutoDeployMods, toolTip, deployModsOnNWModeTweak);
             LinkedTweaks.LinkInfo(checkBoxNWAutoDisableMods, toolTip, removeModsOnNWModeTweak);
             LinkedTweaks.LinkInfo(checkBoxShowNWBtn, toolTip, showNWModeButtonTweak);
+            LinkedTweaks.LinkInfo(checkBoxShowWhatsNew, toolTip, showWhatsNewTweak);
             LinkedTweaks.LinkInfo(labelArchiveTwoPath, toolTip, archiveTwoPathTweak);
             LinkedTweaks.LinkInfo(labelSevenZipPath, toolTip, sevenZipPathTweak);
             LinkedTweaks.LinkInfo(labelDownloadsPath, toolTip, downloadPathTweak);
@@ -67,6 +68,9 @@ namespace Fo76ini.Forms.FormSettings
 
             // Show/hide NW mode toggle button
             LinkedTweaks.LinkTweak(checkBoxShowNWBtn, showNWModeButtonTweak);
+
+            // Show/hide What's new RTF in FormMain
+            LinkedTweaks.LinkTweak(checkBoxShowWhatsNew, showWhatsNewTweak);
         }
 
         private SevenZipPathTweak sevenZipPathTweak = new SevenZipPathTweak();
@@ -82,6 +86,8 @@ namespace Fo76ini.Forms.FormSettings
         private DeployModsOnNWModeTweak deployModsOnNWModeTweak = new DeployModsOnNWModeTweak();
         private RemoveModsOnNWModeTweak removeModsOnNWModeTweak = new RemoveModsOnNWModeTweak();
         private RenameDLLsTweak renameDLLsTweak = new RenameDLLsTweak();
+
         private ShowNWModeButtonTweak showNWModeButtonTweak = new ShowNWModeButtonTweak();
+        private ShowWhatsNewTweak showWhatsNewTweak = new ShowWhatsNewTweak();
     }
 }

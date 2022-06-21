@@ -177,6 +177,7 @@
     <Compile Include="NexusAPI\NMUserProfile.cs" />
     <Compile Include="NexusAPI\NXMHandler.cs" />
     <Compile Include="NexusAPI\SingleSignOn.cs" />
+    <Compile Include="Tweaks\Config\ShowWhatsNewTweak.cs" />
     <Compile Include="Utilities\Progress.cs" />
     <Compile Include="Tweaks\Audio\EnableAudioTweak.cs" />
     <Compile Include="Tweaks\Audio\VoiceChatModeTweak.cs" />
