@@ -40,17 +40,16 @@ namespace Fo76ini.Forms.ExceptionDialog
                                              $"Running as admin:  " + (Utils.HasAdminRights() ? "Yes" : "No") + "\r\n" +
                                              $"Game edition:      {currentGameEdition}\r\n" +
                                              $"System locale:     {System.Globalization.CultureInfo.CurrentUICulture.Name}\r\n" +
-                                             $"App locale:        {Localization.Locale}" +
-                                             "\r\n";
+                                             $"App locale:        {Localization.Locale}\r\n";
             } 
             catch { }
 
-            form.textBoxDebugText.Text += $"************** Stack trace **************\r\n" +
+            form.textBoxDebugText.Text += $"\r\n************** Stack trace **************\r\n" +
                                           $"If any files are listed (like \"D:\\Workspace\\...\\*.cs:line 123\"):\r\nThose are files on *my* computer, so don't worry if you can't find them.\r\n\r\n" +
                                           $"{ex.GetType()}: {ex.Message}\r\n{ex.StackTrace}\r\n";
 
             if (ex.InnerException != null)
-                form.textBoxDebugText.Text += $"\r\n\r\n************** Inner Exception **************\r\n" +
+                form.textBoxDebugText.Text += $"\r\n************** Inner Exception **************\r\n" +
                                               $"{ex.InnerException.GetType()}: {ex.InnerException.Message}\r\n{ex.InnerException.StackTrace}\r\n";
 
             form.ShowDialog();
