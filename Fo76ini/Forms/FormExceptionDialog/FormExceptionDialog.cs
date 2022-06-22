@@ -46,8 +46,12 @@ namespace Fo76ini.Forms.ExceptionDialog
             catch { }
 
             form.textBoxDebugText.Text += $"************** Stack trace **************\r\n" +
-                                         $"If any files are listed (like \"D:\\Workspace\\...\\*.cs:line 123\"):\r\nThose are files on *my* computer, so don't worry if you can't find them.\r\n\r\n" +
-                                         $"{ex.GetType()}: {ex.Message}\r\n{ex.StackTrace}\r\n";
+                                          $"If any files are listed (like \"D:\\Workspace\\...\\*.cs:line 123\"):\r\nThose are files on *my* computer, so don't worry if you can't find them.\r\n\r\n" +
+                                          $"{ex.GetType()}: {ex.Message}\r\n{ex.StackTrace}\r\n";
+
+            if (ex.InnerException != null)
+                form.textBoxDebugText.Text += $"\r\n\r\n************** Inner Exception **************\r\n" +
+                                              $"{ex.InnerException.GetType()}: {ex.InnerException.Message}\r\n{ex.InnerException.StackTrace}\r\n";
 
             form.ShowDialog();
 

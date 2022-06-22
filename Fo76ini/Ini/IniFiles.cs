@@ -45,7 +45,8 @@ namespace Fo76ini
         static IniFiles()
         {
             ParentPath = Path.Combine(
-                KnownFolders.DocumentsLocalized.ExpandedPath, // Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+                // KnownFolders.DocumentsLocalized.ExpandedPath <- seems to not exist on Windows 7
+                KnownFolders.Documents.ExpandedPath, // Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
                 @"My Games\Fallout 76\"
             );
 
