@@ -107,18 +107,6 @@ namespace Fo76ini
             UpdateSidePanelGroupBoxesWidth();
         }
 
-        // TODO: Remove
-        private void old_EditMod(int index)
-        {
-            if (index < 0 || index >= Mods.Count())
-            {
-                CloseSidePanel();
-                return;
-            }
-
-            this.EditMod(Mods[index]);
-        }
-
         /// <summary>
         /// Edit the mod in the side panel.
         /// Updates and opens the side panel automatically.
@@ -133,17 +121,6 @@ namespace Fo76ini
             // Only expand, if the user hasn't collapsed it yet:
             if (sidePanelStatus == SidePanelStatus.Closed)
                 ExpandSidePanel();
-        }
-
-        // TODO: Remove
-        private void old_EditMods(List<int> indices)
-        {
-            List<ManagedMod> mods = new List<ManagedMod>();
-            foreach (int index in indices.ToList())
-            {
-                mods.Add(Mods[index]);
-            }
-            this.EditMods(mods);
         }
 
         /// <summary>

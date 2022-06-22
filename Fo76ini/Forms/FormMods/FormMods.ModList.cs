@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -232,6 +233,8 @@ namespace Fo76ini
             this.objectListViewMods.UpdateObjects(list);
 
             // Restore selected rows:
+            if (selectedIndices.Count > 0)
+                suppressSelectionChangedEventOnce = true;
             SetSelectedIndices(selectedIndices);
 
             // Restore scroll position:
@@ -370,15 +373,22 @@ namespace Fo76ini
                 e.Effect = DragDropEffects.None;
         }
 
-        // On drop: Handle rearrangment of ListViewItems/Mods:
+        // On drop: Handle rearrangment of mod entries / rows:
         private void objectListViewMods_ModelDropped(object sender, ModelDropEventArgs e)
         {
             // Determine drop index from mouse location:
             // (there literally isn't a predefined property, so we have to calculate it)
-            int mouseY = e.MouseLocation.Y;
+            int mouseY = e.MouseLocation.Y; // Origin (0 | 0) is the top left corner of the ListView
             int headerHeight = this.objectListViewMods.TopItem.Bounds.Top; // usually 22px
             int rowHeight = this.objectListViewMods.RowHeight + 1; // + 1px because of the grid border
-            int dropIndex = (mouseY - headerHeight + 3) / rowHeight;
+            int scrollYOffset = this.objectListViewMods.LowLevelScrollPosition.Y * rowHeight; // For some reason, it uses rows instead of pixels in LowLevelScrollPosition.Y...
+            int arbitraryOffset = 3; // I don't know where these arbitrary few pixels come from but I have to add them for accuracy.
+            
+            int dropIndex = (
+                mouseY - headerHeight // Gets the y position relative to the end of the sticky header
+                + scrollYOffset       // Add the out of view rows that we need to count in
+                + arbitraryOffset     // Add some necessary but arbitrary offset
+                ) / rowHeight;        // Divide it by the row height to get from pixels to an index (or row count)
 
             // Reverse list:
             _draggedRows.Reverse();
@@ -457,8 +467,24 @@ namespace Fo76ini
         }
 
         // Mod(s) selected
+        bool suppressSelectionChangedEventOnce = false;
         private void objectListViewMods_SelectionChanged(object sender, EventArgs e)
         {
+            if (isUpdating)
+                return;
+
+            /*
+             * isUpdating workaround is no longer working...
+             * We cannot detect whether the user or the program has changed the selection...
+             * So the only thing we can do is to "suppress" this event, if the list gets updated.
+             * Otherwise, the program will behave in weird ways.
+             */
+            if (suppressSelectionChangedEventOnce)
+            {
+                suppressSelectionChangedEventOnce = false;
+                return;
+            }
+
             List<ManagedMod> mods = new List<ManagedMod>();
             foreach (object obj in this.objectListViewMods.SelectedObjects)
             {
