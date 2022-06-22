@@ -394,17 +394,17 @@ namespace Fo76ini
             _draggedRows.Reverse();
 
             // Rebuild mod list:
-            List<ManagedMod> rebuildList = new List<ManagedMod>();
+            List<ManagedMod> rebuiltList = new List<ManagedMod>();
             foreach (ModListRow row in _nonDraggedRows)
-                rebuildList.Add(row.mod);
+                rebuiltList.Add(row.mod);
             foreach (ModListRow row in _draggedRows)
-                rebuildList.Insert(dropIndex, row.mod);
+                rebuiltList.Insert(dropIndex, row.mod);
 
             // Replace ManagedMods list:
-            if (rebuildList.Count == this.Mods.Mods.Count)
+            if (rebuiltList.Count == this.Mods.Mods.Count)
             {
                 this.Mods.Clear();
-                this.Mods.Mods.AddRange(rebuildList);
+                this.Mods.Mods.AddRange(rebuiltList);
             }
 
             // Refresh list:
