@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.9.5">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.10.0">
   <Strings>
     <!--
         Strings
@@ -27,6 +27,13 @@
     <String text="Без архива" id="modsTableTypeLoose" />
     <String text="В очереди" id="modTableFrozenPending" />
     <String text="Заморожено" id="modTableFrozen" />
+    <String text="Заморозить" id="modTableFreeze" />
+    <String text="В очереди на установку" id="modTablePendingInstallation" />
+    <String text="В очереди на удаление" id="modTablePendingRemoval" />
+    <String text="В очереди на изменение" id="modTablePendingChanges" />
+    <String text="Доступно обновление" id="updateAvailable" />
+    <String text="Включен" id="enabled" />
+    <String text="Отключен" id="disabled" />
     <String text="Модов выбрано: {0}" id="modDetailsTitleBulkSelected" />
     <String text="{0} ч. и {1} м." id="nmResetTime" />
     <String text="{0} осталось" id="nmRateLimitLeft" />
@@ -481,14 +488,16 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
 ⚠️ При отключении могут возникать проблемы.</Description>
     <Description id="Fo76ini.Tweaks.Camera.DisableAutoVanityModeTweak">Если включено, камера будет вращаться вокруг персонажа при долгом бездействии.
 ⚠️ Не уверен, что это что-то делает. Я стоял около 5 минут, и камера не вращалась. Нужно еще проверить.</Description>
+    <Description id="Fo76ini.Tweaks.Camera.FOV3rdPersonTweak">Изменяет поле зрения от 1-го и 3-го лица.
+Это то же значение, что и в настройках FOV в игре.</Description>
     <Description id="Fo76ini.Tweaks.Camera.FOV3rdADSTweak">Изменяет поле зрения от 3-го лица во время прицеливания.</Description>
     <Description id="Fo76ini.Tweaks.Camera.DefaultFOVTweak">⚠️ Вызывает проблемы с графическим интерфейсом.</Description>
     <Description id="Fo76ini.Tweaks.Camera.PitchZoomOutMaxDistTweak">Насколько камера уменьшается, когда вы смотрите на землю от 3-го лица.</Description>
+    <Description id="Fo76ini.Tweaks.General.ScreenshotIndexTweak">Когда вы делаете снимок экрана в игре с помощью клавиши Print Screen, он сохраняется в каталоге игры как "ScreenShotX. png".
+"X" - это индекс скриншота.</Description>
     <Description id="Fo76ini.Tweaks.Colors.PipboyColorTweak">Изменяет цвет интерфейса Pipboy</Description>
     <Description id="Fo76ini.Tweaks.Colors.QuickboyColorTweak">Изменяет цвет интерфейса Quickboy</Description>
     <Description id="Fo76ini.Tweaks.Colors.PowerArmorPipboyColorTweak">Изменяет цвет интерфейса Quickboy в силовой броне</Description>
-    <Description id="Fo76ini.Tweaks.General.ScreenshotIndexTweak">Когда вы делаете снимок экрана в игре с помощью клавиши Print Screen, он сохраняется в каталоге игры как "ScreenShotX. png".
-"X" - это индекс скриншота.</Description>
     <Description id="Fo76ini.Tweaks.Inis.INIReadOnlyTweak">Эта настройка немедленно сделает все файлы *.ini доступными только для чтения.
 Просто поставьте галочку, если ваши настройки сбрасываются.</Description>
     <Description id="Fo76ini.Tweaks.Config.AutoApplyTweak">Больше не нужно нажимать кнопку "Применить".</Description>
@@ -499,21 +508,13 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.RenameDLLsTweak">Если включено, все файлы *.dll, которые не принадлежат игре, будут переименованы.</Description>
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.DeployModsOnNWModeTweak">Если включено, моды будут устанавливаться, когда режим Nuclear Winter отключен.</Description>
     <Description id="Fo76ini.Tweaks.NuclearWinterMode.RemoveModsOnNWModeTweak">Если включено, моды будут отключаться, когда режим Nuclear Winter включен.</Description>
+    <Description id="Fo76ini.Tweaks.NuclearWinterMode.ShowNWModeButtonTweak">If checked, it will show the Nuclear Winter / Adventure mode button in the main window, so you can still toggle the deprecated NW mode.</Description>
+    <Description id="Fo76ini.Tweaks.Config.ShowWhatsNewTweak">Requires a restart.</Description>
     <Description id="Fo76ini.Tweaks.Config.ArchiveTwoPathTweak">Сохраняет путь, по которому будет загружаться Archive2.</Description>
     <Description id="Fo76ini.Tweaks.Config.SevenZipPathTweak">Сохраняет путь, по которому будет загружаться 7-zip.</Description>
     <Description id="Fo76ini.Tweaks.Config.DownloadPathTweak">Когда вы загружаете моды с помощью кнопки "Vortex" / "Mod Manager Download" на NexusMods,
 программа загрузит файл в эту папку.</Description>
   </TweakDescriptions>
-  <FormWhatsNew title="Что нового?">
-    <!--
-        FormWhatsNew
-        ******************************************************************************************************************************************************
-        Что нового?
-    -->
-    <Label text="Что нового?" id="labelTitle" />
-    <Button text="Закрыть" id="buttonClose" />
-    <CheckBox text="Не показывайте это окно после обновления." id="checkBoxDontShowAgain" />
-  </FormWhatsNew>
   <FormWelcome title="Добро пожаловать">
     <!--
         FormWelcome
@@ -532,11 +533,10 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
       </GroupBox>
       <GroupBox text="Версия игры" id="groupBoxGameEdition">
         <!-- Group "Версия игры" -->
+        <RadioButton text="Steam (PTS)" id="radioButtonEditionSteamPTS" />
         <RadioButton text="Другая" id="radioButtonEditionUnknown" />
         <RadioButton text="Microsoft Store / Xbox Game Pass" id="radioButtonEditionMSStore" />
-        <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
         <RadioButton text="Steam" id="radioButtonEditionSteam" />
-        <RadioButton text="Bethesda.net" id="radioButtonEditionBethesdaNet" />
       </GroupBox>
     </Panel>
     <Label text="Привет, похоже, вы запустили программу впервые!\n" id="label1" />
@@ -595,7 +595,7 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
                 <Tooltip>Если вы "заморозите" архив, он не будет распаковываться при установке.
 Это ускорит процесс.
 
-Особенно полезно, если архив огромен (1GiB или больше) и файлы не меняются.</Tooltip>
+Особенно полезно, если архив огромен (1 Гб или больше) и файлы не меняются.</Tooltip>
               </CheckBox>
               <Label text="Папка установки:" id="labelModInstallInto" />
               <Button text="Предложить" id="buttonModDetailsSuggestArchiveName" />
@@ -626,20 +626,22 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
           <ToolStripButton text="Разморозить мод" id="toolStripButtonModUnfreeze" />
           <ToolStripButton text="Удалить мод" id="toolStripButtonDeleteMod" />
         </ToolStrip>
-        <ListView id="listViewMods">
-          <Column>Название</Column>
-          <Column>Версия</Column>
-          <Column>Тип</Column>
-          <Column>Путь установки</Column>
-          <Column>Имя архива</Column>
-          <Column>Формат архива</Column>
-          <Column>Заморожен?</Column>
-        </ListView>
+        <ObjectListView id="objectListViewMods">
+          <Column></Column>
+          <Column>Название и инфо</Column>
+          <Column>Состояние</Column>
+          <Column>Установка</Column>
+        </ObjectListView>
       </TabPage>
       <TabPage text="Настройки" id="tabPageModsSettings">
         <!-- ********** Tab "Настройки" ********** -->
         <GroupBox text="Поведение" id="groupBoxModsBehavior">
           <!-- Group "Поведение" -->
+          <CheckBox text="Показать название мода со страницы NexusMods, если она есть." id="checkBoxModsUseRemoteModNames">
+            <Tooltip>Если включено: Показывает название мода, как оно указано на NexusMods.
+Если отключено: Показывает название мода, как вы ввели его на боковой панели.
+Это чисто личные предпочтения.</Tooltip>
+          </CheckBox>
           <CheckBox text="[Экспериментально] Заморозить упакованные архивы" id="checkBoxFreezeBundledArchives">
             <Tooltip>Вместо того чтобы пересоздавать архивы, программа сохранит их копию и спросит вас, хотите ли вы обновить её при установке.</Tooltip>
           </CheckBox>
@@ -736,12 +738,9 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
     <TabControl id="tabControl1">
       <TabPage text="Инфо" id="tabPageInfo">
         <!-- ********** Tab "Инфо" ********** -->
-        <LinkLabel text="Что нового?" id="linkLabelWhatsNew" />
-        <LinkLabel text="Лицензии" id="linkLabelAttribution" />
         <Panel id="panelUpdate">
           <LinkLabel text="Или скачать и установить вручную..." id="linkLabelManualDownloadPage" />
         </Panel>
-        <Label text="Режим Nuclear Winter включен" id="labelNWModeActive" />
         <Label text="Перевод:" id="labelTranslationBy" />
         <Label text="Автор:" id="labelAuthor" />
         <Label text="Версия:" id="labelVersion" />
@@ -752,7 +751,7 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
         <!-- ********** Tab "Основное" ********** -->
         <Panel id="panel4">
           <GroupBox text="Разное" id="groupBoxTweaks">
-            <!-- Group "Tweaks" -->
+            <!-- Group "Разное" -->
             <CheckBox text="Исправить время загрузки мира" id="checkBoxFasterFadeIn" />
           </GroupBox>
           <GroupBox text="Интерфейс" id="groupBoxGeneralInterface">
@@ -978,6 +977,8 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
           </GroupBox>
           <GroupBox text="Поле зрения" id="groupBoxFieldOfView">
             <!-- Group "Поле зрения" -->
+            <Label text="Эти настройки больше не работают." id="labelFOVWarn" />
+            <Label text="Больше настроек FOV:" id="labelMoreFOV" />
             <Label text="По-умолчанию:" id="labelfDefaultFOV" />
             <Label text="Поле зрения прицеливания:" id="labelADSFOV" />
             <Label text="От третьего лица:" id="labelWorldFOV" />
@@ -999,6 +1000,32 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
       </TabPage>
       <TabPage text="Pip-Boy" id="tabPagePipBoy">
         <!-- ********** Tab "Pip-Boy" ********** -->
+        <TabControl id="tabControlPipboy">
+          <TabPage text="Pip-Boy" id="tabPagePipboyColor">
+            <!-- ********** Tab "Pip-Boy" ********** -->
+            <Label text="Просмотр" id="labelPreviewPipboy" />
+            <Label text="Предварительный просмотр лишь приблизителен, поэтому в игре всё может выглядеть совсем иначе." id="labelPipboyColorPreviewNotice" />
+            <Button text="Сбросить" id="buttonColorResetPipboy" />
+            <Button text="Выбрать" id="buttonColorPickPipboy" />
+            <Label text="Цвет Pip-Boy" id="labelPipboyColor" />
+          </TabPage>
+          <TabPage text="Quick-Boy" id="tabPageQuickboyColor">
+            <!-- ********** Tab "Quick-Boy" ********** -->
+            <Label text="Просмотр" id="label1" />
+            <Label text="Предварительный просмотр лишь приблизителен, поэтому в игре всё может выглядеть совсем иначе." id="label4" />
+            <Button text="Выбрать" id="buttonColorPickQuickboy" />
+            <Button text="Сбросить" id="buttonColorResetQuickboy" />
+            <Label text="Цвет Quick-Boy" id="labelQuickboyColor" />
+          </TabPage>
+          <TabPage text="Power Armor" id="tabPagePowerArmorColor">
+            <!-- ********** Tab "Power Armor" ********** -->
+            <Label text="Просмотр" id="label2" />
+            <Label text="Предварительный просмотр лишь приблизителен, поэтому в игре всё может выглядеть совсем иначе." id="label5" />
+            <Label text="Цвет в силовой броне" id="labelPowerArmorColor" />
+            <Button text="Выбрать" id="buttonColorPickPAPipboy" />
+            <Button text="Сбросить" id="buttonColorResetPAPipboy" />
+          </TabPage>
+        </TabControl>
         <GroupBox text="Предустановки" id="groupBoxPipboyColorPresets">
           <!-- Group "Предустановки" -->
           <Button text="Зелёная Столичная пустошь" id="buttonPresetFo3Green" />
@@ -1008,53 +1035,33 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
           <Button text="Зелёное Содружество" id="buttonPresetFo4Green" />
           <Button text="Классический синий" id="buttonPresetFo3Blue" />
         </GroupBox>
-        <GroupBox text="Просмотр" id="groupBoxPipboyColorPreview">
-          <!-- Group "Просмотр" -->
-          <Label text="Предварительный просмотр лишь приблизителен, поэтому в игре всё может выглядеть совсем иначе." id="labelPipboyColorPreviewNotice" />
-        </GroupBox>
         <GroupBox text="Разрешение" id="groupBoxPipboyResolution">
           <!-- Group "Разрешение" -->
+          <LinkLabel text="Установить по-умолчанию" id="linkLabelPipboyTargetReset" />
+          <LinkLabel text="Установить рекомендуемое" id="linkLabelPipboyTargetSetRecommended" />
           <Label text="Эти настройки влияют на Pip-Boy и Quick-Boy." id="labelPipboyResolutionSideNote" />
-          <Button text="Рекомендуемое" id="buttonPipboyTargetSetRecommended">
-            <Tooltip>Рекомендуемые значения: 1752x1400</Tooltip>
-          </Button>
-          <Button text="По-умолчанию" id="buttonPipboyTargetReset">
-            <Tooltip>Значения по-умолчанию: 876x700</Tooltip>
-          </Button>
         </GroupBox>
         <GroupBox text="Режим" id="groupBoxPipboyMode">
           <!-- Group "Режим" -->
           <RadioButton text="Quick-Boy" id="radioButtonQuickboy" />
           <RadioButton text="Pip-Boy" id="radioButtonPipboy" />
         </GroupBox>
-        <GroupBox text="Цвета" id="groupBoxPipboyColors">
-          <!-- Group "Цвета" -->
-          <Label text="Цвет в СБ" id="labelPowerArmorColor" />
-          <Button text="Выбрать" id="buttonColorPickPAPipboy" />
-          <Button text="Сбросить" id="buttonColorResetPipboy" />
-          <Button text="Сбросить" id="buttonColorResetPAPipboy" />
-          <Label text="Цвет Quick-Boy" id="labelQuickboyColor" />
-          <Button text="Выбрать" id="buttonColorPickQuickboy" />
-          <Button text="Сбросить" id="buttonColorResetQuickboy" />
-          <Label text="Цвет Pip-Boy" id="labelPipboyColor" />
-          <Button text="Выбрать" id="buttonColorPickPipboy" />
-        </GroupBox>
       </TabPage>
       <TabPage text="Галерея" id="tabPageGallery">
         <!-- ********** Tab "Галерея" ********** -->
-        <GroupBox text="Галерея" id="groupBoxGallery">
-          <!-- Group "Галерея" -->
+        <Panel id="panelGalleryOptions">
+          <GroupBox text="Настройки" id="groupBoxScreenshotOptions">
+            <!-- Group "Настройки" -->
+            <Button text="Удалить миниатюры" id="buttonGalleryDeleteThumbnails" />
+            <CheckBox text="Рекурсивный поиск вложенных папок" id="checkBoxGallerySearchRecursively" />
+            <Label text="Дополнительные пути (разделенные новой строкой):" id="label3" />
+            <Label text="Индекс скриншота:" id="labelScreenshotIndex" />
+          </GroupBox>
+        </Panel>
+        <Label text="Галерея" id="labelGallery" />
+        <Panel id="panelGallery">
           <Label text="Нажмите 'Обновить галерею' для отображения скриншотов и фотографий." id="labelGalleryTip" />
-        </GroupBox>
-        <GroupBox text="Настройки" id="groupBoxScreenshotOptions">
-          <!-- Group "Настройки" -->
-          <Button text="Удалить миниатюры" id="buttonGalleryDeleteThumbnails" />
-          <CheckBox text="Рекурсивный поиск вложенных папок" id="checkBoxGallerySearchRecursively" />
-          <Label text="Дополнительные пути (разделенные новой строкой):" id="label3" />
-          <Label text="Размер миниатюры:" id="labelGalleryThumbnailSize" />
-          <Button text="Обновить галерею" id="buttonRefreshGallery" />
-          <Label text="Индекс скриншота:" id="labelScreenshotIndex" />
-        </GroupBox>
+        </Panel>
       </TabPage>
       <TabPage text="Другое" id="tabPageCustom">
         <!-- ********** Tab "Другое" ********** -->
@@ -1079,6 +1086,11 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
     <TabControl id="tabControl1">
       <TabPage text="Основные" id="tabPageGeneral">
         <!-- ********** Tab "Основные" ********** -->
+        <GroupBox text="Интерфейс" id="groupBoxUI">
+          <!-- Group "User Interface" -->
+          <CheckBox text="Показывать &quot;Что нового&quot; на вкладке Инфо" id="checkBoxShowWhatsNew" />
+          <CheckBox text="Показывать кнопку переключения режима Nuclear Winter (устарело)" id="checkBoxShowNWBtn" />
+        </GroupBox>
         <GroupBox text="Расположение" id="groupBoxPaths">
           <!-- Group "Расположение" -->
           <Label text="Папка загрузки:" id="labelDownloadsPath" />
@@ -1090,10 +1102,6 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
           <Button text="..." id="buttonPickArchiveTwoPath" />
           <Label text="Путь к 7zip:" id="labelSevenZipPath" />
         </GroupBox>
-        <GroupBox text="Действия" id="groupBoxActions">
-          <!-- Group "Действия" -->
-          <LinkLabel text="⚠️ Включить Опасную зону" id="linkLabelEnableDangerZone" />
-        </GroupBox>
         <GroupBox text="Настройки" id="groupBoxOptions">
           <!-- Group "Настройки" -->
           <CheckBox text="Ассоциировать со ссылками &quot;Mod Manager Download&quot;" id="checkBoxHandleNXMLinks">
@@ -1101,6 +1109,10 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
 Возможно, вам потребуется запустить программу от имени администратора, чтобы включить эту настройку.</Tooltip>
           </CheckBox>
           <CheckBox text="Сделать *.ini только для чтения" id="checkBoxReadOnly" />
+        </GroupBox>
+        <GroupBox text="Действия" id="groupBoxActions">
+          <!-- Group "Действия" -->
+          <LinkLabel text="⚠️ Включить Опасную зону" id="linkLabelEnableDangerZone" />
         </GroupBox>
         <GroupBox text="Режим Nuclear Winter" id="groupBoxNuclearWinterMode">
           <!-- Group "Режим Nuclear Winter" -->
@@ -1149,6 +1161,8 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
               </GroupBox>
               <GroupBox text="Версия игры" id="groupBoxGameEdition">
                 <!-- Group "Версия игры" -->
+                <Label text="Лаунчер Bethesda.net был отключен 11-го мая 2022.\nНастройка по-прежнему доступна для обеспечения обратной совместимости. (Чтобы ничего не сломалось)\n" id="labelEditionBackCompat" />
+                <RadioButton text="Steam (PTS)" id="radioButtonEditionSteamPTS" />
                 <RadioButton text="Другое" id="radioButtonEditionUnknown" />
                 <RadioButton text="Microsoft Store/Xbox Game Pass" id="radioButtonEditionMSStore" />
                 <RadioButton text="Bethesda.net (PTS)" id="radioButtonEditionBethesdaNetPTS" />
