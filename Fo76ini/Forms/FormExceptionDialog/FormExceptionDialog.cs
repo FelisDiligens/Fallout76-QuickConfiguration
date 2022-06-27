@@ -22,6 +22,17 @@ namespace Fo76ini.Forms.ExceptionDialog
 
             try
             {
+                form.textBoxDebugText.Text += $"Operating system:  {Utils.GetOSName()} {Utils.GetOSArchitecture()}\r\n" +
+                                              $"Program version:   {Shared.VERSION}\r\n" +
+                                              $"User agent:        {Shared.AppUserAgent}\r\n" +
+                                              $"Running as admin:  " + (Utils.HasAdminRights() ? "Yes" : "No") + "\r\n" +
+                                              $"System culture:    {System.Globalization.CultureInfo.CurrentUICulture.EnglishName}\r\n";
+                                                                    /* InstalledUICulture, CurrentUICulture, CurrentCulture */
+            }
+            catch { }
+
+            try
+            {
                 string currentIniPrefix = "Fallout76";
                 string currentGamePath = null;
                 GameEdition currentGameEdition = GameEdition.Unknown;
@@ -34,13 +45,8 @@ namespace Fo76ini.Forms.ExceptionDialog
                     currentGameEdition = ProfileManager.SelectedGame.Edition;
                 }
 
-                form.textBoxDebugText.Text = $"Operating system:  {Utils.GetOSName()} {Utils.GetOSArchitecture()}\r\n" +
-                                             $"Program version:   {Shared.VERSION}\r\n" +
-                                             $"User agent:        {Shared.AppUserAgent}\r\n" +
-                                             $"Running as admin:  " + (Utils.HasAdminRights() ? "Yes" : "No") + "\r\n" +
-                                             $"Game edition:      {currentGameEdition}\r\n" +
-                                             $"System locale:     {System.Globalization.CultureInfo.CurrentUICulture.Name}\r\n" +
-                                             $"App locale:        {Localization.Locale}\r\n";
+                form.textBoxDebugText.Text += $"App locale:        {Localization.Locale}\r\n" +
+                                              $"Game edition:      {currentGameEdition}\r\n";
             } 
             catch { }
 

@@ -767,10 +767,11 @@ namespace Fo76ini.Utilities
             return Utils.MakeThumbnail(image, thumbnailPath, drawBorders, canvasWidth, canvasHeight, quality);
         }
 
-        // https://stackoverflow.com/questions/3639129/c-sharp-how-do-you-get-the-operating-system-architecture-x86-or-x64
+        // https://stackoverflow.com/a/336729
         public static string GetOSArchitecture()
         {
-            if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432")))
+            if (Environment.Is64BitOperatingSystem ||
+                Environment.Is64BitProcess)
                 return "64-bit";
             return "32-bit";
         }
