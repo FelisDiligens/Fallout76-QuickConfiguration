@@ -16,10 +16,30 @@ namespace Fo76ini
         private void UpdateSettings()
         {
             this.checkBoxDisableMods.Checked = this.Mods.ModsDisabled;
+
+            /*
+             * Behavior
+             */
             this.checkBoxAddArchivesAsBundled.Checked = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
             this.checkBoxModsUseHardlinks.Checked = IniFiles.Config.GetBool("Mods", "bUseHardlinks", true);
             this.checkBoxFreezeBundledArchives.Checked = IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false);
+
+            /*
+             * Interface
+             */
             this.checkBoxModsUseRemoteModNames.Checked = IniFiles.Config.GetBool("Mods", "bShowRemoteModNames", false);
+
+            int configCurrentStyle = IniFiles.Config.GetInt("Mods", "iModListStyle", 0);
+            switch (configCurrentStyle)
+            {
+                case 1:
+                    this.radioButtonModsUseAlternativeList.Checked = true;
+                    break;
+                case 0:
+                default:
+                    this.radioButtonModsUseStandardList.Checked = true;
+                    break;
+            }
 
             LoadTextBoxResourceList(Mods.Resources);
         }

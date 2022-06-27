@@ -84,6 +84,10 @@
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
             this.timerCheckForNXM = new System.Windows.Forms.Timer(this.components);
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
+            this.groupBoxModsInterface = new System.Windows.Forms.GroupBox();
+            this.labelModListStyle = new System.Windows.Forms.Label();
+            this.radioButtonModsUseAlternativeList = new System.Windows.Forms.RadioButton();
+            this.radioButtonModsUseStandardList = new System.Windows.Forms.RadioButton();
             this.groupBoxModsBehavior = new System.Windows.Forms.GroupBox();
             this.checkBoxAddArchivesAsBundled = new System.Windows.Forms.CheckBox();
             this.groupBoxLists = new System.Windows.Forms.GroupBox();
@@ -160,12 +164,19 @@
             this.olvColumnModInfo = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnInstallStatus = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnInstallInfo = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnAltModVersion = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnAltInstallMethod = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnAltInstallInto = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnAltArchiveName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnAltArchivePreset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnAltIsFrozen = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).BeginInit();
             this.tabPageModsSettings.SuspendLayout();
+            this.groupBoxModsInterface.SuspendLayout();
             this.groupBoxModsBehavior.SuspendLayout();
             this.groupBoxLists.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
@@ -441,7 +452,7 @@
             // checkBoxModsUseHardlinks
             // 
             this.checkBoxModsUseHardlinks.AutoSize = true;
-            this.checkBoxModsUseHardlinks.Location = new System.Drawing.Point(6, 52);
+            this.checkBoxModsUseHardlinks.Location = new System.Drawing.Point(6, 19);
             this.checkBoxModsUseHardlinks.Name = "checkBoxModsUseHardlinks";
             this.checkBoxModsUseHardlinks.Size = new System.Drawing.Size(331, 17);
             this.checkBoxModsUseHardlinks.TabIndex = 1;
@@ -453,7 +464,7 @@
             // checkBoxFreezeBundledArchives
             // 
             this.checkBoxFreezeBundledArchives.AutoSize = true;
-            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(6, 75);
+            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(6, 42);
             this.checkBoxFreezeBundledArchives.Name = "checkBoxFreezeBundledArchives";
             this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(211, 17);
             this.checkBoxFreezeBundledArchives.TabIndex = 2;
@@ -638,6 +649,7 @@
             // 
             // tabPageModsSettings
             // 
+            this.tabPageModsSettings.Controls.Add(this.groupBoxModsInterface);
             this.tabPageModsSettings.Controls.Add(this.groupBoxModsBehavior);
             this.tabPageModsSettings.Controls.Add(this.groupBoxLists);
             this.tabPageModsSettings.Location = new System.Drawing.Point(4, 22);
@@ -648,17 +660,62 @@
             this.tabPageModsSettings.Text = "Settings";
             this.tabPageModsSettings.UseVisualStyleBackColor = true;
             // 
+            // groupBoxModsInterface
+            // 
+            this.groupBoxModsInterface.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxModsInterface.Controls.Add(this.labelModListStyle);
+            this.groupBoxModsInterface.Controls.Add(this.radioButtonModsUseAlternativeList);
+            this.groupBoxModsInterface.Controls.Add(this.radioButtonModsUseStandardList);
+            this.groupBoxModsInterface.Controls.Add(this.checkBoxModsUseRemoteModNames);
+            this.groupBoxModsInterface.Location = new System.Drawing.Point(422, 6);
+            this.groupBoxModsInterface.Name = "groupBoxModsInterface";
+            this.groupBoxModsInterface.Size = new System.Drawing.Size(324, 128);
+            this.groupBoxModsInterface.TabIndex = 61;
+            this.groupBoxModsInterface.TabStop = false;
+            this.groupBoxModsInterface.Text = "Interface";
+            // 
+            // labelModListStyle
+            // 
+            this.labelModListStyle.AutoSize = true;
+            this.labelModListStyle.Location = new System.Drawing.Point(7, 55);
+            this.labelModListStyle.Name = "labelModListStyle";
+            this.labelModListStyle.Size = new System.Drawing.Size(70, 13);
+            this.labelModListStyle.TabIndex = 6;
+            this.labelModListStyle.Text = "Mod list style:";
+            // 
+            // radioButtonModsUseAlternativeList
+            // 
+            this.radioButtonModsUseAlternativeList.AutoSize = true;
+            this.radioButtonModsUseAlternativeList.Location = new System.Drawing.Point(10, 97);
+            this.radioButtonModsUseAlternativeList.Name = "radioButtonModsUseAlternativeList";
+            this.radioButtonModsUseAlternativeList.Size = new System.Drawing.Size(194, 17);
+            this.radioButtonModsUseAlternativeList.TabIndex = 5;
+            this.radioButtonModsUseAlternativeList.Text = "Compact, but more columns (old list)";
+            this.radioButtonModsUseAlternativeList.UseVisualStyleBackColor = true;
+            this.radioButtonModsUseAlternativeList.CheckedChanged += new System.EventHandler(this.radioButtonModsUseOldList_CheckedChanged);
+            // 
+            // radioButtonModsUseStandardList
+            // 
+            this.radioButtonModsUseStandardList.AutoSize = true;
+            this.radioButtonModsUseStandardList.Checked = true;
+            this.radioButtonModsUseStandardList.Location = new System.Drawing.Point(10, 74);
+            this.radioButtonModsUseStandardList.Name = "radioButtonModsUseStandardList";
+            this.radioButtonModsUseStandardList.Size = new System.Drawing.Size(206, 17);
+            this.radioButtonModsUseStandardList.TabIndex = 4;
+            this.radioButtonModsUseStandardList.TabStop = true;
+            this.radioButtonModsUseStandardList.Text = "Standard, combined columns (new list)";
+            this.radioButtonModsUseStandardList.UseVisualStyleBackColor = true;
+            this.radioButtonModsUseStandardList.CheckedChanged += new System.EventHandler(this.radioButtonModsUseNewList_CheckedChanged);
+            // 
             // groupBoxModsBehavior
             // 
-            this.groupBoxModsBehavior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxModsBehavior.Controls.Add(this.checkBoxModsUseRemoteModNames);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxFreezeBundledArchives);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxModsUseHardlinks);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
             this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 6);
             this.groupBoxModsBehavior.Name = "groupBoxModsBehavior";
-            this.groupBoxModsBehavior.Size = new System.Drawing.Size(740, 128);
+            this.groupBoxModsBehavior.Size = new System.Drawing.Size(410, 128);
             this.groupBoxModsBehavior.TabIndex = 60;
             this.groupBoxModsBehavior.TabStop = false;
             this.groupBoxModsBehavior.Text = "Behavior";
@@ -666,7 +723,7 @@
             // checkBoxAddArchivesAsBundled
             // 
             this.checkBoxAddArchivesAsBundled.AutoSize = true;
-            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(6, 98);
+            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(6, 65);
             this.checkBoxAddArchivesAsBundled.Name = "checkBoxAddArchivesAsBundled";
             this.checkBoxAddArchivesAsBundled.Size = new System.Drawing.Size(167, 17);
             this.checkBoxAddArchivesAsBundled.TabIndex = 0;
@@ -1473,6 +1530,12 @@
             this.objectListViewMods.AllColumns.Add(this.olvColumnModInfo);
             this.objectListViewMods.AllColumns.Add(this.olvColumnInstallStatus);
             this.objectListViewMods.AllColumns.Add(this.olvColumnInstallInfo);
+            this.objectListViewMods.AllColumns.Add(this.olvColumnAltModVersion);
+            this.objectListViewMods.AllColumns.Add(this.olvColumnAltInstallMethod);
+            this.objectListViewMods.AllColumns.Add(this.olvColumnAltInstallInto);
+            this.objectListViewMods.AllColumns.Add(this.olvColumnAltArchiveName);
+            this.objectListViewMods.AllColumns.Add(this.olvColumnAltArchivePreset);
+            this.objectListViewMods.AllColumns.Add(this.olvColumnAltIsFrozen);
             this.objectListViewMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1482,7 +1545,13 @@
             this.olvColumnCheckbox,
             this.olvColumnModInfo,
             this.olvColumnInstallStatus,
-            this.olvColumnInstallInfo});
+            this.olvColumnInstallInfo,
+            this.olvColumnAltModVersion,
+            this.olvColumnAltInstallMethod,
+            this.olvColumnAltInstallInto,
+            this.olvColumnAltArchiveName,
+            this.olvColumnAltArchivePreset,
+            this.olvColumnAltIsFrozen});
             this.objectListViewMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectListViewMods.FullRowSelect = true;
             this.objectListViewMods.GridLines = true;
@@ -1514,7 +1583,7 @@
             // 
             // olvColumnModInfo
             // 
-            this.olvColumnModInfo.AspectName = "ModInfo";
+            this.olvColumnModInfo.AspectName = "ModTitle";
             this.olvColumnModInfo.Groupable = false;
             this.olvColumnModInfo.MinimumWidth = 50;
             this.olvColumnModInfo.Text = "Mod name & info";
@@ -1539,6 +1608,47 @@
             this.olvColumnInstallInfo.Text = "Installation";
             this.olvColumnInstallInfo.Width = 220;
             this.olvColumnInstallInfo.WordWrap = true;
+            // 
+            // olvColumnAltModVersion
+            // 
+            this.olvColumnAltModVersion.AspectName = "ModVersion";
+            this.olvColumnAltModVersion.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumnAltModVersion.Text = "Version";
+            this.olvColumnAltModVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // olvColumnAltInstallMethod
+            // 
+            this.olvColumnAltInstallMethod.AspectName = "InstallMethod";
+            this.olvColumnAltInstallMethod.Text = "Install as";
+            this.olvColumnAltInstallMethod.Width = 120;
+            // 
+            // olvColumnAltInstallInto
+            // 
+            this.olvColumnAltInstallInto.AspectName = "InstallInto";
+            this.olvColumnAltInstallInto.Text = "Install into";
+            this.olvColumnAltInstallInto.Width = 80;
+            // 
+            // olvColumnAltArchiveName
+            // 
+            this.olvColumnAltArchiveName.AspectName = "ArchiveName";
+            this.olvColumnAltArchiveName.Text = "Archive name";
+            this.olvColumnAltArchiveName.Width = 150;
+            // 
+            // olvColumnAltArchivePreset
+            // 
+            this.olvColumnAltArchivePreset.AspectName = "ArchivePreset";
+            this.olvColumnAltArchivePreset.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumnAltArchivePreset.Text = "Archive preset";
+            this.olvColumnAltArchivePreset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumnAltArchivePreset.Width = 80;
+            // 
+            // olvColumnAltIsFrozen
+            // 
+            this.olvColumnAltIsFrozen.AspectName = "IsFrozen";
+            this.olvColumnAltIsFrozen.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumnAltIsFrozen.Text = "Frozen?";
+            this.olvColumnAltIsFrozen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumnAltIsFrozen.Width = 50;
             // 
             // tabControl1
             // 
@@ -1580,6 +1690,8 @@
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).EndInit();
             this.tabPageModsSettings.ResumeLayout(false);
+            this.groupBoxModsInterface.ResumeLayout(false);
+            this.groupBoxModsInterface.PerformLayout();
             this.groupBoxModsBehavior.ResumeLayout(false);
             this.groupBoxModsBehavior.PerformLayout();
             this.groupBoxLists.ResumeLayout(false);
@@ -1744,5 +1856,15 @@
         private BrightIdeasSoftware.OLVColumn olvColumnInstallStatus;
         private BrightIdeasSoftware.OLVColumn olvColumnInstallInfo;
         private System.Windows.Forms.CheckBox checkBoxModsUseRemoteModNames;
+        private System.Windows.Forms.GroupBox groupBoxModsInterface;
+        private System.Windows.Forms.Label labelModListStyle;
+        private System.Windows.Forms.RadioButton radioButtonModsUseAlternativeList;
+        private System.Windows.Forms.RadioButton radioButtonModsUseStandardList;
+        private BrightIdeasSoftware.OLVColumn olvColumnAltModVersion;
+        private BrightIdeasSoftware.OLVColumn olvColumnAltInstallMethod;
+        private BrightIdeasSoftware.OLVColumn olvColumnAltInstallInto;
+        private BrightIdeasSoftware.OLVColumn olvColumnAltArchiveName;
+        private BrightIdeasSoftware.OLVColumn olvColumnAltArchivePreset;
+        private BrightIdeasSoftware.OLVColumn olvColumnAltIsFrozen;
     }
 }

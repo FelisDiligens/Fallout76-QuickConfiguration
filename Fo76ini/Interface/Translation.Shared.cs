@@ -16,9 +16,9 @@ namespace Fo76ini
             localizedStrings["modsTablePresetTextures"] = "Textures";
             localizedStrings["modsTablePresetSoundFX"] = "Sound FX";
             localizedStrings["modsTableTypeBundled"] = "Bundled";
-            localizedStrings["modsTableTypeSeparate"] = "Separate";
-            localizedStrings["modsTableTypeSeparateFrozen"] = "Separate (Frozen)";
-            localizedStrings["modsTableTypeLoose"] = "Loose";
+            localizedStrings["modsTableTypeSeparate"] = "Separate archive";
+            localizedStrings["modsTableTypeSeparateFrozen"] = "Separate archive (Frozen)";
+            localizedStrings["modsTableTypeLoose"] = "Loose files";
             localizedStrings["modTableFrozenPending"] = "Pending";
             localizedStrings["modTableFrozen"] = "Frozen";
             localizedStrings["modTableFreeze"] = "Freeze";

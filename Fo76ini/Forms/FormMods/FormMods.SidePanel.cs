@@ -59,9 +59,9 @@ namespace Fo76ini
             DropDown.Add("ModInstallAs", new DropDown(
                 this.comboBoxModInstallAs,
                 new string[] {
-                    "Bundled *.ba2 archive",
-                    "Separate *.ba2 archive",
-                    "Loose files"
+                    "Bundle into *.ba2 archives with other mods",
+                    "Create separate *.ba2 archive",
+                    "Copy loose files"
                 }
             ));
 
@@ -69,7 +69,7 @@ namespace Fo76ini
                 this.comboBoxModArchivePreset,
                 new string[] {
                     "-- Please select --",
-                    "Auto-detect",
+                    "Auto-detect (recommended)",
                     "General / Interface / Materials / Animations", /* Materials: *.bgsm; Interface: *.swf; */
                     "Textures (*.dds files)",
                     "Sound FX / Music / Voice",                     /* Voice: *.fuz; Lip-Sync: *.lip; Sound FX: *.xwm; */

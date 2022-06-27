@@ -27,14 +27,35 @@ namespace Fo76ini
         class ModListRow
         {
             public ManagedMod mod;
+
             public bool Enabled = false;
-            public string ModInfo = "";
-            public string ModInfoDescription = "";
+            public bool IsUpdateAvailable = false;
+
+            /*
+             * Standard style columns
+             */
+            public string ModTitle = "";
+            public string ModDescription = "";
             public string InstallStatus = "";
             public string InstallInfo = "";
-            public Color ModInfoFG = Color.Black;
-            public Color InstallStatusFG = Color.Black;
-            public Color InstallInfoFG = Color.Black;
+
+            /*
+             * Alternative style columns
+             */
+            public string ModVersion = "";
+            public string InstallMethod = "";
+            public string InstallInto = "";
+            public string ArchiveName = "";
+            public string ArchivePreset = "";
+            public string IsFrozen = "";
+
+            /*
+             * Colors
+             */
+            public Color InstallStatusColor = Color.Black;
+            public Color InstallMethodColor = Color.Black;
+            public Color ArchivePresetColor = Color.Black;
+            public Color AltFrozenColor = Color.Black;
 
             public ModListRow(ManagedMod mod)
             {
@@ -45,39 +66,42 @@ namespace Fo76ini
 
                 bool showRemoteModNames = IniFiles.Config.GetBool("Mods", "bShowRemoteModNames", false);
 
+
                 /*
                  * Mod name & info
                  */
 
+                this.ModVersion = mod.Version;
 
                 if (remoteMod != null)
                 {
-                    this.ModInfo = showRemoteModNames ? remoteMod.Title : mod.Title;
+                    this.ModTitle = showRemoteModNames ? remoteMod.Title : mod.Title;
 
                     // Version
                     if (mod.Version != "")
                     {
-                        this.ModInfoDescription += $"Version {mod.Version} by {mod.RemoteInfo.Author}";
+                        this.ModDescription += $"Version {mod.Version} by {mod.RemoteInfo.Author}";
 
                         if (remoteMod.LatestVersion != mod.Version)
                         {
                             // Update available:
-                            this.ModInfoDescription = $"{Localization.GetString("updateAvailable")}: {remoteMod.LatestVersion}";
-                            this.ModInfoFG = Color.Fuchsia;
+                            this.ModDescription = $"{Localization.GetString("updateAvailable")}: {remoteMod.LatestVersion}";
+                            this.ModVersion = $"{mod.Version} ({remoteMod.LatestVersion})";
+                            this.IsUpdateAvailable = true;
                         }
                     }
                     else
                     {
                         // Author
-                        this.ModInfoDescription = "by " + mod.RemoteInfo.Author;
+                        this.ModDescription = "by " + mod.RemoteInfo.Author;
                     }
                 }
                 else
                 {
-                    this.ModInfo = mod.Title;
+                    this.ModTitle = mod.Title;
 
                     if (mod.Version != "")
-                        this.ModInfoDescription = $"Version {mod.Version} ";
+                        this.ModDescription = $"Version {mod.Version} ";
                 }
 
 
@@ -87,7 +111,7 @@ namespace Fo76ini
 
                 if (mod.isDeploymentNecessary())
                 {
-                    this.InstallStatusFG = Color.Blue;
+                    this.InstallStatusColor = Color.Blue;
                     if (mod.Enabled && !mod.Deployed)
                     {
                         this.InstallStatus = Localization.GetString("modTablePendingInstallation");
@@ -108,7 +132,7 @@ namespace Fo76ini
                 else
                 {
                     this.InstallStatus = mod.Enabled ? Localization.GetString("enabled") : Localization.GetString("disabled");
-                    this.InstallStatusFG = mod.Enabled ? Color.Green : Color.Red;
+                    this.InstallStatusColor = mod.Enabled ? Color.Green : Color.Red;
                     if (mod.Freeze && mod.Frozen)
                     {
                         this.InstallStatus += $" ({Localization.GetString("modTableFrozen")})";
@@ -131,26 +155,34 @@ namespace Fo76ini
                             if (isCompressed)
                             {
                                 installPreset = Localization.GetString("modsTablePresetGeneral"); // General
+                                this.ArchivePresetColor = Color.OrangeRed;
                             }
                             else
                             {
                                 installPreset = Localization.GetString("modsTablePresetSoundFX"); // Sound FX
+                                this.ArchivePresetColor = Color.RoyalBlue;
                             }
                             break;
                         case ManagedMod.ArchiveFormat.Textures:
                             installPreset = Localization.GetString("modsTablePresetTextures");    // Textures
+                            this.ArchivePresetColor = Color.DarkGreen;
                             break;
                         case ManagedMod.ArchiveFormat.Auto:
                             installPreset = Localization.GetString("auto");                       // Auto-detect
+                            this.ArchivePresetColor = Color.DimGray;
                             break;
                         default:
                             installPreset = Localization.GetString("unknown");                    // Please select
+                            this.ArchivePresetColor = Color.Red;
                             break;
                     }
                     if (mod.Compression == ManagedMod.ArchiveCompression.Auto)
                     {
                         installPreset = Localization.GetString("auto");                           // Auto-detect
+                        this.ArchivePresetColor = Color.DimGray;
                     }
+
+                    this.ArchivePreset = installPreset;
                 }
 
                 // How is the mod (going to be) installed?
@@ -158,18 +190,178 @@ namespace Fo76ini
                 {
                     case ManagedMod.DeploymentMethod.BundledBA2:
                         this.InstallInfo = "Bundle into \"Data\\Bundled*.ba2\".";
-                        this.InstallInfoFG = Color.OrangeRed;
+                        this.InstallMethod = Localization.GetString("modsTableTypeBundled");
+                        this.InstallInto = "\"Data\"";
+                        this.ArchiveName = "Bundled*.ba2";
+                        this.InstallMethodColor = Color.OrangeRed;
                         break;
                     case ManagedMod.DeploymentMethod.SeparateBA2:
                         this.InstallInfo = String.Format("Pack into \"Data\\{0}\" with preset \"{1}\".", mod.ArchiveName, installPreset);
-                        this.InstallInfoFG = Color.Indigo;
+                        this.InstallMethod = Localization.GetString("modsTableTypeSeparate");
+                        this.InstallInto = "\"Data\"";
+                        this.ArchiveName = mod.ArchiveName;
+                        if (mod.Frozen)
+                        {
+                            this.IsFrozen = Localization.GetString("yes");
+                            this.InstallMethod = Localization.GetString("modsTableTypeSeparateFrozen");
+                            this.AltFrozenColor = Color.DarkCyan;
+                        }
+                        else if (mod.Freeze)
+                        {
+                            this.IsFrozen = Localization.GetString("modTableFrozenPending");
+                            this.AltFrozenColor = Color.Blue;
+                        }
+                        else
+                        {
+                            this.IsFrozen = Localization.GetString("no");
+                        }
+                        this.InstallMethodColor = Color.Indigo;
                         break;
                     case ManagedMod.DeploymentMethod.LooseFiles:
                         this.InstallInfo = String.Format("Copy files to \"{0}\".", mod.RootFolder);
-                        this.InstallInfoFG = Color.MediumVioletRed;
+                        this.InstallMethod = Localization.GetString("modsTableTypeLoose");
+                        this.InstallInto = $"\"{mod.RootFolder}\"";
+                        this.InstallMethodColor = Color.MediumVioletRed;
                         break;
                 }
             }
+        }
+
+        /*
+         * Format rows/cells with colors:
+         */
+
+        private void objectListViewMods_FormatRow(object sender, FormatRowEventArgs e)
+        {
+            e.Item.Font = new Font(this.objectListViewMods.Font, FontStyle.Regular);
+        }
+
+        private void objectListViewMods_FormatCell(object sender, FormatCellEventArgs e)
+        {
+            ModListRow row = (ModListRow)e.Model;
+
+            e.SubItem.Font = new Font(this.objectListViewMods.Font, FontStyle.Regular);
+
+            // "Mod info & description":
+            if (e.ColumnIndex == this.olvColumnModInfo.Index)
+            {
+                if (row.IsUpdateAvailable && currentStyle == ModListStyle.Standard)
+                    e.SubItem.ForeColor = Color.Fuchsia;
+                else if (currentStyle == ModListStyle.Alternative)
+                    e.SubItem.ForeColor = row.InstallStatusColor;
+            }
+
+            // "Status" (e.g. Enabled/Disabled/Pending):
+            else if (e.ColumnIndex == this.olvColumnInstallStatus.Index)
+            {
+                e.SubItem.ForeColor = row.InstallStatusColor;
+            }
+
+            // "Installation" (e.g. Pack into ...):
+            else if (e.ColumnIndex == this.olvColumnInstallInfo.Index)
+            {
+                e.SubItem.ForeColor = row.InstallMethodColor;
+            }
+
+            // "Version" (alternate style):
+            else if (e.ColumnIndex == this.olvColumnAltModVersion.Index)
+            {
+                if (row.IsUpdateAvailable)
+                {
+                    e.SubItem.ForeColor = Color.Fuchsia;
+                    e.SubItem.Font = new Font(this.objectListViewMods.Font, FontStyle.Bold);
+                }
+                else if (row.mod.RemoteInfo != null)
+                {
+                    e.SubItem.ForeColor = Color.Green;
+                }
+            }
+
+            // "Method" (alternate style):
+            else if (e.ColumnIndex == this.olvColumnAltInstallMethod.Index)
+            {
+                e.SubItem.ForeColor = row.InstallMethodColor;
+            }
+
+            // "Archive preset" (alternate style):
+            else if (e.ColumnIndex == this.olvColumnAltArchivePreset.Index)
+            {
+                e.SubItem.ForeColor = row.ArchivePresetColor;
+            }
+
+            // "Install into" (alternate style):
+            else if (e.ColumnIndex == this.olvColumnAltInstallInto.Index)
+            {
+                if (row.mod.Method != ManagedMod.DeploymentMethod.LooseFiles)
+                {
+                    e.SubItem.ForeColor = Color.Silver;
+                    e.SubItem.Font = new Font(this.objectListViewMods.Font, FontStyle.Italic);
+                }
+            }
+
+            // "Archive name" (alternate style):
+            else if (e.ColumnIndex == this.olvColumnAltArchiveName.Index)
+            {
+                if (row.mod.Method != ManagedMod.DeploymentMethod.SeparateBA2)
+                {
+                    e.SubItem.ForeColor = Color.Silver;
+                    e.SubItem.Font = new Font(this.objectListViewMods.Font, FontStyle.Italic);
+                }
+            }
+
+            // "Frozen?" (alternate style):
+            else if (e.ColumnIndex == this.olvColumnAltIsFrozen.Index)
+            {
+                e.SubItem.ForeColor = row.AltFrozenColor;
+            }
+        }
+
+        public List<ColumnHeader> CommonHeaders = new List<ColumnHeader>();
+        public List<ColumnHeader> StandardStyleHeaders = new List<ColumnHeader>();
+        public List<ColumnHeader> AlternativeStyleHeaders = new List<ColumnHeader>();
+
+        public enum ModListStyle
+        {
+            Standard,
+            Alternative
+        }
+
+        public ModListStyle currentStyle = ModListStyle.Standard;
+
+        public void SetOLVStyle(ModListStyle style)
+        {
+            this.objectListViewMods.Columns.Clear();
+            this.objectListViewMods.Columns.AddRange(CommonHeaders.ToArray());
+
+            switch (style)
+            {
+                case ModListStyle.Standard:
+                    this.objectListViewMods.Columns.AddRange(StandardStyleHeaders.ToArray());
+                    this.olvColumnModInfo.Renderer = this.describedTaskRenderer;
+                    this.objectListViewMods.RowHeight = 36;
+                    break;
+                case ModListStyle.Alternative:
+                    this.objectListViewMods.Columns.AddRange(AlternativeStyleHeaders.ToArray());
+                    this.olvColumnModInfo.Renderer = this.olvColumnAltModVersion.Renderer;
+                    this.objectListViewMods.RowHeight = 18;
+                    break;
+            }
+
+            this.currentStyle = style;
+        }
+
+        private void radioButtonModsUseNewList_CheckedChanged(object sender, EventArgs e)
+        {
+            this.SetOLVStyle(ModListStyle.Standard);
+            IniFiles.Config.Set("Mods", "iModListStyle", 0);
+            this.UpdateModList();
+        }
+
+        private void radioButtonModsUseOldList_CheckedChanged(object sender, EventArgs e)
+        {
+            this.SetOLVStyle(ModListStyle.Alternative);
+            IniFiles.Config.Set("Mods", "iModListStyle", 1);
+            this.UpdateModList();
         }
 
         public void InitializeObjectListView()
@@ -184,9 +376,34 @@ namespace Fo76ini
             describedTaskRenderer.TitleFont = new Font("Tahoma", 10, FontStyle.Bold); // , FontStyle.Bold
             describedTaskRenderer.DescriptionFont = new Font("Tahoma", 9);
             describedTaskRenderer.UseGdiTextRendering = true;
-            this.objectListViewMods.RowHeight = 36;
-            describedTaskRenderer.DescriptionAspectName = "ModInfoDescription";
-            this.olvColumnModInfo.Renderer = describedTaskRenderer;
+            describedTaskRenderer.DescriptionAspectName = "ModDescription";
+
+            // Mod list style
+            CommonHeaders.Add(this.olvColumnCheckbox);
+            CommonHeaders.Add(this.olvColumnModInfo);
+
+            StandardStyleHeaders.Add(this.olvColumnInstallStatus);
+            StandardStyleHeaders.Add(this.olvColumnInstallInfo);
+
+            AlternativeStyleHeaders.Add(this.olvColumnAltModVersion);
+            AlternativeStyleHeaders.Add(this.olvColumnAltInstallMethod);
+            AlternativeStyleHeaders.Add(this.olvColumnAltInstallInto);
+            AlternativeStyleHeaders.Add(this.olvColumnAltArchiveName);
+            AlternativeStyleHeaders.Add(this.olvColumnAltArchivePreset);
+            AlternativeStyleHeaders.Add(this.olvColumnAltIsFrozen);
+            SetOLVStyle(ModListStyle.Standard);
+
+            /*int configCurrentStyle = IniFiles.Config.GetInt("Mods", "iModListStyle", 0);
+            switch (configCurrentStyle)
+            {
+                case 1:
+                    SetOLVStyle(ModListStyle.Alternative);
+                    break;
+                case 0:
+                default:
+                    SetOLVStyle(ModListStyle.Standard);
+                    break;
+            }*/
 
             /*
              * Drag & drop:
@@ -242,29 +459,6 @@ namespace Fo76ini
                 point.X,
                 point.Y * this.objectListViewMods.RowHeight // For some reason, it uses rows in LowLevelScrollPosition, but pixels in LowLevelScroll...
             );
-        }
-
-        private void objectListViewMods_FormatRow(object sender, FormatRowEventArgs e)
-        {
-            e.Item.Font = new Font(this.objectListViewMods.Font, FontStyle.Regular);
-        }
-
-        private void objectListViewMods_FormatCell(object sender, FormatCellEventArgs e)
-        {
-            ModListRow row = (ModListRow)e.Model;
-            if (e.ColumnIndex == this.olvColumnModInfo.Index)
-            {
-                e.SubItem.ForeColor = row.ModInfoFG;
-            }
-            else if (e.ColumnIndex == this.olvColumnInstallStatus.Index)
-            {
-                e.SubItem.ForeColor = row.InstallStatusFG;
-            }
-            else if (e.ColumnIndex == this.olvColumnInstallInfo.Index)
-            {
-                e.SubItem.ForeColor = row.InstallInfoFG;
-            }
-            e.SubItem.Font = new Font(this.objectListViewMods.Font, FontStyle.Regular);
         }
         #endregion
 
