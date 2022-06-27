@@ -20,9 +20,14 @@ namespace Fo76ini.Forms.ExceptionDialog
         {
             FormExceptionDialog form = new FormExceptionDialog();
 
+            //form.Text = $"{ex.GetType()}: {ex.Message}\r\n\r\n";
+            form.textBoxDebugText.Text = $"*************** Error message ***************\r\n" +
+                                         $"{ex.GetType()}: {ex.Message}\r\n\r\n";
+
             try
             {
-                form.textBoxDebugText.Text += $"Operating system:  {Utils.GetOSName()} {Utils.GetOSArchitecture()}\r\n" +
+                form.textBoxDebugText.Text += $"**************** System Info ****************\r\n" +
+                                              $"Operating system:  {Utils.GetOSName()} {Utils.GetOSArchitecture()}\r\n" +
                                               $"Program version:   {Shared.VERSION}\r\n" +
                                               $"User agent:        {Shared.AppUserAgent}\r\n" +
                                               $"Running as admin:  " + (Utils.HasAdminRights() ? "Yes" : "No") + "\r\n" +
@@ -50,17 +55,39 @@ namespace Fo76ini.Forms.ExceptionDialog
             } 
             catch { }
 
-            form.textBoxDebugText.Text += $"\r\n************** Stack trace **************\r\n" +
-                                          $"If any files are listed (like \"D:\\Workspace\\...\\*.cs:line 123\"):\r\nThose are files on *my* computer, so don't worry if you can't find them.\r\n\r\n" +
-                                          $"{ex.GetType()}: {ex.Message}\r\n{ex.StackTrace}\r\n";
+            // Set culture to english, so the exceptions and stack traces are written in english:
+            System.Globalization.CultureInfo originalCultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
+            System.Globalization.CultureInfo.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
 
-            if (ex.InnerException != null)
+            // Print stack trace:
+            form.textBoxDebugText.Text += $"\r\n**************** Stack Trace ****************\r\n" +
+                                          $"If any files are listed (like \"at ... in ...\\*.cs:line 123\"):\r\nThose are files on *my* computer, so don't worry if you can't find them.\r\n\r\n" +
+                                          $"{ex.GetType()}: {ex.Message}\r\n" +
+                                          $"{GetStackTraceWithRelativePaths(ex.StackTrace)}\r\n";
+
+            // Print stack traces of all inner exceptions:
+            Exception innerEx = ex.InnerException;
+            while (innerEx != null)
+            {
                 form.textBoxDebugText.Text += $"\r\n************** Inner Exception **************\r\n" +
-                                              $"{ex.InnerException.GetType()}: {ex.InnerException.Message}\r\n{ex.InnerException.StackTrace}\r\n";
+                                              $"{innerEx.GetType()}: {innerEx.Message}\r\n" + 
+                                              $"{GetStackTraceWithRelativePaths(innerEx.StackTrace)}\r\n";
+                innerEx = innerEx.InnerException;
+            }
+
+            System.Globalization.CultureInfo.CurrentUICulture = originalCultureInfo;
 
             form.ShowDialog();
 
             return form;
+        }
+
+        private static string GetStackTraceWithRelativePaths(string stackTrace)
+        {
+            String projectBasePath = @"D:\Workspace\Fallout 76 Quick Configuration\Fallout76-QuickConfiguration\Fo76ini";
+            if (stackTrace == null)
+                return "";
+            return stackTrace.Replace(projectBasePath, ".");
         }
 
         private void buttonCloseProgram_Click(object sender, EventArgs e)

@@ -878,6 +878,14 @@ namespace Fo76ini.Utilities
             return operatingSystem;
         }
 
+        // https://stackoverflow.com/a/2016557
+        /*public static string GetOSNameWMI()
+        {
+            var name = (from x in new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem").Get().Cast<ManagementObject>()
+                        select x.GetPropertyValue("Caption")).FirstOrDefault();
+            return name != null ? name.ToString().Trim() : "";
+        }*/
+
         public static long GetUnixTimeStamp()
         {
             return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
