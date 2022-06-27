@@ -839,7 +839,11 @@ namespace Fo76ini.Utilities
                             operatingSystem = "8.1";
                         break;
                     case 10:
-                        operatingSystem = "10";
+                        if (vs.Build >= 22000)
+                            operatingSystem = "11";
+                        else
+                            operatingSystem = "10";
+
                         // Or "Windows Server 2019"
                         // Or "Windows Server 2016"
                         break;
