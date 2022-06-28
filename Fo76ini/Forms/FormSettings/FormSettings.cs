@@ -160,12 +160,6 @@ namespace Fo76ini.Forms.FormSettings
                     // ... and update the settings:
                     switch (game.Edition)
                     {
-                        case GameEdition.BethesdaNet:
-                            this.radioButtonEditionBethesdaNet.Checked = true;
-                            break;
-                        case GameEdition.BethesdaNetPTS:
-                            this.radioButtonEditionBethesdaNetPTS.Checked = true;
-                            break;
                         case GameEdition.Steam:
                             this.radioButtonEditionSteam.Checked = true;
                             break;
@@ -174,6 +168,12 @@ namespace Fo76ini.Forms.FormSettings
                             break;
                         case GameEdition.Xbox:
                             this.radioButtonEditionMSStore.Checked = true;
+                            break;
+                        case GameEdition.BethesdaNet:
+                            this.radioButtonEditionBethesdaNet.Checked = true;
+                            break;
+                        case GameEdition.BethesdaNetPTS:
+                            this.radioButtonEditionBethesdaNetPTS.Checked = true;
                             break;
                         default:
                             this.radioButtonEditionUnknown.Checked = true;
@@ -189,7 +189,9 @@ namespace Fo76ini.Forms.FormSettings
                     this.textBoxParameters.Text = game.ExecParameters;
                     this.textBoxLaunchURL.Text = game.LauncherURL;
 
-                    this.labelLaunchOptionMSStoreNotice.Visible = game.Edition == GameEdition.Xbox;
+                    this.labelLaunchOptionMSStoreNotice.Visible =
+                        game.Edition == GameEdition.Xbox &&
+                        game.PreferredLaunchOption == LaunchOption.RunExec;
                 }
             }
 
@@ -451,6 +453,10 @@ namespace Fo76ini.Forms.FormSettings
             if (UpdatingUI)
                 return;
             ProfileManager.SelectedGame.PreferredLaunchOption = LaunchOption.OpenURL;
+
+            this.labelLaunchOptionMSStoreNotice.Visible =
+                ProfileManager.SelectedGame.Edition == GameEdition.Xbox &&
+                ProfileManager.SelectedGame.PreferredLaunchOption == LaunchOption.RunExec;
         }
 
         private void radioButtonLaunchViaExecutable_CheckedChanged(object sender, EventArgs e)
@@ -458,6 +464,10 @@ namespace Fo76ini.Forms.FormSettings
             if (UpdatingUI)
                 return;
             ProfileManager.SelectedGame.PreferredLaunchOption = LaunchOption.RunExec;
+
+            this.labelLaunchOptionMSStoreNotice.Visible =
+                ProfileManager.SelectedGame.Edition == GameEdition.Xbox &&
+                ProfileManager.SelectedGame.PreferredLaunchOption == LaunchOption.RunExec;
         }
 
         private void textBoxIniPrefix_TextChanged(object sender, EventArgs e)

@@ -29,15 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Default", 0);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Default", 0);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Steam"}, 2, System.Drawing.Color.Empty, System.Drawing.SystemColors.Window, null);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Xbox", 3);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Xbox", 3);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSettings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
+            this.groupBoxUI = new System.Windows.Forms.GroupBox();
+            this.checkBoxShowWhatsNew = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowNWBtn = new System.Windows.Forms.CheckBox();
             this.groupBoxPaths = new System.Windows.Forms.GroupBox();
             this.textBoxDownloadsPath = new System.Windows.Forms.TextBox();
             this.labelDownloadsPath = new System.Windows.Forms.Label();
@@ -50,13 +53,12 @@
             this.labelArchiveTwoPath = new System.Windows.Forms.Label();
             this.buttonPickArchiveTwoPath = new System.Windows.Forms.Button();
             this.labelSevenZipPath = new System.Windows.Forms.Label();
-            this.groupBoxActions = new System.Windows.Forms.GroupBox();
-            this.linkLabelEnableDangerZone = new System.Windows.Forms.LinkLabel();
             this.groupBoxOptions = new System.Windows.Forms.GroupBox();
             this.checkBoxHandleNXMLinks = new System.Windows.Forms.CheckBox();
             this.checkBoxReadOnly = new System.Windows.Forms.CheckBox();
+            this.groupBoxActions = new System.Windows.Forms.GroupBox();
+            this.linkLabelEnableDangerZone = new System.Windows.Forms.LinkLabel();
             this.groupBoxNuclearWinterMode = new System.Windows.Forms.GroupBox();
-            this.checkBoxShowNWBtn = new System.Windows.Forms.CheckBox();
             this.checkBoxNWAutoDeployMods = new System.Windows.Forms.CheckBox();
             this.labelNWmodoptions = new System.Windows.Forms.Label();
             this.labelNWdlloptions = new System.Windows.Forms.Label();
@@ -161,13 +163,12 @@
             this.openFileDialogArchiveTwoPath = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.checkBoxShowWhatsNew = new System.Windows.Forms.CheckBox();
-            this.groupBoxUI = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
+            this.groupBoxUI.SuspendLayout();
             this.groupBoxPaths.SuspendLayout();
-            this.groupBoxActions.SuspendLayout();
             this.groupBoxOptions.SuspendLayout();
+            this.groupBoxActions.SuspendLayout();
             this.groupBoxNuclearWinterMode.SuspendLayout();
             this.groupBoxBehavior.SuspendLayout();
             this.groupBoxLocalization.SuspendLayout();
@@ -194,7 +195,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).BeginInit();
-            this.groupBoxUI.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -224,6 +224,37 @@
             this.tabPageGeneral.TabIndex = 0;
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxUI
+            // 
+            this.groupBoxUI.Controls.Add(this.checkBoxShowWhatsNew);
+            this.groupBoxUI.Controls.Add(this.checkBoxShowNWBtn);
+            this.groupBoxUI.Location = new System.Drawing.Point(6, 231);
+            this.groupBoxUI.Name = "groupBoxUI";
+            this.groupBoxUI.Size = new System.Drawing.Size(390, 73);
+            this.groupBoxUI.TabIndex = 45;
+            this.groupBoxUI.TabStop = false;
+            this.groupBoxUI.Text = "User Interface";
+            // 
+            // checkBoxShowWhatsNew
+            // 
+            this.checkBoxShowWhatsNew.AutoSize = true;
+            this.checkBoxShowWhatsNew.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxShowWhatsNew.Name = "checkBoxShowWhatsNew";
+            this.checkBoxShowWhatsNew.Size = new System.Drawing.Size(190, 17);
+            this.checkBoxShowWhatsNew.TabIndex = 26;
+            this.checkBoxShowWhatsNew.Text = "Show \"What\'s new\" in the Info tab";
+            this.checkBoxShowWhatsNew.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowNWBtn
+            // 
+            this.checkBoxShowNWBtn.AutoSize = true;
+            this.checkBoxShowNWBtn.Location = new System.Drawing.Point(6, 42);
+            this.checkBoxShowNWBtn.Name = "checkBoxShowNWBtn";
+            this.checkBoxShowNWBtn.Size = new System.Drawing.Size(330, 17);
+            this.checkBoxShowNWBtn.TabIndex = 26;
+            this.checkBoxShowNWBtn.Text = "Show Nuclear Winter toggle button in main window (deprecated)";
+            this.checkBoxShowNWBtn.UseVisualStyleBackColor = true;
             // 
             // groupBoxPaths
             // 
@@ -355,28 +386,6 @@
             this.labelSevenZipPath.TabIndex = 42;
             this.labelSevenZipPath.Text = "7z.exe path:";
             // 
-            // groupBoxActions
-            // 
-            this.groupBoxActions.Controls.Add(this.linkLabelEnableDangerZone);
-            this.groupBoxActions.Location = new System.Drawing.Point(402, 340);
-            this.groupBoxActions.Name = "groupBoxActions";
-            this.groupBoxActions.Size = new System.Drawing.Size(358, 50);
-            this.groupBoxActions.TabIndex = 43;
-            this.groupBoxActions.TabStop = false;
-            this.groupBoxActions.Text = "Actions";
-            // 
-            // linkLabelEnableDangerZone
-            // 
-            this.linkLabelEnableDangerZone.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabelEnableDangerZone.LinkColor = System.Drawing.Color.Red;
-            this.linkLabelEnableDangerZone.Location = new System.Drawing.Point(7, 16);
-            this.linkLabelEnableDangerZone.Name = "linkLabelEnableDangerZone";
-            this.linkLabelEnableDangerZone.Size = new System.Drawing.Size(342, 15);
-            this.linkLabelEnableDangerZone.TabIndex = 44;
-            this.linkLabelEnableDangerZone.TabStop = true;
-            this.linkLabelEnableDangerZone.Text = "⚠️ Enable Danger Zone";
-            this.linkLabelEnableDangerZone.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelEnableDangerZone_LinkClicked);
-            // 
             // groupBoxOptions
             // 
             this.groupBoxOptions.Controls.Add(this.checkBoxHandleNXMLinks);
@@ -412,6 +421,28 @@
             this.checkBoxReadOnly.Text = "Make *.ini files read-only";
             this.checkBoxReadOnly.UseVisualStyleBackColor = true;
             // 
+            // groupBoxActions
+            // 
+            this.groupBoxActions.Controls.Add(this.linkLabelEnableDangerZone);
+            this.groupBoxActions.Location = new System.Drawing.Point(402, 340);
+            this.groupBoxActions.Name = "groupBoxActions";
+            this.groupBoxActions.Size = new System.Drawing.Size(358, 50);
+            this.groupBoxActions.TabIndex = 43;
+            this.groupBoxActions.TabStop = false;
+            this.groupBoxActions.Text = "Actions";
+            // 
+            // linkLabelEnableDangerZone
+            // 
+            this.linkLabelEnableDangerZone.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabelEnableDangerZone.LinkColor = System.Drawing.Color.Red;
+            this.linkLabelEnableDangerZone.Location = new System.Drawing.Point(7, 16);
+            this.linkLabelEnableDangerZone.Name = "linkLabelEnableDangerZone";
+            this.linkLabelEnableDangerZone.Size = new System.Drawing.Size(342, 15);
+            this.linkLabelEnableDangerZone.TabIndex = 44;
+            this.linkLabelEnableDangerZone.TabStop = true;
+            this.linkLabelEnableDangerZone.Text = "⚠️ Enable Danger Zone";
+            this.linkLabelEnableDangerZone.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelEnableDangerZone_LinkClicked);
+            // 
             // groupBoxNuclearWinterMode
             // 
             this.groupBoxNuclearWinterMode.Controls.Add(this.checkBoxNWAutoDeployMods);
@@ -425,16 +456,6 @@
             this.groupBoxNuclearWinterMode.TabIndex = 41;
             this.groupBoxNuclearWinterMode.TabStop = false;
             this.groupBoxNuclearWinterMode.Text = "Nuclear Winter options (deprecated)";
-            // 
-            // checkBoxShowNWBtn
-            // 
-            this.checkBoxShowNWBtn.AutoSize = true;
-            this.checkBoxShowNWBtn.Location = new System.Drawing.Point(6, 42);
-            this.checkBoxShowNWBtn.Name = "checkBoxShowNWBtn";
-            this.checkBoxShowNWBtn.Size = new System.Drawing.Size(330, 17);
-            this.checkBoxShowNWBtn.TabIndex = 26;
-            this.checkBoxShowNWBtn.Text = "Show Nuclear Winter toggle button in main window (deprecated)";
-            this.checkBoxShowNWBtn.UseVisualStyleBackColor = true;
             // 
             // checkBoxNWAutoDeployMods
             // 
@@ -977,9 +998,9 @@
             this.radioButtonEditionMSStore.AutoSize = true;
             this.radioButtonEditionMSStore.Location = new System.Drawing.Point(38, 82);
             this.radioButtonEditionMSStore.Name = "radioButtonEditionMSStore";
-            this.radioButtonEditionMSStore.Size = new System.Drawing.Size(194, 17);
+            this.radioButtonEditionMSStore.Size = new System.Drawing.Size(49, 17);
             this.radioButtonEditionMSStore.TabIndex = 3;
-            this.radioButtonEditionMSStore.Text = "Xbox (Game Pass) / Microsoft Store";
+            this.radioButtonEditionMSStore.Text = "Xbox";
             this.radioButtonEditionMSStore.UseVisualStyleBackColor = true;
             this.radioButtonEditionMSStore.CheckedChanged += new System.EventHandler(this.radioButtonEditionMSStore_CheckedChanged);
             // 
@@ -1039,11 +1060,11 @@
             this.listViewGameInstances.FullRowSelect = true;
             this.listViewGameInstances.HideSelection = false;
             this.listViewGameInstances.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5});
             this.listViewGameInstances.LabelWrap = false;
             this.listViewGameInstances.LargeImageList = this.imageList1;
             this.listViewGameInstances.Location = new System.Drawing.Point(3, 18);
@@ -1584,27 +1605,6 @@
             // 
             this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.UserProfile;
             // 
-            // checkBoxShowWhatsNew
-            // 
-            this.checkBoxShowWhatsNew.AutoSize = true;
-            this.checkBoxShowWhatsNew.Location = new System.Drawing.Point(6, 19);
-            this.checkBoxShowWhatsNew.Name = "checkBoxShowWhatsNew";
-            this.checkBoxShowWhatsNew.Size = new System.Drawing.Size(190, 17);
-            this.checkBoxShowWhatsNew.TabIndex = 26;
-            this.checkBoxShowWhatsNew.Text = "Show \"What\'s new\" in the Info tab";
-            this.checkBoxShowWhatsNew.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxUI
-            // 
-            this.groupBoxUI.Controls.Add(this.checkBoxShowWhatsNew);
-            this.groupBoxUI.Controls.Add(this.checkBoxShowNWBtn);
-            this.groupBoxUI.Location = new System.Drawing.Point(6, 231);
-            this.groupBoxUI.Name = "groupBoxUI";
-            this.groupBoxUI.Size = new System.Drawing.Size(390, 73);
-            this.groupBoxUI.TabIndex = 45;
-            this.groupBoxUI.TabStop = false;
-            this.groupBoxUI.Text = "User Interface";
-            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1621,11 +1621,13 @@
             this.Load += new System.EventHandler(this.FormSettings_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageGeneral.ResumeLayout(false);
+            this.groupBoxUI.ResumeLayout(false);
+            this.groupBoxUI.PerformLayout();
             this.groupBoxPaths.ResumeLayout(false);
             this.groupBoxPaths.PerformLayout();
-            this.groupBoxActions.ResumeLayout(false);
             this.groupBoxOptions.ResumeLayout(false);
             this.groupBoxOptions.PerformLayout();
+            this.groupBoxActions.ResumeLayout(false);
             this.groupBoxNuclearWinterMode.ResumeLayout(false);
             this.groupBoxNuclearWinterMode.PerformLayout();
             this.groupBoxBehavior.ResumeLayout(false);
@@ -1664,8 +1666,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).EndInit();
-            this.groupBoxUI.ResumeLayout(false);
-            this.groupBoxUI.PerformLayout();
             this.ResumeLayout(false);
 
         }
