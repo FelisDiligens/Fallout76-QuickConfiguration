@@ -343,7 +343,6 @@
     <Compile Include="Utilities\RichTextBoxExtensions.cs" />
     <Compile Include="Utilities\SevenZip.cs" />
     <Compile Include="Utilities\Utils.cs" />
-    <Compile Include="Utilities\Volume.cs" />
     <Compile Include="Utilities\XMLExtensions.cs" />
     <EmbeddedResource Include="Forms\FormExceptionDialog\FormExceptionDialog.resx">
       <DependentUpon>FormExceptionDialog.cs</DependentUpon>
