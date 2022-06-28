@@ -144,17 +144,8 @@ namespace Fo76ini.Profiles
             // No games?
             if (games.Count == 0)
             {
-                // Do we have legacy profiles?
-                if (IniFiles.Config != null && IniFiles.Config.Exists("Preferences", "uGameEdition"))
-                {
-                    // then convert them:
-                    ConvertLegacyFormat();
-                }
-                else
-                {
-                    // else create a new game profile from scratch:
-                    CreateNewDefaultProfile();
-                }
+                // then create a new game profile from scratch:
+                CreateNewDefaultProfile();
             }
             
             // No game selected?
@@ -178,106 +169,6 @@ namespace Fo76ini.Profiles
             }
             AddGame(defaultGame);
             SelectGame(defaultGame);
-        }
-
-        /// <summary>
-        /// Converts legacy profiles from v1.8.4h1 and prior to new format.
-        /// </summary>
-        private static void ConvertLegacyFormat()
-        {
-            // Some people might have denied NTFS write permission. Give permission back:
-            IniFiles.SetNTFSWritePermission(true);
-            IniFiles.Config.Remove("Preferences", "bDenyNTFSWritePermission");
-
-            // If NWMode was active, then the Fallout76Custom.ini might have been renamed to Fallout76Custom.ini.nwmodebak
-            // Rename it back:
-            string f76C_NW = Path.Combine(IniFiles.ParentPath, "Fallout76Custom.ini.nwmodebak");
-            string f76C = Path.Combine(IniFiles.ParentPath, "Fallout76Custom.ini");
-            string p76C_NW = Path.Combine(IniFiles.ParentPath, "Project76Custom.ini.nwmodebak");
-            string p76C = Path.Combine(IniFiles.ParentPath, "Project76Custom.ini");
-            if (File.Exists(f76C_NW) && !File.Exists(f76C))
-                File.Move(f76C_NW, f76C);
-            if (File.Exists(p76C_NW) && !File.Exists(p76C))
-                File.Move(p76C_NW, p76C);
-
-            // sGamePath [ + MSStore / BethesdaNet / BethesdaNetPTS / Steam ]
-            // uLaunchOption (1 = OpenURL) (2 = RunExec)
-            // uGameEdition
-
-            // Iterate over each possible key:
-            List<GameEdition> editions = new List<GameEdition> { GameEdition.BethesdaNet, GameEdition.Steam, GameEdition.BethesdaNetPTS, GameEdition.MSStore };
-            List<string> gamePathKeys = new List<string>() { "sGamePathBethesdaNet", "sGamePathSteam", "sGamePathBethesdaNetPTS", "sGamePathMSStore" };
-            for (int i = 0; i < gamePathKeys.Count; i++)
-            {
-                // Get the game path. Skip if empty.
-                string gamePath = IniFiles.Config.GetString("Preferences", gamePathKeys[i], "");
-                if (gamePath == "")
-                    continue;
-
-                GameInstance game = new GameInstance();
-                game.GamePath = gamePath;
-                game.Edition = editions[i]; // (GameEdition)(i + 1)
-                game.SetDefaultSettings(game.Edition);
-
-                // If the index matches uGameEdition, then this is the default game edition:
-                bool selected = IniFiles.Config.GetUInt("Preferences", "uGameEdition", 0) - 1 == i;
-
-                if (selected)
-                {
-                    uint uLaunchOption = IniFiles.Config.GetUInt("Preferences", "uLaunchOption", 1);
-                    game.PreferredLaunchOption = uLaunchOption == 2 ? LaunchOption.RunExec : LaunchOption.OpenURL;
-                }
-
-                switch (game.Edition)
-                {
-                    case GameEdition.BethesdaNet:
-                        game.Title = "Bethesda.net";
-                        break;
-                    case GameEdition.BethesdaNetPTS:
-                        game.Title = "Bethesda.net (PTS)";
-                        break;
-                    case GameEdition.Steam:
-                        game.Title = "Steam";
-                        break;
-                    case GameEdition.MSStore:
-                        game.Title = "Xbox / Microsoft Store";
-                        break;
-                }
-
-                AddGame(game);
-                if (selected)
-                    SelectGame(game);
-            }
-
-            // No previous game edition found?
-            // Create a new one:
-            // CreateNewDefaultProfile();
-            // EDIT: Creating a new profile is no longer necessary.
-            //       At least, that's what I believe. I'll keep this comment here until I'm certain.
-
-            // Well, turns out, I'm an idiot, lol.
-            // By removing the call above I introduced a bug in v1.9.2 that only happens under very specific circumstances:
-
-            /*
-                System.NullReferenceException: Object reference not set to an instance of an object.
-                   at Fo76ini.IniFiles.Load(GameInstance game) in D:\Workspace\Fallout 76 Quick Configuration\Fallout76-QuickConfiguration\Fo76ini\Ini\IniFiles.cs:line 48
-                   ...
-
-                => This happens when:
-                     a) profiles.xml doesn't exist and
-                     b) config.ini exists and
-                     c) [Preferences]uGameEdition=? can be found in config.ini and
-                     d) no paths for any game editions have been specified before and are therefore missing from config.ini
-
-                => This happens because:
-                     ConvertLegacyFormat() is called and it does only look for keys like "sGamePathBethesdaNet" or "sGamePathSteam"... which might not be present.
-                     -> No game profile is created (game profile = null), therefore the tool crashes with a NullReferenceException.
-
-                => I can fix this by creating a game profile, if no profile has been created.
-             */
-
-            if (games.Count == 0)
-                CreateNewDefaultProfile();
         }
 
         private static ProfileEventArgs BuildProfileEventArgs()
