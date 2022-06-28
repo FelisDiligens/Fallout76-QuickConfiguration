@@ -14,16 +14,16 @@ namespace Fo76ini.Profiles
     public enum GameEdition
     {
         Unknown = 0,
-        BethesdaNet = 1,
         Steam = 2,
-        BethesdaNetPTS = 3,
-        MSStore = 4,
-        SteamPTS = 5
+        SteamPTS = 5,
+        Xbox = 4, // MSStore
+        BethesdaNet = 1,
+        BethesdaNetPTS = 3
     }
 
     public enum LaunchOption
     {
-        OpenURL = 0, // Launch through Steam or Bethesda.net
+        OpenURL = 0, // Launch through Steam or Xbox
         RunExec = 1  // Run executable directly
     }
 
@@ -60,19 +60,7 @@ namespace Fo76ini.Profiles
                     this.LauncherURL = "steam://run/1836200";
                     this.PreferredLaunchOption = LaunchOption.OpenURL;
                     break;
-                case GameEdition.BethesdaNet:
-                    this.ExecutableName = "Fallout76.exe";
-                    this.IniPrefix = "Fallout76";
-                    this.LauncherURL = "bethesdanet://run/20";
-                    this.PreferredLaunchOption = LaunchOption.OpenURL;
-                    break;
-                case GameEdition.BethesdaNetPTS:
-                    this.ExecutableName = "Fallout76.exe";
-                    this.IniPrefix = "Fallout76";
-                    this.LauncherURL = "bethesdanet://run/57";
-                    this.PreferredLaunchOption = LaunchOption.OpenURL;
-                    break;
-                case GameEdition.MSStore:
+                case GameEdition.Xbox:
                     this.ExecutableName = "Project76_GamePass.exe";
                     this.IniPrefix = "Project76";
                     /*
@@ -98,6 +86,18 @@ namespace Fo76ini.Profiles
                      * This also works with Process.Start(@"shell:appsfolder\BethesdaSoftworks.Fallout76-PC_3275kfvn8vcwc!Fallout76");
                      */
                     this.LauncherURL = @"shell:appsfolder\BethesdaSoftworks.Fallout76-PC_3275kfvn8vcwc!Fallout76";
+                    this.PreferredLaunchOption = LaunchOption.OpenURL;
+                    break;
+                case GameEdition.BethesdaNet:
+                    this.ExecutableName = "Fallout76.exe";
+                    this.IniPrefix = "Fallout76";
+                    this.LauncherURL = "bethesdanet://run/20";
+                    this.PreferredLaunchOption = LaunchOption.OpenURL;
+                    break;
+                case GameEdition.BethesdaNetPTS:
+                    this.ExecutableName = "Fallout76.exe";
+                    this.IniPrefix = "Fallout76";
+                    this.LauncherURL = "bethesdanet://run/57";
                     this.PreferredLaunchOption = LaunchOption.OpenURL;
                     break;
                 default:
@@ -227,7 +227,7 @@ namespace Fo76ini.Profiles
                     return Resources.bethesda;
                 case GameEdition.BethesdaNetPTS:
                     return Resources.bethesda_pts;
-                case GameEdition.MSStore:
+                case GameEdition.Xbox:
                     //return Resources.msstore;
                     return Resources.xbox;
                 default:
@@ -252,11 +252,35 @@ namespace Fo76ini.Profiles
                     return Resources.bethesda_hover;
                 case GameEdition.BethesdaNetPTS:
                     return Resources.bethesda_pts_hover;
-                case GameEdition.MSStore:
+                case GameEdition.Xbox:
                     //return Resources.msstore_hover;
                     return Resources.xbox_hover;
                 default:
                     return Resources.help_128_hover;
+            }
+        }
+
+        public string GetCaption()
+        {
+            return GetCaption(this.Edition);
+        }
+
+        public static string GetCaption(GameEdition edition)
+        {
+            switch (edition)
+            {
+                case GameEdition.Steam:
+                    return "Steam";
+                case GameEdition.SteamPTS:
+                    return "Steam (PTS)";
+                case GameEdition.BethesdaNet:
+                    return "Bethesda.net";
+                case GameEdition.BethesdaNetPTS:
+                    return "Bethesda.net (PTS)";
+                case GameEdition.Xbox:
+                    return "Xbox";
+                default:
+                    return Localization.GetString("unknown");
             }
         }
     }

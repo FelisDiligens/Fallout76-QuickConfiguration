@@ -41,11 +41,6 @@ namespace Fo76ini.Profiles
         {
             if (ProfileChanged != null)
                 ProfileChanged(null, BuildProfileEventArgs());
-
-            // Backwards-compatibility:
-            IniFiles.Config.Set("Preferences", "uGameEdition", (int)SelectedGame.Edition);
-            IniFiles.Config.Set("Preferences", "sGamePath", SelectedGame.GamePath);
-            IniFiles.Config.Set("Preferences", $"sGamePath{SelectedGame.Edition}", SelectedGame.GamePath);
         }
 
         public static string XMLPath = Path.Combine(Shared.AppConfigFolder, "profiles.xml");
@@ -159,8 +154,8 @@ namespace Fo76ini.Profiles
             if (File.Exists(Path.Combine(IniFiles.ParentPath, "Project76.ini")))
             {
                 // "Project76.ini" exists, which means the user has it from the Microsoft Store
-                defaultGame.Edition = GameEdition.MSStore;
-                defaultGame.SetDefaultSettings(GameEdition.MSStore);
+                defaultGame.Edition = GameEdition.Xbox;
+                defaultGame.SetDefaultSettings(GameEdition.Xbox);
             }
             AddGame(defaultGame);
             SelectGame(defaultGame);

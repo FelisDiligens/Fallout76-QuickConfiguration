@@ -407,57 +407,14 @@ namespace Fo76ini
             numCustomRes_ValueChanged(null, null);
 
             // Change image
-            switch (e.ActiveGameInstance.Edition)
-            {
-                case GameEdition.Steam:
-                    this.pictureBoxButtonGameEdition.SetImages(
-                        GameInstance.Get128pxBitmap(GameEdition.Steam),
-                        GameInstance.Get128pxHoverBitmap(GameEdition.Steam)
-                    );
-                    this.toolStripStatusLabelEditionText.Text = "Steam";
-                    this.labelGameEdition.Text = "Steam";
-                    break;
-                case GameEdition.SteamPTS:
-                    this.pictureBoxButtonGameEdition.SetImages(
-                        GameInstance.Get128pxBitmap(GameEdition.SteamPTS),
-                        GameInstance.Get128pxHoverBitmap(GameEdition.SteamPTS)
-                    );
-                    this.toolStripStatusLabelEditionText.Text = "Steam (PTS)";
-                    this.labelGameEdition.Text = "Steam\n(PTS)";
-                    break;
-                case GameEdition.BethesdaNet:
-                    this.pictureBoxButtonGameEdition.SetImages(
-                        GameInstance.Get128pxBitmap(GameEdition.BethesdaNet),
-                        GameInstance.Get128pxHoverBitmap(GameEdition.BethesdaNet)
-                    );
-                    this.toolStripStatusLabelEditionText.Text = "Bethesda.net";
-                    this.labelGameEdition.Text = "Bethesda";
-                    break;
-                case GameEdition.BethesdaNetPTS:
-                    this.pictureBoxButtonGameEdition.SetImages(
-                        GameInstance.Get128pxBitmap(GameEdition.BethesdaNetPTS),
-                        GameInstance.Get128pxHoverBitmap(GameEdition.BethesdaNetPTS)
-                    );
-                    this.toolStripStatusLabelEditionText.Text = "Bethesda.net (PTS)";
-                    this.labelGameEdition.Text = "Bethesda\n(PTS)";
-                    break;
-                case GameEdition.MSStore:
-                    this.pictureBoxButtonGameEdition.SetImages(
-                        GameInstance.Get128pxBitmap(GameEdition.MSStore),
-                        GameInstance.Get128pxHoverBitmap(GameEdition.MSStore)
-                    );
-                    this.toolStripStatusLabelEditionText.Text = "Xbox / Microsoft Store";
-                    this.labelGameEdition.Text = "Xbox";
-                    break;
-                default:
-                    this.pictureBoxButtonGameEdition.SetImages(
-                        GameInstance.Get128pxBitmap(GameEdition.Unknown),
-                        GameInstance.Get128pxHoverBitmap(GameEdition.Unknown)
-                    );
-                    this.toolStripStatusLabelEditionText.Text = Localization.GetString("unknown");
-                    this.labelGameEdition.Text = Localization.GetString("unknown");
-                    break;
-            }
+            this.pictureBoxButtonGameEdition.SetImages(
+                e.ActiveGameInstance.Get128pxBitmap(),
+                e.ActiveGameInstance.Get128pxHoverBitmap()
+            );
+
+            // Change caption
+            this.toolStripStatusLabelEditionText.Text = e.ActiveGameInstance.GetCaption();
+            this.labelGameEdition.Text = e.ActiveGameInstance.GetCaption();
 
             LoadAccountProfile();
             LoadCustomTab();
@@ -1171,11 +1128,6 @@ namespace Fo76ini
         private void backgroundWorkerDownloadRTF_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs ev)
         {
             this.richTextBoxWhatsNew.Rtf = (string)ev.Result;
-        }
-
-        private void pictureBoxButtonUpdate_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

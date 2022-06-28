@@ -40,7 +40,7 @@ namespace Fo76ini.Forms.FormWelcome
                 case GameEdition.SteamPTS:
                     this.radioButtonEditionSteamPTS.Checked = true;
                     break;
-                case GameEdition.MSStore:
+                case GameEdition.Xbox:
                     this.radioButtonEditionMSStore.Checked = true;
                     break;
                 default:
@@ -86,8 +86,8 @@ namespace Fo76ini.Forms.FormWelcome
 
         private void radioButtonEditionMSStore_CheckedChanged(object sender, EventArgs e)
         {
-            ProfileManager.SelectedGame.Edition = GameEdition.MSStore;
-            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.MSStore);
+            ProfileManager.SelectedGame.Edition = GameEdition.Xbox;
+            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.Xbox);
             ProfileManager.SelectedGame.Title = "Microsoft Store";
         }
 

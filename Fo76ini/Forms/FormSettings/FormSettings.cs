@@ -172,7 +172,7 @@ namespace Fo76ini.Forms.FormSettings
                         case GameEdition.SteamPTS:
                             this.radioButtonEditionSteamPTS.Checked = true;
                             break;
-                        case GameEdition.MSStore:
+                        case GameEdition.Xbox:
                             this.radioButtonEditionMSStore.Checked = true;
                             break;
                         default:
@@ -189,7 +189,7 @@ namespace Fo76ini.Forms.FormSettings
                     this.textBoxParameters.Text = game.ExecParameters;
                     this.textBoxLaunchURL.Text = game.LauncherURL;
 
-                    this.labelLaunchOptionMSStoreNotice.Visible = game.Edition == GameEdition.MSStore;
+                    this.labelLaunchOptionMSStoreNotice.Visible = game.Edition == GameEdition.Xbox;
                 }
             }
 
@@ -206,7 +206,7 @@ namespace Fo76ini.Forms.FormSettings
                 case GameEdition.Steam:
                 case GameEdition.SteamPTS:
                     return 2;
-                case GameEdition.MSStore:
+                case GameEdition.Xbox:
                     return 3;
                 default:
                     return 0;
@@ -269,8 +269,8 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (UpdatingUI)
                 return;
-            ProfileManager.SelectedGame.Edition = GameEdition.MSStore;
-            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.MSStore);
+            ProfileManager.SelectedGame.Edition = GameEdition.Xbox;
+            ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.Xbox);
             UpdateGamesTab();
         }
 

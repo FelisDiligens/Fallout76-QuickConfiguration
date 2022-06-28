@@ -4338,11 +4338,11 @@
             this.labelGameEdition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelGameEdition.BackColor = System.Drawing.Color.Black;
             this.labelGameEdition.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelGameEdition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGameEdition.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGameEdition.ForeColor = System.Drawing.Color.White;
             this.labelGameEdition.Location = new System.Drawing.Point(0, 405);
             this.labelGameEdition.Name = "labelGameEdition";
-            this.labelGameEdition.Size = new System.Drawing.Size(73, 36);
+            this.labelGameEdition.Size = new System.Drawing.Size(73, 59);
             this.labelGameEdition.TabIndex = 22;
             this.labelGameEdition.Text = "Unknown";
             this.labelGameEdition.TextAlign = System.Drawing.ContentAlignment.TopCenter;
