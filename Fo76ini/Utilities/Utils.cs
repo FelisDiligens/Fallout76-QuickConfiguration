@@ -25,7 +25,7 @@ namespace Fo76ini.Utilities
         {
             get
             {
-                string path = Path.GetFullPath(IniFiles.Config.GetString("Preferences", "sSevenZipPath", DefaultSevenZipPath));
+                string path = Path.GetFullPath(Configuration.SevenZipPath);
                 if (File.Exists(path))
                     return path;
                 else
