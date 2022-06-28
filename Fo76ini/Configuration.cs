@@ -335,7 +335,7 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Config.GetString("Preferences", "sSevenZipPath", Utils.DefaultSevenZipPath);
+                return IniFiles.Config.GetString("Preferences", "sSevenZipPath", SevenZip.DefaultExecPath);
             }
             set
             {

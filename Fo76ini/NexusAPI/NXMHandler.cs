@@ -1,11 +1,7 @@
-﻿using Fo76ini.Interface;
-using Fo76ini.Utilities;
+﻿using Fo76ini.Utilities;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fo76ini.NexusAPI

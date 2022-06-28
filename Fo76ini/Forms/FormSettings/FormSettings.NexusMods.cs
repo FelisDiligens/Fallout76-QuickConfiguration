@@ -3,13 +3,9 @@ using Fo76ini.NexusAPI;
 using Fo76ini.Properties;
 using Fo76ini.Utilities;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fo76ini.Forms.FormSettings

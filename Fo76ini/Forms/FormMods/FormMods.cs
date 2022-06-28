@@ -1,22 +1,16 @@
-﻿using Fo76ini.Forms.FormTextPrompt;
-using Fo76ini.Interface;
+﻿using Fo76ini.Interface;
 using Fo76ini.Mods;
 using Fo76ini.NexusAPI;
 using Fo76ini.Profiles;
-using Fo76ini.Tweaks.ResourceLists;
 using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Media;
 using System.Threading;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace Fo76ini
 {
@@ -161,7 +155,7 @@ namespace Fo76ini
                 MsgBox.ShowID("modsArchive2Missing", MessageBoxIcon.Error);
                 return false;
             }
-            if (!File.Exists(Utils.SevenZipPath))
+            if (!File.Exists(SevenZip.ExecPath))
             {
                 MsgBox.ShowID("7ZipMissing", MessageBoxIcon.Error);
                 return false;

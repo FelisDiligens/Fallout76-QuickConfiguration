@@ -1,12 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Net;
-using System.Windows.Forms;
 using System.Xml.Linq;
-using Fo76ini.Interface;
 using Fo76ini.Utilities;
 
 namespace Fo76ini.NexusAPI

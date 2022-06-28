@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Fo76ini.Profiles
@@ -37,6 +35,9 @@ namespace Fo76ini.Profiles
             }
         }
 
+        /// <summary>
+        /// Raises the ProfileChanged event.
+        /// </summary>
         public static void Feedback()
         {
             if (ProfileChanged != null)

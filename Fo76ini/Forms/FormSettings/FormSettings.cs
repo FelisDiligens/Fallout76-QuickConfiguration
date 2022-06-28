@@ -2,19 +2,12 @@
 using Fo76ini.Interface;
 using Fo76ini.NexusAPI;
 using Fo76ini.Profiles;
-using Fo76ini.Properties;
 using Fo76ini.Tweaks;
 using Fo76ini.Utilities;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fo76ini.Forms.FormSettings
@@ -649,7 +642,7 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (UpdatingUI)
                 return;
-            this.openFileDialogSevenZipPath.FileName = Utils.DefaultSevenZipPath;
+            this.openFileDialogSevenZipPath.FileName = SevenZip.DefaultExecPath;
             if (this.openFileDialogSevenZipPath.ShowDialog() == DialogResult.OK)
             {
                 string path = this.openFileDialogSevenZipPath.FileName;

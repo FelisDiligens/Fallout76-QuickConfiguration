@@ -1,13 +1,4 @@
-﻿using Fo76ini.Interface;
-using Fo76ini.Profiles;
-using System;
-using System.ComponentModel;
-using System.IO;
-using System.Net;
-using System.Text;
-using System.Windows.Forms;
-
-namespace Fo76ini
+﻿namespace Fo76ini
 {
     partial class FormMain
     {

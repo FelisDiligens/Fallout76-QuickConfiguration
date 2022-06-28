@@ -1,5 +1,4 @@
-﻿using Fo76ini.Interface;
-using Fo76ini.NexusAPI;
+﻿using Fo76ini.NexusAPI;
 using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace Fo76ini.Mods
 {
@@ -330,8 +328,8 @@ namespace Fo76ini.Mods
                 Archive2.Extract(filePath, destinationPath);
 
             // Use 7-Zip (7za.exe) to extract:
-            else if (Utils.SevenZipSupportedFileTypes.Contains(fileExtension.ToLower()))
-                Utils.ExtractArchive(filePath, destinationPath);
+            else if (SevenZip.SupportedFileTypes.Contains(fileExtension.ToLower()))
+                SevenZip.ExtractArchive(filePath, destinationPath);
 
             // Not supported:
             else

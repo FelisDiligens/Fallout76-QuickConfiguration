@@ -1,8 +1,6 @@
 ﻿using Fo76ini.Interface;
 using Fo76ini.Properties;
 using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;

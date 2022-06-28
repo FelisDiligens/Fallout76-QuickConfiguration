@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -17,32 +16,6 @@ namespace Fo76ini.Utilities
 {
     public static class Utils
     {
-        public static CultureInfo enUS = CultureInfo.CreateSpecificCulture("en-US");
-
-        public static readonly string DefaultSevenZipPath = ".\\7z\\7z.exe";
-
-        public static string SevenZipPath
-        {
-            get
-            {
-                string path = Path.GetFullPath(Configuration.SevenZipPath);
-                if (File.Exists(path))
-                    return path;
-                else
-                    return Path.Combine(Shared.AppInstallationFolder, "7z\\7z.exe");
-            }
-        }
-
-        public static readonly string[] SevenZipSupportedFileTypes = new string[] {
-            ".7z",
-            ".zip",
-            ".rar",
-            ".tar",
-            ".xz",
-            ".gz",
-            ".bz2"
-        };
-
         /// <summary>
         /// Returns a path relative to "workingDirectory".
         /// 
@@ -278,7 +251,6 @@ namespace Fo76ini.Utilities
         }
 
         // https://stackoverflow.com/questions/281640/how-do-i-get-a-human-readable-file-size-in-bytes-abbreviation-using-net
-        // Copy-paste because, I'm lazy. Don't jugde me! :P
         /// <summary>
         /// Formats size in bytes into a string.
         /// </summary>
@@ -371,25 +343,6 @@ namespace Fo76ini.Utilities
             Process.Start(url);
         }
 
-        public static void ExtractArchive(string sourceArchive, string destination)
-        {
-            if (!File.Exists(Utils.SevenZipPath))
-                throw new FileNotFoundException("7z\\7z.exe could not be found.");
-
-            if (!Utils.SevenZipSupportedFileTypes.Contains(Path.GetExtension(sourceArchive).ToLower()))
-                throw new NotSupportedException($"{Path.GetExtension(sourceArchive)} archives are not supported.");
-
-            ProcessStartInfo proc = new ProcessStartInfo();
-            proc.WindowStyle = ProcessWindowStyle.Hidden;
-            proc.FileName = Utils.SevenZipPath;
-            proc.Arguments = string.Format("x \"{0}\" -y -o\"{1}\"", sourceArchive, destination);
-            Process x = Process.Start(proc);
-            x.WaitForExit();
-
-            if (!Directory.Exists(destination) || Directory.EnumerateFileSystemEntries(destination).Count() == 0)
-                throw new FileNotFoundException($"Something went wrong:\n{x.StandardOutput.ReadToEnd()}");
-        }
-
         public static bool IsDirectoryEmpty(string path)
         {
             // https://stackoverflow.com/questions/755574/how-to-quickly-check-if-folder-is-empty-net
@@ -404,17 +357,16 @@ namespace Fo76ini.Utilities
          * https://docs.microsoft.com/de-de/windows/win32/api/winuser/nf-winuser-enumdisplaysettingsa?redirectedfrom=MSDN
          */
 
-                [DllImport("user32.dll")]
+        [DllImport("user32.dll")]
         private static extern bool EnumDisplaySettings(
               string deviceName, int modeNum, ref DEVMODE devMode);
-        private const int ENUM_CURRENT_SETTINGS = -1;
 
+        private const int ENUM_CURRENT_SETTINGS = -1;
         private const int ENUM_REGISTRY_SETTINGS = -2;
 
         [StructLayout(LayoutKind.Sequential)]
         private struct DEVMODE
         {
-
             private const int CCHDEVICENAME = 0x20;
             private const int CCHFORMNAME = 0x20;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 0x20)]
@@ -449,7 +401,6 @@ namespace Fo76ini.Utilities
             public int dmReserved2;
             public int dmPanningWidth;
             public int dmPanningHeight;
-
         }
 
         private static DEVMODE GetDisplayInfo()
@@ -475,52 +426,52 @@ namespace Fo76ini.Utilities
 
         public static float ToFloat(string num)
         {
-            return Convert.ToSingle(Convert.ToDecimal(num, enUS));
+            return Convert.ToSingle(Convert.ToDecimal(num, Shared.en_US));
         }
 
         public static uint ToUInt(string num)
         {
-            return Convert.ToUInt32(Convert.ToDecimal(num, enUS));
+            return Convert.ToUInt32(Convert.ToDecimal(num, Shared.en_US));
         }
 
         public static int ToInt(string num)
         {
-            //return Convert.ToInt32(num, enUS); // "0.0" => String.FormatException
-            return Convert.ToInt32(Convert.ToDecimal(num, enUS)); // "0.0" => (int)0
+            //return Convert.ToInt32(num, Shared.en_US); // "0.0" => String.FormatException
+            return Convert.ToInt32(Convert.ToDecimal(num, Shared.en_US)); // "0.0" => (int)0
         }
 
         public static long ToLong(string num)
         {
-            return Convert.ToInt64(Convert.ToDecimal(num, enUS)); // "0.0" => (int)0
+            return Convert.ToInt64(Convert.ToDecimal(num, Shared.en_US)); // "0.0" => (int)0
         }
 
         public static string ToString(float num)
         {
-            Thread.CurrentThread.CurrentCulture = enUS;
+            Thread.CurrentThread.CurrentCulture = Shared.en_US;
             return num.ToString("F99").TrimEnd('0').TrimEnd('.');
         }
 
         public static string ToString(double num)
         {
-            Thread.CurrentThread.CurrentCulture = enUS;
+            Thread.CurrentThread.CurrentCulture = Shared.en_US;
             return num.ToString("F99").TrimEnd('0').TrimEnd('.');
         }
 
         public static string ToString(long num)
         {
-            Thread.CurrentThread.CurrentCulture = enUS;
+            Thread.CurrentThread.CurrentCulture = Shared.en_US;
             return num.ToString("D");
         }
 
         public static string ToString(int num)
         {
-            Thread.CurrentThread.CurrentCulture = enUS;
+            Thread.CurrentThread.CurrentCulture = Shared.en_US;
             return num.ToString("D");
         }
 
         public static string ToString(uint num)
         {
-            Thread.CurrentThread.CurrentCulture = enUS;
+            Thread.CurrentThread.CurrentCulture = Shared.en_US;
             return num.ToString("D");
         }
 

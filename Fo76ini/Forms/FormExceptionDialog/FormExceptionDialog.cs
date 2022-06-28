@@ -1,8 +1,6 @@
-﻿using Fo76ini.NexusAPI;
-using Fo76ini.Profiles;
+﻿using Fo76ini.Profiles;
 using Fo76ini.Utilities;
 using System;
-using System.IO;
 using System.Windows.Forms;
 
 namespace Fo76ini.Forms.ExceptionDialog

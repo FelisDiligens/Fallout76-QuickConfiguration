@@ -4,6 +4,10 @@ using System.IO;
 
 namespace Fo76ini.Utilities
 {
+    /// <summary>
+    /// Interface for the Archive2.exe
+    /// Create, extract, and explore *.BA2 archvies.
+    /// </summary>
     public class Archive2
     {
         public static Log LogFile;

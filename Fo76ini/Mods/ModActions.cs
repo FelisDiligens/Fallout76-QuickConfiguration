@@ -298,7 +298,7 @@ namespace Fo76ini.Mods
                 string fileExtension = Path.GetExtension(filePath).ToLower().Trim();
 
                 // Extract archives within folder:
-                if (fileExtension == ".ba2" || Utils.SevenZipSupportedFileTypes.Contains(fileExtension))
+                if (fileExtension == ".ba2" || SevenZip.SupportedFileTypes.Contains(fileExtension))
                 {
                     ModInstallations.ExtractArchive(filePath, folderPath, ProgressChanged);
                     File.Delete(filePath);
