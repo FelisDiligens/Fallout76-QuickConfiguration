@@ -9,10 +9,16 @@ using System.Windows.Forms;
 
 namespace Fo76ini.Controls
 {
+    /// <summary>
+    /// Uses a PictureBox as a button.
+    /// Makes use of two images (one for hover over) to make a fancy button.
+    /// </summary>
     public class PictureBoxButton : UserControl
     {
+        #region Designer Properties
+
         [Category("Custom")]
-        [Description("The button image")]
+        [Description("The image shown when the button is in a normal/untouched state.")]
         public Image Image { get; set; }
 
         [Category("Custom")]
@@ -20,6 +26,7 @@ namespace Fo76ini.Controls
         public Image ImageHover { get; set; }
 
         [Category("Custom")]
+        [Description("The text shown in the center of the button.")]
         public String ButtonText { get; set; }
 
         private Font _buttonTextFont = DefaultFont; //  new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
@@ -38,18 +45,24 @@ namespace Fo76ini.Controls
         [Category("Custom")]
         public Color ButtonTextColor { get; set; }
 
+        [Category("Custom")]
+        [DefaultValue(PictureBoxSizeMode.CenterImage)]
+        public PictureBoxSizeMode SizeMode { get; set; }
+
+        #endregion
+
         private PictureBox pictureBox;
 
         public PictureBoxButton()
         {
             pictureBox = new PictureBox();
-            pictureBox.Size = this.Size;
             pictureBox.Anchor =
                 AnchorStyles.Top |
                 AnchorStyles.Left |
                 AnchorStyles.Right |
                 AnchorStyles.Bottom;
-            pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox.BackColor = Color.Transparent;
+            this.BackColor = Color.Transparent;
 
             // Necessary to make the click event work...
             pictureBox.Click += (object sender, EventArgs e) => {
@@ -59,14 +72,24 @@ namespace Fo76ini.Controls
             this.Controls.Add(pictureBox);
         }
 
+        public void SetImages(Image image, Image imageHover)
+        {
+            Image = image;
+            ImageHover = imageHover;
+            pictureBox.Image = Image;
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             pictureBox.Image = Image;
+            pictureBox.Size = this.Size;
+            pictureBox.SizeMode = SizeMode;
 
             if (!this.DesignMode)
             {
                 pictureBox.Paint += new PaintEventHandler((paintSender, paintEventArgs) =>
                 {
+                    // Draw the text:
                     paintEventArgs.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
                     SizeF textSize = paintEventArgs.Graphics.MeasureString(ButtonText, ButtonTextFont);
@@ -79,12 +102,14 @@ namespace Fo76ini.Controls
 
                 pictureBox.MouseEnter += new EventHandler((mouseSender, mouseEventArgs) =>
                 {
+                    // Set hover image:
                     pictureBox.Image = ImageHover;
                     pictureBox.Cursor = Cursors.Hand;
                 });
 
                 pictureBox.MouseLeave += new EventHandler((mouseSender, mouseEventArgs) =>
                 {
+                    // Set normal image:
                     pictureBox.Image = Image;
                     pictureBox.Cursor = Cursors.Default;
                 });

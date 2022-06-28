@@ -284,8 +284,6 @@ namespace Fo76ini
             this.FormClosing += this.FormMain_FormClosing;
             this.Shown += this.FormMain_Shown;
             this.KeyDown += this.FormMain_KeyDown;
-            this.pictureBoxGameEdition.MouseEnter += this.pictureBoxGameEdition_MouseEnter;
-            this.pictureBoxGameEdition.MouseLeave += this.pictureBoxGameEdition_MouseLeave;
 
             this.backgroundWorkerGetLatestVersion.RunWorkerCompleted += backgroundWorkerGetLatestVersion_RunWorkerCompleted;
 
@@ -412,32 +410,50 @@ namespace Fo76ini
             switch (e.ActiveGameInstance.Edition)
             {
                 case GameEdition.Steam:
-                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.Steam);
+                    this.pictureBoxButtonGameEdition.SetImages(
+                        GameInstance.Get128pxBitmap(GameEdition.Steam),
+                        GameInstance.Get128pxHoverBitmap(GameEdition.Steam)
+                    );
                     this.toolStripStatusLabelEditionText.Text = "Steam";
                     this.labelGameEdition.Text = "Steam";
                     break;
                 case GameEdition.SteamPTS:
-                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.SteamPTS);
+                    this.pictureBoxButtonGameEdition.SetImages(
+                        GameInstance.Get128pxBitmap(GameEdition.SteamPTS),
+                        GameInstance.Get128pxHoverBitmap(GameEdition.SteamPTS)
+                    );
                     this.toolStripStatusLabelEditionText.Text = "Steam (PTS)";
                     this.labelGameEdition.Text = "Steam\n(PTS)";
                     break;
                 case GameEdition.BethesdaNet:
-                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.BethesdaNet);
+                    this.pictureBoxButtonGameEdition.SetImages(
+                        GameInstance.Get128pxBitmap(GameEdition.BethesdaNet),
+                        GameInstance.Get128pxHoverBitmap(GameEdition.BethesdaNet)
+                    );
                     this.toolStripStatusLabelEditionText.Text = "Bethesda.net";
                     this.labelGameEdition.Text = "Bethesda";
                     break;
                 case GameEdition.BethesdaNetPTS:
-                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.BethesdaNetPTS);
+                    this.pictureBoxButtonGameEdition.SetImages(
+                        GameInstance.Get128pxBitmap(GameEdition.BethesdaNetPTS),
+                        GameInstance.Get128pxHoverBitmap(GameEdition.BethesdaNetPTS)
+                    );
                     this.toolStripStatusLabelEditionText.Text = "Bethesda.net (PTS)";
                     this.labelGameEdition.Text = "Bethesda\n(PTS)";
                     break;
                 case GameEdition.MSStore:
-                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.MSStore);
+                    this.pictureBoxButtonGameEdition.SetImages(
+                        GameInstance.Get128pxBitmap(GameEdition.MSStore),
+                        GameInstance.Get128pxHoverBitmap(GameEdition.MSStore)
+                    );
                     this.toolStripStatusLabelEditionText.Text = "Xbox / Microsoft Store";
                     this.labelGameEdition.Text = "Xbox";
                     break;
                 default:
-                    this.pictureBoxGameEdition.Image = GameInstance.Get128pxBitmap(GameEdition.Unknown);
+                    this.pictureBoxButtonGameEdition.SetImages(
+                        GameInstance.Get128pxBitmap(GameEdition.Unknown),
+                        GameInstance.Get128pxHoverBitmap(GameEdition.Unknown)
+                    );
                     this.toolStripStatusLabelEditionText.Text = Localization.GetString("unknown");
                     this.labelGameEdition.Text = Localization.GetString("unknown");
                     break;
@@ -784,16 +800,6 @@ namespace Fo76ini
         private void showProfiles_OnClick(object sender, EventArgs e)
         {
             formSettings.ShowProfiles();
-        }
-
-        private void pictureBoxGameEdition_MouseEnter(object sender, EventArgs e)
-        {
-            this.pictureBoxGameEdition.Image = this.game.Get128pxHoverBitmap();
-        }
-
-        private void pictureBoxGameEdition_MouseLeave(object sender, EventArgs e)
-        {
-            this.pictureBoxGameEdition.Image = this.game.Get128pxBitmap();
         }
 
         #endregion
