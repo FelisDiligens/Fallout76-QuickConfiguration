@@ -349,7 +349,7 @@ namespace Fo76ini
                     if (xmlTweakDescriptions != null)
                         LinkedTweaks.DeserializeTweakDescriptionList(xmlTweakDescriptions);
                     if (form.ToolTip != null)
-                        LinkedTweaks.SetToolTips(); // TODO: No need to call it per form anymore
+                        LinkedTweaks.LoadToolTips(); // TODO: No need to call it per form anymore
                 }
 
                 // Call event handler:

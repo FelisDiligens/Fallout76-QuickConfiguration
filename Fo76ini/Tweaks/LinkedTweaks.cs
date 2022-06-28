@@ -15,26 +15,16 @@ namespace Fo76ini.Tweaks
     /// </summary>
     public static class LinkedTweaks
     {
-        private struct LinkedControl
-        {
-            public Control Control;
-            public ToolTip Tip;
-        }
-
-        private static Dictionary<LinkedControl, ITweakInfo> LinkedTweakInfos = new Dictionary<LinkedControl, ITweakInfo>();
-        public static Dictionary<string, string> TranslatedDescriptions = new Dictionary<string, string>();
-        private static List<Action> SetValueActions = new List<Action>();
+        /*
+         **************************************************************
+         * Load values and tooltips
+         **************************************************************
+         */
 
         /// <summary>
-        /// Gets a list of names of control elements that have been linked to a tweak info.
+        /// Contains all Actions that set the values of the linked controls.
         /// </summary>
-        public static List<string> GetListOfLinkedControlNames()
-        {
-            return LinkedTweakInfos.Keys
-                .Select(x => x.Control.Name)
-                .Where(x => x != "")
-                .ToList();
-        }
+        private static List<Action> SetValueActions = new List<Action>();
 
         /// <summary>
         /// (Re)sets all control values.
@@ -45,7 +35,52 @@ namespace Fo76ini.Tweaks
                 action();
         }
 
-        public static string BuildToolTipText(string description, string affectedFiles, string affectedValues)
+        /// <summary>
+        /// SetToolTip on all linked controls.
+        /// </summary>
+        public static void LoadToolTips()
+        {
+            foreach (var pair in LinkedTweakInfos)
+                LoadToolTip(pair.Value, pair.Key);
+        }
+
+
+
+        /*
+         **************************************************************
+         * Link ToolTip (and make them translatable)
+         **************************************************************
+         */
+
+        private struct LinkedControl
+        {
+            public Control Control;
+            public ToolTip Tip;
+        }
+
+        private class PopupInfo : ITweakInfo
+        {
+            public string Identifier { get; set; }
+
+            public string Description { get; set; }
+
+            public string AffectedFiles => "";
+
+            public string AffectedValues => "";
+        }
+
+        /// <summary>
+        /// (Control, ToolTip) => Tweak.(Identifier, Description, AffectedFiles, AffectedValues)
+        /// </summary>
+        private static Dictionary<LinkedControl, ITweakInfo> LinkedTweakInfos = new Dictionary<LinkedControl, ITweakInfo>();
+
+        /// <summary>
+        /// Contains all translated descriptions of tweaks. They'll popup in ToolTip.
+        /// (Tweak.)Identifier => TranslatedDescription
+        /// </summary>
+        public static Dictionary<string, string> TranslatedDescriptions = new Dictionary<string, string>();
+
+        private static string BuildToolTipText(string description, string affectedFiles, string affectedValues)
         {
             string toolTipText = "";
 
@@ -67,24 +102,16 @@ namespace Fo76ini.Tweaks
             return toolTipText;
         }
 
-        private static void SetToolTip(ITweakInfo info, LinkedControl linkedControl)
+        private static void LoadToolTip(ITweakInfo info, LinkedControl linkedControl)
         {
             string description = info.Description;
             TranslatedDescriptions.TryGetValue(info.Identifier, out description);
             linkedControl.Tip.SetToolTip(linkedControl.Control, BuildToolTipText(description, info.AffectedFiles, info.AffectedValues));
         }
 
-        public static void SetToolTips()
-        {
-            foreach (var pair in LinkedTweakInfos)
-                SetToolTip(pair.Value, pair.Key);
-        }
-
         /// <summary>
         /// Link a tweak to a control's tooltip.
         /// </summary>
-        /// <param name="control"></param>
-        /// <param name="tweakInfo"></param>
         public static void LinkInfo(Control control, ToolTip tip, ITweakInfo tweakInfo)
         {
             LinkedControl linkedControl = new LinkedControl();
@@ -96,6 +123,32 @@ namespace Fo76ini.Tweaks
                 TranslatedDescriptions[tweakInfo.Identifier] = tweakInfo.Description;
         }
 
+        /// <summary>
+        /// Link a description to a control's tooltip.
+        /// </summary>
+        /// <param name="id">The ToolTip text identifier</param>
+        /// <param name="desc">The ToolTip text</param>
+        public static void LinkInfo(Control control, ToolTip tip, String id, String desc)
+        {
+            PopupInfo tweakInfo = new PopupInfo();
+            tweakInfo.Identifier = id;
+            tweakInfo.Description = desc;
+
+            LinkInfo(control, tip, tweakInfo);
+        }
+
+
+        /*
+         **************************************************************
+         * ToolTip: Interacting with the Translation class
+         **************************************************************
+         */
+
+        /// <summary>
+        /// Serializes static TranslatedDescriptions to XML.
+        /// This is for the Translation class.
+        /// </summary>
+        /// <returns></returns>
         public static XElement SerializeTweakDescriptionList()
         {
             XElement parent = new XElement("TweakDescriptions");
@@ -105,6 +158,11 @@ namespace Fo76ini.Tweaks
             return parent;
         }
 
+        /// <summary>
+        /// Deserializes XML and saves all descriptions to static TranslatedDescriptions.
+        /// This is for the Translation class.
+        /// </summary>
+        /// <param name="xmlDescriptionList"></param>
         public static void DeserializeTweakDescriptionList(XElement xmlDescriptionList)
         {
             foreach (XElement xmlDescription in xmlDescriptionList.Descendants("Description"))
@@ -115,6 +173,19 @@ namespace Fo76ini.Tweaks
             }
         }
 
+        /// <summary>
+        /// Gets a list of names of control elements that have been linked to a tweak info.
+        /// This is primarily for the Translation class.
+        /// </summary>
+        public static List<string> GetListOfLinkedControlNames()
+        {
+            return LinkedTweakInfos.Keys
+                .Select(x => x.Control.Name)
+                .Where(x => x != "")
+                .ToList();
+        }
+
+
 
         /*
          **************************************************************
@@ -124,6 +195,13 @@ namespace Fo76ini.Tweaks
 
         // Link slider to num and vice-versa
 
+        /// <summary>
+        /// Links the value of a TrackBar to a value of NumericUpDown and vice-versa.
+        /// Whenever the value of one changes, the other gets changed too.
+        /// </summary>
+        /// <param name="slider"></param>
+        /// <param name="num"></param>
+        /// <param name="numToSliderRatio">Because Trackbar can only have integers, you can use numToSliderRatio to work around it. slider.Value gets multiplied by numToSliderRatio and num.Value gets divided by numToSliderRatio.</param>
         public static void LinkSlider(TrackBar slider, NumericUpDown num, double numToSliderRatio)
         {
             LinkSlider(slider, num, numToSliderRatio, false);
