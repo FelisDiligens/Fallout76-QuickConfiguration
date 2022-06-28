@@ -172,7 +172,6 @@
     </Compile>
     <Compile Include="Ini\IniParsingException.cs" />
     <Compile Include="Interface\Versioning.cs" />
-    <Compile Include="Mods\LegacyManagedMods.cs" />
     <Compile Include="NexusAPI\NMMod.cs" />
     <Compile Include="NexusAPI\NMUserProfile.cs" />
     <Compile Include="NexusAPI\NXMHandler.cs" />

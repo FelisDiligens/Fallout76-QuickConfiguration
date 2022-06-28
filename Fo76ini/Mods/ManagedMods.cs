@@ -224,7 +224,7 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
-        /// Serializes the list of mods and saves it to managed.xml. Also saves resource list.
+        /// Serializes the list of mods and saves it to *.xml. Also saves resource list.
         /// </summary>
         public void Save()
         {
@@ -233,7 +233,6 @@ namespace Fo76ini.Mods
 
             this.Serialize(this.Mods).Save(XMLPath);
             SaveResources();
-            LegacyManagedMods.GenerateLegacyXML(this);
         }
 
         /// <summary>

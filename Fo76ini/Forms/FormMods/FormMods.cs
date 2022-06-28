@@ -118,8 +118,7 @@ namespace Fo76ini
                 UpdateUI();
                 TriggerNWModeUpdated();
 
-                if (!LegacyManagedMods.CheckLegacy(game.GamePath))
-                    Mods.SaveResources();
+                Mods.SaveResources();
             }
             catch (Exception exc)
             {
@@ -140,32 +139,6 @@ namespace Fo76ini
                 this.DisableUI();
                 this.preventClosing = false;
             }
-        }
-
-        private bool ConvertLegacyConditional()
-        {
-            if (LegacyManagedMods.CheckLegacy(game.GamePath))
-            {
-                DialogResult resp = MsgBox.ShowID("modsLegacyFormatDetected", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resp == DialogResult.No)
-                    return false;
-                else if (resp == DialogResult.Yes)
-                    ConvertLegacyThreaded();
-            }
-            return true;
-        }
-
-        private void ConvertLegacyThreaded()
-        {
-            RunThreaded(() => {
-                ShowLoadingUI();
-            }, () => {
-                LegacyManagedMods.ConvertLegacy(Mods, game.Edition, UpdateProgress);
-                return true;
-            }, (success) => {
-                UpdateUI();
-                EnableUI();
-            });
         }
 
         /// <summary>
@@ -210,12 +183,6 @@ namespace Fo76ini
 
             Show();
             Focus();
-
-            if (!ConvertLegacyConditional())
-            {
-                Hide();
-                return;
-            }
         }
 
         /// <summary>
