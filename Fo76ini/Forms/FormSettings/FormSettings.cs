@@ -4,9 +4,6 @@ using Fo76ini.NexusAPI;
 using Fo76ini.Profiles;
 using Fo76ini.Properties;
 using Fo76ini.Tweaks;
-using Fo76ini.Tweaks.Config;
-using Fo76ini.Tweaks.Inis;
-using Fo76ini.Tweaks.NuclearWinterMode;
 using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
@@ -81,7 +78,7 @@ namespace Fo76ini.Forms.FormSettings
             LinkedTweaks.LoadValues();
             UpdateGamesTab();
             RefreshNMUI();
-            if (IniFiles.Config.GetBool("NexusMods", "bAutoUpdateProfile", true))
+            if (Configuration.NexusMods.AutoUpdateProfile)
                 UpdateNMProfile();
             this.checkBoxHandleNXMLinks.Checked = NXMHandler.IsRegistered();
         }
@@ -106,9 +103,9 @@ namespace Fo76ini.Forms.FormSettings
         {
             this.tabControl1.SelectedTab = this.tabPageGeneral;
             // Update the text fields for Archive2 and 7z
-            this.textBoxArchiveTwoPath.Text = archiveTwoPathTweak.GetValue();
-            this.textBoxSevenZipPath.Text = sevenZipPathTweak.GetValue();
-            this.textBoxDownloadsPath.Text = downloadPathTweak.GetValue();
+            this.textBoxArchiveTwoPath.Text = Configuration.Archive2Path;
+            this.textBoxSevenZipPath.Text = Configuration.SevenZipPath;
+            this.textBoxDownloadsPath.Text = Configuration.DownloadPath;
             this.ShowDialog();
         }
 
@@ -615,19 +612,19 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (UpdatingUI)
                 return;
-            archiveTwoPathTweak.SetValue(this.textBoxArchiveTwoPath.Text);
+            Configuration.Archive2Path = this.textBoxArchiveTwoPath.Text;
         }
 
         private void buttonPickArchiveTwoPath_Click(object sender, EventArgs e)
         {
             if (UpdatingUI)
                 return;
-            this.openFileDialogArchiveTwoPath.FileName = archiveTwoPathTweak.DefaultValue;
+            this.openFileDialogArchiveTwoPath.FileName = Archive2.DefaultArchive2Path;
             if (this.openFileDialogArchiveTwoPath.ShowDialog() == DialogResult.OK)
             {
                 string path = this.openFileDialogArchiveTwoPath.FileName;
                 this.textBoxArchiveTwoPath.Text = path;
-                archiveTwoPathTweak.SetValue(this.textBoxArchiveTwoPath.Text);
+                Configuration.Archive2Path = this.textBoxArchiveTwoPath.Text;
             }
         }
 
@@ -635,19 +632,19 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (UpdatingUI)
                 return;
-            sevenZipPathTweak.SetValue(this.textBoxSevenZipPath.Text);
+            Configuration.SevenZipPath = this.textBoxSevenZipPath.Text;
         }
 
         private void buttonPickSevenZipPath_Click(object sender, EventArgs e)
         {
             if (UpdatingUI)
                 return;
-            this.openFileDialogSevenZipPath.FileName = sevenZipPathTweak.DefaultValue;
+            this.openFileDialogSevenZipPath.FileName = Utils.DefaultSevenZipPath;
             if (this.openFileDialogSevenZipPath.ShowDialog() == DialogResult.OK)
             {
                 string path = this.openFileDialogSevenZipPath.FileName;
                 this.textBoxSevenZipPath.Text = path;
-                sevenZipPathTweak.SetValue(this.textBoxSevenZipPath.Text);
+                Configuration.SevenZipPath = this.textBoxSevenZipPath.Text;
             }
         }
 
@@ -655,19 +652,18 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (UpdatingUI)
                 return;
-            downloadPathTweak.SetValue(this.textBoxDownloadsPath.Text);
         }
 
         private void buttonPickDownloadsPath_Click(object sender, EventArgs e)
         {
             if (UpdatingUI)
                 return;
-            this.folderBrowserDialog.SelectedPath = downloadPathTweak.DefaultValue;
+            this.folderBrowserDialog.SelectedPath = Configuration.DefaultDownloadPath;
             if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 string path = this.folderBrowserDialog.SelectedPath;
                 this.textBoxDownloadsPath.Text = path;
-                downloadPathTweak.SetValue(this.textBoxDownloadsPath.Text);
+                Configuration.DownloadPath = this.textBoxDownloadsPath.Text;
             }
         }
     }

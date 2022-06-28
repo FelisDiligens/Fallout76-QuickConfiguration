@@ -160,14 +160,12 @@ namespace Fo76ini.Tweaks
 
         public static void LinkTweak(CheckBox checkBox, ITweak<bool> tweak)
         {
-            SetValueActions.Add(() => checkBox.Checked = tweak.GetValue());
-            checkBox.MouseClick += (object sender, MouseEventArgs e) => tweak.SetValue(checkBox.Checked);
+            Link(checkBox, (tweak.GetValue, tweak.SetValue));
         }
 
         public static void LinkTweakNegated(CheckBox checkBox, ITweak<bool> tweak)
         {
-            SetValueActions.Add(() => checkBox.Checked = !tweak.GetValue());
-            checkBox.MouseClick += (object sender, MouseEventArgs e) => tweak.SetValue(!checkBox.Checked);
+            LinkNegated(checkBox, (tweak.GetValue, tweak.SetValue));
         }
 
         public static void LinkTweak(RadioButton radioButtonTrue, RadioButton radioButtonFalse, ITweak<bool> tweak)
@@ -324,6 +322,37 @@ namespace Fo76ini.Tweaks
 
             width.ValueChanged += sizeChanged;
             height.ValueChanged += sizeChanged;
+        }
+
+
+        /*
+         **************************************************************
+         * Link arbitrary properties to control elements
+         **************************************************************
+         */
+
+        public static void LinkProperty(CheckBox checkBox, Accessor<bool> prop)
+        {
+            Link(checkBox, (prop.Get, prop.Set));
+        }
+
+
+        /*
+         **************************************************************
+         * Generic links
+         **************************************************************
+         */
+
+        public static void Link(CheckBox checkBox, (Func<bool> get, Action<bool> set) value)
+        {
+            SetValueActions.Add(() => checkBox.Checked = value.get());
+            checkBox.MouseClick += (object sender, MouseEventArgs e) => value.set(checkBox.Checked);
+        }
+
+        public static void LinkNegated(CheckBox checkBox, (Func<bool> get, Action<bool> set) value)
+        {
+            SetValueActions.Add(() => checkBox.Checked = !value.get());
+            checkBox.MouseClick += (object sender, MouseEventArgs e) => value.set(!checkBox.Checked);
         }
     }
 }

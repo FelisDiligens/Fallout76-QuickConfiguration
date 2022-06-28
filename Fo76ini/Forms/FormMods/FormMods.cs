@@ -321,19 +321,15 @@ namespace Fo76ini
 
             // Uninstall mods:
             if (!Mods.ModsDisabled &&
-                IniFiles.Config.GetBool("NuclearWinter", "bAutoDisableMods", true))
+                Configuration.NuclearWinter.AutoDisableMods)
             {
                 Mods.ModsDisabled = true;
                 this.DeployMods();
             }
 
             // Rename added *.dll files:
-            if (IniFiles.Config.GetBool("NuclearWinter", "bRenameDLLs", true))
+            if (Configuration.NuclearWinter.RenameDLLs)
                 ModDeployment.RenameAddedDLLs(Mods.GamePath);
-
-            // Backwards-compatibility:
-            IniFiles.Config.Set("NuclearWinter", "bNWMode", true);
-            IniFiles.Config.Set("Preferences", "bNWMode", true);
 
             // Save and update UI:
             Mods.Save();
@@ -351,7 +347,7 @@ namespace Fo76ini
 
             // Install mods:
             if (Mods.ModsDisabled &&
-                IniFiles.Config.GetBool("NuclearWinter", "bAutoDeployMods", true))
+                Configuration.NuclearWinter.AutoDeployMods)
             {
                 Mods.ModsDisabled = false;
                 if (Mods.Count() > 0)
@@ -360,10 +356,6 @@ namespace Fo76ini
 
             // Restore added *.dll files:
             ModDeployment.RestoreAddedDLLs(Mods.GamePath);
-
-            // Backwards-compatibility:
-            IniFiles.Config.Set("NuclearWinter", "bNWMode", false);
-            IniFiles.Config.Set("Preferences", "bNWMode", false);
 
             // Save and update UI:
             Mods.Save();
@@ -892,7 +884,6 @@ namespace Fo76ini
 
         private void InstallBulk(string[] files)
         {
-            bool unpackBA2ByDefault = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
             int i = 0;
             foreach (string filePath in files)
             {
@@ -901,7 +892,7 @@ namespace Fo76ini
                 if (Directory.Exists(longFilePath))
                     ModInstallations.InstallFolder(Mods, filePath);
                 else if (File.Exists(longFilePath))
-                    ModInstallations.InstallArchive(Mods, filePath, !unpackBA2ByDefault);
+                    ModInstallations.InstallArchive(Mods, filePath, !Configuration.Mods.UnpackBA2ByDefault);
             }
         }
 
@@ -958,7 +949,7 @@ namespace Fo76ini
             try
             {
                 bool invalidateBundledFrozenArchives = true;
-                if (IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false))
+                if (Configuration.Mods.FreezeBundledArchives)
                     invalidateBundledFrozenArchives = MsgBox.Get("modsRepackFrozenBundledArchives").Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
                 ModDeployment.Deploy(Mods, UpdateProgress, invalidateBundledFrozenArchives);
             }
@@ -1146,7 +1137,7 @@ namespace Fo76ini
                 MsgBox.ShowID("nexusModsNotLoggedIn", MessageBoxIcon.Information);
                 return;
             }
-            bool unpackBA2ByDefault = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
+            bool unpackBA2ByDefault = Configuration.Mods.UnpackBA2ByDefault;
             RunThreaded(() => {
                 ShowLoadingUI();
                 CloseSidePanel();

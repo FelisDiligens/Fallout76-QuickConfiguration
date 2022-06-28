@@ -130,7 +130,7 @@ namespace Fo76ini.NexusAPI
                         Directory.CreateDirectory(NexusMods.ThumbnailsPath);
 
                     // If user opted in:
-                    if (IniFiles.Config.GetBool("NexusMods", "bDownloadThumbnailsOnUpdate", true))
+                    if (Configuration.NexusMods.DownloadThumbnailsOnUpdate)
                     {
                         try
                         {

@@ -28,28 +28,20 @@ namespace Fo76ini
         private void LoadGallery()
         {
             // https://stackoverflow.com/questions/6481304/how-to-use-a-backgroundworker
-            //this.backgroundWorkerLoadGallery.DoWork += backgroundWorker1_DoWork;
-            //this.backgroundWorkerLoadGallery.ProgressChanged += backgroundWorker1_ProgressChanged;
             this.backgroundWorkerLoadGallery.RunWorkerCompleted += backgroundWorkerLoadGallery_RunWorkerCompleted;
             this.backgroundWorkerLoadGallery.WorkerReportsProgress = true;
-            //this.backgroundWorkerLoadGallery.WorkerSupportsCancellation = true;
 
             this.listViewScreenshots.MouseDoubleClick += listViewScreenshots_MouseDoubleClick;
             this.listViewScreenshots.MouseUp += listViewScreenshots_MouseUp;
-            //this.sliderGalleryThumbnailSize.ValueChanged += sliderGalleryThumbnailSize_ValueChanged;
 
-            this.textBoxGalleryPaths.Text = IniFiles.Config.GetString("Gallery", "sCustomPathsList", "").Replace(",", "\r\n");
-            this.checkBoxGallerySearchRecursively.Checked = IniFiles.Config.GetBool("Gallery", "bSearchDirectoriesRecursively", false);
+            this.textBoxGalleryPaths.Text = String.Join("\r\n", Configuration.Gallery.CustomPaths);
+            this.checkBoxGallerySearchRecursively.Checked = Configuration.Gallery.SearchDirsRecursively;
 
             HideGalleryOptions();
         }
 
         private void UpdateScreenShotGalleryThreaded()
         {
-            /*Thread thread = new Thread(UpdateScreenShotGallery);
-            thread.IsBackground = true;
-            thread.Start();*/
-
             this.backgroundWorkerLoadGallery.RunWorkerAsync();
         }
 
@@ -57,11 +49,6 @@ namespace Fo76ini
         {
             UpdateScreenShotGallery();
         }
-
-        /*private void backgroundWorkerLoadGallery_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        {
-            progressBar1.Value = e.ProgressPercentage;
-        }*/
 
         private void backgroundWorkerLoadGallery_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
@@ -93,39 +80,32 @@ namespace Fo76ini
                 Directory.CreateDirectory(thumbnailsPath);
 
             /*
-             * Search the game folders for screenshots:
+             * Search the game folder for screenshots:
              * C:\...\Fallout76\*.png
              */
-            string[] gamePaths = new string[] {
-                IniFiles.Config.GetString("Preferences", "sGamePathSteam", ""),
-                IniFiles.Config.GetString("Preferences", "sGamePathBethesdaNet", ""),
-                IniFiles.Config.GetString("Preferences", "sGamePathBethesdaNetPTS", "")
-            };
-            foreach (string gamePath in gamePaths)
+            string gamePath = this.game.GamePath;
+            if (Directory.Exists(gamePath))
             {
-                if (Directory.Exists(gamePath))
+                IEnumerable<string> screenshots = Directory.EnumerateFiles(gamePath, "*.png", SearchOption.TopDirectoryOnly);
+                foreach (string filePath in screenshots)
                 {
-                    IEnumerable<string> screenshots = Directory.EnumerateFiles(gamePath, "*.png", SearchOption.TopDirectoryOnly);
-                    foreach (string filePath in screenshots)
-                    {
-                        string fileName = Path.GetFileName(filePath);
-                        string thumbPath = Path.Combine(thumbnailsPath, fileName) + ".jpg";
-                        Bitmap thumbnail;
+                    string fileName = Path.GetFileName(filePath);
+                    string thumbPath = Path.Combine(thumbnailsPath, fileName) + ".jpg";
+                    Bitmap thumbnail;
 
-                        if (!File.Exists(thumbPath))
-                            thumbnail = new Bitmap(Utils.MakeThumbnail(filePath, thumbPath, true));
-                        else
-                            thumbnail = new Bitmap(thumbPath);
+                    if (!File.Exists(thumbPath))
+                        thumbnail = new Bitmap(Utils.MakeThumbnail(filePath, thumbPath, true));
+                    else
+                        thumbnail = new Bitmap(thumbPath);
 
-                        this.Invoke(() => galleryImageList.Images.Add(fileName, thumbnail));
+                    this.Invoke(() => galleryImageList.Images.Add(fileName, thumbnail));
 
-                        var item = new ListViewItem();
-                        item.Text = fileName;
-                        item.ImageKey = fileName;
-                        this.Invoke(() => this.listViewScreenshots.Items.Add(item));
+                    var item = new ListViewItem();
+                    item.Text = fileName;
+                    item.ImageKey = fileName;
+                    this.Invoke(() => this.listViewScreenshots.Items.Add(item));
 
-                        this.galleryImagePaths.Add(filePath);
-                    }
+                    this.galleryImagePaths.Add(filePath);
                 }
             }
 
@@ -151,7 +131,6 @@ namespace Fo76ini
                         thumbnailFilePath = Path.Combine(thumbnailsPath, fileName + ".jpg");
                         if (!File.Exists(thumbnailFilePath))
                             Utils.MakeThumbnail(filePath, thumbnailFilePath, true);
-                        //thumbnailFilePath = filePath;
                     }
 
                     Bitmap thumbnail = new Bitmap(thumbnailFilePath);
@@ -190,7 +169,6 @@ namespace Fo76ini
                             thumbnailFilePath = Path.Combine(thumbnailsPath, fileName + ".jpg");
                             if (!File.Exists(thumbnailFilePath))
                                 Utils.MakeThumbnail(filePath, thumbnailFilePath, true);
-                            //thumbnailFilePath = filePath;
                         }
 
                         Bitmap thumbnail = new Bitmap(thumbnailFilePath);
@@ -332,12 +310,12 @@ namespace Fo76ini
 
         private void textBoxGalleryPaths_TextChanged(object sender, EventArgs e)
         {
-            IniFiles.Config.Set("Gallery", "sCustomPathsList", this.textBoxGalleryPaths.Text.Replace("\r\n", ",").Replace("\n", ","));
+            Configuration.Gallery.CustomPaths = this.textBoxGalleryPaths.Text.Replace("\r\n", "\n").Split('\n');
         }
 
         private void checkBoxGallerySearchRecursively_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Config.Set("Gallery", "bSearchDirectoriesRecursively", this.checkBoxGallerySearchRecursively.Checked);
+            Configuration.Gallery.SearchDirsRecursively = this.checkBoxGallerySearchRecursively.Checked;
         }
 
         private void Invoke(Action func)

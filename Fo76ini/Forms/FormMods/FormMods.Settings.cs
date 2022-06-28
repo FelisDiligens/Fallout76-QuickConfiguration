@@ -20,22 +20,21 @@ namespace Fo76ini
             /*
              * Behavior
              */
-            this.checkBoxAddArchivesAsBundled.Checked = IniFiles.Config.GetBool("Mods", "bUnpackBA2ByDefault", false);
-            this.checkBoxModsUseHardlinks.Checked = IniFiles.Config.GetBool("Mods", "bUseHardlinks", true);
-            this.checkBoxFreezeBundledArchives.Checked = IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false);
+            this.checkBoxAddArchivesAsBundled.Checked = Configuration.Mods.UnpackBA2ByDefault;
+            this.checkBoxModsUseHardlinks.Checked = Configuration.Mods.UseHardlinks;
+            this.checkBoxFreezeBundledArchives.Checked = Configuration.Mods.FreezeBundledArchives;
 
             /*
              * Interface
              */
-            this.checkBoxModsUseRemoteModNames.Checked = IniFiles.Config.GetBool("Mods", "bShowRemoteModNames", false);
+            this.checkBoxModsUseRemoteModNames.Checked = Configuration.Mods.ShowRemoteModNames;
 
-            int configCurrentStyle = IniFiles.Config.GetInt("Mods", "iModListStyle", 0);
-            switch (configCurrentStyle)
+            switch (Configuration.Mods.ModListStyle)
             {
-                case 1:
+                case ModListStyle.Alternative:
                     this.radioButtonModsUseAlternativeList.Checked = true;
                     break;
-                case 0:
+                case ModListStyle.Standard:
                 default:
                     this.radioButtonModsUseStandardList.Checked = true;
                     break;

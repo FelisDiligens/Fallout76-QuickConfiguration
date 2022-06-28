@@ -1,7 +1,4 @@
 ﻿using Fo76ini.Tweaks;
-using Fo76ini.Tweaks.Config;
-using Fo76ini.Tweaks.Inis;
-using Fo76ini.Tweaks.NuclearWinterMode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,45 +9,57 @@ namespace Fo76ini.Forms.FormSettings
 {
     partial class FormSettings
     {
+        // TODO: FormSettings.LinkInfo
         public void LinkInfo()
         {
-            LinkedTweaks.LinkInfo(checkBoxReadOnly, toolTip, iniReadOnlyTweak);
-            LinkedTweaks.LinkInfo(checkBoxAutoApply, toolTip, autoApplyTweak);
-            LinkedTweaks.LinkInfo(checkBoxIgnoreUpdates, toolTip, ignoreUpdatesTweak);
-            LinkedTweaks.LinkInfo(checkBoxPlayNotificationSound, toolTip, playNotificationSoundsTweak);
-            LinkedTweaks.LinkInfo(checkBoxQuitOnGameLaunch, toolTip, toolQuitOnLaunchTweak);
-            LinkedTweaks.LinkInfo(checkBoxNWRenameDLL, toolTip, renameDLLsTweak);
-            LinkedTweaks.LinkInfo(checkBoxNWAutoDeployMods, toolTip, deployModsOnNWModeTweak);
-            LinkedTweaks.LinkInfo(checkBoxNWAutoDisableMods, toolTip, removeModsOnNWModeTweak);
-            LinkedTweaks.LinkInfo(checkBoxShowNWBtn, toolTip, showNWModeButtonTweak);
-            LinkedTweaks.LinkInfo(checkBoxShowWhatsNew, toolTip, showWhatsNewTweak);
-            LinkedTweaks.LinkInfo(labelArchiveTwoPath, toolTip, archiveTwoPathTweak);
-            LinkedTweaks.LinkInfo(labelSevenZipPath, toolTip, sevenZipPathTweak);
-            LinkedTweaks.LinkInfo(labelDownloadsPath, toolTip, downloadPathTweak);
-            LinkedTweaks.LinkInfo(textBoxArchiveTwoPath, toolTip, archiveTwoPathTweak);
-            LinkedTweaks.LinkInfo(textBoxSevenZipPath, toolTip, sevenZipPathTweak);
-            LinkedTweaks.LinkInfo(textBoxDownloadsPath, toolTip, downloadPathTweak);
-            LinkedTweaks.LinkInfo(buttonPickArchiveTwoPath, toolTip, archiveTwoPathTweak);
-            LinkedTweaks.LinkInfo(buttonPickSevenZipPath, toolTip, sevenZipPathTweak);
-            LinkedTweaks.LinkInfo(buttonPickDownloadsPath, toolTip, downloadPathTweak);
+            //LinkedTweaks.LinkInfo(checkBoxReadOnly, toolTip, iniReadOnlyTweak);
+
+            //LinkedTweaks.LinkInfo(checkBoxAutoApply, toolTip, autoApplyTweak);
+            //LinkedTweaks.LinkInfo(checkBoxIgnoreUpdates, toolTip, ignoreUpdatesTweak);
+            //LinkedTweaks.LinkInfo(checkBoxPlayNotificationSound, toolTip, playNotificationSoundsTweak);
+            //LinkedTweaks.LinkInfo(checkBoxQuitOnGameLaunch, toolTip, toolQuitOnLaunchTweak);
+
+            //LinkedTweaks.LinkInfo(checkBoxNWRenameDLL, toolTip, renameDLLsTweak);
+            //LinkedTweaks.LinkInfo(checkBoxNWAutoDeployMods, toolTip, deployModsOnNWModeTweak);
+            //LinkedTweaks.LinkInfo(checkBoxNWAutoDisableMods, toolTip, removeModsOnNWModeTweak);
+            //LinkedTweaks.LinkInfo(checkBoxShowNWBtn, toolTip, showNWModeButtonTweak);
+
+            //LinkedTweaks.LinkInfo(checkBoxShowWhatsNew, toolTip, showWhatsNewTweak);
+
+            //LinkedTweaks.LinkInfo(labelArchiveTwoPath, toolTip, archiveTwoPathTweak);
+            //LinkedTweaks.LinkInfo(textBoxArchiveTwoPath, toolTip, archiveTwoPathTweak);
+            //LinkedTweaks.LinkInfo(buttonPickArchiveTwoPath, toolTip, archiveTwoPathTweak);
+
+            //LinkedTweaks.LinkInfo(labelSevenZipPath, toolTip, sevenZipPathTweak);
+            //LinkedTweaks.LinkInfo(textBoxSevenZipPath, toolTip, sevenZipPathTweak);
+            //LinkedTweaks.LinkInfo(buttonPickSevenZipPath, toolTip, sevenZipPathTweak);
+
+            //LinkedTweaks.LinkInfo(labelDownloadsPath, toolTip, downloadPathTweak);
+            //LinkedTweaks.LinkInfo(textBoxDownloadsPath, toolTip, downloadPathTweak);
+            //LinkedTweaks.LinkInfo(buttonPickDownloadsPath, toolTip, downloadPathTweak);
         }
 
         public void LinkControlsToTweaks()
         {
             // Make *.ini files read-only
-            LinkedTweaks.LinkTweak(checkBoxReadOnly, iniReadOnlyTweak);
+            LinkedTweaks.Link(checkBoxReadOnly, (IniFiles.AreINIsReadOnly, IniFiles.SetINIsReadOnlySafe));
+
+
+            /*
+             * Behavior
+             */
 
             // Automatically apply changes when tool is closed or game is launched
-            LinkedTweaks.LinkTweak(checkBoxAutoApply, autoApplyTweak);
+            LinkedTweaks.LinkProperty(checkBoxAutoApply, new Accessor<bool>(() => Configuration.AutoApply));
 
             // Don't check for updates on startup.
-            LinkedTweaks.LinkTweak(checkBoxIgnoreUpdates, ignoreUpdatesTweak);
+            LinkedTweaks.LinkProperty(checkBoxIgnoreUpdates, new Accessor<bool>(() => Configuration.IgnoreUpdates));
 
             // Play notification sounds
-            LinkedTweaks.LinkTweak(checkBoxPlayNotificationSound, playNotificationSoundsTweak);
+            LinkedTweaks.LinkProperty(checkBoxPlayNotificationSound, new Accessor<bool>(() => Configuration.PlayNotificationSounds));
 
             // Close the tool when the game is launched.
-            LinkedTweaks.LinkTweak(checkBoxQuitOnGameLaunch, toolQuitOnLaunchTweak);
+            LinkedTweaks.LinkProperty(checkBoxQuitOnGameLaunch, new Accessor<bool>(() => Configuration.QuitOnLaunch));
 
 
             /*
@@ -58,36 +67,24 @@ namespace Fo76ini.Forms.FormSettings
              */
 
             // Rename added *.dll files
-            LinkedTweaks.LinkTweak(checkBoxNWRenameDLL, renameDLLsTweak);
+            LinkedTweaks.LinkProperty(checkBoxNWRenameDLL, new Accessor<bool>(() => Configuration.NuclearWinter.RenameDLLs));
 
             // Automatically deploy mods
-            LinkedTweaks.LinkTweak(checkBoxNWAutoDeployMods, deployModsOnNWModeTweak);
+            LinkedTweaks.LinkProperty(checkBoxNWAutoDeployMods, new Accessor<bool>(() => Configuration.NuclearWinter.AutoDeployMods));
 
             // Automatically remove mods
-            LinkedTweaks.LinkTweak(checkBoxNWAutoDisableMods, removeModsOnNWModeTweak);
+            LinkedTweaks.LinkProperty(checkBoxNWAutoDisableMods, new Accessor<bool>(() => Configuration.NuclearWinter.AutoDisableMods));
+
+
+            /*
+             * User Interface
+             */
 
             // Show/hide NW mode toggle button
-            LinkedTweaks.LinkTweak(checkBoxShowNWBtn, showNWModeButtonTweak);
+            LinkedTweaks.LinkProperty(checkBoxShowNWBtn, new Accessor<bool>(() => Configuration.NuclearWinter.ShowNWModeBtn));
 
             // Show/hide What's new RTF in FormMain
-            LinkedTweaks.LinkTweak(checkBoxShowWhatsNew, showWhatsNewTweak);
+            LinkedTweaks.LinkProperty(checkBoxShowWhatsNew, new Accessor<bool>(() => Configuration.ShowWhatsNew));
         }
-
-        private SevenZipPathTweak sevenZipPathTweak = new SevenZipPathTweak();
-        private ArchiveTwoPathTweak archiveTwoPathTweak = new ArchiveTwoPathTweak();
-        private DownloadPathTweak downloadPathTweak = new DownloadPathTweak();
-
-        private INIReadOnlyTweak iniReadOnlyTweak = new INIReadOnlyTweak();
-        private AutoApplyTweak autoApplyTweak = new AutoApplyTweak();
-        private IgnoreUpdatesTweak ignoreUpdatesTweak = new IgnoreUpdatesTweak();
-        private PlayNotificationSoundsTweak playNotificationSoundsTweak = new PlayNotificationSoundsTweak();
-        private ToolQuitOnLaunchTweak toolQuitOnLaunchTweak = new ToolQuitOnLaunchTweak();
-
-        private DeployModsOnNWModeTweak deployModsOnNWModeTweak = new DeployModsOnNWModeTweak();
-        private RemoveModsOnNWModeTweak removeModsOnNWModeTweak = new RemoveModsOnNWModeTweak();
-        private RenameDLLsTweak renameDLLsTweak = new RenameDLLsTweak();
-
-        private ShowNWModeButtonTweak showNWModeButtonTweak = new ShowNWModeButtonTweak();
-        private ShowWhatsNewTweak showWhatsNewTweak = new ShowWhatsNewTweak();
     }
 }

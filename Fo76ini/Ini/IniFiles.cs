@@ -1,4 +1,5 @@
-﻿using Fo76ini.Profiles;
+﻿using Fo76ini.Interface;
+using Fo76ini.Profiles;
 using Fo76ini.Utilities;
 using Syroot.Windows.IO;
 using System;
@@ -7,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Security.Principal;
+using System.Windows.Forms;
 
 namespace Fo76ini
 {
@@ -112,6 +114,26 @@ namespace Fo76ini
             F76.IsReadOnly = readOnly;
             F76Prefs.IsReadOnly = readOnly;
             F76Custom.IsReadOnly = readOnly;
+        }
+
+        public static void SetINIsReadOnlySafe(bool readOnly)
+        {
+            try
+            {
+                IniFiles.SetINIsReadOnly(readOnly);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MsgBox.Get("setInisReadOnlyFailed")
+                    .FormatText($"System.UnauthorizedAccessException: {ex.Message}")
+                    .Show(MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Get("setInisReadOnlyFailed")
+                    .FormatText(ex.ToString())
+                    .Show(MessageBoxIcon.Error);
+            }
         }
 
         public static bool AreINIsReadOnly()

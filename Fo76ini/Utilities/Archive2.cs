@@ -14,7 +14,7 @@ namespace Fo76ini.Utilities
         {
             get
             {
-                string path = Path.GetFullPath(IniFiles.Config.GetString("Preferences", "sArchiveTwoPath", DefaultArchive2Path));
+                string path = Path.GetFullPath(Configuration.Archive2Path);
                 if (File.Exists(path))
                     return path;
                 else

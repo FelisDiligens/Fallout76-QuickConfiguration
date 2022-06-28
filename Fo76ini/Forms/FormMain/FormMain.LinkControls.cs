@@ -2,11 +2,9 @@
 using Fo76ini.Tweaks.Audio;
 using Fo76ini.Tweaks.Camera;
 using Fo76ini.Tweaks.Colors;
-using Fo76ini.Tweaks.Config;
 using Fo76ini.Tweaks.Controls;
 using Fo76ini.Tweaks.General;
 using Fo76ini.Tweaks.Graphics;
-using Fo76ini.Tweaks.Inis;
 using Fo76ini.Tweaks.Interface;
 using Fo76ini.Tweaks.Pipboy;
 using Fo76ini.Tweaks.Video;

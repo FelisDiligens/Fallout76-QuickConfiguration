@@ -80,7 +80,7 @@ namespace Fo76ini.Mods
 
                 // Deploy all BundledBA2 mods:
                 ProgressChanged?.Invoke(Progress.Indetermined($"Building bundled archives..."));
-                ModDeployment.DeployBundledArchives(mods, IniFiles.Config.GetBool("Mods", "bFreezeBundledArchives", false), invalidateBundledFrozenArchives);
+                ModDeployment.DeployBundledArchives(mods, Configuration.Mods.FreezeBundledArchives, invalidateBundledFrozenArchives);
 
                 mods.Save();
                 ProgressChanged?.Invoke(Progress.Done("Mods deployed."));
@@ -119,7 +119,7 @@ namespace Fo76ini.Mods
 
                 // ... and copy the file (and replace it if necessary).
                 LogFile.WriteLine($"      Copying: \"{relPath}\"");
-                if (Configuration.bUseHardlinks)
+                if (Configuration.Mods.UseHardlinks)
                     Utils.CreateHardLink(filePath, destinationPath, true);
                 else
                     File.Copy(filePath, destinationPath, true);
@@ -151,7 +151,7 @@ namespace Fo76ini.Mods
                 LogFile.WriteLine($"      Copying frozen archive...");
 
                 // ... and copy it to the Data folder.
-                if (Configuration.bUseHardlinks)
+                if (Configuration.Mods.UseHardlinks)
                     Utils.CreateHardLink(
                         mod.FrozenArchivePath,
                         mod.ArchivePath,
@@ -250,7 +250,7 @@ namespace Fo76ini.Mods
                     LogFile.WriteLine($"         Copying {archive.ArchiveName}");
 
                     // ... copy it into the Data folder ...
-                    if (Configuration.bUseHardlinks)
+                    if (Configuration.Mods.UseHardlinks)
                         Utils.CreateHardLink(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
                     else
                         File.Copy(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
@@ -280,7 +280,7 @@ namespace Fo76ini.Mods
                         // either freeze to FrozenData and then copy to Data:
                         Archive2.Create(archive.GetFrozenArchivePath(), archive.TempPath, archive.Compression, archive.Format);
 
-                        if (Configuration.bUseHardlinks)
+                        if (Configuration.Mods.UseHardlinks)
                             Utils.CreateHardLink(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
                         else
                             File.Copy(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
@@ -342,7 +342,7 @@ namespace Fo76ini.Mods
                 // Copy the file to the correct temp folder:
                 Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
 
-                if (Configuration.bUseHardlinks)
+                if (Configuration.Mods.UseHardlinks)
                     Utils.CreateHardLink(filePath, destinationPath, true);
                 else
                     File.Copy(filePath, destinationPath, true);

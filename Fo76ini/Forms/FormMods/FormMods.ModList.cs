@@ -64,7 +64,7 @@ namespace Fo76ini
 
                 this.Enabled = mod.Enabled;
 
-                bool showRemoteModNames = IniFiles.Config.GetBool("Mods", "bShowRemoteModNames", false);
+                bool showRemoteModNames = Configuration.Mods.ShowRemoteModNames;
 
 
                 /*
@@ -322,8 +322,8 @@ namespace Fo76ini
 
         public enum ModListStyle
         {
-            Standard,
-            Alternative
+            Standard = 0,
+            Alternative = 1
         }
 
         public ModListStyle currentStyle = ModListStyle.Standard;
@@ -353,14 +353,14 @@ namespace Fo76ini
         private void radioButtonModsUseNewList_CheckedChanged(object sender, EventArgs e)
         {
             this.SetOLVStyle(ModListStyle.Standard);
-            IniFiles.Config.Set("Mods", "iModListStyle", 0);
+            Configuration.Mods.ModListStyle = ModListStyle.Standard;
             this.UpdateModList();
         }
 
         private void radioButtonModsUseOldList_CheckedChanged(object sender, EventArgs e)
         {
             this.SetOLVStyle(ModListStyle.Alternative);
-            IniFiles.Config.Set("Mods", "iModListStyle", 1);
+            Configuration.Mods.ModListStyle = ModListStyle.Alternative;
             this.UpdateModList();
         }
 
@@ -392,18 +392,8 @@ namespace Fo76ini
             AlternativeStyleHeaders.Add(this.olvColumnAltArchivePreset);
             AlternativeStyleHeaders.Add(this.olvColumnAltIsFrozen);
             SetOLVStyle(ModListStyle.Standard);
+            // SetOLVStyle(Configuration.Mods.ModListStyle);
 
-            /*int configCurrentStyle = IniFiles.Config.GetInt("Mods", "iModListStyle", 0);
-            switch (configCurrentStyle)
-            {
-                case 1:
-                    SetOLVStyle(ModListStyle.Alternative);
-                    break;
-                case 0:
-                default:
-                    SetOLVStyle(ModListStyle.Standard);
-                    break;
-            }*/
 
             /*
              * Drag & drop:

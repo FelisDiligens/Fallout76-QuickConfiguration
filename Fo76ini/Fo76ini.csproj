@@ -177,7 +177,7 @@
     <Compile Include="NexusAPI\NMUserProfile.cs" />
     <Compile Include="NexusAPI\NXMHandler.cs" />
     <Compile Include="NexusAPI\SingleSignOn.cs" />
-    <Compile Include="Tweaks\Config\ShowWhatsNewTweak.cs" />
+    <Compile Include="Tweaks\Accessor.cs" />
     <Compile Include="Utilities\Progress.cs" />
     <Compile Include="Tweaks\Audio\EnableAudioTweak.cs" />
     <Compile Include="Tweaks\Audio\VoiceChatModeTweak.cs" />
@@ -204,12 +204,6 @@
     <Compile Include="Tweaks\Camera\SelfieModeRangeTweak.cs" />
     <Compile Include="Tweaks\Camera\VanityModeMaxDistTweak.cs" />
     <Compile Include="Tweaks\Camera\VanityModeMinDistTweak.cs" />
-    <Compile Include="Tweaks\Config\ArchiveTwoPathTweak.cs" />
-    <Compile Include="Tweaks\Config\AutoApplyTweak.cs" />
-    <Compile Include="Tweaks\Config\DownloadPathTweak.cs" />
-    <Compile Include="Tweaks\Config\IgnoreUpdatesTweak.cs" />
-    <Compile Include="Tweaks\Config\PlayNotificationSoundsTweak.cs" />
-    <Compile Include="Tweaks\Config\SevenZipPathTweak.cs" />
     <Compile Include="Tweaks\Controls\EnableGamepadRumbleTweak.cs" />
     <Compile Include="Tweaks\Controls\FixAimSensitivityTweak.cs" />
     <Compile Include="Tweaks\Controls\FixMouseSensitivityTweak.cs" />
@@ -250,7 +244,6 @@
     <Compile Include="Tweaks\Graphics\WaterDisplacementsTweak.cs" />
     <Compile Include="Tweaks\Graphics\ScreenSpaceReflectionsTweak.cs" />
     <Compile Include="Tweaks\Graphics\WetnessOcclusionTweak.cs" />
-    <Compile Include="Tweaks\IniFiles\INIReadOnlyTweak.cs" />
     <Compile Include="Tweaks\Interface\ActiveEffectsOnHUDTweak.cs" />
     <Compile Include="Tweaks\Interface\AutoTrackQuestWhenStartedTweak.cs" />
     <Compile Include="Tweaks\Interface\ConversationHistorySizeTweak.cs" />
@@ -270,10 +263,6 @@
     <Compile Include="Tweaks\Interface\ShowFloatingQuestTextTweak.cs" />
     <Compile Include="Tweaks\Interface\ShowOtherPlayersNamesTweak.cs" />
     <Compile Include="Tweaks\Interface\ShowPublicTeamNotificationsTweak.cs" />
-    <Compile Include="Tweaks\NuclearWinterMode\ShowNWButtonTweak.cs" />
-    <Compile Include="Tweaks\NuclearWinterMode\DeployModsOnNWModeTweak.cs" />
-    <Compile Include="Tweaks\NuclearWinterMode\RemoveModsOnNWModeTweak.cs" />
-    <Compile Include="Tweaks\NuclearWinterMode\RenameDLLsTweak.cs" />
     <Compile Include="Tweaks\Pipboy\PipboyTargetResolution.cs" />
     <Compile Include="Tweaks\Pipboy\QuickboyModeEnabledTweak.cs" />
     <Compile Include="Tweaks\Video\DisplayModeTweak.cs" />
@@ -351,7 +340,6 @@
     <Compile Include="Interface\Translation.cs" />
     <Compile Include="Tweaks\ResourceLists\ResourceListTweak.cs" />
     <Compile Include="Shared.cs" />
-    <Compile Include="Tweaks\Config\ToolQuitOnLaunchTweak.cs" />
     <Compile Include="Tweaks\LinkedTweaks.cs" />
     <Compile Include="Utilities\RichTextBoxExtensions.cs" />
     <Compile Include="Utilities\Utils.cs" />

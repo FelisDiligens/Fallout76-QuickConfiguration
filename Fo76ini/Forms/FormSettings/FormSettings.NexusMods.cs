@@ -144,9 +144,9 @@ namespace Fo76ini.Forms.FormSettings
                 }
             }
 
-            this.checkBoxNMUpdateProfile.Checked = IniFiles.Config.GetBool("NexusMods", "bAutoUpdateProfile", true);
+            this.checkBoxNMUpdateProfile.Checked = Configuration.NexusMods.AutoUpdateProfile;
             //this.checkBoxNMUpdateModInfo.Checked = IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bAutoUpdateModInfo", false);
-            this.checkBoxNMDownloadThumbnails.Checked = IniFiles.Config.GetBool("NexusMods", "bDownloadThumbnailsOnUpdate", true);
+            this.checkBoxNMDownloadThumbnails.Checked = Configuration.NexusMods.DownloadThumbnailsOnUpdate;
         }
 
         /*

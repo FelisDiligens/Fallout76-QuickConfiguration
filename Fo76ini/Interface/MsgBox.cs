@@ -23,7 +23,7 @@ namespace Fo76ini.Interface
         public static void PlayNotificationSound()
         {
             // Don't play sound, if disabled:
-            if (!IniFiles.Config.GetBool("Preferences", "bPlayNotificationSound", true))
+            if (!Configuration.PlayNotificationSounds)
                 return;
 
             // Play alert.wav if available:
@@ -38,7 +38,7 @@ namespace Fo76ini.Interface
         public static void PlayErrorSound()
         {
             // Don't play sound, if disabled:
-            if (!IniFiles.Config.GetBool("Preferences", "bPlayNotificationSound", true))
+            if (!Configuration.PlayNotificationSounds)
                 return;
 
             // Play alert.wav if available:

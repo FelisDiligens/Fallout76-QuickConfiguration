@@ -478,7 +478,7 @@ namespace Fo76ini
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 Configuration.SaveWindowState("Form1", this);
-                if (IniFiles.Config.GetBool("Preferences", "bAutoApply", false))
+                if (Configuration.AutoApply)
                     ApplyChanges();
             }
         }
@@ -501,7 +501,7 @@ namespace Fo76ini
 
             panelUpdate.Visible = false;
 
-            if (!force && IniFiles.Config.GetBool("Preferences", "bIgnoreUpdates", false))
+            if (!force && Configuration.IgnoreUpdates)
             {
                 this.labelConfigVersion.ForeColor = Color.Black;
                 return;
@@ -580,7 +580,7 @@ namespace Fo76ini
 
             this.toolStripStatusLabelNuclearWinterModeActive.Visible = nwModeEnabled;
 
-            this.toolStripButtonToggleNuclearWinterMode.Visible = nwModeEnabled || IniFiles.Config.GetBool("NuclearWinter", "bShowNWModeBtn", false);
+            this.toolStripButtonToggleNuclearWinterMode.Visible = nwModeEnabled || Configuration.NuclearWinter.ShowNWModeBtn;
 
             EnableUI();
             Focus();
@@ -630,10 +630,10 @@ namespace Fo76ini
 
         private void toolStripButtonLaunchGame_Click(object sender, EventArgs e)
         {
-            if (IniFiles.Config.GetBool("Preferences", "bAutoApply", false))
+            if (Configuration.AutoApply)
                 ApplyChanges();
             this.game.LaunchGame();
-            if (IniFiles.Config.GetBool("Preferences", "bQuitOnLaunch", false))
+            if (Configuration.QuitOnLaunch)
                 Application.Exit();
         }
 
@@ -1169,7 +1169,7 @@ namespace Fo76ini
         private void LoadWhatsNew()
         {
             this.panelWhatsNew.Visible = true;
-            if (!IniFiles.Config.GetBool("Preferences", "bShowWhatsNew", true))
+            if (!Configuration.ShowWhatsNew)
                 this.panelWhatsNew.Visible = false;
             string WhatsNewTestFile = Path.Combine(Shared.AppConfigFolder, "What's new.rtf");
             if (File.Exists(WhatsNewTestFile))
