@@ -19,7 +19,6 @@ namespace Fo76ini
     public partial class Localization
     {
         public static Dictionary<string, string> localizedStrings = new Dictionary<string, string>();
-        public static readonly string LanguageFolder = Path.Combine(Shared.AppConfigFolder, "languages");
 
         /// <summary>
         /// Current locale
@@ -77,12 +76,12 @@ namespace Fo76ini
         public static void LookupLanguages()
         {
             // Create 'languages' folder if not existing:
-            Directory.CreateDirectory(LanguageFolder);
+            Directory.CreateDirectory(Shared.AppTranslationsFolder);
 
             // Look into the folder and add all language files to the dropdown menu:
             Localization.translations.Clear();
             Localization.comboBoxTranslations.Clear();
-            foreach (string filePath in Directory.GetFiles(LanguageFolder))
+            foreach (string filePath in Directory.GetFiles(Shared.AppTranslationsFolder))
             {
                 try
                 {
@@ -102,7 +101,7 @@ namespace Fo76ini
             }
 
             // Set language:
-            string selectedLanguageISO = IniFiles.Config.GetString("Preferences", "sLanguage", CultureInfo.CurrentUICulture.Name);
+            string selectedLanguageISO = Configuration.SelectedLanguage;
             int languageIndex = GetTranslationIndex(selectedLanguageISO);
             int enUSIndex = GetTranslationIndex("en-US");
             Localization.comboBoxTranslations.SelectedIndex = languageIndex > -1 ? languageIndex : enUSIndex;
@@ -122,7 +121,7 @@ namespace Fo76ini
             try
             {
                 // Create 'languages' folder if not existing:
-                Directory.CreateDirectory(LanguageFolder);
+                Directory.CreateDirectory(Shared.AppTranslationsFolder);
 
                 // Create new WebClient...
                 WebClient wc = new WebClient();
@@ -136,7 +135,7 @@ namespace Fo76ini
                 // Go through the list and download each language file from GitHub:
                 foreach (string file in list)
                 {
-                    wc.DownloadFile(Shared.URLs.RemoteLanguageFolderURL + file, Path.Combine(Localization.LanguageFolder, file));
+                    wc.DownloadFile(Shared.URLs.RemoteLanguageFolderURL + file, Path.Combine(Shared.AppTranslationsFolder, file));
                 }
 
                 DownloadResult result = new DownloadResult();
@@ -251,7 +250,7 @@ namespace Fo76ini
         public void Load(string fileName)
         {
             this.fileName = fileName;
-            this.filePath = Path.Combine(Localization.LanguageFolder, this.fileName);
+            this.filePath = Path.Combine(Shared.AppTranslationsFolder, this.fileName);
 
             /*
              *  Read *.xml file:
@@ -498,7 +497,7 @@ namespace Fo76ini
         public void Save(string fileName, string version)
         {
             string newFileName = fileName;
-            string newFilePath = Path.Combine(Localization.LanguageFolder, newFileName);
+            string newFilePath = Path.Combine(Shared.AppTranslationsFolder, newFileName);
 
             // Create document and root:
             XDocument xmlDoc = new XDocument();
@@ -564,7 +563,7 @@ namespace Fo76ini
             }
 
             // Save it:
-            Directory.CreateDirectory(Localization.LanguageFolder);
+            Directory.CreateDirectory(Shared.AppTranslationsFolder);
             xmlDoc.Save(newFilePath);
         }
 

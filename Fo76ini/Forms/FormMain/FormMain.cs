@@ -309,7 +309,7 @@ namespace Fo76ini
         {
             // Create folders, if not present:
             Directory.CreateDirectory(Shared.AppConfigFolder);
-            Directory.CreateDirectory(Localization.LanguageFolder);
+            Directory.CreateDirectory(Shared.AppTranslationsFolder);
             Directory.CreateDirectory(IniFiles.ParentPath);
 
             // Link tweaks
@@ -700,7 +700,7 @@ namespace Fo76ini
 
         private void toolLanguagesFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Utils.OpenExplorer(Localization.LanguageFolder);
+            Utils.OpenExplorer(Shared.AppTranslationsFolder);
         }
 
         private void toolInstallationFolderToolStripMenuItem_Click(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Syroot.Windows.IO;
 using Fo76ini.Utilities;
+using System.Globalization;
 
 namespace Fo76ini
 {
@@ -268,6 +269,18 @@ namespace Fo76ini
             set
             {
                 IniFiles.Config.Set("Preferences", "bShowWhatsNew", value);
+            }
+        }
+
+        public static string SelectedLanguage
+        {
+            get
+            {
+                return IniFiles.Config.GetString("Preferences", "sLanguage", CultureInfo.CurrentUICulture.Name);
+            }
+            set
+            {
+                IniFiles.Config.Set("Preferences", "sLanguage", value);
             }
         }
 

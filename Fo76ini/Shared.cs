@@ -15,6 +15,7 @@ namespace Fo76ini
 
         public static readonly string AppInstallationFolder = Directory.GetParent(Application.ExecutablePath).ToString();
         public static readonly string AppConfigFolder = Path.Combine(KnownFolders.LocalAppData.Path, "Fallout 76 Quick Configuration");
+        public static readonly string AppTranslationsFolder = Path.Combine(Shared.AppConfigFolder, "languages");
 
         public static readonly System.Globalization.CultureInfo en_US = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 

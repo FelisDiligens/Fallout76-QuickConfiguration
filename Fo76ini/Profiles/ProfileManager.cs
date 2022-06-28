@@ -85,11 +85,6 @@ namespace Fo76ini.Profiles
             return SelectedGameIndex >= 0 && SelectedGameIndex == FindIndex(game);
         }
 
-        /*public Profile SelectedProfile
-        {
-            get { return games[selectedGameGuid].SelectedProfile; }
-        }*/
-
         public static void Save()
         {
             XDocument xmlDoc = new XDocument();
