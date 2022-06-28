@@ -46,7 +46,8 @@ namespace Fo76ini.Controls
         public Color ButtonTextColor { get; set; }
 
         [Category("Custom")]
-        [DefaultValue(PictureBoxSizeMode.CenterImage)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
         public PictureBoxSizeMode SizeMode { get; set; }
 
         #endregion

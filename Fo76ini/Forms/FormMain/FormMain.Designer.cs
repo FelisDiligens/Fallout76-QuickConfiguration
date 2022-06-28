@@ -4293,33 +4293,33 @@
             this.panelUpdate.Controls.Add(this.pictureBoxButtonUpdate);
             this.panelUpdate.Controls.Add(this.labelNewVersion);
             this.panelUpdate.Controls.Add(this.linkLabelManualDownloadPage);
-            this.panelUpdate.Location = new System.Drawing.Point(93, 175);
+            this.panelUpdate.Location = new System.Drawing.Point(93, 331);
             this.panelUpdate.Name = "panelUpdate";
-            this.panelUpdate.Size = new System.Drawing.Size(287, 100);
+            this.panelUpdate.Size = new System.Drawing.Size(299, 110);
             this.panelUpdate.TabIndex = 39;
             // 
             // labelNewVersion
             // 
-            this.labelNewVersion.AutoSize = true;
             this.labelNewVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNewVersion.ForeColor = System.Drawing.Color.Crimson;
-            this.labelNewVersion.Location = new System.Drawing.Point(0, 0);
-            this.labelNewVersion.Margin = new System.Windows.Forms.Padding(0);
+            this.labelNewVersion.Location = new System.Drawing.Point(3, 6);
+            this.labelNewVersion.Margin = new System.Windows.Forms.Padding(3);
             this.labelNewVersion.Name = "labelNewVersion";
-            this.labelNewVersion.Size = new System.Drawing.Size(215, 15);
+            this.labelNewVersion.Size = new System.Drawing.Size(293, 20);
             this.labelNewVersion.TabIndex = 16;
             this.labelNewVersion.Text = "There is a newer version available: {0}";
+            this.labelNewVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // linkLabelManualDownloadPage
             // 
-            this.linkLabelManualDownloadPage.AutoSize = true;
-            this.linkLabelManualDownloadPage.Location = new System.Drawing.Point(0, 75);
-            this.linkLabelManualDownloadPage.Margin = new System.Windows.Forms.Padding(0);
+            this.linkLabelManualDownloadPage.Location = new System.Drawing.Point(3, 80);
+            this.linkLabelManualDownloadPage.Margin = new System.Windows.Forms.Padding(3);
             this.linkLabelManualDownloadPage.Name = "linkLabelManualDownloadPage";
-            this.linkLabelManualDownloadPage.Size = new System.Drawing.Size(170, 13);
+            this.linkLabelManualDownloadPage.Size = new System.Drawing.Size(293, 20);
             this.linkLabelManualDownloadPage.TabIndex = 2;
             this.linkLabelManualDownloadPage.TabStop = true;
             this.linkLabelManualDownloadPage.Text = "Or download and install manually...";
+            this.linkLabelManualDownloadPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLabelManualDownloadPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelManualDownloadPage_LinkClicked);
             // 
             // pictureBoxSpinnerCheckForUpdates
@@ -5656,10 +5656,10 @@
             this.pictureBoxButtonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pictureBoxButtonUpdate.Image = global::Fo76ini.Properties.Resources.button;
             this.pictureBoxButtonUpdate.ImageHover = global::Fo76ini.Properties.Resources.button_hover;
-            this.pictureBoxButtonUpdate.Location = new System.Drawing.Point(3, 24);
+            this.pictureBoxButtonUpdate.Location = new System.Drawing.Point(3, 29);
             this.pictureBoxButtonUpdate.Name = "pictureBoxButtonUpdate";
-            this.pictureBoxButtonUpdate.Size = new System.Drawing.Size(256, 48);
-            this.pictureBoxButtonUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Normal;
+            this.pictureBoxButtonUpdate.Size = new System.Drawing.Size(293, 48);
+            this.pictureBoxButtonUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxButtonUpdate.TabIndex = 46;
             this.pictureBoxButtonUpdate.Click += new System.EventHandler(this.buttonUpdateNow_Click);
             // 
@@ -5949,7 +5949,6 @@
             this.tabPageInfo.PerformLayout();
             this.panelWhatsNew.ResumeLayout(false);
             this.panelUpdate.ResumeLayout(false);
-            this.panelUpdate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
