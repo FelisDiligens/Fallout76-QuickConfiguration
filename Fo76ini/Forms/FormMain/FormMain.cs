@@ -1,4 +1,5 @@
-﻿using Fo76ini.Forms.FormIniError;
+﻿using Fo76ini.Controls;
+using Fo76ini.Forms.FormIniError;
 using Fo76ini.Forms.FormSettings;
 using Fo76ini.Forms.FormTextPrompt;
 using Fo76ini.Forms.FormWelcome;
@@ -349,8 +350,6 @@ namespace Fo76ini
             // Load UI:
             UpdateNWModeUI(false);
             this.LoadGallery();
-
-            MakePictureBoxButton(this.pictureBoxUpdateButton, "updateNowButton");
 
             // What's new:
             LoadWhatsNew();
@@ -815,35 +814,6 @@ namespace Fo76ini
             }
         }
 
-        private void MakePictureBoxButton(PictureBox pictureBox, string localizedStringID)
-        {
-            pictureBox.Paint += new PaintEventHandler((paintSender, paintEventArgs) =>
-            {
-                paintEventArgs.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-
-                string text = Localization.GetString(localizedStringID);
-
-                Font font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
-
-                SizeF textSize = paintEventArgs.Graphics.MeasureString(text, font);
-                PointF locationToDraw = new PointF();
-                locationToDraw.X = (pictureBox.Width / 2) - (textSize.Width / 2);
-                locationToDraw.Y = (pictureBox.Height / 2) - (textSize.Height / 2);
-
-                paintEventArgs.Graphics.DrawString(text, font, Brushes.White, locationToDraw);
-            });
-            pictureBox.MouseEnter += new EventHandler((mouseSender, mouseEventArgs) =>
-            {
-                pictureBox.Image = Resources.button_hover;
-                pictureBox.Cursor = Cursors.Hand;
-            });
-            pictureBox.MouseLeave += new EventHandler((mouseSender, mouseEventArgs) =>
-            {
-                pictureBox.Image = Resources.button;
-                pictureBox.Cursor = Cursors.Default;
-            });
-        }
-
         public void DisableUI()
         {
             this.pictureBoxLoadingGIF.Visible = true;
@@ -1195,6 +1165,11 @@ namespace Fo76ini
         private void backgroundWorkerDownloadRTF_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs ev)
         {
             this.richTextBoxWhatsNew.Rtf = (string)ev.Result;
+        }
+
+        private void pictureBoxButtonUpdate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

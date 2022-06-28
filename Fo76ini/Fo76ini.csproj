@@ -131,6 +131,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\PictureBoxButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\PipboyPreview.cs">
       <SubType>UserControl</SubType>
     </Compile>
