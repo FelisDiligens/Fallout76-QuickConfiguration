@@ -16,7 +16,8 @@ namespace Fo76ini_Updater
 {
     public partial class Updater : Form
     {
-        Log log;
+        TextWriter log;
+        String logPath;
         Config config;
 
         String workingDir;
@@ -79,11 +80,12 @@ namespace Fo76ini_Updater
             workingDir = Path.GetFullPath(AppContext.BaseDirectory);
             executablePath = Path.Combine(config.InstallationPath, "Fo76ini.exe");
 
-            log = new Log(Log.GetFilePath("update.log.txt"));
+            logPath = Log.GetFilePath("update.log.txt");
+            log = Log.Open(logPath);
 
             Collapse();
             log.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------");
-            log.WriteTimeStamp();
+            log.WriteLine(Log.GetTimeStamp());
 
             this.backgroundWorkerGatherInfo.RunWorkerAsync();
         }
@@ -478,8 +480,8 @@ namespace Fo76ini_Updater
 
         private void buttonShowLogFile_Click(object sender, EventArgs e)
         {
-            if (File.Exists(log.GetFilePath()))
-                Utils.OpenNotepad(log.GetFilePath());
+            if (File.Exists(logPath))
+                Utils.OpenNotepad(logPath);
         }
 
 
