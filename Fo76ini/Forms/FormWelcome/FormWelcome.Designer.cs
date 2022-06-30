@@ -49,7 +49,6 @@ namespace Fo76ini.Forms.FormWelcome
             this.radioButtonEditionMSStore = new System.Windows.Forms.RadioButton();
             this.radioButtonEditionSteam = new System.Windows.Forms.RadioButton();
             this.buttonOK = new System.Windows.Forms.Button();
-            this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBoxGameLocation.SuspendLayout();
@@ -269,12 +268,6 @@ namespace Fo76ini.Forms.FormWelcome
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // openFileDialogGamePath
-            // 
-            this.openFileDialogGamePath.FileName = "Fallout76.exe";
-            this.openFileDialogGamePath.Filter = "Executable|*.exe";
-            this.openFileDialogGamePath.FilterIndex = 2;
-            // 
             // label4
             // 
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
@@ -335,7 +328,6 @@ namespace Fo76ini.Forms.FormWelcome
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.OpenFileDialog openFileDialogGamePath;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBoxSteamPTS;
         private System.Windows.Forms.RadioButton radioButtonEditionSteamPTS;
