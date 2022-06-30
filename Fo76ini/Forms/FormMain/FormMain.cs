@@ -257,14 +257,14 @@ namespace Fo76ini
                 }
             ));
 
-            DropDown.Add("iDirShadowSplits", new DropDown(
+            /*DropDown.Add("iDirShadowSplits", new DropDown(
                 this.comboBoxiDirShadowSplits,
                 new string[] {
                     "1 - Low",
                     "2 - High / Medium",
                     "3 - Ultra"
                 }
-            ));
+            ));*/
 
             #endregion
 
@@ -286,17 +286,6 @@ namespace Fo76ini
 
             // Pipboy:
             InitPipboy();
-
-            // Danger Zone:
-            this.tabControl1.TabPages.Remove(this.tabPageDangerZone);
-            FormSettings.SettingsClosing += (object sender, EventArgs e) =>
-            {
-                if (FormSettings.DangerZoneEnabled && !this.tabControl1.TabPages.Contains(this.tabPageDangerZone))
-                {
-                    this.tabControl1.TabPages.Add(this.tabPageDangerZone);
-                    LinkDangerZoneControls();
-                }
-            };
         }
 
         private void FormMain_Load(object sender, EventArgs e)

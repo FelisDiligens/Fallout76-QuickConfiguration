@@ -600,16 +600,6 @@ namespace Fo76ini.Forms.FormSettings
 
         #endregion
 
-        private void linkLabelEnableDangerZone_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (MsgBox.Show("Warning", "Tweaks in the danger zone might introduce graphical glitches or make the game crash.\nAre you sure you want to enable it?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-                == DialogResult.Yes)
-            {
-                DangerZoneEnabled = true;
-                this.linkLabelEnableDangerZone.Enabled = false;
-            }
-        }
-
         private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
         {
             // TODO: When checkBoxIgnoreUpdates gets checked, call Form1.CheckVersion

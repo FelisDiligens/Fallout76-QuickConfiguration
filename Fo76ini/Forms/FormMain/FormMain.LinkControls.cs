@@ -105,15 +105,10 @@ namespace Fo76ini
             LinkedTweaks.LinkInfo(sliderLODItems, toolTip, lodFadeOutMultItemsTweak);
             LinkedTweaks.LinkInfo(sliderLODActors, toolTip, lodFadeOutMultActorsTweak);
             LinkedTweaks.LinkInfo(checkBoxGrass, toolTip, enableGrassTweak);
-            LinkedTweaks.LinkInfo(comboBoxiDirShadowSplits, toolTip, dirShadowSplitsTweak);
-            LinkedTweaks.LinkInfo(labeliDirShadowSplits, toolTip, dirShadowSplitsTweak);
-            LinkedTweaks.LinkInfo(numfBlendSplitDirShadow, toolTip, blendSplitDirShadowTweak);
-            LinkedTweaks.LinkInfo(sliderfBlendSplitDirShadow, toolTip, blendSplitDirShadowTweak);
             LinkedTweaks.LinkInfo(numTAAPostOverlay, toolTip, taaPostOverlayTweak);
             LinkedTweaks.LinkInfo(numTAAPostSharpen, toolTip, taaPostSharpenTweak);
             LinkedTweaks.LinkInfo(sliderTAAPostOverlay, toolTip, taaPostOverlayTweak);
             LinkedTweaks.LinkInfo(sliderTAAPostSharpen, toolTip, taaPostSharpenTweak);
-            LinkedTweaks.LinkInfo(checkBoxScreenSpaceReflections, toolTip, screenSpaceReflectionsTweak);
             LinkedTweaks.LinkInfo(numGrassFadeDistance, toolTip, grassFadeDistanceTweak);
 
             // Audio tab
@@ -226,7 +221,6 @@ namespace Fo76ini
             LinkedTweaks.LinkSlider(this.sliderLODItems, this.numLODItems, 10);
             LinkedTweaks.LinkSlider(this.sliderLODActors, this.numLODActors, 10);
             LinkedTweaks.LinkSlider(this.sliderShadowDistance, this.numShadowDistance, 1);
-            LinkedTweaks.LinkSlider(this.sliderfBlendSplitDirShadow, this.numfBlendSplitDirShadow, 0.0833333);
             LinkedTweaks.LinkSlider(this.sliderMouseSensitivity, this.numMouseSensitivity, 10000.0);
             LinkedTweaks.LinkSlider(this.sliderTAAPostOverlay, this.numTAAPostOverlay, 100);
             LinkedTweaks.LinkSlider(this.sliderTAAPostSharpen, this.numTAAPostSharpen, 100);
@@ -596,22 +590,6 @@ namespace Fo76ini
 
             // Screenshot index
             LinkedTweaks.LinkTweak(numScreenshotIndex, screenshotIndexTweak);
-        }
-
-
-        public void LinkDangerZoneControls ()
-        {
-            // Screen Space Reflections:
-            LinkedTweaks.LinkTweak(checkBoxScreenSpaceReflections, screenSpaceReflectionsTweak);
-
-            // Amount of shadow "segments": iDirShadowSplits
-            LinkedTweaks.LinkTweak(
-                comboBoxiDirShadowSplits,
-                new int[] { 1, 2, 3 },
-                dirShadowSplitsTweak);
-
-            // BlendSplitDirShadowTweak / Shadow "segment" transition distance
-            LinkedTweaks.LinkTweak(numfBlendSplitDirShadow, blendSplitDirShadowTweak);
         }
 
 

@@ -56,8 +56,6 @@
             this.groupBoxOptions = new System.Windows.Forms.GroupBox();
             this.checkBoxHandleNXMLinks = new System.Windows.Forms.CheckBox();
             this.checkBoxReadOnly = new System.Windows.Forms.CheckBox();
-            this.groupBoxActions = new System.Windows.Forms.GroupBox();
-            this.linkLabelEnableDangerZone = new System.Windows.Forms.LinkLabel();
             this.groupBoxNuclearWinterMode = new System.Windows.Forms.GroupBox();
             this.checkBoxNWAutoDeployMods = new System.Windows.Forms.CheckBox();
             this.labelNWmodoptions = new System.Windows.Forms.Label();
@@ -167,7 +165,6 @@
             this.groupBoxUI.SuspendLayout();
             this.groupBoxPaths.SuspendLayout();
             this.groupBoxOptions.SuspendLayout();
-            this.groupBoxActions.SuspendLayout();
             this.groupBoxNuclearWinterMode.SuspendLayout();
             this.groupBoxBehavior.SuspendLayout();
             this.groupBoxLocalization.SuspendLayout();
@@ -212,7 +209,6 @@
             this.tabPageGeneral.Controls.Add(this.groupBoxUI);
             this.tabPageGeneral.Controls.Add(this.groupBoxPaths);
             this.tabPageGeneral.Controls.Add(this.groupBoxOptions);
-            this.tabPageGeneral.Controls.Add(this.groupBoxActions);
             this.tabPageGeneral.Controls.Add(this.groupBoxNuclearWinterMode);
             this.tabPageGeneral.Controls.Add(this.groupBoxBehavior);
             this.tabPageGeneral.Controls.Add(this.groupBoxLocalization);
@@ -419,28 +415,6 @@
             this.checkBoxReadOnly.TabIndex = 4;
             this.checkBoxReadOnly.Text = "Make *.ini files read-only";
             this.checkBoxReadOnly.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxActions
-            // 
-            this.groupBoxActions.Controls.Add(this.linkLabelEnableDangerZone);
-            this.groupBoxActions.Location = new System.Drawing.Point(402, 340);
-            this.groupBoxActions.Name = "groupBoxActions";
-            this.groupBoxActions.Size = new System.Drawing.Size(358, 50);
-            this.groupBoxActions.TabIndex = 43;
-            this.groupBoxActions.TabStop = false;
-            this.groupBoxActions.Text = "Actions";
-            // 
-            // linkLabelEnableDangerZone
-            // 
-            this.linkLabelEnableDangerZone.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabelEnableDangerZone.LinkColor = System.Drawing.Color.Red;
-            this.linkLabelEnableDangerZone.Location = new System.Drawing.Point(7, 16);
-            this.linkLabelEnableDangerZone.Name = "linkLabelEnableDangerZone";
-            this.linkLabelEnableDangerZone.Size = new System.Drawing.Size(342, 15);
-            this.linkLabelEnableDangerZone.TabIndex = 44;
-            this.linkLabelEnableDangerZone.TabStop = true;
-            this.linkLabelEnableDangerZone.Text = "⚠️ Enable Danger Zone";
-            this.linkLabelEnableDangerZone.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelEnableDangerZone_LinkClicked);
             // 
             // groupBoxNuclearWinterMode
             // 
@@ -1622,7 +1596,6 @@
             this.groupBoxPaths.PerformLayout();
             this.groupBoxOptions.ResumeLayout(false);
             this.groupBoxOptions.PerformLayout();
-            this.groupBoxActions.ResumeLayout(false);
             this.groupBoxNuclearWinterMode.ResumeLayout(false);
             this.groupBoxNuclearWinterMode.PerformLayout();
             this.groupBoxBehavior.ResumeLayout(false);
@@ -1760,8 +1733,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerRetrieveProfileInfo;
         private System.Windows.Forms.RadioButton radioButtonEditionUnknown;
         private System.Windows.Forms.PictureBox pictureBoxUnknown;
-        private System.Windows.Forms.GroupBox groupBoxActions;
-        private System.Windows.Forms.LinkLabel linkLabelEnableDangerZone;
         private System.Windows.Forms.Button buttonNMLogin;
         private System.ComponentModel.BackgroundWorker backgroundWorkerSSOLogin;
         private System.Windows.Forms.Label labelAPIKey;
