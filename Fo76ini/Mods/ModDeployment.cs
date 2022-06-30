@@ -62,9 +62,10 @@ namespace Fo76ini.Mods
                 LogFile.WriteLine("Installing mods...");
 
                 // Deploy all SeparateBA2 and Loose mods:
-                foreach (ManagedMod mod in mods)
+                for (int i = 0; i < mods.Count; i++)
                 {
-                    ProgressChanged?.Invoke(Progress.Indetermined($"Deploying {mod.Title}..."));
+                    ManagedMod mod = mods[i];
+                    ProgressChanged?.Invoke(Progress.Ongoing($"Installing mod: {i + 1} of {mods.Count} - {mod.Title}...", (float)(i + 1) / (float)mods.Count));
                     if (mod.Enabled &&
                         Directory.Exists(mod.ManagedFolderPath) &&
                         !Utils.IsDirectoryEmpty(mod.ManagedFolderPath))
@@ -72,10 +73,12 @@ namespace Fo76ini.Mods
                         switch (mod.Method)
                         {
                             case ManagedMod.DeploymentMethod.SeparateBA2:
+                                ProgressChanged?.Invoke(Progress.Ongoing($"Creating archive: {i + 1} of {mods.Count} - {mod.Title}...", (float)(i + 1) / (float)mods.Count));
                                 DeploySeparateArchive(mod, mods.Resources);
                                 mods.Save();
                                 break;
                             case ManagedMod.DeploymentMethod.LooseFiles:
+                                ProgressChanged?.Invoke(Progress.Ongoing($"Copying files: {i + 1} of {mods.Count} - {mod.Title}...", (float)(i + 1) / (float)mods.Count));
                                 DeployLooseFiles(mods, mod, mods.GamePath);
                                 mods.Save();
                                 break;

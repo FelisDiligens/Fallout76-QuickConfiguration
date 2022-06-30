@@ -1,5 +1,4 @@
-﻿using Fo76ini.Tweaks.ResourceLists;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -220,7 +219,6 @@ namespace Fo76ini.Mods
             XDocument xmlDoc = XDocument.Load(XMLPath);
             this.Mods = Deserialize(xmlDoc);
             this.Resources = ResourceList.FromTXT(ResourcesPath);
-            this.Resources.AssociateTweak(ResourceListTweak.GetDefaultList());
         }
 
         /// <summary>
