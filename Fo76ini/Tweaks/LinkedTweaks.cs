@@ -354,7 +354,7 @@ namespace Fo76ini.Tweaks
         /// </summary>
         /// <param name="colorDialog">This dialog opens when "Pick color" button has been clicked.</param>
         /// <param name="preview">A picture box whose BackColor property gets set.</param>
-        public static void LinkColor(Button pickColor, Button resetColor, ColorDialog colorDialog, ColorPreview preview, ITweak<Color> tweak)
+        public static void LinkColor(Button pickColorBtn, Button resetColorBtn, ColorDialog colorDialog, ColorPreview preview, ITweak<Color> tweak)
         {
             SetValueActions.Add(() => preview.BackColor = tweak.GetValue());
 
@@ -363,7 +363,7 @@ namespace Fo76ini.Tweaks
                 tweak.SetValue(preview.BackColor);
             };
 
-            pickColor.Click += (object sender, EventArgs e) =>
+            EventHandler pickColorHandler = new EventHandler((object sender, EventArgs e) =>
             {
                 colorDialog.Color = tweak.GetValue();
                 if (colorDialog.ShowDialog() == DialogResult.OK)
@@ -371,9 +371,12 @@ namespace Fo76ini.Tweaks
                     preview.BackColor = colorDialog.Color;
                     tweak.SetValue(colorDialog.Color);
                 }
-            };
+            });
 
-            resetColor.Click += (object sender, EventArgs e) =>
+            pickColorBtn.Click += pickColorHandler;
+            preview.Click += pickColorHandler;
+
+            resetColorBtn.Click += (object sender, EventArgs e) =>
             {
                 tweak.ResetValue();
                 preview.BackColor = tweak.GetValue();

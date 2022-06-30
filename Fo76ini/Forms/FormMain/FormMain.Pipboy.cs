@@ -13,8 +13,6 @@ namespace Fo76ini
 {
     partial class FormMain
     {
-        #region Pipboy
-
         /*
          * Color presets
          */
@@ -91,7 +89,7 @@ namespace Fo76ini
                 buttonColorPickPipboy,  // "Pick color" button
                 buttonColorResetPipboy, // "Reset" button
                 colorDialog,            // The color picking dialog that should open when clicking on "Pick color"
-                colorPreviewPipboy,     // The little, colored square that is left to the label.
+                colorPreviewPipboy,     // The colored square that is left to the label.
                 pipboyColorTweak);
 
             // Quickboy color
@@ -141,25 +139,66 @@ namespace Fo76ini
 
         private void colorPreviewPipboy_BackColorChanged(object sender, EventArgs e)
         {
-            this.pipboyPreview.PreviewColor = this.colorPreviewPipboy.BackColor;
+            Color color = this.colorPreviewPipboy.BackColor;
+            this.pipboyPreview.PreviewColor = color;
+            this.textBoxPipboyHEX.Text = GetHEXFromColor(color);
         }
 
         private void colorPreviewQuickboy_BackColorChanged(object sender, EventArgs e)
         {
-            this.quickboyPreview.PreviewColor = this.colorPreviewQuickboy.BackColor;
+            Color color = this.colorPreviewQuickboy.BackColor;
+            this.quickboyPreview.PreviewColor = color;
+            this.textBoxQuickboyHEX.Text = GetHEXFromColor(color);
         }
 
         private void colorPreviewPAPipboy_BackColorChanged(object sender, EventArgs e)
         {
-            this.pipboyPAPreview.PreviewColor = this.colorPreviewPAPipboy.BackColor;
+            Color color = this.colorPreviewPAPipboy.BackColor;
+            this.pipboyPAPreview.PreviewColor = color;
+            this.textBoxPAColorHEX.Text = GetHEXFromColor(color);
         }
 
-        private void buttonPipboyTargetReset_Click(object sender, EventArgs e)
+
+        private void textBoxPipboyHEX_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                Color color = GetColorFromHEX(this.textBoxPipboyHEX.Text);
+                this.textBoxPipboyHEX.ForeColor = Color.Black;
+                Pipboy_SetColorOfActivePreview(color);
+            }
+            catch
+            {
+                this.textBoxPipboyHEX.ForeColor = Color.Red;
+            }
         }
 
-        private void buttonPipboyTargetSetRecommended_Click(object sender, EventArgs e)
+        private void textBoxQuickboyHEX_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                Color color = GetColorFromHEX(this.textBoxQuickboyHEX.Text);
+                this.textBoxQuickboyHEX.ForeColor = Color.Black;
+                Pipboy_SetColorOfActivePreview(color);
+            }
+            catch
+            {
+                this.textBoxQuickboyHEX.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxPAColorHEX_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Color color = GetColorFromHEX(this.textBoxPAColorHEX.Text);
+                this.textBoxPAColorHEX.ForeColor = Color.Black;
+                Pipboy_SetColorOfActivePreview(color);
+            }
+            catch
+            {
+                this.textBoxPAColorHEX.ForeColor = Color.Red;
+            }
         }
 
         private void linkLabelPipboyTargetSetRecommended_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -174,7 +213,18 @@ namespace Fo76ini
             this.numPipboyTargetHeight.Value = 700;
         }
 
+        private Color GetColorFromHEX(string hex)
+        {
+            hex = hex.Replace("#", string.Empty);
+            int r = Convert.ToInt32(hex.Substring(0, 2), 16);
+            int g = Convert.ToInt32(hex.Substring(2, 2), 16);
+            int b = Convert.ToInt32(hex.Substring(4, 2), 16);
+            return Color.FromArgb(r, g, b);
+        }
 
-        #endregion
+        private string GetHEXFromColor(Color color)
+        {
+            return "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
+        }
     }
 }

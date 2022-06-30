@@ -187,6 +187,8 @@
             this.tabPagePipBoy = new System.Windows.Forms.TabPage();
             this.tabControlPipboy = new System.Windows.Forms.TabControl();
             this.tabPagePipboyColor = new System.Windows.Forms.TabPage();
+            this.textBoxPipboyHEX = new System.Windows.Forms.TextBox();
+            this.labelPipboyHEX = new System.Windows.Forms.Label();
             this.labelPreviewPipboy = new System.Windows.Forms.Label();
             this.pipboyPreview = new Fo76ini.Controls.PipboyPreview();
             this.labelPipboyColorPreviewNotice = new System.Windows.Forms.Label();
@@ -194,6 +196,8 @@
             this.colorPreviewPipboy = new Fo76ini.Controls.ColorPreview();
             this.buttonColorPickPipboy = new System.Windows.Forms.Button();
             this.tabPageQuickboyColor = new System.Windows.Forms.TabPage();
+            this.textBoxQuickboyHEX = new System.Windows.Forms.TextBox();
+            this.labelQuickboyHEX = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonColorPickQuickboy = new System.Windows.Forms.Button();
@@ -201,6 +205,8 @@
             this.quickboyPreview = new Fo76ini.Controls.PipboyPreview();
             this.colorPreviewQuickboy = new Fo76ini.Controls.ColorPreview();
             this.tabPagePowerArmorColor = new System.Windows.Forms.TabPage();
+            this.textBoxPAColorHEX = new System.Windows.Forms.TextBox();
+            this.labelPAColorHEX = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonColorPickPAPipboy = new System.Windows.Forms.Button();
@@ -2731,6 +2737,8 @@
             // 
             // tabPagePipboyColor
             // 
+            this.tabPagePipboyColor.Controls.Add(this.textBoxPipboyHEX);
+            this.tabPagePipboyColor.Controls.Add(this.labelPipboyHEX);
             this.tabPagePipboyColor.Controls.Add(this.labelPreviewPipboy);
             this.tabPagePipboyColor.Controls.Add(this.pipboyPreview);
             this.tabPagePipboyColor.Controls.Add(this.labelPipboyColorPreviewNotice);
@@ -2745,6 +2753,25 @@
             this.tabPagePipboyColor.TabIndex = 0;
             this.tabPagePipboyColor.Text = "Pip-Boy";
             this.tabPagePipboyColor.UseVisualStyleBackColor = true;
+            // 
+            // textBoxPipboyHEX
+            // 
+            this.textBoxPipboyHEX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPipboyHEX.Location = new System.Drawing.Point(276, 63);
+            this.textBoxPipboyHEX.Name = "textBoxPipboyHEX";
+            this.textBoxPipboyHEX.Size = new System.Drawing.Size(138, 20);
+            this.textBoxPipboyHEX.TabIndex = 43;
+            this.textBoxPipboyHEX.TextChanged += new System.EventHandler(this.textBoxPipboyHEX_TextChanged);
+            // 
+            // labelPipboyHEX
+            // 
+            this.labelPipboyHEX.AutoSize = true;
+            this.labelPipboyHEX.Location = new System.Drawing.Point(273, 47);
+            this.labelPipboyHEX.Name = "labelPipboyHEX";
+            this.labelPipboyHEX.Size = new System.Drawing.Size(32, 13);
+            this.labelPipboyHEX.TabIndex = 42;
+            this.labelPipboyHEX.Text = "HEX:";
             // 
             // labelPreviewPipboy
             // 
@@ -2794,6 +2821,7 @@
             // 
             this.colorPreviewPipboy.BackColor = System.Drawing.Color.Fuchsia;
             this.colorPreviewPipboy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewPipboy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.colorPreviewPipboy.Location = new System.Drawing.Point(13, 13);
             this.colorPreviewPipboy.Margin = new System.Windows.Forms.Padding(10);
             this.colorPreviewPipboy.Name = "colorPreviewPipboy";
@@ -2813,6 +2841,8 @@
             // 
             // tabPageQuickboyColor
             // 
+            this.tabPageQuickboyColor.Controls.Add(this.textBoxQuickboyHEX);
+            this.tabPageQuickboyColor.Controls.Add(this.labelQuickboyHEX);
             this.tabPageQuickboyColor.Controls.Add(this.label1);
             this.tabPageQuickboyColor.Controls.Add(this.label4);
             this.tabPageQuickboyColor.Controls.Add(this.buttonColorPickQuickboy);
@@ -2827,6 +2857,25 @@
             this.tabPageQuickboyColor.TabIndex = 1;
             this.tabPageQuickboyColor.Text = "Quick-Boy";
             this.tabPageQuickboyColor.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQuickboyHEX
+            // 
+            this.textBoxQuickboyHEX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxQuickboyHEX.Location = new System.Drawing.Point(276, 63);
+            this.textBoxQuickboyHEX.Name = "textBoxQuickboyHEX";
+            this.textBoxQuickboyHEX.Size = new System.Drawing.Size(138, 20);
+            this.textBoxQuickboyHEX.TabIndex = 48;
+            this.textBoxQuickboyHEX.TextChanged += new System.EventHandler(this.textBoxQuickboyHEX_TextChanged);
+            // 
+            // labelQuickboyHEX
+            // 
+            this.labelQuickboyHEX.AutoSize = true;
+            this.labelQuickboyHEX.Location = new System.Drawing.Point(273, 47);
+            this.labelQuickboyHEX.Name = "labelQuickboyHEX";
+            this.labelQuickboyHEX.Size = new System.Drawing.Size(32, 13);
+            this.labelQuickboyHEX.TabIndex = 47;
+            this.labelQuickboyHEX.Text = "HEX:";
             // 
             // label1
             // 
@@ -2884,6 +2933,7 @@
             // 
             this.colorPreviewQuickboy.BackColor = System.Drawing.Color.Fuchsia;
             this.colorPreviewQuickboy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewQuickboy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.colorPreviewQuickboy.Location = new System.Drawing.Point(13, 13);
             this.colorPreviewQuickboy.Margin = new System.Windows.Forms.Padding(10);
             this.colorPreviewQuickboy.Name = "colorPreviewQuickboy";
@@ -2893,6 +2943,8 @@
             // 
             // tabPagePowerArmorColor
             // 
+            this.tabPagePowerArmorColor.Controls.Add(this.textBoxPAColorHEX);
+            this.tabPagePowerArmorColor.Controls.Add(this.labelPAColorHEX);
             this.tabPagePowerArmorColor.Controls.Add(this.label2);
             this.tabPagePowerArmorColor.Controls.Add(this.label5);
             this.tabPagePowerArmorColor.Controls.Add(this.labelPowerArmorColor);
@@ -2906,6 +2958,25 @@
             this.tabPagePowerArmorColor.TabIndex = 2;
             this.tabPagePowerArmorColor.Text = "Power Armor";
             this.tabPagePowerArmorColor.UseVisualStyleBackColor = true;
+            // 
+            // textBoxPAColorHEX
+            // 
+            this.textBoxPAColorHEX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPAColorHEX.Location = new System.Drawing.Point(276, 63);
+            this.textBoxPAColorHEX.Name = "textBoxPAColorHEX";
+            this.textBoxPAColorHEX.Size = new System.Drawing.Size(138, 20);
+            this.textBoxPAColorHEX.TabIndex = 50;
+            this.textBoxPAColorHEX.TextChanged += new System.EventHandler(this.textBoxPAColorHEX_TextChanged);
+            // 
+            // labelPAColorHEX
+            // 
+            this.labelPAColorHEX.AutoSize = true;
+            this.labelPAColorHEX.Location = new System.Drawing.Point(273, 47);
+            this.labelPAColorHEX.Name = "labelPAColorHEX";
+            this.labelPAColorHEX.Size = new System.Drawing.Size(32, 13);
+            this.labelPAColorHEX.TabIndex = 49;
+            this.labelPAColorHEX.Text = "HEX:";
             // 
             // label2
             // 
@@ -2963,6 +3034,7 @@
             // 
             this.colorPreviewPAPipboy.BackColor = System.Drawing.Color.Fuchsia;
             this.colorPreviewPAPipboy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewPAPipboy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.colorPreviewPAPipboy.Location = new System.Drawing.Point(13, 13);
             this.colorPreviewPAPipboy.Margin = new System.Windows.Forms.Padding(10);
             this.colorPreviewPAPipboy.Name = "colorPreviewPAPipboy";
@@ -6231,6 +6303,12 @@
         private System.Windows.Forms.Panel panelGalleryOptions;
         private Controls.PictureBoxButton pictureBoxButtonUpdate;
         private Controls.PictureBoxButton pictureBoxButtonGameEdition;
+        private System.Windows.Forms.TextBox textBoxPipboyHEX;
+        private System.Windows.Forms.Label labelPipboyHEX;
+        private System.Windows.Forms.TextBox textBoxQuickboyHEX;
+        private System.Windows.Forms.Label labelQuickboyHEX;
+        private System.Windows.Forms.TextBox textBoxPAColorHEX;
+        private System.Windows.Forms.Label labelPAColorHEX;
     }
 }
 
