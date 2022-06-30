@@ -897,7 +897,6 @@ namespace Fo76ini.Utilities
             {
                 return false;
             }
-            return false;
         }
     }
 }

@@ -632,7 +632,7 @@ namespace Fo76ini
                 Process.Start(startInfo);
                 Environment.Exit(0);
             }
-            catch (Win32Exception ex)
+            catch (Win32Exception)
             {
                 MsgBox.PlayErrorSound();
             }

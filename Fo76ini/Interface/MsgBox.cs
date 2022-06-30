@@ -84,7 +84,7 @@ namespace Fo76ini.Interface
             {
                 return new MsgBox(this.ID, string.Format(this.Title, values), this.Text);
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 return this;
             }
@@ -96,7 +96,7 @@ namespace Fo76ini.Interface
             {
                 return new MsgBox(this.ID, this.Title, string.Format(this.Text, values));
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 return this;
             }

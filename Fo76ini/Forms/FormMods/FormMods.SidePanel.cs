@@ -1038,12 +1038,12 @@ namespace Fo76ini
                 {
                     ModInstallations.AddArchive(editedMod, filePath, UpdateProgress);
                 }
-                catch (Archive2RequirementsException exc)
+                catch (Archive2RequirementsException)
                 {
                     MsgBox.ShowID("archive2InstallRequirements", MessageBoxIcon.Error);
                     return false;
                 }
-                catch (Archive2Exception exc)
+                catch (Archive2Exception)
                 {
                     MsgBox.ShowID("archive2Error", MessageBoxIcon.Error);
                     return false;
@@ -1069,12 +1069,12 @@ namespace Fo76ini
                 {
                     AddToModBulk(files, UpdateProgress);
                 }
-                catch (Archive2RequirementsException exc)
+                catch (Archive2RequirementsException)
                 {
                     MsgBox.ShowID("archive2InstallRequirements", MessageBoxIcon.Error);
                     return false;
                 }
-                catch (Archive2Exception exc)
+                catch (Archive2Exception)
                 {
                     MsgBox.ShowID("archive2Error", MessageBoxIcon.Error);
                     return false;
