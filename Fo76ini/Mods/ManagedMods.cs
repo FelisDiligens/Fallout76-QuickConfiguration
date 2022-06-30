@@ -51,7 +51,25 @@ namespace Fo76ini.Mods
             get { return Path.Combine(ModsPath, "resources.txt"); }
         }
 
+        /// <summary>
+        /// Returns the number of managed mods.
+        /// </summary>
         public int Count => this.Mods.Count();
+
+        /// <summary>
+        /// How many managed mods are enabled?
+        /// </summary>
+        public int EnabledCount
+        {
+            get
+            {
+                int enabledCount = 0;
+                foreach (ManagedMod mod in this.Mods)
+                    if (mod.Enabled)
+                        enabledCount++;
+                return enabledCount;
+            }
+        }
 
         public bool IsReadOnly => false;
 

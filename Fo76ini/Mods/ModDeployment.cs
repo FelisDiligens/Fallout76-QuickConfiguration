@@ -62,23 +62,24 @@ namespace Fo76ini.Mods
                 LogFile.WriteLine("Installing mods...");
 
                 // Deploy all SeparateBA2 and Loose mods:
-                for (int i = 0; i < mods.Count; i++)
+                int counter = 0;
+                int enabledMods = mods.EnabledCount;
+                foreach (ManagedMod mod in mods)
                 {
-                    ManagedMod mod = mods[i];
-                    ProgressChanged?.Invoke(Progress.Ongoing($"Installing mod: {i + 1} of {mods.Count} - {mod.Title}...", (float)(i + 1) / (float)mods.Count));
                     if (mod.Enabled &&
                         Directory.Exists(mod.ManagedFolderPath) &&
                         !Utils.IsDirectoryEmpty(mod.ManagedFolderPath))
                     {
+                        ProgressChanged?.Invoke(Progress.Ongoing($"Installing mod: {++counter} of {enabledMods} - {mod.Title}...", (float)(counter) / (float)enabledMods));
                         switch (mod.Method)
                         {
                             case ManagedMod.DeploymentMethod.SeparateBA2:
-                                ProgressChanged?.Invoke(Progress.Ongoing($"Creating archive: {i + 1} of {mods.Count} - {mod.Title}...", (float)(i + 1) / (float)mods.Count));
+                                ProgressChanged?.Invoke(Progress.Ongoing($"Creating archive: {counter} of {enabledMods} - {mod.Title}...", (float)(counter) / (float)enabledMods));
                                 DeploySeparateArchive(mod, mods.Resources);
                                 mods.Save();
                                 break;
                             case ManagedMod.DeploymentMethod.LooseFiles:
-                                ProgressChanged?.Invoke(Progress.Ongoing($"Copying files: {i + 1} of {mods.Count} - {mod.Title}...", (float)(i + 1) / (float)mods.Count));
+                                ProgressChanged?.Invoke(Progress.Ongoing($"Copying files: {counter} of {enabledMods} - {mod.Title}...", (float)(counter) / (float)enabledMods));
                                 DeployLooseFiles(mods, mod, mods.GamePath);
                                 mods.Save();
                                 break;

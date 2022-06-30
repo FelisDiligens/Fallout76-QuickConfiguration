@@ -198,18 +198,18 @@ namespace Fo76ini.Mods
             }
 
             // Get remote mod info:
-            ProgressChanged(Progress.Indetermined("Requesting mod information and thumbnail..."));
+            ProgressChanged?.Invoke(Progress.Indetermined("Requesting mod information and thumbnail..."));
             NMMod nmMod = NexusMods.RequestModInformation(nxmLink.modId);
 
             // Install mod:
-            ProgressChanged(Progress.Indetermined($"Installing '{nmMod.Title}'..."));
+            ProgressChanged?.Invoke(Progress.Indetermined($"Installing '{nmMod.Title}'..."));
             ManagedMod newMod = ModInstallations.FromArchive(mods.GamePath, dlPath, useSourceBA2Archive, ProgressChanged);
             newMod.Title = nmMod.Title;
             newMod.Version = nmMod.LatestVersion;
             newMod.URL = nmMod.URL;
             mods.Add(newMod);
             mods.Save();
-            ProgressChanged?.Invoke(Progress.Done($"'{nmMod.Title}' installed."));
+            ProgressChanged?.Invoke(Progress.Done($"\"{nmMod.Title}\" installed."));
 
             return true;
         }
@@ -239,7 +239,6 @@ namespace Fo76ini.Mods
         /// </summary>
         public static void ImportInstalledMods(ManagedMods mods, Action<Progress> ProgressChanged = null)
         {
-            // TODO: ProgressChanged for ImportInstalledMods
             ProgressChanged?.Invoke(Progress.Indetermined("Determining which files to import..."));
 
             ModDeployment.LogFile.WriteLine("\n\nImporting already installed mods...");

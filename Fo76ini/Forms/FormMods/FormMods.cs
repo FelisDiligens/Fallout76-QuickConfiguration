@@ -1169,13 +1169,8 @@ namespace Fo76ini
             else
                 this.DisplayAllDone();
 
-            this.toolStripStatusLabelModCount.Text = Mods.Count().ToString();
-
-            int enabledCount = 0;
-            foreach (ManagedMod mod in Mods)
-                if (mod.Enabled)
-                    enabledCount++;
-            this.toolStripStatusLabelEnabledCount.Text = enabledCount.ToString();
+            this.toolStripStatusLabelModCount.Text = Mods.Count.ToString();
+            this.toolStripStatusLabelEnabledCount.Text = Mods.EnabledCount.ToString();
         }
 
         #endregion
