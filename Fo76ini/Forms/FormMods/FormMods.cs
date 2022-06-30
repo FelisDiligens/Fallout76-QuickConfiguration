@@ -277,7 +277,7 @@ namespace Fo76ini
         public void EnableNuclearWinterMode()
         {
             ModDeployment.LogFile.WriteLine("\n");
-            ModDeployment.LogFile.WriteTimeStamp();
+            ModDeployment.LogFile.WriteLine(Log.GetTimeStamp());
             ModDeployment.LogFile.WriteLine("Enabling Nuclear Winter mode");
 
             Mods.NuclearWinterModeEnabled = true;
@@ -303,7 +303,7 @@ namespace Fo76ini
         public void DisableNuclearWinterMode()
         {
             ModDeployment.LogFile.WriteLine("\n");
-            ModDeployment.LogFile.WriteTimeStamp();
+            ModDeployment.LogFile.WriteLine(Log.GetTimeStamp());
             ModDeployment.LogFile.WriteLine("Disabling Nuclear Winter mode");
 
             Mods.NuclearWinterModeEnabled = false;
@@ -699,15 +699,15 @@ namespace Fo76ini
         // Help > Log files > Show modmanager.log.txt
         private void showModmanagerlogtxtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(ModDeployment.LogFile.GetFilePath()))
-                Utils.OpenNotepad(ModDeployment.LogFile.GetFilePath());
+            if (File.Exists(ModDeployment.LogFilePath))
+                Utils.OpenNotepad(ModDeployment.LogFilePath);
         }
 
         // Help > Log files > Show archive2.log.txt
         private void showArchive2logtxtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Archive2.LogFile.GetFilePath()))
-                Utils.OpenNotepad(Archive2.LogFile.GetFilePath());
+            if (File.Exists(Archive2.LogFilePath))
+                Utils.OpenNotepad(Archive2.LogFilePath);
         }
 
         #endregion

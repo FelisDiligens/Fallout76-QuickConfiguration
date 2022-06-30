@@ -10,7 +10,8 @@ namespace Fo76ini.Utilities
     /// </summary>
     public class Archive2
     {
-        public static Log LogFile;
+        public static TextWriter LogFile;
+        public static string LogFilePath;
 
         public static readonly string DefaultArchive2Path = ".\\Archive2\\Archive2.exe";
 
@@ -28,7 +29,8 @@ namespace Fo76ini.Utilities
 
         static Archive2()
         {
-            LogFile = new Log(Log.GetFilePath("archive2.log.txt"));
+            Archive2.LogFilePath = Log.GetFilePath("archive2.log.txt");
+            Archive2.LogFile = Log.Open(LogFilePath);
         }
 
         public enum Compression
@@ -91,7 +93,7 @@ namespace Fo76ini.Utilities
 
             using (Process proc = new Process())
             {
-                LogFile.WriteTimeStamp();
+                LogFile.WriteLine(Log.GetTimeStamp());
                 LogFile.WriteLine($">> Archive2.exe {arguments}");
                 proc.StartInfo.UseShellExecute = false; // = true
                 proc.StartInfo.RedirectStandardOutput = true; // // ...

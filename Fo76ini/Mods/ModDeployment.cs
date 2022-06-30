@@ -14,17 +14,19 @@ namespace Fo76ini.Mods
     public static class ModDeployment
     {
         // TODO: Clean FrozenData?
-        public static Log LogFile;
+        public static TextWriter LogFile;
+        public static string LogFilePath;
 
         static ModDeployment()
         {
-            ModDeployment.LogFile = new Log(Log.GetFilePath("modmanager.log.txt"));
+            ModDeployment.LogFilePath = Log.GetFilePath("modmanager.log.txt");
+            ModDeployment.LogFile = Log.Open(LogFilePath);
         }
 
         public static void Deploy(ManagedMods mods, Action<Progress> ProgressChanged, bool invalidateBundledFrozenArchives = true)
         {
             LogFile.WriteLine("\n\n");
-            LogFile.WriteTimeStamp();
+            LogFile.WriteLine(Log.GetTimeStamp());
             LogFile.WriteLine($"Version {Shared.VERSION}, deploying...");
             LogFile.WriteLine($"Game path: {mods.GamePath}");
 
@@ -89,6 +91,7 @@ namespace Fo76ini.Mods
 
             LogFile.WriteLine("Deployment finished.");
             LogFile.WriteLine($"Resource list ({mods.Resources.Count} files): \"{mods.Resources}\"");
+            LogFile.Flush();
         }
 
         /// <summary>
@@ -372,6 +375,7 @@ namespace Fo76ini.Mods
             }
 
             mods.Save();
+            LogFile.Flush();
         }
 
         public static void Remove(ManagedMod mod, ResourceList resources, String GamePath)
