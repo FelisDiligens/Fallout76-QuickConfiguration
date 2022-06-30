@@ -17,8 +17,14 @@ namespace Fo76ini
              * Behavior
              */
             this.checkBoxAddArchivesAsBundled.Checked = Configuration.Mods.UnpackBA2ByDefault;
-            this.checkBoxModsUseHardlinks.Checked = Configuration.Mods.UseHardlinks;
             this.checkBoxFreezeBundledArchives.Checked = Configuration.Mods.FreezeBundledArchives;
+
+            if (Configuration.Mods.UseHardlinks)
+                this.radioButtonModsUseHardlinks.Checked = true;
+            else if (Configuration.Mods.UseSymlinks)
+                this.radioButtonModsUseSymlinks.Checked = true;
+            else
+                this.radioButtonModsCopyFiles.Checked = true;
 
             /*
              * Interface
@@ -79,28 +85,52 @@ namespace Fo76ini
         // Alternative *.ba2 import method
         private void checkBoxAddArchivesAsBundled_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Config.Set("Mods", "bUnpackBA2ByDefault", this.checkBoxAddArchivesAsBundled.Checked);
+            Configuration.Mods.UnpackBA2ByDefault = this.checkBoxAddArchivesAsBundled.Checked;
             IniFiles.Config.Save();
         }
 
         // Hard links
-        private void checkBoxModsUseHardlinks_CheckedChanged(object sender, EventArgs e)
+        private void radioButtonModsUseHardlinks_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Config.Set("Mods", "bUseHardlinks", this.checkBoxModsUseHardlinks.Checked);
-            IniFiles.Config.Save();
+            if (this.radioButtonModsUseHardlinks.Checked)
+            {
+                Configuration.Mods.UseHardlinks = true;
+                Configuration.Mods.UseSymlinks = false;
+                IniFiles.Config.Save();
+            }
+        }
+
+        private void radioButtonModsUseSymlinks_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radioButtonModsUseSymlinks.Checked)
+            {
+                Configuration.Mods.UseHardlinks = false;
+                Configuration.Mods.UseSymlinks = true;
+                IniFiles.Config.Save();
+            }
+        }
+
+        private void radioButtonModsCopyFiles_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radioButtonModsCopyFiles.Checked)
+            {
+                Configuration.Mods.UseHardlinks = false;
+                Configuration.Mods.UseSymlinks = false;
+                IniFiles.Config.Save();
+            }
         }
 
         // Freeze bundled archives
         private void checkBoxFreezeBundledArchives_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Config.Set("Mods", "bFreezeBundledArchives", this.checkBoxFreezeBundledArchives.Checked);
+            Configuration.Mods.FreezeBundledArchives = this.checkBoxFreezeBundledArchives.Checked;
             IniFiles.Config.Save();
         }
 
         // Show the mod title from NexusMods, if available.
         private void checkBoxModsUseRemoteModNames_CheckedChanged(object sender, EventArgs e)
         {
-            IniFiles.Config.Set("Mods", "bShowRemoteModNames", this.checkBoxModsUseRemoteModNames.Checked);
+            Configuration.Mods.ShowRemoteModNames = this.checkBoxModsUseRemoteModNames.Checked;
             IniFiles.Config.Save();
             DeselectAll();
             UpdateModList();

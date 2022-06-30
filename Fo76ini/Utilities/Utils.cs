@@ -615,14 +615,36 @@ namespace Fo76ini.Utilities
 
         public static bool CreateHardLink(string originalFilePath, string newLinkPath, bool overwrite)
         {
+            if (!File.Exists(originalFilePath))
+                throw new IOException($"Cannot create hardlink: \"{originalFilePath}\" does not exist.");
+
             if (File.Exists(newLinkPath))
             {
                 if (overwrite)
                     File.Delete(newLinkPath);
                 else
-                    throw new Exception($"Trying to create a hardlink in \"{newLinkPath}\" but this file already exists.");
+                    throw new IOException($"Trying to create a hardlink in \"{newLinkPath}\" but this file already exists.");
             }
-            return Utils.CreateHardLink(newLinkPath, originalFilePath, IntPtr.Zero);
+            return Utils.CreateHardLink(originalFilePath, newLinkPath);
+        }
+
+        [DllImport("kernel32.dll", EntryPoint = "CreateSymbolicLinkW", CharSet = CharSet.Unicode)]
+        private static extern bool CreateSymbolicLink(
+        string lpSymlinkFileName, string lpTargetFileName, int dwFlags);
+
+        public static bool CreateSymbolicLink(string originalFilePath, string newLinkPath, bool overwrite)
+        {
+            if (!File.Exists(originalFilePath))
+                throw new IOException($"Cannot create symlink: \"{originalFilePath}\" does not exist.");
+
+            if (File.Exists(newLinkPath))
+            {
+                if (overwrite)
+                    File.Delete(newLinkPath);
+                else
+                    throw new IOException($"Trying to create a symlink in \"{newLinkPath}\" but this file already exists.");
+            }
+            return Utils.CreateSymbolicLink(newLinkPath, originalFilePath, 0);
         }
 
         public static ImageCodecInfo GetImageEncoder(ImageFormat format)

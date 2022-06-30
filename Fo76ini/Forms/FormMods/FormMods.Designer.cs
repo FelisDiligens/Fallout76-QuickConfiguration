@@ -61,12 +61,13 @@
             this.buttonModsDeploy = new System.Windows.Forms.Button();
             this.labelModsDeploy = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.checkBoxModsUseHardlinks = new System.Windows.Forms.CheckBox();
             this.checkBoxFreezeBundledArchives = new System.Windows.Forms.CheckBox();
             this.checkBoxFreezeArchive = new System.Windows.Forms.CheckBox();
             this.checkBoxModsUseRemoteModNames = new System.Windows.Forms.CheckBox();
             this.buttonModAbstain = new System.Windows.Forms.Button();
             this.buttonModEndorse = new System.Windows.Forms.Button();
+            this.buttonModOpenFolder = new System.Windows.Forms.Button();
+            this.buttonModOpenPage = new System.Windows.Forms.Button();
             this.openFileDialogMod = new System.Windows.Forms.OpenFileDialog();
             this.checkBoxDisableMods = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -85,6 +86,10 @@
             this.radioButtonModsUseAlternativeList = new System.Windows.Forms.RadioButton();
             this.radioButtonModsUseStandardList = new System.Windows.Forms.RadioButton();
             this.groupBoxModsBehavior = new System.Windows.Forms.GroupBox();
+            this.labelDeployMethod = new System.Windows.Forms.Label();
+            this.radioButtonModsCopyFiles = new System.Windows.Forms.RadioButton();
+            this.radioButtonModsUseSymlinks = new System.Windows.Forms.RadioButton();
+            this.radioButtonModsUseHardlinks = new System.Windows.Forms.RadioButton();
             this.checkBoxAddArchivesAsBundled = new System.Windows.Forms.CheckBox();
             this.groupBoxLists = new System.Windows.Forms.GroupBox();
             this.buttonModsResetTextbox = new System.Windows.Forms.Button();
@@ -123,10 +128,8 @@
             this.textBoxModArchiveName = new System.Windows.Forms.TextBox();
             this.labelModArchiveName = new System.Windows.Forms.Label();
             this.groupBoxModDetailsDetails = new System.Windows.Forms.GroupBox();
-            this.buttonModOpenFolder = new System.Windows.Forms.Button();
             this.textBoxModFolderName = new System.Windows.Forms.TextBox();
             this.labelModFolderName = new System.Windows.Forms.Label();
-            this.buttonModOpenPage = new System.Windows.Forms.Button();
             this.panelModDetailsNexusMods = new System.Windows.Forms.Panel();
             this.linkLabelModSetLatestVersion = new System.Windows.Forms.LinkLabel();
             this.labelModAuthor = new System.Windows.Forms.Label();
@@ -447,26 +450,20 @@
             this.labelModsDeploy.TabIndex = 52;
             this.labelModsDeploy.Text = "Ready";
             // 
-            // checkBoxModsUseHardlinks
+            // toolTip
             // 
-            this.checkBoxModsUseHardlinks.AutoSize = true;
-            this.checkBoxModsUseHardlinks.Location = new System.Drawing.Point(6, 19);
-            this.checkBoxModsUseHardlinks.Name = "checkBoxModsUseHardlinks";
-            this.checkBoxModsUseHardlinks.Size = new System.Drawing.Size(331, 17);
-            this.checkBoxModsUseHardlinks.TabIndex = 1;
-            this.checkBoxModsUseHardlinks.Text = "Make hard links instead of copying files manually (recommended)";
-            this.toolTip.SetToolTip(this.checkBoxModsUseHardlinks, "Reduces disk space and deployment time.");
-            this.checkBoxModsUseHardlinks.UseVisualStyleBackColor = true;
-            this.checkBoxModsUseHardlinks.CheckedChanged += new System.EventHandler(this.checkBoxModsUseHardlinks_CheckedChanged);
+            this.toolTip.AutoPopDelay = 20000;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.ReshowDelay = 100;
             // 
             // checkBoxFreezeBundledArchives
             // 
             this.checkBoxFreezeBundledArchives.AutoSize = true;
-            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(6, 42);
+            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(6, 143);
             this.checkBoxFreezeBundledArchives.Name = "checkBoxFreezeBundledArchives";
-            this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(211, 17);
+            this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(210, 17);
             this.checkBoxFreezeBundledArchives.TabIndex = 2;
-            this.checkBoxFreezeBundledArchives.Text = "[Experimental] Freeze bundled archives";
+            this.checkBoxFreezeBundledArchives.Text = "Freeze bundled archives (experimental)";
             this.toolTip.SetToolTip(this.checkBoxFreezeBundledArchives, "Instead of rebuilding bundled archives, it will save a bundled copy and ask you i" +
         "f you want to update it on deploy.");
             this.checkBoxFreezeBundledArchives.UseVisualStyleBackColor = true;
@@ -531,6 +528,40 @@
             this.toolTip.SetToolTip(this.buttonModEndorse, "Endorse this mod.");
             this.buttonModEndorse.UseVisualStyleBackColor = false;
             this.buttonModEndorse.Click += new System.EventHandler(this.buttonModEndorse_Click);
+            // 
+            // buttonModOpenFolder
+            // 
+            this.buttonModOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonModOpenFolder.BackColor = System.Drawing.Color.Transparent;
+            this.buttonModOpenFolder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonModOpenFolder.FlatAppearance.BorderSize = 0;
+            this.buttonModOpenFolder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonModOpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModOpenFolder.Image = global::Fo76ini.Properties.Resources.folder_3_16;
+            this.buttonModOpenFolder.Location = new System.Drawing.Point(330, 68);
+            this.buttonModOpenFolder.Name = "buttonModOpenFolder";
+            this.buttonModOpenFolder.Size = new System.Drawing.Size(28, 28);
+            this.buttonModOpenFolder.TabIndex = 57;
+            this.toolTip.SetToolTip(this.buttonModOpenFolder, "Open folder to mod");
+            this.buttonModOpenFolder.UseVisualStyleBackColor = false;
+            this.buttonModOpenFolder.Click += new System.EventHandler(this.buttonModOpenFolder_Click);
+            // 
+            // buttonModOpenPage
+            // 
+            this.buttonModOpenPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonModOpenPage.BackColor = System.Drawing.Color.Transparent;
+            this.buttonModOpenPage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonModOpenPage.FlatAppearance.BorderSize = 0;
+            this.buttonModOpenPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonModOpenPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModOpenPage.Image = global::Fo76ini.Properties.Resources.external_link_16;
+            this.buttonModOpenPage.Location = new System.Drawing.Point(330, 41);
+            this.buttonModOpenPage.Name = "buttonModOpenPage";
+            this.buttonModOpenPage.Size = new System.Drawing.Size(28, 28);
+            this.buttonModOpenPage.TabIndex = 54;
+            this.toolTip.SetToolTip(this.buttonModOpenPage, "Open link in browser");
+            this.buttonModOpenPage.UseVisualStyleBackColor = false;
+            this.buttonModOpenPage.Click += new System.EventHandler(this.buttonModOpenPage_Click);
             // 
             // openFileDialogMod
             // 
@@ -650,7 +681,7 @@
             this.groupBoxModsInterface.Controls.Add(this.checkBoxModsUseRemoteModNames);
             this.groupBoxModsInterface.Location = new System.Drawing.Point(422, 6);
             this.groupBoxModsInterface.Name = "groupBoxModsInterface";
-            this.groupBoxModsInterface.Size = new System.Drawing.Size(324, 128);
+            this.groupBoxModsInterface.Size = new System.Drawing.Size(324, 166);
             this.groupBoxModsInterface.TabIndex = 61;
             this.groupBoxModsInterface.TabStop = false;
             this.groupBoxModsInterface.Text = "Interface";
@@ -690,20 +721,73 @@
             // 
             // groupBoxModsBehavior
             // 
+            this.groupBoxModsBehavior.Controls.Add(this.labelDeployMethod);
+            this.groupBoxModsBehavior.Controls.Add(this.radioButtonModsCopyFiles);
+            this.groupBoxModsBehavior.Controls.Add(this.radioButtonModsUseSymlinks);
+            this.groupBoxModsBehavior.Controls.Add(this.radioButtonModsUseHardlinks);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxFreezeBundledArchives);
-            this.groupBoxModsBehavior.Controls.Add(this.checkBoxModsUseHardlinks);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
             this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 6);
             this.groupBoxModsBehavior.Name = "groupBoxModsBehavior";
-            this.groupBoxModsBehavior.Size = new System.Drawing.Size(410, 128);
+            this.groupBoxModsBehavior.Size = new System.Drawing.Size(410, 166);
             this.groupBoxModsBehavior.TabIndex = 60;
             this.groupBoxModsBehavior.TabStop = false;
             this.groupBoxModsBehavior.Text = "Behavior";
             // 
+            // labelDeployMethod
+            // 
+            this.labelDeployMethod.AutoSize = true;
+            this.labelDeployMethod.Location = new System.Drawing.Point(6, 18);
+            this.labelDeployMethod.Name = "labelDeployMethod";
+            this.labelDeployMethod.Size = new System.Drawing.Size(94, 13);
+            this.labelDeployMethod.TabIndex = 6;
+            this.labelDeployMethod.Text = "How to copy files?";
+            // 
+            // radioButtonModsCopyFiles
+            // 
+            this.radioButtonModsCopyFiles.AutoSize = true;
+            this.radioButtonModsCopyFiles.Location = new System.Drawing.Point(9, 82);
+            this.radioButtonModsCopyFiles.Name = "radioButtonModsCopyFiles";
+            this.radioButtonModsCopyFiles.Size = new System.Drawing.Size(132, 17);
+            this.radioButtonModsCopyFiles.TabIndex = 5;
+            this.radioButtonModsCopyFiles.TabStop = true;
+            this.radioButtonModsCopyFiles.Text = "Copy files (most stable)";
+            this.toolTip.SetToolTip(this.radioButtonModsCopyFiles, "Copies files and therefore uses up more disk space.\r\n\r\nHas no side effects. Use t" +
+        "his option if you\'re experiencing issues.");
+            this.radioButtonModsCopyFiles.UseVisualStyleBackColor = true;
+            this.radioButtonModsCopyFiles.CheckedChanged += new System.EventHandler(this.radioButtonModsCopyFiles_CheckedChanged);
+            // 
+            // radioButtonModsUseSymlinks
+            // 
+            this.radioButtonModsUseSymlinks.AutoSize = true;
+            this.radioButtonModsUseSymlinks.Location = new System.Drawing.Point(9, 59);
+            this.radioButtonModsUseSymlinks.Name = "radioButtonModsUseSymlinks";
+            this.radioButtonModsUseSymlinks.Size = new System.Drawing.Size(281, 17);
+            this.radioButtonModsUseSymlinks.TabIndex = 4;
+            this.radioButtonModsUseSymlinks.TabStop = true;
+            this.radioButtonModsUseSymlinks.Text = "Make symbolic links (experimental, needs admin rights)";
+            this.toolTip.SetToolTip(this.radioButtonModsUseSymlinks, resources.GetString("radioButtonModsUseSymlinks.ToolTip"));
+            this.radioButtonModsUseSymlinks.UseVisualStyleBackColor = true;
+            this.radioButtonModsUseSymlinks.CheckedChanged += new System.EventHandler(this.radioButtonModsUseSymlinks_CheckedChanged);
+            // 
+            // radioButtonModsUseHardlinks
+            // 
+            this.radioButtonModsUseHardlinks.AutoSize = true;
+            this.radioButtonModsUseHardlinks.Location = new System.Drawing.Point(9, 36);
+            this.radioButtonModsUseHardlinks.Name = "radioButtonModsUseHardlinks";
+            this.radioButtonModsUseHardlinks.Size = new System.Drawing.Size(176, 17);
+            this.radioButtonModsUseHardlinks.TabIndex = 3;
+            this.radioButtonModsUseHardlinks.TabStop = true;
+            this.radioButtonModsUseHardlinks.Text = "Make hard links (recommended)";
+            this.toolTip.SetToolTip(this.radioButtonModsUseHardlinks, "Make hard links instead of copying files.\r\nReduces deployment time and disk space" +
+        ".\r\n\r\nThis is the recommended option.");
+            this.radioButtonModsUseHardlinks.UseVisualStyleBackColor = true;
+            this.radioButtonModsUseHardlinks.CheckedChanged += new System.EventHandler(this.radioButtonModsUseHardlinks_CheckedChanged);
+            // 
             // checkBoxAddArchivesAsBundled
             // 
             this.checkBoxAddArchivesAsBundled.AutoSize = true;
-            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(6, 65);
+            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(6, 120);
             this.checkBoxAddArchivesAsBundled.Name = "checkBoxAddArchivesAsBundled";
             this.checkBoxAddArchivesAsBundled.Size = new System.Drawing.Size(167, 17);
             this.checkBoxAddArchivesAsBundled.TabIndex = 0;
@@ -721,9 +805,9 @@
             this.groupBoxLists.Controls.Add(this.textBoxResourceList);
             this.groupBoxLists.Controls.Add(this.buttonModsCleanList);
             this.groupBoxLists.Controls.Add(this.labelsResourceIndexFileList);
-            this.groupBoxLists.Location = new System.Drawing.Point(6, 140);
+            this.groupBoxLists.Location = new System.Drawing.Point(6, 178);
             this.groupBoxLists.Name = "groupBoxLists";
-            this.groupBoxLists.Size = new System.Drawing.Size(740, 318);
+            this.groupBoxLists.Size = new System.Drawing.Size(740, 280);
             this.groupBoxLists.TabIndex = 59;
             this.groupBoxLists.TabStop = false;
             this.groupBoxLists.Text = "Lists";
@@ -731,7 +815,7 @@
             // buttonModsResetTextbox
             // 
             this.buttonModsResetTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModsResetTextbox.Location = new System.Drawing.Point(503, 289);
+            this.buttonModsResetTextbox.Location = new System.Drawing.Point(503, 251);
             this.buttonModsResetTextbox.Name = "buttonModsResetTextbox";
             this.buttonModsResetTextbox.Size = new System.Drawing.Size(98, 23);
             this.buttonModsResetTextbox.TabIndex = 60;
@@ -742,7 +826,7 @@
             // buttonModsApplyTextBox
             // 
             this.buttonModsApplyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModsApplyTextBox.Location = new System.Drawing.Point(607, 289);
+            this.buttonModsApplyTextBox.Location = new System.Drawing.Point(607, 251);
             this.buttonModsApplyTextBox.Name = "buttonModsApplyTextBox";
             this.buttonModsApplyTextBox.Size = new System.Drawing.Size(127, 23);
             this.buttonModsApplyTextBox.TabIndex = 59;
@@ -758,13 +842,13 @@
             this.textBoxResourceList.Location = new System.Drawing.Point(6, 37);
             this.textBoxResourceList.Multiline = true;
             this.textBoxResourceList.Name = "textBoxResourceList";
-            this.textBoxResourceList.Size = new System.Drawing.Size(728, 246);
+            this.textBoxResourceList.Size = new System.Drawing.Size(728, 208);
             this.textBoxResourceList.TabIndex = 54;
             // 
             // buttonModsCleanList
             // 
             this.buttonModsCleanList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModsCleanList.Location = new System.Drawing.Point(6, 289);
+            this.buttonModsCleanList.Location = new System.Drawing.Point(6, 251);
             this.buttonModsCleanList.Name = "buttonModsCleanList";
             this.buttonModsCleanList.Size = new System.Drawing.Size(98, 23);
             this.buttonModsCleanList.TabIndex = 58;
@@ -1162,23 +1246,6 @@
             this.groupBoxModDetailsDetails.TabStop = false;
             this.groupBoxModDetailsDetails.Text = "Details";
             // 
-            // buttonModOpenFolder
-            // 
-            this.buttonModOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModOpenFolder.BackColor = System.Drawing.Color.Transparent;
-            this.buttonModOpenFolder.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonModOpenFolder.FlatAppearance.BorderSize = 0;
-            this.buttonModOpenFolder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonModOpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModOpenFolder.Image = global::Fo76ini.Properties.Resources.folder_3_16;
-            this.buttonModOpenFolder.Location = new System.Drawing.Point(330, 68);
-            this.buttonModOpenFolder.Name = "buttonModOpenFolder";
-            this.buttonModOpenFolder.Size = new System.Drawing.Size(28, 28);
-            this.buttonModOpenFolder.TabIndex = 57;
-            this.toolTip.SetToolTip(this.buttonModOpenFolder, "Open folder to mod");
-            this.buttonModOpenFolder.UseVisualStyleBackColor = false;
-            this.buttonModOpenFolder.Click += new System.EventHandler(this.buttonModOpenFolder_Click);
-            // 
             // textBoxModFolderName
             // 
             this.textBoxModFolderName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1197,23 +1264,6 @@
             this.labelModFolderName.Size = new System.Drawing.Size(68, 13);
             this.labelModFolderName.TabIndex = 55;
             this.labelModFolderName.Text = "Folder name:";
-            // 
-            // buttonModOpenPage
-            // 
-            this.buttonModOpenPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonModOpenPage.BackColor = System.Drawing.Color.Transparent;
-            this.buttonModOpenPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonModOpenPage.FlatAppearance.BorderSize = 0;
-            this.buttonModOpenPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonModOpenPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModOpenPage.Image = global::Fo76ini.Properties.Resources.external_link_16;
-            this.buttonModOpenPage.Location = new System.Drawing.Point(330, 41);
-            this.buttonModOpenPage.Name = "buttonModOpenPage";
-            this.buttonModOpenPage.Size = new System.Drawing.Size(28, 28);
-            this.buttonModOpenPage.TabIndex = 54;
-            this.toolTip.SetToolTip(this.buttonModOpenPage, "Open link in browser");
-            this.buttonModOpenPage.UseVisualStyleBackColor = false;
-            this.buttonModOpenPage.Click += new System.EventHandler(this.buttonModOpenPage_Click);
             // 
             // panelModDetailsNexusMods
             // 
@@ -1786,7 +1836,6 @@
         private System.Windows.Forms.TabPage tabPageModsSettings;
         private System.Windows.Forms.GroupBox groupBoxModsBehavior;
         private System.Windows.Forms.CheckBox checkBoxFreezeBundledArchives;
-        private System.Windows.Forms.CheckBox checkBoxModsUseHardlinks;
         private System.Windows.Forms.CheckBox checkBoxAddArchivesAsBundled;
         private System.Windows.Forms.GroupBox groupBoxLists;
         private System.Windows.Forms.Button buttonModsResetTextbox;
@@ -1878,5 +1927,9 @@
         private BrightIdeasSoftware.OLVColumn olvColumnAltArchivePreset;
         private BrightIdeasSoftware.OLVColumn olvColumnAltIsFrozen;
         private System.Windows.Forms.Button buttonModOpenFolder;
+        private System.Windows.Forms.Label labelDeployMethod;
+        private System.Windows.Forms.RadioButton radioButtonModsCopyFiles;
+        private System.Windows.Forms.RadioButton radioButtonModsUseSymlinks;
+        private System.Windows.Forms.RadioButton radioButtonModsUseHardlinks;
     }
 }

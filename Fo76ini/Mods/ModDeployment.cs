@@ -129,10 +129,7 @@ namespace Fo76ini.Mods
 
                 // ... and copy the file (and replace it if necessary).
                 LogFile.WriteLine($"      Copying: \"{relPath}\"");
-                if (Configuration.Mods.UseHardlinks)
-                    Utils.CreateHardLink(filePath, destinationPath, true);
-                else
-                    File.Copy(filePath, destinationPath, true);
+                CopyFileOrMakeLink(filePath, destinationPath, true);
             }
 
             mod.CurrentRootFolder = mod.RootFolder;
@@ -161,16 +158,10 @@ namespace Fo76ini.Mods
                 LogFile.WriteLine($"      Copying frozen archive...");
 
                 // ... and copy it to the Data folder.
-                if (Configuration.Mods.UseHardlinks)
-                    Utils.CreateHardLink(
-                        mod.FrozenArchivePath,
-                        mod.ArchivePath,
-                        true);
-                else
-                    File.Copy(
-                        mod.FrozenArchivePath,
-                        mod.ArchivePath,
-                        true);
+                CopyFileOrMakeLink(
+                    mod.FrozenArchivePath,
+                    mod.ArchivePath,
+                    true);
             }
 
             // If mod isn't supposed to be deployed frozen...
@@ -260,10 +251,10 @@ namespace Fo76ini.Mods
                     LogFile.WriteLine($"         Copying {archive.ArchiveName}");
 
                     // ... copy it into the Data folder ...
-                    if (Configuration.Mods.UseHardlinks)
-                        Utils.CreateHardLink(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
-                    else
-                        File.Copy(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
+                    CopyFileOrMakeLink(
+                        archive.GetFrozenArchivePath(),
+                        archive.GetArchivePath(),
+                        true);
 
                     // ... and add it to the resource list.
                     resources.Insert(0, archive.ArchiveName);
@@ -290,10 +281,10 @@ namespace Fo76ini.Mods
                         // either freeze to FrozenData and then copy to Data:
                         Archive2.Create(archive.GetFrozenArchivePath(), archive.TempPath, archive.Compression, archive.Format);
 
-                        if (Configuration.Mods.UseHardlinks)
-                            Utils.CreateHardLink(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
-                        else
-                            File.Copy(archive.GetFrozenArchivePath(), archive.GetArchivePath(), true);
+                        CopyFileOrMakeLink(
+                            archive.GetFrozenArchivePath(),
+                            archive.GetArchivePath(),
+                            true);
                     }
                     else
                     {
@@ -352,10 +343,9 @@ namespace Fo76ini.Mods
                 // Copy the file to the correct temp folder:
                 Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
 
-                if (Configuration.Mods.UseHardlinks)
-                    Utils.CreateHardLink(filePath, destinationPath, true);
-                else
-                    File.Copy(filePath, destinationPath, true);
+                // Archive2 doesn't like symlinks apparently,
+                // so only copy or create hardlink:
+                CopyFileOrMakeHardLink(filePath, destinationPath, true);
             }
         }
 
@@ -508,6 +498,31 @@ namespace Fo76ini.Mods
                 Directory.Delete(parent);
                 parent = Path.GetDirectoryName(parent);
             }
+        }
+
+        /// <summary>
+        /// Copy a file or create a hard link to that file.
+        /// Symbolic links will not be created.
+        /// </summary>
+        private static void CopyFileOrMakeHardLink(string filePath, string destinationPath, bool overwrite)
+        {
+            if (Configuration.Mods.UseHardlinks)
+                Utils.CreateHardLink(filePath, destinationPath, overwrite);
+            else
+                File.Copy(filePath, destinationPath, overwrite);
+        }
+
+        /// <summary>
+        /// Copy a file or create a (hard or sym) link to that file.
+        /// </summary>
+        private static void CopyFileOrMakeLink(string filePath, string destinationPath, bool overwrite)
+        {
+            if (Configuration.Mods.UseHardlinks)
+                Utils.CreateHardLink(filePath, destinationPath, overwrite);
+            else if (Configuration.Mods.UseSymlinks && Utils.HasAdminRights())
+                Utils.CreateSymbolicLink(filePath, destinationPath, overwrite);
+            else
+                File.Copy(filePath, destinationPath, overwrite);
         }
 
         /// <summary>

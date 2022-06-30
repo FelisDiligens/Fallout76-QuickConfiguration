@@ -33,6 +33,18 @@ namespace Fo76ini
                 }
             }
 
+            public static bool UseSymlinks
+            {
+                get
+                {
+                    return IniFiles.Config.GetBool("Mods", "bUseSymlinks", true);
+                }
+                set
+                {
+                    IniFiles.Config.Set("Mods", "bUseSymlinks", value);
+                }
+            }
+
             public static bool UnpackBA2ByDefault
             {
                 get
