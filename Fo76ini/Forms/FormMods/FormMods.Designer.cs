@@ -68,12 +68,9 @@
             this.buttonModAbstain = new System.Windows.Forms.Button();
             this.checkBoxModsUseRemoteModNames = new System.Windows.Forms.CheckBox();
             this.openFileDialogMod = new System.Windows.Forms.OpenFileDialog();
-            this.folderBrowserDialogMod = new System.Windows.Forms.FolderBrowserDialog();
             this.checkBoxDisableMods = new System.Windows.Forms.CheckBox();
-            this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialogBA2 = new System.Windows.Forms.OpenFileDialog();
-            this.folderBrowserDialogPickRootDir = new System.Windows.Forms.FolderBrowserDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelDescModCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelModCount = new System.Windows.Forms.ToolStripStatusLabel();
@@ -549,10 +546,6 @@
             this.checkBoxDisableMods.Text = "Disable mods";
             this.checkBoxDisableMods.UseVisualStyleBackColor = true;
             this.checkBoxDisableMods.CheckedChanged += new System.EventHandler(this.checkBoxDisableMods_CheckedChanged);
-            // 
-            // openFileDialogGamePath
-            // 
-            this.openFileDialogGamePath.Filter = "Fallout 76 executable|Fallout76.exe,Project76_GamePass.exe";
             // 
             // panel1
             // 
@@ -1741,9 +1734,7 @@
         private System.Windows.Forms.Label labelModsDeploy;
         public System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.OpenFileDialog openFileDialogMod;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogMod;
         private System.Windows.Forms.CheckBox checkBoxDisableMods;
-        private System.Windows.Forms.OpenFileDialog openFileDialogGamePath;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem showConflictingFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
@@ -1757,7 +1748,6 @@
         private System.Windows.Forms.ToolStripMenuItem showModmanagerlogtxtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showArchive2logtxtToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBoxModsLoadingGIF;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogPickRootDir;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nexusModsAPIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateModInformationToolStripMenuItem;

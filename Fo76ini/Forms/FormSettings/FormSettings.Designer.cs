@@ -162,7 +162,6 @@
             this.backgroundWorkerSSOLogin = new System.ComponentModel.BackgroundWorker();
             this.openFileDialogArchiveTwoPath = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxUI.SuspendLayout();
@@ -1601,10 +1600,6 @@
             this.openFileDialogSevenZipPath.Filter = "Executable|*.exe";
             this.openFileDialogSevenZipPath.FilterIndex = 2;
             // 
-            // folderBrowserDialog
-            // 
-            this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.UserProfile;
-            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1792,7 +1787,6 @@
         private System.Windows.Forms.Button buttonPickDownloadsPath;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.PictureBox pictureBoxSteamPTS;
         private System.Windows.Forms.RadioButton radioButtonEditionSteamPTS;
         private System.Windows.Forms.Label labelEditionBackCompat;

@@ -19,10 +19,12 @@ namespace Fo76ini.Utilities
         /// <summary>
         /// Returns a path relative to "workingDirectory".
         /// 
-        /// MakeRelativePath("c:\\dev\\foo\\bar", "c:\\dev\\junk\\readme.txt")
-        /// -> returns: "..\\..\\junk\\readme.txt"
-        /// MakeRelativePath("c:\\dev\\foo\\bar", "c:\\dev\\foo\\bar\\docs\\readme.txt")
-        /// ->  returns: "docs\\readme.txt"
+        /// MakeRelativePath(@"C:\dev\foo\bar", @"C:\dev\junk\readme.txt")
+        /// -> returns: @"..\..\junk\readme.txt"
+        /// MakeRelativePath(@"C:\dev\foo\bar", @"C:\dev\foo\bar\docs\readme.txt")
+        /// ->  returns: @".\docs\readme.txt"
+        /// MakeRelativePath(@"C:\dev\foo\bar", @"C:\dev\foo\bar")
+        /// ->  returns: @"."
         /// </summary>
         /// <param name="workingDirectory">Reference path</param>
         /// <param name="fullPath">Full path</param>
@@ -35,14 +37,14 @@ namespace Fo76ini.Utilities
             string result = string.Empty;
             int offset;
 
-            // Smae path:
-            if (fullPath == workingDirectory)
+            // Same path:
+            if (fullPath.TrimEnd('\\') == workingDirectory.TrimEnd('\\'))
                 return ".";
 
             // this is the easy case.  The file is inside of the working directory.
             if (fullPath.StartsWith(workingDirectory))
             {
-                return fullPath.Substring(workingDirectory.Length + 1);
+                return ".\\" + fullPath.Substring(workingDirectory.Length + 1);
             }
 
             // the hard case has to back out of the working directory

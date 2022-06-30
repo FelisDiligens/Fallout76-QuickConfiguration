@@ -4,6 +4,7 @@ using Fo76ini.NexusAPI;
 using Fo76ini.Profiles;
 using Fo76ini.Tweaks;
 using Fo76ini.Utilities;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -289,10 +290,12 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (UpdatingUI)
                 return;
-            this.openFileDialogGamePath.FileName = ProfileManager.SelectedGame.ExecutableName;
-            if (this.openFileDialogGamePath.ShowDialog() == DialogResult.OK)
+
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                string path = Path.GetDirectoryName(this.openFileDialogGamePath.FileName); // We want the path where Fallout76.exe resides.
+                string path = dialog.FileName; // We want the path where Fallout76.exe resides.
                 if (GameInstance.ValidateGamePath(path))
                 {
                     this.textBoxGamePath.Text = path;
@@ -302,6 +305,7 @@ namespace Fo76ini.Forms.FormSettings
                 else
                     MsgBox.ShowID("modsGamePathInvalid");
             }
+            this.Focus();
         }
 
         public static string AutoDetectGamePath()
@@ -661,13 +665,17 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (UpdatingUI)
                 return;
-            this.folderBrowserDialog.SelectedPath = Configuration.DefaultDownloadPath;
-            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
+
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = Configuration.DefaultDownloadPath;
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                string path = this.folderBrowserDialog.SelectedPath;
+                string path = dialog.FileName;
                 this.textBoxDownloadsPath.Text = path;
                 Configuration.DownloadPath = this.textBoxDownloadsPath.Text;
             }
+            this.Focus();
         }
     }
 }

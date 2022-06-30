@@ -248,9 +248,6 @@ Affected files: Fallout76Prefs.ini</value>
   <metadata name="timerCheckFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>500, 96</value>
   </metadata>
-  <metadata name="openFileDialogGamePath.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>120, 46</value>
-  </metadata>
   <data name="labelCredentialsExplanation.Text" xml:space="preserve">
     <value>Your credentials are saved into Fallout76Custom.ini
 This way, you don't have to enter your username and password manually

@@ -3,6 +3,8 @@ using Fo76ini.Mods;
 using Fo76ini.NexusAPI;
 using Fo76ini.Properties;
 using Fo76ini.Utilities;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using Syroot.Windows.IO;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -729,14 +731,18 @@ namespace Fo76ini
         {
             if (isUpdatingSidePanel)
                 return;
-            this.folderBrowserDialogPickRootDir.SelectedPath = Path.Combine(this.Mods.GamePath, "Data");
-            if (this.folderBrowserDialogPickRootDir.ShowDialog() == DialogResult.OK)
+
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = this.Mods.GamePath;
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                string rootFolder = Utils.MakeRelativePath(this.Mods.GamePath, this.folderBrowserDialogPickRootDir.SelectedPath);
+                string rootFolder = Utils.MakeRelativePath(this.Mods.GamePath, dialog.FileName);
                 this.textBoxModRootDir.Text = rootFolder;
                 foreach (ManagedMod mod in editedMods)
                     mod.RootFolder = rootFolder;
             }
+            this.Focus();
             UpdateModList();
             UpdateStatusStrip();
             UpdateWarningLabel();
@@ -904,8 +910,12 @@ namespace Fo76ini
         // Import from folder
         private void linkLabelModReplaceFilesWithFolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (this.folderBrowserDialogMod.ShowDialog() == DialogResult.OK)
-                AddFolderToModThreaded(this.folderBrowserDialogMod.SelectedPath);
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = KnownFolders.Profile.Path;
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                AddFolderToModThreaded(dialog.FileName);
+            this.Focus();
         }
 
         // Auto-detect installation options
