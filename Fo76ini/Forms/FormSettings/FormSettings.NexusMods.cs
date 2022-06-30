@@ -35,7 +35,7 @@ namespace Fo76ini.Forms.FormSettings
             this.labelNMNotLoggedIn.Visible = !loggedIn;
             this.labelNMDailyRateLimit.Visible = loggedIn;
             this.labelNMHourlyRateLimit.Visible = loggedIn;
-            this.labelNMDailyRateLimitReset.Visible = loggedIn;
+            this.labelNMRateLimitReset.Visible = loggedIn;
             this.labelNMDescDailyRateLimit.Visible = loggedIn;
             this.labelNMDescHourlyRateLimit.Visible = loggedIn;
             this.labelNMDescLimitReset.Visible = loggedIn;
@@ -110,21 +110,22 @@ namespace Fo76ini.Forms.FormSettings
                     break;
             }
 
-            this.labelNMDailyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), Utils.Clamp(NexusMods.User.DailyRateLimit, 0, 1000000));
-            this.labelNMHourlyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), Utils.Clamp(NexusMods.User.HourlyRateLimit, 0, 1000000));
-            DateTime dailyRateLimitReset;
-            if (NexusMods.User.DailyRateLimitResetString != "" &&
-                NexusMods.User.TryParseDailyRateLimitReset(out dailyRateLimitReset))
+            this.labelNMDailyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.User.DailyRateLimit);
+            this.labelNMHourlyRateLimit.Text = string.Format(Localization.GetString("nmRateLimitLeft"), NexusMods.User.HourlyRateLimit);
+
+            DateTime hourlyRateLimitReset;
+            if (NexusMods.User.HourlyRateLimitResetString != "" &&
+                NexusMods.User.TryParseHourlyRateLimitReset(out hourlyRateLimitReset))
             {
-                TimeSpan diff = dailyRateLimitReset - DateTime.Now;
+                TimeSpan diff = hourlyRateLimitReset - DateTime.Now;
                 if (diff.TotalSeconds <= 0)
-                    this.labelNMDailyRateLimitReset.Text = string.Format(Localization.GetString("nmResetTime"), "0", "0");
+                    this.labelNMRateLimitReset.Text = string.Format(Localization.GetString("nmResetTime"), "0", "0");
                 else
-                    this.labelNMDailyRateLimitReset.Text = string.Format(Localization.GetString("nmResetTime"), diff.Hours, diff.Minutes);
+                    this.labelNMRateLimitReset.Text = string.Format(Localization.GetString("nmResetTime"), diff.Hours, diff.Minutes);
             }
             else
             {
-                this.labelNMDailyRateLimitReset.Text = Localization.GetString("unknown");
+                this.labelNMRateLimitReset.Text = Localization.GetString("unknown");
             }
 
             this.pictureBoxNMProfilePicture.Image = Resources.user_white;

@@ -35,6 +35,7 @@ namespace Fo76ini.NexusAPI
         public int DailyRateLimit = 0;
         public int HourlyRateLimit = 0;
         public string DailyRateLimitResetString = "";
+        public string HourlyRateLimitResetString = "";
 
         /// <summary>
         /// Whether the user is currently logged in.
@@ -74,7 +75,8 @@ namespace Fo76ini.NexusAPI
 
                     DailyRateLimit = Convert.ToInt32(request.ResponseHeaders["x-rl-daily-remaining"]);
                     DailyRateLimitResetString = request.ResponseHeaders["x-rl-daily-reset"];
-                    HourlyRateLimit = Convert.ToInt32(request.ResponseHeaders["X-RL-Hourly-Remaining"]);
+                    HourlyRateLimit = Convert.ToInt32(request.ResponseHeaders["x-rl-hourly-remaining"]);
+                    HourlyRateLimitResetString = request.ResponseHeaders["x-rl-hourly-reset"];
 
                     DownloadProfilePicture();
 
@@ -190,7 +192,8 @@ namespace Fo76ini.NexusAPI
             xmlRoot.Add(new XElement("RateLimit",
                 new XAttribute("daily", DailyRateLimit),
                 new XAttribute("hourly", HourlyRateLimit),
-                new XElement("DailyResetTime", DailyRateLimitResetString)
+                new XElement("DailyResetTime", DailyRateLimitResetString),
+                new XElement("HourlyResetTime", HourlyRateLimitResetString)
             ));
 
             xmlDoc.Save(NexusMods.AccountXMLPath);
@@ -257,6 +260,9 @@ namespace Fo76ini.NexusAPI
 
                 if (xmlRateLimit.Element("DailyResetTime") != null)
                     DailyRateLimitResetString = xmlRateLimit.Element("DailyResetTime").Value;
+
+                if (xmlRateLimit.Element("HourlyResetTime") != null)
+                    HourlyRateLimitResetString = xmlRateLimit.Element("HourlyResetTime").Value;
             }
 
             return true;
@@ -264,9 +270,19 @@ namespace Fo76ini.NexusAPI
 
         public bool TryParseDailyRateLimitReset(out DateTime result)
         {
+            return TryParseDate(DailyRateLimitResetString, out result);
+        }
+
+        public bool TryParseHourlyRateLimitReset(out DateTime result)
+        {
+            return TryParseDate(HourlyRateLimitResetString, out result);
+        }
+
+        private bool TryParseDate(string dateTime, out DateTime result)
+        {
             try
             {
-                result = DateTime.ParseExact(DailyRateLimitResetString, "yyyy-MM-dd HH:mm:ss zzz", System.Globalization.CultureInfo.InvariantCulture);
+                result = DateTime.ParseExact(dateTime, "yyyy-MM-dd HH:mm:ss zzz", System.Globalization.CultureInfo.InvariantCulture);
                 return true;
             }
             catch
