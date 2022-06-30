@@ -14,7 +14,8 @@ namespace Fo76ini.Profiles
         Unknown = 0,
         Steam = 2,
         SteamPTS = 5,
-        Xbox = 4, // MSStore
+        Xbox = 4,
+        MSStore = 4,
         BethesdaNet = 1,
         BethesdaNetPTS = 3
     }
