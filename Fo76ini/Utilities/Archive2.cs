@@ -31,6 +31,10 @@ namespace Fo76ini.Utilities
         {
             Archive2.LogFilePath = Log.GetFilePath("archive2.log.txt");
             Archive2.LogFile = Log.Open(LogFilePath);
+
+#if DEBUG
+            Archive2.LogFile = Console.Out;
+#endif
         }
 
         public enum Compression

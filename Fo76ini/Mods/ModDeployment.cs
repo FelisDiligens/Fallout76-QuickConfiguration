@@ -21,6 +21,10 @@ namespace Fo76ini.Mods
         {
             ModDeployment.LogFilePath = Log.GetFilePath("modmanager.log.txt");
             ModDeployment.LogFile = Log.Open(LogFilePath);
+
+#if DEBUG
+            ModDeployment.LogFile = Console.Out;
+#endif
         }
 
         public static void Deploy(ManagedMods mods, Action<Progress> ProgressChanged, bool invalidateBundledFrozenArchives = true)
