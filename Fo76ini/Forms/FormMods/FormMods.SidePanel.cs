@@ -943,7 +943,8 @@ namespace Fo76ini
         {
             if (isEditingBulk)
                 return;
-            editedMod.Frozen = false;
+            ModActions.Unfreeze(editedMod);
+            //editedMod.Frozen = false;
             UpdateModList();
             UpdateSidePanel();
         }
