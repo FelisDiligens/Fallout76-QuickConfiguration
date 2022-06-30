@@ -406,6 +406,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\folder-3-16.png" />
     <Content Include="Resources\pipboy-preview-mask.png" />
     <Content Include="Resources\pipboy-preview-screen.png" />
     <Content Include="Resources\powerarmor-preview-mask.png" />

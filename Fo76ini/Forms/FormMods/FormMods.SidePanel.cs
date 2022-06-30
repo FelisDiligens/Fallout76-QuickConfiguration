@@ -513,7 +513,7 @@ namespace Fo76ini
             }
 
             // Place groupboxes underneath each other:
-            GroupBox[] groupBoxes = new GroupBox[] { groupBoxModDetailsDetails, groupBoxNotes, groupBoxModDetailsInstallationOptions, groupBoxModReplace };
+            GroupBox[] groupBoxes = new GroupBox[] { groupBoxModDetailsDetails, groupBoxModDetailsInstallationOptions, groupBoxNotes, groupBoxModReplace };
             for (int i = 1; i < groupBoxes.Length; i++)
                 groupBoxes[i].Top = groupBoxes[i - 1].Top + groupBoxes[i - 1].Height + groupboxMargin;
 
@@ -877,6 +877,12 @@ namespace Fo76ini
                 Process.Start("https://www.nexusmods.com/fallout76/mods/" + editedMod.ID.ToString()/* + "?tab=files"*/);
             else if (editedMod.URL != "")
                 Process.Start(editedMod.URL);
+        }
+
+        // Open folder
+        private void buttonModOpenFolder_Click(object sender, EventArgs e)
+        {
+            Utils.OpenExplorer(editedMod.ManagedFolderPath);
         }
 
         // Set latest version

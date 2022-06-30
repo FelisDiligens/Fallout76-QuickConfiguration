@@ -64,9 +64,9 @@
             this.checkBoxModsUseHardlinks = new System.Windows.Forms.CheckBox();
             this.checkBoxFreezeBundledArchives = new System.Windows.Forms.CheckBox();
             this.checkBoxFreezeArchive = new System.Windows.Forms.CheckBox();
-            this.buttonModEndorse = new System.Windows.Forms.Button();
-            this.buttonModAbstain = new System.Windows.Forms.Button();
             this.checkBoxModsUseRemoteModNames = new System.Windows.Forms.CheckBox();
+            this.buttonModAbstain = new System.Windows.Forms.Button();
+            this.buttonModEndorse = new System.Windows.Forms.Button();
             this.openFileDialogMod = new System.Windows.Forms.OpenFileDialog();
             this.checkBoxDisableMods = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -78,7 +78,6 @@
             this.toolStripStatusLabelEnabledCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelSpacer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDeploymentStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
             this.timerCheckForNXM = new System.Windows.Forms.Timer(this.components);
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
             this.groupBoxModsInterface = new System.Windows.Forms.GroupBox();
@@ -124,6 +123,7 @@
             this.textBoxModArchiveName = new System.Windows.Forms.TextBox();
             this.labelModArchiveName = new System.Windows.Forms.Label();
             this.groupBoxModDetailsDetails = new System.Windows.Forms.GroupBox();
+            this.buttonModOpenFolder = new System.Windows.Forms.Button();
             this.textBoxModFolderName = new System.Windows.Forms.TextBox();
             this.labelModFolderName = new System.Windows.Forms.Label();
             this.buttonModOpenPage = new System.Windows.Forms.Button();
@@ -168,10 +168,10 @@
             this.olvColumnAltArchivePreset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnAltIsFrozen = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).BeginInit();
             this.tabPageModsSettings.SuspendLayout();
             this.groupBoxModsInterface.SuspendLayout();
             this.groupBoxModsBehavior.SuspendLayout();
@@ -190,6 +190,7 @@
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectListViewMods)).BeginInit();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -485,21 +486,19 @@
             this.checkBoxFreezeArchive.UseVisualStyleBackColor = true;
             this.checkBoxFreezeArchive.CheckedChanged += new System.EventHandler(this.checkBoxFreezeArchive_CheckedChanged);
             // 
-            // buttonModEndorse
+            // checkBoxModsUseRemoteModNames
             // 
-            this.buttonModEndorse.BackColor = System.Drawing.Color.Transparent;
-            this.buttonModEndorse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.buttonModEndorse.FlatAppearance.BorderSize = 0;
-            this.buttonModEndorse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModEndorse.Image = global::Fo76ini.Properties.Resources.like;
-            this.buttonModEndorse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonModEndorse.Location = new System.Drawing.Point(316, 1);
-            this.buttonModEndorse.Name = "buttonModEndorse";
-            this.buttonModEndorse.Size = new System.Drawing.Size(36, 40);
-            this.buttonModEndorse.TabIndex = 72;
-            this.toolTip.SetToolTip(this.buttonModEndorse, "Endorse this mod.");
-            this.buttonModEndorse.UseVisualStyleBackColor = false;
-            this.buttonModEndorse.Click += new System.EventHandler(this.buttonModEndorse_Click);
+            this.checkBoxModsUseRemoteModNames.AutoSize = true;
+            this.checkBoxModsUseRemoteModNames.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxModsUseRemoteModNames.Name = "checkBoxModsUseRemoteModNames";
+            this.checkBoxModsUseRemoteModNames.Size = new System.Drawing.Size(296, 17);
+            this.checkBoxModsUseRemoteModNames.TabIndex = 3;
+            this.checkBoxModsUseRemoteModNames.Text = "Show the mod title from the NexusMods page if available.";
+            this.toolTip.SetToolTip(this.checkBoxModsUseRemoteModNames, "If checked: Shows the mod\'s title as it is on NexusMods.\r\nIf unchecked: Shows the" +
+        " mod\'s title like you typed it into the side panel.\r\nThis is purely personal pre" +
+        "ference.");
+            this.checkBoxModsUseRemoteModNames.UseVisualStyleBackColor = true;
+            this.checkBoxModsUseRemoteModNames.CheckedChanged += new System.EventHandler(this.checkBoxModsUseRemoteModNames_CheckedChanged);
             // 
             // buttonModAbstain
             // 
@@ -517,19 +516,21 @@
             this.buttonModAbstain.UseVisualStyleBackColor = false;
             this.buttonModAbstain.Click += new System.EventHandler(this.buttonModAbstain_Click);
             // 
-            // checkBoxModsUseRemoteModNames
+            // buttonModEndorse
             // 
-            this.checkBoxModsUseRemoteModNames.AutoSize = true;
-            this.checkBoxModsUseRemoteModNames.Location = new System.Drawing.Point(6, 19);
-            this.checkBoxModsUseRemoteModNames.Name = "checkBoxModsUseRemoteModNames";
-            this.checkBoxModsUseRemoteModNames.Size = new System.Drawing.Size(296, 17);
-            this.checkBoxModsUseRemoteModNames.TabIndex = 3;
-            this.checkBoxModsUseRemoteModNames.Text = "Show the mod title from the NexusMods page if available.";
-            this.toolTip.SetToolTip(this.checkBoxModsUseRemoteModNames, "If checked: Shows the mod\'s title as it is on NexusMods.\r\nIf unchecked: Shows the" +
-        " mod\'s title like you typed it into the side panel.\r\nThis is purely personal pre" +
-        "ference.");
-            this.checkBoxModsUseRemoteModNames.UseVisualStyleBackColor = true;
-            this.checkBoxModsUseRemoteModNames.CheckedChanged += new System.EventHandler(this.checkBoxModsUseRemoteModNames_CheckedChanged);
+            this.buttonModEndorse.BackColor = System.Drawing.Color.Transparent;
+            this.buttonModEndorse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.buttonModEndorse.FlatAppearance.BorderSize = 0;
+            this.buttonModEndorse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModEndorse.Image = global::Fo76ini.Properties.Resources.like;
+            this.buttonModEndorse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonModEndorse.Location = new System.Drawing.Point(316, 1);
+            this.buttonModEndorse.Name = "buttonModEndorse";
+            this.buttonModEndorse.Size = new System.Drawing.Size(36, 40);
+            this.buttonModEndorse.TabIndex = 72;
+            this.toolTip.SetToolTip(this.buttonModEndorse, "Endorse this mod.");
+            this.buttonModEndorse.UseVisualStyleBackColor = false;
+            this.buttonModEndorse.Click += new System.EventHandler(this.buttonModEndorse_Click);
             // 
             // openFileDialogMod
             // 
@@ -620,20 +621,6 @@
             this.toolStripStatusLabelDeploymentStatus.Name = "toolStripStatusLabelDeploymentStatus";
             this.toolStripStatusLabelDeploymentStatus.Size = new System.Drawing.Size(133, 17);
             this.toolStripStatusLabelDeploymentStatus.Text = "Deployment necessary";
-            // 
-            // pictureBoxModsLoadingGIF
-            // 
-            this.pictureBoxModsLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxModsLoadingGIF.BackColor = System.Drawing.Color.White;
-            this.pictureBoxModsLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
-            this.pictureBoxModsLoadingGIF.Location = new System.Drawing.Point(0, 27);
-            this.pictureBoxModsLoadingGIF.Name = "pictureBoxModsLoadingGIF";
-            this.pictureBoxModsLoadingGIF.Size = new System.Drawing.Size(16, 490);
-            this.pictureBoxModsLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxModsLoadingGIF.TabIndex = 57;
-            this.pictureBoxModsLoadingGIF.TabStop = false;
-            this.pictureBoxModsLoadingGIF.Visible = false;
             // 
             // timerCheckForNXM
             // 
@@ -901,7 +888,7 @@
             // groupBoxNotes
             // 
             this.groupBoxNotes.Controls.Add(this.textBoxNotes);
-            this.groupBoxNotes.Location = new System.Drawing.Point(7, 257);
+            this.groupBoxNotes.Location = new System.Drawing.Point(6, 501);
             this.groupBoxNotes.Name = "groupBoxNotes";
             this.groupBoxNotes.Size = new System.Drawing.Size(364, 151);
             this.groupBoxNotes.TabIndex = 76;
@@ -929,7 +916,7 @@
             this.groupBoxModReplace.Controls.Add(this.panelModDetailsReplaceDragAndDrop);
             this.groupBoxModReplace.Controls.Add(this.linkLabelModReplaceFilesWithFolder);
             this.groupBoxModReplace.Controls.Add(this.linkLabelModReplaceFilesWithArchive);
-            this.groupBoxModReplace.Location = new System.Drawing.Point(7, 667);
+            this.groupBoxModReplace.Location = new System.Drawing.Point(6, 658);
             this.groupBoxModReplace.Name = "groupBoxModReplace";
             this.groupBoxModReplace.Size = new System.Drawing.Size(364, 136);
             this.groupBoxModReplace.TabIndex = 75;
@@ -1011,7 +998,7 @@
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.comboBoxModArchivePreset);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.textBoxModArchiveName);
             this.groupBoxModDetailsInstallationOptions.Controls.Add(this.labelModArchiveName);
-            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(7, 414);
+            this.groupBoxModDetailsInstallationOptions.Location = new System.Drawing.Point(6, 248);
             this.groupBoxModDetailsInstallationOptions.Name = "groupBoxModDetailsInstallationOptions";
             this.groupBoxModDetailsInstallationOptions.Size = new System.Drawing.Size(364, 247);
             this.groupBoxModDetailsInstallationOptions.TabIndex = 74;
@@ -1157,6 +1144,7 @@
             // 
             // groupBoxModDetailsDetails
             // 
+            this.groupBoxModDetailsDetails.Controls.Add(this.buttonModOpenFolder);
             this.groupBoxModDetailsDetails.Controls.Add(this.textBoxModFolderName);
             this.groupBoxModDetailsDetails.Controls.Add(this.labelModFolderName);
             this.groupBoxModDetailsDetails.Controls.Add(this.buttonModOpenPage);
@@ -1169,25 +1157,42 @@
             this.groupBoxModDetailsDetails.Controls.Add(this.textBoxModName);
             this.groupBoxModDetailsDetails.Location = new System.Drawing.Point(6, 63);
             this.groupBoxModDetailsDetails.Name = "groupBoxModDetailsDetails";
-            this.groupBoxModDetailsDetails.Size = new System.Drawing.Size(365, 188);
+            this.groupBoxModDetailsDetails.Size = new System.Drawing.Size(364, 179);
             this.groupBoxModDetailsDetails.TabIndex = 73;
             this.groupBoxModDetailsDetails.TabStop = false;
             this.groupBoxModDetailsDetails.Text = "Details";
+            // 
+            // buttonModOpenFolder
+            // 
+            this.buttonModOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonModOpenFolder.BackColor = System.Drawing.Color.Transparent;
+            this.buttonModOpenFolder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonModOpenFolder.FlatAppearance.BorderSize = 0;
+            this.buttonModOpenFolder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonModOpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModOpenFolder.Image = global::Fo76ini.Properties.Resources.folder_3_16;
+            this.buttonModOpenFolder.Location = new System.Drawing.Point(330, 68);
+            this.buttonModOpenFolder.Name = "buttonModOpenFolder";
+            this.buttonModOpenFolder.Size = new System.Drawing.Size(28, 28);
+            this.buttonModOpenFolder.TabIndex = 57;
+            this.toolTip.SetToolTip(this.buttonModOpenFolder, "Open folder to mod");
+            this.buttonModOpenFolder.UseVisualStyleBackColor = false;
+            this.buttonModOpenFolder.Click += new System.EventHandler(this.buttonModOpenFolder_Click);
             // 
             // textBoxModFolderName
             // 
             this.textBoxModFolderName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxModFolderName.Location = new System.Drawing.Point(142, 97);
+            this.textBoxModFolderName.Location = new System.Drawing.Point(142, 72);
             this.textBoxModFolderName.Name = "textBoxModFolderName";
-            this.textBoxModFolderName.Size = new System.Drawing.Size(217, 20);
+            this.textBoxModFolderName.Size = new System.Drawing.Size(185, 20);
             this.textBoxModFolderName.TabIndex = 56;
             this.textBoxModFolderName.TextChanged += new System.EventHandler(this.textBoxModFolderName_TextChanged);
             // 
             // labelModFolderName
             // 
             this.labelModFolderName.AutoSize = true;
-            this.labelModFolderName.Location = new System.Drawing.Point(7, 100);
+            this.labelModFolderName.Location = new System.Drawing.Point(6, 74);
             this.labelModFolderName.Name = "labelModFolderName";
             this.labelModFolderName.Size = new System.Drawing.Size(68, 13);
             this.labelModFolderName.TabIndex = 55;
@@ -1202,10 +1207,11 @@
             this.buttonModOpenPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonModOpenPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModOpenPage.Image = global::Fo76ini.Properties.Resources.external_link_16;
-            this.buttonModOpenPage.Location = new System.Drawing.Point(331, 41);
+            this.buttonModOpenPage.Location = new System.Drawing.Point(330, 41);
             this.buttonModOpenPage.Name = "buttonModOpenPage";
             this.buttonModOpenPage.Size = new System.Drawing.Size(28, 28);
             this.buttonModOpenPage.TabIndex = 54;
+            this.toolTip.SetToolTip(this.buttonModOpenPage, "Open link in browser");
             this.buttonModOpenPage.UseVisualStyleBackColor = false;
             this.buttonModOpenPage.Click += new System.EventHandler(this.buttonModOpenPage_Click);
             // 
@@ -1218,16 +1224,17 @@
             this.panelModDetailsNexusMods.Controls.Add(this.labelModLatestVersion);
             this.panelModDetailsNexusMods.Controls.Add(this.labelModLatestVersionDesc);
             this.panelModDetailsNexusMods.Controls.Add(this.labelModAuthorDesc);
-            this.panelModDetailsNexusMods.Location = new System.Drawing.Point(1, 123);
+            this.panelModDetailsNexusMods.Location = new System.Drawing.Point(1, 120);
+            this.panelModDetailsNexusMods.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.panelModDetailsNexusMods.Name = "panelModDetailsNexusMods";
-            this.panelModDetailsNexusMods.Size = new System.Drawing.Size(363, 57);
+            this.panelModDetailsNexusMods.Size = new System.Drawing.Size(362, 53);
             this.panelModDetailsNexusMods.TabIndex = 53;
             // 
             // linkLabelModSetLatestVersion
             // 
             this.linkLabelModSetLatestVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabelModSetLatestVersion.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabelModSetLatestVersion.Location = new System.Drawing.Point(220, 5);
+            this.linkLabelModSetLatestVersion.Location = new System.Drawing.Point(219, 6);
             this.linkLabelModSetLatestVersion.Name = "linkLabelModSetLatestVersion";
             this.linkLabelModSetLatestVersion.Size = new System.Drawing.Size(137, 13);
             this.linkLabelModSetLatestVersion.TabIndex = 2;
@@ -1239,7 +1246,7 @@
             // labelModAuthor
             // 
             this.labelModAuthor.AutoSize = true;
-            this.labelModAuthor.Location = new System.Drawing.Point(138, 31);
+            this.labelModAuthor.Location = new System.Drawing.Point(138, 32);
             this.labelModAuthor.Name = "labelModAuthor";
             this.labelModAuthor.Size = new System.Drawing.Size(135, 13);
             this.labelModAuthor.TabIndex = 57;
@@ -1248,7 +1255,7 @@
             // labelModLatestVersion
             // 
             this.labelModLatestVersion.AutoSize = true;
-            this.labelModLatestVersion.Location = new System.Drawing.Point(138, 5);
+            this.labelModLatestVersion.Location = new System.Drawing.Point(138, 6);
             this.labelModLatestVersion.Name = "labelModLatestVersion";
             this.labelModLatestVersion.Size = new System.Drawing.Size(22, 13);
             this.labelModLatestVersion.TabIndex = 56;
@@ -1257,7 +1264,7 @@
             // labelModLatestVersionDesc
             // 
             this.labelModLatestVersionDesc.AutoSize = true;
-            this.labelModLatestVersionDesc.Location = new System.Drawing.Point(6, 5);
+            this.labelModLatestVersionDesc.Location = new System.Drawing.Point(5, 6);
             this.labelModLatestVersionDesc.Name = "labelModLatestVersionDesc";
             this.labelModLatestVersionDesc.Size = new System.Drawing.Size(76, 13);
             this.labelModLatestVersionDesc.TabIndex = 54;
@@ -1266,7 +1273,7 @@
             // labelModAuthorDesc
             // 
             this.labelModAuthorDesc.AutoSize = true;
-            this.labelModAuthorDesc.Location = new System.Drawing.Point(6, 31);
+            this.labelModAuthorDesc.Location = new System.Drawing.Point(5, 32);
             this.labelModAuthorDesc.Name = "labelModAuthorDesc";
             this.labelModAuthorDesc.Size = new System.Drawing.Size(41, 13);
             this.labelModAuthorDesc.TabIndex = 53;
@@ -1276,16 +1283,16 @@
             // 
             this.textBoxModVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxModVersion.Location = new System.Drawing.Point(142, 71);
+            this.textBoxModVersion.Location = new System.Drawing.Point(142, 97);
             this.textBoxModVersion.Name = "textBoxModVersion";
-            this.textBoxModVersion.Size = new System.Drawing.Size(217, 20);
+            this.textBoxModVersion.Size = new System.Drawing.Size(216, 20);
             this.textBoxModVersion.TabIndex = 52;
             this.textBoxModVersion.TextChanged += new System.EventHandler(this.textBoxModVersion_TextChanged);
             // 
             // labelModVersion
             // 
             this.labelModVersion.AutoSize = true;
-            this.labelModVersion.Location = new System.Drawing.Point(7, 74);
+            this.labelModVersion.Location = new System.Drawing.Point(6, 100);
             this.labelModVersion.Name = "labelModVersion";
             this.labelModVersion.Size = new System.Drawing.Size(86, 13);
             this.labelModVersion.TabIndex = 51;
@@ -1297,7 +1304,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxModURL.Location = new System.Drawing.Point(142, 45);
             this.textBoxModURL.Name = "textBoxModURL";
-            this.textBoxModURL.Size = new System.Drawing.Size(186, 20);
+            this.textBoxModURL.Size = new System.Drawing.Size(185, 20);
             this.textBoxModURL.TabIndex = 50;
             this.textBoxModURL.TextChanged += new System.EventHandler(this.textBoxModURL_TextChanged);
             // 
@@ -1325,7 +1332,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxModName.Location = new System.Drawing.Point(142, 19);
             this.textBoxModName.Name = "textBoxModName";
-            this.textBoxModName.Size = new System.Drawing.Size(217, 20);
+            this.textBoxModName.Size = new System.Drawing.Size(216, 20);
             this.textBoxModName.TabIndex = 1;
             this.textBoxModName.TextChanged += new System.EventHandler(this.textBoxModName_TextChanged);
             // 
@@ -1656,6 +1663,20 @@
             this.tabControl1.Size = new System.Drawing.Size(760, 490);
             this.tabControl1.TabIndex = 54;
             // 
+            // pictureBoxModsLoadingGIF
+            // 
+            this.pictureBoxModsLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxModsLoadingGIF.BackColor = System.Drawing.Color.White;
+            this.pictureBoxModsLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
+            this.pictureBoxModsLoadingGIF.Location = new System.Drawing.Point(0, 27);
+            this.pictureBoxModsLoadingGIF.Name = "pictureBoxModsLoadingGIF";
+            this.pictureBoxModsLoadingGIF.Size = new System.Drawing.Size(16, 490);
+            this.pictureBoxModsLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxModsLoadingGIF.TabIndex = 57;
+            this.pictureBoxModsLoadingGIF.TabStop = false;
+            this.pictureBoxModsLoadingGIF.Visible = false;
+            // 
             // FormMods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1681,7 +1702,6 @@
             this.panel1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).EndInit();
             this.tabPageModsSettings.ResumeLayout(false);
             this.groupBoxModsInterface.ResumeLayout(false);
             this.groupBoxModsInterface.PerformLayout();
@@ -1711,6 +1731,7 @@
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectListViewMods)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1856,5 +1877,6 @@
         private BrightIdeasSoftware.OLVColumn olvColumnAltArchiveName;
         private BrightIdeasSoftware.OLVColumn olvColumnAltArchivePreset;
         private BrightIdeasSoftware.OLVColumn olvColumnAltIsFrozen;
+        private System.Windows.Forms.Button buttonModOpenFolder;
     }
 }
