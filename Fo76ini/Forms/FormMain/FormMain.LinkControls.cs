@@ -190,11 +190,11 @@ namespace Fo76ini
             LinkedTweaks.LinkInfo(this.numCameraSwitchDelay, toolTip, firstThirdPerspectiveSwitchDelayTweak);
             LinkedTweaks.LinkInfo(this.labelSwitchDelay, toolTip, firstThirdPerspectiveSwitchDelayTweak);
             LinkedTweaks.LinkInfo(numFirstPersonFOV, toolTip, fov1stPersonTweak);
-            LinkedTweaks.LinkInfo(numFOV, toolTip, fovTweak);
             LinkedTweaks.LinkInfo(numADSFOV, toolTip, fov3rdADSTweak);
             LinkedTweaks.LinkInfo(numfDefaultFOV, toolTip, defaultFOVTweak);
             LinkedTweaks.LinkInfo(labelFirstPersonFOV, toolTip, fov1stPersonTweak);
-            LinkedTweaks.LinkInfo(labelWorldFOV, toolTip, fovTweak);
+            LinkedTweaks.LinkInfo(numFOV, toolTip, fovTweak);
+            LinkedTweaks.LinkInfo(sliderFOV, toolTip, fovTweak);
             LinkedTweaks.LinkInfo(labelADSFOV, toolTip, fov3rdADSTweak);
             LinkedTweaks.LinkInfo(labelfDefaultFOV, toolTip, defaultFOVTweak);
             LinkedTweaks.LinkInfo(numCameraDistanceMinimum, toolTip, vanityModeMinDistTweak);
