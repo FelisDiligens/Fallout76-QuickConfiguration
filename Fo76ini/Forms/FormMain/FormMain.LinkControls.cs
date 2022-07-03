@@ -190,11 +190,11 @@ namespace Fo76ini
             LinkedTweaks.LinkInfo(this.numCameraSwitchDelay, toolTip, firstThirdPerspectiveSwitchDelayTweak);
             LinkedTweaks.LinkInfo(this.labelSwitchDelay, toolTip, firstThirdPerspectiveSwitchDelayTweak);
             LinkedTweaks.LinkInfo(numFirstPersonFOV, toolTip, fov1stPersonTweak);
-            LinkedTweaks.LinkInfo(numWorldFOV, toolTip, fov3rdPersonTweak);
+            LinkedTweaks.LinkInfo(numFOV, toolTip, fovTweak);
             LinkedTweaks.LinkInfo(numADSFOV, toolTip, fov3rdADSTweak);
             LinkedTweaks.LinkInfo(numfDefaultFOV, toolTip, defaultFOVTweak);
             LinkedTweaks.LinkInfo(labelFirstPersonFOV, toolTip, fov1stPersonTweak);
-            LinkedTweaks.LinkInfo(labelWorldFOV, toolTip, fov3rdPersonTweak);
+            LinkedTweaks.LinkInfo(labelWorldFOV, toolTip, fovTweak);
             LinkedTweaks.LinkInfo(labelADSFOV, toolTip, fov3rdADSTweak);
             LinkedTweaks.LinkInfo(labelfDefaultFOV, toolTip, defaultFOVTweak);
             LinkedTweaks.LinkInfo(numCameraDistanceMinimum, toolTip, vanityModeMinDistTweak);
@@ -541,8 +541,9 @@ namespace Fo76ini
             // 1st person FOV
             LinkedTweaks.LinkTweak(numFirstPersonFOV, fov1stPersonTweak);
 
-            // World FOV
-            LinkedTweaks.LinkTweak(numWorldFOV, fov3rdPersonTweak);
+            // Field of View
+            LinkedTweaks.LinkSlider(sliderFOV, numFOV, 0.2f);
+            LinkedTweaks.LinkTweak(numFOV, fovTweak);
 
             // 3rd person ADS FOV
             LinkedTweaks.LinkTweak(numADSFOV, fov3rdADSTweak);
@@ -711,7 +712,7 @@ namespace Fo76ini
 
         // Camera 
         private FOV1stPersonTweak fov1stPersonTweak = new FOV1stPersonTweak();
-        private FOV3rdPersonTweak fov3rdPersonTweak = new FOV3rdPersonTweak();
+        private FieldOfViewTweak fovTweak = new FieldOfViewTweak();
         private FOV3rdADSTweak fov3rdADSTweak = new FOV3rdADSTweak();
         private DefaultFOVTweak defaultFOVTweak = new DefaultFOVTweak();
 

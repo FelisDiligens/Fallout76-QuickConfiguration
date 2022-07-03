@@ -1113,5 +1113,43 @@ namespace Fo76ini
         {
             this.richTextBoxWhatsNew.Rtf = (string)ev.Result;
         }
+
+        private Bitmap getFOVPreviewImage(int fov)
+        {
+            fov = (int)(Math.Round((float)fov / 5f) * 5);
+            fov = Utils.Clamp(fov, 70, 120);
+            switch(fov)
+            {
+                case 70:
+                    return Resources.fov_70;
+                case 75:
+                    return Resources.fov_75;
+                case 80:
+                    return Resources.fov_80;
+                case 85:
+                    return Resources.fov_85;
+                case 90:
+                    return Resources.fov_90;
+                case 95:
+                    return Resources.fov_95;
+                case 100:
+                    return Resources.fov_100;
+                case 105:
+                    return Resources.fov_105;
+                case 110:
+                    return Resources.fov_110;
+                case 115:
+                    return Resources.fov_115;
+                case 120:
+                    return Resources.fov_120;
+                default:
+                    return Resources.fov_70;
+            }
+        }
+
+        private void numFOV_ValueChanged(object sender, EventArgs e)
+        {
+            this.pictureBoxFOVPreview.Image = getFOVPreviewImage((int)this.numFOV.Value);
+        }
     }
 }

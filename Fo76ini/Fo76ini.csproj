@@ -208,7 +208,7 @@
     <Compile Include="Tweaks\Camera\ForceAutoVanityModeTweak.cs" />
     <Compile Include="Tweaks\Camera\FOV1stPersonTweak.cs" />
     <Compile Include="Tweaks\Camera\FOV3rdADSTweak.cs" />
-    <Compile Include="Tweaks\Camera\FOV3rdPersonTweak.cs" />
+    <Compile Include="Tweaks\Camera\FieldOfViewTweak.cs" />
     <Compile Include="Tweaks\Camera\PitchZoomOutMaxDistTweak.cs" />
     <Compile Include="Tweaks\Camera\SelfieCameraRotationSpeedTweak.cs" />
     <Compile Include="Tweaks\Camera\SelfieCameraTranslationSpeedTweak.cs" />
@@ -406,6 +406,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\folder-3-16.png" />
+    <None Include="Resources\fov_70.jpg" />
+    <None Include="Resources\fov_75.jpg" />
+    <None Include="Resources\fov_80.jpg" />
+    <None Include="Resources\fov_85.jpg" />
+    <None Include="Resources\fov_90.jpg" />
+    <None Include="Resources\fov_95.jpg" />
+    <None Include="Resources\fov_100.jpg" />
+    <None Include="Resources\fov_105.jpg" />
+    <None Include="Resources\fov_110.jpg" />
+    <None Include="Resources\fov_115.jpg" />
+    <None Include="Resources\fov_120.jpg" />
     <Content Include="Resources\pipboy-preview-mask.png" />
     <Content Include="Resources\pipboy-preview-screen.png" />
     <Content Include="Resources\powerarmor-preview-mask.png" />

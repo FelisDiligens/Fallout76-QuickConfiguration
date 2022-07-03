@@ -352,4 +352,37 @@
   <data name="folder_3_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\folder-3-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fov_100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fov_100.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fov_105" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fov_105.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fov_110" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fov_110.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fov_115" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fov_115.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fov_120" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fov_120.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fov_70" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fov_70.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fov_75" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fov_75.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fov_80" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fov_80.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fov_85" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fov_85.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fov_90" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fov_90.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fov_95" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fov_95.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

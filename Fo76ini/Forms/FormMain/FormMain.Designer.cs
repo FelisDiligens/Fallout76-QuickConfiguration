@@ -169,11 +169,13 @@
             this.numericUpDownPhotomodeTranslationSpeed = new System.Windows.Forms.NumericUpDown();
             this.trackBarPhotomodeTranslationSpeed = new System.Windows.Forms.TrackBar();
             this.groupBoxFieldOfView = new System.Windows.Forms.GroupBox();
+            this.pictureBoxFOVPreview = new System.Windows.Forms.PictureBox();
+            this.sliderFOV = new System.Windows.Forms.TrackBar();
             this.labelFOVWarn = new System.Windows.Forms.Label();
             this.labelMoreFOV = new System.Windows.Forms.Label();
             this.numfDefaultFOV = new System.Windows.Forms.NumericUpDown();
             this.numADSFOV = new System.Windows.Forms.NumericUpDown();
-            this.numWorldFOV = new System.Windows.Forms.NumericUpDown();
+            this.numFOV = new System.Windows.Forms.NumericUpDown();
             this.numFirstPersonFOV = new System.Windows.Forms.NumericUpDown();
             this.groupBoxCameraOptions = new System.Windows.Forms.GroupBox();
             this.numCameraSwitchDelay = new System.Windows.Forms.NumericUpDown();
@@ -481,9 +483,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).BeginInit();
             this.groupBoxFieldOfView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFOVPreview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderFOV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numWorldFOV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFOV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFirstPersonFOV)).BeginInit();
             this.groupBoxCameraOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCameraSwitchDelay)).BeginInit();
@@ -617,7 +621,7 @@
             // labelFirstPersonFOV
             // 
             this.labelFirstPersonFOV.AutoSize = true;
-            this.labelFirstPersonFOV.Location = new System.Drawing.Point(5, 99);
+            this.labelFirstPersonFOV.Location = new System.Drawing.Point(2, 257);
             this.labelFirstPersonFOV.Name = "labelFirstPersonFOV";
             this.labelFirstPersonFOV.Size = new System.Drawing.Size(83, 13);
             this.labelFirstPersonFOV.TabIndex = 0;
@@ -641,7 +645,7 @@
             // labelADSFOV
             // 
             this.labelADSFOV.AutoSize = true;
-            this.labelADSFOV.Location = new System.Drawing.Point(5, 125);
+            this.labelADSFOV.Location = new System.Drawing.Point(2, 283);
             this.labelADSFOV.Name = "labelADSFOV";
             this.labelADSFOV.Size = new System.Drawing.Size(103, 13);
             this.labelADSFOV.TabIndex = 5;
@@ -1461,7 +1465,7 @@
             // 
             this.labelfDefaultFOV.AutoSize = true;
             this.labelfDefaultFOV.ForeColor = System.Drawing.Color.Red;
-            this.labelfDefaultFOV.Location = new System.Drawing.Point(5, 151);
+            this.labelfDefaultFOV.Location = new System.Drawing.Point(2, 309);
             this.labelfDefaultFOV.Name = "labelfDefaultFOV";
             this.labelfDefaultFOV.Size = new System.Drawing.Size(193, 13);
             this.labelfDefaultFOV.TabIndex = 6;
@@ -2404,28 +2408,52 @@
             // 
             // groupBoxFieldOfView
             // 
+            this.groupBoxFieldOfView.Controls.Add(this.pictureBoxFOVPreview);
+            this.groupBoxFieldOfView.Controls.Add(this.sliderFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelFOVWarn);
             this.groupBoxFieldOfView.Controls.Add(this.labelMoreFOV);
             this.groupBoxFieldOfView.Controls.Add(this.numfDefaultFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelfDefaultFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelADSFOV);
             this.groupBoxFieldOfView.Controls.Add(this.numADSFOV);
-            this.groupBoxFieldOfView.Controls.Add(this.numWorldFOV);
+            this.groupBoxFieldOfView.Controls.Add(this.numFOV);
             this.groupBoxFieldOfView.Controls.Add(this.numFirstPersonFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelWorldFOV);
             this.groupBoxFieldOfView.Controls.Add(this.labelFirstPersonFOV);
             this.groupBoxFieldOfView.Location = new System.Drawing.Point(6, 6);
             this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
-            this.groupBoxFieldOfView.Size = new System.Drawing.Size(395, 183);
+            this.groupBoxFieldOfView.Size = new System.Drawing.Size(395, 335);
             this.groupBoxFieldOfView.TabIndex = 21;
             this.groupBoxFieldOfView.TabStop = false;
             this.groupBoxFieldOfView.Text = "Field of View";
+            // 
+            // pictureBoxFOVPreview
+            // 
+            this.pictureBoxFOVPreview.Location = new System.Drawing.Point(9, 69);
+            this.pictureBoxFOVPreview.Name = "pictureBoxFOVPreview";
+            this.pictureBoxFOVPreview.Size = new System.Drawing.Size(196, 110);
+            this.pictureBoxFOVPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxFOVPreview.TabIndex = 53;
+            this.pictureBoxFOVPreview.TabStop = false;
+            // 
+            // sliderFOV
+            // 
+            this.sliderFOV.BackColor = System.Drawing.Color.White;
+            this.sliderFOV.LargeChange = 1;
+            this.sliderFOV.Location = new System.Drawing.Point(6, 35);
+            this.sliderFOV.Maximum = 24;
+            this.sliderFOV.Minimum = 14;
+            this.sliderFOV.Name = "sliderFOV";
+            this.sliderFOV.Size = new System.Drawing.Size(305, 45);
+            this.sliderFOV.TabIndex = 52;
+            this.sliderFOV.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderFOV.Value = 24;
             // 
             // labelFOVWarn
             // 
             this.labelFOVWarn.AutoSize = true;
             this.labelFOVWarn.ForeColor = System.Drawing.Color.Red;
-            this.labelFOVWarn.Location = new System.Drawing.Point(6, 71);
+            this.labelFOVWarn.Location = new System.Drawing.Point(3, 229);
             this.labelFOVWarn.Name = "labelFOVWarn";
             this.labelFOVWarn.Size = new System.Drawing.Size(192, 13);
             this.labelFOVWarn.TabIndex = 9;
@@ -2435,7 +2463,7 @@
             // 
             this.labelMoreFOV.AutoSize = true;
             this.labelMoreFOV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMoreFOV.Location = new System.Drawing.Point(6, 54);
+            this.labelMoreFOV.Location = new System.Drawing.Point(3, 212);
             this.labelMoreFOV.Name = "labelMoreFOV";
             this.labelMoreFOV.Size = new System.Drawing.Size(111, 13);
             this.labelMoreFOV.TabIndex = 8;
@@ -2449,7 +2477,7 @@
             0,
             0,
             0});
-            this.numfDefaultFOV.Location = new System.Drawing.Point(250, 149);
+            this.numfDefaultFOV.Location = new System.Drawing.Point(247, 307);
             this.numfDefaultFOV.Maximum = new decimal(new int[] {
             180,
             0,
@@ -2477,7 +2505,7 @@
             0,
             0,
             0});
-            this.numADSFOV.Location = new System.Drawing.Point(250, 123);
+            this.numADSFOV.Location = new System.Drawing.Point(247, 281);
             this.numADSFOV.Maximum = new decimal(new int[] {
             180,
             0,
@@ -2497,33 +2525,34 @@
             0,
             0});
             // 
-            // numWorldFOV
+            // numFOV
             // 
-            this.numWorldFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numWorldFOV.Increment = new decimal(new int[] {
+            this.numFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numFOV.Increment = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.numWorldFOV.Location = new System.Drawing.Point(251, 17);
-            this.numWorldFOV.Maximum = new decimal(new int[] {
+            this.numFOV.Location = new System.Drawing.Point(317, 35);
+            this.numFOV.Maximum = new decimal(new int[] {
             180,
             0,
             0,
             0});
-            this.numWorldFOV.Minimum = new decimal(new int[] {
+            this.numFOV.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numWorldFOV.Name = "numWorldFOV";
-            this.numWorldFOV.Size = new System.Drawing.Size(135, 20);
-            this.numWorldFOV.TabIndex = 3;
-            this.numWorldFOV.Value = new decimal(new int[] {
+            this.numFOV.Name = "numFOV";
+            this.numFOV.Size = new System.Drawing.Size(68, 20);
+            this.numFOV.TabIndex = 3;
+            this.numFOV.Value = new decimal(new int[] {
             80,
             0,
             0,
             0});
+            this.numFOV.ValueChanged += new System.EventHandler(this.numFOV_ValueChanged);
             // 
             // numFirstPersonFOV
             // 
@@ -2533,7 +2562,7 @@
             0,
             0,
             0});
-            this.numFirstPersonFOV.Location = new System.Drawing.Point(250, 97);
+            this.numFirstPersonFOV.Location = new System.Drawing.Point(247, 255);
             this.numFirstPersonFOV.Maximum = new decimal(new int[] {
             180,
             0,
@@ -2559,9 +2588,9 @@
             this.groupBoxCameraOptions.Controls.Add(this.numCameraSwitchDelay);
             this.groupBoxCameraOptions.Controls.Add(this.checkBoxVanityMode);
             this.groupBoxCameraOptions.Controls.Add(this.labelSwitchDelay);
-            this.groupBoxCameraOptions.Location = new System.Drawing.Point(6, 195);
+            this.groupBoxCameraOptions.Location = new System.Drawing.Point(6, 347);
             this.groupBoxCameraOptions.Name = "groupBoxCameraOptions";
-            this.groupBoxCameraOptions.Size = new System.Drawing.Size(395, 135);
+            this.groupBoxCameraOptions.Size = new System.Drawing.Size(395, 111);
             this.groupBoxCameraOptions.TabIndex = 35;
             this.groupBoxCameraOptions.TabStop = false;
             this.groupBoxCameraOptions.Text = "Camera options";
@@ -5772,9 +5801,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).EndInit();
             this.groupBoxFieldOfView.ResumeLayout(false);
             this.groupBoxFieldOfView.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFOVPreview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderFOV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numWorldFOV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFOV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFirstPersonFOV)).EndInit();
             this.groupBoxCameraOptions.ResumeLayout(false);
             this.groupBoxCameraOptions.PerformLayout();
@@ -5922,7 +5953,7 @@
         private System.Windows.Forms.GroupBox groupBoxFieldOfView;
         private System.Windows.Forms.Label labelADSFOV;
         private System.Windows.Forms.NumericUpDown numADSFOV;
-        private System.Windows.Forms.NumericUpDown numWorldFOV;
+        private System.Windows.Forms.NumericUpDown numFOV;
         private System.Windows.Forms.NumericUpDown numFirstPersonFOV;
         private System.Windows.Forms.Label labelWorldFOV;
         private System.Windows.Forms.Label labelFirstPersonFOV;
@@ -6309,6 +6340,8 @@
         private System.Windows.Forms.Label labelQuickboyHEX;
         private System.Windows.Forms.TextBox textBoxPAColorHEX;
         private System.Windows.Forms.Label labelPAColorHEX;
+        private System.Windows.Forms.TrackBar sliderFOV;
+        private System.Windows.Forms.PictureBox pictureBoxFOVPreview;
     }
 }
 
