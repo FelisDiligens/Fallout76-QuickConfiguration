@@ -1,81 +1,29 @@
-﻿using Fo76ini.Properties;
-using Fo76ini.Tweaks;
-using Fo76ini.Utilities;
+﻿using Fo76ini.Tweaks;
+using Fo76ini.Tweaks.Colors;
+using Fo76ini.Tweaks.Pipboy;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Fo76ini
+namespace Fo76ini.Forms.FormMain
 {
-    partial class FormMain
+    public partial class UserControlPipboy : UserControl
     {
-        /*
-         * Color presets
-         */
-
-        private void buttonPresetFo3Green_Click(object sender, EventArgs e)
+        public UserControlPipboy()
         {
-            Pipboy_SetColorOfActivePreview(Color.FromArgb(26, 255, 128));
-        }
+            InitializeComponent();
 
-        private void buttonPresetFoNVAmber_Click(object sender, EventArgs e)
-        {
-            Pipboy_SetColorOfActivePreview(Color.FromArgb(255, 182, 66));
-        }
-
-        private void buttonPresetFo3Blue_Click(object sender, EventArgs e)
-        {
-            Pipboy_SetColorOfActivePreview(Color.FromArgb(46, 207, 255));
-        }
-
-        private void buttonPresetFo3White_Click(object sender, EventArgs e)
-        {
-            Pipboy_SetColorOfActivePreview(Color.FromArgb(192, 255, 255));
-        }
-
-        private void buttonPresetFo4Green_Click(object sender, EventArgs e)
-        {
-            Pipboy_SetColorOfActivePreview(Color.FromArgb(18, 255, 21));
-        }
-
-        private void buttonPresetFo76Green_Click(object sender, EventArgs e)
-        {
-            Pipboy_SetColorOfActivePreview(Color.FromArgb(26, 255, 128));
-        }
-
-        private void Pipboy_SetColorOfActivePreview(Color color)
-        {
-            // Pip-Boy
-            if (this.tabControlPipboy.SelectedTab == this.tabPagePipboyColor)
-            {
-                this.colorPreviewPipboy.BackColor = color;
-            }
-            // Quick-Boy
-            else if (this.tabControlPipboy.SelectedTab == this.tabPageQuickboyColor)
-            {
-                this.colorPreviewQuickboy.BackColor = color;
-            }
-            // Quick-Boy
-            else if (this.tabControlPipboy.SelectedTab == this.tabPagePowerArmorColor)
-            {
-                this.colorPreviewPAPipboy.BackColor = color;
-            }
-        }
-
-
-        /*
-         * Init Pipboy tab
-         */
-
-        private void InitPipboy()
-        {
             this.colorPreviewPipboy.BackColorChanged += colorPreviewPipboy_BackColorChanged;
             this.colorPreviewQuickboy.BackColorChanged += colorPreviewQuickboy_BackColorChanged;
             this.colorPreviewPAPipboy.BackColorChanged += colorPreviewPAPipboy_BackColorChanged;
+
+            LinkPipboyControls();
         }
 
         private void LinkPipboyControls()
@@ -134,30 +82,43 @@ namespace Fo76ini
 
 
         /*
-         * Event handler
+         * Color presets
          */
 
-        private void colorPreviewPipboy_BackColorChanged(object sender, EventArgs e)
+        private void buttonPresetFo3Green_Click(object sender, EventArgs e)
         {
-            Color color = this.colorPreviewPipboy.BackColor;
-            this.pipboyPreview.PreviewColor = color;
-            this.textBoxPipboyHEX.Text = GetHEXFromColor(color);
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(26, 255, 128));
         }
 
-        private void colorPreviewQuickboy_BackColorChanged(object sender, EventArgs e)
+        private void buttonPresetFoNVAmber_Click(object sender, EventArgs e)
         {
-            Color color = this.colorPreviewQuickboy.BackColor;
-            this.quickboyPreview.PreviewColor = color;
-            this.textBoxQuickboyHEX.Text = GetHEXFromColor(color);
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(255, 182, 66));
         }
 
-        private void colorPreviewPAPipboy_BackColorChanged(object sender, EventArgs e)
+        private void buttonPresetFo3Blue_Click(object sender, EventArgs e)
         {
-            Color color = this.colorPreviewPAPipboy.BackColor;
-            this.pipboyPAPreview.PreviewColor = color;
-            this.textBoxPAColorHEX.Text = GetHEXFromColor(color);
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(46, 207, 255));
         }
 
+        private void buttonPresetFo3White_Click(object sender, EventArgs e)
+        {
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(192, 255, 255));
+        }
+
+        private void buttonPresetFo4Green_Click(object sender, EventArgs e)
+        {
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(18, 255, 21));
+        }
+
+        private void buttonPresetFo76Green_Click(object sender, EventArgs e)
+        {
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(26, 255, 128));
+        }
+
+
+        /*
+         * HEX textboxes
+         */
 
         private void textBoxPipboyHEX_TextChanged(object sender, EventArgs e)
         {
@@ -201,6 +162,11 @@ namespace Fo76ini
             }
         }
 
+
+        /*
+         * Resolution
+         */
+
         private void linkLabelPipboyTargetSetRecommended_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.numPipboyTargetWidth.Value = 1752;
@@ -211,6 +177,56 @@ namespace Fo76ini
         {
             this.numPipboyTargetWidth.Value = 876;
             this.numPipboyTargetHeight.Value = 700;
+        }
+
+
+        /*
+         * Event handler
+         */
+
+        private void colorPreviewPipboy_BackColorChanged(object sender, EventArgs e)
+        {
+            Color color = this.colorPreviewPipboy.BackColor;
+            this.pipboyPreview.PreviewColor = color;
+            this.textBoxPipboyHEX.Text = GetHEXFromColor(color);
+        }
+
+        private void colorPreviewQuickboy_BackColorChanged(object sender, EventArgs e)
+        {
+            Color color = this.colorPreviewQuickboy.BackColor;
+            this.quickboyPreview.PreviewColor = color;
+            this.textBoxQuickboyHEX.Text = GetHEXFromColor(color);
+        }
+
+        private void colorPreviewPAPipboy_BackColorChanged(object sender, EventArgs e)
+        {
+            Color color = this.colorPreviewPAPipboy.BackColor;
+            this.pipboyPAPreview.PreviewColor = color;
+            this.textBoxPAColorHEX.Text = GetHEXFromColor(color);
+        }
+
+
+        /*
+         * Stuff
+         */
+
+        private void Pipboy_SetColorOfActivePreview(Color color)
+        {
+            // Pip-Boy
+            if (this.tabControlPipboy.SelectedTab == this.tabPagePipboyColor)
+            {
+                this.colorPreviewPipboy.BackColor = color;
+            }
+            // Quick-Boy
+            else if (this.tabControlPipboy.SelectedTab == this.tabPageQuickboyColor)
+            {
+                this.colorPreviewQuickboy.BackColor = color;
+            }
+            // Quick-Boy
+            else if (this.tabControlPipboy.SelectedTab == this.tabPagePowerArmorColor)
+            {
+                this.colorPreviewPAPipboy.BackColor = color;
+            }
         }
 
         private Color GetColorFromHEX(string hex)
@@ -226,5 +242,15 @@ namespace Fo76ini
         {
             return "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
         }
+
+
+
+        // Pipboy tab
+        private PipboyColorTweak pipboyColorTweak = new PipboyColorTweak();
+        private QuickboyColorTweak quickboyColorTweak = new QuickboyColorTweak();
+        private PowerArmorPipboyColorTweak powerArmorPipboyColorTweak = new PowerArmorPipboyColorTweak();
+
+        private QuickboyModeEnabledTweak quickboyModeEnabledTweak = new QuickboyModeEnabledTweak();
+        private PipboyTargetResolutionTweak pipboyTargetResolutionTweak = new PipboyTargetResolutionTweak();
     }
 }

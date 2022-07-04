@@ -702,14 +702,6 @@ namespace Fo76ini
         private GamepadEnableTweak gamepadEnableTweak = new GamepadEnableTweak();
         private EnableGamepadRumbleTweak enableGamepadRumbleTweak = new EnableGamepadRumbleTweak();
 
-        // Pipboy tab
-        private PipboyColorTweak pipboyColorTweak = new PipboyColorTweak();
-        private QuickboyColorTweak quickboyColorTweak = new QuickboyColorTweak();
-        private PowerArmorPipboyColorTweak powerArmorPipboyColorTweak = new PowerArmorPipboyColorTweak();
-
-        private QuickboyModeEnabledTweak quickboyModeEnabledTweak = new QuickboyModeEnabledTweak();
-        private PipboyTargetResolutionTweak pipboyTargetResolutionTweak = new PipboyTargetResolutionTweak();
-
         // Camera 
         private FOV1stPersonTweak fov1stPersonTweak = new FOV1stPersonTweak();
         private FieldOfViewTweak fovTweak = new FieldOfViewTweak();

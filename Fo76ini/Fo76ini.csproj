@@ -152,8 +152,17 @@
     <Compile Include="Forms\FormIniError\FormIniError.Designer.cs">
       <DependentUpon>FormIniError.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\FormMain.Pipboy.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Forms\FormMain\UserControlPipboy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain\UserControlPipboy.Designer.cs">
+      <DependentUpon>UserControlPipboy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMain\UserControlTweaks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain\UserControlTweaks.Designer.cs">
+      <DependentUpon>UserControlTweaks.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormMods\FormMods.Settings.cs">
       <SubType>Form</SubType>
@@ -362,6 +371,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormIniError\FormIniError.resx">
       <DependentUpon>FormIniError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain\UserControlPipboy.resx">
+      <DependentUpon>UserControlPipboy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain\UserControlTweaks.resx">
+      <DependentUpon>UserControlTweaks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMods\FormMods.resx">
       <DependentUpon>FormMods.cs</DependentUpon>

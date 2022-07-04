@@ -283,9 +283,6 @@ namespace Fo76ini
             this.backgroundWorkerGetLatestVersion.RunWorkerCompleted += backgroundWorkerGetLatestVersion_RunWorkerCompleted;
 
             InitAccountProfileRadiobuttons();
-
-            // Pipboy:
-            InitPipboy();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -299,7 +296,6 @@ namespace Fo76ini
             LinkInfo();
             LinkSliders();
             LinkControlsToTweaks();
-            LinkPipboyControls();
 
             // Load config.ini
             IniFiles.LoadConfig();
