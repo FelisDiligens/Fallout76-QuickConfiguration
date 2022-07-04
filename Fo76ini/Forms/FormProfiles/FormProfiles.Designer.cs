@@ -559,6 +559,7 @@
             // 
             // checkBoxSkipProfileManager
             // 
+            this.checkBoxSkipProfileManager.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxSkipProfileManager.AutoSize = true;
             this.checkBoxSkipProfileManager.Location = new System.Drawing.Point(14, 391);
             this.checkBoxSkipProfileManager.Name = "checkBoxSkipProfileManager";
@@ -579,6 +580,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(500, 600);
             this.Name = "FormProfiles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fallout 76 Quick Configuration";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panel.ResumeLayout(false);

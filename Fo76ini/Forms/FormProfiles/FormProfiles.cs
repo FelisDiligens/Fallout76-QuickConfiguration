@@ -43,6 +43,8 @@ namespace Fo76ini.Forms.FormProfiles
             this.comboBoxGameEdition.Items.Add(new ComboBoxItem("Bethesda.net Launcher (deprecated)", Resources.bethesda_24));
             this.comboBoxGameEdition.Items.Add(new ComboBoxItem("Bethesda.net Launcher - PTS (deprecated)", Resources.bethesda_24));
 
+            this.Size = new Size(800, 600);
+
             this.panelAdvancedOptions.Visible = false;
 
             this.listViewGameInstances.HeaderStyle = ColumnHeaderStyle.None;
