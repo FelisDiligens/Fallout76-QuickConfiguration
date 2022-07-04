@@ -261,9 +261,11 @@
             this.labelUserName = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
+            this.pictureBoxButtonGameEdition = new Fo76ini.Controls.PictureBoxButton();
             this.panelWhatsNew = new System.Windows.Forms.Panel();
             this.richTextBoxWhatsNew = new System.Windows.Forms.RichTextBox();
             this.panelUpdate = new System.Windows.Forms.Panel();
+            this.pictureBoxButtonUpdate = new Fo76ini.Controls.PictureBoxButton();
             this.labelNewVersion = new System.Windows.Forms.Label();
             this.linkLabelManualDownloadPage = new System.Windows.Forms.LinkLabel();
             this.pictureBoxSpinnerCheckForUpdates = new System.Windows.Forms.PictureBox();
@@ -279,6 +281,7 @@
             this.labelDescription = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
             this.tabPageTweaks = new System.Windows.Forms.TabPage();
+            this.userControlTweaks = new Fo76ini.Forms.FormMain.UserControlTweaks();
             this.tabPageAudio = new System.Windows.Forms.TabPage();
             this.groupBoxAudio = new System.Windows.Forms.GroupBox();
             this.groupBoxVoice = new System.Windows.Forms.GroupBox();
@@ -307,12 +310,10 @@
             this.numConversationHistorySize = new System.Windows.Forms.NumericUpDown();
             this.labelConversationHistorySize = new System.Windows.Forms.Label();
             this.tabPagePipBoy = new System.Windows.Forms.TabPage();
+            this.userControlPipboy1 = new Fo76ini.Forms.FormMain.UserControlPipboy();
             this.tabPageGallery = new System.Windows.Forms.TabPage();
+            this.userControlGallery = new Fo76ini.Forms.FormMain.UserControlGallery();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
-            this.buttonCustomSave = new System.Windows.Forms.Button();
-            this.comboBoxCustomFile = new System.Windows.Forms.ComboBox();
-            this.labelCustomFile = new System.Windows.Forms.Label();
-            this.textBoxCustom = new System.Windows.Forms.TextBox();
             this.backgroundWorkerLoadGallery = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerGetLatestVersion = new System.ComponentModel.BackgroundWorker();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -350,11 +351,7 @@
             this.toolStripStatusLabelNuclearWinterModeActive = new System.Windows.Forms.ToolStripStatusLabel();
             this.backgroundWorkerDownloadRTF = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.pictureBoxButtonGameEdition = new Fo76ini.Controls.PictureBoxButton();
-            this.pictureBoxButtonUpdate = new Fo76ini.Controls.PictureBoxButton();
-            this.userControlTweaks = new Fo76ini.Forms.FormMain.UserControlTweaks();
-            this.userControlPipboy1 = new Fo76ini.Forms.FormMain.UserControlPipboy();
-            this.userControlGallery = new Fo76ini.Forms.FormMain.UserControlGallery();
+            this.userControlCustom = new Fo76ini.Forms.FormMain.Tabs.UserControlCustom();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderGrassFadeDistance)).BeginInit();
@@ -3657,6 +3654,22 @@
             this.tabPageInfo.Text = "Info";
             this.tabPageInfo.UseVisualStyleBackColor = true;
             // 
+            // pictureBoxButtonGameEdition
+            // 
+            this.pictureBoxButtonGameEdition.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.pictureBoxButtonGameEdition.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxButtonGameEdition.ButtonText = null;
+            this.pictureBoxButtonGameEdition.ButtonTextColor = System.Drawing.Color.Empty;
+            this.pictureBoxButtonGameEdition.ButtonTextFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pictureBoxButtonGameEdition.Image = global::Fo76ini.Properties.Resources.help_128;
+            this.pictureBoxButtonGameEdition.ImageHover = global::Fo76ini.Properties.Resources.help_128_hover;
+            this.pictureBoxButtonGameEdition.Location = new System.Drawing.Point(6, 338);
+            this.pictureBoxButtonGameEdition.Name = "pictureBoxButtonGameEdition";
+            this.pictureBoxButtonGameEdition.Size = new System.Drawing.Size(60, 60);
+            this.pictureBoxButtonGameEdition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxButtonGameEdition.TabIndex = 46;
+            this.pictureBoxButtonGameEdition.Click += new System.EventHandler(this.showProfiles_OnClick);
+            // 
             // panelWhatsNew
             // 
             this.panelWhatsNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -3697,6 +3710,22 @@
             this.panelUpdate.Name = "panelUpdate";
             this.panelUpdate.Size = new System.Drawing.Size(299, 110);
             this.panelUpdate.TabIndex = 39;
+            // 
+            // pictureBoxButtonUpdate
+            // 
+            this.pictureBoxButtonUpdate.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxButtonUpdate.ButtonText = "Update now!";
+            this.pictureBoxButtonUpdate.ButtonTextColor = System.Drawing.Color.White;
+            this.pictureBoxButtonUpdate.ButtonTextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pictureBoxButtonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pictureBoxButtonUpdate.Image = global::Fo76ini.Properties.Resources.button;
+            this.pictureBoxButtonUpdate.ImageHover = global::Fo76ini.Properties.Resources.button_hover;
+            this.pictureBoxButtonUpdate.Location = new System.Drawing.Point(3, 29);
+            this.pictureBoxButtonUpdate.Name = "pictureBoxButtonUpdate";
+            this.pictureBoxButtonUpdate.Size = new System.Drawing.Size(293, 48);
+            this.pictureBoxButtonUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxButtonUpdate.TabIndex = 46;
+            this.pictureBoxButtonUpdate.Click += new System.EventHandler(this.buttonUpdateNow_Click);
             // 
             // labelNewVersion
             // 
@@ -3863,6 +3892,16 @@
             this.tabPageTweaks.TabIndex = 11;
             this.tabPageTweaks.Text = "Tweaks";
             this.tabPageTweaks.UseVisualStyleBackColor = true;
+            // 
+            // userControlTweaks
+            // 
+            this.userControlTweaks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlTweaks.Location = new System.Drawing.Point(0, 0);
+            this.userControlTweaks.Name = "userControlTweaks";
+            this.userControlTweaks.Size = new System.Drawing.Size(852, 464);
+            this.userControlTweaks.TabIndex = 0;
             // 
             // tabPageAudio
             // 
@@ -4298,6 +4337,16 @@
             this.tabPagePipBoy.Text = "Pip-Boy";
             this.tabPagePipBoy.UseVisualStyleBackColor = true;
             // 
+            // userControlPipboy1
+            // 
+            this.userControlPipboy1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlPipboy1.Location = new System.Drawing.Point(0, 0);
+            this.userControlPipboy1.Name = "userControlPipboy1";
+            this.userControlPipboy1.Size = new System.Drawing.Size(852, 464);
+            this.userControlPipboy1.TabIndex = 0;
+            // 
             // tabPageGallery
             // 
             this.tabPageGallery.Controls.Add(this.userControlGallery);
@@ -4309,12 +4358,19 @@
             this.tabPageGallery.Text = "Gallery";
             this.tabPageGallery.UseVisualStyleBackColor = true;
             // 
+            // userControlGallery
+            // 
+            this.userControlGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlGallery.Location = new System.Drawing.Point(0, 0);
+            this.userControlGallery.Name = "userControlGallery";
+            this.userControlGallery.Size = new System.Drawing.Size(852, 464);
+            this.userControlGallery.TabIndex = 0;
+            // 
             // tabPageCustom
             // 
-            this.tabPageCustom.Controls.Add(this.buttonCustomSave);
-            this.tabPageCustom.Controls.Add(this.comboBoxCustomFile);
-            this.tabPageCustom.Controls.Add(this.labelCustomFile);
-            this.tabPageCustom.Controls.Add(this.textBoxCustom);
+            this.tabPageCustom.Controls.Add(this.userControlCustom);
             this.tabPageCustom.Location = new System.Drawing.Point(4, 22);
             this.tabPageCustom.Name = "tabPageCustom";
             this.tabPageCustom.Padding = new System.Windows.Forms.Padding(3);
@@ -4322,53 +4378,6 @@
             this.tabPageCustom.TabIndex = 9;
             this.tabPageCustom.Text = "Custom";
             this.tabPageCustom.UseVisualStyleBackColor = true;
-            // 
-            // buttonCustomSave
-            // 
-            this.buttonCustomSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCustomSave.Location = new System.Drawing.Point(752, 6);
-            this.buttonCustomSave.Name = "buttonCustomSave";
-            this.buttonCustomSave.Size = new System.Drawing.Size(94, 23);
-            this.buttonCustomSave.TabIndex = 3;
-            this.buttonCustomSave.Text = "Save";
-            this.buttonCustomSave.UseVisualStyleBackColor = true;
-            this.buttonCustomSave.Click += new System.EventHandler(this.buttonCustomSave_Click);
-            // 
-            // comboBoxCustomFile
-            // 
-            this.comboBoxCustomFile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCustomFile.FormattingEnabled = true;
-            this.comboBoxCustomFile.Location = new System.Drawing.Point(204, 6);
-            this.comboBoxCustomFile.Name = "comboBoxCustomFile";
-            this.comboBoxCustomFile.Size = new System.Drawing.Size(188, 21);
-            this.comboBoxCustomFile.TabIndex = 2;
-            this.comboBoxCustomFile.SelectedIndexChanged += new System.EventHandler(this.comboBoxCustomFile_SelectedIndexChanged);
-            // 
-            // labelCustomFile
-            // 
-            this.labelCustomFile.AutoSize = true;
-            this.labelCustomFile.Location = new System.Drawing.Point(6, 9);
-            this.labelCustomFile.Name = "labelCustomFile";
-            this.labelCustomFile.Size = new System.Drawing.Size(106, 13);
-            this.labelCustomFile.TabIndex = 1;
-            this.labelCustomFile.Text = "Overwrite lines in file:";
-            // 
-            // textBoxCustom
-            // 
-            this.textBoxCustom.AcceptsTab = true;
-            this.textBoxCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxCustom.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCustom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.textBoxCustom.Location = new System.Drawing.Point(6, 33);
-            this.textBoxCustom.Multiline = true;
-            this.textBoxCustom.Name = "textBoxCustom";
-            this.textBoxCustom.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxCustom.Size = new System.Drawing.Size(840, 425);
-            this.textBoxCustom.TabIndex = 0;
-            this.textBoxCustom.WordWrap = false;
-            this.textBoxCustom.TextChanged += new System.EventHandler(this.textBoxCustom_TextChanged);
             // 
             // backgroundWorkerGetLatestVersion
             // 
@@ -4693,67 +4702,15 @@
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
             // 
-            // pictureBoxButtonGameEdition
+            // userControlCustom
             // 
-            this.pictureBoxButtonGameEdition.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.pictureBoxButtonGameEdition.BackColor = System.Drawing.Color.Black;
-            this.pictureBoxButtonGameEdition.ButtonText = null;
-            this.pictureBoxButtonGameEdition.ButtonTextColor = System.Drawing.Color.Empty;
-            this.pictureBoxButtonGameEdition.ButtonTextFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pictureBoxButtonGameEdition.Image = global::Fo76ini.Properties.Resources.help_128;
-            this.pictureBoxButtonGameEdition.ImageHover = global::Fo76ini.Properties.Resources.help_128_hover;
-            this.pictureBoxButtonGameEdition.Location = new System.Drawing.Point(6, 338);
-            this.pictureBoxButtonGameEdition.Name = "pictureBoxButtonGameEdition";
-            this.pictureBoxButtonGameEdition.Size = new System.Drawing.Size(60, 60);
-            this.pictureBoxButtonGameEdition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxButtonGameEdition.TabIndex = 46;
-            this.pictureBoxButtonGameEdition.Click += new System.EventHandler(this.showProfiles_OnClick);
-            // 
-            // pictureBoxButtonUpdate
-            // 
-            this.pictureBoxButtonUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxButtonUpdate.ButtonText = "Update now!";
-            this.pictureBoxButtonUpdate.ButtonTextColor = System.Drawing.Color.White;
-            this.pictureBoxButtonUpdate.ButtonTextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pictureBoxButtonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pictureBoxButtonUpdate.Image = global::Fo76ini.Properties.Resources.button;
-            this.pictureBoxButtonUpdate.ImageHover = global::Fo76ini.Properties.Resources.button_hover;
-            this.pictureBoxButtonUpdate.Location = new System.Drawing.Point(3, 29);
-            this.pictureBoxButtonUpdate.Name = "pictureBoxButtonUpdate";
-            this.pictureBoxButtonUpdate.Size = new System.Drawing.Size(293, 48);
-            this.pictureBoxButtonUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxButtonUpdate.TabIndex = 46;
-            this.pictureBoxButtonUpdate.Click += new System.EventHandler(this.buttonUpdateNow_Click);
-            // 
-            // userControlTweaks
-            // 
-            this.userControlTweaks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.userControlCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.userControlTweaks.Location = new System.Drawing.Point(0, 0);
-            this.userControlTweaks.Name = "userControlTweaks";
-            this.userControlTweaks.Size = new System.Drawing.Size(852, 464);
-            this.userControlTweaks.TabIndex = 0;
-            // 
-            // userControlPipboy1
-            // 
-            this.userControlPipboy1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.userControlPipboy1.Location = new System.Drawing.Point(1, 2);
-            this.userControlPipboy1.Name = "userControlPipboy1";
-            this.userControlPipboy1.Size = new System.Drawing.Size(848, 459);
-            this.userControlPipboy1.TabIndex = 0;
-            // 
-            // userControlGallery
-            // 
-            this.userControlGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.userControlGallery.Location = new System.Drawing.Point(3, 3);
-            this.userControlGallery.Name = "userControlGallery";
-            this.userControlGallery.Size = new System.Drawing.Size(846, 455);
-            this.userControlGallery.TabIndex = 0;
+            this.userControlCustom.Location = new System.Drawing.Point(0, 0);
+            this.userControlCustom.Name = "userControlCustom";
+            this.userControlCustom.Size = new System.Drawing.Size(852, 464);
+            this.userControlCustom.TabIndex = 0;
             // 
             // FormMain
             // 
@@ -4932,7 +4889,6 @@
             this.tabPagePipBoy.ResumeLayout(false);
             this.tabPageGallery.ResumeLayout(false);
             this.tabPageCustom.ResumeLayout(false);
-            this.tabPageCustom.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -5047,10 +5003,6 @@
         private System.Windows.Forms.Label labelMouseSensitivity;
         private System.Windows.Forms.CheckBox checkBoxFixMouseSensitivity;
         private System.Windows.Forms.TabPage tabPageCustom;
-        private System.Windows.Forms.TextBox textBoxCustom;
-        private System.Windows.Forms.ComboBox comboBoxCustomFile;
-        private System.Windows.Forms.Label labelCustomFile;
-        private System.Windows.Forms.Button buttonCustomSave;
         private System.Windows.Forms.TrackBar sliderTAAPostSharpen;
         private System.Windows.Forms.TrackBar sliderTAAPostOverlay;
         private System.Windows.Forms.TrackBar sliderGrassFadeDistance;
@@ -5269,6 +5221,7 @@
         private System.Windows.Forms.TabPage tabPagePipBoy;
         private Forms.FormMain.UserControlPipboy userControlPipboy1;
         private Forms.FormMain.UserControlGallery userControlGallery;
+        private Forms.FormMain.Tabs.UserControlCustom userControlCustom;
     }
 }
 

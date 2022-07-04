@@ -396,7 +396,6 @@ namespace Fo76ini
             this.labelGameEdition.Text = e.ActiveGameInstance.GetCaption();
 
             LoadAccountProfile();
-            LoadCustomTab();
 
             this.toolStripStatusLabelGameText.Text = e.ActiveGameInstance?.Title;
             this.timerCheckFiles.Enabled = true;
@@ -910,72 +909,6 @@ namespace Fo76ini
             }
             SetSelectedAccountProfileRadiobuttonIndex(index);
         }
-        #endregion
-
-        #region Custom tab
-
-        private string customAddFilePath = null;
-
-        private void comboBoxCustomFile_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string fileName;
-            switch (this.comboBoxCustomFile.SelectedIndex)
-            {
-                case 0:
-                    fileName = $"{game.IniPrefix}.add.ini";
-                    break;
-                case 1:
-                    fileName = $"{game.IniPrefix}Prefs.add.ini";
-                    break;
-                case 2:
-                    fileName = $"{game.IniPrefix}Custom.add.ini";
-                    break;
-                default:
-                    return;
-            }
-            this.customAddFilePath = Path.Combine(IniFiles.ParentPath, fileName);
-
-            if (File.Exists(this.customAddFilePath))
-                this.textBoxCustom.Text = File.ReadAllText(this.customAddFilePath);
-            else
-                this.textBoxCustom.Text = "";
-
-            this.buttonCustomSave.Text = this.buttonCustomSave.Text.TrimEnd('*');
-        }
-
-        private void textBoxCustom_TextChanged(object sender, EventArgs e)
-        {
-            if (!this.buttonCustomSave.Text.EndsWith("*"))
-                this.buttonCustomSave.Text += "*";
-        }
-
-        private void buttonCustomSave_Click(object sender, EventArgs e)
-        {
-            if (this.textBoxCustom.Text == "")
-            {
-                if (File.Exists(this.customAddFilePath))
-                    File.Delete(this.customAddFilePath);
-            }
-            else
-            {
-                File.WriteAllText(this.customAddFilePath, this.textBoxCustom.Text);
-            }
-
-            if (this.buttonCustomSave.Text.EndsWith("*"))
-                this.buttonCustomSave.Text = this.buttonCustomSave.Text.TrimEnd('*');
-        }
-
-        private void LoadCustomTab ()
-        {
-            this.comboBoxCustomFile.Items.Clear();
-            this.comboBoxCustomFile.Items.AddRange(new string[] {
-                $"{game.IniPrefix}.ini",
-                $"{game.IniPrefix}Prefs.ini",
-                $"{game.IniPrefix}Custom.ini"
-            });
-            this.comboBoxCustomFile.SelectedIndex = 0;
-        }
-
         #endregion
 
         #region Resolution combobox

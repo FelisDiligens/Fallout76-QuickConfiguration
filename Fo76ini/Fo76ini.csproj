@@ -152,22 +152,28 @@
     <Compile Include="Forms\FormIniError\FormIniError.Designer.cs">
       <DependentUpon>FormIniError.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\UserControlGallery.cs">
+    <Compile Include="Forms\FormMain\Tabs\UserControlCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain\UserControlGallery.Designer.cs">
+    <Compile Include="Forms\FormMain\Tabs\UserControlCustom.Designer.cs">
+      <DependentUpon>UserControlCustom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMain\Tabs\UserControlGallery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain\Tabs\UserControlGallery.Designer.cs">
       <DependentUpon>UserControlGallery.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\UserControlPipboy.cs">
+    <Compile Include="Forms\FormMain\Tabs\UserControlPipboy.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain\UserControlPipboy.Designer.cs">
+    <Compile Include="Forms\FormMain\Tabs\UserControlPipboy.Designer.cs">
       <DependentUpon>UserControlPipboy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\UserControlTweaks.cs">
+    <Compile Include="Forms\FormMain\Tabs\UserControlTweaks.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain\UserControlTweaks.Designer.cs">
+    <Compile Include="Forms\FormMain\Tabs\UserControlTweaks.Designer.cs">
       <DependentUpon>UserControlTweaks.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormMods\FormMods.Settings.cs">
@@ -375,13 +381,16 @@
     <EmbeddedResource Include="Forms\FormIniError\FormIniError.resx">
       <DependentUpon>FormIniError.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain\UserControlGallery.resx">
+    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlCustom.resx">
+      <DependentUpon>UserControlCustom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlGallery.resx">
       <DependentUpon>UserControlGallery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain\UserControlPipboy.resx">
+    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlPipboy.resx">
       <DependentUpon>UserControlPipboy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain\UserControlTweaks.resx">
+    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlTweaks.resx">
       <DependentUpon>UserControlTweaks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMods\FormMods.resx">
