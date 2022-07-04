@@ -1,18 +1,26 @@
 ﻿using Fo76ini.Interface;
+using Fo76ini.Profiles;
+using Fo76ini.Tweaks;
+using Fo76ini.Tweaks.General;
 using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Fo76ini
+namespace Fo76ini.Forms.FormMain
 {
-    public partial class FormMain
+    public partial class UserControlGallery : UserControl
     {
+        private GameInstance game;
+
         private List<string> galleryImagePaths = new List<string>();
         private ImageList galleryImageList = new ImageList();
 
@@ -25,19 +33,43 @@ namespace Fo76ini
 
         private int galleryImageSizeMult = 4;
 
-        private void LoadGallery()
+        public UserControlGallery()
         {
-            // https://stackoverflow.com/questions/6481304/how-to-use-a-backgroundworker
+            InitializeComponent();
+
+            ProfileManager.ProfileChanged += OnProfileChanged;
+
             this.backgroundWorkerLoadGallery.RunWorkerCompleted += backgroundWorkerLoadGallery_RunWorkerCompleted;
+            this.backgroundWorkerLoadGallery.DoWork += backgroundWorkerLoadGallery_DoWork;
             this.backgroundWorkerLoadGallery.WorkerReportsProgress = true;
 
             this.listViewScreenshots.MouseDoubleClick += listViewScreenshots_MouseDoubleClick;
             this.listViewScreenshots.MouseUp += listViewScreenshots_MouseUp;
 
+            LinkControls();
+            HideGalleryOptions();
+            //LoadGallery();
+        }
+
+        private void LinkControls()
+        {
+            // Screenshot index
+            LinkedTweaks.LinkInfo(numScreenshotIndex, toolTip, screenshotIndexTweak);
+            LinkedTweaks.LinkInfo(labelScreenshotIndex, toolTip, screenshotIndexTweak);
+            LinkedTweaks.LinkTweak(numScreenshotIndex, screenshotIndexTweak);
+        }
+
+        private void OnProfileChanged(object sender, ProfileEventArgs e)
+        {
+            this.game = e.ActiveGameInstance;
+
+            LoadGallery();
+        }
+
+        private void LoadGallery()
+        {
             this.textBoxGalleryPaths.Text = String.Join("\r\n", Configuration.Gallery.CustomPaths);
             this.checkBoxGallerySearchRecursively.Checked = Configuration.Gallery.SearchDirsRecursively;
-
-            HideGalleryOptions();
         }
 
         private void UpdateScreenShotGalleryThreaded()
@@ -353,60 +385,8 @@ namespace Fo76ini
             Process.Start(galleryImagePaths[index]);
         }
 
-        private void openFolderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Open all folders, but no duplicates:
-            List<string> folders = new List<string>();
-            foreach (int index in galleryContextMenuItems)
-            {
-                string folder = Path.GetDirectoryName(galleryImagePaths[index]);
-                if (!folders.Contains(folder))
-                    folders.Add(folder);
-            }
-            foreach (string folder in folders)
-                Utils.OpenExplorer(folder);
-        }
 
-        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            List<string> files = new List<string>();
-            foreach (int index in galleryContextMenuItems)
-                files.Add(galleryImagePaths[index]);
-            ClipboardUtils.CutFiles(files);
-        }
-
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            List<string> files = new List<string>();
-            foreach (int index in galleryContextMenuItems)
-                files.Add(galleryImagePaths[index]);
-            ClipboardUtils.CopyFiles(files);
-        }
-
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            bool ok = false;
-            if (galleryContextMenuItems.Count == 1)
-            {
-                string fileName = Path.GetFileName(galleryImagePaths[galleryContextMenuItems[0]]);
-                ok = MsgBox.Get("deleteQuestion").FormatTitle(fileName).FormatText(fileName).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
-            }
-            else
-            {
-                ok = MsgBox.Get("deleteMultipleQuestion").FormatTitle(galleryContextMenuItems.Count.ToString()).FormatText(galleryContextMenuItems.Count.ToString()).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
-            }
-
-            if (ok)
-            {
-                foreach (int index in galleryContextMenuItems)
-                {
-                    string path = galleryImagePaths[index];
-                    if (File.Exists(path))
-                        File.Delete(path);
-                }
-
-                UpdateScreenShotGalleryThreaded();
-            }
-        }
+        // Screenshot index
+        private ScreenshotIndexTweak screenshotIndexTweak = new ScreenshotIndexTweak();
     }
 }

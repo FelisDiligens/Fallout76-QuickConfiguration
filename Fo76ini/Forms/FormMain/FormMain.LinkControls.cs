@@ -203,10 +203,6 @@ namespace Fo76ini
             LinkedTweaks.LinkInfo(labelCameraDistanceMinimum, toolTip, vanityModeMinDistTweak);
             LinkedTweaks.LinkInfo(labelCameraDistanceMaximum, toolTip, vanityModeMaxDistTweak);
             LinkedTweaks.LinkInfo(labelPitchZoomOutMaxDist, toolTip, pitchZoomOutMaxDistTweak);
-
-            // Gallery tab
-            LinkedTweaks.LinkInfo(numScreenshotIndex, toolTip, screenshotIndexTweak);
-            LinkedTweaks.LinkInfo(labelScreenshotIndex, toolTip, screenshotIndexTweak);
         }
 
         /// <summary>
@@ -582,15 +578,6 @@ namespace Fo76ini
             LinkedTweaks.LinkTweak(this.numfOverShoulderMeleeCombatPosX, cameraOverShoulderMeleeCombatPosXTweak);
             LinkedTweaks.LinkTweak(this.numfOverShoulderMeleeCombatPosZ, cameraOverShoulderMeleeCombatPosZTweak);
             LinkedTweaks.LinkTweak(this.numfOverShoulderMeleeCombatAddY, cameraOverShoulderMeleeCombatAddYTweak);
-
-
-
-            /*
-             * Gallery tab
-             */
-
-            // Screenshot index
-            LinkedTweaks.LinkTweak(numScreenshotIndex, screenshotIndexTweak);
         }
 
 
@@ -730,8 +717,5 @@ namespace Fo76ini
         private CameraOverShoulderMeleeCombatPosXTweak cameraOverShoulderMeleeCombatPosXTweak = new CameraOverShoulderMeleeCombatPosXTweak();
         private CameraOverShoulderMeleeCombatPosZTweak cameraOverShoulderMeleeCombatPosZTweak = new CameraOverShoulderMeleeCombatPosZTweak();
         private CameraOverShoulderMeleeCombatAddYTweak cameraOverShoulderMeleeCombatAddYTweak = new CameraOverShoulderMeleeCombatAddYTweak();
-
-        // Gallery tab
-        private ScreenshotIndexTweak screenshotIndexTweak = new ScreenshotIndexTweak();
     }
 }

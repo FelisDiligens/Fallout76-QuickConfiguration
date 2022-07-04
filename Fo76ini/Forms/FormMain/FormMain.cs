@@ -52,7 +52,7 @@ namespace Fo76ini
 
             // Make this form translatable:
             LocalizedForm form = new LocalizedForm(this, this.toolTip);
-            form.SpecialControls.Add(this.contextMenuStripGallery);
+            //form.SpecialControls.Add(this.contextMenuStripGallery); // TODO!!
             Localization.LocalizedForms.Add(form);
 
             // Handle translations:
@@ -327,7 +327,6 @@ namespace Fo76ini
 
             // Load UI:
             UpdateNWModeUI(false);
-            this.LoadGallery();
 
             // What's new:
             LoadWhatsNew();
@@ -1146,6 +1145,16 @@ namespace Fo76ini
         private void numFOV_ValueChanged(object sender, EventArgs e)
         {
             this.pictureBoxFOVPreview.Image = getFOVPreviewImage((int)this.numFOV.Value);
+        }
+
+        private void buttonGalleryShowOptions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRefreshGallery_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
