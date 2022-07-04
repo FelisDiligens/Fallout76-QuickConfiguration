@@ -183,9 +183,9 @@
             this.panelGallery.Controls.Add(this.pictureBoxGalleryLoadingGIF);
             this.panelGallery.Controls.Add(this.labelGalleryTip);
             this.panelGallery.Controls.Add(this.listViewScreenshots);
-            this.panelGallery.Location = new System.Drawing.Point(3, 27);
+            this.panelGallery.Location = new System.Drawing.Point(3, 42);
             this.panelGallery.Name = "panelGallery";
-            this.panelGallery.Size = new System.Drawing.Size(574, 420);
+            this.panelGallery.Size = new System.Drawing.Size(574, 405);
             this.panelGallery.TabIndex = 64;
             // 
             // pictureBoxGalleryLoadingGIF
@@ -195,7 +195,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxGalleryLoadingGIF.BackColor = System.Drawing.Color.White;
             this.pictureBoxGalleryLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
-            this.pictureBoxGalleryLoadingGIF.Location = new System.Drawing.Point(0, 15);
+            this.pictureBoxGalleryLoadingGIF.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxGalleryLoadingGIF.Name = "pictureBoxGalleryLoadingGIF";
             this.pictureBoxGalleryLoadingGIF.Size = new System.Drawing.Size(574, 408);
             this.pictureBoxGalleryLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -213,7 +213,7 @@
             this.labelGalleryTip.Location = new System.Drawing.Point(0, 0);
             this.labelGalleryTip.Margin = new System.Windows.Forms.Padding(20);
             this.labelGalleryTip.Name = "labelGalleryTip";
-            this.labelGalleryTip.Size = new System.Drawing.Size(574, 420);
+            this.labelGalleryTip.Size = new System.Drawing.Size(574, 405);
             this.labelGalleryTip.TabIndex = 4;
             this.labelGalleryTip.Text = "Click \"Refresh gallery\" to display screenshots and photos.";
             this.labelGalleryTip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -227,7 +227,7 @@
             this.listViewScreenshots.HideSelection = false;
             this.listViewScreenshots.Location = new System.Drawing.Point(0, 0);
             this.listViewScreenshots.Name = "listViewScreenshots";
-            this.listViewScreenshots.Size = new System.Drawing.Size(574, 420);
+            this.listViewScreenshots.Size = new System.Drawing.Size(574, 405);
             this.listViewScreenshots.TabIndex = 1;
             this.listViewScreenshots.UseCompatibleStateImageBehavior = false;
             // 
@@ -249,6 +249,7 @@
             // 
             this.buttonGalleryShowOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonGalleryShowOptions.BackColor = System.Drawing.Color.Transparent;
+            this.buttonGalleryShowOptions.FlatAppearance.BorderSize = 0;
             this.buttonGalleryShowOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGalleryShowOptions.Image = global::Fo76ini.Properties.Resources.cog_24;
             this.buttonGalleryShowOptions.Location = new System.Drawing.Point(765, 0);
@@ -262,6 +263,7 @@
             // 
             this.buttonRefreshGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonRefreshGallery.BackColor = System.Drawing.Color.Transparent;
+            this.buttonRefreshGallery.FlatAppearance.BorderSize = 0;
             this.buttonRefreshGallery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRefreshGallery.Image = global::Fo76ini.Properties.Resources.available_updates;
             this.buttonRefreshGallery.Location = new System.Drawing.Point(723, 0);
