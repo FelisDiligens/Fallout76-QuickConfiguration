@@ -1146,15 +1146,5 @@ namespace Fo76ini
         {
             this.pictureBoxFOVPreview.Image = getFOVPreviewImage((int)this.numFOV.Value);
         }
-
-        private void buttonGalleryShowOptions_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonRefreshGallery_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
