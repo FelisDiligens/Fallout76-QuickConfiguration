@@ -126,7 +126,7 @@ namespace Fo76ini.Forms.FormMain
             {
                 Color color = GetColorFromHEX(this.textBoxPipboyHEX.Text);
                 this.textBoxPipboyHEX.ForeColor = Color.Black;
-                Pipboy_SetColorOfActivePreview(color);
+                this.colorPreviewPipboy.BackColor = color;
             }
             catch
             {
@@ -140,7 +140,7 @@ namespace Fo76ini.Forms.FormMain
             {
                 Color color = GetColorFromHEX(this.textBoxQuickboyHEX.Text);
                 this.textBoxQuickboyHEX.ForeColor = Color.Black;
-                Pipboy_SetColorOfActivePreview(color);
+                this.colorPreviewQuickboy.BackColor = color;
             }
             catch
             {
@@ -154,7 +154,7 @@ namespace Fo76ini.Forms.FormMain
             {
                 Color color = GetColorFromHEX(this.textBoxPAColorHEX.Text);
                 this.textBoxPAColorHEX.ForeColor = Color.Black;
-                Pipboy_SetColorOfActivePreview(color);
+                this.colorPreviewPAPipboy.BackColor = color;
             }
             catch
             {
@@ -222,7 +222,7 @@ namespace Fo76ini.Forms.FormMain
             {
                 this.colorPreviewQuickboy.BackColor = color;
             }
-            // Quick-Boy
+            // Power Armor
             else if (this.tabControlPipboy.SelectedTab == this.tabPagePowerArmorColor)
             {
                 this.colorPreviewPAPipboy.BackColor = color;

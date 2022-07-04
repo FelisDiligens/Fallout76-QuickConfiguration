@@ -52,9 +52,6 @@ namespace Fo76ini.Forms.FormSettings
             LinkInfo();
             LinkControlsToTweaks();
 
-            // Load NexusMods
-            NexusMods.Load();
-
 
             // Init components / assign event handler:
             this.listViewGameInstances.HeaderStyle = ColumnHeaderStyle.None;

@@ -61,6 +61,7 @@
             this.tabPageGallery = new System.Windows.Forms.TabPage();
             this.userControlGallery = new Fo76ini.Forms.FormMain.UserControlGallery();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
+            this.userControlCustom = new Fo76ini.Forms.FormMain.Tabs.UserControlCustom();
             this.backgroundWorkerLoadGallery = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerGetLatestVersion = new System.ComponentModel.BackgroundWorker();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -98,7 +99,6 @@
             this.toolStripStatusLabelNuclearWinterModeActive = new System.Windows.Forms.ToolStripStatusLabel();
             this.backgroundWorkerDownloadRTF = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.userControlCustom = new Fo76ini.Forms.FormMain.Tabs.UserControlCustom();
             this.tabControl1.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
             this.panelWhatsNew.SuspendLayout();
@@ -478,6 +478,16 @@
             this.tabPageCustom.Text = "Custom";
             this.tabPageCustom.UseVisualStyleBackColor = true;
             // 
+            // userControlCustom
+            // 
+            this.userControlCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlCustom.Location = new System.Drawing.Point(0, 0);
+            this.userControlCustom.Name = "userControlCustom";
+            this.userControlCustom.Size = new System.Drawing.Size(852, 464);
+            this.userControlCustom.TabIndex = 0;
+            // 
             // backgroundWorkerGetLatestVersion
             // 
             this.backgroundWorkerGetLatestVersion.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerGetLatestVersion_DoWork);
@@ -800,16 +810,6 @@
             this.pictureBoxLoadingGIF.TabIndex = 15;
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
-            // 
-            // userControlCustom
-            // 
-            this.userControlCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.userControlCustom.Location = new System.Drawing.Point(0, 0);
-            this.userControlCustom.Name = "userControlCustom";
-            this.userControlCustom.Size = new System.Drawing.Size(852, 464);
-            this.userControlCustom.TabIndex = 0;
             // 
             // FormMain
             // 

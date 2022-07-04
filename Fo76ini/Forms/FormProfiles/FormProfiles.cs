@@ -15,12 +15,17 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Fo76ini;
+using Fo76ini.Ini;
+using Fo76ini.Forms.FormIniError;
 
 namespace Fo76ini.Forms.FormProfiles
 {
     public partial class FormProfiles : Form
     {
         PrivateFontCollection pfc = new PrivateFontCollection();
+
+        private Fo76ini.FormMain formMain;
 
         bool UpdatingUI = false;
 
@@ -171,13 +176,53 @@ namespace Fo76ini.Forms.FormProfiles
 
 
         /*
+         * Bootstrap
+         */
+
+        private void LoadINIFiles()
+        {
+            while (true)
+            {
+                try
+                {
+                    IniFiles.Load(ProfileManager.SelectedGame);
+                    break;
+                }
+                catch (IniParsingException exc)
+                {
+                    DialogResult result = FormIniError.FormIniError.OpenDialog(exc);
+                    if (result == DialogResult.Retry)
+                    {
+                        continue;
+                    }
+                    else if (result == DialogResult.Ignore)
+                    {
+                        continue;
+                    }
+                    else if (result == DialogResult.Abort)
+                    {
+                        Environment.Exit(-1);
+                        return;
+                    }
+                }
+            }
+        }
+
+
+        /*
          * General event handler
          */
 
         private void buttonLoadProfile_Click(object sender, EventArgs e)
         {
-            // TODO
-            this.Close();
+            ProfileManager.Save();
+            LoadINIFiles();
+
+            formMain = new Fo76ini.FormMain();
+            formMain.Closed += (s, args) => this.Close();
+
+            this.Hide();
+            formMain.Show();
         }
 
 
@@ -243,6 +288,7 @@ namespace Fo76ini.Forms.FormProfiles
 
         private void linkLabelNavigationBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            ProfileManager.Save();
             this.tabControl.SelectedTab = this.tabPageSelect;
             UpdateList();
         }

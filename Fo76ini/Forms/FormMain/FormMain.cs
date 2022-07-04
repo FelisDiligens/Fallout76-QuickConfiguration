@@ -94,16 +94,7 @@ namespace Fo76ini
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            // Create folders, if not present:
-            Directory.CreateDirectory(Shared.AppConfigFolder);
-            Directory.CreateDirectory(Shared.AppTranslationsFolder);
-            Directory.CreateDirectory(IniFiles.ParentPath);
-
-            // Load config.ini
-            IniFiles.LoadConfig();
-
-            // Load game instances
-            ProfileManager.Load();
+            ProfileManager.Feedback();
             formSettings = new FormSettings();
 
             this.timerCheckFiles.Enabled = true;
@@ -140,8 +131,6 @@ namespace Fo76ini
             if (FirstStart)
                 formWelcome.OpenDialog();
 
-            (new FormProfiles()).ShowDialog();
-
             // Check for updates
             CheckVersion();
 
@@ -156,7 +145,7 @@ namespace Fo76ini
         private void OnProfileChanged(object sender, ProfileEventArgs e)
         {
             this.game = e.ActiveGameInstance;
-            this.timerCheckFiles.Enabled = false;
+            this.timerCheckFiles.Enabled = false;/*
             while (true)
             {
                 try
@@ -184,7 +173,7 @@ namespace Fo76ini
                     //Application.Exit();
                     //return;
                 }
-            }
+            }*/
             LinkedTweaks.LoadValues();
 
             // Change image
@@ -535,7 +524,9 @@ namespace Fo76ini
 
         private void showProfiles_OnClick(object sender, EventArgs e)
         {
-            formSettings.ShowProfiles();
+            //formSettings.ShowProfiles();
+            Application.Restart();
+            Environment.Exit(0);
         }
 
         #endregion
