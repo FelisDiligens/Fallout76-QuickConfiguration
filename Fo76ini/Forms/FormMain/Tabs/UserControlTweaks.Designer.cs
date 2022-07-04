@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlTweaks));
             this.tabControlTweaks = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
@@ -284,6 +285,7 @@
             this.trackBarfOverShoulderPosX = new System.Windows.Forms.TrackBar();
             this.labelfOverShoulderPosZ = new System.Windows.Forms.Label();
             this.trackBarfOverShoulderPosZ = new System.Windows.Forms.TrackBar();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabControlTweaks.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.tabPageVideo.SuspendLayout();
@@ -4261,5 +4263,6 @@
         private System.Windows.Forms.TrackBar trackBarfOverShoulderPosX;
         private System.Windows.Forms.Label labelfOverShoulderPosZ;
         private System.Windows.Forms.TrackBar trackBarfOverShoulderPosZ;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

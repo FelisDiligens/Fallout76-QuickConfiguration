@@ -126,4 +126,7 @@ If you use Steam and want to use your Bethesda.net account
 (e.g. to spent Atoms), untick Enable Steam.
 NOTE: Your achievements will be disabled as well!</value>
   </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

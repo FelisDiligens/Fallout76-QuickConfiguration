@@ -1,4 +1,10 @@
 ﻿using Fo76ini.Tweaks;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using Fo76ini.Tweaks.Audio;
 using Fo76ini.Tweaks.Camera;
 using Fo76ini.Tweaks.Colors;
@@ -10,13 +16,13 @@ using Fo76ini.Tweaks.Pipboy;
 using Fo76ini.Tweaks.Video;
 using Fo76ini.Tweaks.Volume;
 
-namespace Fo76ini
+namespace Fo76ini.Forms.FormMain
 {
     /*
      * A bit similar to the *.Designer.cs, adds event handlers to (almost) all controls.
      * That is, instantiate classes that implement ITweak, and link the controls to it's value (among other things).
      */
-    partial class FormMain
+    public partial class UserControlTweaks : UserControl
     {
         /// <summary>
         /// Adds tooltip information (ITweakInfo)

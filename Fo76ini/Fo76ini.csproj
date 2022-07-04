@@ -176,6 +176,9 @@
     <Compile Include="Forms\FormMain\Tabs\UserControlTweaks.Designer.cs">
       <DependentUpon>UserControlTweaks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormMain\Tabs\UserControlTweaks.LinkControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Forms\FormMods\FormMods.Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,9 +319,6 @@
     </Compile>
     <Compile Include="Controls\ColorPreview.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Forms\FormMain\FormMain.LinkControls.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormMain\FormMain.cs">
       <SubType>Form</SubType>
