@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="labelCredentialsExplanation.Text" xml:space="preserve">
+    <value>Your credentials are saved into Fallout76Custom.ini
+This way, you don't have to enter your username and password manually
+if you start Fallout 76 without the launcher.
+
+If you use Steam and want to use your Bethesda.net account
+(e.g. to spent Atoms), untick Enable Steam.
+NOTE: Your achievements will be disabled as well!</value>
+  </data>
 </root>

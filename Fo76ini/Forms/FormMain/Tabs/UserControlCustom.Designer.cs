@@ -38,6 +38,7 @@
             // 
             // buttonCustomSave
             // 
+            this.buttonCustomSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCustomSave.Location = new System.Drawing.Point(752, 22);
             this.buttonCustomSave.Name = "buttonCustomSave";
             this.buttonCustomSave.Size = new System.Drawing.Size(94, 23);
@@ -48,6 +49,7 @@
             // 
             // comboBoxCustomFile
             // 
+            this.comboBoxCustomFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxCustomFile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCustomFile.FormattingEnabled = true;
             this.comboBoxCustomFile.Location = new System.Drawing.Point(540, 23);
@@ -58,6 +60,7 @@
             // 
             // labelCustomFile
             // 
+            this.labelCustomFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelCustomFile.AutoSize = true;
             this.labelCustomFile.Location = new System.Drawing.Point(538, 7);
             this.labelCustomFile.Name = "labelCustomFile";
@@ -73,11 +76,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCustom.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCustom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.textBoxCustom.Location = new System.Drawing.Point(5, 50);
+            this.textBoxCustom.Location = new System.Drawing.Point(6, 50);
             this.textBoxCustom.Multiline = true;
             this.textBoxCustom.Name = "textBoxCustom";
             this.textBoxCustom.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxCustom.Size = new System.Drawing.Size(840, 406);
+            this.textBoxCustom.Size = new System.Drawing.Size(840, 405);
             this.textBoxCustom.TabIndex = 4;
             this.textBoxCustom.WordWrap = false;
             this.textBoxCustom.TextChanged += new System.EventHandler(this.textBoxCustom_TextChanged);
