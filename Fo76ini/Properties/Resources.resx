@@ -385,4 +385,13 @@
   <data name="fov_95" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fov_95.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fallout76_logo_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fallout76-logo-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fallout76_logo_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fallout76-logo-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="overseer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\overseer.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

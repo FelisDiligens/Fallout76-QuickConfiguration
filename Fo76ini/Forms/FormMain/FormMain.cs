@@ -1,4 +1,5 @@
 ﻿using Fo76ini.Forms.FormIniError;
+using Fo76ini.Forms.FormProfiles;
 using Fo76ini.Forms.FormSettings;
 using Fo76ini.Forms.FormWelcome;
 using Fo76ini.Ini;
@@ -138,6 +139,8 @@ namespace Fo76ini
             // Show welcome dialog:
             if (FirstStart)
                 formWelcome.OpenDialog();
+
+            (new FormProfiles()).ShowDialog();
 
             // Check for updates
             CheckVersion();

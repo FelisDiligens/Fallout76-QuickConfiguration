@@ -373,6 +373,26 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fallout76_logo_black {
+            get {
+                object obj = ResourceManager.GetObject("fallout76_logo_black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fallout76_logo_white {
+            get {
+                object obj = ResourceManager.GetObject("fallout76_logo_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fire {
             get {
                 object obj = ResourceManager.GetObject("fire", resourceCulture);
@@ -657,6 +677,16 @@ namespace Fo76ini.Properties {
             get {
                 object obj = ResourceManager.GetObject("nexus-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] overseer {
+            get {
+                object obj = ResourceManager.GetObject("overseer", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
