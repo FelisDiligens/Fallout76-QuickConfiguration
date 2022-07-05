@@ -31,27 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlTweaks));
             this.tabControlTweaks = new System.Windows.Forms.TabControl();
-            this.tabPageGeneral = new System.Windows.Forms.TabPage();
-            this.tabPageVideo = new System.Windows.Forms.TabPage();
-            this.tabPageAudio = new System.Windows.Forms.TabPage();
-            this.tabPageControls = new System.Windows.Forms.TabPage();
-            this.tabPageCamera = new System.Windows.Forms.TabPage();
-            this.groupBoxGamepad = new System.Windows.Forms.GroupBox();
-            this.checkBoxGamepadEnabled = new System.Windows.Forms.CheckBox();
-            this.checkBoxGamepadRumble = new System.Windows.Forms.CheckBox();
-            this.groupBoxMouse = new System.Windows.Forms.GroupBox();
-            this.checkBoxMouseInvertX = new System.Windows.Forms.CheckBox();
-            this.checkBoxMouseInvertY = new System.Windows.Forms.CheckBox();
-            this.sliderMouseSensitivity = new System.Windows.Forms.TrackBar();
-            this.checkBoxMouseAcceleration = new System.Windows.Forms.CheckBox();
-            this.checkBoxFixAimSensitivity = new System.Windows.Forms.CheckBox();
-            this.numMouseSensitivity = new System.Windows.Forms.NumericUpDown();
-            this.labelMouseSensitivity = new System.Windows.Forms.Label();
-            this.checkBoxFixMouseSensitivity = new System.Windows.Forms.CheckBox();
-            this.labelTweaksDesc = new System.Windows.Forms.Label();
-            this.labelTweaksTitle = new System.Windows.Forms.Label();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
-            this.groupBoxLogin = new System.Windows.Forms.GroupBox();
             this.groupBoxLoginProfiles = new System.Windows.Forms.GroupBox();
             this.radioButtonAccountNone = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount1 = new System.Windows.Forms.RadioButton();
@@ -70,6 +50,7 @@
             this.radioButtonAccount10 = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount8 = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount9 = new System.Windows.Forms.RadioButton();
+            this.groupBoxLogin = new System.Windows.Forms.GroupBox();
             this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableSteam = new System.Windows.Forms.CheckBox();
             this.labelCredentialsExplanation = new System.Windows.Forms.Label();
@@ -78,6 +59,7 @@
             this.checkBoxShowPassword = new System.Windows.Forms.CheckBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
+            this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.groupBoxTweaks = new System.Windows.Forms.GroupBox();
             this.checkBoxFasterFadeIn = new System.Windows.Forms.CheckBox();
             this.groupBoxGeneralInterface = new System.Windows.Forms.GroupBox();
@@ -108,61 +90,7 @@
             this.groupBoxMainMenu = new System.Windows.Forms.GroupBox();
             this.checkBoxSkipSplash = new System.Windows.Forms.CheckBox();
             this.checkBoxSkipIntroVideos = new System.Windows.Forms.CheckBox();
-            this.groupBoxDisplay = new System.Windows.Forms.GroupBox();
-            this.comboBoxDisplayMode = new System.Windows.Forms.ComboBox();
-            this.checkBoxFixHUDFor5_4and4_3 = new System.Windows.Forms.CheckBox();
-            this.comboBoxResolution = new System.Windows.Forms.ComboBox();
-            this.buttonDetectResolution = new System.Windows.Forms.Button();
-            this.labelCustomResolution = new System.Windows.Forms.Label();
-            this.checkBoxAlwaysActive = new System.Windows.Forms.CheckBox();
-            this.labelResolution = new System.Windows.Forms.Label();
-            this.checkBoxTopMostWindow = new System.Windows.Forms.CheckBox();
-            this.numCustomResW = new System.Windows.Forms.NumericUpDown();
-            this.numCustomResH = new System.Windows.Forms.NumericUpDown();
-            this.labelDisplayMode = new System.Windows.Forms.Label();
-            this.labelCustomResolutionSpacer = new System.Windows.Forms.Label();
-            this.groupBoxAudioVolume = new System.Windows.Forms.GroupBox();
-            this.sliderAudioChat = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal6 = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal5 = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal4 = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal3 = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal2 = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal1 = new System.Windows.Forms.TrackBar();
-            this.labelVolumeMaster = new System.Windows.Forms.Label();
-            this.sliderVolumeMaster = new System.Windows.Forms.TrackBar();
-            this.numVolumeMaster = new System.Windows.Forms.NumericUpDown();
-            this.numAudioChat = new System.Windows.Forms.NumericUpDown();
-            this.sliderAudiofVal0 = new System.Windows.Forms.TrackBar();
-            this.labelAudioChat = new System.Windows.Forms.Label();
-            this.labelAudiofVal0 = new System.Windows.Forms.Label();
-            this.numAudiofVal0 = new System.Windows.Forms.NumericUpDown();
-            this.numAudiofVal6 = new System.Windows.Forms.NumericUpDown();
-            this.labelAudiofVal6 = new System.Windows.Forms.Label();
-            this.labelAudiofVal1 = new System.Windows.Forms.Label();
-            this.numAudiofVal1 = new System.Windows.Forms.NumericUpDown();
-            this.numAudiofVal5 = new System.Windows.Forms.NumericUpDown();
-            this.labelAudiofVal5 = new System.Windows.Forms.Label();
-            this.labelAudiofVal2 = new System.Windows.Forms.Label();
-            this.numAudiofVal2 = new System.Windows.Forms.NumericUpDown();
-            this.numAudiofVal4 = new System.Windows.Forms.NumericUpDown();
-            this.labelAudiofVal4 = new System.Windows.Forms.Label();
-            this.labelAudiofVal3 = new System.Windows.Forms.Label();
-            this.numAudiofVal3 = new System.Windows.Forms.NumericUpDown();
-            this.groupBoxAudio = new System.Windows.Forms.GroupBox();
-            this.checkBoxEnableAudio = new System.Windows.Forms.CheckBox();
-            this.checkBoxMainMenuMusic = new System.Windows.Forms.CheckBox();
-            this.groupBoxVoice = new System.Windows.Forms.GroupBox();
-            this.comboBoxVoiceChatMode = new System.Windows.Forms.ComboBox();
-            this.labelVoiceChatMode = new System.Windows.Forms.Label();
-            this.checkBoxPushToTalk = new System.Windows.Forms.CheckBox();
-            this.groupBoxAudioInterface = new System.Windows.Forms.GroupBox();
-            this.sliderConversationHistorySize = new System.Windows.Forms.TrackBar();
-            this.numConversationHistorySize = new System.Windows.Forms.NumericUpDown();
-            this.labelConversationHistorySize = new System.Windows.Forms.Label();
-            this.checkBoxDialogueHistory = new System.Windows.Forms.CheckBox();
-            this.checkBoxDialogueSubtitles = new System.Windows.Forms.CheckBox();
-            this.checkBoxGeneralSubtitles = new System.Windows.Forms.CheckBox();
+            this.tabPageVideo = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBoxGraphics = new System.Windows.Forms.GroupBox();
             this.groupBoxGraphicEffects = new System.Windows.Forms.GroupBox();
@@ -217,10 +145,106 @@
             this.checkBoxMotionBlur = new System.Windows.Forms.CheckBox();
             this.checkBoxRadialBlur = new System.Windows.Forms.CheckBox();
             this.checkBoxLensFlare = new System.Windows.Forms.CheckBox();
-            this.groupBoxFieldOfView = new System.Windows.Forms.GroupBox();
-            this.pictureBoxFOVPreview = new System.Windows.Forms.PictureBox();
-            this.sliderFOV = new System.Windows.Forms.TrackBar();
-            this.numFOV = new System.Windows.Forms.NumericUpDown();
+            this.groupBoxDisplay = new System.Windows.Forms.GroupBox();
+            this.comboBoxDisplayMode = new System.Windows.Forms.ComboBox();
+            this.checkBoxFixHUDFor5_4and4_3 = new System.Windows.Forms.CheckBox();
+            this.comboBoxResolution = new System.Windows.Forms.ComboBox();
+            this.buttonDetectResolution = new System.Windows.Forms.Button();
+            this.labelCustomResolution = new System.Windows.Forms.Label();
+            this.checkBoxAlwaysActive = new System.Windows.Forms.CheckBox();
+            this.labelResolution = new System.Windows.Forms.Label();
+            this.checkBoxTopMostWindow = new System.Windows.Forms.CheckBox();
+            this.numCustomResW = new System.Windows.Forms.NumericUpDown();
+            this.numCustomResH = new System.Windows.Forms.NumericUpDown();
+            this.labelDisplayMode = new System.Windows.Forms.Label();
+            this.labelCustomResolutionSpacer = new System.Windows.Forms.Label();
+            this.tabPageAudio = new System.Windows.Forms.TabPage();
+            this.groupBoxAudio = new System.Windows.Forms.GroupBox();
+            this.checkBoxEnableAudio = new System.Windows.Forms.CheckBox();
+            this.checkBoxMainMenuMusic = new System.Windows.Forms.CheckBox();
+            this.groupBoxVoice = new System.Windows.Forms.GroupBox();
+            this.comboBoxVoiceChatMode = new System.Windows.Forms.ComboBox();
+            this.labelVoiceChatMode = new System.Windows.Forms.Label();
+            this.checkBoxPushToTalk = new System.Windows.Forms.CheckBox();
+            this.groupBoxAudioInterface = new System.Windows.Forms.GroupBox();
+            this.sliderConversationHistorySize = new System.Windows.Forms.TrackBar();
+            this.numConversationHistorySize = new System.Windows.Forms.NumericUpDown();
+            this.labelConversationHistorySize = new System.Windows.Forms.Label();
+            this.checkBoxDialogueHistory = new System.Windows.Forms.CheckBox();
+            this.checkBoxDialogueSubtitles = new System.Windows.Forms.CheckBox();
+            this.checkBoxGeneralSubtitles = new System.Windows.Forms.CheckBox();
+            this.groupBoxAudioVolume = new System.Windows.Forms.GroupBox();
+            this.sliderAudioChat = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal6 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal5 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal4 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal3 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal2 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal1 = new System.Windows.Forms.TrackBar();
+            this.labelVolumeMaster = new System.Windows.Forms.Label();
+            this.sliderVolumeMaster = new System.Windows.Forms.TrackBar();
+            this.numVolumeMaster = new System.Windows.Forms.NumericUpDown();
+            this.numAudioChat = new System.Windows.Forms.NumericUpDown();
+            this.sliderAudiofVal0 = new System.Windows.Forms.TrackBar();
+            this.labelAudioChat = new System.Windows.Forms.Label();
+            this.labelAudiofVal0 = new System.Windows.Forms.Label();
+            this.numAudiofVal0 = new System.Windows.Forms.NumericUpDown();
+            this.numAudiofVal6 = new System.Windows.Forms.NumericUpDown();
+            this.labelAudiofVal6 = new System.Windows.Forms.Label();
+            this.labelAudiofVal1 = new System.Windows.Forms.Label();
+            this.numAudiofVal1 = new System.Windows.Forms.NumericUpDown();
+            this.numAudiofVal5 = new System.Windows.Forms.NumericUpDown();
+            this.labelAudiofVal5 = new System.Windows.Forms.Label();
+            this.labelAudiofVal2 = new System.Windows.Forms.Label();
+            this.numAudiofVal2 = new System.Windows.Forms.NumericUpDown();
+            this.numAudiofVal4 = new System.Windows.Forms.NumericUpDown();
+            this.labelAudiofVal4 = new System.Windows.Forms.Label();
+            this.labelAudiofVal3 = new System.Windows.Forms.Label();
+            this.numAudiofVal3 = new System.Windows.Forms.NumericUpDown();
+            this.tabPageControls = new System.Windows.Forms.TabPage();
+            this.groupBoxGamepad = new System.Windows.Forms.GroupBox();
+            this.checkBoxGamepadEnabled = new System.Windows.Forms.CheckBox();
+            this.checkBoxGamepadRumble = new System.Windows.Forms.CheckBox();
+            this.groupBoxMouse = new System.Windows.Forms.GroupBox();
+            this.checkBoxMouseInvertX = new System.Windows.Forms.CheckBox();
+            this.checkBoxMouseInvertY = new System.Windows.Forms.CheckBox();
+            this.sliderMouseSensitivity = new System.Windows.Forms.TrackBar();
+            this.checkBoxMouseAcceleration = new System.Windows.Forms.CheckBox();
+            this.checkBoxFixAimSensitivity = new System.Windows.Forms.CheckBox();
+            this.numMouseSensitivity = new System.Windows.Forms.NumericUpDown();
+            this.labelMouseSensitivity = new System.Windows.Forms.Label();
+            this.checkBoxFixMouseSensitivity = new System.Windows.Forms.CheckBox();
+            this.tabPageCamera = new System.Windows.Forms.TabPage();
+            this.groupBoxCameraPosition = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.numfOverShoulderMeleeCombatAddY = new System.Windows.Forms.NumericUpDown();
+            this.labelfOverShoulderMeleeCombatAddY = new System.Windows.Forms.Label();
+            this.numfOverShoulderMeleeCombatPosX = new System.Windows.Forms.NumericUpDown();
+            this.numfOverShoulderMeleeCombatPosZ = new System.Windows.Forms.NumericUpDown();
+            this.trackBarfOverShoulderMeleeCombatAddY = new System.Windows.Forms.TrackBar();
+            this.labelfOverShoulderMeleeCombatPosX = new System.Windows.Forms.Label();
+            this.trackBarfOverShoulderMeleeCombatPosX = new System.Windows.Forms.TrackBar();
+            this.labelfOverShoulderMeleeCombatPosZ = new System.Windows.Forms.Label();
+            this.trackBarfOverShoulderMeleeCombatPosZ = new System.Windows.Forms.TrackBar();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.numfOverShoulderCombatAddY = new System.Windows.Forms.NumericUpDown();
+            this.numfOverShoulderCombatPosX = new System.Windows.Forms.NumericUpDown();
+            this.numfOverShoulderCombatPosZ = new System.Windows.Forms.NumericUpDown();
+            this.labelfOverShoulderCombatAddY = new System.Windows.Forms.Label();
+            this.trackBarfOverShoulderCombatAddY = new System.Windows.Forms.TrackBar();
+            this.labelfOverShoulderCombatPosX = new System.Windows.Forms.Label();
+            this.trackBarfOverShoulderCombatPosX = new System.Windows.Forms.TrackBar();
+            this.labelfOverShoulderCombatPosZ = new System.Windows.Forms.Label();
+            this.trackBarfOverShoulderCombatPosZ = new System.Windows.Forms.TrackBar();
+            this.buttonCameraPositionReset = new System.Windows.Forms.Button();
+            this.checkBoxbApplyCameraNodeAnimations = new System.Windows.Forms.CheckBox();
+            this.groupBoxUnarmedCameraPosition = new System.Windows.Forms.GroupBox();
+            this.numfOverShoulderPosX = new System.Windows.Forms.NumericUpDown();
+            this.numfOverShoulderPosZ = new System.Windows.Forms.NumericUpDown();
+            this.labelfOverShoulderPosX = new System.Windows.Forms.Label();
+            this.trackBarfOverShoulderPosX = new System.Windows.Forms.TrackBar();
+            this.labelfOverShoulderPosZ = new System.Windows.Forms.Label();
+            this.trackBarfOverShoulderPosZ = new System.Windows.Forms.TrackBar();
             this.groupBoxFOVOld = new System.Windows.Forms.GroupBox();
             this.labelFOVWarn = new System.Windows.Forms.Label();
             this.labelMoreFOV = new System.Windows.Forms.Label();
@@ -255,50 +279,18 @@
             this.labelCameraDistanceMaximum = new System.Windows.Forms.Label();
             this.labelCameraDistanceMinimum = new System.Windows.Forms.Label();
             this.sliderCameraDistanceMinimum = new System.Windows.Forms.TrackBar();
-            this.groupBoxCameraPosition = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.numfOverShoulderMeleeCombatAddY = new System.Windows.Forms.NumericUpDown();
-            this.labelfOverShoulderMeleeCombatAddY = new System.Windows.Forms.Label();
-            this.numfOverShoulderMeleeCombatPosX = new System.Windows.Forms.NumericUpDown();
-            this.numfOverShoulderMeleeCombatPosZ = new System.Windows.Forms.NumericUpDown();
-            this.trackBarfOverShoulderMeleeCombatAddY = new System.Windows.Forms.TrackBar();
-            this.labelfOverShoulderMeleeCombatPosX = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderMeleeCombatPosX = new System.Windows.Forms.TrackBar();
-            this.labelfOverShoulderMeleeCombatPosZ = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderMeleeCombatPosZ = new System.Windows.Forms.TrackBar();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numfOverShoulderCombatAddY = new System.Windows.Forms.NumericUpDown();
-            this.numfOverShoulderCombatPosX = new System.Windows.Forms.NumericUpDown();
-            this.numfOverShoulderCombatPosZ = new System.Windows.Forms.NumericUpDown();
-            this.labelfOverShoulderCombatAddY = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderCombatAddY = new System.Windows.Forms.TrackBar();
-            this.labelfOverShoulderCombatPosX = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderCombatPosX = new System.Windows.Forms.TrackBar();
-            this.labelfOverShoulderCombatPosZ = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderCombatPosZ = new System.Windows.Forms.TrackBar();
-            this.buttonCameraPositionReset = new System.Windows.Forms.Button();
-            this.checkBoxbApplyCameraNodeAnimations = new System.Windows.Forms.CheckBox();
-            this.groupBoxUnarmedCameraPosition = new System.Windows.Forms.GroupBox();
-            this.numfOverShoulderPosX = new System.Windows.Forms.NumericUpDown();
-            this.numfOverShoulderPosZ = new System.Windows.Forms.NumericUpDown();
-            this.labelfOverShoulderPosX = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderPosX = new System.Windows.Forms.TrackBar();
-            this.labelfOverShoulderPosZ = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderPosZ = new System.Windows.Forms.TrackBar();
+            this.groupBoxFieldOfView = new System.Windows.Forms.GroupBox();
+            this.pictureBoxFOVPreview = new System.Windows.Forms.PictureBox();
+            this.sliderFOV = new System.Windows.Forms.TrackBar();
+            this.numFOV = new System.Windows.Forms.NumericUpDown();
+            this.labelTweaksDesc = new System.Windows.Forms.Label();
+            this.labelTweaksTitle = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabControlTweaks.SuspendLayout();
-            this.tabPageGeneral.SuspendLayout();
-            this.tabPageVideo.SuspendLayout();
-            this.tabPageAudio.SuspendLayout();
-            this.tabPageControls.SuspendLayout();
-            this.tabPageCamera.SuspendLayout();
-            this.groupBoxGamepad.SuspendLayout();
-            this.groupBoxMouse.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivity)).BeginInit();
             this.tabPageLogin.SuspendLayout();
-            this.groupBoxLogin.SuspendLayout();
             this.groupBoxLoginProfiles.SuspendLayout();
+            this.groupBoxLogin.SuspendLayout();
+            this.tabPageGeneral.SuspendLayout();
             this.groupBoxTweaks.SuspendLayout();
             this.groupBoxGeneralInterface.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFloatingQuestMarkersDistance)).BeginInit();
@@ -307,33 +299,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).BeginInit();
             this.groupBoxQuests.SuspendLayout();
             this.groupBoxMainMenu.SuspendLayout();
-            this.groupBoxDisplay.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
-            this.groupBoxAudioVolume.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudioChat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderVolumeMaster)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numVolumeMaster)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudioChat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal3)).BeginInit();
-            this.groupBoxAudio.SuspendLayout();
-            this.groupBoxVoice.SuspendLayout();
-            this.groupBoxAudioInterface.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).BeginInit();
+            this.tabPageVideo.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBoxGraphics.SuspendLayout();
             this.groupBoxGraphicEffects.SuspendLayout();
@@ -359,30 +325,40 @@
             this.groupBoxWater.SuspendLayout();
             this.groupBoxWeather.SuspendLayout();
             this.groupBoxPostProcessing.SuspendLayout();
-            this.groupBoxFieldOfView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFOVPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderFOV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFOV)).BeginInit();
-            this.groupBoxFOVOld.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFirstPersonFOV)).BeginInit();
-            this.groupBoxSelfieCamera.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRange)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).BeginInit();
-            this.groupBoxCameraOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCameraSwitchDelay)).BeginInit();
-            this.groupBoxCameraDistance.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderfPitchZoomOutMaxDist)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMaximum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMinimum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMaximum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMinimum)).BeginInit();
+            this.groupBoxDisplay.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).BeginInit();
+            this.tabPageAudio.SuspendLayout();
+            this.groupBoxAudio.SuspendLayout();
+            this.groupBoxVoice.SuspendLayout();
+            this.groupBoxAudioInterface.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).BeginInit();
+            this.groupBoxAudioVolume.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudioChat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderVolumeMaster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numVolumeMaster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudioChat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal3)).BeginInit();
+            this.tabPageControls.SuspendLayout();
+            this.groupBoxGamepad.SuspendLayout();
+            this.groupBoxMouse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivity)).BeginInit();
+            this.tabPageCamera.SuspendLayout();
             this.groupBoxCameraPosition.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderMeleeCombatAddY)).BeginInit();
@@ -403,6 +379,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderPosZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderPosX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderPosZ)).BeginInit();
+            this.groupBoxFOVOld.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFirstPersonFOV)).BeginInit();
+            this.groupBoxSelfieCamera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).BeginInit();
+            this.groupBoxCameraOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraSwitchDelay)).BeginInit();
+            this.groupBoxCameraDistance.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderfPitchZoomOutMaxDist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMaximum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMinimum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMaximum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMinimum)).BeginInit();
+            this.groupBoxFieldOfView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFOVPreview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderFOV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFOV)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -422,250 +422,6 @@
             this.tabControlTweaks.Size = new System.Drawing.Size(844, 407);
             this.tabControlTweaks.TabIndex = 0;
             // 
-            // tabPageGeneral
-            // 
-            this.tabPageGeneral.AutoScroll = true;
-            this.tabPageGeneral.Controls.Add(this.groupBoxTweaks);
-            this.tabPageGeneral.Controls.Add(this.groupBoxGeneralInterface);
-            this.tabPageGeneral.Controls.Add(this.groupBoxQuests);
-            this.tabPageGeneral.Controls.Add(this.groupBoxMainMenu);
-            this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
-            this.tabPageGeneral.Name = "tabPageGeneral";
-            this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGeneral.Size = new System.Drawing.Size(836, 381);
-            this.tabPageGeneral.TabIndex = 0;
-            this.tabPageGeneral.Text = "General";
-            this.tabPageGeneral.UseVisualStyleBackColor = true;
-            // 
-            // tabPageVideo
-            // 
-            this.tabPageVideo.Controls.Add(this.panel3);
-            this.tabPageVideo.Controls.Add(this.groupBoxDisplay);
-            this.tabPageVideo.Location = new System.Drawing.Point(4, 22);
-            this.tabPageVideo.Name = "tabPageVideo";
-            this.tabPageVideo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageVideo.Size = new System.Drawing.Size(836, 381);
-            this.tabPageVideo.TabIndex = 1;
-            this.tabPageVideo.Text = "Video";
-            this.tabPageVideo.UseVisualStyleBackColor = true;
-            // 
-            // tabPageAudio
-            // 
-            this.tabPageAudio.AutoScroll = true;
-            this.tabPageAudio.Controls.Add(this.groupBoxAudio);
-            this.tabPageAudio.Controls.Add(this.groupBoxVoice);
-            this.tabPageAudio.Controls.Add(this.groupBoxAudioInterface);
-            this.tabPageAudio.Controls.Add(this.groupBoxAudioVolume);
-            this.tabPageAudio.Location = new System.Drawing.Point(4, 22);
-            this.tabPageAudio.Name = "tabPageAudio";
-            this.tabPageAudio.Size = new System.Drawing.Size(836, 381);
-            this.tabPageAudio.TabIndex = 2;
-            this.tabPageAudio.Text = "Audio";
-            this.tabPageAudio.UseVisualStyleBackColor = true;
-            // 
-            // tabPageControls
-            // 
-            this.tabPageControls.Controls.Add(this.groupBoxGamepad);
-            this.tabPageControls.Controls.Add(this.groupBoxMouse);
-            this.tabPageControls.Location = new System.Drawing.Point(4, 22);
-            this.tabPageControls.Name = "tabPageControls";
-            this.tabPageControls.Size = new System.Drawing.Size(836, 381);
-            this.tabPageControls.TabIndex = 3;
-            this.tabPageControls.Text = "Controls";
-            this.tabPageControls.UseVisualStyleBackColor = true;
-            // 
-            // tabPageCamera
-            // 
-            this.tabPageCamera.AutoScroll = true;
-            this.tabPageCamera.Controls.Add(this.groupBoxCameraPosition);
-            this.tabPageCamera.Controls.Add(this.groupBoxFOVOld);
-            this.tabPageCamera.Controls.Add(this.groupBoxSelfieCamera);
-            this.tabPageCamera.Controls.Add(this.groupBoxCameraOptions);
-            this.tabPageCamera.Controls.Add(this.groupBoxCameraDistance);
-            this.tabPageCamera.Controls.Add(this.groupBoxFieldOfView);
-            this.tabPageCamera.Location = new System.Drawing.Point(4, 22);
-            this.tabPageCamera.Name = "tabPageCamera";
-            this.tabPageCamera.Size = new System.Drawing.Size(836, 381);
-            this.tabPageCamera.TabIndex = 4;
-            this.tabPageCamera.Text = "Camera";
-            this.tabPageCamera.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxGamepad
-            // 
-            this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadEnabled);
-            this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadRumble);
-            this.groupBoxGamepad.Location = new System.Drawing.Point(6, 251);
-            this.groupBoxGamepad.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxGamepad.Name = "groupBoxGamepad";
-            this.groupBoxGamepad.Size = new System.Drawing.Size(361, 82);
-            this.groupBoxGamepad.TabIndex = 7;
-            this.groupBoxGamepad.TabStop = false;
-            this.groupBoxGamepad.Text = "Gamepad";
-            // 
-            // checkBoxGamepadEnabled
-            // 
-            this.checkBoxGamepadEnabled.AutoSize = true;
-            this.checkBoxGamepadEnabled.Checked = true;
-            this.checkBoxGamepadEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGamepadEnabled.Location = new System.Drawing.Point(9, 19);
-            this.checkBoxGamepadEnabled.Name = "checkBoxGamepadEnabled";
-            this.checkBoxGamepadEnabled.Size = new System.Drawing.Size(106, 17);
-            this.checkBoxGamepadEnabled.TabIndex = 2;
-            this.checkBoxGamepadEnabled.Text = "Enable gamepad";
-            this.checkBoxGamepadEnabled.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxGamepadRumble
-            // 
-            this.checkBoxGamepadRumble.AutoSize = true;
-            this.checkBoxGamepadRumble.Checked = true;
-            this.checkBoxGamepadRumble.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGamepadRumble.Location = new System.Drawing.Point(9, 40);
-            this.checkBoxGamepadRumble.Name = "checkBoxGamepadRumble";
-            this.checkBoxGamepadRumble.Size = new System.Drawing.Size(149, 17);
-            this.checkBoxGamepadRumble.TabIndex = 3;
-            this.checkBoxGamepadRumble.Text = "Enable gamepad vibration";
-            this.checkBoxGamepadRumble.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxMouse
-            // 
-            this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertX);
-            this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertY);
-            this.groupBoxMouse.Controls.Add(this.sliderMouseSensitivity);
-            this.groupBoxMouse.Controls.Add(this.checkBoxMouseAcceleration);
-            this.groupBoxMouse.Controls.Add(this.checkBoxFixAimSensitivity);
-            this.groupBoxMouse.Controls.Add(this.numMouseSensitivity);
-            this.groupBoxMouse.Controls.Add(this.labelMouseSensitivity);
-            this.groupBoxMouse.Controls.Add(this.checkBoxFixMouseSensitivity);
-            this.groupBoxMouse.Location = new System.Drawing.Point(6, 6);
-            this.groupBoxMouse.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxMouse.Name = "groupBoxMouse";
-            this.groupBoxMouse.Size = new System.Drawing.Size(361, 233);
-            this.groupBoxMouse.TabIndex = 6;
-            this.groupBoxMouse.TabStop = false;
-            this.groupBoxMouse.Text = "Mouse";
-            // 
-            // checkBoxMouseInvertX
-            // 
-            this.checkBoxMouseInvertX.AutoSize = true;
-            this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 198);
-            this.checkBoxMouseInvertX.Name = "checkBoxMouseInvertX";
-            this.checkBoxMouseInvertX.Size = new System.Drawing.Size(63, 17);
-            this.checkBoxMouseInvertX.TabIndex = 28;
-            this.checkBoxMouseInvertX.Text = "Invert X";
-            this.checkBoxMouseInvertX.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMouseInvertY
-            // 
-            this.checkBoxMouseInvertY.AutoSize = true;
-            this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 175);
-            this.checkBoxMouseInvertY.Name = "checkBoxMouseInvertY";
-            this.checkBoxMouseInvertY.Size = new System.Drawing.Size(63, 17);
-            this.checkBoxMouseInvertY.TabIndex = 27;
-            this.checkBoxMouseInvertY.Text = "Invert Y";
-            this.checkBoxMouseInvertY.UseVisualStyleBackColor = true;
-            // 
-            // sliderMouseSensitivity
-            // 
-            this.sliderMouseSensitivity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderMouseSensitivity.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderMouseSensitivity.Location = new System.Drawing.Point(9, 37);
-            this.sliderMouseSensitivity.Maximum = 600;
-            this.sliderMouseSensitivity.Minimum = 1;
-            this.sliderMouseSensitivity.Name = "sliderMouseSensitivity";
-            this.sliderMouseSensitivity.Size = new System.Drawing.Size(286, 45);
-            this.sliderMouseSensitivity.SmallChange = 300;
-            this.sliderMouseSensitivity.TabIndex = 26;
-            this.sliderMouseSensitivity.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderMouseSensitivity.Value = 300;
-            // 
-            // checkBoxMouseAcceleration
-            // 
-            this.checkBoxMouseAcceleration.AutoSize = true;
-            this.checkBoxMouseAcceleration.Location = new System.Drawing.Point(9, 88);
-            this.checkBoxMouseAcceleration.Name = "checkBoxMouseAcceleration";
-            this.checkBoxMouseAcceleration.Size = new System.Drawing.Size(119, 17);
-            this.checkBoxMouseAcceleration.TabIndex = 6;
-            this.checkBoxMouseAcceleration.Text = "Mouse acceleration";
-            this.checkBoxMouseAcceleration.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxFixAimSensitivity
-            // 
-            this.checkBoxFixAimSensitivity.AutoSize = true;
-            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 134);
-            this.checkBoxFixAimSensitivity.Name = "checkBoxFixAimSensitivity";
-            this.checkBoxFixAimSensitivity.Size = new System.Drawing.Size(106, 17);
-            this.checkBoxFixAimSensitivity.TabIndex = 5;
-            this.checkBoxFixAimSensitivity.Text = "Fix aim sensitivity";
-            this.checkBoxFixAimSensitivity.UseVisualStyleBackColor = true;
-            // 
-            // numMouseSensitivity
-            // 
-            this.numMouseSensitivity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numMouseSensitivity.DecimalPlaces = 4;
-            this.numMouseSensitivity.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            262144});
-            this.numMouseSensitivity.Location = new System.Drawing.Point(301, 37);
-            this.numMouseSensitivity.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numMouseSensitivity.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            393216});
-            this.numMouseSensitivity.Name = "numMouseSensitivity";
-            this.numMouseSensitivity.Size = new System.Drawing.Size(54, 20);
-            this.numMouseSensitivity.TabIndex = 4;
-            this.numMouseSensitivity.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            131072});
-            // 
-            // labelMouseSensitivity
-            // 
-            this.labelMouseSensitivity.AutoSize = true;
-            this.labelMouseSensitivity.Location = new System.Drawing.Point(6, 19);
-            this.labelMouseSensitivity.Name = "labelMouseSensitivity";
-            this.labelMouseSensitivity.Size = new System.Drawing.Size(54, 13);
-            this.labelMouseSensitivity.TabIndex = 3;
-            this.labelMouseSensitivity.Text = "Sensitivity";
-            // 
-            // checkBoxFixMouseSensitivity
-            // 
-            this.checkBoxFixMouseSensitivity.AutoSize = true;
-            this.checkBoxFixMouseSensitivity.Location = new System.Drawing.Point(9, 111);
-            this.checkBoxFixMouseSensitivity.Name = "checkBoxFixMouseSensitivity";
-            this.checkBoxFixMouseSensitivity.Size = new System.Drawing.Size(208, 17);
-            this.checkBoxFixMouseSensitivity.TabIndex = 0;
-            this.checkBoxFixMouseSensitivity.Text = "Fix mouse horizontal/vertical sensitivity";
-            this.checkBoxFixMouseSensitivity.UseVisualStyleBackColor = true;
-            // 
-            // labelTweaksDesc
-            // 
-            this.labelTweaksDesc.AutoSize = true;
-            this.labelTweaksDesc.Location = new System.Drawing.Point(8, 30);
-            this.labelTweaksDesc.Name = "labelTweaksDesc";
-            this.labelTweaksDesc.Size = new System.Drawing.Size(268, 13);
-            this.labelTweaksDesc.TabIndex = 72;
-            this.labelTweaksDesc.Text = "Tip: Hover over an option, if you\'re unsure what it does.";
-            // 
-            // labelTweaksTitle
-            // 
-            this.labelTweaksTitle.AutoSize = true;
-            this.labelTweaksTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTweaksTitle.Location = new System.Drawing.Point(6, 6);
-            this.labelTweaksTitle.Name = "labelTweaksTitle";
-            this.labelTweaksTitle.Size = new System.Drawing.Size(75, 24);
-            this.labelTweaksTitle.TabIndex = 71;
-            this.labelTweaksTitle.Text = "Tweaks";
-            // 
             // tabPageLogin
             // 
             this.tabPageLogin.AutoScroll = true;
@@ -678,24 +434,6 @@
             this.tabPageLogin.TabIndex = 5;
             this.tabPageLogin.Text = "Bethesda.net";
             this.tabPageLogin.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxLogin
-            // 
-            this.groupBoxLogin.Controls.Add(this.checkBoxAutoSignin);
-            this.groupBoxLogin.Controls.Add(this.checkBoxEnableSteam);
-            this.groupBoxLogin.Controls.Add(this.labelCredentialsExplanation);
-            this.groupBoxLogin.Controls.Add(this.textBoxPassword);
-            this.groupBoxLogin.Controls.Add(this.textBoxUserName);
-            this.groupBoxLogin.Controls.Add(this.checkBoxShowPassword);
-            this.groupBoxLogin.Controls.Add(this.labelPassword);
-            this.groupBoxLogin.Controls.Add(this.labelUserName);
-            this.groupBoxLogin.Location = new System.Drawing.Point(6, 6);
-            this.groupBoxLogin.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxLogin.Name = "groupBoxLogin";
-            this.groupBoxLogin.Size = new System.Drawing.Size(389, 354);
-            this.groupBoxLogin.TabIndex = 15;
-            this.groupBoxLogin.TabStop = false;
-            this.groupBoxLogin.Text = "Login with Bethesda.net";
             // 
             // groupBoxLoginProfiles
             // 
@@ -733,6 +471,7 @@
             this.radioButtonAccountNone.TabStop = true;
             this.radioButtonAccountNone.Text = "None";
             this.radioButtonAccountNone.UseVisualStyleBackColor = true;
+            this.radioButtonAccountNone.CheckedChanged += new System.EventHandler(this.radioButtonAccountNone_CheckedChanged);
             // 
             // radioButtonAccount1
             // 
@@ -894,6 +633,24 @@
             this.radioButtonAccount9.Text = "Account #9";
             this.radioButtonAccount9.UseVisualStyleBackColor = true;
             // 
+            // groupBoxLogin
+            // 
+            this.groupBoxLogin.Controls.Add(this.checkBoxAutoSignin);
+            this.groupBoxLogin.Controls.Add(this.checkBoxEnableSteam);
+            this.groupBoxLogin.Controls.Add(this.labelCredentialsExplanation);
+            this.groupBoxLogin.Controls.Add(this.textBoxPassword);
+            this.groupBoxLogin.Controls.Add(this.textBoxUserName);
+            this.groupBoxLogin.Controls.Add(this.checkBoxShowPassword);
+            this.groupBoxLogin.Controls.Add(this.labelPassword);
+            this.groupBoxLogin.Controls.Add(this.labelUserName);
+            this.groupBoxLogin.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxLogin.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxLogin.Name = "groupBoxLogin";
+            this.groupBoxLogin.Size = new System.Drawing.Size(389, 354);
+            this.groupBoxLogin.TabIndex = 15;
+            this.groupBoxLogin.TabStop = false;
+            this.groupBoxLogin.Text = "Login with Bethesda.net";
+            // 
             // checkBoxAutoSignin
             // 
             this.checkBoxAutoSignin.AutoSize = true;
@@ -934,6 +691,7 @@
             this.textBoxPassword.Size = new System.Drawing.Size(283, 20);
             this.textBoxPassword.TabIndex = 4;
             this.textBoxPassword.UseSystemPasswordChar = true;
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
             // textBoxUserName
             // 
@@ -943,6 +701,7 @@
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(283, 20);
             this.textBoxUserName.TabIndex = 3;
+            this.textBoxUserName.TextChanged += new System.EventHandler(this.textBoxUserName_TextChanged);
             // 
             // checkBoxShowPassword
             // 
@@ -953,6 +712,7 @@
             this.checkBoxShowPassword.TabIndex = 2;
             this.checkBoxShowPassword.Text = "Show password";
             this.checkBoxShowPassword.UseVisualStyleBackColor = true;
+            this.checkBoxShowPassword.CheckedChanged += new System.EventHandler(this.checkBoxShowPassword_CheckedChanged);
             // 
             // labelPassword
             // 
@@ -971,6 +731,21 @@
             this.labelUserName.Size = new System.Drawing.Size(61, 13);
             this.labelUserName.TabIndex = 0;
             this.labelUserName.Text = "User name:";
+            // 
+            // tabPageGeneral
+            // 
+            this.tabPageGeneral.AutoScroll = true;
+            this.tabPageGeneral.Controls.Add(this.groupBoxTweaks);
+            this.tabPageGeneral.Controls.Add(this.groupBoxGeneralInterface);
+            this.tabPageGeneral.Controls.Add(this.groupBoxQuests);
+            this.tabPageGeneral.Controls.Add(this.groupBoxMainMenu);
+            this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGeneral.Name = "tabPageGeneral";
+            this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGeneral.Size = new System.Drawing.Size(836, 381);
+            this.tabPageGeneral.TabIndex = 0;
+            this.tabPageGeneral.Text = "General";
+            this.tabPageGeneral.UseVisualStyleBackColor = true;
             // 
             // groupBoxTweaks
             // 
@@ -1332,798 +1107,17 @@
             this.checkBoxSkipIntroVideos.Text = "Skip intro videos";
             this.checkBoxSkipIntroVideos.UseVisualStyleBackColor = true;
             // 
-            // groupBoxDisplay
-            // 
-            this.groupBoxDisplay.Controls.Add(this.comboBoxDisplayMode);
-            this.groupBoxDisplay.Controls.Add(this.checkBoxFixHUDFor5_4and4_3);
-            this.groupBoxDisplay.Controls.Add(this.comboBoxResolution);
-            this.groupBoxDisplay.Controls.Add(this.buttonDetectResolution);
-            this.groupBoxDisplay.Controls.Add(this.labelCustomResolution);
-            this.groupBoxDisplay.Controls.Add(this.checkBoxAlwaysActive);
-            this.groupBoxDisplay.Controls.Add(this.labelResolution);
-            this.groupBoxDisplay.Controls.Add(this.checkBoxTopMostWindow);
-            this.groupBoxDisplay.Controls.Add(this.numCustomResW);
-            this.groupBoxDisplay.Controls.Add(this.numCustomResH);
-            this.groupBoxDisplay.Controls.Add(this.labelDisplayMode);
-            this.groupBoxDisplay.Controls.Add(this.labelCustomResolutionSpacer);
-            this.groupBoxDisplay.Location = new System.Drawing.Point(6, 6);
-            this.groupBoxDisplay.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxDisplay.Name = "groupBoxDisplay";
-            this.groupBoxDisplay.Size = new System.Drawing.Size(396, 224);
-            this.groupBoxDisplay.TabIndex = 26;
-            this.groupBoxDisplay.TabStop = false;
-            this.groupBoxDisplay.Text = "Display";
-            // 
-            // comboBoxDisplayMode
-            // 
-            this.comboBoxDisplayMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxDisplayMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDisplayMode.FormattingEnabled = true;
-            this.comboBoxDisplayMode.Location = new System.Drawing.Point(134, 20);
-            this.comboBoxDisplayMode.Name = "comboBoxDisplayMode";
-            this.comboBoxDisplayMode.Size = new System.Drawing.Size(253, 21);
-            this.comboBoxDisplayMode.TabIndex = 0;
-            // 
-            // checkBoxFixHUDFor5_4and4_3
-            // 
-            this.checkBoxFixHUDFor5_4and4_3.AutoSize = true;
-            this.checkBoxFixHUDFor5_4and4_3.Location = new System.Drawing.Point(9, 197);
-            this.checkBoxFixHUDFor5_4and4_3.Name = "checkBoxFixHUDFor5_4and4_3";
-            this.checkBoxFixHUDFor5_4and4_3.Size = new System.Drawing.Size(225, 17);
-            this.checkBoxFixHUDFor5_4and4_3.TabIndex = 24;
-            this.checkBoxFixHUDFor5_4and4_3.Text = "Fix HUD for 5:4 and 4:3 resolutions (partly)";
-            this.checkBoxFixHUDFor5_4and4_3.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxResolution
-            // 
-            this.comboBoxResolution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxResolution.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxResolution.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxResolution.FormattingEnabled = true;
-            this.comboBoxResolution.Location = new System.Drawing.Point(134, 45);
-            this.comboBoxResolution.Name = "comboBoxResolution";
-            this.comboBoxResolution.Size = new System.Drawing.Size(253, 20);
-            this.comboBoxResolution.TabIndex = 4;
-            // 
-            // buttonDetectResolution
-            // 
-            this.buttonDetectResolution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDetectResolution.Location = new System.Drawing.Point(134, 97);
-            this.buttonDetectResolution.Name = "buttonDetectResolution";
-            this.buttonDetectResolution.Size = new System.Drawing.Size(253, 23);
-            this.buttonDetectResolution.TabIndex = 23;
-            this.buttonDetectResolution.Text = "Detect resolution";
-            this.buttonDetectResolution.UseVisualStyleBackColor = true;
-            // 
-            // labelCustomResolution
-            // 
-            this.labelCustomResolution.AutoSize = true;
-            this.labelCustomResolution.Location = new System.Drawing.Point(6, 74);
-            this.labelCustomResolution.Name = "labelCustomResolution";
-            this.labelCustomResolution.Size = new System.Drawing.Size(93, 13);
-            this.labelCustomResolution.TabIndex = 2;
-            this.labelCustomResolution.Text = "Custom resolution:";
-            // 
-            // checkBoxAlwaysActive
-            // 
-            this.checkBoxAlwaysActive.AutoSize = true;
-            this.checkBoxAlwaysActive.Location = new System.Drawing.Point(9, 152);
-            this.checkBoxAlwaysActive.Name = "checkBoxAlwaysActive";
-            this.checkBoxAlwaysActive.Size = new System.Drawing.Size(91, 17);
-            this.checkBoxAlwaysActive.TabIndex = 22;
-            this.checkBoxAlwaysActive.Text = "Always active";
-            this.checkBoxAlwaysActive.UseVisualStyleBackColor = true;
-            // 
-            // labelResolution
-            // 
-            this.labelResolution.AutoSize = true;
-            this.labelResolution.Location = new System.Drawing.Point(6, 48);
-            this.labelResolution.Name = "labelResolution";
-            this.labelResolution.Size = new System.Drawing.Size(60, 13);
-            this.labelResolution.TabIndex = 3;
-            this.labelResolution.Text = "Resolution:";
-            // 
-            // checkBoxTopMostWindow
-            // 
-            this.checkBoxTopMostWindow.AutoSize = true;
-            this.checkBoxTopMostWindow.Location = new System.Drawing.Point(9, 129);
-            this.checkBoxTopMostWindow.Name = "checkBoxTopMostWindow";
-            this.checkBoxTopMostWindow.Size = new System.Drawing.Size(109, 17);
-            this.checkBoxTopMostWindow.TabIndex = 21;
-            this.checkBoxTopMostWindow.Text = "Top-most window";
-            this.checkBoxTopMostWindow.UseVisualStyleBackColor = true;
-            // 
-            // numCustomResW
-            // 
-            this.numCustomResW.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numCustomResW.Location = new System.Drawing.Point(134, 71);
-            this.numCustomResW.Maximum = new decimal(new int[] {
-            8192,
-            0,
-            0,
-            0});
-            this.numCustomResW.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numCustomResW.Name = "numCustomResW";
-            this.numCustomResW.Size = new System.Drawing.Size(116, 20);
-            this.numCustomResW.TabIndex = 5;
-            this.numCustomResW.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numCustomResW.Value = new decimal(new int[] {
-            1920,
-            0,
-            0,
-            0});
-            // 
-            // numCustomResH
-            // 
-            this.numCustomResH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numCustomResH.Location = new System.Drawing.Point(271, 71);
-            this.numCustomResH.Maximum = new decimal(new int[] {
-            8192,
-            0,
-            0,
-            0});
-            this.numCustomResH.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numCustomResH.Name = "numCustomResH";
-            this.numCustomResH.Size = new System.Drawing.Size(116, 20);
-            this.numCustomResH.TabIndex = 8;
-            this.numCustomResH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numCustomResH.Value = new decimal(new int[] {
-            1080,
-            0,
-            0,
-            0});
-            // 
-            // labelDisplayMode
-            // 
-            this.labelDisplayMode.AutoSize = true;
-            this.labelDisplayMode.Location = new System.Drawing.Point(6, 23);
-            this.labelDisplayMode.Name = "labelDisplayMode";
-            this.labelDisplayMode.Size = new System.Drawing.Size(73, 13);
-            this.labelDisplayMode.TabIndex = 1;
-            this.labelDisplayMode.Text = "Display mode:";
-            // 
-            // labelCustomResolutionSpacer
-            // 
-            this.labelCustomResolutionSpacer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelCustomResolutionSpacer.AutoSize = true;
-            this.labelCustomResolutionSpacer.Location = new System.Drawing.Point(253, 74);
-            this.labelCustomResolutionSpacer.Name = "labelCustomResolutionSpacer";
-            this.labelCustomResolutionSpacer.Size = new System.Drawing.Size(14, 13);
-            this.labelCustomResolutionSpacer.TabIndex = 7;
-            this.labelCustomResolutionSpacer.Text = "X";
-            // 
-            // groupBoxAudioVolume
-            // 
-            this.groupBoxAudioVolume.Controls.Add(this.sliderAudioChat);
-            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal6);
-            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal5);
-            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal4);
-            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal3);
-            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal2);
-            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal1);
-            this.groupBoxAudioVolume.Controls.Add(this.labelVolumeMaster);
-            this.groupBoxAudioVolume.Controls.Add(this.sliderVolumeMaster);
-            this.groupBoxAudioVolume.Controls.Add(this.numVolumeMaster);
-            this.groupBoxAudioVolume.Controls.Add(this.numAudioChat);
-            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal0);
-            this.groupBoxAudioVolume.Controls.Add(this.labelAudioChat);
-            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal0);
-            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal0);
-            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal6);
-            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal6);
-            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal1);
-            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal1);
-            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal5);
-            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal5);
-            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal2);
-            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal2);
-            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal4);
-            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal4);
-            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal3);
-            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal3);
-            this.groupBoxAudioVolume.Location = new System.Drawing.Point(6, 6);
-            this.groupBoxAudioVolume.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxAudioVolume.Name = "groupBoxAudioVolume";
-            this.groupBoxAudioVolume.Size = new System.Drawing.Size(471, 369);
-            this.groupBoxAudioVolume.TabIndex = 60;
-            this.groupBoxAudioVolume.TabStop = false;
-            this.groupBoxAudioVolume.Text = "Volume";
-            // 
-            // sliderAudioChat
-            // 
-            this.sliderAudioChat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudioChat.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudioChat.LargeChange = 20;
-            this.sliderAudioChat.Location = new System.Drawing.Point(134, 61);
-            this.sliderAudioChat.Maximum = 100;
-            this.sliderAudioChat.Name = "sliderAudioChat";
-            this.sliderAudioChat.Size = new System.Drawing.Size(237, 45);
-            this.sliderAudioChat.SmallChange = 10;
-            this.sliderAudioChat.TabIndex = 52;
-            this.sliderAudioChat.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudioChat.Value = 100;
-            // 
-            // sliderAudiofVal6
-            // 
-            this.sliderAudiofVal6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal6.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal6.LargeChange = 20;
-            this.sliderAudiofVal6.Location = new System.Drawing.Point(134, 306);
-            this.sliderAudiofVal6.Maximum = 100;
-            this.sliderAudiofVal6.Name = "sliderAudiofVal6";
-            this.sliderAudiofVal6.Size = new System.Drawing.Size(237, 45);
-            this.sliderAudiofVal6.SmallChange = 10;
-            this.sliderAudiofVal6.TabIndex = 49;
-            this.sliderAudiofVal6.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal6.Value = 100;
-            // 
-            // sliderAudiofVal5
-            // 
-            this.sliderAudiofVal5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal5.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal5.LargeChange = 20;
-            this.sliderAudiofVal5.Location = new System.Drawing.Point(134, 276);
-            this.sliderAudiofVal5.Maximum = 100;
-            this.sliderAudiofVal5.Name = "sliderAudiofVal5";
-            this.sliderAudiofVal5.Size = new System.Drawing.Size(237, 45);
-            this.sliderAudiofVal5.SmallChange = 10;
-            this.sliderAudiofVal5.TabIndex = 46;
-            this.sliderAudiofVal5.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal5.Value = 100;
-            // 
-            // sliderAudiofVal4
-            // 
-            this.sliderAudiofVal4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal4.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal4.LargeChange = 20;
-            this.sliderAudiofVal4.Location = new System.Drawing.Point(134, 246);
-            this.sliderAudiofVal4.Maximum = 100;
-            this.sliderAudiofVal4.Name = "sliderAudiofVal4";
-            this.sliderAudiofVal4.Size = new System.Drawing.Size(237, 45);
-            this.sliderAudiofVal4.SmallChange = 10;
-            this.sliderAudiofVal4.TabIndex = 43;
-            this.sliderAudiofVal4.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal4.Value = 100;
-            // 
-            // sliderAudiofVal3
-            // 
-            this.sliderAudiofVal3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal3.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal3.LargeChange = 20;
-            this.sliderAudiofVal3.Location = new System.Drawing.Point(134, 216);
-            this.sliderAudiofVal3.Maximum = 100;
-            this.sliderAudiofVal3.Name = "sliderAudiofVal3";
-            this.sliderAudiofVal3.Size = new System.Drawing.Size(237, 45);
-            this.sliderAudiofVal3.SmallChange = 10;
-            this.sliderAudiofVal3.TabIndex = 40;
-            this.sliderAudiofVal3.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal3.Value = 100;
-            // 
-            // sliderAudiofVal2
-            // 
-            this.sliderAudiofVal2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal2.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal2.LargeChange = 20;
-            this.sliderAudiofVal2.Location = new System.Drawing.Point(134, 186);
-            this.sliderAudiofVal2.Maximum = 100;
-            this.sliderAudiofVal2.Name = "sliderAudiofVal2";
-            this.sliderAudiofVal2.Size = new System.Drawing.Size(237, 45);
-            this.sliderAudiofVal2.SmallChange = 10;
-            this.sliderAudiofVal2.TabIndex = 37;
-            this.sliderAudiofVal2.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal2.Value = 100;
-            // 
-            // sliderAudiofVal1
-            // 
-            this.sliderAudiofVal1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal1.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal1.LargeChange = 20;
-            this.sliderAudiofVal1.Location = new System.Drawing.Point(134, 156);
-            this.sliderAudiofVal1.Maximum = 100;
-            this.sliderAudiofVal1.Name = "sliderAudiofVal1";
-            this.sliderAudiofVal1.Size = new System.Drawing.Size(237, 45);
-            this.sliderAudiofVal1.SmallChange = 10;
-            this.sliderAudiofVal1.TabIndex = 34;
-            this.sliderAudiofVal1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal1.Value = 100;
-            // 
-            // labelVolumeMaster
-            // 
-            this.labelVolumeMaster.AutoSize = true;
-            this.labelVolumeMaster.Location = new System.Drawing.Point(15, 25);
-            this.labelVolumeMaster.Name = "labelVolumeMaster";
-            this.labelVolumeMaster.Size = new System.Drawing.Size(76, 13);
-            this.labelVolumeMaster.TabIndex = 28;
-            this.labelVolumeMaster.Text = "Master volume";
-            // 
-            // sliderVolumeMaster
-            // 
-            this.sliderVolumeMaster.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderVolumeMaster.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderVolumeMaster.LargeChange = 20;
-            this.sliderVolumeMaster.Location = new System.Drawing.Point(134, 25);
-            this.sliderVolumeMaster.Maximum = 100;
-            this.sliderVolumeMaster.Name = "sliderVolumeMaster";
-            this.sliderVolumeMaster.Size = new System.Drawing.Size(237, 45);
-            this.sliderVolumeMaster.SmallChange = 10;
-            this.sliderVolumeMaster.TabIndex = 27;
-            this.sliderVolumeMaster.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderVolumeMaster.Value = 100;
-            // 
-            // numVolumeMaster
-            // 
-            this.numVolumeMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numVolumeMaster.DecimalPlaces = 2;
-            this.numVolumeMaster.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numVolumeMaster.Location = new System.Drawing.Point(377, 25);
-            this.numVolumeMaster.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numVolumeMaster.Name = "numVolumeMaster";
-            this.numVolumeMaster.Size = new System.Drawing.Size(74, 20);
-            this.numVolumeMaster.TabIndex = 29;
-            this.numVolumeMaster.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numAudioChat
-            // 
-            this.numAudioChat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAudioChat.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numAudioChat.Location = new System.Drawing.Point(377, 61);
-            this.numAudioChat.Name = "numAudioChat";
-            this.numAudioChat.Size = new System.Drawing.Size(74, 20);
-            this.numAudioChat.TabIndex = 54;
-            this.numAudioChat.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // sliderAudiofVal0
-            // 
-            this.sliderAudiofVal0.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal0.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal0.LargeChange = 20;
-            this.sliderAudiofVal0.Location = new System.Drawing.Point(134, 126);
-            this.sliderAudiofVal0.Maximum = 100;
-            this.sliderAudiofVal0.Name = "sliderAudiofVal0";
-            this.sliderAudiofVal0.Size = new System.Drawing.Size(237, 45);
-            this.sliderAudiofVal0.SmallChange = 10;
-            this.sliderAudiofVal0.TabIndex = 31;
-            this.sliderAudiofVal0.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal0.Value = 100;
-            // 
-            // labelAudioChat
-            // 
-            this.labelAudioChat.AutoSize = true;
-            this.labelAudioChat.Location = new System.Drawing.Point(15, 61);
-            this.labelAudioChat.Name = "labelAudioChat";
-            this.labelAudioChat.Size = new System.Drawing.Size(66, 13);
-            this.labelAudioChat.TabIndex = 53;
-            this.labelAudioChat.Text = "Chat volume";
-            // 
-            // labelAudiofVal0
-            // 
-            this.labelAudiofVal0.AutoSize = true;
-            this.labelAudiofVal0.Location = new System.Drawing.Point(15, 126);
-            this.labelAudiofVal0.Name = "labelAudiofVal0";
-            this.labelAudiofVal0.Size = new System.Drawing.Size(65, 13);
-            this.labelAudiofVal0.TabIndex = 32;
-            this.labelAudiofVal0.Text = "Menu Music";
-            // 
-            // numAudiofVal0
-            // 
-            this.numAudiofVal0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAudiofVal0.DecimalPlaces = 2;
-            this.numAudiofVal0.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numAudiofVal0.Location = new System.Drawing.Point(377, 126);
-            this.numAudiofVal0.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAudiofVal0.Name = "numAudiofVal0";
-            this.numAudiofVal0.Size = new System.Drawing.Size(74, 20);
-            this.numAudiofVal0.TabIndex = 33;
-            this.numAudiofVal0.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numAudiofVal6
-            // 
-            this.numAudiofVal6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAudiofVal6.DecimalPlaces = 2;
-            this.numAudiofVal6.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numAudiofVal6.Location = new System.Drawing.Point(377, 306);
-            this.numAudiofVal6.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAudiofVal6.Name = "numAudiofVal6";
-            this.numAudiofVal6.Size = new System.Drawing.Size(74, 20);
-            this.numAudiofVal6.TabIndex = 51;
-            this.numAudiofVal6.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // labelAudiofVal6
-            // 
-            this.labelAudiofVal6.AutoSize = true;
-            this.labelAudiofVal6.Location = new System.Drawing.Point(15, 306);
-            this.labelAudiofVal6.Name = "labelAudiofVal6";
-            this.labelAudiofVal6.Size = new System.Drawing.Size(74, 13);
-            this.labelAudiofVal6.TabIndex = 50;
-            this.labelAudiofVal6.Text = "Pip-Boy Radio";
-            // 
-            // labelAudiofVal1
-            // 
-            this.labelAudiofVal1.AutoSize = true;
-            this.labelAudiofVal1.Location = new System.Drawing.Point(15, 156);
-            this.labelAudiofVal1.Name = "labelAudiofVal1";
-            this.labelAudiofVal1.Size = new System.Drawing.Size(71, 13);
-            this.labelAudiofVal1.TabIndex = 35;
-            this.labelAudiofVal1.Text = "World Radios";
-            // 
-            // numAudiofVal1
-            // 
-            this.numAudiofVal1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAudiofVal1.DecimalPlaces = 2;
-            this.numAudiofVal1.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numAudiofVal1.Location = new System.Drawing.Point(377, 156);
-            this.numAudiofVal1.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAudiofVal1.Name = "numAudiofVal1";
-            this.numAudiofVal1.Size = new System.Drawing.Size(74, 20);
-            this.numAudiofVal1.TabIndex = 36;
-            this.numAudiofVal1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numAudiofVal5
-            // 
-            this.numAudiofVal5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAudiofVal5.DecimalPlaces = 2;
-            this.numAudiofVal5.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numAudiofVal5.Location = new System.Drawing.Point(377, 276);
-            this.numAudiofVal5.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAudiofVal5.Name = "numAudiofVal5";
-            this.numAudiofVal5.Size = new System.Drawing.Size(74, 20);
-            this.numAudiofVal5.TabIndex = 48;
-            this.numAudiofVal5.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // labelAudiofVal5
-            // 
-            this.labelAudiofVal5.AutoSize = true;
-            this.labelAudiofVal5.Location = new System.Drawing.Point(15, 276);
-            this.labelAudiofVal5.Name = "labelAudiofVal5";
-            this.labelAudiofVal5.Size = new System.Drawing.Size(53, 13);
-            this.labelAudiofVal5.TabIndex = 47;
-            this.labelAudiofVal5.Text = "Footsteps";
-            // 
-            // labelAudiofVal2
-            // 
-            this.labelAudiofVal2.AutoSize = true;
-            this.labelAudiofVal2.Location = new System.Drawing.Point(15, 186);
-            this.labelAudiofVal2.Name = "labelAudiofVal2";
-            this.labelAudiofVal2.Size = new System.Drawing.Size(34, 13);
-            this.labelAudiofVal2.TabIndex = 38;
-            this.labelAudiofVal2.Text = "Voice";
-            // 
-            // numAudiofVal2
-            // 
-            this.numAudiofVal2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAudiofVal2.DecimalPlaces = 2;
-            this.numAudiofVal2.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numAudiofVal2.Location = new System.Drawing.Point(377, 186);
-            this.numAudiofVal2.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAudiofVal2.Name = "numAudiofVal2";
-            this.numAudiofVal2.Size = new System.Drawing.Size(74, 20);
-            this.numAudiofVal2.TabIndex = 39;
-            this.numAudiofVal2.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numAudiofVal4
-            // 
-            this.numAudiofVal4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAudiofVal4.DecimalPlaces = 2;
-            this.numAudiofVal4.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numAudiofVal4.Location = new System.Drawing.Point(377, 246);
-            this.numAudiofVal4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAudiofVal4.Name = "numAudiofVal4";
-            this.numAudiofVal4.Size = new System.Drawing.Size(74, 20);
-            this.numAudiofVal4.TabIndex = 45;
-            this.numAudiofVal4.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // labelAudiofVal4
-            // 
-            this.labelAudiofVal4.AutoSize = true;
-            this.labelAudiofVal4.Location = new System.Drawing.Point(15, 246);
-            this.labelAudiofVal4.Name = "labelAudiofVal4";
-            this.labelAudiofVal4.Size = new System.Drawing.Size(40, 13);
-            this.labelAudiofVal4.TabIndex = 44;
-            this.labelAudiofVal4.Text = "Effects";
-            // 
-            // labelAudiofVal3
-            // 
-            this.labelAudiofVal3.AutoSize = true;
-            this.labelAudiofVal3.Location = new System.Drawing.Point(15, 216);
-            this.labelAudiofVal3.Name = "labelAudiofVal3";
-            this.labelAudiofVal3.Size = new System.Drawing.Size(35, 13);
-            this.labelAudiofVal3.TabIndex = 41;
-            this.labelAudiofVal3.Text = "Music";
-            // 
-            // numAudiofVal3
-            // 
-            this.numAudiofVal3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAudiofVal3.DecimalPlaces = 2;
-            this.numAudiofVal3.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numAudiofVal3.Location = new System.Drawing.Point(377, 216);
-            this.numAudiofVal3.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAudiofVal3.Name = "numAudiofVal3";
-            this.numAudiofVal3.Size = new System.Drawing.Size(74, 20);
-            this.numAudiofVal3.TabIndex = 42;
-            this.numAudiofVal3.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // groupBoxAudio
-            // 
-            this.groupBoxAudio.Controls.Add(this.checkBoxEnableAudio);
-            this.groupBoxAudio.Controls.Add(this.checkBoxMainMenuMusic);
-            this.groupBoxAudio.Location = new System.Drawing.Point(489, 6);
-            this.groupBoxAudio.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxAudio.Name = "groupBoxAudio";
-            this.groupBoxAudio.Size = new System.Drawing.Size(341, 81);
-            this.groupBoxAudio.TabIndex = 64;
-            this.groupBoxAudio.TabStop = false;
-            this.groupBoxAudio.Text = "Audio";
-            // 
-            // checkBoxEnableAudio
-            // 
-            this.checkBoxEnableAudio.AutoSize = true;
-            this.checkBoxEnableAudio.Location = new System.Drawing.Point(10, 23);
-            this.checkBoxEnableAudio.Name = "checkBoxEnableAudio";
-            this.checkBoxEnableAudio.Size = new System.Drawing.Size(88, 17);
-            this.checkBoxEnableAudio.TabIndex = 30;
-            this.checkBoxEnableAudio.Text = "Enable audio";
-            this.checkBoxEnableAudio.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMainMenuMusic
-            // 
-            this.checkBoxMainMenuMusic.AutoSize = true;
-            this.checkBoxMainMenuMusic.Checked = true;
-            this.checkBoxMainMenuMusic.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMainMenuMusic.Location = new System.Drawing.Point(10, 46);
-            this.checkBoxMainMenuMusic.Name = "checkBoxMainMenuMusic";
-            this.checkBoxMainMenuMusic.Size = new System.Drawing.Size(141, 17);
-            this.checkBoxMainMenuMusic.TabIndex = 55;
-            this.checkBoxMainMenuMusic.Text = "Play music in main menu";
-            this.checkBoxMainMenuMusic.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxVoice
-            // 
-            this.groupBoxVoice.Controls.Add(this.comboBoxVoiceChatMode);
-            this.groupBoxVoice.Controls.Add(this.labelVoiceChatMode);
-            this.groupBoxVoice.Controls.Add(this.checkBoxPushToTalk);
-            this.groupBoxVoice.Location = new System.Drawing.Point(489, 93);
-            this.groupBoxVoice.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxVoice.Name = "groupBoxVoice";
-            this.groupBoxVoice.Size = new System.Drawing.Size(341, 89);
-            this.groupBoxVoice.TabIndex = 63;
-            this.groupBoxVoice.TabStop = false;
-            this.groupBoxVoice.Text = "Voice";
-            // 
-            // comboBoxVoiceChatMode
-            // 
-            this.comboBoxVoiceChatMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxVoiceChatMode.FormattingEnabled = true;
-            this.comboBoxVoiceChatMode.Location = new System.Drawing.Point(140, 19);
-            this.comboBoxVoiceChatMode.Name = "comboBoxVoiceChatMode";
-            this.comboBoxVoiceChatMode.Size = new System.Drawing.Size(187, 21);
-            this.comboBoxVoiceChatMode.TabIndex = 2;
-            // 
-            // labelVoiceChatMode
-            // 
-            this.labelVoiceChatMode.AutoSize = true;
-            this.labelVoiceChatMode.Location = new System.Drawing.Point(7, 22);
-            this.labelVoiceChatMode.Name = "labelVoiceChatMode";
-            this.labelVoiceChatMode.Size = new System.Drawing.Size(92, 13);
-            this.labelVoiceChatMode.TabIndex = 1;
-            this.labelVoiceChatMode.Text = "Voice Chat Mode:";
-            // 
-            // checkBoxPushToTalk
-            // 
-            this.checkBoxPushToTalk.AutoSize = true;
-            this.checkBoxPushToTalk.Location = new System.Drawing.Point(10, 53);
-            this.checkBoxPushToTalk.Name = "checkBoxPushToTalk";
-            this.checkBoxPushToTalk.Size = new System.Drawing.Size(126, 17);
-            this.checkBoxPushToTalk.TabIndex = 0;
-            this.checkBoxPushToTalk.Text = "Enable Push-To-Talk";
-            this.checkBoxPushToTalk.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxAudioInterface
-            // 
-            this.groupBoxAudioInterface.Controls.Add(this.sliderConversationHistorySize);
-            this.groupBoxAudioInterface.Controls.Add(this.numConversationHistorySize);
-            this.groupBoxAudioInterface.Controls.Add(this.labelConversationHistorySize);
-            this.groupBoxAudioInterface.Controls.Add(this.checkBoxDialogueHistory);
-            this.groupBoxAudioInterface.Controls.Add(this.checkBoxDialogueSubtitles);
-            this.groupBoxAudioInterface.Controls.Add(this.checkBoxGeneralSubtitles);
-            this.groupBoxAudioInterface.Location = new System.Drawing.Point(489, 188);
-            this.groupBoxAudioInterface.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxAudioInterface.Name = "groupBoxAudioInterface";
-            this.groupBoxAudioInterface.Size = new System.Drawing.Size(341, 187);
-            this.groupBoxAudioInterface.TabIndex = 62;
-            this.groupBoxAudioInterface.TabStop = false;
-            this.groupBoxAudioInterface.Text = "Interface";
-            // 
-            // sliderConversationHistorySize
-            // 
-            this.sliderConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderConversationHistorySize.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderConversationHistorySize.LargeChange = 1;
-            this.sliderConversationHistorySize.Location = new System.Drawing.Point(10, 112);
-            this.sliderConversationHistorySize.Maximum = 8;
-            this.sliderConversationHistorySize.Minimum = 1;
-            this.sliderConversationHistorySize.Name = "sliderConversationHistorySize";
-            this.sliderConversationHistorySize.Size = new System.Drawing.Size(245, 45);
-            this.sliderConversationHistorySize.TabIndex = 59;
-            this.sliderConversationHistorySize.Value = 4;
-            // 
-            // numConversationHistorySize
-            // 
-            this.numConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numConversationHistorySize.Location = new System.Drawing.Point(261, 112);
-            this.numConversationHistorySize.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.numConversationHistorySize.Name = "numConversationHistorySize";
-            this.numConversationHistorySize.Size = new System.Drawing.Size(74, 20);
-            this.numConversationHistorySize.TabIndex = 61;
-            this.numConversationHistorySize.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            // 
-            // labelConversationHistorySize
-            // 
-            this.labelConversationHistorySize.AutoSize = true;
-            this.labelConversationHistorySize.Location = new System.Drawing.Point(7, 96);
-            this.labelConversationHistorySize.Name = "labelConversationHistorySize";
-            this.labelConversationHistorySize.Size = new System.Drawing.Size(207, 13);
-            this.labelConversationHistorySize.TabIndex = 60;
-            this.labelConversationHistorySize.Text = "Conversation history size (number of rows):";
-            // 
-            // checkBoxDialogueHistory
-            // 
-            this.checkBoxDialogueHistory.AutoSize = true;
-            this.checkBoxDialogueHistory.Location = new System.Drawing.Point(10, 65);
-            this.checkBoxDialogueHistory.Name = "checkBoxDialogueHistory";
-            this.checkBoxDialogueHistory.Size = new System.Drawing.Size(129, 17);
-            this.checkBoxDialogueHistory.TabIndex = 58;
-            this.checkBoxDialogueHistory.Text = "Show dialogue history";
-            this.checkBoxDialogueHistory.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDialogueSubtitles
-            // 
-            this.checkBoxDialogueSubtitles.AutoSize = true;
-            this.checkBoxDialogueSubtitles.Location = new System.Drawing.Point(10, 19);
-            this.checkBoxDialogueSubtitles.Name = "checkBoxDialogueSubtitles";
-            this.checkBoxDialogueSubtitles.Size = new System.Drawing.Size(137, 17);
-            this.checkBoxDialogueSubtitles.TabIndex = 56;
-            this.checkBoxDialogueSubtitles.Text = "Show dialogue subtitles";
-            this.checkBoxDialogueSubtitles.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxGeneralSubtitles
-            // 
-            this.checkBoxGeneralSubtitles.AutoSize = true;
-            this.checkBoxGeneralSubtitles.Location = new System.Drawing.Point(10, 42);
-            this.checkBoxGeneralSubtitles.Name = "checkBoxGeneralSubtitles";
-            this.checkBoxGeneralSubtitles.Size = new System.Drawing.Size(132, 17);
-            this.checkBoxGeneralSubtitles.TabIndex = 57;
-            this.checkBoxGeneralSubtitles.Text = "Show general subtitles";
-            this.checkBoxGeneralSubtitles.UseVisualStyleBackColor = true;
+            // tabPageVideo
+            // 
+            this.tabPageVideo.Controls.Add(this.panel3);
+            this.tabPageVideo.Controls.Add(this.groupBoxDisplay);
+            this.tabPageVideo.Location = new System.Drawing.Point(4, 22);
+            this.tabPageVideo.Name = "tabPageVideo";
+            this.tabPageVideo.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageVideo.Size = new System.Drawing.Size(836, 381);
+            this.tabPageVideo.TabIndex = 1;
+            this.tabPageVideo.Text = "Video";
+            this.tabPageVideo.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -2836,73 +1830,1416 @@
             this.checkBoxLensFlare.Text = "Lens Flare";
             this.checkBoxLensFlare.UseVisualStyleBackColor = true;
             // 
-            // groupBoxFieldOfView
+            // groupBoxDisplay
             // 
-            this.groupBoxFieldOfView.Controls.Add(this.pictureBoxFOVPreview);
-            this.groupBoxFieldOfView.Controls.Add(this.sliderFOV);
-            this.groupBoxFieldOfView.Controls.Add(this.numFOV);
-            this.groupBoxFieldOfView.Location = new System.Drawing.Point(6, 6);
-            this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
-            this.groupBoxFieldOfView.Size = new System.Drawing.Size(395, 252);
-            this.groupBoxFieldOfView.TabIndex = 22;
-            this.groupBoxFieldOfView.TabStop = false;
-            this.groupBoxFieldOfView.Text = "Field of View";
+            this.groupBoxDisplay.Controls.Add(this.comboBoxDisplayMode);
+            this.groupBoxDisplay.Controls.Add(this.checkBoxFixHUDFor5_4and4_3);
+            this.groupBoxDisplay.Controls.Add(this.comboBoxResolution);
+            this.groupBoxDisplay.Controls.Add(this.buttonDetectResolution);
+            this.groupBoxDisplay.Controls.Add(this.labelCustomResolution);
+            this.groupBoxDisplay.Controls.Add(this.checkBoxAlwaysActive);
+            this.groupBoxDisplay.Controls.Add(this.labelResolution);
+            this.groupBoxDisplay.Controls.Add(this.checkBoxTopMostWindow);
+            this.groupBoxDisplay.Controls.Add(this.numCustomResW);
+            this.groupBoxDisplay.Controls.Add(this.numCustomResH);
+            this.groupBoxDisplay.Controls.Add(this.labelDisplayMode);
+            this.groupBoxDisplay.Controls.Add(this.labelCustomResolutionSpacer);
+            this.groupBoxDisplay.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxDisplay.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxDisplay.Name = "groupBoxDisplay";
+            this.groupBoxDisplay.Size = new System.Drawing.Size(396, 224);
+            this.groupBoxDisplay.TabIndex = 26;
+            this.groupBoxDisplay.TabStop = false;
+            this.groupBoxDisplay.Text = "Display";
             // 
-            // pictureBoxFOVPreview
+            // comboBoxDisplayMode
             // 
-            this.pictureBoxFOVPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxFOVPreview.BackColor = System.Drawing.Color.Gray;
-            this.pictureBoxFOVPreview.Location = new System.Drawing.Point(0, 45);
-            this.pictureBoxFOVPreview.Name = "pictureBoxFOVPreview";
-            this.pictureBoxFOVPreview.Size = new System.Drawing.Size(395, 207);
-            this.pictureBoxFOVPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxFOVPreview.TabIndex = 53;
-            this.pictureBoxFOVPreview.TabStop = false;
+            this.comboBoxDisplayMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxDisplayMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDisplayMode.FormattingEnabled = true;
+            this.comboBoxDisplayMode.Location = new System.Drawing.Point(134, 20);
+            this.comboBoxDisplayMode.Name = "comboBoxDisplayMode";
+            this.comboBoxDisplayMode.Size = new System.Drawing.Size(253, 21);
+            this.comboBoxDisplayMode.TabIndex = 0;
             // 
-            // sliderFOV
+            // checkBoxFixHUDFor5_4and4_3
             // 
-            this.sliderFOV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderFOV.BackColor = System.Drawing.Color.White;
-            this.sliderFOV.LargeChange = 1;
-            this.sliderFOV.Location = new System.Drawing.Point(6, 19);
-            this.sliderFOV.Maximum = 24;
-            this.sliderFOV.Minimum = 14;
-            this.sliderFOV.Name = "sliderFOV";
-            this.sliderFOV.Size = new System.Drawing.Size(309, 45);
-            this.sliderFOV.TabIndex = 52;
-            this.sliderFOV.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderFOV.Value = 24;
+            this.checkBoxFixHUDFor5_4and4_3.AutoSize = true;
+            this.checkBoxFixHUDFor5_4and4_3.Location = new System.Drawing.Point(9, 197);
+            this.checkBoxFixHUDFor5_4and4_3.Name = "checkBoxFixHUDFor5_4and4_3";
+            this.checkBoxFixHUDFor5_4and4_3.Size = new System.Drawing.Size(225, 17);
+            this.checkBoxFixHUDFor5_4and4_3.TabIndex = 24;
+            this.checkBoxFixHUDFor5_4and4_3.Text = "Fix HUD for 5:4 and 4:3 resolutions (partly)";
+            this.checkBoxFixHUDFor5_4and4_3.UseVisualStyleBackColor = true;
             // 
-            // numFOV
+            // comboBoxResolution
             // 
-            this.numFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numFOV.Increment = new decimal(new int[] {
-            5,
+            this.comboBoxResolution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxResolution.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxResolution.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxResolution.FormattingEnabled = true;
+            this.comboBoxResolution.Location = new System.Drawing.Point(134, 45);
+            this.comboBoxResolution.Name = "comboBoxResolution";
+            this.comboBoxResolution.Size = new System.Drawing.Size(253, 20);
+            this.comboBoxResolution.TabIndex = 4;
+            this.comboBoxResolution.SelectedIndexChanged += new System.EventHandler(this.comboBoxResolution_SelectedIndexChanged);
+            // 
+            // buttonDetectResolution
+            // 
+            this.buttonDetectResolution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDetectResolution.Location = new System.Drawing.Point(134, 97);
+            this.buttonDetectResolution.Name = "buttonDetectResolution";
+            this.buttonDetectResolution.Size = new System.Drawing.Size(253, 23);
+            this.buttonDetectResolution.TabIndex = 23;
+            this.buttonDetectResolution.Text = "Detect resolution";
+            this.buttonDetectResolution.UseVisualStyleBackColor = true;
+            this.buttonDetectResolution.Click += new System.EventHandler(this.buttonDetectResolution_Click);
+            // 
+            // labelCustomResolution
+            // 
+            this.labelCustomResolution.AutoSize = true;
+            this.labelCustomResolution.Location = new System.Drawing.Point(6, 74);
+            this.labelCustomResolution.Name = "labelCustomResolution";
+            this.labelCustomResolution.Size = new System.Drawing.Size(93, 13);
+            this.labelCustomResolution.TabIndex = 2;
+            this.labelCustomResolution.Text = "Custom resolution:";
+            // 
+            // checkBoxAlwaysActive
+            // 
+            this.checkBoxAlwaysActive.AutoSize = true;
+            this.checkBoxAlwaysActive.Location = new System.Drawing.Point(9, 152);
+            this.checkBoxAlwaysActive.Name = "checkBoxAlwaysActive";
+            this.checkBoxAlwaysActive.Size = new System.Drawing.Size(91, 17);
+            this.checkBoxAlwaysActive.TabIndex = 22;
+            this.checkBoxAlwaysActive.Text = "Always active";
+            this.checkBoxAlwaysActive.UseVisualStyleBackColor = true;
+            // 
+            // labelResolution
+            // 
+            this.labelResolution.AutoSize = true;
+            this.labelResolution.Location = new System.Drawing.Point(6, 48);
+            this.labelResolution.Name = "labelResolution";
+            this.labelResolution.Size = new System.Drawing.Size(60, 13);
+            this.labelResolution.TabIndex = 3;
+            this.labelResolution.Text = "Resolution:";
+            // 
+            // checkBoxTopMostWindow
+            // 
+            this.checkBoxTopMostWindow.AutoSize = true;
+            this.checkBoxTopMostWindow.Location = new System.Drawing.Point(9, 129);
+            this.checkBoxTopMostWindow.Name = "checkBoxTopMostWindow";
+            this.checkBoxTopMostWindow.Size = new System.Drawing.Size(109, 17);
+            this.checkBoxTopMostWindow.TabIndex = 21;
+            this.checkBoxTopMostWindow.Text = "Top-most window";
+            this.checkBoxTopMostWindow.UseVisualStyleBackColor = true;
+            // 
+            // numCustomResW
+            // 
+            this.numCustomResW.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numCustomResW.Location = new System.Drawing.Point(134, 71);
+            this.numCustomResW.Maximum = new decimal(new int[] {
+            8192,
             0,
             0,
             0});
-            this.numFOV.Location = new System.Drawing.Point(321, 19);
-            this.numFOV.Maximum = new decimal(new int[] {
-            180,
+            this.numCustomResW.Minimum = new decimal(new int[] {
+            100,
             0,
             0,
             0});
-            this.numFOV.Minimum = new decimal(new int[] {
+            this.numCustomResW.Name = "numCustomResW";
+            this.numCustomResW.Size = new System.Drawing.Size(116, 20);
+            this.numCustomResW.TabIndex = 5;
+            this.numCustomResW.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numCustomResW.Value = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numCustomResW.ValueChanged += new System.EventHandler(this.numCustomRes_ValueChanged);
+            // 
+            // numCustomResH
+            // 
+            this.numCustomResH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numCustomResH.Location = new System.Drawing.Point(271, 71);
+            this.numCustomResH.Maximum = new decimal(new int[] {
+            8192,
+            0,
+            0,
+            0});
+            this.numCustomResH.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numCustomResH.Name = "numCustomResH";
+            this.numCustomResH.Size = new System.Drawing.Size(116, 20);
+            this.numCustomResH.TabIndex = 8;
+            this.numCustomResH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numCustomResH.Value = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numCustomResH.ValueChanged += new System.EventHandler(this.numCustomRes_ValueChanged);
+            // 
+            // labelDisplayMode
+            // 
+            this.labelDisplayMode.AutoSize = true;
+            this.labelDisplayMode.Location = new System.Drawing.Point(6, 23);
+            this.labelDisplayMode.Name = "labelDisplayMode";
+            this.labelDisplayMode.Size = new System.Drawing.Size(73, 13);
+            this.labelDisplayMode.TabIndex = 1;
+            this.labelDisplayMode.Text = "Display mode:";
+            // 
+            // labelCustomResolutionSpacer
+            // 
+            this.labelCustomResolutionSpacer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelCustomResolutionSpacer.AutoSize = true;
+            this.labelCustomResolutionSpacer.Location = new System.Drawing.Point(253, 74);
+            this.labelCustomResolutionSpacer.Name = "labelCustomResolutionSpacer";
+            this.labelCustomResolutionSpacer.Size = new System.Drawing.Size(14, 13);
+            this.labelCustomResolutionSpacer.TabIndex = 7;
+            this.labelCustomResolutionSpacer.Text = "X";
+            // 
+            // tabPageAudio
+            // 
+            this.tabPageAudio.AutoScroll = true;
+            this.tabPageAudio.Controls.Add(this.groupBoxAudio);
+            this.tabPageAudio.Controls.Add(this.groupBoxVoice);
+            this.tabPageAudio.Controls.Add(this.groupBoxAudioInterface);
+            this.tabPageAudio.Controls.Add(this.groupBoxAudioVolume);
+            this.tabPageAudio.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAudio.Name = "tabPageAudio";
+            this.tabPageAudio.Size = new System.Drawing.Size(836, 381);
+            this.tabPageAudio.TabIndex = 2;
+            this.tabPageAudio.Text = "Audio";
+            this.tabPageAudio.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxAudio
+            // 
+            this.groupBoxAudio.Controls.Add(this.checkBoxEnableAudio);
+            this.groupBoxAudio.Controls.Add(this.checkBoxMainMenuMusic);
+            this.groupBoxAudio.Location = new System.Drawing.Point(489, 6);
+            this.groupBoxAudio.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxAudio.Name = "groupBoxAudio";
+            this.groupBoxAudio.Size = new System.Drawing.Size(341, 81);
+            this.groupBoxAudio.TabIndex = 64;
+            this.groupBoxAudio.TabStop = false;
+            this.groupBoxAudio.Text = "Audio";
+            // 
+            // checkBoxEnableAudio
+            // 
+            this.checkBoxEnableAudio.AutoSize = true;
+            this.checkBoxEnableAudio.Location = new System.Drawing.Point(10, 23);
+            this.checkBoxEnableAudio.Name = "checkBoxEnableAudio";
+            this.checkBoxEnableAudio.Size = new System.Drawing.Size(88, 17);
+            this.checkBoxEnableAudio.TabIndex = 30;
+            this.checkBoxEnableAudio.Text = "Enable audio";
+            this.checkBoxEnableAudio.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMainMenuMusic
+            // 
+            this.checkBoxMainMenuMusic.AutoSize = true;
+            this.checkBoxMainMenuMusic.Checked = true;
+            this.checkBoxMainMenuMusic.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMainMenuMusic.Location = new System.Drawing.Point(10, 46);
+            this.checkBoxMainMenuMusic.Name = "checkBoxMainMenuMusic";
+            this.checkBoxMainMenuMusic.Size = new System.Drawing.Size(141, 17);
+            this.checkBoxMainMenuMusic.TabIndex = 55;
+            this.checkBoxMainMenuMusic.Text = "Play music in main menu";
+            this.checkBoxMainMenuMusic.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxVoice
+            // 
+            this.groupBoxVoice.Controls.Add(this.comboBoxVoiceChatMode);
+            this.groupBoxVoice.Controls.Add(this.labelVoiceChatMode);
+            this.groupBoxVoice.Controls.Add(this.checkBoxPushToTalk);
+            this.groupBoxVoice.Location = new System.Drawing.Point(489, 93);
+            this.groupBoxVoice.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxVoice.Name = "groupBoxVoice";
+            this.groupBoxVoice.Size = new System.Drawing.Size(341, 89);
+            this.groupBoxVoice.TabIndex = 63;
+            this.groupBoxVoice.TabStop = false;
+            this.groupBoxVoice.Text = "Voice";
+            // 
+            // comboBoxVoiceChatMode
+            // 
+            this.comboBoxVoiceChatMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVoiceChatMode.FormattingEnabled = true;
+            this.comboBoxVoiceChatMode.Location = new System.Drawing.Point(140, 19);
+            this.comboBoxVoiceChatMode.Name = "comboBoxVoiceChatMode";
+            this.comboBoxVoiceChatMode.Size = new System.Drawing.Size(187, 21);
+            this.comboBoxVoiceChatMode.TabIndex = 2;
+            // 
+            // labelVoiceChatMode
+            // 
+            this.labelVoiceChatMode.AutoSize = true;
+            this.labelVoiceChatMode.Location = new System.Drawing.Point(7, 22);
+            this.labelVoiceChatMode.Name = "labelVoiceChatMode";
+            this.labelVoiceChatMode.Size = new System.Drawing.Size(92, 13);
+            this.labelVoiceChatMode.TabIndex = 1;
+            this.labelVoiceChatMode.Text = "Voice Chat Mode:";
+            // 
+            // checkBoxPushToTalk
+            // 
+            this.checkBoxPushToTalk.AutoSize = true;
+            this.checkBoxPushToTalk.Location = new System.Drawing.Point(10, 53);
+            this.checkBoxPushToTalk.Name = "checkBoxPushToTalk";
+            this.checkBoxPushToTalk.Size = new System.Drawing.Size(126, 17);
+            this.checkBoxPushToTalk.TabIndex = 0;
+            this.checkBoxPushToTalk.Text = "Enable Push-To-Talk";
+            this.checkBoxPushToTalk.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxAudioInterface
+            // 
+            this.groupBoxAudioInterface.Controls.Add(this.sliderConversationHistorySize);
+            this.groupBoxAudioInterface.Controls.Add(this.numConversationHistorySize);
+            this.groupBoxAudioInterface.Controls.Add(this.labelConversationHistorySize);
+            this.groupBoxAudioInterface.Controls.Add(this.checkBoxDialogueHistory);
+            this.groupBoxAudioInterface.Controls.Add(this.checkBoxDialogueSubtitles);
+            this.groupBoxAudioInterface.Controls.Add(this.checkBoxGeneralSubtitles);
+            this.groupBoxAudioInterface.Location = new System.Drawing.Point(489, 188);
+            this.groupBoxAudioInterface.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxAudioInterface.Name = "groupBoxAudioInterface";
+            this.groupBoxAudioInterface.Size = new System.Drawing.Size(341, 187);
+            this.groupBoxAudioInterface.TabIndex = 62;
+            this.groupBoxAudioInterface.TabStop = false;
+            this.groupBoxAudioInterface.Text = "Interface";
+            // 
+            // sliderConversationHistorySize
+            // 
+            this.sliderConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderConversationHistorySize.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderConversationHistorySize.LargeChange = 1;
+            this.sliderConversationHistorySize.Location = new System.Drawing.Point(10, 112);
+            this.sliderConversationHistorySize.Maximum = 8;
+            this.sliderConversationHistorySize.Minimum = 1;
+            this.sliderConversationHistorySize.Name = "sliderConversationHistorySize";
+            this.sliderConversationHistorySize.Size = new System.Drawing.Size(245, 45);
+            this.sliderConversationHistorySize.TabIndex = 59;
+            this.sliderConversationHistorySize.Value = 4;
+            // 
+            // numConversationHistorySize
+            // 
+            this.numConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numConversationHistorySize.Location = new System.Drawing.Point(261, 112);
+            this.numConversationHistorySize.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numConversationHistorySize.Name = "numConversationHistorySize";
+            this.numConversationHistorySize.Size = new System.Drawing.Size(74, 20);
+            this.numConversationHistorySize.TabIndex = 61;
+            this.numConversationHistorySize.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // labelConversationHistorySize
+            // 
+            this.labelConversationHistorySize.AutoSize = true;
+            this.labelConversationHistorySize.Location = new System.Drawing.Point(7, 96);
+            this.labelConversationHistorySize.Name = "labelConversationHistorySize";
+            this.labelConversationHistorySize.Size = new System.Drawing.Size(207, 13);
+            this.labelConversationHistorySize.TabIndex = 60;
+            this.labelConversationHistorySize.Text = "Conversation history size (number of rows):";
+            // 
+            // checkBoxDialogueHistory
+            // 
+            this.checkBoxDialogueHistory.AutoSize = true;
+            this.checkBoxDialogueHistory.Location = new System.Drawing.Point(10, 65);
+            this.checkBoxDialogueHistory.Name = "checkBoxDialogueHistory";
+            this.checkBoxDialogueHistory.Size = new System.Drawing.Size(129, 17);
+            this.checkBoxDialogueHistory.TabIndex = 58;
+            this.checkBoxDialogueHistory.Text = "Show dialogue history";
+            this.checkBoxDialogueHistory.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDialogueSubtitles
+            // 
+            this.checkBoxDialogueSubtitles.AutoSize = true;
+            this.checkBoxDialogueSubtitles.Location = new System.Drawing.Point(10, 19);
+            this.checkBoxDialogueSubtitles.Name = "checkBoxDialogueSubtitles";
+            this.checkBoxDialogueSubtitles.Size = new System.Drawing.Size(137, 17);
+            this.checkBoxDialogueSubtitles.TabIndex = 56;
+            this.checkBoxDialogueSubtitles.Text = "Show dialogue subtitles";
+            this.checkBoxDialogueSubtitles.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxGeneralSubtitles
+            // 
+            this.checkBoxGeneralSubtitles.AutoSize = true;
+            this.checkBoxGeneralSubtitles.Location = new System.Drawing.Point(10, 42);
+            this.checkBoxGeneralSubtitles.Name = "checkBoxGeneralSubtitles";
+            this.checkBoxGeneralSubtitles.Size = new System.Drawing.Size(132, 17);
+            this.checkBoxGeneralSubtitles.TabIndex = 57;
+            this.checkBoxGeneralSubtitles.Text = "Show general subtitles";
+            this.checkBoxGeneralSubtitles.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxAudioVolume
+            // 
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudioChat);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal6);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal5);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal4);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal3);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal2);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal1);
+            this.groupBoxAudioVolume.Controls.Add(this.labelVolumeMaster);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderVolumeMaster);
+            this.groupBoxAudioVolume.Controls.Add(this.numVolumeMaster);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudioChat);
+            this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal0);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudioChat);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal0);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal0);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal6);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal6);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal1);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal1);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal5);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal5);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal2);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal2);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal4);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal4);
+            this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal3);
+            this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal3);
+            this.groupBoxAudioVolume.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxAudioVolume.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxAudioVolume.Name = "groupBoxAudioVolume";
+            this.groupBoxAudioVolume.Size = new System.Drawing.Size(471, 369);
+            this.groupBoxAudioVolume.TabIndex = 60;
+            this.groupBoxAudioVolume.TabStop = false;
+            this.groupBoxAudioVolume.Text = "Volume";
+            // 
+            // sliderAudioChat
+            // 
+            this.sliderAudioChat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudioChat.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudioChat.LargeChange = 20;
+            this.sliderAudioChat.Location = new System.Drawing.Point(134, 61);
+            this.sliderAudioChat.Maximum = 100;
+            this.sliderAudioChat.Name = "sliderAudioChat";
+            this.sliderAudioChat.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudioChat.SmallChange = 10;
+            this.sliderAudioChat.TabIndex = 52;
+            this.sliderAudioChat.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderAudioChat.Value = 100;
+            // 
+            // sliderAudiofVal6
+            // 
+            this.sliderAudiofVal6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal6.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal6.LargeChange = 20;
+            this.sliderAudiofVal6.Location = new System.Drawing.Point(134, 306);
+            this.sliderAudiofVal6.Maximum = 100;
+            this.sliderAudiofVal6.Name = "sliderAudiofVal6";
+            this.sliderAudiofVal6.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal6.SmallChange = 10;
+            this.sliderAudiofVal6.TabIndex = 49;
+            this.sliderAudiofVal6.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderAudiofVal6.Value = 100;
+            // 
+            // sliderAudiofVal5
+            // 
+            this.sliderAudiofVal5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal5.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal5.LargeChange = 20;
+            this.sliderAudiofVal5.Location = new System.Drawing.Point(134, 276);
+            this.sliderAudiofVal5.Maximum = 100;
+            this.sliderAudiofVal5.Name = "sliderAudiofVal5";
+            this.sliderAudiofVal5.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal5.SmallChange = 10;
+            this.sliderAudiofVal5.TabIndex = 46;
+            this.sliderAudiofVal5.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderAudiofVal5.Value = 100;
+            // 
+            // sliderAudiofVal4
+            // 
+            this.sliderAudiofVal4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal4.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal4.LargeChange = 20;
+            this.sliderAudiofVal4.Location = new System.Drawing.Point(134, 246);
+            this.sliderAudiofVal4.Maximum = 100;
+            this.sliderAudiofVal4.Name = "sliderAudiofVal4";
+            this.sliderAudiofVal4.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal4.SmallChange = 10;
+            this.sliderAudiofVal4.TabIndex = 43;
+            this.sliderAudiofVal4.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderAudiofVal4.Value = 100;
+            // 
+            // sliderAudiofVal3
+            // 
+            this.sliderAudiofVal3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal3.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal3.LargeChange = 20;
+            this.sliderAudiofVal3.Location = new System.Drawing.Point(134, 216);
+            this.sliderAudiofVal3.Maximum = 100;
+            this.sliderAudiofVal3.Name = "sliderAudiofVal3";
+            this.sliderAudiofVal3.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal3.SmallChange = 10;
+            this.sliderAudiofVal3.TabIndex = 40;
+            this.sliderAudiofVal3.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderAudiofVal3.Value = 100;
+            // 
+            // sliderAudiofVal2
+            // 
+            this.sliderAudiofVal2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal2.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal2.LargeChange = 20;
+            this.sliderAudiofVal2.Location = new System.Drawing.Point(134, 186);
+            this.sliderAudiofVal2.Maximum = 100;
+            this.sliderAudiofVal2.Name = "sliderAudiofVal2";
+            this.sliderAudiofVal2.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal2.SmallChange = 10;
+            this.sliderAudiofVal2.TabIndex = 37;
+            this.sliderAudiofVal2.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderAudiofVal2.Value = 100;
+            // 
+            // sliderAudiofVal1
+            // 
+            this.sliderAudiofVal1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal1.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal1.LargeChange = 20;
+            this.sliderAudiofVal1.Location = new System.Drawing.Point(134, 156);
+            this.sliderAudiofVal1.Maximum = 100;
+            this.sliderAudiofVal1.Name = "sliderAudiofVal1";
+            this.sliderAudiofVal1.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal1.SmallChange = 10;
+            this.sliderAudiofVal1.TabIndex = 34;
+            this.sliderAudiofVal1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderAudiofVal1.Value = 100;
+            // 
+            // labelVolumeMaster
+            // 
+            this.labelVolumeMaster.AutoSize = true;
+            this.labelVolumeMaster.Location = new System.Drawing.Point(15, 25);
+            this.labelVolumeMaster.Name = "labelVolumeMaster";
+            this.labelVolumeMaster.Size = new System.Drawing.Size(76, 13);
+            this.labelVolumeMaster.TabIndex = 28;
+            this.labelVolumeMaster.Text = "Master volume";
+            // 
+            // sliderVolumeMaster
+            // 
+            this.sliderVolumeMaster.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderVolumeMaster.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderVolumeMaster.LargeChange = 20;
+            this.sliderVolumeMaster.Location = new System.Drawing.Point(134, 25);
+            this.sliderVolumeMaster.Maximum = 100;
+            this.sliderVolumeMaster.Name = "sliderVolumeMaster";
+            this.sliderVolumeMaster.Size = new System.Drawing.Size(237, 45);
+            this.sliderVolumeMaster.SmallChange = 10;
+            this.sliderVolumeMaster.TabIndex = 27;
+            this.sliderVolumeMaster.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderVolumeMaster.Value = 100;
+            // 
+            // numVolumeMaster
+            // 
+            this.numVolumeMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numVolumeMaster.DecimalPlaces = 2;
+            this.numVolumeMaster.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numVolumeMaster.Location = new System.Drawing.Point(377, 25);
+            this.numVolumeMaster.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numVolumeMaster.Name = "numVolumeMaster";
+            this.numVolumeMaster.Size = new System.Drawing.Size(74, 20);
+            this.numVolumeMaster.TabIndex = 29;
+            this.numVolumeMaster.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numAudioChat
+            // 
+            this.numAudioChat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudioChat.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numFOV.Name = "numFOV";
-            this.numFOV.Size = new System.Drawing.Size(68, 20);
-            this.numFOV.TabIndex = 3;
-            this.numFOV.Value = new decimal(new int[] {
-            80,
+            this.numAudioChat.Location = new System.Drawing.Point(377, 61);
+            this.numAudioChat.Name = "numAudioChat";
+            this.numAudioChat.Size = new System.Drawing.Size(74, 20);
+            this.numAudioChat.TabIndex = 54;
+            this.numAudioChat.Value = new decimal(new int[] {
+            100,
             0,
             0,
             0});
+            // 
+            // sliderAudiofVal0
+            // 
+            this.sliderAudiofVal0.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderAudiofVal0.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderAudiofVal0.LargeChange = 20;
+            this.sliderAudiofVal0.Location = new System.Drawing.Point(134, 126);
+            this.sliderAudiofVal0.Maximum = 100;
+            this.sliderAudiofVal0.Name = "sliderAudiofVal0";
+            this.sliderAudiofVal0.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal0.SmallChange = 10;
+            this.sliderAudiofVal0.TabIndex = 31;
+            this.sliderAudiofVal0.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderAudiofVal0.Value = 100;
+            // 
+            // labelAudioChat
+            // 
+            this.labelAudioChat.AutoSize = true;
+            this.labelAudioChat.Location = new System.Drawing.Point(15, 61);
+            this.labelAudioChat.Name = "labelAudioChat";
+            this.labelAudioChat.Size = new System.Drawing.Size(66, 13);
+            this.labelAudioChat.TabIndex = 53;
+            this.labelAudioChat.Text = "Chat volume";
+            // 
+            // labelAudiofVal0
+            // 
+            this.labelAudiofVal0.AutoSize = true;
+            this.labelAudiofVal0.Location = new System.Drawing.Point(15, 126);
+            this.labelAudiofVal0.Name = "labelAudiofVal0";
+            this.labelAudiofVal0.Size = new System.Drawing.Size(65, 13);
+            this.labelAudiofVal0.TabIndex = 32;
+            this.labelAudiofVal0.Text = "Menu Music";
+            // 
+            // numAudiofVal0
+            // 
+            this.numAudiofVal0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal0.DecimalPlaces = 2;
+            this.numAudiofVal0.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal0.Location = new System.Drawing.Point(377, 126);
+            this.numAudiofVal0.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal0.Name = "numAudiofVal0";
+            this.numAudiofVal0.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal0.TabIndex = 33;
+            this.numAudiofVal0.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numAudiofVal6
+            // 
+            this.numAudiofVal6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal6.DecimalPlaces = 2;
+            this.numAudiofVal6.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal6.Location = new System.Drawing.Point(377, 306);
+            this.numAudiofVal6.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal6.Name = "numAudiofVal6";
+            this.numAudiofVal6.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal6.TabIndex = 51;
+            this.numAudiofVal6.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // labelAudiofVal6
+            // 
+            this.labelAudiofVal6.AutoSize = true;
+            this.labelAudiofVal6.Location = new System.Drawing.Point(15, 306);
+            this.labelAudiofVal6.Name = "labelAudiofVal6";
+            this.labelAudiofVal6.Size = new System.Drawing.Size(74, 13);
+            this.labelAudiofVal6.TabIndex = 50;
+            this.labelAudiofVal6.Text = "Pip-Boy Radio";
+            // 
+            // labelAudiofVal1
+            // 
+            this.labelAudiofVal1.AutoSize = true;
+            this.labelAudiofVal1.Location = new System.Drawing.Point(15, 156);
+            this.labelAudiofVal1.Name = "labelAudiofVal1";
+            this.labelAudiofVal1.Size = new System.Drawing.Size(71, 13);
+            this.labelAudiofVal1.TabIndex = 35;
+            this.labelAudiofVal1.Text = "World Radios";
+            // 
+            // numAudiofVal1
+            // 
+            this.numAudiofVal1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal1.DecimalPlaces = 2;
+            this.numAudiofVal1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal1.Location = new System.Drawing.Point(377, 156);
+            this.numAudiofVal1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal1.Name = "numAudiofVal1";
+            this.numAudiofVal1.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal1.TabIndex = 36;
+            this.numAudiofVal1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numAudiofVal5
+            // 
+            this.numAudiofVal5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal5.DecimalPlaces = 2;
+            this.numAudiofVal5.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal5.Location = new System.Drawing.Point(377, 276);
+            this.numAudiofVal5.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal5.Name = "numAudiofVal5";
+            this.numAudiofVal5.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal5.TabIndex = 48;
+            this.numAudiofVal5.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // labelAudiofVal5
+            // 
+            this.labelAudiofVal5.AutoSize = true;
+            this.labelAudiofVal5.Location = new System.Drawing.Point(15, 276);
+            this.labelAudiofVal5.Name = "labelAudiofVal5";
+            this.labelAudiofVal5.Size = new System.Drawing.Size(53, 13);
+            this.labelAudiofVal5.TabIndex = 47;
+            this.labelAudiofVal5.Text = "Footsteps";
+            // 
+            // labelAudiofVal2
+            // 
+            this.labelAudiofVal2.AutoSize = true;
+            this.labelAudiofVal2.Location = new System.Drawing.Point(15, 186);
+            this.labelAudiofVal2.Name = "labelAudiofVal2";
+            this.labelAudiofVal2.Size = new System.Drawing.Size(34, 13);
+            this.labelAudiofVal2.TabIndex = 38;
+            this.labelAudiofVal2.Text = "Voice";
+            // 
+            // numAudiofVal2
+            // 
+            this.numAudiofVal2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal2.DecimalPlaces = 2;
+            this.numAudiofVal2.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal2.Location = new System.Drawing.Point(377, 186);
+            this.numAudiofVal2.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal2.Name = "numAudiofVal2";
+            this.numAudiofVal2.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal2.TabIndex = 39;
+            this.numAudiofVal2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numAudiofVal4
+            // 
+            this.numAudiofVal4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal4.DecimalPlaces = 2;
+            this.numAudiofVal4.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal4.Location = new System.Drawing.Point(377, 246);
+            this.numAudiofVal4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal4.Name = "numAudiofVal4";
+            this.numAudiofVal4.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal4.TabIndex = 45;
+            this.numAudiofVal4.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // labelAudiofVal4
+            // 
+            this.labelAudiofVal4.AutoSize = true;
+            this.labelAudiofVal4.Location = new System.Drawing.Point(15, 246);
+            this.labelAudiofVal4.Name = "labelAudiofVal4";
+            this.labelAudiofVal4.Size = new System.Drawing.Size(40, 13);
+            this.labelAudiofVal4.TabIndex = 44;
+            this.labelAudiofVal4.Text = "Effects";
+            // 
+            // labelAudiofVal3
+            // 
+            this.labelAudiofVal3.AutoSize = true;
+            this.labelAudiofVal3.Location = new System.Drawing.Point(15, 216);
+            this.labelAudiofVal3.Name = "labelAudiofVal3";
+            this.labelAudiofVal3.Size = new System.Drawing.Size(35, 13);
+            this.labelAudiofVal3.TabIndex = 41;
+            this.labelAudiofVal3.Text = "Music";
+            // 
+            // numAudiofVal3
+            // 
+            this.numAudiofVal3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numAudiofVal3.DecimalPlaces = 2;
+            this.numAudiofVal3.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numAudiofVal3.Location = new System.Drawing.Point(377, 216);
+            this.numAudiofVal3.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAudiofVal3.Name = "numAudiofVal3";
+            this.numAudiofVal3.Size = new System.Drawing.Size(74, 20);
+            this.numAudiofVal3.TabIndex = 42;
+            this.numAudiofVal3.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // tabPageControls
+            // 
+            this.tabPageControls.Controls.Add(this.groupBoxGamepad);
+            this.tabPageControls.Controls.Add(this.groupBoxMouse);
+            this.tabPageControls.Location = new System.Drawing.Point(4, 22);
+            this.tabPageControls.Name = "tabPageControls";
+            this.tabPageControls.Size = new System.Drawing.Size(836, 381);
+            this.tabPageControls.TabIndex = 3;
+            this.tabPageControls.Text = "Controls";
+            this.tabPageControls.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxGamepad
+            // 
+            this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadEnabled);
+            this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadRumble);
+            this.groupBoxGamepad.Location = new System.Drawing.Point(6, 251);
+            this.groupBoxGamepad.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxGamepad.Name = "groupBoxGamepad";
+            this.groupBoxGamepad.Size = new System.Drawing.Size(361, 82);
+            this.groupBoxGamepad.TabIndex = 7;
+            this.groupBoxGamepad.TabStop = false;
+            this.groupBoxGamepad.Text = "Gamepad";
+            // 
+            // checkBoxGamepadEnabled
+            // 
+            this.checkBoxGamepadEnabled.AutoSize = true;
+            this.checkBoxGamepadEnabled.Checked = true;
+            this.checkBoxGamepadEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxGamepadEnabled.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxGamepadEnabled.Name = "checkBoxGamepadEnabled";
+            this.checkBoxGamepadEnabled.Size = new System.Drawing.Size(106, 17);
+            this.checkBoxGamepadEnabled.TabIndex = 2;
+            this.checkBoxGamepadEnabled.Text = "Enable gamepad";
+            this.checkBoxGamepadEnabled.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxGamepadRumble
+            // 
+            this.checkBoxGamepadRumble.AutoSize = true;
+            this.checkBoxGamepadRumble.Checked = true;
+            this.checkBoxGamepadRumble.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxGamepadRumble.Location = new System.Drawing.Point(9, 40);
+            this.checkBoxGamepadRumble.Name = "checkBoxGamepadRumble";
+            this.checkBoxGamepadRumble.Size = new System.Drawing.Size(149, 17);
+            this.checkBoxGamepadRumble.TabIndex = 3;
+            this.checkBoxGamepadRumble.Text = "Enable gamepad vibration";
+            this.checkBoxGamepadRumble.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxMouse
+            // 
+            this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertX);
+            this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertY);
+            this.groupBoxMouse.Controls.Add(this.sliderMouseSensitivity);
+            this.groupBoxMouse.Controls.Add(this.checkBoxMouseAcceleration);
+            this.groupBoxMouse.Controls.Add(this.checkBoxFixAimSensitivity);
+            this.groupBoxMouse.Controls.Add(this.numMouseSensitivity);
+            this.groupBoxMouse.Controls.Add(this.labelMouseSensitivity);
+            this.groupBoxMouse.Controls.Add(this.checkBoxFixMouseSensitivity);
+            this.groupBoxMouse.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxMouse.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxMouse.Name = "groupBoxMouse";
+            this.groupBoxMouse.Size = new System.Drawing.Size(361, 233);
+            this.groupBoxMouse.TabIndex = 6;
+            this.groupBoxMouse.TabStop = false;
+            this.groupBoxMouse.Text = "Mouse";
+            // 
+            // checkBoxMouseInvertX
+            // 
+            this.checkBoxMouseInvertX.AutoSize = true;
+            this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 198);
+            this.checkBoxMouseInvertX.Name = "checkBoxMouseInvertX";
+            this.checkBoxMouseInvertX.Size = new System.Drawing.Size(63, 17);
+            this.checkBoxMouseInvertX.TabIndex = 28;
+            this.checkBoxMouseInvertX.Text = "Invert X";
+            this.checkBoxMouseInvertX.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMouseInvertY
+            // 
+            this.checkBoxMouseInvertY.AutoSize = true;
+            this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 175);
+            this.checkBoxMouseInvertY.Name = "checkBoxMouseInvertY";
+            this.checkBoxMouseInvertY.Size = new System.Drawing.Size(63, 17);
+            this.checkBoxMouseInvertY.TabIndex = 27;
+            this.checkBoxMouseInvertY.Text = "Invert Y";
+            this.checkBoxMouseInvertY.UseVisualStyleBackColor = true;
+            // 
+            // sliderMouseSensitivity
+            // 
+            this.sliderMouseSensitivity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderMouseSensitivity.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderMouseSensitivity.Location = new System.Drawing.Point(9, 37);
+            this.sliderMouseSensitivity.Maximum = 600;
+            this.sliderMouseSensitivity.Minimum = 1;
+            this.sliderMouseSensitivity.Name = "sliderMouseSensitivity";
+            this.sliderMouseSensitivity.Size = new System.Drawing.Size(286, 45);
+            this.sliderMouseSensitivity.SmallChange = 300;
+            this.sliderMouseSensitivity.TabIndex = 26;
+            this.sliderMouseSensitivity.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderMouseSensitivity.Value = 300;
+            // 
+            // checkBoxMouseAcceleration
+            // 
+            this.checkBoxMouseAcceleration.AutoSize = true;
+            this.checkBoxMouseAcceleration.Location = new System.Drawing.Point(9, 88);
+            this.checkBoxMouseAcceleration.Name = "checkBoxMouseAcceleration";
+            this.checkBoxMouseAcceleration.Size = new System.Drawing.Size(119, 17);
+            this.checkBoxMouseAcceleration.TabIndex = 6;
+            this.checkBoxMouseAcceleration.Text = "Mouse acceleration";
+            this.checkBoxMouseAcceleration.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxFixAimSensitivity
+            // 
+            this.checkBoxFixAimSensitivity.AutoSize = true;
+            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 134);
+            this.checkBoxFixAimSensitivity.Name = "checkBoxFixAimSensitivity";
+            this.checkBoxFixAimSensitivity.Size = new System.Drawing.Size(106, 17);
+            this.checkBoxFixAimSensitivity.TabIndex = 5;
+            this.checkBoxFixAimSensitivity.Text = "Fix aim sensitivity";
+            this.checkBoxFixAimSensitivity.UseVisualStyleBackColor = true;
+            // 
+            // numMouseSensitivity
+            // 
+            this.numMouseSensitivity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numMouseSensitivity.DecimalPlaces = 4;
+            this.numMouseSensitivity.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            262144});
+            this.numMouseSensitivity.Location = new System.Drawing.Point(301, 37);
+            this.numMouseSensitivity.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numMouseSensitivity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            393216});
+            this.numMouseSensitivity.Name = "numMouseSensitivity";
+            this.numMouseSensitivity.Size = new System.Drawing.Size(54, 20);
+            this.numMouseSensitivity.TabIndex = 4;
+            this.numMouseSensitivity.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            131072});
+            // 
+            // labelMouseSensitivity
+            // 
+            this.labelMouseSensitivity.AutoSize = true;
+            this.labelMouseSensitivity.Location = new System.Drawing.Point(6, 19);
+            this.labelMouseSensitivity.Name = "labelMouseSensitivity";
+            this.labelMouseSensitivity.Size = new System.Drawing.Size(54, 13);
+            this.labelMouseSensitivity.TabIndex = 3;
+            this.labelMouseSensitivity.Text = "Sensitivity";
+            // 
+            // checkBoxFixMouseSensitivity
+            // 
+            this.checkBoxFixMouseSensitivity.AutoSize = true;
+            this.checkBoxFixMouseSensitivity.Location = new System.Drawing.Point(9, 111);
+            this.checkBoxFixMouseSensitivity.Name = "checkBoxFixMouseSensitivity";
+            this.checkBoxFixMouseSensitivity.Size = new System.Drawing.Size(208, 17);
+            this.checkBoxFixMouseSensitivity.TabIndex = 0;
+            this.checkBoxFixMouseSensitivity.Text = "Fix mouse horizontal/vertical sensitivity";
+            this.checkBoxFixMouseSensitivity.UseVisualStyleBackColor = true;
+            // 
+            // tabPageCamera
+            // 
+            this.tabPageCamera.AutoScroll = true;
+            this.tabPageCamera.Controls.Add(this.groupBoxCameraPosition);
+            this.tabPageCamera.Controls.Add(this.groupBoxFOVOld);
+            this.tabPageCamera.Controls.Add(this.groupBoxSelfieCamera);
+            this.tabPageCamera.Controls.Add(this.groupBoxCameraOptions);
+            this.tabPageCamera.Controls.Add(this.groupBoxCameraDistance);
+            this.tabPageCamera.Controls.Add(this.groupBoxFieldOfView);
+            this.tabPageCamera.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCamera.Name = "tabPageCamera";
+            this.tabPageCamera.Size = new System.Drawing.Size(836, 381);
+            this.tabPageCamera.TabIndex = 4;
+            this.tabPageCamera.Text = "Camera";
+            this.tabPageCamera.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxCameraPosition
+            // 
+            this.groupBoxCameraPosition.Controls.Add(this.groupBox3);
+            this.groupBoxCameraPosition.Controls.Add(this.groupBox2);
+            this.groupBoxCameraPosition.Controls.Add(this.buttonCameraPositionReset);
+            this.groupBoxCameraPosition.Controls.Add(this.checkBoxbApplyCameraNodeAnimations);
+            this.groupBoxCameraPosition.Controls.Add(this.groupBoxUnarmedCameraPosition);
+            this.groupBoxCameraPosition.Location = new System.Drawing.Point(407, 6);
+            this.groupBoxCameraPosition.Name = "groupBoxCameraPosition";
+            this.groupBoxCameraPosition.Size = new System.Drawing.Size(406, 588);
+            this.groupBoxCameraPosition.TabIndex = 42;
+            this.groupBoxCameraPosition.TabStop = false;
+            this.groupBoxCameraPosition.Text = "Camera position (Experimental)";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.numfOverShoulderMeleeCombatAddY);
+            this.groupBox3.Controls.Add(this.labelfOverShoulderMeleeCombatAddY);
+            this.groupBox3.Controls.Add(this.numfOverShoulderMeleeCombatPosX);
+            this.groupBox3.Controls.Add(this.numfOverShoulderMeleeCombatPosZ);
+            this.groupBox3.Controls.Add(this.trackBarfOverShoulderMeleeCombatAddY);
+            this.groupBox3.Controls.Add(this.labelfOverShoulderMeleeCombatPosX);
+            this.groupBox3.Controls.Add(this.trackBarfOverShoulderMeleeCombatPosX);
+            this.groupBox3.Controls.Add(this.labelfOverShoulderMeleeCombatPosZ);
+            this.groupBox3.Controls.Add(this.trackBarfOverShoulderMeleeCombatPosZ);
+            this.groupBox3.Location = new System.Drawing.Point(6, 392);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(394, 191);
+            this.groupBox3.TabIndex = 57;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Melee combat camera position";
+            // 
+            // numfOverShoulderMeleeCombatAddY
+            // 
+            this.numfOverShoulderMeleeCombatAddY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfOverShoulderMeleeCombatAddY.DecimalPlaces = 1;
+            this.numfOverShoulderMeleeCombatAddY.Location = new System.Drawing.Point(314, 134);
+            this.numfOverShoulderMeleeCombatAddY.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numfOverShoulderMeleeCombatAddY.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.numfOverShoulderMeleeCombatAddY.Name = "numfOverShoulderMeleeCombatAddY";
+            this.numfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(74, 20);
+            this.numfOverShoulderMeleeCombatAddY.TabIndex = 71;
+            // 
+            // labelfOverShoulderMeleeCombatAddY
+            // 
+            this.labelfOverShoulderMeleeCombatAddY.AutoSize = true;
+            this.labelfOverShoulderMeleeCombatAddY.Location = new System.Drawing.Point(6, 118);
+            this.labelfOverShoulderMeleeCombatAddY.Name = "labelfOverShoulderMeleeCombatAddY";
+            this.labelfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(242, 13);
+            this.labelfOverShoulderMeleeCombatAddY.TabIndex = 56;
+            this.labelfOverShoulderMeleeCombatAddY.Text = "Further/Closer (fOverShoulderMeleeCombatAddY)";
+            // 
+            // numfOverShoulderMeleeCombatPosX
+            // 
+            this.numfOverShoulderMeleeCombatPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfOverShoulderMeleeCombatPosX.DecimalPlaces = 1;
+            this.numfOverShoulderMeleeCombatPosX.Location = new System.Drawing.Point(314, 84);
+            this.numfOverShoulderMeleeCombatPosX.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numfOverShoulderMeleeCombatPosX.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.numfOverShoulderMeleeCombatPosX.Name = "numfOverShoulderMeleeCombatPosX";
+            this.numfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(74, 20);
+            this.numfOverShoulderMeleeCombatPosX.TabIndex = 70;
+            // 
+            // numfOverShoulderMeleeCombatPosZ
+            // 
+            this.numfOverShoulderMeleeCombatPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfOverShoulderMeleeCombatPosZ.DecimalPlaces = 1;
+            this.numfOverShoulderMeleeCombatPosZ.Location = new System.Drawing.Point(314, 36);
+            this.numfOverShoulderMeleeCombatPosZ.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numfOverShoulderMeleeCombatPosZ.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.numfOverShoulderMeleeCombatPosZ.Name = "numfOverShoulderMeleeCombatPosZ";
+            this.numfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(74, 20);
+            this.numfOverShoulderMeleeCombatPosZ.TabIndex = 69;
+            // 
+            // trackBarfOverShoulderMeleeCombatAddY
+            // 
+            this.trackBarfOverShoulderMeleeCombatAddY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarfOverShoulderMeleeCombatAddY.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatAddY.Location = new System.Drawing.Point(6, 134);
+            this.trackBarfOverShoulderMeleeCombatAddY.Maximum = 20;
+            this.trackBarfOverShoulderMeleeCombatAddY.Minimum = -20;
+            this.trackBarfOverShoulderMeleeCombatAddY.Name = "trackBarfOverShoulderMeleeCombatAddY";
+            this.trackBarfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(302, 45);
+            this.trackBarfOverShoulderMeleeCombatAddY.TabIndex = 55;
+            this.trackBarfOverShoulderMeleeCombatAddY.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // labelfOverShoulderMeleeCombatPosX
+            // 
+            this.labelfOverShoulderMeleeCombatPosX.AutoSize = true;
+            this.labelfOverShoulderMeleeCombatPosX.Location = new System.Drawing.Point(6, 68);
+            this.labelfOverShoulderMeleeCombatPosX.Name = "labelfOverShoulderMeleeCombatPosX";
+            this.labelfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(222, 13);
+            this.labelfOverShoulderMeleeCombatPosX.TabIndex = 54;
+            this.labelfOverShoulderMeleeCombatPosX.Text = "Left/Right (fOverShoulderMeleeCombatPosX)";
+            // 
+            // trackBarfOverShoulderMeleeCombatPosX
+            // 
+            this.trackBarfOverShoulderMeleeCombatPosX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarfOverShoulderMeleeCombatPosX.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatPosX.Location = new System.Drawing.Point(6, 84);
+            this.trackBarfOverShoulderMeleeCombatPosX.Maximum = 25;
+            this.trackBarfOverShoulderMeleeCombatPosX.Minimum = -25;
+            this.trackBarfOverShoulderMeleeCombatPosX.Name = "trackBarfOverShoulderMeleeCombatPosX";
+            this.trackBarfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(302, 45);
+            this.trackBarfOverShoulderMeleeCombatPosX.TabIndex = 53;
+            this.trackBarfOverShoulderMeleeCombatPosX.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // labelfOverShoulderMeleeCombatPosZ
+            // 
+            this.labelfOverShoulderMeleeCombatPosZ.AutoSize = true;
+            this.labelfOverShoulderMeleeCombatPosZ.Location = new System.Drawing.Point(6, 20);
+            this.labelfOverShoulderMeleeCombatPosZ.Name = "labelfOverShoulderMeleeCombatPosZ";
+            this.labelfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(221, 13);
+            this.labelfOverShoulderMeleeCombatPosZ.TabIndex = 52;
+            this.labelfOverShoulderMeleeCombatPosZ.Text = "Down/Up (fOverShoulderMeleeCombatPosZ)";
+            // 
+            // trackBarfOverShoulderMeleeCombatPosZ
+            // 
+            this.trackBarfOverShoulderMeleeCombatPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarfOverShoulderMeleeCombatPosZ.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatPosZ.Location = new System.Drawing.Point(6, 36);
+            this.trackBarfOverShoulderMeleeCombatPosZ.Maximum = 20;
+            this.trackBarfOverShoulderMeleeCombatPosZ.Minimum = -20;
+            this.trackBarfOverShoulderMeleeCombatPosZ.Name = "trackBarfOverShoulderMeleeCombatPosZ";
+            this.trackBarfOverShoulderMeleeCombatPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.trackBarfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(302, 45);
+            this.trackBarfOverShoulderMeleeCombatPosZ.TabIndex = 51;
+            this.trackBarfOverShoulderMeleeCombatPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.numfOverShoulderCombatAddY);
+            this.groupBox2.Controls.Add(this.numfOverShoulderCombatPosX);
+            this.groupBox2.Controls.Add(this.numfOverShoulderCombatPosZ);
+            this.groupBox2.Controls.Add(this.labelfOverShoulderCombatAddY);
+            this.groupBox2.Controls.Add(this.trackBarfOverShoulderCombatAddY);
+            this.groupBox2.Controls.Add(this.labelfOverShoulderCombatPosX);
+            this.groupBox2.Controls.Add(this.trackBarfOverShoulderCombatPosX);
+            this.groupBox2.Controls.Add(this.labelfOverShoulderCombatPosZ);
+            this.groupBox2.Controls.Add(this.trackBarfOverShoulderCombatPosZ);
+            this.groupBox2.Location = new System.Drawing.Point(6, 195);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(394, 191);
+            this.groupBox2.TabIndex = 55;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Combat camera position";
+            // 
+            // numfOverShoulderCombatAddY
+            // 
+            this.numfOverShoulderCombatAddY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfOverShoulderCombatAddY.DecimalPlaces = 1;
+            this.numfOverShoulderCombatAddY.Location = new System.Drawing.Point(314, 134);
+            this.numfOverShoulderCombatAddY.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numfOverShoulderCombatAddY.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.numfOverShoulderCombatAddY.Name = "numfOverShoulderCombatAddY";
+            this.numfOverShoulderCombatAddY.Size = new System.Drawing.Size(74, 20);
+            this.numfOverShoulderCombatAddY.TabIndex = 68;
+            // 
+            // numfOverShoulderCombatPosX
+            // 
+            this.numfOverShoulderCombatPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfOverShoulderCombatPosX.DecimalPlaces = 1;
+            this.numfOverShoulderCombatPosX.Location = new System.Drawing.Point(314, 84);
+            this.numfOverShoulderCombatPosX.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numfOverShoulderCombatPosX.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.numfOverShoulderCombatPosX.Name = "numfOverShoulderCombatPosX";
+            this.numfOverShoulderCombatPosX.Size = new System.Drawing.Size(74, 20);
+            this.numfOverShoulderCombatPosX.TabIndex = 67;
+            // 
+            // numfOverShoulderCombatPosZ
+            // 
+            this.numfOverShoulderCombatPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfOverShoulderCombatPosZ.DecimalPlaces = 1;
+            this.numfOverShoulderCombatPosZ.Location = new System.Drawing.Point(314, 36);
+            this.numfOverShoulderCombatPosZ.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numfOverShoulderCombatPosZ.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.numfOverShoulderCombatPosZ.Name = "numfOverShoulderCombatPosZ";
+            this.numfOverShoulderCombatPosZ.Size = new System.Drawing.Size(74, 20);
+            this.numfOverShoulderCombatPosZ.TabIndex = 66;
+            // 
+            // labelfOverShoulderCombatAddY
+            // 
+            this.labelfOverShoulderCombatAddY.AutoSize = true;
+            this.labelfOverShoulderCombatAddY.Location = new System.Drawing.Point(6, 118);
+            this.labelfOverShoulderCombatAddY.Name = "labelfOverShoulderCombatAddY";
+            this.labelfOverShoulderCombatAddY.Size = new System.Drawing.Size(213, 13);
+            this.labelfOverShoulderCombatAddY.TabIndex = 56;
+            this.labelfOverShoulderCombatAddY.Text = "Further/Closer (fOverShoulderCombatAddY)";
+            // 
+            // trackBarfOverShoulderCombatAddY
+            // 
+            this.trackBarfOverShoulderCombatAddY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarfOverShoulderCombatAddY.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatAddY.Location = new System.Drawing.Point(6, 134);
+            this.trackBarfOverShoulderCombatAddY.Maximum = 20;
+            this.trackBarfOverShoulderCombatAddY.Minimum = -20;
+            this.trackBarfOverShoulderCombatAddY.Name = "trackBarfOverShoulderCombatAddY";
+            this.trackBarfOverShoulderCombatAddY.Size = new System.Drawing.Size(302, 45);
+            this.trackBarfOverShoulderCombatAddY.TabIndex = 55;
+            this.trackBarfOverShoulderCombatAddY.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // labelfOverShoulderCombatPosX
+            // 
+            this.labelfOverShoulderCombatPosX.AutoSize = true;
+            this.labelfOverShoulderCombatPosX.Location = new System.Drawing.Point(6, 68);
+            this.labelfOverShoulderCombatPosX.Name = "labelfOverShoulderCombatPosX";
+            this.labelfOverShoulderCombatPosX.Size = new System.Drawing.Size(193, 13);
+            this.labelfOverShoulderCombatPosX.TabIndex = 54;
+            this.labelfOverShoulderCombatPosX.Text = "Left/Right (fOverShoulderCombatPosX)";
+            // 
+            // trackBarfOverShoulderCombatPosX
+            // 
+            this.trackBarfOverShoulderCombatPosX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarfOverShoulderCombatPosX.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatPosX.Location = new System.Drawing.Point(6, 84);
+            this.trackBarfOverShoulderCombatPosX.Maximum = 25;
+            this.trackBarfOverShoulderCombatPosX.Minimum = -25;
+            this.trackBarfOverShoulderCombatPosX.Name = "trackBarfOverShoulderCombatPosX";
+            this.trackBarfOverShoulderCombatPosX.Size = new System.Drawing.Size(302, 45);
+            this.trackBarfOverShoulderCombatPosX.TabIndex = 53;
+            this.trackBarfOverShoulderCombatPosX.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // labelfOverShoulderCombatPosZ
+            // 
+            this.labelfOverShoulderCombatPosZ.AutoSize = true;
+            this.labelfOverShoulderCombatPosZ.Location = new System.Drawing.Point(6, 20);
+            this.labelfOverShoulderCombatPosZ.Name = "labelfOverShoulderCombatPosZ";
+            this.labelfOverShoulderCombatPosZ.Size = new System.Drawing.Size(192, 13);
+            this.labelfOverShoulderCombatPosZ.TabIndex = 52;
+            this.labelfOverShoulderCombatPosZ.Text = "Down/Up (fOverShoulderCombatPosZ)";
+            // 
+            // trackBarfOverShoulderCombatPosZ
+            // 
+            this.trackBarfOverShoulderCombatPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarfOverShoulderCombatPosZ.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatPosZ.Location = new System.Drawing.Point(6, 36);
+            this.trackBarfOverShoulderCombatPosZ.Maximum = 20;
+            this.trackBarfOverShoulderCombatPosZ.Minimum = -20;
+            this.trackBarfOverShoulderCombatPosZ.Name = "trackBarfOverShoulderCombatPosZ";
+            this.trackBarfOverShoulderCombatPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.trackBarfOverShoulderCombatPosZ.Size = new System.Drawing.Size(302, 45);
+            this.trackBarfOverShoulderCombatPosZ.TabIndex = 51;
+            this.trackBarfOverShoulderCombatPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // buttonCameraPositionReset
+            // 
+            this.buttonCameraPositionReset.Location = new System.Drawing.Point(242, 18);
+            this.buttonCameraPositionReset.Name = "buttonCameraPositionReset";
+            this.buttonCameraPositionReset.Size = new System.Drawing.Size(171, 23);
+            this.buttonCameraPositionReset.TabIndex = 49;
+            this.buttonCameraPositionReset.Text = "Reset";
+            this.buttonCameraPositionReset.UseVisualStyleBackColor = true;
+            this.buttonCameraPositionReset.Click += new System.EventHandler(this.buttonCameraPositionReset_Click);
+            // 
+            // checkBoxbApplyCameraNodeAnimations
+            // 
+            this.checkBoxbApplyCameraNodeAnimations.AutoSize = true;
+            this.checkBoxbApplyCameraNodeAnimations.Location = new System.Drawing.Point(9, 22);
+            this.checkBoxbApplyCameraNodeAnimations.Name = "checkBoxbApplyCameraNodeAnimations";
+            this.checkBoxbApplyCameraNodeAnimations.Size = new System.Drawing.Size(171, 17);
+            this.checkBoxbApplyCameraNodeAnimations.TabIndex = 46;
+            this.checkBoxbApplyCameraNodeAnimations.Text = "bApplyCameraNodeAnimations";
+            this.checkBoxbApplyCameraNodeAnimations.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxUnarmedCameraPosition
+            // 
+            this.groupBoxUnarmedCameraPosition.Controls.Add(this.numfOverShoulderPosX);
+            this.groupBoxUnarmedCameraPosition.Controls.Add(this.numfOverShoulderPosZ);
+            this.groupBoxUnarmedCameraPosition.Controls.Add(this.labelfOverShoulderPosX);
+            this.groupBoxUnarmedCameraPosition.Controls.Add(this.trackBarfOverShoulderPosX);
+            this.groupBoxUnarmedCameraPosition.Controls.Add(this.labelfOverShoulderPosZ);
+            this.groupBoxUnarmedCameraPosition.Controls.Add(this.trackBarfOverShoulderPosZ);
+            this.groupBoxUnarmedCameraPosition.Location = new System.Drawing.Point(6, 55);
+            this.groupBoxUnarmedCameraPosition.Name = "groupBoxUnarmedCameraPosition";
+            this.groupBoxUnarmedCameraPosition.Size = new System.Drawing.Size(394, 134);
+            this.groupBoxUnarmedCameraPosition.TabIndex = 37;
+            this.groupBoxUnarmedCameraPosition.TabStop = false;
+            this.groupBoxUnarmedCameraPosition.Text = "Unarmed camera position";
+            // 
+            // numfOverShoulderPosX
+            // 
+            this.numfOverShoulderPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfOverShoulderPosX.DecimalPlaces = 1;
+            this.numfOverShoulderPosX.Location = new System.Drawing.Point(314, 84);
+            this.numfOverShoulderPosX.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numfOverShoulderPosX.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.numfOverShoulderPosX.Name = "numfOverShoulderPosX";
+            this.numfOverShoulderPosX.Size = new System.Drawing.Size(74, 20);
+            this.numfOverShoulderPosX.TabIndex = 70;
+            // 
+            // numfOverShoulderPosZ
+            // 
+            this.numfOverShoulderPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numfOverShoulderPosZ.DecimalPlaces = 1;
+            this.numfOverShoulderPosZ.Location = new System.Drawing.Point(314, 36);
+            this.numfOverShoulderPosZ.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numfOverShoulderPosZ.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.numfOverShoulderPosZ.Name = "numfOverShoulderPosZ";
+            this.numfOverShoulderPosZ.Size = new System.Drawing.Size(74, 20);
+            this.numfOverShoulderPosZ.TabIndex = 69;
+            // 
+            // labelfOverShoulderPosX
+            // 
+            this.labelfOverShoulderPosX.AutoSize = true;
+            this.labelfOverShoulderPosX.Location = new System.Drawing.Point(6, 68);
+            this.labelfOverShoulderPosX.Name = "labelfOverShoulderPosX";
+            this.labelfOverShoulderPosX.Size = new System.Drawing.Size(157, 13);
+            this.labelfOverShoulderPosX.TabIndex = 54;
+            this.labelfOverShoulderPosX.Text = "Left/Right (fOverShoulderPosX)";
+            // 
+            // trackBarfOverShoulderPosX
+            // 
+            this.trackBarfOverShoulderPosX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarfOverShoulderPosX.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderPosX.Location = new System.Drawing.Point(6, 84);
+            this.trackBarfOverShoulderPosX.Maximum = 25;
+            this.trackBarfOverShoulderPosX.Minimum = -25;
+            this.trackBarfOverShoulderPosX.Name = "trackBarfOverShoulderPosX";
+            this.trackBarfOverShoulderPosX.Size = new System.Drawing.Size(302, 45);
+            this.trackBarfOverShoulderPosX.TabIndex = 53;
+            this.trackBarfOverShoulderPosX.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // labelfOverShoulderPosZ
+            // 
+            this.labelfOverShoulderPosZ.AutoSize = true;
+            this.labelfOverShoulderPosZ.Location = new System.Drawing.Point(6, 20);
+            this.labelfOverShoulderPosZ.Name = "labelfOverShoulderPosZ";
+            this.labelfOverShoulderPosZ.Size = new System.Drawing.Size(156, 13);
+            this.labelfOverShoulderPosZ.TabIndex = 52;
+            this.labelfOverShoulderPosZ.Text = "Down/Up (fOverShoulderPosZ)";
+            // 
+            // trackBarfOverShoulderPosZ
+            // 
+            this.trackBarfOverShoulderPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarfOverShoulderPosZ.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderPosZ.Location = new System.Drawing.Point(6, 36);
+            this.trackBarfOverShoulderPosZ.Maximum = 20;
+            this.trackBarfOverShoulderPosZ.Minimum = -20;
+            this.trackBarfOverShoulderPosZ.Name = "trackBarfOverShoulderPosZ";
+            this.trackBarfOverShoulderPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.trackBarfOverShoulderPosZ.Size = new System.Drawing.Size(302, 45);
+            this.trackBarfOverShoulderPosZ.TabIndex = 51;
+            this.trackBarfOverShoulderPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // groupBoxFOVOld
             // 
@@ -3428,420 +3765,93 @@
             this.sliderCameraDistanceMinimum.TabIndex = 51;
             this.sliderCameraDistanceMinimum.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
-            // groupBoxCameraPosition
+            // groupBoxFieldOfView
             // 
-            this.groupBoxCameraPosition.Controls.Add(this.groupBox3);
-            this.groupBoxCameraPosition.Controls.Add(this.groupBox2);
-            this.groupBoxCameraPosition.Controls.Add(this.buttonCameraPositionReset);
-            this.groupBoxCameraPosition.Controls.Add(this.checkBoxbApplyCameraNodeAnimations);
-            this.groupBoxCameraPosition.Controls.Add(this.groupBoxUnarmedCameraPosition);
-            this.groupBoxCameraPosition.Location = new System.Drawing.Point(407, 6);
-            this.groupBoxCameraPosition.Name = "groupBoxCameraPosition";
-            this.groupBoxCameraPosition.Size = new System.Drawing.Size(406, 588);
-            this.groupBoxCameraPosition.TabIndex = 42;
-            this.groupBoxCameraPosition.TabStop = false;
-            this.groupBoxCameraPosition.Text = "Camera position (Experimental)";
+            this.groupBoxFieldOfView.Controls.Add(this.pictureBoxFOVPreview);
+            this.groupBoxFieldOfView.Controls.Add(this.sliderFOV);
+            this.groupBoxFieldOfView.Controls.Add(this.numFOV);
+            this.groupBoxFieldOfView.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
+            this.groupBoxFieldOfView.Size = new System.Drawing.Size(395, 252);
+            this.groupBoxFieldOfView.TabIndex = 22;
+            this.groupBoxFieldOfView.TabStop = false;
+            this.groupBoxFieldOfView.Text = "Field of View";
             // 
-            // groupBox3
+            // pictureBoxFOVPreview
             // 
-            this.groupBox3.Controls.Add(this.numfOverShoulderMeleeCombatAddY);
-            this.groupBox3.Controls.Add(this.labelfOverShoulderMeleeCombatAddY);
-            this.groupBox3.Controls.Add(this.numfOverShoulderMeleeCombatPosX);
-            this.groupBox3.Controls.Add(this.numfOverShoulderMeleeCombatPosZ);
-            this.groupBox3.Controls.Add(this.trackBarfOverShoulderMeleeCombatAddY);
-            this.groupBox3.Controls.Add(this.labelfOverShoulderMeleeCombatPosX);
-            this.groupBox3.Controls.Add(this.trackBarfOverShoulderMeleeCombatPosX);
-            this.groupBox3.Controls.Add(this.labelfOverShoulderMeleeCombatPosZ);
-            this.groupBox3.Controls.Add(this.trackBarfOverShoulderMeleeCombatPosZ);
-            this.groupBox3.Location = new System.Drawing.Point(6, 392);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(394, 191);
-            this.groupBox3.TabIndex = 57;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Melee combat camera position";
+            this.pictureBoxFOVPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxFOVPreview.BackColor = System.Drawing.Color.Gray;
+            this.pictureBoxFOVPreview.Location = new System.Drawing.Point(0, 45);
+            this.pictureBoxFOVPreview.Name = "pictureBoxFOVPreview";
+            this.pictureBoxFOVPreview.Size = new System.Drawing.Size(395, 207);
+            this.pictureBoxFOVPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxFOVPreview.TabIndex = 53;
+            this.pictureBoxFOVPreview.TabStop = false;
             // 
-            // numfOverShoulderMeleeCombatAddY
+            // sliderFOV
             // 
-            this.numfOverShoulderMeleeCombatAddY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numfOverShoulderMeleeCombatAddY.DecimalPlaces = 1;
-            this.numfOverShoulderMeleeCombatAddY.Location = new System.Drawing.Point(314, 134);
-            this.numfOverShoulderMeleeCombatAddY.Maximum = new decimal(new int[] {
-            999999,
+            this.sliderFOV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderFOV.BackColor = System.Drawing.Color.White;
+            this.sliderFOV.LargeChange = 1;
+            this.sliderFOV.Location = new System.Drawing.Point(6, 19);
+            this.sliderFOV.Maximum = 24;
+            this.sliderFOV.Minimum = 14;
+            this.sliderFOV.Name = "sliderFOV";
+            this.sliderFOV.Size = new System.Drawing.Size(309, 45);
+            this.sliderFOV.TabIndex = 52;
+            this.sliderFOV.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderFOV.Value = 24;
+            // 
+            // numFOV
+            // 
+            this.numFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numFOV.Increment = new decimal(new int[] {
+            5,
             0,
             0,
             0});
-            this.numfOverShoulderMeleeCombatAddY.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.numfOverShoulderMeleeCombatAddY.Name = "numfOverShoulderMeleeCombatAddY";
-            this.numfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderMeleeCombatAddY.TabIndex = 71;
-            // 
-            // labelfOverShoulderMeleeCombatAddY
-            // 
-            this.labelfOverShoulderMeleeCombatAddY.AutoSize = true;
-            this.labelfOverShoulderMeleeCombatAddY.Location = new System.Drawing.Point(6, 118);
-            this.labelfOverShoulderMeleeCombatAddY.Name = "labelfOverShoulderMeleeCombatAddY";
-            this.labelfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(242, 13);
-            this.labelfOverShoulderMeleeCombatAddY.TabIndex = 56;
-            this.labelfOverShoulderMeleeCombatAddY.Text = "Further/Closer (fOverShoulderMeleeCombatAddY)";
-            // 
-            // numfOverShoulderMeleeCombatPosX
-            // 
-            this.numfOverShoulderMeleeCombatPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numfOverShoulderMeleeCombatPosX.DecimalPlaces = 1;
-            this.numfOverShoulderMeleeCombatPosX.Location = new System.Drawing.Point(314, 84);
-            this.numfOverShoulderMeleeCombatPosX.Maximum = new decimal(new int[] {
-            999999,
+            this.numFOV.Location = new System.Drawing.Point(321, 19);
+            this.numFOV.Maximum = new decimal(new int[] {
+            180,
             0,
             0,
             0});
-            this.numfOverShoulderMeleeCombatPosX.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.numfOverShoulderMeleeCombatPosX.Name = "numfOverShoulderMeleeCombatPosX";
-            this.numfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderMeleeCombatPosX.TabIndex = 70;
-            // 
-            // numfOverShoulderMeleeCombatPosZ
-            // 
-            this.numfOverShoulderMeleeCombatPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numfOverShoulderMeleeCombatPosZ.DecimalPlaces = 1;
-            this.numfOverShoulderMeleeCombatPosZ.Location = new System.Drawing.Point(314, 36);
-            this.numfOverShoulderMeleeCombatPosZ.Maximum = new decimal(new int[] {
-            999999,
+            this.numFOV.Minimum = new decimal(new int[] {
+            10,
             0,
             0,
             0});
-            this.numfOverShoulderMeleeCombatPosZ.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.numfOverShoulderMeleeCombatPosZ.Name = "numfOverShoulderMeleeCombatPosZ";
-            this.numfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderMeleeCombatPosZ.TabIndex = 69;
-            // 
-            // trackBarfOverShoulderMeleeCombatAddY
-            // 
-            this.trackBarfOverShoulderMeleeCombatAddY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderMeleeCombatAddY.BackColor = System.Drawing.Color.White;
-            this.trackBarfOverShoulderMeleeCombatAddY.Location = new System.Drawing.Point(6, 134);
-            this.trackBarfOverShoulderMeleeCombatAddY.Maximum = 20;
-            this.trackBarfOverShoulderMeleeCombatAddY.Minimum = -20;
-            this.trackBarfOverShoulderMeleeCombatAddY.Name = "trackBarfOverShoulderMeleeCombatAddY";
-            this.trackBarfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(302, 45);
-            this.trackBarfOverShoulderMeleeCombatAddY.TabIndex = 55;
-            this.trackBarfOverShoulderMeleeCombatAddY.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // labelfOverShoulderMeleeCombatPosX
-            // 
-            this.labelfOverShoulderMeleeCombatPosX.AutoSize = true;
-            this.labelfOverShoulderMeleeCombatPosX.Location = new System.Drawing.Point(6, 68);
-            this.labelfOverShoulderMeleeCombatPosX.Name = "labelfOverShoulderMeleeCombatPosX";
-            this.labelfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(222, 13);
-            this.labelfOverShoulderMeleeCombatPosX.TabIndex = 54;
-            this.labelfOverShoulderMeleeCombatPosX.Text = "Left/Right (fOverShoulderMeleeCombatPosX)";
-            // 
-            // trackBarfOverShoulderMeleeCombatPosX
-            // 
-            this.trackBarfOverShoulderMeleeCombatPosX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderMeleeCombatPosX.BackColor = System.Drawing.Color.White;
-            this.trackBarfOverShoulderMeleeCombatPosX.Location = new System.Drawing.Point(6, 84);
-            this.trackBarfOverShoulderMeleeCombatPosX.Maximum = 25;
-            this.trackBarfOverShoulderMeleeCombatPosX.Minimum = -25;
-            this.trackBarfOverShoulderMeleeCombatPosX.Name = "trackBarfOverShoulderMeleeCombatPosX";
-            this.trackBarfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(302, 45);
-            this.trackBarfOverShoulderMeleeCombatPosX.TabIndex = 53;
-            this.trackBarfOverShoulderMeleeCombatPosX.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // labelfOverShoulderMeleeCombatPosZ
-            // 
-            this.labelfOverShoulderMeleeCombatPosZ.AutoSize = true;
-            this.labelfOverShoulderMeleeCombatPosZ.Location = new System.Drawing.Point(6, 20);
-            this.labelfOverShoulderMeleeCombatPosZ.Name = "labelfOverShoulderMeleeCombatPosZ";
-            this.labelfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(221, 13);
-            this.labelfOverShoulderMeleeCombatPosZ.TabIndex = 52;
-            this.labelfOverShoulderMeleeCombatPosZ.Text = "Down/Up (fOverShoulderMeleeCombatPosZ)";
-            // 
-            // trackBarfOverShoulderMeleeCombatPosZ
-            // 
-            this.trackBarfOverShoulderMeleeCombatPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderMeleeCombatPosZ.BackColor = System.Drawing.Color.White;
-            this.trackBarfOverShoulderMeleeCombatPosZ.Location = new System.Drawing.Point(6, 36);
-            this.trackBarfOverShoulderMeleeCombatPosZ.Maximum = 20;
-            this.trackBarfOverShoulderMeleeCombatPosZ.Minimum = -20;
-            this.trackBarfOverShoulderMeleeCombatPosZ.Name = "trackBarfOverShoulderMeleeCombatPosZ";
-            this.trackBarfOverShoulderMeleeCombatPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBarfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(302, 45);
-            this.trackBarfOverShoulderMeleeCombatPosZ.TabIndex = 51;
-            this.trackBarfOverShoulderMeleeCombatPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.numfOverShoulderCombatAddY);
-            this.groupBox2.Controls.Add(this.numfOverShoulderCombatPosX);
-            this.groupBox2.Controls.Add(this.numfOverShoulderCombatPosZ);
-            this.groupBox2.Controls.Add(this.labelfOverShoulderCombatAddY);
-            this.groupBox2.Controls.Add(this.trackBarfOverShoulderCombatAddY);
-            this.groupBox2.Controls.Add(this.labelfOverShoulderCombatPosX);
-            this.groupBox2.Controls.Add(this.trackBarfOverShoulderCombatPosX);
-            this.groupBox2.Controls.Add(this.labelfOverShoulderCombatPosZ);
-            this.groupBox2.Controls.Add(this.trackBarfOverShoulderCombatPosZ);
-            this.groupBox2.Location = new System.Drawing.Point(6, 195);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(394, 191);
-            this.groupBox2.TabIndex = 55;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Combat camera position";
-            // 
-            // numfOverShoulderCombatAddY
-            // 
-            this.numfOverShoulderCombatAddY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numfOverShoulderCombatAddY.DecimalPlaces = 1;
-            this.numfOverShoulderCombatAddY.Location = new System.Drawing.Point(314, 134);
-            this.numfOverShoulderCombatAddY.Maximum = new decimal(new int[] {
-            999999,
+            this.numFOV.Name = "numFOV";
+            this.numFOV.Size = new System.Drawing.Size(68, 20);
+            this.numFOV.TabIndex = 3;
+            this.numFOV.Value = new decimal(new int[] {
+            80,
             0,
             0,
             0});
-            this.numfOverShoulderCombatAddY.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.numfOverShoulderCombatAddY.Name = "numfOverShoulderCombatAddY";
-            this.numfOverShoulderCombatAddY.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderCombatAddY.TabIndex = 68;
+            this.numFOV.ValueChanged += new System.EventHandler(this.numFOV_ValueChanged);
             // 
-            // numfOverShoulderCombatPosX
+            // labelTweaksDesc
             // 
-            this.numfOverShoulderCombatPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numfOverShoulderCombatPosX.DecimalPlaces = 1;
-            this.numfOverShoulderCombatPosX.Location = new System.Drawing.Point(314, 84);
-            this.numfOverShoulderCombatPosX.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numfOverShoulderCombatPosX.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.numfOverShoulderCombatPosX.Name = "numfOverShoulderCombatPosX";
-            this.numfOverShoulderCombatPosX.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderCombatPosX.TabIndex = 67;
+            this.labelTweaksDesc.AutoSize = true;
+            this.labelTweaksDesc.Location = new System.Drawing.Point(8, 30);
+            this.labelTweaksDesc.Name = "labelTweaksDesc";
+            this.labelTweaksDesc.Size = new System.Drawing.Size(268, 13);
+            this.labelTweaksDesc.TabIndex = 72;
+            this.labelTweaksDesc.Text = "Tip: Hover over an option, if you\'re unsure what it does.";
             // 
-            // numfOverShoulderCombatPosZ
+            // labelTweaksTitle
             // 
-            this.numfOverShoulderCombatPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numfOverShoulderCombatPosZ.DecimalPlaces = 1;
-            this.numfOverShoulderCombatPosZ.Location = new System.Drawing.Point(314, 36);
-            this.numfOverShoulderCombatPosZ.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numfOverShoulderCombatPosZ.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.numfOverShoulderCombatPosZ.Name = "numfOverShoulderCombatPosZ";
-            this.numfOverShoulderCombatPosZ.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderCombatPosZ.TabIndex = 66;
-            // 
-            // labelfOverShoulderCombatAddY
-            // 
-            this.labelfOverShoulderCombatAddY.AutoSize = true;
-            this.labelfOverShoulderCombatAddY.Location = new System.Drawing.Point(6, 118);
-            this.labelfOverShoulderCombatAddY.Name = "labelfOverShoulderCombatAddY";
-            this.labelfOverShoulderCombatAddY.Size = new System.Drawing.Size(213, 13);
-            this.labelfOverShoulderCombatAddY.TabIndex = 56;
-            this.labelfOverShoulderCombatAddY.Text = "Further/Closer (fOverShoulderCombatAddY)";
-            // 
-            // trackBarfOverShoulderCombatAddY
-            // 
-            this.trackBarfOverShoulderCombatAddY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderCombatAddY.BackColor = System.Drawing.Color.White;
-            this.trackBarfOverShoulderCombatAddY.Location = new System.Drawing.Point(6, 134);
-            this.trackBarfOverShoulderCombatAddY.Maximum = 20;
-            this.trackBarfOverShoulderCombatAddY.Minimum = -20;
-            this.trackBarfOverShoulderCombatAddY.Name = "trackBarfOverShoulderCombatAddY";
-            this.trackBarfOverShoulderCombatAddY.Size = new System.Drawing.Size(302, 45);
-            this.trackBarfOverShoulderCombatAddY.TabIndex = 55;
-            this.trackBarfOverShoulderCombatAddY.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // labelfOverShoulderCombatPosX
-            // 
-            this.labelfOverShoulderCombatPosX.AutoSize = true;
-            this.labelfOverShoulderCombatPosX.Location = new System.Drawing.Point(6, 68);
-            this.labelfOverShoulderCombatPosX.Name = "labelfOverShoulderCombatPosX";
-            this.labelfOverShoulderCombatPosX.Size = new System.Drawing.Size(193, 13);
-            this.labelfOverShoulderCombatPosX.TabIndex = 54;
-            this.labelfOverShoulderCombatPosX.Text = "Left/Right (fOverShoulderCombatPosX)";
-            // 
-            // trackBarfOverShoulderCombatPosX
-            // 
-            this.trackBarfOverShoulderCombatPosX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderCombatPosX.BackColor = System.Drawing.Color.White;
-            this.trackBarfOverShoulderCombatPosX.Location = new System.Drawing.Point(6, 84);
-            this.trackBarfOverShoulderCombatPosX.Maximum = 25;
-            this.trackBarfOverShoulderCombatPosX.Minimum = -25;
-            this.trackBarfOverShoulderCombatPosX.Name = "trackBarfOverShoulderCombatPosX";
-            this.trackBarfOverShoulderCombatPosX.Size = new System.Drawing.Size(302, 45);
-            this.trackBarfOverShoulderCombatPosX.TabIndex = 53;
-            this.trackBarfOverShoulderCombatPosX.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // labelfOverShoulderCombatPosZ
-            // 
-            this.labelfOverShoulderCombatPosZ.AutoSize = true;
-            this.labelfOverShoulderCombatPosZ.Location = new System.Drawing.Point(6, 20);
-            this.labelfOverShoulderCombatPosZ.Name = "labelfOverShoulderCombatPosZ";
-            this.labelfOverShoulderCombatPosZ.Size = new System.Drawing.Size(192, 13);
-            this.labelfOverShoulderCombatPosZ.TabIndex = 52;
-            this.labelfOverShoulderCombatPosZ.Text = "Down/Up (fOverShoulderCombatPosZ)";
-            // 
-            // trackBarfOverShoulderCombatPosZ
-            // 
-            this.trackBarfOverShoulderCombatPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderCombatPosZ.BackColor = System.Drawing.Color.White;
-            this.trackBarfOverShoulderCombatPosZ.Location = new System.Drawing.Point(6, 36);
-            this.trackBarfOverShoulderCombatPosZ.Maximum = 20;
-            this.trackBarfOverShoulderCombatPosZ.Minimum = -20;
-            this.trackBarfOverShoulderCombatPosZ.Name = "trackBarfOverShoulderCombatPosZ";
-            this.trackBarfOverShoulderCombatPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBarfOverShoulderCombatPosZ.Size = new System.Drawing.Size(302, 45);
-            this.trackBarfOverShoulderCombatPosZ.TabIndex = 51;
-            this.trackBarfOverShoulderCombatPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // buttonCameraPositionReset
-            // 
-            this.buttonCameraPositionReset.Location = new System.Drawing.Point(242, 18);
-            this.buttonCameraPositionReset.Name = "buttonCameraPositionReset";
-            this.buttonCameraPositionReset.Size = new System.Drawing.Size(171, 23);
-            this.buttonCameraPositionReset.TabIndex = 49;
-            this.buttonCameraPositionReset.Text = "Reset";
-            this.buttonCameraPositionReset.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxbApplyCameraNodeAnimations
-            // 
-            this.checkBoxbApplyCameraNodeAnimations.AutoSize = true;
-            this.checkBoxbApplyCameraNodeAnimations.Location = new System.Drawing.Point(9, 22);
-            this.checkBoxbApplyCameraNodeAnimations.Name = "checkBoxbApplyCameraNodeAnimations";
-            this.checkBoxbApplyCameraNodeAnimations.Size = new System.Drawing.Size(171, 17);
-            this.checkBoxbApplyCameraNodeAnimations.TabIndex = 46;
-            this.checkBoxbApplyCameraNodeAnimations.Text = "bApplyCameraNodeAnimations";
-            this.checkBoxbApplyCameraNodeAnimations.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxUnarmedCameraPosition
-            // 
-            this.groupBoxUnarmedCameraPosition.Controls.Add(this.numfOverShoulderPosX);
-            this.groupBoxUnarmedCameraPosition.Controls.Add(this.numfOverShoulderPosZ);
-            this.groupBoxUnarmedCameraPosition.Controls.Add(this.labelfOverShoulderPosX);
-            this.groupBoxUnarmedCameraPosition.Controls.Add(this.trackBarfOverShoulderPosX);
-            this.groupBoxUnarmedCameraPosition.Controls.Add(this.labelfOverShoulderPosZ);
-            this.groupBoxUnarmedCameraPosition.Controls.Add(this.trackBarfOverShoulderPosZ);
-            this.groupBoxUnarmedCameraPosition.Location = new System.Drawing.Point(6, 55);
-            this.groupBoxUnarmedCameraPosition.Name = "groupBoxUnarmedCameraPosition";
-            this.groupBoxUnarmedCameraPosition.Size = new System.Drawing.Size(394, 134);
-            this.groupBoxUnarmedCameraPosition.TabIndex = 37;
-            this.groupBoxUnarmedCameraPosition.TabStop = false;
-            this.groupBoxUnarmedCameraPosition.Text = "Unarmed camera position";
-            // 
-            // numfOverShoulderPosX
-            // 
-            this.numfOverShoulderPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numfOverShoulderPosX.DecimalPlaces = 1;
-            this.numfOverShoulderPosX.Location = new System.Drawing.Point(314, 84);
-            this.numfOverShoulderPosX.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numfOverShoulderPosX.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.numfOverShoulderPosX.Name = "numfOverShoulderPosX";
-            this.numfOverShoulderPosX.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderPosX.TabIndex = 70;
-            // 
-            // numfOverShoulderPosZ
-            // 
-            this.numfOverShoulderPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numfOverShoulderPosZ.DecimalPlaces = 1;
-            this.numfOverShoulderPosZ.Location = new System.Drawing.Point(314, 36);
-            this.numfOverShoulderPosZ.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numfOverShoulderPosZ.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.numfOverShoulderPosZ.Name = "numfOverShoulderPosZ";
-            this.numfOverShoulderPosZ.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderPosZ.TabIndex = 69;
-            // 
-            // labelfOverShoulderPosX
-            // 
-            this.labelfOverShoulderPosX.AutoSize = true;
-            this.labelfOverShoulderPosX.Location = new System.Drawing.Point(6, 68);
-            this.labelfOverShoulderPosX.Name = "labelfOverShoulderPosX";
-            this.labelfOverShoulderPosX.Size = new System.Drawing.Size(157, 13);
-            this.labelfOverShoulderPosX.TabIndex = 54;
-            this.labelfOverShoulderPosX.Text = "Left/Right (fOverShoulderPosX)";
-            // 
-            // trackBarfOverShoulderPosX
-            // 
-            this.trackBarfOverShoulderPosX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderPosX.BackColor = System.Drawing.Color.White;
-            this.trackBarfOverShoulderPosX.Location = new System.Drawing.Point(6, 84);
-            this.trackBarfOverShoulderPosX.Maximum = 25;
-            this.trackBarfOverShoulderPosX.Minimum = -25;
-            this.trackBarfOverShoulderPosX.Name = "trackBarfOverShoulderPosX";
-            this.trackBarfOverShoulderPosX.Size = new System.Drawing.Size(302, 45);
-            this.trackBarfOverShoulderPosX.TabIndex = 53;
-            this.trackBarfOverShoulderPosX.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // labelfOverShoulderPosZ
-            // 
-            this.labelfOverShoulderPosZ.AutoSize = true;
-            this.labelfOverShoulderPosZ.Location = new System.Drawing.Point(6, 20);
-            this.labelfOverShoulderPosZ.Name = "labelfOverShoulderPosZ";
-            this.labelfOverShoulderPosZ.Size = new System.Drawing.Size(156, 13);
-            this.labelfOverShoulderPosZ.TabIndex = 52;
-            this.labelfOverShoulderPosZ.Text = "Down/Up (fOverShoulderPosZ)";
-            // 
-            // trackBarfOverShoulderPosZ
-            // 
-            this.trackBarfOverShoulderPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderPosZ.BackColor = System.Drawing.Color.White;
-            this.trackBarfOverShoulderPosZ.Location = new System.Drawing.Point(6, 36);
-            this.trackBarfOverShoulderPosZ.Maximum = 20;
-            this.trackBarfOverShoulderPosZ.Minimum = -20;
-            this.trackBarfOverShoulderPosZ.Name = "trackBarfOverShoulderPosZ";
-            this.trackBarfOverShoulderPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBarfOverShoulderPosZ.Size = new System.Drawing.Size(302, 45);
-            this.trackBarfOverShoulderPosZ.TabIndex = 51;
-            this.trackBarfOverShoulderPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.labelTweaksTitle.AutoSize = true;
+            this.labelTweaksTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTweaksTitle.Location = new System.Drawing.Point(6, 6);
+            this.labelTweaksTitle.Name = "labelTweaksTitle";
+            this.labelTweaksTitle.Size = new System.Drawing.Size(75, 24);
+            this.labelTweaksTitle.TabIndex = 71;
+            this.labelTweaksTitle.Text = "Tweaks";
             // 
             // UserControlTweaks
             // 
@@ -3853,22 +3863,12 @@
             this.Name = "UserControlTweaks";
             this.Size = new System.Drawing.Size(850, 460);
             this.tabControlTweaks.ResumeLayout(false);
-            this.tabPageGeneral.ResumeLayout(false);
-            this.tabPageVideo.ResumeLayout(false);
-            this.tabPageAudio.ResumeLayout(false);
-            this.tabPageControls.ResumeLayout(false);
-            this.tabPageCamera.ResumeLayout(false);
-            this.groupBoxGamepad.ResumeLayout(false);
-            this.groupBoxGamepad.PerformLayout();
-            this.groupBoxMouse.ResumeLayout(false);
-            this.groupBoxMouse.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivity)).EndInit();
             this.tabPageLogin.ResumeLayout(false);
-            this.groupBoxLogin.ResumeLayout(false);
-            this.groupBoxLogin.PerformLayout();
             this.groupBoxLoginProfiles.ResumeLayout(false);
             this.groupBoxLoginProfiles.PerformLayout();
+            this.groupBoxLogin.ResumeLayout(false);
+            this.groupBoxLogin.PerformLayout();
+            this.tabPageGeneral.ResumeLayout(false);
             this.groupBoxTweaks.ResumeLayout(false);
             this.groupBoxTweaks.PerformLayout();
             this.groupBoxGeneralInterface.ResumeLayout(false);
@@ -3881,38 +3881,7 @@
             this.groupBoxQuests.PerformLayout();
             this.groupBoxMainMenu.ResumeLayout(false);
             this.groupBoxMainMenu.PerformLayout();
-            this.groupBoxDisplay.ResumeLayout(false);
-            this.groupBoxDisplay.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).EndInit();
-            this.groupBoxAudioVolume.ResumeLayout(false);
-            this.groupBoxAudioVolume.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudioChat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderVolumeMaster)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numVolumeMaster)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudioChat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal3)).EndInit();
-            this.groupBoxAudio.ResumeLayout(false);
-            this.groupBoxAudio.PerformLayout();
-            this.groupBoxVoice.ResumeLayout(false);
-            this.groupBoxVoice.PerformLayout();
-            this.groupBoxAudioInterface.ResumeLayout(false);
-            this.groupBoxAudioInterface.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).EndInit();
+            this.tabPageVideo.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.groupBoxGraphics.ResumeLayout(false);
             this.groupBoxGraphics.PerformLayout();
@@ -3948,35 +3917,47 @@
             this.groupBoxWeather.PerformLayout();
             this.groupBoxPostProcessing.ResumeLayout(false);
             this.groupBoxPostProcessing.PerformLayout();
-            this.groupBoxFieldOfView.ResumeLayout(false);
-            this.groupBoxFieldOfView.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFOVPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderFOV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFOV)).EndInit();
-            this.groupBoxFOVOld.ResumeLayout(false);
-            this.groupBoxFOVOld.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFirstPersonFOV)).EndInit();
-            this.groupBoxSelfieCamera.ResumeLayout(false);
-            this.groupBoxSelfieCamera.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRange)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).EndInit();
-            this.groupBoxCameraOptions.ResumeLayout(false);
-            this.groupBoxCameraOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCameraSwitchDelay)).EndInit();
-            this.groupBoxCameraDistance.ResumeLayout(false);
-            this.groupBoxCameraDistance.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderfPitchZoomOutMaxDist)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMaximum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMinimum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMaximum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMinimum)).EndInit();
+            this.groupBoxDisplay.ResumeLayout(false);
+            this.groupBoxDisplay.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCustomResH)).EndInit();
+            this.tabPageAudio.ResumeLayout(false);
+            this.groupBoxAudio.ResumeLayout(false);
+            this.groupBoxAudio.PerformLayout();
+            this.groupBoxVoice.ResumeLayout(false);
+            this.groupBoxVoice.PerformLayout();
+            this.groupBoxAudioInterface.ResumeLayout(false);
+            this.groupBoxAudioInterface.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).EndInit();
+            this.groupBoxAudioVolume.ResumeLayout(false);
+            this.groupBoxAudioVolume.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudioChat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderVolumeMaster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numVolumeMaster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudioChat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal3)).EndInit();
+            this.tabPageControls.ResumeLayout(false);
+            this.groupBoxGamepad.ResumeLayout(false);
+            this.groupBoxGamepad.PerformLayout();
+            this.groupBoxMouse.ResumeLayout(false);
+            this.groupBoxMouse.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivity)).EndInit();
+            this.tabPageCamera.ResumeLayout(false);
             this.groupBoxCameraPosition.ResumeLayout(false);
             this.groupBoxCameraPosition.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -4001,6 +3982,35 @@
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderPosZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderPosX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderPosZ)).EndInit();
+            this.groupBoxFOVOld.ResumeLayout(false);
+            this.groupBoxFOVOld.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfDefaultFOV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFirstPersonFOV)).EndInit();
+            this.groupBoxSelfieCamera.ResumeLayout(false);
+            this.groupBoxSelfieCamera.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).EndInit();
+            this.groupBoxCameraOptions.ResumeLayout(false);
+            this.groupBoxCameraOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraSwitchDelay)).EndInit();
+            this.groupBoxCameraDistance.ResumeLayout(false);
+            this.groupBoxCameraDistance.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderfPitchZoomOutMaxDist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMaximum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMinimum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMaximum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMinimum)).EndInit();
+            this.groupBoxFieldOfView.ResumeLayout(false);
+            this.groupBoxFieldOfView.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFOVPreview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderFOV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFOV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

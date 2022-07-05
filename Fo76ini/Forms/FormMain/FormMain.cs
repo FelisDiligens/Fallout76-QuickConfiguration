@@ -524,9 +524,7 @@ namespace Fo76ini
 
         private void showProfiles_OnClick(object sender, EventArgs e)
         {
-            //formSettings.ShowProfiles();
-            Application.Restart();
-            Environment.Exit(0);
+            formSettings.ShowProfiles();
         }
 
         #endregion
