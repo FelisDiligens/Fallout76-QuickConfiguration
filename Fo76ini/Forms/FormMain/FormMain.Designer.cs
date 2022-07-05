@@ -101,6 +101,8 @@
             this.toolStripStatusLabelNuclearWinterModeActive = new System.Windows.Forms.ToolStripStatusLabel();
             this.backgroundWorkerDownloadRTF = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.userControlSideNav1 = new Fo76ini.Forms.FormMain.UserControlSideNav();
             this.tabControl1.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
             this.panelWhatsNew.SuspendLayout();
@@ -116,6 +118,7 @@
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolTip
@@ -147,6 +150,7 @@
             this.tabControl1.Controls.Add(this.tabPageGallery);
             this.tabControl1.Controls.Add(this.tabPageCustom);
             this.tabControl1.Controls.Add(this.tabPageProfiles);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(12, 59);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -836,6 +840,24 @@
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.userControlSideNav1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(852, 464);
+            this.tabPage1.TabIndex = 14;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // userControlSideNav1
+            // 
+            this.userControlSideNav1.Location = new System.Drawing.Point(6, 6);
+            this.userControlSideNav1.Name = "userControlSideNav1";
+            this.userControlSideNav1.Size = new System.Drawing.Size(200, 600);
+            this.userControlSideNav1.TabIndex = 0;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -870,6 +892,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).EndInit();
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -947,6 +970,8 @@
         private Forms.FormMain.Tabs.UserControlCustom userControlCustom;
         private System.Windows.Forms.TabPage tabPageProfiles;
         private Forms.FormMain.Tabs.UserControlProfiles userControlProfiles;
+        private System.Windows.Forms.TabPage tabPage1;
+        private Forms.FormMain.UserControlSideNav userControlSideNav1;
     }
 }
 

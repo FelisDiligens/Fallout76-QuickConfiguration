@@ -145,6 +145,9 @@
     <Compile Include="Controls\ImagedComboBox\ImagedComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\StyledButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\PictureBoxButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -192,6 +195,12 @@
     </Compile>
     <Compile Include="Forms\FormMain\Tabs\UserControlTweaks.LinkControls.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain\UserControlSideNav.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain\UserControlSideNav.Designer.cs">
+      <DependentUpon>UserControlSideNav.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormMods\FormMods.Settings.cs">
       <SubType>Form</SubType>
@@ -410,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlTweaks.resx">
       <DependentUpon>UserControlTweaks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain\UserControlSideNav.resx">
+      <DependentUpon>UserControlSideNav.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMods\FormMods.resx">
       <DependentUpon>FormMods.cs</DependentUpon>
