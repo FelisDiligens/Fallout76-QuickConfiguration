@@ -64,34 +64,10 @@
             this.userControlCustom = new Fo76ini.Forms.FormMain.Tabs.UserControlCustom();
             this.tabPageProfiles = new System.Windows.Forms.TabPage();
             this.userControlProfiles = new Fo76ini.Forms.FormMain.Tabs.UserControlProfiles();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonNWMode = new System.Windows.Forms.Button();
             this.backgroundWorkerLoadGallery = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerGetLatestVersion = new System.ComponentModel.BackgroundWorker();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonApply = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLaunchGame = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonManageMods = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonToggleNuclearWinterMode = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSettings = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSplitButtonUpdate = new System.Windows.Forms.ToolStripSplitButton();
-            this.updateToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showUpdaterlogtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButtonExplore = new System.Windows.Forms.ToolStripDropDownButton();
-            this.gameFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gamesConfigurationFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolConfigurationFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolLanguagesFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolInstallationFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.steamScreenshotFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gamePhotosFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.editFallout76iniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editFallout76PrefsiniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editFallout76CustominiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelGame = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelGameText = new System.Windows.Forms.ToolStripStatusLabel();
@@ -101,8 +77,7 @@
             this.toolStripStatusLabelNuclearWinterModeActive = new System.Windows.Forms.ToolStripStatusLabel();
             this.backgroundWorkerDownloadRTF = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.userControlSideNav1 = new Fo76ini.Forms.FormMain.UserControlSideNav();
+            this.userControlSideNav2 = new Fo76ini.Forms.FormMain.UserControlSideNav();
             this.tabControl1.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
             this.panelWhatsNew.SuspendLayout();
@@ -115,10 +90,9 @@
             this.tabPageGallery.SuspendLayout();
             this.tabPageCustom.SuspendLayout();
             this.tabPageProfiles.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
-            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolTip
@@ -151,11 +125,11 @@
             this.tabControl1.Controls.Add(this.tabPageCustom);
             this.tabControl1.Controls.Add(this.tabPageProfiles);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(12, 59);
+            this.tabControl1.Location = new System.Drawing.Point(201, -2);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(860, 490);
+            this.tabControl1.Size = new System.Drawing.Size(671, 558);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPageInfo
@@ -180,7 +154,7 @@
             this.tabPageInfo.Location = new System.Drawing.Point(4, 22);
             this.tabPageInfo.Name = "tabPageInfo";
             this.tabPageInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInfo.Size = new System.Drawing.Size(852, 464);
+            this.tabPageInfo.Size = new System.Drawing.Size(663, 532);
             this.tabPageInfo.TabIndex = 4;
             this.tabPageInfo.Text = "Info";
             this.tabPageInfo.UseVisualStyleBackColor = true;
@@ -210,7 +184,7 @@
             this.panelWhatsNew.Location = new System.Drawing.Point(486, 0);
             this.panelWhatsNew.Margin = new System.Windows.Forms.Padding(0);
             this.panelWhatsNew.Name = "panelWhatsNew";
-            this.panelWhatsNew.Size = new System.Drawing.Size(370, 468);
+            this.panelWhatsNew.Size = new System.Drawing.Size(370, 443);
             this.panelWhatsNew.TabIndex = 45;
             // 
             // richTextBoxWhatsNew
@@ -227,7 +201,7 @@
             this.richTextBoxWhatsNew.Margin = new System.Windows.Forms.Padding(10, 10, 0, 10);
             this.richTextBoxWhatsNew.Name = "richTextBoxWhatsNew";
             this.richTextBoxWhatsNew.ReadOnly = true;
-            this.richTextBoxWhatsNew.Size = new System.Drawing.Size(356, 369);
+            this.richTextBoxWhatsNew.Size = new System.Drawing.Size(356, 344);
             this.richTextBoxWhatsNew.TabIndex = 43;
             this.richTextBoxWhatsNew.Text = "\n\n\n                          Loading \"What\'s new?\" content...";
             // 
@@ -237,7 +211,7 @@
             this.panelUpdate.Controls.Add(this.pictureBoxButtonUpdate);
             this.panelUpdate.Controls.Add(this.labelNewVersion);
             this.panelUpdate.Controls.Add(this.linkLabelManualDownloadPage);
-            this.panelUpdate.Location = new System.Drawing.Point(93, 331);
+            this.panelUpdate.Location = new System.Drawing.Point(93, 306);
             this.panelUpdate.Name = "panelUpdate";
             this.panelUpdate.Size = new System.Drawing.Size(299, 110);
             this.panelUpdate.TabIndex = 39;
@@ -300,7 +274,7 @@
             this.labelGameEdition.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelGameEdition.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGameEdition.ForeColor = System.Drawing.Color.White;
-            this.labelGameEdition.Location = new System.Drawing.Point(0, 405);
+            this.labelGameEdition.Location = new System.Drawing.Point(0, 380);
             this.labelGameEdition.Name = "labelGameEdition";
             this.labelGameEdition.Size = new System.Drawing.Size(73, 59);
             this.labelGameEdition.TabIndex = 22;
@@ -326,7 +300,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Black;
             this.pictureBox2.Location = new System.Drawing.Point(-4, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(77, 468);
+            this.pictureBox2.Size = new System.Drawing.Size(77, 443);
             this.pictureBox2.TabIndex = 18;
             this.pictureBox2.TabStop = false;
             // 
@@ -419,7 +393,7 @@
             this.tabPageTweaks.Location = new System.Drawing.Point(4, 22);
             this.tabPageTweaks.Name = "tabPageTweaks";
             this.tabPageTweaks.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTweaks.Size = new System.Drawing.Size(852, 464);
+            this.tabPageTweaks.Size = new System.Drawing.Size(663, 532);
             this.tabPageTweaks.TabIndex = 11;
             this.tabPageTweaks.Text = "Tweaks";
             this.tabPageTweaks.UseVisualStyleBackColor = true;
@@ -431,7 +405,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlTweaks.Location = new System.Drawing.Point(0, 0);
             this.userControlTweaks.Name = "userControlTweaks";
-            this.userControlTweaks.Size = new System.Drawing.Size(852, 464);
+            this.userControlTweaks.Size = new System.Drawing.Size(852, 439);
             this.userControlTweaks.TabIndex = 0;
             // 
             // tabPagePipBoy
@@ -439,7 +413,7 @@
             this.tabPagePipBoy.Controls.Add(this.userControlPipboy1);
             this.tabPagePipBoy.Location = new System.Drawing.Point(4, 22);
             this.tabPagePipBoy.Name = "tabPagePipBoy";
-            this.tabPagePipBoy.Size = new System.Drawing.Size(852, 464);
+            this.tabPagePipBoy.Size = new System.Drawing.Size(663, 532);
             this.tabPagePipBoy.TabIndex = 12;
             this.tabPagePipBoy.Text = "Pip-Boy";
             this.tabPagePipBoy.UseVisualStyleBackColor = true;
@@ -451,7 +425,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlPipboy1.Location = new System.Drawing.Point(0, 0);
             this.userControlPipboy1.Name = "userControlPipboy1";
-            this.userControlPipboy1.Size = new System.Drawing.Size(852, 464);
+            this.userControlPipboy1.Size = new System.Drawing.Size(852, 439);
             this.userControlPipboy1.TabIndex = 0;
             // 
             // tabPageGallery
@@ -460,7 +434,7 @@
             this.tabPageGallery.Location = new System.Drawing.Point(4, 22);
             this.tabPageGallery.Name = "tabPageGallery";
             this.tabPageGallery.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGallery.Size = new System.Drawing.Size(852, 464);
+            this.tabPageGallery.Size = new System.Drawing.Size(663, 532);
             this.tabPageGallery.TabIndex = 10;
             this.tabPageGallery.Text = "Gallery";
             this.tabPageGallery.UseVisualStyleBackColor = true;
@@ -472,7 +446,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlGallery.Location = new System.Drawing.Point(0, 0);
             this.userControlGallery.Name = "userControlGallery";
-            this.userControlGallery.Size = new System.Drawing.Size(852, 464);
+            this.userControlGallery.Size = new System.Drawing.Size(852, 439);
             this.userControlGallery.TabIndex = 0;
             // 
             // tabPageCustom
@@ -481,7 +455,7 @@
             this.tabPageCustom.Location = new System.Drawing.Point(4, 22);
             this.tabPageCustom.Name = "tabPageCustom";
             this.tabPageCustom.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCustom.Size = new System.Drawing.Size(852, 464);
+            this.tabPageCustom.Size = new System.Drawing.Size(663, 532);
             this.tabPageCustom.TabIndex = 9;
             this.tabPageCustom.Text = "Custom";
             this.tabPageCustom.UseVisualStyleBackColor = true;
@@ -493,7 +467,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlCustom.Location = new System.Drawing.Point(0, 0);
             this.userControlCustom.Name = "userControlCustom";
-            this.userControlCustom.Size = new System.Drawing.Size(852, 464);
+            this.userControlCustom.Size = new System.Drawing.Size(852, 439);
             this.userControlCustom.TabIndex = 0;
             // 
             // tabPageProfiles
@@ -503,7 +477,7 @@
             this.tabPageProfiles.Location = new System.Drawing.Point(4, 22);
             this.tabPageProfiles.Name = "tabPageProfiles";
             this.tabPageProfiles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProfiles.Size = new System.Drawing.Size(852, 464);
+            this.tabPageProfiles.Size = new System.Drawing.Size(663, 532);
             this.tabPageProfiles.TabIndex = 13;
             this.tabPageProfiles.Text = "Profiles";
             // 
@@ -514,252 +488,35 @@
             this.userControlProfiles.BackColor = System.Drawing.Color.White;
             this.userControlProfiles.Location = new System.Drawing.Point(0, 0);
             this.userControlProfiles.Name = "userControlProfiles";
-            this.userControlProfiles.Size = new System.Drawing.Size(480, 464);
+            this.userControlProfiles.Size = new System.Drawing.Size(480, 439);
             this.userControlProfiles.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.buttonNWMode);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(663, 532);
+            this.tabPage1.TabIndex = 14;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // buttonNWMode
+            // 
+            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
+            this.buttonNWMode.Location = new System.Drawing.Point(136, 67);
+            this.buttonNWMode.Name = "buttonNWMode";
+            this.buttonNWMode.Size = new System.Drawing.Size(138, 63);
+            this.buttonNWMode.TabIndex = 0;
+            this.buttonNWMode.Text = "Nuclear Winter";
+            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNWMode.UseVisualStyleBackColor = true;
+            this.buttonNWMode.Click += new System.EventHandler(this.toolStripButtonToggleNuclearWinterMode_Click);
             // 
             // backgroundWorkerGetLatestVersion
             // 
             this.backgroundWorkerGetLatestVersion.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerGetLatestVersion_DoWork);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 46);
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 46);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonApply,
-            this.toolStripButtonLaunchGame,
-            this.toolStripSeparator3,
-            this.toolStripButtonManageMods,
-            this.toolStripButtonToggleNuclearWinterMode,
-            this.toolStripSeparator9,
-            this.toolStripButtonSettings,
-            this.toolStripSplitButtonUpdate,
-            this.toolStripDropDownButtonExplore});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(5, 5, 1, 5);
-            this.toolStrip1.Size = new System.Drawing.Size(884, 56);
-            this.toolStrip1.TabIndex = 14;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButtonApply
-            // 
-            this.toolStripButtonApply.Image = global::Fo76ini.Properties.Resources.save_24;
-            this.toolStripButtonApply.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonApply.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonApply.Name = "toolStripButtonApply";
-            this.toolStripButtonApply.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.toolStripButtonApply.Size = new System.Drawing.Size(82, 43);
-            this.toolStripButtonApply.Text = "Apply";
-            this.toolStripButtonApply.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonApply.Click += new System.EventHandler(this.toolStripButtonApply_Click);
-            // 
-            // toolStripButtonLaunchGame
-            // 
-            this.toolStripButtonLaunchGame.Image = global::Fo76ini.Properties.Resources.play;
-            this.toolStripButtonLaunchGame.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonLaunchGame.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLaunchGame.Name = "toolStripButtonLaunchGame";
-            this.toolStripButtonLaunchGame.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.toolStripButtonLaunchGame.Size = new System.Drawing.Size(90, 43);
-            this.toolStripButtonLaunchGame.Text = "Launch";
-            this.toolStripButtonLaunchGame.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonLaunchGame.Click += new System.EventHandler(this.toolStripButtonLaunchGame_Click);
-            // 
-            // toolStripButtonManageMods
-            // 
-            this.toolStripButtonManageMods.Image = global::Fo76ini.Properties.Resources.puzzle_4_24;
-            this.toolStripButtonManageMods.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonManageMods.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonManageMods.Name = "toolStripButtonManageMods";
-            this.toolStripButtonManageMods.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.toolStripButtonManageMods.Size = new System.Drawing.Size(81, 43);
-            this.toolStripButtonManageMods.Text = "Mods";
-            this.toolStripButtonManageMods.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonManageMods.Click += new System.EventHandler(this.toolStripButtonManageMods_Click);
-            // 
-            // toolStripButtonToggleNuclearWinterMode
-            // 
-            this.toolStripButtonToggleNuclearWinterMode.Image = global::Fo76ini.Properties.Resources.fire;
-            this.toolStripButtonToggleNuclearWinterMode.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonToggleNuclearWinterMode.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonToggleNuclearWinterMode.Name = "toolStripButtonToggleNuclearWinterMode";
-            this.toolStripButtonToggleNuclearWinterMode.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.toolStripButtonToggleNuclearWinterMode.Size = new System.Drawing.Size(110, 43);
-            this.toolStripButtonToggleNuclearWinterMode.Text = "Nuclear Winter";
-            this.toolStripButtonToggleNuclearWinterMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonToggleNuclearWinterMode.Click += new System.EventHandler(this.toolStripButtonToggleNuclearWinterMode_Click);
-            // 
-            // toolStripButtonSettings
-            // 
-            this.toolStripButtonSettings.Image = global::Fo76ini.Properties.Resources.cog_24;
-            this.toolStripButtonSettings.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSettings.Name = "toolStripButtonSettings";
-            this.toolStripButtonSettings.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.toolStripButtonSettings.Size = new System.Drawing.Size(93, 43);
-            this.toolStripButtonSettings.Text = "Settings";
-            this.toolStripButtonSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonSettings.Click += new System.EventHandler(this.showSettings_OnClick);
-            // 
-            // toolStripSplitButtonUpdate
-            // 
-            this.toolStripSplitButtonUpdate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateToolToolStripMenuItem,
-            this.checkForUpdatesToolStripMenuItem,
-            this.showUpdaterlogtxtToolStripMenuItem});
-            this.toolStripSplitButtonUpdate.Image = global::Fo76ini.Properties.Resources.available_updates;
-            this.toolStripSplitButtonUpdate.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripSplitButtonUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButtonUpdate.Name = "toolStripSplitButtonUpdate";
-            this.toolStripSplitButtonUpdate.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.toolStripSplitButtonUpdate.Size = new System.Drawing.Size(101, 43);
-            this.toolStripSplitButtonUpdate.Text = "Update";
-            this.toolStripSplitButtonUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripSplitButtonUpdate.Click += new System.EventHandler(this.buttonUpdateNow_Click);
-            // 
-            // updateToolToolStripMenuItem
-            // 
-            this.updateToolToolStripMenuItem.Name = "updateToolToolStripMenuItem";
-            this.updateToolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.updateToolToolStripMenuItem.Text = "Update tool";
-            this.updateToolToolStripMenuItem.Click += new System.EventHandler(this.buttonUpdateNow_Click);
-            // 
-            // checkForUpdatesToolStripMenuItem
-            // 
-            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
-            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
-            // 
-            // showUpdaterlogtxtToolStripMenuItem
-            // 
-            this.showUpdaterlogtxtToolStripMenuItem.Name = "showUpdaterlogtxtToolStripMenuItem";
-            this.showUpdaterlogtxtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.showUpdaterlogtxtToolStripMenuItem.Text = "Show update.log.txt";
-            this.showUpdaterlogtxtToolStripMenuItem.Click += new System.EventHandler(this.showUpdaterlogtxtToolStripMenuItem_Click);
-            // 
-            // toolStripDropDownButtonExplore
-            // 
-            this.toolStripDropDownButtonExplore.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gameFolderToolStripMenuItem,
-            this.gamesConfigurationFolderToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.toolConfigurationFolderToolStripMenuItem,
-            this.toolLanguagesFolderToolStripMenuItem,
-            this.toolInstallationFolderToolStripMenuItem,
-            this.toolStripSeparator5,
-            this.steamScreenshotFolderToolStripMenuItem,
-            this.gamePhotosFolderToolStripMenuItem,
-            this.toolStripSeparator6,
-            this.editFallout76iniToolStripMenuItem,
-            this.editFallout76PrefsiniToolStripMenuItem,
-            this.editFallout76CustominiToolStripMenuItem});
-            this.toolStripDropDownButtonExplore.Image = global::Fo76ini.Properties.Resources.folder_24;
-            this.toolStripDropDownButtonExplore.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripDropDownButtonExplore.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonExplore.Name = "toolStripDropDownButtonExplore";
-            this.toolStripDropDownButtonExplore.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.toolStripDropDownButtonExplore.Size = new System.Drawing.Size(99, 43);
-            this.toolStripDropDownButtonExplore.Text = "Explore";
-            this.toolStripDropDownButtonExplore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // gameFolderToolStripMenuItem
-            // 
-            this.gameFolderToolStripMenuItem.Name = "gameFolderToolStripMenuItem";
-            this.gameFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.gameFolderToolStripMenuItem.Text = "Game installation folder";
-            this.gameFolderToolStripMenuItem.Click += new System.EventHandler(this.gameFolderToolStripMenuItem_Click);
-            // 
-            // gamesConfigurationFolderToolStripMenuItem
-            // 
-            this.gamesConfigurationFolderToolStripMenuItem.Name = "gamesConfigurationFolderToolStripMenuItem";
-            this.gamesConfigurationFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.gamesConfigurationFolderToolStripMenuItem.Text = "Game configuration folder";
-            this.gamesConfigurationFolderToolStripMenuItem.Click += new System.EventHandler(this.gamesConfigurationFolderToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(211, 6);
-            // 
-            // toolConfigurationFolderToolStripMenuItem
-            // 
-            this.toolConfigurationFolderToolStripMenuItem.Name = "toolConfigurationFolderToolStripMenuItem";
-            this.toolConfigurationFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.toolConfigurationFolderToolStripMenuItem.Text = "Tool configuration folder";
-            this.toolConfigurationFolderToolStripMenuItem.Click += new System.EventHandler(this.toolConfigurationFolderToolStripMenuItem_Click);
-            // 
-            // toolLanguagesFolderToolStripMenuItem
-            // 
-            this.toolLanguagesFolderToolStripMenuItem.Name = "toolLanguagesFolderToolStripMenuItem";
-            this.toolLanguagesFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.toolLanguagesFolderToolStripMenuItem.Text = "Tool languages folder";
-            this.toolLanguagesFolderToolStripMenuItem.Click += new System.EventHandler(this.toolLanguagesFolderToolStripMenuItem_Click);
-            // 
-            // toolInstallationFolderToolStripMenuItem
-            // 
-            this.toolInstallationFolderToolStripMenuItem.Name = "toolInstallationFolderToolStripMenuItem";
-            this.toolInstallationFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.toolInstallationFolderToolStripMenuItem.Text = "Tool installation folder";
-            this.toolInstallationFolderToolStripMenuItem.Click += new System.EventHandler(this.toolInstallationFolderToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(211, 6);
-            // 
-            // steamScreenshotFolderToolStripMenuItem
-            // 
-            this.steamScreenshotFolderToolStripMenuItem.Name = "steamScreenshotFolderToolStripMenuItem";
-            this.steamScreenshotFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.steamScreenshotFolderToolStripMenuItem.Text = "Steam screenshot folder";
-            this.steamScreenshotFolderToolStripMenuItem.Click += new System.EventHandler(this.steamScreenshotFolderToolStripMenuItem_Click);
-            // 
-            // gamePhotosFolderToolStripMenuItem
-            // 
-            this.gamePhotosFolderToolStripMenuItem.Name = "gamePhotosFolderToolStripMenuItem";
-            this.gamePhotosFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.gamePhotosFolderToolStripMenuItem.Text = "Game photos folder";
-            this.gamePhotosFolderToolStripMenuItem.Click += new System.EventHandler(this.gamePhotosFolderToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(211, 6);
-            // 
-            // editFallout76iniToolStripMenuItem
-            // 
-            this.editFallout76iniToolStripMenuItem.Name = "editFallout76iniToolStripMenuItem";
-            this.editFallout76iniToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.editFallout76iniToolStripMenuItem.Text = "Edit Fallout76.ini";
-            this.editFallout76iniToolStripMenuItem.Click += new System.EventHandler(this.editFallout76iniToolStripMenuItem_Click);
-            // 
-            // editFallout76PrefsiniToolStripMenuItem
-            // 
-            this.editFallout76PrefsiniToolStripMenuItem.Name = "editFallout76PrefsiniToolStripMenuItem";
-            this.editFallout76PrefsiniToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.editFallout76PrefsiniToolStripMenuItem.Text = "Edit Fallout76Prefs.ini";
-            this.editFallout76PrefsiniToolStripMenuItem.Click += new System.EventHandler(this.editFallout76PrefsiniToolStripMenuItem_Click);
-            // 
-            // editFallout76CustominiToolStripMenuItem
-            // 
-            this.editFallout76CustominiToolStripMenuItem.Name = "editFallout76CustominiToolStripMenuItem";
-            this.editFallout76CustominiToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.editFallout76CustominiToolStripMenuItem.Text = "Edit Fallout76Custom.ini";
-            this.editFallout76CustominiToolStripMenuItem.Click += new System.EventHandler(this.editFallout76CustominiToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -832,7 +589,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxLoadingGIF.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBoxLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
-            this.pictureBoxLoadingGIF.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxLoadingGIF.Location = new System.Drawing.Point(0, -2);
             this.pictureBoxLoadingGIF.Name = "pictureBoxLoadingGIF";
             this.pictureBoxLoadingGIF.Size = new System.Drawing.Size(16, 583);
             this.pictureBoxLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -840,33 +597,28 @@
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
             // 
-            // tabPage1
+            // userControlSideNav2
             // 
-            this.tabPage1.Controls.Add(this.userControlSideNav1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(852, 464);
-            this.tabPage1.TabIndex = 14;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // userControlSideNav1
-            // 
-            this.userControlSideNav1.Location = new System.Drawing.Point(6, 6);
-            this.userControlSideNav1.Name = "userControlSideNav1";
-            this.userControlSideNav1.Size = new System.Drawing.Size(200, 600);
-            this.userControlSideNav1.TabIndex = 0;
+            this.userControlSideNav2.BackColor = System.Drawing.Color.Black;
+            this.userControlSideNav2.Location = new System.Drawing.Point(0, -2);
+            this.userControlSideNav2.Name = "userControlSideNav2";
+            this.userControlSideNav2.Size = new System.Drawing.Size(200, 583);
+            this.userControlSideNav2.TabIndex = 17;
+            this.userControlSideNav2.PlayClicked += new System.EventHandler(this.navButtonPlay_Click);
+            this.userControlSideNav2.ApplyClicked += new System.EventHandler(this.navButtonApply_Click);
+            this.userControlSideNav2.SettingsClicked += new System.EventHandler(this.navButtonSettings_Click);
+            this.userControlSideNav2.ModsClicked += new System.EventHandler(this.navButtonMods_Click);
+            this.userControlSideNav2.UpdateClicked += new System.EventHandler(this.buttonUpdateNow_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 581);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBoxLoadingGIF);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.userControlSideNav2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(900, 620);
@@ -887,12 +639,10 @@
             this.tabPageGallery.ResumeLayout(false);
             this.tabPageCustom.ResumeLayout(false);
             this.tabPageProfiles.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).EndInit();
-            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -924,37 +674,11 @@
         private System.Windows.Forms.PictureBox pictureBoxSpinnerCheckForUpdates;
         private System.Windows.Forms.Panel panelUpdate;
         private System.Windows.Forms.PictureBox pictureBoxLoadingGIF;
-        private System.Windows.Forms.ToolStripButton toolStripButtonApply;
-        private System.Windows.Forms.ToolStripButton toolStripButtonToggleNuclearWinterMode;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton toolStripButtonManageMods;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripButton toolStripButtonSettings;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButtonUpdate;
-        private System.Windows.Forms.ToolStripMenuItem updateToolToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showUpdaterlogtxtToolStripMenuItem;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonExplore;
-        private System.Windows.Forms.ToolStripMenuItem gameFolderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gamesConfigurationFolderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem toolConfigurationFolderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolLanguagesFolderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolInstallationFolderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem steamScreenshotFolderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gamePhotosFolderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem editFallout76iniToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editFallout76PrefsiniToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editFallout76CustominiToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelGame;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelGameText;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelEdition;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelEditionText;
-        private System.Windows.Forms.ToolStripButton toolStripButtonLaunchGame;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelNuclearWinterModeActive;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.RichTextBox richTextBoxWhatsNew;
@@ -971,7 +695,8 @@
         private System.Windows.Forms.TabPage tabPageProfiles;
         private Forms.FormMain.Tabs.UserControlProfiles userControlProfiles;
         private System.Windows.Forms.TabPage tabPage1;
-        private Forms.FormMain.UserControlSideNav userControlSideNav1;
+        private Forms.FormMain.UserControlSideNav userControlSideNav2;
+        private System.Windows.Forms.Button buttonNWMode;
     }
 }
 

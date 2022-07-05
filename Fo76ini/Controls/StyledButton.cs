@@ -187,10 +187,17 @@ namespace Fo76ini.Controls
                     break;
             }
 
+            float width = size.Width;
+            float height = size.Height;
+
+            // For some reason, it cuts of the last character:
+            if (forText)
+                width += 10;
+
             return new RectangleF(
                         x,
                         y,
-                        size.Width, size.Height);
+                        width, height);
         }
 
         private RectangleF GetImageRect ()

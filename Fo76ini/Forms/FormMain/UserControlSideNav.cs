@@ -35,7 +35,6 @@ namespace Fo76ini.Forms.FormMain
             labelLogo.Font = new Font(pfc.Families[0], labelLogo.Font.Size);
         }
 
-
         // https://stackoverflow.com/a/23520042
         private void InitCustomLabelFont()
         {
@@ -61,6 +60,99 @@ namespace Fo76ini.Forms.FormMain
                 contextMenuStripBrowse.Hide();
             else
                 contextMenuStripBrowse.Show(buttonBrowse, new Point(0, buttonBrowse.Height));
+        }
+
+        /*
+         * Event handler:
+         */
+
+        private void buttonPlay_Click(object sender, EventArgs e)
+        {
+            if (PlayClicked != null)
+                PlayClicked(sender, e);
+        }
+        public event EventHandler PlayClicked;
+
+        private void buttonApply_Click(object sender, EventArgs e)
+        {
+            if (ApplyClicked != null)
+                ApplyClicked(sender, e);
+        }
+        public event EventHandler ApplyClicked;
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            if (SettingsClicked != null)
+                SettingsClicked(sender, e);
+        }
+        public event EventHandler SettingsClicked;
+
+        private void buttonMods_Click(object sender, EventArgs e)
+        {
+            if (ModsClicked != null)
+                ModsClicked(sender, e);
+        }
+        public event EventHandler ModsClicked;
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            if (UpdateClicked != null)
+                UpdateClicked(sender, e);
+        }
+        public event EventHandler UpdateClicked;
+
+        /*
+         * Tool strip stuff
+         */
+
+        private void gameFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gamesConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolLanguagesFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolInstallationFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void steamScreenshotFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gamePhotosFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editFallout76iniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editFallout76PrefsiniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editFallout76CustominiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

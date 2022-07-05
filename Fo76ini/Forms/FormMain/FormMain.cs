@@ -266,18 +266,18 @@ namespace Fo76ini
         {
             if (nwModeEnabled)
             {
-                this.toolStripButtonToggleNuclearWinterMode.Text = Localization.GetString("adventuremode");
-                this.toolStripButtonToggleNuclearWinterMode.Image = Resources.adventures;
+                this.buttonNWMode.Text = Localization.GetString("adventuremode");
+                this.buttonNWMode.Image = Resources.adventures;
             }
             else
             {
-                this.toolStripButtonToggleNuclearWinterMode.Text = Localization.GetString("nuclearwintermode");
-                this.toolStripButtonToggleNuclearWinterMode.Image = Resources.fire;
+                this.buttonNWMode.Text = Localization.GetString("nuclearwintermode");
+                this.buttonNWMode.Image = Resources.fire;
             }
 
             this.toolStripStatusLabelNuclearWinterModeActive.Visible = nwModeEnabled;
 
-            this.toolStripButtonToggleNuclearWinterMode.Visible = nwModeEnabled || Configuration.NuclearWinter.ShowNWModeBtn;
+            this.buttonNWMode.Visible = nwModeEnabled || Configuration.NuclearWinter.ShowNWModeBtn;
 
             EnableUI();
             Focus();
@@ -319,19 +319,32 @@ namespace Fo76ini
         }
 
         // "Apply" button:
-        private void toolStripButtonApply_Click(object sender, EventArgs e)
+        private void navButtonApply_Click(object sender, EventArgs e)
         {
             ApplyChanges();
             MsgBox.Get("changesApplied").Popup(MessageBoxIcon.Information);
         }
 
-        private void toolStripButtonLaunchGame_Click(object sender, EventArgs e)
+        // "Play" button:
+        private void navButtonPlay_Click(object sender, EventArgs e)
         {
             if (Configuration.AutoApply)
                 ApplyChanges();
             this.game.LaunchGame();
             if (Configuration.QuitOnLaunch)
                 Application.Exit();
+        }
+
+        // "Settings" button:
+        private void navButtonSettings_Click(object sender, EventArgs e)
+        {
+            formSettings.ShowSettings();
+        }
+
+        // "Mods" button:
+        private void navButtonMods_Click(object sender, EventArgs e)
+        {
+            this.formMods.OpenUI();
         }
 
         #endregion
@@ -384,11 +397,6 @@ namespace Fo76ini
         /*
          * Tool strip:
          */
-
-        private void toolStripButtonManageMods_Click(object sender, EventArgs e)
-        {
-            this.formMods.OpenUI();
-        }
 
         private void toolConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -474,11 +482,6 @@ namespace Fo76ini
             }
         }
 
-        private void showSettings_OnClick(object sender, EventArgs e)
-        {
-            formSettings.ShowSettings();
-        }
-
         private void showProfiles_OnClick(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.tabPageProfiles;
@@ -553,6 +556,11 @@ namespace Fo76ini
         }
 
         private void pictureBoxButtonGameEdition_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxLoadingGIF_Click(object sender, EventArgs e)
         {
 
         }
