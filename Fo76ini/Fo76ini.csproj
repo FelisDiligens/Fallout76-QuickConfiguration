@@ -217,6 +217,7 @@
     <Compile Include="Forms\FormWelcome\FormWelcome.Designer.cs">
       <DependentUpon>FormWelcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Initialization.cs" />
     <Compile Include="Ini\IniParsingException.cs" />
     <Compile Include="Interface\Versioning.cs" />
     <Compile Include="NexusAPI\NMMod.cs" />

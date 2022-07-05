@@ -31,7 +31,7 @@ namespace Fo76ini.Profiles
             set
             {
                 selectedGameIndex = value;
-                Feedback();
+                //Feedback();
             }
         }
 

@@ -18,6 +18,8 @@ using System.Windows.Forms;
 using Fo76ini;
 using Fo76ini.Ini;
 using Fo76ini.Forms.FormIniError;
+using Fo76ini.Forms.FormWelcome;
+using Fo76ini.Tweaks;
 
 namespace Fo76ini.Forms.FormProfiles
 {
@@ -25,7 +27,7 @@ namespace Fo76ini.Forms.FormProfiles
     {
         PrivateFontCollection pfc = new PrivateFontCollection();
 
-        private Fo76ini.FormMain formMain;
+        FormWelcome.FormWelcome formWelcome = new FormWelcome.FormWelcome();
 
         bool UpdatingUI = false;
 
@@ -38,8 +40,6 @@ namespace Fo76ini.Forms.FormProfiles
 
             HideTabHeader();
 
-            UpdateList();
-
             this.comboBoxGameEdition.Items.Add(new ComboBoxItem("Steam", Resources.steam_24px));
             this.comboBoxGameEdition.Items.Add(new ComboBoxItem("Steam (PTS)", Resources.steam_24px));
             this.comboBoxGameEdition.Items.Add(new ComboBoxItem("Xbox", Resources.xbox_24));
@@ -50,10 +50,32 @@ namespace Fo76ini.Forms.FormProfiles
 
             this.Size = new Size(800, 600);
 
-            this.panelAdvancedOptions.Visible = false;
-
             this.listViewGameInstances.HeaderStyle = ColumnHeaderStyle.None;
+
+            // Make this form translatable:
+            LocalizedForm form = new LocalizedForm(this, null);
+            Localization.LocalizedForms.Add(form);
         }
+
+        public DialogResult OpenDialog(bool ignoreSkip = false)
+        {
+            if (Initialization.FirstStart)
+            {
+                formWelcome.Closed += (s, args) => LoadApp();
+                return formWelcome.OpenDialog();
+            }
+            else if (Configuration.SkipProfileManager && !ignoreSkip)
+            {
+                // TODO: Sanity checking!
+                LoadApp();
+                return DialogResult.OK;
+            }
+            else
+            {
+                return this.ShowDialog();
+            }
+        }
+
 
         // https://stackoverflow.com/a/23520042
         private void InitCustomLabelFont()
@@ -179,33 +201,18 @@ namespace Fo76ini.Forms.FormProfiles
          * Bootstrap
          */
 
-        private void LoadINIFiles()
+        /// <summary>
+        /// Hide FormProfiles, save the profile, and open FormMain.
+        /// </summary>
+        private void LoadApp()
         {
-            while (true)
-            {
-                try
-                {
-                    IniFiles.Load(ProfileManager.SelectedGame);
-                    break;
-                }
-                catch (IniParsingException exc)
-                {
-                    DialogResult result = FormIniError.FormIniError.OpenDialog(exc);
-                    if (result == DialogResult.Retry)
-                    {
-                        continue;
-                    }
-                    else if (result == DialogResult.Ignore)
-                    {
-                        continue;
-                    }
-                    else if (result == DialogResult.Abort)
-                    {
-                        Environment.Exit(-1);
-                        return;
-                    }
-                }
-            }
+            ProfileManager.Save();
+            Initialization.LoadINIFiles();
+            //Initialization.LoadMods();
+            LinkedTweaks.LoadValues();
+            ProfileManager.Feedback();
+
+            this.Hide();
         }
 
 
@@ -213,16 +220,30 @@ namespace Fo76ini.Forms.FormProfiles
          * General event handler
          */
 
+        private void FormProfiles_Load(object sender, EventArgs e)
+        {
+            UpdateList();
+            this.panelAdvancedOptions.Visible = false;
+            this.checkBoxShowProfileManager.Checked = !Configuration.SkipProfileManager;
+            this.tabControl.SelectedTab = this.tabPageSelect;
+        }
+
+        private void FormProfiles_Shown(object sender, EventArgs e)
+        {
+
+        }
+
         private void buttonLoadProfile_Click(object sender, EventArgs e)
         {
-            ProfileManager.Save();
-            LoadINIFiles();
+            LoadApp();
+        }
 
-            formMain = new Fo76ini.FormMain();
-            formMain.Closed += (s, args) => this.Close();
-
-            this.Hide();
-            formMain.Show();
+        private void FormProfiles_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                LoadApp();
+            }
         }
 
 
@@ -582,6 +603,11 @@ namespace Fo76ini.Forms.FormProfiles
             }
 
             return null;
+        }
+
+        private void checkBoxSkipProfileManager_CheckedChanged(object sender, EventArgs e)
+        {
+            Configuration.SkipProfileManager = !checkBoxShowProfileManager.Checked;
         }
     }
 }

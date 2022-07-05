@@ -40,6 +40,7 @@
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.buttonAddProfile = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
+            this.checkBoxShowProfileManager = new System.Windows.Forms.CheckBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageSelect = new System.Windows.Forms.TabPage();
             this.labelSelectTitle = new System.Windows.Forms.Label();
@@ -77,7 +78,6 @@
             this.textBoxProfileName = new System.Windows.Forms.TextBox();
             this.labelProfileName = new System.Windows.Forms.Label();
             this.buttonLoadProfile = new System.Windows.Forms.Button();
-            this.checkBoxSkipProfileManager = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panel.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -134,7 +134,7 @@
             // 
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel.BackColor = System.Drawing.Color.Transparent;
-            this.panel.Controls.Add(this.checkBoxSkipProfileManager);
+            this.panel.Controls.Add(this.checkBoxShowProfileManager);
             this.panel.Controls.Add(this.tabControl);
             this.panel.Controls.Add(this.buttonLoadProfile);
             this.panel.Location = new System.Drawing.Point(0, 146);
@@ -142,6 +142,18 @@
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(487, 416);
             this.panel.TabIndex = 21;
+            // 
+            // checkBoxShowProfileManager
+            // 
+            this.checkBoxShowProfileManager.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBoxShowProfileManager.AutoSize = true;
+            this.checkBoxShowProfileManager.Location = new System.Drawing.Point(14, 391);
+            this.checkBoxShowProfileManager.Name = "checkBoxShowProfileManager";
+            this.checkBoxShowProfileManager.Size = new System.Drawing.Size(200, 17);
+            this.checkBoxShowProfileManager.TabIndex = 42;
+            this.checkBoxShowProfileManager.Text = "Always show profile manager on start";
+            this.checkBoxShowProfileManager.UseVisualStyleBackColor = true;
+            this.checkBoxShowProfileManager.CheckedChanged += new System.EventHandler(this.checkBoxSkipProfileManager_CheckedChanged);
             // 
             // tabControl
             // 
@@ -177,9 +189,9 @@
             this.labelSelectTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSelectTitle.Location = new System.Drawing.Point(2, 3);
             this.labelSelectTitle.Name = "labelSelectTitle";
-            this.labelSelectTitle.Size = new System.Drawing.Size(165, 30);
+            this.labelSelectTitle.Size = new System.Drawing.Size(83, 30);
             this.labelSelectTitle.TabIndex = 44;
-            this.labelSelectTitle.Text = "Profile manager";
+            this.labelSelectTitle.Text = "Profiles";
             // 
             // buttonEditProfile
             // 
@@ -253,7 +265,7 @@
             this.tabPageEdit.Location = new System.Drawing.Point(4, 22);
             this.tabPageEdit.Name = "tabPageEdit";
             this.tabPageEdit.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEdit.Size = new System.Drawing.Size(472, 317);
+            this.tabPageEdit.Size = new System.Drawing.Size(472, 325);
             this.tabPageEdit.TabIndex = 1;
             this.tabPageEdit.Text = "Edit";
             // 
@@ -297,7 +309,7 @@
             // checkBoxMoreOptions
             // 
             this.checkBoxMoreOptions.AutoSize = true;
-            this.checkBoxMoreOptions.Location = new System.Drawing.Point(7, 140);
+            this.checkBoxMoreOptions.Location = new System.Drawing.Point(10, 143);
             this.checkBoxMoreOptions.Name = "checkBoxMoreOptions";
             this.checkBoxMoreOptions.Size = new System.Drawing.Size(116, 17);
             this.checkBoxMoreOptions.TabIndex = 41;
@@ -311,7 +323,7 @@
             this.panelAdvancedOptions.Controls.Add(this.groupBox2);
             this.panelAdvancedOptions.Location = new System.Drawing.Point(-1, 163);
             this.panelAdvancedOptions.Name = "panelAdvancedOptions";
-            this.panelAdvancedOptions.Size = new System.Drawing.Size(417, 255);
+            this.panelAdvancedOptions.Size = new System.Drawing.Size(451, 255);
             this.panelAdvancedOptions.TabIndex = 40;
             // 
             // groupBoxLaunchOptions
@@ -319,7 +331,7 @@
             this.groupBoxLaunchOptions.Controls.Add(this.labelLaunchOptionMSStoreNotice);
             this.groupBoxLaunchOptions.Controls.Add(this.radioButtonLaunchViaExecutable);
             this.groupBoxLaunchOptions.Controls.Add(this.radioButtonLaunchViaLink);
-            this.groupBoxLaunchOptions.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxLaunchOptions.Location = new System.Drawing.Point(9, 6);
             this.groupBoxLaunchOptions.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.groupBoxLaunchOptions.Name = "groupBoxLaunchOptions";
             this.groupBoxLaunchOptions.Size = new System.Drawing.Size(402, 108);
@@ -334,7 +346,7 @@
             this.labelLaunchOptionMSStoreNotice.Name = "labelLaunchOptionMSStoreNotice";
             this.labelLaunchOptionMSStoreNotice.Size = new System.Drawing.Size(384, 29);
             this.labelLaunchOptionMSStoreNotice.TabIndex = 4;
-            this.labelLaunchOptionMSStoreNotice.Text = "Fallout 76 cannot be run directly, if installed through the Microsoft Store.";
+            this.labelLaunchOptionMSStoreNotice.Text = "Fallout 76 cannot be run directly, if installed through the Xbox app.";
             this.labelLaunchOptionMSStoreNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelLaunchOptionMSStoreNotice.Visible = false;
             // 
@@ -372,7 +384,7 @@
             this.groupBox2.Controls.Add(this.labelExecutable);
             this.groupBox2.Controls.Add(this.textBoxIniPrefix);
             this.groupBox2.Controls.Add(this.labelIniPrefix);
-            this.groupBox2.Location = new System.Drawing.Point(6, 121);
+            this.groupBox2.Location = new System.Drawing.Point(9, 126);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(402, 128);
@@ -460,7 +472,7 @@
             this.groupBoxProfile.Controls.Add(this.textBoxGamePath);
             this.groupBoxProfile.Controls.Add(this.textBoxProfileName);
             this.groupBoxProfile.Controls.Add(this.labelProfileName);
-            this.groupBoxProfile.Location = new System.Drawing.Point(5, 6);
+            this.groupBoxProfile.Location = new System.Drawing.Point(8, 8);
             this.groupBoxProfile.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.groupBoxProfile.Name = "groupBoxProfile";
             this.groupBoxProfile.Size = new System.Drawing.Size(402, 126);
@@ -557,17 +569,6 @@
             this.buttonLoadProfile.UseVisualStyleBackColor = true;
             this.buttonLoadProfile.Click += new System.EventHandler(this.buttonLoadProfile_Click);
             // 
-            // checkBoxSkipProfileManager
-            // 
-            this.checkBoxSkipProfileManager.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBoxSkipProfileManager.AutoSize = true;
-            this.checkBoxSkipProfileManager.Location = new System.Drawing.Point(14, 391);
-            this.checkBoxSkipProfileManager.Name = "checkBoxSkipProfileManager";
-            this.checkBoxSkipProfileManager.Size = new System.Drawing.Size(303, 17);
-            this.checkBoxSkipProfileManager.TabIndex = 42;
-            this.checkBoxSkipProfileManager.Text = "Load selected profile and skip profile manager on next start";
-            this.checkBoxSkipProfileManager.UseVisualStyleBackColor = true;
-            // 
             // FormProfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -581,7 +582,10 @@
             this.MinimumSize = new System.Drawing.Size(500, 600);
             this.Name = "FormProfiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Fallout 76 Quick Configuration";
+            this.Text = "Profiles";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormProfiles_FormClosing);
+            this.Load += new System.EventHandler(this.FormProfiles_Load);
+            this.Shown += new System.EventHandler(this.FormProfiles_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
@@ -646,6 +650,6 @@
         private System.Windows.Forms.LinkLabel linkLabelAutoDetect;
         private System.Windows.Forms.Panel panelAdvancedOptions;
         private System.Windows.Forms.CheckBox checkBoxMoreOptions;
-        private System.Windows.Forms.CheckBox checkBoxSkipProfileManager;
+        private System.Windows.Forms.CheckBox checkBoxShowProfileManager;
     }
 }

@@ -66,8 +66,8 @@ namespace Fo76ini.Forms.FormWelcome
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            ProfileManager.Save();
-            ProfileManager.Feedback();
+            //ProfileManager.Save();
+            //ProfileManager.Feedback();
             this.DialogResult = DialogResult.OK;
         }
 
@@ -89,7 +89,7 @@ namespace Fo76ini.Forms.FormWelcome
         {
             ProfileManager.SelectedGame.Edition = GameEdition.Xbox;
             ProfileManager.SelectedGame.SetDefaultSettings(GameEdition.Xbox);
-            ProfileManager.SelectedGame.Title = "Microsoft Store";
+            ProfileManager.SelectedGame.Title = "Xbox";
         }
 
         private void radioButtonEditionUnknown_CheckedChanged(object sender, EventArgs e)
@@ -126,7 +126,7 @@ namespace Fo76ini.Forms.FormWelcome
 
         private void buttonAutoDetect_Click(object sender, EventArgs e)
         {
-            string foundPath = FormSettings.FormSettings.AutoDetectGamePath();
+            string foundPath = FormProfiles.FormProfiles.AutoDetectGamePath();
             if (foundPath != null)
                 //TextPrompt.Prompt("Found a path. Proceed?", foundPath, (newPath) => this.textBoxGamePath.Text = newPath);
                 this.textBoxGamePath.Text = foundPath;

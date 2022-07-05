@@ -3828,7 +3828,7 @@
             this.numFOV.Size = new System.Drawing.Size(68, 20);
             this.numFOV.TabIndex = 3;
             this.numFOV.Value = new decimal(new int[] {
-            80,
+            10,
             0,
             0,
             0});

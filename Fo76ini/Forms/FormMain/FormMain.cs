@@ -24,9 +24,9 @@ namespace Fo76ini
 {
     public partial class FormMain : Form
     {
-        private FormMods formMods;
-        private FormWelcome formWelcome = new FormWelcome();
-        private FormSettings formSettings;
+        private FormMods formMods = new FormMods();
+        private FormSettings formSettings = new FormSettings();
+        private FormProfiles formProfiles = new FormProfiles();
 
         private GameInstance game;
 
@@ -36,16 +36,9 @@ namespace Fo76ini
         {
             InitializeComponent();
 
-            // Determine whether this is the very first start of the tool on the system:
-            FirstStart = !File.Exists(IniFiles.ConfigPath) && !File.Exists(ProfileManager.XMLPath);
-
             // Handle changes:
             ProfileManager.ProfileChanged += OnProfileChanged;
-
-            // Create FormMods:
-            formMods = new FormMods();
             FormMods.NWModeUpdated += OnNWModeUpdated;
-            //UpdateNWModeUI(false);
 
             /*
              * Translations
@@ -53,7 +46,7 @@ namespace Fo76ini
 
             // Make this form translatable:
             LocalizedForm form = new LocalizedForm(this, this.toolTip);
-            //form.SpecialControls.Add(this.contextMenuStripGallery); // TODO!!
+            form.SpecialControls.Add(this.userControlGallery.contextMenuStripGallery);
             Localization.LocalizedForms.Add(form);
 
             // Handle translations:
@@ -80,23 +73,19 @@ namespace Fo76ini
              * Event handlers:
              */
 
-            // Disable scroll wheel on UI elements to prevent the user from accidentally changing values:
-            Utils.PreventChangeOnMouseWheelForAllElements(this);
-
-            // Event handler:
             this.FormClosing += this.FormMain_FormClosing;
             this.Shown += this.FormMain_Shown;
             this.KeyDown += this.FormMain_KeyDown;
 
             this.backgroundWorkerGetLatestVersion.RunWorkerCompleted += backgroundWorkerGetLatestVersion_RunWorkerCompleted;
 
+            // Disable scroll wheel on UI elements to prevent the user from accidentally changing values:
+            Utils.PreventChangeOnMouseWheelForAllElements(this);
+
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            ProfileManager.Feedback();
-            formSettings = new FormSettings();
-
             this.timerCheckFiles.Enabled = true;
 
             // Load translations
@@ -127,9 +116,7 @@ namespace Fo76ini
 
         private void FormMain_Shown(object sender, EventArgs e)
         {
-            // Show welcome dialog:
-            if (FirstStart)
-                formWelcome.OpenDialog();
+            formProfiles.OpenDialog();
 
             // Check for updates
             CheckVersion();
@@ -145,36 +132,6 @@ namespace Fo76ini
         private void OnProfileChanged(object sender, ProfileEventArgs e)
         {
             this.game = e.ActiveGameInstance;
-            this.timerCheckFiles.Enabled = false;/*
-            while (true)
-            {
-                try
-                {
-                    IniFiles.Load(game);
-                    break;
-                }
-                catch (IniParsingException exc)
-                {
-                    DialogResult result = FormIniError.OpenDialog(exc);
-                    if (result == DialogResult.Retry)
-                    {
-                        continue;
-                    }
-                    else if (result == DialogResult.Ignore)
-                    {
-                        continue;
-                    }
-                    else if (result == DialogResult.Abort)
-                    {
-                        Environment.Exit(-1);
-                        return;
-                    }
-                    //MsgBox.Get("iniParsingError").FormatText(exc.Message).Show(MessageBoxIcon.Error);
-                    //Application.Exit();
-                    //return;
-                }
-            }*/
-            LinkedTweaks.LoadValues();
 
             // Change image
             this.pictureBoxButtonGameEdition.SetImages(
@@ -188,7 +145,6 @@ namespace Fo76ini
 
 
             this.toolStripStatusLabelGameText.Text = e.ActiveGameInstance?.Title;
-            this.timerCheckFiles.Enabled = true;
         }
 
 
@@ -524,7 +480,7 @@ namespace Fo76ini
 
         private void showProfiles_OnClick(object sender, EventArgs e)
         {
-            formSettings.ShowProfiles();
+            formProfiles.OpenDialog(ignoreSkip: true);
         }
 
         #endregion
@@ -532,6 +488,9 @@ namespace Fo76ini
         // Check, if *.ini files have been changed:
         private void timerCheckFiles_Tick(object sender, EventArgs e)
         {
+            if (!IniFiles.IsLoaded())
+                return;
+
             // TODO: Give an option to reload the *.ini files.
             // Check every 5 seconds, if files have been modified:
             if (IniFiles.FilesHaveBeenModified())

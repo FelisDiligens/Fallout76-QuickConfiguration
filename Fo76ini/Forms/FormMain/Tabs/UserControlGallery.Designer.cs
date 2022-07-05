@@ -371,7 +371,7 @@
         private System.Windows.Forms.Button buttonGalleryShowOptions;
         private System.Windows.Forms.Button buttonRefreshGallery;
         private System.ComponentModel.BackgroundWorker backgroundWorkerLoadGallery;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripGallery;
+        public System.Windows.Forms.ContextMenuStrip contextMenuStripGallery;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;

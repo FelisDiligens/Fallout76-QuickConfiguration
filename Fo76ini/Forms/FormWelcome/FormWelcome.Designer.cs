@@ -100,7 +100,7 @@ namespace Fo76ini.Forms.FormWelcome
             this.groupBoxGameLocation.Size = new System.Drawing.Size(400, 227);
             this.groupBoxGameLocation.TabIndex = 41;
             this.groupBoxGameLocation.TabStop = false;
-            this.groupBoxGameLocation.Text = "Game location";
+            this.groupBoxGameLocation.Text = "Game path";
             // 
             // label3
             // 
@@ -149,9 +149,9 @@ namespace Fo76ini.Forms.FormWelcome
             // buttonPickGamePath
             // 
             this.buttonPickGamePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPickGamePath.Location = new System.Drawing.Point(366, 19);
+            this.buttonPickGamePath.Location = new System.Drawing.Point(366, 20);
             this.buttonPickGamePath.Name = "buttonPickGamePath";
-            this.buttonPickGamePath.Size = new System.Drawing.Size(28, 23);
+            this.buttonPickGamePath.Size = new System.Drawing.Size(28, 22);
             this.buttonPickGamePath.TabIndex = 31;
             this.buttonPickGamePath.Text = "...";
             this.buttonPickGamePath.UseVisualStyleBackColor = true;
@@ -241,9 +241,9 @@ namespace Fo76ini.Forms.FormWelcome
             this.radioButtonEditionMSStore.AutoSize = true;
             this.radioButtonEditionMSStore.Location = new System.Drawing.Point(43, 82);
             this.radioButtonEditionMSStore.Name = "radioButtonEditionMSStore";
-            this.radioButtonEditionMSStore.Size = new System.Drawing.Size(194, 17);
+            this.radioButtonEditionMSStore.Size = new System.Drawing.Size(49, 17);
             this.radioButtonEditionMSStore.TabIndex = 3;
-            this.radioButtonEditionMSStore.Text = "Xbox (Game Pass) / Microsoft Store";
+            this.radioButtonEditionMSStore.Text = "Xbox";
             this.radioButtonEditionMSStore.UseVisualStyleBackColor = true;
             this.radioButtonEditionMSStore.CheckedChanged += new System.EventHandler(this.radioButtonEditionMSStore_CheckedChanged);
             // 

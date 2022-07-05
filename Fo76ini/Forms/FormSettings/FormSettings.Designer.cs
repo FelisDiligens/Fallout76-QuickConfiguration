@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Default", 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Steam"}, 2, System.Drawing.Color.Empty, System.Drawing.SystemColors.Window, null);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Bethesda.net", 1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Bethesda.net PTS", 1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Xbox", 3);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSettings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
@@ -74,54 +68,6 @@
             this.labelLanguage = new System.Windows.Forms.Label();
             this.buttonDownloadLanguages = new System.Windows.Forms.Button();
             this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
-            this.tabPageGameProfiles = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBoxSettings = new System.Windows.Forms.GroupBox();
-            this.panelSettings = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBoxLaunchURL = new System.Windows.Forms.TextBox();
-            this.labelLaunchURL = new System.Windows.Forms.Label();
-            this.textBoxParameters = new System.Windows.Forms.TextBox();
-            this.labelParameters = new System.Windows.Forms.Label();
-            this.textBoxExecutable = new System.Windows.Forms.TextBox();
-            this.labelExecutable = new System.Windows.Forms.Label();
-            this.textBoxIniPrefix = new System.Windows.Forms.TextBox();
-            this.labelIniPrefix = new System.Windows.Forms.Label();
-            this.groupBoxLaunchOptions = new System.Windows.Forms.GroupBox();
-            this.labelLaunchOptionMSStoreNotice = new System.Windows.Forms.Label();
-            this.radioButtonLaunchViaExecutable = new System.Windows.Forms.RadioButton();
-            this.radioButtonLaunchViaLink = new System.Windows.Forms.RadioButton();
-            this.groupBoxGameLocation = new System.Windows.Forms.GroupBox();
-            this.buttonAutoDetect = new System.Windows.Forms.Button();
-            this.textBoxGamePath = new System.Windows.Forms.TextBox();
-            this.buttonPickGamePath = new System.Windows.Forms.Button();
-            this.groupBoxGameEdition = new System.Windows.Forms.GroupBox();
-            this.labelEditionBackCompat = new System.Windows.Forms.Label();
-            this.pictureBoxSteamPTS = new System.Windows.Forms.PictureBox();
-            this.radioButtonEditionSteamPTS = new System.Windows.Forms.RadioButton();
-            this.radioButtonEditionUnknown = new System.Windows.Forms.RadioButton();
-            this.pictureBoxUnknown = new System.Windows.Forms.PictureBox();
-            this.pictureBoxMSStore = new System.Windows.Forms.PictureBox();
-            this.pictureBoxSteam = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBethesdaNetPTS = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBethesdaNet = new System.Windows.Forms.PictureBox();
-            this.radioButtonEditionMSStore = new System.Windows.Forms.RadioButton();
-            this.radioButtonEditionBethesdaNetPTS = new System.Windows.Forms.RadioButton();
-            this.radioButtonEditionSteam = new System.Windows.Forms.RadioButton();
-            this.radioButtonEditionBethesdaNet = new System.Windows.Forms.RadioButton();
-            this.groupBoxGame = new System.Windows.Forms.GroupBox();
-            this.listViewGameInstances = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStripGame = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.launchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.renameGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.labelTip = new System.Windows.Forms.Label();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonAddGame = new System.Windows.Forms.ToolStripButton();
             this.tabPageNexusMods = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.linkLabelEnableAPIKey = new System.Windows.Forms.LinkLabel();
@@ -153,6 +99,7 @@
             this.labelNMDescLimitReset = new System.Windows.Forms.Label();
             this.labelNMDescDailyRateLimit = new System.Windows.Forms.Label();
             this.labelNMDailyRateLimit = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialogGamePath = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorkerDownloadLanguages = new System.ComponentModel.BackgroundWorker();
@@ -169,23 +116,6 @@
             this.groupBoxBehavior.SuspendLayout();
             this.groupBoxLocalization.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
-            this.tabPageGameProfiles.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.groupBoxSettings.SuspendLayout();
-            this.panelSettings.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBoxLaunchOptions.SuspendLayout();
-            this.groupBoxGameLocation.SuspendLayout();
-            this.groupBoxGameEdition.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteamPTS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).BeginInit();
-            this.groupBoxGame.SuspendLayout();
-            this.contextMenuStripGame.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.tabPageNexusMods.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).BeginInit();
@@ -196,7 +126,6 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageGeneral);
-            this.tabControl1.Controls.Add(this.tabPageGameProfiles);
             this.tabControl1.Controls.Add(this.tabPageNexusMods);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
@@ -622,535 +551,6 @@
             this.comboBoxLanguage.Size = new System.Drawing.Size(266, 21);
             this.comboBoxLanguage.TabIndex = 17;
             // 
-            // tabPageGameProfiles
-            // 
-            this.tabPageGameProfiles.Controls.Add(this.panel1);
-            this.tabPageGameProfiles.Controls.Add(this.toolStrip1);
-            this.tabPageGameProfiles.Location = new System.Drawing.Point(4, 22);
-            this.tabPageGameProfiles.Name = "tabPageGameProfiles";
-            this.tabPageGameProfiles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGameProfiles.Size = new System.Drawing.Size(766, 508);
-            this.tabPageGameProfiles.TabIndex = 1;
-            this.tabPageGameProfiles.Text = "Game profiles";
-            this.tabPageGameProfiles.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.groupBoxSettings);
-            this.panel1.Controls.Add(this.groupBoxGame);
-            this.panel1.Controls.Add(this.labelTip);
-            this.panel1.Location = new System.Drawing.Point(3, 39);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(760, 466);
-            this.panel1.TabIndex = 20;
-            // 
-            // groupBoxSettings
-            // 
-            this.groupBoxSettings.Controls.Add(this.panelSettings);
-            this.groupBoxSettings.Location = new System.Drawing.Point(348, 8);
-            this.groupBoxSettings.Name = "groupBoxSettings";
-            this.groupBoxSettings.Size = new System.Drawing.Size(404, 419);
-            this.groupBoxSettings.TabIndex = 45;
-            this.groupBoxSettings.TabStop = false;
-            this.groupBoxSettings.Text = "Settings";
-            // 
-            // panelSettings
-            // 
-            this.panelSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelSettings.AutoScroll = true;
-            this.panelSettings.AutoScrollMargin = new System.Drawing.Size(0, 8);
-            this.panelSettings.BackColor = System.Drawing.SystemColors.Window;
-            this.panelSettings.Controls.Add(this.groupBox2);
-            this.panelSettings.Controls.Add(this.groupBoxLaunchOptions);
-            this.panelSettings.Controls.Add(this.groupBoxGameLocation);
-            this.panelSettings.Controls.Add(this.groupBoxGameEdition);
-            this.panelSettings.Location = new System.Drawing.Point(2, 14);
-            this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(401, 402);
-            this.panelSettings.TabIndex = 39;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBoxLaunchURL);
-            this.groupBox2.Controls.Add(this.labelLaunchURL);
-            this.groupBox2.Controls.Add(this.textBoxParameters);
-            this.groupBox2.Controls.Add(this.labelParameters);
-            this.groupBox2.Controls.Add(this.textBoxExecutable);
-            this.groupBox2.Controls.Add(this.labelExecutable);
-            this.groupBox2.Controls.Add(this.textBoxIniPrefix);
-            this.groupBox2.Controls.Add(this.labelIniPrefix);
-            this.groupBox2.Location = new System.Drawing.Point(7, 494);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(369, 128);
-            this.groupBox2.TabIndex = 38;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Advanced";
-            // 
-            // textBoxLaunchURL
-            // 
-            this.textBoxLaunchURL.Location = new System.Drawing.Point(112, 95);
-            this.textBoxLaunchURL.Name = "textBoxLaunchURL";
-            this.textBoxLaunchURL.Size = new System.Drawing.Size(251, 20);
-            this.textBoxLaunchURL.TabIndex = 7;
-            this.textBoxLaunchURL.TextChanged += new System.EventHandler(this.textBoxLaunchURL_TextChanged);
-            // 
-            // labelLaunchURL
-            // 
-            this.labelLaunchURL.AutoSize = true;
-            this.labelLaunchURL.Location = new System.Drawing.Point(8, 98);
-            this.labelLaunchURL.Name = "labelLaunchURL";
-            this.labelLaunchURL.Size = new System.Drawing.Size(71, 13);
-            this.labelLaunchURL.TabIndex = 6;
-            this.labelLaunchURL.Text = "Launch URL:";
-            // 
-            // textBoxParameters
-            // 
-            this.textBoxParameters.Location = new System.Drawing.Point(112, 69);
-            this.textBoxParameters.Name = "textBoxParameters";
-            this.textBoxParameters.Size = new System.Drawing.Size(251, 20);
-            this.textBoxParameters.TabIndex = 5;
-            this.textBoxParameters.TextChanged += new System.EventHandler(this.textBoxParameters_TextChanged);
-            // 
-            // labelParameters
-            // 
-            this.labelParameters.AutoSize = true;
-            this.labelParameters.Location = new System.Drawing.Point(8, 72);
-            this.labelParameters.Name = "labelParameters";
-            this.labelParameters.Size = new System.Drawing.Size(63, 13);
-            this.labelParameters.TabIndex = 4;
-            this.labelParameters.Text = "Parameters:";
-            // 
-            // textBoxExecutable
-            // 
-            this.textBoxExecutable.Location = new System.Drawing.Point(112, 43);
-            this.textBoxExecutable.Name = "textBoxExecutable";
-            this.textBoxExecutable.Size = new System.Drawing.Size(251, 20);
-            this.textBoxExecutable.TabIndex = 3;
-            this.textBoxExecutable.Text = "Fallout76.exe";
-            this.textBoxExecutable.TextChanged += new System.EventHandler(this.textBoxExecutable_TextChanged);
-            // 
-            // labelExecutable
-            // 
-            this.labelExecutable.AutoSize = true;
-            this.labelExecutable.Location = new System.Drawing.Point(7, 46);
-            this.labelExecutable.Name = "labelExecutable";
-            this.labelExecutable.Size = new System.Drawing.Size(63, 13);
-            this.labelExecutable.TabIndex = 2;
-            this.labelExecutable.Text = "Executable:";
-            // 
-            // textBoxIniPrefix
-            // 
-            this.textBoxIniPrefix.Location = new System.Drawing.Point(112, 17);
-            this.textBoxIniPrefix.Name = "textBoxIniPrefix";
-            this.textBoxIniPrefix.Size = new System.Drawing.Size(251, 20);
-            this.textBoxIniPrefix.TabIndex = 1;
-            this.textBoxIniPrefix.Text = "Fallout76";
-            this.textBoxIniPrefix.TextChanged += new System.EventHandler(this.textBoxIniPrefix_TextChanged);
-            // 
-            // labelIniPrefix
-            // 
-            this.labelIniPrefix.AutoSize = true;
-            this.labelIniPrefix.Location = new System.Drawing.Point(7, 20);
-            this.labelIniPrefix.Name = "labelIniPrefix";
-            this.labelIniPrefix.Size = new System.Drawing.Size(56, 13);
-            this.labelIniPrefix.TabIndex = 0;
-            this.labelIniPrefix.Text = "*.ini Prefix:";
-            // 
-            // groupBoxLaunchOptions
-            // 
-            this.groupBoxLaunchOptions.Controls.Add(this.labelLaunchOptionMSStoreNotice);
-            this.groupBoxLaunchOptions.Controls.Add(this.radioButtonLaunchViaExecutable);
-            this.groupBoxLaunchOptions.Controls.Add(this.radioButtonLaunchViaLink);
-            this.groupBoxLaunchOptions.Location = new System.Drawing.Point(7, 380);
-            this.groupBoxLaunchOptions.Name = "groupBoxLaunchOptions";
-            this.groupBoxLaunchOptions.Size = new System.Drawing.Size(369, 108);
-            this.groupBoxLaunchOptions.TabIndex = 36;
-            this.groupBoxLaunchOptions.TabStop = false;
-            this.groupBoxLaunchOptions.Text = "Launch options";
-            // 
-            // labelLaunchOptionMSStoreNotice
-            // 
-            this.labelLaunchOptionMSStoreNotice.ForeColor = System.Drawing.Color.Red;
-            this.labelLaunchOptionMSStoreNotice.Location = new System.Drawing.Point(7, 68);
-            this.labelLaunchOptionMSStoreNotice.Name = "labelLaunchOptionMSStoreNotice";
-            this.labelLaunchOptionMSStoreNotice.Size = new System.Drawing.Size(356, 29);
-            this.labelLaunchOptionMSStoreNotice.TabIndex = 4;
-            this.labelLaunchOptionMSStoreNotice.Text = "Fallout 76 cannot be run directly, if installed through the Microsoft Store.";
-            this.labelLaunchOptionMSStoreNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelLaunchOptionMSStoreNotice.Visible = false;
-            // 
-            // radioButtonLaunchViaExecutable
-            // 
-            this.radioButtonLaunchViaExecutable.AutoSize = true;
-            this.radioButtonLaunchViaExecutable.Location = new System.Drawing.Point(10, 43);
-            this.radioButtonLaunchViaExecutable.Name = "radioButtonLaunchViaExecutable";
-            this.radioButtonLaunchViaExecutable.Size = new System.Drawing.Size(157, 17);
-            this.radioButtonLaunchViaExecutable.TabIndex = 1;
-            this.radioButtonLaunchViaExecutable.TabStop = true;
-            this.radioButtonLaunchViaExecutable.Text = "Run \"Fallout76.exe\" directly";
-            this.radioButtonLaunchViaExecutable.UseVisualStyleBackColor = true;
-            this.radioButtonLaunchViaExecutable.CheckedChanged += new System.EventHandler(this.radioButtonLaunchViaExecutable_CheckedChanged);
-            // 
-            // radioButtonLaunchViaLink
-            // 
-            this.radioButtonLaunchViaLink.AutoSize = true;
-            this.radioButtonLaunchViaLink.Location = new System.Drawing.Point(10, 20);
-            this.radioButtonLaunchViaLink.Name = "radioButtonLaunchViaLink";
-            this.radioButtonLaunchViaLink.Size = new System.Drawing.Size(222, 17);
-            this.radioButtonLaunchViaLink.TabIndex = 0;
-            this.radioButtonLaunchViaLink.TabStop = true;
-            this.radioButtonLaunchViaLink.Text = "Launch via Steam / Xbox (recommended)";
-            this.radioButtonLaunchViaLink.UseVisualStyleBackColor = true;
-            this.radioButtonLaunchViaLink.CheckedChanged += new System.EventHandler(this.radioButtonLaunchViaLink_CheckedChanged);
-            // 
-            // groupBoxGameLocation
-            // 
-            this.groupBoxGameLocation.Controls.Add(this.buttonAutoDetect);
-            this.groupBoxGameLocation.Controls.Add(this.textBoxGamePath);
-            this.groupBoxGameLocation.Controls.Add(this.buttonPickGamePath);
-            this.groupBoxGameLocation.Location = new System.Drawing.Point(7, 287);
-            this.groupBoxGameLocation.Name = "groupBoxGameLocation";
-            this.groupBoxGameLocation.Size = new System.Drawing.Size(369, 87);
-            this.groupBoxGameLocation.TabIndex = 37;
-            this.groupBoxGameLocation.TabStop = false;
-            this.groupBoxGameLocation.Text = "Game location";
-            // 
-            // buttonAutoDetect
-            // 
-            this.buttonAutoDetect.Location = new System.Drawing.Point(6, 48);
-            this.buttonAutoDetect.Name = "buttonAutoDetect";
-            this.buttonAutoDetect.Size = new System.Drawing.Size(357, 23);
-            this.buttonAutoDetect.TabIndex = 32;
-            this.buttonAutoDetect.Text = "Attempt auto-detect";
-            this.buttonAutoDetect.UseVisualStyleBackColor = true;
-            this.buttonAutoDetect.Click += new System.EventHandler(this.buttonAutoDetect_Click);
-            // 
-            // textBoxGamePath
-            // 
-            this.textBoxGamePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxGamePath.Location = new System.Drawing.Point(6, 21);
-            this.textBoxGamePath.Name = "textBoxGamePath";
-            this.textBoxGamePath.Size = new System.Drawing.Size(323, 20);
-            this.textBoxGamePath.TabIndex = 30;
-            this.textBoxGamePath.TextChanged += new System.EventHandler(this.textBoxGamePath_TextChanged);
-            // 
-            // buttonPickGamePath
-            // 
-            this.buttonPickGamePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPickGamePath.Location = new System.Drawing.Point(335, 19);
-            this.buttonPickGamePath.Name = "buttonPickGamePath";
-            this.buttonPickGamePath.Size = new System.Drawing.Size(28, 23);
-            this.buttonPickGamePath.TabIndex = 31;
-            this.buttonPickGamePath.Text = "...";
-            this.buttonPickGamePath.UseVisualStyleBackColor = true;
-            this.buttonPickGamePath.Click += new System.EventHandler(this.buttonPickGamePath_Click);
-            // 
-            // groupBoxGameEdition
-            // 
-            this.groupBoxGameEdition.Controls.Add(this.labelEditionBackCompat);
-            this.groupBoxGameEdition.Controls.Add(this.pictureBoxSteamPTS);
-            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionSteamPTS);
-            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionUnknown);
-            this.groupBoxGameEdition.Controls.Add(this.pictureBoxUnknown);
-            this.groupBoxGameEdition.Controls.Add(this.pictureBoxMSStore);
-            this.groupBoxGameEdition.Controls.Add(this.pictureBoxSteam);
-            this.groupBoxGameEdition.Controls.Add(this.pictureBoxBethesdaNetPTS);
-            this.groupBoxGameEdition.Controls.Add(this.pictureBoxBethesdaNet);
-            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionMSStore);
-            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionBethesdaNetPTS);
-            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionSteam);
-            this.groupBoxGameEdition.Controls.Add(this.radioButtonEditionBethesdaNet);
-            this.groupBoxGameEdition.Location = new System.Drawing.Point(7, 9);
-            this.groupBoxGameEdition.Name = "groupBoxGameEdition";
-            this.groupBoxGameEdition.Size = new System.Drawing.Size(369, 272);
-            this.groupBoxGameEdition.TabIndex = 35;
-            this.groupBoxGameEdition.TabStop = false;
-            this.groupBoxGameEdition.Text = "Game edition";
-            // 
-            // labelEditionBackCompat
-            // 
-            this.labelEditionBackCompat.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelEditionBackCompat.Location = new System.Drawing.Point(6, 212);
-            this.labelEditionBackCompat.Name = "labelEditionBackCompat";
-            this.labelEditionBackCompat.Size = new System.Drawing.Size(357, 57);
-            this.labelEditionBackCompat.TabIndex = 34;
-            this.labelEditionBackCompat.Text = "The Bethesda.net launcher has been discontinued on May 11th, 2022.\r\nThe options a" +
-    "re still here for backwards-compatibility. (So nothing breaks)\r\n";
-            // 
-            // pictureBoxSteamPTS
-            // 
-            this.pictureBoxSteamPTS.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxSteamPTS.Image = global::Fo76ini.Properties.Resources.steam_24px;
-            this.pictureBoxSteamPTS.Location = new System.Drawing.Point(6, 49);
-            this.pictureBoxSteamPTS.Name = "pictureBoxSteamPTS";
-            this.pictureBoxSteamPTS.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxSteamPTS.TabIndex = 33;
-            this.pictureBoxSteamPTS.TabStop = false;
-            // 
-            // radioButtonEditionSteamPTS
-            // 
-            this.radioButtonEditionSteamPTS.AutoSize = true;
-            this.radioButtonEditionSteamPTS.Location = new System.Drawing.Point(38, 52);
-            this.radioButtonEditionSteamPTS.Name = "radioButtonEditionSteamPTS";
-            this.radioButtonEditionSteamPTS.Size = new System.Drawing.Size(85, 17);
-            this.radioButtonEditionSteamPTS.TabIndex = 32;
-            this.radioButtonEditionSteamPTS.Text = "Steam (PTS)";
-            this.radioButtonEditionSteamPTS.UseVisualStyleBackColor = true;
-            this.radioButtonEditionSteamPTS.CheckedChanged += new System.EventHandler(this.radioButtonEditionSteamPTS_CheckedChanged);
-            // 
-            // radioButtonEditionUnknown
-            // 
-            this.radioButtonEditionUnknown.AutoSize = true;
-            this.radioButtonEditionUnknown.Location = new System.Drawing.Point(38, 112);
-            this.radioButtonEditionUnknown.Name = "radioButtonEditionUnknown";
-            this.radioButtonEditionUnknown.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonEditionUnknown.TabIndex = 31;
-            this.radioButtonEditionUnknown.Text = "Other";
-            this.radioButtonEditionUnknown.UseVisualStyleBackColor = true;
-            this.radioButtonEditionUnknown.CheckedChanged += new System.EventHandler(this.radioButtonEditionUnknown_CheckedChanged);
-            // 
-            // pictureBoxUnknown
-            // 
-            this.pictureBoxUnknown.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxUnknown.Image = global::Fo76ini.Properties.Resources.help_24;
-            this.pictureBoxUnknown.Location = new System.Drawing.Point(6, 109);
-            this.pictureBoxUnknown.Name = "pictureBoxUnknown";
-            this.pictureBoxUnknown.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxUnknown.TabIndex = 30;
-            this.pictureBoxUnknown.TabStop = false;
-            // 
-            // pictureBoxMSStore
-            // 
-            this.pictureBoxMSStore.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxMSStore.Image = global::Fo76ini.Properties.Resources.xbox_24;
-            this.pictureBoxMSStore.Location = new System.Drawing.Point(6, 79);
-            this.pictureBoxMSStore.Name = "pictureBoxMSStore";
-            this.pictureBoxMSStore.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxMSStore.TabIndex = 29;
-            this.pictureBoxMSStore.TabStop = false;
-            // 
-            // pictureBoxSteam
-            // 
-            this.pictureBoxSteam.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxSteam.Image = global::Fo76ini.Properties.Resources.steam_24px;
-            this.pictureBoxSteam.Location = new System.Drawing.Point(6, 19);
-            this.pictureBoxSteam.Name = "pictureBoxSteam";
-            this.pictureBoxSteam.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxSteam.TabIndex = 28;
-            this.pictureBoxSteam.TabStop = false;
-            // 
-            // pictureBoxBethesdaNetPTS
-            // 
-            this.pictureBoxBethesdaNetPTS.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNetPTS.Image = global::Fo76ini.Properties.Resources.bethesda_24;
-            this.pictureBoxBethesdaNetPTS.Location = new System.Drawing.Point(6, 178);
-            this.pictureBoxBethesdaNetPTS.Name = "pictureBoxBethesdaNetPTS";
-            this.pictureBoxBethesdaNetPTS.Size = new System.Drawing.Size(24, 37);
-            this.pictureBoxBethesdaNetPTS.TabIndex = 27;
-            this.pictureBoxBethesdaNetPTS.TabStop = false;
-            // 
-            // pictureBoxBethesdaNet
-            // 
-            this.pictureBoxBethesdaNet.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxBethesdaNet.Image = global::Fo76ini.Properties.Resources.bethesda_24;
-            this.pictureBoxBethesdaNet.Location = new System.Drawing.Point(6, 148);
-            this.pictureBoxBethesdaNet.Name = "pictureBoxBethesdaNet";
-            this.pictureBoxBethesdaNet.Size = new System.Drawing.Size(24, 37);
-            this.pictureBoxBethesdaNet.TabIndex = 26;
-            this.pictureBoxBethesdaNet.TabStop = false;
-            // 
-            // radioButtonEditionMSStore
-            // 
-            this.radioButtonEditionMSStore.AutoSize = true;
-            this.radioButtonEditionMSStore.Location = new System.Drawing.Point(38, 82);
-            this.radioButtonEditionMSStore.Name = "radioButtonEditionMSStore";
-            this.radioButtonEditionMSStore.Size = new System.Drawing.Size(49, 17);
-            this.radioButtonEditionMSStore.TabIndex = 3;
-            this.radioButtonEditionMSStore.Text = "Xbox";
-            this.radioButtonEditionMSStore.UseVisualStyleBackColor = true;
-            this.radioButtonEditionMSStore.CheckedChanged += new System.EventHandler(this.radioButtonEditionMSStore_CheckedChanged);
-            // 
-            // radioButtonEditionBethesdaNetPTS
-            // 
-            this.radioButtonEditionBethesdaNetPTS.AutoSize = true;
-            this.radioButtonEditionBethesdaNetPTS.Location = new System.Drawing.Point(38, 181);
-            this.radioButtonEditionBethesdaNetPTS.Name = "radioButtonEditionBethesdaNetPTS";
-            this.radioButtonEditionBethesdaNetPTS.Size = new System.Drawing.Size(229, 17);
-            this.radioButtonEditionBethesdaNetPTS.TabIndex = 2;
-            this.radioButtonEditionBethesdaNetPTS.Text = "Bethesda.net Launcher - PTS (deprecated)";
-            this.radioButtonEditionBethesdaNetPTS.UseVisualStyleBackColor = true;
-            this.radioButtonEditionBethesdaNetPTS.CheckedChanged += new System.EventHandler(this.radioButtonEditionBethesdaNetPTS_CheckedChanged);
-            // 
-            // radioButtonEditionSteam
-            // 
-            this.radioButtonEditionSteam.AutoSize = true;
-            this.radioButtonEditionSteam.Location = new System.Drawing.Point(38, 22);
-            this.radioButtonEditionSteam.Name = "radioButtonEditionSteam";
-            this.radioButtonEditionSteam.Size = new System.Drawing.Size(55, 17);
-            this.radioButtonEditionSteam.TabIndex = 1;
-            this.radioButtonEditionSteam.Text = "Steam";
-            this.radioButtonEditionSteam.UseVisualStyleBackColor = true;
-            this.radioButtonEditionSteam.CheckedChanged += new System.EventHandler(this.radioButtonEditionSteam_CheckedChanged);
-            // 
-            // radioButtonEditionBethesdaNet
-            // 
-            this.radioButtonEditionBethesdaNet.AutoSize = true;
-            this.radioButtonEditionBethesdaNet.Location = new System.Drawing.Point(38, 151);
-            this.radioButtonEditionBethesdaNet.Name = "radioButtonEditionBethesdaNet";
-            this.radioButtonEditionBethesdaNet.Size = new System.Drawing.Size(199, 17);
-            this.radioButtonEditionBethesdaNet.TabIndex = 0;
-            this.radioButtonEditionBethesdaNet.Text = "Bethesda.net Launcher (deprecated)";
-            this.radioButtonEditionBethesdaNet.UseVisualStyleBackColor = true;
-            this.radioButtonEditionBethesdaNet.CheckedChanged += new System.EventHandler(this.radioButtonEditionBethesdaNet_CheckedChanged);
-            // 
-            // groupBoxGame
-            // 
-            this.groupBoxGame.Controls.Add(this.listViewGameInstances);
-            this.groupBoxGame.Location = new System.Drawing.Point(3, 8);
-            this.groupBoxGame.Name = "groupBoxGame";
-            this.groupBoxGame.Size = new System.Drawing.Size(339, 419);
-            this.groupBoxGame.TabIndex = 44;
-            this.groupBoxGame.TabStop = false;
-            this.groupBoxGame.Text = "Game";
-            // 
-            // listViewGameInstances
-            // 
-            this.listViewGameInstances.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewGameInstances.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listViewGameInstances.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.listViewGameInstances.ContextMenuStrip = this.contextMenuStripGame;
-            this.listViewGameInstances.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewGameInstances.FullRowSelect = true;
-            this.listViewGameInstances.HideSelection = false;
-            this.listViewGameInstances.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5});
-            this.listViewGameInstances.LabelWrap = false;
-            this.listViewGameInstances.LargeImageList = this.imageList1;
-            this.listViewGameInstances.Location = new System.Drawing.Point(3, 18);
-            this.listViewGameInstances.MultiSelect = false;
-            this.listViewGameInstances.Name = "listViewGameInstances";
-            this.listViewGameInstances.Size = new System.Drawing.Size(333, 398);
-            this.listViewGameInstances.SmallImageList = this.imageList1;
-            this.listViewGameInstances.TabIndex = 21;
-            this.listViewGameInstances.UseCompatibleStateImageBehavior = false;
-            this.listViewGameInstances.View = System.Windows.Forms.View.Details;
-            this.listViewGameInstances.SelectedIndexChanged += new System.EventHandler(this.listViewGameInstances_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Game";
-            this.columnHeader1.Width = 312;
-            // 
-            // contextMenuStripGame
-            // 
-            this.contextMenuStripGame.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gameToolStripMenuItem,
-            this.launchGameToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.renameGameToolStripMenuItem,
-            this.removeGameToolStripMenuItem});
-            this.contextMenuStripGame.Name = "contextMenuStripGame";
-            this.contextMenuStripGame.Size = new System.Drawing.Size(118, 98);
-            this.contextMenuStripGame.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripGame_Opening);
-            // 
-            // gameToolStripMenuItem
-            // 
-            this.gameToolStripMenuItem.Enabled = false;
-            this.gameToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.gameToolStripMenuItem.Text = "Game";
-            // 
-            // launchGameToolStripMenuItem
-            // 
-            this.launchGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.play;
-            this.launchGameToolStripMenuItem.Name = "launchGameToolStripMenuItem";
-            this.launchGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.launchGameToolStripMenuItem.Text = "Launch";
-            this.launchGameToolStripMenuItem.Click += new System.EventHandler(this.launchGameToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(114, 6);
-            // 
-            // renameGameToolStripMenuItem
-            // 
-            this.renameGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.text_24;
-            this.renameGameToolStripMenuItem.Name = "renameGameToolStripMenuItem";
-            this.renameGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.renameGameToolStripMenuItem.Text = "Rename";
-            this.renameGameToolStripMenuItem.Click += new System.EventHandler(this.renameGameToolStripMenuItem_Click);
-            // 
-            // removeGameToolStripMenuItem
-            // 
-            this.removeGameToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.delete_24;
-            this.removeGameToolStripMenuItem.Name = "removeGameToolStripMenuItem";
-            this.removeGameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.removeGameToolStripMenuItem.Text = "Remove";
-            this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "help-24.png");
-            this.imageList1.Images.SetKeyName(1, "bethesda_24px.png");
-            this.imageList1.Images.SetKeyName(2, "steam_24px.png");
-            this.imageList1.Images.SetKeyName(3, "xbox_24px.png");
-            // 
-            // labelTip
-            // 
-            this.labelTip.AutoSize = true;
-            this.labelTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTip.ForeColor = System.Drawing.Color.DimGray;
-            this.labelTip.Location = new System.Drawing.Point(8, 443);
-            this.labelTip.Name = "labelTip";
-            this.labelTip.Size = new System.Drawing.Size(243, 13);
-            this.labelTip.TabIndex = 43;
-            this.labelTip.Text = "Tip: Right-click on a game profile for more options.";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.BackColor = System.Drawing.Color.White;
-            this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(0);
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonAddGame});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(5);
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(760, 37);
-            this.toolStrip1.TabIndex = 19;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButtonAddGame
-            // 
-            this.toolStripButtonAddGame.BackColor = System.Drawing.Color.White;
-            this.toolStripButtonAddGame.Image = global::Fo76ini.Properties.Resources.plus_24;
-            this.toolStripButtonAddGame.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolStripButtonAddGame.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddGame.Name = "toolStripButtonAddGame";
-            this.toolStripButtonAddGame.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.toolStripButtonAddGame.Size = new System.Drawing.Size(90, 24);
-            this.toolStripButtonAddGame.Text = "Add game";
-            this.toolStripButtonAddGame.Click += new System.EventHandler(this.toolStripButtonAddGame_Click);
-            // 
             // tabPageNexusMods
             // 
             this.tabPageNexusMods.Controls.Add(this.panel2);
@@ -1537,6 +937,15 @@
             this.labelNMDailyRateLimit.TabIndex = 70;
             this.labelNMDailyRateLimit.Text = "0 left";
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "help-24.png");
+            this.imageList1.Images.SetKeyName(1, "bethesda_24px.png");
+            this.imageList1.Images.SetKeyName(2, "steam_24px.png");
+            this.imageList1.Images.SetKeyName(3, "xbox_24px.png");
+            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -1603,30 +1012,6 @@
             this.groupBoxLocalization.ResumeLayout(false);
             this.groupBoxLocalization.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).EndInit();
-            this.tabPageGameProfiles.ResumeLayout(false);
-            this.tabPageGameProfiles.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.groupBoxSettings.ResumeLayout(false);
-            this.panelSettings.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBoxLaunchOptions.ResumeLayout(false);
-            this.groupBoxLaunchOptions.PerformLayout();
-            this.groupBoxGameLocation.ResumeLayout(false);
-            this.groupBoxGameLocation.PerformLayout();
-            this.groupBoxGameEdition.ResumeLayout(false);
-            this.groupBoxGameEdition.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteamPTS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUnknown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSStore)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSteam)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNetPTS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBethesdaNet)).EndInit();
-            this.groupBoxGame.ResumeLayout(false);
-            this.contextMenuStripGame.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.tabPageNexusMods.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -1642,7 +1027,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageGeneral;
-        private System.Windows.Forms.TabPage tabPageGameProfiles;
         private System.Windows.Forms.TabPage tabPageNexusMods;
         private System.Windows.Forms.GroupBox groupBoxLocalization;
         private System.Windows.Forms.Button buttonRefreshLanguage;
@@ -1662,39 +1046,6 @@
         private System.Windows.Forms.Label labelNWdlloptions;
         private System.Windows.Forms.CheckBox checkBoxNWAutoDisableMods;
         private System.Windows.Forms.CheckBox checkBoxNWRenameDLL;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label labelTip;
-        private System.Windows.Forms.Panel panelSettings;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBoxLaunchURL;
-        private System.Windows.Forms.Label labelLaunchURL;
-        private System.Windows.Forms.TextBox textBoxParameters;
-        private System.Windows.Forms.Label labelParameters;
-        private System.Windows.Forms.TextBox textBoxExecutable;
-        private System.Windows.Forms.Label labelExecutable;
-        private System.Windows.Forms.TextBox textBoxIniPrefix;
-        private System.Windows.Forms.Label labelIniPrefix;
-        private System.Windows.Forms.GroupBox groupBoxLaunchOptions;
-        private System.Windows.Forms.Label labelLaunchOptionMSStoreNotice;
-        private System.Windows.Forms.RadioButton radioButtonLaunchViaExecutable;
-        private System.Windows.Forms.RadioButton radioButtonLaunchViaLink;
-        private System.Windows.Forms.GroupBox groupBoxGameLocation;
-        private System.Windows.Forms.Button buttonAutoDetect;
-        private System.Windows.Forms.TextBox textBoxGamePath;
-        private System.Windows.Forms.Button buttonPickGamePath;
-        private System.Windows.Forms.GroupBox groupBoxGameEdition;
-        private System.Windows.Forms.PictureBox pictureBoxMSStore;
-        private System.Windows.Forms.PictureBox pictureBoxSteam;
-        private System.Windows.Forms.PictureBox pictureBoxBethesdaNetPTS;
-        private System.Windows.Forms.PictureBox pictureBoxBethesdaNet;
-        private System.Windows.Forms.RadioButton radioButtonEditionMSStore;
-        private System.Windows.Forms.RadioButton radioButtonEditionBethesdaNetPTS;
-        private System.Windows.Forms.RadioButton radioButtonEditionSteam;
-        private System.Windows.Forms.RadioButton radioButtonEditionBethesdaNet;
-        private System.Windows.Forms.ListView listViewGameInstances;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonAddGame;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label labelNMNotLoggedIn;
         private System.Windows.Forms.Label labelNMUserID;
@@ -1719,20 +1070,10 @@
         public System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.OpenFileDialog openFileDialogGamePath;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripGame;
-        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem launchGameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem renameGameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeGameToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorkerDownloadLanguages;
-        private System.Windows.Forms.GroupBox groupBoxSettings;
-        private System.Windows.Forms.GroupBox groupBoxGame;
         private System.Windows.Forms.GroupBox groupBoxOptions;
         private System.Windows.Forms.CheckBox checkBoxReadOnly;
         private System.ComponentModel.BackgroundWorker backgroundWorkerRetrieveProfileInfo;
-        private System.Windows.Forms.RadioButton radioButtonEditionUnknown;
-        private System.Windows.Forms.PictureBox pictureBoxUnknown;
         private System.Windows.Forms.Button buttonNMLogin;
         private System.ComponentModel.BackgroundWorker backgroundWorkerSSOLogin;
         private System.Windows.Forms.Label labelAPIKey;
@@ -1758,9 +1099,6 @@
         private System.Windows.Forms.Button buttonPickDownloadsPath;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBoxSteamPTS;
-        private System.Windows.Forms.RadioButton radioButtonEditionSteamPTS;
-        private System.Windows.Forms.Label labelEditionBackCompat;
         private System.Windows.Forms.CheckBox checkBoxShowNWBtn;
         private System.Windows.Forms.GroupBox groupBoxUI;
         private System.Windows.Forms.CheckBox checkBoxShowWhatsNew;

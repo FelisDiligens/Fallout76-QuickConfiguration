@@ -1,8 +1,6 @@
 ﻿using Fo76ini.Forms.ExceptionDialog;
 using Fo76ini.Forms.FormProfiles;
 using Fo76ini.Interface;
-using Fo76ini.NexusAPI;
-using Fo76ini.Profiles;
 using Fo76ini.Utilities;
 using System;
 using System.IO;
@@ -55,27 +53,8 @@ namespace Fo76ini
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
-            /*
-             * Preparing to launch app:
-             */
-
-            // Create folders, if not present:
-            Directory.CreateDirectory(Shared.AppConfigFolder);
-            Directory.CreateDirectory(Shared.AppTranslationsFolder);
-            Directory.CreateDirectory(IniFiles.ParentPath);
-
-            // Load config.ini:
-            IniFiles.LoadConfig();
-
-            // Load game profiles:
-            ProfileManager.Load();
-
-            // Load NexusMods:
-            NexusMods.Load();
-
-            // Show app:
-            Application.Run(new FormProfiles());
+            Initialization.InitApp();
+            Application.Run(new FormMain());
         }
 
         private static void HandleThreadException(object sender, ThreadExceptionEventArgs e)
