@@ -227,10 +227,10 @@ namespace Fo76ini.Forms.FormMain
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)
         {
-            // TODO: For some reason, it won't update the resolution combobox, unless I add this workaround:
+            // For some reason, it won't update the resolution combobox, unless I add this workaround:
             numCustomRes_ValueChanged(null, null);
 
-            //LoadAccountProfile();// Doesn't work: Null exception
+            LoadAccountProfile();
         }
 
         #region Credentials

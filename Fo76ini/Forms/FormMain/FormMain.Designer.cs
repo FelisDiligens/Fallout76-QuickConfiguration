@@ -62,6 +62,8 @@
             this.userControlGallery = new Fo76ini.Forms.FormMain.UserControlGallery();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
             this.userControlCustom = new Fo76ini.Forms.FormMain.Tabs.UserControlCustom();
+            this.tabPageProfiles = new System.Windows.Forms.TabPage();
+            this.userControlProfiles = new Fo76ini.Forms.FormMain.Tabs.UserControlProfiles();
             this.backgroundWorkerLoadGallery = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerGetLatestVersion = new System.ComponentModel.BackgroundWorker();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -110,6 +112,7 @@
             this.tabPagePipBoy.SuspendLayout();
             this.tabPageGallery.SuspendLayout();
             this.tabPageCustom.SuspendLayout();
+            this.tabPageProfiles.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
@@ -143,6 +146,7 @@
             this.tabControl1.Controls.Add(this.tabPagePipBoy);
             this.tabControl1.Controls.Add(this.tabPageGallery);
             this.tabControl1.Controls.Add(this.tabPageCustom);
+            this.tabControl1.Controls.Add(this.tabPageProfiles);
             this.tabControl1.Location = new System.Drawing.Point(12, 59);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -487,6 +491,27 @@
             this.userControlCustom.Name = "userControlCustom";
             this.userControlCustom.Size = new System.Drawing.Size(852, 464);
             this.userControlCustom.TabIndex = 0;
+            // 
+            // tabPageProfiles
+            // 
+            this.tabPageProfiles.BackColor = System.Drawing.Color.White;
+            this.tabPageProfiles.Controls.Add(this.userControlProfiles);
+            this.tabPageProfiles.Location = new System.Drawing.Point(4, 22);
+            this.tabPageProfiles.Name = "tabPageProfiles";
+            this.tabPageProfiles.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageProfiles.Size = new System.Drawing.Size(852, 464);
+            this.tabPageProfiles.TabIndex = 13;
+            this.tabPageProfiles.Text = "Profiles";
+            // 
+            // userControlProfiles
+            // 
+            this.userControlProfiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.userControlProfiles.BackColor = System.Drawing.Color.White;
+            this.userControlProfiles.Location = new System.Drawing.Point(0, 0);
+            this.userControlProfiles.Name = "userControlProfiles";
+            this.userControlProfiles.Size = new System.Drawing.Size(480, 464);
+            this.userControlProfiles.TabIndex = 0;
             // 
             // backgroundWorkerGetLatestVersion
             // 
@@ -839,6 +864,7 @@
             this.tabPagePipBoy.ResumeLayout(false);
             this.tabPageGallery.ResumeLayout(false);
             this.tabPageCustom.ResumeLayout(false);
+            this.tabPageProfiles.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -919,6 +945,8 @@
         private Forms.FormMain.UserControlPipboy userControlPipboy1;
         private Forms.FormMain.UserControlGallery userControlGallery;
         private Forms.FormMain.Tabs.UserControlCustom userControlCustom;
+        private System.Windows.Forms.TabPage tabPageProfiles;
+        private Forms.FormMain.Tabs.UserControlProfiles userControlProfiles;
     }
 }
 

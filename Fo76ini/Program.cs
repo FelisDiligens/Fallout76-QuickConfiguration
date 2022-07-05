@@ -1,5 +1,4 @@
 ﻿using Fo76ini.Forms.ExceptionDialog;
-using Fo76ini.Forms.FormProfiles;
 using Fo76ini.Interface;
 using Fo76ini.Utilities;
 using System;

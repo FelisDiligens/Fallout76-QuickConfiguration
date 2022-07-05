@@ -10,6 +10,7 @@ using Fo76ini.Ini;
 using Fo76ini.Mods;
 using Fo76ini.NexusAPI;
 using Fo76ini.Profiles;
+using Fo76ini.Tweaks;
 using Fo76ini.Utilities;
 
 namespace Fo76ini
@@ -35,11 +36,19 @@ namespace Fo76ini
             // Load config.ini:
             IniFiles.LoadConfig();
 
-            // Load profiles:
-            ProfileManager.Load();
-
             // Load NexusMods Integration:
             NexusMods.Load();
+
+            // Load profiles:
+            ProfileManager.ProfileChanged += OnProfileChanged; // Make sure, that the FIRST event handler is ours.
+            ProfileManager.Load();
+        }
+
+        private static void OnProfileChanged(object sender, ProfileEventArgs e)
+        {
+            Initialization.LoadINIFiles();
+            //Initialization.LoadMods();
+            LinkedTweaks.LoadValues();
         }
 
         public static void LoadINIFiles()

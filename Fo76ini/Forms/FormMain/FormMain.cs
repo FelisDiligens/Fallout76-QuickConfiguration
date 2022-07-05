@@ -1,5 +1,4 @@
 ﻿using Fo76ini.Forms.FormIniError;
-using Fo76ini.Forms.FormProfiles;
 using Fo76ini.Forms.FormSettings;
 using Fo76ini.Forms.FormWelcome;
 using Fo76ini.Ini;
@@ -26,7 +25,7 @@ namespace Fo76ini
     {
         private FormMods formMods = new FormMods();
         private FormSettings formSettings = new FormSettings();
-        private FormProfiles formProfiles = new FormProfiles();
+        private FormWelcome formWelcome = new FormWelcome();
 
         private GameInstance game;
 
@@ -116,11 +115,15 @@ namespace Fo76ini
 
         private void FormMain_Shown(object sender, EventArgs e)
         {
-            formProfiles.OpenDialog();
+            // Necessary to init controls:
+            ProfileManager.Feedback();
 
-            // Check for updates
+            // Open welcome dialog on first start:
+            if (Initialization.FirstStart)
+                formWelcome.OpenDialog();
+
+            // Check for updates:
             CheckVersion();
-
             IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
 
             // If nxm:// link has been provided, open the mod manager:
@@ -218,8 +221,6 @@ namespace Fo76ini
         private void backgroundWorkerGetLatestVersion_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             this.pictureBoxSpinnerCheckForUpdates.Visible = false;
-
-            // ShowWhatsNewConditionally(); // TODO: Why is this here though?
 
             // Failed:
             if (Shared.LatestVersion == null)
@@ -480,7 +481,7 @@ namespace Fo76ini
 
         private void showProfiles_OnClick(object sender, EventArgs e)
         {
-            formProfiles.OpenDialog(ignoreSkip: true);
+            this.tabControl1.SelectedTab = this.tabPageProfiles;
         }
 
         #endregion
@@ -549,6 +550,11 @@ namespace Fo76ini
         private void backgroundWorkerDownloadRTF_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs ev)
         {
             this.richTextBoxWhatsNew.Rtf = (string)ev.Result;
+        }
+
+        private void pictureBoxButtonGameEdition_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

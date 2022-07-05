@@ -355,18 +355,6 @@ namespace Fo76ini
             }
         }
 
-        public static bool SkipProfileManager
-        {
-            get
-            {
-                return IniFiles.Config.GetBool("Preferences", "bSkipProfileManager", true);
-            }
-            set
-            {
-                IniFiles.Config.Set("Preferences", "bSkipProfileManager", value);
-            }
-        }
-
         #endregion
 
         #region Methods

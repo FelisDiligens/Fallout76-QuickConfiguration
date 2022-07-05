@@ -1,42 +1,35 @@
-﻿using ComboxExtended;
-using Fo76ini.Interface;
-using Fo76ini.Profiles;
-using Fo76ini.Properties;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Text;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComboxExtended;
+using Fo76ini.Interface;
+using Fo76ini.Profiles;
+using Fo76ini.Properties;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Drawing.Text;
+using System.IO;
+using System.Runtime.InteropServices;
 using Fo76ini;
 using Fo76ini.Ini;
 using Fo76ini.Forms.FormIniError;
 using Fo76ini.Forms.FormWelcome;
 using Fo76ini.Tweaks;
 
-namespace Fo76ini.Forms.FormProfiles
+namespace Fo76ini.Forms.FormMain.Tabs
 {
-    public partial class FormProfiles : Form
+    public partial class UserControlProfiles : UserControl
     {
-        PrivateFontCollection pfc = new PrivateFontCollection();
-
-        FormWelcome.FormWelcome formWelcome = new FormWelcome.FormWelcome();
-
         bool UpdatingUI = false;
 
-        public FormProfiles()
+        public UserControlProfiles()
         {
             InitializeComponent();
-
-            InitCustomLabelFont();
-            labelLogo.Font = new Font(pfc.Families[0], labelLogo.Font.Size);
 
             HideTabHeader();
 
@@ -52,43 +45,14 @@ namespace Fo76ini.Forms.FormProfiles
 
             this.listViewGameInstances.HeaderStyle = ColumnHeaderStyle.None;
 
-            // Make this form translatable:
-            LocalizedForm form = new LocalizedForm(this, null);
-            Localization.LocalizedForms.Add(form);
+            this.panelAdvancedOptions.Visible = false;
+
+            ProfileManager.ProfileChanged += OnProfileChanged;
         }
 
-        public DialogResult OpenDialog()
+        private void OnProfileChanged(object sender, ProfileEventArgs e)
         {
-            if (Initialization.FirstStart)
-            {
-                formWelcome.Closed += (s, args) => LoadApp();
-                return formWelcome.OpenDialog();
-            }
-            else
-            {
-                return this.ShowDialog();
-            }
-        }
-
-
-        // https://stackoverflow.com/a/23520042
-        private void InitCustomLabelFont()
-        {
-            // Select your font from the resources.
-            // My font here is "Digireu.ttf"
-            int fontLength = Properties.Resources.overseer.Length;
-
-            // create a buffer to read in to
-            byte[] fontdata = Properties.Resources.overseer;
-
-            // create an unsafe memory block for the font data
-            IntPtr data = Marshal.AllocCoTaskMem(fontLength);
-
-            // copy the bytes to the unsafe memory block
-            Marshal.Copy(fontdata, 0, data, fontLength);
-
-            // pass the font to the font collection
-            pfc.AddMemoryFont(data, fontLength);
+            UpdateList();
         }
 
         private void HideTabHeader()
@@ -97,6 +61,7 @@ namespace Fo76ini.Forms.FormProfiles
             tabControl.Appearance = TabAppearance.FlatButtons;
             tabControl.ItemSize = new Size(0, 1);
             tabControl.SizeMode = TabSizeMode.Fixed;
+            tabControl.TabStop = false;
         }
 
         private void UpdateList()
@@ -190,51 +155,6 @@ namespace Fo76ini.Forms.FormProfiles
             }
         }
 
-
-        /*
-         * Bootstrap
-         */
-
-        /// <summary>
-        /// Hide FormProfiles, save the profile, and open FormMain.
-        /// </summary>
-        private void LoadApp()
-        {
-            ProfileManager.Feedback();
-            this.Hide();
-        }
-
-
-        /*
-         * General event handler
-         */
-
-        private void FormProfiles_Load(object sender, EventArgs e)
-        {
-            UpdateList();
-            this.panelAdvancedOptions.Visible = false;
-            this.tabControl.SelectedTab = this.tabPageSelect;
-        }
-
-        private void FormProfiles_Shown(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonLoadProfile_Click(object sender, EventArgs e)
-        {
-            LoadApp();
-        }
-
-        private void FormProfiles_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                LoadApp();
-            }
-        }
-
-
         /*
          * Event handler for the selection screen
          */
@@ -256,6 +176,7 @@ namespace Fo76ini.Forms.FormProfiles
                 if (ProfileManager.SelectedGameIndex != index)
                 {
                     ProfileManager.SelectedGameIndex = index;
+                    ProfileManager.Save();
                     UpdateList();
                 }
             }
@@ -297,8 +218,9 @@ namespace Fo76ini.Forms.FormProfiles
 
         private void linkLabelNavigationBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ProfileManager.Save();
             this.tabControl.SelectedTab = this.tabPageSelect;
+            ProfileManager.Save();
+            ProfileManager.Feedback();
             UpdateList();
         }
 
@@ -387,7 +309,7 @@ namespace Fo76ini.Forms.FormProfiles
 
         private void linkLabelAutoDetect_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string foundPath = AutoDetectGamePath();
+            string foundPath = GameInstance.AutoDetectGamePath();
             if (foundPath != null)
                 this.textBoxGamePath.Text = foundPath;
             else
@@ -460,137 +382,6 @@ namespace Fo76ini.Forms.FormProfiles
         private void checkBoxMoreOptions_CheckedChanged(object sender, EventArgs e)
         {
             this.panelAdvancedOptions.Visible = checkBoxMoreOptions.Checked;
-        }
-
-        /*
-         * Miscellaneous
-         */
-
-        public static string AutoDetectGamePath()
-        {
-            /*
-             * I could totally search through every single folder on a user's computer, but that would take way too long. So, I'll take shortcuts.
-             * This is not about to find a path for every user 100% of the time, but an attempt to find a path for MOST users in the shortest amount of time.
-             * If it can't find the path, the user likely knows enough about their computer to find it themselves. Even if it's a bit inconvenient.
-             */
-
-            // Search every drive:
-            foreach (DriveInfo d in DriveInfo.GetDrives())
-            {
-                // Only search fixed drives:
-                if (d.DriveType != DriveType.Fixed)
-                    continue;
-
-                // Search for "default" paths that are the most common:
-                string steamDefaultPath = Path.Combine(d.Name, @"Program Files (x86)\Steam\steamapps\common\Fallout76");
-                if (GameInstance.ValidateGamePath(steamDefaultPath))
-                {
-                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(steamDefaultPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                    {
-                        case DialogResult.Yes:
-                            return steamDefaultPath;
-                        case DialogResult.Cancel:
-                            return null;
-                    }
-                }
-
-                // Bethesda.net launcher - no longer in use
-                /*
-                string bethNetDefaultPath = Path.Combine(d.Name, @"Program Files (x86)\Bethesda.net Launcher\games\Fallout76");
-                if (GameInstance.ValidateGamePath(bethNetDefaultPath))
-                {
-                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(bethNetDefaultPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                    {
-                        case DialogResult.Yes:
-                            return bethNetDefaultPath;
-                        case DialogResult.Cancel:
-                            return null;
-                    }
-                }
-                */
-
-                // Old Xbox default path
-                string xboxModifiablePath = Path.Combine(d.Name, @"Program Files\ModifiableWindowsApps\Fallout 76");
-                if (GameInstance.ValidateGamePath(xboxModifiablePath))
-                {
-                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(xboxModifiablePath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                    {
-                        case DialogResult.Yes:
-                            return xboxModifiablePath;
-                        case DialogResult.Cancel:
-                            return null;
-                    }
-                }
-
-                // New Xbox default path
-                string xboxDefaultPath = Path.Combine(d.Name, @"XboxGames\Fallout 76\Content");
-                if (GameInstance.ValidateGamePath(xboxDefaultPath))
-                {
-                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(xboxDefaultPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                    {
-                        case DialogResult.Yes:
-                            return xboxDefaultPath;
-                        case DialogResult.Cancel:
-                            return null;
-                    }
-                }
-
-                // When you create a library on a drive through Steam's 
-                string steamLibraryPath = Path.Combine(d.Name, @"SteamLibrary\steamapps\common\Fallout76");
-                if (GameInstance.ValidateGamePath(steamLibraryPath))
-                {
-                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(steamLibraryPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                    {
-                        case DialogResult.Yes:
-                            return steamLibraryPath;
-                        case DialogResult.Cancel:
-                            return null;
-                    }
-                }
-
-                // Search every top-level folder on the drive:
-                foreach (string path in Directory.EnumerateDirectories(d.Name))
-                {
-                    if (GameInstance.ValidateGamePath(path))
-                    {
-                        switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(path).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                        {
-                            case DialogResult.Yes:
-                                return path;
-                            case DialogResult.Cancel:
-                                return null;
-                        }
-                    }
-
-                    // Search for a steamapps folder:
-                    string steamSubDirPath = Path.Combine(path, @"steamapps\common\Fallout76");
-                    if (GameInstance.ValidateGamePath(steamSubDirPath))
-                    {
-                        switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(steamSubDirPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                        {
-                            case DialogResult.Yes:
-                                return steamSubDirPath;
-                            case DialogResult.Cancel:
-                                return null;
-                        }
-                    }
-
-                    // New Xbox path:
-                    string xboxSubDirPath = Path.Combine(d.Name, @"Fallout 76\Content");
-                    if (GameInstance.ValidateGamePath(xboxSubDirPath))
-                    {
-                        switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(xboxSubDirPath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                        {
-                            case DialogResult.Yes:
-                                return xboxSubDirPath;
-                            case DialogResult.Cancel:
-                                return null;
-                        }
-                    }
-                }
-            }
-
-            return null;
         }
     }
 }
