@@ -37,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -46,6 +47,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
@@ -156,6 +158,12 @@
     </Compile>
     <Compile Include="Controls\TabControlWithoutHeader.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControlHero.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControlHero.Designer.cs">
+      <DependentUpon>UserControlHero.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormIniError\FormIniError.cs">
       <SubType>Form</SubType>
@@ -395,6 +403,9 @@
     <Compile Include="Utilities\TextboxWriter.cs" />
     <Compile Include="Utilities\Utils.cs" />
     <Compile Include="Utilities\XMLExtensions.cs" />
+    <EmbeddedResource Include="Controls\UserControlHero.resx">
+      <DependentUpon>UserControlHero.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormExceptionDialog\FormExceptionDialog.resx">
       <DependentUpon>FormExceptionDialog.cs</DependentUpon>
     </EmbeddedResource>
