@@ -183,6 +183,12 @@
     <Compile Include="Forms\FormMain\Tabs\UserControlGallery.Designer.cs">
       <DependentUpon>UserControlGallery.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormMain\Tabs\UserControlNexusMods.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain\Tabs\UserControlNexusMods.Designer.cs">
+      <DependentUpon>UserControlNexusMods.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormMain\Tabs\UserControlPipboy.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -194,6 +200,15 @@
     </Compile>
     <Compile Include="Forms\FormMain\Tabs\UserControlProfiles.Designer.cs">
       <DependentUpon>UserControlProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMain\Tabs\UserControlSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain\Tabs\UserControlSettings.Designer.cs">
+      <DependentUpon>UserControlSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMain\Tabs\UserControlSettings.LinkControls.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\FormMain\Tabs\UserControlTweaks.cs">
       <SubType>UserControl</SubType>
@@ -422,11 +437,17 @@
     <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlGallery.resx">
       <DependentUpon>UserControlGallery.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlNexusMods.resx">
+      <DependentUpon>UserControlNexusMods.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlPipboy.resx">
       <DependentUpon>UserControlPipboy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlProfiles.resx">
       <DependentUpon>UserControlProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlSettings.resx">
+      <DependentUpon>UserControlSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlTweaks.resx">
       <DependentUpon>UserControlTweaks.cs</DependentUpon>

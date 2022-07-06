@@ -106,9 +106,6 @@ namespace Fo76ini
                 // Yeah, well or not.
             }
 
-            // Load UI:
-            UpdateNWModeUI(false);
-
             // What's new:
             LoadWhatsNew();
         }
@@ -242,38 +239,34 @@ namespace Fo76ini
 
         #region Nuclear Winter Mode
 
-        private void OnNWModeUpdated(object sender, NuclearWinterEventArgs e)
-        {
-            this.Invoke(new Action(() => {
-                UpdateNWModeUI(e.NuclearWinterModeEnabled);
-            }));
-        }
-        
-        private void UpdateNWModeUI (bool nwModeEnabled)
-        {
-            if (nwModeEnabled)
-            {
-                this.buttonNWMode.Text = Localization.GetString("adventuremode");
-                this.buttonNWMode.Image = Resources.adventures;
-            }
-            else
-            {
-                this.buttonNWMode.Text = Localization.GetString("nuclearwintermode");
-                this.buttonNWMode.Image = Resources.fire;
-            }
-
-            //this.toolStripStatusLabelNuclearWinterModeActive.Visible = nwModeEnabled;
-
-            this.buttonNWMode.Visible = nwModeEnabled || Configuration.NuclearWinter.ShowNWModeBtn;
-
-            EnableUI();
-            Focus();
-        }
-
-        private void toolStripButtonToggleNuclearWinterMode_Click(object sender, EventArgs e)
+        private void userControlSettings_NuclearWinterModeToggled(object sender, EventArgs e)
         {
             DisableUI();
             formMods.ToggleNuclearWinterModeThreaded();
+        }
+
+        private void OnNWModeUpdated(object sender, NuclearWinterEventArgs e)
+        {
+            this.Invoke(new Action(() => {
+                EnableUI();
+            }));
+        }
+
+        /// <summary>
+        /// Show loading screen in front of every control.
+        /// </summary>
+        public void DisableUI()
+        {
+            this.pictureBoxLoadingGIF.Visible = true;
+            this.pictureBoxLoadingGIF.Width = this.Width;
+        }
+
+        /// <summary>
+        /// Makes the loading GIF invisible.
+        /// </summary>
+        public void EnableUI()
+        {
+            this.pictureBoxLoadingGIF.Visible = false;
         }
 
         #endregion
@@ -322,59 +315,67 @@ namespace Fo76ini
                 Application.Exit();
         }
 
-        // "Settings" button:
+        #endregion
+
+        #region Navigation side bar
+
+        // TAB "Settings" button:
         private void navButtonSettings_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.tabPageSettings;
         }
 
-        private void temporaryButtonOpenSettings_Click(object sender, EventArgs e)
-        {
-            formSettings.ShowSettings();
-        }
-
-        // "Mods" button:
+        // WINDOW "Mods" button:
         private void navButtonMods_Click(object sender, EventArgs e)
         {
             this.formMods.OpenUI();
         }
 
+        // TAB "Custom tweaks" button:
         private void userControlSideNav2_CustomClicked(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.tabPageCustom;
         }
 
+        // TAB "Gallery" button:
         private void userControlSideNav2_GalleryClicked(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.tabPageGallery;
         }
 
+        // TAB "Home" button:
         private void userControlSideNav2_HomeClicked(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.tabPageHome;
         }
 
+        // TAB "Pip-Boy" button:
         private void userControlSideNav2_PipboyClicked(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.tabPagePipBoy;
         }
 
+        // TAB "Profiles" button:
         private void userControlSideNav2_ProfileClicked(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.tabPageProfiles;
         }
 
+        // TAB "Tweaks" button:
         private void userControlSideNav2_TweaksClicked(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.tabPageTweaks;
         }
 
+        // TAB "NexusMods" button:
         private void userControlSideNav2_NexusClicked(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.tabPageNexusMods;
         }
 
         #endregion
+
+        #region Update available
 
         // "Get the latest version from NexusMods" link:
         private void linkLabelManualDownloadPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -419,101 +420,6 @@ namespace Fo76ini
             }
         }
 
-        #region Tool strip
-
-        /*
-         * Tool strip:
-         */
-
-        private void toolConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Utils.OpenExplorer(Shared.AppConfigFolder);
-        }
-
-        private void toolLanguagesFolderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Utils.OpenExplorer(Shared.AppTranslationsFolder);
-        }
-
-        private void toolInstallationFolderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Utils.OpenExplorer(Directory.GetParent(Application.ExecutablePath).ToString());
-        }
-
-        private void gameFolderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!this.game.ValidateGamePath())
-            {
-                MsgBox.ShowID("modsGamePathNotSet", MessageBoxIcon.Error);
-                return;
-            }
-            Utils.OpenExplorer(this.game.GamePath);
-        }
-
-        private void gamesConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Utils.OpenExplorer(IniFiles.ParentPath);
-        }
-
-        private void toolStripButtonNexusMods_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start(Shared.URLs.AppNexusModsURL);
-        }
-
-        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CheckVersion(true);
-        }
-
-        private void showUpdaterlogtxtToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (File.Exists(Path.Combine(Shared.AppConfigFolder, "update.log.txt")))
-                Utils.OpenNotepad(Path.Combine(Shared.AppConfigFolder, "update.log.txt"));
-        }
-
-        private void editFallout76iniToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (File.Exists(IniFiles.F76.FilePath))
-                Utils.OpenFile(IniFiles.F76.FilePath);
-        }
-
-        private void editFallout76PrefsiniToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (File.Exists(IniFiles.F76Prefs.FilePath))
-                Utils.OpenFile(IniFiles.F76Prefs.FilePath);
-        }
-
-        private void editFallout76CustominiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (File.Exists(IniFiles.F76Custom.FilePath))
-                Utils.OpenFile(IniFiles.F76Custom.FilePath);
-        }
-
-        private void steamScreenshotFolderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string steamFolder = @"C:\Program Files (x86)\Steam\userdata\";
-            if (Directory.Exists(steamFolder))
-            {
-                steamFolder = Path.Combine(Directory.GetDirectories(steamFolder)[0], @"760\remote\1151340\screenshots");
-                Utils.OpenExplorer(steamFolder);
-            }
-        }
-
-        private void gamePhotosFolderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string photosFolder = Path.Combine(IniFiles.ParentPath, "Photos");
-            if (Directory.Exists(photosFolder))
-            {
-                photosFolder = Directory.GetDirectories(photosFolder)[0];
-                Utils.OpenExplorer(photosFolder);
-            }
-        }
-
-        private void showProfiles_OnClick(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageProfiles;
-        }
-
         #endregion
 
         // Check, if *.ini files have been changed:
@@ -535,17 +441,8 @@ namespace Fo76ini
             }
         }
 
-        public void DisableUI()
-        {
-            this.pictureBoxLoadingGIF.Visible = true;
-            this.pictureBoxLoadingGIF.Width = this.Width;
-        }
 
-        public void EnableUI()
-        {
-            this.pictureBoxLoadingGIF.Visible = false;
-        }
-        
+        #region What's new
 
         /*
          * What's new:
@@ -581,5 +478,7 @@ namespace Fo76ini
         {
             this.richTextBoxWhatsNew.Rtf = (string)ev.Result;
         }
+
+        #endregion
     }
 }

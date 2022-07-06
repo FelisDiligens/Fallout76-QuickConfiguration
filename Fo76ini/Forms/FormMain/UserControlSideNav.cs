@@ -31,10 +31,15 @@ namespace Fo76ini.Forms.FormMain
         public UserControlSideNav()
         {
             InitializeComponent();
-            ProfileManager.ProfileChanged += ProfileManager_ProfileChanged; ;
+            ProfileManager.ProfileChanged += ProfileManager_ProfileChanged;
 
             InitCustomLabelFont();
             labelLogo.Font = new Font(pfc.Families[0], labelLogo.Font.Size);
+
+            // Add control elements to blacklist:
+            Translation.BlackList.AddRange(new string[] {
+                "buttonProfile"
+            });
         }
 
         // https://stackoverflow.com/a/23520042
@@ -78,6 +83,8 @@ namespace Fo76ini.Forms.FormMain
             else
                 contextMenuStripBrowse.Show(buttonBrowse, new Point(0, buttonBrowse.Height));
         }
+
+        #region Button event handler
 
         /*
          * Event handler:
@@ -167,8 +174,12 @@ namespace Fo76ini.Forms.FormMain
         }
         public event EventHandler NexusClicked;
 
+        #endregion
+
+        #region Tool strip
+
         /*
-         * Tool strip stuff
+         * Tool strip
          */
 
         private void gameFolderToolStripMenuItem_Click(object sender, EventArgs e)
@@ -238,10 +249,6 @@ namespace Fo76ini.Forms.FormMain
             if (File.Exists(IniFiles.F76Custom.FilePath))
                 Utils.OpenFile(IniFiles.F76Custom.FilePath);
         }
-
-        private void UserControlSideNav_Load(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

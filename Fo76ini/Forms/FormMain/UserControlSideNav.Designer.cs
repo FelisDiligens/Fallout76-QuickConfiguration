@@ -555,7 +555,6 @@
             this.Controls.Add(this.pictureBoxLogo);
             this.Name = "UserControlSideNav";
             this.Size = new System.Drawing.Size(200, 600);
-            this.Load += new System.EventHandler(this.UserControlSideNav_Load);
             this.contextMenuStripBrowse.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer)).EndInit();

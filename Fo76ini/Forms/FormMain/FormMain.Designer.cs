@@ -39,6 +39,7 @@
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new Fo76ini.Controls.TabControlWithoutHeader();
             this.tabPageHome = new System.Windows.Forms.TabPage();
+            this.userControlHero = new Fo76ini.Controls.UserControlHero();
             this.panelWhatsNew = new System.Windows.Forms.Panel();
             this.richTextBoxWhatsNew = new System.Windows.Forms.RichTextBox();
             this.panelUpdate = new System.Windows.Forms.Panel();
@@ -57,21 +58,18 @@
             this.tabPageTweaks = new System.Windows.Forms.TabPage();
             this.userControlTweaks = new Fo76ini.Forms.FormMain.UserControlTweaks();
             this.tabPagePipBoy = new System.Windows.Forms.TabPage();
-            this.userControlPipboy1 = new Fo76ini.Forms.FormMain.UserControlPipboy();
+            this.userControlPipboy = new Fo76ini.Forms.FormMain.UserControlPipboy();
             this.tabPageGallery = new System.Windows.Forms.TabPage();
             this.userControlGallery = new Fo76ini.Forms.FormMain.UserControlGallery();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
             this.userControlCustom = new Fo76ini.Forms.FormMain.Tabs.UserControlCustom();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
-            this.labelTitleSettings = new System.Windows.Forms.Label();
-            this.temporaryButtonOpenSettings = new System.Windows.Forms.Button();
-            this.buttonNWMode = new System.Windows.Forms.Button();
+            this.userControlSettings = new Fo76ini.Forms.FormMain.Tabs.UserControlSettings();
             this.tabPageProfiles = new System.Windows.Forms.TabPage();
             this.userControlProfiles = new Fo76ini.Forms.FormMain.Tabs.UserControlProfiles();
             this.tabPageNexusMods = new System.Windows.Forms.TabPage();
-            this.labelTitleNexus = new System.Windows.Forms.Label();
-            this.userControlSideNav2 = new Fo76ini.Forms.FormMain.UserControlSideNav();
-            this.userControlHero = new Fo76ini.Controls.UserControlHero();
+            this.userControlNexusMods = new Fo76ini.Forms.FormMain.Tabs.UserControlNexusMods();
+            this.userControlSideNav = new Fo76ini.Forms.FormMain.UserControlSideNav();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageHome.SuspendLayout();
@@ -172,6 +170,16 @@
             this.tabPageHome.TabIndex = 4;
             this.tabPageHome.Text = "Home";
             this.tabPageHome.UseVisualStyleBackColor = true;
+            // 
+            // userControlHero
+            // 
+            this.userControlHero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlHero.Location = new System.Drawing.Point(0, 0);
+            this.userControlHero.Margin = new System.Windows.Forms.Padding(0);
+            this.userControlHero.Name = "userControlHero";
+            this.userControlHero.Size = new System.Drawing.Size(676, 168);
+            this.userControlHero.TabIndex = 46;
             // 
             // panelWhatsNew
             // 
@@ -370,7 +378,7 @@
             // 
             // tabPagePipBoy
             // 
-            this.tabPagePipBoy.Controls.Add(this.userControlPipboy1);
+            this.tabPagePipBoy.Controls.Add(this.userControlPipboy);
             this.tabPagePipBoy.Location = new System.Drawing.Point(4, 22);
             this.tabPagePipBoy.Name = "tabPagePipBoy";
             this.tabPagePipBoy.Size = new System.Drawing.Size(676, 557);
@@ -378,15 +386,15 @@
             this.tabPagePipBoy.Text = "Pip-Boy";
             this.tabPagePipBoy.UseVisualStyleBackColor = true;
             // 
-            // userControlPipboy1
+            // userControlPipboy
             // 
-            this.userControlPipboy1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.userControlPipboy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.userControlPipboy1.Location = new System.Drawing.Point(0, 0);
-            this.userControlPipboy1.Name = "userControlPipboy1";
-            this.userControlPipboy1.Size = new System.Drawing.Size(676, 557);
-            this.userControlPipboy1.TabIndex = 0;
+            this.userControlPipboy.Location = new System.Drawing.Point(0, 0);
+            this.userControlPipboy.Name = "userControlPipboy";
+            this.userControlPipboy.Size = new System.Drawing.Size(676, 557);
+            this.userControlPipboy.TabIndex = 0;
             // 
             // tabPageGallery
             // 
@@ -432,9 +440,7 @@
             // 
             // tabPageSettings
             // 
-            this.tabPageSettings.Controls.Add(this.labelTitleSettings);
-            this.tabPageSettings.Controls.Add(this.temporaryButtonOpenSettings);
-            this.tabPageSettings.Controls.Add(this.buttonNWMode);
+            this.tabPageSettings.Controls.Add(this.userControlSettings);
             this.tabPageSettings.Location = new System.Drawing.Point(4, 22);
             this.tabPageSettings.Name = "tabPageSettings";
             this.tabPageSettings.Padding = new System.Windows.Forms.Padding(3);
@@ -443,37 +449,17 @@
             this.tabPageSettings.Text = "Settings";
             this.tabPageSettings.UseVisualStyleBackColor = true;
             // 
-            // labelTitleSettings
+            // userControlSettings
             // 
-            this.labelTitleSettings.AutoSize = true;
-            this.labelTitleSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitleSettings.Location = new System.Drawing.Point(6, 6);
-            this.labelTitleSettings.Name = "labelTitleSettings";
-            this.labelTitleSettings.Size = new System.Drawing.Size(127, 24);
-            this.labelTitleSettings.TabIndex = 2;
-            this.labelTitleSettings.Text = "Settings (WIP)";
-            // 
-            // temporaryButtonOpenSettings
-            // 
-            this.temporaryButtonOpenSettings.Location = new System.Drawing.Point(10, 33);
-            this.temporaryButtonOpenSettings.Name = "temporaryButtonOpenSettings";
-            this.temporaryButtonOpenSettings.Size = new System.Drawing.Size(140, 23);
-            this.temporaryButtonOpenSettings.TabIndex = 1;
-            this.temporaryButtonOpenSettings.Text = "Open Settings";
-            this.temporaryButtonOpenSettings.UseVisualStyleBackColor = true;
-            this.temporaryButtonOpenSettings.Click += new System.EventHandler(this.temporaryButtonOpenSettings_Click);
-            // 
-            // buttonNWMode
-            // 
-            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
-            this.buttonNWMode.Location = new System.Drawing.Point(10, 77);
-            this.buttonNWMode.Name = "buttonNWMode";
-            this.buttonNWMode.Size = new System.Drawing.Size(140, 60);
-            this.buttonNWMode.TabIndex = 0;
-            this.buttonNWMode.Text = "Nuclear Winter";
-            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNWMode.UseVisualStyleBackColor = true;
-            this.buttonNWMode.Click += new System.EventHandler(this.toolStripButtonToggleNuclearWinterMode_Click);
+            this.userControlSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlSettings.AutoScroll = true;
+            this.userControlSettings.Location = new System.Drawing.Point(0, 0);
+            this.userControlSettings.Name = "userControlSettings";
+            this.userControlSettings.Size = new System.Drawing.Size(676, 557);
+            this.userControlSettings.TabIndex = 3;
+            this.userControlSettings.NuclearWinterModeToggled += new System.EventHandler(this.userControlSettings_NuclearWinterModeToggled);
             // 
             // tabPageProfiles
             // 
@@ -498,7 +484,7 @@
             // 
             // tabPageNexusMods
             // 
-            this.tabPageNexusMods.Controls.Add(this.labelTitleNexus);
+            this.tabPageNexusMods.Controls.Add(this.userControlNexusMods);
             this.tabPageNexusMods.Location = new System.Drawing.Point(4, 22);
             this.tabPageNexusMods.Name = "tabPageNexusMods";
             this.tabPageNexusMods.Padding = new System.Windows.Forms.Padding(3);
@@ -507,47 +493,37 @@
             this.tabPageNexusMods.Text = "NexusMods";
             this.tabPageNexusMods.UseVisualStyleBackColor = true;
             // 
-            // labelTitleNexus
+            // userControlNexusMods
             // 
-            this.labelTitleNexus.AutoSize = true;
-            this.labelTitleNexus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitleNexus.Location = new System.Drawing.Point(6, 6);
-            this.labelTitleNexus.Name = "labelTitleNexus";
-            this.labelTitleNexus.Size = new System.Drawing.Size(255, 24);
-            this.labelTitleNexus.TabIndex = 3;
-            this.labelTitleNexus.Text = "NexusMods Integration (WIP)";
-            // 
-            // userControlSideNav2
-            // 
-            this.userControlSideNav2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.userControlSideNav2.BackColor = System.Drawing.Color.Black;
-            this.userControlSideNav2.Location = new System.Drawing.Point(0, -2);
-            this.userControlSideNav2.Name = "userControlSideNav2";
-            this.userControlSideNav2.Size = new System.Drawing.Size(200, 583);
-            this.userControlSideNav2.TabIndex = 17;
-            this.userControlSideNav2.PlayClicked += new System.EventHandler(this.navButtonPlay_Click);
-            this.userControlSideNav2.ApplyClicked += new System.EventHandler(this.navButtonApply_Click);
-            this.userControlSideNav2.SettingsClicked += new System.EventHandler(this.navButtonSettings_Click);
-            this.userControlSideNav2.ModsClicked += new System.EventHandler(this.navButtonMods_Click);
-            this.userControlSideNav2.UpdateClicked += new System.EventHandler(this.buttonUpdateNow_Click);
-            this.userControlSideNav2.HomeClicked += new System.EventHandler(this.userControlSideNav2_HomeClicked);
-            this.userControlSideNav2.TweaksClicked += new System.EventHandler(this.userControlSideNav2_TweaksClicked);
-            this.userControlSideNav2.PipboyClicked += new System.EventHandler(this.userControlSideNav2_PipboyClicked);
-            this.userControlSideNav2.GalleryClicked += new System.EventHandler(this.userControlSideNav2_GalleryClicked);
-            this.userControlSideNav2.CustomClicked += new System.EventHandler(this.userControlSideNav2_CustomClicked);
-            this.userControlSideNav2.ProfileClicked += new System.EventHandler(this.userControlSideNav2_ProfileClicked);
-            this.userControlSideNav2.NexusClicked += new System.EventHandler(this.userControlSideNav2_NexusClicked);
-            // 
-            // userControlHero
-            // 
-            this.userControlHero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.userControlNexusMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.userControlHero.Location = new System.Drawing.Point(0, 0);
-            this.userControlHero.Margin = new System.Windows.Forms.Padding(0);
-            this.userControlHero.Name = "userControlHero";
-            this.userControlHero.Size = new System.Drawing.Size(676, 168);
-            this.userControlHero.TabIndex = 46;
+            this.userControlNexusMods.Location = new System.Drawing.Point(0, 0);
+            this.userControlNexusMods.Name = "userControlNexusMods";
+            this.userControlNexusMods.Size = new System.Drawing.Size(676, 557);
+            this.userControlNexusMods.TabIndex = 0;
+            // 
+            // userControlSideNav
+            // 
+            this.userControlSideNav.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.userControlSideNav.BackColor = System.Drawing.Color.Black;
+            this.userControlSideNav.Location = new System.Drawing.Point(0, -2);
+            this.userControlSideNav.Name = "userControlSideNav";
+            this.userControlSideNav.Size = new System.Drawing.Size(200, 583);
+            this.userControlSideNav.TabIndex = 17;
+            this.userControlSideNav.PlayClicked += new System.EventHandler(this.navButtonPlay_Click);
+            this.userControlSideNav.ApplyClicked += new System.EventHandler(this.navButtonApply_Click);
+            this.userControlSideNav.SettingsClicked += new System.EventHandler(this.navButtonSettings_Click);
+            this.userControlSideNav.ModsClicked += new System.EventHandler(this.navButtonMods_Click);
+            this.userControlSideNav.UpdateClicked += new System.EventHandler(this.buttonUpdateNow_Click);
+            this.userControlSideNav.HomeClicked += new System.EventHandler(this.userControlSideNav2_HomeClicked);
+            this.userControlSideNav.TweaksClicked += new System.EventHandler(this.userControlSideNav2_TweaksClicked);
+            this.userControlSideNav.PipboyClicked += new System.EventHandler(this.userControlSideNav2_PipboyClicked);
+            this.userControlSideNav.GalleryClicked += new System.EventHandler(this.userControlSideNav2_GalleryClicked);
+            this.userControlSideNav.CustomClicked += new System.EventHandler(this.userControlSideNav2_CustomClicked);
+            this.userControlSideNav.ProfileClicked += new System.EventHandler(this.userControlSideNav2_ProfileClicked);
+            this.userControlSideNav.NexusClicked += new System.EventHandler(this.userControlSideNav2_NexusClicked);
             // 
             // FormMain
             // 
@@ -556,7 +532,7 @@
             this.ClientSize = new System.Drawing.Size(884, 581);
             this.Controls.Add(this.pictureBoxLoadingGIF);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.userControlSideNav2);
+            this.Controls.Add(this.userControlSideNav);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(900, 620);
@@ -576,10 +552,8 @@
             this.tabPageGallery.ResumeLayout(false);
             this.tabPageCustom.ResumeLayout(false);
             this.tabPageSettings.ResumeLayout(false);
-            this.tabPageSettings.PerformLayout();
             this.tabPageProfiles.ResumeLayout(false);
             this.tabPageNexusMods.ResumeLayout(false);
-            this.tabPageNexusMods.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -614,19 +588,17 @@
         private System.Windows.Forms.TabPage tabPageTweaks;
         private Forms.FormMain.UserControlTweaks userControlTweaks;
         private System.Windows.Forms.TabPage tabPagePipBoy;
-        private Forms.FormMain.UserControlPipboy userControlPipboy1;
+        private Forms.FormMain.UserControlPipboy userControlPipboy;
         private Forms.FormMain.UserControlGallery userControlGallery;
         private Forms.FormMain.Tabs.UserControlCustom userControlCustom;
         private System.Windows.Forms.TabPage tabPageProfiles;
         private Forms.FormMain.Tabs.UserControlProfiles userControlProfiles;
         private System.Windows.Forms.TabPage tabPageSettings;
-        private Forms.FormMain.UserControlSideNav userControlSideNav2;
-        private System.Windows.Forms.Button buttonNWMode;
-        private System.Windows.Forms.Button temporaryButtonOpenSettings;
-        private System.Windows.Forms.Label labelTitleSettings;
+        private Forms.FormMain.UserControlSideNav userControlSideNav;
         private System.Windows.Forms.TabPage tabPageNexusMods;
-        private System.Windows.Forms.Label labelTitleNexus;
         private Controls.UserControlHero userControlHero;
+        private Forms.FormMain.Tabs.UserControlSettings userControlSettings;
+        private Forms.FormMain.Tabs.UserControlNexusMods userControlNexusMods;
     }
 }
 
