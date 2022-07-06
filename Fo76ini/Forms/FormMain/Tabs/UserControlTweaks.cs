@@ -515,5 +515,10 @@ namespace Fo76ini.Forms.FormMain
         }
 
         #endregion
+
+        private void groupBoxAudioVolume_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

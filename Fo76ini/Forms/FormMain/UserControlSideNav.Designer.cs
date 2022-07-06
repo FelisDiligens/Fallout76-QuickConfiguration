@@ -61,10 +61,13 @@
             this.buttonApply = new Fo76ini.Controls.StyledButton();
             this.buttonPlay = new Fo76ini.Controls.StyledButton();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.buttonNexusMods = new Fo76ini.Controls.StyledButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.contextMenuStripBrowse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // labelLogo
@@ -196,7 +199,7 @@
             // 
             this.labelGameEditionDesc.AutoSize = true;
             this.labelGameEditionDesc.ForeColor = System.Drawing.Color.White;
-            this.labelGameEditionDesc.Location = new System.Drawing.Point(8, 493);
+            this.labelGameEditionDesc.Location = new System.Drawing.Point(5, 528);
             this.labelGameEditionDesc.Name = "labelGameEditionDesc";
             this.labelGameEditionDesc.Size = new System.Drawing.Size(83, 13);
             this.labelGameEditionDesc.TabIndex = 49;
@@ -233,7 +236,7 @@
             this.buttonProfile.ForeColor = System.Drawing.Color.White;
             this.buttonProfile.Image = global::Fo76ini.Properties.Resources.help_24;
             this.buttonProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonProfile.Location = new System.Drawing.Point(3, 506);
+            this.buttonProfile.Location = new System.Drawing.Point(3, 544);
             this.buttonProfile.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.buttonProfile.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.buttonProfile.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
@@ -428,7 +431,7 @@
             this.buttonUpdate.ForeColor = System.Drawing.Color.White;
             this.buttonUpdate.Image = global::Fo76ini.Properties.Resources.available_updates;
             this.buttonUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonUpdate.Location = new System.Drawing.Point(3, 443);
+            this.buttonUpdate.Location = new System.Drawing.Point(3, 479);
             this.buttonUpdate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.buttonUpdate.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.buttonUpdate.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
@@ -493,11 +496,45 @@
             this.pictureBoxLogo.TabIndex = 0;
             this.pictureBoxLogo.TabStop = false;
             // 
+            // buttonNexusMods
+            // 
+            this.buttonNexusMods.BackColor = System.Drawing.Color.Black;
+            this.buttonNexusMods.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonNexusMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNexusMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNexusMods.ForeColor = System.Drawing.Color.White;
+            this.buttonNexusMods.Image = global::Fo76ini.Properties.Resources.nexus_24;
+            this.buttonNexusMods.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNexusMods.Location = new System.Drawing.Point(3, 443);
+            this.buttonNexusMods.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.buttonNexusMods.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.buttonNexusMods.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonNexusMods.Name = "buttonNexusMods";
+            this.buttonNexusMods.Padding = 10;
+            this.buttonNexusMods.Size = new System.Drawing.Size(194, 36);
+            this.buttonNexusMods.TabIndex = 52;
+            this.buttonNexusMods.Text = "NexusMods";
+            this.buttonNexusMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNexusMods.UseVisualStyleBackColor = true;
+            this.buttonNexusMods.Click += new System.EventHandler(this.buttonNexusMods_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox2.Location = new System.Drawing.Point(0, 521);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(200, 1);
+            this.pictureBox2.TabIndex = 53;
+            this.pictureBox2.TabStop = false;
+            // 
             // UserControlSideNav
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.buttonNexusMods);
             this.Controls.Add(this.buttonCustom);
             this.Controls.Add(this.buttonProfile);
             this.Controls.Add(this.labelGameEditionDesc);
@@ -518,10 +555,12 @@
             this.Controls.Add(this.pictureBoxLogo);
             this.Name = "UserControlSideNav";
             this.Size = new System.Drawing.Size(200, 600);
+            this.Load += new System.EventHandler(this.UserControlSideNav_Load);
             this.contextMenuStripBrowse.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -561,5 +600,7 @@
         private System.Windows.Forms.Label labelGameEditionDesc;
         private Controls.StyledButton buttonProfile;
         private Controls.StyledButton buttonCustom;
+        private Controls.StyledButton buttonNexusMods;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

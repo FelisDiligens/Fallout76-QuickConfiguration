@@ -160,6 +160,13 @@ namespace Fo76ini.Forms.FormMain
         }
         public event EventHandler ProfileClicked;
 
+        private void buttonNexusMods_Click(object sender, EventArgs e)
+        {
+            if (NexusClicked != null)
+                NexusClicked(sender, e);
+        }
+        public event EventHandler NexusClicked;
+
         /*
          * Tool strip stuff
          */
@@ -230,6 +237,11 @@ namespace Fo76ini.Forms.FormMain
         {
             if (File.Exists(IniFiles.F76Custom.FilePath))
                 Utils.OpenFile(IniFiles.F76Custom.FilePath);
+        }
+
+        private void UserControlSideNav_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

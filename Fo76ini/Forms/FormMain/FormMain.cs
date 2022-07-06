@@ -369,6 +369,11 @@ namespace Fo76ini
             this.tabControl1.SelectedTab = this.tabPageTweaks;
         }
 
+        private void userControlSideNav2_NexusClicked(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPageNexusMods;
+        }
+
         #endregion
 
         // "Get the latest version from NexusMods" link:

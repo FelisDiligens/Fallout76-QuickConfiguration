@@ -388,5 +388,56 @@ namespace Fo76ini.Forms.FormMain
 
         // Screenshot index
         private ScreenshotIndexTweak screenshotIndexTweak = new ScreenshotIndexTweak();
+
+
+        private void openFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Open one folder.
+            // I doubt anyone wants to actually open multiple folders at once
+            int index = galleryContextMenuItems[0];
+            Utils.OpenExplorer(Path.GetDirectoryName(galleryImagePaths[index]));
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<String> files = new List<String>();
+            foreach (int index in galleryContextMenuItems)
+                files.Add(galleryImagePaths[index]);
+            ClipboardUtils.CutFiles(files);
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<String> files = new List<String>();
+            foreach (int index in galleryContextMenuItems)
+                files.Add(galleryImagePaths[index]);
+            ClipboardUtils.CopyFiles(files);
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool ok = false;
+            if (galleryContextMenuItems.Count == 1)
+            {
+                String fileName = Path.GetFileName(galleryImagePaths[galleryContextMenuItems[0]]);
+                ok = MsgBox.Get("galleryDeleteScreenshot").FormatTitle(fileName).FormatText(fileName).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            }
+            else
+            {
+                ok = MsgBox.Get("galleryDeleteScreenshots").FormatTitle(galleryContextMenuItems.Count.ToString()).FormatText(galleryContextMenuItems.Count.ToString()).Show(MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            }
+
+            if (ok)
+            {
+                foreach (int index in galleryContextMenuItems)
+                {
+                    String path = galleryImagePaths[index];
+                    if (File.Exists(path))
+                        File.Delete(path);
+                }
+
+                UpdateScreenShotGalleryThreaded();
+            }
+        }
     }
 }

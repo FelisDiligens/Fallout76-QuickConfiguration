@@ -416,10 +416,10 @@
             this.tabControlTweaks.Controls.Add(this.tabPageAudio);
             this.tabControlTweaks.Controls.Add(this.tabPageControls);
             this.tabControlTweaks.Controls.Add(this.tabPageCamera);
-            this.tabControlTweaks.Location = new System.Drawing.Point(3, 50);
+            this.tabControlTweaks.Location = new System.Drawing.Point(6, 50);
             this.tabControlTweaks.Name = "tabControlTweaks";
             this.tabControlTweaks.SelectedIndex = 0;
-            this.tabControlTweaks.Size = new System.Drawing.Size(844, 407);
+            this.tabControlTweaks.Size = new System.Drawing.Size(694, 547);
             this.tabControlTweaks.TabIndex = 0;
             // 
             // tabPageLogin
@@ -430,7 +430,7 @@
             this.tabPageLogin.Location = new System.Drawing.Point(4, 22);
             this.tabPageLogin.Name = "tabPageLogin";
             this.tabPageLogin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLogin.Size = new System.Drawing.Size(836, 381);
+            this.tabPageLogin.Size = new System.Drawing.Size(686, 521);
             this.tabPageLogin.TabIndex = 5;
             this.tabPageLogin.Text = "Bethesda.net";
             this.tabPageLogin.UseVisualStyleBackColor = true;
@@ -454,7 +454,7 @@
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount10);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount8);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount9);
-            this.groupBoxLoginProfiles.Location = new System.Drawing.Point(404, 6);
+            this.groupBoxLoginProfiles.Location = new System.Drawing.Point(6, 277);
             this.groupBoxLoginProfiles.Name = "groupBoxLoginProfiles";
             this.groupBoxLoginProfiles.Size = new System.Drawing.Size(421, 143);
             this.groupBoxLoginProfiles.TabIndex = 29;
@@ -646,7 +646,7 @@
             this.groupBoxLogin.Location = new System.Drawing.Point(6, 6);
             this.groupBoxLogin.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxLogin.Name = "groupBoxLogin";
-            this.groupBoxLogin.Size = new System.Drawing.Size(389, 354);
+            this.groupBoxLogin.Size = new System.Drawing.Size(421, 262);
             this.groupBoxLogin.TabIndex = 15;
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Login with Bethesda.net";
@@ -688,7 +688,7 @@
             this.textBoxPassword.Location = new System.Drawing.Point(92, 44);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '•';
-            this.textBoxPassword.Size = new System.Drawing.Size(283, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(315, 20);
             this.textBoxPassword.TabIndex = 4;
             this.textBoxPassword.UseSystemPasswordChar = true;
             this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
@@ -699,7 +699,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxUserName.Location = new System.Drawing.Point(92, 19);
             this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(283, 20);
+            this.textBoxUserName.Size = new System.Drawing.Size(315, 20);
             this.textBoxUserName.TabIndex = 3;
             this.textBoxUserName.TextChanged += new System.EventHandler(this.textBoxUserName_TextChanged);
             // 
@@ -742,7 +742,7 @@
             this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabPageGeneral.Name = "tabPageGeneral";
             this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGeneral.Size = new System.Drawing.Size(836, 381);
+            this.tabPageGeneral.Size = new System.Drawing.Size(686, 521);
             this.tabPageGeneral.TabIndex = 0;
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
@@ -1114,7 +1114,7 @@
             this.tabPageVideo.Location = new System.Drawing.Point(4, 22);
             this.tabPageVideo.Name = "tabPageVideo";
             this.tabPageVideo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageVideo.Size = new System.Drawing.Size(836, 381);
+            this.tabPageVideo.Size = new System.Drawing.Size(686, 521);
             this.tabPageVideo.TabIndex = 1;
             this.tabPageVideo.Text = "Video";
             this.tabPageVideo.UseVisualStyleBackColor = true;
@@ -1127,9 +1127,9 @@
             this.panel3.AutoScroll = true;
             this.panel3.AutoScrollMargin = new System.Drawing.Size(0, 6);
             this.panel3.Controls.Add(this.groupBoxGraphics);
-            this.panel3.Location = new System.Drawing.Point(408, 0);
+            this.panel3.Location = new System.Drawing.Point(6, 239);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(428, 381);
+            this.panel3.Size = new System.Drawing.Size(433, 282);
             this.panel3.TabIndex = 27;
             // 
             // groupBoxGraphics
@@ -2011,7 +2011,7 @@
             this.tabPageAudio.Controls.Add(this.groupBoxAudioVolume);
             this.tabPageAudio.Location = new System.Drawing.Point(4, 22);
             this.tabPageAudio.Name = "tabPageAudio";
-            this.tabPageAudio.Size = new System.Drawing.Size(836, 381);
+            this.tabPageAudio.Size = new System.Drawing.Size(686, 521);
             this.tabPageAudio.TabIndex = 2;
             this.tabPageAudio.Text = "Audio";
             this.tabPageAudio.UseVisualStyleBackColor = true;
@@ -2020,10 +2020,10 @@
             // 
             this.groupBoxAudio.Controls.Add(this.checkBoxEnableAudio);
             this.groupBoxAudio.Controls.Add(this.checkBoxMainMenuMusic);
-            this.groupBoxAudio.Location = new System.Drawing.Point(489, 6);
+            this.groupBoxAudio.Location = new System.Drawing.Point(396, 6);
             this.groupBoxAudio.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxAudio.Name = "groupBoxAudio";
-            this.groupBoxAudio.Size = new System.Drawing.Size(341, 81);
+            this.groupBoxAudio.Size = new System.Drawing.Size(284, 81);
             this.groupBoxAudio.TabIndex = 64;
             this.groupBoxAudio.TabStop = false;
             this.groupBoxAudio.Text = "Audio";
@@ -2055,10 +2055,10 @@
             this.groupBoxVoice.Controls.Add(this.comboBoxVoiceChatMode);
             this.groupBoxVoice.Controls.Add(this.labelVoiceChatMode);
             this.groupBoxVoice.Controls.Add(this.checkBoxPushToTalk);
-            this.groupBoxVoice.Location = new System.Drawing.Point(489, 93);
+            this.groupBoxVoice.Location = new System.Drawing.Point(396, 93);
             this.groupBoxVoice.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxVoice.Name = "groupBoxVoice";
-            this.groupBoxVoice.Size = new System.Drawing.Size(341, 89);
+            this.groupBoxVoice.Size = new System.Drawing.Size(284, 89);
             this.groupBoxVoice.TabIndex = 63;
             this.groupBoxVoice.TabStop = false;
             this.groupBoxVoice.Text = "Voice";
@@ -2067,9 +2067,9 @@
             // 
             this.comboBoxVoiceChatMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxVoiceChatMode.FormattingEnabled = true;
-            this.comboBoxVoiceChatMode.Location = new System.Drawing.Point(140, 19);
+            this.comboBoxVoiceChatMode.Location = new System.Drawing.Point(123, 19);
             this.comboBoxVoiceChatMode.Name = "comboBoxVoiceChatMode";
-            this.comboBoxVoiceChatMode.Size = new System.Drawing.Size(187, 21);
+            this.comboBoxVoiceChatMode.Size = new System.Drawing.Size(155, 21);
             this.comboBoxVoiceChatMode.TabIndex = 2;
             // 
             // labelVoiceChatMode
@@ -2099,10 +2099,10 @@
             this.groupBoxAudioInterface.Controls.Add(this.checkBoxDialogueHistory);
             this.groupBoxAudioInterface.Controls.Add(this.checkBoxDialogueSubtitles);
             this.groupBoxAudioInterface.Controls.Add(this.checkBoxGeneralSubtitles);
-            this.groupBoxAudioInterface.Location = new System.Drawing.Point(489, 188);
+            this.groupBoxAudioInterface.Location = new System.Drawing.Point(396, 188);
             this.groupBoxAudioInterface.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxAudioInterface.Name = "groupBoxAudioInterface";
-            this.groupBoxAudioInterface.Size = new System.Drawing.Size(341, 187);
+            this.groupBoxAudioInterface.Size = new System.Drawing.Size(284, 187);
             this.groupBoxAudioInterface.TabIndex = 62;
             this.groupBoxAudioInterface.TabStop = false;
             this.groupBoxAudioInterface.Text = "Interface";
@@ -2117,14 +2117,14 @@
             this.sliderConversationHistorySize.Maximum = 8;
             this.sliderConversationHistorySize.Minimum = 1;
             this.sliderConversationHistorySize.Name = "sliderConversationHistorySize";
-            this.sliderConversationHistorySize.Size = new System.Drawing.Size(245, 45);
+            this.sliderConversationHistorySize.Size = new System.Drawing.Size(188, 45);
             this.sliderConversationHistorySize.TabIndex = 59;
             this.sliderConversationHistorySize.Value = 4;
             // 
             // numConversationHistorySize
             // 
             this.numConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numConversationHistorySize.Location = new System.Drawing.Point(261, 112);
+            this.numConversationHistorySize.Location = new System.Drawing.Point(204, 112);
             this.numConversationHistorySize.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -2210,10 +2210,11 @@
             this.groupBoxAudioVolume.Location = new System.Drawing.Point(6, 6);
             this.groupBoxAudioVolume.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxAudioVolume.Name = "groupBoxAudioVolume";
-            this.groupBoxAudioVolume.Size = new System.Drawing.Size(471, 369);
+            this.groupBoxAudioVolume.Size = new System.Drawing.Size(378, 369);
             this.groupBoxAudioVolume.TabIndex = 60;
             this.groupBoxAudioVolume.TabStop = false;
             this.groupBoxAudioVolume.Text = "Volume";
+            this.groupBoxAudioVolume.Enter += new System.EventHandler(this.groupBoxAudioVolume_Enter);
             // 
             // sliderAudioChat
             // 
@@ -2221,10 +2222,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudioChat.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudioChat.LargeChange = 20;
-            this.sliderAudioChat.Location = new System.Drawing.Point(134, 61);
+            this.sliderAudioChat.Location = new System.Drawing.Point(99, 61);
             this.sliderAudioChat.Maximum = 100;
             this.sliderAudioChat.Name = "sliderAudioChat";
-            this.sliderAudioChat.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudioChat.Size = new System.Drawing.Size(193, 45);
             this.sliderAudioChat.SmallChange = 10;
             this.sliderAudioChat.TabIndex = 52;
             this.sliderAudioChat.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2236,10 +2237,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal6.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal6.LargeChange = 20;
-            this.sliderAudiofVal6.Location = new System.Drawing.Point(134, 306);
+            this.sliderAudiofVal6.Location = new System.Drawing.Point(99, 306);
             this.sliderAudiofVal6.Maximum = 100;
             this.sliderAudiofVal6.Name = "sliderAudiofVal6";
-            this.sliderAudiofVal6.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal6.Size = new System.Drawing.Size(193, 45);
             this.sliderAudiofVal6.SmallChange = 10;
             this.sliderAudiofVal6.TabIndex = 49;
             this.sliderAudiofVal6.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2251,10 +2252,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal5.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal5.LargeChange = 20;
-            this.sliderAudiofVal5.Location = new System.Drawing.Point(134, 276);
+            this.sliderAudiofVal5.Location = new System.Drawing.Point(99, 276);
             this.sliderAudiofVal5.Maximum = 100;
             this.sliderAudiofVal5.Name = "sliderAudiofVal5";
-            this.sliderAudiofVal5.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal5.Size = new System.Drawing.Size(193, 45);
             this.sliderAudiofVal5.SmallChange = 10;
             this.sliderAudiofVal5.TabIndex = 46;
             this.sliderAudiofVal5.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2266,10 +2267,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal4.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal4.LargeChange = 20;
-            this.sliderAudiofVal4.Location = new System.Drawing.Point(134, 246);
+            this.sliderAudiofVal4.Location = new System.Drawing.Point(99, 246);
             this.sliderAudiofVal4.Maximum = 100;
             this.sliderAudiofVal4.Name = "sliderAudiofVal4";
-            this.sliderAudiofVal4.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal4.Size = new System.Drawing.Size(193, 45);
             this.sliderAudiofVal4.SmallChange = 10;
             this.sliderAudiofVal4.TabIndex = 43;
             this.sliderAudiofVal4.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2281,10 +2282,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal3.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal3.LargeChange = 20;
-            this.sliderAudiofVal3.Location = new System.Drawing.Point(134, 216);
+            this.sliderAudiofVal3.Location = new System.Drawing.Point(99, 216);
             this.sliderAudiofVal3.Maximum = 100;
             this.sliderAudiofVal3.Name = "sliderAudiofVal3";
-            this.sliderAudiofVal3.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal3.Size = new System.Drawing.Size(193, 45);
             this.sliderAudiofVal3.SmallChange = 10;
             this.sliderAudiofVal3.TabIndex = 40;
             this.sliderAudiofVal3.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2296,10 +2297,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal2.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal2.LargeChange = 20;
-            this.sliderAudiofVal2.Location = new System.Drawing.Point(134, 186);
+            this.sliderAudiofVal2.Location = new System.Drawing.Point(99, 186);
             this.sliderAudiofVal2.Maximum = 100;
             this.sliderAudiofVal2.Name = "sliderAudiofVal2";
-            this.sliderAudiofVal2.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal2.Size = new System.Drawing.Size(193, 45);
             this.sliderAudiofVal2.SmallChange = 10;
             this.sliderAudiofVal2.TabIndex = 37;
             this.sliderAudiofVal2.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2311,10 +2312,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal1.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal1.LargeChange = 20;
-            this.sliderAudiofVal1.Location = new System.Drawing.Point(134, 156);
+            this.sliderAudiofVal1.Location = new System.Drawing.Point(99, 156);
             this.sliderAudiofVal1.Maximum = 100;
             this.sliderAudiofVal1.Name = "sliderAudiofVal1";
-            this.sliderAudiofVal1.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal1.Size = new System.Drawing.Size(193, 45);
             this.sliderAudiofVal1.SmallChange = 10;
             this.sliderAudiofVal1.TabIndex = 34;
             this.sliderAudiofVal1.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2323,7 +2324,7 @@
             // labelVolumeMaster
             // 
             this.labelVolumeMaster.AutoSize = true;
-            this.labelVolumeMaster.Location = new System.Drawing.Point(15, 25);
+            this.labelVolumeMaster.Location = new System.Drawing.Point(6, 25);
             this.labelVolumeMaster.Name = "labelVolumeMaster";
             this.labelVolumeMaster.Size = new System.Drawing.Size(76, 13);
             this.labelVolumeMaster.TabIndex = 28;
@@ -2335,10 +2336,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderVolumeMaster.BackColor = System.Drawing.SystemColors.Window;
             this.sliderVolumeMaster.LargeChange = 20;
-            this.sliderVolumeMaster.Location = new System.Drawing.Point(134, 25);
+            this.sliderVolumeMaster.Location = new System.Drawing.Point(99, 25);
             this.sliderVolumeMaster.Maximum = 100;
             this.sliderVolumeMaster.Name = "sliderVolumeMaster";
-            this.sliderVolumeMaster.Size = new System.Drawing.Size(237, 45);
+            this.sliderVolumeMaster.Size = new System.Drawing.Size(193, 45);
             this.sliderVolumeMaster.SmallChange = 10;
             this.sliderVolumeMaster.TabIndex = 27;
             this.sliderVolumeMaster.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2353,7 +2354,7 @@
             0,
             0,
             65536});
-            this.numVolumeMaster.Location = new System.Drawing.Point(377, 25);
+            this.numVolumeMaster.Location = new System.Drawing.Point(298, 25);
             this.numVolumeMaster.Maximum = new decimal(new int[] {
             1,
             0,
@@ -2376,7 +2377,7 @@
             0,
             0,
             0});
-            this.numAudioChat.Location = new System.Drawing.Point(377, 61);
+            this.numAudioChat.Location = new System.Drawing.Point(298, 61);
             this.numAudioChat.Name = "numAudioChat";
             this.numAudioChat.Size = new System.Drawing.Size(74, 20);
             this.numAudioChat.TabIndex = 54;
@@ -2392,10 +2393,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderAudiofVal0.BackColor = System.Drawing.SystemColors.Window;
             this.sliderAudiofVal0.LargeChange = 20;
-            this.sliderAudiofVal0.Location = new System.Drawing.Point(134, 126);
+            this.sliderAudiofVal0.Location = new System.Drawing.Point(99, 126);
             this.sliderAudiofVal0.Maximum = 100;
             this.sliderAudiofVal0.Name = "sliderAudiofVal0";
-            this.sliderAudiofVal0.Size = new System.Drawing.Size(237, 45);
+            this.sliderAudiofVal0.Size = new System.Drawing.Size(193, 45);
             this.sliderAudiofVal0.SmallChange = 10;
             this.sliderAudiofVal0.TabIndex = 31;
             this.sliderAudiofVal0.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -2404,7 +2405,7 @@
             // labelAudioChat
             // 
             this.labelAudioChat.AutoSize = true;
-            this.labelAudioChat.Location = new System.Drawing.Point(15, 61);
+            this.labelAudioChat.Location = new System.Drawing.Point(6, 63);
             this.labelAudioChat.Name = "labelAudioChat";
             this.labelAudioChat.Size = new System.Drawing.Size(66, 13);
             this.labelAudioChat.TabIndex = 53;
@@ -2413,7 +2414,7 @@
             // labelAudiofVal0
             // 
             this.labelAudiofVal0.AutoSize = true;
-            this.labelAudiofVal0.Location = new System.Drawing.Point(15, 126);
+            this.labelAudiofVal0.Location = new System.Drawing.Point(6, 128);
             this.labelAudiofVal0.Name = "labelAudiofVal0";
             this.labelAudiofVal0.Size = new System.Drawing.Size(65, 13);
             this.labelAudiofVal0.TabIndex = 32;
@@ -2428,7 +2429,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal0.Location = new System.Drawing.Point(377, 126);
+            this.numAudiofVal0.Location = new System.Drawing.Point(298, 126);
             this.numAudiofVal0.Maximum = new decimal(new int[] {
             1,
             0,
@@ -2452,7 +2453,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal6.Location = new System.Drawing.Point(377, 306);
+            this.numAudiofVal6.Location = new System.Drawing.Point(298, 306);
             this.numAudiofVal6.Maximum = new decimal(new int[] {
             1,
             0,
@@ -2470,7 +2471,7 @@
             // labelAudiofVal6
             // 
             this.labelAudiofVal6.AutoSize = true;
-            this.labelAudiofVal6.Location = new System.Drawing.Point(15, 306);
+            this.labelAudiofVal6.Location = new System.Drawing.Point(6, 308);
             this.labelAudiofVal6.Name = "labelAudiofVal6";
             this.labelAudiofVal6.Size = new System.Drawing.Size(74, 13);
             this.labelAudiofVal6.TabIndex = 50;
@@ -2479,7 +2480,7 @@
             // labelAudiofVal1
             // 
             this.labelAudiofVal1.AutoSize = true;
-            this.labelAudiofVal1.Location = new System.Drawing.Point(15, 156);
+            this.labelAudiofVal1.Location = new System.Drawing.Point(6, 158);
             this.labelAudiofVal1.Name = "labelAudiofVal1";
             this.labelAudiofVal1.Size = new System.Drawing.Size(71, 13);
             this.labelAudiofVal1.TabIndex = 35;
@@ -2494,7 +2495,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal1.Location = new System.Drawing.Point(377, 156);
+            this.numAudiofVal1.Location = new System.Drawing.Point(298, 156);
             this.numAudiofVal1.Maximum = new decimal(new int[] {
             1,
             0,
@@ -2518,7 +2519,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal5.Location = new System.Drawing.Point(377, 276);
+            this.numAudiofVal5.Location = new System.Drawing.Point(298, 276);
             this.numAudiofVal5.Maximum = new decimal(new int[] {
             1,
             0,
@@ -2536,7 +2537,7 @@
             // labelAudiofVal5
             // 
             this.labelAudiofVal5.AutoSize = true;
-            this.labelAudiofVal5.Location = new System.Drawing.Point(15, 276);
+            this.labelAudiofVal5.Location = new System.Drawing.Point(6, 278);
             this.labelAudiofVal5.Name = "labelAudiofVal5";
             this.labelAudiofVal5.Size = new System.Drawing.Size(53, 13);
             this.labelAudiofVal5.TabIndex = 47;
@@ -2545,7 +2546,7 @@
             // labelAudiofVal2
             // 
             this.labelAudiofVal2.AutoSize = true;
-            this.labelAudiofVal2.Location = new System.Drawing.Point(15, 186);
+            this.labelAudiofVal2.Location = new System.Drawing.Point(6, 188);
             this.labelAudiofVal2.Name = "labelAudiofVal2";
             this.labelAudiofVal2.Size = new System.Drawing.Size(34, 13);
             this.labelAudiofVal2.TabIndex = 38;
@@ -2560,7 +2561,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal2.Location = new System.Drawing.Point(377, 186);
+            this.numAudiofVal2.Location = new System.Drawing.Point(298, 186);
             this.numAudiofVal2.Maximum = new decimal(new int[] {
             1,
             0,
@@ -2584,7 +2585,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal4.Location = new System.Drawing.Point(377, 246);
+            this.numAudiofVal4.Location = new System.Drawing.Point(298, 246);
             this.numAudiofVal4.Maximum = new decimal(new int[] {
             1,
             0,
@@ -2602,7 +2603,7 @@
             // labelAudiofVal4
             // 
             this.labelAudiofVal4.AutoSize = true;
-            this.labelAudiofVal4.Location = new System.Drawing.Point(15, 246);
+            this.labelAudiofVal4.Location = new System.Drawing.Point(6, 248);
             this.labelAudiofVal4.Name = "labelAudiofVal4";
             this.labelAudiofVal4.Size = new System.Drawing.Size(40, 13);
             this.labelAudiofVal4.TabIndex = 44;
@@ -2611,7 +2612,7 @@
             // labelAudiofVal3
             // 
             this.labelAudiofVal3.AutoSize = true;
-            this.labelAudiofVal3.Location = new System.Drawing.Point(15, 216);
+            this.labelAudiofVal3.Location = new System.Drawing.Point(6, 218);
             this.labelAudiofVal3.Name = "labelAudiofVal3";
             this.labelAudiofVal3.Size = new System.Drawing.Size(35, 13);
             this.labelAudiofVal3.TabIndex = 41;
@@ -2626,7 +2627,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal3.Location = new System.Drawing.Point(377, 216);
+            this.numAudiofVal3.Location = new System.Drawing.Point(298, 216);
             this.numAudiofVal3.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3861,7 +3862,7 @@
             this.Controls.Add(this.labelTweaksTitle);
             this.Controls.Add(this.tabControlTweaks);
             this.Name = "UserControlTweaks";
-            this.Size = new System.Drawing.Size(850, 460);
+            this.Size = new System.Drawing.Size(700, 600);
             this.tabControlTweaks.ResumeLayout(false);
             this.tabPageLogin.ResumeLayout(false);
             this.groupBoxLoginProfiles.ResumeLayout(false);

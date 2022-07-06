@@ -85,6 +85,7 @@
             this.radioButtonPipboy = new System.Windows.Forms.RadioButton();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.labelPipboyTitle = new System.Windows.Forms.Label();
             this.tabControlPipboy.SuspendLayout();
             this.tabPagePipboyColor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).BeginInit();
@@ -110,10 +111,10 @@
             this.tabControlPipboy.Controls.Add(this.tabPagePipboyColor);
             this.tabControlPipboy.Controls.Add(this.tabPageQuickboyColor);
             this.tabControlPipboy.Controls.Add(this.tabPagePowerArmorColor);
-            this.tabControlPipboy.Location = new System.Drawing.Point(5, 4);
+            this.tabControlPipboy.Location = new System.Drawing.Point(6, 50);
             this.tabControlPipboy.Name = "tabControlPipboy";
             this.tabControlPipboy.SelectedIndex = 0;
-            this.tabControlPipboy.Size = new System.Drawing.Size(438, 452);
+            this.tabControlPipboy.Size = new System.Drawing.Size(437, 460);
             this.tabControlPipboy.TabIndex = 45;
             // 
             // tabPagePipboyColor
@@ -130,7 +131,7 @@
             this.tabPagePipboyColor.Location = new System.Drawing.Point(4, 22);
             this.tabPagePipboyColor.Name = "tabPagePipboyColor";
             this.tabPagePipboyColor.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePipboyColor.Size = new System.Drawing.Size(430, 426);
+            this.tabPagePipboyColor.Size = new System.Drawing.Size(429, 434);
             this.tabPagePipboyColor.TabIndex = 0;
             this.tabPagePipboyColor.Text = "Pip-Boy";
             this.tabPagePipboyColor.UseVisualStyleBackColor = true;
@@ -141,7 +142,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPipboyHEX.Location = new System.Drawing.Point(276, 63);
             this.textBoxPipboyHEX.Name = "textBoxPipboyHEX";
-            this.textBoxPipboyHEX.Size = new System.Drawing.Size(138, 20);
+            this.textBoxPipboyHEX.Size = new System.Drawing.Size(137, 20);
             this.textBoxPipboyHEX.TabIndex = 43;
             this.textBoxPipboyHEX.TextChanged += new System.EventHandler(this.textBoxPipboyHEX_TextChanged);
             // 
@@ -191,7 +192,7 @@
             // buttonColorResetPipboy
             // 
             this.buttonColorResetPipboy.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonColorResetPipboy.Location = new System.Drawing.Point(100, 60);
+            this.buttonColorResetPipboy.Location = new System.Drawing.Point(99, 60);
             this.buttonColorResetPipboy.Name = "buttonColorResetPipboy";
             this.buttonColorResetPipboy.Size = new System.Drawing.Size(150, 23);
             this.buttonColorResetPipboy.TabIndex = 3;
@@ -213,7 +214,7 @@
             // buttonColorPickPipboy
             // 
             this.buttonColorPickPipboy.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonColorPickPipboy.Location = new System.Drawing.Point(100, 36);
+            this.buttonColorPickPipboy.Location = new System.Drawing.Point(99, 36);
             this.buttonColorPickPipboy.Name = "buttonColorPickPipboy";
             this.buttonColorPickPipboy.Size = new System.Drawing.Size(150, 23);
             this.buttonColorPickPipboy.TabIndex = 2;
@@ -469,9 +470,9 @@
             this.groupBoxPipboyColorPresets.Controls.Add(this.buttonPresetFo4Green);
             this.groupBoxPipboyColorPresets.Controls.Add(this.colorPreviewPresetFo4Green);
             this.groupBoxPipboyColorPresets.Controls.Add(this.buttonPresetFo3Blue);
-            this.groupBoxPipboyColorPresets.Location = new System.Drawing.Point(449, 18);
+            this.groupBoxPipboyColorPresets.Location = new System.Drawing.Point(449, 64);
             this.groupBoxPipboyColorPresets.Name = "groupBoxPipboyColorPresets";
-            this.groupBoxPipboyColorPresets.Size = new System.Drawing.Size(310, 206);
+            this.groupBoxPipboyColorPresets.Size = new System.Drawing.Size(243, 215);
             this.groupBoxPipboyColorPresets.TabIndex = 42;
             this.groupBoxPipboyColorPresets.TabStop = false;
             this.groupBoxPipboyColorPresets.Text = "Presets";
@@ -636,9 +637,9 @@
             this.groupBoxPipboyResolution.Controls.Add(this.numPipboyTargetHeight);
             this.groupBoxPipboyResolution.Controls.Add(this.numPipboyTargetWidth);
             this.groupBoxPipboyResolution.Controls.Add(this.labelPipboyResolutionSpacer);
-            this.groupBoxPipboyResolution.Location = new System.Drawing.Point(449, 304);
+            this.groupBoxPipboyResolution.Location = new System.Drawing.Point(449, 358);
             this.groupBoxPipboyResolution.Name = "groupBoxPipboyResolution";
-            this.groupBoxPipboyResolution.Size = new System.Drawing.Size(310, 152);
+            this.groupBoxPipboyResolution.Size = new System.Drawing.Size(243, 152);
             this.groupBoxPipboyResolution.TabIndex = 44;
             this.groupBoxPipboyResolution.TabStop = false;
             this.groupBoxPipboyResolution.Text = "Resolution";
@@ -646,7 +647,7 @@
             // linkLabelPipboyTargetReset
             // 
             this.linkLabelPipboyTargetReset.AutoSize = true;
-            this.linkLabelPipboyTargetReset.Location = new System.Drawing.Point(8, 113);
+            this.linkLabelPipboyTargetReset.Location = new System.Drawing.Point(8, 127);
             this.linkLabelPipboyTargetReset.Name = "linkLabelPipboyTargetReset";
             this.linkLabelPipboyTargetReset.Size = new System.Drawing.Size(82, 13);
             this.linkLabelPipboyTargetReset.TabIndex = 7;
@@ -657,7 +658,7 @@
             // linkLabelPipboyTargetSetRecommended
             // 
             this.linkLabelPipboyTargetSetRecommended.AutoSize = true;
-            this.linkLabelPipboyTargetSetRecommended.Location = new System.Drawing.Point(8, 91);
+            this.linkLabelPipboyTargetSetRecommended.Location = new System.Drawing.Point(8, 104);
             this.linkLabelPipboyTargetSetRecommended.Name = "linkLabelPipboyTargetSetRecommended";
             this.linkLabelPipboyTargetSetRecommended.Size = new System.Drawing.Size(141, 13);
             this.linkLabelPipboyTargetSetRecommended.TabIndex = 6;
@@ -672,21 +673,21 @@
             this.labelPipboyResolutionSideNote.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelPipboyResolutionSideNote.Location = new System.Drawing.Point(6, 46);
             this.labelPipboyResolutionSideNote.Name = "labelPipboyResolutionSideNote";
-            this.labelPipboyResolutionSideNote.Size = new System.Drawing.Size(298, 32);
+            this.labelPipboyResolutionSideNote.Size = new System.Drawing.Size(231, 48);
             this.labelPipboyResolutionSideNote.TabIndex = 5;
             this.labelPipboyResolutionSideNote.Text = "These settings affect both the Pipboy and the Quickboy.";
             this.labelPipboyResolutionSideNote.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // numPipboyTargetHeight
             // 
-            this.numPipboyTargetHeight.Location = new System.Drawing.Point(153, 23);
+            this.numPipboyTargetHeight.Location = new System.Drawing.Point(123, 23);
             this.numPipboyTargetHeight.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.numPipboyTargetHeight.Name = "numPipboyTargetHeight";
-            this.numPipboyTargetHeight.Size = new System.Drawing.Size(120, 20);
+            this.numPipboyTargetHeight.Size = new System.Drawing.Size(90, 20);
             this.numPipboyTargetHeight.TabIndex = 2;
             this.numPipboyTargetHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -699,14 +700,14 @@
             0,
             0});
             this.numPipboyTargetWidth.Name = "numPipboyTargetWidth";
-            this.numPipboyTargetWidth.Size = new System.Drawing.Size(120, 20);
+            this.numPipboyTargetWidth.Size = new System.Drawing.Size(90, 20);
             this.numPipboyTargetWidth.TabIndex = 1;
             this.numPipboyTargetWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelPipboyResolutionSpacer
             // 
             this.labelPipboyResolutionSpacer.AutoSize = true;
-            this.labelPipboyResolutionSpacer.Location = new System.Drawing.Point(133, 27);
+            this.labelPipboyResolutionSpacer.Location = new System.Drawing.Point(103, 25);
             this.labelPipboyResolutionSpacer.Name = "labelPipboyResolutionSpacer";
             this.labelPipboyResolutionSpacer.Size = new System.Drawing.Size(14, 13);
             this.labelPipboyResolutionSpacer.TabIndex = 0;
@@ -718,9 +719,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxPipboyMode.Controls.Add(this.radioButtonQuickboy);
             this.groupBoxPipboyMode.Controls.Add(this.radioButtonPipboy);
-            this.groupBoxPipboyMode.Location = new System.Drawing.Point(449, 231);
+            this.groupBoxPipboyMode.Location = new System.Drawing.Point(449, 285);
             this.groupBoxPipboyMode.Name = "groupBoxPipboyMode";
-            this.groupBoxPipboyMode.Size = new System.Drawing.Size(310, 67);
+            this.groupBoxPipboyMode.Size = new System.Drawing.Size(243, 67);
             this.groupBoxPipboyMode.TabIndex = 43;
             this.groupBoxPipboyMode.TabStop = false;
             this.groupBoxPipboyMode.Text = "Mode";
@@ -753,16 +754,27 @@
             this.colorDialog.FullOpen = true;
             this.colorDialog.SolidColorOnly = true;
             // 
+            // labelPipboyTitle
+            // 
+            this.labelPipboyTitle.AutoSize = true;
+            this.labelPipboyTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPipboyTitle.Location = new System.Drawing.Point(6, 6);
+            this.labelPipboyTitle.Name = "labelPipboyTitle";
+            this.labelPipboyTitle.Size = new System.Drawing.Size(197, 24);
+            this.labelPipboyTitle.TabIndex = 46;
+            this.labelPipboyTitle.Text = "Pip-Boy Customization";
+            // 
             // UserControlPipboy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelPipboyTitle);
             this.Controls.Add(this.tabControlPipboy);
             this.Controls.Add(this.groupBoxPipboyColorPresets);
             this.Controls.Add(this.groupBoxPipboyResolution);
             this.Controls.Add(this.groupBoxPipboyMode);
             this.Name = "UserControlPipboy";
-            this.Size = new System.Drawing.Size(767, 460);
+            this.Size = new System.Drawing.Size(700, 600);
             this.tabControlPipboy.ResumeLayout(false);
             this.tabPagePipboyColor.ResumeLayout(false);
             this.tabPagePipboyColor.PerformLayout();
@@ -787,6 +799,7 @@
             this.groupBoxPipboyMode.ResumeLayout(false);
             this.groupBoxPipboyMode.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -848,5 +861,6 @@
         private System.Windows.Forms.RadioButton radioButtonPipboy;
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Label labelPipboyTitle;
     }
 }

@@ -139,6 +139,16 @@ namespace Fo76ini
 
             // Gallery:
 
+            MsgBox.Add("galleryDeleteScreenshot",
+                "Delete {0}?",
+                "You are about to delete '{0}'. Are you sure?"
+            );
+
+            MsgBox.Add("galleryDeleteScreenshots",
+                "Delete {0} files?",
+                "You are about to delete {0} files. Are you sure?"
+            );
+
             MsgBox.Add("galleryDeleteThumbnails",
                 "Are you sure?",
                 "Are you sure you want to delete the gallery's thumbnails?\nThe next time you click on 'Refresh gallery', it will take significantly longer as it recreates all thumbnails."

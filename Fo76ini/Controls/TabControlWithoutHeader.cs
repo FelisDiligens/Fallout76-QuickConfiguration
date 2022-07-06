@@ -11,9 +11,10 @@ namespace Fo76ini.Controls
     // https://stackoverflow.com/a/29708562
     public class TabControlWithoutHeader : TabControl
     {
-        public TabControlWithoutHeader()
+        public TabControlWithoutHeader() : base()
         {
-            if (!this.DesignMode) this.Multiline = true;
+            if (!this.DesignMode)
+                this.Multiline = true;
         }
 
         private void HideTabHeader()
