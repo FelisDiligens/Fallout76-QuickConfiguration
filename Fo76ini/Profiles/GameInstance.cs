@@ -336,6 +336,28 @@ namespace Fo76ini.Profiles
             return null;
         }
 
+        public Bitmap Get24pxBitmap()
+        {
+            return Get24pxBitmap(this.Edition);
+        }
+
+        public static Bitmap Get24pxBitmap(GameEdition edition)
+        {
+            switch (edition)
+            {
+                case GameEdition.Steam:
+                case GameEdition.SteamPTS:
+                    return Resources.steam_24px;
+                case GameEdition.BethesdaNet:
+                case GameEdition.BethesdaNetPTS:
+                    return Resources.bethesda_24;
+                case GameEdition.Xbox:
+                    return Resources.xbox_24;
+                default:
+                    return Resources.help_24;
+            }
+        }
+
         public Bitmap Get128pxBitmap()
         {
             return Get128pxBitmap(this.Edition);
@@ -346,7 +368,6 @@ namespace Fo76ini.Profiles
             switch (edition)
             {
                 case GameEdition.Steam:
-                    return Resources.steam;
                 case GameEdition.SteamPTS:
                     return Resources.steam;
                 case GameEdition.BethesdaNet:

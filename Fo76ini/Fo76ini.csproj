@@ -465,8 +465,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\wrench-2-24.png" />
     <None Include="Resources\fallout76-logo-black.png" />
     <None Include="Resources\fallout76-logo-white.png" />
+    <None Include="Resources\code-24.png" />
     <Content Include="Resources\folder-3-16.png" />
     <None Include="Resources\fov_70.jpg" />
     <None Include="Resources\fov_75.jpg" />
@@ -479,6 +481,9 @@
     <None Include="Resources\fov_110.jpg" />
     <None Include="Resources\fov_115.jpg" />
     <None Include="Resources\fov_120.jpg" />
+    <None Include="Resources\house-24.png" />
+    <None Include="Resources\gallery-24.png" />
+    <Content Include="Resources\pipboy-24px.png" />
     <Content Include="Resources\pipboy-preview-mask.png" />
     <Content Include="Resources\pipboy-preview-screen.png" />
     <Content Include="Resources\powerarmor-preview-mask.png" />

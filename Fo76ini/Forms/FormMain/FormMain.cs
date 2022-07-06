@@ -135,19 +135,6 @@ namespace Fo76ini
         private void OnProfileChanged(object sender, ProfileEventArgs e)
         {
             this.game = e.ActiveGameInstance;
-
-            // Change image
-            this.pictureBoxButtonGameEdition.SetImages(
-                e.ActiveGameInstance.Get128pxBitmap(),
-                e.ActiveGameInstance.Get128pxHoverBitmap()
-            );
-
-            // Change caption
-            this.toolStripStatusLabelEditionText.Text = e.ActiveGameInstance.GetCaption();
-            this.labelGameEdition.Text = e.ActiveGameInstance.GetCaption();
-
-
-            this.toolStripStatusLabelGameText.Text = e.ActiveGameInstance?.Title;
         }
 
 
@@ -275,7 +262,7 @@ namespace Fo76ini
                 this.buttonNWMode.Image = Resources.fire;
             }
 
-            this.toolStripStatusLabelNuclearWinterModeActive.Visible = nwModeEnabled;
+            //this.toolStripStatusLabelNuclearWinterModeActive.Visible = nwModeEnabled;
 
             this.buttonNWMode.Visible = nwModeEnabled || Configuration.NuclearWinter.ShowNWModeBtn;
 
@@ -338,6 +325,11 @@ namespace Fo76ini
         // "Settings" button:
         private void navButtonSettings_Click(object sender, EventArgs e)
         {
+            this.tabControl1.SelectedTab = this.tabPageSettings;
+        }
+
+        private void temporaryButtonOpenSettings_Click(object sender, EventArgs e)
+        {
             formSettings.ShowSettings();
         }
 
@@ -345,6 +337,36 @@ namespace Fo76ini
         private void navButtonMods_Click(object sender, EventArgs e)
         {
             this.formMods.OpenUI();
+        }
+
+        private void userControlSideNav2_CustomClicked(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPageCustom;
+        }
+
+        private void userControlSideNav2_GalleryClicked(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPageGallery;
+        }
+
+        private void userControlSideNav2_HomeClicked(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPageHome;
+        }
+
+        private void userControlSideNav2_PipboyClicked(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPagePipBoy;
+        }
+
+        private void userControlSideNav2_ProfileClicked(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPageProfiles;
+        }
+
+        private void userControlSideNav2_TweaksClicked(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPageTweaks;
         }
 
         #endregion
@@ -553,16 +575,6 @@ namespace Fo76ini
         private void backgroundWorkerDownloadRTF_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs ev)
         {
             this.richTextBoxWhatsNew.Rtf = (string)ev.Result;
-        }
-
-        private void pictureBoxButtonGameEdition_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBoxLoadingGIF_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -20,6 +20,7 @@ using Fo76ini.Ini;
 using Fo76ini.Forms.FormIniError;
 using Fo76ini.Forms.FormWelcome;
 using Fo76ini.Tweaks;
+using Fo76ini.Utilities;
 
 namespace Fo76ini.Forms.FormMain
 {
@@ -30,6 +31,7 @@ namespace Fo76ini.Forms.FormMain
         public UserControlSideNav()
         {
             InitializeComponent();
+            ProfileManager.ProfileChanged += ProfileManager_ProfileChanged; ;
 
             InitCustomLabelFont();
             labelLogo.Font = new Font(pfc.Families[0], labelLogo.Font.Size);
@@ -52,6 +54,21 @@ namespace Fo76ini.Forms.FormMain
 
             // pass the font to the font collection
             pfc.AddMemoryFont(data, fontLength);
+        }
+
+        private void ProfileManager_ProfileChanged(object sender, ProfileEventArgs e)
+        {
+            // Get profile
+            GameInstance game = e.ActiveGameInstance;
+
+            // Change image
+            this.buttonProfile.Image = game.Get24pxBitmap();
+
+            // Change caption
+            this.buttonProfile.Text = game.Title + "\nEdition: " + game.GetCaption() + "";
+
+            // Force redraw
+            this.buttonProfile.Refresh();
         }
 
         private void buttonBrowse_Click(object sender, EventArgs e)
@@ -101,58 +118,118 @@ namespace Fo76ini.Forms.FormMain
         }
         public event EventHandler UpdateClicked;
 
+        private void buttonHome_Click(object sender, EventArgs e)
+        {
+            if (HomeClicked != null)
+                HomeClicked(sender, e);
+        }
+        public event EventHandler HomeClicked;
+
+        private void buttonTweaks_Click(object sender, EventArgs e)
+        {
+            if (TweaksClicked != null)
+                TweaksClicked(sender, e);
+        }
+        public event EventHandler TweaksClicked;
+
+        private void buttonPipboy_Click(object sender, EventArgs e)
+        {
+            if (PipboyClicked != null)
+                PipboyClicked(sender, e);
+        }
+        public event EventHandler PipboyClicked;
+
+        private void buttonGallery_Click(object sender, EventArgs e)
+        {
+            if (GalleryClicked != null)
+                GalleryClicked(sender, e);
+        }
+        public event EventHandler GalleryClicked;
+
+        private void buttonCustom_Click(object sender, EventArgs e)
+        {
+            if (CustomClicked != null)
+                CustomClicked(sender, e);
+        }
+        public event EventHandler CustomClicked;
+
+        private void buttonProfile_Click(object sender, EventArgs e)
+        {
+            if (ProfileClicked != null)
+                ProfileClicked(sender, e);
+        }
+        public event EventHandler ProfileClicked;
+
         /*
          * Tool strip stuff
          */
 
         private void gameFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (!ProfileManager.SelectedGame.ValidateGamePath())
+            {
+                MsgBox.ShowID("modsGamePathNotSet", MessageBoxIcon.Error);
+                return;
+            }
+            Utils.OpenExplorer(ProfileManager.SelectedGame.GamePath);
         }
 
         private void gamesConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Utils.OpenExplorer(IniFiles.ParentPath);
         }
 
         private void toolConfigurationFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Utils.OpenExplorer(Shared.AppConfigFolder);
         }
 
         private void toolLanguagesFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Utils.OpenExplorer(Shared.AppTranslationsFolder);
         }
 
         private void toolInstallationFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Utils.OpenExplorer(Directory.GetParent(Application.ExecutablePath).ToString());
         }
 
         private void steamScreenshotFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            string steamFolder = @"C:\Program Files (x86)\Steam\userdata\";
+            if (Directory.Exists(steamFolder))
+            {
+                steamFolder = Path.Combine(Directory.GetDirectories(steamFolder)[0], @"760\remote\1151340\screenshots");
+                Utils.OpenExplorer(steamFolder);
+            }
         }
 
         private void gamePhotosFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            string photosFolder = Path.Combine(IniFiles.ParentPath, "Photos");
+            if (Directory.Exists(photosFolder))
+            {
+                photosFolder = Directory.GetDirectories(photosFolder)[0];
+                Utils.OpenExplorer(photosFolder);
+            }
         }
 
         private void editFallout76iniToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (File.Exists(IniFiles.F76.FilePath))
+                Utils.OpenFile(IniFiles.F76.FilePath);
         }
 
         private void editFallout76PrefsiniToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (File.Exists(IniFiles.F76Prefs.FilePath))
+                Utils.OpenFile(IniFiles.F76Prefs.FilePath);
         }
 
         private void editFallout76CustominiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (File.Exists(IniFiles.F76Custom.FilePath))
+                Utils.OpenFile(IniFiles.F76Custom.FilePath);
         }
     }
 }

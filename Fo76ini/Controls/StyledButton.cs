@@ -183,7 +183,7 @@ namespace Fo76ini.Controls
                 case ContentAlignment.BottomCenter:
                 case ContentAlignment.BottomLeft:
                 case ContentAlignment.BottomRight:
-                    y = Width - size.Width - Padding;
+                    y = Height - size.Height - Padding;
                     break;
             }
 

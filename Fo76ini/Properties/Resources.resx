@@ -394,4 +394,19 @@
   <data name="overseer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\overseer.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="code_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\code-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gallery_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gallery-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="house_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\house-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pipboy_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pipboy-24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wrench_2_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wrench-2-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
