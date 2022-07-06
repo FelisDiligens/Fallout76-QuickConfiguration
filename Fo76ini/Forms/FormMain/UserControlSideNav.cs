@@ -1,31 +1,19 @@
-﻿using ComboxExtended;
-using Fo76ini.Interface;
+﻿using Fo76ini.Interface;
 using Fo76ini.Profiles;
 using Fo76ini.Properties;
-using Microsoft.WindowsAPICodePack.Dialogs;
+using Fo76ini.Utilities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Fo76ini;
-using Fo76ini.Ini;
-using Fo76ini.Forms.FormIniError;
-using Fo76ini.Forms.FormWelcome;
-using Fo76ini.Tweaks;
-using Fo76ini.Utilities;
 
 namespace Fo76ini.Forms.FormMain
 {
     public partial class UserControlSideNav : UserControl
     {
+        // Create your private font collection object.
         PrivateFontCollection pfc = new PrivateFontCollection();
 
         public UserControlSideNav()
@@ -42,23 +30,32 @@ namespace Fo76ini.Forms.FormMain
             });
         }
 
+        [DllImport("gdi32.dll")]
+        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
+
         // https://stackoverflow.com/a/23520042
+        // https://stackoverflow.com/questions/1955629/c-sharp-using-an-embedded-font-on-a-textbox/1956043#1956043
         private void InitCustomLabelFont()
         {
-            // Select your font from the resources.
-            int fontLength = Properties.Resources.overseer.Length;
-
             // create a buffer to read in to
-            byte[] fontdata = Properties.Resources.overseer;
+            byte[] fontData = Resources.overseer;
+            int fontLength = fontData.Length;
 
             // create an unsafe memory block for the font data
             IntPtr data = Marshal.AllocCoTaskMem(fontLength);
 
             // copy the bytes to the unsafe memory block
-            Marshal.Copy(fontdata, 0, data, fontLength);
+            Marshal.Copy(fontData, 0, data, fontLength);
+
+            // We HAVE to do this to register the font to the system (Weird .NET bug !)
+            uint cFonts = 0;
+            AddFontMemResourceEx(data, (uint)fontLength, IntPtr.Zero, ref cFonts);
 
             // pass the font to the font collection
             pfc.AddMemoryFont(data, fontLength);
+
+            // free the unsafe memory
+            // Marshal.FreeCoTaskMem(data);
         }
 
         private void ProfileManager_ProfileChanged(object sender, ProfileEventArgs e)

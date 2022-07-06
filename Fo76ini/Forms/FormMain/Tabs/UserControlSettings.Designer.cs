@@ -48,6 +48,7 @@
             this.checkBoxReadOnly = new System.Windows.Forms.CheckBox();
             this.groupBoxNuclearWinterMode = new System.Windows.Forms.GroupBox();
             this.labelToggleNW = new System.Windows.Forms.Label();
+            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.checkBoxNWAutoDeployMods = new System.Windows.Forms.CheckBox();
             this.labelNWmodoptions = new System.Windows.Forms.Label();
             this.labelNWdlloptions = new System.Windows.Forms.Label();
@@ -71,7 +72,6 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialogArchiveTwoPath = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
-            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.groupBoxUI.SuspendLayout();
             this.groupBoxPaths.SuspendLayout();
             this.groupBoxOptions.SuspendLayout();
@@ -289,6 +289,26 @@
             this.labelToggleNW.TabIndex = 27;
             this.labelToggleNW.Text = "Toggle mode:";
             // 
+            // buttonNWMode
+            // 
+            this.buttonNWMode.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.buttonNWMode.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.buttonNWMode.BorderWidth = 1;
+            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
+            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.Location = new System.Drawing.Point(10, 35);
+            this.buttonNWMode.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonNWMode.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonNWMode.Name = "buttonNWMode";
+            this.buttonNWMode.Padding = 10;
+            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
+            this.buttonNWMode.TabIndex = 26;
+            this.buttonNWMode.Text = "Nuclear Winter";
+            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.UseVisualStyleBackColor = true;
+            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
+            // 
             // checkBoxNWAutoDeployMods
             // 
             this.checkBoxNWAutoDeployMods.AutoSize = true;
@@ -464,7 +484,7 @@
             this.buttonDownloadLanguages.Location = new System.Drawing.Point(313, 49);
             this.buttonDownloadLanguages.Name = "buttonDownloadLanguages";
             this.buttonDownloadLanguages.Size = new System.Drawing.Size(32, 32);
-            this.buttonDownloadLanguages.TabIndex = 20;
+            this.buttonDownloadLanguages.TabIndex = 16;
             this.buttonDownloadLanguages.UseVisualStyleBackColor = true;
             this.buttonDownloadLanguages.Click += new System.EventHandler(this.buttonDownloadLanguages_Click);
             // 
@@ -478,6 +498,7 @@
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.Size = new System.Drawing.Size(266, 21);
             this.comboBoxLanguage.TabIndex = 17;
+            this.comboBoxLanguage.TabStop = false;
             // 
             // labelSettingsDesc
             // 
@@ -522,26 +543,6 @@
             this.openFileDialogSevenZipPath.Filter = "Executable|*.exe";
             this.openFileDialogSevenZipPath.FilterIndex = 2;
             // 
-            // buttonNWMode
-            // 
-            this.buttonNWMode.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.buttonNWMode.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.buttonNWMode.BorderWidth = 1;
-            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
-            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.Location = new System.Drawing.Point(10, 35);
-            this.buttonNWMode.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonNWMode.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonNWMode.Name = "buttonNWMode";
-            this.buttonNWMode.Padding = 10;
-            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
-            this.buttonNWMode.TabIndex = 26;
-            this.buttonNWMode.Text = "Nuclear Winter";
-            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.UseVisualStyleBackColor = true;
-            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
-            // 
             // UserControlSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -556,7 +557,7 @@
             this.Controls.Add(this.groupBoxBehavior);
             this.Controls.Add(this.groupBoxLocalization);
             this.Name = "UserControlSettings";
-            this.Size = new System.Drawing.Size(632, 600);
+            this.Size = new System.Drawing.Size(615, 600);
             this.Load += new System.EventHandler(this.UserControlSettings_Load);
             this.groupBoxUI.ResumeLayout(false);
             this.groupBoxUI.PerformLayout();

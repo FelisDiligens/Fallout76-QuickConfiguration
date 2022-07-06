@@ -46,23 +46,23 @@
             this.editFallout76PrefsiniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editFallout76CustominiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelGameEditionDesc = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSpacer = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.buttonNexusMods = new Fo76ini.Controls.StyledButton();
             this.buttonCustom = new Fo76ini.Controls.StyledButton();
             this.buttonProfile = new Fo76ini.Controls.StyledButton();
             this.buttonHome = new Fo76ini.Controls.StyledButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonGallery = new Fo76ini.Controls.StyledButton();
             this.buttonPipboy = new Fo76ini.Controls.StyledButton();
             this.buttonTweaks = new Fo76ini.Controls.StyledButton();
-            this.pictureBoxSpacer = new System.Windows.Forms.PictureBox();
             this.buttonBrowse = new Fo76ini.Controls.StyledButton();
             this.buttonSettings = new Fo76ini.Controls.StyledButton();
             this.buttonMods = new Fo76ini.Controls.StyledButton();
             this.buttonUpdate = new Fo76ini.Controls.StyledButton();
             this.buttonApply = new Fo76ini.Controls.StyledButton();
             this.buttonPlay = new Fo76ini.Controls.StyledButton();
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.buttonNexusMods = new Fo76ini.Controls.StyledButton();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.contextMenuStripBrowse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer)).BeginInit();
@@ -205,6 +205,68 @@
             this.labelGameEditionDesc.TabIndex = 49;
             this.labelGameEditionDesc.Text = "Selected profile:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 400);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 1);
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBoxSpacer
+            // 
+            this.pictureBoxSpacer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBoxSpacer.Location = new System.Drawing.Point(0, 168);
+            this.pictureBoxSpacer.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBoxSpacer.Name = "pictureBoxSpacer";
+            this.pictureBoxSpacer.Size = new System.Drawing.Size(200, 1);
+            this.pictureBoxSpacer.TabIndex = 12;
+            this.pictureBoxSpacer.TabStop = false;
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Image = global::Fo76ini.Properties.Resources.fallout76_logo_white;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(0, 8);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(200, 63);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogo.TabIndex = 0;
+            this.pictureBoxLogo.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox2.Location = new System.Drawing.Point(0, 521);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(200, 1);
+            this.pictureBox2.TabIndex = 53;
+            this.pictureBox2.TabStop = false;
+            // 
+            // buttonNexusMods
+            // 
+            this.buttonNexusMods.BackColor = System.Drawing.Color.Black;
+            this.buttonNexusMods.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonNexusMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNexusMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNexusMods.ForeColor = System.Drawing.Color.White;
+            this.buttonNexusMods.Image = global::Fo76ini.Properties.Resources.nexus_24;
+            this.buttonNexusMods.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNexusMods.Location = new System.Drawing.Point(3, 443);
+            this.buttonNexusMods.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.buttonNexusMods.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.buttonNexusMods.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonNexusMods.Name = "buttonNexusMods";
+            this.buttonNexusMods.Padding = 10;
+            this.buttonNexusMods.Size = new System.Drawing.Size(194, 36);
+            this.buttonNexusMods.TabIndex = 52;
+            this.buttonNexusMods.Text = "NexusMods";
+            this.buttonNexusMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNexusMods.UseVisualStyleBackColor = true;
+            this.buttonNexusMods.Click += new System.EventHandler(this.buttonNexusMods_Click);
+            // 
             // buttonCustom
             // 
             this.buttonCustom.BackColor = System.Drawing.Color.Black;
@@ -270,16 +332,6 @@
             this.buttonHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHome.UseVisualStyleBackColor = true;
             this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 400);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 1);
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
             // 
             // buttonGallery
             // 
@@ -347,16 +399,6 @@
             this.buttonTweaks.UseVisualStyleBackColor = true;
             this.buttonTweaks.Click += new System.EventHandler(this.buttonTweaks_Click);
             // 
-            // pictureBoxSpacer
-            // 
-            this.pictureBoxSpacer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBoxSpacer.Location = new System.Drawing.Point(0, 168);
-            this.pictureBoxSpacer.Margin = new System.Windows.Forms.Padding(6);
-            this.pictureBoxSpacer.Name = "pictureBoxSpacer";
-            this.pictureBoxSpacer.Size = new System.Drawing.Size(200, 1);
-            this.pictureBoxSpacer.TabIndex = 12;
-            this.pictureBoxSpacer.TabStop = false;
-            // 
             // buttonBrowse
             // 
             this.buttonBrowse.BackColor = System.Drawing.Color.Black;
@@ -370,7 +412,7 @@
             this.buttonBrowse.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.buttonBrowse.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.buttonBrowse.Name = "buttonBrowse";
-            this.buttonBrowse.Padding = 3;
+            this.buttonBrowse.Padding = 5;
             this.buttonBrowse.Size = new System.Drawing.Size(60, 50);
             this.buttonBrowse.TabIndex = 11;
             this.buttonBrowse.Text = "Browse";
@@ -457,7 +499,7 @@
             this.buttonApply.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.buttonApply.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.buttonApply.Name = "buttonApply";
-            this.buttonApply.Padding = 3;
+            this.buttonApply.Padding = 5;
             this.buttonApply.Size = new System.Drawing.Size(60, 50);
             this.buttonApply.TabIndex = 7;
             this.buttonApply.Text = "Save";
@@ -478,55 +520,13 @@
             this.buttonPlay.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.buttonPlay.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.buttonPlay.Name = "buttonPlay";
-            this.buttonPlay.Padding = 3;
+            this.buttonPlay.Padding = 5;
             this.buttonPlay.Size = new System.Drawing.Size(60, 50);
             this.buttonPlay.TabIndex = 6;
             this.buttonPlay.Text = "Play";
             this.buttonPlay.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonPlay.UseVisualStyleBackColor = true;
             this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Image = global::Fo76ini.Properties.Resources.fallout76_logo_white;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(0, 8);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(200, 63);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLogo.TabIndex = 0;
-            this.pictureBoxLogo.TabStop = false;
-            // 
-            // buttonNexusMods
-            // 
-            this.buttonNexusMods.BackColor = System.Drawing.Color.Black;
-            this.buttonNexusMods.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonNexusMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNexusMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNexusMods.ForeColor = System.Drawing.Color.White;
-            this.buttonNexusMods.Image = global::Fo76ini.Properties.Resources.nexus_24;
-            this.buttonNexusMods.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNexusMods.Location = new System.Drawing.Point(3, 443);
-            this.buttonNexusMods.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonNexusMods.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonNexusMods.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.buttonNexusMods.Name = "buttonNexusMods";
-            this.buttonNexusMods.Padding = 10;
-            this.buttonNexusMods.Size = new System.Drawing.Size(194, 36);
-            this.buttonNexusMods.TabIndex = 52;
-            this.buttonNexusMods.Text = "NexusMods";
-            this.buttonNexusMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNexusMods.UseVisualStyleBackColor = true;
-            this.buttonNexusMods.Click += new System.EventHandler(this.buttonNexusMods_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox2.Location = new System.Drawing.Point(0, 521);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(6);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(200, 1);
-            this.pictureBox2.TabIndex = 53;
-            this.pictureBox2.TabStop = false;
             // 
             // UserControlSideNav
             // 

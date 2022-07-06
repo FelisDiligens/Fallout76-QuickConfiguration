@@ -236,7 +236,7 @@
             this.sliderGalleryThumbnailSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderGalleryThumbnailSize.BackColor = System.Drawing.SystemColors.Window;
             this.sliderGalleryThumbnailSize.LargeChange = 1;
-            this.sliderGalleryThumbnailSize.Location = new System.Drawing.Point(542, 0);
+            this.sliderGalleryThumbnailSize.Location = new System.Drawing.Point(539, 3);
             this.sliderGalleryThumbnailSize.Maximum = 5;
             this.sliderGalleryThumbnailSize.Minimum = 1;
             this.sliderGalleryThumbnailSize.Name = "sliderGalleryThumbnailSize";
@@ -252,7 +252,7 @@
             this.buttonGalleryShowOptions.FlatAppearance.BorderSize = 0;
             this.buttonGalleryShowOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGalleryShowOptions.Image = global::Fo76ini.Properties.Resources.cog_24;
-            this.buttonGalleryShowOptions.Location = new System.Drawing.Point(765, 0);
+            this.buttonGalleryShowOptions.Location = new System.Drawing.Point(762, 3);
             this.buttonGalleryShowOptions.Name = "buttonGalleryShowOptions";
             this.buttonGalleryShowOptions.Size = new System.Drawing.Size(36, 36);
             this.buttonGalleryShowOptions.TabIndex = 69;
@@ -266,7 +266,7 @@
             this.buttonRefreshGallery.FlatAppearance.BorderSize = 0;
             this.buttonRefreshGallery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRefreshGallery.Image = global::Fo76ini.Properties.Resources.available_updates;
-            this.buttonRefreshGallery.Location = new System.Drawing.Point(723, 0);
+            this.buttonRefreshGallery.Location = new System.Drawing.Point(720, 3);
             this.buttonRefreshGallery.Name = "buttonRefreshGallery";
             this.buttonRefreshGallery.Size = new System.Drawing.Size(36, 36);
             this.buttonRefreshGallery.TabIndex = 65;
@@ -284,51 +284,51 @@
             this.toolStripSeparator8,
             this.deleteToolStripMenuItem});
             this.contextMenuStripGallery.Name = "contextMenuStrip1";
-            this.contextMenuStripGallery.Size = new System.Drawing.Size(181, 148);
+            this.contextMenuStripGallery.Size = new System.Drawing.Size(138, 126);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // openFolderToolStripMenuItem
             // 
             this.openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
-            this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.openFolderToolStripMenuItem.Text = "Open folder";
             this.openFolderToolStripMenuItem.Click += new System.EventHandler(this.openFolderToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(134, 6);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(134, 6);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 

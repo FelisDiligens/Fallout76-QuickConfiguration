@@ -897,6 +897,7 @@ namespace Fo76ini.Utilities
                 if (subControl is TabControl ||
                     subControl is TabPage ||
                     subControl is GroupBox ||
+                    subControl is UserControl ||
                     subControl.Name.StartsWith("tab") ||
                     subControl.Name.StartsWith("groupBox") ||
                     subControl.Name.StartsWith("panel"))

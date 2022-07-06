@@ -24,11 +24,22 @@ namespace Fo76ini.Forms.FormMain
         private List<string> galleryImagePaths = new List<string>();
         private ImageList galleryImageList = new ImageList();
 
-        private static string[] ValidImageFormats = new string[] {
+        private static string[] ValidImageFormats = new string[]
+        {
             ".png",
             ".jpg",
             ".gif",
             ".jpeg"
+        };
+
+        // These images can be found in the game folder of the Xbox version:
+        private static string[] IgnoreImages = new string[]
+        {
+            "LiveLogo.png",
+            "SmallLogo.png",
+            "SplashScreen.png",
+            "StoreLogo.png",
+            "WideLogo.png"
         };
 
         private int galleryImageSizeMult = 4;
@@ -122,6 +133,11 @@ namespace Fo76ini.Forms.FormMain
                 foreach (string filePath in screenshots)
                 {
                     string fileName = Path.GetFileName(filePath);
+
+                    // Ignore certain images:
+                    if (IgnoreImages.Contains(fileName))
+                        continue;
+
                     string thumbPath = Path.Combine(thumbnailsPath, fileName) + ".jpg";
                     Bitmap thumbnail;
 
