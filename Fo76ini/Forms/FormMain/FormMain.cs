@@ -1,5 +1,4 @@
 ﻿using Fo76ini.Forms.FormIniError;
-using Fo76ini.Forms.FormSettings;
 using Fo76ini.Forms.FormWelcome;
 using Fo76ini.Ini;
 using Fo76ini.Interface;
@@ -24,7 +23,6 @@ namespace Fo76ini
     public partial class FormMain : Form
     {
         private FormMods formMods = new FormMods();
-        private FormSettings formSettings = new FormSettings();
         private FormWelcome formWelcome = new FormWelcome();
 
         private GameInstance game;
