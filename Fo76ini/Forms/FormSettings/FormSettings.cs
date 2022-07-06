@@ -55,7 +55,7 @@ namespace Fo76ini.Forms.FormSettings
             this.backgroundWorkerRetrieveProfileInfo.RunWorkerCompleted += backgroundWorkerRetrieveProfileInfo_RunWorkerCompleted;
             this.FormClosing += FormSettings_FormClosing;
 
-            SingleSignOn.SSOFinished += SingleSignOn_SSOFinished;
+            //SingleSignOn.SSOFinished += SingleSignOn_SSOFinished;
         }
 
         private void FormSettings_Load(object sender, EventArgs e)

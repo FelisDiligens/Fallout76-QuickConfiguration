@@ -162,4 +162,10 @@
         McYYY0w/GDHiH4RSOYX/ZZhxAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="backgroundWorkerRetrieveProfileInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>13, 14</value>
+  </metadata>
+  <metadata name="backgroundWorkerSSOLogin.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>275, 14</value>
+  </metadata>
 </root>

@@ -68,10 +68,10 @@
             this.labelSettingsDesc = new System.Windows.Forms.Label();
             this.labelSettingsTitle = new System.Windows.Forms.Label();
             this.backgroundWorkerDownloadLanguages = new System.ComponentModel.BackgroundWorker();
-            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialogArchiveTwoPath = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
+            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.groupBoxUI.SuspendLayout();
             this.groupBoxPaths.SuspendLayout();
             this.groupBoxOptions.SuspendLayout();
@@ -251,6 +251,7 @@
             this.checkBoxHandleNXMLinks.TabIndex = 7;
             this.checkBoxHandleNXMLinks.Text = "Associate with \"Mod Manager Download\" links";
             this.checkBoxHandleNXMLinks.UseVisualStyleBackColor = true;
+            this.checkBoxHandleNXMLinks.CheckedChanged += new System.EventHandler(this.checkBoxHandleNXMLinks_CheckedChanged);
             // 
             // checkBoxReadOnly
             // 
@@ -502,6 +503,25 @@
             this.backgroundWorkerDownloadLanguages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDownloadLanguages_DoWork);
             this.backgroundWorkerDownloadLanguages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerDownloadLanguages_RunWorkerCompleted);
             // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 20000;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.IsBalloon = true;
+            this.toolTip.ReshowDelay = 100;
+            // 
+            // openFileDialogArchiveTwoPath
+            // 
+            this.openFileDialogArchiveTwoPath.FileName = "Archive2.exe";
+            this.openFileDialogArchiveTwoPath.Filter = "Executable|*.exe";
+            this.openFileDialogArchiveTwoPath.FilterIndex = 2;
+            // 
+            // openFileDialogSevenZipPath
+            // 
+            this.openFileDialogSevenZipPath.FileName = "7z.exe";
+            this.openFileDialogSevenZipPath.Filter = "Executable|*.exe";
+            this.openFileDialogSevenZipPath.FilterIndex = 2;
+            // 
             // buttonNWMode
             // 
             this.buttonNWMode.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -521,25 +541,6 @@
             this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonNWMode.UseVisualStyleBackColor = true;
             this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
-            // 
-            // toolTip
-            // 
-            this.toolTip.AutoPopDelay = 20000;
-            this.toolTip.InitialDelay = 500;
-            this.toolTip.IsBalloon = true;
-            this.toolTip.ReshowDelay = 100;
-            // 
-            // openFileDialogArchiveTwoPath
-            // 
-            this.openFileDialogArchiveTwoPath.FileName = "Archive2.exe";
-            this.openFileDialogArchiveTwoPath.Filter = "Executable|*.exe";
-            this.openFileDialogArchiveTwoPath.FilterIndex = 2;
-            // 
-            // openFileDialogSevenZipPath
-            // 
-            this.openFileDialogSevenZipPath.FileName = "7z.exe";
-            this.openFileDialogSevenZipPath.Filter = "Executable|*.exe";
-            this.openFileDialogSevenZipPath.FilterIndex = 2;
             // 
             // UserControlSettings
             // 

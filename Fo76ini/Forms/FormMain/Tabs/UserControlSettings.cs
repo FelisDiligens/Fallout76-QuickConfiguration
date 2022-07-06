@@ -226,5 +226,40 @@ namespace Fo76ini.Forms.FormMain.Tabs
         }
 
         #endregion
+
+        #region NexusMods (NXM handler)
+
+        private void checkBoxHandleNXMLinks_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isRegistered = NXMHandler.IsRegistered();
+            if (isRegistered == checkBoxHandleNXMLinks.Checked)
+                return;
+
+            try
+            {
+                if (isRegistered)
+                    NXMHandler.Unregister();
+                else
+                    NXMHandler.Register();
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                if (!Utils.HasAdminRights())
+                    MsgBox.Show("Access denied", "Start the tool as admin and try again.", MessageBoxIcon.Error);
+                else
+                    MsgBox.Show(ex.GetType().ToString(), ex.ToString(), MessageBoxIcon.Error);
+                checkBoxHandleNXMLinks.Checked = isRegistered;
+            }
+            catch (Exception ex)
+            {
+                if (!Utils.HasAdminRights())
+                    MsgBox.Show("Unknown error", "Start the tool as admin and try again.", MessageBoxIcon.Error);
+                else
+                    MsgBox.Show(ex.GetType().ToString(), ex.ToString(), MessageBoxIcon.Error);
+                checkBoxHandleNXMLinks.Checked = isRegistered;
+            }
+        }
+
+        #endregion
     }
 }

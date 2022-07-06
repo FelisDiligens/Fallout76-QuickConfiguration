@@ -169,7 +169,7 @@ namespace Fo76ini.Forms.FormSettings
         private void SingleSignOn_SSOFinished(object sender, SSOEventArgs e)
         {
             // The SSOFinished event handler is called from another thread, therefore Invoke is required:
-            this.tabPageNexusMods.Invoke(new Action(() => {
+            this.Invoke(new Action(() => {
                 if (e.success)
                 {
                     NexusMods.User.APIKey = e.APIKey;
