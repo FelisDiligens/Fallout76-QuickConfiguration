@@ -38,10 +38,12 @@
             // 
             // buttonCustomSave
             // 
-            this.buttonCustomSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCustomSave.Location = new System.Drawing.Point(752, 22);
+            this.buttonCustomSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCustomSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCustomSave.Location = new System.Drawing.Point(235, 425);
+            this.buttonCustomSave.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.buttonCustomSave.Name = "buttonCustomSave";
-            this.buttonCustomSave.Size = new System.Drawing.Size(94, 23);
+            this.buttonCustomSave.Size = new System.Drawing.Size(94, 26);
             this.buttonCustomSave.TabIndex = 7;
             this.buttonCustomSave.Text = "Save";
             this.buttonCustomSave.UseVisualStyleBackColor = true;
@@ -49,22 +51,25 @@
             // 
             // comboBoxCustomFile
             // 
-            this.comboBoxCustomFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxCustomFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBoxCustomFile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCustomFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxCustomFile.FormattingEnabled = true;
-            this.comboBoxCustomFile.Location = new System.Drawing.Point(540, 23);
+            this.comboBoxCustomFile.Location = new System.Drawing.Point(15, 426);
+            this.comboBoxCustomFile.Margin = new System.Windows.Forms.Padding(10);
             this.comboBoxCustomFile.Name = "comboBoxCustomFile";
-            this.comboBoxCustomFile.Size = new System.Drawing.Size(205, 21);
+            this.comboBoxCustomFile.Size = new System.Drawing.Size(205, 24);
             this.comboBoxCustomFile.TabIndex = 6;
             this.comboBoxCustomFile.SelectedIndexChanged += new System.EventHandler(this.comboBoxCustomFile_SelectedIndexChanged);
             // 
             // labelCustomFile
             // 
-            this.labelCustomFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelCustomFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelCustomFile.AutoSize = true;
-            this.labelCustomFile.Location = new System.Drawing.Point(538, 7);
+            this.labelCustomFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomFile.Location = new System.Drawing.Point(12, 406);
             this.labelCustomFile.Name = "labelCustomFile";
-            this.labelCustomFile.Size = new System.Drawing.Size(106, 13);
+            this.labelCustomFile.Size = new System.Drawing.Size(130, 16);
             this.labelCustomFile.TabIndex = 5;
             this.labelCustomFile.Text = "Overwrite lines in file:";
             // 
@@ -76,11 +81,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCustom.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCustom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.textBoxCustom.Location = new System.Drawing.Point(6, 50);
+            this.textBoxCustom.Location = new System.Drawing.Point(15, 77);
+            this.textBoxCustom.Margin = new System.Windows.Forms.Padding(15, 3, 15, 3);
             this.textBoxCustom.Multiline = true;
             this.textBoxCustom.Name = "textBoxCustom";
             this.textBoxCustom.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxCustom.Size = new System.Drawing.Size(840, 405);
+            this.textBoxCustom.Size = new System.Drawing.Size(820, 315);
             this.textBoxCustom.TabIndex = 4;
             this.textBoxCustom.WordWrap = false;
             this.textBoxCustom.TextChanged += new System.EventHandler(this.textBoxCustom_TextChanged);
@@ -88,19 +94,20 @@
             // labelCustomTitle
             // 
             this.labelCustomTitle.AutoSize = true;
-            this.labelCustomTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCustomTitle.Location = new System.Drawing.Point(6, 6);
+            this.labelCustomTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomTitle.Location = new System.Drawing.Point(10, 15);
             this.labelCustomTitle.Name = "labelCustomTitle";
-            this.labelCustomTitle.Size = new System.Drawing.Size(178, 24);
+            this.labelCustomTitle.Size = new System.Drawing.Size(210, 30);
             this.labelCustomTitle.TabIndex = 69;
             this.labelCustomTitle.Text = "Custom *.ini settings";
             // 
             // labelCustomDesc
             // 
             this.labelCustomDesc.AutoSize = true;
-            this.labelCustomDesc.Location = new System.Drawing.Point(8, 30);
+            this.labelCustomDesc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomDesc.Location = new System.Drawing.Point(12, 45);
             this.labelCustomDesc.Name = "labelCustomDesc";
-            this.labelCustomDesc.Size = new System.Drawing.Size(301, 13);
+            this.labelCustomDesc.Size = new System.Drawing.Size(375, 17);
             this.labelCustomDesc.TabIndex = 70;
             this.labelCustomDesc.Text = "Everything written in here will overwrite settings in the *.ini files.";
             // 

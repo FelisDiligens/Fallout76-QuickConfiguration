@@ -21,6 +21,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             InitializeComponent();
 
+            if (this.DesignMode)
+                return;
+
             // Add control elements to blacklist:
             Translation.BlackList.AddRange(new string[] {
                 "labelNMUserID",
@@ -37,6 +40,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         private void UserControlNexusMods_Load(object sender, EventArgs e)
         {
+            if (this.DesignMode)
+                return;
+
             RefreshNMUI();
             if (Configuration.NexusMods.AutoUpdateProfile)
                 UpdateNMProfile();
@@ -82,7 +88,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
              */
 
             int buttonMargin = 6;  // px
-            int buttonOffset = 25; // px
+            int buttonOffset = 20; // px
 
             Button[] buttons = new Button[] { buttonNMLogin, buttonNMLoginManually, buttonNWLogout, buttonNMUpdateProfile, buttonNWDeleteCache };
             bool[] visiblity = new bool[] { !loggedIn, !loggedIn && APIKeyTextboxEnabled, loggedIn, loggedIn, true };

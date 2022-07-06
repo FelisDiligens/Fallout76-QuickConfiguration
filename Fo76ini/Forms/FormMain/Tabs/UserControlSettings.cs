@@ -24,6 +24,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             InitializeComponent();
 
+            if (this.DesignMode)
+                return;
+
             // Link tweaks
             LinkInfo();
             LinkControlsToTweaks();
@@ -46,6 +49,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         private void UserControlSettings_Load(object sender, EventArgs e)
         {
+            if (this.DesignMode)
+                return;
+
             // Nuclear Winter:
             UpdateNWModeUI(false);
 
@@ -68,7 +74,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             if (this.backgroundWorkerDownloadLanguages.IsBusy)
                 return;
-            this.groupBoxLocalization.Focus();
+            this.labelSettingsLocalization.Focus();
             this.buttonDownloadLanguages.Enabled = false;
             this.pictureBoxSpinnerDownloadLanguages.Visible = true;
             this.backgroundWorkerDownloadLanguages.RunWorkerAsync();

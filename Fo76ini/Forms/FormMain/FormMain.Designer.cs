@@ -121,7 +121,7 @@
             this.pictureBoxLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
             this.pictureBoxLoadingGIF.Location = new System.Drawing.Point(0, -2);
             this.pictureBoxLoadingGIF.Name = "pictureBoxLoadingGIF";
-            this.pictureBoxLoadingGIF.Size = new System.Drawing.Size(16, 583);
+            this.pictureBoxLoadingGIF.Size = new System.Drawing.Size(16, 613);
             this.pictureBoxLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxLoadingGIF.TabIndex = 15;
             this.pictureBoxLoadingGIF.TabStop = false;
@@ -144,7 +144,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(684, 583);
+            this.tabControl1.Size = new System.Drawing.Size(684, 613);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPageHome
@@ -217,7 +217,7 @@
             this.panelUpdate.Controls.Add(this.pictureBoxButtonUpdate);
             this.panelUpdate.Controls.Add(this.labelNewVersion);
             this.panelUpdate.Controls.Add(this.linkLabelManualDownloadPage);
-            this.panelUpdate.Location = new System.Drawing.Point(3, 299);
+            this.panelUpdate.Location = new System.Drawing.Point(7, 334);
             this.panelUpdate.Name = "panelUpdate";
             this.panelUpdate.Size = new System.Drawing.Size(299, 110);
             this.panelUpdate.TabIndex = 39;
@@ -240,7 +240,7 @@
             // 
             // labelNewVersion
             // 
-            this.labelNewVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNewVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNewVersion.ForeColor = System.Drawing.Color.Crimson;
             this.labelNewVersion.Location = new System.Drawing.Point(3, 6);
             this.labelNewVersion.Margin = new System.Windows.Forms.Padding(3);
@@ -252,6 +252,7 @@
             // 
             // linkLabelManualDownloadPage
             // 
+            this.linkLabelManualDownloadPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabelManualDownloadPage.Location = new System.Drawing.Point(3, 80);
             this.linkLabelManualDownloadPage.Margin = new System.Windows.Forms.Padding(3);
             this.linkLabelManualDownloadPage.Name = "linkLabelManualDownloadPage";
@@ -265,7 +266,7 @@
             // pictureBoxSpinnerCheckForUpdates
             // 
             this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Spinner_24;
-            this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(91, 227);
+            this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(95, 262);
             this.pictureBoxSpinnerCheckForUpdates.Name = "pictureBoxSpinnerCheckForUpdates";
             this.pictureBoxSpinnerCheckForUpdates.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxSpinnerCheckForUpdates.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -276,82 +277,82 @@
             // labelTranslationAuthor
             // 
             this.labelTranslationAuthor.AutoSize = true;
-            this.labelTranslationAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTranslationAuthor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationAuthor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationAuthor.Location = new System.Drawing.Point(121, 266);
+            this.labelTranslationAuthor.Location = new System.Drawing.Point(125, 301);
             this.labelTranslationAuthor.Name = "labelTranslationAuthor";
-            this.labelTranslationAuthor.Size = new System.Drawing.Size(172, 15);
+            this.labelTranslationAuthor.Size = new System.Drawing.Size(177, 17);
             this.labelTranslationAuthor.TabIndex = 12;
             this.labelTranslationAuthor.Text = "FelisDiligens (aka. datasnake)";
             // 
             // labelTranslationBy
             // 
             this.labelTranslationBy.AutoSize = true;
-            this.labelTranslationBy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTranslationBy.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationBy.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationBy.Location = new System.Drawing.Point(8, 267);
+            this.labelTranslationBy.Location = new System.Drawing.Point(12, 302);
             this.labelTranslationBy.Name = "labelTranslationBy";
-            this.labelTranslationBy.Size = new System.Drawing.Size(86, 15);
+            this.labelTranslationBy.Size = new System.Drawing.Size(100, 17);
             this.labelTranslationBy.TabIndex = 11;
             this.labelTranslationBy.Text = "Translation by:";
             // 
             // labelAuthorName
             // 
             this.labelAuthorName.AutoSize = true;
-            this.labelAuthorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAuthorName.Location = new System.Drawing.Point(121, 248);
+            this.labelAuthorName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAuthorName.Location = new System.Drawing.Point(125, 283);
             this.labelAuthorName.Name = "labelAuthorName";
-            this.labelAuthorName.Size = new System.Drawing.Size(172, 15);
+            this.labelAuthorName.Size = new System.Drawing.Size(177, 17);
             this.labelAuthorName.TabIndex = 10;
             this.labelAuthorName.Text = "FelisDiligens (aka. datasnake)";
             // 
             // labelConfigVersion
             // 
             this.labelConfigVersion.AutoSize = true;
-            this.labelConfigVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelConfigVersion.Location = new System.Drawing.Point(121, 231);
+            this.labelConfigVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConfigVersion.Location = new System.Drawing.Point(125, 266);
             this.labelConfigVersion.Name = "labelConfigVersion";
-            this.labelConfigVersion.Size = new System.Drawing.Size(14, 15);
+            this.labelConfigVersion.Size = new System.Drawing.Size(14, 17);
             this.labelConfigVersion.TabIndex = 9;
             this.labelConfigVersion.Text = "?";
             // 
             // labelAuthor
             // 
             this.labelAuthor.AutoSize = true;
-            this.labelAuthor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAuthor.Location = new System.Drawing.Point(8, 249);
+            this.labelAuthor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAuthor.Location = new System.Drawing.Point(12, 284);
             this.labelAuthor.Name = "labelAuthor";
-            this.labelAuthor.Size = new System.Drawing.Size(49, 15);
+            this.labelAuthor.Size = new System.Drawing.Size(56, 17);
             this.labelAuthor.TabIndex = 8;
             this.labelAuthor.Text = "Author:";
             // 
             // labelVersion
             // 
             this.labelVersion.AutoSize = true;
-            this.labelVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVersion.Location = new System.Drawing.Point(8, 231);
+            this.labelVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVersion.Location = new System.Drawing.Point(12, 266);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(51, 15);
+            this.labelVersion.Size = new System.Drawing.Size(58, 17);
             this.labelVersion.TabIndex = 7;
             this.labelVersion.Text = "Version:";
             // 
             // labelDescription
             // 
             this.labelDescription.BackColor = System.Drawing.Color.Transparent;
-            this.labelDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDescription.Location = new System.Drawing.Point(8, 196);
+            this.labelDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescription.Location = new System.Drawing.Point(12, 213);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(359, 44);
+            this.labelDescription.Size = new System.Drawing.Size(355, 53);
             this.labelDescription.TabIndex = 6;
             this.labelDescription.Text = "This tool allows you to change various game settings and install mods.";
             // 
             // labelWelcome
             // 
             this.labelWelcome.AutoSize = true;
-            this.labelWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWelcome.Location = new System.Drawing.Point(6, 172);
+            this.labelWelcome.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWelcome.Location = new System.Drawing.Point(10, 183);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(281, 24);
+            this.labelWelcome.Size = new System.Drawing.Size(326, 30);
             this.labelWelcome.TabIndex = 0;
             this.labelWelcome.Text = "Welcome to Quick Configuration";
             // 
@@ -444,7 +445,7 @@
             this.tabPageSettings.Location = new System.Drawing.Point(4, 22);
             this.tabPageSettings.Name = "tabPageSettings";
             this.tabPageSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSettings.Size = new System.Drawing.Size(676, 557);
+            this.tabPageSettings.Size = new System.Drawing.Size(676, 587);
             this.tabPageSettings.TabIndex = 14;
             this.tabPageSettings.Text = "Settings";
             this.tabPageSettings.UseVisualStyleBackColor = true;
@@ -457,7 +458,7 @@
             this.userControlSettings.AutoScroll = true;
             this.userControlSettings.Location = new System.Drawing.Point(0, 0);
             this.userControlSettings.Name = "userControlSettings";
-            this.userControlSettings.Size = new System.Drawing.Size(676, 557);
+            this.userControlSettings.Size = new System.Drawing.Size(676, 587);
             this.userControlSettings.TabIndex = 3;
             this.userControlSettings.NuclearWinterModeToggled += new System.EventHandler(this.userControlSettings_NuclearWinterModeToggled);
             // 
@@ -479,7 +480,7 @@
             this.userControlProfiles.BackColor = System.Drawing.Color.White;
             this.userControlProfiles.Location = new System.Drawing.Point(0, 0);
             this.userControlProfiles.Name = "userControlProfiles";
-            this.userControlProfiles.Size = new System.Drawing.Size(480, 557);
+            this.userControlProfiles.Size = new System.Drawing.Size(471, 557);
             this.userControlProfiles.TabIndex = 0;
             // 
             // tabPageNexusMods
@@ -510,7 +511,7 @@
             this.userControlSideNav.BackColor = System.Drawing.Color.Black;
             this.userControlSideNav.Location = new System.Drawing.Point(0, -2);
             this.userControlSideNav.Name = "userControlSideNav";
-            this.userControlSideNav.Size = new System.Drawing.Size(200, 583);
+            this.userControlSideNav.Size = new System.Drawing.Size(200, 613);
             this.userControlSideNav.TabIndex = 17;
             this.userControlSideNav.PlayClicked += new System.EventHandler(this.navButtonPlay_Click);
             this.userControlSideNav.ApplyClicked += new System.EventHandler(this.navButtonApply_Click);
@@ -529,13 +530,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 581);
+            this.ClientSize = new System.Drawing.Size(884, 611);
             this.Controls.Add(this.pictureBoxLoadingGIF);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.userControlSideNav);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(900, 620);
+            this.MinimumSize = new System.Drawing.Size(900, 650);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fallout 76 Quick Configuration";

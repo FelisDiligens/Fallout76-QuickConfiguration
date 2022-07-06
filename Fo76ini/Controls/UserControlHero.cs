@@ -28,7 +28,8 @@ namespace Fo76ini.Controls
         private void UserControlHero_Load(object sender, EventArgs e)
         {
             // Load hero banner from Steam:
-            this.pictureBoxHero.LoadAsync(HeroURL);
+            long timestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
+            this.pictureBoxHero.LoadAsync(HeroURL + "?t=" + timestamp.ToString());
         }
 
         private void pictureBoxHero_Resize(object sender, EventArgs e)

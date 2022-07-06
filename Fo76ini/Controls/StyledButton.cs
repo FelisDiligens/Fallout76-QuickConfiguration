@@ -156,7 +156,7 @@ namespace Fo76ini.Controls
                 case ContentAlignment.TopLeft:
                 case ContentAlignment.BottomLeft:
                     if (forText && Image != null && ImageAlign == ContentAlignment.MiddleLeft)
-                        x = Padding + Image.Width + 5;
+                        x = Padding + Image.Width + 10;
                     else
                         x = Padding;
                     break;
