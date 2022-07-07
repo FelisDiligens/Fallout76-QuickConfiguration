@@ -20,6 +20,9 @@ namespace Fo76ini.Forms.FormMain
         {
             InitializeComponent();
 
+            if (this.DesignMode)
+                return;
+
             this.colorPreviewPipboy.BackColorChanged += colorPreviewPipboy_BackColorChanged;
             this.colorPreviewQuickboy.BackColorChanged += colorPreviewQuickboy_BackColorChanged;
             this.colorPreviewPAPipboy.BackColorChanged += colorPreviewPAPipboy_BackColorChanged;

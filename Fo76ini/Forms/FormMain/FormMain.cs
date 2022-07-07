@@ -33,6 +33,9 @@ namespace Fo76ini
         {
             InitializeComponent();
 
+            if (this.DesignMode)
+                return;
+
             // Handle changes:
             ProfileManager.ProfileChanged += OnProfileChanged;
             FormMods.NWModeUpdated += OnNWModeUpdated;

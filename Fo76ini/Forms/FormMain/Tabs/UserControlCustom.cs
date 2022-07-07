@@ -21,6 +21,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             InitializeComponent();
 
+            if (this.DesignMode)
+                return;
+
             ProfileManager.ProfileChanged += OnProfileChanged;
 
             this.labelCustomTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);

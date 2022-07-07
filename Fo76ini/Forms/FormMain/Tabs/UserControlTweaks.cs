@@ -22,6 +22,9 @@ namespace Fo76ini.Forms.FormMain
         {
             InitializeComponent();
 
+            if (this.DesignMode)
+                return;
+
             ProfileManager.ProfileChanged += OnProfileChanged;
 
             /*

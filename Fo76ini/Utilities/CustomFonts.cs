@@ -24,7 +24,17 @@ namespace Fo76ini.Utilities
 
         public static FontFamily Overseer
         {
-            get { return pfc.Families[0]; }
+            get
+            {
+                if (pfc.Families.Length < 1)
+                    return FallbackFont;
+                return pfc.Families[0];
+            }
+        }
+
+        private static FontFamily FallbackFont
+        {
+            get { return FontFamily.GenericSansSerif; }
         }
 
         #region Code for registering fonts

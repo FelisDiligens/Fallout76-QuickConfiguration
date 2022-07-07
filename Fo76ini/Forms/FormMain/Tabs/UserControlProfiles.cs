@@ -32,6 +32,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             InitializeComponent();
 
+            if (this.DesignMode)
+                return;
+
             HideTabHeader();
 
             this.comboBoxGameEdition.Items.Add(new ComboBoxItem("Steam", Resources.steam_24px));

@@ -47,7 +47,10 @@ namespace Fo76ini.Forms.FormMain
         public UserControlGallery()
         {
             InitializeComponent();
-            
+
+            if (this.DesignMode)
+                return;
+
             ProfileManager.ProfileChanged += OnProfileChanged;
 
             this.backgroundWorkerLoadGallery.RunWorkerCompleted += backgroundWorkerLoadGallery_RunWorkerCompleted;
