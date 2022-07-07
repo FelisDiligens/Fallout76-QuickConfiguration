@@ -20,6 +20,7 @@ using Fo76ini.Ini;
 using Fo76ini.Forms.FormIniError;
 using Fo76ini.Forms.FormWelcome;
 using Fo76ini.Tweaks;
+using Fo76ini.Utilities;
 
 namespace Fo76ini.Forms.FormMain.Tabs
 {
@@ -48,6 +49,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
             this.panelAdvancedOptions.Visible = false;
 
             ProfileManager.ProfileChanged += OnProfileChanged;
+
+            this.labelSelectTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+            this.labelEditTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)

@@ -60,6 +60,8 @@ namespace Fo76ini.Forms.FormMain
             LinkControls();
             HideGalleryOptions();
             //LoadGallery();
+
+            this.labelGalleryTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void LinkControls()

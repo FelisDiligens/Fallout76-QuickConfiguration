@@ -36,6 +36,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
             });
 
             SingleSignOn.SSOFinished += SingleSignOn_SSOFinished;
+
+            this.labelNexusTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void UserControlNexusMods_Load(object sender, EventArgs e)

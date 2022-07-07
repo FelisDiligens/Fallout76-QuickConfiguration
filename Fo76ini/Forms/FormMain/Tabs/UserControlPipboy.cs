@@ -1,6 +1,7 @@
 ﻿using Fo76ini.Tweaks;
 using Fo76ini.Tweaks.Colors;
 using Fo76ini.Tweaks.Pipboy;
+using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,8 @@ namespace Fo76ini.Forms.FormMain
             this.colorPreviewPAPipboy.BackColorChanged += colorPreviewPAPipboy_BackColorChanged;
 
             LinkPipboyControls();
+
+            this.labelPipboyTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void LinkPipboyControls()

@@ -1,4 +1,5 @@
 ﻿using Fo76ini.Profiles;
+using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
             InitializeComponent();
 
             ProfileManager.ProfileChanged += OnProfileChanged;
+
+            this.labelCustomTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)

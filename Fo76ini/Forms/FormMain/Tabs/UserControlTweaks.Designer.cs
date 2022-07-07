@@ -2201,7 +2201,6 @@
             this.groupBoxAudioVolume.TabIndex = 60;
             this.groupBoxAudioVolume.TabStop = false;
             this.groupBoxAudioVolume.Text = "Volume";
-            this.groupBoxAudioVolume.Enter += new System.EventHandler(this.groupBoxAudioVolume_Enter);
             // 
             // sliderAudioChat
             // 

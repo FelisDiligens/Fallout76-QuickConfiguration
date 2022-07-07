@@ -37,7 +37,7 @@
             this.labelGalleryAdditionalPaths = new System.Windows.Forms.Label();
             this.numScreenshotIndex = new System.Windows.Forms.NumericUpDown();
             this.labelScreenshotIndex = new System.Windows.Forms.Label();
-            this.labelGallery = new System.Windows.Forms.Label();
+            this.labelGalleryTitle = new System.Windows.Forms.Label();
             this.panelGallery = new System.Windows.Forms.Panel();
             this.pictureBoxGalleryLoadingGIF = new System.Windows.Forms.PictureBox();
             this.labelGalleryTip = new System.Windows.Forms.Label();
@@ -165,13 +165,13 @@
             // 
             // labelGallery
             // 
-            this.labelGallery.AutoSize = true;
-            this.labelGallery.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGallery.Location = new System.Drawing.Point(10, 15);
-            this.labelGallery.Name = "labelGallery";
-            this.labelGallery.Size = new System.Drawing.Size(80, 30);
-            this.labelGallery.TabIndex = 68;
-            this.labelGallery.Text = "Gallery";
+            this.labelGalleryTitle.AutoSize = true;
+            this.labelGalleryTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGalleryTitle.Location = new System.Drawing.Point(10, 15);
+            this.labelGalleryTitle.Name = "labelGallery";
+            this.labelGalleryTitle.Size = new System.Drawing.Size(80, 30);
+            this.labelGalleryTitle.TabIndex = 68;
+            this.labelGalleryTitle.Text = "Gallery";
             // 
             // panelGallery
             // 
@@ -337,7 +337,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelGalleryOptions);
-            this.Controls.Add(this.labelGallery);
+            this.Controls.Add(this.labelGalleryTitle);
             this.Controls.Add(this.panelGallery);
             this.Controls.Add(this.sliderGalleryThumbnailSize);
             this.Controls.Add(this.buttonGalleryShowOptions);
@@ -367,7 +367,7 @@
         private System.Windows.Forms.Label labelGalleryAdditionalPaths;
         private System.Windows.Forms.NumericUpDown numScreenshotIndex;
         private System.Windows.Forms.Label labelScreenshotIndex;
-        private System.Windows.Forms.Label labelGallery;
+        private System.Windows.Forms.Label labelGalleryTitle;
         private System.Windows.Forms.Panel panelGallery;
         private System.Windows.Forms.PictureBox pictureBoxGalleryLoadingGIF;
         private System.Windows.Forms.Label labelGalleryTip;

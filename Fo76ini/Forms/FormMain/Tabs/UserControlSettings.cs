@@ -45,6 +45,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
                 "buttonDownloadLanguages",
                 "buttonRefreshLanguage"
             });
+
+            this.labelSettingsTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void UserControlSettings_Load(object sender, EventArgs e)

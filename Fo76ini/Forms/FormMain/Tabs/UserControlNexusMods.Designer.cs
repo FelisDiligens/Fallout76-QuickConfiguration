@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlNexusMods));
-            this.labelTitleNexus = new System.Windows.Forms.Label();
+            this.labelNexusTitle = new System.Windows.Forms.Label();
             this.labelNexusDesc = new System.Windows.Forms.Label();
             this.panelManageNMProfile = new System.Windows.Forms.Panel();
             this.linkLabelEnableAPIKey = new System.Windows.Forms.LinkLabel();
@@ -71,13 +71,13 @@
             // 
             // labelTitleNexus
             // 
-            this.labelTitleNexus.AutoSize = true;
-            this.labelTitleNexus.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitleNexus.Location = new System.Drawing.Point(10, 15);
-            this.labelTitleNexus.Name = "labelTitleNexus";
-            this.labelTitleNexus.Size = new System.Drawing.Size(239, 30);
-            this.labelTitleNexus.TabIndex = 4;
-            this.labelTitleNexus.Text = "NexusMods Integration";
+            this.labelNexusTitle.AutoSize = true;
+            this.labelNexusTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNexusTitle.Location = new System.Drawing.Point(10, 15);
+            this.labelNexusTitle.Name = "labelTitleNexus";
+            this.labelNexusTitle.Size = new System.Drawing.Size(239, 30);
+            this.labelNexusTitle.TabIndex = 4;
+            this.labelNexusTitle.Text = "NexusMods Integration";
             // 
             // labelNexusDesc
             // 
@@ -481,7 +481,7 @@
             this.Controls.Add(this.panelManageNMProfile);
             this.Controls.Add(this.panelNMProfile);
             this.Controls.Add(this.labelNexusDesc);
-            this.Controls.Add(this.labelTitleNexus);
+            this.Controls.Add(this.labelNexusTitle);
             this.Name = "UserControlNexusMods";
             this.Size = new System.Drawing.Size(700, 620);
             this.Load += new System.EventHandler(this.UserControlNexusMods_Load);
@@ -498,7 +498,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelTitleNexus;
+        private System.Windows.Forms.Label labelNexusTitle;
         private System.Windows.Forms.Label labelNexusDesc;
         private System.Windows.Forms.Panel panelManageNMProfile;
         private System.Windows.Forms.LinkLabel linkLabelEnableAPIKey;

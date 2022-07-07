@@ -223,6 +223,8 @@ namespace Fo76ini.Forms.FormMain
             LinkControlsToTweaks();
 
             InitAccountProfileRadiobuttons();
+
+            this.labelTweaksTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)
@@ -515,10 +517,5 @@ namespace Fo76ini.Forms.FormMain
         }
 
         #endregion
-
-        private void groupBoxAudioVolume_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }
