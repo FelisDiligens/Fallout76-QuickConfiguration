@@ -42,6 +42,9 @@ namespace Fo76ini
             // Load profiles:
             ProfileManager.ProfileChanged += OnProfileChanged; // Make sure, that the FIRST event handler is ours.
             ProfileManager.Load();
+
+            // Load custom fonts:
+            CustomFonts.Register();
         }
 
         private static void OnProfileChanged(object sender, ProfileEventArgs e)

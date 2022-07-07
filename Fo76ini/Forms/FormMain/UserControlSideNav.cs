@@ -13,7 +13,6 @@ namespace Fo76ini.Forms.FormMain
 {
     public partial class UserControlSideNav : UserControl
     {
-        // Create your private font collection object.
         PrivateFontCollection pfc = new PrivateFontCollection();
 
         public UserControlSideNav()
@@ -21,8 +20,7 @@ namespace Fo76ini.Forms.FormMain
             InitializeComponent();
             ProfileManager.ProfileChanged += ProfileManager_ProfileChanged;
 
-            InitCustomLabelFont();
-            labelLogo.Font = new Font(pfc.Families[0], labelLogo.Font.Size);
+            labelLogo.Font = new Font(CustomFonts.Overseer, labelLogo.Font.Size);
 
             // Add control elements to blacklist:
             Translation.BlackList.AddRange(new string[] {
@@ -30,34 +28,6 @@ namespace Fo76ini.Forms.FormMain
             });
 
             this.buttonHome.Highlight = true;
-        }
-
-        [DllImport("gdi32.dll")]
-        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
-
-        // https://stackoverflow.com/a/23520042
-        // https://stackoverflow.com/questions/1955629/c-sharp-using-an-embedded-font-on-a-textbox/1956043#1956043
-        private void InitCustomLabelFont()
-        {
-            // create a buffer to read in to
-            byte[] fontData = Resources.overseer;
-            int fontLength = fontData.Length;
-
-            // create an unsafe memory block for the font data
-            IntPtr data = Marshal.AllocCoTaskMem(fontLength);
-
-            // copy the bytes to the unsafe memory block
-            Marshal.Copy(fontData, 0, data, fontLength);
-
-            // We HAVE to do this to register the font to the system (Weird .NET bug !)
-            uint cFonts = 0;
-            AddFontMemResourceEx(data, (uint)fontLength, IntPtr.Zero, ref cFonts);
-
-            // pass the font to the font collection
-            pfc.AddMemoryFont(data, fontLength);
-
-            // free the unsafe memory
-            // Marshal.FreeCoTaskMem(data);
         }
 
         private void ProfileManager_ProfileChanged(object sender, ProfileEventArgs e)
