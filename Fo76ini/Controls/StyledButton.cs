@@ -52,6 +52,16 @@ namespace Fo76ini.Controls
         [DefaultValue(0)]
         public int BorderWidth { get; set; }
 
+        [Category("Appearance")]
+        [Description("When 'Highlight' is set to true, the button will have a left 'ribbon' with this color.")]
+        [DefaultValue(typeof(Color), "220, 180, 42")]
+        public Color HighlightRibbonColor { get; set; }
+
+        [Category("Appearance")]
+        [Description("When 'Highlight' is set to true, the button will have this background color.")]
+        [DefaultValue(typeof(Color), "Silver")]
+        public Color HighlightBackColor { get; set; }
+
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Bindable(true)]
@@ -62,6 +72,21 @@ namespace Fo76ini.Controls
         public new int Padding { get; set; }
 
         #endregion
+
+        /// <summary>
+        /// Can be set to true, so that the button is highlighted.
+        /// </summary>
+        [Browsable(false)]
+        public bool Highlight
+        {
+            get { return _highlight; }
+            set
+            {
+                _highlight = value;
+                this.Refresh();
+            }
+        }
+        private bool _highlight = false;
 
         private bool _mouseOver = false;
         private bool _mouseDown = false;
@@ -76,8 +101,9 @@ namespace Fo76ini.Controls
             BorderColor = Color.FromArgb(0, 0, 0);
             BorderWidth = 0;
             //BorderRadius = 0;
+            HighlightRibbonColor = Color.FromArgb(220, 180, 42);
+            HighlightBackColor = Color.Silver;
             Padding = 0;
-
 
             /*
              * Use mouse events to redraw the button:
@@ -124,14 +150,26 @@ namespace Fo76ini.Controls
 
             // Draw border:
             e.Graphics.FillRectangle(new SolidBrush(BorderColor), rect);
-            
+
             // Draw background:
-            if (_mouseDown)
+            if (Highlight)
+                e.Graphics.FillRectangle(new SolidBrush(HighlightBackColor), BGRect);
+            else if (_mouseDown)
                 e.Graphics.FillRectangle(new SolidBrush(MouseDownBackColor), BGRect);
             else if (_mouseOver)
                 e.Graphics.FillRectangle(new SolidBrush(MouseOverBackColor), BGRect);
             else
                 e.Graphics.FillRectangle(new SolidBrush(BackColor), BGRect);
+
+            // Draw "Highlight" ribbon:
+            if (Highlight)
+                e.Graphics.FillRectangle(
+                    new SolidBrush(HighlightRibbonColor),
+                    Rectangle.FromLTRB(
+                        0,
+                        0,
+                        4,
+                        Height));
 
             // Draw image:
             if (Image != null)

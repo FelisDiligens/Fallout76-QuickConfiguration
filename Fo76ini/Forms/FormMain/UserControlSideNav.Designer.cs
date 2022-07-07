@@ -97,9 +97,9 @@
             this.gameFolderToolStripMenuItem,
             this.gamesConfigurationFolderToolStripMenuItem,
             this.toolStripSeparator4,
+            this.toolInstallationFolderToolStripMenuItem,
             this.toolConfigurationFolderToolStripMenuItem,
             this.toolLanguagesFolderToolStripMenuItem,
-            this.toolInstallationFolderToolStripMenuItem,
             this.toolStripSeparator5,
             this.steamScreenshotFolderToolStripMenuItem,
             this.gamePhotosFolderToolStripMenuItem,
@@ -257,7 +257,7 @@
             this.buttonNexusMods.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonNexusMods.Location = new System.Drawing.Point(0, 443);
             this.buttonNexusMods.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonNexusMods.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonNexusMods.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonNexusMods.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonNexusMods.Name = "buttonNexusMods";
             this.buttonNexusMods.Padding = 10;
@@ -279,7 +279,7 @@
             this.buttonCustom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCustom.Location = new System.Drawing.Point(0, 358);
             this.buttonCustom.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCustom.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonCustom.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonCustom.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonCustom.Name = "buttonCustom";
             this.buttonCustom.Padding = 10;
@@ -301,7 +301,7 @@
             this.buttonProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonProfile.Location = new System.Drawing.Point(0, 553);
             this.buttonProfile.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonProfile.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonProfile.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonProfile.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonProfile.Name = "buttonProfile";
             this.buttonProfile.Padding = 10;
@@ -323,7 +323,7 @@
             this.buttonHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHome.Location = new System.Drawing.Point(0, 178);
             this.buttonHome.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonHome.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonHome.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonHome.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonHome.Name = "buttonHome";
             this.buttonHome.Padding = 10;
@@ -345,7 +345,7 @@
             this.buttonGallery.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonGallery.Location = new System.Drawing.Point(0, 322);
             this.buttonGallery.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonGallery.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonGallery.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonGallery.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonGallery.Name = "buttonGallery";
             this.buttonGallery.Padding = 10;
@@ -367,7 +367,7 @@
             this.buttonPipboy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPipboy.Location = new System.Drawing.Point(0, 286);
             this.buttonPipboy.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonPipboy.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonPipboy.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonPipboy.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonPipboy.Name = "buttonPipboy";
             this.buttonPipboy.Padding = 10;
@@ -389,7 +389,7 @@
             this.buttonTweaks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTweaks.Location = new System.Drawing.Point(0, 214);
             this.buttonTweaks.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonTweaks.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonTweaks.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonTweaks.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonTweaks.Name = "buttonTweaks";
             this.buttonTweaks.Padding = 10;
@@ -405,13 +405,13 @@
             this.buttonBrowse.BackColor = System.Drawing.SystemColors.Control;
             this.buttonBrowse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBrowse.ForeColor = System.Drawing.Color.Black;
             this.buttonBrowse.Image = global::Fo76ini.Properties.Resources.folder_24;
             this.buttonBrowse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonBrowse.Location = new System.Drawing.Point(135, 107);
             this.buttonBrowse.Margin = new System.Windows.Forms.Padding(5);
-            this.buttonBrowse.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonBrowse.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonBrowse.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonBrowse.Name = "buttonBrowse";
             this.buttonBrowse.Padding = 3;
@@ -433,7 +433,7 @@
             this.buttonSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSettings.Location = new System.Drawing.Point(0, 407);
             this.buttonSettings.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSettings.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonSettings.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonSettings.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.Padding = 10;
@@ -455,7 +455,7 @@
             this.buttonMods.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonMods.Location = new System.Drawing.Point(0, 250);
             this.buttonMods.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMods.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonMods.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonMods.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonMods.Name = "buttonMods";
             this.buttonMods.Padding = 10;
@@ -477,7 +477,7 @@
             this.buttonUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonUpdate.Location = new System.Drawing.Point(0, 479);
             this.buttonUpdate.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonUpdate.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonUpdate.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonUpdate.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Padding = 10;
@@ -493,13 +493,13 @@
             this.buttonApply.BackColor = System.Drawing.SystemColors.Control;
             this.buttonApply.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonApply.ForeColor = System.Drawing.Color.Black;
             this.buttonApply.Image = global::Fo76ini.Properties.Resources.save_24;
             this.buttonApply.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonApply.Location = new System.Drawing.Point(70, 107);
             this.buttonApply.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonApply.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonApply.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonApply.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Padding = 3;
@@ -515,13 +515,13 @@
             this.buttonPlay.BackColor = System.Drawing.SystemColors.Control;
             this.buttonPlay.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPlay.ForeColor = System.Drawing.Color.Black;
             this.buttonPlay.Image = global::Fo76ini.Properties.Resources.play;
             this.buttonPlay.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonPlay.Location = new System.Drawing.Point(5, 107);
             this.buttonPlay.Margin = new System.Windows.Forms.Padding(5);
-            this.buttonPlay.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonPlay.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.buttonPlay.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonPlay.Name = "buttonPlay";
             this.buttonPlay.Padding = 3;

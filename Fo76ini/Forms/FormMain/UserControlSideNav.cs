@@ -28,6 +28,8 @@ namespace Fo76ini.Forms.FormMain
             Translation.BlackList.AddRange(new string[] {
                 "buttonProfile"
             });
+
+            this.buttonHome.Highlight = true;
         }
 
         [DllImport("gdi32.dll")]
@@ -81,12 +83,6 @@ namespace Fo76ini.Forms.FormMain
                 contextMenuStripBrowse.Show(buttonBrowse, new Point(0, buttonBrowse.Height));
         }
 
-        #region Button event handler
-
-        /*
-         * Event handler:
-         */
-
         private void buttonPlay_Click(object sender, EventArgs e)
         {
             if (PlayClicked != null)
@@ -101,8 +97,30 @@ namespace Fo76ini.Forms.FormMain
         }
         public event EventHandler ApplyClicked;
 
+
+        #region Navigation buttons
+
+        /*
+         * Event handler:
+         */
+
+        private void ResetNavButtonsHighlight()
+        {
+            this.buttonHome.Highlight = false;
+            this.buttonSettings.Highlight = false;
+            this.buttonCustom.Highlight = false;
+            this.buttonGallery.Highlight = false;
+            this.buttonProfile.Highlight = false;
+            this.buttonTweaks.Highlight = false;
+            this.buttonPipboy.Highlight = false;
+            this.buttonNexusMods.Highlight = false;
+        }
+
         private void buttonSettings_Click(object sender, EventArgs e)
         {
+            ResetNavButtonsHighlight();
+            this.buttonSettings.Highlight = true;
+
             if (SettingsClicked != null)
                 SettingsClicked(sender, e);
         }
@@ -124,6 +142,9 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
+            ResetNavButtonsHighlight();
+            this.buttonHome.Highlight = true;
+
             if (HomeClicked != null)
                 HomeClicked(sender, e);
         }
@@ -131,6 +152,9 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonTweaks_Click(object sender, EventArgs e)
         {
+            ResetNavButtonsHighlight();
+            this.buttonTweaks.Highlight = true;
+
             if (TweaksClicked != null)
                 TweaksClicked(sender, e);
         }
@@ -138,6 +162,9 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonPipboy_Click(object sender, EventArgs e)
         {
+            ResetNavButtonsHighlight();
+            this.buttonPipboy.Highlight = true;
+
             if (PipboyClicked != null)
                 PipboyClicked(sender, e);
         }
@@ -145,6 +172,9 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonGallery_Click(object sender, EventArgs e)
         {
+            ResetNavButtonsHighlight();
+            this.buttonGallery.Highlight = true;
+
             if (GalleryClicked != null)
                 GalleryClicked(sender, e);
         }
@@ -152,6 +182,9 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonCustom_Click(object sender, EventArgs e)
         {
+            ResetNavButtonsHighlight();
+            this.buttonCustom.Highlight = true;
+
             if (CustomClicked != null)
                 CustomClicked(sender, e);
         }
@@ -159,6 +192,9 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonProfile_Click(object sender, EventArgs e)
         {
+            ResetNavButtonsHighlight();
+            this.buttonProfile.Highlight = true;
+
             if (ProfileClicked != null)
                 ProfileClicked(sender, e);
         }
@@ -166,6 +202,9 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonNexusMods_Click(object sender, EventArgs e)
         {
+            ResetNavButtonsHighlight();
+            this.buttonNexusMods.Highlight = true;
+
             if (NexusClicked != null)
                 NexusClicked(sender, e);
         }
