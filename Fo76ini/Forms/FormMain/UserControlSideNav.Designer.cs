@@ -74,7 +74,7 @@
             // 
             this.labelLogo.BackColor = System.Drawing.Color.Transparent;
             this.labelLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLogo.ForeColor = System.Drawing.Color.White;
+            this.labelLogo.ForeColor = System.Drawing.Color.Black;
             this.labelLogo.Location = new System.Drawing.Point(3, 64);
             this.labelLogo.Name = "labelLogo";
             this.labelLogo.Size = new System.Drawing.Size(194, 30);
@@ -199,7 +199,7 @@
             // 
             this.labelGameEditionDesc.AutoSize = true;
             this.labelGameEditionDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGameEditionDesc.ForeColor = System.Drawing.Color.White;
+            this.labelGameEditionDesc.ForeColor = System.Drawing.Color.Black;
             this.labelGameEditionDesc.Location = new System.Drawing.Point(5, 532);
             this.labelGameEditionDesc.Name = "labelGameEditionDesc";
             this.labelGameEditionDesc.Size = new System.Drawing.Size(104, 16);
@@ -208,7 +208,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox1.BackColor = System.Drawing.Color.Silver;
             this.pictureBox1.Location = new System.Drawing.Point(0, 400);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox1.Name = "pictureBox1";
@@ -218,7 +218,7 @@
             // 
             // pictureBoxSpacer
             // 
-            this.pictureBoxSpacer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBoxSpacer.BackColor = System.Drawing.Color.Silver;
             this.pictureBoxSpacer.Location = new System.Drawing.Point(0, 168);
             this.pictureBoxSpacer.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBoxSpacer.Name = "pictureBoxSpacer";
@@ -228,7 +228,7 @@
             // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.Image = global::Fo76ini.Properties.Resources.fallout76_logo_white;
+            this.pictureBoxLogo.Image = global::Fo76ini.Properties.Resources.fallout76_logo_black;
             this.pictureBoxLogo.Location = new System.Drawing.Point(0, 8);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(200, 63);
@@ -238,7 +238,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox2.BackColor = System.Drawing.Color.Silver;
             this.pictureBox2.Location = new System.Drawing.Point(0, 521);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox2.Name = "pictureBox2";
@@ -248,20 +248,20 @@
             // 
             // buttonNexusMods
             // 
-            this.buttonNexusMods.BackColor = System.Drawing.Color.Black;
+            this.buttonNexusMods.BackColor = System.Drawing.SystemColors.Control;
             this.buttonNexusMods.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonNexusMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNexusMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNexusMods.ForeColor = System.Drawing.Color.White;
+            this.buttonNexusMods.ForeColor = System.Drawing.Color.Black;
             this.buttonNexusMods.Image = global::Fo76ini.Properties.Resources.nexus_24;
             this.buttonNexusMods.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNexusMods.Location = new System.Drawing.Point(3, 443);
-            this.buttonNexusMods.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonNexusMods.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonNexusMods.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonNexusMods.Location = new System.Drawing.Point(0, 443);
+            this.buttonNexusMods.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonNexusMods.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonNexusMods.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonNexusMods.Name = "buttonNexusMods";
             this.buttonNexusMods.Padding = 10;
-            this.buttonNexusMods.Size = new System.Drawing.Size(194, 36);
+            this.buttonNexusMods.Size = new System.Drawing.Size(200, 36);
             this.buttonNexusMods.TabIndex = 52;
             this.buttonNexusMods.Text = "NexusMods";
             this.buttonNexusMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -270,20 +270,20 @@
             // 
             // buttonCustom
             // 
-            this.buttonCustom.BackColor = System.Drawing.Color.Black;
+            this.buttonCustom.BackColor = System.Drawing.SystemColors.Control;
             this.buttonCustom.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonCustom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCustom.ForeColor = System.Drawing.Color.White;
+            this.buttonCustom.ForeColor = System.Drawing.Color.Black;
             this.buttonCustom.Image = global::Fo76ini.Properties.Resources.code_24;
             this.buttonCustom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCustom.Location = new System.Drawing.Point(3, 358);
-            this.buttonCustom.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonCustom.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonCustom.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonCustom.Location = new System.Drawing.Point(0, 358);
+            this.buttonCustom.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCustom.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonCustom.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonCustom.Name = "buttonCustom";
             this.buttonCustom.Padding = 10;
-            this.buttonCustom.Size = new System.Drawing.Size(194, 36);
+            this.buttonCustom.Size = new System.Drawing.Size(200, 36);
             this.buttonCustom.TabIndex = 51;
             this.buttonCustom.Text = "Custom tweaks";
             this.buttonCustom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -292,20 +292,20 @@
             // 
             // buttonProfile
             // 
-            this.buttonProfile.BackColor = System.Drawing.Color.Black;
+            this.buttonProfile.BackColor = System.Drawing.SystemColors.Control;
             this.buttonProfile.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonProfile.ForeColor = System.Drawing.Color.White;
+            this.buttonProfile.ForeColor = System.Drawing.Color.Black;
             this.buttonProfile.Image = global::Fo76ini.Properties.Resources.help_24;
             this.buttonProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonProfile.Location = new System.Drawing.Point(3, 553);
-            this.buttonProfile.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonProfile.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonProfile.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonProfile.Location = new System.Drawing.Point(0, 553);
+            this.buttonProfile.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonProfile.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonProfile.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonProfile.Name = "buttonProfile";
             this.buttonProfile.Padding = 10;
-            this.buttonProfile.Size = new System.Drawing.Size(194, 48);
+            this.buttonProfile.Size = new System.Drawing.Size(200, 48);
             this.buttonProfile.TabIndex = 50;
             this.buttonProfile.Text = "Unknown";
             this.buttonProfile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -314,20 +314,20 @@
             // 
             // buttonHome
             // 
-            this.buttonHome.BackColor = System.Drawing.Color.Black;
+            this.buttonHome.BackColor = System.Drawing.SystemColors.Control;
             this.buttonHome.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHome.ForeColor = System.Drawing.Color.White;
+            this.buttonHome.ForeColor = System.Drawing.Color.Black;
             this.buttonHome.Image = global::Fo76ini.Properties.Resources.house_24;
             this.buttonHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonHome.Location = new System.Drawing.Point(3, 178);
-            this.buttonHome.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonHome.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonHome.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonHome.Location = new System.Drawing.Point(0, 178);
+            this.buttonHome.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonHome.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonHome.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonHome.Name = "buttonHome";
             this.buttonHome.Padding = 10;
-            this.buttonHome.Size = new System.Drawing.Size(194, 36);
+            this.buttonHome.Size = new System.Drawing.Size(200, 36);
             this.buttonHome.TabIndex = 17;
             this.buttonHome.Text = "Home";
             this.buttonHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -336,20 +336,20 @@
             // 
             // buttonGallery
             // 
-            this.buttonGallery.BackColor = System.Drawing.Color.Black;
+            this.buttonGallery.BackColor = System.Drawing.SystemColors.Control;
             this.buttonGallery.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonGallery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGallery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGallery.ForeColor = System.Drawing.Color.White;
+            this.buttonGallery.ForeColor = System.Drawing.Color.Black;
             this.buttonGallery.Image = global::Fo76ini.Properties.Resources.gallery_24;
             this.buttonGallery.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonGallery.Location = new System.Drawing.Point(3, 322);
-            this.buttonGallery.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonGallery.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonGallery.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonGallery.Location = new System.Drawing.Point(0, 322);
+            this.buttonGallery.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonGallery.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonGallery.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonGallery.Name = "buttonGallery";
             this.buttonGallery.Padding = 10;
-            this.buttonGallery.Size = new System.Drawing.Size(194, 36);
+            this.buttonGallery.Size = new System.Drawing.Size(200, 36);
             this.buttonGallery.TabIndex = 15;
             this.buttonGallery.Text = "Gallery";
             this.buttonGallery.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -358,20 +358,20 @@
             // 
             // buttonPipboy
             // 
-            this.buttonPipboy.BackColor = System.Drawing.Color.Black;
+            this.buttonPipboy.BackColor = System.Drawing.SystemColors.Control;
             this.buttonPipboy.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonPipboy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPipboy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPipboy.ForeColor = System.Drawing.Color.White;
+            this.buttonPipboy.ForeColor = System.Drawing.Color.Black;
             this.buttonPipboy.Image = global::Fo76ini.Properties.Resources.pipboy_24px;
             this.buttonPipboy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonPipboy.Location = new System.Drawing.Point(3, 286);
-            this.buttonPipboy.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonPipboy.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonPipboy.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonPipboy.Location = new System.Drawing.Point(0, 286);
+            this.buttonPipboy.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonPipboy.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonPipboy.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonPipboy.Name = "buttonPipboy";
             this.buttonPipboy.Padding = 10;
-            this.buttonPipboy.Size = new System.Drawing.Size(194, 36);
+            this.buttonPipboy.Size = new System.Drawing.Size(200, 36);
             this.buttonPipboy.TabIndex = 14;
             this.buttonPipboy.Text = "Pip-Boy";
             this.buttonPipboy.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -380,20 +380,20 @@
             // 
             // buttonTweaks
             // 
-            this.buttonTweaks.BackColor = System.Drawing.Color.Black;
+            this.buttonTweaks.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTweaks.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonTweaks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTweaks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTweaks.ForeColor = System.Drawing.Color.White;
+            this.buttonTweaks.ForeColor = System.Drawing.Color.Black;
             this.buttonTweaks.Image = global::Fo76ini.Properties.Resources.wrench_2_24;
             this.buttonTweaks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonTweaks.Location = new System.Drawing.Point(3, 214);
-            this.buttonTweaks.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonTweaks.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonTweaks.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonTweaks.Location = new System.Drawing.Point(0, 214);
+            this.buttonTweaks.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTweaks.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonTweaks.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonTweaks.Name = "buttonTweaks";
             this.buttonTweaks.Padding = 10;
-            this.buttonTweaks.Size = new System.Drawing.Size(194, 36);
+            this.buttonTweaks.Size = new System.Drawing.Size(200, 36);
             this.buttonTweaks.TabIndex = 13;
             this.buttonTweaks.Text = "Tweaks";
             this.buttonTweaks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -402,17 +402,17 @@
             // 
             // buttonBrowse
             // 
-            this.buttonBrowse.BackColor = System.Drawing.Color.Black;
+            this.buttonBrowse.BackColor = System.Drawing.SystemColors.Control;
             this.buttonBrowse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBrowse.ForeColor = System.Drawing.Color.White;
+            this.buttonBrowse.ForeColor = System.Drawing.Color.Black;
             this.buttonBrowse.Image = global::Fo76ini.Properties.Resources.folder_24;
             this.buttonBrowse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonBrowse.Location = new System.Drawing.Point(135, 107);
             this.buttonBrowse.Margin = new System.Windows.Forms.Padding(5);
-            this.buttonBrowse.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonBrowse.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonBrowse.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonBrowse.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonBrowse.Name = "buttonBrowse";
             this.buttonBrowse.Padding = 3;
             this.buttonBrowse.Size = new System.Drawing.Size(60, 50);
@@ -424,20 +424,20 @@
             // 
             // buttonSettings
             // 
-            this.buttonSettings.BackColor = System.Drawing.Color.Black;
+            this.buttonSettings.BackColor = System.Drawing.SystemColors.Control;
             this.buttonSettings.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSettings.ForeColor = System.Drawing.Color.White;
+            this.buttonSettings.ForeColor = System.Drawing.Color.Black;
             this.buttonSettings.Image = global::Fo76ini.Properties.Resources.cog_24;
             this.buttonSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSettings.Location = new System.Drawing.Point(3, 407);
-            this.buttonSettings.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonSettings.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonSettings.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonSettings.Location = new System.Drawing.Point(0, 407);
+            this.buttonSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSettings.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonSettings.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.Padding = 10;
-            this.buttonSettings.Size = new System.Drawing.Size(194, 36);
+            this.buttonSettings.Size = new System.Drawing.Size(200, 36);
             this.buttonSettings.TabIndex = 10;
             this.buttonSettings.Text = "Settings";
             this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -446,20 +446,20 @@
             // 
             // buttonMods
             // 
-            this.buttonMods.BackColor = System.Drawing.Color.Black;
+            this.buttonMods.BackColor = System.Drawing.SystemColors.Control;
             this.buttonMods.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMods.ForeColor = System.Drawing.Color.White;
+            this.buttonMods.ForeColor = System.Drawing.Color.Black;
             this.buttonMods.Image = global::Fo76ini.Properties.Resources.puzzle_4_24;
             this.buttonMods.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonMods.Location = new System.Drawing.Point(3, 250);
-            this.buttonMods.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonMods.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonMods.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonMods.Location = new System.Drawing.Point(0, 250);
+            this.buttonMods.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMods.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonMods.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonMods.Name = "buttonMods";
             this.buttonMods.Padding = 10;
-            this.buttonMods.Size = new System.Drawing.Size(194, 36);
+            this.buttonMods.Size = new System.Drawing.Size(200, 36);
             this.buttonMods.TabIndex = 9;
             this.buttonMods.Text = "Mods";
             this.buttonMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -468,20 +468,20 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.Black;
+            this.buttonUpdate.BackColor = System.Drawing.SystemColors.Control;
             this.buttonUpdate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUpdate.ForeColor = System.Drawing.Color.White;
+            this.buttonUpdate.ForeColor = System.Drawing.Color.Black;
             this.buttonUpdate.Image = global::Fo76ini.Properties.Resources.available_updates;
             this.buttonUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonUpdate.Location = new System.Drawing.Point(3, 479);
-            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.buttonUpdate.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonUpdate.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonUpdate.Location = new System.Drawing.Point(0, 479);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonUpdate.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonUpdate.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Padding = 10;
-            this.buttonUpdate.Size = new System.Drawing.Size(194, 36);
+            this.buttonUpdate.Size = new System.Drawing.Size(200, 36);
             this.buttonUpdate.TabIndex = 8;
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -490,17 +490,17 @@
             // 
             // buttonApply
             // 
-            this.buttonApply.BackColor = System.Drawing.Color.Black;
+            this.buttonApply.BackColor = System.Drawing.SystemColors.Control;
             this.buttonApply.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonApply.ForeColor = System.Drawing.Color.White;
+            this.buttonApply.ForeColor = System.Drawing.Color.Black;
             this.buttonApply.Image = global::Fo76ini.Properties.Resources.save_24;
             this.buttonApply.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonApply.Location = new System.Drawing.Point(70, 107);
             this.buttonApply.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonApply.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonApply.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonApply.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonApply.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Padding = 3;
             this.buttonApply.Size = new System.Drawing.Size(60, 50);
@@ -512,17 +512,17 @@
             // 
             // buttonPlay
             // 
-            this.buttonPlay.BackColor = System.Drawing.Color.Black;
+            this.buttonPlay.BackColor = System.Drawing.SystemColors.Control;
             this.buttonPlay.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPlay.ForeColor = System.Drawing.Color.White;
+            this.buttonPlay.ForeColor = System.Drawing.Color.Black;
             this.buttonPlay.Image = global::Fo76ini.Properties.Resources.play;
             this.buttonPlay.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonPlay.Location = new System.Drawing.Point(5, 107);
             this.buttonPlay.Margin = new System.Windows.Forms.Padding(5);
-            this.buttonPlay.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.buttonPlay.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.buttonPlay.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonPlay.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonPlay.Name = "buttonPlay";
             this.buttonPlay.Padding = 3;
             this.buttonPlay.Size = new System.Drawing.Size(60, 50);
@@ -536,7 +536,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.buttonNexusMods);
             this.Controls.Add(this.buttonCustom);
