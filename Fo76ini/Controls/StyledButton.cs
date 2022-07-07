@@ -137,12 +137,16 @@ namespace Fo76ini.Controls
             if (Image != null)
                 e.Graphics.DrawImage(this.Image, GetImageRect());
 
+            // Get text size:
+            // https://stackoverflow.com/a/48108648
+            // Size textSize = TextRenderer.MeasureText(e.Graphics, Text, this.Font);
+            SizeF textSize = e.Graphics.MeasureString(Text, this.Font);
+
             // Draw text:
-            Size textSize = TextRenderer.MeasureText(e.Graphics, Text, this.Font);
             e.Graphics.DrawString(Text, this.Font, new SolidBrush(ForeColor), GetTextRect(textSize));
         }
 
-        private RectangleF GetRect(ContentAlignment align, Size size, bool forText)
+        private RectangleF GetRect(ContentAlignment align, SizeF size, bool forText)
         {
             float x = 0;
             switch (align)
@@ -190,10 +194,6 @@ namespace Fo76ini.Controls
             float width = size.Width;
             float height = size.Height;
 
-            // For some reason, it cuts of the last character:
-            if (forText)
-                width += 10;
-
             return new RectangleF(
                         x,
                         y,
@@ -205,7 +205,7 @@ namespace Fo76ini.Controls
             return GetRect(ImageAlign, Image.Size, false);
         }
 
-        private RectangleF GetTextRect(Size textSize)
+        private RectangleF GetTextRect(SizeF textSize)
         {
             return GetRect(TextAlign, textSize, true);
         }
