@@ -63,18 +63,20 @@
             this.labelNMDailyRateLimit = new System.Windows.Forms.Label();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerSSOLogin = new System.ComponentModel.BackgroundWorker();
+            this.flowPanelNMActions = new System.Windows.Forms.FlowLayoutPanel();
             this.panelManageNMProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).BeginInit();
             this.panelNMProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).BeginInit();
+            this.flowPanelNMActions.SuspendLayout();
             this.SuspendLayout();
             // 
-            // labelTitleNexus
+            // labelNexusTitle
             // 
             this.labelNexusTitle.AutoSize = true;
             this.labelNexusTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNexusTitle.Location = new System.Drawing.Point(10, 15);
-            this.labelNexusTitle.Name = "labelTitleNexus";
+            this.labelNexusTitle.Name = "labelNexusTitle";
             this.labelNexusTitle.Size = new System.Drawing.Size(239, 30);
             this.labelNexusTitle.TabIndex = 4;
             this.labelNexusTitle.Text = "NexusMods Integration";
@@ -95,21 +97,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelManageNMProfile.BackColor = System.Drawing.SystemColors.Window;
+            this.panelManageNMProfile.Controls.Add(this.flowPanelNMActions);
             this.panelManageNMProfile.Controls.Add(this.linkLabelEnableAPIKey);
             this.panelManageNMProfile.Controls.Add(this.pictureBoxAPIKeyHelp);
             this.panelManageNMProfile.Controls.Add(this.linkLabelAPIKeyHelp);
-            this.panelManageNMProfile.Controls.Add(this.buttonNMLoginManually);
             this.panelManageNMProfile.Controls.Add(this.labelAPIKey);
             this.panelManageNMProfile.Controls.Add(this.checkBoxShowAPIKey);
             this.panelManageNMProfile.Controls.Add(this.textBoxAPIKey);
             this.panelManageNMProfile.Controls.Add(this.labelNexusModsActions);
-            this.panelManageNMProfile.Controls.Add(this.buttonNMLogin);
-            this.panelManageNMProfile.Controls.Add(this.buttonNWDeleteCache);
-            this.panelManageNMProfile.Controls.Add(this.buttonNWLogout);
             this.panelManageNMProfile.Controls.Add(this.checkBoxNMDownloadThumbnails);
             this.panelManageNMProfile.Controls.Add(this.labelNMOptions);
             this.panelManageNMProfile.Controls.Add(this.checkBoxNMUpdateProfile);
-            this.panelManageNMProfile.Controls.Add(this.buttonNMUpdateProfile);
             this.panelManageNMProfile.Location = new System.Drawing.Point(0, 250);
             this.panelManageNMProfile.Name = "panelManageNMProfile";
             this.panelManageNMProfile.Size = new System.Drawing.Size(700, 370);
@@ -153,7 +151,7 @@
             this.buttonNMLoginManually.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNMLoginManually.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonNMLoginManually.Image = global::Fo76ini.Properties.Resources.login_48;
-            this.buttonNMLoginManually.Location = new System.Drawing.Point(146, 30);
+            this.buttonNMLoginManually.Location = new System.Drawing.Point(129, 3);
             this.buttonNMLoginManually.Name = "buttonNMLoginManually";
             this.buttonNMLoginManually.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNMLoginManually.Size = new System.Drawing.Size(120, 120);
@@ -212,7 +210,7 @@
             this.buttonNMLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNMLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonNMLogin.Image = global::Fo76ini.Properties.Resources.login_48;
-            this.buttonNMLogin.Location = new System.Drawing.Point(20, 30);
+            this.buttonNMLogin.Location = new System.Drawing.Point(3, 3);
             this.buttonNMLogin.Name = "buttonNMLogin";
             this.buttonNMLogin.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNMLogin.Size = new System.Drawing.Size(120, 120);
@@ -229,7 +227,7 @@
             this.buttonNWDeleteCache.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNWDeleteCache.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonNWDeleteCache.Image = global::Fo76ini.Properties.Resources.delete_48;
-            this.buttonNWDeleteCache.Location = new System.Drawing.Point(524, 30);
+            this.buttonNWDeleteCache.Location = new System.Drawing.Point(507, 3);
             this.buttonNWDeleteCache.Name = "buttonNWDeleteCache";
             this.buttonNWDeleteCache.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNWDeleteCache.Size = new System.Drawing.Size(120, 120);
@@ -246,7 +244,7 @@
             this.buttonNWLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNWLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonNWLogout.Image = global::Fo76ini.Properties.Resources.exit_48;
-            this.buttonNWLogout.Location = new System.Drawing.Point(272, 30);
+            this.buttonNWLogout.Location = new System.Drawing.Point(255, 3);
             this.buttonNWLogout.Name = "buttonNWLogout";
             this.buttonNWLogout.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNWLogout.Size = new System.Drawing.Size(120, 120);
@@ -299,7 +297,7 @@
             this.buttonNMUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNMUpdateProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonNMUpdateProfile.Image = global::Fo76ini.Properties.Resources.available_updates_48;
-            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(398, 30);
+            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(381, 3);
             this.buttonNMUpdateProfile.Name = "buttonNMUpdateProfile";
             this.buttonNMUpdateProfile.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNMUpdateProfile.Size = new System.Drawing.Size(120, 120);
@@ -474,6 +472,20 @@
             // 
             this.backgroundWorkerSSOLogin.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSSOLogin_DoWork);
             // 
+            // flowPanelNMActions
+            // 
+            this.flowPanelNMActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowPanelNMActions.Controls.Add(this.buttonNMLogin);
+            this.flowPanelNMActions.Controls.Add(this.buttonNMLoginManually);
+            this.flowPanelNMActions.Controls.Add(this.buttonNWLogout);
+            this.flowPanelNMActions.Controls.Add(this.buttonNMUpdateProfile);
+            this.flowPanelNMActions.Controls.Add(this.buttonNWDeleteCache);
+            this.flowPanelNMActions.Location = new System.Drawing.Point(20, 29);
+            this.flowPanelNMActions.Name = "flowPanelNMActions";
+            this.flowPanelNMActions.Size = new System.Drawing.Size(660, 131);
+            this.flowPanelNMActions.TabIndex = 114;
+            // 
             // UserControlNexusMods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,6 +503,7 @@
             this.panelNMProfile.ResumeLayout(false);
             this.panelNMProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).EndInit();
+            this.flowPanelNMActions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,5 +545,6 @@
         private System.Windows.Forms.Label labelNMDailyRateLimit;
         private System.ComponentModel.BackgroundWorker backgroundWorkerRetrieveProfileInfo;
         private System.ComponentModel.BackgroundWorker backgroundWorkerSSOLogin;
+        private System.Windows.Forms.FlowLayoutPanel flowPanelNMActions;
     }
 }

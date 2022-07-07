@@ -86,26 +86,14 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
 
             /*
-             * Position and visiblility of buttons:
+             * Visiblility of buttons:
              */
 
-            int buttonMargin = 6;  // px
-            int buttonOffset = 20; // px
-
-            Button[] buttons = new Button[] { buttonNMLogin, buttonNMLoginManually, buttonNWLogout, buttonNMUpdateProfile, buttonNWDeleteCache };
-            bool[] visiblity = new bool[] { !loggedIn, !loggedIn && APIKeyTextboxEnabled, loggedIn, loggedIn, true };
-
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                int left = buttonOffset;
-                for (int j = 0; j < i; j++)
-                {
-                    if (j >= 0 && visiblity[j])
-                        left += buttons[j].Width + buttonMargin;
-                }
-                buttons[i].Left = left;
-                buttons[i].Visible = visiblity[i];
-            }
+            this.buttonNMLogin.Visible = !loggedIn;
+            this.buttonNMLoginManually.Visible = !loggedIn && APIKeyTextboxEnabled;
+            this.buttonNWLogout.Visible = loggedIn;
+            this.buttonNMUpdateProfile.Visible = loggedIn;
+            // this.buttonNWDeleteCache.Visible = true;
 
 
             /*
