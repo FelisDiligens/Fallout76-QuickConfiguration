@@ -35,9 +35,9 @@
             this.gameFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gamesConfigurationFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolInstallationFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolConfigurationFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolLanguagesFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolInstallationFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.steamScreenshotFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gamePhotosFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,6 +129,13 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(211, 6);
             // 
+            // toolInstallationFolderToolStripMenuItem
+            // 
+            this.toolInstallationFolderToolStripMenuItem.Name = "toolInstallationFolderToolStripMenuItem";
+            this.toolInstallationFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.toolInstallationFolderToolStripMenuItem.Text = "Tool installation folder";
+            this.toolInstallationFolderToolStripMenuItem.Click += new System.EventHandler(this.toolInstallationFolderToolStripMenuItem_Click);
+            // 
             // toolConfigurationFolderToolStripMenuItem
             // 
             this.toolConfigurationFolderToolStripMenuItem.Name = "toolConfigurationFolderToolStripMenuItem";
@@ -142,13 +149,6 @@
             this.toolLanguagesFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.toolLanguagesFolderToolStripMenuItem.Text = "Tool languages folder";
             this.toolLanguagesFolderToolStripMenuItem.Click += new System.EventHandler(this.toolLanguagesFolderToolStripMenuItem_Click);
-            // 
-            // toolInstallationFolderToolStripMenuItem
-            // 
-            this.toolInstallationFolderToolStripMenuItem.Name = "toolInstallationFolderToolStripMenuItem";
-            this.toolInstallationFolderToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.toolInstallationFolderToolStripMenuItem.Text = "Tool installation folder";
-            this.toolInstallationFolderToolStripMenuItem.Click += new System.EventHandler(this.toolInstallationFolderToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -253,6 +253,7 @@
             this.buttonNexusMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNexusMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNexusMods.ForeColor = System.Drawing.Color.Black;
+            this.buttonNexusMods.Highlight = false;
             this.buttonNexusMods.Image = global::Fo76ini.Properties.Resources.nexus_24;
             this.buttonNexusMods.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonNexusMods.Location = new System.Drawing.Point(0, 443);
@@ -275,6 +276,7 @@
             this.buttonCustom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCustom.ForeColor = System.Drawing.Color.Black;
+            this.buttonCustom.Highlight = false;
             this.buttonCustom.Image = global::Fo76ini.Properties.Resources.code_24;
             this.buttonCustom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCustom.Location = new System.Drawing.Point(0, 358);
@@ -297,6 +299,7 @@
             this.buttonProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonProfile.ForeColor = System.Drawing.Color.Black;
+            this.buttonProfile.Highlight = false;
             this.buttonProfile.Image = global::Fo76ini.Properties.Resources.help_24;
             this.buttonProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonProfile.Location = new System.Drawing.Point(0, 553);
@@ -319,6 +322,7 @@
             this.buttonHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHome.ForeColor = System.Drawing.Color.Black;
+            this.buttonHome.Highlight = false;
             this.buttonHome.Image = global::Fo76ini.Properties.Resources.house_24;
             this.buttonHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHome.Location = new System.Drawing.Point(0, 178);
@@ -341,6 +345,7 @@
             this.buttonGallery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGallery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGallery.ForeColor = System.Drawing.Color.Black;
+            this.buttonGallery.Highlight = false;
             this.buttonGallery.Image = global::Fo76ini.Properties.Resources.gallery_24;
             this.buttonGallery.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonGallery.Location = new System.Drawing.Point(0, 322);
@@ -363,6 +368,7 @@
             this.buttonPipboy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPipboy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPipboy.ForeColor = System.Drawing.Color.Black;
+            this.buttonPipboy.Highlight = false;
             this.buttonPipboy.Image = global::Fo76ini.Properties.Resources.pipboy_24px;
             this.buttonPipboy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPipboy.Location = new System.Drawing.Point(0, 286);
@@ -385,6 +391,7 @@
             this.buttonTweaks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTweaks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTweaks.ForeColor = System.Drawing.Color.Black;
+            this.buttonTweaks.Highlight = false;
             this.buttonTweaks.Image = global::Fo76ini.Properties.Resources.wrench_2_24;
             this.buttonTweaks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTweaks.Location = new System.Drawing.Point(0, 214);
@@ -407,6 +414,7 @@
             this.buttonBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBrowse.ForeColor = System.Drawing.Color.Black;
+            this.buttonBrowse.Highlight = false;
             this.buttonBrowse.Image = global::Fo76ini.Properties.Resources.folder_24;
             this.buttonBrowse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonBrowse.Location = new System.Drawing.Point(135, 107);
@@ -429,6 +437,7 @@
             this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSettings.ForeColor = System.Drawing.Color.Black;
+            this.buttonSettings.Highlight = false;
             this.buttonSettings.Image = global::Fo76ini.Properties.Resources.cog_24;
             this.buttonSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSettings.Location = new System.Drawing.Point(0, 407);
@@ -451,6 +460,7 @@
             this.buttonMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMods.ForeColor = System.Drawing.Color.Black;
+            this.buttonMods.Highlight = false;
             this.buttonMods.Image = global::Fo76ini.Properties.Resources.puzzle_4_24;
             this.buttonMods.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonMods.Location = new System.Drawing.Point(0, 250);
@@ -473,6 +483,7 @@
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUpdate.ForeColor = System.Drawing.Color.Black;
+            this.buttonUpdate.Highlight = false;
             this.buttonUpdate.Image = global::Fo76ini.Properties.Resources.available_updates;
             this.buttonUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonUpdate.Location = new System.Drawing.Point(0, 479);
@@ -495,6 +506,7 @@
             this.buttonApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonApply.ForeColor = System.Drawing.Color.Black;
+            this.buttonApply.Highlight = false;
             this.buttonApply.Image = global::Fo76ini.Properties.Resources.save_24;
             this.buttonApply.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonApply.Location = new System.Drawing.Point(70, 107);
@@ -517,6 +529,7 @@
             this.buttonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPlay.ForeColor = System.Drawing.Color.Black;
+            this.buttonPlay.Highlight = false;
             this.buttonPlay.Image = global::Fo76ini.Properties.Resources.play;
             this.buttonPlay.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonPlay.Location = new System.Drawing.Point(5, 107);
@@ -536,7 +549,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.buttonNexusMods);
             this.Controls.Add(this.buttonCustom);

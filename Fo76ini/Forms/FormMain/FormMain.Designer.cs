@@ -508,6 +508,7 @@
             // 
             this.userControlSideNav.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.userControlSideNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.userControlSideNav.Location = new System.Drawing.Point(0, -2);
             this.userControlSideNav.Name = "userControlSideNav";
             this.userControlSideNav.Size = new System.Drawing.Size(200, 613);
