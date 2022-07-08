@@ -8,6 +8,7 @@ namespace Fo76ini.NexusAPI
 {
     public struct NXMLink
     {
+        public string game;
         public int modId;
         public int fileId;
         public string key;
@@ -70,6 +71,7 @@ namespace Fo76ini.NexusAPI
                                        c => Uri.UnescapeDataString(c.Split('=')[1]));
 
             NXMLink parsed = new NXMLink();
+            parsed.game = uri.Host;
             parsed.modId = Utils.ToInt(uri.Segments[2].Trim('/'));
             parsed.fileId = Utils.ToInt(uri.Segments[4].Trim('/'));
             parsed.key = query["key"];
