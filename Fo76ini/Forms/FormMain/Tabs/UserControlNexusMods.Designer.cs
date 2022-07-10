@@ -30,23 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlNexusMods));
             this.labelNexusTitle = new System.Windows.Forms.Label();
-            this.labelNexusDesc = new System.Windows.Forms.Label();
             this.panelManageNMProfile = new System.Windows.Forms.Panel();
+            this.flowPanelNMActions = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonNMLogin = new System.Windows.Forms.Button();
+            this.buttonNMLoginManually = new System.Windows.Forms.Button();
+            this.buttonNWLogout = new System.Windows.Forms.Button();
+            this.buttonNMUpdateProfile = new System.Windows.Forms.Button();
+            this.buttonNWDeleteCache = new System.Windows.Forms.Button();
             this.linkLabelEnableAPIKey = new System.Windows.Forms.LinkLabel();
             this.pictureBoxAPIKeyHelp = new System.Windows.Forms.PictureBox();
             this.linkLabelAPIKeyHelp = new System.Windows.Forms.LinkLabel();
-            this.buttonNMLoginManually = new System.Windows.Forms.Button();
             this.labelAPIKey = new System.Windows.Forms.Label();
             this.checkBoxShowAPIKey = new System.Windows.Forms.CheckBox();
             this.textBoxAPIKey = new System.Windows.Forms.TextBox();
             this.labelNexusModsActions = new System.Windows.Forms.Label();
-            this.buttonNMLogin = new System.Windows.Forms.Button();
-            this.buttonNWDeleteCache = new System.Windows.Forms.Button();
-            this.buttonNWLogout = new System.Windows.Forms.Button();
             this.checkBoxNMDownloadThumbnails = new System.Windows.Forms.CheckBox();
             this.labelNMOptions = new System.Windows.Forms.Label();
             this.checkBoxNMUpdateProfile = new System.Windows.Forms.CheckBox();
-            this.buttonNMUpdateProfile = new System.Windows.Forms.Button();
             this.panelNMProfile = new System.Windows.Forms.Panel();
             this.labelNMNotLoggedIn = new System.Windows.Forms.Label();
             this.labelNMUserID = new System.Windows.Forms.Label();
@@ -63,12 +63,11 @@
             this.labelNMDailyRateLimit = new System.Windows.Forms.Label();
             this.backgroundWorkerRetrieveProfileInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerSSOLogin = new System.ComponentModel.BackgroundWorker();
-            this.flowPanelNMActions = new System.Windows.Forms.FlowLayoutPanel();
             this.panelManageNMProfile.SuspendLayout();
+            this.flowPanelNMActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).BeginInit();
             this.panelNMProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).BeginInit();
-            this.flowPanelNMActions.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelNexusTitle
@@ -80,16 +79,6 @@
             this.labelNexusTitle.Size = new System.Drawing.Size(239, 30);
             this.labelNexusTitle.TabIndex = 4;
             this.labelNexusTitle.Text = "NexusMods Integration";
-            // 
-            // labelNexusDesc
-            // 
-            this.labelNexusDesc.AutoSize = true;
-            this.labelNexusDesc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNexusDesc.Location = new System.Drawing.Point(12, 45);
-            this.labelNexusDesc.Name = "labelNexusDesc";
-            this.labelNexusDesc.Size = new System.Drawing.Size(341, 17);
-            this.labelNexusDesc.TabIndex = 75;
-            this.labelNexusDesc.Text = "Login to your NexusMods account to use the integration.";
             // 
             // panelManageNMProfile
             // 
@@ -108,10 +97,109 @@
             this.panelManageNMProfile.Controls.Add(this.checkBoxNMDownloadThumbnails);
             this.panelManageNMProfile.Controls.Add(this.labelNMOptions);
             this.panelManageNMProfile.Controls.Add(this.checkBoxNMUpdateProfile);
-            this.panelManageNMProfile.Location = new System.Drawing.Point(0, 250);
+            this.panelManageNMProfile.Location = new System.Drawing.Point(0, 228);
             this.panelManageNMProfile.Name = "panelManageNMProfile";
-            this.panelManageNMProfile.Size = new System.Drawing.Size(700, 370);
+            this.panelManageNMProfile.Size = new System.Drawing.Size(700, 392);
             this.panelManageNMProfile.TabIndex = 80;
+            // 
+            // flowPanelNMActions
+            // 
+            this.flowPanelNMActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowPanelNMActions.Controls.Add(this.buttonNMLogin);
+            this.flowPanelNMActions.Controls.Add(this.buttonNMLoginManually);
+            this.flowPanelNMActions.Controls.Add(this.buttonNWLogout);
+            this.flowPanelNMActions.Controls.Add(this.buttonNMUpdateProfile);
+            this.flowPanelNMActions.Controls.Add(this.buttonNWDeleteCache);
+            this.flowPanelNMActions.Location = new System.Drawing.Point(20, 29);
+            this.flowPanelNMActions.Name = "flowPanelNMActions";
+            this.flowPanelNMActions.Size = new System.Drawing.Size(660, 131);
+            this.flowPanelNMActions.TabIndex = 114;
+            // 
+            // buttonNMLogin
+            // 
+            this.buttonNMLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
+            this.buttonNMLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNMLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNMLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNMLogin.Image = global::Fo76ini.Properties.Resources.login_48;
+            this.buttonNMLogin.Location = new System.Drawing.Point(3, 3);
+            this.buttonNMLogin.Name = "buttonNMLogin";
+            this.buttonNMLogin.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNMLogin.Size = new System.Drawing.Size(120, 120);
+            this.buttonNMLogin.TabIndex = 105;
+            this.buttonNMLogin.Text = "Log in";
+            this.buttonNMLogin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNMLogin.UseVisualStyleBackColor = false;
+            this.buttonNMLogin.Click += new System.EventHandler(this.buttonNMLogin_Click);
+            // 
+            // buttonNMLoginManually
+            // 
+            this.buttonNMLoginManually.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
+            this.buttonNMLoginManually.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNMLoginManually.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNMLoginManually.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNMLoginManually.Image = global::Fo76ini.Properties.Resources.login_48;
+            this.buttonNMLoginManually.Location = new System.Drawing.Point(129, 3);
+            this.buttonNMLoginManually.Name = "buttonNMLoginManually";
+            this.buttonNMLoginManually.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNMLoginManually.Size = new System.Drawing.Size(120, 120);
+            this.buttonNMLoginManually.TabIndex = 110;
+            this.buttonNMLoginManually.Text = "Log in with key";
+            this.buttonNMLoginManually.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNMLoginManually.UseVisualStyleBackColor = false;
+            this.buttonNMLoginManually.Click += new System.EventHandler(this.buttonNMLoginManually_Click);
+            // 
+            // buttonNWLogout
+            // 
+            this.buttonNWLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(62)))));
+            this.buttonNWLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNWLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNWLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNWLogout.Image = global::Fo76ini.Properties.Resources.exit_48;
+            this.buttonNWLogout.Location = new System.Drawing.Point(255, 3);
+            this.buttonNWLogout.Name = "buttonNWLogout";
+            this.buttonNWLogout.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNWLogout.Size = new System.Drawing.Size(120, 120);
+            this.buttonNWLogout.TabIndex = 103;
+            this.buttonNWLogout.Text = "Logout";
+            this.buttonNWLogout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNWLogout.UseVisualStyleBackColor = false;
+            this.buttonNWLogout.Click += new System.EventHandler(this.buttonNWLogout_Click);
+            // 
+            // buttonNMUpdateProfile
+            // 
+            this.buttonNMUpdateProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
+            this.buttonNMUpdateProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNMUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNMUpdateProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNMUpdateProfile.Image = global::Fo76ini.Properties.Resources.available_updates_48;
+            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(381, 3);
+            this.buttonNMUpdateProfile.Name = "buttonNMUpdateProfile";
+            this.buttonNMUpdateProfile.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNMUpdateProfile.Size = new System.Drawing.Size(120, 120);
+            this.buttonNMUpdateProfile.TabIndex = 94;
+            this.buttonNMUpdateProfile.Text = "Update profile";
+            this.buttonNMUpdateProfile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNMUpdateProfile.UseVisualStyleBackColor = false;
+            this.buttonNMUpdateProfile.Click += new System.EventHandler(this.buttonNMUpdateProfile_Click);
+            // 
+            // buttonNWDeleteCache
+            // 
+            this.buttonNWDeleteCache.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonNWDeleteCache.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNWDeleteCache.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNWDeleteCache.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonNWDeleteCache.Image = global::Fo76ini.Properties.Resources.delete_48;
+            this.buttonNWDeleteCache.Location = new System.Drawing.Point(507, 3);
+            this.buttonNWDeleteCache.Name = "buttonNWDeleteCache";
+            this.buttonNWDeleteCache.Padding = new System.Windows.Forms.Padding(4);
+            this.buttonNWDeleteCache.Size = new System.Drawing.Size(120, 120);
+            this.buttonNWDeleteCache.TabIndex = 104;
+            this.buttonNWDeleteCache.Text = "Delete cache";
+            this.buttonNWDeleteCache.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonNWDeleteCache.UseVisualStyleBackColor = false;
+            this.buttonNWDeleteCache.Click += new System.EventHandler(this.buttonNWDeleteCache_Click);
             // 
             // linkLabelEnableAPIKey
             // 
@@ -143,23 +231,6 @@
             this.linkLabelAPIKeyHelp.TabStop = true;
             this.linkLabelAPIKeyHelp.Text = "How do I login with an API key?";
             this.linkLabelAPIKeyHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAPIKeyHelp_LinkClicked);
-            // 
-            // buttonNMLoginManually
-            // 
-            this.buttonNMLoginManually.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
-            this.buttonNMLoginManually.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMLoginManually.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNMLoginManually.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMLoginManually.Image = global::Fo76ini.Properties.Resources.login_48;
-            this.buttonNMLoginManually.Location = new System.Drawing.Point(129, 3);
-            this.buttonNMLoginManually.Name = "buttonNMLoginManually";
-            this.buttonNMLoginManually.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNMLoginManually.Size = new System.Drawing.Size(120, 120);
-            this.buttonNMLoginManually.TabIndex = 110;
-            this.buttonNMLoginManually.Text = "Log in with key";
-            this.buttonNMLoginManually.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNMLoginManually.UseVisualStyleBackColor = false;
-            this.buttonNMLoginManually.Click += new System.EventHandler(this.buttonNMLoginManually_Click);
             // 
             // labelAPIKey
             // 
@@ -203,57 +274,6 @@
             this.labelNexusModsActions.TabIndex = 106;
             this.labelNexusModsActions.Text = "Actions";
             // 
-            // buttonNMLogin
-            // 
-            this.buttonNMLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
-            this.buttonNMLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNMLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMLogin.Image = global::Fo76ini.Properties.Resources.login_48;
-            this.buttonNMLogin.Location = new System.Drawing.Point(3, 3);
-            this.buttonNMLogin.Name = "buttonNMLogin";
-            this.buttonNMLogin.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNMLogin.Size = new System.Drawing.Size(120, 120);
-            this.buttonNMLogin.TabIndex = 105;
-            this.buttonNMLogin.Text = "Log in";
-            this.buttonNMLogin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNMLogin.UseVisualStyleBackColor = false;
-            this.buttonNMLogin.Click += new System.EventHandler(this.buttonNMLogin_Click);
-            // 
-            // buttonNWDeleteCache
-            // 
-            this.buttonNWDeleteCache.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.buttonNWDeleteCache.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNWDeleteCache.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNWDeleteCache.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNWDeleteCache.Image = global::Fo76ini.Properties.Resources.delete_48;
-            this.buttonNWDeleteCache.Location = new System.Drawing.Point(507, 3);
-            this.buttonNWDeleteCache.Name = "buttonNWDeleteCache";
-            this.buttonNWDeleteCache.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNWDeleteCache.Size = new System.Drawing.Size(120, 120);
-            this.buttonNWDeleteCache.TabIndex = 104;
-            this.buttonNWDeleteCache.Text = "Delete cache";
-            this.buttonNWDeleteCache.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNWDeleteCache.UseVisualStyleBackColor = false;
-            this.buttonNWDeleteCache.Click += new System.EventHandler(this.buttonNWDeleteCache_Click);
-            // 
-            // buttonNWLogout
-            // 
-            this.buttonNWLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(62)))));
-            this.buttonNWLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNWLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNWLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNWLogout.Image = global::Fo76ini.Properties.Resources.exit_48;
-            this.buttonNWLogout.Location = new System.Drawing.Point(255, 3);
-            this.buttonNWLogout.Name = "buttonNWLogout";
-            this.buttonNWLogout.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNWLogout.Size = new System.Drawing.Size(120, 120);
-            this.buttonNWLogout.TabIndex = 103;
-            this.buttonNWLogout.Text = "Logout";
-            this.buttonNWLogout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNWLogout.UseVisualStyleBackColor = false;
-            this.buttonNWLogout.Click += new System.EventHandler(this.buttonNWLogout_Click);
-            // 
             // checkBoxNMDownloadThumbnails
             // 
             this.checkBoxNMDownloadThumbnails.AutoSize = true;
@@ -290,23 +310,6 @@
             this.checkBoxNMUpdateProfile.UseVisualStyleBackColor = true;
             this.checkBoxNMUpdateProfile.CheckedChanged += new System.EventHandler(this.checkBoxNMUpdateProfile_CheckedChanged);
             // 
-            // buttonNMUpdateProfile
-            // 
-            this.buttonNMUpdateProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
-            this.buttonNMUpdateProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNMUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNMUpdateProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonNMUpdateProfile.Image = global::Fo76ini.Properties.Resources.available_updates_48;
-            this.buttonNMUpdateProfile.Location = new System.Drawing.Point(381, 3);
-            this.buttonNMUpdateProfile.Name = "buttonNMUpdateProfile";
-            this.buttonNMUpdateProfile.Padding = new System.Windows.Forms.Padding(4);
-            this.buttonNMUpdateProfile.Size = new System.Drawing.Size(120, 120);
-            this.buttonNMUpdateProfile.TabIndex = 94;
-            this.buttonNMUpdateProfile.Text = "Update profile";
-            this.buttonNMUpdateProfile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonNMUpdateProfile.UseVisualStyleBackColor = false;
-            this.buttonNMUpdateProfile.Click += new System.EventHandler(this.buttonNMUpdateProfile_Click);
-            // 
             // panelNMProfile
             // 
             this.panelNMProfile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -325,7 +328,7 @@
             this.panelNMProfile.Controls.Add(this.labelNMDescLimitReset);
             this.panelNMProfile.Controls.Add(this.labelNMDescDailyRateLimit);
             this.panelNMProfile.Controls.Add(this.labelNMDailyRateLimit);
-            this.panelNMProfile.Location = new System.Drawing.Point(0, 82);
+            this.panelNMProfile.Location = new System.Drawing.Point(0, 60);
             this.panelNMProfile.Name = "panelNMProfile";
             this.panelNMProfile.Size = new System.Drawing.Size(700, 170);
             this.panelNMProfile.TabIndex = 79;
@@ -472,38 +475,23 @@
             // 
             this.backgroundWorkerSSOLogin.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSSOLogin_DoWork);
             // 
-            // flowPanelNMActions
-            // 
-            this.flowPanelNMActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowPanelNMActions.Controls.Add(this.buttonNMLogin);
-            this.flowPanelNMActions.Controls.Add(this.buttonNMLoginManually);
-            this.flowPanelNMActions.Controls.Add(this.buttonNWLogout);
-            this.flowPanelNMActions.Controls.Add(this.buttonNMUpdateProfile);
-            this.flowPanelNMActions.Controls.Add(this.buttonNWDeleteCache);
-            this.flowPanelNMActions.Location = new System.Drawing.Point(20, 29);
-            this.flowPanelNMActions.Name = "flowPanelNMActions";
-            this.flowPanelNMActions.Size = new System.Drawing.Size(660, 131);
-            this.flowPanelNMActions.TabIndex = 114;
-            // 
             // UserControlNexusMods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelManageNMProfile);
             this.Controls.Add(this.panelNMProfile);
-            this.Controls.Add(this.labelNexusDesc);
             this.Controls.Add(this.labelNexusTitle);
             this.Name = "UserControlNexusMods";
             this.Size = new System.Drawing.Size(700, 620);
             this.Load += new System.EventHandler(this.UserControlNexusMods_Load);
             this.panelManageNMProfile.ResumeLayout(false);
             this.panelManageNMProfile.PerformLayout();
+            this.flowPanelNMActions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).EndInit();
             this.panelNMProfile.ResumeLayout(false);
             this.panelNMProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNMProfilePicture)).EndInit();
-            this.flowPanelNMActions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -512,7 +500,6 @@
         #endregion
 
         private System.Windows.Forms.Label labelNexusTitle;
-        private System.Windows.Forms.Label labelNexusDesc;
         private System.Windows.Forms.Panel panelManageNMProfile;
         private System.Windows.Forms.LinkLabel linkLabelEnableAPIKey;
         private System.Windows.Forms.PictureBox pictureBoxAPIKeyHelp;

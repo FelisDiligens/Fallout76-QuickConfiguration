@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.toolTip = new Controls.CustomToolTip(this.components);
+            this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorkerLoadGallery = new System.ComponentModel.BackgroundWorker();
@@ -83,6 +83,18 @@
             this.tabPageProfiles.SuspendLayout();
             this.tabPageNexusMods.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 20000;
+            this.toolTip.BackColor = System.Drawing.Color.White;
+            this.toolTip.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolTip.ForeColor = System.Drawing.Color.Black;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.OwnerDraw = true;
+            this.toolTip.Padding = new System.Drawing.Size(6, 6);
+            this.toolTip.ReshowDelay = 100;
+            this.toolTip.ShowAlways = true;
             // 
             // colorDialog
             // 
@@ -157,11 +169,11 @@
             this.webBrowserWhatsNew.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowserWhatsNew.Location = new System.Drawing.Point(0, 437);
+            this.webBrowserWhatsNew.Location = new System.Drawing.Point(0, 426);
             this.webBrowserWhatsNew.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserWhatsNew.Name = "webBrowserWhatsNew";
             this.webBrowserWhatsNew.ScriptErrorsSuppressed = true;
-            this.webBrowserWhatsNew.Size = new System.Drawing.Size(673, 150);
+            this.webBrowserWhatsNew.Size = new System.Drawing.Size(673, 161);
             this.webBrowserWhatsNew.TabIndex = 47;
             // 
             // panelUpdate
@@ -169,7 +181,7 @@
             this.panelUpdate.Controls.Add(this.pictureBoxButtonUpdate);
             this.panelUpdate.Controls.Add(this.labelNewVersion);
             this.panelUpdate.Controls.Add(this.linkLabelManualDownloadPage);
-            this.panelUpdate.Location = new System.Drawing.Point(0, 324);
+            this.panelUpdate.Location = new System.Drawing.Point(0, 313);
             this.panelUpdate.Margin = new System.Windows.Forms.Padding(0);
             this.panelUpdate.Name = "panelUpdate";
             this.panelUpdate.Size = new System.Drawing.Size(295, 110);
@@ -230,7 +242,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 168);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(381, 156);
+            this.panel1.Size = new System.Drawing.Size(676, 145);
             this.panel1.TabIndex = 49;
             // 
             // labelWelcome
@@ -249,7 +261,7 @@
             this.labelDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDescription.Location = new System.Drawing.Point(17, 40);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(355, 53);
+            this.labelDescription.Size = new System.Drawing.Size(651, 39);
             this.labelDescription.TabIndex = 6;
             this.labelDescription.Text = "This tool allows you to change various game settings and install mods.";
             // 
@@ -257,7 +269,7 @@
             // 
             this.labelVersion.AutoSize = true;
             this.labelVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVersion.Location = new System.Drawing.Point(17, 93);
+            this.labelVersion.Location = new System.Drawing.Point(17, 79);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(58, 17);
             this.labelVersion.TabIndex = 7;
@@ -267,7 +279,7 @@
             // 
             this.labelAuthor.AutoSize = true;
             this.labelAuthor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAuthor.Location = new System.Drawing.Point(17, 111);
+            this.labelAuthor.Location = new System.Drawing.Point(17, 97);
             this.labelAuthor.Name = "labelAuthor";
             this.labelAuthor.Size = new System.Drawing.Size(56, 17);
             this.labelAuthor.TabIndex = 8;
@@ -276,7 +288,7 @@
             // pictureBoxSpinnerCheckForUpdates
             // 
             this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Spinner_24;
-            this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(100, 89);
+            this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(100, 75);
             this.pictureBoxSpinnerCheckForUpdates.Name = "pictureBoxSpinnerCheckForUpdates";
             this.pictureBoxSpinnerCheckForUpdates.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxSpinnerCheckForUpdates.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -288,7 +300,7 @@
             // 
             this.labelConfigVersion.AutoSize = true;
             this.labelConfigVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelConfigVersion.Location = new System.Drawing.Point(130, 93);
+            this.labelConfigVersion.Location = new System.Drawing.Point(130, 79);
             this.labelConfigVersion.Name = "labelConfigVersion";
             this.labelConfigVersion.Size = new System.Drawing.Size(14, 17);
             this.labelConfigVersion.TabIndex = 9;
@@ -299,7 +311,7 @@
             this.labelTranslationAuthor.AutoSize = true;
             this.labelTranslationAuthor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationAuthor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationAuthor.Location = new System.Drawing.Point(130, 128);
+            this.labelTranslationAuthor.Location = new System.Drawing.Point(130, 114);
             this.labelTranslationAuthor.Name = "labelTranslationAuthor";
             this.labelTranslationAuthor.Size = new System.Drawing.Size(177, 17);
             this.labelTranslationAuthor.TabIndex = 12;
@@ -309,7 +321,7 @@
             // 
             this.labelAuthorName.AutoSize = true;
             this.labelAuthorName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAuthorName.Location = new System.Drawing.Point(130, 110);
+            this.labelAuthorName.Location = new System.Drawing.Point(130, 96);
             this.labelAuthorName.Name = "labelAuthorName";
             this.labelAuthorName.Size = new System.Drawing.Size(177, 17);
             this.labelAuthorName.TabIndex = 10;
@@ -320,7 +332,7 @@
             this.labelTranslationBy.AutoSize = true;
             this.labelTranslationBy.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationBy.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationBy.Location = new System.Drawing.Point(17, 129);
+            this.labelTranslationBy.Location = new System.Drawing.Point(17, 115);
             this.labelTranslationBy.Name = "labelTranslationBy";
             this.labelTranslationBy.Size = new System.Drawing.Size(100, 17);
             this.labelTranslationBy.TabIndex = 11;

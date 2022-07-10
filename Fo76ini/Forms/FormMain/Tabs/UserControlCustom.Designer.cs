@@ -81,12 +81,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCustom.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCustom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.textBoxCustom.Location = new System.Drawing.Point(15, 77);
+            this.textBoxCustom.Location = new System.Drawing.Point(15, 75);
             this.textBoxCustom.Margin = new System.Windows.Forms.Padding(15, 3, 15, 3);
             this.textBoxCustom.Multiline = true;
             this.textBoxCustom.Name = "textBoxCustom";
             this.textBoxCustom.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxCustom.Size = new System.Drawing.Size(820, 315);
+            this.textBoxCustom.Size = new System.Drawing.Size(820, 320);
             this.textBoxCustom.TabIndex = 4;
             this.textBoxCustom.WordWrap = false;
             this.textBoxCustom.TextChanged += new System.EventHandler(this.textBoxCustom_TextChanged);

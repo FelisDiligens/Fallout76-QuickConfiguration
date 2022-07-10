@@ -49,29 +49,29 @@
             this.labelEditTitle = new System.Windows.Forms.Label();
             this.linkLabelNavigationBack = new System.Windows.Forms.LinkLabel();
             this.panelSettings = new System.Windows.Forms.Panel();
+            this.linkLabelAutoDetect = new System.Windows.Forms.LinkLabel();
             this.checkBoxMoreOptions = new System.Windows.Forms.CheckBox();
+            this.labelGamePath = new System.Windows.Forms.Label();
             this.panelAdvancedOptions = new System.Windows.Forms.Panel();
-            this.labelLaunchOptionMSStoreNotice = new System.Windows.Forms.Label();
-            this.radioButtonLaunchViaExecutable = new System.Windows.Forms.RadioButton();
-            this.radioButtonLaunchViaLink = new System.Windows.Forms.RadioButton();
             this.textBoxLaunchURL = new System.Windows.Forms.TextBox();
+            this.labelProfileAdvancedOptions = new System.Windows.Forms.Label();
             this.labelLaunchURL = new System.Windows.Forms.Label();
+            this.labelLaunchOptionMSStoreNotice = new System.Windows.Forms.Label();
             this.textBoxParameters = new System.Windows.Forms.TextBox();
+            this.labelProfileLaunchOptions = new System.Windows.Forms.Label();
             this.labelParameters = new System.Windows.Forms.Label();
+            this.radioButtonLaunchViaExecutable = new System.Windows.Forms.RadioButton();
             this.textBoxExecutable = new System.Windows.Forms.TextBox();
+            this.radioButtonLaunchViaLink = new System.Windows.Forms.RadioButton();
             this.labelExecutable = new System.Windows.Forms.Label();
             this.textBoxIniPrefix = new System.Windows.Forms.TextBox();
             this.labelIniPrefix = new System.Windows.Forms.Label();
-            this.linkLabelAutoDetect = new System.Windows.Forms.LinkLabel();
-            this.labelGamePath = new System.Windows.Forms.Label();
             this.labelGameEdition = new System.Windows.Forms.Label();
             this.comboBoxGameEdition = new ComboxExtended.ImagedComboBox();
-            this.buttonPickGamePath = new System.Windows.Forms.Button();
-            this.textBoxGamePath = new System.Windows.Forms.TextBox();
-            this.textBoxProfileName = new System.Windows.Forms.TextBox();
             this.labelProfileName = new System.Windows.Forms.Label();
-            this.labelProfileLaunchOptions = new System.Windows.Forms.Label();
-            this.labelProfileAdvancedOptions = new System.Windows.Forms.Label();
+            this.buttonPickGamePath = new System.Windows.Forms.Button();
+            this.textBoxProfileName = new System.Windows.Forms.TextBox();
+            this.textBoxGamePath = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabPageSelect.SuspendLayout();
             this.tabPageEdit.SuspendLayout();
@@ -121,7 +121,7 @@
             // buttonEditProfile
             // 
             this.buttonEditProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEditProfile.Location = new System.Drawing.Point(351, 99);
+            this.buttonEditProfile.Location = new System.Drawing.Point(351, 94);
             this.buttonEditProfile.Name = "buttonEditProfile";
             this.buttonEditProfile.Size = new System.Drawing.Size(115, 28);
             this.buttonEditProfile.TabIndex = 43;
@@ -132,7 +132,7 @@
             // buttonDeleteProfile
             // 
             this.buttonDeleteProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteProfile.Location = new System.Drawing.Point(351, 133);
+            this.buttonDeleteProfile.Location = new System.Drawing.Point(351, 128);
             this.buttonDeleteProfile.Name = "buttonDeleteProfile";
             this.buttonDeleteProfile.Size = new System.Drawing.Size(115, 28);
             this.buttonDeleteProfile.TabIndex = 42;
@@ -157,10 +157,10 @@
             listViewItem4,
             listViewItem5});
             this.listViewGameInstances.LabelWrap = false;
-            this.listViewGameInstances.Location = new System.Drawing.Point(15, 65);
+            this.listViewGameInstances.Location = new System.Drawing.Point(15, 60);
             this.listViewGameInstances.MultiSelect = false;
             this.listViewGameInstances.Name = "listViewGameInstances";
-            this.listViewGameInstances.Size = new System.Drawing.Size(330, 291);
+            this.listViewGameInstances.Size = new System.Drawing.Size(330, 301);
             this.listViewGameInstances.SmallImageList = this.imageList;
             this.listViewGameInstances.TabIndex = 21;
             this.listViewGameInstances.UseCompatibleStateImageBehavior = false;
@@ -184,7 +184,7 @@
             // buttonAddProfile
             // 
             this.buttonAddProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAddProfile.Location = new System.Drawing.Point(351, 65);
+            this.buttonAddProfile.Location = new System.Drawing.Point(351, 60);
             this.buttonAddProfile.Name = "buttonAddProfile";
             this.buttonAddProfile.Size = new System.Drawing.Size(115, 28);
             this.buttonAddProfile.TabIndex = 3;
@@ -249,6 +249,17 @@
             this.panelSettings.Size = new System.Drawing.Size(466, 302);
             this.panelSettings.TabIndex = 39;
             // 
+            // linkLabelAutoDetect
+            // 
+            this.linkLabelAutoDetect.AutoSize = true;
+            this.linkLabelAutoDetect.Location = new System.Drawing.Point(110, 85);
+            this.linkLabelAutoDetect.Name = "linkLabelAutoDetect";
+            this.linkLabelAutoDetect.Size = new System.Drawing.Size(100, 13);
+            this.linkLabelAutoDetect.TabIndex = 38;
+            this.linkLabelAutoDetect.TabStop = true;
+            this.linkLabelAutoDetect.Text = "Attempt auto-detect";
+            this.linkLabelAutoDetect.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAutoDetect_LinkClicked);
+            // 
             // checkBoxMoreOptions
             // 
             this.checkBoxMoreOptions.AutoSize = true;
@@ -259,6 +270,15 @@
             this.checkBoxMoreOptions.Text = "Show more options";
             this.checkBoxMoreOptions.UseVisualStyleBackColor = true;
             this.checkBoxMoreOptions.CheckedChanged += new System.EventHandler(this.checkBoxMoreOptions_CheckedChanged);
+            // 
+            // labelGamePath
+            // 
+            this.labelGamePath.Location = new System.Drawing.Point(7, 62);
+            this.labelGamePath.Name = "labelGamePath";
+            this.labelGamePath.Size = new System.Drawing.Size(100, 20);
+            this.labelGamePath.TabIndex = 37;
+            this.labelGamePath.Text = "Game path:";
+            this.labelGamePath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panelAdvancedOptions
             // 
@@ -280,6 +300,34 @@
             this.panelAdvancedOptions.Size = new System.Drawing.Size(411, 251);
             this.panelAdvancedOptions.TabIndex = 40;
             // 
+            // textBoxLaunchURL
+            // 
+            this.textBoxLaunchURL.Location = new System.Drawing.Point(113, 217);
+            this.textBoxLaunchURL.Name = "textBoxLaunchURL";
+            this.textBoxLaunchURL.Size = new System.Drawing.Size(280, 20);
+            this.textBoxLaunchURL.TabIndex = 7;
+            this.textBoxLaunchURL.TextChanged += new System.EventHandler(this.textBoxLaunchURL_TextChanged);
+            // 
+            // labelProfileAdvancedOptions
+            // 
+            this.labelProfileAdvancedOptions.AutoSize = true;
+            this.labelProfileAdvancedOptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProfileAdvancedOptions.Location = new System.Drawing.Point(7, 114);
+            this.labelProfileAdvancedOptions.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
+            this.labelProfileAdvancedOptions.Name = "labelProfileAdvancedOptions";
+            this.labelProfileAdvancedOptions.Size = new System.Drawing.Size(118, 17);
+            this.labelProfileAdvancedOptions.TabIndex = 40;
+            this.labelProfileAdvancedOptions.Text = "Advanced options";
+            // 
+            // labelLaunchURL
+            // 
+            this.labelLaunchURL.AutoSize = true;
+            this.labelLaunchURL.Location = new System.Drawing.Point(10, 220);
+            this.labelLaunchURL.Name = "labelLaunchURL";
+            this.labelLaunchURL.Size = new System.Drawing.Size(71, 13);
+            this.labelLaunchURL.TabIndex = 6;
+            this.labelLaunchURL.Text = "Launch URL:";
+            // 
             // labelLaunchOptionMSStoreNotice
             // 
             this.labelLaunchOptionMSStoreNotice.ForeColor = System.Drawing.Color.Red;
@@ -290,6 +338,34 @@
             this.labelLaunchOptionMSStoreNotice.Text = "Fallout 76 cannot be run directly, if installed through the Xbox app.";
             this.labelLaunchOptionMSStoreNotice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelLaunchOptionMSStoreNotice.Visible = false;
+            // 
+            // textBoxParameters
+            // 
+            this.textBoxParameters.Location = new System.Drawing.Point(113, 191);
+            this.textBoxParameters.Name = "textBoxParameters";
+            this.textBoxParameters.Size = new System.Drawing.Size(280, 20);
+            this.textBoxParameters.TabIndex = 5;
+            this.textBoxParameters.TextChanged += new System.EventHandler(this.textBoxParameters_TextChanged);
+            // 
+            // labelProfileLaunchOptions
+            // 
+            this.labelProfileLaunchOptions.AutoSize = true;
+            this.labelProfileLaunchOptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProfileLaunchOptions.Location = new System.Drawing.Point(7, 6);
+            this.labelProfileLaunchOptions.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
+            this.labelProfileLaunchOptions.Name = "labelProfileLaunchOptions";
+            this.labelProfileLaunchOptions.Size = new System.Drawing.Size(101, 17);
+            this.labelProfileLaunchOptions.TabIndex = 39;
+            this.labelProfileLaunchOptions.Text = "Launch options";
+            // 
+            // labelParameters
+            // 
+            this.labelParameters.AutoSize = true;
+            this.labelParameters.Location = new System.Drawing.Point(10, 194);
+            this.labelParameters.Name = "labelParameters";
+            this.labelParameters.Size = new System.Drawing.Size(63, 13);
+            this.labelParameters.TabIndex = 4;
+            this.labelParameters.Text = "Parameters:";
             // 
             // radioButtonLaunchViaExecutable
             // 
@@ -303,6 +379,15 @@
             this.radioButtonLaunchViaExecutable.UseVisualStyleBackColor = true;
             this.radioButtonLaunchViaExecutable.CheckedChanged += new System.EventHandler(this.radioButtonLaunchViaExecutable_CheckedChanged);
             // 
+            // textBoxExecutable
+            // 
+            this.textBoxExecutable.Location = new System.Drawing.Point(113, 165);
+            this.textBoxExecutable.Name = "textBoxExecutable";
+            this.textBoxExecutable.Size = new System.Drawing.Size(280, 20);
+            this.textBoxExecutable.TabIndex = 3;
+            this.textBoxExecutable.Text = "Fallout76.exe";
+            this.textBoxExecutable.TextChanged += new System.EventHandler(this.textBoxExecutable_TextChanged);
+            // 
             // radioButtonLaunchViaLink
             // 
             this.radioButtonLaunchViaLink.AutoSize = true;
@@ -314,49 +399,6 @@
             this.radioButtonLaunchViaLink.Text = "Launch via Steam / Xbox (recommended)";
             this.radioButtonLaunchViaLink.UseVisualStyleBackColor = true;
             this.radioButtonLaunchViaLink.CheckedChanged += new System.EventHandler(this.radioButtonLaunchViaLink_CheckedChanged);
-            // 
-            // textBoxLaunchURL
-            // 
-            this.textBoxLaunchURL.Location = new System.Drawing.Point(113, 217);
-            this.textBoxLaunchURL.Name = "textBoxLaunchURL";
-            this.textBoxLaunchURL.Size = new System.Drawing.Size(280, 20);
-            this.textBoxLaunchURL.TabIndex = 7;
-            this.textBoxLaunchURL.TextChanged += new System.EventHandler(this.textBoxLaunchURL_TextChanged);
-            // 
-            // labelLaunchURL
-            // 
-            this.labelLaunchURL.AutoSize = true;
-            this.labelLaunchURL.Location = new System.Drawing.Point(10, 220);
-            this.labelLaunchURL.Name = "labelLaunchURL";
-            this.labelLaunchURL.Size = new System.Drawing.Size(71, 13);
-            this.labelLaunchURL.TabIndex = 6;
-            this.labelLaunchURL.Text = "Launch URL:";
-            // 
-            // textBoxParameters
-            // 
-            this.textBoxParameters.Location = new System.Drawing.Point(113, 191);
-            this.textBoxParameters.Name = "textBoxParameters";
-            this.textBoxParameters.Size = new System.Drawing.Size(280, 20);
-            this.textBoxParameters.TabIndex = 5;
-            this.textBoxParameters.TextChanged += new System.EventHandler(this.textBoxParameters_TextChanged);
-            // 
-            // labelParameters
-            // 
-            this.labelParameters.AutoSize = true;
-            this.labelParameters.Location = new System.Drawing.Point(10, 194);
-            this.labelParameters.Name = "labelParameters";
-            this.labelParameters.Size = new System.Drawing.Size(63, 13);
-            this.labelParameters.TabIndex = 4;
-            this.labelParameters.Text = "Parameters:";
-            // 
-            // textBoxExecutable
-            // 
-            this.textBoxExecutable.Location = new System.Drawing.Point(113, 165);
-            this.textBoxExecutable.Name = "textBoxExecutable";
-            this.textBoxExecutable.Size = new System.Drawing.Size(280, 20);
-            this.textBoxExecutable.TabIndex = 3;
-            this.textBoxExecutable.Text = "Fallout76.exe";
-            this.textBoxExecutable.TextChanged += new System.EventHandler(this.textBoxExecutable_TextChanged);
             // 
             // labelExecutable
             // 
@@ -385,26 +427,6 @@
             this.labelIniPrefix.TabIndex = 0;
             this.labelIniPrefix.Text = "*.ini Prefix:";
             // 
-            // linkLabelAutoDetect
-            // 
-            this.linkLabelAutoDetect.AutoSize = true;
-            this.linkLabelAutoDetect.Location = new System.Drawing.Point(110, 85);
-            this.linkLabelAutoDetect.Name = "linkLabelAutoDetect";
-            this.linkLabelAutoDetect.Size = new System.Drawing.Size(100, 13);
-            this.linkLabelAutoDetect.TabIndex = 38;
-            this.linkLabelAutoDetect.TabStop = true;
-            this.linkLabelAutoDetect.Text = "Attempt auto-detect";
-            this.linkLabelAutoDetect.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAutoDetect_LinkClicked);
-            // 
-            // labelGamePath
-            // 
-            this.labelGamePath.Location = new System.Drawing.Point(7, 62);
-            this.labelGamePath.Name = "labelGamePath";
-            this.labelGamePath.Size = new System.Drawing.Size(100, 20);
-            this.labelGamePath.TabIndex = 37;
-            this.labelGamePath.Text = "Game path:";
-            this.labelGamePath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // labelGameEdition
             // 
             this.labelGameEdition.Location = new System.Drawing.Point(7, 35);
@@ -425,6 +447,15 @@
             this.comboBoxGameEdition.TabIndex = 35;
             this.comboBoxGameEdition.SelectedIndexChanged += new System.EventHandler(this.comboBoxGameEdition_SelectedIndexChanged);
             // 
+            // labelProfileName
+            // 
+            this.labelProfileName.Location = new System.Drawing.Point(7, 9);
+            this.labelProfileName.Name = "labelProfileName";
+            this.labelProfileName.Size = new System.Drawing.Size(100, 20);
+            this.labelProfileName.TabIndex = 2;
+            this.labelProfileName.Text = "Profile name:";
+            this.labelProfileName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // buttonPickGamePath
             // 
             this.buttonPickGamePath.Location = new System.Drawing.Point(363, 61);
@@ -435,14 +466,6 @@
             this.buttonPickGamePath.UseVisualStyleBackColor = true;
             this.buttonPickGamePath.Click += new System.EventHandler(this.buttonPickGamePath_Click);
             // 
-            // textBoxGamePath
-            // 
-            this.textBoxGamePath.Location = new System.Drawing.Point(113, 62);
-            this.textBoxGamePath.Name = "textBoxGamePath";
-            this.textBoxGamePath.Size = new System.Drawing.Size(245, 20);
-            this.textBoxGamePath.TabIndex = 30;
-            this.textBoxGamePath.TextChanged += new System.EventHandler(this.textBoxGamePath_TextChanged);
-            // 
             // textBoxProfileName
             // 
             this.textBoxProfileName.Location = new System.Drawing.Point(113, 9);
@@ -452,36 +475,13 @@
             this.textBoxProfileName.Text = "Default";
             this.textBoxProfileName.TextChanged += new System.EventHandler(this.textBoxProfileName_TextChanged);
             // 
-            // labelProfileName
+            // textBoxGamePath
             // 
-            this.labelProfileName.Location = new System.Drawing.Point(7, 9);
-            this.labelProfileName.Name = "labelProfileName";
-            this.labelProfileName.Size = new System.Drawing.Size(100, 20);
-            this.labelProfileName.TabIndex = 2;
-            this.labelProfileName.Text = "Profile name:";
-            this.labelProfileName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelProfileLaunchOptions
-            // 
-            this.labelProfileLaunchOptions.AutoSize = true;
-            this.labelProfileLaunchOptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProfileLaunchOptions.Location = new System.Drawing.Point(7, 6);
-            this.labelProfileLaunchOptions.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
-            this.labelProfileLaunchOptions.Name = "labelProfileLaunchOptions";
-            this.labelProfileLaunchOptions.Size = new System.Drawing.Size(101, 17);
-            this.labelProfileLaunchOptions.TabIndex = 39;
-            this.labelProfileLaunchOptions.Text = "Launch options";
-            // 
-            // labelProfileAdvancedOptions
-            // 
-            this.labelProfileAdvancedOptions.AutoSize = true;
-            this.labelProfileAdvancedOptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProfileAdvancedOptions.Location = new System.Drawing.Point(7, 114);
-            this.labelProfileAdvancedOptions.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
-            this.labelProfileAdvancedOptions.Name = "labelProfileAdvancedOptions";
-            this.labelProfileAdvancedOptions.Size = new System.Drawing.Size(118, 17);
-            this.labelProfileAdvancedOptions.TabIndex = 40;
-            this.labelProfileAdvancedOptions.Text = "Advanced options";
+            this.textBoxGamePath.Location = new System.Drawing.Point(113, 62);
+            this.textBoxGamePath.Name = "textBoxGamePath";
+            this.textBoxGamePath.Size = new System.Drawing.Size(245, 20);
+            this.textBoxGamePath.TabIndex = 30;
+            this.textBoxGamePath.TextChanged += new System.EventHandler(this.textBoxGamePath_TextChanged);
             // 
             // UserControlProfiles
             // 

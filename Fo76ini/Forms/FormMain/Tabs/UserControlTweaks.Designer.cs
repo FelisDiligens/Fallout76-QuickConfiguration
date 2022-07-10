@@ -414,10 +414,10 @@
             this.tabControlTweaks.Controls.Add(this.tabPageControls);
             this.tabControlTweaks.Controls.Add(this.tabPageCamera);
             this.tabControlTweaks.Controls.Add(this.tabPageLogin);
-            this.tabControlTweaks.Location = new System.Drawing.Point(6, 76);
+            this.tabControlTweaks.Location = new System.Drawing.Point(15, 75);
             this.tabControlTweaks.Name = "tabControlTweaks";
             this.tabControlTweaks.SelectedIndex = 0;
-            this.tabControlTweaks.Size = new System.Drawing.Size(674, 501);
+            this.tabControlTweaks.Size = new System.Drawing.Size(662, 502);
             this.tabControlTweaks.TabIndex = 0;
             // 
             // tabPageGeneral
@@ -430,7 +430,7 @@
             this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabPageGeneral.Name = "tabPageGeneral";
             this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGeneral.Size = new System.Drawing.Size(666, 475);
+            this.tabPageGeneral.Size = new System.Drawing.Size(654, 476);
             this.tabPageGeneral.TabIndex = 0;
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
@@ -803,7 +803,7 @@
             this.tabPageVideo.Location = new System.Drawing.Point(4, 22);
             this.tabPageVideo.Name = "tabPageVideo";
             this.tabPageVideo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageVideo.Size = new System.Drawing.Size(666, 475);
+            this.tabPageVideo.Size = new System.Drawing.Size(654, 476);
             this.tabPageVideo.TabIndex = 1;
             this.tabPageVideo.Text = "Video";
             this.tabPageVideo.UseVisualStyleBackColor = true;
@@ -1688,7 +1688,7 @@
             this.tabPageAudio.Controls.Add(this.groupBoxAudioVolume);
             this.tabPageAudio.Location = new System.Drawing.Point(4, 22);
             this.tabPageAudio.Name = "tabPageAudio";
-            this.tabPageAudio.Size = new System.Drawing.Size(666, 475);
+            this.tabPageAudio.Size = new System.Drawing.Size(654, 476);
             this.tabPageAudio.TabIndex = 2;
             this.tabPageAudio.Text = "Audio";
             this.tabPageAudio.UseVisualStyleBackColor = true;
@@ -2324,7 +2324,7 @@
             this.tabPageControls.Controls.Add(this.groupBoxMouse);
             this.tabPageControls.Location = new System.Drawing.Point(4, 22);
             this.tabPageControls.Name = "tabPageControls";
-            this.tabPageControls.Size = new System.Drawing.Size(666, 475);
+            this.tabPageControls.Size = new System.Drawing.Size(654, 476);
             this.tabPageControls.TabIndex = 3;
             this.tabPageControls.Text = "Controls";
             this.tabPageControls.UseVisualStyleBackColor = true;
@@ -2497,7 +2497,7 @@
             this.tabPageCamera.Controls.Add(this.groupBoxFieldOfView);
             this.tabPageCamera.Location = new System.Drawing.Point(4, 22);
             this.tabPageCamera.Name = "tabPageCamera";
-            this.tabPageCamera.Size = new System.Drawing.Size(666, 475);
+            this.tabPageCamera.Size = new System.Drawing.Size(654, 476);
             this.tabPageCamera.TabIndex = 4;
             this.tabPageCamera.Text = "Camera";
             this.tabPageCamera.UseVisualStyleBackColor = true;
@@ -3455,7 +3455,7 @@
             this.groupBoxFieldOfView.Location = new System.Drawing.Point(6, 6);
             this.groupBoxFieldOfView.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
-            this.groupBoxFieldOfView.Size = new System.Drawing.Size(640, 405);
+            this.groupBoxFieldOfView.Size = new System.Drawing.Size(626, 405);
             this.groupBoxFieldOfView.TabIndex = 22;
             this.groupBoxFieldOfView.TabStop = false;
             this.groupBoxFieldOfView.Text = "Field of View";
@@ -3468,7 +3468,7 @@
             this.pictureBoxFOVPreview.BackColor = System.Drawing.Color.Gray;
             this.pictureBoxFOVPreview.Location = new System.Drawing.Point(0, 45);
             this.pictureBoxFOVPreview.Name = "pictureBoxFOVPreview";
-            this.pictureBoxFOVPreview.Size = new System.Drawing.Size(640, 360);
+            this.pictureBoxFOVPreview.Size = new System.Drawing.Size(626, 360);
             this.pictureBoxFOVPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxFOVPreview.TabIndex = 53;
             this.pictureBoxFOVPreview.TabStop = false;
@@ -3483,7 +3483,7 @@
             this.sliderFOV.Maximum = 24;
             this.sliderFOV.Minimum = 14;
             this.sliderFOV.Name = "sliderFOV";
-            this.sliderFOV.Size = new System.Drawing.Size(554, 45);
+            this.sliderFOV.Size = new System.Drawing.Size(540, 45);
             this.sliderFOV.TabIndex = 52;
             this.sliderFOV.TickStyle = System.Windows.Forms.TickStyle.None;
             this.sliderFOV.Value = 24;
@@ -3496,7 +3496,7 @@
             0,
             0,
             0});
-            this.numFOV.Location = new System.Drawing.Point(566, 19);
+            this.numFOV.Location = new System.Drawing.Point(552, 19);
             this.numFOV.Maximum = new decimal(new int[] {
             180,
             0,
@@ -3525,7 +3525,7 @@
             this.tabPageLogin.Location = new System.Drawing.Point(4, 22);
             this.tabPageLogin.Name = "tabPageLogin";
             this.tabPageLogin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLogin.Size = new System.Drawing.Size(666, 475);
+            this.tabPageLogin.Size = new System.Drawing.Size(654, 476);
             this.tabPageLogin.TabIndex = 5;
             this.tabPageLogin.Text = "Bethesda.net";
             this.tabPageLogin.UseVisualStyleBackColor = true;
@@ -3846,6 +3846,18 @@
             this.labelTweaksTitle.Size = new System.Drawing.Size(82, 30);
             this.labelTweaksTitle.TabIndex = 71;
             this.labelTweaksTitle.Text = "Tweaks";
+            // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 20000;
+            this.toolTip.BackColor = System.Drawing.Color.White;
+            this.toolTip.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolTip.ForeColor = System.Drawing.Color.Black;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.OwnerDraw = true;
+            this.toolTip.Padding = new System.Drawing.Size(6, 6);
+            this.toolTip.ReshowDelay = 100;
+            this.toolTip.ShowAlways = true;
             // 
             // UserControlTweaks
             // 
