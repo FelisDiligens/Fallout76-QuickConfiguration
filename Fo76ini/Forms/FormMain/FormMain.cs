@@ -190,6 +190,7 @@ namespace Fo76ini
             if (!force && Configuration.IgnoreUpdates)
             {
                 this.labelConfigVersion.ForeColor = Color.Black;
+                UpdateWhatsNewUI();
                 return;
             }
 
@@ -230,6 +231,8 @@ namespace Fo76ini
                 panelUpdate.Visible = false;
                 this.labelConfigVersion.ForeColor = Color.DarkGreen;
             }
+
+            UpdateWhatsNewUI();
         }
 
         #endregion
@@ -453,33 +456,33 @@ namespace Fo76ini
 
         private void LoadWhatsNew()
         {
-            this.panelWhatsNew.Visible = true;
             if (!Configuration.ShowWhatsNew)
-                this.panelWhatsNew.Visible = false;
-            string WhatsNewTestFile = Path.Combine(Shared.AppConfigFolder, "What's new.rtf");
-            if (File.Exists(WhatsNewTestFile))
-                this.richTextBoxWhatsNew.LoadFile(WhatsNewTestFile);
+                return;
+            this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewHTMLURL);
+        }
+
+        private void UpdateWhatsNewUI()
+        {
+            // Hide, if the user doesn't want to see it:
+            if (!Configuration.ShowWhatsNew)
+            {
+                this.webBrowserWhatsNew.Visible = false;
+                return;
+            }
+
+            // Set size/location if panelUpdate is invisible:
+            if (!this.panelUpdate.Visible)
+            {
+                this.webBrowserWhatsNew.Height += this.webBrowserWhatsNew.Top - this.panel1.Top - this.panel1.Height;
+                this.webBrowserWhatsNew.Top = this.panel1.Top + this.panel1.Height;
+                this.webBrowserWhatsNew.Visible = true;
+            }
+
+            // If panelUpdate is visible, hide What's new instead:
             else
-                this.backgroundWorkerDownloadRTF.RunWorkerAsync();
-        }
-
-        private void backgroundWorkerDownloadRTF_DoWork(object sender, DoWorkEventArgs ev)
-        {
-            try
             {
-                WebClient wc = new WebClient();
-                byte[] raw = wc.DownloadData(Shared.URLs.RemoteWhatsNewRTFURL);
-                ev.Result = (object)Encoding.UTF8.GetString(raw).Trim();
+                this.webBrowserWhatsNew.Visible = false;
             }
-            catch (Exception ex)
-            {
-                ev.Result = (object)$"{{\\rtf1Couldn't retrieve 'What's new.rtf': \"{ex.GetType().Name}: {ex.Message}\"}}";
-            }
-        }
-
-        private void backgroundWorkerDownloadRTF_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs ev)
-        {
-            this.richTextBoxWhatsNew.Rtf = (string)ev.Result;
         }
 
         #endregion

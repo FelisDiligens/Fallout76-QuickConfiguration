@@ -49,6 +49,7 @@ namespace Fo76ini
             // (These files are downloaded by the tool)
             public const string RemoteLatestVersionURL = "https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/VERSION";
             public const string RemoteWhatsNewRTFURL = "https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/What's%20new.rtf";
+            public const string RemoteWhatsNewHTMLURL = "https://felisdiligens.github.io/Fo76ini/What%27s%20new";
             public const string RemoteLanguageFolderURL = "https://raw.githubusercontent.com/FelisDiligens/Fallout76-QuickConfiguration/master/Fo76ini/languages/";
         }
 

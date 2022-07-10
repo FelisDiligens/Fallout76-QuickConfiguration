@@ -35,26 +35,25 @@
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorkerLoadGallery = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerGetLatestVersion = new System.ComponentModel.BackgroundWorker();
-            this.backgroundWorkerDownloadRTF = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new Fo76ini.Controls.TabControlWithoutHeader();
             this.tabPageHome = new System.Windows.Forms.TabPage();
-            this.userControlHero = new Fo76ini.Controls.UserControlHero();
-            this.panelWhatsNew = new System.Windows.Forms.Panel();
-            this.richTextBoxWhatsNew = new System.Windows.Forms.RichTextBox();
+            this.webBrowserWhatsNew = new System.Windows.Forms.WebBrowser();
             this.panelUpdate = new System.Windows.Forms.Panel();
             this.pictureBoxButtonUpdate = new Fo76ini.Controls.PictureBoxButton();
             this.labelNewVersion = new System.Windows.Forms.Label();
             this.linkLabelManualDownloadPage = new System.Windows.Forms.LinkLabel();
-            this.pictureBoxSpinnerCheckForUpdates = new System.Windows.Forms.PictureBox();
-            this.labelTranslationAuthor = new System.Windows.Forms.Label();
-            this.labelTranslationBy = new System.Windows.Forms.Label();
-            this.labelAuthorName = new System.Windows.Forms.Label();
-            this.labelConfigVersion = new System.Windows.Forms.Label();
-            this.labelAuthor = new System.Windows.Forms.Label();
-            this.labelVersion = new System.Windows.Forms.Label();
-            this.labelDescription = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.labelWelcome = new System.Windows.Forms.Label();
+            this.labelDescription = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
+            this.labelAuthor = new System.Windows.Forms.Label();
+            this.pictureBoxSpinnerCheckForUpdates = new System.Windows.Forms.PictureBox();
+            this.labelConfigVersion = new System.Windows.Forms.Label();
+            this.labelTranslationAuthor = new System.Windows.Forms.Label();
+            this.labelAuthorName = new System.Windows.Forms.Label();
+            this.labelTranslationBy = new System.Windows.Forms.Label();
+            this.userControlHero = new Fo76ini.Controls.UserControlHero();
             this.tabPageTweaks = new System.Windows.Forms.TabPage();
             this.userControlTweaks = new Fo76ini.Forms.FormMain.UserControlTweaks();
             this.tabPagePipBoy = new System.Windows.Forms.TabPage();
@@ -73,8 +72,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageHome.SuspendLayout();
-            this.panelWhatsNew.SuspendLayout();
             this.panelUpdate.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).BeginInit();
             this.tabPageTweaks.SuspendLayout();
             this.tabPagePipBoy.SuspendLayout();
@@ -106,11 +105,6 @@
             // backgroundWorkerGetLatestVersion
             // 
             this.backgroundWorkerGetLatestVersion.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerGetLatestVersion_DoWork);
-            // 
-            // backgroundWorkerDownloadRTF
-            // 
-            this.backgroundWorkerDownloadRTF.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDownloadRTF_DoWork);
-            this.backgroundWorkerDownloadRTF.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerDownloadRTF_RunWorkerCompleted);
             // 
             // pictureBoxLoadingGIF
             // 
@@ -151,75 +145,41 @@
             // 
             this.tabPageHome.AutoScroll = true;
             this.tabPageHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tabPageHome.Controls.Add(this.userControlHero);
-            this.tabPageHome.Controls.Add(this.panelWhatsNew);
+            this.tabPageHome.Controls.Add(this.webBrowserWhatsNew);
             this.tabPageHome.Controls.Add(this.panelUpdate);
-            this.tabPageHome.Controls.Add(this.pictureBoxSpinnerCheckForUpdates);
-            this.tabPageHome.Controls.Add(this.labelTranslationAuthor);
-            this.tabPageHome.Controls.Add(this.labelTranslationBy);
-            this.tabPageHome.Controls.Add(this.labelAuthorName);
-            this.tabPageHome.Controls.Add(this.labelConfigVersion);
-            this.tabPageHome.Controls.Add(this.labelAuthor);
-            this.tabPageHome.Controls.Add(this.labelVersion);
-            this.tabPageHome.Controls.Add(this.labelDescription);
-            this.tabPageHome.Controls.Add(this.labelWelcome);
+            this.tabPageHome.Controls.Add(this.panel1);
+            this.tabPageHome.Controls.Add(this.userControlHero);
             this.tabPageHome.Location = new System.Drawing.Point(4, 22);
             this.tabPageHome.Name = "tabPageHome";
             this.tabPageHome.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHome.Size = new System.Drawing.Size(676, 557);
+            this.tabPageHome.Size = new System.Drawing.Size(676, 587);
             this.tabPageHome.TabIndex = 4;
             this.tabPageHome.Text = "Home";
             this.tabPageHome.UseVisualStyleBackColor = true;
             // 
-            // userControlHero
+            // webBrowserWhatsNew
             // 
-            this.userControlHero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.userControlHero.Location = new System.Drawing.Point(0, 0);
-            this.userControlHero.Margin = new System.Windows.Forms.Padding(0);
-            this.userControlHero.Name = "userControlHero";
-            this.userControlHero.Size = new System.Drawing.Size(676, 168);
-            this.userControlHero.TabIndex = 46;
-            // 
-            // panelWhatsNew
-            // 
-            this.panelWhatsNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelWhatsNew.BackColor = System.Drawing.Color.Silver;
-            this.panelWhatsNew.Controls.Add(this.richTextBoxWhatsNew);
-            this.panelWhatsNew.Location = new System.Drawing.Point(370, 168);
-            this.panelWhatsNew.Margin = new System.Windows.Forms.Padding(0);
-            this.panelWhatsNew.Name = "panelWhatsNew";
-            this.panelWhatsNew.Size = new System.Drawing.Size(306, 389);
-            this.panelWhatsNew.TabIndex = 45;
-            // 
-            // richTextBoxWhatsNew
-            // 
-            this.richTextBoxWhatsNew.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.webBrowserWhatsNew.AllowNavigation = false;
+            this.webBrowserWhatsNew.AllowWebBrowserDrop = false;
+            this.webBrowserWhatsNew.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxWhatsNew.BackColor = System.Drawing.Color.Silver;
-            this.richTextBoxWhatsNew.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxWhatsNew.Cursor = System.Windows.Forms.Cursors.Default;
-            this.richTextBoxWhatsNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxWhatsNew.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.richTextBoxWhatsNew.Location = new System.Drawing.Point(10, 10);
-            this.richTextBoxWhatsNew.Margin = new System.Windows.Forms.Padding(10, 10, 0, 10);
-            this.richTextBoxWhatsNew.Name = "richTextBoxWhatsNew";
-            this.richTextBoxWhatsNew.ReadOnly = true;
-            this.richTextBoxWhatsNew.Size = new System.Drawing.Size(292, 379);
-            this.richTextBoxWhatsNew.TabIndex = 43;
-            this.richTextBoxWhatsNew.Text = "\n\n\n                          Loading \"What\'s new?\" content...";
+            this.webBrowserWhatsNew.Location = new System.Drawing.Point(0, 437);
+            this.webBrowserWhatsNew.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserWhatsNew.Name = "webBrowserWhatsNew";
+            this.webBrowserWhatsNew.ScriptErrorsSuppressed = true;
+            this.webBrowserWhatsNew.Size = new System.Drawing.Size(673, 150);
+            this.webBrowserWhatsNew.TabIndex = 47;
             // 
             // panelUpdate
             // 
-            this.panelUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelUpdate.Controls.Add(this.pictureBoxButtonUpdate);
             this.panelUpdate.Controls.Add(this.labelNewVersion);
             this.panelUpdate.Controls.Add(this.linkLabelManualDownloadPage);
-            this.panelUpdate.Location = new System.Drawing.Point(7, 334);
+            this.panelUpdate.Location = new System.Drawing.Point(0, 324);
+            this.panelUpdate.Margin = new System.Windows.Forms.Padding(0);
             this.panelUpdate.Name = "panelUpdate";
-            this.panelUpdate.Size = new System.Drawing.Size(299, 110);
+            this.panelUpdate.Size = new System.Drawing.Size(295, 110);
             this.panelUpdate.TabIndex = 39;
             // 
             // pictureBoxButtonUpdate
@@ -263,10 +223,67 @@
             this.linkLabelManualDownloadPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLabelManualDownloadPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelManualDownloadPage_LinkClicked);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.labelWelcome);
+            this.panel1.Controls.Add(this.labelDescription);
+            this.panel1.Controls.Add(this.labelVersion);
+            this.panel1.Controls.Add(this.labelAuthor);
+            this.panel1.Controls.Add(this.pictureBoxSpinnerCheckForUpdates);
+            this.panel1.Controls.Add(this.labelConfigVersion);
+            this.panel1.Controls.Add(this.labelTranslationAuthor);
+            this.panel1.Controls.Add(this.labelAuthorName);
+            this.panel1.Controls.Add(this.labelTranslationBy);
+            this.panel1.Location = new System.Drawing.Point(0, 168);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(381, 156);
+            this.panel1.TabIndex = 49;
+            // 
+            // labelWelcome
+            // 
+            this.labelWelcome.AutoSize = true;
+            this.labelWelcome.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWelcome.Location = new System.Drawing.Point(15, 10);
+            this.labelWelcome.Name = "labelWelcome";
+            this.labelWelcome.Size = new System.Drawing.Size(326, 30);
+            this.labelWelcome.TabIndex = 0;
+            this.labelWelcome.Text = "Welcome to Quick Configuration";
+            // 
+            // labelDescription
+            // 
+            this.labelDescription.BackColor = System.Drawing.Color.Transparent;
+            this.labelDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescription.Location = new System.Drawing.Point(17, 40);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Size = new System.Drawing.Size(355, 53);
+            this.labelDescription.TabIndex = 6;
+            this.labelDescription.Text = "This tool allows you to change various game settings and install mods.";
+            // 
+            // labelVersion
+            // 
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVersion.Location = new System.Drawing.Point(17, 93);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(58, 17);
+            this.labelVersion.TabIndex = 7;
+            this.labelVersion.Text = "Version:";
+            // 
+            // labelAuthor
+            // 
+            this.labelAuthor.AutoSize = true;
+            this.labelAuthor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAuthor.Location = new System.Drawing.Point(17, 111);
+            this.labelAuthor.Name = "labelAuthor";
+            this.labelAuthor.Size = new System.Drawing.Size(56, 17);
+            this.labelAuthor.TabIndex = 8;
+            this.labelAuthor.Text = "Author:";
+            // 
             // pictureBoxSpinnerCheckForUpdates
             // 
             this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Spinner_24;
-            this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(95, 262);
+            this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(100, 89);
             this.pictureBoxSpinnerCheckForUpdates.Name = "pictureBoxSpinnerCheckForUpdates";
             this.pictureBoxSpinnerCheckForUpdates.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxSpinnerCheckForUpdates.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -274,87 +291,57 @@
             this.pictureBoxSpinnerCheckForUpdates.TabStop = false;
             this.pictureBoxSpinnerCheckForUpdates.Visible = false;
             // 
+            // labelConfigVersion
+            // 
+            this.labelConfigVersion.AutoSize = true;
+            this.labelConfigVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConfigVersion.Location = new System.Drawing.Point(130, 93);
+            this.labelConfigVersion.Name = "labelConfigVersion";
+            this.labelConfigVersion.Size = new System.Drawing.Size(14, 17);
+            this.labelConfigVersion.TabIndex = 9;
+            this.labelConfigVersion.Text = "?";
+            // 
             // labelTranslationAuthor
             // 
             this.labelTranslationAuthor.AutoSize = true;
             this.labelTranslationAuthor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationAuthor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationAuthor.Location = new System.Drawing.Point(125, 301);
+            this.labelTranslationAuthor.Location = new System.Drawing.Point(130, 128);
             this.labelTranslationAuthor.Name = "labelTranslationAuthor";
             this.labelTranslationAuthor.Size = new System.Drawing.Size(177, 17);
             this.labelTranslationAuthor.TabIndex = 12;
             this.labelTranslationAuthor.Text = "FelisDiligens (aka. datasnake)";
+            // 
+            // labelAuthorName
+            // 
+            this.labelAuthorName.AutoSize = true;
+            this.labelAuthorName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAuthorName.Location = new System.Drawing.Point(130, 110);
+            this.labelAuthorName.Name = "labelAuthorName";
+            this.labelAuthorName.Size = new System.Drawing.Size(177, 17);
+            this.labelAuthorName.TabIndex = 10;
+            this.labelAuthorName.Text = "FelisDiligens (aka. datasnake)";
             // 
             // labelTranslationBy
             // 
             this.labelTranslationBy.AutoSize = true;
             this.labelTranslationBy.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationBy.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationBy.Location = new System.Drawing.Point(12, 302);
+            this.labelTranslationBy.Location = new System.Drawing.Point(17, 129);
             this.labelTranslationBy.Name = "labelTranslationBy";
             this.labelTranslationBy.Size = new System.Drawing.Size(100, 17);
             this.labelTranslationBy.TabIndex = 11;
             this.labelTranslationBy.Text = "Translation by:";
             // 
-            // labelAuthorName
+            // userControlHero
             // 
-            this.labelAuthorName.AutoSize = true;
-            this.labelAuthorName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAuthorName.Location = new System.Drawing.Point(125, 283);
-            this.labelAuthorName.Name = "labelAuthorName";
-            this.labelAuthorName.Size = new System.Drawing.Size(177, 17);
-            this.labelAuthorName.TabIndex = 10;
-            this.labelAuthorName.Text = "FelisDiligens (aka. datasnake)";
-            // 
-            // labelConfigVersion
-            // 
-            this.labelConfigVersion.AutoSize = true;
-            this.labelConfigVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelConfigVersion.Location = new System.Drawing.Point(125, 266);
-            this.labelConfigVersion.Name = "labelConfigVersion";
-            this.labelConfigVersion.Size = new System.Drawing.Size(14, 17);
-            this.labelConfigVersion.TabIndex = 9;
-            this.labelConfigVersion.Text = "?";
-            // 
-            // labelAuthor
-            // 
-            this.labelAuthor.AutoSize = true;
-            this.labelAuthor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAuthor.Location = new System.Drawing.Point(12, 284);
-            this.labelAuthor.Name = "labelAuthor";
-            this.labelAuthor.Size = new System.Drawing.Size(56, 17);
-            this.labelAuthor.TabIndex = 8;
-            this.labelAuthor.Text = "Author:";
-            // 
-            // labelVersion
-            // 
-            this.labelVersion.AutoSize = true;
-            this.labelVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVersion.Location = new System.Drawing.Point(12, 266);
-            this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(58, 17);
-            this.labelVersion.TabIndex = 7;
-            this.labelVersion.Text = "Version:";
-            // 
-            // labelDescription
-            // 
-            this.labelDescription.BackColor = System.Drawing.Color.Transparent;
-            this.labelDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDescription.Location = new System.Drawing.Point(12, 213);
-            this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(355, 53);
-            this.labelDescription.TabIndex = 6;
-            this.labelDescription.Text = "This tool allows you to change various game settings and install mods.";
-            // 
-            // labelWelcome
-            // 
-            this.labelWelcome.AutoSize = true;
-            this.labelWelcome.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWelcome.Location = new System.Drawing.Point(10, 183);
-            this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(326, 30);
-            this.labelWelcome.TabIndex = 0;
-            this.labelWelcome.Text = "Welcome to Quick Configuration";
+            this.userControlHero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlHero.Location = new System.Drawing.Point(0, 0);
+            this.userControlHero.Margin = new System.Windows.Forms.Padding(0);
+            this.userControlHero.Name = "userControlHero";
+            this.userControlHero.Size = new System.Drawing.Size(676, 168);
+            this.userControlHero.TabIndex = 46;
             // 
             // tabPageTweaks
             // 
@@ -369,8 +356,8 @@
             // 
             // userControlTweaks
             // 
-            this.userControlTweaks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.userControlTweaks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlTweaks.Location = new System.Drawing.Point(0, 0);
             this.userControlTweaks.Name = "userControlTweaks";
@@ -389,8 +376,8 @@
             // 
             // userControlPipboy
             // 
-            this.userControlPipboy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.userControlPipboy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlPipboy.Location = new System.Drawing.Point(0, 0);
             this.userControlPipboy.Name = "userControlPipboy";
@@ -410,8 +397,8 @@
             // 
             // userControlGallery
             // 
-            this.userControlGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.userControlGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlGallery.Location = new System.Drawing.Point(0, 0);
             this.userControlGallery.Name = "userControlGallery";
@@ -431,8 +418,8 @@
             // 
             // userControlCustom
             // 
-            this.userControlCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.userControlCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlCustom.Location = new System.Drawing.Point(0, 0);
             this.userControlCustom.Name = "userControlCustom";
@@ -452,8 +439,8 @@
             // 
             // userControlSettings
             // 
-            this.userControlSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.userControlSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlSettings.AutoScroll = true;
             this.userControlSettings.Location = new System.Drawing.Point(0, 0);
@@ -475,7 +462,7 @@
             // 
             // userControlProfiles
             // 
-            this.userControlProfiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.userControlProfiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.userControlProfiles.BackColor = System.Drawing.Color.White;
             this.userControlProfiles.Location = new System.Drawing.Point(0, 0);
@@ -496,8 +483,8 @@
             // 
             // userControlNexusMods
             // 
-            this.userControlNexusMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.userControlNexusMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlNexusMods.Location = new System.Drawing.Point(0, 0);
             this.userControlNexusMods.Name = "userControlNexusMods";
@@ -544,9 +531,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPageHome.ResumeLayout(false);
-            this.tabPageHome.PerformLayout();
-            this.panelWhatsNew.ResumeLayout(false);
             this.panelUpdate.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).EndInit();
             this.tabPageTweaks.ResumeLayout(false);
             this.tabPagePipBoy.ResumeLayout(false);
@@ -582,9 +569,6 @@
         private System.Windows.Forms.PictureBox pictureBoxSpinnerCheckForUpdates;
         private System.Windows.Forms.Panel panelUpdate;
         private System.Windows.Forms.PictureBox pictureBoxLoadingGIF;
-        private System.Windows.Forms.RichTextBox richTextBoxWhatsNew;
-        private System.Windows.Forms.Panel panelWhatsNew;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerDownloadRTF;
         private Controls.PictureBoxButton pictureBoxButtonUpdate;
         private System.Windows.Forms.TabPage tabPageTweaks;
         private Forms.FormMain.UserControlTweaks userControlTweaks;
@@ -600,6 +584,8 @@
         private Controls.UserControlHero userControlHero;
         private Forms.FormMain.Tabs.UserControlSettings userControlSettings;
         private Forms.FormMain.Tabs.UserControlNexusMods userControlNexusMods;
+        private System.Windows.Forms.WebBrowser webBrowserWhatsNew;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
