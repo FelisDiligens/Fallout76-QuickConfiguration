@@ -60,7 +60,7 @@
             this.progressBarMods = new System.Windows.Forms.ProgressBar();
             this.buttonModsDeploy = new System.Windows.Forms.Button();
             this.labelModsDeploy = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new Controls.CustomToolTip(this.components);
             this.checkBoxFreezeBundledArchives = new System.Windows.Forms.CheckBox();
             this.checkBoxFreezeArchive = new System.Windows.Forms.CheckBox();
             this.checkBoxModsUseRemoteModNames = new System.Windows.Forms.CheckBox();
@@ -449,12 +449,6 @@
             this.labelModsDeploy.Size = new System.Drawing.Size(38, 13);
             this.labelModsDeploy.TabIndex = 52;
             this.labelModsDeploy.Text = "Ready";
-            // 
-            // toolTip
-            // 
-            this.toolTip.AutoPopDelay = 20000;
-            this.toolTip.InitialDelay = 500;
-            this.toolTip.ReshowDelay = 100;
             // 
             // checkBoxFreezeBundledArchives
             // 
@@ -1803,7 +1797,7 @@
         private System.Windows.Forms.ProgressBar progressBarMods;
         private System.Windows.Forms.Button buttonModsDeploy;
         private System.Windows.Forms.Label labelModsDeploy;
-        public System.Windows.Forms.ToolTip toolTip;
+        public Controls.CustomToolTip toolTip;
         private System.Windows.Forms.OpenFileDialog openFileDialogMod;
         private System.Windows.Forms.CheckBox checkBoxDisableMods;
         private System.Windows.Forms.Panel panel1;

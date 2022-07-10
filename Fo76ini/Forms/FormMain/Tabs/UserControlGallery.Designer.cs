@@ -54,7 +54,7 @@
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new Controls.CustomToolTip(this.components);
             this.panelGalleryOptions.SuspendLayout();
             this.groupBoxScreenshotOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScreenshotIndex)).BeginInit();
@@ -384,6 +384,6 @@
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolTip toolTip;
+        private Controls.CustomToolTip toolTip;
     }
 }

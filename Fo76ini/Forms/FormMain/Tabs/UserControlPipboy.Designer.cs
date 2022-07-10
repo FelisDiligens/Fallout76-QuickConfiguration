@@ -72,7 +72,7 @@
             this.radioButtonQuickboy = new System.Windows.Forms.RadioButton();
             this.radioButtonPipboy = new System.Windows.Forms.RadioButton();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new Controls.CustomToolTip(this.components);
             this.labelPipboyTitle = new System.Windows.Forms.Label();
             this.pipboyPreview = new Fo76ini.Controls.PipboyPreview();
             this.colorPreviewPipboy = new Fo76ini.Controls.ColorPreview();
@@ -860,7 +860,7 @@
         private System.Windows.Forms.RadioButton radioButtonQuickboy;
         private System.Windows.Forms.RadioButton radioButtonPipboy;
         private System.Windows.Forms.ColorDialog colorDialog;
-        private System.Windows.Forms.ToolTip toolTip;
+        private Controls.CustomToolTip toolTip;
         private System.Windows.Forms.Label labelPipboyTitle;
     }
 }

@@ -3847,10 +3847,6 @@
             this.labelTweaksTitle.TabIndex = 71;
             this.labelTweaksTitle.Text = "Tweaks";
             // 
-            // toolTip
-            // 
-            this.toolTip.OwnerDraw = true;
-            // 
             // UserControlTweaks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

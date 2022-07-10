@@ -40,11 +40,11 @@ namespace Fo76ini.Controls
             this.ReshowDelay = 100;
             this.ShowAlways = true;
 
-            this.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            this.Font = new Font("Segoe UI", 9, FontStyle.Regular);
             this.BackColor = Color.White;
             this.ForeColor = Color.Black;
             this.BorderColor = Color.FromArgb(118, 118, 118);
-            this.Padding = new Size(10, 10);
+            this.Padding = new Size(6, 6);
         }
 
         public CustomToolTip() : base()

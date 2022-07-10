@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.backgroundWorkerDownloadLanguages = new System.ComponentModel.BackgroundWorker();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new Controls.CustomToolTip(this.components);
             this.openFileDialogArchiveTwoPath = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
             this.panelPadding = new System.Windows.Forms.Panel();
@@ -80,13 +80,6 @@
             // 
             this.backgroundWorkerDownloadLanguages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDownloadLanguages_DoWork);
             this.backgroundWorkerDownloadLanguages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerDownloadLanguages_RunWorkerCompleted);
-            // 
-            // toolTip
-            // 
-            this.toolTip.AutoPopDelay = 20000;
-            this.toolTip.InitialDelay = 500;
-            this.toolTip.IsBalloon = true;
-            this.toolTip.ReshowDelay = 100;
             // 
             // openFileDialogArchiveTwoPath
             // 
@@ -565,7 +558,7 @@
 
         #endregion
         private System.ComponentModel.BackgroundWorker backgroundWorkerDownloadLanguages;
-        public System.Windows.Forms.ToolTip toolTip;
+        public Controls.CustomToolTip toolTip;
         private System.Windows.Forms.OpenFileDialog openFileDialogArchiveTwoPath;
         private System.Windows.Forms.OpenFileDialog openFileDialogSevenZipPath;
         private System.Windows.Forms.Panel panelPadding;

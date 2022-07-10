@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new Controls.CustomToolTip(this.components);
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorkerLoadGallery = new System.ComponentModel.BackgroundWorker();
@@ -83,13 +83,6 @@
             this.tabPageProfiles.SuspendLayout();
             this.tabPageNexusMods.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolTip
-            // 
-            this.toolTip.AutoPopDelay = 20000;
-            this.toolTip.InitialDelay = 500;
-            this.toolTip.IsBalloon = true;
-            this.toolTip.ReshowDelay = 100;
             // 
             // colorDialog
             // 
@@ -547,7 +540,7 @@
         }
 
         #endregion
-        public System.Windows.Forms.ToolTip toolTip;
+        public Controls.CustomToolTip toolTip;
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.Timer timerCheckFiles;
         private System.Windows.Forms.TabPage tabPageHome;
