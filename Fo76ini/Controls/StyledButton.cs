@@ -151,32 +151,39 @@ namespace Fo76ini.Controls
             //base.OnPaint(e);
 
             // Variables:
-            Rectangle rect = Rectangle.FromLTRB(0, 0, Width, Height);
-            Rectangle BGRect = Rectangle.FromLTRB(
+            Rectangle ButtonRect = Rectangle.FromLTRB(0, 0, Width, Height);
+            Rectangle BorderRect = Rectangle.FromLTRB(0, 0,
+                (int)(Width - BorderWidth),
+                (int)(Height - BorderWidth));
+            Rectangle BackgroundRect = Rectangle.FromLTRB(
                 (int)BorderWidth,
                 (int)BorderWidth,
                 (int)(Width - BorderWidth),
                 (int)(Height - BorderWidth));
 
-            e.Graphics.FillRectangle(new SolidBrush(Color.White), rect);
-
-            // Draw border:
-            if (_mouseDown)
-                e.Graphics.FillRectangle(new SolidBrush(BorderMouseDownColor), rect);
-            else if (_mouseOver)
-                e.Graphics.FillRectangle(new SolidBrush(BorderMouseOverColor), rect);
-            else
-                e.Graphics.FillRectangle(new SolidBrush(BorderColor), rect);
+            // Reset our canvas:
+            e.Graphics.FillRectangle(new SolidBrush(Color.White), ButtonRect); // this.Parent.BackColor ?
 
             // Draw background:
             if (Highlight)
-                e.Graphics.FillRectangle(new SolidBrush(HighlightBackColor), BGRect);
+                e.Graphics.FillRectangle(new SolidBrush(HighlightBackColor), BackgroundRect);
             else if (_mouseDown)
-                e.Graphics.FillRectangle(new SolidBrush(MouseDownBackColor), BGRect);
+                e.Graphics.FillRectangle(new SolidBrush(MouseDownBackColor), BackgroundRect);
             else if (_mouseOver)
-                e.Graphics.FillRectangle(new SolidBrush(MouseOverBackColor), BGRect);
+                e.Graphics.FillRectangle(new SolidBrush(MouseOverBackColor), BackgroundRect);
             else
-                e.Graphics.FillRectangle(new SolidBrush(BackColor), BGRect);
+                e.Graphics.FillRectangle(new SolidBrush(BackColor), BackgroundRect);
+
+            // Draw border:
+            if (BorderWidth >= 1)
+            {
+                if (_mouseDown)
+                    e.Graphics.DrawRectangle(new Pen(new SolidBrush(BorderMouseDownColor), BorderWidth), BorderRect);
+                else if (_mouseOver)
+                    e.Graphics.DrawRectangle(new Pen(new SolidBrush(BorderMouseOverColor), BorderWidth), BorderRect);
+                else
+                    e.Graphics.DrawRectangle(new Pen(new SolidBrush(BorderColor), BorderWidth), BorderRect);
+            }
 
             // Draw "Highlight" ribbon:
             if (Highlight)
