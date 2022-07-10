@@ -17,6 +17,15 @@
         T DefaultValue { get; }
     }
 
+    public enum WarnLevel
+    {
+        None,           // Nothing to inform about. Tweak works as it should.
+        Notice,         // There is a notice that might be worth reading about.
+        Experimental,   // Experimental tweak, might not work.
+        Warning,        // Generally usuable but might have side effects.
+        Dangerous       // Has severe side effects such as crashing or severe graphical glitches.
+    }
+
     /// <summary>
     /// Stores info about an *.ini tweak.
     /// </summary>
@@ -29,6 +38,8 @@
         string AffectedFiles { get; }
 
         string AffectedValues { get; }
+
+        WarnLevel WarnLevel { get; }
     }
 
     /// <summary>
