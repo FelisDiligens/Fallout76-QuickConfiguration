@@ -285,6 +285,8 @@
             this.labelTweaksDesc = new System.Windows.Forms.Label();
             this.labelTweaksTitle = new System.Windows.Forms.Label();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
+            this.tabPageTweaksInfo = new System.Windows.Forms.TabPage();
+            this.webBrowserTweaksInfo = new System.Windows.Forms.WebBrowser();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxLoading.SuspendLayout();
@@ -401,6 +403,7 @@
             this.tabPageLogin.SuspendLayout();
             this.groupBoxLoginProfiles.SuspendLayout();
             this.groupBoxLogin.SuspendLayout();
+            this.tabPageTweaksInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -408,6 +411,7 @@
             this.tabControlTweaks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControlTweaks.Controls.Add(this.tabPageTweaksInfo);
             this.tabControlTweaks.Controls.Add(this.tabPageGeneral);
             this.tabControlTweaks.Controls.Add(this.tabPageVideo);
             this.tabControlTweaks.Controls.Add(this.tabPageAudio);
@@ -3859,6 +3863,28 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
+            // tabPageTweaksInfo
+            // 
+            this.tabPageTweaksInfo.Controls.Add(this.webBrowserTweaksInfo);
+            this.tabPageTweaksInfo.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTweaksInfo.Name = "tabPageTweaksInfo";
+            this.tabPageTweaksInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTweaksInfo.Size = new System.Drawing.Size(654, 476);
+            this.tabPageTweaksInfo.TabIndex = 6;
+            this.tabPageTweaksInfo.Text = "Info";
+            this.tabPageTweaksInfo.UseVisualStyleBackColor = true;
+            // 
+            // webBrowserTweaksInfo
+            // 
+            this.webBrowserTweaksInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowserTweaksInfo.Location = new System.Drawing.Point(0, 0);
+            this.webBrowserTweaksInfo.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserTweaksInfo.Name = "webBrowserTweaksInfo";
+            this.webBrowserTweaksInfo.Size = new System.Drawing.Size(654, 476);
+            this.webBrowserTweaksInfo.TabIndex = 1;
+            // 
             // UserControlTweaks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4016,6 +4042,7 @@
             this.groupBoxLoginProfiles.PerformLayout();
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
+            this.tabPageTweaksInfo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4278,5 +4305,7 @@
         private System.Windows.Forms.Label labelfOverShoulderPosZ;
         private System.Windows.Forms.TrackBar trackBarfOverShoulderPosZ;
         private Controls.CustomToolTip toolTip;
+        private System.Windows.Forms.TabPage tabPageTweaksInfo;
+        private System.Windows.Forms.WebBrowser webBrowserTweaksInfo;
     }
 }

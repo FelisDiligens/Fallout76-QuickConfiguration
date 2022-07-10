@@ -220,6 +220,76 @@ namespace Fo76ini.Forms.FormMain
 
             #endregion
 
+            /*
+             * HTML info
+             */
+
+            #region
+
+            this.webBrowserTweaksInfo.DocumentText = @"
+<style>
+* { font-family: ""Microsoft Sans Serif"" }
+h1 { font-size: 14pt; }
+h2 { font-size: 12pt; }
+p, td, th { font-size: 10pt; }
+table, tr, td, th { border-collapse: collapse; border: 1px solid gray; }
+td, th { padding: 10px; }
+.no-warn { color: black; font-weight: bold; }
+.notice { color: blue; font-weight: bold; }
+.warn { color: #AAAA00; font-weight: bold; }
+.unsafe { color: red; font-weight: bold; }
+</style>
+<h1>Information about tweaks</h1>
+<h2>Tool tips</h2>
+<p>
+All tweaks have a tool tip which shows what it does and which *.ini values it changes.<br>
+You can hover your cursor over an option to display said tool tip.
+</p>
+<h2>Color-code</h2>
+<p>
+Some tweaks might be problematic or have side effects which is why I color-coded them:
+</p>
+<p>
+<table>
+<tr>
+<th>Color</th>
+<th>Meaning</th>
+</tr>
+<tr>
+<td class=""no-warn"">Black</td>
+<td>Nothing to inform about really. Tweak works as it should.</td>
+</tr>
+<tr>
+<td class=""notice"">Blue</td>
+<td>There is a notice that might be worth reading about.</td>
+</tr>
+<tr>
+<td class=""warn"">Yellow</td>
+<td>Generally usuable but might have side effects. Please read the warning.</td>
+</tr>
+<tr>
+<td class=""unsafe"">Red</td>
+<td>Unsafe: Has severe side effects such as crashing or severe graphical glitches.</td>
+</tr>
+<!--
+Black:   Nothing to inform about. Tweak works as it should.
+Blue:    There is a notice that might be worth reading about.
+Yellow:  Generally usuable but might have side effects.
+Red:     Has severe side effects such as crashing or severe graphical glitches.
+-->
+</table>
+</p>
+<h2>Unsafe tweaks</h2>
+<p>
+Previously, I left out unsafe tweaks.<br>
+But I felt like including them, so you all can experiment with them.<br>
+However, there might be some very severe side effects to them, so please read the descriptions of colored tweaks.<br>
+Thanks! 🙂
+</p>
+";
+
+            #endregion
+
             // Link tweaks
             LinkInfo();
             LinkSliders();

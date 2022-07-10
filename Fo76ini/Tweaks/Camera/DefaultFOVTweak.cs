@@ -10,7 +10,7 @@ namespace Fo76ini.Tweaks.Camera
     {
         public string Description => "⚠️ Causes issues with the GUI.";
 
-        public WarnLevel WarnLevel => WarnLevel.Dangerous;
+        public WarnLevel WarnLevel => WarnLevel.Unsafe;
 
         public string AffectedFiles => "Fallout76Custom.ini";
 

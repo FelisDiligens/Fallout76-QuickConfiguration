@@ -23,7 +23,7 @@
         Notice,         // There is a notice that might be worth reading about.
         Experimental,   // Experimental tweak, might not work.
         Warning,        // Generally usuable but might have side effects.
-        Dangerous       // Has severe side effects such as crashing or severe graphical glitches.
+        Unsafe          // Has severe side effects such as crashing or severe graphical glitches.
     }
 
     /// <summary>

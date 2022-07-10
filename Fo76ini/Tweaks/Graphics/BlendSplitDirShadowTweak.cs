@@ -12,7 +12,7 @@ namespace Fo76ini.Tweaks.Graphics
             "Distance at which the game will transition to lower-res a shadow \"segment\".\n" +
             "MUST be a multiple of 12.";
 
-        public WarnLevel WarnLevel => WarnLevel.Dangerous;
+        public WarnLevel WarnLevel => WarnLevel.Unsafe;
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 

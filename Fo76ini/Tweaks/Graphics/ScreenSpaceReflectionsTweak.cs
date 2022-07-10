@@ -12,7 +12,7 @@ namespace Fo76ini.Tweaks.Graphics
             "Enables/disables screen space reflections.\n" +
             "⚠️ Will make water disappear or become pitch black!";
 
-        public WarnLevel WarnLevel => WarnLevel.Dangerous;
+        public WarnLevel WarnLevel => WarnLevel.Unsafe;
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 

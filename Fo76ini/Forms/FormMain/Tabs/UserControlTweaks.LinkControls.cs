@@ -152,6 +152,13 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(sliderAudiofVal4, toolTip, val4Tweak);
             LinkedTweaks.LinkInfo(sliderAudiofVal5, toolTip, val5Tweak);
             LinkedTweaks.LinkInfo(sliderAudiofVal6, toolTip, val6Tweak);
+            LinkedTweaks.LinkInfo(labelAudiofVal0, toolTip, val0Tweak);
+            LinkedTweaks.LinkInfo(labelAudiofVal1, toolTip, val1Tweak);
+            LinkedTweaks.LinkInfo(labelAudiofVal2, toolTip, val2Tweak);
+            LinkedTweaks.LinkInfo(labelAudiofVal3, toolTip, val3Tweak);
+            LinkedTweaks.LinkInfo(labelAudiofVal4, toolTip, val4Tweak);
+            LinkedTweaks.LinkInfo(labelAudiofVal5, toolTip, val5Tweak);
+            LinkedTweaks.LinkInfo(labelAudiofVal6, toolTip, val6Tweak);
 
             // Controls tab
             LinkedTweaks.LinkInfo(numMouseSensitivity, toolTip, mouseSensitivityTweak);

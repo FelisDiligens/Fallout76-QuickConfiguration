@@ -109,6 +109,20 @@ namespace Fo76ini.Tweaks
             string description = info.Description;
             TranslatedDescriptions.TryGetValue(info.Identifier, out description);
             linkedControl.Tip.SetToolTip(linkedControl.Control, BuildToolTipText(description, info.AffectedFiles, info.AffectedValues));
+
+            switch (info.WarnLevel)
+            {
+                case WarnLevel.Notice:
+                case WarnLevel.Experimental:
+                    linkedControl.Control.ForeColor = Color.Blue;
+                    break;
+                case WarnLevel.Warning:
+                    linkedControl.Control.ForeColor = Color.Tomato;
+                    break;
+                case WarnLevel.Unsafe:
+                    linkedControl.Control.ForeColor = Color.Red;
+                    break;
+            }
         }
 
         /// <summary>
