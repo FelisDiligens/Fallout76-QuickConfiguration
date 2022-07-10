@@ -24,23 +24,33 @@ namespace Fo76ini.Controls
         [AmbientValue(false)]
         [Category("Appearance")]
         [Description("Background color when mouse isn't touching the button.")]
-        [DefaultValue(typeof(Color), "75, 75, 75")]
+        [DefaultValue(typeof(Color), "225, 225, 225")]
         public override Color BackColor { get; set; }
 
         [Category("Appearance")]
         [Description("Background color when mouse is hovering over button.")]
-        [DefaultValue(typeof(Color), "220, 180, 42")]
+        [DefaultValue(typeof(Color), "229, 241, 251")]
         public Color MouseOverBackColor { get; set; }
 
         [Category("Appearance")]
         [Description("Background color when mouse is clicking on button.")]
-        [DefaultValue(typeof(Color), "250, 210, 72")]
+        [DefaultValue(typeof(Color), "204, 228, 247")]
         public Color MouseDownBackColor { get; set; }
 
         [Category("Appearance")]
         [Description("The color of the border, if used.")]
-        [DefaultValue(typeof(Color), "0, 0, 0")]
+        [DefaultValue(typeof(Color), "173, 173, 173")]
         public Color BorderColor { get; set; }
+
+        [Category("Appearance")]
+        [Description("The color of the border, if used and when mouse is hovering over button")]
+        [DefaultValue(typeof(Color), "0, 120, 215")]
+        public Color BorderMouseOverColor { get; set; }
+
+        [Category("Appearance")]
+        [Description("The color of the border, if used and when mouse is clicking on button")]
+        [DefaultValue(typeof(Color), "0, 84, 153")]
+        public Color BorderMouseDownColor { get; set; }
 
         /*[Category("Appearance")]
         [Description("Rounded corners. Default is 0 px.")]
@@ -48,9 +58,9 @@ namespace Fo76ini.Controls
         public int BorderRadius { get; set; }*/
 
         [Category("Appearance")]
-        [Description("How wide is the border? Set to 0 to not draw a border.")]
-        [DefaultValue(0)]
-        public int BorderWidth { get; set; }
+        [Description("How wide is the border in pixels? Set to 0 to not draw a border.")]
+        [DefaultValue(1)]
+        public uint BorderWidth { get; set; }
 
         [Category("Appearance")]
         [Description("When 'Highlight' is set to true, the button will have a left 'ribbon' with this color.")]
@@ -95,11 +105,13 @@ namespace Fo76ini.Controls
         {
             // Set property defaults:
             ForeColor = Color.Black;
-            BackColor = Color.FromArgb(75, 75, 75);
-            MouseOverBackColor = Color.FromArgb(220, 180, 42);
-            MouseDownBackColor = Color.FromArgb(250, 210, 72);
-            BorderColor = Color.FromArgb(0, 0, 0);
-            BorderWidth = 0;
+            BackColor = Color.FromArgb(225, 225, 225);
+            MouseOverBackColor = Color.FromArgb(229, 241, 251);
+            MouseDownBackColor = Color.FromArgb(204, 228, 247);
+            BorderColor = Color.FromArgb(173, 173, 173);
+            BorderMouseOverColor = Color.FromArgb(0, 120, 215);
+            BorderMouseDownColor = Color.FromArgb(0, 84, 153);
+            BorderWidth = 1;
             //BorderRadius = 0;
             HighlightRibbonColor = Color.FromArgb(220, 180, 42);
             HighlightBackColor = Color.Silver;
@@ -141,15 +153,20 @@ namespace Fo76ini.Controls
             // Variables:
             Rectangle rect = Rectangle.FromLTRB(0, 0, Width, Height);
             Rectangle BGRect = Rectangle.FromLTRB(
-                BorderWidth,
-                BorderWidth,
-                Width - BorderWidth,
-                Height - BorderWidth);
+                (int)BorderWidth,
+                (int)BorderWidth,
+                (int)(Width - BorderWidth),
+                (int)(Height - BorderWidth));
 
             e.Graphics.FillRectangle(new SolidBrush(Color.White), rect);
 
             // Draw border:
-            e.Graphics.FillRectangle(new SolidBrush(BorderColor), rect);
+            if (_mouseDown)
+                e.Graphics.FillRectangle(new SolidBrush(BorderMouseDownColor), rect);
+            else if (_mouseOver)
+                e.Graphics.FillRectangle(new SolidBrush(BorderMouseOverColor), rect);
+            else
+                e.Graphics.FillRectangle(new SolidBrush(BorderColor), rect);
 
             // Draw background:
             if (Highlight)

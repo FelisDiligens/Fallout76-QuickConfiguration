@@ -250,6 +250,7 @@
             // 
             this.buttonNexusMods.BackColor = System.Drawing.SystemColors.Control;
             this.buttonNexusMods.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonNexusMods.BorderWidth = ((uint)(0u));
             this.buttonNexusMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNexusMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNexusMods.ForeColor = System.Drawing.Color.Black;
@@ -273,6 +274,7 @@
             // 
             this.buttonCustom.BackColor = System.Drawing.SystemColors.Control;
             this.buttonCustom.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonCustom.BorderWidth = ((uint)(0u));
             this.buttonCustom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCustom.ForeColor = System.Drawing.Color.Black;
@@ -296,6 +298,7 @@
             // 
             this.buttonProfile.BackColor = System.Drawing.SystemColors.Control;
             this.buttonProfile.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonProfile.BorderWidth = ((uint)(0u));
             this.buttonProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonProfile.ForeColor = System.Drawing.Color.Black;
@@ -319,6 +322,7 @@
             // 
             this.buttonHome.BackColor = System.Drawing.SystemColors.Control;
             this.buttonHome.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonHome.BorderWidth = ((uint)(0u));
             this.buttonHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHome.ForeColor = System.Drawing.Color.Black;
@@ -342,6 +346,7 @@
             // 
             this.buttonGallery.BackColor = System.Drawing.SystemColors.Control;
             this.buttonGallery.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonGallery.BorderWidth = ((uint)(0u));
             this.buttonGallery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGallery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGallery.ForeColor = System.Drawing.Color.Black;
@@ -365,6 +370,7 @@
             // 
             this.buttonPipboy.BackColor = System.Drawing.SystemColors.Control;
             this.buttonPipboy.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonPipboy.BorderWidth = ((uint)(0u));
             this.buttonPipboy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPipboy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPipboy.ForeColor = System.Drawing.Color.Black;
@@ -388,6 +394,7 @@
             // 
             this.buttonTweaks.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTweaks.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonTweaks.BorderWidth = ((uint)(0u));
             this.buttonTweaks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTweaks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTweaks.ForeColor = System.Drawing.Color.Black;
@@ -411,6 +418,7 @@
             // 
             this.buttonBrowse.BackColor = System.Drawing.SystemColors.Control;
             this.buttonBrowse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonBrowse.BorderWidth = ((uint)(0u));
             this.buttonBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBrowse.ForeColor = System.Drawing.Color.Black;
@@ -434,6 +442,7 @@
             // 
             this.buttonSettings.BackColor = System.Drawing.SystemColors.Control;
             this.buttonSettings.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonSettings.BorderWidth = ((uint)(0u));
             this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSettings.ForeColor = System.Drawing.Color.Black;
@@ -457,6 +466,7 @@
             // 
             this.buttonMods.BackColor = System.Drawing.SystemColors.Control;
             this.buttonMods.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonMods.BorderWidth = ((uint)(0u));
             this.buttonMods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMods.ForeColor = System.Drawing.Color.Black;
@@ -480,6 +490,7 @@
             // 
             this.buttonUpdate.BackColor = System.Drawing.SystemColors.Control;
             this.buttonUpdate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonUpdate.BorderWidth = ((uint)(0u));
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUpdate.ForeColor = System.Drawing.Color.Black;
@@ -503,6 +514,7 @@
             // 
             this.buttonApply.BackColor = System.Drawing.SystemColors.Control;
             this.buttonApply.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonApply.BorderWidth = ((uint)(0u));
             this.buttonApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonApply.ForeColor = System.Drawing.Color.Black;
@@ -526,6 +538,7 @@
             // 
             this.buttonPlay.BackColor = System.Drawing.SystemColors.Control;
             this.buttonPlay.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonPlay.BorderWidth = ((uint)(0u));
             this.buttonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPlay.ForeColor = System.Drawing.Color.Black;

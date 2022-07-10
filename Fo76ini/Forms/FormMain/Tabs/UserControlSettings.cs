@@ -54,14 +54,23 @@ namespace Fo76ini.Forms.FormMain.Tabs
             if (this.DesignMode)
                 return;
 
+            UpdatingUI = true;
+
             // Nuclear Winter:
             UpdateNWModeUI(false);
 
             // Load tweaks:
             LinkedTweaks.LoadValues();
 
-            // Associate with NXM links checkbox:
+            // "Associate with NXM links" checkbox:
             this.checkBoxHandleNXMLinks.Checked = NXMHandler.IsRegistered();
+
+            // Path textboxes
+            this.textBoxArchiveTwoPath.Text = Configuration.Archive2Path;
+            this.textBoxSevenZipPath.Text = Configuration.SevenZipPath;
+            this.textBoxDownloadsPath.Text = Configuration.DownloadPath;
+
+            UpdatingUI = false;
         }
 
         #region Translations

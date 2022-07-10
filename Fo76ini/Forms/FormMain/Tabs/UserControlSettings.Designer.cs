@@ -71,8 +71,8 @@
             this.textBoxDownloadsPath = new System.Windows.Forms.TextBox();
             this.checkBoxNWAutoDeployMods = new System.Windows.Forms.CheckBox();
             this.labelSettingsNuclearWinterOptions = new System.Windows.Forms.Label();
-            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.labelToggleNW = new System.Windows.Forms.Label();
+            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
             this.SuspendLayout();
             // 
@@ -482,26 +482,6 @@
             this.labelSettingsNuclearWinterOptions.TabIndex = 80;
             this.labelSettingsNuclearWinterOptions.Text = "Nuclear Winter options (deprecated)";
             // 
-            // buttonNWMode
-            // 
-            this.buttonNWMode.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.buttonNWMode.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.buttonNWMode.BorderWidth = 1;
-            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
-            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.Location = new System.Drawing.Point(17, 719);
-            this.buttonNWMode.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonNWMode.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonNWMode.Name = "buttonNWMode";
-            this.buttonNWMode.Padding = 10;
-            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
-            this.buttonNWMode.TabIndex = 26;
-            this.buttonNWMode.Text = "Nuclear Winter";
-            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.UseVisualStyleBackColor = true;
-            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
-            // 
             // labelToggleNW
             // 
             this.labelToggleNW.AutoSize = true;
@@ -511,6 +491,23 @@
             this.labelToggleNW.Size = new System.Drawing.Size(80, 15);
             this.labelToggleNW.TabIndex = 27;
             this.labelToggleNW.Text = "Toggle mode:";
+            // 
+            // buttonNWMode
+            // 
+            this.buttonNWMode.BorderWidth = ((uint)(1u));
+            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonNWMode.Highlight = false;
+            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
+            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.Location = new System.Drawing.Point(17, 719);
+            this.buttonNWMode.Name = "buttonNWMode";
+            this.buttonNWMode.Padding = 10;
+            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
+            this.buttonNWMode.TabIndex = 26;
+            this.buttonNWMode.Text = "Nuclear Winter";
+            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.UseVisualStyleBackColor = true;
+            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
             // 
             // UserControlSettings
             // 
@@ -558,7 +555,7 @@
             this.Controls.Add(this.labelLanguage);
             this.Controls.Add(this.comboBoxLanguage);
             this.Name = "UserControlSettings";
-            this.Size = new System.Drawing.Size(598, 600);
+            this.Size = new System.Drawing.Size(513, 600);
             this.Load += new System.EventHandler(this.UserControlSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).EndInit();
             this.ResumeLayout(false);
