@@ -12,6 +12,8 @@ namespace Fo76ini.Tweaks.Video
             "Enabling this, will keep the game's window in the foreground.\n" +
             "⚠️ This will prevent you from being able to Alt+Tab on single monitors.";
 
+        public WarnLevel WarnLevel => WarnLevel.Warning;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "[Display]bTopMostWindow";

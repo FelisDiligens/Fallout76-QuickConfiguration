@@ -11,6 +11,8 @@ namespace Fo76ini.Tweaks.Video
     {
         public string Description => "Display resolution";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "[Display]iSize W, [Display]iSize H";

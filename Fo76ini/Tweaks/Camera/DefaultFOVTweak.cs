@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Camera
     {
         public string Description => "⚠️ Causes issues with the GUI.";
 
+        public WarnLevel WarnLevel => WarnLevel.Dangerous;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Camera]fDefaultFOV";

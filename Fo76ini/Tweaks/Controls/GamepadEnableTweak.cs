@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Controls
     {
         public string Description => "Disable this, if you have a gamepad plugged in, but want to use your keyboard and mouse instead.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "[General]bGamepadEnable";

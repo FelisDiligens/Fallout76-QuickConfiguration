@@ -16,6 +16,8 @@ namespace Fo76ini.Tweaks.General
             "⚠️ If the values are set too low or 0, the game will be stuck in a black screen after loading.\n" +
             "(Values used by the tweak: fFadeToBlackFadeSeconds=0.2000 and fMinSecondsForLoadFadeIn=0.3000)";
 
+        public WarnLevel WarnLevel => WarnLevel.Warning;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Interface]fFadeToBlackFadeSeconds, [Interface]fMinSecondsForLoadFadeIn";

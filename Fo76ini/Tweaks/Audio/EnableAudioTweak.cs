@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Audio
     {
         public string Description => "If disabled, the game will be completely silent.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Audio]bEnableAudio";

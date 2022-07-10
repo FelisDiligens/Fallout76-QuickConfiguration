@@ -12,6 +12,8 @@ namespace Fo76ini.Tweaks.Colors
 
         public string Description => "Changes the color of the Pipboy";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => String.Join(

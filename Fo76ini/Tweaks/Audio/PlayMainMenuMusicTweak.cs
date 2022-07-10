@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Audio
     {
         public string Description => "If unchecked, the game won't play background music in the main menu.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[General]bPlayMainMenuMusic";

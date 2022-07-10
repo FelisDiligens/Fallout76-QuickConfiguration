@@ -67,6 +67,8 @@ namespace Fo76ini.Tweaks
             public string AffectedFiles => "";
 
             public string AffectedValues => "";
+
+            public WarnLevel WarnLevel => WarnLevel.None;
         }
 
         /// <summary>

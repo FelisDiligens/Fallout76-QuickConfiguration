@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.General
     {
         public string Description => "Enabling this, will skip the login prompt if you provide your login credentials.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Login]bAutoSignin";

@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description => "Resolution of shadows. Higher settings will make shadows more detailed.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "[Display]iShadowMapResolution";

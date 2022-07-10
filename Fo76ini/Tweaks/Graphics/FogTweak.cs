@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description => "";
 
+        public WarnLevel WarnLevel => WarnLevel.Experimental;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "[Weather]bFogEnabled";

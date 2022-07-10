@@ -11,6 +11,8 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description => "Disabling this will disable all Depth of Field effects.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => String.Join(

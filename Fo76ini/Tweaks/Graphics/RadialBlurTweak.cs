@@ -12,6 +12,8 @@ namespace Fo76ini.Tweaks.Graphics
             "Blurs the screen when the player is hurt (e.g. hit by bullets) or under water.\n" +
             "⚠️ Disabling this might result in a clear view underwater.";
 
+        public WarnLevel WarnLevel => WarnLevel.Warning;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[ImageSpace]bDoRadialBlur";

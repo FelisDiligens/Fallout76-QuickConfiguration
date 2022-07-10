@@ -155,7 +155,7 @@ namespace Fo76ini.Forms.FormMain
                 this.comboBoxAntiAliasing,
                 new string[] {
                     "TAA (default)",
-                    "FXAA",
+                    //"FXAA",
                     "Disabled"
                 }
             ));

@@ -17,6 +17,8 @@ namespace Fo76ini.Tweaks.Interface
             "",
             "⚠️ Mostly untested.");
 
+        public WarnLevel WarnLevel => WarnLevel.Notice;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => String.Join(

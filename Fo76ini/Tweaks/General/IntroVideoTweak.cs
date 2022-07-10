@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.General
     {
         public string Description => "When this option is enabled, the game will start without displaying the Bethesda logo video.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[General]sIntroSequence, [General]uMainMenuDelayBeforeAllowSkip";

@@ -24,11 +24,18 @@ namespace Fo76ini.Tweaks.Video
             "• Windowed: Starts the game in a window with border (aka. window decoration).",
             "• Borderless windowed: Allows you to painlessly Alt+Tab, but make sure the resolution matches your display's resolution. (Default)",
             "• Borderless windowed (Fullscreen): Same as \"Borderless windowed\", but window will be maximized to fit your screen.",
-            "This will look pixelated, if the resolution is lower than your display, as it uses Nearest Neighbor to upscale it.");
+            "  This will look pixelated, if the resolution is lower than your display, as it uses Nearest Neighbor to upscale it.");
+
+        public WarnLevel WarnLevel => WarnLevel.None;
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 
-        public string AffectedValues => "[Display]bFull Screen, [Display]bBorderless, [Display]bMaximizeWindow";
+        public string AffectedValues => String.Join(
+            Environment.NewLine,
+            "[Display]",
+            "bFull Screen",
+            "bBorderless",
+            "bMaximizeWindow");
 
         public DisplayMode DefaultValue => DisplayMode.BorderlessWindowed;
 

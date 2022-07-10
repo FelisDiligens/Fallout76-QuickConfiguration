@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Camera
     {
         public string Description => "";
 
+        public WarnLevel WarnLevel => WarnLevel.Experimental;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Camera]fOverShoulderPosZ";

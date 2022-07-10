@@ -12,6 +12,8 @@ namespace Fo76ini.Tweaks.Colors
 
         public string Description => "Changes the color of the Quickboy";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => String.Join(

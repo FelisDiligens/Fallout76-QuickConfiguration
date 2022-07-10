@@ -14,6 +14,8 @@ namespace Fo76ini.Tweaks.Graphics
             "Default: 0.21",
             "Recommended: 0.4");
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Display]fTAAPostSharpen";

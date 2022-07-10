@@ -8,7 +8,9 @@ namespace Fo76ini.Tweaks.Graphics
 {
     class VolumetricLightingTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "Also called God rays / Light shafts";
+
+        public WarnLevel WarnLevel => WarnLevel.None;
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 

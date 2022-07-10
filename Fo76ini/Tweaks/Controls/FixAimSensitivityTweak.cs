@@ -16,6 +16,8 @@ namespace Fo76ini.Tweaks.Controls
             "⚠️ This might only work on 16:9 monitors.",
             "⚠️ This might not work in-game while crouching.");
 
+        public WarnLevel WarnLevel => WarnLevel.Notice;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "fIronSightsFOVRotateMult";

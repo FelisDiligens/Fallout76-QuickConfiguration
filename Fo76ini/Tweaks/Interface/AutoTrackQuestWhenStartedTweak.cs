@@ -34,6 +34,8 @@ namespace Fo76ini.Tweaks.Interface
 
         public string Description => $"If enabled, automatically tracks newly added '{this.QuestType}' quests.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => $"[MAIN]bEnableQuestAutoTrack{this.KeyPrefix}";

@@ -16,6 +16,8 @@ namespace Fo76ini.Tweaks.Camera
             "",
             "⚠️ Might cause issues if disabled.");
 
+        public WarnLevel WarnLevel => WarnLevel.Warning;
+
         public string AffectedFiles => "\n - Fallout76Prefs.ini\n - Fallout76Custom.ini";
 
         public string AffectedValues => "[Camera]bApplyCameraNodeAnimations";

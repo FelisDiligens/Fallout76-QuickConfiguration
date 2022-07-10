@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Camera
     {
         public string Description => "By how much the camera gets zoomed out when you look at the ground in 3rd person.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Camera]fPitchZoomOutMaxDist";

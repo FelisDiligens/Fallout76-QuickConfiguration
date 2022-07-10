@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.General
     {
         public string Description => "If enabled, the game won't bother you with news on startup.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[General]bSkipSplash";

@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Video
     {
         public string Description => "Disable this, if you want the game to pause if another window is in front.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Interface]bAlwaysActive";

@@ -13,6 +13,8 @@ namespace Fo76ini.Tweaks.Graphics
             "Sharpens the image.",
             "Default: 0.21");
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Display]fTAAPostOverlay";

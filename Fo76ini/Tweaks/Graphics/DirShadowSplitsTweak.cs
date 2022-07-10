@@ -12,6 +12,8 @@ namespace Fo76ini.Tweaks.Graphics
             "Amount of \"segments\" of lower-res shadows at a distance.\n" +
             "A value of 1 forces the game to render only the lowest resolution shadows.";
 
+        public WarnLevel WarnLevel => WarnLevel.Dangerous;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "[Display]iDirShadowSplits";

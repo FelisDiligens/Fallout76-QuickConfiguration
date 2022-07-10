@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description => "Reduces aliasing of textures when viewed from oblique angles.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "[Display]iMaxAnisotropy";

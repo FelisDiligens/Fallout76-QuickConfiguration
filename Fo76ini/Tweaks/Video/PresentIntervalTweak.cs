@@ -31,6 +31,8 @@ namespace Fo76ini.Tweaks.Video
             "as this has been fixed by Bethesda quite a while ago (in 2018).",
             "Capping it to 60 is recommended nonetheless.");
 
+        public WarnLevel WarnLevel => WarnLevel.Notice;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "[Display]iPresentInterval";

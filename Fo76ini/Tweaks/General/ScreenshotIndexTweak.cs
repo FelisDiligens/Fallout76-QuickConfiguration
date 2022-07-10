@@ -13,6 +13,8 @@ namespace Fo76ini.Tweaks.General
             "it saves them in the game directory as \"ScreenShotX.png\".\n" + 
             "The \"X\" being the screenshot index.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "[Display]iScreenShotIndex";

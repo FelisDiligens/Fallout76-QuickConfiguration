@@ -9,7 +9,7 @@ namespace Fo76ini.Tweaks.Graphics
     public enum AntiAliasing
     {
         TAA = 0,
-        FXAA = 1,
+        //FXAA = 1,
         Disabled = 2
     }
 
@@ -20,10 +20,12 @@ namespace Fo76ini.Tweaks.Graphics
             "Smoothes edges of objects.",
             "",
             "• TAA - Temporal Anti-Aliasing: Relatively expensive, can introduce artefacts, default",
-            "• FXAA - Fast Approximate Anti-Aliasing: Slightly improves performance",
-            "• Off - Improves performance, degrades visual quality",
+            /*"• FXAA - Fast Approximate Anti-Aliasing: Slightly improves performance",*/
+            "• Off - Improves performance, degrades visual quality"/*,
             "",
-            "⚠️ FXAA might not work. The game might just disable AA instead.");
+            "⚠️ FXAA might not work. The game might just disable AA instead."*/);
+
+        public WarnLevel WarnLevel => WarnLevel.None;
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 
@@ -43,7 +45,7 @@ namespace Fo76ini.Tweaks.Graphics
                 case "TAA":
                     return AntiAliasing.TAA;
                 case "FXAA":
-                    return AntiAliasing.FXAA;
+                    //return AntiAliasing.FXAA;
                 case "Disabled":
                 case "0":
                 case "":
@@ -60,9 +62,9 @@ namespace Fo76ini.Tweaks.Graphics
                 case AntiAliasing.TAA:
                     IniFiles.F76Prefs.Set("Display", "sAntiAliasing", "TAA");
                     break;
-                case AntiAliasing.FXAA:
+                /*case AntiAliasing.FXAA:
                     IniFiles.F76Prefs.Set("Display", "sAntiAliasing", "FXAA");
-                    break;
+                    break;*/
                 case AntiAliasing.Disabled:
                     IniFiles.F76Prefs.Set("Display", "sAntiAliasing", "");
                     break;

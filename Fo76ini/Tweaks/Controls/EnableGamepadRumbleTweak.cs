@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Controls
     {
         public string Description => "";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Controls]bGamePadRumble";

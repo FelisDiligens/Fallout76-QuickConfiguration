@@ -12,6 +12,8 @@ namespace Fo76ini.Tweaks.Camera
             "When enabled, the camera will spin around the character after no input was given for a certain amount of time.\n" +
             "⚠️ Not sure if it does anything. I stood around for 5 minutes and the camera didn't spin. Needs more testing.";
 
+        public WarnLevel WarnLevel => WarnLevel.Experimental;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Camera]bDisableAutoVanityMode";

@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Controls
     {
         public string Description => "ℹ️ This option might not have any effect.";
 
+        public WarnLevel WarnLevel => WarnLevel.Experimental;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Controls]bMouseAcceleration";

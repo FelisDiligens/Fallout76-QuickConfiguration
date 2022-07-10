@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description => "Blurs shadows. Especially useful, if you set a lower shadow resolution.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "[Display]uiOrthoShadowFilter";

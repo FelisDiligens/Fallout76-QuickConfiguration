@@ -18,6 +18,8 @@ namespace Fo76ini.Tweaks.Audio
     {
         public string Description => "";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "[Voice]uTransmitPreference";

@@ -17,7 +17,11 @@ namespace Fo76ini.Tweaks.Volume
         private string Suffix;
         private string SoundFX;
 
-        public string Description => $"Changes the volume of '{SoundFX}'";
+        public string Description => 
+            $"Changes the volume of '{SoundFX}'\n" +
+            $"ℹ️ It might not change the correct volume.";
+
+        public WarnLevel WarnLevel => WarnLevel.Notice;
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 

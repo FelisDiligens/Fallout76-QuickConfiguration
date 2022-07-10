@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Camera
     {
         public string Description => "Changes the field of view of the 3rd person perspective while aiming.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[Camera]f3rdPersonAimFOV";

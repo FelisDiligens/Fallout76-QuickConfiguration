@@ -6,6 +6,8 @@
 
         public string Description => "Enables/Disables Steam integration. Disable it to use your Bethesda.net account.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "[General]bSteamEnabled";

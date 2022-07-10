@@ -25,6 +25,8 @@ namespace Fo76ini.Tweaks.Controls
             "      ⇨ For 21:9, the value of Y is 0.042",
             "      ⇨ For all other aspect ratios, the value of Y is equals to 0.021 times the aspect ratio. (YScale = 0.021 * Width / Height)");
 
+        public WarnLevel WarnLevel => WarnLevel.Notice;
+
         public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => String.Join(

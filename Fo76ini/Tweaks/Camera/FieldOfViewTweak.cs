@@ -10,6 +10,8 @@ namespace Fo76ini.Tweaks.Camera
     {
         public string Description => "Changes the Field of View of the 1st and 3rd person perspective.\nThis is the same value from the in-game FOV setting.";
 
+        public WarnLevel WarnLevel => WarnLevel.None;
+
         public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => "fDefaultWorldFOV";
