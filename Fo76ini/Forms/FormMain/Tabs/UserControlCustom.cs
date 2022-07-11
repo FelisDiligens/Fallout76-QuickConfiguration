@@ -3,14 +3,9 @@ using Fo76ini.Profiles;
 using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fo76ini.Forms.FormMain.Tabs
@@ -76,7 +71,6 @@ namespace Fo76ini.Forms.FormMain.Tabs
             "EnlightenExport",
             "Explosion",
             "FaceGen",
-            "Facegen",
             "Fonts",
             "GamePlay",
             "GamepadLight",
@@ -87,11 +81,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
             "Grass",
             "HAVOK",
             "HairLighting",
-            "Havok",
             "HeadTracking",
             "IOManager",
             "ImageSpace",
-            "Imagespace",
             "Interface",
             "Inventory",
             "LANGUAGE",
@@ -110,9 +102,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             "Menu",
             "Messages",
             "NavMesh",
-            "_NavMesh",
             "NavMeshGeneration",
-            "Navmesh",
             "Network",
             "NetworkMotion",
             "NuclearWinter",
@@ -128,7 +118,6 @@ namespace Fo76ini.Forms.FormMain.Tabs
             "Platform",
             "Quest",
             "QuickPlay",
-            "Quickplay",
             "RagdollAnim",
             "SSLR",
             "SaveGame",
@@ -151,8 +140,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             "Water",
             "Weather",
             "Workshop",
-            "WorkshopSkipHitZForgiveness",
-            "audio"
+            "WorkshopSkipHitZForgiveness"
         };
         #endregion
 
@@ -224,7 +212,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         private void textBoxCustom_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == (Keys.K | Keys.Control))
+            if (e.KeyData == (Keys.Control | Keys.K))
             {
                 //forced show (MinFragmentLength will be ignored)
                 menu.Show(true);
