@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlCustom));
             this.buttonCustomSave = new System.Windows.Forms.Button();
             this.comboBoxCustomFile = new System.Windows.Forms.ComboBox();
             this.labelCustomFile = new System.Windows.Forms.Label();
-            this.textBoxCustom = new System.Windows.Forms.TextBox();
             this.labelCustomTitle = new System.Windows.Forms.Label();
             this.labelCustomDesc = new System.Windows.Forms.Label();
+            this.textBoxCustom = new FastColoredTextBoxNS.FastColoredTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxCustom)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCustomSave
@@ -73,24 +76,6 @@
             this.labelCustomFile.TabIndex = 5;
             this.labelCustomFile.Text = "Overwrite lines in file:";
             // 
-            // textBoxCustom
-            // 
-            this.textBoxCustom.AcceptsTab = true;
-            this.textBoxCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxCustom.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCustom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.textBoxCustom.Location = new System.Drawing.Point(15, 75);
-            this.textBoxCustom.Margin = new System.Windows.Forms.Padding(15, 3, 15, 3);
-            this.textBoxCustom.Multiline = true;
-            this.textBoxCustom.Name = "textBoxCustom";
-            this.textBoxCustom.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxCustom.Size = new System.Drawing.Size(820, 320);
-            this.textBoxCustom.TabIndex = 4;
-            this.textBoxCustom.WordWrap = false;
-            this.textBoxCustom.TextChanged += new System.EventHandler(this.textBoxCustom_TextChanged);
-            // 
             // labelCustomTitle
             // 
             this.labelCustomTitle.AutoSize = true;
@@ -111,18 +96,60 @@
             this.labelCustomDesc.TabIndex = 70;
             this.labelCustomDesc.Text = "Everything written in here will overwrite settings in the *.ini files.";
             // 
+            // textBoxCustom
+            // 
+            this.textBoxCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxCustom.AutoCompleteBrackets = true;
+            this.textBoxCustom.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.textBoxCustom.AutoScrollMinSize = new System.Drawing.Size(0, 15);
+            this.textBoxCustom.BackBrush = null;
+            this.textBoxCustom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCustom.CharHeight = 15;
+            this.textBoxCustom.CharWidth = 8;
+            this.textBoxCustom.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxCustom.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.textBoxCustom.Font = new System.Drawing.Font("Cascadia Code", 9.75F);
+            this.textBoxCustom.IsReplaceMode = false;
+            this.textBoxCustom.LeftBracket = '[';
+            this.textBoxCustom.Location = new System.Drawing.Point(15, 75);
+            this.textBoxCustom.Margin = new System.Windows.Forms.Padding(15);
+            this.textBoxCustom.Name = "textBoxCustom";
+            this.textBoxCustom.Paddings = new System.Windows.Forms.Padding(0);
+            this.textBoxCustom.RightBracket = ']';
+            this.textBoxCustom.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.textBoxCustom.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("textBoxCustom.ServiceColors")));
+            this.textBoxCustom.Size = new System.Drawing.Size(820, 320);
+            this.textBoxCustom.TabIndex = 71;
+            this.textBoxCustom.WordWrap = true;
+            this.textBoxCustom.Zoom = 100;
+            this.textBoxCustom.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.textBoxCustom_TextChanged);
+            this.textBoxCustom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCustom_KeyDown);
+            // 
             // UserControlCustom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBoxCustom);
             this.Controls.Add(this.labelCustomDesc);
             this.Controls.Add(this.labelCustomTitle);
             this.Controls.Add(this.buttonCustomSave);
             this.Controls.Add(this.comboBoxCustomFile);
             this.Controls.Add(this.labelCustomFile);
-            this.Controls.Add(this.textBoxCustom);
             this.Name = "UserControlCustom";
             this.Size = new System.Drawing.Size(850, 460);
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxCustom)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,8 +160,8 @@
         private System.Windows.Forms.Button buttonCustomSave;
         private System.Windows.Forms.ComboBox comboBoxCustomFile;
         private System.Windows.Forms.Label labelCustomFile;
-        private System.Windows.Forms.TextBox textBoxCustom;
         private System.Windows.Forms.Label labelCustomTitle;
         private System.Windows.Forms.Label labelCustomDesc;
+        private FastColoredTextBoxNS.FastColoredTextBox textBoxCustom;
     }
 }
