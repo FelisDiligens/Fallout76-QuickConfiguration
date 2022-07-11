@@ -8,22 +8,29 @@ namespace Fo76ini.Tweaks.Graphics
 {
     public enum AntiAliasing
     {
-        TAA = 0,
-        //FXAA = 1,
-        Disabled = 2
+        TAA,
+        Disabled
+        // Some more AA methods afaik unsupported by the game:
+        // FXAA (also called FSAA), SMAA, MSAA
     }
 
     class AntiAliasingTweak : ITweak<AntiAliasing>, ITweakInfo, IEnumTweak
     {
-        public string Description => String.Join(
+        /*public string Description => String.Join(
             Environment.NewLine,
             "Smoothes edges of objects.",
             "",
             "• TAA - Temporal Anti-Aliasing: Relatively expensive, can introduce artefacts, default",
-            /*"• FXAA - Fast Approximate Anti-Aliasing: Slightly improves performance",*/
-            "• Off - Improves performance, degrades visual quality"/*,
+            "• FXAA - Fast Approximate Anti-Aliasing: Slightly improves performance",
+            "• Off - Improves performance, degrades visual quality",
             "",
-            "⚠️ FXAA might not work. The game might just disable AA instead."*/);
+            "⚠️ FXAA might not work. The game might just disable AA instead.");*/
+
+        public string Description => 
+            "Smoothes (pixelated) edges of objects.\n" +
+            "Disable to improve performance at the cost of degraded visual quality.\n\n" +
+            "ℹ️ FXAA is not supported by Fallout 76.\n" +
+            "Setting the value to 'FXAA' simply disables anti aliasing.";
 
         public WarnLevel WarnLevel => WarnLevel.None;
 
@@ -45,7 +52,6 @@ namespace Fo76ini.Tweaks.Graphics
                 case "TAA":
                     return AntiAliasing.TAA;
                 case "FXAA":
-                    //return AntiAliasing.FXAA;
                 case "Disabled":
                 case "0":
                 case "":

@@ -154,8 +154,7 @@ namespace Fo76ini.Forms.FormMain
             DropDown.Add("AntiAliasing", new DropDown(
                 this.comboBoxAntiAliasing,
                 new string[] {
-                    "TAA (default)",
-                    //"FXAA",
+                    "Enabled, TAA (default)",
                     "Disabled"
                 }
             ));
