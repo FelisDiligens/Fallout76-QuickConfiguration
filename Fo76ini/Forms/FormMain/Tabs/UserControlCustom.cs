@@ -26,123 +26,6 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         // Autocomplete
         AutocompleteMenu menu;
-        #region Autocomplete items
-        List<string> autocompleteItems = new List<string>
-        {
-            // *.ini sections
-            "AI",
-            "ATX",
-            "Actor",
-            "Adventure",
-            "Animation",
-            "Archive",
-            "ArchiveDebug",
-            "Audio",
-            "AudioMenu",
-            "BIEvents",
-            "BSPathing",
-            "Babylon",
-            "BackgroundLoad",
-            "Bethesda.net",
-            "Bnet",
-            "Boolean",
-            "Breakables",
-            "Camera",
-            "CameraPath",
-            "Camp",
-            "Chrome",
-            "Client",
-            "Cloth",
-            "CollisionQuery",
-            "Combat",
-            "Controls",
-            "CopyProtectionStrings",
-            "Crafting",
-            "Culling",
-            "Debug",
-            "Decals",
-            "DeferredDeleter",
-            "Dialogue",
-            "Dismemberment",
-            "Display",
-            "Enlighten",
-            "EnlightenAutoFlagging",
-            "EnlightenDebug",
-            "EnlightenExport",
-            "Explosion",
-            "FaceGen",
-            "Fonts",
-            "GamePlay",
-            "GamepadLight",
-            "Gameplay",
-            "General",
-            "GeneralWarnings",
-            "Graphics",
-            "Grass",
-            "HAVOK",
-            "HairLighting",
-            "HeadTracking",
-            "IOManager",
-            "ImageSpace",
-            "Interface",
-            "Inventory",
-            "LANGUAGE",
-            "LOD",
-            "LODGeneration",
-            "LODGenerationDebugging",
-            "LODTerrain",
-            "Landscape",
-            "LightingShader",
-            "Logging",
-            "Login",
-            "MAIN",
-            "MESSAGES",
-            "MainRender",
-            "MapMenu",
-            "Menu",
-            "Messages",
-            "NavMesh",
-            "NavMeshGeneration",
-            "Network",
-            "NetworkMotion",
-            "NuclearWinter",
-            "PBR",
-            "PRT",
-            "PSysLOD",
-            "Papyrus",
-            "Particles",
-            "Pathfinding",
-            "Pathing",
-            "Performance",
-            "Pipboy",
-            "Platform",
-            "Quest",
-            "QuickPlay",
-            "RagdollAnim",
-            "SSLR",
-            "SaveGame",
-            "ScreenSplatter",
-            "Section",
-            "Server",
-            "Spawning",
-            "StatsD",
-            "StreamInstall",
-            "Survival",
-            "TerrainManager",
-            "TestAllCells",
-            "Texture",
-            "Textures",
-            "Trees",
-            "Umbra",
-            "UserPlacedPackin",
-            "VATS",
-            "Voice",
-            "Water",
-            "Weather",
-            "Workshop",
-            "WorkshopSkipHitZForgiveness"
-        };
-        #endregion
 
         public UserControlCustom()
         {
@@ -158,13 +41,23 @@ namespace Fo76ini.Forms.FormMain.Tabs
             // Syntax highlighting
             styles = new Style[] { comment, section, key, equalsSign, valueString, valueNumber };
 
-            // Autocomplete
+            /*
+             * Autocomplete
+             */
+
+            // Load autocomplete.txt:
+            List<string> autocompleteItems = new List<string>();
+            string autocompleteTxtPath = Path.Combine(Shared.AppInstallationFolder, "autocomplete.txt");
+            if (File.Exists(autocompleteTxtPath))
+                autocompleteItems.AddRange(File.ReadAllText(autocompleteTxtPath).Split(','));
+
+            // Setup autocomplete menu:
             menu = new AutocompleteMenu(this.textBoxCustom);
             menu.Items.SetAutocompleteItems(autocompleteItems);
 
             menu.MinFragmentLength = 2;
-            menu.Items.MaximumSize = new Size(200, 300);
-            menu.Items.Width = 200;
+            menu.Items.MaximumSize = new Size(300, 300);
+            menu.Items.Width = 300;
         }
 
         #region Event handler
