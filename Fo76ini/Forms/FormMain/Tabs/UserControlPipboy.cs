@@ -93,12 +93,12 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonPresetFo3Green_Click(object sender, EventArgs e)
         {
-            Pipboy_SetColorOfActivePreview(Color.FromArgb(26, 255, 128));
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(26, 255, 128)); // 27, 255, 128
         }
 
         private void buttonPresetFoNVAmber_Click(object sender, EventArgs e)
         {
-            Pipboy_SetColorOfActivePreview(Color.FromArgb(255, 182, 66));
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(255, 182, 66)); // 255, 182, 65
         }
 
         private void buttonPresetFo3Blue_Click(object sender, EventArgs e)
@@ -119,6 +119,31 @@ namespace Fo76ini.Forms.FormMain
         private void buttonPresetFo76Green_Click(object sender, EventArgs e)
         {
             Pipboy_SetColorOfActivePreview(Color.FromArgb(26, 255, 128));
+        }
+
+        private void buttonPresetWhite_Click(object sender, EventArgs e)
+        {
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(255, 255, 255));
+        }
+
+        private void buttonButtonPresetLavendar_Click(object sender, EventArgs e)
+        {
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(190, 110, 255));
+        }
+
+        private void buttonPresetTato_Click(object sender, EventArgs e)
+        {
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(255, 110, 90));
+        }
+
+        private void buttonPresetFo76QB_Click(object sender, EventArgs e)
+        {
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(247, 242, 184));
+        }
+
+        private void buttonPresetFo76PPColor_Click(object sender, EventArgs e)
+        {
+            Pipboy_SetColorOfActivePreview(Color.FromArgb(255, 209, 105));
         }
 
 
