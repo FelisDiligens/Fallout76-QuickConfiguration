@@ -130,7 +130,7 @@
             this.textBoxCustom.RightBracket = ']';
             this.textBoxCustom.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.textBoxCustom.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("textBoxCustom.ServiceColors")));
-            this.textBoxCustom.Size = new System.Drawing.Size(820, 320);
+            this.textBoxCustom.Size = new System.Drawing.Size(820, 325);
             this.textBoxCustom.TabIndex = 71;
             this.textBoxCustom.WordWrap = true;
             this.textBoxCustom.Zoom = 100;

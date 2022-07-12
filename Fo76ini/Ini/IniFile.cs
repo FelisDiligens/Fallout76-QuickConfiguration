@@ -169,6 +169,11 @@ namespace Fo76ini
                 data.Sections.RemoveSection(sectionName);
         }
 
+        public void ClearAllComments()
+        {
+            this.data.ClearAllComments();
+        }
+
         protected void SetFileReadOnlyAttribute(bool readOnly)
         {
             // https://stackoverflow.com/questions/8081242/c-sharp-make-file-read-write-from-readonly
