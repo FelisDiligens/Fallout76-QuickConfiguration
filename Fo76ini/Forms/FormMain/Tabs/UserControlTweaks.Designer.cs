@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlTweaks));
             this.tabControlTweaks = new System.Windows.Forms.TabControl();
+            this.tabPageTweaksInfo = new System.Windows.Forms.TabPage();
+            this.webBrowserTweaksInfo = new System.Windows.Forms.WebBrowser();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.groupBoxLoading = new System.Windows.Forms.GroupBox();
             this.checkBoxFasterFadeIn = new System.Windows.Forms.CheckBox();
@@ -285,9 +287,9 @@
             this.labelTweaksDesc = new System.Windows.Forms.Label();
             this.labelTweaksTitle = new System.Windows.Forms.Label();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
-            this.tabPageTweaksInfo = new System.Windows.Forms.TabPage();
-            this.webBrowserTweaksInfo = new System.Windows.Forms.WebBrowser();
+            this.checkBoxBloom = new System.Windows.Forms.CheckBox();
             this.tabControlTweaks.SuspendLayout();
+            this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxLoading.SuspendLayout();
             this.groupBoxGeneralInterface.SuspendLayout();
@@ -403,7 +405,6 @@
             this.tabPageLogin.SuspendLayout();
             this.groupBoxLoginProfiles.SuspendLayout();
             this.groupBoxLogin.SuspendLayout();
-            this.tabPageTweaksInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -423,6 +424,28 @@
             this.tabControlTweaks.SelectedIndex = 0;
             this.tabControlTweaks.Size = new System.Drawing.Size(662, 502);
             this.tabControlTweaks.TabIndex = 0;
+            // 
+            // tabPageTweaksInfo
+            // 
+            this.tabPageTweaksInfo.Controls.Add(this.webBrowserTweaksInfo);
+            this.tabPageTweaksInfo.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTweaksInfo.Name = "tabPageTweaksInfo";
+            this.tabPageTweaksInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTweaksInfo.Size = new System.Drawing.Size(654, 476);
+            this.tabPageTweaksInfo.TabIndex = 6;
+            this.tabPageTweaksInfo.Text = "Info";
+            this.tabPageTweaksInfo.UseVisualStyleBackColor = true;
+            // 
+            // webBrowserTweaksInfo
+            // 
+            this.webBrowserTweaksInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowserTweaksInfo.Location = new System.Drawing.Point(0, 0);
+            this.webBrowserTweaksInfo.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserTweaksInfo.Name = "webBrowserTweaksInfo";
+            this.webBrowserTweaksInfo.Size = new System.Drawing.Size(654, 476);
+            this.webBrowserTweaksInfo.TabIndex = 1;
             // 
             // tabPageGeneral
             // 
@@ -831,7 +854,7 @@
             this.groupBoxGraphics.Location = new System.Drawing.Point(6, 242);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 915);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 949);
             this.groupBoxGraphics.TabIndex = 26;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
@@ -839,7 +862,7 @@
             // groupBoxGraphicEffects
             // 
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
-            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(9, 261);
+            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(9, 296);
             this.groupBoxGraphicEffects.Name = "groupBoxGraphicEffects";
             this.groupBoxGraphicEffects.Size = new System.Drawing.Size(187, 46);
             this.groupBoxGraphicEffects.TabIndex = 39;
@@ -864,7 +887,7 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 758);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 793);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
             this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 145);
             this.groupBoxTAASharpening.TabIndex = 38;
@@ -980,7 +1003,7 @@
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 629);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 664);
             this.groupBoxGrass.Name = "groupBoxGrass";
             this.groupBoxGrass.Size = new System.Drawing.Size(381, 119);
             this.groupBoxGrass.TabIndex = 35;
@@ -1067,7 +1090,7 @@
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 467);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 502);
             this.groupBoxLOD.Name = "groupBoxLOD";
             this.groupBoxLOD.Size = new System.Drawing.Size(381, 156);
             this.groupBoxLOD.TabIndex = 37;
@@ -1227,7 +1250,7 @@
             // groupBoxLighting
             // 
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
-            this.groupBoxLighting.Location = new System.Drawing.Point(202, 261);
+            this.groupBoxLighting.Location = new System.Drawing.Point(202, 296);
             this.groupBoxLighting.Name = "groupBoxLighting";
             this.groupBoxLighting.Size = new System.Drawing.Size(188, 46);
             this.groupBoxLighting.TabIndex = 28;
@@ -1264,7 +1287,7 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowTextureResolution);
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
-            this.groupBoxShadows.Location = new System.Drawing.Point(9, 313);
+            this.groupBoxShadows.Location = new System.Drawing.Point(9, 348);
             this.groupBoxShadows.Name = "groupBoxShadows";
             this.groupBoxShadows.Size = new System.Drawing.Size(381, 147);
             this.groupBoxShadows.TabIndex = 30;
@@ -1372,7 +1395,7 @@
             this.groupBoxWater.Controls.Add(this.checkBoxWaterDisplacement);
             this.groupBoxWater.Location = new System.Drawing.Point(202, 117);
             this.groupBoxWater.Name = "groupBoxWater";
-            this.groupBoxWater.Size = new System.Drawing.Size(188, 44);
+            this.groupBoxWater.Size = new System.Drawing.Size(188, 73);
             this.groupBoxWater.TabIndex = 31;
             this.groupBoxWater.TabStop = false;
             this.groupBoxWater.Text = "Water";
@@ -1394,9 +1417,9 @@
             this.groupBoxWeather.Controls.Add(this.checkBoxFogEnabled);
             this.groupBoxWeather.Controls.Add(this.checkBoxWeatherWetnessOcclusion);
             this.groupBoxWeather.Controls.Add(this.checkBoxWeatherRainOcclusion);
-            this.groupBoxWeather.Location = new System.Drawing.Point(202, 167);
+            this.groupBoxWeather.Location = new System.Drawing.Point(202, 196);
             this.groupBoxWeather.Name = "groupBoxWeather";
-            this.groupBoxWeather.Size = new System.Drawing.Size(188, 88);
+            this.groupBoxWeather.Size = new System.Drawing.Size(188, 94);
             this.groupBoxWeather.TabIndex = 32;
             this.groupBoxWeather.TabStop = false;
             this.groupBoxWeather.Text = "Weather";
@@ -1439,6 +1462,7 @@
             // 
             // groupBoxPostProcessing
             // 
+            this.groupBoxPostProcessing.Controls.Add(this.checkBoxBloom);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxAmbientOcclusion);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxDepthOfField);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxMotionBlur);
@@ -1446,7 +1470,7 @@
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxLensFlare);
             this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 117);
             this.groupBoxPostProcessing.Name = "groupBoxPostProcessing";
-            this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 138);
+            this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 173);
             this.groupBoxPostProcessing.TabIndex = 34;
             this.groupBoxPostProcessing.TabStop = false;
             this.groupBoxPostProcessing.Text = "Post-processing";
@@ -3863,27 +3887,17 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
-            // tabPageTweaksInfo
+            // checkBoxBloom
             // 
-            this.tabPageTweaksInfo.Controls.Add(this.webBrowserTweaksInfo);
-            this.tabPageTweaksInfo.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTweaksInfo.Name = "tabPageTweaksInfo";
-            this.tabPageTweaksInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTweaksInfo.Size = new System.Drawing.Size(654, 476);
-            this.tabPageTweaksInfo.TabIndex = 6;
-            this.tabPageTweaksInfo.Text = "Info";
-            this.tabPageTweaksInfo.UseVisualStyleBackColor = true;
-            // 
-            // webBrowserTweaksInfo
-            // 
-            this.webBrowserTweaksInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowserTweaksInfo.Location = new System.Drawing.Point(0, 0);
-            this.webBrowserTweaksInfo.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserTweaksInfo.Name = "webBrowserTweaksInfo";
-            this.webBrowserTweaksInfo.Size = new System.Drawing.Size(654, 476);
-            this.webBrowserTweaksInfo.TabIndex = 1;
+            this.checkBoxBloom.AutoSize = true;
+            this.checkBoxBloom.Checked = true;
+            this.checkBoxBloom.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxBloom.Location = new System.Drawing.Point(9, 134);
+            this.checkBoxBloom.Name = "checkBoxBloom";
+            this.checkBoxBloom.Size = new System.Drawing.Size(55, 17);
+            this.checkBoxBloom.TabIndex = 14;
+            this.checkBoxBloom.Text = "Bloom";
+            this.checkBoxBloom.UseVisualStyleBackColor = true;
             // 
             // UserControlTweaks
             // 
@@ -3895,6 +3909,7 @@
             this.Name = "UserControlTweaks";
             this.Size = new System.Drawing.Size(680, 580);
             this.tabControlTweaks.ResumeLayout(false);
+            this.tabPageTweaksInfo.ResumeLayout(false);
             this.tabPageGeneral.ResumeLayout(false);
             this.groupBoxLoading.ResumeLayout(false);
             this.groupBoxLoading.PerformLayout();
@@ -4042,7 +4057,6 @@
             this.groupBoxLoginProfiles.PerformLayout();
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
-            this.tabPageTweaksInfo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4307,5 +4321,6 @@
         private Controls.CustomToolTip toolTip;
         private System.Windows.Forms.TabPage tabPageTweaksInfo;
         private System.Windows.Forms.WebBrowser webBrowserTweaksInfo;
+        private System.Windows.Forms.CheckBox checkBoxBloom;
     }
 }

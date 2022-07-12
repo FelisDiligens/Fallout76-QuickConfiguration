@@ -92,6 +92,7 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(checkBoxRadialBlur, toolTip, radialBlurTweak);
             LinkedTweaks.LinkInfo(checkBoxLensFlare, toolTip, lensFlareTweak);
             LinkedTweaks.LinkInfo(checkBoxAmbientOcclusion, toolTip, ambientOcclusionTweak);
+            LinkedTweaks.LinkInfo(checkBoxBloom, toolTip, bloomTweak);
             LinkedTweaks.LinkInfo(checkBoxWaterDisplacement, toolTip, waterDisplacementsTweak);
             LinkedTweaks.LinkInfo(checkBoxFogEnabled, toolTip, fogTweak);
             LinkedTweaks.LinkInfo(checkBoxWeatherRainOcclusion, toolTip, rainOcclusionTweak);
@@ -417,6 +418,9 @@ namespace Fo76ini.Forms.FormMain
             // Ambient Occlusion
             LinkedTweaks.LinkTweak(checkBoxAmbientOcclusion, ambientOcclusionTweak);
 
+            // Bloom
+            LinkedTweaks.LinkTweak(checkBoxBloom, bloomTweak);
+
             // Water / Displacement
             LinkedTweaks.LinkTweak(checkBoxWaterDisplacement, waterDisplacementsTweak);
 
@@ -668,6 +672,7 @@ namespace Fo76ini.Forms.FormMain
         private TAAPostOverlayTweak taaPostOverlayTweak = new TAAPostOverlayTweak();
         private TAAPostSharpenTweak taaPostSharpenTweak = new TAAPostSharpenTweak();
         private ScreenSpaceReflectionsTweak screenSpaceReflectionsTweak = new ScreenSpaceReflectionsTweak();
+        private BloomTweak bloomTweak = new BloomTweak();
 
         // Audio tab
         private EnableAudioTweak enableAudioTweak = new EnableAudioTweak();

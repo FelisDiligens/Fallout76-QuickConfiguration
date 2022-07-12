@@ -254,6 +254,7 @@
     <Compile Include="NexusAPI\NXMHandler.cs" />
     <Compile Include="NexusAPI\SingleSignOn.cs" />
     <Compile Include="Tweaks\Accessor.cs" />
+    <Compile Include="Tweaks\Graphics\BloomTweak.cs" />
     <Compile Include="Utilities\CustomFonts.cs" />
     <Compile Include="Utilities\Progress.cs" />
     <Compile Include="Tweaks\Audio\EnableAudioTweak.cs" />
