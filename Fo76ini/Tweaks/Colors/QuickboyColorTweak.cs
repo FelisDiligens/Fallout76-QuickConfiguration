@@ -14,7 +14,7 @@ namespace Fo76ini.Tweaks.Colors
 
         public WarnLevel WarnLevel => WarnLevel.None;
 
-        public string AffectedFiles => "Fallout76Custom.ini";
+        public string AffectedFiles => "Fallout76Prefs.ini";
 
         public string AffectedValues => String.Join(
              Environment.NewLine,
@@ -41,16 +41,14 @@ namespace Fo76ini.Tweaks.Colors
             float r = Convert.ToSingle(value.R) / 255f;
             float g = Convert.ToSingle(value.G) / 255f;
             float b = Convert.ToSingle(value.B) / 255f;
-            IniFiles.F76Custom.Set("Pipboy", "fQuickBoyEffectColorR", r);
-            IniFiles.F76Custom.Set("Pipboy", "fQuickBoyEffectColorG", g);
-            IniFiles.F76Custom.Set("Pipboy", "fQuickBoyEffectColorB", b);
+            IniFiles.F76Prefs.Set("Pipboy", "fQuickBoyEffectColorR", r);
+            IniFiles.F76Prefs.Set("Pipboy", "fQuickBoyEffectColorG", g);
+            IniFiles.F76Prefs.Set("Pipboy", "fQuickBoyEffectColorB", b);
         }
 
         public void ResetValue()
         {
-            IniFiles.F76Custom.Remove("Pipboy", "fQuickBoyEffectColorR");
-            IniFiles.F76Custom.Remove("Pipboy", "fQuickBoyEffectColorG");
-            IniFiles.F76Custom.Remove("Pipboy", "fQuickBoyEffectColorB");
+            SetValue(DefaultValue);
         }
     }
 }
