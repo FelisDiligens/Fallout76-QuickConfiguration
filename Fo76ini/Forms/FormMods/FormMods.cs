@@ -85,6 +85,7 @@ namespace Fo76ini
                 CloseSidePanel();
                 Configuration.SaveWindowState("FormMods", this);
                 Configuration.SaveListViewState("FormMods.OLV", this.objectListViewMods);
+                this.Mods.Save();
                 e.Cancel = true;
                 if (!preventClosing)
                     Hide();
