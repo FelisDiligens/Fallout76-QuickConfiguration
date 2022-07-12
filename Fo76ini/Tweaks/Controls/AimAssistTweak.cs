@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fo76ini.Tweaks.Interface
+namespace Fo76ini.Tweaks.Controls
 {
-    class EnableItemRarityColorsTweak : ITweak<bool>, ITweakInfo
+    class AimAssistTweak : ITweak<bool>, ITweakInfo
     {
         public string Description => "";
 
@@ -14,7 +14,7 @@ namespace Fo76ini.Tweaks.Interface
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 
-        public string AffectedValues => "[NuclearWinter]bEnableItemRarityColors";
+        public string AffectedValues => "[MAIN]bUserAimAssistModelEnabled";
 
         public bool DefaultValue => true;
 
@@ -22,12 +22,12 @@ namespace Fo76ini.Tweaks.Interface
 
         public bool GetValue()
         {
-            return IniFiles.GetBool("NuclearWinter", "bEnableItemRarityColors", DefaultValue);
+            return IniFiles.GetBool("MAIN", "bUserAimAssistModelEnabled", DefaultValue);
         }
 
         public void SetValue(bool value)
         {
-            IniFiles.F76Prefs.Set("NuclearWinter", "bEnableItemRarityColors", value);
+            IniFiles.F76Prefs.Set("MAIN", "bUserAimAssistModelEnabled", value);
         }
 
         public void ResetValue()

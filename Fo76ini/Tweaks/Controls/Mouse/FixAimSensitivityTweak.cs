@@ -28,7 +28,7 @@ namespace Fo76ini.Tweaks.Controls
 
         public bool GetValue()
         {
-            return Math.Abs(IniFiles.GetFloat("Main", "fIronSightsFOVRotateMult", 0f) - 2.14f) < 0.1f;
+            return Math.Abs(IniFiles.GetFloat("MAIN", "fIronSightsFOVRotateMult", 1.0f) - 2.14f) < 0.1f;
         }
 
         public void SetValue(bool value)
@@ -36,12 +36,12 @@ namespace Fo76ini.Tweaks.Controls
             if (value)
             {
                 IniFiles.F76Custom.Set("Controls", "fIronSightsFOVRotateMult", 2.136363636f);
-                IniFiles.F76Custom.Set("Main", "fIronSightsFOVRotateMult", 2.136363636f);
+                IniFiles.F76Custom.Set("MAIN", "fIronSightsFOVRotateMult", 2.136363636f);
             }
             else
             {
                 IniFiles.F76Custom.Remove("Controls", "fIronSightsFOVRotateMult");
-                IniFiles.F76Custom.Remove("Main", "fIronSightsFOVRotateMult");
+                IniFiles.F76Custom.Remove("MAIN", "fIronSightsFOVRotateMult");
             }
         }
 

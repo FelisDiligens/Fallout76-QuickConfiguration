@@ -15,6 +15,7 @@ using Fo76ini.Tweaks.Interface;
 using Fo76ini.Tweaks.Pipboy;
 using Fo76ini.Tweaks.Video;
 using Fo76ini.Tweaks.Volume;
+using Fo76ini.Tweaks.Graphics.Effects;
 
 namespace Fo76ini.Forms.FormMain
 {
@@ -29,13 +30,6 @@ namespace Fo76ini.Forms.FormMain
         /// </summary>
         public void LinkInfo()
         {
-            // Info tab
-            /*LinkedTweaks.LinkInfo(checkBoxReadOnly, iniReadOnlyTweak);
-            LinkedTweaks.LinkInfo(checkBoxAutoApply, autoApplyTweak);
-            LinkedTweaks.LinkInfo(checkBoxIgnoreUpdates, ignoreUpdatesTweak);
-            LinkedTweaks.LinkInfo(checkBoxPlayNotificationSound, playNotificationSoundsTweak);
-            LinkedTweaks.LinkInfo(checkBoxQuitOnGameLaunch, toolQuitOnLaunchTweak);*/
-
             // General tab
             LinkedTweaks.LinkInfo(checkBoxEnableSteam, toolTip, enableSteamTweak);
             LinkedTweaks.LinkInfo(checkBoxAutoSignin, toolTip, autoSigninTweak);
@@ -44,9 +38,7 @@ namespace Fo76ini.Forms.FormMain
 
             LinkedTweaks.LinkInfo(checkBoxFasterFadeIn, toolTip, fasterFadeInTweak);
 
-            LinkedTweaks.LinkInfo(checkBoxShowDamageNumbersNW, toolTip, showDamageNumbersNuclearWinterTweak);
-            LinkedTweaks.LinkInfo(checkBoxShowDamageNumbersA, toolTip, showDamageNumbersAdventureTweak);
-            LinkedTweaks.LinkInfo(checkBoxItemRarityColorsNW, toolTip, enableItemRarityColorsTweak);
+            LinkedTweaks.LinkInfo(checkBoxShowDamageNumbers, toolTip, showDamageNumbersAdventureTweak);
             LinkedTweaks.LinkInfo(checkBoxShowPublicTeamNotifications, toolTip, showPublicTeamNotificationsTweak);
             LinkedTweaks.LinkInfo(checkBoxShowFloatingQuestMarkers, toolTip, showFloatingQuestMarkersTweak);
             LinkedTweaks.LinkInfo(checkBoxShowFloatingQuestText, toolTip, showFloatingQuestTextTweak);
@@ -56,12 +48,15 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(checkBoxShowOtherPlayersNames, toolTip, showOtherPlayersNamesTweak);
             LinkedTweaks.LinkInfo(comboBoxShowActiveEffectsOnHUD, toolTip, activeEffectsOnHUDTweak);
             LinkedTweaks.LinkInfo(labelShowActiveEffectsOnHUD, toolTip, activeEffectsOnHUDTweak);
+            LinkedTweaks.LinkInfo(comboBoxHighlightCorpses, toolTip, corpseHighlightingTweak);
+            LinkedTweaks.LinkInfo(labelHighlightCorpses, toolTip, corpseHighlightingTweak);
             LinkedTweaks.LinkInfo(numFloatingQuestMarkersDistance, toolTip, floatingQuestMarkersDistanceTweak);
             LinkedTweaks.LinkInfo(sliderFloatingQuestMarkersDistance, toolTip, floatingQuestMarkersDistanceTweak);
             LinkedTweaks.LinkInfo(labelFloatingQuestMarkersDistance, toolTip, floatingQuestMarkersDistanceTweak);
             LinkedTweaks.LinkInfo(numHUDOpacity, toolTip, hudOpacityTweak);
             LinkedTweaks.LinkInfo(sliderHUDOpacity, toolTip, hudOpacityTweak);
             LinkedTweaks.LinkInfo(labelHUDOpacity, toolTip, hudOpacityTweak);
+            LinkedTweaks.LinkInfo(checkBoxBackpackVisible, toolTip, backpackVisibleTweak);
 
             LinkedTweaks.LinkInfo(checkBoxEnableQuestAutoTrackMain, toolTip, autoTrackMainQuestWhenStartedTweak);
             LinkedTweaks.LinkInfo(checkBoxEnableQuestAutoTrackSide, toolTip, autoTrackSideQuestWhenStartedTweak);
@@ -93,12 +88,16 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(checkBoxLensFlare, toolTip, lensFlareTweak);
             LinkedTweaks.LinkInfo(checkBoxAmbientOcclusion, toolTip, ambientOcclusionTweak);
             LinkedTweaks.LinkInfo(checkBoxBloom, toolTip, bloomTweak);
+            LinkedTweaks.LinkInfo(checkBoxSSReflections, toolTip, screenSpaceReflectionsTweak);
             LinkedTweaks.LinkInfo(checkBoxWaterDisplacement, toolTip, waterDisplacementsTweak);
+            LinkedTweaks.LinkInfo(checkBoxWaterReflections, toolTip, waterReflectionsTweak);
+            LinkedTweaks.LinkInfo(checkBoxWaterRefractions, toolTip, waterRefractionsTweak);
             LinkedTweaks.LinkInfo(checkBoxFogEnabled, toolTip, fogTweak);
             LinkedTweaks.LinkInfo(checkBoxWeatherRainOcclusion, toolTip, rainOcclusionTweak);
             LinkedTweaks.LinkInfo(checkBoxWeatherWetnessOcclusion, toolTip, wetnessOcclusionTweak);
             LinkedTweaks.LinkInfo(checkBoxGodrays, toolTip, volumetricLightingTweak);
             LinkedTweaks.LinkInfo(checkBoxDisableGore, toolTip, disableAllGoreTweak);
+            LinkedTweaks.LinkInfo(checkBoxBloodSplatter, toolTip, bloodSplatterTweak);
             LinkedTweaks.LinkInfo(labelShadowTextureResolution, toolTip, shadowMapResolutionTweak);
             LinkedTweaks.LinkInfo(comboBoxShadowTextureResolution, toolTip, shadowMapResolutionTweak);
             LinkedTweaks.LinkInfo(comboBoxShadowBlurriness, toolTip, shadowBlurrinessTweak);
@@ -162,15 +161,17 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(labelAudiofVal6, toolTip, val6Tweak);
 
             // Controls tab
-            LinkedTweaks.LinkInfo(numMouseSensitivity, toolTip, mouseSensitivityTweak);
-            LinkedTweaks.LinkInfo(sliderMouseSensitivity, toolTip, mouseSensitivityTweak);
+            LinkedTweaks.LinkInfo(numMouseSensitivityX, toolTip, mouseSensitivityTweakX);
+            LinkedTweaks.LinkInfo(sliderMouseSensitivityX, toolTip, mouseSensitivityTweakX);
+            LinkedTweaks.LinkInfo(numMouseSensitivityY, toolTip, mouseSensitivityTweakY);
+            LinkedTweaks.LinkInfo(sliderMouseSensitivityY, toolTip, mouseSensitivityTweakY);
             LinkedTweaks.LinkInfo(checkBoxFixMouseSensitivity, toolTip, fixMouseSensitivityTweak);
             LinkedTweaks.LinkInfo(checkBoxFixAimSensitivity, toolTip, fixAimSensitivityTweak);
-            LinkedTweaks.LinkInfo(checkBoxMouseAcceleration, toolTip, mouseAccelerationTweak);
             LinkedTweaks.LinkInfo(checkBoxMouseInvertX, toolTip, mouseInvertXTweak);
             LinkedTweaks.LinkInfo(checkBoxMouseInvertY, toolTip, mouseInvertYTweak);
             LinkedTweaks.LinkInfo(checkBoxGamepadEnabled, toolTip, gamepadEnableTweak);
             LinkedTweaks.LinkInfo(checkBoxGamepadRumble, toolTip, enableGamepadRumbleTweak);
+            LinkedTweaks.LinkInfo(checkBoxAimAssist, toolTip, aimAssistTweak);
 
             // Camera tab
             LinkedTweaks.LinkInfo(this.checkBoxbApplyCameraNodeAnimations, toolTip, applyCameraNodeAnimationsTweak);
@@ -231,7 +232,8 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkSlider(this.sliderLODItems, this.numLODItems, 10);
             LinkedTweaks.LinkSlider(this.sliderLODActors, this.numLODActors, 10);
             LinkedTweaks.LinkSlider(this.sliderShadowDistance, this.numShadowDistance, 1);
-            LinkedTweaks.LinkSlider(this.sliderMouseSensitivity, this.numMouseSensitivity, 10000.0);
+            LinkedTweaks.LinkSlider(this.sliderMouseSensitivityX, this.numMouseSensitivityX, 10000.0);
+            LinkedTweaks.LinkSlider(this.sliderMouseSensitivityY, this.numMouseSensitivityY, 10000.0);
             LinkedTweaks.LinkSlider(this.sliderTAAPostOverlay, this.numTAAPostOverlay, 100);
             LinkedTweaks.LinkSlider(this.sliderTAAPostSharpen, this.numTAAPostSharpen, 100);
 
@@ -276,27 +278,6 @@ namespace Fo76ini.Forms.FormMain
         public void LinkControlsToTweaks()
         {
             /*
-             * Info tab
-             */
-
-            // Make *.ini files read-only
-            /*LinkedTweaks.LinkTweak(checkBoxReadOnly, iniReadOnlyTweak);
-
-            // Automatically apply changes when tool is closed or game is launched
-            LinkedTweaks.LinkTweak(checkBoxAutoApply, autoApplyTweak);
-
-            // Don't check for updates on startup.
-            LinkedTweaks.LinkTweak(checkBoxIgnoreUpdates, ignoreUpdatesTweak);
-
-            // Play notification sounds
-            LinkedTweaks.LinkTweak(checkBoxPlayNotificationSound, playNotificationSoundsTweak);
-
-            // Close the tool when the game is launched.
-            LinkedTweaks.LinkTweak(checkBoxQuitOnGameLaunch, toolQuitOnLaunchTweak);*/
-
-
-
-            /*
              * General tab
              */
 
@@ -317,14 +298,8 @@ namespace Fo76ini.Forms.FormMain
             // Show splash screen with news on startup
             LinkedTweaks.LinkTweak(checkBoxSkipSplash, skipStartupSplash);
 
-            // Show damage numbers in Nuclear Winter
-            LinkedTweaks.LinkTweak(checkBoxShowDamageNumbersNW, showDamageNumbersNuclearWinterTweak);
-
             // Show damage numbers in Adventure mode
-            LinkedTweaks.LinkTweak(checkBoxShowDamageNumbersA, showDamageNumbersAdventureTweak);
-
-            // Show item rarity colors
-            LinkedTweaks.LinkTweak(checkBoxItemRarityColorsNW, enableItemRarityColorsTweak);
+            LinkedTweaks.LinkTweak(checkBoxShowDamageNumbers, showDamageNumbersAdventureTweak);
 
             // Show Public Team Notifications
             LinkedTweaks.LinkTweak(checkBoxShowPublicTeamNotifications, showPublicTeamNotificationsTweak);
@@ -350,11 +325,17 @@ namespace Fo76ini.Forms.FormMain
             // Show active effects on HUD
             LinkedTweaks.LinkTweak(comboBoxShowActiveEffectsOnHUD, activeEffectsOnHUDTweak);
 
+            // Highlight corpses
+            LinkedTweaks.LinkTweak(comboBoxHighlightCorpses, corpseHighlightingTweak);
+
             // Floating Quest Markers Draw Distance
             LinkedTweaks.LinkTweak(numFloatingQuestMarkersDistance, floatingQuestMarkersDistanceTweak);
 
             // HUD Opacity
             LinkedTweaks.LinkTweak(numHUDOpacity, hudOpacityTweak);
+
+            // Backpack visible
+            LinkedTweaks.LinkTweak(checkBoxBackpackVisible, backpackVisibleTweak);
 
 
             // XYZ Quest Active when started
@@ -421,8 +402,17 @@ namespace Fo76ini.Forms.FormMain
             // Bloom
             LinkedTweaks.LinkTweak(checkBoxBloom, bloomTweak);
 
+            // Screen space reflections
+            LinkedTweaks.LinkTweak(checkBoxSSReflections, screenSpaceReflectionsTweak);
+
             // Water / Displacement
             LinkedTweaks.LinkTweak(checkBoxWaterDisplacement, waterDisplacementsTweak);
+
+            // Water / Reflections
+            LinkedTweaks.LinkTweak(checkBoxWaterReflections, waterReflectionsTweak);
+
+            // Water / Refractions
+            LinkedTweaks.LinkTweak(checkBoxWaterRefractions, waterRefractionsTweak);
 
             // Weather / Fog
             LinkedTweaks.LinkTweak(checkBoxFogEnabled, fogTweak);
@@ -438,6 +428,9 @@ namespace Fo76ini.Forms.FormMain
 
             // Effects / Disable gore
             LinkedTweaks.LinkTweak(checkBoxDisableGore, disableAllGoreTweak);
+
+            // Effects / Blood splatter
+            LinkedTweaks.LinkTweak(checkBoxBloodSplatter, bloodSplatterTweak);
 
             // Shadow texture map resolution
             LinkedTweaks.LinkTweak(
@@ -524,16 +517,14 @@ namespace Fo76ini.Forms.FormMain
              */
 
             // Mouse sensitivity
-            LinkedTweaks.LinkTweak(numMouseSensitivity, mouseSensitivityTweak);
+            LinkedTweaks.LinkTweak(numMouseSensitivityX, mouseSensitivityTweakX);
+            LinkedTweaks.LinkTweak(numMouseSensitivityY, mouseSensitivityTweakY);
 
             // Fix mouse sensitivity
             LinkedTweaks.LinkTweak(checkBoxFixMouseSensitivity, fixMouseSensitivityTweak);
 
             // Fix aim sensitivity
             LinkedTweaks.LinkTweak(checkBoxFixAimSensitivity, fixAimSensitivityTweak);
-
-            // Mouse acceleration
-            LinkedTweaks.LinkTweak(checkBoxMouseAcceleration, mouseAccelerationTweak);
 
             // Invert mouse:
             LinkedTweaks.LinkTweak(checkBoxMouseInvertX, mouseInvertXTweak);
@@ -544,6 +535,9 @@ namespace Fo76ini.Forms.FormMain
 
             // Vibration
             LinkedTweaks.LinkTweak(checkBoxGamepadRumble, enableGamepadRumbleTweak);
+
+            // Vibration
+            LinkedTweaks.LinkTweak(checkBoxAimAssist, aimAssistTweak);
 
 
 
@@ -602,13 +596,6 @@ namespace Fo76ini.Forms.FormMain
          * Define and instantiate all tweaks:
          */
 
-        // Info tab
-        /*private INIReadOnlyTweak iniReadOnlyTweak = new INIReadOnlyTweak();
-        private AutoApplyTweak autoApplyTweak = new AutoApplyTweak();
-        private IgnoreUpdatesTweak ignoreUpdatesTweak = new IgnoreUpdatesTweak();
-        private PlayNotificationSoundsTweak playNotificationSoundsTweak = new PlayNotificationSoundsTweak();
-        private ToolQuitOnLaunchTweak toolQuitOnLaunchTweak = new ToolQuitOnLaunchTweak();*/
-
         // General tab
         private EnableSteamTweak enableSteamTweak = new EnableSteamTweak();
         private AutoSigninTweak autoSigninTweak = new AutoSigninTweak();
@@ -617,9 +604,7 @@ namespace Fo76ini.Forms.FormMain
 
         private FasterFadeInTweak fasterFadeInTweak = new FasterFadeInTweak();
 
-        private ShowDamageNumbersNuclearWinterTweak showDamageNumbersNuclearWinterTweak = new ShowDamageNumbersNuclearWinterTweak();
         private ShowDamageNumbersAdventureTweak showDamageNumbersAdventureTweak = new ShowDamageNumbersAdventureTweak();
-        private EnableItemRarityColorsTweak enableItemRarityColorsTweak = new EnableItemRarityColorsTweak();
         private ShowPublicTeamNotificationsTweak showPublicTeamNotificationsTweak = new ShowPublicTeamNotificationsTweak();
         private ShowFloatingQuestMarkersTweak showFloatingQuestMarkersTweak = new ShowFloatingQuestMarkersTweak();
         private ShowFloatingQuestTextTweak showFloatingQuestTextTweak = new ShowFloatingQuestTextTweak();
@@ -628,8 +613,10 @@ namespace Fo76ini.Forms.FormMain
         private ShowCrosshairTweak showCrosshairTweak = new ShowCrosshairTweak();
         private ShowOtherPlayersNamesTweak showOtherPlayersNamesTweak = new ShowOtherPlayersNamesTweak();
         private ActiveEffectsOnHUDTweak activeEffectsOnHUDTweak = new ActiveEffectsOnHUDTweak();
+        private CorpseHighlightingTweak corpseHighlightingTweak = new CorpseHighlightingTweak();
         private FloatingQuestMarkersDistanceTweak floatingQuestMarkersDistanceTweak = new FloatingQuestMarkersDistanceTweak();
         private HUDOpacityTweak hudOpacityTweak = new HUDOpacityTweak();
+        private BackpackVisibleTweak backpackVisibleTweak = new BackpackVisibleTweak();
 
         private AutoTrackQuestWhenStartedTweak autoTrackMainQuestWhenStartedTweak = new AutoTrackQuestWhenStartedTweak("Main", "Main");
         private AutoTrackQuestWhenStartedTweak autoTrackSideQuestWhenStartedTweak = new AutoTrackQuestWhenStartedTweak("Side", "Side");
@@ -648,17 +635,20 @@ namespace Fo76ini.Forms.FormMain
         // Graphics
         private AntiAliasingTweak antiAliasingTweak = new AntiAliasingTweak();
         private AnisotropicFilteringTweak anisotropicFilteringTweak = new AnisotropicFilteringTweak();
-        private EnableDepthOfFieldTweak enableDepthOfFieldTweak = new EnableDepthOfFieldTweak();
+        private DepthOfFieldTweak enableDepthOfFieldTweak = new DepthOfFieldTweak();
         private MotionBlurTweak motionBlurTweak = new MotionBlurTweak();
         private RadialBlurTweak radialBlurTweak = new RadialBlurTweak();
         private LensFlareTweak lensFlareTweak = new LensFlareTweak();
         private AmbientOcclusionTweak ambientOcclusionTweak = new AmbientOcclusionTweak();
         private WaterDisplacementsTweak waterDisplacementsTweak = new WaterDisplacementsTweak();
+        private WaterReflectionsTweak waterReflectionsTweak = new WaterReflectionsTweak();
+        private WaterRefractionsTweak waterRefractionsTweak = new WaterRefractionsTweak();
         private FogTweak fogTweak = new FogTweak();
         private RainOcclusionTweak rainOcclusionTweak = new RainOcclusionTweak();
         private WetnessOcclusionTweak wetnessOcclusionTweak = new WetnessOcclusionTweak();
         private VolumetricLightingTweak volumetricLightingTweak = new VolumetricLightingTweak();
         private DisableAllGoreTweak disableAllGoreTweak = new DisableAllGoreTweak();
+        private BloodSplatterEnabledTweak bloodSplatterTweak = new BloodSplatterEnabledTweak();
         private ShadowMapResolutionTweak shadowMapResolutionTweak = new ShadowMapResolutionTweak();
         private ShadowBlurrinessTweak shadowBlurrinessTweak = new ShadowBlurrinessTweak();
         private ShadowDistanceTweak shadowDistanceTweak = new ShadowDistanceTweak();
@@ -698,14 +688,15 @@ namespace Fo76ini.Forms.FormMain
         private AudioMenuValTweak val6Tweak = new AudioMenuValTweak("6", "Pip-Boy Radio");
 
         // Controls tab
-        private MouseSensitivityTweak mouseSensitivityTweak = new MouseSensitivityTweak();
+        private MouseSensitivityTweakX mouseSensitivityTweakX = new MouseSensitivityTweakX();
+        private MouseSensitivityTweakY mouseSensitivityTweakY = new MouseSensitivityTweakY();
         private FixMouseSensitivityTweak fixMouseSensitivityTweak = new FixMouseSensitivityTweak();
         private FixAimSensitivityTweak fixAimSensitivityTweak = new FixAimSensitivityTweak();
-        private MouseAccelerationTweak mouseAccelerationTweak = new MouseAccelerationTweak();
         private MouseInvertXTweak mouseInvertXTweak = new MouseInvertXTweak();
         private MouseInvertYTweak mouseInvertYTweak = new MouseInvertYTweak();
         private GamepadEnableTweak gamepadEnableTweak = new GamepadEnableTweak();
         private EnableGamepadRumbleTweak enableGamepadRumbleTweak = new EnableGamepadRumbleTweak();
+        private AimAssistTweak aimAssistTweak = new AimAssistTweak();
 
         // Camera 
         private FOV1stPersonTweak fov1stPersonTweak = new FOV1stPersonTweak();

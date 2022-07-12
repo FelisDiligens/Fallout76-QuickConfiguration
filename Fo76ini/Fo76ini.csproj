@@ -145,6 +145,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ColorSlider\ColorSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ColorSlider\ColorSlider.designer.cs">
+      <DependentUpon>ColorSlider.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CustomToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -254,12 +260,19 @@
     <Compile Include="NexusAPI\NXMHandler.cs" />
     <Compile Include="NexusAPI\SingleSignOn.cs" />
     <Compile Include="Tweaks\Accessor.cs" />
-    <Compile Include="Tweaks\Graphics\BloomTweak.cs" />
+    <Compile Include="Tweaks\Controls\AimAssistTweak.cs" />
+    <Compile Include="Tweaks\Controls\Mouse\MouseSensitivityTweakY.cs" />
+    <Compile Include="Tweaks\Graphics\BackpackVisibleTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Effects\BloodSplatterEnabledTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Post-processing\BloomTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Water\WaterRefractionsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Water\WaterReflectionsTweak.cs" />
+    <Compile Include="Tweaks\Interface\CorpseHighlightingTweak.cs" />
     <Compile Include="Utilities\CustomFonts.cs" />
     <Compile Include="Utilities\Progress.cs" />
     <Compile Include="Tweaks\Audio\EnableAudioTweak.cs" />
-    <Compile Include="Tweaks\Audio\VoiceChatModeTweak.cs" />
-    <Compile Include="Tweaks\Audio\VoicePushToTalkEnabledTweak.cs" />
+    <Compile Include="Tweaks\Audio\VoiceChat\VoiceChatModeTweak.cs" />
+    <Compile Include="Tweaks\Audio\VoiceChat\VoicePushToTalkEnabledTweak.cs" />
     <Compile Include="Tweaks\Camera\ApplyCameraNodeAnimationsTweak.cs" />
     <Compile Include="Tweaks\Camera\CameraOverShoulderCombatAddYTweak.cs" />
     <Compile Include="Tweaks\Camera\CameraOverShoulderCombatPosXTweak.cs" />
@@ -269,13 +282,13 @@
     <Compile Include="Tweaks\Camera\CameraOverShoulderMeleeCombatPosZTweak.cs" />
     <Compile Include="Tweaks\Camera\CameraOverShoulderPosXTweak.cs" />
     <Compile Include="Tweaks\Camera\CameraOverShoulderPosZTweak.cs" />
-    <Compile Include="Tweaks\Camera\DefaultFOVTweak.cs" />
+    <Compile Include="Tweaks\Camera\FOV\DefaultFOVTweak.cs" />
     <Compile Include="Tweaks\Camera\DisableAutoVanityModeTweak.cs" />
     <Compile Include="Tweaks\Camera\FirstThirdPerspectiveSwitchDelayTweak.cs" />
     <Compile Include="Tweaks\Camera\ForceAutoVanityModeTweak.cs" />
-    <Compile Include="Tweaks\Camera\FOV1stPersonTweak.cs" />
-    <Compile Include="Tweaks\Camera\FOV3rdADSTweak.cs" />
-    <Compile Include="Tweaks\Camera\FieldOfViewTweak.cs" />
+    <Compile Include="Tweaks\Camera\FOV\FOV1stPersonTweak.cs" />
+    <Compile Include="Tweaks\Camera\FOV\FOV3rdADSTweak.cs" />
+    <Compile Include="Tweaks\Camera\FOV\FieldOfViewTweak.cs" />
     <Compile Include="Tweaks\Camera\PitchZoomOutMaxDistTweak.cs" />
     <Compile Include="Tweaks\Camera\SelfieCameraRotationSpeedTweak.cs" />
     <Compile Include="Tweaks\Camera\SelfieCameraTranslationSpeedTweak.cs" />
@@ -283,50 +296,48 @@
     <Compile Include="Tweaks\Camera\VanityModeMaxDistTweak.cs" />
     <Compile Include="Tweaks\Camera\VanityModeMinDistTweak.cs" />
     <Compile Include="Tweaks\Controls\EnableGamepadRumbleTweak.cs" />
-    <Compile Include="Tweaks\Controls\FixAimSensitivityTweak.cs" />
-    <Compile Include="Tweaks\Controls\FixMouseSensitivityTweak.cs" />
+    <Compile Include="Tweaks\Controls\Mouse\FixAimSensitivityTweak.cs" />
+    <Compile Include="Tweaks\Controls\Mouse\FixMouseSensitivityTweak.cs" />
     <Compile Include="Tweaks\Controls\GamepadEnableTweak.cs" />
-    <Compile Include="Tweaks\Controls\MouseAccelerationTweak.cs" />
-    <Compile Include="Tweaks\Controls\MouseInvertXTweak.cs" />
-    <Compile Include="Tweaks\Controls\MouseInvertYTweak.cs" />
-    <Compile Include="Tweaks\Controls\MouseSensitivityTweak.cs" />
-    <Compile Include="Tweaks\General\AutoSigninTweak.cs" />
+    <Compile Include="Tweaks\Controls\Mouse\MouseInvertXTweak.cs" />
+    <Compile Include="Tweaks\Controls\Mouse\MouseInvertYTweak.cs" />
+    <Compile Include="Tweaks\Controls\Mouse\MouseSensitivityTweakX.cs" />
+    <Compile Include="Tweaks\General\Login\AutoSigninTweak.cs" />
     <Compile Include="Tweaks\General\FasterFadeInTweak.cs" />
     <Compile Include="Tweaks\General\IntroVideoTweak.cs" />
     <Compile Include="Tweaks\Audio\PlayMainMenuMusicTweak.cs" />
     <Compile Include="Tweaks\General\ScreenshotIndexTweak.cs" />
     <Compile Include="Tweaks\General\SkipStartupSplash.cs" />
-    <Compile Include="Tweaks\Graphics\AmbientOcclusionTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Post-processing\AmbientOcclusionTweak.cs" />
     <Compile Include="Tweaks\Graphics\AnisotropicFilteringTweak.cs" />
-    <Compile Include="Tweaks\Graphics\AntiAliasingTweak.cs" />
-    <Compile Include="Tweaks\Graphics\BlendSplitDirShadowTweak.cs" />
-    <Compile Include="Tweaks\Graphics\DirShadowSplitsTweak.cs" />
-    <Compile Include="Tweaks\Graphics\DisableAllGoreTweak.cs" />
-    <Compile Include="Tweaks\Graphics\EnableDepthOfFieldTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Anti-aliasing\AntiAliasingTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Shadows\BlendSplitDirShadowTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Shadows\DirShadowSplitsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Effects\DisableAllGoreTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Post-processing\DepthOfFieldTweak.cs" />
     <Compile Include="Tweaks\Graphics\EnableGrassTweak.cs" />
-    <Compile Include="Tweaks\Graphics\FogTweak.cs" />
-    <Compile Include="Tweaks\Graphics\GrassFadeDistanceTweak.cs" />
-    <Compile Include="Tweaks\Graphics\LensFlareTweak.cs" />
-    <Compile Include="Tweaks\Graphics\LODFadeOutMultActorsTweak.cs" />
-    <Compile Include="Tweaks\Graphics\LODFadeOutMultItemsTweak.cs" />
-    <Compile Include="Tweaks\Graphics\LODFadeOutMultObjectsTweak.cs" />
-    <Compile Include="Tweaks\Graphics\MotionBlurTweak.cs" />
-    <Compile Include="Tweaks\Graphics\RadialBlurTweak.cs" />
-    <Compile Include="Tweaks\Graphics\RainOcclusionTweak.cs" />
-    <Compile Include="Tweaks\Graphics\ShadowBlurrinessTweak.cs" />
-    <Compile Include="Tweaks\Graphics\ShadowDistanceTweak.cs" />
-    <Compile Include="Tweaks\Graphics\ShadowMapResolutionTweak.cs" />
-    <Compile Include="Tweaks\Graphics\TAAPostOverlayTweak.cs" />
-    <Compile Include="Tweaks\Graphics\TAAPostSharpenTweak.cs" />
-    <Compile Include="Tweaks\Graphics\VolumetricLightingTweak.cs" />
-    <Compile Include="Tweaks\Graphics\WaterDisplacementsTweak.cs" />
-    <Compile Include="Tweaks\Graphics\ScreenSpaceReflectionsTweak.cs" />
-    <Compile Include="Tweaks\Graphics\WetnessOcclusionTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Weather\FogTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Rendering-distance\GrassFadeDistanceTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Post-processing\LensFlareTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Rendering-distance\LODFadeOutMultActorsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Rendering-distance\LODFadeOutMultItemsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Rendering-distance\LODFadeOutMultObjectsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Post-processing\MotionBlurTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Post-processing\RadialBlurTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Weather\RainOcclusionTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Shadows\ShadowBlurrinessTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Rendering-distance\ShadowDistanceTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Shadows\ShadowMapResolutionTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Anti-aliasing\TAAPostOverlayTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Anti-aliasing\TAAPostSharpenTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Lighting\VolumetricLightingTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Water\WaterDisplacementsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Post-processing\ScreenSpaceReflectionsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Weather\WetnessOcclusionTweak.cs" />
     <Compile Include="Tweaks\Interface\ActiveEffectsOnHUDTweak.cs" />
     <Compile Include="Tweaks\Interface\AutoTrackQuestWhenStartedTweak.cs" />
     <Compile Include="Tweaks\Interface\ConversationHistorySizeTweak.cs" />
     <Compile Include="Tweaks\Interface\DialogueSubtitlesTweak.cs" />
-    <Compile Include="Tweaks\Interface\EnableItemRarityColorsTweak.cs" />
     <Compile Include="Tweaks\Interface\EnablePowerArmorHUDTweak.cs" />
     <Compile Include="Tweaks\Interface\FixHUD4to3RatioTweak.cs" />
     <Compile Include="Tweaks\Interface\FloatingQuestMarkersDistanceTweak.cs" />
@@ -335,7 +346,6 @@
     <Compile Include="Tweaks\Interface\ShowCompassTweak.cs" />
     <Compile Include="Tweaks\Interface\ShowCrosshairTweak.cs" />
     <Compile Include="Tweaks\Interface\ShowDamageNumbersAdventureTweak.cs" />
-    <Compile Include="Tweaks\Interface\ShowDamageNumbersNuclearWinterTweak.cs" />
     <Compile Include="Tweaks\Interface\ShowDialogueHistoryTweak.cs" />
     <Compile Include="Tweaks\Interface\ShowFloatingQuestMarkersTweak.cs" />
     <Compile Include="Tweaks\Interface\ShowFloatingQuestTextTweak.cs" />
@@ -348,9 +358,9 @@
     <Compile Include="Tweaks\Video\PresentIntervalTweak.cs" />
     <Compile Include="Tweaks\Video\TopMostWindowTweak.cs" />
     <Compile Include="Tweaks\Video\WindowAlwaysActiveTweak.cs" />
-    <Compile Include="Tweaks\Volume\AudioMenuValTweak.cs" />
-    <Compile Include="Tweaks\Volume\MasterVolumeTweak.cs" />
-    <Compile Include="Tweaks\Volume\VivoxVoiceVolumeTweak.cs" />
+    <Compile Include="Tweaks\Audio\Volume\AudioMenuValTweak.cs" />
+    <Compile Include="Tweaks\Audio\Volume\MasterVolumeTweak.cs" />
+    <Compile Include="Tweaks\Audio\Volume\VivoxVoiceVolumeTweak.cs" />
     <Compile Include="NexusAPI\APIRequest.cs" />
     <Compile Include="Utilities\ClipboardUtils.cs" />
     <Compile Include="Configuration.cs" />
@@ -388,10 +398,10 @@
     <Compile Include="Interface\InvalidXmlException.cs" />
     <Compile Include="Interface\Translation.Shared.cs" />
     <Compile Include="Profiles\ProfileManager.cs" />
-    <Compile Include="Tweaks\Colors\PipboyColorTweak.cs" />
-    <Compile Include="Tweaks\Colors\PowerArmorPipboyColorTweak.cs" />
-    <Compile Include="Tweaks\Colors\QuickboyColorTweak.cs" />
-    <Compile Include="Tweaks\General\EnableSteamTweak.cs" />
+    <Compile Include="Tweaks\Pipboy\Colors\PipboyColorTweak.cs" />
+    <Compile Include="Tweaks\Pipboy\Colors\PowerArmorPipboyColorTweak.cs" />
+    <Compile Include="Tweaks\Pipboy\Colors\QuickboyColorTweak.cs" />
+    <Compile Include="Tweaks\General\Login\EnableSteamTweak.cs" />
     <Compile Include="Tweaks\ITweak.cs" />
     <Compile Include="Utilities\Log.cs" />
     <Compile Include="Utilities\Archive2.cs" />
@@ -414,6 +424,9 @@
     <Compile Include="Utilities\TextboxWriter.cs" />
     <Compile Include="Utilities\Utils.cs" />
     <Compile Include="Utilities\XMLExtensions.cs" />
+    <EmbeddedResource Include="Controls\ColorSlider\ColorSlider.resx">
+      <DependentUpon>ColorSlider.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UserControlHero.resx">
       <DependentUpon>UserControlHero.cs</DependentUpon>
     </EmbeddedResource>
@@ -494,6 +507,8 @@
     <None Include="Resources\fallout76-logo-black.png" />
     <None Include="Resources\fallout76-logo-white.png" />
     <None Include="Resources\code-24.png" />
+    <None Include="Resources\BTN_Thumb.bmp" />
+    <None Include="Resources\BTN_Thumb_Blue.bmp" />
     <Content Include="Resources\folder-3-16.png" />
     <None Include="Resources\fov_70.jpg" />
     <None Include="Resources\fov_75.jpg" />

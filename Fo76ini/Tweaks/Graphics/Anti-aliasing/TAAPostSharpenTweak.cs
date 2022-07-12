@@ -10,7 +10,7 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description => String.Join(
             Environment.NewLine,
-            "Sharpens the image.",
+            "Sharpening amount post-TAA. Increasing this value past 1 causes graphical anomalies.",
             "Default: 0.21",
             "Recommended: 0.4");
 

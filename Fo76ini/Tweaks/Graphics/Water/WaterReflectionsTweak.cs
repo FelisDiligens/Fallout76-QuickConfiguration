@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fo76ini.Tweaks.Interface
+namespace Fo76ini.Tweaks.Graphics
 {
-    class ShowDamageNumbersNuclearWinterTweak : ITweak<bool>, ITweakInfo
+    class WaterReflectionsTweak : ITweak<bool>, ITweakInfo
     {
         public string Description => "";
 
-        public WarnLevel WarnLevel => WarnLevel.None;
+        public WarnLevel WarnLevel => WarnLevel.Experimental;
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 
-        public string AffectedValues => "[NuclearWinter]bShowDamageNumbers";
+        public string AffectedValues => "[Water]bUseWaterReflections";
 
         public bool DefaultValue => true;
 
@@ -22,12 +22,12 @@ namespace Fo76ini.Tweaks.Interface
 
         public bool GetValue()
         {
-            return IniFiles.GetBool("NuclearWinter", "bShowDamageNumbers", DefaultValue);
+            return IniFiles.GetBool("Water", "bUseWaterReflections", DefaultValue);
         }
 
         public void SetValue(bool value)
         {
-            IniFiles.F76Prefs.Set("NuclearWinter", "bShowDamageNumbers", value);
+            IniFiles.F76Prefs.Set("Water", "bUseWaterReflections", value);
         }
 
         public void ResetValue()

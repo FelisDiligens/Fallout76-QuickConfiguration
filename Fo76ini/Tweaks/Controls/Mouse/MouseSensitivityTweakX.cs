@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fo76ini.Tweaks.Controls
 {
-    class MouseSensitivityTweak : ITweak<float>, ITweakInfo
+    class MouseSensitivityTweakX : ITweak<float>, ITweakInfo
     {
         public string Description => "";
 
@@ -14,7 +14,7 @@ namespace Fo76ini.Tweaks.Controls
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 
-        public string AffectedValues => "[Controls]fMouseHeadingSensitivity(Y)";
+        public string AffectedValues => "[Controls]fMouseHeadingSensitivity";
 
         public float DefaultValue => 0.03f;
 
@@ -27,9 +27,7 @@ namespace Fo76ini.Tweaks.Controls
 
         public void SetValue(float value)
         {
-            // TODO: Fallout76Custom.ini had no effect. I hope Fallout76Prefs.ini will have an effect this time:
             IniFiles.F76Prefs.Set("Controls", "fMouseHeadingSensitivity", value);
-            IniFiles.F76Prefs.Set("Controls", "fMouseHeadingSensitivityY", value);
         }
 
         public void ResetValue()

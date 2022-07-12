@@ -29,8 +29,8 @@ namespace Fo76ini.Tweaks.Graphics
         public string Description => 
             "Smoothes (pixelated) edges of objects.\n" +
             "Disable to improve performance at the cost of degraded visual quality.\n\n" +
-            "ℹ️ FXAA is not supported by Fallout 76.\n" +
-            "Setting the value to 'FXAA' simply disables anti aliasing.";
+            "ℹ️ \"FXAA\" does not work.\n" +
+            "Setting the value to \"FXAA\" simply disables anti aliasing.";
 
         public WarnLevel WarnLevel => WarnLevel.None;
 

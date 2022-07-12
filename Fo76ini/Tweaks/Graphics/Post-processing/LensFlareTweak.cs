@@ -12,9 +12,9 @@ namespace Fo76ini.Tweaks.Graphics
 
         public WarnLevel WarnLevel => WarnLevel.Experimental;
 
-        public string AffectedFiles => "Fallout76Prefs.ini";
+        public string AffectedFiles => "Fallout76Prefs.ini, Fallout76Custom.ini";
 
-        public string AffectedValues => "[ImageSpace]bLensFlare";
+        public string AffectedValues => "[ImageSpace]bLensFlare, [Display]fIBLensFlaresGlobalIntensity";
 
         public bool DefaultValue => true;
 
@@ -28,6 +28,10 @@ namespace Fo76ini.Tweaks.Graphics
         public void SetValue(bool value)
         {
             IniFiles.F76Prefs.Set("ImageSpace", "bLensFlare", value);
+            if (value)
+                IniFiles.F76Custom.Remove("Display", "fIBLensFlaresGlobalIntensity"); // Default is 0.25
+            else
+                IniFiles.F76Custom.Set("Display", "fIBLensFlaresGlobalIntensity", 0);
         }
 
         public void ResetValue()

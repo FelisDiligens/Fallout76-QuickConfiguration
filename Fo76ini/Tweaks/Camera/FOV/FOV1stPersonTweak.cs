@@ -8,7 +8,7 @@ namespace Fo76ini.Tweaks.Camera
 {
     class FOV1stPersonTweak : ITweak<float>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "Viewmodel FOV: affects your hands, gun, Pip-Boy etc.";
 
         public WarnLevel WarnLevel => WarnLevel.Experimental;
 

@@ -9,8 +9,8 @@ namespace Fo76ini.Tweaks.Graphics
     class ScreenSpaceReflectionsTweak : ITweak<bool>, ITweakInfo
     {
         public string Description =>
-            "Enables/disables screen space reflections.\n" +
-            "⚠️ Will make water disappear or become pitch black!";
+            "Enables reflections on shiny surfaces like water, puddles, and metals.\n" +
+            "⚠️ Could make water disappear or become pitch black!";
 
         public WarnLevel WarnLevel => WarnLevel.Unsafe;
 

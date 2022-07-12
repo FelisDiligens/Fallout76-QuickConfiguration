@@ -10,7 +10,7 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description => String.Join(
             Environment.NewLine,
-            "Sharpens the image.",
+            "Opacity of the sharpened overlay post-TAA. Increasing this value increases the visibility of the sharpened image on top of the blurry one.",
             "Default: 0.21");
 
         public WarnLevel WarnLevel => WarnLevel.None;

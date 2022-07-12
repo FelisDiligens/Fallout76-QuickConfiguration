@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Fo76ini.Tweaks.Graphics
 {
     // TODO: More DoF tweaks instead of just on/off.
-    class EnableDepthOfFieldTweak : ITweak<bool>, ITweakInfo
+    class DepthOfFieldTweak : ITweak<bool>, ITweakInfo
     {
         public string Description => "Disabling this will disable all Depth of Field effects.";
 

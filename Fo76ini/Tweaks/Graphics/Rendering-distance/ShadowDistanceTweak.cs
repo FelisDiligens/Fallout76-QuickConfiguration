@@ -21,7 +21,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 
-        public string AffectedValues => "[Display]fDirShadowDistance";
+        public string AffectedValues => "[Display]fShadowDistance, [Display]fDirShadowDistance";
 
         public float DefaultValue => 90000f;
 
@@ -35,6 +35,7 @@ namespace Fo76ini.Tweaks.Graphics
         public void SetValue(float value)
         {
             IniFiles.F76Prefs.Set("Display", "fDirShadowDistance", value);
+            IniFiles.F76Prefs.Set("Display", "fShadowDistance", value);
         }
 
         public void ResetValue()

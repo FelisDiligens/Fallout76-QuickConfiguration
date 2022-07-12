@@ -217,6 +217,15 @@ namespace Fo76ini.Forms.FormMain
                 }
             ));*/
 
+            DropDown.Add("CorpseHighlighting", new DropDown(
+                this.comboBoxHighlightCorpses,
+                new string[] {
+                    "Disabled",
+                    "Clear On Inspect",
+                    "Clear On Remove"
+                }
+            ));
+
             #endregion
 
             /*
