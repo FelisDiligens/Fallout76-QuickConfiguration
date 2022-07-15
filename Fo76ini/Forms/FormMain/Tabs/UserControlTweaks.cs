@@ -243,6 +243,7 @@ p, td, th { font-size: 10pt; }
 table, tr, td, th { border-collapse: collapse; border: 1px solid gray; }
 td, th { padding: 10px; }
 .no-warn { color: black; font-weight: bold; }
+.experimental { color: #FF00FF; font-weight: bold; }
 .notice { color: blue; font-weight: bold; }
 .warn { color: rgb(181, 124, 11); font-weight: bold; }
 .unsafe { color: red; font-weight: bold; }
@@ -270,6 +271,10 @@ Some tweaks might be problematic or have side effects which is why I color-coded
 <tr>
 <td class=""notice"">Blue</td>
 <td>There is a notice that might be worth reading about.</td>
+</tr>
+<tr>
+<td class=""experimental"">Magenta</td>
+<td>This tweak might not do anything.</td>
 </tr>
 <tr>
 <td class=""warn"">Yellow</td>

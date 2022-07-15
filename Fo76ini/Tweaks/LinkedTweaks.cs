@@ -113,8 +113,10 @@ namespace Fo76ini.Tweaks
             switch (info.WarnLevel)
             {
                 case WarnLevel.Notice:
-                case WarnLevel.Experimental:
                     linkedControl.Control.ForeColor = Color.Blue;
+                    break;
+                case WarnLevel.Experimental:
+                    linkedControl.Control.ForeColor = Color.Fuchsia;
                     break;
                 case WarnLevel.Warning:
                     linkedControl.Control.ForeColor = Color.FromArgb(181, 124, 11);
