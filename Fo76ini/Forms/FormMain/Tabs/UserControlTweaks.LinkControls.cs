@@ -73,7 +73,6 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(comboBoxDisplayMode, toolTip, displayModeTweak);
             LinkedTweaks.LinkInfo(labelDisplayMode, toolTip, displayModeTweak);
             LinkedTweaks.LinkInfo(checkBoxVSync, toolTip, presentIntervalTweak);
-            LinkedTweaks.LinkInfo(checkBoxAlwaysActive, toolTip, windowAlwaysActiveTweak);
             LinkedTweaks.LinkInfo(checkBoxTopMostWindow, toolTip, topMostWindowTweak);
             LinkedTweaks.LinkInfo(checkBoxFixHUDFor5_4and4_3, toolTip, fixHUD4to3RatioTweak);
 
@@ -358,9 +357,6 @@ namespace Fo76ini.Forms.FormMain
 
             // iPresentInterval
             LinkedTweaks.LinkTweak(checkBoxVSync, presentIntervalTweak);
-
-            // Always active
-            LinkedTweaks.LinkTweak(checkBoxAlwaysActive, windowAlwaysActiveTweak);
 
             // Top most window
             LinkedTweaks.LinkTweak(checkBoxTopMostWindow, topMostWindowTweak);

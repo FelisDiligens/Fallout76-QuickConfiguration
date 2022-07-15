@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fo76ini.Tweaks.Interface
 {
@@ -11,7 +7,8 @@ namespace Fo76ini.Tweaks.Interface
         public string Description => String.Join(
             Environment.NewLine,
             "Fixes hidden / borked",
-            "  • lock picking screen and",
+            "  • Quick-Boy screen,",
+            "  • lock picking screen, and",
             "  • Power Armor HUD",
             "for 5:4 and 4:3 screens.",
             "",

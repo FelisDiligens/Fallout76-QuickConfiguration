@@ -138,7 +138,6 @@
             this.comboBoxResolution = new System.Windows.Forms.ComboBox();
             this.buttonDetectResolution = new System.Windows.Forms.Button();
             this.labelCustomResolution = new System.Windows.Forms.Label();
-            this.checkBoxAlwaysActive = new System.Windows.Forms.CheckBox();
             this.labelResolution = new System.Windows.Forms.Label();
             this.checkBoxTopMostWindow = new System.Windows.Forms.CheckBox();
             this.numCustomResW = new System.Windows.Forms.NumericUpDown();
@@ -284,6 +283,7 @@
             this.radioButtonAccount8 = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount9 = new System.Windows.Forms.RadioButton();
             this.groupBoxLogin = new System.Windows.Forms.GroupBox();
+            this.richTextBoxCredentialsExplanation = new System.Windows.Forms.RichTextBox();
             this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableSteam = new System.Windows.Forms.CheckBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
@@ -293,7 +293,6 @@
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelTweaksDesc = new System.Windows.Forms.Label();
             this.labelTweaksTitle = new System.Windows.Forms.Label();
-            this.richTextBoxCredentialsExplanation = new System.Windows.Forms.RichTextBox();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
@@ -978,7 +977,7 @@
             this.groupBoxGraphics.Controls.Add(this.groupBoxWater);
             this.groupBoxGraphics.Controls.Add(this.groupBoxWeather);
             this.groupBoxGraphics.Controls.Add(this.groupBoxPostProcessing);
-            this.groupBoxGraphics.Location = new System.Drawing.Point(9, 245);
+            this.groupBoxGraphics.Location = new System.Drawing.Point(9, 206);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
             this.groupBoxGraphics.Size = new System.Drawing.Size(400, 992);
@@ -1382,9 +1381,9 @@
             this.checkBoxVSync.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxVSync.Location = new System.Drawing.Point(9, 82);
             this.checkBoxVSync.Name = "checkBoxVSync";
-            this.checkBoxVSync.Size = new System.Drawing.Size(137, 17);
+            this.checkBoxVSync.Size = new System.Drawing.Size(214, 17);
             this.checkBoxVSync.TabIndex = 29;
-            this.checkBoxVSync.Text = "Frame rate cap (VSync)";
+            this.checkBoxVSync.Text = "Vertical synchronization (frame rate cap)";
             this.checkBoxVSync.UseVisualStyleBackColor = true;
             // 
             // groupBoxLighting
@@ -1720,7 +1719,6 @@
             this.groupBoxDisplay.Controls.Add(this.comboBoxResolution);
             this.groupBoxDisplay.Controls.Add(this.buttonDetectResolution);
             this.groupBoxDisplay.Controls.Add(this.labelCustomResolution);
-            this.groupBoxDisplay.Controls.Add(this.checkBoxAlwaysActive);
             this.groupBoxDisplay.Controls.Add(this.labelResolution);
             this.groupBoxDisplay.Controls.Add(this.checkBoxTopMostWindow);
             this.groupBoxDisplay.Controls.Add(this.numCustomResW);
@@ -1730,7 +1728,7 @@
             this.groupBoxDisplay.Location = new System.Drawing.Point(9, 9);
             this.groupBoxDisplay.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxDisplay.Name = "groupBoxDisplay";
-            this.groupBoxDisplay.Size = new System.Drawing.Size(400, 224);
+            this.groupBoxDisplay.Size = new System.Drawing.Size(400, 185);
             this.groupBoxDisplay.TabIndex = 26;
             this.groupBoxDisplay.TabStop = false;
             this.groupBoxDisplay.Text = "Display";
@@ -1748,7 +1746,7 @@
             // checkBoxFixHUDFor5_4and4_3
             // 
             this.checkBoxFixHUDFor5_4and4_3.AutoSize = true;
-            this.checkBoxFixHUDFor5_4and4_3.Location = new System.Drawing.Point(9, 197);
+            this.checkBoxFixHUDFor5_4and4_3.Location = new System.Drawing.Point(9, 152);
             this.checkBoxFixHUDFor5_4and4_3.Name = "checkBoxFixHUDFor5_4and4_3";
             this.checkBoxFixHUDFor5_4and4_3.Size = new System.Drawing.Size(225, 17);
             this.checkBoxFixHUDFor5_4and4_3.TabIndex = 24;
@@ -1786,16 +1784,6 @@
             this.labelCustomResolution.Size = new System.Drawing.Size(93, 13);
             this.labelCustomResolution.TabIndex = 2;
             this.labelCustomResolution.Text = "Custom resolution:";
-            // 
-            // checkBoxAlwaysActive
-            // 
-            this.checkBoxAlwaysActive.AutoSize = true;
-            this.checkBoxAlwaysActive.Location = new System.Drawing.Point(9, 152);
-            this.checkBoxAlwaysActive.Name = "checkBoxAlwaysActive";
-            this.checkBoxAlwaysActive.Size = new System.Drawing.Size(91, 17);
-            this.checkBoxAlwaysActive.TabIndex = 22;
-            this.checkBoxAlwaysActive.Text = "Always active";
-            this.checkBoxAlwaysActive.UseVisualStyleBackColor = true;
             // 
             // labelResolution
             // 
@@ -3899,6 +3887,17 @@
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Login with Bethesda.net";
             // 
+            // richTextBoxCredentialsExplanation
+            // 
+            this.richTextBoxCredentialsExplanation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxCredentialsExplanation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxCredentialsExplanation.ForeColor = System.Drawing.Color.DimGray;
+            this.richTextBoxCredentialsExplanation.Location = new System.Drawing.Point(12, 164);
+            this.richTextBoxCredentialsExplanation.Name = "richTextBoxCredentialsExplanation";
+            this.richTextBoxCredentialsExplanation.Size = new System.Drawing.Size(387, 172);
+            this.richTextBoxCredentialsExplanation.TabIndex = 30;
+            this.richTextBoxCredentialsExplanation.Text = resources.GetString("richTextBoxCredentialsExplanation.Text");
+            // 
             // checkBoxAutoSignin
             // 
             this.checkBoxAutoSignin.AutoSize = true;
@@ -3989,17 +3988,6 @@
             this.labelTweaksTitle.Size = new System.Drawing.Size(82, 30);
             this.labelTweaksTitle.TabIndex = 71;
             this.labelTweaksTitle.Text = "Tweaks";
-            // 
-            // richTextBoxCredentialsExplanation
-            // 
-            this.richTextBoxCredentialsExplanation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxCredentialsExplanation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxCredentialsExplanation.ForeColor = System.Drawing.Color.DimGray;
-            this.richTextBoxCredentialsExplanation.Location = new System.Drawing.Point(12, 164);
-            this.richTextBoxCredentialsExplanation.Name = "richTextBoxCredentialsExplanation";
-            this.richTextBoxCredentialsExplanation.Size = new System.Drawing.Size(387, 172);
-            this.richTextBoxCredentialsExplanation.TabIndex = 30;
-            this.richTextBoxCredentialsExplanation.Text = resources.GetString("richTextBoxCredentialsExplanation.Text");
             // 
             // toolTip
             // 
@@ -4263,7 +4251,6 @@
         private System.Windows.Forms.ComboBox comboBoxResolution;
         private System.Windows.Forms.Button buttonDetectResolution;
         private System.Windows.Forms.Label labelCustomResolution;
-        private System.Windows.Forms.CheckBox checkBoxAlwaysActive;
         private System.Windows.Forms.Label labelResolution;
         private System.Windows.Forms.CheckBox checkBoxTopMostWindow;
         private System.Windows.Forms.NumericUpDown numCustomResW;
