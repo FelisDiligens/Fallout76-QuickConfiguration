@@ -274,7 +274,7 @@ Some tweaks might be problematic or have side effects which is why I color-coded
 </tr>
 <tr>
 <td class=""experimental"">Magenta</td>
-<td>This tweak might not do anything.</td>
+<td>Experimental/Untested: This tweak might not do anything.</td>
 </tr>
 <tr>
 <td class=""warn"">Yellow</td>
