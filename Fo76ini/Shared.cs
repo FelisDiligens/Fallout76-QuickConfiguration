@@ -44,6 +44,7 @@ namespace Fo76ini
             public const string AppModManagerHelpURL = "https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Mod-Manager-Guide";
             public const string AppNexusLoginFailedHelpURL = "https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting:-Login-with-NexusMods-failed";
             public const string AppINIErrorHelpURL = "https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting:-*.ini-files";
+            public const string AppGameProfilesHelpURL = "https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Game-Profiles";
 
             // Remote files:
             // (These files are downloaded by the tool)

@@ -36,6 +36,7 @@ namespace Fo76ini.Profiles
         public string GamePath = "";
         public string ExecutableName = "Fallout76.exe";
         public string IniPrefix = "Fallout76";
+        public string IniParentPath = null;
         public string ExecParameters = "";
         public string LauncherURL;
         public LaunchOption PreferredLaunchOption = LaunchOption.OpenURL;
@@ -45,19 +46,18 @@ namespace Fo76ini.Profiles
         /// </summary>
         public void SetDefaultSettings(GameEdition edition)
         {
+            this.IniParentPath = IniFiles.DefaultParentPath;
+            this.IniPrefix = "Fallout76";
+            this.ExecutableName = "Fallout76.exe";
+            this.PreferredLaunchOption = LaunchOption.OpenURL;
+
             switch (edition)
             {
                 case GameEdition.Steam:
-                    this.ExecutableName = "Fallout76.exe";
-                    this.IniPrefix = "Fallout76";
                     this.LauncherURL = "steam://run/1151340";
-                    this.PreferredLaunchOption = LaunchOption.OpenURL;
                     break;
                 case GameEdition.SteamPTS:
-                    this.ExecutableName = "Fallout76.exe";
-                    this.IniPrefix = "Fallout76";
                     this.LauncherURL = "steam://run/1836200";
-                    this.PreferredLaunchOption = LaunchOption.OpenURL;
                     break;
                 case GameEdition.Xbox:
                     this.ExecutableName = "Project76_GamePass.exe";
@@ -85,23 +85,14 @@ namespace Fo76ini.Profiles
                      * This also works with Process.Start(@"shell:appsfolder\BethesdaSoftworks.Fallout76-PC_3275kfvn8vcwc!Fallout76");
                      */
                     this.LauncherURL = @"shell:appsfolder\BethesdaSoftworks.Fallout76-PC_3275kfvn8vcwc!Fallout76";
-                    this.PreferredLaunchOption = LaunchOption.OpenURL;
                     break;
                 case GameEdition.BethesdaNet:
-                    this.ExecutableName = "Fallout76.exe";
-                    this.IniPrefix = "Fallout76";
                     this.LauncherURL = "bethesdanet://run/20";
-                    this.PreferredLaunchOption = LaunchOption.OpenURL;
                     break;
                 case GameEdition.BethesdaNetPTS:
-                    this.ExecutableName = "Fallout76.exe";
-                    this.IniPrefix = "Fallout76";
                     this.LauncherURL = "bethesdanet://run/57";
-                    this.PreferredLaunchOption = LaunchOption.OpenURL;
                     break;
                 default:
-                    this.ExecutableName = "Fallout76.exe";
-                    this.IniPrefix = "Fallout76";
                     this.LauncherURL = "";
                     this.PreferredLaunchOption = LaunchOption.RunExec;
                     break;
@@ -117,6 +108,7 @@ namespace Fo76ini.Profiles
                 new XElement("ExecParameters", ExecParameters),
                 new XElement("LauncherURL", LauncherURL),
                 new XElement("IniPrefix", IniPrefix),
+                new XElement("IniPath", IniParentPath),
                 new XElement("GameEdition", Edition.ToString()),
                 new XElement("LaunchOption", PreferredLaunchOption.ToString())
             );
@@ -134,6 +126,12 @@ namespace Fo76ini.Profiles
             game.ExecParameters = xmlGameInstance.Element("ExecParameters").Value;
             game.LauncherURL = xmlGameInstance.Element("LauncherURL").Value;
             game.IniPrefix = xmlGameInstance.Element("IniPrefix").Value;
+
+            if (xmlGameInstance.Element("IniPath") != null)
+                game.IniParentPath = xmlGameInstance.Element("IniPath").Value;
+
+            if (!game.ValidateIniPath())
+                game.IniParentPath = IniFiles.DefaultParentPath;
 
             if (Enum.TryParse(xmlGameInstance.Element("GameEdition").Value, out GameEdition edition))
                 game.Edition = edition;
@@ -186,6 +184,19 @@ namespace Fo76ini.Profiles
                     }
                     break;
             }
+        }
+
+        public static bool ValidateIniPath(string path)
+        {
+            return
+                path != null &&
+                path.Trim().Length > 0 &&
+                Directory.Exists(path);
+        }
+
+        public bool ValidateIniPath()
+        {
+            return ValidateIniPath(IniParentPath);
         }
 
         /// <summary>

@@ -135,6 +135,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             this.textBoxGamePath.Text = game.GamePath;
             this.textBoxExecutable.Text = game.ExecutableName;
             this.textBoxIniPrefix.Text = game.IniPrefix;
+            this.textBoxIniPath.Text = game.IniParentPath;
             this.textBoxParameters.Text = game.ExecParameters;
             this.textBoxLaunchURL.Text = game.LauncherURL;
 
@@ -362,6 +363,36 @@ namespace Fo76ini.Forms.FormMain.Tabs
             ProfileManager.SelectedGame.IniPrefix = this.textBoxIniPrefix.Text;
         }
 
+        private void textBoxIniPath_TextChanged(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+            ProfileManager.SelectedGame.IniParentPath = this.textBoxIniPath.Text;
+            this.textBoxIniPath.ForeColor = ProfileManager.SelectedGame.ValidateIniPath() ? Color.Black : Color.Maroon;
+        }
+
+        private void buttonPickIniPath_Click(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                string path = dialog.FileName;
+                if (GameInstance.ValidateIniPath(path))
+                {
+                    this.textBoxIniPath.Text = path;
+                    ProfileManager.SelectedGame.IniParentPath = path;
+                    UpdateEditingScreen();
+                }
+                else
+                    MsgBox.Show("Invalid *.ini path", "Please pick a different path.");
+            }
+            this.Focus();
+        }
+
         private void textBoxExecutable_TextChanged(object sender, EventArgs e)
         {
             if (UpdatingUI)
@@ -389,6 +420,11 @@ namespace Fo76ini.Forms.FormMain.Tabs
         private void checkBoxMoreOptions_CheckedChanged(object sender, EventArgs e)
         {
             this.panelAdvancedOptions.Visible = checkBoxMoreOptions.Checked;
+        }
+
+        private void linkLabelProfilesHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Utils.OpenURL(Shared.URLs.AppGameProfilesHelpURL);
         }
     }
 }

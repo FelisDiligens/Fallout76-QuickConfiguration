@@ -27,7 +27,7 @@ namespace Fo76ini
             // Create folders, if not present:
             Directory.CreateDirectory(Shared.AppConfigFolder);
             Directory.CreateDirectory(Shared.AppTranslationsFolder);
-            Directory.CreateDirectory(IniFiles.ParentPath);
+            Directory.CreateDirectory(IniFiles.DefaultParentPath);
 
             /*
              * Load app configuration:

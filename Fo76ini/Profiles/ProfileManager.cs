@@ -152,7 +152,7 @@ namespace Fo76ini.Profiles
         private static void CreateNewDefaultProfile()
         {
             GameInstance defaultGame = new GameInstance();
-            if (File.Exists(Path.Combine(IniFiles.ParentPath, "Project76.ini")))
+            if (File.Exists(Path.Combine(IniFiles.DefaultParentPath, "Project76.ini")))
             {
                 // "Project76.ini" exists, which means the user has it from the Microsoft Store
                 defaultGame.Edition = GameEdition.Xbox;

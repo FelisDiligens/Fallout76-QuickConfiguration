@@ -22,7 +22,13 @@ namespace Fo76ini
         /// <summary>
         /// "C:\Users\[username]\Documents\My Games\Fallout 76\"
         /// </summary>
-        public static readonly string ParentPath;
+        public static readonly string DefaultParentPath;
+
+        /// <summary>
+        /// usually "C:\Users\[username]\Documents\My Games\Fallout 76\"
+        /// but depends on profile
+        /// </summary>
+        public static string ParentPath;
 
         /// <summary>
         /// "%LOCALAPPDATA%\Fallout 76 Quick Configuration\config.ini"
@@ -46,11 +52,13 @@ namespace Fo76ini
 
         static IniFiles()
         {
-            ParentPath = Path.Combine(
+            DefaultParentPath = Path.Combine(
                 // KnownFolders.DocumentsLocalized.ExpandedPath <- seems to not exist on Windows 7
                 KnownFolders.Documents.ExpandedPath, // Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
                 @"My Games\Fallout 76\"
             );
+
+            ParentPath = DefaultParentPath;
 
             ConfigPath = Path.Combine(Shared.AppConfigFolder, "config.ini");
 
@@ -75,6 +83,9 @@ namespace Fo76ini
         /// <param name="game"></param>
         public static void Load(GameInstance game)
         {
+            ParentPath = game.IniParentPath;
+            Directory.CreateDirectory(ParentPath);
+
             F76 = new IniFile(
                 Path.Combine(ParentPath, $"{game.IniPrefix}.ini"),
                 DefaultF76Path

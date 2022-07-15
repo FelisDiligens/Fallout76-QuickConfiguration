@@ -53,6 +53,11 @@
             this.checkBoxMoreOptions = new System.Windows.Forms.CheckBox();
             this.labelGamePath = new System.Windows.Forms.Label();
             this.panelAdvancedOptions = new System.Windows.Forms.Panel();
+            this.pictureBoxAPIKeyHelp = new System.Windows.Forms.PictureBox();
+            this.linkLabelProfilesHelp = new System.Windows.Forms.LinkLabel();
+            this.labelIniPath = new System.Windows.Forms.Label();
+            this.buttonPickIniPath = new System.Windows.Forms.Button();
+            this.textBoxIniPath = new System.Windows.Forms.TextBox();
             this.textBoxLaunchURL = new System.Windows.Forms.TextBox();
             this.labelProfileAdvancedOptions = new System.Windows.Forms.Label();
             this.labelLaunchURL = new System.Windows.Forms.Label();
@@ -77,6 +82,7 @@
             this.tabPageEdit.SuspendLayout();
             this.panelSettings.SuspendLayout();
             this.panelAdvancedOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -221,10 +227,10 @@
             this.linkLabelNavigationBack.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabelNavigationBack.Location = new System.Drawing.Point(12, 45);
             this.linkLabelNavigationBack.Name = "linkLabelNavigationBack";
-            this.linkLabelNavigationBack.Size = new System.Drawing.Size(120, 17);
+            this.linkLabelNavigationBack.Size = new System.Drawing.Size(220, 17);
             this.linkLabelNavigationBack.TabIndex = 41;
             this.linkLabelNavigationBack.TabStop = true;
-            this.linkLabelNavigationBack.Text = "← Back to selection";
+            this.linkLabelNavigationBack.Text = "← Save profile and back to selection";
             this.linkLabelNavigationBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNavigationBack_LinkClicked);
             // 
             // panelSettings
@@ -263,7 +269,7 @@
             // checkBoxMoreOptions
             // 
             this.checkBoxMoreOptions.AutoSize = true;
-            this.checkBoxMoreOptions.Location = new System.Drawing.Point(9, 114);
+            this.checkBoxMoreOptions.Location = new System.Drawing.Point(9, 110);
             this.checkBoxMoreOptions.Name = "checkBoxMoreOptions";
             this.checkBoxMoreOptions.Size = new System.Drawing.Size(116, 17);
             this.checkBoxMoreOptions.TabIndex = 41;
@@ -282,6 +288,11 @@
             // 
             // panelAdvancedOptions
             // 
+            this.panelAdvancedOptions.Controls.Add(this.pictureBoxAPIKeyHelp);
+            this.panelAdvancedOptions.Controls.Add(this.linkLabelProfilesHelp);
+            this.panelAdvancedOptions.Controls.Add(this.labelIniPath);
+            this.panelAdvancedOptions.Controls.Add(this.buttonPickIniPath);
+            this.panelAdvancedOptions.Controls.Add(this.textBoxIniPath);
             this.panelAdvancedOptions.Controls.Add(this.textBoxLaunchURL);
             this.panelAdvancedOptions.Controls.Add(this.labelProfileAdvancedOptions);
             this.panelAdvancedOptions.Controls.Add(this.labelLaunchURL);
@@ -295,14 +306,61 @@
             this.panelAdvancedOptions.Controls.Add(this.labelExecutable);
             this.panelAdvancedOptions.Controls.Add(this.textBoxIniPrefix);
             this.panelAdvancedOptions.Controls.Add(this.labelIniPrefix);
-            this.panelAdvancedOptions.Location = new System.Drawing.Point(0, 137);
+            this.panelAdvancedOptions.Location = new System.Drawing.Point(0, 133);
             this.panelAdvancedOptions.Name = "panelAdvancedOptions";
-            this.panelAdvancedOptions.Size = new System.Drawing.Size(411, 251);
+            this.panelAdvancedOptions.Size = new System.Drawing.Size(411, 334);
             this.panelAdvancedOptions.TabIndex = 40;
+            // 
+            // pictureBoxAPIKeyHelp
+            // 
+            this.pictureBoxAPIKeyHelp.Image = global::Fo76ini.Properties.Resources.help_24;
+            this.pictureBoxAPIKeyHelp.Location = new System.Drawing.Point(9, 304);
+            this.pictureBoxAPIKeyHelp.Name = "pictureBoxAPIKeyHelp";
+            this.pictureBoxAPIKeyHelp.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxAPIKeyHelp.TabIndex = 113;
+            this.pictureBoxAPIKeyHelp.TabStop = false;
+            // 
+            // linkLabelProfilesHelp
+            // 
+            this.linkLabelProfilesHelp.AutoSize = true;
+            this.linkLabelProfilesHelp.Location = new System.Drawing.Point(39, 310);
+            this.linkLabelProfilesHelp.Name = "linkLabelProfilesHelp";
+            this.linkLabelProfilesHelp.Size = new System.Drawing.Size(86, 13);
+            this.linkLabelProfilesHelp.TabIndex = 44;
+            this.linkLabelProfilesHelp.TabStop = true;
+            this.linkLabelProfilesHelp.Text = "Show wiki article";
+            this.linkLabelProfilesHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelProfilesHelp_LinkClicked);
+            // 
+            // labelIniPath
+            // 
+            this.labelIniPath.AutoSize = true;
+            this.labelIniPath.Location = new System.Drawing.Point(10, 167);
+            this.labelIniPath.Name = "labelIniPath";
+            this.labelIniPath.Size = new System.Drawing.Size(51, 13);
+            this.labelIniPath.TabIndex = 43;
+            this.labelIniPath.Text = "*.ini path:";
+            // 
+            // buttonPickIniPath
+            // 
+            this.buttonPickIniPath.Location = new System.Drawing.Point(363, 163);
+            this.buttonPickIniPath.Name = "buttonPickIniPath";
+            this.buttonPickIniPath.Size = new System.Drawing.Size(30, 22);
+            this.buttonPickIniPath.TabIndex = 42;
+            this.buttonPickIniPath.Text = "...";
+            this.buttonPickIniPath.UseVisualStyleBackColor = true;
+            this.buttonPickIniPath.Click += new System.EventHandler(this.buttonPickIniPath_Click);
+            // 
+            // textBoxIniPath
+            // 
+            this.textBoxIniPath.Location = new System.Drawing.Point(113, 164);
+            this.textBoxIniPath.Name = "textBoxIniPath";
+            this.textBoxIniPath.Size = new System.Drawing.Size(245, 20);
+            this.textBoxIniPath.TabIndex = 41;
+            this.textBoxIniPath.TextChanged += new System.EventHandler(this.textBoxIniPath_TextChanged);
             // 
             // textBoxLaunchURL
             // 
-            this.textBoxLaunchURL.Location = new System.Drawing.Point(113, 217);
+            this.textBoxLaunchURL.Location = new System.Drawing.Point(113, 263);
             this.textBoxLaunchURL.Name = "textBoxLaunchURL";
             this.textBoxLaunchURL.Size = new System.Drawing.Size(280, 20);
             this.textBoxLaunchURL.TabIndex = 7;
@@ -312,7 +370,7 @@
             // 
             this.labelProfileAdvancedOptions.AutoSize = true;
             this.labelProfileAdvancedOptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProfileAdvancedOptions.Location = new System.Drawing.Point(7, 114);
+            this.labelProfileAdvancedOptions.Location = new System.Drawing.Point(7, 113);
             this.labelProfileAdvancedOptions.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
             this.labelProfileAdvancedOptions.Name = "labelProfileAdvancedOptions";
             this.labelProfileAdvancedOptions.Size = new System.Drawing.Size(118, 17);
@@ -322,7 +380,7 @@
             // labelLaunchURL
             // 
             this.labelLaunchURL.AutoSize = true;
-            this.labelLaunchURL.Location = new System.Drawing.Point(10, 220);
+            this.labelLaunchURL.Location = new System.Drawing.Point(10, 266);
             this.labelLaunchURL.Name = "labelLaunchURL";
             this.labelLaunchURL.Size = new System.Drawing.Size(71, 13);
             this.labelLaunchURL.TabIndex = 6;
@@ -331,7 +389,7 @@
             // labelLaunchOptionMSStoreNotice
             // 
             this.labelLaunchOptionMSStoreNotice.ForeColor = System.Drawing.Color.Red;
-            this.labelLaunchOptionMSStoreNotice.Location = new System.Drawing.Point(9, 74);
+            this.labelLaunchOptionMSStoreNotice.Location = new System.Drawing.Point(9, 73);
             this.labelLaunchOptionMSStoreNotice.Name = "labelLaunchOptionMSStoreNotice";
             this.labelLaunchOptionMSStoreNotice.Size = new System.Drawing.Size(399, 35);
             this.labelLaunchOptionMSStoreNotice.TabIndex = 4;
@@ -341,7 +399,7 @@
             // 
             // textBoxParameters
             // 
-            this.textBoxParameters.Location = new System.Drawing.Point(113, 191);
+            this.textBoxParameters.Location = new System.Drawing.Point(113, 227);
             this.textBoxParameters.Name = "textBoxParameters";
             this.textBoxParameters.Size = new System.Drawing.Size(280, 20);
             this.textBoxParameters.TabIndex = 5;
@@ -351,7 +409,7 @@
             // 
             this.labelProfileLaunchOptions.AutoSize = true;
             this.labelProfileLaunchOptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProfileLaunchOptions.Location = new System.Drawing.Point(7, 6);
+            this.labelProfileLaunchOptions.Location = new System.Drawing.Point(7, 5);
             this.labelProfileLaunchOptions.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
             this.labelProfileLaunchOptions.Name = "labelProfileLaunchOptions";
             this.labelProfileLaunchOptions.Size = new System.Drawing.Size(101, 17);
@@ -361,7 +419,7 @@
             // labelParameters
             // 
             this.labelParameters.AutoSize = true;
-            this.labelParameters.Location = new System.Drawing.Point(10, 194);
+            this.labelParameters.Location = new System.Drawing.Point(10, 230);
             this.labelParameters.Name = "labelParameters";
             this.labelParameters.Size = new System.Drawing.Size(63, 13);
             this.labelParameters.TabIndex = 4;
@@ -370,7 +428,7 @@
             // radioButtonLaunchViaExecutable
             // 
             this.radioButtonLaunchViaExecutable.AutoSize = true;
-            this.radioButtonLaunchViaExecutable.Location = new System.Drawing.Point(10, 54);
+            this.radioButtonLaunchViaExecutable.Location = new System.Drawing.Point(10, 53);
             this.radioButtonLaunchViaExecutable.Name = "radioButtonLaunchViaExecutable";
             this.radioButtonLaunchViaExecutable.Size = new System.Drawing.Size(157, 17);
             this.radioButtonLaunchViaExecutable.TabIndex = 1;
@@ -381,7 +439,7 @@
             // 
             // textBoxExecutable
             // 
-            this.textBoxExecutable.Location = new System.Drawing.Point(113, 165);
+            this.textBoxExecutable.Location = new System.Drawing.Point(113, 201);
             this.textBoxExecutable.Name = "textBoxExecutable";
             this.textBoxExecutable.Size = new System.Drawing.Size(280, 20);
             this.textBoxExecutable.TabIndex = 3;
@@ -391,7 +449,7 @@
             // radioButtonLaunchViaLink
             // 
             this.radioButtonLaunchViaLink.AutoSize = true;
-            this.radioButtonLaunchViaLink.Location = new System.Drawing.Point(10, 31);
+            this.radioButtonLaunchViaLink.Location = new System.Drawing.Point(10, 30);
             this.radioButtonLaunchViaLink.Name = "radioButtonLaunchViaLink";
             this.radioButtonLaunchViaLink.Size = new System.Drawing.Size(222, 17);
             this.radioButtonLaunchViaLink.TabIndex = 0;
@@ -403,7 +461,7 @@
             // labelExecutable
             // 
             this.labelExecutable.AutoSize = true;
-            this.labelExecutable.Location = new System.Drawing.Point(10, 168);
+            this.labelExecutable.Location = new System.Drawing.Point(10, 204);
             this.labelExecutable.Name = "labelExecutable";
             this.labelExecutable.Size = new System.Drawing.Size(63, 13);
             this.labelExecutable.TabIndex = 2;
@@ -411,7 +469,7 @@
             // 
             // textBoxIniPrefix
             // 
-            this.textBoxIniPrefix.Location = new System.Drawing.Point(113, 139);
+            this.textBoxIniPrefix.Location = new System.Drawing.Point(113, 138);
             this.textBoxIniPrefix.Name = "textBoxIniPrefix";
             this.textBoxIniPrefix.Size = new System.Drawing.Size(280, 20);
             this.textBoxIniPrefix.TabIndex = 1;
@@ -421,11 +479,11 @@
             // labelIniPrefix
             // 
             this.labelIniPrefix.AutoSize = true;
-            this.labelIniPrefix.Location = new System.Drawing.Point(10, 142);
+            this.labelIniPrefix.Location = new System.Drawing.Point(10, 141);
             this.labelIniPrefix.Name = "labelIniPrefix";
-            this.labelIniPrefix.Size = new System.Drawing.Size(56, 13);
+            this.labelIniPrefix.Size = new System.Drawing.Size(55, 13);
             this.labelIniPrefix.TabIndex = 0;
-            this.labelIniPrefix.Text = "*.ini Prefix:";
+            this.labelIniPrefix.Text = "*.ini prefix:";
             // 
             // labelGameEdition
             // 
@@ -500,6 +558,7 @@
             this.panelSettings.PerformLayout();
             this.panelAdvancedOptions.ResumeLayout(false);
             this.panelAdvancedOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -542,5 +601,10 @@
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Label labelProfileAdvancedOptions;
         private System.Windows.Forms.Label labelProfileLaunchOptions;
+        private System.Windows.Forms.Label labelIniPath;
+        private System.Windows.Forms.Button buttonPickIniPath;
+        private System.Windows.Forms.TextBox textBoxIniPath;
+        private System.Windows.Forms.LinkLabel linkLabelProfilesHelp;
+        private System.Windows.Forms.PictureBox pictureBoxAPIKeyHelp;
     }
 }
