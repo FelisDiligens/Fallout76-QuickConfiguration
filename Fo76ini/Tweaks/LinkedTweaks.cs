@@ -117,7 +117,7 @@ namespace Fo76ini.Tweaks
                     linkedControl.Control.ForeColor = Color.Blue;
                     break;
                 case WarnLevel.Warning:
-                    linkedControl.Control.ForeColor = Color.Tomato;
+                    linkedControl.Control.ForeColor = Color.FromArgb(181, 124, 11);
                     break;
                 case WarnLevel.Unsafe:
                     linkedControl.Control.ForeColor = Color.Red;

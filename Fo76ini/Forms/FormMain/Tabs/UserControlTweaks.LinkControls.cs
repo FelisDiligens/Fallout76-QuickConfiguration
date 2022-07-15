@@ -90,7 +90,6 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(checkBoxBloom, toolTip, bloomTweak);
             LinkedTweaks.LinkInfo(checkBoxSSReflections, toolTip, screenSpaceReflectionsTweak);
             LinkedTweaks.LinkInfo(checkBoxWaterDisplacement, toolTip, waterDisplacementsTweak);
-            LinkedTweaks.LinkInfo(checkBoxWaterReflections, toolTip, waterReflectionsTweak);
             LinkedTweaks.LinkInfo(checkBoxWaterRefractions, toolTip, waterRefractionsTweak);
             LinkedTweaks.LinkInfo(checkBoxFogEnabled, toolTip, fogTweak);
             LinkedTweaks.LinkInfo(checkBoxWeatherRainOcclusion, toolTip, rainOcclusionTweak);
@@ -407,9 +406,6 @@ namespace Fo76ini.Forms.FormMain
 
             // Water / Displacement
             LinkedTweaks.LinkTweak(checkBoxWaterDisplacement, waterDisplacementsTweak);
-
-            // Water / Reflections
-            LinkedTweaks.LinkTweak(checkBoxWaterReflections, waterReflectionsTweak);
 
             // Water / Refractions
             LinkedTweaks.LinkTweak(checkBoxWaterRefractions, waterRefractionsTweak);

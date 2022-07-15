@@ -8,7 +8,7 @@ namespace Fo76ini.Tweaks.Graphics
 {
     class WaterReflectionsTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "Doesn't work. Disable SSR instead.";
 
         public WarnLevel WarnLevel => WarnLevel.Experimental;
 

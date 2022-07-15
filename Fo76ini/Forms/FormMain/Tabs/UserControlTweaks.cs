@@ -244,7 +244,7 @@ table, tr, td, th { border-collapse: collapse; border: 1px solid gray; }
 td, th { padding: 10px; }
 .no-warn { color: black; font-weight: bold; }
 .notice { color: blue; font-weight: bold; }
-.warn { color: #AAAA00; font-weight: bold; }
+.warn { color: rgb(181, 124, 11); font-weight: bold; }
 .unsafe { color: red; font-weight: bold; }
 </style>
 <h1>Information about tweaks</h1>
@@ -286,13 +286,6 @@ Yellow:  Generally usuable but might have side effects.
 Red:     Has severe side effects such as crashing or severe graphical glitches.
 -->
 </table>
-</p>
-<h2>Unsafe tweaks</h2>
-<p>
-Previously, I left out unsafe tweaks.<br>
-But I felt like including them, so you all can experiment with them.<br>
-However, there might be some very severe side effects to them, so please read the descriptions of colored tweaks.<br>
-Thanks! 🙂
 </p>
 ";
 

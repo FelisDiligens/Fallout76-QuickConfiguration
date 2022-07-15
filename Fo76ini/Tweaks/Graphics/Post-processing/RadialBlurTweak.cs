@@ -9,10 +9,9 @@ namespace Fo76ini.Tweaks.Graphics
     class RadialBlurTweak : ITweak<bool>, ITweakInfo
     {
         public string Description =>
-            "Blurs the screen when the player is hurt (e.g. hit by bullets) or under water.\n" +
-            "⚠️ Disabling this might result in a clear view underwater.";
+            "Blurs the screen when the player is hurt (e.g. hit by bullets) or under water.";
 
-        public WarnLevel WarnLevel => WarnLevel.Warning;
+        public WarnLevel WarnLevel => WarnLevel.None;
 
         public string AffectedFiles => "Fallout76Custom.ini";
 

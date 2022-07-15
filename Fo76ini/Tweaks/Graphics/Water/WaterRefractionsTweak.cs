@@ -8,7 +8,7 @@ namespace Fo76ini.Tweaks.Graphics
 {
     class WaterRefractionsTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "Not sure if it does anything.";
 
         public WarnLevel WarnLevel => WarnLevel.Experimental;
 

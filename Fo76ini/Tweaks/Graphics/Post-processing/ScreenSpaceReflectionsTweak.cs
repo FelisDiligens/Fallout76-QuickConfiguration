@@ -10,9 +10,9 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description =>
             "Enables reflections on shiny surfaces like water, puddles, and metals.\n" +
-            "⚠️ Could make water disappear or become pitch black!";
+            "(Caused pitch black water in previous versions, but is safe now)";
 
-        public WarnLevel WarnLevel => WarnLevel.Unsafe;
+        public WarnLevel WarnLevel => WarnLevel.None;
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 

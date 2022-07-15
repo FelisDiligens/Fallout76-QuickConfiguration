@@ -34,24 +34,37 @@
             this.tabPageTweaksInfo = new System.Windows.Forms.TabPage();
             this.webBrowserTweaksInfo = new System.Windows.Forms.WebBrowser();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
-            this.groupBoxLoading = new System.Windows.Forms.GroupBox();
-            this.checkBoxFasterFadeIn = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowFloatingQuestText = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowDamageNumbers = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowPublicTeamNotifications = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOtherPlayersNames = new System.Windows.Forms.CheckBox();
+            this.groupBoxGameplay = new System.Windows.Forms.GroupBox();
+            this.checkBoxBackpackVisible = new System.Windows.Forms.CheckBox();
+            this.labelHighlightCorpses = new System.Windows.Forms.Label();
+            this.comboBoxHighlightCorpses = new System.Windows.Forms.ComboBox();
+            this.groupBoxDialogue = new System.Windows.Forms.GroupBox();
+            this.sliderConversationHistorySize = new System.Windows.Forms.TrackBar();
+            this.numConversationHistorySize = new System.Windows.Forms.NumericUpDown();
+            this.labelConversationHistorySize = new System.Windows.Forms.Label();
+            this.checkBoxDialogueHistory = new System.Windows.Forms.CheckBox();
+            this.checkBoxDialogueSubtitles = new System.Windows.Forms.CheckBox();
+            this.checkBoxGeneralSubtitles = new System.Windows.Forms.CheckBox();
+            this.groupBoxHUD = new System.Windows.Forms.GroupBox();
+            this.groupBoxFloatingQuestMarkers = new System.Windows.Forms.GroupBox();
             this.checkBoxShowFloatingQuestMarkers = new System.Windows.Forms.CheckBox();
-            this.checkBoxEnablePowerArmorHUD = new System.Windows.Forms.CheckBox();
-            this.numFloatingQuestMarkersDistance = new System.Windows.Forms.NumericUpDown();
-            this.labelFloatingQuestMarkersDistance = new System.Windows.Forms.Label();
-            this.labelShowActiveEffectsOnHUD = new System.Windows.Forms.Label();
             this.sliderFloatingQuestMarkersDistance = new System.Windows.Forms.TrackBar();
+            this.checkBoxShowFloatingQuestText = new System.Windows.Forms.CheckBox();
+            this.labelFloatingQuestMarkersDistance = new System.Windows.Forms.Label();
+            this.numFloatingQuestMarkersDistance = new System.Windows.Forms.NumericUpDown();
+            this.checkBoxShowOtherPlayersNames = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowPublicTeamNotifications = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnablePowerArmorHUD = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowDamageNumbers = new System.Windows.Forms.CheckBox();
             this.checkBoxShowCrosshair = new System.Windows.Forms.CheckBox();
             this.checkBoxShowCompass = new System.Windows.Forms.CheckBox();
-            this.numHUDOpacity = new System.Windows.Forms.NumericUpDown();
-            this.sliderHUDOpacity = new System.Windows.Forms.TrackBar();
+            this.labelShowActiveEffectsOnHUD = new System.Windows.Forms.Label();
             this.labelHUDOpacity = new System.Windows.Forms.Label();
             this.comboBoxShowActiveEffectsOnHUD = new System.Windows.Forms.ComboBox();
+            this.sliderHUDOpacity = new System.Windows.Forms.TrackBar();
+            this.numHUDOpacity = new System.Windows.Forms.NumericUpDown();
+            this.groupBoxLoading = new System.Windows.Forms.GroupBox();
+            this.checkBoxFasterFadeIn = new System.Windows.Forms.CheckBox();
             this.groupBoxQuests = new System.Windows.Forms.GroupBox();
             this.checkBoxEnableQuestAutoTrackDaily = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableQuestAutoTrackEvent = new System.Windows.Forms.CheckBox();
@@ -106,7 +119,6 @@
             this.comboBoxAnisotropicFiltering = new System.Windows.Forms.ComboBox();
             this.groupBoxWater = new System.Windows.Forms.GroupBox();
             this.checkBoxWaterRefractions = new System.Windows.Forms.CheckBox();
-            this.checkBoxWaterReflections = new System.Windows.Forms.CheckBox();
             this.checkBoxWaterDisplacement = new System.Windows.Forms.CheckBox();
             this.groupBoxWeather = new System.Windows.Forms.GroupBox();
             this.checkBoxFogEnabled = new System.Windows.Forms.CheckBox();
@@ -171,6 +183,7 @@
             this.numAudiofVal3 = new System.Windows.Forms.NumericUpDown();
             this.tabPageControls = new System.Windows.Forms.TabPage();
             this.groupBoxGamepad = new System.Windows.Forms.GroupBox();
+            this.checkBoxAimAssist = new System.Windows.Forms.CheckBox();
             this.checkBoxGamepadEnabled = new System.Windows.Forms.CheckBox();
             this.checkBoxGamepadRumble = new System.Windows.Forms.CheckBox();
             this.groupBoxMouse = new System.Windows.Forms.GroupBox();
@@ -273,7 +286,6 @@
             this.groupBoxLogin = new System.Windows.Forms.GroupBox();
             this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableSteam = new System.Windows.Forms.CheckBox();
-            this.labelCredentialsExplanation = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.checkBoxShowPassword = new System.Windows.Forms.CheckBox();
@@ -281,29 +293,22 @@
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelTweaksDesc = new System.Windows.Forms.Label();
             this.labelTweaksTitle = new System.Windows.Forms.Label();
-            this.groupBoxHUD = new System.Windows.Forms.GroupBox();
-            this.groupBoxDialogue = new System.Windows.Forms.GroupBox();
-            this.sliderConversationHistorySize = new System.Windows.Forms.TrackBar();
-            this.numConversationHistorySize = new System.Windows.Forms.NumericUpDown();
-            this.labelConversationHistorySize = new System.Windows.Forms.Label();
-            this.checkBoxDialogueHistory = new System.Windows.Forms.CheckBox();
-            this.checkBoxDialogueSubtitles = new System.Windows.Forms.CheckBox();
-            this.checkBoxGeneralSubtitles = new System.Windows.Forms.CheckBox();
-            this.groupBoxGameplay = new System.Windows.Forms.GroupBox();
-            this.labelHighlightCorpses = new System.Windows.Forms.Label();
-            this.comboBoxHighlightCorpses = new System.Windows.Forms.ComboBox();
-            this.checkBoxBackpackVisible = new System.Windows.Forms.CheckBox();
-            this.groupBoxFloatingQuestMarkers = new System.Windows.Forms.GroupBox();
+            this.richTextBoxCredentialsExplanation = new System.Windows.Forms.RichTextBox();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
-            this.checkBoxAimAssist = new System.Windows.Forms.CheckBox();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
-            this.groupBoxLoading.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numFloatingQuestMarkersDistance)).BeginInit();
+            this.groupBoxGameplay.SuspendLayout();
+            this.groupBoxDialogue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).BeginInit();
+            this.groupBoxHUD.SuspendLayout();
+            this.groupBoxFloatingQuestMarkers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sliderFloatingQuestMarkersDistance)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numHUDOpacity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFloatingQuestMarkersDistance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHUDOpacity)).BeginInit();
+            this.groupBoxLoading.SuspendLayout();
             this.groupBoxQuests.SuspendLayout();
             this.groupBoxMainMenu.SuspendLayout();
             this.tabPageVideo.SuspendLayout();
@@ -411,12 +416,6 @@
             this.tabPageLogin.SuspendLayout();
             this.groupBoxLoginProfiles.SuspendLayout();
             this.groupBoxLogin.SuspendLayout();
-            this.groupBoxHUD.SuspendLayout();
-            this.groupBoxDialogue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).BeginInit();
-            this.groupBoxGameplay.SuspendLayout();
-            this.groupBoxFloatingQuestMarkers.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -476,66 +475,167 @@
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
             // 
-            // groupBoxLoading
+            // groupBoxGameplay
             // 
-            this.groupBoxLoading.Controls.Add(this.checkBoxFasterFadeIn);
-            this.groupBoxLoading.Location = new System.Drawing.Point(6, 86);
-            this.groupBoxLoading.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxLoading.Name = "groupBoxLoading";
-            this.groupBoxLoading.Size = new System.Drawing.Size(400, 46);
-            this.groupBoxLoading.TabIndex = 32;
-            this.groupBoxLoading.TabStop = false;
-            this.groupBoxLoading.Text = "Loading";
+            this.groupBoxGameplay.Controls.Add(this.checkBoxBackpackVisible);
+            this.groupBoxGameplay.Controls.Add(this.labelHighlightCorpses);
+            this.groupBoxGameplay.Controls.Add(this.comboBoxHighlightCorpses);
+            this.groupBoxGameplay.Location = new System.Drawing.Point(6, 141);
+            this.groupBoxGameplay.Name = "groupBoxGameplay";
+            this.groupBoxGameplay.Size = new System.Drawing.Size(400, 77);
+            this.groupBoxGameplay.TabIndex = 64;
+            this.groupBoxGameplay.TabStop = false;
+            this.groupBoxGameplay.Text = "Gameplay";
             // 
-            // checkBoxFasterFadeIn
+            // checkBoxBackpackVisible
             // 
-            this.checkBoxFasterFadeIn.AutoSize = true;
-            this.checkBoxFasterFadeIn.Location = new System.Drawing.Point(10, 19);
-            this.checkBoxFasterFadeIn.Name = "checkBoxFasterFadeIn";
-            this.checkBoxFasterFadeIn.Size = new System.Drawing.Size(168, 17);
-            this.checkBoxFasterFadeIn.TabIndex = 1;
-            this.checkBoxFasterFadeIn.Text = "Speed up fade in after loading";
-            this.checkBoxFasterFadeIn.UseVisualStyleBackColor = true;
+            this.checkBoxBackpackVisible.AutoSize = true;
+            this.checkBoxBackpackVisible.Location = new System.Drawing.Point(10, 46);
+            this.checkBoxBackpackVisible.Name = "checkBoxBackpackVisible";
+            this.checkBoxBackpackVisible.Size = new System.Drawing.Size(108, 17);
+            this.checkBoxBackpackVisible.TabIndex = 41;
+            this.checkBoxBackpackVisible.Text = "Backpack Visible";
+            this.checkBoxBackpackVisible.UseVisualStyleBackColor = true;
             // 
-            // checkBoxShowFloatingQuestText
+            // labelHighlightCorpses
             // 
-            this.checkBoxShowFloatingQuestText.AutoSize = true;
-            this.checkBoxShowFloatingQuestText.Location = new System.Drawing.Point(9, 92);
-            this.checkBoxShowFloatingQuestText.Name = "checkBoxShowFloatingQuestText";
-            this.checkBoxShowFloatingQuestText.Size = new System.Drawing.Size(139, 17);
-            this.checkBoxShowFloatingQuestText.TabIndex = 32;
-            this.checkBoxShowFloatingQuestText.Text = "Show floating quest text";
-            this.checkBoxShowFloatingQuestText.UseVisualStyleBackColor = true;
+            this.labelHighlightCorpses.AutoSize = true;
+            this.labelHighlightCorpses.Location = new System.Drawing.Point(6, 21);
+            this.labelHighlightCorpses.Name = "labelHighlightCorpses";
+            this.labelHighlightCorpses.Size = new System.Drawing.Size(91, 13);
+            this.labelHighlightCorpses.TabIndex = 39;
+            this.labelHighlightCorpses.Text = "Highlight corpses:";
             // 
-            // checkBoxShowDamageNumbers
+            // comboBoxHighlightCorpses
             // 
-            this.checkBoxShowDamageNumbers.AutoSize = true;
-            this.checkBoxShowDamageNumbers.Location = new System.Drawing.Point(10, 316);
-            this.checkBoxShowDamageNumbers.Name = "checkBoxShowDamageNumbers";
-            this.checkBoxShowDamageNumbers.Size = new System.Drawing.Size(174, 17);
-            this.checkBoxShowDamageNumbers.TabIndex = 2;
-            this.checkBoxShowDamageNumbers.Text = "Show floating damage numbers";
-            this.checkBoxShowDamageNumbers.UseVisualStyleBackColor = true;
+            this.comboBoxHighlightCorpses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxHighlightCorpses.FormattingEnabled = true;
+            this.comboBoxHighlightCorpses.Location = new System.Drawing.Point(198, 18);
+            this.comboBoxHighlightCorpses.Name = "comboBoxHighlightCorpses";
+            this.comboBoxHighlightCorpses.Size = new System.Drawing.Size(196, 21);
+            this.comboBoxHighlightCorpses.TabIndex = 40;
             // 
-            // checkBoxShowPublicTeamNotifications
+            // groupBoxDialogue
             // 
-            this.checkBoxShowPublicTeamNotifications.AutoSize = true;
-            this.checkBoxShowPublicTeamNotifications.Location = new System.Drawing.Point(10, 293);
-            this.checkBoxShowPublicTeamNotifications.Name = "checkBoxShowPublicTeamNotifications";
-            this.checkBoxShowPublicTeamNotifications.Size = new System.Drawing.Size(175, 17);
-            this.checkBoxShowPublicTeamNotifications.TabIndex = 8;
-            this.checkBoxShowPublicTeamNotifications.Text = "Enable public team notifications\r\n";
-            this.checkBoxShowPublicTeamNotifications.UseVisualStyleBackColor = true;
+            this.groupBoxDialogue.Controls.Add(this.sliderConversationHistorySize);
+            this.groupBoxDialogue.Controls.Add(this.numConversationHistorySize);
+            this.groupBoxDialogue.Controls.Add(this.labelConversationHistorySize);
+            this.groupBoxDialogue.Controls.Add(this.checkBoxDialogueHistory);
+            this.groupBoxDialogue.Controls.Add(this.checkBoxDialogueSubtitles);
+            this.groupBoxDialogue.Controls.Add(this.checkBoxGeneralSubtitles);
+            this.groupBoxDialogue.Location = new System.Drawing.Point(6, 227);
+            this.groupBoxDialogue.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxDialogue.Name = "groupBoxDialogue";
+            this.groupBoxDialogue.Size = new System.Drawing.Size(400, 167);
+            this.groupBoxDialogue.TabIndex = 63;
+            this.groupBoxDialogue.TabStop = false;
+            this.groupBoxDialogue.Text = "Dialogue";
             // 
-            // checkBoxShowOtherPlayersNames
+            // sliderConversationHistorySize
             // 
-            this.checkBoxShowOtherPlayersNames.AutoSize = true;
-            this.checkBoxShowOtherPlayersNames.Location = new System.Drawing.Point(10, 339);
-            this.checkBoxShowOtherPlayersNames.Name = "checkBoxShowOtherPlayersNames";
-            this.checkBoxShowOtherPlayersNames.Size = new System.Drawing.Size(152, 17);
-            this.checkBoxShowOtherPlayersNames.TabIndex = 33;
-            this.checkBoxShowOtherPlayersNames.Text = "Show other players\' names";
-            this.checkBoxShowOtherPlayersNames.UseVisualStyleBackColor = true;
+            this.sliderConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderConversationHistorySize.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderConversationHistorySize.LargeChange = 1;
+            this.sliderConversationHistorySize.Location = new System.Drawing.Point(6, 112);
+            this.sliderConversationHistorySize.Maximum = 8;
+            this.sliderConversationHistorySize.Minimum = 1;
+            this.sliderConversationHistorySize.Name = "sliderConversationHistorySize";
+            this.sliderConversationHistorySize.Size = new System.Drawing.Size(308, 45);
+            this.sliderConversationHistorySize.TabIndex = 59;
+            this.sliderConversationHistorySize.Value = 4;
+            // 
+            // numConversationHistorySize
+            // 
+            this.numConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numConversationHistorySize.Location = new System.Drawing.Point(320, 112);
+            this.numConversationHistorySize.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numConversationHistorySize.Name = "numConversationHistorySize";
+            this.numConversationHistorySize.Size = new System.Drawing.Size(74, 20);
+            this.numConversationHistorySize.TabIndex = 61;
+            this.numConversationHistorySize.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // labelConversationHistorySize
+            // 
+            this.labelConversationHistorySize.AutoSize = true;
+            this.labelConversationHistorySize.Location = new System.Drawing.Point(7, 96);
+            this.labelConversationHistorySize.Name = "labelConversationHistorySize";
+            this.labelConversationHistorySize.Size = new System.Drawing.Size(207, 13);
+            this.labelConversationHistorySize.TabIndex = 60;
+            this.labelConversationHistorySize.Text = "Conversation history size (number of rows):";
+            // 
+            // checkBoxDialogueHistory
+            // 
+            this.checkBoxDialogueHistory.AutoSize = true;
+            this.checkBoxDialogueHistory.Location = new System.Drawing.Point(10, 65);
+            this.checkBoxDialogueHistory.Name = "checkBoxDialogueHistory";
+            this.checkBoxDialogueHistory.Size = new System.Drawing.Size(129, 17);
+            this.checkBoxDialogueHistory.TabIndex = 58;
+            this.checkBoxDialogueHistory.Text = "Show dialogue history";
+            this.checkBoxDialogueHistory.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDialogueSubtitles
+            // 
+            this.checkBoxDialogueSubtitles.AutoSize = true;
+            this.checkBoxDialogueSubtitles.Location = new System.Drawing.Point(10, 42);
+            this.checkBoxDialogueSubtitles.Name = "checkBoxDialogueSubtitles";
+            this.checkBoxDialogueSubtitles.Size = new System.Drawing.Size(137, 17);
+            this.checkBoxDialogueSubtitles.TabIndex = 56;
+            this.checkBoxDialogueSubtitles.Text = "Show dialogue subtitles";
+            this.checkBoxDialogueSubtitles.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxGeneralSubtitles
+            // 
+            this.checkBoxGeneralSubtitles.AutoSize = true;
+            this.checkBoxGeneralSubtitles.Location = new System.Drawing.Point(10, 19);
+            this.checkBoxGeneralSubtitles.Name = "checkBoxGeneralSubtitles";
+            this.checkBoxGeneralSubtitles.Size = new System.Drawing.Size(132, 17);
+            this.checkBoxGeneralSubtitles.TabIndex = 57;
+            this.checkBoxGeneralSubtitles.Text = "Show general subtitles";
+            this.checkBoxGeneralSubtitles.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxHUD
+            // 
+            this.groupBoxHUD.Controls.Add(this.groupBoxFloatingQuestMarkers);
+            this.groupBoxHUD.Controls.Add(this.checkBoxShowOtherPlayersNames);
+            this.groupBoxHUD.Controls.Add(this.checkBoxShowPublicTeamNotifications);
+            this.groupBoxHUD.Controls.Add(this.checkBoxEnablePowerArmorHUD);
+            this.groupBoxHUD.Controls.Add(this.checkBoxShowDamageNumbers);
+            this.groupBoxHUD.Controls.Add(this.checkBoxShowCrosshair);
+            this.groupBoxHUD.Controls.Add(this.checkBoxShowCompass);
+            this.groupBoxHUD.Controls.Add(this.labelShowActiveEffectsOnHUD);
+            this.groupBoxHUD.Controls.Add(this.labelHUDOpacity);
+            this.groupBoxHUD.Controls.Add(this.comboBoxShowActiveEffectsOnHUD);
+            this.groupBoxHUD.Controls.Add(this.sliderHUDOpacity);
+            this.groupBoxHUD.Controls.Add(this.numHUDOpacity);
+            this.groupBoxHUD.Location = new System.Drawing.Point(6, 403);
+            this.groupBoxHUD.Name = "groupBoxHUD";
+            this.groupBoxHUD.Size = new System.Drawing.Size(400, 387);
+            this.groupBoxHUD.TabIndex = 33;
+            this.groupBoxHUD.TabStop = false;
+            this.groupBoxHUD.Text = "HUD";
+            // 
+            // groupBoxFloatingQuestMarkers
+            // 
+            this.groupBoxFloatingQuestMarkers.Controls.Add(this.checkBoxShowFloatingQuestMarkers);
+            this.groupBoxFloatingQuestMarkers.Controls.Add(this.sliderFloatingQuestMarkersDistance);
+            this.groupBoxFloatingQuestMarkers.Controls.Add(this.checkBoxShowFloatingQuestText);
+            this.groupBoxFloatingQuestMarkers.Controls.Add(this.labelFloatingQuestMarkersDistance);
+            this.groupBoxFloatingQuestMarkers.Controls.Add(this.numFloatingQuestMarkersDistance);
+            this.groupBoxFloatingQuestMarkers.Location = new System.Drawing.Point(6, 111);
+            this.groupBoxFloatingQuestMarkers.Name = "groupBoxFloatingQuestMarkers";
+            this.groupBoxFloatingQuestMarkers.Size = new System.Drawing.Size(388, 127);
+            this.groupBoxFloatingQuestMarkers.TabIndex = 65;
+            this.groupBoxFloatingQuestMarkers.TabStop = false;
+            this.groupBoxFloatingQuestMarkers.Text = "Floating quest markers on HUD";
             // 
             // checkBoxShowFloatingQuestMarkers
             // 
@@ -547,15 +647,39 @@
             this.checkBoxShowFloatingQuestMarkers.Text = "Show floating quest markers\r\n";
             this.checkBoxShowFloatingQuestMarkers.UseVisualStyleBackColor = true;
             // 
-            // checkBoxEnablePowerArmorHUD
+            // sliderFloatingQuestMarkersDistance
             // 
-            this.checkBoxEnablePowerArmorHUD.AutoSize = true;
-            this.checkBoxEnablePowerArmorHUD.Location = new System.Drawing.Point(10, 270);
-            this.checkBoxEnablePowerArmorHUD.Name = "checkBoxEnablePowerArmorHUD";
-            this.checkBoxEnablePowerArmorHUD.Size = new System.Drawing.Size(149, 17);
-            this.checkBoxEnablePowerArmorHUD.TabIndex = 5;
-            this.checkBoxEnablePowerArmorHUD.Text = "Enable Power Armor HUD";
-            this.checkBoxEnablePowerArmorHUD.UseVisualStyleBackColor = true;
+            this.sliderFloatingQuestMarkersDistance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderFloatingQuestMarkersDistance.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderFloatingQuestMarkersDistance.Location = new System.Drawing.Point(9, 38);
+            this.sliderFloatingQuestMarkersDistance.Maximum = 1000;
+            this.sliderFloatingQuestMarkersDistance.Minimum = 200;
+            this.sliderFloatingQuestMarkersDistance.Name = "sliderFloatingQuestMarkersDistance";
+            this.sliderFloatingQuestMarkersDistance.Size = new System.Drawing.Size(293, 45);
+            this.sliderFloatingQuestMarkersDistance.SmallChange = 100;
+            this.sliderFloatingQuestMarkersDistance.TabIndex = 29;
+            this.sliderFloatingQuestMarkersDistance.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderFloatingQuestMarkersDistance.Value = 1000;
+            // 
+            // checkBoxShowFloatingQuestText
+            // 
+            this.checkBoxShowFloatingQuestText.AutoSize = true;
+            this.checkBoxShowFloatingQuestText.Location = new System.Drawing.Point(9, 92);
+            this.checkBoxShowFloatingQuestText.Name = "checkBoxShowFloatingQuestText";
+            this.checkBoxShowFloatingQuestText.Size = new System.Drawing.Size(139, 17);
+            this.checkBoxShowFloatingQuestText.TabIndex = 32;
+            this.checkBoxShowFloatingQuestText.Text = "Show floating quest text";
+            this.checkBoxShowFloatingQuestText.UseVisualStyleBackColor = true;
+            // 
+            // labelFloatingQuestMarkersDistance
+            // 
+            this.labelFloatingQuestMarkersDistance.AutoSize = true;
+            this.labelFloatingQuestMarkersDistance.Location = new System.Drawing.Point(6, 22);
+            this.labelFloatingQuestMarkersDistance.Name = "labelFloatingQuestMarkersDistance";
+            this.labelFloatingQuestMarkersDistance.Size = new System.Drawing.Size(75, 13);
+            this.labelFloatingQuestMarkersDistance.TabIndex = 30;
+            this.labelFloatingQuestMarkersDistance.Text = "Draw distance";
             // 
             // numFloatingQuestMarkersDistance
             // 
@@ -581,38 +705,45 @@
             0,
             0});
             // 
-            // labelFloatingQuestMarkersDistance
+            // checkBoxShowOtherPlayersNames
             // 
-            this.labelFloatingQuestMarkersDistance.AutoSize = true;
-            this.labelFloatingQuestMarkersDistance.Location = new System.Drawing.Point(6, 22);
-            this.labelFloatingQuestMarkersDistance.Name = "labelFloatingQuestMarkersDistance";
-            this.labelFloatingQuestMarkersDistance.Size = new System.Drawing.Size(75, 13);
-            this.labelFloatingQuestMarkersDistance.TabIndex = 30;
-            this.labelFloatingQuestMarkersDistance.Text = "Draw distance";
+            this.checkBoxShowOtherPlayersNames.AutoSize = true;
+            this.checkBoxShowOtherPlayersNames.Location = new System.Drawing.Point(10, 339);
+            this.checkBoxShowOtherPlayersNames.Name = "checkBoxShowOtherPlayersNames";
+            this.checkBoxShowOtherPlayersNames.Size = new System.Drawing.Size(152, 17);
+            this.checkBoxShowOtherPlayersNames.TabIndex = 33;
+            this.checkBoxShowOtherPlayersNames.Text = "Show other players\' names";
+            this.checkBoxShowOtherPlayersNames.UseVisualStyleBackColor = true;
             // 
-            // labelShowActiveEffectsOnHUD
+            // checkBoxShowPublicTeamNotifications
             // 
-            this.labelShowActiveEffectsOnHUD.AutoSize = true;
-            this.labelShowActiveEffectsOnHUD.Location = new System.Drawing.Point(6, 75);
-            this.labelShowActiveEffectsOnHUD.Name = "labelShowActiveEffectsOnHUD";
-            this.labelShowActiveEffectsOnHUD.Size = new System.Drawing.Size(146, 13);
-            this.labelShowActiveEffectsOnHUD.TabIndex = 37;
-            this.labelShowActiveEffectsOnHUD.Text = "Show active effects on HUD:";
+            this.checkBoxShowPublicTeamNotifications.AutoSize = true;
+            this.checkBoxShowPublicTeamNotifications.Location = new System.Drawing.Point(10, 293);
+            this.checkBoxShowPublicTeamNotifications.Name = "checkBoxShowPublicTeamNotifications";
+            this.checkBoxShowPublicTeamNotifications.Size = new System.Drawing.Size(175, 17);
+            this.checkBoxShowPublicTeamNotifications.TabIndex = 8;
+            this.checkBoxShowPublicTeamNotifications.Text = "Enable public team notifications\r\n";
+            this.checkBoxShowPublicTeamNotifications.UseVisualStyleBackColor = true;
             // 
-            // sliderFloatingQuestMarkersDistance
+            // checkBoxEnablePowerArmorHUD
             // 
-            this.sliderFloatingQuestMarkersDistance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderFloatingQuestMarkersDistance.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderFloatingQuestMarkersDistance.Location = new System.Drawing.Point(9, 38);
-            this.sliderFloatingQuestMarkersDistance.Maximum = 1000;
-            this.sliderFloatingQuestMarkersDistance.Minimum = 200;
-            this.sliderFloatingQuestMarkersDistance.Name = "sliderFloatingQuestMarkersDistance";
-            this.sliderFloatingQuestMarkersDistance.Size = new System.Drawing.Size(293, 45);
-            this.sliderFloatingQuestMarkersDistance.SmallChange = 100;
-            this.sliderFloatingQuestMarkersDistance.TabIndex = 29;
-            this.sliderFloatingQuestMarkersDistance.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderFloatingQuestMarkersDistance.Value = 1000;
+            this.checkBoxEnablePowerArmorHUD.AutoSize = true;
+            this.checkBoxEnablePowerArmorHUD.Location = new System.Drawing.Point(10, 270);
+            this.checkBoxEnablePowerArmorHUD.Name = "checkBoxEnablePowerArmorHUD";
+            this.checkBoxEnablePowerArmorHUD.Size = new System.Drawing.Size(149, 17);
+            this.checkBoxEnablePowerArmorHUD.TabIndex = 5;
+            this.checkBoxEnablePowerArmorHUD.Text = "Enable Power Armor HUD";
+            this.checkBoxEnablePowerArmorHUD.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowDamageNumbers
+            // 
+            this.checkBoxShowDamageNumbers.AutoSize = true;
+            this.checkBoxShowDamageNumbers.Location = new System.Drawing.Point(10, 316);
+            this.checkBoxShowDamageNumbers.Name = "checkBoxShowDamageNumbers";
+            this.checkBoxShowDamageNumbers.Size = new System.Drawing.Size(174, 17);
+            this.checkBoxShowDamageNumbers.TabIndex = 2;
+            this.checkBoxShowDamageNumbers.Text = "Show floating damage numbers";
+            this.checkBoxShowDamageNumbers.UseVisualStyleBackColor = true;
             // 
             // checkBoxShowCrosshair
             // 
@@ -633,6 +764,48 @@
             this.checkBoxShowCompass.TabIndex = 4;
             this.checkBoxShowCompass.Text = "Show compass";
             this.checkBoxShowCompass.UseVisualStyleBackColor = true;
+            // 
+            // labelShowActiveEffectsOnHUD
+            // 
+            this.labelShowActiveEffectsOnHUD.AutoSize = true;
+            this.labelShowActiveEffectsOnHUD.Location = new System.Drawing.Point(6, 75);
+            this.labelShowActiveEffectsOnHUD.Name = "labelShowActiveEffectsOnHUD";
+            this.labelShowActiveEffectsOnHUD.Size = new System.Drawing.Size(146, 13);
+            this.labelShowActiveEffectsOnHUD.TabIndex = 37;
+            this.labelShowActiveEffectsOnHUD.Text = "Show active effects on HUD:";
+            // 
+            // labelHUDOpacity
+            // 
+            this.labelHUDOpacity.AutoSize = true;
+            this.labelHUDOpacity.Location = new System.Drawing.Point(6, 20);
+            this.labelHUDOpacity.Name = "labelHUDOpacity";
+            this.labelHUDOpacity.Size = new System.Drawing.Size(70, 13);
+            this.labelHUDOpacity.TabIndex = 35;
+            this.labelHUDOpacity.Text = "HUD Opacity";
+            // 
+            // comboBoxShowActiveEffectsOnHUD
+            // 
+            this.comboBoxShowActiveEffectsOnHUD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxShowActiveEffectsOnHUD.FormattingEnabled = true;
+            this.comboBoxShowActiveEffectsOnHUD.Location = new System.Drawing.Point(198, 72);
+            this.comboBoxShowActiveEffectsOnHUD.Name = "comboBoxShowActiveEffectsOnHUD";
+            this.comboBoxShowActiveEffectsOnHUD.Size = new System.Drawing.Size(196, 21);
+            this.comboBoxShowActiveEffectsOnHUD.TabIndex = 38;
+            // 
+            // sliderHUDOpacity
+            // 
+            this.sliderHUDOpacity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderHUDOpacity.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderHUDOpacity.LargeChange = 20;
+            this.sliderHUDOpacity.Location = new System.Drawing.Point(6, 36);
+            this.sliderHUDOpacity.Maximum = 100;
+            this.sliderHUDOpacity.Name = "sliderHUDOpacity";
+            this.sliderHUDOpacity.Size = new System.Drawing.Size(308, 45);
+            this.sliderHUDOpacity.SmallChange = 10;
+            this.sliderHUDOpacity.TabIndex = 34;
+            this.sliderHUDOpacity.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderHUDOpacity.Value = 100;
             // 
             // numHUDOpacity
             // 
@@ -658,38 +831,26 @@
             0,
             0});
             // 
-            // sliderHUDOpacity
+            // groupBoxLoading
             // 
-            this.sliderHUDOpacity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderHUDOpacity.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderHUDOpacity.LargeChange = 20;
-            this.sliderHUDOpacity.Location = new System.Drawing.Point(6, 36);
-            this.sliderHUDOpacity.Maximum = 100;
-            this.sliderHUDOpacity.Name = "sliderHUDOpacity";
-            this.sliderHUDOpacity.Size = new System.Drawing.Size(308, 45);
-            this.sliderHUDOpacity.SmallChange = 10;
-            this.sliderHUDOpacity.TabIndex = 34;
-            this.sliderHUDOpacity.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderHUDOpacity.Value = 100;
+            this.groupBoxLoading.Controls.Add(this.checkBoxFasterFadeIn);
+            this.groupBoxLoading.Location = new System.Drawing.Point(6, 86);
+            this.groupBoxLoading.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxLoading.Name = "groupBoxLoading";
+            this.groupBoxLoading.Size = new System.Drawing.Size(400, 46);
+            this.groupBoxLoading.TabIndex = 32;
+            this.groupBoxLoading.TabStop = false;
+            this.groupBoxLoading.Text = "Loading";
             // 
-            // labelHUDOpacity
+            // checkBoxFasterFadeIn
             // 
-            this.labelHUDOpacity.AutoSize = true;
-            this.labelHUDOpacity.Location = new System.Drawing.Point(6, 20);
-            this.labelHUDOpacity.Name = "labelHUDOpacity";
-            this.labelHUDOpacity.Size = new System.Drawing.Size(70, 13);
-            this.labelHUDOpacity.TabIndex = 35;
-            this.labelHUDOpacity.Text = "HUD Opacity";
-            // 
-            // comboBoxShowActiveEffectsOnHUD
-            // 
-            this.comboBoxShowActiveEffectsOnHUD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxShowActiveEffectsOnHUD.FormattingEnabled = true;
-            this.comboBoxShowActiveEffectsOnHUD.Location = new System.Drawing.Point(198, 72);
-            this.comboBoxShowActiveEffectsOnHUD.Name = "comboBoxShowActiveEffectsOnHUD";
-            this.comboBoxShowActiveEffectsOnHUD.Size = new System.Drawing.Size(196, 21);
-            this.comboBoxShowActiveEffectsOnHUD.TabIndex = 38;
+            this.checkBoxFasterFadeIn.AutoSize = true;
+            this.checkBoxFasterFadeIn.Location = new System.Drawing.Point(10, 19);
+            this.checkBoxFasterFadeIn.Name = "checkBoxFasterFadeIn";
+            this.checkBoxFasterFadeIn.Size = new System.Drawing.Size(168, 17);
+            this.checkBoxFasterFadeIn.TabIndex = 1;
+            this.checkBoxFasterFadeIn.Text = "Speed up fade in after loading";
+            this.checkBoxFasterFadeIn.UseVisualStyleBackColor = true;
             // 
             // groupBoxQuests
             // 
@@ -1229,9 +1390,9 @@
             // groupBoxLighting
             // 
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
-            this.groupBoxLighting.Location = new System.Drawing.Point(202, 315);
+            this.groupBoxLighting.Location = new System.Drawing.Point(202, 287);
             this.groupBoxLighting.Name = "groupBoxLighting";
-            this.groupBoxLighting.Size = new System.Drawing.Size(188, 68);
+            this.groupBoxLighting.Size = new System.Drawing.Size(188, 96);
             this.groupBoxLighting.TabIndex = 28;
             this.groupBoxLighting.TabStop = false;
             this.groupBoxLighting.Text = "Lighting";
@@ -1372,11 +1533,10 @@
             // groupBoxWater
             // 
             this.groupBoxWater.Controls.Add(this.checkBoxWaterRefractions);
-            this.groupBoxWater.Controls.Add(this.checkBoxWaterReflections);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterDisplacement);
             this.groupBoxWater.Location = new System.Drawing.Point(202, 117);
             this.groupBoxWater.Name = "groupBoxWater";
-            this.groupBoxWater.Size = new System.Drawing.Size(188, 96);
+            this.groupBoxWater.Size = new System.Drawing.Size(188, 68);
             this.groupBoxWater.TabIndex = 31;
             this.groupBoxWater.TabStop = false;
             this.groupBoxWater.Text = "Water";
@@ -1386,24 +1546,12 @@
             this.checkBoxWaterRefractions.AutoSize = true;
             this.checkBoxWaterRefractions.Checked = true;
             this.checkBoxWaterRefractions.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWaterRefractions.Location = new System.Drawing.Point(9, 65);
+            this.checkBoxWaterRefractions.Location = new System.Drawing.Point(9, 42);
             this.checkBoxWaterRefractions.Name = "checkBoxWaterRefractions";
             this.checkBoxWaterRefractions.Size = new System.Drawing.Size(80, 17);
             this.checkBoxWaterRefractions.TabIndex = 3;
             this.checkBoxWaterRefractions.Text = "Refractions";
             this.checkBoxWaterRefractions.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxWaterReflections
-            // 
-            this.checkBoxWaterReflections.AutoSize = true;
-            this.checkBoxWaterReflections.Checked = true;
-            this.checkBoxWaterReflections.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWaterReflections.Location = new System.Drawing.Point(9, 42);
-            this.checkBoxWaterReflections.Name = "checkBoxWaterReflections";
-            this.checkBoxWaterReflections.Size = new System.Drawing.Size(79, 17);
-            this.checkBoxWaterReflections.TabIndex = 2;
-            this.checkBoxWaterReflections.Text = "Reflections";
-            this.checkBoxWaterReflections.UseVisualStyleBackColor = true;
             // 
             // checkBoxWaterDisplacement
             // 
@@ -1422,7 +1570,7 @@
             this.groupBoxWeather.Controls.Add(this.checkBoxFogEnabled);
             this.groupBoxWeather.Controls.Add(this.checkBoxWeatherWetnessOcclusion);
             this.groupBoxWeather.Controls.Add(this.checkBoxWeatherRainOcclusion);
-            this.groupBoxWeather.Location = new System.Drawing.Point(202, 219);
+            this.groupBoxWeather.Location = new System.Drawing.Point(202, 191);
             this.groupBoxWeather.Name = "groupBoxWeather";
             this.groupBoxWeather.Size = new System.Drawing.Size(188, 90);
             this.groupBoxWeather.TabIndex = 32;
@@ -2311,6 +2459,18 @@
             this.groupBoxGamepad.TabIndex = 7;
             this.groupBoxGamepad.TabStop = false;
             this.groupBoxGamepad.Text = "Gamepad";
+            // 
+            // checkBoxAimAssist
+            // 
+            this.checkBoxAimAssist.AutoSize = true;
+            this.checkBoxAimAssist.Checked = true;
+            this.checkBoxAimAssist.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAimAssist.Location = new System.Drawing.Point(9, 79);
+            this.checkBoxAimAssist.Name = "checkBoxAimAssist";
+            this.checkBoxAimAssist.Size = new System.Drawing.Size(73, 17);
+            this.checkBoxAimAssist.TabIndex = 4;
+            this.checkBoxAimAssist.Text = "Aim Assist";
+            this.checkBoxAimAssist.UseVisualStyleBackColor = true;
             // 
             // checkBoxGamepadEnabled
             // 
@@ -3542,7 +3702,7 @@
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount10);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount8);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount9);
-            this.groupBoxLoginProfiles.Location = new System.Drawing.Point(6, 277);
+            this.groupBoxLoginProfiles.Location = new System.Drawing.Point(9, 356);
             this.groupBoxLoginProfiles.Name = "groupBoxLoginProfiles";
             this.groupBoxLoginProfiles.Size = new System.Drawing.Size(400, 143);
             this.groupBoxLoginProfiles.TabIndex = 29;
@@ -3723,18 +3883,18 @@
             // 
             // groupBoxLogin
             // 
+            this.groupBoxLogin.Controls.Add(this.richTextBoxCredentialsExplanation);
             this.groupBoxLogin.Controls.Add(this.checkBoxAutoSignin);
             this.groupBoxLogin.Controls.Add(this.checkBoxEnableSteam);
-            this.groupBoxLogin.Controls.Add(this.labelCredentialsExplanation);
             this.groupBoxLogin.Controls.Add(this.textBoxPassword);
             this.groupBoxLogin.Controls.Add(this.textBoxUserName);
             this.groupBoxLogin.Controls.Add(this.checkBoxShowPassword);
             this.groupBoxLogin.Controls.Add(this.labelPassword);
             this.groupBoxLogin.Controls.Add(this.labelUserName);
-            this.groupBoxLogin.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxLogin.Location = new System.Drawing.Point(9, 9);
             this.groupBoxLogin.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxLogin.Name = "groupBoxLogin";
-            this.groupBoxLogin.Size = new System.Drawing.Size(400, 262);
+            this.groupBoxLogin.Size = new System.Drawing.Size(400, 338);
             this.groupBoxLogin.TabIndex = 15;
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Login with Bethesda.net";
@@ -3758,16 +3918,6 @@
             this.checkBoxEnableSteam.TabIndex = 6;
             this.checkBoxEnableSteam.Text = "Enable Steam";
             this.checkBoxEnableSteam.UseVisualStyleBackColor = true;
-            // 
-            // labelCredentialsExplanation
-            // 
-            this.labelCredentialsExplanation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCredentialsExplanation.ForeColor = System.Drawing.Color.DimGray;
-            this.labelCredentialsExplanation.Location = new System.Drawing.Point(9, 153);
-            this.labelCredentialsExplanation.Name = "labelCredentialsExplanation";
-            this.labelCredentialsExplanation.Size = new System.Drawing.Size(374, 184);
-            this.labelCredentialsExplanation.TabIndex = 5;
-            this.labelCredentialsExplanation.Text = resources.GetString("labelCredentialsExplanation.Text");
             // 
             // textBoxPassword
             // 
@@ -3840,167 +3990,16 @@
             this.labelTweaksTitle.TabIndex = 71;
             this.labelTweaksTitle.Text = "Tweaks";
             // 
-            // groupBoxHUD
+            // richTextBoxCredentialsExplanation
             // 
-            this.groupBoxHUD.Controls.Add(this.groupBoxFloatingQuestMarkers);
-            this.groupBoxHUD.Controls.Add(this.checkBoxShowOtherPlayersNames);
-            this.groupBoxHUD.Controls.Add(this.checkBoxShowPublicTeamNotifications);
-            this.groupBoxHUD.Controls.Add(this.checkBoxEnablePowerArmorHUD);
-            this.groupBoxHUD.Controls.Add(this.checkBoxShowDamageNumbers);
-            this.groupBoxHUD.Controls.Add(this.checkBoxShowCrosshair);
-            this.groupBoxHUD.Controls.Add(this.checkBoxShowCompass);
-            this.groupBoxHUD.Controls.Add(this.labelShowActiveEffectsOnHUD);
-            this.groupBoxHUD.Controls.Add(this.labelHUDOpacity);
-            this.groupBoxHUD.Controls.Add(this.comboBoxShowActiveEffectsOnHUD);
-            this.groupBoxHUD.Controls.Add(this.sliderHUDOpacity);
-            this.groupBoxHUD.Controls.Add(this.numHUDOpacity);
-            this.groupBoxHUD.Location = new System.Drawing.Point(6, 403);
-            this.groupBoxHUD.Name = "groupBoxHUD";
-            this.groupBoxHUD.Size = new System.Drawing.Size(400, 387);
-            this.groupBoxHUD.TabIndex = 33;
-            this.groupBoxHUD.TabStop = false;
-            this.groupBoxHUD.Text = "HUD";
-            // 
-            // groupBoxDialogue
-            // 
-            this.groupBoxDialogue.Controls.Add(this.sliderConversationHistorySize);
-            this.groupBoxDialogue.Controls.Add(this.numConversationHistorySize);
-            this.groupBoxDialogue.Controls.Add(this.labelConversationHistorySize);
-            this.groupBoxDialogue.Controls.Add(this.checkBoxDialogueHistory);
-            this.groupBoxDialogue.Controls.Add(this.checkBoxDialogueSubtitles);
-            this.groupBoxDialogue.Controls.Add(this.checkBoxGeneralSubtitles);
-            this.groupBoxDialogue.Location = new System.Drawing.Point(6, 227);
-            this.groupBoxDialogue.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxDialogue.Name = "groupBoxDialogue";
-            this.groupBoxDialogue.Size = new System.Drawing.Size(400, 167);
-            this.groupBoxDialogue.TabIndex = 63;
-            this.groupBoxDialogue.TabStop = false;
-            this.groupBoxDialogue.Text = "Dialogue";
-            // 
-            // sliderConversationHistorySize
-            // 
-            this.sliderConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderConversationHistorySize.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderConversationHistorySize.LargeChange = 1;
-            this.sliderConversationHistorySize.Location = new System.Drawing.Point(6, 112);
-            this.sliderConversationHistorySize.Maximum = 8;
-            this.sliderConversationHistorySize.Minimum = 1;
-            this.sliderConversationHistorySize.Name = "sliderConversationHistorySize";
-            this.sliderConversationHistorySize.Size = new System.Drawing.Size(308, 45);
-            this.sliderConversationHistorySize.TabIndex = 59;
-            this.sliderConversationHistorySize.Value = 4;
-            // 
-            // numConversationHistorySize
-            // 
-            this.numConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numConversationHistorySize.Location = new System.Drawing.Point(320, 112);
-            this.numConversationHistorySize.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.numConversationHistorySize.Name = "numConversationHistorySize";
-            this.numConversationHistorySize.Size = new System.Drawing.Size(74, 20);
-            this.numConversationHistorySize.TabIndex = 61;
-            this.numConversationHistorySize.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            // 
-            // labelConversationHistorySize
-            // 
-            this.labelConversationHistorySize.AutoSize = true;
-            this.labelConversationHistorySize.Location = new System.Drawing.Point(7, 96);
-            this.labelConversationHistorySize.Name = "labelConversationHistorySize";
-            this.labelConversationHistorySize.Size = new System.Drawing.Size(207, 13);
-            this.labelConversationHistorySize.TabIndex = 60;
-            this.labelConversationHistorySize.Text = "Conversation history size (number of rows):";
-            // 
-            // checkBoxDialogueHistory
-            // 
-            this.checkBoxDialogueHistory.AutoSize = true;
-            this.checkBoxDialogueHistory.Location = new System.Drawing.Point(10, 65);
-            this.checkBoxDialogueHistory.Name = "checkBoxDialogueHistory";
-            this.checkBoxDialogueHistory.Size = new System.Drawing.Size(129, 17);
-            this.checkBoxDialogueHistory.TabIndex = 58;
-            this.checkBoxDialogueHistory.Text = "Show dialogue history";
-            this.checkBoxDialogueHistory.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDialogueSubtitles
-            // 
-            this.checkBoxDialogueSubtitles.AutoSize = true;
-            this.checkBoxDialogueSubtitles.Location = new System.Drawing.Point(10, 42);
-            this.checkBoxDialogueSubtitles.Name = "checkBoxDialogueSubtitles";
-            this.checkBoxDialogueSubtitles.Size = new System.Drawing.Size(137, 17);
-            this.checkBoxDialogueSubtitles.TabIndex = 56;
-            this.checkBoxDialogueSubtitles.Text = "Show dialogue subtitles";
-            this.checkBoxDialogueSubtitles.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxGeneralSubtitles
-            // 
-            this.checkBoxGeneralSubtitles.AutoSize = true;
-            this.checkBoxGeneralSubtitles.Location = new System.Drawing.Point(10, 19);
-            this.checkBoxGeneralSubtitles.Name = "checkBoxGeneralSubtitles";
-            this.checkBoxGeneralSubtitles.Size = new System.Drawing.Size(132, 17);
-            this.checkBoxGeneralSubtitles.TabIndex = 57;
-            this.checkBoxGeneralSubtitles.Text = "Show general subtitles";
-            this.checkBoxGeneralSubtitles.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxGameplay
-            // 
-            this.groupBoxGameplay.Controls.Add(this.checkBoxBackpackVisible);
-            this.groupBoxGameplay.Controls.Add(this.labelHighlightCorpses);
-            this.groupBoxGameplay.Controls.Add(this.comboBoxHighlightCorpses);
-            this.groupBoxGameplay.Location = new System.Drawing.Point(6, 141);
-            this.groupBoxGameplay.Name = "groupBoxGameplay";
-            this.groupBoxGameplay.Size = new System.Drawing.Size(400, 77);
-            this.groupBoxGameplay.TabIndex = 64;
-            this.groupBoxGameplay.TabStop = false;
-            this.groupBoxGameplay.Text = "Gameplay";
-            // 
-            // labelHighlightCorpses
-            // 
-            this.labelHighlightCorpses.AutoSize = true;
-            this.labelHighlightCorpses.Location = new System.Drawing.Point(6, 21);
-            this.labelHighlightCorpses.Name = "labelHighlightCorpses";
-            this.labelHighlightCorpses.Size = new System.Drawing.Size(91, 13);
-            this.labelHighlightCorpses.TabIndex = 39;
-            this.labelHighlightCorpses.Text = "Highlight corpses:";
-            // 
-            // comboBoxHighlightCorpses
-            // 
-            this.comboBoxHighlightCorpses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxHighlightCorpses.FormattingEnabled = true;
-            this.comboBoxHighlightCorpses.Location = new System.Drawing.Point(198, 18);
-            this.comboBoxHighlightCorpses.Name = "comboBoxHighlightCorpses";
-            this.comboBoxHighlightCorpses.Size = new System.Drawing.Size(196, 21);
-            this.comboBoxHighlightCorpses.TabIndex = 40;
-            // 
-            // checkBoxBackpackVisible
-            // 
-            this.checkBoxBackpackVisible.AutoSize = true;
-            this.checkBoxBackpackVisible.Location = new System.Drawing.Point(10, 46);
-            this.checkBoxBackpackVisible.Name = "checkBoxBackpackVisible";
-            this.checkBoxBackpackVisible.Size = new System.Drawing.Size(108, 17);
-            this.checkBoxBackpackVisible.TabIndex = 41;
-            this.checkBoxBackpackVisible.Text = "Backpack Visible";
-            this.checkBoxBackpackVisible.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxFloatingQuestMarkers
-            // 
-            this.groupBoxFloatingQuestMarkers.Controls.Add(this.checkBoxShowFloatingQuestMarkers);
-            this.groupBoxFloatingQuestMarkers.Controls.Add(this.sliderFloatingQuestMarkersDistance);
-            this.groupBoxFloatingQuestMarkers.Controls.Add(this.checkBoxShowFloatingQuestText);
-            this.groupBoxFloatingQuestMarkers.Controls.Add(this.labelFloatingQuestMarkersDistance);
-            this.groupBoxFloatingQuestMarkers.Controls.Add(this.numFloatingQuestMarkersDistance);
-            this.groupBoxFloatingQuestMarkers.Location = new System.Drawing.Point(6, 111);
-            this.groupBoxFloatingQuestMarkers.Name = "groupBoxFloatingQuestMarkers";
-            this.groupBoxFloatingQuestMarkers.Size = new System.Drawing.Size(388, 127);
-            this.groupBoxFloatingQuestMarkers.TabIndex = 65;
-            this.groupBoxFloatingQuestMarkers.TabStop = false;
-            this.groupBoxFloatingQuestMarkers.Text = "Floating quest markers on HUD";
+            this.richTextBoxCredentialsExplanation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxCredentialsExplanation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxCredentialsExplanation.ForeColor = System.Drawing.Color.DimGray;
+            this.richTextBoxCredentialsExplanation.Location = new System.Drawing.Point(12, 164);
+            this.richTextBoxCredentialsExplanation.Name = "richTextBoxCredentialsExplanation";
+            this.richTextBoxCredentialsExplanation.Size = new System.Drawing.Size(387, 172);
+            this.richTextBoxCredentialsExplanation.TabIndex = 30;
+            this.richTextBoxCredentialsExplanation.Text = resources.GetString("richTextBoxCredentialsExplanation.Text");
             // 
             // toolTip
             // 
@@ -4014,18 +4013,6 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
-            // checkBoxAimAssist
-            // 
-            this.checkBoxAimAssist.AutoSize = true;
-            this.checkBoxAimAssist.Checked = true;
-            this.checkBoxAimAssist.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAimAssist.Location = new System.Drawing.Point(9, 79);
-            this.checkBoxAimAssist.Name = "checkBoxAimAssist";
-            this.checkBoxAimAssist.Size = new System.Drawing.Size(73, 17);
-            this.checkBoxAimAssist.TabIndex = 4;
-            this.checkBoxAimAssist.Text = "Aim Assist";
-            this.checkBoxAimAssist.UseVisualStyleBackColor = true;
-            // 
             // UserControlTweaks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4038,12 +4025,22 @@
             this.tabControlTweaks.ResumeLayout(false);
             this.tabPageTweaksInfo.ResumeLayout(false);
             this.tabPageGeneral.ResumeLayout(false);
+            this.groupBoxGameplay.ResumeLayout(false);
+            this.groupBoxGameplay.PerformLayout();
+            this.groupBoxDialogue.ResumeLayout(false);
+            this.groupBoxDialogue.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).EndInit();
+            this.groupBoxHUD.ResumeLayout(false);
+            this.groupBoxHUD.PerformLayout();
+            this.groupBoxFloatingQuestMarkers.ResumeLayout(false);
+            this.groupBoxFloatingQuestMarkers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderFloatingQuestMarkersDistance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFloatingQuestMarkersDistance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHUDOpacity)).EndInit();
             this.groupBoxLoading.ResumeLayout(false);
             this.groupBoxLoading.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numFloatingQuestMarkersDistance)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderFloatingQuestMarkersDistance)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numHUDOpacity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).EndInit();
             this.groupBoxQuests.ResumeLayout(false);
             this.groupBoxQuests.PerformLayout();
             this.groupBoxMainMenu.ResumeLayout(false);
@@ -4180,16 +4177,6 @@
             this.groupBoxLoginProfiles.PerformLayout();
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
-            this.groupBoxHUD.ResumeLayout(false);
-            this.groupBoxHUD.PerformLayout();
-            this.groupBoxDialogue.ResumeLayout(false);
-            this.groupBoxDialogue.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).EndInit();
-            this.groupBoxGameplay.ResumeLayout(false);
-            this.groupBoxGameplay.PerformLayout();
-            this.groupBoxFloatingQuestMarkers.ResumeLayout(false);
-            this.groupBoxFloatingQuestMarkers.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4238,7 +4225,6 @@
         private System.Windows.Forms.RadioButton radioButtonAccount9;
         private System.Windows.Forms.CheckBox checkBoxAutoSignin;
         private System.Windows.Forms.CheckBox checkBoxEnableSteam;
-        private System.Windows.Forms.Label labelCredentialsExplanation;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.CheckBox checkBoxShowPassword;
@@ -4445,7 +4431,6 @@
         private System.Windows.Forms.CheckBox checkBoxSSReflections;
         private System.Windows.Forms.CheckBox checkBoxBloodSplatter;
         private System.Windows.Forms.CheckBox checkBoxWaterRefractions;
-        private System.Windows.Forms.CheckBox checkBoxWaterReflections;
         private System.Windows.Forms.TrackBar sliderMouseSensitivityY;
         private System.Windows.Forms.NumericUpDown numMouseSensitivityY;
         private System.Windows.Forms.Label label1;
@@ -4463,5 +4448,6 @@
         private System.Windows.Forms.ComboBox comboBoxHighlightCorpses;
         private System.Windows.Forms.GroupBox groupBoxFloatingQuestMarkers;
         private System.Windows.Forms.CheckBox checkBoxAimAssist;
+        private System.Windows.Forms.RichTextBox richTextBoxCredentialsExplanation;
     }
 }
