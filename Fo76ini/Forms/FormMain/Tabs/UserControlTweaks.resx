@@ -125,6 +125,8 @@ Even though the textboxes and auto sign-in still work, they are ultimately usele
 
 I'll leave everything here as it was for now. Maybe, I'll remove it later.
 
+Also, since I changed how comments are parsed, any password with ";" (semicolon) or "#" (hash) will get truncated as the tool will interpret it as a comment.
+
 
 Old text:
 Your credentials are saved into Fallout76Custom.ini

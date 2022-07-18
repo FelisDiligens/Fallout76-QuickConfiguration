@@ -85,9 +85,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
             e.ChangedRange.ClearStyle(styles);
 
             // ** Comment **
-            // Line begins with ";"
-            // Inline comments (@";.*") are ignored on purpose.
-            e.ChangedRange.SetStyle(comment, @"^\s*;.*", RegexOptions.Multiline);
+            // Begins with ";" or "#"
+            e.ChangedRange.SetStyle(comment, IniFile.CommentRegex.ToString(), RegexOptions.Multiline);
 
             // ** Section **
             e.ChangedRange.SetStyle(section, @"^\s*\[.+\]\s*$", RegexOptions.Multiline);

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Fo76ini
 {
@@ -16,7 +17,11 @@ namespace Fo76ini
     {
         public readonly string FilePath;
         public readonly string FileName;
-        public string DefaultPath; // Fallback to this path, if the actual path doesn't exist. (To load defaults)
+
+        /// <summary>
+        /// Fallback to this path, if the actual path doesn't exist. (To load defaults)
+        /// </summary>
+        public string DefaultPath;
 
         public bool IsReadOnly
         {
@@ -37,8 +42,14 @@ namespace Fo76ini
         private IniData data;
 
         private DateTime lastModified;
-        private Encoding encoding = new UTF8Encoding(false); // UTF-8 without BOM
-        //private static readonly System.Globalization.CultureInfo en_US = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+
+        // *.ini files used by the engine are encoded as UTF-8 without BOM
+        private Encoding encoding = new UTF8Encoding(false);
+
+        // Comments start with ";" or "#" and can be inline
+        // Previous regex (@"^;.*") only permitted comments delimited with ";" at the beginning of a line
+        // Since the s76UserName and s76Password tweaks are useless now, I hope nobody will complain if the tool doesn't support passwords with ";" or "#" in them
+        public static Regex CommentRegex = new Regex(@"[;#].*");
 
         public IniFile(String path, String defaultPath = null)
         {
@@ -51,7 +62,7 @@ namespace Fo76ini
             iniParserConfig.AllowCreateSectionsOnFly = true;
             iniParserConfig.AssigmentSpacer = "";
             iniParserConfig.CaseInsensitive = true;
-            iniParserConfig.CommentRegex = new System.Text.RegularExpressions.Regex(@"^;.*");
+            iniParserConfig.CommentRegex = CommentRegex;
 
             // Be very generous, allow everything:
             iniParserConfig.AllowDuplicateKeys = true;
