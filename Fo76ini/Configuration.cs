@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Syroot.Windows.IO;
 using Fo76ini.Utilities;
 using System.Globalization;
+using Fo76ini.Mods;
 
 namespace Fo76ini
 {
@@ -90,6 +91,21 @@ namespace Fo76ini
                 set
                 {
                     IniFiles.Config.Set("Mods", "iModListStyle", (int)value);
+                }
+            }
+
+            /// <summary>
+            /// Where to put the bundled archives in the load order? First or last?
+            /// </summary>
+            public static ModDeployment.BundledLoadOrder BundledLoadOrder
+            {
+                get
+                {
+                    return (ModDeployment.BundledLoadOrder)IniFiles.Config.GetInt("Mods", "iEnumBundledLoadOrderPreference", (int)ModDeployment.BundledLoadOrder.PutFirst);
+                }
+                set
+                {
+                    IniFiles.Config.Set("Mods", "iEnumBundledLoadOrderPreference", (int)value);
                 }
             }
         }

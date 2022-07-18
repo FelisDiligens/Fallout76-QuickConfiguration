@@ -26,6 +26,16 @@ namespace Fo76ini
             else
                 this.radioButtonModsCopyFiles.Checked = true;
 
+            switch (Configuration.Mods.BundledLoadOrder)
+            {
+                case ModDeployment.BundledLoadOrder.PutFirst:
+                    this.radioButtonBundledFirstinLO.Checked = true;
+                    break;
+                case ModDeployment.BundledLoadOrder.PutLast:
+                    this.radioButtonBundledLastinLO.Checked = true;
+                    break;
+            }
+
             /*
              * Interface
              */
@@ -100,6 +110,7 @@ namespace Fo76ini
             }
         }
 
+        // Sym links
         private void radioButtonModsUseSymlinks_CheckedChanged(object sender, EventArgs e)
         {
             if (this.radioButtonModsUseSymlinks.Checked)
@@ -110,6 +121,7 @@ namespace Fo76ini
             }
         }
 
+        // Copy files
         private void radioButtonModsCopyFiles_CheckedChanged(object sender, EventArgs e)
         {
             if (this.radioButtonModsCopyFiles.Checked)
@@ -118,6 +130,20 @@ namespace Fo76ini
                 Configuration.Mods.UseSymlinks = false;
                 IniFiles.Config.Save();
             }
+        }
+
+        // Bundled load order: first
+        private void radioButtonBundledFirstinLO_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radioButtonBundledFirstinLO.Checked)
+                Configuration.Mods.BundledLoadOrder = ModDeployment.BundledLoadOrder.PutFirst;
+        }
+
+        // Bundled load order: last
+        private void radioButtonBundledLastinLO_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radioButtonBundledLastinLO.Checked)
+                Configuration.Mods.BundledLoadOrder = ModDeployment.BundledLoadOrder.PutLast;
         }
 
         // Freeze bundled archives

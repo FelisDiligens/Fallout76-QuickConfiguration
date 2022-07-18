@@ -17,6 +17,12 @@ namespace Fo76ini.Mods
         public static TextWriter LogFile;
         public static string LogFilePath;
 
+        public enum BundledLoadOrder
+        {
+            PutFirst = 0,
+            PutLast = 1
+        }
+
         static ModDeployment()
         {
             ModDeployment.LogFilePath = Log.GetFilePath("modmanager.log.txt");
@@ -268,7 +274,10 @@ namespace Fo76ini.Mods
         private static void PackBundledArchives(ResourceList resources, DeployArchiveList archives, bool freezeArchives)
         {
             // For each archive...
-            foreach (DeployArchive archive in archives.Reverse())
+            foreach (DeployArchive archive in
+                // (reverse order of archives if we put them at the beginning of the load order)
+                (Configuration.Mods.BundledLoadOrder == BundledLoadOrder.PutFirst ? archives.Reverse() : archives)
+            )
             {
                 // ... if needed ...
                 if (archive.Count > 0 && !Utils.IsDirectoryEmpty(archive.TempPath))
@@ -295,7 +304,15 @@ namespace Fo76ini.Mods
                     }
 
                     // ... and add it to the resource list.
-                    resources.Insert(0, archive.ArchiveName);
+                    switch (Configuration.Mods.BundledLoadOrder)
+                    {
+                        case BundledLoadOrder.PutFirst:
+                            resources.Insert(0, archive.ArchiveName);
+                            break;
+                        case BundledLoadOrder.PutLast:
+                            resources.Add(archive.ArchiveName);
+                            break;
+                    }
                 }
             }
 
