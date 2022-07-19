@@ -10,7 +10,8 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description => String.Join(
             Environment.NewLine,
-            "Opacity of the sharpened overlay post-TAA. Increasing this value increases the visibility of the sharpened image on top of the blurry one.",
+            "Opacity of the sharpened overlay post-TAA. Increasing this value increases the visibility of the sharpened image on top of the blurry one.\n" +
+            "ℹ️ Increasing this value too much causes flickering on screen.",
             "Default: 0.21");
 
         public WarnLevel WarnLevel => WarnLevel.None;
@@ -21,7 +22,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public float DefaultValue => 0.21f;
 
-        public string Identifier => this.GetType().FullName;
+        public string Identifier => this.GetType().FullName + "Rev1";
 
         public float GetValue()
         {

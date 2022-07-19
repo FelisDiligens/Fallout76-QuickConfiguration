@@ -110,6 +110,7 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(numTAAPostSharpen, toolTip, taaPostSharpenTweak);
             LinkedTweaks.LinkInfo(sliderTAAPostOverlay, toolTip, taaPostOverlayTweak);
             LinkedTweaks.LinkInfo(sliderTAAPostSharpen, toolTip, taaPostSharpenTweak);
+            LinkedTweaks.LinkInfo(sliderGrassFadeDistance, toolTip, grassFadeDistanceTweak);
             LinkedTweaks.LinkInfo(numGrassFadeDistance, toolTip, grassFadeDistanceTweak);
 
             // Audio tab

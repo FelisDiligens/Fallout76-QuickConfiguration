@@ -10,7 +10,8 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description => String.Join(
             Environment.NewLine,
-            "Sharpening amount post-TAA. Increasing this value past 1 causes graphical anomalies.",
+            "Sharpening amount post-TAA.\n" +
+            "ℹ️ Increasing this value too much causes flickering on screen.",
             "Default: 0.21",
             "Recommended: 0.4");
 
@@ -22,7 +23,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public float DefaultValue => 0.21f;
 
-        public string Identifier => this.GetType().FullName;
+        public string Identifier => this.GetType().FullName + "Rev1";
 
         public float GetValue()
         {
