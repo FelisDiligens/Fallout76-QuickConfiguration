@@ -191,6 +191,7 @@ namespace Fo76ini.Mods
             bool dataFolderFound = false;
             bool videoFolderFound = false;
             bool dllFound = false;
+            bool stringsFound = false;
 
             foreach (string folderPath in Directory.EnumerateDirectories(mod.ManagedFolderPath))
             {
@@ -218,6 +219,10 @@ namespace Fo76ini.Mods
 
                 if (fileExtension == ".dll")
                     dllFound = true;
+                else if (fileExtension == ".dlstrings" ||
+                         fileExtension == ".ilstrings" ||
+                         fileExtension == ".strings")
+                    stringsFound = true;
             }
 
 
@@ -243,6 +248,12 @@ namespace Fo76ini.Mods
             {
                 mod.Method = ManagedMod.DeploymentMethod.LooseFiles;
                 mod.RootFolder = ".";
+            }
+
+            if (stringsFound)
+            {
+                mod.Method = ManagedMod.DeploymentMethod.LooseFiles;
+                mod.RootFolder = "Data\\strings";
             }
 
             if (generalFoldersFound)
