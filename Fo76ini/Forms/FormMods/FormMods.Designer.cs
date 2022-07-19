@@ -175,6 +175,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -197,6 +199,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.objectListViewMods)).BeginInit();
             this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -563,7 +567,7 @@
             // radioButtonModsCopyFiles
             // 
             this.radioButtonModsCopyFiles.AutoSize = true;
-            this.radioButtonModsCopyFiles.Location = new System.Drawing.Point(9, 82);
+            this.radioButtonModsCopyFiles.Location = new System.Drawing.Point(3, 64);
             this.radioButtonModsCopyFiles.Name = "radioButtonModsCopyFiles";
             this.radioButtonModsCopyFiles.Size = new System.Drawing.Size(132, 17);
             this.radioButtonModsCopyFiles.TabIndex = 5;
@@ -577,7 +581,7 @@
             // radioButtonModsUseSymlinks
             // 
             this.radioButtonModsUseSymlinks.AutoSize = true;
-            this.radioButtonModsUseSymlinks.Location = new System.Drawing.Point(9, 59);
+            this.radioButtonModsUseSymlinks.Location = new System.Drawing.Point(3, 41);
             this.radioButtonModsUseSymlinks.Name = "radioButtonModsUseSymlinks";
             this.radioButtonModsUseSymlinks.Size = new System.Drawing.Size(281, 17);
             this.radioButtonModsUseSymlinks.TabIndex = 4;
@@ -590,7 +594,7 @@
             // radioButtonModsUseHardlinks
             // 
             this.radioButtonModsUseHardlinks.AutoSize = true;
-            this.radioButtonModsUseHardlinks.Location = new System.Drawing.Point(9, 36);
+            this.radioButtonModsUseHardlinks.Location = new System.Drawing.Point(3, 18);
             this.radioButtonModsUseHardlinks.Name = "radioButtonModsUseHardlinks";
             this.radioButtonModsUseHardlinks.Size = new System.Drawing.Size(176, 17);
             this.radioButtonModsUseHardlinks.TabIndex = 3;
@@ -604,7 +608,7 @@
             // radioButtonBundledFirstinLO
             // 
             this.radioButtonBundledFirstinLO.AutoSize = true;
-            this.radioButtonBundledFirstinLO.Location = new System.Drawing.Point(9, 137);
+            this.radioButtonBundledFirstinLO.Location = new System.Drawing.Point(3, 17);
             this.radioButtonBundledFirstinLO.Name = "radioButtonBundledFirstinLO";
             this.radioButtonBundledFirstinLO.Size = new System.Drawing.Size(185, 17);
             this.radioButtonBundledFirstinLO.TabIndex = 8;
@@ -617,7 +621,7 @@
             // radioButtonBundledLastinLO
             // 
             this.radioButtonBundledLastinLO.AutoSize = true;
-            this.radioButtonBundledLastinLO.Location = new System.Drawing.Point(9, 160);
+            this.radioButtonBundledLastinLO.Location = new System.Drawing.Point(3, 40);
             this.radioButtonBundledLastinLO.Name = "radioButtonBundledLastinLO";
             this.radioButtonBundledLastinLO.Size = new System.Drawing.Size(144, 17);
             this.radioButtonBundledLastinLO.TabIndex = 9;
@@ -783,13 +787,8 @@
             // 
             // groupBoxModsBehavior
             // 
-            this.groupBoxModsBehavior.Controls.Add(this.radioButtonBundledLastinLO);
-            this.groupBoxModsBehavior.Controls.Add(this.radioButtonBundledFirstinLO);
-            this.groupBoxModsBehavior.Controls.Add(this.labelBundledLoadOrder);
-            this.groupBoxModsBehavior.Controls.Add(this.labelDeployMethod);
-            this.groupBoxModsBehavior.Controls.Add(this.radioButtonModsCopyFiles);
-            this.groupBoxModsBehavior.Controls.Add(this.radioButtonModsUseSymlinks);
-            this.groupBoxModsBehavior.Controls.Add(this.radioButtonModsUseHardlinks);
+            this.groupBoxModsBehavior.Controls.Add(this.panel3);
+            this.groupBoxModsBehavior.Controls.Add(this.panel2);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxFreezeBundledArchives);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
             this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 6);
@@ -802,7 +801,7 @@
             // labelBundledLoadOrder
             // 
             this.labelBundledLoadOrder.AutoSize = true;
-            this.labelBundledLoadOrder.Location = new System.Drawing.Point(6, 121);
+            this.labelBundledLoadOrder.Location = new System.Drawing.Point(0, 1);
             this.labelBundledLoadOrder.Name = "labelBundledLoadOrder";
             this.labelBundledLoadOrder.Size = new System.Drawing.Size(126, 13);
             this.labelBundledLoadOrder.TabIndex = 7;
@@ -811,7 +810,7 @@
             // labelDeployMethod
             // 
             this.labelDeployMethod.AutoSize = true;
-            this.labelDeployMethod.Location = new System.Drawing.Point(6, 18);
+            this.labelDeployMethod.Location = new System.Drawing.Point(0, 2);
             this.labelDeployMethod.Name = "labelDeployMethod";
             this.labelDeployMethod.Size = new System.Drawing.Size(94, 13);
             this.labelDeployMethod.TabIndex = 6;
@@ -1772,6 +1771,27 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.labelDeployMethod);
+            this.panel2.Controls.Add(this.radioButtonModsUseHardlinks);
+            this.panel2.Controls.Add(this.radioButtonModsUseSymlinks);
+            this.panel2.Controls.Add(this.radioButtonModsCopyFiles);
+            this.panel2.Location = new System.Drawing.Point(6, 19);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(398, 100);
+            this.panel2.TabIndex = 10;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.labelBundledLoadOrder);
+            this.panel3.Controls.Add(this.radioButtonBundledFirstinLO);
+            this.panel3.Controls.Add(this.radioButtonBundledLastinLO);
+            this.panel3.Location = new System.Drawing.Point(6, 121);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(398, 77);
+            this.panel3.TabIndex = 11;
+            // 
             // FormMods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1827,6 +1847,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.objectListViewMods)).EndInit();
             this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1979,5 +2003,7 @@
         private System.Windows.Forms.RadioButton radioButtonBundledLastinLO;
         private System.Windows.Forms.RadioButton radioButtonBundledFirstinLO;
         private System.Windows.Forms.Label labelBundledLoadOrder;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }
