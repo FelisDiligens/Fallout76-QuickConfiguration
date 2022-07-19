@@ -14,8 +14,8 @@ namespace Fo76ini.Interface
         public string Text;
         private string id;
 
-        public const string NotificationSoundFile = @"notify.wav";
-        public const string ErrorSoundFile = @"error.wav";
+        public static readonly string NotificationSoundFile = Path.Combine(Shared.AppInstallationFolder, @"notify.wav");
+        public static readonly string ErrorSoundFile = Path.Combine(Shared.AppInstallationFolder, @"error.wav");
         private static SoundPlayer NotifySoundPlayer = new SoundPlayer(NotificationSoundFile);
         private static SoundPlayer ErrorSoundPlayer = new SoundPlayer(ErrorSoundFile);
 
