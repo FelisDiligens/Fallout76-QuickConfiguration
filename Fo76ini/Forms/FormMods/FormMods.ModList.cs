@@ -105,7 +105,7 @@ namespace Fo76ini
                  * Installation status:
                  */
 
-                if (mod.isDeploymentNecessary())
+                if (mod.IsDeploymentNecessary())
                 {
                     this.InstallStatusColor = Color.Blue;
                     if (mod.Enabled && !mod.Deployed)

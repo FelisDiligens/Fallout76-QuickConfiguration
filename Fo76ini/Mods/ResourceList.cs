@@ -15,16 +15,20 @@ namespace Fo76ini.Mods
         public static List<string> KnownLists = new List<string>() {
             "sResourceIndexFileList",      // <- mod manager uses this
             "sResourceArchive2List",       // <- a lot of people use this
-            "sResourceArchiveMisc",        // <- haven't seen this before
+            "sResourceArchiveMisc",        // <- haven't seen this before (apparently "can load any mod except for texture and animation mods")
             "sResourceStartUpArchiveList",
             "SResourceArchiveList",
             "SResourceArchiveList2",
             //"SResourceArchiveMemoryCacheList"
         };
 
+        public const string DefaultList = "sResourceIndexFileList";
+
+
+
         private List<string> resourceList = new List<string>();
 
-        public string ListName = "sResourceIndexFileList";
+        public string ListName = DefaultList;
 
         public int Count => this.resourceList.Count;
 
@@ -72,7 +76,7 @@ namespace Fo76ini.Mods
         public static ResourceList GetDefaultList()
         {
             return ResourceList.FromINI(
-                "sResourceIndexFileList"
+                DefaultList
             );
         }
 

@@ -1165,7 +1165,7 @@ namespace Fo76ini
 
         private void UpdateStatusStrip()
         {
-            if (Mods.isDeploymentNecessary())
+            if (Mods.IsDeploymentNecessary())
                 this.DisplayDeploymentNecessary();
             else
                 this.DisplayAllDone();

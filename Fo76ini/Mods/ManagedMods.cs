@@ -83,7 +83,7 @@ namespace Fo76ini.Mods
             this.Mods[index].Enabled = false;
         }
 
-        public bool isModEnabled(int index)
+        public bool IsModEnabled(int index)
         {
             return this.Mods[index].Enabled;
         }
@@ -142,14 +142,14 @@ namespace Fo76ini.Mods
         /// Compares current disk state and pending disk state and returns true, if they're different.
         /// </summary>
         /// <returns></returns>
-        public bool isDeploymentNecessary()
+        public bool IsDeploymentNecessary()
         {
             foreach (ManagedMod mod in Mods)
             {
                 if (mod.Deployed && this.ModsDisabled)
                     return true;
 
-                if (mod.isDeploymentNecessary())
+                if (mod.IsDeploymentNecessary())
                     return true;
             }
             return false;

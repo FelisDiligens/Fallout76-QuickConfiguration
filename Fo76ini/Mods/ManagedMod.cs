@@ -14,7 +14,7 @@ namespace Fo76ini.Mods
     {
         /// <summary>
         /// How a mod should be deployed.
-        /// Loose       - Copy files over without packing
+        /// LooseFiles  - Copy files over without packing
         /// BundledBA2  - Bundle it with other mods in one package
         /// SeparateBA2 - Pack it as a separate *.ba2 archive
         /// </summary>
@@ -571,7 +571,7 @@ namespace Fo76ini.Mods
         /// Compares current disk state with pending disk state and returns true, if they're different.
         /// </summary>
         /// <returns></returns>
-        public bool isDeploymentNecessary()
+        public bool IsDeploymentNecessary()
         {
             if (Deployed != Enabled)
                 return true;

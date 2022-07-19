@@ -249,7 +249,9 @@ namespace Fo76ini.Mods
             LogFile.WriteLine($"      Copy frozen bundled archives...");
 
             // For each archive...
-            foreach (DeployArchive archive in archives)
+            foreach (DeployArchive archive in
+                // (reverse order of archives if we put them at the beginning of the load order)
+                (Configuration.Mods.BundledLoadOrder == BundledLoadOrder.PutFirst ? archives.Reverse() : archives))
             {
                 // ... if it had been frozen ...
                 if (File.Exists(archive.GetFrozenArchivePath()))
@@ -263,7 +265,15 @@ namespace Fo76ini.Mods
                         true);
 
                     // ... and add it to the resource list.
-                    resources.Insert(0, archive.ArchiveName);
+                    switch (Configuration.Mods.BundledLoadOrder)
+                    {
+                        case BundledLoadOrder.PutFirst:
+                            resources.Insert(0, archive.ArchiveName);
+                            break;
+                        case BundledLoadOrder.PutLast:
+                            resources.Add(archive.ArchiveName);
+                            break;
+                    }
                 }
             }
         }
@@ -276,8 +286,7 @@ namespace Fo76ini.Mods
             // For each archive...
             foreach (DeployArchive archive in
                 // (reverse order of archives if we put them at the beginning of the load order)
-                (Configuration.Mods.BundledLoadOrder == BundledLoadOrder.PutFirst ? archives.Reverse() : archives)
-            )
+                (Configuration.Mods.BundledLoadOrder == BundledLoadOrder.PutFirst ? archives.Reverse() : archives))
             {
                 // ... if needed ...
                 if (archive.Count > 0 && !Utils.IsDirectoryEmpty(archive.TempPath))

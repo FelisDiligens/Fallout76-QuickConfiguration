@@ -90,7 +90,10 @@
             this.radioButtonModsUseAlternativeList = new System.Windows.Forms.RadioButton();
             this.radioButtonModsUseStandardList = new System.Windows.Forms.RadioButton();
             this.groupBoxModsBehavior = new System.Windows.Forms.GroupBox();
+            this.labelBehaviorNote = new System.Windows.Forms.Label();
+            this.panelBundledLoadOrder = new System.Windows.Forms.Panel();
             this.labelBundledLoadOrder = new System.Windows.Forms.Label();
+            this.panelDeployMethod = new System.Windows.Forms.Panel();
             this.labelDeployMethod = new System.Windows.Forms.Label();
             this.checkBoxAddArchivesAsBundled = new System.Windows.Forms.CheckBox();
             this.groupBoxLists = new System.Windows.Forms.GroupBox();
@@ -175,14 +178,14 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabPageModsSettings.SuspendLayout();
             this.groupBoxModsInterface.SuspendLayout();
             this.groupBoxModsBehavior.SuspendLayout();
+            this.panelBundledLoadOrder.SuspendLayout();
+            this.panelDeployMethod.SuspendLayout();
             this.groupBoxLists.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCollapseDetails)).BeginInit();
@@ -199,8 +202,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.objectListViewMods)).BeginInit();
             this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -460,7 +461,7 @@
             // checkBoxFreezeBundledArchives
             // 
             this.checkBoxFreezeBundledArchives.AutoSize = true;
-            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(9, 227);
+            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(9, 261);
             this.checkBoxFreezeBundledArchives.Name = "checkBoxFreezeBundledArchives";
             this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(210, 17);
             this.checkBoxFreezeBundledArchives.TabIndex = 2;
@@ -745,9 +746,9 @@
             this.groupBoxModsInterface.Controls.Add(this.radioButtonModsUseAlternativeList);
             this.groupBoxModsInterface.Controls.Add(this.radioButtonModsUseStandardList);
             this.groupBoxModsInterface.Controls.Add(this.checkBoxModsUseRemoteModNames);
-            this.groupBoxModsInterface.Location = new System.Drawing.Point(6, 273);
+            this.groupBoxModsInterface.Location = new System.Drawing.Point(6, 338);
             this.groupBoxModsInterface.Name = "groupBoxModsInterface";
-            this.groupBoxModsInterface.Size = new System.Drawing.Size(410, 185);
+            this.groupBoxModsInterface.Size = new System.Drawing.Size(410, 120);
             this.groupBoxModsInterface.TabIndex = 61;
             this.groupBoxModsInterface.TabStop = false;
             this.groupBoxModsInterface.Text = "Interface";
@@ -755,7 +756,7 @@
             // labelModListStyle
             // 
             this.labelModListStyle.AutoSize = true;
-            this.labelModListStyle.Location = new System.Drawing.Point(6, 58);
+            this.labelModListStyle.Location = new System.Drawing.Point(6, 50);
             this.labelModListStyle.Name = "labelModListStyle";
             this.labelModListStyle.Size = new System.Drawing.Size(77, 13);
             this.labelModListStyle.TabIndex = 6;
@@ -764,7 +765,7 @@
             // radioButtonModsUseAlternativeList
             // 
             this.radioButtonModsUseAlternativeList.AutoSize = true;
-            this.radioButtonModsUseAlternativeList.Location = new System.Drawing.Point(9, 97);
+            this.radioButtonModsUseAlternativeList.Location = new System.Drawing.Point(9, 89);
             this.radioButtonModsUseAlternativeList.Name = "radioButtonModsUseAlternativeList";
             this.radioButtonModsUseAlternativeList.Size = new System.Drawing.Size(194, 17);
             this.radioButtonModsUseAlternativeList.TabIndex = 5;
@@ -776,36 +777,69 @@
             // 
             this.radioButtonModsUseStandardList.AutoSize = true;
             this.radioButtonModsUseStandardList.Checked = true;
-            this.radioButtonModsUseStandardList.Location = new System.Drawing.Point(9, 74);
+            this.radioButtonModsUseStandardList.Location = new System.Drawing.Point(9, 66);
             this.radioButtonModsUseStandardList.Name = "radioButtonModsUseStandardList";
-            this.radioButtonModsUseStandardList.Size = new System.Drawing.Size(206, 17);
+            this.radioButtonModsUseStandardList.Size = new System.Drawing.Size(244, 17);
             this.radioButtonModsUseStandardList.TabIndex = 4;
             this.radioButtonModsUseStandardList.TabStop = true;
-            this.radioButtonModsUseStandardList.Text = "Standard, combined columns (new list)";
+            this.radioButtonModsUseStandardList.Text = "Standard, combined columns (new list, default)";
             this.radioButtonModsUseStandardList.UseVisualStyleBackColor = true;
             this.radioButtonModsUseStandardList.CheckedChanged += new System.EventHandler(this.radioButtonModsUseNewList_CheckedChanged);
             // 
             // groupBoxModsBehavior
             // 
-            this.groupBoxModsBehavior.Controls.Add(this.panel3);
-            this.groupBoxModsBehavior.Controls.Add(this.panel2);
+            this.groupBoxModsBehavior.Controls.Add(this.labelBehaviorNote);
+            this.groupBoxModsBehavior.Controls.Add(this.panelBundledLoadOrder);
+            this.groupBoxModsBehavior.Controls.Add(this.panelDeployMethod);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxFreezeBundledArchives);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
             this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 6);
             this.groupBoxModsBehavior.Name = "groupBoxModsBehavior";
-            this.groupBoxModsBehavior.Size = new System.Drawing.Size(410, 261);
+            this.groupBoxModsBehavior.Size = new System.Drawing.Size(410, 326);
             this.groupBoxModsBehavior.TabIndex = 60;
             this.groupBoxModsBehavior.TabStop = false;
             this.groupBoxModsBehavior.Text = "Behavior";
+            // 
+            // labelBehaviorNote
+            // 
+            this.labelBehaviorNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBehaviorNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelBehaviorNote.Location = new System.Drawing.Point(6, 14);
+            this.labelBehaviorNote.Name = "labelBehaviorNote";
+            this.labelBehaviorNote.Size = new System.Drawing.Size(398, 30);
+            this.labelBehaviorNote.TabIndex = 14;
+            this.labelBehaviorNote.Text = "Note: These settings only take effect after deployment.";
+            this.labelBehaviorNote.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelBundledLoadOrder
+            // 
+            this.panelBundledLoadOrder.Controls.Add(this.labelBundledLoadOrder);
+            this.panelBundledLoadOrder.Controls.Add(this.radioButtonBundledFirstinLO);
+            this.panelBundledLoadOrder.Controls.Add(this.radioButtonBundledLastinLO);
+            this.panelBundledLoadOrder.Location = new System.Drawing.Point(6, 156);
+            this.panelBundledLoadOrder.Name = "panelBundledLoadOrder";
+            this.panelBundledLoadOrder.Size = new System.Drawing.Size(398, 65);
+            this.panelBundledLoadOrder.TabIndex = 11;
             // 
             // labelBundledLoadOrder
             // 
             this.labelBundledLoadOrder.AutoSize = true;
             this.labelBundledLoadOrder.Location = new System.Drawing.Point(0, 1);
             this.labelBundledLoadOrder.Name = "labelBundledLoadOrder";
-            this.labelBundledLoadOrder.Size = new System.Drawing.Size(126, 13);
+            this.labelBundledLoadOrder.Size = new System.Drawing.Size(238, 13);
             this.labelBundledLoadOrder.TabIndex = 7;
-            this.labelBundledLoadOrder.Text = "Load order (resource list):";
+            this.labelBundledLoadOrder.Text = "Where to put bundled archives in the load order?";
+            // 
+            // panelDeployMethod
+            // 
+            this.panelDeployMethod.Controls.Add(this.labelDeployMethod);
+            this.panelDeployMethod.Controls.Add(this.radioButtonModsUseHardlinks);
+            this.panelDeployMethod.Controls.Add(this.radioButtonModsUseSymlinks);
+            this.panelDeployMethod.Controls.Add(this.radioButtonModsCopyFiles);
+            this.panelDeployMethod.Location = new System.Drawing.Point(6, 52);
+            this.panelDeployMethod.Name = "panelDeployMethod";
+            this.panelDeployMethod.Size = new System.Drawing.Size(398, 100);
+            this.panelDeployMethod.TabIndex = 10;
             // 
             // labelDeployMethod
             // 
@@ -819,7 +853,7 @@
             // checkBoxAddArchivesAsBundled
             // 
             this.checkBoxAddArchivesAsBundled.AutoSize = true;
-            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(9, 204);
+            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(9, 238);
             this.checkBoxAddArchivesAsBundled.Name = "checkBoxAddArchivesAsBundled";
             this.checkBoxAddArchivesAsBundled.Size = new System.Drawing.Size(167, 17);
             this.checkBoxAddArchivesAsBundled.TabIndex = 0;
@@ -846,7 +880,7 @@
             // 
             // buttonModsResetTextbox
             // 
-            this.buttonModsResetTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonModsResetTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonModsResetTextbox.Location = new System.Drawing.Point(110, 423);
             this.buttonModsResetTextbox.Name = "buttonModsResetTextbox";
             this.buttonModsResetTextbox.Size = new System.Drawing.Size(85, 23);
@@ -857,7 +891,7 @@
             // 
             // buttonModsApplyTextBox
             // 
-            this.buttonModsApplyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonModsApplyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonModsApplyTextBox.Location = new System.Drawing.Point(201, 423);
             this.buttonModsApplyTextBox.Name = "buttonModsApplyTextBox";
             this.buttonModsApplyTextBox.Size = new System.Drawing.Size(117, 23);
@@ -1771,27 +1805,6 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.labelDeployMethod);
-            this.panel2.Controls.Add(this.radioButtonModsUseHardlinks);
-            this.panel2.Controls.Add(this.radioButtonModsUseSymlinks);
-            this.panel2.Controls.Add(this.radioButtonModsCopyFiles);
-            this.panel2.Location = new System.Drawing.Point(6, 19);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(398, 100);
-            this.panel2.TabIndex = 10;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.labelBundledLoadOrder);
-            this.panel3.Controls.Add(this.radioButtonBundledFirstinLO);
-            this.panel3.Controls.Add(this.radioButtonBundledLastinLO);
-            this.panel3.Location = new System.Drawing.Point(6, 121);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(398, 77);
-            this.panel3.TabIndex = 11;
-            // 
             // FormMods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1822,6 +1835,10 @@
             this.groupBoxModsInterface.PerformLayout();
             this.groupBoxModsBehavior.ResumeLayout(false);
             this.groupBoxModsBehavior.PerformLayout();
+            this.panelBundledLoadOrder.ResumeLayout(false);
+            this.panelBundledLoadOrder.PerformLayout();
+            this.panelDeployMethod.ResumeLayout(false);
+            this.panelDeployMethod.PerformLayout();
             this.groupBoxLists.ResumeLayout(false);
             this.groupBoxLists.PerformLayout();
             this.tabPageModOrder.ResumeLayout(false);
@@ -1847,10 +1864,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.objectListViewMods)).EndInit();
             this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2003,7 +2016,8 @@
         private System.Windows.Forms.RadioButton radioButtonBundledLastinLO;
         private System.Windows.Forms.RadioButton radioButtonBundledFirstinLO;
         private System.Windows.Forms.Label labelBundledLoadOrder;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelBundledLoadOrder;
+        private System.Windows.Forms.Panel panelDeployMethod;
+        private System.Windows.Forms.Label labelBehaviorNote;
     }
 }
