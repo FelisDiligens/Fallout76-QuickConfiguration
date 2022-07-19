@@ -61,7 +61,7 @@ namespace Fo76ini
             localizedStrings["modSidePanel_HintWrongPresetForTextures"] = "Hint: For texture replacement mods, select the \"Textures (*.dds files)\" preset or leave it on \"Auto-detect\".";
             localizedStrings["modSidePanel_HintWrongPresetForAudioFiles"] = "Hint: For sound replacement mods, select the \"Sound FX / Music / Voice\" preset or leave it on \"Auto-detect\".";
             localizedStrings["modSidePanel_HintWrongInstallMethodForDLLs"] = "Hint: *.dll files are usually installed as \"Loose files\" into the top directory (\".\").";
-            localizedStrings["modSidePanel_HintWrongInstallMethodForStrings"] = "Hint: Strings are usually installed as \"Loose files\" into the \"Data\" folder.";
+            localizedStrings["modSidePanel_HintWrongInstallMethodForStrings"] = "Hint: Strings are usually installed as \"Loose files\" into the \"Data\\Strings\" folder.";
         }
 
         public static void AddSharedMessageBoxes()
