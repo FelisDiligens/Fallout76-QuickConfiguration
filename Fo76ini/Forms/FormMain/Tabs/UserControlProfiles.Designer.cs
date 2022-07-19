@@ -130,7 +130,7 @@
             this.buttonEditProfile.Location = new System.Drawing.Point(351, 94);
             this.buttonEditProfile.Name = "buttonEditProfile";
             this.buttonEditProfile.Size = new System.Drawing.Size(115, 28);
-            this.buttonEditProfile.TabIndex = 43;
+            this.buttonEditProfile.TabIndex = 11;
             this.buttonEditProfile.Text = "Edit profile";
             this.buttonEditProfile.UseVisualStyleBackColor = true;
             this.buttonEditProfile.Click += new System.EventHandler(this.buttonEditProfile_Click);
@@ -141,7 +141,7 @@
             this.buttonDeleteProfile.Location = new System.Drawing.Point(351, 128);
             this.buttonDeleteProfile.Name = "buttonDeleteProfile";
             this.buttonDeleteProfile.Size = new System.Drawing.Size(115, 28);
-            this.buttonDeleteProfile.TabIndex = 42;
+            this.buttonDeleteProfile.TabIndex = 12;
             this.buttonDeleteProfile.Text = "Delete profile";
             this.buttonDeleteProfile.UseVisualStyleBackColor = true;
             this.buttonDeleteProfile.Click += new System.EventHandler(this.buttonDeleteProfile_Click);
@@ -168,7 +168,7 @@
             this.listViewGameInstances.Name = "listViewGameInstances";
             this.listViewGameInstances.Size = new System.Drawing.Size(330, 301);
             this.listViewGameInstances.SmallImageList = this.imageList;
-            this.listViewGameInstances.TabIndex = 21;
+            this.listViewGameInstances.TabIndex = 0;
             this.listViewGameInstances.UseCompatibleStateImageBehavior = false;
             this.listViewGameInstances.View = System.Windows.Forms.View.Details;
             this.listViewGameInstances.SelectedIndexChanged += new System.EventHandler(this.listViewGameInstances_SelectedIndexChanged);
@@ -193,7 +193,7 @@
             this.buttonAddProfile.Location = new System.Drawing.Point(351, 60);
             this.buttonAddProfile.Name = "buttonAddProfile";
             this.buttonAddProfile.Size = new System.Drawing.Size(115, 28);
-            this.buttonAddProfile.TabIndex = 3;
+            this.buttonAddProfile.TabIndex = 10;
             this.buttonAddProfile.Text = "Add profile";
             this.buttonAddProfile.UseVisualStyleBackColor = true;
             this.buttonAddProfile.Click += new System.EventHandler(this.buttonAddProfile_Click);
@@ -228,7 +228,7 @@
             this.linkLabelNavigationBack.Location = new System.Drawing.Point(12, 45);
             this.linkLabelNavigationBack.Name = "linkLabelNavigationBack";
             this.linkLabelNavigationBack.Size = new System.Drawing.Size(220, 17);
-            this.linkLabelNavigationBack.TabIndex = 41;
+            this.linkLabelNavigationBack.TabIndex = 100;
             this.linkLabelNavigationBack.TabStop = true;
             this.linkLabelNavigationBack.Text = "← Save profile and back to selection";
             this.linkLabelNavigationBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNavigationBack_LinkClicked);
@@ -261,7 +261,7 @@
             this.linkLabelAutoDetect.Location = new System.Drawing.Point(110, 85);
             this.linkLabelAutoDetect.Name = "linkLabelAutoDetect";
             this.linkLabelAutoDetect.Size = new System.Drawing.Size(100, 13);
-            this.linkLabelAutoDetect.TabIndex = 38;
+            this.linkLabelAutoDetect.TabIndex = 4;
             this.linkLabelAutoDetect.TabStop = true;
             this.linkLabelAutoDetect.Text = "Attempt auto-detect";
             this.linkLabelAutoDetect.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAutoDetect_LinkClicked);
@@ -272,7 +272,7 @@
             this.checkBoxMoreOptions.Location = new System.Drawing.Point(9, 110);
             this.checkBoxMoreOptions.Name = "checkBoxMoreOptions";
             this.checkBoxMoreOptions.Size = new System.Drawing.Size(116, 17);
-            this.checkBoxMoreOptions.TabIndex = 41;
+            this.checkBoxMoreOptions.TabIndex = 9;
             this.checkBoxMoreOptions.Text = "Show more options";
             this.checkBoxMoreOptions.UseVisualStyleBackColor = true;
             this.checkBoxMoreOptions.CheckedChanged += new System.EventHandler(this.checkBoxMoreOptions_CheckedChanged);
@@ -309,7 +309,7 @@
             this.panelAdvancedOptions.Location = new System.Drawing.Point(0, 133);
             this.panelAdvancedOptions.Name = "panelAdvancedOptions";
             this.panelAdvancedOptions.Size = new System.Drawing.Size(411, 334);
-            this.panelAdvancedOptions.TabIndex = 40;
+            this.panelAdvancedOptions.TabIndex = 10;
             // 
             // pictureBoxAPIKeyHelp
             // 
@@ -326,7 +326,7 @@
             this.linkLabelProfilesHelp.Location = new System.Drawing.Point(39, 310);
             this.linkLabelProfilesHelp.Name = "linkLabelProfilesHelp";
             this.linkLabelProfilesHelp.Size = new System.Drawing.Size(86, 13);
-            this.linkLabelProfilesHelp.TabIndex = 44;
+            this.linkLabelProfilesHelp.TabIndex = 20;
             this.linkLabelProfilesHelp.TabStop = true;
             this.linkLabelProfilesHelp.Text = "Show wiki article";
             this.linkLabelProfilesHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelProfilesHelp_LinkClicked);
@@ -345,7 +345,7 @@
             this.buttonPickIniPath.Location = new System.Drawing.Point(363, 163);
             this.buttonPickIniPath.Name = "buttonPickIniPath";
             this.buttonPickIniPath.Size = new System.Drawing.Size(30, 22);
-            this.buttonPickIniPath.TabIndex = 42;
+            this.buttonPickIniPath.TabIndex = 15;
             this.buttonPickIniPath.Text = "...";
             this.buttonPickIniPath.UseVisualStyleBackColor = true;
             this.buttonPickIniPath.Click += new System.EventHandler(this.buttonPickIniPath_Click);
@@ -355,7 +355,7 @@
             this.textBoxIniPath.Location = new System.Drawing.Point(113, 164);
             this.textBoxIniPath.Name = "textBoxIniPath";
             this.textBoxIniPath.Size = new System.Drawing.Size(245, 20);
-            this.textBoxIniPath.TabIndex = 41;
+            this.textBoxIniPath.TabIndex = 14;
             this.textBoxIniPath.TextChanged += new System.EventHandler(this.textBoxIniPath_TextChanged);
             // 
             // textBoxLaunchURL
@@ -363,7 +363,7 @@
             this.textBoxLaunchURL.Location = new System.Drawing.Point(113, 263);
             this.textBoxLaunchURL.Name = "textBoxLaunchURL";
             this.textBoxLaunchURL.Size = new System.Drawing.Size(280, 20);
-            this.textBoxLaunchURL.TabIndex = 7;
+            this.textBoxLaunchURL.TabIndex = 18;
             this.textBoxLaunchURL.TextChanged += new System.EventHandler(this.textBoxLaunchURL_TextChanged);
             // 
             // labelProfileAdvancedOptions
@@ -402,7 +402,7 @@
             this.textBoxParameters.Location = new System.Drawing.Point(113, 227);
             this.textBoxParameters.Name = "textBoxParameters";
             this.textBoxParameters.Size = new System.Drawing.Size(280, 20);
-            this.textBoxParameters.TabIndex = 5;
+            this.textBoxParameters.TabIndex = 17;
             this.textBoxParameters.TextChanged += new System.EventHandler(this.textBoxParameters_TextChanged);
             // 
             // labelProfileLaunchOptions
@@ -431,7 +431,7 @@
             this.radioButtonLaunchViaExecutable.Location = new System.Drawing.Point(10, 53);
             this.radioButtonLaunchViaExecutable.Name = "radioButtonLaunchViaExecutable";
             this.radioButtonLaunchViaExecutable.Size = new System.Drawing.Size(157, 17);
-            this.radioButtonLaunchViaExecutable.TabIndex = 1;
+            this.radioButtonLaunchViaExecutable.TabIndex = 12;
             this.radioButtonLaunchViaExecutable.TabStop = true;
             this.radioButtonLaunchViaExecutable.Text = "Run \"Fallout76.exe\" directly";
             this.radioButtonLaunchViaExecutable.UseVisualStyleBackColor = true;
@@ -442,7 +442,7 @@
             this.textBoxExecutable.Location = new System.Drawing.Point(113, 201);
             this.textBoxExecutable.Name = "textBoxExecutable";
             this.textBoxExecutable.Size = new System.Drawing.Size(280, 20);
-            this.textBoxExecutable.TabIndex = 3;
+            this.textBoxExecutable.TabIndex = 16;
             this.textBoxExecutable.Text = "Fallout76.exe";
             this.textBoxExecutable.TextChanged += new System.EventHandler(this.textBoxExecutable_TextChanged);
             // 
@@ -452,7 +452,7 @@
             this.radioButtonLaunchViaLink.Location = new System.Drawing.Point(10, 30);
             this.radioButtonLaunchViaLink.Name = "radioButtonLaunchViaLink";
             this.radioButtonLaunchViaLink.Size = new System.Drawing.Size(222, 17);
-            this.radioButtonLaunchViaLink.TabIndex = 0;
+            this.radioButtonLaunchViaLink.TabIndex = 11;
             this.radioButtonLaunchViaLink.TabStop = true;
             this.radioButtonLaunchViaLink.Text = "Launch via Steam / Xbox (recommended)";
             this.radioButtonLaunchViaLink.UseVisualStyleBackColor = true;
@@ -472,7 +472,7 @@
             this.textBoxIniPrefix.Location = new System.Drawing.Point(113, 138);
             this.textBoxIniPrefix.Name = "textBoxIniPrefix";
             this.textBoxIniPrefix.Size = new System.Drawing.Size(280, 20);
-            this.textBoxIniPrefix.TabIndex = 1;
+            this.textBoxIniPrefix.TabIndex = 13;
             this.textBoxIniPrefix.Text = "Fallout76";
             this.textBoxIniPrefix.TextChanged += new System.EventHandler(this.textBoxIniPrefix_TextChanged);
             // 
@@ -502,7 +502,7 @@
             this.comboBoxGameEdition.Location = new System.Drawing.Point(113, 35);
             this.comboBoxGameEdition.Name = "comboBoxGameEdition";
             this.comboBoxGameEdition.Size = new System.Drawing.Size(279, 21);
-            this.comboBoxGameEdition.TabIndex = 35;
+            this.comboBoxGameEdition.TabIndex = 1;
             this.comboBoxGameEdition.SelectedIndexChanged += new System.EventHandler(this.comboBoxGameEdition_SelectedIndexChanged);
             // 
             // labelProfileName
@@ -519,7 +519,7 @@
             this.buttonPickGamePath.Location = new System.Drawing.Point(363, 61);
             this.buttonPickGamePath.Name = "buttonPickGamePath";
             this.buttonPickGamePath.Size = new System.Drawing.Size(30, 22);
-            this.buttonPickGamePath.TabIndex = 31;
+            this.buttonPickGamePath.TabIndex = 3;
             this.buttonPickGamePath.Text = "...";
             this.buttonPickGamePath.UseVisualStyleBackColor = true;
             this.buttonPickGamePath.Click += new System.EventHandler(this.buttonPickGamePath_Click);
@@ -529,7 +529,7 @@
             this.textBoxProfileName.Location = new System.Drawing.Point(113, 9);
             this.textBoxProfileName.Name = "textBoxProfileName";
             this.textBoxProfileName.Size = new System.Drawing.Size(279, 20);
-            this.textBoxProfileName.TabIndex = 3;
+            this.textBoxProfileName.TabIndex = 0;
             this.textBoxProfileName.Text = "Default";
             this.textBoxProfileName.TextChanged += new System.EventHandler(this.textBoxProfileName_TextChanged);
             // 
@@ -538,7 +538,7 @@
             this.textBoxGamePath.Location = new System.Drawing.Point(113, 62);
             this.textBoxGamePath.Name = "textBoxGamePath";
             this.textBoxGamePath.Size = new System.Drawing.Size(245, 20);
-            this.textBoxGamePath.TabIndex = 30;
+            this.textBoxGamePath.TabIndex = 2;
             this.textBoxGamePath.TextChanged += new System.EventHandler(this.textBoxGamePath_TextChanged);
             // 
             // UserControlProfiles

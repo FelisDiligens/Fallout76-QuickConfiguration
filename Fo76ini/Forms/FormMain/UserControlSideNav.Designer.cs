@@ -265,6 +265,7 @@
             this.buttonNexusMods.Padding = 10;
             this.buttonNexusMods.Size = new System.Drawing.Size(200, 36);
             this.buttonNexusMods.TabIndex = 52;
+            this.buttonNexusMods.TabStop = false;
             this.buttonNexusMods.Text = "NexusMods";
             this.buttonNexusMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonNexusMods.UseVisualStyleBackColor = true;
@@ -289,6 +290,7 @@
             this.buttonCustom.Padding = 10;
             this.buttonCustom.Size = new System.Drawing.Size(200, 36);
             this.buttonCustom.TabIndex = 51;
+            this.buttonCustom.TabStop = false;
             this.buttonCustom.Text = "Custom tweaks";
             this.buttonCustom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCustom.UseVisualStyleBackColor = true;
@@ -313,6 +315,7 @@
             this.buttonProfile.Padding = 10;
             this.buttonProfile.Size = new System.Drawing.Size(200, 48);
             this.buttonProfile.TabIndex = 50;
+            this.buttonProfile.TabStop = false;
             this.buttonProfile.Text = "Unknown";
             this.buttonProfile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonProfile.UseVisualStyleBackColor = true;
@@ -337,6 +340,7 @@
             this.buttonHome.Padding = 10;
             this.buttonHome.Size = new System.Drawing.Size(200, 36);
             this.buttonHome.TabIndex = 17;
+            this.buttonHome.TabStop = false;
             this.buttonHome.Text = "Home";
             this.buttonHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHome.UseVisualStyleBackColor = true;
@@ -361,6 +365,7 @@
             this.buttonGallery.Padding = 10;
             this.buttonGallery.Size = new System.Drawing.Size(200, 36);
             this.buttonGallery.TabIndex = 15;
+            this.buttonGallery.TabStop = false;
             this.buttonGallery.Text = "Gallery";
             this.buttonGallery.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonGallery.UseVisualStyleBackColor = true;
@@ -385,6 +390,7 @@
             this.buttonPipboy.Padding = 10;
             this.buttonPipboy.Size = new System.Drawing.Size(200, 36);
             this.buttonPipboy.TabIndex = 14;
+            this.buttonPipboy.TabStop = false;
             this.buttonPipboy.Text = "Pip-Boy";
             this.buttonPipboy.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPipboy.UseVisualStyleBackColor = true;
@@ -409,6 +415,7 @@
             this.buttonTweaks.Padding = 10;
             this.buttonTweaks.Size = new System.Drawing.Size(200, 36);
             this.buttonTweaks.TabIndex = 13;
+            this.buttonTweaks.TabStop = false;
             this.buttonTweaks.Text = "Tweaks";
             this.buttonTweaks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTweaks.UseVisualStyleBackColor = true;
@@ -433,6 +440,7 @@
             this.buttonBrowse.Padding = 3;
             this.buttonBrowse.Size = new System.Drawing.Size(60, 50);
             this.buttonBrowse.TabIndex = 11;
+            this.buttonBrowse.TabStop = false;
             this.buttonBrowse.Text = "Browse";
             this.buttonBrowse.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonBrowse.UseVisualStyleBackColor = true;
@@ -457,6 +465,7 @@
             this.buttonSettings.Padding = 10;
             this.buttonSettings.Size = new System.Drawing.Size(200, 36);
             this.buttonSettings.TabIndex = 10;
+            this.buttonSettings.TabStop = false;
             this.buttonSettings.Text = "Settings";
             this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSettings.UseVisualStyleBackColor = true;
@@ -481,6 +490,7 @@
             this.buttonMods.Padding = 10;
             this.buttonMods.Size = new System.Drawing.Size(200, 36);
             this.buttonMods.TabIndex = 9;
+            this.buttonMods.TabStop = false;
             this.buttonMods.Text = "Mods";
             this.buttonMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonMods.UseVisualStyleBackColor = true;
@@ -505,6 +515,7 @@
             this.buttonUpdate.Padding = 10;
             this.buttonUpdate.Size = new System.Drawing.Size(200, 36);
             this.buttonUpdate.TabIndex = 8;
+            this.buttonUpdate.TabStop = false;
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonUpdate.UseVisualStyleBackColor = true;
@@ -529,6 +540,7 @@
             this.buttonApply.Padding = 3;
             this.buttonApply.Size = new System.Drawing.Size(60, 50);
             this.buttonApply.TabIndex = 7;
+            this.buttonApply.TabStop = false;
             this.buttonApply.Text = "Apply";
             this.buttonApply.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonApply.UseVisualStyleBackColor = true;
@@ -553,6 +565,7 @@
             this.buttonPlay.Padding = 3;
             this.buttonPlay.Size = new System.Drawing.Size(60, 50);
             this.buttonPlay.TabIndex = 6;
+            this.buttonPlay.TabStop = false;
             this.buttonPlay.Text = "Play";
             this.buttonPlay.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonPlay.UseVisualStyleBackColor = true;

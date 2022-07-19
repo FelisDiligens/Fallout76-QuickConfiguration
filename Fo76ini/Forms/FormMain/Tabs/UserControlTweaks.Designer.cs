@@ -2444,7 +2444,7 @@
             this.groupBoxGamepad.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGamepad.Name = "groupBoxGamepad";
             this.groupBoxGamepad.Size = new System.Drawing.Size(400, 145);
-            this.groupBoxGamepad.TabIndex = 7;
+            this.groupBoxGamepad.TabIndex = 1;
             this.groupBoxGamepad.TabStop = false;
             this.groupBoxGamepad.Text = "Gamepad";
             // 
@@ -2456,7 +2456,7 @@
             this.checkBoxAimAssist.Location = new System.Drawing.Point(9, 79);
             this.checkBoxAimAssist.Name = "checkBoxAimAssist";
             this.checkBoxAimAssist.Size = new System.Drawing.Size(73, 17);
-            this.checkBoxAimAssist.TabIndex = 4;
+            this.checkBoxAimAssist.TabIndex = 2;
             this.checkBoxAimAssist.Text = "Aim Assist";
             this.checkBoxAimAssist.UseVisualStyleBackColor = true;
             // 
@@ -2468,7 +2468,7 @@
             this.checkBoxGamepadEnabled.Location = new System.Drawing.Point(9, 19);
             this.checkBoxGamepadEnabled.Name = "checkBoxGamepadEnabled";
             this.checkBoxGamepadEnabled.Size = new System.Drawing.Size(106, 17);
-            this.checkBoxGamepadEnabled.TabIndex = 2;
+            this.checkBoxGamepadEnabled.TabIndex = 0;
             this.checkBoxGamepadEnabled.Text = "Enable gamepad";
             this.checkBoxGamepadEnabled.UseVisualStyleBackColor = true;
             // 
@@ -2480,7 +2480,7 @@
             this.checkBoxGamepadRumble.Location = new System.Drawing.Point(9, 40);
             this.checkBoxGamepadRumble.Name = "checkBoxGamepadRumble";
             this.checkBoxGamepadRumble.Size = new System.Drawing.Size(149, 17);
-            this.checkBoxGamepadRumble.TabIndex = 3;
+            this.checkBoxGamepadRumble.TabIndex = 1;
             this.checkBoxGamepadRumble.Text = "Enable gamepad vibration";
             this.checkBoxGamepadRumble.UseVisualStyleBackColor = true;
             // 
@@ -2500,7 +2500,7 @@
             this.groupBoxMouse.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxMouse.Name = "groupBoxMouse";
             this.groupBoxMouse.Size = new System.Drawing.Size(400, 307);
-            this.groupBoxMouse.TabIndex = 6;
+            this.groupBoxMouse.TabIndex = 0;
             this.groupBoxMouse.TabStop = false;
             this.groupBoxMouse.Text = "Mouse";
             // 
@@ -2515,7 +2515,7 @@
             this.sliderMouseSensitivityY.Name = "sliderMouseSensitivityY";
             this.sliderMouseSensitivityY.Size = new System.Drawing.Size(325, 45);
             this.sliderMouseSensitivityY.SmallChange = 300;
-            this.sliderMouseSensitivityY.TabIndex = 31;
+            this.sliderMouseSensitivityY.TabIndex = 4;
             this.sliderMouseSensitivityY.TickStyle = System.Windows.Forms.TickStyle.None;
             this.sliderMouseSensitivityY.Value = 300;
             // 
@@ -2541,7 +2541,7 @@
             393216});
             this.numMouseSensitivityY.Name = "numMouseSensitivityY";
             this.numMouseSensitivityY.Size = new System.Drawing.Size(54, 20);
-            this.numMouseSensitivityY.TabIndex = 30;
+            this.numMouseSensitivityY.TabIndex = 5;
             this.numMouseSensitivityY.Value = new decimal(new int[] {
             3,
             0,
@@ -2554,7 +2554,7 @@
             this.label1.Location = new System.Drawing.Point(6, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 29;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Vertical sensitivity";
             // 
             // checkBoxMouseInvertX
@@ -2563,7 +2563,7 @@
             this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 269);
             this.checkBoxMouseInvertX.Name = "checkBoxMouseInvertX";
             this.checkBoxMouseInvertX.Size = new System.Drawing.Size(63, 17);
-            this.checkBoxMouseInvertX.TabIndex = 28;
+            this.checkBoxMouseInvertX.TabIndex = 9;
             this.checkBoxMouseInvertX.Text = "Invert X";
             this.checkBoxMouseInvertX.UseVisualStyleBackColor = true;
             // 
@@ -2573,7 +2573,7 @@
             this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 246);
             this.checkBoxMouseInvertY.Name = "checkBoxMouseInvertY";
             this.checkBoxMouseInvertY.Size = new System.Drawing.Size(63, 17);
-            this.checkBoxMouseInvertY.TabIndex = 27;
+            this.checkBoxMouseInvertY.TabIndex = 8;
             this.checkBoxMouseInvertY.Text = "Invert Y";
             this.checkBoxMouseInvertY.UseVisualStyleBackColor = true;
             // 
@@ -2588,7 +2588,7 @@
             this.sliderMouseSensitivityX.Name = "sliderMouseSensitivityX";
             this.sliderMouseSensitivityX.Size = new System.Drawing.Size(325, 45);
             this.sliderMouseSensitivityX.SmallChange = 300;
-            this.sliderMouseSensitivityX.TabIndex = 26;
+            this.sliderMouseSensitivityX.TabIndex = 1;
             this.sliderMouseSensitivityX.TickStyle = System.Windows.Forms.TickStyle.None;
             this.sliderMouseSensitivityX.Value = 300;
             // 
@@ -2598,7 +2598,7 @@
             this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 203);
             this.checkBoxFixAimSensitivity.Name = "checkBoxFixAimSensitivity";
             this.checkBoxFixAimSensitivity.Size = new System.Drawing.Size(106, 17);
-            this.checkBoxFixAimSensitivity.TabIndex = 5;
+            this.checkBoxFixAimSensitivity.TabIndex = 7;
             this.checkBoxFixAimSensitivity.Text = "Fix aim sensitivity";
             this.checkBoxFixAimSensitivity.UseVisualStyleBackColor = true;
             // 
@@ -2624,7 +2624,7 @@
             393216});
             this.numMouseSensitivityX.Name = "numMouseSensitivityX";
             this.numMouseSensitivityX.Size = new System.Drawing.Size(54, 20);
-            this.numMouseSensitivityX.TabIndex = 4;
+            this.numMouseSensitivityX.TabIndex = 2;
             this.numMouseSensitivityX.Value = new decimal(new int[] {
             3,
             0,
@@ -2637,7 +2637,7 @@
             this.labelMouseSensitivity.Location = new System.Drawing.Point(6, 19);
             this.labelMouseSensitivity.Name = "labelMouseSensitivity";
             this.labelMouseSensitivity.Size = new System.Drawing.Size(102, 13);
-            this.labelMouseSensitivity.TabIndex = 3;
+            this.labelMouseSensitivity.TabIndex = 0;
             this.labelMouseSensitivity.Text = "Horizontal sensitivity";
             // 
             // checkBoxFixMouseSensitivity
@@ -2646,7 +2646,7 @@
             this.checkBoxFixMouseSensitivity.Location = new System.Drawing.Point(9, 139);
             this.checkBoxFixMouseSensitivity.Name = "checkBoxFixMouseSensitivity";
             this.checkBoxFixMouseSensitivity.Size = new System.Drawing.Size(225, 17);
-            this.checkBoxFixMouseSensitivity.TabIndex = 0;
+            this.checkBoxFixMouseSensitivity.TabIndex = 6;
             this.checkBoxFixMouseSensitivity.Text = "Match mouse horizontal/vertical sensitivity";
             this.checkBoxFixMouseSensitivity.UseVisualStyleBackColor = true;
             // 
@@ -2677,7 +2677,7 @@
             this.groupBoxCameraPosition.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCameraPosition.Name = "groupBoxCameraPosition";
             this.groupBoxCameraPosition.Size = new System.Drawing.Size(400, 588);
-            this.groupBoxCameraPosition.TabIndex = 42;
+            this.groupBoxCameraPosition.TabIndex = 5;
             this.groupBoxCameraPosition.TabStop = false;
             this.groupBoxCameraPosition.Text = "Camera position (Experimental)";
             // 
@@ -2695,7 +2695,7 @@
             this.groupBoxMeleeCombatCameraPosition.Location = new System.Drawing.Point(6, 392);
             this.groupBoxMeleeCombatCameraPosition.Name = "groupBoxMeleeCombatCameraPosition";
             this.groupBoxMeleeCombatCameraPosition.Size = new System.Drawing.Size(388, 191);
-            this.groupBoxMeleeCombatCameraPosition.TabIndex = 57;
+            this.groupBoxMeleeCombatCameraPosition.TabIndex = 12;
             this.groupBoxMeleeCombatCameraPosition.TabStop = false;
             this.groupBoxMeleeCombatCameraPosition.Text = "Melee combat camera position";
             // 
@@ -2716,7 +2716,7 @@
             -2147483648});
             this.numfOverShoulderMeleeCombatAddY.Name = "numfOverShoulderMeleeCombatAddY";
             this.numfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderMeleeCombatAddY.TabIndex = 71;
+            this.numfOverShoulderMeleeCombatAddY.TabIndex = 8;
             // 
             // labelfOverShoulderMeleeCombatAddY
             // 
@@ -2724,7 +2724,7 @@
             this.labelfOverShoulderMeleeCombatAddY.Location = new System.Drawing.Point(6, 118);
             this.labelfOverShoulderMeleeCombatAddY.Name = "labelfOverShoulderMeleeCombatAddY";
             this.labelfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(242, 13);
-            this.labelfOverShoulderMeleeCombatAddY.TabIndex = 56;
+            this.labelfOverShoulderMeleeCombatAddY.TabIndex = 6;
             this.labelfOverShoulderMeleeCombatAddY.Text = "Further/Closer (fOverShoulderMeleeCombatAddY)";
             // 
             // numfOverShoulderMeleeCombatPosX
@@ -2744,7 +2744,7 @@
             -2147483648});
             this.numfOverShoulderMeleeCombatPosX.Name = "numfOverShoulderMeleeCombatPosX";
             this.numfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderMeleeCombatPosX.TabIndex = 70;
+            this.numfOverShoulderMeleeCombatPosX.TabIndex = 5;
             // 
             // numfOverShoulderMeleeCombatPosZ
             // 
@@ -2763,7 +2763,7 @@
             -2147483648});
             this.numfOverShoulderMeleeCombatPosZ.Name = "numfOverShoulderMeleeCombatPosZ";
             this.numfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderMeleeCombatPosZ.TabIndex = 69;
+            this.numfOverShoulderMeleeCombatPosZ.TabIndex = 2;
             // 
             // trackBarfOverShoulderMeleeCombatAddY
             // 
@@ -2775,7 +2775,7 @@
             this.trackBarfOverShoulderMeleeCombatAddY.Minimum = -20;
             this.trackBarfOverShoulderMeleeCombatAddY.Name = "trackBarfOverShoulderMeleeCombatAddY";
             this.trackBarfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(296, 45);
-            this.trackBarfOverShoulderMeleeCombatAddY.TabIndex = 55;
+            this.trackBarfOverShoulderMeleeCombatAddY.TabIndex = 7;
             this.trackBarfOverShoulderMeleeCombatAddY.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // labelfOverShoulderMeleeCombatPosX
@@ -2784,7 +2784,7 @@
             this.labelfOverShoulderMeleeCombatPosX.Location = new System.Drawing.Point(6, 68);
             this.labelfOverShoulderMeleeCombatPosX.Name = "labelfOverShoulderMeleeCombatPosX";
             this.labelfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(222, 13);
-            this.labelfOverShoulderMeleeCombatPosX.TabIndex = 54;
+            this.labelfOverShoulderMeleeCombatPosX.TabIndex = 3;
             this.labelfOverShoulderMeleeCombatPosX.Text = "Left/Right (fOverShoulderMeleeCombatPosX)";
             // 
             // trackBarfOverShoulderMeleeCombatPosX
@@ -2797,7 +2797,7 @@
             this.trackBarfOverShoulderMeleeCombatPosX.Minimum = -25;
             this.trackBarfOverShoulderMeleeCombatPosX.Name = "trackBarfOverShoulderMeleeCombatPosX";
             this.trackBarfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(296, 45);
-            this.trackBarfOverShoulderMeleeCombatPosX.TabIndex = 53;
+            this.trackBarfOverShoulderMeleeCombatPosX.TabIndex = 4;
             this.trackBarfOverShoulderMeleeCombatPosX.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // labelfOverShoulderMeleeCombatPosZ
@@ -2806,7 +2806,7 @@
             this.labelfOverShoulderMeleeCombatPosZ.Location = new System.Drawing.Point(6, 20);
             this.labelfOverShoulderMeleeCombatPosZ.Name = "labelfOverShoulderMeleeCombatPosZ";
             this.labelfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(221, 13);
-            this.labelfOverShoulderMeleeCombatPosZ.TabIndex = 52;
+            this.labelfOverShoulderMeleeCombatPosZ.TabIndex = 0;
             this.labelfOverShoulderMeleeCombatPosZ.Text = "Down/Up (fOverShoulderMeleeCombatPosZ)";
             // 
             // trackBarfOverShoulderMeleeCombatPosZ
@@ -2820,7 +2820,7 @@
             this.trackBarfOverShoulderMeleeCombatPosZ.Name = "trackBarfOverShoulderMeleeCombatPosZ";
             this.trackBarfOverShoulderMeleeCombatPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBarfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(296, 45);
-            this.trackBarfOverShoulderMeleeCombatPosZ.TabIndex = 51;
+            this.trackBarfOverShoulderMeleeCombatPosZ.TabIndex = 1;
             this.trackBarfOverShoulderMeleeCombatPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // groupBoxCombatCameraPosition
@@ -2837,7 +2837,7 @@
             this.groupBoxCombatCameraPosition.Location = new System.Drawing.Point(6, 195);
             this.groupBoxCombatCameraPosition.Name = "groupBoxCombatCameraPosition";
             this.groupBoxCombatCameraPosition.Size = new System.Drawing.Size(388, 191);
-            this.groupBoxCombatCameraPosition.TabIndex = 55;
+            this.groupBoxCombatCameraPosition.TabIndex = 11;
             this.groupBoxCombatCameraPosition.TabStop = false;
             this.groupBoxCombatCameraPosition.Text = "Combat camera position";
             // 
@@ -2858,7 +2858,7 @@
             -2147483648});
             this.numfOverShoulderCombatAddY.Name = "numfOverShoulderCombatAddY";
             this.numfOverShoulderCombatAddY.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderCombatAddY.TabIndex = 68;
+            this.numfOverShoulderCombatAddY.TabIndex = 8;
             // 
             // numfOverShoulderCombatPosX
             // 
@@ -2877,7 +2877,7 @@
             -2147483648});
             this.numfOverShoulderCombatPosX.Name = "numfOverShoulderCombatPosX";
             this.numfOverShoulderCombatPosX.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderCombatPosX.TabIndex = 67;
+            this.numfOverShoulderCombatPosX.TabIndex = 5;
             // 
             // numfOverShoulderCombatPosZ
             // 
@@ -2896,7 +2896,7 @@
             -2147483648});
             this.numfOverShoulderCombatPosZ.Name = "numfOverShoulderCombatPosZ";
             this.numfOverShoulderCombatPosZ.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderCombatPosZ.TabIndex = 66;
+            this.numfOverShoulderCombatPosZ.TabIndex = 2;
             // 
             // labelfOverShoulderCombatAddY
             // 
@@ -2904,7 +2904,7 @@
             this.labelfOverShoulderCombatAddY.Location = new System.Drawing.Point(6, 118);
             this.labelfOverShoulderCombatAddY.Name = "labelfOverShoulderCombatAddY";
             this.labelfOverShoulderCombatAddY.Size = new System.Drawing.Size(213, 13);
-            this.labelfOverShoulderCombatAddY.TabIndex = 56;
+            this.labelfOverShoulderCombatAddY.TabIndex = 6;
             this.labelfOverShoulderCombatAddY.Text = "Further/Closer (fOverShoulderCombatAddY)";
             // 
             // trackBarfOverShoulderCombatAddY
@@ -2917,7 +2917,7 @@
             this.trackBarfOverShoulderCombatAddY.Minimum = -20;
             this.trackBarfOverShoulderCombatAddY.Name = "trackBarfOverShoulderCombatAddY";
             this.trackBarfOverShoulderCombatAddY.Size = new System.Drawing.Size(296, 45);
-            this.trackBarfOverShoulderCombatAddY.TabIndex = 55;
+            this.trackBarfOverShoulderCombatAddY.TabIndex = 7;
             this.trackBarfOverShoulderCombatAddY.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // labelfOverShoulderCombatPosX
@@ -2926,7 +2926,7 @@
             this.labelfOverShoulderCombatPosX.Location = new System.Drawing.Point(6, 68);
             this.labelfOverShoulderCombatPosX.Name = "labelfOverShoulderCombatPosX";
             this.labelfOverShoulderCombatPosX.Size = new System.Drawing.Size(193, 13);
-            this.labelfOverShoulderCombatPosX.TabIndex = 54;
+            this.labelfOverShoulderCombatPosX.TabIndex = 3;
             this.labelfOverShoulderCombatPosX.Text = "Left/Right (fOverShoulderCombatPosX)";
             // 
             // trackBarfOverShoulderCombatPosX
@@ -2939,7 +2939,7 @@
             this.trackBarfOverShoulderCombatPosX.Minimum = -25;
             this.trackBarfOverShoulderCombatPosX.Name = "trackBarfOverShoulderCombatPosX";
             this.trackBarfOverShoulderCombatPosX.Size = new System.Drawing.Size(296, 45);
-            this.trackBarfOverShoulderCombatPosX.TabIndex = 53;
+            this.trackBarfOverShoulderCombatPosX.TabIndex = 4;
             this.trackBarfOverShoulderCombatPosX.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // labelfOverShoulderCombatPosZ
@@ -2948,7 +2948,7 @@
             this.labelfOverShoulderCombatPosZ.Location = new System.Drawing.Point(6, 20);
             this.labelfOverShoulderCombatPosZ.Name = "labelfOverShoulderCombatPosZ";
             this.labelfOverShoulderCombatPosZ.Size = new System.Drawing.Size(192, 13);
-            this.labelfOverShoulderCombatPosZ.TabIndex = 52;
+            this.labelfOverShoulderCombatPosZ.TabIndex = 0;
             this.labelfOverShoulderCombatPosZ.Text = "Down/Up (fOverShoulderCombatPosZ)";
             // 
             // trackBarfOverShoulderCombatPosZ
@@ -2962,7 +2962,7 @@
             this.trackBarfOverShoulderCombatPosZ.Name = "trackBarfOverShoulderCombatPosZ";
             this.trackBarfOverShoulderCombatPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBarfOverShoulderCombatPosZ.Size = new System.Drawing.Size(296, 45);
-            this.trackBarfOverShoulderCombatPosZ.TabIndex = 51;
+            this.trackBarfOverShoulderCombatPosZ.TabIndex = 1;
             this.trackBarfOverShoulderCombatPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // buttonCameraPositionReset
@@ -2970,7 +2970,7 @@
             this.buttonCameraPositionReset.Location = new System.Drawing.Point(242, 18);
             this.buttonCameraPositionReset.Name = "buttonCameraPositionReset";
             this.buttonCameraPositionReset.Size = new System.Drawing.Size(149, 23);
-            this.buttonCameraPositionReset.TabIndex = 49;
+            this.buttonCameraPositionReset.TabIndex = 1;
             this.buttonCameraPositionReset.Text = "Reset";
             this.buttonCameraPositionReset.UseVisualStyleBackColor = true;
             this.buttonCameraPositionReset.Click += new System.EventHandler(this.buttonCameraPositionReset_Click);
@@ -2981,7 +2981,7 @@
             this.checkBoxbApplyCameraNodeAnimations.Location = new System.Drawing.Point(9, 22);
             this.checkBoxbApplyCameraNodeAnimations.Name = "checkBoxbApplyCameraNodeAnimations";
             this.checkBoxbApplyCameraNodeAnimations.Size = new System.Drawing.Size(171, 17);
-            this.checkBoxbApplyCameraNodeAnimations.TabIndex = 46;
+            this.checkBoxbApplyCameraNodeAnimations.TabIndex = 0;
             this.checkBoxbApplyCameraNodeAnimations.Text = "bApplyCameraNodeAnimations";
             this.checkBoxbApplyCameraNodeAnimations.UseVisualStyleBackColor = true;
             // 
@@ -2996,7 +2996,7 @@
             this.groupBoxUnarmedCameraPosition.Location = new System.Drawing.Point(6, 55);
             this.groupBoxUnarmedCameraPosition.Name = "groupBoxUnarmedCameraPosition";
             this.groupBoxUnarmedCameraPosition.Size = new System.Drawing.Size(388, 134);
-            this.groupBoxUnarmedCameraPosition.TabIndex = 37;
+            this.groupBoxUnarmedCameraPosition.TabIndex = 10;
             this.groupBoxUnarmedCameraPosition.TabStop = false;
             this.groupBoxUnarmedCameraPosition.Text = "Unarmed camera position";
             // 
@@ -3017,7 +3017,7 @@
             -2147483648});
             this.numfOverShoulderPosX.Name = "numfOverShoulderPosX";
             this.numfOverShoulderPosX.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderPosX.TabIndex = 70;
+            this.numfOverShoulderPosX.TabIndex = 5;
             // 
             // numfOverShoulderPosZ
             // 
@@ -3036,7 +3036,7 @@
             -2147483648});
             this.numfOverShoulderPosZ.Name = "numfOverShoulderPosZ";
             this.numfOverShoulderPosZ.Size = new System.Drawing.Size(74, 20);
-            this.numfOverShoulderPosZ.TabIndex = 69;
+            this.numfOverShoulderPosZ.TabIndex = 2;
             // 
             // labelfOverShoulderPosX
             // 
@@ -3044,7 +3044,7 @@
             this.labelfOverShoulderPosX.Location = new System.Drawing.Point(6, 68);
             this.labelfOverShoulderPosX.Name = "labelfOverShoulderPosX";
             this.labelfOverShoulderPosX.Size = new System.Drawing.Size(157, 13);
-            this.labelfOverShoulderPosX.TabIndex = 54;
+            this.labelfOverShoulderPosX.TabIndex = 3;
             this.labelfOverShoulderPosX.Text = "Left/Right (fOverShoulderPosX)";
             // 
             // trackBarfOverShoulderPosX
@@ -3057,7 +3057,7 @@
             this.trackBarfOverShoulderPosX.Minimum = -25;
             this.trackBarfOverShoulderPosX.Name = "trackBarfOverShoulderPosX";
             this.trackBarfOverShoulderPosX.Size = new System.Drawing.Size(296, 45);
-            this.trackBarfOverShoulderPosX.TabIndex = 53;
+            this.trackBarfOverShoulderPosX.TabIndex = 4;
             this.trackBarfOverShoulderPosX.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // labelfOverShoulderPosZ
@@ -3066,7 +3066,7 @@
             this.labelfOverShoulderPosZ.Location = new System.Drawing.Point(6, 20);
             this.labelfOverShoulderPosZ.Name = "labelfOverShoulderPosZ";
             this.labelfOverShoulderPosZ.Size = new System.Drawing.Size(156, 13);
-            this.labelfOverShoulderPosZ.TabIndex = 52;
+            this.labelfOverShoulderPosZ.TabIndex = 0;
             this.labelfOverShoulderPosZ.Text = "Down/Up (fOverShoulderPosZ)";
             // 
             // trackBarfOverShoulderPosZ
@@ -3080,7 +3080,7 @@
             this.trackBarfOverShoulderPosZ.Name = "trackBarfOverShoulderPosZ";
             this.trackBarfOverShoulderPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBarfOverShoulderPosZ.Size = new System.Drawing.Size(296, 45);
-            this.trackBarfOverShoulderPosZ.TabIndex = 51;
+            this.trackBarfOverShoulderPosZ.TabIndex = 1;
             this.trackBarfOverShoulderPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // groupBoxFOVMore
@@ -3095,7 +3095,7 @@
             this.groupBoxFOVMore.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxFOVMore.Name = "groupBoxFOVMore";
             this.groupBoxFOVMore.Size = new System.Drawing.Size(400, 111);
-            this.groupBoxFOVMore.TabIndex = 41;
+            this.groupBoxFOVMore.TabIndex = 1;
             this.groupBoxFOVMore.TabStop = false;
             this.groupBoxFOVMore.Text = "More Field of View tweaks";
             // 
@@ -3120,7 +3120,7 @@
             0});
             this.numfDefaultFOV.Name = "numfDefaultFOV";
             this.numfDefaultFOV.Size = new System.Drawing.Size(74, 20);
-            this.numfDefaultFOV.TabIndex = 15;
+            this.numfDefaultFOV.TabIndex = 5;
             this.numfDefaultFOV.Value = new decimal(new int[] {
             80,
             0,
@@ -3133,7 +3133,7 @@
             this.labelfDefaultFOV.Location = new System.Drawing.Point(6, 78);
             this.labelfDefaultFOV.Name = "labelfDefaultFOV";
             this.labelfDefaultFOV.Size = new System.Drawing.Size(68, 13);
-            this.labelfDefaultFOV.TabIndex = 14;
+            this.labelfDefaultFOV.TabIndex = 4;
             this.labelfDefaultFOV.Text = "fDefaultFOV:";
             // 
             // labelADSFOV
@@ -3142,7 +3142,7 @@
             this.labelADSFOV.Location = new System.Drawing.Point(6, 52);
             this.labelADSFOV.Name = "labelADSFOV";
             this.labelADSFOV.Size = new System.Drawing.Size(99, 13);
-            this.labelADSFOV.TabIndex = 13;
+            this.labelADSFOV.TabIndex = 2;
             this.labelADSFOV.Text = "f3rdPersonAimFOV:";
             // 
             // numADSFOV
@@ -3166,7 +3166,7 @@
             0});
             this.numADSFOV.Name = "numADSFOV";
             this.numADSFOV.Size = new System.Drawing.Size(74, 20);
-            this.numADSFOV.TabIndex = 12;
+            this.numADSFOV.TabIndex = 3;
             this.numADSFOV.Value = new decimal(new int[] {
             50,
             0,
@@ -3194,7 +3194,7 @@
             0});
             this.numFirstPersonFOV.Name = "numFirstPersonFOV";
             this.numFirstPersonFOV.Size = new System.Drawing.Size(74, 20);
-            this.numFirstPersonFOV.TabIndex = 11;
+            this.numFirstPersonFOV.TabIndex = 1;
             this.numFirstPersonFOV.Value = new decimal(new int[] {
             80,
             0,
@@ -3207,7 +3207,7 @@
             this.labelFirstPersonFOV.Location = new System.Drawing.Point(6, 26);
             this.labelFirstPersonFOV.Name = "labelFirstPersonFOV";
             this.labelFirstPersonFOV.Size = new System.Drawing.Size(115, 13);
-            this.labelFirstPersonFOV.TabIndex = 10;
+            this.labelFirstPersonFOV.TabIndex = 0;
             this.labelFirstPersonFOV.Text = "fDefault1stPersonFOV:";
             // 
             // groupBoxSelfieCamera
@@ -3225,7 +3225,7 @@
             this.groupBoxSelfieCamera.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxSelfieCamera.Name = "groupBoxSelfieCamera";
             this.groupBoxSelfieCamera.Size = new System.Drawing.Size(400, 134);
-            this.groupBoxSelfieCamera.TabIndex = 40;
+            this.groupBoxSelfieCamera.TabIndex = 4;
             this.groupBoxSelfieCamera.TabStop = false;
             this.groupBoxSelfieCamera.Text = "Photomode options";
             // 
@@ -3239,7 +3239,7 @@
             this.trackBarPhotomodeRange.Name = "trackBarPhotomodeRange";
             this.trackBarPhotomodeRange.Size = new System.Drawing.Size(175, 45);
             this.trackBarPhotomodeRange.SmallChange = 20;
-            this.trackBarPhotomodeRange.TabIndex = 61;
+            this.trackBarPhotomodeRange.TabIndex = 7;
             this.trackBarPhotomodeRange.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarPhotomodeRange.Value = 500;
             // 
@@ -3260,7 +3260,7 @@
             65536});
             this.numericUpDownPhotomodeRotationSpeed.Name = "numericUpDownPhotomodeRotationSpeed";
             this.numericUpDownPhotomodeRotationSpeed.Size = new System.Drawing.Size(74, 20);
-            this.numericUpDownPhotomodeRotationSpeed.TabIndex = 65;
+            this.numericUpDownPhotomodeRotationSpeed.TabIndex = 5;
             this.numericUpDownPhotomodeRotationSpeed.Value = new decimal(new int[] {
             15,
             0,
@@ -3277,7 +3277,7 @@
             this.trackBarPhotomodeRotationSpeed.Name = "trackBarPhotomodeRotationSpeed";
             this.trackBarPhotomodeRotationSpeed.Size = new System.Drawing.Size(175, 45);
             this.trackBarPhotomodeRotationSpeed.SmallChange = 10;
-            this.trackBarPhotomodeRotationSpeed.TabIndex = 64;
+            this.trackBarPhotomodeRotationSpeed.TabIndex = 4;
             this.trackBarPhotomodeRotationSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarPhotomodeRotationSpeed.Value = 15;
             // 
@@ -3287,7 +3287,7 @@
             this.labelPhotomodeRotationSpeed.Location = new System.Drawing.Point(6, 53);
             this.labelPhotomodeRotationSpeed.Name = "labelPhotomodeRotationSpeed";
             this.labelPhotomodeRotationSpeed.Size = new System.Drawing.Size(82, 13);
-            this.labelPhotomodeRotationSpeed.TabIndex = 63;
+            this.labelPhotomodeRotationSpeed.TabIndex = 3;
             this.labelPhotomodeRotationSpeed.Text = "Rotation speed:";
             // 
             // numericUpDownPhotomodeRange
@@ -3306,7 +3306,7 @@
             0});
             this.numericUpDownPhotomodeRange.Name = "numericUpDownPhotomodeRange";
             this.numericUpDownPhotomodeRange.Size = new System.Drawing.Size(74, 20);
-            this.numericUpDownPhotomodeRange.TabIndex = 62;
+            this.numericUpDownPhotomodeRange.TabIndex = 8;
             this.numericUpDownPhotomodeRange.Value = new decimal(new int[] {
             500,
             0,
@@ -3319,7 +3319,7 @@
             this.labelPhotomodeRange.Location = new System.Drawing.Point(6, 87);
             this.labelPhotomodeRange.Name = "labelPhotomodeRange";
             this.labelPhotomodeRange.Size = new System.Drawing.Size(62, 13);
-            this.labelPhotomodeRange.TabIndex = 60;
+            this.labelPhotomodeRange.TabIndex = 6;
             this.labelPhotomodeRange.Text = "Range limit:";
             // 
             // numericUpDownPhotomodeTranslationSpeed
@@ -3339,7 +3339,7 @@
             65536});
             this.numericUpDownPhotomodeTranslationSpeed.Name = "numericUpDownPhotomodeTranslationSpeed";
             this.numericUpDownPhotomodeTranslationSpeed.Size = new System.Drawing.Size(74, 20);
-            this.numericUpDownPhotomodeTranslationSpeed.TabIndex = 59;
+            this.numericUpDownPhotomodeTranslationSpeed.TabIndex = 2;
             this.numericUpDownPhotomodeTranslationSpeed.Value = new decimal(new int[] {
             25,
             0,
@@ -3356,7 +3356,7 @@
             this.trackBarPhotomodeTranslationSpeed.Name = "trackBarPhotomodeTranslationSpeed";
             this.trackBarPhotomodeTranslationSpeed.Size = new System.Drawing.Size(175, 45);
             this.trackBarPhotomodeTranslationSpeed.SmallChange = 10;
-            this.trackBarPhotomodeTranslationSpeed.TabIndex = 58;
+            this.trackBarPhotomodeTranslationSpeed.TabIndex = 1;
             this.trackBarPhotomodeTranslationSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarPhotomodeTranslationSpeed.Value = 25;
             // 
@@ -3366,7 +3366,7 @@
             this.labelPhotomodeTranslationSpeed.Location = new System.Drawing.Point(6, 23);
             this.labelPhotomodeTranslationSpeed.Name = "labelPhotomodeTranslationSpeed";
             this.labelPhotomodeTranslationSpeed.Size = new System.Drawing.Size(94, 13);
-            this.labelPhotomodeTranslationSpeed.TabIndex = 57;
+            this.labelPhotomodeTranslationSpeed.TabIndex = 0;
             this.labelPhotomodeTranslationSpeed.Text = "Translation speed:";
             // 
             // groupBoxCameraOptions
@@ -3379,7 +3379,7 @@
             this.groupBoxCameraOptions.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCameraOptions.Name = "groupBoxCameraOptions";
             this.groupBoxCameraOptions.Size = new System.Drawing.Size(400, 111);
-            this.groupBoxCameraOptions.TabIndex = 39;
+            this.groupBoxCameraOptions.TabIndex = 2;
             this.groupBoxCameraOptions.TabStop = false;
             this.groupBoxCameraOptions.Text = "Camera options";
             // 
@@ -3391,7 +3391,7 @@
             this.checkBoxForceVanityMode.Location = new System.Drawing.Point(28, 78);
             this.checkBoxForceVanityMode.Name = "checkBoxForceVanityMode";
             this.checkBoxForceVanityMode.Size = new System.Drawing.Size(137, 17);
-            this.checkBoxForceVanityMode.TabIndex = 4;
+            this.checkBoxForceVanityMode.TabIndex = 3;
             this.checkBoxForceVanityMode.Text = "Force auto vanity mode";
             this.checkBoxForceVanityMode.UseVisualStyleBackColor = true;
             // 
@@ -3426,7 +3426,7 @@
             this.checkBoxVanityMode.Location = new System.Drawing.Point(9, 55);
             this.checkBoxVanityMode.Name = "checkBoxVanityMode";
             this.checkBoxVanityMode.Size = new System.Drawing.Size(208, 17);
-            this.checkBoxVanityMode.TabIndex = 3;
+            this.checkBoxVanityMode.TabIndex = 2;
             this.checkBoxVanityMode.Text = "Enable spinning camera when inactive";
             this.checkBoxVanityMode.UseVisualStyleBackColor = true;
             // 
@@ -3454,7 +3454,7 @@
             this.groupBoxCameraDistance.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCameraDistance.Name = "groupBoxCameraDistance";
             this.groupBoxCameraDistance.Size = new System.Drawing.Size(400, 154);
-            this.groupBoxCameraDistance.TabIndex = 38;
+            this.groupBoxCameraDistance.TabIndex = 3;
             this.groupBoxCameraDistance.TabStop = false;
             this.groupBoxCameraDistance.Text = "Camera distance";
             // 
@@ -3474,7 +3474,7 @@
             0});
             this.numfPitchZoomOutMaxDist.Name = "numfPitchZoomOutMaxDist";
             this.numfPitchZoomOutMaxDist.Size = new System.Drawing.Size(74, 20);
-            this.numfPitchZoomOutMaxDist.TabIndex = 59;
+            this.numfPitchZoomOutMaxDist.TabIndex = 9;
             this.numfPitchZoomOutMaxDist.Value = new decimal(new int[] {
             100,
             0,
@@ -3490,7 +3490,7 @@
             this.sliderfPitchZoomOutMaxDist.Name = "sliderfPitchZoomOutMaxDist";
             this.sliderfPitchZoomOutMaxDist.Size = new System.Drawing.Size(175, 45);
             this.sliderfPitchZoomOutMaxDist.SmallChange = 10;
-            this.sliderfPitchZoomOutMaxDist.TabIndex = 58;
+            this.sliderfPitchZoomOutMaxDist.TabIndex = 8;
             this.sliderfPitchZoomOutMaxDist.TickStyle = System.Windows.Forms.TickStyle.None;
             this.sliderfPitchZoomOutMaxDist.Value = 100;
             // 
@@ -3500,7 +3500,7 @@
             this.labelPitchZoomOutMaxDist.Location = new System.Drawing.Point(6, 106);
             this.labelPitchZoomOutMaxDist.Name = "labelPitchZoomOutMaxDist";
             this.labelPitchZoomOutMaxDist.Size = new System.Drawing.Size(119, 13);
-            this.labelPitchZoomOutMaxDist.TabIndex = 57;
+            this.labelPitchZoomOutMaxDist.TabIndex = 7;
             this.labelPitchZoomOutMaxDist.Text = "fPitchZoomOutMaxDist:";
             // 
             // numCameraDistanceMaximum
@@ -3519,7 +3519,7 @@
             0});
             this.numCameraDistanceMaximum.Name = "numCameraDistanceMaximum";
             this.numCameraDistanceMaximum.Size = new System.Drawing.Size(74, 20);
-            this.numCameraDistanceMaximum.TabIndex = 56;
+            this.numCameraDistanceMaximum.TabIndex = 6;
             this.numCameraDistanceMaximum.Value = new decimal(new int[] {
             150,
             0,
@@ -3542,7 +3542,7 @@
             0});
             this.numCameraDistanceMinimum.Name = "numCameraDistanceMinimum";
             this.numCameraDistanceMinimum.Size = new System.Drawing.Size(74, 20);
-            this.numCameraDistanceMinimum.TabIndex = 55;
+            this.numCameraDistanceMinimum.TabIndex = 2;
             // 
             // sliderCameraDistanceMaximum
             // 
@@ -3554,7 +3554,7 @@
             this.sliderCameraDistanceMaximum.Name = "sliderCameraDistanceMaximum";
             this.sliderCameraDistanceMaximum.Size = new System.Drawing.Size(175, 45);
             this.sliderCameraDistanceMaximum.SmallChange = 50;
-            this.sliderCameraDistanceMaximum.TabIndex = 54;
+            this.sliderCameraDistanceMaximum.TabIndex = 4;
             this.sliderCameraDistanceMaximum.TickStyle = System.Windows.Forms.TickStyle.None;
             this.sliderCameraDistanceMaximum.Value = 150;
             // 
@@ -3564,7 +3564,7 @@
             this.labelCameraDistanceMaximum.Location = new System.Drawing.Point(6, 58);
             this.labelCameraDistanceMaximum.Name = "labelCameraDistanceMaximum";
             this.labelCameraDistanceMaximum.Size = new System.Drawing.Size(54, 13);
-            this.labelCameraDistanceMaximum.TabIndex = 53;
+            this.labelCameraDistanceMaximum.TabIndex = 3;
             this.labelCameraDistanceMaximum.Text = "Maximum:";
             // 
             // labelCameraDistanceMinimum
@@ -3573,7 +3573,7 @@
             this.labelCameraDistanceMinimum.Location = new System.Drawing.Point(6, 27);
             this.labelCameraDistanceMinimum.Name = "labelCameraDistanceMinimum";
             this.labelCameraDistanceMinimum.Size = new System.Drawing.Size(51, 13);
-            this.labelCameraDistanceMinimum.TabIndex = 52;
+            this.labelCameraDistanceMinimum.TabIndex = 0;
             this.labelCameraDistanceMinimum.Text = "Minimum:";
             // 
             // sliderCameraDistanceMinimum
@@ -3585,7 +3585,7 @@
             this.sliderCameraDistanceMinimum.Name = "sliderCameraDistanceMinimum";
             this.sliderCameraDistanceMinimum.Size = new System.Drawing.Size(175, 45);
             this.sliderCameraDistanceMinimum.SmallChange = 10;
-            this.sliderCameraDistanceMinimum.TabIndex = 51;
+            this.sliderCameraDistanceMinimum.TabIndex = 1;
             this.sliderCameraDistanceMinimum.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // groupBoxFieldOfView
@@ -3597,7 +3597,7 @@
             this.groupBoxFieldOfView.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
             this.groupBoxFieldOfView.Size = new System.Drawing.Size(626, 405);
-            this.groupBoxFieldOfView.TabIndex = 22;
+            this.groupBoxFieldOfView.TabIndex = 0;
             this.groupBoxFieldOfView.TabStop = false;
             this.groupBoxFieldOfView.Text = "Field of View";
             // 
@@ -3625,7 +3625,7 @@
             this.sliderFOV.Minimum = 14;
             this.sliderFOV.Name = "sliderFOV";
             this.sliderFOV.Size = new System.Drawing.Size(540, 45);
-            this.sliderFOV.TabIndex = 52;
+            this.sliderFOV.TabIndex = 0;
             this.sliderFOV.TickStyle = System.Windows.Forms.TickStyle.None;
             this.sliderFOV.Value = 24;
             // 
@@ -3650,7 +3650,7 @@
             0});
             this.numFOV.Name = "numFOV";
             this.numFOV.Size = new System.Drawing.Size(68, 20);
-            this.numFOV.TabIndex = 3;
+            this.numFOV.TabIndex = 1;
             this.numFOV.Value = new decimal(new int[] {
             10,
             0,
@@ -3693,7 +3693,7 @@
             this.groupBoxLoginProfiles.Location = new System.Drawing.Point(9, 356);
             this.groupBoxLoginProfiles.Name = "groupBoxLoginProfiles";
             this.groupBoxLoginProfiles.Size = new System.Drawing.Size(400, 143);
-            this.groupBoxLoginProfiles.TabIndex = 29;
+            this.groupBoxLoginProfiles.TabIndex = 1;
             this.groupBoxLoginProfiles.TabStop = false;
             this.groupBoxLoginProfiles.Text = "Profiles";
             // 
@@ -3703,7 +3703,7 @@
             this.radioButtonAccountNone.Location = new System.Drawing.Point(8, 20);
             this.radioButtonAccountNone.Name = "radioButtonAccountNone";
             this.radioButtonAccountNone.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonAccountNone.TabIndex = 29;
+            this.radioButtonAccountNone.TabIndex = 0;
             this.radioButtonAccountNone.TabStop = true;
             this.radioButtonAccountNone.Text = "None";
             this.radioButtonAccountNone.UseVisualStyleBackColor = true;
@@ -3715,7 +3715,8 @@
             this.radioButtonAccount1.Location = new System.Drawing.Point(8, 46);
             this.radioButtonAccount1.Name = "radioButtonAccount1";
             this.radioButtonAccount1.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount1.TabIndex = 12;
+            this.radioButtonAccount1.TabIndex = 1;
+            this.radioButtonAccount1.TabStop = true;
             this.radioButtonAccount1.Text = "Account #1";
             this.radioButtonAccount1.UseVisualStyleBackColor = true;
             // 
@@ -3725,7 +3726,8 @@
             this.radioButtonAccount16.Location = new System.Drawing.Point(305, 115);
             this.radioButtonAccount16.Name = "radioButtonAccount16";
             this.radioButtonAccount16.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount16.TabIndex = 28;
+            this.radioButtonAccount16.TabIndex = 16;
+            this.radioButtonAccount16.TabStop = true;
             this.radioButtonAccount16.Text = "Account #16";
             this.radioButtonAccount16.UseVisualStyleBackColor = true;
             // 
@@ -3735,7 +3737,8 @@
             this.radioButtonAccount2.Location = new System.Drawing.Point(107, 46);
             this.radioButtonAccount2.Name = "radioButtonAccount2";
             this.radioButtonAccount2.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount2.TabIndex = 13;
+            this.radioButtonAccount2.TabIndex = 2;
+            this.radioButtonAccount2.TabStop = true;
             this.radioButtonAccount2.Text = "Account #2";
             this.radioButtonAccount2.UseVisualStyleBackColor = true;
             // 
@@ -3745,7 +3748,8 @@
             this.radioButtonAccount15.Location = new System.Drawing.Point(206, 115);
             this.radioButtonAccount15.Name = "radioButtonAccount15";
             this.radioButtonAccount15.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount15.TabIndex = 27;
+            this.radioButtonAccount15.TabIndex = 15;
+            this.radioButtonAccount15.TabStop = true;
             this.radioButtonAccount15.Text = "Account #15";
             this.radioButtonAccount15.UseVisualStyleBackColor = true;
             // 
@@ -3755,7 +3759,8 @@
             this.radioButtonAccount3.Location = new System.Drawing.Point(206, 46);
             this.radioButtonAccount3.Name = "radioButtonAccount3";
             this.radioButtonAccount3.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount3.TabIndex = 14;
+            this.radioButtonAccount3.TabIndex = 3;
+            this.radioButtonAccount3.TabStop = true;
             this.radioButtonAccount3.Text = "Account #3";
             this.radioButtonAccount3.UseVisualStyleBackColor = true;
             // 
@@ -3765,7 +3770,8 @@
             this.radioButtonAccount14.Location = new System.Drawing.Point(107, 115);
             this.radioButtonAccount14.Name = "radioButtonAccount14";
             this.radioButtonAccount14.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount14.TabIndex = 26;
+            this.radioButtonAccount14.TabIndex = 14;
+            this.radioButtonAccount14.TabStop = true;
             this.radioButtonAccount14.Text = "Account #14";
             this.radioButtonAccount14.UseVisualStyleBackColor = true;
             // 
@@ -3775,7 +3781,8 @@
             this.radioButtonAccount4.Location = new System.Drawing.Point(305, 46);
             this.radioButtonAccount4.Name = "radioButtonAccount4";
             this.radioButtonAccount4.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount4.TabIndex = 15;
+            this.radioButtonAccount4.TabIndex = 4;
+            this.radioButtonAccount4.TabStop = true;
             this.radioButtonAccount4.Text = "Account #4";
             this.radioButtonAccount4.UseVisualStyleBackColor = true;
             // 
@@ -3785,7 +3792,8 @@
             this.radioButtonAccount13.Location = new System.Drawing.Point(8, 115);
             this.radioButtonAccount13.Name = "radioButtonAccount13";
             this.radioButtonAccount13.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount13.TabIndex = 25;
+            this.radioButtonAccount13.TabIndex = 13;
+            this.radioButtonAccount13.TabStop = true;
             this.radioButtonAccount13.Text = "Account #13";
             this.radioButtonAccount13.UseVisualStyleBackColor = true;
             // 
@@ -3795,7 +3803,8 @@
             this.radioButtonAccount5.Location = new System.Drawing.Point(8, 69);
             this.radioButtonAccount5.Name = "radioButtonAccount5";
             this.radioButtonAccount5.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount5.TabIndex = 16;
+            this.radioButtonAccount5.TabIndex = 5;
+            this.radioButtonAccount5.TabStop = true;
             this.radioButtonAccount5.Text = "Account #5";
             this.radioButtonAccount5.UseVisualStyleBackColor = true;
             // 
@@ -3805,7 +3814,8 @@
             this.radioButtonAccount12.Location = new System.Drawing.Point(305, 92);
             this.radioButtonAccount12.Name = "radioButtonAccount12";
             this.radioButtonAccount12.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount12.TabIndex = 24;
+            this.radioButtonAccount12.TabIndex = 12;
+            this.radioButtonAccount12.TabStop = true;
             this.radioButtonAccount12.Text = "Account #12";
             this.radioButtonAccount12.UseVisualStyleBackColor = true;
             // 
@@ -3815,7 +3825,8 @@
             this.radioButtonAccount6.Location = new System.Drawing.Point(107, 69);
             this.radioButtonAccount6.Name = "radioButtonAccount6";
             this.radioButtonAccount6.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount6.TabIndex = 17;
+            this.radioButtonAccount6.TabIndex = 6;
+            this.radioButtonAccount6.TabStop = true;
             this.radioButtonAccount6.Text = "Account #6";
             this.radioButtonAccount6.UseVisualStyleBackColor = true;
             // 
@@ -3825,7 +3836,8 @@
             this.radioButtonAccount11.Location = new System.Drawing.Point(206, 92);
             this.radioButtonAccount11.Name = "radioButtonAccount11";
             this.radioButtonAccount11.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount11.TabIndex = 23;
+            this.radioButtonAccount11.TabIndex = 11;
+            this.radioButtonAccount11.TabStop = true;
             this.radioButtonAccount11.Text = "Account #11";
             this.radioButtonAccount11.UseVisualStyleBackColor = true;
             // 
@@ -3835,7 +3847,8 @@
             this.radioButtonAccount7.Location = new System.Drawing.Point(206, 69);
             this.radioButtonAccount7.Name = "radioButtonAccount7";
             this.radioButtonAccount7.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount7.TabIndex = 18;
+            this.radioButtonAccount7.TabIndex = 7;
+            this.radioButtonAccount7.TabStop = true;
             this.radioButtonAccount7.Text = "Account #7";
             this.radioButtonAccount7.UseVisualStyleBackColor = true;
             // 
@@ -3845,7 +3858,8 @@
             this.radioButtonAccount10.Location = new System.Drawing.Point(107, 92);
             this.radioButtonAccount10.Name = "radioButtonAccount10";
             this.radioButtonAccount10.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount10.TabIndex = 22;
+            this.radioButtonAccount10.TabIndex = 10;
+            this.radioButtonAccount10.TabStop = true;
             this.radioButtonAccount10.Text = "Account #10";
             this.radioButtonAccount10.UseVisualStyleBackColor = true;
             // 
@@ -3855,7 +3869,8 @@
             this.radioButtonAccount8.Location = new System.Drawing.Point(305, 69);
             this.radioButtonAccount8.Name = "radioButtonAccount8";
             this.radioButtonAccount8.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount8.TabIndex = 19;
+            this.radioButtonAccount8.TabIndex = 8;
+            this.radioButtonAccount8.TabStop = true;
             this.radioButtonAccount8.Text = "Account #8";
             this.radioButtonAccount8.UseVisualStyleBackColor = true;
             // 
@@ -3865,7 +3880,8 @@
             this.radioButtonAccount9.Location = new System.Drawing.Point(8, 92);
             this.radioButtonAccount9.Name = "radioButtonAccount9";
             this.radioButtonAccount9.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount9.TabIndex = 21;
+            this.radioButtonAccount9.TabIndex = 9;
+            this.radioButtonAccount9.TabStop = true;
             this.radioButtonAccount9.Text = "Account #9";
             this.radioButtonAccount9.UseVisualStyleBackColor = true;
             // 
@@ -3883,7 +3899,7 @@
             this.groupBoxLogin.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxLogin.Name = "groupBoxLogin";
             this.groupBoxLogin.Size = new System.Drawing.Size(400, 338);
-            this.groupBoxLogin.TabIndex = 15;
+            this.groupBoxLogin.TabIndex = 0;
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Login with Bethesda.net";
             // 
@@ -3895,7 +3911,7 @@
             this.richTextBoxCredentialsExplanation.Location = new System.Drawing.Point(12, 164);
             this.richTextBoxCredentialsExplanation.Name = "richTextBoxCredentialsExplanation";
             this.richTextBoxCredentialsExplanation.Size = new System.Drawing.Size(387, 172);
-            this.richTextBoxCredentialsExplanation.TabIndex = 30;
+            this.richTextBoxCredentialsExplanation.TabIndex = 7;
             this.richTextBoxCredentialsExplanation.Text = resources.GetString("richTextBoxCredentialsExplanation.Text");
             // 
             // checkBoxAutoSignin
@@ -3904,7 +3920,7 @@
             this.checkBoxAutoSignin.Location = new System.Drawing.Point(12, 103);
             this.checkBoxAutoSignin.Name = "checkBoxAutoSignin";
             this.checkBoxAutoSignin.Size = new System.Drawing.Size(121, 17);
-            this.checkBoxAutoSignin.TabIndex = 20;
+            this.checkBoxAutoSignin.TabIndex = 5;
             this.checkBoxAutoSignin.Text = "Automatically sign-in";
             this.checkBoxAutoSignin.UseVisualStyleBackColor = true;
             // 
@@ -3926,7 +3942,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '•';
             this.textBoxPassword.Size = new System.Drawing.Size(294, 20);
-            this.textBoxPassword.TabIndex = 4;
+            this.textBoxPassword.TabIndex = 3;
             this.textBoxPassword.UseSystemPasswordChar = true;
             this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
@@ -3937,7 +3953,7 @@
             this.textBoxUserName.Location = new System.Drawing.Point(92, 19);
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(294, 20);
-            this.textBoxUserName.TabIndex = 3;
+            this.textBoxUserName.TabIndex = 1;
             this.textBoxUserName.TextChanged += new System.EventHandler(this.textBoxUserName_TextChanged);
             // 
             // checkBoxShowPassword
@@ -3946,7 +3962,7 @@
             this.checkBoxShowPassword.Location = new System.Drawing.Point(92, 70);
             this.checkBoxShowPassword.Name = "checkBoxShowPassword";
             this.checkBoxShowPassword.Size = new System.Drawing.Size(101, 17);
-            this.checkBoxShowPassword.TabIndex = 2;
+            this.checkBoxShowPassword.TabIndex = 4;
             this.checkBoxShowPassword.Text = "Show password";
             this.checkBoxShowPassword.UseVisualStyleBackColor = true;
             this.checkBoxShowPassword.CheckedChanged += new System.EventHandler(this.checkBoxShowPassword_CheckedChanged);
@@ -3957,7 +3973,7 @@
             this.labelPassword.Location = new System.Drawing.Point(9, 47);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(56, 13);
-            this.labelPassword.TabIndex = 1;
+            this.labelPassword.TabIndex = 2;
             this.labelPassword.Text = "Password:";
             // 
             // labelUserName

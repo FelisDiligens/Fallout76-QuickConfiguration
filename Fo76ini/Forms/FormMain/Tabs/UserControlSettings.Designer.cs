@@ -118,8 +118,7 @@
             this.comboBoxLanguage.Location = new System.Drawing.Point(15, 93);
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.Size = new System.Drawing.Size(317, 21);
-            this.comboBoxLanguage.TabIndex = 17;
-            this.comboBoxLanguage.TabStop = false;
+            this.comboBoxLanguage.TabIndex = 0;
             // 
             // labelLanguage
             // 
@@ -149,7 +148,7 @@
             this.buttonDownloadLanguages.Location = new System.Drawing.Point(262, 120);
             this.buttonDownloadLanguages.Name = "buttonDownloadLanguages";
             this.buttonDownloadLanguages.Size = new System.Drawing.Size(32, 32);
-            this.buttonDownloadLanguages.TabIndex = 16;
+            this.buttonDownloadLanguages.TabIndex = 1;
             this.buttonDownloadLanguages.UseVisualStyleBackColor = true;
             this.buttonDownloadLanguages.Click += new System.EventHandler(this.buttonDownloadLanguages_Click);
             // 
@@ -185,7 +184,7 @@
             this.buttonRefreshLanguage.Location = new System.Drawing.Point(300, 120);
             this.buttonRefreshLanguage.Name = "buttonRefreshLanguage";
             this.buttonRefreshLanguage.Size = new System.Drawing.Size(32, 32);
-            this.buttonRefreshLanguage.TabIndex = 40;
+            this.buttonRefreshLanguage.TabIndex = 2;
             this.buttonRefreshLanguage.UseVisualStyleBackColor = false;
             this.buttonRefreshLanguage.Click += new System.EventHandler(this.buttonRefreshLanguage_Click);
             // 
@@ -195,7 +194,7 @@
             this.checkBoxAutoApply.Location = new System.Drawing.Point(15, 219);
             this.checkBoxAutoApply.Name = "checkBoxAutoApply";
             this.checkBoxAutoApply.Size = new System.Drawing.Size(351, 17);
-            this.checkBoxAutoApply.TabIndex = 21;
+            this.checkBoxAutoApply.TabIndex = 11;
             this.checkBoxAutoApply.Text = "Automatically apply changes when tool is closed or game is launched";
             this.checkBoxAutoApply.UseVisualStyleBackColor = true;
             // 
@@ -205,7 +204,7 @@
             this.checkBoxQuitOnGameLaunch.Location = new System.Drawing.Point(15, 196);
             this.checkBoxQuitOnGameLaunch.Name = "checkBoxQuitOnGameLaunch";
             this.checkBoxQuitOnGameLaunch.Size = new System.Drawing.Size(223, 17);
-            this.checkBoxQuitOnGameLaunch.TabIndex = 20;
+            this.checkBoxQuitOnGameLaunch.TabIndex = 10;
             this.checkBoxQuitOnGameLaunch.Text = "Close the tool when the game is launched";
             this.checkBoxQuitOnGameLaunch.UseVisualStyleBackColor = true;
             // 
@@ -233,7 +232,7 @@
             this.checkBoxIgnoreUpdates.Location = new System.Drawing.Point(15, 243);
             this.checkBoxIgnoreUpdates.Name = "checkBoxIgnoreUpdates";
             this.checkBoxIgnoreUpdates.Size = new System.Drawing.Size(140, 17);
-            this.checkBoxIgnoreUpdates.TabIndex = 24;
+            this.checkBoxIgnoreUpdates.TabIndex = 12;
             this.checkBoxIgnoreUpdates.Text = "Don\'t check for updates";
             this.checkBoxIgnoreUpdates.UseVisualStyleBackColor = true;
             this.checkBoxIgnoreUpdates.CheckedChanged += new System.EventHandler(this.checkBoxIgnoreUpdates_CheckedChanged);
@@ -243,7 +242,7 @@
             this.buttonPickArchiveTwoPath.Location = new System.Drawing.Point(359, 571);
             this.buttonPickArchiveTwoPath.Name = "buttonPickArchiveTwoPath";
             this.buttonPickArchiveTwoPath.Size = new System.Drawing.Size(28, 23);
-            this.buttonPickArchiveTwoPath.TabIndex = 44;
+            this.buttonPickArchiveTwoPath.TabIndex = 43;
             this.buttonPickArchiveTwoPath.Text = "...";
             this.buttonPickArchiveTwoPath.UseVisualStyleBackColor = true;
             this.buttonPickArchiveTwoPath.Click += new System.EventHandler(this.buttonPickArchiveTwoPath_Click);
@@ -274,7 +273,7 @@
             this.checkBoxPlayNotificationSound.Location = new System.Drawing.Point(15, 266);
             this.checkBoxPlayNotificationSound.Name = "checkBoxPlayNotificationSound";
             this.checkBoxPlayNotificationSound.Size = new System.Drawing.Size(132, 17);
-            this.checkBoxPlayNotificationSound.TabIndex = 25;
+            this.checkBoxPlayNotificationSound.TabIndex = 13;
             this.checkBoxPlayNotificationSound.Text = "Play notification sound";
             this.checkBoxPlayNotificationSound.UseVisualStyleBackColor = true;
             // 
@@ -283,7 +282,7 @@
             this.textBoxSevenZipPath.Location = new System.Drawing.Point(119, 602);
             this.textBoxSevenZipPath.Name = "textBoxSevenZipPath";
             this.textBoxSevenZipPath.Size = new System.Drawing.Size(234, 20);
-            this.textBoxSevenZipPath.TabIndex = 45;
+            this.textBoxSevenZipPath.TabIndex = 44;
             this.textBoxSevenZipPath.TextChanged += new System.EventHandler(this.textBoxSevenZipPath_TextChanged);
             // 
             // labelSettingsUI
@@ -302,7 +301,7 @@
             this.textBoxArchiveTwoPath.Location = new System.Drawing.Point(119, 573);
             this.textBoxArchiveTwoPath.Name = "textBoxArchiveTwoPath";
             this.textBoxArchiveTwoPath.Size = new System.Drawing.Size(234, 20);
-            this.textBoxArchiveTwoPath.TabIndex = 43;
+            this.textBoxArchiveTwoPath.TabIndex = 42;
             this.textBoxArchiveTwoPath.TextChanged += new System.EventHandler(this.textBoxArchiveTwoPath_TextChanged);
             // 
             // checkBoxShowWhatsNew
@@ -311,7 +310,7 @@
             this.checkBoxShowWhatsNew.Location = new System.Drawing.Point(15, 336);
             this.checkBoxShowWhatsNew.Name = "checkBoxShowWhatsNew";
             this.checkBoxShowWhatsNew.Size = new System.Drawing.Size(214, 17);
-            this.checkBoxShowWhatsNew.TabIndex = 26;
+            this.checkBoxShowWhatsNew.TabIndex = 20;
             this.checkBoxShowWhatsNew.Text = "Show \"What\'s new\" on the home page.";
             this.checkBoxShowWhatsNew.UseVisualStyleBackColor = true;
             // 
@@ -320,7 +319,7 @@
             this.buttonPickSevenZipPath.Location = new System.Drawing.Point(359, 600);
             this.buttonPickSevenZipPath.Name = "buttonPickSevenZipPath";
             this.buttonPickSevenZipPath.Size = new System.Drawing.Size(28, 23);
-            this.buttonPickSevenZipPath.TabIndex = 46;
+            this.buttonPickSevenZipPath.TabIndex = 45;
             this.buttonPickSevenZipPath.Text = "...";
             this.buttonPickSevenZipPath.UseVisualStyleBackColor = true;
             this.buttonPickSevenZipPath.Click += new System.EventHandler(this.buttonPickSevenZipPath_Click);
@@ -331,7 +330,7 @@
             this.checkBoxReadOnly.Location = new System.Drawing.Point(15, 406);
             this.checkBoxReadOnly.Name = "checkBoxReadOnly";
             this.checkBoxReadOnly.Size = new System.Drawing.Size(140, 17);
-            this.checkBoxReadOnly.TabIndex = 4;
+            this.checkBoxReadOnly.TabIndex = 30;
             this.checkBoxReadOnly.Text = "Make *.ini files read-only";
             this.checkBoxReadOnly.UseVisualStyleBackColor = true;
             // 
@@ -371,7 +370,7 @@
             this.buttonPickDownloadsPath.Location = new System.Drawing.Point(359, 516);
             this.buttonPickDownloadsPath.Name = "buttonPickDownloadsPath";
             this.buttonPickDownloadsPath.Size = new System.Drawing.Size(28, 23);
-            this.buttonPickDownloadsPath.TabIndex = 50;
+            this.buttonPickDownloadsPath.TabIndex = 41;
             this.buttonPickDownloadsPath.Text = "...";
             this.buttonPickDownloadsPath.UseVisualStyleBackColor = true;
             this.buttonPickDownloadsPath.Click += new System.EventHandler(this.buttonPickDownloadsPath_Click);
@@ -382,7 +381,7 @@
             this.checkBoxNWRenameDLL.Location = new System.Drawing.Point(17, 764);
             this.checkBoxNWRenameDLL.Name = "checkBoxNWRenameDLL";
             this.checkBoxNWRenameDLL.Size = new System.Drawing.Size(140, 17);
-            this.checkBoxNWRenameDLL.TabIndex = 18;
+            this.checkBoxNWRenameDLL.TabIndex = 51;
             this.checkBoxNWRenameDLL.Text = "Rename added *.dll files";
             this.checkBoxNWRenameDLL.UseVisualStyleBackColor = true;
             // 
@@ -392,7 +391,7 @@
             this.checkBoxHandleNXMLinks.Location = new System.Drawing.Point(15, 429);
             this.checkBoxHandleNXMLinks.Name = "checkBoxHandleNXMLinks";
             this.checkBoxHandleNXMLinks.Size = new System.Drawing.Size(248, 17);
-            this.checkBoxHandleNXMLinks.TabIndex = 7;
+            this.checkBoxHandleNXMLinks.TabIndex = 31;
             this.checkBoxHandleNXMLinks.Text = "Associate with \"Mod Manager Download\" links";
             this.checkBoxHandleNXMLinks.UseVisualStyleBackColor = true;
             this.checkBoxHandleNXMLinks.CheckedChanged += new System.EventHandler(this.checkBoxHandleNXMLinks_CheckedChanged);
@@ -403,7 +402,7 @@
             this.checkBoxNWAutoDisableMods.Location = new System.Drawing.Point(17, 817);
             this.checkBoxNWAutoDisableMods.Name = "checkBoxNWAutoDisableMods";
             this.checkBoxNWAutoDisableMods.Size = new System.Drawing.Size(224, 17);
-            this.checkBoxNWAutoDisableMods.TabIndex = 19;
+            this.checkBoxNWAutoDisableMods.TabIndex = 52;
             this.checkBoxNWAutoDisableMods.Text = "Automatically remove mods upon enabling";
             this.checkBoxNWAutoDisableMods.UseVisualStyleBackColor = true;
             // 
@@ -452,7 +451,7 @@
             this.textBoxDownloadsPath.Location = new System.Drawing.Point(119, 518);
             this.textBoxDownloadsPath.Name = "textBoxDownloadsPath";
             this.textBoxDownloadsPath.Size = new System.Drawing.Size(234, 20);
-            this.textBoxDownloadsPath.TabIndex = 49;
+            this.textBoxDownloadsPath.TabIndex = 40;
             this.textBoxDownloadsPath.TextChanged += new System.EventHandler(this.textBoxDownloadsPath_TextChanged);
             // 
             // checkBoxNWAutoDeployMods
@@ -461,7 +460,7 @@
             this.checkBoxNWAutoDeployMods.Location = new System.Drawing.Point(17, 840);
             this.checkBoxNWAutoDeployMods.Name = "checkBoxNWAutoDeployMods";
             this.checkBoxNWAutoDeployMods.Size = new System.Drawing.Size(221, 17);
-            this.checkBoxNWAutoDeployMods.TabIndex = 25;
+            this.checkBoxNWAutoDeployMods.TabIndex = 53;
             this.checkBoxNWAutoDeployMods.Text = "Automatically deploy mods upon disabling";
             this.checkBoxNWAutoDeployMods.UseVisualStyleBackColor = true;
             // 
@@ -497,7 +496,7 @@
             this.buttonNWMode.Name = "buttonNWMode";
             this.buttonNWMode.Padding = 10;
             this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
-            this.buttonNWMode.TabIndex = 26;
+            this.buttonNWMode.TabIndex = 50;
             this.buttonNWMode.Text = "Nuclear Winter";
             this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonNWMode.UseVisualStyleBackColor = true;
@@ -548,7 +547,7 @@
             this.Controls.Add(this.labelLanguage);
             this.Controls.Add(this.comboBoxLanguage);
             this.Name = "UserControlSettings";
-            this.Size = new System.Drawing.Size(496, 600);
+            this.Size = new System.Drawing.Size(479, 600);
             this.Load += new System.EventHandler(this.UserControlSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).EndInit();
             this.ResumeLayout(false);
