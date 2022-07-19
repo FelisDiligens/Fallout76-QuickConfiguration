@@ -9,7 +9,7 @@ namespace Fo76ini.Tweaks.Graphics
     class RadialBlurTweak : ITweak<bool>, ITweakInfo
     {
         public string Description =>
-            "Blurs the screen when the player is hurt (e.g. hit by bullets) or under water.";
+            "Blurs the screen when the player is hurt (e.g. hit by bullets or explosions) or under water.";
 
         public WarnLevel WarnLevel => WarnLevel.None;
 
@@ -19,7 +19,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public bool DefaultValue => true;
 
-        public string Identifier => this.GetType().FullName;
+        public string Identifier => this.GetType().FullName + "Rev1";
 
         public bool GetValue()
         {

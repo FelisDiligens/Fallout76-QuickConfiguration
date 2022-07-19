@@ -120,10 +120,6 @@
             this.groupBoxWater = new System.Windows.Forms.GroupBox();
             this.checkBoxWaterRefractions = new System.Windows.Forms.CheckBox();
             this.checkBoxWaterDisplacement = new System.Windows.Forms.CheckBox();
-            this.groupBoxWeather = new System.Windows.Forms.GroupBox();
-            this.checkBoxFogEnabled = new System.Windows.Forms.CheckBox();
-            this.checkBoxWeatherWetnessOcclusion = new System.Windows.Forms.CheckBox();
-            this.checkBoxWeatherRainOcclusion = new System.Windows.Forms.CheckBox();
             this.groupBoxPostProcessing = new System.Windows.Forms.GroupBox();
             this.checkBoxSSReflections = new System.Windows.Forms.CheckBox();
             this.checkBoxBloom = new System.Windows.Forms.CheckBox();
@@ -333,7 +329,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.sliderShadowDistance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numShadowDistance)).BeginInit();
             this.groupBoxWater.SuspendLayout();
-            this.groupBoxWeather.SuspendLayout();
             this.groupBoxPostProcessing.SuspendLayout();
             this.groupBoxDisplay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCustomResW)).BeginInit();
@@ -975,12 +970,11 @@
             this.groupBoxGraphics.Controls.Add(this.groupBoxShadows);
             this.groupBoxGraphics.Controls.Add(this.comboBoxAnisotropicFiltering);
             this.groupBoxGraphics.Controls.Add(this.groupBoxWater);
-            this.groupBoxGraphics.Controls.Add(this.groupBoxWeather);
             this.groupBoxGraphics.Controls.Add(this.groupBoxPostProcessing);
             this.groupBoxGraphics.Location = new System.Drawing.Point(9, 206);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 992);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 919);
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
@@ -989,9 +983,9 @@
             // 
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
-            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(9, 315);
+            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(202, 247);
             this.groupBoxGraphicEffects.Name = "groupBoxGraphicEffects";
-            this.groupBoxGraphicEffects.Size = new System.Drawing.Size(187, 68);
+            this.groupBoxGraphicEffects.Size = new System.Drawing.Size(188, 68);
             this.groupBoxGraphicEffects.TabIndex = 11;
             this.groupBoxGraphicEffects.TabStop = false;
             this.groupBoxGraphicEffects.Text = "Effects";
@@ -1026,7 +1020,7 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 834);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 766);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
             this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 145);
             this.groupBoxTAASharpening.TabIndex = 18;
@@ -1142,7 +1136,7 @@
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 705);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 637);
             this.groupBoxGrass.Name = "groupBoxGrass";
             this.groupBoxGrass.Size = new System.Drawing.Size(381, 119);
             this.groupBoxGrass.TabIndex = 17;
@@ -1229,7 +1223,7 @@
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 543);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 475);
             this.groupBoxLOD.Name = "groupBoxLOD";
             this.groupBoxLOD.Size = new System.Drawing.Size(381, 156);
             this.groupBoxLOD.TabIndex = 16;
@@ -1389,9 +1383,9 @@
             // groupBoxLighting
             // 
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
-            this.groupBoxLighting.Location = new System.Drawing.Point(202, 287);
+            this.groupBoxLighting.Location = new System.Drawing.Point(202, 191);
             this.groupBoxLighting.Name = "groupBoxLighting";
-            this.groupBoxLighting.Size = new System.Drawing.Size(188, 96);
+            this.groupBoxLighting.Size = new System.Drawing.Size(188, 50);
             this.groupBoxLighting.TabIndex = 14;
             this.groupBoxLighting.TabStop = false;
             this.groupBoxLighting.Text = "Lighting";
@@ -1426,7 +1420,7 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowTextureResolution);
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
-            this.groupBoxShadows.Location = new System.Drawing.Point(9, 389);
+            this.groupBoxShadows.Location = new System.Drawing.Point(9, 321);
             this.groupBoxShadows.Name = "groupBoxShadows";
             this.groupBoxShadows.Size = new System.Drawing.Size(381, 147);
             this.groupBoxShadows.TabIndex = 15;
@@ -1564,54 +1558,6 @@
             this.checkBoxWaterDisplacement.Text = "Displacement";
             this.checkBoxWaterDisplacement.UseVisualStyleBackColor = true;
             // 
-            // groupBoxWeather
-            // 
-            this.groupBoxWeather.Controls.Add(this.checkBoxFogEnabled);
-            this.groupBoxWeather.Controls.Add(this.checkBoxWeatherWetnessOcclusion);
-            this.groupBoxWeather.Controls.Add(this.checkBoxWeatherRainOcclusion);
-            this.groupBoxWeather.Location = new System.Drawing.Point(202, 191);
-            this.groupBoxWeather.Name = "groupBoxWeather";
-            this.groupBoxWeather.Size = new System.Drawing.Size(188, 90);
-            this.groupBoxWeather.TabIndex = 13;
-            this.groupBoxWeather.TabStop = false;
-            this.groupBoxWeather.Text = "Weather";
-            // 
-            // checkBoxFogEnabled
-            // 
-            this.checkBoxFogEnabled.AutoSize = true;
-            this.checkBoxFogEnabled.Checked = true;
-            this.checkBoxFogEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxFogEnabled.Location = new System.Drawing.Point(9, 16);
-            this.checkBoxFogEnabled.Name = "checkBoxFogEnabled";
-            this.checkBoxFogEnabled.Size = new System.Drawing.Size(44, 17);
-            this.checkBoxFogEnabled.TabIndex = 0;
-            this.checkBoxFogEnabled.Text = "Fog";
-            this.checkBoxFogEnabled.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxWeatherWetnessOcclusion
-            // 
-            this.checkBoxWeatherWetnessOcclusion.AutoSize = true;
-            this.checkBoxWeatherWetnessOcclusion.Checked = true;
-            this.checkBoxWeatherWetnessOcclusion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWeatherWetnessOcclusion.Location = new System.Drawing.Point(9, 62);
-            this.checkBoxWeatherWetnessOcclusion.Name = "checkBoxWeatherWetnessOcclusion";
-            this.checkBoxWeatherWetnessOcclusion.Size = new System.Drawing.Size(118, 17);
-            this.checkBoxWeatherWetnessOcclusion.TabIndex = 2;
-            this.checkBoxWeatherWetnessOcclusion.Text = "Wetness Occlusion";
-            this.checkBoxWeatherWetnessOcclusion.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxWeatherRainOcclusion
-            // 
-            this.checkBoxWeatherRainOcclusion.AutoSize = true;
-            this.checkBoxWeatherRainOcclusion.Checked = true;
-            this.checkBoxWeatherRainOcclusion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWeatherRainOcclusion.Location = new System.Drawing.Point(9, 39);
-            this.checkBoxWeatherRainOcclusion.Name = "checkBoxWeatherRainOcclusion";
-            this.checkBoxWeatherRainOcclusion.Size = new System.Drawing.Size(98, 17);
-            this.checkBoxWeatherRainOcclusion.TabIndex = 1;
-            this.checkBoxWeatherRainOcclusion.Text = "Rain Occlusion";
-            this.checkBoxWeatherRainOcclusion.UseVisualStyleBackColor = true;
-            // 
             // groupBoxPostProcessing
             // 
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxSSReflections);
@@ -1623,7 +1569,7 @@
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxLensFlare);
             this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 117);
             this.groupBoxPostProcessing.Name = "groupBoxPostProcessing";
-            this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 192);
+            this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 198);
             this.groupBoxPostProcessing.TabIndex = 10;
             this.groupBoxPostProcessing.TabStop = false;
             this.groupBoxPostProcessing.Text = "Post-processing";
@@ -4080,8 +4026,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numShadowDistance)).EndInit();
             this.groupBoxWater.ResumeLayout(false);
             this.groupBoxWater.PerformLayout();
-            this.groupBoxWeather.ResumeLayout(false);
-            this.groupBoxWeather.PerformLayout();
             this.groupBoxPostProcessing.ResumeLayout(false);
             this.groupBoxPostProcessing.PerformLayout();
             this.groupBoxDisplay.ResumeLayout(false);
@@ -4351,10 +4295,6 @@
         private System.Windows.Forms.ComboBox comboBoxAnisotropicFiltering;
         private System.Windows.Forms.GroupBox groupBoxWater;
         private System.Windows.Forms.CheckBox checkBoxWaterDisplacement;
-        private System.Windows.Forms.GroupBox groupBoxWeather;
-        private System.Windows.Forms.CheckBox checkBoxFogEnabled;
-        private System.Windows.Forms.CheckBox checkBoxWeatherWetnessOcclusion;
-        private System.Windows.Forms.CheckBox checkBoxWeatherRainOcclusion;
         private System.Windows.Forms.GroupBox groupBoxPostProcessing;
         private System.Windows.Forms.CheckBox checkBoxAmbientOcclusion;
         private System.Windows.Forms.CheckBox checkBoxDepthOfField;

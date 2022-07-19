@@ -10,7 +10,7 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description => "";
 
-        public WarnLevel WarnLevel => WarnLevel.Experimental;
+        public WarnLevel WarnLevel => WarnLevel.None;
 
         public string AffectedFiles => "Fallout76Prefs.ini, Fallout76Custom.ini";
 

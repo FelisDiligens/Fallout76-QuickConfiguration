@@ -8,7 +8,7 @@ namespace Fo76ini.Tweaks.Graphics
 {
     class DisableAllGoreTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "No more blood particle effects when shooting enemies";
 
         public WarnLevel WarnLevel => WarnLevel.None;
 
@@ -18,7 +18,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public bool DefaultValue => false;
 
-        public string Identifier => this.GetType().FullName;
+        public string Identifier => this.GetType().FullName + "Rev1";
 
         public bool GetValue()
         {

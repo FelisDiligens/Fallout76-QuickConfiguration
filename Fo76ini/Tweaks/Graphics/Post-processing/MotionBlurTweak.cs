@@ -8,9 +8,9 @@ namespace Fo76ini.Tweaks.Graphics
 {
     class MotionBlurTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "Doesn't seem to do anything.";
 
-        public WarnLevel WarnLevel => WarnLevel.None;
+        public WarnLevel WarnLevel => WarnLevel.Experimental;
 
         public string AffectedFiles => "Fallout76Custom.ini";
 
@@ -18,7 +18,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public bool DefaultValue => true;
 
-        public string Identifier => this.GetType().FullName;
+        public string Identifier => this.GetType().FullName + "Rev1";
 
         public bool GetValue()
         {

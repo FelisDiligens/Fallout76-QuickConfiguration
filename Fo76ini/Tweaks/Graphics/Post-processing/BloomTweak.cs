@@ -10,7 +10,7 @@ namespace Fo76ini.Tweaks.Graphics
 {
     class BloomTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "Doesn't work. Causes weird lighting in dialogues.";
 
         public string AffectedFiles => "Fallout76Custom.ini";
 
@@ -27,7 +27,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public string Identifier => this.GetType().FullName;
 
-        public WarnLevel WarnLevel => WarnLevel.Experimental;
+        public WarnLevel WarnLevel => WarnLevel.Unsafe;
 
         public bool GetValue()
         {

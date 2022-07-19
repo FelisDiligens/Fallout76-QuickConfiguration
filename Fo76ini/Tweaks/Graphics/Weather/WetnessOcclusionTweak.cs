@@ -8,7 +8,7 @@ namespace Fo76ini.Tweaks.Graphics
 {
     class WetnessOcclusionTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "Doesn't seem to do anything.";
 
         public WarnLevel WarnLevel => WarnLevel.Experimental;
 

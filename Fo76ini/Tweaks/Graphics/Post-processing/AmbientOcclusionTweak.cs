@@ -8,7 +8,7 @@ namespace Fo76ini.Tweaks.Graphics
 {
     class AmbientOcclusionTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "Enables/Disables shadows in corners or where objects touch the ground.";
 
         public WarnLevel WarnLevel => WarnLevel.None;
 

@@ -8,7 +8,7 @@ namespace Fo76ini.Tweaks.Graphics
 {
     class FogTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "Doesn't work.";
 
         public WarnLevel WarnLevel => WarnLevel.Experimental;
 

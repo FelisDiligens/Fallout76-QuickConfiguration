@@ -90,9 +90,6 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(checkBoxSSReflections, toolTip, screenSpaceReflectionsTweak);
             LinkedTweaks.LinkInfo(checkBoxWaterDisplacement, toolTip, waterDisplacementsTweak);
             LinkedTweaks.LinkInfo(checkBoxWaterRefractions, toolTip, waterRefractionsTweak);
-            LinkedTweaks.LinkInfo(checkBoxFogEnabled, toolTip, fogTweak);
-            LinkedTweaks.LinkInfo(checkBoxWeatherRainOcclusion, toolTip, rainOcclusionTweak);
-            LinkedTweaks.LinkInfo(checkBoxWeatherWetnessOcclusion, toolTip, wetnessOcclusionTweak);
             LinkedTweaks.LinkInfo(checkBoxGodrays, toolTip, volumetricLightingTweak);
             LinkedTweaks.LinkInfo(checkBoxDisableGore, toolTip, disableAllGoreTweak);
             LinkedTweaks.LinkInfo(checkBoxBloodSplatter, toolTip, bloodSplatterTweak);
@@ -405,15 +402,6 @@ namespace Fo76ini.Forms.FormMain
 
             // Water / Refractions
             LinkedTweaks.LinkTweak(checkBoxWaterRefractions, waterRefractionsTweak);
-
-            // Weather / Fog
-            LinkedTweaks.LinkTweak(checkBoxFogEnabled, fogTweak);
-
-            // Weather / Rain Occlusion
-            LinkedTweaks.LinkTweak(checkBoxWeatherRainOcclusion, rainOcclusionTweak);
-
-            // Weather / Wetness Occlusion
-            LinkedTweaks.LinkTweak(checkBoxWeatherWetnessOcclusion, wetnessOcclusionTweak);
 
             // Lighting / Volumetric Lighting
             LinkedTweaks.LinkTweak(checkBoxGodrays, volumetricLightingTweak);

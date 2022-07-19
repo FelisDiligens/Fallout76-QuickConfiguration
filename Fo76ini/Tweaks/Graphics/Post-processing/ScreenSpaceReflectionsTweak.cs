@@ -20,7 +20,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public bool DefaultValue => true;
 
-        public string Identifier => this.GetType().FullName;
+        public string Identifier => this.GetType().FullName + "Rev1";
 
         public bool GetValue()
         {
