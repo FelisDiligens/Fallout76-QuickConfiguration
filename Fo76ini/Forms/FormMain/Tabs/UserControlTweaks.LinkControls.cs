@@ -86,10 +86,8 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(checkBoxRadialBlur, toolTip, radialBlurTweak);
             LinkedTweaks.LinkInfo(checkBoxLensFlare, toolTip, lensFlareTweak);
             LinkedTweaks.LinkInfo(checkBoxAmbientOcclusion, toolTip, ambientOcclusionTweak);
-            LinkedTweaks.LinkInfo(checkBoxBloom, toolTip, bloomTweak);
             LinkedTweaks.LinkInfo(checkBoxSSReflections, toolTip, screenSpaceReflectionsTweak);
             LinkedTweaks.LinkInfo(checkBoxWaterDisplacement, toolTip, waterDisplacementsTweak);
-            LinkedTweaks.LinkInfo(checkBoxWaterRefractions, toolTip, waterRefractionsTweak);
             LinkedTweaks.LinkInfo(checkBoxGodrays, toolTip, volumetricLightingTweak);
             LinkedTweaks.LinkInfo(checkBoxDisableGore, toolTip, disableAllGoreTweak);
             LinkedTweaks.LinkInfo(checkBoxBloodSplatter, toolTip, bloodSplatterTweak);
@@ -389,17 +387,11 @@ namespace Fo76ini.Forms.FormMain
             // Ambient Occlusion
             LinkedTweaks.LinkTweak(checkBoxAmbientOcclusion, ambientOcclusionTweak);
 
-            // Bloom
-            LinkedTweaks.LinkTweak(checkBoxBloom, bloomTweak);
-
             // Screen space reflections
             LinkedTweaks.LinkTweak(checkBoxSSReflections, screenSpaceReflectionsTweak);
 
             // Water / Displacement
             LinkedTweaks.LinkTweak(checkBoxWaterDisplacement, waterDisplacementsTweak);
-
-            // Water / Refractions
-            LinkedTweaks.LinkTweak(checkBoxWaterRefractions, waterRefractionsTweak);
 
             // Lighting / Volumetric Lighting
             LinkedTweaks.LinkTweak(checkBoxGodrays, volumetricLightingTweak);

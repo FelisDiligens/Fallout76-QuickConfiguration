@@ -118,14 +118,11 @@
             this.labelShadowTextureResolution = new System.Windows.Forms.Label();
             this.comboBoxAnisotropicFiltering = new System.Windows.Forms.ComboBox();
             this.groupBoxWater = new System.Windows.Forms.GroupBox();
-            this.checkBoxWaterRefractions = new System.Windows.Forms.CheckBox();
             this.checkBoxWaterDisplacement = new System.Windows.Forms.CheckBox();
             this.groupBoxPostProcessing = new System.Windows.Forms.GroupBox();
             this.checkBoxSSReflections = new System.Windows.Forms.CheckBox();
-            this.checkBoxBloom = new System.Windows.Forms.CheckBox();
             this.checkBoxAmbientOcclusion = new System.Windows.Forms.CheckBox();
             this.checkBoxDepthOfField = new System.Windows.Forms.CheckBox();
-            this.checkBoxMotionBlur = new System.Windows.Forms.CheckBox();
             this.checkBoxRadialBlur = new System.Windows.Forms.CheckBox();
             this.checkBoxLensFlare = new System.Windows.Forms.CheckBox();
             this.groupBoxDisplay = new System.Windows.Forms.GroupBox();
@@ -284,6 +281,7 @@
             this.checkBoxForceVanityMode = new System.Windows.Forms.CheckBox();
             this.groupBoxIdleCamera = new System.Windows.Forms.GroupBox();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
+            this.checkBoxMotionBlur = new System.Windows.Forms.CheckBox();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -965,7 +963,7 @@
             this.groupBoxGraphics.Location = new System.Drawing.Point(9, 206);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 919);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 907);
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
@@ -974,7 +972,7 @@
             // 
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
-            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(202, 247);
+            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(202, 228);
             this.groupBoxGraphicEffects.Name = "groupBoxGraphicEffects";
             this.groupBoxGraphicEffects.Size = new System.Drawing.Size(188, 68);
             this.groupBoxGraphicEffects.TabIndex = 11;
@@ -1011,7 +1009,7 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 766);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 751);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
             this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 145);
             this.groupBoxTAASharpening.TabIndex = 18;
@@ -1127,7 +1125,7 @@
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 637);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 622);
             this.groupBoxGrass.Name = "groupBoxGrass";
             this.groupBoxGrass.Size = new System.Drawing.Size(381, 119);
             this.groupBoxGrass.TabIndex = 17;
@@ -1214,7 +1212,7 @@
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 475);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 460);
             this.groupBoxLOD.Name = "groupBoxLOD";
             this.groupBoxLOD.Size = new System.Drawing.Size(381, 156);
             this.groupBoxLOD.TabIndex = 16;
@@ -1374,7 +1372,7 @@
             // groupBoxLighting
             // 
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
-            this.groupBoxLighting.Location = new System.Drawing.Point(202, 191);
+            this.groupBoxLighting.Location = new System.Drawing.Point(202, 172);
             this.groupBoxLighting.Name = "groupBoxLighting";
             this.groupBoxLighting.Size = new System.Drawing.Size(188, 50);
             this.groupBoxLighting.TabIndex = 14;
@@ -1411,7 +1409,7 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowTextureResolution);
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
-            this.groupBoxShadows.Location = new System.Drawing.Point(9, 321);
+            this.groupBoxShadows.Location = new System.Drawing.Point(9, 306);
             this.groupBoxShadows.Name = "groupBoxShadows";
             this.groupBoxShadows.Size = new System.Drawing.Size(381, 147);
             this.groupBoxShadows.TabIndex = 15;
@@ -1516,26 +1514,13 @@
             // 
             // groupBoxWater
             // 
-            this.groupBoxWater.Controls.Add(this.checkBoxWaterRefractions);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterDisplacement);
             this.groupBoxWater.Location = new System.Drawing.Point(202, 117);
             this.groupBoxWater.Name = "groupBoxWater";
-            this.groupBoxWater.Size = new System.Drawing.Size(188, 68);
+            this.groupBoxWater.Size = new System.Drawing.Size(188, 49);
             this.groupBoxWater.TabIndex = 12;
             this.groupBoxWater.TabStop = false;
             this.groupBoxWater.Text = "Water";
-            // 
-            // checkBoxWaterRefractions
-            // 
-            this.checkBoxWaterRefractions.AutoSize = true;
-            this.checkBoxWaterRefractions.Checked = true;
-            this.checkBoxWaterRefractions.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWaterRefractions.Location = new System.Drawing.Point(9, 42);
-            this.checkBoxWaterRefractions.Name = "checkBoxWaterRefractions";
-            this.checkBoxWaterRefractions.Size = new System.Drawing.Size(80, 17);
-            this.checkBoxWaterRefractions.TabIndex = 1;
-            this.checkBoxWaterRefractions.Text = "Refractions";
-            this.checkBoxWaterRefractions.UseVisualStyleBackColor = true;
             // 
             // checkBoxWaterDisplacement
             // 
@@ -1552,7 +1537,6 @@
             // groupBoxPostProcessing
             // 
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxSSReflections);
-            this.groupBoxPostProcessing.Controls.Add(this.checkBoxBloom);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxAmbientOcclusion);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxDepthOfField);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxMotionBlur);
@@ -1560,7 +1544,7 @@
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxLensFlare);
             this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 117);
             this.groupBoxPostProcessing.Name = "groupBoxPostProcessing";
-            this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 198);
+            this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 179);
             this.groupBoxPostProcessing.TabIndex = 10;
             this.groupBoxPostProcessing.TabStop = false;
             this.groupBoxPostProcessing.Text = "Post-processing";
@@ -1570,24 +1554,12 @@
             this.checkBoxSSReflections.AutoSize = true;
             this.checkBoxSSReflections.Checked = true;
             this.checkBoxSSReflections.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxSSReflections.Location = new System.Drawing.Point(9, 157);
+            this.checkBoxSSReflections.Location = new System.Drawing.Point(9, 134);
             this.checkBoxSSReflections.Name = "checkBoxSSReflections";
             this.checkBoxSSReflections.Size = new System.Drawing.Size(150, 17);
             this.checkBoxSSReflections.TabIndex = 6;
             this.checkBoxSSReflections.Text = "Screen Space Reflections";
             this.checkBoxSSReflections.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxBloom
-            // 
-            this.checkBoxBloom.AutoSize = true;
-            this.checkBoxBloom.Checked = true;
-            this.checkBoxBloom.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxBloom.Location = new System.Drawing.Point(9, 134);
-            this.checkBoxBloom.Name = "checkBoxBloom";
-            this.checkBoxBloom.Size = new System.Drawing.Size(55, 17);
-            this.checkBoxBloom.TabIndex = 5;
-            this.checkBoxBloom.Text = "Bloom";
-            this.checkBoxBloom.UseVisualStyleBackColor = true;
             // 
             // checkBoxAmbientOcclusion
             // 
@@ -1612,18 +1584,6 @@
             this.checkBoxDepthOfField.TabIndex = 0;
             this.checkBoxDepthOfField.Text = "Depth of Field";
             this.checkBoxDepthOfField.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMotionBlur
-            // 
-            this.checkBoxMotionBlur.AutoSize = true;
-            this.checkBoxMotionBlur.Checked = true;
-            this.checkBoxMotionBlur.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMotionBlur.Location = new System.Drawing.Point(9, 42);
-            this.checkBoxMotionBlur.Name = "checkBoxMotionBlur";
-            this.checkBoxMotionBlur.Size = new System.Drawing.Size(79, 17);
-            this.checkBoxMotionBlur.TabIndex = 1;
-            this.checkBoxMotionBlur.Text = "Motion Blur";
-            this.checkBoxMotionBlur.UseVisualStyleBackColor = true;
             // 
             // checkBoxRadialBlur
             // 
@@ -2377,10 +2337,10 @@
             this.groupBoxGamepad.Controls.Add(this.checkBoxAimAssist);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadEnabled);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadRumble);
-            this.groupBoxGamepad.Location = new System.Drawing.Point(6, 325);
+            this.groupBoxGamepad.Location = new System.Drawing.Point(6, 269);
             this.groupBoxGamepad.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGamepad.Name = "groupBoxGamepad";
-            this.groupBoxGamepad.Size = new System.Drawing.Size(400, 145);
+            this.groupBoxGamepad.Size = new System.Drawing.Size(400, 105);
             this.groupBoxGamepad.TabIndex = 1;
             this.groupBoxGamepad.TabStop = false;
             this.groupBoxGamepad.Text = "Gamepad";
@@ -2390,7 +2350,7 @@
             this.checkBoxAimAssist.AutoSize = true;
             this.checkBoxAimAssist.Checked = true;
             this.checkBoxAimAssist.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAimAssist.Location = new System.Drawing.Point(9, 79);
+            this.checkBoxAimAssist.Location = new System.Drawing.Point(9, 65);
             this.checkBoxAimAssist.Name = "checkBoxAimAssist";
             this.checkBoxAimAssist.Size = new System.Drawing.Size(73, 17);
             this.checkBoxAimAssist.TabIndex = 2;
@@ -2414,7 +2374,7 @@
             this.checkBoxGamepadRumble.AutoSize = true;
             this.checkBoxGamepadRumble.Checked = true;
             this.checkBoxGamepadRumble.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGamepadRumble.Location = new System.Drawing.Point(9, 40);
+            this.checkBoxGamepadRumble.Location = new System.Drawing.Point(9, 42);
             this.checkBoxGamepadRumble.Name = "checkBoxGamepadRumble";
             this.checkBoxGamepadRumble.Size = new System.Drawing.Size(149, 17);
             this.checkBoxGamepadRumble.TabIndex = 1;
@@ -2436,7 +2396,7 @@
             this.groupBoxMouse.Location = new System.Drawing.Point(6, 6);
             this.groupBoxMouse.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxMouse.Name = "groupBoxMouse";
-            this.groupBoxMouse.Size = new System.Drawing.Size(400, 307);
+            this.groupBoxMouse.Size = new System.Drawing.Size(400, 251);
             this.groupBoxMouse.TabIndex = 0;
             this.groupBoxMouse.TabStop = false;
             this.groupBoxMouse.Text = "Mouse";
@@ -2497,7 +2457,7 @@
             // checkBoxMouseInvertX
             // 
             this.checkBoxMouseInvertX.AutoSize = true;
-            this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 269);
+            this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 219);
             this.checkBoxMouseInvertX.Name = "checkBoxMouseInvertX";
             this.checkBoxMouseInvertX.Size = new System.Drawing.Size(63, 17);
             this.checkBoxMouseInvertX.TabIndex = 9;
@@ -2507,7 +2467,7 @@
             // checkBoxMouseInvertY
             // 
             this.checkBoxMouseInvertY.AutoSize = true;
-            this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 246);
+            this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 196);
             this.checkBoxMouseInvertY.Name = "checkBoxMouseInvertY";
             this.checkBoxMouseInvertY.Size = new System.Drawing.Size(63, 17);
             this.checkBoxMouseInvertY.TabIndex = 8;
@@ -2532,7 +2492,7 @@
             // checkBoxFixAimSensitivity
             // 
             this.checkBoxFixAimSensitivity.AutoSize = true;
-            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 203);
+            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 162);
             this.checkBoxFixAimSensitivity.Name = "checkBoxFixAimSensitivity";
             this.checkBoxFixAimSensitivity.Size = new System.Drawing.Size(106, 17);
             this.checkBoxFixAimSensitivity.TabIndex = 7;
@@ -3697,9 +3657,9 @@
             this.richTextBoxCredentialsExplanation.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxCredentialsExplanation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxCredentialsExplanation.ForeColor = System.Drawing.Color.DimGray;
-            this.richTextBoxCredentialsExplanation.Location = new System.Drawing.Point(12, 164);
+            this.richTextBoxCredentialsExplanation.Location = new System.Drawing.Point(6, 164);
             this.richTextBoxCredentialsExplanation.Name = "richTextBoxCredentialsExplanation";
-            this.richTextBoxCredentialsExplanation.Size = new System.Drawing.Size(387, 172);
+            this.richTextBoxCredentialsExplanation.Size = new System.Drawing.Size(393, 172);
             this.richTextBoxCredentialsExplanation.TabIndex = 7;
             this.richTextBoxCredentialsExplanation.Text = resources.GetString("richTextBoxCredentialsExplanation.Text");
             // 
@@ -3841,6 +3801,18 @@
             this.toolTip.Padding = new System.Drawing.Size(6, 6);
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
+            // 
+            // checkBoxMotionBlur
+            // 
+            this.checkBoxMotionBlur.AutoSize = true;
+            this.checkBoxMotionBlur.Checked = true;
+            this.checkBoxMotionBlur.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMotionBlur.Location = new System.Drawing.Point(9, 42);
+            this.checkBoxMotionBlur.Name = "checkBoxMotionBlur";
+            this.checkBoxMotionBlur.Size = new System.Drawing.Size(79, 17);
+            this.checkBoxMotionBlur.TabIndex = 1;
+            this.checkBoxMotionBlur.Text = "Motion Blur";
+            this.checkBoxMotionBlur.UseVisualStyleBackColor = true;
             // 
             // UserControlTweaks
             // 
@@ -4174,7 +4146,6 @@
         private System.Windows.Forms.GroupBox groupBoxPostProcessing;
         private System.Windows.Forms.CheckBox checkBoxAmbientOcclusion;
         private System.Windows.Forms.CheckBox checkBoxDepthOfField;
-        private System.Windows.Forms.CheckBox checkBoxMotionBlur;
         private System.Windows.Forms.CheckBox checkBoxRadialBlur;
         private System.Windows.Forms.CheckBox checkBoxLensFlare;
         private System.Windows.Forms.GroupBox groupBoxFieldOfView;
@@ -4237,10 +4208,8 @@
         private Controls.CustomToolTip toolTip;
         private System.Windows.Forms.TabPage tabPageTweaksInfo;
         private System.Windows.Forms.WebBrowser webBrowserTweaksInfo;
-        private System.Windows.Forms.CheckBox checkBoxBloom;
         private System.Windows.Forms.CheckBox checkBoxSSReflections;
         private System.Windows.Forms.CheckBox checkBoxBloodSplatter;
-        private System.Windows.Forms.CheckBox checkBoxWaterRefractions;
         private System.Windows.Forms.TrackBar sliderMouseSensitivityY;
         private System.Windows.Forms.NumericUpDown numMouseSensitivityY;
         private System.Windows.Forms.Label label1;
@@ -4262,5 +4231,6 @@
         private System.Windows.Forms.GroupBox groupBoxIdleCamera;
         private System.Windows.Forms.CheckBox checkBoxForceVanityMode;
         private System.Windows.Forms.CheckBox checkBoxVanityMode;
+        private System.Windows.Forms.CheckBox checkBoxMotionBlur;
     }
 }
