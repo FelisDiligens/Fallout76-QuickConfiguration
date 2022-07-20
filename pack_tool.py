@@ -1,6 +1,7 @@
 from colorama import Fore, Back, Style, init
 import time, os, shutil
-from distutils.dir_util import copy_tree
+# from distutils.dir_util import copy_tree
+# DeprecationWarning: The distutils package is deprecated and slated for removal in Python 3.12. Use setuptools or check PEP 632 for potential alternatives
 init()
 
 PROJECT_GIT_DIR  = "D:\\Workspace\\Fallout 76 Quick Configuration\\Fallout76-QuickConfiguration\\"
@@ -10,10 +11,12 @@ SEVENZIP_PATH    = "D:\\Portable\\7z\\7z.exe"
 RCEDIT_PATH      = "D:\\Portable\\rcedit-x64.exe"
 
 RELEASE_BIN_DIR  = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\bin\\Release")
-EXECUTABLE_PATH  = os.path.join(RELEASE_BIN_DIR, "Fo76ini.exe")
+EXECUTABLE_NAME  = "Fo76ini.exe"
+EXECUTABLE_PATH  = os.path.join(RELEASE_BIN_DIR, EXECUTABLE_NAME)
 UPDATER_BIN_DIR  = os.path.join(PROJECT_GIT_DIR, "Fo76ini_Updater\\bin\\Release")
 DEPENDENCIES_DIR = os.path.join(PROJECT_GIT_DIR, "Additional files")
 VERSION_PATH     = os.path.join(PROJECT_GIT_DIR, "VERSION")
+SETUP_ISS_PATH   = os.path.join(PROJECT_GIT_DIR, "setup.iss")
 
 VERSION = "x.x.x"
 
@@ -79,21 +82,37 @@ def use_rcedit():
 
 def copy_additions():
     print("Copying additional files...")
-    copy_tree(DEPENDENCIES_DIR, RELEASE_BIN_DIR, update=0)
+    shutil.copytree(DEPENDENCIES_DIR, RELEASE_BIN_DIR, update=0)
     print("Done.")
 
 def copy_updater():
     print("Copying updater...")
-    copy_tree(UPDATER_BIN_DIR, RELEASE_BIN_DIR, update=0)
+    shutil.copytree(UPDATER_BIN_DIR, RELEASE_BIN_DIR, update=0)
     print("Done.")
 
 def update_inno():
-    print("NOT IMPLEMENTED")
-    pass
+    print("Changing version number in setup.iss ...")
+    content = ""
+    with open(SETUP_ISS_PATH, "r") as f:
+        for line in f:
+            if line.startswith("#define ProjectVersion"):
+                line = "#define ProjectVersion \"" + VERSION + "\"\n"
+                print("Line changed: " + line, end="")
+            if line.startswith("#define MyAppExeName"):
+                line = "#define MyAppExeName \"" + EXECUTABLE_NAME + "\"\n"
+                print("Line changed: " + line, end="")
+            if line.startswith("#define ProjectGitDir"):
+                line = "#define ProjectGitDir \"" + PROJECT_GIT_DIR.rstrip("\\") + "\"\n"
+                print("Line changed: " + line, end="")
+            if line.startswith("#define ProjectPackTargetDir"):
+                line = "#define ProjectPackTargetDir \"" + PACK_TARGET_DIR.rstrip("\\") + "\"\n"
+                print("Line changed: " + line, end="")
+            content += line
+    with open(SETUP_ISS_PATH, "w") as f:
+        f.write(content)
 
 def build_inno():
     os.system("setup.iss")
-    pass
 
 def open_dir():
     target_dir = os.path.join(PACK_TARGET_DIR, "v" + VERSION)
