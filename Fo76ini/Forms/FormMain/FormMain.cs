@@ -461,7 +461,14 @@ namespace Fo76ini
         {
             if (!Configuration.ShowWhatsNew)
                 return;
-            this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewHTMLURL);
+
+#if DEBUG
+            string debugFile = Path.Combine(Shared.AppConfigFolder, "What's new.html");
+            if (File.Exists(debugFile))
+                this.webBrowserWhatsNew.DocumentText = File.ReadAllText(debugFile);
+            else
+#endif
+                this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewHTMLURL);
         }
 
         private void UpdateWhatsNewUI()
