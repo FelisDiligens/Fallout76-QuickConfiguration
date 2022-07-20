@@ -117,27 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBoxCredentialsExplanation.Text" xml:space="preserve">
-    <value>New text:
-Disabling Steam will result in a "migration" message box and force you to close the game.
-You cannot use a different account with the Steam version and probably the Xbox version as well.
-Even though the textboxes and auto sign-in still work, they are ultimately useless now.
-
-I'll leave everything here as it was for now. Maybe, I'll remove it later.
-
-Also, since I changed how comments are parsed, any password with ";" (semicolon) or "#" (hash) will get truncated as the tool will interpret it as a comment.
-
-
-Old text:
-Your credentials are saved into Fallout76Custom.ini
-This way, you don't have to enter your username and password manually
-if you start Fallout 76 without the launcher.
-
-If you use Steam and want to use your Bethesda.net account
-(e.g. to spent Atoms), untick Enable Steam.
-NOTE: Your achievements will be disabled as well!
-</value>
-  </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

@@ -6,8 +6,10 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using Tulpep.NotificationWindow;
@@ -924,6 +926,40 @@ namespace Fo76ini.Utilities
             catch
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Retrieve an "Embedded Resource" as text.
+        /// </summary>
+        /// <remarks>
+        /// If the resource can't be found, it throws an ArgumentException.
+        /// </remarks>
+        /// <param name="name">"Path" to the resource, e.g. "HTML/TweaksInfo.html" (it get's translated to "Fo76ini.HTML.TweaksInfo.html")</param>
+        /// <returns>The resource as text</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static string ReadTextResourceFromAssembly(string name)
+        {
+            // https://stackoverflow.com/a/28558647
+            // https://stackoverflow.com/a/66789436
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string assemblyName = assembly.GetName().Name;
+            string resourceName = $"{assemblyName}.{Regex.Replace(name, @"[/\\]{1}", ".")}";
+
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream == null)
+                {
+                    throw new ArgumentException(string.Format("Resource '{0}' not found", resourceName), "name");
+                }
+
+                string content = null;
+                using (var reader = new StreamReader(stream))
+                {
+                    content = reader.ReadToEnd();
+                }
+                return content;
             }
         }
     }

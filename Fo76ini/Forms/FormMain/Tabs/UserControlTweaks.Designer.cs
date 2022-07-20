@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlTweaks));
             this.tabControlTweaks = new System.Windows.Forms.TabControl();
             this.tabPageTweaksInfo = new System.Windows.Forms.TabPage();
             this.webBrowserTweaksInfo = new System.Windows.Forms.WebBrowser();
@@ -3704,13 +3703,11 @@
             // richTextBoxCredentialsExplanation
             // 
             this.richTextBoxCredentialsExplanation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxCredentialsExplanation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxCredentialsExplanation.ForeColor = System.Drawing.Color.DimGray;
             this.richTextBoxCredentialsExplanation.Location = new System.Drawing.Point(6, 164);
             this.richTextBoxCredentialsExplanation.Name = "richTextBoxCredentialsExplanation";
             this.richTextBoxCredentialsExplanation.Size = new System.Drawing.Size(393, 172);
             this.richTextBoxCredentialsExplanation.TabIndex = 7;
-            this.richTextBoxCredentialsExplanation.Text = resources.GetString("richTextBoxCredentialsExplanation.Text");
+            this.richTextBoxCredentialsExplanation.Text = "Placeholder";
             // 
             // checkBoxAutoSignin
             // 
@@ -3824,6 +3821,7 @@
             this.Controls.Add(this.tabControlTweaks);
             this.Name = "UserControlTweaks";
             this.Size = new System.Drawing.Size(680, 580);
+            this.Load += new System.EventHandler(this.UserControlTweaks_Load);
             this.tabControlTweaks.ResumeLayout(false);
             this.tabPageTweaksInfo.ResumeLayout(false);
             this.tabPageGeneral.ResumeLayout(false);
