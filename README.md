@@ -72,15 +72,17 @@ Otherwise the .NET installer might fail or the tool might not start.
 * [Cloudy01's Mod Manager](https://www.nexusmods.com/fallout76/mods/221)
 * [runew0lf's Pipboy Color Changer](https://www.nexusmods.com/fallout76/mods/152)
 * The Step-Project wiki articles for [Skyrim's](https://wiki.step-project.com/Guide:SkyrimPrefs_INI) and [Fallout 4's](https://wiki.step-project.com/Guide:Fallout4Prefs_INI) \*Prefs.ini files.
-* derpderp3200's Reddit post: ["How to actually disable Depth of Field, and how to go from 20fps to 60fps"](https://www.reddit.com/r/fo76/comments/9u4urf/psa_how_to_actually_disable_depth_of_field_and/)
+* [Fafla McDafla's C.G.B.V.P.T.I.T.O.M](https://www.nexusmods.com/fallout76/mods/593)
+* u/LinuxVersion's Reddit post: [Obtain all 3017 INI settings with default values...](https://www.reddit.com/r/fo76/comments/p48a25/obtain_all_3017_ini_settings_with_default_values/) | [(very useful spreadsheet)](https://docs.google.com/spreadsheets/d/1DFkbE-_8PXiW0r4DrGQGs-QFJELleIkr-mrQUMxpw7o/edit?usp=sharing)
+* u/derpderp3200's Reddit post: ["How to actually disable Depth of Field, and how to go from 20fps to 60fps"](https://www.reddit.com/r/fo76/comments/9u4urf/psa_how_to_actually_disable_depth_of_field_and/)
 * Trankquel's forum thread: ["An Analysis of Mouse Input and Related INI Variables"](https://forums.nexusmods.com/index.php?/topic/3401795-an-analysis-of-mouse-input-and-related-ini-variables/)
 * DoubleYou's forum thread: ["Sun Shadow Transition INI Settings"](https://forum.step-project.com/topic/9209-sun-shadow-transition-ini-settings/)
-* Xabraxxis's Reddit post: ["Fallout 76 ini file and performance tweaks with full details on what they do."](https://www.reddit.com/r/fo76/comments/e33hpj/fallout_76_ini_file_and_performance_tweaks_with/)
-* LinuxVersion's Reddit post: ["All INI options recognized by the game engine"](https://www.reddit.com/r/fo76/comments/9svzoo/all_ini_options_recognized_by_the_game_engine/)
+* u/Xabraxxis's Reddit post: ["Fallout 76 ini file and performance tweaks with full details on what they do."](https://www.reddit.com/r/fo76/comments/e33hpj/fallout_76_ini_file_and_performance_tweaks_with/)
 * Gabi's forum thread: ["Unlock Frame Rate, Change FOV, Skip Intro Video, Unlock Console, 21:9 Support and Remove Mouse Smoothing + Other Fixes"](https://steamcommunity.com/sharedfiles/filedetails/?id=551069501)
 * Jolu42's forum thread: ["Fallout76Custom.ini (Make the game look better, run smoother)"](https://steamcommunity.com/app/1151340/discussions/0/2259061617881806276/)
-* Z0MG_H4X's Reddit post: ["[PC] Useful ini Settings Everyone Should Check Out"](https://www.reddit.com/r/fo76/comments/ai6o3t/pc_useful_ini_settings_everyone_should_check_out/)
-* Aten_Ra's Reddit post: ["[Guide] How to Run Multiple Instances of ’76 on a single computer."](https://www.reddit.com/r/fo76/comments/cb43a7/guide_how_to_run_multiple_instances_of_76_on_a/)
+* u/Z0MG_H4X's Reddit post: ["[PC] Useful ini Settings Everyone Should Check Out"](https://www.reddit.com/r/fo76/comments/ai6o3t/pc_useful_ini_settings_everyone_should_check_out/)
+* u/Aten_Ra's Reddit post: ["[Guide] How to Run Multiple Instances of ’76 on a single computer."](https://www.reddit.com/r/fo76/comments/cb43a7/guide_how_to_run_multiple_instances_of_76_on_a/)
+* u/Doppler5hift's Reddit post: ["Solved: how to run two Fallout 76 characters simultaneously using Steam"](https://www.reddit.com/r/fo76/comments/ues8vv/solved_how_to_run_two_fallout_76_characters/)
 
 ### Contributors:
 * [QuadroTony](https://www.nexusmods.com/fallout76/users/3166296): A lot of bug reports, and ideas, as well as: bSkipSplash=1 disables the news splash on startup.
