@@ -227,7 +227,7 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Config.GetBool("Preferences", "bAutoApply", false);
+                return IniFiles.Config.GetBool("Preferences", "bAutoApply", true);
             }
             set
             {
