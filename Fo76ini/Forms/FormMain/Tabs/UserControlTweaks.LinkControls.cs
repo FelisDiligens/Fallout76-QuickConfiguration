@@ -413,7 +413,7 @@ namespace Fo76ini.Forms.FormMain
             // Shadow texture map resolution
             LinkedTweaks.LinkTweak(
                 comboBoxShadowTextureResolution,
-                new int[] { 512, 1024, 2048, 4096 },
+                new int[] { 512, 1024, 2048, 4096, 8192 },
                 shadowMapResolutionTweak);
 
             // Shadows / Blurriness

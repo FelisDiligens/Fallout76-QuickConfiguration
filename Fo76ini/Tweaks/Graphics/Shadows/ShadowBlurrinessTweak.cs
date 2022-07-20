@@ -8,7 +8,9 @@ namespace Fo76ini.Tweaks.Graphics
 {
     class ShadowBlurrinessTweak : ITweak<int>, ITweakInfo
     {
-        public string Description => "Blurs shadows. Especially useful, if you set a lower shadow resolution.";
+        public string Description => "Blurs shadows. Especially useful, if you set a lower shadow resolution.\n\n" +
+                                     "3x recommended for low texture map resolution\n" +
+                                     "2x recommended for high texture map resolution";
 
         public WarnLevel WarnLevel => WarnLevel.None;
 

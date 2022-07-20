@@ -167,16 +167,17 @@ namespace Fo76ini.Forms.FormMain
                     "512 = Potato",
                     "1024 = Low",
                     "2048 = High (default)",
-                    "4096 = Ultra"
+                    "4096 = Ultra",
+                    "8192 = Insane"
                 }
             ));
 
             DropDown.Add("ShadowBlurriness", new DropDown(
                 this.comboBoxShadowBlurriness,
                 new string[] {
-                    "1x",
-                    "2x",
-                    "3x = Default, recommended"
+                    "1x (crisper, pixels noticeable)",
+                    "2x (less blurry)",
+                    "3x (blurry, default)"
                 }
             ));
 
