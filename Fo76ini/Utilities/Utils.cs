@@ -738,8 +738,13 @@ namespace Fo76ini.Utilities
         /// <returns>The thumbnail as Image object</returns>
         public static Image MakeThumbnail(string filePath, string thumbnailPath, bool drawBorders = false, int canvasWidth = 160, int canvasHeight = 90, long quality = 70L)
         {
-            Image image = Image.FromFile(filePath);
-            return Utils.MakeThumbnail(image, thumbnailPath, drawBorders, canvasWidth, canvasHeight, quality);
+            // https://stackoverflow.com/a/13625704
+            Image thumbnail = null;
+            using (Image image = Image.FromFile(filePath))
+            {
+                thumbnail = Utils.MakeThumbnail(image, thumbnailPath, drawBorders, canvasWidth, canvasHeight, quality);
+            }
+            return thumbnail;
         }
 
         // https://stackoverflow.com/a/336729

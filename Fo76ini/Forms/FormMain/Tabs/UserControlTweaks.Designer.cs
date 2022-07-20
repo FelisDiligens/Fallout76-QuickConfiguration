@@ -123,6 +123,7 @@
             this.checkBoxSSReflections = new System.Windows.Forms.CheckBox();
             this.checkBoxAmbientOcclusion = new System.Windows.Forms.CheckBox();
             this.checkBoxDepthOfField = new System.Windows.Forms.CheckBox();
+            this.checkBoxMotionBlur = new System.Windows.Forms.CheckBox();
             this.checkBoxRadialBlur = new System.Windows.Forms.CheckBox();
             this.checkBoxLensFlare = new System.Windows.Forms.CheckBox();
             this.groupBoxDisplay = new System.Windows.Forms.GroupBox();
@@ -233,6 +234,9 @@
             this.numericUpDownPhotomodeTranslationSpeed = new System.Windows.Forms.NumericUpDown();
             this.trackBarPhotomodeTranslationSpeed = new System.Windows.Forms.TrackBar();
             this.labelPhotomodeTranslationSpeed = new System.Windows.Forms.Label();
+            this.groupBoxIdleCamera = new System.Windows.Forms.GroupBox();
+            this.checkBoxForceVanityMode = new System.Windows.Forms.CheckBox();
+            this.checkBoxVanityMode = new System.Windows.Forms.CheckBox();
             this.groupBoxCameraDistance = new System.Windows.Forms.GroupBox();
             this.numfPitchZoomOutMaxDist = new System.Windows.Forms.NumericUpDown();
             this.sliderfPitchZoomOutMaxDist = new System.Windows.Forms.TrackBar();
@@ -277,10 +281,6 @@
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelTweaksDesc = new System.Windows.Forms.Label();
             this.labelTweaksTitle = new System.Windows.Forms.Label();
-            this.checkBoxVanityMode = new System.Windows.Forms.CheckBox();
-            this.checkBoxForceVanityMode = new System.Windows.Forms.CheckBox();
-            this.groupBoxIdleCamera = new System.Windows.Forms.GroupBox();
-            this.checkBoxMotionBlur = new System.Windows.Forms.CheckBox();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
@@ -384,6 +384,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).BeginInit();
+            this.groupBoxIdleCamera.SuspendLayout();
             this.groupBoxCameraDistance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderfPitchZoomOutMaxDist)).BeginInit();
@@ -398,7 +399,6 @@
             this.tabPageLogin.SuspendLayout();
             this.groupBoxLoginProfiles.SuspendLayout();
             this.groupBoxLogin.SuspendLayout();
-            this.groupBoxIdleCamera.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -1557,9 +1557,9 @@
             this.checkBoxSSReflections.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxSSReflections.Location = new System.Drawing.Point(9, 134);
             this.checkBoxSSReflections.Name = "checkBoxSSReflections";
-            this.checkBoxSSReflections.Size = new System.Drawing.Size(150, 17);
+            this.checkBoxSSReflections.Size = new System.Drawing.Size(110, 17);
             this.checkBoxSSReflections.TabIndex = 6;
-            this.checkBoxSSReflections.Text = "Screen Space Reflections";
+            this.checkBoxSSReflections.Text = "Reflections (SSR)";
             this.checkBoxSSReflections.UseVisualStyleBackColor = true;
             // 
             // checkBoxAmbientOcclusion
@@ -1569,9 +1569,9 @@
             this.checkBoxAmbientOcclusion.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxAmbientOcclusion.Location = new System.Drawing.Point(9, 111);
             this.checkBoxAmbientOcclusion.Name = "checkBoxAmbientOcclusion";
-            this.checkBoxAmbientOcclusion.Size = new System.Drawing.Size(114, 17);
+            this.checkBoxAmbientOcclusion.Size = new System.Drawing.Size(152, 17);
             this.checkBoxAmbientOcclusion.TabIndex = 4;
-            this.checkBoxAmbientOcclusion.Text = "Ambient Occlusion";
+            this.checkBoxAmbientOcclusion.Text = "Ambient Occlusion (SSAO)";
             this.checkBoxAmbientOcclusion.UseVisualStyleBackColor = true;
             // 
             // checkBoxDepthOfField
@@ -1585,6 +1585,18 @@
             this.checkBoxDepthOfField.TabIndex = 0;
             this.checkBoxDepthOfField.Text = "Depth of Field";
             this.checkBoxDepthOfField.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMotionBlur
+            // 
+            this.checkBoxMotionBlur.AutoSize = true;
+            this.checkBoxMotionBlur.Checked = true;
+            this.checkBoxMotionBlur.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMotionBlur.Location = new System.Drawing.Point(9, 42);
+            this.checkBoxMotionBlur.Name = "checkBoxMotionBlur";
+            this.checkBoxMotionBlur.Size = new System.Drawing.Size(79, 17);
+            this.checkBoxMotionBlur.TabIndex = 1;
+            this.checkBoxMotionBlur.Text = "Motion Blur";
+            this.checkBoxMotionBlur.UseVisualStyleBackColor = true;
             // 
             // checkBoxRadialBlur
             // 
@@ -3189,6 +3201,42 @@
             this.labelPhotomodeTranslationSpeed.TabIndex = 0;
             this.labelPhotomodeTranslationSpeed.Text = "Translation speed:";
             // 
+            // groupBoxIdleCamera
+            // 
+            this.groupBoxIdleCamera.Controls.Add(this.checkBoxForceVanityMode);
+            this.groupBoxIdleCamera.Controls.Add(this.checkBoxVanityMode);
+            this.groupBoxIdleCamera.Location = new System.Drawing.Point(6, 778);
+            this.groupBoxIdleCamera.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxIdleCamera.Name = "groupBoxIdleCamera";
+            this.groupBoxIdleCamera.Size = new System.Drawing.Size(400, 77);
+            this.groupBoxIdleCamera.TabIndex = 2;
+            this.groupBoxIdleCamera.TabStop = false;
+            this.groupBoxIdleCamera.Text = "Idle camera (Experimental)";
+            // 
+            // checkBoxForceVanityMode
+            // 
+            this.checkBoxForceVanityMode.AutoSize = true;
+            this.checkBoxForceVanityMode.Checked = true;
+            this.checkBoxForceVanityMode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxForceVanityMode.Location = new System.Drawing.Point(9, 42);
+            this.checkBoxForceVanityMode.Name = "checkBoxForceVanityMode";
+            this.checkBoxForceVanityMode.Size = new System.Drawing.Size(137, 17);
+            this.checkBoxForceVanityMode.TabIndex = 3;
+            this.checkBoxForceVanityMode.Text = "Force auto vanity mode";
+            this.checkBoxForceVanityMode.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxVanityMode
+            // 
+            this.checkBoxVanityMode.AutoSize = true;
+            this.checkBoxVanityMode.Checked = true;
+            this.checkBoxVanityMode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxVanityMode.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxVanityMode.Name = "checkBoxVanityMode";
+            this.checkBoxVanityMode.Size = new System.Drawing.Size(208, 17);
+            this.checkBoxVanityMode.TabIndex = 2;
+            this.checkBoxVanityMode.Text = "Enable spinning camera when inactive";
+            this.checkBoxVanityMode.UseVisualStyleBackColor = true;
+            // 
             // groupBoxCameraDistance
             // 
             this.groupBoxCameraDistance.Controls.Add(this.numfPitchZoomOutMaxDist);
@@ -3755,54 +3803,6 @@
             this.labelTweaksTitle.TabIndex = 71;
             this.labelTweaksTitle.Text = "Tweaks";
             // 
-            // checkBoxVanityMode
-            // 
-            this.checkBoxVanityMode.AutoSize = true;
-            this.checkBoxVanityMode.Checked = true;
-            this.checkBoxVanityMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxVanityMode.Location = new System.Drawing.Point(9, 19);
-            this.checkBoxVanityMode.Name = "checkBoxVanityMode";
-            this.checkBoxVanityMode.Size = new System.Drawing.Size(208, 17);
-            this.checkBoxVanityMode.TabIndex = 2;
-            this.checkBoxVanityMode.Text = "Enable spinning camera when inactive";
-            this.checkBoxVanityMode.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxForceVanityMode
-            // 
-            this.checkBoxForceVanityMode.AutoSize = true;
-            this.checkBoxForceVanityMode.Checked = true;
-            this.checkBoxForceVanityMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxForceVanityMode.Location = new System.Drawing.Point(9, 42);
-            this.checkBoxForceVanityMode.Name = "checkBoxForceVanityMode";
-            this.checkBoxForceVanityMode.Size = new System.Drawing.Size(137, 17);
-            this.checkBoxForceVanityMode.TabIndex = 3;
-            this.checkBoxForceVanityMode.Text = "Force auto vanity mode";
-            this.checkBoxForceVanityMode.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxIdleCamera
-            // 
-            this.groupBoxIdleCamera.Controls.Add(this.checkBoxForceVanityMode);
-            this.groupBoxIdleCamera.Controls.Add(this.checkBoxVanityMode);
-            this.groupBoxIdleCamera.Location = new System.Drawing.Point(6, 778);
-            this.groupBoxIdleCamera.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxIdleCamera.Name = "groupBoxIdleCamera";
-            this.groupBoxIdleCamera.Size = new System.Drawing.Size(400, 77);
-            this.groupBoxIdleCamera.TabIndex = 2;
-            this.groupBoxIdleCamera.TabStop = false;
-            this.groupBoxIdleCamera.Text = "Idle camera (Experimental)";
-            // 
-            // checkBoxMotionBlur
-            // 
-            this.checkBoxMotionBlur.AutoSize = true;
-            this.checkBoxMotionBlur.Checked = true;
-            this.checkBoxMotionBlur.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMotionBlur.Location = new System.Drawing.Point(9, 42);
-            this.checkBoxMotionBlur.Name = "checkBoxMotionBlur";
-            this.checkBoxMotionBlur.Size = new System.Drawing.Size(79, 17);
-            this.checkBoxMotionBlur.TabIndex = 1;
-            this.checkBoxMotionBlur.Text = "Motion Blur";
-            this.checkBoxMotionBlur.UseVisualStyleBackColor = true;
-            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -3954,6 +3954,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).EndInit();
+            this.groupBoxIdleCamera.ResumeLayout(false);
+            this.groupBoxIdleCamera.PerformLayout();
             this.groupBoxCameraDistance.ResumeLayout(false);
             this.groupBoxCameraDistance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).EndInit();
@@ -3972,8 +3974,6 @@
             this.groupBoxLoginProfiles.PerformLayout();
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
-            this.groupBoxIdleCamera.ResumeLayout(false);
-            this.groupBoxIdleCamera.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

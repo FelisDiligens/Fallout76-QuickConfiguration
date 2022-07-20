@@ -450,11 +450,18 @@ namespace Fo76ini.Forms.FormMain
 
             if (ok)
             {
-                foreach (int index in galleryContextMenuItems)
+                try
                 {
-                    String path = galleryImagePaths[index];
-                    if (File.Exists(path))
-                        File.Delete(path);
+                    foreach (int index in galleryContextMenuItems)
+                    {
+                        String path = galleryImagePaths[index];
+                        Utils.DeleteFile(path);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.GetType().Name}: {ex.Message}", "Couldn't delete image(s)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 UpdateScreenShotGalleryThreaded();
