@@ -198,22 +198,19 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(this.trackBarPhotomodeRotationSpeed, toolTip, selfieCameraRotationSpeedTweak);
             LinkedTweaks.LinkInfo(this.checkBoxVanityMode, toolTip, disableAutoVanityModeTweak);
             LinkedTweaks.LinkInfo(this.checkBoxForceVanityMode, toolTip, forceAutoVanityModeTweak);
-            LinkedTweaks.LinkInfo(this.numCameraSwitchDelay, toolTip, firstThirdPerspectiveSwitchDelayTweak);
-            LinkedTweaks.LinkInfo(this.labelSwitchDelay, toolTip, firstThirdPerspectiveSwitchDelayTweak);
-            LinkedTweaks.LinkInfo(numFirstPersonFOV, toolTip, fov1stPersonTweak);
             LinkedTweaks.LinkInfo(numADSFOV, toolTip, fov3rdADSTweak);
-            LinkedTweaks.LinkInfo(numfDefaultFOV, toolTip, defaultFOVTweak);
-            LinkedTweaks.LinkInfo(labelFirstPersonFOV, toolTip, fov1stPersonTweak);
             LinkedTweaks.LinkInfo(numFOV, toolTip, fovTweak);
             LinkedTweaks.LinkInfo(sliderFOV, toolTip, fovTweak);
             LinkedTweaks.LinkInfo(labelADSFOV, toolTip, fov3rdADSTweak);
-            LinkedTweaks.LinkInfo(labelfDefaultFOV, toolTip, defaultFOVTweak);
             LinkedTweaks.LinkInfo(numCameraDistanceMinimum, toolTip, vanityModeMinDistTweak);
             LinkedTweaks.LinkInfo(numCameraDistanceMaximum, toolTip, vanityModeMaxDistTweak);
             LinkedTweaks.LinkInfo(numfPitchZoomOutMaxDist, toolTip, pitchZoomOutMaxDistTweak);
             LinkedTweaks.LinkInfo(labelCameraDistanceMinimum, toolTip, vanityModeMinDistTweak);
             LinkedTweaks.LinkInfo(labelCameraDistanceMaximum, toolTip, vanityModeMaxDistTweak);
             LinkedTweaks.LinkInfo(labelPitchZoomOutMaxDist, toolTip, pitchZoomOutMaxDistTweak);
+            LinkedTweaks.LinkInfo(sliderCameraDistanceMinimum, toolTip, vanityModeMinDistTweak);
+            LinkedTweaks.LinkInfo(sliderCameraDistanceMaximum, toolTip, vanityModeMaxDistTweak);
+            LinkedTweaks.LinkInfo(sliderfPitchZoomOutMaxDist, toolTip, pitchZoomOutMaxDistTweak);
         }
 
         /// <summary>
@@ -526,9 +523,6 @@ namespace Fo76ini.Forms.FormMain
              * Camera tab
              */
 
-            // 1st person FOV
-            LinkedTweaks.LinkTweak(numFirstPersonFOV, fov1stPersonTweak);
-
             // Field of View
             LinkedTweaks.LinkSlider(sliderFOV, numFOV, 0.2f);
             LinkedTweaks.LinkTweak(numFOV, fovTweak);
@@ -536,18 +530,12 @@ namespace Fo76ini.Forms.FormMain
             // 3rd person ADS FOV
             LinkedTweaks.LinkTweak(numADSFOV, fov3rdADSTweak);
 
-            // fDefaultFOV
-            LinkedTweaks.LinkTweak(numfDefaultFOV, defaultFOVTweak);
-
             // Camera distance
             LinkedTweaks.LinkTweak(numCameraDistanceMinimum, vanityModeMinDistTweak);
             LinkedTweaks.LinkTweak(numCameraDistanceMaximum, vanityModeMaxDistTweak);
 
             // fPitchZoomOutMaxDist
             LinkedTweaks.LinkTweak(numfPitchZoomOutMaxDist, pitchZoomOutMaxDistTweak);
-
-            // Switch delay
-            LinkedTweaks.LinkTweak(this.numCameraSwitchDelay, firstThirdPerspectiveSwitchDelayTweak);
 
             // Photomode options:
             LinkedTweaks.LinkTweak(this.numericUpDownPhotomodeRange, selfieModeRangeTweak);
@@ -609,7 +597,6 @@ namespace Fo76ini.Forms.FormMain
         private DisplaySizeTweak displaySizeTweak = new DisplaySizeTweak();
         private DisplayModeTweak displayModeTweak = new DisplayModeTweak();
         private PresentIntervalTweak presentIntervalTweak = new PresentIntervalTweak();
-        private WindowAlwaysActiveTweak windowAlwaysActiveTweak = new WindowAlwaysActiveTweak();
         private TopMostWindowTweak topMostWindowTweak = new TopMostWindowTweak();
         private FixHUD4to3RatioTweak fixHUD4to3RatioTweak = new FixHUD4to3RatioTweak();
 
@@ -622,11 +609,7 @@ namespace Fo76ini.Forms.FormMain
         private LensFlareTweak lensFlareTweak = new LensFlareTweak();
         private AmbientOcclusionTweak ambientOcclusionTweak = new AmbientOcclusionTweak();
         private WaterDisplacementsTweak waterDisplacementsTweak = new WaterDisplacementsTweak();
-        private WaterReflectionsTweak waterReflectionsTweak = new WaterReflectionsTweak();
         private WaterRefractionsTweak waterRefractionsTweak = new WaterRefractionsTweak();
-        private FogTweak fogTweak = new FogTweak();
-        private RainOcclusionTweak rainOcclusionTweak = new RainOcclusionTweak();
-        private WetnessOcclusionTweak wetnessOcclusionTweak = new WetnessOcclusionTweak();
         private VolumetricLightingTweak volumetricLightingTweak = new VolumetricLightingTweak();
         private DisableAllGoreTweak disableAllGoreTweak = new DisableAllGoreTweak();
         private BloodSplatterEnabledTweak bloodSplatterTweak = new BloodSplatterEnabledTweak();
@@ -680,16 +663,12 @@ namespace Fo76ini.Forms.FormMain
         private AimAssistTweak aimAssistTweak = new AimAssistTweak();
 
         // Camera 
-        private FOV1stPersonTweak fov1stPersonTweak = new FOV1stPersonTweak();
         private FieldOfViewTweak fovTweak = new FieldOfViewTweak();
         private FOV3rdADSTweak fov3rdADSTweak = new FOV3rdADSTweak();
-        private DefaultFOVTweak defaultFOVTweak = new DefaultFOVTweak();
 
         private VanityModeMinDistTweak vanityModeMinDistTweak = new VanityModeMinDistTweak();
         private VanityModeMaxDistTweak vanityModeMaxDistTweak = new VanityModeMaxDistTweak();
         private PitchZoomOutMaxDistTweak pitchZoomOutMaxDistTweak = new PitchZoomOutMaxDistTweak();
-
-        private FirstThirdPerspectiveSwitchDelayTweak firstThirdPerspectiveSwitchDelayTweak = new FirstThirdPerspectiveSwitchDelayTweak();
 
         private DisableAutoVanityModeTweak disableAutoVanityModeTweak = new DisableAutoVanityModeTweak();
         private ForceAutoVanityModeTweak forceAutoVanityModeTweak = new ForceAutoVanityModeTweak();

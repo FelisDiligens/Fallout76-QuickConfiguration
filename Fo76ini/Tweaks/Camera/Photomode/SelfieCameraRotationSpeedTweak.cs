@@ -8,7 +8,8 @@ namespace Fo76ini.Tweaks.Camera
 {
     class SelfieCameraRotationSpeedTweak : ITweak<float>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "How quickly the camera rotates in photo mode.\n" +
+                                     "Default: 1.5";
 
         public WarnLevel WarnLevel => WarnLevel.None;
 

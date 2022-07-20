@@ -8,7 +8,8 @@ namespace Fo76ini.Tweaks.Camera
 {
     class DefaultFOVTweak : ITweak<float>, ITweakInfo
     {
-        public string Description => "⚠️ Causes issues with the GUI.";
+        public string Description => "⚠️ Causes issues with the GUI.\n" +
+                                     "ℹ️ Doesn't work.";
 
         public WarnLevel WarnLevel => WarnLevel.Unsafe;
 

@@ -8,7 +8,8 @@ namespace Fo76ini.Tweaks.Camera
 {
     class SelfieModeRangeTweak : ITweak<float>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "At which distance the game will stop you from moving away from your character in photo mode.\n" +
+                                     "Default: 500";
 
         public WarnLevel WarnLevel => WarnLevel.None;
 

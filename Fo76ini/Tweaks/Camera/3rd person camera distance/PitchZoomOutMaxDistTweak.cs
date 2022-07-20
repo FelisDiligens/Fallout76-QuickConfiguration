@@ -8,7 +8,8 @@ namespace Fo76ini.Tweaks.Camera
 {
     class PitchZoomOutMaxDistTweak : ITweak<float>, ITweakInfo
     {
-        public string Description => "By how much the camera gets zoomed out when you look at the ground in 3rd person.";
+        public string Description => "By how much the camera gets zoomed out when you look at the ground in 3rd person.\n" +
+                                     "Default: 100";
 
         public WarnLevel WarnLevel => WarnLevel.None;
 

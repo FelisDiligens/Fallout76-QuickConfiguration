@@ -8,9 +8,9 @@ namespace Fo76ini.Tweaks.Camera
 {
     class FirstThirdPerspectiveSwitchDelayTweak : ITweak<float>, ITweakInfo
     {
-        public string Description => "";
+        public string Description => "ℹ️ Doesn't work.";
 
-        public WarnLevel WarnLevel => WarnLevel.None;
+        public WarnLevel WarnLevel => WarnLevel.Experimental;
 
         public string AffectedFiles => "Fallout76Custom.ini";
 

@@ -8,7 +8,8 @@ namespace Fo76ini.Tweaks.Camera
 {
     class FOV3rdADSTweak : ITweak<float>, ITweakInfo
     {
-        public string Description => "Changes the field of view of the 3rd person perspective while aiming.";
+        public string Description => "Changes the field of view of the 3rd person perspective while aiming.\n" +
+                                     "Default: 50";
 
         public WarnLevel WarnLevel => WarnLevel.None;
 
