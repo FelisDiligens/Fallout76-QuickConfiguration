@@ -2448,7 +2448,7 @@
             this.sliderMouseSensitivityY.BackColor = System.Drawing.SystemColors.Window;
             this.sliderMouseSensitivityY.Location = new System.Drawing.Point(9, 88);
             this.sliderMouseSensitivityY.Maximum = 600;
-            this.sliderMouseSensitivityY.Minimum = 1;
+            this.sliderMouseSensitivityY.Minimum = 100;
             this.sliderMouseSensitivityY.Name = "sliderMouseSensitivityY";
             this.sliderMouseSensitivityY.Size = new System.Drawing.Size(325, 45);
             this.sliderMouseSensitivityY.SmallChange = 300;
@@ -2521,7 +2521,7 @@
             this.sliderMouseSensitivityX.BackColor = System.Drawing.SystemColors.Window;
             this.sliderMouseSensitivityX.Location = new System.Drawing.Point(9, 37);
             this.sliderMouseSensitivityX.Maximum = 600;
-            this.sliderMouseSensitivityX.Minimum = 1;
+            this.sliderMouseSensitivityX.Minimum = 100;
             this.sliderMouseSensitivityX.Name = "sliderMouseSensitivityX";
             this.sliderMouseSensitivityX.Size = new System.Drawing.Size(325, 45);
             this.sliderMouseSensitivityX.SmallChange = 300;
