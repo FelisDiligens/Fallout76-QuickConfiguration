@@ -280,8 +280,8 @@
             this.checkBoxVanityMode = new System.Windows.Forms.CheckBox();
             this.checkBoxForceVanityMode = new System.Windows.Forms.CheckBox();
             this.groupBoxIdleCamera = new System.Windows.Forms.GroupBox();
-            this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.checkBoxMotionBlur = new System.Windows.Forms.CheckBox();
+            this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -1424,6 +1424,7 @@
             this.sliderShadowDistance.LargeChange = 10000;
             this.sliderShadowDistance.Location = new System.Drawing.Point(10, 96);
             this.sliderShadowDistance.Maximum = 200000;
+            this.sliderShadowDistance.Minimum = 1;
             this.sliderShadowDistance.Name = "sliderShadowDistance";
             this.sliderShadowDistance.Size = new System.Drawing.Size(285, 45);
             this.sliderShadowDistance.SmallChange = 1000;
@@ -3790,18 +3791,6 @@
             this.groupBoxIdleCamera.TabStop = false;
             this.groupBoxIdleCamera.Text = "Idle camera (Experimental)";
             // 
-            // toolTip
-            // 
-            this.toolTip.AutoPopDelay = 20000;
-            this.toolTip.BackColor = System.Drawing.Color.White;
-            this.toolTip.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolTip.ForeColor = System.Drawing.Color.Black;
-            this.toolTip.InitialDelay = 500;
-            this.toolTip.OwnerDraw = true;
-            this.toolTip.Padding = new System.Drawing.Size(6, 6);
-            this.toolTip.ReshowDelay = 100;
-            this.toolTip.ShowAlways = true;
-            // 
             // checkBoxMotionBlur
             // 
             this.checkBoxMotionBlur.AutoSize = true;
@@ -3813,6 +3802,18 @@
             this.checkBoxMotionBlur.TabIndex = 1;
             this.checkBoxMotionBlur.Text = "Motion Blur";
             this.checkBoxMotionBlur.UseVisualStyleBackColor = true;
+            // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 20000;
+            this.toolTip.BackColor = System.Drawing.Color.White;
+            this.toolTip.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolTip.ForeColor = System.Drawing.Color.Black;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.OwnerDraw = true;
+            this.toolTip.Padding = new System.Drawing.Size(6, 6);
+            this.toolTip.ReshowDelay = 100;
+            this.toolTip.ShowAlways = true;
             // 
             // UserControlTweaks
             // 

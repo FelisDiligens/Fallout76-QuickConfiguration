@@ -15,7 +15,9 @@ namespace Fo76ini.Tweaks.Graphics
             "  ⇨ Ultra is 150000",
             "  ⇨ High is 120000",
             "  ⇨ Medium is 90000",
-            "  ⇨ Low is 60000");
+            "  ⇨ Low is 60000",
+            "",
+            "ℹ️ 0 breaks shadows. Not recommended.");
 
         public WarnLevel WarnLevel => WarnLevel.None;
 

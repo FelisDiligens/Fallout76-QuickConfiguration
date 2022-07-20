@@ -326,7 +326,7 @@
     <Compile Include="Tweaks\Graphics\Post-processing\RadialBlurTweak.cs" />
     <Compile Include="Tweaks\Graphics\Weather\RainOcclusionTweak.cs" />
     <Compile Include="Tweaks\Graphics\Shadows\ShadowBlurrinessTweak.cs" />
-    <Compile Include="Tweaks\Graphics\Rendering-distance\ShadowDistanceTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Shadows\ShadowDistanceTweak.cs" />
     <Compile Include="Tweaks\Graphics\Shadows\ShadowMapResolutionTweak.cs" />
     <Compile Include="Tweaks\Graphics\Anti-aliasing\TAAPostOverlayTweak.cs" />
     <Compile Include="Tweaks\Graphics\Anti-aliasing\TAAPostSharpenTweak.cs" />
