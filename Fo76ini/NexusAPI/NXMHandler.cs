@@ -1,17 +1,14 @@
-﻿using Fo76ini.Interface;
-using Fo76ini.Utilities;
+﻿using Fo76ini.Utilities;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fo76ini.NexusAPI
 {
     public struct NXMLink
     {
+        public string game;
         public int modId;
         public int fileId;
         public string key;
@@ -46,7 +43,7 @@ namespace Fo76ini.NexusAPI
             RegistryKey key = Registry.ClassesRoot.OpenSubKey("nxm");
             if (key == null)
                 return false;
-            
+
             RegistryKey subKey = key.OpenSubKey(@"shell\open\command");
             if (subKey == null)
                 return false;
@@ -74,6 +71,7 @@ namespace Fo76ini.NexusAPI
                                        c => Uri.UnescapeDataString(c.Split('=')[1]));
 
             NXMLink parsed = new NXMLink();
+            parsed.game = uri.Host;
             parsed.modId = Utils.ToInt(uri.Segments[2].Trim('/'));
             parsed.fileId = Utils.ToInt(uri.Segments[4].Trim('/'));
             parsed.key = query["key"];

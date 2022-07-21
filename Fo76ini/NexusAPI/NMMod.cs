@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using System.Drawing;
 using System.IO;
@@ -18,6 +16,7 @@ namespace Fo76ini.NexusAPI
     {
         public int ID = -1;
         public string URL = "";
+        public string Game = "fallout76";
 
         public string Title = "";
         public string LatestVersion = "";
@@ -54,17 +53,33 @@ namespace Fo76ini.NexusAPI
         public NMMod(string url)
         {
             this.URL = url;
+            this.Game = NexusMods.GetGameFromURL(url);
             this.ID = NexusMods.GetIDFromURL(url);
+        }
+
+        /// <summary>
+        /// Creates a new mod from an ID and game string.
+        /// </summary>
+        /// <param name="game">Game, e.g. "fallout76"</param>
+        /// <param name="id">Mod ID, e.g. 149</param>
+        public NMMod(string game, int id)
+        {
+            this.ID = id;
+            this.Game = game;
+            this.URL = $"https://www.nexusmods.com/{Game}/mods/{ID}";
         }
 
         /// <summary>
         /// Creates a new mod from an ID.
         /// </summary>
+        /// <remarks>
+        /// Uses "fallout76" as game.
+        /// </remarks>
         /// <param name="id">Mod ID</param>
         public NMMod(int id)
         {
             this.ID = id;
-            this.URL = $"https://www.nexusmods.com/fallout76/mods/{id}";
+            this.URL = $"https://www.nexusmods.com/{Game}/mods/{ID}";
         }
 
         /// <summary>
@@ -80,7 +95,7 @@ namespace Fo76ini.NexusAPI
             }
 
             // Make API request:
-            APIRequest request = new APIRequest("https://api.nexusmods.com/v1/games/fallout76/mods/" + this.ID + ".json");
+            APIRequest request = new APIRequest("https://api.nexusmods.com/v1/games/" + this.Game + "/mods/" + this.ID + ".json");
             request.Headers["apikey"] = NexusMods.User.APIKey;
             request.Execute();
             if (request.Success && request.StatusCode == HttpStatusCode.OK)
@@ -166,6 +181,29 @@ namespace Fo76ini.NexusAPI
             this.LastAccessTimestamp = Utils.GetUnixTimeStamp();
         }
 
+        public static int RequestMainFileID(string game, int modId)
+        {
+            string requestUrl = "https://api.nexusmods.com/v1/games/" + game + "/mods/" + modId + "/files.json?category=main";
+
+            APIRequest request = new APIRequest(requestUrl);
+            request.Headers["apikey"] = NexusMods.User.APIKey;
+            request.Execute();
+
+            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            {
+                JObject obj = request.GetJObject();
+                try
+                {
+                    return Utils.ToInt(obj["files"][0]["file_id"].ToString());
+                }
+                catch
+                {
+                    return -1;
+                }
+            }
+            return -1;
+        }
+
         /// <summary>
         /// Requests a download link for a file.
         /// </summary>
@@ -179,7 +217,7 @@ namespace Fo76ini.NexusAPI
         /// </summary>
         public static string RequestDownloadLink(NXMLink nxmLink)
         {
-            return RequestDownloadLink(nxmLink.modId, nxmLink.fileId, nxmLink.key, nxmLink.expires);
+            return RequestDownloadLink(nxmLink.game, nxmLink.modId, nxmLink.fileId, nxmLink.key, nxmLink.expires);
         }
 
         /// <summary>
@@ -190,9 +228,9 @@ namespace Fo76ini.NexusAPI
         /// <param name="key"></param>
         /// <param name="expires"></param>
         /// <returns>null if no download link retrieved.</returns>
-        public static string RequestDownloadLink(int modId, int fileId, string key = "", int expires = -1)
+        public static string RequestDownloadLink(string game, int modId, int fileId, string key = "", int expires = -1)
         {
-            string requestUrl = "https://api.nexusmods.com/v1/games/fallout76/mods/" + modId + "/files/" + fileId + "/download_link.json";
+            string requestUrl = "https://api.nexusmods.com/v1/games/" + game + "/mods/" + modId + "/files/" + fileId + "/download_link.json";
             if (key != null && key != "" && expires > 0)
                 requestUrl += "?key=" + key + "&expires=" + expires;
 
@@ -224,7 +262,7 @@ namespace Fo76ini.NexusAPI
         /// <returns>true if successful; false otherwise</returns>
         public bool Endorse(string endorsedVersion)
         {
-            APIRequest request = new APIRequest("https://api.nexusmods.com/v1/games/fallout76/mods/" + this.ID + "/endorse.json");
+            APIRequest request = new APIRequest("https://api.nexusmods.com/v1/games/" + this.Game + "/mods/" + this.ID + "/endorse.json");
             request.Headers["apikey"] = NexusMods.User.APIKey;
             request.Method = "POST";
 
@@ -261,7 +299,7 @@ namespace Fo76ini.NexusAPI
         /// <returns>true if successful; false otherwise</returns>
         public bool Abstain(string abstainedVersion)
         {
-            APIRequest request = new APIRequest("https://api.nexusmods.com/v1/games/fallout76/mods/" + this.ID + "/abstain.json");
+            APIRequest request = new APIRequest("https://api.nexusmods.com/v1/games/" + this.Game + "/mods/" + this.ID + "/abstain.json");
             request.Headers["apikey"] = NexusMods.User.APIKey;
             request.Method = "POST";
 
@@ -297,6 +335,7 @@ namespace Fo76ini.NexusAPI
         public XElement Serialize()
         {
             XElement xmlMod = new XElement("Mod",
+                new XAttribute("game", this.Game),
                 new XAttribute("id", this.ID),
                 new XAttribute("nsfw", this.ContainsAdultContent));
 
@@ -344,7 +383,11 @@ namespace Fo76ini.NexusAPI
             if (xmlMod.Attribute("id") == null)
                 throw new InvalidDataException("'id' attribute wasn't provided.");
 
-            NMMod mod = new NMMod(Convert.ToInt32(xmlMod.Attribute("id").Value));
+            String game = "fallout76";
+            if (xmlMod.Attribute("game") != null)
+                game = xmlMod.Attribute("game").Value;
+
+            NMMod mod = new NMMod(game, Convert.ToInt32(xmlMod.Attribute("id").Value));
 
             if (xmlMod.Element("Title") != null)
                 mod.Title = xmlMod.Element("Title").Value;

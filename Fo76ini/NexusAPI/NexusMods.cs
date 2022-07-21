@@ -1,12 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Net;
-using System.Windows.Forms;
 using System.Xml.Linq;
-using Fo76ini.Interface;
 using Fo76ini.Utilities;
 
 namespace Fo76ini.NexusAPI
@@ -28,7 +23,7 @@ namespace Fo76ini.NexusAPI
         private static readonly object padlock = new object();
         private static NMUserProfile _nmprofile = null;
 
-        static NexusMods ()
+        static NexusMods()
         {
             SingleSignOn.SSOFinished += OnSSOLogin;
         }
@@ -170,16 +165,33 @@ namespace Fo76ini.NexusAPI
         /// <returns>The mod ID. Example: 419</returns>
         public static int GetIDFromURL(string url)
         {
-            if (url == "" || !url.Contains("www.nexusmods.com/fallout76/mods"))
+            if (url == "" || !url.Contains("www.nexusmods.com/") || !url.Contains("/mods/"))
                 return -1;
 
-            string modId = url.Substring(url.IndexOf("fallout76/mods/") + 15);
+            string modId = url.Substring(url.IndexOf("/mods/") + 6);
             if (modId.Contains("?"))
                 modId = modId.Substring(0, modId.IndexOf("?"));
 
             if (Int32.TryParse(modId, out int result))
                 return result;
             return -1;
+        }
+
+        /// <summary>
+        /// Extracts the game from a URL.
+        /// </summary>
+        /// <param name="url">The url to the mod page. Example: "https://www.nexusmods.com/fallout76/mods/419?tab=files"</param>
+        /// <returns>The game. Example: "fallout76"</returns>
+        public static string GetGameFromURL(string url)
+        {
+            if (url == "" || !url.Contains("www.nexusmods.com/") || !url.Contains("/mods/"))
+                return null;
+
+            int start = url.IndexOf("nexusmods.com/") + 14;
+            int end = url.IndexOf("/mods/");
+            string game = url.Substring(start, end - start);
+
+            return game;
         }
     }
 }
