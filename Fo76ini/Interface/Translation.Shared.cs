@@ -112,6 +112,12 @@ namespace Fo76ini
                 "{0}"
             );
 
+            MsgBox.Add("modsGamePathInvalid",
+                "Game path invalid",
+                "The path you selected doesn't seem to be where Fallout 76 is installed.\n" +
+                "Please make sure to select the folder where the *.exe resides, not the Data folder."
+            );
+
 
             // Profile manager:
 
@@ -132,6 +138,16 @@ namespace Fo76ini
 
 
             // Gallery:
+
+            MsgBox.Add("galleryDeleteScreenshot",
+                "Delete {0}?",
+                "You are about to delete '{0}'. Are you sure?"
+            );
+
+            MsgBox.Add("galleryDeleteScreenshots",
+                "Delete {0} files?",
+                "You are about to delete {0} files. Are you sure?"
+            );
 
             MsgBox.Add("galleryDeleteThumbnails",
                 "Are you sure?",
