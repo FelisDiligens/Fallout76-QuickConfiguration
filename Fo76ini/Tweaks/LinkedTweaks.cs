@@ -141,13 +141,17 @@ namespace Fo76ini.Tweaks
         {
             if (!reversed)
             {
-                slider.ValueChanged += (object sender, EventArgs e) => num.Value = Convert.ToDecimal(slider.Value / numToSliderRatio);
-                num.ValueChanged += (object sender, EventArgs e) => slider.Value = Utils.Clamp(Convert.ToInt32(Convert.ToDouble(num.Value) * numToSliderRatio), slider.Minimum, slider.Maximum);
+                slider.Scroll += (object sender, EventArgs e) =>
+                    num.Value = Convert.ToDecimal(slider.Value / numToSliderRatio);
+                num.ValueChanged += (object sender, EventArgs e) =>
+                    slider.Value = Utils.Clamp(Convert.ToInt32(Convert.ToDouble(num.Value) * numToSliderRatio), slider.Minimum, slider.Maximum);
             }
             else
             {
-                slider.ValueChanged += (object sender, EventArgs e) => num.Value = Convert.ToDecimal((slider.Maximum - slider.Value) / numToSliderRatio);
-                num.ValueChanged += (object sender, EventArgs e) => slider.Value = Utils.Clamp(Convert.ToInt32(slider.Maximum - Convert.ToDouble(num.Value) * numToSliderRatio), slider.Minimum, slider.Maximum);
+                slider.Scroll += (object sender, EventArgs e) =>
+                    num.Value = Convert.ToDecimal((slider.Maximum - slider.Value) / numToSliderRatio);
+                num.ValueChanged += (object sender, EventArgs e) =>
+                    slider.Value = Utils.Clamp(Convert.ToInt32(slider.Maximum - Convert.ToDouble(num.Value) * numToSliderRatio), slider.Minimum, slider.Maximum);
             }
         }
 
