@@ -148,7 +148,7 @@
             this.pictureBoxNMProfilePicture = new System.Windows.Forms.PictureBox();
             this.labelNMUserName = new System.Windows.Forms.Label();
             this.labelNMDescMembership = new System.Windows.Forms.Label();
-            this.labelNMDailyRateLimitReset = new System.Windows.Forms.Label();
+            this.labelNMRateLimitReset = new System.Windows.Forms.Label();
             this.labelNMMembership = new System.Windows.Forms.Label();
             this.labelNMDescLimitReset = new System.Windows.Forms.Label();
             this.labelNMDescDailyRateLimit = new System.Windows.Forms.Label();
@@ -1400,7 +1400,7 @@
             this.panel3.Controls.Add(this.pictureBoxNMProfilePicture);
             this.panel3.Controls.Add(this.labelNMUserName);
             this.panel3.Controls.Add(this.labelNMDescMembership);
-            this.panel3.Controls.Add(this.labelNMDailyRateLimitReset);
+            this.panel3.Controls.Add(this.labelNMRateLimitReset);
             this.panel3.Controls.Add(this.labelNMMembership);
             this.panel3.Controls.Add(this.labelNMDescLimitReset);
             this.panel3.Controls.Add(this.labelNMDescDailyRateLimit);
@@ -1495,13 +1495,13 @@
             // 
             // labelNMDailyRateLimitReset
             // 
-            this.labelNMDailyRateLimitReset.AutoSize = true;
-            this.labelNMDailyRateLimitReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDailyRateLimitReset.Location = new System.Drawing.Point(585, 107);
-            this.labelNMDailyRateLimitReset.Name = "labelNMDailyRateLimitReset";
-            this.labelNMDailyRateLimitReset.Size = new System.Drawing.Size(36, 13);
-            this.labelNMDailyRateLimitReset.TabIndex = 72;
-            this.labelNMDailyRateLimitReset.Text = "Never";
+            this.labelNMRateLimitReset.AutoSize = true;
+            this.labelNMRateLimitReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelNMRateLimitReset.Location = new System.Drawing.Point(585, 107);
+            this.labelNMRateLimitReset.Name = "labelNMDailyRateLimitReset";
+            this.labelNMRateLimitReset.Size = new System.Drawing.Size(36, 13);
+            this.labelNMRateLimitReset.TabIndex = 72;
+            this.labelNMRateLimitReset.Text = "Never";
             // 
             // labelNMMembership
             // 
@@ -1736,7 +1736,7 @@
         private System.Windows.Forms.PictureBox pictureBoxNMProfilePicture;
         private System.Windows.Forms.Label labelNMUserName;
         private System.Windows.Forms.Label labelNMDescMembership;
-        private System.Windows.Forms.Label labelNMDailyRateLimitReset;
+        private System.Windows.Forms.Label labelNMRateLimitReset;
         private System.Windows.Forms.Label labelNMMembership;
         private System.Windows.Forms.Label labelNMDescLimitReset;
         private System.Windows.Forms.Label labelNMDescDailyRateLimit;
