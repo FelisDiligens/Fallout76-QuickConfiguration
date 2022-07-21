@@ -773,7 +773,10 @@ namespace Fo76ini
         private void UnfreezeSelectedMods()
         {
             foreach (ModListRow row in this.objectListViewMods.SelectedObjects)
+            {
+                ModActions.Unfreeze(row.mod);
                 row.mod.Freeze = false;
+            }
         }
 
         #endregion
