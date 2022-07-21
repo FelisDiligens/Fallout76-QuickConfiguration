@@ -5,7 +5,7 @@ import subprocess, shlex
 # DeprecationWarning: The distutils package is deprecated and slated for removal in Python 3.12. Use setuptools or check PEP 632 for potential alternatives
 init()
 
-PROJECT_GIT_DIR  = "D:\\Workspace\\Fallout 76 Quick Configuration\\Fallout76-QuickConfiguration\\"
+PROJECT_GIT_DIR  = "D:\\Workspace\\Fallout 76 Quick Configuration\\Backport v1.10\\Fallout76-QuickConfiguration\\"
 PACK_TARGET_DIR  = "D:\\Workspace\\Fallout 76 Quick Configuration\\Files\\Main Files\\"
 
 SEVENZIP_PATH    = "D:\\Portable\\7z\\7z.exe"
@@ -85,12 +85,12 @@ def use_rcedit():
 
 def copy_additions():
     print("Copying additional files...")
-    shutil.copytree(DEPENDENCIES_DIR, RELEASE_BIN_DIR, update=0)
+    copytree(DEPENDENCIES_DIR, RELEASE_BIN_DIR)
     print("Done.")
 
 def copy_updater():
     print("Copying updater...")
-    shutil.copytree(UPDATER_BIN_DIR, RELEASE_BIN_DIR, update=0)
+    copytree(UPDATER_BIN_DIR, RELEASE_BIN_DIR)
     print("Done.")
 
 def update_inno():
@@ -130,6 +130,69 @@ def open_dir():
         os.system("explorer.exe \"{0}\"".format(target_dir))
     else:
         os.system("explorer.exe \"{0}\"".format(PACK_TARGET_DIR))
+
+# https://stackoverflow.com/a/7550424
+def _mkdir(newdir):
+    """works the way a good mkdir should :)
+        - already exists, silently complete
+        - regular file in the way, raise an exception
+        - parent directory(ies) does not exist, make them as well
+    """
+    if os.path.isdir(newdir):
+        pass
+    elif os.path.isfile(newdir):
+        raise OSError("a file with the same name as the desired " \
+                      "dir, '%s', already exists." % newdir)
+    else:
+        head, tail = os.path.split(newdir)
+        if head and not os.path.isdir(head):
+            _mkdir(head)
+        #print "_mkdir %s" % repr(newdir)
+        if tail:
+            os.mkdir(newdir)
+
+# https://stackoverflow.com/a/7550424
+def copytree(src, dst, symlinks=False):
+    """Recursively copy a directory tree using copy2().
+
+    The destination directory must not already exist.
+    If exception(s) occur, an Error is raised with a list of reasons.
+
+    If the optional symlinks flag is true, symbolic links in the
+    source tree result in symbolic links in the destination tree; if
+    it is false, the contents of the files pointed to by symbolic
+    links are copied.
+
+    XXX Consider this example code rather than the ultimate tool.
+
+    """
+    names = os.listdir(src)
+    # os.makedirs(dst)
+    _mkdir(dst) # XXX
+    errors = []
+    for name in names:
+        srcname = os.path.join(src, name)
+        dstname = os.path.join(dst, name)
+        try:
+            if symlinks and os.path.islink(srcname):
+                linkto = os.readlink(srcname)
+                os.symlink(linkto, dstname)
+            elif os.path.isdir(srcname):
+                copytree(srcname, dstname, symlinks)
+            else:
+                shutil.copy2(srcname, dstname)
+            # XXX What about devices, sockets etc.?
+        except (IOError, os.error) as why:
+            errors.append((srcname, dstname, str(why)))
+        # catch the Error from the recursive copytree so that we can
+        # continue with other files
+        except Error as err:
+            errors.extend(err.args[0])
+    try:
+        shutil.copystat(src, dst)
+    except WindowsError:
+        # can't copy file access times on Windows
+        pass
 
 if __name__ == "__main__":
     print("""-----------------------------------------
