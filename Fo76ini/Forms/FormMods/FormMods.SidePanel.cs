@@ -546,6 +546,7 @@ namespace Fo76ini
             bool soundFoldersFound = false;
             bool stringsFolderFound = false;
             bool dllFound = false;
+            bool stringsFound = false;
 
             if (Directory.Exists(editedMod.ManagedFolderPath))
             {
@@ -571,6 +572,10 @@ namespace Fo76ini
 
                     if (fileExtension == ".dll")
                         dllFound = true;
+                    else if (fileExtension == ".dlstrings" ||
+                             fileExtension == ".ilstrings" ||
+                             fileExtension == ".strings")
+                        stringsFound = true;
                 }
             }
             else
@@ -641,8 +646,15 @@ namespace Fo76ini
             }
 
             // Strings not installed as loose files?
-            if (stringsFolderFound && (editedMod.Method != ManagedMod.DeploymentMethod.LooseFiles || editedMod.RootFolder != "Data"))
+            if (stringsFolderFound && (editedMod.Method != ManagedMod.DeploymentMethod.LooseFiles || (editedMod.RootFolder.ToLower() != "data" && editedMod.RootFolder.ToLower() != ".\\data")))
             {
+                this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintWrongInstallMethodForStrings");
+                return;
+            }
+
+            if (stringsFound && (editedMod.Method != ManagedMod.DeploymentMethod.LooseFiles || (editedMod.RootFolder.ToLower() != "data\\strings" && editedMod.RootFolder.ToLower() != ".\\data\\strings")))
+            {
+                {
                 this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintWrongInstallMethodForStrings");
                 return;
             }
