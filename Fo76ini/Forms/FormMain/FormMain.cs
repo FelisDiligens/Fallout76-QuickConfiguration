@@ -602,14 +602,17 @@ namespace Fo76ini
             {
                 IniFile addF76 = new IniFile(Path.Combine(IniFiles.ParentPath, $"{game.IniPrefix}.add.ini"));
                 addF76.Load();
+                addF76.ClearAllComments();
                 IniFiles.F76.Merge(addF76);
 
                 IniFile addF76Prefs = new IniFile(Path.Combine(IniFiles.ParentPath, $"{game.IniPrefix}Prefs.add.ini"));
                 addF76Prefs.Load();
+                addF76Prefs.ClearAllComments();
                 IniFiles.F76Prefs.Merge(addF76Prefs);
 
                 IniFile addF76Custom = new IniFile(Path.Combine(IniFiles.ParentPath, $"{game.IniPrefix}Custom.add.ini"));
                 addF76Custom.Load();
+                addF76Custom.ClearAllComments();
                 IniFiles.F76Custom.Merge(addF76Custom);
             }
             catch (IniParsingException exc)
