@@ -595,8 +595,12 @@ namespace Fo76ini
         // Add mod folder
         private void toolStripButtonAddModFolder_Click(object sender, EventArgs e)
         {
-            if (this.folderBrowserDialogMod.ShowDialog() == DialogResult.OK)
-                InstallModFolderThreaded(this.folderBrowserDialogMod.SelectedPath);
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = KnownFolders.Profile.Path;
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                InstallModFolderThreaded(dialog.FileName);
+            this.Focus();
         }
 
 

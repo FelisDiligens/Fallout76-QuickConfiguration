@@ -8,6 +8,7 @@ using Fo76ini.Tweaks.Config;
 using Fo76ini.Tweaks.Inis;
 using Fo76ini.Tweaks.NuclearWinterMode;
 using Fo76ini.Utilities;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -297,10 +298,12 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (UpdatingUI)
                 return;
-            this.openFileDialogGamePath.FileName = ProfileManager.SelectedGame.ExecutableName;
-            if (this.openFileDialogGamePath.ShowDialog() == DialogResult.OK)
+
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                string path = Path.GetDirectoryName(this.openFileDialogGamePath.FileName); // We want the path where Fallout76.exe resides.
+                string path = dialog.FileName; // We want the path where Fallout76.exe resides.
                 if (GameInstance.ValidateGamePath(path))
                 {
                     this.textBoxGamePath.Text = path;
@@ -310,6 +313,7 @@ namespace Fo76ini.Forms.FormSettings
                 else
                     MsgBox.ShowID("modsGamePathInvalid");
             }
+            this.Focus();
         }
 
         public static string AutoDetectGamePath()
@@ -662,13 +666,17 @@ namespace Fo76ini.Forms.FormSettings
         {
             if (UpdatingUI)
                 return;
-            this.folderBrowserDialog.SelectedPath = downloadPathTweak.DefaultValue;
-            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
+
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = downloadPathTweak.DefaultValue;
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                string path = this.folderBrowserDialog.SelectedPath;
+                string path = dialog.FileName;
                 this.textBoxDownloadsPath.Text = path;
                 downloadPathTweak.SetValue(this.textBoxDownloadsPath.Text);
             }
+            this.Focus();
         }
     }
 }
