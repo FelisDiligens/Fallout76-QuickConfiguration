@@ -654,7 +654,6 @@ namespace Fo76ini
 
             if (stringsFound && (editedMod.Method != ManagedMod.DeploymentMethod.LooseFiles || (editedMod.RootFolder.ToLower() != "data\\strings" && editedMod.RootFolder.ToLower() != ".\\data\\strings")))
             {
-                {
                 this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintWrongInstallMethodForStrings");
                 return;
             }
