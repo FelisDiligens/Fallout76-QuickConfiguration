@@ -1,6 +1,4 @@
-﻿using Fo76ini.Tweaks;
-using Fo76ini.Tweaks.ResourceLists;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -21,12 +19,12 @@ namespace Fo76ini.Mods
             "sResourceStartUpArchiveList",
             "SResourceArchiveList",
             "SResourceArchiveList2",
-            "SResourceArchiveMemoryCacheList"
+            //"SResourceArchiveMemoryCacheList"
         };
 
         private List<string> resourceList = new List<string>();
 
-        private ITweak<string> tweak;
+        public string ListName = "sResourceIndexFileList";
 
         public int Count => this.resourceList.Count;
 
@@ -60,35 +58,35 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
-        /// Loads the resource list from the *.ini file.
+        /// Reads the Mods\resources.txt file and loads it's contents.
         /// </summary>
-        /// <param name="iniFile"></param>
-        /// <param name="section"></param>
-        /// <param name="key"></param>
         /// <returns></returns>
-        public static ResourceList FromTweak(ITweak<string> tweak)
+        public static ResourceList FromINI(String listName)
         {
-            return new ResourceList(tweak);
+            ResourceList list = new ResourceList();
+            list.ListName = listName;
+            list.LoadFromINI();
+            return list;
         }
 
         public static ResourceList GetDefaultList()
         {
-            return ResourceList.FromTweak(
-                ResourceListTweak.GetDefaultList()
+            return ResourceList.FromINI(
+                "sResourceIndexFileList"
             );
         }
 
         public static ResourceList GetResourceArchive2List()
         {
-            return ResourceList.FromTweak(
-                ResourceListTweak.GetSResourceArchive2List()
+            return ResourceList.FromINI(
+                "sResourceArchive2List"
             );
         }
 
         public static ResourceList GetResourceIndexFileList()
         {
-            return ResourceList.FromTweak(
-                ResourceListTweak.GetSResourceIndexFileList()
+            return ResourceList.FromINI(
+                "sResourceIndexFileList"
             );
         }
 
@@ -97,25 +95,13 @@ namespace Fo76ini.Mods
         /// </summary>
         public ResourceList() { }
 
-        /// <summary>
-        /// Associates the *.ini value and loads the resource list.
-        /// </summary>
-        /// <param name="iniFile"></param>
-        /// <param name="section"></param>
-        /// <param name="key"></param>
-        private ResourceList(ITweak<string> tweak)
-        {
-            AssociateTweak(tweak);
-            LoadFromINI();
-        }
-
         /*
          * Converting from and to string:
          */
 
         private static List<string> ToList(string sResourceList)
         {
-            return (new List<string>(sResourceList.Split(new char[] { ',', '\n' }, StringSplitOptions.RemoveEmptyEntries))).Distinct().Select(x => x.Trim()).ToList();
+            return (new List<string>(sResourceList.Split(new char[] { ',', '\n' }, StringSplitOptions.RemoveEmptyEntries))).Select(x => x.Trim()).Distinct().ToList();
         }
 
         private static string ToString(List<string> resourceList, string separator = ",")
@@ -138,7 +124,9 @@ namespace Fo76ini.Mods
         /// </summary>
         public void LoadFromINI()
         {
-            this.resourceList = ResourceList.ToList(tweak.GetValue());
+            this.resourceList = ResourceList.ToList(
+                    IniFiles.F76Custom.GetString("Archive", ListName, "")
+            );
         }
 
         /// <summary>
@@ -147,19 +135,10 @@ namespace Fo76ini.Mods
         /// </summary>
         public void CommitToINI()
         {
-            if (this.resourceList.Count > 0)
-                tweak.SetValue(ToString());
+            if (Count > 0)
+                IniFiles.F76Custom.Set("Archive", ListName, ToString());
             else
-                tweak.ResetValue();
-        }
-
-        /// <summary>
-        /// Associate a value in an *.ini file to save to and load from.
-        /// </summary>
-        /// <param name="tweak"></param>
-        public void AssociateTweak(ITweak<string> tweak)
-        {
-            this.tweak = tweak;
+                IniFiles.F76Custom.Remove("Archive", ListName);
         }
 
 
@@ -244,6 +223,24 @@ namespace Fo76ini.Mods
             this.resourceList.Insert(index, item);
         }
 
+        /// <summary>
+        /// Adds the elements of the specified list at the end of the resource list.
+        /// </summary>
+        public void AddRange(ResourceList list)
+        {
+            this.resourceList.AddRange(list.resourceList);
+            Distinct();
+        }
+
+        /// <summary>
+        /// Adds the elements of the specified list at the end of the resource list.
+        /// </summary>
+        public void AddRange(List<string> list)
+        {
+            this.resourceList.AddRange(list);
+            Distinct();
+        }
+
 
         /*
          * Utility methods:
@@ -265,6 +262,11 @@ namespace Fo76ini.Mods
         {
             this.resourceList.Clear();
             this.resourceList.AddRange(other);
+        }
+
+        private void Distinct()
+        {
+            this.resourceList = this.resourceList.Select(x => x.Trim()).Distinct().ToList();
         }
     }
 }

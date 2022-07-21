@@ -242,66 +242,87 @@ namespace Fo76ini.Mods
         public static void ImportInstalledMods(ManagedMods mods, Action<Progress> ProgressChanged = null)
         {
             // TODO: ProgressChanged for ImportInstalledMods
-            ProgressChanged?.Invoke(Progress.Indetermined("Importing already installed mods..."));
+            ProgressChanged?.Invoke(Progress.Indetermined("Determining which files to import..."));
+
+            ModDeployment.LogFile.WriteLine("\n\nImporting already installed mods...");
+            ModDeployment.LogFile.WriteLine("    Looking for all archives...");
 
             // Get all archives:
-            ResourceList IndexFileList = ResourceList.GetResourceIndexFileList();
-            ResourceList Archive2List = ResourceList.GetResourceArchive2List();
+            ResourceList resources = new ResourceList();
+            foreach (string listName in ResourceList.KnownLists)
+            {
+                ResourceList list = ResourceList.FromINI(listName);
+                ModDeployment.LogFile.WriteLine($"        [Archive]{listName}={list}");
+                resources.AddRange(list);
+            }
+            resources.AddRange(mods.Resources);
+            ModDeployment.LogFile.WriteLine($"    Found: {resources}");
 
             /*
              * Prepare list:
              */
+            ModDeployment.LogFile.WriteLine("    Determining which of these files to import...");
 
             // Add all archives:
             List<string> installedMods = new List<string>();
-            installedMods.AddRange(IndexFileList);
-            installedMods.AddRange(Archive2List);
-            installedMods.AddRange(mods.Resources);
+            installedMods.AddRange(resources);
 
             // Remove bundled archives:
             installedMods = installedMods.FindAll(e => !e.ToLower().Contains("bundled"));
+            ModDeployment.LogFile.WriteLine($"        After removing bundled archives: {String.Join(",", installedMods)}");
 
             // Remove currently managed archives:
             foreach (ManagedMod mod in mods)
-                if (mod.PreviousMethod == ManagedMod.DeploymentMethod.SeparateBA2)
-                    installedMods.Remove(mod.CurrentArchiveName);
+                installedMods.Remove(mod.ArchiveName);
+            //if (mod.PreviousMethod == ManagedMod.DeploymentMethod.SeparateBA2)
+            //    installedMods.Remove(mod.CurrentArchiveName);
+            ModDeployment.LogFile.WriteLine($"        After removing managed archives: {String.Join(",", installedMods)}");
 
             // Ignore any game files ("SeventySix - *.ba2"):
-            foreach (string archiveName in IndexFileList)
+            foreach (string archiveName in resources)
                 if (archiveName.Trim().ToLower().StartsWith("seventysix"))
                     installedMods.Remove(archiveName);
-            foreach (string archiveName in Archive2List)
-                if (archiveName.Trim().ToLower().StartsWith("seventysix"))
-                    installedMods.Remove(archiveName);
-            foreach (string archiveName in mods.Resources)
-                if (archiveName.Trim().ToLower().StartsWith("seventysix"))
-                    installedMods.Remove(archiveName);
+            ModDeployment.LogFile.WriteLine($"        After removing game archives (\"SeventySix - *.ba2\"): {String.Join(",", installedMods)}");
+
 
             /*
              * Import installed mods:
              */
 
-            foreach (string archiveName in installedMods)
+            ModDeployment.LogFile.WriteLine("    Importing archives now...");
+            int installedCount = 0;
+            for (int i = 0; i < installedMods.Count; i++)
             {
+                string archiveName = installedMods[i];
+
+                ProgressChanged?.Invoke(Progress.Ongoing($"Importing {archiveName}...", (float)(i + 1) / (float)(installedMods.Count)));
+
                 string path = Path.Combine(mods.GamePath, "Data", archiveName);
                 if (File.Exists(path) && !archiveName.Trim().ToLower().StartsWith("seventysix"))
                 {
+                    ModDeployment.LogFile.WriteLine($"        File name: {archiveName}");
+                    ModDeployment.LogFile.WriteLine($"        File path: {path}");
+                    ModDeployment.LogFile.WriteLine($"");
+
                     // Import archive:
                     ModInstallations.InstallArchive(mods, path, true);
                     File.Delete(path);
-
-                    // Remove from lists:
-                    IndexFileList.Remove(archiveName);
-                    Archive2List.Remove(archiveName);
+                    installedCount++;
                 }
             }
 
-            // Save *.ini files:
-            IndexFileList.CommitToINI();
-            Archive2List.CommitToINI();
-            //IniFiles.Instance.SaveAll();
+            ModDeployment.LogFile.WriteLine("    Cleaning lists...");
+            foreach (string listName in ResourceList.KnownLists)
+            {
+                ModDeployment.LogFile.WriteLine($"        [Archive]{listName}");
+                ResourceList list = ResourceList.FromINI(listName);
+                list.CleanUp(mods.GamePath);
+                list.CommitToINI();
+            }
 
             mods.Save();
+            ModDeployment.LogFile.WriteLine("    Saved and done.");
+            ProgressChanged?.Invoke(Progress.Done($"Done. - Imported mods: {installedCount}"));
         }
 
         /// <summary>

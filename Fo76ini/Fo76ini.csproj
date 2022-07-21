@@ -358,7 +358,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\Translation.cs" />
-    <Compile Include="Tweaks\ResourceLists\ResourceListTweak.cs" />
     <Compile Include="Shared.cs" />
     <Compile Include="Tweaks\Config\ToolQuitOnLaunchTweak.cs" />
     <Compile Include="Tweaks\LinkedTweaks.cs" />
