@@ -5,6 +5,8 @@ using Fo76ini.NexusAPI;
 using Fo76ini.Profiles;
 using Fo76ini.Tweaks.ResourceLists;
 using Fo76ini.Utilities;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using Syroot.Windows.IO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
