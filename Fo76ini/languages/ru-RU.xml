@@ -6,7 +6,7 @@
      If you need help with translating, you can find a guide here:
      https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
 -->
-<Language name="Русский" iso="ru-RU" author="Sondju" version="1.10.0">
+<Language name="Русский" iso="ru-RU" author="Sondju" version="1.10.2">
   <Strings>
     <!--
         Strings
@@ -241,12 +241,15 @@
 Пожалуйста, перезагрузите программу для получения новых значений.</Messagebox>
     <Messagebox title="Доступ запрещён" id="setInisReadOnlyFailed">Невозможно сделать *.ini файлы только для чтения. Попробуйте запустить программу от имени администратора.
 {0}</Messagebox>
+    <Messagebox title="Неправильный путь" id="modsGamePathInvalid">Неправильный путь к папке с игрой.</Messagebox>
     <Messagebox title="Нельзя удалить последний профиль" id="errorAtLeastOneGameOrProfile">Необходим хотя бы один профиль.</Messagebox>
     <Messagebox title="Не удалось найти игру" id="gamePathAutoDetectFailed">Путь к игре не обнаружен. Пожалуйста, укажите его вручную.</Messagebox>
     <Messagebox title="Found a path" id="gamePathAutoDetectPathFound">Do you want to use this path?
 Found: {0}
 
 Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort searching.</Messagebox>
+    <Messagebox title="Удалить {0}?" id="galleryDeleteScreenshot">Вы собираетесь удалить '{0}'. Вы уверены?</Messagebox>
+    <Messagebox title="Удалить файлы: {0}?" id="galleryDeleteScreenshots">Вы собираетесь удалить файлы: {0}. Вы уверены?</Messagebox>
     <Messagebox title="Вы уверены?" id="galleryDeleteThumbnails">Вы уверены, что хотите удалить все миниатюры галереи?
 В следующий раз, когда вы нажмете на кнопку "Обновить галерею", это займет значительно больше времени, так как они будут созданы заново.</Messagebox>
     <Messagebox title="NW режим отключен" id="nwModeDisabled">Теперь вы можете запустить игру в режиме Приключение.</Messagebox>
@@ -328,9 +331,6 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
 Рекомендуемый размер дисплея: 1920 x 1080</Messagebox>
     <Messagebox title="Необходим перезапуск" id="restartRequired">Чтобы изменения вступили в силу, необходимо перезапустить программу.
 Вы уверены, что хотите изменить эту опцию?</Messagebox>
-    <Messagebox title="Удалить {0}?" id="galleryDeleteScreenshot">Вы собираетесь удалить '{0}'. Вы уверены?</Messagebox>
-    <Messagebox title="Удалить файлы: {0}?" id="galleryDeleteScreenshots">Вы собираетесь удалить файлы: {0}. Вы уверены?</Messagebox>
-    <Messagebox title="Неправильный путь" id="modsGamePathInvalid">Неправильный путь к папке с игрой.</Messagebox>
     <Messagebox title="Мод {0} не удалось установить." id="modsDeployErrorModDirNotFound">Папка {0} не существует.
 Пожалуйста, перезагрузите менеджер модов и добавьте мод снова.</Messagebox>
     <Messagebox title="Мод {0} не удалось установить." id="modsDeployErrorBA2RootIsNotData">Папка {0} не существует.
@@ -635,13 +635,19 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
       </TabPage>
       <TabPage text="Настройки" id="tabPageModsSettings">
         <!-- ********** Tab "Настройки" ********** -->
-        <GroupBox text="Поведение" id="groupBoxModsBehavior">
-          <!-- Group "Поведение" -->
+        <GroupBox text="Интерфейс" id="groupBoxModsInterface">
+          <!-- Group "Interface" -->
+          <Label text="Стиль списка модов:" id="labelModListStyle" />
+          <RadioButton text="Компактный (старый стиль, большее количество колонок)" id="radioButtonModsUseAlternativeList" />
+          <RadioButton text="Стандартный (новый стиль, некоторые колонки объединены)" id="radioButtonModsUseStandardList" />
           <CheckBox text="Показать название мода со страницы NexusMods, если она есть." id="checkBoxModsUseRemoteModNames">
             <Tooltip>Если включено: Показывает название мода, как оно указано на NexusMods.
 Если отключено: Показывает название мода, как вы ввели его на боковой панели.
 Это чисто личные предпочтения.</Tooltip>
           </CheckBox>
+        </GroupBox>
+        <GroupBox text="Поведение" id="groupBoxModsBehavior">
+          <!-- Group "Поведение" -->
           <CheckBox text="[Экспериментально] Заморозить упакованные архивы" id="checkBoxFreezeBundledArchives">
             <Tooltip>Вместо того чтобы пересоздавать архивы, программа сохранит их копию и спросит вас, хотите ли вы обновить её при установке.</Tooltip>
           </CheckBox>
@@ -1087,7 +1093,7 @@ Click 'Yes' to use this path, 'No' to continue searching, and 'Cancel' to abort 
       <TabPage text="Основные" id="tabPageGeneral">
         <!-- ********** Tab "Основные" ********** -->
         <GroupBox text="Интерфейс" id="groupBoxUI">
-          <!-- Group "User Interface" -->
+          <!-- Group "Интерфейс" -->
           <CheckBox text="Показывать &quot;Что нового&quot; на вкладке Инфо" id="checkBoxShowWhatsNew" />
           <CheckBox text="Показывать кнопку переключения режима Nuclear Winter (устарело)" id="checkBoxShowNWBtn" />
         </GroupBox>
