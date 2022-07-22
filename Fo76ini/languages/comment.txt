@@ -1,0 +1,3 @@
+Previously the tool downloaded all *.xml files that were listed in "list.txt".
+I decided to change this behavior: The tool now downloads "languages.zip" and extracts it.
+"en-US" is ommited because that's the tools default language.
