@@ -962,5 +962,13 @@ namespace Fo76ini.Utilities
                 return content;
             }
         }
+
+        public static void SaveTextResourceFromAssemblyToDisk(string resourceName, string filePath)
+        {
+            using (var stream = new StreamWriter(new FileStream(filePath, FileMode.Create)))
+            {
+                stream.Write(ReadTextResourceFromAssembly(resourceName));
+            }
+        }
     }
 }

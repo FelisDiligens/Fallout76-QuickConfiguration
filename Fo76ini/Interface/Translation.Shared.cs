@@ -29,6 +29,7 @@ namespace Fo76ini
             localizedStrings["updateAvailable"] = "Update available";
             localizedStrings["enabled"] = "Enabled";
             localizedStrings["disabled"] = "Disabled";
+            localizedStrings["gameEdition"] = "Edition";
 
             //localizedStrings["modTableThawed"] = "Thawed";
             //localizedStrings["modDetailsTitle"] = "Edit {0}";
@@ -295,6 +296,12 @@ namespace Fo76ini
                 "Are you sure?",
                 "{0}"
             );
+        }
+
+        public static void AddKnownTextResources()
+        {
+            knownTextResources.Add("TweaksInfo.html");
+            knownTextResources.Add("Login with Bethesda.net.rtf");
         }
     }
 }

@@ -20,6 +20,11 @@ namespace Fo76ini
         public static Dictionary<string, string> localizedStrings = new Dictionary<string, string>();
 
         /// <summary>
+        /// Used to hold all known text resources (Embedded Resource), so we can generate templates for them.
+        /// </summary>
+        public static List<string> knownTextResources = new List<string>();
+
+        /// <summary>
         /// Current locale
         /// </summary>
         public static string Locale = "en-US";
@@ -36,6 +41,7 @@ namespace Fo76ini
         {
             AddSharedStrings();
             AddSharedMessageBoxes();
+            AddKnownTextResources();
         }
 
         /// <summary>
@@ -52,6 +58,33 @@ namespace Fo76ini
         }
 
         /// <summary>
+        /// Returns a localized resource as string.
+        /// If it can't find one, it will default to the original Embedded Resource from the "Resources" folder.
+        /// </summary>
+        public static string GetTextResource(string fileName)
+        {
+            string path = Path.Combine(Shared.AppTranslationsFolder, Locale, fileName);
+            if (File.Exists(path))
+            {
+                string content = "";
+                try
+                {
+                    using (var stream = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read)))
+                    {
+                        content = stream.ReadToEnd();
+                    }
+                    return content;
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            
+            return Utils.ReadTextResourceFromAssembly("Resources/" + fileName);
+        }
+
+        /// <summary>
         /// Assigns a dropdown menu to hold all languages.
         /// Also assigns an event handler 'SelectedIndexChanged' to automatically translate forms.
         /// </summary>
@@ -62,10 +95,11 @@ namespace Fo76ini
             comboBoxLanguage.SelectedIndexChanged += (object sender, EventArgs e) =>
             {
                 Translation translation = Localization.GetTranslation();
-                translation.Apply();
 
                 IniFiles.Config.Set("Preferences", "sLanguage", translation.ISO);
                 Localization.Locale = translation.ISO;
+
+                translation.Apply();
 
                 if (translation.ISO != "en-US")
                     Localization.GenerateTemplate(translation);
@@ -80,24 +114,28 @@ namespace Fo76ini
             // Look into the folder and add all language files to the dropdown menu:
             Localization.translations.Clear();
             Localization.comboBoxTranslations.Clear();
-            foreach (string filePath in Directory.GetFiles(Shared.AppTranslationsFolder))
+            foreach (string folderPath in Directory.EnumerateDirectories(Shared.AppTranslationsFolder))
             {
-                try
+                foreach (string filePath in Directory.GetFiles(folderPath))
                 {
-                    if (filePath.EndsWith(".xml") && !filePath.EndsWith(".template.xml"))
+                    try
                     {
-                        Translation translation = new Translation();
-                        translation.Load(filePath);
-                        Localization.translations.Add(translation);
-                        Localization.comboBoxTranslations.Add(translation.Name);
-                        //Localization.comboBoxTranslations.Add($"{translation.Name} [{translation.Version}]");
+                        if (filePath.EndsWith(".xml") && !filePath.EndsWith(".template.xml"))
+                        {
+                            Translation translation = new Translation();
+                            translation.Load(filePath);
+                            Localization.translations.Add(translation);
+                            Localization.comboBoxTranslations.Add(translation.Name);
+                            //Localization.comboBoxTranslations.Add($"{translation.Name} [{translation.Version}]");
+                        }
+                    }
+                    catch (Exception exc)
+                    {
+                        MsgBox.Popup("Loading translation failed", $"The translation '{Path.GetFileNameWithoutExtension(filePath)}' couldn't be loaded.\n{exc.GetType()}: {exc.Message}", MessageBoxIcon.Warning);
                     }
                 }
-                catch (Exception exc)
-                {
-                    MsgBox.Popup("Loading translation failed", $"The translation '{Path.GetFileNameWithoutExtension(filePath)}' couldn't be loaded.\n{exc.GetType()}: {exc.Message}", MessageBoxIcon.Warning);
-                }
             }
+            
 
             // Set language:
             string selectedLanguageISO = Configuration.SelectedLanguage;
@@ -114,6 +152,7 @@ namespace Fo76ini
             public bool Success;
         }
 
+        // TODO: Update to accommodate *.html and *.rtf files! 
         public static DownloadResult DownloadLanguageFiles()
         {
             // Download / update languages:
@@ -127,14 +166,27 @@ namespace Fo76ini
                 wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.BypassCache);
 
                 // Get a list of all available language files on GitHub:
-                byte[] raw = wc.DownloadData(Shared.URLs.RemoteLanguageFolderURL + "list.txt");
+                byte[] raw = wc.DownloadData(Shared.URLs.RemoteLanguageFolderURL + "list.iso.txt");
                 string encoded = Encoding.UTF8.GetString(raw).Trim();
                 string[] list = encoded.Split('\n', ',');
+                Console.WriteLine(Shared.URLs.RemoteLanguageFolderURL + "list.iso.txt");
 
-                // Go through the list and download each language file from GitHub:
-                foreach (string file in list)
+                // Go through the list and download each language zip from GitHub:
+                foreach (string iso in list)
                 {
-                    wc.DownloadFile(Shared.URLs.RemoteLanguageFolderURL + file, Path.Combine(Shared.AppTranslationsFolder, file));
+                    // Download zip file:
+                    string fileName = iso + ".zip";
+                    string filePath = Path.Combine(Shared.AppTranslationsFolder, fileName);
+                    wc.DownloadFile(Shared.URLs.RemoteLanguageFolderURL + fileName, filePath);
+                    Console.WriteLine(Shared.URLs.RemoteLanguageFolderURL + fileName);
+
+                    // Extract to directory:
+                    string dirPath = Path.Combine(Shared.AppTranslationsFolder, iso);
+                    Directory.CreateDirectory(dirPath);
+                    SevenZip.ExtractArchive(filePath, dirPath);
+
+                    // Delete *.zip file:
+                    Utils.DeleteFile(filePath);
                 }
 
                 DownloadResult result = new DownloadResult();
@@ -154,6 +206,15 @@ namespace Fo76ini
         public static void GenerateTemplate(Translation translation)
         {
             translation.Save(translation.ISO + ".template.xml", Shared.VERSION);
+
+            // Save english resources to translation in case they don't already exist.
+            Directory.CreateDirectory(Path.Combine(Shared.AppTranslationsFolder, translation.ISO));
+            foreach (string resourceName in knownTextResources)
+            {
+                string filePath = Path.Combine(Shared.AppTranslationsFolder, translation.ISO, resourceName);
+                if (!File.Exists(filePath))
+                    Utils.SaveTextResourceFromAssemblyToDisk("Resources/" + resourceName, filePath);
+            }
         }
 
         public static void GenerateDefaultTemplate()
@@ -164,6 +225,14 @@ namespace Fo76ini
             english.Author = "datasnake";
             english.Version = Shared.VERSION;
             english.Save("en-US.xml", Shared.VERSION);
+
+            // Save english resources to default "translation":
+            Directory.CreateDirectory(Path.Combine(Shared.AppTranslationsFolder, "en-US"));
+            foreach (string resourceName in knownTextResources)
+            {
+                string filePath = Path.Combine(Shared.AppTranslationsFolder, "en-US", resourceName);
+                Utils.SaveTextResourceFromAssemblyToDisk("Resources/" + resourceName, filePath);
+            }
         }
 
         public static Translation GetTranslation()
@@ -496,7 +565,11 @@ namespace Fo76ini
         public void Save(string fileName, string version)
         {
             string newFileName = fileName;
-            string newFilePath = Path.Combine(Shared.AppTranslationsFolder, newFileName);
+            string newFolderPath = Path.Combine(Shared.AppTranslationsFolder, this.ISO);
+            string newFilePath = Path.Combine(newFolderPath, newFileName);
+
+            // Create directory
+            Directory.CreateDirectory(newFolderPath);
 
             // Create document and root:
             XDocument xmlDoc = new XDocument();

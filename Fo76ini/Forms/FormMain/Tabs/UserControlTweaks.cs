@@ -221,6 +221,13 @@ namespace Fo76ini.Forms.FormMain
             #endregion
 
 
+            // Add control elements to blacklist:
+            Translation.BlackList.AddRange(new string[] {
+                "richTextBoxCredentialsExplanation"
+            });
+
+            Translation.LanguageChanged += Translation_LanguageChanged;
+
             // Link tweaks
             LinkInfo();
             LinkSliders();
@@ -231,17 +238,27 @@ namespace Fo76ini.Forms.FormMain
             this.labelTweaksTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
+        private void Translation_LanguageChanged(object sender, TranslationEventArgs e)
+        {
+            LoadTextResources();
+        }
+
         private void UserControlTweaks_Load(object sender, EventArgs e)
+        {
+            LoadTextResources();
+        }
+
+        private void LoadTextResources()
         {
             /*
              * Loading texts:
              */
 
-            this.webBrowserTweaksInfo.DocumentText = Utils.ReadTextResourceFromAssembly("HTML/TweaksInfo.html");
+            this.webBrowserTweaksInfo.DocumentText = Localization.GetTextResource("TweaksInfo.html");
 
             // Loading RTF in the Constructor results in unformatted text for some reason...
             // we have to load it here:
-            this.richTextBoxCredentialsExplanation.Rtf = Utils.ReadTextResourceFromAssembly("HTML/Login with Bethesda.net.rtf");
+            this.richTextBoxCredentialsExplanation.Rtf = Localization.GetTextResource("Login with Bethesda.net.rtf");
         }
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)

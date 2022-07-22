@@ -488,7 +488,7 @@
     <Compile Include="Forms\FormMods\FormMods.ModList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="HTML\Login with Bethesda.net.rtf" />
+    <EmbeddedResource Include="Resources\Login with Bethesda.net.rtf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -510,7 +510,7 @@
     <None Include="Resources\code-24.png" />
     <None Include="Resources\BTN_Thumb.bmp" />
     <None Include="Resources\BTN_Thumb_Blue.bmp" />
-    <EmbeddedResource Include="HTML\TweaksInfo.html" />
+    <EmbeddedResource Include="Resources\TweaksInfo.html" />
     <Content Include="Resources\folder-3-16.png" />
     <None Include="Resources\fov_70.jpg" />
     <None Include="Resources\fov_75.jpg" />

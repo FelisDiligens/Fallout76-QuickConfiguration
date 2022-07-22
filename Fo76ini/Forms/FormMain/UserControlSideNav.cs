@@ -39,7 +39,7 @@ namespace Fo76ini.Forms.FormMain
             this.buttonProfile.Image = game.Get24pxBitmap();
 
             // Change caption
-            this.buttonProfile.Text = game.Title + "\nEdition: " + game.GetCaption() + "";
+            this.buttonProfile.Text = game.Title + "\n" + Localization.GetString("gameEdition") + ": " + game.GetCaption() + "";
 
             // Force redraw
             this.buttonProfile.Refresh();

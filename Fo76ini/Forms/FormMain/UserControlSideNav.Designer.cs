@@ -619,7 +619,7 @@
         private Controls.StyledButton buttonMods;
         private Controls.StyledButton buttonSettings;
         private Controls.StyledButton buttonBrowse;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripBrowse;
+        public System.Windows.Forms.ContextMenuStrip contextMenuStripBrowse;
         private System.Windows.Forms.ToolStripMenuItem gameFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gamesConfigurationFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;

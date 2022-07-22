@@ -47,6 +47,7 @@ namespace Fo76ini
             // Make this form translatable:
             LocalizedForm form = new LocalizedForm(this, this.toolTip);
             form.SpecialControls.Add(this.userControlGallery.contextMenuStripGallery);
+            form.SpecialControls.Add(this.userControlSideNav.contextMenuStripBrowse);
             Localization.LocalizedForms.Add(form);
 
             // Handle translations:
@@ -59,7 +60,6 @@ namespace Fo76ini
                 "labelTranslationAuthor",
                 "groupBoxWIP",
                 "labelNewVersion",
-                "labelGameEdition",
                 "toolStripStatusLabelGameText",
                 "toolStripStatusLabelEditionText",
                 "toolStripStatusLabel1",
