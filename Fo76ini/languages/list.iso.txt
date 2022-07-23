@@ -1,9 +1,2 @@
 de-DE
-fr-FR
-ja-JP
-pl-PL
-pt-BR
 ru-RU
-sv-SE
-zh-CN
-zh-TW
