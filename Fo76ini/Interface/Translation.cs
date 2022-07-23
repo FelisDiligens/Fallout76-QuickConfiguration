@@ -39,6 +39,10 @@ namespace Fo76ini
 
         static Localization()
         {
+        }
+
+        public static void Init()
+        {
             AddSharedStrings();
             AddSharedMessageBoxes();
             AddKnownTextResources();

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fo76ini.Forms.FormIniError;
 using Fo76ini.Ini;
+using Fo76ini.Interface;
 using Fo76ini.Mods;
 using Fo76ini.NexusAPI;
 using Fo76ini.Profiles;
@@ -32,6 +33,8 @@ namespace Fo76ini
             /*
              * Load app configuration:
              */
+
+            Localization.Init();
 
             // Load config.ini:
             IniFiles.LoadConfig();
@@ -65,19 +68,46 @@ namespace Fo76ini
                 }
                 catch (IniParsingException exc)
                 {
-                    DialogResult result = FormIniError.OpenDialog(exc);
-                    if (result == DialogResult.Retry)
+                    // Check if it failed due to IOException:
+                    if (exc.InnerException.InnerException is IOException)
                     {
-                        continue;
-                    }
-                    else if (result == DialogResult.Ignore)
-                    {
-                        continue;
-                    }
-                    else if (result == DialogResult.Abort)
-                    {
+                        IOException ioexc = (IOException)exc.InnerException.InnerException;
+
+                        // Is OneDrive the culprit?
+                        // (I could not find any better way than to check the message itself. It probably won't work for languages other than English and German.)
+                        if (ioexc.Message.Trim() == "The cloud file provider is not running." ||
+                            ioexc.Message.Trim() == "Der Clouddateianbieter wird nicht ausgeführt.")
+                        {
+                            MsgBox.Get("cloudFileProviderNotRunning").FormatText(ioexc.Message).Show(MessageBoxIcon.Error);
+                        }
+
+                        // Otherwise show generic error message:
+                        else
+                        {
+                            MsgBox.Get("iniFailedToLoad").FormatText(ioexc.GetType().ToString() + ": " + ioexc.Message).Show(MessageBoxIcon.Error);
+                        }
                         Environment.Exit(-1);
                         return;
+                    }
+
+                    // Otherwise it's probably an parsing error.
+                    // Open the INI error dialog:
+                    else
+                    {
+                        DialogResult result = FormIniError.OpenDialog(exc);
+                        if (result == DialogResult.Retry)
+                        {
+                            continue;
+                        }
+                        else if (result == DialogResult.Ignore)
+                        {
+                            continue;
+                        }
+                        else if (result == DialogResult.Abort)
+                        {
+                            Environment.Exit(-1);
+                            return;
+                        }
                     }
                 }
             }

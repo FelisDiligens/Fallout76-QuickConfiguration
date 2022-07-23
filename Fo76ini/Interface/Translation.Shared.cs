@@ -104,6 +104,19 @@ namespace Fo76ini
                 "Please restart the tool to work with the new values."
             );
 
+            MsgBox.Add("cloudFileProviderNotRunning",
+                "Cloud file provider not running",
+                "{0}\n" +
+                "Please make sure OneDrive is running and try again.\n" +
+                "The tool will be terminated now."
+            );
+
+            MsgBox.Add("iniFailedToLoad",
+                "Failed to load *.ini file",
+                "{0}\n" +
+                "The tool will be terminated now."
+            );
+
 
             // FormSettings:
 
