@@ -185,13 +185,13 @@
             this.groupBoxMouse = new System.Windows.Forms.GroupBox();
             this.sliderMouseSensitivityY = new System.Windows.Forms.TrackBar();
             this.numMouseSensitivityY = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelMouseSensitivityY = new System.Windows.Forms.Label();
             this.checkBoxMouseInvertX = new System.Windows.Forms.CheckBox();
             this.checkBoxMouseInvertY = new System.Windows.Forms.CheckBox();
             this.sliderMouseSensitivityX = new System.Windows.Forms.TrackBar();
             this.checkBoxFixAimSensitivity = new System.Windows.Forms.CheckBox();
             this.numMouseSensitivityX = new System.Windows.Forms.NumericUpDown();
-            this.labelMouseSensitivity = new System.Windows.Forms.Label();
+            this.labelMouseSensitivityX = new System.Windows.Forms.Label();
             this.checkBoxFixMouseSensitivity = new System.Windows.Forms.CheckBox();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.groupBoxCameraPosition = new System.Windows.Forms.GroupBox();
@@ -2453,13 +2453,13 @@
             // 
             this.groupBoxMouse.Controls.Add(this.sliderMouseSensitivityY);
             this.groupBoxMouse.Controls.Add(this.numMouseSensitivityY);
-            this.groupBoxMouse.Controls.Add(this.label1);
+            this.groupBoxMouse.Controls.Add(this.labelMouseSensitivityY);
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertX);
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertY);
             this.groupBoxMouse.Controls.Add(this.sliderMouseSensitivityX);
             this.groupBoxMouse.Controls.Add(this.checkBoxFixAimSensitivity);
             this.groupBoxMouse.Controls.Add(this.numMouseSensitivityX);
-            this.groupBoxMouse.Controls.Add(this.labelMouseSensitivity);
+            this.groupBoxMouse.Controls.Add(this.labelMouseSensitivityX);
             this.groupBoxMouse.Controls.Add(this.checkBoxFixMouseSensitivity);
             this.groupBoxMouse.Location = new System.Drawing.Point(6, 6);
             this.groupBoxMouse.Margin = new System.Windows.Forms.Padding(6);
@@ -2513,14 +2513,14 @@
             0,
             131072});
             // 
-            // label1
+            // labelMouseSensitivityY
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Vertical sensitivity";
+            this.labelMouseSensitivityY.AutoSize = true;
+            this.labelMouseSensitivityY.Location = new System.Drawing.Point(6, 70);
+            this.labelMouseSensitivityY.Name = "labelMouseSensitivityY";
+            this.labelMouseSensitivityY.Size = new System.Drawing.Size(90, 13);
+            this.labelMouseSensitivityY.TabIndex = 3;
+            this.labelMouseSensitivityY.Text = "Vertical sensitivity";
             // 
             // checkBoxMouseInvertX
             // 
@@ -2596,14 +2596,14 @@
             0,
             131072});
             // 
-            // labelMouseSensitivity
+            // labelMouseSensitivityX
             // 
-            this.labelMouseSensitivity.AutoSize = true;
-            this.labelMouseSensitivity.Location = new System.Drawing.Point(6, 19);
-            this.labelMouseSensitivity.Name = "labelMouseSensitivity";
-            this.labelMouseSensitivity.Size = new System.Drawing.Size(102, 13);
-            this.labelMouseSensitivity.TabIndex = 0;
-            this.labelMouseSensitivity.Text = "Horizontal sensitivity";
+            this.labelMouseSensitivityX.AutoSize = true;
+            this.labelMouseSensitivityX.Location = new System.Drawing.Point(6, 19);
+            this.labelMouseSensitivityX.Name = "labelMouseSensitivityX";
+            this.labelMouseSensitivityX.Size = new System.Drawing.Size(102, 13);
+            this.labelMouseSensitivityX.TabIndex = 0;
+            this.labelMouseSensitivityX.Text = "Horizontal sensitivity";
             // 
             // checkBoxFixMouseSensitivity
             // 
@@ -4050,7 +4050,7 @@
         private System.Windows.Forms.TrackBar sliderMouseSensitivityX;
         private System.Windows.Forms.CheckBox checkBoxFixAimSensitivity;
         private System.Windows.Forms.NumericUpDown numMouseSensitivityX;
-        private System.Windows.Forms.Label labelMouseSensitivity;
+        private System.Windows.Forms.Label labelMouseSensitivityX;
         private System.Windows.Forms.CheckBox checkBoxFixMouseSensitivity;
         private System.Windows.Forms.Label labelTweaksDesc;
         private System.Windows.Forms.Label labelTweaksTitle;
@@ -4267,7 +4267,7 @@
         private System.Windows.Forms.CheckBox checkBoxBloodSplatter;
         private System.Windows.Forms.TrackBar sliderMouseSensitivityY;
         private System.Windows.Forms.NumericUpDown numMouseSensitivityY;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelMouseSensitivityY;
         private System.Windows.Forms.GroupBox groupBoxDialogue;
         private System.Windows.Forms.TrackBar sliderConversationHistorySize;
         private System.Windows.Forms.NumericUpDown numConversationHistorySize;
