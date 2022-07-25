@@ -218,7 +218,7 @@ namespace Fo76ini
                 return;
             }
 
-            if (Versioning.UpdateAvailable)
+            if (Versioning.UpdateAvailable || Configuration.Debug.ForceShowUpdateButton)
             {
                 panelUpdate.Visible = true;
                 labelNewVersion.Text = string.Format(Localization.GetString("newVersionAvailable"), Shared.LatestVersion);
@@ -474,7 +474,7 @@ namespace Fo76ini
         private void UpdateWhatsNewUI()
         {
             // Hide, if the user doesn't want to see it:
-            if (!Configuration.ShowWhatsNew)
+            if (!Configuration.ShowWhatsNew || Configuration.Debug.ForceShowUpdateButton)
             {
                 this.webBrowserWhatsNew.Visible = false;
                 return;

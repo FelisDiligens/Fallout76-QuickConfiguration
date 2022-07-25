@@ -16,6 +16,15 @@ namespace Fo76ini
     {
         #region Properties
 
+        public class Debug
+        {
+#if DEBUG
+            public const bool ForceShowUpdateButton = true;
+#else
+            public const bool ForceShowUpdateButton = false;
+#endif
+        }
+
         public class Mods
         {
             /// <summary>

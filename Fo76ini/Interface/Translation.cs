@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Fo76ini.Controls;
 using Fo76ini.Interface;
 using Fo76ini.Tweaks;
 using Fo76ini.Utilities;
@@ -470,6 +471,11 @@ namespace Fo76ini
                             DeserializeStrip(subControl, GetXMLDescendantsDict(xmlControl));
                         else if (subControl is ListView)
                             DeserializeListView((ListView)subControl, xmlControl);
+
+                        // Custom elements:
+                        if (subControl is PictureBoxButton && dictText.ContainsKey(subControl.Name))
+                            ((PictureBoxButton)subControl).ButtonText = FromSafeString(dictText[subControl.Name]);
+
                         break;
                     }
                 }
@@ -671,6 +677,7 @@ namespace Fo76ini
                     !(subControl is ProgressBar) &&
                     !(subControl is TrackBar) &&
                     !(subControl is PictureBox) &&
+                    !(subControl is PictureBoxButton) &&
                     !(subControl is TextBox) &&
                     !(subControl is MenuStrip) &&
                     !(subControl is ToolStrip) &&
@@ -678,6 +685,15 @@ namespace Fo76ini
                     !(subControl is ListView))
                 {
                     subElement.Add(new XAttribute("text", ToSafeString(subControl.Text)));
+                    addSubElement = true;
+                }
+
+                // Add custom element:
+                if (subControl is PictureBoxButton &&
+                    ((PictureBoxButton)subControl).ButtonText != null &&
+                    ((PictureBoxButton)subControl).ButtonText.Length > 0)
+                {
+                    subElement.Add(new XAttribute("text", ToSafeString(((PictureBoxButton)subControl).ButtonText)));
                     addSubElement = true;
                 }
 
