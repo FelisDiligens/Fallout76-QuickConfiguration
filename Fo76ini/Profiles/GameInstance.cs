@@ -36,9 +36,9 @@ namespace Fo76ini.Profiles
         public string GamePath = "";
         public string ExecutableName = "Fallout76.exe";
         public string IniPrefix = "Fallout76";
-        public string IniParentPath = null;
+        public string IniParentPath = IniFiles.DefaultParentPath;
         public string ExecParameters = "";
-        public string LauncherURL;
+        public string LauncherURL = "";
         public LaunchOption PreferredLaunchOption = LaunchOption.OpenURL;
 
         /// <summary>
