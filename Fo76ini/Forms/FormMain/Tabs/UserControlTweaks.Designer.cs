@@ -2736,8 +2736,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarfOverShoulderMeleeCombatAddY.BackColor = System.Drawing.Color.White;
             this.trackBarfOverShoulderMeleeCombatAddY.Location = new System.Drawing.Point(6, 134);
-            this.trackBarfOverShoulderMeleeCombatAddY.Maximum = 20;
-            this.trackBarfOverShoulderMeleeCombatAddY.Minimum = -20;
+            this.trackBarfOverShoulderMeleeCombatAddY.Maximum = 100;
+            this.trackBarfOverShoulderMeleeCombatAddY.Minimum = -100;
             this.trackBarfOverShoulderMeleeCombatAddY.Name = "trackBarfOverShoulderMeleeCombatAddY";
             this.trackBarfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(296, 45);
             this.trackBarfOverShoulderMeleeCombatAddY.TabIndex = 7;
@@ -2758,8 +2758,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarfOverShoulderMeleeCombatPosX.BackColor = System.Drawing.Color.White;
             this.trackBarfOverShoulderMeleeCombatPosX.Location = new System.Drawing.Point(6, 84);
-            this.trackBarfOverShoulderMeleeCombatPosX.Maximum = 25;
-            this.trackBarfOverShoulderMeleeCombatPosX.Minimum = -25;
+            this.trackBarfOverShoulderMeleeCombatPosX.Maximum = 100;
+            this.trackBarfOverShoulderMeleeCombatPosX.Minimum = -100;
             this.trackBarfOverShoulderMeleeCombatPosX.Name = "trackBarfOverShoulderMeleeCombatPosX";
             this.trackBarfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(296, 45);
             this.trackBarfOverShoulderMeleeCombatPosX.TabIndex = 4;
@@ -2780,8 +2780,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarfOverShoulderMeleeCombatPosZ.BackColor = System.Drawing.Color.White;
             this.trackBarfOverShoulderMeleeCombatPosZ.Location = new System.Drawing.Point(6, 36);
-            this.trackBarfOverShoulderMeleeCombatPosZ.Maximum = 20;
-            this.trackBarfOverShoulderMeleeCombatPosZ.Minimum = -20;
+            this.trackBarfOverShoulderMeleeCombatPosZ.Maximum = 100;
+            this.trackBarfOverShoulderMeleeCombatPosZ.Minimum = -100;
             this.trackBarfOverShoulderMeleeCombatPosZ.Name = "trackBarfOverShoulderMeleeCombatPosZ";
             this.trackBarfOverShoulderMeleeCombatPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBarfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(296, 45);
@@ -2878,8 +2878,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarfOverShoulderCombatAddY.BackColor = System.Drawing.Color.White;
             this.trackBarfOverShoulderCombatAddY.Location = new System.Drawing.Point(6, 134);
-            this.trackBarfOverShoulderCombatAddY.Maximum = 20;
-            this.trackBarfOverShoulderCombatAddY.Minimum = -20;
+            this.trackBarfOverShoulderCombatAddY.Maximum = 100;
+            this.trackBarfOverShoulderCombatAddY.Minimum = -100;
             this.trackBarfOverShoulderCombatAddY.Name = "trackBarfOverShoulderCombatAddY";
             this.trackBarfOverShoulderCombatAddY.Size = new System.Drawing.Size(296, 45);
             this.trackBarfOverShoulderCombatAddY.TabIndex = 7;
@@ -2900,8 +2900,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarfOverShoulderCombatPosX.BackColor = System.Drawing.Color.White;
             this.trackBarfOverShoulderCombatPosX.Location = new System.Drawing.Point(6, 84);
-            this.trackBarfOverShoulderCombatPosX.Maximum = 25;
-            this.trackBarfOverShoulderCombatPosX.Minimum = -25;
+            this.trackBarfOverShoulderCombatPosX.Maximum = 100;
+            this.trackBarfOverShoulderCombatPosX.Minimum = -100;
             this.trackBarfOverShoulderCombatPosX.Name = "trackBarfOverShoulderCombatPosX";
             this.trackBarfOverShoulderCombatPosX.Size = new System.Drawing.Size(296, 45);
             this.trackBarfOverShoulderCombatPosX.TabIndex = 4;
@@ -2922,8 +2922,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarfOverShoulderCombatPosZ.BackColor = System.Drawing.Color.White;
             this.trackBarfOverShoulderCombatPosZ.Location = new System.Drawing.Point(6, 36);
-            this.trackBarfOverShoulderCombatPosZ.Maximum = 20;
-            this.trackBarfOverShoulderCombatPosZ.Minimum = -20;
+            this.trackBarfOverShoulderCombatPosZ.Maximum = 100;
+            this.trackBarfOverShoulderCombatPosZ.Minimum = -100;
             this.trackBarfOverShoulderCombatPosZ.Name = "trackBarfOverShoulderCombatPosZ";
             this.trackBarfOverShoulderCombatPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBarfOverShoulderCombatPosZ.Size = new System.Drawing.Size(296, 45);
@@ -3018,8 +3018,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarfOverShoulderPosX.BackColor = System.Drawing.Color.White;
             this.trackBarfOverShoulderPosX.Location = new System.Drawing.Point(6, 84);
-            this.trackBarfOverShoulderPosX.Maximum = 25;
-            this.trackBarfOverShoulderPosX.Minimum = -25;
+            this.trackBarfOverShoulderPosX.Maximum = 100;
+            this.trackBarfOverShoulderPosX.Minimum = -100;
             this.trackBarfOverShoulderPosX.Name = "trackBarfOverShoulderPosX";
             this.trackBarfOverShoulderPosX.Size = new System.Drawing.Size(296, 45);
             this.trackBarfOverShoulderPosX.TabIndex = 4;
@@ -3040,8 +3040,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarfOverShoulderPosZ.BackColor = System.Drawing.Color.White;
             this.trackBarfOverShoulderPosZ.Location = new System.Drawing.Point(6, 36);
-            this.trackBarfOverShoulderPosZ.Maximum = 20;
-            this.trackBarfOverShoulderPosZ.Minimum = -20;
+            this.trackBarfOverShoulderPosZ.Maximum = 100;
+            this.trackBarfOverShoulderPosZ.Minimum = -100;
             this.trackBarfOverShoulderPosZ.Name = "trackBarfOverShoulderPosZ";
             this.trackBarfOverShoulderPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBarfOverShoulderPosZ.Size = new System.Drawing.Size(296, 45);
