@@ -22,6 +22,9 @@ namespace Fo76ini
             localizedStrings["modTableFrozenPending"] = "Pending";
             localizedStrings["modTableFrozen"] = "Frozen";
             localizedStrings["modTableFreeze"] = "Freeze";
+            localizedStrings["modTableInstallInfoBundledBA2"] = "Bundle into {0}.";
+            localizedStrings["modTableInstallInfoSeparateBA2"] = "Pack into {0} with preset {1}.";
+            localizedStrings["modTableInstallInfoLooseFiles"] = "Copy files to {0}.";
 
             localizedStrings["modTablePendingInstallation"] = "Pending for installation";
             localizedStrings["modTablePendingRemoval"] = "Pending for removal";

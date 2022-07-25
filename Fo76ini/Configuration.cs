@@ -19,7 +19,7 @@ namespace Fo76ini
         public class Debug
         {
 #if DEBUG
-            public const bool ForceShowUpdateButton = true;
+            public const bool ForceShowUpdateButton = false;
 #else
             public const bool ForceShowUpdateButton = false;
 #endif

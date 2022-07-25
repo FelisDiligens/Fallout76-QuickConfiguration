@@ -185,14 +185,14 @@ namespace Fo76ini
                 switch (mod.Method)
                 {
                     case ManagedMod.DeploymentMethod.BundledBA2:
-                        this.InstallInfo = "Bundle into \"Data\\Bundled*.ba2\".";
+                        this.InstallInfo = String.Format(Localization.GetString("modTableInstallInfoBundledBA2"), "\"Data\\Bundled*.ba2\"");
                         this.InstallMethod = Localization.GetString("modsTableTypeBundled");
                         this.InstallInto = "\"Data\"";
                         this.ArchiveName = "Bundled*.ba2";
                         this.InstallMethodColor = Color.OrangeRed;
                         break;
                     case ManagedMod.DeploymentMethod.SeparateBA2:
-                        this.InstallInfo = String.Format("Pack into \"Data\\{0}\" with preset \"{1}\".", mod.ArchiveName, installPreset);
+                        this.InstallInfo = String.Format(Localization.GetString("modTableInstallInfoSeparateBA2"), $"\"Data\\{mod.ArchiveName}\"", $"\"{installPreset}\"");
                         this.InstallMethod = Localization.GetString("modsTableTypeSeparate");
                         this.InstallInto = "\"Data\"";
                         this.ArchiveName = mod.ArchiveName;
@@ -214,7 +214,7 @@ namespace Fo76ini
                         this.InstallMethodColor = Color.Indigo;
                         break;
                     case ManagedMod.DeploymentMethod.LooseFiles:
-                        this.InstallInfo = String.Format("Copy files to \"{0}\".", mod.RootFolder);
+                        this.InstallInfo = String.Format(Localization.GetString("modTableInstallInfoLooseFiles"), $"\"{mod.RootFolder}\"");
                         this.InstallMethod = Localization.GetString("modsTableTypeLoose");
                         this.InstallInto = $"\"{mod.RootFolder}\"";
                         this.InstallMethodColor = Color.MediumVioletRed;
