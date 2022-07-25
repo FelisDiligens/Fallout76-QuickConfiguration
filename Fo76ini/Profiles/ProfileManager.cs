@@ -158,6 +158,16 @@ namespace Fo76ini.Profiles
                 defaultGame.Edition = GameEdition.Xbox;
                 defaultGame.SetDefaultSettings(GameEdition.Xbox);
             }
+            else if (File.Exists(Path.Combine(IniFiles.DefaultParentPath, "Fallout76.ini")))
+            {
+                defaultGame.Edition = GameEdition.Steam;
+                defaultGame.SetDefaultSettings(GameEdition.Steam);
+            }
+            else
+            {
+                defaultGame.Edition = GameEdition.Unknown;
+                defaultGame.SetDefaultSettings(GameEdition.Unknown);
+            }
             AddGame(defaultGame);
             SelectGame(defaultGame);
         }
