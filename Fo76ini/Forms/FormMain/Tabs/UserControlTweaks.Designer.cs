@@ -1397,7 +1397,7 @@
             // labelAnisotropicFiltering
             // 
             this.labelAnisotropicFiltering.AutoSize = true;
-            this.labelAnisotropicFiltering.Location = new System.Drawing.Point(6, 50);
+            this.labelAnisotropicFiltering.Location = new System.Drawing.Point(6, 47);
             this.labelAnisotropicFiltering.Name = "labelAnisotropicFiltering";
             this.labelAnisotropicFiltering.Size = new System.Drawing.Size(84, 13);
             this.labelAnisotropicFiltering.TabIndex = 2;

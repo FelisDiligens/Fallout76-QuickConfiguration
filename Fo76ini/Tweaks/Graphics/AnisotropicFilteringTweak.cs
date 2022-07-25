@@ -16,7 +16,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public string AffectedValues => "[Display]iMaxAnisotropy";
 
-        public int DefaultValue => 8;
+        public int DefaultValue => 16;
 
         public string Identifier => this.GetType().FullName;
         

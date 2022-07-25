@@ -156,8 +156,8 @@ namespace Fo76ini.Forms.FormMain
                     "None",
                     "2x",
                     "4x",
-                    "8x (default)",
-                    "16x"
+                    "8x",
+                    "16x (default)"
                 }
             ));
 
