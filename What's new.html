@@ -32,7 +32,116 @@
   <![endif]-->
 </head>
 <body>
-<h3 id="whats-new-in-xxxx">What’s new in X.XX.X?</h3>
-<p>Placeholder...</p>
+<h3 id="whats-new-in-v1110---the-fresh-coat-of-paint-update">What’s new
+in v1.11.0? - The &quot;fresh coat of paint&quot; update</h3>
+<blockquote>
+<p><strong>If you do not like the changes, you can download v1.10 from
+NexusMods or GitHub.</strong></p>
+</blockquote>
+<p>Hello everyone,</p>
+<p>this update is a rather large one - at least in terms of UI
+changes.<br />
+I decided to rearrange everything and add a sidebar for navigation.</p>
+<p>I tested almost every tweak and changed/removed old tweaks as well as
+adding a few new ones.<br />
+The mod manager has two new options. Also, I fixed some smaller bugs.
+Just explore a little, if you like to.</p>
+<p>As always, you can read the changelog below.</p>
+<p>Happy hunting,</p>
+<p>~ datasnake</p>
+<hr />
+<p><strong>Changelog:</strong></p>
+<details>
+<summary>Click to expand</summary>
+
+<ul>
+<li>General:
+<ul>
+<li>Most notable change: Added a side navigation that replaces the top
+panel, the bottom status panel, and the tabs.</li>
+<li>Added a &quot;Hero&quot; banner to the &quot;Home&quot; page</li>
+<li>Moved &quot;Tweaks&quot; into their own page</li>
+<li>Removed &quot;Settings&quot; window; moved &quot;Settings&quot;, &quot;Profiles&quot;, and
+&quot;NexusMods&quot; into their own page</li>
+<li>Reworked the profile manager</li>
+<li>Added line numbers, syntax highlighting, autocompletion and hotkeys
+to the &quot;Custom&quot; page&#39;s textbox</li>
+<li>Replaced the awful <code>FolderBrowserDialog</code> with a proper
+dialog that let&#39;s you choose a folder more comfortably.</li>
+</ul></li>
+<li>Tweaks:
+<ul>
+<li>Tweaks are now color-coded
+<ul>
+<li>Added Info about color-codes and tool tips</li>
+</ul></li>
+<li>Reworked tweaks:
+<ul>
+<li>Added some missing tweaks from the ingame settings</li>
+<li>Added Screen Space Reflections and Blood Splatter to Graphics tweaks
+<ul>
+<li>Added fix for black/invisible water</li>
+</ul></li>
+<li>Removed some tweaks that didn&#39;t do anything</li>
+<li>Changed some tweaks</li>
+</ul></li>
+<li>Added FOV preview</li>
+<li>Removed the &quot;Danger Zone&quot;</li>
+<li>*.ini files are parsed differently now:
+<ul>
+<li>Comments can now be in-line and begin with <code>&quot;;&quot;</code>
+(semicolon) or <code>&quot;#&quot;</code> (hash)
+<ul>
+<li>This might break the s76UserName and s76Password text fields.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Pip-Boy:
+<ul>
+<li>Added a few more Pip-Boy color presets</li>
+<li>Added HEX codes to Pip-Boy tab</li>
+<li>Fixed Quick-Boy color not applying ingame</li>
+</ul></li>
+<li>Profiles:
+<ul>
+<li>You can now change the path where the *.ini files are stored.</li>
+</ul></li>
+<li>Mod manager:
+<ul>
+<li>Fixed: &quot;Import installed mods&quot; importing already managed mods.</li>
+<li>Added an option to create symlinks when deploying. (Experimental
+feature)</li>
+<li>Added an option to put bundled archives last in the load order.</li>
+<li>Placed &quot;Notes&quot; under &quot;Installation options&quot; in mod manager&#39;s side
+panel</li>
+<li>Added a button to open the folder of a mod in mod manager&#39;s side
+panel</li>
+</ul></li>
+<li>Minor changes / fixes
+<ul>
+<li>Added missing messagebox strings when you picked the wrong game
+path.</li>
+<li>Added missing messagebox strings when you delete photos in the
+gallery.</li>
+<li>Made some UI elements that were previously untranslatable,
+translatable.</li>
+<li>When picking the game path, you now browse for the folder instead of
+the *.exe file.</li>
+<li>and a few more.</li>
+</ul></li>
+<li>Removed backwards-compatibility...
+<ul>
+<li>... to v1.8&#39;s Mod Manager</li>
+<li>... to v1.8&#39;s Profiles</li>
+</ul></li>
+<li>Known issues:
+<ul>
+<li>The scroll whell on Windows 7 doesn&#39;t always work properly due to
+how focus works in older Windows versions.</li>
+<li>If a password written into [Login]s76Password contains
+<code>&quot;;&quot;</code> or <code>&quot;#&quot;</code>, it will be truncated.</li>
+</ul></li>
+</ul>
+</details>
 </body>
 </html>
