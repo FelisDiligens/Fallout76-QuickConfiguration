@@ -10,9 +10,10 @@ namespace Fo76ini.Tweaks.Graphics
     {
         public string Description =>
             "Enables reflections on shiny surfaces like water, puddles, and metals.\n" +
-            "(Caused pitch black water in previous versions, but is safe now)";
+            "⚠️ If disabled, may result in pitch black, milk white, or invisible water.\n" +
+            "     If you experience this, try enabling the fix under the Water section.";
 
-        public WarnLevel WarnLevel => WarnLevel.None;
+        public WarnLevel WarnLevel => WarnLevel.Warning;
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 

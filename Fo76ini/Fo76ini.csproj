@@ -265,6 +265,8 @@
     <Compile Include="Tweaks\Graphics\BackpackVisibleTweak.cs" />
     <Compile Include="Tweaks\Graphics\Effects\BloodSplatterEnabledTweak.cs" />
     <Compile Include="Tweaks\Graphics\Post-processing\BloomTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Water\WaterFixSSRGlitchTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Water\WaterHiResTweak.cs" />
     <Compile Include="Tweaks\Graphics\Water\WaterRefractionsTweak.cs" />
     <Compile Include="Tweaks\Graphics\Water\WaterReflectionsTweak.cs" />
     <Compile Include="Tweaks\Interface\CorpseHighlightingTweak.cs" />

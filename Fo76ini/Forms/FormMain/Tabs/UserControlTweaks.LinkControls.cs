@@ -88,6 +88,10 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(checkBoxAmbientOcclusion, toolTip, ambientOcclusionTweak);
             LinkedTweaks.LinkInfo(checkBoxSSReflections, toolTip, screenSpaceReflectionsTweak);
             LinkedTweaks.LinkInfo(checkBoxWaterDisplacement, toolTip, waterDisplacementsTweak);
+            LinkedTweaks.LinkInfo(checkBoxWaterRefractions, toolTip, waterRefractionsTweak);
+            LinkedTweaks.LinkInfo(checkBoxWaterReflections, toolTip, waterReflectionsTweak);
+            LinkedTweaks.LinkInfo(checkBoxWaterHiRes, toolTip, waterHiResTweak);
+            LinkedTweaks.LinkInfo(checkBoxWaterFixSSRGlitch, toolTip, waterFixSSRGlitchTweak);
             LinkedTweaks.LinkInfo(checkBoxGodrays, toolTip, volumetricLightingTweak);
             LinkedTweaks.LinkInfo(checkBoxDisableGore, toolTip, disableAllGoreTweak);
             LinkedTweaks.LinkInfo(checkBoxBloodSplatter, toolTip, bloodSplatterTweak);
@@ -393,6 +397,18 @@ namespace Fo76ini.Forms.FormMain
             // Water / Displacement
             LinkedTweaks.LinkTweak(checkBoxWaterDisplacement, waterDisplacementsTweak);
 
+            // Water / Refractions
+            LinkedTweaks.LinkTweak(checkBoxWaterRefractions, waterRefractionsTweak);
+
+            // Water / Reflections
+            LinkedTweaks.LinkTweak(checkBoxWaterReflections, waterReflectionsTweak);
+
+            // Water / HiRes
+            LinkedTweaks.LinkTweak(checkBoxWaterHiRes, waterHiResTweak);
+
+            // Water / Fix SSR glitch
+            // LinkedTweaks.LinkTweak(checkBoxWaterFixSSRGlitch, waterFixSSRGlitchTweak);
+
             // Lighting / Volumetric Lighting
             LinkedTweaks.LinkTweak(checkBoxGodrays, volumetricLightingTweak);
 
@@ -600,8 +616,6 @@ namespace Fo76ini.Forms.FormMain
         private RadialBlurTweak radialBlurTweak = new RadialBlurTweak();
         private LensFlareTweak lensFlareTweak = new LensFlareTweak();
         private AmbientOcclusionTweak ambientOcclusionTweak = new AmbientOcclusionTweak();
-        private WaterDisplacementsTweak waterDisplacementsTweak = new WaterDisplacementsTweak();
-        private WaterRefractionsTweak waterRefractionsTweak = new WaterRefractionsTweak();
         private VolumetricLightingTweak volumetricLightingTweak = new VolumetricLightingTweak();
         private DisableAllGoreTweak disableAllGoreTweak = new DisableAllGoreTweak();
         private BloodSplatterEnabledTweak bloodSplatterTweak = new BloodSplatterEnabledTweak();
@@ -619,6 +633,12 @@ namespace Fo76ini.Forms.FormMain
         private TAAPostSharpenTweak taaPostSharpenTweak = new TAAPostSharpenTweak();
         private ScreenSpaceReflectionsTweak screenSpaceReflectionsTweak = new ScreenSpaceReflectionsTweak();
         private BloomTweak bloomTweak = new BloomTweak();
+
+        private WaterDisplacementsTweak waterDisplacementsTweak = new WaterDisplacementsTweak();
+        private WaterRefractionsTweak waterRefractionsTweak = new WaterRefractionsTweak();
+        private WaterReflectionsTweak waterReflectionsTweak = new WaterReflectionsTweak();
+        private WaterHiResTweak waterHiResTweak = new WaterHiResTweak();
+        private WaterFixSSRGlitchTweak waterFixSSRGlitchTweak = new WaterFixSSRGlitchTweak();
 
         // Audio tab
         private EnableAudioTweak enableAudioTweak = new EnableAudioTweak();

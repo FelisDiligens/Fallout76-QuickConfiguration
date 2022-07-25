@@ -117,6 +117,10 @@
             this.labelShadowTextureResolution = new System.Windows.Forms.Label();
             this.comboBoxAnisotropicFiltering = new System.Windows.Forms.ComboBox();
             this.groupBoxWater = new System.Windows.Forms.GroupBox();
+            this.checkBoxWaterFixSSRGlitch = new System.Windows.Forms.CheckBox();
+            this.checkBoxWaterHiRes = new System.Windows.Forms.CheckBox();
+            this.checkBoxWaterRefractions = new System.Windows.Forms.CheckBox();
+            this.checkBoxWaterReflections = new System.Windows.Forms.CheckBox();
             this.checkBoxWaterDisplacement = new System.Windows.Forms.CheckBox();
             this.groupBoxPostProcessing = new System.Windows.Forms.GroupBox();
             this.checkBoxSSReflections = new System.Windows.Forms.CheckBox();
@@ -962,7 +966,7 @@
             this.groupBoxGraphics.Location = new System.Drawing.Point(9, 206);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 907);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 969);
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
@@ -971,9 +975,9 @@
             // 
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
-            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(202, 228);
+            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(9, 292);
             this.groupBoxGraphicEffects.Name = "groupBoxGraphicEffects";
-            this.groupBoxGraphicEffects.Size = new System.Drawing.Size(188, 68);
+            this.groupBoxGraphicEffects.Size = new System.Drawing.Size(187, 68);
             this.groupBoxGraphicEffects.TabIndex = 11;
             this.groupBoxGraphicEffects.TabStop = false;
             this.groupBoxGraphicEffects.Text = "Effects";
@@ -1008,7 +1012,7 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 751);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 811);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
             this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 145);
             this.groupBoxTAASharpening.TabIndex = 18;
@@ -1124,7 +1128,7 @@
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 622);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 682);
             this.groupBoxGrass.Name = "groupBoxGrass";
             this.groupBoxGrass.Size = new System.Drawing.Size(381, 119);
             this.groupBoxGrass.TabIndex = 17;
@@ -1211,7 +1215,7 @@
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 460);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 520);
             this.groupBoxLOD.Name = "groupBoxLOD";
             this.groupBoxLOD.Size = new System.Drawing.Size(381, 156);
             this.groupBoxLOD.TabIndex = 16;
@@ -1371,9 +1375,9 @@
             // groupBoxLighting
             // 
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
-            this.groupBoxLighting.Location = new System.Drawing.Point(202, 172);
+            this.groupBoxLighting.Location = new System.Drawing.Point(202, 292);
             this.groupBoxLighting.Name = "groupBoxLighting";
-            this.groupBoxLighting.Size = new System.Drawing.Size(188, 50);
+            this.groupBoxLighting.Size = new System.Drawing.Size(188, 68);
             this.groupBoxLighting.TabIndex = 14;
             this.groupBoxLighting.TabStop = false;
             this.groupBoxLighting.Text = "Lighting";
@@ -1408,7 +1412,7 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowTextureResolution);
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
-            this.groupBoxShadows.Location = new System.Drawing.Point(9, 306);
+            this.groupBoxShadows.Location = new System.Drawing.Point(9, 366);
             this.groupBoxShadows.Name = "groupBoxShadows";
             this.groupBoxShadows.Size = new System.Drawing.Size(381, 147);
             this.groupBoxShadows.TabIndex = 15;
@@ -1514,13 +1518,66 @@
             // 
             // groupBoxWater
             // 
+            this.groupBoxWater.Controls.Add(this.checkBoxWaterFixSSRGlitch);
+            this.groupBoxWater.Controls.Add(this.checkBoxWaterHiRes);
+            this.groupBoxWater.Controls.Add(this.checkBoxWaterRefractions);
+            this.groupBoxWater.Controls.Add(this.checkBoxWaterReflections);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterDisplacement);
             this.groupBoxWater.Location = new System.Drawing.Point(202, 117);
             this.groupBoxWater.Name = "groupBoxWater";
-            this.groupBoxWater.Size = new System.Drawing.Size(188, 49);
+            this.groupBoxWater.Size = new System.Drawing.Size(188, 169);
             this.groupBoxWater.TabIndex = 12;
             this.groupBoxWater.TabStop = false;
             this.groupBoxWater.Text = "Water";
+            // 
+            // checkBoxWaterFixSSRGlitch
+            // 
+            this.checkBoxWaterFixSSRGlitch.AutoSize = true;
+            this.checkBoxWaterFixSSRGlitch.Checked = true;
+            this.checkBoxWaterFixSSRGlitch.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxWaterFixSSRGlitch.Location = new System.Drawing.Point(9, 134);
+            this.checkBoxWaterFixSSRGlitch.Name = "checkBoxWaterFixSSRGlitch";
+            this.checkBoxWaterFixSSRGlitch.Size = new System.Drawing.Size(139, 17);
+            this.checkBoxWaterFixSSRGlitch.TabIndex = 4;
+            this.checkBoxWaterFixSSRGlitch.Text = "Fix black/invisible water";
+            this.checkBoxWaterFixSSRGlitch.UseVisualStyleBackColor = true;
+            this.checkBoxWaterFixSSRGlitch.CheckedChanged += new System.EventHandler(this.checkBoxWaterFixSSRGlitch_CheckedChanged);
+            // 
+            // checkBoxWaterHiRes
+            // 
+            this.checkBoxWaterHiRes.AutoSize = true;
+            this.checkBoxWaterHiRes.Checked = true;
+            this.checkBoxWaterHiRes.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxWaterHiRes.Location = new System.Drawing.Point(9, 88);
+            this.checkBoxWaterHiRes.Name = "checkBoxWaterHiRes";
+            this.checkBoxWaterHiRes.Size = new System.Drawing.Size(123, 17);
+            this.checkBoxWaterHiRes.TabIndex = 3;
+            this.checkBoxWaterHiRes.Text = "Use High Resolution";
+            this.checkBoxWaterHiRes.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxWaterRefractions
+            // 
+            this.checkBoxWaterRefractions.AutoSize = true;
+            this.checkBoxWaterRefractions.Checked = true;
+            this.checkBoxWaterRefractions.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxWaterRefractions.Location = new System.Drawing.Point(9, 65);
+            this.checkBoxWaterRefractions.Name = "checkBoxWaterRefractions";
+            this.checkBoxWaterRefractions.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxWaterRefractions.TabIndex = 2;
+            this.checkBoxWaterRefractions.Text = "Refractions";
+            this.checkBoxWaterRefractions.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxWaterReflections
+            // 
+            this.checkBoxWaterReflections.AutoSize = true;
+            this.checkBoxWaterReflections.Checked = true;
+            this.checkBoxWaterReflections.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxWaterReflections.Location = new System.Drawing.Point(9, 42);
+            this.checkBoxWaterReflections.Name = "checkBoxWaterReflections";
+            this.checkBoxWaterReflections.Size = new System.Drawing.Size(79, 17);
+            this.checkBoxWaterReflections.TabIndex = 1;
+            this.checkBoxWaterReflections.Text = "Reflections";
+            this.checkBoxWaterReflections.UseVisualStyleBackColor = true;
             // 
             // checkBoxWaterDisplacement
             // 
@@ -1544,7 +1601,7 @@
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxLensFlare);
             this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 117);
             this.groupBoxPostProcessing.Name = "groupBoxPostProcessing";
-            this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 179);
+            this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 169);
             this.groupBoxPostProcessing.TabIndex = 10;
             this.groupBoxPostProcessing.TabStop = false;
             this.groupBoxPostProcessing.Text = "Post-processing";
@@ -4231,5 +4288,9 @@
         private System.Windows.Forms.CheckBox checkBoxForceVanityMode;
         private System.Windows.Forms.CheckBox checkBoxVanityMode;
         private System.Windows.Forms.CheckBox checkBoxMotionBlur;
+        private System.Windows.Forms.CheckBox checkBoxWaterReflections;
+        private System.Windows.Forms.CheckBox checkBoxWaterHiRes;
+        private System.Windows.Forms.CheckBox checkBoxWaterRefractions;
+        private System.Windows.Forms.CheckBox checkBoxWaterFixSSRGlitch;
     }
 }

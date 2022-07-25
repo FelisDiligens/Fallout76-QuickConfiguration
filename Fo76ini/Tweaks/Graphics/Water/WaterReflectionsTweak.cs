@@ -8,9 +8,10 @@ namespace Fo76ini.Tweaks.Graphics
 {
     class WaterReflectionsTweak : ITweak<bool>, ITweakInfo
     {
-        public string Description => "Doesn't work. Disable SSR instead.";
+        public string Description => "Doesn't work like you'd expect. Disable SSR instead.\n" +
+                                     "⚠️ Might turn (distant) water invisible.";
 
-        public WarnLevel WarnLevel => WarnLevel.Experimental;
+        public WarnLevel WarnLevel => WarnLevel.Unsafe;
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 
