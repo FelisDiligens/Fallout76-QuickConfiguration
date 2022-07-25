@@ -45,8 +45,6 @@ namespace Fo76ini.Forms.FormMain.Tabs
                 "buttonDownloadLanguages",
                 "buttonRefreshLanguage"
             });
-
-            this.labelSettingsTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void UserControlSettings_Load(object sender, EventArgs e)
@@ -79,6 +77,11 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             Translation translation = (Translation)sender;
             this.labelOutdatedLanguage.Visible = translation.IsOutdated();
+
+            if (translation.UsesNonLatinCharacters)
+                this.labelSettingsTitle.Font = new Font("Impact", 18, FontStyle.Regular);
+            else
+                this.labelSettingsTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void buttonDownloadLanguages_Click(object sender, EventArgs e)

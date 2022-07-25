@@ -23,6 +23,9 @@ namespace Fo76ini.Forms.FormMain
             if (this.DesignMode)
                 return;
 
+            // Handle translations:
+            Translation.LanguageChanged += Translation_LanguageChanged;
+
             this.colorPreviewPipboy.BackColorChanged += colorPreviewPipboy_BackColorChanged;
             this.colorPreviewQuickboy.BackColorChanged += colorPreviewQuickboy_BackColorChanged;
             this.colorPreviewPAPipboy.BackColorChanged += colorPreviewPAPipboy_BackColorChanged;
@@ -30,6 +33,16 @@ namespace Fo76ini.Forms.FormMain
             LinkPipboyControls();
 
             this.labelPipboyTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+        }
+
+        private void Translation_LanguageChanged(object sender, TranslationEventArgs e)
+        {
+            Translation translation = (Translation)sender;
+
+            if (translation.UsesNonLatinCharacters)
+                this.labelPipboyTitle.Font = new Font("Impact", 18, FontStyle.Regular);
+            else
+                this.labelPipboyTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void LinkPipboyControls()

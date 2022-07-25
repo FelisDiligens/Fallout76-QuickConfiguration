@@ -34,9 +34,10 @@ namespace Fo76ini.Forms.FormMain.Tabs
             if (this.DesignMode)
                 return;
 
-            ProfileManager.ProfileChanged += OnProfileChanged;
+            // Handle translations:
+            Translation.LanguageChanged += Translation_LanguageChanged;
 
-            this.labelCustomTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+            ProfileManager.ProfileChanged += OnProfileChanged;
 
             // Syntax highlighting
             styles = new Style[] { comment, section, key, equalsSign, valueString, valueNumber };
@@ -58,6 +59,16 @@ namespace Fo76ini.Forms.FormMain.Tabs
             menu.MinFragmentLength = 2;
             menu.Items.MaximumSize = new Size(300, 300);
             menu.Items.Width = 300;
+        }
+
+        private void Translation_LanguageChanged(object sender, TranslationEventArgs e)
+        {
+            Translation translation = (Translation)sender;
+
+            if (translation.UsesNonLatinCharacters)
+                this.labelCustomTitle.Font = new Font("Impact", 18, FontStyle.Regular);
+            else
+                this.labelCustomTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         #region Event handler

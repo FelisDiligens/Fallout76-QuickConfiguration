@@ -35,6 +35,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
             if (this.DesignMode)
                 return;
 
+            // Handle translations:
+            Translation.LanguageChanged += Translation_LanguageChanged;
+
             HideTabHeader();
 
             this.comboBoxGameEdition.Items.Add(new ComboBoxItem("Steam", Resources.steam_24px));
@@ -52,9 +55,22 @@ namespace Fo76ini.Forms.FormMain.Tabs
             this.panelAdvancedOptions.Visible = false;
 
             ProfileManager.ProfileChanged += OnProfileChanged;
+        }
 
-            this.labelSelectTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
-            this.labelEditTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+        private void Translation_LanguageChanged(object sender, TranslationEventArgs e)
+        {
+            Translation translation = (Translation)sender;
+
+            if (translation.UsesNonLatinCharacters)
+            {
+                this.labelSelectTitle.Font = new Font("Impact", 18, FontStyle.Regular);
+                this.labelEditTitle.Font = new Font("Impact", 18, FontStyle.Regular);
+            }
+            else
+            {
+                this.labelSelectTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+                this.labelEditTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+            }
         }
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)

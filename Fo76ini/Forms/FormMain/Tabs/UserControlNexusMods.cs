@@ -24,6 +24,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
             if (this.DesignMode)
                 return;
 
+            // Handle translations:
+            Translation.LanguageChanged += Translation_LanguageChanged;
+
             // Add control elements to blacklist:
             Translation.BlackList.AddRange(new string[] {
                 "labelNMUserID",
@@ -38,6 +41,16 @@ namespace Fo76ini.Forms.FormMain.Tabs
             SingleSignOn.SSOFinished += SingleSignOn_SSOFinished;
 
             this.labelNexusTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+        }
+
+        private void Translation_LanguageChanged(object sender, TranslationEventArgs e)
+        {
+            Translation translation = (Translation)sender;
+
+            if (translation.UsesNonLatinCharacters)
+                this.labelNexusTitle.Font = new Font("Impact", 18, FontStyle.Regular);
+            else
+                this.labelNexusTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void UserControlNexusMods_Load(object sender, EventArgs e)

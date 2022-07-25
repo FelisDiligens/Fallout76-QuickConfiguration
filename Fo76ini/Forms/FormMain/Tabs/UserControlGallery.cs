@@ -51,6 +51,9 @@ namespace Fo76ini.Forms.FormMain
             if (this.DesignMode)
                 return;
 
+            // Handle translations:
+            Translation.LanguageChanged += Translation_LanguageChanged;
+
             ProfileManager.ProfileChanged += OnProfileChanged;
 
             this.backgroundWorkerLoadGallery.RunWorkerCompleted += backgroundWorkerLoadGallery_RunWorkerCompleted;
@@ -63,8 +66,16 @@ namespace Fo76ini.Forms.FormMain
             LinkControls();
             HideGalleryOptions();
             //LoadGallery();
+        }
 
-            this.labelGalleryTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+        private void Translation_LanguageChanged(object sender, TranslationEventArgs e)
+        {
+            Translation translation = (Translation)sender;
+
+            if (translation.UsesNonLatinCharacters)
+                this.labelGalleryTitle.Font = new Font("Impact", 18, FontStyle.Regular);
+            else
+                this.labelGalleryTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
         private void LinkControls()
