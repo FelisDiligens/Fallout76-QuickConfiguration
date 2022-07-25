@@ -21,6 +21,8 @@ namespace Fo76ini.Tweaks.Graphics
         public int DefaultValue => 3;
 
         public string Identifier => this.GetType().FullName;
+        
+        public bool UIReloadNecessary => false;
 
         public int GetValue()
         {

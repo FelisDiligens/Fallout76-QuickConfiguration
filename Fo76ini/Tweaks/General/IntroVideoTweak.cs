@@ -20,6 +20,8 @@ namespace Fo76ini.Tweaks.General
 
         public string Identifier => this.GetType().FullName;
 
+        public bool UIReloadNecessary => false;
+
         public bool GetValue()
         {
             string sIntroSequence = IniFiles.GetString("General", "sIntroSequence", "BGSLogo4k.bk2").Trim();

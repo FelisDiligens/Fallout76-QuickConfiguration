@@ -24,6 +24,8 @@ namespace Fo76ini.Tweaks.Graphics
 
         public string Identifier => this.GetType().FullName + "Rev1";
 
+        public bool UIReloadNecessary => false;
+
         public float GetValue()
         {
             return IniFiles.GetFloat("Display", "fTAAPostOverlay", DefaultValue);

@@ -29,6 +29,8 @@ namespace Fo76ini.Tweaks.Graphics
 
         public WarnLevel WarnLevel => WarnLevel.Unsafe;
 
+        public bool UIReloadNecessary => false;
+
         public bool GetValue()
         {
             return IniFiles.GetFloat("Display", "fAdaptativeLightEvMax", 6f) > 0f;

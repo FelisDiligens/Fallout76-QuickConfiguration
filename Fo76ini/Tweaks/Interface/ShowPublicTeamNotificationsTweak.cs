@@ -19,6 +19,8 @@ namespace Fo76ini.Tweaks.Interface
         public bool DefaultValue => true;
 
         public string Identifier => this.GetType().FullName;
+        
+        public bool UIReloadNecessary => false;
 
         public bool GetValue()
         {

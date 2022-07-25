@@ -20,6 +20,8 @@ namespace Fo76ini.Tweaks.Graphics.Effects
 
         public string Identifier => this.GetType().FullName;
 
+        public bool UIReloadNecessary => false;
+
         public bool GetValue()
         {
             return IniFiles.GetBool("ScreenSplatter", "bBloodSplatterEnabled", DefaultValue);

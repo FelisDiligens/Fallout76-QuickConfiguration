@@ -19,6 +19,8 @@ namespace Fo76ini.Tweaks.Graphics
         public bool DefaultValue => false;
 
         public string Identifier => this.GetType().FullName;
+        
+        public bool UIReloadNecessary => true; // effects SSR fix
 
         public bool GetValue()
         {

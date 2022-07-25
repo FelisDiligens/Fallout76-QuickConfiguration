@@ -45,6 +45,8 @@ namespace Fo76ini.Tweaks.Graphics
         // https://stackoverflow.com/a/16946496
         public int Count => Enum.GetNames(typeof(AntiAliasing)).Length;
 
+        public bool UIReloadNecessary => false;
+
         public AntiAliasing GetValue()
         {
             switch (IniFiles.GetString("Display", "sAntiAliasing", DefaultValue.ToString()))

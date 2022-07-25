@@ -1541,7 +1541,6 @@
             this.checkBoxWaterFixSSRGlitch.TabIndex = 4;
             this.checkBoxWaterFixSSRGlitch.Text = "Fix black/invisible water";
             this.checkBoxWaterFixSSRGlitch.UseVisualStyleBackColor = true;
-            this.checkBoxWaterFixSSRGlitch.CheckedChanged += new System.EventHandler(this.checkBoxWaterFixSSRGlitch_CheckedChanged);
             // 
             // checkBoxWaterHiRes
             // 

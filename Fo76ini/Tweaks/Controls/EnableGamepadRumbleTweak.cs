@@ -20,6 +20,8 @@ namespace Fo76ini.Tweaks.Controls
 
         public string Identifier => this.GetType().FullName;
 
+        public bool UIReloadNecessary => false;
+
         public bool GetValue()
         {
             return IniFiles.GetBool("Controls", "bGamePadRumble", DefaultValue);

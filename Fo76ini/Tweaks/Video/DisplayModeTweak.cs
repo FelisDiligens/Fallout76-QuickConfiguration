@@ -40,6 +40,8 @@ namespace Fo76ini.Tweaks.Video
         public DisplayMode DefaultValue => DisplayMode.BorderlessWindowed;
 
         public string Identifier => this.GetType().FullName;
+        
+        public bool UIReloadNecessary => false;
 
         // https://stackoverflow.com/a/16946496
         public int Count => Enum.GetNames(typeof(DisplayMode)).Length;

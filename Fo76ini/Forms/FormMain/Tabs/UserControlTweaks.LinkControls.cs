@@ -407,7 +407,7 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkTweak(checkBoxWaterHiRes, waterHiResTweak);
 
             // Water / Fix SSR glitch
-            // LinkedTweaks.LinkTweak(checkBoxWaterFixSSRGlitch, waterFixSSRGlitchTweak);
+            LinkedTweaks.LinkTweak(checkBoxWaterFixSSRGlitch, waterFixSSRGlitchTweak);
 
             // Lighting / Volumetric Lighting
             LinkedTweaks.LinkTweak(checkBoxGodrays, volumetricLightingTweak);

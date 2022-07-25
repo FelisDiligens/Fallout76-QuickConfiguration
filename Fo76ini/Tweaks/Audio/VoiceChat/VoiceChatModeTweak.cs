@@ -31,6 +31,8 @@ namespace Fo76ini.Tweaks.Audio
         // https://stackoverflow.com/a/16946496
         public int Count => Enum.GetNames(typeof(VoiceChatMode)).Length;
 
+        public bool UIReloadNecessary => false;
+
         public VoiceChatMode GetValue()
         {
             return (VoiceChatMode)IniFiles.GetInt("Voice", "uTransmitPreference", (int)DefaultValue);

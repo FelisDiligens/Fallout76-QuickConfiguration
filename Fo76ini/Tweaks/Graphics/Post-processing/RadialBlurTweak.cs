@@ -21,6 +21,8 @@ namespace Fo76ini.Tweaks.Graphics
 
         public string Identifier => this.GetType().FullName + "Rev1";
 
+        public bool UIReloadNecessary => false;
+
         public bool GetValue()
         {
             return IniFiles.GetBool("ImageSpace", "bDoRadialBlur", DefaultValue);

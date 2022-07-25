@@ -28,6 +28,8 @@ namespace Fo76ini.Tweaks.Graphics
         public float DefaultValue => 90000f;
 
         public string Identifier => this.GetType().FullName;
+        
+        public bool UIReloadNecessary => false;
 
         public float GetValue()
         {

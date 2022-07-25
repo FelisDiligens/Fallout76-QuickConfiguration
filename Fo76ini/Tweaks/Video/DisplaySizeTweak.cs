@@ -20,6 +20,8 @@ namespace Fo76ini.Tweaks.Video
         public Size DefaultValue => new Size(1920, 1080);
 
         public string Identifier => this.GetType().FullName;
+        
+        public bool UIReloadNecessary => false;
 
         public Size GetValue()
         {

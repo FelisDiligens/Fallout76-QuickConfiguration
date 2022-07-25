@@ -20,6 +20,8 @@ namespace Fo76ini.Tweaks.Pipboy
         public Size DefaultValue => new Size(876, 700);
 
         public string Identifier => this.GetType().FullName;
+        
+        public bool UIReloadNecessary => false;
 
         public Size GetValue()
         {

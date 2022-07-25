@@ -27,6 +27,8 @@ namespace Fo76ini.Tweaks.Interface
         public CorpseHighlighting DefaultValue => CorpseHighlighting.ClearOnRemove;
 
         public string Identifier => this.GetType().FullName;
+        
+        public bool UIReloadNecessary => false;
 
         // https://stackoverflow.com/a/16946496
         public int Count => Enum.GetNames(typeof(ActiveEffectsOnHUD)).Length;

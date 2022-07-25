@@ -260,12 +260,12 @@ namespace Fo76ini.Tweaks
 
         public static void LinkTweak(CheckBox checkBox, ITweak<bool> tweak)
         {
-            Link(checkBox, (tweak.GetValue, tweak.SetValue));
+            Link(checkBox, (tweak.GetValue, tweak.SetValue), tweak.UIReloadNecessary);
         }
 
         public static void LinkTweakNegated(CheckBox checkBox, ITweak<bool> tweak)
         {
-            LinkNegated(checkBox, (tweak.GetValue, tweak.SetValue));
+            LinkNegated(checkBox, (tweak.GetValue, tweak.SetValue), tweak.UIReloadNecessary);
         }
 
         public static void LinkTweak(RadioButton radioButtonTrue, RadioButton radioButtonFalse, ITweak<bool> tweak)
@@ -280,12 +280,20 @@ namespace Fo76ini.Tweaks
             radioButtonTrue.MouseClick += (object sender, MouseEventArgs e) =>
             {
                 if (radioButtonTrue.Checked)
+                {
                     tweak.SetValue(true);
+                    if (tweak.UIReloadNecessary)
+                        LinkedTweaks.LoadValues();
+                }
             };
             radioButtonFalse.MouseClick += (object sender, MouseEventArgs e) =>
             {
                 if (radioButtonFalse.Checked)
+                {
                     tweak.SetValue(false);
+                    if (tweak.UIReloadNecessary)
+                        LinkedTweaks.LoadValues();
+                }
             };
         }
 
@@ -446,16 +454,26 @@ namespace Fo76ini.Tweaks
          **************************************************************
          */
 
-        public static void Link(CheckBox checkBox, (Func<bool> get, Action<bool> set) value)
+        public static void Link(CheckBox checkBox, (Func<bool> get, Action<bool> set) value, bool reloadUI = false)
         {
             SetValueActions.Add(() => checkBox.Checked = value.get());
-            checkBox.MouseClick += (object sender, MouseEventArgs e) => value.set(checkBox.Checked);
+            checkBox.MouseClick += (object sender, MouseEventArgs e) =>
+            {
+                value.set(checkBox.Checked);
+                if (reloadUI)
+                    LinkedTweaks.LoadValues();
+            };
         }
 
-        public static void LinkNegated(CheckBox checkBox, (Func<bool> get, Action<bool> set) value)
+        public static void LinkNegated(CheckBox checkBox, (Func<bool> get, Action<bool> set) value, bool reloadUI = false)
         {
             SetValueActions.Add(() => checkBox.Checked = !value.get());
-            checkBox.MouseClick += (object sender, MouseEventArgs e) => value.set(!checkBox.Checked);
+            checkBox.MouseClick += (object sender, MouseEventArgs e) =>
+            {
+                value.set(!checkBox.Checked);
+                if (reloadUI)
+                    LinkedTweaks.LoadValues();
+            };
         }
     }
 }

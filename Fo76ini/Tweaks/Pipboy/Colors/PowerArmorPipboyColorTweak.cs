@@ -23,6 +23,8 @@ namespace Fo76ini.Tweaks.Colors
              "  [Pipboy]fPAEffectColorG",
              "  [Pipboy]fPAEffectColorB",
              "");
+        
+        public bool UIReloadNecessary => false;
 
         public Color GetValue()
         {

@@ -22,6 +22,8 @@ namespace Fo76ini.Tweaks.Graphics
 
         public string Identifier => this.GetType().FullName;
 
+        public bool UIReloadNecessary => false; // true (SSR fix)
+
         public int GetValue()
         {
             return IniFiles.GetInt("Display", "fBlendSplitDirShadow", DefaultValue);

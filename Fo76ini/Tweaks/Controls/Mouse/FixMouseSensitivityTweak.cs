@@ -42,6 +42,8 @@ namespace Fo76ini.Tweaks.Controls
 
         public string Identifier => this.GetType().FullName;
 
+        public bool UIReloadNecessary => false;
+
         public bool GetValue()
         {
             return IniFiles.GetFloat("Controls", "fMouseHeadingXScale", 0.021f) != IniFiles.GetFloat("Controls", "fMouseHeadingYScale", 0.021f);

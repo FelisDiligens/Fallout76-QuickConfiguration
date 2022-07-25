@@ -551,15 +551,5 @@ namespace Fo76ini.Forms.FormMain
         }
 
         #endregion
-
-        #region Tweaks
-
-        private void checkBoxWaterFixSSRGlitch_CheckedChanged(object sender, EventArgs e)
-        {
-            this.waterFixSSRGlitchTweak.SetValue(this.checkBoxWaterFixSSRGlitch.Checked);
-            LinkedTweaks.LoadValues();
-        }
-
-        #endregion
     }
 }

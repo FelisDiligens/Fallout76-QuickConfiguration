@@ -20,6 +20,8 @@ namespace Fo76ini.Tweaks.Volume
 
         public string Identifier => this.GetType().FullName;
 
+        public bool UIReloadNecessary => false;
+
         public int GetValue()
         {
             return IniFiles.GetInt("Voice", "uVivoxVoiceVolume", DefaultValue);

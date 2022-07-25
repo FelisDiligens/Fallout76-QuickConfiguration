@@ -23,6 +23,8 @@ namespace Fo76ini.Tweaks.General
 
         public string Identifier => this.GetType().FullName;
 
+        public bool UIReloadNecessary => false;
+
         public int GetValue()
         {
             return IniFiles.GetInt("Display", "iScreenShotIndex", DefaultValue);

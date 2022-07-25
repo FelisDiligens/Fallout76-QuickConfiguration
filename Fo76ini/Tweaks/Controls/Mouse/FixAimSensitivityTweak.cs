@@ -26,6 +26,8 @@ namespace Fo76ini.Tweaks.Controls
 
         public string Identifier => this.GetType().FullName;
 
+        public bool UIReloadNecessary => false;
+
         public bool GetValue()
         {
             return Math.Abs(IniFiles.GetFloat("MAIN", "fIronSightsFOVRotateMult", 1.0f) - 2.14f) < 0.1f;

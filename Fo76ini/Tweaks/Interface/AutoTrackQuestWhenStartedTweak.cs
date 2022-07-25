@@ -43,6 +43,8 @@ namespace Fo76ini.Tweaks.Interface
         public bool DefaultValue { get; }
 
         public string Identifier => this.GetType().FullName + "+" + this.KeyPrefix;
+        
+        public bool UIReloadNecessary => false;
 
         public bool GetValue()
         {

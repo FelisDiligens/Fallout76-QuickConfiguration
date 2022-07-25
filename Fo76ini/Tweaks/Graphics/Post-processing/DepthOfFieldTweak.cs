@@ -31,6 +31,8 @@ namespace Fo76ini.Tweaks.Graphics
 
         public string Identifier => this.GetType().FullName;
 
+        public bool UIReloadNecessary => false; // true
+
         public bool GetValue()
         {
             return IniFiles.GetBool("ImageSpace", "bDynamicDepthOfField", true);

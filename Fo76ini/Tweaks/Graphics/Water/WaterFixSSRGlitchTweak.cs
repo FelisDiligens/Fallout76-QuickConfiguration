@@ -32,6 +32,8 @@ namespace Fo76ini.Tweaks.Graphics
 
         public string Identifier => this.GetType().FullName;
 
+        public bool UIReloadNecessary => true;
+
         public bool GetValue()
         {
             // Since it's a tweak that doesn't correspond to any particular ini value,

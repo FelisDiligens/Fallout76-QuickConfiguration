@@ -15,6 +15,14 @@
         void ResetValue();
 
         T DefaultValue { get; }
+
+        /// <summary>
+        /// When the value changes, should the UI be updated?
+        /// </summary>
+        /// <remarks>
+        /// Currently only implemented for checkboxes.
+        /// </remarks>
+        bool UIReloadNecessary { get; }
     }
 
     public enum WarnLevel
