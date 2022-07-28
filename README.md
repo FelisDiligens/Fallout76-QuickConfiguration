@@ -32,7 +32,7 @@
 - Change your FOV.
 - Mouse sensitivity fix for ALL aspect ratios.
 
-### Pipboy customization
+### Pip-Boy customization
 - Change the color and resolution of your Pipboy and Quickboy.
 - Use color presets from previous Fallout games.
 - See a preview of how the color will look in the game.
@@ -98,11 +98,12 @@ Otherwise the .NET installer might fail or the tool might not start.
 * [Pacoboyd](https://www.nexusmods.com/fallout76/users/27163): Advice, ideas, and "bAutoSignin=1" tweak. 
 
 ### Translators:
+* Russian by [Sondju](https://forums.nexusmods.com/index.php?/user/6969601-sondju/)
 * Simplified Chinese
-  * for v1.9.5 (latest translation) by ColaNaramon (可乐の魂)
+  * for v1.11.1 (latest translation) by [SugarBombsRADS (BulaLuka)](https://forums.nexusmods.com/index.php?/user/90175763-bulaluka/)
+  * for v1.9.5 by ColaNaramon (可乐の魂)
   * for v1.8.2 by [micus2048](https://www.nexusmods.com/users/97619783)
   * for v1.6.2 by [Broodahood](https://forums.nexusmods.com/index.php?/user/68821693-broodahood/)
-* Russian by [Sondju](https://forums.nexusmods.com/index.php?/user/6969601-sondju/)
 * French by Christophe Noret (aka. [kr1ss](https://www.nexusmods.com/fallout76/users/22658164)) and [3z3k3yl](https://forums.nexusmods.com/index.php?/user/26975924-3z3k3yl/)
 * Polish by [Gray770](https://forums.nexusmods.com/index.php?/user/91201958-gray770/)
 * Swedish by [Pforga](https://forums.nexusmods.com/index.php?/user/634766-pforga/)
