@@ -466,7 +466,7 @@
             this.groupBoxGameplay.Controls.Add(this.checkBoxBackpackVisible);
             this.groupBoxGameplay.Controls.Add(this.labelHighlightCorpses);
             this.groupBoxGameplay.Controls.Add(this.comboBoxHighlightCorpses);
-            this.groupBoxGameplay.Location = new System.Drawing.Point(6, 141);
+            this.groupBoxGameplay.Location = new System.Drawing.Point(9, 144);
             this.groupBoxGameplay.Name = "groupBoxGameplay";
             this.groupBoxGameplay.Size = new System.Drawing.Size(400, 77);
             this.groupBoxGameplay.TabIndex = 2;
@@ -509,7 +509,7 @@
             this.groupBoxDialogue.Controls.Add(this.checkBoxDialogueHistory);
             this.groupBoxDialogue.Controls.Add(this.checkBoxDialogueSubtitles);
             this.groupBoxDialogue.Controls.Add(this.checkBoxGeneralSubtitles);
-            this.groupBoxDialogue.Location = new System.Drawing.Point(6, 227);
+            this.groupBoxDialogue.Location = new System.Drawing.Point(9, 230);
             this.groupBoxDialogue.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxDialogue.Name = "groupBoxDialogue";
             this.groupBoxDialogue.Size = new System.Drawing.Size(400, 167);
@@ -602,7 +602,7 @@
             this.groupBoxHUD.Controls.Add(this.comboBoxShowActiveEffectsOnHUD);
             this.groupBoxHUD.Controls.Add(this.sliderHUDOpacity);
             this.groupBoxHUD.Controls.Add(this.numHUDOpacity);
-            this.groupBoxHUD.Location = new System.Drawing.Point(6, 403);
+            this.groupBoxHUD.Location = new System.Drawing.Point(9, 406);
             this.groupBoxHUD.Name = "groupBoxHUD";
             this.groupBoxHUD.Size = new System.Drawing.Size(400, 387);
             this.groupBoxHUD.TabIndex = 4;
@@ -820,7 +820,7 @@
             // groupBoxLoading
             // 
             this.groupBoxLoading.Controls.Add(this.checkBoxFasterFadeIn);
-            this.groupBoxLoading.Location = new System.Drawing.Point(6, 86);
+            this.groupBoxLoading.Location = new System.Drawing.Point(9, 89);
             this.groupBoxLoading.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxLoading.Name = "groupBoxLoading";
             this.groupBoxLoading.Size = new System.Drawing.Size(400, 46);
@@ -845,7 +845,7 @@
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMisc);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackSide);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMain);
-            this.groupBoxQuests.Location = new System.Drawing.Point(6, 799);
+            this.groupBoxQuests.Location = new System.Drawing.Point(9, 802);
             this.groupBoxQuests.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxQuests.Name = "groupBoxQuests";
             this.groupBoxQuests.Size = new System.Drawing.Size(400, 142);
@@ -907,7 +907,7 @@
             // 
             this.groupBoxMainMenu.Controls.Add(this.checkBoxSkipSplash);
             this.groupBoxMainMenu.Controls.Add(this.checkBoxSkipIntroVideos);
-            this.groupBoxMainMenu.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxMainMenu.Location = new System.Drawing.Point(9, 9);
             this.groupBoxMainMenu.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxMainMenu.Name = "groupBoxMainMenu";
             this.groupBoxMainMenu.Size = new System.Drawing.Size(400, 68);
@@ -1855,7 +1855,7 @@
             // 
             this.groupBoxAudio.Controls.Add(this.checkBoxEnableAudio);
             this.groupBoxAudio.Controls.Add(this.checkBoxMainMenuMusic);
-            this.groupBoxAudio.Location = new System.Drawing.Point(6, 387);
+            this.groupBoxAudio.Location = new System.Drawing.Point(9, 390);
             this.groupBoxAudio.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxAudio.Name = "groupBoxAudio";
             this.groupBoxAudio.Size = new System.Drawing.Size(400, 81);
@@ -1890,7 +1890,7 @@
             this.groupBoxVoice.Controls.Add(this.comboBoxVoiceChatMode);
             this.groupBoxVoice.Controls.Add(this.labelVoiceChatMode);
             this.groupBoxVoice.Controls.Add(this.checkBoxPushToTalk);
-            this.groupBoxVoice.Location = new System.Drawing.Point(6, 480);
+            this.groupBoxVoice.Location = new System.Drawing.Point(9, 483);
             this.groupBoxVoice.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxVoice.Name = "groupBoxVoice";
             this.groupBoxVoice.Size = new System.Drawing.Size(400, 89);
@@ -1955,7 +1955,7 @@
             this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal4);
             this.groupBoxAudioVolume.Controls.Add(this.labelAudiofVal3);
             this.groupBoxAudioVolume.Controls.Add(this.numAudiofVal3);
-            this.groupBoxAudioVolume.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxAudioVolume.Location = new System.Drawing.Point(9, 9);
             this.groupBoxAudioVolume.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxAudioVolume.Name = "groupBoxAudioVolume";
             this.groupBoxAudioVolume.Size = new System.Drawing.Size(400, 369);
@@ -2405,7 +2405,7 @@
             this.groupBoxGamepad.Controls.Add(this.checkBoxAimAssist);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadEnabled);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadRumble);
-            this.groupBoxGamepad.Location = new System.Drawing.Point(6, 269);
+            this.groupBoxGamepad.Location = new System.Drawing.Point(9, 272);
             this.groupBoxGamepad.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGamepad.Name = "groupBoxGamepad";
             this.groupBoxGamepad.Size = new System.Drawing.Size(400, 105);
@@ -2461,7 +2461,7 @@
             this.groupBoxMouse.Controls.Add(this.numMouseSensitivityX);
             this.groupBoxMouse.Controls.Add(this.labelMouseSensitivityX);
             this.groupBoxMouse.Controls.Add(this.checkBoxFixMouseSensitivity);
-            this.groupBoxMouse.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxMouse.Location = new System.Drawing.Point(9, 9);
             this.groupBoxMouse.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxMouse.Name = "groupBoxMouse";
             this.groupBoxMouse.Size = new System.Drawing.Size(400, 251);
@@ -2638,7 +2638,7 @@
             this.groupBoxCameraPosition.Controls.Add(this.buttonCameraPositionReset);
             this.groupBoxCameraPosition.Controls.Add(this.checkBoxbApplyCameraNodeAnimations);
             this.groupBoxCameraPosition.Controls.Add(this.groupBoxUnarmedCameraPosition);
-            this.groupBoxCameraPosition.Location = new System.Drawing.Point(6, 867);
+            this.groupBoxCameraPosition.Location = new System.Drawing.Point(9, 862);
             this.groupBoxCameraPosition.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCameraPosition.Name = "groupBoxCameraPosition";
             this.groupBoxCameraPosition.Size = new System.Drawing.Size(400, 588);
@@ -3052,7 +3052,7 @@
             // 
             this.groupBoxFOVMore.Controls.Add(this.labelADSFOV);
             this.groupBoxFOVMore.Controls.Add(this.numADSFOV);
-            this.groupBoxFOVMore.Location = new System.Drawing.Point(6, 423);
+            this.groupBoxFOVMore.Location = new System.Drawing.Point(9, 418);
             this.groupBoxFOVMore.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxFOVMore.Name = "groupBoxFOVMore";
             this.groupBoxFOVMore.Size = new System.Drawing.Size(400, 52);
@@ -3108,7 +3108,7 @@
             this.groupBoxSelfieCamera.Controls.Add(this.numericUpDownPhotomodeTranslationSpeed);
             this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeTranslationSpeed);
             this.groupBoxSelfieCamera.Controls.Add(this.labelPhotomodeTranslationSpeed);
-            this.groupBoxSelfieCamera.Location = new System.Drawing.Point(6, 632);
+            this.groupBoxSelfieCamera.Location = new System.Drawing.Point(9, 627);
             this.groupBoxSelfieCamera.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxSelfieCamera.Name = "groupBoxSelfieCamera";
             this.groupBoxSelfieCamera.Size = new System.Drawing.Size(400, 134);
@@ -3260,7 +3260,7 @@
             // 
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxForceVanityMode);
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxVanityMode);
-            this.groupBoxIdleCamera.Location = new System.Drawing.Point(6, 778);
+            this.groupBoxIdleCamera.Location = new System.Drawing.Point(9, 773);
             this.groupBoxIdleCamera.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxIdleCamera.Name = "groupBoxIdleCamera";
             this.groupBoxIdleCamera.Size = new System.Drawing.Size(400, 77);
@@ -3303,7 +3303,7 @@
             this.groupBoxCameraDistance.Controls.Add(this.labelCameraDistanceMaximum);
             this.groupBoxCameraDistance.Controls.Add(this.labelCameraDistanceMinimum);
             this.groupBoxCameraDistance.Controls.Add(this.sliderCameraDistanceMinimum);
-            this.groupBoxCameraDistance.Location = new System.Drawing.Point(6, 487);
+            this.groupBoxCameraDistance.Location = new System.Drawing.Point(9, 482);
             this.groupBoxCameraDistance.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCameraDistance.Name = "groupBoxCameraDistance";
             this.groupBoxCameraDistance.Size = new System.Drawing.Size(400, 133);
@@ -3446,10 +3446,10 @@
             this.groupBoxFieldOfView.Controls.Add(this.pictureBoxFOVPreview);
             this.groupBoxFieldOfView.Controls.Add(this.sliderFOV);
             this.groupBoxFieldOfView.Controls.Add(this.numFOV);
-            this.groupBoxFieldOfView.Location = new System.Drawing.Point(6, 6);
-            this.groupBoxFieldOfView.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxFieldOfView.Location = new System.Drawing.Point(9, 9);
+            this.groupBoxFieldOfView.Margin = new System.Windows.Forms.Padding(9);
             this.groupBoxFieldOfView.Name = "groupBoxFieldOfView";
-            this.groupBoxFieldOfView.Size = new System.Drawing.Size(626, 405);
+            this.groupBoxFieldOfView.Size = new System.Drawing.Size(619, 394);
             this.groupBoxFieldOfView.TabIndex = 0;
             this.groupBoxFieldOfView.TabStop = false;
             this.groupBoxFieldOfView.Text = "Field of View";
@@ -3462,7 +3462,7 @@
             this.pictureBoxFOVPreview.BackColor = System.Drawing.Color.Gray;
             this.pictureBoxFOVPreview.Location = new System.Drawing.Point(0, 45);
             this.pictureBoxFOVPreview.Name = "pictureBoxFOVPreview";
-            this.pictureBoxFOVPreview.Size = new System.Drawing.Size(626, 360);
+            this.pictureBoxFOVPreview.Size = new System.Drawing.Size(619, 349);
             this.pictureBoxFOVPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxFOVPreview.TabIndex = 53;
             this.pictureBoxFOVPreview.TabStop = false;
@@ -3477,7 +3477,7 @@
             this.sliderFOV.Maximum = 24;
             this.sliderFOV.Minimum = 14;
             this.sliderFOV.Name = "sliderFOV";
-            this.sliderFOV.Size = new System.Drawing.Size(540, 45);
+            this.sliderFOV.Size = new System.Drawing.Size(533, 45);
             this.sliderFOV.TabIndex = 0;
             this.sliderFOV.TickStyle = System.Windows.Forms.TickStyle.None;
             this.sliderFOV.Value = 24;
@@ -3490,7 +3490,7 @@
             0,
             0,
             0});
-            this.numFOV.Location = new System.Drawing.Point(552, 19);
+            this.numFOV.Location = new System.Drawing.Point(545, 19);
             this.numFOV.Maximum = new decimal(new int[] {
             180,
             0,
