@@ -46,6 +46,9 @@ namespace Fo76ini.Tweaks.Colors
             IniFiles.F76Prefs.Set("Pipboy", "fQuickBoyEffectColorR", r);
             IniFiles.F76Prefs.Set("Pipboy", "fQuickBoyEffectColorG", g);
             IniFiles.F76Prefs.Set("Pipboy", "fQuickBoyEffectColorB", b);
+            IniFiles.F76Custom.Set("Pipboy", "fQuickBoyEffectColorR", r);
+            IniFiles.F76Custom.Set("Pipboy", "fQuickBoyEffectColorG", g);
+            IniFiles.F76Custom.Set("Pipboy", "fQuickBoyEffectColorB", b);
         }
 
         public void ResetValue()
