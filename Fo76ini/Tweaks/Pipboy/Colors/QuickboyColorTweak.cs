@@ -14,7 +14,7 @@ namespace Fo76ini.Tweaks.Colors
 
         public WarnLevel WarnLevel => WarnLevel.None;
 
-        public string AffectedFiles => "Fallout76Prefs.ini";
+        public string AffectedFiles => "Fallout76Prefs.ini, Fallout76Custom.ini";
 
         public string AffectedValues => String.Join(
              Environment.NewLine,
