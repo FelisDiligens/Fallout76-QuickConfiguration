@@ -82,8 +82,6 @@ namespace Fo76ini
             // Disable scroll wheel on UI elements to prevent the user from accidentally changing values:
             Utils.PreventChangeOnMouseWheelForAllElements(this);
 
-            this.labelWelcome.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
-
         }
 
         private void FormMain_Load(object sender, EventArgs e)

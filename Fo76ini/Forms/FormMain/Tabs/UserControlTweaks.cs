@@ -242,11 +242,7 @@ namespace Fo76ini.Forms.FormMain
         {
             LoadTextResources();
 
-            Translation translation = (Translation)sender;
-            if (translation.UsesNonLatinCharacters)
-                this.labelTweaksTitle.Font = new Font("Impact", 18, FontStyle.Regular);
-            else
-                this.labelTweaksTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+            this.labelTweaksTitle.Font = CustomFonts.GetHeaderFont();
         }
 
         private void UserControlTweaks_Load(object sender, EventArgs e)

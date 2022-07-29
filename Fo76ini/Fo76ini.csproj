@@ -506,6 +506,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Oswald.ttf" />
+    <None Include="Resources\RobotoCondensed-Bold.ttf" />
+    <None Include="Resources\RobotoCondensed.ttf" />
     <None Include="Resources\wrench-2-24.png" />
     <None Include="Resources\fallout76-logo-black.png" />
     <None Include="Resources\fallout76-logo-white.png" />
