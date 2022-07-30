@@ -27,8 +27,6 @@ namespace Fo76ini
 
         private GameInstance game;
 
-        public readonly bool FirstStart;
-
         public FormMain()
         {
             InitializeComponent();
@@ -89,7 +87,7 @@ namespace Fo76ini
             this.timerCheckFiles.Enabled = true;
 
             // Load translations
-            if (FirstStart)
+            if (Initialization.FirstStart)
                 Localization.DownloadLanguageFiles(); // Download language on first start! Might hang the program for a while, if the internet connection is bad, though...
             Localization.GenerateDefaultTemplate();
             Localization.LookupLanguages();
