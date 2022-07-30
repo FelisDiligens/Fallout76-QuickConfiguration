@@ -8,8 +8,10 @@ This is a small update to address some bugs.
 
 - The textbox for the resource list in the mod manager has scrollbars now.
 - Fix: The Quick-Boy color wouldn't be applied if values in the Fallout76Custom.ini override them.
+- Fixed small issue that would prevent the tool from downloading translations on first start.
 - Translations:
   - The font for the titles changes depending on the selected language. (Russian uses Roboto, Chinese uses Microsoft JhengHei)
+- Minor changes
 
 </details>
 
