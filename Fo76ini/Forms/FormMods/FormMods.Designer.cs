@@ -905,11 +905,14 @@
             this.textBoxResourceList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxResourceList.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxResourceList.Location = new System.Drawing.Point(6, 37);
             this.textBoxResourceList.Multiline = true;
             this.textBoxResourceList.Name = "textBoxResourceList";
+            this.textBoxResourceList.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxResourceList.Size = new System.Drawing.Size(312, 380);
             this.textBoxResourceList.TabIndex = 54;
+            this.textBoxResourceList.WordWrap = false;
             // 
             // buttonModsCleanList
             // 

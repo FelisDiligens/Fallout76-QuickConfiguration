@@ -246,7 +246,7 @@
             // 
             this.labelPipboyColor.AutoSize = true;
             this.labelPipboyColor.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPipboyColor.Location = new System.Drawing.Point(97, 13);
+            this.labelPipboyColor.Location = new System.Drawing.Point(96, 13);
             this.labelPipboyColor.Name = "labelPipboyColor";
             this.labelPipboyColor.Size = new System.Drawing.Size(104, 20);
             this.labelPipboyColor.TabIndex = 32;

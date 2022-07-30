@@ -294,14 +294,6 @@ namespace Fo76ini
         private string fileName;
         private string filePath;
 
-        public bool UsesNonLatinCharacters
-        {
-            get
-            {
-                return NonLatinISOs.Contains(this.ISO);
-            }
-        }
-
 
         /// <summary>
         /// Add event handler to reload UI elements after the program has been translated to another language.
@@ -312,18 +304,6 @@ namespace Fo76ini
         /// Add control elements to this list if you want them to not be translated.
         /// </summary>
         public static List<string> BlackList = new List<string>{};
-
-        public static readonly List<string> NonLatinISOs = new List<string>
-        {
-            // I'll add more when people translate other languages.
-
-            // Russian
-            "ru-RU",
-
-            // Chinese
-            "zh-CN",
-            "zh-TW"
-        };
 
         private Dictionary<string, string> dictText = new Dictionary<string, string>();
         private Dictionary<string, string> dictTooltip = new Dictionary<string, string>();

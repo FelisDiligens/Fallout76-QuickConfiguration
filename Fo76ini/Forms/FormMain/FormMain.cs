@@ -27,8 +27,6 @@ namespace Fo76ini
 
         private GameInstance game;
 
-        public readonly bool FirstStart;
-
         public FormMain()
         {
             InitializeComponent();
@@ -82,8 +80,6 @@ namespace Fo76ini
             // Disable scroll wheel on UI elements to prevent the user from accidentally changing values:
             Utils.PreventChangeOnMouseWheelForAllElements(this);
 
-            this.labelWelcome.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
-
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -91,7 +87,7 @@ namespace Fo76ini
             this.timerCheckFiles.Enabled = true;
 
             // Load translations
-            if (FirstStart)
+            if (Initialization.FirstStart)
                 Localization.DownloadLanguageFiles(); // Download language on first start! Might hang the program for a while, if the internet connection is bad, though...
             Localization.GenerateDefaultTemplate();
             Localization.LookupLanguages();

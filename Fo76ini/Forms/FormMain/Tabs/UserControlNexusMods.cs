@@ -47,10 +47,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             Translation translation = (Translation)sender;
 
-            if (translation.UsesNonLatinCharacters)
-                this.labelNexusTitle.Font = new Font("Impact", 18, FontStyle.Regular);
-            else
-                this.labelNexusTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+            this.labelNexusTitle.Font = CustomFonts.GetHeaderFont();
         }
 
         private void UserControlNexusMods_Load(object sender, EventArgs e)

@@ -61,16 +61,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             Translation translation = (Translation)sender;
 
-            if (translation.UsesNonLatinCharacters)
-            {
-                this.labelSelectTitle.Font = new Font("Impact", 18, FontStyle.Regular);
-                this.labelEditTitle.Font = new Font("Impact", 18, FontStyle.Regular);
-            }
-            else
-            {
-                this.labelSelectTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
-                this.labelEditTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
-            }
+            this.labelSelectTitle.Font = CustomFonts.GetHeaderFont();
+            this.labelEditTitle.Font = CustomFonts.GetHeaderFont();
         }
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)

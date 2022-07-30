@@ -39,10 +39,7 @@ namespace Fo76ini.Forms.FormMain
         {
             Translation translation = (Translation)sender;
 
-            if (translation.UsesNonLatinCharacters)
-                this.labelPipboyTitle.Font = new Font("Impact", 18, FontStyle.Regular);
-            else
-                this.labelPipboyTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+            this.labelPipboyTitle.Font = CustomFonts.GetHeaderFont();
         }
 
         private void LinkPipboyControls()

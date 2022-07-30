@@ -20,6 +20,8 @@ namespace Fo76ini.Forms.FormMain
             InitializeComponent();
             ProfileManager.ProfileChanged += ProfileManager_ProfileChanged;
 
+            Translation.LanguageChanged += OnLanguageChanged;
+
             labelLogo.Font = new Font(CustomFonts.Overseer, labelLogo.Font.Size);
 
             // Add control elements to blacklist:
@@ -28,6 +30,31 @@ namespace Fo76ini.Forms.FormMain
             });
 
             this.buttonHome.Highlight = true;
+        }
+
+        private void OnLanguageChanged(object sender, TranslationEventArgs e)
+        {
+            // Change caption
+            GameInstance game = ProfileManager.SelectedGame;
+            this.buttonProfile.Text = game.Title + "\n" + Localization.GetString("gameEdition") + ": " + game.GetCaption() + "";
+
+            // Change font size
+            Font smallButtonFont;
+            switch (Localization.Locale)
+            {
+                case "ru-RU":
+                    smallButtonFont = new Font(buttonApply.Font.FontFamily, 8);
+                    break;
+                case "en-US":
+                    smallButtonFont = new Font(buttonApply.Font.FontFamily, 10);
+                    break;
+                default:
+                    smallButtonFont = new Font(buttonApply.Font.FontFamily, 9);
+                    break;
+            }
+            this.buttonPlay.Font = smallButtonFont;
+            this.buttonApply.Font = smallButtonFont;
+            this.buttonBrowse.Font = smallButtonFont;
         }
 
         private void ProfileManager_ProfileChanged(object sender, ProfileEventArgs e)

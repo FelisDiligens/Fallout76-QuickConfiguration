@@ -1,3 +1,22 @@
+### What's new in v1.11.1?
+
+This is a small update to address some bugs.
+
+**Changelog:**
+<details>
+<summary>Click to expand</summary>
+
+- The textbox for the resource list in the mod manager has scrollbars now.
+- Fix: The Quick-Boy color wouldn't be applied if values in the Fallout76Custom.ini override them.
+- Fixed small issue that would prevent the tool from downloading translations on first start.
+- Translations:
+  - The font for the titles changes depending on the selected language. (Russian uses Roboto, Chinese uses Microsoft JhengHei)
+- Minor changes
+
+</details>
+
+---
+
 ### What’s new in v1.11.0? - The "fresh coat of paint" update
 
 > **If you do not like the changes, you can download v1.10 from NexusMods or GitHub.**
@@ -17,8 +36,6 @@ As always, you can read the changelog below.
 Happy hunting,
 
 ~ datasnake
-
----
 
 **Changelog:**
 <details>

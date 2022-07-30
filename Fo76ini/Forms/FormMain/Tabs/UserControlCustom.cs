@@ -65,10 +65,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             Translation translation = (Translation)sender;
 
-            if (translation.UsesNonLatinCharacters)
-                this.labelCustomTitle.Font = new Font("Impact", 18, FontStyle.Regular);
-            else
-                this.labelCustomTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+            this.labelCustomTitle.Font = CustomFonts.GetHeaderFont();
         }
 
         #region Event handler

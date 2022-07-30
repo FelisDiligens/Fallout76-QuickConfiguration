@@ -72,10 +72,7 @@ namespace Fo76ini.Forms.FormMain
         {
             Translation translation = (Translation)sender;
 
-            if (translation.UsesNonLatinCharacters)
-                this.labelGalleryTitle.Font = new Font("Impact", 18, FontStyle.Regular);
-            else
-                this.labelGalleryTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+            this.labelGalleryTitle.Font = CustomFonts.GetHeaderFont();
         }
 
         private void LinkControls()

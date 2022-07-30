@@ -20,15 +20,51 @@ namespace Fo76ini.Utilities
         public static void Register()
         {
             InitCustomLabelFont(Resources.overseer);
+            InitCustomLabelFont(Resources.RobotoCondensed_Bold);
+        }
+
+        /// <summary>
+        /// Get header font depending on which language is selected.
+        /// </summary>
+        public static Font GetHeaderFont()
+        {
+            return GetHeaderFont(Localization.Locale);
+        }
+
+        /// <summary>
+        /// Get header font depending on which language is given.
+        /// </summary>
+        public static Font GetHeaderFont(string ISO)
+        {
+            switch (ISO)
+            {
+                case "ru-RU":
+                    return new Font(RobotoCondensed, 16, FontStyle.Bold);
+                case "zh-CN":
+                case "zh-TW":
+                    return new Font("Microsoft JhengHei", 18, FontStyle.Bold);
+                default:
+                    return new Font(Overseer, 20, FontStyle.Regular);
+            }
         }
 
         public static FontFamily Overseer
         {
             get
             {
-                if (pfc.Families.Length < 1)
+                if (pfc.Families.Length < 2)
                     return FallbackFont;
                 return pfc.Families[0];
+            }
+        }
+
+        public static FontFamily RobotoCondensed
+        {
+            get
+            {
+                if (pfc.Families.Length < 2)
+                    return FallbackFont;
+                return pfc.Families[1];
             }
         }
 

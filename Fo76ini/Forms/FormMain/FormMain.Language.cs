@@ -1,4 +1,7 @@
-﻿namespace Fo76ini
+﻿using Fo76ini.Utilities;
+using System.Drawing;
+
+namespace Fo76ini
 {
     partial class FormMain
     {
@@ -13,6 +16,9 @@
 
             // TODO: UpdateUI?
             this.CheckVersion();
+
+            // Set font:
+            this.labelWelcome.Font = CustomFonts.GetHeaderFont();
 
             this.Refresh(); // Forces redraw
         }
