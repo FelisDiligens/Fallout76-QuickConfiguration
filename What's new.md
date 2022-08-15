@@ -1,3 +1,19 @@
+### What's new in v1.11.2?
+
+This is another small update to address some bugs.
+
+**Changelog:**
+<details>
+<summary>Click to expand</summary>
+
+- Added a link to the app settings that opens the profile editing screen.
+- Improved the comparison of versions in the mod manager.  
+  This should fix the issue where the mod manager displays available updates even if the latest version is installed.
+
+</details>
+
+---
+
 ### What's new in v1.11.1?
 
 This is a small update to address some bugs.
