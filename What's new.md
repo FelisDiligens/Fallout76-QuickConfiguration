@@ -9,6 +9,7 @@ This is another small update to address some bugs.
 - Added a link to the app settings that opens the profile editing screen.
 - Improved the comparison of versions in the mod manager.  
   This should fix the issue where the mod manager displays available updates even if the latest version is installed.
+- Fixed a bug that would crash the mod manager when updating mod information using the NexusMods API.
 
 </details>
 
