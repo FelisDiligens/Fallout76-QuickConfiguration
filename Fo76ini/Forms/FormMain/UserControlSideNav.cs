@@ -1,8 +1,10 @@
-﻿using Fo76ini.Interface;
+﻿using Fo76ini.Controls;
+using Fo76ini.Interface;
 using Fo76ini.Profiles;
 using Fo76ini.Properties;
 using Fo76ini.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -14,6 +16,19 @@ namespace Fo76ini.Forms.FormMain
     public partial class UserControlSideNav : UserControl
     {
         PrivateFontCollection pfc = new PrivateFontCollection();
+
+        List<StyledButton> tabButtons;
+        int selectedTabIndex = -1;
+
+        public int SelectedTabIndex
+        {
+            get { return selectedTabIndex; }
+            set
+            {
+                selectedTabIndex = value;
+                UpdateNavButtonsHighlight();
+            }
+        }
 
         public UserControlSideNav()
         {
@@ -30,6 +45,21 @@ namespace Fo76ini.Forms.FormMain
             });
 
             this.buttonHome.Highlight = true;
+
+            // The order of (tab) buttons have to be the same as the order of tabpages:
+            tabButtons = new List<StyledButton>
+            {
+                this.buttonHome,
+                this.buttonTweaks,
+                // buttonMods
+                this.buttonPipboy,
+                this.buttonGallery,
+                this.buttonCustom,
+                this.buttonSettings,
+                this.buttonNexusMods,
+                // buttonUpdate
+                this.buttonProfile
+            };
         }
 
         private void OnLanguageChanged(object sender, TranslationEventArgs e)
@@ -101,23 +131,17 @@ namespace Fo76ini.Forms.FormMain
          * Event handler:
          */
 
-        private void ResetNavButtonsHighlight()
+        private void UpdateNavButtonsHighlight()
         {
-            this.buttonHome.Highlight = false;
-            this.buttonSettings.Highlight = false;
-            this.buttonCustom.Highlight = false;
-            this.buttonGallery.Highlight = false;
-            this.buttonProfile.Highlight = false;
-            this.buttonTweaks.Highlight = false;
-            this.buttonPipboy.Highlight = false;
-            this.buttonNexusMods.Highlight = false;
+            foreach (StyledButton button in tabButtons)
+                button.Highlight = false;
+
+            if (selectedTabIndex >= 0)
+                tabButtons[selectedTabIndex].Highlight = true;
         }
 
         private void buttonSettings_Click(object sender, EventArgs e)
         {
-            ResetNavButtonsHighlight();
-            this.buttonSettings.Highlight = true;
-
             if (SettingsClicked != null)
                 SettingsClicked(sender, e);
         }
@@ -139,9 +163,6 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
-            ResetNavButtonsHighlight();
-            this.buttonHome.Highlight = true;
-
             if (HomeClicked != null)
                 HomeClicked(sender, e);
         }
@@ -149,9 +170,6 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonTweaks_Click(object sender, EventArgs e)
         {
-            ResetNavButtonsHighlight();
-            this.buttonTweaks.Highlight = true;
-
             if (TweaksClicked != null)
                 TweaksClicked(sender, e);
         }
@@ -159,9 +177,6 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonPipboy_Click(object sender, EventArgs e)
         {
-            ResetNavButtonsHighlight();
-            this.buttonPipboy.Highlight = true;
-
             if (PipboyClicked != null)
                 PipboyClicked(sender, e);
         }
@@ -169,9 +184,6 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonGallery_Click(object sender, EventArgs e)
         {
-            ResetNavButtonsHighlight();
-            this.buttonGallery.Highlight = true;
-
             if (GalleryClicked != null)
                 GalleryClicked(sender, e);
         }
@@ -179,9 +191,6 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonCustom_Click(object sender, EventArgs e)
         {
-            ResetNavButtonsHighlight();
-            this.buttonCustom.Highlight = true;
-
             if (CustomClicked != null)
                 CustomClicked(sender, e);
         }
@@ -189,9 +198,6 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonProfile_Click(object sender, EventArgs e)
         {
-            ResetNavButtonsHighlight();
-            this.buttonProfile.Highlight = true;
-
             if (ProfileClicked != null)
                 ProfileClicked(sender, e);
         }
@@ -199,9 +205,6 @@ namespace Fo76ini.Forms.FormMain
 
         private void buttonNexusMods_Click(object sender, EventArgs e)
         {
-            ResetNavButtonsHighlight();
-            this.buttonNexusMods.Highlight = true;
-
             if (NexusClicked != null)
                 NexusClicked(sender, e);
         }

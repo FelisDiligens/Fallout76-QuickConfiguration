@@ -30,10 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.backgroundWorkerDownloadLanguages = new System.ComponentModel.BackgroundWorker();
-            this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.openFileDialogArchiveTwoPath = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSevenZipPath = new System.Windows.Forms.OpenFileDialog();
-            this.panelPadding = new System.Windows.Forms.Panel();
             this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
             this.labelLanguage = new System.Windows.Forms.Label();
             this.labelSettingsTitle = new System.Windows.Forms.Label();
@@ -71,26 +69,32 @@
             this.checkBoxNWAutoDeployMods = new System.Windows.Forms.CheckBox();
             this.labelSettingsNuclearWinterOptions = new System.Windows.Forms.Label();
             this.labelToggleNW = new System.Windows.Forms.Label();
+            this.panelSettingsLocalization = new System.Windows.Forms.Panel();
+            this.panelSettingsBehavior = new System.Windows.Forms.Panel();
+            this.panelSettingsUI = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.labelSettingsProfiles = new System.Windows.Forms.Label();
+            this.labelSettingsProfileNotice = new System.Windows.Forms.Label();
+            this.linkLabelOpenProfileEditor = new System.Windows.Forms.LinkLabel();
             this.buttonNWMode = new Fo76ini.Controls.StyledButton();
+            this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
+            this.panelSettingsLocalization.SuspendLayout();
+            this.panelSettingsBehavior.SuspendLayout();
+            this.panelSettingsUI.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // backgroundWorkerDownloadLanguages
             // 
             this.backgroundWorkerDownloadLanguages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDownloadLanguages_DoWork);
             this.backgroundWorkerDownloadLanguages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerDownloadLanguages_RunWorkerCompleted);
-            // 
-            // toolTip
-            // 
-            this.toolTip.AutoPopDelay = 20000;
-            this.toolTip.BackColor = System.Drawing.Color.White;
-            this.toolTip.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolTip.ForeColor = System.Drawing.Color.Black;
-            this.toolTip.InitialDelay = 500;
-            this.toolTip.OwnerDraw = true;
-            this.toolTip.Padding = new System.Drawing.Size(6, 6);
-            this.toolTip.ReshowDelay = 100;
-            this.toolTip.ShowAlways = true;
             // 
             // openFileDialogArchiveTwoPath
             // 
@@ -104,18 +108,11 @@
             this.openFileDialogSevenZipPath.Filter = "Executable|*.exe";
             this.openFileDialogSevenZipPath.FilterIndex = 2;
             // 
-            // panelPadding
-            // 
-            this.panelPadding.Location = new System.Drawing.Point(17, 863);
-            this.panelPadding.Name = "panelPadding";
-            this.panelPadding.Size = new System.Drawing.Size(289, 40);
-            this.panelPadding.TabIndex = 81;
-            // 
             // comboBoxLanguage
             // 
             this.comboBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLanguage.FormattingEnabled = true;
-            this.comboBoxLanguage.Location = new System.Drawing.Point(15, 93);
+            this.comboBoxLanguage.Location = new System.Drawing.Point(15, 38);
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.Size = new System.Drawing.Size(317, 21);
             this.comboBoxLanguage.TabIndex = 0;
@@ -123,7 +120,7 @@
             // labelLanguage
             // 
             this.labelLanguage.AutoSize = true;
-            this.labelLanguage.Location = new System.Drawing.Point(12, 77);
+            this.labelLanguage.Location = new System.Drawing.Point(12, 22);
             this.labelLanguage.Name = "labelLanguage";
             this.labelLanguage.Size = new System.Drawing.Size(58, 13);
             this.labelLanguage.TabIndex = 16;
@@ -145,7 +142,7 @@
             this.buttonDownloadLanguages.FlatAppearance.BorderSize = 0;
             this.buttonDownloadLanguages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDownloadLanguages.Image = global::Fo76ini.Properties.Resources.download_2_24;
-            this.buttonDownloadLanguages.Location = new System.Drawing.Point(262, 120);
+            this.buttonDownloadLanguages.Location = new System.Drawing.Point(262, 65);
             this.buttonDownloadLanguages.Name = "buttonDownloadLanguages";
             this.buttonDownloadLanguages.Size = new System.Drawing.Size(32, 32);
             this.buttonDownloadLanguages.TabIndex = 1;
@@ -155,7 +152,7 @@
             // pictureBoxSpinnerDownloadLanguages
             // 
             this.pictureBoxSpinnerDownloadLanguages.Image = global::Fo76ini.Properties.Resources.Spinner_24;
-            this.pictureBoxSpinnerDownloadLanguages.Location = new System.Drawing.Point(231, 124);
+            this.pictureBoxSpinnerDownloadLanguages.Location = new System.Drawing.Point(231, 69);
             this.pictureBoxSpinnerDownloadLanguages.Name = "pictureBoxSpinnerDownloadLanguages";
             this.pictureBoxSpinnerDownloadLanguages.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxSpinnerDownloadLanguages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -167,7 +164,7 @@
             // 
             this.labelSettingsLocalization.AutoSize = true;
             this.labelSettingsLocalization.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsLocalization.Location = new System.Drawing.Point(12, 55);
+            this.labelSettingsLocalization.Location = new System.Drawing.Point(12, 0);
             this.labelSettingsLocalization.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
             this.labelSettingsLocalization.Name = "labelSettingsLocalization";
             this.labelSettingsLocalization.Size = new System.Drawing.Size(78, 17);
@@ -181,7 +178,7 @@
             this.buttonRefreshLanguage.FlatAppearance.BorderSize = 0;
             this.buttonRefreshLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRefreshLanguage.Image = global::Fo76ini.Properties.Resources.available_updates;
-            this.buttonRefreshLanguage.Location = new System.Drawing.Point(300, 120);
+            this.buttonRefreshLanguage.Location = new System.Drawing.Point(300, 65);
             this.buttonRefreshLanguage.Name = "buttonRefreshLanguage";
             this.buttonRefreshLanguage.Size = new System.Drawing.Size(32, 32);
             this.buttonRefreshLanguage.TabIndex = 2;
@@ -191,7 +188,7 @@
             // checkBoxAutoApply
             // 
             this.checkBoxAutoApply.AutoSize = true;
-            this.checkBoxAutoApply.Location = new System.Drawing.Point(15, 219);
+            this.checkBoxAutoApply.Location = new System.Drawing.Point(15, 60);
             this.checkBoxAutoApply.Name = "checkBoxAutoApply";
             this.checkBoxAutoApply.Size = new System.Drawing.Size(351, 17);
             this.checkBoxAutoApply.TabIndex = 11;
@@ -201,7 +198,7 @@
             // checkBoxQuitOnGameLaunch
             // 
             this.checkBoxQuitOnGameLaunch.AutoSize = true;
-            this.checkBoxQuitOnGameLaunch.Location = new System.Drawing.Point(15, 196);
+            this.checkBoxQuitOnGameLaunch.Location = new System.Drawing.Point(15, 37);
             this.checkBoxQuitOnGameLaunch.Name = "checkBoxQuitOnGameLaunch";
             this.checkBoxQuitOnGameLaunch.Size = new System.Drawing.Size(223, 17);
             this.checkBoxQuitOnGameLaunch.TabIndex = 10;
@@ -211,7 +208,7 @@
             // labelOutdatedLanguage
             // 
             this.labelOutdatedLanguage.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelOutdatedLanguage.Location = new System.Drawing.Point(13, 120);
+            this.labelOutdatedLanguage.Location = new System.Drawing.Point(13, 65);
             this.labelOutdatedLanguage.Name = "labelOutdatedLanguage";
             this.labelOutdatedLanguage.Size = new System.Drawing.Size(212, 51);
             this.labelOutdatedLanguage.TabIndex = 21;
@@ -220,7 +217,7 @@
             // labelSevenZipPath
             // 
             this.labelSevenZipPath.AutoSize = true;
-            this.labelSevenZipPath.Location = new System.Drawing.Point(13, 605);
+            this.labelSevenZipPath.Location = new System.Drawing.Point(12, 151);
             this.labelSevenZipPath.Name = "labelSevenZipPath";
             this.labelSevenZipPath.Size = new System.Drawing.Size(65, 13);
             this.labelSevenZipPath.TabIndex = 42;
@@ -229,7 +226,7 @@
             // checkBoxIgnoreUpdates
             // 
             this.checkBoxIgnoreUpdates.AutoSize = true;
-            this.checkBoxIgnoreUpdates.Location = new System.Drawing.Point(15, 243);
+            this.checkBoxIgnoreUpdates.Location = new System.Drawing.Point(15, 84);
             this.checkBoxIgnoreUpdates.Name = "checkBoxIgnoreUpdates";
             this.checkBoxIgnoreUpdates.Size = new System.Drawing.Size(140, 17);
             this.checkBoxIgnoreUpdates.TabIndex = 12;
@@ -239,7 +236,7 @@
             // 
             // buttonPickArchiveTwoPath
             // 
-            this.buttonPickArchiveTwoPath.Location = new System.Drawing.Point(359, 571);
+            this.buttonPickArchiveTwoPath.Location = new System.Drawing.Point(358, 117);
             this.buttonPickArchiveTwoPath.Name = "buttonPickArchiveTwoPath";
             this.buttonPickArchiveTwoPath.Size = new System.Drawing.Size(28, 23);
             this.buttonPickArchiveTwoPath.TabIndex = 43;
@@ -251,7 +248,7 @@
             // 
             this.labelSettingsBehavior.AutoSize = true;
             this.labelSettingsBehavior.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsBehavior.Location = new System.Drawing.Point(12, 171);
+            this.labelSettingsBehavior.Location = new System.Drawing.Point(12, 12);
             this.labelSettingsBehavior.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
             this.labelSettingsBehavior.Name = "labelSettingsBehavior";
             this.labelSettingsBehavior.Size = new System.Drawing.Size(61, 17);
@@ -261,7 +258,7 @@
             // labelArchiveTwoPath
             // 
             this.labelArchiveTwoPath.AutoSize = true;
-            this.labelArchiveTwoPath.Location = new System.Drawing.Point(13, 576);
+            this.labelArchiveTwoPath.Location = new System.Drawing.Point(12, 122);
             this.labelArchiveTwoPath.Name = "labelArchiveTwoPath";
             this.labelArchiveTwoPath.Size = new System.Drawing.Size(96, 13);
             this.labelArchiveTwoPath.TabIndex = 41;
@@ -270,7 +267,7 @@
             // checkBoxPlayNotificationSound
             // 
             this.checkBoxPlayNotificationSound.AutoSize = true;
-            this.checkBoxPlayNotificationSound.Location = new System.Drawing.Point(15, 266);
+            this.checkBoxPlayNotificationSound.Location = new System.Drawing.Point(15, 107);
             this.checkBoxPlayNotificationSound.Name = "checkBoxPlayNotificationSound";
             this.checkBoxPlayNotificationSound.Size = new System.Drawing.Size(132, 17);
             this.checkBoxPlayNotificationSound.TabIndex = 13;
@@ -279,7 +276,7 @@
             // 
             // textBoxSevenZipPath
             // 
-            this.textBoxSevenZipPath.Location = new System.Drawing.Point(119, 602);
+            this.textBoxSevenZipPath.Location = new System.Drawing.Point(118, 148);
             this.textBoxSevenZipPath.Name = "textBoxSevenZipPath";
             this.textBoxSevenZipPath.Size = new System.Drawing.Size(234, 20);
             this.textBoxSevenZipPath.TabIndex = 44;
@@ -289,7 +286,7 @@
             // 
             this.labelSettingsUI.AutoSize = true;
             this.labelSettingsUI.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsUI.Location = new System.Drawing.Point(12, 311);
+            this.labelSettingsUI.Location = new System.Drawing.Point(12, 12);
             this.labelSettingsUI.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
             this.labelSettingsUI.Name = "labelSettingsUI";
             this.labelSettingsUI.Size = new System.Drawing.Size(92, 17);
@@ -298,7 +295,7 @@
             // 
             // textBoxArchiveTwoPath
             // 
-            this.textBoxArchiveTwoPath.Location = new System.Drawing.Point(119, 573);
+            this.textBoxArchiveTwoPath.Location = new System.Drawing.Point(118, 119);
             this.textBoxArchiveTwoPath.Name = "textBoxArchiveTwoPath";
             this.textBoxArchiveTwoPath.Size = new System.Drawing.Size(234, 20);
             this.textBoxArchiveTwoPath.TabIndex = 42;
@@ -307,7 +304,7 @@
             // checkBoxShowWhatsNew
             // 
             this.checkBoxShowWhatsNew.AutoSize = true;
-            this.checkBoxShowWhatsNew.Location = new System.Drawing.Point(15, 336);
+            this.checkBoxShowWhatsNew.Location = new System.Drawing.Point(15, 37);
             this.checkBoxShowWhatsNew.Name = "checkBoxShowWhatsNew";
             this.checkBoxShowWhatsNew.Size = new System.Drawing.Size(214, 17);
             this.checkBoxShowWhatsNew.TabIndex = 20;
@@ -316,7 +313,7 @@
             // 
             // buttonPickSevenZipPath
             // 
-            this.buttonPickSevenZipPath.Location = new System.Drawing.Point(359, 600);
+            this.buttonPickSevenZipPath.Location = new System.Drawing.Point(358, 146);
             this.buttonPickSevenZipPath.Name = "buttonPickSevenZipPath";
             this.buttonPickSevenZipPath.Size = new System.Drawing.Size(28, 23);
             this.buttonPickSevenZipPath.TabIndex = 45;
@@ -327,7 +324,7 @@
             // checkBoxReadOnly
             // 
             this.checkBoxReadOnly.AutoSize = true;
-            this.checkBoxReadOnly.Location = new System.Drawing.Point(15, 406);
+            this.checkBoxReadOnly.Location = new System.Drawing.Point(15, 44);
             this.checkBoxReadOnly.Name = "checkBoxReadOnly";
             this.checkBoxReadOnly.Size = new System.Drawing.Size(140, 17);
             this.checkBoxReadOnly.TabIndex = 30;
@@ -338,7 +335,7 @@
             // 
             this.labelSettingsPrograms.AutoSize = true;
             this.labelSettingsPrograms.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsPrograms.Location = new System.Drawing.Point(13, 553);
+            this.labelSettingsPrograms.Location = new System.Drawing.Point(12, 99);
             this.labelSettingsPrograms.Name = "labelSettingsPrograms";
             this.labelSettingsPrograms.Size = new System.Drawing.Size(58, 15);
             this.labelSettingsPrograms.TabIndex = 26;
@@ -348,7 +345,7 @@
             // 
             this.labelSettingsModManager.AutoSize = true;
             this.labelSettingsModManager.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsModManager.Location = new System.Drawing.Point(13, 496);
+            this.labelSettingsModManager.Location = new System.Drawing.Point(12, 42);
             this.labelSettingsModManager.Name = "labelSettingsModManager";
             this.labelSettingsModManager.Size = new System.Drawing.Size(82, 15);
             this.labelSettingsModManager.TabIndex = 47;
@@ -358,7 +355,7 @@
             // 
             this.labelSettingsOptions.AutoSize = true;
             this.labelSettingsOptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsOptions.Location = new System.Drawing.Point(12, 381);
+            this.labelSettingsOptions.Location = new System.Drawing.Point(12, 19);
             this.labelSettingsOptions.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
             this.labelSettingsOptions.Name = "labelSettingsOptions";
             this.labelSettingsOptions.Size = new System.Drawing.Size(56, 17);
@@ -367,7 +364,7 @@
             // 
             // buttonPickDownloadsPath
             // 
-            this.buttonPickDownloadsPath.Location = new System.Drawing.Point(359, 516);
+            this.buttonPickDownloadsPath.Location = new System.Drawing.Point(358, 62);
             this.buttonPickDownloadsPath.Name = "buttonPickDownloadsPath";
             this.buttonPickDownloadsPath.Size = new System.Drawing.Size(28, 23);
             this.buttonPickDownloadsPath.TabIndex = 41;
@@ -378,7 +375,7 @@
             // checkBoxNWRenameDLL
             // 
             this.checkBoxNWRenameDLL.AutoSize = true;
-            this.checkBoxNWRenameDLL.Location = new System.Drawing.Point(17, 764);
+            this.checkBoxNWRenameDLL.Location = new System.Drawing.Point(17, 127);
             this.checkBoxNWRenameDLL.Name = "checkBoxNWRenameDLL";
             this.checkBoxNWRenameDLL.Size = new System.Drawing.Size(140, 17);
             this.checkBoxNWRenameDLL.TabIndex = 51;
@@ -388,7 +385,7 @@
             // checkBoxHandleNXMLinks
             // 
             this.checkBoxHandleNXMLinks.AutoSize = true;
-            this.checkBoxHandleNXMLinks.Location = new System.Drawing.Point(15, 429);
+            this.checkBoxHandleNXMLinks.Location = new System.Drawing.Point(15, 67);
             this.checkBoxHandleNXMLinks.Name = "checkBoxHandleNXMLinks";
             this.checkBoxHandleNXMLinks.Size = new System.Drawing.Size(248, 17);
             this.checkBoxHandleNXMLinks.TabIndex = 31;
@@ -399,7 +396,7 @@
             // checkBoxNWAutoDisableMods
             // 
             this.checkBoxNWAutoDisableMods.AutoSize = true;
-            this.checkBoxNWAutoDisableMods.Location = new System.Drawing.Point(17, 817);
+            this.checkBoxNWAutoDisableMods.Location = new System.Drawing.Point(17, 180);
             this.checkBoxNWAutoDisableMods.Name = "checkBoxNWAutoDisableMods";
             this.checkBoxNWAutoDisableMods.Size = new System.Drawing.Size(224, 17);
             this.checkBoxNWAutoDisableMods.TabIndex = 52;
@@ -409,7 +406,7 @@
             // labelDownloadsPath
             // 
             this.labelDownloadsPath.AutoSize = true;
-            this.labelDownloadsPath.Location = new System.Drawing.Point(13, 521);
+            this.labelDownloadsPath.Location = new System.Drawing.Point(12, 67);
             this.labelDownloadsPath.Name = "labelDownloadsPath";
             this.labelDownloadsPath.Size = new System.Drawing.Size(92, 13);
             this.labelDownloadsPath.TabIndex = 48;
@@ -419,7 +416,7 @@
             // 
             this.labelNWdlloptions.AutoSize = true;
             this.labelNWdlloptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNWdlloptions.Location = new System.Drawing.Point(14, 746);
+            this.labelNWdlloptions.Location = new System.Drawing.Point(14, 109);
             this.labelNWdlloptions.Name = "labelNWdlloptions";
             this.labelNWdlloptions.Size = new System.Drawing.Size(74, 15);
             this.labelNWdlloptions.TabIndex = 23;
@@ -429,7 +426,7 @@
             // 
             this.labelSettingsPaths.AutoSize = true;
             this.labelSettingsPaths.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsPaths.Location = new System.Drawing.Point(13, 474);
+            this.labelSettingsPaths.Location = new System.Drawing.Point(12, 20);
             this.labelSettingsPaths.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
             this.labelSettingsPaths.Name = "labelSettingsPaths";
             this.labelSettingsPaths.Size = new System.Drawing.Size(42, 17);
@@ -440,7 +437,7 @@
             // 
             this.labelNWmodoptions.AutoSize = true;
             this.labelNWmodoptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNWmodoptions.Location = new System.Drawing.Point(14, 799);
+            this.labelNWmodoptions.Location = new System.Drawing.Point(14, 162);
             this.labelNWmodoptions.Name = "labelNWmodoptions";
             this.labelNWmodoptions.Size = new System.Drawing.Size(78, 15);
             this.labelNWmodoptions.TabIndex = 24;
@@ -448,7 +445,7 @@
             // 
             // textBoxDownloadsPath
             // 
-            this.textBoxDownloadsPath.Location = new System.Drawing.Point(119, 518);
+            this.textBoxDownloadsPath.Location = new System.Drawing.Point(118, 64);
             this.textBoxDownloadsPath.Name = "textBoxDownloadsPath";
             this.textBoxDownloadsPath.Size = new System.Drawing.Size(234, 20);
             this.textBoxDownloadsPath.TabIndex = 40;
@@ -457,7 +454,7 @@
             // checkBoxNWAutoDeployMods
             // 
             this.checkBoxNWAutoDeployMods.AutoSize = true;
-            this.checkBoxNWAutoDeployMods.Location = new System.Drawing.Point(17, 840);
+            this.checkBoxNWAutoDeployMods.Location = new System.Drawing.Point(17, 203);
             this.checkBoxNWAutoDeployMods.Name = "checkBoxNWAutoDeployMods";
             this.checkBoxNWAutoDeployMods.Size = new System.Drawing.Size(221, 17);
             this.checkBoxNWAutoDeployMods.TabIndex = 53;
@@ -468,7 +465,7 @@
             // 
             this.labelSettingsNuclearWinterOptions.AutoSize = true;
             this.labelSettingsNuclearWinterOptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsNuclearWinterOptions.Location = new System.Drawing.Point(13, 650);
+            this.labelSettingsNuclearWinterOptions.Location = new System.Drawing.Point(13, 13);
             this.labelSettingsNuclearWinterOptions.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
             this.labelSettingsNuclearWinterOptions.Name = "labelSettingsNuclearWinterOptions";
             this.labelSettingsNuclearWinterOptions.Size = new System.Drawing.Size(229, 17);
@@ -479,11 +476,130 @@
             // 
             this.labelToggleNW.AutoSize = true;
             this.labelToggleNW.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelToggleNW.Location = new System.Drawing.Point(13, 672);
+            this.labelToggleNW.Location = new System.Drawing.Point(13, 35);
             this.labelToggleNW.Name = "labelToggleNW";
             this.labelToggleNW.Size = new System.Drawing.Size(80, 15);
             this.labelToggleNW.TabIndex = 27;
             this.labelToggleNW.Text = "Toggle mode:";
+            // 
+            // panelSettingsLocalization
+            // 
+            this.panelSettingsLocalization.Controls.Add(this.labelSettingsLocalization);
+            this.panelSettingsLocalization.Controls.Add(this.comboBoxLanguage);
+            this.panelSettingsLocalization.Controls.Add(this.labelLanguage);
+            this.panelSettingsLocalization.Controls.Add(this.buttonDownloadLanguages);
+            this.panelSettingsLocalization.Controls.Add(this.pictureBoxSpinnerDownloadLanguages);
+            this.panelSettingsLocalization.Controls.Add(this.buttonRefreshLanguage);
+            this.panelSettingsLocalization.Controls.Add(this.labelOutdatedLanguage);
+            this.panelSettingsLocalization.Location = new System.Drawing.Point(0, 56);
+            this.panelSettingsLocalization.Name = "panelSettingsLocalization";
+            this.panelSettingsLocalization.Size = new System.Drawing.Size(403, 103);
+            this.panelSettingsLocalization.TabIndex = 82;
+            // 
+            // panelSettingsBehavior
+            // 
+            this.panelSettingsBehavior.Controls.Add(this.labelSettingsBehavior);
+            this.panelSettingsBehavior.Controls.Add(this.checkBoxAutoApply);
+            this.panelSettingsBehavior.Controls.Add(this.checkBoxQuitOnGameLaunch);
+            this.panelSettingsBehavior.Controls.Add(this.checkBoxIgnoreUpdates);
+            this.panelSettingsBehavior.Controls.Add(this.checkBoxPlayNotificationSound);
+            this.panelSettingsBehavior.Location = new System.Drawing.Point(0, 165);
+            this.panelSettingsBehavior.Name = "panelSettingsBehavior";
+            this.panelSettingsBehavior.Size = new System.Drawing.Size(403, 134);
+            this.panelSettingsBehavior.TabIndex = 83;
+            // 
+            // panelSettingsUI
+            // 
+            this.panelSettingsUI.Controls.Add(this.labelSettingsUI);
+            this.panelSettingsUI.Controls.Add(this.checkBoxShowWhatsNew);
+            this.panelSettingsUI.Location = new System.Drawing.Point(0, 305);
+            this.panelSettingsUI.Name = "panelSettingsUI";
+            this.panelSettingsUI.Size = new System.Drawing.Size(403, 57);
+            this.panelSettingsUI.TabIndex = 84;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.labelSettingsOptions);
+            this.panel1.Controls.Add(this.checkBoxReadOnly);
+            this.panel1.Controls.Add(this.checkBoxHandleNXMLinks);
+            this.panel1.Location = new System.Drawing.Point(0, 368);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(403, 86);
+            this.panel1.TabIndex = 85;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.labelSettingsNuclearWinterOptions);
+            this.panel2.Controls.Add(this.checkBoxNWRenameDLL);
+            this.panel2.Controls.Add(this.checkBoxNWAutoDisableMods);
+            this.panel2.Controls.Add(this.labelNWdlloptions);
+            this.panel2.Controls.Add(this.labelNWmodoptions);
+            this.panel2.Controls.Add(this.checkBoxNWAutoDeployMods);
+            this.panel2.Controls.Add(this.labelToggleNW);
+            this.panel2.Controls.Add(this.buttonNWMode);
+            this.panel2.Location = new System.Drawing.Point(0, 736);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(403, 279);
+            this.panel2.TabIndex = 86;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.labelSettingsPaths);
+            this.panel3.Controls.Add(this.labelSevenZipPath);
+            this.panel3.Controls.Add(this.buttonPickArchiveTwoPath);
+            this.panel3.Controls.Add(this.labelArchiveTwoPath);
+            this.panel3.Controls.Add(this.textBoxSevenZipPath);
+            this.panel3.Controls.Add(this.textBoxArchiveTwoPath);
+            this.panel3.Controls.Add(this.buttonPickSevenZipPath);
+            this.panel3.Controls.Add(this.textBoxDownloadsPath);
+            this.panel3.Controls.Add(this.labelSettingsPrograms);
+            this.panel3.Controls.Add(this.labelSettingsModManager);
+            this.panel3.Controls.Add(this.labelDownloadsPath);
+            this.panel3.Controls.Add(this.buttonPickDownloadsPath);
+            this.panel3.Location = new System.Drawing.Point(0, 460);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(403, 177);
+            this.panel3.TabIndex = 87;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.linkLabelOpenProfileEditor);
+            this.panel4.Controls.Add(this.labelSettingsProfileNotice);
+            this.panel4.Controls.Add(this.labelSettingsProfiles);
+            this.panel4.Location = new System.Drawing.Point(0, 643);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(403, 87);
+            this.panel4.TabIndex = 88;
+            // 
+            // labelSettingsProfiles
+            // 
+            this.labelSettingsProfiles.AutoSize = true;
+            this.labelSettingsProfiles.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSettingsProfiles.Location = new System.Drawing.Point(13, 6);
+            this.labelSettingsProfiles.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
+            this.labelSettingsProfiles.Name = "labelSettingsProfiles";
+            this.labelSettingsProfiles.Size = new System.Drawing.Size(46, 17);
+            this.labelSettingsProfiles.TabIndex = 80;
+            this.labelSettingsProfiles.Text = "Profile";
+            // 
+            // labelSettingsProfileNotice
+            // 
+            this.labelSettingsProfileNotice.Location = new System.Drawing.Point(13, 28);
+            this.labelSettingsProfileNotice.Name = "labelSettingsProfileNotice";
+            this.labelSettingsProfileNotice.Size = new System.Drawing.Size(371, 32);
+            this.labelSettingsProfileNotice.TabIndex = 81;
+            this.labelSettingsProfileNotice.Text = "Looking for the profile settings (game path, game edition, etc.)?";
+            // 
+            // linkLabelOpenProfileEditor
+            // 
+            this.linkLabelOpenProfileEditor.AutoSize = true;
+            this.linkLabelOpenProfileEditor.Location = new System.Drawing.Point(15, 64);
+            this.linkLabelOpenProfileEditor.Name = "linkLabelOpenProfileEditor";
+            this.linkLabelOpenProfileEditor.Size = new System.Drawing.Size(83, 13);
+            this.linkLabelOpenProfileEditor.TabIndex = 82;
+            this.linkLabelOpenProfileEditor.TabStop = true;
+            this.linkLabelOpenProfileEditor.Text = "Go to profiles →";
+            this.linkLabelOpenProfileEditor.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelOpenProfileEditor_LinkClicked);
             // 
             // buttonNWMode
             // 
@@ -492,7 +608,7 @@
             this.buttonNWMode.Highlight = false;
             this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
             this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.Location = new System.Drawing.Point(17, 690);
+            this.buttonNWMode.Location = new System.Drawing.Point(17, 53);
             this.buttonNWMode.Name = "buttonNWMode";
             this.buttonNWMode.Padding = 10;
             this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
@@ -502,54 +618,49 @@
             this.buttonNWMode.UseVisualStyleBackColor = true;
             this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
             // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 20000;
+            this.toolTip.BackColor = System.Drawing.Color.White;
+            this.toolTip.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolTip.ForeColor = System.Drawing.Color.Black;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.OwnerDraw = true;
+            this.toolTip.Padding = new System.Drawing.Size(6, 6);
+            this.toolTip.ReshowDelay = 100;
+            this.toolTip.ShowAlways = true;
+            // 
             // UserControlSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.Controls.Add(this.panelPadding);
-            this.Controls.Add(this.labelToggleNW);
-            this.Controls.Add(this.buttonNWMode);
-            this.Controls.Add(this.labelSettingsNuclearWinterOptions);
-            this.Controls.Add(this.checkBoxNWAutoDeployMods);
-            this.Controls.Add(this.textBoxDownloadsPath);
-            this.Controls.Add(this.labelNWmodoptions);
-            this.Controls.Add(this.labelSettingsPaths);
-            this.Controls.Add(this.labelNWdlloptions);
-            this.Controls.Add(this.labelDownloadsPath);
-            this.Controls.Add(this.checkBoxNWAutoDisableMods);
-            this.Controls.Add(this.checkBoxHandleNXMLinks);
-            this.Controls.Add(this.checkBoxNWRenameDLL);
-            this.Controls.Add(this.buttonPickDownloadsPath);
-            this.Controls.Add(this.labelSettingsOptions);
-            this.Controls.Add(this.labelSettingsModManager);
-            this.Controls.Add(this.labelSettingsPrograms);
-            this.Controls.Add(this.checkBoxReadOnly);
-            this.Controls.Add(this.buttonPickSevenZipPath);
-            this.Controls.Add(this.checkBoxShowWhatsNew);
-            this.Controls.Add(this.textBoxArchiveTwoPath);
-            this.Controls.Add(this.labelSettingsUI);
-            this.Controls.Add(this.textBoxSevenZipPath);
-            this.Controls.Add(this.checkBoxPlayNotificationSound);
-            this.Controls.Add(this.labelArchiveTwoPath);
-            this.Controls.Add(this.labelSettingsBehavior);
-            this.Controls.Add(this.buttonPickArchiveTwoPath);
-            this.Controls.Add(this.checkBoxIgnoreUpdates);
-            this.Controls.Add(this.labelSevenZipPath);
-            this.Controls.Add(this.labelOutdatedLanguage);
-            this.Controls.Add(this.checkBoxQuitOnGameLaunch);
-            this.Controls.Add(this.checkBoxAutoApply);
-            this.Controls.Add(this.buttonRefreshLanguage);
-            this.Controls.Add(this.labelSettingsLocalization);
-            this.Controls.Add(this.pictureBoxSpinnerDownloadLanguages);
-            this.Controls.Add(this.buttonDownloadLanguages);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelSettingsUI);
+            this.Controls.Add(this.panelSettingsBehavior);
+            this.Controls.Add(this.panelSettingsLocalization);
             this.Controls.Add(this.labelSettingsTitle);
-            this.Controls.Add(this.labelLanguage);
-            this.Controls.Add(this.comboBoxLanguage);
             this.Name = "UserControlSettings";
-            this.Size = new System.Drawing.Size(479, 600);
+            this.Size = new System.Drawing.Size(411, 600);
             this.Load += new System.EventHandler(this.UserControlSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).EndInit();
+            this.panelSettingsLocalization.ResumeLayout(false);
+            this.panelSettingsLocalization.PerformLayout();
+            this.panelSettingsBehavior.ResumeLayout(false);
+            this.panelSettingsBehavior.PerformLayout();
+            this.panelSettingsUI.ResumeLayout(false);
+            this.panelSettingsUI.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -560,7 +671,6 @@
         public Controls.CustomToolTip toolTip;
         private System.Windows.Forms.OpenFileDialog openFileDialogArchiveTwoPath;
         private System.Windows.Forms.OpenFileDialog openFileDialogSevenZipPath;
-        private System.Windows.Forms.Panel panelPadding;
         private System.Windows.Forms.ComboBox comboBoxLanguage;
         private System.Windows.Forms.Label labelLanguage;
         private System.Windows.Forms.Label labelSettingsTitle;
@@ -599,5 +709,15 @@
         private System.Windows.Forms.Label labelSettingsNuclearWinterOptions;
         private Controls.StyledButton buttonNWMode;
         private System.Windows.Forms.Label labelToggleNW;
+        private System.Windows.Forms.Panel panelSettingsLocalization;
+        private System.Windows.Forms.Panel panelSettingsBehavior;
+        private System.Windows.Forms.Panel panelSettingsUI;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.LinkLabel linkLabelOpenProfileEditor;
+        private System.Windows.Forms.Label labelSettingsProfileNotice;
+        private System.Windows.Forms.Label labelSettingsProfiles;
     }
 }

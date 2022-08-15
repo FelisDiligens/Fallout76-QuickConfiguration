@@ -80,6 +80,7 @@ namespace Fo76ini
             // Disable scroll wheel on UI elements to prevent the user from accidentally changing values:
             Utils.PreventChangeOnMouseWheelForAllElements(this);
 
+            this.userControlSideNav.SelectedTabIndex = 0;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -324,46 +325,10 @@ namespace Fo76ini
 
         #region Navigation side bar
 
-        // TAB "Settings" button:
-        private void navButtonSettings_Click(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageSettings;
-        }
-
-        // WINDOW "Mods" button:
-        private void navButtonMods_Click(object sender, EventArgs e)
-        {
-            this.formMods.OpenUI();
-        }
-
-        // TAB "Custom tweaks" button:
-        private void userControlSideNav2_CustomClicked(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageCustom;
-        }
-
-        // TAB "Gallery" button:
-        private void userControlSideNav2_GalleryClicked(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageGallery;
-        }
-
         // TAB "Home" button:
         private void userControlSideNav2_HomeClicked(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.tabPageHome;
-        }
-
-        // TAB "Pip-Boy" button:
-        private void userControlSideNav2_PipboyClicked(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPagePipBoy;
-        }
-
-        // TAB "Profiles" button:
-        private void userControlSideNav2_ProfileClicked(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageProfiles;
         }
 
         // TAB "Tweaks" button:
@@ -372,10 +337,51 @@ namespace Fo76ini
             this.tabControl1.SelectedTab = this.tabPageTweaks;
         }
 
+        // WINDOW "Mods" button:
+        private void navButtonMods_Click(object sender, EventArgs e)
+        {
+            this.formMods.OpenUI();
+        }
+
+        // TAB "Pip-Boy" button:
+        private void userControlSideNav2_PipboyClicked(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPagePipBoy;
+        }
+
+        // TAB "Gallery" button:
+        private void userControlSideNav2_GalleryClicked(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPageGallery;
+        }
+
+        // TAB "Custom tweaks" button:
+        private void userControlSideNav2_CustomClicked(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPageCustom;
+        }
+
+        // TAB "Settings" button:
+        private void navButtonSettings_Click(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPageSettings;
+        }
+
         // TAB "NexusMods" button:
         private void userControlSideNav2_NexusClicked(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.tabPageNexusMods;
+        }
+
+        // TAB "Profiles" button:
+        private void userControlSideNav2_ProfileClicked(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.tabPageProfiles;
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.userControlSideNav.SelectedTabIndex = this.tabControl1.SelectedIndex;
         }
 
         #endregion
@@ -492,5 +498,16 @@ namespace Fo76ini
         }
 
         #endregion
+
+        public void OpenProfileEditor()
+        {
+            this.tabControl1.SelectedTab = this.tabPageProfiles;
+            this.userControlProfiles.OpenProfileEditor();
+        }
+
+        private void userControlSettings_OpenProfileEditorRequested(object sender, EventArgs e)
+        {
+            OpenProfileEditor();
+        }
     }
 }

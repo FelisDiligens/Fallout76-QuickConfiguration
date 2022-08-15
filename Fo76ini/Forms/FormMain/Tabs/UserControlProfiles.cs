@@ -154,6 +154,12 @@ namespace Fo76ini.Forms.FormMain.Tabs
             UpdatingUI = false;
         }
 
+        public void OpenProfileEditor()
+        {
+            UpdateEditingScreen();
+            this.tabControl.SelectedTab = this.tabPageEdit;
+        }
+
         private int GetImageIndex(GameEdition edition)
         {
             switch (edition)
@@ -177,8 +183,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         private void buttonEditProfile_Click(object sender, EventArgs e)
         {
-            UpdateEditingScreen();
-            this.tabControl.SelectedTab = this.tabPageEdit;
+            OpenProfileEditor();
         }
 
         private void listViewGameInstances_SelectedIndexChanged(object sender, EventArgs e)
