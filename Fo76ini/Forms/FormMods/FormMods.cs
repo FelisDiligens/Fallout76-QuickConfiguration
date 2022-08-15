@@ -1007,7 +1007,7 @@ namespace Fo76ini
                 // TODO: Check for updates could be so much better.
                 List<string> modsWithUpdates = new List<string>();
                 foreach (ManagedMod mod in Mods)
-                    if (mod.RemoteInfo != null && mod.Version != mod.RemoteInfo.LatestVersion)
+                    if (mod.RemoteInfo != null && ModHelpers.CompareVersion(mod.Version, mod.RemoteInfo.LatestVersion) < 0)
                         modsWithUpdates.Add($"{mod.Title} (updated from {mod.Version} to {mod.RemoteInfo.LatestVersion})");
 
                 if (modsWithUpdates.Count() > 0)

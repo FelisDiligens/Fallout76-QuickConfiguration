@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Fo76ini.Mods
 {
@@ -79,6 +80,37 @@ namespace Fo76ini.Mods
             }
 
             return preset;
+        }
+
+        /// <summary>
+        /// Compares both versions and returns which is greater.
+        /// Tries to parse the version numbers and falls back to string comparison if that fails.
+        /// </summary>
+        /// <param name="installedVersionStr"></param>
+        /// <param name="latestVersionStr"></param>
+        /// <returns>
+        ///  0 = equal
+        /// >0 = installed version is more up-to-date than "latest" (?)
+        /// <0 = update available
+        /// </returns>
+        public static int CompareVersion(string installedVersionStr, string latestVersionStr)
+        {
+            Regex versionRegex = new Regex(@"\d+(?:\.\d+)+");
+            if (versionRegex.IsMatch(installedVersionStr) &&
+                versionRegex.IsMatch(latestVersionStr))
+            {
+                try
+                {
+                    Version installedVersion = new Version(installedVersionStr);
+                    Version latestVersion = new Version(latestVersionStr);
+                    return installedVersion.CompareTo(latestVersion);
+                }
+                catch
+                {
+                    Console.WriteLine($"ModHelpers.CompareVersion failed to parse versions!\nInstalled: {installedVersionStr}\nLatest: {latestVersionStr}\nFalling back to string comparison.");
+                }
+            }
+            return installedVersionStr == latestVersionStr ? 0 : -1;
         }
 
         /// <summary>

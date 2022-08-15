@@ -78,7 +78,7 @@ namespace Fo76ini
                     {
                         this.ModDescription += $"Version {mod.Version} by {mod.RemoteInfo.Author}";
 
-                        if (remoteMod.LatestVersion != mod.Version)
+                        if (ModHelpers.CompareVersion(mod.Version, remoteMod.LatestVersion) < 0)
                         {
                             // Update available:
                             this.ModDescription = $"{Localization.GetString("updateAvailable")}: {remoteMod.LatestVersion}";
