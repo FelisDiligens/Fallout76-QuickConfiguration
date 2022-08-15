@@ -72,23 +72,23 @@
             this.panelSettingsLocalization = new System.Windows.Forms.Panel();
             this.panelSettingsBehavior = new System.Windows.Forms.Panel();
             this.panelSettingsUI = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.labelSettingsProfiles = new System.Windows.Forms.Label();
-            this.labelSettingsProfileNotice = new System.Windows.Forms.Label();
-            this.linkLabelOpenProfileEditor = new System.Windows.Forms.LinkLabel();
+            this.panelSettingsOptions = new System.Windows.Forms.Panel();
+            this.panelSettingsNWMode = new System.Windows.Forms.Panel();
             this.buttonNWMode = new Fo76ini.Controls.StyledButton();
+            this.panelSettingsPaths = new System.Windows.Forms.Panel();
+            this.panelSettingsProfile = new System.Windows.Forms.Panel();
+            this.linkLabelOpenProfileEditor = new System.Windows.Forms.LinkLabel();
+            this.labelSettingsProfileNotice = new System.Windows.Forms.Label();
+            this.labelSettingsProfiles = new System.Windows.Forms.Label();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
             this.panelSettingsLocalization.SuspendLayout();
             this.panelSettingsBehavior.SuspendLayout();
             this.panelSettingsUI.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panelSettingsOptions.SuspendLayout();
+            this.panelSettingsNWMode.SuspendLayout();
+            this.panelSettingsPaths.SuspendLayout();
+            this.panelSettingsProfile.SuspendLayout();
             this.SuspendLayout();
             // 
             // backgroundWorkerDownloadLanguages
@@ -146,6 +146,7 @@
             this.buttonDownloadLanguages.Name = "buttonDownloadLanguages";
             this.buttonDownloadLanguages.Size = new System.Drawing.Size(32, 32);
             this.buttonDownloadLanguages.TabIndex = 1;
+            this.toolTip.SetToolTip(this.buttonDownloadLanguages, "Download translations");
             this.buttonDownloadLanguages.UseVisualStyleBackColor = true;
             this.buttonDownloadLanguages.Click += new System.EventHandler(this.buttonDownloadLanguages_Click);
             // 
@@ -182,6 +183,7 @@
             this.buttonRefreshLanguage.Name = "buttonRefreshLanguage";
             this.buttonRefreshLanguage.Size = new System.Drawing.Size(32, 32);
             this.buttonRefreshLanguage.TabIndex = 2;
+            this.toolTip.SetToolTip(this.buttonRefreshLanguage, "Refresh active translation");
             this.buttonRefreshLanguage.UseVisualStyleBackColor = false;
             this.buttonRefreshLanguage.Click += new System.EventHandler(this.buttonRefreshLanguage_Click);
             // 
@@ -517,89 +519,30 @@
             this.panelSettingsUI.Size = new System.Drawing.Size(403, 57);
             this.panelSettingsUI.TabIndex = 84;
             // 
-            // panel1
+            // panelSettingsOptions
             // 
-            this.panel1.Controls.Add(this.labelSettingsOptions);
-            this.panel1.Controls.Add(this.checkBoxReadOnly);
-            this.panel1.Controls.Add(this.checkBoxHandleNXMLinks);
-            this.panel1.Location = new System.Drawing.Point(0, 368);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(403, 86);
-            this.panel1.TabIndex = 85;
+            this.panelSettingsOptions.Controls.Add(this.labelSettingsOptions);
+            this.panelSettingsOptions.Controls.Add(this.checkBoxReadOnly);
+            this.panelSettingsOptions.Controls.Add(this.checkBoxHandleNXMLinks);
+            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 368);
+            this.panelSettingsOptions.Name = "panelSettingsOptions";
+            this.panelSettingsOptions.Size = new System.Drawing.Size(403, 86);
+            this.panelSettingsOptions.TabIndex = 85;
             // 
-            // panel2
+            // panelSettingsNWMode
             // 
-            this.panel2.Controls.Add(this.labelSettingsNuclearWinterOptions);
-            this.panel2.Controls.Add(this.checkBoxNWRenameDLL);
-            this.panel2.Controls.Add(this.checkBoxNWAutoDisableMods);
-            this.panel2.Controls.Add(this.labelNWdlloptions);
-            this.panel2.Controls.Add(this.labelNWmodoptions);
-            this.panel2.Controls.Add(this.checkBoxNWAutoDeployMods);
-            this.panel2.Controls.Add(this.labelToggleNW);
-            this.panel2.Controls.Add(this.buttonNWMode);
-            this.panel2.Location = new System.Drawing.Point(0, 736);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(403, 279);
-            this.panel2.TabIndex = 86;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.labelSettingsPaths);
-            this.panel3.Controls.Add(this.labelSevenZipPath);
-            this.panel3.Controls.Add(this.buttonPickArchiveTwoPath);
-            this.panel3.Controls.Add(this.labelArchiveTwoPath);
-            this.panel3.Controls.Add(this.textBoxSevenZipPath);
-            this.panel3.Controls.Add(this.textBoxArchiveTwoPath);
-            this.panel3.Controls.Add(this.buttonPickSevenZipPath);
-            this.panel3.Controls.Add(this.textBoxDownloadsPath);
-            this.panel3.Controls.Add(this.labelSettingsPrograms);
-            this.panel3.Controls.Add(this.labelSettingsModManager);
-            this.panel3.Controls.Add(this.labelDownloadsPath);
-            this.panel3.Controls.Add(this.buttonPickDownloadsPath);
-            this.panel3.Location = new System.Drawing.Point(0, 460);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(403, 177);
-            this.panel3.TabIndex = 87;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.linkLabelOpenProfileEditor);
-            this.panel4.Controls.Add(this.labelSettingsProfileNotice);
-            this.panel4.Controls.Add(this.labelSettingsProfiles);
-            this.panel4.Location = new System.Drawing.Point(0, 643);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(403, 87);
-            this.panel4.TabIndex = 88;
-            // 
-            // labelSettingsProfiles
-            // 
-            this.labelSettingsProfiles.AutoSize = true;
-            this.labelSettingsProfiles.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsProfiles.Location = new System.Drawing.Point(13, 6);
-            this.labelSettingsProfiles.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
-            this.labelSettingsProfiles.Name = "labelSettingsProfiles";
-            this.labelSettingsProfiles.Size = new System.Drawing.Size(46, 17);
-            this.labelSettingsProfiles.TabIndex = 80;
-            this.labelSettingsProfiles.Text = "Profile";
-            // 
-            // labelSettingsProfileNotice
-            // 
-            this.labelSettingsProfileNotice.Location = new System.Drawing.Point(13, 28);
-            this.labelSettingsProfileNotice.Name = "labelSettingsProfileNotice";
-            this.labelSettingsProfileNotice.Size = new System.Drawing.Size(371, 32);
-            this.labelSettingsProfileNotice.TabIndex = 81;
-            this.labelSettingsProfileNotice.Text = "Looking for the profile settings (game path, game edition, etc.)?";
-            // 
-            // linkLabelOpenProfileEditor
-            // 
-            this.linkLabelOpenProfileEditor.AutoSize = true;
-            this.linkLabelOpenProfileEditor.Location = new System.Drawing.Point(15, 64);
-            this.linkLabelOpenProfileEditor.Name = "linkLabelOpenProfileEditor";
-            this.linkLabelOpenProfileEditor.Size = new System.Drawing.Size(83, 13);
-            this.linkLabelOpenProfileEditor.TabIndex = 82;
-            this.linkLabelOpenProfileEditor.TabStop = true;
-            this.linkLabelOpenProfileEditor.Text = "Go to profiles →";
-            this.linkLabelOpenProfileEditor.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelOpenProfileEditor_LinkClicked);
+            this.panelSettingsNWMode.Controls.Add(this.labelSettingsNuclearWinterOptions);
+            this.panelSettingsNWMode.Controls.Add(this.checkBoxNWRenameDLL);
+            this.panelSettingsNWMode.Controls.Add(this.checkBoxNWAutoDisableMods);
+            this.panelSettingsNWMode.Controls.Add(this.labelNWdlloptions);
+            this.panelSettingsNWMode.Controls.Add(this.labelNWmodoptions);
+            this.panelSettingsNWMode.Controls.Add(this.checkBoxNWAutoDeployMods);
+            this.panelSettingsNWMode.Controls.Add(this.labelToggleNW);
+            this.panelSettingsNWMode.Controls.Add(this.buttonNWMode);
+            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 736);
+            this.panelSettingsNWMode.Name = "panelSettingsNWMode";
+            this.panelSettingsNWMode.Size = new System.Drawing.Size(403, 279);
+            this.panelSettingsNWMode.TabIndex = 86;
             // 
             // buttonNWMode
             // 
@@ -618,6 +561,65 @@
             this.buttonNWMode.UseVisualStyleBackColor = true;
             this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
             // 
+            // panelSettingsPaths
+            // 
+            this.panelSettingsPaths.Controls.Add(this.labelSettingsPaths);
+            this.panelSettingsPaths.Controls.Add(this.labelSevenZipPath);
+            this.panelSettingsPaths.Controls.Add(this.buttonPickArchiveTwoPath);
+            this.panelSettingsPaths.Controls.Add(this.labelArchiveTwoPath);
+            this.panelSettingsPaths.Controls.Add(this.textBoxSevenZipPath);
+            this.panelSettingsPaths.Controls.Add(this.textBoxArchiveTwoPath);
+            this.panelSettingsPaths.Controls.Add(this.buttonPickSevenZipPath);
+            this.panelSettingsPaths.Controls.Add(this.textBoxDownloadsPath);
+            this.panelSettingsPaths.Controls.Add(this.labelSettingsPrograms);
+            this.panelSettingsPaths.Controls.Add(this.labelSettingsModManager);
+            this.panelSettingsPaths.Controls.Add(this.labelDownloadsPath);
+            this.panelSettingsPaths.Controls.Add(this.buttonPickDownloadsPath);
+            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 460);
+            this.panelSettingsPaths.Name = "panelSettingsPaths";
+            this.panelSettingsPaths.Size = new System.Drawing.Size(403, 177);
+            this.panelSettingsPaths.TabIndex = 87;
+            // 
+            // panelSettingsProfile
+            // 
+            this.panelSettingsProfile.Controls.Add(this.linkLabelOpenProfileEditor);
+            this.panelSettingsProfile.Controls.Add(this.labelSettingsProfileNotice);
+            this.panelSettingsProfile.Controls.Add(this.labelSettingsProfiles);
+            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 643);
+            this.panelSettingsProfile.Name = "panelSettingsProfile";
+            this.panelSettingsProfile.Size = new System.Drawing.Size(403, 87);
+            this.panelSettingsProfile.TabIndex = 88;
+            // 
+            // linkLabelOpenProfileEditor
+            // 
+            this.linkLabelOpenProfileEditor.AutoSize = true;
+            this.linkLabelOpenProfileEditor.Location = new System.Drawing.Point(15, 64);
+            this.linkLabelOpenProfileEditor.Name = "linkLabelOpenProfileEditor";
+            this.linkLabelOpenProfileEditor.Size = new System.Drawing.Size(83, 13);
+            this.linkLabelOpenProfileEditor.TabIndex = 82;
+            this.linkLabelOpenProfileEditor.TabStop = true;
+            this.linkLabelOpenProfileEditor.Text = "Go to profiles →";
+            this.linkLabelOpenProfileEditor.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelOpenProfileEditor_LinkClicked);
+            // 
+            // labelSettingsProfileNotice
+            // 
+            this.labelSettingsProfileNotice.Location = new System.Drawing.Point(13, 28);
+            this.labelSettingsProfileNotice.Name = "labelSettingsProfileNotice";
+            this.labelSettingsProfileNotice.Size = new System.Drawing.Size(371, 32);
+            this.labelSettingsProfileNotice.TabIndex = 81;
+            this.labelSettingsProfileNotice.Text = "Looking for the profile settings (game path, game edition, etc.)?";
+            // 
+            // labelSettingsProfiles
+            // 
+            this.labelSettingsProfiles.AutoSize = true;
+            this.labelSettingsProfiles.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSettingsProfiles.Location = new System.Drawing.Point(13, 6);
+            this.labelSettingsProfiles.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
+            this.labelSettingsProfiles.Name = "labelSettingsProfiles";
+            this.labelSettingsProfiles.Size = new System.Drawing.Size(46, 17);
+            this.labelSettingsProfiles.TabIndex = 80;
+            this.labelSettingsProfiles.Text = "Profile";
+            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -635,16 +637,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelSettingsProfile);
+            this.Controls.Add(this.panelSettingsPaths);
+            this.Controls.Add(this.panelSettingsNWMode);
+            this.Controls.Add(this.panelSettingsOptions);
             this.Controls.Add(this.panelSettingsUI);
             this.Controls.Add(this.panelSettingsBehavior);
             this.Controls.Add(this.panelSettingsLocalization);
             this.Controls.Add(this.labelSettingsTitle);
             this.Name = "UserControlSettings";
-            this.Size = new System.Drawing.Size(411, 600);
+            this.Size = new System.Drawing.Size(494, 1134);
             this.Load += new System.EventHandler(this.UserControlSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).EndInit();
             this.panelSettingsLocalization.ResumeLayout(false);
@@ -653,14 +655,14 @@
             this.panelSettingsBehavior.PerformLayout();
             this.panelSettingsUI.ResumeLayout(false);
             this.panelSettingsUI.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panelSettingsOptions.ResumeLayout(false);
+            this.panelSettingsOptions.PerformLayout();
+            this.panelSettingsNWMode.ResumeLayout(false);
+            this.panelSettingsNWMode.PerformLayout();
+            this.panelSettingsPaths.ResumeLayout(false);
+            this.panelSettingsPaths.PerformLayout();
+            this.panelSettingsProfile.ResumeLayout(false);
+            this.panelSettingsProfile.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -712,10 +714,10 @@
         private System.Windows.Forms.Panel panelSettingsLocalization;
         private System.Windows.Forms.Panel panelSettingsBehavior;
         private System.Windows.Forms.Panel panelSettingsUI;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panelSettingsOptions;
+        private System.Windows.Forms.Panel panelSettingsNWMode;
+        private System.Windows.Forms.Panel panelSettingsPaths;
+        private System.Windows.Forms.Panel panelSettingsProfile;
         private System.Windows.Forms.LinkLabel linkLabelOpenProfileEditor;
         private System.Windows.Forms.Label labelSettingsProfileNotice;
         private System.Windows.Forms.Label labelSettingsProfiles;
