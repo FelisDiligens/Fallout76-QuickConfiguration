@@ -185,7 +185,7 @@ namespace Fo76ini.NexusAPI
         public static string GetGameFromURL(string url)
         {
             if (url == "" || !url.Contains("www.nexusmods.com/") || !url.Contains("/mods/"))
-                return null;
+                return "fallout76"; // Fallback to "fallout76" instead of returning null.
 
             int start = url.IndexOf("nexusmods.com/") + 14;
             int end = url.IndexOf("/mods/");
