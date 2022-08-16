@@ -289,7 +289,7 @@ namespace Fo76ini.Mods
                 (Configuration.Mods.BundledLoadOrder == BundledLoadOrder.PutFirst ? archives.Reverse() : archives))
             {
                 // ... if needed ...
-                if (archive.Count > 0 && !Utils.IsDirectoryEmpty(archive.TempPath))
+                if (archive.Count > 0 && ModHelpers.AreFilesAvailableToPack(archive.TempPath))
                 {
                     // ... pack the temporary folder to an archive ...
                     if (freezeArchives)

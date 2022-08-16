@@ -13,6 +13,8 @@ This is another small update to address some bugs.
   This should fix the issue where the mod manager displays available updates even if the latest/newer version is installed.
 - Fixed a bug that would crash the mod manager when updating mod information using the NexusMods API.
 - Fixed a bug where invalid characters in (user-defined) paths were crashing the tool. They get sanitized now.
+- Added a another warning to the mod manager's side panel, if no (valid) files are found for packing.
+- Improved packing of bundled archives: junk files are now ignored. Should reduce errors.
 
 </details>
 

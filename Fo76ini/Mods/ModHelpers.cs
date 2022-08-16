@@ -114,6 +114,38 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
+        /// Checks whether the specified folder contains files that can be packed into a *.ba2 archive.
+        /// </summary>
+        public static bool AreFilesAvailableToPack(string path)
+        {
+            // Directory empty?
+            if (Utils.IsDirectoryEmpty(path))
+                return false;
+
+            // Everything that doesn't belong in *.ba2 archives (not an exhaustive list):
+            string[] ignoreExtensions = new string[]
+            {
+                // Text files: (readmes / instructions)
+                ".txt", ".rtf",
+                // Config files:
+                ".ini", ".json", ".xml", ".yaml", ".conf", ".config",
+                // Images: (e.g. screenshots)
+                ".jpg", ".jpeg", ".png", ".gif", ".bmp",
+                // Programs:
+                ".exe", ".pdb", ".dll",
+            };
+
+            // Does the directory contain a file that should not be ignored?
+            foreach (string file in Directory.EnumerateFiles(path))
+            {
+                if (!ignoreExtensions.Contains(Path.GetExtension(file).ToLower()))
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Represents a conflict between mods. Used as the return value of the GetConflictingFiles() and the GetConflictingArchiveNames() methods.
         /// </summary>
         public struct Conflict
