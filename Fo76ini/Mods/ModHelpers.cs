@@ -136,7 +136,7 @@ namespace Fo76ini.Mods
             };
 
             // Does the directory contain a file that should not be ignored?
-            foreach (string file in Directory.EnumerateFiles(path))
+            foreach (string file in Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories))
             {
                 if (!ignoreExtensions.Contains(Path.GetExtension(file).ToLower()))
                     return true;
