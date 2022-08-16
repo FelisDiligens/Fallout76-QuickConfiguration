@@ -8,6 +8,7 @@ This is another small update to address some bugs.
 
 - Added a link to the app settings that opens the profile editing screen.
 - Added an option to disable automatic *.ini backups to the settings.
+- Dragging and dropping mods (archives or folders) into the list installs them at the correct position (where the cursor is) instead of at the end of the list now.
 - Improved the comparison of versions in the mod manager.  
   This should fix the issue where the mod manager displays available updates even if the latest/newer version is installed.
 - Fixed a bug that would crash the mod manager when updating mod information using the NexusMods API.
