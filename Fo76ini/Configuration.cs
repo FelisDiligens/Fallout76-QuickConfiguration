@@ -262,6 +262,21 @@ namespace Fo76ini
         }
 
         /// <summary>
+        /// Determines whether or not to create backups of *.ini files when the tool saves them.
+        /// </summary>
+        public static bool MakeBackups
+        {
+            get
+            {
+                return IniFiles.Config.GetBool("Preferences", "bMakeBackups", true);
+            }
+            set
+            {
+                IniFiles.Config.Set("Preferences", "bMakeBackups", value);
+            }
+        }
+
+        /// <summary>
         /// Description:
         /// When enabled, the tool will play custom notification sounds.
         /// </summary>

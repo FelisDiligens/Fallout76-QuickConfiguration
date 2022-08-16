@@ -157,7 +157,8 @@ namespace Fo76ini
         /// </summary>
         public static void Save()
         {
-            Backup();
+            if (Configuration.MakeBackups)
+                Backup();
             F76.Save();
             F76Prefs.Save();
             F76Custom.Save();

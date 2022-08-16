@@ -86,6 +86,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
             // Don't check for updates on startup.
             LinkedTweaks.LinkProperty(checkBoxIgnoreUpdates, new Accessor<bool>(() => Configuration.IgnoreUpdates));
 
+            // Make backups of *.ini files:
+            LinkedTweaks.LinkProperty(checkBoxMakeBackups, new Accessor<bool>(() => Configuration.MakeBackups));
+
             // Play notification sounds
             LinkedTweaks.LinkProperty(checkBoxPlayNotificationSound, new Accessor<bool>(() => Configuration.PlayNotificationSounds));
 

@@ -7,6 +7,7 @@ This is another small update to address some bugs.
 <summary>Click to expand</summary>
 
 - Added a link to the app settings that opens the profile editing screen.
+- Added an option to disable automatic *.ini backups to the settings.
 - Improved the comparison of versions in the mod manager.  
   This should fix the issue where the mod manager displays available updates even if the latest/newer version is installed.
 - Fixed a bug that would crash the mod manager when updating mod information using the NexusMods API.

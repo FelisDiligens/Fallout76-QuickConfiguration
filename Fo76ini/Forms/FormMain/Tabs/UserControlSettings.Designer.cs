@@ -74,13 +74,14 @@
             this.panelSettingsUI = new System.Windows.Forms.Panel();
             this.panelSettingsOptions = new System.Windows.Forms.Panel();
             this.panelSettingsNWMode = new System.Windows.Forms.Panel();
-            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.panelSettingsPaths = new System.Windows.Forms.Panel();
             this.panelSettingsProfile = new System.Windows.Forms.Panel();
             this.linkLabelOpenProfileEditor = new System.Windows.Forms.LinkLabel();
             this.labelSettingsProfileNotice = new System.Windows.Forms.Label();
             this.labelSettingsProfiles = new System.Windows.Forms.Label();
+            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
+            this.checkBoxMakeBackups = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
             this.panelSettingsLocalization.SuspendLayout();
             this.panelSettingsBehavior.SuspendLayout();
@@ -228,7 +229,7 @@
             // checkBoxIgnoreUpdates
             // 
             this.checkBoxIgnoreUpdates.AutoSize = true;
-            this.checkBoxIgnoreUpdates.Location = new System.Drawing.Point(15, 84);
+            this.checkBoxIgnoreUpdates.Location = new System.Drawing.Point(15, 106);
             this.checkBoxIgnoreUpdates.Name = "checkBoxIgnoreUpdates";
             this.checkBoxIgnoreUpdates.Size = new System.Drawing.Size(140, 17);
             this.checkBoxIgnoreUpdates.TabIndex = 12;
@@ -269,7 +270,7 @@
             // checkBoxPlayNotificationSound
             // 
             this.checkBoxPlayNotificationSound.AutoSize = true;
-            this.checkBoxPlayNotificationSound.Location = new System.Drawing.Point(15, 107);
+            this.checkBoxPlayNotificationSound.Location = new System.Drawing.Point(15, 129);
             this.checkBoxPlayNotificationSound.Name = "checkBoxPlayNotificationSound";
             this.checkBoxPlayNotificationSound.Size = new System.Drawing.Size(132, 17);
             this.checkBoxPlayNotificationSound.TabIndex = 13;
@@ -500,6 +501,7 @@
             // 
             // panelSettingsBehavior
             // 
+            this.panelSettingsBehavior.Controls.Add(this.checkBoxMakeBackups);
             this.panelSettingsBehavior.Controls.Add(this.labelSettingsBehavior);
             this.panelSettingsBehavior.Controls.Add(this.checkBoxAutoApply);
             this.panelSettingsBehavior.Controls.Add(this.checkBoxQuitOnGameLaunch);
@@ -507,14 +509,14 @@
             this.panelSettingsBehavior.Controls.Add(this.checkBoxPlayNotificationSound);
             this.panelSettingsBehavior.Location = new System.Drawing.Point(0, 165);
             this.panelSettingsBehavior.Name = "panelSettingsBehavior";
-            this.panelSettingsBehavior.Size = new System.Drawing.Size(403, 134);
+            this.panelSettingsBehavior.Size = new System.Drawing.Size(403, 156);
             this.panelSettingsBehavior.TabIndex = 83;
             // 
             // panelSettingsUI
             // 
             this.panelSettingsUI.Controls.Add(this.labelSettingsUI);
             this.panelSettingsUI.Controls.Add(this.checkBoxShowWhatsNew);
-            this.panelSettingsUI.Location = new System.Drawing.Point(0, 305);
+            this.panelSettingsUI.Location = new System.Drawing.Point(0, 327);
             this.panelSettingsUI.Name = "panelSettingsUI";
             this.panelSettingsUI.Size = new System.Drawing.Size(403, 57);
             this.panelSettingsUI.TabIndex = 84;
@@ -524,7 +526,7 @@
             this.panelSettingsOptions.Controls.Add(this.labelSettingsOptions);
             this.panelSettingsOptions.Controls.Add(this.checkBoxReadOnly);
             this.panelSettingsOptions.Controls.Add(this.checkBoxHandleNXMLinks);
-            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 368);
+            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 390);
             this.panelSettingsOptions.Name = "panelSettingsOptions";
             this.panelSettingsOptions.Size = new System.Drawing.Size(403, 86);
             this.panelSettingsOptions.TabIndex = 85;
@@ -539,27 +541,10 @@
             this.panelSettingsNWMode.Controls.Add(this.checkBoxNWAutoDeployMods);
             this.panelSettingsNWMode.Controls.Add(this.labelToggleNW);
             this.panelSettingsNWMode.Controls.Add(this.buttonNWMode);
-            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 736);
+            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 758);
             this.panelSettingsNWMode.Name = "panelSettingsNWMode";
             this.panelSettingsNWMode.Size = new System.Drawing.Size(403, 279);
             this.panelSettingsNWMode.TabIndex = 86;
-            // 
-            // buttonNWMode
-            // 
-            this.buttonNWMode.BorderWidth = ((uint)(1u));
-            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonNWMode.Highlight = false;
-            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
-            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.Location = new System.Drawing.Point(17, 53);
-            this.buttonNWMode.Name = "buttonNWMode";
-            this.buttonNWMode.Padding = 10;
-            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
-            this.buttonNWMode.TabIndex = 50;
-            this.buttonNWMode.Text = "Nuclear Winter";
-            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.UseVisualStyleBackColor = true;
-            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
             // 
             // panelSettingsPaths
             // 
@@ -575,7 +560,7 @@
             this.panelSettingsPaths.Controls.Add(this.labelSettingsModManager);
             this.panelSettingsPaths.Controls.Add(this.labelDownloadsPath);
             this.panelSettingsPaths.Controls.Add(this.buttonPickDownloadsPath);
-            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 460);
+            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 482);
             this.panelSettingsPaths.Name = "panelSettingsPaths";
             this.panelSettingsPaths.Size = new System.Drawing.Size(403, 177);
             this.panelSettingsPaths.TabIndex = 87;
@@ -585,7 +570,7 @@
             this.panelSettingsProfile.Controls.Add(this.linkLabelOpenProfileEditor);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfileNotice);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfiles);
-            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 643);
+            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 665);
             this.panelSettingsProfile.Name = "panelSettingsProfile";
             this.panelSettingsProfile.Size = new System.Drawing.Size(403, 87);
             this.panelSettingsProfile.TabIndex = 88;
@@ -620,6 +605,23 @@
             this.labelSettingsProfiles.TabIndex = 80;
             this.labelSettingsProfiles.Text = "Profile";
             // 
+            // buttonNWMode
+            // 
+            this.buttonNWMode.BorderWidth = ((uint)(1u));
+            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonNWMode.Highlight = false;
+            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
+            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.Location = new System.Drawing.Point(17, 53);
+            this.buttonNWMode.Name = "buttonNWMode";
+            this.buttonNWMode.Padding = 10;
+            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
+            this.buttonNWMode.TabIndex = 50;
+            this.buttonNWMode.Text = "Nuclear Winter";
+            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.UseVisualStyleBackColor = true;
+            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
+            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -631,6 +633,16 @@
             this.toolTip.Padding = new System.Drawing.Size(6, 6);
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
+            // 
+            // checkBoxMakeBackups
+            // 
+            this.checkBoxMakeBackups.AutoSize = true;
+            this.checkBoxMakeBackups.Location = new System.Drawing.Point(15, 83);
+            this.checkBoxMakeBackups.Name = "checkBoxMakeBackups";
+            this.checkBoxMakeBackups.Size = new System.Drawing.Size(264, 17);
+            this.checkBoxMakeBackups.TabIndex = 77;
+            this.checkBoxMakeBackups.Text = "Make backups of *.ini files before saving changes.";
+            this.checkBoxMakeBackups.UseVisualStyleBackColor = true;
             // 
             // UserControlSettings
             // 
@@ -721,5 +733,6 @@
         private System.Windows.Forms.LinkLabel linkLabelOpenProfileEditor;
         private System.Windows.Forms.Label labelSettingsProfileNotice;
         private System.Windows.Forms.Label labelSettingsProfiles;
+        private System.Windows.Forms.CheckBox checkBoxMakeBackups;
     }
 }
