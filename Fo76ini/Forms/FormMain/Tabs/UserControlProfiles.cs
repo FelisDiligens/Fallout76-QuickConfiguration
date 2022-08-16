@@ -302,7 +302,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             if (UpdatingUI)
                 return;
-            ProfileManager.SelectedGame.GamePath = this.textBoxGamePath.Text;
+            ProfileManager.SelectedGame.GamePath = Utils.SanitizePath(this.textBoxGamePath.Text);
             this.textBoxGamePath.ForeColor = ProfileManager.SelectedGame.ValidateGamePath() ? Color.Black : Color.Maroon;
         }
 
@@ -380,7 +380,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             if (UpdatingUI)
                 return;
-            ProfileManager.SelectedGame.IniParentPath = this.textBoxIniPath.Text;
+            ProfileManager.SelectedGame.IniParentPath = Utils.SanitizePath(this.textBoxIniPath.Text);
             this.textBoxIniPath.ForeColor = ProfileManager.SelectedGame.ValidateIniPath() ? Color.Black : Color.Maroon;
         }
 

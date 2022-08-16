@@ -202,6 +202,30 @@ namespace Fo76ini.Utilities
         }
 
         /// <summary>
+        /// Remove any invalid path characters.
+        /// </summary>
+        public static string SanitizePath(string path)
+        {
+            System.Text.StringBuilder sanitizedPath = new System.Text.StringBuilder();
+
+            // Check if the path starts with a drive letter (e.g. "C:\"):
+            string pathWithoutDriveLetter = Regex.Replace(path, @"^[a-zA-Z]\:\\", "");
+            if (Regex.IsMatch(path, @"^[a-zA-Z]\:\\"))
+            {
+                sanitizedPath.Append($"{path[0]}:\\");
+            }
+
+            // Filter invalid characters:
+            foreach (char c in pathWithoutDriveLetter)
+            {
+                if (c == Path.DirectorySeparatorChar || !Path.GetInvalidFileNameChars().Contains(c))
+                    sanitizedPath.Append(c);
+            }
+
+            return sanitizedPath.ToString();
+        }
+
+        /// <summary>
         /// Returns "File (1).txt" if "File.txt" already exists.
         /// </summary>
         /// <param name="fullPath"></param>
