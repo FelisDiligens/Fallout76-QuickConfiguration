@@ -37,7 +37,7 @@ namespace Fo76ini.Mods
         public static void InstallArchive(ManagedMods mods, string filePath, bool useSourceBA2Archive = false, int index = -1, Action<Progress> ProgressChanged = null)
         {
             ManagedMod newMod = ModInstallations.FromArchive(mods.GamePath, filePath, useSourceBA2Archive, ProgressChanged);
-            if (index < 0)
+            if (index < 0 || index >= mods.Count)
                 mods.Add(newMod);
             else
                 mods.Insert(index, newMod);
@@ -123,7 +123,7 @@ namespace Fo76ini.Mods
         public static void InstallFolder(ManagedMods mods, string folderPath, int index = -1, Action<Progress> ProgressChanged = null)
         {
             ManagedMod newMod = ModInstallations.FromFolder(mods.GamePath, folderPath, ProgressChanged);
-            if (index < 0)
+            if (index < 0 || index >= mods.Count)
                 mods.Add(newMod);
             else
                 mods.Insert(index, newMod);
