@@ -6,16 +6,19 @@ This is another small update to address some bugs.
 <details>
 <summary>Click to expand</summary>
 
-- Added a link to the app settings that opens the profile editing screen.
-- Added an option to disable automatic *.ini backups to the settings.
-- Added an option to disable notifications (popups) to the settings.
-- Dragging and dropping mods (archives or folders) into the list installs them at the correct position (where the cursor is) instead of at the end of the list now.
-- Improved the comparison of versions in the mod manager.  
-  This should fix the issue where the mod manager displays available updates even if the latest/newer version is installed.
-- Fixed a bug that would crash the mod manager when updating mod information using the NexusMods API.
-- Fixed a bug where invalid characters in (user-defined) paths were crashing the tool. They get sanitized now.
-- Added another warning to the mod manager's side panel, if no (valid) files are found for packing.
-- Improved packing of bundled archives: junk files are now ignored. Should reduce errors.
+- App Settings:
+  - Added a link to the app settings that opens the profile editing screen.
+  - Added an option to disable automatic *.ini backups to the app settings.
+  - Added an option to disable notifications (popups) to the app settings.
+- Mod Manager:
+  - Dragging and dropping mods (archives or folders) into the list installs them at the correct position (where the cursor is) instead of at the end of the list now.
+  - Improved the comparison of versions in the mod manager.  
+    This should fix the issue where the mod manager displays available updates even if the latest/newer version is installed.
+  - Fixed a bug that would crash the mod manager when updating mod information using the NexusMods API.
+  - Added another warning to the mod manager's side panel, if no (valid) files are found for packing.
+  - Improved packing of bundled archives: junk files are now ignored. Should reduce errors.
+- General:
+  - Fixed a bug where invalid characters in (user-defined) paths were crashing the tool. They get sanitized now.
 
 </details>
 
