@@ -89,11 +89,18 @@ namespace Fo76ini.Forms.FormMain.Tabs
             // Make backups of *.ini files:
             LinkedTweaks.LinkProperty(checkBoxMakeBackups, new Accessor<bool>(() => Configuration.MakeBackups));
 
+            // Close the tool when the game is launched.
+            LinkedTweaks.LinkProperty(checkBoxQuitOnGameLaunch, new Accessor<bool>(() => Configuration.QuitOnLaunch));
+
+            /*
+             * Notifications
+             */
+
             // Play notification sounds
             LinkedTweaks.LinkProperty(checkBoxPlayNotificationSound, new Accessor<bool>(() => Configuration.PlayNotificationSounds));
 
-            // Close the tool when the game is launched.
-            LinkedTweaks.LinkProperty(checkBoxQuitOnGameLaunch, new Accessor<bool>(() => Configuration.QuitOnLaunch));
+            // Show notifications
+            LinkedTweaks.LinkProperty(checkBoxShowNotifications, new Accessor<bool>(() => Configuration.ShowNotifications));
 
 
             /*

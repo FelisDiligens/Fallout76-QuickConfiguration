@@ -170,12 +170,16 @@ namespace Fo76ini.Interface
 
         public static void Popup(string title, string text)
         {
+            if (!Configuration.ShowNotifications)
+                return;
             Utils.CreatePopup(title, text).Popup();
             PlayNotificationSound();
         }
 
         public static void Popup(string title, string text, MessageBoxIcon icon)
         {
+            if (!Configuration.ShowNotifications)
+                return;
             Utils.CreatePopup(title, text, icon).Popup();
             if (icon == MessageBoxIcon.Warning || icon == MessageBoxIcon.Error)
                 PlayErrorSound();

@@ -292,6 +292,18 @@ namespace Fo76ini
             }
         }
 
+        public static bool ShowNotifications
+        {
+            get
+            {
+                return IniFiles.Config.GetBool("Preferences", "bShowNotifications", true);
+            }
+            set
+            {
+                IniFiles.Config.Set("Preferences", "bShowNotifications", value);
+            }
+        }
+
         /// <summary>
         /// Description:
         /// Won't check for updates on startup and hides the big update button.

@@ -71,6 +71,7 @@
             this.labelToggleNW = new System.Windows.Forms.Label();
             this.panelSettingsLocalization = new System.Windows.Forms.Panel();
             this.panelSettingsBehavior = new System.Windows.Forms.Panel();
+            this.checkBoxMakeBackups = new System.Windows.Forms.CheckBox();
             this.panelSettingsUI = new System.Windows.Forms.Panel();
             this.panelSettingsOptions = new System.Windows.Forms.Panel();
             this.panelSettingsNWMode = new System.Windows.Forms.Panel();
@@ -79,9 +80,11 @@
             this.linkLabelOpenProfileEditor = new System.Windows.Forms.LinkLabel();
             this.labelSettingsProfileNotice = new System.Windows.Forms.Label();
             this.labelSettingsProfiles = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelSettingsNotifications = new System.Windows.Forms.Label();
+            this.checkBoxShowNotifications = new System.Windows.Forms.CheckBox();
             this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
-            this.checkBoxMakeBackups = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
             this.panelSettingsLocalization.SuspendLayout();
             this.panelSettingsBehavior.SuspendLayout();
@@ -90,6 +93,7 @@
             this.panelSettingsNWMode.SuspendLayout();
             this.panelSettingsPaths.SuspendLayout();
             this.panelSettingsProfile.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // backgroundWorkerDownloadLanguages
@@ -270,7 +274,7 @@
             // checkBoxPlayNotificationSound
             // 
             this.checkBoxPlayNotificationSound.AutoSize = true;
-            this.checkBoxPlayNotificationSound.Location = new System.Drawing.Point(15, 129);
+            this.checkBoxPlayNotificationSound.Location = new System.Drawing.Point(15, 42);
             this.checkBoxPlayNotificationSound.Name = "checkBoxPlayNotificationSound";
             this.checkBoxPlayNotificationSound.Size = new System.Drawing.Size(132, 17);
             this.checkBoxPlayNotificationSound.TabIndex = 13;
@@ -506,17 +510,26 @@
             this.panelSettingsBehavior.Controls.Add(this.checkBoxAutoApply);
             this.panelSettingsBehavior.Controls.Add(this.checkBoxQuitOnGameLaunch);
             this.panelSettingsBehavior.Controls.Add(this.checkBoxIgnoreUpdates);
-            this.panelSettingsBehavior.Controls.Add(this.checkBoxPlayNotificationSound);
             this.panelSettingsBehavior.Location = new System.Drawing.Point(0, 165);
             this.panelSettingsBehavior.Name = "panelSettingsBehavior";
-            this.panelSettingsBehavior.Size = new System.Drawing.Size(403, 156);
+            this.panelSettingsBehavior.Size = new System.Drawing.Size(403, 128);
             this.panelSettingsBehavior.TabIndex = 83;
+            // 
+            // checkBoxMakeBackups
+            // 
+            this.checkBoxMakeBackups.AutoSize = true;
+            this.checkBoxMakeBackups.Location = new System.Drawing.Point(15, 83);
+            this.checkBoxMakeBackups.Name = "checkBoxMakeBackups";
+            this.checkBoxMakeBackups.Size = new System.Drawing.Size(264, 17);
+            this.checkBoxMakeBackups.TabIndex = 77;
+            this.checkBoxMakeBackups.Text = "Make backups of *.ini files before saving changes.";
+            this.checkBoxMakeBackups.UseVisualStyleBackColor = true;
             // 
             // panelSettingsUI
             // 
             this.panelSettingsUI.Controls.Add(this.labelSettingsUI);
             this.panelSettingsUI.Controls.Add(this.checkBoxShowWhatsNew);
-            this.panelSettingsUI.Location = new System.Drawing.Point(0, 327);
+            this.panelSettingsUI.Location = new System.Drawing.Point(0, 397);
             this.panelSettingsUI.Name = "panelSettingsUI";
             this.panelSettingsUI.Size = new System.Drawing.Size(403, 57);
             this.panelSettingsUI.TabIndex = 84;
@@ -526,7 +539,7 @@
             this.panelSettingsOptions.Controls.Add(this.labelSettingsOptions);
             this.panelSettingsOptions.Controls.Add(this.checkBoxReadOnly);
             this.panelSettingsOptions.Controls.Add(this.checkBoxHandleNXMLinks);
-            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 390);
+            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 460);
             this.panelSettingsOptions.Name = "panelSettingsOptions";
             this.panelSettingsOptions.Size = new System.Drawing.Size(403, 86);
             this.panelSettingsOptions.TabIndex = 85;
@@ -541,7 +554,7 @@
             this.panelSettingsNWMode.Controls.Add(this.checkBoxNWAutoDeployMods);
             this.panelSettingsNWMode.Controls.Add(this.labelToggleNW);
             this.panelSettingsNWMode.Controls.Add(this.buttonNWMode);
-            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 758);
+            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 828);
             this.panelSettingsNWMode.Name = "panelSettingsNWMode";
             this.panelSettingsNWMode.Size = new System.Drawing.Size(403, 279);
             this.panelSettingsNWMode.TabIndex = 86;
@@ -560,7 +573,7 @@
             this.panelSettingsPaths.Controls.Add(this.labelSettingsModManager);
             this.panelSettingsPaths.Controls.Add(this.labelDownloadsPath);
             this.panelSettingsPaths.Controls.Add(this.buttonPickDownloadsPath);
-            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 482);
+            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 552);
             this.panelSettingsPaths.Name = "panelSettingsPaths";
             this.panelSettingsPaths.Size = new System.Drawing.Size(403, 177);
             this.panelSettingsPaths.TabIndex = 87;
@@ -570,7 +583,7 @@
             this.panelSettingsProfile.Controls.Add(this.linkLabelOpenProfileEditor);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfileNotice);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfiles);
-            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 665);
+            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 735);
             this.panelSettingsProfile.Name = "panelSettingsProfile";
             this.panelSettingsProfile.Size = new System.Drawing.Size(403, 87);
             this.panelSettingsProfile.TabIndex = 88;
@@ -605,6 +618,39 @@
             this.labelSettingsProfiles.TabIndex = 80;
             this.labelSettingsProfiles.Text = "Profile";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.labelSettingsNotifications);
+            this.panel1.Controls.Add(this.checkBoxShowNotifications);
+            this.panel1.Controls.Add(this.checkBoxPlayNotificationSound);
+            this.panel1.Location = new System.Drawing.Point(0, 299);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(403, 92);
+            this.panel1.TabIndex = 89;
+            // 
+            // labelSettingsNotifications
+            // 
+            this.labelSettingsNotifications.AutoSize = true;
+            this.labelSettingsNotifications.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSettingsNotifications.Location = new System.Drawing.Point(12, 17);
+            this.labelSettingsNotifications.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
+            this.labelSettingsNotifications.Name = "labelSettingsNotifications";
+            this.labelSettingsNotifications.Size = new System.Drawing.Size(84, 17);
+            this.labelSettingsNotifications.TabIndex = 76;
+            this.labelSettingsNotifications.Text = "Notifications";
+            // 
+            // checkBoxShowNotifications
+            // 
+            this.checkBoxShowNotifications.AutoSize = true;
+            this.checkBoxShowNotifications.Location = new System.Drawing.Point(15, 65);
+            this.checkBoxShowNotifications.Name = "checkBoxShowNotifications";
+            this.checkBoxShowNotifications.Size = new System.Drawing.Size(112, 17);
+            this.checkBoxShowNotifications.TabIndex = 13;
+            this.checkBoxShowNotifications.Text = "Show notifications";
+            this.toolTip.SetToolTip(this.checkBoxShowNotifications, "By disabling this option, notifications will be disabled, but you may miss (more " +
+        "or less) important messages.");
+            this.checkBoxShowNotifications.UseVisualStyleBackColor = true;
+            // 
             // buttonNWMode
             // 
             this.buttonNWMode.BorderWidth = ((uint)(1u));
@@ -634,21 +680,12 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
-            // checkBoxMakeBackups
-            // 
-            this.checkBoxMakeBackups.AutoSize = true;
-            this.checkBoxMakeBackups.Location = new System.Drawing.Point(15, 83);
-            this.checkBoxMakeBackups.Name = "checkBoxMakeBackups";
-            this.checkBoxMakeBackups.Size = new System.Drawing.Size(264, 17);
-            this.checkBoxMakeBackups.TabIndex = 77;
-            this.checkBoxMakeBackups.Text = "Make backups of *.ini files before saving changes.";
-            this.checkBoxMakeBackups.UseVisualStyleBackColor = true;
-            // 
             // UserControlSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelSettingsProfile);
             this.Controls.Add(this.panelSettingsPaths);
             this.Controls.Add(this.panelSettingsNWMode);
@@ -675,6 +712,8 @@
             this.panelSettingsPaths.PerformLayout();
             this.panelSettingsProfile.ResumeLayout(false);
             this.panelSettingsProfile.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -734,5 +773,8 @@
         private System.Windows.Forms.Label labelSettingsProfileNotice;
         private System.Windows.Forms.Label labelSettingsProfiles;
         private System.Windows.Forms.CheckBox checkBoxMakeBackups;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelSettingsNotifications;
+        private System.Windows.Forms.CheckBox checkBoxShowNotifications;
     }
 }
