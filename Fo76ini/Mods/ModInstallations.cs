@@ -32,11 +32,15 @@ namespace Fo76ini.Mods
         /// Extracts the archive and adds the mod to the list.
         /// Saves the xml file afterwards.
         /// </summary>
+        /// <param name="index">Adds the mod at the specified index. If -1, adds to the end of the list.</param>
         /// <param name="useSourceBA2Archive">When false, creates a new "frozen" mod.</param>
-        public static void InstallArchive(ManagedMods mods, string filePath, bool useSourceBA2Archive = false, Action<Progress> ProgressChanged = null)
+        public static void InstallArchive(ManagedMods mods, string filePath, bool useSourceBA2Archive = false, int index = -1, Action<Progress> ProgressChanged = null)
         {
             ManagedMod newMod = ModInstallations.FromArchive(mods.GamePath, filePath, useSourceBA2Archive, ProgressChanged);
-            mods.Add(newMod);
+            if (index < 0 || index >= mods.Count)
+                mods.Add(newMod);
+            else
+                mods.Insert(index, newMod);
             mods.Save();
             ProgressChanged?.Invoke(Progress.Done("Mod archive installed."));
         }
@@ -115,10 +119,14 @@ namespace Fo76ini.Mods
         /// Copies the folder and adds the mod to the list.
         /// Saves the xml file afterwards.
         /// </summary>
-        public static void InstallFolder(ManagedMods mods, string folderPath, Action<Progress> ProgressChanged = null)
+        /// <param name="index">Adds the mod at the specified index. If -1, adds to the end of the list.</param>
+        public static void InstallFolder(ManagedMods mods, string folderPath, int index = -1, Action<Progress> ProgressChanged = null)
         {
             ManagedMod newMod = ModInstallations.FromFolder(mods.GamePath, folderPath, ProgressChanged);
-            mods.Add(newMod);
+            if (index < 0 || index >= mods.Count)
+                mods.Add(newMod);
+            else
+                mods.Insert(index, newMod);
             mods.Save();
             ProgressChanged?.Invoke(Progress.Done("Mod folder installed."));
         }

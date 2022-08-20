@@ -729,7 +729,7 @@ namespace Fo76ini
             }, () => {
                 try
                 {
-                    ModInstallations.InstallArchive(Mods, path, freeze, UpdateProgress);
+                    ModInstallations.InstallArchive(Mods, path, freeze, -1, UpdateProgress);
                 }
                 catch (Archive2RequirementsException exc)
                 {
@@ -773,7 +773,7 @@ namespace Fo76ini
             }, () => {
                 try
                 {
-                    ModInstallations.InstallFolder(Mods, path, UpdateProgress);
+                    ModInstallations.InstallFolder(Mods, path, -1, UpdateProgress);
                 }
                 catch (Archive2RequirementsException exc)
                 {
@@ -803,7 +803,7 @@ namespace Fo76ini
             });
         }
 
-        private void InstallBulkThreaded(string[] files)
+        private void InstallBulkThreaded(string[] files, int dropIndex = -1)
         {
             RunThreaded(() => {
                 DisableUI();
@@ -811,7 +811,7 @@ namespace Fo76ini
             }, () => {
                 try
                 {
-                    InstallBulk(files);
+                    InstallBulk(files, dropIndex);
                 }
                 catch (Archive2RequirementsException exc)
                 {
@@ -850,7 +850,7 @@ namespace Fo76ini
             });
         }
 
-        private void InstallBulk(string[] files)
+        private void InstallBulk(string[] files, int dropIndex = -1)
         {
             int i = 0;
             foreach (string filePath in files)
@@ -858,9 +858,9 @@ namespace Fo76ini
                 UpdateProgress(Progress.Ongoing($"Importing {++i} of {files.Length} files/folders...", (float)i / (float)files.Length));
                 string longFilePath = ModInstallations.EnsureLongPathSupport(filePath);
                 if (Directory.Exists(longFilePath))
-                    ModInstallations.InstallFolder(Mods, filePath);
+                    ModInstallations.InstallFolder(Mods, filePath, dropIndex);
                 else if (File.Exists(longFilePath))
-                    ModInstallations.InstallArchive(Mods, filePath, !Configuration.Mods.UnpackBA2ByDefault);
+                    ModInstallations.InstallArchive(Mods, filePath, !Configuration.Mods.UnpackBA2ByDefault, dropIndex);
             }
         }
 
@@ -1007,7 +1007,7 @@ namespace Fo76ini
                 // TODO: Check for updates could be so much better.
                 List<string> modsWithUpdates = new List<string>();
                 foreach (ManagedMod mod in Mods)
-                    if (mod.RemoteInfo != null && mod.Version != mod.RemoteInfo.LatestVersion)
+                    if (mod.RemoteInfo != null && ModHelpers.CompareVersion(mod.Version, mod.RemoteInfo.LatestVersion) < 0)
                         modsWithUpdates.Add($"{mod.Title} (updated from {mod.Version} to {mod.RemoteInfo.LatestVersion})");
 
                 if (modsWithUpdates.Count() > 0)

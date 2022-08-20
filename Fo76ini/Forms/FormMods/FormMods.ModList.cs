@@ -78,7 +78,7 @@ namespace Fo76ini
                     {
                         this.ModDescription += $"Version {mod.Version} by {mod.RemoteInfo.Author}";
 
-                        if (remoteMod.LatestVersion != mod.Version)
+                        if (ModHelpers.CompareVersion(mod.Version, remoteMod.LatestVersion) < 0)
                         {
                             // Update available:
                             this.ModDescription = $"{Localization.GetString("updateAvailable")}: {remoteMod.LatestVersion}";
@@ -516,6 +516,28 @@ namespace Fo76ini
          */
         #region Drag & drop
 
+        /// <summary>
+        /// Determine drop index from mouse location.
+        /// </summary>
+        private int DetermineDropIndex(Point mouseLocation)
+        {
+            // Determine drop index from mouse location:
+            // (there literally isn't a predefined property, so we have to calculate it)
+            int mouseY = mouseLocation.Y; // Origin (0 | 0) is the top left corner of the ListView
+            int headerHeight = this.objectListViewMods.TopItem.Bounds.Top; // usually 22px
+            int rowHeight = this.objectListViewMods.RowHeight + 1; // + 1px because of the grid border
+            int scrollYOffset = this.objectListViewMods.LowLevelScrollPosition.Y * rowHeight; // For some reason, it uses rows instead of pixels in LowLevelScrollPosition.Y...
+            int arbitraryOffset = 3; // I don't know where these arbitrary few pixels come from but I have to add them for accuracy.
+
+            int dropIndex = (
+                mouseY - headerHeight // Gets the y position relative to the end of the sticky header
+                + scrollYOffset       // Add the out of view rows that we need to count in
+                + arbitraryOffset     // Add some necessary but arbitrary offset
+                ) / rowHeight;        // Divide it by the row height to get from pixels to an index (or row count)
+
+            return dropIndex;
+        }
+
         private List<ModListRow> _nonDraggedRows = new List<ModListRow>();
         private List<ModListRow> _draggedRows = new List<ModListRow>();
         private bool _rowsBeingDragged = false;
@@ -556,19 +578,7 @@ namespace Fo76ini
         // On drop: Handle rearrangment of mod entries / rows:
         private void objectListViewMods_ModelDropped(object sender, ModelDropEventArgs e)
         {
-            // Determine drop index from mouse location:
-            // (there literally isn't a predefined property, so we have to calculate it)
-            int mouseY = e.MouseLocation.Y; // Origin (0 | 0) is the top left corner of the ListView
-            int headerHeight = this.objectListViewMods.TopItem.Bounds.Top; // usually 22px
-            int rowHeight = this.objectListViewMods.RowHeight + 1; // + 1px because of the grid border
-            int scrollYOffset = this.objectListViewMods.LowLevelScrollPosition.Y * rowHeight; // For some reason, it uses rows instead of pixels in LowLevelScrollPosition.Y...
-            int arbitraryOffset = 3; // I don't know where these arbitrary few pixels come from but I have to add them for accuracy.
-            
-            int dropIndex = (
-                mouseY - headerHeight // Gets the y position relative to the end of the sticky header
-                + scrollYOffset       // Add the out of view rows that we need to count in
-                + arbitraryOffset     // Add some necessary but arbitrary offset
-                ) / rowHeight;        // Divide it by the row height to get from pixels to an index (or row count)
+            int dropIndex = DetermineDropIndex(e.MouseLocation);
 
             // Reverse list:
             _draggedRows.Reverse();
@@ -619,9 +629,10 @@ namespace Fo76ini
         // On drop: Handle dropped file(s)...
         private void objectListViewMods_Dropped(object sender, OlvDropEventArgs e)
         {
+            int dropIndex = DetermineDropIndex(e.MouseLocation);
             string[] files = (string[])e.DragEventArgs.Data.GetData(DataFormats.FileDrop);
             if (files != null && files.Length > 0)
-                InstallBulkThreaded(files);
+                InstallBulkThreaded(files, dropIndex);
         }
 
         #endregion

@@ -264,9 +264,21 @@ namespace Fo76ini.Mods
             IniFiles.F76Custom.Save();
         }
 
+        /// <summary>
+        /// Inserts a mod to the end of the list.
+        /// </summary>
         public void Add(ManagedMod item)
         {
             this.Mods.Add(item);
+        }
+
+        /// <summary>
+        /// Inserts a mod into the list at the specified index.
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public void Insert(int index, ManagedMod item)
+        {
+            this.Mods.Insert(index, item);
         }
 
         public void Clear()

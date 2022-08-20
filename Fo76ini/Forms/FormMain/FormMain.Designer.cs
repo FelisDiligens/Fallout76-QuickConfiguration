@@ -64,10 +64,10 @@
             this.userControlCustom = new Fo76ini.Forms.FormMain.Tabs.UserControlCustom();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
             this.userControlSettings = new Fo76ini.Forms.FormMain.Tabs.UserControlSettings();
-            this.tabPageProfiles = new System.Windows.Forms.TabPage();
-            this.userControlProfiles = new Fo76ini.Forms.FormMain.Tabs.UserControlProfiles();
             this.tabPageNexusMods = new System.Windows.Forms.TabPage();
             this.userControlNexusMods = new Fo76ini.Forms.FormMain.Tabs.UserControlNexusMods();
+            this.tabPageProfiles = new System.Windows.Forms.TabPage();
+            this.userControlProfiles = new Fo76ini.Forms.FormMain.Tabs.UserControlProfiles();
             this.userControlSideNav = new Fo76ini.Forms.FormMain.UserControlSideNav();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -80,8 +80,8 @@
             this.tabPageGallery.SuspendLayout();
             this.tabPageCustom.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
-            this.tabPageProfiles.SuspendLayout();
             this.tabPageNexusMods.SuspendLayout();
+            this.tabPageProfiles.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolTip
@@ -137,14 +137,15 @@
             this.tabControl1.Controls.Add(this.tabPageGallery);
             this.tabControl1.Controls.Add(this.tabPageCustom);
             this.tabControl1.Controls.Add(this.tabPageSettings);
-            this.tabControl1.Controls.Add(this.tabPageProfiles);
             this.tabControl1.Controls.Add(this.tabPageNexusMods);
+            this.tabControl1.Controls.Add(this.tabPageProfiles);
             this.tabControl1.Location = new System.Drawing.Point(200, -2);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(684, 613);
             this.tabControl1.TabIndex = 7;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPageHome
             // 
@@ -354,15 +355,15 @@
             this.tabPageTweaks.Location = new System.Drawing.Point(4, 22);
             this.tabPageTweaks.Name = "tabPageTweaks";
             this.tabPageTweaks.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTweaks.Size = new System.Drawing.Size(676, 557);
+            this.tabPageTweaks.Size = new System.Drawing.Size(676, 587);
             this.tabPageTweaks.TabIndex = 11;
             this.tabPageTweaks.Text = "Tweaks";
             this.tabPageTweaks.UseVisualStyleBackColor = true;
             // 
             // userControlTweaks
             // 
-            this.userControlTweaks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.userControlTweaks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlTweaks.Location = new System.Drawing.Point(0, 0);
             this.userControlTweaks.Name = "userControlTweaks";
@@ -374,16 +375,17 @@
             this.tabPagePipBoy.Controls.Add(this.userControlPipboy);
             this.tabPagePipBoy.Location = new System.Drawing.Point(4, 22);
             this.tabPagePipBoy.Name = "tabPagePipBoy";
-            this.tabPagePipBoy.Size = new System.Drawing.Size(676, 557);
+            this.tabPagePipBoy.Size = new System.Drawing.Size(676, 587);
             this.tabPagePipBoy.TabIndex = 12;
             this.tabPagePipBoy.Text = "Pip-Boy";
             this.tabPagePipBoy.UseVisualStyleBackColor = true;
             // 
             // userControlPipboy
             // 
-            this.userControlPipboy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.userControlPipboy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlPipboy.AutoScroll = true;
             this.userControlPipboy.Location = new System.Drawing.Point(0, 0);
             this.userControlPipboy.Name = "userControlPipboy";
             this.userControlPipboy.Size = new System.Drawing.Size(676, 557);
@@ -395,15 +397,15 @@
             this.tabPageGallery.Location = new System.Drawing.Point(4, 22);
             this.tabPageGallery.Name = "tabPageGallery";
             this.tabPageGallery.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGallery.Size = new System.Drawing.Size(676, 557);
+            this.tabPageGallery.Size = new System.Drawing.Size(676, 587);
             this.tabPageGallery.TabIndex = 10;
             this.tabPageGallery.Text = "Gallery";
             this.tabPageGallery.UseVisualStyleBackColor = true;
             // 
             // userControlGallery
             // 
-            this.userControlGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.userControlGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlGallery.Location = new System.Drawing.Point(0, 0);
             this.userControlGallery.Name = "userControlGallery";
@@ -416,15 +418,15 @@
             this.tabPageCustom.Location = new System.Drawing.Point(4, 22);
             this.tabPageCustom.Name = "tabPageCustom";
             this.tabPageCustom.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCustom.Size = new System.Drawing.Size(676, 557);
+            this.tabPageCustom.Size = new System.Drawing.Size(676, 587);
             this.tabPageCustom.TabIndex = 9;
             this.tabPageCustom.Text = "Custom";
             this.tabPageCustom.UseVisualStyleBackColor = true;
             // 
             // userControlCustom
             // 
-            this.userControlCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.userControlCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlCustom.Location = new System.Drawing.Point(0, 0);
             this.userControlCustom.Name = "userControlCustom";
@@ -444,8 +446,8 @@
             // 
             // userControlSettings
             // 
-            this.userControlSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.userControlSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userControlSettings.AutoScroll = true;
             this.userControlSettings.Location = new System.Drawing.Point(0, 0);
@@ -453,6 +455,28 @@
             this.userControlSettings.Size = new System.Drawing.Size(676, 587);
             this.userControlSettings.TabIndex = 3;
             this.userControlSettings.NuclearWinterModeToggled += new System.EventHandler(this.userControlSettings_NuclearWinterModeToggled);
+            this.userControlSettings.OpenProfileEditorRequested += new System.EventHandler(this.userControlSettings_OpenProfileEditorRequested);
+            // 
+            // tabPageNexusMods
+            // 
+            this.tabPageNexusMods.Controls.Add(this.userControlNexusMods);
+            this.tabPageNexusMods.Location = new System.Drawing.Point(4, 22);
+            this.tabPageNexusMods.Name = "tabPageNexusMods";
+            this.tabPageNexusMods.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageNexusMods.Size = new System.Drawing.Size(676, 587);
+            this.tabPageNexusMods.TabIndex = 15;
+            this.tabPageNexusMods.Text = "NexusMods";
+            this.tabPageNexusMods.UseVisualStyleBackColor = true;
+            // 
+            // userControlNexusMods
+            // 
+            this.userControlNexusMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlNexusMods.Location = new System.Drawing.Point(0, 0);
+            this.userControlNexusMods.Name = "userControlNexusMods";
+            this.userControlNexusMods.Size = new System.Drawing.Size(676, 557);
+            this.userControlNexusMods.TabIndex = 0;
             // 
             // tabPageProfiles
             // 
@@ -461,40 +485,19 @@
             this.tabPageProfiles.Location = new System.Drawing.Point(4, 22);
             this.tabPageProfiles.Name = "tabPageProfiles";
             this.tabPageProfiles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProfiles.Size = new System.Drawing.Size(676, 557);
+            this.tabPageProfiles.Size = new System.Drawing.Size(676, 587);
             this.tabPageProfiles.TabIndex = 13;
             this.tabPageProfiles.Text = "Profiles";
             // 
             // userControlProfiles
             // 
-            this.userControlProfiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.userControlProfiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.userControlProfiles.BackColor = System.Drawing.Color.White;
             this.userControlProfiles.Location = new System.Drawing.Point(0, 0);
             this.userControlProfiles.Name = "userControlProfiles";
             this.userControlProfiles.Size = new System.Drawing.Size(471, 557);
             this.userControlProfiles.TabIndex = 0;
-            // 
-            // tabPageNexusMods
-            // 
-            this.tabPageNexusMods.Controls.Add(this.userControlNexusMods);
-            this.tabPageNexusMods.Location = new System.Drawing.Point(4, 22);
-            this.tabPageNexusMods.Name = "tabPageNexusMods";
-            this.tabPageNexusMods.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageNexusMods.Size = new System.Drawing.Size(676, 557);
-            this.tabPageNexusMods.TabIndex = 15;
-            this.tabPageNexusMods.Text = "NexusMods";
-            this.tabPageNexusMods.UseVisualStyleBackColor = true;
-            // 
-            // userControlNexusMods
-            // 
-            this.userControlNexusMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.userControlNexusMods.Location = new System.Drawing.Point(0, 0);
-            this.userControlNexusMods.Name = "userControlNexusMods";
-            this.userControlNexusMods.Size = new System.Drawing.Size(676, 557);
-            this.userControlNexusMods.TabIndex = 0;
             // 
             // userControlSideNav
             // 
@@ -503,6 +506,7 @@
             this.userControlSideNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.userControlSideNav.Location = new System.Drawing.Point(0, -2);
             this.userControlSideNav.Name = "userControlSideNav";
+            this.userControlSideNav.SelectedTabIndex = -1;
             this.userControlSideNav.Size = new System.Drawing.Size(200, 613);
             this.userControlSideNav.TabIndex = 17;
             this.userControlSideNav.PlayClicked += new System.EventHandler(this.navButtonPlay_Click);
@@ -545,8 +549,8 @@
             this.tabPageGallery.ResumeLayout(false);
             this.tabPageCustom.ResumeLayout(false);
             this.tabPageSettings.ResumeLayout(false);
-            this.tabPageProfiles.ResumeLayout(false);
             this.tabPageNexusMods.ResumeLayout(false);
+            this.tabPageProfiles.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

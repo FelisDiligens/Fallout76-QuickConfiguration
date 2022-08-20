@@ -262,6 +262,21 @@ namespace Fo76ini
         }
 
         /// <summary>
+        /// Determines whether or not to create backups of *.ini files when the tool saves them.
+        /// </summary>
+        public static bool MakeBackups
+        {
+            get
+            {
+                return IniFiles.Config.GetBool("Preferences", "bMakeBackups", true);
+            }
+            set
+            {
+                IniFiles.Config.Set("Preferences", "bMakeBackups", value);
+            }
+        }
+
+        /// <summary>
         /// Description:
         /// When enabled, the tool will play custom notification sounds.
         /// </summary>
@@ -274,6 +289,18 @@ namespace Fo76ini
             set
             {
                 IniFiles.Config.Set("Preferences", "bPlayNotificationSound", value);
+            }
+        }
+
+        public static bool ShowNotifications
+        {
+            get
+            {
+                return IniFiles.Config.GetBool("Preferences", "bShowNotifications", true);
+            }
+            set
+            {
+                IniFiles.Config.Set("Preferences", "bShowNotifications", value);
             }
         }
 
@@ -330,11 +357,11 @@ namespace Fo76ini
         {
             get
             {
-                return Path.GetFullPath(IniFiles.Config.GetString("Preferences", "sDownloadPath", DefaultDownloadPath));
+                return Utils.SanitizePath(Path.GetFullPath(IniFiles.Config.GetString("Preferences", "sDownloadPath", DefaultDownloadPath)));
             }
             set
             {
-                IniFiles.Config.Set("Preferences", "sDownloadPath", value);
+                IniFiles.Config.Set("Preferences", "sDownloadPath", Utils.SanitizePath(value));
             }
         }
 
@@ -355,11 +382,11 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Config.GetString("Preferences", "sArchiveTwoPath", Archive2.DefaultArchive2Path);
+                return Utils.SanitizePath(IniFiles.Config.GetString("Preferences", "sArchiveTwoPath", Archive2.DefaultArchive2Path));
             }
             set
             {
-                IniFiles.Config.Set("Preferences", "sArchiveTwoPath", value);
+                IniFiles.Config.Set("Preferences", "sArchiveTwoPath", Utils.SanitizePath(value));
             }
         }
 
@@ -372,11 +399,11 @@ namespace Fo76ini
         {
             get
             {
-                return IniFiles.Config.GetString("Preferences", "sSevenZipPath", SevenZip.DefaultExecPath);
+                return Utils.SanitizePath(IniFiles.Config.GetString("Preferences", "sSevenZipPath", SevenZip.DefaultExecPath));
             }
             set
             {
-                IniFiles.Config.Set("Preferences", "sSevenZipPath", value);
+                IniFiles.Config.Set("Preferences", "sSevenZipPath", Utils.SanitizePath(value));
             }
         }
 

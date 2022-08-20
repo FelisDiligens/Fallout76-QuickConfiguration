@@ -589,6 +589,15 @@ namespace Fo76ini
              * Check for possible issues:
              */
 
+            // No files to pack?
+            if ((editedMod.Method == ManagedMod.DeploymentMethod.BundledBA2 ||
+                editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2) &&
+                !ModHelpers.AreFilesAvailableToPack(editedMod.ManagedFolderPath))
+            {
+                this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_WarningNoFilesAvailableToPack");
+                return;
+            }
+
             // No resource folders in the top directory?
             if ((editedMod.Method == ManagedMod.DeploymentMethod.BundledBA2 ||
                 editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2) &&

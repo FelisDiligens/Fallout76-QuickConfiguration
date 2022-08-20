@@ -278,5 +278,12 @@ namespace Fo76ini.Forms.FormMain.Tabs
         }
 
         #endregion
+
+        private void linkLabelOpenProfileEditor_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (OpenProfileEditorRequested != null)
+                OpenProfileEditorRequested(sender, e);
+        }
+        public event EventHandler OpenProfileEditorRequested;
     }
 }
