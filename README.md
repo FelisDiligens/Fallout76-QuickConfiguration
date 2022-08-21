@@ -18,10 +18,10 @@
 </p>
 
 <p align="center">
-  <a href="https://www.nexusmods.com/fallout76/mods/546?tab=images">Screenshots</a> |
+  <a href="https://www.nexusmods.com/fallout76/mods/546?tab=images#list-modimages-1">Screenshots</a> |
   <a href="https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki">Wiki & Guides</a> |
-  <a href="https://www.nexusmods.com/fallout76/mods/546?tab=posts">Posts</a> |
-  <a href="https://www.nexusmods.com/fallout76/mods/546?tab=bugs">Bugs</a>
+  <a href="https://www.nexusmods.com/fallout76/mods/546?tab=posts#comment-container">Posts</a> |
+  <a href="https://www.nexusmods.com/fallout76/mods/546?tab=bugs#tab-modbugs">Bugs</a>
 </p>
 
 
