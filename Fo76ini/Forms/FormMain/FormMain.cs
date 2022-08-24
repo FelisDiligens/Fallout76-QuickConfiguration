@@ -1,4 +1,6 @@
 ﻿using Fo76ini.Forms.FormIniError;
+using Fo76ini.Forms.FormMain;
+using Fo76ini.Forms.FormMain.Tabs;
 using Fo76ini.Forms.FormWelcome;
 using Fo76ini.Ini;
 using Fo76ini.Interface;
@@ -27,12 +29,44 @@ namespace Fo76ini
 
         private GameInstance game;
 
+        private UserControlTweaks userControlTweaks = new UserControlTweaks();
+        private UserControlPipboy userControlPipboy = new UserControlPipboy();
+        private UserControlGallery userControlGallery = new UserControlGallery();
+        private UserControlCustom userControlCustom = new UserControlCustom();
+        private UserControlProfiles userControlProfiles = new UserControlProfiles();
+        private UserControlSettings userControlSettings = new UserControlSettings();
+        private UserControlNexusMods userControlNexusMods = new UserControlNexusMods();
+        private UserControlHome userControlHome = new UserControlHome();
+
         public FormMain()
         {
             InitializeComponent();
 
             if (this.DesignMode)
                 return;
+
+            /*
+             * Add views to ViewControl:
+             */
+            this.viewControl.AddViews(new UserControl[] {
+                userControlHome,
+                userControlTweaks,
+                userControlPipboy,
+                userControlGallery,
+                userControlCustom,
+                userControlSettings,
+                userControlNexusMods,
+                userControlProfiles,
+            });
+            this.viewControl.SelectedIndex = 0;
+            this.viewControl.SelectedIndexChanged += ViewControl_SelectedIndexChanged;
+
+            /*
+             * Handle events of views
+             */
+            userControlSettings.NuclearWinterModeToggled += userControlSettings_NuclearWinterModeToggled;
+            userControlSettings.OpenProfileEditorRequested += userControlSettings_OpenProfileEditorRequested;
+            userControlHome.UpdateButtonClicked += UserControlHome_UpdateButtonClicked;
 
             // Handle changes:
             ProfileManager.ProfileChanged += OnProfileChanged;
@@ -75,8 +109,6 @@ namespace Fo76ini
             this.Shown += this.FormMain_Shown;
             this.KeyDown += this.FormMain_KeyDown;
 
-            this.backgroundWorkerGetLatestVersion.RunWorkerCompleted += backgroundWorkerGetLatestVersion_RunWorkerCompleted;
-
             // Disable scroll wheel on UI elements to prevent the user from accidentally changing values:
             Utils.PreventChangeOnMouseWheelForAllElements(this);
 
@@ -105,9 +137,6 @@ namespace Fo76ini
             {
                 // Yeah, well or not.
             }
-
-            // What's new:
-            LoadWhatsNew();
         }
 
         private void FormMain_Shown(object sender, EventArgs e)
@@ -119,14 +148,15 @@ namespace Fo76ini
             if (Initialization.FirstStart)
                 formWelcome.OpenDialog();
 
-            // Check for updates:
-            CheckVersion();
-            IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
-
             // If nxm:// link has been provided, open the mod manager:
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1 && args[1].StartsWith("nxm://"))
                 this.formMods.OpenUI();
+        }
+
+        public void OnLanguageChanged(object sender, TranslationEventArgs e)
+        {
+            this.Refresh(); // Forces redraw
         }
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)
@@ -166,73 +196,7 @@ namespace Fo76ini
             }
         }
 
-        /*
-         **************************************************************
-         * Check version
-         **************************************************************
-         */
-
-        #region Check version
-
-        public void CheckVersion(bool force = false)
-        {
-            if (this.backgroundWorkerGetLatestVersion.IsBusy)
-                return;
-
-            this.labelConfigVersion.Text = Shared.VERSION;
-            IniFiles.Config.Set("General", "sVersion", Shared.VERSION);
-
-            panelUpdate.Visible = false;
-
-            if (!force && Configuration.IgnoreUpdates)
-            {
-                this.labelConfigVersion.ForeColor = Color.Black;
-                UpdateWhatsNewUI();
-                return;
-            }
-
-            this.labelConfigVersion.ForeColor = Color.Gray;
-            this.pictureBoxSpinnerCheckForUpdates.Visible = true;
-
-            // Checking version in background:
-            this.backgroundWorkerGetLatestVersion.RunWorkerAsync();
-        }
-
-        private void backgroundWorkerGetLatestVersion_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Versioning.GetLatestVersion();
-        }
-
-        private void backgroundWorkerGetLatestVersion_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            this.pictureBoxSpinnerCheckForUpdates.Visible = false;
-
-            // Failed:
-            if (Shared.LatestVersion == null)
-            {
-                this.labelConfigVersion.ForeColor = Color.Black;
-                panelUpdate.Visible = false;
-                return;
-            }
-
-            if (Versioning.UpdateAvailable || Configuration.Debug.ForceShowUpdateButton)
-            {
-                panelUpdate.Visible = true;
-                labelNewVersion.Text = string.Format(Localization.GetString("newVersionAvailable"), Shared.LatestVersion);
-                labelNewVersion.ForeColor = Color.Crimson;
-                this.labelConfigVersion.ForeColor = Color.Red;
-            }
-            else
-            {
-                // All good, latest version:
-                panelUpdate.Visible = false;
-                this.labelConfigVersion.ForeColor = Color.DarkGreen;
-            }
-
-            UpdateWhatsNewUI();
-        }
-
-        #endregion
+        
 
         /*
          **************************************************************
@@ -321,81 +285,10 @@ namespace Fo76ini
                 Application.Exit();
         }
 
-        #endregion
-
-        #region Navigation side bar
-
-        // TAB "Home" button:
-        private void userControlSideNav2_HomeClicked(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageHome;
-        }
-
-        // TAB "Tweaks" button:
-        private void userControlSideNav2_TweaksClicked(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageTweaks;
-        }
-
-        // WINDOW "Mods" button:
-        private void navButtonMods_Click(object sender, EventArgs e)
-        {
-            this.formMods.OpenUI();
-        }
-
-        // TAB "Pip-Boy" button:
-        private void userControlSideNav2_PipboyClicked(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPagePipBoy;
-        }
-
-        // TAB "Gallery" button:
-        private void userControlSideNav2_GalleryClicked(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageGallery;
-        }
-
-        // TAB "Custom tweaks" button:
-        private void userControlSideNav2_CustomClicked(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageCustom;
-        }
-
-        // TAB "Settings" button:
-        private void navButtonSettings_Click(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageSettings;
-        }
-
-        // TAB "NexusMods" button:
-        private void userControlSideNav2_NexusClicked(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageNexusMods;
-        }
-
-        // TAB "Profiles" button:
-        private void userControlSideNav2_ProfileClicked(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.tabPageProfiles;
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.userControlSideNav.SelectedTabIndex = this.tabControl1.SelectedIndex;
-        }
-
-        #endregion
-
-        #region Update available
-
-        // "Get the latest version from NexusMods" link:
-        private void linkLabelManualDownloadPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            linkLabelManualDownloadPage.LinkVisited = true;
-            Process.Start(Shared.URLs.AppNexusModsDownloadURL);
-        }
-
-        private void buttonUpdateNow_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Calling this function will immediately stop the tool and run the updater:
+        /// </summary>
+        private void UpdateNow()
         {
             // Set sInstallationPath:
             //string installationPath = Path.GetFullPath(AppContext.BaseDirectory);
@@ -433,6 +326,84 @@ namespace Fo76ini
 
         #endregion
 
+        #region Navigation side bar
+
+        // TAB "Home" button:
+        private void userControlSideNav2_HomeClicked(object sender, EventArgs e)
+        {
+            //this.tabControl1.SelectedTab = this.tabPageHome;
+            this.viewControl.SelectedView = this.userControlHome;
+        }
+
+        // TAB "Tweaks" button:
+        private void userControlSideNav2_TweaksClicked(object sender, EventArgs e)
+        {
+            //this.tabControl1.SelectedTab = this.tabPageTweaks;
+            this.viewControl.SelectedView = this.userControlTweaks;
+        }
+
+        // WINDOW "Mods" button:
+        private void navButtonMods_Click(object sender, EventArgs e)
+        {
+            this.formMods.OpenUI();
+        }
+
+        // TAB "Pip-Boy" button:
+        private void userControlSideNav2_PipboyClicked(object sender, EventArgs e)
+        {
+            //this.tabControl1.SelectedTab = this.tabPagePipBoy;
+            this.viewControl.SelectedView = this.userControlPipboy;
+        }
+
+        // TAB "Gallery" button:
+        private void userControlSideNav2_GalleryClicked(object sender, EventArgs e)
+        {
+            //this.tabControl1.SelectedTab = this.tabPageGallery;
+            this.viewControl.SelectedView = this.userControlGallery;
+        }
+
+        // TAB "Custom tweaks" button:
+        private void userControlSideNav2_CustomClicked(object sender, EventArgs e)
+        {
+            //this.tabControl1.SelectedTab = this.tabPageCustom;
+            this.viewControl.SelectedView = this.userControlCustom;
+        }
+
+        // TAB "Settings" button:
+        private void navButtonSettings_Click(object sender, EventArgs e)
+        {
+            //this.tabControl1.SelectedTab = this.tabPageSettings;
+            this.viewControl.SelectedView = this.userControlSettings;
+        }
+
+        // TAB "NexusMods" button:
+        private void userControlSideNav2_NexusClicked(object sender, EventArgs e)
+        {
+            //this.tabControl1.SelectedTab = this.tabPageNexusMods;
+            this.viewControl.SelectedView = this.userControlNexusMods;
+        }
+
+        // TAB "Profiles" button:
+        private void userControlSideNav2_ProfileClicked(object sender, EventArgs e)
+        {
+            //this.tabControl1.SelectedTab = this.tabPageProfiles;
+            this.viewControl.SelectedView = this.userControlProfiles;
+        }
+
+        // "Update" button:
+        private void userControlSideNav_UpdateClicked(object sender, EventArgs e)
+        {
+            UpdateNow();
+        }
+
+        private void ViewControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //this.userControlSideNav.SelectedTabIndex = this.tabControl1.SelectedIndex;
+            this.userControlSideNav.SelectedTabIndex = this.viewControl.SelectedIndex;
+        }
+
+        #endregion
+
         // Check, if *.ini files have been changed:
         private void timerCheckFiles_Tick(object sender, EventArgs e)
         {
@@ -453,55 +424,17 @@ namespace Fo76ini
         }
 
 
-        #region What's new
+        #region Events from views
 
-        /*
-         * What's new:
-         */
-
-        private void LoadWhatsNew()
+        private void UserControlHome_UpdateButtonClicked(object sender, EventArgs e)
         {
-            if (!Configuration.ShowWhatsNew)
-                return;
-
-#if DEBUG
-            string debugFile = Path.Combine(Shared.AppConfigFolder, "What's new.html");
-            if (File.Exists(debugFile))
-                this.webBrowserWhatsNew.DocumentText = File.ReadAllText(debugFile);
-            else
-#endif
-                this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewHTMLURL);
+            UpdateNow();
         }
-
-        private void UpdateWhatsNewUI()
-        {
-            // Hide, if the user doesn't want to see it:
-            if (!Configuration.ShowWhatsNew || Configuration.Debug.ForceShowUpdateButton)
-            {
-                this.webBrowserWhatsNew.Visible = false;
-                return;
-            }
-
-            // Set size/location if panelUpdate is invisible:
-            if (!this.panelUpdate.Visible)
-            {
-                this.webBrowserWhatsNew.Height += this.webBrowserWhatsNew.Top - this.panel1.Top - this.panel1.Height;
-                this.webBrowserWhatsNew.Top = this.panel1.Top + this.panel1.Height;
-                this.webBrowserWhatsNew.Visible = true;
-            }
-
-            // If panelUpdate is visible, hide What's new instead:
-            else
-            {
-                this.webBrowserWhatsNew.Visible = false;
-            }
-        }
-
-        #endregion
 
         public void OpenProfileEditor()
         {
-            this.tabControl1.SelectedTab = this.tabPageProfiles;
+            //this.tabControl1.SelectedTab = this.tabPageProfiles;
+            this.viewControl.SelectedView = this.userControlProfiles;
             this.userControlProfiles.OpenProfileEditor();
         }
 
@@ -509,5 +442,7 @@ namespace Fo76ini
         {
             OpenProfileEditor();
         }
+
+        #endregion
     }
 }

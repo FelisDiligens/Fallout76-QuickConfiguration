@@ -17,6 +17,7 @@ namespace Fo76ini.Controls
                 this.Multiline = true;
         }
 
+        // Unused.
         private void HideTabHeader()
         {
             // https://stackoverflow.com/a/10346520

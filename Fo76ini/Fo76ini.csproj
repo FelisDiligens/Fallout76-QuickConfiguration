@@ -177,58 +177,70 @@
     <Compile Include="Controls\UserControlHero.Designer.cs">
       <DependentUpon>UserControlHero.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ViewControl.Designer.cs">
+      <DependentUpon>ViewControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormIniError\FormIniError.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormIniError\FormIniError.Designer.cs">
       <DependentUpon>FormIniError.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlCustom.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlCustom.Designer.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlCustom.Designer.cs">
       <DependentUpon>UserControlCustom.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlGallery.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlGallery.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlGallery.Designer.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlGallery.Designer.cs">
       <DependentUpon>UserControlGallery.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlNexusMods.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlHome.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlNexusMods.Designer.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlHome.Designer.cs">
+      <DependentUpon>UserControlHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMain\Views\UserControlNexusMods.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain\Views\UserControlNexusMods.Designer.cs">
       <DependentUpon>UserControlNexusMods.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlPipboy.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlPipboy.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlPipboy.Designer.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlPipboy.Designer.cs">
       <DependentUpon>UserControlPipboy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlProfiles.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlProfiles.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlProfiles.Designer.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlProfiles.Designer.cs">
       <DependentUpon>UserControlProfiles.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlSettings.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlSettings.Designer.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlSettings.Designer.cs">
       <DependentUpon>UserControlSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlSettings.LinkControls.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlSettings.LinkControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlTweaks.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlTweaks.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlTweaks.Designer.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlTweaks.Designer.cs">
       <DependentUpon>UserControlTweaks.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\Tabs\UserControlTweaks.LinkControls.cs">
+    <Compile Include="Forms\FormMain\Views\UserControlTweaks.LinkControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\FormMain\UserControlSideNav.cs">
@@ -381,9 +393,6 @@
     <Compile Include="Forms\FormMain\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMain\FormMain.Language.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Forms\FormMods\FormMods.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -442,25 +451,28 @@
     <EmbeddedResource Include="Forms\FormIniError\FormIniError.resx">
       <DependentUpon>FormIniError.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlCustom.resx">
+    <EmbeddedResource Include="Forms\FormMain\Views\UserControlCustom.resx">
       <DependentUpon>UserControlCustom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlGallery.resx">
+    <EmbeddedResource Include="Forms\FormMain\Views\UserControlGallery.resx">
       <DependentUpon>UserControlGallery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlNexusMods.resx">
+    <EmbeddedResource Include="Forms\FormMain\Views\UserControlHome.resx">
+      <DependentUpon>UserControlHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain\Views\UserControlNexusMods.resx">
       <DependentUpon>UserControlNexusMods.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlPipboy.resx">
+    <EmbeddedResource Include="Forms\FormMain\Views\UserControlPipboy.resx">
       <DependentUpon>UserControlPipboy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlProfiles.resx">
+    <EmbeddedResource Include="Forms\FormMain\Views\UserControlProfiles.resx">
       <DependentUpon>UserControlProfiles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlSettings.resx">
+    <EmbeddedResource Include="Forms\FormMain\Views\UserControlSettings.resx">
       <DependentUpon>UserControlSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormMain\Tabs\UserControlTweaks.resx">
+    <EmbeddedResource Include="Forms\FormMain\Views\UserControlTweaks.resx">
       <DependentUpon>UserControlTweaks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain\UserControlSideNav.resx">

@@ -130,7 +130,7 @@ namespace Fo76ini
                 else
                 {
                     MsgBox.Popup("Failed to load mods", $"Failed to load mods.\n" +
-                        $"{exc.GetType()}: {exc.Message}", MessageBoxIcon.Error);
+                        $"{exc.GetType()}: {exc.Message}\n{exc.StackTrace}", MessageBoxIcon.Error);
                 }
 
                 this.DisableUI();
