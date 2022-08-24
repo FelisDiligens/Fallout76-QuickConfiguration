@@ -169,6 +169,12 @@ namespace Fo76ini.Forms.FormMain.Tabs
         private void linkLabelShowWhatsNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.tabControlWithoutHeader1.SelectedTab = this.tabPageWhatsNew;
+
+            // "Fixing" the web browser not rendering by resizing the window, which helps for some reason:
+            // (https://stackoverflow.com/a/68837431)
+            // TODO
+            this.ParentForm.Height += 1;
+            this.ParentForm.Height -= 1;
         }
 
         private void linkLabelGoBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

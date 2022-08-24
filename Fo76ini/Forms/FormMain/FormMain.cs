@@ -340,6 +340,12 @@ namespace Fo76ini
         {
             //this.tabControl1.SelectedTab = this.tabPageTweaks;
             this.viewControl.SelectedView = this.userControlTweaks;
+
+            // "Fixing" the web browser not rendering by resizing the window, which helps for some reason:
+            // (https://stackoverflow.com/a/68837431)
+            // TODO
+            this.Height += 1;
+            this.Height -= 1;
         }
 
         // WINDOW "Mods" button:
