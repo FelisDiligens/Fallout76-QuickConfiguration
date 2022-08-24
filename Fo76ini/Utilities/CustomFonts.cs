@@ -39,6 +39,7 @@ namespace Fo76ini.Utilities
             switch (ISO)
             {
                 case "ru-RU":
+                case "ja-JP":
                     return new Font(RobotoCondensed, 16, FontStyle.Bold);
                 case "zh-CN":
                 case "zh-TW":
