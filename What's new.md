@@ -1,3 +1,38 @@
+### What's new in v1.11.3?
+
+This is a small update that
+- changes the UI a bit,
+- adds sensitivity sliders for the gamepad,
+- adds a texture quality setting,
+- and fixes a few bugs.
+
+**Changelog:**
+<details>
+<summary>Click to expand</summary>
+
+- Tweaks:
+  - Controls: Added sensitivity sliders for the gamepad.
+  - Graphics: Added texture quality preset (Low, Medium, High, Ultra).
+- Profiles:
+  - Fixed a bug where creating and/or deleting profiles wouldn't save the changes. Therefore, after deleting a profile, it would still appear after restarting the tool.
+- Home page:
+  - Added web links.
+  - "What's new" is now accessible through a button click.
+- App Settings:
+  - Removed "Hide What's new" option.
+- Gallery:
+  - Should search through the PTS screenshot folder for images and display them now.
+- Translations:
+  - Changed the font for titles in Japanese translation to Roboto Condensed.
+  - Fixed a bug that would crash the tool if a translated resource (\*.rtf, \*.html) couldn't be accessed. (Either because the file is locked or access is denied)
+- Windows 7 and 8.1:
+  - The Info tab in Tweaks doesn't display the embedded webbrowser anymore. Instead, there will be a button to open the info document in the user's preferred browser.  
+    (This is because I couldn't get the embedded webbrowser to work on older Windows versions. Windows 10 and 11 aren't affected)
+
+</details>
+
+---
+
 ### What's new in v1.11.2?
 
 This is another small update to address some bugs.
