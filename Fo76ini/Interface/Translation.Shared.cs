@@ -34,6 +34,13 @@ namespace Fo76ini
             localizedStrings["disabled"] = "Disabled";
             localizedStrings["gameEdition"] = "Edition";
 
+            localizedStrings["lowPreset"] = "Low";
+            localizedStrings["mediumPreset"] = "Medium";
+            localizedStrings["highPreset"] = "High";
+            localizedStrings["ultraPreset"] = "Ultra";
+            localizedStrings["customPreset"] = "Custom";
+            localizedStrings["currentPreset"] = "Current preset: {0}";
+
             //localizedStrings["modTableThawed"] = "Thawed";
             //localizedStrings["modDetailsTitle"] = "Edit {0}";
             //localizedStrings["modDetailsTitleBulk"] = "Edit {0} mods";
@@ -119,6 +126,11 @@ namespace Fo76ini
                 "Failed to load *.ini file",
                 "{0}\n" +
                 "The tool will be terminated now."
+            );
+
+            MsgBox.Add("iniGraphicsPresetChanged",
+                "Graphics preset changed",
+                "Graphics set to {0}."
             );
 
 

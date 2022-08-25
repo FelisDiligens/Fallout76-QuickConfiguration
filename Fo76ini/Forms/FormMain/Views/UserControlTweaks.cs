@@ -653,19 +653,24 @@ namespace Fo76ini.Forms.FormMain
             IniFiles.F76Prefs.Merge(presetINI);
 
             // Set iGraphicPreset
+            string translatedPresetStr = "";
             switch (preset)
             {
                 case GraphicsPreset.Low:
                     IniFiles.F76Prefs.Set("Display", "iGraphicPreset", 1);
+                    translatedPresetStr = Localization.GetString("lowPreset");
                     break;
                 case GraphicsPreset.Medium:
                     IniFiles.F76Prefs.Set("Display", "iGraphicPreset", 2);
+                    translatedPresetStr = Localization.GetString("mediumPreset");
                     break;
                 case GraphicsPreset.High:
                     IniFiles.F76Prefs.Set("Display", "iGraphicPreset", 3);
+                    translatedPresetStr = Localization.GetString("highPreset");
                     break;
                 case GraphicsPreset.Ultra:
                     IniFiles.F76Prefs.Set("Display", "iGraphicPreset", 4);
+                    translatedPresetStr = Localization.GetString("ultraPreset");
                     break;
             }
 
@@ -673,7 +678,7 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LoadValues();
 
             // Show messagebox
-            MsgBox.Popup("Graphics preset changed", $"Graphics set to {preset.ToString()}.", MessageBoxIcon.Information);
+            MsgBox.Get("iniGraphicsPresetChanged").FormatText(translatedPresetStr).Popup(MessageBoxIcon.Information);
         }
 
         #endregion

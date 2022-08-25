@@ -388,25 +388,25 @@ namespace Fo76ini.Forms.FormMain
                 switch (IniFiles.GetInt("Display", "iGraphicPreset", 0))
                 {
                     case 0:
-                        preset = "Custom";
+                        preset = Localization.GetString("customPreset");
                         break;
                     case 1:
-                        preset = "Low";
+                        preset = Localization.GetString("lowPreset");
                         break;
                     case 2:
-                        preset = "Medium";
+                        preset = Localization.GetString("mediumPreset");
                         break;
                     case 3:
-                        preset = "High";
+                        preset = Localization.GetString("highPreset");
                         break;
                     case 4:
-                        preset = "Ultra";
+                        preset = Localization.GetString("ultraPreset");
                         break;
                     default:
                         preset = $"Unknown ({IniFiles.GetInt("Display", "iGraphicPreset", 0)})";
                         break;
                 }
-                this.labelSelectedQualityPreset.Text = $"Current preset: {preset}";
+                this.labelSelectedQualityPreset.Text = String.Format(Localization.GetString("currentPreset"), preset);
             });
 
             // Anti aliasing
