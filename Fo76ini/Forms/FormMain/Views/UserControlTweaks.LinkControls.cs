@@ -81,6 +81,8 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(comboBoxAntiAliasing, toolTip, antiAliasingTweak);
             LinkedTweaks.LinkInfo(labelAnisotropicFiltering, toolTip, anisotropicFilteringTweak);
             LinkedTweaks.LinkInfo(comboBoxAnisotropicFiltering, toolTip, anisotropicFilteringTweak);
+            LinkedTweaks.LinkInfo(labelTextureQuality, toolTip, textureQualityTweak);
+            LinkedTweaks.LinkInfo(comboBoxTextureQuality, toolTip, textureQualityTweak);
             LinkedTweaks.LinkInfo(checkBoxDepthOfField, toolTip, enableDepthOfFieldTweak);
             LinkedTweaks.LinkInfo(checkBoxMotionBlur, toolTip, motionBlurTweak);
             LinkedTweaks.LinkInfo(checkBoxRadialBlur, toolTip, radialBlurTweak);
@@ -382,6 +384,9 @@ namespace Fo76ini.Forms.FormMain
                 new int[] { 0, 2, 4, 8, 16 },
                 anisotropicFilteringTweak);
 
+            // Texture quality
+            LinkedTweaks.LinkTweak(comboBoxTextureQuality, textureQualityTweak);
+
             // Depth of Field
             LinkedTweaks.LinkTweak(checkBoxDepthOfField, enableDepthOfFieldTweak);
 
@@ -621,6 +626,7 @@ namespace Fo76ini.Forms.FormMain
         // Graphics
         private AntiAliasingTweak antiAliasingTweak = new AntiAliasingTweak();
         private AnisotropicFilteringTweak anisotropicFilteringTweak = new AnisotropicFilteringTweak();
+        private TextureQualityPresetTweak textureQualityTweak = new TextureQualityPresetTweak();
         private DepthOfFieldTweak enableDepthOfFieldTweak = new DepthOfFieldTweak();
         private MotionBlurTweak motionBlurTweak = new MotionBlurTweak();
         private RadialBlurTweak radialBlurTweak = new RadialBlurTweak();

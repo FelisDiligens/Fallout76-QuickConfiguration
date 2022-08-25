@@ -218,6 +218,17 @@ namespace Fo76ini.Forms.FormMain
                 }
             ));
 
+            DropDown.Add("TextureQuality", new DropDown(
+                this.comboBoxTextureQuality,
+                new string[] {
+                    "Low",
+                    "Medium",
+                    "High",
+                    "Ultra",
+                    "Custom"
+                }
+            ));
+
             #endregion
 
 

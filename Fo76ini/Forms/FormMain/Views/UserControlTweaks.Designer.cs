@@ -293,6 +293,9 @@
             this.sliderGamepadSensitivityX = new System.Windows.Forms.TrackBar();
             this.numGamepadSensitivityX = new System.Windows.Forms.NumericUpDown();
             this.labelGamepadSensitivityX = new System.Windows.Forms.Label();
+            this.groupBoxTextures = new System.Windows.Forms.GroupBox();
+            this.comboBoxTextureQuality = new System.Windows.Forms.ComboBox();
+            this.labelTextureQuality = new System.Windows.Forms.Label();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -414,6 +417,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).BeginInit();
+            this.groupBoxTextures.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -983,6 +987,7 @@
             // 
             // groupBoxGraphics
             // 
+            this.groupBoxGraphics.Controls.Add(this.groupBoxTextures);
             this.groupBoxGraphics.Controls.Add(this.groupBoxGraphicEffects);
             this.groupBoxGraphics.Controls.Add(this.groupBoxTAASharpening);
             this.groupBoxGraphics.Controls.Add(this.labelAntiAliasing);
@@ -999,7 +1004,7 @@
             this.groupBoxGraphics.Location = new System.Drawing.Point(9, 206);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 969);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1028);
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
@@ -1008,7 +1013,7 @@
             // 
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
-            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(9, 292);
+            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(9, 353);
             this.groupBoxGraphicEffects.Name = "groupBoxGraphicEffects";
             this.groupBoxGraphicEffects.Size = new System.Drawing.Size(187, 68);
             this.groupBoxGraphicEffects.TabIndex = 11;
@@ -1045,7 +1050,7 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 811);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 872);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
             this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 145);
             this.groupBoxTAASharpening.TabIndex = 18;
@@ -1161,7 +1166,7 @@
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 682);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 743);
             this.groupBoxGrass.Name = "groupBoxGrass";
             this.groupBoxGrass.Size = new System.Drawing.Size(381, 119);
             this.groupBoxGrass.TabIndex = 17;
@@ -1231,9 +1236,9 @@
             // 
             this.comboBoxAntiAliasing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAntiAliasing.FormattingEnabled = true;
-            this.comboBoxAntiAliasing.Location = new System.Drawing.Point(152, 17);
+            this.comboBoxAntiAliasing.Location = new System.Drawing.Point(165, 17);
             this.comboBoxAntiAliasing.Name = "comboBoxAntiAliasing";
-            this.comboBoxAntiAliasing.Size = new System.Drawing.Size(238, 21);
+            this.comboBoxAntiAliasing.Size = new System.Drawing.Size(225, 21);
             this.comboBoxAntiAliasing.TabIndex = 1;
             // 
             // groupBoxLOD
@@ -1248,7 +1253,7 @@
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 520);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 581);
             this.groupBoxLOD.Name = "groupBoxLOD";
             this.groupBoxLOD.Size = new System.Drawing.Size(381, 156);
             this.groupBoxLOD.TabIndex = 16;
@@ -1408,7 +1413,7 @@
             // groupBoxLighting
             // 
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
-            this.groupBoxLighting.Location = new System.Drawing.Point(202, 292);
+            this.groupBoxLighting.Location = new System.Drawing.Point(202, 353);
             this.groupBoxLighting.Name = "groupBoxLighting";
             this.groupBoxLighting.Size = new System.Drawing.Size(188, 68);
             this.groupBoxLighting.TabIndex = 14;
@@ -1445,7 +1450,7 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowTextureResolution);
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
-            this.groupBoxShadows.Location = new System.Drawing.Point(9, 366);
+            this.groupBoxShadows.Location = new System.Drawing.Point(9, 427);
             this.groupBoxShadows.Name = "groupBoxShadows";
             this.groupBoxShadows.Size = new System.Drawing.Size(381, 147);
             this.groupBoxShadows.TabIndex = 15;
@@ -1544,9 +1549,9 @@
             // 
             this.comboBoxAnisotropicFiltering.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAnisotropicFiltering.FormattingEnabled = true;
-            this.comboBoxAnisotropicFiltering.Location = new System.Drawing.Point(152, 44);
+            this.comboBoxAnisotropicFiltering.Location = new System.Drawing.Point(165, 44);
             this.comboBoxAnisotropicFiltering.Name = "comboBoxAnisotropicFiltering";
-            this.comboBoxAnisotropicFiltering.Size = new System.Drawing.Size(238, 21);
+            this.comboBoxAnisotropicFiltering.Size = new System.Drawing.Size(225, 21);
             this.comboBoxAnisotropicFiltering.TabIndex = 3;
             // 
             // groupBoxWater
@@ -1556,7 +1561,7 @@
             this.groupBoxWater.Controls.Add(this.checkBoxWaterRefractions);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterReflections);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterDisplacement);
-            this.groupBoxWater.Location = new System.Drawing.Point(202, 117);
+            this.groupBoxWater.Location = new System.Drawing.Point(202, 178);
             this.groupBoxWater.Name = "groupBoxWater";
             this.groupBoxWater.Size = new System.Drawing.Size(188, 169);
             this.groupBoxWater.TabIndex = 12;
@@ -1631,7 +1636,7 @@
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxMotionBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxRadialBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxLensFlare);
-            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 117);
+            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 178);
             this.groupBoxPostProcessing.Name = "groupBoxPostProcessing";
             this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 169);
             this.groupBoxPostProcessing.TabIndex = 10;
@@ -4013,6 +4018,37 @@
             this.labelGamepadSensitivityX.TabIndex = 6;
             this.labelGamepadSensitivityX.Text = "Horizontal sensitivity";
             // 
+            // groupBoxTextures
+            // 
+            this.groupBoxTextures.Controls.Add(this.comboBoxTextureQuality);
+            this.groupBoxTextures.Controls.Add(this.labelTextureQuality);
+            this.groupBoxTextures.Location = new System.Drawing.Point(9, 117);
+            this.groupBoxTextures.Name = "groupBoxTextures";
+            this.groupBoxTextures.Size = new System.Drawing.Size(381, 55);
+            this.groupBoxTextures.TabIndex = 19;
+            this.groupBoxTextures.TabStop = false;
+            this.groupBoxTextures.Text = "Textures";
+            // 
+            // comboBoxTextureQuality
+            // 
+            this.comboBoxTextureQuality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxTextureQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTextureQuality.FormattingEnabled = true;
+            this.comboBoxTextureQuality.Location = new System.Drawing.Point(156, 19);
+            this.comboBoxTextureQuality.Name = "comboBoxTextureQuality";
+            this.comboBoxTextureQuality.Size = new System.Drawing.Size(219, 21);
+            this.comboBoxTextureQuality.TabIndex = 3;
+            // 
+            // labelTextureQuality
+            // 
+            this.labelTextureQuality.AutoSize = true;
+            this.labelTextureQuality.Location = new System.Drawing.Point(7, 22);
+            this.labelTextureQuality.Name = "labelTextureQuality";
+            this.labelTextureQuality.Size = new System.Drawing.Size(111, 13);
+            this.labelTextureQuality.TabIndex = 2;
+            this.labelTextureQuality.Text = "Texture quality preset:";
+            // 
             // UserControlTweaks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4177,6 +4213,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).EndInit();
+            this.groupBoxTextures.ResumeLayout(false);
+            this.groupBoxTextures.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4448,5 +4486,8 @@
         private System.Windows.Forms.TrackBar sliderGamepadSensitivityX;
         private System.Windows.Forms.NumericUpDown numGamepadSensitivityX;
         private System.Windows.Forms.Label labelGamepadSensitivityX;
+        private System.Windows.Forms.GroupBox groupBoxTextures;
+        private System.Windows.Forms.ComboBox comboBoxTextureQuality;
+        private System.Windows.Forms.Label labelTextureQuality;
     }
 }
