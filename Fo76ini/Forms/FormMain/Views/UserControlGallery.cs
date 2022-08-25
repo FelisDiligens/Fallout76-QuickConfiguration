@@ -215,7 +215,9 @@ namespace Fo76ini.Forms.FormMain
             if (Directory.Exists(steamFolder))
             {
                 steamFolder = Path.Combine(Directory.GetDirectories(steamFolder)[0], @"760\remote\1151340\screenshots");
+                string steamPTSFolder = Path.Combine(Directory.GetDirectories(steamFolder)[0], @"760\remote\1836200\screenshots");
                 string steamThumbnailFolder = Path.Combine(steamFolder, "thumbnails");
+                string steamPTSThumbnailFolder = Path.Combine(steamPTSFolder, "thumbnails");
 
                 if (Directory.Exists(steamFolder))
                 {
@@ -225,6 +227,33 @@ namespace Fo76ini.Forms.FormMain
                         string fileName = Path.GetFileName(filePath);
 
                         string thumbnailFilePath = Path.Combine(steamThumbnailFolder, fileName);
+                        if (!File.Exists(thumbnailFilePath))
+                        {
+                            thumbnailFilePath = Path.Combine(thumbnailsPath, fileName + ".jpg");
+                            if (!File.Exists(thumbnailFilePath))
+                                Utils.MakeThumbnail(filePath, thumbnailFilePath, true);
+                        }
+
+                        Bitmap thumbnail = new Bitmap(thumbnailFilePath);
+                        this.Invoke(() => galleryImageList.Images.Add(fileName, thumbnail));
+
+                        var item = new ListViewItem();
+                        item.Text = fileName;
+                        item.ImageKey = fileName;
+                        this.Invoke(() => this.listViewScreenshots.Items.Add(item));
+
+                        this.galleryImagePaths.Add(filePath);
+                    }
+                }
+
+                if (Directory.Exists(steamPTSFolder))
+                {
+                    List<string> screenshots = Directory.GetFiles(steamPTSFolder, "*.jpg", SearchOption.TopDirectoryOnly).ToList();
+                    foreach (string filePath in screenshots)
+                    {
+                        string fileName = Path.GetFileName(filePath);
+
+                        string thumbnailFilePath = Path.Combine(steamPTSThumbnailFolder, fileName);
                         if (!File.Exists(thumbnailFilePath))
                         {
                             thumbnailFilePath = Path.Combine(thumbnailsPath, fileName + ".jpg");
