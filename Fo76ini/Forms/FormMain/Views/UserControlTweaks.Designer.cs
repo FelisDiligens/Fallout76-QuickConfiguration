@@ -296,6 +296,8 @@
             this.groupBoxTextures = new System.Windows.Forms.GroupBox();
             this.comboBoxTextureQuality = new System.Windows.Forms.ComboBox();
             this.labelTextureQuality = new System.Windows.Forms.Label();
+            this.comboBoxShadowQuality = new System.Windows.Forms.ComboBox();
+            this.labelShadowQuality = new System.Windows.Forms.Label();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -1004,7 +1006,7 @@
             this.groupBoxGraphics.Location = new System.Drawing.Point(9, 206);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1028);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1057);
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
@@ -1050,7 +1052,7 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 872);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 902);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
             this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 145);
             this.groupBoxTAASharpening.TabIndex = 18;
@@ -1166,7 +1168,7 @@
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 743);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 773);
             this.groupBoxGrass.Name = "groupBoxGrass";
             this.groupBoxGrass.Size = new System.Drawing.Size(381, 119);
             this.groupBoxGrass.TabIndex = 17;
@@ -1253,7 +1255,7 @@
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 581);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 611);
             this.groupBoxLOD.Name = "groupBoxLOD";
             this.groupBoxLOD.Size = new System.Drawing.Size(381, 156);
             this.groupBoxLOD.TabIndex = 16;
@@ -1443,6 +1445,8 @@
             // 
             // groupBoxShadows
             // 
+            this.groupBoxShadows.Controls.Add(this.comboBoxShadowQuality);
+            this.groupBoxShadows.Controls.Add(this.labelShadowQuality);
             this.groupBoxShadows.Controls.Add(this.sliderShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowBlurriness);
             this.groupBoxShadows.Controls.Add(this.labelShadowBlurriness);
@@ -1452,7 +1456,7 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
             this.groupBoxShadows.Location = new System.Drawing.Point(9, 427);
             this.groupBoxShadows.Name = "groupBoxShadows";
-            this.groupBoxShadows.Size = new System.Drawing.Size(381, 147);
+            this.groupBoxShadows.Size = new System.Drawing.Size(381, 178);
             this.groupBoxShadows.TabIndex = 15;
             this.groupBoxShadows.TabStop = false;
             this.groupBoxShadows.Text = "Shadows";
@@ -1463,7 +1467,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sliderShadowDistance.BackColor = System.Drawing.SystemColors.Window;
             this.sliderShadowDistance.LargeChange = 10000;
-            this.sliderShadowDistance.Location = new System.Drawing.Point(10, 96);
+            this.sliderShadowDistance.Location = new System.Drawing.Point(10, 124);
             this.sliderShadowDistance.Maximum = 200000;
             this.sliderShadowDistance.Minimum = 1;
             this.sliderShadowDistance.Name = "sliderShadowDistance";
@@ -1479,7 +1483,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxShadowBlurriness.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxShadowBlurriness.FormattingEnabled = true;
-            this.comboBoxShadowBlurriness.Location = new System.Drawing.Point(156, 47);
+            this.comboBoxShadowBlurriness.Location = new System.Drawing.Point(156, 75);
             this.comboBoxShadowBlurriness.Name = "comboBoxShadowBlurriness";
             this.comboBoxShadowBlurriness.Size = new System.Drawing.Size(219, 21);
             this.comboBoxShadowBlurriness.TabIndex = 2;
@@ -1487,7 +1491,7 @@
             // labelShadowBlurriness
             // 
             this.labelShadowBlurriness.AutoSize = true;
-            this.labelShadowBlurriness.Location = new System.Drawing.Point(7, 50);
+            this.labelShadowBlurriness.Location = new System.Drawing.Point(7, 78);
             this.labelShadowBlurriness.Name = "labelShadowBlurriness";
             this.labelShadowBlurriness.Size = new System.Drawing.Size(55, 13);
             this.labelShadowBlurriness.TabIndex = 2;
@@ -1501,7 +1505,7 @@
             0,
             0,
             0});
-            this.numShadowDistance.Location = new System.Drawing.Point(301, 99);
+            this.numShadowDistance.Location = new System.Drawing.Point(301, 127);
             this.numShadowDistance.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -1519,7 +1523,7 @@
             // labelShadowDistance
             // 
             this.labelShadowDistance.AutoSize = true;
-            this.labelShadowDistance.Location = new System.Drawing.Point(7, 79);
+            this.labelShadowDistance.Location = new System.Drawing.Point(7, 107);
             this.labelShadowDistance.Name = "labelShadowDistance";
             this.labelShadowDistance.Size = new System.Drawing.Size(74, 13);
             this.labelShadowDistance.TabIndex = 4;
@@ -1531,7 +1535,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxShadowTextureResolution.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxShadowTextureResolution.FormattingEnabled = true;
-            this.comboBoxShadowTextureResolution.Location = new System.Drawing.Point(156, 20);
+            this.comboBoxShadowTextureResolution.Location = new System.Drawing.Point(156, 48);
             this.comboBoxShadowTextureResolution.Name = "comboBoxShadowTextureResolution";
             this.comboBoxShadowTextureResolution.Size = new System.Drawing.Size(219, 21);
             this.comboBoxShadowTextureResolution.TabIndex = 1;
@@ -1539,7 +1543,7 @@
             // labelShadowTextureResolution
             // 
             this.labelShadowTextureResolution.AutoSize = true;
-            this.labelShadowTextureResolution.Location = new System.Drawing.Point(7, 23);
+            this.labelShadowTextureResolution.Location = new System.Drawing.Point(7, 51);
             this.labelShadowTextureResolution.Name = "labelShadowTextureResolution";
             this.labelShadowTextureResolution.Size = new System.Drawing.Size(117, 13);
             this.labelShadowTextureResolution.TabIndex = 0;
@@ -4049,6 +4053,26 @@
             this.labelTextureQuality.TabIndex = 2;
             this.labelTextureQuality.Text = "Texture quality preset:";
             // 
+            // comboBoxShadowQuality
+            // 
+            this.comboBoxShadowQuality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxShadowQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxShadowQuality.FormattingEnabled = true;
+            this.comboBoxShadowQuality.Location = new System.Drawing.Point(156, 21);
+            this.comboBoxShadowQuality.Name = "comboBoxShadowQuality";
+            this.comboBoxShadowQuality.Size = new System.Drawing.Size(219, 21);
+            this.comboBoxShadowQuality.TabIndex = 8;
+            // 
+            // labelShadowQuality
+            // 
+            this.labelShadowQuality.AutoSize = true;
+            this.labelShadowQuality.Location = new System.Drawing.Point(7, 24);
+            this.labelShadowQuality.Name = "labelShadowQuality";
+            this.labelShadowQuality.Size = new System.Drawing.Size(114, 13);
+            this.labelShadowQuality.TabIndex = 7;
+            this.labelShadowQuality.Text = "Shadow quality preset:";
+            // 
             // UserControlTweaks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4489,5 +4513,7 @@
         private System.Windows.Forms.GroupBox groupBoxTextures;
         private System.Windows.Forms.ComboBox comboBoxTextureQuality;
         private System.Windows.Forms.Label labelTextureQuality;
+        private System.Windows.Forms.ComboBox comboBoxShadowQuality;
+        private System.Windows.Forms.Label labelShadowQuality;
     }
 }

@@ -63,5 +63,13 @@
         /// Get the amount of names in an enum.
         /// </summary>
         int Count { get; }
+
+        /// <summary>
+        /// When the value changes, should the UI be updated?
+        /// </summary>
+        /// <remarks>
+        /// Currently only implemented for checkboxes.
+        /// </remarks>
+        bool UIReloadNecessary { get; }
     }
 }

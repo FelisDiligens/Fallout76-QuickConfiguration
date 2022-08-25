@@ -340,19 +340,31 @@ namespace Fo76ini.Tweaks
             comboBox.SelectionChangeCommitted += (object sender, EventArgs e) =>
             {
                 tweak.SetValue(associatedValues[comboBox.SelectedIndex]);
+                if (tweak.UIReloadNecessary)
+                    LinkedTweaks.LoadValues();
             };
         }
 
         public static void LinkTweak(ComboBox comboBox, ITweak<int> tweak)
         {
             SetValueActions.Add(() => comboBox.SelectedIndex = tweak.GetValue());
-            comboBox.SelectionChangeCommitted += (object sender, EventArgs e) => tweak.SetValue(comboBox.SelectedIndex);
+            comboBox.SelectionChangeCommitted += (object sender, EventArgs e) =>
+            {
+                tweak.SetValue(comboBox.SelectedIndex);
+                if (tweak.UIReloadNecessary)
+                    LinkedTweaks.LoadValues();
+            };
         }
 
         public static void LinkTweak(ComboBox comboBox, IEnumTweak tweak)
         {
             SetValueActions.Add(() => comboBox.SelectedIndex = tweak.GetInt());
-            comboBox.SelectionChangeCommitted += (object sender, EventArgs e) => tweak.SetInt(comboBox.SelectedIndex);
+            comboBox.SelectionChangeCommitted += (object sender, EventArgs e) =>
+            {
+                tweak.SetInt(comboBox.SelectedIndex);
+                if (tweak.UIReloadNecessary)
+                    LinkedTweaks.LoadValues();
+            };
         }
 
         public static void LinkTweak(NumericUpDown num, ITweak<int> tweak)

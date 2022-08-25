@@ -16,13 +16,13 @@ namespace Fo76ini.Tweaks.Graphics
 
         public string AffectedFiles => "Fallout76Prefs.ini";
 
-        public string AffectedValues => "[Display]uiOrthoShadowFilter";
+        public string AffectedValues => "[Display]uiShadowFilter, uiOrthoShadowFilter";
 
         public int DefaultValue => 3;
 
         public string Identifier => this.GetType().FullName;
         
-        public bool UIReloadNecessary => false;
+        public bool UIReloadNecessary => true;
 
         public int GetValue()
         {
@@ -31,6 +31,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public void SetValue(int value)
         {
+            IniFiles.F76Prefs.Set("Display", "uiShadowFilter", value);
             IniFiles.F76Prefs.Set("Display", "uiOrthoShadowFilter", value);
         }
 

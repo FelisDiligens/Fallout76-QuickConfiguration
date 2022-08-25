@@ -175,9 +175,21 @@ namespace Fo76ini.Forms.FormMain
             DropDown.Add("ShadowBlurriness", new DropDown(
                 this.comboBoxShadowBlurriness,
                 new string[] {
+                    "0x",
                     "1x (crisper, pixels noticeable)",
                     "2x (less blurry)",
                     "3x (blurry, default)"
+                }
+            ));
+
+            DropDown.Add("ShadowQuality", new DropDown(
+                this.comboBoxShadowQuality,
+                new string[] {
+                    "Low",
+                    "Medium",
+                    "High",
+                    "Ultra",
+                    "Custom"
                 }
             ));
 

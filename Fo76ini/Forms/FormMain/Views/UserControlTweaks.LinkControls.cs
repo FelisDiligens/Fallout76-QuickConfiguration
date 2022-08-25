@@ -83,6 +83,8 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(comboBoxAnisotropicFiltering, toolTip, anisotropicFilteringTweak);
             LinkedTweaks.LinkInfo(labelTextureQuality, toolTip, textureQualityTweak);
             LinkedTweaks.LinkInfo(comboBoxTextureQuality, toolTip, textureQualityTweak);
+            LinkedTweaks.LinkInfo(labelShadowQuality, toolTip, shadowQualityTweak);
+            LinkedTweaks.LinkInfo(comboBoxShadowQuality, toolTip, shadowQualityTweak);
             LinkedTweaks.LinkInfo(checkBoxDepthOfField, toolTip, enableDepthOfFieldTweak);
             LinkedTweaks.LinkInfo(checkBoxMotionBlur, toolTip, motionBlurTweak);
             LinkedTweaks.LinkInfo(checkBoxRadialBlur, toolTip, radialBlurTweak);
@@ -429,6 +431,9 @@ namespace Fo76ini.Forms.FormMain
             // Effects / Blood splatter
             LinkedTweaks.LinkTweak(checkBoxBloodSplatter, bloodSplatterTweak);
 
+            // Shadow quality
+            LinkedTweaks.LinkTweak(comboBoxShadowQuality, shadowQualityTweak);
+
             // Shadow texture map resolution
             LinkedTweaks.LinkTweak(
                 comboBoxShadowTextureResolution,
@@ -438,7 +443,7 @@ namespace Fo76ini.Forms.FormMain
             // Shadows / Blurriness
             LinkedTweaks.LinkTweak(
                 comboBoxShadowBlurriness,
-                new int[] { 1, 2, 3 },
+                new int[] { 0, 1, 2, 3 },
                 shadowBlurrinessTweak);
 
             // Shadow distance
@@ -639,6 +644,7 @@ namespace Fo76ini.Forms.FormMain
         private ShadowBlurrinessTweak shadowBlurrinessTweak = new ShadowBlurrinessTweak();
         private ShadowDistanceTweak shadowDistanceTweak = new ShadowDistanceTweak();
         private DirShadowSplitsTweak dirShadowSplitsTweak = new DirShadowSplitsTweak();
+        private ShadowQualityPresetTweak shadowQualityTweak = new ShadowQualityPresetTweak();
         private LODFadeOutMultObjectsTweak lodFadeOutMultObjectsTweak = new LODFadeOutMultObjectsTweak();
         private LODFadeOutMultItemsTweak lodFadeOutMultItemsTweak = new LODFadeOutMultItemsTweak();
         private LODFadeOutMultActorsTweak lodFadeOutMultActorsTweak = new LODFadeOutMultActorsTweak();

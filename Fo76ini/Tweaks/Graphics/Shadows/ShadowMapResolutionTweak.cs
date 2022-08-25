@@ -20,7 +20,7 @@ namespace Fo76ini.Tweaks.Graphics
 
         public string Identifier => this.GetType().FullName;
         
-        public bool UIReloadNecessary => false;
+        public bool UIReloadNecessary => true;
 
         public int GetValue()
         {
