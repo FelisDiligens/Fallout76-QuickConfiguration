@@ -381,6 +381,34 @@ namespace Fo76ini.Forms.FormMain
              * Graphics
              */
 
+            // Graphics preset label
+            LinkedTweaks.AddSetValueAction(() =>
+            {
+                string preset = "Unknown";
+                switch (IniFiles.GetInt("Display", "iGraphicPreset", 0))
+                {
+                    case 0:
+                        preset = "Custom";
+                        break;
+                    case 1:
+                        preset = "Low";
+                        break;
+                    case 2:
+                        preset = "Medium";
+                        break;
+                    case 3:
+                        preset = "High";
+                        break;
+                    case 4:
+                        preset = "Ultra";
+                        break;
+                    default:
+                        preset = $"Unknown ({IniFiles.GetInt("Display", "iGraphicPreset", 0)})";
+                        break;
+                }
+                this.labelSelectedQualityPreset.Text = $"Current preset: {preset}";
+            });
+
             // Anti aliasing
             LinkedTweaks.LinkTweak(comboBoxAntiAliasing, antiAliasingTweak);
 

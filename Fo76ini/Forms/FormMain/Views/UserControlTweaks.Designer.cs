@@ -302,6 +302,18 @@
             this.labelGodrayQuality = new System.Windows.Forms.Label();
             this.comboBoxWaterShadowFilter = new System.Windows.Forms.ComboBox();
             this.labelWaterShadowFilter = new System.Windows.Forms.Label();
+            this.labelOverallQualityPreset = new System.Windows.Forms.Label();
+            this.buttonSelectOverallQualityPreset = new System.Windows.Forms.Button();
+            this.contextMenuStripOverallQualityPresets = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ultraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelSelectedQualityPreset = new System.Windows.Forms.Label();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -424,6 +436,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).BeginInit();
             this.groupBoxTextures.SuspendLayout();
+            this.contextMenuStripOverallQualityPresets.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -993,6 +1006,9 @@
             // 
             // groupBoxGraphics
             // 
+            this.groupBoxGraphics.Controls.Add(this.labelSelectedQualityPreset);
+            this.groupBoxGraphics.Controls.Add(this.buttonSelectOverallQualityPreset);
+            this.groupBoxGraphics.Controls.Add(this.labelOverallQualityPreset);
             this.groupBoxGraphics.Controls.Add(this.groupBoxTextures);
             this.groupBoxGraphics.Controls.Add(this.groupBoxGraphicEffects);
             this.groupBoxGraphics.Controls.Add(this.groupBoxTAASharpening);
@@ -1010,7 +1026,7 @@
             this.groupBoxGraphics.Location = new System.Drawing.Point(9, 206);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1243);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1312);
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
@@ -1019,7 +1035,7 @@
             // 
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
-            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(203, 439);
+            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(203, 505);
             this.groupBoxGraphicEffects.Name = "groupBoxGraphicEffects";
             this.groupBoxGraphicEffects.Size = new System.Drawing.Size(188, 169);
             this.groupBoxGraphicEffects.TabIndex = 11;
@@ -1056,7 +1072,7 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 1089);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 1155);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
             this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 145);
             this.groupBoxTAASharpening.TabIndex = 18;
@@ -1160,7 +1176,7 @@
             // labelAntiAliasing
             // 
             this.labelAntiAliasing.AutoSize = true;
-            this.labelAntiAliasing.Location = new System.Drawing.Point(6, 20);
+            this.labelAntiAliasing.Location = new System.Drawing.Point(6, 88);
             this.labelAntiAliasing.Name = "labelAntiAliasing";
             this.labelAntiAliasing.Size = new System.Drawing.Size(67, 13);
             this.labelAntiAliasing.TabIndex = 0;
@@ -1172,7 +1188,7 @@
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 960);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 1026);
             this.groupBoxGrass.Name = "groupBoxGrass";
             this.groupBoxGrass.Size = new System.Drawing.Size(381, 119);
             this.groupBoxGrass.TabIndex = 17;
@@ -1242,7 +1258,7 @@
             // 
             this.comboBoxAntiAliasing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAntiAliasing.FormattingEnabled = true;
-            this.comboBoxAntiAliasing.Location = new System.Drawing.Point(165, 17);
+            this.comboBoxAntiAliasing.Location = new System.Drawing.Point(165, 85);
             this.comboBoxAntiAliasing.Name = "comboBoxAntiAliasing";
             this.comboBoxAntiAliasing.Size = new System.Drawing.Size(225, 21);
             this.comboBoxAntiAliasing.TabIndex = 1;
@@ -1259,7 +1275,7 @@
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 798);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 864);
             this.groupBoxLOD.Name = "groupBoxLOD";
             this.groupBoxLOD.Size = new System.Drawing.Size(381, 156);
             this.groupBoxLOD.TabIndex = 16;
@@ -1409,7 +1425,7 @@
             this.checkBoxVSync.AutoSize = true;
             this.checkBoxVSync.Checked = true;
             this.checkBoxVSync.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxVSync.Location = new System.Drawing.Point(9, 82);
+            this.checkBoxVSync.Location = new System.Drawing.Point(9, 150);
             this.checkBoxVSync.Name = "checkBoxVSync";
             this.checkBoxVSync.Size = new System.Drawing.Size(214, 17);
             this.checkBoxVSync.TabIndex = 4;
@@ -1421,7 +1437,7 @@
             this.groupBoxLighting.Controls.Add(this.comboBoxGodrayQuality);
             this.groupBoxLighting.Controls.Add(this.labelGodrayQuality);
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
-            this.groupBoxLighting.Location = new System.Drawing.Point(9, 363);
+            this.groupBoxLighting.Location = new System.Drawing.Point(9, 429);
             this.groupBoxLighting.Name = "groupBoxLighting";
             this.groupBoxLighting.Size = new System.Drawing.Size(381, 70);
             this.groupBoxLighting.TabIndex = 14;
@@ -1443,7 +1459,7 @@
             // labelAnisotropicFiltering
             // 
             this.labelAnisotropicFiltering.AutoSize = true;
-            this.labelAnisotropicFiltering.Location = new System.Drawing.Point(6, 47);
+            this.labelAnisotropicFiltering.Location = new System.Drawing.Point(6, 115);
             this.labelAnisotropicFiltering.Name = "labelAnisotropicFiltering";
             this.labelAnisotropicFiltering.Size = new System.Drawing.Size(84, 13);
             this.labelAnisotropicFiltering.TabIndex = 2;
@@ -1460,7 +1476,7 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowTextureResolution);
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
-            this.groupBoxShadows.Location = new System.Drawing.Point(9, 614);
+            this.groupBoxShadows.Location = new System.Drawing.Point(9, 680);
             this.groupBoxShadows.Name = "groupBoxShadows";
             this.groupBoxShadows.Size = new System.Drawing.Size(381, 178);
             this.groupBoxShadows.TabIndex = 15;
@@ -1559,7 +1575,7 @@
             // 
             this.comboBoxAnisotropicFiltering.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAnisotropicFiltering.FormattingEnabled = true;
-            this.comboBoxAnisotropicFiltering.Location = new System.Drawing.Point(165, 44);
+            this.comboBoxAnisotropicFiltering.Location = new System.Drawing.Point(165, 112);
             this.comboBoxAnisotropicFiltering.Name = "comboBoxAnisotropicFiltering";
             this.comboBoxAnisotropicFiltering.Size = new System.Drawing.Size(225, 21);
             this.comboBoxAnisotropicFiltering.TabIndex = 3;
@@ -1573,7 +1589,7 @@
             this.groupBoxWater.Controls.Add(this.checkBoxWaterRefractions);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterReflections);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterDisplacement);
-            this.groupBoxWater.Location = new System.Drawing.Point(9, 178);
+            this.groupBoxWater.Location = new System.Drawing.Point(9, 244);
             this.groupBoxWater.Name = "groupBoxWater";
             this.groupBoxWater.Size = new System.Drawing.Size(381, 179);
             this.groupBoxWater.TabIndex = 12;
@@ -1648,7 +1664,7 @@
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxMotionBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxRadialBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxLensFlare);
-            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 439);
+            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 505);
             this.groupBoxPostProcessing.Name = "groupBoxPostProcessing";
             this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 169);
             this.groupBoxPostProcessing.TabIndex = 10;
@@ -4034,7 +4050,7 @@
             // 
             this.groupBoxTextures.Controls.Add(this.comboBoxTextureQuality);
             this.groupBoxTextures.Controls.Add(this.labelTextureQuality);
-            this.groupBoxTextures.Location = new System.Drawing.Point(9, 117);
+            this.groupBoxTextures.Location = new System.Drawing.Point(9, 183);
             this.groupBoxTextures.Name = "groupBoxTextures";
             this.groupBoxTextures.Size = new System.Drawing.Size(381, 55);
             this.groupBoxTextures.TabIndex = 19;
@@ -4120,6 +4136,101 @@
             this.labelWaterShadowFilter.Size = new System.Drawing.Size(71, 13);
             this.labelWaterShadowFilter.TabIndex = 5;
             this.labelWaterShadowFilter.Text = "Shadow filter:";
+            // 
+            // labelOverallQualityPreset
+            // 
+            this.labelOverallQualityPreset.AutoSize = true;
+            this.labelOverallQualityPreset.Location = new System.Drawing.Point(6, 26);
+            this.labelOverallQualityPreset.Name = "labelOverallQualityPreset";
+            this.labelOverallQualityPreset.Size = new System.Drawing.Size(76, 13);
+            this.labelOverallQualityPreset.TabIndex = 20;
+            this.labelOverallQualityPreset.Text = "Overall quality:";
+            // 
+            // buttonSelectOverallQualityPreset
+            // 
+            this.buttonSelectOverallQualityPreset.Location = new System.Drawing.Point(164, 21);
+            this.buttonSelectOverallQualityPreset.Name = "buttonSelectOverallQualityPreset";
+            this.buttonSelectOverallQualityPreset.Size = new System.Drawing.Size(227, 23);
+            this.buttonSelectOverallQualityPreset.TabIndex = 21;
+            this.buttonSelectOverallQualityPreset.Text = "Select quality preset";
+            this.buttonSelectOverallQualityPreset.UseVisualStyleBackColor = true;
+            this.buttonSelectOverallQualityPreset.Click += new System.EventHandler(this.buttonSelectOverallQualityPreset_Click);
+            // 
+            // contextMenuStripOverallQualityPresets
+            // 
+            this.contextMenuStripOverallQualityPresets.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripSeparator2,
+            this.lowToolStripMenuItem,
+            this.mediumToolStripMenuItem,
+            this.highToolStripMenuItem,
+            this.ultraToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.cancelToolStripMenuItem});
+            this.contextMenuStripOverallQualityPresets.Name = "contextMenuStripOverallQualityPresets";
+            this.contextMenuStripOverallQualityPresets.Size = new System.Drawing.Size(161, 148);
+            // 
+            // lowToolStripMenuItem
+            // 
+            this.lowToolStripMenuItem.Name = "lowToolStripMenuItem";
+            this.lowToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.lowToolStripMenuItem.Text = "Low";
+            this.lowToolStripMenuItem.Click += new System.EventHandler(this.lowToolStripMenuItem_Click);
+            // 
+            // mediumToolStripMenuItem
+            // 
+            this.mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
+            this.mediumToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.mediumToolStripMenuItem.Text = "Medium";
+            this.mediumToolStripMenuItem.Click += new System.EventHandler(this.mediumToolStripMenuItem_Click);
+            // 
+            // highToolStripMenuItem
+            // 
+            this.highToolStripMenuItem.Name = "highToolStripMenuItem";
+            this.highToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.highToolStripMenuItem.Text = "High";
+            this.highToolStripMenuItem.Click += new System.EventHandler(this.highToolStripMenuItem_Click);
+            // 
+            // ultraToolStripMenuItem
+            // 
+            this.ultraToolStripMenuItem.Name = "ultraToolStripMenuItem";
+            this.ultraToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.ultraToolStripMenuItem.Text = "Ultra";
+            this.ultraToolStripMenuItem.Click += new System.EventHandler(this.ultraToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(157, 6);
+            // 
+            // cancelToolStripMenuItem
+            // 
+            this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
+            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.cancelToolStripMenuItem.Text = "Cancel";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(157, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Enabled = false;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem1.Text = "Graphics presets";
+            // 
+            // labelSelectedQualityPreset
+            // 
+            this.labelSelectedQualityPreset.AutoSize = true;
+            this.labelSelectedQualityPreset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSelectedQualityPreset.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelSelectedQualityPreset.Location = new System.Drawing.Point(164, 49);
+            this.labelSelectedQualityPreset.Name = "labelSelectedQualityPreset";
+            this.labelSelectedQualityPreset.Size = new System.Drawing.Size(125, 13);
+            this.labelSelectedQualityPreset.TabIndex = 22;
+            this.labelSelectedQualityPreset.Text = "Current preset: Unknown";
             // 
             // UserControlTweaks
             // 
@@ -4287,6 +4398,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).EndInit();
             this.groupBoxTextures.ResumeLayout(false);
             this.groupBoxTextures.PerformLayout();
+            this.contextMenuStripOverallQualityPresets.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4567,5 +4679,17 @@
         private System.Windows.Forms.Label labelGodrayQuality;
         private System.Windows.Forms.ComboBox comboBoxWaterShadowFilter;
         private System.Windows.Forms.Label labelWaterShadowFilter;
+        private System.Windows.Forms.Button buttonSelectOverallQualityPreset;
+        private System.Windows.Forms.Label labelOverallQualityPreset;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripOverallQualityPresets;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem lowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mediumToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem highToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ultraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
+        private System.Windows.Forms.Label labelSelectedQualityPreset;
     }
 }

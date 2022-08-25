@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -602,5 +603,79 @@ namespace Fo76ini.Forms.FormMain
         {
             Utils.OpenHTMLInBrowser(Localization.GetTextResource("TweaksInfo.html"));
         }
+
+        #region Overall graphics quality presets
+
+        private void buttonSelectOverallQualityPreset_Click(object sender, EventArgs e)
+        {
+            if (contextMenuStripOverallQualityPresets.Visible)
+                contextMenuStripOverallQualityPresets.Hide();
+            else
+                contextMenuStripOverallQualityPresets.Show(buttonSelectOverallQualityPreset, new Point(1, buttonSelectOverallQualityPreset.Height));
+        }
+
+        private void lowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadGraphicsPreset(GraphicsPreset.Low);
+        }
+
+        private void mediumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadGraphicsPreset(GraphicsPreset.Medium);
+        }
+
+        private void highToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadGraphicsPreset(GraphicsPreset.High);
+        }
+
+        private void ultraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadGraphicsPreset(GraphicsPreset.Ultra);
+        }
+
+        enum GraphicsPreset
+        {
+            Low,
+            Medium,
+            High,
+            Ultra
+        }
+
+        private void LoadGraphicsPreset(GraphicsPreset preset)
+        {
+            // Load defaults for Medium preset:
+            IniFile presetINI = new IniFile(Path.Combine(IniFiles.DefaultsPath, preset.ToString() + ".ini"));
+            presetINI.Load();
+            presetINI.ClearAllComments();
+
+            // Merge into Fallout76Prefs.ini:
+            IniFiles.F76Prefs.Merge(presetINI);
+
+            // Set iGraphicPreset
+            switch (preset)
+            {
+                case GraphicsPreset.Low:
+                    IniFiles.F76Prefs.Set("Display", "iGraphicPreset", 1);
+                    break;
+                case GraphicsPreset.Medium:
+                    IniFiles.F76Prefs.Set("Display", "iGraphicPreset", 2);
+                    break;
+                case GraphicsPreset.High:
+                    IniFiles.F76Prefs.Set("Display", "iGraphicPreset", 3);
+                    break;
+                case GraphicsPreset.Ultra:
+                    IniFiles.F76Prefs.Set("Display", "iGraphicPreset", 4);
+                    break;
+            }
+
+            // Reload all values:
+            LinkedTweaks.LoadValues();
+
+            // Show messagebox
+            MsgBox.Popup("Graphics preset changed", $"Graphics set to {preset.ToString()}.", MessageBoxIcon.Information);
+        }
+
+        #endregion
     }
 }

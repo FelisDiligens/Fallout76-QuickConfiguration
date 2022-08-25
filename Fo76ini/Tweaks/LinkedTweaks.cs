@@ -487,5 +487,10 @@ namespace Fo76ini.Tweaks
                     LinkedTweaks.LoadValues();
             };
         }
+
+        public static void AddSetValueAction(Action get)
+        {
+            SetValueActions.Add(get);
+        }
     }
 }
