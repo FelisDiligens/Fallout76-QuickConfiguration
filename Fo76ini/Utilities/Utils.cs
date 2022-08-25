@@ -1015,9 +1015,28 @@ namespace Fo76ini.Utilities
 
         public static void SaveTextResourceFromAssemblyToDisk(string resourceName, string filePath)
         {
-            using (var stream = new StreamWriter(new FileStream(filePath, FileMode.Create)))
+            try
             {
-                stream.Write(ReadTextResourceFromAssembly(resourceName));
+                using (var stream = new StreamWriter(new FileStream(filePath, FileMode.Create)))
+                {
+                    stream.Write(ReadTextResourceFromAssembly(resourceName));
+                }
+            }
+            catch (IOException exc)
+            {
+                // If the file exists and is locked, this code fails with IOException.
+                // In that case: Print exception to console, ignore error, and continue.
+                Console.WriteLine($"Couldn't write to file: {filePath}");
+                Console.WriteLine(exc);
+                return;
+            }
+            catch (UnauthorizedAccessException exc)
+            {
+                // If the file exists but the access is denied (for some reason idk), this code fails with UnauthorizedAccessException.
+                // In that case: Print exception to console, ignore error, and continue.
+                Console.WriteLine($"Couldn't write to file: {filePath}");
+                Console.WriteLine(exc);
+                return;
             }
         }
     }
