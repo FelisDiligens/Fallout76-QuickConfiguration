@@ -4681,7 +4681,7 @@
         private System.Windows.Forms.Label labelWaterShadowFilter;
         private System.Windows.Forms.Button buttonSelectOverallQualityPreset;
         private System.Windows.Forms.Label labelOverallQualityPreset;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripOverallQualityPresets;
+        public System.Windows.Forms.ContextMenuStrip contextMenuStripOverallQualityPresets;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem lowToolStripMenuItem;

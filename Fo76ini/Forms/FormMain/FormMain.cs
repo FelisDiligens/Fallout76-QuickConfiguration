@@ -80,6 +80,7 @@ namespace Fo76ini
             LocalizedForm form = new LocalizedForm(this, this.toolTip);
             form.SpecialControls.Add(this.userControlGallery.contextMenuStripGallery);
             form.SpecialControls.Add(this.userControlSideNav.contextMenuStripBrowse);
+            form.SpecialControls.Add(this.userControlTweaks.contextMenuStripOverallQualityPresets);
             Localization.LocalizedForms.Add(form);
 
             // Handle translations:

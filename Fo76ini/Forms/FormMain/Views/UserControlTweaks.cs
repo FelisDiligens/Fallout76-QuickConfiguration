@@ -265,7 +265,8 @@ namespace Fo76ini.Forms.FormMain
 
             // Add control elements to blacklist:
             Translation.BlackList.AddRange(new string[] {
-                "richTextBoxCredentialsExplanation"
+                "richTextBoxCredentialsExplanation",
+                "labelSelectedQualityPreset"
             });
 
             Translation.LanguageChanged += Translation_LanguageChanged;
