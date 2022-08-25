@@ -371,6 +371,17 @@ namespace Fo76ini.Utilities
             Process.Start(url);
         }
 
+        public static void OpenHTMLInBrowser(string html)
+        {
+            // Write html to a temp file:
+            string path = Path.GetTempFileName() + ".html";
+            File.WriteAllText(path, html);
+
+            // Open local temp file in web browser:
+            var uri = new Uri(path);
+            Process.Start(uri.AbsoluteUri);
+        }
+
         public static bool IsDirectoryEmpty(string path)
         {
             // https://stackoverflow.com/questions/755574/how-to-quickly-check-if-folder-is-empty-net
@@ -891,6 +902,21 @@ namespace Fo76ini.Utilities
                         select x.GetPropertyValue("Caption")).FirstOrDefault();
             return name != null ? name.ToString().Trim() : "";
         }*/
+
+        public static bool IsWindows10OrNewer()
+        {
+            // Get Operating system information.
+            OperatingSystem os = Environment.OSVersion;
+            // Get version information about the os.
+            Version vs = os.Version;
+
+            // Is Windows 10 or Windows 11:
+            if (os.Platform == PlatformID.Win32NT && vs.Major >= 10)
+                return true;
+
+            // Is something else:
+            return false;
+        }
 
         public static long GetUnixTimeStamp()
         {

@@ -518,6 +518,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\xTranslator-24px.png" />
+    <None Include="Resources\xTranslator-16px.png" />
+    <None Include="Resources\report-3-16.png" />
     <None Include="Resources\Oswald.ttf" />
     <None Include="Resources\RobotoCondensed-Bold.ttf" />
     <None Include="Resources\RobotoCondensed.ttf" />
@@ -528,6 +531,12 @@
     <None Include="Resources\BTN_Thumb.bmp" />
     <None Include="Resources\BTN_Thumb_Blue.bmp" />
     <EmbeddedResource Include="Resources\TweaksInfo.html" />
+    <Content Include="Resources\arrow-left-16.png" />
+    <None Include="Resources\BuyMeACoffee_hover.png" />
+    <None Include="Resources\BuyMeACoffee.png" />
+    <None Include="Resources\bethesda-16.png" />
+    <None Include="Resources\bug-3-16.png" />
+    <None Include="Resources\bug-3-24.png" />
     <Content Include="Resources\folder-3-16.png" />
     <None Include="Resources\fov_70.jpg" />
     <None Include="Resources\fov_75.jpg" />
@@ -542,6 +551,11 @@
     <None Include="Resources\fov_120.jpg" />
     <None Include="Resources\house-24.png" />
     <None Include="Resources\gallery-24.png" />
+    <None Include="Resources\github-16.png" />
+    <None Include="Resources\nexus_16.png" />
+    <None Include="Resources\help-16.png" />
+    <None Include="Resources\github-24.png" />
+    <None Include="Resources\nukesdragons-16.png" />
     <Content Include="Resources\pipboy-24px.png" />
     <Content Include="Resources\pipboy-preview-mask.png" />
     <Content Include="Resources\pipboy-preview-screen.png" />

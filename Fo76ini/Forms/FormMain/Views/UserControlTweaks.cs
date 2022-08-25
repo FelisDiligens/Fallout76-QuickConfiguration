@@ -256,7 +256,10 @@ namespace Fo76ini.Forms.FormMain
              * Loading texts:
              */
 
-            this.webBrowserTweaksInfo.DocumentText = Localization.GetTextResource("TweaksInfo.html");
+            if (Utils.IsWindows10OrNewer())
+                this.webBrowserTweaksInfo.DocumentText = Localization.GetTextResource("TweaksInfo.html");
+            else
+                this.webBrowserTweaksInfo.Visible = false;
 
             // Loading RTF in the Constructor results in unformatted text for some reason...
             // we have to load it here:
@@ -553,5 +556,10 @@ namespace Fo76ini.Forms.FormMain
         }
 
         #endregion
+
+        private void buttonOpenTweakInfoInBrowser_Click(object sender, EventArgs e)
+        {
+            Utils.OpenHTMLInBrowser(Localization.GetTextResource("TweaksInfo.html"));
+        }
     }
 }

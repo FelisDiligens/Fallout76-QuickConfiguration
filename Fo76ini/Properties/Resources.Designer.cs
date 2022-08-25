@@ -113,6 +113,16 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_left_16 {
+            get {
+                object obj = ResourceManager.GetObject("arrow_left_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_left_black {
             get {
                 object obj = ResourceManager.GetObject("arrow-left-black", resourceCulture);
@@ -176,6 +186,16 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap bethesda {
             get {
                 object obj = ResourceManager.GetObject("bethesda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bethesda_16 {
+            get {
+                object obj = ResourceManager.GetObject("bethesda_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,6 +273,26 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bug_3_16 {
+            get {
+                object obj = ResourceManager.GetObject("bug_3_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bug_3_24 {
+            get {
+                object obj = ResourceManager.GetObject("bug_3_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap button {
             get {
                 object obj = ResourceManager.GetObject("button", resourceCulture);
@@ -266,6 +306,26 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap button_hover {
             get {
                 object obj = ResourceManager.GetObject("button-hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BuyMeACoffee {
+            get {
+                object obj = ResourceManager.GetObject("BuyMeACoffee", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BuyMeACoffee_hover {
+            get {
+                object obj = ResourceManager.GetObject("BuyMeACoffee_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -573,6 +633,26 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap github_16 {
+            get {
+                object obj = ResourceManager.GetObject("github_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap github_24 {
+            get {
+                object obj = ResourceManager.GetObject("github_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap heart_24 {
             get {
                 object obj = ResourceManager.GetObject("heart-24", resourceCulture);
@@ -616,6 +696,16 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap help_128_hover {
             get {
                 object obj = ResourceManager.GetObject("help_128_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap help_16 {
+            get {
+                object obj = ResourceManager.GetObject("help_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -723,9 +813,29 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nexus_16 {
+            get {
+                object obj = ResourceManager.GetObject("nexus_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap nexus_24 {
             get {
                 object obj = ResourceManager.GetObject("nexus-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nukesdragons_16 {
+            get {
+                object obj = ResourceManager.GetObject("nukesdragons_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -866,6 +976,16 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap quickboy_preview_screen {
             get {
                 object obj = ResourceManager.GetObject("quickboy_preview_screen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap report_3_16 {
+            get {
+                object obj = ResourceManager.GetObject("report_3_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1056,6 +1176,26 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap xbox_hover {
             get {
                 object obj = ResourceManager.GetObject("xbox_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap xTranslator_16px {
+            get {
+                object obj = ResourceManager.GetObject("xTranslator_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap xTranslator_24px {
+            get {
+                object obj = ResourceManager.GetObject("xTranslator_24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

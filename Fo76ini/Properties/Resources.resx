@@ -418,4 +418,46 @@
   <data name="RobotoCondensed_Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RobotoCondensed-Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="arrow_left_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\arrow-left-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BuyMeACoffee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BuyMeACoffee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BuyMeACoffee_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BuyMeACoffee_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bethesda_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bethesda-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bug_3_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bug-3-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bug_3_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bug-3-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="github_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\github-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="github_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\github-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\help-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nexus_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nexus_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="report_3_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\report-3-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nukesdragons_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nukesdragons-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xTranslator_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xTranslator-16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xTranslator_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xTranslator-24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

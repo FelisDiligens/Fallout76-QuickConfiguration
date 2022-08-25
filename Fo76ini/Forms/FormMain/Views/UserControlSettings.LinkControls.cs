@@ -47,10 +47,6 @@ namespace Fo76ini.Forms.FormMain.Tabs
                 "Fo76ini.Tweaks.NuclearWinterMode.RemoveModsOnNWModeTweak",
                 "If checked, mods will be removed when the Nuclear Winter mode is enabled.");
 
-            LinkedTweaks.LinkInfo(checkBoxShowWhatsNew, toolTip,
-                "Fo76ini.Tweaks.Config.ShowWhatsNewTweak",
-                "Requires a restart.");
-
             string archiveTwoPathToolTipID = "Fo76ini.Tweaks.Config.ArchiveTwoPathTweak";
             string archiveTwoPathToolTipDesc = "The tool uses Archive2.exe to extract and pack *.ba2 files.\nYou can set the path where the tool looks for Archive2.exe.";
             LinkedTweaks.LinkInfo(labelArchiveTwoPath, toolTip, archiveTwoPathToolTipID, archiveTwoPathToolTipDesc);
@@ -115,14 +111,6 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
             // Automatically remove mods
             LinkedTweaks.LinkProperty(checkBoxNWAutoDisableMods, new Accessor<bool>(() => Configuration.NuclearWinter.AutoDisableMods));
-
-
-            /*
-             * User Interface
-             */
-
-            // Show/hide What's new RTF in FormMain
-            LinkedTweaks.LinkProperty(checkBoxShowWhatsNew, new Accessor<bool>(() => Configuration.ShowWhatsNew));
         }
     }
 }

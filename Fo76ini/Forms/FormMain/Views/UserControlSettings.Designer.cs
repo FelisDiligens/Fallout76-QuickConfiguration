@@ -49,9 +49,7 @@
             this.labelArchiveTwoPath = new System.Windows.Forms.Label();
             this.checkBoxPlayNotificationSound = new System.Windows.Forms.CheckBox();
             this.textBoxSevenZipPath = new System.Windows.Forms.TextBox();
-            this.labelSettingsUI = new System.Windows.Forms.Label();
             this.textBoxArchiveTwoPath = new System.Windows.Forms.TextBox();
-            this.checkBoxShowWhatsNew = new System.Windows.Forms.CheckBox();
             this.buttonPickSevenZipPath = new System.Windows.Forms.Button();
             this.checkBoxReadOnly = new System.Windows.Forms.CheckBox();
             this.labelSettingsPrograms = new System.Windows.Forms.Label();
@@ -72,9 +70,9 @@
             this.panelSettingsLocalization = new System.Windows.Forms.Panel();
             this.panelSettingsBehavior = new System.Windows.Forms.Panel();
             this.checkBoxMakeBackups = new System.Windows.Forms.CheckBox();
-            this.panelSettingsUI = new System.Windows.Forms.Panel();
             this.panelSettingsOptions = new System.Windows.Forms.Panel();
             this.panelSettingsNWMode = new System.Windows.Forms.Panel();
+            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.panelSettingsPaths = new System.Windows.Forms.Panel();
             this.panelSettingsProfile = new System.Windows.Forms.Panel();
             this.linkLabelOpenProfileEditor = new System.Windows.Forms.LinkLabel();
@@ -83,12 +81,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelSettingsNotifications = new System.Windows.Forms.Label();
             this.checkBoxShowNotifications = new System.Windows.Forms.CheckBox();
-            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
             this.panelSettingsLocalization.SuspendLayout();
             this.panelSettingsBehavior.SuspendLayout();
-            this.panelSettingsUI.SuspendLayout();
             this.panelSettingsOptions.SuspendLayout();
             this.panelSettingsNWMode.SuspendLayout();
             this.panelSettingsPaths.SuspendLayout();
@@ -224,7 +220,7 @@
             // labelSevenZipPath
             // 
             this.labelSevenZipPath.AutoSize = true;
-            this.labelSevenZipPath.Location = new System.Drawing.Point(12, 151);
+            this.labelSevenZipPath.Location = new System.Drawing.Point(12, 144);
             this.labelSevenZipPath.Name = "labelSevenZipPath";
             this.labelSevenZipPath.Size = new System.Drawing.Size(65, 13);
             this.labelSevenZipPath.TabIndex = 42;
@@ -243,7 +239,7 @@
             // 
             // buttonPickArchiveTwoPath
             // 
-            this.buttonPickArchiveTwoPath.Location = new System.Drawing.Point(358, 117);
+            this.buttonPickArchiveTwoPath.Location = new System.Drawing.Point(358, 110);
             this.buttonPickArchiveTwoPath.Name = "buttonPickArchiveTwoPath";
             this.buttonPickArchiveTwoPath.Size = new System.Drawing.Size(28, 23);
             this.buttonPickArchiveTwoPath.TabIndex = 43;
@@ -265,7 +261,7 @@
             // labelArchiveTwoPath
             // 
             this.labelArchiveTwoPath.AutoSize = true;
-            this.labelArchiveTwoPath.Location = new System.Drawing.Point(12, 122);
+            this.labelArchiveTwoPath.Location = new System.Drawing.Point(12, 115);
             this.labelArchiveTwoPath.Name = "labelArchiveTwoPath";
             this.labelArchiveTwoPath.Size = new System.Drawing.Size(96, 13);
             this.labelArchiveTwoPath.TabIndex = 41;
@@ -283,44 +279,23 @@
             // 
             // textBoxSevenZipPath
             // 
-            this.textBoxSevenZipPath.Location = new System.Drawing.Point(118, 148);
+            this.textBoxSevenZipPath.Location = new System.Drawing.Point(118, 141);
             this.textBoxSevenZipPath.Name = "textBoxSevenZipPath";
             this.textBoxSevenZipPath.Size = new System.Drawing.Size(234, 20);
             this.textBoxSevenZipPath.TabIndex = 44;
             this.textBoxSevenZipPath.TextChanged += new System.EventHandler(this.textBoxSevenZipPath_TextChanged);
             // 
-            // labelSettingsUI
-            // 
-            this.labelSettingsUI.AutoSize = true;
-            this.labelSettingsUI.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsUI.Location = new System.Drawing.Point(12, 12);
-            this.labelSettingsUI.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
-            this.labelSettingsUI.Name = "labelSettingsUI";
-            this.labelSettingsUI.Size = new System.Drawing.Size(92, 17);
-            this.labelSettingsUI.TabIndex = 77;
-            this.labelSettingsUI.Text = "User Interface";
-            // 
             // textBoxArchiveTwoPath
             // 
-            this.textBoxArchiveTwoPath.Location = new System.Drawing.Point(118, 119);
+            this.textBoxArchiveTwoPath.Location = new System.Drawing.Point(118, 112);
             this.textBoxArchiveTwoPath.Name = "textBoxArchiveTwoPath";
             this.textBoxArchiveTwoPath.Size = new System.Drawing.Size(234, 20);
             this.textBoxArchiveTwoPath.TabIndex = 42;
             this.textBoxArchiveTwoPath.TextChanged += new System.EventHandler(this.textBoxArchiveTwoPath_TextChanged);
             // 
-            // checkBoxShowWhatsNew
-            // 
-            this.checkBoxShowWhatsNew.AutoSize = true;
-            this.checkBoxShowWhatsNew.Location = new System.Drawing.Point(15, 37);
-            this.checkBoxShowWhatsNew.Name = "checkBoxShowWhatsNew";
-            this.checkBoxShowWhatsNew.Size = new System.Drawing.Size(214, 17);
-            this.checkBoxShowWhatsNew.TabIndex = 20;
-            this.checkBoxShowWhatsNew.Text = "Show \"What\'s new\" on the home page.";
-            this.checkBoxShowWhatsNew.UseVisualStyleBackColor = true;
-            // 
             // buttonPickSevenZipPath
             // 
-            this.buttonPickSevenZipPath.Location = new System.Drawing.Point(358, 146);
+            this.buttonPickSevenZipPath.Location = new System.Drawing.Point(358, 139);
             this.buttonPickSevenZipPath.Name = "buttonPickSevenZipPath";
             this.buttonPickSevenZipPath.Size = new System.Drawing.Size(28, 23);
             this.buttonPickSevenZipPath.TabIndex = 45;
@@ -331,7 +306,7 @@
             // checkBoxReadOnly
             // 
             this.checkBoxReadOnly.AutoSize = true;
-            this.checkBoxReadOnly.Location = new System.Drawing.Point(15, 44);
+            this.checkBoxReadOnly.Location = new System.Drawing.Point(15, 37);
             this.checkBoxReadOnly.Name = "checkBoxReadOnly";
             this.checkBoxReadOnly.Size = new System.Drawing.Size(140, 17);
             this.checkBoxReadOnly.TabIndex = 30;
@@ -342,7 +317,7 @@
             // 
             this.labelSettingsPrograms.AutoSize = true;
             this.labelSettingsPrograms.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsPrograms.Location = new System.Drawing.Point(12, 99);
+            this.labelSettingsPrograms.Location = new System.Drawing.Point(12, 92);
             this.labelSettingsPrograms.Name = "labelSettingsPrograms";
             this.labelSettingsPrograms.Size = new System.Drawing.Size(58, 15);
             this.labelSettingsPrograms.TabIndex = 26;
@@ -352,7 +327,7 @@
             // 
             this.labelSettingsModManager.AutoSize = true;
             this.labelSettingsModManager.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsModManager.Location = new System.Drawing.Point(12, 42);
+            this.labelSettingsModManager.Location = new System.Drawing.Point(12, 35);
             this.labelSettingsModManager.Name = "labelSettingsModManager";
             this.labelSettingsModManager.Size = new System.Drawing.Size(82, 15);
             this.labelSettingsModManager.TabIndex = 47;
@@ -362,7 +337,7 @@
             // 
             this.labelSettingsOptions.AutoSize = true;
             this.labelSettingsOptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsOptions.Location = new System.Drawing.Point(12, 19);
+            this.labelSettingsOptions.Location = new System.Drawing.Point(12, 12);
             this.labelSettingsOptions.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
             this.labelSettingsOptions.Name = "labelSettingsOptions";
             this.labelSettingsOptions.Size = new System.Drawing.Size(56, 17);
@@ -371,7 +346,7 @@
             // 
             // buttonPickDownloadsPath
             // 
-            this.buttonPickDownloadsPath.Location = new System.Drawing.Point(358, 62);
+            this.buttonPickDownloadsPath.Location = new System.Drawing.Point(358, 55);
             this.buttonPickDownloadsPath.Name = "buttonPickDownloadsPath";
             this.buttonPickDownloadsPath.Size = new System.Drawing.Size(28, 23);
             this.buttonPickDownloadsPath.TabIndex = 41;
@@ -392,7 +367,7 @@
             // checkBoxHandleNXMLinks
             // 
             this.checkBoxHandleNXMLinks.AutoSize = true;
-            this.checkBoxHandleNXMLinks.Location = new System.Drawing.Point(15, 67);
+            this.checkBoxHandleNXMLinks.Location = new System.Drawing.Point(15, 60);
             this.checkBoxHandleNXMLinks.Name = "checkBoxHandleNXMLinks";
             this.checkBoxHandleNXMLinks.Size = new System.Drawing.Size(248, 17);
             this.checkBoxHandleNXMLinks.TabIndex = 31;
@@ -413,7 +388,7 @@
             // labelDownloadsPath
             // 
             this.labelDownloadsPath.AutoSize = true;
-            this.labelDownloadsPath.Location = new System.Drawing.Point(12, 67);
+            this.labelDownloadsPath.Location = new System.Drawing.Point(12, 60);
             this.labelDownloadsPath.Name = "labelDownloadsPath";
             this.labelDownloadsPath.Size = new System.Drawing.Size(92, 13);
             this.labelDownloadsPath.TabIndex = 48;
@@ -433,7 +408,7 @@
             // 
             this.labelSettingsPaths.AutoSize = true;
             this.labelSettingsPaths.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsPaths.Location = new System.Drawing.Point(12, 20);
+            this.labelSettingsPaths.Location = new System.Drawing.Point(12, 13);
             this.labelSettingsPaths.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
             this.labelSettingsPaths.Name = "labelSettingsPaths";
             this.labelSettingsPaths.Size = new System.Drawing.Size(42, 17);
@@ -452,7 +427,7 @@
             // 
             // textBoxDownloadsPath
             // 
-            this.textBoxDownloadsPath.Location = new System.Drawing.Point(118, 64);
+            this.textBoxDownloadsPath.Location = new System.Drawing.Point(118, 57);
             this.textBoxDownloadsPath.Name = "textBoxDownloadsPath";
             this.textBoxDownloadsPath.Size = new System.Drawing.Size(234, 20);
             this.textBoxDownloadsPath.TabIndex = 40;
@@ -525,21 +500,12 @@
             this.checkBoxMakeBackups.Text = "Make backups of *.ini files before saving changes.";
             this.checkBoxMakeBackups.UseVisualStyleBackColor = true;
             // 
-            // panelSettingsUI
-            // 
-            this.panelSettingsUI.Controls.Add(this.labelSettingsUI);
-            this.panelSettingsUI.Controls.Add(this.checkBoxShowWhatsNew);
-            this.panelSettingsUI.Location = new System.Drawing.Point(0, 397);
-            this.panelSettingsUI.Name = "panelSettingsUI";
-            this.panelSettingsUI.Size = new System.Drawing.Size(403, 57);
-            this.panelSettingsUI.TabIndex = 84;
-            // 
             // panelSettingsOptions
             // 
             this.panelSettingsOptions.Controls.Add(this.labelSettingsOptions);
             this.panelSettingsOptions.Controls.Add(this.checkBoxReadOnly);
             this.panelSettingsOptions.Controls.Add(this.checkBoxHandleNXMLinks);
-            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 460);
+            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 397);
             this.panelSettingsOptions.Name = "panelSettingsOptions";
             this.panelSettingsOptions.Size = new System.Drawing.Size(403, 86);
             this.panelSettingsOptions.TabIndex = 85;
@@ -554,10 +520,27 @@
             this.panelSettingsNWMode.Controls.Add(this.checkBoxNWAutoDeployMods);
             this.panelSettingsNWMode.Controls.Add(this.labelToggleNW);
             this.panelSettingsNWMode.Controls.Add(this.buttonNWMode);
-            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 828);
+            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 774);
             this.panelSettingsNWMode.Name = "panelSettingsNWMode";
             this.panelSettingsNWMode.Size = new System.Drawing.Size(403, 279);
             this.panelSettingsNWMode.TabIndex = 86;
+            // 
+            // buttonNWMode
+            // 
+            this.buttonNWMode.BorderWidth = ((uint)(1u));
+            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonNWMode.Highlight = false;
+            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
+            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.Location = new System.Drawing.Point(17, 53);
+            this.buttonNWMode.Name = "buttonNWMode";
+            this.buttonNWMode.Padding = 10;
+            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
+            this.buttonNWMode.TabIndex = 50;
+            this.buttonNWMode.Text = "Nuclear Winter";
+            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.UseVisualStyleBackColor = true;
+            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
             // 
             // panelSettingsPaths
             // 
@@ -573,9 +556,9 @@
             this.panelSettingsPaths.Controls.Add(this.labelSettingsModManager);
             this.panelSettingsPaths.Controls.Add(this.labelDownloadsPath);
             this.panelSettingsPaths.Controls.Add(this.buttonPickDownloadsPath);
-            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 552);
+            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 489);
             this.panelSettingsPaths.Name = "panelSettingsPaths";
-            this.panelSettingsPaths.Size = new System.Drawing.Size(403, 177);
+            this.panelSettingsPaths.Size = new System.Drawing.Size(403, 179);
             this.panelSettingsPaths.TabIndex = 87;
             // 
             // panelSettingsProfile
@@ -583,7 +566,7 @@
             this.panelSettingsProfile.Controls.Add(this.linkLabelOpenProfileEditor);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfileNotice);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfiles);
-            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 735);
+            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 674);
             this.panelSettingsProfile.Name = "panelSettingsProfile";
             this.panelSettingsProfile.Size = new System.Drawing.Size(403, 87);
             this.panelSettingsProfile.TabIndex = 88;
@@ -651,23 +634,6 @@
         "or less) important messages.");
             this.checkBoxShowNotifications.UseVisualStyleBackColor = true;
             // 
-            // buttonNWMode
-            // 
-            this.buttonNWMode.BorderWidth = ((uint)(1u));
-            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonNWMode.Highlight = false;
-            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
-            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.Location = new System.Drawing.Point(17, 53);
-            this.buttonNWMode.Name = "buttonNWMode";
-            this.buttonNWMode.Padding = 10;
-            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
-            this.buttonNWMode.TabIndex = 50;
-            this.buttonNWMode.Text = "Nuclear Winter";
-            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.UseVisualStyleBackColor = true;
-            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
-            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -690,7 +656,6 @@
             this.Controls.Add(this.panelSettingsPaths);
             this.Controls.Add(this.panelSettingsNWMode);
             this.Controls.Add(this.panelSettingsOptions);
-            this.Controls.Add(this.panelSettingsUI);
             this.Controls.Add(this.panelSettingsBehavior);
             this.Controls.Add(this.panelSettingsLocalization);
             this.Controls.Add(this.labelSettingsTitle);
@@ -702,8 +667,6 @@
             this.panelSettingsLocalization.PerformLayout();
             this.panelSettingsBehavior.ResumeLayout(false);
             this.panelSettingsBehavior.PerformLayout();
-            this.panelSettingsUI.ResumeLayout(false);
-            this.panelSettingsUI.PerformLayout();
             this.panelSettingsOptions.ResumeLayout(false);
             this.panelSettingsOptions.PerformLayout();
             this.panelSettingsNWMode.ResumeLayout(false);
@@ -741,9 +704,7 @@
         private System.Windows.Forms.Label labelArchiveTwoPath;
         private System.Windows.Forms.CheckBox checkBoxPlayNotificationSound;
         private System.Windows.Forms.TextBox textBoxSevenZipPath;
-        private System.Windows.Forms.Label labelSettingsUI;
         private System.Windows.Forms.TextBox textBoxArchiveTwoPath;
-        private System.Windows.Forms.CheckBox checkBoxShowWhatsNew;
         private System.Windows.Forms.Button buttonPickSevenZipPath;
         private System.Windows.Forms.CheckBox checkBoxReadOnly;
         private System.Windows.Forms.Label labelSettingsPrograms;
@@ -764,7 +725,6 @@
         private System.Windows.Forms.Label labelToggleNW;
         private System.Windows.Forms.Panel panelSettingsLocalization;
         private System.Windows.Forms.Panel panelSettingsBehavior;
-        private System.Windows.Forms.Panel panelSettingsUI;
         private System.Windows.Forms.Panel panelSettingsOptions;
         private System.Windows.Forms.Panel panelSettingsNWMode;
         private System.Windows.Forms.Panel panelSettingsPaths;

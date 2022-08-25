@@ -284,7 +284,9 @@
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelTweaksDesc = new System.Windows.Forms.Label();
             this.labelTweaksTitle = new System.Windows.Forms.Label();
+            this.buttonOpenTweaksInfoInBrowser = new System.Windows.Forms.Button();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
+            this.labelTweaksInfoWin7 = new System.Windows.Forms.Label();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -425,6 +427,8 @@
             // tabPageTweaksInfo
             // 
             this.tabPageTweaksInfo.Controls.Add(this.webBrowserTweaksInfo);
+            this.tabPageTweaksInfo.Controls.Add(this.labelTweaksInfoWin7);
+            this.tabPageTweaksInfo.Controls.Add(this.buttonOpenTweaksInfoInBrowser);
             this.tabPageTweaksInfo.Location = new System.Drawing.Point(4, 22);
             this.tabPageTweaksInfo.Name = "tabPageTweaksInfo";
             this.tabPageTweaksInfo.Padding = new System.Windows.Forms.Padding(3);
@@ -3856,6 +3860,16 @@
             this.labelTweaksTitle.TabIndex = 71;
             this.labelTweaksTitle.Text = "Tweaks";
             // 
+            // buttonOpenTweaksInfoInBrowser
+            // 
+            this.buttonOpenTweaksInfoInBrowser.Location = new System.Drawing.Point(6, 48);
+            this.buttonOpenTweaksInfoInBrowser.Name = "buttonOpenTweaksInfoInBrowser";
+            this.buttonOpenTweaksInfoInBrowser.Size = new System.Drawing.Size(176, 23);
+            this.buttonOpenTweaksInfoInBrowser.TabIndex = 2;
+            this.buttonOpenTweaksInfoInBrowser.Text = "Open in browser";
+            this.buttonOpenTweaksInfoInBrowser.UseVisualStyleBackColor = true;
+            this.buttonOpenTweaksInfoInBrowser.Click += new System.EventHandler(this.buttonOpenTweakInfoInBrowser_Click);
+            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -3867,6 +3881,15 @@
             this.toolTip.Padding = new System.Drawing.Size(6, 6);
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
+            // 
+            // labelTweaksInfoWin7
+            // 
+            this.labelTweaksInfoWin7.Location = new System.Drawing.Point(6, 6);
+            this.labelTweaksInfoWin7.Name = "labelTweaksInfoWin7";
+            this.labelTweaksInfoWin7.Size = new System.Drawing.Size(642, 39);
+            this.labelTweaksInfoWin7.TabIndex = 3;
+            this.labelTweaksInfoWin7.Text = "The web browser control doesn\'t work properly under Windows 7 (and probably 8.1)\r" +
+    "\nClick the button below to read the info.";
             // 
             // UserControlTweaks
             // 
@@ -4291,5 +4314,7 @@
         private System.Windows.Forms.CheckBox checkBoxWaterHiRes;
         private System.Windows.Forms.CheckBox checkBoxWaterRefractions;
         private System.Windows.Forms.CheckBox checkBoxWaterFixSSRGlitch;
+        private System.Windows.Forms.Button buttonOpenTweaksInfoInBrowser;
+        private System.Windows.Forms.Label labelTweaksInfoWin7;
     }
 }

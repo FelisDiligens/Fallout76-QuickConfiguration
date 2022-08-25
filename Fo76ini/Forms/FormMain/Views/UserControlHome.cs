@@ -152,9 +152,6 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         private void LoadWhatsNew()
         {
-            if (!Configuration.ShowWhatsNew)
-                return;
-
 #if DEBUG
             string debugFile = Path.Combine(Shared.AppConfigFolder, "What's new.html");
             if (File.Exists(debugFile))
@@ -166,20 +163,73 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         #endregion
 
-        private void linkLabelShowWhatsNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void styledButtonWhatsNew_Click(object sender, EventArgs e)
         {
-            this.tabControlWithoutHeader1.SelectedTab = this.tabPageWhatsNew;
+            // Web browser does only work on Windows 10 (and newer) for some reason:
+            if (Utils.IsWindows10OrNewer())
+            {
+                this.tabControlWithoutHeader1.SelectedTab = this.tabPageWhatsNew;
 
-            // "Fixing" the web browser not rendering by resizing the window, which helps for some reason:
-            // (https://stackoverflow.com/a/68837431)
-            // TODO
-            this.ParentForm.Height += 1;
-            this.ParentForm.Height -= 1;
+                // "Fixing" the web browser not rendering by resizing the window, which helps for some reason:
+                // (https://stackoverflow.com/a/68837431)
+                // TODO
+                this.ParentForm.Height += 1;
+                this.ParentForm.Height -= 1;
+            }
+            else
+            {
+                // Open users web browser on Windows 7 instead:
+                Utils.OpenURL(Shared.URLs.RemoteWhatsNewHTMLURL);
+            }
         }
 
-        private void linkLabelGoBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void styledButtonGoBack_Click(object sender, EventArgs e)
         {
             this.tabControlWithoutHeader1.SelectedTab = this.tabPageHome;
         }
+
+        #region Web links
+
+        private void pictureBoxButtonSupport_Click(object sender, EventArgs e)
+        {
+            Utils.OpenURL("https://ko-fi.com/felisdiligens");
+        }
+
+        private void styledButtonNexusMods_Click(object sender, EventArgs e)
+        {
+            Utils.OpenURL("https://www.nexusmods.com/fallout76/mods/546");
+        }
+
+        private void styledButtonGitHub_Click(object sender, EventArgs e)
+        {
+            Utils.OpenURL("https://github.com/FelisDiligens/Fallout76-QuickConfiguration");
+        }
+
+        private void styledButtonWikiAndGuides_Click(object sender, EventArgs e)
+        {
+            Utils.OpenURL("https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki");
+        }
+
+        private void styledButtonBugReports_Click(object sender, EventArgs e)
+        {
+            Utils.OpenURL("https://www.nexusmods.com/fallout76/mods/546?tab=bugs");
+        }
+
+        private void styledButtonBethesdaNetStatus_Click(object sender, EventArgs e)
+        {
+            Utils.OpenURL("https://bethesda.net/status");
+        }
+
+        private void styledButtonNukesAndDragonsBuildPlanner_Click(object sender, EventArgs e)
+        {
+            Utils.OpenURL("https://nukesdragons.com/fallout-76/character");
+        }
+
+        private void styledButtonxTranslator_Click(object sender, EventArgs e)
+        {
+            Utils.OpenURL("https://www.nexusmods.com/skyrimspecialedition/mods/134");
+        }
+
+        #endregion
     }
 }

@@ -320,22 +320,6 @@ namespace Fo76ini
             }
         }
 
-        /// <summary>
-        /// Description:
-        /// Requires a restart.
-        /// </summary>
-        public static bool ShowWhatsNew
-        {
-            get
-            {
-                return IniFiles.Config.GetBool("Preferences", "bShowWhatsNew", true);
-            }
-            set
-            {
-                IniFiles.Config.Set("Preferences", "bShowWhatsNew", value);
-            }
-        }
-
         public static string SelectedLanguage
         {
             get
