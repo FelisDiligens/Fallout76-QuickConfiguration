@@ -298,6 +298,10 @@
             this.labelTextureQuality = new System.Windows.Forms.Label();
             this.comboBoxShadowQuality = new System.Windows.Forms.ComboBox();
             this.labelShadowQuality = new System.Windows.Forms.Label();
+            this.comboBoxGodrayQuality = new System.Windows.Forms.ComboBox();
+            this.labelGodrayQuality = new System.Windows.Forms.Label();
+            this.comboBoxWaterShadowFilter = new System.Windows.Forms.ComboBox();
+            this.labelWaterShadowFilter = new System.Windows.Forms.Label();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -1006,7 +1010,7 @@
             this.groupBoxGraphics.Location = new System.Drawing.Point(9, 206);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1057);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1243);
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
@@ -1015,9 +1019,9 @@
             // 
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
-            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(9, 353);
+            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(203, 439);
             this.groupBoxGraphicEffects.Name = "groupBoxGraphicEffects";
-            this.groupBoxGraphicEffects.Size = new System.Drawing.Size(187, 68);
+            this.groupBoxGraphicEffects.Size = new System.Drawing.Size(188, 169);
             this.groupBoxGraphicEffects.TabIndex = 11;
             this.groupBoxGraphicEffects.TabStop = false;
             this.groupBoxGraphicEffects.Text = "Effects";
@@ -1052,7 +1056,7 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 902);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 1089);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
             this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 145);
             this.groupBoxTAASharpening.TabIndex = 18;
@@ -1168,7 +1172,7 @@
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 773);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 960);
             this.groupBoxGrass.Name = "groupBoxGrass";
             this.groupBoxGrass.Size = new System.Drawing.Size(381, 119);
             this.groupBoxGrass.TabIndex = 17;
@@ -1255,7 +1259,7 @@
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 611);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 798);
             this.groupBoxLOD.Name = "groupBoxLOD";
             this.groupBoxLOD.Size = new System.Drawing.Size(381, 156);
             this.groupBoxLOD.TabIndex = 16;
@@ -1414,10 +1418,12 @@
             // 
             // groupBoxLighting
             // 
+            this.groupBoxLighting.Controls.Add(this.comboBoxGodrayQuality);
+            this.groupBoxLighting.Controls.Add(this.labelGodrayQuality);
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
-            this.groupBoxLighting.Location = new System.Drawing.Point(202, 353);
+            this.groupBoxLighting.Location = new System.Drawing.Point(9, 363);
             this.groupBoxLighting.Name = "groupBoxLighting";
-            this.groupBoxLighting.Size = new System.Drawing.Size(188, 68);
+            this.groupBoxLighting.Size = new System.Drawing.Size(381, 70);
             this.groupBoxLighting.TabIndex = 14;
             this.groupBoxLighting.TabStop = false;
             this.groupBoxLighting.Text = "Lighting";
@@ -1454,7 +1460,7 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowTextureResolution);
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
-            this.groupBoxShadows.Location = new System.Drawing.Point(9, 427);
+            this.groupBoxShadows.Location = new System.Drawing.Point(9, 614);
             this.groupBoxShadows.Name = "groupBoxShadows";
             this.groupBoxShadows.Size = new System.Drawing.Size(381, 178);
             this.groupBoxShadows.TabIndex = 15;
@@ -1560,14 +1566,16 @@
             // 
             // groupBoxWater
             // 
+            this.groupBoxWater.Controls.Add(this.comboBoxWaterShadowFilter);
+            this.groupBoxWater.Controls.Add(this.labelWaterShadowFilter);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterFixSSRGlitch);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterHiRes);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterRefractions);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterReflections);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterDisplacement);
-            this.groupBoxWater.Location = new System.Drawing.Point(202, 178);
+            this.groupBoxWater.Location = new System.Drawing.Point(9, 178);
             this.groupBoxWater.Name = "groupBoxWater";
-            this.groupBoxWater.Size = new System.Drawing.Size(188, 169);
+            this.groupBoxWater.Size = new System.Drawing.Size(381, 179);
             this.groupBoxWater.TabIndex = 12;
             this.groupBoxWater.TabStop = false;
             this.groupBoxWater.Text = "Water";
@@ -1577,7 +1585,7 @@
             this.checkBoxWaterFixSSRGlitch.AutoSize = true;
             this.checkBoxWaterFixSSRGlitch.Checked = true;
             this.checkBoxWaterFixSSRGlitch.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWaterFixSSRGlitch.Location = new System.Drawing.Point(9, 134);
+            this.checkBoxWaterFixSSRGlitch.Location = new System.Drawing.Point(9, 150);
             this.checkBoxWaterFixSSRGlitch.Name = "checkBoxWaterFixSSRGlitch";
             this.checkBoxWaterFixSSRGlitch.Size = new System.Drawing.Size(139, 17);
             this.checkBoxWaterFixSSRGlitch.TabIndex = 4;
@@ -1640,7 +1648,7 @@
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxMotionBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxRadialBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxLensFlare);
-            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 178);
+            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 439);
             this.groupBoxPostProcessing.Name = "groupBoxPostProcessing";
             this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 169);
             this.groupBoxPostProcessing.TabIndex = 10;
@@ -4073,6 +4081,46 @@
             this.labelShadowQuality.TabIndex = 7;
             this.labelShadowQuality.Text = "Shadow quality preset:";
             // 
+            // comboBoxGodrayQuality
+            // 
+            this.comboBoxGodrayQuality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxGodrayQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGodrayQuality.FormattingEnabled = true;
+            this.comboBoxGodrayQuality.Location = new System.Drawing.Point(156, 41);
+            this.comboBoxGodrayQuality.Name = "comboBoxGodrayQuality";
+            this.comboBoxGodrayQuality.Size = new System.Drawing.Size(219, 21);
+            this.comboBoxGodrayQuality.TabIndex = 5;
+            // 
+            // labelGodrayQuality
+            // 
+            this.labelGodrayQuality.AutoSize = true;
+            this.labelGodrayQuality.Location = new System.Drawing.Point(7, 44);
+            this.labelGodrayQuality.Name = "labelGodrayQuality";
+            this.labelGodrayQuality.Size = new System.Drawing.Size(134, 13);
+            this.labelGodrayQuality.TabIndex = 4;
+            this.labelGodrayQuality.Text = "Volumetric Lighting Quality:";
+            // 
+            // comboBoxWaterShadowFilter
+            // 
+            this.comboBoxWaterShadowFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxWaterShadowFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxWaterShadowFilter.FormattingEnabled = true;
+            this.comboBoxWaterShadowFilter.Location = new System.Drawing.Point(156, 111);
+            this.comboBoxWaterShadowFilter.Name = "comboBoxWaterShadowFilter";
+            this.comboBoxWaterShadowFilter.Size = new System.Drawing.Size(219, 21);
+            this.comboBoxWaterShadowFilter.TabIndex = 6;
+            // 
+            // labelWaterShadowFilter
+            // 
+            this.labelWaterShadowFilter.AutoSize = true;
+            this.labelWaterShadowFilter.Location = new System.Drawing.Point(7, 114);
+            this.labelWaterShadowFilter.Name = "labelWaterShadowFilter";
+            this.labelWaterShadowFilter.Size = new System.Drawing.Size(71, 13);
+            this.labelWaterShadowFilter.TabIndex = 5;
+            this.labelWaterShadowFilter.Text = "Shadow filter:";
+            // 
             // UserControlTweaks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4515,5 +4563,9 @@
         private System.Windows.Forms.Label labelTextureQuality;
         private System.Windows.Forms.ComboBox comboBoxShadowQuality;
         private System.Windows.Forms.Label labelShadowQuality;
+        private System.Windows.Forms.ComboBox comboBoxGodrayQuality;
+        private System.Windows.Forms.Label labelGodrayQuality;
+        private System.Windows.Forms.ComboBox comboBoxWaterShadowFilter;
+        private System.Windows.Forms.Label labelWaterShadowFilter;
     }
 }

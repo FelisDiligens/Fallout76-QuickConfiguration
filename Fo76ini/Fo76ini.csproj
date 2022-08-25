@@ -278,6 +278,7 @@
     <Compile Include="Tweaks\Controls\Mouse\MouseSensitivityTweakY.cs" />
     <Compile Include="Tweaks\Graphics\BackpackVisibleTweak.cs" />
     <Compile Include="Tweaks\Graphics\Effects\BloodSplatterEnabledTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Lighting\VolumetricLightingQualityTweak.cs" />
     <Compile Include="Tweaks\Graphics\Post-processing\BloomTweak.cs" />
     <Compile Include="Tweaks\Graphics\Shadows\ShadowQualityPresetTweak.cs" />
     <Compile Include="Tweaks\Graphics\TextureQualityPresetTweak.cs" />
@@ -285,6 +286,7 @@
     <Compile Include="Tweaks\Graphics\Water\WaterHiResTweak.cs" />
     <Compile Include="Tweaks\Graphics\Water\WaterRefractionsTweak.cs" />
     <Compile Include="Tweaks\Graphics\Water\WaterReflectionsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Water\WaterShadowFilterTweak.cs" />
     <Compile Include="Tweaks\Interface\CorpseHighlightingTweak.cs" />
     <Compile Include="Utilities\CustomFonts.cs" />
     <Compile Include="Utilities\Progress.cs" />

@@ -95,8 +95,12 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(checkBoxWaterRefractions, toolTip, waterRefractionsTweak);
             LinkedTweaks.LinkInfo(checkBoxWaterReflections, toolTip, waterReflectionsTweak);
             LinkedTweaks.LinkInfo(checkBoxWaterHiRes, toolTip, waterHiResTweak);
+            LinkedTweaks.LinkInfo(comboBoxWaterShadowFilter, toolTip, waterShadowFilterTweak);
+            LinkedTweaks.LinkInfo(labelWaterShadowFilter, toolTip, waterShadowFilterTweak);
             LinkedTweaks.LinkInfo(checkBoxWaterFixSSRGlitch, toolTip, waterFixSSRGlitchTweak);
             LinkedTweaks.LinkInfo(checkBoxGodrays, toolTip, volumetricLightingTweak);
+            LinkedTweaks.LinkInfo(labelGodrayQuality, toolTip, volumetricLightingQualityTweak);
+            LinkedTweaks.LinkInfo(comboBoxGodrayQuality, toolTip, volumetricLightingQualityTweak);
             LinkedTweaks.LinkInfo(checkBoxDisableGore, toolTip, disableAllGoreTweak);
             LinkedTweaks.LinkInfo(checkBoxBloodSplatter, toolTip, bloodSplatterTweak);
             LinkedTweaks.LinkInfo(labelShadowTextureResolution, toolTip, shadowMapResolutionTweak);
@@ -419,11 +423,23 @@ namespace Fo76ini.Forms.FormMain
             // Water / HiRes
             LinkedTweaks.LinkTweak(checkBoxWaterHiRes, waterHiResTweak);
 
+            // Water / Shadow filter
+            LinkedTweaks.LinkTweak(
+                comboBoxWaterShadowFilter,
+                new int[] { 1, 2, 3 },
+                waterShadowFilterTweak);
+
             // Water / Fix SSR glitch
             LinkedTweaks.LinkTweak(checkBoxWaterFixSSRGlitch, waterFixSSRGlitchTweak);
 
             // Lighting / Volumetric Lighting
             LinkedTweaks.LinkTweak(checkBoxGodrays, volumetricLightingTweak);
+
+            // Lighting / Volumetric Lighting Quality
+            LinkedTweaks.LinkTweak(
+                comboBoxGodrayQuality,
+                new int[] { 0, 1, 2 },
+                volumetricLightingQualityTweak);
 
             // Effects / Disable gore
             LinkedTweaks.LinkTweak(checkBoxDisableGore, disableAllGoreTweak);
@@ -638,6 +654,7 @@ namespace Fo76ini.Forms.FormMain
         private LensFlareTweak lensFlareTweak = new LensFlareTweak();
         private AmbientOcclusionTweak ambientOcclusionTweak = new AmbientOcclusionTweak();
         private VolumetricLightingTweak volumetricLightingTweak = new VolumetricLightingTweak();
+        private VolumetricLightingQualityTweak volumetricLightingQualityTweak = new VolumetricLightingQualityTweak();
         private DisableAllGoreTweak disableAllGoreTweak = new DisableAllGoreTweak();
         private BloodSplatterEnabledTweak bloodSplatterTweak = new BloodSplatterEnabledTweak();
         private ShadowMapResolutionTweak shadowMapResolutionTweak = new ShadowMapResolutionTweak();
@@ -660,6 +677,7 @@ namespace Fo76ini.Forms.FormMain
         private WaterRefractionsTweak waterRefractionsTweak = new WaterRefractionsTweak();
         private WaterReflectionsTweak waterReflectionsTweak = new WaterReflectionsTweak();
         private WaterHiResTweak waterHiResTweak = new WaterHiResTweak();
+        private WaterShadowFilterTweak waterShadowFilterTweak = new WaterShadowFilterTweak();
         private WaterFixSSRGlitchTweak waterFixSSRGlitchTweak = new WaterFixSSRGlitchTweak();
 
         // Audio tab

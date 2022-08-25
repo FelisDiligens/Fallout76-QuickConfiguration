@@ -241,6 +241,24 @@ namespace Fo76ini.Forms.FormMain
                 }
             ));
 
+            DropDown.Add("WaterShadowFilter", new DropDown(
+                this.comboBoxWaterShadowFilter,
+                new string[] {
+                    "1 (Low)",
+                    "2 (Medium)",
+                    "3 (High)"
+                }
+            ));
+
+            DropDown.Add("VolumetricLightingQuality", new DropDown(
+                this.comboBoxGodrayQuality,
+                new string[] {
+                    "0 (Low)",
+                    "1 (Medium)",
+                    "2 (High)"
+                }
+            ));
+
             #endregion
 
 

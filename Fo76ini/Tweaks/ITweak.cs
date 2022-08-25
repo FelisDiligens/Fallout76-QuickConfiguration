@@ -20,7 +20,7 @@
         /// When the value changes, should the UI be updated?
         /// </summary>
         /// <remarks>
-        /// Currently only implemented for checkboxes.
+        /// Currently only implemented for checkboxes and comboboxes.
         /// </remarks>
         bool UIReloadNecessary { get; }
     }
@@ -68,7 +68,7 @@
         /// When the value changes, should the UI be updated?
         /// </summary>
         /// <remarks>
-        /// Currently only implemented for checkboxes.
+        /// Currently only implemented for checkboxes and comboboxes.
         /// </remarks>
         bool UIReloadNecessary { get; }
     }
