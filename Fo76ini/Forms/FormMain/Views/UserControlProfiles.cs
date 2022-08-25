@@ -208,6 +208,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             GameInstance game = new GameInstance();
             ProfileManager.AddGame(game);
             ProfileManager.SelectGame(game);
+            ProfileManager.Save();
             UpdateList();
         }
 
@@ -228,6 +229,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             {
                 ProfileManager.RemoveGame(ProfileManager.SelectedGame);
                 ProfileManager.SelectedGameIndex -= 1;
+                ProfileManager.Save();
                 UpdateList();
             }
         }
