@@ -272,7 +272,9 @@
     <Compile Include="NexusAPI\NXMHandler.cs" />
     <Compile Include="NexusAPI\SingleSignOn.cs" />
     <Compile Include="Tweaks\Accessor.cs" />
-    <Compile Include="Tweaks\Controls\AimAssistTweak.cs" />
+    <Compile Include="Tweaks\Controls\Gamepad\AimAssistTweak.cs" />
+    <Compile Include="Tweaks\Controls\Gamepad\GamepadSensitivityTweakX.cs" />
+    <Compile Include="Tweaks\Controls\Gamepad\GamepadSensitivityTweakY.cs" />
     <Compile Include="Tweaks\Controls\Mouse\MouseSensitivityTweakY.cs" />
     <Compile Include="Tweaks\Graphics\BackpackVisibleTweak.cs" />
     <Compile Include="Tweaks\Graphics\Effects\BloodSplatterEnabledTweak.cs" />
@@ -309,10 +311,10 @@
     <Compile Include="Tweaks\Camera\Photomode\SelfieModeRangeTweak.cs" />
     <Compile Include="Tweaks\Camera\3rd person camera distance\VanityModeMaxDistTweak.cs" />
     <Compile Include="Tweaks\Camera\3rd person camera distance\VanityModeMinDistTweak.cs" />
-    <Compile Include="Tweaks\Controls\EnableGamepadRumbleTweak.cs" />
+    <Compile Include="Tweaks\Controls\Gamepad\EnableGamepadRumbleTweak.cs" />
     <Compile Include="Tweaks\Controls\Mouse\FixAimSensitivityTweak.cs" />
     <Compile Include="Tweaks\Controls\Mouse\FixMouseSensitivityTweak.cs" />
-    <Compile Include="Tweaks\Controls\GamepadEnableTweak.cs" />
+    <Compile Include="Tweaks\Controls\Gamepad\GamepadEnableTweak.cs" />
     <Compile Include="Tweaks\Controls\Mouse\MouseInvertXTweak.cs" />
     <Compile Include="Tweaks\Controls\Mouse\MouseInvertYTweak.cs" />
     <Compile Include="Tweaks\Controls\Mouse\MouseSensitivityTweakX.cs" />

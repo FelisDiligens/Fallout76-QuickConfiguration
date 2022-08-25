@@ -32,6 +32,8 @@
             this.tabControlTweaks = new System.Windows.Forms.TabControl();
             this.tabPageTweaksInfo = new System.Windows.Forms.TabPage();
             this.webBrowserTweaksInfo = new System.Windows.Forms.WebBrowser();
+            this.labelTweaksInfoWin7 = new System.Windows.Forms.Label();
+            this.buttonOpenTweaksInfoInBrowser = new System.Windows.Forms.Button();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.groupBoxGameplay = new System.Windows.Forms.GroupBox();
             this.checkBoxBackpackVisible = new System.Windows.Forms.CheckBox();
@@ -284,9 +286,13 @@
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelTweaksDesc = new System.Windows.Forms.Label();
             this.labelTweaksTitle = new System.Windows.Forms.Label();
-            this.buttonOpenTweaksInfoInBrowser = new System.Windows.Forms.Button();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
-            this.labelTweaksInfoWin7 = new System.Windows.Forms.Label();
+            this.sliderGamepadSensitivityY = new System.Windows.Forms.TrackBar();
+            this.numGamepadSensitivityY = new System.Windows.Forms.NumericUpDown();
+            this.labelGamepadSensitivityY = new System.Windows.Forms.Label();
+            this.sliderGamepadSensitivityX = new System.Windows.Forms.TrackBar();
+            this.numGamepadSensitivityX = new System.Windows.Forms.NumericUpDown();
+            this.labelGamepadSensitivityX = new System.Windows.Forms.Label();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -404,6 +410,10 @@
             this.tabPageLogin.SuspendLayout();
             this.groupBoxLoginProfiles.SuspendLayout();
             this.groupBoxLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -447,6 +457,25 @@
             this.webBrowserTweaksInfo.Name = "webBrowserTweaksInfo";
             this.webBrowserTweaksInfo.Size = new System.Drawing.Size(654, 476);
             this.webBrowserTweaksInfo.TabIndex = 1;
+            // 
+            // labelTweaksInfoWin7
+            // 
+            this.labelTweaksInfoWin7.Location = new System.Drawing.Point(6, 6);
+            this.labelTweaksInfoWin7.Name = "labelTweaksInfoWin7";
+            this.labelTweaksInfoWin7.Size = new System.Drawing.Size(642, 39);
+            this.labelTweaksInfoWin7.TabIndex = 3;
+            this.labelTweaksInfoWin7.Text = "The web browser control doesn\'t work properly under Windows 7 (and probably 8.1)\r" +
+    "\nClick the button below to read the info.";
+            // 
+            // buttonOpenTweaksInfoInBrowser
+            // 
+            this.buttonOpenTweaksInfoInBrowser.Location = new System.Drawing.Point(6, 48);
+            this.buttonOpenTweaksInfoInBrowser.Name = "buttonOpenTweaksInfoInBrowser";
+            this.buttonOpenTweaksInfoInBrowser.Size = new System.Drawing.Size(176, 23);
+            this.buttonOpenTweaksInfoInBrowser.TabIndex = 2;
+            this.buttonOpenTweaksInfoInBrowser.Text = "Open in browser";
+            this.buttonOpenTweaksInfoInBrowser.UseVisualStyleBackColor = true;
+            this.buttonOpenTweaksInfoInBrowser.Click += new System.EventHandler(this.buttonOpenTweakInfoInBrowser_Click);
             // 
             // tabPageGeneral
             // 
@@ -2407,12 +2436,18 @@
             // groupBoxGamepad
             // 
             this.groupBoxGamepad.Controls.Add(this.checkBoxAimAssist);
-            this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadEnabled);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadRumble);
-            this.groupBoxGamepad.Location = new System.Drawing.Point(9, 272);
+            this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadEnabled);
+            this.groupBoxGamepad.Controls.Add(this.sliderGamepadSensitivityY);
+            this.groupBoxGamepad.Controls.Add(this.numGamepadSensitivityY);
+            this.groupBoxGamepad.Controls.Add(this.labelGamepadSensitivityY);
+            this.groupBoxGamepad.Controls.Add(this.sliderGamepadSensitivityX);
+            this.groupBoxGamepad.Controls.Add(this.numGamepadSensitivityX);
+            this.groupBoxGamepad.Controls.Add(this.labelGamepadSensitivityX);
+            this.groupBoxGamepad.Location = new System.Drawing.Point(9, 259);
             this.groupBoxGamepad.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGamepad.Name = "groupBoxGamepad";
-            this.groupBoxGamepad.Size = new System.Drawing.Size(400, 105);
+            this.groupBoxGamepad.Size = new System.Drawing.Size(400, 211);
             this.groupBoxGamepad.TabIndex = 1;
             this.groupBoxGamepad.TabStop = false;
             this.groupBoxGamepad.Text = "Gamepad";
@@ -2422,7 +2457,7 @@
             this.checkBoxAimAssist.AutoSize = true;
             this.checkBoxAimAssist.Checked = true;
             this.checkBoxAimAssist.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAimAssist.Location = new System.Drawing.Point(9, 65);
+            this.checkBoxAimAssist.Location = new System.Drawing.Point(9, 181);
             this.checkBoxAimAssist.Name = "checkBoxAimAssist";
             this.checkBoxAimAssist.Size = new System.Drawing.Size(73, 17);
             this.checkBoxAimAssist.TabIndex = 2;
@@ -2434,7 +2469,7 @@
             this.checkBoxGamepadEnabled.AutoSize = true;
             this.checkBoxGamepadEnabled.Checked = true;
             this.checkBoxGamepadEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGamepadEnabled.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxGamepadEnabled.Location = new System.Drawing.Point(9, 135);
             this.checkBoxGamepadEnabled.Name = "checkBoxGamepadEnabled";
             this.checkBoxGamepadEnabled.Size = new System.Drawing.Size(106, 17);
             this.checkBoxGamepadEnabled.TabIndex = 0;
@@ -2446,7 +2481,7 @@
             this.checkBoxGamepadRumble.AutoSize = true;
             this.checkBoxGamepadRumble.Checked = true;
             this.checkBoxGamepadRumble.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGamepadRumble.Location = new System.Drawing.Point(9, 42);
+            this.checkBoxGamepadRumble.Location = new System.Drawing.Point(9, 158);
             this.checkBoxGamepadRumble.Name = "checkBoxGamepadRumble";
             this.checkBoxGamepadRumble.Size = new System.Drawing.Size(149, 17);
             this.checkBoxGamepadRumble.TabIndex = 1;
@@ -2455,20 +2490,20 @@
             // 
             // groupBoxMouse
             // 
+            this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertX);
+            this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertY);
+            this.groupBoxMouse.Controls.Add(this.checkBoxFixAimSensitivity);
+            this.groupBoxMouse.Controls.Add(this.checkBoxFixMouseSensitivity);
             this.groupBoxMouse.Controls.Add(this.sliderMouseSensitivityY);
             this.groupBoxMouse.Controls.Add(this.numMouseSensitivityY);
             this.groupBoxMouse.Controls.Add(this.labelMouseSensitivityY);
-            this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertX);
-            this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertY);
             this.groupBoxMouse.Controls.Add(this.sliderMouseSensitivityX);
-            this.groupBoxMouse.Controls.Add(this.checkBoxFixAimSensitivity);
             this.groupBoxMouse.Controls.Add(this.numMouseSensitivityX);
             this.groupBoxMouse.Controls.Add(this.labelMouseSensitivityX);
-            this.groupBoxMouse.Controls.Add(this.checkBoxFixMouseSensitivity);
             this.groupBoxMouse.Location = new System.Drawing.Point(9, 9);
             this.groupBoxMouse.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxMouse.Name = "groupBoxMouse";
-            this.groupBoxMouse.Size = new System.Drawing.Size(400, 251);
+            this.groupBoxMouse.Size = new System.Drawing.Size(400, 238);
             this.groupBoxMouse.TabIndex = 0;
             this.groupBoxMouse.TabStop = false;
             this.groupBoxMouse.Text = "Mouse";
@@ -2529,7 +2564,7 @@
             // checkBoxMouseInvertX
             // 
             this.checkBoxMouseInvertX.AutoSize = true;
-            this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 219);
+            this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 210);
             this.checkBoxMouseInvertX.Name = "checkBoxMouseInvertX";
             this.checkBoxMouseInvertX.Size = new System.Drawing.Size(63, 17);
             this.checkBoxMouseInvertX.TabIndex = 9;
@@ -2539,7 +2574,7 @@
             // checkBoxMouseInvertY
             // 
             this.checkBoxMouseInvertY.AutoSize = true;
-            this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 196);
+            this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 187);
             this.checkBoxMouseInvertY.Name = "checkBoxMouseInvertY";
             this.checkBoxMouseInvertY.Size = new System.Drawing.Size(63, 17);
             this.checkBoxMouseInvertY.TabIndex = 8;
@@ -2564,7 +2599,7 @@
             // checkBoxFixAimSensitivity
             // 
             this.checkBoxFixAimSensitivity.AutoSize = true;
-            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 162);
+            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 153);
             this.checkBoxFixAimSensitivity.Name = "checkBoxFixAimSensitivity";
             this.checkBoxFixAimSensitivity.Size = new System.Drawing.Size(106, 17);
             this.checkBoxFixAimSensitivity.TabIndex = 7;
@@ -2612,7 +2647,7 @@
             // checkBoxFixMouseSensitivity
             // 
             this.checkBoxFixMouseSensitivity.AutoSize = true;
-            this.checkBoxFixMouseSensitivity.Location = new System.Drawing.Point(9, 139);
+            this.checkBoxFixMouseSensitivity.Location = new System.Drawing.Point(9, 130);
             this.checkBoxFixMouseSensitivity.Name = "checkBoxFixMouseSensitivity";
             this.checkBoxFixMouseSensitivity.Size = new System.Drawing.Size(225, 17);
             this.checkBoxFixMouseSensitivity.TabIndex = 6;
@@ -3860,16 +3895,6 @@
             this.labelTweaksTitle.TabIndex = 71;
             this.labelTweaksTitle.Text = "Tweaks";
             // 
-            // buttonOpenTweaksInfoInBrowser
-            // 
-            this.buttonOpenTweaksInfoInBrowser.Location = new System.Drawing.Point(6, 48);
-            this.buttonOpenTweaksInfoInBrowser.Name = "buttonOpenTweaksInfoInBrowser";
-            this.buttonOpenTweaksInfoInBrowser.Size = new System.Drawing.Size(176, 23);
-            this.buttonOpenTweaksInfoInBrowser.TabIndex = 2;
-            this.buttonOpenTweaksInfoInBrowser.Text = "Open in browser";
-            this.buttonOpenTweaksInfoInBrowser.UseVisualStyleBackColor = true;
-            this.buttonOpenTweaksInfoInBrowser.Click += new System.EventHandler(this.buttonOpenTweakInfoInBrowser_Click);
-            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -3882,14 +3907,111 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
-            // labelTweaksInfoWin7
+            // sliderGamepadSensitivityY
             // 
-            this.labelTweaksInfoWin7.Location = new System.Drawing.Point(6, 6);
-            this.labelTweaksInfoWin7.Name = "labelTweaksInfoWin7";
-            this.labelTweaksInfoWin7.Size = new System.Drawing.Size(642, 39);
-            this.labelTweaksInfoWin7.TabIndex = 3;
-            this.labelTweaksInfoWin7.Text = "The web browser control doesn\'t work properly under Windows 7 (and probably 8.1)\r" +
-    "\nClick the button below to read the info.";
+            this.sliderGamepadSensitivityY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderGamepadSensitivityY.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderGamepadSensitivityY.Location = new System.Drawing.Point(9, 91);
+            this.sliderGamepadSensitivityY.Maximum = 15556;
+            this.sliderGamepadSensitivityY.Minimum = 4445;
+            this.sliderGamepadSensitivityY.Name = "sliderGamepadSensitivityY";
+            this.sliderGamepadSensitivityY.Size = new System.Drawing.Size(325, 45);
+            this.sliderGamepadSensitivityY.SmallChange = 300;
+            this.sliderGamepadSensitivityY.TabIndex = 10;
+            this.sliderGamepadSensitivityY.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderGamepadSensitivityY.Value = 6000;
+            // 
+            // numGamepadSensitivityY
+            // 
+            this.numGamepadSensitivityY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numGamepadSensitivityY.DecimalPlaces = 4;
+            this.numGamepadSensitivityY.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            262144});
+            this.numGamepadSensitivityY.Location = new System.Drawing.Point(340, 91);
+            this.numGamepadSensitivityY.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numGamepadSensitivityY.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            393216});
+            this.numGamepadSensitivityY.Name = "numGamepadSensitivityY";
+            this.numGamepadSensitivityY.Size = new System.Drawing.Size(54, 20);
+            this.numGamepadSensitivityY.TabIndex = 11;
+            this.numGamepadSensitivityY.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            65536});
+            // 
+            // labelGamepadSensitivityY
+            // 
+            this.labelGamepadSensitivityY.AutoSize = true;
+            this.labelGamepadSensitivityY.Location = new System.Drawing.Point(6, 73);
+            this.labelGamepadSensitivityY.Name = "labelGamepadSensitivityY";
+            this.labelGamepadSensitivityY.Size = new System.Drawing.Size(90, 13);
+            this.labelGamepadSensitivityY.TabIndex = 9;
+            this.labelGamepadSensitivityY.Text = "Vertical sensitivity";
+            // 
+            // sliderGamepadSensitivityX
+            // 
+            this.sliderGamepadSensitivityX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderGamepadSensitivityX.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderGamepadSensitivityX.Location = new System.Drawing.Point(9, 40);
+            this.sliderGamepadSensitivityX.Maximum = 15556;
+            this.sliderGamepadSensitivityX.Minimum = 4445;
+            this.sliderGamepadSensitivityX.Name = "sliderGamepadSensitivityX";
+            this.sliderGamepadSensitivityX.Size = new System.Drawing.Size(325, 45);
+            this.sliderGamepadSensitivityX.SmallChange = 300;
+            this.sliderGamepadSensitivityX.TabIndex = 7;
+            this.sliderGamepadSensitivityX.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderGamepadSensitivityX.Value = 6667;
+            // 
+            // numGamepadSensitivityX
+            // 
+            this.numGamepadSensitivityX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numGamepadSensitivityX.DecimalPlaces = 4;
+            this.numGamepadSensitivityX.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            262144});
+            this.numGamepadSensitivityX.Location = new System.Drawing.Point(340, 40);
+            this.numGamepadSensitivityX.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numGamepadSensitivityX.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            393216});
+            this.numGamepadSensitivityX.Name = "numGamepadSensitivityX";
+            this.numGamepadSensitivityX.Size = new System.Drawing.Size(54, 20);
+            this.numGamepadSensitivityX.TabIndex = 8;
+            this.numGamepadSensitivityX.Value = new decimal(new int[] {
+            6667,
+            0,
+            0,
+            262144});
+            // 
+            // labelGamepadSensitivityX
+            // 
+            this.labelGamepadSensitivityX.AutoSize = true;
+            this.labelGamepadSensitivityX.Location = new System.Drawing.Point(6, 22);
+            this.labelGamepadSensitivityX.Name = "labelGamepadSensitivityX";
+            this.labelGamepadSensitivityX.Size = new System.Drawing.Size(102, 13);
+            this.labelGamepadSensitivityX.TabIndex = 6;
+            this.labelGamepadSensitivityX.Text = "Horizontal sensitivity";
             // 
             // UserControlTweaks
             // 
@@ -4051,6 +4173,10 @@
             this.groupBoxLoginProfiles.PerformLayout();
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4316,5 +4442,11 @@
         private System.Windows.Forms.CheckBox checkBoxWaterFixSSRGlitch;
         private System.Windows.Forms.Button buttonOpenTweaksInfoInBrowser;
         private System.Windows.Forms.Label labelTweaksInfoWin7;
+        private System.Windows.Forms.TrackBar sliderGamepadSensitivityY;
+        private System.Windows.Forms.NumericUpDown numGamepadSensitivityY;
+        private System.Windows.Forms.Label labelGamepadSensitivityY;
+        private System.Windows.Forms.TrackBar sliderGamepadSensitivityX;
+        private System.Windows.Forms.NumericUpDown numGamepadSensitivityX;
+        private System.Windows.Forms.Label labelGamepadSensitivityX;
     }
 }

@@ -161,8 +161,12 @@ namespace Fo76ini.Forms.FormMain
             // Controls tab
             LinkedTweaks.LinkInfo(numMouseSensitivityX, toolTip, mouseSensitivityTweakX);
             LinkedTweaks.LinkInfo(sliderMouseSensitivityX, toolTip, mouseSensitivityTweakX);
+            LinkedTweaks.LinkInfo(numGamepadSensitivityX, toolTip, gamepadSensitivityTweakX);
+            LinkedTweaks.LinkInfo(sliderGamepadSensitivityX, toolTip, gamepadSensitivityTweakX);
             LinkedTweaks.LinkInfo(numMouseSensitivityY, toolTip, mouseSensitivityTweakY);
             LinkedTweaks.LinkInfo(sliderMouseSensitivityY, toolTip, mouseSensitivityTweakY);
+            LinkedTweaks.LinkInfo(numGamepadSensitivityY, toolTip, gamepadSensitivityTweakY);
+            LinkedTweaks.LinkInfo(sliderGamepadSensitivityY, toolTip, gamepadSensitivityTweakY);
             LinkedTweaks.LinkInfo(checkBoxFixMouseSensitivity, toolTip, fixMouseSensitivityTweak);
             LinkedTweaks.LinkInfo(checkBoxFixAimSensitivity, toolTip, fixAimSensitivityTweak);
             LinkedTweaks.LinkInfo(checkBoxMouseInvertX, toolTip, mouseInvertXTweak);
@@ -229,6 +233,8 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkSlider(this.sliderShadowDistance, this.numShadowDistance, 1);
             LinkedTweaks.LinkSlider(this.sliderMouseSensitivityX, this.numMouseSensitivityX, 10000.0);
             LinkedTweaks.LinkSlider(this.sliderMouseSensitivityY, this.numMouseSensitivityY, 10000.0);
+            LinkedTweaks.LinkSlider(this.sliderGamepadSensitivityX, this.numGamepadSensitivityX, 10000.0);
+            LinkedTweaks.LinkSlider(this.sliderGamepadSensitivityY, this.numGamepadSensitivityY, 10000.0);
             LinkedTweaks.LinkSlider(this.sliderTAAPostOverlay, this.numTAAPostOverlay, 100);
             LinkedTweaks.LinkSlider(this.sliderTAAPostSharpen, this.numTAAPostSharpen, 100);
 
@@ -516,6 +522,10 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkTweak(checkBoxMouseInvertX, mouseInvertXTweak);
             LinkedTweaks.LinkTweak(checkBoxMouseInvertY, mouseInvertYTweak);
 
+            // Gamepad sensitivity
+            LinkedTweaks.LinkTweak(numGamepadSensitivityX, gamepadSensitivityTweakX);
+            LinkedTweaks.LinkTweak(numGamepadSensitivityY, gamepadSensitivityTweakY);
+
             // Gamepad enabled
             LinkedTweaks.LinkTweak(checkBoxGamepadEnabled, gamepadEnableTweak);
 
@@ -666,6 +676,8 @@ namespace Fo76ini.Forms.FormMain
         // Controls tab
         private MouseSensitivityTweakX mouseSensitivityTweakX = new MouseSensitivityTweakX();
         private MouseSensitivityTweakY mouseSensitivityTweakY = new MouseSensitivityTweakY();
+        private GamepadSensitivityTweakX gamepadSensitivityTweakX = new GamepadSensitivityTweakX();
+        private GamepadSensitivityTweakY gamepadSensitivityTweakY = new GamepadSensitivityTweakY();
         private FixMouseSensitivityTweak fixMouseSensitivityTweak = new FixMouseSensitivityTweak();
         private FixAimSensitivityTweak fixAimSensitivityTweak = new FixAimSensitivityTweak();
         private MouseInvertXTweak mouseInvertXTweak = new MouseInvertXTweak();
