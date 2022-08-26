@@ -1,4 +1,4 @@
-### What's new in v1.11.3? - All in-game settings available
+### What's new in v1.11.3? - All in-game graphics settings available
 
 This is a small update that
 - changes the UI a bit,
@@ -7,7 +7,7 @@ This is a small update that
 - adds separate quality settings for textures, shadows, water, & volumetric lighting,
 - and fixes a few bugs.
 
-Took me a while, but with this update, all in-game settings (as of game version 1.6.4.78) are now available under the "Tweaks" page.
+Took me a while, but with this update, all in-game graphics settings (as of game version 1.6.4.78) are now available under the "Tweaks" page.
 
 **Changelog:**
 <details>
