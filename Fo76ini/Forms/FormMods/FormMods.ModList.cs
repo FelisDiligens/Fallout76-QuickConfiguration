@@ -629,10 +629,14 @@ namespace Fo76ini
         // On drop: Handle dropped file(s)...
         private void objectListViewMods_Dropped(object sender, OlvDropEventArgs e)
         {
-            int dropIndex = DetermineDropIndex(e.MouseLocation);
             string[] files = (string[])e.DragEventArgs.Data.GetData(DataFormats.FileDrop);
             if (files != null && files.Length > 0)
+            {
+                int dropIndex = -1;
+                if (Mods.Count > 0)
+                    dropIndex = DetermineDropIndex(e.MouseLocation);
                 InstallBulkThreaded(files, dropIndex);
+            }
         }
 
         #endregion
