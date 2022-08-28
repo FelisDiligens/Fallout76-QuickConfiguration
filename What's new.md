@@ -1,3 +1,9 @@
+### What's new in v1.11.4?
+
+Fixed an issue where drag and drop into the mod list would fail if the mod list was empty.
+
+---
+
 ### What's new in v1.11.3? - All in-game graphics settings available
 
 This is a small update that
