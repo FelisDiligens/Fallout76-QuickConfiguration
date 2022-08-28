@@ -1,4 +1,4 @@
-### What's new in v1.11.4?
+### What's new in v1.11.3h1? - Hotfix 1
 
 Fixed an issue where drag and drop into the mod list would fail if the mod list was empty.
 
