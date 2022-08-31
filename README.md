@@ -26,11 +26,11 @@
 
 <br>
 <p align="center">
-  <img src="https://img.shields.io/github/v/release/FelisDiligens/Fallout76-QuickConfiguration" alt="">
-  <img src="https://img.shields.io/badge/platform-windows-silver" alt="Platform: Windows">
-  <img src="https://img.shields.io/github/downloads/FelisDiligens/Fallout76-QuickConfiguration/total" alt="">
-  <img src="https://img.shields.io/github/downloads/FelisDiligens/Fallout76-QuickConfiguration/latest/total" alt="">
-  <img src="https://img.shields.io/github/license/FelisDiligens/Fallout76-QuickConfiguration" alt="License: MIT">
+  <img src="https://img.shields.io/github/v/release/FelisDiligens/Fallout76-QuickConfiguration?style=for-the-badge" alt="">
+  <img src="https://img.shields.io/badge/platform-windows-silver?style=for-the-badge&logo=windows" alt="Platform: Windows">
+  <img src="https://img.shields.io/github/downloads/FelisDiligens/Fallout76-QuickConfiguration/total?style=for-the-badge" alt="">
+  <img src="https://img.shields.io/github/downloads/FelisDiligens/Fallout76-QuickConfiguration/latest/total?style=for-the-badge" alt="">
+  <img src="https://img.shields.io/github/license/FelisDiligens/Fallout76-QuickConfiguration?style=for-the-badge" alt="License: MIT">
 </p>
 
 
