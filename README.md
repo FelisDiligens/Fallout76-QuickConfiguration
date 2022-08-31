@@ -42,7 +42,7 @@
 - Mouse sensitivity fix for ALL aspect ratios.
 
 ### Pip-Boy customization
-- Change the color and resolution of your Pipboy and Quickboy.
+- Change the color and resolution of your Pip-Boy and Quick-Boy.
 - Use color presets from previous Fallout games.
 - See a preview of how the color will look in the game.
 
