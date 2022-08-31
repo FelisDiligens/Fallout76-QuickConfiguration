@@ -24,6 +24,15 @@
   <a href="https://www.nexusmods.com/fallout76/mods/546?tab=bugs#tab-modbugs">Bugs</a>
 </p>
 
+<br>
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/FelisDiligens/Fallout76-QuickConfiguration" alt="">
+  <img src="https://img.shields.io/badge/platform-windows-silver" alt="Platform: Windows">
+  <img src="https://img.shields.io/github/downloads/FelisDiligens/Fallout76-QuickConfiguration/total" alt="">
+  <img src="https://img.shields.io/github/downloads/FelisDiligens/Fallout76-QuickConfiguration/latest/total" alt="">
+  <img src="https://img.shields.io/github/license/FelisDiligens/Fallout76-QuickConfiguration" alt="License: MIT">
+</p>
+
 
 ## Features
 ### *.ini tweaks
