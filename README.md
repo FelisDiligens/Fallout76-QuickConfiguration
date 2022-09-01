@@ -36,7 +36,6 @@
 <br>
 
 [![Screenshots](./Images/screenshots.png)](https://www.nexusmods.com/fallout76/mods/546?tab=images#list-modimages-1)
-> Screenshots
 
 ## Features
 ### *.ini tweaks
