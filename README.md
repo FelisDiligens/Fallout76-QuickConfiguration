@@ -1,4 +1,4 @@
-![Banner](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/raw/master/Images/banner_github.png)
+![Banner](./Images/banner_github.png)
 
 <h3 align="center">
   Tired of searching through the web for *.ini tweaks, and installing mods single-handedly?
@@ -33,6 +33,10 @@
   <!--<img src="https://img.shields.io/github/license/FelisDiligens/Fallout76-QuickConfiguration?style=for-the-badge&labelColor=0D0D0D" alt="License: MIT">-->
 </p>
 
+<br>
+
+[![Screenshots](./Images/screenshots.png)](https://www.nexusmods.com/fallout76/mods/546?tab=images#list-modimages-1)
+> Screenshots
 
 ## Features
 ### *.ini tweaks
