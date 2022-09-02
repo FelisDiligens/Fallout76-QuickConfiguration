@@ -133,6 +133,11 @@ namespace Fo76ini
                 "Graphics set to {0}."
             );
 
+            MsgBox.Add("translationsUpdateAvailable",
+                "Translations have been updated!",
+                "Go to the settings page to download them."
+            );
+
 
             // FormSettings:
 

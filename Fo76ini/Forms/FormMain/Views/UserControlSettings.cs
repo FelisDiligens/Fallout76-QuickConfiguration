@@ -45,6 +45,18 @@ namespace Fo76ini.Forms.FormMain.Tabs
                 "buttonDownloadLanguages",
                 "buttonRefreshLanguage"
             });
+
+            if (this.DesignMode)
+                return;
+
+            this.labelTranslationsUpdateAvailable.Visible = false;
+            Localization.NewTranslationsAvailable += Localization_NewTranslationsAvailable;
+        }
+
+        private void Localization_NewTranslationsAvailable(object sender, EventArgs e)
+        {
+            Console.WriteLine("Meow?");
+            this.labelTranslationsUpdateAvailable.Visible = true;
         }
 
         private void UserControlSettings_Load(object sender, EventArgs e)
@@ -115,6 +127,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
             this.buttonDownloadLanguages.Enabled = true;
             this.pictureBoxSpinnerDownloadLanguages.Visible = false;
+            this.labelTranslationsUpdateAvailable.Visible = false;
 
             Localization.LookupLanguages();
         }

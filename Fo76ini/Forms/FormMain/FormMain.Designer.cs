@@ -38,6 +38,7 @@
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
             this.userControlSideNav = new Fo76ini.Forms.FormMain.UserControlSideNav();
             this.viewControl = new Fo76ini.Controls.ViewControl();
+            this.backgroundWorkerTranslationsCheckForUpdates = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,6 +115,10 @@
             this.viewControl.Size = new System.Drawing.Size(685, 613);
             this.viewControl.TabIndex = 18;
             // 
+            // backgroundWorkerTranslationsCheckForUpdates
+            // 
+            this.backgroundWorkerTranslationsCheckForUpdates.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerTranslationsCheckForUpdates_DoWork);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,6 +148,7 @@
         private System.Windows.Forms.PictureBox pictureBoxLoadingGIF;
         private Forms.FormMain.UserControlSideNav userControlSideNav;
         private Controls.ViewControl viewControl;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerTranslationsCheckForUpdates;
     }
 }
 

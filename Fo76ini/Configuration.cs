@@ -227,6 +227,33 @@ namespace Fo76ini
             // IniFiles.Instance.GetBool(IniFile.Config, "NexusMods", "bAutoUpdateModInfo", false);
         }
 
+        public class Localization
+        {
+            public static DateTime TranslationsLastUpdated
+            {
+                get
+                {
+                    return Utils.FromISOTimeStamp(
+                        IniFiles.Config.GetString("Preferences", "sTranslationsLastUpdated", "2022-09-01T00:00:00Z"));
+                }
+                set
+                {
+                    IniFiles.Config.Set("Preferences", "sTranslationsLastUpdated", Utils.ToISOTimeStamp(value));
+                }
+            }
+
+            public static string SelectedLanguage
+            {
+                get
+                {
+                    return IniFiles.Config.GetString("Preferences", "sLanguage", CultureInfo.CurrentUICulture.Name);
+                }
+                set
+                {
+                    IniFiles.Config.Set("Preferences", "sLanguage", value);
+                }
+            }
+        }
 
         /// <summary>
         /// Description:
@@ -317,18 +344,6 @@ namespace Fo76ini
             set
             {
                 IniFiles.Config.Set("Preferences", "bIgnoreUpdates", value);
-            }
-        }
-
-        public static string SelectedLanguage
-        {
-            get
-            {
-                return IniFiles.Config.GetString("Preferences", "sLanguage", CultureInfo.CurrentUICulture.Name);
-            }
-            set
-            {
-                IniFiles.Config.Set("Preferences", "sLanguage", value);
             }
         }
 

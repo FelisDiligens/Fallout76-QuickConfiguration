@@ -11,8 +11,10 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Fo76ini.Controls;
 using Fo76ini.Interface;
+using Fo76ini.NexusAPI;
 using Fo76ini.Tweaks;
 using Fo76ini.Utilities;
+using Newtonsoft.Json.Linq;
 
 namespace Fo76ini
 {
@@ -151,12 +153,62 @@ namespace Fo76ini
             
 
             // Set language:
-            string selectedLanguageISO = Configuration.SelectedLanguage;
+            string selectedLanguageISO = Configuration.Localization.SelectedLanguage;
             int languageIndex = GetTranslationIndex(selectedLanguageISO);
             int enUSIndex = GetTranslationIndex("en-US");
             Localization.comboBoxTranslations.SelectedIndex = languageIndex > -1 ? languageIndex : enUSIndex;
             Localization.Locale = selectedLanguageISO;
         }
+
+        /// <summary>
+        /// Fetch the last commit to the path "Fo76ini/languages" from the GitHub API. 
+        /// Then extract the date and return it. If something went wrong, it returns null.
+        /// </summary>
+        /// <returns>DateTime or null</returns>
+        private static DateTime? FetchLastCommitDate()
+        {
+            APIRequest request = new APIRequest("https://api.github.com/repos/FelisDiligens/Fallout76-QuickConfiguration/commits?path=Fo76ini%2Flanguages&page=1&per_page=1");
+            request.Execute();
+
+            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            {
+                try
+                {
+                    JArray responseJSON = request.GetJArray();
+                    JObject firstEl = (JObject)responseJSON[0];
+                    JObject commit = (JObject)firstEl["commit"];
+                    JObject committer = (JObject)commit["committer"];
+                    return committer["date"].ToObject<DateTime>();
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Any new translations?
+        /// </summary>
+        public static bool CheckForUpdates()
+        {
+            DateTime? lastCommitDate = FetchLastCommitDate();
+            if (lastCommitDate == null)
+                return false;
+
+            if (DateTime.Compare(lastCommitDate.Value, Configuration.Localization.TranslationsLastUpdated) > 0)
+            {
+                if (NewTranslationsAvailable != null)
+                    NewTranslationsAvailable(null, null);
+                return true;
+            }
+
+            return false;
+        }
+
+        public static event EventHandler NewTranslationsAvailable;
 
         public struct DownloadResult
         {
@@ -201,6 +253,8 @@ namespace Fo76ini
                     // Delete *.zip file:
                     Utils.DeleteFile(filePath);
                 }
+
+                Configuration.Localization.TranslationsLastUpdated = DateTime.UtcNow;
 
                 DownloadResult result = new DownloadResult();
                 result.FileList = list;

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -512,6 +513,17 @@ namespace Fo76ini.Utilities
         {
             Thread.CurrentThread.CurrentCulture = Shared.en_US;
             return num.ToString("D");
+        }
+
+        public static string ToISOTimeStamp(DateTime date)
+        {
+            return DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture);
+        }
+
+        public static DateTime FromISOTimeStamp(string date)
+        {
+            // date: e.g. "2010-08-20T15:00:00Z"
+            return DateTime.Parse(date, null, DateTimeStyles.RoundtripKind);
         }
 
         public static void SetFormPosition(Form form, int x, int y)

@@ -101,6 +101,8 @@ namespace Fo76ini
                 "buttonRefreshGallery"
             });
 
+            Localization.NewTranslationsAvailable += Localization_NewTranslationsAvailable;
+
 
             /*
              * Event handlers:
@@ -148,6 +150,8 @@ namespace Fo76ini
             // Open welcome dialog on first start:
             if (Initialization.FirstStart)
                 formWelcome.OpenDialog();
+            else
+                this.backgroundWorkerTranslationsCheckForUpdates.RunWorkerAsync();
 
             // If nxm:// link has been provided, open the mod manager:
             string[] args = Environment.GetCommandLineArgs();
@@ -451,5 +455,17 @@ namespace Fo76ini
         }
 
         #endregion
+
+        private void backgroundWorkerTranslationsCheckForUpdates_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Localization.CheckForUpdates();
+        }
+
+        private void Localization_NewTranslationsAvailable(object sender, EventArgs e)
+        {
+            this.Invoke((MethodInvoker)(() => {
+                MsgBox.Get("translationsUpdateAvailable").Popup(MessageBoxIcon.Information);
+            }));
+        }
     }
 }

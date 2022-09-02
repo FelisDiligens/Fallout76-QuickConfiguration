@@ -72,7 +72,6 @@
             this.checkBoxMakeBackups = new System.Windows.Forms.CheckBox();
             this.panelSettingsOptions = new System.Windows.Forms.Panel();
             this.panelSettingsNWMode = new System.Windows.Forms.Panel();
-            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.panelSettingsPaths = new System.Windows.Forms.Panel();
             this.panelSettingsProfile = new System.Windows.Forms.Panel();
             this.linkLabelOpenProfileEditor = new System.Windows.Forms.LinkLabel();
@@ -81,7 +80,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelSettingsNotifications = new System.Windows.Forms.Label();
             this.checkBoxShowNotifications = new System.Windows.Forms.CheckBox();
+            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
+            this.labelTranslationsUpdateAvailable = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
             this.panelSettingsLocalization.SuspendLayout();
             this.panelSettingsBehavior.SuspendLayout();
@@ -211,7 +212,7 @@
             // labelOutdatedLanguage
             // 
             this.labelOutdatedLanguage.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelOutdatedLanguage.Location = new System.Drawing.Point(13, 65);
+            this.labelOutdatedLanguage.Location = new System.Drawing.Point(12, 65);
             this.labelOutdatedLanguage.Name = "labelOutdatedLanguage";
             this.labelOutdatedLanguage.Size = new System.Drawing.Size(212, 51);
             this.labelOutdatedLanguage.TabIndex = 21;
@@ -466,6 +467,7 @@
             // 
             // panelSettingsLocalization
             // 
+            this.panelSettingsLocalization.Controls.Add(this.labelTranslationsUpdateAvailable);
             this.panelSettingsLocalization.Controls.Add(this.labelSettingsLocalization);
             this.panelSettingsLocalization.Controls.Add(this.comboBoxLanguage);
             this.panelSettingsLocalization.Controls.Add(this.labelLanguage);
@@ -524,23 +526,6 @@
             this.panelSettingsNWMode.Name = "panelSettingsNWMode";
             this.panelSettingsNWMode.Size = new System.Drawing.Size(403, 279);
             this.panelSettingsNWMode.TabIndex = 86;
-            // 
-            // buttonNWMode
-            // 
-            this.buttonNWMode.BorderWidth = ((uint)(1u));
-            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonNWMode.Highlight = false;
-            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
-            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.Location = new System.Drawing.Point(17, 53);
-            this.buttonNWMode.Name = "buttonNWMode";
-            this.buttonNWMode.Padding = 10;
-            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
-            this.buttonNWMode.TabIndex = 50;
-            this.buttonNWMode.Text = "Nuclear Winter";
-            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.UseVisualStyleBackColor = true;
-            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
             // 
             // panelSettingsPaths
             // 
@@ -634,6 +619,23 @@
         "or less) important messages.");
             this.checkBoxShowNotifications.UseVisualStyleBackColor = true;
             // 
+            // buttonNWMode
+            // 
+            this.buttonNWMode.BorderWidth = ((uint)(1u));
+            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonNWMode.Highlight = false;
+            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
+            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.Location = new System.Drawing.Point(17, 53);
+            this.buttonNWMode.Name = "buttonNWMode";
+            this.buttonNWMode.Padding = 10;
+            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
+            this.buttonNWMode.TabIndex = 50;
+            this.buttonNWMode.Text = "Nuclear Winter";
+            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.UseVisualStyleBackColor = true;
+            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
+            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -645,6 +647,15 @@
             this.toolTip.Padding = new System.Drawing.Size(6, 6);
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
+            // 
+            // labelTranslationsUpdateAvailable
+            // 
+            this.labelTranslationsUpdateAvailable.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.labelTranslationsUpdateAvailable.Location = new System.Drawing.Point(12, 65);
+            this.labelTranslationsUpdateAvailable.Name = "labelTranslationsUpdateAvailable";
+            this.labelTranslationsUpdateAvailable.Size = new System.Drawing.Size(212, 51);
+            this.labelTranslationsUpdateAvailable.TabIndex = 76;
+            this.labelTranslationsUpdateAvailable.Text = "Updates for translations are available.\r\nClick the download button to get them.";
             // 
             // UserControlSettings
             // 
@@ -736,5 +747,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelSettingsNotifications;
         private System.Windows.Forms.CheckBox checkBoxShowNotifications;
+        public System.Windows.Forms.Label labelTranslationsUpdateAvailable;
     }
 }
