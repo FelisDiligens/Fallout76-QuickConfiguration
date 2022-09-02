@@ -1,4 +1,4 @@
-### What's new in v1.11.4
+### What's new in v1.11.4?
 
 This update adds:
  - the server status of Fallout 76 to the home page.  
@@ -15,7 +15,7 @@ Fixed an issue where drag and drop into the mod list would fail if the mod list 
 
 ---
 
-### What's new in v1.11.3? - All in-game graphics settings available
+### What's new in v1.11.3?
 
 This is a small update that
 - changes the UI a bit,
@@ -23,8 +23,6 @@ This is a small update that
 - adds an overall graphics quality setting,
 - adds separate quality settings for textures, shadows, water, & volumetric lighting,
 - and fixes a few bugs.
-
-Took me a while, but with this update, all in-game graphics settings (as of game version 1.6.4.78) are now available under the "Tweaks" page.
 
 **Changelog:**
 <details>
