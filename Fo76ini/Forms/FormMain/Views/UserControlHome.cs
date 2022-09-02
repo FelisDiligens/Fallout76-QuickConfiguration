@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -323,6 +324,12 @@ namespace Fo76ini.Forms.FormMain.Tabs
             this.backgroundWorkerScrapeServerStatus.RunWorkerAsync();
         }
 
+        private void timerReenableRefreshServerStatus_Tick(object sender, EventArgs e)
+        {
+            this.buttonReloadServerStatus.Enabled = true;
+            this.timerReenableRefreshServerStatus.Stop();
+        }
+
         private void buttonReloadServerStatus_Click(object sender, EventArgs e)
         {
             LoadServerStatus();
@@ -354,6 +361,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
             }
 
             e.Result = status;
+
+            Thread.Sleep(500); // Sneak in a little delay, so the user doesn't think that it's broken.
         }
 
         private void backgroundWorkerScrapeServerStatus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -362,7 +371,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             this.labelScrapedServerStatus.Text = status.localizedStatus;
             this.pictureBoxScrapedServerStatus.Image = status.image;
             this.buttonReloadServerStatus.Left = this.labelScrapedServerStatus.Left + this.labelScrapedServerStatus.Width + 6;
-            this.buttonReloadServerStatus.Enabled = true;
+            this.timerReenableRefreshServerStatus.Start();
         }
 
         // Helper struct for the Background Worker.

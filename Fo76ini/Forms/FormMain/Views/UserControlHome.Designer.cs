@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.webBrowserWhatsNew = new System.Windows.Forms.WebBrowser();
             this.panelUpdate = new System.Windows.Forms.Panel();
             this.pictureBoxButtonUpdate = new Fo76ini.Controls.PictureBoxButton();
@@ -66,6 +67,7 @@
             this.tabPageWhatsNew = new System.Windows.Forms.TabPage();
             this.styledButtonGoBack = new Fo76ini.Controls.StyledButton();
             this.backgroundWorkerScrapeServerStatus = new System.ComponentModel.BackgroundWorker();
+            this.timerReenableRefreshServerStatus = new System.Windows.Forms.Timer(this.components);
             this.panelUpdate.SuspendLayout();
             this.panelTitle.SuspendLayout();
             this.tabControlWithoutHeader1.SuspendLayout();
@@ -504,7 +506,7 @@
             this.buttonReloadServerStatus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonReloadServerStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReloadServerStatus.Image = global::Fo76ini.Properties.Resources.available_updates;
-            this.buttonReloadServerStatus.Location = new System.Drawing.Point(302, 47);
+            this.buttonReloadServerStatus.Location = new System.Drawing.Point(194, 47);
             this.buttonReloadServerStatus.Name = "buttonReloadServerStatus";
             this.buttonReloadServerStatus.Size = new System.Drawing.Size(28, 28);
             this.buttonReloadServerStatus.TabIndex = 40;
@@ -603,6 +605,11 @@
             this.backgroundWorkerScrapeServerStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerScrapeServerStatus_DoWork);
             this.backgroundWorkerScrapeServerStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerScrapeServerStatus_RunWorkerCompleted);
             // 
+            // timerReenableRefreshServerStatus
+            // 
+            this.timerReenableRefreshServerStatus.Interval = 10000;
+            this.timerReenableRefreshServerStatus.Tick += new System.EventHandler(this.timerReenableRefreshServerStatus_Tick);
+            // 
             // UserControlHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -667,5 +674,6 @@
         private System.Windows.Forms.Button buttonReloadServerStatus;
         private System.Windows.Forms.PictureBox pictureBoxScrapedServerStatus;
         private System.ComponentModel.BackgroundWorker backgroundWorkerScrapeServerStatus;
+        private System.Windows.Forms.Timer timerReenableRefreshServerStatus;
     }
 }
