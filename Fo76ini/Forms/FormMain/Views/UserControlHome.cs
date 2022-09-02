@@ -319,6 +319,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             this.pictureBoxScrapedServerStatus.Image = Resources.Spinner_24;
             this.labelScrapedServerStatus.Text = "...";
+            this.buttonReloadServerStatus.Enabled = false;
             this.backgroundWorkerScrapeServerStatus.RunWorkerAsync();
         }
 
@@ -361,6 +362,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             this.labelScrapedServerStatus.Text = status.localizedStatus;
             this.pictureBoxScrapedServerStatus.Image = status.image;
             this.buttonReloadServerStatus.Left = this.labelScrapedServerStatus.Left + this.labelScrapedServerStatus.Width + 6;
+            this.buttonReloadServerStatus.Enabled = true;
         }
 
         // Helper struct for the Background Worker.
