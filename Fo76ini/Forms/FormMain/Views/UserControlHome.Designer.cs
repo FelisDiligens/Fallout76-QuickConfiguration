@@ -84,6 +84,7 @@
             this.webBrowserWhatsNew.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowserWhatsNew.IsWebBrowserContextMenuEnabled = false;
             this.webBrowserWhatsNew.Location = new System.Drawing.Point(3, 43);
             this.webBrowserWhatsNew.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserWhatsNew.Name = "webBrowserWhatsNew";
