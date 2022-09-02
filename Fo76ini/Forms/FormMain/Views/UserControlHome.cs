@@ -44,6 +44,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
             // Check for updates:
             CheckVersion();
             IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
+
+            // Check Bethesda.net server status:
+            LoadServerStatus();
         }
 
         public void OnLanguageChanged(object sender, TranslationEventArgs e)
