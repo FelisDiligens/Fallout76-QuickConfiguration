@@ -524,6 +524,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\status-operational.svg" />
+    <None Include="Resources\status-major.svg" />
+    <None Include="Resources\status-maintenance.svg" />
+    <None Include="Resources\status-partial-24.png" />
+    <None Include="Resources\status-partial-16.png" />
+    <None Include="Resources\status-operational-24.png" />
+    <None Include="Resources\status-operational-16.png" />
+    <None Include="Resources\status-major-24.png" />
+    <None Include="Resources\status-major-16.png" />
+    <None Include="Resources\status-maintenance-24.png" />
+    <None Include="Resources\status-maintenance-16.png" />
+    <None Include="Resources\status-partial.svg" />
     <None Include="Resources\xTranslator-24px.png" />
     <None Include="Resources\xTranslator-16px.png" />
     <None Include="Resources\report-3-16.png" />

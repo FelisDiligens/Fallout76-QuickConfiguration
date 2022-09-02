@@ -1,5 +1,8 @@
 ﻿using Fo76ini.Interface;
+using Fo76ini.NexusAPI;
+using Fo76ini.Properties;
 using Fo76ini.Utilities;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +11,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,6 +32,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
             // Handle translations:
             Translation.LanguageChanged += OnLanguageChanged;
+
+            Translation.BlackList.Add("labelScrapedServerStatus");
         }
 
         private void UserControlHome_Load(object sender, EventArgs e)
@@ -228,6 +234,118 @@ namespace Fo76ini.Forms.FormMain.Tabs
         private void styledButtonxTranslator_Click(object sender, EventArgs e)
         {
             Utils.OpenURL("https://www.nexusmods.com/skyrimspecialedition/mods/134");
+        }
+
+        #endregion
+
+        #region Scrapping server status from Bethesda.net API
+
+        private String ScrapeServerStatus()
+        {
+            string f76Status = "unknown";
+
+            // Send request:
+            APIRequest request = new APIRequest("https://bethesda.net/en/status/api/statuses");
+            request.Execute();
+
+            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            {
+                // Scrap for Fallout 76 Status:
+                JObject responseJSON = request.GetJObject();
+                JArray components = (JArray)responseJSON["components"];
+                foreach (JObject component in components)
+                {
+                    string id = component["id"].ToObject<string>();
+                    string name = component["name"].ToObject<string>();
+                    string status = component["status"].ToObject<string>();
+
+                    if (id == "m39k311rzvkg" || name == "Fallout 76")
+                        f76Status = status;
+                }
+            }
+            else
+            {
+                if (!request.Success)
+                    f76Status = $"Error: No connection";
+                else
+                    f76Status = $"Error: HTTP {request.StatusCode}";
+            }
+
+            return f76Status;
+        }
+
+        private String GetLocalizedServerStatus(String language, String status)
+        {
+            // Send request:
+            APIRequest request = new APIRequest($"https://api.locize.app/657e9e0e-8225-4266-88dd-75f047f1a2b3/live/{language}/status");
+            request.Execute();
+
+            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            {
+                JObject responseJSON = request.GetJObject();
+                JObject statusKeys = (JObject)responseJSON["statusKey"];
+                if (statusKeys == null)
+                    return GetLocalizedServerStatus("en", status);
+                if (statusKeys[status] != null)
+                    return statusKeys[status].ToObject<string>();
+                return status;
+            }
+
+            return status;
+        }
+
+        private void LoadServerStatus()
+        {
+            this.pictureBoxScrapedServerStatus.Image = Resources.Spinner_24;
+            this.labelScrapedServerStatus.Text = "...";
+            this.backgroundWorkerScrapeServerStatus.RunWorkerAsync();
+        }
+
+        private void buttonReloadServerStatus_Click(object sender, EventArgs e)
+        {
+            LoadServerStatus();
+        }
+
+        private void backgroundWorkerScrapeServerStatus_DoWork(object sender, DoWorkEventArgs e)
+        {
+            ServerStatus status = new ServerStatus();
+
+            status.statusKey = ScrapeServerStatus();
+            status.localizedStatus = GetLocalizedServerStatus(Localization.ShortLocale, status.statusKey);
+            switch (status.statusKey)
+            {
+                case "operational":
+                    status.image = Resources.status_operational_24;
+                    break;
+                case "maintenance":
+                    status.image = Resources.status_maintenance_24;
+                    break;
+                case "partial":
+                    status.image = Resources.status_partial_24;
+                    break;
+                case "major":
+                    status.image = Resources.status_major_24;
+                    break;
+                default:
+                    status.image = Resources.help_24;
+                    break;
+            }
+
+            e.Result = status;
+        }
+
+        private void backgroundWorkerScrapeServerStatus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            ServerStatus status = (ServerStatus)e.Result;
+            this.labelScrapedServerStatus.Text = status.localizedStatus;
+            this.pictureBoxScrapedServerStatus.Image = status.image;
+        }
+
+        private struct ServerStatus
+        {
+            public String statusKey;
+            public String localizedStatus;
+            public Image image;
         }
 
         #endregion

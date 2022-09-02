@@ -30,6 +30,7 @@
         {
             this.webBrowserWhatsNew = new System.Windows.Forms.WebBrowser();
             this.panelUpdate = new System.Windows.Forms.Panel();
+            this.pictureBoxButtonUpdate = new Fo76ini.Controls.PictureBoxButton();
             this.labelNewVersion = new System.Windows.Forms.Label();
             this.linkLabelManualDownloadPage = new System.Windows.Forms.LinkLabel();
             this.panelTitle = new System.Windows.Forms.Panel();
@@ -46,9 +47,7 @@
             this.tabControlWithoutHeader1 = new Fo76ini.Controls.TabControlWithoutHeader();
             this.tabPageHome = new System.Windows.Forms.TabPage();
             this.panelWebLinks = new System.Windows.Forms.Panel();
-            this.labelWebLinks = new System.Windows.Forms.Label();
-            this.panelContent = new System.Windows.Forms.Panel();
-            this.tabPageWhatsNew = new System.Windows.Forms.TabPage();
+            this.styledButtonxTranslator = new Fo76ini.Controls.StyledButton();
             this.styledButtonNukesAndDragonsBuildPlanner = new Fo76ini.Controls.StyledButton();
             this.styledButtonBethesdaNetStatus = new Fo76ini.Controls.StyledButton();
             this.styledButtonBugReports = new Fo76ini.Controls.StyledButton();
@@ -56,19 +55,26 @@
             this.styledButtonGitHub = new Fo76ini.Controls.StyledButton();
             this.styledButtonNexusMods = new Fo76ini.Controls.StyledButton();
             this.pictureBoxButtonSupport = new Fo76ini.Controls.PictureBoxButton();
+            this.labelWebLinks = new System.Windows.Forms.Label();
+            this.panelContent = new System.Windows.Forms.Panel();
+            this.pictureBoxScrapedServerStatus = new System.Windows.Forms.PictureBox();
+            this.buttonReloadServerStatus = new System.Windows.Forms.Button();
+            this.labelScrapedServerStatus = new System.Windows.Forms.Label();
+            this.labelServerStatus = new System.Windows.Forms.Label();
             this.styledButtonWhatsNew = new Fo76ini.Controls.StyledButton();
             this.pictureBoxSpinnerCheckForUpdates = new System.Windows.Forms.PictureBox();
-            this.pictureBoxButtonUpdate = new Fo76ini.Controls.PictureBoxButton();
+            this.tabPageWhatsNew = new System.Windows.Forms.TabPage();
             this.styledButtonGoBack = new Fo76ini.Controls.StyledButton();
-            this.styledButtonxTranslator = new Fo76ini.Controls.StyledButton();
+            this.backgroundWorkerScrapeServerStatus = new System.ComponentModel.BackgroundWorker();
             this.panelUpdate.SuspendLayout();
             this.panelTitle.SuspendLayout();
             this.tabControlWithoutHeader1.SuspendLayout();
             this.tabPageHome.SuspendLayout();
             this.panelWebLinks.SuspendLayout();
             this.panelContent.SuspendLayout();
-            this.tabPageWhatsNew.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScrapedServerStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).BeginInit();
+            this.tabPageWhatsNew.SuspendLayout();
             this.SuspendLayout();
             // 
             // webBrowserWhatsNew
@@ -90,11 +96,26 @@
             this.panelUpdate.Controls.Add(this.pictureBoxButtonUpdate);
             this.panelUpdate.Controls.Add(this.labelNewVersion);
             this.panelUpdate.Controls.Add(this.linkLabelManualDownloadPage);
-            this.panelUpdate.Location = new System.Drawing.Point(3, 208);
+            this.panelUpdate.Location = new System.Drawing.Point(3, 229);
             this.panelUpdate.Margin = new System.Windows.Forms.Padding(0);
             this.panelUpdate.Name = "panelUpdate";
             this.panelUpdate.Size = new System.Drawing.Size(295, 110);
             this.panelUpdate.TabIndex = 50;
+            // 
+            // pictureBoxButtonUpdate
+            // 
+            this.pictureBoxButtonUpdate.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxButtonUpdate.ButtonText = "Update now!";
+            this.pictureBoxButtonUpdate.ButtonTextColor = System.Drawing.Color.White;
+            this.pictureBoxButtonUpdate.ButtonTextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pictureBoxButtonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pictureBoxButtonUpdate.Image = global::Fo76ini.Properties.Resources.button;
+            this.pictureBoxButtonUpdate.ImageHover = global::Fo76ini.Properties.Resources.button_hover;
+            this.pictureBoxButtonUpdate.Location = new System.Drawing.Point(3, 29);
+            this.pictureBoxButtonUpdate.Name = "pictureBoxButtonUpdate";
+            this.pictureBoxButtonUpdate.Size = new System.Drawing.Size(293, 48);
+            this.pictureBoxButtonUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxButtonUpdate.TabIndex = 46;
             // 
             // labelNewVersion
             // 
@@ -157,6 +178,7 @@
             this.labelVersion.AutoSize = true;
             this.labelVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelVersion.Location = new System.Drawing.Point(17, 6);
+            this.labelVersion.Margin = new System.Windows.Forms.Padding(3);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(58, 17);
             this.labelVersion.TabIndex = 7;
@@ -166,7 +188,8 @@
             // 
             this.labelAuthor.AutoSize = true;
             this.labelAuthor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAuthor.Location = new System.Drawing.Point(17, 24);
+            this.labelAuthor.Location = new System.Drawing.Point(17, 29);
+            this.labelAuthor.Margin = new System.Windows.Forms.Padding(3);
             this.labelAuthor.Name = "labelAuthor";
             this.labelAuthor.Size = new System.Drawing.Size(56, 17);
             this.labelAuthor.TabIndex = 8;
@@ -187,28 +210,29 @@
             this.labelTranslationAuthor.AutoSize = true;
             this.labelTranslationAuthor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationAuthor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationAuthor.Location = new System.Drawing.Point(130, 41);
+            this.labelTranslationAuthor.Location = new System.Drawing.Point(130, 75);
             this.labelTranslationAuthor.Name = "labelTranslationAuthor";
-            this.labelTranslationAuthor.Size = new System.Drawing.Size(177, 17);
+            this.labelTranslationAuthor.Size = new System.Drawing.Size(79, 17);
             this.labelTranslationAuthor.TabIndex = 12;
-            this.labelTranslationAuthor.Text = "FelisDiligens (aka. datasnake)";
+            this.labelTranslationAuthor.Text = "FelisDiligens";
             // 
             // labelAuthorName
             // 
             this.labelAuthorName.AutoSize = true;
             this.labelAuthorName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAuthorName.Location = new System.Drawing.Point(130, 23);
+            this.labelAuthorName.Location = new System.Drawing.Point(130, 29);
             this.labelAuthorName.Name = "labelAuthorName";
-            this.labelAuthorName.Size = new System.Drawing.Size(177, 17);
+            this.labelAuthorName.Size = new System.Drawing.Size(79, 17);
             this.labelAuthorName.TabIndex = 10;
-            this.labelAuthorName.Text = "FelisDiligens (aka. datasnake)";
+            this.labelAuthorName.Text = "FelisDiligens";
             // 
             // labelTranslationBy
             // 
             this.labelTranslationBy.AutoSize = true;
             this.labelTranslationBy.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTranslationBy.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTranslationBy.Location = new System.Drawing.Point(17, 42);
+            this.labelTranslationBy.Location = new System.Drawing.Point(17, 75);
+            this.labelTranslationBy.Margin = new System.Windows.Forms.Padding(3);
             this.labelTranslationBy.Name = "labelTranslationBy";
             this.labelTranslationBy.Size = new System.Drawing.Size(100, 17);
             this.labelTranslationBy.TabIndex = 11;
@@ -269,43 +293,26 @@
             this.panelWebLinks.Size = new System.Drawing.Size(199, 381);
             this.panelWebLinks.TabIndex = 54;
             // 
-            // labelWebLinks
+            // styledButtonxTranslator
             // 
-            this.labelWebLinks.AutoSize = true;
-            this.labelWebLinks.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWebLinks.Location = new System.Drawing.Point(3, 6);
-            this.labelWebLinks.Margin = new System.Windows.Forms.Padding(3, 0, 3, 6);
-            this.labelWebLinks.Name = "labelWebLinks";
-            this.labelWebLinks.Size = new System.Drawing.Size(69, 17);
-            this.labelWebLinks.TabIndex = 8;
-            this.labelWebLinks.Text = "Web links";
-            // 
-            // panelContent
-            // 
-            this.panelContent.Controls.Add(this.styledButtonWhatsNew);
-            this.panelContent.Controls.Add(this.labelVersion);
-            this.panelContent.Controls.Add(this.labelTranslationBy);
-            this.panelContent.Controls.Add(this.labelAuthorName);
-            this.panelContent.Controls.Add(this.labelTranslationAuthor);
-            this.panelContent.Controls.Add(this.labelConfigVersion);
-            this.panelContent.Controls.Add(this.labelAuthor);
-            this.panelContent.Controls.Add(this.pictureBoxSpinnerCheckForUpdates);
-            this.panelContent.Location = new System.Drawing.Point(3, 75);
-            this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(457, 115);
-            this.panelContent.TabIndex = 54;
-            // 
-            // tabPageWhatsNew
-            // 
-            this.tabPageWhatsNew.Controls.Add(this.styledButtonGoBack);
-            this.tabPageWhatsNew.Controls.Add(this.webBrowserWhatsNew);
-            this.tabPageWhatsNew.Location = new System.Drawing.Point(4, 22);
-            this.tabPageWhatsNew.Name = "tabPageWhatsNew";
-            this.tabPageWhatsNew.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageWhatsNew.Size = new System.Drawing.Size(668, 473);
-            this.tabPageWhatsNew.TabIndex = 1;
-            this.tabPageWhatsNew.Text = "tabPageWhatsNew";
-            this.tabPageWhatsNew.UseVisualStyleBackColor = true;
+            this.styledButtonxTranslator.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonxTranslator.BorderWidth = ((uint)(0u));
+            this.styledButtonxTranslator.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.styledButtonxTranslator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonxTranslator.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonxTranslator.Highlight = false;
+            this.styledButtonxTranslator.Image = global::Fo76ini.Properties.Resources.xTranslator_16px;
+            this.styledButtonxTranslator.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonxTranslator.Location = new System.Drawing.Point(6, 191);
+            this.styledButtonxTranslator.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonxTranslator.Name = "styledButtonxTranslator";
+            this.styledButtonxTranslator.Padding = 2;
+            this.styledButtonxTranslator.Size = new System.Drawing.Size(190, 23);
+            this.styledButtonxTranslator.TabIndex = 21;
+            this.styledButtonxTranslator.Text = "xTranslator";
+            this.styledButtonxTranslator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonxTranslator.UseVisualStyleBackColor = true;
+            this.styledButtonxTranslator.Click += new System.EventHandler(this.styledButtonxTranslator_Click);
             // 
             // styledButtonNukesAndDragonsBuildPlanner
             // 
@@ -449,6 +456,82 @@
             this.pictureBoxButtonSupport.TabIndex = 13;
             this.pictureBoxButtonSupport.Click += new System.EventHandler(this.pictureBoxButtonSupport_Click);
             // 
+            // labelWebLinks
+            // 
+            this.labelWebLinks.AutoSize = true;
+            this.labelWebLinks.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWebLinks.Location = new System.Drawing.Point(3, 6);
+            this.labelWebLinks.Margin = new System.Windows.Forms.Padding(3, 0, 3, 6);
+            this.labelWebLinks.Name = "labelWebLinks";
+            this.labelWebLinks.Size = new System.Drawing.Size(69, 17);
+            this.labelWebLinks.TabIndex = 8;
+            this.labelWebLinks.Text = "Web links";
+            // 
+            // panelContent
+            // 
+            this.panelContent.Controls.Add(this.pictureBoxScrapedServerStatus);
+            this.panelContent.Controls.Add(this.buttonReloadServerStatus);
+            this.panelContent.Controls.Add(this.labelScrapedServerStatus);
+            this.panelContent.Controls.Add(this.labelServerStatus);
+            this.panelContent.Controls.Add(this.styledButtonWhatsNew);
+            this.panelContent.Controls.Add(this.labelVersion);
+            this.panelContent.Controls.Add(this.labelTranslationBy);
+            this.panelContent.Controls.Add(this.labelAuthorName);
+            this.panelContent.Controls.Add(this.labelTranslationAuthor);
+            this.panelContent.Controls.Add(this.labelConfigVersion);
+            this.panelContent.Controls.Add(this.labelAuthor);
+            this.panelContent.Controls.Add(this.pictureBoxSpinnerCheckForUpdates);
+            this.panelContent.Location = new System.Drawing.Point(3, 75);
+            this.panelContent.Name = "panelContent";
+            this.panelContent.Size = new System.Drawing.Size(457, 151);
+            this.panelContent.TabIndex = 54;
+            // 
+            // pictureBoxScrapedServerStatus
+            // 
+            this.pictureBoxScrapedServerStatus.Image = global::Fo76ini.Properties.Resources.help_24;
+            this.pictureBoxScrapedServerStatus.Location = new System.Drawing.Point(133, 49);
+            this.pictureBoxScrapedServerStatus.Name = "pictureBoxScrapedServerStatus";
+            this.pictureBoxScrapedServerStatus.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxScrapedServerStatus.TabIndex = 41;
+            this.pictureBoxScrapedServerStatus.TabStop = false;
+            // 
+            // buttonReloadServerStatus
+            // 
+            this.buttonReloadServerStatus.FlatAppearance.BorderSize = 0;
+            this.buttonReloadServerStatus.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.buttonReloadServerStatus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonReloadServerStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReloadServerStatus.Image = global::Fo76ini.Properties.Resources.available_updates;
+            this.buttonReloadServerStatus.Location = new System.Drawing.Point(302, 47);
+            this.buttonReloadServerStatus.Name = "buttonReloadServerStatus";
+            this.buttonReloadServerStatus.Size = new System.Drawing.Size(28, 28);
+            this.buttonReloadServerStatus.TabIndex = 40;
+            this.buttonReloadServerStatus.UseVisualStyleBackColor = true;
+            this.buttonReloadServerStatus.Click += new System.EventHandler(this.buttonReloadServerStatus_Click);
+            // 
+            // labelScrapedServerStatus
+            // 
+            this.labelScrapedServerStatus.AutoSize = true;
+            this.labelScrapedServerStatus.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScrapedServerStatus.Location = new System.Drawing.Point(160, 52);
+            this.labelScrapedServerStatus.Margin = new System.Windows.Forms.Padding(0);
+            this.labelScrapedServerStatus.Name = "labelScrapedServerStatus";
+            this.labelScrapedServerStatus.Size = new System.Drawing.Size(14, 17);
+            this.labelScrapedServerStatus.TabIndex = 39;
+            this.labelScrapedServerStatus.Text = "?";
+            // 
+            // labelServerStatus
+            // 
+            this.labelServerStatus.AutoSize = true;
+            this.labelServerStatus.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelServerStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelServerStatus.Location = new System.Drawing.Point(17, 52);
+            this.labelServerStatus.Margin = new System.Windows.Forms.Padding(3);
+            this.labelServerStatus.Name = "labelServerStatus";
+            this.labelServerStatus.Size = new System.Drawing.Size(92, 17);
+            this.labelServerStatus.TabIndex = 38;
+            this.labelServerStatus.Text = "Server status:";
+            // 
             // styledButtonWhatsNew
             // 
             this.styledButtonWhatsNew.BackColor = System.Drawing.Color.Transparent;
@@ -461,7 +544,7 @@
             this.styledButtonWhatsNew.Highlight = false;
             this.styledButtonWhatsNew.Image = global::Fo76ini.Properties.Resources.report_3_16;
             this.styledButtonWhatsNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonWhatsNew.Location = new System.Drawing.Point(20, 76);
+            this.styledButtonWhatsNew.Location = new System.Drawing.Point(20, 110);
             this.styledButtonWhatsNew.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.styledButtonWhatsNew.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.styledButtonWhatsNew.Name = "styledButtonWhatsNew";
@@ -484,20 +567,17 @@
             this.pictureBoxSpinnerCheckForUpdates.TabStop = false;
             this.pictureBoxSpinnerCheckForUpdates.Visible = false;
             // 
-            // pictureBoxButtonUpdate
+            // tabPageWhatsNew
             // 
-            this.pictureBoxButtonUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxButtonUpdate.ButtonText = "Update now!";
-            this.pictureBoxButtonUpdate.ButtonTextColor = System.Drawing.Color.White;
-            this.pictureBoxButtonUpdate.ButtonTextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pictureBoxButtonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pictureBoxButtonUpdate.Image = global::Fo76ini.Properties.Resources.button;
-            this.pictureBoxButtonUpdate.ImageHover = global::Fo76ini.Properties.Resources.button_hover;
-            this.pictureBoxButtonUpdate.Location = new System.Drawing.Point(3, 29);
-            this.pictureBoxButtonUpdate.Name = "pictureBoxButtonUpdate";
-            this.pictureBoxButtonUpdate.Size = new System.Drawing.Size(293, 48);
-            this.pictureBoxButtonUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxButtonUpdate.TabIndex = 46;
+            this.tabPageWhatsNew.Controls.Add(this.styledButtonGoBack);
+            this.tabPageWhatsNew.Controls.Add(this.webBrowserWhatsNew);
+            this.tabPageWhatsNew.Location = new System.Drawing.Point(4, 22);
+            this.tabPageWhatsNew.Name = "tabPageWhatsNew";
+            this.tabPageWhatsNew.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageWhatsNew.Size = new System.Drawing.Size(668, 473);
+            this.tabPageWhatsNew.TabIndex = 1;
+            this.tabPageWhatsNew.Text = "tabPageWhatsNew";
+            this.tabPageWhatsNew.UseVisualStyleBackColor = true;
             // 
             // styledButtonGoBack
             // 
@@ -516,26 +596,10 @@
             this.styledButtonGoBack.UseVisualStyleBackColor = true;
             this.styledButtonGoBack.Click += new System.EventHandler(this.styledButtonGoBack_Click);
             // 
-            // styledButtonxTranslator
+            // backgroundWorkerScrapeServerStatus
             // 
-            this.styledButtonxTranslator.BackColor = System.Drawing.Color.Transparent;
-            this.styledButtonxTranslator.BorderWidth = ((uint)(0u));
-            this.styledButtonxTranslator.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.styledButtonxTranslator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styledButtonxTranslator.ForeColor = System.Drawing.Color.Black;
-            this.styledButtonxTranslator.Highlight = false;
-            this.styledButtonxTranslator.Image = global::Fo76ini.Properties.Resources.xTranslator_16px;
-            this.styledButtonxTranslator.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonxTranslator.Location = new System.Drawing.Point(6, 191);
-            this.styledButtonxTranslator.Margin = new System.Windows.Forms.Padding(2);
-            this.styledButtonxTranslator.Name = "styledButtonxTranslator";
-            this.styledButtonxTranslator.Padding = 2;
-            this.styledButtonxTranslator.Size = new System.Drawing.Size(190, 23);
-            this.styledButtonxTranslator.TabIndex = 21;
-            this.styledButtonxTranslator.Text = "xTranslator";
-            this.styledButtonxTranslator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonxTranslator.UseVisualStyleBackColor = true;
-            this.styledButtonxTranslator.Click += new System.EventHandler(this.styledButtonxTranslator_Click);
+            this.backgroundWorkerScrapeServerStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerScrapeServerStatus_DoWork);
+            this.backgroundWorkerScrapeServerStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerScrapeServerStatus_RunWorkerCompleted);
             // 
             // UserControlHome
             // 
@@ -554,8 +618,9 @@
             this.panelWebLinks.PerformLayout();
             this.panelContent.ResumeLayout(false);
             this.panelContent.PerformLayout();
-            this.tabPageWhatsNew.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScrapedServerStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).EndInit();
+            this.tabPageWhatsNew.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -595,5 +660,10 @@
         private Controls.StyledButton styledButtonWhatsNew;
         private Controls.StyledButton styledButtonNukesAndDragonsBuildPlanner;
         private Controls.StyledButton styledButtonxTranslator;
+        private System.Windows.Forms.Label labelScrapedServerStatus;
+        public System.Windows.Forms.Label labelServerStatus;
+        private System.Windows.Forms.Button buttonReloadServerStatus;
+        private System.Windows.Forms.PictureBox pictureBoxScrapedServerStatus;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerScrapeServerStatus;
     }
 }

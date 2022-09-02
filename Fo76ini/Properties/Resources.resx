@@ -460,4 +460,28 @@
   <data name="xTranslator_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\xTranslator-24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="status_maintenance_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\status-maintenance-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="status_maintenance_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\status-maintenance-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="status_major_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\status-major-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="status_major_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\status-major-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="status_operational_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\status-operational-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="status_operational_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\status-operational-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="status_partial_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\status-partial-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="status_partial_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\status-partial-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

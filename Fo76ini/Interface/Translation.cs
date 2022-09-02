@@ -30,6 +30,14 @@ namespace Fo76ini
         /// </summary>
         public static string Locale = "en-US";
 
+        public static string ShortLocale
+        {
+            get
+            {
+                return Locale.Substring(0, 2);
+            }
+        }
+
         /// <summary>
         /// Add your form to this list if you want it to get translated.
         /// </summary>
