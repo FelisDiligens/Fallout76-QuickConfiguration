@@ -1,3 +1,10 @@
+### What's new in v1.11.4
+
+Hi everyone,
+
+with this update I added the server status of Fallout 76 to the home page.  
+This way, you can check if the game is online or in maintenance before you start it.
+
 ### What's new in v1.11.3h1? - Hotfix 1
 
 Fixed an issue where drag and drop into the mod list would fail if the mod list was empty.
