@@ -140,6 +140,7 @@
             this.linkLabelManualDownloadPage.TabStop = true;
             this.linkLabelManualDownloadPage.Text = "Or download and install manually...";
             this.linkLabelManualDownloadPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabelManualDownloadPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelManualDownloadPage_LinkClicked);
             // 
             // panelTitle
             // 
