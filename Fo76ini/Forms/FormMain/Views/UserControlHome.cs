@@ -360,6 +360,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             ServerStatus status = (ServerStatus)e.Result;
             this.labelScrapedServerStatus.Text = status.localizedStatus;
             this.pictureBoxScrapedServerStatus.Image = status.image;
+            this.buttonReloadServerStatus.Left = this.labelScrapedServerStatus.Left + this.labelScrapedServerStatus.Width + 6;
         }
 
         // Helper struct for the Background Worker.
