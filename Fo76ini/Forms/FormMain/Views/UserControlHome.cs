@@ -243,6 +243,10 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         #region Scrapping server status from Bethesda.net API
 
+        /// <summary>
+        /// Request the server status from Bethesda.net's API.
+        /// </summary>
+        /// <returns>Server status</returns>
         private String ScrapeServerStatus()
         {
             string f76Status = "unknown";
@@ -277,26 +281,40 @@ namespace Fo76ini.Forms.FormMain.Tabs
             return f76Status;
         }
 
+        /// <summary>
+        /// Request the localized string of the given server status in the given language from "api.locize.app".
+        /// </summary>
+        /// <param name="language">ISO code, two characters long</param>
+        /// <param name="status">The server status as received from the Bethesda.net API.</param>
+        /// <returns></returns>
         private String GetLocalizedServerStatus(String language, String status)
         {
             // Send request:
-            APIRequest request = new APIRequest($"https://api.locize.app/657e9e0e-8225-4266-88dd-75f047f1a2b3/live/{language}/status");
+            APIRequest request = new APIRequest($"https://api.locize.app/657e9e0e-8225-4266-88dd-75f047f1a2b3/live/{language.ToLower()}/status");
             request.Execute();
 
             if (request.Success && request.StatusCode == HttpStatusCode.OK)
             {
                 JObject responseJSON = request.GetJObject();
                 JObject statusKeys = (JObject)responseJSON["statusKey"];
+
+                // If translation does not exist, the server returns an empty JSON object {}
+                // In this situation, fallback to English:
                 if (statusKeys == null)
                     return GetLocalizedServerStatus("en", status);
+
                 if (statusKeys[status] != null)
                     return statusKeys[status].ToObject<string>();
+
                 return status;
             }
 
             return status;
         }
 
+        /// <summary>
+        /// Load the Server Status from Bethesda.net's API asynchronously and set up the UI accordingly.
+        /// </summary>
         private void LoadServerStatus()
         {
             this.pictureBoxScrapedServerStatus.Image = Resources.Spinner_24;
@@ -344,6 +362,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             this.pictureBoxScrapedServerStatus.Image = status.image;
         }
 
+        // Helper struct for the Background Worker.
         private struct ServerStatus
         {
             public String statusKey;
