@@ -280,6 +280,7 @@
     <Compile Include="Tweaks\Graphics\Effects\BloodSplatterEnabledTweak.cs" />
     <Compile Include="Tweaks\Graphics\Lighting\VolumetricLightingQualityTweak.cs" />
     <Compile Include="Tweaks\Graphics\Post-processing\BloomTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Post-processing\DepthOfFieldStrengthTweak.cs" />
     <Compile Include="Tweaks\Graphics\Shadows\ShadowQualityPresetTweak.cs" />
     <Compile Include="Tweaks\Graphics\TextureQualityPresetTweak.cs" />
     <Compile Include="Tweaks\Graphics\Water\WaterFixSSRGlitchTweak.cs" />
@@ -334,7 +335,7 @@
     <Compile Include="Tweaks\Graphics\Shadows\BlendSplitDirShadowTweak.cs" />
     <Compile Include="Tweaks\Graphics\Shadows\DirShadowSplitsTweak.cs" />
     <Compile Include="Tweaks\Graphics\Effects\DisableAllGoreTweak.cs" />
-    <Compile Include="Tweaks\Graphics\Post-processing\DepthOfFieldTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Post-processing\DepthOfFieldEnabledTweak.cs" />
     <Compile Include="Tweaks\Graphics\EnableGrassTweak.cs" />
     <Compile Include="Tweaks\Graphics\Weather\FogTweak.cs" />
     <Compile Include="Tweaks\Graphics\Rendering-distance\GrassFadeDistanceTweak.cs" />

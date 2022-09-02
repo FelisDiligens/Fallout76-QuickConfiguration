@@ -85,7 +85,10 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(comboBoxTextureQuality, toolTip, textureQualityTweak);
             LinkedTweaks.LinkInfo(labelShadowQuality, toolTip, shadowQualityTweak);
             LinkedTweaks.LinkInfo(comboBoxShadowQuality, toolTip, shadowQualityTweak);
-            LinkedTweaks.LinkInfo(checkBoxDepthOfField, toolTip, enableDepthOfFieldTweak);
+            LinkedTweaks.LinkInfo(checkBoxDepthOfField, toolTip, dofEnabledTweak);
+            LinkedTweaks.LinkInfo(labelDOFStrength, toolTip, dofStrengthTweak);
+            LinkedTweaks.LinkInfo(sliderDOFStrength, toolTip, dofStrengthTweak);
+            LinkedTweaks.LinkInfo(numDOFStrength, toolTip, dofStrengthTweak);
             LinkedTweaks.LinkInfo(checkBoxMotionBlur, toolTip, motionBlurTweak);
             LinkedTweaks.LinkInfo(checkBoxRadialBlur, toolTip, radialBlurTweak);
             LinkedTweaks.LinkInfo(checkBoxLensFlare, toolTip, lensFlareTweak);
@@ -235,6 +238,7 @@ namespace Fo76ini.Forms.FormMain
             // Link numericUpDown and sliders:
             LinkedTweaks.LinkSlider(this.sliderGrassFadeDistance, this.numGrassFadeDistance, 1);
             //LinkSlider(this.sliderGrassDensity, this.numGrassDensity, 1, true);
+            LinkedTweaks.LinkSlider(this.sliderDOFStrength, this.numDOFStrength, 10f);
             LinkedTweaks.LinkSlider(this.sliderLODObjects, this.numLODObjects, 10);
             LinkedTweaks.LinkSlider(this.sliderLODItems, this.numLODItems, 10);
             LinkedTweaks.LinkSlider(this.sliderLODActors, this.numLODActors, 10);
@@ -421,8 +425,11 @@ namespace Fo76ini.Forms.FormMain
             // Texture quality
             LinkedTweaks.LinkTweak(comboBoxTextureQuality, textureQualityTweak);
 
-            // Depth of Field
-            LinkedTweaks.LinkTweak(checkBoxDepthOfField, enableDepthOfFieldTweak);
+            // Enable Depth of Field
+            LinkedTweaks.LinkTweak(checkBoxDepthOfField, dofEnabledTweak);
+
+            // Depth of Field Strength
+            LinkedTweaks.LinkTweak(numDOFStrength, dofStrengthTweak);
 
             // Motion Blur
             LinkedTweaks.LinkTweak(checkBoxMotionBlur, motionBlurTweak);
@@ -676,7 +683,8 @@ namespace Fo76ini.Forms.FormMain
         private AntiAliasingTweak antiAliasingTweak = new AntiAliasingTweak();
         private AnisotropicFilteringTweak anisotropicFilteringTweak = new AnisotropicFilteringTweak();
         private TextureQualityPresetTweak textureQualityTweak = new TextureQualityPresetTweak();
-        private DepthOfFieldTweak enableDepthOfFieldTweak = new DepthOfFieldTweak();
+        private DepthOfFieldEnabledTweak dofEnabledTweak = new DepthOfFieldEnabledTweak();
+        private DepthOfFieldStrengthTweak dofStrengthTweak = new DepthOfFieldStrengthTweak();
         private MotionBlurTweak motionBlurTweak = new MotionBlurTweak();
         private RadialBlurTweak radialBlurTweak = new RadialBlurTweak();
         private LensFlareTweak lensFlareTweak = new LensFlareTweak();

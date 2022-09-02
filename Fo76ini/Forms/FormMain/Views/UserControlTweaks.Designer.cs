@@ -77,6 +77,12 @@
             this.checkBoxSkipIntroVideos = new System.Windows.Forms.CheckBox();
             this.tabPageVideo = new System.Windows.Forms.TabPage();
             this.groupBoxGraphics = new System.Windows.Forms.GroupBox();
+            this.labelSelectedQualityPreset = new System.Windows.Forms.Label();
+            this.buttonSelectOverallQualityPreset = new System.Windows.Forms.Button();
+            this.labelOverallQualityPreset = new System.Windows.Forms.Label();
+            this.groupBoxTextures = new System.Windows.Forms.GroupBox();
+            this.comboBoxTextureQuality = new System.Windows.Forms.ComboBox();
+            this.labelTextureQuality = new System.Windows.Forms.Label();
             this.groupBoxGraphicEffects = new System.Windows.Forms.GroupBox();
             this.checkBoxBloodSplatter = new System.Windows.Forms.CheckBox();
             this.checkBoxDisableGore = new System.Windows.Forms.CheckBox();
@@ -107,9 +113,13 @@
             this.labelLODObjects = new System.Windows.Forms.Label();
             this.checkBoxVSync = new System.Windows.Forms.CheckBox();
             this.groupBoxLighting = new System.Windows.Forms.GroupBox();
+            this.comboBoxGodrayQuality = new System.Windows.Forms.ComboBox();
+            this.labelGodrayQuality = new System.Windows.Forms.Label();
             this.checkBoxGodrays = new System.Windows.Forms.CheckBox();
             this.labelAnisotropicFiltering = new System.Windows.Forms.Label();
             this.groupBoxShadows = new System.Windows.Forms.GroupBox();
+            this.comboBoxShadowQuality = new System.Windows.Forms.ComboBox();
+            this.labelShadowQuality = new System.Windows.Forms.Label();
             this.sliderShadowDistance = new System.Windows.Forms.TrackBar();
             this.comboBoxShadowBlurriness = new System.Windows.Forms.ComboBox();
             this.labelShadowBlurriness = new System.Windows.Forms.Label();
@@ -119,6 +129,8 @@
             this.labelShadowTextureResolution = new System.Windows.Forms.Label();
             this.comboBoxAnisotropicFiltering = new System.Windows.Forms.ComboBox();
             this.groupBoxWater = new System.Windows.Forms.GroupBox();
+            this.comboBoxWaterShadowFilter = new System.Windows.Forms.ComboBox();
+            this.labelWaterShadowFilter = new System.Windows.Forms.Label();
             this.checkBoxWaterFixSSRGlitch = new System.Windows.Forms.CheckBox();
             this.checkBoxWaterHiRes = new System.Windows.Forms.CheckBox();
             this.checkBoxWaterRefractions = new System.Windows.Forms.CheckBox();
@@ -182,19 +194,25 @@
             this.tabPageControls = new System.Windows.Forms.TabPage();
             this.groupBoxGamepad = new System.Windows.Forms.GroupBox();
             this.checkBoxAimAssist = new System.Windows.Forms.CheckBox();
-            this.checkBoxGamepadEnabled = new System.Windows.Forms.CheckBox();
             this.checkBoxGamepadRumble = new System.Windows.Forms.CheckBox();
+            this.checkBoxGamepadEnabled = new System.Windows.Forms.CheckBox();
+            this.sliderGamepadSensitivityY = new System.Windows.Forms.TrackBar();
+            this.numGamepadSensitivityY = new System.Windows.Forms.NumericUpDown();
+            this.labelGamepadSensitivityY = new System.Windows.Forms.Label();
+            this.sliderGamepadSensitivityX = new System.Windows.Forms.TrackBar();
+            this.numGamepadSensitivityX = new System.Windows.Forms.NumericUpDown();
+            this.labelGamepadSensitivityX = new System.Windows.Forms.Label();
             this.groupBoxMouse = new System.Windows.Forms.GroupBox();
+            this.checkBoxMouseInvertX = new System.Windows.Forms.CheckBox();
+            this.checkBoxMouseInvertY = new System.Windows.Forms.CheckBox();
+            this.checkBoxFixAimSensitivity = new System.Windows.Forms.CheckBox();
+            this.checkBoxFixMouseSensitivity = new System.Windows.Forms.CheckBox();
             this.sliderMouseSensitivityY = new System.Windows.Forms.TrackBar();
             this.numMouseSensitivityY = new System.Windows.Forms.NumericUpDown();
             this.labelMouseSensitivityY = new System.Windows.Forms.Label();
-            this.checkBoxMouseInvertX = new System.Windows.Forms.CheckBox();
-            this.checkBoxMouseInvertY = new System.Windows.Forms.CheckBox();
             this.sliderMouseSensitivityX = new System.Windows.Forms.TrackBar();
-            this.checkBoxFixAimSensitivity = new System.Windows.Forms.CheckBox();
             this.numMouseSensitivityX = new System.Windows.Forms.NumericUpDown();
             this.labelMouseSensitivityX = new System.Windows.Forms.Label();
-            this.checkBoxFixMouseSensitivity = new System.Windows.Forms.CheckBox();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.groupBoxCameraPosition = new System.Windows.Forms.GroupBox();
             this.groupBoxMeleeCombatCameraPosition = new System.Windows.Forms.GroupBox();
@@ -286,34 +304,20 @@
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelTweaksDesc = new System.Windows.Forms.Label();
             this.labelTweaksTitle = new System.Windows.Forms.Label();
-            this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
-            this.sliderGamepadSensitivityY = new System.Windows.Forms.TrackBar();
-            this.numGamepadSensitivityY = new System.Windows.Forms.NumericUpDown();
-            this.labelGamepadSensitivityY = new System.Windows.Forms.Label();
-            this.sliderGamepadSensitivityX = new System.Windows.Forms.TrackBar();
-            this.numGamepadSensitivityX = new System.Windows.Forms.NumericUpDown();
-            this.labelGamepadSensitivityX = new System.Windows.Forms.Label();
-            this.groupBoxTextures = new System.Windows.Forms.GroupBox();
-            this.comboBoxTextureQuality = new System.Windows.Forms.ComboBox();
-            this.labelTextureQuality = new System.Windows.Forms.Label();
-            this.comboBoxShadowQuality = new System.Windows.Forms.ComboBox();
-            this.labelShadowQuality = new System.Windows.Forms.Label();
-            this.comboBoxGodrayQuality = new System.Windows.Forms.ComboBox();
-            this.labelGodrayQuality = new System.Windows.Forms.Label();
-            this.comboBoxWaterShadowFilter = new System.Windows.Forms.ComboBox();
-            this.labelWaterShadowFilter = new System.Windows.Forms.Label();
-            this.labelOverallQualityPreset = new System.Windows.Forms.Label();
-            this.buttonSelectOverallQualityPreset = new System.Windows.Forms.Button();
             this.contextMenuStripOverallQualityPresets = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.lowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ultraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelSelectedQualityPreset = new System.Windows.Forms.Label();
+            this.groupBoxDOF = new System.Windows.Forms.GroupBox();
+            this.sliderDOFStrength = new System.Windows.Forms.TrackBar();
+            this.numDOFStrength = new System.Windows.Forms.NumericUpDown();
+            this.labelDOFStrength = new System.Windows.Forms.Label();
+            this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -332,6 +336,7 @@
             this.groupBoxMainMenu.SuspendLayout();
             this.tabPageVideo.SuspendLayout();
             this.groupBoxGraphics.SuspendLayout();
+            this.groupBoxTextures.SuspendLayout();
             this.groupBoxGraphicEffects.SuspendLayout();
             this.groupBoxTAASharpening.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sliderTAAPostSharpen)).BeginInit();
@@ -381,6 +386,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal3)).BeginInit();
             this.tabPageControls.SuspendLayout();
             this.groupBoxGamepad.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).BeginInit();
             this.groupBoxMouse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivityY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityY)).BeginInit();
@@ -431,12 +440,10 @@
             this.tabPageLogin.SuspendLayout();
             this.groupBoxLoginProfiles.SuspendLayout();
             this.groupBoxLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).BeginInit();
-            this.groupBoxTextures.SuspendLayout();
             this.contextMenuStripOverallQualityPresets.SuspendLayout();
+            this.groupBoxDOF.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderDOFStrength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDOFStrength)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -1006,6 +1013,7 @@
             // 
             // groupBoxGraphics
             // 
+            this.groupBoxGraphics.Controls.Add(this.groupBoxDOF);
             this.groupBoxGraphics.Controls.Add(this.labelSelectedQualityPreset);
             this.groupBoxGraphics.Controls.Add(this.buttonSelectOverallQualityPreset);
             this.groupBoxGraphics.Controls.Add(this.labelOverallQualityPreset);
@@ -1026,18 +1034,79 @@
             this.groupBoxGraphics.Location = new System.Drawing.Point(9, 206);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1312);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1404);
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
+            // 
+            // labelSelectedQualityPreset
+            // 
+            this.labelSelectedQualityPreset.AutoSize = true;
+            this.labelSelectedQualityPreset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSelectedQualityPreset.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelSelectedQualityPreset.Location = new System.Drawing.Point(164, 49);
+            this.labelSelectedQualityPreset.Name = "labelSelectedQualityPreset";
+            this.labelSelectedQualityPreset.Size = new System.Drawing.Size(125, 13);
+            this.labelSelectedQualityPreset.TabIndex = 22;
+            this.labelSelectedQualityPreset.Text = "Current preset: Unknown";
+            // 
+            // buttonSelectOverallQualityPreset
+            // 
+            this.buttonSelectOverallQualityPreset.Location = new System.Drawing.Point(164, 21);
+            this.buttonSelectOverallQualityPreset.Name = "buttonSelectOverallQualityPreset";
+            this.buttonSelectOverallQualityPreset.Size = new System.Drawing.Size(227, 23);
+            this.buttonSelectOverallQualityPreset.TabIndex = 21;
+            this.buttonSelectOverallQualityPreset.Text = "Select quality preset";
+            this.buttonSelectOverallQualityPreset.UseVisualStyleBackColor = true;
+            this.buttonSelectOverallQualityPreset.Click += new System.EventHandler(this.buttonSelectOverallQualityPreset_Click);
+            // 
+            // labelOverallQualityPreset
+            // 
+            this.labelOverallQualityPreset.AutoSize = true;
+            this.labelOverallQualityPreset.Location = new System.Drawing.Point(6, 26);
+            this.labelOverallQualityPreset.Name = "labelOverallQualityPreset";
+            this.labelOverallQualityPreset.Size = new System.Drawing.Size(76, 13);
+            this.labelOverallQualityPreset.TabIndex = 20;
+            this.labelOverallQualityPreset.Text = "Overall quality:";
+            // 
+            // groupBoxTextures
+            // 
+            this.groupBoxTextures.Controls.Add(this.comboBoxTextureQuality);
+            this.groupBoxTextures.Controls.Add(this.labelTextureQuality);
+            this.groupBoxTextures.Location = new System.Drawing.Point(9, 183);
+            this.groupBoxTextures.Name = "groupBoxTextures";
+            this.groupBoxTextures.Size = new System.Drawing.Size(381, 55);
+            this.groupBoxTextures.TabIndex = 19;
+            this.groupBoxTextures.TabStop = false;
+            this.groupBoxTextures.Text = "Textures";
+            // 
+            // comboBoxTextureQuality
+            // 
+            this.comboBoxTextureQuality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxTextureQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTextureQuality.FormattingEnabled = true;
+            this.comboBoxTextureQuality.Location = new System.Drawing.Point(156, 19);
+            this.comboBoxTextureQuality.Name = "comboBoxTextureQuality";
+            this.comboBoxTextureQuality.Size = new System.Drawing.Size(219, 21);
+            this.comboBoxTextureQuality.TabIndex = 3;
+            // 
+            // labelTextureQuality
+            // 
+            this.labelTextureQuality.AutoSize = true;
+            this.labelTextureQuality.Location = new System.Drawing.Point(7, 22);
+            this.labelTextureQuality.Name = "labelTextureQuality";
+            this.labelTextureQuality.Size = new System.Drawing.Size(111, 13);
+            this.labelTextureQuality.TabIndex = 2;
+            this.labelTextureQuality.Text = "Texture quality preset:";
             // 
             // groupBoxGraphicEffects
             // 
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
-            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(203, 505);
+            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(218, 616);
             this.groupBoxGraphicEffects.Name = "groupBoxGraphicEffects";
-            this.groupBoxGraphicEffects.Size = new System.Drawing.Size(188, 169);
+            this.groupBoxGraphicEffects.Size = new System.Drawing.Size(172, 149);
             this.groupBoxGraphicEffects.TabIndex = 11;
             this.groupBoxGraphicEffects.TabStop = false;
             this.groupBoxGraphicEffects.Text = "Effects";
@@ -1072,7 +1141,7 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 1155);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 1247);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
             this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 145);
             this.groupBoxTAASharpening.TabIndex = 18;
@@ -1188,7 +1257,7 @@
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 1026);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 1118);
             this.groupBoxGrass.Name = "groupBoxGrass";
             this.groupBoxGrass.Size = new System.Drawing.Size(381, 119);
             this.groupBoxGrass.TabIndex = 17;
@@ -1275,7 +1344,7 @@
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 864);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 956);
             this.groupBoxLOD.Name = "groupBoxLOD";
             this.groupBoxLOD.Size = new System.Drawing.Size(381, 156);
             this.groupBoxLOD.TabIndex = 16;
@@ -1444,6 +1513,26 @@
             this.groupBoxLighting.TabStop = false;
             this.groupBoxLighting.Text = "Lighting";
             // 
+            // comboBoxGodrayQuality
+            // 
+            this.comboBoxGodrayQuality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxGodrayQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGodrayQuality.FormattingEnabled = true;
+            this.comboBoxGodrayQuality.Location = new System.Drawing.Point(156, 41);
+            this.comboBoxGodrayQuality.Name = "comboBoxGodrayQuality";
+            this.comboBoxGodrayQuality.Size = new System.Drawing.Size(219, 21);
+            this.comboBoxGodrayQuality.TabIndex = 5;
+            // 
+            // labelGodrayQuality
+            // 
+            this.labelGodrayQuality.AutoSize = true;
+            this.labelGodrayQuality.Location = new System.Drawing.Point(7, 44);
+            this.labelGodrayQuality.Name = "labelGodrayQuality";
+            this.labelGodrayQuality.Size = new System.Drawing.Size(134, 13);
+            this.labelGodrayQuality.TabIndex = 4;
+            this.labelGodrayQuality.Text = "Volumetric Lighting Quality:";
+            // 
             // checkBoxGodrays
             // 
             this.checkBoxGodrays.AutoSize = true;
@@ -1451,9 +1540,9 @@
             this.checkBoxGodrays.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxGodrays.Location = new System.Drawing.Point(10, 19);
             this.checkBoxGodrays.Name = "checkBoxGodrays";
-            this.checkBoxGodrays.Size = new System.Drawing.Size(115, 17);
+            this.checkBoxGodrays.Size = new System.Drawing.Size(151, 17);
             this.checkBoxGodrays.TabIndex = 0;
-            this.checkBoxGodrays.Text = "Volumetric Lighting";
+            this.checkBoxGodrays.Text = "Enable Volumetric Lighting";
             this.checkBoxGodrays.UseVisualStyleBackColor = true;
             // 
             // labelAnisotropicFiltering
@@ -1476,12 +1565,32 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowTextureResolution);
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
-            this.groupBoxShadows.Location = new System.Drawing.Point(9, 680);
+            this.groupBoxShadows.Location = new System.Drawing.Point(9, 772);
             this.groupBoxShadows.Name = "groupBoxShadows";
             this.groupBoxShadows.Size = new System.Drawing.Size(381, 178);
             this.groupBoxShadows.TabIndex = 15;
             this.groupBoxShadows.TabStop = false;
             this.groupBoxShadows.Text = "Shadows";
+            // 
+            // comboBoxShadowQuality
+            // 
+            this.comboBoxShadowQuality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxShadowQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxShadowQuality.FormattingEnabled = true;
+            this.comboBoxShadowQuality.Location = new System.Drawing.Point(156, 21);
+            this.comboBoxShadowQuality.Name = "comboBoxShadowQuality";
+            this.comboBoxShadowQuality.Size = new System.Drawing.Size(219, 21);
+            this.comboBoxShadowQuality.TabIndex = 8;
+            // 
+            // labelShadowQuality
+            // 
+            this.labelShadowQuality.AutoSize = true;
+            this.labelShadowQuality.Location = new System.Drawing.Point(7, 24);
+            this.labelShadowQuality.Name = "labelShadowQuality";
+            this.labelShadowQuality.Size = new System.Drawing.Size(114, 13);
+            this.labelShadowQuality.TabIndex = 7;
+            this.labelShadowQuality.Text = "Shadow quality preset:";
             // 
             // sliderShadowDistance
             // 
@@ -1596,6 +1705,26 @@
             this.groupBoxWater.TabStop = false;
             this.groupBoxWater.Text = "Water";
             // 
+            // comboBoxWaterShadowFilter
+            // 
+            this.comboBoxWaterShadowFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxWaterShadowFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxWaterShadowFilter.FormattingEnabled = true;
+            this.comboBoxWaterShadowFilter.Location = new System.Drawing.Point(156, 111);
+            this.comboBoxWaterShadowFilter.Name = "comboBoxWaterShadowFilter";
+            this.comboBoxWaterShadowFilter.Size = new System.Drawing.Size(219, 21);
+            this.comboBoxWaterShadowFilter.TabIndex = 6;
+            // 
+            // labelWaterShadowFilter
+            // 
+            this.labelWaterShadowFilter.AutoSize = true;
+            this.labelWaterShadowFilter.Location = new System.Drawing.Point(7, 114);
+            this.labelWaterShadowFilter.Name = "labelWaterShadowFilter";
+            this.labelWaterShadowFilter.Size = new System.Drawing.Size(71, 13);
+            this.labelWaterShadowFilter.TabIndex = 5;
+            this.labelWaterShadowFilter.Text = "Shadow filter:";
+            // 
             // checkBoxWaterFixSSRGlitch
             // 
             this.checkBoxWaterFixSSRGlitch.AutoSize = true;
@@ -1660,13 +1789,12 @@
             // 
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxSSReflections);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxAmbientOcclusion);
-            this.groupBoxPostProcessing.Controls.Add(this.checkBoxDepthOfField);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxMotionBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxRadialBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxLensFlare);
-            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 505);
+            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 616);
             this.groupBoxPostProcessing.Name = "groupBoxPostProcessing";
-            this.groupBoxPostProcessing.Size = new System.Drawing.Size(187, 169);
+            this.groupBoxPostProcessing.Size = new System.Drawing.Size(204, 149);
             this.groupBoxPostProcessing.TabIndex = 10;
             this.groupBoxPostProcessing.TabStop = false;
             this.groupBoxPostProcessing.Text = "Post-processing";
@@ -1676,7 +1804,7 @@
             this.checkBoxSSReflections.AutoSize = true;
             this.checkBoxSSReflections.Checked = true;
             this.checkBoxSSReflections.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxSSReflections.Location = new System.Drawing.Point(9, 134);
+            this.checkBoxSSReflections.Location = new System.Drawing.Point(10, 111);
             this.checkBoxSSReflections.Name = "checkBoxSSReflections";
             this.checkBoxSSReflections.Size = new System.Drawing.Size(110, 17);
             this.checkBoxSSReflections.TabIndex = 6;
@@ -1688,7 +1816,7 @@
             this.checkBoxAmbientOcclusion.AutoSize = true;
             this.checkBoxAmbientOcclusion.Checked = true;
             this.checkBoxAmbientOcclusion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAmbientOcclusion.Location = new System.Drawing.Point(9, 111);
+            this.checkBoxAmbientOcclusion.Location = new System.Drawing.Point(10, 88);
             this.checkBoxAmbientOcclusion.Name = "checkBoxAmbientOcclusion";
             this.checkBoxAmbientOcclusion.Size = new System.Drawing.Size(152, 17);
             this.checkBoxAmbientOcclusion.TabIndex = 4;
@@ -1700,11 +1828,11 @@
             this.checkBoxDepthOfField.AutoSize = true;
             this.checkBoxDepthOfField.Checked = true;
             this.checkBoxDepthOfField.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDepthOfField.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxDepthOfField.Location = new System.Drawing.Point(10, 19);
             this.checkBoxDepthOfField.Name = "checkBoxDepthOfField";
-            this.checkBoxDepthOfField.Size = new System.Drawing.Size(92, 17);
+            this.checkBoxDepthOfField.Size = new System.Drawing.Size(128, 17);
             this.checkBoxDepthOfField.TabIndex = 0;
-            this.checkBoxDepthOfField.Text = "Depth of Field";
+            this.checkBoxDepthOfField.Text = "Enable Depth of Field";
             this.checkBoxDepthOfField.UseVisualStyleBackColor = true;
             // 
             // checkBoxMotionBlur
@@ -1712,7 +1840,7 @@
             this.checkBoxMotionBlur.AutoSize = true;
             this.checkBoxMotionBlur.Checked = true;
             this.checkBoxMotionBlur.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMotionBlur.Location = new System.Drawing.Point(9, 42);
+            this.checkBoxMotionBlur.Location = new System.Drawing.Point(10, 19);
             this.checkBoxMotionBlur.Name = "checkBoxMotionBlur";
             this.checkBoxMotionBlur.Size = new System.Drawing.Size(79, 17);
             this.checkBoxMotionBlur.TabIndex = 1;
@@ -1724,7 +1852,7 @@
             this.checkBoxRadialBlur.AutoSize = true;
             this.checkBoxRadialBlur.Checked = true;
             this.checkBoxRadialBlur.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxRadialBlur.Location = new System.Drawing.Point(9, 65);
+            this.checkBoxRadialBlur.Location = new System.Drawing.Point(10, 42);
             this.checkBoxRadialBlur.Name = "checkBoxRadialBlur";
             this.checkBoxRadialBlur.Size = new System.Drawing.Size(77, 17);
             this.checkBoxRadialBlur.TabIndex = 2;
@@ -1736,7 +1864,7 @@
             this.checkBoxLensFlare.AutoSize = true;
             this.checkBoxLensFlare.Checked = true;
             this.checkBoxLensFlare.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxLensFlare.Location = new System.Drawing.Point(9, 88);
+            this.checkBoxLensFlare.Location = new System.Drawing.Point(10, 65);
             this.checkBoxLensFlare.Name = "checkBoxLensFlare";
             this.checkBoxLensFlare.Size = new System.Drawing.Size(75, 17);
             this.checkBoxLensFlare.TabIndex = 3;
@@ -2497,6 +2625,18 @@
             this.checkBoxAimAssist.Text = "Aim Assist";
             this.checkBoxAimAssist.UseVisualStyleBackColor = true;
             // 
+            // checkBoxGamepadRumble
+            // 
+            this.checkBoxGamepadRumble.AutoSize = true;
+            this.checkBoxGamepadRumble.Checked = true;
+            this.checkBoxGamepadRumble.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxGamepadRumble.Location = new System.Drawing.Point(9, 158);
+            this.checkBoxGamepadRumble.Name = "checkBoxGamepadRumble";
+            this.checkBoxGamepadRumble.Size = new System.Drawing.Size(149, 17);
+            this.checkBoxGamepadRumble.TabIndex = 1;
+            this.checkBoxGamepadRumble.Text = "Enable gamepad vibration";
+            this.checkBoxGamepadRumble.UseVisualStyleBackColor = true;
+            // 
             // checkBoxGamepadEnabled
             // 
             this.checkBoxGamepadEnabled.AutoSize = true;
@@ -2509,17 +2649,111 @@
             this.checkBoxGamepadEnabled.Text = "Enable gamepad";
             this.checkBoxGamepadEnabled.UseVisualStyleBackColor = true;
             // 
-            // checkBoxGamepadRumble
+            // sliderGamepadSensitivityY
             // 
-            this.checkBoxGamepadRumble.AutoSize = true;
-            this.checkBoxGamepadRumble.Checked = true;
-            this.checkBoxGamepadRumble.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGamepadRumble.Location = new System.Drawing.Point(9, 158);
-            this.checkBoxGamepadRumble.Name = "checkBoxGamepadRumble";
-            this.checkBoxGamepadRumble.Size = new System.Drawing.Size(149, 17);
-            this.checkBoxGamepadRumble.TabIndex = 1;
-            this.checkBoxGamepadRumble.Text = "Enable gamepad vibration";
-            this.checkBoxGamepadRumble.UseVisualStyleBackColor = true;
+            this.sliderGamepadSensitivityY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderGamepadSensitivityY.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderGamepadSensitivityY.Location = new System.Drawing.Point(9, 91);
+            this.sliderGamepadSensitivityY.Maximum = 15556;
+            this.sliderGamepadSensitivityY.Minimum = 4445;
+            this.sliderGamepadSensitivityY.Name = "sliderGamepadSensitivityY";
+            this.sliderGamepadSensitivityY.Size = new System.Drawing.Size(325, 45);
+            this.sliderGamepadSensitivityY.SmallChange = 300;
+            this.sliderGamepadSensitivityY.TabIndex = 10;
+            this.sliderGamepadSensitivityY.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderGamepadSensitivityY.Value = 6000;
+            // 
+            // numGamepadSensitivityY
+            // 
+            this.numGamepadSensitivityY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numGamepadSensitivityY.DecimalPlaces = 4;
+            this.numGamepadSensitivityY.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            262144});
+            this.numGamepadSensitivityY.Location = new System.Drawing.Point(340, 91);
+            this.numGamepadSensitivityY.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numGamepadSensitivityY.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            393216});
+            this.numGamepadSensitivityY.Name = "numGamepadSensitivityY";
+            this.numGamepadSensitivityY.Size = new System.Drawing.Size(54, 20);
+            this.numGamepadSensitivityY.TabIndex = 11;
+            this.numGamepadSensitivityY.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            65536});
+            // 
+            // labelGamepadSensitivityY
+            // 
+            this.labelGamepadSensitivityY.AutoSize = true;
+            this.labelGamepadSensitivityY.Location = new System.Drawing.Point(6, 73);
+            this.labelGamepadSensitivityY.Name = "labelGamepadSensitivityY";
+            this.labelGamepadSensitivityY.Size = new System.Drawing.Size(90, 13);
+            this.labelGamepadSensitivityY.TabIndex = 9;
+            this.labelGamepadSensitivityY.Text = "Vertical sensitivity";
+            // 
+            // sliderGamepadSensitivityX
+            // 
+            this.sliderGamepadSensitivityX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderGamepadSensitivityX.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderGamepadSensitivityX.Location = new System.Drawing.Point(9, 40);
+            this.sliderGamepadSensitivityX.Maximum = 15556;
+            this.sliderGamepadSensitivityX.Minimum = 4445;
+            this.sliderGamepadSensitivityX.Name = "sliderGamepadSensitivityX";
+            this.sliderGamepadSensitivityX.Size = new System.Drawing.Size(325, 45);
+            this.sliderGamepadSensitivityX.SmallChange = 300;
+            this.sliderGamepadSensitivityX.TabIndex = 7;
+            this.sliderGamepadSensitivityX.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderGamepadSensitivityX.Value = 6667;
+            // 
+            // numGamepadSensitivityX
+            // 
+            this.numGamepadSensitivityX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numGamepadSensitivityX.DecimalPlaces = 4;
+            this.numGamepadSensitivityX.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            262144});
+            this.numGamepadSensitivityX.Location = new System.Drawing.Point(340, 40);
+            this.numGamepadSensitivityX.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numGamepadSensitivityX.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            393216});
+            this.numGamepadSensitivityX.Name = "numGamepadSensitivityX";
+            this.numGamepadSensitivityX.Size = new System.Drawing.Size(54, 20);
+            this.numGamepadSensitivityX.TabIndex = 8;
+            this.numGamepadSensitivityX.Value = new decimal(new int[] {
+            6667,
+            0,
+            0,
+            262144});
+            // 
+            // labelGamepadSensitivityX
+            // 
+            this.labelGamepadSensitivityX.AutoSize = true;
+            this.labelGamepadSensitivityX.Location = new System.Drawing.Point(6, 22);
+            this.labelGamepadSensitivityX.Name = "labelGamepadSensitivityX";
+            this.labelGamepadSensitivityX.Size = new System.Drawing.Size(102, 13);
+            this.labelGamepadSensitivityX.TabIndex = 6;
+            this.labelGamepadSensitivityX.Text = "Horizontal sensitivity";
             // 
             // groupBoxMouse
             // 
@@ -2540,6 +2774,46 @@
             this.groupBoxMouse.TabIndex = 0;
             this.groupBoxMouse.TabStop = false;
             this.groupBoxMouse.Text = "Mouse";
+            // 
+            // checkBoxMouseInvertX
+            // 
+            this.checkBoxMouseInvertX.AutoSize = true;
+            this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 210);
+            this.checkBoxMouseInvertX.Name = "checkBoxMouseInvertX";
+            this.checkBoxMouseInvertX.Size = new System.Drawing.Size(63, 17);
+            this.checkBoxMouseInvertX.TabIndex = 9;
+            this.checkBoxMouseInvertX.Text = "Invert X";
+            this.checkBoxMouseInvertX.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMouseInvertY
+            // 
+            this.checkBoxMouseInvertY.AutoSize = true;
+            this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 187);
+            this.checkBoxMouseInvertY.Name = "checkBoxMouseInvertY";
+            this.checkBoxMouseInvertY.Size = new System.Drawing.Size(63, 17);
+            this.checkBoxMouseInvertY.TabIndex = 8;
+            this.checkBoxMouseInvertY.Text = "Invert Y";
+            this.checkBoxMouseInvertY.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxFixAimSensitivity
+            // 
+            this.checkBoxFixAimSensitivity.AutoSize = true;
+            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 153);
+            this.checkBoxFixAimSensitivity.Name = "checkBoxFixAimSensitivity";
+            this.checkBoxFixAimSensitivity.Size = new System.Drawing.Size(106, 17);
+            this.checkBoxFixAimSensitivity.TabIndex = 7;
+            this.checkBoxFixAimSensitivity.Text = "Fix aim sensitivity";
+            this.checkBoxFixAimSensitivity.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxFixMouseSensitivity
+            // 
+            this.checkBoxFixMouseSensitivity.AutoSize = true;
+            this.checkBoxFixMouseSensitivity.Location = new System.Drawing.Point(9, 130);
+            this.checkBoxFixMouseSensitivity.Name = "checkBoxFixMouseSensitivity";
+            this.checkBoxFixMouseSensitivity.Size = new System.Drawing.Size(225, 17);
+            this.checkBoxFixMouseSensitivity.TabIndex = 6;
+            this.checkBoxFixMouseSensitivity.Text = "Match mouse horizontal/vertical sensitivity";
+            this.checkBoxFixMouseSensitivity.UseVisualStyleBackColor = true;
             // 
             // sliderMouseSensitivityY
             // 
@@ -2594,26 +2868,6 @@
             this.labelMouseSensitivityY.TabIndex = 3;
             this.labelMouseSensitivityY.Text = "Vertical sensitivity";
             // 
-            // checkBoxMouseInvertX
-            // 
-            this.checkBoxMouseInvertX.AutoSize = true;
-            this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 210);
-            this.checkBoxMouseInvertX.Name = "checkBoxMouseInvertX";
-            this.checkBoxMouseInvertX.Size = new System.Drawing.Size(63, 17);
-            this.checkBoxMouseInvertX.TabIndex = 9;
-            this.checkBoxMouseInvertX.Text = "Invert X";
-            this.checkBoxMouseInvertX.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMouseInvertY
-            // 
-            this.checkBoxMouseInvertY.AutoSize = true;
-            this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 187);
-            this.checkBoxMouseInvertY.Name = "checkBoxMouseInvertY";
-            this.checkBoxMouseInvertY.Size = new System.Drawing.Size(63, 17);
-            this.checkBoxMouseInvertY.TabIndex = 8;
-            this.checkBoxMouseInvertY.Text = "Invert Y";
-            this.checkBoxMouseInvertY.UseVisualStyleBackColor = true;
-            // 
             // sliderMouseSensitivityX
             // 
             this.sliderMouseSensitivityX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -2628,16 +2882,6 @@
             this.sliderMouseSensitivityX.TabIndex = 1;
             this.sliderMouseSensitivityX.TickStyle = System.Windows.Forms.TickStyle.None;
             this.sliderMouseSensitivityX.Value = 300;
-            // 
-            // checkBoxFixAimSensitivity
-            // 
-            this.checkBoxFixAimSensitivity.AutoSize = true;
-            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 153);
-            this.checkBoxFixAimSensitivity.Name = "checkBoxFixAimSensitivity";
-            this.checkBoxFixAimSensitivity.Size = new System.Drawing.Size(106, 17);
-            this.checkBoxFixAimSensitivity.TabIndex = 7;
-            this.checkBoxFixAimSensitivity.Text = "Fix aim sensitivity";
-            this.checkBoxFixAimSensitivity.UseVisualStyleBackColor = true;
             // 
             // numMouseSensitivityX
             // 
@@ -2676,16 +2920,6 @@
             this.labelMouseSensitivityX.Size = new System.Drawing.Size(102, 13);
             this.labelMouseSensitivityX.TabIndex = 0;
             this.labelMouseSensitivityX.Text = "Horizontal sensitivity";
-            // 
-            // checkBoxFixMouseSensitivity
-            // 
-            this.checkBoxFixMouseSensitivity.AutoSize = true;
-            this.checkBoxFixMouseSensitivity.Location = new System.Drawing.Point(9, 130);
-            this.checkBoxFixMouseSensitivity.Name = "checkBoxFixMouseSensitivity";
-            this.checkBoxFixMouseSensitivity.Size = new System.Drawing.Size(225, 17);
-            this.checkBoxFixMouseSensitivity.TabIndex = 6;
-            this.checkBoxFixMouseSensitivity.Text = "Match mouse horizontal/vertical sensitivity";
-            this.checkBoxFixMouseSensitivity.UseVisualStyleBackColor = true;
             // 
             // tabPageCamera
             // 
@@ -3928,234 +4162,6 @@
             this.labelTweaksTitle.TabIndex = 71;
             this.labelTweaksTitle.Text = "Tweaks";
             // 
-            // toolTip
-            // 
-            this.toolTip.AutoPopDelay = 20000;
-            this.toolTip.BackColor = System.Drawing.Color.White;
-            this.toolTip.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolTip.ForeColor = System.Drawing.Color.Black;
-            this.toolTip.InitialDelay = 500;
-            this.toolTip.OwnerDraw = true;
-            this.toolTip.Padding = new System.Drawing.Size(6, 6);
-            this.toolTip.ReshowDelay = 100;
-            this.toolTip.ShowAlways = true;
-            // 
-            // sliderGamepadSensitivityY
-            // 
-            this.sliderGamepadSensitivityY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderGamepadSensitivityY.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderGamepadSensitivityY.Location = new System.Drawing.Point(9, 91);
-            this.sliderGamepadSensitivityY.Maximum = 15556;
-            this.sliderGamepadSensitivityY.Minimum = 4445;
-            this.sliderGamepadSensitivityY.Name = "sliderGamepadSensitivityY";
-            this.sliderGamepadSensitivityY.Size = new System.Drawing.Size(325, 45);
-            this.sliderGamepadSensitivityY.SmallChange = 300;
-            this.sliderGamepadSensitivityY.TabIndex = 10;
-            this.sliderGamepadSensitivityY.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderGamepadSensitivityY.Value = 6000;
-            // 
-            // numGamepadSensitivityY
-            // 
-            this.numGamepadSensitivityY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numGamepadSensitivityY.DecimalPlaces = 4;
-            this.numGamepadSensitivityY.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            262144});
-            this.numGamepadSensitivityY.Location = new System.Drawing.Point(340, 91);
-            this.numGamepadSensitivityY.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numGamepadSensitivityY.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            393216});
-            this.numGamepadSensitivityY.Name = "numGamepadSensitivityY";
-            this.numGamepadSensitivityY.Size = new System.Drawing.Size(54, 20);
-            this.numGamepadSensitivityY.TabIndex = 11;
-            this.numGamepadSensitivityY.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            65536});
-            // 
-            // labelGamepadSensitivityY
-            // 
-            this.labelGamepadSensitivityY.AutoSize = true;
-            this.labelGamepadSensitivityY.Location = new System.Drawing.Point(6, 73);
-            this.labelGamepadSensitivityY.Name = "labelGamepadSensitivityY";
-            this.labelGamepadSensitivityY.Size = new System.Drawing.Size(90, 13);
-            this.labelGamepadSensitivityY.TabIndex = 9;
-            this.labelGamepadSensitivityY.Text = "Vertical sensitivity";
-            // 
-            // sliderGamepadSensitivityX
-            // 
-            this.sliderGamepadSensitivityX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderGamepadSensitivityX.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderGamepadSensitivityX.Location = new System.Drawing.Point(9, 40);
-            this.sliderGamepadSensitivityX.Maximum = 15556;
-            this.sliderGamepadSensitivityX.Minimum = 4445;
-            this.sliderGamepadSensitivityX.Name = "sliderGamepadSensitivityX";
-            this.sliderGamepadSensitivityX.Size = new System.Drawing.Size(325, 45);
-            this.sliderGamepadSensitivityX.SmallChange = 300;
-            this.sliderGamepadSensitivityX.TabIndex = 7;
-            this.sliderGamepadSensitivityX.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderGamepadSensitivityX.Value = 6667;
-            // 
-            // numGamepadSensitivityX
-            // 
-            this.numGamepadSensitivityX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numGamepadSensitivityX.DecimalPlaces = 4;
-            this.numGamepadSensitivityX.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            262144});
-            this.numGamepadSensitivityX.Location = new System.Drawing.Point(340, 40);
-            this.numGamepadSensitivityX.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numGamepadSensitivityX.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            393216});
-            this.numGamepadSensitivityX.Name = "numGamepadSensitivityX";
-            this.numGamepadSensitivityX.Size = new System.Drawing.Size(54, 20);
-            this.numGamepadSensitivityX.TabIndex = 8;
-            this.numGamepadSensitivityX.Value = new decimal(new int[] {
-            6667,
-            0,
-            0,
-            262144});
-            // 
-            // labelGamepadSensitivityX
-            // 
-            this.labelGamepadSensitivityX.AutoSize = true;
-            this.labelGamepadSensitivityX.Location = new System.Drawing.Point(6, 22);
-            this.labelGamepadSensitivityX.Name = "labelGamepadSensitivityX";
-            this.labelGamepadSensitivityX.Size = new System.Drawing.Size(102, 13);
-            this.labelGamepadSensitivityX.TabIndex = 6;
-            this.labelGamepadSensitivityX.Text = "Horizontal sensitivity";
-            // 
-            // groupBoxTextures
-            // 
-            this.groupBoxTextures.Controls.Add(this.comboBoxTextureQuality);
-            this.groupBoxTextures.Controls.Add(this.labelTextureQuality);
-            this.groupBoxTextures.Location = new System.Drawing.Point(9, 183);
-            this.groupBoxTextures.Name = "groupBoxTextures";
-            this.groupBoxTextures.Size = new System.Drawing.Size(381, 55);
-            this.groupBoxTextures.TabIndex = 19;
-            this.groupBoxTextures.TabStop = false;
-            this.groupBoxTextures.Text = "Textures";
-            // 
-            // comboBoxTextureQuality
-            // 
-            this.comboBoxTextureQuality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxTextureQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTextureQuality.FormattingEnabled = true;
-            this.comboBoxTextureQuality.Location = new System.Drawing.Point(156, 19);
-            this.comboBoxTextureQuality.Name = "comboBoxTextureQuality";
-            this.comboBoxTextureQuality.Size = new System.Drawing.Size(219, 21);
-            this.comboBoxTextureQuality.TabIndex = 3;
-            // 
-            // labelTextureQuality
-            // 
-            this.labelTextureQuality.AutoSize = true;
-            this.labelTextureQuality.Location = new System.Drawing.Point(7, 22);
-            this.labelTextureQuality.Name = "labelTextureQuality";
-            this.labelTextureQuality.Size = new System.Drawing.Size(111, 13);
-            this.labelTextureQuality.TabIndex = 2;
-            this.labelTextureQuality.Text = "Texture quality preset:";
-            // 
-            // comboBoxShadowQuality
-            // 
-            this.comboBoxShadowQuality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxShadowQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxShadowQuality.FormattingEnabled = true;
-            this.comboBoxShadowQuality.Location = new System.Drawing.Point(156, 21);
-            this.comboBoxShadowQuality.Name = "comboBoxShadowQuality";
-            this.comboBoxShadowQuality.Size = new System.Drawing.Size(219, 21);
-            this.comboBoxShadowQuality.TabIndex = 8;
-            // 
-            // labelShadowQuality
-            // 
-            this.labelShadowQuality.AutoSize = true;
-            this.labelShadowQuality.Location = new System.Drawing.Point(7, 24);
-            this.labelShadowQuality.Name = "labelShadowQuality";
-            this.labelShadowQuality.Size = new System.Drawing.Size(114, 13);
-            this.labelShadowQuality.TabIndex = 7;
-            this.labelShadowQuality.Text = "Shadow quality preset:";
-            // 
-            // comboBoxGodrayQuality
-            // 
-            this.comboBoxGodrayQuality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxGodrayQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxGodrayQuality.FormattingEnabled = true;
-            this.comboBoxGodrayQuality.Location = new System.Drawing.Point(156, 41);
-            this.comboBoxGodrayQuality.Name = "comboBoxGodrayQuality";
-            this.comboBoxGodrayQuality.Size = new System.Drawing.Size(219, 21);
-            this.comboBoxGodrayQuality.TabIndex = 5;
-            // 
-            // labelGodrayQuality
-            // 
-            this.labelGodrayQuality.AutoSize = true;
-            this.labelGodrayQuality.Location = new System.Drawing.Point(7, 44);
-            this.labelGodrayQuality.Name = "labelGodrayQuality";
-            this.labelGodrayQuality.Size = new System.Drawing.Size(134, 13);
-            this.labelGodrayQuality.TabIndex = 4;
-            this.labelGodrayQuality.Text = "Volumetric Lighting Quality:";
-            // 
-            // comboBoxWaterShadowFilter
-            // 
-            this.comboBoxWaterShadowFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxWaterShadowFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxWaterShadowFilter.FormattingEnabled = true;
-            this.comboBoxWaterShadowFilter.Location = new System.Drawing.Point(156, 111);
-            this.comboBoxWaterShadowFilter.Name = "comboBoxWaterShadowFilter";
-            this.comboBoxWaterShadowFilter.Size = new System.Drawing.Size(219, 21);
-            this.comboBoxWaterShadowFilter.TabIndex = 6;
-            // 
-            // labelWaterShadowFilter
-            // 
-            this.labelWaterShadowFilter.AutoSize = true;
-            this.labelWaterShadowFilter.Location = new System.Drawing.Point(7, 114);
-            this.labelWaterShadowFilter.Name = "labelWaterShadowFilter";
-            this.labelWaterShadowFilter.Size = new System.Drawing.Size(71, 13);
-            this.labelWaterShadowFilter.TabIndex = 5;
-            this.labelWaterShadowFilter.Text = "Shadow filter:";
-            // 
-            // labelOverallQualityPreset
-            // 
-            this.labelOverallQualityPreset.AutoSize = true;
-            this.labelOverallQualityPreset.Location = new System.Drawing.Point(6, 26);
-            this.labelOverallQualityPreset.Name = "labelOverallQualityPreset";
-            this.labelOverallQualityPreset.Size = new System.Drawing.Size(76, 13);
-            this.labelOverallQualityPreset.TabIndex = 20;
-            this.labelOverallQualityPreset.Text = "Overall quality:";
-            // 
-            // buttonSelectOverallQualityPreset
-            // 
-            this.buttonSelectOverallQualityPreset.Location = new System.Drawing.Point(164, 21);
-            this.buttonSelectOverallQualityPreset.Name = "buttonSelectOverallQualityPreset";
-            this.buttonSelectOverallQualityPreset.Size = new System.Drawing.Size(227, 23);
-            this.buttonSelectOverallQualityPreset.TabIndex = 21;
-            this.buttonSelectOverallQualityPreset.Text = "Select quality preset";
-            this.buttonSelectOverallQualityPreset.UseVisualStyleBackColor = true;
-            this.buttonSelectOverallQualityPreset.Click += new System.EventHandler(this.buttonSelectOverallQualityPreset_Click);
-            // 
             // contextMenuStripOverallQualityPresets
             // 
             this.contextMenuStripOverallQualityPresets.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -4169,6 +4175,18 @@
             this.cancelToolStripMenuItem});
             this.contextMenuStripOverallQualityPresets.Name = "contextMenuStripOverallQualityPresets";
             this.contextMenuStripOverallQualityPresets.Size = new System.Drawing.Size(161, 148);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Enabled = false;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem1.Text = "Graphics presets";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(157, 6);
             // 
             // lowToolStripMenuItem
             // 
@@ -4209,28 +4227,67 @@
             this.cancelToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.cancelToolStripMenuItem.Text = "Cancel";
             // 
-            // toolStripSeparator2
+            // groupBoxDOF
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(157, 6);
+            this.groupBoxDOF.Controls.Add(this.numDOFStrength);
+            this.groupBoxDOF.Controls.Add(this.labelDOFStrength);
+            this.groupBoxDOF.Controls.Add(this.checkBoxDepthOfField);
+            this.groupBoxDOF.Controls.Add(this.sliderDOFStrength);
+            this.groupBoxDOF.Location = new System.Drawing.Point(9, 505);
+            this.groupBoxDOF.Name = "groupBoxDOF";
+            this.groupBoxDOF.Size = new System.Drawing.Size(381, 105);
+            this.groupBoxDOF.TabIndex = 2;
+            this.groupBoxDOF.TabStop = false;
+            this.groupBoxDOF.Text = "Depth of Field";
             // 
-            // toolStripMenuItem1
+            // sliderDOFStrength
             // 
-            this.toolStripMenuItem1.Enabled = false;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
-            this.toolStripMenuItem1.Text = "Graphics presets";
+            this.sliderDOFStrength.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderDOFStrength.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderDOFStrength.LargeChange = 10;
+            this.sliderDOFStrength.Location = new System.Drawing.Point(6, 58);
+            this.sliderDOFStrength.Maximum = 100;
+            this.sliderDOFStrength.Name = "sliderDOFStrength";
+            this.sliderDOFStrength.Size = new System.Drawing.Size(285, 45);
+            this.sliderDOFStrength.SmallChange = 5;
+            this.sliderDOFStrength.TabIndex = 8;
+            this.sliderDOFStrength.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
-            // labelSelectedQualityPreset
+            // numDOFStrength
             // 
-            this.labelSelectedQualityPreset.AutoSize = true;
-            this.labelSelectedQualityPreset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSelectedQualityPreset.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelSelectedQualityPreset.Location = new System.Drawing.Point(164, 49);
-            this.labelSelectedQualityPreset.Name = "labelSelectedQualityPreset";
-            this.labelSelectedQualityPreset.Size = new System.Drawing.Size(125, 13);
-            this.labelSelectedQualityPreset.TabIndex = 22;
-            this.labelSelectedQualityPreset.Text = "Current preset: Unknown";
+            this.numDOFStrength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numDOFStrength.DecimalPlaces = 1;
+            this.numDOFStrength.Location = new System.Drawing.Point(297, 61);
+            this.numDOFStrength.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numDOFStrength.Name = "numDOFStrength";
+            this.numDOFStrength.Size = new System.Drawing.Size(74, 20);
+            this.numDOFStrength.TabIndex = 9;
+            // 
+            // labelDOFStrength
+            // 
+            this.labelDOFStrength.AutoSize = true;
+            this.labelDOFStrength.Location = new System.Drawing.Point(7, 42);
+            this.labelDOFStrength.Name = "labelDOFStrength";
+            this.labelDOFStrength.Size = new System.Drawing.Size(47, 13);
+            this.labelDOFStrength.TabIndex = 7;
+            this.labelDOFStrength.Text = "Strength";
+            // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 20000;
+            this.toolTip.BackColor = System.Drawing.Color.White;
+            this.toolTip.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolTip.ForeColor = System.Drawing.Color.Black;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.OwnerDraw = true;
+            this.toolTip.Padding = new System.Drawing.Size(6, 6);
+            this.toolTip.ReshowDelay = 100;
+            this.toolTip.ShowAlways = true;
             // 
             // UserControlTweaks
             // 
@@ -4268,6 +4325,8 @@
             this.tabPageVideo.ResumeLayout(false);
             this.groupBoxGraphics.ResumeLayout(false);
             this.groupBoxGraphics.PerformLayout();
+            this.groupBoxTextures.ResumeLayout(false);
+            this.groupBoxTextures.PerformLayout();
             this.groupBoxGraphicEffects.ResumeLayout(false);
             this.groupBoxGraphicEffects.PerformLayout();
             this.groupBoxTAASharpening.ResumeLayout(false);
@@ -4330,6 +4389,10 @@
             this.tabPageControls.ResumeLayout(false);
             this.groupBoxGamepad.ResumeLayout(false);
             this.groupBoxGamepad.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).EndInit();
             this.groupBoxMouse.ResumeLayout(false);
             this.groupBoxMouse.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivityY)).EndInit();
@@ -4392,13 +4455,11 @@
             this.groupBoxLoginProfiles.PerformLayout();
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).EndInit();
-            this.groupBoxTextures.ResumeLayout(false);
-            this.groupBoxTextures.PerformLayout();
             this.contextMenuStripOverallQualityPresets.ResumeLayout(false);
+            this.groupBoxDOF.ResumeLayout(false);
+            this.groupBoxDOF.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderDOFStrength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDOFStrength)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4691,5 +4752,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
         private System.Windows.Forms.Label labelSelectedQualityPreset;
+        private System.Windows.Forms.GroupBox groupBoxDOF;
+        private System.Windows.Forms.NumericUpDown numDOFStrength;
+        private System.Windows.Forms.Label labelDOFStrength;
+        private System.Windows.Forms.TrackBar sliderDOFStrength;
     }
 }
