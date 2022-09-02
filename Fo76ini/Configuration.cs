@@ -234,11 +234,11 @@ namespace Fo76ini
                 get
                 {
                     return Utils.FromISOTimeStamp(
-                        IniFiles.Config.GetString("Preferences", "sTranslationsLastUpdated", "2022-09-01T00:00:00Z"));
+                        IniFiles.Config.GetString("Translations", "sLastUpdated", "2022-09-01T00:00:00Z"));
                 }
                 set
                 {
-                    IniFiles.Config.Set("Preferences", "sTranslationsLastUpdated", Utils.ToISOTimeStamp(value));
+                    IniFiles.Config.Set("Translations", "sLastUpdated", Utils.ToISOTimeStamp(value));
                 }
             }
 
@@ -251,6 +251,18 @@ namespace Fo76ini
                 set
                 {
                     IniFiles.Config.Set("Preferences", "sLanguage", value);
+                }
+            }
+
+            public static bool NotifyAboutAvailableUpdates
+            {
+                get
+                {
+                    return IniFiles.Config.GetBool("Translations", "bNotifyAboutAvailableUpdates", true);
+                }
+                set
+                {
+                    IniFiles.Config.Set("Translations", "bNotifyAboutAvailableUpdates", value);
                 }
             }
         }

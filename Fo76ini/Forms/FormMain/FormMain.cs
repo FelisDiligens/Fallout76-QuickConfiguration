@@ -458,7 +458,7 @@ namespace Fo76ini
 
         private void backgroundWorkerTranslationsCheckForUpdates_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!Configuration.IgnoreUpdates)
+            if (!Configuration.IgnoreUpdates && Configuration.Localization.NotifyAboutAvailableUpdates)
                 Localization.CheckForUpdates();
         }
 

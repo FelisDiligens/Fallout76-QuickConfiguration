@@ -79,14 +79,17 @@ namespace Fo76ini.Forms.FormMain.Tabs
             // Automatically apply changes when tool is closed or game is launched
             LinkedTweaks.LinkProperty(checkBoxAutoApply, new Accessor<bool>(() => Configuration.AutoApply));
 
-            // Don't check for updates on startup.
-            LinkedTweaks.LinkProperty(checkBoxIgnoreUpdates, new Accessor<bool>(() => Configuration.IgnoreUpdates));
-
             // Make backups of *.ini files:
             LinkedTweaks.LinkProperty(checkBoxMakeBackups, new Accessor<bool>(() => Configuration.MakeBackups));
 
             // Close the tool when the game is launched.
             LinkedTweaks.LinkProperty(checkBoxQuitOnGameLaunch, new Accessor<bool>(() => Configuration.QuitOnLaunch));
+
+            // Don't check for updates on startup.
+            LinkedTweaks.LinkProperty(checkBoxIgnoreUpdates, new Accessor<bool>(() => Configuration.IgnoreUpdates));
+
+            // Notify about translation updates.
+            LinkedTweaks.LinkProperty(checkBoxNotifyOnTranslationUpdate, new Accessor<bool>(() => Configuration.Localization.NotifyAboutAvailableUpdates));
 
             /*
              * Notifications

@@ -80,9 +80,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelSettingsNotifications = new System.Windows.Forms.Label();
             this.checkBoxShowNotifications = new System.Windows.Forms.CheckBox();
+            this.labelTranslationsUpdateAvailable = new System.Windows.Forms.Label();
             this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
-            this.labelTranslationsUpdateAvailable = new System.Windows.Forms.Label();
+            this.checkBoxNotifyOnTranslationUpdate = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
             this.panelSettingsLocalization.SuspendLayout();
             this.panelSettingsBehavior.SuspendLayout();
@@ -482,6 +483,7 @@
             // 
             // panelSettingsBehavior
             // 
+            this.panelSettingsBehavior.Controls.Add(this.checkBoxNotifyOnTranslationUpdate);
             this.panelSettingsBehavior.Controls.Add(this.checkBoxMakeBackups);
             this.panelSettingsBehavior.Controls.Add(this.labelSettingsBehavior);
             this.panelSettingsBehavior.Controls.Add(this.checkBoxAutoApply);
@@ -489,7 +491,7 @@
             this.panelSettingsBehavior.Controls.Add(this.checkBoxIgnoreUpdates);
             this.panelSettingsBehavior.Location = new System.Drawing.Point(0, 165);
             this.panelSettingsBehavior.Name = "panelSettingsBehavior";
-            this.panelSettingsBehavior.Size = new System.Drawing.Size(403, 128);
+            this.panelSettingsBehavior.Size = new System.Drawing.Size(403, 154);
             this.panelSettingsBehavior.TabIndex = 83;
             // 
             // checkBoxMakeBackups
@@ -507,7 +509,7 @@
             this.panelSettingsOptions.Controls.Add(this.labelSettingsOptions);
             this.panelSettingsOptions.Controls.Add(this.checkBoxReadOnly);
             this.panelSettingsOptions.Controls.Add(this.checkBoxHandleNXMLinks);
-            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 397);
+            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 423);
             this.panelSettingsOptions.Name = "panelSettingsOptions";
             this.panelSettingsOptions.Size = new System.Drawing.Size(403, 86);
             this.panelSettingsOptions.TabIndex = 85;
@@ -522,7 +524,7 @@
             this.panelSettingsNWMode.Controls.Add(this.checkBoxNWAutoDeployMods);
             this.panelSettingsNWMode.Controls.Add(this.labelToggleNW);
             this.panelSettingsNWMode.Controls.Add(this.buttonNWMode);
-            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 774);
+            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 800);
             this.panelSettingsNWMode.Name = "panelSettingsNWMode";
             this.panelSettingsNWMode.Size = new System.Drawing.Size(403, 279);
             this.panelSettingsNWMode.TabIndex = 86;
@@ -541,7 +543,7 @@
             this.panelSettingsPaths.Controls.Add(this.labelSettingsModManager);
             this.panelSettingsPaths.Controls.Add(this.labelDownloadsPath);
             this.panelSettingsPaths.Controls.Add(this.buttonPickDownloadsPath);
-            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 489);
+            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 515);
             this.panelSettingsPaths.Name = "panelSettingsPaths";
             this.panelSettingsPaths.Size = new System.Drawing.Size(403, 179);
             this.panelSettingsPaths.TabIndex = 87;
@@ -551,7 +553,7 @@
             this.panelSettingsProfile.Controls.Add(this.linkLabelOpenProfileEditor);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfileNotice);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfiles);
-            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 674);
+            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 700);
             this.panelSettingsProfile.Name = "panelSettingsProfile";
             this.panelSettingsProfile.Size = new System.Drawing.Size(403, 87);
             this.panelSettingsProfile.TabIndex = 88;
@@ -591,7 +593,7 @@
             this.panel1.Controls.Add(this.labelSettingsNotifications);
             this.panel1.Controls.Add(this.checkBoxShowNotifications);
             this.panel1.Controls.Add(this.checkBoxPlayNotificationSound);
-            this.panel1.Location = new System.Drawing.Point(0, 299);
+            this.panel1.Location = new System.Drawing.Point(0, 325);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(403, 92);
             this.panel1.TabIndex = 89;
@@ -618,6 +620,15 @@
             this.toolTip.SetToolTip(this.checkBoxShowNotifications, "By disabling this option, notifications will be disabled, but you may miss (more " +
         "or less) important messages.");
             this.checkBoxShowNotifications.UseVisualStyleBackColor = true;
+            // 
+            // labelTranslationsUpdateAvailable
+            // 
+            this.labelTranslationsUpdateAvailable.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.labelTranslationsUpdateAvailable.Location = new System.Drawing.Point(12, 65);
+            this.labelTranslationsUpdateAvailable.Name = "labelTranslationsUpdateAvailable";
+            this.labelTranslationsUpdateAvailable.Size = new System.Drawing.Size(212, 51);
+            this.labelTranslationsUpdateAvailable.TabIndex = 76;
+            this.labelTranslationsUpdateAvailable.Text = "Updates for translations are available.\r\nClick the download button to get them.";
             // 
             // buttonNWMode
             // 
@@ -648,14 +659,15 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
-            // labelTranslationsUpdateAvailable
+            // checkBoxNotifyOnTranslationUpdate
             // 
-            this.labelTranslationsUpdateAvailable.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.labelTranslationsUpdateAvailable.Location = new System.Drawing.Point(12, 65);
-            this.labelTranslationsUpdateAvailable.Name = "labelTranslationsUpdateAvailable";
-            this.labelTranslationsUpdateAvailable.Size = new System.Drawing.Size(212, 51);
-            this.labelTranslationsUpdateAvailable.TabIndex = 76;
-            this.labelTranslationsUpdateAvailable.Text = "Updates for translations are available.\r\nClick the download button to get them.";
+            this.checkBoxNotifyOnTranslationUpdate.AutoSize = true;
+            this.checkBoxNotifyOnTranslationUpdate.Location = new System.Drawing.Point(15, 129);
+            this.checkBoxNotifyOnTranslationUpdate.Name = "checkBoxNotifyOnTranslationUpdate";
+            this.checkBoxNotifyOnTranslationUpdate.Size = new System.Drawing.Size(293, 17);
+            this.checkBoxNotifyOnTranslationUpdate.TabIndex = 78;
+            this.checkBoxNotifyOnTranslationUpdate.Text = "Notify when a newer translation is available for download";
+            this.checkBoxNotifyOnTranslationUpdate.UseVisualStyleBackColor = true;
             // 
             // UserControlSettings
             // 
@@ -748,5 +760,6 @@
         private System.Windows.Forms.Label labelSettingsNotifications;
         private System.Windows.Forms.CheckBox checkBoxShowNotifications;
         public System.Windows.Forms.Label labelTranslationsUpdateAvailable;
+        private System.Windows.Forms.CheckBox checkBoxNotifyOnTranslationUpdate;
     }
 }

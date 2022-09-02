@@ -1,9 +1,13 @@
 ### What's new in v1.11.4
 
-Hi everyone,
+This update adds:
+ - the server status of Fallout 76 to the home page.  
+   This way, you can check if the game is online or in maintenance before you start it.
+ - Depth of Field strength slider to the "Tweaks" page.
+ - a notification that pops up if translations can be updated (opt-out).
+ - minor changes.
 
-with this update I added the server status of Fallout 76 to the home page.  
-This way, you can check if the game is online or in maintenance before you start it.
+---
 
 ### What's new in v1.11.3h1? - Hotfix 1
 

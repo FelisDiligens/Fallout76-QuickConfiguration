@@ -172,7 +172,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         private void checkBoxIgnoreUpdates_CheckedChanged(object sender, EventArgs e)
         {
-            // TODO: When checkBoxIgnoreUpdates gets checked, call Form1.CheckVersion
+            this.checkBoxNotifyOnTranslationUpdate.Enabled = !this.checkBoxIgnoreUpdates.Checked;
         }
 
         #region Paths
