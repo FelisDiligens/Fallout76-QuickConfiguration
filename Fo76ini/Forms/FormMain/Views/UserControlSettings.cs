@@ -55,7 +55,6 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         private void Localization_NewTranslationsAvailable(object sender, EventArgs e)
         {
-            Console.WriteLine("Meow?");
             this.labelTranslationsUpdateAvailable.Visible = true;
         }
 
