@@ -113,12 +113,12 @@ Otherwise the .NET installer might fail or the tool might not start.
 ### Translators:
 * Russian by [Sondju](https://forums.nexusmods.com/index.php?/user/6969601-sondju/)
 * Simplified Chinese
-  * for v1.11.1 (latest translation) by [SugarBombsRADS (BulaLuka)](https://forums.nexusmods.com/index.php?/user/90175763-bulaluka/)
+  * for v1.11.4 (latest translation) by [SugarBombsRADS (BulaLuka)](https://forums.nexusmods.com/index.php?/user/90175763-bulaluka/)
   * for v1.9.5 by [ColaNaramon (可乐の魂)](https://forums.nexusmods.com/index.php?/user/91571998-colanaramon/)
   * for v1.8.2 by [micus2048](https://www.nexusmods.com/users/97619783)
   * for v1.6.2 by [Broodahood](https://forums.nexusmods.com/index.php?/user/68821693-broodahood/)
 * Japanese
-  * for v1.11.2 (latest translation) by [Akamiso0123 (yuutarionn)](https://forums.nexusmods.com/index.php?/user/6598456-yuutarionn/)
+  * for v1.11.3 (latest translation) by [Akamiso0123 (yuutarionn)](https://forums.nexusmods.com/index.php?/user/6598456-yuutarionn/)
   * for v1.9.0h2 by [haiji951753](https://forums.nexusmods.com/index.php?/user/59398041-haiji951753/)
 * French by Christophe Noret (aka. [kr1ss](https://www.nexusmods.com/fallout76/users/22658164)) and [3z3k3yl](https://forums.nexusmods.com/index.php?/user/26975924-3z3k3yl/)
 * Polish by [Gray770](https://forums.nexusmods.com/index.php?/user/91201958-gray770/)
