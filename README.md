@@ -12,7 +12,7 @@
   <a href="https://github.com/FelisDiligens/Fallout76-QuickConfiguration/releases/latest">
     <img src="https://github.com/FelisDiligens/Fallout76-QuickConfiguration/raw/master/Images/getitfromgithub_button.png"/>
   </a>
-  <a href="https://www.nexusmods.com/fallout76/mods/546?tab=files">
+  <a href="https://www.nexusmods.com/fallout76/mods/546?tab=files#mod-page-tab-files">
     <img src="https://github.com/FelisDiligens/Fallout76-QuickConfiguration/raw/master/Images/getitfromnexusmods_button.png"/>
   </a>
 </p>
