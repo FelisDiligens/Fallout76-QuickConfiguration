@@ -517,7 +517,7 @@ namespace Fo76ini
 
             UpdateModList();
             UpdateStatusStrip();
-            if (sidePanelStatus != SidePanelStatus.Closed)
+            if (sidePanelState != SidePanelState.Closed)
                 UpdateSidePanel();
         }
 
@@ -648,7 +648,7 @@ namespace Fo76ini
         private void reloadUIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.UpdateUI();
-            if (this.sidePanelStatus != SidePanelStatus.Closed)
+            if (this.sidePanelState != SidePanelState.Closed)
                 UpdateSidePanel();
         }
 

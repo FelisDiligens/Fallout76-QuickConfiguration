@@ -17,14 +17,15 @@ namespace Fo76ini
 {
     public partial class FormMods : Form
     {
-        private enum SidePanelStatus
+        private enum SidePanelState
         {
             Expanded,
             Collapsed,
             Closed
         }
 
-        private SidePanelStatus sidePanelStatus = SidePanelStatus.Closed;
+        private SidePanelState sidePanelState = SidePanelState.Closed; // The current state of the side panel.
+        private bool sidePanelOpenCollapsed = false; // Remember whether the user has collapsed the side panel.
         private bool isUpdatingSidePanel = false;
         private List<ManagedMod> editedMods;
 
@@ -120,8 +121,8 @@ namespace Fo76ini
             UpdateSidePanel();
 
             // Only expand, if the user hasn't collapsed it yet:
-            if (sidePanelStatus == SidePanelStatus.Closed)
-                ExpandSidePanel();
+            if (sidePanelState == SidePanelState.Closed)
+                OpenSidePanel();
         }
 
         /// <summary>
@@ -147,8 +148,8 @@ namespace Fo76ini
             UpdateSidePanel();
 
             // Only expand, if the user hasn't collapsed it yet:
-            if (sidePanelStatus == SidePanelStatus.Closed)
-                ExpandSidePanel();
+            if (sidePanelState == SidePanelState.Closed)
+                OpenSidePanel();
         }
 
 
@@ -159,10 +160,16 @@ namespace Fo76ini
         // Toggle the side panel, when the user clicks on the "<-" or "->" button.
         private void pictureBoxCollapseDetails_Click(object sender, EventArgs e)
         {
-            if (sidePanelStatus != SidePanelStatus.Expanded)
+            if (sidePanelState == SidePanelState.Collapsed)
+            {
                 ExpandSidePanel();
-            else
+                sidePanelOpenCollapsed = false;
+            }
+            else if (sidePanelState == SidePanelState.Expanded)
+            {
                 CollapseSidePanel();
+                sidePanelOpenCollapsed = true;
+            }
         }
 
         /// <summary>
@@ -179,7 +186,7 @@ namespace Fo76ini
             // Reset image, so the thumbnail gets unloaded:
             this.pictureBoxModThumbnail.Image = Resources.bg;
 
-            sidePanelStatus = SidePanelStatus.Closed;
+            sidePanelState = SidePanelState.Closed;
         }
 
         /// <summary>
@@ -196,7 +203,7 @@ namespace Fo76ini
             this.pictureBoxCollapseDetails.Location = new Point(tabWidth - buttonWidth, this.pictureBoxCollapseDetails.Location.Y);
             this.objectListViewMods.Width = tabWidth - this.objectListViewMods.Location.X - buttonWidth + 1;
 
-            sidePanelStatus = SidePanelStatus.Collapsed;
+            sidePanelState = SidePanelState.Collapsed;
         }
 
         /// <summary>
@@ -214,9 +221,20 @@ namespace Fo76ini
             this.pictureBoxCollapseDetails.Location = new Point(tabWidth - panelWidth - buttonWidth + 1, this.pictureBoxCollapseDetails.Location.Y);
             this.objectListViewMods.Width = tabWidth - this.objectListViewMods.Location.X - panelWidth - buttonWidth + 2;
 
-            sidePanelStatus = SidePanelStatus.Expanded;
+            sidePanelState = SidePanelState.Expanded;
 
             UpdateSidePanelControls();
+        }
+
+        /// <summary>
+        /// Open the side panel, either collapsed or expanded depending on whether the user collapsed it before.
+        /// </summary>
+        private void OpenSidePanel()
+        {
+            if (sidePanelOpenCollapsed)
+                CollapseSidePanel();
+            else
+                ExpandSidePanel();
         }
 
 

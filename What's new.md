@@ -1,12 +1,14 @@
 ### What's new in v1.11.5?
 
-This update fixes the server status.
+This update fixes the server status display.
 
 Before:  
 ![Before](https://i.imgur.com/BHUhoCB.png)  
 
 After:  
 ![After](https://i.imgur.com/tCUVSyD.png)
+
+Also, small QoL fix: The mod manager now remembers whether or not the user has collapsed the side panel.
 
 ---
 
