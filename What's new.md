@@ -1,6 +1,6 @@
 ### What's new in v1.11.5?
 
-This update fixes the server status display.
+This update mainly fixes the server status display.
 
 Before:  
 ![Before](https://i.imgur.com/BHUhoCB.png)  
@@ -8,7 +8,15 @@ Before:
 After:  
 ![After](https://i.imgur.com/tCUVSyD.png)
 
-Also, small QoL fix: The mod manager now remembers whether or not the user has collapsed the side panel.
+**Small changelog:**
+<details>
+<summary>Click to expand</summary>
+
+- Fixed the server status display: Expected different response from server (e.g. "maintenance" instead of the actual "under_maintenance")
+- Small QoL fix: The mod manager now remembers whether or not the user has collapsed the side panel.
+- Updated 7z from version 19.00 to 22.01
+
+</details>
 
 ---
 
