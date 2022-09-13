@@ -289,7 +289,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         /// <returns></returns>
         private String GetKeyFromStatus(String serverStatus)
         {
-            String statusKey = "unknown";
+            String statusKey = serverStatus;
             switch (serverStatus)
             {
                 case "operational":
