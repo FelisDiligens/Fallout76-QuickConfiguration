@@ -1,3 +1,15 @@
+### What's new in v1.11.5?
+
+This update fixes the server status.
+
+Before:  
+![Before](https://i.imgur.com/BHUhoCB.png)  
+
+After:  
+![After](https://i.imgur.com/tCUVSyD.png)
+
+---
+
 ### What's new in v1.11.4?
 
 This update adds:
