@@ -283,12 +283,62 @@ namespace Fo76ini.Forms.FormMain.Tabs
         }
 
         /// <summary>
+        /// Server status => Status key for translation 
+        /// </summary>
+        /// <param name="serverStatus"></param>
+        /// <returns></returns>
+        private String GetKeyFromStatus(String serverStatus)
+        {
+            String statusKey = "unknown";
+            switch (serverStatus)
+            {
+                case "operational":
+                case "all_systems_operational":
+                    statusKey = "operational";
+                    break;
+                case "maintenance":
+                case "under_maintenance":
+                case "service_under_maintenance":
+                    statusKey = "maintenance";
+                    break;
+                case "degraded_performance":
+                case "partially_degraded_service":
+                    statusKey = "degraded";
+                    break;
+                case "partial_outage":
+                case "partial_system_outage":
+                case "minor_service_outage":
+                    statusKey = "partial";
+                    break;
+                /*case "minor_service_outage":
+                    statusKey = "minor";
+                    break;*/
+                case "major_outage":
+                case "major_system_outage":
+                    statusKey = "major";
+                    break;
+            }
+            return statusKey;
+        }
+
+        /// <summary>
         /// Request the localized string of the given server status in the given language from "api.locize.app".
         /// </summary>
+        /// <remarks>
+        /// "statusKey": {
+        ///     "degraded": "Herabgesetzte Performance",
+        ///     "information": "Informationen/Keine Auswirkungen",
+        ///     "maintenance": "Wartung",
+        ///     "major": "Ausfall",
+        ///     "operational": "Funktionsfähig",
+        ///     "partial": "Teilweiser Ausfall",
+        ///     "title": "Dienst-Statussymbole"
+        /// }
+        /// </remarks>
         /// <param name="language">ISO code, two characters long</param>
-        /// <param name="status">The server status as received from the Bethesda.net API.</param>
+        /// <param name="statusKey">Status key for translation</param>
         /// <returns></returns>
-        private String GetLocalizedServerStatus(String language, String status)
+        private String GetLocalizedServerStatus(String language, String statusKey)
         {
             // Send request:
             APIRequest request = new APIRequest($"https://api.locize.app/657e9e0e-8225-4266-88dd-75f047f1a2b3/live/{language.ToLower()}/status");
@@ -302,15 +352,15 @@ namespace Fo76ini.Forms.FormMain.Tabs
                 // If translation does not exist, the server returns an empty JSON object {}
                 // In this situation, fallback to English:
                 if (statusKeys == null)
-                    return GetLocalizedServerStatus("en", status);
+                    return GetLocalizedServerStatus("en", statusKey);
 
-                if (statusKeys[status] != null)
-                    return statusKeys[status].ToObject<string>();
+                if (statusKeys[statusKey] != null)
+                    return statusKeys[statusKey].ToObject<string>();
 
-                return status;
+                return statusKey;
             }
 
-            return status;
+            return statusKey;
         }
 
         /// <summary>
@@ -339,7 +389,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             ServerStatus status = new ServerStatus();
 
-            status.statusKey = ScrapeServerStatus();
+            status.status = ScrapeServerStatus();
+            status.statusKey = GetKeyFromStatus(status.status);
             status.localizedStatus = GetLocalizedServerStatus(Localization.ShortLocale, status.statusKey);
             switch (status.statusKey)
             {
@@ -350,6 +401,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
                     status.image = Resources.status_maintenance_24;
                     break;
                 case "partial":
+                case "minor":
+                case "degraded":
                     status.image = Resources.status_partial_24;
                     break;
                 case "major":
@@ -377,6 +430,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         // Helper struct for the Background Worker.
         private struct ServerStatus
         {
+            public String status;
             public String statusKey;
             public String localizedStatus;
             public Image image;
