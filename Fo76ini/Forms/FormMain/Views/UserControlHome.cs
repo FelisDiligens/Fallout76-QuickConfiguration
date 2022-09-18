@@ -88,11 +88,11 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
             if (!force && Configuration.IgnoreUpdates)
             {
-                this.labelConfigVersion.ForeColor = Color.Black;
+                this.labelConfigVersion.ForeColor = Color.White;
                 return;
             }
 
-            this.labelConfigVersion.ForeColor = Color.Gray;
+            this.labelConfigVersion.ForeColor = Color.Silver;
             this.pictureBoxSpinnerCheckForUpdates.Visible = true;
 
             // Checking version in background:
@@ -111,7 +111,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             // Failed:
             if (Shared.LatestVersion == null)
             {
-                this.labelConfigVersion.ForeColor = Color.Black;
+                this.labelConfigVersion.ForeColor = Color.White;
                 panelUpdate.Visible = false;
                 return;
             }
@@ -127,7 +127,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             {
                 // All good, latest version:
                 panelUpdate.Visible = false;
-                this.labelConfigVersion.ForeColor = Color.DarkGreen;
+                this.labelConfigVersion.ForeColor = Color.FromArgb(50, 255, 50);
             }
         }
 

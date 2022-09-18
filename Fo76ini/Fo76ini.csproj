@@ -168,6 +168,12 @@
     <Compile Include="Controls\PipboyPreview.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\StyledGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\StyledTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\TabControlWithoutHeader.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -575,6 +581,8 @@
     <None Include="Resources\help-16.png" />
     <None Include="Resources\github-24.png" />
     <None Include="Resources\nukesdragons-16.png" />
+    <None Include="Resources\github_white_16.png" />
+    <None Include="Resources\github_white_24.png" />
     <Content Include="Resources\pipboy-24px.png" />
     <Content Include="Resources\pipboy-preview-mask.png" />
     <Content Include="Resources\pipboy-preview-screen.png" />

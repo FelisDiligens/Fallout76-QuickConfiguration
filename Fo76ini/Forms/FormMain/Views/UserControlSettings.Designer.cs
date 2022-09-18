@@ -68,10 +68,13 @@
             this.labelSettingsNuclearWinterOptions = new System.Windows.Forms.Label();
             this.labelToggleNW = new System.Windows.Forms.Label();
             this.panelSettingsLocalization = new System.Windows.Forms.Panel();
+            this.labelTranslationsUpdateAvailable = new System.Windows.Forms.Label();
             this.panelSettingsBehavior = new System.Windows.Forms.Panel();
+            this.checkBoxNotifyOnTranslationUpdate = new System.Windows.Forms.CheckBox();
             this.checkBoxMakeBackups = new System.Windows.Forms.CheckBox();
             this.panelSettingsOptions = new System.Windows.Forms.Panel();
             this.panelSettingsNWMode = new System.Windows.Forms.Panel();
+            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.panelSettingsPaths = new System.Windows.Forms.Panel();
             this.panelSettingsProfile = new System.Windows.Forms.Panel();
             this.linkLabelOpenProfileEditor = new System.Windows.Forms.LinkLabel();
@@ -80,10 +83,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelSettingsNotifications = new System.Windows.Forms.Label();
             this.checkBoxShowNotifications = new System.Windows.Forms.CheckBox();
-            this.labelTranslationsUpdateAvailable = new System.Windows.Forms.Label();
-            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
-            this.checkBoxNotifyOnTranslationUpdate = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelThemeExpl = new System.Windows.Forms.Label();
+            this.radioButtonRespectSystemTheme = new System.Windows.Forms.RadioButton();
+            this.radioButtonDarkTheme = new System.Windows.Forms.RadioButton();
+            this.radioButtonLightTheme = new System.Windows.Forms.RadioButton();
+            this.labelTheme = new System.Windows.Forms.Label();
+            this.labelAppearance = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).BeginInit();
             this.panelSettingsLocalization.SuspendLayout();
             this.panelSettingsBehavior.SuspendLayout();
@@ -92,6 +99,7 @@
             this.panelSettingsPaths.SuspendLayout();
             this.panelSettingsProfile.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // backgroundWorkerDownloadLanguages
@@ -481,6 +489,15 @@
             this.panelSettingsLocalization.Size = new System.Drawing.Size(403, 103);
             this.panelSettingsLocalization.TabIndex = 82;
             // 
+            // labelTranslationsUpdateAvailable
+            // 
+            this.labelTranslationsUpdateAvailable.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.labelTranslationsUpdateAvailable.Location = new System.Drawing.Point(12, 65);
+            this.labelTranslationsUpdateAvailable.Name = "labelTranslationsUpdateAvailable";
+            this.labelTranslationsUpdateAvailable.Size = new System.Drawing.Size(212, 51);
+            this.labelTranslationsUpdateAvailable.TabIndex = 76;
+            this.labelTranslationsUpdateAvailable.Text = "Updates for translations are available.\r\nClick the download button to get them.";
+            // 
             // panelSettingsBehavior
             // 
             this.panelSettingsBehavior.Controls.Add(this.checkBoxNotifyOnTranslationUpdate);
@@ -489,10 +506,20 @@
             this.panelSettingsBehavior.Controls.Add(this.checkBoxAutoApply);
             this.panelSettingsBehavior.Controls.Add(this.checkBoxQuitOnGameLaunch);
             this.panelSettingsBehavior.Controls.Add(this.checkBoxIgnoreUpdates);
-            this.panelSettingsBehavior.Location = new System.Drawing.Point(0, 165);
+            this.panelSettingsBehavior.Location = new System.Drawing.Point(0, 302);
             this.panelSettingsBehavior.Name = "panelSettingsBehavior";
             this.panelSettingsBehavior.Size = new System.Drawing.Size(403, 154);
             this.panelSettingsBehavior.TabIndex = 83;
+            // 
+            // checkBoxNotifyOnTranslationUpdate
+            // 
+            this.checkBoxNotifyOnTranslationUpdate.AutoSize = true;
+            this.checkBoxNotifyOnTranslationUpdate.Location = new System.Drawing.Point(15, 129);
+            this.checkBoxNotifyOnTranslationUpdate.Name = "checkBoxNotifyOnTranslationUpdate";
+            this.checkBoxNotifyOnTranslationUpdate.Size = new System.Drawing.Size(293, 17);
+            this.checkBoxNotifyOnTranslationUpdate.TabIndex = 78;
+            this.checkBoxNotifyOnTranslationUpdate.Text = "Notify when a newer translation is available for download";
+            this.checkBoxNotifyOnTranslationUpdate.UseVisualStyleBackColor = true;
             // 
             // checkBoxMakeBackups
             // 
@@ -509,7 +536,7 @@
             this.panelSettingsOptions.Controls.Add(this.labelSettingsOptions);
             this.panelSettingsOptions.Controls.Add(this.checkBoxReadOnly);
             this.panelSettingsOptions.Controls.Add(this.checkBoxHandleNXMLinks);
-            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 423);
+            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 560);
             this.panelSettingsOptions.Name = "panelSettingsOptions";
             this.panelSettingsOptions.Size = new System.Drawing.Size(403, 86);
             this.panelSettingsOptions.TabIndex = 85;
@@ -524,10 +551,27 @@
             this.panelSettingsNWMode.Controls.Add(this.checkBoxNWAutoDeployMods);
             this.panelSettingsNWMode.Controls.Add(this.labelToggleNW);
             this.panelSettingsNWMode.Controls.Add(this.buttonNWMode);
-            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 800);
+            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 937);
             this.panelSettingsNWMode.Name = "panelSettingsNWMode";
             this.panelSettingsNWMode.Size = new System.Drawing.Size(403, 279);
             this.panelSettingsNWMode.TabIndex = 86;
+            // 
+            // buttonNWMode
+            // 
+            this.buttonNWMode.BorderWidth = ((uint)(1u));
+            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonNWMode.Highlight = false;
+            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
+            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.Location = new System.Drawing.Point(17, 53);
+            this.buttonNWMode.Name = "buttonNWMode";
+            this.buttonNWMode.Padding = 10;
+            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
+            this.buttonNWMode.TabIndex = 50;
+            this.buttonNWMode.Text = "Nuclear Winter";
+            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNWMode.UseVisualStyleBackColor = true;
+            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
             // 
             // panelSettingsPaths
             // 
@@ -543,7 +587,7 @@
             this.panelSettingsPaths.Controls.Add(this.labelSettingsModManager);
             this.panelSettingsPaths.Controls.Add(this.labelDownloadsPath);
             this.panelSettingsPaths.Controls.Add(this.buttonPickDownloadsPath);
-            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 515);
+            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 652);
             this.panelSettingsPaths.Name = "panelSettingsPaths";
             this.panelSettingsPaths.Size = new System.Drawing.Size(403, 179);
             this.panelSettingsPaths.TabIndex = 87;
@@ -553,7 +597,7 @@
             this.panelSettingsProfile.Controls.Add(this.linkLabelOpenProfileEditor);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfileNotice);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfiles);
-            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 700);
+            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 837);
             this.panelSettingsProfile.Name = "panelSettingsProfile";
             this.panelSettingsProfile.Size = new System.Drawing.Size(403, 87);
             this.panelSettingsProfile.TabIndex = 88;
@@ -593,7 +637,7 @@
             this.panel1.Controls.Add(this.labelSettingsNotifications);
             this.panel1.Controls.Add(this.checkBoxShowNotifications);
             this.panel1.Controls.Add(this.checkBoxPlayNotificationSound);
-            this.panel1.Location = new System.Drawing.Point(0, 325);
+            this.panel1.Location = new System.Drawing.Point(0, 462);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(403, 92);
             this.panel1.TabIndex = 89;
@@ -621,32 +665,6 @@
         "or less) important messages.");
             this.checkBoxShowNotifications.UseVisualStyleBackColor = true;
             // 
-            // labelTranslationsUpdateAvailable
-            // 
-            this.labelTranslationsUpdateAvailable.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.labelTranslationsUpdateAvailable.Location = new System.Drawing.Point(12, 65);
-            this.labelTranslationsUpdateAvailable.Name = "labelTranslationsUpdateAvailable";
-            this.labelTranslationsUpdateAvailable.Size = new System.Drawing.Size(212, 51);
-            this.labelTranslationsUpdateAvailable.TabIndex = 76;
-            this.labelTranslationsUpdateAvailable.Text = "Updates for translations are available.\r\nClick the download button to get them.";
-            // 
-            // buttonNWMode
-            // 
-            this.buttonNWMode.BorderWidth = ((uint)(1u));
-            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonNWMode.Highlight = false;
-            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
-            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.Location = new System.Drawing.Point(17, 53);
-            this.buttonNWMode.Name = "buttonNWMode";
-            this.buttonNWMode.Padding = 10;
-            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
-            this.buttonNWMode.TabIndex = 50;
-            this.buttonNWMode.Text = "Nuclear Winter";
-            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.UseVisualStyleBackColor = true;
-            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
-            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -659,21 +677,89 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
-            // checkBoxNotifyOnTranslationUpdate
+            // panel2
             // 
-            this.checkBoxNotifyOnTranslationUpdate.AutoSize = true;
-            this.checkBoxNotifyOnTranslationUpdate.Location = new System.Drawing.Point(15, 129);
-            this.checkBoxNotifyOnTranslationUpdate.Name = "checkBoxNotifyOnTranslationUpdate";
-            this.checkBoxNotifyOnTranslationUpdate.Size = new System.Drawing.Size(293, 17);
-            this.checkBoxNotifyOnTranslationUpdate.TabIndex = 78;
-            this.checkBoxNotifyOnTranslationUpdate.Text = "Notify when a newer translation is available for download";
-            this.checkBoxNotifyOnTranslationUpdate.UseVisualStyleBackColor = true;
+            this.panel2.Controls.Add(this.labelThemeExpl);
+            this.panel2.Controls.Add(this.radioButtonRespectSystemTheme);
+            this.panel2.Controls.Add(this.radioButtonDarkTheme);
+            this.panel2.Controls.Add(this.radioButtonLightTheme);
+            this.panel2.Controls.Add(this.labelTheme);
+            this.panel2.Controls.Add(this.labelAppearance);
+            this.panel2.Location = new System.Drawing.Point(0, 165);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(403, 131);
+            this.panel2.TabIndex = 90;
+            // 
+            // labelThemeExpl
+            // 
+            this.labelThemeExpl.AutoSize = true;
+            this.labelThemeExpl.ForeColor = System.Drawing.Color.Silver;
+            this.labelThemeExpl.Location = new System.Drawing.Point(12, 39);
+            this.labelThemeExpl.Name = "labelThemeExpl";
+            this.labelThemeExpl.Size = new System.Drawing.Size(178, 13);
+            this.labelThemeExpl.TabIndex = 81;
+            this.labelThemeExpl.Text = "Does not apply to the mod manager.";
+            // 
+            // radioButtonRespectSystemTheme
+            // 
+            this.radioButtonRespectSystemTheme.AutoSize = true;
+            this.radioButtonRespectSystemTheme.Location = new System.Drawing.Point(15, 104);
+            this.radioButtonRespectSystemTheme.Name = "radioButtonRespectSystemTheme";
+            this.radioButtonRespectSystemTheme.Size = new System.Drawing.Size(59, 17);
+            this.radioButtonRespectSystemTheme.TabIndex = 80;
+            this.radioButtonRespectSystemTheme.TabStop = true;
+            this.radioButtonRespectSystemTheme.Text = "System";
+            this.radioButtonRespectSystemTheme.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDarkTheme
+            // 
+            this.radioButtonDarkTheme.AutoSize = true;
+            this.radioButtonDarkTheme.Location = new System.Drawing.Point(15, 81);
+            this.radioButtonDarkTheme.Name = "radioButtonDarkTheme";
+            this.radioButtonDarkTheme.Size = new System.Drawing.Size(48, 17);
+            this.radioButtonDarkTheme.TabIndex = 79;
+            this.radioButtonDarkTheme.TabStop = true;
+            this.radioButtonDarkTheme.Text = "Dark";
+            this.radioButtonDarkTheme.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLightTheme
+            // 
+            this.radioButtonLightTheme.AutoSize = true;
+            this.radioButtonLightTheme.Location = new System.Drawing.Point(15, 58);
+            this.radioButtonLightTheme.Name = "radioButtonLightTheme";
+            this.radioButtonLightTheme.Size = new System.Drawing.Size(48, 17);
+            this.radioButtonLightTheme.TabIndex = 78;
+            this.radioButtonLightTheme.TabStop = true;
+            this.radioButtonLightTheme.Text = "Light";
+            this.radioButtonLightTheme.UseVisualStyleBackColor = true;
+            // 
+            // labelTheme
+            // 
+            this.labelTheme.AutoSize = true;
+            this.labelTheme.Location = new System.Drawing.Point(12, 22);
+            this.labelTheme.Name = "labelTheme";
+            this.labelTheme.Size = new System.Drawing.Size(43, 13);
+            this.labelTheme.TabIndex = 77;
+            this.labelTheme.Text = "Theme:";
+            // 
+            // labelAppearance
+            // 
+            this.labelAppearance.AutoSize = true;
+            this.labelAppearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAppearance.Location = new System.Drawing.Point(12, 0);
+            this.labelAppearance.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
+            this.labelAppearance.Name = "labelAppearance";
+            this.labelAppearance.Size = new System.Drawing.Size(80, 17);
+            this.labelAppearance.TabIndex = 76;
+            this.labelAppearance.Text = "Appearance";
             // 
             // UserControlSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelSettingsProfile);
             this.Controls.Add(this.panelSettingsPaths);
@@ -682,8 +768,9 @@
             this.Controls.Add(this.panelSettingsBehavior);
             this.Controls.Add(this.panelSettingsLocalization);
             this.Controls.Add(this.labelSettingsTitle);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "UserControlSettings";
-            this.Size = new System.Drawing.Size(494, 1134);
+            this.Size = new System.Drawing.Size(494, 1300);
             this.Load += new System.EventHandler(this.UserControlSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerDownloadLanguages)).EndInit();
             this.panelSettingsLocalization.ResumeLayout(false);
@@ -700,6 +787,8 @@
             this.panelSettingsProfile.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -761,5 +850,12 @@
         private System.Windows.Forms.CheckBox checkBoxShowNotifications;
         public System.Windows.Forms.Label labelTranslationsUpdateAvailable;
         private System.Windows.Forms.CheckBox checkBoxNotifyOnTranslationUpdate;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton radioButtonRespectSystemTheme;
+        private System.Windows.Forms.RadioButton radioButtonDarkTheme;
+        private System.Windows.Forms.RadioButton radioButtonLightTheme;
+        private System.Windows.Forms.Label labelTheme;
+        private System.Windows.Forms.Label labelAppearance;
+        private System.Windows.Forms.Label labelThemeExpl;
     }
 }

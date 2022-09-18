@@ -2,8 +2,8 @@
     line-height: 1.5;
     font-family: Calibri, sans-serif;
     font-size: 12pt;
-    color: #1a1a1a;
-    background-color: #fdfdfd;
+    color: white;
+    background-color: #222222;
   }
   body {
     margin: 0;
@@ -19,23 +19,23 @@
     font-kerning: normal;
   }
   details {
-    color: #333;
+    color: #ccc;
   }
   summary {
-    color: #0000CC;
+    color: #2870db;
   }
   summary:hover {
     cursor: pointer;
-    color: #5555FF;
+    color: #6673ee;
   }
   p {
     margin: 1em 0;
   }
   a {
-    color: #1a1a1a;
+    color: #ddd;
   }
   a:visited {
-    color: #1a1a1a;
+    color: #ddd;
   }
   img {
     max-width: 100%;
@@ -60,8 +60,8 @@
   blockquote {
     margin: 1em 0 1em 1.7em;
     padding-left: 1em;
-    border-left: 2px solid #e6e6e6;
-    color: #606060;
+    border-left: 2px solid #484848;
+    color: #a1a1a1;
   }
   code {
     font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
@@ -82,7 +82,7 @@
    overflow: visible;
   }
   hr {
-    background-color: #999;
+    background-color: rgb(75, 75, 75);
     border: none;
     height: 1px;
     margin: 1em 0;
@@ -100,11 +100,11 @@
   }
   tbody {
     margin-top: 0.5em;
-    border-top: 1px solid #1a1a1a;
-    border-bottom: 1px solid #1a1a1a;
+    border-top: 1px solid #444444;
+    border-bottom: 1px solid #444444;
   }
   th {
-    border-top: 1px solid #1a1a1a;
+    border-top: 1px solid #444444;
     padding: 0.25em 0.5em 0.25em 0.5em;
   }
   td {

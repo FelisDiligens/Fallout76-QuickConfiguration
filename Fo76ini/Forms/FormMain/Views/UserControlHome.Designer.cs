@@ -161,6 +161,7 @@
             // 
             this.labelWelcome.AutoSize = true;
             this.labelWelcome.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWelcome.ForeColor = System.Drawing.Color.White;
             this.labelWelcome.Location = new System.Drawing.Point(15, 10);
             this.labelWelcome.Name = "labelWelcome";
             this.labelWelcome.Size = new System.Drawing.Size(326, 30);
@@ -171,6 +172,7 @@
             // 
             this.labelDescription.BackColor = System.Drawing.Color.Transparent;
             this.labelDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescription.ForeColor = System.Drawing.Color.White;
             this.labelDescription.Location = new System.Drawing.Point(17, 40);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(642, 29);
@@ -181,6 +183,7 @@
             // 
             this.labelVersion.AutoSize = true;
             this.labelVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVersion.ForeColor = System.Drawing.Color.White;
             this.labelVersion.Location = new System.Drawing.Point(17, 6);
             this.labelVersion.Margin = new System.Windows.Forms.Padding(3);
             this.labelVersion.Name = "labelVersion";
@@ -192,6 +195,7 @@
             // 
             this.labelAuthor.AutoSize = true;
             this.labelAuthor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAuthor.ForeColor = System.Drawing.Color.White;
             this.labelAuthor.Location = new System.Drawing.Point(17, 29);
             this.labelAuthor.Margin = new System.Windows.Forms.Padding(3);
             this.labelAuthor.Name = "labelAuthor";
@@ -203,6 +207,7 @@
             // 
             this.labelConfigVersion.AutoSize = true;
             this.labelConfigVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConfigVersion.ForeColor = System.Drawing.Color.White;
             this.labelConfigVersion.Location = new System.Drawing.Point(130, 6);
             this.labelConfigVersion.Name = "labelConfigVersion";
             this.labelConfigVersion.Size = new System.Drawing.Size(14, 17);
@@ -213,7 +218,7 @@
             // 
             this.labelTranslationAuthor.AutoSize = true;
             this.labelTranslationAuthor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTranslationAuthor.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelTranslationAuthor.ForeColor = System.Drawing.Color.White;
             this.labelTranslationAuthor.Location = new System.Drawing.Point(130, 75);
             this.labelTranslationAuthor.Name = "labelTranslationAuthor";
             this.labelTranslationAuthor.Size = new System.Drawing.Size(79, 17);
@@ -224,6 +229,7 @@
             // 
             this.labelAuthorName.AutoSize = true;
             this.labelAuthorName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAuthorName.ForeColor = System.Drawing.Color.White;
             this.labelAuthorName.Location = new System.Drawing.Point(130, 29);
             this.labelAuthorName.Name = "labelAuthorName";
             this.labelAuthorName.Size = new System.Drawing.Size(79, 17);
@@ -234,7 +240,7 @@
             // 
             this.labelTranslationBy.AutoSize = true;
             this.labelTranslationBy.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTranslationBy.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelTranslationBy.ForeColor = System.Drawing.Color.White;
             this.labelTranslationBy.Location = new System.Drawing.Point(17, 75);
             this.labelTranslationBy.Margin = new System.Windows.Forms.Padding(3);
             this.labelTranslationBy.Name = "labelTranslationBy";
@@ -268,6 +274,7 @@
             // 
             // tabPageHome
             // 
+            this.tabPageHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageHome.Controls.Add(this.panelWebLinks);
             this.tabPageHome.Controls.Add(this.panelContent);
             this.tabPageHome.Controls.Add(this.panelTitle);
@@ -278,7 +285,6 @@
             this.tabPageHome.Size = new System.Drawing.Size(668, 473);
             this.tabPageHome.TabIndex = 0;
             this.tabPageHome.Text = "tabPageHome";
-            this.tabPageHome.UseVisualStyleBackColor = true;
             // 
             // panelWebLinks
             // 
@@ -299,16 +305,19 @@
             // 
             // styledButtonxTranslator
             // 
-            this.styledButtonxTranslator.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonxTranslator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.styledButtonxTranslator.BorderWidth = ((uint)(0u));
             this.styledButtonxTranslator.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonxTranslator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styledButtonxTranslator.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonxTranslator.ForeColor = System.Drawing.Color.White;
             this.styledButtonxTranslator.Highlight = false;
+            this.styledButtonxTranslator.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonxTranslator.Image = global::Fo76ini.Properties.Resources.xTranslator_16px;
             this.styledButtonxTranslator.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonxTranslator.Location = new System.Drawing.Point(6, 191);
             this.styledButtonxTranslator.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonxTranslator.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.styledButtonxTranslator.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonxTranslator.Name = "styledButtonxTranslator";
             this.styledButtonxTranslator.Padding = 2;
             this.styledButtonxTranslator.Size = new System.Drawing.Size(190, 23);
@@ -320,16 +329,19 @@
             // 
             // styledButtonNukesAndDragonsBuildPlanner
             // 
-            this.styledButtonNukesAndDragonsBuildPlanner.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonNukesAndDragonsBuildPlanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.styledButtonNukesAndDragonsBuildPlanner.BorderWidth = ((uint)(0u));
             this.styledButtonNukesAndDragonsBuildPlanner.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonNukesAndDragonsBuildPlanner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styledButtonNukesAndDragonsBuildPlanner.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonNukesAndDragonsBuildPlanner.ForeColor = System.Drawing.Color.White;
             this.styledButtonNukesAndDragonsBuildPlanner.Highlight = false;
+            this.styledButtonNukesAndDragonsBuildPlanner.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonNukesAndDragonsBuildPlanner.Image = global::Fo76ini.Properties.Resources.nukesdragons_16;
             this.styledButtonNukesAndDragonsBuildPlanner.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonNukesAndDragonsBuildPlanner.Location = new System.Drawing.Point(6, 164);
             this.styledButtonNukesAndDragonsBuildPlanner.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonNukesAndDragonsBuildPlanner.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.styledButtonNukesAndDragonsBuildPlanner.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonNukesAndDragonsBuildPlanner.Name = "styledButtonNukesAndDragonsBuildPlanner";
             this.styledButtonNukesAndDragonsBuildPlanner.Padding = 2;
             this.styledButtonNukesAndDragonsBuildPlanner.Size = new System.Drawing.Size(190, 23);
@@ -341,16 +353,19 @@
             // 
             // styledButtonBethesdaNetStatus
             // 
-            this.styledButtonBethesdaNetStatus.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonBethesdaNetStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.styledButtonBethesdaNetStatus.BorderWidth = ((uint)(0u));
             this.styledButtonBethesdaNetStatus.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonBethesdaNetStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styledButtonBethesdaNetStatus.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonBethesdaNetStatus.ForeColor = System.Drawing.Color.White;
             this.styledButtonBethesdaNetStatus.Highlight = false;
+            this.styledButtonBethesdaNetStatus.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonBethesdaNetStatus.Image = global::Fo76ini.Properties.Resources.bethesda_16;
             this.styledButtonBethesdaNetStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonBethesdaNetStatus.Location = new System.Drawing.Point(6, 137);
             this.styledButtonBethesdaNetStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonBethesdaNetStatus.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.styledButtonBethesdaNetStatus.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonBethesdaNetStatus.Name = "styledButtonBethesdaNetStatus";
             this.styledButtonBethesdaNetStatus.Padding = 2;
             this.styledButtonBethesdaNetStatus.Size = new System.Drawing.Size(190, 23);
@@ -362,16 +377,19 @@
             // 
             // styledButtonBugReports
             // 
-            this.styledButtonBugReports.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonBugReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.styledButtonBugReports.BorderWidth = ((uint)(0u));
             this.styledButtonBugReports.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonBugReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styledButtonBugReports.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonBugReports.ForeColor = System.Drawing.Color.White;
             this.styledButtonBugReports.Highlight = false;
+            this.styledButtonBugReports.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonBugReports.Image = global::Fo76ini.Properties.Resources.bug_3_16;
             this.styledButtonBugReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonBugReports.Location = new System.Drawing.Point(6, 110);
             this.styledButtonBugReports.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonBugReports.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.styledButtonBugReports.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonBugReports.Name = "styledButtonBugReports";
             this.styledButtonBugReports.Padding = 2;
             this.styledButtonBugReports.Size = new System.Drawing.Size(190, 23);
@@ -383,16 +401,19 @@
             // 
             // styledButtonWikiAndGuides
             // 
-            this.styledButtonWikiAndGuides.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonWikiAndGuides.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.styledButtonWikiAndGuides.BorderWidth = ((uint)(0u));
             this.styledButtonWikiAndGuides.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonWikiAndGuides.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styledButtonWikiAndGuides.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonWikiAndGuides.ForeColor = System.Drawing.Color.White;
             this.styledButtonWikiAndGuides.Highlight = false;
+            this.styledButtonWikiAndGuides.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonWikiAndGuides.Image = global::Fo76ini.Properties.Resources.help_16;
             this.styledButtonWikiAndGuides.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonWikiAndGuides.Location = new System.Drawing.Point(6, 83);
             this.styledButtonWikiAndGuides.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonWikiAndGuides.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.styledButtonWikiAndGuides.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonWikiAndGuides.Name = "styledButtonWikiAndGuides";
             this.styledButtonWikiAndGuides.Padding = 2;
             this.styledButtonWikiAndGuides.Size = new System.Drawing.Size(190, 23);
@@ -404,16 +425,19 @@
             // 
             // styledButtonGitHub
             // 
-            this.styledButtonGitHub.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonGitHub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.styledButtonGitHub.BorderWidth = ((uint)(0u));
             this.styledButtonGitHub.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonGitHub.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styledButtonGitHub.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonGitHub.ForeColor = System.Drawing.Color.White;
             this.styledButtonGitHub.Highlight = false;
-            this.styledButtonGitHub.Image = global::Fo76ini.Properties.Resources.github_16;
+            this.styledButtonGitHub.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.styledButtonGitHub.Image = global::Fo76ini.Properties.Resources.github_white_16;
             this.styledButtonGitHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonGitHub.Location = new System.Drawing.Point(6, 56);
             this.styledButtonGitHub.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonGitHub.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.styledButtonGitHub.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonGitHub.Name = "styledButtonGitHub";
             this.styledButtonGitHub.Padding = 2;
             this.styledButtonGitHub.Size = new System.Drawing.Size(190, 23);
@@ -425,16 +449,19 @@
             // 
             // styledButtonNexusMods
             // 
-            this.styledButtonNexusMods.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonNexusMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.styledButtonNexusMods.BorderWidth = ((uint)(0u));
             this.styledButtonNexusMods.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonNexusMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styledButtonNexusMods.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonNexusMods.ForeColor = System.Drawing.Color.White;
             this.styledButtonNexusMods.Highlight = false;
+            this.styledButtonNexusMods.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonNexusMods.Image = global::Fo76ini.Properties.Resources.nexus_16;
             this.styledButtonNexusMods.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonNexusMods.Location = new System.Drawing.Point(6, 29);
             this.styledButtonNexusMods.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonNexusMods.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.styledButtonNexusMods.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonNexusMods.Name = "styledButtonNexusMods";
             this.styledButtonNexusMods.Padding = 2;
             this.styledButtonNexusMods.Size = new System.Drawing.Size(190, 23);
@@ -464,6 +491,7 @@
             // 
             this.labelWebLinks.AutoSize = true;
             this.labelWebLinks.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWebLinks.ForeColor = System.Drawing.Color.White;
             this.labelWebLinks.Location = new System.Drawing.Point(3, 6);
             this.labelWebLinks.Margin = new System.Windows.Forms.Padding(3, 0, 3, 6);
             this.labelWebLinks.Name = "labelWebLinks";
@@ -502,8 +530,8 @@
             // buttonReloadServerStatus
             // 
             this.buttonReloadServerStatus.FlatAppearance.BorderSize = 0;
-            this.buttonReloadServerStatus.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.buttonReloadServerStatus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonReloadServerStatus.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonReloadServerStatus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonReloadServerStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReloadServerStatus.Image = global::Fo76ini.Properties.Resources.available_updates;
             this.buttonReloadServerStatus.Location = new System.Drawing.Point(194, 47);
@@ -517,6 +545,7 @@
             // 
             this.labelScrapedServerStatus.AutoSize = true;
             this.labelScrapedServerStatus.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScrapedServerStatus.ForeColor = System.Drawing.Color.White;
             this.labelScrapedServerStatus.Location = new System.Drawing.Point(160, 52);
             this.labelScrapedServerStatus.Margin = new System.Windows.Forms.Padding(0);
             this.labelScrapedServerStatus.Name = "labelScrapedServerStatus";
@@ -528,7 +557,7 @@
             // 
             this.labelServerStatus.AutoSize = true;
             this.labelServerStatus.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelServerStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelServerStatus.ForeColor = System.Drawing.Color.White;
             this.labelServerStatus.Location = new System.Drawing.Point(17, 52);
             this.labelServerStatus.Margin = new System.Windows.Forms.Padding(3);
             this.labelServerStatus.Name = "labelServerStatus";
@@ -538,9 +567,9 @@
             // 
             // styledButtonWhatsNew
             // 
-            this.styledButtonWhatsNew.BackColor = System.Drawing.Color.Transparent;
-            this.styledButtonWhatsNew.BorderMouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.styledButtonWhatsNew.BorderMouseOverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.styledButtonWhatsNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.styledButtonWhatsNew.BorderMouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.styledButtonWhatsNew.BorderMouseOverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonWhatsNew.BorderWidth = ((uint)(0u));
             this.styledButtonWhatsNew.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonWhatsNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -549,11 +578,11 @@
             this.styledButtonWhatsNew.Image = global::Fo76ini.Properties.Resources.report_3_16;
             this.styledButtonWhatsNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonWhatsNew.Location = new System.Drawing.Point(20, 110);
-            this.styledButtonWhatsNew.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.styledButtonWhatsNew.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.styledButtonWhatsNew.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.styledButtonWhatsNew.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonWhatsNew.Name = "styledButtonWhatsNew";
             this.styledButtonWhatsNew.Padding = 2;
-            this.styledButtonWhatsNew.Size = new System.Drawing.Size(202, 23);
+            this.styledButtonWhatsNew.Size = new System.Drawing.Size(413, 23);
             this.styledButtonWhatsNew.TabIndex = 20;
             this.styledButtonWhatsNew.Text = "What\'s new?";
             this.styledButtonWhatsNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -573,6 +602,7 @@
             // 
             // tabPageWhatsNew
             // 
+            this.tabPageWhatsNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageWhatsNew.Controls.Add(this.styledButtonGoBack);
             this.tabPageWhatsNew.Controls.Add(this.webBrowserWhatsNew);
             this.tabPageWhatsNew.Location = new System.Drawing.Point(4, 22);
@@ -581,7 +611,6 @@
             this.tabPageWhatsNew.Size = new System.Drawing.Size(668, 473);
             this.tabPageWhatsNew.TabIndex = 1;
             this.tabPageWhatsNew.Text = "tabPageWhatsNew";
-            this.tabPageWhatsNew.UseVisualStyleBackColor = true;
             // 
             // styledButtonGoBack
             // 

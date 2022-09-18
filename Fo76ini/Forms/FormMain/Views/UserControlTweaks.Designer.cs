@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tabControlTweaks = new System.Windows.Forms.TabControl();
+            this.tabControlTweaks = new Fo76ini.Controls.StyledTabControl();
             this.tabPageTweaksInfo = new System.Windows.Forms.TabPage();
             this.webBrowserTweaksInfo = new System.Windows.Forms.WebBrowser();
             this.labelTweaksInfoWin7 = new System.Windows.Forms.Label();
             this.buttonOpenTweaksInfoInBrowser = new System.Windows.Forms.Button();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
-            this.groupBoxGameplay = new System.Windows.Forms.GroupBox();
+            this.groupBoxGameplay = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxBackpackVisible = new System.Windows.Forms.CheckBox();
             this.labelHighlightCorpses = new System.Windows.Forms.Label();
             this.comboBoxHighlightCorpses = new System.Windows.Forms.ComboBox();
-            this.groupBoxDialogue = new System.Windows.Forms.GroupBox();
-            this.sliderConversationHistorySize = new System.Windows.Forms.TrackBar();
+            this.groupBoxDialogue = new Fo76ini.Controls.StyledGroupBox();
+            this.sliderConversationHistorySize = new ColorSlider.ColorSlider();
             this.numConversationHistorySize = new System.Windows.Forms.NumericUpDown();
             this.labelConversationHistorySize = new System.Windows.Forms.Label();
             this.checkBoxDialogueHistory = new System.Windows.Forms.CheckBox();
             this.checkBoxDialogueSubtitles = new System.Windows.Forms.CheckBox();
             this.checkBoxGeneralSubtitles = new System.Windows.Forms.CheckBox();
-            this.groupBoxHUD = new System.Windows.Forms.GroupBox();
-            this.groupBoxFloatingQuestMarkers = new System.Windows.Forms.GroupBox();
+            this.groupBoxHUD = new Fo76ini.Controls.StyledGroupBox();
+            this.groupBoxFloatingQuestMarkers = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxShowFloatingQuestMarkers = new System.Windows.Forms.CheckBox();
             this.sliderFloatingQuestMarkersDistance = new System.Windows.Forms.TrackBar();
             this.checkBoxShowFloatingQuestText = new System.Windows.Forms.CheckBox();
@@ -64,29 +64,34 @@
             this.comboBoxShowActiveEffectsOnHUD = new System.Windows.Forms.ComboBox();
             this.sliderHUDOpacity = new System.Windows.Forms.TrackBar();
             this.numHUDOpacity = new System.Windows.Forms.NumericUpDown();
-            this.groupBoxLoading = new System.Windows.Forms.GroupBox();
+            this.groupBoxLoading = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxFasterFadeIn = new System.Windows.Forms.CheckBox();
-            this.groupBoxQuests = new System.Windows.Forms.GroupBox();
+            this.groupBoxQuests = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxEnableQuestAutoTrackDaily = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableQuestAutoTrackEvent = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableQuestAutoTrackMisc = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableQuestAutoTrackSide = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableQuestAutoTrackMain = new System.Windows.Forms.CheckBox();
-            this.groupBoxMainMenu = new System.Windows.Forms.GroupBox();
+            this.groupBoxMainMenu = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxSkipSplash = new System.Windows.Forms.CheckBox();
             this.checkBoxSkipIntroVideos = new System.Windows.Forms.CheckBox();
             this.tabPageVideo = new System.Windows.Forms.TabPage();
-            this.groupBoxGraphics = new System.Windows.Forms.GroupBox();
+            this.groupBoxGraphics = new Fo76ini.Controls.StyledGroupBox();
+            this.groupBoxDOF = new Fo76ini.Controls.StyledGroupBox();
+            this.numDOFStrength = new System.Windows.Forms.NumericUpDown();
+            this.labelDOFStrength = new System.Windows.Forms.Label();
+            this.checkBoxDepthOfField = new System.Windows.Forms.CheckBox();
+            this.sliderDOFStrength = new System.Windows.Forms.TrackBar();
             this.labelSelectedQualityPreset = new System.Windows.Forms.Label();
             this.buttonSelectOverallQualityPreset = new System.Windows.Forms.Button();
             this.labelOverallQualityPreset = new System.Windows.Forms.Label();
-            this.groupBoxTextures = new System.Windows.Forms.GroupBox();
+            this.groupBoxTextures = new Fo76ini.Controls.StyledGroupBox();
             this.comboBoxTextureQuality = new System.Windows.Forms.ComboBox();
             this.labelTextureQuality = new System.Windows.Forms.Label();
-            this.groupBoxGraphicEffects = new System.Windows.Forms.GroupBox();
+            this.groupBoxGraphicEffects = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxBloodSplatter = new System.Windows.Forms.CheckBox();
             this.checkBoxDisableGore = new System.Windows.Forms.CheckBox();
-            this.groupBoxTAASharpening = new System.Windows.Forms.GroupBox();
+            this.groupBoxTAASharpening = new Fo76ini.Controls.StyledGroupBox();
             this.sliderTAAPostSharpen = new System.Windows.Forms.TrackBar();
             this.labelTAAPostSharpen = new System.Windows.Forms.Label();
             this.numTAAPostSharpen = new System.Windows.Forms.NumericUpDown();
@@ -94,13 +99,13 @@
             this.numTAAPostOverlay = new System.Windows.Forms.NumericUpDown();
             this.labelTAAPostOverlay = new System.Windows.Forms.Label();
             this.labelAntiAliasing = new System.Windows.Forms.Label();
-            this.groupBoxGrass = new System.Windows.Forms.GroupBox();
+            this.groupBoxGrass = new Fo76ini.Controls.StyledGroupBox();
             this.sliderGrassFadeDistance = new System.Windows.Forms.TrackBar();
             this.numGrassFadeDistance = new System.Windows.Forms.NumericUpDown();
             this.labelGrassFadeDistance = new System.Windows.Forms.Label();
             this.checkBoxGrass = new System.Windows.Forms.CheckBox();
             this.comboBoxAntiAliasing = new System.Windows.Forms.ComboBox();
-            this.groupBoxLOD = new System.Windows.Forms.GroupBox();
+            this.groupBoxLOD = new Fo76ini.Controls.StyledGroupBox();
             this.sliderLODActors = new System.Windows.Forms.TrackBar();
             this.labelLODFadeDistance = new System.Windows.Forms.Label();
             this.sliderLODItems = new System.Windows.Forms.TrackBar();
@@ -112,12 +117,12 @@
             this.labelLODItems = new System.Windows.Forms.Label();
             this.labelLODObjects = new System.Windows.Forms.Label();
             this.checkBoxVSync = new System.Windows.Forms.CheckBox();
-            this.groupBoxLighting = new System.Windows.Forms.GroupBox();
+            this.groupBoxLighting = new Fo76ini.Controls.StyledGroupBox();
             this.comboBoxGodrayQuality = new System.Windows.Forms.ComboBox();
             this.labelGodrayQuality = new System.Windows.Forms.Label();
             this.checkBoxGodrays = new System.Windows.Forms.CheckBox();
             this.labelAnisotropicFiltering = new System.Windows.Forms.Label();
-            this.groupBoxShadows = new System.Windows.Forms.GroupBox();
+            this.groupBoxShadows = new Fo76ini.Controls.StyledGroupBox();
             this.comboBoxShadowQuality = new System.Windows.Forms.ComboBox();
             this.labelShadowQuality = new System.Windows.Forms.Label();
             this.sliderShadowDistance = new System.Windows.Forms.TrackBar();
@@ -128,7 +133,7 @@
             this.comboBoxShadowTextureResolution = new System.Windows.Forms.ComboBox();
             this.labelShadowTextureResolution = new System.Windows.Forms.Label();
             this.comboBoxAnisotropicFiltering = new System.Windows.Forms.ComboBox();
-            this.groupBoxWater = new System.Windows.Forms.GroupBox();
+            this.groupBoxWater = new Fo76ini.Controls.StyledGroupBox();
             this.comboBoxWaterShadowFilter = new System.Windows.Forms.ComboBox();
             this.labelWaterShadowFilter = new System.Windows.Forms.Label();
             this.checkBoxWaterFixSSRGlitch = new System.Windows.Forms.CheckBox();
@@ -136,14 +141,13 @@
             this.checkBoxWaterRefractions = new System.Windows.Forms.CheckBox();
             this.checkBoxWaterReflections = new System.Windows.Forms.CheckBox();
             this.checkBoxWaterDisplacement = new System.Windows.Forms.CheckBox();
-            this.groupBoxPostProcessing = new System.Windows.Forms.GroupBox();
+            this.groupBoxPostProcessing = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxSSReflections = new System.Windows.Forms.CheckBox();
             this.checkBoxAmbientOcclusion = new System.Windows.Forms.CheckBox();
-            this.checkBoxDepthOfField = new System.Windows.Forms.CheckBox();
             this.checkBoxMotionBlur = new System.Windows.Forms.CheckBox();
             this.checkBoxRadialBlur = new System.Windows.Forms.CheckBox();
             this.checkBoxLensFlare = new System.Windows.Forms.CheckBox();
-            this.groupBoxDisplay = new System.Windows.Forms.GroupBox();
+            this.groupBoxDisplay = new Fo76ini.Controls.StyledGroupBox();
             this.comboBoxDisplayMode = new System.Windows.Forms.ComboBox();
             this.checkBoxFixHUDFor5_4and4_3 = new System.Windows.Forms.CheckBox();
             this.comboBoxResolution = new System.Windows.Forms.ComboBox();
@@ -156,14 +160,14 @@
             this.labelDisplayMode = new System.Windows.Forms.Label();
             this.labelCustomResolutionSpacer = new System.Windows.Forms.Label();
             this.tabPageAudio = new System.Windows.Forms.TabPage();
-            this.groupBoxAudio = new System.Windows.Forms.GroupBox();
+            this.groupBoxAudio = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxEnableAudio = new System.Windows.Forms.CheckBox();
             this.checkBoxMainMenuMusic = new System.Windows.Forms.CheckBox();
-            this.groupBoxVoice = new System.Windows.Forms.GroupBox();
+            this.groupBoxVoice = new Fo76ini.Controls.StyledGroupBox();
             this.comboBoxVoiceChatMode = new System.Windows.Forms.ComboBox();
             this.labelVoiceChatMode = new System.Windows.Forms.Label();
             this.checkBoxPushToTalk = new System.Windows.Forms.CheckBox();
-            this.groupBoxAudioVolume = new System.Windows.Forms.GroupBox();
+            this.groupBoxAudioVolume = new Fo76ini.Controls.StyledGroupBox();
             this.sliderAudioChat = new System.Windows.Forms.TrackBar();
             this.sliderAudiofVal6 = new System.Windows.Forms.TrackBar();
             this.sliderAudiofVal5 = new System.Windows.Forms.TrackBar();
@@ -192,7 +196,7 @@
             this.labelAudiofVal3 = new System.Windows.Forms.Label();
             this.numAudiofVal3 = new System.Windows.Forms.NumericUpDown();
             this.tabPageControls = new System.Windows.Forms.TabPage();
-            this.groupBoxGamepad = new System.Windows.Forms.GroupBox();
+            this.groupBoxGamepad = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxAimAssist = new System.Windows.Forms.CheckBox();
             this.checkBoxGamepadRumble = new System.Windows.Forms.CheckBox();
             this.checkBoxGamepadEnabled = new System.Windows.Forms.CheckBox();
@@ -202,7 +206,7 @@
             this.sliderGamepadSensitivityX = new System.Windows.Forms.TrackBar();
             this.numGamepadSensitivityX = new System.Windows.Forms.NumericUpDown();
             this.labelGamepadSensitivityX = new System.Windows.Forms.Label();
-            this.groupBoxMouse = new System.Windows.Forms.GroupBox();
+            this.groupBoxMouse = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxMouseInvertX = new System.Windows.Forms.CheckBox();
             this.checkBoxMouseInvertY = new System.Windows.Forms.CheckBox();
             this.checkBoxFixAimSensitivity = new System.Windows.Forms.CheckBox();
@@ -214,8 +218,8 @@
             this.numMouseSensitivityX = new System.Windows.Forms.NumericUpDown();
             this.labelMouseSensitivityX = new System.Windows.Forms.Label();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
-            this.groupBoxCameraPosition = new System.Windows.Forms.GroupBox();
-            this.groupBoxMeleeCombatCameraPosition = new System.Windows.Forms.GroupBox();
+            this.groupBoxCameraPosition = new Fo76ini.Controls.StyledGroupBox();
+            this.groupBoxMeleeCombatCameraPosition = new Fo76ini.Controls.StyledGroupBox();
             this.numfOverShoulderMeleeCombatAddY = new System.Windows.Forms.NumericUpDown();
             this.labelfOverShoulderMeleeCombatAddY = new System.Windows.Forms.Label();
             this.numfOverShoulderMeleeCombatPosX = new System.Windows.Forms.NumericUpDown();
@@ -225,7 +229,7 @@
             this.trackBarfOverShoulderMeleeCombatPosX = new System.Windows.Forms.TrackBar();
             this.labelfOverShoulderMeleeCombatPosZ = new System.Windows.Forms.Label();
             this.trackBarfOverShoulderMeleeCombatPosZ = new System.Windows.Forms.TrackBar();
-            this.groupBoxCombatCameraPosition = new System.Windows.Forms.GroupBox();
+            this.groupBoxCombatCameraPosition = new Fo76ini.Controls.StyledGroupBox();
             this.numfOverShoulderCombatAddY = new System.Windows.Forms.NumericUpDown();
             this.numfOverShoulderCombatPosX = new System.Windows.Forms.NumericUpDown();
             this.numfOverShoulderCombatPosZ = new System.Windows.Forms.NumericUpDown();
@@ -237,17 +241,17 @@
             this.trackBarfOverShoulderCombatPosZ = new System.Windows.Forms.TrackBar();
             this.buttonCameraPositionReset = new System.Windows.Forms.Button();
             this.checkBoxbApplyCameraNodeAnimations = new System.Windows.Forms.CheckBox();
-            this.groupBoxUnarmedCameraPosition = new System.Windows.Forms.GroupBox();
+            this.groupBoxUnarmedCameraPosition = new Fo76ini.Controls.StyledGroupBox();
             this.numfOverShoulderPosX = new System.Windows.Forms.NumericUpDown();
             this.numfOverShoulderPosZ = new System.Windows.Forms.NumericUpDown();
             this.labelfOverShoulderPosX = new System.Windows.Forms.Label();
             this.trackBarfOverShoulderPosX = new System.Windows.Forms.TrackBar();
             this.labelfOverShoulderPosZ = new System.Windows.Forms.Label();
             this.trackBarfOverShoulderPosZ = new System.Windows.Forms.TrackBar();
-            this.groupBoxFOVMore = new System.Windows.Forms.GroupBox();
+            this.groupBoxFOVMore = new Fo76ini.Controls.StyledGroupBox();
             this.labelADSFOV = new System.Windows.Forms.Label();
             this.numADSFOV = new System.Windows.Forms.NumericUpDown();
-            this.groupBoxSelfieCamera = new System.Windows.Forms.GroupBox();
+            this.groupBoxSelfieCamera = new Fo76ini.Controls.StyledGroupBox();
             this.trackBarPhotomodeRange = new System.Windows.Forms.TrackBar();
             this.numericUpDownPhotomodeRotationSpeed = new System.Windows.Forms.NumericUpDown();
             this.trackBarPhotomodeRotationSpeed = new System.Windows.Forms.TrackBar();
@@ -257,10 +261,10 @@
             this.numericUpDownPhotomodeTranslationSpeed = new System.Windows.Forms.NumericUpDown();
             this.trackBarPhotomodeTranslationSpeed = new System.Windows.Forms.TrackBar();
             this.labelPhotomodeTranslationSpeed = new System.Windows.Forms.Label();
-            this.groupBoxIdleCamera = new System.Windows.Forms.GroupBox();
+            this.groupBoxIdleCamera = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxForceVanityMode = new System.Windows.Forms.CheckBox();
             this.checkBoxVanityMode = new System.Windows.Forms.CheckBox();
-            this.groupBoxCameraDistance = new System.Windows.Forms.GroupBox();
+            this.groupBoxCameraDistance = new Fo76ini.Controls.StyledGroupBox();
             this.numfPitchZoomOutMaxDist = new System.Windows.Forms.NumericUpDown();
             this.sliderfPitchZoomOutMaxDist = new System.Windows.Forms.TrackBar();
             this.labelPitchZoomOutMaxDist = new System.Windows.Forms.Label();
@@ -270,12 +274,12 @@
             this.labelCameraDistanceMaximum = new System.Windows.Forms.Label();
             this.labelCameraDistanceMinimum = new System.Windows.Forms.Label();
             this.sliderCameraDistanceMinimum = new System.Windows.Forms.TrackBar();
-            this.groupBoxFieldOfView = new System.Windows.Forms.GroupBox();
+            this.groupBoxFieldOfView = new Fo76ini.Controls.StyledGroupBox();
             this.pictureBoxFOVPreview = new System.Windows.Forms.PictureBox();
             this.sliderFOV = new System.Windows.Forms.TrackBar();
             this.numFOV = new System.Windows.Forms.NumericUpDown();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
-            this.groupBoxLoginProfiles = new System.Windows.Forms.GroupBox();
+            this.groupBoxLoginProfiles = new Fo76ini.Controls.StyledGroupBox();
             this.radioButtonAccountNone = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount1 = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount16 = new System.Windows.Forms.RadioButton();
@@ -293,7 +297,7 @@
             this.radioButtonAccount10 = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount8 = new System.Windows.Forms.RadioButton();
             this.radioButtonAccount9 = new System.Windows.Forms.RadioButton();
-            this.groupBoxLogin = new System.Windows.Forms.GroupBox();
+            this.groupBoxLogin = new Fo76ini.Controls.StyledGroupBox();
             this.richTextBoxCredentialsExplanation = new System.Windows.Forms.RichTextBox();
             this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableSteam = new System.Windows.Forms.CheckBox();
@@ -313,17 +317,12 @@
             this.ultraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBoxDOF = new System.Windows.Forms.GroupBox();
-            this.sliderDOFStrength = new System.Windows.Forms.TrackBar();
-            this.numDOFStrength = new System.Windows.Forms.NumericUpDown();
-            this.labelDOFStrength = new System.Windows.Forms.Label();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxGameplay.SuspendLayout();
             this.groupBoxDialogue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).BeginInit();
             this.groupBoxHUD.SuspendLayout();
             this.groupBoxFloatingQuestMarkers.SuspendLayout();
@@ -336,6 +335,9 @@
             this.groupBoxMainMenu.SuspendLayout();
             this.tabPageVideo.SuspendLayout();
             this.groupBoxGraphics.SuspendLayout();
+            this.groupBoxDOF.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDOFStrength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderDOFStrength)).BeginInit();
             this.groupBoxTextures.SuspendLayout();
             this.groupBoxGraphicEffects.SuspendLayout();
             this.groupBoxTAASharpening.SuspendLayout();
@@ -441,9 +443,6 @@
             this.groupBoxLoginProfiles.SuspendLayout();
             this.groupBoxLogin.SuspendLayout();
             this.contextMenuStripOverallQualityPresets.SuspendLayout();
-            this.groupBoxDOF.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderDOFStrength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDOFStrength)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -466,16 +465,16 @@
             // 
             // tabPageTweaksInfo
             // 
+            this.tabPageTweaksInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageTweaksInfo.Controls.Add(this.webBrowserTweaksInfo);
             this.tabPageTweaksInfo.Controls.Add(this.labelTweaksInfoWin7);
             this.tabPageTweaksInfo.Controls.Add(this.buttonOpenTweaksInfoInBrowser);
-            this.tabPageTweaksInfo.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTweaksInfo.Location = new System.Drawing.Point(4, 25);
             this.tabPageTweaksInfo.Name = "tabPageTweaksInfo";
             this.tabPageTweaksInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTweaksInfo.Size = new System.Drawing.Size(654, 476);
+            this.tabPageTweaksInfo.Size = new System.Drawing.Size(654, 473);
             this.tabPageTweaksInfo.TabIndex = 6;
             this.tabPageTweaksInfo.Text = "Info";
-            this.tabPageTweaksInfo.UseVisualStyleBackColor = true;
             // 
             // webBrowserTweaksInfo
             // 
@@ -492,6 +491,7 @@
             // 
             // labelTweaksInfoWin7
             // 
+            this.labelTweaksInfoWin7.ForeColor = System.Drawing.Color.White;
             this.labelTweaksInfoWin7.Location = new System.Drawing.Point(6, 6);
             this.labelTweaksInfoWin7.Name = "labelTweaksInfoWin7";
             this.labelTweaksInfoWin7.Size = new System.Drawing.Size(642, 39);
@@ -512,22 +512,24 @@
             // tabPageGeneral
             // 
             this.tabPageGeneral.AutoScroll = true;
+            this.tabPageGeneral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageGeneral.Controls.Add(this.groupBoxGameplay);
             this.tabPageGeneral.Controls.Add(this.groupBoxDialogue);
             this.tabPageGeneral.Controls.Add(this.groupBoxHUD);
             this.tabPageGeneral.Controls.Add(this.groupBoxLoading);
             this.tabPageGeneral.Controls.Add(this.groupBoxQuests);
             this.tabPageGeneral.Controls.Add(this.groupBoxMainMenu);
-            this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGeneral.ForeColor = System.Drawing.Color.White;
+            this.tabPageGeneral.Location = new System.Drawing.Point(4, 25);
             this.tabPageGeneral.Name = "tabPageGeneral";
             this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGeneral.Size = new System.Drawing.Size(654, 476);
+            this.tabPageGeneral.Size = new System.Drawing.Size(654, 473);
             this.tabPageGeneral.TabIndex = 0;
             this.tabPageGeneral.Text = "General";
-            this.tabPageGeneral.UseVisualStyleBackColor = true;
             // 
             // groupBoxGameplay
             // 
+            this.groupBoxGameplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxGameplay.Controls.Add(this.checkBoxBackpackVisible);
             this.groupBoxGameplay.Controls.Add(this.labelHighlightCorpses);
             this.groupBoxGameplay.Controls.Add(this.comboBoxHighlightCorpses);
@@ -568,6 +570,7 @@
             // 
             // groupBoxDialogue
             // 
+            this.groupBoxDialogue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxDialogue.Controls.Add(this.sliderConversationHistorySize);
             this.groupBoxDialogue.Controls.Add(this.numConversationHistorySize);
             this.groupBoxDialogue.Controls.Add(this.labelConversationHistorySize);
@@ -586,15 +589,64 @@
             // 
             this.sliderConversationHistorySize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderConversationHistorySize.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderConversationHistorySize.LargeChange = 1;
+            this.sliderConversationHistorySize.BackColor = System.Drawing.Color.Transparent;
+            this.sliderConversationHistorySize.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderConversationHistorySize.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderConversationHistorySize.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderConversationHistorySize.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderConversationHistorySize.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderConversationHistorySize.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderConversationHistorySize.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderConversationHistorySize.ForeColor = System.Drawing.Color.White;
+            this.sliderConversationHistorySize.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderConversationHistorySize.Location = new System.Drawing.Point(6, 112);
-            this.sliderConversationHistorySize.Maximum = 8;
-            this.sliderConversationHistorySize.Minimum = 1;
+            this.sliderConversationHistorySize.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.sliderConversationHistorySize.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderConversationHistorySize.Name = "sliderConversationHistorySize";
-            this.sliderConversationHistorySize.Size = new System.Drawing.Size(308, 45);
+            this.sliderConversationHistorySize.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderConversationHistorySize.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderConversationHistorySize.ShowDivisionsText = false;
+            this.sliderConversationHistorySize.ShowSmallScale = false;
+            this.sliderConversationHistorySize.Size = new System.Drawing.Size(308, 20);
+            this.sliderConversationHistorySize.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderConversationHistorySize.TabIndex = 10;
-            this.sliderConversationHistorySize.Value = 4;
+            this.sliderConversationHistorySize.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderConversationHistorySize.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderConversationHistorySize.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderConversationHistorySize.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderConversationHistorySize.TickAdd = 0F;
+            this.sliderConversationHistorySize.TickColor = System.Drawing.Color.White;
+            this.sliderConversationHistorySize.TickDivide = 0F;
+            this.sliderConversationHistorySize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderConversationHistorySize.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // numConversationHistorySize
             // 
@@ -655,6 +707,7 @@
             // 
             // groupBoxHUD
             // 
+            this.groupBoxHUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxHUD.Controls.Add(this.groupBoxFloatingQuestMarkers);
             this.groupBoxHUD.Controls.Add(this.checkBoxShowOtherPlayersNames);
             this.groupBoxHUD.Controls.Add(this.checkBoxShowPublicTeamNotifications);
@@ -676,6 +729,7 @@
             // 
             // groupBoxFloatingQuestMarkers
             // 
+            this.groupBoxFloatingQuestMarkers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxFloatingQuestMarkers.Controls.Add(this.checkBoxShowFloatingQuestMarkers);
             this.groupBoxFloatingQuestMarkers.Controls.Add(this.sliderFloatingQuestMarkersDistance);
             this.groupBoxFloatingQuestMarkers.Controls.Add(this.checkBoxShowFloatingQuestText);
@@ -884,6 +938,7 @@
             // 
             // groupBoxLoading
             // 
+            this.groupBoxLoading.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxLoading.Controls.Add(this.checkBoxFasterFadeIn);
             this.groupBoxLoading.Location = new System.Drawing.Point(9, 89);
             this.groupBoxLoading.Margin = new System.Windows.Forms.Padding(6);
@@ -905,6 +960,7 @@
             // 
             // groupBoxQuests
             // 
+            this.groupBoxQuests.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackDaily);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackEvent);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMisc);
@@ -970,6 +1026,7 @@
             // 
             // groupBoxMainMenu
             // 
+            this.groupBoxMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxMainMenu.Controls.Add(this.checkBoxSkipSplash);
             this.groupBoxMainMenu.Controls.Add(this.checkBoxSkipIntroVideos);
             this.groupBoxMainMenu.Location = new System.Drawing.Point(9, 9);
@@ -1003,18 +1060,20 @@
             // tabPageVideo
             // 
             this.tabPageVideo.AutoScroll = true;
+            this.tabPageVideo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageVideo.Controls.Add(this.groupBoxGraphics);
             this.tabPageVideo.Controls.Add(this.groupBoxDisplay);
-            this.tabPageVideo.Location = new System.Drawing.Point(4, 22);
+            this.tabPageVideo.ForeColor = System.Drawing.Color.White;
+            this.tabPageVideo.Location = new System.Drawing.Point(4, 25);
             this.tabPageVideo.Name = "tabPageVideo";
             this.tabPageVideo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageVideo.Size = new System.Drawing.Size(654, 476);
+            this.tabPageVideo.Size = new System.Drawing.Size(654, 473);
             this.tabPageVideo.TabIndex = 1;
             this.tabPageVideo.Text = "Video";
-            this.tabPageVideo.UseVisualStyleBackColor = true;
             // 
             // groupBoxGraphics
             // 
+            this.groupBoxGraphics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxGraphics.Controls.Add(this.groupBoxDOF);
             this.groupBoxGraphics.Controls.Add(this.labelSelectedQualityPreset);
             this.groupBoxGraphics.Controls.Add(this.buttonSelectOverallQualityPreset);
@@ -1040,6 +1099,69 @@
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
+            // 
+            // groupBoxDOF
+            // 
+            this.groupBoxDOF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxDOF.Controls.Add(this.numDOFStrength);
+            this.groupBoxDOF.Controls.Add(this.labelDOFStrength);
+            this.groupBoxDOF.Controls.Add(this.checkBoxDepthOfField);
+            this.groupBoxDOF.Controls.Add(this.sliderDOFStrength);
+            this.groupBoxDOF.Location = new System.Drawing.Point(9, 505);
+            this.groupBoxDOF.Name = "groupBoxDOF";
+            this.groupBoxDOF.Size = new System.Drawing.Size(381, 105);
+            this.groupBoxDOF.TabIndex = 2;
+            this.groupBoxDOF.TabStop = false;
+            this.groupBoxDOF.Text = "Depth of Field";
+            // 
+            // numDOFStrength
+            // 
+            this.numDOFStrength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numDOFStrength.DecimalPlaces = 1;
+            this.numDOFStrength.Location = new System.Drawing.Point(297, 61);
+            this.numDOFStrength.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numDOFStrength.Name = "numDOFStrength";
+            this.numDOFStrength.Size = new System.Drawing.Size(74, 20);
+            this.numDOFStrength.TabIndex = 9;
+            // 
+            // labelDOFStrength
+            // 
+            this.labelDOFStrength.AutoSize = true;
+            this.labelDOFStrength.Location = new System.Drawing.Point(7, 42);
+            this.labelDOFStrength.Name = "labelDOFStrength";
+            this.labelDOFStrength.Size = new System.Drawing.Size(47, 13);
+            this.labelDOFStrength.TabIndex = 7;
+            this.labelDOFStrength.Text = "Strength";
+            // 
+            // checkBoxDepthOfField
+            // 
+            this.checkBoxDepthOfField.AutoSize = true;
+            this.checkBoxDepthOfField.Checked = true;
+            this.checkBoxDepthOfField.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDepthOfField.Location = new System.Drawing.Point(10, 19);
+            this.checkBoxDepthOfField.Name = "checkBoxDepthOfField";
+            this.checkBoxDepthOfField.Size = new System.Drawing.Size(128, 17);
+            this.checkBoxDepthOfField.TabIndex = 0;
+            this.checkBoxDepthOfField.Text = "Enable Depth of Field";
+            this.checkBoxDepthOfField.UseVisualStyleBackColor = true;
+            // 
+            // sliderDOFStrength
+            // 
+            this.sliderDOFStrength.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderDOFStrength.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderDOFStrength.LargeChange = 10;
+            this.sliderDOFStrength.Location = new System.Drawing.Point(6, 58);
+            this.sliderDOFStrength.Maximum = 100;
+            this.sliderDOFStrength.Name = "sliderDOFStrength";
+            this.sliderDOFStrength.Size = new System.Drawing.Size(285, 45);
+            this.sliderDOFStrength.SmallChange = 5;
+            this.sliderDOFStrength.TabIndex = 8;
+            this.sliderDOFStrength.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // labelSelectedQualityPreset
             // 
@@ -1073,6 +1195,7 @@
             // 
             // groupBoxTextures
             // 
+            this.groupBoxTextures.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxTextures.Controls.Add(this.comboBoxTextureQuality);
             this.groupBoxTextures.Controls.Add(this.labelTextureQuality);
             this.groupBoxTextures.Location = new System.Drawing.Point(9, 183);
@@ -1104,6 +1227,7 @@
             // 
             // groupBoxGraphicEffects
             // 
+            this.groupBoxGraphicEffects.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
             this.groupBoxGraphicEffects.Location = new System.Drawing.Point(218, 616);
@@ -1137,6 +1261,7 @@
             // 
             // groupBoxTAASharpening
             // 
+            this.groupBoxTAASharpening.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostSharpen);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostSharpen);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostSharpen);
@@ -1255,6 +1380,7 @@
             // 
             // groupBoxGrass
             // 
+            this.groupBoxGrass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxGrass.Controls.Add(this.sliderGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
@@ -1336,6 +1462,7 @@
             // 
             // groupBoxLOD
             // 
+            this.groupBoxLOD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxLOD.Controls.Add(this.sliderLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODFadeDistance);
             this.groupBoxLOD.Controls.Add(this.sliderLODItems);
@@ -1505,6 +1632,7 @@
             // 
             // groupBoxLighting
             // 
+            this.groupBoxLighting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxLighting.Controls.Add(this.comboBoxGodrayQuality);
             this.groupBoxLighting.Controls.Add(this.labelGodrayQuality);
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
@@ -1558,6 +1686,7 @@
             // 
             // groupBoxShadows
             // 
+            this.groupBoxShadows.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowQuality);
             this.groupBoxShadows.Controls.Add(this.labelShadowQuality);
             this.groupBoxShadows.Controls.Add(this.sliderShadowDistance);
@@ -1693,6 +1822,7 @@
             // 
             // groupBoxWater
             // 
+            this.groupBoxWater.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxWater.Controls.Add(this.comboBoxWaterShadowFilter);
             this.groupBoxWater.Controls.Add(this.labelWaterShadowFilter);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterFixSSRGlitch);
@@ -1789,6 +1919,7 @@
             // 
             // groupBoxPostProcessing
             // 
+            this.groupBoxPostProcessing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxSSReflections);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxAmbientOcclusion);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxMotionBlur);
@@ -1824,18 +1955,6 @@
             this.checkBoxAmbientOcclusion.TabIndex = 4;
             this.checkBoxAmbientOcclusion.Text = "Ambient Occlusion (SSAO)";
             this.checkBoxAmbientOcclusion.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDepthOfField
-            // 
-            this.checkBoxDepthOfField.AutoSize = true;
-            this.checkBoxDepthOfField.Checked = true;
-            this.checkBoxDepthOfField.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDepthOfField.Location = new System.Drawing.Point(10, 19);
-            this.checkBoxDepthOfField.Name = "checkBoxDepthOfField";
-            this.checkBoxDepthOfField.Size = new System.Drawing.Size(128, 17);
-            this.checkBoxDepthOfField.TabIndex = 0;
-            this.checkBoxDepthOfField.Text = "Enable Depth of Field";
-            this.checkBoxDepthOfField.UseVisualStyleBackColor = true;
             // 
             // checkBoxMotionBlur
             // 
@@ -1875,6 +1994,7 @@
             // 
             // groupBoxDisplay
             // 
+            this.groupBoxDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxDisplay.Controls.Add(this.comboBoxDisplayMode);
             this.groupBoxDisplay.Controls.Add(this.checkBoxFixHUDFor5_4and4_3);
             this.groupBoxDisplay.Controls.Add(this.comboBoxResolution);
@@ -2037,18 +2157,20 @@
             // tabPageAudio
             // 
             this.tabPageAudio.AutoScroll = true;
+            this.tabPageAudio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageAudio.Controls.Add(this.groupBoxAudio);
             this.tabPageAudio.Controls.Add(this.groupBoxVoice);
             this.tabPageAudio.Controls.Add(this.groupBoxAudioVolume);
-            this.tabPageAudio.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAudio.ForeColor = System.Drawing.Color.White;
+            this.tabPageAudio.Location = new System.Drawing.Point(4, 25);
             this.tabPageAudio.Name = "tabPageAudio";
-            this.tabPageAudio.Size = new System.Drawing.Size(654, 476);
+            this.tabPageAudio.Size = new System.Drawing.Size(654, 473);
             this.tabPageAudio.TabIndex = 2;
             this.tabPageAudio.Text = "Audio";
-            this.tabPageAudio.UseVisualStyleBackColor = true;
             // 
             // groupBoxAudio
             // 
+            this.groupBoxAudio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxAudio.Controls.Add(this.checkBoxEnableAudio);
             this.groupBoxAudio.Controls.Add(this.checkBoxMainMenuMusic);
             this.groupBoxAudio.Location = new System.Drawing.Point(9, 390);
@@ -2083,6 +2205,7 @@
             // 
             // groupBoxVoice
             // 
+            this.groupBoxVoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxVoice.Controls.Add(this.comboBoxVoiceChatMode);
             this.groupBoxVoice.Controls.Add(this.labelVoiceChatMode);
             this.groupBoxVoice.Controls.Add(this.checkBoxPushToTalk);
@@ -2124,6 +2247,7 @@
             // 
             // groupBoxAudioVolume
             // 
+            this.groupBoxAudioVolume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxAudioVolume.Controls.Add(this.sliderAudioChat);
             this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal6);
             this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal5);
@@ -2587,17 +2711,19 @@
             // 
             // tabPageControls
             // 
+            this.tabPageControls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageControls.Controls.Add(this.groupBoxGamepad);
             this.tabPageControls.Controls.Add(this.groupBoxMouse);
-            this.tabPageControls.Location = new System.Drawing.Point(4, 22);
+            this.tabPageControls.ForeColor = System.Drawing.Color.White;
+            this.tabPageControls.Location = new System.Drawing.Point(4, 25);
             this.tabPageControls.Name = "tabPageControls";
-            this.tabPageControls.Size = new System.Drawing.Size(654, 476);
+            this.tabPageControls.Size = new System.Drawing.Size(654, 473);
             this.tabPageControls.TabIndex = 3;
             this.tabPageControls.Text = "Controls";
-            this.tabPageControls.UseVisualStyleBackColor = true;
             // 
             // groupBoxGamepad
             // 
+            this.groupBoxGamepad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxGamepad.Controls.Add(this.checkBoxAimAssist);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadRumble);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadEnabled);
@@ -2759,6 +2885,7 @@
             // 
             // groupBoxMouse
             // 
+            this.groupBoxMouse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertX);
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertY);
             this.groupBoxMouse.Controls.Add(this.checkBoxFixAimSensitivity);
@@ -2926,21 +3053,23 @@
             // tabPageCamera
             // 
             this.tabPageCamera.AutoScroll = true;
+            this.tabPageCamera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageCamera.Controls.Add(this.groupBoxCameraPosition);
             this.tabPageCamera.Controls.Add(this.groupBoxFOVMore);
             this.tabPageCamera.Controls.Add(this.groupBoxSelfieCamera);
             this.tabPageCamera.Controls.Add(this.groupBoxIdleCamera);
             this.tabPageCamera.Controls.Add(this.groupBoxCameraDistance);
             this.tabPageCamera.Controls.Add(this.groupBoxFieldOfView);
-            this.tabPageCamera.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCamera.ForeColor = System.Drawing.Color.White;
+            this.tabPageCamera.Location = new System.Drawing.Point(4, 25);
             this.tabPageCamera.Name = "tabPageCamera";
-            this.tabPageCamera.Size = new System.Drawing.Size(654, 476);
+            this.tabPageCamera.Size = new System.Drawing.Size(654, 473);
             this.tabPageCamera.TabIndex = 4;
             this.tabPageCamera.Text = "Camera";
-            this.tabPageCamera.UseVisualStyleBackColor = true;
             // 
             // groupBoxCameraPosition
             // 
+            this.groupBoxCameraPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxCameraPosition.Controls.Add(this.groupBoxMeleeCombatCameraPosition);
             this.groupBoxCameraPosition.Controls.Add(this.groupBoxCombatCameraPosition);
             this.groupBoxCameraPosition.Controls.Add(this.buttonCameraPositionReset);
@@ -2956,6 +3085,7 @@
             // 
             // groupBoxMeleeCombatCameraPosition
             // 
+            this.groupBoxMeleeCombatCameraPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxMeleeCombatCameraPosition.Controls.Add(this.numfOverShoulderMeleeCombatAddY);
             this.groupBoxMeleeCombatCameraPosition.Controls.Add(this.labelfOverShoulderMeleeCombatAddY);
             this.groupBoxMeleeCombatCameraPosition.Controls.Add(this.numfOverShoulderMeleeCombatPosX);
@@ -3098,6 +3228,7 @@
             // 
             // groupBoxCombatCameraPosition
             // 
+            this.groupBoxCombatCameraPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxCombatCameraPosition.Controls.Add(this.numfOverShoulderCombatAddY);
             this.groupBoxCombatCameraPosition.Controls.Add(this.numfOverShoulderCombatPosX);
             this.groupBoxCombatCameraPosition.Controls.Add(this.numfOverShoulderCombatPosZ);
@@ -3260,6 +3391,7 @@
             // 
             // groupBoxUnarmedCameraPosition
             // 
+            this.groupBoxUnarmedCameraPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxUnarmedCameraPosition.Controls.Add(this.numfOverShoulderPosX);
             this.groupBoxUnarmedCameraPosition.Controls.Add(this.numfOverShoulderPosZ);
             this.groupBoxUnarmedCameraPosition.Controls.Add(this.labelfOverShoulderPosX);
@@ -3358,6 +3490,7 @@
             // 
             // groupBoxFOVMore
             // 
+            this.groupBoxFOVMore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxFOVMore.Controls.Add(this.labelADSFOV);
             this.groupBoxFOVMore.Controls.Add(this.numADSFOV);
             this.groupBoxFOVMore.Location = new System.Drawing.Point(9, 418);
@@ -3407,6 +3540,7 @@
             // 
             // groupBoxSelfieCamera
             // 
+            this.groupBoxSelfieCamera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeRange);
             this.groupBoxSelfieCamera.Controls.Add(this.numericUpDownPhotomodeRotationSpeed);
             this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeRotationSpeed);
@@ -3566,6 +3700,7 @@
             // 
             // groupBoxIdleCamera
             // 
+            this.groupBoxIdleCamera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxForceVanityMode);
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxVanityMode);
             this.groupBoxIdleCamera.Location = new System.Drawing.Point(9, 773);
@@ -3602,6 +3737,7 @@
             // 
             // groupBoxCameraDistance
             // 
+            this.groupBoxCameraDistance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxCameraDistance.Controls.Add(this.numfPitchZoomOutMaxDist);
             this.groupBoxCameraDistance.Controls.Add(this.sliderfPitchZoomOutMaxDist);
             this.groupBoxCameraDistance.Controls.Add(this.labelPitchZoomOutMaxDist);
@@ -3751,6 +3887,7 @@
             // 
             // groupBoxFieldOfView
             // 
+            this.groupBoxFieldOfView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxFieldOfView.Controls.Add(this.pictureBoxFOVPreview);
             this.groupBoxFieldOfView.Controls.Add(this.sliderFOV);
             this.groupBoxFieldOfView.Controls.Add(this.numFOV);
@@ -3822,18 +3959,20 @@
             // tabPageLogin
             // 
             this.tabPageLogin.AutoScroll = true;
+            this.tabPageLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageLogin.Controls.Add(this.groupBoxLoginProfiles);
             this.tabPageLogin.Controls.Add(this.groupBoxLogin);
-            this.tabPageLogin.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLogin.ForeColor = System.Drawing.Color.White;
+            this.tabPageLogin.Location = new System.Drawing.Point(4, 25);
             this.tabPageLogin.Name = "tabPageLogin";
             this.tabPageLogin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLogin.Size = new System.Drawing.Size(654, 476);
+            this.tabPageLogin.Size = new System.Drawing.Size(654, 473);
             this.tabPageLogin.TabIndex = 5;
             this.tabPageLogin.Text = "Bethesda.net";
-            this.tabPageLogin.UseVisualStyleBackColor = true;
             // 
             // groupBoxLoginProfiles
             // 
+            this.groupBoxLoginProfiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccountNone);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount1);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount16);
@@ -4048,6 +4187,7 @@
             // 
             // groupBoxLogin
             // 
+            this.groupBoxLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.groupBoxLogin.Controls.Add(this.richTextBoxCredentialsExplanation);
             this.groupBoxLogin.Controls.Add(this.checkBoxAutoSignin);
             this.groupBoxLogin.Controls.Add(this.checkBoxEnableSteam);
@@ -4148,6 +4288,7 @@
             // 
             this.labelTweaksDesc.AutoSize = true;
             this.labelTweaksDesc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTweaksDesc.ForeColor = System.Drawing.Color.White;
             this.labelTweaksDesc.Location = new System.Drawing.Point(12, 45);
             this.labelTweaksDesc.Name = "labelTweaksDesc";
             this.labelTweaksDesc.Size = new System.Drawing.Size(333, 17);
@@ -4158,6 +4299,7 @@
             // 
             this.labelTweaksTitle.AutoSize = true;
             this.labelTweaksTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTweaksTitle.ForeColor = System.Drawing.Color.White;
             this.labelTweaksTitle.Location = new System.Drawing.Point(10, 15);
             this.labelTweaksTitle.Name = "labelTweaksTitle";
             this.labelTweaksTitle.Size = new System.Drawing.Size(82, 30);
@@ -4229,56 +4371,6 @@
             this.cancelToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.cancelToolStripMenuItem.Text = "Cancel";
             // 
-            // groupBoxDOF
-            // 
-            this.groupBoxDOF.Controls.Add(this.numDOFStrength);
-            this.groupBoxDOF.Controls.Add(this.labelDOFStrength);
-            this.groupBoxDOF.Controls.Add(this.checkBoxDepthOfField);
-            this.groupBoxDOF.Controls.Add(this.sliderDOFStrength);
-            this.groupBoxDOF.Location = new System.Drawing.Point(9, 505);
-            this.groupBoxDOF.Name = "groupBoxDOF";
-            this.groupBoxDOF.Size = new System.Drawing.Size(381, 105);
-            this.groupBoxDOF.TabIndex = 2;
-            this.groupBoxDOF.TabStop = false;
-            this.groupBoxDOF.Text = "Depth of Field";
-            // 
-            // sliderDOFStrength
-            // 
-            this.sliderDOFStrength.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderDOFStrength.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderDOFStrength.LargeChange = 10;
-            this.sliderDOFStrength.Location = new System.Drawing.Point(6, 58);
-            this.sliderDOFStrength.Maximum = 100;
-            this.sliderDOFStrength.Name = "sliderDOFStrength";
-            this.sliderDOFStrength.Size = new System.Drawing.Size(285, 45);
-            this.sliderDOFStrength.SmallChange = 5;
-            this.sliderDOFStrength.TabIndex = 8;
-            this.sliderDOFStrength.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // numDOFStrength
-            // 
-            this.numDOFStrength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numDOFStrength.DecimalPlaces = 1;
-            this.numDOFStrength.Location = new System.Drawing.Point(297, 61);
-            this.numDOFStrength.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.numDOFStrength.Name = "numDOFStrength";
-            this.numDOFStrength.Size = new System.Drawing.Size(74, 20);
-            this.numDOFStrength.TabIndex = 9;
-            // 
-            // labelDOFStrength
-            // 
-            this.labelDOFStrength.AutoSize = true;
-            this.labelDOFStrength.Location = new System.Drawing.Point(7, 42);
-            this.labelDOFStrength.Name = "labelDOFStrength";
-            this.labelDOFStrength.Size = new System.Drawing.Size(47, 13);
-            this.labelDOFStrength.TabIndex = 7;
-            this.labelDOFStrength.Text = "Strength";
-            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -4295,6 +4387,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.Controls.Add(this.labelTweaksDesc);
             this.Controls.Add(this.labelTweaksTitle);
             this.Controls.Add(this.tabControlTweaks);
@@ -4308,7 +4401,6 @@
             this.groupBoxGameplay.PerformLayout();
             this.groupBoxDialogue.ResumeLayout(false);
             this.groupBoxDialogue.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderConversationHistorySize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).EndInit();
             this.groupBoxHUD.ResumeLayout(false);
             this.groupBoxHUD.PerformLayout();
@@ -4327,6 +4419,10 @@
             this.tabPageVideo.ResumeLayout(false);
             this.groupBoxGraphics.ResumeLayout(false);
             this.groupBoxGraphics.PerformLayout();
+            this.groupBoxDOF.ResumeLayout(false);
+            this.groupBoxDOF.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDOFStrength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderDOFStrength)).EndInit();
             this.groupBoxTextures.ResumeLayout(false);
             this.groupBoxTextures.PerformLayout();
             this.groupBoxGraphicEffects.ResumeLayout(false);
@@ -4458,10 +4554,6 @@
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
             this.contextMenuStripOverallQualityPresets.ResumeLayout(false);
-            this.groupBoxDOF.ResumeLayout(false);
-            this.groupBoxDOF.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderDOFStrength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDOFStrength)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4469,16 +4561,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControlTweaks;
+        private Fo76ini.Controls.StyledTabControl tabControlTweaks;
         private System.Windows.Forms.TabPage tabPageGeneral;
         private System.Windows.Forms.TabPage tabPageVideo;
         private System.Windows.Forms.TabPage tabPageAudio;
         private System.Windows.Forms.TabPage tabPageControls;
         private System.Windows.Forms.TabPage tabPageCamera;
-        private System.Windows.Forms.GroupBox groupBoxGamepad;
+        private Fo76ini.Controls.StyledGroupBox groupBoxGamepad;
         private System.Windows.Forms.CheckBox checkBoxGamepadEnabled;
         private System.Windows.Forms.CheckBox checkBoxGamepadRumble;
-        private System.Windows.Forms.GroupBox groupBoxMouse;
+        private Fo76ini.Controls.StyledGroupBox groupBoxMouse;
         private System.Windows.Forms.CheckBox checkBoxMouseInvertX;
         private System.Windows.Forms.CheckBox checkBoxMouseInvertY;
         private System.Windows.Forms.TrackBar sliderMouseSensitivityX;
@@ -4489,8 +4581,8 @@
         private System.Windows.Forms.Label labelTweaksDesc;
         private System.Windows.Forms.Label labelTweaksTitle;
         private System.Windows.Forms.TabPage tabPageLogin;
-        private System.Windows.Forms.GroupBox groupBoxLogin;
-        private System.Windows.Forms.GroupBox groupBoxLoginProfiles;
+        private Fo76ini.Controls.StyledGroupBox groupBoxLogin;
+        private Fo76ini.Controls.StyledGroupBox groupBoxLoginProfiles;
         private System.Windows.Forms.RadioButton radioButtonAccountNone;
         private System.Windows.Forms.RadioButton radioButtonAccount1;
         private System.Windows.Forms.RadioButton radioButtonAccount16;
@@ -4515,7 +4607,7 @@
         private System.Windows.Forms.CheckBox checkBoxShowPassword;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelUserName;
-        private System.Windows.Forms.GroupBox groupBoxLoading;
+        private Fo76ini.Controls.StyledGroupBox groupBoxLoading;
         private System.Windows.Forms.CheckBox checkBoxFasterFadeIn;
         private System.Windows.Forms.CheckBox checkBoxShowFloatingQuestText;
         private System.Windows.Forms.CheckBox checkBoxShowDamageNumbers;
@@ -4533,16 +4625,16 @@
         private System.Windows.Forms.TrackBar sliderHUDOpacity;
         private System.Windows.Forms.Label labelHUDOpacity;
         private System.Windows.Forms.ComboBox comboBoxShowActiveEffectsOnHUD;
-        private System.Windows.Forms.GroupBox groupBoxQuests;
+        private Fo76ini.Controls.StyledGroupBox groupBoxQuests;
         private System.Windows.Forms.CheckBox checkBoxEnableQuestAutoTrackDaily;
         private System.Windows.Forms.CheckBox checkBoxEnableQuestAutoTrackEvent;
         private System.Windows.Forms.CheckBox checkBoxEnableQuestAutoTrackMisc;
         private System.Windows.Forms.CheckBox checkBoxEnableQuestAutoTrackSide;
         private System.Windows.Forms.CheckBox checkBoxEnableQuestAutoTrackMain;
-        private System.Windows.Forms.GroupBox groupBoxMainMenu;
+        private Fo76ini.Controls.StyledGroupBox groupBoxMainMenu;
         private System.Windows.Forms.CheckBox checkBoxSkipSplash;
         private System.Windows.Forms.CheckBox checkBoxSkipIntroVideos;
-        private System.Windows.Forms.GroupBox groupBoxDisplay;
+        private Fo76ini.Controls.StyledGroupBox groupBoxDisplay;
         private System.Windows.Forms.ComboBox comboBoxDisplayMode;
         private System.Windows.Forms.CheckBox checkBoxFixHUDFor5_4and4_3;
         private System.Windows.Forms.ComboBox comboBoxResolution;
@@ -4554,7 +4646,7 @@
         private System.Windows.Forms.NumericUpDown numCustomResH;
         private System.Windows.Forms.Label labelDisplayMode;
         private System.Windows.Forms.Label labelCustomResolutionSpacer;
-        private System.Windows.Forms.GroupBox groupBoxAudioVolume;
+        private Fo76ini.Controls.StyledGroupBox groupBoxAudioVolume;
         private System.Windows.Forms.TrackBar sliderAudioChat;
         private System.Windows.Forms.TrackBar sliderAudiofVal6;
         private System.Windows.Forms.TrackBar sliderAudiofVal5;
@@ -4582,17 +4674,17 @@
         private System.Windows.Forms.Label labelAudiofVal4;
         private System.Windows.Forms.Label labelAudiofVal3;
         private System.Windows.Forms.NumericUpDown numAudiofVal3;
-        private System.Windows.Forms.GroupBox groupBoxAudio;
+        private Fo76ini.Controls.StyledGroupBox groupBoxAudio;
         private System.Windows.Forms.CheckBox checkBoxEnableAudio;
         private System.Windows.Forms.CheckBox checkBoxMainMenuMusic;
-        private System.Windows.Forms.GroupBox groupBoxVoice;
+        private Fo76ini.Controls.StyledGroupBox groupBoxVoice;
         private System.Windows.Forms.ComboBox comboBoxVoiceChatMode;
         private System.Windows.Forms.Label labelVoiceChatMode;
         private System.Windows.Forms.CheckBox checkBoxPushToTalk;
-        private System.Windows.Forms.GroupBox groupBoxGraphics;
-        private System.Windows.Forms.GroupBox groupBoxGraphicEffects;
+        private Fo76ini.Controls.StyledGroupBox groupBoxGraphics;
+        private Fo76ini.Controls.StyledGroupBox groupBoxGraphicEffects;
         private System.Windows.Forms.CheckBox checkBoxDisableGore;
-        private System.Windows.Forms.GroupBox groupBoxTAASharpening;
+        private Fo76ini.Controls.StyledGroupBox groupBoxTAASharpening;
         private System.Windows.Forms.TrackBar sliderTAAPostSharpen;
         private System.Windows.Forms.Label labelTAAPostSharpen;
         private System.Windows.Forms.NumericUpDown numTAAPostSharpen;
@@ -4600,13 +4692,13 @@
         private System.Windows.Forms.NumericUpDown numTAAPostOverlay;
         private System.Windows.Forms.Label labelTAAPostOverlay;
         private System.Windows.Forms.Label labelAntiAliasing;
-        private System.Windows.Forms.GroupBox groupBoxGrass;
+        private Fo76ini.Controls.StyledGroupBox groupBoxGrass;
         private System.Windows.Forms.TrackBar sliderGrassFadeDistance;
         private System.Windows.Forms.NumericUpDown numGrassFadeDistance;
         private System.Windows.Forms.Label labelGrassFadeDistance;
         private System.Windows.Forms.CheckBox checkBoxGrass;
         private System.Windows.Forms.ComboBox comboBoxAntiAliasing;
-        private System.Windows.Forms.GroupBox groupBoxLOD;
+        private Fo76ini.Controls.StyledGroupBox groupBoxLOD;
         private System.Windows.Forms.TrackBar sliderLODActors;
         private System.Windows.Forms.Label labelLODFadeDistance;
         private System.Windows.Forms.TrackBar sliderLODItems;
@@ -4618,10 +4710,10 @@
         private System.Windows.Forms.Label labelLODItems;
         private System.Windows.Forms.Label labelLODObjects;
         private System.Windows.Forms.CheckBox checkBoxVSync;
-        private System.Windows.Forms.GroupBox groupBoxLighting;
+        private Fo76ini.Controls.StyledGroupBox groupBoxLighting;
         private System.Windows.Forms.CheckBox checkBoxGodrays;
         private System.Windows.Forms.Label labelAnisotropicFiltering;
-        private System.Windows.Forms.GroupBox groupBoxShadows;
+        private Fo76ini.Controls.StyledGroupBox groupBoxShadows;
         private System.Windows.Forms.TrackBar sliderShadowDistance;
         private System.Windows.Forms.ComboBox comboBoxShadowBlurriness;
         private System.Windows.Forms.Label labelShadowBlurriness;
@@ -4630,21 +4722,21 @@
         private System.Windows.Forms.ComboBox comboBoxShadowTextureResolution;
         private System.Windows.Forms.Label labelShadowTextureResolution;
         private System.Windows.Forms.ComboBox comboBoxAnisotropicFiltering;
-        private System.Windows.Forms.GroupBox groupBoxWater;
+        private Fo76ini.Controls.StyledGroupBox groupBoxWater;
         private System.Windows.Forms.CheckBox checkBoxWaterDisplacement;
-        private System.Windows.Forms.GroupBox groupBoxPostProcessing;
+        private Fo76ini.Controls.StyledGroupBox groupBoxPostProcessing;
         private System.Windows.Forms.CheckBox checkBoxAmbientOcclusion;
         private System.Windows.Forms.CheckBox checkBoxDepthOfField;
         private System.Windows.Forms.CheckBox checkBoxRadialBlur;
         private System.Windows.Forms.CheckBox checkBoxLensFlare;
-        private System.Windows.Forms.GroupBox groupBoxFieldOfView;
+        private Fo76ini.Controls.StyledGroupBox groupBoxFieldOfView;
         private System.Windows.Forms.PictureBox pictureBoxFOVPreview;
         private System.Windows.Forms.TrackBar sliderFOV;
         private System.Windows.Forms.NumericUpDown numFOV;
-        private System.Windows.Forms.GroupBox groupBoxFOVMore;
+        private Fo76ini.Controls.StyledGroupBox groupBoxFOVMore;
         private System.Windows.Forms.Label labelADSFOV;
         private System.Windows.Forms.NumericUpDown numADSFOV;
-        private System.Windows.Forms.GroupBox groupBoxSelfieCamera;
+        private Fo76ini.Controls.StyledGroupBox groupBoxSelfieCamera;
         private System.Windows.Forms.TrackBar trackBarPhotomodeRange;
         private System.Windows.Forms.NumericUpDown numericUpDownPhotomodeRotationSpeed;
         private System.Windows.Forms.TrackBar trackBarPhotomodeRotationSpeed;
@@ -4654,7 +4746,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownPhotomodeTranslationSpeed;
         private System.Windows.Forms.TrackBar trackBarPhotomodeTranslationSpeed;
         private System.Windows.Forms.Label labelPhotomodeTranslationSpeed;
-        private System.Windows.Forms.GroupBox groupBoxCameraDistance;
+        private Fo76ini.Controls.StyledGroupBox groupBoxCameraDistance;
         private System.Windows.Forms.NumericUpDown numfPitchZoomOutMaxDist;
         private System.Windows.Forms.TrackBar sliderfPitchZoomOutMaxDist;
         private System.Windows.Forms.Label labelPitchZoomOutMaxDist;
@@ -4664,8 +4756,8 @@
         private System.Windows.Forms.Label labelCameraDistanceMaximum;
         private System.Windows.Forms.Label labelCameraDistanceMinimum;
         private System.Windows.Forms.TrackBar sliderCameraDistanceMinimum;
-        private System.Windows.Forms.GroupBox groupBoxCameraPosition;
-        private System.Windows.Forms.GroupBox groupBoxMeleeCombatCameraPosition;
+        private Fo76ini.Controls.StyledGroupBox groupBoxCameraPosition;
+        private Fo76ini.Controls.StyledGroupBox groupBoxMeleeCombatCameraPosition;
         private System.Windows.Forms.NumericUpDown numfOverShoulderMeleeCombatAddY;
         private System.Windows.Forms.Label labelfOverShoulderMeleeCombatAddY;
         private System.Windows.Forms.NumericUpDown numfOverShoulderMeleeCombatPosX;
@@ -4675,7 +4767,7 @@
         private System.Windows.Forms.TrackBar trackBarfOverShoulderMeleeCombatPosX;
         private System.Windows.Forms.Label labelfOverShoulderMeleeCombatPosZ;
         private System.Windows.Forms.TrackBar trackBarfOverShoulderMeleeCombatPosZ;
-        private System.Windows.Forms.GroupBox groupBoxCombatCameraPosition;
+        private Fo76ini.Controls.StyledGroupBox groupBoxCombatCameraPosition;
         private System.Windows.Forms.NumericUpDown numfOverShoulderCombatAddY;
         private System.Windows.Forms.NumericUpDown numfOverShoulderCombatPosX;
         private System.Windows.Forms.NumericUpDown numfOverShoulderCombatPosZ;
@@ -4687,7 +4779,7 @@
         private System.Windows.Forms.TrackBar trackBarfOverShoulderCombatPosZ;
         private System.Windows.Forms.Button buttonCameraPositionReset;
         private System.Windows.Forms.CheckBox checkBoxbApplyCameraNodeAnimations;
-        private System.Windows.Forms.GroupBox groupBoxUnarmedCameraPosition;
+        private Fo76ini.Controls.StyledGroupBox groupBoxUnarmedCameraPosition;
         private System.Windows.Forms.NumericUpDown numfOverShoulderPosX;
         private System.Windows.Forms.NumericUpDown numfOverShoulderPosZ;
         private System.Windows.Forms.Label labelfOverShoulderPosX;
@@ -4702,22 +4794,22 @@
         private System.Windows.Forms.TrackBar sliderMouseSensitivityY;
         private System.Windows.Forms.NumericUpDown numMouseSensitivityY;
         private System.Windows.Forms.Label labelMouseSensitivityY;
-        private System.Windows.Forms.GroupBox groupBoxDialogue;
-        private System.Windows.Forms.TrackBar sliderConversationHistorySize;
+        private Fo76ini.Controls.StyledGroupBox groupBoxDialogue;
+        private ColorSlider.ColorSlider sliderConversationHistorySize;
         private System.Windows.Forms.NumericUpDown numConversationHistorySize;
         private System.Windows.Forms.Label labelConversationHistorySize;
         private System.Windows.Forms.CheckBox checkBoxDialogueHistory;
         private System.Windows.Forms.CheckBox checkBoxDialogueSubtitles;
         private System.Windows.Forms.CheckBox checkBoxGeneralSubtitles;
-        private System.Windows.Forms.GroupBox groupBoxHUD;
-        private System.Windows.Forms.GroupBox groupBoxGameplay;
+        private Fo76ini.Controls.StyledGroupBox groupBoxHUD;
+        private Fo76ini.Controls.StyledGroupBox groupBoxGameplay;
         private System.Windows.Forms.CheckBox checkBoxBackpackVisible;
         private System.Windows.Forms.Label labelHighlightCorpses;
         private System.Windows.Forms.ComboBox comboBoxHighlightCorpses;
-        private System.Windows.Forms.GroupBox groupBoxFloatingQuestMarkers;
+        private Fo76ini.Controls.StyledGroupBox groupBoxFloatingQuestMarkers;
         private System.Windows.Forms.CheckBox checkBoxAimAssist;
         private System.Windows.Forms.RichTextBox richTextBoxCredentialsExplanation;
-        private System.Windows.Forms.GroupBox groupBoxIdleCamera;
+        private Fo76ini.Controls.StyledGroupBox groupBoxIdleCamera;
         private System.Windows.Forms.CheckBox checkBoxForceVanityMode;
         private System.Windows.Forms.CheckBox checkBoxVanityMode;
         private System.Windows.Forms.CheckBox checkBoxMotionBlur;
@@ -4733,7 +4825,7 @@
         private System.Windows.Forms.TrackBar sliderGamepadSensitivityX;
         private System.Windows.Forms.NumericUpDown numGamepadSensitivityX;
         private System.Windows.Forms.Label labelGamepadSensitivityX;
-        private System.Windows.Forms.GroupBox groupBoxTextures;
+        private Fo76ini.Controls.StyledGroupBox groupBoxTextures;
         private System.Windows.Forms.ComboBox comboBoxTextureQuality;
         private System.Windows.Forms.Label labelTextureQuality;
         private System.Windows.Forms.ComboBox comboBoxShadowQuality;
@@ -4754,7 +4846,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
         private System.Windows.Forms.Label labelSelectedQualityPreset;
-        private System.Windows.Forms.GroupBox groupBoxDOF;
+        private Fo76ini.Controls.StyledGroupBox groupBoxDOF;
         private System.Windows.Forms.NumericUpDown numDOFStrength;
         private System.Windows.Forms.Label labelDOFStrength;
         private System.Windows.Forms.TrackBar sliderDOFStrength;

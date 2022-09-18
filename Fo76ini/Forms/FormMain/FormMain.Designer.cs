@@ -30,29 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.timerCheckFiles = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorkerLoadGallery = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerGetLatestVersion = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLoadingGIF = new System.Windows.Forms.PictureBox();
-            this.userControlSideNav = new Fo76ini.Forms.FormMain.UserControlSideNav();
-            this.viewControl = new Fo76ini.Controls.ViewControl();
             this.backgroundWorkerTranslationsCheckForUpdates = new System.ComponentModel.BackgroundWorker();
+            this.viewControl = new Fo76ini.Controls.ViewControl();
+            this.userControlSideNav = new Fo76ini.Forms.FormMain.UserControlSideNav();
+            this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadingGIF)).BeginInit();
             this.SuspendLayout();
-            // 
-            // toolTip
-            // 
-            this.toolTip.AutoPopDelay = 20000;
-            this.toolTip.BackColor = System.Drawing.Color.White;
-            this.toolTip.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolTip.ForeColor = System.Drawing.Color.Black;
-            this.toolTip.InitialDelay = 500;
-            this.toolTip.OwnerDraw = true;
-            this.toolTip.Padding = new System.Drawing.Size(6, 6);
-            this.toolTip.ReshowDelay = 100;
-            this.toolTip.ShowAlways = true;
             // 
             // colorDialog
             // 
@@ -80,11 +68,27 @@
             this.pictureBoxLoadingGIF.TabStop = false;
             this.pictureBoxLoadingGIF.Visible = false;
             // 
+            // backgroundWorkerTranslationsCheckForUpdates
+            // 
+            this.backgroundWorkerTranslationsCheckForUpdates.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerTranslationsCheckForUpdates_DoWork);
+            // 
+            // viewControl
+            // 
+            this.viewControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.viewControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.viewControl.Location = new System.Drawing.Point(200, -2);
+            this.viewControl.Margin = new System.Windows.Forms.Padding(0);
+            this.viewControl.Name = "viewControl";
+            this.viewControl.Size = new System.Drawing.Size(685, 613);
+            this.viewControl.TabIndex = 18;
+            // 
             // userControlSideNav
             // 
             this.userControlSideNav.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.userControlSideNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.userControlSideNav.BackColor = System.Drawing.Color.Black;
             this.userControlSideNav.Location = new System.Drawing.Point(0, -2);
             this.userControlSideNav.Name = "userControlSideNav";
             this.userControlSideNav.SelectedTabIndex = -1;
@@ -103,21 +107,17 @@
             this.userControlSideNav.ProfileClicked += new System.EventHandler(this.userControlSideNav2_ProfileClicked);
             this.userControlSideNav.NexusClicked += new System.EventHandler(this.userControlSideNav2_NexusClicked);
             // 
-            // viewControl
+            // toolTip
             // 
-            this.viewControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.viewControl.BackColor = System.Drawing.Color.White;
-            this.viewControl.Location = new System.Drawing.Point(200, -2);
-            this.viewControl.Margin = new System.Windows.Forms.Padding(0);
-            this.viewControl.Name = "viewControl";
-            this.viewControl.Size = new System.Drawing.Size(685, 613);
-            this.viewControl.TabIndex = 18;
-            // 
-            // backgroundWorkerTranslationsCheckForUpdates
-            // 
-            this.backgroundWorkerTranslationsCheckForUpdates.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerTranslationsCheckForUpdates_DoWork);
+            this.toolTip.AutoPopDelay = 20000;
+            this.toolTip.BackColor = System.Drawing.Color.White;
+            this.toolTip.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolTip.ForeColor = System.Drawing.Color.Black;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.OwnerDraw = true;
+            this.toolTip.Padding = new System.Drawing.Size(6, 6);
+            this.toolTip.ReshowDelay = 100;
+            this.toolTip.ShowAlways = true;
             // 
             // FormMain
             // 

@@ -225,6 +225,11 @@ namespace Fo76ini.Tweaks
             LinkSlider(slider, num, numToSliderRatio, false);
         }
 
+        public static void LinkSlider(ColorSlider.ColorSlider slider, NumericUpDown num, double numToSliderRatio)
+        {
+            LinkSlider(slider, num, numToSliderRatio, false);
+        }
+
         /// <summary>
         /// Links the value of a TrackBar to a value of NumericUpDown and vice-versa.
         /// Whenever the value of one changes, the other gets changed too.
@@ -248,6 +253,24 @@ namespace Fo76ini.Tweaks
                     num.Value = Convert.ToDecimal((slider.Maximum - slider.Value) / numToSliderRatio);
                 num.ValueChanged += (object sender, EventArgs e) =>
                     slider.Value = Utils.Clamp(Convert.ToInt32(slider.Maximum - Convert.ToDouble(num.Value) * numToSliderRatio), slider.Minimum, slider.Maximum);
+            }
+        }
+
+        public static void LinkSlider(ColorSlider.ColorSlider slider, NumericUpDown num, double numToSliderRatio, bool reversed)
+        {
+            if (!reversed)
+            {
+                slider.Scroll += (object sender, ScrollEventArgs e) =>
+                    num.Value = slider.Value / Convert.ToDecimal(numToSliderRatio);
+                num.ValueChanged += (object sender, EventArgs e) =>
+                    slider.Value = Utils.Clamp(Convert.ToInt32(Convert.ToDouble(num.Value) * numToSliderRatio), slider.Minimum, slider.Maximum);
+            }
+            else
+            {
+                slider.Scroll += (object sender, ScrollEventArgs e) =>
+                    num.Value = slider.Maximum - slider.Value / Convert.ToDecimal(numToSliderRatio);
+                num.ValueChanged += (object sender, EventArgs e) =>
+                    slider.Value = Utils.Clamp(Convert.ToInt32(slider.Maximum - num.Value * Convert.ToDecimal(numToSliderRatio)), slider.Minimum, slider.Maximum);
             }
         }
 

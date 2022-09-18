@@ -139,6 +139,7 @@
             // 
             // tabPagePipboyColor
             // 
+            this.tabPagePipboyColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPagePipboyColor.Controls.Add(this.textBoxPipboyHEX);
             this.tabPagePipboyColor.Controls.Add(this.labelPipboyHEX);
             this.tabPagePipboyColor.Controls.Add(this.labelPreviewPipboy);
@@ -154,7 +155,6 @@
             this.tabPagePipboyColor.Size = new System.Drawing.Size(429, 411);
             this.tabPagePipboyColor.TabIndex = 0;
             this.tabPagePipboyColor.Text = "Pip-Boy";
-            this.tabPagePipboyColor.UseVisualStyleBackColor = true;
             // 
             // textBoxPipboyHEX
             // 
@@ -254,6 +254,7 @@
             // 
             // tabPageQuickboyColor
             // 
+            this.tabPageQuickboyColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageQuickboyColor.Controls.Add(this.textBoxQuickboyHEX);
             this.tabPageQuickboyColor.Controls.Add(this.labelQuickboyHEX);
             this.tabPageQuickboyColor.Controls.Add(this.labelPreviewQuickboy);
@@ -269,7 +270,6 @@
             this.tabPageQuickboyColor.Size = new System.Drawing.Size(429, 411);
             this.tabPageQuickboyColor.TabIndex = 1;
             this.tabPageQuickboyColor.Text = "Quick-Boy";
-            this.tabPageQuickboyColor.UseVisualStyleBackColor = true;
             // 
             // textBoxQuickboyHEX
             // 
@@ -367,6 +367,7 @@
             // 
             // tabPagePowerArmorColor
             // 
+            this.tabPagePowerArmorColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPagePowerArmorColor.Controls.Add(this.textBoxPAColorHEX);
             this.tabPagePowerArmorColor.Controls.Add(this.labelPAColorHEX);
             this.tabPagePowerArmorColor.Controls.Add(this.labelPreviewPA);
@@ -381,7 +382,6 @@
             this.tabPagePowerArmorColor.Size = new System.Drawing.Size(429, 411);
             this.tabPagePowerArmorColor.TabIndex = 2;
             this.tabPagePowerArmorColor.Text = "Power Armor";
-            this.tabPagePowerArmorColor.UseVisualStyleBackColor = true;
             // 
             // textBoxPAColorHEX
             // 
@@ -479,10 +479,10 @@
             // 
             // buttonPresetFo3Green
             // 
-            this.buttonPresetFo3Green.BackColor = System.Drawing.Color.White;
-            this.buttonPresetFo3Green.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.buttonPresetFo3Green.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.buttonPresetFo3Green.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPresetFo3Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonPresetFo3Green.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonPresetFo3Green.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonPresetFo3Green.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonPresetFo3Green.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo3Green.Location = new System.Drawing.Point(38, 25);
             this.buttonPresetFo3Green.Name = "buttonPresetFo3Green";
@@ -495,10 +495,10 @@
             // 
             // buttonPresetFo3White
             // 
-            this.buttonPresetFo3White.BackColor = System.Drawing.Color.White;
-            this.buttonPresetFo3White.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.buttonPresetFo3White.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.buttonPresetFo3White.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPresetFo3White.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonPresetFo3White.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonPresetFo3White.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonPresetFo3White.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonPresetFo3White.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo3White.Location = new System.Drawing.Point(38, 115);
             this.buttonPresetFo3White.Name = "buttonPresetFo3White";
@@ -511,10 +511,10 @@
             // 
             // buttonPresetFoNVAmber
             // 
-            this.buttonPresetFoNVAmber.BackColor = System.Drawing.Color.White;
-            this.buttonPresetFoNVAmber.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.buttonPresetFoNVAmber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.buttonPresetFoNVAmber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPresetFoNVAmber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonPresetFoNVAmber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonPresetFoNVAmber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonPresetFoNVAmber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonPresetFoNVAmber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFoNVAmber.Location = new System.Drawing.Point(38, 55);
             this.buttonPresetFoNVAmber.Name = "buttonPresetFoNVAmber";
@@ -527,10 +527,10 @@
             // 
             // buttonPresetFo76Green
             // 
-            this.buttonPresetFo76Green.BackColor = System.Drawing.Color.White;
-            this.buttonPresetFo76Green.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.buttonPresetFo76Green.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.buttonPresetFo76Green.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPresetFo76Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonPresetFo76Green.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonPresetFo76Green.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonPresetFo76Green.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonPresetFo76Green.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo76Green.Location = new System.Drawing.Point(38, 175);
             this.buttonPresetFo76Green.Name = "buttonPresetFo76Green";
@@ -543,10 +543,10 @@
             // 
             // buttonPresetFo4Green
             // 
-            this.buttonPresetFo4Green.BackColor = System.Drawing.Color.White;
-            this.buttonPresetFo4Green.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.buttonPresetFo4Green.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.buttonPresetFo4Green.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPresetFo4Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonPresetFo4Green.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonPresetFo4Green.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonPresetFo4Green.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonPresetFo4Green.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo4Green.Location = new System.Drawing.Point(38, 145);
             this.buttonPresetFo4Green.Name = "buttonPresetFo4Green";
@@ -559,10 +559,10 @@
             // 
             // buttonPresetFo3Blue
             // 
-            this.buttonPresetFo3Blue.BackColor = System.Drawing.Color.White;
-            this.buttonPresetFo3Blue.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.buttonPresetFo3Blue.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.buttonPresetFo3Blue.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPresetFo3Blue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonPresetFo3Blue.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonPresetFo3Blue.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonPresetFo3Blue.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonPresetFo3Blue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo3Blue.Location = new System.Drawing.Point(38, 85);
             this.buttonPresetFo3Blue.Name = "buttonPresetFo3Blue";
@@ -724,10 +724,10 @@
             // 
             // buttonPresetTato
             // 
-            this.buttonPresetTato.BackColor = System.Drawing.Color.White;
-            this.buttonPresetTato.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.buttonPresetTato.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.buttonPresetTato.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPresetTato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonPresetTato.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonPresetTato.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonPresetTato.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonPresetTato.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetTato.Location = new System.Drawing.Point(38, 286);
             this.buttonPresetTato.Name = "buttonPresetTato";
@@ -750,10 +750,10 @@
             // 
             // buttonButtonPresetLavendar
             // 
-            this.buttonButtonPresetLavendar.BackColor = System.Drawing.Color.White;
-            this.buttonButtonPresetLavendar.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.buttonButtonPresetLavendar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.buttonButtonPresetLavendar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonButtonPresetLavendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonButtonPresetLavendar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonButtonPresetLavendar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonButtonPresetLavendar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonButtonPresetLavendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonButtonPresetLavendar.Location = new System.Drawing.Point(38, 256);
             this.buttonButtonPresetLavendar.Name = "buttonButtonPresetLavendar";
@@ -776,10 +776,10 @@
             // 
             // buttonPresetFo76PPColor
             // 
-            this.buttonPresetFo76PPColor.BackColor = System.Drawing.Color.White;
-            this.buttonPresetFo76PPColor.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.buttonPresetFo76PPColor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.buttonPresetFo76PPColor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPresetFo76PPColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonPresetFo76PPColor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonPresetFo76PPColor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonPresetFo76PPColor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonPresetFo76PPColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo76PPColor.Location = new System.Drawing.Point(38, 367);
             this.buttonPresetFo76PPColor.Name = "buttonPresetFo76PPColor";
@@ -802,10 +802,10 @@
             // 
             // buttonPresetFo76QB
             // 
-            this.buttonPresetFo76QB.BackColor = System.Drawing.Color.White;
-            this.buttonPresetFo76QB.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.buttonPresetFo76QB.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.buttonPresetFo76QB.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPresetFo76QB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonPresetFo76QB.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonPresetFo76QB.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonPresetFo76QB.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonPresetFo76QB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetFo76QB.Location = new System.Drawing.Point(38, 337);
             this.buttonPresetFo76QB.Name = "buttonPresetFo76QB";
@@ -838,10 +838,10 @@
             // 
             // buttonPresetWhite
             // 
-            this.buttonPresetWhite.BackColor = System.Drawing.Color.White;
-            this.buttonPresetWhite.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.buttonPresetWhite.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.buttonPresetWhite.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPresetWhite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonPresetWhite.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonPresetWhite.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.buttonPresetWhite.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.buttonPresetWhite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPresetWhite.Location = new System.Drawing.Point(38, 226);
             this.buttonPresetWhite.Name = "buttonPresetWhite";
@@ -988,10 +988,12 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.Controls.Add(this.panelPipboyOther);
             this.Controls.Add(this.panelPipboyPresets);
             this.Controls.Add(this.labelPipboyTitle);
             this.Controls.Add(this.tabControlPipboy);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "UserControlPipboy";
             this.Size = new System.Drawing.Size(671, 741);
             this.tabControlPipboy.ResumeLayout(false);

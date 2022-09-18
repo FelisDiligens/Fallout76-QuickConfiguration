@@ -484,4 +484,10 @@
   <data name="status_partial_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\status-partial-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="github_white_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\github_white_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="github_white_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\github_white_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
