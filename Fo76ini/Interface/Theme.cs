@@ -39,7 +39,12 @@ namespace Fo76ini.Interface
         private void readTheme(String path)
         {
             var deserializer = new Deserializer();
-            var result = deserializer.Deserialize<Dictionary<object, object>>(new StreamReader(path));
+            var stream = new StreamReader(path);
+            var result = deserializer.Deserialize<Dictionary<object, object>>(stream);
+            stream.Close();
+            if (result == null)
+                return;
+
             foreach (KeyValuePair<object, object> entry in result)
             {
                 String key = entry.Key.ToString();

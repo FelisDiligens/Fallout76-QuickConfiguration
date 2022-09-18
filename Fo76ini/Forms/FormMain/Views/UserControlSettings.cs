@@ -79,6 +79,20 @@ namespace Fo76ini.Forms.FormMain.Tabs
             this.textBoxSevenZipPath.Text = Configuration.SevenZipPath;
             this.textBoxDownloadsPath.Text = Configuration.DownloadPath;
 
+            // Theme:
+            switch (Configuration.Appearance.AppTheme)
+            {
+                case ThemeType.Light:
+                    radioButtonLightTheme.Checked = true;
+                    break;
+                case ThemeType.Dark:
+                    radioButtonDarkTheme.Checked = true;
+                    break;
+                case ThemeType.System:
+                    radioButtonRespectSystemTheme.Checked = true;
+                    break;
+            }
+
             UpdatingUI = false;
         }
 
@@ -298,10 +312,26 @@ namespace Fo76ini.Forms.FormMain.Tabs
         }
         public event EventHandler OpenProfileEditorRequested;
 
+        #region Themes
+
+        private void radioButtonLightTheme_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonLightTheme.Checked && !UpdatingUI)
+                Theming.ApplyTheme(ThemeType.Light, this.ParentForm);
+        }
+
+        private void radioButtonDarkTheme_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonDarkTheme.Checked && !UpdatingUI)
+                Theming.ApplyTheme(ThemeType.Dark, this.ParentForm);
+        }
+
         private void radioButtonRespectSystemTheme_CheckedChanged(object sender, EventArgs e)
         {
-            Theme t = Theme.ReadTheme("C:\\Users\\temig\\Desktop\\Style.yml");
-            Theming.ApplyTheme(t, this);
+            if (radioButtonRespectSystemTheme.Checked && !UpdatingUI)
+                Theming.ApplyTheme(ThemeType.System, this.ParentForm);
         }
+
+        #endregion
     }
 }

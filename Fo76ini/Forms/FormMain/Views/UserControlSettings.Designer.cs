@@ -722,6 +722,7 @@
             this.radioButtonDarkTheme.TabStop = true;
             this.radioButtonDarkTheme.Text = "Dark";
             this.radioButtonDarkTheme.UseVisualStyleBackColor = true;
+            this.radioButtonDarkTheme.CheckedChanged += new System.EventHandler(this.radioButtonDarkTheme_CheckedChanged);
             // 
             // radioButtonLightTheme
             // 
@@ -733,6 +734,7 @@
             this.radioButtonLightTheme.TabStop = true;
             this.radioButtonLightTheme.Text = "Light";
             this.radioButtonLightTheme.UseVisualStyleBackColor = true;
+            this.radioButtonLightTheme.CheckedChanged += new System.EventHandler(this.radioButtonLightTheme_CheckedChanged);
             // 
             // labelTheme
             // 

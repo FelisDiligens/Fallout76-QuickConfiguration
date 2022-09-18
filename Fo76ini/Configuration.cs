@@ -6,6 +6,7 @@ using Syroot.Windows.IO;
 using Fo76ini.Utilities;
 using System.Globalization;
 using Fo76ini.Mods;
+using Fo76ini.Interface;
 
 namespace Fo76ini
 {
@@ -263,6 +264,22 @@ namespace Fo76ini
                 set
                 {
                     IniFiles.Config.Set("Translations", "bNotifyAboutAvailableUpdates", value);
+                }
+            }
+        }
+
+        public class Appearance
+        {
+            public static ThemeType AppTheme
+            {
+                get
+                {
+                    Enum.TryParse(IniFiles.Config.GetString("Appearance", "sAppTheme", ThemeType.System.ToString()), out ThemeType value);
+                    return value;
+                }
+                set
+                {
+                    IniFiles.Config.Set("Appearance", "sAppTheme", value.ToString());
                 }
             }
         }

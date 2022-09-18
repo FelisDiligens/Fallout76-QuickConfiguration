@@ -140,6 +140,9 @@ namespace Fo76ini
             {
                 // Yeah, well or not.
             }
+
+            // Apply theme:
+            Theming.ApplyTheme(Configuration.Appearance.AppTheme, this);
         }
 
         private void FormMain_Shown(object sender, EventArgs e)
