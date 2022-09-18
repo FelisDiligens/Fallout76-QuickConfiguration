@@ -526,6 +526,67 @@ namespace Fo76ini.Utilities
             return DateTime.Parse(date, null, DateTimeStyles.RoundtripKind);
         }
 
+        /// <summary>
+        /// Parses #hex and rgb() strings as well as words like "white", "black", etc.
+        /// </summary>
+        /// <remarks>https://stackoverflow.com/a/40611610</remarks>
+        /// <param name="colorStr"></param>
+        /// <returns></returns>
+        /// <exception cref="FormatException"></exception>
+        public static Color ParseColor(string colorStr)
+        {
+            colorStr = colorStr.Trim();
+
+            if (colorStr.StartsWith("#"))
+            {
+                return ColorTranslator.FromHtml(colorStr);
+            }
+            else if (colorStr.StartsWith("rgb")) //rgb or argb
+            {
+                int left = colorStr.IndexOf('(');
+                int right = colorStr.IndexOf(')');
+
+                if (left < 0 || right < 0)
+                    throw new FormatException("rgba format error");
+                string noBrackets = colorStr.Substring(left + 1, right - left - 1);
+
+                string[] parts = noBrackets.Split(',');
+
+                int r = int.Parse(parts[0], CultureInfo.InvariantCulture);
+                int g = int.Parse(parts[1], CultureInfo.InvariantCulture);
+                int b = int.Parse(parts[2], CultureInfo.InvariantCulture);
+
+                if (parts.Length == 3)
+                {
+                    return Color.FromArgb(r, g, b);
+                }
+                else if (parts.Length == 4)
+                {
+                    float a = float.Parse(parts[3], CultureInfo.InvariantCulture);
+                    return Color.FromArgb((int)(a * 255), r, g, b);
+                }
+            }
+            else
+            {
+                return ColorTranslator.FromHtml(colorStr);
+            }
+            throw new FormatException("Not rgb, rgba or hexa color string");
+        }
+
+        /// <summary>
+        /// Converts a string with wildcards ("*" or "?") to a regular expression.
+        /// 
+        /// "?" - any character  (one and only one)
+        /// "*" - any characters (zero or more)
+        /// </summary>
+        /// <remarks>https://stackoverflow.com/a/30300521</remarks>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static String WildCardToRegular(String value)
+        {
+            return "^" + Regex.Escape(value).Replace("\\?", ".").Replace("\\*", ".*") + "$";
+        }
+
         public static void SetFormPosition(Form form, int x, int y)
         {
             // https://stackoverflow.com/questions/31401568/how-can-i-set-the-windows-form-position-manually

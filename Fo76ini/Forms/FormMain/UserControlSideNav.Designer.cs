@@ -46,9 +46,9 @@
             this.editFallout76PrefsiniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editFallout76CustominiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelGameEditionDesc = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxSpacer = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSpacer3 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSpacer2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSpacer1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.buttonNexusMods = new Fo76ini.Controls.StyledButton();
             this.buttonCustom = new Fo76ini.Controls.StyledButton();
@@ -64,9 +64,9 @@
             this.buttonApply = new Fo76ini.Controls.StyledButton();
             this.buttonPlay = new Fo76ini.Controls.StyledButton();
             this.contextMenuStripBrowse.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +74,6 @@
             // 
             this.labelLogo.BackColor = System.Drawing.Color.Transparent;
             this.labelLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLogo.ForeColor = System.Drawing.Color.White;
             this.labelLogo.Location = new System.Drawing.Point(3, 64);
             this.labelLogo.Name = "labelLogo";
             this.labelLogo.Size = new System.Drawing.Size(194, 30);
@@ -109,7 +108,7 @@
             this.editFallout76PrefsiniToolStripMenuItem,
             this.editFallout76CustominiToolStripMenuItem});
             this.contextMenuStripBrowse.Name = "contextMenuStripBrowse";
-            this.contextMenuStripBrowse.Size = new System.Drawing.Size(215, 264);
+            this.contextMenuStripBrowse.Size = new System.Drawing.Size(215, 242);
             // 
             // gameFolderToolStripMenuItem
             // 
@@ -212,43 +211,43 @@
             // labelGameEditionDesc
             // 
             this.labelGameEditionDesc.AutoSize = true;
+            this.labelGameEditionDesc.BackColor = System.Drawing.Color.Transparent;
             this.labelGameEditionDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGameEditionDesc.ForeColor = System.Drawing.Color.White;
             this.labelGameEditionDesc.Location = new System.Drawing.Point(5, 532);
             this.labelGameEditionDesc.Name = "labelGameEditionDesc";
             this.labelGameEditionDesc.Size = new System.Drawing.Size(104, 16);
             this.labelGameEditionDesc.TabIndex = 49;
             this.labelGameEditionDesc.Text = "Selected profile:";
             // 
-            // pictureBox2
+            // pictureBoxSpacer3
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.pictureBox2.Location = new System.Drawing.Point(0, 521);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(6);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(200, 1);
-            this.pictureBox2.TabIndex = 53;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxSpacer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.pictureBoxSpacer3.Location = new System.Drawing.Point(0, 521);
+            this.pictureBoxSpacer3.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBoxSpacer3.Name = "pictureBoxSpacer3";
+            this.pictureBoxSpacer3.Size = new System.Drawing.Size(200, 1);
+            this.pictureBoxSpacer3.TabIndex = 53;
+            this.pictureBoxSpacer3.TabStop = false;
             // 
-            // pictureBox1
+            // pictureBoxSpacer2
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 400);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 1);
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxSpacer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.pictureBoxSpacer2.Location = new System.Drawing.Point(0, 400);
+            this.pictureBoxSpacer2.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBoxSpacer2.Name = "pictureBoxSpacer2";
+            this.pictureBoxSpacer2.Size = new System.Drawing.Size(200, 1);
+            this.pictureBoxSpacer2.TabIndex = 16;
+            this.pictureBoxSpacer2.TabStop = false;
             // 
-            // pictureBoxSpacer
+            // pictureBoxSpacer1
             // 
-            this.pictureBoxSpacer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.pictureBoxSpacer.Location = new System.Drawing.Point(0, 168);
-            this.pictureBoxSpacer.Margin = new System.Windows.Forms.Padding(6);
-            this.pictureBoxSpacer.Name = "pictureBoxSpacer";
-            this.pictureBoxSpacer.Size = new System.Drawing.Size(200, 1);
-            this.pictureBoxSpacer.TabIndex = 12;
-            this.pictureBoxSpacer.TabStop = false;
+            this.pictureBoxSpacer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.pictureBoxSpacer1.Location = new System.Drawing.Point(0, 168);
+            this.pictureBoxSpacer1.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBoxSpacer1.Name = "pictureBoxSpacer1";
+            this.pictureBoxSpacer1.Size = new System.Drawing.Size(200, 1);
+            this.pictureBoxSpacer1.TabIndex = 12;
+            this.pictureBoxSpacer1.TabStop = false;
             // 
             // pictureBoxLogo
             // 
@@ -284,6 +283,7 @@
             this.buttonNexusMods.Text = "NexusMods";
             this.buttonNexusMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonNexusMods.UseVisualStyleBackColor = true;
+            this.buttonNexusMods.VisualStyle = "NavButton";
             this.buttonNexusMods.Click += new System.EventHandler(this.buttonNexusMods_Click);
             // 
             // buttonCustom
@@ -310,6 +310,7 @@
             this.buttonCustom.Text = "Custom tweaks";
             this.buttonCustom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCustom.UseVisualStyleBackColor = true;
+            this.buttonCustom.VisualStyle = "NavButton";
             this.buttonCustom.Click += new System.EventHandler(this.buttonCustom_Click);
             // 
             // buttonProfile
@@ -336,6 +337,7 @@
             this.buttonProfile.Text = "Unknown";
             this.buttonProfile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonProfile.UseVisualStyleBackColor = true;
+            this.buttonProfile.VisualStyle = "NavButton";
             this.buttonProfile.Click += new System.EventHandler(this.buttonProfile_Click);
             // 
             // buttonHome
@@ -362,6 +364,7 @@
             this.buttonHome.Text = "Home";
             this.buttonHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHome.UseVisualStyleBackColor = true;
+            this.buttonHome.VisualStyle = "NavButton";
             this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
             // 
             // buttonGallery
@@ -388,6 +391,7 @@
             this.buttonGallery.Text = "Gallery";
             this.buttonGallery.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonGallery.UseVisualStyleBackColor = true;
+            this.buttonGallery.VisualStyle = "NavButton";
             this.buttonGallery.Click += new System.EventHandler(this.buttonGallery_Click);
             // 
             // buttonPipboy
@@ -414,6 +418,7 @@
             this.buttonPipboy.Text = "Pip-Boy";
             this.buttonPipboy.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPipboy.UseVisualStyleBackColor = true;
+            this.buttonPipboy.VisualStyle = "NavButton";
             this.buttonPipboy.Click += new System.EventHandler(this.buttonPipboy_Click);
             // 
             // buttonTweaks
@@ -425,7 +430,6 @@
             this.buttonTweaks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTweaks.ForeColor = System.Drawing.Color.White;
             this.buttonTweaks.Highlight = false;
-            this.buttonTweaks.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.buttonTweaks.Image = global::Fo76ini.Properties.Resources.wrench_2_24;
             this.buttonTweaks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTweaks.Location = new System.Drawing.Point(0, 214);
@@ -440,6 +444,7 @@
             this.buttonTweaks.Text = "Tweaks";
             this.buttonTweaks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTweaks.UseVisualStyleBackColor = true;
+            this.buttonTweaks.VisualStyle = "NavButton";
             this.buttonTweaks.Click += new System.EventHandler(this.buttonTweaks_Click);
             // 
             // buttonBrowse
@@ -466,6 +471,7 @@
             this.buttonBrowse.Text = "Browse";
             this.buttonBrowse.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonBrowse.UseVisualStyleBackColor = true;
+            this.buttonBrowse.VisualStyle = "NavButton";
             this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
             // buttonSettings
@@ -492,6 +498,7 @@
             this.buttonSettings.Text = "Settings";
             this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.VisualStyle = "NavButton";
             this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
             // buttonMods
@@ -518,6 +525,7 @@
             this.buttonMods.Text = "Mods";
             this.buttonMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonMods.UseVisualStyleBackColor = true;
+            this.buttonMods.VisualStyle = "NavButton";
             this.buttonMods.Click += new System.EventHandler(this.buttonMods_Click);
             // 
             // buttonUpdate
@@ -544,6 +552,7 @@
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.VisualStyle = "NavButton";
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonApply
@@ -570,6 +579,7 @@
             this.buttonApply.Text = "Apply";
             this.buttonApply.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonApply.UseVisualStyleBackColor = true;
+            this.buttonApply.VisualStyle = "NavButton";
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
             // buttonPlay
@@ -596,24 +606,24 @@
             this.buttonPlay.Text = "Play";
             this.buttonPlay.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonPlay.UseVisualStyleBackColor = true;
+            this.buttonPlay.VisualStyle = "NavButton";
             this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
             // 
             // UserControlSideNav
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBoxSpacer3);
             this.Controls.Add(this.buttonNexusMods);
             this.Controls.Add(this.buttonCustom);
             this.Controls.Add(this.buttonProfile);
             this.Controls.Add(this.labelGameEditionDesc);
             this.Controls.Add(this.buttonHome);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxSpacer2);
             this.Controls.Add(this.buttonGallery);
             this.Controls.Add(this.buttonPipboy);
             this.Controls.Add(this.buttonTweaks);
-            this.Controls.Add(this.pictureBoxSpacer);
+            this.Controls.Add(this.pictureBoxSpacer1);
             this.Controls.Add(this.buttonBrowse);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.buttonMods);
@@ -626,9 +636,9 @@
             this.Name = "UserControlSideNav";
             this.Size = new System.Drawing.Size(200, 620);
             this.contextMenuStripBrowse.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -660,16 +670,16 @@
         private System.Windows.Forms.ToolStripMenuItem editFallout76iniToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editFallout76PrefsiniToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editFallout76CustominiToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBoxSpacer;
+        private System.Windows.Forms.PictureBox pictureBoxSpacer1;
         private Controls.StyledButton buttonTweaks;
         private Controls.StyledButton buttonPipboy;
         private Controls.StyledButton buttonGallery;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxSpacer2;
         private Controls.StyledButton buttonHome;
         private System.Windows.Forms.Label labelGameEditionDesc;
         private Controls.StyledButton buttonProfile;
         private Controls.StyledButton buttonCustom;
         private Controls.StyledButton buttonNexusMods;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBoxSpacer3;
     }
 }

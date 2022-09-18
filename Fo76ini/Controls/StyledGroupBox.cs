@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Fo76ini.Interface;
 
 namespace Fo76ini.Controls
 {
@@ -76,5 +77,7 @@ namespace Fo76ini.Controls
             // Top, right
             e.Graphics.DrawLine(borderPen, new Point(rect.X + TitleBorderMargin + TitleBorderPadding * 2 + (int)(strSize.Width), rect.Y), new Point(rect.X + rect.Width, rect.Y));
         }
+
+        public void ApplyTheme(ThemeType theme) { }
     }
 }

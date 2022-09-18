@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fo76ini.Interface;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -277,5 +278,7 @@ namespace Fo76ini.Controls
         {
             return GetRect(TextAlign, textSize, true);
         }
+
+        public void ApplyTheme(ThemeType theme) {}
     }
 }

@@ -12,6 +12,7 @@ namespace Fo76ini.Interface
 {
     public class Theme
     {
+        public ThemeType Type = ThemeType.Light;
         public List<VisualStyle> Styles = new List<VisualStyle>();
 
         public List<VisualStyle> GetStylesForControl(String controlType)
@@ -48,21 +49,34 @@ namespace Fo76ini.Interface
             foreach (KeyValuePair<object, object> entry in result)
             {
                 String key = entry.Key.ToString();
-                int dotIndex = key.IndexOf(".");
-
-                VisualStyle vs = new VisualStyle
+                if (key == "META")
                 {
-                    ControlType = key.Contains(".") ? key.Substring(0, dotIndex) : key,
-                    StyleName = key.Contains(".") ? key.Substring(dotIndex + 1) : "Default"
-                };
-
-                // Rules:
-                foreach (KeyValuePair<object, object> rule in (Dictionary<object, object>)entry.Value)
-                {
-                    vs.Rules[rule.Key.ToString()] = rule.Value;
+                    foreach (KeyValuePair<object, object> subEntry in (Dictionary<object, object>)entry.Value)
+                    {
+                        if (subEntry.Key.ToString() == "BaseTheme")
+                            Enum.TryParse(subEntry.Value.ToString(), out this.Type);
+                    }
+                    continue;
                 }
 
-                Styles.Add(vs);
+                foreach (string selector in key.Split(','))
+                {
+                    int dotIndex = selector.IndexOf(".");
+
+                    VisualStyle vs = new VisualStyle
+                    {
+                        ControlType = selector.Contains(".") ? selector.Substring(0, dotIndex).Trim() : selector.Trim(),
+                        StyleName = selector.Contains(".") ? selector.Substring(dotIndex + 1).Trim() : "Default"
+                    };
+
+                    // Rules:
+                    foreach (KeyValuePair<object, object> rule in (Dictionary<object, object>)entry.Value)
+                    {
+                        vs.Rules[rule.Key.ToString()] = rule.Value;
+                    }
+
+                    Styles.Add(vs);
+                }
             }
         }
     }

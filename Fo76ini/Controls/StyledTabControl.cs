@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static BrightIdeasSoftware.TreeListView;
+using Fo76ini.Interface;
 
 namespace Fo76ini.Controls
 {
@@ -89,5 +90,7 @@ namespace Fo76ini.Controls
 
             return tabTextArea;
         }
+
+        public void ApplyTheme(ThemeType theme) { }
     }
 }
