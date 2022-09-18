@@ -710,6 +710,7 @@
             this.radioButtonRespectSystemTheme.TabStop = true;
             this.radioButtonRespectSystemTheme.Text = "System";
             this.radioButtonRespectSystemTheme.UseVisualStyleBackColor = true;
+            this.radioButtonRespectSystemTheme.CheckedChanged += new System.EventHandler(this.radioButtonRespectSystemTheme_CheckedChanged);
             // 
             // radioButtonDarkTheme
             // 

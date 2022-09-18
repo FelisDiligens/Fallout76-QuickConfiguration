@@ -143,6 +143,9 @@
       <HintPath>packages\Websocket.Client.4.3.30\lib\netstandard2.0\Websocket.Client.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
+    <Reference Include="YamlDotNet, Version=12.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
+      <HintPath>packages\YamlDotNet.12.0.1\lib\net47\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\ColorSlider\ColorSlider.cs">
@@ -159,6 +162,7 @@
     <Compile Include="Controls\ImagedComboBox\ImagedComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\IThemable.cs" />
     <Compile Include="Controls\StyledButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -272,6 +276,8 @@
     </Compile>
     <Compile Include="Initialization.cs" />
     <Compile Include="Ini\IniParsingException.cs" />
+    <Compile Include="Interface\Theme.cs" />
+    <Compile Include="Interface\Theming.cs" />
     <Compile Include="Interface\Versioning.cs" />
     <Compile Include="NexusAPI\NMMod.cs" />
     <Compile Include="NexusAPI\NMUserProfile.cs" />

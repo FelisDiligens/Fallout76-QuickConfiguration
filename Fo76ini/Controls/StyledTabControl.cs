@@ -10,8 +10,9 @@ using static BrightIdeasSoftware.TreeListView;
 
 namespace Fo76ini.Controls
 {
-    public class StyledTabControl : TabControl
+    public class StyledTabControl : TabControl, IThemable
     {
+        public String VisualStyle { get; set; }
         public Color SelectedTabButtonBackColor;
         public Color TabButtonBackColor;
         public Color TabButtonForeColor;
@@ -26,6 +27,7 @@ namespace Fo76ini.Controls
             this.SetStyle(ControlStyles.DoubleBuffer, true);
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            VisualStyle = "Default";
         }
 
         protected override void OnPaint(PaintEventArgs e)

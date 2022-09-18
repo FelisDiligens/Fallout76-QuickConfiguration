@@ -14,9 +14,14 @@ namespace Fo76ini.Controls
     /// <summary>
     /// A button that can be styled to whatever you want.
     /// </summary>
-    public partial class StyledButton : Button
+    public partial class StyledButton : Button, IThemable
     {
         #region Designer Properties
+
+        [Category("Theming")]
+        [Description("Which VisualStyle is being used for the button.")]
+        [DefaultValue("Default")]
+        public String VisualStyle { get; set; }
 
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -116,6 +121,7 @@ namespace Fo76ini.Controls
             HighlightRibbonColor = Color.FromArgb(220, 180, 42);
             HighlightBackColor = Color.Silver;
             Padding = 0;
+            VisualStyle = "Default";
 
             /*
              * Use mouse events to redraw the button:

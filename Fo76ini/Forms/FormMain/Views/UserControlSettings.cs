@@ -297,5 +297,11 @@ namespace Fo76ini.Forms.FormMain.Tabs
                 OpenProfileEditorRequested(sender, e);
         }
         public event EventHandler OpenProfileEditorRequested;
+
+        private void radioButtonRespectSystemTheme_CheckedChanged(object sender, EventArgs e)
+        {
+            Theme t = Theme.ReadTheme("C:\\Users\\temig\\Desktop\\Style.yml");
+            Theming.ApplyTheme(t, this);
+        }
     }
 }

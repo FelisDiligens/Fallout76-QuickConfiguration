@@ -17,8 +17,9 @@ namespace Fo76ini.Controls
         Right
     }
 
-    public class StyledGroupBox : GroupBox
+    public class StyledGroupBox : GroupBox, IThemable
     {
+        public String VisualStyle { get; set; }
         public Color TitleForeColor;
         public TextAlignment TitleAlignment;
         public Color BorderColor;
@@ -37,6 +38,7 @@ namespace Fo76ini.Controls
             BorderWidth = 1;
             TitleBorderMargin = 6;
             TitleBorderPadding = 4;
+            VisualStyle = "Default";
         }
 
         protected override void OnPaint(PaintEventArgs e)
