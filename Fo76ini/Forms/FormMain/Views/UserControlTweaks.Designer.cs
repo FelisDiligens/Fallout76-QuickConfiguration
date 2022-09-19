@@ -465,6 +465,7 @@
             // 
             // tabPageTweaksInfo
             // 
+            this.tabPageTweaksInfo.BackColor = System.Drawing.Color.White;
             this.tabPageTweaksInfo.Controls.Add(this.webBrowserTweaksInfo);
             this.tabPageTweaksInfo.Controls.Add(this.labelTweaksInfoWin7);
             this.tabPageTweaksInfo.Controls.Add(this.buttonOpenTweaksInfoInBrowser);
@@ -510,6 +511,7 @@
             // tabPageGeneral
             // 
             this.tabPageGeneral.AutoScroll = true;
+            this.tabPageGeneral.BackColor = System.Drawing.Color.White;
             this.tabPageGeneral.Controls.Add(this.groupBoxGameplay);
             this.tabPageGeneral.Controls.Add(this.groupBoxDialogue);
             this.tabPageGeneral.Controls.Add(this.groupBoxHUD);
@@ -525,7 +527,8 @@
             // 
             // groupBoxGameplay
             // 
-            this.groupBoxGameplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxGameplay.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxGameplay.BorderWidth = 1;
             this.groupBoxGameplay.Controls.Add(this.checkBoxBackpackVisible);
             this.groupBoxGameplay.Controls.Add(this.labelHighlightCorpses);
             this.groupBoxGameplay.Controls.Add(this.comboBoxHighlightCorpses);
@@ -535,6 +538,10 @@
             this.groupBoxGameplay.TabIndex = 2;
             this.groupBoxGameplay.TabStop = false;
             this.groupBoxGameplay.Text = "Gameplay";
+            this.groupBoxGameplay.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxGameplay.TitleBorderMargin = 6;
+            this.groupBoxGameplay.TitleBorderPadding = 4;
+            this.groupBoxGameplay.TitleForeColor = System.Drawing.Color.Black;
             // 
             // checkBoxBackpackVisible
             // 
@@ -566,7 +573,8 @@
             // 
             // groupBoxDialogue
             // 
-            this.groupBoxDialogue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxDialogue.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxDialogue.BorderWidth = 1;
             this.groupBoxDialogue.Controls.Add(this.sliderConversationHistorySize);
             this.groupBoxDialogue.Controls.Add(this.numConversationHistorySize);
             this.groupBoxDialogue.Controls.Add(this.labelConversationHistorySize);
@@ -580,6 +588,10 @@
             this.groupBoxDialogue.TabIndex = 3;
             this.groupBoxDialogue.TabStop = false;
             this.groupBoxDialogue.Text = "Dialogue";
+            this.groupBoxDialogue.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxDialogue.TitleBorderMargin = 6;
+            this.groupBoxDialogue.TitleBorderPadding = 4;
+            this.groupBoxDialogue.TitleForeColor = System.Drawing.Color.Black;
             // 
             // sliderConversationHistorySize
             // 
@@ -703,7 +715,8 @@
             // 
             // groupBoxHUD
             // 
-            this.groupBoxHUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxHUD.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxHUD.BorderWidth = 1;
             this.groupBoxHUD.Controls.Add(this.groupBoxFloatingQuestMarkers);
             this.groupBoxHUD.Controls.Add(this.checkBoxShowOtherPlayersNames);
             this.groupBoxHUD.Controls.Add(this.checkBoxShowPublicTeamNotifications);
@@ -722,10 +735,15 @@
             this.groupBoxHUD.TabIndex = 4;
             this.groupBoxHUD.TabStop = false;
             this.groupBoxHUD.Text = "HUD";
+            this.groupBoxHUD.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxHUD.TitleBorderMargin = 6;
+            this.groupBoxHUD.TitleBorderPadding = 4;
+            this.groupBoxHUD.TitleForeColor = System.Drawing.Color.Black;
             // 
             // groupBoxFloatingQuestMarkers
             // 
-            this.groupBoxFloatingQuestMarkers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxFloatingQuestMarkers.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxFloatingQuestMarkers.BorderWidth = 1;
             this.groupBoxFloatingQuestMarkers.Controls.Add(this.checkBoxShowFloatingQuestMarkers);
             this.groupBoxFloatingQuestMarkers.Controls.Add(this.sliderFloatingQuestMarkersDistance);
             this.groupBoxFloatingQuestMarkers.Controls.Add(this.checkBoxShowFloatingQuestText);
@@ -737,6 +755,10 @@
             this.groupBoxFloatingQuestMarkers.TabIndex = 17;
             this.groupBoxFloatingQuestMarkers.TabStop = false;
             this.groupBoxFloatingQuestMarkers.Text = "Floating quest markers on HUD";
+            this.groupBoxFloatingQuestMarkers.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxFloatingQuestMarkers.TitleBorderMargin = 6;
+            this.groupBoxFloatingQuestMarkers.TitleBorderPadding = 4;
+            this.groupBoxFloatingQuestMarkers.TitleForeColor = System.Drawing.Color.Black;
             // 
             // checkBoxShowFloatingQuestMarkers
             // 
@@ -934,7 +956,8 @@
             // 
             // groupBoxLoading
             // 
-            this.groupBoxLoading.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxLoading.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxLoading.BorderWidth = 1;
             this.groupBoxLoading.Controls.Add(this.checkBoxFasterFadeIn);
             this.groupBoxLoading.Location = new System.Drawing.Point(9, 89);
             this.groupBoxLoading.Margin = new System.Windows.Forms.Padding(6);
@@ -943,6 +966,10 @@
             this.groupBoxLoading.TabIndex = 1;
             this.groupBoxLoading.TabStop = false;
             this.groupBoxLoading.Text = "Loading";
+            this.groupBoxLoading.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxLoading.TitleBorderMargin = 6;
+            this.groupBoxLoading.TitleBorderPadding = 4;
+            this.groupBoxLoading.TitleForeColor = System.Drawing.Color.Black;
             // 
             // checkBoxFasterFadeIn
             // 
@@ -956,7 +983,8 @@
             // 
             // groupBoxQuests
             // 
-            this.groupBoxQuests.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxQuests.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxQuests.BorderWidth = 1;
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackDaily);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackEvent);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMisc);
@@ -969,6 +997,10 @@
             this.groupBoxQuests.TabIndex = 5;
             this.groupBoxQuests.TabStop = false;
             this.groupBoxQuests.Text = "Quests";
+            this.groupBoxQuests.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxQuests.TitleBorderMargin = 6;
+            this.groupBoxQuests.TitleBorderPadding = 4;
+            this.groupBoxQuests.TitleForeColor = System.Drawing.Color.Black;
             // 
             // checkBoxEnableQuestAutoTrackDaily
             // 
@@ -1022,7 +1054,8 @@
             // 
             // groupBoxMainMenu
             // 
-            this.groupBoxMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxMainMenu.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxMainMenu.BorderWidth = 1;
             this.groupBoxMainMenu.Controls.Add(this.checkBoxSkipSplash);
             this.groupBoxMainMenu.Controls.Add(this.checkBoxSkipIntroVideos);
             this.groupBoxMainMenu.Location = new System.Drawing.Point(9, 9);
@@ -1032,6 +1065,10 @@
             this.groupBoxMainMenu.TabIndex = 0;
             this.groupBoxMainMenu.TabStop = false;
             this.groupBoxMainMenu.Text = "Main Menu";
+            this.groupBoxMainMenu.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxMainMenu.TitleBorderMargin = 6;
+            this.groupBoxMainMenu.TitleBorderPadding = 4;
+            this.groupBoxMainMenu.TitleForeColor = System.Drawing.Color.Black;
             // 
             // checkBoxSkipSplash
             // 
@@ -1056,6 +1093,7 @@
             // tabPageVideo
             // 
             this.tabPageVideo.AutoScroll = true;
+            this.tabPageVideo.BackColor = System.Drawing.Color.White;
             this.tabPageVideo.Controls.Add(this.groupBoxGraphics);
             this.tabPageVideo.Controls.Add(this.groupBoxDisplay);
             this.tabPageVideo.Location = new System.Drawing.Point(4, 25);
@@ -1067,7 +1105,8 @@
             // 
             // groupBoxGraphics
             // 
-            this.groupBoxGraphics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxGraphics.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxGraphics.BorderWidth = 1;
             this.groupBoxGraphics.Controls.Add(this.groupBoxDOF);
             this.groupBoxGraphics.Controls.Add(this.labelSelectedQualityPreset);
             this.groupBoxGraphics.Controls.Add(this.buttonSelectOverallQualityPreset);
@@ -1093,10 +1132,15 @@
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
+            this.groupBoxGraphics.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxGraphics.TitleBorderMargin = 6;
+            this.groupBoxGraphics.TitleBorderPadding = 4;
+            this.groupBoxGraphics.TitleForeColor = System.Drawing.Color.Black;
             // 
             // groupBoxDOF
             // 
-            this.groupBoxDOF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxDOF.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxDOF.BorderWidth = 1;
             this.groupBoxDOF.Controls.Add(this.numDOFStrength);
             this.groupBoxDOF.Controls.Add(this.labelDOFStrength);
             this.groupBoxDOF.Controls.Add(this.checkBoxDepthOfField);
@@ -1107,6 +1151,10 @@
             this.groupBoxDOF.TabIndex = 2;
             this.groupBoxDOF.TabStop = false;
             this.groupBoxDOF.Text = "Depth of Field";
+            this.groupBoxDOF.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxDOF.TitleBorderMargin = 6;
+            this.groupBoxDOF.TitleBorderPadding = 4;
+            this.groupBoxDOF.TitleForeColor = System.Drawing.Color.Black;
             // 
             // numDOFStrength
             // 
@@ -1189,7 +1237,8 @@
             // 
             // groupBoxTextures
             // 
-            this.groupBoxTextures.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxTextures.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxTextures.BorderWidth = 1;
             this.groupBoxTextures.Controls.Add(this.comboBoxTextureQuality);
             this.groupBoxTextures.Controls.Add(this.labelTextureQuality);
             this.groupBoxTextures.Location = new System.Drawing.Point(9, 183);
@@ -1198,6 +1247,10 @@
             this.groupBoxTextures.TabIndex = 19;
             this.groupBoxTextures.TabStop = false;
             this.groupBoxTextures.Text = "Textures";
+            this.groupBoxTextures.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxTextures.TitleBorderMargin = 6;
+            this.groupBoxTextures.TitleBorderPadding = 4;
+            this.groupBoxTextures.TitleForeColor = System.Drawing.Color.Black;
             // 
             // comboBoxTextureQuality
             // 
@@ -1221,7 +1274,8 @@
             // 
             // groupBoxGraphicEffects
             // 
-            this.groupBoxGraphicEffects.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxGraphicEffects.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxGraphicEffects.BorderWidth = 1;
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
             this.groupBoxGraphicEffects.Location = new System.Drawing.Point(218, 616);
@@ -1230,6 +1284,10 @@
             this.groupBoxGraphicEffects.TabIndex = 11;
             this.groupBoxGraphicEffects.TabStop = false;
             this.groupBoxGraphicEffects.Text = "Effects";
+            this.groupBoxGraphicEffects.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxGraphicEffects.TitleBorderMargin = 6;
+            this.groupBoxGraphicEffects.TitleBorderPadding = 4;
+            this.groupBoxGraphicEffects.TitleForeColor = System.Drawing.Color.Black;
             // 
             // checkBoxBloodSplatter
             // 
@@ -1255,7 +1313,8 @@
             // 
             // groupBoxTAASharpening
             // 
-            this.groupBoxTAASharpening.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxTAASharpening.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxTAASharpening.BorderWidth = 1;
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostSharpen);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostSharpen);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostSharpen);
@@ -1268,6 +1327,10 @@
             this.groupBoxTAASharpening.TabIndex = 18;
             this.groupBoxTAASharpening.TabStop = false;
             this.groupBoxTAASharpening.Text = "TAA Sharpening";
+            this.groupBoxTAASharpening.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxTAASharpening.TitleBorderMargin = 6;
+            this.groupBoxTAASharpening.TitleBorderPadding = 4;
+            this.groupBoxTAASharpening.TitleForeColor = System.Drawing.Color.Black;
             // 
             // sliderTAAPostSharpen
             // 
@@ -1374,7 +1437,8 @@
             // 
             // groupBoxGrass
             // 
-            this.groupBoxGrass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxGrass.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxGrass.BorderWidth = 1;
             this.groupBoxGrass.Controls.Add(this.sliderGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
@@ -1385,6 +1449,10 @@
             this.groupBoxGrass.TabIndex = 17;
             this.groupBoxGrass.TabStop = false;
             this.groupBoxGrass.Text = "Grass";
+            this.groupBoxGrass.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxGrass.TitleBorderMargin = 6;
+            this.groupBoxGrass.TitleBorderPadding = 4;
+            this.groupBoxGrass.TitleForeColor = System.Drawing.Color.Black;
             // 
             // sliderGrassFadeDistance
             // 
@@ -1456,7 +1524,8 @@
             // 
             // groupBoxLOD
             // 
-            this.groupBoxLOD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxLOD.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxLOD.BorderWidth = 1;
             this.groupBoxLOD.Controls.Add(this.sliderLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODFadeDistance);
             this.groupBoxLOD.Controls.Add(this.sliderLODItems);
@@ -1473,6 +1542,10 @@
             this.groupBoxLOD.TabIndex = 16;
             this.groupBoxLOD.TabStop = false;
             this.groupBoxLOD.Text = "LOD";
+            this.groupBoxLOD.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxLOD.TitleBorderMargin = 6;
+            this.groupBoxLOD.TitleBorderPadding = 4;
+            this.groupBoxLOD.TitleForeColor = System.Drawing.Color.Black;
             // 
             // sliderLODActors
             // 
@@ -1626,7 +1699,8 @@
             // 
             // groupBoxLighting
             // 
-            this.groupBoxLighting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxLighting.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxLighting.BorderWidth = 1;
             this.groupBoxLighting.Controls.Add(this.comboBoxGodrayQuality);
             this.groupBoxLighting.Controls.Add(this.labelGodrayQuality);
             this.groupBoxLighting.Controls.Add(this.checkBoxGodrays);
@@ -1636,6 +1710,10 @@
             this.groupBoxLighting.TabIndex = 14;
             this.groupBoxLighting.TabStop = false;
             this.groupBoxLighting.Text = "Lighting";
+            this.groupBoxLighting.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxLighting.TitleBorderMargin = 6;
+            this.groupBoxLighting.TitleBorderPadding = 4;
+            this.groupBoxLighting.TitleForeColor = System.Drawing.Color.Black;
             // 
             // comboBoxGodrayQuality
             // 
@@ -1680,7 +1758,8 @@
             // 
             // groupBoxShadows
             // 
-            this.groupBoxShadows.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxShadows.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxShadows.BorderWidth = 1;
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowQuality);
             this.groupBoxShadows.Controls.Add(this.labelShadowQuality);
             this.groupBoxShadows.Controls.Add(this.sliderShadowDistance);
@@ -1696,6 +1775,10 @@
             this.groupBoxShadows.TabIndex = 15;
             this.groupBoxShadows.TabStop = false;
             this.groupBoxShadows.Text = "Shadows";
+            this.groupBoxShadows.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxShadows.TitleBorderMargin = 6;
+            this.groupBoxShadows.TitleBorderPadding = 4;
+            this.groupBoxShadows.TitleForeColor = System.Drawing.Color.Black;
             // 
             // comboBoxShadowQuality
             // 
@@ -1816,7 +1899,8 @@
             // 
             // groupBoxWater
             // 
-            this.groupBoxWater.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxWater.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxWater.BorderWidth = 1;
             this.groupBoxWater.Controls.Add(this.comboBoxWaterShadowFilter);
             this.groupBoxWater.Controls.Add(this.labelWaterShadowFilter);
             this.groupBoxWater.Controls.Add(this.checkBoxWaterFixSSRGlitch);
@@ -1830,6 +1914,10 @@
             this.groupBoxWater.TabIndex = 12;
             this.groupBoxWater.TabStop = false;
             this.groupBoxWater.Text = "Water";
+            this.groupBoxWater.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxWater.TitleBorderMargin = 6;
+            this.groupBoxWater.TitleBorderPadding = 4;
+            this.groupBoxWater.TitleForeColor = System.Drawing.Color.Black;
             // 
             // comboBoxWaterShadowFilter
             // 
@@ -1913,7 +2001,8 @@
             // 
             // groupBoxPostProcessing
             // 
-            this.groupBoxPostProcessing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxPostProcessing.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxPostProcessing.BorderWidth = 1;
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxSSReflections);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxAmbientOcclusion);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxMotionBlur);
@@ -1925,6 +2014,10 @@
             this.groupBoxPostProcessing.TabIndex = 10;
             this.groupBoxPostProcessing.TabStop = false;
             this.groupBoxPostProcessing.Text = "Post-processing";
+            this.groupBoxPostProcessing.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxPostProcessing.TitleBorderMargin = 6;
+            this.groupBoxPostProcessing.TitleBorderPadding = 4;
+            this.groupBoxPostProcessing.TitleForeColor = System.Drawing.Color.Black;
             // 
             // checkBoxSSReflections
             // 
@@ -1988,7 +2081,8 @@
             // 
             // groupBoxDisplay
             // 
-            this.groupBoxDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxDisplay.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxDisplay.BorderWidth = 1;
             this.groupBoxDisplay.Controls.Add(this.comboBoxDisplayMode);
             this.groupBoxDisplay.Controls.Add(this.checkBoxFixHUDFor5_4and4_3);
             this.groupBoxDisplay.Controls.Add(this.comboBoxResolution);
@@ -2007,6 +2101,10 @@
             this.groupBoxDisplay.TabIndex = 0;
             this.groupBoxDisplay.TabStop = false;
             this.groupBoxDisplay.Text = "Display";
+            this.groupBoxDisplay.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxDisplay.TitleBorderMargin = 6;
+            this.groupBoxDisplay.TitleBorderPadding = 4;
+            this.groupBoxDisplay.TitleForeColor = System.Drawing.Color.Black;
             // 
             // comboBoxDisplayMode
             // 
@@ -2151,6 +2249,7 @@
             // tabPageAudio
             // 
             this.tabPageAudio.AutoScroll = true;
+            this.tabPageAudio.BackColor = System.Drawing.Color.White;
             this.tabPageAudio.Controls.Add(this.groupBoxAudio);
             this.tabPageAudio.Controls.Add(this.groupBoxVoice);
             this.tabPageAudio.Controls.Add(this.groupBoxAudioVolume);
@@ -2162,7 +2261,8 @@
             // 
             // groupBoxAudio
             // 
-            this.groupBoxAudio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxAudio.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxAudio.BorderWidth = 1;
             this.groupBoxAudio.Controls.Add(this.checkBoxEnableAudio);
             this.groupBoxAudio.Controls.Add(this.checkBoxMainMenuMusic);
             this.groupBoxAudio.Location = new System.Drawing.Point(9, 390);
@@ -2172,6 +2272,10 @@
             this.groupBoxAudio.TabIndex = 1;
             this.groupBoxAudio.TabStop = false;
             this.groupBoxAudio.Text = "Audio";
+            this.groupBoxAudio.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxAudio.TitleBorderMargin = 6;
+            this.groupBoxAudio.TitleBorderPadding = 4;
+            this.groupBoxAudio.TitleForeColor = System.Drawing.Color.Black;
             // 
             // checkBoxEnableAudio
             // 
@@ -2197,7 +2301,8 @@
             // 
             // groupBoxVoice
             // 
-            this.groupBoxVoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxVoice.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxVoice.BorderWidth = 1;
             this.groupBoxVoice.Controls.Add(this.comboBoxVoiceChatMode);
             this.groupBoxVoice.Controls.Add(this.labelVoiceChatMode);
             this.groupBoxVoice.Controls.Add(this.checkBoxPushToTalk);
@@ -2208,6 +2313,10 @@
             this.groupBoxVoice.TabIndex = 2;
             this.groupBoxVoice.TabStop = false;
             this.groupBoxVoice.Text = "Voice";
+            this.groupBoxVoice.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxVoice.TitleBorderMargin = 6;
+            this.groupBoxVoice.TitleBorderPadding = 4;
+            this.groupBoxVoice.TitleForeColor = System.Drawing.Color.Black;
             // 
             // comboBoxVoiceChatMode
             // 
@@ -2239,7 +2348,8 @@
             // 
             // groupBoxAudioVolume
             // 
-            this.groupBoxAudioVolume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxAudioVolume.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxAudioVolume.BorderWidth = 1;
             this.groupBoxAudioVolume.Controls.Add(this.sliderAudioChat);
             this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal6);
             this.groupBoxAudioVolume.Controls.Add(this.sliderAudiofVal5);
@@ -2274,6 +2384,10 @@
             this.groupBoxAudioVolume.TabIndex = 0;
             this.groupBoxAudioVolume.TabStop = false;
             this.groupBoxAudioVolume.Text = "Volume";
+            this.groupBoxAudioVolume.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxAudioVolume.TitleBorderMargin = 6;
+            this.groupBoxAudioVolume.TitleBorderPadding = 4;
+            this.groupBoxAudioVolume.TitleForeColor = System.Drawing.Color.Black;
             // 
             // sliderAudioChat
             // 
@@ -2703,6 +2817,7 @@
             // 
             // tabPageControls
             // 
+            this.tabPageControls.BackColor = System.Drawing.Color.White;
             this.tabPageControls.Controls.Add(this.groupBoxGamepad);
             this.tabPageControls.Controls.Add(this.groupBoxMouse);
             this.tabPageControls.Location = new System.Drawing.Point(4, 25);
@@ -2713,7 +2828,8 @@
             // 
             // groupBoxGamepad
             // 
-            this.groupBoxGamepad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxGamepad.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxGamepad.BorderWidth = 1;
             this.groupBoxGamepad.Controls.Add(this.checkBoxAimAssist);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadRumble);
             this.groupBoxGamepad.Controls.Add(this.checkBoxGamepadEnabled);
@@ -2730,6 +2846,10 @@
             this.groupBoxGamepad.TabIndex = 1;
             this.groupBoxGamepad.TabStop = false;
             this.groupBoxGamepad.Text = "Gamepad";
+            this.groupBoxGamepad.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxGamepad.TitleBorderMargin = 6;
+            this.groupBoxGamepad.TitleBorderPadding = 4;
+            this.groupBoxGamepad.TitleForeColor = System.Drawing.Color.Black;
             // 
             // checkBoxAimAssist
             // 
@@ -2875,7 +2995,8 @@
             // 
             // groupBoxMouse
             // 
-            this.groupBoxMouse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxMouse.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxMouse.BorderWidth = 1;
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertX);
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertY);
             this.groupBoxMouse.Controls.Add(this.checkBoxFixAimSensitivity);
@@ -2893,6 +3014,10 @@
             this.groupBoxMouse.TabIndex = 0;
             this.groupBoxMouse.TabStop = false;
             this.groupBoxMouse.Text = "Mouse";
+            this.groupBoxMouse.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxMouse.TitleBorderMargin = 6;
+            this.groupBoxMouse.TitleBorderPadding = 4;
+            this.groupBoxMouse.TitleForeColor = System.Drawing.Color.Black;
             // 
             // checkBoxMouseInvertX
             // 
@@ -3043,6 +3168,7 @@
             // tabPageCamera
             // 
             this.tabPageCamera.AutoScroll = true;
+            this.tabPageCamera.BackColor = System.Drawing.Color.White;
             this.tabPageCamera.Controls.Add(this.groupBoxCameraPosition);
             this.tabPageCamera.Controls.Add(this.groupBoxFOVMore);
             this.tabPageCamera.Controls.Add(this.groupBoxSelfieCamera);
@@ -3057,7 +3183,8 @@
             // 
             // groupBoxCameraPosition
             // 
-            this.groupBoxCameraPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxCameraPosition.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxCameraPosition.BorderWidth = 1;
             this.groupBoxCameraPosition.Controls.Add(this.groupBoxMeleeCombatCameraPosition);
             this.groupBoxCameraPosition.Controls.Add(this.groupBoxCombatCameraPosition);
             this.groupBoxCameraPosition.Controls.Add(this.buttonCameraPositionReset);
@@ -3070,10 +3197,15 @@
             this.groupBoxCameraPosition.TabIndex = 5;
             this.groupBoxCameraPosition.TabStop = false;
             this.groupBoxCameraPosition.Text = "Camera position (Experimental)";
+            this.groupBoxCameraPosition.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxCameraPosition.TitleBorderMargin = 6;
+            this.groupBoxCameraPosition.TitleBorderPadding = 4;
+            this.groupBoxCameraPosition.TitleForeColor = System.Drawing.Color.Black;
             // 
             // groupBoxMeleeCombatCameraPosition
             // 
-            this.groupBoxMeleeCombatCameraPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxMeleeCombatCameraPosition.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxMeleeCombatCameraPosition.BorderWidth = 1;
             this.groupBoxMeleeCombatCameraPosition.Controls.Add(this.numfOverShoulderMeleeCombatAddY);
             this.groupBoxMeleeCombatCameraPosition.Controls.Add(this.labelfOverShoulderMeleeCombatAddY);
             this.groupBoxMeleeCombatCameraPosition.Controls.Add(this.numfOverShoulderMeleeCombatPosX);
@@ -3089,6 +3221,10 @@
             this.groupBoxMeleeCombatCameraPosition.TabIndex = 12;
             this.groupBoxMeleeCombatCameraPosition.TabStop = false;
             this.groupBoxMeleeCombatCameraPosition.Text = "Melee combat camera position";
+            this.groupBoxMeleeCombatCameraPosition.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxMeleeCombatCameraPosition.TitleBorderMargin = 6;
+            this.groupBoxMeleeCombatCameraPosition.TitleBorderPadding = 4;
+            this.groupBoxMeleeCombatCameraPosition.TitleForeColor = System.Drawing.Color.Black;
             // 
             // numfOverShoulderMeleeCombatAddY
             // 
@@ -3216,7 +3352,8 @@
             // 
             // groupBoxCombatCameraPosition
             // 
-            this.groupBoxCombatCameraPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxCombatCameraPosition.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxCombatCameraPosition.BorderWidth = 1;
             this.groupBoxCombatCameraPosition.Controls.Add(this.numfOverShoulderCombatAddY);
             this.groupBoxCombatCameraPosition.Controls.Add(this.numfOverShoulderCombatPosX);
             this.groupBoxCombatCameraPosition.Controls.Add(this.numfOverShoulderCombatPosZ);
@@ -3232,6 +3369,10 @@
             this.groupBoxCombatCameraPosition.TabIndex = 11;
             this.groupBoxCombatCameraPosition.TabStop = false;
             this.groupBoxCombatCameraPosition.Text = "Combat camera position";
+            this.groupBoxCombatCameraPosition.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxCombatCameraPosition.TitleBorderMargin = 6;
+            this.groupBoxCombatCameraPosition.TitleBorderPadding = 4;
+            this.groupBoxCombatCameraPosition.TitleForeColor = System.Drawing.Color.Black;
             // 
             // numfOverShoulderCombatAddY
             // 
@@ -3379,7 +3520,8 @@
             // 
             // groupBoxUnarmedCameraPosition
             // 
-            this.groupBoxUnarmedCameraPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxUnarmedCameraPosition.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxUnarmedCameraPosition.BorderWidth = 1;
             this.groupBoxUnarmedCameraPosition.Controls.Add(this.numfOverShoulderPosX);
             this.groupBoxUnarmedCameraPosition.Controls.Add(this.numfOverShoulderPosZ);
             this.groupBoxUnarmedCameraPosition.Controls.Add(this.labelfOverShoulderPosX);
@@ -3392,6 +3534,10 @@
             this.groupBoxUnarmedCameraPosition.TabIndex = 10;
             this.groupBoxUnarmedCameraPosition.TabStop = false;
             this.groupBoxUnarmedCameraPosition.Text = "Unarmed camera position";
+            this.groupBoxUnarmedCameraPosition.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxUnarmedCameraPosition.TitleBorderMargin = 6;
+            this.groupBoxUnarmedCameraPosition.TitleBorderPadding = 4;
+            this.groupBoxUnarmedCameraPosition.TitleForeColor = System.Drawing.Color.Black;
             // 
             // numfOverShoulderPosX
             // 
@@ -3478,7 +3624,8 @@
             // 
             // groupBoxFOVMore
             // 
-            this.groupBoxFOVMore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxFOVMore.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxFOVMore.BorderWidth = 1;
             this.groupBoxFOVMore.Controls.Add(this.labelADSFOV);
             this.groupBoxFOVMore.Controls.Add(this.numADSFOV);
             this.groupBoxFOVMore.Location = new System.Drawing.Point(9, 418);
@@ -3488,6 +3635,10 @@
             this.groupBoxFOVMore.TabIndex = 1;
             this.groupBoxFOVMore.TabStop = false;
             this.groupBoxFOVMore.Text = "More Field of View tweaks";
+            this.groupBoxFOVMore.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxFOVMore.TitleBorderMargin = 6;
+            this.groupBoxFOVMore.TitleBorderPadding = 4;
+            this.groupBoxFOVMore.TitleForeColor = System.Drawing.Color.Black;
             // 
             // labelADSFOV
             // 
@@ -3528,7 +3679,8 @@
             // 
             // groupBoxSelfieCamera
             // 
-            this.groupBoxSelfieCamera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxSelfieCamera.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxSelfieCamera.BorderWidth = 1;
             this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeRange);
             this.groupBoxSelfieCamera.Controls.Add(this.numericUpDownPhotomodeRotationSpeed);
             this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeRotationSpeed);
@@ -3545,6 +3697,10 @@
             this.groupBoxSelfieCamera.TabIndex = 4;
             this.groupBoxSelfieCamera.TabStop = false;
             this.groupBoxSelfieCamera.Text = "Photomode options";
+            this.groupBoxSelfieCamera.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxSelfieCamera.TitleBorderMargin = 6;
+            this.groupBoxSelfieCamera.TitleBorderPadding = 4;
+            this.groupBoxSelfieCamera.TitleForeColor = System.Drawing.Color.Black;
             // 
             // trackBarPhotomodeRange
             // 
@@ -3688,7 +3844,8 @@
             // 
             // groupBoxIdleCamera
             // 
-            this.groupBoxIdleCamera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxIdleCamera.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxIdleCamera.BorderWidth = 1;
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxForceVanityMode);
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxVanityMode);
             this.groupBoxIdleCamera.Location = new System.Drawing.Point(9, 773);
@@ -3698,6 +3855,10 @@
             this.groupBoxIdleCamera.TabIndex = 2;
             this.groupBoxIdleCamera.TabStop = false;
             this.groupBoxIdleCamera.Text = "Idle camera (Experimental)";
+            this.groupBoxIdleCamera.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxIdleCamera.TitleBorderMargin = 6;
+            this.groupBoxIdleCamera.TitleBorderPadding = 4;
+            this.groupBoxIdleCamera.TitleForeColor = System.Drawing.Color.Black;
             // 
             // checkBoxForceVanityMode
             // 
@@ -3725,7 +3886,8 @@
             // 
             // groupBoxCameraDistance
             // 
-            this.groupBoxCameraDistance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxCameraDistance.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxCameraDistance.BorderWidth = 1;
             this.groupBoxCameraDistance.Controls.Add(this.numfPitchZoomOutMaxDist);
             this.groupBoxCameraDistance.Controls.Add(this.sliderfPitchZoomOutMaxDist);
             this.groupBoxCameraDistance.Controls.Add(this.labelPitchZoomOutMaxDist);
@@ -3742,6 +3904,10 @@
             this.groupBoxCameraDistance.TabIndex = 3;
             this.groupBoxCameraDistance.TabStop = false;
             this.groupBoxCameraDistance.Text = "Camera distance in 3rd person";
+            this.groupBoxCameraDistance.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxCameraDistance.TitleBorderMargin = 6;
+            this.groupBoxCameraDistance.TitleBorderPadding = 4;
+            this.groupBoxCameraDistance.TitleForeColor = System.Drawing.Color.Black;
             // 
             // numfPitchZoomOutMaxDist
             // 
@@ -3875,7 +4041,8 @@
             // 
             // groupBoxFieldOfView
             // 
-            this.groupBoxFieldOfView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxFieldOfView.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxFieldOfView.BorderWidth = 1;
             this.groupBoxFieldOfView.Controls.Add(this.pictureBoxFOVPreview);
             this.groupBoxFieldOfView.Controls.Add(this.sliderFOV);
             this.groupBoxFieldOfView.Controls.Add(this.numFOV);
@@ -3886,6 +4053,10 @@
             this.groupBoxFieldOfView.TabIndex = 0;
             this.groupBoxFieldOfView.TabStop = false;
             this.groupBoxFieldOfView.Text = "Field of View";
+            this.groupBoxFieldOfView.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxFieldOfView.TitleBorderMargin = 6;
+            this.groupBoxFieldOfView.TitleBorderPadding = 4;
+            this.groupBoxFieldOfView.TitleForeColor = System.Drawing.Color.Black;
             // 
             // pictureBoxFOVPreview
             // 
@@ -3947,6 +4118,7 @@
             // tabPageLogin
             // 
             this.tabPageLogin.AutoScroll = true;
+            this.tabPageLogin.BackColor = System.Drawing.Color.White;
             this.tabPageLogin.Controls.Add(this.groupBoxLoginProfiles);
             this.tabPageLogin.Controls.Add(this.groupBoxLogin);
             this.tabPageLogin.Location = new System.Drawing.Point(4, 25);
@@ -3958,7 +4130,8 @@
             // 
             // groupBoxLoginProfiles
             // 
-            this.groupBoxLoginProfiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxLoginProfiles.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxLoginProfiles.BorderWidth = 1;
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccountNone);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount1);
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount16);
@@ -3982,6 +4155,10 @@
             this.groupBoxLoginProfiles.TabIndex = 1;
             this.groupBoxLoginProfiles.TabStop = false;
             this.groupBoxLoginProfiles.Text = "Profiles";
+            this.groupBoxLoginProfiles.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxLoginProfiles.TitleBorderMargin = 6;
+            this.groupBoxLoginProfiles.TitleBorderPadding = 4;
+            this.groupBoxLoginProfiles.TitleForeColor = System.Drawing.Color.Black;
             // 
             // radioButtonAccountNone
             // 
@@ -4173,7 +4350,8 @@
             // 
             // groupBoxLogin
             // 
-            this.groupBoxLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.groupBoxLogin.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxLogin.BorderWidth = 1;
             this.groupBoxLogin.Controls.Add(this.richTextBoxCredentialsExplanation);
             this.groupBoxLogin.Controls.Add(this.checkBoxAutoSignin);
             this.groupBoxLogin.Controls.Add(this.checkBoxEnableSteam);
@@ -4189,6 +4367,10 @@
             this.groupBoxLogin.TabIndex = 0;
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Login with Bethesda.net";
+            this.groupBoxLogin.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxLogin.TitleBorderMargin = 6;
+            this.groupBoxLogin.TitleBorderPadding = 4;
+            this.groupBoxLogin.TitleForeColor = System.Drawing.Color.Black;
             // 
             // richTextBoxCredentialsExplanation
             // 

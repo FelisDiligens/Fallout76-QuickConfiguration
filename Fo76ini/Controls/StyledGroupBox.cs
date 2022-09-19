@@ -20,21 +20,21 @@ namespace Fo76ini.Controls
 
     public class StyledGroupBox : GroupBox
     {
-        public Color TitleForeColor;
-        public TextAlignment TitleAlignment;
-        public Color BorderColor;
-        public int BorderWidth;
-        public int TitleBorderMargin;
-        public int TitleBorderPadding;
+        public Color TitleForeColor { get; set; }
+        public TextAlignment TitleAlignment { get; set; }
+        public Color BorderColor { get; set; }
+        public int BorderWidth { get; set; }
+        public int TitleBorderMargin { get; set; }
+        public int TitleBorderPadding { get; set; }
 
         public StyledGroupBox () : base()
         {
             this.DoubleBuffered = true;
 
-            BackColor = Color.FromArgb(34, 34, 34);
-            TitleForeColor = Color.White;
+            BackColor = Color.Transparent;
+            TitleForeColor = Color.Black;
             TitleAlignment = TextAlignment.Left;
-            BorderColor = Color.FromArgb(68, 68, 68);
+            BorderColor = Color.Silver;
             BorderWidth = 1;
             TitleBorderMargin = 6;
             TitleBorderPadding = 4;

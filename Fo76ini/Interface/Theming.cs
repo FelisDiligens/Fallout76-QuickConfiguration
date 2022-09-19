@@ -148,6 +148,8 @@ namespace Fo76ini.Interface
                 }
             }
 
+            //control.Refresh();
+
             ApplyTheme(theme, control.Controls);
         }
 
