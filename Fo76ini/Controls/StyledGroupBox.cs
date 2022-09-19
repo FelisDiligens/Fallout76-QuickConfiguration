@@ -31,7 +31,7 @@ namespace Fo76ini.Controls
         {
             this.DoubleBuffered = true;
 
-            BackColor = Color.Transparent;
+            BackColor = Color.White;
             TitleForeColor = Color.Black;
             TitleAlignment = TextAlignment.Left;
             BorderColor = Color.Silver;

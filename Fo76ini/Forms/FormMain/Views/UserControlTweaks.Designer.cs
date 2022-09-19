@@ -49,7 +49,7 @@
             this.groupBoxHUD = new Fo76ini.Controls.StyledGroupBox();
             this.groupBoxFloatingQuestMarkers = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxShowFloatingQuestMarkers = new System.Windows.Forms.CheckBox();
-            this.sliderFloatingQuestMarkersDistance = new System.Windows.Forms.TrackBar();
+            this.sliderFloatingQuestMarkersDistance = new ColorSlider.ColorSlider();
             this.checkBoxShowFloatingQuestText = new System.Windows.Forms.CheckBox();
             this.labelFloatingQuestMarkersDistance = new System.Windows.Forms.Label();
             this.numFloatingQuestMarkersDistance = new System.Windows.Forms.NumericUpDown();
@@ -62,7 +62,7 @@
             this.labelShowActiveEffectsOnHUD = new System.Windows.Forms.Label();
             this.labelHUDOpacity = new System.Windows.Forms.Label();
             this.comboBoxShowActiveEffectsOnHUD = new System.Windows.Forms.ComboBox();
-            this.sliderHUDOpacity = new System.Windows.Forms.TrackBar();
+            this.sliderHUDOpacity = new ColorSlider.ColorSlider();
             this.numHUDOpacity = new System.Windows.Forms.NumericUpDown();
             this.groupBoxLoading = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxFasterFadeIn = new System.Windows.Forms.CheckBox();
@@ -81,7 +81,7 @@
             this.numDOFStrength = new System.Windows.Forms.NumericUpDown();
             this.labelDOFStrength = new System.Windows.Forms.Label();
             this.checkBoxDepthOfField = new System.Windows.Forms.CheckBox();
-            this.sliderDOFStrength = new System.Windows.Forms.TrackBar();
+            this.sliderDOFStrength = new ColorSlider.ColorSlider();
             this.labelSelectedQualityPreset = new System.Windows.Forms.Label();
             this.buttonSelectOverallQualityPreset = new System.Windows.Forms.Button();
             this.labelOverallQualityPreset = new System.Windows.Forms.Label();
@@ -92,26 +92,26 @@
             this.checkBoxBloodSplatter = new System.Windows.Forms.CheckBox();
             this.checkBoxDisableGore = new System.Windows.Forms.CheckBox();
             this.groupBoxTAASharpening = new Fo76ini.Controls.StyledGroupBox();
-            this.sliderTAAPostSharpen = new System.Windows.Forms.TrackBar();
+            this.sliderTAAPostSharpen = new ColorSlider.ColorSlider();
             this.labelTAAPostSharpen = new System.Windows.Forms.Label();
             this.numTAAPostSharpen = new System.Windows.Forms.NumericUpDown();
-            this.sliderTAAPostOverlay = new System.Windows.Forms.TrackBar();
+            this.sliderTAAPostOverlay = new ColorSlider.ColorSlider();
             this.numTAAPostOverlay = new System.Windows.Forms.NumericUpDown();
             this.labelTAAPostOverlay = new System.Windows.Forms.Label();
             this.labelAntiAliasing = new System.Windows.Forms.Label();
             this.groupBoxGrass = new Fo76ini.Controls.StyledGroupBox();
-            this.sliderGrassFadeDistance = new System.Windows.Forms.TrackBar();
+            this.sliderGrassFadeDistance = new ColorSlider.ColorSlider();
             this.numGrassFadeDistance = new System.Windows.Forms.NumericUpDown();
             this.labelGrassFadeDistance = new System.Windows.Forms.Label();
             this.checkBoxGrass = new System.Windows.Forms.CheckBox();
             this.comboBoxAntiAliasing = new System.Windows.Forms.ComboBox();
             this.groupBoxLOD = new Fo76ini.Controls.StyledGroupBox();
-            this.sliderLODActors = new System.Windows.Forms.TrackBar();
+            this.sliderLODActors = new ColorSlider.ColorSlider();
             this.labelLODFadeDistance = new System.Windows.Forms.Label();
-            this.sliderLODItems = new System.Windows.Forms.TrackBar();
+            this.sliderLODItems = new ColorSlider.ColorSlider();
             this.numLODActors = new System.Windows.Forms.NumericUpDown();
             this.numLODItems = new System.Windows.Forms.NumericUpDown();
-            this.sliderLODObjects = new System.Windows.Forms.TrackBar();
+            this.sliderLODObjects = new ColorSlider.ColorSlider();
             this.numLODObjects = new System.Windows.Forms.NumericUpDown();
             this.labelLODActors = new System.Windows.Forms.Label();
             this.labelLODItems = new System.Windows.Forms.Label();
@@ -125,7 +125,7 @@
             this.groupBoxShadows = new Fo76ini.Controls.StyledGroupBox();
             this.comboBoxShadowQuality = new System.Windows.Forms.ComboBox();
             this.labelShadowQuality = new System.Windows.Forms.Label();
-            this.sliderShadowDistance = new System.Windows.Forms.TrackBar();
+            this.sliderShadowDistance = new ColorSlider.ColorSlider();
             this.comboBoxShadowBlurriness = new System.Windows.Forms.ComboBox();
             this.labelShadowBlurriness = new System.Windows.Forms.Label();
             this.numShadowDistance = new System.Windows.Forms.NumericUpDown();
@@ -168,18 +168,18 @@
             this.labelVoiceChatMode = new System.Windows.Forms.Label();
             this.checkBoxPushToTalk = new System.Windows.Forms.CheckBox();
             this.groupBoxAudioVolume = new Fo76ini.Controls.StyledGroupBox();
-            this.sliderAudioChat = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal6 = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal5 = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal4 = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal3 = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal2 = new System.Windows.Forms.TrackBar();
-            this.sliderAudiofVal1 = new System.Windows.Forms.TrackBar();
+            this.sliderAudioChat = new ColorSlider.ColorSlider();
+            this.sliderAudiofVal6 = new ColorSlider.ColorSlider();
+            this.sliderAudiofVal5 = new ColorSlider.ColorSlider();
+            this.sliderAudiofVal4 = new ColorSlider.ColorSlider();
+            this.sliderAudiofVal3 = new ColorSlider.ColorSlider();
+            this.sliderAudiofVal2 = new ColorSlider.ColorSlider();
+            this.sliderAudiofVal1 = new ColorSlider.ColorSlider();
             this.labelVolumeMaster = new System.Windows.Forms.Label();
-            this.sliderVolumeMaster = new System.Windows.Forms.TrackBar();
+            this.sliderVolumeMaster = new ColorSlider.ColorSlider();
             this.numVolumeMaster = new System.Windows.Forms.NumericUpDown();
             this.numAudioChat = new System.Windows.Forms.NumericUpDown();
-            this.sliderAudiofVal0 = new System.Windows.Forms.TrackBar();
+            this.sliderAudiofVal0 = new ColorSlider.ColorSlider();
             this.labelAudioChat = new System.Windows.Forms.Label();
             this.labelAudiofVal0 = new System.Windows.Forms.Label();
             this.numAudiofVal0 = new System.Windows.Forms.NumericUpDown();
@@ -200,10 +200,10 @@
             this.checkBoxAimAssist = new System.Windows.Forms.CheckBox();
             this.checkBoxGamepadRumble = new System.Windows.Forms.CheckBox();
             this.checkBoxGamepadEnabled = new System.Windows.Forms.CheckBox();
-            this.sliderGamepadSensitivityY = new System.Windows.Forms.TrackBar();
+            this.sliderGamepadSensitivityY = new ColorSlider.ColorSlider();
             this.numGamepadSensitivityY = new System.Windows.Forms.NumericUpDown();
             this.labelGamepadSensitivityY = new System.Windows.Forms.Label();
-            this.sliderGamepadSensitivityX = new System.Windows.Forms.TrackBar();
+            this.sliderGamepadSensitivityX = new ColorSlider.ColorSlider();
             this.numGamepadSensitivityX = new System.Windows.Forms.NumericUpDown();
             this.labelGamepadSensitivityX = new System.Windows.Forms.Label();
             this.groupBoxMouse = new Fo76ini.Controls.StyledGroupBox();
@@ -211,10 +211,10 @@
             this.checkBoxMouseInvertY = new System.Windows.Forms.CheckBox();
             this.checkBoxFixAimSensitivity = new System.Windows.Forms.CheckBox();
             this.checkBoxFixMouseSensitivity = new System.Windows.Forms.CheckBox();
-            this.sliderMouseSensitivityY = new System.Windows.Forms.TrackBar();
+            this.sliderMouseSensitivityY = new ColorSlider.ColorSlider();
             this.numMouseSensitivityY = new System.Windows.Forms.NumericUpDown();
             this.labelMouseSensitivityY = new System.Windows.Forms.Label();
-            this.sliderMouseSensitivityX = new System.Windows.Forms.TrackBar();
+            this.sliderMouseSensitivityX = new ColorSlider.ColorSlider();
             this.numMouseSensitivityX = new System.Windows.Forms.NumericUpDown();
             this.labelMouseSensitivityX = new System.Windows.Forms.Label();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
@@ -224,59 +224,59 @@
             this.labelfOverShoulderMeleeCombatAddY = new System.Windows.Forms.Label();
             this.numfOverShoulderMeleeCombatPosX = new System.Windows.Forms.NumericUpDown();
             this.numfOverShoulderMeleeCombatPosZ = new System.Windows.Forms.NumericUpDown();
-            this.trackBarfOverShoulderMeleeCombatAddY = new System.Windows.Forms.TrackBar();
+            this.trackBarfOverShoulderMeleeCombatAddY = new ColorSlider.ColorSlider();
             this.labelfOverShoulderMeleeCombatPosX = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderMeleeCombatPosX = new System.Windows.Forms.TrackBar();
+            this.trackBarfOverShoulderMeleeCombatPosX = new ColorSlider.ColorSlider();
             this.labelfOverShoulderMeleeCombatPosZ = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderMeleeCombatPosZ = new System.Windows.Forms.TrackBar();
+            this.trackBarfOverShoulderMeleeCombatPosZ = new ColorSlider.ColorSlider();
             this.groupBoxCombatCameraPosition = new Fo76ini.Controls.StyledGroupBox();
             this.numfOverShoulderCombatAddY = new System.Windows.Forms.NumericUpDown();
             this.numfOverShoulderCombatPosX = new System.Windows.Forms.NumericUpDown();
             this.numfOverShoulderCombatPosZ = new System.Windows.Forms.NumericUpDown();
             this.labelfOverShoulderCombatAddY = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderCombatAddY = new System.Windows.Forms.TrackBar();
+            this.trackBarfOverShoulderCombatAddY = new ColorSlider.ColorSlider();
             this.labelfOverShoulderCombatPosX = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderCombatPosX = new System.Windows.Forms.TrackBar();
+            this.trackBarfOverShoulderCombatPosX = new ColorSlider.ColorSlider();
             this.labelfOverShoulderCombatPosZ = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderCombatPosZ = new System.Windows.Forms.TrackBar();
+            this.trackBarfOverShoulderCombatPosZ = new ColorSlider.ColorSlider();
             this.buttonCameraPositionReset = new System.Windows.Forms.Button();
             this.checkBoxbApplyCameraNodeAnimations = new System.Windows.Forms.CheckBox();
             this.groupBoxUnarmedCameraPosition = new Fo76ini.Controls.StyledGroupBox();
             this.numfOverShoulderPosX = new System.Windows.Forms.NumericUpDown();
             this.numfOverShoulderPosZ = new System.Windows.Forms.NumericUpDown();
             this.labelfOverShoulderPosX = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderPosX = new System.Windows.Forms.TrackBar();
+            this.trackBarfOverShoulderPosX = new ColorSlider.ColorSlider();
             this.labelfOverShoulderPosZ = new System.Windows.Forms.Label();
-            this.trackBarfOverShoulderPosZ = new System.Windows.Forms.TrackBar();
+            this.trackBarfOverShoulderPosZ = new ColorSlider.ColorSlider();
             this.groupBoxFOVMore = new Fo76ini.Controls.StyledGroupBox();
             this.labelADSFOV = new System.Windows.Forms.Label();
             this.numADSFOV = new System.Windows.Forms.NumericUpDown();
             this.groupBoxSelfieCamera = new Fo76ini.Controls.StyledGroupBox();
-            this.trackBarPhotomodeRange = new System.Windows.Forms.TrackBar();
+            this.trackBarPhotomodeRange = new ColorSlider.ColorSlider();
             this.numericUpDownPhotomodeRotationSpeed = new System.Windows.Forms.NumericUpDown();
-            this.trackBarPhotomodeRotationSpeed = new System.Windows.Forms.TrackBar();
+            this.trackBarPhotomodeRotationSpeed = new ColorSlider.ColorSlider();
             this.labelPhotomodeRotationSpeed = new System.Windows.Forms.Label();
             this.numericUpDownPhotomodeRange = new System.Windows.Forms.NumericUpDown();
             this.labelPhotomodeRange = new System.Windows.Forms.Label();
             this.numericUpDownPhotomodeTranslationSpeed = new System.Windows.Forms.NumericUpDown();
-            this.trackBarPhotomodeTranslationSpeed = new System.Windows.Forms.TrackBar();
+            this.trackBarPhotomodeTranslationSpeed = new ColorSlider.ColorSlider();
             this.labelPhotomodeTranslationSpeed = new System.Windows.Forms.Label();
             this.groupBoxIdleCamera = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxForceVanityMode = new System.Windows.Forms.CheckBox();
             this.checkBoxVanityMode = new System.Windows.Forms.CheckBox();
             this.groupBoxCameraDistance = new Fo76ini.Controls.StyledGroupBox();
             this.numfPitchZoomOutMaxDist = new System.Windows.Forms.NumericUpDown();
-            this.sliderfPitchZoomOutMaxDist = new System.Windows.Forms.TrackBar();
+            this.sliderfPitchZoomOutMaxDist = new ColorSlider.ColorSlider();
             this.labelPitchZoomOutMaxDist = new System.Windows.Forms.Label();
             this.numCameraDistanceMaximum = new System.Windows.Forms.NumericUpDown();
             this.numCameraDistanceMinimum = new System.Windows.Forms.NumericUpDown();
-            this.sliderCameraDistanceMaximum = new System.Windows.Forms.TrackBar();
+            this.sliderCameraDistanceMaximum = new ColorSlider.ColorSlider();
             this.labelCameraDistanceMaximum = new System.Windows.Forms.Label();
             this.labelCameraDistanceMinimum = new System.Windows.Forms.Label();
-            this.sliderCameraDistanceMinimum = new System.Windows.Forms.TrackBar();
+            this.sliderCameraDistanceMinimum = new ColorSlider.ColorSlider();
             this.groupBoxFieldOfView = new Fo76ini.Controls.StyledGroupBox();
             this.pictureBoxFOVPreview = new System.Windows.Forms.PictureBox();
-            this.sliderFOV = new System.Windows.Forms.TrackBar();
+            this.sliderFOV = new ColorSlider.ColorSlider();
             this.numFOV = new System.Windows.Forms.NumericUpDown();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
             this.groupBoxLoginProfiles = new Fo76ini.Controls.StyledGroupBox();
@@ -326,9 +326,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numConversationHistorySize)).BeginInit();
             this.groupBoxHUD.SuspendLayout();
             this.groupBoxFloatingQuestMarkers.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderFloatingQuestMarkersDistance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFloatingQuestMarkersDistance)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHUDOpacity)).BeginInit();
             this.groupBoxLoading.SuspendLayout();
             this.groupBoxQuests.SuspendLayout();
@@ -337,27 +335,19 @@
             this.groupBoxGraphics.SuspendLayout();
             this.groupBoxDOF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDOFStrength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderDOFStrength)).BeginInit();
             this.groupBoxTextures.SuspendLayout();
             this.groupBoxGraphicEffects.SuspendLayout();
             this.groupBoxTAASharpening.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderTAAPostSharpen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTAAPostSharpen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderTAAPostOverlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTAAPostOverlay)).BeginInit();
             this.groupBoxGrass.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGrassFadeDistance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGrassFadeDistance)).BeginInit();
             this.groupBoxLOD.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderLODActors)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderLODItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLODActors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLODItems)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderLODObjects)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLODObjects)).BeginInit();
             this.groupBoxLighting.SuspendLayout();
             this.groupBoxShadows.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderShadowDistance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numShadowDistance)).BeginInit();
             this.groupBoxWater.SuspendLayout();
             this.groupBoxPostProcessing.SuspendLayout();
@@ -368,17 +358,8 @@
             this.groupBoxAudio.SuspendLayout();
             this.groupBoxVoice.SuspendLayout();
             this.groupBoxAudioVolume.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudioChat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderVolumeMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numVolumeMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAudioChat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal1)).BeginInit();
@@ -388,14 +369,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal3)).BeginInit();
             this.tabPageControls.SuspendLayout();
             this.groupBoxGamepad.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).BeginInit();
             this.groupBoxMouse.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivityY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivityX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityX)).BeginInit();
             this.tabPageCamera.SuspendLayout();
             this.groupBoxCameraPosition.SuspendLayout();
@@ -403,41 +380,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderMeleeCombatAddY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderMeleeCombatPosX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderMeleeCombatPosZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderMeleeCombatAddY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderMeleeCombatPosX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderMeleeCombatPosZ)).BeginInit();
             this.groupBoxCombatCameraPosition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderCombatAddY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderCombatPosX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderCombatPosZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderCombatAddY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderCombatPosX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderCombatPosZ)).BeginInit();
             this.groupBoxUnarmedCameraPosition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderPosX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderPosZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderPosX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderPosZ)).BeginInit();
             this.groupBoxFOVMore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).BeginInit();
             this.groupBoxSelfieCamera.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).BeginInit();
             this.groupBoxIdleCamera.SuspendLayout();
             this.groupBoxCameraDistance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderfPitchZoomOutMaxDist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMaximum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMinimum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMaximum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMinimum)).BeginInit();
             this.groupBoxFieldOfView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFOVPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderFOV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFOV)).BeginInit();
             this.tabPageLogin.SuspendLayout();
             this.groupBoxLoginProfiles.SuspendLayout();
@@ -527,6 +489,7 @@
             // 
             // groupBoxGameplay
             // 
+            this.groupBoxGameplay.BackColor = System.Drawing.Color.White;
             this.groupBoxGameplay.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxGameplay.BorderWidth = 1;
             this.groupBoxGameplay.Controls.Add(this.checkBoxBackpackVisible);
@@ -573,6 +536,7 @@
             // 
             // groupBoxDialogue
             // 
+            this.groupBoxDialogue.BackColor = System.Drawing.Color.White;
             this.groupBoxDialogue.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxDialogue.BorderWidth = 1;
             this.groupBoxDialogue.Controls.Add(this.sliderConversationHistorySize);
@@ -715,6 +679,7 @@
             // 
             // groupBoxHUD
             // 
+            this.groupBoxHUD.BackColor = System.Drawing.Color.White;
             this.groupBoxHUD.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxHUD.BorderWidth = 1;
             this.groupBoxHUD.Controls.Add(this.groupBoxFloatingQuestMarkers);
@@ -742,6 +707,7 @@
             // 
             // groupBoxFloatingQuestMarkers
             // 
+            this.groupBoxFloatingQuestMarkers.BackColor = System.Drawing.Color.White;
             this.groupBoxFloatingQuestMarkers.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxFloatingQuestMarkers.BorderWidth = 1;
             this.groupBoxFloatingQuestMarkers.Controls.Add(this.checkBoxShowFloatingQuestMarkers);
@@ -774,16 +740,64 @@
             // 
             this.sliderFloatingQuestMarkersDistance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderFloatingQuestMarkersDistance.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderFloatingQuestMarkersDistance.BackColor = System.Drawing.Color.Transparent;
+            this.sliderFloatingQuestMarkersDistance.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderFloatingQuestMarkersDistance.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderFloatingQuestMarkersDistance.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderFloatingQuestMarkersDistance.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderFloatingQuestMarkersDistance.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderFloatingQuestMarkersDistance.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderFloatingQuestMarkersDistance.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderFloatingQuestMarkersDistance.ForeColor = System.Drawing.Color.White;
+            this.sliderFloatingQuestMarkersDistance.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.sliderFloatingQuestMarkersDistance.Location = new System.Drawing.Point(9, 38);
-            this.sliderFloatingQuestMarkersDistance.Maximum = 1000;
-            this.sliderFloatingQuestMarkersDistance.Minimum = 200;
+            this.sliderFloatingQuestMarkersDistance.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.sliderFloatingQuestMarkersDistance.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.sliderFloatingQuestMarkersDistance.Name = "sliderFloatingQuestMarkersDistance";
-            this.sliderFloatingQuestMarkersDistance.Size = new System.Drawing.Size(293, 45);
-            this.sliderFloatingQuestMarkersDistance.SmallChange = 100;
+            this.sliderFloatingQuestMarkersDistance.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderFloatingQuestMarkersDistance.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderFloatingQuestMarkersDistance.ShowDivisionsText = false;
+            this.sliderFloatingQuestMarkersDistance.ShowSmallScale = false;
+            this.sliderFloatingQuestMarkersDistance.Size = new System.Drawing.Size(293, 20);
+            this.sliderFloatingQuestMarkersDistance.SmallChange = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.sliderFloatingQuestMarkersDistance.TabIndex = 19;
+            this.sliderFloatingQuestMarkersDistance.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderFloatingQuestMarkersDistance.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderFloatingQuestMarkersDistance.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderFloatingQuestMarkersDistance.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderFloatingQuestMarkersDistance.TickAdd = 0F;
+            this.sliderFloatingQuestMarkersDistance.TickColor = System.Drawing.Color.White;
+            this.sliderFloatingQuestMarkersDistance.TickDivide = 0F;
             this.sliderFloatingQuestMarkersDistance.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderFloatingQuestMarkersDistance.Value = 1000;
+            this.sliderFloatingQuestMarkersDistance.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             // 
             // checkBoxShowFloatingQuestText
             // 
@@ -919,16 +933,64 @@
             // 
             this.sliderHUDOpacity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderHUDOpacity.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderHUDOpacity.LargeChange = 20;
+            this.sliderHUDOpacity.BackColor = System.Drawing.Color.Transparent;
+            this.sliderHUDOpacity.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderHUDOpacity.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderHUDOpacity.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderHUDOpacity.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderHUDOpacity.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderHUDOpacity.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderHUDOpacity.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderHUDOpacity.ForeColor = System.Drawing.Color.White;
+            this.sliderHUDOpacity.LargeChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.sliderHUDOpacity.Location = new System.Drawing.Point(6, 36);
-            this.sliderHUDOpacity.Maximum = 100;
+            this.sliderHUDOpacity.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderHUDOpacity.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderHUDOpacity.Name = "sliderHUDOpacity";
-            this.sliderHUDOpacity.Size = new System.Drawing.Size(308, 45);
-            this.sliderHUDOpacity.SmallChange = 10;
+            this.sliderHUDOpacity.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderHUDOpacity.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderHUDOpacity.ShowDivisionsText = false;
+            this.sliderHUDOpacity.ShowSmallScale = false;
+            this.sliderHUDOpacity.Size = new System.Drawing.Size(308, 20);
+            this.sliderHUDOpacity.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderHUDOpacity.TabIndex = 13;
+            this.sliderHUDOpacity.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderHUDOpacity.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderHUDOpacity.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderHUDOpacity.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderHUDOpacity.TickAdd = 0F;
+            this.sliderHUDOpacity.TickColor = System.Drawing.Color.White;
+            this.sliderHUDOpacity.TickDivide = 0F;
             this.sliderHUDOpacity.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderHUDOpacity.Value = 100;
+            this.sliderHUDOpacity.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // numHUDOpacity
             // 
@@ -956,6 +1018,7 @@
             // 
             // groupBoxLoading
             // 
+            this.groupBoxLoading.BackColor = System.Drawing.Color.White;
             this.groupBoxLoading.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxLoading.BorderWidth = 1;
             this.groupBoxLoading.Controls.Add(this.checkBoxFasterFadeIn);
@@ -983,6 +1046,7 @@
             // 
             // groupBoxQuests
             // 
+            this.groupBoxQuests.BackColor = System.Drawing.Color.White;
             this.groupBoxQuests.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxQuests.BorderWidth = 1;
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackDaily);
@@ -1054,6 +1118,7 @@
             // 
             // groupBoxMainMenu
             // 
+            this.groupBoxMainMenu.BackColor = System.Drawing.Color.White;
             this.groupBoxMainMenu.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxMainMenu.BorderWidth = 1;
             this.groupBoxMainMenu.Controls.Add(this.checkBoxSkipSplash);
@@ -1105,6 +1170,7 @@
             // 
             // groupBoxGraphics
             // 
+            this.groupBoxGraphics.BackColor = System.Drawing.Color.White;
             this.groupBoxGraphics.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxGraphics.BorderWidth = 1;
             this.groupBoxGraphics.Controls.Add(this.groupBoxDOF);
@@ -1139,6 +1205,7 @@
             // 
             // groupBoxDOF
             // 
+            this.groupBoxDOF.BackColor = System.Drawing.Color.White;
             this.groupBoxDOF.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxDOF.BorderWidth = 1;
             this.groupBoxDOF.Controls.Add(this.numDOFStrength);
@@ -1195,15 +1262,64 @@
             // 
             this.sliderDOFStrength.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderDOFStrength.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderDOFStrength.LargeChange = 10;
-            this.sliderDOFStrength.Location = new System.Drawing.Point(6, 58);
-            this.sliderDOFStrength.Maximum = 100;
+            this.sliderDOFStrength.BackColor = System.Drawing.Color.Transparent;
+            this.sliderDOFStrength.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderDOFStrength.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderDOFStrength.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderDOFStrength.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderDOFStrength.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderDOFStrength.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderDOFStrength.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderDOFStrength.ForeColor = System.Drawing.Color.White;
+            this.sliderDOFStrength.LargeChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderDOFStrength.Location = new System.Drawing.Point(10, 61);
+            this.sliderDOFStrength.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderDOFStrength.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderDOFStrength.Name = "sliderDOFStrength";
-            this.sliderDOFStrength.Size = new System.Drawing.Size(285, 45);
-            this.sliderDOFStrength.SmallChange = 5;
+            this.sliderDOFStrength.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderDOFStrength.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderDOFStrength.ShowDivisionsText = false;
+            this.sliderDOFStrength.ShowSmallScale = false;
+            this.sliderDOFStrength.Size = new System.Drawing.Size(281, 20);
+            this.sliderDOFStrength.SmallChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.sliderDOFStrength.TabIndex = 8;
+            this.sliderDOFStrength.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderDOFStrength.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderDOFStrength.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderDOFStrength.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderDOFStrength.TickAdd = 0F;
+            this.sliderDOFStrength.TickColor = System.Drawing.Color.White;
+            this.sliderDOFStrength.TickDivide = 0F;
             this.sliderDOFStrength.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderDOFStrength.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // labelSelectedQualityPreset
             // 
@@ -1237,6 +1353,7 @@
             // 
             // groupBoxTextures
             // 
+            this.groupBoxTextures.BackColor = System.Drawing.Color.White;
             this.groupBoxTextures.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxTextures.BorderWidth = 1;
             this.groupBoxTextures.Controls.Add(this.comboBoxTextureQuality);
@@ -1274,6 +1391,7 @@
             // 
             // groupBoxGraphicEffects
             // 
+            this.groupBoxGraphicEffects.BackColor = System.Drawing.Color.White;
             this.groupBoxGraphicEffects.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxGraphicEffects.BorderWidth = 1;
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
@@ -1313,6 +1431,7 @@
             // 
             // groupBoxTAASharpening
             // 
+            this.groupBoxTAASharpening.BackColor = System.Drawing.Color.White;
             this.groupBoxTAASharpening.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxTAASharpening.BorderWidth = 1;
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostSharpen);
@@ -1336,15 +1455,64 @@
             // 
             this.sliderTAAPostSharpen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderTAAPostSharpen.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderTAAPostSharpen.LargeChange = 1;
+            this.sliderTAAPostSharpen.BackColor = System.Drawing.Color.Transparent;
+            this.sliderTAAPostSharpen.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderTAAPostSharpen.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderTAAPostSharpen.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderTAAPostSharpen.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderTAAPostSharpen.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderTAAPostSharpen.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderTAAPostSharpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderTAAPostSharpen.ForeColor = System.Drawing.Color.White;
+            this.sliderTAAPostSharpen.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderTAAPostSharpen.Location = new System.Drawing.Point(9, 93);
-            this.sliderTAAPostSharpen.Maximum = 200;
+            this.sliderTAAPostSharpen.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.sliderTAAPostSharpen.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderTAAPostSharpen.Name = "sliderTAAPostSharpen";
-            this.sliderTAAPostSharpen.Size = new System.Drawing.Size(286, 45);
+            this.sliderTAAPostSharpen.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderTAAPostSharpen.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderTAAPostSharpen.ShowDivisionsText = false;
+            this.sliderTAAPostSharpen.ShowSmallScale = false;
+            this.sliderTAAPostSharpen.Size = new System.Drawing.Size(286, 20);
+            this.sliderTAAPostSharpen.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderTAAPostSharpen.TabIndex = 4;
+            this.sliderTAAPostSharpen.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderTAAPostSharpen.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderTAAPostSharpen.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderTAAPostSharpen.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderTAAPostSharpen.TickAdd = 0F;
+            this.sliderTAAPostSharpen.TickColor = System.Drawing.Color.White;
+            this.sliderTAAPostSharpen.TickDivide = 0F;
             this.sliderTAAPostSharpen.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderTAAPostSharpen.Value = 20;
+            this.sliderTAAPostSharpen.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             // 
             // labelTAAPostSharpen
             // 
@@ -1383,15 +1551,64 @@
             // 
             this.sliderTAAPostOverlay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderTAAPostOverlay.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderTAAPostOverlay.LargeChange = 1;
+            this.sliderTAAPostOverlay.BackColor = System.Drawing.Color.Transparent;
+            this.sliderTAAPostOverlay.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderTAAPostOverlay.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderTAAPostOverlay.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderTAAPostOverlay.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderTAAPostOverlay.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderTAAPostOverlay.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderTAAPostOverlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderTAAPostOverlay.ForeColor = System.Drawing.Color.White;
+            this.sliderTAAPostOverlay.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderTAAPostOverlay.Location = new System.Drawing.Point(6, 41);
-            this.sliderTAAPostOverlay.Maximum = 100;
+            this.sliderTAAPostOverlay.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderTAAPostOverlay.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderTAAPostOverlay.Name = "sliderTAAPostOverlay";
-            this.sliderTAAPostOverlay.Size = new System.Drawing.Size(289, 45);
+            this.sliderTAAPostOverlay.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderTAAPostOverlay.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderTAAPostOverlay.ShowDivisionsText = false;
+            this.sliderTAAPostOverlay.ShowSmallScale = false;
+            this.sliderTAAPostOverlay.Size = new System.Drawing.Size(289, 20);
+            this.sliderTAAPostOverlay.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderTAAPostOverlay.TabIndex = 1;
+            this.sliderTAAPostOverlay.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderTAAPostOverlay.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderTAAPostOverlay.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderTAAPostOverlay.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderTAAPostOverlay.TickAdd = 0F;
+            this.sliderTAAPostOverlay.TickColor = System.Drawing.Color.White;
+            this.sliderTAAPostOverlay.TickDivide = 0F;
             this.sliderTAAPostOverlay.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderTAAPostOverlay.Value = 20;
+            this.sliderTAAPostOverlay.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             // 
             // numTAAPostOverlay
             // 
@@ -1437,6 +1654,7 @@
             // 
             // groupBoxGrass
             // 
+            this.groupBoxGrass.BackColor = System.Drawing.Color.White;
             this.groupBoxGrass.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxGrass.BorderWidth = 1;
             this.groupBoxGrass.Controls.Add(this.sliderGrassFadeDistance);
@@ -1458,16 +1676,64 @@
             // 
             this.sliderGrassFadeDistance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderGrassFadeDistance.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderGrassFadeDistance.LargeChange = 2000;
+            this.sliderGrassFadeDistance.BackColor = System.Drawing.Color.Transparent;
+            this.sliderGrassFadeDistance.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderGrassFadeDistance.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderGrassFadeDistance.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderGrassFadeDistance.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGrassFadeDistance.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderGrassFadeDistance.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderGrassFadeDistance.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderGrassFadeDistance.ForeColor = System.Drawing.Color.White;
+            this.sliderGrassFadeDistance.LargeChange = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
             this.sliderGrassFadeDistance.Location = new System.Drawing.Point(6, 68);
-            this.sliderGrassFadeDistance.Maximum = 14000;
+            this.sliderGrassFadeDistance.Maximum = new decimal(new int[] {
+            14000,
+            0,
+            0,
+            0});
+            this.sliderGrassFadeDistance.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderGrassFadeDistance.Name = "sliderGrassFadeDistance";
-            this.sliderGrassFadeDistance.Size = new System.Drawing.Size(289, 45);
-            this.sliderGrassFadeDistance.SmallChange = 500;
+            this.sliderGrassFadeDistance.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderGrassFadeDistance.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderGrassFadeDistance.ShowDivisionsText = false;
+            this.sliderGrassFadeDistance.ShowSmallScale = false;
+            this.sliderGrassFadeDistance.Size = new System.Drawing.Size(289, 20);
+            this.sliderGrassFadeDistance.SmallChange = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.sliderGrassFadeDistance.TabIndex = 2;
+            this.sliderGrassFadeDistance.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGrassFadeDistance.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGrassFadeDistance.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderGrassFadeDistance.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderGrassFadeDistance.TickAdd = 0F;
+            this.sliderGrassFadeDistance.TickColor = System.Drawing.Color.White;
+            this.sliderGrassFadeDistance.TickDivide = 0F;
             this.sliderGrassFadeDistance.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderGrassFadeDistance.Value = 3000;
+            this.sliderGrassFadeDistance.Value = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
             // 
             // numGrassFadeDistance
             // 
@@ -1524,6 +1790,7 @@
             // 
             // groupBoxLOD
             // 
+            this.groupBoxLOD.BackColor = System.Drawing.Color.White;
             this.groupBoxLOD.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxLOD.BorderWidth = 1;
             this.groupBoxLOD.Controls.Add(this.sliderLODActors);
@@ -1551,16 +1818,64 @@
             // 
             this.sliderLODActors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderLODActors.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderLODActors.LargeChange = 10;
+            this.sliderLODActors.BackColor = System.Drawing.Color.Transparent;
+            this.sliderLODActors.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderLODActors.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderLODActors.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderLODActors.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderLODActors.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderLODActors.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderLODActors.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderLODActors.ForeColor = System.Drawing.Color.White;
+            this.sliderLODActors.LargeChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderLODActors.Location = new System.Drawing.Point(92, 104);
-            this.sliderLODActors.Maximum = 600;
+            this.sliderLODActors.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
+            this.sliderLODActors.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderLODActors.Name = "sliderLODActors";
-            this.sliderLODActors.Size = new System.Drawing.Size(224, 45);
-            this.sliderLODActors.SmallChange = 5;
+            this.sliderLODActors.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderLODActors.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderLODActors.ShowDivisionsText = false;
+            this.sliderLODActors.ShowSmallScale = false;
+            this.sliderLODActors.Size = new System.Drawing.Size(224, 20);
+            this.sliderLODActors.SmallChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.sliderLODActors.TabIndex = 8;
+            this.sliderLODActors.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderLODActors.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderLODActors.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderLODActors.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderLODActors.TickAdd = 0F;
+            this.sliderLODActors.TickColor = System.Drawing.Color.White;
+            this.sliderLODActors.TickDivide = 0F;
             this.sliderLODActors.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderLODActors.Value = 45;
+            this.sliderLODActors.Value = new decimal(new int[] {
+            45,
+            0,
+            0,
+            0});
             // 
             // labelLODFadeDistance
             // 
@@ -1575,16 +1890,64 @@
             // 
             this.sliderLODItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderLODItems.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderLODItems.LargeChange = 10;
+            this.sliderLODItems.BackColor = System.Drawing.Color.Transparent;
+            this.sliderLODItems.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderLODItems.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderLODItems.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderLODItems.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderLODItems.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderLODItems.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderLODItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderLODItems.ForeColor = System.Drawing.Color.White;
+            this.sliderLODItems.LargeChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderLODItems.Location = new System.Drawing.Point(92, 75);
-            this.sliderLODItems.Maximum = 600;
+            this.sliderLODItems.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
+            this.sliderLODItems.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderLODItems.Name = "sliderLODItems";
-            this.sliderLODItems.Size = new System.Drawing.Size(224, 45);
-            this.sliderLODItems.SmallChange = 5;
+            this.sliderLODItems.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderLODItems.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderLODItems.ShowDivisionsText = false;
+            this.sliderLODItems.ShowSmallScale = false;
+            this.sliderLODItems.Size = new System.Drawing.Size(224, 20);
+            this.sliderLODItems.SmallChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.sliderLODItems.TabIndex = 5;
+            this.sliderLODItems.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderLODItems.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderLODItems.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderLODItems.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderLODItems.TickAdd = 0F;
+            this.sliderLODItems.TickColor = System.Drawing.Color.White;
+            this.sliderLODItems.TickDivide = 0F;
             this.sliderLODItems.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderLODItems.Value = 25;
+            this.sliderLODItems.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
             // 
             // numLODActors
             // 
@@ -1628,16 +1991,64 @@
             // 
             this.sliderLODObjects.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderLODObjects.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderLODObjects.LargeChange = 10;
+            this.sliderLODObjects.BackColor = System.Drawing.Color.Transparent;
+            this.sliderLODObjects.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderLODObjects.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderLODObjects.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderLODObjects.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderLODObjects.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderLODObjects.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderLODObjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderLODObjects.ForeColor = System.Drawing.Color.White;
+            this.sliderLODObjects.LargeChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderLODObjects.Location = new System.Drawing.Point(92, 45);
-            this.sliderLODObjects.Maximum = 600;
+            this.sliderLODObjects.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
+            this.sliderLODObjects.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderLODObjects.Name = "sliderLODObjects";
-            this.sliderLODObjects.Size = new System.Drawing.Size(224, 45);
-            this.sliderLODObjects.SmallChange = 5;
+            this.sliderLODObjects.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderLODObjects.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderLODObjects.ShowDivisionsText = false;
+            this.sliderLODObjects.ShowSmallScale = false;
+            this.sliderLODObjects.Size = new System.Drawing.Size(224, 20);
+            this.sliderLODObjects.SmallChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.sliderLODObjects.TabIndex = 2;
+            this.sliderLODObjects.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderLODObjects.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderLODObjects.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderLODObjects.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderLODObjects.TickAdd = 0F;
+            this.sliderLODObjects.TickColor = System.Drawing.Color.White;
+            this.sliderLODObjects.TickDivide = 0F;
             this.sliderLODObjects.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderLODObjects.Value = 60;
+            this.sliderLODObjects.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
             // 
             // numLODObjects
             // 
@@ -1699,6 +2110,7 @@
             // 
             // groupBoxLighting
             // 
+            this.groupBoxLighting.BackColor = System.Drawing.Color.White;
             this.groupBoxLighting.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxLighting.BorderWidth = 1;
             this.groupBoxLighting.Controls.Add(this.comboBoxGodrayQuality);
@@ -1758,6 +2170,7 @@
             // 
             // groupBoxShadows
             // 
+            this.groupBoxShadows.BackColor = System.Drawing.Color.White;
             this.groupBoxShadows.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxShadows.BorderWidth = 1;
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowQuality);
@@ -1804,17 +2217,64 @@
             // 
             this.sliderShadowDistance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderShadowDistance.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderShadowDistance.LargeChange = 10000;
-            this.sliderShadowDistance.Location = new System.Drawing.Point(10, 124);
-            this.sliderShadowDistance.Maximum = 200000;
-            this.sliderShadowDistance.Minimum = 1;
+            this.sliderShadowDistance.BackColor = System.Drawing.Color.Transparent;
+            this.sliderShadowDistance.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderShadowDistance.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderShadowDistance.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderShadowDistance.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderShadowDistance.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderShadowDistance.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderShadowDistance.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderShadowDistance.ForeColor = System.Drawing.Color.White;
+            this.sliderShadowDistance.LargeChange = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.sliderShadowDistance.Location = new System.Drawing.Point(10, 127);
+            this.sliderShadowDistance.Maximum = new decimal(new int[] {
+            200000,
+            0,
+            0,
+            0});
+            this.sliderShadowDistance.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderShadowDistance.Name = "sliderShadowDistance";
-            this.sliderShadowDistance.Size = new System.Drawing.Size(285, 45);
-            this.sliderShadowDistance.SmallChange = 1000;
+            this.sliderShadowDistance.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderShadowDistance.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderShadowDistance.ShowDivisionsText = false;
+            this.sliderShadowDistance.ShowSmallScale = false;
+            this.sliderShadowDistance.Size = new System.Drawing.Size(285, 20);
+            this.sliderShadowDistance.SmallChange = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.sliderShadowDistance.TabIndex = 5;
+            this.sliderShadowDistance.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderShadowDistance.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderShadowDistance.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderShadowDistance.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderShadowDistance.TickAdd = 0F;
+            this.sliderShadowDistance.TickColor = System.Drawing.Color.White;
+            this.sliderShadowDistance.TickDivide = 0F;
             this.sliderShadowDistance.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderShadowDistance.Value = 120000;
+            this.sliderShadowDistance.Value = new decimal(new int[] {
+            120000,
+            0,
+            0,
+            0});
             // 
             // comboBoxShadowBlurriness
             // 
@@ -1899,6 +2359,7 @@
             // 
             // groupBoxWater
             // 
+            this.groupBoxWater.BackColor = System.Drawing.Color.White;
             this.groupBoxWater.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxWater.BorderWidth = 1;
             this.groupBoxWater.Controls.Add(this.comboBoxWaterShadowFilter);
@@ -2001,6 +2462,7 @@
             // 
             // groupBoxPostProcessing
             // 
+            this.groupBoxPostProcessing.BackColor = System.Drawing.Color.White;
             this.groupBoxPostProcessing.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxPostProcessing.BorderWidth = 1;
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxSSReflections);
@@ -2081,6 +2543,7 @@
             // 
             // groupBoxDisplay
             // 
+            this.groupBoxDisplay.BackColor = System.Drawing.Color.White;
             this.groupBoxDisplay.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxDisplay.BorderWidth = 1;
             this.groupBoxDisplay.Controls.Add(this.comboBoxDisplayMode);
@@ -2261,6 +2724,7 @@
             // 
             // groupBoxAudio
             // 
+            this.groupBoxAudio.BackColor = System.Drawing.Color.White;
             this.groupBoxAudio.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxAudio.BorderWidth = 1;
             this.groupBoxAudio.Controls.Add(this.checkBoxEnableAudio);
@@ -2301,6 +2765,7 @@
             // 
             // groupBoxVoice
             // 
+            this.groupBoxVoice.BackColor = System.Drawing.Color.White;
             this.groupBoxVoice.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxVoice.BorderWidth = 1;
             this.groupBoxVoice.Controls.Add(this.comboBoxVoiceChatMode);
@@ -2348,6 +2813,7 @@
             // 
             // groupBoxAudioVolume
             // 
+            this.groupBoxAudioVolume.BackColor = System.Drawing.Color.White;
             this.groupBoxAudioVolume.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxAudioVolume.BorderWidth = 1;
             this.groupBoxAudioVolume.Controls.Add(this.sliderAudioChat);
@@ -2393,106 +2859,442 @@
             // 
             this.sliderAudioChat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudioChat.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudioChat.LargeChange = 20;
+            this.sliderAudioChat.BackColor = System.Drawing.Color.Transparent;
+            this.sliderAudioChat.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderAudioChat.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderAudioChat.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderAudioChat.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudioChat.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderAudioChat.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderAudioChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderAudioChat.ForeColor = System.Drawing.Color.White;
+            this.sliderAudioChat.LargeChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.sliderAudioChat.Location = new System.Drawing.Point(99, 61);
-            this.sliderAudioChat.Maximum = 100;
+            this.sliderAudioChat.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderAudioChat.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderAudioChat.Name = "sliderAudioChat";
-            this.sliderAudioChat.Size = new System.Drawing.Size(215, 45);
-            this.sliderAudioChat.SmallChange = 10;
+            this.sliderAudioChat.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderAudioChat.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderAudioChat.ShowDivisionsText = false;
+            this.sliderAudioChat.ShowSmallScale = false;
+            this.sliderAudioChat.Size = new System.Drawing.Size(215, 20);
+            this.sliderAudioChat.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderAudioChat.TabIndex = 4;
+            this.sliderAudioChat.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudioChat.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudioChat.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderAudioChat.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderAudioChat.TickAdd = 0F;
+            this.sliderAudioChat.TickColor = System.Drawing.Color.White;
+            this.sliderAudioChat.TickDivide = 0F;
             this.sliderAudioChat.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudioChat.Value = 100;
+            this.sliderAudioChat.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // sliderAudiofVal6
             // 
             this.sliderAudiofVal6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal6.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal6.LargeChange = 20;
+            this.sliderAudiofVal6.BackColor = System.Drawing.Color.Transparent;
+            this.sliderAudiofVal6.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderAudiofVal6.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderAudiofVal6.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderAudiofVal6.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal6.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderAudiofVal6.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderAudiofVal6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderAudiofVal6.ForeColor = System.Drawing.Color.White;
+            this.sliderAudiofVal6.LargeChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.sliderAudiofVal6.Location = new System.Drawing.Point(99, 306);
-            this.sliderAudiofVal6.Maximum = 100;
+            this.sliderAudiofVal6.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal6.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderAudiofVal6.Name = "sliderAudiofVal6";
-            this.sliderAudiofVal6.Size = new System.Drawing.Size(215, 45);
-            this.sliderAudiofVal6.SmallChange = 10;
+            this.sliderAudiofVal6.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal6.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal6.ShowDivisionsText = false;
+            this.sliderAudiofVal6.ShowSmallScale = false;
+            this.sliderAudiofVal6.Size = new System.Drawing.Size(215, 20);
+            this.sliderAudiofVal6.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderAudiofVal6.TabIndex = 25;
+            this.sliderAudiofVal6.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal6.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal6.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal6.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal6.TickAdd = 0F;
+            this.sliderAudiofVal6.TickColor = System.Drawing.Color.White;
+            this.sliderAudiofVal6.TickDivide = 0F;
             this.sliderAudiofVal6.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal6.Value = 100;
+            this.sliderAudiofVal6.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // sliderAudiofVal5
             // 
             this.sliderAudiofVal5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal5.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal5.LargeChange = 20;
+            this.sliderAudiofVal5.BackColor = System.Drawing.Color.Transparent;
+            this.sliderAudiofVal5.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderAudiofVal5.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderAudiofVal5.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderAudiofVal5.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal5.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderAudiofVal5.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderAudiofVal5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderAudiofVal5.ForeColor = System.Drawing.Color.White;
+            this.sliderAudiofVal5.LargeChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.sliderAudiofVal5.Location = new System.Drawing.Point(99, 276);
-            this.sliderAudiofVal5.Maximum = 100;
+            this.sliderAudiofVal5.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal5.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderAudiofVal5.Name = "sliderAudiofVal5";
-            this.sliderAudiofVal5.Size = new System.Drawing.Size(215, 45);
-            this.sliderAudiofVal5.SmallChange = 10;
+            this.sliderAudiofVal5.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal5.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal5.ShowDivisionsText = false;
+            this.sliderAudiofVal5.ShowSmallScale = false;
+            this.sliderAudiofVal5.Size = new System.Drawing.Size(215, 20);
+            this.sliderAudiofVal5.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderAudiofVal5.TabIndex = 22;
+            this.sliderAudiofVal5.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal5.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal5.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal5.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal5.TickAdd = 0F;
+            this.sliderAudiofVal5.TickColor = System.Drawing.Color.White;
+            this.sliderAudiofVal5.TickDivide = 0F;
             this.sliderAudiofVal5.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal5.Value = 100;
+            this.sliderAudiofVal5.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // sliderAudiofVal4
             // 
             this.sliderAudiofVal4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal4.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal4.LargeChange = 20;
+            this.sliderAudiofVal4.BackColor = System.Drawing.Color.Transparent;
+            this.sliderAudiofVal4.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderAudiofVal4.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderAudiofVal4.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderAudiofVal4.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal4.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderAudiofVal4.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderAudiofVal4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderAudiofVal4.ForeColor = System.Drawing.Color.White;
+            this.sliderAudiofVal4.LargeChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.sliderAudiofVal4.Location = new System.Drawing.Point(99, 246);
-            this.sliderAudiofVal4.Maximum = 100;
+            this.sliderAudiofVal4.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal4.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderAudiofVal4.Name = "sliderAudiofVal4";
-            this.sliderAudiofVal4.Size = new System.Drawing.Size(215, 45);
-            this.sliderAudiofVal4.SmallChange = 10;
+            this.sliderAudiofVal4.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal4.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal4.ShowDivisionsText = false;
+            this.sliderAudiofVal4.ShowSmallScale = false;
+            this.sliderAudiofVal4.Size = new System.Drawing.Size(215, 20);
+            this.sliderAudiofVal4.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderAudiofVal4.TabIndex = 19;
+            this.sliderAudiofVal4.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal4.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal4.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal4.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal4.TickAdd = 0F;
+            this.sliderAudiofVal4.TickColor = System.Drawing.Color.White;
+            this.sliderAudiofVal4.TickDivide = 0F;
             this.sliderAudiofVal4.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal4.Value = 100;
+            this.sliderAudiofVal4.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // sliderAudiofVal3
             // 
             this.sliderAudiofVal3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal3.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal3.LargeChange = 20;
+            this.sliderAudiofVal3.BackColor = System.Drawing.Color.Transparent;
+            this.sliderAudiofVal3.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderAudiofVal3.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderAudiofVal3.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderAudiofVal3.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal3.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderAudiofVal3.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderAudiofVal3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderAudiofVal3.ForeColor = System.Drawing.Color.White;
+            this.sliderAudiofVal3.LargeChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.sliderAudiofVal3.Location = new System.Drawing.Point(99, 216);
-            this.sliderAudiofVal3.Maximum = 100;
+            this.sliderAudiofVal3.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal3.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderAudiofVal3.Name = "sliderAudiofVal3";
-            this.sliderAudiofVal3.Size = new System.Drawing.Size(215, 45);
-            this.sliderAudiofVal3.SmallChange = 10;
+            this.sliderAudiofVal3.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal3.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal3.ShowDivisionsText = false;
+            this.sliderAudiofVal3.ShowSmallScale = false;
+            this.sliderAudiofVal3.Size = new System.Drawing.Size(215, 20);
+            this.sliderAudiofVal3.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderAudiofVal3.TabIndex = 16;
+            this.sliderAudiofVal3.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal3.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal3.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal3.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal3.TickAdd = 0F;
+            this.sliderAudiofVal3.TickColor = System.Drawing.Color.White;
+            this.sliderAudiofVal3.TickDivide = 0F;
             this.sliderAudiofVal3.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal3.Value = 100;
+            this.sliderAudiofVal3.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // sliderAudiofVal2
             // 
             this.sliderAudiofVal2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal2.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal2.LargeChange = 20;
+            this.sliderAudiofVal2.BackColor = System.Drawing.Color.Transparent;
+            this.sliderAudiofVal2.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderAudiofVal2.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderAudiofVal2.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderAudiofVal2.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal2.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderAudiofVal2.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderAudiofVal2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderAudiofVal2.ForeColor = System.Drawing.Color.White;
+            this.sliderAudiofVal2.LargeChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.sliderAudiofVal2.Location = new System.Drawing.Point(99, 186);
-            this.sliderAudiofVal2.Maximum = 100;
+            this.sliderAudiofVal2.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal2.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderAudiofVal2.Name = "sliderAudiofVal2";
-            this.sliderAudiofVal2.Size = new System.Drawing.Size(215, 45);
-            this.sliderAudiofVal2.SmallChange = 10;
+            this.sliderAudiofVal2.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal2.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal2.ShowDivisionsText = false;
+            this.sliderAudiofVal2.ShowSmallScale = false;
+            this.sliderAudiofVal2.Size = new System.Drawing.Size(215, 20);
+            this.sliderAudiofVal2.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderAudiofVal2.TabIndex = 13;
+            this.sliderAudiofVal2.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal2.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal2.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal2.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal2.TickAdd = 0F;
+            this.sliderAudiofVal2.TickColor = System.Drawing.Color.White;
+            this.sliderAudiofVal2.TickDivide = 0F;
             this.sliderAudiofVal2.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal2.Value = 100;
+            this.sliderAudiofVal2.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // sliderAudiofVal1
             // 
             this.sliderAudiofVal1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal1.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal1.LargeChange = 20;
+            this.sliderAudiofVal1.BackColor = System.Drawing.Color.Transparent;
+            this.sliderAudiofVal1.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderAudiofVal1.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderAudiofVal1.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderAudiofVal1.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal1.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderAudiofVal1.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderAudiofVal1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderAudiofVal1.ForeColor = System.Drawing.Color.White;
+            this.sliderAudiofVal1.LargeChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.sliderAudiofVal1.Location = new System.Drawing.Point(99, 156);
-            this.sliderAudiofVal1.Maximum = 100;
+            this.sliderAudiofVal1.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal1.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderAudiofVal1.Name = "sliderAudiofVal1";
-            this.sliderAudiofVal1.Size = new System.Drawing.Size(215, 45);
-            this.sliderAudiofVal1.SmallChange = 10;
+            this.sliderAudiofVal1.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal1.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal1.ShowDivisionsText = false;
+            this.sliderAudiofVal1.ShowSmallScale = false;
+            this.sliderAudiofVal1.Size = new System.Drawing.Size(215, 20);
+            this.sliderAudiofVal1.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderAudiofVal1.TabIndex = 10;
+            this.sliderAudiofVal1.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal1.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal1.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal1.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal1.TickAdd = 0F;
+            this.sliderAudiofVal1.TickColor = System.Drawing.Color.White;
+            this.sliderAudiofVal1.TickDivide = 0F;
             this.sliderAudiofVal1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal1.Value = 100;
+            this.sliderAudiofVal1.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // labelVolumeMaster
             // 
@@ -2507,16 +3309,64 @@
             // 
             this.sliderVolumeMaster.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderVolumeMaster.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderVolumeMaster.LargeChange = 20;
+            this.sliderVolumeMaster.BackColor = System.Drawing.Color.Transparent;
+            this.sliderVolumeMaster.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderVolumeMaster.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderVolumeMaster.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderVolumeMaster.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderVolumeMaster.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderVolumeMaster.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderVolumeMaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderVolumeMaster.ForeColor = System.Drawing.Color.White;
+            this.sliderVolumeMaster.LargeChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.sliderVolumeMaster.Location = new System.Drawing.Point(99, 25);
-            this.sliderVolumeMaster.Maximum = 100;
+            this.sliderVolumeMaster.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderVolumeMaster.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderVolumeMaster.Name = "sliderVolumeMaster";
-            this.sliderVolumeMaster.Size = new System.Drawing.Size(215, 45);
-            this.sliderVolumeMaster.SmallChange = 10;
+            this.sliderVolumeMaster.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderVolumeMaster.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderVolumeMaster.ShowDivisionsText = false;
+            this.sliderVolumeMaster.ShowSmallScale = false;
+            this.sliderVolumeMaster.Size = new System.Drawing.Size(215, 20);
+            this.sliderVolumeMaster.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderVolumeMaster.TabIndex = 1;
+            this.sliderVolumeMaster.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderVolumeMaster.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderVolumeMaster.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderVolumeMaster.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderVolumeMaster.TickAdd = 0F;
+            this.sliderVolumeMaster.TickColor = System.Drawing.Color.White;
+            this.sliderVolumeMaster.TickDivide = 0F;
             this.sliderVolumeMaster.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderVolumeMaster.Value = 100;
+            this.sliderVolumeMaster.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // numVolumeMaster
             // 
@@ -2564,16 +3414,64 @@
             // 
             this.sliderAudiofVal0.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderAudiofVal0.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderAudiofVal0.LargeChange = 20;
+            this.sliderAudiofVal0.BackColor = System.Drawing.Color.Transparent;
+            this.sliderAudiofVal0.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderAudiofVal0.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderAudiofVal0.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderAudiofVal0.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal0.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderAudiofVal0.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderAudiofVal0.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderAudiofVal0.ForeColor = System.Drawing.Color.White;
+            this.sliderAudiofVal0.LargeChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.sliderAudiofVal0.Location = new System.Drawing.Point(99, 126);
-            this.sliderAudiofVal0.Maximum = 100;
+            this.sliderAudiofVal0.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal0.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderAudiofVal0.Name = "sliderAudiofVal0";
-            this.sliderAudiofVal0.Size = new System.Drawing.Size(215, 45);
-            this.sliderAudiofVal0.SmallChange = 10;
+            this.sliderAudiofVal0.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal0.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderAudiofVal0.ShowDivisionsText = false;
+            this.sliderAudiofVal0.ShowSmallScale = false;
+            this.sliderAudiofVal0.Size = new System.Drawing.Size(215, 20);
+            this.sliderAudiofVal0.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderAudiofVal0.TabIndex = 7;
+            this.sliderAudiofVal0.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal0.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderAudiofVal0.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal0.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderAudiofVal0.TickAdd = 0F;
+            this.sliderAudiofVal0.TickColor = System.Drawing.Color.White;
+            this.sliderAudiofVal0.TickDivide = 0F;
             this.sliderAudiofVal0.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderAudiofVal0.Value = 100;
+            this.sliderAudiofVal0.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // labelAudioChat
             // 
@@ -2828,6 +3726,7 @@
             // 
             // groupBoxGamepad
             // 
+            this.groupBoxGamepad.BackColor = System.Drawing.Color.White;
             this.groupBoxGamepad.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxGamepad.BorderWidth = 1;
             this.groupBoxGamepad.Controls.Add(this.checkBoxAimAssist);
@@ -2891,16 +3790,64 @@
             // 
             this.sliderGamepadSensitivityY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderGamepadSensitivityY.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderGamepadSensitivityY.BackColor = System.Drawing.Color.Transparent;
+            this.sliderGamepadSensitivityY.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderGamepadSensitivityY.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderGamepadSensitivityY.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderGamepadSensitivityY.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGamepadSensitivityY.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderGamepadSensitivityY.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderGamepadSensitivityY.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderGamepadSensitivityY.ForeColor = System.Drawing.Color.White;
+            this.sliderGamepadSensitivityY.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.sliderGamepadSensitivityY.Location = new System.Drawing.Point(9, 91);
-            this.sliderGamepadSensitivityY.Maximum = 15556;
-            this.sliderGamepadSensitivityY.Minimum = 4445;
+            this.sliderGamepadSensitivityY.Maximum = new decimal(new int[] {
+            15556,
+            0,
+            0,
+            0});
+            this.sliderGamepadSensitivityY.Minimum = new decimal(new int[] {
+            4445,
+            0,
+            0,
+            0});
             this.sliderGamepadSensitivityY.Name = "sliderGamepadSensitivityY";
-            this.sliderGamepadSensitivityY.Size = new System.Drawing.Size(325, 45);
-            this.sliderGamepadSensitivityY.SmallChange = 300;
+            this.sliderGamepadSensitivityY.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderGamepadSensitivityY.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderGamepadSensitivityY.ShowDivisionsText = false;
+            this.sliderGamepadSensitivityY.ShowSmallScale = false;
+            this.sliderGamepadSensitivityY.Size = new System.Drawing.Size(325, 20);
+            this.sliderGamepadSensitivityY.SmallChange = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             this.sliderGamepadSensitivityY.TabIndex = 10;
+            this.sliderGamepadSensitivityY.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGamepadSensitivityY.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGamepadSensitivityY.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderGamepadSensitivityY.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderGamepadSensitivityY.TickAdd = 0F;
+            this.sliderGamepadSensitivityY.TickColor = System.Drawing.Color.White;
+            this.sliderGamepadSensitivityY.TickDivide = 0F;
             this.sliderGamepadSensitivityY.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderGamepadSensitivityY.Value = 6000;
+            this.sliderGamepadSensitivityY.Value = new decimal(new int[] {
+            6000,
+            0,
+            0,
+            0});
             // 
             // numGamepadSensitivityY
             // 
@@ -2944,16 +3891,64 @@
             // 
             this.sliderGamepadSensitivityX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderGamepadSensitivityX.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderGamepadSensitivityX.BackColor = System.Drawing.Color.Transparent;
+            this.sliderGamepadSensitivityX.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderGamepadSensitivityX.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderGamepadSensitivityX.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderGamepadSensitivityX.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGamepadSensitivityX.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderGamepadSensitivityX.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderGamepadSensitivityX.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderGamepadSensitivityX.ForeColor = System.Drawing.Color.White;
+            this.sliderGamepadSensitivityX.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.sliderGamepadSensitivityX.Location = new System.Drawing.Point(9, 40);
-            this.sliderGamepadSensitivityX.Maximum = 15556;
-            this.sliderGamepadSensitivityX.Minimum = 4445;
+            this.sliderGamepadSensitivityX.Maximum = new decimal(new int[] {
+            15556,
+            0,
+            0,
+            0});
+            this.sliderGamepadSensitivityX.Minimum = new decimal(new int[] {
+            4445,
+            0,
+            0,
+            0});
             this.sliderGamepadSensitivityX.Name = "sliderGamepadSensitivityX";
-            this.sliderGamepadSensitivityX.Size = new System.Drawing.Size(325, 45);
-            this.sliderGamepadSensitivityX.SmallChange = 300;
+            this.sliderGamepadSensitivityX.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderGamepadSensitivityX.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderGamepadSensitivityX.ShowDivisionsText = false;
+            this.sliderGamepadSensitivityX.ShowSmallScale = false;
+            this.sliderGamepadSensitivityX.Size = new System.Drawing.Size(325, 20);
+            this.sliderGamepadSensitivityX.SmallChange = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             this.sliderGamepadSensitivityX.TabIndex = 7;
+            this.sliderGamepadSensitivityX.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGamepadSensitivityX.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGamepadSensitivityX.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderGamepadSensitivityX.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderGamepadSensitivityX.TickAdd = 0F;
+            this.sliderGamepadSensitivityX.TickColor = System.Drawing.Color.White;
+            this.sliderGamepadSensitivityX.TickDivide = 0F;
             this.sliderGamepadSensitivityX.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderGamepadSensitivityX.Value = 6667;
+            this.sliderGamepadSensitivityX.Value = new decimal(new int[] {
+            6667,
+            0,
+            0,
+            0});
             // 
             // numGamepadSensitivityX
             // 
@@ -2995,6 +3990,7 @@
             // 
             // groupBoxMouse
             // 
+            this.groupBoxMouse.BackColor = System.Drawing.Color.White;
             this.groupBoxMouse.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxMouse.BorderWidth = 1;
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertX);
@@ -3063,16 +4059,64 @@
             // 
             this.sliderMouseSensitivityY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderMouseSensitivityY.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderMouseSensitivityY.BackColor = System.Drawing.Color.Transparent;
+            this.sliderMouseSensitivityY.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderMouseSensitivityY.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderMouseSensitivityY.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderMouseSensitivityY.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderMouseSensitivityY.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderMouseSensitivityY.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderMouseSensitivityY.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderMouseSensitivityY.ForeColor = System.Drawing.Color.White;
+            this.sliderMouseSensitivityY.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.sliderMouseSensitivityY.Location = new System.Drawing.Point(9, 88);
-            this.sliderMouseSensitivityY.Maximum = 600;
-            this.sliderMouseSensitivityY.Minimum = 100;
+            this.sliderMouseSensitivityY.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
+            this.sliderMouseSensitivityY.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.sliderMouseSensitivityY.Name = "sliderMouseSensitivityY";
-            this.sliderMouseSensitivityY.Size = new System.Drawing.Size(325, 45);
-            this.sliderMouseSensitivityY.SmallChange = 300;
+            this.sliderMouseSensitivityY.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderMouseSensitivityY.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderMouseSensitivityY.ShowDivisionsText = false;
+            this.sliderMouseSensitivityY.ShowSmallScale = false;
+            this.sliderMouseSensitivityY.Size = new System.Drawing.Size(325, 20);
+            this.sliderMouseSensitivityY.SmallChange = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             this.sliderMouseSensitivityY.TabIndex = 4;
+            this.sliderMouseSensitivityY.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderMouseSensitivityY.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderMouseSensitivityY.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderMouseSensitivityY.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderMouseSensitivityY.TickAdd = 0F;
+            this.sliderMouseSensitivityY.TickColor = System.Drawing.Color.White;
+            this.sliderMouseSensitivityY.TickDivide = 0F;
             this.sliderMouseSensitivityY.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderMouseSensitivityY.Value = 300;
+            this.sliderMouseSensitivityY.Value = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             // 
             // numMouseSensitivityY
             // 
@@ -3116,16 +4160,64 @@
             // 
             this.sliderMouseSensitivityX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderMouseSensitivityX.BackColor = System.Drawing.SystemColors.Window;
+            this.sliderMouseSensitivityX.BackColor = System.Drawing.Color.Transparent;
+            this.sliderMouseSensitivityX.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderMouseSensitivityX.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderMouseSensitivityX.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderMouseSensitivityX.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderMouseSensitivityX.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderMouseSensitivityX.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderMouseSensitivityX.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderMouseSensitivityX.ForeColor = System.Drawing.Color.White;
+            this.sliderMouseSensitivityX.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.sliderMouseSensitivityX.Location = new System.Drawing.Point(9, 37);
-            this.sliderMouseSensitivityX.Maximum = 600;
-            this.sliderMouseSensitivityX.Minimum = 100;
+            this.sliderMouseSensitivityX.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
+            this.sliderMouseSensitivityX.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.sliderMouseSensitivityX.Name = "sliderMouseSensitivityX";
-            this.sliderMouseSensitivityX.Size = new System.Drawing.Size(325, 45);
-            this.sliderMouseSensitivityX.SmallChange = 300;
+            this.sliderMouseSensitivityX.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderMouseSensitivityX.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderMouseSensitivityX.ShowDivisionsText = false;
+            this.sliderMouseSensitivityX.ShowSmallScale = false;
+            this.sliderMouseSensitivityX.Size = new System.Drawing.Size(325, 20);
+            this.sliderMouseSensitivityX.SmallChange = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             this.sliderMouseSensitivityX.TabIndex = 1;
+            this.sliderMouseSensitivityX.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderMouseSensitivityX.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderMouseSensitivityX.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderMouseSensitivityX.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderMouseSensitivityX.TickAdd = 0F;
+            this.sliderMouseSensitivityX.TickColor = System.Drawing.Color.White;
+            this.sliderMouseSensitivityX.TickDivide = 0F;
             this.sliderMouseSensitivityX.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderMouseSensitivityX.Value = 300;
+            this.sliderMouseSensitivityX.Value = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             // 
             // numMouseSensitivityX
             // 
@@ -3183,6 +4275,7 @@
             // 
             // groupBoxCameraPosition
             // 
+            this.groupBoxCameraPosition.BackColor = System.Drawing.Color.White;
             this.groupBoxCameraPosition.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxCameraPosition.BorderWidth = 1;
             this.groupBoxCameraPosition.Controls.Add(this.groupBoxMeleeCombatCameraPosition);
@@ -3204,6 +4297,7 @@
             // 
             // groupBoxMeleeCombatCameraPosition
             // 
+            this.groupBoxMeleeCombatCameraPosition.BackColor = System.Drawing.Color.White;
             this.groupBoxMeleeCombatCameraPosition.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxMeleeCombatCameraPosition.BorderWidth = 1;
             this.groupBoxMeleeCombatCameraPosition.Controls.Add(this.numfOverShoulderMeleeCombatAddY);
@@ -3296,14 +4390,64 @@
             // 
             this.trackBarfOverShoulderMeleeCombatAddY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderMeleeCombatAddY.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatAddY.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarfOverShoulderMeleeCombatAddY.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarfOverShoulderMeleeCombatAddY.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarfOverShoulderMeleeCombatAddY.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarfOverShoulderMeleeCombatAddY.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderMeleeCombatAddY.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarfOverShoulderMeleeCombatAddY.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarfOverShoulderMeleeCombatAddY.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarfOverShoulderMeleeCombatAddY.ForeColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatAddY.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderMeleeCombatAddY.Location = new System.Drawing.Point(6, 134);
-            this.trackBarfOverShoulderMeleeCombatAddY.Maximum = 100;
-            this.trackBarfOverShoulderMeleeCombatAddY.Minimum = -100;
+            this.trackBarfOverShoulderMeleeCombatAddY.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderMeleeCombatAddY.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.trackBarfOverShoulderMeleeCombatAddY.Name = "trackBarfOverShoulderMeleeCombatAddY";
-            this.trackBarfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(296, 45);
+            this.trackBarfOverShoulderMeleeCombatAddY.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderMeleeCombatAddY.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderMeleeCombatAddY.ShowDivisionsText = false;
+            this.trackBarfOverShoulderMeleeCombatAddY.ShowSmallScale = false;
+            this.trackBarfOverShoulderMeleeCombatAddY.Size = new System.Drawing.Size(296, 20);
+            this.trackBarfOverShoulderMeleeCombatAddY.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderMeleeCombatAddY.TabIndex = 7;
+            this.trackBarfOverShoulderMeleeCombatAddY.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderMeleeCombatAddY.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderMeleeCombatAddY.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderMeleeCombatAddY.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderMeleeCombatAddY.TickAdd = 0F;
+            this.trackBarfOverShoulderMeleeCombatAddY.TickColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatAddY.TickDivide = 0F;
             this.trackBarfOverShoulderMeleeCombatAddY.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarfOverShoulderMeleeCombatAddY.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // labelfOverShoulderMeleeCombatPosX
             // 
@@ -3318,14 +4462,64 @@
             // 
             this.trackBarfOverShoulderMeleeCombatPosX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderMeleeCombatPosX.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatPosX.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarfOverShoulderMeleeCombatPosX.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarfOverShoulderMeleeCombatPosX.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarfOverShoulderMeleeCombatPosX.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarfOverShoulderMeleeCombatPosX.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderMeleeCombatPosX.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarfOverShoulderMeleeCombatPosX.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarfOverShoulderMeleeCombatPosX.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarfOverShoulderMeleeCombatPosX.ForeColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatPosX.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderMeleeCombatPosX.Location = new System.Drawing.Point(6, 84);
-            this.trackBarfOverShoulderMeleeCombatPosX.Maximum = 100;
-            this.trackBarfOverShoulderMeleeCombatPosX.Minimum = -100;
+            this.trackBarfOverShoulderMeleeCombatPosX.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderMeleeCombatPosX.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.trackBarfOverShoulderMeleeCombatPosX.Name = "trackBarfOverShoulderMeleeCombatPosX";
-            this.trackBarfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(296, 45);
+            this.trackBarfOverShoulderMeleeCombatPosX.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderMeleeCombatPosX.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderMeleeCombatPosX.ShowDivisionsText = false;
+            this.trackBarfOverShoulderMeleeCombatPosX.ShowSmallScale = false;
+            this.trackBarfOverShoulderMeleeCombatPosX.Size = new System.Drawing.Size(296, 20);
+            this.trackBarfOverShoulderMeleeCombatPosX.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderMeleeCombatPosX.TabIndex = 4;
+            this.trackBarfOverShoulderMeleeCombatPosX.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderMeleeCombatPosX.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderMeleeCombatPosX.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderMeleeCombatPosX.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderMeleeCombatPosX.TickAdd = 0F;
+            this.trackBarfOverShoulderMeleeCombatPosX.TickColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatPosX.TickDivide = 0F;
             this.trackBarfOverShoulderMeleeCombatPosX.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarfOverShoulderMeleeCombatPosX.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // labelfOverShoulderMeleeCombatPosZ
             // 
@@ -3340,18 +4534,69 @@
             // 
             this.trackBarfOverShoulderMeleeCombatPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderMeleeCombatPosZ.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatPosZ.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarfOverShoulderMeleeCombatPosZ.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarfOverShoulderMeleeCombatPosZ.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarfOverShoulderMeleeCombatPosZ.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarfOverShoulderMeleeCombatPosZ.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderMeleeCombatPosZ.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarfOverShoulderMeleeCombatPosZ.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarfOverShoulderMeleeCombatPosZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarfOverShoulderMeleeCombatPosZ.ForeColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatPosZ.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderMeleeCombatPosZ.Location = new System.Drawing.Point(6, 36);
-            this.trackBarfOverShoulderMeleeCombatPosZ.Maximum = 100;
-            this.trackBarfOverShoulderMeleeCombatPosZ.Minimum = -100;
+            this.trackBarfOverShoulderMeleeCombatPosZ.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderMeleeCombatPosZ.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.trackBarfOverShoulderMeleeCombatPosZ.Name = "trackBarfOverShoulderMeleeCombatPosZ";
             this.trackBarfOverShoulderMeleeCombatPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBarfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(296, 45);
+            this.trackBarfOverShoulderMeleeCombatPosZ.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderMeleeCombatPosZ.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderMeleeCombatPosZ.ShowDivisionsText = false;
+            this.trackBarfOverShoulderMeleeCombatPosZ.ShowSmallScale = false;
+            this.trackBarfOverShoulderMeleeCombatPosZ.Size = new System.Drawing.Size(296, 20);
+            this.trackBarfOverShoulderMeleeCombatPosZ.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderMeleeCombatPosZ.TabIndex = 1;
+            this.trackBarfOverShoulderMeleeCombatPosZ.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderMeleeCombatPosZ.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderMeleeCombatPosZ.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderMeleeCombatPosZ.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderMeleeCombatPosZ.TickAdd = 0F;
+            this.trackBarfOverShoulderMeleeCombatPosZ.TickColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderMeleeCombatPosZ.TickDivide = 0F;
             this.trackBarfOverShoulderMeleeCombatPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarfOverShoulderMeleeCombatPosZ.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // groupBoxCombatCameraPosition
             // 
+            this.groupBoxCombatCameraPosition.BackColor = System.Drawing.Color.White;
             this.groupBoxCombatCameraPosition.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxCombatCameraPosition.BorderWidth = 1;
             this.groupBoxCombatCameraPosition.Controls.Add(this.numfOverShoulderCombatAddY);
@@ -3444,14 +4689,64 @@
             // 
             this.trackBarfOverShoulderCombatAddY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderCombatAddY.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatAddY.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarfOverShoulderCombatAddY.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarfOverShoulderCombatAddY.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarfOverShoulderCombatAddY.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarfOverShoulderCombatAddY.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderCombatAddY.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarfOverShoulderCombatAddY.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarfOverShoulderCombatAddY.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarfOverShoulderCombatAddY.ForeColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatAddY.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderCombatAddY.Location = new System.Drawing.Point(6, 134);
-            this.trackBarfOverShoulderCombatAddY.Maximum = 100;
-            this.trackBarfOverShoulderCombatAddY.Minimum = -100;
+            this.trackBarfOverShoulderCombatAddY.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderCombatAddY.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.trackBarfOverShoulderCombatAddY.Name = "trackBarfOverShoulderCombatAddY";
-            this.trackBarfOverShoulderCombatAddY.Size = new System.Drawing.Size(296, 45);
+            this.trackBarfOverShoulderCombatAddY.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderCombatAddY.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderCombatAddY.ShowDivisionsText = false;
+            this.trackBarfOverShoulderCombatAddY.ShowSmallScale = false;
+            this.trackBarfOverShoulderCombatAddY.Size = new System.Drawing.Size(296, 20);
+            this.trackBarfOverShoulderCombatAddY.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderCombatAddY.TabIndex = 7;
+            this.trackBarfOverShoulderCombatAddY.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderCombatAddY.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderCombatAddY.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderCombatAddY.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderCombatAddY.TickAdd = 0F;
+            this.trackBarfOverShoulderCombatAddY.TickColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatAddY.TickDivide = 0F;
             this.trackBarfOverShoulderCombatAddY.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarfOverShoulderCombatAddY.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // labelfOverShoulderCombatPosX
             // 
@@ -3466,14 +4761,64 @@
             // 
             this.trackBarfOverShoulderCombatPosX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderCombatPosX.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatPosX.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarfOverShoulderCombatPosX.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarfOverShoulderCombatPosX.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarfOverShoulderCombatPosX.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarfOverShoulderCombatPosX.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderCombatPosX.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarfOverShoulderCombatPosX.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarfOverShoulderCombatPosX.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarfOverShoulderCombatPosX.ForeColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatPosX.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderCombatPosX.Location = new System.Drawing.Point(6, 84);
-            this.trackBarfOverShoulderCombatPosX.Maximum = 100;
-            this.trackBarfOverShoulderCombatPosX.Minimum = -100;
+            this.trackBarfOverShoulderCombatPosX.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderCombatPosX.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.trackBarfOverShoulderCombatPosX.Name = "trackBarfOverShoulderCombatPosX";
-            this.trackBarfOverShoulderCombatPosX.Size = new System.Drawing.Size(296, 45);
+            this.trackBarfOverShoulderCombatPosX.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderCombatPosX.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderCombatPosX.ShowDivisionsText = false;
+            this.trackBarfOverShoulderCombatPosX.ShowSmallScale = false;
+            this.trackBarfOverShoulderCombatPosX.Size = new System.Drawing.Size(296, 20);
+            this.trackBarfOverShoulderCombatPosX.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderCombatPosX.TabIndex = 4;
+            this.trackBarfOverShoulderCombatPosX.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderCombatPosX.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderCombatPosX.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderCombatPosX.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderCombatPosX.TickAdd = 0F;
+            this.trackBarfOverShoulderCombatPosX.TickColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatPosX.TickDivide = 0F;
             this.trackBarfOverShoulderCombatPosX.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarfOverShoulderCombatPosX.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // labelfOverShoulderCombatPosZ
             // 
@@ -3488,15 +4833,65 @@
             // 
             this.trackBarfOverShoulderCombatPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderCombatPosZ.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatPosZ.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarfOverShoulderCombatPosZ.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarfOverShoulderCombatPosZ.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarfOverShoulderCombatPosZ.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarfOverShoulderCombatPosZ.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderCombatPosZ.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarfOverShoulderCombatPosZ.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarfOverShoulderCombatPosZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarfOverShoulderCombatPosZ.ForeColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatPosZ.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderCombatPosZ.Location = new System.Drawing.Point(6, 36);
-            this.trackBarfOverShoulderCombatPosZ.Maximum = 100;
-            this.trackBarfOverShoulderCombatPosZ.Minimum = -100;
+            this.trackBarfOverShoulderCombatPosZ.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderCombatPosZ.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.trackBarfOverShoulderCombatPosZ.Name = "trackBarfOverShoulderCombatPosZ";
             this.trackBarfOverShoulderCombatPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBarfOverShoulderCombatPosZ.Size = new System.Drawing.Size(296, 45);
+            this.trackBarfOverShoulderCombatPosZ.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderCombatPosZ.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderCombatPosZ.ShowDivisionsText = false;
+            this.trackBarfOverShoulderCombatPosZ.ShowSmallScale = false;
+            this.trackBarfOverShoulderCombatPosZ.Size = new System.Drawing.Size(296, 20);
+            this.trackBarfOverShoulderCombatPosZ.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderCombatPosZ.TabIndex = 1;
+            this.trackBarfOverShoulderCombatPosZ.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderCombatPosZ.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderCombatPosZ.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderCombatPosZ.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderCombatPosZ.TickAdd = 0F;
+            this.trackBarfOverShoulderCombatPosZ.TickColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderCombatPosZ.TickDivide = 0F;
             this.trackBarfOverShoulderCombatPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarfOverShoulderCombatPosZ.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // buttonCameraPositionReset
             // 
@@ -3520,6 +4915,7 @@
             // 
             // groupBoxUnarmedCameraPosition
             // 
+            this.groupBoxUnarmedCameraPosition.BackColor = System.Drawing.Color.White;
             this.groupBoxUnarmedCameraPosition.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxUnarmedCameraPosition.BorderWidth = 1;
             this.groupBoxUnarmedCameraPosition.Controls.Add(this.numfOverShoulderPosX);
@@ -3590,14 +4986,64 @@
             // 
             this.trackBarfOverShoulderPosX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderPosX.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderPosX.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarfOverShoulderPosX.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarfOverShoulderPosX.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarfOverShoulderPosX.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarfOverShoulderPosX.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderPosX.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarfOverShoulderPosX.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarfOverShoulderPosX.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarfOverShoulderPosX.ForeColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderPosX.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderPosX.Location = new System.Drawing.Point(6, 84);
-            this.trackBarfOverShoulderPosX.Maximum = 100;
-            this.trackBarfOverShoulderPosX.Minimum = -100;
+            this.trackBarfOverShoulderPosX.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderPosX.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.trackBarfOverShoulderPosX.Name = "trackBarfOverShoulderPosX";
-            this.trackBarfOverShoulderPosX.Size = new System.Drawing.Size(296, 45);
+            this.trackBarfOverShoulderPosX.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderPosX.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderPosX.ShowDivisionsText = false;
+            this.trackBarfOverShoulderPosX.ShowSmallScale = false;
+            this.trackBarfOverShoulderPosX.Size = new System.Drawing.Size(296, 20);
+            this.trackBarfOverShoulderPosX.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderPosX.TabIndex = 4;
+            this.trackBarfOverShoulderPosX.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderPosX.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderPosX.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderPosX.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderPosX.TickAdd = 0F;
+            this.trackBarfOverShoulderPosX.TickColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderPosX.TickDivide = 0F;
             this.trackBarfOverShoulderPosX.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarfOverShoulderPosX.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // labelfOverShoulderPosZ
             // 
@@ -3612,18 +5058,69 @@
             // 
             this.trackBarfOverShoulderPosZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarfOverShoulderPosZ.BackColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderPosZ.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarfOverShoulderPosZ.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarfOverShoulderPosZ.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarfOverShoulderPosZ.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarfOverShoulderPosZ.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderPosZ.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarfOverShoulderPosZ.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarfOverShoulderPosZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarfOverShoulderPosZ.ForeColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderPosZ.LargeChange = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderPosZ.Location = new System.Drawing.Point(6, 36);
-            this.trackBarfOverShoulderPosZ.Maximum = 100;
-            this.trackBarfOverShoulderPosZ.Minimum = -100;
+            this.trackBarfOverShoulderPosZ.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderPosZ.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.trackBarfOverShoulderPosZ.Name = "trackBarfOverShoulderPosZ";
             this.trackBarfOverShoulderPosZ.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBarfOverShoulderPosZ.Size = new System.Drawing.Size(296, 45);
+            this.trackBarfOverShoulderPosZ.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderPosZ.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarfOverShoulderPosZ.ShowDivisionsText = false;
+            this.trackBarfOverShoulderPosZ.ShowSmallScale = false;
+            this.trackBarfOverShoulderPosZ.Size = new System.Drawing.Size(296, 20);
+            this.trackBarfOverShoulderPosZ.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.trackBarfOverShoulderPosZ.TabIndex = 1;
+            this.trackBarfOverShoulderPosZ.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderPosZ.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarfOverShoulderPosZ.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderPosZ.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarfOverShoulderPosZ.TickAdd = 0F;
+            this.trackBarfOverShoulderPosZ.TickColor = System.Drawing.Color.White;
+            this.trackBarfOverShoulderPosZ.TickDivide = 0F;
             this.trackBarfOverShoulderPosZ.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarfOverShoulderPosZ.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // groupBoxFOVMore
             // 
+            this.groupBoxFOVMore.BackColor = System.Drawing.Color.White;
             this.groupBoxFOVMore.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxFOVMore.BorderWidth = 1;
             this.groupBoxFOVMore.Controls.Add(this.labelADSFOV);
@@ -3679,6 +5176,7 @@
             // 
             // groupBoxSelfieCamera
             // 
+            this.groupBoxSelfieCamera.BackColor = System.Drawing.Color.White;
             this.groupBoxSelfieCamera.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxSelfieCamera.BorderWidth = 1;
             this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeRange);
@@ -3704,17 +5202,64 @@
             // 
             // trackBarPhotomodeRange
             // 
-            this.trackBarPhotomodeRange.BackColor = System.Drawing.Color.White;
-            this.trackBarPhotomodeRange.LargeChange = 100;
+            this.trackBarPhotomodeRange.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarPhotomodeRange.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarPhotomodeRange.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarPhotomodeRange.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarPhotomodeRange.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarPhotomodeRange.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarPhotomodeRange.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarPhotomodeRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarPhotomodeRange.ForeColor = System.Drawing.Color.White;
+            this.trackBarPhotomodeRange.LargeChange = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.trackBarPhotomodeRange.Location = new System.Drawing.Point(131, 85);
-            this.trackBarPhotomodeRange.Maximum = 5000;
-            this.trackBarPhotomodeRange.Minimum = 500;
+            this.trackBarPhotomodeRange.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.trackBarPhotomodeRange.Minimum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.trackBarPhotomodeRange.Name = "trackBarPhotomodeRange";
-            this.trackBarPhotomodeRange.Size = new System.Drawing.Size(175, 45);
-            this.trackBarPhotomodeRange.SmallChange = 20;
+            this.trackBarPhotomodeRange.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarPhotomodeRange.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarPhotomodeRange.ShowDivisionsText = false;
+            this.trackBarPhotomodeRange.ShowSmallScale = false;
+            this.trackBarPhotomodeRange.Size = new System.Drawing.Size(175, 20);
+            this.trackBarPhotomodeRange.SmallChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.trackBarPhotomodeRange.TabIndex = 7;
+            this.trackBarPhotomodeRange.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarPhotomodeRange.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarPhotomodeRange.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarPhotomodeRange.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarPhotomodeRange.TickAdd = 0F;
+            this.trackBarPhotomodeRange.TickColor = System.Drawing.Color.White;
+            this.trackBarPhotomodeRange.TickDivide = 0F;
             this.trackBarPhotomodeRange.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPhotomodeRange.Value = 500;
+            this.trackBarPhotomodeRange.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             // 
             // numericUpDownPhotomodeRotationSpeed
             // 
@@ -3742,17 +5287,64 @@
             // 
             // trackBarPhotomodeRotationSpeed
             // 
-            this.trackBarPhotomodeRotationSpeed.BackColor = System.Drawing.Color.White;
-            this.trackBarPhotomodeRotationSpeed.LargeChange = 50;
+            this.trackBarPhotomodeRotationSpeed.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarPhotomodeRotationSpeed.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarPhotomodeRotationSpeed.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarPhotomodeRotationSpeed.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarPhotomodeRotationSpeed.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarPhotomodeRotationSpeed.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarPhotomodeRotationSpeed.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarPhotomodeRotationSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarPhotomodeRotationSpeed.ForeColor = System.Drawing.Color.White;
+            this.trackBarPhotomodeRotationSpeed.LargeChange = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.trackBarPhotomodeRotationSpeed.Location = new System.Drawing.Point(131, 51);
-            this.trackBarPhotomodeRotationSpeed.Maximum = 50;
-            this.trackBarPhotomodeRotationSpeed.Minimum = 5;
+            this.trackBarPhotomodeRotationSpeed.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.trackBarPhotomodeRotationSpeed.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.trackBarPhotomodeRotationSpeed.Name = "trackBarPhotomodeRotationSpeed";
-            this.trackBarPhotomodeRotationSpeed.Size = new System.Drawing.Size(175, 45);
-            this.trackBarPhotomodeRotationSpeed.SmallChange = 10;
+            this.trackBarPhotomodeRotationSpeed.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarPhotomodeRotationSpeed.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarPhotomodeRotationSpeed.ShowDivisionsText = false;
+            this.trackBarPhotomodeRotationSpeed.ShowSmallScale = false;
+            this.trackBarPhotomodeRotationSpeed.Size = new System.Drawing.Size(175, 20);
+            this.trackBarPhotomodeRotationSpeed.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.trackBarPhotomodeRotationSpeed.TabIndex = 4;
+            this.trackBarPhotomodeRotationSpeed.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarPhotomodeRotationSpeed.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarPhotomodeRotationSpeed.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarPhotomodeRotationSpeed.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarPhotomodeRotationSpeed.TickAdd = 0F;
+            this.trackBarPhotomodeRotationSpeed.TickColor = System.Drawing.Color.White;
+            this.trackBarPhotomodeRotationSpeed.TickDivide = 0F;
             this.trackBarPhotomodeRotationSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPhotomodeRotationSpeed.Value = 15;
+            this.trackBarPhotomodeRotationSpeed.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
             // 
             // labelPhotomodeRotationSpeed
             // 
@@ -3821,17 +5413,64 @@
             // 
             // trackBarPhotomodeTranslationSpeed
             // 
-            this.trackBarPhotomodeTranslationSpeed.BackColor = System.Drawing.Color.White;
-            this.trackBarPhotomodeTranslationSpeed.LargeChange = 50;
+            this.trackBarPhotomodeTranslationSpeed.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarPhotomodeTranslationSpeed.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarPhotomodeTranslationSpeed.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarPhotomodeTranslationSpeed.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarPhotomodeTranslationSpeed.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarPhotomodeTranslationSpeed.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarPhotomodeTranslationSpeed.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarPhotomodeTranslationSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarPhotomodeTranslationSpeed.ForeColor = System.Drawing.Color.White;
+            this.trackBarPhotomodeTranslationSpeed.LargeChange = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.trackBarPhotomodeTranslationSpeed.Location = new System.Drawing.Point(131, 21);
-            this.trackBarPhotomodeTranslationSpeed.Maximum = 200;
-            this.trackBarPhotomodeTranslationSpeed.Minimum = 5;
+            this.trackBarPhotomodeTranslationSpeed.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.trackBarPhotomodeTranslationSpeed.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.trackBarPhotomodeTranslationSpeed.Name = "trackBarPhotomodeTranslationSpeed";
-            this.trackBarPhotomodeTranslationSpeed.Size = new System.Drawing.Size(175, 45);
-            this.trackBarPhotomodeTranslationSpeed.SmallChange = 10;
+            this.trackBarPhotomodeTranslationSpeed.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarPhotomodeTranslationSpeed.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarPhotomodeTranslationSpeed.ShowDivisionsText = false;
+            this.trackBarPhotomodeTranslationSpeed.ShowSmallScale = false;
+            this.trackBarPhotomodeTranslationSpeed.Size = new System.Drawing.Size(175, 20);
+            this.trackBarPhotomodeTranslationSpeed.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.trackBarPhotomodeTranslationSpeed.TabIndex = 1;
+            this.trackBarPhotomodeTranslationSpeed.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarPhotomodeTranslationSpeed.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarPhotomodeTranslationSpeed.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarPhotomodeTranslationSpeed.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarPhotomodeTranslationSpeed.TickAdd = 0F;
+            this.trackBarPhotomodeTranslationSpeed.TickColor = System.Drawing.Color.White;
+            this.trackBarPhotomodeTranslationSpeed.TickDivide = 0F;
             this.trackBarPhotomodeTranslationSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPhotomodeTranslationSpeed.Value = 25;
+            this.trackBarPhotomodeTranslationSpeed.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
             // 
             // labelPhotomodeTranslationSpeed
             // 
@@ -3844,6 +5483,7 @@
             // 
             // groupBoxIdleCamera
             // 
+            this.groupBoxIdleCamera.BackColor = System.Drawing.Color.White;
             this.groupBoxIdleCamera.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxIdleCamera.BorderWidth = 1;
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxForceVanityMode);
@@ -3886,6 +5526,7 @@
             // 
             // groupBoxCameraDistance
             // 
+            this.groupBoxCameraDistance.BackColor = System.Drawing.Color.White;
             this.groupBoxCameraDistance.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxCameraDistance.BorderWidth = 1;
             this.groupBoxCameraDistance.Controls.Add(this.numfPitchZoomOutMaxDist);
@@ -3934,16 +5575,64 @@
             // 
             // sliderfPitchZoomOutMaxDist
             // 
-            this.sliderfPitchZoomOutMaxDist.BackColor = System.Drawing.Color.White;
-            this.sliderfPitchZoomOutMaxDist.LargeChange = 50;
-            this.sliderfPitchZoomOutMaxDist.Location = new System.Drawing.Point(131, 80);
-            this.sliderfPitchZoomOutMaxDist.Maximum = 200;
+            this.sliderfPitchZoomOutMaxDist.BackColor = System.Drawing.Color.Transparent;
+            this.sliderfPitchZoomOutMaxDist.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderfPitchZoomOutMaxDist.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderfPitchZoomOutMaxDist.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderfPitchZoomOutMaxDist.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderfPitchZoomOutMaxDist.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderfPitchZoomOutMaxDist.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderfPitchZoomOutMaxDist.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderfPitchZoomOutMaxDist.ForeColor = System.Drawing.Color.White;
+            this.sliderfPitchZoomOutMaxDist.LargeChange = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.sliderfPitchZoomOutMaxDist.Location = new System.Drawing.Point(131, 78);
+            this.sliderfPitchZoomOutMaxDist.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.sliderfPitchZoomOutMaxDist.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderfPitchZoomOutMaxDist.Name = "sliderfPitchZoomOutMaxDist";
-            this.sliderfPitchZoomOutMaxDist.Size = new System.Drawing.Size(175, 45);
-            this.sliderfPitchZoomOutMaxDist.SmallChange = 10;
+            this.sliderfPitchZoomOutMaxDist.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderfPitchZoomOutMaxDist.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderfPitchZoomOutMaxDist.ShowDivisionsText = false;
+            this.sliderfPitchZoomOutMaxDist.ShowSmallScale = false;
+            this.sliderfPitchZoomOutMaxDist.Size = new System.Drawing.Size(175, 20);
+            this.sliderfPitchZoomOutMaxDist.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderfPitchZoomOutMaxDist.TabIndex = 8;
+            this.sliderfPitchZoomOutMaxDist.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderfPitchZoomOutMaxDist.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderfPitchZoomOutMaxDist.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderfPitchZoomOutMaxDist.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderfPitchZoomOutMaxDist.TickAdd = 0F;
+            this.sliderfPitchZoomOutMaxDist.TickColor = System.Drawing.Color.White;
+            this.sliderfPitchZoomOutMaxDist.TickDivide = 0F;
             this.sliderfPitchZoomOutMaxDist.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderfPitchZoomOutMaxDist.Value = 100;
+            this.sliderfPitchZoomOutMaxDist.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // labelPitchZoomOutMaxDist
             // 
@@ -3997,17 +5686,64 @@
             // 
             // sliderCameraDistanceMaximum
             // 
-            this.sliderCameraDistanceMaximum.BackColor = System.Drawing.Color.White;
-            this.sliderCameraDistanceMaximum.LargeChange = 200;
+            this.sliderCameraDistanceMaximum.BackColor = System.Drawing.Color.Transparent;
+            this.sliderCameraDistanceMaximum.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderCameraDistanceMaximum.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderCameraDistanceMaximum.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderCameraDistanceMaximum.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderCameraDistanceMaximum.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderCameraDistanceMaximum.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderCameraDistanceMaximum.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderCameraDistanceMaximum.ForeColor = System.Drawing.Color.White;
+            this.sliderCameraDistanceMaximum.LargeChange = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.sliderCameraDistanceMaximum.Location = new System.Drawing.Point(131, 49);
-            this.sliderCameraDistanceMaximum.Maximum = 500;
-            this.sliderCameraDistanceMaximum.Minimum = 100;
+            this.sliderCameraDistanceMaximum.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.sliderCameraDistanceMaximum.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.sliderCameraDistanceMaximum.Name = "sliderCameraDistanceMaximum";
-            this.sliderCameraDistanceMaximum.Size = new System.Drawing.Size(175, 45);
-            this.sliderCameraDistanceMaximum.SmallChange = 50;
+            this.sliderCameraDistanceMaximum.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderCameraDistanceMaximum.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderCameraDistanceMaximum.ShowDivisionsText = false;
+            this.sliderCameraDistanceMaximum.ShowSmallScale = false;
+            this.sliderCameraDistanceMaximum.Size = new System.Drawing.Size(175, 20);
+            this.sliderCameraDistanceMaximum.SmallChange = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.sliderCameraDistanceMaximum.TabIndex = 4;
+            this.sliderCameraDistanceMaximum.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderCameraDistanceMaximum.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderCameraDistanceMaximum.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderCameraDistanceMaximum.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderCameraDistanceMaximum.TickAdd = 0F;
+            this.sliderCameraDistanceMaximum.TickColor = System.Drawing.Color.White;
+            this.sliderCameraDistanceMaximum.TickDivide = 0F;
             this.sliderCameraDistanceMaximum.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderCameraDistanceMaximum.Value = 150;
+            this.sliderCameraDistanceMaximum.Value = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
             // 
             // labelCameraDistanceMaximum
             // 
@@ -4029,18 +5765,68 @@
             // 
             // sliderCameraDistanceMinimum
             // 
-            this.sliderCameraDistanceMinimum.BackColor = System.Drawing.Color.White;
-            this.sliderCameraDistanceMinimum.LargeChange = 20;
-            this.sliderCameraDistanceMinimum.Location = new System.Drawing.Point(131, 19);
-            this.sliderCameraDistanceMinimum.Maximum = 500;
+            this.sliderCameraDistanceMinimum.BackColor = System.Drawing.Color.Transparent;
+            this.sliderCameraDistanceMinimum.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderCameraDistanceMinimum.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderCameraDistanceMinimum.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderCameraDistanceMinimum.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderCameraDistanceMinimum.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderCameraDistanceMinimum.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderCameraDistanceMinimum.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderCameraDistanceMinimum.ForeColor = System.Drawing.Color.White;
+            this.sliderCameraDistanceMinimum.LargeChange = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.sliderCameraDistanceMinimum.Location = new System.Drawing.Point(131, 20);
+            this.sliderCameraDistanceMinimum.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.sliderCameraDistanceMinimum.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.sliderCameraDistanceMinimum.Name = "sliderCameraDistanceMinimum";
-            this.sliderCameraDistanceMinimum.Size = new System.Drawing.Size(175, 45);
-            this.sliderCameraDistanceMinimum.SmallChange = 10;
+            this.sliderCameraDistanceMinimum.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderCameraDistanceMinimum.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderCameraDistanceMinimum.ShowDivisionsText = false;
+            this.sliderCameraDistanceMinimum.ShowSmallScale = false;
+            this.sliderCameraDistanceMinimum.Size = new System.Drawing.Size(175, 20);
+            this.sliderCameraDistanceMinimum.SmallChange = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.sliderCameraDistanceMinimum.TabIndex = 1;
+            this.sliderCameraDistanceMinimum.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderCameraDistanceMinimum.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderCameraDistanceMinimum.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderCameraDistanceMinimum.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderCameraDistanceMinimum.TickAdd = 0F;
+            this.sliderCameraDistanceMinimum.TickColor = System.Drawing.Color.White;
+            this.sliderCameraDistanceMinimum.TickDivide = 0F;
             this.sliderCameraDistanceMinimum.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderCameraDistanceMinimum.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // groupBoxFieldOfView
             // 
+            this.groupBoxFieldOfView.BackColor = System.Drawing.Color.White;
             this.groupBoxFieldOfView.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxFieldOfView.BorderWidth = 1;
             this.groupBoxFieldOfView.Controls.Add(this.pictureBoxFOVPreview);
@@ -4075,16 +5861,64 @@
             // 
             this.sliderFOV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderFOV.BackColor = System.Drawing.Color.White;
-            this.sliderFOV.LargeChange = 1;
+            this.sliderFOV.BackColor = System.Drawing.Color.Transparent;
+            this.sliderFOV.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderFOV.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderFOV.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderFOV.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderFOV.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderFOV.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderFOV.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderFOV.ForeColor = System.Drawing.Color.White;
+            this.sliderFOV.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderFOV.Location = new System.Drawing.Point(6, 19);
-            this.sliderFOV.Maximum = 24;
-            this.sliderFOV.Minimum = 14;
+            this.sliderFOV.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.sliderFOV.Minimum = new decimal(new int[] {
+            14,
+            0,
+            0,
+            0});
             this.sliderFOV.Name = "sliderFOV";
-            this.sliderFOV.Size = new System.Drawing.Size(533, 45);
+            this.sliderFOV.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderFOV.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderFOV.ShowDivisionsText = false;
+            this.sliderFOV.ShowSmallScale = false;
+            this.sliderFOV.Size = new System.Drawing.Size(533, 20);
+            this.sliderFOV.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderFOV.TabIndex = 0;
+            this.sliderFOV.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderFOV.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderFOV.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderFOV.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderFOV.TickAdd = 0F;
+            this.sliderFOV.TickColor = System.Drawing.Color.White;
+            this.sliderFOV.TickDivide = 0F;
             this.sliderFOV.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.sliderFOV.Value = 24;
+            this.sliderFOV.Value = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
             // 
             // numFOV
             // 
@@ -4130,6 +5964,7 @@
             // 
             // groupBoxLoginProfiles
             // 
+            this.groupBoxLoginProfiles.BackColor = System.Drawing.Color.White;
             this.groupBoxLoginProfiles.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxLoginProfiles.BorderWidth = 1;
             this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccountNone);
@@ -4350,6 +6185,7 @@
             // 
             // groupBoxLogin
             // 
+            this.groupBoxLogin.BackColor = System.Drawing.Color.White;
             this.groupBoxLogin.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxLogin.BorderWidth = 1;
             this.groupBoxLogin.Controls.Add(this.richTextBoxCredentialsExplanation);
@@ -4571,9 +6407,7 @@
             this.groupBoxHUD.PerformLayout();
             this.groupBoxFloatingQuestMarkers.ResumeLayout(false);
             this.groupBoxFloatingQuestMarkers.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderFloatingQuestMarkersDistance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFloatingQuestMarkersDistance)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderHUDOpacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHUDOpacity)).EndInit();
             this.groupBoxLoading.ResumeLayout(false);
             this.groupBoxLoading.PerformLayout();
@@ -4587,34 +6421,26 @@
             this.groupBoxDOF.ResumeLayout(false);
             this.groupBoxDOF.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDOFStrength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderDOFStrength)).EndInit();
             this.groupBoxTextures.ResumeLayout(false);
             this.groupBoxTextures.PerformLayout();
             this.groupBoxGraphicEffects.ResumeLayout(false);
             this.groupBoxGraphicEffects.PerformLayout();
             this.groupBoxTAASharpening.ResumeLayout(false);
             this.groupBoxTAASharpening.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderTAAPostSharpen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTAAPostSharpen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderTAAPostOverlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTAAPostOverlay)).EndInit();
             this.groupBoxGrass.ResumeLayout(false);
             this.groupBoxGrass.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGrassFadeDistance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGrassFadeDistance)).EndInit();
             this.groupBoxLOD.ResumeLayout(false);
             this.groupBoxLOD.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderLODActors)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderLODItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLODActors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLODItems)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderLODObjects)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLODObjects)).EndInit();
             this.groupBoxLighting.ResumeLayout(false);
             this.groupBoxLighting.PerformLayout();
             this.groupBoxShadows.ResumeLayout(false);
             this.groupBoxShadows.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderShadowDistance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numShadowDistance)).EndInit();
             this.groupBoxWater.ResumeLayout(false);
             this.groupBoxWater.PerformLayout();
@@ -4631,17 +6457,8 @@
             this.groupBoxVoice.PerformLayout();
             this.groupBoxAudioVolume.ResumeLayout(false);
             this.groupBoxAudioVolume.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudioChat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderVolumeMaster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numVolumeMaster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAudioChat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderAudiofVal0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAudiofVal1)).EndInit();
@@ -4652,15 +6469,11 @@
             this.tabPageControls.ResumeLayout(false);
             this.groupBoxGamepad.ResumeLayout(false);
             this.groupBoxGamepad.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGamepadSensitivityX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGamepadSensitivityX)).EndInit();
             this.groupBoxMouse.ResumeLayout(false);
             this.groupBoxMouse.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivityY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderMouseSensitivityX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityX)).EndInit();
             this.tabPageCamera.ResumeLayout(false);
             this.groupBoxCameraPosition.ResumeLayout(false);
@@ -4670,48 +6483,32 @@
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderMeleeCombatAddY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderMeleeCombatPosX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderMeleeCombatPosZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderMeleeCombatAddY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderMeleeCombatPosX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderMeleeCombatPosZ)).EndInit();
             this.groupBoxCombatCameraPosition.ResumeLayout(false);
             this.groupBoxCombatCameraPosition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderCombatAddY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderCombatPosX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderCombatPosZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderCombatAddY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderCombatPosX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderCombatPosZ)).EndInit();
             this.groupBoxUnarmedCameraPosition.ResumeLayout(false);
             this.groupBoxUnarmedCameraPosition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderPosX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderPosZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderPosX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarfOverShoulderPosZ)).EndInit();
             this.groupBoxFOVMore.ResumeLayout(false);
             this.groupBoxFOVMore.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numADSFOV)).EndInit();
             this.groupBoxSelfieCamera.ResumeLayout(false);
             this.groupBoxSelfieCamera.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRotationSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeRotationSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhotomodeTranslationSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPhotomodeTranslationSpeed)).EndInit();
             this.groupBoxIdleCamera.ResumeLayout(false);
             this.groupBoxIdleCamera.PerformLayout();
             this.groupBoxCameraDistance.ResumeLayout(false);
             this.groupBoxCameraDistance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfPitchZoomOutMaxDist)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderfPitchZoomOutMaxDist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMaximum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCameraDistanceMinimum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMaximum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderCameraDistanceMinimum)).EndInit();
             this.groupBoxFieldOfView.ResumeLayout(false);
-            this.groupBoxFieldOfView.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFOVPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderFOV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFOV)).EndInit();
             this.tabPageLogin.ResumeLayout(false);
             this.groupBoxLoginProfiles.ResumeLayout(false);
@@ -4738,7 +6535,7 @@
         private Fo76ini.Controls.StyledGroupBox groupBoxMouse;
         private System.Windows.Forms.CheckBox checkBoxMouseInvertX;
         private System.Windows.Forms.CheckBox checkBoxMouseInvertY;
-        private System.Windows.Forms.TrackBar sliderMouseSensitivityX;
+        private ColorSlider.ColorSlider sliderMouseSensitivityX;
         private System.Windows.Forms.CheckBox checkBoxFixAimSensitivity;
         private System.Windows.Forms.NumericUpDown numMouseSensitivityX;
         private System.Windows.Forms.Label labelMouseSensitivityX;
@@ -4783,11 +6580,11 @@
         private System.Windows.Forms.NumericUpDown numFloatingQuestMarkersDistance;
         private System.Windows.Forms.Label labelFloatingQuestMarkersDistance;
         private System.Windows.Forms.Label labelShowActiveEffectsOnHUD;
-        private System.Windows.Forms.TrackBar sliderFloatingQuestMarkersDistance;
+        private ColorSlider.ColorSlider sliderFloatingQuestMarkersDistance;
         private System.Windows.Forms.CheckBox checkBoxShowCrosshair;
         private System.Windows.Forms.CheckBox checkBoxShowCompass;
         private System.Windows.Forms.NumericUpDown numHUDOpacity;
-        private System.Windows.Forms.TrackBar sliderHUDOpacity;
+        private ColorSlider.ColorSlider sliderHUDOpacity;
         private System.Windows.Forms.Label labelHUDOpacity;
         private System.Windows.Forms.ComboBox comboBoxShowActiveEffectsOnHUD;
         private Fo76ini.Controls.StyledGroupBox groupBoxQuests;
@@ -4812,18 +6609,18 @@
         private System.Windows.Forms.Label labelDisplayMode;
         private System.Windows.Forms.Label labelCustomResolutionSpacer;
         private Fo76ini.Controls.StyledGroupBox groupBoxAudioVolume;
-        private System.Windows.Forms.TrackBar sliderAudioChat;
-        private System.Windows.Forms.TrackBar sliderAudiofVal6;
-        private System.Windows.Forms.TrackBar sliderAudiofVal5;
-        private System.Windows.Forms.TrackBar sliderAudiofVal4;
-        private System.Windows.Forms.TrackBar sliderAudiofVal3;
-        private System.Windows.Forms.TrackBar sliderAudiofVal2;
-        private System.Windows.Forms.TrackBar sliderAudiofVal1;
+        private ColorSlider.ColorSlider sliderAudioChat;
+        private ColorSlider.ColorSlider sliderAudiofVal6;
+        private ColorSlider.ColorSlider sliderAudiofVal5;
+        private ColorSlider.ColorSlider sliderAudiofVal4;
+        private ColorSlider.ColorSlider sliderAudiofVal3;
+        private ColorSlider.ColorSlider sliderAudiofVal2;
+        private ColorSlider.ColorSlider sliderAudiofVal1;
         private System.Windows.Forms.Label labelVolumeMaster;
-        private System.Windows.Forms.TrackBar sliderVolumeMaster;
+        private ColorSlider.ColorSlider sliderVolumeMaster;
         private System.Windows.Forms.NumericUpDown numVolumeMaster;
         private System.Windows.Forms.NumericUpDown numAudioChat;
-        private System.Windows.Forms.TrackBar sliderAudiofVal0;
+        private ColorSlider.ColorSlider sliderAudiofVal0;
         private System.Windows.Forms.Label labelAudioChat;
         private System.Windows.Forms.Label labelAudiofVal0;
         private System.Windows.Forms.NumericUpDown numAudiofVal0;
@@ -4850,26 +6647,26 @@
         private Fo76ini.Controls.StyledGroupBox groupBoxGraphicEffects;
         private System.Windows.Forms.CheckBox checkBoxDisableGore;
         private Fo76ini.Controls.StyledGroupBox groupBoxTAASharpening;
-        private System.Windows.Forms.TrackBar sliderTAAPostSharpen;
+        private ColorSlider.ColorSlider sliderTAAPostSharpen;
         private System.Windows.Forms.Label labelTAAPostSharpen;
         private System.Windows.Forms.NumericUpDown numTAAPostSharpen;
-        private System.Windows.Forms.TrackBar sliderTAAPostOverlay;
+        private ColorSlider.ColorSlider sliderTAAPostOverlay;
         private System.Windows.Forms.NumericUpDown numTAAPostOverlay;
         private System.Windows.Forms.Label labelTAAPostOverlay;
         private System.Windows.Forms.Label labelAntiAliasing;
         private Fo76ini.Controls.StyledGroupBox groupBoxGrass;
-        private System.Windows.Forms.TrackBar sliderGrassFadeDistance;
+        private ColorSlider.ColorSlider sliderGrassFadeDistance;
         private System.Windows.Forms.NumericUpDown numGrassFadeDistance;
         private System.Windows.Forms.Label labelGrassFadeDistance;
         private System.Windows.Forms.CheckBox checkBoxGrass;
         private System.Windows.Forms.ComboBox comboBoxAntiAliasing;
         private Fo76ini.Controls.StyledGroupBox groupBoxLOD;
-        private System.Windows.Forms.TrackBar sliderLODActors;
+        private ColorSlider.ColorSlider sliderLODActors;
         private System.Windows.Forms.Label labelLODFadeDistance;
-        private System.Windows.Forms.TrackBar sliderLODItems;
+        private ColorSlider.ColorSlider sliderLODItems;
         private System.Windows.Forms.NumericUpDown numLODActors;
         private System.Windows.Forms.NumericUpDown numLODItems;
-        private System.Windows.Forms.TrackBar sliderLODObjects;
+        private ColorSlider.ColorSlider sliderLODObjects;
         private System.Windows.Forms.NumericUpDown numLODObjects;
         private System.Windows.Forms.Label labelLODActors;
         private System.Windows.Forms.Label labelLODItems;
@@ -4879,7 +6676,7 @@
         private System.Windows.Forms.CheckBox checkBoxGodrays;
         private System.Windows.Forms.Label labelAnisotropicFiltering;
         private Fo76ini.Controls.StyledGroupBox groupBoxShadows;
-        private System.Windows.Forms.TrackBar sliderShadowDistance;
+        private ColorSlider.ColorSlider sliderShadowDistance;
         private System.Windows.Forms.ComboBox comboBoxShadowBlurriness;
         private System.Windows.Forms.Label labelShadowBlurriness;
         private System.Windows.Forms.NumericUpDown numShadowDistance;
@@ -4896,67 +6693,67 @@
         private System.Windows.Forms.CheckBox checkBoxLensFlare;
         private Fo76ini.Controls.StyledGroupBox groupBoxFieldOfView;
         private System.Windows.Forms.PictureBox pictureBoxFOVPreview;
-        private System.Windows.Forms.TrackBar sliderFOV;
+        private ColorSlider.ColorSlider sliderFOV;
         private System.Windows.Forms.NumericUpDown numFOV;
         private Fo76ini.Controls.StyledGroupBox groupBoxFOVMore;
         private System.Windows.Forms.Label labelADSFOV;
         private System.Windows.Forms.NumericUpDown numADSFOV;
         private Fo76ini.Controls.StyledGroupBox groupBoxSelfieCamera;
-        private System.Windows.Forms.TrackBar trackBarPhotomodeRange;
+        private ColorSlider.ColorSlider trackBarPhotomodeRange;
         private System.Windows.Forms.NumericUpDown numericUpDownPhotomodeRotationSpeed;
-        private System.Windows.Forms.TrackBar trackBarPhotomodeRotationSpeed;
+        private ColorSlider.ColorSlider trackBarPhotomodeRotationSpeed;
         private System.Windows.Forms.Label labelPhotomodeRotationSpeed;
         private System.Windows.Forms.NumericUpDown numericUpDownPhotomodeRange;
         private System.Windows.Forms.Label labelPhotomodeRange;
         private System.Windows.Forms.NumericUpDown numericUpDownPhotomodeTranslationSpeed;
-        private System.Windows.Forms.TrackBar trackBarPhotomodeTranslationSpeed;
+        private ColorSlider.ColorSlider trackBarPhotomodeTranslationSpeed;
         private System.Windows.Forms.Label labelPhotomodeTranslationSpeed;
         private Fo76ini.Controls.StyledGroupBox groupBoxCameraDistance;
         private System.Windows.Forms.NumericUpDown numfPitchZoomOutMaxDist;
-        private System.Windows.Forms.TrackBar sliderfPitchZoomOutMaxDist;
+        private ColorSlider.ColorSlider sliderfPitchZoomOutMaxDist;
         private System.Windows.Forms.Label labelPitchZoomOutMaxDist;
         private System.Windows.Forms.NumericUpDown numCameraDistanceMaximum;
         private System.Windows.Forms.NumericUpDown numCameraDistanceMinimum;
-        private System.Windows.Forms.TrackBar sliderCameraDistanceMaximum;
+        private ColorSlider.ColorSlider sliderCameraDistanceMaximum;
         private System.Windows.Forms.Label labelCameraDistanceMaximum;
         private System.Windows.Forms.Label labelCameraDistanceMinimum;
-        private System.Windows.Forms.TrackBar sliderCameraDistanceMinimum;
+        private ColorSlider.ColorSlider sliderCameraDistanceMinimum;
         private Fo76ini.Controls.StyledGroupBox groupBoxCameraPosition;
         private Fo76ini.Controls.StyledGroupBox groupBoxMeleeCombatCameraPosition;
         private System.Windows.Forms.NumericUpDown numfOverShoulderMeleeCombatAddY;
         private System.Windows.Forms.Label labelfOverShoulderMeleeCombatAddY;
         private System.Windows.Forms.NumericUpDown numfOverShoulderMeleeCombatPosX;
         private System.Windows.Forms.NumericUpDown numfOverShoulderMeleeCombatPosZ;
-        private System.Windows.Forms.TrackBar trackBarfOverShoulderMeleeCombatAddY;
+        private ColorSlider.ColorSlider trackBarfOverShoulderMeleeCombatAddY;
         private System.Windows.Forms.Label labelfOverShoulderMeleeCombatPosX;
-        private System.Windows.Forms.TrackBar trackBarfOverShoulderMeleeCombatPosX;
+        private ColorSlider.ColorSlider trackBarfOverShoulderMeleeCombatPosX;
         private System.Windows.Forms.Label labelfOverShoulderMeleeCombatPosZ;
-        private System.Windows.Forms.TrackBar trackBarfOverShoulderMeleeCombatPosZ;
+        private ColorSlider.ColorSlider trackBarfOverShoulderMeleeCombatPosZ;
         private Fo76ini.Controls.StyledGroupBox groupBoxCombatCameraPosition;
         private System.Windows.Forms.NumericUpDown numfOverShoulderCombatAddY;
         private System.Windows.Forms.NumericUpDown numfOverShoulderCombatPosX;
         private System.Windows.Forms.NumericUpDown numfOverShoulderCombatPosZ;
         private System.Windows.Forms.Label labelfOverShoulderCombatAddY;
-        private System.Windows.Forms.TrackBar trackBarfOverShoulderCombatAddY;
+        private ColorSlider.ColorSlider trackBarfOverShoulderCombatAddY;
         private System.Windows.Forms.Label labelfOverShoulderCombatPosX;
-        private System.Windows.Forms.TrackBar trackBarfOverShoulderCombatPosX;
+        private ColorSlider.ColorSlider trackBarfOverShoulderCombatPosX;
         private System.Windows.Forms.Label labelfOverShoulderCombatPosZ;
-        private System.Windows.Forms.TrackBar trackBarfOverShoulderCombatPosZ;
+        private ColorSlider.ColorSlider trackBarfOverShoulderCombatPosZ;
         private System.Windows.Forms.Button buttonCameraPositionReset;
         private System.Windows.Forms.CheckBox checkBoxbApplyCameraNodeAnimations;
         private Fo76ini.Controls.StyledGroupBox groupBoxUnarmedCameraPosition;
         private System.Windows.Forms.NumericUpDown numfOverShoulderPosX;
         private System.Windows.Forms.NumericUpDown numfOverShoulderPosZ;
         private System.Windows.Forms.Label labelfOverShoulderPosX;
-        private System.Windows.Forms.TrackBar trackBarfOverShoulderPosX;
+        private ColorSlider.ColorSlider trackBarfOverShoulderPosX;
         private System.Windows.Forms.Label labelfOverShoulderPosZ;
-        private System.Windows.Forms.TrackBar trackBarfOverShoulderPosZ;
+        private ColorSlider.ColorSlider trackBarfOverShoulderPosZ;
         private Controls.CustomToolTip toolTip;
         private System.Windows.Forms.TabPage tabPageTweaksInfo;
         private System.Windows.Forms.WebBrowser webBrowserTweaksInfo;
         private System.Windows.Forms.CheckBox checkBoxSSReflections;
         private System.Windows.Forms.CheckBox checkBoxBloodSplatter;
-        private System.Windows.Forms.TrackBar sliderMouseSensitivityY;
+        private ColorSlider.ColorSlider sliderMouseSensitivityY;
         private System.Windows.Forms.NumericUpDown numMouseSensitivityY;
         private System.Windows.Forms.Label labelMouseSensitivityY;
         private Fo76ini.Controls.StyledGroupBox groupBoxDialogue;
@@ -4984,10 +6781,10 @@
         private System.Windows.Forms.CheckBox checkBoxWaterFixSSRGlitch;
         private System.Windows.Forms.Button buttonOpenTweaksInfoInBrowser;
         private System.Windows.Forms.Label labelTweaksInfoWin7;
-        private System.Windows.Forms.TrackBar sliderGamepadSensitivityY;
+        private ColorSlider.ColorSlider sliderGamepadSensitivityY;
         private System.Windows.Forms.NumericUpDown numGamepadSensitivityY;
         private System.Windows.Forms.Label labelGamepadSensitivityY;
-        private System.Windows.Forms.TrackBar sliderGamepadSensitivityX;
+        private ColorSlider.ColorSlider sliderGamepadSensitivityX;
         private System.Windows.Forms.NumericUpDown numGamepadSensitivityX;
         private System.Windows.Forms.Label labelGamepadSensitivityX;
         private Fo76ini.Controls.StyledGroupBox groupBoxTextures;
@@ -5014,6 +6811,6 @@
         private Fo76ini.Controls.StyledGroupBox groupBoxDOF;
         private System.Windows.Forms.NumericUpDown numDOFStrength;
         private System.Windows.Forms.Label labelDOFStrength;
-        private System.Windows.Forms.TrackBar sliderDOFStrength;
+        private ColorSlider.ColorSlider sliderDOFStrength;
     }
 }
