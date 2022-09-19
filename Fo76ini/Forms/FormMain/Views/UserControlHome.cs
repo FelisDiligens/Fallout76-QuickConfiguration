@@ -19,8 +19,10 @@ using System.Windows.Forms;
 
 namespace Fo76ini.Forms.FormMain.Tabs
 {
-    public partial class UserControlHome : UserControl
+    public partial class UserControlHome : UserControl, IThemable
     {
+        public string VisualStyle { get; set; }
+
         public UserControlHome()
         {
             InitializeComponent();
@@ -68,6 +70,18 @@ namespace Fo76ini.Forms.FormMain.Tabs
             //this.Refresh(); // Forces redraw
         }
 
+        public void ApplyTheme(ThemeType theme)
+        {
+            if (theme == ThemeType.Dark)
+            {
+                this.styledButtonGitHub.Image = Resources.github_white_16;
+            }
+            else
+            {
+                this.styledButtonGitHub.Image = Resources.github_16;
+            }
+        }
+
         /*
          **************************************************************
          * Check version
@@ -88,11 +102,11 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
             if (!force && Configuration.IgnoreUpdates)
             {
-                this.labelConfigVersion.ForeColor = Color.White;
+                this.labelConfigVersion.ForeColor = Theming.GetColor("TextColor", Color.Black);
                 return;
             }
 
-            this.labelConfigVersion.ForeColor = Color.Silver;
+            this.labelConfigVersion.ForeColor = Theming.GetColor("VersionUnknownColor", Color.Gray);
             this.pictureBoxSpinnerCheckForUpdates.Visible = true;
 
             // Checking version in background:
@@ -111,7 +125,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             // Failed:
             if (Shared.LatestVersion == null)
             {
-                this.labelConfigVersion.ForeColor = Color.White;
+                this.labelConfigVersion.ForeColor = Theming.GetColor("TextColor", Color.Black);
                 panelUpdate.Visible = false;
                 return;
             }
@@ -120,14 +134,14 @@ namespace Fo76ini.Forms.FormMain.Tabs
             {
                 panelUpdate.Visible = true;
                 labelNewVersion.Text = string.Format(Localization.GetString("newVersionAvailable"), Shared.LatestVersion);
-                labelNewVersion.ForeColor = Color.Crimson;
-                this.labelConfigVersion.ForeColor = Color.Red;
+                //labelNewVersion.ForeColor = Color.Crimson;
+                this.labelConfigVersion.ForeColor = Theming.GetColor("VersionOldColor", Color.Red);
             }
             else
             {
                 // All good, latest version:
                 panelUpdate.Visible = false;
-                this.labelConfigVersion.ForeColor = Color.FromArgb(50, 255, 50);
+                this.labelConfigVersion.ForeColor = Theming.GetColor("VersionLatestColor", Color.DarkGreen);
             }
         }
 

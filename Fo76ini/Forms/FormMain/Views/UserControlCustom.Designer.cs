@@ -116,14 +116,12 @@
         '\''};
             this.textBoxCustom.AutoScrollMinSize = new System.Drawing.Size(0, 15);
             this.textBoxCustom.BackBrush = null;
-            this.textBoxCustom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.textBoxCustom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxCustom.CharHeight = 15;
             this.textBoxCustom.CharWidth = 8;
             this.textBoxCustom.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxCustom.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.textBoxCustom.Font = new System.Drawing.Font("Cascadia Code", 9.75F);
-            this.textBoxCustom.IndentBackColor = System.Drawing.Color.Black;
             this.textBoxCustom.IsReplaceMode = false;
             this.textBoxCustom.LeftBracket = '[';
             this.textBoxCustom.Location = new System.Drawing.Point(15, 75);
@@ -144,14 +142,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.Controls.Add(this.textBoxCustom);
             this.Controls.Add(this.labelCustomDesc);
             this.Controls.Add(this.labelCustomTitle);
             this.Controls.Add(this.buttonCustomSave);
             this.Controls.Add(this.comboBoxCustomFile);
             this.Controls.Add(this.labelCustomFile);
-            this.ForeColor = System.Drawing.Color.White;
             this.Name = "UserControlCustom";
             this.Size = new System.Drawing.Size(850, 460);
             ((System.ComponentModel.ISupportInitialize)(this.textBoxCustom)).EndInit();

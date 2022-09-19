@@ -14,6 +14,7 @@ namespace Fo76ini.Interface
     {
         public ThemeType Type = ThemeType.Light;
         public List<VisualStyle> Styles = new List<VisualStyle>();
+        public Dictionary<string, string> Vars = new Dictionary<string, string>();
 
         public List<VisualStyle> GetStylesForControl(String controlType)
         {
@@ -56,26 +57,32 @@ namespace Fo76ini.Interface
                         if (subEntry.Key.ToString() == "BaseTheme")
                             Enum.TryParse(subEntry.Value.ToString(), out this.Type);
                     }
-                    continue;
                 }
-
-                foreach (string selector in key.Split(','))
+                else if (key == "VARS")
                 {
-                    int dotIndex = selector.IndexOf(".");
-
-                    VisualStyle vs = new VisualStyle
+                    foreach (KeyValuePair<object, object> subEntry in (Dictionary<object, object>)entry.Value)
+                        this.Vars.Add(subEntry.Key.ToString(), subEntry.Value.ToString());
+                }
+                else
+                {
+                    foreach (string selector in key.Split(','))
                     {
-                        ControlType = selector.Contains(".") ? selector.Substring(0, dotIndex).Trim() : selector.Trim(),
-                        StyleName = selector.Contains(".") ? selector.Substring(dotIndex + 1).Trim() : "Default"
-                    };
+                        int dotIndex = selector.IndexOf(".");
 
-                    // Rules:
-                    foreach (KeyValuePair<object, object> rule in (Dictionary<object, object>)entry.Value)
-                    {
-                        vs.Rules[rule.Key.ToString()] = rule.Value;
+                        VisualStyle vs = new VisualStyle
+                        {
+                            ControlType = selector.Contains(".") ? selector.Substring(0, dotIndex).Trim() : selector.Trim(),
+                            StyleName = selector.Contains(".") ? selector.Substring(dotIndex + 1).Trim() : "Default"
+                        };
+
+                        // Rules:
+                        foreach (KeyValuePair<object, object> rule in (Dictionary<object, object>)entry.Value)
+                        {
+                            vs.Rules[rule.Key.ToString()] = rule.Value;
+                        }
+
+                        Styles.Add(vs);
                     }
-
-                    Styles.Add(vs);
                 }
             }
         }

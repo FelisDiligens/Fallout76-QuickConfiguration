@@ -693,7 +693,7 @@
             // labelThemeExpl
             // 
             this.labelThemeExpl.AutoSize = true;
-            this.labelThemeExpl.ForeColor = System.Drawing.Color.Silver;
+            this.labelThemeExpl.ForeColor = System.Drawing.Color.Gray;
             this.labelThemeExpl.Location = new System.Drawing.Point(12, 39);
             this.labelThemeExpl.Name = "labelThemeExpl";
             this.labelThemeExpl.Size = new System.Drawing.Size(178, 13);
@@ -761,7 +761,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelSettingsProfile);
@@ -771,7 +770,6 @@
             this.Controls.Add(this.panelSettingsBehavior);
             this.Controls.Add(this.panelSettingsLocalization);
             this.Controls.Add(this.labelSettingsTitle);
-            this.ForeColor = System.Drawing.Color.White;
             this.Name = "UserControlSettings";
             this.Size = new System.Drawing.Size(494, 1300);
             this.Load += new System.EventHandler(this.UserControlSettings_Load);

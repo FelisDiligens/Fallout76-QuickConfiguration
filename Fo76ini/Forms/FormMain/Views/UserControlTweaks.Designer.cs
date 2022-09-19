@@ -462,10 +462,10 @@
             this.tabControlTweaks.SelectedIndex = 0;
             this.tabControlTweaks.Size = new System.Drawing.Size(662, 502);
             this.tabControlTweaks.TabIndex = 0;
+            this.tabControlTweaks.VisualStyle = "Default";
             // 
             // tabPageTweaksInfo
             // 
-            this.tabPageTweaksInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageTweaksInfo.Controls.Add(this.webBrowserTweaksInfo);
             this.tabPageTweaksInfo.Controls.Add(this.labelTweaksInfoWin7);
             this.tabPageTweaksInfo.Controls.Add(this.buttonOpenTweaksInfoInBrowser);
@@ -491,7 +491,6 @@
             // 
             // labelTweaksInfoWin7
             // 
-            this.labelTweaksInfoWin7.ForeColor = System.Drawing.Color.White;
             this.labelTweaksInfoWin7.Location = new System.Drawing.Point(6, 6);
             this.labelTweaksInfoWin7.Name = "labelTweaksInfoWin7";
             this.labelTweaksInfoWin7.Size = new System.Drawing.Size(642, 39);
@@ -512,14 +511,12 @@
             // tabPageGeneral
             // 
             this.tabPageGeneral.AutoScroll = true;
-            this.tabPageGeneral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageGeneral.Controls.Add(this.groupBoxGameplay);
             this.tabPageGeneral.Controls.Add(this.groupBoxDialogue);
             this.tabPageGeneral.Controls.Add(this.groupBoxHUD);
             this.tabPageGeneral.Controls.Add(this.groupBoxLoading);
             this.tabPageGeneral.Controls.Add(this.groupBoxQuests);
             this.tabPageGeneral.Controls.Add(this.groupBoxMainMenu);
-            this.tabPageGeneral.ForeColor = System.Drawing.Color.White;
             this.tabPageGeneral.Location = new System.Drawing.Point(4, 25);
             this.tabPageGeneral.Name = "tabPageGeneral";
             this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
@@ -539,6 +536,7 @@
             this.groupBoxGameplay.TabIndex = 2;
             this.groupBoxGameplay.TabStop = false;
             this.groupBoxGameplay.Text = "Gameplay";
+            this.groupBoxGameplay.VisualStyle = "Default";
             // 
             // checkBoxBackpackVisible
             // 
@@ -584,6 +582,7 @@
             this.groupBoxDialogue.TabIndex = 3;
             this.groupBoxDialogue.TabStop = false;
             this.groupBoxDialogue.Text = "Dialogue";
+            this.groupBoxDialogue.VisualStyle = "Default";
             // 
             // sliderConversationHistorySize
             // 
@@ -726,6 +725,7 @@
             this.groupBoxHUD.TabIndex = 4;
             this.groupBoxHUD.TabStop = false;
             this.groupBoxHUD.Text = "HUD";
+            this.groupBoxHUD.VisualStyle = "Default";
             // 
             // groupBoxFloatingQuestMarkers
             // 
@@ -741,6 +741,7 @@
             this.groupBoxFloatingQuestMarkers.TabIndex = 17;
             this.groupBoxFloatingQuestMarkers.TabStop = false;
             this.groupBoxFloatingQuestMarkers.Text = "Floating quest markers on HUD";
+            this.groupBoxFloatingQuestMarkers.VisualStyle = "Default";
             // 
             // checkBoxShowFloatingQuestMarkers
             // 
@@ -947,6 +948,7 @@
             this.groupBoxLoading.TabIndex = 1;
             this.groupBoxLoading.TabStop = false;
             this.groupBoxLoading.Text = "Loading";
+            this.groupBoxLoading.VisualStyle = "Default";
             // 
             // checkBoxFasterFadeIn
             // 
@@ -973,6 +975,7 @@
             this.groupBoxQuests.TabIndex = 5;
             this.groupBoxQuests.TabStop = false;
             this.groupBoxQuests.Text = "Quests";
+            this.groupBoxQuests.VisualStyle = "Default";
             // 
             // checkBoxEnableQuestAutoTrackDaily
             // 
@@ -1036,6 +1039,7 @@
             this.groupBoxMainMenu.TabIndex = 0;
             this.groupBoxMainMenu.TabStop = false;
             this.groupBoxMainMenu.Text = "Main Menu";
+            this.groupBoxMainMenu.VisualStyle = "Default";
             // 
             // checkBoxSkipSplash
             // 
@@ -1060,10 +1064,8 @@
             // tabPageVideo
             // 
             this.tabPageVideo.AutoScroll = true;
-            this.tabPageVideo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageVideo.Controls.Add(this.groupBoxGraphics);
             this.tabPageVideo.Controls.Add(this.groupBoxDisplay);
-            this.tabPageVideo.ForeColor = System.Drawing.Color.White;
             this.tabPageVideo.Location = new System.Drawing.Point(4, 25);
             this.tabPageVideo.Name = "tabPageVideo";
             this.tabPageVideo.Padding = new System.Windows.Forms.Padding(3);
@@ -1099,6 +1101,7 @@
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
+            this.groupBoxGraphics.VisualStyle = "Default";
             // 
             // groupBoxDOF
             // 
@@ -1113,6 +1116,7 @@
             this.groupBoxDOF.TabIndex = 2;
             this.groupBoxDOF.TabStop = false;
             this.groupBoxDOF.Text = "Depth of Field";
+            this.groupBoxDOF.VisualStyle = "Default";
             // 
             // numDOFStrength
             // 
@@ -1204,6 +1208,7 @@
             this.groupBoxTextures.TabIndex = 19;
             this.groupBoxTextures.TabStop = false;
             this.groupBoxTextures.Text = "Textures";
+            this.groupBoxTextures.VisualStyle = "Default";
             // 
             // comboBoxTextureQuality
             // 
@@ -1236,6 +1241,7 @@
             this.groupBoxGraphicEffects.TabIndex = 11;
             this.groupBoxGraphicEffects.TabStop = false;
             this.groupBoxGraphicEffects.Text = "Effects";
+            this.groupBoxGraphicEffects.VisualStyle = "Default";
             // 
             // checkBoxBloodSplatter
             // 
@@ -1274,6 +1280,7 @@
             this.groupBoxTAASharpening.TabIndex = 18;
             this.groupBoxTAASharpening.TabStop = false;
             this.groupBoxTAASharpening.Text = "TAA Sharpening";
+            this.groupBoxTAASharpening.VisualStyle = "Default";
             // 
             // sliderTAAPostSharpen
             // 
@@ -1391,6 +1398,7 @@
             this.groupBoxGrass.TabIndex = 17;
             this.groupBoxGrass.TabStop = false;
             this.groupBoxGrass.Text = "Grass";
+            this.groupBoxGrass.VisualStyle = "Default";
             // 
             // sliderGrassFadeDistance
             // 
@@ -1479,6 +1487,7 @@
             this.groupBoxLOD.TabIndex = 16;
             this.groupBoxLOD.TabStop = false;
             this.groupBoxLOD.Text = "LOD";
+            this.groupBoxLOD.VisualStyle = "Default";
             // 
             // sliderLODActors
             // 
@@ -1642,6 +1651,7 @@
             this.groupBoxLighting.TabIndex = 14;
             this.groupBoxLighting.TabStop = false;
             this.groupBoxLighting.Text = "Lighting";
+            this.groupBoxLighting.VisualStyle = "Default";
             // 
             // comboBoxGodrayQuality
             // 
@@ -1702,6 +1712,7 @@
             this.groupBoxShadows.TabIndex = 15;
             this.groupBoxShadows.TabStop = false;
             this.groupBoxShadows.Text = "Shadows";
+            this.groupBoxShadows.VisualStyle = "Default";
             // 
             // comboBoxShadowQuality
             // 
@@ -1836,6 +1847,7 @@
             this.groupBoxWater.TabIndex = 12;
             this.groupBoxWater.TabStop = false;
             this.groupBoxWater.Text = "Water";
+            this.groupBoxWater.VisualStyle = "Default";
             // 
             // comboBoxWaterShadowFilter
             // 
@@ -1931,6 +1943,7 @@
             this.groupBoxPostProcessing.TabIndex = 10;
             this.groupBoxPostProcessing.TabStop = false;
             this.groupBoxPostProcessing.Text = "Post-processing";
+            this.groupBoxPostProcessing.VisualStyle = "Default";
             // 
             // checkBoxSSReflections
             // 
@@ -2013,6 +2026,7 @@
             this.groupBoxDisplay.TabIndex = 0;
             this.groupBoxDisplay.TabStop = false;
             this.groupBoxDisplay.Text = "Display";
+            this.groupBoxDisplay.VisualStyle = "Default";
             // 
             // comboBoxDisplayMode
             // 
@@ -2157,11 +2171,9 @@
             // tabPageAudio
             // 
             this.tabPageAudio.AutoScroll = true;
-            this.tabPageAudio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageAudio.Controls.Add(this.groupBoxAudio);
             this.tabPageAudio.Controls.Add(this.groupBoxVoice);
             this.tabPageAudio.Controls.Add(this.groupBoxAudioVolume);
-            this.tabPageAudio.ForeColor = System.Drawing.Color.White;
             this.tabPageAudio.Location = new System.Drawing.Point(4, 25);
             this.tabPageAudio.Name = "tabPageAudio";
             this.tabPageAudio.Size = new System.Drawing.Size(654, 473);
@@ -2180,6 +2192,7 @@
             this.groupBoxAudio.TabIndex = 1;
             this.groupBoxAudio.TabStop = false;
             this.groupBoxAudio.Text = "Audio";
+            this.groupBoxAudio.VisualStyle = "Default";
             // 
             // checkBoxEnableAudio
             // 
@@ -2216,6 +2229,7 @@
             this.groupBoxVoice.TabIndex = 2;
             this.groupBoxVoice.TabStop = false;
             this.groupBoxVoice.Text = "Voice";
+            this.groupBoxVoice.VisualStyle = "Default";
             // 
             // comboBoxVoiceChatMode
             // 
@@ -2282,6 +2296,7 @@
             this.groupBoxAudioVolume.TabIndex = 0;
             this.groupBoxAudioVolume.TabStop = false;
             this.groupBoxAudioVolume.Text = "Volume";
+            this.groupBoxAudioVolume.VisualStyle = "Default";
             // 
             // sliderAudioChat
             // 
@@ -2711,10 +2726,8 @@
             // 
             // tabPageControls
             // 
-            this.tabPageControls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageControls.Controls.Add(this.groupBoxGamepad);
             this.tabPageControls.Controls.Add(this.groupBoxMouse);
-            this.tabPageControls.ForeColor = System.Drawing.Color.White;
             this.tabPageControls.Location = new System.Drawing.Point(4, 25);
             this.tabPageControls.Name = "tabPageControls";
             this.tabPageControls.Size = new System.Drawing.Size(654, 473);
@@ -2740,6 +2753,7 @@
             this.groupBoxGamepad.TabIndex = 1;
             this.groupBoxGamepad.TabStop = false;
             this.groupBoxGamepad.Text = "Gamepad";
+            this.groupBoxGamepad.VisualStyle = "Default";
             // 
             // checkBoxAimAssist
             // 
@@ -2903,6 +2917,7 @@
             this.groupBoxMouse.TabIndex = 0;
             this.groupBoxMouse.TabStop = false;
             this.groupBoxMouse.Text = "Mouse";
+            this.groupBoxMouse.VisualStyle = "Default";
             // 
             // checkBoxMouseInvertX
             // 
@@ -3053,14 +3068,12 @@
             // tabPageCamera
             // 
             this.tabPageCamera.AutoScroll = true;
-            this.tabPageCamera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageCamera.Controls.Add(this.groupBoxCameraPosition);
             this.tabPageCamera.Controls.Add(this.groupBoxFOVMore);
             this.tabPageCamera.Controls.Add(this.groupBoxSelfieCamera);
             this.tabPageCamera.Controls.Add(this.groupBoxIdleCamera);
             this.tabPageCamera.Controls.Add(this.groupBoxCameraDistance);
             this.tabPageCamera.Controls.Add(this.groupBoxFieldOfView);
-            this.tabPageCamera.ForeColor = System.Drawing.Color.White;
             this.tabPageCamera.Location = new System.Drawing.Point(4, 25);
             this.tabPageCamera.Name = "tabPageCamera";
             this.tabPageCamera.Size = new System.Drawing.Size(654, 473);
@@ -3082,6 +3095,7 @@
             this.groupBoxCameraPosition.TabIndex = 5;
             this.groupBoxCameraPosition.TabStop = false;
             this.groupBoxCameraPosition.Text = "Camera position (Experimental)";
+            this.groupBoxCameraPosition.VisualStyle = "Default";
             // 
             // groupBoxMeleeCombatCameraPosition
             // 
@@ -3101,6 +3115,7 @@
             this.groupBoxMeleeCombatCameraPosition.TabIndex = 12;
             this.groupBoxMeleeCombatCameraPosition.TabStop = false;
             this.groupBoxMeleeCombatCameraPosition.Text = "Melee combat camera position";
+            this.groupBoxMeleeCombatCameraPosition.VisualStyle = "Default";
             // 
             // numfOverShoulderMeleeCombatAddY
             // 
@@ -3244,6 +3259,7 @@
             this.groupBoxCombatCameraPosition.TabIndex = 11;
             this.groupBoxCombatCameraPosition.TabStop = false;
             this.groupBoxCombatCameraPosition.Text = "Combat camera position";
+            this.groupBoxCombatCameraPosition.VisualStyle = "Default";
             // 
             // numfOverShoulderCombatAddY
             // 
@@ -3404,6 +3420,7 @@
             this.groupBoxUnarmedCameraPosition.TabIndex = 10;
             this.groupBoxUnarmedCameraPosition.TabStop = false;
             this.groupBoxUnarmedCameraPosition.Text = "Unarmed camera position";
+            this.groupBoxUnarmedCameraPosition.VisualStyle = "Default";
             // 
             // numfOverShoulderPosX
             // 
@@ -3500,6 +3517,7 @@
             this.groupBoxFOVMore.TabIndex = 1;
             this.groupBoxFOVMore.TabStop = false;
             this.groupBoxFOVMore.Text = "More Field of View tweaks";
+            this.groupBoxFOVMore.VisualStyle = "Default";
             // 
             // labelADSFOV
             // 
@@ -3557,6 +3575,7 @@
             this.groupBoxSelfieCamera.TabIndex = 4;
             this.groupBoxSelfieCamera.TabStop = false;
             this.groupBoxSelfieCamera.Text = "Photomode options";
+            this.groupBoxSelfieCamera.VisualStyle = "Default";
             // 
             // trackBarPhotomodeRange
             // 
@@ -3710,6 +3729,7 @@
             this.groupBoxIdleCamera.TabIndex = 2;
             this.groupBoxIdleCamera.TabStop = false;
             this.groupBoxIdleCamera.Text = "Idle camera (Experimental)";
+            this.groupBoxIdleCamera.VisualStyle = "Default";
             // 
             // checkBoxForceVanityMode
             // 
@@ -3754,6 +3774,7 @@
             this.groupBoxCameraDistance.TabIndex = 3;
             this.groupBoxCameraDistance.TabStop = false;
             this.groupBoxCameraDistance.Text = "Camera distance in 3rd person";
+            this.groupBoxCameraDistance.VisualStyle = "Default";
             // 
             // numfPitchZoomOutMaxDist
             // 
@@ -3898,6 +3919,7 @@
             this.groupBoxFieldOfView.TabIndex = 0;
             this.groupBoxFieldOfView.TabStop = false;
             this.groupBoxFieldOfView.Text = "Field of View";
+            this.groupBoxFieldOfView.VisualStyle = "Default";
             // 
             // pictureBoxFOVPreview
             // 
@@ -3959,10 +3981,8 @@
             // tabPageLogin
             // 
             this.tabPageLogin.AutoScroll = true;
-            this.tabPageLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabPageLogin.Controls.Add(this.groupBoxLoginProfiles);
             this.tabPageLogin.Controls.Add(this.groupBoxLogin);
-            this.tabPageLogin.ForeColor = System.Drawing.Color.White;
             this.tabPageLogin.Location = new System.Drawing.Point(4, 25);
             this.tabPageLogin.Name = "tabPageLogin";
             this.tabPageLogin.Padding = new System.Windows.Forms.Padding(3);
@@ -3996,6 +4016,7 @@
             this.groupBoxLoginProfiles.TabIndex = 1;
             this.groupBoxLoginProfiles.TabStop = false;
             this.groupBoxLoginProfiles.Text = "Profiles";
+            this.groupBoxLoginProfiles.VisualStyle = "Default";
             // 
             // radioButtonAccountNone
             // 
@@ -4203,6 +4224,7 @@
             this.groupBoxLogin.TabIndex = 0;
             this.groupBoxLogin.TabStop = false;
             this.groupBoxLogin.Text = "Login with Bethesda.net";
+            this.groupBoxLogin.VisualStyle = "Default";
             // 
             // richTextBoxCredentialsExplanation
             // 
@@ -4288,7 +4310,6 @@
             // 
             this.labelTweaksDesc.AutoSize = true;
             this.labelTweaksDesc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTweaksDesc.ForeColor = System.Drawing.Color.White;
             this.labelTweaksDesc.Location = new System.Drawing.Point(12, 45);
             this.labelTweaksDesc.Name = "labelTweaksDesc";
             this.labelTweaksDesc.Size = new System.Drawing.Size(333, 17);
@@ -4299,7 +4320,6 @@
             // 
             this.labelTweaksTitle.AutoSize = true;
             this.labelTweaksTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTweaksTitle.ForeColor = System.Drawing.Color.White;
             this.labelTweaksTitle.Location = new System.Drawing.Point(10, 15);
             this.labelTweaksTitle.Name = "labelTweaksTitle";
             this.labelTweaksTitle.Size = new System.Drawing.Size(82, 30);
@@ -4387,7 +4407,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.Controls.Add(this.labelTweaksDesc);
             this.Controls.Add(this.labelTweaksTitle);
             this.Controls.Add(this.tabControlTweaks);

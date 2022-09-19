@@ -28,6 +28,11 @@ namespace Fo76ini.Interface
 
     public class Theming
     {
+        private static ThemeType _currentTheme;
+        public static ThemeType CurrentTheme { get { return _currentTheme; } }
+
+        private static Dictionary<string, string> _vars = new Dictionary<string, string>();
+
         public static String ThemesPath = Path.Combine(Shared.AppConfigFolder, "themes");
 
         public static Theme DarkTheme
@@ -55,6 +60,35 @@ namespace Fo76ini.Interface
                 return ThemeType.Light;
             else
                 return ThemeType.Dark;
+        }
+
+        public static string Get(string key)
+        {
+            return _vars[key];
+        }
+
+        public static string Get(string key, string defaultValue)
+        {
+            if (_vars.ContainsKey(key))
+                return _vars[key];
+            return defaultValue;
+        }
+
+        public static Color GetColor(string key)
+        {
+            return Utils.ParseColor(Get(key));
+        }
+
+        public static Color GetColor(string key, string defaultValue)
+        {
+            return Utils.ParseColor(Get(key, defaultValue));
+        }
+
+        public static Color GetColor(string key, Color defaultValue)
+        {
+            if (_vars.ContainsKey(key))
+                return Utils.ParseColor(_vars[key]);
+            return defaultValue;
         }
 
         public static void ApplyTheme(ThemeType theme, Control control)
@@ -89,6 +123,9 @@ namespace Fo76ini.Interface
 
         public static void ApplyTheme(Theme theme, Control control)
         {
+            _currentTheme = theme.Type;
+            _vars = theme.Vars;
+
             String controlType = control.GetType().Name;
             String controlName = control.Name;
             String styleName = "Default";
