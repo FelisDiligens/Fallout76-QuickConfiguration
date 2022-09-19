@@ -521,8 +521,8 @@
             // buttonReloadServerStatus
             // 
             this.buttonReloadServerStatus.FlatAppearance.BorderSize = 0;
-            this.buttonReloadServerStatus.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.buttonReloadServerStatus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.buttonReloadServerStatus.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonReloadServerStatus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonReloadServerStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReloadServerStatus.Image = global::Fo76ini.Properties.Resources.available_updates;
             this.buttonReloadServerStatus.Location = new System.Drawing.Point(194, 47);

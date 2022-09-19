@@ -161,15 +161,28 @@ namespace Fo76ini.Interface
                 PropertyInfo property = control.GetType().GetProperty(rule.Key);
                 if (property != null)
                 {
+                    String value = rule.Value.ToString();
+                    if (value.StartsWith("var"))
+                    {
+                        int left = value.IndexOf('(');
+                        int right = value.IndexOf(')');
+
+                        if (left >= 0 && right >= 0)
+                        {
+                            string varName = value.Substring(left + 1, right - left - 1);
+                            value = Get(varName, value);
+                        }
+                    }
+
                     if (property.PropertyType == typeof(string))
-                        property.SetValue(control, rule.Value.ToString(), null);
+                        property.SetValue(control, value, null);
                     else if (property.PropertyType == typeof(int))
-                        property.SetValue(control, Convert.ToInt32(rule.Value.ToString()), null);
+                        property.SetValue(control, Convert.ToInt32(value), null);
                     else if (property.PropertyType == typeof(Color))
-                        property.SetValue(control, Utils.ParseColor(rule.Value.ToString()), null);
+                        property.SetValue(control, Utils.ParseColor(value), null);
                     else if (property.PropertyType == typeof(Image))
                     {
-                        Image img = (Image)Resources.ResourceManager.GetObject(rule.Value.ToString());
+                        Image img = (Image)Resources.ResourceManager.GetObject(value);
                         property.SetValue(control, img, null);
                     }
                 }
