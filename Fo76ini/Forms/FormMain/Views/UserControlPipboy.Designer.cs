@@ -29,37 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tabControlPipboy = new System.Windows.Forms.TabControl();
-            this.tabPagePipboyColor = new System.Windows.Forms.TabPage();
-            this.textBoxPipboyHEX = new System.Windows.Forms.TextBox();
-            this.labelPipboyHEX = new System.Windows.Forms.Label();
-            this.labelPreviewPipboy = new System.Windows.Forms.Label();
-            this.pipboyPreview = new Fo76ini.Controls.PipboyPreview();
-            this.labelPipboyColorPreviewNotice = new System.Windows.Forms.Label();
-            this.buttonColorResetPipboy = new System.Windows.Forms.Button();
-            this.colorPreviewPipboy = new Fo76ini.Controls.ColorPreview();
-            this.buttonColorPickPipboy = new System.Windows.Forms.Button();
-            this.labelPipboyColor = new System.Windows.Forms.Label();
-            this.tabPageQuickboyColor = new System.Windows.Forms.TabPage();
-            this.textBoxQuickboyHEX = new System.Windows.Forms.TextBox();
-            this.labelQuickboyHEX = new System.Windows.Forms.Label();
-            this.labelPreviewQuickboy = new System.Windows.Forms.Label();
-            this.labelQuickboyColorPreviewNotice = new System.Windows.Forms.Label();
-            this.buttonColorPickQuickboy = new System.Windows.Forms.Button();
-            this.buttonColorResetQuickboy = new System.Windows.Forms.Button();
-            this.labelQuickboyColor = new System.Windows.Forms.Label();
-            this.quickboyPreview = new Fo76ini.Controls.PipboyPreview();
-            this.colorPreviewQuickboy = new Fo76ini.Controls.ColorPreview();
-            this.tabPagePowerArmorColor = new System.Windows.Forms.TabPage();
-            this.textBoxPAColorHEX = new System.Windows.Forms.TextBox();
-            this.labelPAColorHEX = new System.Windows.Forms.Label();
-            this.labelPreviewPA = new System.Windows.Forms.Label();
-            this.labelPAColorPreviewNotice = new System.Windows.Forms.Label();
-            this.labelPowerArmorColor = new System.Windows.Forms.Label();
-            this.buttonColorPickPAPipboy = new System.Windows.Forms.Button();
-            this.buttonColorResetPAPipboy = new System.Windows.Forms.Button();
-            this.pipboyPAPreview = new Fo76ini.Controls.PipboyPreview();
-            this.colorPreviewPAPipboy = new Fo76ini.Controls.ColorPreview();
             this.buttonPresetFo3Green = new System.Windows.Forms.Button();
             this.buttonPresetFo3White = new System.Windows.Forms.Button();
             this.buttonPresetFoNVAmber = new System.Windows.Forms.Button();
@@ -99,14 +68,39 @@
             this.panelPipboyOther = new System.Windows.Forms.Panel();
             this.labelPipboyResolution = new System.Windows.Forms.Label();
             this.labelPipboyMode = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tabControlPipboy = new Fo76ini.Controls.StyledTabControl();
+            this.tabPagePipboyColor = new System.Windows.Forms.TabPage();
+            this.textBoxPipboyHEX = new System.Windows.Forms.TextBox();
+            this.labelPipboyHEX = new System.Windows.Forms.Label();
+            this.labelPreviewPipboy = new System.Windows.Forms.Label();
+            this.pipboyPreview = new Fo76ini.Controls.PipboyPreview();
+            this.labelPipboyColorPreviewNotice = new System.Windows.Forms.Label();
+            this.buttonColorResetPipboy = new System.Windows.Forms.Button();
+            this.colorPreviewPipboy = new Fo76ini.Controls.ColorPreview();
+            this.buttonColorPickPipboy = new System.Windows.Forms.Button();
+            this.labelPipboyColor = new System.Windows.Forms.Label();
+            this.tabPageQuickboyColor = new System.Windows.Forms.TabPage();
+            this.textBoxQuickboyHEX = new System.Windows.Forms.TextBox();
+            this.labelQuickboyHEX = new System.Windows.Forms.Label();
+            this.labelPreviewQuickboy = new System.Windows.Forms.Label();
+            this.labelQuickboyColorPreviewNotice = new System.Windows.Forms.Label();
+            this.buttonColorPickQuickboy = new System.Windows.Forms.Button();
+            this.buttonColorResetQuickboy = new System.Windows.Forms.Button();
+            this.labelQuickboyColor = new System.Windows.Forms.Label();
+            this.quickboyPreview = new Fo76ini.Controls.PipboyPreview();
+            this.colorPreviewQuickboy = new Fo76ini.Controls.ColorPreview();
+            this.tabPagePowerArmorColor = new System.Windows.Forms.TabPage();
+            this.textBoxPAColorHEX = new System.Windows.Forms.TextBox();
+            this.labelPAColorHEX = new System.Windows.Forms.Label();
+            this.labelPreviewPA = new System.Windows.Forms.Label();
+            this.labelPAColorPreviewNotice = new System.Windows.Forms.Label();
+            this.labelPowerArmorColor = new System.Windows.Forms.Label();
+            this.buttonColorPickPAPipboy = new System.Windows.Forms.Button();
+            this.buttonColorResetPAPipboy = new System.Windows.Forms.Button();
+            this.pipboyPAPreview = new Fo76ini.Controls.PipboyPreview();
+            this.colorPreviewPAPipboy = new Fo76ini.Controls.ColorPreview();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
-            this.tabControlPipboy.SuspendLayout();
-            this.tabPagePipboyColor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).BeginInit();
-            this.tabPageQuickboyColor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewQuickboy)).BeginInit();
-            this.tabPagePowerArmorColor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             this.panelPipboyPresets.SuspendLayout();
@@ -124,358 +118,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Blue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFoNVAmber)).BeginInit();
             this.panelPipboyOther.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tabControlPipboy.SuspendLayout();
+            this.tabPagePipboyColor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).BeginInit();
+            this.tabPageQuickboyColor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewQuickboy)).BeginInit();
+            this.tabPagePowerArmorColor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tabControlPipboy
-            // 
-            this.tabControlPipboy.Controls.Add(this.tabPagePipboyColor);
-            this.tabControlPipboy.Controls.Add(this.tabPageQuickboyColor);
-            this.tabControlPipboy.Controls.Add(this.tabPagePowerArmorColor);
-            this.tabControlPipboy.Location = new System.Drawing.Point(15, 60);
-            this.tabControlPipboy.Name = "tabControlPipboy";
-            this.tabControlPipboy.SelectedIndex = 0;
-            this.tabControlPipboy.Size = new System.Drawing.Size(437, 437);
-            this.tabControlPipboy.TabIndex = 45;
-            // 
-            // tabPagePipboyColor
-            // 
-            this.tabPagePipboyColor.BackColor = System.Drawing.Color.White;
-            this.tabPagePipboyColor.Controls.Add(this.textBoxPipboyHEX);
-            this.tabPagePipboyColor.Controls.Add(this.labelPipboyHEX);
-            this.tabPagePipboyColor.Controls.Add(this.labelPreviewPipboy);
-            this.tabPagePipboyColor.Controls.Add(this.pipboyPreview);
-            this.tabPagePipboyColor.Controls.Add(this.labelPipboyColorPreviewNotice);
-            this.tabPagePipboyColor.Controls.Add(this.buttonColorResetPipboy);
-            this.tabPagePipboyColor.Controls.Add(this.colorPreviewPipboy);
-            this.tabPagePipboyColor.Controls.Add(this.buttonColorPickPipboy);
-            this.tabPagePipboyColor.Controls.Add(this.labelPipboyColor);
-            this.tabPagePipboyColor.Location = new System.Drawing.Point(4, 22);
-            this.tabPagePipboyColor.Name = "tabPagePipboyColor";
-            this.tabPagePipboyColor.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePipboyColor.Size = new System.Drawing.Size(429, 411);
-            this.tabPagePipboyColor.TabIndex = 0;
-            this.tabPagePipboyColor.Text = "Pip-Boy";
-            // 
-            // textBoxPipboyHEX
-            // 
-            this.textBoxPipboyHEX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPipboyHEX.Location = new System.Drawing.Point(276, 63);
-            this.textBoxPipboyHEX.Name = "textBoxPipboyHEX";
-            this.textBoxPipboyHEX.Size = new System.Drawing.Size(140, 20);
-            this.textBoxPipboyHEX.TabIndex = 43;
-            this.textBoxPipboyHEX.TextChanged += new System.EventHandler(this.textBoxPipboyHEX_TextChanged);
-            // 
-            // labelPipboyHEX
-            // 
-            this.labelPipboyHEX.AutoSize = true;
-            this.labelPipboyHEX.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPipboyHEX.Location = new System.Drawing.Point(273, 43);
-            this.labelPipboyHEX.Name = "labelPipboyHEX";
-            this.labelPipboyHEX.Size = new System.Drawing.Size(33, 17);
-            this.labelPipboyHEX.TabIndex = 42;
-            this.labelPipboyHEX.Text = "HEX";
-            // 
-            // labelPreviewPipboy
-            // 
-            this.labelPreviewPipboy.AutoSize = true;
-            this.labelPreviewPipboy.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPreviewPipboy.Location = new System.Drawing.Point(10, 100);
-            this.labelPreviewPipboy.Name = "labelPreviewPipboy";
-            this.labelPreviewPipboy.Size = new System.Drawing.Size(63, 20);
-            this.labelPreviewPipboy.TabIndex = 41;
-            this.labelPreviewPipboy.Text = "Preview";
-            // 
-            // pipboyPreview
-            // 
-            this.pipboyPreview.BackColor = System.Drawing.Color.DimGray;
-            this.pipboyPreview.Location = new System.Drawing.Point(14, 169);
-            this.pipboyPreview.MaskImage = global::Fo76ini.Properties.Resources.pipboy_preview_mask;
-            this.pipboyPreview.Name = "pipboyPreview";
-            this.pipboyPreview.PreviewColor = System.Drawing.Color.Lime;
-            this.pipboyPreview.ScreenImage = global::Fo76ini.Properties.Resources.pipboy_preview_screen;
-            this.pipboyPreview.Size = new System.Drawing.Size(400, 225);
-            this.pipboyPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pipboyPreview.TabIndex = 0;
-            // 
-            // labelPipboyColorPreviewNotice
-            // 
-            this.labelPipboyColorPreviewNotice.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPipboyColorPreviewNotice.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelPipboyColorPreviewNotice.Location = new System.Drawing.Point(11, 120);
-            this.labelPipboyColorPreviewNotice.Name = "labelPipboyColorPreviewNotice";
-            this.labelPipboyColorPreviewNotice.Size = new System.Drawing.Size(408, 46);
-            this.labelPipboyColorPreviewNotice.TabIndex = 1;
-            this.labelPipboyColorPreviewNotice.Text = "The preview is only an approximation,\r\nso it might not look exactly like this in " +
-    "game.";
-            this.labelPipboyColorPreviewNotice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // buttonColorResetPipboy
-            // 
-            this.buttonColorResetPipboy.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonColorResetPipboy.Location = new System.Drawing.Point(100, 60);
-            this.buttonColorResetPipboy.Name = "buttonColorResetPipboy";
-            this.buttonColorResetPipboy.Size = new System.Drawing.Size(150, 23);
-            this.buttonColorResetPipboy.TabIndex = 3;
-            this.buttonColorResetPipboy.Text = "Reset";
-            this.buttonColorResetPipboy.UseVisualStyleBackColor = true;
-            // 
-            // colorPreviewPipboy
-            // 
-            this.colorPreviewPipboy.BackColor = System.Drawing.Color.Fuchsia;
-            this.colorPreviewPipboy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreviewPipboy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.colorPreviewPipboy.Location = new System.Drawing.Point(13, 13);
-            this.colorPreviewPipboy.Margin = new System.Windows.Forms.Padding(10);
-            this.colorPreviewPipboy.Name = "colorPreviewPipboy";
-            this.colorPreviewPipboy.Size = new System.Drawing.Size(70, 70);
-            this.colorPreviewPipboy.TabIndex = 40;
-            this.colorPreviewPipboy.TabStop = false;
-            // 
-            // buttonColorPickPipboy
-            // 
-            this.buttonColorPickPipboy.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonColorPickPipboy.Location = new System.Drawing.Point(100, 36);
-            this.buttonColorPickPipboy.Name = "buttonColorPickPipboy";
-            this.buttonColorPickPipboy.Size = new System.Drawing.Size(150, 23);
-            this.buttonColorPickPipboy.TabIndex = 2;
-            this.buttonColorPickPipboy.Text = "Pick color";
-            this.buttonColorPickPipboy.UseVisualStyleBackColor = true;
-            // 
-            // labelPipboyColor
-            // 
-            this.labelPipboyColor.AutoSize = true;
-            this.labelPipboyColor.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPipboyColor.Location = new System.Drawing.Point(96, 13);
-            this.labelPipboyColor.Name = "labelPipboyColor";
-            this.labelPipboyColor.Size = new System.Drawing.Size(104, 20);
-            this.labelPipboyColor.TabIndex = 32;
-            this.labelPipboyColor.Text = "Pip-Boy Color";
-            // 
-            // tabPageQuickboyColor
-            // 
-            this.tabPageQuickboyColor.BackColor = System.Drawing.Color.White;
-            this.tabPageQuickboyColor.Controls.Add(this.textBoxQuickboyHEX);
-            this.tabPageQuickboyColor.Controls.Add(this.labelQuickboyHEX);
-            this.tabPageQuickboyColor.Controls.Add(this.labelPreviewQuickboy);
-            this.tabPageQuickboyColor.Controls.Add(this.labelQuickboyColorPreviewNotice);
-            this.tabPageQuickboyColor.Controls.Add(this.buttonColorPickQuickboy);
-            this.tabPageQuickboyColor.Controls.Add(this.buttonColorResetQuickboy);
-            this.tabPageQuickboyColor.Controls.Add(this.labelQuickboyColor);
-            this.tabPageQuickboyColor.Controls.Add(this.quickboyPreview);
-            this.tabPageQuickboyColor.Controls.Add(this.colorPreviewQuickboy);
-            this.tabPageQuickboyColor.Location = new System.Drawing.Point(4, 22);
-            this.tabPageQuickboyColor.Name = "tabPageQuickboyColor";
-            this.tabPageQuickboyColor.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageQuickboyColor.Size = new System.Drawing.Size(429, 411);
-            this.tabPageQuickboyColor.TabIndex = 1;
-            this.tabPageQuickboyColor.Text = "Quick-Boy";
-            // 
-            // textBoxQuickboyHEX
-            // 
-            this.textBoxQuickboyHEX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxQuickboyHEX.Location = new System.Drawing.Point(276, 63);
-            this.textBoxQuickboyHEX.Name = "textBoxQuickboyHEX";
-            this.textBoxQuickboyHEX.Size = new System.Drawing.Size(140, 20);
-            this.textBoxQuickboyHEX.TabIndex = 48;
-            this.textBoxQuickboyHEX.TextChanged += new System.EventHandler(this.textBoxQuickboyHEX_TextChanged);
-            // 
-            // labelQuickboyHEX
-            // 
-            this.labelQuickboyHEX.AutoSize = true;
-            this.labelQuickboyHEX.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuickboyHEX.Location = new System.Drawing.Point(273, 43);
-            this.labelQuickboyHEX.Name = "labelQuickboyHEX";
-            this.labelQuickboyHEX.Size = new System.Drawing.Size(33, 17);
-            this.labelQuickboyHEX.TabIndex = 47;
-            this.labelQuickboyHEX.Text = "HEX";
-            // 
-            // labelPreviewQuickboy
-            // 
-            this.labelPreviewQuickboy.AutoSize = true;
-            this.labelPreviewQuickboy.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPreviewQuickboy.Location = new System.Drawing.Point(10, 100);
-            this.labelPreviewQuickboy.Name = "labelPreviewQuickboy";
-            this.labelPreviewQuickboy.Size = new System.Drawing.Size(63, 20);
-            this.labelPreviewQuickboy.TabIndex = 46;
-            this.labelPreviewQuickboy.Text = "Preview";
-            // 
-            // labelQuickboyColorPreviewNotice
-            // 
-            this.labelQuickboyColorPreviewNotice.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuickboyColorPreviewNotice.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelQuickboyColorPreviewNotice.Location = new System.Drawing.Point(11, 120);
-            this.labelQuickboyColorPreviewNotice.Name = "labelQuickboyColorPreviewNotice";
-            this.labelQuickboyColorPreviewNotice.Size = new System.Drawing.Size(408, 46);
-            this.labelQuickboyColorPreviewNotice.TabIndex = 45;
-            this.labelQuickboyColorPreviewNotice.Text = "The preview is only an approximation,\r\nso it might not look exactly like this in " +
-    "game.";
-            this.labelQuickboyColorPreviewNotice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // buttonColorPickQuickboy
-            // 
-            this.buttonColorPickQuickboy.Location = new System.Drawing.Point(100, 36);
-            this.buttonColorPickQuickboy.Name = "buttonColorPickQuickboy";
-            this.buttonColorPickQuickboy.Size = new System.Drawing.Size(150, 23);
-            this.buttonColorPickQuickboy.TabIndex = 43;
-            this.buttonColorPickQuickboy.Text = "Pick color";
-            this.buttonColorPickQuickboy.UseVisualStyleBackColor = true;
-            // 
-            // buttonColorResetQuickboy
-            // 
-            this.buttonColorResetQuickboy.Location = new System.Drawing.Point(100, 60);
-            this.buttonColorResetQuickboy.Name = "buttonColorResetQuickboy";
-            this.buttonColorResetQuickboy.Size = new System.Drawing.Size(150, 23);
-            this.buttonColorResetQuickboy.TabIndex = 44;
-            this.buttonColorResetQuickboy.Text = "Reset";
-            this.buttonColorResetQuickboy.UseVisualStyleBackColor = true;
-            // 
-            // labelQuickboyColor
-            // 
-            this.labelQuickboyColor.AutoSize = true;
-            this.labelQuickboyColor.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuickboyColor.Location = new System.Drawing.Point(96, 13);
-            this.labelQuickboyColor.Name = "labelQuickboyColor";
-            this.labelQuickboyColor.Size = new System.Drawing.Size(120, 20);
-            this.labelQuickboyColor.TabIndex = 34;
-            this.labelQuickboyColor.Text = "Quick-Boy Color";
-            // 
-            // quickboyPreview
-            // 
-            this.quickboyPreview.BackColor = System.Drawing.Color.DimGray;
-            this.quickboyPreview.Location = new System.Drawing.Point(14, 169);
-            this.quickboyPreview.MaskImage = global::Fo76ini.Properties.Resources.quickboy_preview_mask;
-            this.quickboyPreview.Name = "quickboyPreview";
-            this.quickboyPreview.PreviewColor = System.Drawing.Color.Lime;
-            this.quickboyPreview.ScreenImage = global::Fo76ini.Properties.Resources.quickboy_preview_screen;
-            this.quickboyPreview.Size = new System.Drawing.Size(400, 225);
-            this.quickboyPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.quickboyPreview.TabIndex = 0;
-            // 
-            // colorPreviewQuickboy
-            // 
-            this.colorPreviewQuickboy.BackColor = System.Drawing.Color.Fuchsia;
-            this.colorPreviewQuickboy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreviewQuickboy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.colorPreviewQuickboy.Location = new System.Drawing.Point(13, 13);
-            this.colorPreviewQuickboy.Margin = new System.Windows.Forms.Padding(10);
-            this.colorPreviewQuickboy.Name = "colorPreviewQuickboy";
-            this.colorPreviewQuickboy.Size = new System.Drawing.Size(70, 70);
-            this.colorPreviewQuickboy.TabIndex = 42;
-            this.colorPreviewQuickboy.TabStop = false;
-            // 
-            // tabPagePowerArmorColor
-            // 
-            this.tabPagePowerArmorColor.BackColor = System.Drawing.Color.White;
-            this.tabPagePowerArmorColor.Controls.Add(this.textBoxPAColorHEX);
-            this.tabPagePowerArmorColor.Controls.Add(this.labelPAColorHEX);
-            this.tabPagePowerArmorColor.Controls.Add(this.labelPreviewPA);
-            this.tabPagePowerArmorColor.Controls.Add(this.labelPAColorPreviewNotice);
-            this.tabPagePowerArmorColor.Controls.Add(this.labelPowerArmorColor);
-            this.tabPagePowerArmorColor.Controls.Add(this.buttonColorPickPAPipboy);
-            this.tabPagePowerArmorColor.Controls.Add(this.buttonColorResetPAPipboy);
-            this.tabPagePowerArmorColor.Controls.Add(this.pipboyPAPreview);
-            this.tabPagePowerArmorColor.Controls.Add(this.colorPreviewPAPipboy);
-            this.tabPagePowerArmorColor.Location = new System.Drawing.Point(4, 22);
-            this.tabPagePowerArmorColor.Name = "tabPagePowerArmorColor";
-            this.tabPagePowerArmorColor.Size = new System.Drawing.Size(429, 411);
-            this.tabPagePowerArmorColor.TabIndex = 2;
-            this.tabPagePowerArmorColor.Text = "Power Armor";
-            // 
-            // textBoxPAColorHEX
-            // 
-            this.textBoxPAColorHEX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPAColorHEX.Location = new System.Drawing.Point(276, 63);
-            this.textBoxPAColorHEX.Name = "textBoxPAColorHEX";
-            this.textBoxPAColorHEX.Size = new System.Drawing.Size(140, 20);
-            this.textBoxPAColorHEX.TabIndex = 50;
-            this.textBoxPAColorHEX.TextChanged += new System.EventHandler(this.textBoxPAColorHEX_TextChanged);
-            // 
-            // labelPAColorHEX
-            // 
-            this.labelPAColorHEX.AutoSize = true;
-            this.labelPAColorHEX.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPAColorHEX.Location = new System.Drawing.Point(273, 43);
-            this.labelPAColorHEX.Name = "labelPAColorHEX";
-            this.labelPAColorHEX.Size = new System.Drawing.Size(33, 17);
-            this.labelPAColorHEX.TabIndex = 49;
-            this.labelPAColorHEX.Text = "HEX";
-            // 
-            // labelPreviewPA
-            // 
-            this.labelPreviewPA.AutoSize = true;
-            this.labelPreviewPA.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPreviewPA.Location = new System.Drawing.Point(10, 100);
-            this.labelPreviewPA.Name = "labelPreviewPA";
-            this.labelPreviewPA.Size = new System.Drawing.Size(63, 20);
-            this.labelPreviewPA.TabIndex = 48;
-            this.labelPreviewPA.Text = "Preview";
-            // 
-            // labelPAColorPreviewNotice
-            // 
-            this.labelPAColorPreviewNotice.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPAColorPreviewNotice.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelPAColorPreviewNotice.Location = new System.Drawing.Point(11, 120);
-            this.labelPAColorPreviewNotice.Name = "labelPAColorPreviewNotice";
-            this.labelPAColorPreviewNotice.Size = new System.Drawing.Size(408, 46);
-            this.labelPAColorPreviewNotice.TabIndex = 47;
-            this.labelPAColorPreviewNotice.Text = "The preview is only an approximation,\r\nso it might not look exactly like this in " +
-    "game.";
-            this.labelPAColorPreviewNotice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelPowerArmorColor
-            // 
-            this.labelPowerArmorColor.AutoSize = true;
-            this.labelPowerArmorColor.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPowerArmorColor.Location = new System.Drawing.Point(96, 13);
-            this.labelPowerArmorColor.Name = "labelPowerArmorColor";
-            this.labelPowerArmorColor.Size = new System.Drawing.Size(140, 20);
-            this.labelPowerArmorColor.TabIndex = 37;
-            this.labelPowerArmorColor.Text = "Power Armor Color";
-            // 
-            // buttonColorPickPAPipboy
-            // 
-            this.buttonColorPickPAPipboy.Location = new System.Drawing.Point(100, 36);
-            this.buttonColorPickPAPipboy.Name = "buttonColorPickPAPipboy";
-            this.buttonColorPickPAPipboy.Size = new System.Drawing.Size(150, 23);
-            this.buttonColorPickPAPipboy.TabIndex = 36;
-            this.buttonColorPickPAPipboy.Text = "Pick color";
-            this.buttonColorPickPAPipboy.UseVisualStyleBackColor = true;
-            // 
-            // buttonColorResetPAPipboy
-            // 
-            this.buttonColorResetPAPipboy.Location = new System.Drawing.Point(100, 60);
-            this.buttonColorResetPAPipboy.Name = "buttonColorResetPAPipboy";
-            this.buttonColorResetPAPipboy.Size = new System.Drawing.Size(150, 23);
-            this.buttonColorResetPAPipboy.TabIndex = 35;
-            this.buttonColorResetPAPipboy.Text = "Reset";
-            this.buttonColorResetPAPipboy.UseVisualStyleBackColor = true;
-            // 
-            // pipboyPAPreview
-            // 
-            this.pipboyPAPreview.BackColor = System.Drawing.Color.DimGray;
-            this.pipboyPAPreview.Location = new System.Drawing.Point(14, 169);
-            this.pipboyPAPreview.MaskImage = global::Fo76ini.Properties.Resources.powerarmor_preview_mask;
-            this.pipboyPAPreview.Name = "pipboyPAPreview";
-            this.pipboyPAPreview.PreviewColor = System.Drawing.Color.Lime;
-            this.pipboyPAPreview.ScreenImage = global::Fo76ini.Properties.Resources.powerarmor_preview_screen;
-            this.pipboyPAPreview.Size = new System.Drawing.Size(400, 225);
-            this.pipboyPAPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pipboyPAPreview.TabIndex = 0;
-            // 
-            // colorPreviewPAPipboy
-            // 
-            this.colorPreviewPAPipboy.BackColor = System.Drawing.Color.Fuchsia;
-            this.colorPreviewPAPipboy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreviewPAPipboy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.colorPreviewPAPipboy.Location = new System.Drawing.Point(13, 13);
-            this.colorPreviewPAPipboy.Margin = new System.Windows.Forms.Padding(10);
-            this.colorPreviewPAPipboy.Name = "colorPreviewPAPipboy";
-            this.colorPreviewPAPipboy.Size = new System.Drawing.Size(70, 70);
-            this.colorPreviewPAPipboy.TabIndex = 41;
-            this.colorPreviewPAPipboy.TabStop = false;
             // 
             // buttonPresetFo3Green
             // 
@@ -707,7 +358,7 @@
             this.panelPipboyPresets.Controls.Add(this.buttonPresetFoNVAmber);
             this.panelPipboyPresets.Controls.Add(this.colorPreviewPresetFoNVAmber);
             this.panelPipboyPresets.Controls.Add(this.buttonPresetFo76Green);
-            this.panelPipboyPresets.Location = new System.Drawing.Point(454, 82);
+            this.panelPipboyPresets.Location = new System.Drawing.Point(432, 26);
             this.panelPipboyPresets.Name = "panelPipboyPresets";
             this.panelPipboyPresets.Size = new System.Drawing.Size(211, 415);
             this.panelPipboyPresets.TabIndex = 47;
@@ -945,7 +596,7 @@
             this.panelPipboyOther.Controls.Add(this.labelPipboyResolutionSpacer);
             this.panelPipboyOther.Controls.Add(this.labelPipboyMode);
             this.panelPipboyOther.Controls.Add(this.radioButtonPipboy);
-            this.panelPipboyOther.Location = new System.Drawing.Point(15, 515);
+            this.panelPipboyOther.Location = new System.Drawing.Point(15, 518);
             this.panelPipboyOther.Name = "panelPipboyOther";
             this.panelPipboyOther.Size = new System.Drawing.Size(650, 223);
             this.panelPipboyOther.TabIndex = 48;
@@ -972,6 +623,367 @@
             this.labelPipboyMode.TabIndex = 77;
             this.labelPipboyMode.Text = "Mode";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.tabControlPipboy);
+            this.panel1.Controls.Add(this.panelPipboyPresets);
+            this.panel1.Location = new System.Drawing.Point(15, 60);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(650, 442);
+            this.panel1.TabIndex = 79;
+            // 
+            // tabControlPipboy
+            // 
+            this.tabControlPipboy.BorderColor = System.Drawing.Color.Gray;
+            this.tabControlPipboy.BorderWidth = 0;
+            this.tabControlPipboy.Controls.Add(this.tabPagePipboyColor);
+            this.tabControlPipboy.Controls.Add(this.tabPageQuickboyColor);
+            this.tabControlPipboy.Controls.Add(this.tabPagePowerArmorColor);
+            this.tabControlPipboy.HeaderColor = System.Drawing.Color.White;
+            this.tabControlPipboy.Location = new System.Drawing.Point(0, 0);
+            this.tabControlPipboy.MouseOverTabButtonBackColor = System.Drawing.Color.LightGray;
+            this.tabControlPipboy.Name = "tabControlPipboy";
+            this.tabControlPipboy.SelectedIndex = 0;
+            this.tabControlPipboy.SelectedTabButtonBackColor = System.Drawing.Color.Silver;
+            this.tabControlPipboy.Size = new System.Drawing.Size(430, 437);
+            this.tabControlPipboy.TabButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabControlPipboy.TabButtonForeColor = System.Drawing.Color.Black;
+            this.tabControlPipboy.TabIndex = 45;
+            // 
+            // tabPagePipboyColor
+            // 
+            this.tabPagePipboyColor.BackColor = System.Drawing.Color.White;
+            this.tabPagePipboyColor.Controls.Add(this.textBoxPipboyHEX);
+            this.tabPagePipboyColor.Controls.Add(this.labelPipboyHEX);
+            this.tabPagePipboyColor.Controls.Add(this.labelPreviewPipboy);
+            this.tabPagePipboyColor.Controls.Add(this.pipboyPreview);
+            this.tabPagePipboyColor.Controls.Add(this.labelPipboyColorPreviewNotice);
+            this.tabPagePipboyColor.Controls.Add(this.buttonColorResetPipboy);
+            this.tabPagePipboyColor.Controls.Add(this.colorPreviewPipboy);
+            this.tabPagePipboyColor.Controls.Add(this.buttonColorPickPipboy);
+            this.tabPagePipboyColor.Controls.Add(this.labelPipboyColor);
+            this.tabPagePipboyColor.Location = new System.Drawing.Point(4, 25);
+            this.tabPagePipboyColor.Name = "tabPagePipboyColor";
+            this.tabPagePipboyColor.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePipboyColor.Size = new System.Drawing.Size(422, 408);
+            this.tabPagePipboyColor.TabIndex = 0;
+            this.tabPagePipboyColor.Text = "Pip-Boy";
+            // 
+            // textBoxPipboyHEX
+            // 
+            this.textBoxPipboyHEX.Location = new System.Drawing.Point(276, 63);
+            this.textBoxPipboyHEX.Name = "textBoxPipboyHEX";
+            this.textBoxPipboyHEX.Size = new System.Drawing.Size(140, 20);
+            this.textBoxPipboyHEX.TabIndex = 43;
+            this.textBoxPipboyHEX.TextChanged += new System.EventHandler(this.textBoxPipboyHEX_TextChanged);
+            // 
+            // labelPipboyHEX
+            // 
+            this.labelPipboyHEX.AutoSize = true;
+            this.labelPipboyHEX.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPipboyHEX.Location = new System.Drawing.Point(273, 43);
+            this.labelPipboyHEX.Name = "labelPipboyHEX";
+            this.labelPipboyHEX.Size = new System.Drawing.Size(33, 17);
+            this.labelPipboyHEX.TabIndex = 42;
+            this.labelPipboyHEX.Text = "HEX";
+            // 
+            // labelPreviewPipboy
+            // 
+            this.labelPreviewPipboy.AutoSize = true;
+            this.labelPreviewPipboy.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPreviewPipboy.Location = new System.Drawing.Point(10, 100);
+            this.labelPreviewPipboy.Name = "labelPreviewPipboy";
+            this.labelPreviewPipboy.Size = new System.Drawing.Size(63, 20);
+            this.labelPreviewPipboy.TabIndex = 41;
+            this.labelPreviewPipboy.Text = "Preview";
+            // 
+            // pipboyPreview
+            // 
+            this.pipboyPreview.BackColor = System.Drawing.Color.DimGray;
+            this.pipboyPreview.Location = new System.Drawing.Point(14, 169);
+            this.pipboyPreview.MaskImage = global::Fo76ini.Properties.Resources.pipboy_preview_mask;
+            this.pipboyPreview.Name = "pipboyPreview";
+            this.pipboyPreview.PreviewColor = System.Drawing.Color.Lime;
+            this.pipboyPreview.ScreenImage = global::Fo76ini.Properties.Resources.pipboy_preview_screen;
+            this.pipboyPreview.Size = new System.Drawing.Size(400, 225);
+            this.pipboyPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pipboyPreview.TabIndex = 0;
+            // 
+            // labelPipboyColorPreviewNotice
+            // 
+            this.labelPipboyColorPreviewNotice.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPipboyColorPreviewNotice.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelPipboyColorPreviewNotice.Location = new System.Drawing.Point(11, 120);
+            this.labelPipboyColorPreviewNotice.Name = "labelPipboyColorPreviewNotice";
+            this.labelPipboyColorPreviewNotice.Size = new System.Drawing.Size(408, 46);
+            this.labelPipboyColorPreviewNotice.TabIndex = 1;
+            this.labelPipboyColorPreviewNotice.Text = "The preview is only an approximation,\r\nso it might not look exactly like this in " +
+    "game.";
+            this.labelPipboyColorPreviewNotice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonColorResetPipboy
+            // 
+            this.buttonColorResetPipboy.Location = new System.Drawing.Point(100, 60);
+            this.buttonColorResetPipboy.Name = "buttonColorResetPipboy";
+            this.buttonColorResetPipboy.Size = new System.Drawing.Size(150, 23);
+            this.buttonColorResetPipboy.TabIndex = 3;
+            this.buttonColorResetPipboy.Text = "Reset";
+            this.buttonColorResetPipboy.UseVisualStyleBackColor = true;
+            // 
+            // colorPreviewPipboy
+            // 
+            this.colorPreviewPipboy.BackColor = System.Drawing.Color.Fuchsia;
+            this.colorPreviewPipboy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewPipboy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.colorPreviewPipboy.Location = new System.Drawing.Point(13, 13);
+            this.colorPreviewPipboy.Margin = new System.Windows.Forms.Padding(10);
+            this.colorPreviewPipboy.Name = "colorPreviewPipboy";
+            this.colorPreviewPipboy.Size = new System.Drawing.Size(70, 70);
+            this.colorPreviewPipboy.TabIndex = 40;
+            this.colorPreviewPipboy.TabStop = false;
+            // 
+            // buttonColorPickPipboy
+            // 
+            this.buttonColorPickPipboy.Location = new System.Drawing.Point(100, 36);
+            this.buttonColorPickPipboy.Name = "buttonColorPickPipboy";
+            this.buttonColorPickPipboy.Size = new System.Drawing.Size(150, 23);
+            this.buttonColorPickPipboy.TabIndex = 2;
+            this.buttonColorPickPipboy.Text = "Pick color";
+            this.buttonColorPickPipboy.UseVisualStyleBackColor = true;
+            // 
+            // labelPipboyColor
+            // 
+            this.labelPipboyColor.AutoSize = true;
+            this.labelPipboyColor.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPipboyColor.Location = new System.Drawing.Point(96, 13);
+            this.labelPipboyColor.Name = "labelPipboyColor";
+            this.labelPipboyColor.Size = new System.Drawing.Size(104, 20);
+            this.labelPipboyColor.TabIndex = 32;
+            this.labelPipboyColor.Text = "Pip-Boy Color";
+            // 
+            // tabPageQuickboyColor
+            // 
+            this.tabPageQuickboyColor.BackColor = System.Drawing.Color.White;
+            this.tabPageQuickboyColor.Controls.Add(this.textBoxQuickboyHEX);
+            this.tabPageQuickboyColor.Controls.Add(this.labelQuickboyHEX);
+            this.tabPageQuickboyColor.Controls.Add(this.labelPreviewQuickboy);
+            this.tabPageQuickboyColor.Controls.Add(this.labelQuickboyColorPreviewNotice);
+            this.tabPageQuickboyColor.Controls.Add(this.buttonColorPickQuickboy);
+            this.tabPageQuickboyColor.Controls.Add(this.buttonColorResetQuickboy);
+            this.tabPageQuickboyColor.Controls.Add(this.labelQuickboyColor);
+            this.tabPageQuickboyColor.Controls.Add(this.quickboyPreview);
+            this.tabPageQuickboyColor.Controls.Add(this.colorPreviewQuickboy);
+            this.tabPageQuickboyColor.Location = new System.Drawing.Point(4, 25);
+            this.tabPageQuickboyColor.Name = "tabPageQuickboyColor";
+            this.tabPageQuickboyColor.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageQuickboyColor.Size = new System.Drawing.Size(422, 408);
+            this.tabPageQuickboyColor.TabIndex = 1;
+            this.tabPageQuickboyColor.Text = "Quick-Boy";
+            // 
+            // textBoxQuickboyHEX
+            // 
+            this.textBoxQuickboyHEX.Location = new System.Drawing.Point(276, 63);
+            this.textBoxQuickboyHEX.Name = "textBoxQuickboyHEX";
+            this.textBoxQuickboyHEX.Size = new System.Drawing.Size(140, 20);
+            this.textBoxQuickboyHEX.TabIndex = 48;
+            this.textBoxQuickboyHEX.TextChanged += new System.EventHandler(this.textBoxQuickboyHEX_TextChanged);
+            // 
+            // labelQuickboyHEX
+            // 
+            this.labelQuickboyHEX.AutoSize = true;
+            this.labelQuickboyHEX.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelQuickboyHEX.Location = new System.Drawing.Point(273, 43);
+            this.labelQuickboyHEX.Name = "labelQuickboyHEX";
+            this.labelQuickboyHEX.Size = new System.Drawing.Size(33, 17);
+            this.labelQuickboyHEX.TabIndex = 47;
+            this.labelQuickboyHEX.Text = "HEX";
+            // 
+            // labelPreviewQuickboy
+            // 
+            this.labelPreviewQuickboy.AutoSize = true;
+            this.labelPreviewQuickboy.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPreviewQuickboy.Location = new System.Drawing.Point(10, 100);
+            this.labelPreviewQuickboy.Name = "labelPreviewQuickboy";
+            this.labelPreviewQuickboy.Size = new System.Drawing.Size(63, 20);
+            this.labelPreviewQuickboy.TabIndex = 46;
+            this.labelPreviewQuickboy.Text = "Preview";
+            // 
+            // labelQuickboyColorPreviewNotice
+            // 
+            this.labelQuickboyColorPreviewNotice.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelQuickboyColorPreviewNotice.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelQuickboyColorPreviewNotice.Location = new System.Drawing.Point(11, 120);
+            this.labelQuickboyColorPreviewNotice.Name = "labelQuickboyColorPreviewNotice";
+            this.labelQuickboyColorPreviewNotice.Size = new System.Drawing.Size(408, 46);
+            this.labelQuickboyColorPreviewNotice.TabIndex = 45;
+            this.labelQuickboyColorPreviewNotice.Text = "The preview is only an approximation,\r\nso it might not look exactly like this in " +
+    "game.";
+            this.labelQuickboyColorPreviewNotice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonColorPickQuickboy
+            // 
+            this.buttonColorPickQuickboy.Location = new System.Drawing.Point(100, 36);
+            this.buttonColorPickQuickboy.Name = "buttonColorPickQuickboy";
+            this.buttonColorPickQuickboy.Size = new System.Drawing.Size(150, 23);
+            this.buttonColorPickQuickboy.TabIndex = 43;
+            this.buttonColorPickQuickboy.Text = "Pick color";
+            this.buttonColorPickQuickboy.UseVisualStyleBackColor = true;
+            // 
+            // buttonColorResetQuickboy
+            // 
+            this.buttonColorResetQuickboy.Location = new System.Drawing.Point(100, 60);
+            this.buttonColorResetQuickboy.Name = "buttonColorResetQuickboy";
+            this.buttonColorResetQuickboy.Size = new System.Drawing.Size(150, 23);
+            this.buttonColorResetQuickboy.TabIndex = 44;
+            this.buttonColorResetQuickboy.Text = "Reset";
+            this.buttonColorResetQuickboy.UseVisualStyleBackColor = true;
+            // 
+            // labelQuickboyColor
+            // 
+            this.labelQuickboyColor.AutoSize = true;
+            this.labelQuickboyColor.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelQuickboyColor.Location = new System.Drawing.Point(96, 13);
+            this.labelQuickboyColor.Name = "labelQuickboyColor";
+            this.labelQuickboyColor.Size = new System.Drawing.Size(120, 20);
+            this.labelQuickboyColor.TabIndex = 34;
+            this.labelQuickboyColor.Text = "Quick-Boy Color";
+            // 
+            // quickboyPreview
+            // 
+            this.quickboyPreview.BackColor = System.Drawing.Color.DimGray;
+            this.quickboyPreview.Location = new System.Drawing.Point(14, 169);
+            this.quickboyPreview.MaskImage = global::Fo76ini.Properties.Resources.quickboy_preview_mask;
+            this.quickboyPreview.Name = "quickboyPreview";
+            this.quickboyPreview.PreviewColor = System.Drawing.Color.Lime;
+            this.quickboyPreview.ScreenImage = global::Fo76ini.Properties.Resources.quickboy_preview_screen;
+            this.quickboyPreview.Size = new System.Drawing.Size(400, 225);
+            this.quickboyPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.quickboyPreview.TabIndex = 0;
+            // 
+            // colorPreviewQuickboy
+            // 
+            this.colorPreviewQuickboy.BackColor = System.Drawing.Color.Fuchsia;
+            this.colorPreviewQuickboy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewQuickboy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.colorPreviewQuickboy.Location = new System.Drawing.Point(13, 13);
+            this.colorPreviewQuickboy.Margin = new System.Windows.Forms.Padding(10);
+            this.colorPreviewQuickboy.Name = "colorPreviewQuickboy";
+            this.colorPreviewQuickboy.Size = new System.Drawing.Size(70, 70);
+            this.colorPreviewQuickboy.TabIndex = 42;
+            this.colorPreviewQuickboy.TabStop = false;
+            // 
+            // tabPagePowerArmorColor
+            // 
+            this.tabPagePowerArmorColor.BackColor = System.Drawing.Color.White;
+            this.tabPagePowerArmorColor.Controls.Add(this.textBoxPAColorHEX);
+            this.tabPagePowerArmorColor.Controls.Add(this.labelPAColorHEX);
+            this.tabPagePowerArmorColor.Controls.Add(this.labelPreviewPA);
+            this.tabPagePowerArmorColor.Controls.Add(this.labelPAColorPreviewNotice);
+            this.tabPagePowerArmorColor.Controls.Add(this.labelPowerArmorColor);
+            this.tabPagePowerArmorColor.Controls.Add(this.buttonColorPickPAPipboy);
+            this.tabPagePowerArmorColor.Controls.Add(this.buttonColorResetPAPipboy);
+            this.tabPagePowerArmorColor.Controls.Add(this.pipboyPAPreview);
+            this.tabPagePowerArmorColor.Controls.Add(this.colorPreviewPAPipboy);
+            this.tabPagePowerArmorColor.Location = new System.Drawing.Point(4, 25);
+            this.tabPagePowerArmorColor.Name = "tabPagePowerArmorColor";
+            this.tabPagePowerArmorColor.Size = new System.Drawing.Size(422, 408);
+            this.tabPagePowerArmorColor.TabIndex = 2;
+            this.tabPagePowerArmorColor.Text = "Power Armor";
+            // 
+            // textBoxPAColorHEX
+            // 
+            this.textBoxPAColorHEX.Location = new System.Drawing.Point(276, 63);
+            this.textBoxPAColorHEX.Name = "textBoxPAColorHEX";
+            this.textBoxPAColorHEX.Size = new System.Drawing.Size(140, 20);
+            this.textBoxPAColorHEX.TabIndex = 50;
+            this.textBoxPAColorHEX.TextChanged += new System.EventHandler(this.textBoxPAColorHEX_TextChanged);
+            // 
+            // labelPAColorHEX
+            // 
+            this.labelPAColorHEX.AutoSize = true;
+            this.labelPAColorHEX.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPAColorHEX.Location = new System.Drawing.Point(273, 43);
+            this.labelPAColorHEX.Name = "labelPAColorHEX";
+            this.labelPAColorHEX.Size = new System.Drawing.Size(33, 17);
+            this.labelPAColorHEX.TabIndex = 49;
+            this.labelPAColorHEX.Text = "HEX";
+            // 
+            // labelPreviewPA
+            // 
+            this.labelPreviewPA.AutoSize = true;
+            this.labelPreviewPA.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPreviewPA.Location = new System.Drawing.Point(10, 100);
+            this.labelPreviewPA.Name = "labelPreviewPA";
+            this.labelPreviewPA.Size = new System.Drawing.Size(63, 20);
+            this.labelPreviewPA.TabIndex = 48;
+            this.labelPreviewPA.Text = "Preview";
+            // 
+            // labelPAColorPreviewNotice
+            // 
+            this.labelPAColorPreviewNotice.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPAColorPreviewNotice.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelPAColorPreviewNotice.Location = new System.Drawing.Point(11, 120);
+            this.labelPAColorPreviewNotice.Name = "labelPAColorPreviewNotice";
+            this.labelPAColorPreviewNotice.Size = new System.Drawing.Size(408, 46);
+            this.labelPAColorPreviewNotice.TabIndex = 47;
+            this.labelPAColorPreviewNotice.Text = "The preview is only an approximation,\r\nso it might not look exactly like this in " +
+    "game.";
+            this.labelPAColorPreviewNotice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelPowerArmorColor
+            // 
+            this.labelPowerArmorColor.AutoSize = true;
+            this.labelPowerArmorColor.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPowerArmorColor.Location = new System.Drawing.Point(96, 13);
+            this.labelPowerArmorColor.Name = "labelPowerArmorColor";
+            this.labelPowerArmorColor.Size = new System.Drawing.Size(140, 20);
+            this.labelPowerArmorColor.TabIndex = 37;
+            this.labelPowerArmorColor.Text = "Power Armor Color";
+            // 
+            // buttonColorPickPAPipboy
+            // 
+            this.buttonColorPickPAPipboy.Location = new System.Drawing.Point(100, 36);
+            this.buttonColorPickPAPipboy.Name = "buttonColorPickPAPipboy";
+            this.buttonColorPickPAPipboy.Size = new System.Drawing.Size(150, 23);
+            this.buttonColorPickPAPipboy.TabIndex = 36;
+            this.buttonColorPickPAPipboy.Text = "Pick color";
+            this.buttonColorPickPAPipboy.UseVisualStyleBackColor = true;
+            // 
+            // buttonColorResetPAPipboy
+            // 
+            this.buttonColorResetPAPipboy.Location = new System.Drawing.Point(100, 60);
+            this.buttonColorResetPAPipboy.Name = "buttonColorResetPAPipboy";
+            this.buttonColorResetPAPipboy.Size = new System.Drawing.Size(150, 23);
+            this.buttonColorResetPAPipboy.TabIndex = 35;
+            this.buttonColorResetPAPipboy.Text = "Reset";
+            this.buttonColorResetPAPipboy.UseVisualStyleBackColor = true;
+            // 
+            // pipboyPAPreview
+            // 
+            this.pipboyPAPreview.BackColor = System.Drawing.Color.DimGray;
+            this.pipboyPAPreview.Location = new System.Drawing.Point(14, 169);
+            this.pipboyPAPreview.MaskImage = global::Fo76ini.Properties.Resources.powerarmor_preview_mask;
+            this.pipboyPAPreview.Name = "pipboyPAPreview";
+            this.pipboyPAPreview.PreviewColor = System.Drawing.Color.Lime;
+            this.pipboyPAPreview.ScreenImage = global::Fo76ini.Properties.Resources.powerarmor_preview_screen;
+            this.pipboyPAPreview.Size = new System.Drawing.Size(400, 225);
+            this.pipboyPAPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pipboyPAPreview.TabIndex = 0;
+            // 
+            // colorPreviewPAPipboy
+            // 
+            this.colorPreviewPAPipboy.BackColor = System.Drawing.Color.Fuchsia;
+            this.colorPreviewPAPipboy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewPAPipboy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.colorPreviewPAPipboy.Location = new System.Drawing.Point(13, 13);
+            this.colorPreviewPAPipboy.Margin = new System.Windows.Forms.Padding(10);
+            this.colorPreviewPAPipboy.Name = "colorPreviewPAPipboy";
+            this.colorPreviewPAPipboy.Size = new System.Drawing.Size(70, 70);
+            this.colorPreviewPAPipboy.TabIndex = 41;
+            this.colorPreviewPAPipboy.TabStop = false;
+            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -988,22 +1000,11 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelPipboyOther);
-            this.Controls.Add(this.panelPipboyPresets);
             this.Controls.Add(this.labelPipboyTitle);
-            this.Controls.Add(this.tabControlPipboy);
             this.Name = "UserControlPipboy";
             this.Size = new System.Drawing.Size(671, 741);
-            this.tabControlPipboy.ResumeLayout(false);
-            this.tabPagePipboyColor.ResumeLayout(false);
-            this.tabPagePipboyColor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).EndInit();
-            this.tabPageQuickboyColor.ResumeLayout(false);
-            this.tabPageQuickboyColor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewQuickboy)).EndInit();
-            this.tabPagePowerArmorColor.ResumeLayout(false);
-            this.tabPagePowerArmorColor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).EndInit();
             this.panelPipboyPresets.ResumeLayout(false);
@@ -1023,6 +1024,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFoNVAmber)).EndInit();
             this.panelPipboyOther.ResumeLayout(false);
             this.panelPipboyOther.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.tabControlPipboy.ResumeLayout(false);
+            this.tabPagePipboyColor.ResumeLayout(false);
+            this.tabPagePipboyColor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPipboy)).EndInit();
+            this.tabPageQuickboyColor.ResumeLayout(false);
+            this.tabPageQuickboyColor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewQuickboy)).EndInit();
+            this.tabPagePowerArmorColor.ResumeLayout(false);
+            this.tabPagePowerArmorColor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1030,7 +1042,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControlPipboy;
+        private Fo76ini.Controls.StyledTabControl tabControlPipboy;
         private System.Windows.Forms.TabPage tabPagePipboyColor;
         private System.Windows.Forms.TextBox textBoxPipboyHEX;
         private System.Windows.Forms.Label labelPipboyHEX;
@@ -1101,5 +1113,6 @@
         private System.Windows.Forms.Button buttonPresetTato;
         private Controls.ColorPreview colorPreview4;
         private System.Windows.Forms.Button buttonButtonPresetLavendar;
+        private System.Windows.Forms.Panel panel1;
     }
 }
