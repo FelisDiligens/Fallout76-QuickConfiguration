@@ -1,5 +1,6 @@
 ﻿using FastColoredTextBoxNS;
 using Fo76ini.Controls;
+using Fo76ini.Properties;
 using Fo76ini.Utilities;
 using Microsoft.Win32;
 using System;
@@ -8,14 +9,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using YamlDotNet.Core;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Fo76ini.Interface
 {
@@ -128,36 +124,29 @@ namespace Fo76ini.Interface
 
             String controlType = control.GetType().Name;
             String controlName = control.Name;
-            String styleName = "Default";
-            if (control is IThemable)
-                styleName = ((IThemable)control).VisualStyle;
-
-            //Console.WriteLine("({2}) {0}.{1}", controlType, styleName, controlName);
+            String tag = "Default";
+            if (control.Tag != null)
+                tag = control.Tag.ToString();
 
             foreach (VisualStyle style in theme.Styles)
             {
                 string controlRegex = Utils.WildCardToRegular(style.ControlType);
-                if (style.ControlType.Contains("*"))
-                    Console.WriteLine(controlRegex);
                 if (Regex.IsMatch(controlType, controlRegex))
                 {
                     string styleRegex = Utils.WildCardToRegular(style.StyleName);
                     if (style.StyleName == "Default")
                         ApplyStyle(style, control);
 
-                    else if (styleName != controlName &&
-                        styleName != "Default" &&
-                        styleName != null &&
-                        Regex.IsMatch(styleName, styleRegex))
+                    else if (tag != controlName &&
+                        tag != "Default" &&
+                        tag != null &&
+                        Regex.IsMatch(tag, styleRegex))
                         ApplyStyle(style, control);
 
                     else if (Regex.IsMatch(controlName, styleRegex))
                         ApplyStyle(style, control);
                 }
             }
-
-            if (control is IThemable)
-                ((IThemable)control).ApplyTheme(theme.Type);
 
             ApplyTheme(theme, control.Controls);
         }
@@ -167,11 +156,8 @@ namespace Fo76ini.Interface
             if (style == null || control == null)
                 return;
 
-            //Console.WriteLine(" - Applying theme: {0}.{1}", style.ControlType, style.StyleName);
-
             foreach (KeyValuePair<String, object> rule in style.Rules)
             {
-                //Console.WriteLine("   - Applying rule: {0} = {1}", rule.Key, rule.Value.ToString());
                 PropertyInfo property = control.GetType().GetProperty(rule.Key);
                 if (property != null)
                 {
@@ -181,12 +167,11 @@ namespace Fo76ini.Interface
                         property.SetValue(control, Convert.ToInt32(rule.Value.ToString()), null);
                     else if (property.PropertyType == typeof(Color))
                         property.SetValue(control, Utils.ParseColor(rule.Value.ToString()), null);
-                    //else
-                        //Console.WriteLine("     Failed to apply rule.");
-                }
-                else
-                {
-                    //Console.WriteLine("     Failed to apply rule.");
+                    else if (property.PropertyType == typeof(Image))
+                    {
+                        Image img = (Image)Resources.ResourceManager.GetObject(rule.Value.ToString());
+                        property.SetValue(control, img, null);
+                    }
                 }
             }
         }

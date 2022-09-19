@@ -19,10 +19,8 @@ using System.Windows.Forms;
 
 namespace Fo76ini.Forms.FormMain.Tabs
 {
-    public partial class UserControlHome : UserControl, IThemable
+    public partial class UserControlHome : UserControl
     {
-        public string VisualStyle { get; set; }
-
         public UserControlHome()
         {
             InitializeComponent();
@@ -68,18 +66,6 @@ namespace Fo76ini.Forms.FormMain.Tabs
             this.labelWelcome.Font = CustomFonts.GetHeaderFont();
 
             //this.Refresh(); // Forces redraw
-        }
-
-        public void ApplyTheme(ThemeType theme)
-        {
-            if (theme == ThemeType.Dark)
-            {
-                this.styledButtonGitHub.Image = Resources.github_white_16;
-            }
-            else
-            {
-                this.styledButtonGitHub.Image = Resources.github_16;
-            }
         }
 
         /*

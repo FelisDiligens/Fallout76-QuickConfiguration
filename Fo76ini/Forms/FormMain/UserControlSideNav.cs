@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Fo76ini.Forms.FormMain
 {
-    public partial class UserControlSideNav : UserControl, IThemable
+    public partial class UserControlSideNav : UserControl
     {
         PrivateFontCollection pfc = new PrivateFontCollection();
 
@@ -27,20 +27,6 @@ namespace Fo76ini.Forms.FormMain
             {
                 selectedTabIndex = value;
                 UpdateNavButtonsHighlight();
-            }
-        }
-
-        public string VisualStyle { get; set; }
-
-        public void ApplyTheme(ThemeType theme)
-        {
-            if (theme == ThemeType.Dark)
-            {
-                this.pictureBoxLogo.Image = Resources.fallout76_logo_white;
-            }
-            else
-            {
-                this.pictureBoxLogo.Image = Resources.fallout76_logo_black;
             }
         }
 

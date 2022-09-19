@@ -301,6 +301,7 @@
             this.styledButtonxTranslator.BorderWidth = ((uint)(0u));
             this.styledButtonxTranslator.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonxTranslator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonxTranslator.ForeColor = System.Drawing.Color.Black;
             this.styledButtonxTranslator.Highlight = false;
             this.styledButtonxTranslator.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonxTranslator.Image = global::Fo76ini.Properties.Resources.xTranslator_16px;
@@ -324,6 +325,7 @@
             this.styledButtonNukesAndDragonsBuildPlanner.BorderWidth = ((uint)(0u));
             this.styledButtonNukesAndDragonsBuildPlanner.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonNukesAndDragonsBuildPlanner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonNukesAndDragonsBuildPlanner.ForeColor = System.Drawing.Color.Black;
             this.styledButtonNukesAndDragonsBuildPlanner.Highlight = false;
             this.styledButtonNukesAndDragonsBuildPlanner.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonNukesAndDragonsBuildPlanner.Image = global::Fo76ini.Properties.Resources.nukesdragons_16;
@@ -347,6 +349,7 @@
             this.styledButtonBethesdaNetStatus.BorderWidth = ((uint)(0u));
             this.styledButtonBethesdaNetStatus.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonBethesdaNetStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonBethesdaNetStatus.ForeColor = System.Drawing.Color.Black;
             this.styledButtonBethesdaNetStatus.Highlight = false;
             this.styledButtonBethesdaNetStatus.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonBethesdaNetStatus.Image = global::Fo76ini.Properties.Resources.bethesda_16;
@@ -370,6 +373,7 @@
             this.styledButtonBugReports.BorderWidth = ((uint)(0u));
             this.styledButtonBugReports.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonBugReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonBugReports.ForeColor = System.Drawing.Color.Black;
             this.styledButtonBugReports.Highlight = false;
             this.styledButtonBugReports.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonBugReports.Image = global::Fo76ini.Properties.Resources.bug_3_16;
@@ -393,6 +397,7 @@
             this.styledButtonWikiAndGuides.BorderWidth = ((uint)(0u));
             this.styledButtonWikiAndGuides.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonWikiAndGuides.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonWikiAndGuides.ForeColor = System.Drawing.Color.Black;
             this.styledButtonWikiAndGuides.Highlight = false;
             this.styledButtonWikiAndGuides.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonWikiAndGuides.Image = global::Fo76ini.Properties.Resources.help_16;
@@ -416,9 +421,10 @@
             this.styledButtonGitHub.BorderWidth = ((uint)(0u));
             this.styledButtonGitHub.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonGitHub.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonGitHub.ForeColor = System.Drawing.Color.Black;
             this.styledButtonGitHub.Highlight = false;
             this.styledButtonGitHub.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.styledButtonGitHub.Image = global::Fo76ini.Properties.Resources.github_white_16;
+            this.styledButtonGitHub.Image = global::Fo76ini.Properties.Resources.github_16;
             this.styledButtonGitHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonGitHub.Location = new System.Drawing.Point(6, 56);
             this.styledButtonGitHub.Margin = new System.Windows.Forms.Padding(2);
@@ -439,6 +445,7 @@
             this.styledButtonNexusMods.BorderWidth = ((uint)(0u));
             this.styledButtonNexusMods.Cursor = System.Windows.Forms.Cursors.Hand;
             this.styledButtonNexusMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonNexusMods.ForeColor = System.Drawing.Color.Black;
             this.styledButtonNexusMods.Highlight = false;
             this.styledButtonNexusMods.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonNexusMods.Image = global::Fo76ini.Properties.Resources.nexus_16;

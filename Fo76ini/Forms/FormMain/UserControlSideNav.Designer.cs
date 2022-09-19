@@ -88,6 +88,7 @@
             this.labelProfile.Name = "labelProfile";
             this.labelProfile.Size = new System.Drawing.Size(36, 13);
             this.labelProfile.TabIndex = 5;
+            this.labelProfile.Tag = "NavButton";
             this.labelProfile.Text = "Profile";
             // 
             // contextMenuStripBrowse
@@ -267,10 +268,10 @@
             this.buttonNexusMods.Size = new System.Drawing.Size(200, 36);
             this.buttonNexusMods.TabIndex = 52;
             this.buttonNexusMods.TabStop = false;
+            this.buttonNexusMods.Tag = "NavButton";
             this.buttonNexusMods.Text = "NexusMods";
             this.buttonNexusMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonNexusMods.UseVisualStyleBackColor = true;
-            this.buttonNexusMods.VisualStyle = "NavButton";
             this.buttonNexusMods.Click += new System.EventHandler(this.buttonNexusMods_Click);
             // 
             // buttonCustom
@@ -292,10 +293,10 @@
             this.buttonCustom.Size = new System.Drawing.Size(200, 36);
             this.buttonCustom.TabIndex = 51;
             this.buttonCustom.TabStop = false;
+            this.buttonCustom.Tag = "NavButton";
             this.buttonCustom.Text = "Custom tweaks";
             this.buttonCustom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCustom.UseVisualStyleBackColor = true;
-            this.buttonCustom.VisualStyle = "NavButton";
             this.buttonCustom.Click += new System.EventHandler(this.buttonCustom_Click);
             // 
             // buttonProfile
@@ -317,10 +318,10 @@
             this.buttonProfile.Size = new System.Drawing.Size(200, 48);
             this.buttonProfile.TabIndex = 50;
             this.buttonProfile.TabStop = false;
+            this.buttonProfile.Tag = "NavButton";
             this.buttonProfile.Text = "Unknown";
             this.buttonProfile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonProfile.UseVisualStyleBackColor = true;
-            this.buttonProfile.VisualStyle = "NavButton";
             this.buttonProfile.Click += new System.EventHandler(this.buttonProfile_Click);
             // 
             // buttonHome
@@ -342,10 +343,10 @@
             this.buttonHome.Size = new System.Drawing.Size(200, 36);
             this.buttonHome.TabIndex = 17;
             this.buttonHome.TabStop = false;
+            this.buttonHome.Tag = "NavButton";
             this.buttonHome.Text = "Home";
             this.buttonHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHome.UseVisualStyleBackColor = true;
-            this.buttonHome.VisualStyle = "NavButton";
             this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
             // 
             // buttonGallery
@@ -367,10 +368,10 @@
             this.buttonGallery.Size = new System.Drawing.Size(200, 36);
             this.buttonGallery.TabIndex = 15;
             this.buttonGallery.TabStop = false;
+            this.buttonGallery.Tag = "NavButton";
             this.buttonGallery.Text = "Gallery";
             this.buttonGallery.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonGallery.UseVisualStyleBackColor = true;
-            this.buttonGallery.VisualStyle = "NavButton";
             this.buttonGallery.Click += new System.EventHandler(this.buttonGallery_Click);
             // 
             // buttonPipboy
@@ -392,10 +393,10 @@
             this.buttonPipboy.Size = new System.Drawing.Size(200, 36);
             this.buttonPipboy.TabIndex = 14;
             this.buttonPipboy.TabStop = false;
+            this.buttonPipboy.Tag = "NavButton";
             this.buttonPipboy.Text = "Pip-Boy";
             this.buttonPipboy.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPipboy.UseVisualStyleBackColor = true;
-            this.buttonPipboy.VisualStyle = "NavButton";
             this.buttonPipboy.Click += new System.EventHandler(this.buttonPipboy_Click);
             // 
             // buttonTweaks
@@ -417,10 +418,10 @@
             this.buttonTweaks.Size = new System.Drawing.Size(200, 36);
             this.buttonTweaks.TabIndex = 13;
             this.buttonTweaks.TabStop = false;
+            this.buttonTweaks.Tag = "NavButton";
             this.buttonTweaks.Text = "Tweaks";
             this.buttonTweaks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTweaks.UseVisualStyleBackColor = true;
-            this.buttonTweaks.VisualStyle = "NavButton";
             this.buttonTweaks.Click += new System.EventHandler(this.buttonTweaks_Click);
             // 
             // buttonBrowse
@@ -442,10 +443,10 @@
             this.buttonBrowse.Size = new System.Drawing.Size(60, 50);
             this.buttonBrowse.TabIndex = 11;
             this.buttonBrowse.TabStop = false;
+            this.buttonBrowse.Tag = "NavButton";
             this.buttonBrowse.Text = "Browse";
             this.buttonBrowse.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonBrowse.UseVisualStyleBackColor = true;
-            this.buttonBrowse.VisualStyle = "NavButton";
             this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
             // buttonSettings
@@ -467,10 +468,10 @@
             this.buttonSettings.Size = new System.Drawing.Size(200, 36);
             this.buttonSettings.TabIndex = 10;
             this.buttonSettings.TabStop = false;
+            this.buttonSettings.Tag = "NavButton";
             this.buttonSettings.Text = "Settings";
             this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSettings.UseVisualStyleBackColor = true;
-            this.buttonSettings.VisualStyle = "NavButton";
             this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
             // buttonMods
@@ -492,10 +493,10 @@
             this.buttonMods.Size = new System.Drawing.Size(200, 36);
             this.buttonMods.TabIndex = 9;
             this.buttonMods.TabStop = false;
+            this.buttonMods.Tag = "NavButton";
             this.buttonMods.Text = "Mods";
             this.buttonMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonMods.UseVisualStyleBackColor = true;
-            this.buttonMods.VisualStyle = "NavButton";
             this.buttonMods.Click += new System.EventHandler(this.buttonMods_Click);
             // 
             // buttonUpdate
@@ -517,10 +518,10 @@
             this.buttonUpdate.Size = new System.Drawing.Size(200, 36);
             this.buttonUpdate.TabIndex = 8;
             this.buttonUpdate.TabStop = false;
+            this.buttonUpdate.Tag = "NavButton";
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonUpdate.UseVisualStyleBackColor = true;
-            this.buttonUpdate.VisualStyle = "NavButton";
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonApply
@@ -542,10 +543,10 @@
             this.buttonApply.Size = new System.Drawing.Size(60, 50);
             this.buttonApply.TabIndex = 7;
             this.buttonApply.TabStop = false;
+            this.buttonApply.Tag = "NavButton";
             this.buttonApply.Text = "Apply";
             this.buttonApply.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonApply.UseVisualStyleBackColor = true;
-            this.buttonApply.VisualStyle = "NavButton";
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
             // buttonPlay
@@ -567,10 +568,10 @@
             this.buttonPlay.Size = new System.Drawing.Size(60, 50);
             this.buttonPlay.TabIndex = 6;
             this.buttonPlay.TabStop = false;
+            this.buttonPlay.Tag = "NavButton";
             this.buttonPlay.Text = "Play";
             this.buttonPlay.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonPlay.UseVisualStyleBackColor = true;
-            this.buttonPlay.VisualStyle = "NavButton";
             this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
             // 
             // UserControlSideNav

@@ -162,7 +162,6 @@
     <Compile Include="Controls\ImagedComboBox\ImagedComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Interface\IThemable.cs" />
     <Compile Include="Controls\StyledButton.cs">
       <SubType>Component</SubType>
     </Compile>
