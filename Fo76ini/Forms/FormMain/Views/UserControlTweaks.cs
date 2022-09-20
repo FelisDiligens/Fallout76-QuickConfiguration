@@ -309,6 +309,12 @@ namespace Fo76ini.Forms.FormMain
             this.richTextBoxCredentialsExplanation.Rtf = Localization.GetTextResource("Login with Bethesda.net.rtf");
         }
 
+        private void webBrowserTweaksInfo_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            this.webBrowserTweaksInfo.Document.BackColor = Theming.GetColor("BackColor", Color.White);
+            this.webBrowserTweaksInfo.Document.ForeColor = Theming.GetColor("TextColor", Color.Black);
+        }
+
         private void OnProfileChanged(object sender, ProfileEventArgs e)
         {
             // For some reason, it won't update the resolution combobox, unless I add this workaround:

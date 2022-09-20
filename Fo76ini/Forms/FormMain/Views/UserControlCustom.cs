@@ -17,11 +17,11 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         // Colors for syntax highlighting
         TextStyle comment = new TextStyle(Brushes.DarkGreen, null, FontStyle.Italic);
-        TextStyle section = new TextStyle(Brushes.Blue, null, FontStyle.Bold);
-        TextStyle key = new TextStyle(Brushes.Blue, null, FontStyle.Regular);
+        TextStyle section = new TextStyle(Brushes.RoyalBlue, null, FontStyle.Bold);
+        TextStyle key = new TextStyle(Brushes.RoyalBlue, null, FontStyle.Regular);
         TextStyle equalsSign = new TextStyle(Brushes.DarkGreen, null, FontStyle.Regular);
-        TextStyle valueString = new TextStyle(Brushes.Red, null, FontStyle.Regular);
-        TextStyle valueNumber = new TextStyle(Brushes.Red, null, FontStyle.Bold);
+        TextStyle valueString = new TextStyle(Brushes.OrangeRed, null, FontStyle.Regular);
+        TextStyle valueNumber = new TextStyle(Brushes.OrangeRed, null, FontStyle.Bold);
         Style[] styles;
 
         // Autocomplete

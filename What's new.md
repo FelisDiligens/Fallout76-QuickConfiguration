@@ -1,3 +1,16 @@
+### What’s new in v1.12.0? - The dark mode update
+
+Hello everyone,
+
+this update adds two themes to the tool: light and dark.  
+However, it does not apply to the mod manager yet.
+
+I hope your eyes are now soothed with the dark mode. :)
+
+*To be released...*
+
+---
+
 ### What's new in v1.11.5?
 
 This update mainly fixes the server status display.
@@ -18,6 +31,8 @@ After:
 
 </details>
 
+*Released: Sep 13, 2022*
+
 ---
 
 ### What's new in v1.11.4?
@@ -29,11 +44,15 @@ This update adds:
  - a notification that pops up if translations can be updated (opt-out).
  - minor changes.
 
+*Released: Sep 2, 2022*
+
 ---
 
 ### What's new in v1.11.3h1? - Hotfix 1
 
 Fixed an issue where drag and drop into the mod list would fail if the mod list was empty.
+
+*Released: Aug 28, 2022*
 
 ---
 
@@ -75,6 +94,8 @@ This is a small update that
 
 </details>
 
+*Released: Aug 25, 2022*
+
 ---
 
 ### What's new in v1.11.2?
@@ -101,6 +122,8 @@ This is another small update to address some bugs.
 
 </details>
 
+*Released: 18 Aug 2022*
+
 ---
 
 ### What's new in v1.11.1?
@@ -119,6 +142,8 @@ This is a small update to address some bugs.
 - Minor changes
 
 </details>
+
+*Released: 30 Jul 2022*
 
 ---
 
@@ -194,3 +219,5 @@ Happy hunting,
   - If a password written into [Login]s76Password contains `";"` or `"#"`, it will be truncated.
 
 </details>
+
+*Released: 25 Jul 2022*

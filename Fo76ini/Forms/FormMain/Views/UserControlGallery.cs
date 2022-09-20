@@ -12,7 +12,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fo76ini.Forms.FormMain
@@ -308,8 +307,8 @@ namespace Fo76ini.Forms.FormMain
                 }
             }
 
-            this.Invoke(() => this.pictureBoxGalleryLoadingGIF.Visible = false);
-            this.Invoke(() => this.buttonRefreshGallery.Enabled = true);
+            //this.Invoke(() => this.pictureBoxGalleryLoadingGIF.Visible = false);
+            //this.Invoke(() => this.buttonRefreshGallery.Enabled = true);
         }
 
         private List<string> GetAdditionalPathList()
@@ -365,9 +364,9 @@ namespace Fo76ini.Forms.FormMain
             }
         }
 
-        private void sliderGalleryThumbnailSize_Scroll(object sender, EventArgs e)
+        private void sliderGalleryThumbnailSize_Scroll(object sender, ScrollEventArgs e)
         {
-            galleryImageSizeMult = this.sliderGalleryThumbnailSize.Value * 3 + 1;
+            galleryImageSizeMult = (int)(this.sliderGalleryThumbnailSize.Value) * 3 + 1;
             if (this.listViewScreenshots.LargeImageList != null)
                 this.listViewScreenshots.LargeImageList.ImageSize = new Size(16 * galleryImageSizeMult, 9 * galleryImageSizeMult);
         }

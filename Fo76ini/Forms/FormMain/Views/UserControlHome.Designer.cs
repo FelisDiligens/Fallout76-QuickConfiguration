@@ -93,6 +93,7 @@
             this.webBrowserWhatsNew.ScriptErrorsSuppressed = true;
             this.webBrowserWhatsNew.Size = new System.Drawing.Size(662, 435);
             this.webBrowserWhatsNew.TabIndex = 52;
+            this.webBrowserWhatsNew.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowserWhatsNew_DocumentCompleted);
             // 
             // panelUpdate
             // 
@@ -314,6 +315,7 @@
             this.styledButtonxTranslator.Padding = 2;
             this.styledButtonxTranslator.Size = new System.Drawing.Size(190, 23);
             this.styledButtonxTranslator.TabIndex = 21;
+            this.styledButtonxTranslator.Tag = "WebLink";
             this.styledButtonxTranslator.Text = "xTranslator";
             this.styledButtonxTranslator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonxTranslator.UseVisualStyleBackColor = true;
@@ -338,6 +340,7 @@
             this.styledButtonNukesAndDragonsBuildPlanner.Padding = 2;
             this.styledButtonNukesAndDragonsBuildPlanner.Size = new System.Drawing.Size(190, 23);
             this.styledButtonNukesAndDragonsBuildPlanner.TabIndex = 20;
+            this.styledButtonNukesAndDragonsBuildPlanner.Tag = "WebLink";
             this.styledButtonNukesAndDragonsBuildPlanner.Text = "N&D Build Planner";
             this.styledButtonNukesAndDragonsBuildPlanner.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonNukesAndDragonsBuildPlanner.UseVisualStyleBackColor = true;
@@ -362,6 +365,7 @@
             this.styledButtonBethesdaNetStatus.Padding = 2;
             this.styledButtonBethesdaNetStatus.Size = new System.Drawing.Size(190, 23);
             this.styledButtonBethesdaNetStatus.TabIndex = 19;
+            this.styledButtonBethesdaNetStatus.Tag = "WebLink";
             this.styledButtonBethesdaNetStatus.Text = "Bethesda.net status page";
             this.styledButtonBethesdaNetStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonBethesdaNetStatus.UseVisualStyleBackColor = true;
@@ -386,6 +390,7 @@
             this.styledButtonBugReports.Padding = 2;
             this.styledButtonBugReports.Size = new System.Drawing.Size(190, 23);
             this.styledButtonBugReports.TabIndex = 18;
+            this.styledButtonBugReports.Tag = "WebLink";
             this.styledButtonBugReports.Text = "Bug reports";
             this.styledButtonBugReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonBugReports.UseVisualStyleBackColor = true;
@@ -410,6 +415,7 @@
             this.styledButtonWikiAndGuides.Padding = 2;
             this.styledButtonWikiAndGuides.Size = new System.Drawing.Size(190, 23);
             this.styledButtonWikiAndGuides.TabIndex = 17;
+            this.styledButtonWikiAndGuides.Tag = "WebLink";
             this.styledButtonWikiAndGuides.Text = "Wiki & guides";
             this.styledButtonWikiAndGuides.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonWikiAndGuides.UseVisualStyleBackColor = true;
@@ -434,6 +440,7 @@
             this.styledButtonGitHub.Padding = 2;
             this.styledButtonGitHub.Size = new System.Drawing.Size(190, 23);
             this.styledButtonGitHub.TabIndex = 16;
+            this.styledButtonGitHub.Tag = "WebLink";
             this.styledButtonGitHub.Text = "GitHub";
             this.styledButtonGitHub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonGitHub.UseVisualStyleBackColor = true;
@@ -458,6 +465,7 @@
             this.styledButtonNexusMods.Padding = 2;
             this.styledButtonNexusMods.Size = new System.Drawing.Size(190, 23);
             this.styledButtonNexusMods.TabIndex = 15;
+            this.styledButtonNexusMods.Tag = "WebLink";
             this.styledButtonNexusMods.Text = "NexusMods";
             this.styledButtonNexusMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonNexusMods.UseVisualStyleBackColor = true;
@@ -529,6 +537,7 @@
             this.buttonReloadServerStatus.Name = "buttonReloadServerStatus";
             this.buttonReloadServerStatus.Size = new System.Drawing.Size(28, 28);
             this.buttonReloadServerStatus.TabIndex = 40;
+            this.buttonReloadServerStatus.Tag = "SmallButton";
             this.buttonReloadServerStatus.UseVisualStyleBackColor = true;
             this.buttonReloadServerStatus.Click += new System.EventHandler(this.buttonReloadServerStatus_Click);
             // 
@@ -571,6 +580,7 @@
             this.styledButtonWhatsNew.Padding = 2;
             this.styledButtonWhatsNew.Size = new System.Drawing.Size(413, 23);
             this.styledButtonWhatsNew.TabIndex = 20;
+            this.styledButtonWhatsNew.Tag = "";
             this.styledButtonWhatsNew.Text = "What\'s new?";
             this.styledButtonWhatsNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.styledButtonWhatsNew.UseVisualStyleBackColor = true;

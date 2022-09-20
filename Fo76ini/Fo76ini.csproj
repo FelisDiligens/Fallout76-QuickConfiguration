@@ -198,6 +198,7 @@
     <Compile Include="Forms\FormIniError\FormIniError.Designer.cs">
       <DependentUpon>FormIniError.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\StyleGenerator.cs" />
     <Compile Include="Forms\FormMain\Views\UserControlCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -536,6 +537,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\dark.yml" />
+    <EmbeddedResource Include="Resources\light.yml" />
     <None Include="Resources\status-operational.svg" />
     <None Include="Resources\status-major.svg" />
     <None Include="Resources\status-maintenance.svg" />

@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManagedDOMStyles;
 
 namespace Fo76ini.Forms.FormMain.Tabs
 {
@@ -171,7 +172,14 @@ namespace Fo76ini.Forms.FormMain.Tabs
                 this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewHTMLURL);
         }
 
-        #endregion
+        private void webBrowserWhatsNew_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            /*var sg = new StyleGenerator();
+            sg.ParseStyleString(this.webBrowserWhatsNew.Document.Body.Style);
+            sg.SetStyle("background-color", Theming.Get("BackColor", "white"));
+            sg.SetStyle("color", Theming.Get("TextColor", "black"));
+            this.webBrowserWhatsNew.Document.Body.Style = sg.GetStyleString();*/
+        }
 
         private void styledButtonWhatsNew_Click(object sender, EventArgs e)
         {
@@ -197,6 +205,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             this.tabControlWithoutHeader1.SelectedTab = this.tabPageHome;
         }
+
+        #endregion
 
         #region Web links
 

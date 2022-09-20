@@ -108,7 +108,8 @@
             this.editFallout76PrefsiniToolStripMenuItem,
             this.editFallout76CustominiToolStripMenuItem});
             this.contextMenuStripBrowse.Name = "contextMenuStripBrowse";
-            this.contextMenuStripBrowse.Size = new System.Drawing.Size(215, 242);
+            this.contextMenuStripBrowse.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.contextMenuStripBrowse.Size = new System.Drawing.Size(215, 264);
             // 
             // gameFolderToolStripMenuItem
             // 
@@ -428,6 +429,7 @@
             // 
             this.buttonBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.buttonBrowse.BorderWidth = ((uint)(0u));
+            this.buttonBrowse.ContextMenuStrip = this.contextMenuStripBrowse;
             this.buttonBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBrowse.ForeColor = System.Drawing.Color.Black;

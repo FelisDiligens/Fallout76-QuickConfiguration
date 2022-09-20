@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panelGalleryOptions = new System.Windows.Forms.Panel();
-            this.groupBoxScreenshotOptions = new System.Windows.Forms.GroupBox();
+            this.groupBoxScreenshotOptions = new Fo76ini.Controls.StyledGroupBox();
             this.buttonGalleryDeleteThumbnails = new System.Windows.Forms.Button();
             this.checkBoxGallerySearchRecursively = new System.Windows.Forms.CheckBox();
             this.textBoxGalleryPaths = new System.Windows.Forms.TextBox();
@@ -42,7 +42,7 @@
             this.pictureBoxGalleryLoadingGIF = new System.Windows.Forms.PictureBox();
             this.labelGalleryTip = new System.Windows.Forms.Label();
             this.listViewScreenshots = new System.Windows.Forms.ListView();
-            this.sliderGalleryThumbnailSize = new System.Windows.Forms.TrackBar();
+            this.sliderGalleryThumbnailSize = new ColorSlider.ColorSlider();
             this.buttonGalleryShowOptions = new System.Windows.Forms.Button();
             this.buttonRefreshGallery = new System.Windows.Forms.Button();
             this.backgroundWorkerLoadGallery = new System.ComponentModel.BackgroundWorker();
@@ -54,13 +54,12 @@
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new Controls.CustomToolTip(this.components);
+            this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.panelGalleryOptions.SuspendLayout();
             this.groupBoxScreenshotOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScreenshotIndex)).BeginInit();
             this.panelGallery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).BeginInit();
             this.contextMenuStripGallery.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +78,9 @@
             this.groupBoxScreenshotOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxScreenshotOptions.BackColor = System.Drawing.Color.White;
+            this.groupBoxScreenshotOptions.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxScreenshotOptions.BorderWidth = 1;
             this.groupBoxScreenshotOptions.Controls.Add(this.buttonGalleryDeleteThumbnails);
             this.groupBoxScreenshotOptions.Controls.Add(this.checkBoxGallerySearchRecursively);
             this.groupBoxScreenshotOptions.Controls.Add(this.textBoxGalleryPaths);
@@ -92,6 +94,10 @@
             this.groupBoxScreenshotOptions.TabIndex = 0;
             this.groupBoxScreenshotOptions.TabStop = false;
             this.groupBoxScreenshotOptions.Text = "Options";
+            this.groupBoxScreenshotOptions.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxScreenshotOptions.TitleBorderMargin = 6;
+            this.groupBoxScreenshotOptions.TitleBorderPadding = 4;
+            this.groupBoxScreenshotOptions.TitleForeColor = System.Drawing.Color.Black;
             // 
             // buttonGalleryDeleteThumbnails
             // 
@@ -163,12 +169,12 @@
             this.labelScreenshotIndex.TabIndex = 0;
             this.labelScreenshotIndex.Text = "Screenshot index:";
             // 
-            // labelGallery
+            // labelGalleryTitle
             // 
             this.labelGalleryTitle.AutoSize = true;
             this.labelGalleryTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGalleryTitle.Location = new System.Drawing.Point(10, 15);
-            this.labelGalleryTitle.Name = "labelGallery";
+            this.labelGalleryTitle.Name = "labelGalleryTitle";
             this.labelGalleryTitle.Size = new System.Drawing.Size(80, 30);
             this.labelGalleryTitle.TabIndex = 68;
             this.labelGalleryTitle.Text = "Gallery";
@@ -194,7 +200,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxGalleryLoadingGIF.BackColor = System.Drawing.Color.White;
             this.pictureBoxGalleryLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
-            this.pictureBoxGalleryLoadingGIF.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxGalleryLoadingGIF.Location = new System.Drawing.Point(-4, 0);
             this.pictureBoxGalleryLoadingGIF.Name = "pictureBoxGalleryLoadingGIF";
             this.pictureBoxGalleryLoadingGIF.Size = new System.Drawing.Size(574, 396);
             this.pictureBoxGalleryLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -208,7 +214,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGalleryTip.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGalleryTip.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelGalleryTip.ForeColor = System.Drawing.Color.Gray;
             this.labelGalleryTip.Location = new System.Drawing.Point(0, 0);
             this.labelGalleryTip.Margin = new System.Windows.Forms.Padding(20);
             this.labelGalleryTip.Name = "labelGalleryTip";
@@ -234,16 +240,65 @@
             // sliderGalleryThumbnailSize
             // 
             this.sliderGalleryThumbnailSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderGalleryThumbnailSize.BackColor = System.Drawing.SystemColors.Window;
-            this.sliderGalleryThumbnailSize.LargeChange = 1;
+            this.sliderGalleryThumbnailSize.BackColor = System.Drawing.Color.Transparent;
+            this.sliderGalleryThumbnailSize.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderGalleryThumbnailSize.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderGalleryThumbnailSize.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderGalleryThumbnailSize.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGalleryThumbnailSize.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderGalleryThumbnailSize.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderGalleryThumbnailSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderGalleryThumbnailSize.ForeColor = System.Drawing.Color.White;
+            this.sliderGalleryThumbnailSize.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderGalleryThumbnailSize.Location = new System.Drawing.Point(534, 15);
-            this.sliderGalleryThumbnailSize.Maximum = 5;
-            this.sliderGalleryThumbnailSize.Minimum = 1;
+            this.sliderGalleryThumbnailSize.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderGalleryThumbnailSize.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderGalleryThumbnailSize.Name = "sliderGalleryThumbnailSize";
-            this.sliderGalleryThumbnailSize.Size = new System.Drawing.Size(175, 45);
+            this.sliderGalleryThumbnailSize.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderGalleryThumbnailSize.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderGalleryThumbnailSize.ShowDivisionsText = false;
+            this.sliderGalleryThumbnailSize.ShowSmallScale = false;
+            this.sliderGalleryThumbnailSize.Size = new System.Drawing.Size(175, 36);
+            this.sliderGalleryThumbnailSize.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sliderGalleryThumbnailSize.TabIndex = 67;
-            this.sliderGalleryThumbnailSize.Value = 1;
-            this.sliderGalleryThumbnailSize.Scroll += new System.EventHandler(this.sliderGalleryThumbnailSize_Scroll);
+            this.sliderGalleryThumbnailSize.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGalleryThumbnailSize.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderGalleryThumbnailSize.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderGalleryThumbnailSize.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderGalleryThumbnailSize.TickAdd = 0F;
+            this.sliderGalleryThumbnailSize.TickColor = System.Drawing.Color.White;
+            this.sliderGalleryThumbnailSize.TickDivide = 0F;
+            this.sliderGalleryThumbnailSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderGalleryThumbnailSize.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.sliderGalleryThumbnailSize.Scroll += new System.Windows.Forms.ScrollEventHandler(this.sliderGalleryThumbnailSize_Scroll);
             // 
             // buttonGalleryShowOptions
             // 
@@ -256,6 +311,7 @@
             this.buttonGalleryShowOptions.Name = "buttonGalleryShowOptions";
             this.buttonGalleryShowOptions.Size = new System.Drawing.Size(36, 36);
             this.buttonGalleryShowOptions.TabIndex = 69;
+            this.buttonGalleryShowOptions.Tag = "SmallButton";
             this.buttonGalleryShowOptions.UseVisualStyleBackColor = false;
             this.buttonGalleryShowOptions.Click += new System.EventHandler(this.buttonGalleryShowOptions_Click);
             // 
@@ -270,6 +326,7 @@
             this.buttonRefreshGallery.Name = "buttonRefreshGallery";
             this.buttonRefreshGallery.Size = new System.Drawing.Size(36, 36);
             this.buttonRefreshGallery.TabIndex = 65;
+            this.buttonRefreshGallery.Tag = "SmallButton";
             this.buttonRefreshGallery.UseVisualStyleBackColor = false;
             this.buttonRefreshGallery.Click += new System.EventHandler(this.buttonRefreshGallery_Click);
             // 
@@ -332,6 +389,18 @@
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 20000;
+            this.toolTip.BackColor = System.Drawing.Color.White;
+            this.toolTip.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolTip.ForeColor = System.Drawing.Color.Black;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.OwnerDraw = true;
+            this.toolTip.Padding = new System.Drawing.Size(6, 6);
+            this.toolTip.ReshowDelay = 100;
+            this.toolTip.ShowAlways = true;
+            // 
             // UserControlGallery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,7 +419,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numScreenshotIndex)).EndInit();
             this.panelGallery.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGalleryLoadingGIF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGalleryThumbnailSize)).EndInit();
             this.contextMenuStripGallery.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -360,7 +428,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panelGalleryOptions;
-        private System.Windows.Forms.GroupBox groupBoxScreenshotOptions;
+        private Fo76ini.Controls.StyledGroupBox groupBoxScreenshotOptions;
         private System.Windows.Forms.Button buttonGalleryDeleteThumbnails;
         private System.Windows.Forms.CheckBox checkBoxGallerySearchRecursively;
         private System.Windows.Forms.TextBox textBoxGalleryPaths;
@@ -372,7 +440,7 @@
         private System.Windows.Forms.PictureBox pictureBoxGalleryLoadingGIF;
         private System.Windows.Forms.Label labelGalleryTip;
         private System.Windows.Forms.ListView listViewScreenshots;
-        private System.Windows.Forms.TrackBar sliderGalleryThumbnailSize;
+        private ColorSlider.ColorSlider sliderGalleryThumbnailSize;
         private System.Windows.Forms.Button buttonGalleryShowOptions;
         private System.Windows.Forms.Button buttonRefreshGallery;
         private System.ComponentModel.BackgroundWorker backgroundWorkerLoadGallery;

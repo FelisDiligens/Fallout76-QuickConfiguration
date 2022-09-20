@@ -33,12 +33,26 @@ namespace Fo76ini.Interface
 
         public static Theme DarkTheme
         {
-            get { return Theme.ReadTheme(Path.Combine(ThemesPath, "dark.yml")); }
+            get
+            {
+                String themePath = Path.Combine(ThemesPath, "dark.yml");
+                if (File.Exists(themePath))
+                    return Theme.ReadThemeFromFile(themePath);
+                else
+                    return Theme.ReadThemeFromString(Localization.GetTextResource("dark.yml"));
+            }
         }
 
         public static Theme LightTheme
         {
-            get { return Theme.ReadTheme(Path.Combine(ThemesPath, "light.yml")); }
+            get
+            {
+                String themePath = Path.Combine(ThemesPath, "light.yml");
+                if (File.Exists(themePath))
+                    return Theme.ReadThemeFromFile(themePath);
+                else
+                    return Theme.ReadThemeFromString(Localization.GetTextResource("light.yml"));
+            }
         }
 
         public static Theme SystemTheme
@@ -52,7 +66,9 @@ namespace Fo76ini.Interface
                 Registry.CurrentUser.OpenSubKey(
                     @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
 
-            if ((int)registry.GetValue("AppsUseLightTheme") == 1) // SystemUsesLightTheme
+            if (registry == null)
+                return ThemeType.Light;
+            else if ((int)registry.GetValue("AppsUseLightTheme") == 1) // SystemUsesLightTheme
                 return ThemeType.Light;
             else
                 return ThemeType.Dark;
@@ -150,6 +166,9 @@ namespace Fo76ini.Interface
 
             //control.Refresh();
 
+            if (control.ContextMenuStrip != null)
+                ApplyTheme(theme, control.ContextMenuStrip);
+
             ApplyTheme(theme, control.Controls);
         }
 
@@ -161,6 +180,15 @@ namespace Fo76ini.Interface
             foreach (KeyValuePair<String, object> rule in style.Rules)
             {
                 PropertyInfo property = control.GetType().GetProperty(rule.Key);
+                object parent = control;
+
+                // Support Button.FlatAppearance
+                if (property == null && control is Button)
+                {
+                    parent = ((Button)control).FlatAppearance;
+                    property = ((Button)control).FlatAppearance.GetType().GetProperty(rule.Key);
+                }
+
                 if (property != null)
                 {
                     String value = rule.Value.ToString();
@@ -177,15 +205,15 @@ namespace Fo76ini.Interface
                     }
 
                     if (property.PropertyType == typeof(string))
-                        property.SetValue(control, value, null);
+                        property.SetValue(parent, value, null);
                     else if (property.PropertyType == typeof(int))
-                        property.SetValue(control, Convert.ToInt32(value), null);
+                        property.SetValue(parent, Convert.ToInt32(value), null);
                     else if (property.PropertyType == typeof(Color))
-                        property.SetValue(control, Utils.ParseColor(value), null);
+                        property.SetValue(parent, Utils.ParseColor(value), null);
                     else if (property.PropertyType == typeof(Image))
                     {
                         Image img = (Image)Resources.ResourceManager.GetObject(value);
-                        property.SetValue(control, img, null);
+                        property.SetValue(parent, img, null);
                     }
                 }
             }

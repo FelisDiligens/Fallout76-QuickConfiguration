@@ -46,25 +46,14 @@
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.labelPipboyTitle = new System.Windows.Forms.Label();
             this.panelPipboyPresets = new System.Windows.Forms.Panel();
-            this.colorPreview5 = new Fo76ini.Controls.ColorPreview();
             this.buttonPresetTato = new System.Windows.Forms.Button();
-            this.colorPreview4 = new Fo76ini.Controls.ColorPreview();
             this.buttonButtonPresetLavendar = new System.Windows.Forms.Button();
-            this.colorPreview3 = new Fo76ini.Controls.ColorPreview();
             this.buttonPresetFo76PPColor = new System.Windows.Forms.Button();
-            this.colorPreview2 = new Fo76ini.Controls.ColorPreview();
             this.buttonPresetFo76QB = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.colorPreview1 = new Fo76ini.Controls.ColorPreview();
             this.buttonPresetWhite = new System.Windows.Forms.Button();
             this.pictureBoxSpacer = new System.Windows.Forms.PictureBox();
             this.labelPresets = new System.Windows.Forms.Label();
-            this.colorPreviewPresetFo76Green = new Fo76ini.Controls.ColorPreview();
-            this.colorPreviewPresetFo3Green = new Fo76ini.Controls.ColorPreview();
-            this.colorPreviewPresetFo3White = new Fo76ini.Controls.ColorPreview();
-            this.colorPreviewPresetFo4Green = new Fo76ini.Controls.ColorPreview();
-            this.colorPreviewPresetFo3Blue = new Fo76ini.Controls.ColorPreview();
-            this.colorPreviewPresetFoNVAmber = new Fo76ini.Controls.ColorPreview();
             this.panelPipboyOther = new System.Windows.Forms.Panel();
             this.labelPipboyResolution = new System.Windows.Forms.Label();
             this.labelPipboyMode = new System.Windows.Forms.Label();
@@ -100,23 +89,23 @@
             this.buttonColorResetPAPipboy = new System.Windows.Forms.Button();
             this.pipboyPAPreview = new Fo76ini.Controls.PipboyPreview();
             this.colorPreviewPAPipboy = new Fo76ini.Controls.ColorPreview();
+            this.colorPreview5 = new Fo76ini.Controls.ColorPreview();
+            this.colorPreview4 = new Fo76ini.Controls.ColorPreview();
+            this.colorPreview3 = new Fo76ini.Controls.ColorPreview();
+            this.colorPreview2 = new Fo76ini.Controls.ColorPreview();
+            this.colorPreview1 = new Fo76ini.Controls.ColorPreview();
+            this.colorPreviewPresetFo76Green = new Fo76ini.Controls.ColorPreview();
+            this.colorPreviewPresetFo3Green = new Fo76ini.Controls.ColorPreview();
+            this.colorPreviewPresetFo3White = new Fo76ini.Controls.ColorPreview();
+            this.colorPreviewPresetFo4Green = new Fo76ini.Controls.ColorPreview();
+            this.colorPreviewPresetFo3Blue = new Fo76ini.Controls.ColorPreview();
+            this.colorPreviewPresetFoNVAmber = new Fo76ini.Controls.ColorPreview();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).BeginInit();
             this.panelPipboyPresets.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreview5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreview4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreview3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreview2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreview1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo76Green)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Green)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3White)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo4Green)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Blue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFoNVAmber)).BeginInit();
             this.panelPipboyOther.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControlPipboy.SuspendLayout();
@@ -126,6 +115,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewQuickboy)).BeginInit();
             this.tabPagePowerArmorColor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreview5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreview4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreview3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreview2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreview1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo76Green)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Green)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3White)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo4Green)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Blue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFoNVAmber)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonPresetFo3Green
@@ -139,6 +139,7 @@
             this.buttonPresetFo3Green.Name = "buttonPresetFo3Green";
             this.buttonPresetFo3Green.Size = new System.Drawing.Size(166, 24);
             this.buttonPresetFo3Green.TabIndex = 51;
+            this.buttonPresetFo3Green.Tag = "PipBoyColorPreset";
             this.buttonPresetFo3Green.Text = "Capital Wasteland Green";
             this.buttonPresetFo3Green.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPresetFo3Green.UseVisualStyleBackColor = false;
@@ -155,6 +156,7 @@
             this.buttonPresetFo3White.Name = "buttonPresetFo3White";
             this.buttonPresetFo3White.Size = new System.Drawing.Size(166, 24);
             this.buttonPresetFo3White.TabIndex = 57;
+            this.buttonPresetFo3White.Tag = "PipBoyColorPreset";
             this.buttonPresetFo3White.Text = "Classic White";
             this.buttonPresetFo3White.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPresetFo3White.UseVisualStyleBackColor = false;
@@ -171,6 +173,7 @@
             this.buttonPresetFoNVAmber.Name = "buttonPresetFoNVAmber";
             this.buttonPresetFoNVAmber.Size = new System.Drawing.Size(166, 24);
             this.buttonPresetFoNVAmber.TabIndex = 53;
+            this.buttonPresetFoNVAmber.Tag = "PipBoyColorPreset";
             this.buttonPresetFoNVAmber.Text = "Mojave Wasteland Amber";
             this.buttonPresetFoNVAmber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPresetFoNVAmber.UseVisualStyleBackColor = false;
@@ -187,6 +190,7 @@
             this.buttonPresetFo76Green.Name = "buttonPresetFo76Green";
             this.buttonPresetFo76Green.Size = new System.Drawing.Size(166, 24);
             this.buttonPresetFo76Green.TabIndex = 61;
+            this.buttonPresetFo76Green.Tag = "PipBoyColorPreset";
             this.buttonPresetFo76Green.Text = "Appalachia Green";
             this.buttonPresetFo76Green.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPresetFo76Green.UseVisualStyleBackColor = false;
@@ -203,6 +207,7 @@
             this.buttonPresetFo4Green.Name = "buttonPresetFo4Green";
             this.buttonPresetFo4Green.Size = new System.Drawing.Size(166, 24);
             this.buttonPresetFo4Green.TabIndex = 59;
+            this.buttonPresetFo4Green.Tag = "PipBoyColorPreset";
             this.buttonPresetFo4Green.Text = "Commonwealth Green";
             this.buttonPresetFo4Green.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPresetFo4Green.UseVisualStyleBackColor = false;
@@ -219,6 +224,7 @@
             this.buttonPresetFo3Blue.Name = "buttonPresetFo3Blue";
             this.buttonPresetFo3Blue.Size = new System.Drawing.Size(166, 24);
             this.buttonPresetFo3Blue.TabIndex = 55;
+            this.buttonPresetFo3Blue.Tag = "PipBoyColorPreset";
             this.buttonPresetFo3Blue.Text = "Classic Blue";
             this.buttonPresetFo3Blue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPresetFo3Blue.UseVisualStyleBackColor = false;
@@ -363,16 +369,6 @@
             this.panelPipboyPresets.Size = new System.Drawing.Size(211, 415);
             this.panelPipboyPresets.TabIndex = 47;
             // 
-            // colorPreview5
-            // 
-            this.colorPreview5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(110)))), ((int)(((byte)(90)))));
-            this.colorPreview5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreview5.Location = new System.Drawing.Point(8, 286);
-            this.colorPreview5.Name = "colorPreview5";
-            this.colorPreview5.Size = new System.Drawing.Size(24, 24);
-            this.colorPreview5.TabIndex = 88;
-            this.colorPreview5.TabStop = false;
-            // 
             // buttonPresetTato
             // 
             this.buttonPresetTato.BackColor = System.Drawing.Color.Transparent;
@@ -384,20 +380,11 @@
             this.buttonPresetTato.Name = "buttonPresetTato";
             this.buttonPresetTato.Size = new System.Drawing.Size(166, 24);
             this.buttonPresetTato.TabIndex = 87;
+            this.buttonPresetTato.Tag = "PipBoyColorPreset";
             this.buttonPresetTato.Text = "Lush Tato";
             this.buttonPresetTato.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPresetTato.UseVisualStyleBackColor = false;
             this.buttonPresetTato.Click += new System.EventHandler(this.buttonPresetTato_Click);
-            // 
-            // colorPreview4
-            // 
-            this.colorPreview4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
-            this.colorPreview4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreview4.Location = new System.Drawing.Point(8, 256);
-            this.colorPreview4.Name = "colorPreview4";
-            this.colorPreview4.Size = new System.Drawing.Size(24, 24);
-            this.colorPreview4.TabIndex = 86;
-            this.colorPreview4.TabStop = false;
             // 
             // buttonButtonPresetLavendar
             // 
@@ -410,20 +397,11 @@
             this.buttonButtonPresetLavendar.Name = "buttonButtonPresetLavendar";
             this.buttonButtonPresetLavendar.Size = new System.Drawing.Size(166, 24);
             this.buttonButtonPresetLavendar.TabIndex = 85;
+            this.buttonButtonPresetLavendar.Tag = "PipBoyColorPreset";
             this.buttonButtonPresetLavendar.Text = "Calming Lavendar";
             this.buttonButtonPresetLavendar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonButtonPresetLavendar.UseVisualStyleBackColor = false;
             this.buttonButtonPresetLavendar.Click += new System.EventHandler(this.buttonButtonPresetLavendar_Click);
-            // 
-            // colorPreview3
-            // 
-            this.colorPreview3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(209)))), ((int)(((byte)(105)))));
-            this.colorPreview3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreview3.Location = new System.Drawing.Point(8, 367);
-            this.colorPreview3.Name = "colorPreview3";
-            this.colorPreview3.Size = new System.Drawing.Size(24, 24);
-            this.colorPreview3.TabIndex = 84;
-            this.colorPreview3.TabStop = false;
             // 
             // buttonPresetFo76PPColor
             // 
@@ -436,20 +414,11 @@
             this.buttonPresetFo76PPColor.Name = "buttonPresetFo76PPColor";
             this.buttonPresetFo76PPColor.Size = new System.Drawing.Size(166, 24);
             this.buttonPresetFo76PPColor.TabIndex = 83;
+            this.buttonPresetFo76PPColor.Tag = "PipBoyColorPreset";
             this.buttonPresetFo76PPColor.Text = "Power Armor default color";
             this.buttonPresetFo76PPColor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPresetFo76PPColor.UseVisualStyleBackColor = false;
             this.buttonPresetFo76PPColor.Click += new System.EventHandler(this.buttonPresetFo76PPColor_Click);
-            // 
-            // colorPreview2
-            // 
-            this.colorPreview2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(242)))), ((int)(((byte)(184)))));
-            this.colorPreview2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreview2.Location = new System.Drawing.Point(8, 337);
-            this.colorPreview2.Name = "colorPreview2";
-            this.colorPreview2.Size = new System.Drawing.Size(24, 24);
-            this.colorPreview2.TabIndex = 82;
-            this.colorPreview2.TabStop = false;
             // 
             // buttonPresetFo76QB
             // 
@@ -462,6 +431,7 @@
             this.buttonPresetFo76QB.Name = "buttonPresetFo76QB";
             this.buttonPresetFo76QB.Size = new System.Drawing.Size(166, 24);
             this.buttonPresetFo76QB.TabIndex = 81;
+            this.buttonPresetFo76QB.Tag = "PipBoyColorPreset";
             this.buttonPresetFo76QB.Text = "Quick-Boy default color";
             this.buttonPresetFo76QB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPresetFo76QB.UseVisualStyleBackColor = false;
@@ -477,16 +447,6 @@
             this.pictureBox1.TabIndex = 80;
             this.pictureBox1.TabStop = false;
             // 
-            // colorPreview1
-            // 
-            this.colorPreview1.BackColor = System.Drawing.Color.White;
-            this.colorPreview1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreview1.Location = new System.Drawing.Point(8, 226);
-            this.colorPreview1.Name = "colorPreview1";
-            this.colorPreview1.Size = new System.Drawing.Size(24, 24);
-            this.colorPreview1.TabIndex = 79;
-            this.colorPreview1.TabStop = false;
-            // 
             // buttonPresetWhite
             // 
             this.buttonPresetWhite.BackColor = System.Drawing.Color.Transparent;
@@ -498,6 +458,7 @@
             this.buttonPresetWhite.Name = "buttonPresetWhite";
             this.buttonPresetWhite.Size = new System.Drawing.Size(166, 24);
             this.buttonPresetWhite.TabIndex = 78;
+            this.buttonPresetWhite.Tag = "PipBoyColorPreset";
             this.buttonPresetWhite.Text = "Radiant White";
             this.buttonPresetWhite.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPresetWhite.UseVisualStyleBackColor = false;
@@ -523,66 +484,6 @@
             this.labelPresets.Size = new System.Drawing.Size(52, 17);
             this.labelPresets.TabIndex = 76;
             this.labelPresets.Text = "Presets";
-            // 
-            // colorPreviewPresetFo76Green
-            // 
-            this.colorPreviewPresetFo76Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.colorPreviewPresetFo76Green.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreviewPresetFo76Green.Location = new System.Drawing.Point(8, 175);
-            this.colorPreviewPresetFo76Green.Name = "colorPreviewPresetFo76Green";
-            this.colorPreviewPresetFo76Green.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFo76Green.TabIndex = 62;
-            this.colorPreviewPresetFo76Green.TabStop = false;
-            // 
-            // colorPreviewPresetFo3Green
-            // 
-            this.colorPreviewPresetFo3Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.colorPreviewPresetFo3Green.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreviewPresetFo3Green.Location = new System.Drawing.Point(8, 25);
-            this.colorPreviewPresetFo3Green.Name = "colorPreviewPresetFo3Green";
-            this.colorPreviewPresetFo3Green.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFo3Green.TabIndex = 52;
-            this.colorPreviewPresetFo3Green.TabStop = false;
-            // 
-            // colorPreviewPresetFo3White
-            // 
-            this.colorPreviewPresetFo3White.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.colorPreviewPresetFo3White.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreviewPresetFo3White.Location = new System.Drawing.Point(8, 115);
-            this.colorPreviewPresetFo3White.Name = "colorPreviewPresetFo3White";
-            this.colorPreviewPresetFo3White.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFo3White.TabIndex = 58;
-            this.colorPreviewPresetFo3White.TabStop = false;
-            // 
-            // colorPreviewPresetFo4Green
-            // 
-            this.colorPreviewPresetFo4Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(255)))), ((int)(((byte)(21)))));
-            this.colorPreviewPresetFo4Green.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreviewPresetFo4Green.Location = new System.Drawing.Point(8, 145);
-            this.colorPreviewPresetFo4Green.Name = "colorPreviewPresetFo4Green";
-            this.colorPreviewPresetFo4Green.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFo4Green.TabIndex = 60;
-            this.colorPreviewPresetFo4Green.TabStop = false;
-            // 
-            // colorPreviewPresetFo3Blue
-            // 
-            this.colorPreviewPresetFo3Blue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.colorPreviewPresetFo3Blue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreviewPresetFo3Blue.Location = new System.Drawing.Point(8, 85);
-            this.colorPreviewPresetFo3Blue.Name = "colorPreviewPresetFo3Blue";
-            this.colorPreviewPresetFo3Blue.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFo3Blue.TabIndex = 56;
-            this.colorPreviewPresetFo3Blue.TabStop = false;
-            // 
-            // colorPreviewPresetFoNVAmber
-            // 
-            this.colorPreviewPresetFoNVAmber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(182)))), ((int)(((byte)(66)))));
-            this.colorPreviewPresetFoNVAmber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreviewPresetFoNVAmber.Location = new System.Drawing.Point(8, 55);
-            this.colorPreviewPresetFoNVAmber.Name = "colorPreviewPresetFoNVAmber";
-            this.colorPreviewPresetFoNVAmber.Size = new System.Drawing.Size(24, 24);
-            this.colorPreviewPresetFoNVAmber.TabIndex = 54;
-            this.colorPreviewPresetFoNVAmber.TabStop = false;
             // 
             // panelPipboyOther
             // 
@@ -984,6 +885,116 @@
             this.colorPreviewPAPipboy.TabIndex = 41;
             this.colorPreviewPAPipboy.TabStop = false;
             // 
+            // colorPreview5
+            // 
+            this.colorPreview5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(110)))), ((int)(((byte)(90)))));
+            this.colorPreview5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreview5.Location = new System.Drawing.Point(8, 286);
+            this.colorPreview5.Name = "colorPreview5";
+            this.colorPreview5.Size = new System.Drawing.Size(24, 24);
+            this.colorPreview5.TabIndex = 88;
+            this.colorPreview5.TabStop = false;
+            // 
+            // colorPreview4
+            // 
+            this.colorPreview4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
+            this.colorPreview4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreview4.Location = new System.Drawing.Point(8, 256);
+            this.colorPreview4.Name = "colorPreview4";
+            this.colorPreview4.Size = new System.Drawing.Size(24, 24);
+            this.colorPreview4.TabIndex = 86;
+            this.colorPreview4.TabStop = false;
+            // 
+            // colorPreview3
+            // 
+            this.colorPreview3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(209)))), ((int)(((byte)(105)))));
+            this.colorPreview3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreview3.Location = new System.Drawing.Point(8, 367);
+            this.colorPreview3.Name = "colorPreview3";
+            this.colorPreview3.Size = new System.Drawing.Size(24, 24);
+            this.colorPreview3.TabIndex = 84;
+            this.colorPreview3.TabStop = false;
+            // 
+            // colorPreview2
+            // 
+            this.colorPreview2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(242)))), ((int)(((byte)(184)))));
+            this.colorPreview2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreview2.Location = new System.Drawing.Point(8, 337);
+            this.colorPreview2.Name = "colorPreview2";
+            this.colorPreview2.Size = new System.Drawing.Size(24, 24);
+            this.colorPreview2.TabIndex = 82;
+            this.colorPreview2.TabStop = false;
+            // 
+            // colorPreview1
+            // 
+            this.colorPreview1.BackColor = System.Drawing.Color.White;
+            this.colorPreview1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreview1.Location = new System.Drawing.Point(8, 226);
+            this.colorPreview1.Name = "colorPreview1";
+            this.colorPreview1.Size = new System.Drawing.Size(24, 24);
+            this.colorPreview1.TabIndex = 79;
+            this.colorPreview1.TabStop = false;
+            // 
+            // colorPreviewPresetFo76Green
+            // 
+            this.colorPreviewPresetFo76Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.colorPreviewPresetFo76Green.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewPresetFo76Green.Location = new System.Drawing.Point(8, 175);
+            this.colorPreviewPresetFo76Green.Name = "colorPreviewPresetFo76Green";
+            this.colorPreviewPresetFo76Green.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFo76Green.TabIndex = 62;
+            this.colorPreviewPresetFo76Green.TabStop = false;
+            // 
+            // colorPreviewPresetFo3Green
+            // 
+            this.colorPreviewPresetFo3Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.colorPreviewPresetFo3Green.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewPresetFo3Green.Location = new System.Drawing.Point(8, 25);
+            this.colorPreviewPresetFo3Green.Name = "colorPreviewPresetFo3Green";
+            this.colorPreviewPresetFo3Green.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFo3Green.TabIndex = 52;
+            this.colorPreviewPresetFo3Green.TabStop = false;
+            // 
+            // colorPreviewPresetFo3White
+            // 
+            this.colorPreviewPresetFo3White.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colorPreviewPresetFo3White.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewPresetFo3White.Location = new System.Drawing.Point(8, 115);
+            this.colorPreviewPresetFo3White.Name = "colorPreviewPresetFo3White";
+            this.colorPreviewPresetFo3White.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFo3White.TabIndex = 58;
+            this.colorPreviewPresetFo3White.TabStop = false;
+            // 
+            // colorPreviewPresetFo4Green
+            // 
+            this.colorPreviewPresetFo4Green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(255)))), ((int)(((byte)(21)))));
+            this.colorPreviewPresetFo4Green.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewPresetFo4Green.Location = new System.Drawing.Point(8, 145);
+            this.colorPreviewPresetFo4Green.Name = "colorPreviewPresetFo4Green";
+            this.colorPreviewPresetFo4Green.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFo4Green.TabIndex = 60;
+            this.colorPreviewPresetFo4Green.TabStop = false;
+            // 
+            // colorPreviewPresetFo3Blue
+            // 
+            this.colorPreviewPresetFo3Blue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.colorPreviewPresetFo3Blue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewPresetFo3Blue.Location = new System.Drawing.Point(8, 85);
+            this.colorPreviewPresetFo3Blue.Name = "colorPreviewPresetFo3Blue";
+            this.colorPreviewPresetFo3Blue.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFo3Blue.TabIndex = 56;
+            this.colorPreviewPresetFo3Blue.TabStop = false;
+            // 
+            // colorPreviewPresetFoNVAmber
+            // 
+            this.colorPreviewPresetFoNVAmber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(182)))), ((int)(((byte)(66)))));
+            this.colorPreviewPresetFoNVAmber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewPresetFoNVAmber.Location = new System.Drawing.Point(8, 55);
+            this.colorPreviewPresetFoNVAmber.Name = "colorPreviewPresetFoNVAmber";
+            this.colorPreviewPresetFoNVAmber.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewPresetFoNVAmber.TabIndex = 54;
+            this.colorPreviewPresetFoNVAmber.TabStop = false;
+            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -1009,19 +1020,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPipboyTargetWidth)).EndInit();
             this.panelPipboyPresets.ResumeLayout(false);
             this.panelPipboyPresets.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreview5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreview4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreview3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreview2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreview1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo76Green)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Green)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3White)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo4Green)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Blue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFoNVAmber)).EndInit();
             this.panelPipboyOther.ResumeLayout(false);
             this.panelPipboyOther.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1035,6 +1035,17 @@
             this.tabPagePowerArmorColor.ResumeLayout(false);
             this.tabPagePowerArmorColor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPAPipboy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreview5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreview4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreview3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreview2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreview1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo76Green)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Green)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3White)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo4Green)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFo3Blue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewPresetFoNVAmber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

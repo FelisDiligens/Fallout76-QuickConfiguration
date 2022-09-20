@@ -412,6 +412,8 @@
             this.tabControlTweaks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControlTweaks.BorderColor = System.Drawing.Color.Gray;
+            this.tabControlTweaks.BorderWidth = 1;
             this.tabControlTweaks.Controls.Add(this.tabPageTweaksInfo);
             this.tabControlTweaks.Controls.Add(this.tabPageGeneral);
             this.tabControlTweaks.Controls.Add(this.tabPageVideo);
@@ -419,10 +421,15 @@
             this.tabControlTweaks.Controls.Add(this.tabPageControls);
             this.tabControlTweaks.Controls.Add(this.tabPageCamera);
             this.tabControlTweaks.Controls.Add(this.tabPageLogin);
+            this.tabControlTweaks.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tabControlTweaks.Location = new System.Drawing.Point(15, 75);
+            this.tabControlTweaks.MouseOverTabButtonBackColor = System.Drawing.Color.LightGray;
             this.tabControlTweaks.Name = "tabControlTweaks";
             this.tabControlTweaks.SelectedIndex = 0;
+            this.tabControlTweaks.SelectedTabButtonBackColor = System.Drawing.Color.Silver;
             this.tabControlTweaks.Size = new System.Drawing.Size(662, 502);
+            this.tabControlTweaks.TabButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabControlTweaks.TabButtonForeColor = System.Drawing.Color.Black;
             this.tabControlTweaks.TabIndex = 0;
             // 
             // tabPageTweaksInfo
@@ -450,6 +457,7 @@
             this.webBrowserTweaksInfo.Name = "webBrowserTweaksInfo";
             this.webBrowserTweaksInfo.Size = new System.Drawing.Size(654, 476);
             this.webBrowserTweaksInfo.TabIndex = 1;
+            this.webBrowserTweaksInfo.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowserTweaksInfo_DocumentCompleted);
             // 
             // labelTweaksInfoWin7
             // 
@@ -1334,6 +1342,7 @@
             // 
             // buttonSelectOverallQualityPreset
             // 
+            this.buttonSelectOverallQualityPreset.ContextMenuStrip = this.contextMenuStripOverallQualityPresets;
             this.buttonSelectOverallQualityPreset.Location = new System.Drawing.Point(164, 21);
             this.buttonSelectOverallQualityPreset.Name = "buttonSelectOverallQualityPreset";
             this.buttonSelectOverallQualityPreset.Size = new System.Drawing.Size(227, 23);
@@ -6320,6 +6329,7 @@
             this.toolStripSeparator1,
             this.cancelToolStripMenuItem});
             this.contextMenuStripOverallQualityPresets.Name = "contextMenuStripOverallQualityPresets";
+            this.contextMenuStripOverallQualityPresets.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.contextMenuStripOverallQualityPresets.Size = new System.Drawing.Size(161, 148);
             // 
             // toolStripMenuItem1

@@ -52,20 +52,20 @@ def pack_release():
             return
         else:
             print("Deleting files...")
-            time.sleep(1)
+            time.sleep(0.25)
             shutil.rmtree(target_dir)
     os.makedirs(target_dir, exist_ok=True)
     print("-----------------------------------------")
     print("Packing to v{0}_bin.zip...".format(VERSION))
-    time.sleep(1)
+    time.sleep(0.25)
     os.system("{0} a \"{1}\" \"{2}\\*\"".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_bin.zip"), RELEASE_BIN_DIR))
     print("-----------------------------------------")
     print("Packing to v{0}_src.zip...".format(VERSION))
-    time.sleep(1)
+    time.sleep(0.25)
     os.system("{0} a \"{1}\" \"{2}\\*\"".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_src.zip"), os.path.join(PROJECT_GIT_DIR, "Fo76ini")))
     print("-----------------------------------------")
     print("Cleaning v{0}_src.zip...".format(VERSION))
-    time.sleep(1)
+    time.sleep(0.25)
     os.system("{0} d \"{1}\" .vs".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_src.zip")))
     os.system("{0} d \"{1}\" bin".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_src.zip")))
     os.system("{0} d \"{1}\" obj".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_src.zip")))
@@ -219,7 +219,7 @@ if __name__ == "__main__":
 
     while True:
         print("-----------------------------------------")
-        time.sleep(1)
+        time.sleep(0.25)
         print(f"""{Fore.BLUE}Set version
 {Fore.MAGENTA}(1) {Fore.RESET} Set "VERSION" (current: {Fore.GREEN}{VERSION}{Fore.RESET})
 {Fore.MAGENTA}(2) {Fore.RESET} Set executable version with rcedit
@@ -269,5 +269,5 @@ if __name__ == "__main__":
         elif i == "0" or i == "":
             print("""Bye bye!
 -----------------------------------------""")
-            time.sleep(1)
+            time.sleep(0.25)
             break

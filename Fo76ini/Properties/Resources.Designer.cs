@@ -371,6 +371,34 @@ namespace Fo76ini.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to META:
+        ///  BaseTheme: Dark
+        ///  Name: Dark
+        ///  Author: FelisDiligens
+        ///  Version: v1.11.5
+        ///VARS:
+        ///  TextColor: white
+        ///  BackColor: &quot;#222&quot;
+        ///  VersionLatestColor: &quot;rgb(50, 255, 50)&quot;
+        ///  VersionOldColor: &quot;Red&quot;
+        ///  VersionUnknownColor: &quot;Silver&quot;
+        ///
+        ///# Content:
+        ///Panel:
+        ///  BackColor: transparent
+        ///  ForeColor: &quot;var(TextColor)&quot;
+        ///TabPage:
+        ///  BackColor: &quot;var(BackColor)&quot;
+        ///  ForeColor: &quot;var(TextColor)&quot;
+        ///#UserControlHome, UserControlTweaks, UserControlPipboy, UserControlGallery, UserControlCustom, UserControlSettings, UserControl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string dark {
+            get {
+                return ResourceManager.GetString("dark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap delete_24 {
@@ -777,6 +805,34 @@ namespace Fo76ini.Properties {
             get {
                 object obj = ResourceManager.GetObject("info-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to META:
+        ///  BaseTheme: Light
+        ///  Name: Light
+        ///  Author: FelisDiligens
+        ///  Version: v1.11.5
+        ///VARS:
+        ///  TextColor: black
+        ///  BackColor: white
+        ///  VersionLatestColor: &quot;DarkGreen&quot;
+        ///  VersionOldColor: &quot;Red&quot;
+        ///  VersionUnknownColor: &quot;DarkGray&quot;
+        ///
+        ///# Content:
+        ///Panel:
+        ///  BackColor: transparent
+        ///  ForeColor: &quot;var(TextColor)&quot;
+        ///TabPage:
+        ///  BackColor: &quot;var(BackColor)&quot;
+        ///  ForeColor: &quot;var(TextColor)&quot;
+        ///#UserControlHome, UserControlTweaks, UserControlPipboy, UserControlGallery, UserControlCustom, UserControlSettings, UserControlNexu [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string light {
+            get {
+                return ResourceManager.GetString("light", resourceCulture);
             }
         }
         

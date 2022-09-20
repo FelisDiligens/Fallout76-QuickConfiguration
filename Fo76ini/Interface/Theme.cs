@@ -31,17 +31,23 @@ namespace Fo76ini.Interface
             return GetStyle(controlType, "Default");
         }
 
-        public static Theme ReadTheme(String path)
+        public static Theme ReadThemeFromFile(String path)
         {
             Theme t = new Theme();
-            t.readTheme(path);
+            t.ReadTheme(new StreamReader(path));
             return t;
         }
 
-        private void readTheme(String path)
+        public static Theme ReadThemeFromString(String yml)
+        {
+            Theme t = new Theme();
+            t.ReadTheme(new StringReader(yml));
+            return t;
+        }
+
+        private void ReadTheme(TextReader stream)
         {
             var deserializer = new Deserializer();
-            var stream = new StreamReader(path);
             var result = deserializer.Deserialize<Dictionary<object, object>>(stream);
             stream.Close();
             if (result == null)

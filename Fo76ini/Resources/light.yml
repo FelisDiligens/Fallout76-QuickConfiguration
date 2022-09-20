@@ -1,0 +1,118 @@
+META:
+  BaseTheme: Light
+  Name: Light
+  Author: FelisDiligens
+  Version: v1.11.5
+VARS:
+  TextColor: black
+  BackColor: white
+  VersionLatestColor: "DarkGreen"
+  VersionOldColor: "Red"
+  VersionUnknownColor: "DarkGray"
+
+# Content:
+Panel:
+  BackColor: transparent
+  ForeColor: "var(TextColor)"
+TabPage:
+  BackColor: "var(BackColor)"
+  ForeColor: "var(TextColor)"
+#UserControlHome, UserControlTweaks, UserControlPipboy, UserControlGallery, UserControlCustom, UserControlSettings, UserControlNexusMods, UserControlProfiles:
+UserControl*:
+  BackColor: "var(BackColor)"
+  ForeColor: "var(TextColor)"
+
+PictureBox.*LoadingGIF:
+  BackColor: "var(BackColor)"
+
+# Container:
+StyledGroupBox:
+  BackColor: "var(BackColor)"
+  TitleForeColor: "var(TextColor)"
+  BorderColor: "Silver"
+StyledTabControl:
+  BackColor: "rgb(240, 240, 240)"
+  HeaderColor: "rgb(240, 240, 240)"
+  TabButtonForeColor: "var(TextColor)"
+  TabButtonBackColor: "rgb(240, 240, 240)"
+  MouseOverTabButtonBackColor: "LightGray"
+  SelectedTabButtonBackColor: "Silver"
+StyledTabControl.tabControlPipboy:
+  BackColor: "var(BackColor)"
+  HeaderColor: "var(BackColor)"
+
+# Controls:
+StyledButton.WebLink, Button.SmallButton:
+  BackColor: "var(BackColor)"
+  ForeColor: "var(TextColor)"
+  MouseDownBackColor: "LightGray"
+  MouseOverBackColor: "Silver"
+
+StyledButton.styledButtonWhatsNew:
+  ForeColor: "#ff8c00"
+  BackColor: "var(BackColor)"
+  MouseDownBackColor: "#FFBA66"
+  MouseOverBackColor: "#FFC680"
+
+LinkLabel:
+  LinkColor: "rgb(0, 0, 255)"
+  #VisitedLinkColor: "rgb(128, 0, 128)"
+
+Button:
+  ForeColor: "black"
+
+ListView:
+  BackColor: "var(BackColor)"
+  ForeColor: "var(TextColor)"
+
+ContextMenuStrip:
+  BackColor: "#eee"
+  ForeColor: "black"
+
+ToolStripMenuItem:
+  ForeColor: "black"
+
+# Side navigation:
+UserControlSideNav:
+  BackColor: "rgb(240, 240, 240)" # f0f0f0
+  ForeColor: "var(TextColor)"
+PictureBox.pictureBoxLogo:
+  Image: "fallout76_logo_black"
+StyledButton.NavButton:
+  BackColor: "rgb(240, 240, 240)" # f0f0f0
+  MouseDownBackColor: "LightGray"
+  MouseOverBackColor: "Silver"
+  HighlightBackColor: "Silver"
+  ForeColor: black
+PictureBox.pictureBoxSpacer?:
+  BackColor: "Silver"
+
+# Home tab:
+StyledButton.styledButtonGitHub:
+  Image: "github_16"
+
+# Tweaks tab:
+RichTextBox.richTextBoxCredentialsExplanation:
+  BackColor: "var(BackColor)"
+  ForeColor: "#777"
+
+# Pip-Boy tab:
+Button.PipBoyColorPreset:
+  ForeColor: "var(TextColor)"
+  BorderColor: "LightGray"
+  BackColor: "var(BackColor)"
+  MouseDownBackColor: "Gainsboro"
+  MouseOverBackColor: "rgb(240, 240, 240)"
+
+# Custom tab:
+FastColoredTextBox.textBoxCustom:
+  BackColor: "white"
+  ForeColor: "black"
+  IndentBackColor: "WhiteSmoke"
+
+# NexusMods tab:
+Panel.panelNMProfile:
+  BackColor: "rgb(24, 24, 24)"
+
+Button.NexusModsActions:
+  ForeColor: "white"

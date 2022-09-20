@@ -119,6 +119,7 @@
             // buttonNMLogin
             // 
             this.buttonNMLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
+            this.buttonNMLogin.FlatAppearance.BorderSize = 0;
             this.buttonNMLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNMLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNMLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -128,6 +129,7 @@
             this.buttonNMLogin.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNMLogin.Size = new System.Drawing.Size(120, 120);
             this.buttonNMLogin.TabIndex = 105;
+            this.buttonNMLogin.Tag = "NexusModsActions";
             this.buttonNMLogin.Text = "Log in";
             this.buttonNMLogin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonNMLogin.UseVisualStyleBackColor = false;
@@ -136,6 +138,7 @@
             // buttonNMLoginManually
             // 
             this.buttonNMLoginManually.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
+            this.buttonNMLoginManually.FlatAppearance.BorderSize = 0;
             this.buttonNMLoginManually.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNMLoginManually.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNMLoginManually.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -145,6 +148,7 @@
             this.buttonNMLoginManually.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNMLoginManually.Size = new System.Drawing.Size(120, 120);
             this.buttonNMLoginManually.TabIndex = 110;
+            this.buttonNMLoginManually.Tag = "NexusModsActions";
             this.buttonNMLoginManually.Text = "Log in with key";
             this.buttonNMLoginManually.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonNMLoginManually.UseVisualStyleBackColor = false;
@@ -153,6 +157,7 @@
             // buttonNWLogout
             // 
             this.buttonNWLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(128)))), ((int)(((byte)(62)))));
+            this.buttonNWLogout.FlatAppearance.BorderSize = 0;
             this.buttonNWLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNWLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNWLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -162,6 +167,7 @@
             this.buttonNWLogout.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNWLogout.Size = new System.Drawing.Size(120, 120);
             this.buttonNWLogout.TabIndex = 103;
+            this.buttonNWLogout.Tag = "NexusModsActions";
             this.buttonNWLogout.Text = "Logout";
             this.buttonNWLogout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonNWLogout.UseVisualStyleBackColor = false;
@@ -170,6 +176,7 @@
             // buttonNMUpdateProfile
             // 
             this.buttonNMUpdateProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(142)))), ((int)(((byte)(53)))));
+            this.buttonNMUpdateProfile.FlatAppearance.BorderSize = 0;
             this.buttonNMUpdateProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNMUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNMUpdateProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -179,6 +186,7 @@
             this.buttonNMUpdateProfile.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNMUpdateProfile.Size = new System.Drawing.Size(120, 120);
             this.buttonNMUpdateProfile.TabIndex = 94;
+            this.buttonNMUpdateProfile.Tag = "NexusModsActions";
             this.buttonNMUpdateProfile.Text = "Update profile";
             this.buttonNMUpdateProfile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonNMUpdateProfile.UseVisualStyleBackColor = false;
@@ -187,6 +195,7 @@
             // buttonNWDeleteCache
             // 
             this.buttonNWDeleteCache.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonNWDeleteCache.FlatAppearance.BorderSize = 0;
             this.buttonNWDeleteCache.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNWDeleteCache.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNWDeleteCache.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -196,6 +205,7 @@
             this.buttonNWDeleteCache.Padding = new System.Windows.Forms.Padding(4);
             this.buttonNWDeleteCache.Size = new System.Drawing.Size(120, 120);
             this.buttonNWDeleteCache.TabIndex = 104;
+            this.buttonNWDeleteCache.Tag = "NexusModsActions";
             this.buttonNWDeleteCache.Text = "Delete cache";
             this.buttonNWDeleteCache.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonNWDeleteCache.UseVisualStyleBackColor = false;

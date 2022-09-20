@@ -157,6 +157,7 @@
             this.buttonDownloadLanguages.Name = "buttonDownloadLanguages";
             this.buttonDownloadLanguages.Size = new System.Drawing.Size(32, 32);
             this.buttonDownloadLanguages.TabIndex = 1;
+            this.buttonDownloadLanguages.Tag = "SmallButton";
             this.toolTip.SetToolTip(this.buttonDownloadLanguages, "Download translations");
             this.buttonDownloadLanguages.UseVisualStyleBackColor = true;
             this.buttonDownloadLanguages.Click += new System.EventHandler(this.buttonDownloadLanguages_Click);
@@ -194,6 +195,7 @@
             this.buttonRefreshLanguage.Name = "buttonRefreshLanguage";
             this.buttonRefreshLanguage.Size = new System.Drawing.Size(32, 32);
             this.buttonRefreshLanguage.TabIndex = 2;
+            this.buttonRefreshLanguage.Tag = "SmallButton";
             this.toolTip.SetToolTip(this.buttonRefreshLanguage, "Refresh active translation");
             this.buttonRefreshLanguage.UseVisualStyleBackColor = false;
             this.buttonRefreshLanguage.Click += new System.EventHandler(this.buttonRefreshLanguage_Click);
@@ -506,7 +508,7 @@
             this.panelSettingsBehavior.Controls.Add(this.checkBoxAutoApply);
             this.panelSettingsBehavior.Controls.Add(this.checkBoxQuitOnGameLaunch);
             this.panelSettingsBehavior.Controls.Add(this.checkBoxIgnoreUpdates);
-            this.panelSettingsBehavior.Location = new System.Drawing.Point(0, 302);
+            this.panelSettingsBehavior.Location = new System.Drawing.Point(0, 313);
             this.panelSettingsBehavior.Name = "panelSettingsBehavior";
             this.panelSettingsBehavior.Size = new System.Drawing.Size(403, 154);
             this.panelSettingsBehavior.TabIndex = 83;
@@ -536,7 +538,7 @@
             this.panelSettingsOptions.Controls.Add(this.labelSettingsOptions);
             this.panelSettingsOptions.Controls.Add(this.checkBoxReadOnly);
             this.panelSettingsOptions.Controls.Add(this.checkBoxHandleNXMLinks);
-            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 560);
+            this.panelSettingsOptions.Location = new System.Drawing.Point(0, 571);
             this.panelSettingsOptions.Name = "panelSettingsOptions";
             this.panelSettingsOptions.Size = new System.Drawing.Size(403, 86);
             this.panelSettingsOptions.TabIndex = 85;
@@ -551,7 +553,7 @@
             this.panelSettingsNWMode.Controls.Add(this.checkBoxNWAutoDeployMods);
             this.panelSettingsNWMode.Controls.Add(this.labelToggleNW);
             this.panelSettingsNWMode.Controls.Add(this.buttonNWMode);
-            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 937);
+            this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 948);
             this.panelSettingsNWMode.Name = "panelSettingsNWMode";
             this.panelSettingsNWMode.Size = new System.Drawing.Size(403, 279);
             this.panelSettingsNWMode.TabIndex = 86;
@@ -587,7 +589,7 @@
             this.panelSettingsPaths.Controls.Add(this.labelSettingsModManager);
             this.panelSettingsPaths.Controls.Add(this.labelDownloadsPath);
             this.panelSettingsPaths.Controls.Add(this.buttonPickDownloadsPath);
-            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 652);
+            this.panelSettingsPaths.Location = new System.Drawing.Point(0, 663);
             this.panelSettingsPaths.Name = "panelSettingsPaths";
             this.panelSettingsPaths.Size = new System.Drawing.Size(403, 179);
             this.panelSettingsPaths.TabIndex = 87;
@@ -597,7 +599,7 @@
             this.panelSettingsProfile.Controls.Add(this.linkLabelOpenProfileEditor);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfileNotice);
             this.panelSettingsProfile.Controls.Add(this.labelSettingsProfiles);
-            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 837);
+            this.panelSettingsProfile.Location = new System.Drawing.Point(0, 848);
             this.panelSettingsProfile.Name = "panelSettingsProfile";
             this.panelSettingsProfile.Size = new System.Drawing.Size(403, 87);
             this.panelSettingsProfile.TabIndex = 88;
@@ -637,7 +639,7 @@
             this.panel1.Controls.Add(this.labelSettingsNotifications);
             this.panel1.Controls.Add(this.checkBoxShowNotifications);
             this.panel1.Controls.Add(this.checkBoxPlayNotificationSound);
-            this.panel1.Location = new System.Drawing.Point(0, 462);
+            this.panel1.Location = new System.Drawing.Point(0, 473);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(403, 92);
             this.panel1.TabIndex = 89;
@@ -687,7 +689,7 @@
             this.panel2.Controls.Add(this.labelAppearance);
             this.panel2.Location = new System.Drawing.Point(0, 165);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(403, 131);
+            this.panel2.Size = new System.Drawing.Size(403, 142);
             this.panel2.TabIndex = 90;
             // 
             // labelThemeExpl
@@ -696,14 +698,15 @@
             this.labelThemeExpl.ForeColor = System.Drawing.Color.Gray;
             this.labelThemeExpl.Location = new System.Drawing.Point(12, 39);
             this.labelThemeExpl.Name = "labelThemeExpl";
-            this.labelThemeExpl.Size = new System.Drawing.Size(178, 13);
+            this.labelThemeExpl.Size = new System.Drawing.Size(263, 26);
             this.labelThemeExpl.TabIndex = 81;
-            this.labelThemeExpl.Text = "Does not apply to the mod manager.";
+            this.labelThemeExpl.Text = "Note: Does not apply to the mod manager yet.\r\nNeeds a restart for all elements to" +
+    " be themed correctly.";
             // 
             // radioButtonRespectSystemTheme
             // 
             this.radioButtonRespectSystemTheme.AutoSize = true;
-            this.radioButtonRespectSystemTheme.Location = new System.Drawing.Point(15, 104);
+            this.radioButtonRespectSystemTheme.Location = new System.Drawing.Point(15, 116);
             this.radioButtonRespectSystemTheme.Name = "radioButtonRespectSystemTheme";
             this.radioButtonRespectSystemTheme.Size = new System.Drawing.Size(59, 17);
             this.radioButtonRespectSystemTheme.TabIndex = 80;
@@ -715,7 +718,7 @@
             // radioButtonDarkTheme
             // 
             this.radioButtonDarkTheme.AutoSize = true;
-            this.radioButtonDarkTheme.Location = new System.Drawing.Point(15, 81);
+            this.radioButtonDarkTheme.Location = new System.Drawing.Point(15, 93);
             this.radioButtonDarkTheme.Name = "radioButtonDarkTheme";
             this.radioButtonDarkTheme.Size = new System.Drawing.Size(48, 17);
             this.radioButtonDarkTheme.TabIndex = 79;
@@ -727,7 +730,7 @@
             // radioButtonLightTheme
             // 
             this.radioButtonLightTheme.AutoSize = true;
-            this.radioButtonLightTheme.Location = new System.Drawing.Point(15, 58);
+            this.radioButtonLightTheme.Location = new System.Drawing.Point(15, 70);
             this.radioButtonLightTheme.Name = "radioButtonLightTheme";
             this.radioButtonLightTheme.Size = new System.Drawing.Size(48, 17);
             this.radioButtonLightTheme.TabIndex = 78;
