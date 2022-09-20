@@ -84,6 +84,15 @@
             this.sliderDOFStrength = new ColorSlider.ColorSlider();
             this.labelSelectedQualityPreset = new System.Windows.Forms.Label();
             this.buttonSelectOverallQualityPreset = new System.Windows.Forms.Button();
+            this.contextMenuStripOverallQualityPresets = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.lowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ultraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelOverallQualityPreset = new System.Windows.Forms.Label();
             this.groupBoxTextures = new Fo76ini.Controls.StyledGroupBox();
             this.comboBoxTextureQuality = new System.Windows.Forms.ComboBox();
@@ -308,15 +317,6 @@
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelTweaksDesc = new System.Windows.Forms.Label();
             this.labelTweaksTitle = new System.Windows.Forms.Label();
-            this.contextMenuStripOverallQualityPresets = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.lowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.highToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ultraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
@@ -335,6 +335,7 @@
             this.groupBoxGraphics.SuspendLayout();
             this.groupBoxDOF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDOFStrength)).BeginInit();
+            this.contextMenuStripOverallQualityPresets.SuspendLayout();
             this.groupBoxTextures.SuspendLayout();
             this.groupBoxGraphicEffects.SuspendLayout();
             this.groupBoxTAASharpening.SuspendLayout();
@@ -404,7 +405,6 @@
             this.tabPageLogin.SuspendLayout();
             this.groupBoxLoginProfiles.SuspendLayout();
             this.groupBoxLogin.SuspendLayout();
-            this.contextMenuStripOverallQualityPresets.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -556,7 +556,7 @@
             this.groupBoxDialogue.Location = new System.Drawing.Point(9, 230);
             this.groupBoxDialogue.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxDialogue.Name = "groupBoxDialogue";
-            this.groupBoxDialogue.Size = new System.Drawing.Size(400, 167);
+            this.groupBoxDialogue.Size = new System.Drawing.Size(400, 143);
             this.groupBoxDialogue.TabIndex = 3;
             this.groupBoxDialogue.TabStop = false;
             this.groupBoxDialogue.Text = "Dialogue";
@@ -702,7 +702,7 @@
             this.groupBoxHUD.Controls.Add(this.comboBoxShowActiveEffectsOnHUD);
             this.groupBoxHUD.Controls.Add(this.sliderHUDOpacity);
             this.groupBoxHUD.Controls.Add(this.numHUDOpacity);
-            this.groupBoxHUD.Location = new System.Drawing.Point(9, 406);
+            this.groupBoxHUD.Location = new System.Drawing.Point(9, 382);
             this.groupBoxHUD.Name = "groupBoxHUD";
             this.groupBoxHUD.Size = new System.Drawing.Size(400, 387);
             this.groupBoxHUD.TabIndex = 4;
@@ -1062,7 +1062,7 @@
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMisc);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackSide);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMain);
-            this.groupBoxQuests.Location = new System.Drawing.Point(9, 802);
+            this.groupBoxQuests.Location = new System.Drawing.Point(9, 778);
             this.groupBoxQuests.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxQuests.Name = "groupBoxQuests";
             this.groupBoxQuests.Size = new System.Drawing.Size(400, 142);
@@ -1202,7 +1202,7 @@
             this.groupBoxGraphics.Location = new System.Drawing.Point(9, 206);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1404);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1320);
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
@@ -1222,7 +1222,7 @@
             this.groupBoxDOF.Controls.Add(this.sliderDOFStrength);
             this.groupBoxDOF.Location = new System.Drawing.Point(9, 505);
             this.groupBoxDOF.Name = "groupBoxDOF";
-            this.groupBoxDOF.Size = new System.Drawing.Size(381, 105);
+            this.groupBoxDOF.Size = new System.Drawing.Size(381, 93);
             this.groupBoxDOF.TabIndex = 2;
             this.groupBoxDOF.TabStop = false;
             this.groupBoxDOF.Text = "Depth of Field";
@@ -1351,6 +1351,72 @@
             this.buttonSelectOverallQualityPreset.UseVisualStyleBackColor = true;
             this.buttonSelectOverallQualityPreset.Click += new System.EventHandler(this.buttonSelectOverallQualityPreset_Click);
             // 
+            // contextMenuStripOverallQualityPresets
+            // 
+            this.contextMenuStripOverallQualityPresets.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripSeparator2,
+            this.lowToolStripMenuItem,
+            this.mediumToolStripMenuItem,
+            this.highToolStripMenuItem,
+            this.ultraToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.cancelToolStripMenuItem});
+            this.contextMenuStripOverallQualityPresets.Name = "contextMenuStripOverallQualityPresets";
+            this.contextMenuStripOverallQualityPresets.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.contextMenuStripOverallQualityPresets.Size = new System.Drawing.Size(161, 148);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Enabled = false;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem1.Text = "Graphics presets";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(157, 6);
+            // 
+            // lowToolStripMenuItem
+            // 
+            this.lowToolStripMenuItem.Name = "lowToolStripMenuItem";
+            this.lowToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.lowToolStripMenuItem.Text = "Low";
+            this.lowToolStripMenuItem.Click += new System.EventHandler(this.lowToolStripMenuItem_Click);
+            // 
+            // mediumToolStripMenuItem
+            // 
+            this.mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
+            this.mediumToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.mediumToolStripMenuItem.Text = "Medium";
+            this.mediumToolStripMenuItem.Click += new System.EventHandler(this.mediumToolStripMenuItem_Click);
+            // 
+            // highToolStripMenuItem
+            // 
+            this.highToolStripMenuItem.Name = "highToolStripMenuItem";
+            this.highToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.highToolStripMenuItem.Text = "High";
+            this.highToolStripMenuItem.Click += new System.EventHandler(this.highToolStripMenuItem_Click);
+            // 
+            // ultraToolStripMenuItem
+            // 
+            this.ultraToolStripMenuItem.Name = "ultraToolStripMenuItem";
+            this.ultraToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.ultraToolStripMenuItem.Text = "Ultra";
+            this.ultraToolStripMenuItem.Click += new System.EventHandler(this.ultraToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(157, 6);
+            // 
+            // cancelToolStripMenuItem
+            // 
+            this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
+            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.cancelToolStripMenuItem.Text = "Cancel";
+            // 
             // labelOverallQualityPreset
             // 
             this.labelOverallQualityPreset.AutoSize = true;
@@ -1405,7 +1471,7 @@
             this.groupBoxGraphicEffects.BorderWidth = 1;
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
-            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(218, 616);
+            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(218, 604);
             this.groupBoxGraphicEffects.Name = "groupBoxGraphicEffects";
             this.groupBoxGraphicEffects.Size = new System.Drawing.Size(172, 149);
             this.groupBoxGraphicEffects.TabIndex = 11;
@@ -1449,9 +1515,9 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 1247);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 1187);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
-            this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 145);
+            this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 123);
             this.groupBoxTAASharpening.TabIndex = 18;
             this.groupBoxTAASharpening.TabStop = false;
             this.groupBoxTAASharpening.Text = "TAA Sharpening";
@@ -1670,9 +1736,9 @@
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 1118);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 1076);
             this.groupBoxGrass.Name = "groupBoxGrass";
-            this.groupBoxGrass.Size = new System.Drawing.Size(381, 119);
+            this.groupBoxGrass.Size = new System.Drawing.Size(381, 99);
             this.groupBoxGrass.TabIndex = 17;
             this.groupBoxGrass.TabStop = false;
             this.groupBoxGrass.Text = "Grass";
@@ -1812,9 +1878,9 @@
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 956);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 928);
             this.groupBoxLOD.Name = "groupBoxLOD";
-            this.groupBoxLOD.Size = new System.Drawing.Size(381, 156);
+            this.groupBoxLOD.Size = new System.Drawing.Size(381, 136);
             this.groupBoxLOD.TabIndex = 16;
             this.groupBoxLOD.TabStop = false;
             this.groupBoxLOD.Text = "LOD";
@@ -2191,9 +2257,9 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowTextureResolution);
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
-            this.groupBoxShadows.Location = new System.Drawing.Point(9, 772);
+            this.groupBoxShadows.Location = new System.Drawing.Point(9, 760);
             this.groupBoxShadows.Name = "groupBoxShadows";
-            this.groupBoxShadows.Size = new System.Drawing.Size(381, 178);
+            this.groupBoxShadows.Size = new System.Drawing.Size(381, 159);
             this.groupBoxShadows.TabIndex = 15;
             this.groupBoxShadows.TabStop = false;
             this.groupBoxShadows.Text = "Shadows";
@@ -2479,7 +2545,7 @@
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxMotionBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxRadialBlur);
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxLensFlare);
-            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 616);
+            this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 604);
             this.groupBoxPostProcessing.Name = "groupBoxPostProcessing";
             this.groupBoxPostProcessing.Size = new System.Drawing.Size(204, 149);
             this.groupBoxPostProcessing.TabIndex = 10;
@@ -2738,7 +2804,7 @@
             this.groupBoxAudio.BorderWidth = 1;
             this.groupBoxAudio.Controls.Add(this.checkBoxEnableAudio);
             this.groupBoxAudio.Controls.Add(this.checkBoxMainMenuMusic);
-            this.groupBoxAudio.Location = new System.Drawing.Point(9, 390);
+            this.groupBoxAudio.Location = new System.Drawing.Point(9, 305);
             this.groupBoxAudio.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxAudio.Name = "groupBoxAudio";
             this.groupBoxAudio.Size = new System.Drawing.Size(400, 81);
@@ -2780,7 +2846,7 @@
             this.groupBoxVoice.Controls.Add(this.comboBoxVoiceChatMode);
             this.groupBoxVoice.Controls.Add(this.labelVoiceChatMode);
             this.groupBoxVoice.Controls.Add(this.checkBoxPushToTalk);
-            this.groupBoxVoice.Location = new System.Drawing.Point(9, 483);
+            this.groupBoxVoice.Location = new System.Drawing.Point(9, 398);
             this.groupBoxVoice.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxVoice.Name = "groupBoxVoice";
             this.groupBoxVoice.Size = new System.Drawing.Size(400, 89);
@@ -2855,7 +2921,7 @@
             this.groupBoxAudioVolume.Location = new System.Drawing.Point(9, 9);
             this.groupBoxAudioVolume.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxAudioVolume.Name = "groupBoxAudioVolume";
-            this.groupBoxAudioVolume.Size = new System.Drawing.Size(400, 369);
+            this.groupBoxAudioVolume.Size = new System.Drawing.Size(400, 284);
             this.groupBoxAudioVolume.TabIndex = 0;
             this.groupBoxAudioVolume.TabStop = false;
             this.groupBoxAudioVolume.Text = "Volume";
@@ -2882,7 +2948,7 @@
             0,
             0,
             0});
-            this.sliderAudioChat.Location = new System.Drawing.Point(99, 61);
+            this.sliderAudioChat.Location = new System.Drawing.Point(99, 51);
             this.sliderAudioChat.Maximum = new decimal(new int[] {
             100,
             0,
@@ -2945,7 +3011,7 @@
             0,
             0,
             0});
-            this.sliderAudiofVal6.Location = new System.Drawing.Point(99, 306);
+            this.sliderAudiofVal6.Location = new System.Drawing.Point(99, 249);
             this.sliderAudiofVal6.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3008,7 +3074,7 @@
             0,
             0,
             0});
-            this.sliderAudiofVal5.Location = new System.Drawing.Point(99, 276);
+            this.sliderAudiofVal5.Location = new System.Drawing.Point(99, 223);
             this.sliderAudiofVal5.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3071,7 +3137,7 @@
             0,
             0,
             0});
-            this.sliderAudiofVal4.Location = new System.Drawing.Point(99, 246);
+            this.sliderAudiofVal4.Location = new System.Drawing.Point(99, 197);
             this.sliderAudiofVal4.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3134,7 +3200,7 @@
             0,
             0,
             0});
-            this.sliderAudiofVal3.Location = new System.Drawing.Point(99, 216);
+            this.sliderAudiofVal3.Location = new System.Drawing.Point(99, 171);
             this.sliderAudiofVal3.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3197,7 +3263,7 @@
             0,
             0,
             0});
-            this.sliderAudiofVal2.Location = new System.Drawing.Point(99, 186);
+            this.sliderAudiofVal2.Location = new System.Drawing.Point(99, 145);
             this.sliderAudiofVal2.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3260,7 +3326,7 @@
             0,
             0,
             0});
-            this.sliderAudiofVal1.Location = new System.Drawing.Point(99, 156);
+            this.sliderAudiofVal1.Location = new System.Drawing.Point(99, 119);
             this.sliderAudiofVal1.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3409,7 +3475,7 @@
             0,
             0,
             0});
-            this.numAudioChat.Location = new System.Drawing.Point(320, 61);
+            this.numAudioChat.Location = new System.Drawing.Point(320, 51);
             this.numAudioChat.Name = "numAudioChat";
             this.numAudioChat.Size = new System.Drawing.Size(74, 20);
             this.numAudioChat.TabIndex = 5;
@@ -3437,7 +3503,7 @@
             0,
             0,
             0});
-            this.sliderAudiofVal0.Location = new System.Drawing.Point(99, 126);
+            this.sliderAudiofVal0.Location = new System.Drawing.Point(99, 93);
             this.sliderAudiofVal0.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3485,7 +3551,7 @@
             // labelAudioChat
             // 
             this.labelAudioChat.AutoSize = true;
-            this.labelAudioChat.Location = new System.Drawing.Point(6, 63);
+            this.labelAudioChat.Location = new System.Drawing.Point(6, 53);
             this.labelAudioChat.Name = "labelAudioChat";
             this.labelAudioChat.Size = new System.Drawing.Size(66, 13);
             this.labelAudioChat.TabIndex = 3;
@@ -3494,7 +3560,7 @@
             // labelAudiofVal0
             // 
             this.labelAudiofVal0.AutoSize = true;
-            this.labelAudiofVal0.Location = new System.Drawing.Point(6, 128);
+            this.labelAudiofVal0.Location = new System.Drawing.Point(6, 95);
             this.labelAudiofVal0.Name = "labelAudiofVal0";
             this.labelAudiofVal0.Size = new System.Drawing.Size(65, 13);
             this.labelAudiofVal0.TabIndex = 6;
@@ -3509,7 +3575,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal0.Location = new System.Drawing.Point(320, 126);
+            this.numAudiofVal0.Location = new System.Drawing.Point(320, 93);
             this.numAudiofVal0.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3533,7 +3599,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal6.Location = new System.Drawing.Point(320, 306);
+            this.numAudiofVal6.Location = new System.Drawing.Point(320, 249);
             this.numAudiofVal6.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3551,7 +3617,7 @@
             // labelAudiofVal6
             // 
             this.labelAudiofVal6.AutoSize = true;
-            this.labelAudiofVal6.Location = new System.Drawing.Point(6, 308);
+            this.labelAudiofVal6.Location = new System.Drawing.Point(6, 251);
             this.labelAudiofVal6.Name = "labelAudiofVal6";
             this.labelAudiofVal6.Size = new System.Drawing.Size(74, 13);
             this.labelAudiofVal6.TabIndex = 24;
@@ -3560,7 +3626,7 @@
             // labelAudiofVal1
             // 
             this.labelAudiofVal1.AutoSize = true;
-            this.labelAudiofVal1.Location = new System.Drawing.Point(6, 158);
+            this.labelAudiofVal1.Location = new System.Drawing.Point(6, 121);
             this.labelAudiofVal1.Name = "labelAudiofVal1";
             this.labelAudiofVal1.Size = new System.Drawing.Size(71, 13);
             this.labelAudiofVal1.TabIndex = 9;
@@ -3575,7 +3641,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal1.Location = new System.Drawing.Point(320, 156);
+            this.numAudiofVal1.Location = new System.Drawing.Point(320, 119);
             this.numAudiofVal1.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3599,7 +3665,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal5.Location = new System.Drawing.Point(320, 276);
+            this.numAudiofVal5.Location = new System.Drawing.Point(320, 223);
             this.numAudiofVal5.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3617,7 +3683,7 @@
             // labelAudiofVal5
             // 
             this.labelAudiofVal5.AutoSize = true;
-            this.labelAudiofVal5.Location = new System.Drawing.Point(6, 278);
+            this.labelAudiofVal5.Location = new System.Drawing.Point(6, 225);
             this.labelAudiofVal5.Name = "labelAudiofVal5";
             this.labelAudiofVal5.Size = new System.Drawing.Size(53, 13);
             this.labelAudiofVal5.TabIndex = 21;
@@ -3626,7 +3692,7 @@
             // labelAudiofVal2
             // 
             this.labelAudiofVal2.AutoSize = true;
-            this.labelAudiofVal2.Location = new System.Drawing.Point(6, 188);
+            this.labelAudiofVal2.Location = new System.Drawing.Point(6, 147);
             this.labelAudiofVal2.Name = "labelAudiofVal2";
             this.labelAudiofVal2.Size = new System.Drawing.Size(34, 13);
             this.labelAudiofVal2.TabIndex = 12;
@@ -3641,7 +3707,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal2.Location = new System.Drawing.Point(320, 186);
+            this.numAudiofVal2.Location = new System.Drawing.Point(320, 145);
             this.numAudiofVal2.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3665,7 +3731,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal4.Location = new System.Drawing.Point(320, 246);
+            this.numAudiofVal4.Location = new System.Drawing.Point(320, 197);
             this.numAudiofVal4.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3683,7 +3749,7 @@
             // labelAudiofVal4
             // 
             this.labelAudiofVal4.AutoSize = true;
-            this.labelAudiofVal4.Location = new System.Drawing.Point(6, 248);
+            this.labelAudiofVal4.Location = new System.Drawing.Point(6, 199);
             this.labelAudiofVal4.Name = "labelAudiofVal4";
             this.labelAudiofVal4.Size = new System.Drawing.Size(40, 13);
             this.labelAudiofVal4.TabIndex = 18;
@@ -3692,7 +3758,7 @@
             // labelAudiofVal3
             // 
             this.labelAudiofVal3.AutoSize = true;
-            this.labelAudiofVal3.Location = new System.Drawing.Point(6, 218);
+            this.labelAudiofVal3.Location = new System.Drawing.Point(6, 173);
             this.labelAudiofVal3.Name = "labelAudiofVal3";
             this.labelAudiofVal3.Size = new System.Drawing.Size(35, 13);
             this.labelAudiofVal3.TabIndex = 15;
@@ -3707,7 +3773,7 @@
             0,
             0,
             65536});
-            this.numAudiofVal3.Location = new System.Drawing.Point(320, 216);
+            this.numAudiofVal3.Location = new System.Drawing.Point(320, 171);
             this.numAudiofVal3.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3747,10 +3813,10 @@
             this.groupBoxGamepad.Controls.Add(this.sliderGamepadSensitivityX);
             this.groupBoxGamepad.Controls.Add(this.numGamepadSensitivityX);
             this.groupBoxGamepad.Controls.Add(this.labelGamepadSensitivityX);
-            this.groupBoxGamepad.Location = new System.Drawing.Point(9, 259);
+            this.groupBoxGamepad.Location = new System.Drawing.Point(9, 250);
             this.groupBoxGamepad.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGamepad.Name = "groupBoxGamepad";
-            this.groupBoxGamepad.Size = new System.Drawing.Size(400, 211);
+            this.groupBoxGamepad.Size = new System.Drawing.Size(400, 204);
             this.groupBoxGamepad.TabIndex = 1;
             this.groupBoxGamepad.TabStop = false;
             this.groupBoxGamepad.Text = "Gamepad";
@@ -3764,7 +3830,7 @@
             this.checkBoxAimAssist.AutoSize = true;
             this.checkBoxAimAssist.Checked = true;
             this.checkBoxAimAssist.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAimAssist.Location = new System.Drawing.Point(9, 181);
+            this.checkBoxAimAssist.Location = new System.Drawing.Point(9, 177);
             this.checkBoxAimAssist.Name = "checkBoxAimAssist";
             this.checkBoxAimAssist.Size = new System.Drawing.Size(73, 17);
             this.checkBoxAimAssist.TabIndex = 2;
@@ -3776,7 +3842,7 @@
             this.checkBoxGamepadRumble.AutoSize = true;
             this.checkBoxGamepadRumble.Checked = true;
             this.checkBoxGamepadRumble.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGamepadRumble.Location = new System.Drawing.Point(9, 158);
+            this.checkBoxGamepadRumble.Location = new System.Drawing.Point(9, 154);
             this.checkBoxGamepadRumble.Name = "checkBoxGamepadRumble";
             this.checkBoxGamepadRumble.Size = new System.Drawing.Size(149, 17);
             this.checkBoxGamepadRumble.TabIndex = 1;
@@ -3788,7 +3854,7 @@
             this.checkBoxGamepadEnabled.AutoSize = true;
             this.checkBoxGamepadEnabled.Checked = true;
             this.checkBoxGamepadEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGamepadEnabled.Location = new System.Drawing.Point(9, 135);
+            this.checkBoxGamepadEnabled.Location = new System.Drawing.Point(9, 131);
             this.checkBoxGamepadEnabled.Name = "checkBoxGamepadEnabled";
             this.checkBoxGamepadEnabled.Size = new System.Drawing.Size(106, 17);
             this.checkBoxGamepadEnabled.TabIndex = 0;
@@ -3813,7 +3879,7 @@
             0,
             0,
             0});
-            this.sliderGamepadSensitivityY.Location = new System.Drawing.Point(9, 91);
+            this.sliderGamepadSensitivityY.Location = new System.Drawing.Point(9, 85);
             this.sliderGamepadSensitivityY.Maximum = new decimal(new int[] {
             15556,
             0,
@@ -3867,7 +3933,7 @@
             0,
             0,
             262144});
-            this.numGamepadSensitivityY.Location = new System.Drawing.Point(340, 91);
+            this.numGamepadSensitivityY.Location = new System.Drawing.Point(340, 85);
             this.numGamepadSensitivityY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -3890,7 +3956,7 @@
             // labelGamepadSensitivityY
             // 
             this.labelGamepadSensitivityY.AutoSize = true;
-            this.labelGamepadSensitivityY.Location = new System.Drawing.Point(6, 73);
+            this.labelGamepadSensitivityY.Location = new System.Drawing.Point(6, 69);
             this.labelGamepadSensitivityY.Name = "labelGamepadSensitivityY";
             this.labelGamepadSensitivityY.Size = new System.Drawing.Size(90, 13);
             this.labelGamepadSensitivityY.TabIndex = 9;
@@ -3914,7 +3980,7 @@
             0,
             0,
             0});
-            this.sliderGamepadSensitivityX.Location = new System.Drawing.Point(9, 40);
+            this.sliderGamepadSensitivityX.Location = new System.Drawing.Point(9, 38);
             this.sliderGamepadSensitivityX.Maximum = new decimal(new int[] {
             15556,
             0,
@@ -3968,7 +4034,7 @@
             0,
             0,
             262144});
-            this.numGamepadSensitivityX.Location = new System.Drawing.Point(340, 40);
+            this.numGamepadSensitivityX.Location = new System.Drawing.Point(340, 38);
             this.numGamepadSensitivityX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -4015,7 +4081,7 @@
             this.groupBoxMouse.Location = new System.Drawing.Point(9, 9);
             this.groupBoxMouse.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxMouse.Name = "groupBoxMouse";
-            this.groupBoxMouse.Size = new System.Drawing.Size(400, 238);
+            this.groupBoxMouse.Size = new System.Drawing.Size(400, 229);
             this.groupBoxMouse.TabIndex = 0;
             this.groupBoxMouse.TabStop = false;
             this.groupBoxMouse.Text = "Mouse";
@@ -4027,7 +4093,7 @@
             // checkBoxMouseInvertX
             // 
             this.checkBoxMouseInvertX.AutoSize = true;
-            this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 210);
+            this.checkBoxMouseInvertX.Location = new System.Drawing.Point(9, 202);
             this.checkBoxMouseInvertX.Name = "checkBoxMouseInvertX";
             this.checkBoxMouseInvertX.Size = new System.Drawing.Size(63, 17);
             this.checkBoxMouseInvertX.TabIndex = 9;
@@ -4037,7 +4103,7 @@
             // checkBoxMouseInvertY
             // 
             this.checkBoxMouseInvertY.AutoSize = true;
-            this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 187);
+            this.checkBoxMouseInvertY.Location = new System.Drawing.Point(9, 179);
             this.checkBoxMouseInvertY.Name = "checkBoxMouseInvertY";
             this.checkBoxMouseInvertY.Size = new System.Drawing.Size(63, 17);
             this.checkBoxMouseInvertY.TabIndex = 8;
@@ -4047,7 +4113,7 @@
             // checkBoxFixAimSensitivity
             // 
             this.checkBoxFixAimSensitivity.AutoSize = true;
-            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 153);
+            this.checkBoxFixAimSensitivity.Location = new System.Drawing.Point(9, 145);
             this.checkBoxFixAimSensitivity.Name = "checkBoxFixAimSensitivity";
             this.checkBoxFixAimSensitivity.Size = new System.Drawing.Size(106, 17);
             this.checkBoxFixAimSensitivity.TabIndex = 7;
@@ -4057,7 +4123,7 @@
             // checkBoxFixMouseSensitivity
             // 
             this.checkBoxFixMouseSensitivity.AutoSize = true;
-            this.checkBoxFixMouseSensitivity.Location = new System.Drawing.Point(9, 130);
+            this.checkBoxFixMouseSensitivity.Location = new System.Drawing.Point(9, 122);
             this.checkBoxFixMouseSensitivity.Name = "checkBoxFixMouseSensitivity";
             this.checkBoxFixMouseSensitivity.Size = new System.Drawing.Size(225, 17);
             this.checkBoxFixMouseSensitivity.TabIndex = 6;
@@ -4082,7 +4148,7 @@
             0,
             0,
             0});
-            this.sliderMouseSensitivityY.Location = new System.Drawing.Point(9, 88);
+            this.sliderMouseSensitivityY.Location = new System.Drawing.Point(9, 82);
             this.sliderMouseSensitivityY.Maximum = new decimal(new int[] {
             600,
             0,
@@ -4136,7 +4202,7 @@
             0,
             0,
             262144});
-            this.numMouseSensitivityY.Location = new System.Drawing.Point(340, 88);
+            this.numMouseSensitivityY.Location = new System.Drawing.Point(340, 82);
             this.numMouseSensitivityY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -4159,7 +4225,7 @@
             // labelMouseSensitivityY
             // 
             this.labelMouseSensitivityY.AutoSize = true;
-            this.labelMouseSensitivityY.Location = new System.Drawing.Point(6, 70);
+            this.labelMouseSensitivityY.Location = new System.Drawing.Point(6, 66);
             this.labelMouseSensitivityY.Name = "labelMouseSensitivityY";
             this.labelMouseSensitivityY.Size = new System.Drawing.Size(90, 13);
             this.labelMouseSensitivityY.TabIndex = 3;
@@ -4183,7 +4249,7 @@
             0,
             0,
             0});
-            this.sliderMouseSensitivityX.Location = new System.Drawing.Point(9, 37);
+            this.sliderMouseSensitivityX.Location = new System.Drawing.Point(9, 35);
             this.sliderMouseSensitivityX.Maximum = new decimal(new int[] {
             600,
             0,
@@ -4237,7 +4303,7 @@
             0,
             0,
             262144});
-            this.numMouseSensitivityX.Location = new System.Drawing.Point(340, 37);
+            this.numMouseSensitivityX.Location = new System.Drawing.Point(340, 35);
             this.numMouseSensitivityX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -4292,10 +4358,10 @@
             this.groupBoxCameraPosition.Controls.Add(this.buttonCameraPositionReset);
             this.groupBoxCameraPosition.Controls.Add(this.checkBoxbApplyCameraNodeAnimations);
             this.groupBoxCameraPosition.Controls.Add(this.groupBoxUnarmedCameraPosition);
-            this.groupBoxCameraPosition.Location = new System.Drawing.Point(9, 862);
+            this.groupBoxCameraPosition.Location = new System.Drawing.Point(9, 811);
             this.groupBoxCameraPosition.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCameraPosition.Name = "groupBoxCameraPosition";
-            this.groupBoxCameraPosition.Size = new System.Drawing.Size(400, 588);
+            this.groupBoxCameraPosition.Size = new System.Drawing.Size(400, 512);
             this.groupBoxCameraPosition.TabIndex = 5;
             this.groupBoxCameraPosition.TabStop = false;
             this.groupBoxCameraPosition.Text = "Camera position (Experimental)";
@@ -4318,9 +4384,9 @@
             this.groupBoxMeleeCombatCameraPosition.Controls.Add(this.trackBarfOverShoulderMeleeCombatPosX);
             this.groupBoxMeleeCombatCameraPosition.Controls.Add(this.labelfOverShoulderMeleeCombatPosZ);
             this.groupBoxMeleeCombatCameraPosition.Controls.Add(this.trackBarfOverShoulderMeleeCombatPosZ);
-            this.groupBoxMeleeCombatCameraPosition.Location = new System.Drawing.Point(6, 392);
+            this.groupBoxMeleeCombatCameraPosition.Location = new System.Drawing.Point(6, 343);
             this.groupBoxMeleeCombatCameraPosition.Name = "groupBoxMeleeCombatCameraPosition";
-            this.groupBoxMeleeCombatCameraPosition.Size = new System.Drawing.Size(388, 191);
+            this.groupBoxMeleeCombatCameraPosition.Size = new System.Drawing.Size(388, 162);
             this.groupBoxMeleeCombatCameraPosition.TabIndex = 12;
             this.groupBoxMeleeCombatCameraPosition.TabStop = false;
             this.groupBoxMeleeCombatCameraPosition.Text = "Melee combat camera position";
@@ -4617,9 +4683,9 @@
             this.groupBoxCombatCameraPosition.Controls.Add(this.trackBarfOverShoulderCombatPosX);
             this.groupBoxCombatCameraPosition.Controls.Add(this.labelfOverShoulderCombatPosZ);
             this.groupBoxCombatCameraPosition.Controls.Add(this.trackBarfOverShoulderCombatPosZ);
-            this.groupBoxCombatCameraPosition.Location = new System.Drawing.Point(6, 195);
+            this.groupBoxCombatCameraPosition.Location = new System.Drawing.Point(6, 175);
             this.groupBoxCombatCameraPosition.Name = "groupBoxCombatCameraPosition";
-            this.groupBoxCombatCameraPosition.Size = new System.Drawing.Size(388, 191);
+            this.groupBoxCombatCameraPosition.Size = new System.Drawing.Size(388, 162);
             this.groupBoxCombatCameraPosition.TabIndex = 11;
             this.groupBoxCombatCameraPosition.TabStop = false;
             this.groupBoxCombatCameraPosition.Text = "Combat camera position";
@@ -4935,7 +5001,7 @@
             this.groupBoxUnarmedCameraPosition.Controls.Add(this.trackBarfOverShoulderPosZ);
             this.groupBoxUnarmedCameraPosition.Location = new System.Drawing.Point(6, 55);
             this.groupBoxUnarmedCameraPosition.Name = "groupBoxUnarmedCameraPosition";
-            this.groupBoxUnarmedCameraPosition.Size = new System.Drawing.Size(388, 134);
+            this.groupBoxUnarmedCameraPosition.Size = new System.Drawing.Size(388, 114);
             this.groupBoxUnarmedCameraPosition.TabIndex = 10;
             this.groupBoxUnarmedCameraPosition.TabStop = false;
             this.groupBoxUnarmedCameraPosition.Text = "Unarmed camera position";
@@ -5197,10 +5263,10 @@
             this.groupBoxSelfieCamera.Controls.Add(this.numericUpDownPhotomodeTranslationSpeed);
             this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeTranslationSpeed);
             this.groupBoxSelfieCamera.Controls.Add(this.labelPhotomodeTranslationSpeed);
-            this.groupBoxSelfieCamera.Location = new System.Drawing.Point(9, 627);
+            this.groupBoxSelfieCamera.Location = new System.Drawing.Point(9, 605);
             this.groupBoxSelfieCamera.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxSelfieCamera.Name = "groupBoxSelfieCamera";
-            this.groupBoxSelfieCamera.Size = new System.Drawing.Size(400, 134);
+            this.groupBoxSelfieCamera.Size = new System.Drawing.Size(400, 116);
             this.groupBoxSelfieCamera.TabIndex = 4;
             this.groupBoxSelfieCamera.TabStop = false;
             this.groupBoxSelfieCamera.Text = "Photomode options";
@@ -5497,10 +5563,10 @@
             this.groupBoxIdleCamera.BorderWidth = 1;
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxForceVanityMode);
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxVanityMode);
-            this.groupBoxIdleCamera.Location = new System.Drawing.Point(9, 773);
+            this.groupBoxIdleCamera.Location = new System.Drawing.Point(9, 733);
             this.groupBoxIdleCamera.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxIdleCamera.Name = "groupBoxIdleCamera";
-            this.groupBoxIdleCamera.Size = new System.Drawing.Size(400, 77);
+            this.groupBoxIdleCamera.Size = new System.Drawing.Size(400, 66);
             this.groupBoxIdleCamera.TabIndex = 2;
             this.groupBoxIdleCamera.TabStop = false;
             this.groupBoxIdleCamera.Text = "Idle camera (Experimental)";
@@ -5550,7 +5616,7 @@
             this.groupBoxCameraDistance.Location = new System.Drawing.Point(9, 482);
             this.groupBoxCameraDistance.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCameraDistance.Name = "groupBoxCameraDistance";
-            this.groupBoxCameraDistance.Size = new System.Drawing.Size(400, 133);
+            this.groupBoxCameraDistance.Size = new System.Drawing.Size(400, 111);
             this.groupBoxCameraDistance.TabIndex = 3;
             this.groupBoxCameraDistance.TabStop = false;
             this.groupBoxCameraDistance.Text = "Camera distance in 3rd person";
@@ -6317,72 +6383,6 @@
             this.labelTweaksTitle.TabIndex = 71;
             this.labelTweaksTitle.Text = "Tweaks";
             // 
-            // contextMenuStripOverallQualityPresets
-            // 
-            this.contextMenuStripOverallQualityPresets.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripSeparator2,
-            this.lowToolStripMenuItem,
-            this.mediumToolStripMenuItem,
-            this.highToolStripMenuItem,
-            this.ultraToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.cancelToolStripMenuItem});
-            this.contextMenuStripOverallQualityPresets.Name = "contextMenuStripOverallQualityPresets";
-            this.contextMenuStripOverallQualityPresets.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStripOverallQualityPresets.Size = new System.Drawing.Size(161, 148);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Enabled = false;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
-            this.toolStripMenuItem1.Text = "Graphics presets";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(157, 6);
-            // 
-            // lowToolStripMenuItem
-            // 
-            this.lowToolStripMenuItem.Name = "lowToolStripMenuItem";
-            this.lowToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.lowToolStripMenuItem.Text = "Low";
-            this.lowToolStripMenuItem.Click += new System.EventHandler(this.lowToolStripMenuItem_Click);
-            // 
-            // mediumToolStripMenuItem
-            // 
-            this.mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
-            this.mediumToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.mediumToolStripMenuItem.Text = "Medium";
-            this.mediumToolStripMenuItem.Click += new System.EventHandler(this.mediumToolStripMenuItem_Click);
-            // 
-            // highToolStripMenuItem
-            // 
-            this.highToolStripMenuItem.Name = "highToolStripMenuItem";
-            this.highToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.highToolStripMenuItem.Text = "High";
-            this.highToolStripMenuItem.Click += new System.EventHandler(this.highToolStripMenuItem_Click);
-            // 
-            // ultraToolStripMenuItem
-            // 
-            this.ultraToolStripMenuItem.Name = "ultraToolStripMenuItem";
-            this.ultraToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.ultraToolStripMenuItem.Text = "Ultra";
-            this.ultraToolStripMenuItem.Click += new System.EventHandler(this.ultraToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(157, 6);
-            // 
-            // cancelToolStripMenuItem
-            // 
-            this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
-            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.cancelToolStripMenuItem.Text = "Cancel";
-            // 
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 20000;
@@ -6431,6 +6431,7 @@
             this.groupBoxDOF.ResumeLayout(false);
             this.groupBoxDOF.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDOFStrength)).EndInit();
+            this.contextMenuStripOverallQualityPresets.ResumeLayout(false);
             this.groupBoxTextures.ResumeLayout(false);
             this.groupBoxTextures.PerformLayout();
             this.groupBoxGraphicEffects.ResumeLayout(false);
@@ -6525,7 +6526,6 @@
             this.groupBoxLoginProfiles.PerformLayout();
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
-            this.contextMenuStripOverallQualityPresets.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -72,6 +72,17 @@ ContextMenuStrip:
 ToolStripMenuItem:
   ForeColor: "white"
 
+ColorSlider:
+  BarInnerColor: "Black"
+  BarPenColorBottom: "Black"
+  BarPenColorTop: "Black"
+  ElapsedInnerColor: "rgb(21, 56, 152)"
+  ElapsedPenColorBottom: "rgb(21, 56, 152)"
+  ElapsedPenColorTop: "rgb(21, 56, 152)"
+  ThumbInnerColor: "rgb(21, 56, 152)"
+  ThumbOuterColor: "rgb(21, 56, 152)"
+  ThumbPenColor: "rgb(21, 56, 152)"
+
 # Side navigation:
 UserControlSideNav:
   BackColor: black
