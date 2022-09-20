@@ -72,9 +72,7 @@ namespace Fo76ini.Mods
                 int enabledMods = mods.EnabledCount;
                 foreach (ManagedMod mod in mods)
                 {
-                    if (mod.Enabled &&
-                        Directory.Exists(mod.ManagedFolderPath) &&
-                        !Utils.IsDirectoryEmpty(mod.ManagedFolderPath))
+                    if (mod.Enabled)
                     {
                         ProgressChanged?.Invoke(Progress.Ongoing($"Installing mod: {++counter} of {enabledMods} - {mod.Title}...", (float)(counter) / (float)enabledMods));
                         switch (mod.Method)
@@ -115,6 +113,14 @@ namespace Fo76ini.Mods
         {
             LogFile.WriteLine($"   Installing mod '{mod.Title}' as LooseFiles");
 
+            // If the mod folder doesn't exist or is empty...
+            if (!Directory.Exists(mod.ManagedFolderPath) ||
+                Utils.IsDirectoryEmpty(mod.ManagedFolderPath))
+            {
+                LogFile.WriteLine($"      Skip: Either mod folder is empty or doesn't exist.");
+                return; // ... skip deployment.
+            }
+
             mod.LooseFiles.Clear();
 
             // Iterate over each file in the managed folder ...
@@ -150,6 +156,15 @@ namespace Fo76ini.Mods
         private static void DeploySeparateArchive(ManagedMod mod, ResourceList resources)
         {
             LogFile.WriteLine($"   Installing mod '{mod.Title}' as SeparateBA2");
+
+            // If mod isn't frozen and the mod folder doesn't exist or is empty...
+            if (!mod.Frozen &&
+                (!Directory.Exists(mod.ManagedFolderPath) ||
+                Utils.IsDirectoryEmpty(mod.ManagedFolderPath)))
+            {
+                LogFile.WriteLine($"      Skip: Either mod folder is empty or doesn't exist.");
+                return; // ... skip deployment.
+            }
 
             // If mod is supposed to be deployed frozen...
             if (mod.Freeze)

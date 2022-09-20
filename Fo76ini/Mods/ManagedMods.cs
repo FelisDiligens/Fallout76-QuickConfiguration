@@ -180,7 +180,8 @@ namespace Fo76ini.Mods
 
             foreach (ManagedMod mod in mods)
             {
-                if (Directory.Exists(mod.ManagedFolderPath))
+                if (Directory.Exists(mod.ManagedFolderPath) ||
+                    File.Exists(mod.FrozenArchivePath))
                     xmlRoot.Add(mod.Serialize());
             }
 

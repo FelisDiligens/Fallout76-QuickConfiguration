@@ -7,6 +7,19 @@ However, it does not apply to the mod manager yet.
 
 I hope your eyes are now soothed with the dark mode. :)
 
+**Changelog:**
+<details>
+<summary>Click to expand</summary>
+
+- Added dark and light mode which can be toggled in the App Settings.
+  - Changed some UI elements in order to make them themable. (TrackBars/Sliders, GroupBoxes, TabControls, etc.)
+  - Theming support probably comes with a small hit to performance.
+  - (added YAML parser "YamlDotNet" as a dependency)
+- Bug fixes / Minor changes:
+  - Frozen mods still get deployed even if the mod folder is empty.
+
+</details>
+
 *To be released...*
 
 ---
