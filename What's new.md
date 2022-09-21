@@ -16,11 +16,13 @@ I hope your eyes are now soothed with the dark mode. :)
   - Theming support probably comes with a small hit to performance.
   - (added YAML parser "YamlDotNet" as a dependency)
 - Bug fixes / Minor changes:
+  - Fixed archives of removed mods not getting deleted, which resulted in junk *.ba2 files in the Data folder.
   - Frozen mods still get deployed even if the mod folder is empty.
+  - Added NukaCrypt web link.
 
 </details>
 
-*To be released...*
+*Released: tbd*
 
 ---
 

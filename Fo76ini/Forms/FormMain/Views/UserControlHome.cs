@@ -383,7 +383,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         /// </summary>
         private void LoadServerStatus()
         {
-            this.pictureBoxScrapedServerStatus.Image = Resources.Spinner_24;
+            this.pictureBoxScrapedServerStatus.Image = Resources.Rolling_1s_24px;
             this.labelScrapedServerStatus.Text = "...";
             this.buttonReloadServerStatus.Enabled = false;
             this.backgroundWorkerScrapeServerStatus.RunWorkerAsync();

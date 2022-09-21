@@ -1787,7 +1787,7 @@
             this.pictureBoxModsLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxModsLoadingGIF.BackColor = System.Drawing.Color.White;
-            this.pictureBoxModsLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
+            this.pictureBoxModsLoadingGIF.Image = global::Fo76ini.Properties.Resources.Rolling_1s_200px;
             this.pictureBoxModsLoadingGIF.Location = new System.Drawing.Point(0, 27);
             this.pictureBoxModsLoadingGIF.Name = "pictureBoxModsLoadingGIF";
             this.pictureBoxModsLoadingGIF.Size = new System.Drawing.Size(16, 490);

@@ -164,7 +164,7 @@
             // 
             // pictureBoxSpinnerDownloadLanguages
             // 
-            this.pictureBoxSpinnerDownloadLanguages.Image = global::Fo76ini.Properties.Resources.Spinner_24;
+            this.pictureBoxSpinnerDownloadLanguages.Image = global::Fo76ini.Properties.Resources.Rolling_1s_24px;
             this.pictureBoxSpinnerDownloadLanguages.Location = new System.Drawing.Point(231, 69);
             this.pictureBoxSpinnerDownloadLanguages.Name = "pictureBoxSpinnerDownloadLanguages";
             this.pictureBoxSpinnerDownloadLanguages.Size = new System.Drawing.Size(24, 24);

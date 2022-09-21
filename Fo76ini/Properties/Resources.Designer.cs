@@ -859,6 +859,16 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Magnify_1s_200px {
+            get {
+                object obj = ResourceManager.GetObject("Magnify_1s_200px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap msstore {
             get {
                 object obj = ResourceManager.GetObject("msstore", resourceCulture);
@@ -1103,6 +1113,36 @@ namespace Fo76ini.Properties {
             get {
                 object obj = ResourceManager.GetObject("RobotoCondensed_Bold", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rolling_1s_128px {
+            get {
+                object obj = ResourceManager.GetObject("Rolling_1s_128px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rolling_1s_200px {
+            get {
+                object obj = ResourceManager.GetObject("Rolling_1s_200px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rolling_1s_24px {
+            get {
+                object obj = ResourceManager.GetObject("Rolling_1s_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

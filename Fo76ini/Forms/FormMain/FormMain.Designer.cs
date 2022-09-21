@@ -59,7 +59,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxLoadingGIF.BackColor = System.Drawing.SystemColors.Window;
-            this.pictureBoxLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
+            this.pictureBoxLoadingGIF.Image = global::Fo76ini.Properties.Resources.Rolling_1s_200px;
             this.pictureBoxLoadingGIF.Location = new System.Drawing.Point(0, -2);
             this.pictureBoxLoadingGIF.Name = "pictureBoxLoadingGIF";
             this.pictureBoxLoadingGIF.Size = new System.Drawing.Size(16, 613);
@@ -77,7 +77,7 @@
             this.viewControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.viewControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.viewControl.BackColor = System.Drawing.Color.White;
             this.viewControl.Location = new System.Drawing.Point(200, -2);
             this.viewControl.Margin = new System.Windows.Forms.Padding(0);
             this.viewControl.Name = "viewControl";
@@ -88,7 +88,7 @@
             // 
             this.userControlSideNav.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.userControlSideNav.BackColor = System.Drawing.Color.Black;
+            this.userControlSideNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.userControlSideNav.Location = new System.Drawing.Point(0, -2);
             this.userControlSideNav.Name = "userControlSideNav";
             this.userControlSideNav.SelectedTabIndex = -1;

@@ -48,6 +48,8 @@
             this.tabControlWithoutHeader1 = new Fo76ini.Controls.TabControlWithoutHeader();
             this.tabPageHome = new System.Windows.Forms.TabPage();
             this.panelWebLinks = new System.Windows.Forms.Panel();
+            this.pictureBoxSpacer2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSpacer1 = new System.Windows.Forms.PictureBox();
             this.styledButtonNukacrypt = new Fo76ini.Controls.StyledButton();
             this.styledButtonxTranslator = new Fo76ini.Controls.StyledButton();
             this.styledButtonNukesAndDragonsBuildPlanner = new Fo76ini.Controls.StyledButton();
@@ -69,19 +71,17 @@
             this.styledButtonGoBack = new Fo76ini.Controls.StyledButton();
             this.backgroundWorkerScrapeServerStatus = new System.ComponentModel.BackgroundWorker();
             this.timerReenableRefreshServerStatus = new System.Windows.Forms.Timer(this.components);
-            this.pictureBoxSpacer1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxSpacer2 = new System.Windows.Forms.PictureBox();
             this.panelUpdate.SuspendLayout();
             this.panelTitle.SuspendLayout();
             this.tabControlWithoutHeader1.SuspendLayout();
             this.tabPageHome.SuspendLayout();
             this.panelWebLinks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer1)).BeginInit();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScrapedServerStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).BeginInit();
             this.tabPageWhatsNew.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer2)).BeginInit();
             this.SuspendLayout();
             // 
             // webBrowserWhatsNew
@@ -303,6 +303,26 @@
             this.panelWebLinks.Name = "panelWebLinks";
             this.panelWebLinks.Size = new System.Drawing.Size(199, 381);
             this.panelWebLinks.TabIndex = 54;
+            // 
+            // pictureBoxSpacer2
+            // 
+            this.pictureBoxSpacer2.BackColor = System.Drawing.Color.Silver;
+            this.pictureBoxSpacer2.Location = new System.Drawing.Point(6, 262);
+            this.pictureBoxSpacer2.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBoxSpacer2.Name = "pictureBoxSpacer2";
+            this.pictureBoxSpacer2.Size = new System.Drawing.Size(187, 1);
+            this.pictureBoxSpacer2.TabIndex = 56;
+            this.pictureBoxSpacer2.TabStop = false;
+            // 
+            // pictureBoxSpacer1
+            // 
+            this.pictureBoxSpacer1.BackColor = System.Drawing.Color.Silver;
+            this.pictureBoxSpacer1.Location = new System.Drawing.Point(6, 141);
+            this.pictureBoxSpacer1.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBoxSpacer1.Name = "pictureBoxSpacer1";
+            this.pictureBoxSpacer1.Size = new System.Drawing.Size(187, 1);
+            this.pictureBoxSpacer1.TabIndex = 55;
+            this.pictureBoxSpacer1.TabStop = false;
             // 
             // styledButtonNukacrypt
             // 
@@ -621,7 +641,7 @@
             // 
             // pictureBoxSpinnerCheckForUpdates
             // 
-            this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Spinner_24;
+            this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Rolling_1s_24px;
             this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(100, 2);
             this.pictureBoxSpinnerCheckForUpdates.Name = "pictureBoxSpinnerCheckForUpdates";
             this.pictureBoxSpinnerCheckForUpdates.Size = new System.Drawing.Size(24, 24);
@@ -669,26 +689,6 @@
             this.timerReenableRefreshServerStatus.Interval = 10000;
             this.timerReenableRefreshServerStatus.Tick += new System.EventHandler(this.timerReenableRefreshServerStatus_Tick);
             // 
-            // pictureBoxSpacer1
-            // 
-            this.pictureBoxSpacer1.BackColor = System.Drawing.Color.Silver;
-            this.pictureBoxSpacer1.Location = new System.Drawing.Point(6, 141);
-            this.pictureBoxSpacer1.Margin = new System.Windows.Forms.Padding(6);
-            this.pictureBoxSpacer1.Name = "pictureBoxSpacer1";
-            this.pictureBoxSpacer1.Size = new System.Drawing.Size(187, 1);
-            this.pictureBoxSpacer1.TabIndex = 55;
-            this.pictureBoxSpacer1.TabStop = false;
-            // 
-            // pictureBoxSpacer2
-            // 
-            this.pictureBoxSpacer2.BackColor = System.Drawing.Color.Silver;
-            this.pictureBoxSpacer2.Location = new System.Drawing.Point(6, 262);
-            this.pictureBoxSpacer2.Margin = new System.Windows.Forms.Padding(6);
-            this.pictureBoxSpacer2.Name = "pictureBoxSpacer2";
-            this.pictureBoxSpacer2.Size = new System.Drawing.Size(187, 1);
-            this.pictureBoxSpacer2.TabIndex = 56;
-            this.pictureBoxSpacer2.TabStop = false;
-            // 
             // UserControlHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -704,13 +704,13 @@
             this.tabPageHome.ResumeLayout(false);
             this.panelWebLinks.ResumeLayout(false);
             this.panelWebLinks.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer1)).EndInit();
             this.panelContent.ResumeLayout(false);
             this.panelContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScrapedServerStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).EndInit();
             this.tabPageWhatsNew.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer2)).EndInit();
             this.ResumeLayout(false);
 
         }

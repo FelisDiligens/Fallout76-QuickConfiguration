@@ -199,7 +199,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxGalleryLoadingGIF.BackColor = System.Drawing.Color.White;
-            this.pictureBoxGalleryLoadingGIF.Image = global::Fo76ini.Properties.Resources.Spinner_200;
+            this.pictureBoxGalleryLoadingGIF.Image = global::Fo76ini.Properties.Resources.Magnify_1s_200px;
             this.pictureBoxGalleryLoadingGIF.Location = new System.Drawing.Point(-4, 0);
             this.pictureBoxGalleryLoadingGIF.Name = "pictureBoxGalleryLoadingGIF";
             this.pictureBoxGalleryLoadingGIF.Size = new System.Drawing.Size(574, 396);
