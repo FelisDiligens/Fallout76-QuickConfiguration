@@ -22,8 +22,10 @@ using System.Windows.Forms;
 
 namespace Fo76ini
 {
-    public partial class FormMain : Form
+    public partial class FormMain : Form, IExposeComponents
     {
+        public ToolTip ToolTip => this.toolTip;
+
         private FormMods formMods = new FormMods();
         private FormWelcome formWelcome = new FormWelcome();
 

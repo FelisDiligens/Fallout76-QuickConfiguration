@@ -16,8 +16,10 @@ using System.Windows.Forms;
 
 namespace Fo76ini
 {
-    public partial class FormMods : Form
+    public partial class FormMods : Form, IExposeComponents
     {
+        public ToolTip ToolTip => this.toolTip;
+
         private bool preventClosing = false;
 
         private GameInstance game;

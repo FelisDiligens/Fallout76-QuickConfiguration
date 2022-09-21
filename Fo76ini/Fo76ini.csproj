@@ -198,6 +198,7 @@
     <Compile Include="Forms\FormIniError\FormIniError.Designer.cs">
       <DependentUpon>FormIniError.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IExposeComponents.cs" />
     <Compile Include="Utilities\StyleGenerator.cs" />
     <Compile Include="Forms\FormMain\Views\UserControlCustom.cs">
       <SubType>UserControl</SubType>

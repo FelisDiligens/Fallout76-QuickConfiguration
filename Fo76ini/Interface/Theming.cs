@@ -5,6 +5,7 @@ using Fo76ini.Utilities;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -169,7 +170,22 @@ namespace Fo76ini.Interface
             if (control.ContextMenuStrip != null)
                 ApplyTheme(theme, control.ContextMenuStrip);
 
+            if (control is IExposeComponents)
+                ApplyTheme(theme, ((IExposeComponents)control).ToolTip);
+
             ApplyTheme(theme, control.Controls);
+        }
+
+        public static void ApplyTheme(Theme theme, Component comp)
+        {
+            String controlType = comp.GetType().Name;
+
+            foreach (VisualStyle style in theme.Styles)
+            {
+                string controlRegex = Utils.WildCardToRegular(style.ControlType);
+                if (Regex.IsMatch(controlType, controlRegex))
+                    ApplyStyle(style, comp);
+            }
         }
 
         private static void ApplyStyle(VisualStyle style, Control control)
@@ -189,32 +205,50 @@ namespace Fo76ini.Interface
                     property = ((Button)control).FlatAppearance.GetType().GetProperty(rule.Key);
                 }
 
-                if (property != null)
+                SetProperty(property, parent, rule.Value.ToString());
+            }
+        }
+
+        private static void ApplyStyle(VisualStyle style, Component comp)
+        {
+            if (style == null || comp == null)
+                return;
+
+            foreach (KeyValuePair<String, object> rule in style.Rules)
+            {
+                PropertyInfo property = comp.GetType().GetProperty(rule.Key);
+                object parent = comp;
+
+                SetProperty(property, comp, rule.Value.ToString());
+            }
+        }
+
+        private static void SetProperty(PropertyInfo property, object parent, string value)
+        {
+            if (property != null)
+            {
+                if (value.StartsWith("var"))
                 {
-                    String value = rule.Value.ToString();
-                    if (value.StartsWith("var"))
-                    {
-                        int left = value.IndexOf('(');
-                        int right = value.IndexOf(')');
+                    int left = value.IndexOf('(');
+                    int right = value.IndexOf(')');
 
-                        if (left >= 0 && right >= 0)
-                        {
-                            string varName = value.Substring(left + 1, right - left - 1);
-                            value = Get(varName, value);
-                        }
-                    }
-
-                    if (property.PropertyType == typeof(string))
-                        property.SetValue(parent, value, null);
-                    else if (property.PropertyType == typeof(int))
-                        property.SetValue(parent, Convert.ToInt32(value), null);
-                    else if (property.PropertyType == typeof(Color))
-                        property.SetValue(parent, Utils.ParseColor(value), null);
-                    else if (property.PropertyType == typeof(Image))
+                    if (left >= 0 && right >= 0)
                     {
-                        Image img = (Image)Resources.ResourceManager.GetObject(value);
-                        property.SetValue(parent, img, null);
+                        string varName = value.Substring(left + 1, right - left - 1);
+                        value = Get(varName, value);
                     }
+                }
+
+                if (property.PropertyType == typeof(string))
+                    property.SetValue(parent, value, null);
+                else if (property.PropertyType == typeof(int))
+                    property.SetValue(parent, Convert.ToInt32(value), null);
+                else if (property.PropertyType == typeof(Color))
+                    property.SetValue(parent, Utils.ParseColor(value), null);
+                else if (property.PropertyType == typeof(Image))
+                {
+                    Image img = (Image)Resources.ResourceManager.GetObject(value);
+                    property.SetValue(parent, img, null);
                 }
             }
         }

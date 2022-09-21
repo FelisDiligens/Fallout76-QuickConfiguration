@@ -16,8 +16,10 @@ using System.Windows.Forms;
 
 namespace Fo76ini.Forms.FormMain.Tabs
 {
-    public partial class UserControlSettings : UserControl
+    public partial class UserControlSettings : UserControl, IExposeComponents
     {
+        public ToolTip ToolTip => this.toolTip;
+
         private bool UpdatingUI = false;
 
         public UserControlSettings()

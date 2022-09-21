@@ -17,8 +17,10 @@ using System.Windows.Forms;
 
 namespace Fo76ini.Forms.FormMain
 {
-    public partial class UserControlTweaks : UserControl
+    public partial class UserControlTweaks : UserControl, IExposeComponents
     {
+        public ToolTip ToolTip => this.toolTip;
+
         public UserControlTweaks()
         {
             InitializeComponent();

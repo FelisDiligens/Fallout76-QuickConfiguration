@@ -1,4 +1,5 @@
-﻿using Fo76ini.Tweaks;
+﻿using Fo76ini.Interface;
+using Fo76ini.Tweaks;
 using Fo76ini.Tweaks.Colors;
 using Fo76ini.Tweaks.Pipboy;
 using Fo76ini.Utilities;
@@ -14,8 +15,10 @@ using System.Windows.Forms;
 
 namespace Fo76ini.Forms.FormMain
 {
-    public partial class UserControlPipboy : UserControl
+    public partial class UserControlPipboy : UserControl, IExposeComponents
     {
+        public ToolTip ToolTip => this.toolTip;
+
         public UserControlPipboy()
         {
             InitializeComponent();

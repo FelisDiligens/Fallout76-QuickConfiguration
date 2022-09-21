@@ -87,6 +87,12 @@ ColorSlider:
   ThumbOuterColor: "rgb(21, 56, 152)"
   ThumbPenColor: "rgb(21, 56, 152)"
 
+# Components:
+ToolTip, CustomToolTip:
+  ForeColor: "white"
+  BackColor: "#333"
+  BorderColor: "rgb(118, 118, 118)"
+
 # Side navigation:
 UserControlSideNav:
   BackColor: black
