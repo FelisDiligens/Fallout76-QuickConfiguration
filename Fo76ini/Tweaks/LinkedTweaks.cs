@@ -1,4 +1,5 @@
 ﻿using Fo76ini.Controls;
+using Fo76ini.Interface;
 using Fo76ini.Tweaks.Video;
 using Fo76ini.Utilities;
 using System;
@@ -42,6 +43,37 @@ namespace Fo76ini.Tweaks
         {
             foreach (var pair in LinkedTweakInfos)
                 LoadToolTip(pair.Value, pair.Key);
+        }
+
+        /// <summary>
+        /// Loads the colors of all linked controls.
+        /// </summary>
+        public static void LoadColors()
+        {
+            foreach (var pair in LinkedTweakInfos)
+            {
+                ITweakInfo info = pair.Value;
+                LinkedControl linkedControl = pair.Key;
+
+                switch (info.WarnLevel)
+                {
+                    case WarnLevel.Notice:
+                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevelNotice", Color.Blue);
+                        break;
+                    case WarnLevel.Experimental:
+                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevelExperimental", Color.Fuchsia);
+                        break;
+                    case WarnLevel.Warning:
+                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevelWarning", Color.FromArgb(181, 124, 11));
+                        break;
+                    case WarnLevel.Unsafe:
+                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevelUnsafe", Color.Red);
+                        break;
+                    /*default:
+                        linkedControl.Control.ForeColor = Theming.GetColor("TextColor", Color.Black);
+                        break;*/
+                }
+            }
         }
 
 
@@ -109,22 +141,6 @@ namespace Fo76ini.Tweaks
             string description = info.Description;
             TranslatedDescriptions.TryGetValue(info.Identifier, out description);
             linkedControl.Tip.SetToolTip(linkedControl.Control, BuildToolTipText(description, info.AffectedFiles, info.AffectedValues));
-
-            switch (info.WarnLevel)
-            {
-                case WarnLevel.Notice:
-                    linkedControl.Control.ForeColor = Color.RoyalBlue;
-                    break;
-                case WarnLevel.Experimental:
-                    linkedControl.Control.ForeColor = Color.Fuchsia;
-                    break;
-                case WarnLevel.Warning:
-                    linkedControl.Control.ForeColor = Color.FromArgb(181, 124, 11);
-                    break;
-                case WarnLevel.Unsafe:
-                    linkedControl.Control.ForeColor = Color.OrangeRed;
-                    break;
-            }
         }
 
         /// <summary>

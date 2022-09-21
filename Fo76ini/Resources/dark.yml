@@ -9,6 +9,10 @@ VARS:
   VersionLatestColor: "rgb(50, 255, 50)"
   VersionOldColor: "Red"
   VersionUnknownColor: "Silver"
+  WarnLevelNotice: "RoyalBlue"
+  WarnLevelExperimental: "Fuchsia"
+  WarnLevelWarning: "rgb(181, 124, 11)"
+  WarnLevelUnsafe: "OrangeRed"
 
 # Content:
 Panel:

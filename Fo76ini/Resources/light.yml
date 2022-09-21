@@ -9,6 +9,10 @@ VARS:
   VersionLatestColor: "DarkGreen"
   VersionOldColor: "Red"
   VersionUnknownColor: "DarkGray"
+  WarnLevelNotice: "Blue"
+  WarnLevelExperimental: "Fuchsia"
+  WarnLevelWarning: "rgb(181, 124, 11)"
+  WarnLevelUnsafe: "Red"
 
 # Content:
 Panel:

@@ -55,6 +55,7 @@ namespace Fo76ini
             Initialization.LoadINIFiles();
             //Initialization.LoadMods();
             LinkedTweaks.LoadValues();
+            LinkedTweaks.LoadColors();
         }
 
         public static void LoadINIFiles()
