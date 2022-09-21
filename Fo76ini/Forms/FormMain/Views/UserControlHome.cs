@@ -245,6 +245,11 @@ namespace Fo76ini.Forms.FormMain.Tabs
             Utils.OpenURL("https://nukesdragons.com/fallout-76/character");
         }
 
+        private void styledButtonNukacrypt_Click(object sender, EventArgs e)
+        {
+            Utils.OpenURL("https://nukacrypt.com/");
+        }
+
         private void styledButtonxTranslator_Click(object sender, EventArgs e)
         {
             Utils.OpenURL("https://www.nexusmods.com/skyrimspecialedition/mods/134");

@@ -909,6 +909,36 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nukacrypt_128 {
+            get {
+                object obj = ResourceManager.GetObject("nukacrypt_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nukacrypt_16 {
+            get {
+                object obj = ResourceManager.GetObject("nukacrypt_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nukacrypt_24 {
+            get {
+                object obj = ResourceManager.GetObject("nukacrypt_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap nukesdragons_16 {
             get {
                 object obj = ResourceManager.GetObject("nukesdragons_16", resourceCulture);

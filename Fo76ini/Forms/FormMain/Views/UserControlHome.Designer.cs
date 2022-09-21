@@ -48,6 +48,7 @@
             this.tabControlWithoutHeader1 = new Fo76ini.Controls.TabControlWithoutHeader();
             this.tabPageHome = new System.Windows.Forms.TabPage();
             this.panelWebLinks = new System.Windows.Forms.Panel();
+            this.styledButtonNukacrypt = new Fo76ini.Controls.StyledButton();
             this.styledButtonxTranslator = new Fo76ini.Controls.StyledButton();
             this.styledButtonNukesAndDragonsBuildPlanner = new Fo76ini.Controls.StyledButton();
             this.styledButtonBethesdaNetStatus = new Fo76ini.Controls.StyledButton();
@@ -68,6 +69,8 @@
             this.styledButtonGoBack = new Fo76ini.Controls.StyledButton();
             this.backgroundWorkerScrapeServerStatus = new System.ComponentModel.BackgroundWorker();
             this.timerReenableRefreshServerStatus = new System.Windows.Forms.Timer(this.components);
+            this.pictureBoxSpacer1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSpacer2 = new System.Windows.Forms.PictureBox();
             this.panelUpdate.SuspendLayout();
             this.panelTitle.SuspendLayout();
             this.tabControlWithoutHeader1.SuspendLayout();
@@ -77,6 +80,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScrapedServerStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).BeginInit();
             this.tabPageWhatsNew.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer2)).BeginInit();
             this.SuspendLayout();
             // 
             // webBrowserWhatsNew
@@ -282,6 +287,9 @@
             // panelWebLinks
             // 
             this.panelWebLinks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelWebLinks.Controls.Add(this.pictureBoxSpacer2);
+            this.panelWebLinks.Controls.Add(this.pictureBoxSpacer1);
+            this.panelWebLinks.Controls.Add(this.styledButtonNukacrypt);
             this.panelWebLinks.Controls.Add(this.styledButtonxTranslator);
             this.panelWebLinks.Controls.Add(this.styledButtonNukesAndDragonsBuildPlanner);
             this.panelWebLinks.Controls.Add(this.styledButtonBethesdaNetStatus);
@@ -296,6 +304,31 @@
             this.panelWebLinks.Size = new System.Drawing.Size(199, 381);
             this.panelWebLinks.TabIndex = 54;
             // 
+            // styledButtonNukacrypt
+            // 
+            this.styledButtonNukacrypt.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonNukacrypt.BorderWidth = ((uint)(0u));
+            this.styledButtonNukacrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.styledButtonNukacrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonNukacrypt.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonNukacrypt.Highlight = false;
+            this.styledButtonNukacrypt.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.styledButtonNukacrypt.Image = global::Fo76ini.Properties.Resources.nukacrypt_16;
+            this.styledButtonNukacrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonNukacrypt.Location = new System.Drawing.Point(6, 204);
+            this.styledButtonNukacrypt.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonNukacrypt.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.styledButtonNukacrypt.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.styledButtonNukacrypt.Name = "styledButtonNukacrypt";
+            this.styledButtonNukacrypt.Padding = 2;
+            this.styledButtonNukacrypt.Size = new System.Drawing.Size(190, 23);
+            this.styledButtonNukacrypt.TabIndex = 22;
+            this.styledButtonNukacrypt.Tag = "WebLink";
+            this.styledButtonNukacrypt.Text = "NukaCrypt";
+            this.styledButtonNukacrypt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonNukacrypt.UseVisualStyleBackColor = true;
+            this.styledButtonNukacrypt.Click += new System.EventHandler(this.styledButtonNukacrypt_Click);
+            // 
             // styledButtonxTranslator
             // 
             this.styledButtonxTranslator.BackColor = System.Drawing.Color.Transparent;
@@ -307,7 +340,7 @@
             this.styledButtonxTranslator.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonxTranslator.Image = global::Fo76ini.Properties.Resources.xTranslator_16px;
             this.styledButtonxTranslator.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonxTranslator.Location = new System.Drawing.Point(6, 191);
+            this.styledButtonxTranslator.Location = new System.Drawing.Point(6, 231);
             this.styledButtonxTranslator.Margin = new System.Windows.Forms.Padding(2);
             this.styledButtonxTranslator.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.styledButtonxTranslator.MouseOverBackColor = System.Drawing.Color.Silver;
@@ -332,7 +365,7 @@
             this.styledButtonNukesAndDragonsBuildPlanner.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonNukesAndDragonsBuildPlanner.Image = global::Fo76ini.Properties.Resources.nukesdragons_16;
             this.styledButtonNukesAndDragonsBuildPlanner.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonNukesAndDragonsBuildPlanner.Location = new System.Drawing.Point(6, 164);
+            this.styledButtonNukesAndDragonsBuildPlanner.Location = new System.Drawing.Point(6, 177);
             this.styledButtonNukesAndDragonsBuildPlanner.Margin = new System.Windows.Forms.Padding(2);
             this.styledButtonNukesAndDragonsBuildPlanner.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.styledButtonNukesAndDragonsBuildPlanner.MouseOverBackColor = System.Drawing.Color.Silver;
@@ -357,7 +390,7 @@
             this.styledButtonBethesdaNetStatus.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.styledButtonBethesdaNetStatus.Image = global::Fo76ini.Properties.Resources.bethesda_16;
             this.styledButtonBethesdaNetStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonBethesdaNetStatus.Location = new System.Drawing.Point(6, 137);
+            this.styledButtonBethesdaNetStatus.Location = new System.Drawing.Point(6, 150);
             this.styledButtonBethesdaNetStatus.Margin = new System.Windows.Forms.Padding(2);
             this.styledButtonBethesdaNetStatus.MouseDownBackColor = System.Drawing.Color.LightGray;
             this.styledButtonBethesdaNetStatus.MouseOverBackColor = System.Drawing.Color.Silver;
@@ -479,7 +512,7 @@
             this.pictureBoxButtonSupport.ButtonTextFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pictureBoxButtonSupport.Image = global::Fo76ini.Properties.Resources.BuyMeACoffee;
             this.pictureBoxButtonSupport.ImageHover = global::Fo76ini.Properties.Resources.BuyMeACoffee_hover;
-            this.pictureBoxButtonSupport.Location = new System.Drawing.Point(6, 229);
+            this.pictureBoxButtonSupport.Location = new System.Drawing.Point(6, 282);
             this.pictureBoxButtonSupport.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
             this.pictureBoxButtonSupport.Name = "pictureBoxButtonSupport";
             this.pictureBoxButtonSupport.Size = new System.Drawing.Size(168, 34);
@@ -636,6 +669,26 @@
             this.timerReenableRefreshServerStatus.Interval = 10000;
             this.timerReenableRefreshServerStatus.Tick += new System.EventHandler(this.timerReenableRefreshServerStatus_Tick);
             // 
+            // pictureBoxSpacer1
+            // 
+            this.pictureBoxSpacer1.BackColor = System.Drawing.Color.Silver;
+            this.pictureBoxSpacer1.Location = new System.Drawing.Point(6, 141);
+            this.pictureBoxSpacer1.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBoxSpacer1.Name = "pictureBoxSpacer1";
+            this.pictureBoxSpacer1.Size = new System.Drawing.Size(187, 1);
+            this.pictureBoxSpacer1.TabIndex = 55;
+            this.pictureBoxSpacer1.TabStop = false;
+            // 
+            // pictureBoxSpacer2
+            // 
+            this.pictureBoxSpacer2.BackColor = System.Drawing.Color.Silver;
+            this.pictureBoxSpacer2.Location = new System.Drawing.Point(6, 262);
+            this.pictureBoxSpacer2.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBoxSpacer2.Name = "pictureBoxSpacer2";
+            this.pictureBoxSpacer2.Size = new System.Drawing.Size(187, 1);
+            this.pictureBoxSpacer2.TabIndex = 56;
+            this.pictureBoxSpacer2.TabStop = false;
+            // 
             // UserControlHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -656,6 +709,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScrapedServerStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).EndInit();
             this.tabPageWhatsNew.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpacer2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -701,5 +756,8 @@
         private System.Windows.Forms.PictureBox pictureBoxScrapedServerStatus;
         private System.ComponentModel.BackgroundWorker backgroundWorkerScrapeServerStatus;
         private System.Windows.Forms.Timer timerReenableRefreshServerStatus;
+        private Controls.StyledButton styledButtonNukacrypt;
+        private System.Windows.Forms.PictureBox pictureBoxSpacer2;
+        private System.Windows.Forms.PictureBox pictureBoxSpacer1;
     }
 }
