@@ -43,10 +43,10 @@ namespace Fo76ini.Forms.FormMain.Tabs
             FormMods.NWModeUpdated += OnNWModeUpdated;
 
             // Add control elements to blacklist:
-            Translation.BlackList.AddRange(new string[] {
+            /*Translation.BlackList.AddRange(new string[] {
                 "buttonDownloadLanguages",
                 "buttonRefreshLanguage"
-            });
+            });*/
 
             if (this.DesignMode)
                 return;

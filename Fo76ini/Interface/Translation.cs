@@ -446,6 +446,10 @@ namespace Fo76ini
                         formName = "Form1";
                     XElement xmlForm = xmlRoot.Element(formName);
 
+                    ToolTip toolTip = null;
+                    if (form.Form is IExposeComponents)
+                        toolTip = ((IExposeComponents)form.Form).ToolTip;
+
                     // Ignore non-existing forms
                     if (xmlForm == null)
                         continue; // throw new InvalidXmlException($"Couldn't find <{form.Form.Name}>");
@@ -456,9 +460,9 @@ namespace Fo76ini
 
                     // Forms:
                     DeserializeDictionaries(xmlForm); // TODO: xmlRoot replaced with xmlForm. Good idea?
-                    DeserializeControls(xmlForm, form.Form, form.ToolTip);
+                    DeserializeControls(xmlForm, form.Form, toolTip);
                     foreach (Control subControl in form.SpecialControls)
-                        DeserializeControl(xmlForm, subControl, form.ToolTip);
+                        DeserializeControl(xmlForm, subControl, toolTip);
 
                     // Message boxes:
                     XElement xmlMsgBox = xmlRoot.Element("Messageboxes");
@@ -483,8 +487,7 @@ namespace Fo76ini
                     XElement xmlTweakDescriptions = xmlRoot.Element("TweakDescriptions");
                     if (xmlTweakDescriptions != null)
                         LinkedTweaks.DeserializeTweakDescriptionList(xmlTweakDescriptions);
-                    if (form.ToolTip != null)
-                        LinkedTweaks.LoadToolTips(); // TODO: No need to call it per form anymore
+                    LinkedTweaks.LoadToolTips(); // TODO: No need to call it per form anymore
                 }
 
                 // Call event handler:
@@ -514,7 +517,8 @@ namespace Fo76ini
 
                 // Set tooltip:
                 if (dictTooltip.ContainsKey(subControl.Name) &&
-                    !ignoreTooltipsOfTheseControls.Contains(subControl.Name))
+                    !ignoreTooltipsOfTheseControls.Contains(subControl.Name) &&
+                    toolTip != null)
                     toolTip.SetToolTip(subControl, dictTooltip[subControl.Name]);
 
 
@@ -550,10 +554,14 @@ namespace Fo76ini
             // Go through every control:
             foreach (Control subControl in control.Controls)
             {
-                DeserializeControl(xmlRoot, subControl, toolTip);
+                ToolTip subToolTip = toolTip;
+                if (subControl is IExposeComponents && ((IExposeComponents)subControl).ToolTip != null)
+                    subToolTip = ((IExposeComponents)subControl).ToolTip;
+
+                DeserializeControl(xmlRoot, subControl, subToolTip);
 
                 // Recursive, yay!
-                DeserializeControls(xmlRoot, subControl, toolTip);
+                DeserializeControls(xmlRoot, subControl, subToolTip);
             }
         }
 
@@ -701,9 +709,12 @@ namespace Fo76ini
                     formName = "Form1";
                 XElement xmlForm = new XElement(formName, new XAttribute("title", form.Form.Text));
                 xmlForm.AddFirst(new XComment($"\n        {formName}\n        {separator}\n        {form.Form.Text}\n    "));
-                SerializeControls(xmlForm, form.Form, form.ToolTip);
+                ToolTip tip = null;
+                if (form.Form is IExposeComponents)
+                    tip = ((IExposeComponents)form.Form).ToolTip;
+                SerializeControls(xmlForm, form.Form, tip);
                 foreach (Control control in form.SpecialControls)
-                    SerializeControl(xmlForm, control, form.ToolTip);
+                    SerializeControl(xmlForm, control, tip);
                 xmlRoot.Add(xmlForm);
             }
 
@@ -806,7 +817,11 @@ namespace Fo76ini
             int count = 0;
             foreach (Control subControl in control.Controls)
             {
-                count += SerializeControl(xmlElement, subControl, toolTip);
+                ToolTip subToolTip = toolTip;
+                if (subControl is IExposeComponents && ((IExposeComponents)subControl).ToolTip != null)
+                    subToolTip = ((IExposeComponents)subControl).ToolTip;
+
+                count += SerializeControl(xmlElement, subControl, subToolTip);
             }
             return count;
         }
@@ -894,13 +909,11 @@ namespace Fo76ini
     public class LocalizedForm
     {
         public Form Form;
-        public ToolTip ToolTip;
         public List<Control> SpecialControls = new List<Control>();
 
         public LocalizedForm(Form form, ToolTip toolTip)
         {
             this.Form = form;
-            this.ToolTip = toolTip;
         }
     }
 }
