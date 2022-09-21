@@ -574,6 +574,7 @@
     <None Include="Resources\bethesda-16.png" />
     <None Include="Resources\bug-3-16.png" />
     <None Include="Resources\bug-3-24.png" />
+    <None Include="Resources\fedico.png" />
     <Content Include="Resources\folder-3-16.png" />
     <None Include="Resources\fov_70.jpg" />
     <None Include="Resources\fov_75.jpg" />
@@ -599,6 +600,8 @@
     <None Include="Resources\nukacrypt-16.png" />
     <None Include="Resources\nukacrypt-24.png" />
     <None Include="Resources\Magnify-1s-200px.gif" />
+    <None Include="Resources\map-4-16-white.png" />
+    <None Include="Resources\map-4-16.png" />
     <Content Include="Resources\pipboy-24px.png" />
     <Content Include="Resources\pipboy-preview-mask.png" />
     <Content Include="Resources\pipboy-preview-screen.png" />

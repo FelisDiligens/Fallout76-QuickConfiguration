@@ -19,7 +19,7 @@ I hope your eyes are now soothed with the dark mode. :)
   - Fixed archives of removed mods not getting deleted, which resulted in junk *.ba2 files in the Data folder.
   - Frozen mods still get deployed even if the mod folder is empty.
   - Some tool tips weren't translatable.
-  - Added NukaCrypt web link.
+  - Added NukaCrypt and Map76 web links.
 
 </details>
 

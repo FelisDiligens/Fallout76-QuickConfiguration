@@ -382,6 +382,10 @@ namespace Fo76ini.Properties {
         ///  VersionLatestColor: &quot;rgb(50, 255, 50)&quot;
         ///  VersionOldColor: &quot;Red&quot;
         ///  VersionUnknownColor: &quot;Silver&quot;
+        ///  WarnLevelNotice: &quot;RoyalBlue&quot;
+        ///  WarnLevelExperimental: &quot;Fuchsia&quot;
+        ///  WarnLevelWarning: &quot;rgb(181, 124, 11)&quot;
+        ///  WarnLevelUnsafe: &quot;OrangeRed&quot;
         ///
         ///# Content:
         ///Panel:
@@ -389,8 +393,7 @@ namespace Fo76ini.Properties {
         ///  ForeColor: &quot;var(TextColor)&quot;
         ///TabPage:
         ///  BackColor: &quot;var(BackColor)&quot;
-        ///  ForeColor: &quot;var(TextColor)&quot;
-        ///#UserControlHome, UserControlTweaks, UserControlPipboy, UserControlGallery, UserControlCustom, UserControlSettings, UserControl [rest of string was truncated]&quot;;.
+        ///  ForeColor: &quot;var [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string dark {
             get {
@@ -504,6 +507,16 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap fallout76_logo_white {
             get {
                 object obj = ResourceManager.GetObject("fallout76_logo_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fedico {
+            get {
+                object obj = ResourceManager.GetObject("fedico", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -820,6 +833,10 @@ namespace Fo76ini.Properties {
         ///  VersionLatestColor: &quot;DarkGreen&quot;
         ///  VersionOldColor: &quot;Red&quot;
         ///  VersionUnknownColor: &quot;DarkGray&quot;
+        ///  WarnLevelNotice: &quot;Blue&quot;
+        ///  WarnLevelExperimental: &quot;Fuchsia&quot;
+        ///  WarnLevelWarning: &quot;rgb(181, 124, 11)&quot;
+        ///  WarnLevelUnsafe: &quot;Red&quot;
         ///
         ///# Content:
         ///Panel:
@@ -828,7 +845,7 @@ namespace Fo76ini.Properties {
         ///TabPage:
         ///  BackColor: &quot;var(BackColor)&quot;
         ///  ForeColor: &quot;var(TextColor)&quot;
-        ///#UserControlHome, UserControlTweaks, UserControlPipboy, UserControlGallery, UserControlCustom, UserControlSettings, UserControlNexu [rest of string was truncated]&quot;;.
+        ///# [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string light {
             get {
@@ -862,6 +879,26 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap Magnify_1s_200px {
             get {
                 object obj = ResourceManager.GetObject("Magnify_1s_200px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap map_4_16 {
+            get {
+                object obj = ResourceManager.GetObject("map_4_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap map_4_16_white {
+            get {
+                object obj = ResourceManager.GetObject("map_4_16_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -50,16 +50,17 @@
             this.panelWebLinks = new System.Windows.Forms.Panel();
             this.pictureBoxSpacer2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxSpacer1 = new System.Windows.Forms.PictureBox();
-            this.styledButtonNukacrypt = new Fo76ini.Controls.StyledButton();
-            this.styledButtonxTranslator = new Fo76ini.Controls.StyledButton();
-            this.styledButtonNukesAndDragonsBuildPlanner = new Fo76ini.Controls.StyledButton();
+            this.styledButtonMap76 = new Fo76ini.Controls.StyledButton();
+            this.pictureBoxButtonSupport = new Fo76ini.Controls.PictureBoxButton();
             this.styledButtonBethesdaNetStatus = new Fo76ini.Controls.StyledButton();
             this.styledButtonBugReports = new Fo76ini.Controls.StyledButton();
             this.styledButtonWikiAndGuides = new Fo76ini.Controls.StyledButton();
             this.styledButtonGitHub = new Fo76ini.Controls.StyledButton();
+            this.styledButtonNukacrypt = new Fo76ini.Controls.StyledButton();
             this.styledButtonNexusMods = new Fo76ini.Controls.StyledButton();
-            this.pictureBoxButtonSupport = new Fo76ini.Controls.PictureBoxButton();
             this.labelWebLinks = new System.Windows.Forms.Label();
+            this.styledButtonNukesAndDragonsBuildPlanner = new Fo76ini.Controls.StyledButton();
+            this.styledButtonxTranslator = new Fo76ini.Controls.StyledButton();
             this.panelContent = new System.Windows.Forms.Panel();
             this.pictureBoxScrapedServerStatus = new System.Windows.Forms.PictureBox();
             this.buttonReloadServerStatus = new System.Windows.Forms.Button();
@@ -178,7 +179,7 @@
             this.labelDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDescription.Location = new System.Drawing.Point(17, 40);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(642, 29);
+            this.labelDescription.Size = new System.Drawing.Size(636, 29);
             this.labelDescription.TabIndex = 6;
             this.labelDescription.Text = "This tool allows you to change various game settings and install mods.";
             // 
@@ -285,28 +286,30 @@
             // 
             // panelWebLinks
             // 
-            this.panelWebLinks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelWebLinks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelWebLinks.Controls.Add(this.pictureBoxSpacer2);
             this.panelWebLinks.Controls.Add(this.pictureBoxSpacer1);
-            this.panelWebLinks.Controls.Add(this.styledButtonNukacrypt);
-            this.panelWebLinks.Controls.Add(this.styledButtonxTranslator);
-            this.panelWebLinks.Controls.Add(this.styledButtonNukesAndDragonsBuildPlanner);
+            this.panelWebLinks.Controls.Add(this.styledButtonMap76);
+            this.panelWebLinks.Controls.Add(this.pictureBoxButtonSupport);
             this.panelWebLinks.Controls.Add(this.styledButtonBethesdaNetStatus);
             this.panelWebLinks.Controls.Add(this.styledButtonBugReports);
             this.panelWebLinks.Controls.Add(this.styledButtonWikiAndGuides);
             this.panelWebLinks.Controls.Add(this.styledButtonGitHub);
+            this.panelWebLinks.Controls.Add(this.styledButtonNukacrypt);
             this.panelWebLinks.Controls.Add(this.styledButtonNexusMods);
-            this.panelWebLinks.Controls.Add(this.pictureBoxButtonSupport);
             this.panelWebLinks.Controls.Add(this.labelWebLinks);
-            this.panelWebLinks.Location = new System.Drawing.Point(466, 75);
+            this.panelWebLinks.Controls.Add(this.styledButtonNukesAndDragonsBuildPlanner);
+            this.panelWebLinks.Controls.Add(this.styledButtonxTranslator);
+            this.panelWebLinks.Location = new System.Drawing.Point(463, 75);
             this.panelWebLinks.Name = "panelWebLinks";
-            this.panelWebLinks.Size = new System.Drawing.Size(199, 381);
+            this.panelWebLinks.Size = new System.Drawing.Size(202, 392);
             this.panelWebLinks.TabIndex = 54;
             // 
             // pictureBoxSpacer2
             // 
             this.pictureBoxSpacer2.BackColor = System.Drawing.Color.Silver;
-            this.pictureBoxSpacer2.Location = new System.Drawing.Point(6, 262);
+            this.pictureBoxSpacer2.Location = new System.Drawing.Point(6, 181);
             this.pictureBoxSpacer2.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBoxSpacer2.Name = "pictureBoxSpacer2";
             this.pictureBoxSpacer2.Size = new System.Drawing.Size(187, 1);
@@ -323,80 +326,46 @@
             this.pictureBoxSpacer1.TabIndex = 55;
             this.pictureBoxSpacer1.TabStop = false;
             // 
-            // styledButtonNukacrypt
+            // styledButtonMap76
             // 
-            this.styledButtonNukacrypt.BackColor = System.Drawing.Color.Transparent;
-            this.styledButtonNukacrypt.BorderWidth = ((uint)(0u));
-            this.styledButtonNukacrypt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.styledButtonNukacrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styledButtonNukacrypt.ForeColor = System.Drawing.Color.Black;
-            this.styledButtonNukacrypt.Highlight = false;
-            this.styledButtonNukacrypt.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.styledButtonNukacrypt.Image = global::Fo76ini.Properties.Resources.nukacrypt_16;
-            this.styledButtonNukacrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonNukacrypt.Location = new System.Drawing.Point(6, 204);
-            this.styledButtonNukacrypt.Margin = new System.Windows.Forms.Padding(2);
-            this.styledButtonNukacrypt.MouseDownBackColor = System.Drawing.Color.LightGray;
-            this.styledButtonNukacrypt.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.styledButtonNukacrypt.Name = "styledButtonNukacrypt";
-            this.styledButtonNukacrypt.Padding = 2;
-            this.styledButtonNukacrypt.Size = new System.Drawing.Size(190, 23);
-            this.styledButtonNukacrypt.TabIndex = 22;
-            this.styledButtonNukacrypt.Tag = "WebLink";
-            this.styledButtonNukacrypt.Text = "NukaCrypt";
-            this.styledButtonNukacrypt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonNukacrypt.UseVisualStyleBackColor = true;
-            this.styledButtonNukacrypt.Click += new System.EventHandler(this.styledButtonNukacrypt_Click);
+            this.styledButtonMap76.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonMap76.BorderWidth = ((uint)(0u));
+            this.styledButtonMap76.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.styledButtonMap76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonMap76.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonMap76.Highlight = false;
+            this.styledButtonMap76.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.styledButtonMap76.Image = global::Fo76ini.Properties.Resources.map_4_16;
+            this.styledButtonMap76.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonMap76.Location = new System.Drawing.Point(6, 244);
+            this.styledButtonMap76.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonMap76.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.styledButtonMap76.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.styledButtonMap76.Name = "styledButtonMap76";
+            this.styledButtonMap76.Padding = 2;
+            this.styledButtonMap76.Size = new System.Drawing.Size(190, 23);
+            this.styledButtonMap76.TabIndex = 57;
+            this.styledButtonMap76.Tag = "WebLink";
+            this.styledButtonMap76.Text = "Map76";
+            this.styledButtonMap76.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonMap76.UseVisualStyleBackColor = true;
+            this.styledButtonMap76.Click += new System.EventHandler(this.styledButtonMap76_Click);
             // 
-            // styledButtonxTranslator
+            // pictureBoxButtonSupport
             // 
-            this.styledButtonxTranslator.BackColor = System.Drawing.Color.Transparent;
-            this.styledButtonxTranslator.BorderWidth = ((uint)(0u));
-            this.styledButtonxTranslator.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.styledButtonxTranslator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styledButtonxTranslator.ForeColor = System.Drawing.Color.Black;
-            this.styledButtonxTranslator.Highlight = false;
-            this.styledButtonxTranslator.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.styledButtonxTranslator.Image = global::Fo76ini.Properties.Resources.xTranslator_16px;
-            this.styledButtonxTranslator.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonxTranslator.Location = new System.Drawing.Point(6, 231);
-            this.styledButtonxTranslator.Margin = new System.Windows.Forms.Padding(2);
-            this.styledButtonxTranslator.MouseDownBackColor = System.Drawing.Color.LightGray;
-            this.styledButtonxTranslator.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.styledButtonxTranslator.Name = "styledButtonxTranslator";
-            this.styledButtonxTranslator.Padding = 2;
-            this.styledButtonxTranslator.Size = new System.Drawing.Size(190, 23);
-            this.styledButtonxTranslator.TabIndex = 21;
-            this.styledButtonxTranslator.Tag = "WebLink";
-            this.styledButtonxTranslator.Text = "xTranslator";
-            this.styledButtonxTranslator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonxTranslator.UseVisualStyleBackColor = true;
-            this.styledButtonxTranslator.Click += new System.EventHandler(this.styledButtonxTranslator_Click);
-            // 
-            // styledButtonNukesAndDragonsBuildPlanner
-            // 
-            this.styledButtonNukesAndDragonsBuildPlanner.BackColor = System.Drawing.Color.Transparent;
-            this.styledButtonNukesAndDragonsBuildPlanner.BorderWidth = ((uint)(0u));
-            this.styledButtonNukesAndDragonsBuildPlanner.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.styledButtonNukesAndDragonsBuildPlanner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styledButtonNukesAndDragonsBuildPlanner.ForeColor = System.Drawing.Color.Black;
-            this.styledButtonNukesAndDragonsBuildPlanner.Highlight = false;
-            this.styledButtonNukesAndDragonsBuildPlanner.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.styledButtonNukesAndDragonsBuildPlanner.Image = global::Fo76ini.Properties.Resources.nukesdragons_16;
-            this.styledButtonNukesAndDragonsBuildPlanner.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonNukesAndDragonsBuildPlanner.Location = new System.Drawing.Point(6, 177);
-            this.styledButtonNukesAndDragonsBuildPlanner.Margin = new System.Windows.Forms.Padding(2);
-            this.styledButtonNukesAndDragonsBuildPlanner.MouseDownBackColor = System.Drawing.Color.LightGray;
-            this.styledButtonNukesAndDragonsBuildPlanner.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.styledButtonNukesAndDragonsBuildPlanner.Name = "styledButtonNukesAndDragonsBuildPlanner";
-            this.styledButtonNukesAndDragonsBuildPlanner.Padding = 2;
-            this.styledButtonNukesAndDragonsBuildPlanner.Size = new System.Drawing.Size(190, 23);
-            this.styledButtonNukesAndDragonsBuildPlanner.TabIndex = 20;
-            this.styledButtonNukesAndDragonsBuildPlanner.Tag = "WebLink";
-            this.styledButtonNukesAndDragonsBuildPlanner.Text = "N&D Build Planner";
-            this.styledButtonNukesAndDragonsBuildPlanner.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.styledButtonNukesAndDragonsBuildPlanner.UseVisualStyleBackColor = true;
-            this.styledButtonNukesAndDragonsBuildPlanner.Click += new System.EventHandler(this.styledButtonNukesAndDragonsBuildPlanner_Click);
+            this.pictureBoxButtonSupport.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxButtonSupport.ButtonText = null;
+            this.pictureBoxButtonSupport.ButtonTextColor = System.Drawing.Color.Empty;
+            this.pictureBoxButtonSupport.ButtonTextFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pictureBoxButtonSupport.Image = global::Fo76ini.Properties.Resources.BuyMeACoffee;
+            this.pictureBoxButtonSupport.ImageHover = global::Fo76ini.Properties.Resources.BuyMeACoffee_hover;
+            this.pictureBoxButtonSupport.Location = new System.Drawing.Point(6, 304);
+            this.pictureBoxButtonSupport.Margin = new System.Windows.Forms.Padding(8);
+            this.pictureBoxButtonSupport.Name = "pictureBoxButtonSupport";
+            this.pictureBoxButtonSupport.Size = new System.Drawing.Size(168, 34);
+            this.pictureBoxButtonSupport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Normal;
+            this.pictureBoxButtonSupport.TabIndex = 13;
+            this.pictureBoxButtonSupport.Click += new System.EventHandler(this.pictureBoxButtonSupport_Click);
             // 
             // styledButtonBethesdaNetStatus
             // 
@@ -498,6 +467,31 @@
             this.styledButtonGitHub.UseVisualStyleBackColor = true;
             this.styledButtonGitHub.Click += new System.EventHandler(this.styledButtonGitHub_Click);
             // 
+            // styledButtonNukacrypt
+            // 
+            this.styledButtonNukacrypt.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonNukacrypt.BorderWidth = ((uint)(0u));
+            this.styledButtonNukacrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.styledButtonNukacrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonNukacrypt.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonNukacrypt.Highlight = false;
+            this.styledButtonNukacrypt.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.styledButtonNukacrypt.Image = global::Fo76ini.Properties.Resources.nukacrypt_16;
+            this.styledButtonNukacrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonNukacrypt.Location = new System.Drawing.Point(6, 217);
+            this.styledButtonNukacrypt.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonNukacrypt.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.styledButtonNukacrypt.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.styledButtonNukacrypt.Name = "styledButtonNukacrypt";
+            this.styledButtonNukacrypt.Padding = 2;
+            this.styledButtonNukacrypt.Size = new System.Drawing.Size(190, 23);
+            this.styledButtonNukacrypt.TabIndex = 22;
+            this.styledButtonNukacrypt.Tag = "WebLink";
+            this.styledButtonNukacrypt.Text = "NukaCrypt";
+            this.styledButtonNukacrypt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonNukacrypt.UseVisualStyleBackColor = true;
+            this.styledButtonNukacrypt.Click += new System.EventHandler(this.styledButtonNukacrypt_Click);
+            // 
             // styledButtonNexusMods
             // 
             this.styledButtonNexusMods.BackColor = System.Drawing.Color.Transparent;
@@ -523,22 +517,6 @@
             this.styledButtonNexusMods.UseVisualStyleBackColor = true;
             this.styledButtonNexusMods.Click += new System.EventHandler(this.styledButtonNexusMods_Click);
             // 
-            // pictureBoxButtonSupport
-            // 
-            this.pictureBoxButtonSupport.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxButtonSupport.ButtonText = null;
-            this.pictureBoxButtonSupport.ButtonTextColor = System.Drawing.Color.Empty;
-            this.pictureBoxButtonSupport.ButtonTextFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pictureBoxButtonSupport.Image = global::Fo76ini.Properties.Resources.BuyMeACoffee;
-            this.pictureBoxButtonSupport.ImageHover = global::Fo76ini.Properties.Resources.BuyMeACoffee_hover;
-            this.pictureBoxButtonSupport.Location = new System.Drawing.Point(6, 282);
-            this.pictureBoxButtonSupport.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
-            this.pictureBoxButtonSupport.Name = "pictureBoxButtonSupport";
-            this.pictureBoxButtonSupport.Size = new System.Drawing.Size(168, 34);
-            this.pictureBoxButtonSupport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Normal;
-            this.pictureBoxButtonSupport.TabIndex = 13;
-            this.pictureBoxButtonSupport.Click += new System.EventHandler(this.pictureBoxButtonSupport_Click);
-            // 
             // labelWebLinks
             // 
             this.labelWebLinks.AutoSize = true;
@@ -549,6 +527,56 @@
             this.labelWebLinks.Size = new System.Drawing.Size(69, 17);
             this.labelWebLinks.TabIndex = 8;
             this.labelWebLinks.Text = "Web links";
+            // 
+            // styledButtonNukesAndDragonsBuildPlanner
+            // 
+            this.styledButtonNukesAndDragonsBuildPlanner.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonNukesAndDragonsBuildPlanner.BorderWidth = ((uint)(0u));
+            this.styledButtonNukesAndDragonsBuildPlanner.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.styledButtonNukesAndDragonsBuildPlanner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonNukesAndDragonsBuildPlanner.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonNukesAndDragonsBuildPlanner.Highlight = false;
+            this.styledButtonNukesAndDragonsBuildPlanner.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.styledButtonNukesAndDragonsBuildPlanner.Image = global::Fo76ini.Properties.Resources.nukesdragons_16;
+            this.styledButtonNukesAndDragonsBuildPlanner.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonNukesAndDragonsBuildPlanner.Location = new System.Drawing.Point(6, 190);
+            this.styledButtonNukesAndDragonsBuildPlanner.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonNukesAndDragonsBuildPlanner.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.styledButtonNukesAndDragonsBuildPlanner.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.styledButtonNukesAndDragonsBuildPlanner.Name = "styledButtonNukesAndDragonsBuildPlanner";
+            this.styledButtonNukesAndDragonsBuildPlanner.Padding = 2;
+            this.styledButtonNukesAndDragonsBuildPlanner.Size = new System.Drawing.Size(190, 23);
+            this.styledButtonNukesAndDragonsBuildPlanner.TabIndex = 20;
+            this.styledButtonNukesAndDragonsBuildPlanner.Tag = "WebLink";
+            this.styledButtonNukesAndDragonsBuildPlanner.Text = "N&D Build Planner";
+            this.styledButtonNukesAndDragonsBuildPlanner.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonNukesAndDragonsBuildPlanner.UseVisualStyleBackColor = true;
+            this.styledButtonNukesAndDragonsBuildPlanner.Click += new System.EventHandler(this.styledButtonNukesAndDragonsBuildPlanner_Click);
+            // 
+            // styledButtonxTranslator
+            // 
+            this.styledButtonxTranslator.BackColor = System.Drawing.Color.Transparent;
+            this.styledButtonxTranslator.BorderWidth = ((uint)(0u));
+            this.styledButtonxTranslator.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.styledButtonxTranslator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styledButtonxTranslator.ForeColor = System.Drawing.Color.Black;
+            this.styledButtonxTranslator.Highlight = false;
+            this.styledButtonxTranslator.HighlightBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.styledButtonxTranslator.Image = global::Fo76ini.Properties.Resources.xTranslator_16px;
+            this.styledButtonxTranslator.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonxTranslator.Location = new System.Drawing.Point(6, 271);
+            this.styledButtonxTranslator.Margin = new System.Windows.Forms.Padding(2);
+            this.styledButtonxTranslator.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.styledButtonxTranslator.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.styledButtonxTranslator.Name = "styledButtonxTranslator";
+            this.styledButtonxTranslator.Padding = 2;
+            this.styledButtonxTranslator.Size = new System.Drawing.Size(190, 23);
+            this.styledButtonxTranslator.TabIndex = 21;
+            this.styledButtonxTranslator.Tag = "WebLink";
+            this.styledButtonxTranslator.Text = "xTranslator";
+            this.styledButtonxTranslator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.styledButtonxTranslator.UseVisualStyleBackColor = true;
+            this.styledButtonxTranslator.Click += new System.EventHandler(this.styledButtonxTranslator_Click);
             // 
             // panelContent
             // 
@@ -566,7 +594,7 @@
             this.panelContent.Controls.Add(this.pictureBoxSpinnerCheckForUpdates);
             this.panelContent.Location = new System.Drawing.Point(3, 75);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(457, 151);
+            this.panelContent.Size = new System.Drawing.Size(454, 151);
             this.panelContent.TabIndex = 54;
             // 
             // pictureBoxScrapedServerStatus
@@ -630,7 +658,7 @@
             this.styledButtonWhatsNew.MouseOverBackColor = System.Drawing.Color.Silver;
             this.styledButtonWhatsNew.Name = "styledButtonWhatsNew";
             this.styledButtonWhatsNew.Padding = 2;
-            this.styledButtonWhatsNew.Size = new System.Drawing.Size(413, 23);
+            this.styledButtonWhatsNew.Size = new System.Drawing.Size(388, 23);
             this.styledButtonWhatsNew.TabIndex = 20;
             this.styledButtonWhatsNew.Tag = "";
             this.styledButtonWhatsNew.Text = "What\'s new?";
@@ -758,5 +786,6 @@
         private Controls.StyledButton styledButtonNukacrypt;
         private System.Windows.Forms.PictureBox pictureBoxSpacer2;
         private System.Windows.Forms.PictureBox pictureBoxSpacer1;
+        private Controls.StyledButton styledButtonMap76;
     }
 }

@@ -112,6 +112,9 @@ PictureBox.pictureBoxSpacer?:
 StyledButton.styledButtonGitHub:
   Image: "github_white_16"
 
+StyledButton.styledButtonMap76:
+  Image: "map_4_16_white"
+
 # Tweaks tab:
 RichTextBox.richTextBoxCredentialsExplanation:
   BackColor: "var(BackColor)"

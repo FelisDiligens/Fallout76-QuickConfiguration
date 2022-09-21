@@ -246,6 +246,11 @@ namespace Fo76ini.Forms.FormMain.Tabs
             Utils.OpenURL("https://www.nexusmods.com/skyrimspecialedition/mods/134");
         }
 
+        private void styledButtonMap76_Click(object sender, EventArgs e)
+        {
+            Utils.OpenURL("https://map76.com/");
+        }
+
         #endregion
 
         #region Scrapping server status from Bethesda.net API
