@@ -220,7 +220,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public string CurrentArchivePath
         {
-            get { return Path.Combine(GamePath, "Data", this.ArchiveName); }
+            get { return Path.Combine(GamePath, "Data", this.CurrentArchiveName); }
         }
 
         private string archiveName;
