@@ -2,8 +2,8 @@ html {
   line-height: 1.5;
   font-family: Calibri, sans-serif;
   font-size: 12pt;
-  color: #1a1a1a;
-  background-color: #fdfdfd;
+  color: #f6f6f6;
+  background-color: #222;
 }
 body {
   margin: 0;
@@ -19,23 +19,23 @@ body {
   font-kerning: normal;
 }
 details {
-  color: #333;
+  color: #ddd;
 }
 summary {
-  color: #0000CC;
+  color: royalblue;
 }
 summary:hover {
   cursor: pointer;
-  color: #5555FF;
+  color: #6a6aff;
 }
 p {
   margin: 1em 0;
 }
 a {
-  color: #1a1a1a;
+  color: #f6f6f6;
 }
 a:visited {
-  color: #1a1a1a;
+  color: #f6f6f6;
 }
 img {
   max-width: 100%;
@@ -60,8 +60,8 @@ li > ol, li > ul {
 blockquote {
   margin: 1em 0 1em 1.7em;
   padding-left: 1em;
-  border-left: 2px solid #e6e6e6;
-  color: #606060;
+  border-left: 2px solid #555;
+  color: #909090;
 }
 code {
   font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;

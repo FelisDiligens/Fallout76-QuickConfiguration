@@ -40,9 +40,6 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         private void UserControlHome_Load(object sender, EventArgs e)
         {
-            // What's new:
-            LoadWhatsNew();
-
             // Check for updates:
             CheckVersion();
             IniFiles.Config.Set("General", "sPreviousVersion", Shared.VERSION);
@@ -164,21 +161,13 @@ namespace Fo76ini.Forms.FormMain.Tabs
         private void LoadWhatsNew()
         {
 #if DEBUG
-            string debugFile = Path.Combine(Shared.AppConfigFolder, "What's new.html");
+            string debugFile = Path.Combine(Shared.AppConfigFolder, "What's new" + (Theming.CurrentTheme == ThemeType.Dark ? " - Dark" : "") + ".html");
             if (File.Exists(debugFile))
                 this.webBrowserWhatsNew.DocumentText = File.ReadAllText(debugFile);
             else
 #endif
-                this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewHTMLURL);
-        }
-
-        private void webBrowserWhatsNew_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            /*var sg = new StyleGenerator();
-            sg.ParseStyleString(this.webBrowserWhatsNew.Document.Body.Style);
-            sg.SetStyle("background-color", Theming.Get("BackColor", "white"));
-            sg.SetStyle("color", Theming.Get("TextColor", "black"));
-            this.webBrowserWhatsNew.Document.Body.Style = sg.GetStyleString();*/
+                this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewHTMLURL + (Theming.CurrentTheme == ThemeType.Dark ? "%20-%20Dark" : ""));
+                //this.webBrowserWhatsNew.Navigate(new Uri(Shared.URLs.RemoteWhatsNewHTMLURL + (Theming.CurrentTheme == ThemeType.Dark ? "%20-%20Dark" : "")));
         }
 
         private void styledButtonWhatsNew_Click(object sender, EventArgs e)
@@ -186,6 +175,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
             // Web browser does only work on Windows 10 (and newer) for some reason:
             if (Utils.IsWindows10OrNewer())
             {
+                LoadWhatsNew();
+
                 this.tabControlWithoutHeader1.SelectedTab = this.tabPageWhatsNew;
 
                 // "Fixing" the web browser not rendering by resizing the window, which helps for some reason:

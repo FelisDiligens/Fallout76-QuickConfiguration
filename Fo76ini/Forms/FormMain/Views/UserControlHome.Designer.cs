@@ -98,7 +98,6 @@
             this.webBrowserWhatsNew.ScriptErrorsSuppressed = true;
             this.webBrowserWhatsNew.Size = new System.Drawing.Size(662, 435);
             this.webBrowserWhatsNew.TabIndex = 52;
-            this.webBrowserWhatsNew.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowserWhatsNew_DocumentCompleted);
             // 
             // panelUpdate
             // 
