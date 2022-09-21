@@ -87,6 +87,11 @@ ColorSlider:
   ThumbOuterColor: "#2156e0"
   ThumbPenColor: "#2156e0"
 
+# ComboBox, ImagedComboBox, NumericUpDown, TextBox:
+#   BackColor: "white"
+#   ForeColor: "black"
+#   FlatStyle: "Standard"
+
 # Components:
 ToolTip, CustomToolTip:
   ForeColor: "black"

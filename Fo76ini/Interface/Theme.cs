@@ -1,11 +1,15 @@
 ﻿using FastColoredTextBoxNS;
+using Fo76ini.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using YamlDotNet.Core.Tokens;
 using YamlDotNet.Serialization;
 
 namespace Fo76ini.Interface
@@ -16,19 +20,43 @@ namespace Fo76ini.Interface
         public List<VisualStyle> Styles = new List<VisualStyle>();
         public Dictionary<string, string> Vars = new Dictionary<string, string>();
 
-        public List<VisualStyle> GetStylesForControl(String controlType)
+        public IEnumerable<VisualStyle> GetDefaultStylesForControl(String controlType)
         {
-            return Styles.Where(x => x.ControlType == controlType).ToList();
+            foreach (VisualStyle style in Styles)
+            {
+                string controlRegex = Utils.WildCardToRegular(style.ControlType);
+                if (Regex.IsMatch(controlType, controlRegex))
+                    if (style.StyleName == "Default" ||
+                        style.StyleName == "" ||
+                        style.StyleName == null)
+                        yield return style;
+            }
         }
 
-        public VisualStyle GetStyle(String controlType, String styleName)
+        public IEnumerable<VisualStyle> GetSpecializedStylesForControl(String controlType, string controlName, string controlTag)
         {
-            return Styles.Where(x => x.ControlType == controlType && x.StyleName == styleName).FirstOrDefault();
-        }
+            foreach (VisualStyle style in Styles)
+            {
+                string controlRegex = Utils.WildCardToRegular(style.ControlType);
+                if (Regex.IsMatch(controlType, controlRegex))
+                {
+                    string styleRegex = Utils.WildCardToRegular(style.StyleName);
 
-        public VisualStyle GetDefaultStyleForControl(String controlType)
-        {
-            return GetStyle(controlType, "Default");
+                    if (style.StyleName == "Default" ||
+                        style.StyleName == "" ||
+                        style.StyleName == null)
+                        continue;
+
+                    else if (controlTag != controlName &&
+                        controlTag != "Default" &&
+                        controlTag != null &&
+                        Regex.IsMatch(controlTag, styleRegex))
+                        yield return style;
+
+                    else if (Regex.IsMatch(controlName, styleRegex))
+                        yield return style;
+                }
+            }
         }
 
         public static Theme ReadThemeFromFile(String path)

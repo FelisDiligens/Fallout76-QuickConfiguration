@@ -145,7 +145,13 @@ namespace Fo76ini.Interface
             if (control.Tag != null)
                 tag = control.Tag.ToString();
 
-            foreach (VisualStyle style in theme.Styles)
+            foreach (VisualStyle style in theme.GetDefaultStylesForControl(controlType))
+                ApplyStyle(style, control);
+
+            foreach (VisualStyle style in theme.GetSpecializedStylesForControl(controlType, controlName, tag))
+                ApplyStyle(style, control);
+
+            /*foreach (VisualStyle style in theme.Styles)
             {
                 string controlRegex = Utils.WildCardToRegular(style.ControlType);
                 if (Regex.IsMatch(controlType, controlRegex))
@@ -163,9 +169,9 @@ namespace Fo76ini.Interface
                     else if (Regex.IsMatch(controlName, styleRegex))
                         ApplyStyle(style, control);
                 }
-            }
+            }*/
 
-            //control.Refresh();
+            // control.Refresh();
 
             if (control.ContextMenuStrip != null)
                 ApplyTheme(theme, control.ContextMenuStrip);
@@ -249,6 +255,11 @@ namespace Fo76ini.Interface
                 {
                     Image img = (Image)Resources.ResourceManager.GetObject(value);
                     property.SetValue(parent, img, null);
+                }
+                else if (property.PropertyType == typeof(FlatStyle))
+                {
+                    if (Enum.TryParse(value, out FlatStyle e))
+                        property.SetValue(parent, e, null);
                 }
             }
         }

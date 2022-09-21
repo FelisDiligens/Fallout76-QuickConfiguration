@@ -51,6 +51,7 @@ StyledButton.WebLink, Button.SmallButton:
   ForeColor: "var(TextColor)"
   MouseDownBackColor: "#333"
   MouseOverBackColor: "#444"
+  BorderSize: 0
 
 StyledButton.styledButtonWhatsNew:
   ForeColor: "#ff8c00"
@@ -61,9 +62,6 @@ StyledButton.styledButtonWhatsNew:
 LinkLabel:
   LinkColor: "#4169e1"
   #VisitedLinkColor: "rgb(128, 0, 128)"
-
-Button:
-  ForeColor: "black"
 
 ListView:
   BackColor: "var(BackColor)"
@@ -86,6 +84,18 @@ ColorSlider:
   ThumbInnerColor: "rgb(21, 56, 152)"
   ThumbOuterColor: "rgb(21, 56, 152)"
   ThumbPenColor: "rgb(21, 56, 152)"
+
+Button:
+  ForeColor: "black"
+
+# ComboBox, ImagedComboBox, NumericUpDown, Button, TextBox:
+#   BackColor: "#333"
+#   ForeColor: "white"
+#   FlatStyle: "Flat"
+#   BorderColor: "Silver"
+#   BorderSize: 1
+#   MouseDownBackColor: "#555"
+#   MouseOverBackColor: "#444"
 
 # Components:
 ToolTip, CustomToolTip:

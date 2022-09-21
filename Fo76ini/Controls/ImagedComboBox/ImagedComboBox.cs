@@ -107,7 +107,7 @@ namespace ComboxExtended
             }
             else
             {
-                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Window), e.Bounds);
+                e.Graphics.FillRectangle(new SolidBrush(BackColor), e.Bounds);
             }
 
             if (e.Index != -1)
@@ -117,7 +117,7 @@ namespace ComboxExtended
                 e.Graphics.DrawImage(comboboxItem.Image, e.Bounds.X, e.Bounds.Y, ItemHeight, ItemHeight);
 
                 //we need to draw the item as string because we made drawmode to ownervariable
-                e.Graphics.DrawString(Items[e.Index].Value.ToString(), Font, Brushes.Black,
+                e.Graphics.DrawString(Items[e.Index].Value.ToString(), Font, new SolidBrush(ForeColor),
                                       new RectangleF(e.Bounds.X + ItemHeight, e.Bounds.Y, DropDownWidth,
                                                      ItemHeight));
             }
