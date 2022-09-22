@@ -16,6 +16,8 @@ Here's an overview:
 
 ```
 📁 .
+├── 📁 Docs              ⇨ Documentation
+│
 ├── 📁 Additional files  ⇨ Additional files that need to be copied to the bin folder.
 ├── 📁 Fo76ini           ⇨ Main solution
 ├── 📁 Fo76ini_Updater   ⇨ Solution for the auto-updater
@@ -46,7 +48,7 @@ Here's an overview:
 │   └── 📁 FormTextP...  ⇨ Custom messageboxes, unused.
 │
 ├── 📁 Ini               ⇨ Ini parsing and handling (load, change, save, etc.)
-├── 📁 Interface         ⇨ Translation and other interface related code
+├── 📁 Interface         ⇨ Translation, theming, and other interface related code
 ├── 📁 Mods              ⇨ Loading, saving, and manipulating mods.
 ├── 📁 NexusAPI          ⇨ Accessing the NexusMods API and storing data.
 ├── 📁 Profiles          ⇨ Loading, saving, and editing profiles.
@@ -77,7 +79,8 @@ The tool downloads or requests information from GitHub's API for various reasons
 │
 └── 📁 Fo76ini
     └── 📁 languages        ⇨ *.zip archives containing the translations.
-        └── 📝 list.iso.txt ⇨ List of available translations for download.
+        ├── 📝 list.iso.txt ⇨ List of available translations for download.
+        └── 🗃️ xx-XX.zip    ⇨ Translations
 ```
 
 ### From GitHub releases:
@@ -91,4 +94,4 @@ Any file that follows the `vx.xx.x_bin.zip` naming scheme. Downloaded and extrac
 Checks if any commit to the path `./Fo76ini/languages` has happened since the last update to the translations.
 
 ### From felisdiligens.github.io:
-Displays [felisdiligens.github.io/Fo76ini/What's new.html](https://felisdiligens.github.io/Fo76ini/What's%20new.html) in a web browser control.
+Displays [felisdiligens.github.io/Fo76ini/What's new.html](https://felisdiligens.github.io/Fo76ini/What's%20new.html) and [/What's new - Dark.html](https://felisdiligens.github.io/Fo76ini/What's%20new%20-%20Dark.html) in a web browser control.
