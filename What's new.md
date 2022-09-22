@@ -11,8 +11,9 @@ I hope your eyes are now soothed with the dark mode. :)
 <summary>Click to expand</summary>
 
 - Added dark and light mode which can be toggled in the App Settings.
-  - Changed some UI elements in order to make them themable. (TrackBars/Sliders, GroupBoxes, TabControls, etc.)
+  - Changed some UI elements in order to make them themable. (TrackBars/Sliders, GroupBoxes, TabControls, ListView, etc.)
   - Theming support probably comes with a small hit to performance.
+  - Added separate loading animations and some images (b&w) for light and dark theme.
   - (added YAML parser "YamlDotNet" as a dependency)
 - Bug fixes / Minor changes:
   - Fixed archives of removed mods not getting deleted, which resulted in junk *.ba2 files in the Data folder.

@@ -19,6 +19,13 @@ VARS:
   WarnLevel.Warning: "rgb(181, 124, 11)"
   WarnLevel.Unsafe: "OrangeRed"
 
+  # Syntax highlighting colors in the Custom Tweaks tab:
+  SyntaxHL.Comment: "rgb(0, 180, 0)"
+  SyntaxHL.Section: "#4A77FF"
+  SyntaxHL.Key: "#4A77FF"
+  SyntaxHL.EqualsSign: "rgb(0, 180, 0)"
+  SyntaxHL.Value: "rgb(255, 0, 0)"
+
   # Mod list colors:
   Mod.ListUpdateAvailableColor: "Fuchsia"
   Mod.ListLatestVersionColor: "Green"

@@ -175,10 +175,10 @@
             this.olvColumnAltArchiveName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnAltArchivePreset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnAltIsFrozen = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnLastDummy = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.tabControl1 = new Fo76ini.Controls.StyledTabControl();
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
-            this.olvColumnLastDummy = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -1824,6 +1824,14 @@
             this.olvColumnAltIsFrozen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.olvColumnAltIsFrozen.Width = 50;
             // 
+            // olvColumnLastDummy
+            // 
+            this.olvColumnLastDummy.FillsFreeSpace = true;
+            this.olvColumnLastDummy.Hideable = false;
+            this.olvColumnLastDummy.IsEditable = false;
+            this.olvColumnLastDummy.Text = "";
+            this.olvColumnLastDummy.Width = 1;
+            // 
             // tabControl1
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1869,14 +1877,6 @@
             this.toolTip.Padding = new System.Drawing.Size(6, 6);
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
-            // 
-            // olvColumnLastDummy
-            // 
-            this.olvColumnLastDummy.FillsFreeSpace = true;
-            this.olvColumnLastDummy.Hideable = false;
-            this.olvColumnLastDummy.IsEditable = false;
-            this.olvColumnLastDummy.Text = "";
-            this.olvColumnLastDummy.Width = 1;
             // 
             // FormMods
             // 

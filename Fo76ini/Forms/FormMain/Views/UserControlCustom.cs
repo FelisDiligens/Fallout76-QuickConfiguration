@@ -1,4 +1,5 @@
 ﻿using FastColoredTextBoxNS;
+using Fo76ini.Interface;
 using Fo76ini.Profiles;
 using Fo76ini.Utilities;
 using System;
@@ -17,11 +18,11 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         // Colors for syntax highlighting
         TextStyle comment = new TextStyle(Brushes.DarkGreen, null, FontStyle.Italic);
-        TextStyle section = new TextStyle(Brushes.RoyalBlue, null, FontStyle.Bold);
-        TextStyle key = new TextStyle(Brushes.RoyalBlue, null, FontStyle.Regular);
+        TextStyle section = new TextStyle(Brushes.Blue, null, FontStyle.Bold);
+        TextStyle key = new TextStyle(Brushes.Blue, null, FontStyle.Regular);
         TextStyle equalsSign = new TextStyle(Brushes.DarkGreen, null, FontStyle.Regular);
-        TextStyle valueString = new TextStyle(Brushes.OrangeRed, null, FontStyle.Regular);
-        TextStyle valueNumber = new TextStyle(Brushes.OrangeRed, null, FontStyle.Bold);
+        TextStyle valueString = new TextStyle(Brushes.Red, null, FontStyle.Regular);
+        TextStyle valueNumber = new TextStyle(Brushes.Red, null, FontStyle.Bold);
         Style[] styles;
 
         // Autocomplete
@@ -40,6 +41,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             ProfileManager.ProfileChanged += OnProfileChanged;
 
             // Syntax highlighting
+            LoadStyles();
             styles = new Style[] { comment, section, key, equalsSign, valueString, valueNumber };
 
             /*
@@ -61,6 +63,16 @@ namespace Fo76ini.Forms.FormMain.Tabs
             menu.Items.Width = 300;
         }
 
+        private void LoadStyles()
+        {
+            comment.ForeBrush = new SolidBrush(Theming.GetColor("SyntaxHL.Comment", Color.DarkGreen));
+            section.ForeBrush = new SolidBrush(Theming.GetColor("SyntaxHL.Section", Color.Blue));
+            key.ForeBrush = new SolidBrush(Theming.GetColor("SyntaxHL.Key", Color.Blue));
+            equalsSign.ForeBrush = new SolidBrush(Theming.GetColor("SyntaxHL.EqualsSign", Color.DarkGreen));
+            valueString.ForeBrush = new SolidBrush(Theming.GetColor("SyntaxHL.Value", Color.Red));
+            valueNumber.ForeBrush = new SolidBrush(Theming.GetColor("SyntaxHL.Value", Color.Red));
+        }
+
         private void Translation_LanguageChanged(object sender, TranslationEventArgs e)
         {
             Translation translation = (Translation)sender;
@@ -79,6 +91,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         private void comboBoxCustomFile_SelectedIndexChanged(object sender, EventArgs e)
         {
             OpenFile(GetFileName());
+            LoadStyles();
         }
 
         private void textBoxCustom_TextChanged(object sender, TextChangedEventArgs e)
