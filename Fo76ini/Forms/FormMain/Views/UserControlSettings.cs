@@ -319,21 +319,51 @@ namespace Fo76ini.Forms.FormMain.Tabs
         private void radioButtonLightTheme_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonLightTheme.Checked && !UpdatingUI)
-                Theming.ApplyTheme(ThemeType.Light, this.ParentForm);
+            {
+                if (ApplyThemeRequested != null)
+                {
+                    ThemeEventArgs args = new ThemeEventArgs();
+                    args.Theme = ThemeType.Light;
+                    ApplyThemeRequested(sender, args);
+                }
+            }
         }
 
         private void radioButtonDarkTheme_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonDarkTheme.Checked && !UpdatingUI)
-                Theming.ApplyTheme(ThemeType.Dark, this.ParentForm);
+            {
+                if (ApplyThemeRequested != null)
+                {
+                    ThemeEventArgs args = new ThemeEventArgs();
+                    args.Theme = ThemeType.Dark;
+                    ApplyThemeRequested(sender, args);
+                }
+            }
         }
 
         private void radioButtonRespectSystemTheme_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonRespectSystemTheme.Checked && !UpdatingUI)
-                Theming.ApplyTheme(ThemeType.System, this.ParentForm);
+            {
+                if (ApplyThemeRequested != null)
+                {
+                    ThemeEventArgs args = new ThemeEventArgs();
+                    args.Theme = ThemeType.System;
+                    ApplyThemeRequested(sender, args);
+                }
+            }
         }
 
+        public event ThemeEventHandler ApplyThemeRequested;
+
         #endregion
+    }
+
+    public delegate void ThemeEventHandler(object sender, ThemeEventArgs e);
+
+    public class ThemeEventArgs : EventArgs
+    {
+        public ThemeType Theme;
     }
 }
