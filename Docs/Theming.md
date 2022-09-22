@@ -50,6 +50,7 @@ You can use the following values to assign them to properies:
 | `true` / `false`                         | System.Boolean                             |
 | any                                      | System.String                              |
 | `Standard` / `Flat` / `Popup` / `System` | System.Windows.Forms.FlatStyle             |
+| `None` / `Fixed3D` / `FixedSingle`       | System.Windows.Forms.BorderStyle           |
 
 The conversion depends on the property's type.
 

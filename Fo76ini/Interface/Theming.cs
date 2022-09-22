@@ -276,6 +276,11 @@ namespace Fo76ini.Interface
                     if (Enum.TryParse(value, out FlatStyle e))
                         property.SetValue(parent, e, null);
                 }
+                else if (property.PropertyType == typeof(BorderStyle))
+                {
+                    if (Enum.TryParse(value, out BorderStyle e))
+                        property.SetValue(parent, e, null);
+                }
             }
         }
     }
