@@ -2,8 +2,7 @@
 
 Hello everyone,
 
-this update adds two themes to the tool: light and dark.  
-However, it does not apply to the mod manager yet.
+this update adds two themes to the tool: light and dark.
 
 I hope your eyes are now soothed with the dark mode. :)
 

@@ -414,6 +414,19 @@ namespace Fo76ini
             // Listen to drag and drop events for files:
             dropSink.CanDrop += this.objectListViewMods_CanDrop;
             dropSink.Dropped += this.objectListViewMods_Dropped;
+
+
+            /*
+             * Theme:
+             */
+
+            if (Theming.CurrentTheme == ThemeType.Dark)
+            {
+                var headerstyle = new HeaderFormatStyle();
+                headerstyle.SetBackColor(Color.FromArgb(40, 40, 40));
+                headerstyle.SetForeColor(Color.White);
+                this.objectListViewMods.HeaderFormatStyle = headerstyle;
+            }
         }
 
         public void UpdateObjectListView()

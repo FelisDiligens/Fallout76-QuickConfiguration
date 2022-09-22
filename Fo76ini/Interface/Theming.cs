@@ -138,6 +138,12 @@ namespace Fo76ini.Interface
                 ApplyTheme(theme, control);
         }
 
+        protected static void ApplyTheme(Theme theme, ToolStripItemCollection items)
+        {
+            foreach (ToolStripItem item in items)
+                ApplyTheme(theme, item);
+        }
+
         protected static void ApplyTheme(Theme theme, Control control)
         {
             _currentTheme = theme.Type;
@@ -157,13 +163,24 @@ namespace Fo76ini.Interface
             foreach (VisualStyle style in theme.GetSpecializedStylesForControl(control))
                 ApplyStyle(style, control);
 
+            /*
+             * Special controls and components:
+             */
+
             // Apply theme to the contextmenu, if available:
             if (control.ContextMenuStrip != null)
                 ApplyTheme(theme, control.ContextMenuStrip);
 
+            if (control is MenuStrip)
+                ApplyTheme(theme, ((MenuStrip)control).Items);
+
+            if (control is ToolStrip)
+                ApplyTheme(theme, ((ToolStrip)control).Items);
+
             // Apply theme to the tool tip, if available:
             if (control is IExposeComponents)
                 ApplyTheme(theme, ((IExposeComponents)control).ToolTip);
+
 
             // Apply theme to children:
             ApplyTheme(theme, control.Controls);
@@ -179,6 +196,9 @@ namespace Fo76ini.Interface
                 if (Regex.IsMatch(controlType, controlRegex))
                     ApplyStyle(style, comp);
             }
+
+            if (comp is ToolStripMenuItem)
+                ApplyTheme(theme, ((ToolStripMenuItem)comp).DropDownItems);
         }
 
         private static void ApplyStyle(VisualStyle style, Control control)
@@ -242,6 +262,8 @@ namespace Fo76ini.Interface
                     property.SetValue(parent, value, null);
                 else if (property.PropertyType == typeof(int))
                     property.SetValue(parent, Convert.ToInt32(value), null);
+                else if (property.PropertyType == typeof(bool))
+                    property.SetValue(parent, Convert.ToBoolean(value), null);
                 else if (property.PropertyType == typeof(Color))
                     property.SetValue(parent, Utils.ParseColor(value), null);
                 else if (property.PropertyType == typeof(Image))

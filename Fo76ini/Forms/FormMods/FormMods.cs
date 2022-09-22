@@ -1,4 +1,5 @@
-﻿using Fo76ini.Interface;
+﻿using Fo76ini.Controls;
+using Fo76ini.Interface;
 using Fo76ini.Mods;
 using Fo76ini.NexusAPI;
 using Fo76ini.Profiles;
@@ -78,6 +79,18 @@ namespace Fo76ini
         {
             Configuration.LoadWindowState("FormMods", this);
             Configuration.LoadListViewState("FormMods.OLV", this.objectListViewMods);
+
+            if (Theming.CurrentTheme == ThemeType.Dark)
+            {
+                this.menuStrip1.RenderMode = ToolStripRenderMode.Professional;
+                this.menuStrip1.Renderer = new ToolStripProfessionalRenderer(new DarkToolStripColorTable());
+
+                this.toolStrip1.RenderMode = ToolStripRenderMode.Professional;
+                this.toolStrip1.Renderer = new ToolStripProfessionalRenderer(new DarkToolStripColorTable());
+
+                this.statusStrip1.RenderMode = ToolStripRenderMode.Professional;
+                this.statusStrip1.Renderer = new ToolStripProfessionalRenderer(new DarkToolStripColorTable());
+            }
         }
 
         private void FormMods_FormClosing(object sender, FormClosingEventArgs e)

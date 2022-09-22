@@ -157,11 +157,13 @@
     <Compile Include="Controls\CustomToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\DarkToolStripColorTable.cs" />
     <Compile Include="Controls\ImagedComboBox\ComboBoxItem.cs" />
     <Compile Include="Controls\ImagedComboBox\ComboCollection.cs" />
     <Compile Include="Controls\ImagedComboBox\ImagedComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\LightToolStripColorTable.cs" />
     <Compile Include="Controls\StyledButton.cs">
       <SubType>Component</SubType>
     </Compile>

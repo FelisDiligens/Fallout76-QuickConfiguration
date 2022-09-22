@@ -47,6 +47,7 @@ You can use the following values to assign them to properies:
 | `github_16`                              | (from Resources) System.Drawing.Image      |
 | ~~`github-16.png`~~                      | ~~(from disk) System.Drawing.Image~~ (tbd) |
 | `42`                                     | System.Int32                               |
+| `true` / `false`                         | System.Boolean                             |
 | any                                      | System.String                              |
 | `Standard` / `Flat` / `Popup` / `System` | System.Windows.Forms.FlatStyle             |
 

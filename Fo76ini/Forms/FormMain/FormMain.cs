@@ -147,7 +147,7 @@ namespace Fo76ini
             // Apply theme:
             Theming.ApplyTheme(Configuration.Appearance.AppTheme, this);
             Theming.ApplyTheme(Configuration.Appearance.AppTheme, this.formMods);
-            Theming.ApplyTheme(Configuration.Appearance.AppTheme, this.formWelcome);
+            //Theming.ApplyTheme(Configuration.Appearance.AppTheme, this.formWelcome);
         }
 
         private void FormMain_Shown(object sender, EventArgs e)
@@ -466,7 +466,7 @@ namespace Fo76ini
         {
             Theming.ApplyTheme(e.Theme, this);
             Theming.ApplyTheme(e.Theme, this.formMods);
-            Theming.ApplyTheme(e.Theme, this.formWelcome);
+            //Theming.ApplyTheme(e.Theme, this.formWelcome);
         }
 
         #endregion
