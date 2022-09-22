@@ -668,7 +668,7 @@
             // 
             // pictureBoxSpinnerCheckForUpdates
             // 
-            this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Rolling_1s_24px;
+            this.pictureBoxSpinnerCheckForUpdates.Image = global::Fo76ini.Properties.Resources.Rolling_1s_24px_light;
             this.pictureBoxSpinnerCheckForUpdates.Location = new System.Drawing.Point(100, 2);
             this.pictureBoxSpinnerCheckForUpdates.Name = "pictureBoxSpinnerCheckForUpdates";
             this.pictureBoxSpinnerCheckForUpdates.Size = new System.Drawing.Size(24, 24);

@@ -192,7 +192,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
                 return;
             if (NexusMods.User.APIKey == "")
                 return;
-            this.pictureBoxNMProfilePicture.Image = Resources.Rolling_1s_200px;
+            this.pictureBoxNMProfilePicture.Image = Theming.CurrentTheme == ThemeType.Dark ? Resources.Rolling_1s_200px_dark : Resources.Rolling_1s_200px_light;
             this.backgroundWorkerRetrieveProfileInfo.RunWorkerAsync();
         }
 

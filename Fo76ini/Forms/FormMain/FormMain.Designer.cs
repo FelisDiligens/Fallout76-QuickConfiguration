@@ -59,7 +59,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxLoadingGIF.BackColor = System.Drawing.SystemColors.Window;
-            this.pictureBoxLoadingGIF.Image = global::Fo76ini.Properties.Resources.Rolling_1s_200px;
+            this.pictureBoxLoadingGIF.Image = global::Fo76ini.Properties.Resources.Rolling_1s_200px_light;
             this.pictureBoxLoadingGIF.Location = new System.Drawing.Point(0, -2);
             this.pictureBoxLoadingGIF.Name = "pictureBoxLoadingGIF";
             this.pictureBoxLoadingGIF.Size = new System.Drawing.Size(16, 613);

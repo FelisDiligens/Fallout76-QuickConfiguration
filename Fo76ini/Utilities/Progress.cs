@@ -1,4 +1,5 @@
-﻿using Fo76ini.Utilities;
+﻿using Fo76ini.Interface;
+using Fo76ini.Utilities;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -105,11 +106,11 @@ namespace Fo76ini
             if (TextColor != null)
                 label.ForeColor = (Color)TextColor;
             else if (IsDone && Success)
-                label.ForeColor = Color.DarkGreen;
+                label.ForeColor = Theming.GetColor("Progress.Success", Color.DarkGreen);
             else if (IsDone && !Success)
-                label.ForeColor = Color.Red;
+                label.ForeColor = Theming.GetColor("Progress.Failed", Color.Red);
             else
-                label.ForeColor = Color.Black;
+                label.ForeColor = Theming.GetColor("TextColor", Color.Black);
 
             label.Text = Text;
             if (Exc != null)

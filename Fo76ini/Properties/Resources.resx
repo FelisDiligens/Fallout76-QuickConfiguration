@@ -157,9 +157,6 @@
   <data name="button" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Spinner-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Spinner-1s-24px-white.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="edit-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit-2-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -267,9 +264,6 @@
   </data>
   <data name="snowflake-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\snowflake-16-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Spinner-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gear-0.4s-200px.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Images\banner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -505,18 +499,6 @@
   <data name="nukacrypt_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nukacrypt-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Magnify_1s_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Magnify-1s-200px.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Rolling_1s_128px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rolling-1s-128px.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Rolling_1s_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rolling-1s-200px.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Rolling_1s_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rolling-1s-24px.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="fedico" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fedico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -525,5 +507,29 @@
   </data>
   <data name="map_4_16_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\map-4-16-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Magnify_1s_200px_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Magnify-1s-200px-dark.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Magnify_1s_200px_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Magnify-1s-200px-light.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rolling_1s_128px_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rolling-1s-128px-dark.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rolling_1s_128px_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rolling-1s-128px-light.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rolling_1s_200px_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rolling-1s-200px-dark.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rolling_1s_200px_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rolling-1s-200px-light.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rolling_1s_24px_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rolling-1s-24px-dark.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rolling_1s_24px_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rolling-1s-24px-light.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

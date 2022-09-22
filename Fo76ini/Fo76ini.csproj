@@ -540,6 +540,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Rolling-1s-200px-dark.gif" />
+    <None Include="Resources\Rolling-1s-200px-light.gif" />
+    <None Include="Resources\Rolling-1s-128px-light.gif" />
+    <None Include="Resources\Rolling-1s-128px-dark.gif" />
+    <None Include="Resources\Rolling-1s-24px-dark.gif" />
+    <None Include="Resources\Rolling-1s-24px-light.gif" />
     <None Include="Resources\Rolling-1s-128px.gif" />
     <None Include="Resources\Rolling-1s-200px.gif" />
     <None Include="Resources\Rolling-1s-24px.gif" />
@@ -604,6 +610,8 @@
     <None Include="Resources\Magnify-1s-200px.gif" />
     <None Include="Resources\map-4-16-white.png" />
     <None Include="Resources\map-4-16.png" />
+    <None Include="Resources\Magnify-1s-200px-light.gif" />
+    <None Include="Resources\Magnify-1s-200px-dark.gif" />
     <Content Include="Resources\pipboy-24px.png" />
     <Content Include="Resources\pipboy-preview-mask.png" />
     <Content Include="Resources\pipboy-preview-screen.png" />

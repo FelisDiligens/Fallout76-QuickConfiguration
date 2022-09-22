@@ -379,7 +379,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         /// </summary>
         private void LoadServerStatus()
         {
-            this.pictureBoxScrapedServerStatus.Image = Resources.Rolling_1s_24px;
+            this.pictureBoxScrapedServerStatus.Image = Theming.CurrentTheme == ThemeType.Dark ? Resources.Rolling_1s_24px_dark : Resources.Rolling_1s_24px_light;
             this.labelScrapedServerStatus.Text = "...";
             this.buttonReloadServerStatus.Enabled = false;
             this.backgroundWorkerScrapeServerStatus.RunWorkerAsync();

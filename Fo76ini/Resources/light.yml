@@ -37,6 +37,10 @@ VARS:
   Mod.FreezePendingColor: "Blue"
   Mod.ListItemDisabledColor: "Silver"
 
+  # Mod manager progress colors:
+  Progress.Success: "DarkGreen"
+  Progress.Failed: "Red"
+
   #
   # Tool strip, menu strip, status strip, and their (sub)items:
   #
@@ -92,6 +96,15 @@ UserControl*:
 
 PictureBox.*LoadingGIF:
   BackColor: "var(BackColor)"
+
+PictureBox.pictureBoxLoadingGIF, PictureBox.pictureBoxModsLoadingGIF:
+  Image: "Rolling_1s_200px_light"
+
+PictureBox.pictureBoxGalleryLoadingGIF:
+  Image: "Magnify_1s_200px_light"
+
+PictureBox.pictureBoxSpinnerDownloadLanguages, PictureBox.pictureBoxSpinnerCheckForUpdates:
+  Image: "Rolling_1s_24px_light"
 
 # Container:
 StyledGroupBox:

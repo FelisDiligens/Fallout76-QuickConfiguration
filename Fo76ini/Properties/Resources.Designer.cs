@@ -375,25 +375,26 @@ namespace Fo76ini.Properties {
         ///  BaseTheme: Dark
         ///  Name: Dark
         ///  Author: FelisDiligens
-        ///  Version: v1.11.5
+        ///  Version: v1.12.0
+        ///
         ///VARS:
         ///  TextColor: white
         ///  BackColor: &quot;#222&quot;
-        ///  VersionLatestColor: &quot;rgb(50, 255, 50)&quot;
-        ///  VersionOldColor: &quot;Red&quot;
-        ///  VersionUnknownColor: &quot;Silver&quot;
-        ///  WarnLevelNotice: &quot;RoyalBlue&quot;
-        ///  WarnLevelExperimental: &quot;Fuchsia&quot;
-        ///  WarnLevelWarning: &quot;rgb(181, 124, 11)&quot;
-        ///  WarnLevelUnsafe: &quot;OrangeRed&quot;
         ///
-        ///# Content:
-        ///Panel:
-        ///  BackColor: transparent
-        ///  ForeColor: &quot;var(TextColor)&quot;
-        ///TabPage:
-        ///  BackColor: &quot;var(BackColor)&quot;
-        ///  ForeColor: &quot;var [rest of string was truncated]&quot;;.
+        ///  # Home - App Version colors:
+        ///  Version.LatestColor: &quot;rgb(50, 255, 50)&quot;
+        ///  Version.OldColor: &quot;Red&quot;
+        ///  Version.UnknownColor: &quot;Silver&quot;
+        ///
+        ///  # Tweak colors:
+        ///  WarnLevel.Notice: &quot;RoyalBlue&quot;
+        ///  WarnLevel.Experimental: &quot;Fuchsia&quot;
+        ///  WarnLevel.Warning: &quot;rgb(181, 124, 11)&quot;
+        ///  WarnLevel.Unsafe: &quot;OrangeRed&quot;
+        ///
+        ///  # Mod list colors:
+        ///  Mod.ListUpdateAvailableColor: &quot;Fuchsia&quot;
+        ///  Mod. [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string dark {
             get {
@@ -826,26 +827,26 @@ namespace Fo76ini.Properties {
         ///  BaseTheme: Light
         ///  Name: Light
         ///  Author: FelisDiligens
-        ///  Version: v1.11.5
+        ///  Version: v1.12.0
+        ///
         ///VARS:
         ///  TextColor: black
         ///  BackColor: white
-        ///  VersionLatestColor: &quot;DarkGreen&quot;
-        ///  VersionOldColor: &quot;Red&quot;
-        ///  VersionUnknownColor: &quot;DarkGray&quot;
-        ///  WarnLevelNotice: &quot;Blue&quot;
-        ///  WarnLevelExperimental: &quot;Fuchsia&quot;
-        ///  WarnLevelWarning: &quot;rgb(181, 124, 11)&quot;
-        ///  WarnLevelUnsafe: &quot;Red&quot;
         ///
-        ///# Content:
-        ///Panel:
-        ///  BackColor: transparent
-        ///  ForeColor: &quot;var(TextColor)&quot;
-        ///TabPage:
-        ///  BackColor: &quot;var(BackColor)&quot;
-        ///  ForeColor: &quot;var(TextColor)&quot;
-        ///# [rest of string was truncated]&quot;;.
+        ///  # Home - App Version colors:
+        ///  Version.LatestColor: &quot;DarkGreen&quot;
+        ///  Version.OldColor: &quot;Red&quot;
+        ///  Version.UnknownColor: &quot;DarkGray&quot;
+        ///
+        ///  # Tweak colors:
+        ///  WarnLevel.Notice: &quot;Blue&quot;
+        ///  WarnLevel.Experimental: &quot;Fuchsia&quot;
+        ///  WarnLevel.Warning: &quot;rgb(181, 124, 11)&quot;
+        ///  WarnLevel.Unsafe: &quot;Red&quot;
+        ///
+        ///  # Mod list colors:
+        ///  Mod.ListUpdateAvailableColor: &quot;Fuchsia&quot;
+        ///  Mod.ListLatestVersi [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string light {
             get {
@@ -876,9 +877,19 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Magnify_1s_200px {
+        internal static System.Drawing.Bitmap Magnify_1s_200px_dark {
             get {
-                object obj = ResourceManager.GetObject("Magnify_1s_200px", resourceCulture);
+                object obj = ResourceManager.GetObject("Magnify_1s_200px_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Magnify_1s_200px_light {
+            get {
+                object obj = ResourceManager.GetObject("Magnify_1s_200px_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1156,9 +1167,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Rolling_1s_128px {
+        internal static System.Drawing.Bitmap Rolling_1s_128px_dark {
             get {
-                object obj = ResourceManager.GetObject("Rolling_1s_128px", resourceCulture);
+                object obj = ResourceManager.GetObject("Rolling_1s_128px_dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1166,9 +1177,9 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Rolling_1s_200px {
+        internal static System.Drawing.Bitmap Rolling_1s_128px_light {
             get {
-                object obj = ResourceManager.GetObject("Rolling_1s_200px", resourceCulture);
+                object obj = ResourceManager.GetObject("Rolling_1s_128px_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1176,9 +1187,39 @@ namespace Fo76ini.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Rolling_1s_24px {
+        internal static System.Drawing.Bitmap Rolling_1s_200px_dark {
             get {
-                object obj = ResourceManager.GetObject("Rolling_1s_24px", resourceCulture);
+                object obj = ResourceManager.GetObject("Rolling_1s_200px_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rolling_1s_200px_light {
+            get {
+                object obj = ResourceManager.GetObject("Rolling_1s_200px_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rolling_1s_24px_dark {
+            get {
+                object obj = ResourceManager.GetObject("Rolling_1s_24px_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rolling_1s_24px_light {
+            get {
+                object obj = ResourceManager.GetObject("Rolling_1s_24px_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1209,26 +1250,6 @@ namespace Fo76ini.Properties {
         internal static System.Drawing.Bitmap snowflake_24 {
             get {
                 object obj = ResourceManager.GetObject("snowflake-24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Spinner_200 {
-            get {
-                object obj = ResourceManager.GetObject("Spinner-200", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Spinner_24 {
-            get {
-                object obj = ResourceManager.GetObject("Spinner-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
