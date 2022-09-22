@@ -75,6 +75,8 @@ namespace Fo76ini.Interface
                 return ThemeType.Dark;
         }
 
+        #region Theme variables
+
         public static string Get(string key)
         {
             return _vars[key];
@@ -104,6 +106,8 @@ namespace Fo76ini.Interface
             return defaultValue;
         }
 
+        #endregion
+
         public static void ApplyTheme(ThemeType theme, Control control)
         {
             try
@@ -128,13 +132,13 @@ namespace Fo76ini.Interface
             }
         }
 
-        public static void ApplyTheme(Theme theme, Control.ControlCollection controls)
+        protected static void ApplyTheme(Theme theme, Control.ControlCollection controls)
         {
             foreach (Control control in controls)
                 ApplyTheme(theme, control);
         }
 
-        public static void ApplyTheme(Theme theme, Control control)
+        protected static void ApplyTheme(Theme theme, Control control)
         {
             _currentTheme = theme.Type;
             _vars = theme.Vars;
@@ -145,44 +149,27 @@ namespace Fo76ini.Interface
             if (control.Tag != null)
                 tag = control.Tag.ToString();
 
-            foreach (VisualStyle style in theme.GetDefaultStylesForControl(controlType))
+            // Apply "Default" styles first:
+            foreach (VisualStyle style in theme.GetDefaultStylesForControl(control))
                 ApplyStyle(style, control);
 
-            foreach (VisualStyle style in theme.GetSpecializedStylesForControl(controlType, controlName, tag))
+            // then apply specialized styles because they have precedence:
+            foreach (VisualStyle style in theme.GetSpecializedStylesForControl(control))
                 ApplyStyle(style, control);
 
-            /*foreach (VisualStyle style in theme.Styles)
-            {
-                string controlRegex = Utils.WildCardToRegular(style.ControlType);
-                if (Regex.IsMatch(controlType, controlRegex))
-                {
-                    string styleRegex = Utils.WildCardToRegular(style.StyleName);
-                    if (style.StyleName == "Default")
-                        ApplyStyle(style, control);
-
-                    else if (tag != controlName &&
-                        tag != "Default" &&
-                        tag != null &&
-                        Regex.IsMatch(tag, styleRegex))
-                        ApplyStyle(style, control);
-
-                    else if (Regex.IsMatch(controlName, styleRegex))
-                        ApplyStyle(style, control);
-                }
-            }*/
-
-            // control.Refresh();
-
+            // Apply theme to the contextmenu, if available:
             if (control.ContextMenuStrip != null)
                 ApplyTheme(theme, control.ContextMenuStrip);
 
+            // Apply theme to the tool tip, if available:
             if (control is IExposeComponents)
                 ApplyTheme(theme, ((IExposeComponents)control).ToolTip);
 
+            // Apply theme to children:
             ApplyTheme(theme, control.Controls);
         }
 
-        public static void ApplyTheme(Theme theme, Component comp)
+        protected static void ApplyTheme(Theme theme, Component comp)
         {
             String controlType = comp.GetType().Name;
 
@@ -205,6 +192,10 @@ namespace Fo76ini.Interface
                 object parent = control;
 
                 // Support Button.FlatAppearance
+                // e.g. Button.FlatAppearance.BorderColor
+                // =>
+                // Button:
+                //     BorderColor: "#333"
                 if (property == null && control is Button)
                 {
                     parent = ((Button)control).FlatAppearance;
@@ -233,6 +224,7 @@ namespace Fo76ini.Interface
         {
             if (property != null)
             {
+                // e.g. convert "var(BackColor)" => "#333"
                 if (value.StartsWith("var"))
                 {
                     int left = value.IndexOf('(');
@@ -245,6 +237,7 @@ namespace Fo76ini.Interface
                     }
                 }
 
+                // Convert the string value to the type of the property, then set the property's value.
                 if (property.PropertyType == typeof(string))
                     property.SetValue(parent, value, null);
                 else if (property.PropertyType == typeof(int))

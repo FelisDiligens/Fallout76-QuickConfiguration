@@ -582,9 +582,9 @@ namespace Fo76ini.Utilities
         /// <remarks>https://stackoverflow.com/a/30300521</remarks>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static String WildCardToRegular(String value)
+        public static String WildCardToRegular(String value, bool beginToEnd = true)
         {
-            return "^" + Regex.Escape(value).Replace("\\?", ".").Replace("\\*", ".*") + "$";
+            return (beginToEnd ? "^" : "") + Regex.Escape(value).Replace("\\?", ".").Replace("\\*", ".*") + (beginToEnd ? "$" : "");
         }
 
         public static void SetFormPosition(Form form, int x, int y)
