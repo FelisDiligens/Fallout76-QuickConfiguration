@@ -343,6 +343,10 @@ namespace Fo76ini
                     break;
             }
 
+            // https://stackoverflow.com/questions/65580743/adjusting-header-row-color
+            // We need the dummy column to fill the remaining space:
+            this.objectListViewMods.Columns.Add(this.olvColumnLastDummy);
+
             this.currentStyle = style;
         }
 

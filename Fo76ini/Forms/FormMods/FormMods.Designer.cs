@@ -178,6 +178,7 @@
             this.tabControl1 = new Fo76ini.Controls.StyledTabControl();
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
+            this.olvColumnLastDummy = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -1707,6 +1708,7 @@
             this.objectListViewMods.AllColumns.Add(this.olvColumnAltArchiveName);
             this.objectListViewMods.AllColumns.Add(this.olvColumnAltArchivePreset);
             this.objectListViewMods.AllColumns.Add(this.olvColumnAltIsFrozen);
+            this.objectListViewMods.AllColumns.Add(this.olvColumnLastDummy);
             this.objectListViewMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1722,7 +1724,8 @@
             this.olvColumnAltInstallInto,
             this.olvColumnAltArchiveName,
             this.olvColumnAltArchivePreset,
-            this.olvColumnAltIsFrozen});
+            this.olvColumnAltIsFrozen,
+            this.olvColumnLastDummy});
             this.objectListViewMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectListViewMods.FullRowSelect = true;
             this.objectListViewMods.GridLines = true;
@@ -1866,6 +1869,14 @@
             this.toolTip.Padding = new System.Drawing.Size(6, 6);
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
+            // 
+            // olvColumnLastDummy
+            // 
+            this.olvColumnLastDummy.FillsFreeSpace = true;
+            this.olvColumnLastDummy.Hideable = false;
+            this.olvColumnLastDummy.IsEditable = false;
+            this.olvColumnLastDummy.Text = "";
+            this.olvColumnLastDummy.Width = 1;
             // 
             // FormMods
             // 
@@ -2081,5 +2092,6 @@
         private System.Windows.Forms.Panel panelDeployMethod;
         private System.Windows.Forms.Label labelBehaviorNote;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private BrightIdeasSoftware.OLVColumn olvColumnLastDummy;
     }
 }
