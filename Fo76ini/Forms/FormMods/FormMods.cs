@@ -86,10 +86,10 @@ namespace Fo76ini
                 this.menuStrip1.Renderer = new ToolStripProfessionalRenderer(new DarkToolStripColorTable());
 
                 this.toolStrip1.RenderMode = ToolStripRenderMode.Professional;
-                this.toolStrip1.Renderer = new ToolStripProfessionalRenderer(new DarkToolStripColorTable());
+                this.toolStrip1.Renderer = new CustomToolStripProfessionalRenderer(new DarkToolStripColorTable());
 
                 this.statusStrip1.RenderMode = ToolStripRenderMode.Professional;
-                this.statusStrip1.Renderer = new ToolStripProfessionalRenderer(new DarkToolStripColorTable());
+                this.statusStrip1.Renderer = new CustomToolStripProfessionalRenderer(new DarkToolStripColorTable());
             }
         }
 

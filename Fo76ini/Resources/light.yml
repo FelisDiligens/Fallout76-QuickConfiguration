@@ -2,17 +2,36 @@ META:
   BaseTheme: Light
   Name: Light
   Author: FelisDiligens
-  Version: v1.11.5
+  Version: v1.12.0
 VARS:
   TextColor: black
   BackColor: white
+  
   VersionLatestColor: "DarkGreen"
   VersionOldColor: "Red"
   VersionUnknownColor: "DarkGray"
+
   WarnLevelNotice: "Blue"
   WarnLevelExperimental: "Fuchsia"
   WarnLevelWarning: "rgb(181, 124, 11)"
   WarnLevelUnsafe: "Red"
+
+  ModListUpdateAvailableColor: "Fuchsia"
+  ModListLatestVersionColor: "Green"
+  ModListEnabledColor: "Green"
+  ModListDisabledColor: "Red"
+  ModListPendingColor: "Blue"
+  ModPresetGeneralColor: "OrangeRed"
+  ModPresetSoundColor: "RoyalBlue"
+  ModPresetTexturesColor: "DarkGreen"
+  ModPresetAutoColor: "DimGray"
+  ModInstallBundledColor: "OrangeRed"
+  ModInstallSeparateColor: "Indigo"
+  ModInstallSeparateFrozenColor: "DarkCyan"
+  ModInstallLooseColor: "MediumVioletRed"
+  ModFrozenColor: "DarkCyan"
+  ModFreezePendingColor: "Blue"
+  ModListItemDisabledColor: "Silver"
 
 # Content:
 Panel:
@@ -62,9 +81,6 @@ LinkLabel:
   LinkColor: "rgb(0, 0, 255)"
   #VisitedLinkColor: "rgb(128, 0, 128)"
 
-Button:
-  ForeColor: "black"
-
 ListView:
   BackColor: "var(BackColor)"
   ForeColor: "var(TextColor)"
@@ -87,7 +103,10 @@ ColorSlider:
   ThumbOuterColor: "#2156e0"
   ThumbPenColor: "#2156e0"
 
-# ComboBox, ImagedComboBox, NumericUpDown, TextBox:
+Button:
+  ForeColor: "black"
+
+# UserControlTweaks > ComboBox, UserControlTweaks > ImagedComboBox, UserControlTweaks > NumericUpDown, UserControlTweaks > TextBox:
 #   BackColor: "white"
 #   ForeColor: "black"
 #   FlatStyle: "Standard"
@@ -145,3 +164,17 @@ Panel.panelNMProfile:
 
 Button.NexusModsActions:
   ForeColor: "white"
+
+
+# FormMods
+ObjectListView.*Mods:
+  HeaderUsesThemes: "true"
+  GridLines: "true"
+  ForeColor: "black"
+  BackColor: "white"
+  AlternateRowBackColor: "#f0f0f0"
+  UseAlternatingBackColors: "true"
+  HighlightBackgroundColor: "#d0d0ff"
+  HighlightForegroundColor: "black"
+  UnfocusedHighlightBackgroundColor: "#d0d0ff"
+  UnfocusedHighlightForegroundColor: "black"

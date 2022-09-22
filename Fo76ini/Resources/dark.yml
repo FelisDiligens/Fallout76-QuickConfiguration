@@ -2,17 +2,36 @@ META:
   BaseTheme: Dark
   Name: Dark
   Author: FelisDiligens
-  Version: v1.11.5
+  Version: v1.12.0
 VARS:
   TextColor: white
   BackColor: "#222"
+
   VersionLatestColor: "rgb(50, 255, 50)"
   VersionOldColor: "Red"
   VersionUnknownColor: "Silver"
+
   WarnLevelNotice: "RoyalBlue"
   WarnLevelExperimental: "Fuchsia"
   WarnLevelWarning: "rgb(181, 124, 11)"
   WarnLevelUnsafe: "OrangeRed"
+
+  ModListUpdateAvailableColor: "Fuchsia"
+  ModListLatestVersionColor: "Green"
+  ModListEnabledColor: "rgb(0, 180, 0)"
+  ModListDisabledColor: "Red"
+  ModListPendingColor: "RoyalBlue"
+  ModPresetGeneralColor: "OrangeRed"
+  ModPresetSoundColor: "RoyalBlue"
+  ModPresetTexturesColor: "Green"
+  ModPresetAutoColor: "DimGray"
+  ModInstallBundledColor: "OrangeRed"
+  ModInstallSeparateColor: "#A424FF"
+  ModInstallSeparateFrozenColor: "Cyan"
+  ModInstallLooseColor: "#FF2BB1"
+  ModFrozenColor: "Cyan"
+  ModFreezePendingColor: "RoyalBlue"
+  ModListItemDisabledColor: "#666"
 
 # Content:
 Panel:
@@ -88,14 +107,14 @@ ColorSlider:
 Button:
   ForeColor: "black"
 
-# ComboBox, ImagedComboBox, NumericUpDown, Button, TextBox:
-#   BackColor: "#333"
-#   ForeColor: "white"
-#   FlatStyle: "Flat"
-#   BorderColor: "Silver"
-#   BorderSize: 1
-#   MouseDownBackColor: "#555"
-#   MouseOverBackColor: "#444"
+UserControlTweaks > ComboBox, UserControlTweaks > ImagedComboBox, UserControlTweaks > NumericUpDown, UserControlTweaks > Button, UserControlTweaks > TextBox:
+  BackColor: "#333"
+  ForeColor: "white"
+  FlatStyle: "Flat"
+  BorderColor: "Silver"
+  BorderSize: 1
+  MouseDownBackColor: "#555"
+  MouseOverBackColor: "#444"
 
 # Components:
 ToolTip, CustomToolTip:
@@ -150,3 +169,22 @@ Panel.panelNMProfile:
 
 Button.NexusModsActions:
   ForeColor: "white"
+
+
+# FormMods
+FormMods, FormMods > TextBox:
+# FormMods > ToolStrip, FormMods > ToolStripMenuItem, FormMods > ToolStripItem, FormMods > ToolStripSeparator, FormMods > MenuStrip, FormMods > StatusStrip
+  BackColor: "var(BackColor)"
+  ForeColor: "var(TextColor)"
+
+ObjectListView.*Mods:
+  HeaderUsesThemes: "false"
+  GridLines: "false"
+  ForeColor: "white"
+  BackColor: "rgb(34, 34, 34)"
+  AlternateRowBackColor: "rgb(40, 40, 40)"
+  UseAlternatingBackColors: "true"
+  HighlightBackgroundColor: "rgb(84, 84, 84)"
+  HighlightForegroundColor: "white"
+  UnfocusedHighlightBackgroundColor: "rgb(84, 84, 84)"
+  UnfocusedHighlightForegroundColor: "white"

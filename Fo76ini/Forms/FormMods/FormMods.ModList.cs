@@ -107,7 +107,7 @@ namespace Fo76ini
 
                 if (mod.IsDeploymentNecessary())
                 {
-                    this.InstallStatusColor = Color.Blue;
+                    this.InstallStatusColor = Theming.GetColor("ModListPendingColor", Color.Blue);
                     if (mod.Enabled && !mod.Deployed)
                     {
                         this.InstallStatus = Localization.GetString("modTablePendingInstallation");
@@ -128,7 +128,7 @@ namespace Fo76ini
                 else
                 {
                     this.InstallStatus = mod.Enabled ? Localization.GetString("enabled") : Localization.GetString("disabled");
-                    this.InstallStatusColor = mod.Enabled ? Color.Green : Color.Red;
+                    this.InstallStatusColor = mod.Enabled ? Theming.GetColor("ModListEnabledColor", Color.Green) : Theming.GetColor("ModListDisabledColor", Color.Red);
                     if (mod.Freeze && mod.Frozen)
                     {
                         this.InstallStatus += $" ({Localization.GetString("modTableFrozen")})";
@@ -151,21 +151,21 @@ namespace Fo76ini
                             if (isCompressed)
                             {
                                 installPreset = Localization.GetString("modsTablePresetGeneral"); // General
-                                this.ArchivePresetColor = Color.OrangeRed;
+                                this.ArchivePresetColor = Theming.GetColor("ModPresetGeneralColor", Color.OrangeRed);
                             }
                             else
                             {
                                 installPreset = Localization.GetString("modsTablePresetSoundFX"); // Sound FX
-                                this.ArchivePresetColor = Color.RoyalBlue;
+                                this.ArchivePresetColor = Theming.GetColor("ModPresetSoundColor", Color.RoyalBlue);
                             }
                             break;
                         case ManagedMod.ArchiveFormat.Textures:
                             installPreset = Localization.GetString("modsTablePresetTextures");    // Textures
-                            this.ArchivePresetColor = Color.DarkGreen;
+                            this.ArchivePresetColor = Theming.GetColor("ModPresetTexturesColor", Color.DarkGreen);
                             break;
                         case ManagedMod.ArchiveFormat.Auto:
                             installPreset = Localization.GetString("auto");                       // Auto-detect
-                            this.ArchivePresetColor = Color.DimGray;
+                            this.ArchivePresetColor = Theming.GetColor("ModPresetAutoColor", Color.DimGray);
                             break;
                         default:
                             installPreset = Localization.GetString("unknown");                    // Please select
@@ -175,7 +175,7 @@ namespace Fo76ini
                     if (mod.Compression == ManagedMod.ArchiveCompression.Auto)
                     {
                         installPreset = Localization.GetString("auto");                           // Auto-detect
-                        this.ArchivePresetColor = Color.DimGray;
+                        this.ArchivePresetColor = Theming.GetColor("ModPresetAutoColor", Color.DimGray);
                     }
 
                     this.ArchivePreset = installPreset;
@@ -189,7 +189,7 @@ namespace Fo76ini
                         this.InstallMethod = Localization.GetString("modsTableTypeBundled");
                         this.InstallInto = "\"Data\"";
                         this.ArchiveName = "Bundled*.ba2";
-                        this.InstallMethodColor = Color.OrangeRed;
+                        this.InstallMethodColor = Theming.GetColor("ModInstallBundledColor", Color.OrangeRed);
                         break;
                     case ManagedMod.DeploymentMethod.SeparateBA2:
                         this.InstallInfo = String.Format(Localization.GetString("modTableInstallInfoSeparateBA2"), $"\"Data\\{mod.ArchiveName}\"", $"\"{installPreset}\"");
@@ -200,24 +200,24 @@ namespace Fo76ini
                         {
                             this.IsFrozen = Localization.GetString("yes");
                             this.InstallMethod = Localization.GetString("modsTableTypeSeparateFrozen");
-                            this.AltFrozenColor = Color.DarkCyan;
+                            this.AltFrozenColor = Theming.GetColor("ModFrozenColor", Color.DarkCyan);
                         }
                         else if (mod.Freeze)
                         {
                             this.IsFrozen = Localization.GetString("modTableFrozenPending");
-                            this.AltFrozenColor = Color.Blue;
+                            this.AltFrozenColor = Theming.GetColor("ModFreezePendingColor", Color.Blue);
                         }
                         else
                         {
                             this.IsFrozen = Localization.GetString("no");
                         }
-                        this.InstallMethodColor = Color.Indigo;
+                        this.InstallMethodColor = Theming.GetColor("ModInstallSeparateColor", Color.OrangeRed);
                         break;
                     case ManagedMod.DeploymentMethod.LooseFiles:
                         this.InstallInfo = String.Format(Localization.GetString("modTableInstallInfoLooseFiles"), $"\"{mod.RootFolder}\"");
                         this.InstallMethod = Localization.GetString("modsTableTypeLoose");
                         this.InstallInto = $"\"{mod.RootFolder}\"";
-                        this.InstallMethodColor = Color.MediumVioletRed;
+                        this.InstallMethodColor = Theming.GetColor("ModInstallLooseColor", Color.MediumVioletRed);
                         break;
                 }
             }
@@ -242,7 +242,7 @@ namespace Fo76ini
             if (e.ColumnIndex == this.olvColumnModInfo.Index)
             {
                 if (row.IsUpdateAvailable && currentStyle == ModListStyle.Standard)
-                    e.SubItem.ForeColor = Color.Fuchsia;
+                    e.SubItem.ForeColor = Theming.GetColor("ModListUpdateAvailableColor", Color.Fuchsia);
                 else if (currentStyle == ModListStyle.Alternative)
                     e.SubItem.ForeColor = row.InstallStatusColor;
             }
@@ -264,12 +264,12 @@ namespace Fo76ini
             {
                 if (row.IsUpdateAvailable)
                 {
-                    e.SubItem.ForeColor = Color.Fuchsia;
+                    e.SubItem.ForeColor = Theming.GetColor("ModListUpdateAvailableColor", Color.Fuchsia);
                     e.SubItem.Font = new Font(this.objectListViewMods.Font, FontStyle.Bold);
                 }
                 else if (row.mod.RemoteInfo != null)
                 {
-                    e.SubItem.ForeColor = Color.Green;
+                    e.SubItem.ForeColor = Theming.GetColor("ModListLatestVersionColor", Color.Green);
                 }
             }
 
@@ -290,7 +290,7 @@ namespace Fo76ini
             {
                 if (row.mod.Method != ManagedMod.DeploymentMethod.LooseFiles)
                 {
-                    e.SubItem.ForeColor = Color.Silver;
+                    e.SubItem.ForeColor = Theming.GetColor("ModListItemDisabledColor", Color.Silver);
                     e.SubItem.Font = new Font(this.objectListViewMods.Font, FontStyle.Italic);
                 }
             }
@@ -300,7 +300,7 @@ namespace Fo76ini
             {
                 if (row.mod.Method != ManagedMod.DeploymentMethod.SeparateBA2)
                 {
-                    e.SubItem.ForeColor = Color.Silver;
+                    e.SubItem.ForeColor = Theming.GetColor("ModListItemDisabledColor", Color.Silver);
                     e.SubItem.Font = new Font(this.objectListViewMods.Font, FontStyle.Italic);
                 }
             }

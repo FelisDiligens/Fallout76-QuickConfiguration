@@ -154,6 +154,7 @@
     <Compile Include="Controls\ColorSlider\ColorSlider.designer.cs">
       <DependentUpon>ColorSlider.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CustomToolStripProfessionalRenderer.cs" />
     <Compile Include="Controls\CustomToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -163,7 +164,6 @@
     <Compile Include="Controls\ImagedComboBox\ImagedComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\LightToolStripColorTable.cs" />
     <Compile Include="Controls\StyledButton.cs">
       <SubType>Component</SubType>
     </Compile>

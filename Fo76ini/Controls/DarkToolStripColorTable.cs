@@ -12,11 +12,10 @@ namespace Fo76ini.Controls
     // https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.professionalcolortable?view=windowsdesktop-6.0
     public class DarkToolStripColorTable : ProfessionalColorTable
     {
-        public override Color ToolStripBorder => Color.FromArgb(0, 0, 0);
-        public override Color ToolStripDropDownBackground => Color.FromArgb(51, 51, 51);
-        public override Color ToolStripGradientBegin => Color.FromArgb(51, 51, 51);
-        public override Color ToolStripGradientEnd => Color.FromArgb(51, 51, 51);
-        public override Color ToolStripGradientMiddle => Color.FromArgb(51, 51, 51);
+        public override Color ToolStripBorder => Color.FromArgb(34, 34, 34);
+        public override Color ToolStripGradientBegin => Color.FromArgb(34, 34, 34);
+        public override Color ToolStripGradientEnd => Color.FromArgb(34, 34, 34);
+        public override Color ToolStripGradientMiddle => Color.FromArgb(34, 34, 34);
 
         /* Menu strip (top) */
         public override Color MenuBorder => Color.FromArgb(0, 0, 0);
@@ -39,6 +38,7 @@ namespace Fo76ini.Controls
         /* Drop-down items */
         public override Color MenuItemBorder => Color.FromArgb(85, 85, 85);
         public override Color MenuItemSelected => Color.FromArgb(85, 85, 85);
+        public override Color ToolStripDropDownBackground => Color.FromArgb(51, 51, 51);
 
         /* Drop-down items: the little square where the image is supposed to be */
         public override Color ImageMarginGradientBegin => Color.FromArgb(51, 51, 51);
@@ -56,5 +56,8 @@ namespace Fo76ini.Controls
         public override Color ButtonPressedGradientEnd => Color.FromArgb(102, 102, 102);
         public override Color ButtonPressedGradientMiddle => Color.FromArgb(102, 102, 102);
         public override Color ButtonPressedBorder => Color.FromArgb(102, 102, 102);
+
+        public override Color SeparatorDark => Color.FromArgb(64, 64, 64);
+        public override Color SeparatorLight => Color.FromArgb(128, 128, 128);
     }
 }
