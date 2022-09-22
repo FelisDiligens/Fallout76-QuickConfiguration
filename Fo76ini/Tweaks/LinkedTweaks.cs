@@ -58,16 +58,16 @@ namespace Fo76ini.Tweaks
                 switch (info.WarnLevel)
                 {
                     case WarnLevel.Notice:
-                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevelNotice", Color.Blue);
+                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevel.Notice", Color.Blue);
                         break;
                     case WarnLevel.Experimental:
-                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevelExperimental", Color.Fuchsia);
+                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevel.Experimental", Color.Fuchsia);
                         break;
                     case WarnLevel.Warning:
-                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevelWarning", Color.FromArgb(181, 124, 11));
+                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevel.Warning", Color.FromArgb(181, 124, 11));
                         break;
                     case WarnLevel.Unsafe:
-                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevelUnsafe", Color.Red);
+                        linkedControl.Control.ForeColor = Theming.GetColor("WarnLevel.Unsafe", Color.Red);
                         break;
                     /*default:
                         linkedControl.Control.ForeColor = Theming.GetColor("TextColor", Color.Black);

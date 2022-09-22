@@ -80,17 +80,14 @@ namespace Fo76ini
             Configuration.LoadWindowState("FormMods", this);
             Configuration.LoadListViewState("FormMods.OLV", this.objectListViewMods);
 
-            if (Theming.CurrentTheme == ThemeType.Dark)
-            {
-                this.menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-                this.menuStrip1.Renderer = new ToolStripProfessionalRenderer(new DarkToolStripColorTable());
+            this.menuStrip1.RenderMode = ToolStripRenderMode.Professional;
+            this.menuStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomToolStripColorTable());
 
-                this.toolStrip1.RenderMode = ToolStripRenderMode.Professional;
-                this.toolStrip1.Renderer = new CustomToolStripProfessionalRenderer(new DarkToolStripColorTable());
+            this.toolStrip1.RenderMode = ToolStripRenderMode.Professional;
+            this.toolStrip1.Renderer = new CustomToolStripProfessionalRenderer(new CustomToolStripColorTable());
 
-                this.statusStrip1.RenderMode = ToolStripRenderMode.Professional;
-                this.statusStrip1.Renderer = new CustomToolStripProfessionalRenderer(new DarkToolStripColorTable());
-            }
+            this.statusStrip1.RenderMode = ToolStripRenderMode.Professional;
+            this.statusStrip1.Renderer = new CustomToolStripProfessionalRenderer(new CustomToolStripColorTable());
         }
 
         private void FormMods_FormClosing(object sender, FormClosingEventArgs e)

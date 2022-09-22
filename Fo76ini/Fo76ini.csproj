@@ -158,7 +158,7 @@
     <Compile Include="Controls\CustomToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\DarkToolStripColorTable.cs" />
+    <Compile Include="Controls\CustomToolStripColorTable.cs" />
     <Compile Include="Controls\ImagedComboBox\ComboBoxItem.cs" />
     <Compile Include="Controls\ImagedComboBox\ComboCollection.cs" />
     <Compile Include="Controls\ImagedComboBox\ImagedComboBox.cs">

@@ -3,35 +3,80 @@ META:
   Name: Dark
   Author: FelisDiligens
   Version: v1.12.0
+
 VARS:
   TextColor: white
   BackColor: "#222"
 
-  VersionLatestColor: "rgb(50, 255, 50)"
-  VersionOldColor: "Red"
-  VersionUnknownColor: "Silver"
+  # Home - App Version colors:
+  Version.LatestColor: "rgb(50, 255, 50)"
+  Version.OldColor: "Red"
+  Version.UnknownColor: "Silver"
 
-  WarnLevelNotice: "RoyalBlue"
-  WarnLevelExperimental: "Fuchsia"
-  WarnLevelWarning: "rgb(181, 124, 11)"
-  WarnLevelUnsafe: "OrangeRed"
+  # Tweak colors:
+  WarnLevel.Notice: "RoyalBlue"
+  WarnLevel.Experimental: "Fuchsia"
+  WarnLevel.Warning: "rgb(181, 124, 11)"
+  WarnLevel.Unsafe: "OrangeRed"
 
-  ModListUpdateAvailableColor: "Fuchsia"
-  ModListLatestVersionColor: "Green"
-  ModListEnabledColor: "rgb(0, 180, 0)"
-  ModListDisabledColor: "Red"
-  ModListPendingColor: "RoyalBlue"
-  ModPresetGeneralColor: "OrangeRed"
-  ModPresetSoundColor: "RoyalBlue"
-  ModPresetTexturesColor: "Green"
-  ModPresetAutoColor: "DimGray"
-  ModInstallBundledColor: "OrangeRed"
-  ModInstallSeparateColor: "#A424FF"
-  ModInstallSeparateFrozenColor: "Cyan"
-  ModInstallLooseColor: "#FF2BB1"
-  ModFrozenColor: "Cyan"
-  ModFreezePendingColor: "RoyalBlue"
-  ModListItemDisabledColor: "#666"
+  # Mod list colors:
+  Mod.ListUpdateAvailableColor: "Fuchsia"
+  Mod.ListLatestVersionColor: "Green"
+  Mod.ListEnabledColor: "rgb(0, 180, 0)"
+  Mod.ListDisabledColor: "Red"
+  Mod.ListPendingColor: "RoyalBlue"
+  Mod.PresetGeneralColor: "OrangeRed"
+  Mod.PresetSoundColor: "RoyalBlue"
+  Mod.PresetTexturesColor: "Green"
+  Mod.PresetAutoColor: "DimGray"
+  Mod.InstallBundledColor: "OrangeRed"
+  Mod.InstallSeparateColor: "#A424FF"
+  Mod.InstallSeparateFrozenColor: "Cyan"
+  Mod.InstallLooseColor: "#FF2BB1"
+  Mod.FrozenColor: "Cyan"
+  Mod.FreezePendingColor: "RoyalBlue"
+  Mod.ListItemDisabledColor: "#666"
+
+  #
+  # Tool strip, menu strip, status strip, and their (sub)items:
+  #
+
+  # Tool strip:
+  ProfessionalColorTable.ToolStripBorder: "rgb(34, 34, 34)"
+  ProfessionalColorTable.ToolStrip: "rgb(34, 34, 34)"
+
+  # Menu strip (top):
+  ProfessionalColorTable.MenuBorder: "rgb(0, 0, 0)"
+  ProfessionalColorTable.MenuStrip: "rgb(34, 34, 34)"
+  
+  # Status strip (bottom):
+  ProfessionalColorTable.StatusStrip: "rgb(34, 34, 34)"
+  
+  # Top-level menu strip items - hovered:
+  ProfessionalColorTable.MenuTopItemSelected: "rgb(51, 51, 51)"
+
+  # Top-level menu strip items - pressed:
+  ProfessionalColorTable.MenuTopItemPressed: "rgb(51, 51, 51)"
+  
+  # Drop-down items:
+  ProfessionalColorTable.MenuItemBorder: "rgb(85, 85, 85)"
+  ProfessionalColorTable.MenuItemSelected: "rgb(85, 85, 85)"
+  ProfessionalColorTable.ToolStripDropDownBackground: "rgb(51, 51, 51)"
+
+  # Drop-down items: the little square where the image is supposed to be
+  ProfessionalColorTable.ImageMargin: "rgb(51, 51, 51)"
+
+  # Tool strip button - hovered:
+  ProfessionalColorTable.ButtonSelected: "rgb(85, 85, 85)"
+  ProfessionalColorTable.ButtonSelectedBorder: "rgb(85, 85, 85)"
+
+  # Tool strip button - pressed:
+  ProfessionalColorTable.ButtonPressed: "rgb(102, 102, 102)"
+  ProfessionalColorTable.ButtonPressedBorder: "rgb(102, 102, 102)"
+
+  # Separator:
+  ProfessionalColorTable.SeparatorDark: "rgb(64, 64, 64)"
+  ProfessionalColorTable.SeparatorLight: "rgb(128, 128, 128)"
 
 # Content:
 Panel:

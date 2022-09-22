@@ -90,7 +90,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
                 return;
             }
 
-            this.labelConfigVersion.ForeColor = Theming.GetColor("VersionUnknownColor", Color.Gray);
+            this.labelConfigVersion.ForeColor = Theming.GetColor("Version.UnknownColor", Color.Gray);
             this.pictureBoxSpinnerCheckForUpdates.Visible = true;
 
             // Checking version in background:
@@ -119,13 +119,13 @@ namespace Fo76ini.Forms.FormMain.Tabs
                 panelUpdate.Visible = true;
                 labelNewVersion.Text = string.Format(Localization.GetString("newVersionAvailable"), Shared.LatestVersion);
                 //labelNewVersion.ForeColor = Color.Crimson;
-                this.labelConfigVersion.ForeColor = Theming.GetColor("VersionOldColor", Color.Red);
+                this.labelConfigVersion.ForeColor = Theming.GetColor("Version.OldColor", Color.Red);
             }
             else
             {
                 // All good, latest version:
                 panelUpdate.Visible = false;
-                this.labelConfigVersion.ForeColor = Theming.GetColor("VersionLatestColor", Color.DarkGreen);
+                this.labelConfigVersion.ForeColor = Theming.GetColor("Version.LatestColor", Color.DarkGreen);
             }
         }
 
