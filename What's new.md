@@ -2,9 +2,14 @@
 
 Hello everyone,
 
-this update adds two themes to the tool: light and dark.
+this update adds two themes to the tool: light and dark.  
+By default, it uses your system settings, but you can also manually select which theme you want to use.  
+The dark mode isn't perfect and there were some elements I couldn't or didn't change.
 
 I hope your eyes are now soothed with the dark mode. :)
+
+Happy hunting,
+~ FelisDiligens
 
 **Changelog:**
 <details>
@@ -17,13 +22,13 @@ I hope your eyes are now soothed with the dark mode. :)
   - (added YAML parser "YamlDotNet" as a dependency)
 - Bug fixes / Minor changes:
   - Fixed archives of removed mods not getting deleted, which resulted in junk *.ba2 files in the Data folder.
-  - Frozen mods still get deployed even if the mod folder is empty.
-  - Some tool tips weren't translatable.
+  - Fixed: Frozen mods now get deployed even if the mod folder is empty.
+  - Fixed: Some tool tips weren't translatable.
   - Added NukaCrypt and Map76 web links.
 
 </details>
 
-*Released: tbd*
+*Released: Sep 25, 2022*
 
 ---
 
