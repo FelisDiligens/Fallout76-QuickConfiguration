@@ -8,7 +8,7 @@ The dark mode isn't perfect and there were some elements I couldn't or didn't ch
 
 I hope your eyes are now soothed with the dark mode. :)
 
-Happy hunting,
+Happy hunting,  
 ~ FelisDiligens
 
 **Changelog:**
