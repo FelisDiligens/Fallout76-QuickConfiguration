@@ -2,3 +2,4 @@ de-DE
 ru-RU
 zh-CN
 ja-JP
+it-IT

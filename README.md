@@ -112,6 +112,7 @@ Otherwise the .NET installer might fail or the tool might not start.
 
 ### Translators:
 * Russian by [Sondju](https://forums.nexusmods.com/index.php?/user/6969601-sondju/)
+* Italian by [Roger08](https://forums.nexusmods.com/index.php?/user/39134360-roger08/)
 * Simplified Chinese
   * for v1.11.4 (latest translation) by [SugarBombsRADS (BulaLuka)](https://forums.nexusmods.com/index.php?/user/90175763-bulaluka/)
   * for v1.9.5 by [ColaNaramon (可乐の魂)](https://forums.nexusmods.com/index.php?/user/91571998-colanaramon/)
