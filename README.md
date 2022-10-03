@@ -112,19 +112,20 @@ Otherwise the .NET installer might fail or the tool might not start.
 
 ### Translators:
 * Russian by [Sondju](https://forums.nexusmods.com/index.php?/user/6969601-sondju/)
-* Italian by [Roger08](https://forums.nexusmods.com/index.php?/user/39134360-roger08/)
-* Simplified Chinese
-  * for v1.11.4 (latest translation) by [SugarBombsRADS (BulaLuka)](https://forums.nexusmods.com/index.php?/user/90175763-bulaluka/)
-  * for v1.9.5 by [ColaNaramon (可乐の魂)](https://forums.nexusmods.com/index.php?/user/91571998-colanaramon/)
-  * for v1.8.2 by [micus2048](https://www.nexusmods.com/users/97619783)
+* Italian for v1.12 by [Roger08](https://forums.nexusmods.com/index.php?/user/39134360-roger08/)
+* Japanese for v1.11.3 by [Akamiso0123 (yuutarionn)](https://forums.nexusmods.com/index.php?/user/6598456-yuutarionn/)
+* Chinese for v1.11.4 by [SugarBombsRADS (BulaLuka)](https://forums.nexusmods.com/index.php?/user/90175763-bulaluka/)
+
+#### Outdated translations:
+* Swedish for v1.5.2 by [Pforga](https://forums.nexusmods.com/index.php?/user/634766-pforga/)
+* French for v1.6.2 by Christophe Noret (aka. [kr1ss](https://www.nexusmods.com/fallout76/users/22658164)) and [3z3k3yl](https://forums.nexusmods.com/index.php?/user/26975924-3z3k3yl/)
+* Brazilian Portuguese for v1.8.4h1 by [Oruam](https://forums.nexusmods.com/index.php?/user/2944752-oruam/)
+* Japanese for v1.9.0h2 by [haiji951753](https://forums.nexusmods.com/index.php?/user/59398041-haiji951753/)
+* Polish for v1.9.2 by [Gray770](https://forums.nexusmods.com/index.php?/user/91201958-gray770/)
+* Chinese
   * for v1.6.2 by [Broodahood](https://forums.nexusmods.com/index.php?/user/68821693-broodahood/)
-* Japanese
-  * for v1.11.3 (latest translation) by [Akamiso0123 (yuutarionn)](https://forums.nexusmods.com/index.php?/user/6598456-yuutarionn/)
-  * for v1.9.0h2 by [haiji951753](https://forums.nexusmods.com/index.php?/user/59398041-haiji951753/)
-* French by Christophe Noret (aka. [kr1ss](https://www.nexusmods.com/fallout76/users/22658164)) and [3z3k3yl](https://forums.nexusmods.com/index.php?/user/26975924-3z3k3yl/)
-* Polish by [Gray770](https://forums.nexusmods.com/index.php?/user/91201958-gray770/)
-* Swedish by [Pforga](https://forums.nexusmods.com/index.php?/user/634766-pforga/)
-* Brazilian Portuguese by [Oruam](https://forums.nexusmods.com/index.php?/user/2944752-oruam/)
+  * for v1.8.2 by [micus2048](https://www.nexusmods.com/users/97619783)
+  * for v1.9.5 by [ColaNaramon (可乐の魂)](https://forums.nexusmods.com/index.php?/user/91571998-colanaramon/)
 
 ## License
 > © [MIT](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/blob/master/LICENSE)
