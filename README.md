@@ -113,6 +113,7 @@ Otherwise the .NET installer might fail or the tool might not start.
 ### Translators:
 * Russian by [Sondju](https://forums.nexusmods.com/index.php?/user/6969601-sondju/)
 * Italian for v1.12 by [Roger08](https://forums.nexusmods.com/index.php?/user/39134360-roger08/)
+* Spanish for v1.12 by [Yllelder](https://forums.nexusmods.com/index.php?/user/2229355-yllelder/)
 * Japanese for v1.11.3 by [Akamiso0123 (yuutarionn)](https://forums.nexusmods.com/index.php?/user/6598456-yuutarionn/)
 * Chinese for v1.11.4 by [SugarBombsRADS (BulaLuka)](https://forums.nexusmods.com/index.php?/user/90175763-bulaluka/)
 
