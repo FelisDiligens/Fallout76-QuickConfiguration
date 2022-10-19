@@ -35,10 +35,10 @@
 
 <br>
 
-## Screenshots
+## 📸 Screenshots
 [![Screenshots](./Images/screenshots.png)](https://www.nexusmods.com/fallout76/mods/546?tab=images#list-modimages-1)
 
-## Features
+## ✨ Features
 ### *.ini tweaks
 - Change display, graphics, volume, audio, interface, and voice chat settings.
 - Disable VSync (frame rate cap).
@@ -57,7 +57,7 @@
 ### Gallery
 - Access all your screenshots and photos from the gallery.
 
-## Requirements
+## 💡 Requirements
 This program is running on .NET Framework 4.7.2\
 It should be **preinstalled on Windows 10.**\
 If you can't start the tool, you may have to install it manually: [.NET Framework 4.7.2 web installer](https://dotnet.microsoft.com/download/dotnet-framework/net472)
@@ -68,18 +68,18 @@ This **might** be preinstalled on your system as well. If your mods aren't deplo
 If you're still on Windows 7, make sure that you have Service Pack 1 and all updates installed.\
 Otherwise the .NET installer might fail or the tool might not start.
 
-## Installation
+## ⚙️ Installation
 1. [Download](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/releases/latest) and unzip.
 2. Run and set the game edition and path in the Welcome screen.
 3. Tweak to your heart's content.
 4. Don't forget to hit "Apply".
 
-## Wikis & Guides
+## 📚 Wikis & Guides
 * [Frequently Asked Questions](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Frequently-Asked-Questions-(FAQ))
 * [Troubleshooting](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting)
 * [Mod Manager Guide](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Mod-Manager-Guide)
 
-## Kudos
+## ❤️ Kudos
 ### These were/are valuable resources:
 * [Bilago's Configuraton Tool](https://www.nexusmods.com/fallout76/mods/38)
 * [Cloudy01's Mod Manager](https://www.nexusmods.com/fallout76/mods/221)
@@ -110,7 +110,7 @@ Otherwise the .NET installer might fail or the tool might not start.
 * [Deadmano](https://www.nexusmods.com/users/1838494): QoL improvement ideas and "bSteamEnabled=0" tweak.
 * [Pacoboyd](https://www.nexusmods.com/fallout76/users/27163): Advice, ideas, and "bAutoSignin=1" tweak. 
 
-### Translators:
+### 🌍 Translators:
 * Russian by [Sondju](https://forums.nexusmods.com/index.php?/user/6969601-sondju/)
 * Italian for v1.12 by [Roger08](https://forums.nexusmods.com/index.php?/user/39134360-roger08/)
 * Spanish for v1.12 by [Yllelder](https://forums.nexusmods.com/index.php?/user/2229355-yllelder/)
@@ -128,5 +128,5 @@ Otherwise the .NET installer might fail or the tool might not start.
   * for v1.8.2 by [micus2048](https://www.nexusmods.com/users/97619783)
   * for v1.9.5 by [ColaNaramon (可乐の魂)](https://forums.nexusmods.com/index.php?/user/91571998-colanaramon/)
 
-## License
+## 📌 License
 > © [MIT](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/blob/master/LICENSE)
