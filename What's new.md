@@ -1,3 +1,20 @@
+### What's new in v1.12.1?
+
+This is just a small update that adds two messageboxes to the tool.
+
+**Changelog:**
+<details>
+<summary>Click to expand</summary>
+
+- Added missing messagebox "customIniFilesParsingError"
+- The tool now displays a warning if the user enabled DPI scaling.
+
+</details>
+
+*Released: tbd*
+
+---
+
 ### What’s new in v1.12.0? - The dark mode update
 
 Hello everyone,
