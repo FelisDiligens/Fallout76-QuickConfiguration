@@ -106,8 +106,8 @@ namespace Fo76ini
             MsgBox.Add("dpiScalingWarning",
                 "Window scaling enabled",
                 "It seems like you enabled window scaling by {0}% for this program.\n" +
-                "Please note that this breaks the user interface and might cause weird behavior.\n" +
-                "See the FAQ/Troubleshooting section for more info.");
+                "Please note that this might break the user interface and/or might cause weird behavior.\n" +
+                "If you experience any issues, see the FAQ/Troubleshooting section for more information.");
 
             MsgBox.Add("changesApplied",
                 "Changes applied",

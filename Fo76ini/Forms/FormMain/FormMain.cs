@@ -166,8 +166,18 @@ namespace Fo76ini
             if (args.Length > 1 && args[1].StartsWith("nxm://"))
                 this.formMods.OpenUI();
 
-            if (Utils.GetScalingFactor() > 1.0f || Utils.GetScalingFactor() < 1.0f)
+            // If DPI scaling is enabled, show a warning once:
+            bool bDPIWarningShown = IniFiles.Config.GetBool("Preferences", "bDPIWarningShown", false);
+            float scalingFactor = Utils.GetScalingFactor();
+            if (!bDPIWarningShown && (scalingFactor > 1.0f || scalingFactor < 1.0f))
+            {
                 MsgBox.Get("dpiScalingWarning").FormatText((Utils.GetScalingFactor() * 100).ToString()).Show(MessageBoxIcon.Warning);
+                IniFiles.Config.Set("Preferences", "bDPIWarningShown", true);
+            }
+            else
+            {
+                IniFiles.Config.Set("Preferences", "bDPIWarningShown", false);
+            }
         }
 
         public void OnLanguageChanged(object sender, TranslationEventArgs e)
