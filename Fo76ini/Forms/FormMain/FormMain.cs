@@ -165,6 +165,9 @@ namespace Fo76ini
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1 && args[1].StartsWith("nxm://"))
                 this.formMods.OpenUI();
+
+            if (Utils.GetScalingFactor() > 1.0f || Utils.GetScalingFactor() < 1.0f)
+                MsgBox.Get("dpiScalingWarning").FormatText((Utils.GetScalingFactor() * 100).ToString()).Show(MessageBoxIcon.Warning);
         }
 
         public void OnLanguageChanged(object sender, TranslationEventArgs e)

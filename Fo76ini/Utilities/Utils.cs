@@ -462,6 +462,64 @@ namespace Fo76ini.Utilities
             return new Size(vDevMode.dmPelsWidth, vDevMode.dmPelsHeight);
         }
 
+        [DllImport("gdi32.dll")]
+        static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
+        public enum DeviceCap
+        {
+            // http://pinvoke.net/default.aspx/gdi32/GetDeviceCaps.html
+
+            /// <summary>
+            /// Horizontal width in pixels
+            /// </summary>
+            HORZRES = 8,
+            /// <summary>
+            /// Vertical height in pixels
+            /// </summary>
+            VERTRES = 10,
+            /// <summary>
+            /// Scaling factor x
+            /// </summary>
+            SCALINGFACTORX = 114,
+            /// <summary>
+            /// Logical pixels inch in X
+            /// </summary>
+            LOGPIXELSX = 88,
+            /// <summary>
+            /// Logical pixels inch in Y
+            /// </summary>
+            LOGPIXELSY = 90,
+            /// <summary>
+            /// Scaling factor y
+            /// </summary>
+            SCALINGFACTORY = 115,
+            /// <summary>
+            /// Vertical height of entire desktop in pixels
+            /// </summary>
+            DESKTOPVERTRES = 117,
+            /// <summary>
+            /// Horizontal width of entire desktop in pixels
+            /// </summary>
+            DESKTOPHORZRES = 118,
+        }
+
+        public static float GetScalingFactor()
+        {
+            // https://stackoverflow.com/a/21450169
+            // https://learn.microsoft.com/en-us/answers/questions/537382/how-to-get-windows-10-display-scaling-value-using.html
+            // https://learn.microsoft.com/en-us/windows/win32/learnwin32/dpi-and-device-independent-pixels
+
+            Graphics g = Graphics.FromHwnd(IntPtr.Zero);
+            IntPtr desktop = g.GetHdc();
+            int dpi = GetDeviceCaps(desktop, (int)DeviceCap.LOGPIXELSX);
+
+            return (float)dpi / 96f;
+        }
+
+        /*public static int GetWindowScaling()
+        {
+            return (int)(100 * Screen.PrimaryScreen.Bounds.Width / System.Windows.SystemParameters.PrimaryScreenWidth);
+        }*/
+
 
 
         public static float ToFloat(string num)

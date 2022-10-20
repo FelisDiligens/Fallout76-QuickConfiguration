@@ -103,6 +103,12 @@ namespace Fo76ini
                 "At least one of the custom *.ini files is corrupted or contains a syntax error.\n" +
                 "Please go to the 'Custom tweaks' tab and check for any errors. See the wiki article for help.");
 
+            MsgBox.Add("dpiScalingWarning",
+                "Window scaling enabled",
+                "It seems like you enabled window scaling by {0}% for this program.\n" +
+                "Please note that this breaks the user interface and might cause weird behavior.\n" +
+                "See the FAQ/Troubleshooting section for more info.");
+
             MsgBox.Add("changesApplied",
                 "Changes applied",
                 "Changes have been applied. You may start the game now."
