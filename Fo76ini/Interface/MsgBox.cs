@@ -75,7 +75,7 @@ namespace Fo76ini.Interface
             if (MsgBox.msgBoxes.ContainsKey(key))
                 return MsgBox.msgBoxes[key];
             else
-                return new MsgBox("notfound", $"-- Messagebox \"{key}\" not found --", "If you read this, the programmer screwed up."); // $"\nAvailable messageboxes:\n{string.Join("\n", MsgBox.msgBoxes.Keys.ToArray())}"
+                return new MsgBox("notfound", $"-- Messagebox \"{key}\" not found --", $"Couldn't find the messagebox with the id \"{key}\".\nIf you read this, the programmer forgot to add it."); // $"\nAvailable messageboxes:\n{string.Join("\n", MsgBox.msgBoxes.Keys.ToArray())}"
         }
 
         public MsgBox FormatTitle(params string[] values)

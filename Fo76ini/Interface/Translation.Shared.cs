@@ -98,6 +98,11 @@ namespace Fo76ini
                 "{0}"
             );*/
 
+            MsgBox.Add("customIniFilesParsingError",
+                "Couldn't parse custom *.ini files",
+                "At least one of the custom *.ini files is corrupted or contains a syntax error.\n" +
+                "Please go to the 'Custom tweaks' tab and check for any errors. See the wiki article for help.");
+
             MsgBox.Add("changesApplied",
                 "Changes applied",
                 "Changes have been applied. You may start the game now."
