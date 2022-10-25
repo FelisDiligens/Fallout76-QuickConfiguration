@@ -6,9 +6,9 @@
 #define MyAppURL "https://www.nexusmods.com/fallout76/mods/546"
 #define MyAppExeName "Fo76ini.exe"
 
-#define ProjectVersion "1.12.0"
-#define ProjectGitDir "D:\Workspace\Fallout 76 Quick Configuration\Fallout76-QuickConfiguration"
-#define ProjectPackTargetDir "D:\Workspace\Fallout 76 Quick Configuration\Files\Main Files"
+#define ProjectVersion "1.12.1"
+#define ProjectGitDir "D:\Workspace\Fallout76-QuickConfiguration"
+#define ProjectPackTargetDir "D:\Workspace\Files\Main Files"
 
 #define AppConfigDir "{localappdata}\Fallout 76 Quick Configuration"
 #define INIBackupDir "{userdocs}\My Games\Fallout 76\Backups"

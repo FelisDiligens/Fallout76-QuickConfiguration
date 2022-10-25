@@ -5,8 +5,8 @@ import subprocess, shlex
 # DeprecationWarning: The distutils package is deprecated and slated for removal in Python 3.12. Use setuptools or check PEP 632 for potential alternatives
 init()
 
-PROJECT_GIT_DIR  = "D:\\Workspace\\Fallout 76 Quick Configuration\\Fallout76-QuickConfiguration\\"
-PACK_TARGET_DIR  = "D:\\Workspace\\Fallout 76 Quick Configuration\\Files\\Main Files\\"
+PROJECT_GIT_DIR  = "D:\\Workspace\\Fallout76-QuickConfiguration\\"
+PACK_TARGET_DIR  = "D:\\Workspace\\Files\\Main Files\\"
 
 SEVENZIP_PATH    = "D:\\Portable\\7z\\7z.exe"
 RCEDIT_PATH      = "D:\\Portable\\rcedit-x64.exe"

@@ -1,17 +1,29 @@
-### What's new in v1.12.1?
+### What's new in v1.12.1? - Hotfix
 
-This is just a small update that adds two messageboxes to the tool.
+Hello everyone!
+
+I'm sorry for the inconvenience, the tool shouldn't crash now.  
+Sadly, the server status might not work for now. I'll look at it soon.
+
+This update also fixes a few other bugs, see changelog.
+
+
+Happy hunting,
+
+~ FelisDiligens
 
 **Changelog:**
 <details>
 <summary>Click to expand</summary>
 
+- Fixed a bug where an HTML response (instead of a JSON response) from Bethesda's servers would crash the tool.
 - Added missing messagebox "customIniFilesParsingError"
 - The tool now displays a warning if the user enabled DPI scaling.
+- Saves the config.ini directly after logging in to NexusMods, hopefully retaining the login information between restarts now.
 
 </details>
 
-*Released: tbd*
+*Released: Oct 25, 2022*
 
 ---
 
