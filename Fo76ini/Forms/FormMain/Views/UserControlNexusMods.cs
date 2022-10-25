@@ -326,6 +326,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
         private void backgroundWorkerRetrieveProfileInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             RefreshNMUI();
+            IniFiles.Config.Save();
         }
 
         private void backgroundWorkerSSOLogin_DoWork(object sender, DoWorkEventArgs e)
