@@ -269,17 +269,28 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
             if (request.Success && request.StatusCode == HttpStatusCode.OK)
             {
-                // Scrap for Fallout 76 Status:
-                JObject responseJSON = request.GetJObject();
-                JArray components = (JArray)responseJSON["components"];
-                foreach (JObject component in components)
+                try
                 {
-                    string id = component["id"].ToObject<string>();
-                    string name = component["name"].ToObject<string>();
-                    string status = component["status"].ToObject<string>();
+                    // Scrap for Fallout 76 Status:
+                    JObject responseJSON = request.GetJObject();
+                    JArray components = (JArray)responseJSON["components"];
+                    foreach (JObject component in components)
+                    {
+                        string id = component["id"].ToObject<string>();
+                        string name = component["name"].ToObject<string>();
+                        string status = component["status"].ToObject<string>();
 
-                    if (id == "m39k311rzvkg" || name == "Fallout 76")
-                        f76Status = status;
+                        if (id == "m39k311rzvkg" || name == "Fallout 76")
+                            f76Status = status;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonReaderException)
+                {
+                    f76Status = $"Error: Couldn't parse server response";
+                }
+                catch (Exception e)
+                {
+                    f76Status = $"Unknown error: {e.Message}";
                 }
             }
             else
