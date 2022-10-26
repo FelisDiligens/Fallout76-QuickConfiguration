@@ -369,18 +369,25 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
             if (request.Success && request.StatusCode == HttpStatusCode.OK)
             {
-                JObject responseJSON = request.GetJObject();
-                JObject statusKeys = (JObject)responseJSON["statusKey"];
+                try
+                {
+                    JObject responseJSON = request.GetJObject();
+                    JObject statusKeys = (JObject)responseJSON["statusKey"];
 
-                // If translation does not exist, the server returns an empty JSON object {}
-                // In this situation, fallback to English:
-                if (statusKeys == null)
-                    return GetLocalizedServerStatus("en", statusKey);
+                    // If translation does not exist, the server returns an empty JSON object {}
+                    // In this situation, fallback to English:
+                    if (statusKeys == null)
+                        return GetLocalizedServerStatus("en", statusKey);
 
-                if (statusKeys[statusKey] != null)
-                    return statusKeys[statusKey].ToObject<string>();
+                    if (statusKeys[statusKey] != null)
+                        return statusKeys[statusKey].ToObject<string>();
 
-                return statusKey;
+                    return statusKey;
+                }
+                catch (Exception) // Newtonsoft.Json.JsonReaderException
+                {
+                    return statusKey;
+                }
             }
 
             return statusKey;
