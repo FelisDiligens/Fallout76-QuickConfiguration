@@ -1,3 +1,11 @@
+### What's new in v1.12.2?
+
+Fixed the server status.
+
+*Released: Oct 26, 2022*
+
+---
+
 ### What's new in v1.12.1? - Hotfix
 
 Hello everyone!

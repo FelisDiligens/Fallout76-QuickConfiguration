@@ -6,7 +6,7 @@
 #define MyAppURL "https://www.nexusmods.com/fallout76/mods/546"
 #define MyAppExeName "Fo76ini.exe"
 
-#define ProjectVersion "1.12.1"
+#define ProjectVersion "1.12.2"
 #define ProjectGitDir "D:\Workspace\Fallout76-QuickConfiguration"
 #define ProjectPackTargetDir "D:\Workspace\Files\Main Files"
 
