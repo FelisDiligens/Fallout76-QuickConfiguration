@@ -264,7 +264,8 @@ namespace Fo76ini.Forms.FormMain.Tabs
             string f76Status = "unknown";
 
             // Send request:
-            APIRequest request = new APIRequest("https://bethesda.net/en/status/api/statuses");
+            // Previous URL: https://bethesda.net/en/status/api/statuses
+            APIRequest request = new APIRequest("https://status.bethesda.net/en/status/api/statuses");
             request.Execute();
 
             if (request.Success && request.StatusCode == HttpStatusCode.OK)
