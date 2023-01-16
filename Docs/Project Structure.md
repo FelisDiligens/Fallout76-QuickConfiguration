@@ -16,16 +16,18 @@ Here's an overview:
 
 ```
 📁 .
-├── 📁 Docs              ⇨ Documentation
+├── 📁 Docs                    ⇨ Documentation
 │
-├── 📁 Additional files  ⇨ Additional files that need to be copied to the bin folder.
-├── 📁 Fo76ini           ⇨ Main solution
-├── 📁 Fo76ini_Updater   ⇨ Solution for the auto-updater
-├── 📁 ObjectListView    ⇨ Solution that extends the built-in ListView control. Used in the Mod Manager.
+├── 📁 Additional files        ⇨ Additional files that need to be copied to the bin folder.
+├── 📁 Fo76ini
+│   └── 📝 Fo76ini.sln         ⇨ Main solution. Open this.
+├── 📁 Fo76ini_Updater
+│   └── 📝 Fo76ini_Updater.sln ⇨ Solution for the auto-updater.
+├── 📁 ObjectListView          ⇨ Extends the built-in ListView control. Used in the Mod Manager.
 │
-├── 📝 VERSION           ⇨ Contains the current version.
-├── 📝 What's new.md     ⇨ What's new? - Changelogs, etc.
-├── 🐍 pack_tool.py      ⇨ Python script that is used to prepare and pack the release.
+├── 📝 VERSION                 ⇨ Contains the current version.
+├── 📝 What's new.md           ⇨ What's new? - Changelogs, etc.
+├── 🐍 pack_tool.py            ⇨ Python script that is used to prepare and pack the release.
 └── ...
 ```
 
@@ -33,35 +35,35 @@ Here's an overview:
 
 ```
 📁 ./Fo76ini
-├── 📁 Controls          ⇨ Holds custom UserControls
-├── 📁 Forms             ⇨ Holds Forms and UserControls used in a specific Form
-│   ├── 📁 FormMain      ⇨ The main form
-│   │   └── 📁 Views     ⇨ All the views of the main form
-│   ├── 📁 FormMods      ⇨ The "Mod Manager" form
-│   ├── 📁 FormWelcome   ⇨ Form that opens when the tool is launched for the first time.
-│   ├── 📁 FormExcept... ⇨ Opened when an unhandled exception occures.
-│   ├── 📁 FormIniError  ⇨ Opened when the *.ini files can't be parsed.
+├── 📁 Controls                ⇨ Holds custom UserControls
+├── 📁 Forms                   ⇨ Holds Forms and UserControls used in a specific Form
+│   ├── 📁 FormMain            ⇨ The main form
+│   │   └── 📁 Views           ⇨ All the views of the main form
+│   ├── 📁 FormMods            ⇨ The "Mod Manager" form
+│   ├── 📁 FormWelcome         ⇨ Form that opens when the tool is launched for the first time.
+│   ├── 📁 FormExceptionDialog ⇨ Opened when an unhandled exception occures.
+│   ├── 📁 FormIniError        ⇨ Opened when the *.ini files can't be parsed.
 │   │
-│   ├── 📁 FormProfiles  ⇨ Unused.
-│   ├── 📁 FormSettings  ⇨ Unused.
-│   ├── 📁 FormWhatsNew  ⇨ Unused.
-│   └── 📁 FormTextP...  ⇨ Custom messageboxes, unused.
+│   ├── 📁 FormProfiles        ⇨ Unused.
+│   ├── 📁 FormSettings        ⇨ Unused.
+│   ├── 📁 FormWhatsNew        ⇨ Unused.
+│   └── 📁 FormTextPrompt      ⇨ Custom messageboxes, unused.
 │
-├── 📁 Ini               ⇨ Ini parsing and handling (load, change, save, etc.)
-├── 📁 Interface         ⇨ Translation, theming, and other interface related code
-├── 📁 Mods              ⇨ Loading, saving, and manipulating mods.
-├── 📁 NexusAPI          ⇨ Accessing the NexusMods API and storing data.
-├── 📁 Profiles          ⇨ Loading, saving, and editing profiles.
-├── 📁 Properties        ⇨ Project settings and resources.resx
-├── 📁 Resources         ⇨ Contains images, icons, fonts, text (html/rtf), etc.
-├── 📁 Tweaks            ⇨ *.ini tweaks (=game settings) sorted into subdirectories
-├── 📁 Utilities         ⇨ Any class that can be used everywhere and doesn't have it's own place.
-├── 📁 languages         ⇨ Translations that are downloaded by the tool through GitHub.
+├── 📁 Ini                     ⇨ Ini parsing and handling (load, change, save, etc.)
+├── 📁 Interface               ⇨ Translation, theming, and other interface related code
+├── 📁 Mods                    ⇨ Loading, saving, and manipulating mods.
+├── 📁 NexusAPI                ⇨ Accessing the NexusMods API and storing data.
+├── 📁 Profiles                ⇨ Loading, saving, and editing profiles.
+├── 📁 Properties              ⇨ Project settings and resources.resx
+├── 📁 Resources               ⇨ Contains images, icons, fonts, text (html/rtf), etc.
+├── 📁 Tweaks                  ⇨ *.ini tweaks (=game settings) sorted into subdirectories
+├── 📁 Utilities               ⇨ Any class that can be used everywhere and doesn't have it's own place.
+├── 📁 languages               ⇨ Translations that are downloaded by the tool through GitHub.
 │
-├── 📝 Configuration.cs  ⇨ Easily accessible Props for the tool's configuration.
-├── 📝 Initialization.cs ⇨ Init: Creating folders, reading configuration, etc.
-├── 📝 Program.cs        ⇨ Program entry point (static void Main).
-├── 📝 Shared.cs         ⇨ Containing constants, such as version, user agent, or URLs.
+├── 📝 Configuration.cs        ⇨ Easily accessible Props for the tool's configuration.
+├── 📝 Initialization.cs       ⇨ Init: Creating folders, reading configuration, etc.
+├── 📝 Program.cs              ⇨ Program entry point (static void Main).
+├── 📝 Shared.cs               ⇨ Containing constants, such as version, user agent, or URLs.
 └── ...
 ```
 
@@ -74,13 +76,13 @@ The tool downloads or requests information from GitHub's API for various reasons
 **Checking for updates, "What's new", and translations:**  
 ```
 📁 .
-├── 📝 VERSION        ⇨ Downloaded on startup to check for updates.
-├── 📝 What's new.rtf ⇨ Downloaded and displayed on versions prior to v1.11.
+├── 📝 VERSION                 ⇨ Downloaded on startup to check for updates.
+├── 📝 What's new.rtf          ⇨ Downloaded and displayed on versions prior to v1.11.
 │
 └── 📁 Fo76ini
-    └── 📁 languages        ⇨ *.zip archives containing the translations.
-        ├── 📝 list.iso.txt ⇨ List of available translations for download.
-        └── 🗃️ xx-XX.zip    ⇨ Translations
+    └── 📁 languages           ⇨ *.zip archives containing the translations.
+        ├── 📝 list.iso.txt    ⇨ List of available translations for download.
+        └── 🗃️ xx-XX.zip       ⇨ Translations
 ```
 
 ### From GitHub releases:
