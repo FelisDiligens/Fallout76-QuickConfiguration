@@ -2,13 +2,12 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Fallout 76 Quick Configuration"
-#define MyAppPublisher "FelisDiligens aka. datasnake"
+#define MyAppPublisher "FelisDiligens"
 #define MyAppURL "https://www.nexusmods.com/fallout76/mods/546"
 #define MyAppExeName "Fo76ini.exe"
 
 #define ProjectVersion "1.12.2"
-#define ProjectGitDir "D:\Workspace\Fallout76-QuickConfiguration"
-#define ProjectPackTargetDir "D:\Workspace\Files\Main Files"
+#define ProjectGitDir "D:\Workspace\Fallout 76 Quick Configuration\Fallout76-QuickConfiguration"
 
 #define AppConfigDir "{localappdata}\Fallout 76 Quick Configuration"
 #define INIBackupDir "{userdocs}\My Games\Fallout 76\Backups"
@@ -30,7 +29,7 @@ LicenseFile={#ProjectGitDir}\LICENSE
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir={#ProjectPackTargetDir}\v{#ProjectVersion}
+OutputDir={#ProjectGitDir}\Publish
 OutputBaseFilename=Setup_v{#ProjectVersion}
 SetupIconFile={#ProjectGitDir}\Fo76ini\icon.ico
 Compression=lzma
@@ -45,8 +44,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "{#ProjectPackTargetDir}\v{#ProjectVersion}\v{#ProjectVersion}_bin\Fo76ini.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#ProjectPackTargetDir}\v{#ProjectVersion}\v{#ProjectVersion}_bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#ProjectGitDir}\Publish\v{#ProjectVersion}\Fo76ini.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#ProjectGitDir}\Publish\v{#ProjectVersion}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

@@ -1,27 +1,66 @@
 from colorama import Fore, Back, Style, init
 import time, os, shutil
 import subprocess, shlex
-# from distutils.dir_util import copy_tree
-# DeprecationWarning: The distutils package is deprecated and slated for removal in Python 3.12. Use setuptools or check PEP 632 for potential alternatives
+from pathlib import Path
+from shutil import which
+import winreg
+import itertools
 init()
 
-PROJECT_GIT_DIR  = "D:\\Workspace\\Fallout76-QuickConfiguration\\"
-PACK_TARGET_DIR  = "D:\\Workspace\\Files\\Main Files\\"
+PROJECT_GIT_DIR   = str(Path(__file__).parent.resolve())
 
-SEVENZIP_PATH    = "D:\\Portable\\7z\\7z.exe"
-RCEDIT_PATH      = "D:\\Portable\\rcedit-x64.exe"
-ISCC_PATH        = "C:\\Program Files (x86)\\Inno Setup 6\\ISCC.exe"
-PANDOC_PATH      = "C:\\Program Files\\Pandoc\\pandoc.exe"
-
-RELEASE_BIN_DIR  = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\bin\\Release")
-EXECUTABLE_NAME  = "Fo76ini.exe"
-EXECUTABLE_PATH  = os.path.join(RELEASE_BIN_DIR, EXECUTABLE_NAME)
-UPDATER_BIN_DIR  = os.path.join(PROJECT_GIT_DIR, "Fo76ini_Updater\\bin\\Release")
-DEPENDENCIES_DIR = os.path.join(PROJECT_GIT_DIR, "Additional files")
-VERSION_PATH     = os.path.join(PROJECT_GIT_DIR, "VERSION")
-SETUP_ISS_PATH   = os.path.join(PROJECT_GIT_DIR, "setup.iss")
+TARGET_BASE_DIR   = os.path.join(PROJECT_GIT_DIR, "Publish")
+SOLUTION_PATH     = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\Fo76ini.sln")
+PROGRAM_BIN_DIR   = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\bin\\Release")
+EXECUTABLE_NAME   = "Fo76ini.exe"
+EXECUTABLE_PATH   = os.path.join(PROGRAM_BIN_DIR, EXECUTABLE_NAME)
+UPDATER_BIN_DIR   = os.path.join(PROJECT_GIT_DIR, "Fo76ini_Updater\\bin\\Release")
+DEPENDENCIES_DIR  = os.path.join(PROJECT_GIT_DIR, "Additional files")
+VERSION_PATH      = os.path.join(PROJECT_GIT_DIR, "VERSION")
+SETUP_ISS_PATH    = os.path.join(PROJECT_GIT_DIR, "setup.iss")
 
 VERSION = "x.x.x"
+
+def get_binaries_path():
+    return os.path.join(TARGET_BASE_DIR, "v" + VERSION)
+
+def get_msbuild_path():
+    """Attempts to run 'which', then reads the registry and returns the path to MSBuild.exe as string or None."""
+    path = None
+
+    if which("msbuild") is not None:
+        return which("msbuild")
+
+    # https://stackoverflow.com/questions/328017/path-to-msbuild
+    with winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE) as reg:
+        with winreg.OpenKey(reg, "SOFTWARE\\Microsoft\\MSBuild\\ToolsVersions\\4.0") as key:
+            try:
+                for i in itertools.count(start = 0, step = 1):
+                    name, value, type = winreg.EnumValue(key, i)
+                    if name == "MSBuildToolsPath" and type == winreg.REG_SZ:
+                        path = value
+                        break
+            except OSError:
+                # No more values
+                pass
+
+    if path is not None:
+        path = os.path.join(path, "MSBuild.exe")
+        if os.path.isfile(path):
+            return path
+
+    return None
+
+def get_7zip_path():
+    sevenzip = which("7z")
+    if sevenzip is not None:
+        return sevenzip
+
+    sevenzip_alt = which("7za")
+    if sevenzip_alt is not None:
+        return sevenzip_alt
+
+    return None
 
 def get_version():
     global VERSION
@@ -42,56 +81,46 @@ def set_version():
         print("\nAbort.")
         return
 
-def pack_release():
-    print("Packing release...")
-    target_dir = os.path.join(PACK_TARGET_DIR, "v" + VERSION)
-    if os.path.exists(target_dir):
-        print("Directory already exists, do you wish to proceed? (y/N)")
-        if input(">>> ").strip().lower() != "y":
-            print("Abort.")
-            return
-        else:
-            print("Deleting files...")
-            time.sleep(0.25)
-            shutil.rmtree(target_dir)
-    os.makedirs(target_dir, exist_ok=True)
-    print("-----------------------------------------")
-    print("Packing to v{0}_bin.zip...".format(VERSION))
-    time.sleep(0.25)
-    os.system("{0} a \"{1}\" \"{2}\\*\"".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_bin.zip"), RELEASE_BIN_DIR))
-    print("-----------------------------------------")
-    print("Packing to v{0}_src.zip...".format(VERSION))
-    time.sleep(0.25)
-    os.system("{0} a \"{1}\" \"{2}\\*\"".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_src.zip"), os.path.join(PROJECT_GIT_DIR, "Fo76ini")))
-    print("-----------------------------------------")
-    print("Cleaning v{0}_src.zip...".format(VERSION))
-    time.sleep(0.25)
-    os.system("{0} d \"{1}\" .vs".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_src.zip")))
-    os.system("{0} d \"{1}\" bin".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_src.zip")))
-    os.system("{0} d \"{1}\" obj".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_src.zip")))
-    os.system("{0} d \"{1}\" packages".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_src.zip")))
-    print("-----------------------------------------")
-    print("Done.")
+def build_updater():
+    print("Building updater...")
+    subprocess.run(shlex.split(f"\"{get_msbuild_path()}\" \"{SOLUTION_PATH}\" /p:Configuration=Release /t:Fo76ini_Updater"))
+    copytree(UPDATER_BIN_DIR, get_binaries_path())
 
-def extract_release():
-    print("Extracting release...")
-    target_dir = os.path.join(PACK_TARGET_DIR, "v" + VERSION)
-    os.system("{0} x \"{1}\" -r -o\"{2}\" *".format(SEVENZIP_PATH, os.path.join(target_dir, "v" + VERSION + "_bin.zip"), os.path.join(target_dir, "v" + VERSION + "_bin")))
-
-def use_rcedit():
-    print("Setting executable version to '{0}'...".format(VERSION))
-    os.system("{0} \"{1}\" --set-file-version {2} --set-product-version {2}".format(RCEDIT_PATH, EXECUTABLE_PATH, VERSION))
-    print("Done.")
+def build_app():
+    print("Building app...")
+    subprocess.run(shlex.split(f"\"{get_msbuild_path()}\" \"{SOLUTION_PATH}\" /p:Configuration=Release /t:Fo76ini"))
+    copytree(PROGRAM_BIN_DIR, get_binaries_path())
 
 def copy_additions():
     print("Copying additional files...")
-    copytree(DEPENDENCIES_DIR, RELEASE_BIN_DIR)
+    copytree(DEPENDENCIES_DIR, get_binaries_path())
+
+def pack_release():
+    print("Packing to v{0}.zip...".format(VERSION))
+    os.system("{0} a \"{1}\" \"{2}\\*\"".format(get_7zip_path(), os.path.join(TARGET_BASE_DIR, "v" + VERSION + ".zip"), get_binaries_path()))
+    # print("-----------------------------------------")
+    # print("Packing to v{0}_src.zip...".format(VERSION))
+    # time.sleep(0.25)
+    # os.system("{0} a \"{1}\" \"{2}\\*\"".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_src.zip"), os.path.join(PROJECT_GIT_DIR, "Fo76ini")))
+    # print("-----------------------------------------")
+    # print("Cleaning v{0}_src.zip...".format(VERSION))
+    # time.sleep(0.25)
+    # os.system("{0} d \"{1}\" .vs".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_src.zip")))
+    # os.system("{0} d \"{1}\" bin".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_src.zip")))
+    # os.system("{0} d \"{1}\" obj".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_src.zip")))
+    # os.system("{0} d \"{1}\" packages".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_src.zip")))
+    # print("-----------------------------------------")
     print("Done.")
 
-def copy_updater():
-    print("Copying updater...")
-    copytree(UPDATER_BIN_DIR, RELEASE_BIN_DIR)
-    print("Done.")
+# def extract_release():
+#     print("Extracting release...")
+#     target_dir = os.path.join(TARGET_BASE_DIR, "v" + VERSION)
+#     os.system("{0} x \"{1}\" -r -o\"{2}\" *".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_bin.zip"), os.path.join(target_dir, "v" + VERSION + "_bin")))
+
+def use_rcedit():
+    print("Setting executable version to '{0}'...".format(VERSION))
+    os.system("{0} \"{1}\" --set-file-version {2} --set-product-version {2}".format(which("rcedit"), EXECUTABLE_PATH, VERSION))
+    os.system("{0} \"{1}\" --set-file-version {2} --set-product-version {2}".format(which("rcedit"), os.path.join(get_binaries_path(), EXECUTABLE_NAME), VERSION))
 
 def update_inno():
     print("Changing version number in setup.iss ...")
@@ -107,33 +136,31 @@ def update_inno():
             if line.startswith("#define ProjectGitDir"):
                 line = "#define ProjectGitDir \"" + PROJECT_GIT_DIR.rstrip("\\") + "\"\n"
                 print("Line changed: " + line, end="")
-            if line.startswith("#define ProjectPackTargetDir"):
-                line = "#define ProjectPackTargetDir \"" + PACK_TARGET_DIR.rstrip("\\") + "\"\n"
-                print("Line changed: " + line, end="")
+            #if line.startswith("#define ProjectPackTargetDir"):
+            #    line = "#define ProjectPackTargetDir \"" + TARGET_BASE_DIR.rstrip("\\") + "\"\n"
+            #    print("Line changed: " + line, end="")
             content += line
     with open(SETUP_ISS_PATH, "w") as f:
         f.write(content)
 
 def build_inno():
-    # os.system("setup.iss")
     print("Building setup using ISCC...")
-    subprocess.run(shlex.split("\"" + ISCC_PATH + "\" \"" + SETUP_ISS_PATH + "\""))
+    subprocess.run(shlex.split("\"" + which("iscc") + "\" \"" + SETUP_ISS_PATH + "\""))
 
 def convert_md():
     print("Converting Markdown to HTML and RTF")
-    subprocess.run(shlex.split("\"" + PANDOC_PATH + "\" --standalone --self-contained -f gfm \"What's new.md\" -o \"What's new.html\" --css=Pandoc/pandoc-style.css -H Pandoc/pandoc-header.html"))
-    subprocess.run(shlex.split("\"" + PANDOC_PATH + "\" --standalone --self-contained -f gfm \"What's new.md\" -o \"What's new - Dark.html\" --css=Pandoc/pandoc-style-dark.css -H Pandoc/pandoc-header.html"))
-    subprocess.run(shlex.split("\"" + PANDOC_PATH + "\" --standalone \"What's new.md\" -o \"What's new.rtf\""))
+    subprocess.run(shlex.split("\"" + which("pandoc") + "\" --standalone --self-contained -f gfm \"What's new.md\" -o \"What's new.html\" --css=Pandoc/pandoc-style.css -H Pandoc/pandoc-header.html"))
+    subprocess.run(shlex.split("\"" + which("pandoc") + "\" --standalone --self-contained -f gfm \"What's new.md\" -o \"What's new - Dark.html\" --css=Pandoc/pandoc-style-dark.css -H Pandoc/pandoc-header.html"))
+    subprocess.run(shlex.split("\"" + which("pandoc") + "\" --standalone \"What's new.md\" -o \"What's new.rtf\""))
 
 def open_dir():
-    target_dir = os.path.join(PACK_TARGET_DIR, "v" + VERSION)
-    if os.path.exists(target_dir):
-        os.system("explorer.exe \"{0}\"".format(target_dir))
+    if os.path.exists(TARGET_BASE_DIR):
+        os.system("explorer.exe \"{0}\"".format(TARGET_BASE_DIR))
     else:
-        os.system("explorer.exe \"{0}\"".format(PACK_TARGET_DIR))
+        print("ERROR: Path does not exist.")
 
 # https://stackoverflow.com/a/7550424
-def _mkdir(newdir):
+def mkdir(newdir):
     """works the way a good mkdir should :)
         - already exists, silently complete
         - regular file in the way, raise an exception
@@ -147,8 +174,7 @@ def _mkdir(newdir):
     else:
         head, tail = os.path.split(newdir)
         if head and not os.path.isdir(head):
-            _mkdir(head)
-        #print "_mkdir %s" % repr(newdir)
+            mkdir(head)
         if tail:
             os.mkdir(newdir)
 
@@ -168,8 +194,7 @@ def copytree(src, dst, symlinks=False):
 
     """
     names = os.listdir(src)
-    # os.makedirs(dst)
-    _mkdir(dst) # XXX
+    mkdir(dst)
     errors = []
     for name in names:
         srcname = os.path.join(src, name)
@@ -199,22 +224,29 @@ if __name__ == "__main__":
     print("""-----------------------------------------
                 Pack Tool""")
 
+    mkdir(TARGET_BASE_DIR)
+
     warn_text = ""
     if not os.path.exists(PROJECT_GIT_DIR):
-        warn_text += Fore.YELLOW + "WARN:  Project folder doesn't exist!\n"
-    if not os.path.exists(PACK_TARGET_DIR):
-        warn_text += Fore.YELLOW + "WARN:  Pack target folder doesn't exist!\n"
-    if not os.path.exists(RCEDIT_PATH):
-        warn_text += Fore.YELLOW + "WARN:  rcedit not found!\n"
-    if not os.path.exists(SEVENZIP_PATH):
-        warn_text += Fore.YELLOW + "WARN:  7-Zip not found!\n"
-    if not os.path.exists(ISCC_PATH):
-        warn_text += Fore.YELLOW + "WARN:  ISCC (Inno Setup) not found!\n"
-    if not os.path.exists(PANDOC_PATH):
-        warn_text += Fore.YELLOW + "WARN:  Pandoc not found!\n"
+        warn_text += Fore.YELLOW + "WARN: Project folder doesn't exist!\n"
+    if not os.path.isdir(os.path.join(PROJECT_GIT_DIR, "Fo76ini")):
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "\"Fo76ini\" folder doesn't exist!\n      Please run the script within the git repo folder."
+    if which("rcedit") is None:
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "rcedit not found!\n"
+    if get_7zip_path() is None:
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "7-Zip not found!\n"
+    if which("iscc") is None:
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "ISCC (Inno Setup Compiler) not found!\n"
+    if which("pandoc") is None:
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "Pandoc not found!\n"
+    if get_msbuild_path() is None:
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "MSBuild not found!\n"
 
     if warn_text:
+        warn_text += Fore.YELLOW + "\nBuilding might fail if requirements are missing.\nMake sure you installed them properly and added them to your PATH.\n\nYou can install most of them with scoop like so:\n> " + Fore.BLUE + "scoop install 7zip git rcedit inno-setup pandoc\n"
         print("-----------------------------------------\n" + warn_text + Fore.RESET, end="")
+    else:
+        print("-----------------------------------------\n" + Fore.GREEN + "All requirements found!\n" + Fore.RESET, end="")
 
     get_version()
 
@@ -222,53 +254,48 @@ if __name__ == "__main__":
         print("-----------------------------------------")
         time.sleep(0.25)
         print(f"""{Fore.BLUE}Set version
-{Fore.MAGENTA}(1) {Fore.RESET} Set "VERSION" (current: {Fore.GREEN}{VERSION}{Fore.RESET})
-{Fore.MAGENTA}(2) {Fore.RESET} Set executable version with rcedit
+{Fore.MAGENTA}(1){Fore.RESET} Set "VERSION" (current: {Fore.GREEN}{VERSION}{Fore.RESET})
 
-{Fore.BLUE}Prepare files
-{Fore.MAGENTA}(3) {Fore.RESET} Copy additional files to release
-{Fore.MAGENTA}(4) {Fore.RESET} Copy updater.exe to release
-
-{Fore.BLUE}Pack release
-{Fore.MAGENTA}(5) {Fore.RESET} Pack release
-{Fore.MAGENTA}(6) {Fore.RESET} Extract *.zip
-{Fore.MAGENTA}(7) {Fore.RESET} Update inno setup script
-{Fore.MAGENTA}(8) {Fore.RESET} Build inno setup
+{Fore.BLUE}Building
+{Fore.MAGENTA}(2){Fore.RESET} Build app
+{Fore.MAGENTA}(3){Fore.RESET} Pack app to *.zip
+{Fore.MAGENTA}(4){Fore.RESET} Build setup
 
 {Fore.BLUE}What's new.md
-{Fore.MAGENTA}(9) {Fore.RESET} Convert Markdown to HTML and RTF using Pandoc
-{Fore.MAGENTA}(10){Fore.RESET} Push to GitHub repository
+{Fore.MAGENTA}(5){Fore.RESET} Convert Markdown to HTML and RTF using Pandoc
 
 {Fore.BLUE}Others
-{Fore.MAGENTA}(11){Fore.RESET} Open target folder
-{Fore.MAGENTA}(0) {Fore.RESET} Exit
+{Fore.MAGENTA}(6){Fore.RESET} Open target folder
+{Fore.MAGENTA}(0){Fore.RESET} Exit (Ctrl+C)
 -----------------------------------------""")
-        i = input(">>> ").strip()
+        try:
+            i = input(">>> ").strip()
+        except KeyboardInterrupt:
+            print("""^C - Bye bye!
+-----------------------------------------""")
+            time.sleep(0.25)
+            break
 
         if i == "1":
             set_version()
         elif i == "2":
-            use_rcedit()  
-        elif i == "3":
+            build_updater()
+            build_app()
             copy_additions()
-        elif i == "4":
-            copy_updater()
-        elif i == "5":
+            use_rcedit()
+        elif i == "3":
             pack_release()
-        elif i == "6":
-            extract_release()
-        elif i == "7":
+        elif i == "4":
             update_inno()
-        elif i == "8":
             build_inno()
-        elif i == "9":
+        elif i == "5":
             convert_md()
-        elif i == "10":
-            print("NOT IMPLEMENTED")
-        elif i == "11":
+        elif i == "6":
             open_dir()
         elif i == "0" or i == "":
             print("""Bye bye!
 -----------------------------------------""")
             time.sleep(0.25)
             break
+        else:
+            print("Input not recognized.")

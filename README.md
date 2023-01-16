@@ -79,6 +79,9 @@ Otherwise the .NET installer might fail or the tool might not start.
 * [Troubleshooting](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Troubleshooting)
 * [Mod Manager Guide](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Mod-Manager-Guide)
 
+## 🧑‍💻 For developers
+See [Docs](Docs/README.md).
+
 ## ❤️ Kudos
 ### These were/are valuable resources:
 * [Bilago's Configuraton Tool](https://www.nexusmods.com/fallout76/mods/38)
