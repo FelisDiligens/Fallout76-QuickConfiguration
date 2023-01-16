@@ -29,7 +29,10 @@ namespace Fo76ini.Tweaks.Graphics
 
         public void SetValue(bool value)
         {
-            IniFiles.F76Custom.Set("MAIN", "bShowBackpack", value);
+            IniFiles.F76Prefs.Set("MAIN", "bShowBackpack", value);
+
+            if (IniFiles.F76Custom.Exists("MAIN", "bShowBackpack"))
+                IniFiles.F76Custom.Set("MAIN", "bShowBackpack", value);
         }
 
         public void ResetValue()
