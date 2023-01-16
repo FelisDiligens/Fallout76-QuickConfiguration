@@ -1,3 +1,11 @@
+### What's new in v1.12.3?
+
+- Fixed "Backpack Visible" option
+
+*Unreleased*
+
+---
+
 ### What's new in v1.12.2?
 
 Fixed the server status.
