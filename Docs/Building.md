@@ -51,12 +51,18 @@
 ### Requirements
 First, install all requirements from the "Manual build process" section.
 
-I recommend installing all additional requirements for this build script using scoop:
+Next, install these additional requirements for this build script:
+- [Python 3.3 or newer](https://www.python.org/downloads/)
+- [rcedit](https://github.com/electron/rcedit)
+- [7-Zip](https://www.7-zip.org/download.html)
+- [Pandoc](https://pandoc.org/installing.html)
+
+I recommend installing these using scoop:
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm get.scoop.sh | iex
 scoop bucket add extras
-scoop install 7zip git python rcedit inno-setup pandoc
+scoop install 7zip python rcedit inno-setup pandoc
 python -m pip install colorama
 ```
 *(Paste this line by line into a PowerShell window)*
