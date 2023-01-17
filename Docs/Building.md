@@ -72,3 +72,8 @@ When you open a terminal in the folder containing the script and run `python pac
 ![](assets/pack_tool.png)
 
 From here, you can simply build the app and it should put the result into the folder `Publish`.
+
+The script has an interactive mode (which you can see in the screenshot) that starts when no command line arguments are supplied.
+
+If you want to build the app for release quickly, enter this: `python pack_tool.py -b -p -s`  
+This will build the app, pack it into a zip, and build the setup.
