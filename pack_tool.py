@@ -5,6 +5,7 @@ from pathlib import Path
 from shutil import which
 import winreg
 import itertools
+import argparse
 init()
 
 PROJECT_GIT_DIR   = str(Path(__file__).parent.resolve())
@@ -220,39 +221,20 @@ def copytree(src, dst, symlinks=False):
         # can't copy file access times on Windows
         pass
 
-if __name__ == "__main__":
+def run_interactive():
     print("""-----------------------------------------
                 Pack Tool""")
 
-    mkdir(TARGET_BASE_DIR)
-
-    warn_text = ""
-    if not os.path.exists(PROJECT_GIT_DIR):
-        warn_text += Fore.YELLOW + "WARN: Project folder doesn't exist!\n"
-    if not os.path.isdir(os.path.join(PROJECT_GIT_DIR, "Fo76ini")):
-        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "\"Fo76ini\" folder doesn't exist!\n      Please run the script within the git repo folder."
-    if which("rcedit") is None:
-        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "rcedit not found!\n"
-    if get_7zip_path() is None:
-        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "7-Zip not found!\n"
-    if which("iscc") is None:
-        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "ISCC (Inno Setup Compiler) not found!\n"
-    if which("pandoc") is None:
-        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "Pandoc not found!\n"
-    if get_msbuild_path() is None:
-        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "MSBuild not found!\n"
-
+    warn_text = get_warn_text()
     if warn_text:
-        warn_text += Fore.YELLOW + "\nBuilding might fail if requirements are missing.\nMake sure you installed them properly and added them to your PATH.\n\nYou can install most of them with scoop like so:\n> " + Fore.BLUE + "scoop install 7zip git rcedit inno-setup pandoc\n"
         print("-----------------------------------------\n" + warn_text + Fore.RESET, end="")
     else:
         print("-----------------------------------------\n" + Fore.GREEN + "All requirements found!\n" + Fore.RESET, end="")
 
-    get_version()
-
     while True:
         print("-----------------------------------------")
-        time.sleep(0.25)
+        print("You can also use command line arguments!\nSee: " + Fore.MAGENTA + "$ " + Fore.BLUE + "python pack_tool.py --help" + Fore.RESET)
+        print("-----------------------------------------")
         print(f"""{Fore.BLUE}Set version
 {Fore.MAGENTA}(1){Fore.RESET} Set "VERSION" (current: {Fore.GREEN}{VERSION}{Fore.RESET})
 
@@ -278,6 +260,7 @@ if __name__ == "__main__":
 
         if i == "1":
             set_version()
+            # use_rcedit()
         elif i == "2":
             build_updater()
             build_app()
@@ -299,3 +282,62 @@ if __name__ == "__main__":
             break
         else:
             print("Input not recognized.")
+
+def run_args(args):
+    if args.set_version:
+        set_version()
+        # use_rcedit()
+    if args.build:
+        build_updater()
+        build_app()
+        copy_additions()
+        use_rcedit()
+    if args.pack:
+        pack_release()
+    if args.build_setup:
+        update_inno()
+        build_inno()
+    if args.whatsnew:
+        convert_md()
+
+def get_warn_text():
+    warn_text = ""
+    if not os.path.exists(PROJECT_GIT_DIR):
+        warn_text += Fore.YELLOW + "WARN: Project folder doesn't exist!\n"
+    if not os.path.isdir(os.path.join(PROJECT_GIT_DIR, "Fo76ini")):
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "\"Fo76ini\" folder doesn't exist!\n      Please run the script within the git repo folder."
+    if which("rcedit") is None:
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "rcedit not found!\n"
+    if get_7zip_path() is None:
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "7-Zip not found!\n"
+    if which("iscc") is None:
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "ISCC (Inno Setup Compiler) not found!\n"
+    if which("pandoc") is None:
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "Pandoc not found!\n"
+    if get_msbuild_path() is None:
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "MSBuild not found!\n"
+
+    if warn_text:
+        warn_text += Fore.YELLOW + "\nBuilding might fail if requirements are missing.\nMake sure you installed them properly and added them to your PATH.\n\nYou can install most of them with scoop like so:\n> " + Fore.BLUE + "scoop install 7zip git rcedit inno-setup pandoc\n"
+
+    return warn_text
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Helper script for building Fallout 76 Quick Configuration')
+    parser.add_argument('-v', '--set-version', help='set the current version', required=False, action='store_true')
+    parser.add_argument('-b', '--build', help='build the app and updater', required=False, action='store_true')
+    parser.add_argument('-p', '--pack', help='pack the app into a zip archive', required=False, action='store_true')
+    parser.add_argument('-s', '--build-setup', help='build the setup', required=False, action='store_true')
+    parser.add_argument('-w', '--whatsnew', help='update the "What\'s new?" files', required=False, action='store_true')
+    args = parser.parse_args()
+
+    mkdir(TARGET_BASE_DIR)
+    get_version()
+
+    args_list = [args.build, args.build_setup, args.pack, args.set_version, args.whatsnew]
+    #if args_list.count(True) > 1:
+    #    print("ERROR: Only one argument allowed")
+    if args_list.count(True) >= 1:
+        run_args(args)
+    else:
+        run_interactive()
