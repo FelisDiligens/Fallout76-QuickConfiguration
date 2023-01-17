@@ -8,6 +8,7 @@
   - [Use my build script `pack_tool.py`](#use-my-build-script-pack_toolpy)
     - [Requirements](#requirements-1)
     - [Running the script](#running-the-script)
+      - [Debug build](#debug-build)
 
 ## Manual build process
 
@@ -77,3 +78,6 @@ The script has an interactive mode (which you can see in the screenshot) that st
 
 If you want to build the app for release quickly, enter this: `python pack_tool.py -b -p -s`  
 This will build the app, pack it into a zip, and build the setup.
+
+#### Debug build
+You can also run `python pack_tool.py --build-debug` to make a debug build.

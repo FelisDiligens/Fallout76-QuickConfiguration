@@ -1,5 +1,5 @@
 from colorama import Fore, Back, Style, init
-import time, os, shutil
+import os, shutil
 import subprocess, shlex
 from pathlib import Path
 from shutil import which
@@ -12,10 +12,10 @@ PROJECT_GIT_DIR   = str(Path(__file__).parent.resolve())
 
 TARGET_BASE_DIR   = os.path.join(PROJECT_GIT_DIR, "Publish")
 SOLUTION_PATH     = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\Fo76ini.sln")
-PROGRAM_BIN_DIR   = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\bin\\Release")
+PROGRAM_BIN_DIR   = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\bin\\")
 EXECUTABLE_NAME   = "Fo76ini.exe"
 EXECUTABLE_PATH   = os.path.join(PROGRAM_BIN_DIR, EXECUTABLE_NAME)
-UPDATER_BIN_DIR   = os.path.join(PROJECT_GIT_DIR, "Fo76ini_Updater\\bin\\Release")
+UPDATER_BIN_DIR   = os.path.join(PROJECT_GIT_DIR, "Fo76ini_Updater\\bin\\")
 DEPENDENCIES_DIR  = os.path.join(PROJECT_GIT_DIR, "Additional files")
 VERSION_PATH      = os.path.join(PROJECT_GIT_DIR, "VERSION")
 SETUP_ISS_PATH    = os.path.join(PROJECT_GIT_DIR, "setup.iss")
@@ -26,11 +26,29 @@ def get_binaries_path():
     return os.path.join(TARGET_BASE_DIR, "v" + VERSION)
 
 def get_msbuild_path():
-    """Attempts to run 'which', then reads the registry and returns the path to MSBuild.exe as string or None."""
+    """Attempts to run 'which', then check common paths, and if all else fails, reads the registry and returns the path to MSBuild.exe as string or None."""
     path = None
 
     if which("msbuild") is not None:
         return which("msbuild")
+
+    for drive in ["C:", "D:"]:
+        if os.path.isfile(drive + "\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.exe"):
+            return drive + "\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.exe"
+        elif os.path.isfile(drive + "\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"):
+            return drive + "\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"
+        elif os.path.isfile(drive + "\\Program Files (x86)\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.exe"):
+            return drive + "\\Program Files (x86)\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.exe"
+        elif os.path.isfile(drive + "\\Program Files (x86)\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"):
+            return drive + "\\Program Files (x86)\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"
+        elif os.path.isfile(drive + "\\Program Files\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"):
+            return drive + "\\Program Files\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"
+        elif os.path.isfile(drive + "\\Program Files\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.exe"):
+            return drive + "\\Program Files\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.exe"
+        elif os.path.isfile(drive + "\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"):
+            return drive + "\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"
+        elif os.path.isfile(drive + "\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.exe"):
+            return drive + "\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.exe"
 
     # https://stackoverflow.com/questions/328017/path-to-msbuild
     with winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE) as reg:
@@ -82,41 +100,33 @@ def set_version():
         print("\nAbort.")
         return
 
-def build_updater():
+def build_updater(debug = False):
     print("Building updater...")
-    subprocess.run(shlex.split(f"\"{get_msbuild_path()}\" \"{SOLUTION_PATH}\" /p:Configuration=Release /t:Fo76ini_Updater"))
-    copytree(UPDATER_BIN_DIR, get_binaries_path())
+    configuration = "Debug" if debug else "Release"
+    subprocess.run(shlex.split(f"\"{get_msbuild_path()}\" \"{SOLUTION_PATH}\" /p:Configuration={configuration} /t:Fo76ini_Updater"))
+    if debug:
+        copytree(UPDATER_BIN_DIR + configuration, PROGRAM_BIN_DIR + configuration)
+    else:
+        copytree(UPDATER_BIN_DIR + configuration, get_binaries_path())
 
-def build_app():
+def build_app(debug = False):
     print("Building app...")
-    subprocess.run(shlex.split(f"\"{get_msbuild_path()}\" \"{SOLUTION_PATH}\" /p:Configuration=Release /t:Fo76ini"))
-    copytree(PROGRAM_BIN_DIR, get_binaries_path())
+    configuration = "Debug" if debug else "Release"
+    subprocess.run(shlex.split(f"\"{get_msbuild_path()}\" \"{SOLUTION_PATH}\" /p:Configuration={configuration} /t:Fo76ini"))
+    if not debug:
+        copytree(PROGRAM_BIN_DIR + "Release", get_binaries_path())
 
-def copy_additions():
+def copy_additions(debug = False):
     print("Copying additional files...")
-    copytree(DEPENDENCIES_DIR, get_binaries_path())
+    if debug:
+        copytree(DEPENDENCIES_DIR, get_binaries_path())
+    else:
+        copytree(DEPENDENCIES_DIR, get_binaries_path())
 
 def pack_release():
     print("Packing to v{0}.zip...".format(VERSION))
     os.system("{0} a \"{1}\" \"{2}\\*\"".format(get_7zip_path(), os.path.join(TARGET_BASE_DIR, "v" + VERSION + ".zip"), get_binaries_path()))
-    # print("-----------------------------------------")
-    # print("Packing to v{0}_src.zip...".format(VERSION))
-    # time.sleep(0.25)
-    # os.system("{0} a \"{1}\" \"{2}\\*\"".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_src.zip"), os.path.join(PROJECT_GIT_DIR, "Fo76ini")))
-    # print("-----------------------------------------")
-    # print("Cleaning v{0}_src.zip...".format(VERSION))
-    # time.sleep(0.25)
-    # os.system("{0} d \"{1}\" .vs".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_src.zip")))
-    # os.system("{0} d \"{1}\" bin".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_src.zip")))
-    # os.system("{0} d \"{1}\" obj".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_src.zip")))
-    # os.system("{0} d \"{1}\" packages".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_src.zip")))
-    # print("-----------------------------------------")
     print("Done.")
-
-# def extract_release():
-#     print("Extracting release...")
-#     target_dir = os.path.join(TARGET_BASE_DIR, "v" + VERSION)
-#     os.system("{0} x \"{1}\" -r -o\"{2}\" *".format(get_7zip_path(), os.path.join(target_dir, "v" + VERSION + "_bin.zip"), os.path.join(target_dir, "v" + VERSION + "_bin")))
 
 def use_rcedit():
     print("Setting executable version to '{0}'...".format(VERSION))
@@ -239,15 +249,16 @@ def run_interactive():
 {Fore.MAGENTA}(1){Fore.RESET} Set "VERSION" (current: {Fore.GREEN}{VERSION}{Fore.RESET})
 
 {Fore.BLUE}Building
-{Fore.MAGENTA}(2){Fore.RESET} Build app
-{Fore.MAGENTA}(3){Fore.RESET} Pack app to *.zip
-{Fore.MAGENTA}(4){Fore.RESET} Build setup
+{Fore.MAGENTA}(2){Fore.RESET} Build app (Debug)
+{Fore.MAGENTA}(3){Fore.RESET} Build app (Release)
+{Fore.MAGENTA}(4){Fore.RESET} Pack app to *.zip
+{Fore.MAGENTA}(5){Fore.RESET} Build setup
 
 {Fore.BLUE}What's new.md
-{Fore.MAGENTA}(5){Fore.RESET} Convert Markdown to HTML and RTF using Pandoc
+{Fore.MAGENTA}(6){Fore.RESET} Convert Markdown to HTML and RTF using Pandoc
 
 {Fore.BLUE}Others
-{Fore.MAGENTA}(6){Fore.RESET} Open target folder
+{Fore.MAGENTA}(7){Fore.RESET} Open target folder
 {Fore.MAGENTA}(0){Fore.RESET} Exit (Ctrl+C)
 -----------------------------------------""")
         try:
@@ -255,30 +266,32 @@ def run_interactive():
         except KeyboardInterrupt:
             print("""^C - Bye bye!
 -----------------------------------------""")
-            time.sleep(0.25)
             break
 
         if i == "1":
             set_version()
             # use_rcedit()
         elif i == "2":
+            build_updater(debug=True)
+            build_app(debug=True)
+            copy_additions(debug=True)
+        elif i == "3":
             build_updater()
             build_app()
             copy_additions()
             use_rcedit()
-        elif i == "3":
-            pack_release()
         elif i == "4":
+            pack_release()
+        elif i == "5":
             update_inno()
             build_inno()
-        elif i == "5":
-            convert_md()
         elif i == "6":
+            convert_md()
+        elif i == "7":
             open_dir()
         elif i == "0" or i == "":
             print("""Bye bye!
 -----------------------------------------""")
-            time.sleep(0.25)
             break
         else:
             print("Input not recognized.")
@@ -287,6 +300,10 @@ def run_args(args):
     if args.set_version:
         set_version()
         # use_rcedit()
+    if args.build_debug:
+        build_updater(debug=True)
+        build_app(debug=True)
+        copy_additions(debug=True)
     if args.build:
         build_updater()
         build_app()
@@ -326,6 +343,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Helper script for building Fallout 76 Quick Configuration')
     parser.add_argument('-v', '--set-version', help='set the current version', required=False, action='store_true')
     parser.add_argument('-b', '--build', help='build the app and updater', required=False, action='store_true')
+    parser.add_argument('-d', '--build-debug', help='build the app and updater (Debug configuration)', required=False, action='store_true')
     parser.add_argument('-p', '--pack', help='pack the app into a zip archive', required=False, action='store_true')
     parser.add_argument('-s', '--build-setup', help='build the setup', required=False, action='store_true')
     parser.add_argument('-w', '--whatsnew', help='update the "What\'s new?" files', required=False, action='store_true')
@@ -334,7 +352,7 @@ if __name__ == "__main__":
     mkdir(TARGET_BASE_DIR)
     get_version()
 
-    args_list = [args.build, args.build_setup, args.pack, args.set_version, args.whatsnew]
+    args_list = [args.build_debug, args.build, args.build_setup, args.pack, args.set_version, args.whatsnew]
     #if args_list.count(True) > 1:
     #    print("ERROR: Only one argument allowed")
     if args_list.count(True) >= 1:
