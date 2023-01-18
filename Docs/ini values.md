@@ -5,13 +5,13 @@ The app ships with an "autocomplete.txt" file that contains all the *.ini sectio
 I made a small bash script for this. All that is needed to update the "autocomplete.txt" file is to run this:
 
 ```bash
-$ bash ./list-ini-values.sh --path <path-to-Fallout76> --comma-separated > ./Additional\ files/autocomplete.txt
+$ bash ./list-ini-values.sh --path <path-to-Fallout76.exe> --comma-separated > ./Additional\ files/autocomplete.txt
 ```
 
 You can also list all available *.ini keys in a human readable form:
 
 ```bash
-$ bash ./list-ini-values.sh --path <path-to-Fallout76>
+$ bash ./list-ini-values.sh --path <path-to-Fallout76.exe>
 ```
 
 If you want to run this script under Windows, you need either [Cygwin](https://www.cygwin.com/), [Git Bash](https://gitforwindows.org/) (which is often bundled with git anyway), or [WSL2](https://learn.microsoft.com/en-us/windows/wsl/). Pick one.
