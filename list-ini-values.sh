@@ -63,14 +63,14 @@ if [ ! -f "$exe_path" ]; then
 fi
 
 if [ "$comma_separated" = "1" ]; then
-  grep -a -o "[abcfhirsu][iA-Z][a-zA-Z0-9_]\{2,\}:[A-Z][A-Za-z0-9_]\{2,\}" "$exe_path" | # Grab all strings that look sort of like this: uWorkshopLODRadius:Workshop
+  grep -a -o "[abcfhirsu][iA-Z][a-zA-Z0-9_ ]\{2,\}:[A-Z][A-Za-z0-9_ ]\{2,\}" "$exe_path" | # Grab all strings that look sort of like this: uWorkshopLODRadius:Workshop
   sed 's/\(.*[^:]\):\(\w\+\)/\2\n\1/p' | # Separate each *.ini key and section by a newline
   sort |       # Sort alphabetically
   uniq |       # Remove duplicates
   head -c -1 | # Remove the last trailing newline
   tr '\n' ','  # Replace all newlines by comma_separated
 else
-  grep -a -o "[abcfhirsu][iA-Z][a-zA-Z0-9_]\{2,\}:[A-Z][A-Za-z0-9_]\{2,\}" "$exe_path" | # Grab all strings that look sort of like this: uWorkshopLODRadius:Workshop
+  grep -a -o "[abcfhirsu][iA-Z][a-zA-Z0-9_ ]\{2,\}:[A-Z][A-Za-z0-9_ ]\{2,\}" "$exe_path" | # Grab all strings that look sort of like this: uWorkshopLODRadius:Workshop
   sed 's/\(.*[^:]\):\(\w\+\)/[\2] \1/p' | # Clean it up: "key:section" -> "[section] key"
   sort | # Sort alphabetically
   uniq   # Remove duplicates
