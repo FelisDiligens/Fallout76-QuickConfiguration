@@ -16,15 +16,15 @@ The \*.ini file suffixes are:
 
 The keys in the \*.ini files seem to follow the Hungarian Notation:
 
-| Prefix | Type of value                             |
-| ------ | ----------------------------------------- |
-| `b`    | Boolean (`0` for `false`, `1` for `true`) |
-| `c`    | Character (?)                             |
-| `d`    | Double-precision float (?)                |
-| `f`    | Floating-point number                     |
-| `i`    | Integer                                   |
-| `s`    | String                                    |
-| `u`    | Unsigned integer                          |
+| Prefix    | Type of value                             |
+| --------- | ----------------------------------------- |
+| `b`       | Boolean (`0` for `false`, `1` for `true`) |
+| `c`       | Character (?)                             |
+| `d`       | Double-precision float (?)                |
+| `f`       | Floating-point number                     |
+| `i`       | Integer                                   |
+| `s`       | String                                    |
+| `u`, `ui` | Unsigned integer                          |
 
 Sometimes these prefixes are capitalized. (Seems random)
 
