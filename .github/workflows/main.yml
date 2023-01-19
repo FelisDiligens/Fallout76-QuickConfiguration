@@ -18,4 +18,5 @@ jobs:
           destination-username: 'FelisDiligens'
           destination-repository: 'felisdiligens.github.io'
           destination-directory: 'Fo76ini/'
+          destination-branch: master
           commit-email: '47528453+FelisDiligens@users.noreply.github.com'
