@@ -95,4 +95,12 @@ See [Updating the "autocomplete.txt"](ini%20values.md)
 
 Run `python pack_tool.py --whatsnew` and commit the changes.
 
+Or, if you want to do it manually with pandoc:
+
+```bash
+pandoc --standalone --self-contained -f gfm "What's new.md" -o "whatsnew.html" --css=Pandoc/pandoc-style.css -H Pandoc/pandoc-header.html
+pandoc --standalone --self-contained -f gfm "What's new.md" -o "whatsnewdark.html" --css=Pandoc/pandoc-style-dark.css -H Pandoc/pandoc-header.html
+pandoc --standalone "What's new.md" -o "What's new.rtf"
+```
+
 The GitHub action should do the rest... It copies the files into `felisdiligens.github.io/Fo76ini/`, therefore making it public to all users.
