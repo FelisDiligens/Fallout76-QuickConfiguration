@@ -98,8 +98,8 @@ Run `python pack_tool.py --whatsnew` and commit the changes.
 Or, if you want to do it manually with pandoc:
 
 ```bash
-pandoc --standalone --self-contained -f gfm "What's new.md" -o "whatsnew.html" --css=Pandoc/pandoc-style.css -H Pandoc/pandoc-header.html
-pandoc --standalone --self-contained -f gfm "What's new.md" -o "whatsnewdark.html" --css=Pandoc/pandoc-style-dark.css -H Pandoc/pandoc-header.html
+pandoc --standalone -f gfm "What's new.md" -o "whatsnew.html" --css=Pandoc/pandoc-style.css -H Pandoc/pandoc-header.html
+pandoc --standalone -f gfm "What's new.md" -o "whatsnewdark.html" --css=Pandoc/pandoc-style-dark.css -H Pandoc/pandoc-header.html
 pandoc --standalone "What's new.md" -o "What's new.rtf"
 ```
 

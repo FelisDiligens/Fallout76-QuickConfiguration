@@ -160,8 +160,8 @@ def build_inno():
 
 def convert_md():
     print("Converting Markdown to HTML and RTF")
-    subprocess.run(shlex.split("\"" + which("pandoc") + "\" --standalone --self-contained -f gfm \"What's new.md\" -o \"whatsnew.html\" --css=Pandoc/pandoc-style.css -H Pandoc/pandoc-header.html"))
-    subprocess.run(shlex.split("\"" + which("pandoc") + "\" --standalone --self-contained -f gfm \"What's new.md\" -o \"whatsnewdark.html\" --css=Pandoc/pandoc-style-dark.css -H Pandoc/pandoc-header.html"))
+    subprocess.run(shlex.split("\"" + which("pandoc") + "\" --standalone -f gfm \"What's new.md\" -o \"whatsnew.html\" --css=Pandoc/pandoc-style.css -H Pandoc/pandoc-header.html"))
+    subprocess.run(shlex.split("\"" + which("pandoc") + "\" --standalone -f gfm \"What's new.md\" -o \"whatsnewdark.html\" --css=Pandoc/pandoc-style-dark.css -H Pandoc/pandoc-header.html"))
     subprocess.run(shlex.split("\"" + which("pandoc") + "\" --standalone \"What's new.md\" -o \"What's new.rtf\""))
 
 def open_dir():

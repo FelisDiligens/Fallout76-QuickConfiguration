@@ -1,10 +1,10 @@
 ### What's new in v1.12.3?
 
 - Fixed "Backpack Visible" option
+- Fixed some start-up crashes (when reading *.xml files)
 - Updated some files: default *.ini files, autocomplete suggestions (Custom Tweaks)
-- Fixing some startup crashes
 
-*Unreleased*
+*Released: Jan 19, 2023*
 
 ---
 
