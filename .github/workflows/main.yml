@@ -1,9 +1,11 @@
-name: "Main Workflow"
+name: "CI"
 
 on:
   push:
     branches:
-    - master
+      - master
+    paths:
+      - "**.html"
     
 jobs:
   copy_whatsnew:
