@@ -1,6 +1,7 @@
 ### What's new in v1.12.3?
 
 - Fixed "Backpack Visible" option
+- Updated some files: default *.ini files, autocomplete suggestions (Custom Tweaks)
 
 *Unreleased*
 
