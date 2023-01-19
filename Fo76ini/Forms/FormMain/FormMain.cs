@@ -156,9 +156,11 @@ namespace Fo76ini
             ProfileManager.Feedback();
 
             // Open welcome dialog on first start:
-            if (Initialization.FirstStart)
+            if (ProfileManager.PMFirstInit)
                 formWelcome.OpenDialog();
-            else
+
+            // Check for updates to the translations if it's not the first start
+            if (!Initialization.FirstStart)
                 this.backgroundWorkerTranslationsCheckForUpdates.RunWorkerAsync();
 
             // If nxm:// link has been provided, open the mod manager:

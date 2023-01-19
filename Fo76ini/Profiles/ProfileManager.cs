@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Fo76ini.Interface;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace Fo76ini.Profiles
@@ -11,6 +13,10 @@ namespace Fo76ini.Profiles
     /// </summary>
     public static class ProfileManager
     {
+        /// <summary>
+        /// Indicates whether the profile manager has created a brand new "profiles.xml".
+        /// </summary>
+        public static bool PMFirstInit = false;
         public static event ProfileEventHandler ProfileChanged;
         private static List<GameInstance> games = new List<GameInstance>();
         private static int selectedGameIndex;
@@ -101,30 +107,54 @@ namespace Fo76ini.Profiles
             {
                 Init();
                 Feedback(); // This is important.
+                PMFirstInit = true;
                 return;
             }
 
-            XDocument xmlDoc = XDocument.Load(XMLPath);
-
-            games.Clear();
-            foreach (XElement xmlGame in xmlDoc.Descendants("Game"))
-                AddGame(GameInstance.Deserialize(xmlGame));
-
-            if (games.Count > 0)
+            try
             {
-                int index = Convert.ToInt32(xmlDoc.Root.Attribute("selected").Value);
-                if (index < 0 || index >= games.Count)
-                    SelectedGameIndex = 0;
+                XDocument xmlDoc = XDocument.Load(XMLPath);
+
+                games.Clear();
+                foreach (XElement xmlGame in xmlDoc.Descendants("Game"))
+                    AddGame(GameInstance.Deserialize(xmlGame));
+
+                if (games.Count > 0)
+                {
+                    int index = Convert.ToInt32(xmlDoc.Root.Attribute("selected").Value);
+                    if (index < 0 || index >= games.Count)
+                        SelectedGameIndex = 0;
+                    else
+                        SelectedGameIndex = index;
+                }
                 else
-                    SelectedGameIndex = index;
-            }
-            else
-            {
-                CreateNewDefaultProfile();
-            }
+                {
+                    CreateNewDefaultProfile();
+                }
 
-            // Call event handler:
-            Feedback();
+                // Call event handler:
+                Feedback();
+            }
+            catch (System.Xml.XmlException exc)
+            {
+                DialogResult result = MsgBox
+                                        .Get("loadingProfilesXMLFailed")
+                                        .FormatText(exc.Message)
+                                        .Show(MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (result == DialogResult.Yes)
+                {
+                    Init();
+                    Feedback(); // This is important.
+                    PMFirstInit = true;
+                    return;
+                }
+                else
+                {
+                    Application.Exit();
+                    Environment.Exit(1);
+                    // Environment.FailFast();
+                }
+            }
         }
 
         private static void Init()

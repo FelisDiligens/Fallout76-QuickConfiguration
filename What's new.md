@@ -2,6 +2,7 @@
 
 - Fixed "Backpack Visible" option
 - Updated some files: default *.ini files, autocomplete suggestions (Custom Tweaks)
+- Fixing some startup crashes
 
 *Unreleased*
 

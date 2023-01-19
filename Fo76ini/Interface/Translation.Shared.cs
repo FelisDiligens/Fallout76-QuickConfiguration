@@ -162,6 +162,14 @@ namespace Fo76ini
                 "Error message: {0}"
             );
 
+            MsgBox.Add("loadingProfilesXMLFailed",
+                "Error: Couldn't load profiles",
+                "Failed to read profiles.xml...\n\n" +
+                "Would you like to reset your profiles? (This WILL result in data loss!)\n" +
+                "('No' will close the app with nothing changed)\n\n" +
+                "Error message: {0}"
+            );
+
 
             // FormSettings:
 
