@@ -149,6 +149,19 @@ namespace Fo76ini
                 "Go to the settings page to download them."
             );
 
+            MsgBox.Add("loadingNexusModsProfileXMLFailed",
+                "Couldn't load NexusMods profile",
+                "Failed to read account.xml, you'll be logged out.\n" +
+                "You can log in to your account again in the NexusMods tab.\n\n" +
+                "Error message: {0}"
+            );
+
+            MsgBox.Add("loadingRemoteModsXMLFailed",
+                "Couldn't load NexusMods mods info",
+                "Failed to read mods.xml... you'll have to update the mod information in the Mod Manager again.\n\n" +
+                "Error message: {0}"
+            );
+
 
             // FormSettings:
 

@@ -14,7 +14,7 @@ TARGET_BASE_DIR   = os.path.join(PROJECT_GIT_DIR, "Publish")
 SOLUTION_PATH     = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\Fo76ini.sln")
 PROGRAM_BIN_DIR   = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\bin\\")
 EXECUTABLE_NAME   = "Fo76ini.exe"
-EXECUTABLE_PATH   = os.path.join(PROGRAM_BIN_DIR, EXECUTABLE_NAME)
+EXECUTABLE_PATH   = os.path.join(PROGRAM_BIN_DIR, "Release", EXECUTABLE_NAME)
 UPDATER_BIN_DIR   = os.path.join(PROJECT_GIT_DIR, "Fo76ini_Updater\\bin\\")
 DEPENDENCIES_DIR  = os.path.join(PROJECT_GIT_DIR, "Additional files")
 VERSION_PATH      = os.path.join(PROJECT_GIT_DIR, "VERSION")
@@ -119,7 +119,7 @@ def build_app(debug = False):
 def copy_additions(debug = False):
     print("Copying additional files...")
     if debug:
-        copytree(DEPENDENCIES_DIR, get_binaries_path())
+        copytree(DEPENDENCIES_DIR, PROGRAM_BIN_DIR + "Debug")
     else:
         copytree(DEPENDENCIES_DIR, get_binaries_path())
 

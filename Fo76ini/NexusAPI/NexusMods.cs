@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
+using Fo76ini.Interface;
 using Fo76ini.Utilities;
 
 namespace Fo76ini.NexusAPI
@@ -83,23 +84,43 @@ namespace Fo76ini.NexusAPI
         {
             Mods.Clear();
 
-            NexusMods.User.Load();
+            try
+            {
+                NexusMods.User.Load();
+            }
+            catch (System.Xml.XmlException exc)
+            {
+                MsgBox
+                    .Get("loadingNexusModsProfileXMLFailed")
+                    .FormatText(exc.Message)
+                    .Show(System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
+            }
 
             if (!File.Exists(NexusMods.RemoteXMLPath))
                 return;
 
-            XDocument xmlDoc = XDocument.Load(NexusMods.RemoteXMLPath);
-            foreach (XElement xmlMod in xmlDoc.Descendants("Mod"))
+            try
             {
-                try
+                XDocument xmlDoc = XDocument.Load(NexusMods.RemoteXMLPath);
+                foreach (XElement xmlMod in xmlDoc.Descendants("Mod"))
                 {
-                    NMMod mod = NMMod.Deserialize(xmlMod);
-                    Mods[mod.ID] = mod;
+                    try
+                    {
+                        NMMod mod = NMMod.Deserialize(xmlMod);
+                        Mods[mod.ID] = mod;
+                    }
+                    catch
+                    {
+                        // TODO: Handle invalid entries.
+                    }
                 }
-                catch
-                {
-                    // TODO: Handle invalid entries.
-                }
+            }
+            catch (System.Xml.XmlException exc)
+            {
+                MsgBox
+                    .Get("loadingRemoteModsXMLFailed")
+                    .FormatText(exc.Message)
+                    .Show(System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
             }
         }
 
