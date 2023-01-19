@@ -97,3 +97,5 @@ Checks if any commit to the path `./Fo76ini/languages` has happened since the la
 
 ### From felisdiligens.github.io:
 Displays [felisdiligens.github.io/Fo76ini/What's new.html](https://felisdiligens.github.io/Fo76ini/What's%20new.html) and [/What's new - Dark.html](https://felisdiligens.github.io/Fo76ini/What's%20new%20-%20Dark.html) in a web browser control.
+
+> These files are now symlinks that point to 'whatsnew.html' and 'whatsnewdark.html'

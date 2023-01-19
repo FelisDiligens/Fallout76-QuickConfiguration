@@ -9,6 +9,9 @@
     - [Requirements](#requirements-1)
     - [Running the script](#running-the-script)
       - [Debug build](#debug-build)
+  - [Updating other files...](#updating-other-files)
+    - [Updating `Additional files/autocomplete.txt`](#updating-additional-filesautocompletetxt)
+    - [Updating "What's new"](#updating-whats-new)
 
 ## Manual build process
 
@@ -81,3 +84,15 @@ This will build the app, pack it into a zip, and build the setup.
 
 #### Debug build
 You can also run `python pack_tool.py --build-debug` to make a debug build.
+
+## Updating other files...
+
+### Updating `Additional files/autocomplete.txt`
+
+See [Updating the "autocomplete.txt"](ini%20values.md)
+
+### Updating "What's new"
+
+Run `python pack_tool.py --whatsnew` and commit the changes.
+
+The GitHub action should do the rest... It copies the files into `felisdiligens.github.io/Fo76ini/`, therefore making it public to all users.
