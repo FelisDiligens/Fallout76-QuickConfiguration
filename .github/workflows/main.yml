@@ -14,7 +14,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-files: "\"What's new.html\" \"What's new - Dark.html\""
+          source-files: "whatsnew.html whatsnewdark.html"
           destination-username: 'FelisDiligens'
           destination-repository: 'felisdiligens.github.io'
           destination-directory: 'Fo76ini/'
