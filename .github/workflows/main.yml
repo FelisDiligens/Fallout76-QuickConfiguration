@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Copy What's new *.html files to felisdiligens.github.io"
-        uses: "nkoppel/push-files-to-another-repository@1.1.1"
+        uses: "nkoppel/push-files-to-another-repository@master"
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
