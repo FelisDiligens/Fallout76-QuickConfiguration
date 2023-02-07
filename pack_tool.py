@@ -8,17 +8,18 @@ import itertools
 import argparse
 init()
 
-PROJECT_GIT_DIR   = str(Path(__file__).parent.resolve())
+PROJECT_GIT_DIR       = str(Path(__file__).parent.resolve())
 
-TARGET_BASE_DIR   = os.path.join(PROJECT_GIT_DIR, "Publish")
-SOLUTION_PATH     = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\Fo76ini.sln")
-PROGRAM_BIN_DIR   = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\bin\\")
-EXECUTABLE_NAME   = "Fo76ini.exe"
-EXECUTABLE_PATH   = os.path.join(PROGRAM_BIN_DIR, "Release", EXECUTABLE_NAME)
-UPDATER_BIN_DIR   = os.path.join(PROJECT_GIT_DIR, "Fo76ini_Updater\\bin\\")
-DEPENDENCIES_DIR  = os.path.join(PROJECT_GIT_DIR, "Additional files")
-VERSION_PATH      = os.path.join(PROJECT_GIT_DIR, "VERSION")
-SETUP_ISS_PATH    = os.path.join(PROJECT_GIT_DIR, "setup.iss")
+TARGET_BASE_DIR       = os.path.join(PROJECT_GIT_DIR, "Publish")
+SOLUTION_PATH         = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\Fo76ini.sln")
+PROGRAM_BIN_DIR       = os.path.join(PROJECT_GIT_DIR, "Fo76ini\\bin\\")
+EXECUTABLE_NAME       = "Fo76ini.exe"
+EXECUTABLE_PATH       = os.path.join(PROGRAM_BIN_DIR, "Release", EXECUTABLE_NAME)
+UPDATER_BIN_DIR       = os.path.join(PROJECT_GIT_DIR, "Fo76ini_Updater\\bin\\")
+UPDATER_SOLUTION_PATH = os.path.join(PROJECT_GIT_DIR, "Fo76ini_Updater\\Fo76ini_Updater.sln")
+DEPENDENCIES_DIR      = os.path.join(PROJECT_GIT_DIR, "Additional files")
+VERSION_PATH          = os.path.join(PROJECT_GIT_DIR, "VERSION")
+SETUP_ISS_PATH        = os.path.join(PROJECT_GIT_DIR, "setup.iss")
 
 VERSION = "x.x.x"
 
@@ -99,6 +100,10 @@ def set_version():
     except KeyboardInterrupt:
         print("\nAbort.")
         return
+
+def restore_nuget():
+    os.system("{0} restore \"{1}\"".format(which("nuget"), SOLUTION_PATH, VERSION))
+    os.system("{0} restore \"{1}\"".format(which("nuget"), UPDATER_SOLUTION_PATH, VERSION))
 
 def build_updater(debug = False):
     print("Building updater...")
@@ -249,16 +254,17 @@ def run_interactive():
 {Fore.MAGENTA}(1){Fore.RESET} Set "VERSION" (current: {Fore.GREEN}{VERSION}{Fore.RESET})
 
 {Fore.BLUE}Building
-{Fore.MAGENTA}(2){Fore.RESET} Build app (Debug)
-{Fore.MAGENTA}(3){Fore.RESET} Build app (Release)
-{Fore.MAGENTA}(4){Fore.RESET} Pack app to *.zip
-{Fore.MAGENTA}(5){Fore.RESET} Build setup
+{Fore.MAGENTA}(2){Fore.RESET} Restore NuGet packages
+{Fore.MAGENTA}(3){Fore.RESET} Build app (Debug)
+{Fore.MAGENTA}(4){Fore.RESET} Build app (Release)
+{Fore.MAGENTA}(5){Fore.RESET} Pack app to *.zip
+{Fore.MAGENTA}(6){Fore.RESET} Build setup
 
 {Fore.BLUE}What's new.md
-{Fore.MAGENTA}(6){Fore.RESET} Convert Markdown to HTML and RTF using Pandoc
+{Fore.MAGENTA}(7){Fore.RESET} Convert Markdown to HTML and RTF using Pandoc
 
 {Fore.BLUE}Others
-{Fore.MAGENTA}(7){Fore.RESET} Open target folder
+{Fore.MAGENTA}(8){Fore.RESET} Open target folder
 {Fore.MAGENTA}(0){Fore.RESET} Exit (Ctrl+C)
 -----------------------------------------""")
         try:
@@ -272,22 +278,24 @@ def run_interactive():
             set_version()
             # use_rcedit()
         elif i == "2":
+            restore_nuget()
+        elif i == "3":
             build_updater(debug=True)
             build_app(debug=True)
             copy_additions(debug=True)
-        elif i == "3":
+        elif i == "4":
             build_updater()
             build_app()
             copy_additions()
             use_rcedit()
-        elif i == "4":
-            pack_release()
         elif i == "5":
+            pack_release()
+        elif i == "6":
             update_inno()
             build_inno()
-        elif i == "6":
-            convert_md()
         elif i == "7":
+            convert_md()
+        elif i == "8":
             open_dir()
         elif i == "0" or i == "":
             print("""Bye bye!
@@ -300,6 +308,8 @@ def run_args(args):
     if args.set_version:
         set_version()
         # use_rcedit()
+    if args.restore:
+        restore_nuget()
     if args.build_debug:
         build_updater(debug=True)
         build_app(debug=True)
@@ -333,6 +343,8 @@ def get_warn_text():
         warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "Pandoc not found!\n"
     if get_msbuild_path() is None:
         warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "MSBuild not found!\n"
+    if which("nuget") is None:
+        warn_text += Fore.YELLOW + "WARN: " + Fore.RESET + "NuGet not found!\n"
 
     if warn_text:
         warn_text += Fore.YELLOW + "\nBuilding might fail if requirements are missing.\nMake sure you installed them properly and added them to your PATH.\n\nYou can install most of them with scoop like so:\n> " + Fore.BLUE + "scoop install 7zip git rcedit inno-setup pandoc\n"
@@ -342,6 +354,7 @@ def get_warn_text():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Helper script for building Fallout 76 Quick Configuration')
     parser.add_argument('-v', '--set-version', help='set the current version', required=False, action='store_true')
+    parser.add_argument('-r', '--restore', help='restore nuget packages', required=False, action='store_true')
     parser.add_argument('-b', '--build', help='build the app and updater', required=False, action='store_true')
     parser.add_argument('-d', '--build-debug', help='build the app and updater (Debug configuration)', required=False, action='store_true')
     parser.add_argument('-p', '--pack', help='pack the app into a zip archive', required=False, action='store_true')
@@ -352,7 +365,7 @@ if __name__ == "__main__":
     mkdir(TARGET_BASE_DIR)
     get_version()
 
-    args_list = [args.build_debug, args.build, args.build_setup, args.pack, args.set_version, args.whatsnew]
+    args_list = [args.restore, args.build_debug, args.build, args.build_setup, args.pack, args.set_version, args.whatsnew]
     #if args_list.count(True) > 1:
     #    print("ERROR: Only one argument allowed")
     if args_list.count(True) >= 1:

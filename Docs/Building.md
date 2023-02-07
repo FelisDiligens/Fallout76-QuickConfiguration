@@ -5,10 +5,11 @@
     - [Requirements](#requirements)
     - [Building the application manually](#building-the-application-manually)
     - [Building the setup manually](#building-the-setup-manually)
-  - [Use my build script `pack_tool.py`](#use-my-build-script-pack_toolpy)
+  - [Use my build script `pack_tool.py` (recommended)](#use-my-build-script-pack_toolpy-recommended)
     - [Requirements](#requirements-1)
     - [Running the script](#running-the-script)
       - [Debug build](#debug-build)
+      - [Arguments](#arguments)
   - [Updating other files...](#updating-other-files)
     - [Updating `Additional files/autocomplete.txt`](#updating-additional-filesautocompletetxt)
     - [Updating "What's new"](#updating-whats-new)
@@ -50,23 +51,28 @@
     ```
 4. Build the setup.
 
-## Use my build script `pack_tool.py`
+## Use my build script `pack_tool.py` (recommended)
 
 ### Requirements
 First, install all requirements from the "Manual build process" section.
 
 Next, install these additional requirements for this build script:
 - [Python 3.3 or newer](https://www.python.org/downloads/)
+  - [colorama](https://pypi.org/project/colorama/)
 - [rcedit](https://github.com/electron/rcedit)
 - [7-Zip](https://www.7-zip.org/download.html)
 - [Pandoc](https://pandoc.org/installing.html)
+- [NuGet](https://github.com/nuget/home)
 
-I recommend installing these using scoop:
+I recommend installing these using `scoop` and `pip`:
 ```powershell
+# First, install scoop:
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm get.scoop.sh | iex
+# Add the 'extras' bucket to scoop:
 scoop bucket add extras
-scoop install 7zip python rcedit inno-setup pandoc
+# Install all requirements:
+scoop install 7zip python rcedit inno-setup nuget pandoc
 python -m pip install colorama
 ```
 *(Paste this line by line into a PowerShell window)*
@@ -79,11 +85,30 @@ From here, you can simply build the app and it should put the result into the fo
 
 The script has an interactive mode (which you can see in the screenshot) that starts when no command line arguments are supplied.
 
-If you want to build the app for release quickly, enter this: `python pack_tool.py -b -p -s`  
+If you want to build the app for release quickly, enter this: `python pack_tool.py -r -b -p -s`  
 This will build the app, pack it into a zip, and build the setup.
 
 #### Debug build
 You can also run `python pack_tool.py --build-debug` to make a debug build.
+
+#### Arguments
+
+```
+$ python pack_tool.py --help
+usage: pack_tool.py [-h] [-v] [-r] [-b] [-d] [-p] [-s] [-w]
+
+Helper script for building Fallout 76 Quick Configuration
+
+options:
+  -h, --help         show this help message and exit
+  -v, --set-version  set the current version
+  -r, --restore      restore nuget packages
+  -b, --build        build the app and updater
+  -d, --build-debug  build the app and updater (Debug configuration)
+  -p, --pack         pack the app into a zip archive
+  -s, --build-setup  build the setup
+  -w, --whatsnew     update the "What's new?" files
+```
 
 ## Updating other files...
 
