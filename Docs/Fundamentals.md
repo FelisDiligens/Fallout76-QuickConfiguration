@@ -57,7 +57,7 @@ However, to the confusion of many users, there are multiple keys that are recogn
 
 `sResourceIndexFileList` and `sResourceArchive2List` seem to work for most people, most of the time.
 
-All that the mod manager does, is packing loose assets using Archive2 and adding these files to the list in the *.ini file. (As well as saving some meta data about the mod)
+All that the mod manager does, is packing loose assets using Archive2 and adding these files to the list in the \*.ini file. (As well as saving some meta data about the mod)
 
 #### Types of assets
 
@@ -69,3 +69,7 @@ All that the mod manager does, is packing loose assets using Archive2 and adding
 | HUD/UI       | Shockwave Flash (\*.swf)               | General         | None                 |
 | SFX/Music    | XAudio2 file (\*.xwm)                  | General         | None                 |
 | Localization | \*.dlstrings, \*.ilstrings, \*.strings | General         | None                 |
+
+#### \*.ba2 file format
+
+If you're interested in the structure of a \*.ba2 file, see [\*.ba2 format](./ba2format.md).
