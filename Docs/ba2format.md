@@ -22,6 +22,8 @@ I reverse-engineered the files a bit and took the information from here: https:/
 | 0x0C - 0x0F | uint32  | Number of files                          |
 | 0x10 - 0x17 | uint64  | Offset to file name table                |
 
+24 Bytes
+
 ## File header
 
 Each file has a header, starting at 0x18. The byte ranges in this table are relative to the start of a file header.
