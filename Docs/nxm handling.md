@@ -8,9 +8,12 @@
 
 ## How it's handled
 
-- When the app get's opened with an `nxm://` link as an argument, it writes that url to a `nxm.txt` file into the configuration path (`$env:LocalAppData\Fallout 76 Quick Configuration`).
-- If an instance of the app is already running, it just quits.
-- If not...
-    - It will notice the `nxm.txt` file, load it, and then delete it.
-    - Open FormMods, if it isn't already opened.
-    - Download the file and import it.
+- When the app get's opened with an `nxm://` link as an argument, it writes that url to a `nxm.txt` file in the configuration path (`$env:LocalAppData\Fallout 76 Quick Configuration`).
+- If an instance of the app is already running, the app just quits.
+- If not, the app will check periodically for the `nxm.txt` file.
+    - If the app find it:
+        - Open FormMods, if it isn't already opened.
+        - Load the text file and then delete it.
+        - Parse the nxm link and request a download link from the Nexus API.
+        - Download the file.
+        - Import it and populate the mod's fields with meta info
