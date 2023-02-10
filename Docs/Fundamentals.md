@@ -14,7 +14,7 @@ The \*.ini file suffixes are:
 - "`Prefs`" - The in-game settings
 - "`Custom`" - The game engine reads this file but doesn't modify it. Whether or not the values in this file take precedence over the values in `Fallout76Prefs.ini` is hit or miss.
 
-The keys in the \*.ini files seem to follow the Hungarian Notation:
+The keys in the \*.ini files seem to follow the [Hungarian Notation](https://en.wikipedia.org/wiki/Hungarian_notation):
 
 | Prefix    | Type of value                             |
 | --------- | ----------------------------------------- |
