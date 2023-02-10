@@ -82,7 +82,7 @@ Each texture header has one or more chunks. The byte ranges in this table are re
 
 ## Files
 
-The byte ranges in this table are relative to the start of a file header.
+The file contents.
 
 ## File name table
 
