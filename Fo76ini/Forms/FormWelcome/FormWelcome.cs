@@ -1,5 +1,4 @@
-﻿using Fo76ini.Forms.FormTextPrompt;
-using Fo76ini.Interface;
+﻿using Fo76ini.Interface;
 using Fo76ini.Profiles;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
