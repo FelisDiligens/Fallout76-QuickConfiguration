@@ -687,6 +687,7 @@ namespace Fo76ini
             {
                 try
                 {
+                    FileInfo fileInfo = new FileInfo(this.openFileDialogBA2.FileName);
                     Archive2.Info info = Archive2.ReadFile(this.openFileDialogBA2.FileName);
                     String preset = "Unknown";
                     if (info.format == Archive2.Format.General &&
@@ -700,6 +701,7 @@ namespace Fo76ini
                         preset = "Sound FX and Music / Interface and HUD";
 
                     MsgBox.Show("Archive2 info",
+                        $"File name: {fileInfo.Name}\n" +
                         $"Format: {Archive2.GetFormatName(info.format)}\n" +
                         $"Compression: {Archive2.GetCompressionName(info.compression)}\n" +
                         $"Preset: \"{preset}\"\n" +
