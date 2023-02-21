@@ -61,14 +61,17 @@ All that the mod manager does, is packing loose assets using Archive2 and adding
 
 #### Types of assets
 
-| Asset type   | File type and extension                | Archive2 format | Archive2 compression |
-| ------------ | -------------------------------------- | --------------- | -------------------- |
-| Mesh         | NetImmerse File (\*.nif)               | General         | Default              |
-| Texture      | DirectDraw Surface (\*.dds)            | DDS             | Default              |
-| Material     | \*.bgsm, \*.bgem                       | General         | Default              |
-| HUD/UI       | Shockwave Flash (\*.swf)               | General         | None                 |
-| SFX/Music    | XAudio2 file (\*.xwm)                  | General         | None                 |
-| Localization | \*.dlstrings, \*.ilstrings, \*.strings | General         | None                 |
+| Asset type   | File type and extension                        | Archive2 format | Archive2 compression |
+| ------------ | ---------------------------------------------- | --------------- | -------------------- |
+| Mesh         | NetImmerse File (\*.nif)                       | General         | Default              |
+| Animation    | \*.hkx                                         | General         | Default              |
+| Material     | \*.bgsm, \*.bgem                               | General         | Default              |
+| Texture      | DirectDraw Surface (\*.dds)                    | DDS             | Default              |
+| HUD/UI       | Shockwave Flash (\*.swf)                       | General         | None                 |
+| SFX/Music    | XAudio2 file (\*.xwm)                          | General         | None                 |
+| Voice        | \*.fuz                                         | General         | None                 |
+| Lip sync     | \*.lip                                         | General         | None                 |
+| Localization | \*.dlstrings, \*.ilstrings, \*.strings         | General         | None                 |
 
 #### \*.ba2 file format
 
