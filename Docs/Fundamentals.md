@@ -64,6 +64,7 @@ All that the mod manager does, is packing loose assets using Archive2 and adding
 | Asset type   | File type and extension                        | Archive2 format | Archive2 compression |
 | ------------ | ---------------------------------------------- | --------------- | -------------------- |
 | Mesh         | NetImmerse File (\*.nif)                       | General         | Default              |
+| Animation    | \*.hkx                                         | General         | Default              |
 | Texture      | DirectDraw Surface (\*.dds)                    | DDS             | Default              |
 | Material     | \*.bgsm, \*.bgem                               | General         | Default              |
 | HUD/UI       | Shockwave Flash (\*.swf)                       | General         | None                 |
