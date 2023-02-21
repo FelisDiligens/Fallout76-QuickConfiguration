@@ -31,16 +31,15 @@ namespace Fo76ini.Mods
         /// Converts ManagedMod.ArchiveCompression and ManagedMod.ArchiveFormat to an Archive2.Preset.
         /// Automatically determines appropriate compression and format if needed.
         /// </summary>
-        public static Archive2.Preset GetArchive2Preset(String managedFolderPath, ManagedMod.ArchiveFormat format, ManagedMod.ArchiveCompression compression)
+        public static Archive2.Preset GetArchive2Preset(String managedFolderPath, Archive2.Format? format, Archive2.Compression? compression)
         {
             var preset = new Archive2.Preset();
 
-            // No detection needed, "convert" ArchiveCompression to Archive2.Compression and ArchiveFormat to Archive2.Format:
-            if (compression != ManagedMod.ArchiveCompression.Auto && format != ManagedMod.ArchiveFormat.Auto)
+            // No detection needed:
+            if (compression != null && format != null)
             {
-                preset.compression = compression == ManagedMod.ArchiveCompression.Compressed ? Archive2.Compression.Default : Archive2.Compression.None;
-                preset.format = format == ManagedMod.ArchiveFormat.General ? Archive2.Format.General : Archive2.Format.DDS;
-
+                preset.compression = (Archive2.Compression)compression;
+                preset.format = (Archive2.Format)format;
                 return preset;
             }
 

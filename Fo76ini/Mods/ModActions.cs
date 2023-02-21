@@ -233,8 +233,8 @@ namespace Fo76ini.Mods
             if (resourceFoldersFound)
             {
                 mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
-                mod.Format = ManagedMod.ArchiveFormat.Auto;
-                mod.Compression = ManagedMod.ArchiveCompression.Auto;
+                mod.Format = null;
+                mod.Compression = null;
                 mod.RootFolder = "Data";
             }
 
@@ -259,24 +259,24 @@ namespace Fo76ini.Mods
             if (generalFoldersFound)
             {
                 mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
-                mod.Format = ManagedMod.ArchiveFormat.General;
-                mod.Compression = ManagedMod.ArchiveCompression.Compressed;
+                mod.Format = Archive2.Format.General;
+                mod.Compression = Archive2.Compression.Default;
                 mod.RootFolder = "Data";
             }
 
             if (texturesFolderFound)
             {
                 mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
-                mod.Format = ManagedMod.ArchiveFormat.Textures;
-                mod.Compression = ManagedMod.ArchiveCompression.Compressed;
+                mod.Format = Archive2.Format.DDS;
+                mod.Compression = Archive2.Compression.Default;
                 mod.RootFolder = "Data";
             }
 
             if (soundFoldersFound)
             {
                 mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
-                mod.Format = ManagedMod.ArchiveFormat.General;
-                mod.Compression = ManagedMod.ArchiveCompression.Uncompressed;
+                mod.Format = Archive2.Format.General;
+                mod.Compression = Archive2.Compression.None;
                 mod.RootFolder = "Data";
             }
 
@@ -285,8 +285,8 @@ namespace Fo76ini.Mods
                 texturesFolderFound && soundFoldersFound)
             {
                 mod.Method = ManagedMod.DeploymentMethod.BundledBA2;
-                mod.Format = ManagedMod.ArchiveFormat.Auto;
-                mod.Compression = ManagedMod.ArchiveCompression.Auto;
+                mod.Format = null;
+                mod.Compression = null;
                 mod.RootFolder = "Data";
             }
         }

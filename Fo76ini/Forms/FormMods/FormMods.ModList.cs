@@ -144,10 +144,10 @@ namespace Fo76ini
                 string installPreset = "?";
                 if (mod.Method == ManagedMod.DeploymentMethod.SeparateBA2)
                 {
-                    bool isCompressed = mod.Compression == ManagedMod.ArchiveCompression.Compressed;
+                    bool isCompressed = mod.Compression == Archive2.Compression.Default;
                     switch (mod.Format)
                     {
-                        case ManagedMod.ArchiveFormat.General:
+                        case Archive2.Format.General:
                             if (isCompressed)
                             {
                                 installPreset = Localization.GetString("modsTablePresetGeneral"); // General
@@ -159,11 +159,11 @@ namespace Fo76ini
                                 this.ArchivePresetColor = Theming.GetColor("Mod.PresetSoundColor", Color.RoyalBlue);
                             }
                             break;
-                        case ManagedMod.ArchiveFormat.Textures:
+                        case Archive2.Format.DDS:
                             installPreset = Localization.GetString("modsTablePresetTextures");    // Textures
                             this.ArchivePresetColor = Theming.GetColor("Mod.PresetTexturesColor", Color.DarkGreen);
                             break;
-                        case ManagedMod.ArchiveFormat.Auto:
+                        case null: // null means auto-detect
                             installPreset = Localization.GetString("auto");                       // Auto-detect
                             this.ArchivePresetColor = Theming.GetColor("Mod.PresetAutoColor", Color.DimGray);
                             break;
@@ -172,7 +172,7 @@ namespace Fo76ini
                             this.ArchivePresetColor = Color.Red;
                             break;
                     }
-                    if (mod.Compression == ManagedMod.ArchiveCompression.Auto)
+                    if (mod.Compression == null) // null means auto-detect
                     {
                         installPreset = Localization.GetString("auto");                           // Auto-detect
                         this.ArchivePresetColor = Theming.GetColor("Mod.PresetAutoColor", Color.DimGray);

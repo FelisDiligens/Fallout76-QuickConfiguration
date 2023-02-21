@@ -26,36 +26,6 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
-        /// Archive format
-        /// Auto     - Automatically detect
-        /// General  - Use "Archive2.Format.General"
-        /// Textures - Use "Archive2.Format.DDS"
-        /// 
-        /// (Does only apply to DeploymentMethod.SeparateBA2)
-        /// </summary>
-        public enum ArchiveFormat
-        {
-            Auto,
-            General,
-            Textures
-        }
-
-        /// <summary>
-        /// Archive compression
-        /// Auto         - Automatically detect
-        /// Compressed   - Use "Archive2.Compression.Default"
-        /// Uncompressed - Use "Archive2.Compression.None"
-        /// 
-        /// (Does only apply to DeploymentMethod.SeparateBA2)
-        /// </summary>
-        public enum ArchiveCompression
-        {
-            Auto,
-            Compressed,
-            Uncompressed
-        }
-
-        /// <summary>
         /// Convert DeploymentMethod enum to string.
         /// </summary>
         private static string GetMethodName(DeploymentMethod method)
@@ -83,52 +53,83 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
-        /// Convert ArchiveFormat enum to string.
+        /// Convert Archive2.Format? to string.
+        /// (Backwards-compatibility)
         /// </summary>
-        private static string GetFormatName(ArchiveFormat format)
+        private static string GetFormatName(Archive2.Format? format)
         {
-            return Enum.GetName(typeof(ArchiveFormat), (int)format);
+            if (format == null)
+                return "Auto";
+
+            switch (format)
+            {
+                case Archive2.Format.General:
+                    return "General";
+                case Archive2.Format.DDS:
+                    return "Textures";
+                default:
+                    return "Auto";
+            }
         }
 
         /// <summary>
-        /// Convert string to ArchiveFormat enum.
+        /// Convert string to Archive2.Format?.
+        /// (Backwards-compatibility)
         /// </summary>
-        private static ArchiveFormat GetFormat(String format)
+        private static Archive2.Format? GetFormat(String format)
         {
             switch (format)
             {
                 case "General":
-                    return ArchiveFormat.General;
+                case "GNRL":
+                    return Archive2.Format.General;
+                case "DDS":
+                case "DX10":
                 case "Textures":
-                    return ArchiveFormat.Textures;
+                    return Archive2.Format.DDS;
                 case "Auto":
-                    return ArchiveFormat.Auto;
+                    return null;
                 default:
                     throw new InvalidDataException($"Invalid mod archive format: {format}");
             }
         }
 
         /// <summary>
-        /// Convert ArchiveCompression enum to string.
+        /// Convert Archive2.Compression? to string.
+        /// (Backwards-compatibility)
         /// </summary>
-        private static string GetCompressionName(ArchiveCompression compression)
+        private static string GetCompressionName(Archive2.Compression? compression)
         {
-            return Enum.GetName(typeof(ArchiveCompression), (int)compression);
+            if (compression == null)
+                return "Auto";
+
+            switch (compression)
+            {
+                case Archive2.Compression.Default:
+                    return "Compressed";
+                case Archive2.Compression.None:
+                    return "Uncompressed";
+                default:
+                    return "Auto";
+            }
         }
 
         /// <summary>
-        /// Convert string to ArchiveCompression enum.
+        /// Convert string to Archive2.Compression?.
+        /// (Backwards-compatibility)
         /// </summary>
-        private static ArchiveCompression GetCompression(String compression)
+        private static Archive2.Compression? GetCompression(String compression)
         {
             switch (compression)
             {
+                case "Default":
                 case "Compressed":
-                    return ArchiveCompression.Compressed;
+                    return Archive2.Compression.Default;
+                case "None":
                 case "Uncompressed":
-                    return ArchiveCompression.Uncompressed;
+                    return Archive2.Compression.None;
                 case "Auto":
-                    return ArchiveCompression.Auto;
+                    return null;
                 default:
                     throw new InvalidDataException($"Invalid mod archive compression: {compression}");
             }
@@ -166,33 +167,39 @@ namespace Fo76ini.Mods
 
         /// <summary>
         /// How it should get compressed on deployment.
+        /// nullable: If null, auto-detect compression.
         /// </summary>
-        public ArchiveCompression Compression = ArchiveCompression.Auto;
+        public Archive2.Compression? Compression = null;
 
         /// <summary>
         /// How it should get formatted on deployment.
+        /// nullable: If null, auto-detect format.
         /// </summary>
-        public ArchiveFormat Format = ArchiveFormat.Auto;
+        public Archive2.Format? Format = null;
 
         /// <summary>
         /// How the archive in Data is compressed.
+        /// nullable: If null, auto-detect compression.
         /// </summary>
-        public ArchiveCompression CurrentCompression = ArchiveCompression.Auto;
+        public Archive2.Compression? CurrentCompression = null;
 
         /// <summary>
         /// How the archive in Data is formatted.
+        /// nullable: If null, auto-detect format.
         /// </summary>
-        public ArchiveFormat CurrentFormat = ArchiveFormat.Auto;
+        public Archive2.Format? CurrentFormat = null;
 
         /// <summary>
         /// How the archive in FrozenData is compressed.
+        /// nullable: If null, auto-detect compression.
         /// </summary>
-        public ArchiveCompression FrozenCompression = ArchiveCompression.Auto;
+        public Archive2.Compression? FrozenCompression = null;
 
         /// <summary>
         /// How the archive in FrozenData is formatted.
+        /// nullable: If null, auto-detect format.
         /// </summary>
-        public ArchiveFormat FrozenFormat = ArchiveFormat.Auto;
+        public Archive2.Format? FrozenFormat = null;
 
         /// <summary>
         /// Relative paths of the mod files that are currently deployed.

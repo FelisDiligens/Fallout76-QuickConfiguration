@@ -78,8 +78,10 @@ namespace Fo76ini.Utilities
             switch (formatStr)
             {
                 case "General":
+                case "GNRL":
                     return Archive2.Format.General;
                 case "DDS":
+                case "DX10":
                     return Archive2.Format.DDS;
                 case "XBoxDDS":
                     return Archive2.Format.XBoxDDS;
@@ -88,6 +90,14 @@ namespace Fo76ini.Utilities
                 default:
                     throw new ArgumentException($"Invalid ba2 format type: {formatStr}");
             }
+        }
+
+        /// <summary>
+        /// Convert Archive2.Format enum to string.
+        /// </summary>
+        private static string GetFormatName(Archive2.Format format)
+        {
+            return Enum.GetName(typeof(Archive2.Format), (int)format);
         }
 
         private static void Call(string arguments)

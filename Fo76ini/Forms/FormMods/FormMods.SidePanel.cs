@@ -341,26 +341,26 @@ namespace Fo76ini
             // Preset
             if (this.editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2)
             {
-                bool isCompressed = this.editedMod.Compression == ManagedMod.ArchiveCompression.Compressed;
+                bool isCompressed = this.editedMod.Compression == Archive2.Compression.Default;
                 switch (this.editedMod.Format)
                 {
-                    case ManagedMod.ArchiveFormat.General:
+                    case Archive2.Format.General:
                         if (isCompressed)
                             this.comboBoxModArchivePreset.SelectedIndex = 2; // General
                         else
                             this.comboBoxModArchivePreset.SelectedIndex = 4; // Sound FX
                         break;
-                    case ManagedMod.ArchiveFormat.Textures:
+                    case Archive2.Format.DDS:
                         this.comboBoxModArchivePreset.SelectedIndex = 3;     // Textures
                         break;
-                    case ManagedMod.ArchiveFormat.Auto:
+                    case null: // null means auto-detect
                         this.comboBoxModArchivePreset.SelectedIndex = 1;     // Auto-detect
                         break;
                     default:
                         this.comboBoxModArchivePreset.SelectedIndex = 0;     // Please select
                         break;
                 }
-                if (this.editedMod.Compression == ManagedMod.ArchiveCompression.Auto)
+                if (this.editedMod.Compression == null) // null means auto-detect
                     this.comboBoxModArchivePreset.SelectedIndex = 1;
             }
 
@@ -638,7 +638,7 @@ namespace Fo76ini
             // General files found, but wrong format chosen:
             if (generalFoldersFound &&
                 editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2 &&
-                editedMod.Format != ManagedMod.ArchiveFormat.General && editedMod.Format != ManagedMod.ArchiveFormat.Auto)
+                editedMod.Format != Archive2.Format.General && editedMod.Format != null)
             {
                 this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintWrongPresetForGeneralFiles");
                 return;
@@ -647,8 +647,8 @@ namespace Fo76ini
             // Textures found, but wrong format chosen:
             if (texturesFolderFound &&
                 editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2 &&
-                (editedMod.Format != ManagedMod.ArchiveFormat.Textures && editedMod.Format != ManagedMod.ArchiveFormat.Auto ||
-                editedMod.Compression != ManagedMod.ArchiveCompression.Compressed && editedMod.Compression != ManagedMod.ArchiveCompression.Auto))
+                (editedMod.Format != Archive2.Format.DDS && editedMod.Format != null ||
+                editedMod.Compression != Archive2.Compression.Default && editedMod.Compression != null))
             {
                 this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintWrongPresetForTextures");
                 return;
@@ -657,8 +657,8 @@ namespace Fo76ini
             // Sound files found, but wrong format chosen:
             if (soundFoldersFound &&
                 editedMod.Method == ManagedMod.DeploymentMethod.SeparateBA2 &&
-                (editedMod.Format != ManagedMod.ArchiveFormat.General && editedMod.Format != ManagedMod.ArchiveFormat.Auto ||
-                editedMod.Compression != ManagedMod.ArchiveCompression.Uncompressed && editedMod.Compression != ManagedMod.ArchiveCompression.Auto))
+                (editedMod.Format != Archive2.Format.General && editedMod.Format != null ||
+                editedMod.Compression != Archive2.Compression.None && editedMod.Compression != null))
             {
                 this.labelModInstallWarning.Text = Localization.GetString("modSidePanel_HintWrongPresetForAudioFiles");
                 return;
@@ -735,20 +735,20 @@ namespace Fo76ini
                 {
                     case 0: // Please select
                     case 1: // Auto-detect
-                        mod.Format = ManagedMod.ArchiveFormat.Auto;
-                        mod.Compression = ManagedMod.ArchiveCompression.Auto;
+                        mod.Format = null;
+                        mod.Compression = null;
                         break;
                     case 2: // General
-                        mod.Format = ManagedMod.ArchiveFormat.General;
-                        mod.Compression = ManagedMod.ArchiveCompression.Compressed;
+                        mod.Format = Archive2.Format.General;
+                        mod.Compression = Archive2.Compression.None;
                         break;
                     case 3: // Textures
-                        mod.Format = ManagedMod.ArchiveFormat.Textures;
-                        mod.Compression = ManagedMod.ArchiveCompression.Compressed;
+                        mod.Format = Archive2.Format.DDS;
+                        mod.Compression = Archive2.Compression.Default;
                         break;
                     case 4: // Audio
-                        mod.Format = ManagedMod.ArchiveFormat.General;
-                        mod.Compression = ManagedMod.ArchiveCompression.Uncompressed;
+                        mod.Format = Archive2.Format.General;
+                        mod.Compression = Archive2.Compression.None;
                         break;
                 }
                 if (mod.Frozen &&
