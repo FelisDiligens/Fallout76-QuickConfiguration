@@ -55,12 +55,12 @@ namespace Fo76ini.API
             // Make API request:
             APIRequest request = new APIRequest($"{NexusMods.APIDomain}/v1/users/validate.json");
             request.Headers["apikey"] = APIKey;
-            request.Execute();
-            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            APIResponse response = request.GetResponse();
+            if (response.Success && response.StatusCode == HttpStatusCode.OK)
             {
                 try
                 {
-                    JObject json = request.GetJObject();
+                    JObject json = response.GetJObject();
 
                     UserName = json["name"].ToString();
                     ProfilePictureURL = json["profile_url"].ToString();
@@ -73,10 +73,10 @@ namespace Fo76ini.API
                     else
                         Status = Membership.Basic;
 
-                    DailyRateLimit = Convert.ToInt32(request.ResponseHeaders["x-rl-daily-remaining"]);
-                    DailyRateLimitResetString = request.ResponseHeaders["x-rl-daily-reset"];
-                    HourlyRateLimit = Convert.ToInt32(request.ResponseHeaders["x-rl-hourly-remaining"]);
-                    HourlyRateLimitResetString = request.ResponseHeaders["x-rl-hourly-reset"];
+                    DailyRateLimit = Convert.ToInt32(response.Headers["x-rl-daily-remaining"]);
+                    DailyRateLimitResetString = response.Headers["x-rl-daily-reset"];
+                    HourlyRateLimit = Convert.ToInt32(response.Headers["x-rl-hourly-remaining"]);
+                    HourlyRateLimitResetString = response.Headers["x-rl-hourly-reset"];
 
                     DownloadProfilePicture();
 
@@ -95,10 +95,10 @@ namespace Fo76ini.API
             {
                 try
                 {
-                    if (request.Success)
-                        MsgBox.Get("failed").FormatText($"Server returned: HTTP {request.StatusCode}\n{request.GetJObject()["message"]}").Show(MessageBoxIcon.Error);
+                    if (response.Success)
+                        MsgBox.Get("failed").FormatText($"Server returned: HTTP {response.StatusCode}\n{response.GetJObject()["message"]}").Show(MessageBoxIcon.Error);
                     else
-                        MsgBox.Get("failed").FormatText($"WebException: {request.Exception.Message}").Show(MessageBoxIcon.Error);
+                        MsgBox.Get("failed").FormatText($"WebException: {response.Exception.Message}").Show(MessageBoxIcon.Error);
                 }
                 catch (Exception e)
                 {

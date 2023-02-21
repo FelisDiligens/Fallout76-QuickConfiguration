@@ -5,17 +5,76 @@ using Newtonsoft.Json.Linq;
 namespace Fo76ini.API
 {
     /// <summary>
-    /// Wrapper around the classes of System.Net.
-    /// Used to make HTTPS requests to various APIs.
+    /// Wrapper around the class System.Net.HttpWebResponse with getters for Newtonsoft.Json.JArray and Newtonsoft.Json.JObject.
+    /// Returned by APIRequest.GetResponse()
+    /// </summary>
+    public class APIResponse
+    {
+        public APIResponse(HttpWebResponse response, WebException ex = null)
+        {
+            if (response != null)
+            {
+                // Read the response:
+                this.response = response;
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    this.ResponseText = reader.ReadToEnd();
+                }
+
+                this.Success = true;
+            }
+            else
+            {
+                this.ResponseText = string.Empty;
+                this.Success = false;
+            }
+
+            this.Exception = ex;
+        }
+
+        private HttpWebResponse response;
+
+        public WebHeaderCollection Headers
+        {
+            get => response.Headers;
+        }
+
+        public HttpStatusCode StatusCode
+        {
+            get => response.StatusCode;
+        }
+
+        /// <summary>
+        /// Whether the request was successful.
+        /// </summary>
+        public bool Success { get; private set; }
+
+        public WebException Exception = null;
+
+        public string ResponseText { get; private set; }
+
+        public JObject GetJObject()
+        {
+            return JObject.Parse(ResponseText);
+        }
+
+        public JArray GetJArray()
+        {
+            return JArray.Parse(ResponseText);
+        }
+    }
+
+    /// <summary>
+    /// Wrapper around the classes System.Net.WebRequest and System.Net.HttpWebRequest.
+    /// Used to make HTTP(S) requests to various APIs.
+    /// Automatically sets the user agent.
     /// </summary>
     public class APIRequest
     {
         public string URL;
 
         private HttpWebRequest request;
-        private HttpWebResponse response;
-
-        public WebException Exception = null;
 
         public string PostData = "";
 
@@ -32,9 +91,9 @@ namespace Fo76ini.API
         /// <summary>
         /// Sends the request and reads the response.
         /// </summary>
-        public void Execute()
+        /// <returns>Returns an instance 'APIResponse', representing the response from the server.</returns>
+        public APIResponse GetResponse()
         {
-            this.Success = false;
             try
             {
                 // Send POST data, if needed:
@@ -43,17 +102,7 @@ namespace Fo76ini.API
                         streamWriter.Write(PostData);
 
                 // Get response:
-                this.response = (HttpWebResponse)request.GetResponse();
-                this.Success = true;
-
-                // Read the response:
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    ResponseText = reader.ReadToEnd();
-                }
-
-                this.Exception = null;
+                return new APIResponse((HttpWebResponse)request.GetResponse());
             }
             catch (WebException ex)
             {
@@ -61,51 +110,17 @@ namespace Fo76ini.API
                 if (ex.Response != null)
                 {
                     // Get response:
-                    this.response = (HttpWebResponse)ex.Response;
-                    this.Success = true;
-
-                    // Read the response:
-                    using (Stream stream = response.GetResponseStream())
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        ResponseText = reader.ReadToEnd();
-                    }
+                    return new APIResponse((HttpWebResponse)ex.Response, ex);
                 }
 
-                this.Exception = ex;
+                return new APIResponse(null, ex);
             }
-        }
-
-        public JObject GetJObject()
-        {
-            return JObject.Parse(ResponseText);
-        }
-
-        public JArray GetJArray()
-        {
-            return JArray.Parse(ResponseText);
-        }
-
-        public WebHeaderCollection ResponseHeaders
-        {
-            get => response.Headers;
         }
 
         public WebHeaderCollection Headers
         {
             get => request.Headers;
         }
-
-        public HttpStatusCode StatusCode
-        {
-            get => response.StatusCode;
-        }
-
-        /// <summary>
-        /// Whether the request was successful.
-        /// </summary>
-        public bool Success { get; private set; }
-        public string ResponseText { get; private set; }
 
         public string UserAgent
         {

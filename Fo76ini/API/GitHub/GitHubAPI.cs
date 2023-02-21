@@ -28,13 +28,13 @@ namespace Fo76ini.API.GitHub
 
             APIRequest request = new APIRequest($"{APIDomain}/rate_limit");
             request.Accept = "application/vnd.github.v3+json";
-            request.Execute();
+            APIResponse response = request.GetResponse();
 
-            if (request.Success)
+            if (response.Success)
             {
-                rateLimit.limit = Convert.ToInt32(request.ResponseHeaders["X-RateLimit-Limit"]);
-                rateLimit.remaining = Convert.ToInt32(request.ResponseHeaders["X-RateLimit-Remaining"]);
-                rateLimit.reset = Utils.UnixTimeStampToDateTime(Convert.ToDouble(request.ResponseHeaders["X-RateLimit-Reset"]));
+                rateLimit.limit = Convert.ToInt32(response.Headers["X-RateLimit-Limit"]);
+                rateLimit.remaining = Convert.ToInt32(response.Headers["X-RateLimit-Remaining"]);
+                rateLimit.reset = Utils.UnixTimeStampToDateTime(Convert.ToDouble(response.Headers["X-RateLimit-Reset"]));
 
                 if (rateLimit.limit <= 0)
                     rateLimit.exceeded = true;
@@ -43,7 +43,7 @@ namespace Fo76ini.API.GitHub
             }
             else
             {
-                throw request.Exception;
+                throw response.Exception;
             }
         }
 
@@ -77,11 +77,11 @@ namespace Fo76ini.API.GitHub
 
             APIRequest request = new APIRequest($"{APIDomain}/repos/{user}/{repo}/releases/latest");
             request.Accept = "application/vnd.github.v3+json";
-            request.Execute();
+            APIResponse response = request.GetResponse();
 
-            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            if (response.Success && response.StatusCode == HttpStatusCode.OK)
             {
-                JObject responseJSON = request.GetJObject();
+                JObject responseJSON = response.GetJObject();
                 releaseInfo.Name = responseJSON["name"].ToString();
                 releaseInfo.TagName = responseJSON["tag_name"].ToString();
                 releaseInfo.Prerelease = responseJSON["prerelease"].ToObject<bool>();
@@ -104,7 +104,7 @@ namespace Fo76ini.API.GitHub
             }
             else
             {
-                throw request.Exception;
+                throw response.Exception;
             }
         }
 
@@ -120,13 +120,13 @@ namespace Fo76ini.API.GitHub
         {
             APIRequest request = new APIRequest($"{APIDomain}/repos/{user}/{repo}/commits?path={path.Replace("/", "%2F").Replace("\\", "%2F")}&page=1&per_page=1");
             request.Accept = "application/vnd.github.v3+json";
-            request.Execute();
+            APIResponse response = request.GetResponse();
 
-            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            if (response.Success && response.StatusCode == HttpStatusCode.OK)
             {
                 try
                 {
-                    JArray responseJSON = request.GetJArray();
+                    JArray responseJSON = response.GetJArray();
                     JObject firstEl = (JObject)responseJSON[0];
                     JObject commit = (JObject)firstEl["commit"];
                     JObject committer = (JObject)commit["committer"];

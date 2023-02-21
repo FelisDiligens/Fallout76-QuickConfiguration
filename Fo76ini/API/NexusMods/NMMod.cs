@@ -97,14 +97,14 @@ namespace Fo76ini.API
             // Make API request:
             APIRequest request = new APIRequest("https://api.nexusmods.com/v1/games/" + this.Game + "/mods/" + this.ID + ".json");
             request.Headers["apikey"] = NexusMods.User.APIKey;
-            request.Execute();
-            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            APIResponse response = request.GetResponse();
+            if (response.Success && response.StatusCode == HttpStatusCode.OK)
             {
                 /*
                  * Get data:
                  */
 
-                JObject json = request.GetJObject();
+                JObject json = response.GetJObject();
 
                 // Is the mod available?
                 if (json["available"].ToObject<bool>())
@@ -176,7 +176,7 @@ namespace Fo76ini.API
             else
             {
                 // TODO: Handle: Couldn't retrieve info.
-                Console.WriteLine($"Couldn't retrieve info.\n{request.Exception.GetType().Name}: {request.Exception.Message}\n{request.ResponseText}");
+                Console.WriteLine($"Couldn't retrieve info.\n{response.Exception.GetType().Name}: {response.Exception.Message}\n{response.ResponseText}");
             }
             this.LastAccessTimestamp = Utils.GetUnixTimeStamp();
         }
@@ -187,11 +187,11 @@ namespace Fo76ini.API
 
             APIRequest request = new APIRequest(requestUrl);
             request.Headers["apikey"] = NexusMods.User.APIKey;
-            request.Execute();
+            APIResponse response = request.GetResponse();
 
-            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            if (response.Success && response.StatusCode == HttpStatusCode.OK)
             {
-                JObject obj = request.GetJObject();
+                JObject obj = response.GetJObject();
                 try
                 {
                     return Utils.ToInt(obj["files"][0]["file_id"].ToString());
@@ -236,11 +236,11 @@ namespace Fo76ini.API
 
             APIRequest request = new APIRequest(requestUrl);
             request.Headers["apikey"] = NexusMods.User.APIKey;
-            request.Execute();
-            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            APIResponse response = request.GetResponse();
+            if (response.Success && response.StatusCode == HttpStatusCode.OK)
             {
                 List<string> links = new List<string>();
-                JArray list = request.GetJArray();
+                JArray list = response.GetJArray();
                 foreach (JToken obj in list)
                 {
                     links.Add(
@@ -270,10 +270,10 @@ namespace Fo76ini.API
             request.RequestContentType = "application/x-www-form-urlencoded";
             request.PostData = $"version={endorsedVersion}";
 
-            request.Execute();
-            if (request.Success)
+            APIResponse response = request.GetResponse();
+            if (response.Success)
             {
-                JObject json = request.GetJObject();
+                JObject json = response.GetJObject();
                 if (json.ContainsKey("status") && json["status"].ToString() == "Endorsed")
                 {
                     this.Endorsement = EndorseStatus.Endorsed;
@@ -287,7 +287,7 @@ namespace Fo76ini.API
             }
             else
             {
-                MsgBox.Get("failed").FormatText($"Couldn't endorse mod.\nError: {request.Exception.Message}").Show(MessageBoxIcon.Error);
+                MsgBox.Get("failed").FormatText($"Couldn't endorse mod.\nError: {response.Exception.Message}").Show(MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -307,10 +307,10 @@ namespace Fo76ini.API
             request.RequestContentType = "application/x-www-form-urlencoded";
             request.PostData = $"version={abstainedVersion}";
 
-            request.Execute();
-            if (request.Success)
+            APIResponse response = request.GetResponse();
+            if (response.Success)
             {
-                JObject json = request.GetJObject();
+                JObject json = response.GetJObject();
                 if (json.ContainsKey("status") && json["status"].ToString() == "Abstained")
                 {
                     this.Endorsement = EndorseStatus.Abstained;
@@ -324,7 +324,7 @@ namespace Fo76ini.API
             }
             else
             {
-                MsgBox.Get("failed").FormatText($"Couldn't abstain from endorsing mod.\nError: {request.Exception.Message}").Show(MessageBoxIcon.Error);
+                MsgBox.Get("failed").FormatText($"Couldn't abstain from endorsing mod.\nError: {response.Exception.Message}").Show(MessageBoxIcon.Error);
                 return false;
             }
         }

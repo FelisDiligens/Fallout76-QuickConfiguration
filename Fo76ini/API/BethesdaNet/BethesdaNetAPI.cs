@@ -21,14 +21,14 @@ namespace Fo76ini.API.BethesdaNet
             // Send request:
             // Previous URL: https://bethesda.net/en/status/api/statuses
             APIRequest request = new APIRequest("https://status.bethesda.net/en/status/api/statuses");
-            request.Execute();
+            APIResponse response = request.GetResponse();
 
-            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            if (response.Success && response.StatusCode == HttpStatusCode.OK)
             {
                 try
                 {
                     // Scrap for Fallout 76 Status:
-                    JObject responseJSON = request.GetJObject();
+                    JObject responseJSON = response.GetJObject();
                     JArray components = (JArray)responseJSON["components"];
                     foreach (JObject component in components)
                     {
@@ -51,10 +51,10 @@ namespace Fo76ini.API.BethesdaNet
             }
             else
             {
-                if (!request.Success)
+                if (!response.Success)
                     f76Status = $"Error: No connection";
                 else
-                    f76Status = $"Error: HTTP {request.StatusCode}";
+                    f76Status = $"Error: HTTP {response.StatusCode}";
             }
 
             return f76Status;
@@ -120,13 +120,13 @@ namespace Fo76ini.API.BethesdaNet
         {
             // Send request:
             APIRequest request = new APIRequest($"https://api.locize.app/657e9e0e-8225-4266-88dd-75f047f1a2b3/live/{language.ToLower()}/status");
-            request.Execute();
+            APIResponse response = request.GetResponse();
 
-            if (request.Success && request.StatusCode == HttpStatusCode.OK)
+            if (response.Success && response.StatusCode == HttpStatusCode.OK)
             {
                 try
                 {
-                    JObject responseJSON = request.GetJObject();
+                    JObject responseJSON = response.GetJObject();
                     JObject statusKeys = (JObject)responseJSON["statusKey"];
 
                     // If translation does not exist, the server returns an empty JSON object {}
