@@ -1,3 +1,16 @@
+### What's new in v1.12.4?
+
+- The mod manager can now partially read *.ba2 files:
+  - Added 'Tools -> Archive2 -> Display info about *.ba2 archive' button to the mod manager.
+  - The preset of *.ba2 files get detected now, when imported.
+- Changed the behavior of the mod manager slightly:
+  - Interface files will now be separated into a 'Bundled - Interface.ba2'
+  - Interface files will now be packed into a different preset. (Format: General, Compression: None)
+
+*Unreleased*
+
+---
+
 ### What's new in v1.12.3?
 
 - Fixed "Backpack Visible" option
