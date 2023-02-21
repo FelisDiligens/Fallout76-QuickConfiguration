@@ -48,6 +48,7 @@
             this.archive2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openArchive2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exploreba2ArchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detectFormatAndCompressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nexusModsAPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateModInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endorseModsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -338,24 +339,32 @@
             // 
             this.archive2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openArchive2ToolStripMenuItem,
-            this.exploreba2ArchiveToolStripMenuItem});
+            this.exploreba2ArchiveToolStripMenuItem,
+            this.detectFormatAndCompressionToolStripMenuItem});
             this.archive2ToolStripMenuItem.Name = "archive2ToolStripMenuItem";
-            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.archive2ToolStripMenuItem.Text = "Archive2";
             // 
             // openArchive2ToolStripMenuItem
             // 
             this.openArchive2ToolStripMenuItem.Name = "openArchive2ToolStripMenuItem";
-            this.openArchive2ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.openArchive2ToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.openArchive2ToolStripMenuItem.Text = "Open Archive2";
             this.openArchive2ToolStripMenuItem.Click += new System.EventHandler(this.openArchive2ToolStripMenuItem_Click);
             // 
             // exploreba2ArchiveToolStripMenuItem
             // 
             this.exploreba2ArchiveToolStripMenuItem.Name = "exploreba2ArchiveToolStripMenuItem";
-            this.exploreba2ArchiveToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.exploreba2ArchiveToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.exploreba2ArchiveToolStripMenuItem.Text = "Explore *.ba2 archive";
             this.exploreba2ArchiveToolStripMenuItem.Click += new System.EventHandler(this.exploreba2ArchiveToolStripMenuItem_Click);
+            // 
+            // detectFormatAndCompressionToolStripMenuItem
+            // 
+            this.detectFormatAndCompressionToolStripMenuItem.Name = "detectFormatAndCompressionToolStripMenuItem";
+            this.detectFormatAndCompressionToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.detectFormatAndCompressionToolStripMenuItem.Text = "Display info about *.ba2 archive";
+            this.detectFormatAndCompressionToolStripMenuItem.Click += new System.EventHandler(this.detectFormatAndCompressionToolStripMenuItem_Click);
             // 
             // nexusModsAPIToolStripMenuItem
             // 
@@ -364,7 +373,7 @@
             this.endorseModsToolStripMenuItem,
             this.checkForUpdatesToolStripMenuItem});
             this.nexusModsAPIToolStripMenuItem.Name = "nexusModsAPIToolStripMenuItem";
-            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nexusModsAPIToolStripMenuItem.Text = "NexusMods API";
             // 
             // updateModInformationToolStripMenuItem
@@ -2093,5 +2102,6 @@
         private System.Windows.Forms.Label labelBehaviorNote;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private BrightIdeasSoftware.OLVColumn olvColumnLastDummy;
+        private System.Windows.Forms.ToolStripMenuItem detectFormatAndCompressionToolStripMenuItem;
     }
 }

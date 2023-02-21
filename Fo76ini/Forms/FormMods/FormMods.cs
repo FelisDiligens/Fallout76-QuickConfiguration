@@ -14,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using static Fo76ini.Utilities.Archive2;
 
 namespace Fo76ini
 {
@@ -676,6 +677,27 @@ namespace Fo76ini
             if (this.openFileDialogBA2.ShowDialog() == DialogResult.OK)
             {
                 Archive2.Explore(this.openFileDialogBA2.FileName);
+            }
+        }
+
+        // Tools > Archive2 > Detect format and compression
+        private void detectFormatAndCompressionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.openFileDialogBA2.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    Archive2.Info info = Archive2.ReadFile(this.openFileDialogBA2.FileName);
+                    MsgBox.Show("Archive2 info", $"Format: {Archive2.GetFormatName(info.format)}\nCompression: {Archive2.GetCompressionName(info.compression)}\nFile count: {info.numOfFiles}", MessageBoxIcon.Information);
+                }
+                catch (Archive2Exception ex)
+                {
+                    MsgBox.Show("Failed to read archive", ex.ToString(), MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MsgBox.Show("Failed to open file", ex.ToString(), MessageBoxIcon.Error);
+                }
             }
         }
 

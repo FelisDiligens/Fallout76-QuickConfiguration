@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
+using static Fo76ini.Mods.ManagedMod;
 
 namespace Fo76ini.Utilities
 {
@@ -58,6 +60,13 @@ namespace Fo76ini.Utilities
             public Archive2.Format format;
         }
 
+        public struct Info
+        {
+            public Archive2.Compression compression;
+            public Archive2.Format format;
+            public int numOfFiles;
+        }
+
         public static Archive2.Compression GetCompression(string compressionStr)
         {
             switch (compressionStr)
@@ -71,6 +80,15 @@ namespace Fo76ini.Utilities
                 default:
                     throw new InvalidDataException($"Invalid ba2 compression type: {compressionStr}");
             }
+        }
+
+
+        /// <summary>
+        /// Convert Archive2.Compression enum to string.
+        /// </summary>
+        public static string GetCompressionName(Archive2.Compression compression)
+        {
+            return Enum.GetName(typeof(Archive2.Compression), (int)compression);
         }
 
         public static Archive2.Format GetFormat(string formatStr)
@@ -95,7 +113,7 @@ namespace Fo76ini.Utilities
         /// <summary>
         /// Convert Archive2.Format enum to string.
         /// </summary>
-        private static string GetFormatName(Archive2.Format format)
+        public static string GetFormatName(Archive2.Format format)
         {
             return Enum.GetName(typeof(Archive2.Format), (int)format);
         }
@@ -198,6 +216,101 @@ namespace Fo76ini.Utilities
         public static bool ValidatePath()
         {
             return ValidatePath(Archive2.Archive2Path);
+        }
+
+        /// <summary>
+        /// Reads an Archive2 file (*.ba2) and tries to determine Format and Compression.
+        /// This method is not perfect!
+        /// </summary>
+        /// <param name="path">Path to *.ba2 file</param>
+        /// <returns></returns>
+        /// <exception cref="Archive2Exception"></exception>
+        public static Archive2.Info ReadFile(string path)
+        {
+            Archive2.Format format;
+            Archive2.Compression compression = Archive2.Compression.None;
+            int numOfFiles;
+
+            // Open byte stream:
+            FileStream fs = new FileStream(path, FileMode.Open);
+
+            // Checking magic number:
+            byte[] bMagicNum = new byte[4];
+            fs.Seek(0x00, SeekOrigin.Begin);
+            fs.Read(bMagicNum, 0, 4);
+            string sMagicNum = Encoding.UTF8.GetString(bMagicNum).TrimEnd('\0');
+            if (sMagicNum != "BTDX")
+                throw new Archive2Exception($"Invalid Archive2 file: Expected 'BTDX' magic number, got '{sMagicNum}'.");
+
+            // Reading format ("GNRL" or "DX10"):
+            byte[] bFormat = new byte[4];
+            fs.Seek(0x08, SeekOrigin.Begin);
+            fs.Read(bFormat, 0, 4);
+            string sFormat = Encoding.UTF8.GetString(bFormat).TrimEnd('\0');
+            if (sFormat.ToUpper() == "GNRL")
+                format = Archive2.Format.General;
+            else if (sFormat.ToUpper() == "DX10")
+                format = Archive2.Format.DDS;
+            else
+                throw new Archive2Exception($"Couldn't read Archive2 file: Unknown format '{sFormat}', expected GNRL or DX10.");
+
+            // Reading number of files:
+            byte[] bNumOfFiles = new byte[4];
+            fs.Seek(0x0C, SeekOrigin.Begin);
+            fs.Read(bNumOfFiles, 0, 4);
+            if (!BitConverter.IsLittleEndian)
+                Array.Reverse(bNumOfFiles);
+            numOfFiles = BitConverter.ToInt32(bNumOfFiles, 0); // Little endian.
+            if (numOfFiles <= 0)
+                throw new Archive2Exception($"Couldn't read Archive2 file: Number of files is 0 or less. Empty archive?");
+
+            // Reading pack and full size of the first file in the archive.
+            // Trying to detect compression by looking at pack and full size:
+            if (format == Archive2.Format.General) // "GNRL"
+            {
+                byte[] bPackSize = new byte[4];
+                fs.Seek(0x18 + 0x18, SeekOrigin.Begin);
+                fs.Read(bPackSize, 0, 4);
+                if (!BitConverter.IsLittleEndian)
+                    Array.Reverse(bPackSize);
+                int packSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
+
+                byte[] bFullSize = new byte[4];
+                fs.Seek(0x18 + 0x1C, SeekOrigin.Begin);
+                fs.Read(bFullSize, 0, 4);
+                if (!BitConverter.IsLittleEndian)
+                    Array.Reverse(bFullSize);
+                int fullSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
+
+                if (packSize > 0)
+                    compression = Archive2.Compression.Default;
+            }
+            else if (format == Archive2.Format.DDS) // "DX10"
+            {
+                byte[] bPackSize = new byte[4];
+                fs.Seek(0x18 + 0x18 + 0x08, SeekOrigin.Begin);
+                fs.Read(bPackSize, 0, 4);
+                if (!BitConverter.IsLittleEndian)
+                    Array.Reverse(bPackSize);
+                int packSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
+
+                byte[] bFullSize = new byte[4];
+                fs.Seek(0x18 + 0x18 + 0x0C, SeekOrigin.Begin);
+                fs.Read(bFullSize, 0, 4);
+                if (!BitConverter.IsLittleEndian)
+                    Array.Reverse(bFullSize);
+                int fullSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
+
+                if (packSize != 0 || fullSize != 0)
+                    compression = Archive2.Compression.Default;
+            }
+
+            // Returning preset:
+            Archive2.Info info = new Archive2.Info();
+            info.format = format;
+            info.compression = compression;
+            info.numOfFiles = numOfFiles;
+            return info;
         }
     }
 
