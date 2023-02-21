@@ -67,14 +67,15 @@ namespace Fo76ini
                 }
             ));
 
-            DropDown.Add("ModArchivePreset", new DropDown(
+            // Presets, see: https://github.com/FelisDiligens/Fallout76-QuickConfiguration/blob/master/Docs/Fundamentals.md#types-of-assets
+            DropDown.Add("ModArchivePreset_Updated", new DropDown(
                 this.comboBoxModArchivePreset,
                 new string[] {
                     "-- Please select --",
                     "Auto-detect (recommended)",
-                    "General / Interface / Materials / Animations", /* Materials: *.bgsm; Interface: *.swf; */
-                    "Textures (*.dds files)",
-                    "Sound FX / Music / Voice",                     /* Voice: *.fuz; Lip-Sync: *.lip; Sound FX: *.xwm; */
+                    "General / Meshes / Materials / Animations", // [General, Default]  Meshes: *.nif; Materials: *.bgsm
+                    "Textures (*.dds files)",                    // [DDS,     Default]
+                    "Sound FX and Music / Interface and HUD",    // [General, None   ]  Interface: *.swf; Sound FX: *.xwm; Voice: *.fuz; Lip-Sync: *.lip;
                 }
             ));
 

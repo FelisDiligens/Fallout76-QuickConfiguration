@@ -14,12 +14,13 @@ namespace Fo76ini.Mods
     public static class ModHelpers
     {
         public static string[] ResourceFolders = new string[] { "meshes", "strings", "music", "sound", "textures", "materials", "interface", "geoexporter", "programs", "vis", "scripts", "misc", "shadersfx", "lodsettings", "video" };
-        public static string[] GeneralFolders = new string[] { "meshes", "interface", "materials" };
+        public static string[] GeneralFolders = new string[] { "meshes", "materials" };
         public static string[] TextureFolders = new string[] { "textures", "effects" };
         public static string[] SoundFolders = new string[] { "sound", "music" };
+        public static string[] InterfaceFolders = new string[] { "interface", "programs" };
 
         /// <summary>
-        /// Converts ManagedMod.ArchiveCompression and ManagedMod.ArchiveFormat to an Archive2.Preset.
+        /// Converts Archive2.Compression? and Archive2.Format? to an Archive2.Preset.
         /// Automatically determines appropriate compression and format if needed.
         /// </summary>
         public static Archive2.Preset GetArchive2Preset(ManagedMod mod)
@@ -28,7 +29,7 @@ namespace Fo76ini.Mods
         }
 
         /// <summary>
-        /// Converts ManagedMod.ArchiveCompression and ManagedMod.ArchiveFormat to an Archive2.Preset.
+        /// Converts Archive2.Compression? and Archive2.Format? to an Archive2.Preset.
         /// Automatically determines appropriate compression and format if needed.
         /// </summary>
         public static Archive2.Preset GetArchive2Preset(String managedFolderPath, Archive2.Format? format, Archive2.Compression? compression)
@@ -48,6 +49,7 @@ namespace Fo76ini.Mods
             int generalFoldersCount = 0;
             int textureFoldersCount = 0;
             int soundFoldersCount = 0;
+            int interfaceFoldersCount = 0;
 
             IEnumerable<string> folders = Directory.EnumerateDirectories(managedFolderPath);
             foreach (string path in folders)
@@ -60,14 +62,16 @@ namespace Fo76ini.Mods
                     textureFoldersCount++;
                 else if (SoundFolders.Contains(folderName))
                     soundFoldersCount++;
+                else if (InterfaceFolders.Contains(folderName))
+                    interfaceFoldersCount++;
             }
 
-            if (soundFoldersCount > generalFoldersCount && soundFoldersCount > textureFoldersCount)
+            if (soundFoldersCount + interfaceFoldersCount > generalFoldersCount && soundFoldersCount + interfaceFoldersCount > textureFoldersCount)
             {
                 preset.compression = Archive2.Compression.None;
                 preset.format = Archive2.Format.General;
             }
-            else if (textureFoldersCount > generalFoldersCount && textureFoldersCount > soundFoldersCount)
+            else if (textureFoldersCount > generalFoldersCount && textureFoldersCount > soundFoldersCount + interfaceFoldersCount)
             {
                 preset.compression = Archive2.Compression.Default;
                 preset.format = Archive2.Format.DDS;
@@ -125,9 +129,9 @@ namespace Fo76ini.Mods
             string[] ignoreExtensions = new string[]
             {
                 // Text files: (readmes / instructions)
-                ".txt", ".rtf",
+                ".rtf", ".doc", ".docx", ".pdf",
                 // Config files:
-                ".ini", ".json", ".xml", ".yaml", ".conf", ".config",
+                ".ini", ".json", ".yaml", ".conf", ".config",
                 // Images: (e.g. screenshots)
                 ".jpg", ".jpeg", ".png", ".gif", ".bmp",
                 // Programs:
