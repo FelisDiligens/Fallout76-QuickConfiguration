@@ -160,14 +160,10 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
         private void LoadWhatsNew()
         {
-#if DEBUG
-            string debugFile = Path.Combine(Shared.AppConfigFolder, "What's new" + (Theming.CurrentTheme == ThemeType.Dark ? " - Dark" : "") + ".html");
-            if (File.Exists(debugFile))
-                this.webBrowserWhatsNew.DocumentText = File.ReadAllText(debugFile);
+            if (Theming.CurrentTheme == ThemeType.Dark)
+                this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewDarkURL);
             else
-#endif
-                this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewHTMLURL + (Theming.CurrentTheme == ThemeType.Dark ? "%20-%20Dark" : ""));
-                //this.webBrowserWhatsNew.Navigate(new Uri(Shared.URLs.RemoteWhatsNewHTMLURL + (Theming.CurrentTheme == ThemeType.Dark ? "%20-%20Dark" : "")));
+                this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewURL);
         }
 
         private void styledButtonWhatsNew_Click(object sender, EventArgs e)
@@ -188,7 +184,10 @@ namespace Fo76ini.Forms.FormMain.Tabs
             else
             {
                 // Open users web browser on Windows 7 instead:
-                Utils.OpenURL(Shared.URLs.RemoteWhatsNewHTMLURL);
+                if (Theming.CurrentTheme == ThemeType.Dark)
+                    Utils.OpenURL(Shared.URLs.RemoteWhatsNewDarkURL);
+                else
+                    Utils.OpenURL(Shared.URLs.RemoteWhatsNewURL);
             }
         }
 
