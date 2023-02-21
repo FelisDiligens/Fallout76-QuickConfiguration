@@ -42,12 +42,7 @@ Here's an overview:
 │   ├── 📁 FormMods            ⇨ The "Mod Manager" form
 │   ├── 📁 FormWelcome         ⇨ Form that opens when the tool is launched for the first time.
 │   ├── 📁 FormExceptionDialog ⇨ Opened when an unhandled exception occures.
-│   ├── 📁 FormIniError        ⇨ Opened when the *.ini files can't be parsed.
-│   │
-│   ├── 📁 FormProfiles        ⇨ Unused.
-│   ├── 📁 FormSettings        ⇨ Unused.
-│   ├── 📁 FormWhatsNew        ⇨ Unused.
-│   └── 📁 FormTextPrompt      ⇨ Custom messageboxes, unused.
+│   └── 📁 FormIniError        ⇨ Opened when the *.ini files can't be parsed.
 │
 ├── 📁 Ini                     ⇨ Ini parsing and handling (load, change, save, etc.)
 ├── 📁 Interface               ⇨ Translation, theming, and other interface related code
