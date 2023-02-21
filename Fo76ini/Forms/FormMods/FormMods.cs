@@ -1,7 +1,7 @@
 ﻿using Fo76ini.Controls;
 using Fo76ini.Interface;
 using Fo76ini.Mods;
-using Fo76ini.NexusAPI;
+using Fo76ini.API;
 using Fo76ini.Profiles;
 using Fo76ini.Utilities;
 using Microsoft.WindowsAPICodePack.Dialogs;

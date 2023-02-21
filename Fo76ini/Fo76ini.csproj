@@ -147,6 +147,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\BethesdaNet\BethesdaNetAPI.cs" />
+    <Compile Include="API\GitHub\GitHubAPI.cs" />
     <Compile Include="Controls\ColorSlider\ColorSlider.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -275,10 +277,10 @@
     <Compile Include="Interface\Theme.cs" />
     <Compile Include="Interface\Theming.cs" />
     <Compile Include="Interface\Versioning.cs" />
-    <Compile Include="NexusAPI\NMMod.cs" />
-    <Compile Include="NexusAPI\NMUserProfile.cs" />
-    <Compile Include="NexusAPI\NXMHandler.cs" />
-    <Compile Include="NexusAPI\SingleSignOn.cs" />
+    <Compile Include="API\NexusMods\NMMod.cs" />
+    <Compile Include="API\NexusMods\NMUserProfile.cs" />
+    <Compile Include="API\NexusMods\NXMHandler.cs" />
+    <Compile Include="API\NexusMods\SingleSignOn.cs" />
     <Compile Include="Tweaks\Accessor.cs" />
     <Compile Include="Tweaks\Controls\Gamepad\AimAssistTweak.cs" />
     <Compile Include="Tweaks\Controls\Gamepad\GamepadSensitivityTweakX.cs" />
@@ -390,7 +392,7 @@
     <Compile Include="Tweaks\Audio\Volume\AudioMenuValTweak.cs" />
     <Compile Include="Tweaks\Audio\Volume\MasterVolumeTweak.cs" />
     <Compile Include="Tweaks\Audio\Volume\VivoxVoiceVolumeTweak.cs" />
-    <Compile Include="NexusAPI\APIRequest.cs" />
+    <Compile Include="API\APIRequest.cs" />
     <Compile Include="Utilities\ClipboardUtils.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Forms\FormExceptionDialog\FormExceptionDialog.cs">
@@ -438,7 +440,7 @@
     <Compile Include="Mods\ModInstallations.cs" />
     <Compile Include="Mods\ManagedMods.cs" />
     <Compile Include="Interface\MsgBox.cs" />
-    <Compile Include="NexusAPI\NexusMods.cs" />
+    <Compile Include="API\NexusMods\NexusMods.cs" />
     <Compile Include="Mods\ResourceList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

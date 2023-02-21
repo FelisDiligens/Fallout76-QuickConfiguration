@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using Fo76ini.NexusAPI;
+using Fo76ini.API;
 using Fo76ini.Utilities;
 
 namespace Fo76ini.Mods

@@ -2,11 +2,11 @@
 using System.IO;
 using Newtonsoft.Json.Linq;
 
-namespace Fo76ini.NexusAPI
+namespace Fo76ini.API
 {
     /// <summary>
     /// Wrapper around the classes of System.Net.
-    /// Used to make HTTPS requests to the NexusMods' API.
+    /// Used to make HTTPS requests to various APIs.
     /// </summary>
     public class APIRequest
     {

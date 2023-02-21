@@ -11,10 +11,11 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Fo76ini.Controls;
 using Fo76ini.Interface;
-using Fo76ini.NexusAPI;
+using Fo76ini.API;
 using Fo76ini.Tweaks;
 using Fo76ini.Utilities;
 using Newtonsoft.Json.Linq;
+using Fo76ini.API.GitHub;
 
 namespace Fo76ini
 {
@@ -167,26 +168,7 @@ namespace Fo76ini
         /// <returns>DateTime or null</returns>
         private static DateTime? FetchLastCommitDate()
         {
-            APIRequest request = new APIRequest("https://api.github.com/repos/FelisDiligens/Fallout76-QuickConfiguration/commits?path=Fo76ini%2Flanguages&page=1&per_page=1");
-            request.Execute();
-
-            if (request.Success && request.StatusCode == HttpStatusCode.OK)
-            {
-                try
-                {
-                    JArray responseJSON = request.GetJArray();
-                    JObject firstEl = (JObject)responseJSON[0];
-                    JObject commit = (JObject)firstEl["commit"];
-                    JObject committer = (JObject)commit["committer"];
-                    return committer["date"].ToObject<DateTime>();
-                }
-                catch
-                {
-                    return null;
-                }
-            }
-
-            return null;
+            return GitHubAPI.FetchLastCommitDate("FelisDiligens", "Fallout76-QuickConfiguration", "Fo76ini/languages");
         }
 
         /// <summary>

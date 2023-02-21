@@ -1,5 +1,5 @@
 ﻿using Fo76ini.Interface;
-using Fo76ini.NexusAPI;
+using Fo76ini.API;
 using Fo76ini.Properties;
 using Fo76ini.Tweaks;
 using Fo76ini.Utilities;

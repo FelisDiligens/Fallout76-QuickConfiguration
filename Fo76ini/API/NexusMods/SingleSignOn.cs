@@ -5,7 +5,7 @@ using System;
 using Websocket.Client;
 using Websocket.Client.Models;
 
-namespace Fo76ini.NexusAPI
+namespace Fo76ini.API
 {
     // TODO: Possible bug in SingleSignOn
     // There might be a bug where if no message is received from the server within 30 seconds (see TimeSpan ReconnectTimeout),

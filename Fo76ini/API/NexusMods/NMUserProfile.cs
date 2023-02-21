@@ -7,7 +7,7 @@ using System.Xml.Linq;
 using Fo76ini.Interface;
 using Fo76ini.Utilities;
 
-namespace Fo76ini.NexusAPI
+namespace Fo76ini.API
 {
     public class NMUserProfile
     {

@@ -1,4 +1,5 @@
-﻿using Fo76ini.Utilities;
+﻿using Fo76ini.API.GitHub;
+using Fo76ini.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,13 @@ namespace Fo76ini.Interface
         {
             try
             {
-                WebClient wc = new WebClient();
-                byte[] raw = wc.DownloadData(Shared.URLs.RemoteLatestVersionURL);
-                Shared.LatestVersion = Encoding.UTF8.GetString(raw).Trim();
+                GitHubAPI.ReleaseInfo info = GitHubAPI.GetLatestRelease("FelisDiligens", "Fallout76-QuickConfiguration");
+                Shared.LatestVersion = info.TagName;
+                Console.WriteLine(info.TagName);
             }
-            catch (WebException exc)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return;
             }
         }

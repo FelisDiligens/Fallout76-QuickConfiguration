@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Fo76ini.NexusAPI
+namespace Fo76ini.API
 {
     public struct NXMLink
     {
