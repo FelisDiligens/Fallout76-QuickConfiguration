@@ -6,6 +6,7 @@
 - Changed the behavior of the mod manager slightly:
   - Interface files will now be separated into a 'Bundled - Interface.ba2'
   - Interface files will now be packed into a different preset. (Format: General, Compression: None)
+- Some internal changes relating to API requests.
 
 *Unreleased*
 
