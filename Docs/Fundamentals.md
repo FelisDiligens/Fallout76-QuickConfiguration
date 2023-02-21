@@ -71,7 +71,7 @@ All that the mod manager does, is packing loose assets using Archive2 and adding
 | SFX/Music    | XAudio2 file (\*.xwm)                          | General         | None                 |
 | Voice        | \*.fuz                                         | General         | None                 |
 | Lip sync     | \*.lip                                         | General         | None                 |
-| Localization | \*.dlstrings, \*.ilstrings, \*.strings, \*.txt | General         | None                 |
+| Localization | \*.dlstrings, \*.ilstrings, \*.strings         | General         | None                 |
 
 #### \*.ba2 file format
 
