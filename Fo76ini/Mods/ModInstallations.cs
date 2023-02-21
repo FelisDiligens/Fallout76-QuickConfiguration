@@ -72,19 +72,40 @@ namespace Fo76ini.Mods
             ProgressChanged?.Invoke(Progress.Indetermined($"Extracting {Path.GetFileName(filePath)}"));
             ModInstallations.ExtractArchive(longFilePath, newMod.ManagedFolderPath);
 
-            // Freeze mod conditionally:
-            if (useSourceBA2Archive && fileExtension == ".ba2")
+            if (fileExtension == ".ba2")
             {
-                // Copy *.ba2 into FrozenData:
-                FileInfo frozenPath = new FileInfo(newMod.FrozenArchivePath);
-                ProgressChanged?.Invoke(Progress.Indetermined($"Copying {Path.GetFileName(filePath)} to {frozenPath.DirectoryName}"));
-                Directory.CreateDirectory(frozenPath.DirectoryName);
-                File.Copy(longFilePath, frozenPath.FullName, true);
-
-                newMod.Frozen = true;
-                newMod.Freeze = true;
                 newMod.PreviousMethod = ManagedMod.DeploymentMethod.SeparateBA2;
                 newMod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
+
+                // Freeze mod conditionally:
+                if (useSourceBA2Archive)
+                {
+                    // Copy *.ba2 into FrozenData:
+                    FileInfo frozenPath = new FileInfo(newMod.FrozenArchivePath);
+                    ProgressChanged?.Invoke(Progress.Indetermined($"Copying {Path.GetFileName(filePath)} to {frozenPath.DirectoryName}"));
+                    Directory.CreateDirectory(frozenPath.DirectoryName);
+                    File.Copy(longFilePath, frozenPath.FullName, true);
+
+                    newMod.Frozen = true;
+                    newMod.Freeze = true;
+                }
+
+                try
+                {
+                    // Read format and compression from archive:
+                    Archive2.Info info = Archive2.ReadFile(longFilePath);
+                    newMod.Format = info.format;
+                    newMod.Compression = info.compression;
+                }
+                catch
+                {
+                    // Infer format and compression from extracted files:
+                    newMod.Format = null;
+                    newMod.Compression = null;
+                    Archive2.Preset preset = ModHelpers.GetArchive2Preset(newMod);
+                    newMod.Format = preset.format;
+                    newMod.Compression = preset.compression;
+                }
             }
             else
             {

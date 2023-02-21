@@ -232,77 +232,78 @@ namespace Fo76ini.Utilities
             int numOfFiles;
 
             // Open byte stream:
-            FileStream fs = new FileStream(path, FileMode.Open);
-
-            // Checking magic number:
-            byte[] bMagicNum = new byte[4];
-            fs.Seek(0x00, SeekOrigin.Begin);
-            fs.Read(bMagicNum, 0, 4);
-            string sMagicNum = Encoding.UTF8.GetString(bMagicNum).TrimEnd('\0');
-            if (sMagicNum != "BTDX")
-                throw new Archive2Exception($"Invalid Archive2 file: Expected 'BTDX' magic number, got '{sMagicNum}'.");
-
-            // Reading format ("GNRL" or "DX10"):
-            byte[] bFormat = new byte[4];
-            fs.Seek(0x08, SeekOrigin.Begin);
-            fs.Read(bFormat, 0, 4);
-            string sFormat = Encoding.UTF8.GetString(bFormat).TrimEnd('\0');
-            if (sFormat.ToUpper() == "GNRL")
-                format = Archive2.Format.General;
-            else if (sFormat.ToUpper() == "DX10")
-                format = Archive2.Format.DDS;
-            else
-                throw new Archive2Exception($"Couldn't read Archive2 file: Unknown format '{sFormat}', expected GNRL or DX10.");
-
-            // Reading number of files:
-            byte[] bNumOfFiles = new byte[4];
-            fs.Seek(0x0C, SeekOrigin.Begin);
-            fs.Read(bNumOfFiles, 0, 4);
-            if (!BitConverter.IsLittleEndian)
-                Array.Reverse(bNumOfFiles);
-            numOfFiles = BitConverter.ToInt32(bNumOfFiles, 0); // Little endian.
-            if (numOfFiles <= 0)
-                throw new Archive2Exception($"Couldn't read Archive2 file: Number of files is 0 or less. Empty archive?");
-
-            // Reading pack and full size of the first file in the archive.
-            // Trying to detect compression by looking at pack and full size:
-            if (format == Archive2.Format.General) // "GNRL"
+            using (FileStream fs = new FileStream(path, FileMode.Open))
             {
-                byte[] bPackSize = new byte[4];
-                fs.Seek(0x18 + 0x18, SeekOrigin.Begin);
-                fs.Read(bPackSize, 0, 4);
-                if (!BitConverter.IsLittleEndian)
-                    Array.Reverse(bPackSize);
-                int packSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
+                // Checking magic number:
+                byte[] bMagicNum = new byte[4];
+                fs.Seek(0x00, SeekOrigin.Begin);
+                fs.Read(bMagicNum, 0, 4);
+                string sMagicNum = Encoding.UTF8.GetString(bMagicNum).TrimEnd('\0');
+                if (sMagicNum != "BTDX")
+                    throw new Archive2Exception($"Invalid Archive2 file: Expected 'BTDX' magic number, got '{sMagicNum}'.");
 
-                byte[] bFullSize = new byte[4];
-                fs.Seek(0x18 + 0x1C, SeekOrigin.Begin);
-                fs.Read(bFullSize, 0, 4);
-                if (!BitConverter.IsLittleEndian)
-                    Array.Reverse(bFullSize);
-                int fullSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
+                // Reading format ("GNRL" or "DX10"):
+                byte[] bFormat = new byte[4];
+                fs.Seek(0x08, SeekOrigin.Begin);
+                fs.Read(bFormat, 0, 4);
+                string sFormat = Encoding.UTF8.GetString(bFormat).TrimEnd('\0');
+                if (sFormat.ToUpper() == "GNRL")
+                    format = Archive2.Format.General;
+                else if (sFormat.ToUpper() == "DX10")
+                    format = Archive2.Format.DDS;
+                else
+                    throw new Archive2Exception($"Couldn't read Archive2 file: Unknown format '{sFormat}', expected GNRL or DX10.");
 
-                if (packSize > 0)
-                    compression = Archive2.Compression.Default;
-            }
-            else if (format == Archive2.Format.DDS) // "DX10"
-            {
-                byte[] bPackSize = new byte[4];
-                fs.Seek(0x18 + 0x18 + 0x08, SeekOrigin.Begin);
-                fs.Read(bPackSize, 0, 4);
+                // Reading number of files:
+                byte[] bNumOfFiles = new byte[4];
+                fs.Seek(0x0C, SeekOrigin.Begin);
+                fs.Read(bNumOfFiles, 0, 4);
                 if (!BitConverter.IsLittleEndian)
-                    Array.Reverse(bPackSize);
-                int packSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
+                    Array.Reverse(bNumOfFiles);
+                numOfFiles = BitConverter.ToInt32(bNumOfFiles, 0); // Little endian.
+                if (numOfFiles <= 0)
+                    throw new Archive2Exception($"Couldn't read Archive2 file: Number of files is 0 or less. Empty archive?");
 
-                byte[] bFullSize = new byte[4];
-                fs.Seek(0x18 + 0x18 + 0x0C, SeekOrigin.Begin);
-                fs.Read(bFullSize, 0, 4);
-                if (!BitConverter.IsLittleEndian)
-                    Array.Reverse(bFullSize);
-                int fullSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
+                // Reading pack and full size of the first file in the archive.
+                // Trying to detect compression by looking at pack and full size:
+                if (format == Archive2.Format.General) // "GNRL"
+                {
+                    byte[] bPackSize = new byte[4];
+                    fs.Seek(0x18 + 0x18, SeekOrigin.Begin);
+                    fs.Read(bPackSize, 0, 4);
+                    if (!BitConverter.IsLittleEndian)
+                        Array.Reverse(bPackSize);
+                    int packSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
 
-                if (packSize != 0 || fullSize != 0)
-                    compression = Archive2.Compression.Default;
+                    byte[] bFullSize = new byte[4];
+                    fs.Seek(0x18 + 0x1C, SeekOrigin.Begin);
+                    fs.Read(bFullSize, 0, 4);
+                    if (!BitConverter.IsLittleEndian)
+                        Array.Reverse(bFullSize);
+                    int fullSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
+
+                    if (packSize > 0)
+                        compression = Archive2.Compression.Default;
+                }
+                else if (format == Archive2.Format.DDS) // "DX10"
+                {
+                    byte[] bPackSize = new byte[4];
+                    fs.Seek(0x18 + 0x18 + 0x08, SeekOrigin.Begin);
+                    fs.Read(bPackSize, 0, 4);
+                    if (!BitConverter.IsLittleEndian)
+                        Array.Reverse(bPackSize);
+                    int packSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
+
+                    byte[] bFullSize = new byte[4];
+                    fs.Seek(0x18 + 0x18 + 0x0C, SeekOrigin.Begin);
+                    fs.Read(bFullSize, 0, 4);
+                    if (!BitConverter.IsLittleEndian)
+                        Array.Reverse(bFullSize);
+                    int fullSize = BitConverter.ToInt32(bPackSize, 0); // Little endian.
+
+                    if (packSize != 0 || fullSize != 0)
+                        compression = Archive2.Compression.Default;
+                }
             }
 
             // Returning preset:
