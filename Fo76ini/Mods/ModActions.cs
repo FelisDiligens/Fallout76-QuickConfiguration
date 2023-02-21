@@ -187,6 +187,7 @@ namespace Fo76ini.Mods
             bool generalFoldersFound = false;
             bool texturesFolderFound = false;
             bool soundFoldersFound = false;
+            bool interfaceFoldersFound = false;
             bool stringsFolderFound = false;
             bool dataFolderFound = false;
             bool videoFolderFound = false;
@@ -205,6 +206,8 @@ namespace Fo76ini.Mods
                     texturesFolderFound = true;
                 if (ModHelpers.SoundFolders.Contains(folderName))
                     soundFoldersFound = true;
+                if (ModHelpers.InterfaceFolders.Contains(folderName))
+                    interfaceFoldersFound = true;
                 if (folderName == "strings")
                     stringsFolderFound = true;
                 if (folderName == "data")
@@ -272,7 +275,7 @@ namespace Fo76ini.Mods
                 mod.RootFolder = "Data";
             }
 
-            if (soundFoldersFound)
+            if (soundFoldersFound || interfaceFoldersFound)
             {
                 mod.Method = ManagedMod.DeploymentMethod.SeparateBA2;
                 mod.Format = Archive2.Format.General;
@@ -280,9 +283,10 @@ namespace Fo76ini.Mods
                 mod.RootFolder = "Data";
             }
 
-            if (generalFoldersFound && texturesFolderFound ||
-                generalFoldersFound && soundFoldersFound   ||
-                texturesFolderFound && soundFoldersFound)
+            if (generalFoldersFound   && texturesFolderFound ||
+                interfaceFoldersFound && texturesFolderFound ||
+                generalFoldersFound   && soundFoldersFound   ||
+                texturesFolderFound   && soundFoldersFound)
             {
                 mod.Method = ManagedMod.DeploymentMethod.BundledBA2;
                 mod.Format = null;

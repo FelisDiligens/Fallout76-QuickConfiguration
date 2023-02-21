@@ -688,7 +688,22 @@ namespace Fo76ini
                 try
                 {
                     Archive2.Info info = Archive2.ReadFile(this.openFileDialogBA2.FileName);
-                    MsgBox.Show("Archive2 info", $"Format: {Archive2.GetFormatName(info.format)}\nCompression: {Archive2.GetCompressionName(info.compression)}\nFile count: {info.numOfFiles}", MessageBoxIcon.Information);
+                    String preset = "Unknown";
+                    if (info.format == Archive2.Format.General &&
+                        info.compression == Archive2.Compression.Default)
+                        preset = "General / Meshes / Materials / Animations";
+                    else if (info.format == Archive2.Format.DDS &&
+                             info.compression == Archive2.Compression.Default)
+                        preset = "Textures (*.dds files)";
+                    else if (info.format == Archive2.Format.General &&
+                             info.compression == Archive2.Compression.None)
+                        preset = "Sound FX and Music / Interface and HUD";
+
+                    MsgBox.Show("Archive2 info",
+                        $"Format: {Archive2.GetFormatName(info.format)}\n" +
+                        $"Compression: {Archive2.GetCompressionName(info.compression)}\n" +
+                        $"Preset: \"{preset}\"\n" +
+                        $"File count: {info.numOfFiles}", MessageBoxIcon.Information);
                 }
                 catch (Archive2Exception ex)
                 {

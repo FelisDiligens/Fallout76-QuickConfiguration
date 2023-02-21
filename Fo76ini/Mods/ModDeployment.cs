@@ -370,6 +370,11 @@ namespace Fo76ini.Mods
                     archives.SoundsArchive.Count++;
                     destinationPath = Path.Combine(archives.SoundsArchive.TempPath, relativePath);
                 }
+                else if (relativePath.Trim().ToLower().StartsWith("interface") || relativePath.Trim().ToLower().StartsWith("programs") || fileExtension == ".swf")
+                {
+                    archives.InterfaceArchive.Count++;
+                    destinationPath = Path.Combine(archives.InterfaceArchive.TempPath, relativePath);
+                }
                 else if (fileExtension == ".dds")
                 {
                     archives.TexturesArchive.Count++;
@@ -594,6 +599,7 @@ namespace Fo76ini.Mods
             public DeployArchive GeneralArchive;
             public DeployArchive TexturesArchive;
             public DeployArchive SoundsArchive;
+            public DeployArchive InterfaceArchive;
 
             public string GamePath;
             public string TempPath;
@@ -608,6 +614,8 @@ namespace Fo76ini.Mods
                 TexturesArchive.Format = Archive2.Format.DDS;
                 SoundsArchive = new DeployArchive("Sounds", GamePath, TempPath);
                 SoundsArchive.Compression = Archive2.Compression.None;
+                InterfaceArchive = new DeployArchive("Interface", GamePath, TempPath);
+                InterfaceArchive.Compression = Archive2.Compression.None;
             }
 
             public void DeleteTempFolder()
@@ -617,7 +625,7 @@ namespace Fo76ini.Mods
 
             public List<DeployArchive> GetList()
             {
-                return new List<DeployArchive>() { GeneralArchive, TexturesArchive, SoundsArchive };
+                return new List<DeployArchive>() { GeneralArchive, TexturesArchive, SoundsArchive, InterfaceArchive };
             }
 
             public IEnumerator<DeployArchive> GetEnumerator()
