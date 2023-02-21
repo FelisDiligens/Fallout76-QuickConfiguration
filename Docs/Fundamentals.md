@@ -65,8 +65,8 @@ All that the mod manager does, is packing loose assets using Archive2 and adding
 | ------------ | ---------------------------------------------- | --------------- | -------------------- |
 | Mesh         | NetImmerse File (\*.nif)                       | General         | Default              |
 | Animation    | \*.hkx                                         | General         | Default              |
-| Texture      | DirectDraw Surface (\*.dds)                    | DDS             | Default              |
 | Material     | \*.bgsm, \*.bgem                               | General         | Default              |
+| Texture      | DirectDraw Surface (\*.dds)                    | DDS             | Default              |
 | HUD/UI       | Shockwave Flash (\*.swf)                       | General         | None                 |
 | SFX/Music    | XAudio2 file (\*.xwm)                          | General         | None                 |
 | Voice        | \*.fuz                                         | General         | None                 |
