@@ -8,7 +8,6 @@ Here's an overview:
   - [Fo76ini solution](#fo76ini-solution)
   - [Files downloaded by the tool](#files-downloaded-by-the-tool)
     - [From GitHub `master` repository:](#from-github-master-repository)
-    - [From GitHub releases:](#from-github-releases)
     - [Using the GitHub API:](#using-the-github-api)
     - [From felisdiligens.github.io:](#from-felisdiligensgithubio)
 
@@ -44,10 +43,14 @@ Here's an overview:
 │   ├── 📁 FormExceptionDialog ⇨ Opened when an unhandled exception occures.
 │   └── 📁 FormIniError        ⇨ Opened when the *.ini files can't be parsed.
 │
+├── 📁 API
+│   ├── 📁 NexusMods           ⇨ Accessing the NexusMods API and storing data.
+│   ├── 📁 GitHub              ⇨ Accessing the GitHub API.
+│   └── 📁 BethesdaNet         ⇨ Accessing the Bethesda.net API: Primarily to retrieve the server status of Fallout 76.
+│
 ├── 📁 Ini                     ⇨ Ini parsing and handling (load, change, save, etc.)
 ├── 📁 Interface               ⇨ Translation, theming, and other interface related code
 ├── 📁 Mods                    ⇨ Loading, saving, and manipulating mods.
-├── 📁 NexusAPI                ⇨ Accessing the NexusMods API and storing data.
 ├── 📁 Profiles                ⇨ Loading, saving, and editing profiles.
 ├── 📁 Properties              ⇨ Project settings and resources.resx
 ├── 📁 Resources               ⇨ Contains images, icons, fonts, text (html/rtf), etc.
@@ -71,7 +74,7 @@ The tool downloads or requests information from GitHub's API for various reasons
 **Checking for updates, "What's new", and translations:**  
 ```
 📁 .
-├── 📝 VERSION                 ⇨ Downloaded on startup to check for updates.
+├── 📝 VERSION                 ⇨ Downloaded on startup to check for updates on versions prior to v1.12.4.
 ├── 📝 What's new.rtf          ⇨ Downloaded and displayed on versions prior to v1.11.
 │
 └── 📁 Fo76ini
@@ -80,17 +83,24 @@ The tool downloads or requests information from GitHub's API for various reasons
         └── 🗃️ xx-XX.zip       ⇨ Translations
 ```
 
-### From GitHub releases:
-
-**Updates:**  
-Any file that follows the `vx.xx.x_bin.zip` naming scheme. Downloaded and extracted by the auto-updater.
-
 ### Using the GitHub API:
 
+**Checking for updates:**  
+> GET `https://api.github.com/repos/FelisDiligens/Fallout76-QuickConfiguration/releases/latest`
+
+Compares the `tag_name` with the installed version.
+
+**Updates:**  
+> GET `https://api.github.com/repos/FelisDiligens/Fallout76-QuickConfiguration/releases/latest`
+
+Any file that is a zip file. Downloaded and extracted by the auto-updater.
+
 **Checking for updates to translations (as of v1.11.4):**  
+> GET `https://api.github.com/repos/FelisDiligens/Fallout76-QuickConfiguration/commits?path=Fo76ini%2Flanguages&page=1&per_page=1`
+
 Checks if any commit to the path `./Fo76ini/languages` has happened since the last update to the translations.
 
 ### From felisdiligens.github.io:
-Displays [felisdiligens.github.io/Fo76ini/What's new.html](https://felisdiligens.github.io/Fo76ini/What's%20new.html) and [/What's new - Dark.html](https://felisdiligens.github.io/Fo76ini/What's%20new%20-%20Dark.html) in a web browser control.
+Displays [felisdiligens.github.io/Fo76ini/whatsnew.html](https://felisdiligens.github.io/Fo76ini/What's%20new.html) and [/whatsnewdark.html](https://felisdiligens.github.io/Fo76ini/What's%20new%20-%20Dark.html) in a web browser control.
 
-> These files are now symlinks that point to 'whatsnew.html' and 'whatsnewdark.html'
+> The older files (`What's new.html` and `What's new - Dark.html`) are now symlinks that point to 'whatsnew.html' and 'whatsnewdark.html'
