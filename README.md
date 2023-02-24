@@ -137,3 +137,19 @@ See [Docs](Docs/README.md).
 
 ## 📌 License
 > © [MIT](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/blob/master/LICENSE)
+
+## Built with
+- C# and .NET Framework 4.7.2
+- Windows Forms
+- Parsing libs:
+  - [Newtonsoft.Json](https://www.newtonsoft.com/json)
+  - [YamlDotNet](https://github.com/aaubry/YamlDotNet)
+  - [ini-parser](https://github.com/rickyah/ini-parser)
+- UI:
+  - [Fast Colored TextBox](https://www.codeproject.com/Articles/161871/Fast-Colored-TextBox-for-syntax-highlighting-2)
+  - [ObjectListView](https://objectlistview.sourceforge.net/cs/index.html)
+  - [Tulpep.NotificationWindow](https://github.com/Tulpep/Notification-Popup-Window)
+  - [CefSharp](https://cefsharp.github.io/)
+  - [iconsdb](https://www.iconsdb.com/)
+- [Syroot KnownFolders](https://gitlab.com/Syroot/KnownFolders)
+- [Websocket.Client](https://github.com/Marfusios/websocket-client)
