@@ -1,4 +1,5 @@
-﻿using Fo76ini.Interface;
+﻿using CefSharp;
+using Fo76ini.Interface;
 using Fo76ini.Profiles;
 using Fo76ini.Properties;
 using Fo76ini.Tweaks;
@@ -302,20 +303,30 @@ namespace Fo76ini.Forms.FormMain
              */
 
             if (Utils.IsWindows10OrNewer())
-                this.webBrowserTweaksInfo.DocumentText = Localization.GetTextResource("TweaksInfo.html");
+            {
+                // https://stackoverflow.com/a/31156730
+                webBrowserTweaksInfo.LoadingStateChanged += (sender, args) =>
+                {
+                    this.webBrowserTweaksInfo.GetMainFrame().ExecuteJavaScriptAsync($"document.body.style.background = '{Utils.HexConverter(Theming.GetColor("BackColor", Color.White))}';");
+                    this.webBrowserTweaksInfo.GetMainFrame().ExecuteJavaScriptAsync($"document.body.style.color = '{Utils.HexConverter(Theming.GetColor("TextColor", Color.Black))}';");
+                };
+                this.webBrowserTweaksInfo.LoadHtml(Localization.GetTextResource("TweaksInfo.html"));
+            }
             else
+            {
                 this.webBrowserTweaksInfo.Visible = false;
+            }
 
             // Loading RTF in the Constructor results in unformatted text for some reason...
             // we have to load it here:
             this.richTextBoxCredentialsExplanation.Rtf = Localization.GetTextResource("Login with Bethesda.net.rtf");
         }
 
-        private void webBrowserTweaksInfo_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        /*private void webBrowserTweaksInfo_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             this.webBrowserTweaksInfo.Document.BackColor = Theming.GetColor("BackColor", Color.White);
             this.webBrowserTweaksInfo.Document.ForeColor = Theming.GetColor("TextColor", Color.Black);
-        }
+        }*/
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)
         {

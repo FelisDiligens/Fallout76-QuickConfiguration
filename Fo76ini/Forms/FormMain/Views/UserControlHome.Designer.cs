@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.webBrowserWhatsNew = new System.Windows.Forms.WebBrowser();
             this.panelUpdate = new System.Windows.Forms.Panel();
             this.pictureBoxButtonUpdate = new Fo76ini.Controls.PictureBoxButton();
             this.labelNewVersion = new System.Windows.Forms.Label();
@@ -69,6 +68,7 @@
             this.styledButtonWhatsNew = new Fo76ini.Controls.StyledButton();
             this.pictureBoxSpinnerCheckForUpdates = new System.Windows.Forms.PictureBox();
             this.tabPageWhatsNew = new System.Windows.Forms.TabPage();
+            this.webBrowserWhatsNew = new CefSharp.WinForms.ChromiumWebBrowser();
             this.styledButtonGoBack = new Fo76ini.Controls.StyledButton();
             this.backgroundWorkerScrapeServerStatus = new System.ComponentModel.BackgroundWorker();
             this.timerReenableRefreshServerStatus = new System.Windows.Forms.Timer(this.components);
@@ -84,21 +84,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpinnerCheckForUpdates)).BeginInit();
             this.tabPageWhatsNew.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // webBrowserWhatsNew
-            // 
-            this.webBrowserWhatsNew.AllowNavigation = false;
-            this.webBrowserWhatsNew.AllowWebBrowserDrop = false;
-            this.webBrowserWhatsNew.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowserWhatsNew.IsWebBrowserContextMenuEnabled = false;
-            this.webBrowserWhatsNew.Location = new System.Drawing.Point(3, 43);
-            this.webBrowserWhatsNew.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserWhatsNew.Name = "webBrowserWhatsNew";
-            this.webBrowserWhatsNew.ScriptErrorsSuppressed = true;
-            this.webBrowserWhatsNew.Size = new System.Drawing.Size(662, 435);
-            this.webBrowserWhatsNew.TabIndex = 52;
             // 
             // panelUpdate
             // 
@@ -680,14 +665,25 @@
             // tabPageWhatsNew
             // 
             this.tabPageWhatsNew.BackColor = System.Drawing.Color.White;
-            this.tabPageWhatsNew.Controls.Add(this.styledButtonGoBack);
             this.tabPageWhatsNew.Controls.Add(this.webBrowserWhatsNew);
+            this.tabPageWhatsNew.Controls.Add(this.styledButtonGoBack);
             this.tabPageWhatsNew.Location = new System.Drawing.Point(4, 22);
             this.tabPageWhatsNew.Name = "tabPageWhatsNew";
             this.tabPageWhatsNew.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageWhatsNew.Size = new System.Drawing.Size(668, 473);
             this.tabPageWhatsNew.TabIndex = 1;
             this.tabPageWhatsNew.Text = "tabPageWhatsNew";
+            // 
+            // webBrowserWhatsNew
+            // 
+            this.webBrowserWhatsNew.ActivateBrowserOnCreation = false;
+            this.webBrowserWhatsNew.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowserWhatsNew.Location = new System.Drawing.Point(0, 39);
+            this.webBrowserWhatsNew.Name = "webBrowserWhatsNew";
+            this.webBrowserWhatsNew.Size = new System.Drawing.Size(668, 435);
+            this.webBrowserWhatsNew.TabIndex = 55;
             // 
             // styledButtonGoBack
             // 
@@ -743,8 +739,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.WebBrowser webBrowserWhatsNew;
         private System.Windows.Forms.Panel panelUpdate;
         private Controls.PictureBoxButton pictureBoxButtonUpdate;
         private System.Windows.Forms.Label labelNewVersion;
@@ -787,5 +781,6 @@
         private System.Windows.Forms.PictureBox pictureBoxSpacer2;
         private System.Windows.Forms.PictureBox pictureBoxSpacer1;
         private Controls.StyledButton styledButtonMap76;
+        private CefSharp.WinForms.ChromiumWebBrowser webBrowserWhatsNew;
     }
 }

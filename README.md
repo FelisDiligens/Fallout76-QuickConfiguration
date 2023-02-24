@@ -59,11 +59,15 @@
 
 ## 💡 Requirements
 This program is running on .NET Framework 4.7.2\
-It should be **preinstalled on Windows 10.**\
+It should be **preinstalled on Windows 10 or newer.**\
 If you can't start the tool, you may have to install it manually: [.NET Framework 4.7.2 web installer](https://dotnet.microsoft.com/download/dotnet-framework/net472)
 
 Archive2 needs [Visual C++ Redistributable for Visual Studio 2012 Update 4](https://www.microsoft.com/en-us/download/details.aspx?id=30679).\
 This **might** be preinstalled on your system as well. If your mods aren't deploying properly, try to install it.
+
+[CefSharp](https://cefsharp.github.io/) needs [Visual C++ Redistributable Packages for Visual Studio 2019](https://github.com/cefsharp/CefSharp/wiki/Output-files-description-table-%28Redistribution%29#visual-c).  
+--> [Direct download](https://aka.ms/vs/17/release/vc_redist.x64.exe) <--  
+Otherwise the tool will crash with the error message: `Could not load file or assembly 'CefSharp.Core.Runtime.dll' or one of its dependencies.`
 
 If you're still on Windows 7, make sure that you have Service Pack 1 and all updates installed.\
 Otherwise the .NET installer might fail or the tool might not start.
