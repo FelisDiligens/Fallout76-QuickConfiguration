@@ -216,6 +216,8 @@
       <DependentUpon>FormIniError.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\IExposeComponents.cs" />
+    <Compile Include="Utilities\Browser\LocalSchemeHandler.cs" />
+    <Compile Include="Utilities\Browser\ResourceSchemeHandler.cs" />
     <Compile Include="Utilities\StyleGenerator.cs" />
     <Compile Include="Forms\FormMain\Views\UserControlCustom.cs">
       <SubType>UserControl</SubType>
@@ -276,9 +278,6 @@
     </Compile>
     <Compile Include="Forms\FormMain\UserControlSideNav.Designer.cs">
       <DependentUpon>UserControlSideNav.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormMods\FormMods.Settings.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormWelcome\FormWelcome.cs">
       <SubType>Form</SubType>
@@ -430,9 +429,6 @@
     <Compile Include="Forms\FormMods\FormMods.Designer.cs">
       <DependentUpon>FormMods.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormMods\FormMods.SidePanel.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Profiles\GameInstance.cs" />
     <Compile Include="Ini\IniFile.cs" />
     <Compile Include="Ini\IniFiles.cs" />
@@ -527,9 +523,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
-    <Compile Include="Forms\FormMods\FormMods.ModList.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <EmbeddedResource Include="Resources\Login with Bethesda.net.rtf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -618,6 +611,8 @@
     <None Include="Resources\map-4-16.png" />
     <None Include="Resources\Magnify-1s-200px-light.gif" />
     <None Include="Resources\Magnify-1s-200px-dark.gif" />
+    <EmbeddedResource Include="Resources\modmanager\bundle.js" />
+    <EmbeddedResource Include="Resources\modmanager\index.html" />
     <Content Include="Resources\pipboy-24px.png" />
     <Content Include="Resources\pipboy-preview-mask.png" />
     <Content Include="Resources\pipboy-preview-screen.png" />

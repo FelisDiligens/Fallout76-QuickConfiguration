@@ -92,18 +92,6 @@ namespace Fo76ini
                 }
             }
 
-            public static FormMods.ModListStyle ModListStyle
-            {
-                get
-                {
-                    return (FormMods.ModListStyle)IniFiles.Config.GetInt("Mods", "iModListStyle", (int)FormMods.ModListStyle.Standard);
-                }
-                set
-                {
-                    IniFiles.Config.Set("Mods", "iModListStyle", (int)value);
-                }
-            }
-
             /// <summary>
             /// Where to put the bundled archives in the load order? First or last?
             /// </summary>

@@ -13,6 +13,9 @@ using Fo76ini.API;
 using Fo76ini.Profiles;
 using Fo76ini.Tweaks;
 using Fo76ini.Utilities;
+using CefSharp.WinForms;
+using CefSharp;
+using Fo76ini.Utilities.Browser;
 
 namespace Fo76ini
 {
@@ -48,6 +51,20 @@ namespace Fo76ini
 
             // Load custom fonts:
             CustomFonts.Register();
+
+            // Initalize CEF:
+            CefSettings settings = new CefSettings();
+            settings.RegisterScheme(new CefCustomScheme()
+            {
+                SchemeName = ResourceSchemeHandlerFactory.SchemeName,
+                SchemeHandlerFactory = new ResourceSchemeHandlerFactory()
+            });
+            settings.RegisterScheme(new CefCustomScheme()
+            {
+                SchemeName = LocalSchemeHandlerFactory.SchemeName,
+                SchemeHandlerFactory = new LocalSchemeHandlerFactory()
+            });
+            Cef.Initialize(settings);
         }
 
         private static void OnProfileChanged(object sender, ProfileEventArgs e)

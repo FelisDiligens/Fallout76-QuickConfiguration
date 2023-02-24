@@ -17,7 +17,6 @@ namespace Fo76ini.Interface
             {
                 GitHubAPI.ReleaseInfo info = GitHubAPI.GetLatestRelease("FelisDiligens", "Fallout76-QuickConfiguration");
                 Shared.LatestVersion = info.TagName;
-                Console.WriteLine(info.TagName);
             }
             catch (Exception ex)
             {

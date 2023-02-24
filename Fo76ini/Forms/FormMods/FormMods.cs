@@ -15,6 +15,9 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using static Fo76ini.Utilities.Archive2;
+using CefSharp.WinForms;
+using CefSharp;
+using Fo76ini.Utilities.Browser;
 
 namespace Fo76ini
 {
@@ -40,8 +43,6 @@ namespace Fo76ini
         public FormMods()
         {
             InitializeComponent();
-            InitializeSidePanelControls();
-            InitializeObjectListView();
 
             // Handle changes:
             ProfileManager.ProfileChanged += OnProfileChanged;
@@ -79,25 +80,34 @@ namespace Fo76ini
         private void FormMods_Load(object sender, EventArgs e)
         {
             Configuration.LoadWindowState("FormMods", this);
-            Configuration.LoadListViewState("FormMods.OLV", this.objectListViewMods);
 
             this.menuStrip1.RenderMode = ToolStripRenderMode.Professional;
             this.menuStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomToolStripColorTable());
 
-            this.toolStrip1.RenderMode = ToolStripRenderMode.Professional;
-            this.toolStrip1.Renderer = new CustomToolStripProfessionalRenderer(new CustomToolStripColorTable());
-
-            this.statusStrip1.RenderMode = ToolStripRenderMode.Professional;
-            this.statusStrip1.Renderer = new CustomToolStripProfessionalRenderer(new CustomToolStripColorTable());
+#if DEBUG
+            this.browserModManager.LoadUrl("http://localhost:3000/index.html"); // Webpack dev server
+            this.browserModManager.LoadError += (_, args) =>
+            {
+                Console.WriteLine("Browser failed to contact webpack dev server: " + args.ErrorText);
+                Console.WriteLine("Loading embedded resource instead...");
+                if (args.ErrorCode == CefErrorCode.ConnectionRefused)
+                    this.browserModManager.LoadUrl("resource://modmanager/index.html");
+            };
+#else
+            // this.browserModManager.LoadUrl("local://modmanager/index.html");
+            this.browserModManager.LoadUrl("resource://modmanager/index.html");
+            this.browserModManager.LoadError += (_, args) =>
+            {
+                MsgBox.Show("Failed to load mod manager", $"Chromium failed to load embedded resource.\nError: {args.ErrorText}", MessageBoxIcon.Error);
+            };
+#endif
         }
 
         private void FormMods_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                CloseSidePanel();
                 Configuration.SaveWindowState("FormMods", this);
-                Configuration.SaveListViewState("FormMods.OLV", this.objectListViewMods);
                 this.Mods.Save();
                 e.Cancel = true;
                 if (!preventClosing)
@@ -123,7 +133,6 @@ namespace Fo76ini
                 EnableUI();
                 if (!Directory.Exists(Path.Combine(game.GamePath, "Mods")))
                     Directory.CreateDirectory(Path.Combine(game.GamePath, "Mods"));
-                CloseSidePanel();
                 LoadMods(game.GamePath);
                 UpdateUI();
                 TriggerNWModeUpdated();
@@ -201,76 +210,43 @@ namespace Fo76ini
         private void UpdateUI()
         {
             UpdateModList();
-            UpdateSettings();
-            UpdateStatusStrip();
         }
 
-        #endregion
+#endregion
 
-        #region User interface
+#region User interface
         /// <summary>
         /// Goes through the mod list and updates the list view.
         /// </summary>
         private void UpdateModList()
         {
             isUpdating = true;
-            UpdateObjectListView();
             isUpdating = false;
         }
 
         private void EnableUI()
         {
-            this.tabControl1.Enabled = true;
-            this.pictureBoxModsLoadingGIF.Visible = false;
-            this.tabPageModsSettings.Enabled = true;
-            this.buttonModsDeploy.Enabled = true;
-            this.menuStrip1.Enabled = true;
-            this.checkBoxDisableMods.Enabled = true;
-            //this.listViewMods.Enabled = true;
-            this.toolStrip1.Enabled = true;
             this.preventClosing = false;
             this.timerCheckForNXM.Start();
         }
 
         private void DisableUI()
         {
-            this.tabControl1.Enabled = false;
-            this.buttonModsDeploy.Enabled = false;
-            this.menuStrip1.Enabled = false;
-            this.checkBoxDisableMods.Enabled = false;
             this.preventClosing = true;
             this.timerCheckForNXM.Stop();
         }
 
         private void DisableUI_SidePanelOpen()
         {
-            //this.listViewMods.Enabled = false;
-            this.toolStrip1.Enabled = false;
-            this.buttonModsDeploy.Enabled = false;
-            this.checkBoxDisableMods.Enabled = false;
-            this.menuStrip1.Enabled = false;
-            this.tabPageModsSettings.Enabled = false;
             this.preventClosing = true;
         }
 
         private void ShowLoadingUI()
         {
             DisableUI();
-            this.tabControl1.Enabled = true;
-            this.tabControl1.SelectedIndex = 0;
-            this.tabPageModsSettings.Enabled = false;
-
-            this.pictureBoxModsLoadingGIF.Visible = true;
-            this.pictureBoxModsLoadingGIF.Width = this.Width;
-            this.pictureBoxModsLoadingGIF.Height = this.tabControl1.Height;
-            this.pictureBoxModsLoadingGIF.Anchor =
-                AnchorStyles.Top    |
-                AnchorStyles.Bottom |
-                AnchorStyles.Left   |
-                AnchorStyles.Right;
         }
 
-        #endregion
+#endregion
 
         /*
          **********************************************************************************
@@ -278,7 +254,7 @@ namespace Fo76ini
          **********************************************************************************
          */
 
-        #region Nuclear Winter mode
+#region Nuclear Winter mode
 
         public void ToggleNuclearWinterMode()
         {
@@ -371,7 +347,6 @@ namespace Fo76ini
             Show();
             Focus();
             RunThreaded(() => {
-                CloseSidePanel();
                 ShowLoadingUI();
             }, () => {
                 EnableNuclearWinterMode();
@@ -390,7 +365,6 @@ namespace Fo76ini
             Show();
             Focus();
             RunThreaded(() => {
-                CloseSidePanel();
                 ShowLoadingUI();
             }, () => {
                 DisableNuclearWinterMode();
@@ -414,7 +388,7 @@ namespace Fo76ini
             return args;
         }
 
-        #endregion
+#endregion
 
         /*
          **********************************************************************************
@@ -431,7 +405,6 @@ namespace Fo76ini
         // Disable mods
         private void checkBoxDisableMods_CheckedChanged(object sender, EventArgs e)
         {
-            this.Mods.ModsDisabled = checkBoxDisableMods.Checked;
             this.Mods.Save();
             UpdateStatusStrip();
         }
@@ -449,7 +422,7 @@ namespace Fo76ini
             }
         }
 
-        #region All event handler that control the ListView
+#region All event handler that control the ListView
 
         private void FormMods_KeyDown(object sender, KeyEventArgs e)
         {
@@ -469,113 +442,11 @@ namespace Fo76ini
                 // Save changes:
                 saveToolStripMenuItem_Click(sender, e);
             }
-
-            // These shortcuts only apply to the mod list:
-            if (this.objectListViewMods.Focused)
-            {
-                if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
-                {
-                    // Delete mods:
-                    toolStripButtonDeleteMod_Click(sender, e);
-                }
-                else if (e.Control && e.KeyCode == Keys.Up)
-                {
-                    // Move mods up:
-                    toolStripButtonMoveUp_Click(sender, e);
-                }
-                else if (e.Control && e.KeyCode == Keys.Down)
-                {
-                    // Move mods down:
-                    toolStripButtonMoveDown_Click(sender, e);
-                }
-                else if (e.Control && e.KeyCode == Keys.A)
-                {
-                    SelectAll();
-                }
-                else if (e.Control && e.KeyCode == Keys.D)
-                {
-                    DeselectAll();
-                }
-            }
         }
 
-        #endregion
+#endregion
 
-        #region Toolstrip event handler
-
-        // Open mod folder:
-        private void toolStripButtonModOpenFolder_Click(object sender, EventArgs e)
-        {
-            OpenSelectedModsFolder();
-        }
-
-        // Move up
-        private void toolStripButtonMoveUp_Click(object sender, EventArgs e)
-        {
-            MoveSelectedModsUp();
-            UpdateModList();
-        }
-
-        // Move down
-        private void toolStripButtonMoveDown_Click(object sender, EventArgs e)
-        {
-            MoveSelectedModsDown();
-            UpdateModList();
-        }
-
-        // Check/uncheck all
-        private void toolStripButtonCheckAll_Click(object sender, EventArgs e)
-        {
-            ToggleCheckboxes();
-
-            UpdateModList();
-            UpdateStatusStrip();
-            if (sidePanelState != SidePanelState.Closed)
-                UpdateSidePanel();
-        }
-
-        // Delete mod
-        private void toolStripButtonDeleteMod_Click(object sender, EventArgs e)
-        {
-            DeleteSelectedMods();
-        }
-
-        // Freeze mod(s)
-        private void toolStripButtonFreeze_Click(object sender, EventArgs e)
-        {
-            FreezeSelectedMods();
-            UpdateModList();
-        }
-
-        // Unfreeze mod(s)
-        private void toolStripButtonModUnfreeze_Click(object sender, EventArgs e)
-        {
-            UnfreezeSelectedMods();
-            UpdateModList();
-        }
-
-        // Add mod archive
-        private void toolStripButtonAddMod_Click(object sender, EventArgs e)
-        {
-            if (this.openFileDialogMod.ShowDialog() == DialogResult.OK)
-                InstallModArchiveThreaded(this.openFileDialogMod.FileName, false);
-        }
-
-        // Add mod folder
-        private void toolStripButtonAddModFolder_Click(object sender, EventArgs e)
-        {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = KnownFolders.Profile.Path;
-            dialog.IsFolderPicker = true;
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-                InstallModFolderThreaded(dialog.FileName);
-            this.Focus();
-        }
-
-
-        #endregion
-
-        #region Menustrip
+#region Menustrip
         /*
          * Menu
          */
@@ -590,13 +461,11 @@ namespace Fo76ini
         // File > Add mod > From archive
         private void fromArchiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            toolStripButtonAddMod_Click(sender, e);
         }
 
         // File > Add mod > From folder
         private void fromFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            toolStripButtonAddModFolder_Click(sender, e);
         }
 
         // File > Add mod > From *.ba2 archive (frozen)
@@ -613,8 +482,6 @@ namespace Fo76ini
             {
                 ImportInstalledModsThreaded(UpdateProgress);
                 this.UpdateModList();
-
-                CloseSidePanel();
             }
         }
 
@@ -628,8 +495,6 @@ namespace Fo76ini
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Mods.Save();
-            this.labelModsDeploy.Text = "Changes saved.";
-            this.labelModsDeploy.ForeColor = Color.DarkGreen;
         }
 
         // View > Show conflicting files
@@ -661,8 +526,6 @@ namespace Fo76ini
         private void reloadUIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.UpdateUI();
-            if (this.sidePanelState != SidePanelState.Closed)
-                UpdateSidePanel();
         }
 
         // Tools > Archive2 > Open Archive2
@@ -762,7 +625,7 @@ namespace Fo76ini
                 Utils.OpenNotepad(Archive2.LogFilePath);
         }
 
-        #endregion
+#endregion
 
 
         /*
@@ -770,13 +633,12 @@ namespace Fo76ini
          * Threaded methods
          **********************************************************************************
          */
-        #region Threaded methods
+#region Threaded methods
 
         private void InstallModArchiveThreaded(string path, bool freeze)
         {
             RunThreaded(() => {
                 DisableUI();
-                CloseSidePanel();
             }, () => {
                 try
                 {
@@ -809,8 +671,6 @@ namespace Fo76ini
                 return true;
             }, (success) => {
                 EnableUI();
-                if (success)
-                    SetSelectedIndex(Mods.Count - 1);
                 UpdateModList();
                 UpdateStatusStrip();
             });
@@ -820,7 +680,6 @@ namespace Fo76ini
         {
             RunThreaded(() => {
                 DisableUI();
-                CloseSidePanel();
             }, () => {
                 try
                 {
@@ -847,8 +706,6 @@ namespace Fo76ini
                 return true;
             }, (success) => {
                 EnableUI();
-                if (success)
-                    SetSelectedIndex(Mods.Count - 1);
                 UpdateModList();
                 UpdateStatusStrip();
             });
@@ -858,7 +715,6 @@ namespace Fo76ini
         {
             RunThreaded(() => {
                 DisableUI();
-                CloseSidePanel();
             }, () => {
                 try
                 {
@@ -893,7 +749,6 @@ namespace Fo76ini
                 EnableUI();
                 if (success)
                 {
-                    DeselectAll();
                     UpdateProgress(Progress.Done("Mods imported."));
                 }
                 UpdateModList();
@@ -918,7 +773,6 @@ namespace Fo76ini
         private void DeleteModThreaded(int index)
         {
             RunThreaded(() => {
-                CloseSidePanel();
                 DisableUI();
             }, () => {
                 try
@@ -933,8 +787,6 @@ namespace Fo76ini
                 return true;
             }, (success) => {
                 EnableUI();
-                if (success)
-                    DeselectAll();
                 UpdateUI();
             });
         }
@@ -942,7 +794,6 @@ namespace Fo76ini
         private void DeleteModsBulkThreaded(List<int> indices)
         {
             RunThreaded(() => {
-                CloseSidePanel();
                 DisableUI();
             }, () => {
                 try
@@ -958,7 +809,6 @@ namespace Fo76ini
             }, (success) => {
                 EnableUI();
                 if (success)
-                    DeselectAll();
                 UpdateUI();
             });
         }
@@ -996,7 +846,6 @@ namespace Fo76ini
         private void DeployModsThreaded()
         {
             RunThreaded(() => {
-                CloseSidePanel();
                 ShowLoadingUI();
             }, () => {
                 return DeployMods();
@@ -1026,7 +875,6 @@ namespace Fo76ini
                 return;
             }
             RunThreaded(() => {
-                CloseSidePanel();
                 ShowLoadingUI();
             }, () => {
                 UpdateRemoteModInfo(UpdateProgress);
@@ -1045,7 +893,6 @@ namespace Fo76ini
                 return;
             }
             RunThreaded(() => {
-                CloseSidePanel();
                 ShowLoadingUI();
             }, () => {
                 UpdateRemoteModInfo(UpdateProgress);
@@ -1080,7 +927,6 @@ namespace Fo76ini
                 return;
             }
             RunThreaded(() => {
-                CloseSidePanel();
                 DisableUI();
             }, () => {
                 EndorseMods(UpdateProgress);
@@ -1140,7 +986,6 @@ namespace Fo76ini
         {
             RunThreaded(() => {
                 ShowLoadingUI();
-                CloseSidePanel();
             }, () => {
                 ModInstallations.ImportInstalledMods(Mods, ProgressChanged);
                 return true;
@@ -1159,7 +1004,6 @@ namespace Fo76ini
             bool unpackBA2ByDefault = Configuration.Mods.UnpackBA2ByDefault;
             RunThreaded(() => {
                 ShowLoadingUI();
-                CloseSidePanel();
             }, () => {
                 return ModInstallations.InstallRemote(Mods, nxmLink, !unpackBA2ByDefault, ProgressChanged);
             }, (success) => {
@@ -1172,7 +1016,7 @@ namespace Fo76ini
             });
         }
 
-        #endregion
+#endregion
 
 
         /*
@@ -1180,7 +1024,7 @@ namespace Fo76ini
          * Utility methods
          **********************************************************************************
          */
-        #region Utility methods
+#region Utility methods
 
         private void RunThreaded(Action prepareWork, Func<bool> doWork, Action<bool> finishWork)
         {
@@ -1196,22 +1040,14 @@ namespace Fo76ini
 
         private void UpdateProgress(Progress progress)
         {
-            this.progressBarMods.Invoke(new Action(() => {
-                this.labelModsDeploy.Visible = true;
-                progress.Update(labelModsDeploy, progressBarMods);
-            }));
         }
 
         private void DisplayDeploymentNecessary()
         {
-            this.toolStripStatusLabelDeploymentStatus.Visible = true;
-            this.toolStripStatusLabelDeploymentStatus.ForeColor = Color.Crimson;
-            this.toolStripStatusLabelDeploymentStatus.Text = Localization.GetString("modsDeploymentNecessary");
         }
 
         private void DisplayAllDone()
         {
-            this.toolStripStatusLabelDeploymentStatus.Visible = false;
         }
 
         private void UpdateStatusStrip()
@@ -1220,12 +1056,14 @@ namespace Fo76ini
                 this.DisplayDeploymentNecessary();
             else
                 this.DisplayAllDone();
-
-            this.toolStripStatusLabelModCount.Text = Mods.Count.ToString();
-            this.toolStripStatusLabelEnabledCount.Text = Mods.EnabledCount.ToString();
         }
 
         #endregion
+
+        private void showDevToolsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.browserModManager.ShowDevTools();
+        }
     }
 
 
