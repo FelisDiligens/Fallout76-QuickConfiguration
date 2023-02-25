@@ -17,6 +17,13 @@ using Fo76ini.Utilities.Browser;
 
 namespace Fo76ini
 {
+    public struct ModManagerState
+    {
+        public int modCount;
+        public int modsEnabled;
+        public int progressPercent;
+    }
+
     public partial class FormMods : Form, IExposeComponents
     {
         public ToolTip ToolTip => this.toolTip;
@@ -106,6 +113,14 @@ namespace Fo76ini
 
         private object Browser_RecvMessage(object sender, string message, object data)
         {
+            if (message == "getData")
+            {
+                var state = new ModManagerState();
+                state.modCount = Mods.Count;
+                state.modsEnabled = Mods.EnabledCount;
+                state.progressPercent = 0;
+                return state;
+            }
             MsgBox.Show(message, data != null ? JsonConvert.SerializeObject(data) : "null");
             return null;
         }

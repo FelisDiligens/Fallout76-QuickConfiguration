@@ -20,14 +20,20 @@ import {
     faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import "./TabContent.css";
-import {sendMessage, registerMessageHandler} from "../messages.js";
+import {getData} from "../messages.js";
 
-function handleBtnDeploy() {
-    sendMessage("Deploy", { "foo": "bar" });
+/*registerMessageHandler((msg, data) => {
+    alert(msg + "\n" + JSON.stringify(data, null, 4));
+});*/
+
+var data = {
+    modCount: 0,
+    modsEnabled: 0,
+    progressPercent: 50
 }
 
-registerMessageHandler((msg, data) => {
-    alert(msg + "\n" + JSON.stringify(data, null, 4));
+getData((recvData) => {
+    data = {...data, ...recvData};
 });
 
 export default class App extends React.Component {
@@ -154,7 +160,7 @@ export default class App extends React.Component {
                 <Row>
                     <Col>
                         <span style={{ color: "green" }}>Ready...</span>
-                        <ProgressBar now={25} />
+                        <ProgressBar now={data.progressPercent} />
                     </Col>
                     <Col md="auto">
                         <FormCheck
@@ -162,17 +168,17 @@ export default class App extends React.Component {
                             label="Enable mods"
                             defaultChecked
                         />
-                        <Button onClick={handleBtnDeploy} style={{ width: "200px" }}>Deploy</Button>
+                        <Button style={{ width: "200px" }}>Deploy</Button>
                     </Col>
                 </Row>
                 <Row>
                     <Col md="auto">
                         <span className="fw-bold">Mod count:</span>&nbsp;
-                        <span>4</span>
+                        <span>{data.modCount}</span>
                     </Col>
                     <Col md="auto">
                         <span className="fw-bold">Enabled:</span>&nbsp;
-                        <span>4</span>
+                        <span>{data.modsEnabled}</span>
                     </Col>
                     <Col>
                         <p className="text-end fw-bold">Deployment necessary</p>
