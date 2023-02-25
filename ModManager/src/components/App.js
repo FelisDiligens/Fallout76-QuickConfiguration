@@ -26,17 +26,18 @@ import {getData} from "../messages.js";
     alert(msg + "\n" + JSON.stringify(data, null, 4));
 });*/
 
-var data = {
-    modCount: 0,
-    modsEnabled: 0,
-    progressPercent: 50
-}
-
-getData((recvData) => {
-    data = {...data, ...recvData};
-});
-
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modCount: 0,
+            modsEnabled: 0,
+            progressPercent: 50
+        };
+        getData((data) => {
+            this.setState({...this.state, ...data});
+        });
+    }
     render() {
         return (
             <Container fluid>
@@ -160,7 +161,7 @@ export default class App extends React.Component {
                 <Row>
                     <Col>
                         <span style={{ color: "green" }}>Ready...</span>
-                        <ProgressBar now={data.progressPercent} />
+                        <ProgressBar now={this.state.progressPercent} />
                     </Col>
                     <Col md="auto">
                         <FormCheck
@@ -174,11 +175,11 @@ export default class App extends React.Component {
                 <Row>
                     <Col md="auto">
                         <span className="fw-bold">Mod count:</span>&nbsp;
-                        <span>{data.modCount}</span>
+                        <span>{this.state.modCount}</span>
                     </Col>
                     <Col md="auto">
                         <span className="fw-bold">Enabled:</span>&nbsp;
-                        <span>{data.modsEnabled}</span>
+                        <span>{this.state.modsEnabled}</span>
                     </Col>
                     <Col>
                         <p className="text-end fw-bold">Deployment necessary</p>
