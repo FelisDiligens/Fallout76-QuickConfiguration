@@ -1,9 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
-const title = 'React with Webpack and Babel';
+import App from './components/App';
 
-ReactDOM.render(
-    <div>{title}</div>,
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// https://getbootstrap.com/docs/5.3/customize/color-modes/
+document.body.setAttribute("data-bs-theme", "dark");
+
+createRoot(
     document.getElementById('app')
+).render(
+    <App />
 );

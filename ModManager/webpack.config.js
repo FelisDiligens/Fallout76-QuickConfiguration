@@ -19,17 +19,7 @@ module.exports = function (_env, argv) {
                 {
                     test: /\.css$/,
                     use: [
-                        {
-                            loader: "style-loader",
-                        },
-                        {
-                            loader: "css-loader",
-                            options: {
-                                modules: true,
-                                localsConvention: "camelCase",
-                                sourceMap: true,
-                            },
-                        },
+                        "style-loader", "css-loader"
                     ],
                 },
             ],
@@ -53,7 +43,10 @@ module.exports = function (_env, argv) {
             host: "localhost",
             port: port,
             historyApiFallback: true,
-            open: true,
+            open: false,
         },
+        /*optimization: {
+            minimize: false
+        }*/
     };
 };

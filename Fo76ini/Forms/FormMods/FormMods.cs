@@ -4,19 +4,15 @@ using Fo76ini.Mods;
 using Fo76ini.API;
 using Fo76ini.Profiles;
 using Fo76ini.Utilities;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using Syroot.Windows.IO;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using static Fo76ini.Utilities.Archive2;
-using CefSharp.WinForms;
 using CefSharp;
+using Newtonsoft.Json;
 using Fo76ini.Utilities.Browser;
 
 namespace Fo76ini
@@ -84,6 +80,11 @@ namespace Fo76ini
             this.menuStrip1.RenderMode = ToolStripRenderMode.Professional;
             this.menuStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomToolStripColorTable());
 
+            BrowserIPC.RecvMessage(
+                this.browserModManager,
+                Browser_RecvMessage
+            );
+
 #if DEBUG
             this.browserModManager.LoadUrl("http://localhost:3000/index.html"); // Webpack dev server
             this.browserModManager.LoadError += (_, args) =>
@@ -101,6 +102,12 @@ namespace Fo76ini
                 MsgBox.Show("Failed to load mod manager", $"Chromium failed to load embedded resource.\nError: {args.ErrorText}", MessageBoxIcon.Error);
             };
 #endif
+        }
+
+        private object Browser_RecvMessage(object sender, string message, object data)
+        {
+            MsgBox.Show(message, data != null ? JsonConvert.SerializeObject(data) : "null");
+            return null;
         }
 
         private void FormMods_FormClosing(object sender, FormClosingEventArgs e)

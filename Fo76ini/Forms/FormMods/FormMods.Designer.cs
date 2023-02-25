@@ -58,13 +58,13 @@
             this.logFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showModmanagerlogtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showArchive2logtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showDevToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialogMod = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogBA2 = new System.Windows.Forms.OpenFileDialog();
             this.timerCheckForNXM = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.panel = new System.Windows.Forms.Panel();
             this.browserModManager = new CefSharp.WinForms.ChromiumWebBrowser();
-            this.showDevToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -274,7 +274,7 @@
             // 
             this.showGuideToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.help_24;
             this.showGuideToolStripMenuItem.Name = "showGuideToolStripMenuItem";
-            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.showGuideToolStripMenuItem.Text = "Show guide";
             this.showGuideToolStripMenuItem.Click += new System.EventHandler(this.showGuideToolStripMenuItem_Click);
             // 
@@ -284,7 +284,7 @@
             this.showModmanagerlogtxtToolStripMenuItem,
             this.showArchive2logtxtToolStripMenuItem});
             this.logFilesToolStripMenuItem.Name = "logFilesToolStripMenuItem";
-            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.logFilesToolStripMenuItem.Text = "Log files";
             // 
             // showModmanagerlogtxtToolStripMenuItem
@@ -300,6 +300,14 @@
             this.showArchive2logtxtToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.showArchive2logtxtToolStripMenuItem.Text = "Show archive2.log.txt";
             this.showArchive2logtxtToolStripMenuItem.Click += new System.EventHandler(this.showArchive2logtxtToolStripMenuItem_Click);
+            // 
+            // showDevToolsToolStripMenuItem
+            // 
+            this.showDevToolsToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.bug_3_16;
+            this.showDevToolsToolStripMenuItem.Name = "showDevToolsToolStripMenuItem";
+            this.showDevToolsToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.showDevToolsToolStripMenuItem.Text = "Show development tools";
+            this.showDevToolsToolStripMenuItem.Click += new System.EventHandler(this.showDevToolsToolStripMenuItem_Click);
             // 
             // openFileDialogMod
             // 
@@ -346,13 +354,6 @@
             this.browserModManager.Name = "browserModManager";
             this.browserModManager.Size = new System.Drawing.Size(784, 577);
             this.browserModManager.TabIndex = 0;
-            // 
-            // showDevToolsToolStripMenuItem
-            // 
-            this.showDevToolsToolStripMenuItem.Name = "showDevToolsToolStripMenuItem";
-            this.showDevToolsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.showDevToolsToolStripMenuItem.Text = "Show dev tools";
-            this.showDevToolsToolStripMenuItem.Click += new System.EventHandler(this.showDevToolsToolStripMenuItem_Click);
             // 
             // FormMods
             // 

@@ -216,6 +216,7 @@
       <DependentUpon>FormIniError.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\IExposeComponents.cs" />
+    <Compile Include="Utilities\Browser\BrowserIPC.cs" />
     <Compile Include="Utilities\Browser\LocalSchemeHandler.cs" />
     <Compile Include="Utilities\Browser\ResourceSchemeHandler.cs" />
     <Compile Include="Utilities\StyleGenerator.cs" />
