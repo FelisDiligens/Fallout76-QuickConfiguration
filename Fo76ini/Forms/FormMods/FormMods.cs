@@ -19,6 +19,7 @@ namespace Fo76ini
 {
     public struct ModManagerState
     {
+        public string theme;
         public int modCount;
         public int modsEnabled;
         public int progressPercent;
@@ -116,6 +117,7 @@ namespace Fo76ini
             if (message == "getData")
             {
                 var state = new ModManagerState();
+                state.theme = Theming.CurrentTheme == ThemeType.Dark ? "dark" : "light";
                 state.modCount = Mods.Count;
                 state.modsEnabled = Mods.EnabledCount;
                 state.progressPercent = 0;

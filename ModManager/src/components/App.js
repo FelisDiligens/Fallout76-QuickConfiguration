@@ -30,12 +30,14 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            theme: "dark",
             modCount: 0,
             modsEnabled: 0,
             progressPercent: 50
         };
         getData((data) => {
             this.setState({...this.state, ...data});
+            document.body.setAttribute("data-bs-theme", data.theme);
         });
     }
     render() {
