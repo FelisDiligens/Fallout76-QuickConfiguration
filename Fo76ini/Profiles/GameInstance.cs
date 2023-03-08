@@ -34,6 +34,7 @@ namespace Fo76ini.Profiles
         public string Title = "Untitled";
         public GameEdition Edition = GameEdition.Unknown;
         public string GamePath = "";
+        public string ModsPath = "";
         public string ExecutableName = "Fallout76.exe";
         public string IniPrefix = "Fallout76";
         public string IniParentPath = IniFiles.DefaultParentPath;
@@ -104,6 +105,7 @@ namespace Fo76ini.Profiles
             XElement xmlGameInstance = new XElement("Game",
                 new XElement("Title", Title),
                 new XElement("InstallationPath", GamePath),
+                new XElement("ModsPath", ModsPath),
                 new XElement("ExecutableName", ExecutableName),
                 new XElement("ExecParameters", ExecParameters),
                 new XElement("LauncherURL", LauncherURL),
@@ -126,6 +128,9 @@ namespace Fo76ini.Profiles
             game.ExecParameters = xmlGameInstance.Element("ExecParameters").Value;
             game.LauncherURL = xmlGameInstance.Element("LauncherURL").Value;
             game.IniPrefix = xmlGameInstance.Element("IniPrefix").Value;
+
+            if (xmlGameInstance.Element("ModsPath") != null)
+                game.ModsPath = xmlGameInstance.Element("ModsPath").Value;
 
             if (xmlGameInstance.Element("IniPath") != null)
                 game.IniParentPath = xmlGameInstance.Element("IniPath").Value;
@@ -218,6 +223,26 @@ namespace Fo76ini.Profiles
         public bool ValidateGamePath()
         {
             return ValidateGamePath(GamePath);
+        }
+
+        /// <summary>
+        /// Checks whether the passed on mods path is valid.
+        /// </summary>
+        public static bool ValidateModsPath(string path)
+        {
+            // TODO!
+            return
+                path != null &&
+                path.Trim().Length > 0 &&
+                Directory.Exists(path);
+        }
+
+        /// <summary>
+        /// Checks whether the current mods path is valid.
+        /// </summary>
+        public bool ValidateModsPath()
+        {
+            return ValidateModsPath(ModsPath);
         }
 
         public static string AutoDetectGamePath()

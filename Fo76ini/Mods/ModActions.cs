@@ -156,7 +156,7 @@ namespace Fo76ini.Mods
                 return false;
 
             // Don't rename if folder already exists:
-            string newFolderPath = Path.Combine(mod.GamePath, "Mods", newFolderName);
+            string newFolderPath = Path.Combine(mod.ModsPath, "Mods", newFolderName);
             if (Directory.Exists(newFolderPath))
                 return false;
 

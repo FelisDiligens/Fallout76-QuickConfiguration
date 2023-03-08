@@ -105,9 +105,9 @@ namespace Fo76ini
             }
         }
 
-        private void LoadMods(string GamePath)
+        private void LoadMods(string GamePath, string ModsPath)
         {
-            Mods = new ManagedMods(GamePath);
+            Mods = new ManagedMods(GamePath, ModsPath);
             Mods.Load();
         }
 
@@ -121,10 +121,10 @@ namespace Fo76ini
             try
             {
                 EnableUI();
-                if (!Directory.Exists(Path.Combine(game.GamePath, "Mods")))
-                    Directory.CreateDirectory(Path.Combine(game.GamePath, "Mods"));
+                if (!Directory.Exists(Path.Combine(game.ModsPath, "Mods")))
+                    Directory.CreateDirectory(Path.Combine(game.ModsPath, "Mods"));
                 CloseSidePanel();
-                LoadMods(game.GamePath);
+                LoadMods(game.GamePath, game.ModsPath);
                 UpdateUI();
                 TriggerNWModeUpdated();
 

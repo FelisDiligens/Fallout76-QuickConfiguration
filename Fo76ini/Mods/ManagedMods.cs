@@ -16,9 +16,10 @@ namespace Fo76ini.Mods
     /// </summary>
     public class ManagedMods : ICollection<ManagedMod>
     {
-        public ManagedMods(string gamePath)
+        public ManagedMods(string gamePath, string modsPath)
         {
             this.GamePath = gamePath;
+            this.ModsPath = modsPath;
         }
 
         public List<ManagedMod> Mods = new List<ManagedMod>();
@@ -27,12 +28,23 @@ namespace Fo76ini.Mods
         public bool ModsDisabled = false;
         public bool NuclearWinterModeEnabled = false;
 
+        private string modsPath = string.Empty;
+
         /// <summary>
-        /// Path where mods get stored. ("Fallout76\Mods")
+        /// Path where mods get stored.
         /// </summary>
         public string ModsPath
         {
-            get { return Path.Combine(GamePath, "Mods"); }
+            get
+            {
+                if (modsPath == string.Empty)
+                    return GamePath;
+                return modsPath;
+            }
+            set
+            {
+                modsPath = value;
+            }
         }
 
         /// <summary>
@@ -40,7 +52,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public string XMLPath
         {
-            get { return Path.Combine(ModsPath, "managed.xml"); }
+            get { return Path.Combine(ModsPath, "Mods", "managed.xml"); }
         }
 
         /// <summary>
@@ -48,7 +60,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public string ResourcesPath
         {
-            get { return Path.Combine(ModsPath, "resources.txt"); }
+            get { return Path.Combine(ModsPath, "Mods", "resources.txt"); }
         }
 
         /// <summary>
@@ -207,7 +219,7 @@ namespace Fo76ini.Mods
             {
                 try
                 {
-                    ManagedMod mod = ManagedMod.Deserialize(xmlMod, GamePath);
+                    ManagedMod mod = ManagedMod.Deserialize(xmlMod, GamePath, ModsPath);
                     /*if (!Directory.Exists(mod.GetManagedPath()))
                         continue;*/
                     mods.Add(mod);
@@ -232,6 +244,9 @@ namespace Fo76ini.Mods
             if (!GameInstance.ValidateGamePath(GamePath))
                 return;
 
+            if (!GameInstance.ValidateModsPath(ModsPath))
+                return;
+
             if (!File.Exists(XMLPath))
                 return;
 
@@ -245,8 +260,8 @@ namespace Fo76ini.Mods
         /// </summary>
         public void Save()
         {
-            if (!Directory.Exists(Path.Combine(this.GamePath, "Mods")))
-                Directory.CreateDirectory(Path.Combine(this.GamePath, "Mods"));
+            if (!Directory.Exists(Path.Combine(this.ModsPath, "Mods")))
+                Directory.CreateDirectory(Path.Combine(this.ModsPath, "Mods"));
 
             this.Serialize(this.Mods).Save(XMLPath);
             SaveResources();

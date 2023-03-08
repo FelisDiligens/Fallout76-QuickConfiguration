@@ -276,7 +276,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public string ManagedFolderPath
         {
-            get { return Path.Combine(GamePath, "Mods", ManagedFolderName); }
+            get { return Path.Combine(ModsPath, "Mods", ManagedFolderName); }
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public string FrozenDataPath
         {
-            get { return Path.Combine(GamePath, "FrozenData"); }
+            get { return Path.Combine(ModsPath, "FrozenData"); }
         }
 
         /// <summary>
@@ -317,18 +317,21 @@ namespace Fo76ini.Mods
         public string Version = "1.0";
         private string url = "";
         public int ID = -1;
+        public readonly string ModsPath;
         public readonly string GamePath;
 
-        public ManagedMod(string gamePath, Guid uuid)
+        public ManagedMod(string gamePath, string modsPath, Guid uuid)
         {
             this.GamePath = gamePath;
+            this.ModsPath = modsPath;
             this.guid = uuid;
             this.ManagedFolderName = this.DefaultManagedFolderName;
         }
 
-        public ManagedMod(string gamePath)
+        public ManagedMod(string gamePath, string modsPath)
         {
             this.GamePath = gamePath;
+            this.ModsPath = modsPath;
             this.guid = Guid.NewGuid();
             this.ManagedFolderName = this.DefaultManagedFolderName;
         }
@@ -348,7 +351,7 @@ namespace Fo76ini.Mods
             this.URL = mod.URL;
             this.Version = mod.Version;
             this.guid = mod.guid;
-            this.GamePath = mod.GamePath;
+            this.ModsPath = mod.ModsPath;
             this.ManagedFolderName = mod.ManagedFolderName;
 
 
@@ -482,12 +485,12 @@ namespace Fo76ini.Mods
             return xmlMod;
         }
 
-        public static ManagedMod Deserialize(XElement xmlMod, string GamePath)
+        public static ManagedMod Deserialize(XElement xmlMod, string GamePath, string ModsPath)
         {
             if (xmlMod.Attribute("guid") == null)
                 throw new Exception("Invalid *.xml entry for mod.");
 
-            ManagedMod mod = new ManagedMod(GamePath, new Guid(xmlMod.Attribute("guid").Value));
+            ManagedMod mod = new ManagedMod(GamePath, ModsPath, new Guid(xmlMod.Attribute("guid").Value));
 
             if (xmlMod.Element("Title") == null)
                 throw new Exception("Invalid *.xml entry for mod.");

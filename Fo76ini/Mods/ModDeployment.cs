@@ -563,7 +563,7 @@ namespace Fo76ini.Mods
         /// </summary>
         private static void CopyFileOrMakeLink(string filePath, string destinationPath, bool overwrite)
         {
-            if (Configuration.Mods.UseHardlinks)
+            if (Configuration.Mods.UseHardlinks && Utils.SameDrive(filePath, destinationPath))
                 Utils.CreateHardLink(filePath, destinationPath, overwrite);
             else if (Configuration.Mods.UseSymlinks && Utils.HasAdminRights())
                 Utils.CreateSymbolicLink(filePath, destinationPath, overwrite);

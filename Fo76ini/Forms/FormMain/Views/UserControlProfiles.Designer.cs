@@ -46,15 +46,19 @@
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.buttonAddProfile = new System.Windows.Forms.Button();
             this.tabPageEdit = new System.Windows.Forms.TabPage();
+            this.pictureBoxAPIKeyHelp = new System.Windows.Forms.PictureBox();
+            this.linkLabelProfilesHelp = new System.Windows.Forms.LinkLabel();
             this.labelEditTitle = new System.Windows.Forms.Label();
             this.linkLabelNavigationBack = new System.Windows.Forms.LinkLabel();
             this.panelSettings = new System.Windows.Forms.Panel();
+            this.linkLabelResetModsPath = new System.Windows.Forms.LinkLabel();
+            this.labelModsPath = new System.Windows.Forms.Label();
+            this.buttonPickModsPath = new System.Windows.Forms.Button();
+            this.textBoxModsPath = new System.Windows.Forms.TextBox();
             this.linkLabelAutoDetect = new System.Windows.Forms.LinkLabel();
             this.checkBoxMoreOptions = new System.Windows.Forms.CheckBox();
             this.labelGamePath = new System.Windows.Forms.Label();
             this.panelAdvancedOptions = new System.Windows.Forms.Panel();
-            this.pictureBoxAPIKeyHelp = new System.Windows.Forms.PictureBox();
-            this.linkLabelProfilesHelp = new System.Windows.Forms.LinkLabel();
             this.labelIniPath = new System.Windows.Forms.Label();
             this.buttonPickIniPath = new System.Windows.Forms.Button();
             this.textBoxIniPath = new System.Windows.Forms.TextBox();
@@ -80,9 +84,9 @@
             this.tabControl.SuspendLayout();
             this.tabPageSelect.SuspendLayout();
             this.tabPageEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).BeginInit();
             this.panelSettings.SuspendLayout();
             this.panelAdvancedOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -198,6 +202,8 @@
             // tabPageEdit
             // 
             this.tabPageEdit.BackColor = System.Drawing.Color.White;
+            this.tabPageEdit.Controls.Add(this.pictureBoxAPIKeyHelp);
+            this.tabPageEdit.Controls.Add(this.linkLabelProfilesHelp);
             this.tabPageEdit.Controls.Add(this.labelEditTitle);
             this.tabPageEdit.Controls.Add(this.linkLabelNavigationBack);
             this.tabPageEdit.Controls.Add(this.panelSettings);
@@ -207,6 +213,26 @@
             this.tabPageEdit.Size = new System.Drawing.Size(472, 374);
             this.tabPageEdit.TabIndex = 1;
             this.tabPageEdit.Text = "Edit";
+            // 
+            // pictureBoxAPIKeyHelp
+            // 
+            this.pictureBoxAPIKeyHelp.Image = global::Fo76ini.Properties.Resources.help_24;
+            this.pictureBoxAPIKeyHelp.Location = new System.Drawing.Point(15, 74);
+            this.pictureBoxAPIKeyHelp.Name = "pictureBoxAPIKeyHelp";
+            this.pictureBoxAPIKeyHelp.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxAPIKeyHelp.TabIndex = 113;
+            this.pictureBoxAPIKeyHelp.TabStop = false;
+            // 
+            // linkLabelProfilesHelp
+            // 
+            this.linkLabelProfilesHelp.AutoSize = true;
+            this.linkLabelProfilesHelp.Location = new System.Drawing.Point(45, 80);
+            this.linkLabelProfilesHelp.Name = "linkLabelProfilesHelp";
+            this.linkLabelProfilesHelp.Size = new System.Drawing.Size(86, 13);
+            this.linkLabelProfilesHelp.TabIndex = 20;
+            this.linkLabelProfilesHelp.TabStop = true;
+            this.linkLabelProfilesHelp.Text = "Show wiki article";
+            this.linkLabelProfilesHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelProfilesHelp_LinkClicked);
             // 
             // labelEditTitle
             // 
@@ -237,6 +263,10 @@
             this.panelSettings.AutoScroll = true;
             this.panelSettings.AutoScrollMargin = new System.Drawing.Size(0, 8);
             this.panelSettings.BackColor = System.Drawing.SystemColors.Window;
+            this.panelSettings.Controls.Add(this.linkLabelResetModsPath);
+            this.panelSettings.Controls.Add(this.labelModsPath);
+            this.panelSettings.Controls.Add(this.buttonPickModsPath);
+            this.panelSettings.Controls.Add(this.textBoxModsPath);
             this.panelSettings.Controls.Add(this.linkLabelAutoDetect);
             this.panelSettings.Controls.Add(this.checkBoxMoreOptions);
             this.panelSettings.Controls.Add(this.labelGamePath);
@@ -247,10 +277,48 @@
             this.panelSettings.Controls.Add(this.buttonPickGamePath);
             this.panelSettings.Controls.Add(this.textBoxProfileName);
             this.panelSettings.Controls.Add(this.textBoxGamePath);
-            this.panelSettings.Location = new System.Drawing.Point(6, 72);
+            this.panelSettings.Location = new System.Drawing.Point(6, 104);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(466, 302);
+            this.panelSettings.Size = new System.Drawing.Size(466, 270);
             this.panelSettings.TabIndex = 39;
+            // 
+            // linkLabelResetModsPath
+            // 
+            this.linkLabelResetModsPath.AutoSize = true;
+            this.linkLabelResetModsPath.Location = new System.Drawing.Point(110, 124);
+            this.linkLabelResetModsPath.Name = "linkLabelResetModsPath";
+            this.linkLabelResetModsPath.Size = new System.Drawing.Size(87, 13);
+            this.linkLabelResetModsPath.TabIndex = 40;
+            this.linkLabelResetModsPath.TabStop = true;
+            this.linkLabelResetModsPath.Text = "Reset mods path";
+            this.linkLabelResetModsPath.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelResetModsPath_LinkClicked);
+            // 
+            // labelModsPath
+            // 
+            this.labelModsPath.Location = new System.Drawing.Point(7, 101);
+            this.labelModsPath.Name = "labelModsPath";
+            this.labelModsPath.Size = new System.Drawing.Size(100, 20);
+            this.labelModsPath.TabIndex = 41;
+            this.labelModsPath.Text = "Mods path:";
+            this.labelModsPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonPickModsPath
+            // 
+            this.buttonPickModsPath.Location = new System.Drawing.Point(363, 100);
+            this.buttonPickModsPath.Name = "buttonPickModsPath";
+            this.buttonPickModsPath.Size = new System.Drawing.Size(30, 22);
+            this.buttonPickModsPath.TabIndex = 39;
+            this.buttonPickModsPath.Text = "...";
+            this.buttonPickModsPath.UseVisualStyleBackColor = true;
+            this.buttonPickModsPath.Click += new System.EventHandler(this.buttonPickModsPath_Click);
+            // 
+            // textBoxModsPath
+            // 
+            this.textBoxModsPath.Location = new System.Drawing.Point(113, 101);
+            this.textBoxModsPath.Name = "textBoxModsPath";
+            this.textBoxModsPath.Size = new System.Drawing.Size(245, 20);
+            this.textBoxModsPath.TabIndex = 38;
+            this.textBoxModsPath.TextChanged += new System.EventHandler(this.textBoxModsPath_TextChanged);
             // 
             // linkLabelAutoDetect
             // 
@@ -266,7 +334,7 @@
             // checkBoxMoreOptions
             // 
             this.checkBoxMoreOptions.AutoSize = true;
-            this.checkBoxMoreOptions.Location = new System.Drawing.Point(9, 110);
+            this.checkBoxMoreOptions.Location = new System.Drawing.Point(9, 148);
             this.checkBoxMoreOptions.Name = "checkBoxMoreOptions";
             this.checkBoxMoreOptions.Size = new System.Drawing.Size(116, 17);
             this.checkBoxMoreOptions.TabIndex = 9;
@@ -285,8 +353,6 @@
             // 
             // panelAdvancedOptions
             // 
-            this.panelAdvancedOptions.Controls.Add(this.pictureBoxAPIKeyHelp);
-            this.panelAdvancedOptions.Controls.Add(this.linkLabelProfilesHelp);
             this.panelAdvancedOptions.Controls.Add(this.labelIniPath);
             this.panelAdvancedOptions.Controls.Add(this.buttonPickIniPath);
             this.panelAdvancedOptions.Controls.Add(this.textBoxIniPath);
@@ -303,30 +369,10 @@
             this.panelAdvancedOptions.Controls.Add(this.labelExecutable);
             this.panelAdvancedOptions.Controls.Add(this.textBoxIniPrefix);
             this.panelAdvancedOptions.Controls.Add(this.labelIniPrefix);
-            this.panelAdvancedOptions.Location = new System.Drawing.Point(0, 133);
+            this.panelAdvancedOptions.Location = new System.Drawing.Point(0, 171);
             this.panelAdvancedOptions.Name = "panelAdvancedOptions";
-            this.panelAdvancedOptions.Size = new System.Drawing.Size(411, 334);
+            this.panelAdvancedOptions.Size = new System.Drawing.Size(411, 298);
             this.panelAdvancedOptions.TabIndex = 10;
-            // 
-            // pictureBoxAPIKeyHelp
-            // 
-            this.pictureBoxAPIKeyHelp.Image = global::Fo76ini.Properties.Resources.help_24;
-            this.pictureBoxAPIKeyHelp.Location = new System.Drawing.Point(9, 304);
-            this.pictureBoxAPIKeyHelp.Name = "pictureBoxAPIKeyHelp";
-            this.pictureBoxAPIKeyHelp.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxAPIKeyHelp.TabIndex = 113;
-            this.pictureBoxAPIKeyHelp.TabStop = false;
-            // 
-            // linkLabelProfilesHelp
-            // 
-            this.linkLabelProfilesHelp.AutoSize = true;
-            this.linkLabelProfilesHelp.Location = new System.Drawing.Point(39, 310);
-            this.linkLabelProfilesHelp.Name = "linkLabelProfilesHelp";
-            this.linkLabelProfilesHelp.Size = new System.Drawing.Size(86, 13);
-            this.linkLabelProfilesHelp.TabIndex = 20;
-            this.linkLabelProfilesHelp.TabStop = true;
-            this.linkLabelProfilesHelp.Text = "Show wiki article";
-            this.linkLabelProfilesHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelProfilesHelp_LinkClicked);
             // 
             // labelIniPath
             // 
@@ -551,11 +597,11 @@
             this.tabPageSelect.PerformLayout();
             this.tabPageEdit.ResumeLayout(false);
             this.tabPageEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).EndInit();
             this.panelSettings.ResumeLayout(false);
             this.panelSettings.PerformLayout();
             this.panelAdvancedOptions.ResumeLayout(false);
             this.panelAdvancedOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAPIKeyHelp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -603,5 +649,9 @@
         private System.Windows.Forms.TextBox textBoxIniPath;
         private System.Windows.Forms.LinkLabel linkLabelProfilesHelp;
         private System.Windows.Forms.PictureBox pictureBoxAPIKeyHelp;
+        private System.Windows.Forms.LinkLabel linkLabelResetModsPath;
+        private System.Windows.Forms.Label labelModsPath;
+        private System.Windows.Forms.Button buttonPickModsPath;
+        private System.Windows.Forms.TextBox textBoxModsPath;
     }
 }

@@ -1,9 +1,13 @@
 ### What's new in v1.12.4?
 
-- You can now pick between sResourceIndexFileList and sResourceArchive2List inside the settings.
-- Relocated resource list into it's own tab.
+- You can now pick where mods get saved in the profile options. Read more about that in the wiki.
+- You can now pick between sResourceIndexFileList and sResourceArchive2List inside the settings.  
+  ![](https://i.imgur.com/JEvy5GI.png)
+- Relocated resource list into it's own tab.  
+  ![](https://i.imgur.com/jDKkaSY.png)
 - The mod manager can now partially read *.ba2 files:
-  - Added 'Tools -> Archive2 -> Display info about *.ba2 archive' button to the mod manager.
+  - Added 'Tools → Archive2 → Display info about *.ba2 archive' button to the mod manager.  
+    ![](https://i.imgur.com/aICJAKf.png)
   - The preset of *.ba2 files get detected now, when imported.
 - Changed the behavior of the mod manager slightly:
   - Interface files will now be separated into a 'Bundled - Interface.ba2'

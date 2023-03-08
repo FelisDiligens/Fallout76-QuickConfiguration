@@ -786,6 +786,15 @@ namespace Fo76ini.Utilities
             return false;
         }
 
+        /// <summary>
+        /// Check if the two given paths are on the same drive/partition.
+        /// </summary>
+        public static bool SameDrive(string firstPath, string secondPath)
+        {
+            // Bit of sloppy way to do it, but it should work most of the time:
+            return Path.GetPathRoot(firstPath) == Path.GetPathRoot(secondPath);
+        }
+
         // https://stackoverflow.com/questions/3387690/how-to-create-a-hardlink-in-c
         [DllImport("Kernel32.dll", CharSet = CharSet.Unicode)]
         private static extern bool CreateHardLink(

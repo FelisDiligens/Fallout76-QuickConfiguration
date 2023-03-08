@@ -141,6 +141,7 @@ namespace Fo76ini.Forms.FormMain.Tabs
             this.radioButtonLaunchViaExecutable.Checked = game.PreferredLaunchOption == LaunchOption.RunExec;
 
             this.textBoxGamePath.Text = game.GamePath;
+            this.textBoxModsPath.Text = game.ModsPath;
             this.textBoxExecutable.Text = game.ExecutableName;
             this.textBoxIniPrefix.Text = game.IniPrefix;
             this.textBoxIniPath.Text = game.IniParentPath;
@@ -339,6 +340,50 @@ namespace Fo76ini.Forms.FormMain.Tabs
                 MsgBox.ShowID("gamePathAutoDetectFailed", MessageBoxIcon.Information);
         }
 
+        #endregion
+
+
+        /* Mods location */
+        #region Mods location
+        private void textBoxModsPath_TextChanged(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+
+            ProfileManager.SelectedGame.ModsPath = Utils.SanitizePath(this.textBoxModsPath.Text);
+            this.textBoxModsPath.ForeColor = (this.textBoxModsPath.Text == "" || ProfileManager.SelectedGame.ValidateModsPath()) ? Color.Black : Color.Maroon;
+        }
+
+        private void buttonPickModsPath_Click(object sender, EventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                string path = dialog.FileName;
+                if (GameInstance.ValidateModsPath(path))
+                {
+                    this.textBoxModsPath.Text = path;
+                    ProfileManager.SelectedGame.ModsPath = path;
+                    UpdateEditingScreen();
+                }
+                else
+                    MsgBox.ShowID("modsGamePathInvalid");
+            }
+            this.Focus();
+        }
+
+        private void linkLabelResetModsPath_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (UpdatingUI)
+                return;
+
+            this.textBoxModsPath.Text = "";
+            ProfileManager.SelectedGame.ModsPath = "";
+        }
         #endregion
 
 

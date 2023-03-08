@@ -20,7 +20,7 @@ namespace Fo76ini.Mods
         /// </summary>
         public static void InstallBlank(ManagedMods mods)
         {
-            ManagedMod newMod = new ManagedMod(mods.GamePath);
+            ManagedMod newMod = new ManagedMod(mods.GamePath, mods.ModsPath);
             newMod.Title = "Untitled";
             newMod.ArchiveName = "untitled.ba2";
             Directory.CreateDirectory(newMod.ManagedFolderPath);
@@ -36,7 +36,7 @@ namespace Fo76ini.Mods
         /// <param name="useSourceBA2Archive">When false, creates a new "frozen" mod.</param>
         public static void InstallArchive(ManagedMods mods, string filePath, bool useSourceBA2Archive = false, int index = -1, Action<Progress> ProgressChanged = null)
         {
-            ManagedMod newMod = ModInstallations.FromArchive(mods.GamePath, filePath, useSourceBA2Archive, ProgressChanged);
+            ManagedMod newMod = ModInstallations.FromArchive(mods.GamePath, mods.ModsPath, filePath, useSourceBA2Archive, ProgressChanged);
             if (index < 0 || index >= mods.Count)
                 mods.Add(newMod);
             else
@@ -53,7 +53,7 @@ namespace Fo76ini.Mods
         /// <param name="filePath">Path to archive</param>
         /// <param name="useSourceBA2Archive">When false, creates a new "frozen" mod.</param>
         /// <returns></returns>
-        private static ManagedMod FromArchive(string gamePath, string filePath, bool useSourceBA2Archive = false, Action<Progress> ProgressChanged = null)
+        private static ManagedMod FromArchive(string gamePath, string modsPath, string filePath, bool useSourceBA2Archive = false, Action<Progress> ProgressChanged = null)
         {
             // Get path information:
             string longFilePath = EnsureLongPathSupport(filePath);
@@ -61,7 +61,7 @@ namespace Fo76ini.Mods
             string fileExtension = Path.GetExtension(longFilePath);
 
             // Install mod:
-            ManagedMod newMod = new ManagedMod(gamePath);
+            ManagedMod newMod = new ManagedMod(gamePath, modsPath);
             newMod.Title = fileNameWOEx;
             newMod.ArchiveName = fileNameWOEx + ".ba2";
             newMod.ManagedFolderName = fileNameWOEx;
@@ -143,7 +143,7 @@ namespace Fo76ini.Mods
         /// <param name="index">Adds the mod at the specified index. If -1, adds to the end of the list.</param>
         public static void InstallFolder(ManagedMods mods, string folderPath, int index = -1, Action<Progress> ProgressChanged = null)
         {
-            ManagedMod newMod = ModInstallations.FromFolder(mods.GamePath, folderPath, ProgressChanged);
+            ManagedMod newMod = ModInstallations.FromFolder(mods.GamePath, mods.ModsPath, folderPath, ProgressChanged);
             if (index < 0 || index >= mods.Count)
                 mods.Add(newMod);
             else
@@ -158,14 +158,14 @@ namespace Fo76ini.Mods
         /// <param name="gamePath">Path to the game installation</param>
         /// <param name="folderPath">Path to folder</param>
         /// <returns></returns>
-        private static ManagedMod FromFolder(string gamePath, string folderPath, Action<Progress> ProgressChanged = null)
+        private static ManagedMod FromFolder(string gamePath, string modsPath, string folderPath, Action<Progress> ProgressChanged = null)
         {
             // Get path information:
             folderPath = EnsureLongPathSupport(folderPath);
             string folderName = Path.GetFileName(folderPath);
 
             // Install mod:
-            ManagedMod newMod = new ManagedMod(gamePath);
+            ManagedMod newMod = new ManagedMod(gamePath, modsPath);
             newMod.Title = folderName;
             newMod.ArchiveName = folderName + ".ba2";
             newMod.ManagedFolderName = folderName;
@@ -232,7 +232,7 @@ namespace Fo76ini.Mods
 
             // Install mod:
             ProgressChanged?.Invoke(Progress.Indetermined($"Installing '{nmMod.Title}'..."));
-            ManagedMod newMod = ModInstallations.FromArchive(mods.GamePath, dlPath, useSourceBA2Archive, ProgressChanged);
+            ManagedMod newMod = ModInstallations.FromArchive(mods.GamePath, mods.ModsPath, dlPath, useSourceBA2Archive, ProgressChanged);
             newMod.Title = nmMod.Title;
             newMod.Version = nmMod.LatestVersion;
             newMod.URL = nmMod.URL;
