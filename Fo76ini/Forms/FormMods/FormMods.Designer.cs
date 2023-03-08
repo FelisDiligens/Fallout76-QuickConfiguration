@@ -86,10 +86,7 @@
             this.toolStripStatusLabelDeploymentStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerCheckForNXM = new System.Windows.Forms.Timer(this.components);
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
-            this.groupBoxModsInterface = new Fo76ini.Controls.StyledGroupBox();
-            this.labelModListStyle = new System.Windows.Forms.Label();
-            this.radioButtonModsUseAlternativeList = new System.Windows.Forms.RadioButton();
-            this.radioButtonModsUseStandardList = new System.Windows.Forms.RadioButton();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBoxModsBehavior = new Fo76ini.Controls.StyledGroupBox();
             this.labelBehaviorNote = new System.Windows.Forms.Label();
             this.panelBundledLoadOrder = new System.Windows.Forms.Panel();
@@ -97,12 +94,10 @@
             this.panelDeployMethod = new System.Windows.Forms.Panel();
             this.labelDeployMethod = new System.Windows.Forms.Label();
             this.checkBoxAddArchivesAsBundled = new System.Windows.Forms.CheckBox();
-            this.groupBoxLists = new Fo76ini.Controls.StyledGroupBox();
-            this.buttonModsResetTextbox = new System.Windows.Forms.Button();
-            this.buttonModsApplyTextBox = new System.Windows.Forms.Button();
-            this.textBoxResourceList = new System.Windows.Forms.TextBox();
-            this.buttonModsCleanList = new System.Windows.Forms.Button();
-            this.labelsResourceIndexFileList = new System.Windows.Forms.Label();
+            this.groupBoxModsInterface = new Fo76ini.Controls.StyledGroupBox();
+            this.labelModListStyle = new System.Windows.Forms.Label();
+            this.radioButtonModsUseAlternativeList = new System.Windows.Forms.RadioButton();
+            this.radioButtonModsUseStandardList = new System.Windows.Forms.RadioButton();
             this.tabPageModOrder = new System.Windows.Forms.TabPage();
             this.pictureBoxCollapseDetails = new System.Windows.Forms.PictureBox();
             this.panelModDetails = new System.Windows.Forms.Panel();
@@ -178,17 +173,23 @@
             this.olvColumnAltIsFrozen = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnLastDummy = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.tabControl1 = new Fo76ini.Controls.StyledTabControl();
+            this.tabPageResourceList = new System.Windows.Forms.TabPage();
+            this.groupBoxLists = new Fo76ini.Controls.StyledGroupBox();
+            this.buttonModsResetTextbox = new System.Windows.Forms.Button();
+            this.buttonModsApplyTextBox = new System.Windows.Forms.Button();
+            this.textBoxResourceList = new System.Windows.Forms.TextBox();
+            this.buttonModsCleanList = new System.Windows.Forms.Button();
             this.pictureBoxModsLoadingGIF = new System.Windows.Forms.PictureBox();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabPageModsSettings.SuspendLayout();
-            this.groupBoxModsInterface.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.groupBoxModsBehavior.SuspendLayout();
             this.panelBundledLoadOrder.SuspendLayout();
             this.panelDeployMethod.SuspendLayout();
-            this.groupBoxLists.SuspendLayout();
+            this.groupBoxModsInterface.SuspendLayout();
             this.tabPageModOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCollapseDetails)).BeginInit();
             this.panelModDetails.SuspendLayout();
@@ -203,6 +204,8 @@
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectListViewMods)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabPageResourceList.SuspendLayout();
+            this.groupBoxLists.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).BeginInit();
             this.SuspendLayout();
             // 
@@ -342,7 +345,7 @@
             this.exploreba2ArchiveToolStripMenuItem,
             this.detectFormatAndCompressionToolStripMenuItem});
             this.archive2ToolStripMenuItem.Name = "archive2ToolStripMenuItem";
-            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.archive2ToolStripMenuItem.Text = "Archive2";
             // 
             // openArchive2ToolStripMenuItem
@@ -373,7 +376,7 @@
             this.endorseModsToolStripMenuItem,
             this.checkForUpdatesToolStripMenuItem});
             this.nexusModsAPIToolStripMenuItem.Name = "nexusModsAPIToolStripMenuItem";
-            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.nexusModsAPIToolStripMenuItem.Text = "NexusMods API";
             // 
             // updateModInformationToolStripMenuItem
@@ -471,7 +474,7 @@
             // checkBoxFreezeBundledArchives
             // 
             this.checkBoxFreezeBundledArchives.AutoSize = true;
-            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(9, 261);
+            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(9, 373);
             this.checkBoxFreezeBundledArchives.Name = "checkBoxFreezeBundledArchives";
             this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(210, 17);
             this.checkBoxFreezeBundledArchives.TabIndex = 2;
@@ -743,9 +746,7 @@
             // 
             // tabPageModsSettings
             // 
-            this.tabPageModsSettings.Controls.Add(this.groupBoxModsInterface);
-            this.tabPageModsSettings.Controls.Add(this.groupBoxModsBehavior);
-            this.tabPageModsSettings.Controls.Add(this.groupBoxLists);
+            this.tabPageModsSettings.Controls.Add(this.panel2);
             this.tabPageModsSettings.Location = new System.Drawing.Point(4, 25);
             this.tabPageModsSettings.Name = "tabPageModsSettings";
             this.tabPageModsSettings.Padding = new System.Windows.Forms.Padding(3);
@@ -754,58 +755,19 @@
             this.tabPageModsSettings.Text = "Settings";
             this.tabPageModsSettings.UseVisualStyleBackColor = true;
             // 
-            // groupBoxModsInterface
+            // panel2
             // 
-            this.groupBoxModsInterface.BackColor = System.Drawing.Color.White;
-            this.groupBoxModsInterface.BorderColor = System.Drawing.Color.Silver;
-            this.groupBoxModsInterface.BorderWidth = 1;
-            this.groupBoxModsInterface.Controls.Add(this.labelModListStyle);
-            this.groupBoxModsInterface.Controls.Add(this.radioButtonModsUseAlternativeList);
-            this.groupBoxModsInterface.Controls.Add(this.radioButtonModsUseStandardList);
-            this.groupBoxModsInterface.Controls.Add(this.checkBoxModsUseRemoteModNames);
-            this.groupBoxModsInterface.Location = new System.Drawing.Point(6, 338);
-            this.groupBoxModsInterface.Name = "groupBoxModsInterface";
-            this.groupBoxModsInterface.Size = new System.Drawing.Size(410, 120);
-            this.groupBoxModsInterface.TabIndex = 61;
-            this.groupBoxModsInterface.TabStop = false;
-            this.groupBoxModsInterface.Text = "Interface";
-            this.groupBoxModsInterface.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
-            this.groupBoxModsInterface.TitleBorderMargin = 6;
-            this.groupBoxModsInterface.TitleBorderPadding = 4;
-            this.groupBoxModsInterface.TitleForeColor = System.Drawing.Color.Black;
-            // 
-            // labelModListStyle
-            // 
-            this.labelModListStyle.AutoSize = true;
-            this.labelModListStyle.Location = new System.Drawing.Point(6, 50);
-            this.labelModListStyle.Name = "labelModListStyle";
-            this.labelModListStyle.Size = new System.Drawing.Size(77, 13);
-            this.labelModListStyle.TabIndex = 6;
-            this.labelModListStyle.Text = "Mod list layout:";
-            // 
-            // radioButtonModsUseAlternativeList
-            // 
-            this.radioButtonModsUseAlternativeList.AutoSize = true;
-            this.radioButtonModsUseAlternativeList.Location = new System.Drawing.Point(9, 89);
-            this.radioButtonModsUseAlternativeList.Name = "radioButtonModsUseAlternativeList";
-            this.radioButtonModsUseAlternativeList.Size = new System.Drawing.Size(194, 17);
-            this.radioButtonModsUseAlternativeList.TabIndex = 5;
-            this.radioButtonModsUseAlternativeList.Text = "Compact, but more columns (old list)";
-            this.radioButtonModsUseAlternativeList.UseVisualStyleBackColor = true;
-            this.radioButtonModsUseAlternativeList.CheckedChanged += new System.EventHandler(this.radioButtonModsUseOldList_CheckedChanged);
-            // 
-            // radioButtonModsUseStandardList
-            // 
-            this.radioButtonModsUseStandardList.AutoSize = true;
-            this.radioButtonModsUseStandardList.Checked = true;
-            this.radioButtonModsUseStandardList.Location = new System.Drawing.Point(9, 66);
-            this.radioButtonModsUseStandardList.Name = "radioButtonModsUseStandardList";
-            this.radioButtonModsUseStandardList.Size = new System.Drawing.Size(244, 17);
-            this.radioButtonModsUseStandardList.TabIndex = 4;
-            this.radioButtonModsUseStandardList.TabStop = true;
-            this.radioButtonModsUseStandardList.Text = "Standard, combined columns (new list, default)";
-            this.radioButtonModsUseStandardList.UseVisualStyleBackColor = true;
-            this.radioButtonModsUseStandardList.CheckedChanged += new System.EventHandler(this.radioButtonModsUseNewList_CheckedChanged);
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.groupBoxModsBehavior);
+            this.panel2.Controls.Add(this.groupBoxModsInterface);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(752, 461);
+            this.panel2.TabIndex = 62;
             // 
             // groupBoxModsBehavior
             // 
@@ -817,9 +779,9 @@
             this.groupBoxModsBehavior.Controls.Add(this.panelDeployMethod);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxFreezeBundledArchives);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
-            this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxModsBehavior.Location = new System.Drawing.Point(3, 6);
             this.groupBoxModsBehavior.Name = "groupBoxModsBehavior";
-            this.groupBoxModsBehavior.Size = new System.Drawing.Size(410, 326);
+            this.groupBoxModsBehavior.Size = new System.Drawing.Size(729, 405);
             this.groupBoxModsBehavior.TabIndex = 60;
             this.groupBoxModsBehavior.TabStop = false;
             this.groupBoxModsBehavior.Text = "Behavior";
@@ -831,13 +793,13 @@
             // labelBehaviorNote
             // 
             this.labelBehaviorNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBehaviorNote.ForeColor = System.Drawing.Color.Gray;
+            this.labelBehaviorNote.ForeColor = System.Drawing.Color.SteelBlue;
             this.labelBehaviorNote.Location = new System.Drawing.Point(6, 14);
             this.labelBehaviorNote.Name = "labelBehaviorNote";
-            this.labelBehaviorNote.Size = new System.Drawing.Size(398, 30);
+            this.labelBehaviorNote.Size = new System.Drawing.Size(717, 30);
             this.labelBehaviorNote.TabIndex = 14;
             this.labelBehaviorNote.Text = "Note: These settings only take effect after deployment.";
-            this.labelBehaviorNote.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelBehaviorNote.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panelBundledLoadOrder
             // 
@@ -881,7 +843,7 @@
             // checkBoxAddArchivesAsBundled
             // 
             this.checkBoxAddArchivesAsBundled.AutoSize = true;
-            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(9, 238);
+            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(9, 350);
             this.checkBoxAddArchivesAsBundled.Name = "checkBoxAddArchivesAsBundled";
             this.checkBoxAddArchivesAsBundled.Size = new System.Drawing.Size(167, 17);
             this.checkBoxAddArchivesAsBundled.TabIndex = 0;
@@ -889,85 +851,58 @@
             this.checkBoxAddArchivesAsBundled.UseVisualStyleBackColor = true;
             this.checkBoxAddArchivesAsBundled.CheckedChanged += new System.EventHandler(this.checkBoxAddArchivesAsBundled_CheckedChanged);
             // 
-            // groupBoxLists
+            // groupBoxModsInterface
             // 
-            this.groupBoxLists.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxLists.BackColor = System.Drawing.Color.White;
-            this.groupBoxLists.BorderColor = System.Drawing.Color.Silver;
-            this.groupBoxLists.BorderWidth = 1;
-            this.groupBoxLists.Controls.Add(this.buttonModsResetTextbox);
-            this.groupBoxLists.Controls.Add(this.buttonModsApplyTextBox);
-            this.groupBoxLists.Controls.Add(this.textBoxResourceList);
-            this.groupBoxLists.Controls.Add(this.buttonModsCleanList);
-            this.groupBoxLists.Controls.Add(this.labelsResourceIndexFileList);
-            this.groupBoxLists.Location = new System.Drawing.Point(422, 6);
-            this.groupBoxLists.Name = "groupBoxLists";
-            this.groupBoxLists.Size = new System.Drawing.Size(324, 452);
-            this.groupBoxLists.TabIndex = 59;
-            this.groupBoxLists.TabStop = false;
-            this.groupBoxLists.Text = "Lists";
-            this.groupBoxLists.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
-            this.groupBoxLists.TitleBorderMargin = 6;
-            this.groupBoxLists.TitleBorderPadding = 4;
-            this.groupBoxLists.TitleForeColor = System.Drawing.Color.Black;
+            this.groupBoxModsInterface.BackColor = System.Drawing.Color.White;
+            this.groupBoxModsInterface.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxModsInterface.BorderWidth = 1;
+            this.groupBoxModsInterface.Controls.Add(this.labelModListStyle);
+            this.groupBoxModsInterface.Controls.Add(this.radioButtonModsUseAlternativeList);
+            this.groupBoxModsInterface.Controls.Add(this.radioButtonModsUseStandardList);
+            this.groupBoxModsInterface.Controls.Add(this.checkBoxModsUseRemoteModNames);
+            this.groupBoxModsInterface.Location = new System.Drawing.Point(3, 417);
+            this.groupBoxModsInterface.Name = "groupBoxModsInterface";
+            this.groupBoxModsInterface.Size = new System.Drawing.Size(729, 120);
+            this.groupBoxModsInterface.TabIndex = 61;
+            this.groupBoxModsInterface.TabStop = false;
+            this.groupBoxModsInterface.Text = "Interface";
+            this.groupBoxModsInterface.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxModsInterface.TitleBorderMargin = 6;
+            this.groupBoxModsInterface.TitleBorderPadding = 4;
+            this.groupBoxModsInterface.TitleForeColor = System.Drawing.Color.Black;
             // 
-            // buttonModsResetTextbox
+            // labelModListStyle
             // 
-            this.buttonModsResetTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModsResetTextbox.Location = new System.Drawing.Point(110, 423);
-            this.buttonModsResetTextbox.Name = "buttonModsResetTextbox";
-            this.buttonModsResetTextbox.Size = new System.Drawing.Size(85, 23);
-            this.buttonModsResetTextbox.TabIndex = 60;
-            this.buttonModsResetTextbox.Text = "Reset";
-            this.buttonModsResetTextbox.UseVisualStyleBackColor = true;
-            this.buttonModsResetTextbox.Click += new System.EventHandler(this.buttonModsResetTextbox_Click);
+            this.labelModListStyle.AutoSize = true;
+            this.labelModListStyle.Location = new System.Drawing.Point(6, 50);
+            this.labelModListStyle.Name = "labelModListStyle";
+            this.labelModListStyle.Size = new System.Drawing.Size(77, 13);
+            this.labelModListStyle.TabIndex = 6;
+            this.labelModListStyle.Text = "Mod list layout:";
             // 
-            // buttonModsApplyTextBox
+            // radioButtonModsUseAlternativeList
             // 
-            this.buttonModsApplyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModsApplyTextBox.Location = new System.Drawing.Point(201, 423);
-            this.buttonModsApplyTextBox.Name = "buttonModsApplyTextBox";
-            this.buttonModsApplyTextBox.Size = new System.Drawing.Size(117, 23);
-            this.buttonModsApplyTextBox.TabIndex = 59;
-            this.buttonModsApplyTextBox.Text = "Apply changes";
-            this.buttonModsApplyTextBox.UseVisualStyleBackColor = true;
-            this.buttonModsApplyTextBox.Click += new System.EventHandler(this.buttonModsApplyTextBox_Click);
+            this.radioButtonModsUseAlternativeList.AutoSize = true;
+            this.radioButtonModsUseAlternativeList.Location = new System.Drawing.Point(9, 89);
+            this.radioButtonModsUseAlternativeList.Name = "radioButtonModsUseAlternativeList";
+            this.radioButtonModsUseAlternativeList.Size = new System.Drawing.Size(194, 17);
+            this.radioButtonModsUseAlternativeList.TabIndex = 5;
+            this.radioButtonModsUseAlternativeList.Text = "Compact, but more columns (old list)";
+            this.radioButtonModsUseAlternativeList.UseVisualStyleBackColor = true;
+            this.radioButtonModsUseAlternativeList.CheckedChanged += new System.EventHandler(this.radioButtonModsUseOldList_CheckedChanged);
             // 
-            // textBoxResourceList
+            // radioButtonModsUseStandardList
             // 
-            this.textBoxResourceList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxResourceList.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxResourceList.Location = new System.Drawing.Point(6, 37);
-            this.textBoxResourceList.Multiline = true;
-            this.textBoxResourceList.Name = "textBoxResourceList";
-            this.textBoxResourceList.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxResourceList.Size = new System.Drawing.Size(312, 380);
-            this.textBoxResourceList.TabIndex = 54;
-            this.textBoxResourceList.WordWrap = false;
-            // 
-            // buttonModsCleanList
-            // 
-            this.buttonModsCleanList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModsCleanList.Location = new System.Drawing.Point(6, 423);
-            this.buttonModsCleanList.Name = "buttonModsCleanList";
-            this.buttonModsCleanList.Size = new System.Drawing.Size(98, 23);
-            this.buttonModsCleanList.TabIndex = 58;
-            this.buttonModsCleanList.Text = "Clean list";
-            this.buttonModsCleanList.UseVisualStyleBackColor = true;
-            this.buttonModsCleanList.Click += new System.EventHandler(this.buttonModsCleanList_Click);
-            // 
-            // labelsResourceIndexFileList
-            // 
-            this.labelsResourceIndexFileList.AutoSize = true;
-            this.labelsResourceIndexFileList.Location = new System.Drawing.Point(3, 21);
-            this.labelsResourceIndexFileList.Name = "labelsResourceIndexFileList";
-            this.labelsResourceIndexFileList.Size = new System.Drawing.Size(166, 13);
-            this.labelsResourceIndexFileList.TabIndex = 55;
-            this.labelsResourceIndexFileList.Text = "Resource list (newline separated):";
+            this.radioButtonModsUseStandardList.AutoSize = true;
+            this.radioButtonModsUseStandardList.Checked = true;
+            this.radioButtonModsUseStandardList.Location = new System.Drawing.Point(9, 66);
+            this.radioButtonModsUseStandardList.Name = "radioButtonModsUseStandardList";
+            this.radioButtonModsUseStandardList.Size = new System.Drawing.Size(244, 17);
+            this.radioButtonModsUseStandardList.TabIndex = 4;
+            this.radioButtonModsUseStandardList.TabStop = true;
+            this.radioButtonModsUseStandardList.Text = "Standard, combined columns (new list, default)";
+            this.radioButtonModsUseStandardList.UseVisualStyleBackColor = true;
+            this.radioButtonModsUseStandardList.CheckedChanged += new System.EventHandler(this.radioButtonModsUseNewList_CheckedChanged);
             // 
             // tabPageModOrder
             // 
@@ -1849,6 +1784,7 @@
             this.tabControl1.BorderColor = System.Drawing.Color.Gray;
             this.tabControl1.BorderWidth = 1;
             this.tabControl1.Controls.Add(this.tabPageModOrder);
+            this.tabControl1.Controls.Add(this.tabPageResourceList);
             this.tabControl1.Controls.Add(this.tabPageModsSettings);
             this.tabControl1.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tabControl1.Location = new System.Drawing.Point(12, 27);
@@ -1860,6 +1796,84 @@
             this.tabControl1.TabButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tabControl1.TabButtonForeColor = System.Drawing.Color.Black;
             this.tabControl1.TabIndex = 54;
+            // 
+            // tabPageResourceList
+            // 
+            this.tabPageResourceList.Controls.Add(this.groupBoxLists);
+            this.tabPageResourceList.Location = new System.Drawing.Point(4, 25);
+            this.tabPageResourceList.Name = "tabPageResourceList";
+            this.tabPageResourceList.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageResourceList.Size = new System.Drawing.Size(752, 461);
+            this.tabPageResourceList.TabIndex = 2;
+            this.tabPageResourceList.Text = "Resource list";
+            this.tabPageResourceList.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxLists
+            // 
+            this.groupBoxLists.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxLists.BackColor = System.Drawing.Color.White;
+            this.groupBoxLists.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxLists.BorderWidth = 1;
+            this.groupBoxLists.Controls.Add(this.buttonModsResetTextbox);
+            this.groupBoxLists.Controls.Add(this.buttonModsApplyTextBox);
+            this.groupBoxLists.Controls.Add(this.textBoxResourceList);
+            this.groupBoxLists.Controls.Add(this.buttonModsCleanList);
+            this.groupBoxLists.Location = new System.Drawing.Point(6, 4);
+            this.groupBoxLists.Name = "groupBoxLists";
+            this.groupBoxLists.Size = new System.Drawing.Size(740, 452);
+            this.groupBoxLists.TabIndex = 60;
+            this.groupBoxLists.TabStop = false;
+            this.groupBoxLists.Text = "Resource list (newline separated)";
+            this.groupBoxLists.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxLists.TitleBorderMargin = 6;
+            this.groupBoxLists.TitleBorderPadding = 4;
+            this.groupBoxLists.TitleForeColor = System.Drawing.Color.Black;
+            // 
+            // buttonModsResetTextbox
+            // 
+            this.buttonModsResetTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonModsResetTextbox.Location = new System.Drawing.Point(110, 423);
+            this.buttonModsResetTextbox.Name = "buttonModsResetTextbox";
+            this.buttonModsResetTextbox.Size = new System.Drawing.Size(85, 23);
+            this.buttonModsResetTextbox.TabIndex = 60;
+            this.buttonModsResetTextbox.Text = "Reset";
+            this.buttonModsResetTextbox.UseVisualStyleBackColor = true;
+            // 
+            // buttonModsApplyTextBox
+            // 
+            this.buttonModsApplyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonModsApplyTextBox.Location = new System.Drawing.Point(201, 423);
+            this.buttonModsApplyTextBox.Name = "buttonModsApplyTextBox";
+            this.buttonModsApplyTextBox.Size = new System.Drawing.Size(117, 23);
+            this.buttonModsApplyTextBox.TabIndex = 59;
+            this.buttonModsApplyTextBox.Text = "Apply changes";
+            this.buttonModsApplyTextBox.UseVisualStyleBackColor = true;
+            // 
+            // textBoxResourceList
+            // 
+            this.textBoxResourceList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxResourceList.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxResourceList.Location = new System.Drawing.Point(6, 19);
+            this.textBoxResourceList.Multiline = true;
+            this.textBoxResourceList.Name = "textBoxResourceList";
+            this.textBoxResourceList.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxResourceList.Size = new System.Drawing.Size(728, 398);
+            this.textBoxResourceList.TabIndex = 54;
+            this.textBoxResourceList.WordWrap = false;
+            // 
+            // buttonModsCleanList
+            // 
+            this.buttonModsCleanList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonModsCleanList.Location = new System.Drawing.Point(6, 423);
+            this.buttonModsCleanList.Name = "buttonModsCleanList";
+            this.buttonModsCleanList.Size = new System.Drawing.Size(98, 23);
+            this.buttonModsCleanList.TabIndex = 58;
+            this.buttonModsCleanList.Text = "Clean list";
+            this.buttonModsCleanList.UseVisualStyleBackColor = true;
             // 
             // pictureBoxModsLoadingGIF
             // 
@@ -1913,16 +1927,15 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tabPageModsSettings.ResumeLayout(false);
-            this.groupBoxModsInterface.ResumeLayout(false);
-            this.groupBoxModsInterface.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.groupBoxModsBehavior.ResumeLayout(false);
             this.groupBoxModsBehavior.PerformLayout();
             this.panelBundledLoadOrder.ResumeLayout(false);
             this.panelBundledLoadOrder.PerformLayout();
             this.panelDeployMethod.ResumeLayout(false);
             this.panelDeployMethod.PerformLayout();
-            this.groupBoxLists.ResumeLayout(false);
-            this.groupBoxLists.PerformLayout();
+            this.groupBoxModsInterface.ResumeLayout(false);
+            this.groupBoxModsInterface.PerformLayout();
             this.tabPageModOrder.ResumeLayout(false);
             this.tabPageModOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCollapseDetails)).EndInit();
@@ -1945,6 +1958,9 @@
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectListViewMods)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabPageResourceList.ResumeLayout(false);
+            this.groupBoxLists.ResumeLayout(false);
+            this.groupBoxLists.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxModsLoadingGIF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2000,12 +2016,6 @@
         private Fo76ini.Controls.StyledGroupBox groupBoxModsBehavior;
         private System.Windows.Forms.CheckBox checkBoxFreezeBundledArchives;
         private System.Windows.Forms.CheckBox checkBoxAddArchivesAsBundled;
-        private Fo76ini.Controls.StyledGroupBox groupBoxLists;
-        private System.Windows.Forms.Button buttonModsResetTextbox;
-        private System.Windows.Forms.Button buttonModsApplyTextBox;
-        private System.Windows.Forms.TextBox textBoxResourceList;
-        private System.Windows.Forms.Button buttonModsCleanList;
-        private System.Windows.Forms.Label labelsResourceIndexFileList;
         private System.Windows.Forms.TabPage tabPageModOrder;
         private System.Windows.Forms.PictureBox pictureBoxCollapseDetails;
         private System.Windows.Forms.Panel panelModDetails;
@@ -2103,5 +2113,12 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private BrightIdeasSoftware.OLVColumn olvColumnLastDummy;
         private System.Windows.Forms.ToolStripMenuItem detectFormatAndCompressionToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPageResourceList;
+        private Controls.StyledGroupBox groupBoxLists;
+        private System.Windows.Forms.Button buttonModsResetTextbox;
+        private System.Windows.Forms.Button buttonModsApplyTextBox;
+        private System.Windows.Forms.TextBox textBoxResourceList;
+        private System.Windows.Forms.Button buttonModsCleanList;
+        private System.Windows.Forms.Panel panel2;
     }
 }
