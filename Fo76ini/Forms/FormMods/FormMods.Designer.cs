@@ -824,7 +824,6 @@
             this.radioButtonUseIndexFileList.TabIndex = 8;
             this.radioButtonUseIndexFileList.TabStop = true;
             this.radioButtonUseIndexFileList.Text = "[Archive] sResourceIndexFileList (default)";
-            this.toolTip.SetToolTip(this.radioButtonUseIndexFileList, "Bundled archives will appear first in the load order.");
             this.radioButtonUseIndexFileList.UseVisualStyleBackColor = true;
             this.radioButtonUseIndexFileList.CheckedChanged += new System.EventHandler(this.radioButtonUseIndexFileList_CheckedChanged);
             // 
@@ -837,7 +836,6 @@
             this.radioButtonUseArchive2List.TabIndex = 9;
             this.radioButtonUseArchive2List.TabStop = true;
             this.radioButtonUseArchive2List.Text = "[Archive] sResourceArchive2List";
-            this.toolTip.SetToolTip(this.radioButtonUseArchive2List, "Bundled archives will appear last in the load order.");
             this.radioButtonUseArchive2List.UseVisualStyleBackColor = true;
             this.radioButtonUseArchive2List.CheckedChanged += new System.EventHandler(this.radioButtonUseArchive2List_CheckedChanged);
             // 
