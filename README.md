@@ -145,7 +145,6 @@ See [Docs](Docs/README.md).
   - [Fast Colored TextBox](https://www.codeproject.com/Articles/161871/Fast-Colored-TextBox-for-syntax-highlighting-2)
   - [ObjectListView](https://objectlistview.sourceforge.net/cs/index.html)
   - [Tulpep.NotificationWindow](https://github.com/Tulpep/Notification-Popup-Window)
-  - [CefSharp](https://cefsharp.github.io/)
-  - [iconsdb](https://www.iconsdb.com/)
+  - [iconsdb.com](https://www.iconsdb.com/)
 - [Syroot KnownFolders](https://gitlab.com/Syroot/KnownFolders)
 - [Websocket.Client](https://github.com/Marfusios/websocket-client)
