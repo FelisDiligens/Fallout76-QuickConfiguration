@@ -24,11 +24,18 @@ namespace Fo76ini.Mods
 
         public const string DefaultList = "sResourceIndexFileList";
 
+        public static string PreferredList {
+            get
+            {
+                return Configuration.Mods.ResourceListName;
+            }
+        }
+
 
 
         private List<string> resourceList = new List<string>();
 
-        public string ListName = DefaultList;
+        public string ListName = PreferredList;
 
         public int Count => this.resourceList.Count;
 
@@ -73,10 +80,10 @@ namespace Fo76ini.Mods
             return list;
         }
 
-        public static ResourceList GetDefaultList()
+        public static ResourceList GetPreferredList()
         {
             return ResourceList.FromINI(
-                DefaultList
+                PreferredList
             );
         }
 
@@ -135,14 +142,23 @@ namespace Fo76ini.Mods
 
         /// <summary>
         /// Commits changes to the resource list for the associated *.ini file.
-        /// Use IniFiles.Save() to write *.ini file to disk.
         /// </summary>
         public void CommitToINI()
         {
+            // Remove lists to prevent duplicates:
+            if ((new string[]{ "sResourceIndexFileList", "sResourceArchive2List" }).Contains(ListName))
+            {
+                IniFiles.F76Custom.Remove("Archive", "sResourceIndexFileList");
+                IniFiles.F76Custom.Remove("Archive", "sResourceArchive2List");
+            }
+
+            // Write:
             if (Count > 0)
                 IniFiles.F76Custom.Set("Archive", ListName, ToString());
             else
                 IniFiles.F76Custom.Remove("Archive", ListName);
+
+            IniFiles.F76Custom.Save();
         }
 
 

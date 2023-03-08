@@ -88,6 +88,10 @@
             this.tabPageModsSettings = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBoxModsBehavior = new Fo76ini.Controls.StyledGroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.labelResourceListUsed = new System.Windows.Forms.Label();
+            this.radioButtonUseIndexFileList = new System.Windows.Forms.RadioButton();
+            this.radioButtonUseArchive2List = new System.Windows.Forms.RadioButton();
             this.labelBehaviorNote = new System.Windows.Forms.Label();
             this.panelBundledLoadOrder = new System.Windows.Forms.Panel();
             this.labelBundledLoadOrder = new System.Windows.Forms.Label();
@@ -187,6 +191,7 @@
             this.tabPageModsSettings.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBoxModsBehavior.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panelBundledLoadOrder.SuspendLayout();
             this.panelDeployMethod.SuspendLayout();
             this.groupBoxModsInterface.SuspendLayout();
@@ -474,7 +479,7 @@
             // checkBoxFreezeBundledArchives
             // 
             this.checkBoxFreezeBundledArchives.AutoSize = true;
-            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(9, 373);
+            this.checkBoxFreezeBundledArchives.Location = new System.Drawing.Point(9, 332);
             this.checkBoxFreezeBundledArchives.Name = "checkBoxFreezeBundledArchives";
             this.checkBoxFreezeBundledArchives.Size = new System.Drawing.Size(210, 17);
             this.checkBoxFreezeBundledArchives.TabIndex = 2;
@@ -774,14 +779,15 @@
             this.groupBoxModsBehavior.BackColor = System.Drawing.Color.White;
             this.groupBoxModsBehavior.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxModsBehavior.BorderWidth = 1;
+            this.groupBoxModsBehavior.Controls.Add(this.panel3);
             this.groupBoxModsBehavior.Controls.Add(this.labelBehaviorNote);
             this.groupBoxModsBehavior.Controls.Add(this.panelBundledLoadOrder);
             this.groupBoxModsBehavior.Controls.Add(this.panelDeployMethod);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxFreezeBundledArchives);
             this.groupBoxModsBehavior.Controls.Add(this.checkBoxAddArchivesAsBundled);
-            this.groupBoxModsBehavior.Location = new System.Drawing.Point(3, 6);
+            this.groupBoxModsBehavior.Location = new System.Drawing.Point(6, 6);
             this.groupBoxModsBehavior.Name = "groupBoxModsBehavior";
-            this.groupBoxModsBehavior.Size = new System.Drawing.Size(729, 405);
+            this.groupBoxModsBehavior.Size = new System.Drawing.Size(726, 365);
             this.groupBoxModsBehavior.TabIndex = 60;
             this.groupBoxModsBehavior.TabStop = false;
             this.groupBoxModsBehavior.Text = "Behavior";
@@ -789,6 +795,51 @@
             this.groupBoxModsBehavior.TitleBorderMargin = 6;
             this.groupBoxModsBehavior.TitleBorderPadding = 4;
             this.groupBoxModsBehavior.TitleForeColor = System.Drawing.Color.Black;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.labelResourceListUsed);
+            this.panel3.Controls.Add(this.radioButtonUseIndexFileList);
+            this.panel3.Controls.Add(this.radioButtonUseArchive2List);
+            this.panel3.Location = new System.Drawing.Point(6, 227);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(717, 65);
+            this.panel3.TabIndex = 15;
+            // 
+            // labelResourceListUsed
+            // 
+            this.labelResourceListUsed.AutoSize = true;
+            this.labelResourceListUsed.Location = new System.Drawing.Point(0, 1);
+            this.labelResourceListUsed.Name = "labelResourceListUsed";
+            this.labelResourceListUsed.Size = new System.Drawing.Size(178, 13);
+            this.labelResourceListUsed.TabIndex = 7;
+            this.labelResourceListUsed.Text = "Which resource list should be used?";
+            // 
+            // radioButtonUseIndexFileList
+            // 
+            this.radioButtonUseIndexFileList.AutoSize = true;
+            this.radioButtonUseIndexFileList.Location = new System.Drawing.Point(3, 17);
+            this.radioButtonUseIndexFileList.Name = "radioButtonUseIndexFileList";
+            this.radioButtonUseIndexFileList.Size = new System.Drawing.Size(220, 17);
+            this.radioButtonUseIndexFileList.TabIndex = 8;
+            this.radioButtonUseIndexFileList.TabStop = true;
+            this.radioButtonUseIndexFileList.Text = "[Archive] sResourceIndexFileList (default)";
+            this.toolTip.SetToolTip(this.radioButtonUseIndexFileList, "Bundled archives will appear first in the load order.");
+            this.radioButtonUseIndexFileList.UseVisualStyleBackColor = true;
+            this.radioButtonUseIndexFileList.CheckedChanged += new System.EventHandler(this.radioButtonUseIndexFileList_CheckedChanged);
+            // 
+            // radioButtonUseArchive2List
+            // 
+            this.radioButtonUseArchive2List.AutoSize = true;
+            this.radioButtonUseArchive2List.Location = new System.Drawing.Point(3, 40);
+            this.radioButtonUseArchive2List.Name = "radioButtonUseArchive2List";
+            this.radioButtonUseArchive2List.Size = new System.Drawing.Size(179, 17);
+            this.radioButtonUseArchive2List.TabIndex = 9;
+            this.radioButtonUseArchive2List.TabStop = true;
+            this.radioButtonUseArchive2List.Text = "[Archive] sResourceArchive2List";
+            this.toolTip.SetToolTip(this.radioButtonUseArchive2List, "Bundled archives will appear last in the load order.");
+            this.radioButtonUseArchive2List.UseVisualStyleBackColor = true;
+            this.radioButtonUseArchive2List.CheckedChanged += new System.EventHandler(this.radioButtonUseArchive2List_CheckedChanged);
             // 
             // labelBehaviorNote
             // 
@@ -808,7 +859,7 @@
             this.panelBundledLoadOrder.Controls.Add(this.radioButtonBundledLastinLO);
             this.panelBundledLoadOrder.Location = new System.Drawing.Point(6, 156);
             this.panelBundledLoadOrder.Name = "panelBundledLoadOrder";
-            this.panelBundledLoadOrder.Size = new System.Drawing.Size(398, 65);
+            this.panelBundledLoadOrder.Size = new System.Drawing.Size(717, 65);
             this.panelBundledLoadOrder.TabIndex = 11;
             // 
             // labelBundledLoadOrder
@@ -828,7 +879,7 @@
             this.panelDeployMethod.Controls.Add(this.radioButtonModsCopyFiles);
             this.panelDeployMethod.Location = new System.Drawing.Point(6, 52);
             this.panelDeployMethod.Name = "panelDeployMethod";
-            this.panelDeployMethod.Size = new System.Drawing.Size(398, 100);
+            this.panelDeployMethod.Size = new System.Drawing.Size(717, 100);
             this.panelDeployMethod.TabIndex = 10;
             // 
             // labelDeployMethod
@@ -843,7 +894,7 @@
             // checkBoxAddArchivesAsBundled
             // 
             this.checkBoxAddArchivesAsBundled.AutoSize = true;
-            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(9, 350);
+            this.checkBoxAddArchivesAsBundled.Location = new System.Drawing.Point(9, 309);
             this.checkBoxAddArchivesAsBundled.Name = "checkBoxAddArchivesAsBundled";
             this.checkBoxAddArchivesAsBundled.Size = new System.Drawing.Size(167, 17);
             this.checkBoxAddArchivesAsBundled.TabIndex = 0;
@@ -860,7 +911,7 @@
             this.groupBoxModsInterface.Controls.Add(this.radioButtonModsUseAlternativeList);
             this.groupBoxModsInterface.Controls.Add(this.radioButtonModsUseStandardList);
             this.groupBoxModsInterface.Controls.Add(this.checkBoxModsUseRemoteModNames);
-            this.groupBoxModsInterface.Location = new System.Drawing.Point(3, 417);
+            this.groupBoxModsInterface.Location = new System.Drawing.Point(3, 377);
             this.groupBoxModsInterface.Name = "groupBoxModsInterface";
             this.groupBoxModsInterface.Size = new System.Drawing.Size(729, 120);
             this.groupBoxModsInterface.TabIndex = 61;
@@ -1820,9 +1871,9 @@
             this.groupBoxLists.Controls.Add(this.buttonModsApplyTextBox);
             this.groupBoxLists.Controls.Add(this.textBoxResourceList);
             this.groupBoxLists.Controls.Add(this.buttonModsCleanList);
-            this.groupBoxLists.Location = new System.Drawing.Point(6, 4);
+            this.groupBoxLists.Location = new System.Drawing.Point(6, 6);
             this.groupBoxLists.Name = "groupBoxLists";
-            this.groupBoxLists.Size = new System.Drawing.Size(740, 452);
+            this.groupBoxLists.Size = new System.Drawing.Size(743, 450);
             this.groupBoxLists.TabIndex = 60;
             this.groupBoxLists.TabStop = false;
             this.groupBoxLists.Text = "Resource list (newline separated)";
@@ -1834,7 +1885,7 @@
             // buttonModsResetTextbox
             // 
             this.buttonModsResetTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModsResetTextbox.Location = new System.Drawing.Point(110, 423);
+            this.buttonModsResetTextbox.Location = new System.Drawing.Point(110, 421);
             this.buttonModsResetTextbox.Name = "buttonModsResetTextbox";
             this.buttonModsResetTextbox.Size = new System.Drawing.Size(85, 23);
             this.buttonModsResetTextbox.TabIndex = 60;
@@ -1844,7 +1895,7 @@
             // buttonModsApplyTextBox
             // 
             this.buttonModsApplyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModsApplyTextBox.Location = new System.Drawing.Point(201, 423);
+            this.buttonModsApplyTextBox.Location = new System.Drawing.Point(201, 421);
             this.buttonModsApplyTextBox.Name = "buttonModsApplyTextBox";
             this.buttonModsApplyTextBox.Size = new System.Drawing.Size(117, 23);
             this.buttonModsApplyTextBox.TabIndex = 59;
@@ -1861,14 +1912,14 @@
             this.textBoxResourceList.Multiline = true;
             this.textBoxResourceList.Name = "textBoxResourceList";
             this.textBoxResourceList.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxResourceList.Size = new System.Drawing.Size(728, 398);
+            this.textBoxResourceList.Size = new System.Drawing.Size(731, 396);
             this.textBoxResourceList.TabIndex = 54;
             this.textBoxResourceList.WordWrap = false;
             // 
             // buttonModsCleanList
             // 
             this.buttonModsCleanList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModsCleanList.Location = new System.Drawing.Point(6, 423);
+            this.buttonModsCleanList.Location = new System.Drawing.Point(6, 421);
             this.buttonModsCleanList.Name = "buttonModsCleanList";
             this.buttonModsCleanList.Size = new System.Drawing.Size(98, 23);
             this.buttonModsCleanList.TabIndex = 58;
@@ -1930,6 +1981,8 @@
             this.panel2.ResumeLayout(false);
             this.groupBoxModsBehavior.ResumeLayout(false);
             this.groupBoxModsBehavior.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panelBundledLoadOrder.ResumeLayout(false);
             this.panelBundledLoadOrder.PerformLayout();
             this.panelDeployMethod.ResumeLayout(false);
@@ -2120,5 +2173,9 @@
         private System.Windows.Forms.TextBox textBoxResourceList;
         private System.Windows.Forms.Button buttonModsCleanList;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label labelResourceListUsed;
+        private System.Windows.Forms.RadioButton radioButtonUseIndexFileList;
+        private System.Windows.Forms.RadioButton radioButtonUseArchive2List;
     }
 }

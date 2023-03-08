@@ -7,6 +7,7 @@ using Fo76ini.Utilities;
 using System.Globalization;
 using Fo76ini.Mods;
 using Fo76ini.Interface;
+using System.Xml.Linq;
 
 namespace Fo76ini
 {
@@ -116,6 +117,27 @@ namespace Fo76ini
                 set
                 {
                     IniFiles.Config.Set("Mods", "iEnumBundledLoadOrderPreference", (int)value);
+                }
+            }
+
+            public static string ResourceListName
+            {
+                get
+                {
+                    // Make sure that only known lists are returned:
+                    string name = IniFiles.Config.GetString("Mods", "sResourceListName", ResourceList.DefaultList);
+                    if (ResourceList.KnownLists.Contains(name))
+                        return name;
+                    else
+                        return ResourceList.DefaultList;
+                }
+                set
+                {
+                    // Make sure that only known lists can be used:
+                    if (ResourceList.KnownLists.Contains(value))
+                        IniFiles.Config.Set("Mods", "sResourceListName", value);
+                    else
+                        IniFiles.Config.Set("Mods", "sResourceListName", ResourceList.DefaultList);
                 }
             }
         }

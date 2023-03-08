@@ -1,5 +1,7 @@
 ### What's new in v1.12.4?
 
+- You can now pick between sResourceIndexFileList and sResourceArchive2List inside the settings.
+- Relocated resource list into it's own tab.
 - The mod manager can now partially read *.ba2 files:
   - Added 'Tools -> Archive2 -> Display info about *.ba2 archive' button to the mod manager.
   - The preset of *.ba2 files get detected now, when imported.

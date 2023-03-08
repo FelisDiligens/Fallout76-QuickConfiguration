@@ -36,6 +36,17 @@ namespace Fo76ini
                     break;
             }
 
+            switch (Configuration.Mods.ResourceListName)
+            {
+                case "sResourceArchive2List":
+                    this.radioButtonUseArchive2List.Checked = true;
+                    break;
+                case "sResourceIndexFileList":
+                default:
+                    this.radioButtonUseIndexFileList.Checked = true;
+                    break;
+            }
+
             /*
              * Interface
              */
@@ -144,6 +155,34 @@ namespace Fo76ini
         {
             if (this.radioButtonBundledLastinLO.Checked)
                 Configuration.Mods.BundledLoadOrder = ModDeployment.BundledLoadOrder.PutLast;
+        }
+
+        // Use sResourceIndexFileList
+        private void radioButtonUseIndexFileList_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radioButtonUseIndexFileList.Checked)
+            {
+                // Change configuration:
+                Configuration.Mods.ResourceListName = "sResourceIndexFileList";
+
+                // Commit to ini file:
+                Mods.Resources.ListName = ResourceList.PreferredList;
+                Mods.Resources.CommitToINI();
+            }
+        }
+
+        // Use sResourceArchive2List
+        private void radioButtonUseArchive2List_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radioButtonUseArchive2List.Checked)
+            {
+                // Change configuration:
+                Configuration.Mods.ResourceListName = "sResourceArchive2List";
+
+                // Commit to ini file:
+                Mods.Resources.ListName = ResourceList.PreferredList;
+                Mods.Resources.CommitToINI();
+            }
         }
 
         // Freeze bundled archives
