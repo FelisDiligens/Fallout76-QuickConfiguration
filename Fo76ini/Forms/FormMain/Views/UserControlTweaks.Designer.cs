@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControlTweaks = new Fo76ini.Controls.StyledTabControl();
             this.tabPageTweaksInfo = new System.Windows.Forms.TabPage();
-            this.webBrowserTweaksInfo = new CefSharp.WinForms.ChromiumWebBrowser();
+            this.webBrowserTweaksInfo = new System.Windows.Forms.WebBrowser();
             this.labelTweaksInfoWin7 = new System.Windows.Forms.Label();
             this.buttonOpenTweaksInfoInBrowser = new System.Windows.Forms.Button();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
@@ -447,14 +447,17 @@
             // 
             // webBrowserTweaksInfo
             // 
-            this.webBrowserTweaksInfo.ActivateBrowserOnCreation = false;
+            this.webBrowserTweaksInfo.AllowWebBrowserDrop = false;
             this.webBrowserTweaksInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowserTweaksInfo.IsWebBrowserContextMenuEnabled = false;
             this.webBrowserTweaksInfo.Location = new System.Drawing.Point(0, 0);
+            this.webBrowserTweaksInfo.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserTweaksInfo.Name = "webBrowserTweaksInfo";
-            this.webBrowserTweaksInfo.Size = new System.Drawing.Size(654, 473);
-            this.webBrowserTweaksInfo.TabIndex = 4;
+            this.webBrowserTweaksInfo.Size = new System.Drawing.Size(654, 476);
+            this.webBrowserTweaksInfo.TabIndex = 1;
+            this.webBrowserTweaksInfo.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowserTweaksInfo_DocumentCompleted);
             // 
             // labelTweaksInfoWin7
             // 
@@ -6757,6 +6760,7 @@
         private ColorSlider.ColorSlider trackBarfOverShoulderPosZ;
         private Controls.CustomToolTip toolTip;
         private System.Windows.Forms.TabPage tabPageTweaksInfo;
+        private System.Windows.Forms.WebBrowser webBrowserTweaksInfo;
         private System.Windows.Forms.CheckBox checkBoxSSReflections;
         private System.Windows.Forms.CheckBox checkBoxBloodSplatter;
         private ColorSlider.ColorSlider sliderMouseSensitivityY;
@@ -6818,6 +6822,5 @@
         private System.Windows.Forms.NumericUpDown numDOFStrength;
         private System.Windows.Forms.Label labelDOFStrength;
         private ColorSlider.ColorSlider sliderDOFStrength;
-        private CefSharp.WinForms.ChromiumWebBrowser webBrowserTweaksInfo;
     }
 }

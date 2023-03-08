@@ -162,9 +162,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
         private void LoadWhatsNew()
         {
             if (Theming.CurrentTheme == ThemeType.Dark)
-                this.webBrowserWhatsNew.LoadUrlAsync(Shared.URLs.RemoteWhatsNewDarkURL);
+                this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewDarkURL);
             else
-                this.webBrowserWhatsNew.LoadUrlAsync(Shared.URLs.RemoteWhatsNewURL);
+                this.webBrowserWhatsNew.Url = new Uri(Shared.URLs.RemoteWhatsNewURL);
         }
 
         private void styledButtonWhatsNew_Click(object sender, EventArgs e)
@@ -178,8 +178,9 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
                 // "Fixing" the web browser not rendering by resizing the window, which helps for some reason:
                 // (https://stackoverflow.com/a/68837431)
-                // this.ParentForm.Height += 1;
-                // this.ParentForm.Height -= 1;
+                // TODO
+                this.ParentForm.Height += 1;
+                this.ParentForm.Height -= 1;
             }
             else
             {

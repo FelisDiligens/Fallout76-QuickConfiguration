@@ -632,24 +632,6 @@ namespace Fo76ini.Utilities
         }
 
         /// <summary>
-        /// Converts a System.Drawing.Color to a hex string: <code>#rrggbb</code>
-        /// </summary>
-        public static String HexConverter(System.Drawing.Color c)
-        {
-            // https://stackoverflow.com/a/2395708
-            return "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
-        }
-
-        /// <summary>
-        /// Converts a System.Drawing.Color to a rgb string: <code>rgb(rrr, ggg, bbb)</code>
-        /// </summary>
-        public static String RGBConverter(System.Drawing.Color c)
-        {
-            // https://stackoverflow.com/a/2395708
-            return "rgb(" + c.R.ToString() + "," + c.G.ToString() + "," + c.B.ToString() + ")";
-        }
-
-        /// <summary>
         /// Converts a string with wildcards ("*" or "?") to a regular expression.
         /// 
         /// "?" - any character  (one and only one)
