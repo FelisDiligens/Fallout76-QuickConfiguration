@@ -34,7 +34,20 @@ namespace Fo76ini.Profiles
         public string Title = "Untitled";
         public GameEdition Edition = GameEdition.Unknown;
         public string GamePath = "";
-        public string ModsPath = "";
+        private string modsPath = "";
+        public string ModsPath
+        {
+            get
+            {
+                if (modsPath == "")
+                    return GamePath;
+                return modsPath;
+            }
+            set
+            {
+                modsPath = value;
+            }
+        }
         public string ExecutableName = "Fallout76.exe";
         public string IniPrefix = "Fallout76";
         public string IniParentPath = IniFiles.DefaultParentPath;
