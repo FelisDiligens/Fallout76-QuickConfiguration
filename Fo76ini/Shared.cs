@@ -10,7 +10,7 @@ namespace Fo76ini
     /// </summary>
     public class Shared
     {
-        public const string VERSION = "1.12.4";
+        public const string VERSION = "1.12.5";
         public static string LatestVersion = null;
 
         public static readonly string AppInstallationFolder = Directory.GetParent(Application.ExecutablePath).ToString();
