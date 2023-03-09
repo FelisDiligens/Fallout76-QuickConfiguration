@@ -390,13 +390,46 @@ namespace Fo76ini.Utilities
             return !Directory.EnumerateFileSystemEntries(path).Any();
         }
 
+        /* https://www.pinvoke.net/default.aspx/Enums/DWMWINDOWATTRIBUTE.html */
+        public enum DwmWindowAttribute : uint
+        {
+            NCRenderingEnabled = 1,
+            NCRenderingPolicy,
+            TransitionsForceDisabled,
+            AllowNCPaint,
+            CaptionButtonBounds,
+            NonClientRtlLayout,
+            ForceIconicRepresentation,
+            Flip3DPolicy,
+            ExtendedFrameBounds,
+            HasIconicBitmap,
+            DisallowPeek,
+            ExcludedFromPeek,
+            Cloak,
+            Cloaked,
+            FreezeRepresentation,
+            PassiveUpdateMode,
+            UseHostBackdropBrush,
+            UseImmersiveDarkMode = 20,
+            WindowCornerPreference = 33,
+            BorderColor,
+            CaptionColor,
+            TextColor,
+            VisibleFrameBorderThickness,
+            SystemBackdropType,
+            Last
+        }
+
+        /* https://pinvoke.net/default.aspx/Enums/DwmSetWindowAttribute.html?diff=y */
+        [DllImport("dwmapi.dll", PreserveSig = true)]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttribute attr, ref int attrValue, int attrSize);
+
         /*
          * EnumDisplaySettings
          * https://www.reddit.com/r/csharp/comments/31yw0t/how_can_i_get_the_main_monitors_refresh_rate/
          * https://stackoverflow.com/questions/744541/how-to-list-available-video-modes-using-c/744609#744609
          * https://docs.microsoft.com/de-de/windows/win32/api/winuser/nf-winuser-enumdisplaysettingsa?redirectedfrom=MSDN
          */
-
         [DllImport("user32.dll")]
         private static extern bool EnumDisplaySettings(
               string deviceName, int modeNum, ref DEVMODE devMode);

@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using static Fo76ini.Utilities.Archive2;
+using System.Runtime.InteropServices;
 
 namespace Fo76ini
 {
@@ -68,6 +69,22 @@ namespace Fo76ini
 
             this.FormClosing += this.FormMods_FormClosing;
             this.KeyDown += this.FormMods_KeyDown;
+
+            // Set dark mode
+            if (Theming.DetectSystemTheme() == ThemeType.Dark)
+            {
+                int t = 1; // true
+                IntPtr hWnd = this.Handle;
+                try
+                {
+                    Utils.DwmSetWindowAttribute(hWnd, Utils.DwmWindowAttribute.UseImmersiveDarkMode, ref t, Marshal.SizeOf(t));
+                }
+                catch (System.EntryPointNotFoundException ex)
+                {
+                    Console.WriteLine("Couldn't call DwmSetWindowAttribute: " + ex.Message);
+                }
+            }
+
         }
 
         private void OnProfileChanged(object sender, ProfileEventArgs e)

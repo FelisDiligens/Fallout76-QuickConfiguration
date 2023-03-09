@@ -16,6 +16,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -119,6 +120,21 @@ namespace Fo76ini
             Utils.PreventChangeOnMouseWheelForAllElements(this);
 
             this.userControlSideNav.SelectedTabIndex = 0;
+
+            // Set dark mode
+            if (Theming.DetectSystemTheme() == ThemeType.Dark)
+            {
+                int t = 1; // true
+                IntPtr hWnd = this.Handle;
+                try
+                {
+                    Utils.DwmSetWindowAttribute(hWnd, Utils.DwmWindowAttribute.UseImmersiveDarkMode, ref t, Marshal.SizeOf(t));
+                }
+                catch (System.EntryPointNotFoundException ex)
+                {
+                    Console.WriteLine("Couldn't call DwmSetWindowAttribute: " + ex.Message);
+                }
+            }
         }
 
         private void FormMain_Load(object sender, EventArgs e)
