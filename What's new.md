@@ -1,3 +1,8 @@
+### What's new in v1.12.5?
+
+- Fixed a bug from the update yesterday, see [Can no longer edit Resource List manually #19](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/issues/19)
+- The window's title bar should now be dark, when the system is set to dark mode.
+
 ### What's new in v1.12.4?
 
 - You can now pick where mods get saved in the profile options. Read more about that in the wiki.
