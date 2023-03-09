@@ -63,16 +63,23 @@ namespace Fo76ini.Interface
 
         public static ThemeType DetectSystemTheme ()
         {
-            RegistryKey registry =
-                Registry.CurrentUser.OpenSubKey(
-                    @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
+            try
+            {
+                RegistryKey registry =
+                    Registry.CurrentUser.OpenSubKey(
+                        @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
 
-            if (registry == null)
+                if (registry == null)
+                    return ThemeType.Light;
+                else if ((int)registry.GetValue("AppsUseLightTheme") == 1) // SystemUsesLightTheme
+                    return ThemeType.Light;
+                else
+                    return ThemeType.Dark;
+            }
+            catch
+            {
                 return ThemeType.Light;
-            else if ((int)registry.GetValue("AppsUseLightTheme") == 1) // SystemUsesLightTheme
-                return ThemeType.Light;
-            else
-                return ThemeType.Dark;
+            }
         }
 
         #region Theme variables
