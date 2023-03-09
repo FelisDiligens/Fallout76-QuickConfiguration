@@ -1889,6 +1889,7 @@
             this.buttonModsResetTextbox.TabIndex = 60;
             this.buttonModsResetTextbox.Text = "Reset";
             this.buttonModsResetTextbox.UseVisualStyleBackColor = true;
+            this.buttonModsResetTextbox.Click += new System.EventHandler(this.buttonModsResetTextbox_Click);
             // 
             // buttonModsApplyTextBox
             // 
@@ -1899,6 +1900,7 @@
             this.buttonModsApplyTextBox.TabIndex = 59;
             this.buttonModsApplyTextBox.Text = "Apply changes";
             this.buttonModsApplyTextBox.UseVisualStyleBackColor = true;
+            this.buttonModsApplyTextBox.Click += new System.EventHandler(this.buttonModsApplyTextBox_Click);
             // 
             // textBoxResourceList
             // 
@@ -1923,6 +1925,7 @@
             this.buttonModsCleanList.TabIndex = 58;
             this.buttonModsCleanList.Text = "Clean list";
             this.buttonModsCleanList.UseVisualStyleBackColor = true;
+            this.buttonModsCleanList.Click += new System.EventHandler(this.buttonModsCleanList_Click);
             // 
             // pictureBoxModsLoadingGIF
             // 
