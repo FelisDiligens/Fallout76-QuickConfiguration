@@ -19,6 +19,7 @@ namespace Fo76ini.Mods
             "sResourceStartUpArchiveList",
             "SResourceArchiveList",
             "SResourceArchiveList2",
+            // "sResourceDataDirsFinal",
             //"SResourceArchiveMemoryCacheList"
         };
 
