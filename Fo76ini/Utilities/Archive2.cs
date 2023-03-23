@@ -72,8 +72,10 @@ namespace Fo76ini.Utilities
             switch (compressionStr)
             {
                 case "None":
+                case "Uncompressed":
                     return Archive2.Compression.None;
                 case "Default":
+                case "Compressed":
                     return Archive2.Compression.Default;
                 case "XBox":
                     return Archive2.Compression.XBox;
@@ -100,6 +102,7 @@ namespace Fo76ini.Utilities
                     return Archive2.Format.General;
                 case "DDS":
                 case "DX10":
+                case "Textures":
                     return Archive2.Format.DDS;
                 case "XBoxDDS":
                     return Archive2.Format.XBoxDDS;

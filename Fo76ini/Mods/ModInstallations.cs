@@ -96,6 +96,10 @@ namespace Fo76ini.Mods
                     Archive2.Info info = Archive2.ReadFile(longFilePath);
                     newMod.Format = info.format;
                     newMod.Compression = info.compression;
+                    newMod.CurrentFormat = info.format;
+                    newMod.CurrentCompression = info.compression;
+                    newMod.FrozenFormat = info.format;
+                    newMod.FrozenCompression = info.compression;
                 }
                 catch
                 {
