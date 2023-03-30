@@ -1,9 +1,11 @@
 ﻿using Fo76ini.Interface;
 using Fo76ini.Properties;
+using Fo76ini.Utilities;
 using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -179,7 +181,51 @@ namespace Fo76ini.Profiles
                 case LaunchOption.OpenURL:
                     try
                     {
-                        Process.Start(this.LauncherURL);
+                        if (Utils.IsWine())
+                        {
+                            /*
+                             * This is a bit of an insane workaround... Here be dragons!
+                             * 
+                             * In order to start the game through Steam on Linux, we first have to figure out the path to the steam executable ($ which steam).
+                             * Then we can execute steam with the url as an argument ($ /usr/games/steam steam://run/1151340).
+                             * 
+                             * However, we are currently under Wine, so we will have to use a few tricks...
+                             * First, we can run shell scripts under Wine, but can't access stdout... so we will route the output to a text file and read it afterwards.
+                             * Also, we can directly start native programs using "START /UNIX", but we have to provide the full path to the executable.
+                             */
+                            Console.WriteLine("Wine detected.");
+
+                            Console.WriteLine("Writing shell script \"get_steam_path.sh\":\n#!/bin/sh\nwhich steam > ./steam_path.txt");
+                            File.WriteAllText("get_steam_path.sh", "#!/bin/sh\nwhich steam > ./steam_path.txt");
+
+                            // First, run a shell script to get the steam path:
+                            Console.WriteLine("Executing: get_steam_path.sh");
+                            Process pr = new Process();
+                            pr.StartInfo.FileName = "get_steam_path.sh";
+                            pr.StartInfo.UseShellExecute = true;
+                            pr.Start();
+
+                            // Wait for the shell script to return...
+                            Console.WriteLine("Waiting...");
+                            Thread.Sleep(100);
+
+                            // Now read the file
+                            string steamPath = File.ReadAllText("steam_path.txt").Trim('\n', ' ').Trim();
+                            Console.WriteLine("Got: " + steamPath);
+
+                            // Now start steam using the path we got:
+                            // start /unix /usr/games/steam steam://run/1151340
+                            pr = new Process();
+                            pr.StartInfo.FileName = "start";
+                            pr.StartInfo.Arguments = "/unix " + steamPath + " " + this.LauncherURL;
+                            pr.StartInfo.UseShellExecute = true;
+                            Console.WriteLine("Executing: start /unix " + steamPath + " " + this.LauncherURL);
+                            pr.Start();
+                        }
+                        else
+                        {
+                            Process.Start(this.LauncherURL);
+                        }
                     }
                     catch (Exception ex)
                     {
