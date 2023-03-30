@@ -254,7 +254,7 @@ namespace Fo76ini.Controls
                     break;
             }
 
-            float width = size.Width;
+            float width = size.Width + (forText ? 10 : 0);
             float height = size.Height;
 
             return new RectangleF(
