@@ -1,7 +1,26 @@
-### What's new in v1.12.5?
+### What's new in v1.12.6?
+
+Just bug fixes.
+
+- General issues:
+  - Fixed: Missing metadata when importing a *.ba2 archive as frozen
+- Wine (Linux) issues:
+  - Launching the game should work now. (Select 'Steam' as game edition. Might need additional testing.)
+  - Fixed crash when a different theme (e.g. light.msstyles) is selected in `winecfg` under "Desktop Integration"
+  - Minor changes
+
+*Released: Mar 30, 2023*
+
+---
+
+### What's new in v1.12.5.1?
 
 - Fixed a bug from the update yesterday, see [Can no longer edit Resource List manually #19](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/issues/19)
 - The window's title bar should now be dark, when the system is set to dark mode.
+
+*Released: Mar 09, 2023*
+
+---
 
 ### What's new in v1.12.4?
 
