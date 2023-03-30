@@ -141,6 +141,10 @@ namespace Fo76ini
             {
                 // Fix crashing issue when setting a different visual style in winecfg (e.g. "Light")
                 Utils.SetNumericUpDownBorderStyleNone(this);
+
+                // Fix white borders
+                this.viewControl.Size += new Size(8, 12);
+                this.userControlSideNav.Size += new Size(0, 12);
             }
         }
 

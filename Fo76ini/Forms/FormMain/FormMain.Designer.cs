@@ -81,7 +81,7 @@
             this.viewControl.Location = new System.Drawing.Point(200, -2);
             this.viewControl.Margin = new System.Windows.Forms.Padding(0);
             this.viewControl.Name = "viewControl";
-            this.viewControl.Size = new System.Drawing.Size(685, 613);
+            this.viewControl.Size = new System.Drawing.Size(684, 613);
             this.viewControl.TabIndex = 18;
             // 
             // userControlSideNav
@@ -123,7 +123,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 611);
             this.Controls.Add(this.pictureBoxLoadingGIF);
             this.Controls.Add(this.viewControl);
