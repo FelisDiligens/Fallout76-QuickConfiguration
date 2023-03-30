@@ -1134,6 +1134,19 @@ namespace Fo76ini.Utilities
                     PreventChangeOnMouseWheelForAllElements(subControl);
             }
         }
+        
+        public static void SetNumericUpDownBorderStyleNone(Control control)
+        {
+            foreach (Control subControl in control.Controls)
+            {
+                // NumericUpDown:
+                if (subControl is NumericUpDown)
+                    ((NumericUpDown)subControl).BorderStyle = BorderStyle.None;
+
+                if (subControl.Controls.Count > 0)
+                    SetNumericUpDownBorderStyleNone(subControl);
+            }
+        }
 
         /// <summary>
         /// Checks whether the user has administrator rights.
@@ -1212,5 +1225,23 @@ namespace Fo76ini.Utilities
                 return;
             }
         }
+
+        // https://social.msdn.microsoft.com/Forums/sqlserver/en-US/5942936c-a4cf-4d81-863e-16dcedfd6702/test-for-wine-under-linux?forum=csharpgeneral
+        public static bool IsWine()
+        {
+            try
+            {
+                var version = GetWineVersion();
+                return true;
+            }
+            catch  //Should probably catch the specific exception
+            {
+            };
+
+            return false;
+        }
+
+        [DllImport("ntdll.dll", EntryPoint = "wine_get_version", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        private static extern string GetWineVersion();
     }
 }

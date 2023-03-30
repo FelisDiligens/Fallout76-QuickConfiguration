@@ -135,6 +135,13 @@ namespace Fo76ini
                     Console.WriteLine("Couldn't call DwmSetWindowAttribute: " + ex.Message);
                 }
             }
+
+            // Detect running under Wine (on Linux)
+            if (Utils.IsWine())
+            {
+                // Fix crashing issue when setting a different visual style in winecfg (e.g. "Light")
+                Utils.SetNumericUpDownBorderStyleNone(this);
+            }
         }
 
         private void FormMain_Load(object sender, EventArgs e)
