@@ -113,6 +113,7 @@ See [Docs](Docs/README.md).
 * u/Doppler5hift's Reddit post: ["Solved: how to run two Fallout 76 characters simultaneously using Steam"](https://www.reddit.com/r/fo76/comments/ues8vv/solved_how_to_run_two_fallout_76_characters/)
 
 ### Contributors:
+* [thomasgraham18](https://github.com/thomasgraham18): Pull request to fix a common issue
 * [QuadroTony](https://www.nexusmods.com/fallout76/users/3166296): A lot of bug reports, and ideas, as well as: bSkipSplash=1 disables the news splash on startup.
 * [infinitywulf](https://www.nexusmods.com/fallout76/users/2781727): Changing the color of the power armor PipBoy.
 * [Juinchi](https://www.nexusmods.com/fallout76/users/3557603) and [Jolu42](https://www.nexusmods.com/fallout76/users/23655354): TAA sharpening

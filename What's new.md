@@ -1,3 +1,12 @@
+### What's new in v1.12.7?
+
+- Merged pull request ([#23](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/pull/23)) by [thomasgraham18](https://github.com/thomasgraham18):  
+  Fix `System.OutOfMemoryException` when loading the user's NexusMods profile picture.
+
+*Released: May 10, 2024*
+
+---
+
 ### What's new in v1.12.6?
 
 Just bug fixes.

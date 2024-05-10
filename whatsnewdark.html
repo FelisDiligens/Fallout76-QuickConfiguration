@@ -11,8 +11,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -25,11 +28,18 @@
 
   <!-- Make <details> and <summary> tags work in IE: -->
   <script src="https://cdn.jsdelivr.net/npm/details-polyfill@1/index.min.js"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
+<h3 id="whats-new-in-v1127">What's new in v1.12.7?</h3>
+<ul>
+<li>Merged pull request (<a
+href="https://github.com/FelisDiligens/Fallout76-QuickConfiguration/pull/23">#23</a>)
+by <a href="https://github.com/thomasgraham18">thomasgraham18</a>:<br />
+Fix <code>System.OutOfMemoryException</code> when loading the user's
+NexusMods profile picture.</li>
+</ul>
+<p><em>Released: May 10, 2024</em></p>
+<hr />
 <h3 id="whats-new-in-v1126">What's new in v1.12.6?</h3>
 <p>Just bug fixes.</p>
 <ul>
