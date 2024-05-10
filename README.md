@@ -1,7 +1,12 @@
 > **Note**  
+> **This project is unmaintained.**
 > 
-> This is a small continuation of the original tool, mainly focused on bug fixes.
+> It's time for me to move on. I can't find the motivation to work on it anymore, as I haven't played Fallout 76 in a long time.  
+> A new chapter is beginning in my life soon and I won't have the time/energy to work on the project.
 >
+> I'm thankful for all of you who used it and still use it.
+>
+> If anyone is interested in continuing development, feel free to fork it.
 
 ---
 
