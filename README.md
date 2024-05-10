@@ -126,6 +126,7 @@ See [Docs](Docs/README.md).
 * Russian by [Sondju](https://forums.nexusmods.com/index.php?/user/6969601-sondju/)
 * Italian for v1.12 by [Roger08](https://forums.nexusmods.com/index.php?/user/39134360-roger08/)
 * Spanish for v1.12 by [Yllelder](https://forums.nexusmods.com/index.php?/user/2229355-yllelder/)
+* Turkish for v1.12 by [AssetGroups](https://forums.nexusmods.com/profile/103221938-assetgroups/)
 * Japanese for v1.11.3 by [Akamiso0123 (yuutarionn)](https://forums.nexusmods.com/index.php?/user/6598456-yuutarionn/)
 * Chinese for v1.12.1 by [SugarBombsRADS (BulaLuka)](https://forums.nexusmods.com/index.php?/user/90175763-bulaluka/)
 

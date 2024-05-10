@@ -4,3 +4,4 @@ zh-CN
 ja-JP
 it-IT
 es-ES
+tr-TR

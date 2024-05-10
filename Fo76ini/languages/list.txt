@@ -7,3 +7,4 @@ ru-RU.xml
 sv-SE.xml
 zh-CN.xml
 zh-TW.xml
+tr-TR.xml

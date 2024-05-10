@@ -1,0 +1,1336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+     This file is auto-generated on program start.
+     Therefore any changes made to this file will be overwritten.
+     You can use this as a template for your own translation, though.
+
+     If you need help with translating, you can find a guide here:
+     https://github.com/FelisDiligens/Fallout76-QuickConfiguration/wiki/Translations
+-->
+<Language name="Turkish (TR)" iso="tr-TR" author="AssetGroup" version="1.12.2">
+  <Strings>
+    <!--
+        Strings
+        ******************************************************************************************************************************************************
+        Basically little text snippets that can be used everywhere.
+    -->
+    <String text="Daha yeni bir sürüm mevcut: {0}" id="newVersionAvailable" />
+    <String text="Şimdi güncelle!" id="updateNowButton" />
+    <String text="Bilinmeyen" id="unknown" />
+    <String text="Konuşlandırma gerekli" id="modsDeploymentNecessary" />
+    <String text="Bir şeyler ters gitti. Ayrıntılar için günlük dosyalarına bakın." id="modsFailed" />
+    <String text="Genel" id="modsTablePresetGeneral" />
+    <String text="Dokular" id="modsTablePresetTextures" />
+    <String text="Ses FX" id="modsTablePresetSoundFX" />
+    <String text="Paketlenmiş" id="modsTableTypeBundled" />
+    <String text="Ayrı arşiv" id="modsTableTypeSeparate" />
+    <String text="Ayrı arşiv (Dondurulmuş)" id="modsTableTypeSeparateFrozen" />
+    <String text="Gevşek dosyalar" id="modsTableTypeLoose" />
+    <String text="Beklemede" id="modTableFrozenPending" />
+    <String text="Dondurulmuş" id="modTableFrozen" />
+    <String text="Dondur" id="modTableFreeze" />
+    <String text="{0} içinde gruplandırın." id="modTableInstallInfoBundledBA2" />
+    <String text="{1} ön ayarıyla {0}'a paketleyin." id="modTableInstallInfoSeparateBA2" />
+    <String text="Dosyaları {0}'a kopyalayın." id="modTableInstallInfoLooseFiles" />
+    <String text="Kurulum bekleniyor" id="modTablePendingInstallation" />
+    <String text="Kaldırılmayı bekliyor" id="modTablePendingRemoval" />
+    <String text="Bekleyen değişiklikler" id="modTablePendingChanges" />
+    <String text="Güncelleme uygun" id="updateAvailable" />
+    <String text="Aktif" id="enabled" />
+    <String text="Pasif" id="disabled" />
+    <String text="Sürüm" id="gameEdition" />
+    <String text="Düşük" id="lowPreset" />
+    <String text="Orta" id="mediumPreset" />
+    <String text="Yüksek" id="highPreset" />
+    <String text="Çok Yüksek" id="ultraPreset" />
+    <String text="Özel Seçim" id="customPreset" />
+    <String text="Mevcut ön ayar: {0}" id="currentPreset" />
+    <String text="{0} mod seçildi" id="modDetailsTitleBulkSelected" />
+    <String text="{0} saat ve {1} dakika içinde" id="nmResetTime" />
+    <String text="{0} kaldı" id="nmRateLimitLeft" />
+    <String text="Temel" id="nmBasicAccount" />
+    <String text="Destekçi" id="nmSupporterAccount" />
+    <String text="Ödül" id="nmPremiumAccount" />
+    <String text="YOK" id="notApplicable" />
+    <String text="Evet" id="yes" />
+    <String text="Hayır" id="no" />
+    <String text="Geçerli" id="valid" />
+    <String text="Geçersiz" id="invalid" />
+    <String text="Otomatik" id="auto" />
+    <String text="seçilmiş" id="selected" />
+    <String text="Nükleer Kış" id="nuclearwintermode" />
+    <String text="Macera" id="adventuremode" />
+    <String text="Etkilenen değerler" id="affectedValues" />
+    <String text="Etkilenen dosyalar" id="affectedFiles" />
+    <String text="Bu modu onayladınız." id="endorsedText" />
+    <String text="Bu modu henüz onaylamadınız." id="notEndorsedText" />
+    <String text="Bu modu onaylamaktan kaçındınız." id="abstainedText" />
+    <String text="Uyarı: Ortak kaynak klasörleri bulunamadı (kafesler, dokular, sesler, malzemeler, arayüz vb.). Mod yüklenemeyebilir." id="modSidePanel_WarningNoCommonResourceFoldersFound" />
+    <String text="Uyarı: *.ba2 arşivine paketlenecek (geçerli) dosya bulunamadı. Archive2 dağıtım sırasında başarısız olabilir." id="modSidePanel_WarningNoFilesAvailableToPack" />
+    <String text="İpucu: Genel, doku ve ses dosyalarının karıştırılması *olabilir*, modun doğru şekilde yüklenmemesine neden olabilir.&#xA;Modun çalışmaması durumunda, onu &quot;Paketlenmiş *.ba2 arşivi&quot; olarak ayarlamayı deneyebilirsiniz." id="modSidePanel_HintMixedResourcesFound" />
+    <String text="İpucu: Genel dosyalara sahip modlar için genel ön ayarı seçin veya &quot;Otomatik algılama'da&quot;. bırakın." id="modSidePanel_HintWrongPresetForGeneralFiles" />
+    <String text="İpucu: Doku değiştirme modları için &quot;Dokular (*.dds dosyaları)&quot; seçeneğini seçin. önceden ayarlayın veya &quot;Otomatik algılama'da&quot; bırakın." id="modSidePanel_HintWrongPresetForTextures" />
+    <String text="İpucu: Ses değiştirme modları için &quot;Sound FX / Music / Voice&quot; seçeneğini seçin. önceden ayarlayın veya &quot;Otomatik algılama'da&quot; bırakın." id="modSidePanel_HintWrongPresetForAudioFiles" />
+    <String text="İpucu: *.dll dosyaları genellikle &quot;Gevşek dosyalar&quot; olarak yüklenir; üst dizine (&quot;.&quot;) girin." id="modSidePanel_HintWrongInstallMethodForDLLs" />
+    <String text="İpucu: Dizeler genellikle &quot;Gevşek dosyalar&quot; olarak yüklenir; &quot;Veri\Dizeler&quot; dosya." id="modSidePanel_HintWrongInstallMethodForStrings" />
+  </Strings>
+  <Dropdowns>
+    <!--
+        Dropdowns
+        ******************************************************************************************************************************************************
+        Make sure that the amount of options stays the same.
+    -->
+    <Dropdown id="ModInstallAs">
+      <Option>*.ba2 arşivlerini diğer modlarla birleştirin</Option>
+      <Option>Ayrı *.ba2 arşivi oluşturun</Option>
+      <Option>Serbest dosyaları kopyala</Option>
+    </Dropdown>
+    <Dropdown id="ModArchivePreset_Updated">
+      <Option>-- Lütfen seçin --</Option>
+      <Option>Otomatik algılama (önerilir)</Option>
+      <Option>Genel / Maskeler / Malzemeler / Animasyonlar</Option>
+      <Option>Dokular (*.dds dosyaları)</Option>
+      <Option>Ses FX ve Müzik / Arayüz ve HUD</Option>
+    </Dropdown>
+    <Dropdown id="Resolution">
+      <Option>Özel Seçim</Option>
+      <Option></Option>
+      <Option>┌───────────────────────────────┐</Option>
+      <Option>│  4:3                          │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [4:3]    640 x  480 (VGA)     │</Option>
+      <Option>│ [4:3]    800 x  600 (SVGA)    │</Option>
+      <Option>│ [4:3]    960 x  720           │</Option>
+      <Option>│ [4:3]   1024 x  768 (XGA)     │</Option>
+      <Option>│ [4:3]   1152 x  864           │</Option>
+      <Option>│ [4:3]   1280 x  960           │</Option>
+      <Option>│ [4:3]   1400 x 1050           │</Option>
+      <Option>│ [4:3]   1440 x 1080           │</Option>
+      <Option>│ [4:3]   1600 x 1200           │</Option>
+      <Option>│ [4:3]   1920 x 1440           │</Option>
+      <Option>│ [4:3]   2048 x 1536           │</Option>
+      <Option>│ [4:3]   2880 x 2160           │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  5:3                          │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [5:3]    800 x  480           │</Option>
+      <Option>│ [5:3]   1280 x  768 (WXGA)    │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  5:4                          │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [5:4]   1152 x  960           │</Option>
+      <Option>│ [5:4]   1280 x 1024           │</Option>
+      <Option>│ [5:4]   2560 x 2048           │</Option>
+      <Option>│ [5:4]   5120 x 4096           │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  16:9                         │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [16:9]  1024 x  576           │</Option>
+      <Option>│ [16:9]  1152 x  648           │</Option>
+      <Option>│ [16:9]  1280 x  720 (HD)      │</Option>
+      <Option>│ [16:9]  1360 x  768           │</Option>
+      <Option>│ [16:9]  1365 x  768           │</Option>
+      <Option>│ [16:9]  1366 x  768           │</Option>
+      <Option>│ [16:9]  1536 x  864           │</Option>
+      <Option>│ [16:9]  1600 x  900           │</Option>
+      <Option>│ [16:9]  1920 x 1080 (Full HD) │</Option>
+      <Option>│ [16:9]  2560 x 1440 (WQHD)    │</Option>
+      <Option>│ [16:9]  3200 x 1800           │</Option>
+      <Option>│ [16:9]  3840 x 2160 (4K UHD1) │</Option>
+      <Option>│ [16:9]  5120 x 2880 (5K)      │</Option>
+      <Option>│ [16:9]  7680 x 4320 (8K UHD2) │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  16:10                        │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [16:10]  640 x  400           │</Option>
+      <Option>│ [16:10] 1280 x  800           │</Option>
+      <Option>│ [16:10] 1440 x  900           │</Option>
+      <Option>│ [16:10] 1680 x 1050           │</Option>
+      <Option>│ [16:10] 1920 x 1200           │</Option>
+      <Option>│ [16:10] 2560 x 1600           │</Option>
+      <Option>│ [16:10] 3840 x 2400           │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  17:9                         │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [17:9]  2048 x 1080           │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│  21:9                         │</Option>
+      <Option>├───────────────────────────────┤</Option>
+      <Option>│ [21:9]  1920 x  800           │</Option>
+      <Option>│ [21:9]  2560 x 1080           │</Option>
+      <Option>│ [21:9]  3440 x 1440           │</Option>
+      <Option>│ [21:9]  3840 x 1600           │</Option>
+      <Option>│ [21:9]  5120 x 2160           │</Option>
+      <Option>│                               │</Option>
+      <Option>│                               │</Option>
+      <Option>└───────────────────────────────┘</Option>
+      <Option></Option>
+    </Dropdown>
+    <Dropdown id="DisplayMode">
+      <Option>Tam ekran</Option>
+      <Option>Pencereli</Option>
+      <Option>Kenarlıksız pencereli</Option>
+      <Option>Kenarlıksız pencereli (Tam Ekran)</Option>
+    </Dropdown>
+    <Dropdown id="AntiAliasing">
+      <Option>Aktif, TAA (varsayılan)</Option>
+      <Option>Pasif</Option>
+    </Dropdown>
+    <Dropdown id="AnisotropicFiltering">
+      <Option>Hiçbiri</Option>
+      <Option>2x</Option>
+      <Option>4x</Option>
+      <Option>8x</Option>
+      <Option>16x (varsayılan)</Option>
+    </Dropdown>
+    <Dropdown id="ShadowTextureResolution">
+      <Option>512 = Patates</Option>
+      <Option>1024 = Düşük</Option>
+      <Option>2048 = Yüksek (varsayılan)</Option>
+      <Option>4096 = Çok Yüksek</Option>
+      <Option>8192 = İnanılmaz</Option>
+    </Dropdown>
+    <Dropdown id="ShadowBlurriness">
+      <Option>0x</Option>
+      <Option>1x (daha canlı, pikseller fark edilebilir)</Option>
+      <Option>2x (daha az bulanık)</Option>
+      <Option>3x (bulanık, varsayılan)</Option>
+    </Dropdown>
+    <Dropdown id="ShadowQuality">
+      <Option>Düşük</Option>
+      <Option>Orta</Option>
+      <Option>Yüksek</Option>
+      <Option>Çok Yüksek</Option>
+      <Option>Özel Seçim</Option>
+    </Dropdown>
+    <Dropdown id="VoiceChatMode">
+      <Option>Otomatik</Option>
+      <Option>Bölgesel</Option>
+      <Option>Takım</Option>
+      <Option>Hiçbiri</Option>
+    </Dropdown>
+    <Dropdown id="ShowActiveEffectsOnHUD">
+      <Option>Pasif</Option>
+      <Option>Zararlı</Option>
+      <Option>Hepsi</Option>
+    </Dropdown>
+    <Dropdown id="CorpseHighlighting">
+      <Option>Pasif</Option>
+      <Option>Kontrol Edildiğinde Temizle</Option>
+      <Option>Eşyalar Toplandığında Temizle</Option>
+    </Dropdown>
+    <Dropdown id="TextureQuality">
+      <Option>Düşük</Option>
+      <Option>Orta</Option>
+      <Option>Yüksek</Option>
+      <Option>Çok Yüksek</Option>
+      <Option>Özel Seçim</Option>
+    </Dropdown>
+    <Dropdown id="WaterShadowFilter">
+      <Option>1 (Düşük)</Option>
+      <Option>2 (Orta)</Option>
+      <Option>3 (Yüksek)</Option>
+    </Dropdown>
+    <Dropdown id="VolumetricLightingQuality">
+      <Option>0 (Düşük)</Option>
+      <Option>1 (Orta)</Option>
+      <Option>2 (Yüksek)</Option>
+    </Dropdown>
+  </Dropdowns>
+  <Messageboxes>
+    <!--
+        Message boxes
+        ******************************************************************************************************************************************************
+        The {0} is a placeholder, btw.
+    -->
+    <Messagebox title="Couldn't parse custom *.ini files" id="customIniFilesParsingError">Özel *.ini dosyalarından en az biri bozuk veya sözdizimi hatası içeriyor.
+	Lütfen 'Özel ayarlar' sekmesine gidin ve herhangi bir hata olup olmadığını kontrol edin. Yardım için wiki makalesine bakın.</Messagebox>
+    <Messagebox title="Window scaling enabled" id="dpiScalingWarning">Görünüşe göre bu program için pencere ölçeklendirmesini %{0} oranında etkinleştirmişsiniz.
+	Lütfen bunun kullanıcı arayüzünü bozabileceğini ve/veya tuhaf davranışlara neden olabileceğini unutmayın.
+	Herhangi bir sorunla karşılaşırsanız daha fazla bilgi için SSS/Sorun Giderme bölümüne bakın.</Messagebox>
+    <Messagebox title="Changes applied" id="changesApplied">Değişiklikler uygulandı. Artık oyuna başlayabilirsiniz.</Messagebox>
+    <Messagebox title="Done" id="downloadLanguagesFinished">İndirilen dil dosyaları: {0}</Messagebox>
+    <Messagebox title="Files modified" id="iniFilesModified">*.ini dosyaları, araç çalışırken dışında değiştirildi.
+	NOT: "Uygula"ya tıklanırsa veya modlar yönetilirse tüm değişikliklerin üzerine yazılacaktır.
+	Yeni değerlerle çalışmak için lütfen aracı yeniden başlatın.</Messagebox>
+    <Messagebox title="Cloud file provider not running" id="cloudFileProviderNotRunning">{0}
+	Lütfen OneDrive'ın çalıştığından emin olun ve tekrar deneyin.
+	Araç şimdi sonlandırılacak.</Messagebox>
+    <Messagebox title="Failed to load *.ini file" id="iniFailedToLoad">{0}
+	Araç şimdi sonlandırılacak.</Messagebox>
+    <Messagebox title="Graphics preset changed" id="iniGraphicsPresetChanged">Grafikler {0} olarak ayarlandı.</Messagebox>
+    <Messagebox title="Translations have been updated!" id="translationsUpdateAvailable">Bunları indirmek için ayarlar sayfasına gidin.</Messagebox>
+    <Messagebox title="Couldn't load NexusMods profile" id="loadingNexusModsProfileXMLFailed">account.xml okunamadı, çıkış yapacaksınız.
+	NexusMods sekmesinden hesabınıza tekrar giriş yapabilirsiniz.
+	
+	Hata mesajı: {0}</Messagebox>
+    <Messagebox title="Couldn't load NexusMods mods info" id="loadingRemoteModsXMLFailed">mods.xml okunamadı... Mod Yöneticisi'nde mod bilgilerini tekrar güncellemeniz gerekecek.
+	
+	Hata mesajı: {0}</Messagebox>
+    <Messagebox title="Error: Couldn't load profiles" id="loadingProfilesXMLFailed">profiles.xml okunamadı...
+	
+	Profillerinizi sıfırlamak ister misiniz? (Bu veri kaybına yol açacaktır!)
+	('Hayır' hiçbir şey değişmeden uygulamayı kapatacaktır)
+	
+	Hata mesajı: {0}</Messagebox>
+    <Messagebox title="Access denied" id="setInisReadOnlyFailed">*.ini dosyaları salt okunur olarak ayarlanamadı. Aracı yönetici haklarıyla başlatmayı deneyin.
+	{0}</Messagebox>
+    <Messagebox title="Game path invalid" id="modsGamePathInvalid">Seçtiğiniz yol Fallout 76'nın kurulu olduğu yol gibi görünmüyor.
+	Lütfen Veri klasörünü değil, *.exe dosyasının bulunduğu klasörü seçtiğinizden emin olun.</Messagebox>
+    <Messagebox title="Cannot delete last game profile" id="errorAtLeastOneGameOrProfile">En az bir oyun profili gerekli.</Messagebox>
+    <Messagebox title="Auto-detect failed" id="gamePathAutoDetectFailed">Ortak bir oyun yolu bulunamadı. Lütfen yolu manuel olarak seçin.</Messagebox>
+    <Messagebox title="Found a path" id="gamePathAutoDetectPathFound">Bu yolu kullanmak istiyor musunuz?
+	Bulunan: {0}
+	
+	Bu yolu kullanmak için 'Evet'i, aramaya devam etmek için 'Hayır'ı ve aramayı iptal etmek için 'İptal'i tıklayın.</Messagebox>
+    <Messagebox title="Delete {0}?" id="galleryDeleteScreenshot">'{0}' öğesini silmek üzeresiniz. Emin misin?</Messagebox>
+    <Messagebox title="Delete {0} files?" id="galleryDeleteScreenshots">{0} dosyayı silmek üzeresiniz. Emin misin?</Messagebox>
+    <Messagebox title="Are you sure?" id="galleryDeleteThumbnails">Galerinin küçük resimlerini silmek istediğinizden emin misiniz?
+	'Galeriyi yenile' seçeneğini bir sonraki tıklayışınızda, tüm küçük resimlerin yeniden oluşturulması çok daha uzun sürecektir.</Messagebox>
+    <Messagebox title="Nuclear Winter mode disabled" id="nwModeDisabled">Artık Macera moduna başlayabilirsiniz.</Messagebox>
+    <Messagebox title="Nuclear Winter mode enabled" id="nwModeEnabled">Artık Nükleer Kış moduna başlayabilirsiniz.</Messagebox>
+    <Messagebox title="Done" id="modsDisabledDone">Modlar devre dışı bırakıldı ve oyundan kaldırıldı.</Messagebox>
+    <Messagebox title="Done" id="modsDeployedDone">Modlar konuşlandırıldı.</Messagebox>
+    <Messagebox title="Something went wrong" id="modsDeploymentFailed">Modlar konuşlandırılmamış olabilir.
+	Lütfen günlük dosyalarını kontrol edin.</Messagebox>
+    <Messagebox title="Archive2 is missing" id="modsArchive2Missing">.\Archive2\Archive2.exe eksik.
+	Bu aracı yeniden yüklemeyi deneyin veya Archive2'yi manuel olarak yükleyin.</Messagebox>
+    <Messagebox title="Game path not specified or invalid" id="modsGamePathNotSet">Lütfen oyuna giden yolu doğru ayarladığınızdan emin olun.
+	Bunu ayarlarda yapabilirsiniz.</Messagebox>
+    <Messagebox title="7-Zip is missing" id="7ZipMissing">.\7z\7z.exe eksik.
+	Bu aracı yeniden yüklemeyi veya 7-Zip'i manuel olarak kopyalamayı deneyin.</Messagebox>
+    <Messagebox title="Yay!" id="modsNoConflictingFiles">Çakışan dosya bulunamadı.</Messagebox>
+    <Messagebox title="Import manually installed mods?" id="modsImportQuestion">Mod yöneticisinin dışında kurulu modları eklemek istediğinizden emin misiniz?</Messagebox>
+    <Messagebox title="Would you like to repack bundled archives?" id="modsRepackFrozenBundledArchives">Dondurulmuş paketlenmiş arşivler mevcut. Paketlenmiş arşivleri yeniden paketlemek ister misiniz?
+	
+	Evet - Mod listemde değişiklikler yaptım ve paketlenmiş arşivlerimi yeniden paketlemek istiyorum. (yavaş)
+	
+	Hayır - Değişiklik yapmadım, lütfen dondurulmuş paket arşivlerimi dağıtın. (hızlı)</Messagebox>
+    <Messagebox title="Archive2 failed to pack/extract an archive" id="archive2Error">Archive2 bilinmeyen bir nedenden dolayı başarısız oldu.
+	Lütfen ayrıntılar için günlük dosyalarını kontrol edin.</Messagebox>
+    <Messagebox title="Archive2 failed to pack/extract an archive" id="archive2InstallRequirements">Lütfen 'Visual Studio 2012 Güncelleme 4 için Visual C++ Yeniden Dağıtılabilir' sürümünü yüklediğinizden emin olun.
+	NexusMods sayfasında bir bağlantı bulabilirsiniz.</Messagebox>
+    <Messagebox title="Unsupported file format" id="modsArchiveTypeNotSupported">{0} dosyaları desteklenmiyor.
+	Lütfen arşivi açın ve modu bir klasör olarak ekleyin.</Messagebox>
+    <Messagebox title="Legacy version found" id="modsLegacyFormatDetected">Görünüşe göre daha önce modları yönetmişsiniz, ancak v1.9.0'dan önceki bir sürümle.
+	Modların yönetilme ve saklanma şekli önemli ölçüde değişti.
+	Sonuç olarak, bunların yeni formata dönüştürülmesi gerekir.
+	
+	NOT: Bu, arşivlerin buzunu çözecektir. Tüm modlar dönüştürüldükten sonra, kaç modun dondurulduğuna bağlı olarak daha fazla yer kaplayabilirler. Sürüm düşürme hâlâ mümkün olacak ancak bazı modlar hatalı yüklenebilir.
+	
+	Bunları şimdi dönüştürmek ister misiniz? Uzun sürmeyecek.</Messagebox>
+    <Messagebox title="Invalid manifest.xml entry" id="modsInvalidManifestEntry">Bir mod girişi geçersiz ve göz ardı edildi.
+	Hata: {0}</Messagebox>
+    <Messagebox title="Mod information updated" id="nexusModsRemoteInfoRefreshedSuccess">Mod bilgileri güncellendi ve küçük resimler indirildi.</Messagebox>
+    <Messagebox title="Endorse all mods?" id="nexusModsEndorseAllQuestion">Bu, yüklü tüm modlarınızı onaylayacaktır. Emin misin?</Messagebox>
+    <Messagebox title="Not logged in" id="nexusModsNotLoggedIn">Lütfen önce NexusMods'ta oturum açın ve tekrar deneyin</Messagebox>
+    <Messagebox title="Delete {0}?" id="deleteQuestion">'{0}' öğesini silmek üzeresiniz. Emin misin?</Messagebox>
+    <Messagebox title="Delete {0} files?" id="deleteMultipleQuestion">{0} dosyayı silmek üzeresiniz. Emin misin?</Messagebox>
+    <Messagebox title="Failed" id="failed">{0}</Messagebox>
+    <Messagebox title="Done" id="done">{0}</Messagebox>
+    <Messagebox title="Are you sure?" id="areYouSure">{0}</Messagebox>
+  </Messageboxes>
+  <TweakDescriptions>
+    <!--
+        Descriptions
+        ******************************************************************************************************************************************************
+        These are the descriptions of almost all tweaks.
+        They appear in tool tips, when the user hovers over a tweak with the mouse cursor.
+    -->
+    <Description id="Fo76ini.Tweaks.General.EnableSteamTweak">Steam entegrasyonunu aktif/pasif yapar. Bethesda.net platformundaki hesabınızı kullanmak için devre dışı bırakın.</Description>
+    <Description id="Fo76ini.Tweaks.General.AutoSigninTweak">Bunu etkinleştirdiğinizde, oturum açma bilgilerinizi hesaplar bölümünde girerseniz oyun başlangıcındaki oturum açma işlemi otomatik atlanır.</Description>
+    <Description id="Fo76ini.Tweaks.General.IntroVideoTweak">Bu seçenek etkinleştirildiğinde oyun başlangıcındaki Bethesda logo videosu görüntülenmeden başlayacaktır.</Description>
+    <Description id="Fo76ini.Tweaks.General.SkipStartupSplash">Etkinleştirilirse, oyun başlangıçtaki haberler ile sizi rahatsız etmeyecektir.</Description>
+    <Description id="Fo76ini.Tweaks.General.FasterFadeInTweak">Bir dünyaya yüklendikten veya hızlı seyahat edildikten sonra oyun bir animasyon oynatıyor/siyahtan kayboluyor
+	bu da bir süre hareket etmenizi engeller. Bu ince ayar söz konusu animasyonu hızlandırır.
+	Kredi reddit'ten u/LinuxVersion'a gider.
+	
+	⚠️Değerler çok düşük veya 0 olarak ayarlanırsa oyun yüklendikten sonra siyah ekranda kalır.
+	(Tweak tarafından kullanılan değerler: fFadeToBlackFadeSeconds=0,2000 ve fMinSecondsForLoadFadeIn=0,3000)</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Main">Etkinleştirilirse, yeni eklenen 'Ana' görevleri otomatik olarak izler.</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Side">Etkinleştirilirse, yeni eklenen 'Yan' görevleri otomatik olarak izler.</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Misc">Etkinleştirilirse, yeni eklenen 'Çeşitli' görevleri otomatik olarak izler.</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Event">Etkinleştirilirse, yeni eklenen 'Etkinlik' görevlerini otomatik olarak izler.</Description>
+    <Description id="Fo76ini.Tweaks.Interface.AutoTrackQuestWhenStartedTweak+Other">Etkinleştirilirse, yeni eklenen 'Günlük' görevleri otomatik olarak izler.</Description>
+    <Description id="Fo76ini.Tweaks.Video.DisplaySizeTweak">Display resolution</Description>
+    <Description id="Fo76ini.Tweaks.Video.DisplayModeTweak">Görüntüleme modunu değiştirir.
+	• Tam Ekran: Gerçek tam ekran modu (En İyi Performans)
+	• Pencereli: Oyunu kenarlıklı bir pencerede başlatır (diğer adıyla pencere dekorasyonu).
+	• Kenarlıksız pencereli: Sorunsuz bir şekilde Alt+Tab yapmanıza olanak tanır, ancak çözünürlüğün ekranınızın çözünürlüğüyle eşleştiğinden emin olun. (Varsayılan)
+	• Kenarlıksız pencereli (Tam ekran): "Kenarlıksız pencereli" ile aynıdır, ancak pencere ekranınıza sığacak şekilde büyütülecektir.
+	Çözünürlük ekranınızdan düşükse, çözünürlüğü yükseltmek için En Yakın Komşu'yu kullandığından bu, pikselli görünecektir.</Description>
+    <Description id="Fo76ini.Tweaks.Video.PresentIntervalTweak">Bunu devre dışı bırakmak kare hızının sınırını kaldıracaktır.
+	• Ekranda yırtılma yaşıyorsanız bunu etkinleştirin.
+	• Giriş gecikmesi yaşıyorsanız bunu devre dışı bırakın.
+	
+	⚠️Bunun etkinleştirilmesi ekran yırtılmasından kurtulmayabilir.
+	⚠️Bunu devre dışı bırakırsanız oyunu manuel olarak 60 FPS'ye sınırlamanız tavsiye edilir. (örneğin NVIDIA'nın Kontrol Panelini kullanarak)
+	
+	ℹ️ Sınırlandırılmamış kare hızı, eski oyunlardaki gibi fiziği alt üst etmemeli,
+	çünkü bu, Bethesda tarafından bir süre önce (2018'de) düzeltildi.
+	Yine de 60'a sınırlandırılması tavsiye edilir.</Description>
+    <Description id="Fo76ini.Tweaks.Video.TopMostWindowTweak">Bunu etkinleştirmek oyunun penceresini ön planda tutacaktır.
+	⚠️Bu durum tek monitörlerde Alt+Tab yapabilmenizi engelleyecektir.</Description>
+    <Description id="Fo76ini.Tweaks.Interface.FixHUD4to3RatioTweak">Gizlenmiş / düzeltilmiş düzeltmeler
+	• Quick-Boy ekranı,
+	• kilit açma ekranı ve
+	• Güç Zırhı HUD
+	5:4 ve 4:3 ekranlar için.
+	
+	⚠️ Çoğunlukla denenmemiştir.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.AntiAliasingTweak">Nesnelerin kenarlarını düzgünleştirir (pikselli).
+	Düşük görsel kalite pahasına performansı artırmak için devre dışı bırakın.
+	
+	ℹ️ "FXAA" çalışmıyor.
+	Değerin "FXAA" olarak ayarlanması kenar yumuşatmayı devre dışı bırakır.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.AnisotropicFilteringTweak">Eğik açılardan bakıldığında dokuların örtüşmesini azaltır.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.TextureQualityPresetTweak">Öncelikle dokuların çözünürlüğünü değiştirir (= dokuların nasıl bulanık/keskin göründüğü)</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ShadowQualityPresetTweak">Oyun içi gölge kalitesi ayarı.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.DepthOfFieldEnabledTweak">Bunu devre dışı bırakmak, tüm Alan Derinliği efektlerini devre dışı bırakacaktır.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.DepthOfFieldStrengthTweak">Alan Derinliği efektinin gücü.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.MotionBlurTweakRev1">Hiçbir şey yapmıyor gibi görünüyor.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.RadialBlurTweakRev1">Oyuncu yaralandığında (örneğin kurşun veya patlamayla vurulduğunda) veya su altındayken ekranı bulanıklaştırır.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.AmbientOcclusionTweak">Köşelerdeki veya nesnelerin yere temas ettiği yerlerdeki gölgeleri Etkinleştirir/Devre Dışı Bırakır.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ScreenSpaceReflectionsTweakRev1">Su, su birikintileri ve metaller gibi parlak yüzeylerde yansımaları sağlar.
+	⚠️ Devre dışı bırakılırsa zifiri siyah, süt beyazı veya görünmez su oluşmasına neden olabilir.
+	Bu durumla karşılaşırsanız Su bölümü altında düzeltmeyi etkinleştirmeyi deneyin.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.WaterDisplacementsTweak">Suyun yer değiştirmesini (dalgalanmalar, dalgalar) etkinleştirir/devre dışı bırakır.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.WaterRefractionsTweak">Bir şey yapıp yapmadığından emin değilim.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.WaterReflectionsTweak">Beklediğiniz gibi çalışmıyor. Bunun yerine SSR'yi devre dışı bırakın.
+	⚠️(Uzaktaki) suyu görünmez hale getirebilir.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.WaterHiResTweak">Etkinleştirilirse siyah su sorununu çözebilir.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.WaterFixSSRGlitchTweak">Bazen Ekran Alanı Yansımalarını devre dışı bırakmak zifiri siyah, süt beyazı ve hatta görünmez su ile sonuçlanır.
+	Bu seçenek bunu düzeltmeye çalışır.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.VolumetricLightingTweak">Ayrıca Tanrı ışınları / Işık milleri olarak da adlandırılır</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.VolumetricLightingQualityTweak">Tanrı ışınlarının/ışık ışınlarının kalitesini/netliğini değiştirir.
+	Önerilen ayar: 2 (Yüksek)</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.DisableAllGoreTweakRev1">Düşmanlara ateş ederken artık kan parçacığı etkisi olmayacak</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.Effects.BloodSplatterEnabledTweak">HUD'da kan sıçramasını etkinleştirir.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ShadowMapResolutionTweak">Gölgelerin çözünürlüğü. Daha yüksek ayarlar gölgeleri daha ayrıntılı hale getirecektir.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ShadowBlurrinessTweak">Gölgeleri bulanıklaştırır. Daha düşük bir gölge çözünürlüğü ayarlarsanız özellikle kullanışlıdır.
+	
+	Düşük doku haritası çözünürlüğü için 3x önerilir
+	Yüksek doku haritası çözünürlüğü için 2x önerilir</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.ShadowDistanceTweak">Gölgelerin oluşturulacağı mesafeyi ayarlar.
+	⇨ Ultra 150000'dir
+	⇨ Yüksek 120000
+	⇨ Orta 90000'dir
+	⇨ Düşük 60000
+	
+	ℹ️ 0 gölgeleri kırar. Tavsiye edilmez.</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.TAAPostOverlayTweakRev1">TAA sonrası keskinleştirilmiş kaplamanın opaklığı. Bu değerin arttırılması, bulanık görüntünün üstündeki keskinleştirilmiş görüntünün görünürlüğünü artırır.
+	ℹ️ Bu değerin çok fazla arttırılması ekranda titremeye sebep olur.
+	Varsayılan: 0,21</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.TAAPostSharpenTweakRev1">TAA sonrası bileme miktarı.
+	ℹ️ Bu değerin çok fazla arttırılması ekranda titremeye sebep olur.
+	Varsayılan: 0,21
+	Önerilen: 0,4</Description>
+    <Description id="Fo76ini.Tweaks.Graphics.GrassFadeDistanceTweak">Çimlerin solmaya başlayacağı mesafeyi ayarlar.
+	⇨ Ultra 7000'dir
+	⇨ Yüksek 5500
+	⇨ Orta 4500</Description>
+    <Description id="Fo76ini.Tweaks.Audio.EnableAudioTweak">Devre dışı bırakılırsa oyun tamamen sessiz olacaktır.</Description>
+    <Description id="Fo76ini.Tweaks.Audio.PlayMainMenuMusicTweak">İşaretlenmezse oyun ana menüde arka plan müziği çalmaz.</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal0">'Menü Müziği'nin ses düzeyini değiştirir
+	ℹ️ Doğru ses seviyesini değiştirmeyebilir.</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal1">'Dünya Radyoları'nın ses seviyesini değiştirir
+	ℹ️ Doğru ses seviyesini değiştirmeyebilir.</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal2">'Ses'in ses düzeyini değiştirir
+	ℹ️ Doğru ses seviyesini değiştirmeyebilir.</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal3">'Müzik'in ses düzeyini değiştirir
+	ℹ️ Doğru ses seviyesini değiştirmeyebilir.</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal4">'Efektlerin' ses düzeyini değiştirir
+	ℹ ️Doğru ses seviyesini değiştirmeyebilir.</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal5">'Ayak Sesleri'nin ses düzeyini değiştirir
+	ℹ️ Doğru ses seviyesini değiştirmeyebilir.</Description>
+    <Description id="Fo76ini.Tweaks.Volume.AudioMenuValTweak+fVal6">'Pip-Boy Radyo'nun ses seviyesini değiştirir
+	ℹ️ Doğru ses seviyesini değiştirmeyebilir.</Description>
+    <Description id="Fo76ini.Tweaks.Controls.FixMouseSensitivityTweak">Etkinleştirilirse yukarı/aşağı ve sola/sağa bakma hassasiyeti eşit olacaktır.
+	Devre dışı bırakılırsa (varsayılan), sola/sağa bakma hassasiyeti muhtemelen yukarı/aşağıya göre daha yüksek olacaktır.
+	
+	• Fare ve amp; Tuş takımı.
+	• Gamepad kullanıyorsanız bunu devre dışı bırakın.
+	
+	⚠️ Etkinleştirildiğinde fare hassasiyetiniz artabilir. İmleç hızınızı veya fare DPI'nızı azaltın.
+	
+	ℹ️ Dikey hassasiyet ekranınızın en boy oranına bağlıdır:
+		⇨ 4:3 için Y'nin değeri 0,028'dir
+		⇨ 16:9 için Y'nin değeri 0,03738'dir
+		⇨ 16:10 için Y'nin değeri 0,0336'dır
+		⇨ 21:9 için Y'nin değeri 0,042'dir
+		⇨ Diğer tüm en boy oranları için Y'nin değeri, en boy oranının 0,021 katına eşittir. (YSölçeği = 0,021 * Genişlik / Yükseklik)</Description>
+    <Description id="Fo76ini.Tweaks.Controls.FixAimSensitivityTweak">Etkinleştirilirse nişan alırken hassasiyet değişmeyecektir.
+	Devre dışı bırakılırsa (varsayılan), aşağıya nişan alırken hassasiyet azaltılacaktır.
+	
+	⚠️ Bu yalnızca 16:9 monitörlerde işe yarayabilir.
+	⚠️ Oyun içinde çömelirken bu işe yaramayabilir.</Description>
+    <Description id="Fo76ini.Tweaks.Controls.GamepadEnableTweak">Takılı bir gamepad'iniz varsa ancak bunun yerine klavyenizi ve farenizi kullanmak istiyorsanız bunu devre dışı bırakın.</Description>
+    <Description id="Fo76ini.Tweaks.Camera.ApplyCameraNodeAnimationsTweak">Devre dışı bırakıldığında kameranın konumunu karakter kafasına ayarlar.
+	Üçüncü şahısta uzaklaştırmanız gerekecek.
+	Etkinleştirilirse, kameranın konumunu sağ omuzun arkasına ayarlar.
+	
+	⚠️ Devre dışı bırakılırsa sorunlara neden olabilir.</Description>
+    <Description id="Fo76ini.Tweaks.Camera.SelfieModeRangeTweak">Oyun hangi mesafeden fotoğraf modunda karakterinizden uzaklaşmanızı engelleyecektir.
+	Varsayılan: 500</Description>
+    <Description id="Fo76ini.Tweaks.Camera.SelfieCameraTranslationSpeedTweak">Fotoğraf modunda kameranın ne kadar hızlı hareket ettiği.
+	Varsayılan: 2.5</Description>
+    <Description id="Fo76ini.Tweaks.Camera.SelfieCameraRotationSpeedTweak">Fotoğraf modunda kameranın dönme hızı.
+	Varsayılan: 1.5</Description>
+    <Description id="Fo76ini.Tweaks.Camera.DisableAutoVanityModeTweak">Etkinleştirildiğinde, belirli bir süre hiçbir giriş yapılmadığında kamera karakterin etrafında dönecektir.
+	⚠️ Bir şey yapıp yapmadığından emin değilim. 5 dakika kadar orada durdum ve kamera dönmedi. Daha fazla teste ihtiyaç var.</Description>
+    <Description id="Fo76ini.Tweaks.Camera.FOV3rdADSTweak">Nişan alırken 3. şahıs perspektifinin görüş alanını değiştirir.
+	Varsayılan: 50</Description>
+    <Description id="Fo76ini.Tweaks.Camera.FieldOfViewTweak">1. ve 3. şahıs perspektifinin Görüş Alanını değiştirir.
+	Bu, oyun içi FOV ayarındaki değerle aynıdır.
+	Varsayılan: 80</Description>
+    <Description id="Fo76ini.Tweaks.Camera.VanityModeMinDistTweak">3. şahıs görünümünde ne kadar yakınlaştırma yapabilirsiniz?
+	Varsayılan: 0</Description>
+    <Description id="Fo76ini.Tweaks.Camera.VanityModeMaxDistTweak">3. şahıs görünümünde ne kadar uzaklaştırma yapabilirsiniz?
+	Varsayılan: 150</Description>
+    <Description id="Fo76ini.Tweaks.Camera.PitchZoomOutMaxDistTweak">Yere 3. şahıs bakış açısıyla baktığınızda kamera ne kadar uzaklaştırılır.
+	Varsayılan: 100</Description>
+    <Description id="Fo76ini.Tweaks.Colors.PipboyColorTweak">Pip-Boy'un rengini değiştirir</Description>
+    <Description id="Fo76ini.Tweaks.Colors.QuickboyColorTweak">Hızlı Pip-Boy'un rengini değiştirir</Description>
+    <Description id="Fo76ini.Tweaks.Colors.PowerArmorPipboyColorTweak">Power Armor Hızlı Pip-Boy'un rengini değiştirir</Description>
+    <Description id="Fo76ini.Tweaks.General.ScreenshotIndexTweak">Oyun içinde print screen butonunu kullanarak ekran görüntüsü aldığınızda, bunları oyun dizinine "ScreenShotX.png" olarak kaydeder.
+	"X" ekran görüntüsü indeksidir.</Description>
+    <Description id="Fo76ini.Tweaks.Inis.INIReadOnlyTweak">Bu seçenek tüm *.ini dosyalarını anında salt okunur hale getirecektir.
+	Ayarlarınız geri alınırsa bunu etkinleştirin.</Description>
+    <Description id="Fo76ini.Tweaks.Config.AutoApplyTweak">Artık uygula tuşuna basmanıza gerek yok.</Description>
+    <Description id="Fo76ini.Tweaks.Config.IgnoreUpdatesTweak">Başlangıçta güncellemeleri kontrol etmez ve büyük güncelleme düğmesini gizler.</Description>
+    <Description id="Fo76ini.Tweaks.Config.PlayNotificationSoundsTweak">Etkinleştirildiğinde araç, özel bildirim sesleri çalacaktır.</Description>
+    <Description id="Fo76ini.Tweaks.Config.ToolQuitOnLaunchTweak">Etkinleştirildiğinde, oyun başlatıldığında aracı kapatır.
+	Yalnızca araç aracılığıyla başlatıldığında çalışır.</Description>
+    <Description id="Fo76ini.Tweaks.NuclearWinterMode.RenameDLLsTweak">İşaretlenirse oyuna ait olmayan tüm *.dll dosyaları yeniden adlandırılacaktır.</Description>
+    <Description id="Fo76ini.Tweaks.NuclearWinterMode.DeployModsOnNWModeTweak">İşaretlenirse, Nükleer Kış modu devre dışı bırakıldığında modlar dağıtılacaktır.</Description>
+    <Description id="Fo76ini.Tweaks.NuclearWinterMode.RemoveModsOnNWModeTweak">İşaretlenirse, Nükleer Kış modu etkinleştirildiğinde modlar kaldırılacaktır.</Description>
+    <Description id="Fo76ini.Tweaks.Config.ArchiveTwoPathTweak">Araç, *.ba2 dosyalarını ayıklamak ve paketlemek için Archive2.exe'yi kullanır.
+	Aracın Archive2.exe'yi arayacağı yolu ayarlayabilirsiniz.</Description>
+    <Description id="Fo76ini.Tweaks.Config.SevenZipPathTweak">Araç, çeşitli arşivleri (zip, rar, 7z) çıkarmak için 7z.exe'yi kullanır.
+	Aracın 7z.exe'yi arayacağı yolu ayarlayabilirsiniz.</Description>
+    <Description id="Fo76ini.Tweaks.Config.DownloadPathTweak">NexusMods'taki 'Vortex' / 'Mod Manager İndir' düğmesini kullanarak modları indirdiğinizde, araç dosyayı bu klasöre indirecektir.</Description>
+  </TweakDescriptions>
+  <FormMods title="Mod Manager">
+    <!--
+        FormMods
+        ******************************************************************************************************************************************************
+        Mod Manager
+    -->
+    <StatusStrip id="statusStrip1">
+      <ToolStripStatusLabel text="Mod sayısı:" id="toolStripStatusLabelDescModCount" />
+      <ToolStripStatusLabel text="0" id="toolStripStatusLabelModCount" />
+      <ToolStripStatusLabel text="Etkinleştirilmiş:" id="toolStripStatusLabelDescEnabledCount" />
+      <ToolStripStatusLabel text="0" id="toolStripStatusLabelEnabledCount" />
+      <ToolStripStatusLabel text=" " id="toolStripStatusLabelSpacer" />
+      <ToolStripStatusLabel text="Konuşlandırma gerekli" id="toolStripStatusLabelDeploymentStatus" />
+    </StatusStrip>
+    <Panel id="panel1">
+      <Button text="Konuşlandır" id="buttonModsDeploy" />
+      <CheckBox text="Modları devre dışı bırak" id="checkBoxDisableMods" />
+    </Panel>
+    <StyledTabControl id="tabControl1">
+      <TabPage text="Mod sırası" id="tabPageModOrder">
+        <!-- ********** Tab "Mod order" ********** -->
+        <Panel id="panelModDetails">
+          <Panel id="panelModDetailsHeader">
+            <Button id="buttonModAbstain">
+              <Tooltip>Bu modu onaylamaktan kaçının.</Tooltip>
+            </Button>
+            <Button id="buttonModEndorse">
+              <Tooltip>Bu modu onaylayın.</Tooltip>
+            </Button>
+            <CheckBox text="Enable this mod" id="checkBoxModDetailsEnabled" />
+          </Panel>
+          <Panel id="panelModDetailsInner">
+            <StyledGroupBox text="Notlar" id="groupBoxNotes">
+              <!-- Group "Notes" -->
+            </StyledGroupBox>
+            <StyledGroupBox text="Mod dosyalarını ekle / değiştir" id="groupBoxModReplace">
+              <!-- Group "Add / replace mod files" -->
+              <Label text="Dosya eklemek/değiştirmek için dosyaları/klasörleri soldaki kutuya sürükleyip bırakın." id="labelModDetailsReplace" />
+              <LinkLabel text="Klasör içeriklerini sil" id="linkLabelModDeleteFolderContents" />
+              <LinkLabel text="Klasörü içe aktar" id="linkLabelModReplaceFilesWithFolder" />
+              <LinkLabel text="Arşivi içe aktar" id="linkLabelModReplaceFilesWithArchive" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Kurulum seçenekleri" id="groupBoxModDetailsInstallationOptions">
+              <!-- Group "Installation options" -->
+              <LinkLabel text="Dondurulmuş arşivi geçersiz kıl" id="linkLabelModInvalidateFrozenArchive" />
+              <LinkLabel text="Kurulum seçeneklerini otomatik algılamayı çalıştır" id="linkLabelModAutoDetectInstallOptions" />
+              <Button text="..." id="buttonModPickRootDir" />
+              <Label text="Şu şekilde yükleyin:" id="labelModInstallAs" />
+              <Label text="Ön ayar:" id="labelModArchivePreset" />
+              <CheckBox text="Dondur" id="checkBoxFreezeArchive">
+                <Tooltip>Bir arşivi 'dondurursanız' dağıtım sırasında yeniden oluşturulmaz.
+				Bu, dağıtımı hızlandıracaktır.
+				
+				Bu, özellikle arşiv BÜYÜK (1GiB veya daha fazla) ise ve dosyalar değişmiyorsa kullanışlıdır.</Tooltip>
+              </CheckBox>
+              <Label text="Şuraya yükleyin:" id="labelModInstallInto" />
+              <Button text="Önermek" id="buttonModDetailsSuggestArchiveName" />
+              <Label text="Arşiv adı:" id="labelModArchiveName" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Detaylar" id="groupBoxModDetailsDetails">
+              <!-- Group "Details" -->
+              <Button id="buttonModOpenFolder">
+                <Tooltip>Klasörü mod'a aç</Tooltip>
+              </Button>
+              <Label text="Klasör adı:" id="labelModFolderName" />
+              <Button id="buttonModOpenPage">
+                <Tooltip>Bağlantıyı tarayıcıda aç</Tooltip>
+              </Button>
+              <Panel id="panelModDetailsNexusMods">
+                <LinkLabel text="En son sürümü ayarla" id="linkLabelModSetLatestVersion" />
+                <Label text="En son sürüm:" id="labelModLatestVersionDesc" />
+                <Label text="Yazar:" id="labelModAuthorDesc" />
+              </Panel>
+              <Label text="Yüklü sürüm:" id="labelModVersion" />
+              <Label text="Mod adı:" id="labelModName" />
+              <Label text="Web sayfası (URL):" id="labelModURL" />
+            </StyledGroupBox>
+          </Panel>
+        </Panel>
+        <ToolStrip id="toolStrip1">
+          <ToolStripButton text="Mod ekle (arşiv)" id="toolStripButtonAddMod" />
+          <ToolStripButton text="Mod ekle (klasör)" id="toolStripButtonAddModFolder" />
+          <ToolStripButton text="Tümünü işaretle/işaretini kaldır" id="toolStripButtonCheckAll" />
+          <ToolStripButton text="Yukarı taşı" id="toolStripButtonMoveUp" />
+          <ToolStripButton text="Aşağı inmek" id="toolStripButtonMoveDown" />
+          <ToolStripButton text="Mod klasörünü aç" id="toolStripButtonModOpenFolder" />
+          <ToolStripButton text="Modun çözülmesi" id="toolStripButtonFreeze" />
+          <ToolStripButton text="Modun buzunu çöz" id="toolStripButtonModUnfreeze" />
+          <ToolStripButton text="Modu sil" id="toolStripButtonDeleteMod" />
+        </ToolStrip>
+        <ObjectListView id="objectListViewMods">
+          <Column></Column>
+          <Column>Mod adı &amp; bilgi</Column>
+          <Column>Durum</Column>
+          <Column>Kurulum</Column>
+          <Column></Column>
+        </ObjectListView>
+      </TabPage>
+      <TabPage text="Kaynak listesi" id="tabPageResourceList">
+        <!-- ********** Tab "Resource list" ********** -->
+        <StyledGroupBox text="Kaynak listesi (yeni satır ayrılmış)" id="groupBoxLists">
+          <!-- Group "Resource list (newline separated)" -->
+          <Button text="Sıfırla" id="buttonModsResetTextbox" />
+          <Button text="Değişiklikleri uygula" id="buttonModsApplyTextBox" />
+          <Button text="Listeyi temizle" id="buttonModsCleanList" />
+        </StyledGroupBox>
+      </TabPage>
+      <TabPage text="Ayarlar" id="tabPageModsSettings">
+        <!-- ********** Tab "Settings" ********** -->
+        <Panel id="panel2">
+          <StyledGroupBox text="Davranış" id="groupBoxModsBehavior">
+            <!-- Group "Behavior" -->
+            <Panel id="panel3">
+              <Label text="Hangi kaynak listesi kullanılmalı?" id="labelResourceListUsed" />
+              <RadioButton text="[Arşiv] sResourceIndexFileList (varsayılan)" id="radioButtonUseIndexFileList" />
+              <RadioButton text="[Arşiv] sResourceArchive2List" id="radioButtonUseArchive2List" />
+            </Panel>
+            <Label text="Not: Bu ayarlar yalnızca dağıtımdan sonra geçerli olur." id="labelBehaviorNote" />
+            <Panel id="panelBundledLoadOrder">
+              <Label text="Paketlenmiş arşivler yükleme sırasına göre nereye yerleştirilmelidir?" id="labelBundledLoadOrder" />
+              <RadioButton text="Paketlenmiş arşivleri ilk sıraya koy (varsayılan)" id="radioButtonBundledFirstinLO">
+                <Tooltip>Paketlenmiş arşivler yükleme sırasında ilk sırada görünecektir.</Tooltip>
+              </RadioButton>
+              <RadioButton text="Paketlenmiş arşivleri en sona koy" id="radioButtonBundledLastinLO">
+                <Tooltip>Paketlenmiş arşivler yükleme sırasında en sonda görünecektir.</Tooltip>
+              </RadioButton>
+            </Panel>
+            <Panel id="panelDeployMethod">
+              <Label text="Dosyalar nasıl kopyalanır?" id="labelDeployMethod" />
+              <RadioButton text="Sabit bağlantılar yapın (önerilir)" id="radioButtonModsUseHardlinks">
+                <Tooltip>Dosyaları kopyalamak yerine sabit bağlantılar oluşturun.
+				Dağıtım süresini ve disk alanını azaltır.
+				
+				Bu önerilen seçenektir.</Tooltip>
+              </RadioButton>
+              <RadioButton text="Sembolik bağlantılar oluşturun (deneysel, yönetici haklarına ihtiyaç duyar)" id="radioButtonModsUseSymlinks">
+                <Tooltip>Dosyaları kopyalamak yerine sembolik bağlantılar (yazılım bağlantıları da denir) oluşturun.
+				Dağıtım süresini ve disk alanını azaltır.
+				
+				Lütfen unutmayın: Sembolik bağlantılar oluşturmak için aracı yönetici haklarıyla çalıştırmanız gerekir!
+				Aksi takdirde araç, dosyaları kopyalama işlemine geri döner.
+				
+				Deneysel özellik: Çalışması gerekir ancak garanti edilmez.</Tooltip>
+              </RadioButton>
+              <RadioButton text="Dosyaları kopyala (en kararlı)" id="radioButtonModsCopyFiles">
+                <Tooltip>Dosyaları kopyalar ve bu nedenle daha fazla disk alanı kullanır.
+				
+				Hiçbir yan etkisi yoktur. Sorun yaşıyorsanız bu seçeneği kullanın.</Tooltip>
+              </RadioButton>
+            </Panel>
+            <CheckBox text="Paketlenmiş arşivleri dondur (deneysel)" id="checkBoxFreezeBundledArchives">
+              <Tooltip>Paketlenmiş arşivleri yeniden oluşturmak yerine, paketlenmiş bir kopyayı kaydedecek ve dağıtım sırasında bunu güncellemek isteyip istemediğinizi soracaktır.</Tooltip>
+            </CheckBox>
+            <CheckBox text="*.ba2 dosyalarını varsayılan olarak çöz" id="checkBoxAddArchivesAsBundled" />
+          </StyledGroupBox>
+          <StyledGroupBox text="Arayüz" id="groupBoxModsInterface">
+            <!-- Group "Interface" -->
+            <Label text="Mod listesi düzeni:" id="labelModListStyle" />
+            <RadioButton text="Kompakt ama daha fazla sütun (eski liste)" id="radioButtonModsUseAlternativeList" />
+            <RadioButton text="Standart, birleştirilmiş sütunlar (yeni liste, varsayılan)" id="radioButtonModsUseStandardList" />
+            <CheckBox text="Varsa NexusMods sayfasından mod başlığını gösterin." id="checkBoxModsUseRemoteModNames">
+              <Tooltip>İşaretliyse: Modun başlığını NexusMods'ta olduğu gibi gösterir.
+			  İşaretlenmemişse: Modun başlığını yan panele yazdığınız gibi gösterir.
+			  Bu tamamen kişisel tercihtir.</Tooltip>
+            </CheckBox>
+          </StyledGroupBox>
+        </Panel>
+      </TabPage>
+    </StyledTabControl>
+    <MenuStrip id="menuStrip1">
+      <!-- Menu -->
+      <ToolStripMenuItem text="Dosya" id="fileToolStripMenuItem">
+        <ToolStripMenuItem text="Mod ekle" id="addModarchiveToolStripMenuItem">
+          <ToolStripMenuItem text="Boş mod" id="emptyModToolStripMenuItem" />
+          <ToolStripMenuItem text="Arşivden" id="fromArchiveToolStripMenuItem" />
+          <ToolStripMenuItem text="*.ba2 arşivinden (dondurulmuş)" id="fromba2ArchivefrozenToolStripMenuItem" />
+          <ToolStripMenuItem text="Klasörden" id="fromFolderToolStripMenuItem" />
+        </ToolStripMenuItem>
+        <ToolStripMenuItem text="Yüklü modları içe aktar" id="toolStripMenuItemModsImport" />
+        <ToolStripMenuItem text="Değişiklikleri Kaydet" id="saveToolStripMenuItem" />
+        <ToolStripMenuItem text="Modları konuşlandırın" id="deployToolStripMenuItem" />
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="Görüntüle" id="editToolStripMenuItem">
+        <ToolStripMenuItem text="Çakışan dosyaları göster" id="showConflictingFilesToolStripMenuItem" />
+        <ToolStripMenuItem text="Kullanıcı arayüzünü yeniden yükle" id="reloadUIToolStripMenuItem" />
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="Araçlar" id="toolsToolStripMenuItem">
+        <ToolStripMenuItem text="Archive2" id="archive2ToolStripMenuItem">
+          <ToolStripMenuItem text="Archive2 Aç" id="openArchive2ToolStripMenuItem" />
+          <ToolStripMenuItem text="*.ba2 arşivini inceleyin" id="exploreba2ArchiveToolStripMenuItem" />
+          <ToolStripMenuItem text="*.ba2 arşivi hakkındaki bilgileri görüntüle" id="detectFormatAndCompressionToolStripMenuItem" />
+        </ToolStripMenuItem>
+        <ToolStripMenuItem text="NexusMods API" id="nexusModsAPIToolStripMenuItem">
+          <ToolStripMenuItem text="Mod bilgilerini güncelle" id="updateModInformationToolStripMenuItem" />
+          <ToolStripMenuItem text="Modları onaylayın" id="endorseModsToolStripMenuItem" />
+          <ToolStripMenuItem text="Güncellemeleri kontrol et" id="checkForUpdatesToolStripMenuItem" />
+        </ToolStripMenuItem>
+      </ToolStripMenuItem>
+      <ToolStripMenuItem text="Yardım" id="helpToolStripMenuItem">
+        <ToolStripMenuItem text="Kılavuzu göster" id="showGuideToolStripMenuItem" />
+        <ToolStripMenuItem text="Log dosyaları" id="logFilesToolStripMenuItem">
+          <ToolStripMenuItem text="modmanager.log.txt dosyasını göster" id="showModmanagerlogtxtToolStripMenuItem" />
+          <ToolStripMenuItem text="archive2.log.txt dosyasını göster" id="showArchive2logtxtToolStripMenuItem" />
+        </ToolStripMenuItem>
+      </ToolStripMenuItem>
+    </MenuStrip>
+  </FormMods>
+  <FormWelcome title="Hoş geldin">
+    <!--
+        FormWelcome
+        ******************************************************************************************************************************************************
+        Welcome
+    -->
+    <Label text="» Meşgul bir adam olduğunu biliyorum, bu yüzden fazla vaktini almayacağım.\n Sadece bazı bilgileri doğrulamam gerekiyor, hepsi bu! «\n – Vault-Tec temsilcisi, Ekim 2077" id="label4" />
+    <Button text="TAMAM" id="buttonOK" />
+    <Panel id="panel1">
+      <GroupBox text="Oyun yolu" id="groupBoxGameLocation">
+        <!-- Group "Game path" -->
+        <Label text="Mod yüklemek istemiyorsanız oyun konumunu atlayabilirsiniz." id="label3" />
+        <Label text="Oyun yerini bulmakta sorun yaşıyorsanız:\n\nSteam:\n    • C:\\Program Files (x86)\\Steam\\steamapps\\common\\Fallout76\\\n    • ?:\\SteamLibrary\\steamapps\\common\\Fallout76\\\nXbox / Microsoft Store:\n    • C:\\Program Files﻿\\ModifiableWindowsApps\\Fallout76\\\n    • ?:\\XboxGames\\Fallout 76\\Content\\" id="label2" />
+        <Button text="Otomatik algılamayı çalıştır" id="buttonAutoDetect" />
+        <Button text="..." id="buttonPickGamePath" />
+      </GroupBox>
+      <GroupBox text="Oyun sürümü" id="groupBoxGameEdition">
+        <!-- Group "Game edition" -->
+        <RadioButton text="Steam (PTS)" id="radioButtonEditionSteamPTS" />
+        <RadioButton text="Diğer" id="radioButtonEditionUnknown" />
+        <RadioButton text="Xbox" id="radioButtonEditionMSStore" />
+        <RadioButton text="Steam" id="radioButtonEditionSteam" />
+      </GroupBox>
+    </Panel>
+    <Label text="Merhaba, aracı ilk defa çalıştırdığınız anlaşılıyor!\n" id="label1" />
+    <Label text="Hoş geldin!" id="labelTitle" />
+  </FormWelcome>
+  <Form1 title="Fallout 76 Hızlı Yapılandırma">
+    <!--
+        Form1
+        ******************************************************************************************************************************************************
+        Fallout 76 Quick Configuration
+    -->
+    <ViewControl id="viewControl">
+      <UserControlHome id="UserControlHome">
+        <TabControlWithoutHeader id="tabControlWithoutHeader1">
+          <TabPage text="tabPageHome" id="tabPageHome">
+            <!-- ********** Tab "tabPageHome" ********** -->
+            <Panel id="panelWebLinks">
+              <StyledButton text="Map76" id="styledButtonMap76" />
+              <StyledButton text="Bethesda.net Durum sayfası" id="styledButtonBethesdaNetStatus" />
+              <StyledButton text="Hata raporları" id="styledButtonBugReports" />
+              <StyledButton text="Wiki &amp; guides" id="styledButtonWikiAndGuides" />
+              <StyledButton text="GitHub" id="styledButtonGitHub" />
+              <StyledButton text="NukaCrypt" id="styledButtonNukacrypt" />
+              <StyledButton text="NexusMods" id="styledButtonNexusMods" />
+              <Label text="Web bağlantıları" id="labelWebLinks" />
+              <StyledButton text="N&amp;D Build Planner" id="styledButtonNukesAndDragonsBuildPlanner" />
+              <StyledButton text="xTranslator" id="styledButtonxTranslator" />
+            </Panel>
+            <Panel id="panelContent">
+              <Label text="Sunucu durumu:" id="labelServerStatus" />
+              <StyledButton text="Yenilikler neler?" id="styledButtonWhatsNew" />
+              <Label text="Versiyon:" id="labelVersion" />
+              <Label text="Çeviri:" id="labelTranslationBy" />
+              <Label text="Author: AssetGroup" id="labelAuthor" />
+            </Panel>
+            <Panel id="panelTitle">
+              <Label text="Hızlı Yapılandırmaya Hoş Geldiniz" id="labelWelcome" />
+              <Label text="Bu araç, çeşitli oyun ayarlarını değiştirmenize ve modları yüklemenize olanak tanır." id="labelDescription" />
+            </Panel>
+            <Panel id="panelUpdate">
+              <PictureBoxButton text="Şimdi güncelle!" id="pictureBoxButtonUpdate" />
+              <LinkLabel text="Veya manuel olarak indirip yükleyin..." id="linkLabelManualDownloadPage" />
+            </Panel>
+          </TabPage>
+          <TabPage text="tabPageWhatsNew" id="tabPageWhatsNew">
+            <!-- ********** Tab "tabPageWhatsNew" ********** -->
+            <StyledButton text="Go back" id="styledButtonGoBack" />
+          </TabPage>
+        </TabControlWithoutHeader>
+      </UserControlHome>
+      <UserControlTweaks id="UserControlTweaks">
+        <Label text="İpucu: Ne işe yaradığından emin değilseniz bir seçeneğin üzerine gelin." id="labelTweaksDesc" />
+        <Label text="Tweaks" id="labelTweaksTitle" />
+        <StyledTabControl id="tabControlTweaks">
+          <TabPage text="Info" id="tabPageTweaksInfo">
+            <!-- ********** Tab "Info" ********** -->
+            <Label text="Web tarayıcısı kontrolü Windows 7'de (ve muhtemelen 8.1) düzgün çalışmıyor.\nBilgiyi okumak için aşağıdaki düğmeyi tıklayın." id="labelTweaksInfoWin7" />
+            <Button text="Tarayıcıda aç" id="buttonOpenTweaksInfoInBrowser" />
+          </TabPage>
+          <TabPage text="General" id="tabPageGeneral">
+            <!-- ********** Tab "General" ********** -->
+            <StyledGroupBox text="Oynanış" id="groupBoxGameplay">
+              <!-- Group "Gameplay" -->
+              <CheckBox text="Sırt Çantası Görünür" id="checkBoxBackpackVisible" />
+              <Label text="Cesetleri vurgulayın:" id="labelHighlightCorpses" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Diyalog" id="groupBoxDialogue">
+              <!-- Group "Dialogue" -->
+              <Label text="Konuşma geçmişi boyutu (satır sayısı):" id="labelConversationHistorySize" />
+              <CheckBox text="Diyalog geçmişini göster" id="checkBoxDialogueHistory" />
+              <CheckBox text="Diyalog altyazılarını göster" id="checkBoxDialogueSubtitles" />
+              <CheckBox text="Genel altyazıları göster" id="checkBoxGeneralSubtitles" />
+            </StyledGroupBox>
+            <StyledGroupBox text="HUD" id="groupBoxHUD">
+              <!-- Group "HUD" -->
+              <StyledGroupBox text="HUD'da kayan görev işaretleri" id="groupBoxFloatingQuestMarkers">
+                <!-- Group "Floating quest markers on HUD" -->
+                <CheckBox text="Kayan görev işaretçilerini göster\n" id="checkBoxShowFloatingQuestMarkers" />
+                <CheckBox text="Kayan görev metnini göster" id="checkBoxShowFloatingQuestText" />
+                <Label text="Mesafe çizimi" id="labelFloatingQuestMarkersDistance" />
+              </StyledGroupBox>
+              <CheckBox text="Diğer oyuncuların adlarını göster" id="checkBoxShowOtherPlayersNames" />
+              <CheckBox text="Herkese açık ekip bildirimlerini etkinleştirin\n" id="checkBoxShowPublicTeamNotifications" />
+              <CheckBox text="Power Armor HUD'yi etkinleştirin" id="checkBoxEnablePowerArmorHUD" />
+              <CheckBox text="Değişken hasar rakamlarını göster" id="checkBoxShowDamageNumbers" />
+              <CheckBox text="Artı işaretli Nişangah'ı göster" id="checkBoxShowCrosshair" />
+              <CheckBox text="Pusulayı göster" id="checkBoxShowCompass" />
+              <Label text="HUD'da aktif efektleri göster:" id="labelShowActiveEffectsOnHUD" />
+              <Label text="HUD Saydamlığı" id="labelHUDOpacity" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Yüklenme" id="groupBoxLoading">
+              <!-- Group "Loading" -->
+              <CheckBox text="Yüklemeden sonra solmayı hızlandırın" id="checkBoxFasterFadeIn" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Görevler" id="groupBoxQuests">
+              <!-- Group "Quests" -->
+              <CheckBox text="Günlük Görevler oyun başladığında aktifdir" id="checkBoxEnableQuestAutoTrackDaily" />
+              <CheckBox text="Etkinlik Görevleri oyun başladığında aktifdir" id="checkBoxEnableQuestAutoTrackEvent" />
+              <CheckBox text="Çeşitli Görevler oyun başladığında aktifdir" id="checkBoxEnableQuestAutoTrackMisc" />
+              <CheckBox text="Yan Görevler başladığında aktifdir" id="checkBoxEnableQuestAutoTrackSide" />
+              <CheckBox text="Ana Görevler oyun başladığında aktifdir" id="checkBoxEnableQuestAutoTrackMain" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Ana Menü" id="groupBoxMainMenu">
+              <!-- Group "Main Menu" -->
+              <CheckBox text="Başlangıçta haberleri içeren açılış ekranını atla" id="checkBoxSkipSplash" />
+              <CheckBox text="Açılış Videosunu atla" id="checkBoxSkipIntroVideos" />
+            </StyledGroupBox>
+          </TabPage>
+          <TabPage text="Video" id="tabPageVideo">
+            <!-- ********** Tab "Video" ********** -->
+            <StyledGroupBox text="Grafikler" id="groupBoxGraphics">
+              <!-- Group "Graphics" -->
+              <StyledGroupBox text="Alan Derinliği" id="groupBoxDOF">
+                <!-- Group "Depth of Field" -->
+                <Label text="Kuvvet" id="labelDOFStrength" />
+                <CheckBox text="Alan Derinliğini Etkinleştir" id="checkBoxDepthOfField" />
+              </StyledGroupBox>
+              <Button text="Kalite ön ayarını seçin" id="buttonSelectOverallQualityPreset" />
+              <Label text="Genel Kalite:" id="labelOverallQualityPreset" />
+              <StyledGroupBox text="Dokular" id="groupBoxTextures">
+                <!-- Group "Textures" -->
+                <Label text="Doku kalitesi ön ayarı:" id="labelTextureQuality" />
+              </StyledGroupBox>
+              <StyledGroupBox text="Efektler" id="groupBoxGraphicEffects">
+                <!-- Group "Effects" -->
+                <CheckBox text="Kan sıçratması" id="checkBoxBloodSplatter" />
+                <CheckBox text="Kanı devre dışı bırak" id="checkBoxDisableGore" />
+              </StyledGroupBox>
+              <StyledGroupBox text="TAA Keskinleştirme" id="groupBoxTAASharpening">
+                <!-- Group "TAA Sharpening" -->
+                <Label text="Post keskinleştirme" id="labelTAAPostSharpen" />
+                <Label text="Post overlay" id="labelTAAPostOverlay" />
+              </StyledGroupBox>
+              <Label text="Kenar Yumuşatma:" id="labelAntiAliasing" />
+              <StyledGroupBox text="Çimen" id="groupBoxGrass">
+                <!-- Group "Grass" -->
+                <Label text="Solma mesafesi" id="labelGrassFadeDistance" />
+                <CheckBox text="Çimleri etkinleştir" id="checkBoxGrass" />
+              </StyledGroupBox>
+              <StyledGroupBox text="LOD" id="groupBoxLOD">
+                <!-- Group "LOD" -->
+                <Label text="Solma mesafesi" id="labelLODFadeDistance" />
+                <Label text="Aktörler" id="labelLODActors" />
+                <Label text="Öğeler" id="labelLODItems" />
+                <Label text="Nesneler" id="labelLODObjects" />
+              </StyledGroupBox>
+              <CheckBox text="Dikey Senkronizasyon (kare hızı sınırı)" id="checkBoxVSync" />
+              <StyledGroupBox text="Aydınlatma" id="groupBoxLighting">
+                <!-- Group "Lighting" -->
+                <Label text="Hacimsel Aydınlatma Kalitesi:" id="labelGodrayQuality" />
+                <CheckBox text="Hacimsel Aydınlatmayı Etkinleştir" id="checkBoxGodrays" />
+              </StyledGroupBox>
+              <Label text="Anizotropik filtre:" id="labelAnisotropicFiltering" />
+              <StyledGroupBox text="Gölgeler" id="groupBoxShadows">
+                <!-- Group "Shadows" -->
+                <Label text="Gölge Kalitesi ön ayarı:" id="labelShadowQuality" />
+                <Label text="Bulanıklık:" id="labelShadowBlurriness" />
+                <Label text="Solma mesafesi" id="labelShadowDistance" />
+                <Label text="Doku haritası çözünürlüğü:" id="labelShadowTextureResolution" />
+              </StyledGroupBox>
+              <StyledGroupBox text="Su" id="groupBoxWater">
+                <!-- Group "Water" -->
+                <Label text="Gölge filtresi:" id="labelWaterShadowFilter" />
+                <CheckBox text="Siyah/görünmez suyu düzeltin" id="checkBoxWaterFixSSRGlitch" />
+                <CheckBox text="Yüksek Çözünürlük Kullan" id="checkBoxWaterHiRes" />
+                <CheckBox text="Kırılmalar" id="checkBoxWaterRefractions" />
+                <CheckBox text="Yansımalar" id="checkBoxWaterReflections" />
+                <CheckBox text="Yer değiştirme" id="checkBoxWaterDisplacement" />
+              </StyledGroupBox>
+              <StyledGroupBox text="İşlem sonrası" id="groupBoxPostProcessing">
+                <!-- Group "Post-processing" -->
+                <CheckBox text="Yansımalar (SSR)" id="checkBoxSSReflections" />
+                <CheckBox text="Ortam Tıkanması (SSAO)" id="checkBoxAmbientOcclusion" />
+                <CheckBox text="Hareket Bulanıklığı" id="checkBoxMotionBlur" />
+                <CheckBox text="Radyal Bulanıklaştırma" id="checkBoxRadialBlur" />
+                <CheckBox text="Mercek Parlaması" id="checkBoxLensFlare" />
+              </StyledGroupBox>
+            </StyledGroupBox>
+            <StyledGroupBox text="Görüntü" id="groupBoxDisplay">
+              <!-- Group "Display" -->
+              <CheckBox text="5:4 ve 4:3 çözünürlükler için HUD'yi düzeltin (kısmen)" id="checkBoxFixHUDFor5_4and4_3" />
+              <Button text="Çözünürlüğü tespit et" id="buttonDetectResolution" />
+              <Label text="Özel çözünürlük:" id="labelCustomResolution" />
+              <Label text="Çözünürlük:" id="labelResolution" />
+              <CheckBox text="Pencereyi en üstte tut" id="checkBoxTopMostWindow" />
+              <Label text="Ekran modu:" id="labelDisplayMode" />
+              <Label text="X" id="labelCustomResolutionSpacer" />
+            </StyledGroupBox>
+          </TabPage>
+          <TabPage text="Ses" id="tabPageAudio">
+            <!-- ********** Tab "Audio" ********** -->
+            <StyledGroupBox text="Ses" id="groupBoxAudio">
+              <!-- Group "Audio" -->
+              <CheckBox text="Sesi etkinleştir" id="checkBoxEnableAudio" />
+              <CheckBox text="Ana menüde müzik oynat" id="checkBoxMainMenuMusic" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Konuşma" id="groupBoxVoice">
+              <!-- Group "Voice" -->
+              <Label text="Sesli Sohbet Modu:" id="labelVoiceChatMode" />
+              <CheckBox text="Bas-Konuş'u Etkinleştir" id="checkBoxPushToTalk" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Ses Hacimi" id="groupBoxAudioVolume">
+              <!-- Group "Volume" -->
+              <Label text="Ana ses" id="labelVolumeMaster" />
+              <Label text="Sohbet" id="labelAudioChat" />
+              <Label text="Menü Müziği" id="labelAudiofVal0" />
+              <Label text="Pip-Boy Radyo" id="labelAudiofVal6" />
+              <Label text="Dünya Radyoları" id="labelAudiofVal1" />
+              <Label text="Ayak sesleri" id="labelAudiofVal5" />
+              <Label text="Konuşma" id="labelAudiofVal2" />
+              <Label text="Efektler" id="labelAudiofVal4" />
+              <Label text="Müzik" id="labelAudiofVal3" />
+            </StyledGroupBox>
+          </TabPage>
+          <TabPage text="Controls" id="tabPageControls">
+            <!-- ********** Tab "Controls" ********** -->
+            <StyledGroupBox text="Gamepad" id="groupBoxGamepad">
+              <!-- Group "Gamepad" -->
+              <CheckBox text="Nişan Alma Yardımını etkinleştir" id="checkBoxAimAssist" />
+              <CheckBox text="Oyun kumandası titreşimini etkinleştir" id="checkBoxGamepadRumble" />
+              <CheckBox text="Oyun kumandasını etkinleştir" id="checkBoxGamepadEnabled" />
+              <Label text="Dikey hassasiyet" id="labelGamepadSensitivityY" />
+              <Label text="Yatay hassasiyet" id="labelGamepadSensitivityX" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Fare" id="groupBoxMouse">
+              <!-- Group "Mouse" -->
+              <CheckBox text="X (yatay)'i Ters Çevir" id="checkBoxMouseInvertX" />
+              <CheckBox text="Y (dikey)'yi Ters Çevir" id="checkBoxMouseInvertY" />
+              <CheckBox text="Hedef hassasiyetini düzeltin" id="checkBoxFixAimSensitivity" />
+              <CheckBox text="Farenin yatay/dikey hassasiyetini eşleştirin" id="checkBoxFixMouseSensitivity" />
+              <Label text="Dikey hassasiyet" id="labelMouseSensitivityY" />
+              <Label text="Yatay hassasiyet" id="labelMouseSensitivityX" />
+            </StyledGroupBox>
+          </TabPage>
+          <TabPage text="Kamera" id="tabPageCamera">
+            <!-- ********** Tab "Camera" ********** -->
+            <StyledGroupBox text="Kamera pozisyonu (Deneysel)" id="groupBoxCameraPosition">
+              <!-- Group "Camera position (Experimental)" -->
+              <StyledGroupBox text="Yakın dövüş kamera konumu" id="groupBoxMeleeCombatCameraPosition">
+                <!-- Group "Melee combat camera position" -->
+                <Label text="Daha İleri/Yakın (fOverShoulderMeleeCombatAddY)" id="labelfOverShoulderMeleeCombatAddY" />
+                <Label text="Sol/Sağ (fOverShoulderMeleeCombatPosX)" id="labelfOverShoulderMeleeCombatPosX" />
+                <Label text="Aşağı/Yukarı (fOverShoulderMeleeCombatPosZ)" id="labelfOverShoulderMeleeCombatPosZ" />
+              </StyledGroupBox>
+              <StyledGroupBox text="Savaş kamera pozisyonu" id="groupBoxCombatCameraPosition">
+                <!-- Group "Combat camera position" -->
+                <Label text="Daha İleri/Yakın (fOverShoulderCombatAddY)" id="labelfOverShoulderCombatAddY" />
+                <Label text="Sol/Sağ (fOverShoulderCombatPosX)" id="labelfOverShoulderCombatPosX" />
+                <Label text="Aşağı/Yukarı (fOverShoulderCombatPosZ)" id="labelfOverShoulderCombatPosZ" />
+              </StyledGroupBox>
+              <Button text="Sıfırla" id="buttonCameraPositionReset" />
+              <CheckBox text="bApplyCameraNodeAnimations" id="checkBoxbApplyCameraNodeAnimations" />
+              <StyledGroupBox text="Silahsız kamera pozisyonu" id="groupBoxUnarmedCameraPosition">
+                <!-- Group "Unarmed camera position" -->
+                <Label text="Sol/Sağ (fOverShoulderPosX)" id="labelfOverShoulderPosX" />
+                <Label text="Aşağı/Yukarı (fOverShoulderPosZ)" id="labelfOverShoulderPosZ" />
+              </StyledGroupBox>
+            </StyledGroupBox>
+            <StyledGroupBox text="Daha fazla Görüş Alanı ayarlaması" id="groupBoxFOVMore">
+              <!-- Group "More Field of View tweaks" -->
+              <Label text="3. kişi FOV'u hedefliyor:" id="labelADSFOV" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Fotoğraf modu seçenekleri" id="groupBoxSelfieCamera">
+              <!-- Group "Photomode options" -->
+              <Label text="Dönme hızı:" id="labelPhotomodeRotationSpeed" />
+              <Label text="Menzil limiti:" id="labelPhotomodeRange" />
+              <Label text="Çeviri hızı:" id="labelPhotomodeTranslationSpeed" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Boşta iken kamera(Deneysel)" id="groupBoxIdleCamera">
+              <!-- Group "Idle camera (Experimental)" -->
+              <CheckBox text="Otomatik makyaj modunu zorla" id="checkBoxForceVanityMode" />
+              <CheckBox text="Aktif değilken kameranın dönmesini etkinleştir" id="checkBoxVanityMode" />
+            </StyledGroupBox>
+            <StyledGroupBox text="3. kişide kamera mesafesi" id="groupBoxCameraDistance">
+              <!-- Group "Camera distance in 3rd person" -->
+              <Label text="Uzaklaştırma mesafesi:" id="labelPitchZoomOutMaxDist" />
+              <Label text="Maksimum:" id="labelCameraDistanceMaximum" />
+              <Label text="Minimum:" id="labelCameraDistanceMinimum" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Görüş alanı" id="groupBoxFieldOfView">
+              <!-- Group "Field of View" -->
+            </StyledGroupBox>
+          </TabPage>
+          <TabPage text="Bethesda.net" id="tabPageLogin">
+            <!-- ********** Tab "Bethesda.net" ********** -->
+            <StyledGroupBox text="Profiller" id="groupBoxLoginProfiles">
+              <!-- Group "Profiles" -->
+              <RadioButton text="Hiçbiri" id="radioButtonAccountNone" />
+              <RadioButton text="Hesap #1" id="radioButtonAccount1" />
+              <RadioButton text="Hesap #16" id="radioButtonAccount16" />
+              <RadioButton text="Hesap #2" id="radioButtonAccount2" />
+              <RadioButton text="Hesap #15" id="radioButtonAccount15" />
+              <RadioButton text="Hesap #3" id="radioButtonAccount3" />
+              <RadioButton text="Hesap #14" id="radioButtonAccount14" />
+              <RadioButton text="Hesap #4" id="radioButtonAccount4" />
+              <RadioButton text="Hesap #13" id="radioButtonAccount13" />
+              <RadioButton text="Hesap #5" id="radioButtonAccount5" />
+              <RadioButton text="Hesap #12" id="radioButtonAccount12" />
+              <RadioButton text="Hesap #6" id="radioButtonAccount6" />
+              <RadioButton text="Hesap #11" id="radioButtonAccount11" />
+              <RadioButton text="Hesap #7" id="radioButtonAccount7" />
+              <RadioButton text="Hesap #10" id="radioButtonAccount10" />
+              <RadioButton text="Hesap #8" id="radioButtonAccount8" />
+              <RadioButton text="Hesap #9" id="radioButtonAccount9" />
+            </StyledGroupBox>
+            <StyledGroupBox text="Bethesda.net'e giriş yapın" id="groupBoxLogin">
+              <!-- Group "Login with Bethesda.net" -->
+              <CheckBox text="Otomatik olarak oturum aç" id="checkBoxAutoSignin" />
+              <CheckBox text="Steam'i Etkinleştir" id="checkBoxEnableSteam" />
+              <CheckBox text="Şifreyi göster" id="checkBoxShowPassword" />
+              <Label text="Şifre:" id="labelPassword" />
+              <Label text="Kullanıcı Adı:" id="labelUserName" />
+            </StyledGroupBox>
+          </TabPage>
+        </StyledTabControl>
+      </UserControlTweaks>
+      <UserControlPipboy id="UserControlPipboy">
+        <Panel id="panel1">
+          <StyledTabControl id="tabControlPipboy">
+            <TabPage text="Pip-Boy" id="tabPagePipboyColor">
+              <!-- ********** Tab "Pip-Boy" ********** -->
+              <Label text="HEX" id="labelPipboyHEX" />
+              <Label text="Ön izleme" id="labelPreviewPipboy" />
+              <Label text="Önizleme yalnızca bir tahmindir,\nbu nedenle oyunda tam olarak böyle görünmeyebilir." id="labelPipboyColorPreviewNotice" />
+              <Button text="Sıfırla" id="buttonColorResetPipboy" />
+              <Button text="Renk seç" id="buttonColorPickPipboy" />
+              <Label text="Pip-Boy Rengi" id="labelPipboyColor" />
+            </TabPage>
+            <TabPage text="Hızlı Pip-Boy" id="tabPageQuickboyColor">
+              <!-- ********** Tab "Quick-Boy" ********** -->
+              <Label text="HEX" id="labelQuickboyHEX" />
+              <Label text="Ön izleme" id="labelPreviewQuickboy" />
+              <Label text="Önizleme yalnızca bir tahmindir,\nbu nedenle oyunda tam olarak böyle görünmeyebilir." id="labelQuickboyColorPreviewNotice" />
+              <Button text="Renk seç" id="buttonColorPickQuickboy" />
+              <Button text="Sıfırla" id="buttonColorResetQuickboy" />
+              <Label text="Hızlı Pip-Boy Rengi" id="labelQuickboyColor" />
+            </TabPage>
+            <TabPage text="Power Armor" id="tabPagePowerArmorColor">
+              <!-- ********** Tab "Power Armor" ********** -->
+              <Label text="HEX" id="labelPAColorHEX" />
+              <Label text="Ön izleme" id="labelPreviewPA" />
+              <Label text="Önizleme yalnızca bir tahmindir,\nbu nedenle oyunda tam olarak böyle görünmeyebilir." id="labelPAColorPreviewNotice" />
+              <Label text="Power Armor Rengi" id="labelPowerArmorColor" />
+              <Button text="Renk seç" id="buttonColorPickPAPipboy" />
+              <Button text="Sıfırla" id="buttonColorResetPAPipboy" />
+            </TabPage>
+          </StyledTabControl>
+          <Panel id="panelPipboyPresets">
+            <Button text="Yemyeşil Tato" id="buttonPresetTato" />
+            <Button text="Sakinleştirici Lavanta" id="buttonButtonPresetLavendar" />
+            <Button text="Power Armor varsayılan rengi" id="buttonPresetFo76PPColor" />
+            <Button text="Hızlı Pip-Boy varsayılan rengi" id="buttonPresetFo76QB" />
+            <Button text="Parlak Beyaz" id="buttonPresetWhite" />
+            <Label text="Ön ayarlar" id="labelPresets" />
+            <Button text="Klasik Mavi" id="buttonPresetFo3Blue" />
+            <Button text="Başkent Çorak Yeşili" id="buttonPresetFo3Green" />
+            <Button text="İngiliz Milletler Topluluğu Yeşili" id="buttonPresetFo4Green" />
+            <Button text="Klasik Beyaz" id="buttonPresetFo3White" />
+            <Button text="Mojave Çorak Toprak Kehribarı" id="buttonPresetFoNVAmber" />
+            <Button text="Appalachia Yeşili" id="buttonPresetFo76Green" />
+          </Panel>
+        </Panel>
+        <Panel id="panelPipboyOther">
+          <LinkLabel text="Varsayılana sıfırla" id="linkLabelPipboyTargetReset" />
+          <Label text="Çözünürlük" id="labelPipboyResolution" />
+          <LinkLabel text="Önerilen çözünürlüğü ayarla" id="linkLabelPipboyTargetSetRecommended" />
+          <RadioButton text="Hızlı Pip-Boy'u Kullan" id="radioButtonQuickboy" />
+          <Label text="Bu ayarlar hem Pip-Boy'u hem de Hızlı Pip-Boy'u etkiler." id="labelPipboyResolutionSideNote" />
+          <Label text="Mod" id="labelPipboyMode" />
+          <RadioButton text="Pip-Boy'u Kullan" id="radioButtonPipboy" />
+        </Panel>
+        <Label text="Pip-Boy Özelleştirme" id="labelPipboyTitle" />
+      </UserControlPipboy>
+      <UserControlGallery id="UserControlGallery">
+        <Panel id="panelGalleryOptions">
+          <StyledGroupBox text="Seçenekler" id="groupBoxScreenshotOptions">
+            <!-- Group "Options" -->
+            <Button text="Küçük resimleri sil" id="buttonGalleryDeleteThumbnails" />
+            <CheckBox text="Alt klasörleri yinelemeli olarak ara" id="checkBoxGallerySearchRecursively" />
+            <Label text="Ek yollar (yeni satırla ayrılmış):" id="labelGalleryAdditionalPaths" />
+            <Label text="Ekran görüntüsü dizini:" id="labelScreenshotIndex" />
+          </StyledGroupBox>
+        </Panel>
+        <Label text="Galeri" id="labelGalleryTitle" />
+        <Panel id="panelGallery">
+          <Label text="&quot;Galeriyi yenile&quot;ye tıklayın; Ekran görüntülerini ve fotoğrafları görüntülemek için sağ üst köşede." id="labelGalleryTip" />
+        </Panel>
+      </UserControlGallery>
+      <UserControlCustom id="UserControlCustom">
+        <Label text="Burada yazılan her şey *.ini dosyalarındaki ayarların üzerine yazılacaktır." id="labelCustomDesc" />
+        <Label text="Özel *.ini ayarları" id="labelCustomTitle" />
+        <Button text="Kayıt*" id="buttonCustomSave" />
+        <Label text="Dosyadaki satırların üzerine yaz:" id="labelCustomFile" />
+      </UserControlCustom>
+      <UserControlSettings id="UserControlSettings">
+        <Panel id="panel2">
+          <Label text="Tüm öğelerin temasının doğru şekilde belirlenmesi için yeniden başlatma gerekiyor." id="labelThemeExpl" />
+          <RadioButton text="Sistem" id="radioButtonRespectSystemTheme" />
+          <RadioButton text="Karanlık" id="radioButtonDarkTheme" />
+          <RadioButton text="Aydınlık" id="radioButtonLightTheme" />
+          <Label text="Tema:" id="labelTheme" />
+          <Label text="Dış görünüş" id="labelAppearance" />
+        </Panel>
+        <Panel id="panel1">
+          <Label text="Bildirimler" id="labelSettingsNotifications" />
+          <CheckBox text="Bildirimleri göster" id="checkBoxShowNotifications">
+            <Tooltip>Bu seçeneği devre dışı bıraktığınızda bildirimler devre dışı bırakılır, ancak önemli mesajları (az ya da çok) kaçırabilirsiniz.</Tooltip>
+          </CheckBox>
+          <CheckBox text="Bildirim sesini çal" id="checkBoxPlayNotificationSound" />
+        </Panel>
+        <Panel id="panelSettingsProfile">
+          <LinkLabel text="Profillere git →" id="linkLabelOpenProfileEditor" />
+          <Label text="Profil ayarlarını mı arıyorsunuz (oyun yolu, oyun sürümü vb.)?" id="labelSettingsProfileNotice" />
+          <Label text="Profil" id="labelSettingsProfiles" />
+        </Panel>
+        <Panel id="panelSettingsPaths">
+          <Label text="Yollar" id="labelSettingsPaths" />
+          <Label text="7z.exe yolu:" id="labelSevenZipPath" />
+          <Button text="..." id="buttonPickArchiveTwoPath" />
+          <Label text="Archive2.exe yolu:" id="labelArchiveTwoPath" />
+          <Button text="..." id="buttonPickSevenZipPath" />
+          <Label text="Programlar" id="labelSettingsPrograms" />
+          <Label text="Mod yöneticisi" id="labelSettingsModManager" />
+          <Label text="İndirilenler klasörü:" id="labelDownloadsPath" />
+          <Button text="..." id="buttonPickDownloadsPath" />
+        </Panel>
+        <Panel id="panelSettingsNWMode">
+          <Label text="Nükleer Kış seçenekleri (kullanım dışı)" id="labelSettingsNuclearWinterOptions" />
+          <CheckBox text="Eklenmiş *.dll dosyalarını yeniden adlandırın" id="checkBoxNWRenameDLL" />
+          <CheckBox text="Etkinleştirildiğinde modları otomatik olarak kaldır" id="checkBoxNWAutoDisableMods" />
+          <Label text="*.dll seçenekleri:" id="labelNWdlloptions" />
+          <Label text="Mod seçenekleri:" id="labelNWmodoptions" />
+          <CheckBox text="Devre dışı bırakıldığında modları otomatik olarak konuşlandır" id="checkBoxNWAutoDeployMods" />
+          <Label text="Geçiş modu:" id="labelToggleNW" />
+          <StyledButton text="Nükleer Kış" id="buttonNWMode" />
+        </Panel>
+        <Panel id="panelSettingsOptions">
+          <Label text="Seçenekler" id="labelSettingsOptions" />
+          <CheckBox text="*.ini dosyalarını salt okunur yap" id="checkBoxReadOnly" />
+          <CheckBox text="&quot;Mod Yöneticisi İndirme&quot; ile ilişkilendirin bağlantılar" id="checkBoxHandleNXMLinks" />
+        </Panel>
+        <Panel id="panelSettingsBehavior">
+          <CheckBox text="Daha yeni bir çeviri indirilmeye hazır olduğunda bilgilendir" id="checkBoxNotifyOnTranslationUpdate" />
+          <CheckBox text="Değişiklikleri kaydetmeden önce *.ini dosyalarının yedeğini alın." id="checkBoxMakeBackups" />
+          <Label text="Davranış" id="labelSettingsBehavior" />
+          <CheckBox text="Araç kapatıldığında veya oyun başlatıldığında değişiklikleri otomatik olarak uygula" id="checkBoxAutoApply" />
+          <CheckBox text="Oyun başlatıldığında aracı kapatın" id="checkBoxQuitOnGameLaunch" />
+          <CheckBox text="Güncellemeleri kontrol etme" id="checkBoxIgnoreUpdates" />
+        </Panel>
+        <Panel id="panelSettingsLocalization">
+          <Label text="Çeviriler için güncellemeler mevcut.\nBunları edinmek için indirme düğmesini tıklayın." id="labelTranslationsUpdateAvailable" />
+          <Label text="Yerelleştirme" id="labelSettingsLocalization" />
+          <Label text="Dil:" id="labelLanguage" />
+          <Button id="buttonDownloadLanguages">
+            <Tooltip>Çevirileri indir</Tooltip>
+          </Button>
+          <Button id="buttonRefreshLanguage">
+            <Tooltip>Etkin çeviriyi yenile</Tooltip>
+          </Button>
+          <Label text="Bu çeviri eski.\nBazı öğeler henüz çevrilmemiş olabilir." id="labelOutdatedLanguage" />
+        </Panel>
+        <Label text="Uygulama ayarları" id="labelSettingsTitle" />
+      </UserControlSettings>
+      <UserControlNexusMods id="UserControlNexusMods">
+        <Panel id="panelManageNMProfile">
+          <FlowLayoutPanel id="flowPanelNMActions">
+            <Button text="Giriş yap" id="buttonNMLogin" />
+            <Button text="Anahtarla giriş yap" id="buttonNMLoginManually" />
+            <Button text="Çıkış Yap" id="buttonNWLogout" />
+            <Button text="Profili Güncelle" id="buttonNMUpdateProfile" />
+            <Button text="Önbelleği sil" id="buttonNWDeleteCache" />
+          </FlowLayoutPanel>
+          <LinkLabel text="Giriş çalışmıyor mu? Bunun yerine API anahtarınızı kullanmak için burayı tıklayın." id="linkLabelEnableAPIKey" />
+          <LinkLabel text="API anahtarıyla nasıl giriş yaparım?" id="linkLabelAPIKeyHelp" />
+          <Label text="API Anahtarı" id="labelAPIKey" />
+          <CheckBox text="API anahtarını göster" id="checkBoxShowAPIKey" />
+          <Label text="Eylemler" id="labelNexusModsActions" />
+          <CheckBox text="Küçük resimleri indir" id="checkBoxNMDownloadThumbnails" />
+          <Label text="Seçenekler" id="labelNMOptions" />
+          <CheckBox text="Profili otomatik olarak güncelle" id="checkBoxNMUpdateProfile" />
+        </Panel>
+        <Panel id="panelNMProfile">
+          <Label text="Giriş yapmadınız." id="labelNMNotLoggedIn" />
+          <Label text="Kullanıcı-ID:" id="labelNMDescUserID" />
+          <Label text="Saatlik oran sınırı:" id="labelNMDescHourlyRateLimit" />
+          <Label text="Üyelik:" id="labelNMDescMembership" />
+          <Label text="Asla" id="labelNMRateLimitReset" />
+          <Label text="Hız sınırı sıfırlama:" id="labelNMDescLimitReset" />
+          <Label text="Günlük oran sınırı:" id="labelNMDescDailyRateLimit" />
+        </Panel>
+        <Label text="NexusMods Entegrasyonu" id="labelNexusTitle" />
+      </UserControlNexusMods>
+      <UserControlProfiles id="UserControlProfiles">
+        <TabControlWithoutHeader id="tabControl">
+          <TabPage text="Seçim" id="tabPageSelect">
+            <!-- ********** Tab "Select" ********** -->
+            <Label text="Profiller" id="labelSelectTitle" />
+            <Button text="Profili Düzenle" id="buttonEditProfile" />
+            <Button text="Profil Sil" id="buttonDeleteProfile" />
+            <ListView id="listViewGameInstances">
+              <Column>Oyun</Column>
+            </ListView>
+            <Button text="Profil Ekle" id="buttonAddProfile" />
+          </TabPage>
+          <TabPage text="Düzenle" id="tabPageEdit">
+            <!-- ********** Tab "Edit" ********** -->
+            <LinkLabel text="Wiki makalesini göster" id="linkLabelProfilesHelp" />
+            <Label text="Profil Düzenle" id="labelEditTitle" />
+            <LinkLabel text="← Profili kaydedin ve seçime geri dönün" id="linkLabelNavigationBack" />
+            <Panel id="panelSettings">
+              <LinkLabel text="Mod dizin yolunu sıfırla" id="linkLabelResetModsPath" />
+              <Label text="Modların dizin yolu:" id="labelModsPath" />
+              <Button text="..." id="buttonPickModsPath" />
+              <LinkLabel text="Otomatik tespit etmeyi çalıştır" id="linkLabelAutoDetect" />
+              <CheckBox text="Daha fazla seçenek göster" id="checkBoxMoreOptions" />
+              <Label text="Oyun dizin yolu:" id="labelGamePath" />
+              <Panel id="panelAdvancedOptions">
+                <Label text="*.ini dizin yolu:" id="labelIniPath" />
+                <Button text="..." id="buttonPickIniPath" />
+                <Label text="Gelişmiş seçenekler" id="labelProfileAdvancedOptions" />
+                <Label text="URL'yi başlat:" id="labelLaunchURL" />
+                <Label text="Fallout 76, Xbox uygulaması aracılığıyla yüklendiğinde doğrudan çalıştırılamaz." id="labelLaunchOptionMSStoreNotice" />
+                <Label text="Başlatma ayarları" id="labelProfileLaunchOptions" />
+                <Label text="Parametreler:" id="labelParameters" />
+                <RadioButton text="&quot;Fallout76.exe&quot; dosyasını çalıştırın direkt olarak" id="radioButtonLaunchViaExecutable" />
+                <RadioButton text="Steam / Xbox aracılığıyla başlatın (önerilir)" id="radioButtonLaunchViaLink" />
+                <Label text="Çalıştırılabilir:" id="labelExecutable" />
+                <Label text="*.ini öneki:" id="labelIniPrefix" />
+              </Panel>
+              <Label text="Oyun sürümü:" id="labelGameEdition" />
+              <Label text="Profil adı:" id="labelProfileName" />
+              <Button text="..." id="buttonPickGamePath" />
+            </Panel>
+          </TabPage>
+        </TabControlWithoutHeader>
+      </UserControlProfiles>
+    </ViewControl>
+    <UserControlSideNav id="userControlSideNav">
+      <StyledButton text="NexusMods" id="buttonNexusMods" />
+      <StyledButton text="Özel Tweaks" id="buttonCustom" />
+      <Label text="Seçili Profil:" id="labelGameEditionDesc" />
+      <StyledButton text="Ev" id="buttonHome" />
+      <StyledButton text="Galeri" id="buttonGallery" />
+      <StyledButton text="Pip-Boy" id="buttonPipboy" />
+      <StyledButton text="Tweaks" id="buttonTweaks" />
+      <StyledButton text="Araştır" id="buttonBrowse" />
+      <StyledButton text="Ayarlar" id="buttonSettings" />
+      <StyledButton text="Modlar" id="buttonMods" />
+      <StyledButton text="Güncelleme" id="buttonUpdate" />
+      <StyledButton text="Uygula" id="buttonApply" />
+      <StyledButton text="Oyna" id="buttonPlay" />
+      <Label text="Profil" id="labelProfile" />
+      <Label text="Hızlı Yapılandırma" id="labelLogo" />
+    </UserControlSideNav>
+    <ContextMenuStrip id="contextMenuStrip1">
+      <ToolStripMenuItem text="Aç" id="openToolStripMenuItem" />
+      <ToolStripMenuItem text="Klasör Aç" id="openFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Kes" id="cutToolStripMenuItem" />
+      <ToolStripMenuItem text="Kopyala" id="copyToolStripMenuItem" />
+      <ToolStripMenuItem text="Sil" id="deleteToolStripMenuItem" />
+    </ContextMenuStrip>
+    <ContextMenuStrip id="contextMenuStripBrowse">
+      <ToolStripMenuItem text="Oyun kurulum klasörü" id="gameFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Oyun yapılandırma klasörü" id="gamesConfigurationFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Araç kurulum klasörü" id="toolInstallationFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Araç yapılandırma klasörü" id="toolConfigurationFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Araç diller klasörü" id="toolLanguagesFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Steam ekran görüntüsü klasörü" id="steamScreenshotFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Oyun fotoğrafları klasörü" id="gamePhotosFolderToolStripMenuItem" />
+      <ToolStripMenuItem text="Fallout76.ini'yi düzenleyin" id="editFallout76iniToolStripMenuItem" />
+      <ToolStripMenuItem text="Fallout76Prefs.ini'yi düzenleyin" id="editFallout76PrefsiniToolStripMenuItem" />
+      <ToolStripMenuItem text="Fallout76Custom.ini'yi düzenleyin" id="editFallout76CustominiToolStripMenuItem" />
+    </ContextMenuStrip>
+    <ContextMenuStrip id="contextMenuStripOverallQualityPresets">
+      <ToolStripMenuItem text="Grafik ön ayarları" id="toolStripMenuItem1" />
+      <ToolStripMenuItem text="Düşük" id="lowToolStripMenuItem" />
+      <ToolStripMenuItem text="Orta" id="mediumToolStripMenuItem" />
+      <ToolStripMenuItem text="Yüksek" id="highToolStripMenuItem" />
+      <ToolStripMenuItem text="Çok Yüksek" id="ultraToolStripMenuItem" />
+      <ToolStripMenuItem text="İptal" id="cancelToolStripMenuItem" />
+    </ContextMenuStrip>
+  </Form1>
+</Language>
