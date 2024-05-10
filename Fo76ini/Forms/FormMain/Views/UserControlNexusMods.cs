@@ -168,12 +168,20 @@ namespace Fo76ini.Forms.FormMain.Tabs
             if (NexusMods.User.ProfilePictureFileName != null &&
                 File.Exists(NexusMods.User.ProfilePictureFilePath))
             {
-                Bitmap bitmap;
-                using (Image img = Image.FromFile(NexusMods.User.ProfilePictureFilePath))
+                try
                 {
-                    bitmap = new Bitmap(img);
-                    this.pictureBoxNMProfilePicture.Image = bitmap;
-                    //this.pictureBoxNMProfilePicture.Image = Image.FromFile(NexusMods.User.ProfilePictureFilePath);
+                    using (FileStream fs = new FileStream(NexusMods.User.ProfilePictureFilePath, FileMode.Open, FileAccess.Read))
+                    {
+                        using (Image img = Image.FromStream(fs))
+                        {
+                            this.pictureBoxNMProfilePicture.Image = new Bitmap(img);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle any exceptions that might occur during image loading
+                    Console.WriteLine("Error loading profile picture: " + ex.Message);
                 }
             }
 
