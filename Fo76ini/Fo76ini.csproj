@@ -202,6 +202,33 @@
       <DependentUpon>FormIniError.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\IExposeComponents.cs" />
+    <Compile Include="Tweaks\Accessibility\AlternativeNoteViewBackgroundColorTweak.cs" />
+    <Compile Include="Tweaks\Accessibility\MessageWindowFadeAmountTweak.cs" />
+    <Compile Include="Tweaks\Accessibility\AlternativeNoteViewTextColorTweak.cs" />
+    <Compile Include="Tweaks\Accessibility\ScreenNarrationEnabledTweak.cs" />
+    <Compile Include="Tweaks\Accessibility\SingleButtonNotificationCancelTweak.cs" />
+    <Compile Include="Tweaks\Accessibility\SpeechToTextTweak.cs" />
+    <Compile Include="Tweaks\Accessibility\UseLargeEasyReadTextTweak.cs" />
+    <Compile Include="Tweaks\Accessibility\ShowAccessibilityScreenOnStartTweak.cs" />
+    <Compile Include="Tweaks\Accessibility\ScreenNarrationVoiceTypeTweak.cs" />
+    <Compile Include="Tweaks\Accessibility\MessageWindowFadeTimeTweak.cs" />
+    <Compile Include="Tweaks\Camera\EnableCameraShakeTweak.cs" />
+    <Compile Include="Tweaks\Camera\FreeCam\WorkshopStartAtPreviousFreeCameraLocationTweak.cs" />
+    <Compile Include="Tweaks\Camera\FreeCam\WorkshopFreeCameraControlsHoldToggleTweak.cs" />
+    <Compile Include="Tweaks\Camera\FreeCam\WorkshopStartInFreeCameraTweak.cs" />
+    <Compile Include="Tweaks\Camera\FreeCam\WorkshopFreeCameraTranslationSpeedTweak.cs" />
+    <Compile Include="Tweaks\Camera\FreeCam\WorkshopFreeCameraRotationSpeedTweak.cs" />
+    <Compile Include="Tweaks\General\Gameplay\AskOpenPerkCardPacksTweak.cs" />
+    <Compile Include="Tweaks\General\Gameplay\RejectSharedPerksEnabledTweak.cs" />
+    <Compile Include="Tweaks\General\Gameplay\VATSGrenadeMineTargetingModeTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Effects\EnableIntenseWeatherEffectsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Effects\EnableWeaponImpactEffectsTweak.cs" />
+    <Compile Include="Tweaks\Graphics\Effects\EnableMuzzleFlashesTweaks.cs" />
+    <Compile Include="Tweaks\Interface\EnableQuestTrackNotificationTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowCAMPWeatherTweak.cs" />
+    <Compile Include="Tweaks\Interface\AutoScrollPipboyItemStatsTweak.cs" />
+    <Compile Include="Tweaks\Interface\AdvancedModDescriptionsTweak.cs" />
+    <Compile Include="Tweaks\Interface\ShowOtherPlayersPingsTweak.cs" />
     <Compile Include="Utilities\StyleGenerator.cs" />
     <Compile Include="Forms\FormMain\Views\UserControlCustom.cs">
       <SubType>UserControl</SubType>
