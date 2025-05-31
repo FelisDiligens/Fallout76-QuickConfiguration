@@ -62,7 +62,7 @@ namespace Fo76ini.Profiles
         /// </summary>
         public void SetDefaultSettings(GameEdition edition)
         {
-            this.IniParentPath = IniFiles.DefaultParentPath;
+            this.IniParentPath = AutoDetectIniParentPath();
             this.IniPrefix = "Fallout76";
             this.ExecutableName = "Fallout76.exe";
             this.PreferredLaunchOption = LaunchOption.OpenURL;
@@ -312,11 +312,38 @@ namespace Fo76ini.Profiles
              * If it can't find the path, the user likely knows enough about their computer to find it themselves. Even if it's a bit inconvenient.
              */
 
+            // Search specific folders under Wine (Linux):
+            if (Utils.IsWine())
+            {
+                // Linux + Steam:
+                foreach (string path in Directory.EnumerateDirectories(@"Z:\home"))
+                {
+                    string steamPath = Path.Combine(path, @".local\share\Steam");
+                    string steamFlatpakPath = Path.Combine(path, @".var\app\com.valvesoftware.Steam\.steam\steam");
+                    string steamSnapPath = Path.Combine(path, @"snap\steam\common\.local\share\Steam");
+
+                    foreach (string path_ in new string[] { steamPath, steamFlatpakPath, steamSnapPath })
+                    {
+                        string gamePath = Path.Combine(path_, @"steamapps\common\Fallout76");
+                        if (GameInstance.ValidateGamePath(gamePath))
+                        {
+                            switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(gamePath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                            {
+                                case DialogResult.Yes:
+                                    return gamePath;
+                                case DialogResult.Cancel:
+                                    return null;
+                            }
+                        }
+                    }
+                }
+            }
+
             // Search every drive:
             foreach (DriveInfo d in DriveInfo.GetDrives())
             {
-                // Only search fixed drives:
-                if (d.DriveType != DriveType.Fixed)
+                // Only search fixed and removable drives (some users may store the game on an external hard drive):
+                if (d.DriveType != DriveType.Fixed && d.DriveType != DriveType.Removable)
                     continue;
 
                 // Search for "default" paths that are the most common:
@@ -347,19 +374,6 @@ namespace Fo76ini.Profiles
                 }
                 */
 
-                // Old Xbox default path
-                string xboxModifiablePath = Path.Combine(d.Name, @"Program Files\ModifiableWindowsApps\Fallout 76");
-                if (GameInstance.ValidateGamePath(xboxModifiablePath))
-                {
-                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(xboxModifiablePath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
-                    {
-                        case DialogResult.Yes:
-                            return xboxModifiablePath;
-                        case DialogResult.Cancel:
-                            return null;
-                    }
-                }
-
                 // New Xbox default path
                 string xboxDefaultPath = Path.Combine(d.Name, @"XboxGames\Fallout 76\Content");
                 if (GameInstance.ValidateGamePath(xboxDefaultPath))
@@ -368,6 +382,19 @@ namespace Fo76ini.Profiles
                     {
                         case DialogResult.Yes:
                             return xboxDefaultPath;
+                        case DialogResult.Cancel:
+                            return null;
+                    }
+                }
+
+                // Old Xbox default path
+                string xboxModifiablePath = Path.Combine(d.Name, @"Program Files\ModifiableWindowsApps\Fallout 76");
+                if (GameInstance.ValidateGamePath(xboxModifiablePath))
+                {
+                    switch (MsgBox.Get("gamePathAutoDetectPathFound").FormatText(xboxModifiablePath).Show(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                    {
+                        case DialogResult.Yes:
+                            return xboxModifiablePath;
                         case DialogResult.Cancel:
                             return null;
                     }
@@ -429,6 +456,81 @@ namespace Fo76ini.Profiles
             }
 
             return null;
+        }
+
+        public static string AutoDetectIniParentPath()
+        {
+            // Try to detect the correct ini folder under Wine if the folder doesn't exist where it's expected on Windows:
+            if (Utils.IsWine() && !File.Exists(Path.Combine(IniFiles.DefaultParentPath, "Fallout76.ini")))
+            {
+                // Linux + Steam + Proton:
+                try
+                {
+                    // We don't know the actual username, so search all subdirectories of /home:
+                    foreach (string userPath in Directory.EnumerateDirectories(@"Z:\home"))
+                    {
+                        // This assumes the user installed the native Steam package of their distro (deb / rpm / etc.):
+                        string iniParentPath = Path.Combine(userPath, @".local\share\Steam\steamapps\compatdata\1151340\pfx\c_drive\Users\steamuser\Documents\My Games\Fallout 76");
+                        if (Directory.Exists(iniParentPath))
+                        {
+                            return iniParentPath;
+                        }
+
+                        // This assumes the user installed the Steam flatpak package:
+                        iniParentPath = Path.Combine(userPath, @".var\app\com.valvesoftware.Steam\.steam\steam\steamapps\compatdata\1151340\pfx\c_drive\Users\steamuser\Documents\My Games\Fallout 76");
+                        if (Directory.Exists(iniParentPath))
+                        {
+                            return iniParentPath;
+                        }
+
+                        // This assumes the user installed the Steam snap package:
+                        iniParentPath = Path.Combine(userPath, @"snap\steam\common\.local\share\Steam\steamapps\compatdata\1151340\pfx\c_drive\Users\steamuser\Documents\My Games\Fallout 76");
+                        if (Directory.Exists(iniParentPath))
+                        {
+                            return iniParentPath;
+                        }
+                    }
+                }
+                catch { } // Ignore it if Directory.EnumerateDirectories can't find the folder.
+
+
+                // Search other drives:
+                foreach (DriveInfo d in DriveInfo.GetDrives())
+                {
+                    // Only search fixed and removable drives:
+                    if (d.DriveType != DriveType.Fixed && d.DriveType != DriveType.Removable)
+                        continue;
+
+                    // Don't search C: or Z: drives. The C: drive corresponds to a Wineprefix `c_drive` and Z: is usually mapped to the root directory `/`.
+                    if (d.Name == "C:" || d.Name == "Z:")
+                        continue;
+
+                    // Check if there's a compatdata folder on a separate drive:
+                    string iniParentPath = Path.Combine(d.Name, @"SteamLibrary\steamapps\compatdata\1151340\pfx\c_drive\Users\steamuser\Documents\My Games\Fallout 76");
+                    if (Directory.Exists(iniParentPath))
+                    {
+                        return iniParentPath;
+                    }
+                }
+
+                // macOS + CrossOver + Steam:
+                try
+                {
+                    // We don't know the actual username, so search all subdirectories of /Users:
+                    foreach (string userPath in Directory.EnumerateDirectories(@"Z:\Users"))
+                    {
+                        // This assumes the user installed Steam through CrossOver in a Bottle called `Steam`:
+                        string iniParentPath = Path.Combine(userPath, @"Library\Application Support\CrossOver\Bottles\Steam\drive_c\users\crossover\Documents\My Games\Fallout 76");
+                        if (Directory.Exists(iniParentPath))
+                        {
+                            return iniParentPath;
+                        }
+                    }
+                }
+                catch { } // Ignore it if Directory.EnumerateDirectories can't find the folder.
+            }
+
+            return IniFiles.DefaultParentPath;
         }
 
         public Bitmap Get24pxBitmap()
