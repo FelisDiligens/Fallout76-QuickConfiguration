@@ -335,38 +335,11 @@
             this.checkBoxShowAccessibilityScreenOnStart = new System.Windows.Forms.CheckBox();
             this.checkBoxSingleButtonNotificationCancel = new System.Windows.Forms.CheckBox();
             this.checkBoxScreenNarration = new System.Windows.Forms.CheckBox();
-            this.tabPageLogin = new System.Windows.Forms.TabPage();
-            this.groupBoxLoginProfiles = new Fo76ini.Controls.StyledGroupBox();
-            this.radioButtonAccountNone = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount1 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount16 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount2 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount15 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount3 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount14 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount4 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount13 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount5 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount12 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount6 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount11 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount7 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount10 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount8 = new System.Windows.Forms.RadioButton();
-            this.radioButtonAccount9 = new System.Windows.Forms.RadioButton();
-            this.groupBoxLogin = new Fo76ini.Controls.StyledGroupBox();
-            this.richTextBoxCredentialsExplanation = new System.Windows.Forms.RichTextBox();
-            this.checkBoxAutoSignin = new System.Windows.Forms.CheckBox();
-            this.checkBoxEnableSteam = new System.Windows.Forms.CheckBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.textBoxUserName = new System.Windows.Forms.TextBox();
-            this.checkBoxShowPassword = new System.Windows.Forms.CheckBox();
-            this.labelPassword = new System.Windows.Forms.Label();
-            this.labelUserName = new System.Windows.Forms.Label();
             this.labelTweaksDesc = new System.Windows.Forms.Label();
             this.labelTweaksTitle = new System.Windows.Forms.Label();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -462,9 +435,6 @@
             this.styledGroupBoxAccessibilityAccessibility.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMessageWindowVisibility)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMessageWindowFadeTime)).BeginInit();
-            this.tabPageLogin.SuspendLayout();
-            this.groupBoxLoginProfiles.SuspendLayout();
-            this.groupBoxLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlTweaks
@@ -481,7 +451,6 @@
             this.tabControlTweaks.Controls.Add(this.tabPageControls);
             this.tabControlTweaks.Controls.Add(this.tabPageCamera);
             this.tabControlTweaks.Controls.Add(this.tabPageAccessibility);
-            this.tabControlTweaks.Controls.Add(this.tabPageLogin);
             this.tabControlTweaks.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tabControlTweaks.Location = new System.Drawing.Point(15, 75);
             this.tabControlTweaks.MouseOverTabButtonBackColor = System.Drawing.Color.LightGray;
@@ -6890,345 +6859,6 @@
             this.checkBoxScreenNarration.Text = "Enable Screen Narration";
             this.checkBoxScreenNarration.UseVisualStyleBackColor = true;
             // 
-            // tabPageLogin
-            // 
-            this.tabPageLogin.AutoScroll = true;
-            this.tabPageLogin.BackColor = System.Drawing.Color.White;
-            this.tabPageLogin.Controls.Add(this.groupBoxLoginProfiles);
-            this.tabPageLogin.Controls.Add(this.groupBoxLogin);
-            this.tabPageLogin.Location = new System.Drawing.Point(4, 25);
-            this.tabPageLogin.Name = "tabPageLogin";
-            this.tabPageLogin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLogin.Size = new System.Drawing.Size(654, 473);
-            this.tabPageLogin.TabIndex = 5;
-            this.tabPageLogin.Text = "Bethesda.net";
-            // 
-            // groupBoxLoginProfiles
-            // 
-            this.groupBoxLoginProfiles.BackColor = System.Drawing.Color.White;
-            this.groupBoxLoginProfiles.BorderColor = System.Drawing.Color.Silver;
-            this.groupBoxLoginProfiles.BorderWidth = 1;
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccountNone);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount1);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount16);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount2);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount15);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount3);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount14);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount4);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount13);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount5);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount12);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount6);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount11);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount7);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount10);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount8);
-            this.groupBoxLoginProfiles.Controls.Add(this.radioButtonAccount9);
-            this.groupBoxLoginProfiles.Location = new System.Drawing.Point(9, 356);
-            this.groupBoxLoginProfiles.Name = "groupBoxLoginProfiles";
-            this.groupBoxLoginProfiles.Size = new System.Drawing.Size(400, 143);
-            this.groupBoxLoginProfiles.TabIndex = 1;
-            this.groupBoxLoginProfiles.TabStop = false;
-            this.groupBoxLoginProfiles.Text = "Profiles";
-            this.groupBoxLoginProfiles.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
-            this.groupBoxLoginProfiles.TitleBorderMargin = 6;
-            this.groupBoxLoginProfiles.TitleBorderPadding = 4;
-            this.groupBoxLoginProfiles.TitleForeColor = System.Drawing.Color.Black;
-            // 
-            // radioButtonAccountNone
-            // 
-            this.radioButtonAccountNone.AutoSize = true;
-            this.radioButtonAccountNone.Location = new System.Drawing.Point(8, 20);
-            this.radioButtonAccountNone.Name = "radioButtonAccountNone";
-            this.radioButtonAccountNone.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonAccountNone.TabIndex = 0;
-            this.radioButtonAccountNone.TabStop = true;
-            this.radioButtonAccountNone.Text = "None";
-            this.radioButtonAccountNone.UseVisualStyleBackColor = true;
-            this.radioButtonAccountNone.CheckedChanged += new System.EventHandler(this.radioButtonAccountNone_CheckedChanged);
-            // 
-            // radioButtonAccount1
-            // 
-            this.radioButtonAccount1.AutoSize = true;
-            this.radioButtonAccount1.Location = new System.Drawing.Point(8, 46);
-            this.radioButtonAccount1.Name = "radioButtonAccount1";
-            this.radioButtonAccount1.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount1.TabIndex = 1;
-            this.radioButtonAccount1.TabStop = true;
-            this.radioButtonAccount1.Text = "Account #1";
-            this.radioButtonAccount1.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount16
-            // 
-            this.radioButtonAccount16.AutoSize = true;
-            this.radioButtonAccount16.Location = new System.Drawing.Point(305, 115);
-            this.radioButtonAccount16.Name = "radioButtonAccount16";
-            this.radioButtonAccount16.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount16.TabIndex = 16;
-            this.radioButtonAccount16.TabStop = true;
-            this.radioButtonAccount16.Text = "Account #16";
-            this.radioButtonAccount16.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount2
-            // 
-            this.radioButtonAccount2.AutoSize = true;
-            this.radioButtonAccount2.Location = new System.Drawing.Point(107, 46);
-            this.radioButtonAccount2.Name = "radioButtonAccount2";
-            this.radioButtonAccount2.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount2.TabIndex = 2;
-            this.radioButtonAccount2.TabStop = true;
-            this.radioButtonAccount2.Text = "Account #2";
-            this.radioButtonAccount2.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount15
-            // 
-            this.radioButtonAccount15.AutoSize = true;
-            this.radioButtonAccount15.Location = new System.Drawing.Point(206, 115);
-            this.radioButtonAccount15.Name = "radioButtonAccount15";
-            this.radioButtonAccount15.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount15.TabIndex = 15;
-            this.radioButtonAccount15.TabStop = true;
-            this.radioButtonAccount15.Text = "Account #15";
-            this.radioButtonAccount15.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount3
-            // 
-            this.radioButtonAccount3.AutoSize = true;
-            this.radioButtonAccount3.Location = new System.Drawing.Point(206, 46);
-            this.radioButtonAccount3.Name = "radioButtonAccount3";
-            this.radioButtonAccount3.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount3.TabIndex = 3;
-            this.radioButtonAccount3.TabStop = true;
-            this.radioButtonAccount3.Text = "Account #3";
-            this.radioButtonAccount3.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount14
-            // 
-            this.radioButtonAccount14.AutoSize = true;
-            this.radioButtonAccount14.Location = new System.Drawing.Point(107, 115);
-            this.radioButtonAccount14.Name = "radioButtonAccount14";
-            this.radioButtonAccount14.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount14.TabIndex = 14;
-            this.radioButtonAccount14.TabStop = true;
-            this.radioButtonAccount14.Text = "Account #14";
-            this.radioButtonAccount14.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount4
-            // 
-            this.radioButtonAccount4.AutoSize = true;
-            this.radioButtonAccount4.Location = new System.Drawing.Point(305, 46);
-            this.radioButtonAccount4.Name = "radioButtonAccount4";
-            this.radioButtonAccount4.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount4.TabIndex = 4;
-            this.radioButtonAccount4.TabStop = true;
-            this.radioButtonAccount4.Text = "Account #4";
-            this.radioButtonAccount4.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount13
-            // 
-            this.radioButtonAccount13.AutoSize = true;
-            this.radioButtonAccount13.Location = new System.Drawing.Point(8, 115);
-            this.radioButtonAccount13.Name = "radioButtonAccount13";
-            this.radioButtonAccount13.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount13.TabIndex = 13;
-            this.radioButtonAccount13.TabStop = true;
-            this.radioButtonAccount13.Text = "Account #13";
-            this.radioButtonAccount13.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount5
-            // 
-            this.radioButtonAccount5.AutoSize = true;
-            this.radioButtonAccount5.Location = new System.Drawing.Point(8, 69);
-            this.radioButtonAccount5.Name = "radioButtonAccount5";
-            this.radioButtonAccount5.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount5.TabIndex = 5;
-            this.radioButtonAccount5.TabStop = true;
-            this.radioButtonAccount5.Text = "Account #5";
-            this.radioButtonAccount5.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount12
-            // 
-            this.radioButtonAccount12.AutoSize = true;
-            this.radioButtonAccount12.Location = new System.Drawing.Point(305, 92);
-            this.radioButtonAccount12.Name = "radioButtonAccount12";
-            this.radioButtonAccount12.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount12.TabIndex = 12;
-            this.radioButtonAccount12.TabStop = true;
-            this.radioButtonAccount12.Text = "Account #12";
-            this.radioButtonAccount12.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount6
-            // 
-            this.radioButtonAccount6.AutoSize = true;
-            this.radioButtonAccount6.Location = new System.Drawing.Point(107, 69);
-            this.radioButtonAccount6.Name = "radioButtonAccount6";
-            this.radioButtonAccount6.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount6.TabIndex = 6;
-            this.radioButtonAccount6.TabStop = true;
-            this.radioButtonAccount6.Text = "Account #6";
-            this.radioButtonAccount6.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount11
-            // 
-            this.radioButtonAccount11.AutoSize = true;
-            this.radioButtonAccount11.Location = new System.Drawing.Point(206, 92);
-            this.radioButtonAccount11.Name = "radioButtonAccount11";
-            this.radioButtonAccount11.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount11.TabIndex = 11;
-            this.radioButtonAccount11.TabStop = true;
-            this.radioButtonAccount11.Text = "Account #11";
-            this.radioButtonAccount11.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount7
-            // 
-            this.radioButtonAccount7.AutoSize = true;
-            this.radioButtonAccount7.Location = new System.Drawing.Point(206, 69);
-            this.radioButtonAccount7.Name = "radioButtonAccount7";
-            this.radioButtonAccount7.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount7.TabIndex = 7;
-            this.radioButtonAccount7.TabStop = true;
-            this.radioButtonAccount7.Text = "Account #7";
-            this.radioButtonAccount7.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount10
-            // 
-            this.radioButtonAccount10.AutoSize = true;
-            this.radioButtonAccount10.Location = new System.Drawing.Point(107, 92);
-            this.radioButtonAccount10.Name = "radioButtonAccount10";
-            this.radioButtonAccount10.Size = new System.Drawing.Size(87, 17);
-            this.radioButtonAccount10.TabIndex = 10;
-            this.radioButtonAccount10.TabStop = true;
-            this.radioButtonAccount10.Text = "Account #10";
-            this.radioButtonAccount10.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount8
-            // 
-            this.radioButtonAccount8.AutoSize = true;
-            this.radioButtonAccount8.Location = new System.Drawing.Point(305, 69);
-            this.radioButtonAccount8.Name = "radioButtonAccount8";
-            this.radioButtonAccount8.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount8.TabIndex = 8;
-            this.radioButtonAccount8.TabStop = true;
-            this.radioButtonAccount8.Text = "Account #8";
-            this.radioButtonAccount8.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAccount9
-            // 
-            this.radioButtonAccount9.AutoSize = true;
-            this.radioButtonAccount9.Location = new System.Drawing.Point(8, 92);
-            this.radioButtonAccount9.Name = "radioButtonAccount9";
-            this.radioButtonAccount9.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonAccount9.TabIndex = 9;
-            this.radioButtonAccount9.TabStop = true;
-            this.radioButtonAccount9.Text = "Account #9";
-            this.radioButtonAccount9.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxLogin
-            // 
-            this.groupBoxLogin.BackColor = System.Drawing.Color.White;
-            this.groupBoxLogin.BorderColor = System.Drawing.Color.Silver;
-            this.groupBoxLogin.BorderWidth = 1;
-            this.groupBoxLogin.Controls.Add(this.richTextBoxCredentialsExplanation);
-            this.groupBoxLogin.Controls.Add(this.checkBoxAutoSignin);
-            this.groupBoxLogin.Controls.Add(this.checkBoxEnableSteam);
-            this.groupBoxLogin.Controls.Add(this.textBoxPassword);
-            this.groupBoxLogin.Controls.Add(this.textBoxUserName);
-            this.groupBoxLogin.Controls.Add(this.checkBoxShowPassword);
-            this.groupBoxLogin.Controls.Add(this.labelPassword);
-            this.groupBoxLogin.Controls.Add(this.labelUserName);
-            this.groupBoxLogin.Location = new System.Drawing.Point(9, 9);
-            this.groupBoxLogin.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBoxLogin.Name = "groupBoxLogin";
-            this.groupBoxLogin.Size = new System.Drawing.Size(400, 338);
-            this.groupBoxLogin.TabIndex = 0;
-            this.groupBoxLogin.TabStop = false;
-            this.groupBoxLogin.Text = "Login with Bethesda.net";
-            this.groupBoxLogin.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
-            this.groupBoxLogin.TitleBorderMargin = 6;
-            this.groupBoxLogin.TitleBorderPadding = 4;
-            this.groupBoxLogin.TitleForeColor = System.Drawing.Color.Black;
-            // 
-            // richTextBoxCredentialsExplanation
-            // 
-            this.richTextBoxCredentialsExplanation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxCredentialsExplanation.Location = new System.Drawing.Point(6, 164);
-            this.richTextBoxCredentialsExplanation.Name = "richTextBoxCredentialsExplanation";
-            this.richTextBoxCredentialsExplanation.Size = new System.Drawing.Size(393, 172);
-            this.richTextBoxCredentialsExplanation.TabIndex = 7;
-            this.richTextBoxCredentialsExplanation.Text = "Placeholder";
-            // 
-            // checkBoxAutoSignin
-            // 
-            this.checkBoxAutoSignin.AutoSize = true;
-            this.checkBoxAutoSignin.Location = new System.Drawing.Point(12, 103);
-            this.checkBoxAutoSignin.Name = "checkBoxAutoSignin";
-            this.checkBoxAutoSignin.Size = new System.Drawing.Size(121, 17);
-            this.checkBoxAutoSignin.TabIndex = 5;
-            this.checkBoxAutoSignin.Text = "Automatically sign-in";
-            this.checkBoxAutoSignin.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxEnableSteam
-            // 
-            this.checkBoxEnableSteam.AutoSize = true;
-            this.checkBoxEnableSteam.Location = new System.Drawing.Point(12, 126);
-            this.checkBoxEnableSteam.Name = "checkBoxEnableSteam";
-            this.checkBoxEnableSteam.Size = new System.Drawing.Size(92, 17);
-            this.checkBoxEnableSteam.TabIndex = 6;
-            this.checkBoxEnableSteam.Text = "Enable Steam";
-            this.checkBoxEnableSteam.UseVisualStyleBackColor = true;
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPassword.Location = new System.Drawing.Point(92, 44);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PasswordChar = '•';
-            this.textBoxPassword.Size = new System.Drawing.Size(294, 20);
-            this.textBoxPassword.TabIndex = 3;
-            this.textBoxPassword.UseSystemPasswordChar = true;
-            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
-            // 
-            // textBoxUserName
-            // 
-            this.textBoxUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxUserName.Location = new System.Drawing.Point(92, 19);
-            this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(294, 20);
-            this.textBoxUserName.TabIndex = 1;
-            this.textBoxUserName.TextChanged += new System.EventHandler(this.textBoxUserName_TextChanged);
-            // 
-            // checkBoxShowPassword
-            // 
-            this.checkBoxShowPassword.AutoSize = true;
-            this.checkBoxShowPassword.Location = new System.Drawing.Point(92, 70);
-            this.checkBoxShowPassword.Name = "checkBoxShowPassword";
-            this.checkBoxShowPassword.Size = new System.Drawing.Size(101, 17);
-            this.checkBoxShowPassword.TabIndex = 4;
-            this.checkBoxShowPassword.Text = "Show password";
-            this.checkBoxShowPassword.UseVisualStyleBackColor = true;
-            this.checkBoxShowPassword.CheckedChanged += new System.EventHandler(this.checkBoxShowPassword_CheckedChanged);
-            // 
-            // labelPassword
-            // 
-            this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(9, 47);
-            this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(56, 13);
-            this.labelPassword.TabIndex = 2;
-            this.labelPassword.Text = "Password:";
-            // 
-            // labelUserName
-            // 
-            this.labelUserName.AutoSize = true;
-            this.labelUserName.Location = new System.Drawing.Point(9, 22);
-            this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(61, 13);
-            this.labelUserName.TabIndex = 0;
-            this.labelUserName.Text = "User name:";
-            // 
             // labelTweaksDesc
             // 
             this.labelTweaksDesc.AutoSize = true;
@@ -7402,11 +7032,6 @@
             this.styledGroupBoxAccessibilityAccessibility.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMessageWindowVisibility)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMessageWindowFadeTime)).EndInit();
-            this.tabPageLogin.ResumeLayout(false);
-            this.groupBoxLoginProfiles.ResumeLayout(false);
-            this.groupBoxLoginProfiles.PerformLayout();
-            this.groupBoxLogin.ResumeLayout(false);
-            this.groupBoxLogin.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7433,33 +7058,6 @@
         private System.Windows.Forms.CheckBox checkBoxFixMouseSensitivity;
         private System.Windows.Forms.Label labelTweaksDesc;
         private System.Windows.Forms.Label labelTweaksTitle;
-        private System.Windows.Forms.TabPage tabPageLogin;
-        private Fo76ini.Controls.StyledGroupBox groupBoxLogin;
-        private Fo76ini.Controls.StyledGroupBox groupBoxLoginProfiles;
-        private System.Windows.Forms.RadioButton radioButtonAccountNone;
-        private System.Windows.Forms.RadioButton radioButtonAccount1;
-        private System.Windows.Forms.RadioButton radioButtonAccount16;
-        private System.Windows.Forms.RadioButton radioButtonAccount2;
-        private System.Windows.Forms.RadioButton radioButtonAccount15;
-        private System.Windows.Forms.RadioButton radioButtonAccount3;
-        private System.Windows.Forms.RadioButton radioButtonAccount14;
-        private System.Windows.Forms.RadioButton radioButtonAccount4;
-        private System.Windows.Forms.RadioButton radioButtonAccount13;
-        private System.Windows.Forms.RadioButton radioButtonAccount5;
-        private System.Windows.Forms.RadioButton radioButtonAccount12;
-        private System.Windows.Forms.RadioButton radioButtonAccount6;
-        private System.Windows.Forms.RadioButton radioButtonAccount11;
-        private System.Windows.Forms.RadioButton radioButtonAccount7;
-        private System.Windows.Forms.RadioButton radioButtonAccount10;
-        private System.Windows.Forms.RadioButton radioButtonAccount8;
-        private System.Windows.Forms.RadioButton radioButtonAccount9;
-        private System.Windows.Forms.CheckBox checkBoxAutoSignin;
-        private System.Windows.Forms.CheckBox checkBoxEnableSteam;
-        private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.TextBox textBoxUserName;
-        private System.Windows.Forms.CheckBox checkBoxShowPassword;
-        private System.Windows.Forms.Label labelPassword;
-        private System.Windows.Forms.Label labelUserName;
         private Fo76ini.Controls.StyledGroupBox groupBoxLoading;
         private System.Windows.Forms.CheckBox checkBoxFasterFadeIn;
         private System.Windows.Forms.CheckBox checkBoxShowFloatingQuestText;
@@ -7661,7 +7259,6 @@
         private System.Windows.Forms.ComboBox comboBoxHighlightCorpses;
         private Fo76ini.Controls.StyledGroupBox groupBoxFloatingQuestMarkers;
         private System.Windows.Forms.CheckBox checkBoxAimAssist;
-        private System.Windows.Forms.RichTextBox richTextBoxCredentialsExplanation;
         private Fo76ini.Controls.StyledGroupBox groupBoxIdleCamera;
         private System.Windows.Forms.CheckBox checkBoxForceVanityMode;
         private System.Windows.Forms.CheckBox checkBoxVanityMode;
@@ -7752,5 +7349,6 @@
         private System.Windows.Forms.ComboBox comboBoxScreenNarrationVoiceType;
         private System.Windows.Forms.Label labelScreenNarrationVoiceType;
         private System.Windows.Forms.ColorDialog colorDialog;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }

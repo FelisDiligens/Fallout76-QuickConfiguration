@@ -32,8 +32,6 @@ namespace Fo76ini.Forms.FormMain
         public void LinkInfo()
         {
             // General tab
-            LinkedTweaks.LinkInfo(checkBoxEnableSteam, toolTip, enableSteamTweak);
-            LinkedTweaks.LinkInfo(checkBoxAutoSignin, toolTip, autoSigninTweak);
             LinkedTweaks.LinkInfo(checkBoxSkipIntroVideos, toolTip, introVideoTweak);
             LinkedTweaks.LinkInfo(checkBoxSkipSplash, toolTip, skipStartupSplash);
 
@@ -346,12 +344,6 @@ namespace Fo76ini.Forms.FormMain
             /*
              * General tab
              */
-
-            // Enable Steam
-            LinkedTweaks.LinkTweak(checkBoxEnableSteam, enableSteamTweak);
-
-            // Automatically sign-in
-            LinkedTweaks.LinkTweak(checkBoxAutoSignin, autoSigninTweak);
 
             // Skip intro videos
             LinkedTweaks.LinkTweakNegated(checkBoxSkipIntroVideos, introVideoTweak);

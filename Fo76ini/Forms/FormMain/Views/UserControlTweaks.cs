@@ -295,8 +295,6 @@ namespace Fo76ini.Forms.FormMain
             LinkSliders();
             LinkControlsToTweaks();
 
-            InitAccountProfileRadiobuttons();
-
             this.labelTweaksTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
         }
 
@@ -325,7 +323,7 @@ namespace Fo76ini.Forms.FormMain
 
             // Loading RTF in the Constructor results in unformatted text for some reason...
             // we have to load it here:
-            this.richTextBoxCredentialsExplanation.Rtf = Localization.GetTextResource("Login with Bethesda.net.rtf");
+            // this.richTextBoxCredentialsExplanation.Rtf = Localization.GetTextResource("Login with Bethesda.net.rtf");
         }
 
         private void webBrowserTweaksInfo_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -338,154 +336,7 @@ namespace Fo76ini.Forms.FormMain
         {
             // For some reason, it won't update the resolution combobox, unless I add this workaround:
             numCustomRes_ValueChanged(null, null);
-
-            LoadAccountProfile();
         }
-
-        #region Credentials
-        /*
-         * Credentials
-         */
-
-        List<RadioButton> accountProfileRadioButtons
-        {
-            get
-            {
-                return new List<RadioButton> {
-                    radioButtonAccount1,
-                    radioButtonAccount2,
-                    radioButtonAccount3,
-                    radioButtonAccount4,
-                    radioButtonAccount5,
-                    radioButtonAccount6,
-                    radioButtonAccount7,
-                    radioButtonAccount8,
-                    radioButtonAccount9,
-                    radioButtonAccount10,
-                    radioButtonAccount11,
-                    radioButtonAccount12,
-                    radioButtonAccount13,
-                    radioButtonAccount14,
-                    radioButtonAccount15,
-                    radioButtonAccount16
-                };
-            }
-        }
-
-        // Show password:
-        private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
-        {
-            // https://stackoverflow.com/questions/8185747/how-can-i-unmask-password-text-box-and-mask-it-back-to-password
-            this.textBoxPassword.UseSystemPasswordChar = !this.checkBoxShowPassword.Checked;
-            this.textBoxPassword.PasswordChar = !this.checkBoxShowPassword.Checked ? '\u2022' : '\0';
-        }
-
-        private void textBoxUserName_TextChanged(object sender, EventArgs e)
-        {
-            int index = GetSelectedAccountProfileRadiobuttonIndex();
-            if (this.textBoxUserName.Text == "")
-            {
-                IniFiles.Config.Remove("Login", $"s76UserName{index}");
-                IniFiles.F76Custom.Remove("Login", "s76UserName");
-            }
-            else
-            {
-                IniFiles.Config.Set("Login", $"s76UserName{index}", this.textBoxUserName.Text);
-                IniFiles.F76Custom.Set("Login", "s76UserName", this.textBoxUserName.Text);
-            }
-        }
-
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
-        {
-            int index = GetSelectedAccountProfileRadiobuttonIndex();
-            if (this.textBoxPassword.Text == "")
-            {
-                IniFiles.Config.Remove("Login", $"s76Password{index}");
-                IniFiles.F76Custom.Remove("Login", "s76Password");
-            }
-            else
-            {
-                IniFiles.Config.Set("Login", $"s76Password{index}", this.textBoxPassword.Text);
-                IniFiles.F76Custom.Set("Login", "s76Password", this.textBoxPassword.Text);
-            }
-        }
-
-        // If a radiobuttons gets checked, load username and password of a profile.
-        private void radioButtonAccount_CheckedChanged(object sender, EventArgs e)
-        {
-            int index = GetSelectedAccountProfileRadiobuttonIndex();
-            IniFiles.Config.Set("Login", "uActiveAccountProfile", index);
-            if (index == 0)
-            {
-                this.textBoxUserName.Text = IniFiles.GetString("Login", "s76UserName", "");
-                this.textBoxPassword.Text = IniFiles.GetString("Login", "s76Password", "");
-            }
-            else
-            {
-                this.textBoxUserName.Text = IniFiles.Config.GetString("Login", $"s76UserName{index}", "");
-                this.textBoxPassword.Text = IniFiles.Config.GetString("Login", $"s76Password{index}", "");
-            }
-        }
-
-        private void radioButtonAccountNone_CheckedChanged(object sender, EventArgs e)
-        {
-            this.textBoxUserName.Text = IniFiles.GetString("Login", "s76UserName", "");
-            this.textBoxPassword.Text = IniFiles.GetString("Login", "s76Password", "");
-        }
-
-        private int GetSelectedAccountProfileRadiobuttonIndex()
-        {
-            int index = 1;
-            foreach (RadioButton rbutton in accountProfileRadioButtons)
-            {
-                if (rbutton.Checked)
-                    break;
-                index++;
-            }
-            if (index > accountProfileRadioButtons.Count)
-                index = 0;
-            return index;
-        }
-
-        private void SetSelectedAccountProfileRadiobuttonIndex(int index)
-        {
-            if (index <= 0)
-            {
-                this.radioButtonAccountNone.Checked = true;
-                return;
-            }
-            accountProfileRadioButtons[index - 1].Checked = true;
-        }
-
-        // Assigns event handler to radiobuttons (Account #1, Account #2, ...):
-        private void InitAccountProfileRadiobuttons()
-        {
-            foreach (RadioButton rbutton in accountProfileRadioButtons)
-                rbutton.CheckedChanged += radioButtonAccount_CheckedChanged;
-        }
-
-        // Gets current account profile and sets the according radiobutton
-        private void LoadAccountProfile()
-        {
-            //int index = IniFiles.Config.GetInt("Login", "uActiveAccountProfile", 0);
-            int index = 0;
-            string username = IniFiles.GetString("Login", "s76UserName", "");
-            string password = IniFiles.GetString("Login", "s76Password", "");
-            if (username != "" && password != "")
-            {
-                for (int i = 1; i <= accountProfileRadioButtons.Count(); i++)
-                {
-                    if (username == IniFiles.Config.GetString("Login", $"s76UserName{i}", "") &&
-                        password == IniFiles.Config.GetString("Login", $"s76Password{i}", ""))
-                    {
-                        index = i;
-                        break;
-                    }
-                }
-            }
-            SetSelectedAccountProfileRadiobuttonIndex(index);
-        }
-        #endregion
 
         #region Resolution combobox
 
