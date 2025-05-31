@@ -210,11 +210,11 @@ namespace Fo76ini.Forms.FormMain
              * C:\Program Files (x86)\Steam\userdata\<user id>\760\remote\1151340\screenshots\*.jpg
              * C:\Program Files (x86)\Steam\userdata\<user id>\760\remote\1151340\screenshots\thumbnails\*.jpg
              */
-            string steamFolder = @"C:\Program Files (x86)\Steam\userdata\";
-            if (Directory.Exists(steamFolder))
+            string steamUserDataFolder = @"C:\Program Files (x86)\Steam\userdata\";
+            if (Directory.Exists(steamUserDataFolder))
             {
-                steamFolder = Path.Combine(Directory.GetDirectories(steamFolder)[0], @"760\remote\1151340\screenshots");
-                string steamPTSFolder = Path.Combine(Directory.GetDirectories(steamFolder)[0], @"760\remote\1836200\screenshots");
+                string steamFolder = Path.Combine(Directory.GetDirectories(steamUserDataFolder)[0], @"760\remote\1151340\screenshots");
+                string steamPTSFolder = Path.Combine(Directory.GetDirectories(steamUserDataFolder)[0], @"760\remote\1836200\screenshots");
                 string steamThumbnailFolder = Path.Combine(steamFolder, "thumbnails");
                 string steamPTSThumbnailFolder = Path.Combine(steamPTSFolder, "thumbnails");
 
