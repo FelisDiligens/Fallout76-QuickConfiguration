@@ -262,6 +262,23 @@ namespace Fo76ini.Forms.FormMain
                 }
             ));
 
+            DropDown.Add("VATSGrenadeMineTargetingMode", new DropDown(
+                this.comboBoxVATSGrenadeMineTargetingMode,
+                new string[] {
+                    "None",
+                    "Only My Own",
+                    "All"
+                }
+            ));
+
+            DropDown.Add("ScreenNarrationVoiceType", new DropDown(
+                this.comboBoxScreenNarrationVoiceType,
+                new string[] {
+                    "Voice Type 1",
+                    "Voice Type 2"
+                }
+            ));
+
             #endregion
 
 

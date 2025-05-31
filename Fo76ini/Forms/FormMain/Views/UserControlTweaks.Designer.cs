@@ -36,6 +36,10 @@
             this.buttonOpenTweaksInfoInBrowser = new System.Windows.Forms.Button();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.groupBoxGameplay = new Fo76ini.Controls.StyledGroupBox();
+            this.comboBoxVATSGrenadeMineTargetingMode = new System.Windows.Forms.ComboBox();
+            this.labelVATSGrenadeMineTargetingMode = new System.Windows.Forms.Label();
+            this.checkBoxAskOpenPerkCardPacks = new System.Windows.Forms.CheckBox();
+            this.checkBoxRejectSharedPerks = new System.Windows.Forms.CheckBox();
             this.checkBoxBackpackVisible = new System.Windows.Forms.CheckBox();
             this.labelHighlightCorpses = new System.Windows.Forms.Label();
             this.comboBoxHighlightCorpses = new System.Windows.Forms.ComboBox();
@@ -47,6 +51,10 @@
             this.checkBoxDialogueSubtitles = new System.Windows.Forms.CheckBox();
             this.checkBoxGeneralSubtitles = new System.Windows.Forms.CheckBox();
             this.groupBoxHUD = new Fo76ini.Controls.StyledGroupBox();
+            this.checkBoxShowCAMPWeather = new System.Windows.Forms.CheckBox();
+            this.checkBoxAutoScrollPipboyItemStats = new System.Windows.Forms.CheckBox();
+            this.checkBoxAdvancedModDescriptions = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOtherPlayersPings = new System.Windows.Forms.CheckBox();
             this.groupBoxFloatingQuestMarkers = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxShowFloatingQuestMarkers = new System.Windows.Forms.CheckBox();
             this.sliderFloatingQuestMarkersDistance = new ColorSlider.ColorSlider();
@@ -67,6 +75,7 @@
             this.groupBoxLoading = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxFasterFadeIn = new System.Windows.Forms.CheckBox();
             this.groupBoxQuests = new Fo76ini.Controls.StyledGroupBox();
+            this.checkBoxEnableQuestTrackNotification = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableQuestAutoTrackDaily = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableQuestAutoTrackEvent = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableQuestAutoTrackMisc = new System.Windows.Forms.CheckBox();
@@ -98,6 +107,9 @@
             this.comboBoxTextureQuality = new System.Windows.Forms.ComboBox();
             this.labelTextureQuality = new System.Windows.Forms.Label();
             this.groupBoxGraphicEffects = new Fo76ini.Controls.StyledGroupBox();
+            this.checkBoxEnableIntenseWeatherEffects = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableWeaponImpactEffects = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableMuzzleFlashes = new System.Windows.Forms.CheckBox();
             this.checkBoxBloodSplatter = new System.Windows.Forms.CheckBox();
             this.checkBoxDisableGore = new System.Windows.Forms.CheckBox();
             this.groupBoxTAASharpening = new Fo76ini.Controls.StyledGroupBox();
@@ -227,6 +239,18 @@
             this.numMouseSensitivityX = new System.Windows.Forms.NumericUpDown();
             this.labelMouseSensitivityX = new System.Windows.Forms.Label();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
+            this.styledGroupBoxFreeCam = new Fo76ini.Controls.StyledGroupBox();
+            this.checkBoxWorkshopFreeCameraControlsHoldToggle = new System.Windows.Forms.CheckBox();
+            this.checkBoxWorkshopFreeCameraStartAtPreviousLocation = new System.Windows.Forms.CheckBox();
+            this.checkBoxWorkshopStartInFreeCamera = new System.Windows.Forms.CheckBox();
+            this.numericUpDownFreeCamRotationSpeed = new System.Windows.Forms.NumericUpDown();
+            this.trackBarFreeCamRotationSpeed = new ColorSlider.ColorSlider();
+            this.labelFreeCamRotationSpeed = new System.Windows.Forms.Label();
+            this.numericUpDownFreeCamMovementSpeed = new System.Windows.Forms.NumericUpDown();
+            this.trackBarFreeCamMovementSpeed = new ColorSlider.ColorSlider();
+            this.labelFreeCamMovementSpeed = new System.Windows.Forms.Label();
+            this.styledGroupBoxAccessibility = new Fo76ini.Controls.StyledGroupBox();
+            this.checkBoxEnableCameraShake = new System.Windows.Forms.CheckBox();
             this.groupBoxCameraPosition = new Fo76ini.Controls.StyledGroupBox();
             this.groupBoxMeleeCombatCameraPosition = new Fo76ini.Controls.StyledGroupBox();
             this.numfOverShoulderMeleeCombatAddY = new System.Windows.Forms.NumericUpDown();
@@ -287,6 +311,30 @@
             this.pictureBoxFOVPreview = new System.Windows.Forms.PictureBox();
             this.sliderFOV = new ColorSlider.ColorSlider();
             this.numFOV = new System.Windows.Forms.NumericUpDown();
+            this.tabPageAccessibility = new System.Windows.Forms.TabPage();
+            this.styledGroupBoxAlternativeNoteView = new Fo76ini.Controls.StyledGroupBox();
+            this.buttonResetAlternativeNoteViewBackgroundColor = new System.Windows.Forms.Button();
+            this.buttonPickAlternativeNoteViewBackgroundColor = new System.Windows.Forms.Button();
+            this.labelAlternativeNoteViewBackgroundColor = new System.Windows.Forms.Label();
+            this.labelAlternativeNoteViewTextColor = new System.Windows.Forms.Label();
+            this.buttonResetAlternativeNoteViewTextColor = new System.Windows.Forms.Button();
+            this.buttonPickAlternativeNoteViewTextColor = new System.Windows.Forms.Button();
+            this.colorPreviewAlternativeNoteViewBackgroundColor = new Fo76ini.Controls.ColorPreview();
+            this.colorPreviewAlternativeNoteViewTextColor = new Fo76ini.Controls.ColorPreview();
+            this.checkBoxEnableLargerAlternativeNoteViewText = new System.Windows.Forms.CheckBox();
+            this.styledGroupBoxAccessibilityAccessibility = new Fo76ini.Controls.StyledGroupBox();
+            this.comboBoxScreenNarrationVoiceType = new System.Windows.Forms.ComboBox();
+            this.labelScreenNarrationVoiceType = new System.Windows.Forms.Label();
+            this.checkBoxSpeechToText = new System.Windows.Forms.CheckBox();
+            this.trackBarMessageWindowVisibility = new ColorSlider.ColorSlider();
+            this.numericUpDownMessageWindowVisibility = new System.Windows.Forms.NumericUpDown();
+            this.labelMessageWindowVisibility = new System.Windows.Forms.Label();
+            this.trackBarMessageWindowFadeTime = new ColorSlider.ColorSlider();
+            this.numericUpDownMessageWindowFadeTime = new System.Windows.Forms.NumericUpDown();
+            this.labelMessageWindowFadeTime = new System.Windows.Forms.Label();
+            this.checkBoxShowAccessibilityScreenOnStart = new System.Windows.Forms.CheckBox();
+            this.checkBoxSingleButtonNotificationCancel = new System.Windows.Forms.CheckBox();
+            this.checkBoxScreenNarration = new System.Windows.Forms.CheckBox();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
             this.groupBoxLoginProfiles = new Fo76ini.Controls.StyledGroupBox();
             this.radioButtonAccountNone = new System.Windows.Forms.RadioButton();
@@ -318,6 +366,7 @@
             this.labelTweaksDesc = new System.Windows.Forms.Label();
             this.labelTweaksTitle = new System.Windows.Forms.Label();
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -376,6 +425,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityX)).BeginInit();
             this.tabPageCamera.SuspendLayout();
+            this.styledGroupBoxFreeCam.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFreeCamRotationSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFreeCamMovementSpeed)).BeginInit();
+            this.styledGroupBoxAccessibility.SuspendLayout();
             this.groupBoxCameraPosition.SuspendLayout();
             this.groupBoxMeleeCombatCameraPosition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numfOverShoulderMeleeCombatAddY)).BeginInit();
@@ -402,6 +455,13 @@
             this.groupBoxFieldOfView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFOVPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFOV)).BeginInit();
+            this.tabPageAccessibility.SuspendLayout();
+            this.styledGroupBoxAlternativeNoteView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewAlternativeNoteViewBackgroundColor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewAlternativeNoteViewTextColor)).BeginInit();
+            this.styledGroupBoxAccessibilityAccessibility.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMessageWindowVisibility)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMessageWindowFadeTime)).BeginInit();
             this.tabPageLogin.SuspendLayout();
             this.groupBoxLoginProfiles.SuspendLayout();
             this.groupBoxLogin.SuspendLayout();
@@ -420,6 +480,7 @@
             this.tabControlTweaks.Controls.Add(this.tabPageAudio);
             this.tabControlTweaks.Controls.Add(this.tabPageControls);
             this.tabControlTweaks.Controls.Add(this.tabPageCamera);
+            this.tabControlTweaks.Controls.Add(this.tabPageAccessibility);
             this.tabControlTweaks.Controls.Add(this.tabPageLogin);
             this.tabControlTweaks.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tabControlTweaks.Location = new System.Drawing.Point(15, 75);
@@ -500,12 +561,16 @@
             this.groupBoxGameplay.BackColor = System.Drawing.Color.White;
             this.groupBoxGameplay.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxGameplay.BorderWidth = 1;
+            this.groupBoxGameplay.Controls.Add(this.comboBoxVATSGrenadeMineTargetingMode);
+            this.groupBoxGameplay.Controls.Add(this.labelVATSGrenadeMineTargetingMode);
+            this.groupBoxGameplay.Controls.Add(this.checkBoxAskOpenPerkCardPacks);
+            this.groupBoxGameplay.Controls.Add(this.checkBoxRejectSharedPerks);
             this.groupBoxGameplay.Controls.Add(this.checkBoxBackpackVisible);
             this.groupBoxGameplay.Controls.Add(this.labelHighlightCorpses);
             this.groupBoxGameplay.Controls.Add(this.comboBoxHighlightCorpses);
             this.groupBoxGameplay.Location = new System.Drawing.Point(9, 144);
             this.groupBoxGameplay.Name = "groupBoxGameplay";
-            this.groupBoxGameplay.Size = new System.Drawing.Size(400, 77);
+            this.groupBoxGameplay.Size = new System.Drawing.Size(400, 153);
             this.groupBoxGameplay.TabIndex = 2;
             this.groupBoxGameplay.TabStop = false;
             this.groupBoxGameplay.Text = "Gameplay";
@@ -513,6 +578,44 @@
             this.groupBoxGameplay.TitleBorderMargin = 6;
             this.groupBoxGameplay.TitleBorderPadding = 4;
             this.groupBoxGameplay.TitleForeColor = System.Drawing.Color.Black;
+            // 
+            // comboBoxVATSGrenadeMineTargetingMode
+            // 
+            this.comboBoxVATSGrenadeMineTargetingMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVATSGrenadeMineTargetingMode.FormattingEnabled = true;
+            this.comboBoxVATSGrenadeMineTargetingMode.Location = new System.Drawing.Point(198, 97);
+            this.comboBoxVATSGrenadeMineTargetingMode.Name = "comboBoxVATSGrenadeMineTargetingMode";
+            this.comboBoxVATSGrenadeMineTargetingMode.Size = new System.Drawing.Size(196, 21);
+            this.comboBoxVATSGrenadeMineTargetingMode.TabIndex = 9;
+            // 
+            // labelVATSGrenadeMineTargetingMode
+            // 
+            this.labelVATSGrenadeMineTargetingMode.AutoSize = true;
+            this.labelVATSGrenadeMineTargetingMode.Location = new System.Drawing.Point(7, 100);
+            this.labelVATSGrenadeMineTargetingMode.Name = "labelVATSGrenadeMineTargetingMode";
+            this.labelVATSGrenadeMineTargetingMode.Size = new System.Drawing.Size(157, 13);
+            this.labelVATSGrenadeMineTargetingMode.TabIndex = 8;
+            this.labelVATSGrenadeMineTargetingMode.Text = "Grenade/Mine Targeting Mode:";
+            // 
+            // checkBoxAskOpenPerkCardPacks
+            // 
+            this.checkBoxAskOpenPerkCardPacks.AutoSize = true;
+            this.checkBoxAskOpenPerkCardPacks.Location = new System.Drawing.Point(10, 124);
+            this.checkBoxAskOpenPerkCardPacks.Name = "checkBoxAskOpenPerkCardPacks";
+            this.checkBoxAskOpenPerkCardPacks.Size = new System.Drawing.Size(190, 17);
+            this.checkBoxAskOpenPerkCardPacks.TabIndex = 7;
+            this.checkBoxAskOpenPerkCardPacks.Text = "Unopened Perk Card Pack Prompt";
+            this.checkBoxAskOpenPerkCardPacks.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxRejectSharedPerks
+            // 
+            this.checkBoxRejectSharedPerks.AutoSize = true;
+            this.checkBoxRejectSharedPerks.Location = new System.Drawing.Point(10, 69);
+            this.checkBoxRejectSharedPerks.Name = "checkBoxRejectSharedPerks";
+            this.checkBoxRejectSharedPerks.Size = new System.Drawing.Size(170, 17);
+            this.checkBoxRejectSharedPerks.TabIndex = 6;
+            this.checkBoxRejectSharedPerks.Text = "Reject Incoming Shared Perks";
+            this.checkBoxRejectSharedPerks.UseVisualStyleBackColor = true;
             // 
             // checkBoxBackpackVisible
             // 
@@ -553,7 +656,7 @@
             this.groupBoxDialogue.Controls.Add(this.checkBoxDialogueHistory);
             this.groupBoxDialogue.Controls.Add(this.checkBoxDialogueSubtitles);
             this.groupBoxDialogue.Controls.Add(this.checkBoxGeneralSubtitles);
-            this.groupBoxDialogue.Location = new System.Drawing.Point(9, 230);
+            this.groupBoxDialogue.Location = new System.Drawing.Point(9, 306);
             this.groupBoxDialogue.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxDialogue.Name = "groupBoxDialogue";
             this.groupBoxDialogue.Size = new System.Drawing.Size(400, 143);
@@ -690,6 +793,10 @@
             this.groupBoxHUD.BackColor = System.Drawing.Color.White;
             this.groupBoxHUD.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxHUD.BorderWidth = 1;
+            this.groupBoxHUD.Controls.Add(this.checkBoxShowCAMPWeather);
+            this.groupBoxHUD.Controls.Add(this.checkBoxAutoScrollPipboyItemStats);
+            this.groupBoxHUD.Controls.Add(this.checkBoxAdvancedModDescriptions);
+            this.groupBoxHUD.Controls.Add(this.checkBoxShowOtherPlayersPings);
             this.groupBoxHUD.Controls.Add(this.groupBoxFloatingQuestMarkers);
             this.groupBoxHUD.Controls.Add(this.checkBoxShowOtherPlayersNames);
             this.groupBoxHUD.Controls.Add(this.checkBoxShowPublicTeamNotifications);
@@ -702,9 +809,9 @@
             this.groupBoxHUD.Controls.Add(this.comboBoxShowActiveEffectsOnHUD);
             this.groupBoxHUD.Controls.Add(this.sliderHUDOpacity);
             this.groupBoxHUD.Controls.Add(this.numHUDOpacity);
-            this.groupBoxHUD.Location = new System.Drawing.Point(9, 382);
+            this.groupBoxHUD.Location = new System.Drawing.Point(9, 458);
             this.groupBoxHUD.Name = "groupBoxHUD";
-            this.groupBoxHUD.Size = new System.Drawing.Size(400, 387);
+            this.groupBoxHUD.Size = new System.Drawing.Size(400, 476);
             this.groupBoxHUD.TabIndex = 4;
             this.groupBoxHUD.TabStop = false;
             this.groupBoxHUD.Text = "HUD";
@@ -712,6 +819,46 @@
             this.groupBoxHUD.TitleBorderMargin = 6;
             this.groupBoxHUD.TitleBorderPadding = 4;
             this.groupBoxHUD.TitleForeColor = System.Drawing.Color.Black;
+            // 
+            // checkBoxShowCAMPWeather
+            // 
+            this.checkBoxShowCAMPWeather.AutoSize = true;
+            this.checkBoxShowCAMPWeather.Location = new System.Drawing.Point(10, 454);
+            this.checkBoxShowCAMPWeather.Name = "checkBoxShowCAMPWeather";
+            this.checkBoxShowCAMPWeather.Size = new System.Drawing.Size(142, 17);
+            this.checkBoxShowCAMPWeather.TabIndex = 32;
+            this.checkBoxShowCAMPWeather.Text = "Show C.A.M.P. Weather";
+            this.checkBoxShowCAMPWeather.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxAutoScrollPipboyItemStats
+            // 
+            this.checkBoxAutoScrollPipboyItemStats.AutoSize = true;
+            this.checkBoxAutoScrollPipboyItemStats.Location = new System.Drawing.Point(10, 431);
+            this.checkBoxAutoScrollPipboyItemStats.Name = "checkBoxAutoScrollPipboyItemStats";
+            this.checkBoxAutoScrollPipboyItemStats.Size = new System.Drawing.Size(166, 17);
+            this.checkBoxAutoScrollPipboyItemStats.TabIndex = 31;
+            this.checkBoxAutoScrollPipboyItemStats.Text = "Auto Scroll Pip-Boy Item Stats";
+            this.checkBoxAutoScrollPipboyItemStats.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxAdvancedModDescriptions
+            // 
+            this.checkBoxAdvancedModDescriptions.AutoSize = true;
+            this.checkBoxAdvancedModDescriptions.Location = new System.Drawing.Point(10, 408);
+            this.checkBoxAdvancedModDescriptions.Name = "checkBoxAdvancedModDescriptions";
+            this.checkBoxAdvancedModDescriptions.Size = new System.Drawing.Size(160, 17);
+            this.checkBoxAdvancedModDescriptions.TabIndex = 30;
+            this.checkBoxAdvancedModDescriptions.Text = "Advanced Mod Descriptions";
+            this.checkBoxAdvancedModDescriptions.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOtherPlayersPings
+            // 
+            this.checkBoxShowOtherPlayersPings.AutoSize = true;
+            this.checkBoxShowOtherPlayersPings.Location = new System.Drawing.Point(10, 362);
+            this.checkBoxShowOtherPlayersPings.Name = "checkBoxShowOtherPlayersPings";
+            this.checkBoxShowOtherPlayersPings.Size = new System.Drawing.Size(146, 17);
+            this.checkBoxShowOtherPlayersPings.TabIndex = 29;
+            this.checkBoxShowOtherPlayersPings.Text = "Show other players\' pings";
+            this.checkBoxShowOtherPlayersPings.UseVisualStyleBackColor = true;
             // 
             // groupBoxFloatingQuestMarkers
             // 
@@ -903,7 +1050,7 @@
             // checkBoxShowCompass
             // 
             this.checkBoxShowCompass.AutoSize = true;
-            this.checkBoxShowCompass.Location = new System.Drawing.Point(10, 362);
+            this.checkBoxShowCompass.Location = new System.Drawing.Point(10, 385);
             this.checkBoxShowCompass.Name = "checkBoxShowCompass";
             this.checkBoxShowCompass.Size = new System.Drawing.Size(98, 17);
             this.checkBoxShowCompass.TabIndex = 28;
@@ -1057,15 +1204,16 @@
             this.groupBoxQuests.BackColor = System.Drawing.Color.White;
             this.groupBoxQuests.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxQuests.BorderWidth = 1;
+            this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestTrackNotification);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackDaily);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackEvent);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMisc);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackSide);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMain);
-            this.groupBoxQuests.Location = new System.Drawing.Point(9, 778);
+            this.groupBoxQuests.Location = new System.Drawing.Point(9, 943);
             this.groupBoxQuests.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxQuests.Name = "groupBoxQuests";
-            this.groupBoxQuests.Size = new System.Drawing.Size(400, 142);
+            this.groupBoxQuests.Size = new System.Drawing.Size(400, 170);
             this.groupBoxQuests.TabIndex = 5;
             this.groupBoxQuests.TabStop = false;
             this.groupBoxQuests.Text = "Quests";
@@ -1074,10 +1222,20 @@
             this.groupBoxQuests.TitleBorderPadding = 4;
             this.groupBoxQuests.TitleForeColor = System.Drawing.Color.Black;
             // 
+            // checkBoxEnableQuestTrackNotification
+            // 
+            this.checkBoxEnableQuestTrackNotification.AutoSize = true;
+            this.checkBoxEnableQuestTrackNotification.Location = new System.Drawing.Point(10, 19);
+            this.checkBoxEnableQuestTrackNotification.Name = "checkBoxEnableQuestTrackNotification";
+            this.checkBoxEnableQuestTrackNotification.Size = new System.Drawing.Size(231, 17);
+            this.checkBoxEnableQuestTrackNotification.TabIndex = 34;
+            this.checkBoxEnableQuestTrackNotification.Text = "Show Notification for Inactive Quest started";
+            this.checkBoxEnableQuestTrackNotification.UseVisualStyleBackColor = true;
+            // 
             // checkBoxEnableQuestAutoTrackDaily
             // 
             this.checkBoxEnableQuestAutoTrackDaily.AutoSize = true;
-            this.checkBoxEnableQuestAutoTrackDaily.Location = new System.Drawing.Point(10, 111);
+            this.checkBoxEnableQuestAutoTrackDaily.Location = new System.Drawing.Point(10, 134);
             this.checkBoxEnableQuestAutoTrackDaily.Name = "checkBoxEnableQuestAutoTrackDaily";
             this.checkBoxEnableQuestAutoTrackDaily.Size = new System.Drawing.Size(182, 17);
             this.checkBoxEnableQuestAutoTrackDaily.TabIndex = 33;
@@ -1087,7 +1245,7 @@
             // checkBoxEnableQuestAutoTrackEvent
             // 
             this.checkBoxEnableQuestAutoTrackEvent.AutoSize = true;
-            this.checkBoxEnableQuestAutoTrackEvent.Location = new System.Drawing.Point(10, 88);
+            this.checkBoxEnableQuestAutoTrackEvent.Location = new System.Drawing.Point(10, 111);
             this.checkBoxEnableQuestAutoTrackEvent.Name = "checkBoxEnableQuestAutoTrackEvent";
             this.checkBoxEnableQuestAutoTrackEvent.Size = new System.Drawing.Size(187, 17);
             this.checkBoxEnableQuestAutoTrackEvent.TabIndex = 32;
@@ -1097,7 +1255,7 @@
             // checkBoxEnableQuestAutoTrackMisc
             // 
             this.checkBoxEnableQuestAutoTrackMisc.AutoSize = true;
-            this.checkBoxEnableQuestAutoTrackMisc.Location = new System.Drawing.Point(10, 65);
+            this.checkBoxEnableQuestAutoTrackMisc.Location = new System.Drawing.Point(10, 88);
             this.checkBoxEnableQuestAutoTrackMisc.Name = "checkBoxEnableQuestAutoTrackMisc";
             this.checkBoxEnableQuestAutoTrackMisc.Size = new System.Drawing.Size(226, 17);
             this.checkBoxEnableQuestAutoTrackMisc.TabIndex = 31;
@@ -1107,7 +1265,7 @@
             // checkBoxEnableQuestAutoTrackSide
             // 
             this.checkBoxEnableQuestAutoTrackSide.AutoSize = true;
-            this.checkBoxEnableQuestAutoTrackSide.Location = new System.Drawing.Point(10, 42);
+            this.checkBoxEnableQuestAutoTrackSide.Location = new System.Drawing.Point(10, 65);
             this.checkBoxEnableQuestAutoTrackSide.Name = "checkBoxEnableQuestAutoTrackSide";
             this.checkBoxEnableQuestAutoTrackSide.Size = new System.Drawing.Size(180, 17);
             this.checkBoxEnableQuestAutoTrackSide.TabIndex = 30;
@@ -1117,7 +1275,7 @@
             // checkBoxEnableQuestAutoTrackMain
             // 
             this.checkBoxEnableQuestAutoTrackMain.AutoSize = true;
-            this.checkBoxEnableQuestAutoTrackMain.Location = new System.Drawing.Point(10, 19);
+            this.checkBoxEnableQuestAutoTrackMain.Location = new System.Drawing.Point(10, 42);
             this.checkBoxEnableQuestAutoTrackMain.Name = "checkBoxEnableQuestAutoTrackMain";
             this.checkBoxEnableQuestAutoTrackMain.Size = new System.Drawing.Size(182, 17);
             this.checkBoxEnableQuestAutoTrackMain.TabIndex = 29;
@@ -1202,7 +1360,7 @@
             this.groupBoxGraphics.Location = new System.Drawing.Point(9, 206);
             this.groupBoxGraphics.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGraphics.Name = "groupBoxGraphics";
-            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1320);
+            this.groupBoxGraphics.Size = new System.Drawing.Size(400, 1474);
             this.groupBoxGraphics.TabIndex = 1;
             this.groupBoxGraphics.TabStop = false;
             this.groupBoxGraphics.Text = "Graphics";
@@ -1364,57 +1522,57 @@
             this.cancelToolStripMenuItem});
             this.contextMenuStripOverallQualityPresets.Name = "contextMenuStripOverallQualityPresets";
             this.contextMenuStripOverallQualityPresets.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStripOverallQualityPresets.Size = new System.Drawing.Size(161, 148);
+            this.contextMenuStripOverallQualityPresets.Size = new System.Drawing.Size(171, 148);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Enabled = false;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
             this.toolStripMenuItem1.Text = "Graphics presets";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(157, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(167, 6);
             // 
             // lowToolStripMenuItem
             // 
             this.lowToolStripMenuItem.Name = "lowToolStripMenuItem";
-            this.lowToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.lowToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.lowToolStripMenuItem.Text = "Low";
             this.lowToolStripMenuItem.Click += new System.EventHandler(this.lowToolStripMenuItem_Click);
             // 
             // mediumToolStripMenuItem
             // 
             this.mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
-            this.mediumToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.mediumToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.mediumToolStripMenuItem.Text = "Medium";
             this.mediumToolStripMenuItem.Click += new System.EventHandler(this.mediumToolStripMenuItem_Click);
             // 
             // highToolStripMenuItem
             // 
             this.highToolStripMenuItem.Name = "highToolStripMenuItem";
-            this.highToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.highToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.highToolStripMenuItem.Text = "High";
             this.highToolStripMenuItem.Click += new System.EventHandler(this.highToolStripMenuItem_Click);
             // 
             // ultraToolStripMenuItem
             // 
             this.ultraToolStripMenuItem.Name = "ultraToolStripMenuItem";
-            this.ultraToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.ultraToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.ultraToolStripMenuItem.Text = "Ultra";
             this.ultraToolStripMenuItem.Click += new System.EventHandler(this.ultraToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(157, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(167, 6);
             // 
             // cancelToolStripMenuItem
             // 
             this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
-            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.cancelToolStripMenuItem.Text = "Cancel";
             // 
             // labelOverallQualityPreset
@@ -1469,11 +1627,14 @@
             this.groupBoxGraphicEffects.BackColor = System.Drawing.Color.White;
             this.groupBoxGraphicEffects.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxGraphicEffects.BorderWidth = 1;
+            this.groupBoxGraphicEffects.Controls.Add(this.checkBoxEnableIntenseWeatherEffects);
+            this.groupBoxGraphicEffects.Controls.Add(this.checkBoxEnableWeaponImpactEffects);
+            this.groupBoxGraphicEffects.Controls.Add(this.checkBoxEnableMuzzleFlashes);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxBloodSplatter);
             this.groupBoxGraphicEffects.Controls.Add(this.checkBoxDisableGore);
-            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(218, 604);
+            this.groupBoxGraphicEffects.Location = new System.Drawing.Point(9, 763);
             this.groupBoxGraphicEffects.Name = "groupBoxGraphicEffects";
-            this.groupBoxGraphicEffects.Size = new System.Drawing.Size(172, 149);
+            this.groupBoxGraphicEffects.Size = new System.Drawing.Size(381, 149);
             this.groupBoxGraphicEffects.TabIndex = 11;
             this.groupBoxGraphicEffects.TabStop = false;
             this.groupBoxGraphicEffects.Text = "Effects";
@@ -1481,6 +1642,36 @@
             this.groupBoxGraphicEffects.TitleBorderMargin = 6;
             this.groupBoxGraphicEffects.TitleBorderPadding = 4;
             this.groupBoxGraphicEffects.TitleForeColor = System.Drawing.Color.Black;
+            // 
+            // checkBoxEnableIntenseWeatherEffects
+            // 
+            this.checkBoxEnableIntenseWeatherEffects.AutoSize = true;
+            this.checkBoxEnableIntenseWeatherEffects.Location = new System.Drawing.Point(9, 111);
+            this.checkBoxEnableIntenseWeatherEffects.Name = "checkBoxEnableIntenseWeatherEffects";
+            this.checkBoxEnableIntenseWeatherEffects.Size = new System.Drawing.Size(171, 17);
+            this.checkBoxEnableIntenseWeatherEffects.TabIndex = 4;
+            this.checkBoxEnableIntenseWeatherEffects.Text = "Show Intense Weather Effects";
+            this.checkBoxEnableIntenseWeatherEffects.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnableWeaponImpactEffects
+            // 
+            this.checkBoxEnableWeaponImpactEffects.AutoSize = true;
+            this.checkBoxEnableWeaponImpactEffects.Location = new System.Drawing.Point(9, 88);
+            this.checkBoxEnableWeaponImpactEffects.Name = "checkBoxEnableWeaponImpactEffects";
+            this.checkBoxEnableWeaponImpactEffects.Size = new System.Drawing.Size(239, 17);
+            this.checkBoxEnableWeaponImpactEffects.TabIndex = 3;
+            this.checkBoxEnableWeaponImpactEffects.Text = "Show Non-Explosive Weapon Impact Effects";
+            this.checkBoxEnableWeaponImpactEffects.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnableMuzzleFlashes
+            // 
+            this.checkBoxEnableMuzzleFlashes.AutoSize = true;
+            this.checkBoxEnableMuzzleFlashes.Location = new System.Drawing.Point(9, 65);
+            this.checkBoxEnableMuzzleFlashes.Name = "checkBoxEnableMuzzleFlashes";
+            this.checkBoxEnableMuzzleFlashes.Size = new System.Drawing.Size(153, 17);
+            this.checkBoxEnableMuzzleFlashes.TabIndex = 2;
+            this.checkBoxEnableMuzzleFlashes.Text = "Show Muzzle Flash Effects";
+            this.checkBoxEnableMuzzleFlashes.UseVisualStyleBackColor = true;
             // 
             // checkBoxBloodSplatter
             // 
@@ -1515,7 +1706,7 @@
             this.groupBoxTAASharpening.Controls.Add(this.sliderTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.numTAAPostOverlay);
             this.groupBoxTAASharpening.Controls.Add(this.labelTAAPostOverlay);
-            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 1187);
+            this.groupBoxTAASharpening.Location = new System.Drawing.Point(9, 1345);
             this.groupBoxTAASharpening.Name = "groupBoxTAASharpening";
             this.groupBoxTAASharpening.Size = new System.Drawing.Size(381, 123);
             this.groupBoxTAASharpening.TabIndex = 18;
@@ -1736,7 +1927,7 @@
             this.groupBoxGrass.Controls.Add(this.numGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.labelGrassFadeDistance);
             this.groupBoxGrass.Controls.Add(this.checkBoxGrass);
-            this.groupBoxGrass.Location = new System.Drawing.Point(9, 1076);
+            this.groupBoxGrass.Location = new System.Drawing.Point(9, 1232);
             this.groupBoxGrass.Name = "groupBoxGrass";
             this.groupBoxGrass.Size = new System.Drawing.Size(381, 99);
             this.groupBoxGrass.TabIndex = 17;
@@ -1878,7 +2069,7 @@
             this.groupBoxLOD.Controls.Add(this.labelLODActors);
             this.groupBoxLOD.Controls.Add(this.labelLODItems);
             this.groupBoxLOD.Controls.Add(this.labelLODObjects);
-            this.groupBoxLOD.Location = new System.Drawing.Point(9, 928);
+            this.groupBoxLOD.Location = new System.Drawing.Point(9, 1086);
             this.groupBoxLOD.Name = "groupBoxLOD";
             this.groupBoxLOD.Size = new System.Drawing.Size(381, 136);
             this.groupBoxLOD.TabIndex = 16;
@@ -2257,7 +2448,7 @@
             this.groupBoxShadows.Controls.Add(this.labelShadowDistance);
             this.groupBoxShadows.Controls.Add(this.comboBoxShadowTextureResolution);
             this.groupBoxShadows.Controls.Add(this.labelShadowTextureResolution);
-            this.groupBoxShadows.Location = new System.Drawing.Point(9, 760);
+            this.groupBoxShadows.Location = new System.Drawing.Point(9, 918);
             this.groupBoxShadows.Name = "groupBoxShadows";
             this.groupBoxShadows.Size = new System.Drawing.Size(381, 159);
             this.groupBoxShadows.TabIndex = 15;
@@ -2547,7 +2738,7 @@
             this.groupBoxPostProcessing.Controls.Add(this.checkBoxLensFlare);
             this.groupBoxPostProcessing.Location = new System.Drawing.Point(9, 604);
             this.groupBoxPostProcessing.Name = "groupBoxPostProcessing";
-            this.groupBoxPostProcessing.Size = new System.Drawing.Size(204, 149);
+            this.groupBoxPostProcessing.Size = new System.Drawing.Size(381, 149);
             this.groupBoxPostProcessing.TabIndex = 10;
             this.groupBoxPostProcessing.TabStop = false;
             this.groupBoxPostProcessing.Text = "Post-processing";
@@ -4336,6 +4527,8 @@
             // 
             this.tabPageCamera.AutoScroll = true;
             this.tabPageCamera.BackColor = System.Drawing.Color.White;
+            this.tabPageCamera.Controls.Add(this.styledGroupBoxFreeCam);
+            this.tabPageCamera.Controls.Add(this.styledGroupBoxAccessibility);
             this.tabPageCamera.Controls.Add(this.groupBoxCameraPosition);
             this.tabPageCamera.Controls.Add(this.groupBoxFOVMore);
             this.tabPageCamera.Controls.Add(this.groupBoxSelfieCamera);
@@ -4348,6 +4541,278 @@
             this.tabPageCamera.TabIndex = 4;
             this.tabPageCamera.Text = "Camera";
             // 
+            // styledGroupBoxFreeCam
+            // 
+            this.styledGroupBoxFreeCam.BackColor = System.Drawing.Color.White;
+            this.styledGroupBoxFreeCam.BorderColor = System.Drawing.Color.Silver;
+            this.styledGroupBoxFreeCam.BorderWidth = 1;
+            this.styledGroupBoxFreeCam.Controls.Add(this.checkBoxWorkshopFreeCameraControlsHoldToggle);
+            this.styledGroupBoxFreeCam.Controls.Add(this.checkBoxWorkshopFreeCameraStartAtPreviousLocation);
+            this.styledGroupBoxFreeCam.Controls.Add(this.checkBoxWorkshopStartInFreeCamera);
+            this.styledGroupBoxFreeCam.Controls.Add(this.numericUpDownFreeCamRotationSpeed);
+            this.styledGroupBoxFreeCam.Controls.Add(this.trackBarFreeCamRotationSpeed);
+            this.styledGroupBoxFreeCam.Controls.Add(this.labelFreeCamRotationSpeed);
+            this.styledGroupBoxFreeCam.Controls.Add(this.numericUpDownFreeCamMovementSpeed);
+            this.styledGroupBoxFreeCam.Controls.Add(this.trackBarFreeCamMovementSpeed);
+            this.styledGroupBoxFreeCam.Controls.Add(this.labelFreeCamMovementSpeed);
+            this.styledGroupBoxFreeCam.Location = new System.Drawing.Point(9, 797);
+            this.styledGroupBoxFreeCam.Margin = new System.Windows.Forms.Padding(6);
+            this.styledGroupBoxFreeCam.Name = "styledGroupBoxFreeCam";
+            this.styledGroupBoxFreeCam.Size = new System.Drawing.Size(400, 159);
+            this.styledGroupBoxFreeCam.TabIndex = 9;
+            this.styledGroupBoxFreeCam.TabStop = false;
+            this.styledGroupBoxFreeCam.Text = "Workshop Free Camera options";
+            this.styledGroupBoxFreeCam.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.styledGroupBoxFreeCam.TitleBorderMargin = 6;
+            this.styledGroupBoxFreeCam.TitleBorderPadding = 4;
+            this.styledGroupBoxFreeCam.TitleForeColor = System.Drawing.Color.Black;
+            // 
+            // checkBoxWorkshopFreeCameraControlsHoldToggle
+            // 
+            this.checkBoxWorkshopFreeCameraControlsHoldToggle.AutoSize = true;
+            this.checkBoxWorkshopFreeCameraControlsHoldToggle.Location = new System.Drawing.Point(9, 127);
+            this.checkBoxWorkshopFreeCameraControlsHoldToggle.Name = "checkBoxWorkshopFreeCameraControlsHoldToggle";
+            this.checkBoxWorkshopFreeCameraControlsHoldToggle.Size = new System.Drawing.Size(174, 17);
+            this.checkBoxWorkshopFreeCameraControlsHoldToggle.TabIndex = 8;
+            this.checkBoxWorkshopFreeCameraControlsHoldToggle.Text = "Controller press and hold toggle";
+            this.checkBoxWorkshopFreeCameraControlsHoldToggle.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxWorkshopFreeCameraStartAtPreviousLocation
+            // 
+            this.checkBoxWorkshopFreeCameraStartAtPreviousLocation.AutoSize = true;
+            this.checkBoxWorkshopFreeCameraStartAtPreviousLocation.Location = new System.Drawing.Point(9, 104);
+            this.checkBoxWorkshopFreeCameraStartAtPreviousLocation.Name = "checkBoxWorkshopFreeCameraStartAtPreviousLocation";
+            this.checkBoxWorkshopFreeCameraStartAtPreviousLocation.Size = new System.Drawing.Size(119, 17);
+            this.checkBoxWorkshopFreeCameraStartAtPreviousLocation.TabIndex = 7;
+            this.checkBoxWorkshopFreeCameraStartAtPreviousLocation.Text = "Start at last location";
+            this.checkBoxWorkshopFreeCameraStartAtPreviousLocation.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxWorkshopStartInFreeCamera
+            // 
+            this.checkBoxWorkshopStartInFreeCamera.AutoSize = true;
+            this.checkBoxWorkshopStartInFreeCamera.Location = new System.Drawing.Point(9, 81);
+            this.checkBoxWorkshopStartInFreeCamera.Name = "checkBoxWorkshopStartInFreeCamera";
+            this.checkBoxWorkshopStartInFreeCamera.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxWorkshopStartInFreeCamera.TabIndex = 6;
+            this.checkBoxWorkshopStartInFreeCamera.Text = "Start in Free Cam";
+            this.checkBoxWorkshopStartInFreeCamera.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDownFreeCamRotationSpeed
+            // 
+            this.numericUpDownFreeCamRotationSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDownFreeCamRotationSpeed.DecimalPlaces = 1;
+            this.numericUpDownFreeCamRotationSpeed.Location = new System.Drawing.Point(317, 51);
+            this.numericUpDownFreeCamRotationSpeed.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDownFreeCamRotationSpeed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownFreeCamRotationSpeed.Name = "numericUpDownFreeCamRotationSpeed";
+            this.numericUpDownFreeCamRotationSpeed.Size = new System.Drawing.Size(74, 20);
+            this.numericUpDownFreeCamRotationSpeed.TabIndex = 5;
+            this.numericUpDownFreeCamRotationSpeed.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // trackBarFreeCamRotationSpeed
+            // 
+            this.trackBarFreeCamRotationSpeed.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarFreeCamRotationSpeed.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarFreeCamRotationSpeed.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarFreeCamRotationSpeed.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarFreeCamRotationSpeed.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarFreeCamRotationSpeed.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarFreeCamRotationSpeed.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarFreeCamRotationSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarFreeCamRotationSpeed.ForeColor = System.Drawing.Color.White;
+            this.trackBarFreeCamRotationSpeed.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamRotationSpeed.Location = new System.Drawing.Point(131, 51);
+            this.trackBarFreeCamRotationSpeed.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamRotationSpeed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamRotationSpeed.Name = "trackBarFreeCamRotationSpeed";
+            this.trackBarFreeCamRotationSpeed.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamRotationSpeed.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamRotationSpeed.ShowDivisionsText = false;
+            this.trackBarFreeCamRotationSpeed.ShowSmallScale = false;
+            this.trackBarFreeCamRotationSpeed.Size = new System.Drawing.Size(175, 20);
+            this.trackBarFreeCamRotationSpeed.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamRotationSpeed.TabIndex = 4;
+            this.trackBarFreeCamRotationSpeed.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarFreeCamRotationSpeed.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarFreeCamRotationSpeed.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarFreeCamRotationSpeed.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarFreeCamRotationSpeed.TickAdd = 0F;
+            this.trackBarFreeCamRotationSpeed.TickColor = System.Drawing.Color.White;
+            this.trackBarFreeCamRotationSpeed.TickDivide = 0F;
+            this.trackBarFreeCamRotationSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarFreeCamRotationSpeed.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // labelFreeCamRotationSpeed
+            // 
+            this.labelFreeCamRotationSpeed.AutoSize = true;
+            this.labelFreeCamRotationSpeed.Location = new System.Drawing.Point(6, 53);
+            this.labelFreeCamRotationSpeed.Name = "labelFreeCamRotationSpeed";
+            this.labelFreeCamRotationSpeed.Size = new System.Drawing.Size(82, 13);
+            this.labelFreeCamRotationSpeed.TabIndex = 3;
+            this.labelFreeCamRotationSpeed.Text = "Rotation speed:";
+            // 
+            // numericUpDownFreeCamMovementSpeed
+            // 
+            this.numericUpDownFreeCamMovementSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDownFreeCamMovementSpeed.DecimalPlaces = 1;
+            this.numericUpDownFreeCamMovementSpeed.Location = new System.Drawing.Point(317, 21);
+            this.numericUpDownFreeCamMovementSpeed.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDownFreeCamMovementSpeed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownFreeCamMovementSpeed.Name = "numericUpDownFreeCamMovementSpeed";
+            this.numericUpDownFreeCamMovementSpeed.Size = new System.Drawing.Size(74, 20);
+            this.numericUpDownFreeCamMovementSpeed.TabIndex = 2;
+            this.numericUpDownFreeCamMovementSpeed.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            // 
+            // trackBarFreeCamMovementSpeed
+            // 
+            this.trackBarFreeCamMovementSpeed.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarFreeCamMovementSpeed.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarFreeCamMovementSpeed.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarFreeCamMovementSpeed.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarFreeCamMovementSpeed.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarFreeCamMovementSpeed.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarFreeCamMovementSpeed.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarFreeCamMovementSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarFreeCamMovementSpeed.ForeColor = System.Drawing.Color.White;
+            this.trackBarFreeCamMovementSpeed.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamMovementSpeed.Location = new System.Drawing.Point(131, 21);
+            this.trackBarFreeCamMovementSpeed.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamMovementSpeed.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamMovementSpeed.Name = "trackBarFreeCamMovementSpeed";
+            this.trackBarFreeCamMovementSpeed.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamMovementSpeed.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamMovementSpeed.ShowDivisionsText = false;
+            this.trackBarFreeCamMovementSpeed.ShowSmallScale = false;
+            this.trackBarFreeCamMovementSpeed.Size = new System.Drawing.Size(175, 20);
+            this.trackBarFreeCamMovementSpeed.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.trackBarFreeCamMovementSpeed.TabIndex = 1;
+            this.trackBarFreeCamMovementSpeed.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarFreeCamMovementSpeed.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarFreeCamMovementSpeed.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarFreeCamMovementSpeed.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarFreeCamMovementSpeed.TickAdd = 0F;
+            this.trackBarFreeCamMovementSpeed.TickColor = System.Drawing.Color.White;
+            this.trackBarFreeCamMovementSpeed.TickDivide = 0F;
+            this.trackBarFreeCamMovementSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarFreeCamMovementSpeed.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            // 
+            // labelFreeCamMovementSpeed
+            // 
+            this.labelFreeCamMovementSpeed.AutoSize = true;
+            this.labelFreeCamMovementSpeed.Location = new System.Drawing.Point(6, 23);
+            this.labelFreeCamMovementSpeed.Name = "labelFreeCamMovementSpeed";
+            this.labelFreeCamMovementSpeed.Size = new System.Drawing.Size(92, 13);
+            this.labelFreeCamMovementSpeed.TabIndex = 0;
+            this.labelFreeCamMovementSpeed.Text = "Movement speed:";
+            // 
+            // styledGroupBoxAccessibility
+            // 
+            this.styledGroupBoxAccessibility.BackColor = System.Drawing.Color.White;
+            this.styledGroupBoxAccessibility.BorderColor = System.Drawing.Color.Silver;
+            this.styledGroupBoxAccessibility.BorderWidth = 1;
+            this.styledGroupBoxAccessibility.Controls.Add(this.checkBoxEnableCameraShake);
+            this.styledGroupBoxAccessibility.Location = new System.Drawing.Point(9, 482);
+            this.styledGroupBoxAccessibility.Margin = new System.Windows.Forms.Padding(6);
+            this.styledGroupBoxAccessibility.Name = "styledGroupBoxAccessibility";
+            this.styledGroupBoxAccessibility.Size = new System.Drawing.Size(400, 52);
+            this.styledGroupBoxAccessibility.TabIndex = 4;
+            this.styledGroupBoxAccessibility.TabStop = false;
+            this.styledGroupBoxAccessibility.Text = "Accessibility";
+            this.styledGroupBoxAccessibility.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.styledGroupBoxAccessibility.TitleBorderMargin = 6;
+            this.styledGroupBoxAccessibility.TitleBorderPadding = 4;
+            this.styledGroupBoxAccessibility.TitleForeColor = System.Drawing.Color.Black;
+            // 
+            // checkBoxEnableCameraShake
+            // 
+            this.checkBoxEnableCameraShake.AutoSize = true;
+            this.checkBoxEnableCameraShake.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxEnableCameraShake.Name = "checkBoxEnableCameraShake";
+            this.checkBoxEnableCameraShake.Size = new System.Drawing.Size(140, 17);
+            this.checkBoxEnableCameraShake.TabIndex = 1;
+            this.checkBoxEnableCameraShake.Text = "Enable Camera Shaking";
+            this.checkBoxEnableCameraShake.UseVisualStyleBackColor = true;
+            // 
             // groupBoxCameraPosition
             // 
             this.groupBoxCameraPosition.BackColor = System.Drawing.Color.White;
@@ -4358,7 +4823,7 @@
             this.groupBoxCameraPosition.Controls.Add(this.buttonCameraPositionReset);
             this.groupBoxCameraPosition.Controls.Add(this.checkBoxbApplyCameraNodeAnimations);
             this.groupBoxCameraPosition.Controls.Add(this.groupBoxUnarmedCameraPosition);
-            this.groupBoxCameraPosition.Location = new System.Drawing.Point(9, 811);
+            this.groupBoxCameraPosition.Location = new System.Drawing.Point(9, 1046);
             this.groupBoxCameraPosition.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCameraPosition.Name = "groupBoxCameraPosition";
             this.groupBoxCameraPosition.Size = new System.Drawing.Size(400, 512);
@@ -5263,7 +5728,7 @@
             this.groupBoxSelfieCamera.Controls.Add(this.numericUpDownPhotomodeTranslationSpeed);
             this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeTranslationSpeed);
             this.groupBoxSelfieCamera.Controls.Add(this.labelPhotomodeTranslationSpeed);
-            this.groupBoxSelfieCamera.Location = new System.Drawing.Point(9, 605);
+            this.groupBoxSelfieCamera.Location = new System.Drawing.Point(9, 669);
             this.groupBoxSelfieCamera.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxSelfieCamera.Name = "groupBoxSelfieCamera";
             this.groupBoxSelfieCamera.Size = new System.Drawing.Size(400, 116);
@@ -5563,7 +6028,7 @@
             this.groupBoxIdleCamera.BorderWidth = 1;
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxForceVanityMode);
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxVanityMode);
-            this.groupBoxIdleCamera.Location = new System.Drawing.Point(9, 733);
+            this.groupBoxIdleCamera.Location = new System.Drawing.Point(9, 968);
             this.groupBoxIdleCamera.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxIdleCamera.Name = "groupBoxIdleCamera";
             this.groupBoxIdleCamera.Size = new System.Drawing.Size(400, 66);
@@ -5613,7 +6078,7 @@
             this.groupBoxCameraDistance.Controls.Add(this.labelCameraDistanceMaximum);
             this.groupBoxCameraDistance.Controls.Add(this.labelCameraDistanceMinimum);
             this.groupBoxCameraDistance.Controls.Add(this.sliderCameraDistanceMinimum);
-            this.groupBoxCameraDistance.Location = new System.Drawing.Point(9, 482);
+            this.groupBoxCameraDistance.Location = new System.Drawing.Point(9, 546);
             this.groupBoxCameraDistance.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCameraDistance.Name = "groupBoxCameraDistance";
             this.groupBoxCameraDistance.Size = new System.Drawing.Size(400, 111);
@@ -6024,6 +6489,407 @@
             0});
             this.numFOV.ValueChanged += new System.EventHandler(this.numFOV_ValueChanged);
             // 
+            // tabPageAccessibility
+            // 
+            this.tabPageAccessibility.Controls.Add(this.styledGroupBoxAlternativeNoteView);
+            this.tabPageAccessibility.Controls.Add(this.styledGroupBoxAccessibilityAccessibility);
+            this.tabPageAccessibility.Location = new System.Drawing.Point(4, 25);
+            this.tabPageAccessibility.Name = "tabPageAccessibility";
+            this.tabPageAccessibility.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAccessibility.Size = new System.Drawing.Size(654, 473);
+            this.tabPageAccessibility.TabIndex = 7;
+            this.tabPageAccessibility.Text = "Accessibility";
+            this.tabPageAccessibility.UseVisualStyleBackColor = true;
+            // 
+            // styledGroupBoxAlternativeNoteView
+            // 
+            this.styledGroupBoxAlternativeNoteView.BackColor = System.Drawing.Color.White;
+            this.styledGroupBoxAlternativeNoteView.BorderColor = System.Drawing.Color.Silver;
+            this.styledGroupBoxAlternativeNoteView.BorderWidth = 1;
+            this.styledGroupBoxAlternativeNoteView.Controls.Add(this.buttonResetAlternativeNoteViewBackgroundColor);
+            this.styledGroupBoxAlternativeNoteView.Controls.Add(this.buttonPickAlternativeNoteViewBackgroundColor);
+            this.styledGroupBoxAlternativeNoteView.Controls.Add(this.labelAlternativeNoteViewBackgroundColor);
+            this.styledGroupBoxAlternativeNoteView.Controls.Add(this.labelAlternativeNoteViewTextColor);
+            this.styledGroupBoxAlternativeNoteView.Controls.Add(this.buttonResetAlternativeNoteViewTextColor);
+            this.styledGroupBoxAlternativeNoteView.Controls.Add(this.buttonPickAlternativeNoteViewTextColor);
+            this.styledGroupBoxAlternativeNoteView.Controls.Add(this.colorPreviewAlternativeNoteViewBackgroundColor);
+            this.styledGroupBoxAlternativeNoteView.Controls.Add(this.colorPreviewAlternativeNoteViewTextColor);
+            this.styledGroupBoxAlternativeNoteView.Controls.Add(this.checkBoxEnableLargerAlternativeNoteViewText);
+            this.styledGroupBoxAlternativeNoteView.Location = new System.Drawing.Point(9, 297);
+            this.styledGroupBoxAlternativeNoteView.Margin = new System.Windows.Forms.Padding(6);
+            this.styledGroupBoxAlternativeNoteView.Name = "styledGroupBoxAlternativeNoteView";
+            this.styledGroupBoxAlternativeNoteView.Size = new System.Drawing.Size(400, 111);
+            this.styledGroupBoxAlternativeNoteView.TabIndex = 11;
+            this.styledGroupBoxAlternativeNoteView.TabStop = false;
+            this.styledGroupBoxAlternativeNoteView.Text = "Alternative Note View";
+            this.styledGroupBoxAlternativeNoteView.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.styledGroupBoxAlternativeNoteView.TitleBorderMargin = 6;
+            this.styledGroupBoxAlternativeNoteView.TitleBorderPadding = 4;
+            this.styledGroupBoxAlternativeNoteView.TitleForeColor = System.Drawing.Color.Black;
+            // 
+            // buttonResetAlternativeNoteViewBackgroundColor
+            // 
+            this.buttonResetAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(294, 71);
+            this.buttonResetAlternativeNoteViewBackgroundColor.Name = "buttonResetAlternativeNoteViewBackgroundColor";
+            this.buttonResetAlternativeNoteViewBackgroundColor.Size = new System.Drawing.Size(97, 23);
+            this.buttonResetAlternativeNoteViewBackgroundColor.TabIndex = 59;
+            this.buttonResetAlternativeNoteViewBackgroundColor.Text = "Reset";
+            this.buttonResetAlternativeNoteViewBackgroundColor.UseVisualStyleBackColor = true;
+            // 
+            // buttonPickAlternativeNoteViewBackgroundColor
+            // 
+            this.buttonPickAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(180, 71);
+            this.buttonPickAlternativeNoteViewBackgroundColor.Name = "buttonPickAlternativeNoteViewBackgroundColor";
+            this.buttonPickAlternativeNoteViewBackgroundColor.Size = new System.Drawing.Size(108, 23);
+            this.buttonPickAlternativeNoteViewBackgroundColor.TabIndex = 58;
+            this.buttonPickAlternativeNoteViewBackgroundColor.Text = "Pick color";
+            this.buttonPickAlternativeNoteViewBackgroundColor.UseVisualStyleBackColor = true;
+            // 
+            // labelAlternativeNoteViewBackgroundColor
+            // 
+            this.labelAlternativeNoteViewBackgroundColor.AutoSize = true;
+            this.labelAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(39, 75);
+            this.labelAlternativeNoteViewBackgroundColor.Name = "labelAlternativeNoteViewBackgroundColor";
+            this.labelAlternativeNoteViewBackgroundColor.Size = new System.Drawing.Size(92, 13);
+            this.labelAlternativeNoteViewBackgroundColor.TabIndex = 57;
+            this.labelAlternativeNoteViewBackgroundColor.Text = "Background Color";
+            // 
+            // labelAlternativeNoteViewTextColor
+            // 
+            this.labelAlternativeNoteViewTextColor.AutoSize = true;
+            this.labelAlternativeNoteViewTextColor.Location = new System.Drawing.Point(39, 46);
+            this.labelAlternativeNoteViewTextColor.Name = "labelAlternativeNoteViewTextColor";
+            this.labelAlternativeNoteViewTextColor.Size = new System.Drawing.Size(55, 13);
+            this.labelAlternativeNoteViewTextColor.TabIndex = 10;
+            this.labelAlternativeNoteViewTextColor.Text = "Text Color";
+            // 
+            // buttonResetAlternativeNoteViewTextColor
+            // 
+            this.buttonResetAlternativeNoteViewTextColor.Location = new System.Drawing.Point(294, 42);
+            this.buttonResetAlternativeNoteViewTextColor.Name = "buttonResetAlternativeNoteViewTextColor";
+            this.buttonResetAlternativeNoteViewTextColor.Size = new System.Drawing.Size(97, 23);
+            this.buttonResetAlternativeNoteViewTextColor.TabIndex = 56;
+            this.buttonResetAlternativeNoteViewTextColor.Text = "Reset";
+            this.buttonResetAlternativeNoteViewTextColor.UseVisualStyleBackColor = true;
+            // 
+            // buttonPickAlternativeNoteViewTextColor
+            // 
+            this.buttonPickAlternativeNoteViewTextColor.Location = new System.Drawing.Point(180, 42);
+            this.buttonPickAlternativeNoteViewTextColor.Name = "buttonPickAlternativeNoteViewTextColor";
+            this.buttonPickAlternativeNoteViewTextColor.Size = new System.Drawing.Size(108, 23);
+            this.buttonPickAlternativeNoteViewTextColor.TabIndex = 55;
+            this.buttonPickAlternativeNoteViewTextColor.Text = "Pick color";
+            this.buttonPickAlternativeNoteViewTextColor.UseVisualStyleBackColor = true;
+            // 
+            // colorPreviewAlternativeNoteViewBackgroundColor
+            // 
+            this.colorPreviewAlternativeNoteViewBackgroundColor.BackColor = System.Drawing.Color.Magenta;
+            this.colorPreviewAlternativeNoteViewBackgroundColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(9, 70);
+            this.colorPreviewAlternativeNoteViewBackgroundColor.Name = "colorPreviewAlternativeNoteViewBackgroundColor";
+            this.colorPreviewAlternativeNoteViewBackgroundColor.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewAlternativeNoteViewBackgroundColor.TabIndex = 54;
+            this.colorPreviewAlternativeNoteViewBackgroundColor.TabStop = false;
+            // 
+            // colorPreviewAlternativeNoteViewTextColor
+            // 
+            this.colorPreviewAlternativeNoteViewTextColor.BackColor = System.Drawing.Color.Magenta;
+            this.colorPreviewAlternativeNoteViewTextColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPreviewAlternativeNoteViewTextColor.Location = new System.Drawing.Point(9, 40);
+            this.colorPreviewAlternativeNoteViewTextColor.Name = "colorPreviewAlternativeNoteViewTextColor";
+            this.colorPreviewAlternativeNoteViewTextColor.Size = new System.Drawing.Size(24, 24);
+            this.colorPreviewAlternativeNoteViewTextColor.TabIndex = 53;
+            this.colorPreviewAlternativeNoteViewTextColor.TabStop = false;
+            // 
+            // checkBoxEnableLargerAlternativeNoteViewText
+            // 
+            this.checkBoxEnableLargerAlternativeNoteViewText.AutoSize = true;
+            this.checkBoxEnableLargerAlternativeNoteViewText.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxEnableLargerAlternativeNoteViewText.Name = "checkBoxEnableLargerAlternativeNoteViewText";
+            this.checkBoxEnableLargerAlternativeNoteViewText.Size = new System.Drawing.Size(221, 17);
+            this.checkBoxEnableLargerAlternativeNoteViewText.TabIndex = 10;
+            this.checkBoxEnableLargerAlternativeNoteViewText.Text = "Enable Larger Alternative Note View Text";
+            this.checkBoxEnableLargerAlternativeNoteViewText.UseVisualStyleBackColor = true;
+            // 
+            // styledGroupBoxAccessibilityAccessibility
+            // 
+            this.styledGroupBoxAccessibilityAccessibility.BackColor = System.Drawing.Color.White;
+            this.styledGroupBoxAccessibilityAccessibility.BorderColor = System.Drawing.Color.Silver;
+            this.styledGroupBoxAccessibilityAccessibility.BorderWidth = 1;
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.comboBoxScreenNarrationVoiceType);
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.labelScreenNarrationVoiceType);
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.checkBoxSpeechToText);
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.trackBarMessageWindowVisibility);
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.numericUpDownMessageWindowVisibility);
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.labelMessageWindowVisibility);
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.trackBarMessageWindowFadeTime);
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.numericUpDownMessageWindowFadeTime);
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.labelMessageWindowFadeTime);
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.checkBoxShowAccessibilityScreenOnStart);
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.checkBoxSingleButtonNotificationCancel);
+            this.styledGroupBoxAccessibilityAccessibility.Controls.Add(this.checkBoxScreenNarration);
+            this.styledGroupBoxAccessibilityAccessibility.Location = new System.Drawing.Point(9, 9);
+            this.styledGroupBoxAccessibilityAccessibility.Margin = new System.Windows.Forms.Padding(6);
+            this.styledGroupBoxAccessibilityAccessibility.Name = "styledGroupBoxAccessibilityAccessibility";
+            this.styledGroupBoxAccessibilityAccessibility.Size = new System.Drawing.Size(400, 276);
+            this.styledGroupBoxAccessibilityAccessibility.TabIndex = 10;
+            this.styledGroupBoxAccessibilityAccessibility.TabStop = false;
+            this.styledGroupBoxAccessibilityAccessibility.Text = "Accessibility";
+            this.styledGroupBoxAccessibilityAccessibility.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.styledGroupBoxAccessibilityAccessibility.TitleBorderMargin = 6;
+            this.styledGroupBoxAccessibilityAccessibility.TitleBorderPadding = 4;
+            this.styledGroupBoxAccessibilityAccessibility.TitleForeColor = System.Drawing.Color.Black;
+            // 
+            // comboBoxScreenNarrationVoiceType
+            // 
+            this.comboBoxScreenNarrationVoiceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxScreenNarrationVoiceType.FormattingEnabled = true;
+            this.comboBoxScreenNarrationVoiceType.Location = new System.Drawing.Point(198, 201);
+            this.comboBoxScreenNarrationVoiceType.Name = "comboBoxScreenNarrationVoiceType";
+            this.comboBoxScreenNarrationVoiceType.Size = new System.Drawing.Size(196, 21);
+            this.comboBoxScreenNarrationVoiceType.TabIndex = 17;
+            // 
+            // labelScreenNarrationVoiceType
+            // 
+            this.labelScreenNarrationVoiceType.AutoSize = true;
+            this.labelScreenNarrationVoiceType.Location = new System.Drawing.Point(6, 204);
+            this.labelScreenNarrationVoiceType.Name = "labelScreenNarrationVoiceType";
+            this.labelScreenNarrationVoiceType.Size = new System.Drawing.Size(120, 13);
+            this.labelScreenNarrationVoiceType.TabIndex = 16;
+            this.labelScreenNarrationVoiceType.Text = "Screen Narration Voice:";
+            // 
+            // checkBoxSpeechToText
+            // 
+            this.checkBoxSpeechToText.AutoSize = true;
+            this.checkBoxSpeechToText.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxSpeechToText.Name = "checkBoxSpeechToText";
+            this.checkBoxSpeechToText.Size = new System.Drawing.Size(139, 17);
+            this.checkBoxSpeechToText.TabIndex = 6;
+            this.checkBoxSpeechToText.Text = "Enable Speech To Text";
+            this.checkBoxSpeechToText.UseVisualStyleBackColor = true;
+            // 
+            // trackBarMessageWindowVisibility
+            // 
+            this.trackBarMessageWindowVisibility.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarMessageWindowVisibility.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarMessageWindowVisibility.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarMessageWindowVisibility.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarMessageWindowVisibility.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarMessageWindowVisibility.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarMessageWindowVisibility.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarMessageWindowVisibility.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarMessageWindowVisibility.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarMessageWindowVisibility.ForeColor = System.Drawing.Color.White;
+            this.trackBarMessageWindowVisibility.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowVisibility.Location = new System.Drawing.Point(9, 113);
+            this.trackBarMessageWindowVisibility.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowVisibility.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowVisibility.Name = "trackBarMessageWindowVisibility";
+            this.trackBarMessageWindowVisibility.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowVisibility.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowVisibility.ShowDivisionsText = false;
+            this.trackBarMessageWindowVisibility.ShowSmallScale = false;
+            this.trackBarMessageWindowVisibility.Size = new System.Drawing.Size(325, 20);
+            this.trackBarMessageWindowVisibility.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowVisibility.TabIndex = 14;
+            this.trackBarMessageWindowVisibility.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarMessageWindowVisibility.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarMessageWindowVisibility.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarMessageWindowVisibility.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarMessageWindowVisibility.TickAdd = 0F;
+            this.trackBarMessageWindowVisibility.TickColor = System.Drawing.Color.White;
+            this.trackBarMessageWindowVisibility.TickDivide = 0F;
+            this.trackBarMessageWindowVisibility.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarMessageWindowVisibility.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownMessageWindowVisibility
+            // 
+            this.numericUpDownMessageWindowVisibility.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDownMessageWindowVisibility.DecimalPlaces = 1;
+            this.numericUpDownMessageWindowVisibility.Location = new System.Drawing.Point(340, 113);
+            this.numericUpDownMessageWindowVisibility.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDownMessageWindowVisibility.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownMessageWindowVisibility.Name = "numericUpDownMessageWindowVisibility";
+            this.numericUpDownMessageWindowVisibility.Size = new System.Drawing.Size(54, 20);
+            this.numericUpDownMessageWindowVisibility.TabIndex = 15;
+            this.numericUpDownMessageWindowVisibility.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // labelMessageWindowVisibility
+            // 
+            this.labelMessageWindowVisibility.AutoSize = true;
+            this.labelMessageWindowVisibility.Location = new System.Drawing.Point(6, 97);
+            this.labelMessageWindowVisibility.Name = "labelMessageWindowVisibility";
+            this.labelMessageWindowVisibility.Size = new System.Drawing.Size(176, 13);
+            this.labelMessageWindowVisibility.TabIndex = 13;
+            this.labelMessageWindowVisibility.Text = "Message Window Visibility (Opacity)";
+            // 
+            // trackBarMessageWindowFadeTime
+            // 
+            this.trackBarMessageWindowFadeTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarMessageWindowFadeTime.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarMessageWindowFadeTime.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.trackBarMessageWindowFadeTime.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.trackBarMessageWindowFadeTime.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.trackBarMessageWindowFadeTime.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarMessageWindowFadeTime.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.trackBarMessageWindowFadeTime.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.trackBarMessageWindowFadeTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.trackBarMessageWindowFadeTime.ForeColor = System.Drawing.Color.White;
+            this.trackBarMessageWindowFadeTime.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowFadeTime.Location = new System.Drawing.Point(9, 64);
+            this.trackBarMessageWindowFadeTime.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowFadeTime.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowFadeTime.Name = "trackBarMessageWindowFadeTime";
+            this.trackBarMessageWindowFadeTime.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowFadeTime.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowFadeTime.ShowDivisionsText = false;
+            this.trackBarMessageWindowFadeTime.ShowSmallScale = false;
+            this.trackBarMessageWindowFadeTime.Size = new System.Drawing.Size(325, 20);
+            this.trackBarMessageWindowFadeTime.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.trackBarMessageWindowFadeTime.TabIndex = 11;
+            this.trackBarMessageWindowFadeTime.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarMessageWindowFadeTime.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.trackBarMessageWindowFadeTime.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.trackBarMessageWindowFadeTime.ThumbSize = new System.Drawing.Size(16, 16);
+            this.trackBarMessageWindowFadeTime.TickAdd = 0F;
+            this.trackBarMessageWindowFadeTime.TickColor = System.Drawing.Color.White;
+            this.trackBarMessageWindowFadeTime.TickDivide = 0F;
+            this.trackBarMessageWindowFadeTime.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarMessageWindowFadeTime.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownMessageWindowFadeTime
+            // 
+            this.numericUpDownMessageWindowFadeTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDownMessageWindowFadeTime.DecimalPlaces = 1;
+            this.numericUpDownMessageWindowFadeTime.Location = new System.Drawing.Point(340, 64);
+            this.numericUpDownMessageWindowFadeTime.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDownMessageWindowFadeTime.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownMessageWindowFadeTime.Name = "numericUpDownMessageWindowFadeTime";
+            this.numericUpDownMessageWindowFadeTime.Size = new System.Drawing.Size(54, 20);
+            this.numericUpDownMessageWindowFadeTime.TabIndex = 12;
+            this.numericUpDownMessageWindowFadeTime.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // labelMessageWindowFadeTime
+            // 
+            this.labelMessageWindowFadeTime.AutoSize = true;
+            this.labelMessageWindowFadeTime.Location = new System.Drawing.Point(6, 48);
+            this.labelMessageWindowFadeTime.Name = "labelMessageWindowFadeTime";
+            this.labelMessageWindowFadeTime.Size = new System.Drawing.Size(205, 13);
+            this.labelMessageWindowFadeTime.TabIndex = 10;
+            this.labelMessageWindowFadeTime.Text = "Message Window Fade Time (in seconds)";
+            // 
+            // checkBoxShowAccessibilityScreenOnStart
+            // 
+            this.checkBoxShowAccessibilityScreenOnStart.AutoSize = true;
+            this.checkBoxShowAccessibilityScreenOnStart.Location = new System.Drawing.Point(9, 245);
+            this.checkBoxShowAccessibilityScreenOnStart.Name = "checkBoxShowAccessibilityScreenOnStart";
+            this.checkBoxShowAccessibilityScreenOnStart.Size = new System.Drawing.Size(261, 17);
+            this.checkBoxShowAccessibilityScreenOnStart.TabIndex = 9;
+            this.checkBoxShowAccessibilityScreenOnStart.Text = "Show first-time accessibility screen on start (again)";
+            this.checkBoxShowAccessibilityScreenOnStart.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSingleButtonNotificationCancel
+            // 
+            this.checkBoxSingleButtonNotificationCancel.AutoSize = true;
+            this.checkBoxSingleButtonNotificationCancel.Location = new System.Drawing.Point(9, 152);
+            this.checkBoxSingleButtonNotificationCancel.Name = "checkBoxSingleButtonNotificationCancel";
+            this.checkBoxSingleButtonNotificationCancel.Size = new System.Drawing.Size(181, 17);
+            this.checkBoxSingleButtonNotificationCancel.TabIndex = 8;
+            this.checkBoxSingleButtonNotificationCancel.Text = "Single Button Notification Cancel";
+            this.checkBoxSingleButtonNotificationCancel.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxScreenNarration
+            // 
+            this.checkBoxScreenNarration.AutoSize = true;
+            this.checkBoxScreenNarration.Location = new System.Drawing.Point(9, 175);
+            this.checkBoxScreenNarration.Name = "checkBoxScreenNarration";
+            this.checkBoxScreenNarration.Size = new System.Drawing.Size(142, 17);
+            this.checkBoxScreenNarration.TabIndex = 7;
+            this.checkBoxScreenNarration.Text = "Enable Screen Narration";
+            this.checkBoxScreenNarration.UseVisualStyleBackColor = true;
+            // 
             // tabPageLogin
             // 
             this.tabPageLogin.AutoScroll = true;
@@ -6369,7 +7235,7 @@
             this.labelTweaksDesc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTweaksDesc.Location = new System.Drawing.Point(12, 45);
             this.labelTweaksDesc.Name = "labelTweaksDesc";
-            this.labelTweaksDesc.Size = new System.Drawing.Size(333, 17);
+            this.labelTweaksDesc.Size = new System.Drawing.Size(358, 16);
             this.labelTweaksDesc.TabIndex = 72;
             this.labelTweaksDesc.Text = "Tip: Hover over an option, if you\'re unsure what it does.";
             // 
@@ -6487,6 +7353,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityX)).EndInit();
             this.tabPageCamera.ResumeLayout(false);
+            this.styledGroupBoxFreeCam.ResumeLayout(false);
+            this.styledGroupBoxFreeCam.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFreeCamRotationSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFreeCamMovementSpeed)).EndInit();
+            this.styledGroupBoxAccessibility.ResumeLayout(false);
+            this.styledGroupBoxAccessibility.PerformLayout();
             this.groupBoxCameraPosition.ResumeLayout(false);
             this.groupBoxCameraPosition.PerformLayout();
             this.groupBoxMeleeCombatCameraPosition.ResumeLayout(false);
@@ -6521,6 +7393,15 @@
             this.groupBoxFieldOfView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFOVPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFOV)).EndInit();
+            this.tabPageAccessibility.ResumeLayout(false);
+            this.styledGroupBoxAlternativeNoteView.ResumeLayout(false);
+            this.styledGroupBoxAlternativeNoteView.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewAlternativeNoteViewBackgroundColor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPreviewAlternativeNoteViewTextColor)).EndInit();
+            this.styledGroupBoxAccessibilityAccessibility.ResumeLayout(false);
+            this.styledGroupBoxAccessibilityAccessibility.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMessageWindowVisibility)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMessageWindowFadeTime)).EndInit();
             this.tabPageLogin.ResumeLayout(false);
             this.groupBoxLoginProfiles.ResumeLayout(false);
             this.groupBoxLoginProfiles.PerformLayout();
@@ -6822,5 +7703,54 @@
         private System.Windows.Forms.NumericUpDown numDOFStrength;
         private System.Windows.Forms.Label labelDOFStrength;
         private ColorSlider.ColorSlider sliderDOFStrength;
+        private System.Windows.Forms.CheckBox checkBoxRejectSharedPerks;
+        private System.Windows.Forms.ComboBox comboBoxVATSGrenadeMineTargetingMode;
+        private System.Windows.Forms.Label labelVATSGrenadeMineTargetingMode;
+        private System.Windows.Forms.CheckBox checkBoxAskOpenPerkCardPacks;
+        private System.Windows.Forms.CheckBox checkBoxShowCAMPWeather;
+        private System.Windows.Forms.CheckBox checkBoxAutoScrollPipboyItemStats;
+        private System.Windows.Forms.CheckBox checkBoxAdvancedModDescriptions;
+        private System.Windows.Forms.CheckBox checkBoxShowOtherPlayersPings;
+        private System.Windows.Forms.CheckBox checkBoxEnableQuestTrackNotification;
+        private System.Windows.Forms.CheckBox checkBoxEnableIntenseWeatherEffects;
+        private System.Windows.Forms.CheckBox checkBoxEnableWeaponImpactEffects;
+        private System.Windows.Forms.CheckBox checkBoxEnableMuzzleFlashes;
+        private Controls.StyledGroupBox styledGroupBoxAccessibility;
+        private System.Windows.Forms.CheckBox checkBoxEnableCameraShake;
+        private Controls.StyledGroupBox styledGroupBoxFreeCam;
+        private System.Windows.Forms.NumericUpDown numericUpDownFreeCamRotationSpeed;
+        private ColorSlider.ColorSlider trackBarFreeCamRotationSpeed;
+        private System.Windows.Forms.Label labelFreeCamRotationSpeed;
+        private System.Windows.Forms.NumericUpDown numericUpDownFreeCamMovementSpeed;
+        private ColorSlider.ColorSlider trackBarFreeCamMovementSpeed;
+        private System.Windows.Forms.Label labelFreeCamMovementSpeed;
+        private System.Windows.Forms.CheckBox checkBoxWorkshopFreeCameraControlsHoldToggle;
+        private System.Windows.Forms.CheckBox checkBoxWorkshopFreeCameraStartAtPreviousLocation;
+        private System.Windows.Forms.CheckBox checkBoxWorkshopStartInFreeCamera;
+        private System.Windows.Forms.TabPage tabPageAccessibility;
+        private Controls.StyledGroupBox styledGroupBoxAccessibilityAccessibility;
+        private System.Windows.Forms.CheckBox checkBoxSingleButtonNotificationCancel;
+        private System.Windows.Forms.CheckBox checkBoxScreenNarration;
+        private System.Windows.Forms.CheckBox checkBoxSpeechToText;
+        private Controls.StyledGroupBox styledGroupBoxAlternativeNoteView;
+        private System.Windows.Forms.CheckBox checkBoxEnableLargerAlternativeNoteViewText;
+        private System.Windows.Forms.CheckBox checkBoxShowAccessibilityScreenOnStart;
+        private Controls.ColorPreview colorPreviewAlternativeNoteViewBackgroundColor;
+        private Controls.ColorPreview colorPreviewAlternativeNoteViewTextColor;
+        private System.Windows.Forms.Button buttonResetAlternativeNoteViewBackgroundColor;
+        private System.Windows.Forms.Button buttonPickAlternativeNoteViewBackgroundColor;
+        private System.Windows.Forms.Label labelAlternativeNoteViewBackgroundColor;
+        private System.Windows.Forms.Label labelAlternativeNoteViewTextColor;
+        private System.Windows.Forms.Button buttonResetAlternativeNoteViewTextColor;
+        private System.Windows.Forms.Button buttonPickAlternativeNoteViewTextColor;
+        private ColorSlider.ColorSlider trackBarMessageWindowVisibility;
+        private System.Windows.Forms.NumericUpDown numericUpDownMessageWindowVisibility;
+        private System.Windows.Forms.Label labelMessageWindowVisibility;
+        private ColorSlider.ColorSlider trackBarMessageWindowFadeTime;
+        private System.Windows.Forms.NumericUpDown numericUpDownMessageWindowFadeTime;
+        private System.Windows.Forms.Label labelMessageWindowFadeTime;
+        private System.Windows.Forms.ComboBox comboBoxScreenNarrationVoiceType;
+        private System.Windows.Forms.Label labelScreenNarrationVoiceType;
+        private System.Windows.Forms.ColorDialog colorDialog;
     }
 }

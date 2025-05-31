@@ -16,6 +16,7 @@ using Fo76ini.Tweaks.Pipboy;
 using Fo76ini.Tweaks.Video;
 using Fo76ini.Tweaks.Volume;
 using Fo76ini.Tweaks.Graphics.Effects;
+using Fo76ini.Tweaks.Accessibility;
 
 namespace Fo76ini.Forms.FormMain
 {
@@ -46,6 +47,7 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(checkBoxEnablePowerArmorHUD, toolTip, enablePowerArmorHUDTweak);
             LinkedTweaks.LinkInfo(checkBoxShowCompass, toolTip, showCompassTweak);
             LinkedTweaks.LinkInfo(checkBoxShowOtherPlayersNames, toolTip, showOtherPlayersNamesTweak);
+            LinkedTweaks.LinkInfo(checkBoxShowOtherPlayersPings, toolTip, showOtherPlayersPingsTweak);
             LinkedTweaks.LinkInfo(comboBoxShowActiveEffectsOnHUD, toolTip, activeEffectsOnHUDTweak);
             LinkedTweaks.LinkInfo(labelShowActiveEffectsOnHUD, toolTip, activeEffectsOnHUDTweak);
             LinkedTweaks.LinkInfo(comboBoxHighlightCorpses, toolTip, corpseHighlightingTweak);
@@ -57,7 +59,15 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(sliderHUDOpacity, toolTip, hudOpacityTweak);
             LinkedTweaks.LinkInfo(labelHUDOpacity, toolTip, hudOpacityTweak);
             LinkedTweaks.LinkInfo(checkBoxBackpackVisible, toolTip, backpackVisibleTweak);
+            LinkedTweaks.LinkInfo(checkBoxAskOpenPerkCardPacks, toolTip, askOpenPerkCardPacksTweak);
+            LinkedTweaks.LinkInfo(checkBoxRejectSharedPerks, toolTip, rejectSharedPerksEnabledTweak);
+            LinkedTweaks.LinkInfo(labelVATSGrenadeMineTargetingMode, toolTip, vatsGrenadeMineTargetingModeTweak);
+            LinkedTweaks.LinkInfo(comboBoxVATSGrenadeMineTargetingMode, toolTip, vatsGrenadeMineTargetingModeTweak);
+            LinkedTweaks.LinkInfo(checkBoxAdvancedModDescriptions, toolTip, advancedModDescriptionsTweak);
+            LinkedTweaks.LinkInfo(checkBoxAutoScrollPipboyItemStats, toolTip, autoScrollPipboyItemStatsTweak);
+            LinkedTweaks.LinkInfo(checkBoxShowCAMPWeather, toolTip, showCAMPWeatherTweak);
 
+            LinkedTweaks.LinkInfo(checkBoxEnableQuestTrackNotification, toolTip, enableQuestTrackNotificationTweak);
             LinkedTweaks.LinkInfo(checkBoxEnableQuestAutoTrackMain, toolTip, autoTrackMainQuestWhenStartedTweak);
             LinkedTweaks.LinkInfo(checkBoxEnableQuestAutoTrackSide, toolTip, autoTrackSideQuestWhenStartedTweak);
             LinkedTweaks.LinkInfo(checkBoxEnableQuestAutoTrackMisc, toolTip, autoTrackMiscQuestWhenStartedTweak);
@@ -106,6 +116,9 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(comboBoxGodrayQuality, toolTip, volumetricLightingQualityTweak);
             LinkedTweaks.LinkInfo(checkBoxDisableGore, toolTip, disableAllGoreTweak);
             LinkedTweaks.LinkInfo(checkBoxBloodSplatter, toolTip, bloodSplatterTweak);
+            LinkedTweaks.LinkInfo(checkBoxEnableIntenseWeatherEffects, toolTip, enableIntenseWeatherEffectsTweak);
+            LinkedTweaks.LinkInfo(checkBoxEnableMuzzleFlashes, toolTip, enableMuzzleFlashesTweaks);
+            LinkedTweaks.LinkInfo(checkBoxEnableWeaponImpactEffects, toolTip, enableWeaponImpactEffectsTweak);
             LinkedTweaks.LinkInfo(labelShadowTextureResolution, toolTip, shadowMapResolutionTweak);
             LinkedTweaks.LinkInfo(comboBoxShadowTextureResolution, toolTip, shadowMapResolutionTweak);
             LinkedTweaks.LinkInfo(comboBoxShadowBlurriness, toolTip, shadowBlurrinessTweak);
@@ -215,6 +228,7 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(this.trackBarPhotomodeRotationSpeed, toolTip, selfieCameraRotationSpeedTweak);
             LinkedTweaks.LinkInfo(this.checkBoxVanityMode, toolTip, disableAutoVanityModeTweak);
             LinkedTweaks.LinkInfo(this.checkBoxForceVanityMode, toolTip, forceAutoVanityModeTweak);
+            LinkedTweaks.LinkInfo(checkBoxEnableCameraShake, toolTip, enableCameraShakeTweak);
             LinkedTweaks.LinkInfo(numADSFOV, toolTip, fov3rdADSTweak);
             LinkedTweaks.LinkInfo(numFOV, toolTip, fovTweak);
             LinkedTweaks.LinkInfo(sliderFOV, toolTip, fovTweak);
@@ -228,6 +242,40 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(sliderCameraDistanceMinimum, toolTip, vanityModeMinDistTweak);
             LinkedTweaks.LinkInfo(sliderCameraDistanceMaximum, toolTip, vanityModeMaxDistTweak);
             LinkedTweaks.LinkInfo(sliderfPitchZoomOutMaxDist, toolTip, pitchZoomOutMaxDistTweak);
+
+            LinkedTweaks.LinkInfo(checkBoxWorkshopFreeCameraControlsHoldToggle, toolTip, workshopFreeCameraControlsHoldToggleTweak);
+            LinkedTweaks.LinkInfo(labelFreeCamRotationSpeed, toolTip, workshopFreeCameraRotationSpeedTweak);
+            LinkedTweaks.LinkInfo(labelFreeCamMovementSpeed, toolTip, workshopFreeCameraTranslationSpeedTweak);
+            LinkedTweaks.LinkInfo(trackBarFreeCamRotationSpeed, toolTip, workshopFreeCameraRotationSpeedTweak);
+            LinkedTweaks.LinkInfo(trackBarFreeCamMovementSpeed, toolTip, workshopFreeCameraTranslationSpeedTweak);
+            LinkedTweaks.LinkInfo(checkBoxWorkshopFreeCameraStartAtPreviousLocation, toolTip, workshopStartAtPreviousFreeCameraLocationTweak);
+            LinkedTweaks.LinkInfo(checkBoxWorkshopStartInFreeCamera, toolTip, workshopStartInFreeCameraTweak);
+
+            // Accessibility
+            LinkedTweaks.LinkInfo(labelAlternativeNoteViewBackgroundColor, toolTip, alternativeNoteViewBackgroundColorTweak);
+            LinkedTweaks.LinkInfo(buttonPickAlternativeNoteViewBackgroundColor, toolTip, alternativeNoteViewBackgroundColorTweak);
+            LinkedTweaks.LinkInfo(buttonResetAlternativeNoteViewBackgroundColor, toolTip, alternativeNoteViewBackgroundColorTweak);
+            LinkedTweaks.LinkInfo(colorPreviewAlternativeNoteViewBackgroundColor, toolTip, alternativeNoteViewBackgroundColorTweak);
+
+            LinkedTweaks.LinkInfo(labelAlternativeNoteViewTextColor, toolTip, alternativeNoteViewTextColorTweak);
+            LinkedTweaks.LinkInfo(buttonPickAlternativeNoteViewTextColor, toolTip, alternativeNoteViewTextColorTweak);
+            LinkedTweaks.LinkInfo(buttonResetAlternativeNoteViewTextColor, toolTip, alternativeNoteViewTextColorTweak);
+            LinkedTweaks.LinkInfo(colorPreviewAlternativeNoteViewTextColor, toolTip, alternativeNoteViewTextColorTweak);
+
+            LinkedTweaks.LinkInfo(labelMessageWindowFadeTime, toolTip, messageWindowFadeTimeTweak);
+            LinkedTweaks.LinkInfo(trackBarMessageWindowFadeTime, toolTip, messageWindowFadeTimeTweak);
+
+            LinkedTweaks.LinkInfo(labelMessageWindowVisibility, toolTip, messageWindowFadeAmountTweak);
+            LinkedTweaks.LinkInfo(trackBarMessageWindowVisibility, toolTip, messageWindowFadeAmountTweak);
+
+            LinkedTweaks.LinkInfo(checkBoxScreenNarration, toolTip, screenNarrationEnabledTweak);
+            LinkedTweaks.LinkInfo(labelScreenNarrationVoiceType, toolTip, screenNarrationVoiceTypeTweak);
+            LinkedTweaks.LinkInfo(comboBoxScreenNarrationVoiceType, toolTip, screenNarrationVoiceTypeTweak);
+
+            LinkedTweaks.LinkInfo(checkBoxShowAccessibilityScreenOnStart, toolTip, showAccessibilityScreenOnStartTweak);
+            LinkedTweaks.LinkInfo(checkBoxSingleButtonNotificationCancel, toolTip, singleButtonNotificationCancelTweak);
+            LinkedTweaks.LinkInfo(checkBoxSpeechToText, toolTip, speechToTextTweak);
+            LinkedTweaks.LinkInfo(checkBoxEnableLargerAlternativeNoteViewText, toolTip, useLargeEasyReadTextTweak);
         }
 
         /// <summary>
@@ -281,6 +329,11 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkSlider(this.trackBarfOverShoulderMeleeCombatPosX, this.numfOverShoulderMeleeCombatPosX, 1);
             LinkedTweaks.LinkSlider(this.trackBarfOverShoulderMeleeCombatPosZ, this.numfOverShoulderMeleeCombatPosZ, 1);
             LinkedTweaks.LinkSlider(this.trackBarfOverShoulderMeleeCombatAddY, this.numfOverShoulderMeleeCombatAddY, 1);
+
+            LinkedTweaks.LinkSlider(this.trackBarFreeCamRotationSpeed, this.numericUpDownFreeCamRotationSpeed, 1);
+            LinkedTweaks.LinkSlider(this.trackBarFreeCamMovementSpeed, this.numericUpDownFreeCamMovementSpeed, 1);
+            LinkedTweaks.LinkSlider(this.trackBarMessageWindowFadeTime, this.numericUpDownMessageWindowFadeTime, 1);
+            LinkedTweaks.LinkSlider(this.trackBarMessageWindowVisibility, this.numericUpDownMessageWindowVisibility, 1);
         }
 
         /// <summary>
@@ -335,6 +388,9 @@ namespace Fo76ini.Forms.FormMain
             // Show Other Players' Names
             LinkedTweaks.LinkTweak(checkBoxShowOtherPlayersNames, showOtherPlayersNamesTweak);
 
+            // Show Other Players' Pings
+            LinkedTweaks.LinkTweak(checkBoxShowOtherPlayersPings, showOtherPlayersPingsTweak);
+
             // Show active effects on HUD
             LinkedTweaks.LinkTweak(comboBoxShowActiveEffectsOnHUD, activeEffectsOnHUDTweak);
 
@@ -352,12 +408,19 @@ namespace Fo76ini.Forms.FormMain
 
 
             // XYZ Quest Active when started
+            LinkedTweaks.LinkTweak(checkBoxEnableQuestTrackNotification, enableQuestTrackNotificationTweak);
             LinkedTweaks.LinkTweak(checkBoxEnableQuestAutoTrackMain, autoTrackMainQuestWhenStartedTweak);
             LinkedTweaks.LinkTweak(checkBoxEnableQuestAutoTrackSide, autoTrackSideQuestWhenStartedTweak);
             LinkedTweaks.LinkTweak(checkBoxEnableQuestAutoTrackMisc, autoTrackMiscQuestWhenStartedTweak);
             LinkedTweaks.LinkTweak(checkBoxEnableQuestAutoTrackEvent, autoTrackEventQuestWhenStartedTweak);
             LinkedTweaks.LinkTweak(checkBoxEnableQuestAutoTrackDaily, autoTrackOtherQuestWhenStartedTweak);
 
+            LinkedTweaks.LinkTweak(checkBoxAskOpenPerkCardPacks, askOpenPerkCardPacksTweak);
+            LinkedTweaks.LinkTweak(checkBoxRejectSharedPerks, rejectSharedPerksEnabledTweak);
+            LinkedTweaks.LinkTweak(comboBoxVATSGrenadeMineTargetingMode, vatsGrenadeMineTargetingModeTweak);
+            LinkedTweaks.LinkTweak(checkBoxAdvancedModDescriptions, advancedModDescriptionsTweak);
+            LinkedTweaks.LinkTweak(checkBoxAutoScrollPipboyItemStats, autoScrollPipboyItemStatsTweak);
+            LinkedTweaks.LinkTweak(checkBoxShowCAMPWeather, showCAMPWeatherTweak);
 
 
             /*
@@ -481,6 +544,11 @@ namespace Fo76ini.Forms.FormMain
 
             // Effects / Blood splatter
             LinkedTweaks.LinkTweak(checkBoxBloodSplatter, bloodSplatterTweak);
+
+            // Effects
+            LinkedTweaks.LinkTweak(checkBoxEnableIntenseWeatherEffects, enableIntenseWeatherEffectsTweak);
+            LinkedTweaks.LinkTweak(checkBoxEnableMuzzleFlashes, enableMuzzleFlashesTweaks);
+            LinkedTweaks.LinkTweak(checkBoxEnableWeaponImpactEffects, enableWeaponImpactEffectsTweak);
 
             // Shadow quality
             LinkedTweaks.LinkTweak(comboBoxShadowQuality, shadowQualityTweak);
@@ -609,6 +677,9 @@ namespace Fo76ini.Forms.FormMain
             // 3rd person ADS FOV
             LinkedTweaks.LinkTweak(numADSFOV, fov3rdADSTweak);
 
+            // Enable Camera Shake
+            LinkedTweaks.LinkTweak(checkBoxEnableCameraShake, enableCameraShakeTweak);
+
             // Camera distance
             LinkedTweaks.LinkTweak(numCameraDistanceMinimum, vanityModeMinDistTweak);
             LinkedTweaks.LinkTweak(numCameraDistanceMaximum, vanityModeMaxDistTweak);
@@ -637,6 +708,44 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkTweak(this.numfOverShoulderMeleeCombatPosX, cameraOverShoulderMeleeCombatPosXTweak);
             LinkedTweaks.LinkTweak(this.numfOverShoulderMeleeCombatPosZ, cameraOverShoulderMeleeCombatPosZTweak);
             LinkedTweaks.LinkTweak(this.numfOverShoulderMeleeCombatAddY, cameraOverShoulderMeleeCombatAddYTweak);
+
+            // Workshop Free Camera:
+            LinkedTweaks.LinkTweak(this.checkBoxWorkshopFreeCameraControlsHoldToggle, workshopFreeCameraControlsHoldToggleTweak);
+            LinkedTweaks.LinkTweak(this.numericUpDownFreeCamRotationSpeed, workshopFreeCameraRotationSpeedTweak);
+            LinkedTweaks.LinkTweak(this.numericUpDownFreeCamMovementSpeed, workshopFreeCameraTranslationSpeedTweak);
+            LinkedTweaks.LinkTweak(this.checkBoxWorkshopFreeCameraStartAtPreviousLocation, workshopStartAtPreviousFreeCameraLocationTweak);
+            LinkedTweaks.LinkTweak(this.checkBoxWorkshopStartInFreeCamera, workshopStartInFreeCameraTweak);
+
+
+
+            /*
+             * Accessibility tab
+             */
+
+            LinkedTweaks.LinkTweak(this.numericUpDownMessageWindowFadeTime, messageWindowFadeTimeTweak);
+            LinkedTweaks.LinkTweak(this.numericUpDownMessageWindowVisibility, messageWindowFadeAmountTweak);
+            LinkedTweaks.LinkTweak(this.checkBoxScreenNarration, screenNarrationEnabledTweak);
+            LinkedTweaks.LinkTweak(this.comboBoxScreenNarrationVoiceType, screenNarrationVoiceTypeTweak);
+            LinkedTweaks.LinkTweak(this.checkBoxShowAccessibilityScreenOnStart, showAccessibilityScreenOnStartTweak);
+            LinkedTweaks.LinkTweak(this.checkBoxSingleButtonNotificationCancel, singleButtonNotificationCancelTweak);
+            LinkedTweaks.LinkTweak(this.checkBoxSpeechToText, speechToTextTweak);
+            LinkedTweaks.LinkTweak(this.checkBoxEnableLargerAlternativeNoteViewText, useLargeEasyReadTextTweak);
+
+            // Alternative Note View Text Color:
+            LinkedTweaks.LinkColor(
+                buttonPickAlternativeNoteViewTextColor,   // "Pick color" button
+                buttonResetAlternativeNoteViewTextColor,  // "Reset" button
+                colorDialog,                              // The color picking dialog that should open when clicking on "Pick color"
+                colorPreviewAlternativeNoteViewTextColor, // The colored square that is left to the label.
+                alternativeNoteViewTextColorTweak);
+
+            // Alternative Note View Background Color:
+            LinkedTweaks.LinkColor(
+                buttonPickAlternativeNoteViewBackgroundColor,
+                buttonResetAlternativeNoteViewBackgroundColor,
+                colorDialog,
+                colorPreviewAlternativeNoteViewBackgroundColor,
+                alternativeNoteViewBackgroundColorTweak);
         }
 
 
@@ -660,12 +769,20 @@ namespace Fo76ini.Forms.FormMain
         private EnablePowerArmorHUDTweak enablePowerArmorHUDTweak = new EnablePowerArmorHUDTweak();
         private ShowCrosshairTweak showCrosshairTweak = new ShowCrosshairTweak();
         private ShowOtherPlayersNamesTweak showOtherPlayersNamesTweak = new ShowOtherPlayersNamesTweak();
+        private ShowOtherPlayersPingsTweak showOtherPlayersPingsTweak = new ShowOtherPlayersPingsTweak();
         private ActiveEffectsOnHUDTweak activeEffectsOnHUDTweak = new ActiveEffectsOnHUDTweak();
         private CorpseHighlightingTweak corpseHighlightingTweak = new CorpseHighlightingTweak();
         private FloatingQuestMarkersDistanceTweak floatingQuestMarkersDistanceTweak = new FloatingQuestMarkersDistanceTweak();
         private HUDOpacityTweak hudOpacityTweak = new HUDOpacityTweak();
         private BackpackVisibleTweak backpackVisibleTweak = new BackpackVisibleTweak();
-
+        private AskOpenPerkCardPacksTweak askOpenPerkCardPacksTweak = new AskOpenPerkCardPacksTweak();
+        private RejectSharedPerksEnabledTweak rejectSharedPerksEnabledTweak = new RejectSharedPerksEnabledTweak();
+        private VATSGrenadeMineTargetingModeTweak vatsGrenadeMineTargetingModeTweak = new VATSGrenadeMineTargetingModeTweak();
+        private AdvancedModDescriptionsTweak advancedModDescriptionsTweak = new AdvancedModDescriptionsTweak();
+        private AutoScrollPipboyItemStatsTweak autoScrollPipboyItemStatsTweak = new AutoScrollPipboyItemStatsTweak();
+        private ShowCAMPWeatherTweak showCAMPWeatherTweak = new ShowCAMPWeatherTweak();
+        
+        private EnableQuestTrackNotificationTweak enableQuestTrackNotificationTweak = new EnableQuestTrackNotificationTweak();
         private AutoTrackQuestWhenStartedTweak autoTrackMainQuestWhenStartedTweak = new AutoTrackQuestWhenStartedTweak("Main", "Main");
         private AutoTrackQuestWhenStartedTweak autoTrackSideQuestWhenStartedTweak = new AutoTrackQuestWhenStartedTweak("Side", "Side");
         private AutoTrackQuestWhenStartedTweak autoTrackMiscQuestWhenStartedTweak = new AutoTrackQuestWhenStartedTweak("Misc", "Miscellaneous");
@@ -679,7 +796,7 @@ namespace Fo76ini.Forms.FormMain
         private TopMostWindowTweak topMostWindowTweak = new TopMostWindowTweak();
         private FixHUD4to3RatioTweak fixHUD4to3RatioTweak = new FixHUD4to3RatioTweak();
 
-        // Graphics
+        // Video tab --> Graphics
         private AntiAliasingTweak antiAliasingTweak = new AntiAliasingTweak();
         private AnisotropicFilteringTweak anisotropicFilteringTweak = new AnisotropicFilteringTweak();
         private TextureQualityPresetTweak textureQualityTweak = new TextureQualityPresetTweak();
@@ -691,23 +808,28 @@ namespace Fo76ini.Forms.FormMain
         private AmbientOcclusionTweak ambientOcclusionTweak = new AmbientOcclusionTweak();
         private VolumetricLightingTweak volumetricLightingTweak = new VolumetricLightingTweak();
         private VolumetricLightingQualityTweak volumetricLightingQualityTweak = new VolumetricLightingQualityTweak();
+
         private DisableAllGoreTweak disableAllGoreTweak = new DisableAllGoreTweak();
         private BloodSplatterEnabledTweak bloodSplatterTweak = new BloodSplatterEnabledTweak();
+        private EnableIntenseWeatherEffectsTweak enableIntenseWeatherEffectsTweak = new EnableIntenseWeatherEffectsTweak();
+        private EnableMuzzleFlashesTweaks enableMuzzleFlashesTweaks = new EnableMuzzleFlashesTweaks();
+        private EnableWeaponImpactEffectsTweak enableWeaponImpactEffectsTweak = new EnableWeaponImpactEffectsTweak();
+
         private ShadowMapResolutionTweak shadowMapResolutionTweak = new ShadowMapResolutionTweak();
         private ShadowBlurrinessTweak shadowBlurrinessTweak = new ShadowBlurrinessTweak();
         private ShadowDistanceTweak shadowDistanceTweak = new ShadowDistanceTweak();
-        private DirShadowSplitsTweak dirShadowSplitsTweak = new DirShadowSplitsTweak();
+        //private DirShadowSplitsTweak dirShadowSplitsTweak = new DirShadowSplitsTweak();
         private ShadowQualityPresetTweak shadowQualityTweak = new ShadowQualityPresetTweak();
         private LODFadeOutMultObjectsTweak lodFadeOutMultObjectsTweak = new LODFadeOutMultObjectsTweak();
         private LODFadeOutMultItemsTweak lodFadeOutMultItemsTweak = new LODFadeOutMultItemsTweak();
         private LODFadeOutMultActorsTweak lodFadeOutMultActorsTweak = new LODFadeOutMultActorsTweak();
         private EnableGrassTweak enableGrassTweak = new EnableGrassTweak();
         private GrassFadeDistanceTweak grassFadeDistanceTweak = new GrassFadeDistanceTweak();
-        private BlendSplitDirShadowTweak blendSplitDirShadowTweak = new BlendSplitDirShadowTweak();
+        //private BlendSplitDirShadowTweak blendSplitDirShadowTweak = new BlendSplitDirShadowTweak();
         private TAAPostOverlayTweak taaPostOverlayTweak = new TAAPostOverlayTweak();
         private TAAPostSharpenTweak taaPostSharpenTweak = new TAAPostSharpenTweak();
         private ScreenSpaceReflectionsTweak screenSpaceReflectionsTweak = new ScreenSpaceReflectionsTweak();
-        private BloomTweak bloomTweak = new BloomTweak();
+        //private BloomTweak bloomTweak = new BloomTweak();
 
         private WaterDisplacementsTweak waterDisplacementsTweak = new WaterDisplacementsTweak();
         private WaterRefractionsTweak waterRefractionsTweak = new WaterRefractionsTweak();
@@ -752,9 +874,11 @@ namespace Fo76ini.Forms.FormMain
         private EnableGamepadRumbleTweak enableGamepadRumbleTweak = new EnableGamepadRumbleTweak();
         private AimAssistTweak aimAssistTweak = new AimAssistTweak();
 
-        // Camera 
+        // Camera tab
         private FieldOfViewTweak fovTweak = new FieldOfViewTweak();
         private FOV3rdADSTweak fov3rdADSTweak = new FOV3rdADSTweak();
+
+        private EnableCameraShakeTweak enableCameraShakeTweak = new EnableCameraShakeTweak();
 
         private VanityModeMinDistTweak vanityModeMinDistTweak = new VanityModeMinDistTweak();
         private VanityModeMaxDistTweak vanityModeMaxDistTweak = new VanityModeMaxDistTweak();
@@ -767,6 +891,12 @@ namespace Fo76ini.Forms.FormMain
         private SelfieCameraTranslationSpeedTweak selfieCameraTranslationSpeedTweak = new SelfieCameraTranslationSpeedTweak();
         private SelfieCameraRotationSpeedTweak selfieCameraRotationSpeedTweak = new SelfieCameraRotationSpeedTweak();
 
+        private WorkshopFreeCameraControlsHoldToggleTweak workshopFreeCameraControlsHoldToggleTweak = new WorkshopFreeCameraControlsHoldToggleTweak();
+        private WorkshopFreeCameraRotationSpeedTweak workshopFreeCameraRotationSpeedTweak = new WorkshopFreeCameraRotationSpeedTweak();
+        private WorkshopFreeCameraTranslationSpeedTweak workshopFreeCameraTranslationSpeedTweak = new WorkshopFreeCameraTranslationSpeedTweak();
+        private WorkshopStartAtPreviousFreeCameraLocationTweak workshopStartAtPreviousFreeCameraLocationTweak = new WorkshopStartAtPreviousFreeCameraLocationTweak();
+        private WorkshopStartInFreeCameraTweak workshopStartInFreeCameraTweak = new WorkshopStartInFreeCameraTweak();
+
         private ApplyCameraNodeAnimationsTweak applyCameraNodeAnimationsTweak = new ApplyCameraNodeAnimationsTweak();
         private CameraOverShoulderPosXTweak cameraOverShoulderPosXTweak = new CameraOverShoulderPosXTweak();
         private CameraOverShoulderPosZTweak cameraOverShoulderPosZTweak = new CameraOverShoulderPosZTweak();
@@ -776,5 +906,17 @@ namespace Fo76ini.Forms.FormMain
         private CameraOverShoulderMeleeCombatPosXTweak cameraOverShoulderMeleeCombatPosXTweak = new CameraOverShoulderMeleeCombatPosXTweak();
         private CameraOverShoulderMeleeCombatPosZTweak cameraOverShoulderMeleeCombatPosZTweak = new CameraOverShoulderMeleeCombatPosZTweak();
         private CameraOverShoulderMeleeCombatAddYTweak cameraOverShoulderMeleeCombatAddYTweak = new CameraOverShoulderMeleeCombatAddYTweak();
+
+        // Accessibility tab
+        private AlternativeNoteViewBackgroundColorTweak alternativeNoteViewBackgroundColorTweak = new AlternativeNoteViewBackgroundColorTweak();
+        private AlternativeNoteViewTextColorTweak alternativeNoteViewTextColorTweak = new AlternativeNoteViewTextColorTweak();
+        private MessageWindowFadeAmountTweak messageWindowFadeAmountTweak = new MessageWindowFadeAmountTweak();
+        private MessageWindowFadeTimeTweak messageWindowFadeTimeTweak = new MessageWindowFadeTimeTweak();
+        private ScreenNarrationEnabledTweak screenNarrationEnabledTweak = new ScreenNarrationEnabledTweak();
+        private ScreenNarrationVoiceTypeTweak screenNarrationVoiceTypeTweak = new ScreenNarrationVoiceTypeTweak();
+        private ShowAccessibilityScreenOnStartTweak showAccessibilityScreenOnStartTweak = new ShowAccessibilityScreenOnStartTweak();
+        private SingleButtonNotificationCancelTweak singleButtonNotificationCancelTweak = new SingleButtonNotificationCancelTweak();
+        private SpeechToTextTweak speechToTextTweak = new SpeechToTextTweak();
+        private UseLargeEasyReadTextTweak useLargeEasyReadTextTweak = new UseLargeEasyReadTextTweak();
     }
 }
