@@ -395,7 +395,7 @@ namespace Fo76ini
                 return true;
             }, (success) => {
                 if (success)
-                    MsgBox.Get("nwModeEnabled").Popup(MessageBoxIcon.Information);
+                    MsgBox.Get("modsDisabled").Popup(MessageBoxIcon.Information);
                 UpdateUI();
                 EnableUI();
                 Hide();
@@ -414,7 +414,7 @@ namespace Fo76ini
                 return true;
             }, (success) => {
                 if (success)
-                    MsgBox.Get("nwModeDisabled").Popup(MessageBoxIcon.Information);
+                    MsgBox.Get("modsEnabled").Popup(MessageBoxIcon.Information);
                 UpdateUI();
                 EnableUI();
                 Hide();

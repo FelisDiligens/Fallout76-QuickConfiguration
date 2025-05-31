@@ -162,15 +162,15 @@ namespace Fo76ini.Forms.FormMain.Tabs
         {
             if (nwModeEnabled)
             {
-                this.buttonNWMode.Text = Localization.GetString("adventuremode");
-                this.buttonNWMode.Image = Resources.adventures;
+                this.buttonToggleMods.Text = Localization.GetString("enableMods");
+                //this.buttonToggleMods.Image = Resources.adventures;
             }
             else
             {
-                this.buttonNWMode.Text = Localization.GetString("nuclearwintermode");
-                this.buttonNWMode.Image = Resources.fire;
+                this.buttonToggleMods.Text = Localization.GetString("disableMods");
+                //this.buttonToggleMods.Image = Resources.fire;
             }
-            this.buttonNWMode.Refresh();
+            this.buttonToggleMods.Refresh();
 
             //this.toolStripStatusLabelNuclearWinterModeActive.Visible = nwModeEnabled;
 

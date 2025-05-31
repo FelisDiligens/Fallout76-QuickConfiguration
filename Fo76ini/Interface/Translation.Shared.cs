@@ -61,6 +61,8 @@ namespace Fo76ini
             localizedStrings["selected"] = "selected";
             localizedStrings["nuclearwintermode"] = "Nuclear Winter";
             localizedStrings["adventuremode"] = "Adventure";
+            localizedStrings["disableMods"] = "Disable mods";
+            localizedStrings["enableMods"] = "Enable mods";
             localizedStrings["affectedValues"] = "Affected values";
             localizedStrings["affectedFiles"] = "Affected files";
             localizedStrings["endorsedText"] = "You have endorsed this mod.";
@@ -232,6 +234,16 @@ namespace Fo76ini
             MsgBox.Add("nwModeEnabled",
                 "Nuclear Winter mode enabled",
                 "You can now launch into Nuclear Winter mode."
+            );
+
+            MsgBox.Add("modsDisabled",
+                "Mods are now disabled",
+                "You can enable them any time from the settings page."
+            );
+
+            MsgBox.Add("modsEnabled",
+                "Mods are now enabled",
+                "You can disable them any time from the settings page."
             );
 
 

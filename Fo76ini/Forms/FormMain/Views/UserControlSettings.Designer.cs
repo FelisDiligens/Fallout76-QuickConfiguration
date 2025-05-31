@@ -65,8 +65,7 @@
             this.labelNWmodoptions = new System.Windows.Forms.Label();
             this.textBoxDownloadsPath = new System.Windows.Forms.TextBox();
             this.checkBoxNWAutoDeployMods = new System.Windows.Forms.CheckBox();
-            this.labelSettingsNuclearWinterOptions = new System.Windows.Forms.Label();
-            this.labelToggleNW = new System.Windows.Forms.Label();
+            this.labelSettingsToggleMods = new System.Windows.Forms.Label();
             this.panelSettingsLocalization = new System.Windows.Forms.Panel();
             this.labelTranslationsUpdateAvailable = new System.Windows.Forms.Label();
             this.panelSettingsBehavior = new System.Windows.Forms.Panel();
@@ -74,7 +73,7 @@
             this.checkBoxMakeBackups = new System.Windows.Forms.CheckBox();
             this.panelSettingsOptions = new System.Windows.Forms.Panel();
             this.panelSettingsNWMode = new System.Windows.Forms.Panel();
-            this.buttonNWMode = new Fo76ini.Controls.StyledButton();
+            this.buttonToggleMods = new Fo76ini.Controls.StyledButton();
             this.panelSettingsPaths = new System.Windows.Forms.Panel();
             this.panelSettingsProfile = new System.Windows.Forms.Panel();
             this.linkLabelOpenProfileEditor = new System.Windows.Forms.LinkLabel();
@@ -369,7 +368,7 @@
             // checkBoxNWRenameDLL
             // 
             this.checkBoxNWRenameDLL.AutoSize = true;
-            this.checkBoxNWRenameDLL.Location = new System.Drawing.Point(17, 127);
+            this.checkBoxNWRenameDLL.Location = new System.Drawing.Point(16, 112);
             this.checkBoxNWRenameDLL.Name = "checkBoxNWRenameDLL";
             this.checkBoxNWRenameDLL.Size = new System.Drawing.Size(140, 17);
             this.checkBoxNWRenameDLL.TabIndex = 51;
@@ -390,7 +389,7 @@
             // checkBoxNWAutoDisableMods
             // 
             this.checkBoxNWAutoDisableMods.AutoSize = true;
-            this.checkBoxNWAutoDisableMods.Location = new System.Drawing.Point(17, 180);
+            this.checkBoxNWAutoDisableMods.Location = new System.Drawing.Point(16, 165);
             this.checkBoxNWAutoDisableMods.Name = "checkBoxNWAutoDisableMods";
             this.checkBoxNWAutoDisableMods.Size = new System.Drawing.Size(224, 17);
             this.checkBoxNWAutoDisableMods.TabIndex = 52;
@@ -410,7 +409,7 @@
             // 
             this.labelNWdlloptions.AutoSize = true;
             this.labelNWdlloptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNWdlloptions.Location = new System.Drawing.Point(14, 109);
+            this.labelNWdlloptions.Location = new System.Drawing.Point(13, 94);
             this.labelNWdlloptions.Name = "labelNWdlloptions";
             this.labelNWdlloptions.Size = new System.Drawing.Size(74, 15);
             this.labelNWdlloptions.TabIndex = 23;
@@ -431,7 +430,7 @@
             // 
             this.labelNWmodoptions.AutoSize = true;
             this.labelNWmodoptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNWmodoptions.Location = new System.Drawing.Point(14, 162);
+            this.labelNWmodoptions.Location = new System.Drawing.Point(13, 147);
             this.labelNWmodoptions.Name = "labelNWmodoptions";
             this.labelNWmodoptions.Size = new System.Drawing.Size(78, 15);
             this.labelNWmodoptions.TabIndex = 24;
@@ -448,33 +447,23 @@
             // checkBoxNWAutoDeployMods
             // 
             this.checkBoxNWAutoDeployMods.AutoSize = true;
-            this.checkBoxNWAutoDeployMods.Location = new System.Drawing.Point(17, 203);
+            this.checkBoxNWAutoDeployMods.Location = new System.Drawing.Point(16, 188);
             this.checkBoxNWAutoDeployMods.Name = "checkBoxNWAutoDeployMods";
             this.checkBoxNWAutoDeployMods.Size = new System.Drawing.Size(221, 17);
             this.checkBoxNWAutoDeployMods.TabIndex = 53;
             this.checkBoxNWAutoDeployMods.Text = "Automatically deploy mods upon disabling";
             this.checkBoxNWAutoDeployMods.UseVisualStyleBackColor = true;
             // 
-            // labelSettingsNuclearWinterOptions
+            // labelSettingsToggleMods
             // 
-            this.labelSettingsNuclearWinterOptions.AutoSize = true;
-            this.labelSettingsNuclearWinterOptions.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsNuclearWinterOptions.Location = new System.Drawing.Point(13, 13);
-            this.labelSettingsNuclearWinterOptions.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
-            this.labelSettingsNuclearWinterOptions.Name = "labelSettingsNuclearWinterOptions";
-            this.labelSettingsNuclearWinterOptions.Size = new System.Drawing.Size(229, 17);
-            this.labelSettingsNuclearWinterOptions.TabIndex = 80;
-            this.labelSettingsNuclearWinterOptions.Text = "Nuclear Winter options (deprecated)";
-            // 
-            // labelToggleNW
-            // 
-            this.labelToggleNW.AutoSize = true;
-            this.labelToggleNW.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelToggleNW.Location = new System.Drawing.Point(13, 35);
-            this.labelToggleNW.Name = "labelToggleNW";
-            this.labelToggleNW.Size = new System.Drawing.Size(80, 15);
-            this.labelToggleNW.TabIndex = 27;
-            this.labelToggleNW.Text = "Toggle mode:";
+            this.labelSettingsToggleMods.AutoSize = true;
+            this.labelSettingsToggleMods.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSettingsToggleMods.Location = new System.Drawing.Point(13, 13);
+            this.labelSettingsToggleMods.Margin = new System.Windows.Forms.Padding(3, 25, 3, 5);
+            this.labelSettingsToggleMods.Name = "labelSettingsToggleMods";
+            this.labelSettingsToggleMods.Size = new System.Drawing.Size(134, 17);
+            this.labelSettingsToggleMods.TabIndex = 80;
+            this.labelSettingsToggleMods.Text = "Enable/Disable mods";
             // 
             // panelSettingsLocalization
             // 
@@ -545,35 +534,33 @@
             // 
             // panelSettingsNWMode
             // 
-            this.panelSettingsNWMode.Controls.Add(this.labelSettingsNuclearWinterOptions);
+            this.panelSettingsNWMode.Controls.Add(this.labelSettingsToggleMods);
             this.panelSettingsNWMode.Controls.Add(this.checkBoxNWRenameDLL);
             this.panelSettingsNWMode.Controls.Add(this.checkBoxNWAutoDisableMods);
             this.panelSettingsNWMode.Controls.Add(this.labelNWdlloptions);
             this.panelSettingsNWMode.Controls.Add(this.labelNWmodoptions);
             this.panelSettingsNWMode.Controls.Add(this.checkBoxNWAutoDeployMods);
-            this.panelSettingsNWMode.Controls.Add(this.labelToggleNW);
-            this.panelSettingsNWMode.Controls.Add(this.buttonNWMode);
+            this.panelSettingsNWMode.Controls.Add(this.buttonToggleMods);
             this.panelSettingsNWMode.Location = new System.Drawing.Point(0, 938);
             this.panelSettingsNWMode.Name = "panelSettingsNWMode";
             this.panelSettingsNWMode.Size = new System.Drawing.Size(403, 279);
             this.panelSettingsNWMode.TabIndex = 86;
             // 
-            // buttonNWMode
+            // buttonToggleMods
             // 
-            this.buttonNWMode.BorderWidth = ((uint)(1u));
-            this.buttonNWMode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonNWMode.Highlight = false;
-            this.buttonNWMode.Image = global::Fo76ini.Properties.Resources.fire;
-            this.buttonNWMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.Location = new System.Drawing.Point(17, 53);
-            this.buttonNWMode.Name = "buttonNWMode";
-            this.buttonNWMode.Padding = 10;
-            this.buttonNWMode.Size = new System.Drawing.Size(187, 36);
-            this.buttonNWMode.TabIndex = 50;
-            this.buttonNWMode.Text = "Nuclear Winter";
-            this.buttonNWMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNWMode.UseVisualStyleBackColor = true;
-            this.buttonNWMode.Click += new System.EventHandler(this.buttonNWMode_Click);
+            this.buttonToggleMods.BorderWidth = ((uint)(1u));
+            this.buttonToggleMods.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonToggleMods.Highlight = false;
+            this.buttonToggleMods.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonToggleMods.Location = new System.Drawing.Point(16, 38);
+            this.buttonToggleMods.Name = "buttonToggleMods";
+            this.buttonToggleMods.Padding = 10;
+            this.buttonToggleMods.Size = new System.Drawing.Size(187, 36);
+            this.buttonToggleMods.TabIndex = 50;
+            this.buttonToggleMods.Text = "Disable mods";
+            this.buttonToggleMods.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonToggleMods.UseVisualStyleBackColor = true;
+            this.buttonToggleMods.Click += new System.EventHandler(this.buttonNWMode_Click);
             // 
             // panelSettingsPaths
             // 
@@ -835,9 +822,8 @@
         private System.Windows.Forms.Label labelNWmodoptions;
         private System.Windows.Forms.TextBox textBoxDownloadsPath;
         private System.Windows.Forms.CheckBox checkBoxNWAutoDeployMods;
-        private System.Windows.Forms.Label labelSettingsNuclearWinterOptions;
-        private Controls.StyledButton buttonNWMode;
-        private System.Windows.Forms.Label labelToggleNW;
+        private System.Windows.Forms.Label labelSettingsToggleMods;
+        private Controls.StyledButton buttonToggleMods;
         private System.Windows.Forms.Panel panelSettingsLocalization;
         private System.Windows.Forms.Panel panelSettingsBehavior;
         private System.Windows.Forms.Panel panelSettingsOptions;
