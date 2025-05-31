@@ -24,7 +24,7 @@ namespace Fo76ini.API
         public long UserID = -1;
         public Membership Status = Membership.Basic;
 
-        public string ProfilePictureURL = "";
+        public string ProfilePictureURL = ""; // "https://avatars.nexusmods.com/<UserID>/100"
         public string ProfilePictureFileName = "";
 
         public string ProfilePictureFilePath
@@ -112,7 +112,7 @@ namespace Fo76ini.API
             try
             {
                 Uri uri = new Uri(ProfilePictureURL);
-                ProfilePictureFileName = "profile" + Path.GetExtension(Path.GetFileName(uri.LocalPath));
+                ProfilePictureFileName = "profile.webp";
 
                 // Download if non-existent:
                 if (!File.Exists(ProfilePictureFilePath))
