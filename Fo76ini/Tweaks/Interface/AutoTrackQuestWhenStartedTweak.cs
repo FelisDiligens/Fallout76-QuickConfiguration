@@ -17,11 +17,11 @@ namespace Fo76ini.Tweaks.Interface
             switch (this.KeyPrefix)
             {
                 case "Main":
-                case "Side":
-                case "Misc":
                 case "Event":
                     this.DefaultValue = true;
                     break;
+                case "Side":
+                case "Misc":
                 case "Other":
                 default:
                     this.DefaultValue = false;
