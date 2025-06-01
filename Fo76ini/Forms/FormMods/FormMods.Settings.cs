@@ -39,11 +39,11 @@ namespace Fo76ini
             switch (Configuration.Mods.ResourceListName)
             {
                 case "sResourceArchive2List":
-                    this.radioButtonUseArchive2List.Checked = true;
+                    this.radioButtonUseArchive2List1.Checked = true;
                     break;
                 case "sResourceIndexFileList":
                 default:
-                    this.radioButtonUseIndexFileList.Checked = true;
+                    this.radioButtonUseIndexFileList1.Checked = true;
                     break;
             }
 
@@ -160,7 +160,7 @@ namespace Fo76ini
         // Use sResourceIndexFileList
         private void radioButtonUseIndexFileList_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.radioButtonUseIndexFileList.Checked)
+            if (this.radioButtonUseIndexFileList1.Checked)
             {
                 // Change configuration:
                 Configuration.Mods.ResourceListName = "sResourceIndexFileList";
@@ -174,7 +174,7 @@ namespace Fo76ini
         // Use sResourceArchive2List
         private void radioButtonUseArchive2List_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.radioButtonUseArchive2List.Checked)
+            if (this.radioButtonUseArchive2List1.Checked)
             {
                 // Change configuration:
                 Configuration.Mods.ResourceListName = "sResourceArchive2List";

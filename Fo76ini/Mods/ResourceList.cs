@@ -13,8 +13,8 @@ namespace Fo76ini.Mods
     public class ResourceList : ICollection<string>
     {
         public static List<string> KnownLists = new List<string>() {
-            "sResourceIndexFileList",      // <- mod manager uses this
-            "sResourceArchive2List",       // <- a lot of people use this
+            "sResourceIndexFileList",
+            "sResourceArchive2List",
             "sResourceArchiveMisc",        // <- haven't seen this before (apparently "can load any mod except for texture and animation mods")
             "sResourceStartUpArchiveList",
             "SResourceArchiveList",
@@ -23,7 +23,7 @@ namespace Fo76ini.Mods
             //"SResourceArchiveMemoryCacheList"
         };
 
-        public const string DefaultList = "sResourceIndexFileList";
+        public const string DefaultList = "sResourceArchive2List";
 
         public static string PreferredList {
             get

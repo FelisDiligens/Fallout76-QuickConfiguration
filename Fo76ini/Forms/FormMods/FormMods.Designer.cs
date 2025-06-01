@@ -90,8 +90,8 @@
             this.groupBoxModsBehavior = new Fo76ini.Controls.StyledGroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelResourceListUsed = new System.Windows.Forms.Label();
-            this.radioButtonUseIndexFileList = new System.Windows.Forms.RadioButton();
-            this.radioButtonUseArchive2List = new System.Windows.Forms.RadioButton();
+            this.radioButtonUseIndexFileList1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonUseArchive2List1 = new System.Windows.Forms.RadioButton();
             this.labelBehaviorNote = new System.Windows.Forms.Label();
             this.panelBundledLoadOrder = new System.Windows.Forms.Panel();
             this.labelBundledLoadOrder = new System.Windows.Forms.Label();
@@ -236,7 +236,7 @@
             this.saveToolStripMenuItem,
             this.deployToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // addModarchiveToolStripMenuItem
@@ -248,14 +248,14 @@
             this.fromFolderToolStripMenuItem});
             this.addModarchiveToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.plus_24;
             this.addModarchiveToolStripMenuItem.Name = "addModarchiveToolStripMenuItem";
-            this.addModarchiveToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.addModarchiveToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.addModarchiveToolStripMenuItem.Text = "Add mod";
             // 
             // emptyModToolStripMenuItem
             // 
             this.emptyModToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.plus_24;
             this.emptyModToolStripMenuItem.Name = "emptyModToolStripMenuItem";
-            this.emptyModToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.emptyModToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.emptyModToolStripMenuItem.Text = "Empty mod";
             this.emptyModToolStripMenuItem.Click += new System.EventHandler(this.emptyModToolStripMenuItem_Click);
             // 
@@ -263,7 +263,7 @@
             // 
             this.fromArchiveToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.add_archive_3_24;
             this.fromArchiveToolStripMenuItem.Name = "fromArchiveToolStripMenuItem";
-            this.fromArchiveToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.fromArchiveToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.fromArchiveToolStripMenuItem.Text = "From archive";
             this.fromArchiveToolStripMenuItem.Click += new System.EventHandler(this.fromArchiveToolStripMenuItem_Click);
             // 
@@ -271,7 +271,7 @@
             // 
             this.fromba2ArchivefrozenToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.add_snowflake_24;
             this.fromba2ArchivefrozenToolStripMenuItem.Name = "fromba2ArchivefrozenToolStripMenuItem";
-            this.fromba2ArchivefrozenToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.fromba2ArchivefrozenToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.fromba2ArchivefrozenToolStripMenuItem.Text = "From *.ba2 archive (frozen)";
             this.fromba2ArchivefrozenToolStripMenuItem.Click += new System.EventHandler(this.fromba2ArchivefrozenToolStripMenuItem_Click);
             // 
@@ -279,34 +279,34 @@
             // 
             this.fromFolderToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.add_folder_24;
             this.fromFolderToolStripMenuItem.Name = "fromFolderToolStripMenuItem";
-            this.fromFolderToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.fromFolderToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.fromFolderToolStripMenuItem.Text = "From folder";
             this.fromFolderToolStripMenuItem.Click += new System.EventHandler(this.fromFolderToolStripMenuItem_Click);
             // 
             // toolStripMenuItemModsImport
             // 
             this.toolStripMenuItemModsImport.Name = "toolStripMenuItemModsImport";
-            this.toolStripMenuItemModsImport.Size = new System.Drawing.Size(190, 22);
+            this.toolStripMenuItemModsImport.Size = new System.Drawing.Size(195, 22);
             this.toolStripMenuItemModsImport.Text = "Import installed mods";
             this.toolStripMenuItemModsImport.Click += new System.EventHandler(this.toolStripMenuItemModsImport_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(192, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.save_24;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.saveToolStripMenuItem.Text = "Save changes";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // deployToolStripMenuItem
             // 
             this.deployToolStripMenuItem.Name = "deployToolStripMenuItem";
-            this.deployToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.deployToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.deployToolStripMenuItem.Text = "Deploy mods";
             this.deployToolStripMenuItem.Click += new System.EventHandler(this.deployToolStripMenuItem_Click);
             // 
@@ -316,13 +316,13 @@
             this.showConflictingFilesToolStripMenuItem,
             this.reloadUIToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.editToolStripMenuItem.Text = "View";
             // 
             // showConflictingFilesToolStripMenuItem
             // 
             this.showConflictingFilesToolStripMenuItem.Name = "showConflictingFilesToolStripMenuItem";
-            this.showConflictingFilesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.showConflictingFilesToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.showConflictingFilesToolStripMenuItem.Text = "Show conflicting files";
             this.showConflictingFilesToolStripMenuItem.Click += new System.EventHandler(this.showConflictingFilesToolStripMenuItem_Click);
             // 
@@ -330,7 +330,7 @@
             // 
             this.reloadUIToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.available_updates;
             this.reloadUIToolStripMenuItem.Name = "reloadUIToolStripMenuItem";
-            this.reloadUIToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.reloadUIToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.reloadUIToolStripMenuItem.Text = "Reload UI";
             this.reloadUIToolStripMenuItem.Click += new System.EventHandler(this.reloadUIToolStripMenuItem_Click);
             // 
@@ -340,7 +340,7 @@
             this.archive2ToolStripMenuItem,
             this.nexusModsAPIToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // archive2ToolStripMenuItem
@@ -350,27 +350,27 @@
             this.exploreba2ArchiveToolStripMenuItem,
             this.detectFormatAndCompressionToolStripMenuItem});
             this.archive2ToolStripMenuItem.Name = "archive2ToolStripMenuItem";
-            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.archive2ToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.archive2ToolStripMenuItem.Text = "Archive2";
             // 
             // openArchive2ToolStripMenuItem
             // 
             this.openArchive2ToolStripMenuItem.Name = "openArchive2ToolStripMenuItem";
-            this.openArchive2ToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.openArchive2ToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.openArchive2ToolStripMenuItem.Text = "Open Archive2";
             this.openArchive2ToolStripMenuItem.Click += new System.EventHandler(this.openArchive2ToolStripMenuItem_Click);
             // 
             // exploreba2ArchiveToolStripMenuItem
             // 
             this.exploreba2ArchiveToolStripMenuItem.Name = "exploreba2ArchiveToolStripMenuItem";
-            this.exploreba2ArchiveToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.exploreba2ArchiveToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.exploreba2ArchiveToolStripMenuItem.Text = "Explore *.ba2 archive";
             this.exploreba2ArchiveToolStripMenuItem.Click += new System.EventHandler(this.exploreba2ArchiveToolStripMenuItem_Click);
             // 
             // detectFormatAndCompressionToolStripMenuItem
             // 
             this.detectFormatAndCompressionToolStripMenuItem.Name = "detectFormatAndCompressionToolStripMenuItem";
-            this.detectFormatAndCompressionToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.detectFormatAndCompressionToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.detectFormatAndCompressionToolStripMenuItem.Text = "Display info about *.ba2 archive";
             this.detectFormatAndCompressionToolStripMenuItem.Click += new System.EventHandler(this.detectFormatAndCompressionToolStripMenuItem_Click);
             // 
@@ -381,27 +381,27 @@
             this.endorseModsToolStripMenuItem,
             this.checkForUpdatesToolStripMenuItem});
             this.nexusModsAPIToolStripMenuItem.Name = "nexusModsAPIToolStripMenuItem";
-            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.nexusModsAPIToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.nexusModsAPIToolStripMenuItem.Text = "NexusMods API";
             // 
             // updateModInformationToolStripMenuItem
             // 
             this.updateModInformationToolStripMenuItem.Name = "updateModInformationToolStripMenuItem";
-            this.updateModInformationToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.updateModInformationToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.updateModInformationToolStripMenuItem.Text = "Update mod information";
             this.updateModInformationToolStripMenuItem.Click += new System.EventHandler(this.updateModInformationToolStripMenuItem_Click);
             // 
             // endorseModsToolStripMenuItem
             // 
             this.endorseModsToolStripMenuItem.Name = "endorseModsToolStripMenuItem";
-            this.endorseModsToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.endorseModsToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.endorseModsToolStripMenuItem.Text = "Endorse mods";
             this.endorseModsToolStripMenuItem.Click += new System.EventHandler(this.endorseModsToolStripMenuItem_Click);
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
@@ -411,14 +411,14 @@
             this.showGuideToolStripMenuItem,
             this.logFilesToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // showGuideToolStripMenuItem
             // 
             this.showGuideToolStripMenuItem.Image = global::Fo76ini.Properties.Resources.help_24;
             this.showGuideToolStripMenuItem.Name = "showGuideToolStripMenuItem";
-            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.showGuideToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.showGuideToolStripMenuItem.Text = "Show guide";
             this.showGuideToolStripMenuItem.Click += new System.EventHandler(this.showGuideToolStripMenuItem_Click);
             // 
@@ -428,20 +428,20 @@
             this.showModmanagerlogtxtToolStripMenuItem,
             this.showArchive2logtxtToolStripMenuItem});
             this.logFilesToolStripMenuItem.Name = "logFilesToolStripMenuItem";
-            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.logFilesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.logFilesToolStripMenuItem.Text = "Log files";
             // 
             // showModmanagerlogtxtToolStripMenuItem
             // 
             this.showModmanagerlogtxtToolStripMenuItem.Name = "showModmanagerlogtxtToolStripMenuItem";
-            this.showModmanagerlogtxtToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.showModmanagerlogtxtToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.showModmanagerlogtxtToolStripMenuItem.Text = "Show modmanager.log.txt";
             this.showModmanagerlogtxtToolStripMenuItem.Click += new System.EventHandler(this.showModmanagerlogtxtToolStripMenuItem_Click);
             // 
             // showArchive2logtxtToolStripMenuItem
             // 
             this.showArchive2logtxtToolStripMenuItem.Name = "showArchive2logtxtToolStripMenuItem";
-            this.showArchive2logtxtToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.showArchive2logtxtToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.showArchive2logtxtToolStripMenuItem.Text = "Show archive2.log.txt";
             this.showArchive2logtxtToolStripMenuItem.Click += new System.EventHandler(this.showArchive2logtxtToolStripMenuItem_Click);
             // 
@@ -706,13 +706,13 @@
             this.toolStripStatusLabelDescModCount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabelDescModCount.Margin = new System.Windows.Forms.Padding(8, 3, 3, 2);
             this.toolStripStatusLabelDescModCount.Name = "toolStripStatusLabelDescModCount";
-            this.toolStripStatusLabelDescModCount.Size = new System.Drawing.Size(70, 17);
+            this.toolStripStatusLabelDescModCount.Size = new System.Drawing.Size(72, 17);
             this.toolStripStatusLabelDescModCount.Text = "Mod count:";
             // 
             // toolStripStatusLabelModCount
             // 
             this.toolStripStatusLabelModCount.Name = "toolStripStatusLabelModCount";
-            this.toolStripStatusLabelModCount.Size = new System.Drawing.Size(13, 17);
+            this.toolStripStatusLabelModCount.Size = new System.Drawing.Size(15, 17);
             this.toolStripStatusLabelModCount.Text = "0";
             // 
             // toolStripStatusLabelDescEnabledCount
@@ -720,19 +720,19 @@
             this.toolStripStatusLabelDescEnabledCount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabelDescEnabledCount.Margin = new System.Windows.Forms.Padding(50, 3, 3, 2);
             this.toolStripStatusLabelDescEnabledCount.Name = "toolStripStatusLabelDescEnabledCount";
-            this.toolStripStatusLabelDescEnabledCount.Size = new System.Drawing.Size(53, 17);
+            this.toolStripStatusLabelDescEnabledCount.Size = new System.Drawing.Size(58, 17);
             this.toolStripStatusLabelDescEnabledCount.Text = "Enabled:";
             // 
             // toolStripStatusLabelEnabledCount
             // 
             this.toolStripStatusLabelEnabledCount.Name = "toolStripStatusLabelEnabledCount";
-            this.toolStripStatusLabelEnabledCount.Size = new System.Drawing.Size(13, 17);
+            this.toolStripStatusLabelEnabledCount.Size = new System.Drawing.Size(15, 17);
             this.toolStripStatusLabelEnabledCount.Text = "0";
             // 
             // toolStripStatusLabelSpacer
             // 
             this.toolStripStatusLabelSpacer.Name = "toolStripStatusLabelSpacer";
-            this.toolStripStatusLabelSpacer.Size = new System.Drawing.Size(423, 17);
+            this.toolStripStatusLabelSpacer.Size = new System.Drawing.Size(404, 17);
             this.toolStripStatusLabelSpacer.Spring = true;
             this.toolStripStatusLabelSpacer.Text = " ";
             // 
@@ -741,7 +741,7 @@
             this.toolStripStatusLabelDeploymentStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabelDeploymentStatus.ForeColor = System.Drawing.Color.Crimson;
             this.toolStripStatusLabelDeploymentStatus.Name = "toolStripStatusLabelDeploymentStatus";
-            this.toolStripStatusLabelDeploymentStatus.Size = new System.Drawing.Size(133, 17);
+            this.toolStripStatusLabelDeploymentStatus.Size = new System.Drawing.Size(141, 17);
             this.toolStripStatusLabelDeploymentStatus.Text = "Deployment necessary";
             // 
             // timerCheckForNXM
@@ -799,8 +799,8 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.labelResourceListUsed);
-            this.panel3.Controls.Add(this.radioButtonUseIndexFileList);
-            this.panel3.Controls.Add(this.radioButtonUseArchive2List);
+            this.panel3.Controls.Add(this.radioButtonUseIndexFileList1);
+            this.panel3.Controls.Add(this.radioButtonUseArchive2List1);
             this.panel3.Location = new System.Drawing.Point(6, 227);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(717, 65);
@@ -815,29 +815,29 @@
             this.labelResourceListUsed.TabIndex = 7;
             this.labelResourceListUsed.Text = "Which resource list should be used?";
             // 
-            // radioButtonUseIndexFileList
+            // radioButtonUseIndexFileList1
             // 
-            this.radioButtonUseIndexFileList.AutoSize = true;
-            this.radioButtonUseIndexFileList.Location = new System.Drawing.Point(3, 17);
-            this.radioButtonUseIndexFileList.Name = "radioButtonUseIndexFileList";
-            this.radioButtonUseIndexFileList.Size = new System.Drawing.Size(220, 17);
-            this.radioButtonUseIndexFileList.TabIndex = 8;
-            this.radioButtonUseIndexFileList.TabStop = true;
-            this.radioButtonUseIndexFileList.Text = "[Archive] sResourceIndexFileList (default)";
-            this.radioButtonUseIndexFileList.UseVisualStyleBackColor = true;
-            this.radioButtonUseIndexFileList.CheckedChanged += new System.EventHandler(this.radioButtonUseIndexFileList_CheckedChanged);
+            this.radioButtonUseIndexFileList1.AutoSize = true;
+            this.radioButtonUseIndexFileList1.Location = new System.Drawing.Point(3, 40);
+            this.radioButtonUseIndexFileList1.Name = "radioButtonUseIndexFileList1";
+            this.radioButtonUseIndexFileList1.Size = new System.Drawing.Size(179, 17);
+            this.radioButtonUseIndexFileList1.TabIndex = 8;
+            this.radioButtonUseIndexFileList1.TabStop = true;
+            this.radioButtonUseIndexFileList1.Text = "[Archive] sResourceIndexFileList";
+            this.radioButtonUseIndexFileList1.UseVisualStyleBackColor = true;
+            this.radioButtonUseIndexFileList1.CheckedChanged += new System.EventHandler(this.radioButtonUseIndexFileList_CheckedChanged);
             // 
-            // radioButtonUseArchive2List
+            // radioButtonUseArchive2List1
             // 
-            this.radioButtonUseArchive2List.AutoSize = true;
-            this.radioButtonUseArchive2List.Location = new System.Drawing.Point(3, 40);
-            this.radioButtonUseArchive2List.Name = "radioButtonUseArchive2List";
-            this.radioButtonUseArchive2List.Size = new System.Drawing.Size(179, 17);
-            this.radioButtonUseArchive2List.TabIndex = 9;
-            this.radioButtonUseArchive2List.TabStop = true;
-            this.radioButtonUseArchive2List.Text = "[Archive] sResourceArchive2List";
-            this.radioButtonUseArchive2List.UseVisualStyleBackColor = true;
-            this.radioButtonUseArchive2List.CheckedChanged += new System.EventHandler(this.radioButtonUseArchive2List_CheckedChanged);
+            this.radioButtonUseArchive2List1.AutoSize = true;
+            this.radioButtonUseArchive2List1.Location = new System.Drawing.Point(3, 17);
+            this.radioButtonUseArchive2List1.Name = "radioButtonUseArchive2List1";
+            this.radioButtonUseArchive2List1.Size = new System.Drawing.Size(220, 17);
+            this.radioButtonUseArchive2List1.TabIndex = 9;
+            this.radioButtonUseArchive2List1.TabStop = true;
+            this.radioButtonUseArchive2List1.Text = "[Archive] sResourceArchive2List (default)";
+            this.radioButtonUseArchive2List1.UseVisualStyleBackColor = true;
+            this.radioButtonUseArchive2List1.CheckedChanged += new System.EventHandler(this.radioButtonUseArchive2List_CheckedChanged);
             // 
             // labelBehaviorNote
             // 
@@ -2177,7 +2177,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label labelResourceListUsed;
-        private System.Windows.Forms.RadioButton radioButtonUseIndexFileList;
-        private System.Windows.Forms.RadioButton radioButtonUseArchive2List;
+        private System.Windows.Forms.RadioButton radioButtonUseIndexFileList1;
+        private System.Windows.Forms.RadioButton radioButtonUseArchive2List1;
     }
 }

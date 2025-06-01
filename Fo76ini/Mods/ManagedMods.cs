@@ -274,7 +274,7 @@ namespace Fo76ini.Mods
         {
             this.Resources.SaveTXT(ResourcesPath);
             if (NuclearWinterModeEnabled)
-                IniFiles.F76Custom.Remove("Archive", "sResourceIndexFileList");
+                IniFiles.F76Custom.Remove("Archive", this.Resources.ListName);
             else
                 this.Resources.CommitToINI(); // TODO: Where else do we have CommitToINI?
             IniFiles.F76Custom.Save();
