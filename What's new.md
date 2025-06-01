@@ -1,3 +1,24 @@
+### What's new in v1.12.8?
+
+A small maintenance update.
+
+- Added new tweaks
+  - Added "Accessibility" tab
+  - Added "Workshop Free Camera" and "Accessibility" sections to "Camera" tab
+  - Added more tweaks to "General" and "Video" tabs
+- Fixed gallery crashing on refresh.
+- Improved auto-detect of the game path and ini parent path for Linux users.
+- Changed the default list from `sResourceIndexFileList` to `sResourceArchive2List`.
+- Removed "Bethesda.net" tab.  
+  Since the migration to Steam/Xbox, it's wholly outdated.
+- Renamed "Nuclear Winter mode" to "Enable/Disable mods".  
+  It's still functionally identical.
+- Fixed a bug where an empty folder would be left over from dragging in an unsupported file into the mod manager.
+
+*Released: June 1, 2025*
+
+---
+
 ### What's new in v1.12.7?
 
 - Merged pull request ([#23](https://github.com/FelisDiligens/Fallout76-QuickConfiguration/pull/23)) by [thomasgraham18](https://github.com/thomasgraham18):  
