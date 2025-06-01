@@ -378,15 +378,20 @@ namespace Fo76ini.Mods
 
             // Use Archive2.exe to extract:
             if (fileExtension.ToLower() == ".ba2")
+            {
                 Archive2.Extract(filePath, destinationPath);
-
+            }
             // Use 7-Zip (7za.exe) to extract:
             else if (SevenZip.SupportedFileTypes.Contains(fileExtension.ToLower()))
+            {
                 SevenZip.ExtractArchive(filePath, destinationPath);
-
+            }
             // Not supported:
             else
+            {
+                Directory.Delete(destinationPath); // Cleanup folder.
                 throw new NotSupportedException($"File type not supported: {fileExtension}");
+            }
 
 
             ProgressChanged?.Invoke(Progress.Done("Extracting finished."));

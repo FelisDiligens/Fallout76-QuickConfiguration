@@ -895,7 +895,7 @@ namespace Fo76ini
                 }
                 catch (NotSupportedException exc)
                 {
-                    MsgBox.ShowID("modsArchiveTypeNotSupported", MessageBoxIcon.Error);
+                    MsgBox.Get("modsArchiveTypeNotSupported").SetText(exc.Message).Show(MessageBoxIcon.Error);
                     UpdateProgress(Progress.Aborted("Failed", exc));
                     return false;
                 }

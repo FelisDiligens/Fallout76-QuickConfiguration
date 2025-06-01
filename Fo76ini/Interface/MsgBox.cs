@@ -102,6 +102,12 @@ namespace Fo76ini.Interface
             }
         }
 
+        public MsgBox SetText(string text)
+        {
+            this.Text = text;
+            return this;
+        }
+
 
 
         public static DialogResult ShowID(string id)
