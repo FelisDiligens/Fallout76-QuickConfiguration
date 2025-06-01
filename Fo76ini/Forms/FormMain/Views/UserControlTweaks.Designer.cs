@@ -340,6 +340,7 @@
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.labelAlternativeNoteViewDescription = new System.Windows.Forms.Label();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -6475,6 +6476,7 @@
             this.styledGroupBoxAlternativeNoteView.BackColor = System.Drawing.Color.White;
             this.styledGroupBoxAlternativeNoteView.BorderColor = System.Drawing.Color.Silver;
             this.styledGroupBoxAlternativeNoteView.BorderWidth = 1;
+            this.styledGroupBoxAlternativeNoteView.Controls.Add(this.labelAlternativeNoteViewDescription);
             this.styledGroupBoxAlternativeNoteView.Controls.Add(this.buttonResetAlternativeNoteViewBackgroundColor);
             this.styledGroupBoxAlternativeNoteView.Controls.Add(this.buttonPickAlternativeNoteViewBackgroundColor);
             this.styledGroupBoxAlternativeNoteView.Controls.Add(this.labelAlternativeNoteViewBackgroundColor);
@@ -6487,7 +6489,7 @@
             this.styledGroupBoxAlternativeNoteView.Location = new System.Drawing.Point(9, 297);
             this.styledGroupBoxAlternativeNoteView.Margin = new System.Windows.Forms.Padding(6);
             this.styledGroupBoxAlternativeNoteView.Name = "styledGroupBoxAlternativeNoteView";
-            this.styledGroupBoxAlternativeNoteView.Size = new System.Drawing.Size(400, 111);
+            this.styledGroupBoxAlternativeNoteView.Size = new System.Drawing.Size(400, 167);
             this.styledGroupBoxAlternativeNoteView.TabIndex = 11;
             this.styledGroupBoxAlternativeNoteView.TabStop = false;
             this.styledGroupBoxAlternativeNoteView.Text = "Alternative Note View";
@@ -6498,7 +6500,7 @@
             // 
             // buttonResetAlternativeNoteViewBackgroundColor
             // 
-            this.buttonResetAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(294, 71);
+            this.buttonResetAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(294, 108);
             this.buttonResetAlternativeNoteViewBackgroundColor.Name = "buttonResetAlternativeNoteViewBackgroundColor";
             this.buttonResetAlternativeNoteViewBackgroundColor.Size = new System.Drawing.Size(97, 23);
             this.buttonResetAlternativeNoteViewBackgroundColor.TabIndex = 59;
@@ -6507,7 +6509,7 @@
             // 
             // buttonPickAlternativeNoteViewBackgroundColor
             // 
-            this.buttonPickAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(180, 71);
+            this.buttonPickAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(180, 108);
             this.buttonPickAlternativeNoteViewBackgroundColor.Name = "buttonPickAlternativeNoteViewBackgroundColor";
             this.buttonPickAlternativeNoteViewBackgroundColor.Size = new System.Drawing.Size(108, 23);
             this.buttonPickAlternativeNoteViewBackgroundColor.TabIndex = 58;
@@ -6517,7 +6519,7 @@
             // labelAlternativeNoteViewBackgroundColor
             // 
             this.labelAlternativeNoteViewBackgroundColor.AutoSize = true;
-            this.labelAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(39, 75);
+            this.labelAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(39, 112);
             this.labelAlternativeNoteViewBackgroundColor.Name = "labelAlternativeNoteViewBackgroundColor";
             this.labelAlternativeNoteViewBackgroundColor.Size = new System.Drawing.Size(92, 13);
             this.labelAlternativeNoteViewBackgroundColor.TabIndex = 57;
@@ -6526,7 +6528,7 @@
             // labelAlternativeNoteViewTextColor
             // 
             this.labelAlternativeNoteViewTextColor.AutoSize = true;
-            this.labelAlternativeNoteViewTextColor.Location = new System.Drawing.Point(39, 46);
+            this.labelAlternativeNoteViewTextColor.Location = new System.Drawing.Point(39, 83);
             this.labelAlternativeNoteViewTextColor.Name = "labelAlternativeNoteViewTextColor";
             this.labelAlternativeNoteViewTextColor.Size = new System.Drawing.Size(55, 13);
             this.labelAlternativeNoteViewTextColor.TabIndex = 10;
@@ -6534,7 +6536,7 @@
             // 
             // buttonResetAlternativeNoteViewTextColor
             // 
-            this.buttonResetAlternativeNoteViewTextColor.Location = new System.Drawing.Point(294, 42);
+            this.buttonResetAlternativeNoteViewTextColor.Location = new System.Drawing.Point(294, 79);
             this.buttonResetAlternativeNoteViewTextColor.Name = "buttonResetAlternativeNoteViewTextColor";
             this.buttonResetAlternativeNoteViewTextColor.Size = new System.Drawing.Size(97, 23);
             this.buttonResetAlternativeNoteViewTextColor.TabIndex = 56;
@@ -6543,7 +6545,7 @@
             // 
             // buttonPickAlternativeNoteViewTextColor
             // 
-            this.buttonPickAlternativeNoteViewTextColor.Location = new System.Drawing.Point(180, 42);
+            this.buttonPickAlternativeNoteViewTextColor.Location = new System.Drawing.Point(180, 79);
             this.buttonPickAlternativeNoteViewTextColor.Name = "buttonPickAlternativeNoteViewTextColor";
             this.buttonPickAlternativeNoteViewTextColor.Size = new System.Drawing.Size(108, 23);
             this.buttonPickAlternativeNoteViewTextColor.TabIndex = 55;
@@ -6554,7 +6556,7 @@
             // 
             this.colorPreviewAlternativeNoteViewBackgroundColor.BackColor = System.Drawing.Color.Magenta;
             this.colorPreviewAlternativeNoteViewBackgroundColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreviewAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(9, 70);
+            this.colorPreviewAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(9, 107);
             this.colorPreviewAlternativeNoteViewBackgroundColor.Name = "colorPreviewAlternativeNoteViewBackgroundColor";
             this.colorPreviewAlternativeNoteViewBackgroundColor.Size = new System.Drawing.Size(24, 24);
             this.colorPreviewAlternativeNoteViewBackgroundColor.TabIndex = 54;
@@ -6564,7 +6566,7 @@
             // 
             this.colorPreviewAlternativeNoteViewTextColor.BackColor = System.Drawing.Color.Magenta;
             this.colorPreviewAlternativeNoteViewTextColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPreviewAlternativeNoteViewTextColor.Location = new System.Drawing.Point(9, 40);
+            this.colorPreviewAlternativeNoteViewTextColor.Location = new System.Drawing.Point(9, 77);
             this.colorPreviewAlternativeNoteViewTextColor.Name = "colorPreviewAlternativeNoteViewTextColor";
             this.colorPreviewAlternativeNoteViewTextColor.Size = new System.Drawing.Size(24, 24);
             this.colorPreviewAlternativeNoteViewTextColor.TabIndex = 53;
@@ -6573,11 +6575,11 @@
             // checkBoxEnableLargerAlternativeNoteViewText
             // 
             this.checkBoxEnableLargerAlternativeNoteViewText.AutoSize = true;
-            this.checkBoxEnableLargerAlternativeNoteViewText.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxEnableLargerAlternativeNoteViewText.Location = new System.Drawing.Point(9, 56);
             this.checkBoxEnableLargerAlternativeNoteViewText.Name = "checkBoxEnableLargerAlternativeNoteViewText";
-            this.checkBoxEnableLargerAlternativeNoteViewText.Size = new System.Drawing.Size(221, 17);
+            this.checkBoxEnableLargerAlternativeNoteViewText.Size = new System.Drawing.Size(116, 17);
             this.checkBoxEnableLargerAlternativeNoteViewText.TabIndex = 10;
-            this.checkBoxEnableLargerAlternativeNoteViewText.Text = "Enable Larger Alternative Note View Text";
+            this.checkBoxEnableLargerAlternativeNoteViewText.Text = "Use larger font size";
             this.checkBoxEnableLargerAlternativeNoteViewText.UseVisualStyleBackColor = true;
             // 
             // styledGroupBoxAccessibilityAccessibility
@@ -6890,6 +6892,14 @@
             this.toolTip.Padding = new System.Drawing.Size(6, 6);
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
+            // 
+            // labelAlternativeNoteViewDescription
+            // 
+            this.labelAlternativeNoteViewDescription.Location = new System.Drawing.Point(9, 20);
+            this.labelAlternativeNoteViewDescription.Name = "labelAlternativeNoteViewDescription";
+            this.labelAlternativeNoteViewDescription.Size = new System.Drawing.Size(382, 33);
+            this.labelAlternativeNoteViewDescription.TabIndex = 60;
+            this.labelAlternativeNoteViewDescription.Text = "When reading a note, the alternative view can be toggled by pressing V.";
             // 
             // UserControlTweaks
             // 
@@ -7350,5 +7360,6 @@
         private System.Windows.Forms.Label labelScreenNarrationVoiceType;
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Label labelAlternativeNoteViewDescription;
     }
 }
