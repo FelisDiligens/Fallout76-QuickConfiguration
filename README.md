@@ -128,7 +128,7 @@ See [Docs](Docs/README.md).
 * Spanish for v1.12 by [Yllelder](https://forums.nexusmods.com/index.php?/user/2229355-yllelder/)
 * Turkish for v1.12 by [AssetGroups](https://forums.nexusmods.com/profile/103221938-assetgroups/)
 * Japanese for v1.11.3 by [Akamiso0123 (yuutarionn)](https://forums.nexusmods.com/index.php?/user/6598456-yuutarionn/)
-* Chinese for v1.12.1 by [SugarBombsRADS (BulaLuka)](https://forums.nexusmods.com/index.php?/user/90175763-bulaluka/)
+* Chinese for v1.12.8 by [SugarBombsRADS](https://forums.nexusmods.com/index.php?/user/90175763-bulaluka/)
 
 #### Outdated translations:
 * Swedish for v1.5.2 by [Pforga](https://forums.nexusmods.com/index.php?/user/634766-pforga/)
