@@ -1,3 +1,21 @@
+### What's new in v1.12.9?
+
+Added/fixed a few tweaks and fixed the NexusMods profile picture not loading in.
+
+- Added new tweaks
+  - Added "Quick Heal Stimpak Priority" dropdown to "General" tab
+  - Added "Toggle Aim" checkbox to "Controls" tab
+  - Added "Viewmodel FOV" slider (with screenshots) to "Camera" tab
+- Fixed the "Skip splash screen with news on startup" tweak
+- Fixed small oversights in new tweaks from v1.12.8
+- Fixed the NexusMods profile picture not loading anymore
+- Resized NexusMods profile picture from 128px down to 100px to match image resolution
+- Added dependency to Magick.NET image library for conversion of image formats
+
+*Released: July 20, 2025*
+
+---
+
 ### What's new in v1.12.8?
 
 A small maintenance update.
