@@ -271,6 +271,14 @@ namespace Fo76ini.Forms.FormMain
                 }
             ));
 
+            DropDown.Add("QuickHealStimpakPriority", new DropDown(
+                this.comboBoxQuickHealStimpakPriority,
+                new string[] {
+                    "Use Weakest First",
+                    "Use Strongest First"
+                }
+            ));
+
             DropDown.Add("ScreenNarrationVoiceType", new DropDown(
                 this.comboBoxScreenNarrationVoiceType,
                 new string[] {

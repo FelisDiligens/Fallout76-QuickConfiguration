@@ -313,6 +313,7 @@
             this.numFOV = new System.Windows.Forms.NumericUpDown();
             this.tabPageAccessibility = new System.Windows.Forms.TabPage();
             this.styledGroupBoxAlternativeNoteView = new Fo76ini.Controls.StyledGroupBox();
+            this.labelAlternativeNoteViewDescription = new System.Windows.Forms.Label();
             this.buttonResetAlternativeNoteViewBackgroundColor = new System.Windows.Forms.Button();
             this.buttonPickAlternativeNoteViewBackgroundColor = new System.Windows.Forms.Button();
             this.labelAlternativeNoteViewBackgroundColor = new System.Windows.Forms.Label();
@@ -340,7 +341,8 @@
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.labelAlternativeNoteViewDescription = new System.Windows.Forms.Label();
+            this.comboBoxQuickHealStimpakPriority = new System.Windows.Forms.ComboBox();
+            this.labelQuickHealStimpakPriority = new System.Windows.Forms.Label();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -531,6 +533,8 @@
             this.groupBoxGameplay.BackColor = System.Drawing.Color.White;
             this.groupBoxGameplay.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxGameplay.BorderWidth = 1;
+            this.groupBoxGameplay.Controls.Add(this.comboBoxQuickHealStimpakPriority);
+            this.groupBoxGameplay.Controls.Add(this.labelQuickHealStimpakPriority);
             this.groupBoxGameplay.Controls.Add(this.comboBoxVATSGrenadeMineTargetingMode);
             this.groupBoxGameplay.Controls.Add(this.labelVATSGrenadeMineTargetingMode);
             this.groupBoxGameplay.Controls.Add(this.checkBoxAskOpenPerkCardPacks);
@@ -540,7 +544,7 @@
             this.groupBoxGameplay.Controls.Add(this.comboBoxHighlightCorpses);
             this.groupBoxGameplay.Location = new System.Drawing.Point(9, 144);
             this.groupBoxGameplay.Name = "groupBoxGameplay";
-            this.groupBoxGameplay.Size = new System.Drawing.Size(400, 153);
+            this.groupBoxGameplay.Size = new System.Drawing.Size(400, 181);
             this.groupBoxGameplay.TabIndex = 2;
             this.groupBoxGameplay.TabStop = false;
             this.groupBoxGameplay.Text = "Gameplay";
@@ -626,7 +630,7 @@
             this.groupBoxDialogue.Controls.Add(this.checkBoxDialogueHistory);
             this.groupBoxDialogue.Controls.Add(this.checkBoxDialogueSubtitles);
             this.groupBoxDialogue.Controls.Add(this.checkBoxGeneralSubtitles);
-            this.groupBoxDialogue.Location = new System.Drawing.Point(9, 306);
+            this.groupBoxDialogue.Location = new System.Drawing.Point(9, 334);
             this.groupBoxDialogue.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxDialogue.Name = "groupBoxDialogue";
             this.groupBoxDialogue.Size = new System.Drawing.Size(400, 143);
@@ -779,7 +783,7 @@
             this.groupBoxHUD.Controls.Add(this.comboBoxShowActiveEffectsOnHUD);
             this.groupBoxHUD.Controls.Add(this.sliderHUDOpacity);
             this.groupBoxHUD.Controls.Add(this.numHUDOpacity);
-            this.groupBoxHUD.Location = new System.Drawing.Point(9, 458);
+            this.groupBoxHUD.Location = new System.Drawing.Point(9, 486);
             this.groupBoxHUD.Name = "groupBoxHUD";
             this.groupBoxHUD.Size = new System.Drawing.Size(400, 476);
             this.groupBoxHUD.TabIndex = 4;
@@ -1180,7 +1184,7 @@
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMisc);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackSide);
             this.groupBoxQuests.Controls.Add(this.checkBoxEnableQuestAutoTrackMain);
-            this.groupBoxQuests.Location = new System.Drawing.Point(9, 943);
+            this.groupBoxQuests.Location = new System.Drawing.Point(9, 971);
             this.groupBoxQuests.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxQuests.Name = "groupBoxQuests";
             this.groupBoxQuests.Size = new System.Drawing.Size(400, 170);
@@ -6498,6 +6502,14 @@
             this.styledGroupBoxAlternativeNoteView.TitleBorderPadding = 4;
             this.styledGroupBoxAlternativeNoteView.TitleForeColor = System.Drawing.Color.Black;
             // 
+            // labelAlternativeNoteViewDescription
+            // 
+            this.labelAlternativeNoteViewDescription.Location = new System.Drawing.Point(9, 20);
+            this.labelAlternativeNoteViewDescription.Name = "labelAlternativeNoteViewDescription";
+            this.labelAlternativeNoteViewDescription.Size = new System.Drawing.Size(382, 33);
+            this.labelAlternativeNoteViewDescription.TabIndex = 60;
+            this.labelAlternativeNoteViewDescription.Text = "When reading a note, the alternative view can be toggled by pressing V.";
+            // 
             // buttonResetAlternativeNoteViewBackgroundColor
             // 
             this.buttonResetAlternativeNoteViewBackgroundColor.Location = new System.Drawing.Point(294, 108);
@@ -6893,13 +6905,23 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
-            // labelAlternativeNoteViewDescription
+            // comboBoxQuickHealStimpakPriority
             // 
-            this.labelAlternativeNoteViewDescription.Location = new System.Drawing.Point(9, 20);
-            this.labelAlternativeNoteViewDescription.Name = "labelAlternativeNoteViewDescription";
-            this.labelAlternativeNoteViewDescription.Size = new System.Drawing.Size(382, 33);
-            this.labelAlternativeNoteViewDescription.TabIndex = 60;
-            this.labelAlternativeNoteViewDescription.Text = "When reading a note, the alternative view can be toggled by pressing V.";
+            this.comboBoxQuickHealStimpakPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxQuickHealStimpakPriority.FormattingEnabled = true;
+            this.comboBoxQuickHealStimpakPriority.Location = new System.Drawing.Point(198, 147);
+            this.comboBoxQuickHealStimpakPriority.Name = "comboBoxQuickHealStimpakPriority";
+            this.comboBoxQuickHealStimpakPriority.Size = new System.Drawing.Size(196, 21);
+            this.comboBoxQuickHealStimpakPriority.TabIndex = 11;
+            // 
+            // labelQuickHealStimpakPriority
+            // 
+            this.labelQuickHealStimpakPriority.AutoSize = true;
+            this.labelQuickHealStimpakPriority.Location = new System.Drawing.Point(7, 150);
+            this.labelQuickHealStimpakPriority.Name = "labelQuickHealStimpakPriority";
+            this.labelQuickHealStimpakPriority.Size = new System.Drawing.Size(138, 13);
+            this.labelQuickHealStimpakPriority.TabIndex = 10;
+            this.labelQuickHealStimpakPriority.Text = "Quick Heal Stimpak Priority:";
             // 
             // UserControlTweaks
             // 
@@ -7361,5 +7383,7 @@
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Label labelAlternativeNoteViewDescription;
+        private System.Windows.Forms.ComboBox comboBoxQuickHealStimpakPriority;
+        private System.Windows.Forms.Label labelQuickHealStimpakPriority;
     }
 }

@@ -17,6 +17,7 @@ using Fo76ini.Tweaks.Video;
 using Fo76ini.Tweaks.Volume;
 using Fo76ini.Tweaks.Graphics.Effects;
 using Fo76ini.Tweaks.Accessibility;
+using Fo76ini.Tweaks.General.Gameplay;
 
 namespace Fo76ini.Forms.FormMain
 {
@@ -58,6 +59,8 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(labelHUDOpacity, toolTip, hudOpacityTweak);
             LinkedTweaks.LinkInfo(checkBoxBackpackVisible, toolTip, backpackVisibleTweak);
             LinkedTweaks.LinkInfo(checkBoxAskOpenPerkCardPacks, toolTip, askOpenPerkCardPacksTweak);
+            LinkedTweaks.LinkInfo(labelQuickHealStimpakPriority, toolTip, quickHealStimpakPriorityTweak);
+            LinkedTweaks.LinkInfo(comboBoxQuickHealStimpakPriority, toolTip, quickHealStimpakPriorityTweak);
             LinkedTweaks.LinkInfo(checkBoxRejectSharedPerks, toolTip, rejectSharedPerksEnabledTweak);
             LinkedTweaks.LinkInfo(labelVATSGrenadeMineTargetingMode, toolTip, vatsGrenadeMineTargetingModeTweak);
             LinkedTweaks.LinkInfo(comboBoxVATSGrenadeMineTargetingMode, toolTip, vatsGrenadeMineTargetingModeTweak);
@@ -408,6 +411,7 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkTweak(checkBoxEnableQuestAutoTrackDaily, autoTrackOtherQuestWhenStartedTweak);
 
             LinkedTweaks.LinkTweak(checkBoxAskOpenPerkCardPacks, askOpenPerkCardPacksTweak);
+            LinkedTweaks.LinkTweak(comboBoxQuickHealStimpakPriority, quickHealStimpakPriorityTweak);
             LinkedTweaks.LinkTweak(checkBoxRejectSharedPerks, rejectSharedPerksEnabledTweak);
             LinkedTweaks.LinkTweak(comboBoxVATSGrenadeMineTargetingMode, vatsGrenadeMineTargetingModeTweak);
             LinkedTweaks.LinkTweak(checkBoxAdvancedModDescriptions, advancedModDescriptionsTweak);
@@ -772,6 +776,7 @@ namespace Fo76ini.Forms.FormMain
         private VATSGrenadeMineTargetingModeTweak vatsGrenadeMineTargetingModeTweak = new VATSGrenadeMineTargetingModeTweak();
         private AdvancedModDescriptionsTweak advancedModDescriptionsTweak = new AdvancedModDescriptionsTweak();
         private AutoScrollPipboyItemStatsTweak autoScrollPipboyItemStatsTweak = new AutoScrollPipboyItemStatsTweak();
+        private QuickHealStimpakPriorityTweak quickHealStimpakPriorityTweak = new QuickHealStimpakPriorityTweak();
         private ShowCAMPWeatherTweak showCAMPWeatherTweak = new ShowCAMPWeatherTweak();
         
         private EnableQuestTrackNotificationTweak enableQuestTrackNotificationTweak = new EnableQuestTrackNotificationTweak();

@@ -219,6 +219,7 @@
     <Compile Include="Tweaks\Camera\FreeCam\WorkshopFreeCameraTranslationSpeedTweak.cs" />
     <Compile Include="Tweaks\Camera\FreeCam\WorkshopFreeCameraRotationSpeedTweak.cs" />
     <Compile Include="Tweaks\General\Gameplay\AskOpenPerkCardPacksTweak.cs" />
+    <Compile Include="Tweaks\General\Gameplay\QuickHealStimpakPriorityTweak.cs" />
     <Compile Include="Tweaks\General\Gameplay\RejectSharedPerksEnabledTweak.cs" />
     <Compile Include="Tweaks\General\Gameplay\VATSGrenadeMineTargetingModeTweak.cs" />
     <Compile Include="Tweaks\Graphics\Effects\EnableIntenseWeatherEffectsTweak.cs" />
