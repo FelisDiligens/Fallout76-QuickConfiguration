@@ -14,7 +14,7 @@ namespace Fo76ini.Tweaks.General
 
         public string AffectedFiles => "Fallout76Custom.ini";
 
-        public string AffectedValues => "[General]bSkipSplash";
+        public string AffectedValues => "[General]bSkipSplash, [General]bForceSplash";
 
         public bool DefaultValue => false;
 
@@ -30,6 +30,14 @@ namespace Fo76ini.Tweaks.General
         public void SetValue(bool value)
         {
             IniFiles.F76Custom.Set("General", "bSkipSplash", value);
+            if (value)
+            {
+                IniFiles.F76Custom.Set("General", "bForceSplash", false);
+            }
+            else
+            {
+                IniFiles.F76Custom.Remove("General", "bForceSplash");
+            }
         }
 
         public void ResetValue()
