@@ -97,9 +97,10 @@
             this.panelManageNMProfile.Controls.Add(this.checkBoxNMDownloadThumbnails);
             this.panelManageNMProfile.Controls.Add(this.labelNMOptions);
             this.panelManageNMProfile.Controls.Add(this.checkBoxNMUpdateProfile);
-            this.panelManageNMProfile.Location = new System.Drawing.Point(0, 228);
+            this.panelManageNMProfile.Location = new System.Drawing.Point(0, 202);
+            this.panelManageNMProfile.Margin = new System.Windows.Forms.Padding(0);
             this.panelManageNMProfile.Name = "panelManageNMProfile";
-            this.panelManageNMProfile.Size = new System.Drawing.Size(700, 392);
+            this.panelManageNMProfile.Size = new System.Drawing.Size(700, 418);
             this.panelManageNMProfile.TabIndex = 80;
             // 
             // flowPanelNMActions
@@ -339,15 +340,16 @@
             this.panelNMProfile.Controls.Add(this.labelNMDescDailyRateLimit);
             this.panelNMProfile.Controls.Add(this.labelNMDailyRateLimit);
             this.panelNMProfile.Location = new System.Drawing.Point(0, 60);
+            this.panelNMProfile.Margin = new System.Windows.Forms.Padding(0);
             this.panelNMProfile.Name = "panelNMProfile";
-            this.panelNMProfile.Size = new System.Drawing.Size(700, 170);
+            this.panelNMProfile.Size = new System.Drawing.Size(700, 142);
             this.panelNMProfile.TabIndex = 79;
             // 
             // labelNMNotLoggedIn
             // 
             this.labelNMNotLoggedIn.AutoSize = true;
             this.labelNMNotLoggedIn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMNotLoggedIn.Location = new System.Drawing.Point(173, 57);
+            this.labelNMNotLoggedIn.Location = new System.Drawing.Point(146, 57);
             this.labelNMNotLoggedIn.Name = "labelNMNotLoggedIn";
             this.labelNMNotLoggedIn.Size = new System.Drawing.Size(73, 13);
             this.labelNMNotLoggedIn.TabIndex = 80;
@@ -357,7 +359,7 @@
             // 
             this.labelNMUserID.AutoSize = true;
             this.labelNMUserID.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMUserID.Location = new System.Drawing.Point(286, 85);
+            this.labelNMUserID.Location = new System.Drawing.Point(259, 85);
             this.labelNMUserID.Name = "labelNMUserID";
             this.labelNMUserID.Size = new System.Drawing.Size(16, 13);
             this.labelNMUserID.TabIndex = 79;
@@ -367,7 +369,7 @@
             // 
             this.labelNMDescUserID.AutoSize = true;
             this.labelNMDescUserID.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescUserID.Location = new System.Drawing.Point(173, 85);
+            this.labelNMDescUserID.Location = new System.Drawing.Point(146, 85);
             this.labelNMDescUserID.Name = "labelNMDescUserID";
             this.labelNMDescUserID.Size = new System.Drawing.Size(46, 13);
             this.labelNMDescUserID.TabIndex = 78;
@@ -377,7 +379,7 @@
             // 
             this.labelNMHourlyRateLimit.AutoSize = true;
             this.labelNMHourlyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMHourlyRateLimit.Location = new System.Drawing.Point(515, 85);
+            this.labelNMHourlyRateLimit.Location = new System.Drawing.Point(488, 85);
             this.labelNMHourlyRateLimit.Name = "labelNMHourlyRateLimit";
             this.labelNMHourlyRateLimit.Size = new System.Drawing.Size(30, 13);
             this.labelNMHourlyRateLimit.TabIndex = 77;
@@ -387,7 +389,7 @@
             // 
             this.labelNMDescHourlyRateLimit.AutoSize = true;
             this.labelNMDescHourlyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescHourlyRateLimit.Location = new System.Drawing.Point(397, 85);
+            this.labelNMDescHourlyRateLimit.Location = new System.Drawing.Point(370, 85);
             this.labelNMDescHourlyRateLimit.Name = "labelNMDescHourlyRateLimit";
             this.labelNMDescHourlyRateLimit.Size = new System.Drawing.Size(81, 13);
             this.labelNMDescHourlyRateLimit.TabIndex = 76;
@@ -399,7 +401,7 @@
             this.pictureBoxNMProfilePicture.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNMProfilePicture.Image")));
             this.pictureBoxNMProfilePicture.Location = new System.Drawing.Point(20, 20);
             this.pictureBoxNMProfilePicture.Name = "pictureBoxNMProfilePicture";
-            this.pictureBoxNMProfilePicture.Size = new System.Drawing.Size(128, 128);
+            this.pictureBoxNMProfilePicture.Size = new System.Drawing.Size(100, 100);
             this.pictureBoxNMProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxNMProfilePicture.TabIndex = 65;
             this.pictureBoxNMProfilePicture.TabStop = false;
@@ -408,11 +410,11 @@
             // labelNMUserName
             // 
             this.labelNMUserName.AutoSize = true;
-            this.labelNMUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNMUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNMUserName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMUserName.Location = new System.Drawing.Point(170, 20);
+            this.labelNMUserName.Location = new System.Drawing.Point(143, 20);
             this.labelNMUserName.Name = "labelNMUserName";
-            this.labelNMUserName.Size = new System.Drawing.Size(169, 33);
+            this.labelNMUserName.Size = new System.Drawing.Size(138, 29);
             this.labelNMUserName.TabIndex = 66;
             this.labelNMUserName.Text = "Anonymous";
             // 
@@ -420,7 +422,7 @@
             // 
             this.labelNMDescMembership.AutoSize = true;
             this.labelNMDescMembership.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescMembership.Location = new System.Drawing.Point(173, 64);
+            this.labelNMDescMembership.Location = new System.Drawing.Point(146, 64);
             this.labelNMDescMembership.Name = "labelNMDescMembership";
             this.labelNMDescMembership.Size = new System.Drawing.Size(67, 13);
             this.labelNMDescMembership.TabIndex = 67;
@@ -430,7 +432,7 @@
             // 
             this.labelNMRateLimitReset.AutoSize = true;
             this.labelNMRateLimitReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMRateLimitReset.Location = new System.Drawing.Point(515, 107);
+            this.labelNMRateLimitReset.Location = new System.Drawing.Point(488, 107);
             this.labelNMRateLimitReset.Name = "labelNMRateLimitReset";
             this.labelNMRateLimitReset.Size = new System.Drawing.Size(36, 13);
             this.labelNMRateLimitReset.TabIndex = 72;
@@ -440,7 +442,7 @@
             // 
             this.labelNMMembership.AutoSize = true;
             this.labelNMMembership.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMMembership.Location = new System.Drawing.Point(286, 64);
+            this.labelNMMembership.Location = new System.Drawing.Point(259, 64);
             this.labelNMMembership.Name = "labelNMMembership";
             this.labelNMMembership.Size = new System.Drawing.Size(33, 13);
             this.labelNMMembership.TabIndex = 68;
@@ -450,7 +452,7 @@
             // 
             this.labelNMDescLimitReset.AutoSize = true;
             this.labelNMDescLimitReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescLimitReset.Location = new System.Drawing.Point(397, 107);
+            this.labelNMDescLimitReset.Location = new System.Drawing.Point(370, 107);
             this.labelNMDescLimitReset.Name = "labelNMDescLimitReset";
             this.labelNMDescLimitReset.Size = new System.Drawing.Size(79, 13);
             this.labelNMDescLimitReset.TabIndex = 71;
@@ -460,7 +462,7 @@
             // 
             this.labelNMDescDailyRateLimit.AutoSize = true;
             this.labelNMDescDailyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDescDailyRateLimit.Location = new System.Drawing.Point(397, 64);
+            this.labelNMDescDailyRateLimit.Location = new System.Drawing.Point(370, 64);
             this.labelNMDescDailyRateLimit.Name = "labelNMDescDailyRateLimit";
             this.labelNMDescDailyRateLimit.Size = new System.Drawing.Size(74, 13);
             this.labelNMDescDailyRateLimit.TabIndex = 69;
@@ -470,7 +472,7 @@
             // 
             this.labelNMDailyRateLimit.AutoSize = true;
             this.labelNMDailyRateLimit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNMDailyRateLimit.Location = new System.Drawing.Point(515, 64);
+            this.labelNMDailyRateLimit.Location = new System.Drawing.Point(488, 64);
             this.labelNMDailyRateLimit.Name = "labelNMDailyRateLimit";
             this.labelNMDailyRateLimit.Size = new System.Drawing.Size(30, 13);
             this.labelNMDailyRateLimit.TabIndex = 70;
