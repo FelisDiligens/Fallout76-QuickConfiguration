@@ -166,11 +166,11 @@ namespace Fo76ini.Forms.FormMain.Tabs
 
             this.pictureBoxNMProfilePicture.Image = Resources.user_white;
             if (NexusMods.User.ProfilePictureFileName != null &&
-                File.Exists(NexusMods.User.ProfilePictureFilePath))
+                File.Exists(NexusMods.User.ConvertedProfilePictureFilePath))
             {
                 try
                 {
-                    using (FileStream fs = new FileStream(NexusMods.User.ProfilePictureFilePath, FileMode.Open, FileAccess.Read))
+                    using (FileStream fs = new FileStream(NexusMods.User.ConvertedProfilePictureFilePath, FileMode.Open, FileAccess.Read))
                     {
                         using (Image img = Image.FromStream(fs))
                         {

@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Fo76ini.Interface;
+using Fo76ini.Utilities;
+using ImageMagick;
 using Newtonsoft.Json.Linq;
+using System;
 using System.IO;
 using System.Net;
+using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using Fo76ini.Interface;
-using Fo76ini.Utilities;
 
 namespace Fo76ini.API
 {
@@ -25,11 +27,17 @@ namespace Fo76ini.API
         public Membership Status = Membership.Basic;
 
         public string ProfilePictureURL = ""; // "https://avatars.nexusmods.com/<UserID>/100"
-        public string ProfilePictureFileName = "";
+        public string ProfilePictureFileName = "profile.webp";
+        public string ConvertedProfilePictureFileName = "profile.png";
 
         public string ProfilePictureFilePath
         {
             get => Path.Combine(NexusMods.FolderPath, ProfilePictureFileName);
+        }
+
+        public string ConvertedProfilePictureFilePath
+        {
+            get => Path.Combine(NexusMods.FolderPath, ConvertedProfilePictureFileName);
         }
 
         public int DailyRateLimit = 0;
@@ -112,7 +120,6 @@ namespace Fo76ini.API
             try
             {
                 Uri uri = new Uri(ProfilePictureURL);
-                ProfilePictureFileName = "profile.webp";
 
                 // Download if non-existent:
                 if (!File.Exists(ProfilePictureFilePath))
@@ -121,12 +128,27 @@ namespace Fo76ini.API
                     using (var client = new WebClient())
                         client.DownloadFile(ProfilePictureURL, ProfilePictureFilePath);
                 }
+
+                // Convert from webp to png for Winforms to actually load the image:
+                if (!File.Exists(ConvertedProfilePictureFilePath))
+                {
+                    ConvertProfilePicture();
+                }
             }
             catch (UriFormatException exc)
             {
                 // TODO: Handle exception
                 Console.WriteLine($"Not a valid URL: '{ProfilePictureURL}'\nSystem.UriFormatException: {exc.Message}");
                 ProfilePictureFileName = "";
+            }
+        }
+
+        private void ConvertProfilePicture()
+        {
+            using (var image = new MagickImage(ProfilePictureFilePath))
+            {
+                image.Format = MagickFormat.Png;
+                image.Write(ConvertedProfilePictureFilePath);
             }
         }
 
@@ -319,6 +341,8 @@ namespace Fo76ini.API
             {
                 if (File.Exists(ProfilePictureFilePath))
                     File.Delete(ProfilePictureFilePath);
+                if (File.Exists(ConvertedProfilePictureFilePath))
+                    File.Delete(ConvertedProfilePictureFilePath);
             }
             catch (Exception ex)
             {
