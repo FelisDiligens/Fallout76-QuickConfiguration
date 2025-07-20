@@ -304,6 +304,9 @@ namespace Fo76ini.Forms.FormMain
             LinkControlsToTweaks();
 
             this.labelTweaksTitle.Font = new Font(CustomFonts.Overseer, 20, FontStyle.Regular);
+
+            this.pictureBoxFOVPreview.Image = getFOVPreviewImage((int)this.fovTweak.GetValue());
+            this.pictureBoxViewmodelFOV.Image = getViewmodelFOVPreviewImage((int)this.fov1stPersonTweak.GetValue());
         }
 
         private void Translation_LanguageChanged(object sender, TranslationEventArgs e)
@@ -477,9 +480,47 @@ namespace Fo76ini.Forms.FormMain
             }
         }
 
+        private Bitmap getViewmodelFOVPreviewImage(int fov)
+        {
+            fov = (int)(Math.Round((float)fov / 5f) * 5);
+            fov = Utils.Clamp(fov, 70, 120);
+            switch (fov)
+            {
+                case 70:
+                    return Resources.fov_viewmodel_70;
+                case 75:
+                    return Resources.fov_viewmodel_75;
+                case 80:
+                    return Resources.fov_viewmodel_80;
+                case 85:
+                    return Resources.fov_viewmodel_85;
+                case 90:
+                    return Resources.fov_viewmodel_90;
+                case 95:
+                    return Resources.fov_viewmodel_95;
+                case 100:
+                    return Resources.fov_viewmodel_100;
+                case 105:
+                    return Resources.fov_viewmodel_105;
+                case 110:
+                    return Resources.fov_viewmodel_110;
+                case 115:
+                    return Resources.fov_viewmodel_115;
+                case 120:
+                    return Resources.fov_viewmodel_120;
+                default:
+                    return Resources.fov_viewmodel_80;
+            }
+        }
+
         private void numFOV_ValueChanged(object sender, EventArgs e)
         {
             this.pictureBoxFOVPreview.Image = getFOVPreviewImage((int)this.numFOV.Value);
+        }
+
+        private void numViewmodelFOV_ValueChanged(object sender, EventArgs e)
+        {
+            this.pictureBoxViewmodelFOV.Image = getViewmodelFOVPreviewImage((int)this.numViewmodelFOV.Value);
         }
 
         #endregion

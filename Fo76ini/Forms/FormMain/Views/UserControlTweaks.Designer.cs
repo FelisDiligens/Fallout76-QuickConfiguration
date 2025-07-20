@@ -36,6 +36,8 @@
             this.buttonOpenTweaksInfoInBrowser = new System.Windows.Forms.Button();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.groupBoxGameplay = new Fo76ini.Controls.StyledGroupBox();
+            this.comboBoxQuickHealStimpakPriority = new System.Windows.Forms.ComboBox();
+            this.labelQuickHealStimpakPriority = new System.Windows.Forms.Label();
             this.comboBoxVATSGrenadeMineTargetingMode = new System.Windows.Forms.ComboBox();
             this.labelVATSGrenadeMineTargetingMode = new System.Windows.Forms.Label();
             this.checkBoxAskOpenPerkCardPacks = new System.Windows.Forms.CheckBox();
@@ -239,6 +241,10 @@
             this.numMouseSensitivityX = new System.Windows.Forms.NumericUpDown();
             this.labelMouseSensitivityX = new System.Windows.Forms.Label();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
+            this.groupBoxViewmodelFOV = new Fo76ini.Controls.StyledGroupBox();
+            this.pictureBoxViewmodelFOV = new System.Windows.Forms.PictureBox();
+            this.sliderViewmodelFOV = new ColorSlider.ColorSlider();
+            this.numViewmodelFOV = new System.Windows.Forms.NumericUpDown();
             this.styledGroupBoxFreeCam = new Fo76ini.Controls.StyledGroupBox();
             this.checkBoxWorkshopFreeCameraControlsHoldToggle = new System.Windows.Forms.CheckBox();
             this.checkBoxWorkshopFreeCameraStartAtPreviousLocation = new System.Windows.Forms.CheckBox();
@@ -341,8 +347,6 @@
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.comboBoxQuickHealStimpakPriority = new System.Windows.Forms.ComboBox();
-            this.labelQuickHealStimpakPriority = new System.Windows.Forms.Label();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -401,6 +405,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityX)).BeginInit();
             this.tabPageCamera.SuspendLayout();
+            this.groupBoxViewmodelFOV.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxViewmodelFOV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numViewmodelFOV)).BeginInit();
             this.styledGroupBoxFreeCam.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFreeCamRotationSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFreeCamMovementSpeed)).BeginInit();
@@ -552,6 +559,24 @@
             this.groupBoxGameplay.TitleBorderMargin = 6;
             this.groupBoxGameplay.TitleBorderPadding = 4;
             this.groupBoxGameplay.TitleForeColor = System.Drawing.Color.Black;
+            // 
+            // comboBoxQuickHealStimpakPriority
+            // 
+            this.comboBoxQuickHealStimpakPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxQuickHealStimpakPriority.FormattingEnabled = true;
+            this.comboBoxQuickHealStimpakPriority.Location = new System.Drawing.Point(198, 147);
+            this.comboBoxQuickHealStimpakPriority.Name = "comboBoxQuickHealStimpakPriority";
+            this.comboBoxQuickHealStimpakPriority.Size = new System.Drawing.Size(196, 21);
+            this.comboBoxQuickHealStimpakPriority.TabIndex = 11;
+            // 
+            // labelQuickHealStimpakPriority
+            // 
+            this.labelQuickHealStimpakPriority.AutoSize = true;
+            this.labelQuickHealStimpakPriority.Location = new System.Drawing.Point(7, 150);
+            this.labelQuickHealStimpakPriority.Name = "labelQuickHealStimpakPriority";
+            this.labelQuickHealStimpakPriority.Size = new System.Drawing.Size(138, 13);
+            this.labelQuickHealStimpakPriority.TabIndex = 10;
+            this.labelQuickHealStimpakPriority.Text = "Quick Heal Stimpak Priority:";
             // 
             // comboBoxVATSGrenadeMineTargetingMode
             // 
@@ -4501,6 +4526,7 @@
             // 
             this.tabPageCamera.AutoScroll = true;
             this.tabPageCamera.BackColor = System.Drawing.Color.White;
+            this.tabPageCamera.Controls.Add(this.groupBoxViewmodelFOV);
             this.tabPageCamera.Controls.Add(this.styledGroupBoxFreeCam);
             this.tabPageCamera.Controls.Add(this.styledGroupBoxAccessibility);
             this.tabPageCamera.Controls.Add(this.groupBoxCameraPosition);
@@ -4514,6 +4540,131 @@
             this.tabPageCamera.Size = new System.Drawing.Size(654, 473);
             this.tabPageCamera.TabIndex = 4;
             this.tabPageCamera.Text = "Camera";
+            // 
+            // groupBoxViewmodelFOV
+            // 
+            this.groupBoxViewmodelFOV.BackColor = System.Drawing.Color.White;
+            this.groupBoxViewmodelFOV.BorderColor = System.Drawing.Color.Silver;
+            this.groupBoxViewmodelFOV.BorderWidth = 1;
+            this.groupBoxViewmodelFOV.Controls.Add(this.pictureBoxViewmodelFOV);
+            this.groupBoxViewmodelFOV.Controls.Add(this.sliderViewmodelFOV);
+            this.groupBoxViewmodelFOV.Controls.Add(this.numViewmodelFOV);
+            this.groupBoxViewmodelFOV.Location = new System.Drawing.Point(9, 415);
+            this.groupBoxViewmodelFOV.Margin = new System.Windows.Forms.Padding(9);
+            this.groupBoxViewmodelFOV.Name = "groupBoxViewmodelFOV";
+            this.groupBoxViewmodelFOV.Size = new System.Drawing.Size(619, 220);
+            this.groupBoxViewmodelFOV.TabIndex = 10;
+            this.groupBoxViewmodelFOV.TabStop = false;
+            this.groupBoxViewmodelFOV.Text = "Viewmodel FOV";
+            this.groupBoxViewmodelFOV.TitleAlignment = Fo76ini.Controls.TextAlignment.Left;
+            this.groupBoxViewmodelFOV.TitleBorderMargin = 6;
+            this.groupBoxViewmodelFOV.TitleBorderPadding = 4;
+            this.groupBoxViewmodelFOV.TitleForeColor = System.Drawing.Color.Black;
+            // 
+            // pictureBoxViewmodelFOV
+            // 
+            this.pictureBoxViewmodelFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxViewmodelFOV.BackColor = System.Drawing.Color.Gray;
+            this.pictureBoxViewmodelFOV.Location = new System.Drawing.Point(0, 45);
+            this.pictureBoxViewmodelFOV.Name = "pictureBoxViewmodelFOV";
+            this.pictureBoxViewmodelFOV.Size = new System.Drawing.Size(619, 175);
+            this.pictureBoxViewmodelFOV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxViewmodelFOV.TabIndex = 53;
+            this.pictureBoxViewmodelFOV.TabStop = false;
+            // 
+            // sliderViewmodelFOV
+            // 
+            this.sliderViewmodelFOV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sliderViewmodelFOV.BackColor = System.Drawing.Color.Transparent;
+            this.sliderViewmodelFOV.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(94)))), ((int)(((byte)(110)))));
+            this.sliderViewmodelFOV.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
+            this.sliderViewmodelFOV.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderViewmodelFOV.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderViewmodelFOV.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(130)))), ((int)(((byte)(208)))));
+            this.sliderViewmodelFOV.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
+            this.sliderViewmodelFOV.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.sliderViewmodelFOV.ForeColor = System.Drawing.Color.White;
+            this.sliderViewmodelFOV.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.sliderViewmodelFOV.Location = new System.Drawing.Point(6, 19);
+            this.sliderViewmodelFOV.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.sliderViewmodelFOV.Minimum = new decimal(new int[] {
+            14,
+            0,
+            0,
+            0});
+            this.sliderViewmodelFOV.Name = "sliderViewmodelFOV";
+            this.sliderViewmodelFOV.ScaleDivisions = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.sliderViewmodelFOV.ScaleSubDivisions = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.sliderViewmodelFOV.ShowDivisionsText = false;
+            this.sliderViewmodelFOV.ShowSmallScale = false;
+            this.sliderViewmodelFOV.Size = new System.Drawing.Size(533, 20);
+            this.sliderViewmodelFOV.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.sliderViewmodelFOV.TabIndex = 0;
+            this.sliderViewmodelFOV.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderViewmodelFOV.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(56)))), ((int)(((byte)(152)))));
+            this.sliderViewmodelFOV.ThumbRoundRectSize = new System.Drawing.Size(16, 16);
+            this.sliderViewmodelFOV.ThumbSize = new System.Drawing.Size(16, 16);
+            this.sliderViewmodelFOV.TickAdd = 0F;
+            this.sliderViewmodelFOV.TickColor = System.Drawing.Color.White;
+            this.sliderViewmodelFOV.TickDivide = 0F;
+            this.sliderViewmodelFOV.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.sliderViewmodelFOV.Value = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            // 
+            // numViewmodelFOV
+            // 
+            this.numViewmodelFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numViewmodelFOV.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numViewmodelFOV.Location = new System.Drawing.Point(545, 19);
+            this.numViewmodelFOV.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numViewmodelFOV.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numViewmodelFOV.Name = "numViewmodelFOV";
+            this.numViewmodelFOV.Size = new System.Drawing.Size(68, 20);
+            this.numViewmodelFOV.TabIndex = 1;
+            this.numViewmodelFOV.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numViewmodelFOV.ValueChanged += new System.EventHandler(this.numViewmodelFOV_ValueChanged);
             // 
             // styledGroupBoxFreeCam
             // 
@@ -4529,7 +4680,7 @@
             this.styledGroupBoxFreeCam.Controls.Add(this.numericUpDownFreeCamMovementSpeed);
             this.styledGroupBoxFreeCam.Controls.Add(this.trackBarFreeCamMovementSpeed);
             this.styledGroupBoxFreeCam.Controls.Add(this.labelFreeCamMovementSpeed);
-            this.styledGroupBoxFreeCam.Location = new System.Drawing.Point(9, 797);
+            this.styledGroupBoxFreeCam.Location = new System.Drawing.Point(9, 1029);
             this.styledGroupBoxFreeCam.Margin = new System.Windows.Forms.Padding(6);
             this.styledGroupBoxFreeCam.Name = "styledGroupBoxFreeCam";
             this.styledGroupBoxFreeCam.Size = new System.Drawing.Size(400, 159);
@@ -4765,7 +4916,7 @@
             this.styledGroupBoxAccessibility.BorderColor = System.Drawing.Color.Silver;
             this.styledGroupBoxAccessibility.BorderWidth = 1;
             this.styledGroupBoxAccessibility.Controls.Add(this.checkBoxEnableCameraShake);
-            this.styledGroupBoxAccessibility.Location = new System.Drawing.Point(9, 482);
+            this.styledGroupBoxAccessibility.Location = new System.Drawing.Point(9, 714);
             this.styledGroupBoxAccessibility.Margin = new System.Windows.Forms.Padding(6);
             this.styledGroupBoxAccessibility.Name = "styledGroupBoxAccessibility";
             this.styledGroupBoxAccessibility.Size = new System.Drawing.Size(400, 52);
@@ -4797,7 +4948,7 @@
             this.groupBoxCameraPosition.Controls.Add(this.buttonCameraPositionReset);
             this.groupBoxCameraPosition.Controls.Add(this.checkBoxbApplyCameraNodeAnimations);
             this.groupBoxCameraPosition.Controls.Add(this.groupBoxUnarmedCameraPosition);
-            this.groupBoxCameraPosition.Location = new System.Drawing.Point(9, 1046);
+            this.groupBoxCameraPosition.Location = new System.Drawing.Point(9, 1278);
             this.groupBoxCameraPosition.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCameraPosition.Name = "groupBoxCameraPosition";
             this.groupBoxCameraPosition.Size = new System.Drawing.Size(400, 512);
@@ -5639,7 +5790,7 @@
             this.groupBoxFOVMore.BorderWidth = 1;
             this.groupBoxFOVMore.Controls.Add(this.labelADSFOV);
             this.groupBoxFOVMore.Controls.Add(this.numADSFOV);
-            this.groupBoxFOVMore.Location = new System.Drawing.Point(9, 418);
+            this.groupBoxFOVMore.Location = new System.Drawing.Point(9, 650);
             this.groupBoxFOVMore.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxFOVMore.Name = "groupBoxFOVMore";
             this.groupBoxFOVMore.Size = new System.Drawing.Size(400, 52);
@@ -5702,7 +5853,7 @@
             this.groupBoxSelfieCamera.Controls.Add(this.numericUpDownPhotomodeTranslationSpeed);
             this.groupBoxSelfieCamera.Controls.Add(this.trackBarPhotomodeTranslationSpeed);
             this.groupBoxSelfieCamera.Controls.Add(this.labelPhotomodeTranslationSpeed);
-            this.groupBoxSelfieCamera.Location = new System.Drawing.Point(9, 669);
+            this.groupBoxSelfieCamera.Location = new System.Drawing.Point(9, 901);
             this.groupBoxSelfieCamera.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxSelfieCamera.Name = "groupBoxSelfieCamera";
             this.groupBoxSelfieCamera.Size = new System.Drawing.Size(400, 116);
@@ -6002,7 +6153,7 @@
             this.groupBoxIdleCamera.BorderWidth = 1;
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxForceVanityMode);
             this.groupBoxIdleCamera.Controls.Add(this.checkBoxVanityMode);
-            this.groupBoxIdleCamera.Location = new System.Drawing.Point(9, 968);
+            this.groupBoxIdleCamera.Location = new System.Drawing.Point(9, 1200);
             this.groupBoxIdleCamera.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxIdleCamera.Name = "groupBoxIdleCamera";
             this.groupBoxIdleCamera.Size = new System.Drawing.Size(400, 66);
@@ -6052,7 +6203,7 @@
             this.groupBoxCameraDistance.Controls.Add(this.labelCameraDistanceMaximum);
             this.groupBoxCameraDistance.Controls.Add(this.labelCameraDistanceMinimum);
             this.groupBoxCameraDistance.Controls.Add(this.sliderCameraDistanceMinimum);
-            this.groupBoxCameraDistance.Location = new System.Drawing.Point(9, 546);
+            this.groupBoxCameraDistance.Location = new System.Drawing.Point(9, 778);
             this.groupBoxCameraDistance.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCameraDistance.Name = "groupBoxCameraDistance";
             this.groupBoxCameraDistance.Size = new System.Drawing.Size(400, 111);
@@ -6905,24 +7056,6 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
-            // comboBoxQuickHealStimpakPriority
-            // 
-            this.comboBoxQuickHealStimpakPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxQuickHealStimpakPriority.FormattingEnabled = true;
-            this.comboBoxQuickHealStimpakPriority.Location = new System.Drawing.Point(198, 147);
-            this.comboBoxQuickHealStimpakPriority.Name = "comboBoxQuickHealStimpakPriority";
-            this.comboBoxQuickHealStimpakPriority.Size = new System.Drawing.Size(196, 21);
-            this.comboBoxQuickHealStimpakPriority.TabIndex = 11;
-            // 
-            // labelQuickHealStimpakPriority
-            // 
-            this.labelQuickHealStimpakPriority.AutoSize = true;
-            this.labelQuickHealStimpakPriority.Location = new System.Drawing.Point(7, 150);
-            this.labelQuickHealStimpakPriority.Name = "labelQuickHealStimpakPriority";
-            this.labelQuickHealStimpakPriority.Size = new System.Drawing.Size(138, 13);
-            this.labelQuickHealStimpakPriority.TabIndex = 10;
-            this.labelQuickHealStimpakPriority.Text = "Quick Heal Stimpak Priority:";
-            // 
             // UserControlTweaks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7015,6 +7148,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseSensitivityX)).EndInit();
             this.tabPageCamera.ResumeLayout(false);
+            this.groupBoxViewmodelFOV.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxViewmodelFOV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numViewmodelFOV)).EndInit();
             this.styledGroupBoxFreeCam.ResumeLayout(false);
             this.styledGroupBoxFreeCam.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFreeCamRotationSpeed)).EndInit();
@@ -7385,5 +7521,9 @@
         private System.Windows.Forms.Label labelAlternativeNoteViewDescription;
         private System.Windows.Forms.ComboBox comboBoxQuickHealStimpakPriority;
         private System.Windows.Forms.Label labelQuickHealStimpakPriority;
+        private Controls.StyledGroupBox groupBoxViewmodelFOV;
+        private System.Windows.Forms.PictureBox pictureBoxViewmodelFOV;
+        private ColorSlider.ColorSlider sliderViewmodelFOV;
+        private System.Windows.Forms.NumericUpDown numViewmodelFOV;
     }
 }

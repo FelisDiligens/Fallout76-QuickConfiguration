@@ -8,12 +8,12 @@ namespace Fo76ini.Tweaks.Camera
 {
     class FOV1stPersonTweak : ITweak<float>, ITweakInfo
     {
-        public string Description => "Viewmodel FOV: affects your hands, gun, Pip-Boy etc.\n" +
-                                     "ℹ️ Doesn't work";
+        public string Description => "Viewmodel FOV: affects your hands, gun, Pip-Boy, etc.\n" +
+                                     "Also affects aim down sight zoom amount.";
 
-        public WarnLevel WarnLevel => WarnLevel.Experimental;
+        public WarnLevel WarnLevel => WarnLevel.Notice;
 
-        public string AffectedFiles => "Fallout76Prefs.ini";
+        public string AffectedFiles => "Fallout76Custom.ini";
 
         public string AffectedValues => "fDefault1stPersonFOV";
 
@@ -30,8 +30,7 @@ namespace Fo76ini.Tweaks.Camera
 
         public void SetValue(float value)
         {
-            IniFiles.F76Prefs.Set("Display", "fDefault1stPersonFOV", value);
-            IniFiles.F76Prefs.Set("Interface", "fDefault1stPersonFOV", value);
+            IniFiles.F76Custom.Set("Display", "fDefault1stPersonFOV", value);
         }
 
         public void ResetValue()

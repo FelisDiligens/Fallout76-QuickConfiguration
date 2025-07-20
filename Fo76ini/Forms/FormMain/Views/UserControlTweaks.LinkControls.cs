@@ -233,6 +233,8 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(numADSFOV, toolTip, fov3rdADSTweak);
             LinkedTweaks.LinkInfo(numFOV, toolTip, fovTweak);
             LinkedTweaks.LinkInfo(sliderFOV, toolTip, fovTweak);
+            LinkedTweaks.LinkInfo(numViewmodelFOV, toolTip, fov1stPersonTweak);
+            LinkedTweaks.LinkInfo(sliderViewmodelFOV, toolTip, fov1stPersonTweak);
             LinkedTweaks.LinkInfo(labelADSFOV, toolTip, fov3rdADSTweak);
             LinkedTweaks.LinkInfo(numCameraDistanceMinimum, toolTip, vanityModeMinDistTweak);
             LinkedTweaks.LinkInfo(numCameraDistanceMaximum, toolTip, vanityModeMaxDistTweak);
@@ -670,6 +672,10 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkSlider(sliderFOV, numFOV, 0.2f);
             LinkedTweaks.LinkTweak(numFOV, fovTweak);
 
+            // Field of View
+            LinkedTweaks.LinkSlider(sliderViewmodelFOV, numViewmodelFOV, 0.2f);
+            LinkedTweaks.LinkTweak(numViewmodelFOV, fov1stPersonTweak);
+
             // 3rd person ADS FOV
             LinkedTweaks.LinkTweak(numADSFOV, fov3rdADSTweak);
 
@@ -874,6 +880,7 @@ namespace Fo76ini.Forms.FormMain
         // Camera tab
         private FieldOfViewTweak fovTweak = new FieldOfViewTweak();
         private FOV3rdADSTweak fov3rdADSTweak = new FOV3rdADSTweak();
+        private FOV1stPersonTweak fov1stPersonTweak = new FOV1stPersonTweak();
 
         private EnableCameraShakeTweak enableCameraShakeTweak = new EnableCameraShakeTweak();
 

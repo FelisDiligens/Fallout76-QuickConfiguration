@@ -632,6 +632,17 @@
     <None Include="Resources\map-4-16.png" />
     <None Include="Resources\Magnify-1s-200px-light.gif" />
     <None Include="Resources\Magnify-1s-200px-dark.gif" />
+    <None Include="Resources\fov_viewmodel_70.jpg" />
+    <None Include="Resources\fov_viewmodel_75.jpg" />
+    <None Include="Resources\fov_viewmodel_80.jpg" />
+    <None Include="Resources\fov_viewmodel_85.jpg" />
+    <None Include="Resources\fov_viewmodel_90.jpg" />
+    <None Include="Resources\fov_viewmodel_95.jpg" />
+    <None Include="Resources\fov_viewmodel_100.jpg" />
+    <None Include="Resources\fov_viewmodel_105.jpg" />
+    <None Include="Resources\fov_viewmodel_110.jpg" />
+    <None Include="Resources\fov_viewmodel_115.jpg" />
+    <None Include="Resources\fov_viewmodel_120.jpg" />
     <Content Include="Resources\pipboy-24px.png" />
     <Content Include="Resources\pipboy-preview-mask.png" />
     <Content Include="Resources\pipboy-preview-screen.png" />
