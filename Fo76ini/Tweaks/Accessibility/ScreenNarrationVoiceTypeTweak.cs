@@ -31,7 +31,7 @@ namespace Fo76ini.Tweaks.Accessibility
 
         public bool UIReloadNecessary => false;
 
-        public int Count => Enum.GetNames(typeof(AntiAliasing)).Length;
+        public int Count => Enum.GetNames(typeof(ScreenNarrationVoiceType)).Length;
 
         public ScreenNarrationVoiceType GetValue()
         {

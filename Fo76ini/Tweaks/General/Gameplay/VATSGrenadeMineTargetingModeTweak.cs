@@ -32,7 +32,7 @@ namespace Fo76ini.Tweaks.General
 
         public bool UIReloadNecessary => false;
 
-        public int Count => Enum.GetNames(typeof(AntiAliasing)).Length;
+        public int Count => Enum.GetNames(typeof(VATSGrenadeMineTargetingMode)).Length;
 
         public VATSGrenadeMineTargetingMode GetValue()
         {

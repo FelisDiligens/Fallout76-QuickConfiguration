@@ -9,7 +9,7 @@ namespace Fo76ini.Tweaks.Camera
     /** Min: 2f, Default: 15f, Max: 50f */
     class WorkshopFreeCameraTranslationSpeedTweak : ITweak<float>, ITweakInfo
     {
-        public string Description => "Default: 3";
+        public string Description => "Default: 15";
 
         public WarnLevel WarnLevel => WarnLevel.None;
 
