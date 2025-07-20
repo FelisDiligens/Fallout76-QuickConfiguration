@@ -196,6 +196,7 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkInfo(checkBoxFixAimSensitivity, toolTip, fixAimSensitivityTweak);
             LinkedTweaks.LinkInfo(checkBoxMouseInvertX, toolTip, mouseInvertXTweak);
             LinkedTweaks.LinkInfo(checkBoxMouseInvertY, toolTip, mouseInvertYTweak);
+            LinkedTweaks.LinkInfo(checkBoxToggleAim, toolTip, toggleAimTweak);
             LinkedTweaks.LinkInfo(checkBoxGamepadEnabled, toolTip, gamepadEnableTweak);
             LinkedTweaks.LinkInfo(checkBoxGamepadRumble, toolTip, enableGamepadRumbleTweak);
             LinkedTweaks.LinkInfo(checkBoxAimAssist, toolTip, aimAssistTweak);
@@ -649,6 +650,9 @@ namespace Fo76ini.Forms.FormMain
             LinkedTweaks.LinkTweak(checkBoxMouseInvertX, mouseInvertXTweak);
             LinkedTweaks.LinkTweak(checkBoxMouseInvertY, mouseInvertYTweak);
 
+            // Toggle Aim
+            LinkedTweaks.LinkTweak(checkBoxToggleAim, toggleAimTweak);
+
             // Gamepad sensitivity
             LinkedTweaks.LinkTweak(numGamepadSensitivityX, gamepadSensitivityTweakX);
             LinkedTweaks.LinkTweak(numGamepadSensitivityY, gamepadSensitivityTweakY);
@@ -659,7 +663,7 @@ namespace Fo76ini.Forms.FormMain
             // Vibration
             LinkedTweaks.LinkTweak(checkBoxGamepadRumble, enableGamepadRumbleTweak);
 
-            // Vibration
+            // Aim Assist
             LinkedTweaks.LinkTweak(checkBoxAimAssist, aimAssistTweak);
 
 
@@ -873,6 +877,7 @@ namespace Fo76ini.Forms.FormMain
         private FixAimSensitivityTweak fixAimSensitivityTweak = new FixAimSensitivityTweak();
         private MouseInvertXTweak mouseInvertXTweak = new MouseInvertXTweak();
         private MouseInvertYTweak mouseInvertYTweak = new MouseInvertYTweak();
+        private ToggleAimTweak toggleAimTweak = new ToggleAimTweak();
         private GamepadEnableTweak gamepadEnableTweak = new GamepadEnableTweak();
         private EnableGamepadRumbleTweak enableGamepadRumbleTweak = new EnableGamepadRumbleTweak();
         private AimAssistTweak aimAssistTweak = new AimAssistTweak();

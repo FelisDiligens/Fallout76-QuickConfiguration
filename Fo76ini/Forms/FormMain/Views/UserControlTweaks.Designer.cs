@@ -347,6 +347,7 @@
             this.toolTip = new Fo76ini.Controls.CustomToolTip(this.components);
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.checkBoxToggleAim = new System.Windows.Forms.CheckBox();
             this.tabControlTweaks.SuspendLayout();
             this.tabPageTweaksInfo.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -4003,7 +4004,7 @@
             this.groupBoxGamepad.Controls.Add(this.sliderGamepadSensitivityX);
             this.groupBoxGamepad.Controls.Add(this.numGamepadSensitivityX);
             this.groupBoxGamepad.Controls.Add(this.labelGamepadSensitivityX);
-            this.groupBoxGamepad.Location = new System.Drawing.Point(9, 250);
+            this.groupBoxGamepad.Location = new System.Drawing.Point(9, 277);
             this.groupBoxGamepad.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxGamepad.Name = "groupBoxGamepad";
             this.groupBoxGamepad.Size = new System.Drawing.Size(400, 204);
@@ -4258,6 +4259,7 @@
             this.groupBoxMouse.BackColor = System.Drawing.Color.White;
             this.groupBoxMouse.BorderColor = System.Drawing.Color.Silver;
             this.groupBoxMouse.BorderWidth = 1;
+            this.groupBoxMouse.Controls.Add(this.checkBoxToggleAim);
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertX);
             this.groupBoxMouse.Controls.Add(this.checkBoxMouseInvertY);
             this.groupBoxMouse.Controls.Add(this.checkBoxFixAimSensitivity);
@@ -4271,7 +4273,7 @@
             this.groupBoxMouse.Location = new System.Drawing.Point(9, 9);
             this.groupBoxMouse.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxMouse.Name = "groupBoxMouse";
-            this.groupBoxMouse.Size = new System.Drawing.Size(400, 229);
+            this.groupBoxMouse.Size = new System.Drawing.Size(400, 256);
             this.groupBoxMouse.TabIndex = 0;
             this.groupBoxMouse.TabStop = false;
             this.groupBoxMouse.Text = "Mouse";
@@ -7056,6 +7058,16 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
+            // checkBoxToggleAim
+            // 
+            this.checkBoxToggleAim.AutoSize = true;
+            this.checkBoxToggleAim.Location = new System.Drawing.Point(9, 233);
+            this.checkBoxToggleAim.Name = "checkBoxToggleAim";
+            this.checkBoxToggleAim.Size = new System.Drawing.Size(78, 17);
+            this.checkBoxToggleAim.TabIndex = 10;
+            this.checkBoxToggleAim.Text = "Toggle aim";
+            this.checkBoxToggleAim.UseVisualStyleBackColor = true;
+            // 
             // UserControlTweaks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7525,5 +7537,6 @@
         private System.Windows.Forms.PictureBox pictureBoxViewmodelFOV;
         private ColorSlider.ColorSlider sliderViewmodelFOV;
         private System.Windows.Forms.NumericUpDown numViewmodelFOV;
+        private System.Windows.Forms.CheckBox checkBoxToggleAim;
     }
 }
