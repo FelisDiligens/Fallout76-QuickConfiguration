@@ -638,7 +638,8 @@ namespace Fo76ini.Mods
                 return GetEnumerator();
             }
         }
-
+		
+		//20260312 hiimzech: shorten bundled archive names
         private class DeployArchive
         {
             public string GamePath;
@@ -652,10 +653,22 @@ namespace Fo76ini.Mods
             {
                 this.GamePath = gamePath;
                 this.TempPath = Path.Combine(tempFolderPath, name);
-                if (name == "General")
+                
+				//shorten bundled archive names
+				/*if (name == "General")
                     this.ArchiveName = "Bundled.ba2";
                 else
-                    this.ArchiveName = "Bundled - " + name + ".ba2";
+                    this.ArchiveName = "Bundled - " + name + ".ba2";*/								
+				if (name == "General")
+                    this.ArchiveName = "qcB.ba2";
+                else if (name == "Textures")
+                    this.ArchiveName = "qcBT.ba2";				
+				else if (name == "Sounds")
+					this.ArchiveName = "qcBS.ba2";				
+				else if (name == "Interface")
+					this.ArchiveName = "qcBI.ba2";				
+				else
+					this.ArchiveName = "qcB" + name + ".ba2";				
 
                 /*if (Directory.Exists(this.tempPath))
                     Directory.Delete(this.tempPath, true);*/
